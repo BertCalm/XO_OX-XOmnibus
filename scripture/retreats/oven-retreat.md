@@ -16,7 +16,7 @@
 
 ## Pre-Retreat State
 
-XOven arrived in XOlokun as one of the Kitchen Quad — four modal piano engines built around physical material properties. It holds the warmest, darkest, most massive corner of the quad: cast iron at acoustic density Z=36.72 MRayl, thermal coefficient 0.0003/°C, inharmonicity coefficient B≈0.0004. The Seance Council scored it 8.65/10, with Moog praising the Bloom envelope as "a stroke of genius" and noting that "the cast iron metaphor is the most correct physical analogy I have seen in a software synthesizer."
+XOven arrived in XOceanus as one of the Kitchen Quad — four modal piano engines built around physical material properties. It holds the warmest, darkest, most massive corner of the quad: cast iron at acoustic density Z=36.72 MRayl, thermal coefficient 0.0003/°C, inharmonicity coefficient B≈0.0004. The Seance Council scored it 8.65/10, with Moog praising the Bloom envelope as "a stroke of genius" and noting that "the cast iron metaphor is the most correct physical analogy I have seen in a software synthesizer."
 
 Ten presets exist. The Seance Council identified gaps: nothing exploring mid-register darkness, nothing percussive-drone, nothing truly slow and geological. The preset library was scored 6/10 against an engine the Council rated 9/10 for sound quality. This retreat closes that gap.
 

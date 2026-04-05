@@ -1,20 +1,33 @@
 {
   "schema_version": 1,
-  "name": "Mantle Convection",
+  "name": "Mantle Convection (Omega)",
   "mood": "Deep",
-  "engines": ["Omega"],
+  "engines": [
+    "Omega"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Solid rock flowing on geological timescales — mantle convection cells spanning thousands of kilometers, moving at the speed of continental drift. Sub-bass at planetary scale.",
-  "tags": ["deep", "geological", "mantle", "convection", "sub-bass"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "geological",
+    "mantle",
+    "convection",
+    "sub-bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
     "brightness": 0.08,
     "warmth": 0.76,
     "movement": 0.12,
-    "density": 0.80,
+    "density": 0.8,
     "space": 0.65,
     "aggression": 0.18
   },
@@ -31,7 +44,9 @@
       "omega_subOsc": 0.76
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.58,

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Sediment Plume",
+  "name": "Sediment Plume (OceanDeep)",
   "mood": "Flux",
   "engines": [
     "OceanDeep"

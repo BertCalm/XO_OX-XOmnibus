@@ -15,11 +15,11 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Cache JUCE
         id: cache-juce
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: Libs/JUCE
           key: juce-8.0.4
@@ -92,13 +92,13 @@ jobs:
           echo "Standalone app found at build/XOceanus_artefacts/Release/Standalone/XOceanus.app"
 
       - name: Upload AU component
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: XOceanus-AU-${{ steps.meta.outputs.version }}-${{ steps.meta.outputs.sha }}
           path: build/XOceanus_artefacts/Release/AU/XOceanus.component
 
       - name: Upload Standalone app
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: XOceanus-Standalone-${{ steps.meta.outputs.version }}-${{ steps.meta.outputs.sha }}
           path: build/XOceanus_artefacts/Release/Standalone/XOceanus.app

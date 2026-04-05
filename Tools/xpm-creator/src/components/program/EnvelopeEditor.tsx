@@ -78,33 +78,55 @@ export default function EnvelopeEditor({ label, envelope, onChange }: EnvelopeEd
     ctx.lineJoin = 'round';
     ctx.lineCap = 'round';
 
+    // Web Audio API exponentialRampToValueAtTime produces v0 * (v1/v0)^(t/T),
+    // where t is normalized 0→1. We use eps=0.001 to match the audio engine's
+    // minimum non-zero value (it never passes 0 to exponential ramps).
+    const eps = 0.001;
+
+    // Helper: interpolate a true exponential ramp from v0 to v1 at normalized t
+    const expInterp = (v0: number, v1: number, t: number): number =>
+      v0 * Math.pow(Math.max(v1, eps) / Math.max(v0, eps), t);
+
+    const sustainLevel = envelope.sustain;
+    const CURVE_POINTS = 30; // more points = smoother curve
+
     ctx.beginPath();
     ctx.moveTo(timeToX(0), valToY(0));
-    ctx.lineTo(timeToX(attackEnd), valToY(1)); // Attack (linear)
+
+    // Attack: exponential ramp from ~0 up to peak (matches audio engine exponential=true)
+    const attackStartX = timeToX(0);
+    const attackEndXCoord = timeToX(attackEnd);
+    for (let i = 1; i <= CURVE_POINTS; i++) {
+      const t = i / CURVE_POINTS;
+      const expValue = expInterp(eps, 1, t);
+      const px = attackStartX + (attackEndXCoord - attackStartX) * t;
+      const py = valToY(expValue);
+      ctx.lineTo(px, py);
+    }
+
     ctx.lineTo(timeToX(holdEnd), valToY(1)); // Hold (flat)
 
     // Decay: exponential ramp from peak (1.0) down to sustain level
-    const sustainLevel = envelope.sustain;
-    const attackEndX = timeToX(holdEnd);
+    const decayStartX = timeToX(holdEnd);
     const decayEndX = timeToX(decayEnd);
-    const decayPoints = 20;
-    for (let i = 1; i <= decayPoints; i++) {
-      const t = i / decayPoints;
-      const expValue = sustainLevel + (1 - sustainLevel) * Math.exp(-5 * t);
-      const px = attackEndX + (decayEndX - attackEndX) * t;
+    const decaySustain = Math.max(sustainLevel, eps); // matches audio engine minSustain
+    for (let i = 1; i <= CURVE_POINTS; i++) {
+      const t = i / CURVE_POINTS;
+      const expValue = expInterp(1, decaySustain, t);
+      const px = decayStartX + (decayEndX - decayStartX) * t;
       const py = valToY(expValue);
       ctx.lineTo(px, py);
     }
 
     ctx.lineTo(timeToX(sustainEnd), valToY(sustainLevel)); // Sustain (flat)
 
-    // Release: exponential ramp from sustain level down to zero
+    // Release: exponential ramp from sustain level down to ~0
     const releaseStartX = timeToX(sustainEnd);
     const releaseEndX = timeToX(releaseEnd);
-    const releasePoints = 20;
-    for (let i = 1; i <= releasePoints; i++) {
-      const t = i / releasePoints;
-      const expValue = sustainLevel * Math.exp(-5 * t);
+    const releaseStart = Math.max(sustainLevel, eps);
+    for (let i = 1; i <= CURVE_POINTS; i++) {
+      const t = i / CURVE_POINTS;
+      const expValue = expInterp(releaseStart, eps, t);
       const px = releaseStartX + (releaseEndX - releaseStartX) * t;
       const py = valToY(expValue);
       ctx.lineTo(px, py);

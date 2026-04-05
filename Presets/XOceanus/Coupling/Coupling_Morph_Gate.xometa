@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Morph Gate",
+  "name": "Morph Gate (Odyssey + Opal)",
   "mood": "Coupling",
   "engines": [
     "Odyssey",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ODYSSEY analog drift modulates OPAL grain position drift \u2014 two drift mechanisms sharing voltage information, one analog, one granular.",
+  "description": "ODYSSEY analog drift modulates OPAL grain position drift — two drift mechanisms sharing voltage information, one analog, one granular.",
   "tags": [
     "coupling",
     "moderate",

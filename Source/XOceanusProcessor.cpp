@@ -86,6 +86,8 @@
 #include "Engines/Outflow/OutflowEngine.h"
 // Cellular Automata Oscillator — OBIONT (engine #74)
 #include "Engines/Obiont/ObiontEngine.h"
+// OXIDIZE — age-based corrosion synthesis engine
+#include "Engines/Oxidize/OxidizeAdapter.h"
 #include "DSP/Effects/MathFXChain.h"
 #include "DSP/Effects/BoutiqueFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
@@ -305,6 +307,9 @@ static bool registered_Outflow = xoceanus::EngineRegistry::instance().registerEn
 // Cellular Automata Oscillator — OBIONT (engine #74)
 static bool registered_Obiont = xoceanus::EngineRegistry::instance().registerEngine(
     "Obiont", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::ObiontEngine>(); });
+// OXIDIZE — age-based corrosion synthesis engine
+static bool registered_Oxidize = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oxidize", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OxidizeAdapter>(); });
 
 namespace xoceanus
 {
@@ -1029,8 +1034,13 @@ static float silenceGateHoldMs(const juce::String& engineId)
         return 100.0f;
 
     // Reverb-tail / granular / delay — 500ms
+    // NOTE: Oxbow (Chiasmus FDN + pre-delay), Overflow (multi-tap delay),
+    // Overcast (diffusion cloud), and Oasis (canopy delay) were previously
+    // missing from this list and fell through to 200ms, causing premature
+    // silence-gating that cut off long reverb tails. Fixed: #764.
     if (engineId == "Overdub" || engineId == "Opal" || engineId == "Oceanic" || engineId == "Obscura" ||
-        engineId == "Osprey" || engineId == "Osteria" || engineId == "Ombre" || engineId == "Overlap")
+        engineId == "Osprey" || engineId == "Osteria" || engineId == "Ombre" || engineId == "Overlap" ||
+        engineId == "Oxbow" || engineId == "Overflow" || engineId == "Overcast" || engineId == "Oasis")
         return 500.0f;
 
     // Infinite-sustain / self-exciting feedback — 1000ms
@@ -2194,9 +2204,18 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
     newEngine->attachParameters(apvts);
     {
         const double sr = currentSampleRate.load(std::memory_order_relaxed);
-        newEngine->prepare(sr, currentBlockSize.load(std::memory_order_relaxed));
-        newEngine->prepareSilenceGate(sr, currentBlockSize.load(std::memory_order_relaxed),
-                                      silenceGateHoldMs(newEngine->getEngineId()));
+        // #700: Only call prepare() if prepareToPlay() has already run (sr > 0).
+        // If loadEngine() is called before the host calls prepareToPlay() — e.g.
+        // during setStateInformation() at construction time — sr is 0.0 and passing
+        // it would trigger sr=0 guards inside engine DSP modules (see #701).
+        // prepareToPlay() will call prepare() on all engines with the correct rate
+        // once the host has provided it.
+        if (sr > 0.0)
+        {
+            newEngine->prepare(sr, currentBlockSize.load(std::memory_order_relaxed));
+            newEngine->prepareSilenceGate(sr, currentBlockSize.load(std::memory_order_relaxed),
+                                          silenceGateHoldMs(newEngine->getEngineId()));
+        }
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.

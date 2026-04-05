@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Current",
+  "name": "Abyssal Current (Ouroboros)",
   "mood": "Deep",
-  "engines": ["Ouroboros"],
+  "engines": [
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Antarctic Bottom Water — the densest, coldest water on Earth, flowing as a chaotic bottom current across the global ocean floor in a strange attractor of fluid dynamics.",
-  "tags": ["deep", "current", "abyssal", "chaotic", "cold"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "current",
+    "abyssal",
+    "chaotic",
+    "cold"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -24,14 +37,16 @@
       "ouro_macroMovement": 0.24,
       "ouro_macroCoupling": 0.12,
       "ouro_macroSpace": 0.72,
-      "ouro_filterEnvAmt": 0.40,
+      "ouro_filterEnvAmt": 0.4,
       "ouro_lfo1Rate": 0.05,
       "ouro_lfo1Depth": 0.22,
       "ouro_topology": 0.38,
-      "ouro_leash": 0.60
+      "ouro_leash": 0.6
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.48,

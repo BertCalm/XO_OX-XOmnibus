@@ -79,9 +79,15 @@ public:
 
         // ── Category pill buttons ─────────────────────────────────────────────
         // Short readable labels — font is 7.5pt to keep all pills fitting in 340pt.
-        static const char* kCatLabels[] = {"ALL",    "Synth", "Perc",  "Bass", "Pad",
-                                           "String", "Organ", "Vocal", "FX",   "Util"};
+        // Index 0 = "Start" — beginner-curated subset for new users (#719).
+        //   Shows only engines flagged beginner=true in the metadata table.
+        //   "Start" is the default selection so new users see a manageable set.
+        // Index 1 = "ALL"   — full fleet.
+        // Index 2–10 = synthesis type / role categories.
+        static const char* kCatLabels[] = {"Start", "ALL",    "Synth", "Perc",  "Bass", "Pad",
+                                            "String", "Organ", "Vocal", "FX",   "Util"};
         static const char* kCatTooltips[] = {
+            "Starter engines — curated for new users (depth zone: Sunlit)",
             "All engines", "Synthesizer", "Percussion", "Bass", "Pad", "String", "Organ", "Vocal", "FX", "Utility",
         };
         for (int i = 0; i < kNumCategories; ++i)
@@ -548,24 +554,36 @@ private:
     }
 
     //==========================================================================
-    // Category filter — index matches catBtns[] order:
-    //   0=ALL  1=SYNTH  2=PERC  3=BASS  4=PAD  5=STRING  6=ORGAN  7=VOCAL  8=FX  9=UTILITY
-    bool matchesCategory(const juce::String& category, int catFilter) const
+    // Category filter — index matches catBtns[] order (#719):
+    //   0=START (beginner engines — Sunlit zone only)
+    //   1=ALL
+    //   2=SYNTH  3=PERC  4=BASS  5=PAD  6=STRING  7=ORGAN  8=VOCAL  9=FX  10=UTILITY
+    bool matchesCategory(const juce::String& engineId, const juce::String& category, int catFilter) const
     {
         if (catFilter == 0)
+        {
+            // "Start" — show only beginner-friendly engines (Sunlit zone, depthZone == 0)
+            if (auto* m = metaFor(engineId))
+                return m->depthZone == 0;
+            return false;
+        }
+        if (catFilter == 1)
             return true; // ALL
         static const char* kFilterToCategory[] = {
-            "",           // 0 ALL
-            "Synth",      // 1
-            "Percussion", // 2
-            "Bass",       // 3
-            "Pad",        // 4
-            "String",     // 5
-            "Organ",      // 6
-            "Vocal",      // 7
-            "FX",         // 8
-            "Utility",    // 9
+            "",           // 0 Start (handled above)
+            "",           // 1 ALL (handled above)
+            "Synth",      // 2
+            "Percussion", // 3
+            "Bass",       // 4
+            "Pad",        // 5
+            "String",     // 6
+            "Organ",      // 7
+            "Vocal",      // 8
+            "FX",         // 9
+            "Utility",    // 10
         };
+        if (catFilter < 0 || catFilter >= static_cast<int>(std::size(kFilterToCategory)))
+            return true;
         return category == kFilterToCategory[catFilter];
     }
 
@@ -599,7 +617,7 @@ private:
 
             if (!matchesQuery(id, cat, arch, query))
                 continue;
-            if (!matchesCategory(cat, activeCategory))
+            if (!matchesCategory(id, cat, activeCategory))
                 continue;
 
             int zone = depthZoneOf(id);
@@ -654,7 +672,10 @@ private:
         emptyLabel.setVisible(isEmpty);
         listBox.setVisible(!isEmpty);
 
-        countLabel.setText(juce::String(totalEngines) + " engines", juce::dontSendNotification);
+        juce::String countText = juce::String(totalEngines) + " engines";
+        if (activeCategory == 0 && totalEngines > 0)
+            countText += "  (tip: tap ALL for full fleet)";
+        countLabel.setText(countText, juce::dontSendNotification);
     }
 
     //==========================================================================
@@ -694,7 +715,7 @@ private:
     }
 
     //==========================================================================
-    static constexpr int kNumCategories = 10;
+    static constexpr int kNumCategories = 11; // Start + ALL + 9 role categories (#719)
     // Section headers share the same row height as engine rows — both rendered
     // inside paintListBoxItem, distinguished by FlatRow::isSectionHeader.
     static constexpr int kRowHeight = 34;
@@ -718,7 +739,7 @@ private:
     juce::Label countLabel;
     juce::Label emptyLabel;
 
-    int activeCategory = 0; // 0 = ALL
+    int activeCategory = 0; // 0 = Start (beginner view — #719); 1 = ALL; 2-10 = role categories
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EnginePickerPopup)
 };

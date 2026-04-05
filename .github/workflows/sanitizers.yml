@@ -32,11 +32,11 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Cache JUCE
         id: cache-juce
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: Libs/JUCE
           key: juce-8.0.4
@@ -72,7 +72,7 @@ jobs:
 
       - name: Upload test output
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: sanitizer-test-output-${{ matrix.sanitizer }}
           path: build/test_output.txt

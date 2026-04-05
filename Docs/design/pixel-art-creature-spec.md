@@ -96,7 +96,7 @@ Generate for V1.1/V1.2 content drops.
 | 31 | OCTAVE | Tonewheel Snail | Snail with spinning wheel shell, teak brown | `#8B6914` |
 | 32 | OLEG | Theatre Anemone | Red sea anemone with dramatic tentacle spread | `#C0392B` |
 | 33 | OTIS | Gospel Goldfish | Plump goldfish, gospel gold, joyful expression | `#D4A017` |
-| 34 | OASIS | Desert Spring Turtle | Small turtle at an underwater spring, teal | `#00827F` |
+| 34 | OASIS | Yellowfin Tuna | Sleek tuna with silver-gold flank, mid-water, cardamom gold | `#C49B3F` |
 | 35 | ONKOLO | Amber Lanternfish | Small fish with amber lantern organ | `#FFBF00` |
 | 36 | OUTLOOK | Horizon Dolphin | Dolphin leaping toward horizon, indigo | `#4169E1` |
 | 37 | ORCHARD | Blossom Jellyfish | Pink bell with petal-like tentacles | `#FFB7C5` |

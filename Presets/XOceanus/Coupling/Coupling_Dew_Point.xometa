@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Dew Point",
+  "name": "Dew Point (OpenSky + Opal)",
   "mood": "Coupling",
   "engines": [
     "OpenSky",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OPENSKY Shepard shimmer barely seeds OPAL grain scatter \u2014 ascending shimmer tail leaving dew on granular clouds.",
+  "description": "OPENSKY Shepard shimmer barely seeds OPAL grain scatter — ascending shimmer tail leaving dew on granular clouds.",
   "tags": [
     "coupling",
     "whisper",

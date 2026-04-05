@@ -17,7 +17,13 @@ interface CacheEntry {
 }
 
 const cache = new Map<string, CacheEntry>();
-const decoding = new Map<string, Promise<AudioBuffer>>();
+
+interface DecodingEntry {
+  promise: Promise<AudioBuffer>;
+  cancelled: boolean;
+}
+
+const decoding = new Map<string, DecodingEntry>();
 
 function estimateSize(buffer: AudioBuffer): number {
   return buffer.length * buffer.numberOfChannels * 4; // Float32 = 4 bytes
@@ -57,32 +63,42 @@ export async function getDecodedBuffer(
 
   // If already decoding, wait for the existing promise
   const existing = decoding.get(sampleId);
-  if (existing) return existing;
+  if (existing) return existing.promise;
+
+  const entry: DecodingEntry = { promise: null as unknown as Promise<AudioBuffer>, cancelled: false };
 
   const promise = (async () => {
     try {
       const audioBuffer = await decodeArrayBuffer(rawBuffer);
 
-      const byteSize = estimateSize(audioBuffer);
-      cache.set(sampleId, {
-        buffer: audioBuffer,
-        byteSize,
-        lastAccessed: Date.now(),
-      });
-      currentCacheBytes += byteSize;
-      evictIfNeeded();
+      // If invalidateCache was called while this decode was in-flight, the
+      // entry's cancelled flag will be true.  Do NOT write to the cache —
+      // doing so would re-poison it with the stale/old buffer.
+      if (!entry.cancelled) {
+        const byteSize = estimateSize(audioBuffer);
+        cache.set(sampleId, {
+          buffer: audioBuffer,
+          byteSize,
+          lastAccessed: Date.now(),
+        });
+        currentCacheBytes += byteSize;
+        evictIfNeeded();
+      }
 
       return audioBuffer;
     } finally {
-      // Always clean up the in-flight promise — even on decode failure.
-      // Without this, a rejected promise stays in the decoding map forever,
-      // causing every subsequent request for this sampleId to return the
-      // already-rejected promise.
-      decoding.delete(sampleId);
+      // Always clean up the in-flight entry — even on decode failure or
+      // cancellation — so future requests start a fresh decode.
+      // Only remove our own entry; a newer entry (from a re-decode after
+      // invalidation) must not be deleted.
+      if (decoding.get(sampleId) === entry) {
+        decoding.delete(sampleId);
+      }
     }
   })();
 
-  decoding.set(sampleId, promise);
+  entry.promise = promise;
+  decoding.set(sampleId, entry);
   return promise;
 }
 
@@ -114,14 +130,24 @@ function preDecodeBuffer(sampleId: string, rawBuffer: ArrayBuffer): void {
  */
 export function invalidateCache(sampleId?: string): void {
   if (sampleId) {
-    const entry = cache.get(sampleId);
-    if (entry) {
-      currentCacheBytes -= entry.byteSize;
+    const cacheEntry = cache.get(sampleId);
+    if (cacheEntry) {
+      currentCacheBytes -= cacheEntry.byteSize;
     }
     cache.delete(sampleId);
-    decoding.delete(sampleId);
+
+    // Mark any in-flight decode as cancelled so its completion handler does
+    // not write the stale buffer back into the cache.  We also remove it from
+    // the map so the next getDecodedBuffer call starts a fresh decode.
+    const decodingEntry = decoding.get(sampleId);
+    if (decodingEntry) {
+      decodingEntry.cancelled = true;
+      decoding.delete(sampleId);
+    }
   } else {
     cache.clear();
+    // Cancel and remove all in-flight decodes.
+    decoding.forEach((entry) => { entry.cancelled = true; });
     decoding.clear();
     currentCacheBytes = 0;
   }

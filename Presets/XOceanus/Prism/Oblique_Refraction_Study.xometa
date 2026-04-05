@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Refraction Study",
+  "name": "Refraction Study (Oblique)",
   "mood": "Prism",
   "engines": [
     "Oblique"

@@ -705,9 +705,24 @@ private:
     // ── Layout constants ──────────────────────────────────────────────────────
     // Mockup v05: 36px knobs in 56×52 cells, ~8 cols in Column B's ~490px.
     // Header height 32px matches mockup spec (~32px section headers).
-    static constexpr int kCellW = 56;
-    static constexpr int kCellH = 52;
-    static constexpr int kKnobSize = 36;
+    //
+    // COUPLING RULE (#720): kCellH MUST be derived from kKnobSize to prevent
+    // label overflow.  The formula is:
+    //   kCellH = kKnobSize + kLabelH + kLabelGap + kCellPadTop
+    // If you change kKnobSize, kCellH updates automatically.
+    // Do NOT assign kCellH independently — label text will overflow the cell.
+    static constexpr int kCellW      = 56;
+    static constexpr int kKnobSize   = 36;  // rotary knob diameter in px
+    static constexpr int kLabelH     = 14;  // label height (see createLiveKnob: label is 14px tall)
+    static constexpr int kLabelGap   = 4;   // gap between knob bottom and label top (cy + kKnobSize + 4)
+    static constexpr int kCellPadTop = 2;   // top padding before knob (cy + 2 in createLiveKnob)
+    // kCellH: total cell height = top pad + knob + gap + label
+    static constexpr int kCellH = kCellPadTop + kKnobSize + kLabelGap + kLabelH; // = 2+36+4+14 = 56
+    // Static assertion: if any of the above constants drift, the compile fails loudly.
+    static_assert(kCellH == kCellPadTop + kKnobSize + kLabelGap + kLabelH,
+                  "kCellH must equal kCellPadTop + kKnobSize + kLabelGap + kLabelH — see #720");
+    static_assert(kKnobSize + kLabelGap + kLabelH + kCellPadTop <= kCellH,
+                  "Label overflows cell: kCellH is too small for the combined knob + label height — see #720");
     static constexpr int kPad = 8;
     static constexpr int kHeaderRowH = 32;        // height of each section header strip
     static constexpr int kVisibilityMargin = 120; // px preload margin for smooth scrolling

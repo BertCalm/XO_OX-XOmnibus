@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Double Helix",
+  "name": "Double Helix (Obrix + Orbweave)",
   "mood": "Coupling",
   "engines": [
     "Obrix",
@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX and ORBWEAVE in bidirectional coupling \u2014 reef ecology reshaping knot topology while knot paths reshape brick ecology, two systems co-evolving.",
+  "description": "OBRIX and ORBWEAVE in bidirectional coupling — reef ecology reshaping knot topology while knot paths reshape brick ecology, two systems co-evolving.",
   "tags": [
     "coupling",
     "moderate",

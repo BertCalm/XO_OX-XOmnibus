@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Aurora",
+  "name": "Aurora (OpenSky)",
   "mood": "Aether",
   "engines": [
     "OpenSky"

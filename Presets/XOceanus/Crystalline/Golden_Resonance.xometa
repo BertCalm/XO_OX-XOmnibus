@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Golden Resonance",
+  "name": "Golden Resonance (Oxbow)",
   "mood": "Crystalline",
   "engines": [
     "Oxbow"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Golden ratio resonance in a crystalline FDN \u2014 phi-proportioned decay creating natural crystal harmonics.",
+  "description": "Golden ratio resonance in a crystalline FDN — phi-proportioned decay creating natural crystal harmonics.",
   "tags": [
     "crystalline",
     "golden",

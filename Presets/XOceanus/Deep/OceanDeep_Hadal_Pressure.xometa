@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Hadal Pressure",
+  "name": "Hadal Pressure (OceanDeep)",
   "mood": "Deep",
-  "engines": ["OceanDeep"],
+  "engines": [
+    "OceanDeep"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Maximum depth pressure — the sound of 11,000 meters of water column pressing down. Slow bioluminescent pulse beneath crushing silence.",
-  "tags": ["deep", "abyssal", "pressure", "subterranean", "bioluminescent"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "abyssal",
+    "pressure",
+    "subterranean",
+    "bioluminescent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -32,7 +45,9 @@
       "deep_bioExciter": 0.35
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.55,

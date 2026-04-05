@@ -162,7 +162,7 @@ Schulze: the engine's highest purpose is the pattern sequencer running autonomou
 
 ### The Prophecy
 
-OSTINATO is the most ambitious percussion engine in the XOlokun fleet. The combination of 12 world instruments with academic-grade modal membrane synthesis, 96 hand-authored world rhythm patterns, 8-seat circular coupling topology, and live MIDI override creates an instrument that serves both generative composition and real-time performance. The three concerns — hardcoded LFO rate, deterministic humanization, mono reverb — are addressable without architectural change.
+OSTINATO is the most ambitious percussion engine in the XOceanus fleet. The combination of 12 world instruments with academic-grade modal membrane synthesis, 96 hand-authored world rhythm patterns, 8-seat circular coupling topology, and live MIDI override creates an instrument that serves both generative composition and real-time performance. The three concerns — hardcoded LFO rate, deterministic humanization, mono reverb — are addressable without architectural change.
 
 Chowning's endorsement of the physical modeling rigor and Buchla's recognition of the CIRCLE topology as "a novel interaction paradigm" reflect the council's conviction that OSTINATO has original intellectual content, not merely competent implementation.
 
@@ -192,7 +192,7 @@ The fire burns true. The ghosts warm their hands.
 ### B017 — Modal Membrane Synthesis with Academic Citation (AWARDED)
 *First awarded: 2026-03-20.*
 
-The only percussion engine in the XOlokun fleet where modal frequency ratios are derived from published physics literature: Bessel function zeros (Kinsler & Frey), Raman's 1934 tabla harmonic measurements, Fletcher & Rossing taiko compression data. 12 instruments with per-articulation excitation parameters and 4 body resonance types. Chowning: "This engine cites its sources. In commercial synthesis, that is rare."
+The only percussion engine in the XOceanus fleet where modal frequency ratios are derived from published physics literature: Bessel function zeros (Kinsler & Frey), Raman's 1934 tabla harmonic measurements, Fletcher & Rossing taiko compression data. 12 instruments with per-articulation excitation parameters and 4 body resonance types. Chowning: "This engine cites its sources. In commercial synthesis, that is rare."
 
 ### B018 — Circular Topology Coupling (AWARDED)
 *First awarded: 2026-03-20.*
@@ -239,7 +239,7 @@ When live MIDI arrives, the pattern sequencer automatically suppresses for one b
 8-seat polyrhythmic editing has no way to isolate individual seats during sound design. Add `osti_seatN_mute` boolean parameters or a bitmask global.
 
 ### MEDIUM — FIRE Macro Name Collision
-FIRE shares a name with global XOlokun macro concepts. Rename to BLAZE or KINDLE for clarity in multi-engine contexts.
+FIRE shares a name with global XOceanus macro concepts. Rename to BLAZE or KINDLE for clarity in multi-engine contexts.
 
 ### MEDIUM — No Host Tempo Sync
 `osti_tempo` is a standalone BPM parameter. DAW users expect host sync via `AudioPlayHead::getPosition()`. P2 in isolation, P0 in DAW sessions.
