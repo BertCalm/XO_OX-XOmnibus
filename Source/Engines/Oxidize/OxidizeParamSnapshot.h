@@ -109,7 +109,7 @@ struct OxidizeParamSnapshot
     float macroPATINA  = 0.0f; // M1 CHARACTER — patinaDensity, corrosionDepth, corrosionTone
     float macroAGE     = 0.0f; // M2 MOVEMENT  — ageRate, wowDepth, flutterDepth
     float macroENTROPY = 0.0f; // M3 COUPLING  — entropyDepth, erosionRate, dropoutRate
-    float macroSEDIMENT= 0.0f; // M4 SPACE     — sedimentMix, sedimentTail, dropoutRate
+    float macroSEDIMENT= 0.0f; // M4 SPACE     — sedimentMix, sedimentTail, dropoutSmear
 
     // =========================================================================
     // attachTo() — call ONCE during plugin initialisation.

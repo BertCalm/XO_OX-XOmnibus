@@ -203,7 +203,7 @@ private:
     // M1 CHARACTER: patinaDensity, corrosionDepth, corrosionTone
     // M2 MOVEMENT:  ageRate, wowDepth, flutterDepth
     // M3 COUPLING:  entropyDepth, erosionRate, dropoutRate
-    // M4 SPACE:     sedimentMix, sedimentTail, dropoutRate (additive)
+    // M4 SPACE:     sedimentMix, sedimentTail, dropoutSmear
     //
     // Default macro value = 0.5 → no change.
     // Range: [0, 1] where 0.5 = centre/no-modulation.
@@ -235,9 +235,9 @@ private:
 
         // M4 SPACE — reverb accumulation
         const float m4Offset = (m4 - 0.5f) * 2.0f; // [-1, +1]
-        snap_.sedimentMix  = std::clamp(snap_.sedimentMix  + m4Offset * 0.35f, 0.0f, 1.0f);
-        snap_.sedimentTail = std::clamp(snap_.sedimentTail + m4Offset * 0.4f,  0.0f, 1.0f);
-        snap_.dropoutRate  = std::clamp(snap_.dropoutRate  + m4Offset * 0.15f, 0.0f, 1.0f);
+        snap_.sedimentMix   = std::clamp(snap_.sedimentMix   + m4Offset * 0.35f, 0.0f, 1.0f);
+        snap_.sedimentTail  = std::clamp(snap_.sedimentTail  + m4Offset * 0.4f,  0.0f, 1.0f);
+        snap_.dropoutSmear  = std::clamp(snap_.dropoutSmear  + m4Offset * 0.15f, 0.0f, 1.0f);
     }
 
     //-- Parameter layout --------------------------------------------------------
