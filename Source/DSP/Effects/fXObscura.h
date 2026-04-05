@@ -323,6 +323,64 @@ public:
         jitterCountL = jitterCountR = 0;
     }
 
+    //--------------------------------------------------------------------------
+    // addParameters — register all 11 Obscura params into a ParameterLayout
+    static void addParameters(juce::AudioProcessorValueTreeState::ParameterLayout& layout)
+    {
+        using AP = juce::AudioParameterFloat;
+        using NR = juce::NormalisableRange<float>;
+        layout.add(std::make_unique<AP>("master_obsThreshold", "Obscura Threshold",  NR(-60.0f,0.0f,0.1f),-24.0f));
+        layout.add(std::make_unique<AP>("master_obsHold",      "Obscura Hold Level", NR(-60.0f,0.0f,0.1f),-12.0f));
+        layout.add(std::make_unique<AP>("master_obsRelease",   "Obscura Release",    NR(10.0f,500.0f,0.1f),100.0f));
+        layout.add(std::make_unique<AP>("master_obsErosion",   "Obscura Erosion",    NR(0.5f,4.0f,0.001f),2.0f));
+        layout.add(std::make_unique<AP>("master_obsSubHarm",   "Obscura Sub Harm",   NR(0.0f,1.0f,0.001f),0.5f));
+        layout.add(std::make_unique<AP>("master_obsSaturation","Obscura Saturation", NR(0.0f,1.0f,0.001f),0.4f));
+        layout.add(std::make_unique<AP>("master_obsDecimate",  "Obscura Decimate",   NR(0.0f,1.0f,0.001f),0.3f));
+        layout.add(std::make_unique<AP>("master_obsResonance", "Obscura Resonance",  NR(0.0f,0.9f,0.001f),0.5f));
+        layout.add(std::make_unique<AP>("master_obsTone",      "Obscura Tone",       NR(200.0f,12000.0f,1.0f),3000.0f));
+        layout.add(std::make_unique<AP>("master_obsPatina",    "Obscura Patina",     NR(0.005f,0.15f,0.001f),0.03f));
+        layout.add(std::make_unique<AP>("master_obsMix",       "Obscura Mix",        NR(0.0f,1.0f,0.001f),0.0f));
+    }
+
+    //--------------------------------------------------------------------------
+    // cacheParameterPointers — store atomic pointers for processBlockFromSlot()
+    void cacheParameterPointers(juce::AudioProcessorValueTreeState& apvts)
+    {
+        auto get = [&](const char* id) { return apvts.getRawParameterValue(id); };
+        p_threshold  = get("master_obsThreshold");
+        p_hold       = get("master_obsHold");
+        p_release    = get("master_obsRelease");
+        p_erosion    = get("master_obsErosion");
+        p_subHarm    = get("master_obsSubHarm");
+        p_saturation = get("master_obsSaturation");
+        p_decimate   = get("master_obsDecimate");
+        p_resonance  = get("master_obsResonance");
+        p_tone       = get("master_obsTone");
+        p_patina     = get("master_obsPatina");
+        p_mix        = get("master_obsMix");
+    }
+
+    //--------------------------------------------------------------------------
+    // processBlockFromSlot — applies cached params then runs processBlock
+    void processBlockFromSlot(float* L, float* R, int numSamples)
+    {
+        auto rd = [](std::atomic<float>* p, float def) {
+            return p ? p->load(std::memory_order_relaxed) : def;
+        };
+        setThreshold  (rd(p_threshold,  -24.0f));
+        setHoldLevel  (rd(p_hold,       -12.0f));
+        setRelease    (rd(p_release,    100.0f));
+        setErosionCurve(rd(p_erosion,    2.0f));
+        setSubHarmonic(rd(p_subHarm,     0.5f));
+        setSaturation (rd(p_saturation,  0.4f));
+        setDecimate   (rd(p_decimate,    0.3f));
+        setResonance  (rd(p_resonance,   0.5f));
+        setTone       (rd(p_tone,       3000.0f));
+        setPatina     (rd(p_patina,      0.03f));
+        setMix        (rd(p_mix,         0.0f));
+        processBlock(L, R, numSamples);
+    }
+
 private:
     //--------------------------------------------------------------------------
     // Helper: dB to linear gain
@@ -390,6 +448,19 @@ private:
     float toneFreq = 3000.0f;
     float patinaRate = 0.03f; // Tomita breathing
     float mix = 0.0f;
+
+    // Cached param pointers (populated by cacheParameterPointers)
+    std::atomic<float>* p_threshold  = nullptr;
+    std::atomic<float>* p_hold       = nullptr;
+    std::atomic<float>* p_release    = nullptr;
+    std::atomic<float>* p_erosion    = nullptr;
+    std::atomic<float>* p_subHarm    = nullptr;
+    std::atomic<float>* p_saturation = nullptr;
+    std::atomic<float>* p_decimate   = nullptr;
+    std::atomic<float>* p_resonance  = nullptr;
+    std::atomic<float>* p_tone       = nullptr;
+    std::atomic<float>* p_patina     = nullptr;
+    std::atomic<float>* p_mix        = nullptr;
 };
 
 } // namespace xoceanus

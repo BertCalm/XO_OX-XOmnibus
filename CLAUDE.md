@@ -6,11 +6,11 @@
 
 XOceanus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **77 engines** are registered in XOceanus
-(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21; OSMOSIS added 2026-03-21; OXYTOCIN added 2026-03-23; OUTLOOK added 2026-03-23; OBIONT added 2026-03-28; OKEANOS + OUTFLOW added 2026-03-31; OXIDIZE added 2026-04-05)
+and mutate into sounds impossible with any single synth. **81 engines** are registered in XOceanus
+(5 Constellation family engines added 2026-03-14; OVERLAP + OUTWIT installed 2026-03-15; OMBRE, ORCA, OCTOPUS confirmed 2026-03-15, auval PASS; OSTINATO added 2026-03-18; OPENSKY added 2026-03-18; OCEANDEEP added 2026-03-18; OUIE added 2026-03-18; OBRIX added 2026-03-19; ORBWEAVE, OVERTONE, ORGANISM added 2026-03-20; OXBOW added 2026-03-20; OWARE added 2026-03-20; OPERA added 2026-03-21; OFFERING added 2026-03-21; OSMOSIS added 2026-03-21; OXYTOCIN added 2026-03-23; OUTLOOK added 2026-03-23; OBIONT added 2026-03-28; OKEANOS + OUTFLOW added 2026-03-31; OXIDIZE added 2026-04-05; ONRUSH + OMNISTEREO + OBLITERATE + OBSCURITY added 2026-04-05)
 — see engine table below.
 
-- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS, OAKEN, OASIS, OBELISK, OCHRE, OCTAVE, ODDFELLOW, OGRE, OLATE, OLEG, OMEGA, ONKOLO, OPALINE, OPCODE, ORCHARD, OSIER, OTIS, OTO, OVEN, OVERCAST, OVERFLOW, OVERGROW, OVERWASH, OVERWORN, OXALIS, OXYTOCIN, OUTLOOK, OBIONT, OKEANOS, OUTFLOW, OXIDIZE
+- **Engine modules (registered):** ODDFELIX, ODDOSCAR, OVERDUB, ODYSSEY, OBLONG, OBESE, ONSET, OVERWORLD, OPAL, ORBITAL, ORGANON, OUROBOROS, OBSIDIAN, OVERBITE, ORIGAMI, ORACLE, OBSCURA, OCEANIC, OCELOT, OPTIC, OBLIQUE, OSPREY, OSTERIA, OWLFISH, OHM, ORPHICA, OBBLIGATO, OTTONI, OLE, OVERLAP, OUTWIT, OMBRE, ORCA, OCTOPUS, OSTINATO, OPENSKY, OCEANDEEP, OUIE, OBRIX, ORBWEAVE, OVERTONE, ORGANISM, OXBOW, OWARE, OPERA, OFFERING, OSMOSIS, OAKEN, OASIS, OBELISK, OCHRE, OCTAVE, ODDFELLOW, OGRE, OLATE, OLEG, OMEGA, ONKOLO, OPALINE, OPCODE, ORCHARD, OSIER, OTIS, OTO, OVEN, OVERCAST, OVERFLOW, OVERGROW, OVERWASH, OVERWORN, OXALIS, OXYTOCIN, OUTLOOK, OBIONT, OKEANOS, OUTFLOW, OXIDIZE, ONRUSH, OMNISTEREO, OBLITERATE, OBSCURITY
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
 - **Presets:** 19,574 active factory presets in `.xometa` format, 15 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic), 6D Sonic DNA
@@ -118,6 +118,10 @@ and mutate into sounds impossible with any single synth. **77 engines** are regi
 | OKEANOS | XOkeanos | Cardamom Gold `#C49B3F` |
 | OUTFLOW | XOutflow | Deep Storm Indigo `#1A1A40` |
 | OXIDIZE | XOxidize | Verdigris `#4A9E8E` |
+| ONRUSH | XOnrush (Gemini Pedalboard) | Surge Orange `#E8501A` |
+| OMNISTEREO | XOmnistereo (Gemini Pedalboard) | Tape Cream `#F5E6C8` |
+| OBLITERATE | XObliterate (Gemini Pedalboard) | Sludge Violet `#4A1E6B` |
+| OBSCURITY | XObscurity (Gemini Pedalboard) | Industrial Slate `#3A3A4A` |
 
 ### Engine ID vs Parameter Prefix
 
@@ -203,6 +207,10 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Okeanos | `okan_` | `okan_warmth` |
 | Outflow | `out_` | `out_currentSpeed` |
 | Oxidize | `oxidize_` | `oxidize_ageRate` |
+| Onrush | `onr_` | `onr_swellThresh` |
+| Omnistereo | `omni_` | `omni_tapeAge` |
+| Obliterate | `oblt_` | `oblt_shimmerDecay` |
+| Obscurity | `obsc_` | `obsc_pllGlide` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -250,6 +258,11 @@ See `Docs/specs/xoceanus_name_migration_reference.md` for the full mapping and g
 | `Source/Engines/Outlook/OutlookEngine.h` | Panoramic visionary synth (dual wavetable horizon scan + parallax stereo + vista filter + aurora mod) |
 | `Source/Engines/Obiont/ObiontEngine.h` | Cellular automata oscillator (1D Wolfram CA spatial projection + cosine readout + 8-voice poly + anti-extinction) |
 | `Source/Engines/Oxidize/OxidizeEngine.h` | Temporal degradation synthesis engine (note age → 6-stage corrosion cascade) |
+| `Source/DSP/Effects/OnrushChain.h` | Gemini Pedalboard: expressive lead FX chain (Auto-Swell→Ring Mod→Dist→Env Filter→BBD Delay, Mono→Stereo) |
+| `Source/DSP/Effects/OmnistereoChain.h` | Gemini Pedalboard: stereo widener chain (Tape Sat→EQ→BBD Vibrato→Chorus→FDN Reverb, Stereo→Stereo) |
+| `Source/DSP/Effects/ObliterateChain.h` | Gemini Pedalboard: heavy stutter chain (Shimmer Rev→Octave Fuzz→Reverse Delay→Granular→Tremolo, Mono→Stereo) |
+| `Source/DSP/Effects/ObscurityChain.h` | Gemini Pedalboard: dark ambient chain (PLL Synth→Diode OD→Dimension Chorus→BBD Delay→Industrial Rev, Mono→Stereo) |
+| `Source/Core/EpicChainSlotController.h` | Unified 3-slot FX assignment system with 50ms crossfade (replaces fixed AquaticFX/MathFX/BoutiqueFX positions) |
 | `SDK/include/xoceanus/` | JUCE-free SDK headers for third-party engine development |
 | `Presets/XOceanus/{mood}/` | Factory presets by mood |
 | `Tools/` | Python utilities (DNA, breeding, migration, export) |

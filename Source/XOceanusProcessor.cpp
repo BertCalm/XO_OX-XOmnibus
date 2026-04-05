@@ -91,6 +91,7 @@
 #include "DSP/Effects/MathFXChain.h"
 #include "DSP/Effects/BoutiqueFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
+#include "Core/EpicChainSlotController.h"
 #include "DSP/ThreadInit.h"
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
@@ -1017,6 +1018,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     // the ParameterLayout from the vector.
     juce::AudioProcessorValueTreeState::ParameterLayout layout(params.begin(), params.end());
     xoceanus::AquaticFXSuite::addParameters(layout);
+    // EpicChainSlotController registers: slot control params (chain/mix/bypass × 3 slots),
+    // Singularity FX params (master_onsl*/master_obs*/master_ora*) which were previously
+    // unregistered, and the 4 new Epic chain param sets (onr_/omni_/oblt_/obsc_).
+    xoceanus::EpicChainSlotController::addParameters(layout);
     return layout;
 }
 

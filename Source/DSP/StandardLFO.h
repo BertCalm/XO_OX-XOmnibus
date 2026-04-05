@@ -2,6 +2,7 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 #include "FastMath.h"
+#include <algorithm>
 #include <cmath>
 #include <cstdint>
 

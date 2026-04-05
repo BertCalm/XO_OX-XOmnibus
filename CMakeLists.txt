@@ -149,6 +149,10 @@ target_sources(XOceanus PRIVATE
     Source/Core/MPEManager.h
     Source/Core/EpicChainSlotController.h
     Source/Core/EpicChainSlotController.cpp
+    Source/DSP/Effects/OnrushChain.cpp
+    Source/DSP/Effects/OmnistereoChain.cpp
+    Source/DSP/Effects/ObliterateChain.cpp
+    Source/DSP/Effects/ObscurityChain.cpp
 
     # DSP (shared, pure C++)
     Source/DSP/FastMath.h
@@ -354,6 +358,10 @@ target_sources(XOceanus PRIVATE
     Source/DSP/Effects/fXOratory.h
     Source/DSP/Effects/fXOnslaught.h
     Source/DSP/Effects/fXOxide.h
+    Source/DSP/Effects/OnrushChain.h
+    Source/DSP/Effects/OmnistereoChain.h
+    Source/DSP/Effects/ObliterateChain.h
+    Source/DSP/Effects/ObscurityChain.h
 
     # Export pipeline
     Source/Export/XPNVelocityCurves.h

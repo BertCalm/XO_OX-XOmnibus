@@ -330,6 +330,55 @@ public:
         resFeedbackL = resFeedbackR = 0.0f;
     }
 
+    //--------------------------------------------------------------------------
+    // addParameters — register all 8 Onslaught params into a ParameterLayout
+    static void addParameters(juce::AudioProcessorValueTreeState::ParameterLayout& layout)
+    {
+        using AP = juce::AudioParameterFloat;
+        using NR = juce::NormalisableRange<float>;
+        layout.add(std::make_unique<AP>("master_onslFlowRate",  "Onslaught Flow Rate",   NR(0.1f,5.0f,0.001f),0.8f));
+        layout.add(std::make_unique<AP>("master_onslFlowDepth", "Onslaught Flow Depth",  NR(0.0f,1.0f,0.001f),0.5f));
+        layout.add(std::make_unique<AP>("master_onslThreshold", "Onslaught Threshold",   NR(1.0f,20.0f,0.01f),4.0f));
+        layout.add(std::make_unique<AP>("master_onslModDepth",  "Onslaught Mod Depth",   NR(0.0f,1.0f,0.001f),0.6f));
+        layout.add(std::make_unique<AP>("master_onslModRate",   "Onslaught Mod Rate",    NR(0.25f,8.0f,0.001f),2.0f));
+        layout.add(std::make_unique<AP>("master_onslDecay",     "Onslaught Decay",       NR(10.0f,2000.0f,0.1f),300.0f));
+        layout.add(std::make_unique<AP>("master_onslSCHP",      "Onslaught SC HP",       NR(20.0f,2000.0f,1.0f),200.0f));
+        layout.add(std::make_unique<AP>("master_onslMix",       "Onslaught Mix",         NR(0.0f,1.0f,0.001f),0.0f));
+    }
+
+    //--------------------------------------------------------------------------
+    // cacheParameterPointers — store atomic pointers for processBlockFromSlot()
+    void cacheParameterPointers(juce::AudioProcessorValueTreeState& apvts)
+    {
+        auto get = [&](const char* id) { return apvts.getRawParameterValue(id); };
+        p_flowRate  = get("master_onslFlowRate");
+        p_flowDepth = get("master_onslFlowDepth");
+        p_threshold = get("master_onslThreshold");
+        p_modDepth  = get("master_onslModDepth");
+        p_modRate   = get("master_onslModRate");
+        p_decay     = get("master_onslDecay");
+        p_scHP      = get("master_onslSCHP");
+        p_mix       = get("master_onslMix");
+    }
+
+    //--------------------------------------------------------------------------
+    // processBlockFromSlot — applies cached params then runs processBlock
+    void processBlockFromSlot(float* L, float* R, int numSamples)
+    {
+        auto rd = [](std::atomic<float>* p, float def) {
+            return p ? p->load(std::memory_order_relaxed) : def;
+        };
+        setFlowRate    (rd(p_flowRate,  0.8f));
+        setFlowDepth   (rd(p_flowDepth, 0.5f));
+        setThreshold   (rd(p_threshold, 4.0f));
+        setCollapseDepth(rd(p_modDepth, 0.6f));
+        setCollapseRate (rd(p_modRate,  2.0f));
+        setCollapseDecay(rd(p_decay,    300.0f));
+        setSidechainHP (rd(p_scHP,      200.0f));
+        setMix         (rd(p_mix,       0.0f));
+        processBlock(L, R, numSamples);
+    }
+
 private:
     //--------------------------------------------------------------------------
     static constexpr int kNumAPFs = 4;
@@ -378,6 +427,16 @@ private:
     float collapseDecayMs = 300.0f;
     float sidechainHPFreq = 200.0f;
     float mix = 0.0f;
+
+    // Cached param pointers (populated by cacheParameterPointers)
+    std::atomic<float>* p_flowRate  = nullptr;
+    std::atomic<float>* p_flowDepth = nullptr;
+    std::atomic<float>* p_threshold = nullptr;
+    std::atomic<float>* p_modDepth  = nullptr;
+    std::atomic<float>* p_modRate   = nullptr;
+    std::atomic<float>* p_decay     = nullptr;
+    std::atomic<float>* p_scHP      = nullptr;
+    std::atomic<float>* p_mix       = nullptr;
 };
 
 } // namespace xoceanus
