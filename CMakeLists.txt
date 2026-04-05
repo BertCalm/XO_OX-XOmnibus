@@ -23,6 +23,8 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
         -Wno-error=unused-parameter
         -Wno-error=deprecated-declarations
         -Wno-error=unused-but-set-variable  # JUCE 8 internals set-but-don't-read in lambda conditions
+        -Wno-error=macro-redefined          # _FORTIFY_SOURCE conflicts with sanitizer built-ins
+        -Wno-error=shorten-64-to-32         # Xcode default; safe size_t→int in bounded loops
         -fstack-protector-strong
         -D_FORTIFY_SOURCE=2
     )

@@ -411,7 +411,10 @@ def run_validation(do_fix: bool = False, report_all: bool = False, strict: bool 
         print(f"ERROR: Preset directory not found: {PRESET_DIR}")
         return 1
 
-    files = sorted(PRESET_DIR.rglob("*.xometa"))
+    files = sorted(
+        f for f in PRESET_DIR.rglob("*.xometa")
+        if "_quarantine" not in f.parts and "Quarantine" not in f.parts
+    )
     if not files:
         print("WARNING: No .xometa files found")
         return 1

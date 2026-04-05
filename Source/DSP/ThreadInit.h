@@ -198,7 +198,7 @@ struct ArmDenormalGuard
     ArmDenormalGuard& operator=(const ArmDenormalGuard&) = delete;
 
 private:
-    uint64_t savedFpcr_ = 0;
+    [[maybe_unused]] uint64_t savedFpcr_ = 0;
 };
 
 } // namespace dsp
