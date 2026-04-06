@@ -103,7 +103,7 @@ public:
     {
         // Layout: LABEL [KNOB] › LABEL [KNOB] › ... — label left of knob, tightly grouped
         auto b = getLocalBounds().reduced(4, 2);
-        constexpr int kh = 44;             // knob diameter (WCAG 44pt minimum touch target)
+        constexpr int kh = 48;             // knob diameter (#901: bumped 44→48pt for better discoverability)
         constexpr int lblW = 30;           // label width (CHAR/MOVE/COUP/SPACE/VOL fit at 9pt mono)
         constexpr int gap = 2;             // between label and knob
         constexpr int groupGap = 4;        // between knob→next label
