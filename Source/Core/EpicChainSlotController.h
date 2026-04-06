@@ -426,6 +426,8 @@ inline void EpicChainSlotController::dispatchChain(FXSlot& slot, ChainID chain,
                                                     double bpm,
                                                     double ppqPosition)
 {
+    jassert(numSamples <= static_cast<int>(slot.monoScratch.size()));
+
     switch (chain)
     {
         case Off:
@@ -458,12 +460,9 @@ inline void EpicChainSlotController::dispatchChain(FXSlot& slot, ChainID chain,
         // Epic chains — Mono-In chains mix L+R to mono first, then write stereo out
         case Onrush:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.onrush.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.onrush.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
@@ -473,91 +472,67 @@ inline void EpicChainSlotController::dispatchChain(FXSlot& slot, ChainID chain,
 
         case Obliterate:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.obliterate.processBlock(slot.monoScratch.data(), L, R, safeSamples);
+            slot.obliterate.processBlock(slot.monoScratch.data(), L, R, numSamples);
             break;
         }
 
         case Obscurity:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.obscurity.processBlock(slot.monoScratch.data(), L, R, safeSamples);
+            slot.obscurity.processBlock(slot.monoScratch.data(), L, R, numSamples);
             break;
         }
 
         // ---- Wave 2 — Monsterous (Mono-In chains) ----
         case Oubliette:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.oubliette.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.oubliette.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         case Osmium:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.osmium.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.osmium.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         case Orogen:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.orogen.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.orogen.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         case Oculus:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.oculus.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.oculus.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         // ---- Wave 2 — Sunken Treasure (Mono-In chains) ----
         case Outage:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.outage.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.outage.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         case Override:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.override_.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.override_.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
@@ -568,147 +543,108 @@ inline void EpicChainSlotController::dispatchChain(FXSlot& slot, ChainID chain,
 
         case Obdurate:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.obdurate.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.obdurate.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         // ---- Wave 2 — Anomalous (Mono-In chains) ----
         case Orison:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.orison.processBlock(slot.monoScratch.data(), L, R, safeSamples);
+            slot.orison.processBlock(slot.monoScratch.data(), L, R, numSamples);
             break;
         }
 
         case Overshoot:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.overshoot.processBlock(slot.monoScratch.data(), L, R, safeSamples);
+            slot.overshoot.processBlock(slot.monoScratch.data(), L, R, numSamples);
             break;
         }
 
         case Obverse:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.obverse.processBlock(slot.monoScratch.data(), L, R, safeSamples);
+            slot.obverse.processBlock(slot.monoScratch.data(), L, R, numSamples);
             break;
         }
 
         case Oxymoron:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.oxymoron.processBlock(slot.monoScratch.data(), L, R, safeSamples);
+            slot.oxymoron.processBlock(slot.monoScratch.data(), L, R, numSamples);
             break;
         }
 
         // ---- Wave 2 — AHA (Mono-In chains) ----
         case Ornate:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.ornate.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.ornate.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         case Oration:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.oration.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.oration.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         case Offcut:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.offcut.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.offcut.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         case Omen:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.omen.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.omen.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         // ---- Wave 2 — Alt Universe (Mono-In chains) ----
         case Opus:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.opus.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.opus.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         case Outlaw:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.outlaw.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.outlaw.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         case Outbreak:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.outbreak.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.outbreak.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
         case Orrery:
         {
-            int safeSamples = numSamples;
-            if (static_cast<int>(slot.monoScratch.size()) < safeSamples)
-                slot.monoScratch.assign(safeSamples, 0.0f);
-            for (int i = 0; i < safeSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
                 slot.monoScratch[i] = (L[i] + R[i]) * 0.5f;
-            slot.orrery.processBlock(slot.monoScratch.data(), L, R, safeSamples, bpm, ppqPosition);
+            slot.orrery.processBlock(slot.monoScratch.data(), L, R, numSamples, bpm, ppqPosition);
             break;
         }
 
