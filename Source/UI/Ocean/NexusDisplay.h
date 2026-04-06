@@ -85,6 +85,57 @@ public:
                        juce::Justification::centred,
                        false);
         }
+
+        // ── #909: Live parameter readouts ─────────────────────────────────────
+        // Voice count + 4 macro bar gauges, drawn below the mood badge.
+        // Rendered at low opacity so they are informational without dominating
+        // the identity visual hierarchy.
+        if (liveReadoutsBounds_.getWidth() > 0)
+        {
+            const int w = getWidth();
+            const auto rb = liveReadoutsBounds_;
+
+            // Voice count pill — "Vx" where x is the polyphonic voice count.
+            g.setFont(GalleryFonts::value(9.0f));
+            const juce::Colour readoutCol = accentColour_.withAlpha(0.55f);
+            g.setColour(readoutCol);
+            juce::String voiceStr = (voiceCount_ > 0)
+                                        ? ("V" + juce::String(voiceCount_))
+                                        : "V0";
+            g.drawText(voiceStr,
+                       juce::Rectangle<int>(rb.getX(), rb.getY(), 28, rb.getHeight()),
+                       juce::Justification::centredLeft,
+                       false);
+
+            // Macro bar gauges: 4 tiny horizontal bars (M1-M4) filling the remainder.
+            // Each bar is 8pt tall, 2pt gap between bars, label "M1"..."M4" on left.
+            const int barAreaX = rb.getX() + 32;
+            const int barAreaW = juce::jmax(0, w - barAreaX * 2); // symmetric margins
+            const int barH = 4;
+            const int barGapV = 3;
+            const int totalBarH = 4 * barH + 3 * barGapV;
+            const int barStartY = rb.getCentreY() - totalBarH / 2;
+
+            for (int i = 0; i < 4; ++i)
+            {
+                const int barY = barStartY + i * (barH + barGapV);
+                const float val = juce::jlimit(0.0f, 1.0f, macroValues_[i]);
+
+                // Track background
+                g.setColour(accentColour_.withAlpha(0.10f));
+                g.fillRoundedRectangle(juce::Rectangle<float>(
+                    (float)barAreaX, (float)barY, (float)barAreaW, (float)barH), 2.0f);
+
+                // Fill proportional to value
+                if (val > 0.001f)
+                {
+                    g.setColour(accentColour_.withAlpha(0.45f));
+                    g.fillRoundedRectangle(juce::Rectangle<float>(
+                        (float)barAreaX, (float)barY,
+                        val * (float)barAreaW, (float)barH), 2.0f);
+                }
+            }
+        }
     }
 
     void resized() override
@@ -177,6 +228,25 @@ public:
         repaint();
     }
 
+    // #909: Live parameter feedback — voice count and active macro values.
+    // Call from the editor's timer (at ~10 Hz) to keep readouts current.
+    // voiceCount: total polyphonic voices across all loaded engines.
+    // macroValues[4]: current normalised [0,1] value for macros 1-4.
+    void setLiveReadouts(int voiceCount, const std::array<float, 4>& macroValues)
+    {
+        bool changed = (voiceCount != voiceCount_);
+        for (int i = 0; i < 4; ++i)
+            if (std::abs(macroValues[i] - macroValues_[i]) > 0.005f)
+                changed = true;
+
+        if (!changed)
+            return;
+
+        voiceCount_ = voiceCount;
+        macroValues_ = macroValues;
+        repaint();
+    }
+
     //==========================================================================
     // Callbacks
     //==========================================================================
@@ -202,6 +272,10 @@ private:
     juce::String  moodName_    = "Foundation";
     juce::Colour  moodColour_  = juce::Colour(0xFF9E9B97);  // Ocean::salt
     juce::Colour  accentColour_ = juce::Colour(GalleryColors::xoGold);
+
+    // #909: Live parameter readouts — updated via setLiveReadouts()
+    int voiceCount_ = 0;
+    std::array<float, 4> macroValues_{{0.0f, 0.0f, 0.0f, 0.0f}};
 
     // Cached hit-test rects — computed in resized().
     juce::Rectangle<int> presetNameBounds_;

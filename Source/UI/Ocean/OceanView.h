@@ -163,13 +163,14 @@ public:
                           juce::Colour(GalleryColors::Ocean::foam));
             btn.setColour(juce::TextButton::textColourOnId,
                           juce::Colour(GalleryColors::xoGold));
-            btn.setSize(minW, 28);
+            // #908: initial size hint — layoutFloatingControls() sets definitive bounds.
+            btn.setSize(minW, 44); // 44pt height = WCAG AA minimum touch target
         };
-        styleHeaderButton(presetPrev_,   36);
-        styleHeaderButton(presetNext_,   36);
-        styleHeaderButton(favButton_,    28);
-        styleHeaderButton(settingsButton_, 36);
-        styleHeaderButton(keysButton_,   52);
+        styleHeaderButton(presetPrev_,   44);
+        styleHeaderButton(presetNext_,   44);
+        styleHeaderButton(favButton_,    44);
+        styleHeaderButton(settingsButton_, 44);
+        styleHeaderButton(keysButton_,   56);
 
         favButton_.setTooltip("Toggle favourite");
         settingsButton_.setTooltip("Settings");
@@ -935,12 +936,17 @@ private:
     void layoutFloatingControls()
     {
         // ── Left cluster: prev | next | fav ──────────────────────────────────
-        constexpr int kBtnH      = 28;
-        constexpr int kNavW      = 36;
-        constexpr int kFavW      = 28;
-        constexpr int kTopMargin = 8;
-        constexpr int kLeftMargin = 8;
-        constexpr int kGap       = 4;
+        // #908: WCAG 2.5.5 requires a minimum 44×44pt touch target.
+        // Visual height stays ~28pt via GalleryLookAndFeel's text rendering,
+        // but the component bounds are expanded to 44pt so pointer/touch events
+        // have a compliant target size.  The button background fill matches the
+        // ocean scene so the extra transparent hit area is invisible.
+        constexpr int kBtnH      = 44;   // #908: WCAG AA minimum (was 28)
+        constexpr int kNavW      = 44;   // #908: square touch target for nav arrows
+        constexpr int kFavW      = 44;   // #908: square touch target for favourite star
+        constexpr int kTopMargin = 0;    // anchored to top edge; visual centre is at 22pt
+        constexpr int kLeftMargin = 4;
+        constexpr int kGap       = 0;    // targets are flush — no visual gap needed
 
         presetPrev_.setBounds(kLeftMargin,
                               kTopMargin,
@@ -955,9 +961,9 @@ private:
                              kFavW, kBtnH);
 
         // ── Right cluster: settings | KEYS ────────────────────────────────────
-        constexpr int kSettingsW = 36;
-        constexpr int kKeysW    = 52;
-        constexpr int kRightMargin = 8;
+        constexpr int kSettingsW = 44;   // #908: minimum square tap target
+        constexpr int kKeysW    = 56;    // KEYS label needs slightly more width
+        constexpr int kRightMargin = 4;
 
         settingsButton_.setBounds(getWidth() - kRightMargin - kSettingsW - kGap - kKeysW,
                                   kTopMargin,

@@ -110,6 +110,21 @@ public:
             needsRepaint = true;
         }
 
+        // ── Breathing phase — #932 ─────────────────────────────────────────
+        // Advance 0.5 Hz sine at 10 Hz timer tick: Δphase = 2π × 0.5 / 10
+        if (voiceCount > 0)
+        {
+            breathPhase_ += juce::MathConstants<float>::twoPi * 0.05f;
+            if (breathPhase_ > juce::MathConstants<float>::twoPi)
+                breathPhase_ -= juce::MathConstants<float>::twoPi;
+            needsRepaint = true;
+        }
+        else if (breathPhase_ != 0.0f)
+        {
+            breathPhase_ = 0.0f; // reset when silent — glow disappears cleanly
+            needsRepaint = true;
+        }
+
         // ── Macro values (APVTS, message-thread safe) ──────────────────────────
         // P10 fix: use pre-built cachedMacroIds — no juce::String allocation here.
         if (hasEngine)
@@ -215,6 +230,16 @@ public:
         {
             // Subtle accent wash — gives each engine visual identity
             g.setColour(accent.withAlpha(0.06f));
+            g.fillRoundedRectangle(b, 4.0f);
+        }
+
+        // ── Idle breathing glow — #932 ───────────────────────────────────────
+        // When this engine slot has active voices, pulse a subtle accent glow
+        // at 0.5 Hz (opacity 0.0→0.07) so the tile visually "breathes" with sound.
+        if (hasEngine && voiceCount > 0)
+        {
+            const float breathAlpha = 0.035f + 0.035f * std::sin(breathPhase_);
+            g.setColour(accent.withAlpha(breathAlpha));
             g.fillRoundedRectangle(b, 4.0f);
         }
 
@@ -955,6 +980,9 @@ private:
 
     // P3 fix: tick counter to run coupling check only every 5th tick (2Hz effective)
     int couplingCheckCounter = 0;
+
+    // #932: breathing phase for active-voice glow (0.5 Hz sine, radians)
+    float breathPhase_ = 0.0f;
 
     // P10 fix: pre-built parameter ID strings — avoids 4 allocations/tick/tile
     std::array<juce::String, 4> cachedMacroIds;

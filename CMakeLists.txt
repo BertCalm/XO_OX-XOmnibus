@@ -36,6 +36,7 @@ endif()
 # Build options
 option(XOCEANUS_BUILD_AI  "Build AI sound assistant subsystem" OFF)
 option(XOCEANUS_BUILD_VST3 "Build VST3 format (experimental)" OFF)  # closes #638
+option(XOCEANUS_BUILD_CLAP "Build CLAP format via clap-juce-extensions (macOS/Windows only)" OFF)  # closes #934
 option(XOCEANUS_BUILD_COVERAGE "Build with code coverage instrumentation (gcov/llvm-cov)" OFF)
 
 if(XOCEANUS_BUILD_COVERAGE)
@@ -77,6 +78,26 @@ else()
     else()
         set(XO_FORMATS AU Standalone)
     endif()
+    # CLAP is added alongside existing formats when requested (#934).
+    # clap-juce-extensions uses juce_add_plugin's existing target — no separate plugin target.
+    if(XOCEANUS_BUILD_CLAP)
+        list(APPEND XO_FORMATS CLAP)
+    endif()
+endif()
+
+# CLAP — clap-juce-extensions (MIT licensed — https://github.com/free-audio/clap-juce-extensions)
+# Fetched automatically when XOCEANUS_BUILD_CLAP=ON; no manual submodule step required.
+# clap-juce-extensions patches the existing JUCE plugin target — it does NOT create
+# a separate CMake target like juce_add_plugin does for AU/VST3.
+if(XOCEANUS_BUILD_CLAP AND NOT XO_MOBILE)
+    include(FetchContent)
+    FetchContent_Declare(
+        clap-juce-extensions
+        GIT_REPOSITORY https://github.com/free-audio/clap-juce-extensions.git
+        GIT_TAG        main
+        GIT_SHALLOW    TRUE
+    )
+    FetchContent_MakeAvailable(clap-juce-extensions)
 endif()
 
 # JUCE
@@ -638,6 +659,18 @@ if(XO_MOBILE)
         "-framework CoreHaptics"
         "-framework AVFoundation"
         "-framework SpriteKit"   # ReefBridge.mm — SpriteKit companion layer
+    )
+endif()
+
+# #934: Wire clap-juce-extensions into the plugin target.
+# clap_juce_extensions_plugin() must be called after all target_link_libraries() calls.
+if(XOCEANUS_BUILD_CLAP AND NOT XO_MOBILE)
+    clap_juce_extensions_plugin(
+        TARGET XOceanus
+        CLAP_ID "com.xo-ox.xoceanus"
+        CLAP_FEATURES instrument synthesizer
+        CLAP_SUPPORTS_CUSTOM_FACTORY OFF
+        CLAP_USE_JUCE_PARAMETER_RANGES DISCRETE
     )
 endif()
 

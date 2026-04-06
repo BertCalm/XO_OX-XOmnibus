@@ -100,15 +100,9 @@ public:
         const auto& preset = filtered[static_cast<size_t>(row)];
         using namespace GalleryColors;
 
-        if (selected)
-        {
-            g.fillAll(juce::Colour(0x0BFFFFFF)); // rgba(255,255,255,0.045)
-            // 2px accent left border on selected row
-            g.setColour(juce::Colour(0xFF1E8B7E)); // default accent — overridden per-engine if available
-            g.fillRect(0, 0, 2, h);
-        }
-
-        // Mood accent dot
+        // ── Mood color lookup (#933) ─────────────────────────────────────────
+        // Resolved before selected/background paint so both the left-border and
+        // the mood pip use the same colour without duplicating the lookup.
         static const juce::Colour moodColors[] = {
             juce::Colour(0xFF00A6D6), // Foundation  → OddfeliX/Neon Tetra Blue
             juce::Colour(0xFFE8839B), // Atmosphere  → OddOscar/Axolotl Gill Pink
@@ -139,7 +133,17 @@ public:
                 break;
             }
 
-        // Prototype: 5×5px mood pip
+        if (selected)
+        {
+            g.fillAll(juce::Colour(0x0BFFFFFF)); // rgba(255,255,255,0.045)
+        }
+
+        // #933: 2px mood-colored left border on every row (selected rows are fully
+        // opaque; unselected rows use 0.45 alpha so the list stays readable).
+        g.setColour(dot.withAlpha(selected ? 1.0f : 0.45f));
+        g.fillRect(0, 0, 2, h);
+
+        // Mood pip — 5×5px circle to the right of the left border
         g.setColour(dot.withAlpha(0.7f));
         g.fillEllipse(10.0f, h * 0.5f - 2.5f, 5.0f, 5.0f);
 
