@@ -299,8 +299,8 @@ private:
 
                         // Stereo scatter: random pan
                         float pan = nextRandom(); // 0..1
-                        grains[slot].panL = std::cos(pan * 1.5707963f); // half-power panning
-                        grains[slot].panR = std::sin(pan * 1.5707963f);
+                        grains[slot].panL = fastCos(pan * 1.5707963f); // half-power panning
+                        grains[slot].panR = fastSin(pan * 1.5707963f);
 
                         nextGrainSlot = (slot + 1) % kMaxGrains;
                         break;

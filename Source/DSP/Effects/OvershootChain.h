@@ -316,7 +316,7 @@ private:
         static float gaussianWin(float phase)
         {
             constexpr float kTwoPi = 6.28318530717958647692f;
-            return 0.5f * (1.0f - std::cos(kTwoPi * phase));
+            return 0.5f * (1.0f - fastCos(kTwoPi * phase));
         }
 
         void processStereo(float* L, float* R, int numSamples,
