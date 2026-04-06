@@ -162,9 +162,13 @@ public:
         // P30: cache toUpperCase() result to avoid String alloc in paint().
         cachedEngineName = engineId.toUpperCase();
         // P29: cache header gradient — rebuilt here and in resized(), not in paint().
-        cachedHeaderGrad =
-            juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
-                                 GalleryColors::get(GalleryColors::shellWhite()), (float)getWidth(), 0.0f, false);
+        // #895: guard against zero-size bounds — ColourGradient with width=0 or
+        // height=0 produces a degenerate gradient and causes rendering artefacts.
+        // resized() will rebuild once the component is properly sized.
+        if (getWidth() > 0 && getHeight() > 0)
+            cachedHeaderGrad =
+                juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
+                                     GalleryColors::get(GalleryColors::shellWhite()), (float)getWidth(), 0.0f, false);
 
         // Load macro hero strip — it shows/hides itself based on discovery
         auto prefix = GalleryColors::prefixForEngine(engineId);
@@ -467,9 +471,11 @@ public:
         area.removeFromTop(kHeaderH);
 
         // P29: rebuild header gradient when width changes.
-        cachedHeaderGrad =
-            juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
-                                 GalleryColors::get(GalleryColors::shellWhite()), (float)getWidth(), 0.0f, false);
+        // #895: guard against zero-size bounds — skip if not yet laid out.
+        if (getWidth() > 0 && getHeight() > 0)
+            cachedHeaderGrad =
+                juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
+                                     GalleryColors::get(GalleryColors::shellWhite()), (float)getWidth(), 0.0f, false);
 
         // MacroHeroStrip hidden — macros are in the header row.
         macroHero.setBounds(0, 0, 0, 0);
