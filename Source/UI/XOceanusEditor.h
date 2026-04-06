@@ -829,8 +829,10 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        // S4: Set the active dark mode context for this instance before any paint
-        // logic (or child components) query GalleryColors::darkMode().
+        // #891 / S4: Set the active dark mode context for this instance before any
+        // paint logic (or child components) query GalleryColors::darkMode(). Without
+        // this call, all instances share the last-registered context, so a second
+        // plugin window could render in the wrong theme.
         GalleryColors::setActiveDarkModeContext(this);
 
         using namespace GalleryColors;
