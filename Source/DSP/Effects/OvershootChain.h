@@ -122,7 +122,6 @@ private:
 
         // Simple ADSR (linear)
         float envLevel_ = 0.0f;
-        float adsr_     = 0.0f; // 0=off, 1=attack, 2=sustain, 3=release
         bool  noteOn_   = false;
 
         void prepare(double sampleRate)

@@ -216,14 +216,13 @@ private:
         // thresh: gate threshold [0,1] (maps to signal level 0..0.5)
         // releaseMs: additional hold/release past the sidechain
         void processStereo(float* L, float* R, const float* drySidechain, int numSamples,
-                           float thresh, float releaseMs, double sampleRate)
+                           float thresh, float releaseMs)
         {
             // Map thresh [0,1] → Schmitt thresholds
             const float hi = std::max(0.001f, thresh * 0.5f);
             const float lo = hi * 0.6f;
             schmitt.setThresholds(lo, hi);
             scEnv.setRelease(releaseMs);
-            (void)sampleRate;
 
             for (int i = 0; i < numSamples; ++i)
             {
@@ -406,7 +405,7 @@ inline void OxymoronChain::processBlock(const float* monoIn, float* L, float* R,
     rotary_.processStereo(monoWork_.data(), L, R, numSamples, rotaryFast, rotaryDepth);
 
     // Stage 3 — Noise Gate (sidechained to original dry input)
-    noisGate_.processStereo(L, R, dryBuf_.data(), numSamples, gateThresh, gateRelease, sr_);
+    noisGate_.processStereo(L, R, dryBuf_.data(), numSamples, gateThresh, gateRelease);
 
     // Stage 4 — Shimmer Reverb (expands gate remnants into crystalline choir)
     shimmer_.processStereo(L, R, numSamples, shimmerDecay, shimmerPitch, shimmerMix * 0.01f);
