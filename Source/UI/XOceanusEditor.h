@@ -370,12 +370,10 @@ public:
         // P0-4: Settings gear button — far-right header
         addAndMakeVisible(settingsBtn);
         settingsBtn.setButtonText(juce::String(juce::CharPointer_UTF8("\xe2\x9a\x99")));
-        settingsBtn.setTooltip("Settings");
-        A11y::setup(settingsBtn, "Settings", "Open settings panel");
-        settingsBtn.setColour(juce::TextButton::textColourOffId, juce::Colour(GalleryColors::t3()));
-        settingsBtn.setColour(juce::TextButton::textColourOnId, juce::Colour(GalleryColors::t1()));
-        // TODO(#979): wire settings to OceanView settings panel once implemented.
-        settingsBtn.onClick = nullptr;
+        // Settings button is hidden when OceanView is active; disable it so it cannot
+        // accidentally fire if visibility is toggled before OceanView settings are wired.
+        settingsBtn.setEnabled(false);
+        settingsBtn.setTooltip("Settings (coming in Ocean View)");
 
         // Export button — launches ExportDialog as a CallOutBox
         addAndMakeVisible(exportBtn);
@@ -1363,10 +1361,10 @@ private:
 
             const float activity        = processor.getNoteActivity();
             const bool  hasNoteActivity = activity > 0.01f;
-            // SidebarPanel removed — OceanView does not expose a coupling tab state.
-            // RegisterManager will treat coupling as inactive until OceanView exposes
-            // its own coupling inspector visibility (tracked in issue #979 follow-up).
-            const bool  couplingVisible = false;
+            // SidebarPanel removed — query OceanView coupling inspector state instead.
+            // Currently returns false until CouplingSubstrate interactions are implemented
+            // (#979 follow-up adds isCouplingInspectorVisible() to OceanView).
+            const bool  couplingVisible = oceanView_.isCouplingInspectorVisible();
 
             registerMgr_.update(hasNoteActivity, couplingVisible, dtMs);
 

@@ -563,6 +563,11 @@ public:
     ViewState getViewState()    const noexcept { return viewState_; }
     int       getSelectedSlot() const noexcept { return selectedSlot_; }
 
+    /** Returns true when the coupling inspector UI is visible.
+        Currently always false — OceanView's coupling inspector will be exposed
+        once CouplingSubstrate contextual interactions are implemented (#979 follow-up). */
+    bool isCouplingInspectorVisible() const noexcept { return false; }
+
 private:
     //==========================================================================
     // juce::Timer — 10 Hz state polling
