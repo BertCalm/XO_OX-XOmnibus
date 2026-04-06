@@ -19,7 +19,6 @@
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
-#include "ColumnLayoutManager.h"
 
 namespace xoceanus
 {

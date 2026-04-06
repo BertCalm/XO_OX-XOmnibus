@@ -18,7 +18,6 @@
 //     NexusDisplay      — centre DNA + preset identity
 //     MacroSection      — 4 macro knobs (unique_ptr, needs APVTS)
 //     EngineDetailPanel — detail panel (unique_ptr, needs Processor)
-//     SidebarPanel      — settings/export/FX sidebar (unique_ptr)
 //     AmbientEdge       — vignette + edge glow overlay
 //     DnaMapBrowser     — full-window scatter map (BrowserOpen state)
 //     PlaySurfaceOverlay— slide-up keyboard/pads (on-demand)
@@ -34,10 +33,10 @@
 //
 // Deferred init
 // ─────────────
-//   MacroSection, EngineDetailPanel, SidebarPanel, and StatusBar all require
+//   MacroSection, EngineDetailPanel, and StatusBar all require
 //   references to the processor or APVTS at construction time.  OceanView
 //   holds them as unique_ptrs and exposes initMacros(), initDetailPanel(),
-//   initSidebar(), and initStatusBar() for the editor to call immediately
+//   and initStatusBar() for the editor to call immediately
 //   after construction before the component is made visible.
 
 #include <juce_gui_basics/juce_gui_basics.h>
@@ -51,7 +50,6 @@
 #include "PlaySurfaceOverlay.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
-#include "../Gallery/SidebarPanel.h"
 #include "../Gallery/StatusBar.h"
 
 #ifndef _USE_MATH_DEFINES
@@ -132,10 +130,7 @@ public:
         // 7. Detail panel placeholder until initDetailPanel()
         // detail_ is a unique_ptr — added in initDetailPanel()
 
-        // 8. Sidebar placeholder until initSidebar()
-        // sidebar_ is a unique_ptr — added in initSidebar()
-
-        // 9. DNA map browser (hidden by default)
+        // 8. DNA map browser (hidden by default)
         addAndMakeVisible(browser_);
         browser_.setVisible(false);
 
@@ -239,7 +234,6 @@ public:
         macros_->toFront(false);
         ambientEdge_.toFront(false);
         if (detail_)   detail_->toFront(false);
-        if (sidebar_)  sidebar_->toFront(false);
         browser_.toFront(false);
         playSurfaceOverlay_.toFront(false);
         presetPrev_.toFront(false);
@@ -263,28 +257,6 @@ public:
         detail_->setVisible(false);
 
         // Push to correct z position.
-        browser_.toFront(false);
-        playSurfaceOverlay_.toFront(false);
-        presetPrev_.toFront(false);
-        presetNext_.toFront(false);
-        favButton_.toFront(false);
-        settingsButton_.toFront(false);
-        keysButton_.toFront(false);
-        if (statusBar_) statusBar_->toFront(false);
-
-        resized();
-    }
-
-    /**
-        Initialise the SidebarPanel.
-        Must be called before the component becomes visible.
-    */
-    void initSidebar()
-    {
-        sidebar_ = std::make_unique<SidebarPanel>();
-        addAndMakeVisible(*sidebar_);
-        sidebar_->setVisible(false);
-
         browser_.toFront(false);
         playSurfaceOverlay_.toFront(false);
         presetPrev_.toFront(false);
@@ -559,7 +531,6 @@ public:
 
     MacroSection*      getMacroSection()  noexcept { return macros_.get(); }
     EngineDetailPanel* getDetailPanel()   noexcept { return detail_.get(); }
-    SidebarPanel*      getSidebar()       noexcept { return sidebar_.get(); }
     StatusBar*         getStatusBar()     noexcept { return statusBar_.get(); }
 
     juce::TextButton& presetPrevButton()   noexcept { return presetPrev_; }
@@ -759,7 +730,6 @@ private:
 
         // Hide panels that belong to other states.
         if (detail_)  { detail_->setVisible(false); }
-        if (sidebar_) { sidebar_->setVisible(false); }
         browser_.setVisible(false);
     }
 
@@ -847,7 +817,6 @@ private:
         }
 
         if (detail_)  { detail_->setVisible(false); }
-        if (sidebar_) { sidebar_->setVisible(false); }
         browser_.setVisible(false);
     }
 
@@ -911,7 +880,6 @@ private:
             detail_->loadSlot(selectedSlot_);
         }
 
-        if (sidebar_) sidebar_->setVisible(false);
         browser_.setVisible(false);
     }
 
@@ -934,7 +902,6 @@ private:
         nexus_.setVisible(false);
         if (macros_)  macros_->setVisible(false);
         if (detail_)  detail_->setVisible(false);
-        if (sidebar_) sidebar_->setVisible(false);
     }
 
     //==========================================================================
@@ -1030,7 +997,6 @@ private:
     // Deferred-init components (require external references at construction time).
     std::unique_ptr<MacroSection>      macros_;
     std::unique_ptr<EngineDetailPanel> detail_;
-    std::unique_ptr<SidebarPanel>      sidebar_;
     std::unique_ptr<StatusBar>         statusBar_;
 
     // Overlay components.
