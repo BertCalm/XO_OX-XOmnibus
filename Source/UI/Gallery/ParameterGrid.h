@@ -244,6 +244,61 @@ public:
         }
     }
 
+    // ── Modulation arc API (#903) ────────────────────────────────────────────
+    //
+    // setModulationForKeywords — walk all live knobs and call setModulation on
+    // any whose param ID contains one of the given keywords.  Called from
+    // EngineDetailPanel::timerCallback() when coupling routes are active.
+    //
+    //   keywords  — comma-separated lowercase substrings to match against the
+    //               param ID inner name (e.g. "filter,cutoff,flt").
+    //   amount    — bipolar depth (-1..1) as a fraction of the knob arc sweep.
+    //   colour    — coupling-type colour from CouplingTypeColors::forType().
+    //
+    // Any live knob whose param ID does NOT match any keyword will have its
+    // modulation arc cleared (set to 0) so arcs don't linger after routes are
+    // removed.  Knobs not yet created (outside the viewport) are unaffected
+    // (they will be initialised without modulation when scrolled into view).
+    void setModulationForKeywords(const juce::String& keywords,
+                                  float amount,
+                                  juce::Colour colour)
+    {
+        for (int i = 0; i < (int)paramSlots.size(); ++i)
+        {
+            auto& lk = liveKnobs[i];
+            if (!lk || !lk->knob)
+                continue;
+
+            const juce::String pidLow = paramSlots[i].pid.toLowerCase();
+            bool matches = false;
+
+            juce::StringArray kws;
+            kws.addTokens(keywords, ",", "");
+            for (auto& kw : kws)
+            {
+                if (pidLow.contains(kw.trim().toLowerCase()))
+                {
+                    matches = true;
+                    break;
+                }
+            }
+
+            if (matches)
+                lk->knob->setModulation(amount, colour);
+            else
+                lk->knob->clearModulation();
+        }
+    }
+
+    // Clear all modulation arcs — call when the detail panel is hidden or
+    // when the engine changes to prevent stale arcs on newly-loaded params.
+    void clearAllModulationArcs()
+    {
+        for (auto& lk : liveKnobs)
+            if (lk && lk->knob)
+                lk->knob->clearModulation();
+    }
+
     // ── Height calculation — accounts for per-section header rows ───────────
     // Collapsed sections contribute only kHeaderRowH (no knob rows).
     int getRequiredHeight(int availableWidth) const

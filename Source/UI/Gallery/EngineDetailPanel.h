@@ -4,6 +4,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
+#include "../CouplingColors.h"
 #include "MacroHeroStrip.h"
 #include "ParameterGrid.h"
 #include "MidiLearnMouseListener.h"
@@ -151,6 +152,8 @@ public:
         auto* eng = processor.getEngine(slot);
         if (!eng)
             return false;
+
+        activeSlot_ = slot; // #903: persist slot for coupling route polling
 
         // W11: Track whether the engine actually changed so we only reset scroll
         // position on a genuine engine switch (not on parameter-only refreshes).
@@ -421,13 +424,18 @@ public:
     // cached in loadSlot() — safe to read atomically on the message thread.
     void timerCallback() override
     {
-        if (adsrAttack == nullptr)
-            return;
-        const float a = adsrAttack->load();
-        const float d = adsrDecay  != nullptr ? adsrDecay->load()   : 0.3f;
-        const float s = adsrSustain != nullptr ? adsrSustain->load() : 0.7f;
-        const float r = adsrRelease != nullptr ? adsrRelease->load() : 0.4f;
-        adsrDisplay.setValues(a, d, s, r);
+        if (adsrAttack != nullptr)
+        {
+            const float a = adsrAttack->load();
+            const float d = adsrDecay  != nullptr ? adsrDecay->load()   : 0.3f;
+            const float s = adsrSustain != nullptr ? adsrSustain->load() : 0.7f;
+            const float r = adsrRelease != nullptr ? adsrRelease->load() : 0.4f;
+            adsrDisplay.setValues(a, d, s, r);
+        }
+
+        // #903: Refresh modulation arcs on parameter knobs based on active
+        // coupling routes whose destination is this engine's slot.
+        refreshModulationArcs();
     }
 
     void paint(juce::Graphics& g) override
@@ -553,6 +561,99 @@ private:
     static constexpr int kHeaderH = 38;
     static constexpr int kHeroH = 88; // height of the macro hero strip
 
+    // #903: Map a CouplingType to parameter keyword patterns so the modulation
+    // arc refresh can find the right knobs in the ParameterGrid without knowing
+    // engine-specific parameter names.  Returns a comma-separated keyword list;
+    // an empty string means "no specific param target — skip".
+    static juce::String keywordsForCouplingType(CouplingType type)
+    {
+        switch (type)
+        {
+        case CouplingType::AmpToFilter:
+        case CouplingType::FilterToFilter:
+            return "filter,cutoff,flt,resonance,freq";
+        case CouplingType::AmpToPitch:
+        case CouplingType::LFOToPitch:
+        case CouplingType::PitchToPitch:
+            return "pitch,tune,detune,semi,coarse,fine,glide";
+        case CouplingType::EnvToMorph:
+        case CouplingType::RhythmToBlend:
+            return "morph,blend,mix,warp,shape";
+        case CouplingType::AudioToFM:
+            return "fm,fmratio,modindex,fmamt";
+        case CouplingType::AudioToRing:
+            return "ring,ringmod";
+        case CouplingType::EnvToDecay:
+            return "decay,release,sustain,env,adsr";
+        case CouplingType::AudioToWavetable:
+            return "wave,wt,table,wtpos,position,scan";
+        case CouplingType::KnotTopology:
+        case CouplingType::TriangularCoupling:
+            return "macro,character,movement,coupling,space";
+        default:
+            return {}; // AmpToChoke, AudioToBuffer — no single param target
+        }
+    }
+
+    // Poll active coupling routes for this slot and update modulation arcs
+    // on all live ParameterGrid knobs that match the route's target type.
+    void refreshModulationArcs()
+    {
+        if (activeSlot_ < 0)
+            return;
+
+        auto* viewed = viewport.getViewedComponent();
+        auto* grid = dynamic_cast<ParameterGrid*>(viewed);
+        if (!grid)
+            return;
+
+        // Collect the set of incoming coupling routes for activeSlot_ from
+        // the coupling matrix (message-thread safe — getRoutes() reads the
+        // atomic-swap double-buffer and returns a snapshot copy).
+        auto routes = processor.getCouplingMatrix().getRoutes();
+
+        // For each CouplingType, accumulate the strongest incoming amount.
+        // Multiple routes of the same type (from different sources) are combined
+        // by taking the max absolute value so the arc reflects the dominant source.
+        juce::HashMap<int, float> typeToAmount;    // CouplingType → max |amount|
+        juce::HashMap<int, juce::Colour> typeToColour;
+
+        for (const auto& route : routes)
+        {
+            if (!route.active || route.destSlot != activeSlot_)
+                continue;
+            int typeKey = static_cast<int>(route.type);
+            float existing = typeToAmount.contains(typeKey) ? typeToAmount[typeKey] : 0.0f;
+            if (std::abs(route.amount) > std::abs(existing))
+            {
+                typeToAmount.set(typeKey, route.amount);
+                typeToColour.set(typeKey, CouplingTypeColors::forType(route.type));
+            }
+        }
+
+        if (typeToAmount.size() == 0)
+        {
+            // No active routes → clear all arcs
+            grid->clearAllModulationArcs();
+            return;
+        }
+
+        // Apply the strongest route of each type to matching knobs.
+        // If a knob matches multiple types, the last one wins (acceptable — rare).
+        // First clear so removed routes don't leave stale arcs.
+        grid->clearAllModulationArcs();
+        for (juce::HashMap<int, float>::Iterator it(typeToAmount); it.next();)
+        {
+            auto ctype = static_cast<CouplingType>(it.getKey());
+            auto kws   = keywordsForCouplingType(ctype);
+            if (kws.isEmpty())
+                continue;
+            grid->setModulationForKeywords(kws,
+                                            it.getValue(),
+                                            typeToColour[it.getKey()].withAlpha(0.40f));
+        }
+    }
+
     XOceanusProcessor& processor;
     MacroHeroStrip macroHero;
     WaveformDisplay waveformDisplay;
@@ -577,6 +678,9 @@ private:
     juce::Rectangle<int> oscLabelBounds;
     // Bounds for the "ENVELOPE" label painted above the ADSR display.
     juce::Rectangle<int> envLabelBounds;
+
+    // #903: Active slot index — set in loadSlot(), used by refreshModulationArcs().
+    int activeSlot_ = -1;
 
     // S5: Raw pointers to the active engine's ADSR parameters.
     // Cached in loadSlot() and read by timerCallback() at 30Hz.
