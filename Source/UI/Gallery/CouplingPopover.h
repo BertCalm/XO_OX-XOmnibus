@@ -150,7 +150,7 @@ public:
         // Source→Target label — #714: show engine name, not "S1" slot number.
         juce::String srcLabel = slotDisplayName(sourceBox.getSelectedId() - 1);
         juce::String dstLabel = slotDisplayName(targetBox.getSelectedId() - 1);
-        g.setFont(GalleryFonts::label(9.0f));
+        g.setFont(GalleryFonts::label(10.0f)); // (#885: 9pt→10pt legibility floor)
         g.setColour(accentCol);
         g.drawText(srcLabel + " \xe2\x86\x92 " + dstLabel, // UTF-8 right arrow →
                    110, (int)headerBounds.getY(), 100, (int)headerBounds.getHeight(),
@@ -175,12 +175,12 @@ public:
         g.fillEllipse(tickX - 2.0f, tickY - 2.0f, 4.0f, 4.0f);
 
         // Amount label above the knob
-        g.setFont(GalleryFonts::label(8.0f));
+        g.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.setColour(get(textMid()));
         g.drawText("AMOUNT", amountKnob.getX() - 12, amountKnob.getY() - 12, 72, 12, juce::Justification::centred);
 
         // Source/Target row labels (left-justified, vertically centred in their rows)
-        g.setFont(GalleryFonts::label(8.0f));
+        g.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.setColour(get(textMid()));
         g.drawText("SOURCE", 8, sourceBox.getY(), 44, sourceBox.getHeight(), juce::Justification::centredLeft);
         g.drawText("TARGET", 8, targetBox.getY(), 44, targetBox.getHeight(), juce::Justification::centredLeft);

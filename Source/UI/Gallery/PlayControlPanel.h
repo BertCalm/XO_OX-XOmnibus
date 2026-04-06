@@ -379,7 +379,7 @@ private:
         auto bf = bounds.toFloat();
 
         // Section label
-        g.setFont(GalleryFonts::label(8.0f));
+        g.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.setColour(get(textMid()));
         g.drawText("EXPRESSION", bf.withHeight(12.0f), juce::Justification::centred, false);
 
@@ -435,7 +435,7 @@ private:
         }
 
         // Label below strip
-        g.setFont(GalleryFonts::label(8.0f));
+        g.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.setColour(get(textMid()));
         g.drawText(label, juce::Rectangle<float>(x - 8.0f, y + h + 4.0f, w + 16.0f, 10.0f),
                    juce::Justification::centred, false);
@@ -485,7 +485,7 @@ private:
         g.fillRoundedRectangle(x + 2.0f, handleY - 2.0f, w - 4.0f, 4.0f, 2.0f);
 
         // Label below
-        g.setFont(GalleryFonts::label(8.0f));
+        g.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.setColour(get(textMid()));
         g.drawText(label, juce::Rectangle<float>(x - 8.0f, y + h + 4.0f, w + 16.0f, 10.0f),
                    juce::Justification::centred, false);
@@ -499,7 +499,7 @@ private:
         auto bf = bounds.toFloat();
 
         // Section label
-        g.setFont(GalleryFonts::label(8.0f));
+        g.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.setColour(get(textMid()));
         g.drawText("MACROS", bf.withHeight(10.0f), juce::Justification::centred, false);
 
@@ -514,7 +514,7 @@ private:
             juce::Colour col = macroColors[i];
 
             // Label
-            g.setFont(GalleryFonts::label(8.0f));
+            g.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
             g.setColour(col);
             g.drawText(macroLabels[i], juce::Rectangle<float>(bf.getX() + 4.0f, rowY, labelW - 4.0f, (float)kMacroBarH),
                        juce::Justification::centredRight, false);
@@ -587,7 +587,7 @@ private:
         // "XY" unassigned watermark
         if (xyXParam == nullptr && xyYParam == nullptr)
         {
-            g.setFont(GalleryFonts::label(9.0f));
+            g.setFont(GalleryFonts::label(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.setColour(get(textMid()).withAlpha(0.35f));
             g.drawText("XY", bf, juce::Justification::centred, false);
         }
@@ -634,7 +634,7 @@ private:
 
             juce::Colour textCol = isActive ? juce::Colours::white : accent.withAlpha(0.55f);
 
-            g.setFont(GalleryFonts::label(juce::jmax(8.0f, pillH * 0.34f)));
+            g.setFont(GalleryFonts::label(juce::jmax(10.0f, pillH * 0.34f))); // (#885: 8pt floor→10pt)
             g.setColour(textCol);
             {
                 auto displayScale = GalleryUtils::ellipsizeText(g.getCurrentFont(), scaleNames[i], pill.getWidth() - 4.0f);

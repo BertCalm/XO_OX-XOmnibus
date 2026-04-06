@@ -76,7 +76,7 @@ public:
         g.setColour(GalleryColors::get(GalleryColors::xoGold));
         g.fillRect(headerArea);
         g.setColour(juce::Colour(GalleryColors::get(GalleryColors::textDark())));
-        g.setFont(GalleryFonts::heading(9.0f));
+        g.setFont(GalleryFonts::heading(10.0f)); // (#885: 9pt→10pt legibility floor)
         g.drawText("OUTSHINE", headerArea.reduced(8, 0), juce::Justification::centredLeft);
 
         // Drop zone

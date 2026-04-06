@@ -415,7 +415,7 @@ private:
             g.drawEllipse(centre.x - kNodeRadius, centre.y - kNodeRadius, kNodeRadius * 2, kNodeRadius * 2, ringWidth);
 
             // --- Slot label ---
-            g.setFont(GalleryFonts::heading(hasEng ? 9.0f : 8.0f));
+            g.setFont(GalleryFonts::heading(10.0f)); // (#885: 8/9pt→10pt legibility floor)
             if (hasEng)
             {
                 g.setColour(juce::Colour(GalleryColors::textDark()));
@@ -615,7 +615,7 @@ private:
 
             // Short label
             g.setColour(juce::Colour(GalleryColors::textDark()));
-            g.setFont(GalleryFonts::heading(8.0f));
+            g.setFont(GalleryFonts::heading(10.0f)); // (#885: 8pt→10pt legibility floor)
             g.drawText(CouplingTypeColors::shortLabel(route.type), (int)(midX + 6), (int)(midY - 5), 38, 10,
                        juce::Justification::left);
         }
@@ -725,7 +725,7 @@ private:
             g.fillEllipse(x, cy - 4.0f, 8.0f, 8.0f);
 
             g.setColour(juce::Colour(GalleryColors::textMid()));
-            g.setFont(GalleryFonts::body(8.0f));
+            g.setFont(GalleryFonts::body(10.0f)); // (#885: 8pt→10pt legibility floor)
             juce::String label = CouplingTypeColors::shortLabel(type) + " (" + juce::String(count) + ")";
             g.drawText(label, (int)(x + 11), (int)(cy - 5), 60, 10, juce::Justification::left);
 

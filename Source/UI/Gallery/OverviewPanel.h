@@ -206,7 +206,7 @@ public:
         if (cachedTagline.isNotEmpty())
         {
             g.setColour(get(textMid()));
-            g.setFont(GalleryFonts::body(9.0f));
+            g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.drawFittedText(cachedTagline, juce::Rectangle<int>(12, (int)(portraitH * 0.74f), (int)w - 20, 28),
                              juce::Justification::centredTop, 2);
         }
@@ -231,7 +231,7 @@ public:
             g.fillRoundedRectangle(pill, 12.0f);
             g.setColour(active[i].second);
             g.drawRoundedRectangle(pill, 12.0f, 1.5f);
-            g.setFont(GalleryFonts::heading(9.5f));
+            g.setFont(GalleryFonts::heading(10.0f)); // (#885: 9.5pt→10pt legibility floor)
             g.drawFittedText(active[i].first.toUpperCase(), pill.toNearestInt(), juce::Justification::centred, 1);
 
             if (i < (int)active.size() - 1)
@@ -373,7 +373,7 @@ public:
             // Route count summary line below the diagram
             float summaryY = nodeArea.getBottom() + 6.0f;
             g.setColour(get(textMid()).withAlpha(0.70f));
-            g.setFont(GalleryFonts::body(9.0f));
+            g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
             juce::String summaryText = numActive > 0
                                            ? juce::String(numActive) + " active route" + (numActive > 1 ? "s" : "")
                                            : "No active coupling routes";

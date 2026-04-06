@@ -268,7 +268,7 @@ public:
         if (isLoading)
         {
             g.setColour(get(xoGold).withAlpha(0.5f));
-            g.setFont(GalleryFonts::body(9.0f));
+            g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.drawText("LOADING...", b.toNearestInt(), juce::Justification::centred);
             if (hasKeyboardFocus(true))
                 A11y::drawFocusRing(g, b, 8.0f);
@@ -362,8 +362,10 @@ public:
                 float nameW = content.getWidth() - (nameX - content.getX()) - pwrW - 3.0f;
                 g.setFont(GalleryFonts::engineName(14.0f));
                 g.setColour(GalleryColors::ensureMinContrast(accent));
-                g.drawText(engineId.toUpperCase(), (int)nameX, (int)rowY, (int)nameW, (int)rowH,
-                           juce::Justification::centredLeft, true);
+                // (#884: use ellipsizeText so long names show "..." instead of clipping silently)
+                auto displayEngineId = GalleryUtils::ellipsizeText(g.getCurrentFont(), engineId.toUpperCase(), nameW);
+                g.drawText(displayEngineId, (int)nameX, (int)rowY, (int)nameW, (int)rowH,
+                           juce::Justification::centredLeft, false);
 
                 // Power button — 16×16 circle, right edge of content
                 // Active (unmuted): border + text in accent color
@@ -374,7 +376,7 @@ public:
                     juce::Colour pwrColor = isMuted ? GalleryColors::get(GalleryColors::t3()) : GalleryColors::ensureMinContrast(accent);
                     g.setColour(pwrColor);
                     g.drawEllipse(pwrX, pwrY, pwrW, pwrH, 1.0f);
-                    g.setFont(GalleryFonts::value(8.0f));
+                    g.setFont(GalleryFonts::value(10.0f)); // (#885: 8pt→10pt legibility floor)
                     g.drawText(isMuted ? "o" : "I", (int)pwrX, (int)pwrY, (int)pwrW, (int)pwrH,
                                juce::Justification::centred);
                 }
@@ -437,8 +439,8 @@ public:
                     g.strokePath(fillArc, juce::PathStrokeType(2.5f, juce::PathStrokeType::curved,
                                                                juce::PathStrokeType::rounded));
 
-                    // Label below arc (8px mono, T2 — lighter for legibility)
-                    g.setFont(GalleryFonts::value(8.0f));
+                    // Label below arc (10pt mono, T2 — legibility floor #885)
+                    g.setFont(GalleryFonts::value(10.0f));
                     g.setColour(GalleryColors::get(GalleryColors::t2()));
                     g.drawText(kLabels[k], (int)(kx - 2.0f), (int)(knobY + arcDiam + 1.0f), (int)(arcDiam + 4.0f),
                                (int)knobLblH, juce::Justification::centred);

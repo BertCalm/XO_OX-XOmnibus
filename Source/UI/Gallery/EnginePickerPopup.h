@@ -31,7 +31,7 @@ struct PillButtonLookAndFeel : public juce::LookAndFeel_V4
 {
     void drawButtonText(juce::Graphics& g, juce::TextButton& btn, bool /*isMouseOver*/, bool /*isButtonDown*/) override
     {
-        g.setFont(GalleryFonts::label(8.0f));
+        g.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.setColour(btn.findColour(btn.getToggleState() ? juce::TextButton::textColourOnId
                                                         : juce::TextButton::textColourOffId));
         g.drawFittedText(btn.getButtonText(), btn.getLocalBounds().reduced(1, 0), juce::Justification::centred, 1,
@@ -125,7 +125,7 @@ public:
         addChildComponent(emptyLabel); // hidden by default
 
         // ── Count label ───────────────────────────────────────────────────────
-        countLabel.setFont(GalleryFonts::label(8.5f));
+        countLabel.setFont(GalleryFonts::label(10.0f)); // (#885: 8.5pt→10pt legibility floor)
         countLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
         countLabel.setJustificationType(juce::Justification::centredRight);
         addAndMakeVisible(countLabel);
@@ -188,7 +188,7 @@ public:
             g.fillRect(0, 0, 3, h);
 
             // Header label — uppercase, T3 tonal color with zone hue blended in
-            g.setFont(GalleryFonts::label(8.0f));
+            g.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
             g.setColour(get(t3()).interpolatedWith(fr.headerColor, 0.35f));
             {
                 auto displayLabel = GalleryUtils::ellipsizeText(g.getCurrentFont(), fr.headerLabel.toUpperCase(), (float)(w - 14));
@@ -229,14 +229,14 @@ public:
         // Archetype subtitle — below engine name, muted T3 color
         if (!fr.archetype.isEmpty())
         {
-            g.setFont(GalleryFonts::body(8.0f));
+            g.setFont(GalleryFonts::body(10.0f)); // (#885: 8pt→10pt legibility floor)
             g.setColour(get(t3()).withAlpha(0.70f));
             auto displayArchetype = GalleryUtils::ellipsizeText(g.getCurrentFont(), fr.archetype, (float)(w - 74));
             g.drawText(displayArchetype, 24, nameY + nameH, w - 74, 11, juce::Justification::centredLeft, false);
         }
 
         // Category badge — right side, T4 muted mono (vertically centred in name row)
-        g.setFont(GalleryFonts::value(8.0f));
+        g.setFont(GalleryFonts::value(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.setColour(get(t4()));
         {
             auto displayCategory = GalleryUtils::ellipsizeText(g.getCurrentFont(), fr.category, 62.0f);

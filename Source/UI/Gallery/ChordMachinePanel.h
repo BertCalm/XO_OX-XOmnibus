@@ -237,7 +237,7 @@ public:
             if (stepData.rootNote >= 0)
             {
                 g.setColour(get(textMid()));
-                g.setFont(GalleryFonts::label(8.0f));
+                g.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
                 g.drawText(ChordMachine::midiNoteToName(stepData.rootNote),
                            stepR.withY(stepR.getBottom() - 14).withHeight(14), juce::Justification::centred);
             }
@@ -252,14 +252,14 @@ public:
         {
             auto labelR = knobArea.withX(knobArea.getX() + i * (knobW + 8)).withWidth(knobW).removeFromTop(14);
             g.setColour(get(textMid()));
-            g.setFont(GalleryFonts::body(9.0f));
+            g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.drawText(knobLabels[i], labelR, juce::Justification::centred);
         }
 
         // Spread label (dynamic)
         float curSpread = cm.getSpread();
         g.setColour(get(xoGold));
-        g.setFont(GalleryFonts::heading(8.0f));
+        g.setFont(GalleryFonts::heading(10.0f)); // (#885: 8pt→10pt legibility floor)
         auto spreadLabelR = knobArea.withWidth(knobW).removeFromBottom(12);
         g.drawText(ChordMachine::spreadLabel(curSpread), spreadLabelR, juce::Justification::centred);
     }

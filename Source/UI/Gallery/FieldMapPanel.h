@@ -163,7 +163,7 @@ public:
         g.drawVerticalLine(static_cast<int>(cursorX), b.getY(), b.getBottom());
 
         // ── Label ────────────────────────────────────────────────────────────
-        g.setFont(GalleryFonts::body(8.0f));
+        g.setFont(GalleryFonts::body(10.0f)); // (#885: 8pt→10pt legibility floor)
         // #393: theme-aware label — dark mode: white at 20% alpha; light mode: dark text at 35%.
         g.setColour(GalleryColors::darkMode() ? juce::Colours::white.withAlpha(0.20f)
                                               : juce::Colour(GalleryColors::textMid()).withAlpha(0.35f));

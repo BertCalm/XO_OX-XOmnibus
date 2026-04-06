@@ -96,7 +96,7 @@ public:
         g.drawLine(12, (float)sectionY, (float)getWidth() - 12, (float)sectionY, 1.0f);
 
         // Section labels
-        g.setFont(GalleryFonts::heading(9.0f));
+        g.setFont(GalleryFonts::heading(10.0f)); // (#885: 9pt→10pt legibility floor)
         g.setColour(GalleryColors::get(GalleryColors::textMid()));
         g.drawText("PRESETS", 12, kHeaderH + 4, 200, 16, juce::Justification::topLeft);
 
@@ -125,7 +125,7 @@ public:
             estArea.removeFromTop(kHeaderH + kPresetSectionH + kPreviewSectionH + kSettingsSectionH +
                                   kEntangledSectionH + kBundleSectionH + 4);
             estArea = estArea.removeFromTop(20);
-            g.setFont(GalleryFonts::label(8.5f));
+            g.setFont(GalleryFonts::label(10.0f)); // (#885: 8.5pt→10pt legibility floor)
             g.setColour(GalleryColors::get(GalleryColors::textMid()));
             g.drawText(sizeEstimateText, estArea, juce::Justification::centredLeft);
         }
@@ -537,7 +537,7 @@ private:
         {
             // Pulsing dots animation
             g.setColour(GalleryColors::get(GalleryColors::xoGold));
-            g.setFont(GalleryFonts::label(9.0f));
+            g.setFont(GalleryFonts::label(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.drawText("Rendering preview...", area, juce::Justification::centred);
         }
         else if (dripState == XDrip::State::Ready && !cachedThumbnail.empty())
@@ -577,14 +577,14 @@ private:
         else if (dripState == XDrip::State::Error)
         {
             g.setColour(GalleryColors::get(GalleryColors::textMid()));
-            g.setFont(GalleryFonts::label(8.5f));
+            g.setFont(GalleryFonts::label(10.0f)); // (#885: 8.5pt→10pt legibility floor)
             g.drawText("Preview failed", area, juce::Justification::centred);
         }
         else
         {
             // Idle — show hint
             g.setColour(GalleryColors::get(GalleryColors::textMid()).withAlpha(0.5f));
-            g.setFont(GalleryFonts::label(8.5f));
+            g.setFont(GalleryFonts::label(10.0f)); // (#885: 8.5pt→10pt legibility floor)
             g.drawText("Click > to preview selected preset", area, juce::Justification::centred);
         }
     }
@@ -691,7 +691,7 @@ private:
             repaint();
         };
 
-        entangledSummaryLabel.setFont(GalleryFonts::label(8.0f));
+        entangledSummaryLabel.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
         entangledSummaryLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         entangledSummaryLabel.setMinimumHorizontalScale(0.4f);
         A11y::setup(entangledSummaryLabel, "Coupling Summary",
@@ -723,7 +723,7 @@ private:
         // Output directory
         auto updateOutputLabel = [this]
         { outputDirLabel.setText(outputDir.getFullPathName(), juce::dontSendNotification); };
-        outputDirLabel.setFont(GalleryFonts::label(8.0f));
+        outputDirLabel.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
         outputDirLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         outputDirLabel.setMinimumHorizontalScale(0.5f);
         A11y::setup(outputDirLabel, "Output Directory", "Folder where exported XPN files will be saved");
@@ -762,7 +762,7 @@ private:
         progressBar.setColour(juce::ProgressBar::foregroundColourId, GalleryColors::get(GalleryColors::xoGold));
         addAndMakeVisible(progressBar);
 
-        progressLabel.setFont(GalleryFonts::label(8.0f));
+        progressLabel.setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
         progressLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         A11y::setup(progressLabel, "Export Progress", "Current export progress status");
         addAndMakeVisible(progressLabel);

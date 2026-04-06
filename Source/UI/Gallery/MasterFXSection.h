@@ -47,7 +47,7 @@ public:
             enableKnobReset(knobs[i], apvts, defs[i].id);
 
             lbls[i].setText(defs[i].label, juce::dontSendNotification);
-            lbls[i].setFont(GalleryFonts::heading(8.0f));
+            lbls[i].setFont(GalleryFonts::heading(10.0f)); // (#885: 8pt→10pt legibility floor)
             lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
@@ -58,7 +58,7 @@ public:
         for (int i = 0; i < kNumSections; ++i)
         {
             sectionHdrs[i].setText(sectionNames[i], juce::dontSendNotification);
-            sectionHdrs[i].setFont(GalleryFonts::label(8.0f));
+            sectionHdrs[i].setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
             sectionHdrs[i].setColour(juce::Label::textColourId,
                                      GalleryColors::get(GalleryColors::textMid()).withAlpha(0.50f));
             sectionHdrs[i].setJustificationType(juce::Justification::centred);

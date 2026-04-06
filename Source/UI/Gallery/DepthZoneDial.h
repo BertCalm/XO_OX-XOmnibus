@@ -209,7 +209,7 @@ public:
             return lum > 0.50f ? juce::Colours::black.withAlpha(0.75f) : juce::Colours::white.withAlpha(0.92f);
         }();
 
-        g.setFont(GalleryFonts::display(9.0f));
+        g.setFont(GalleryFonts::display(10.0f)); // (#885: 9pt→10pt legibility floor)
         g.setColour(labelColor);
         g.drawText(label, (int)(cx - inner), (int)(cy - inner), (int)(inner * 2.0f), (int)(inner * 2.0f),
                    juce::Justification::centred, true);

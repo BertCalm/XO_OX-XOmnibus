@@ -339,7 +339,7 @@ public:
             auto textColour =
                 btn.findColour(toggled ? juce::TextButton::textColourOnId : juce::TextButton::textColourOffId);
             g.setColour(textColour);
-            g.setFont(GalleryFonts::body(9.0f));
+            g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.drawFittedText(btn.getButtonText(), btn.getLocalBounds(), juce::Justification::centred, 1);
             return;
         }
@@ -467,9 +467,9 @@ public:
         g.setColour(borderMd());
         g.drawRoundedRectangle(bounds, 4.0f, 1.0f);
 
-        // Text — JetBrains Mono 9px
+        // Text — JetBrains Mono 10pt (#885: 9pt→10pt legibility floor)
         g.setColour(juce::Colour(t1()));
-        g.setFont(GalleryFonts::value(9.0f));
+        g.setFont(GalleryFonts::value(10.0f));
         {
             auto tooltipBounds = bounds.reduced(8, 4);
             auto displayText = GalleryUtils::ellipsizeText(g.getCurrentFont(), text, (float)tooltipBounds.getWidth());

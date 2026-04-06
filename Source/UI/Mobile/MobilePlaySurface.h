@@ -788,7 +788,7 @@ private:
                 g.drawRoundedRectangle(x, y, w, h, 8.0f, 1.0f);
 
                 g.setColour(GalleryColors::get(GalleryColors::textDark()).withAlpha(0.5f + heat * 0.5f));
-                g.setFont(9.0f);
+                g.setFont(10.0f); // (#885: 9pt→10pt legibility floor)
                 g.drawText(drumLabels[idx], static_cast<int>(x), static_cast<int>(y), static_cast<int>(w),
                            static_cast<int>(h), juce::Justification::centred);
             }

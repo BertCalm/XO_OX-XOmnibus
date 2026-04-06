@@ -81,7 +81,7 @@ public:
         // One decimal place for readability at 10pt; no flicker at ~1Hz update rate.
         juce::String text = "CPU: " + juce::String(cpuPct, 1) + "%";
 
-        g.setFont(GalleryFonts::value(9.0f));
+        g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
         g.setColour(textCol);
         g.drawText(text, bounds.reduced(4.0f, 0.0f), juce::Justification::centred, false);
     }

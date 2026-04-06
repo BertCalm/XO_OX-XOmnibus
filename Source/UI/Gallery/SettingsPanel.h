@@ -270,7 +270,7 @@ public:
         content.addAndMakeVisible(perfLockToggle);
 
         perfLockNote.setText("Blocks param changes during performance", juce::dontSendNotification);
-        perfLockNote.setFont(GalleryFonts::body(9.5f));
+        perfLockNote.setFont(GalleryFonts::body(10.0f)); // (#885: 9.5pt→10pt legibility floor)
         perfLockNote.setColour(juce::Label::textColourId,
                                GalleryColors::get(GalleryColors::textMid()).withAlpha(0.65f));
         content.addAndMakeVisible(perfLockNote);
@@ -295,7 +295,7 @@ public:
         shortcutsLabel.setText("Z \xe2\x80\x94 Fire Chord  \xc2\xb7  X \xe2\x80\x94 XO Send  \xc2\xb7  C \xe2\x80\x94 "
                                "Echo Cut  \xc2\xb7  V \xe2\x80\x94 Panic",
                                juce::dontSendNotification);
-        shortcutsLabel.setFont(GalleryFonts::value(9.0f));
+        shortcutsLabel.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
         shortcutsLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         shortcutsLabel.setJustificationType(juce::Justification::centredLeft);
         shortcutsLabel.setInterceptsMouseClicks(false, false);
@@ -491,7 +491,7 @@ private:
         g.drawHorizontalLine(y + kHeaderH - 2, static_cast<float>(x), static_cast<float>(x + w));
 
         // Label
-        g.setFont(GalleryFonts::display(9.5f));
+        g.setFont(GalleryFonts::display(10.0f)); // (#885: 9.5pt→10pt legibility floor)
         g.setColour(get(textMid()));
         g.drawText(title.toUpperCase(), x, y, w, kHeaderH - 4, juce::Justification::bottomLeft, false);
     }

@@ -151,7 +151,7 @@ public:
             addAndMakeVisible(section.targetBox);
 
             // Route label
-            section.label.setFont(GalleryFonts::heading(9.0f));
+            section.label.setFont(GalleryFonts::heading(10.0f)); // (#885: 9pt→10pt legibility floor)
             section.label.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textDark()));
             section.label.setJustificationType(juce::Justification::centredLeft);
             addAndMakeVisible(section.label);
@@ -178,7 +178,7 @@ public:
             enableKnobReset(macroKnobs[i], apvts, macroDefs[i].id);
 
             macroLabels[i].setText(macroDefs[i].label, juce::dontSendNotification);
-            macroLabels[i].setFont(GalleryFonts::heading(8.0f));
+            macroLabels[i].setFont(GalleryFonts::heading(10.0f)); // (#885: 8pt→10pt legibility floor)
             macroLabels[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
             macroLabels[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(macroLabels[i]);
@@ -285,7 +285,7 @@ public:
 
         // ── Macro strip header ──
         g.setColour(get(textMid()));
-        g.setFont(GalleryFonts::heading(8.0f));
+        g.setFont(GalleryFonts::heading(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.drawText("MACROS", getLocalBounds().removeFromBottom(kMacroStripH).removeFromTop(14),
                    juce::Justification::centred);
     }

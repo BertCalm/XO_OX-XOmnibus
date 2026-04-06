@@ -389,7 +389,7 @@ public:
             // ── Collapse indicator arrow — right-aligned, T3 color, 9px ───────
             {
                 g.setColour(GalleryColors::get(GalleryColors::t3()));
-                g.setFont(GalleryFonts::value(9.0f));
+                g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
                 g.drawText(collapsed ? kArrowCollapsed : kArrowExpanded, 0, y, getWidth() - 10, kHeaderRowH,
                            juce::Justification::centredRight);
             }
@@ -571,8 +571,8 @@ private:
         // ── Label ────────────────────────────────────────────────────────────
         lk->label = std::make_unique<juce::Label>();
         lk->label->setText(slot.shortLabel, juce::dontSendNotification);
-        // Knob labels: 9px mono, T2 for better readability
-        const juce::Font labelFont = GalleryFonts::value(9.0f);
+        // Knob labels: 10pt mono, T2 for better readability (#885: 9pt→10pt legibility floor)
+        const juce::Font labelFont = GalleryFonts::value(10.0f);
         lk->label->setFont(labelFont);
         lk->label->setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::t2()));
         lk->label->setJustificationType(juce::Justification::centred);

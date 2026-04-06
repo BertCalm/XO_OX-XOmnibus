@@ -146,8 +146,8 @@ public:
             g.setColour(colors[i]);
             g.fillEllipse(tri[i].x - 3.0f, tri[i].y - 3.0f, 6.0f, 6.0f);
 
-            // Label: Space Grotesk SemiBold 8pt
-            g.setFont(GalleryFonts::display(8.0f));
+            // Label: Space Grotesk SemiBold 10pt (#885: 8pt was below legibility floor)
+            g.setFont(GalleryFonts::display(10.0f));
             g.setColour(colors[i]);
 
             // Offset label away from the vertex
@@ -505,9 +505,9 @@ public:
             // condMode 0=Manual, 1=Conductor, 2=Both (no OFF state exists).
             juce::Colour badgeCol = juce::Colour(0xFFD4AF37); // Aria Gold
 
-            g.setFont(GalleryFonts::display(8.0f));
+            g.setFont(GalleryFonts::display(10.0f)); // (#885: 8pt was below legibility floor)
             g.setColour(badgeCol);
-            g.drawText(modeText, juce::Rectangle<float>{w - 40.0f, h - 14.0f, 38.0f, 12.0f},
+            g.drawText(modeText, juce::Rectangle<float>{w - 40.0f, h - 14.0f, 40.0f, 12.0f},
                        juce::Justification::centredRight, false);
         }
     }
@@ -658,7 +658,7 @@ public:
 
             // Label
             labels[i].setText(kDefs[i].label, juce::dontSendNotification);
-            labels[i].setFont(GalleryFonts::display(8.0f)); // Space Grotesk SemiBold 8pt
+            labels[i].setFont(GalleryFonts::display(10.0f)); // (#885: 8pt was below legibility floor)
             labels[i].setColour(juce::Label::textColourId, col);
             labels[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(labels[i]);

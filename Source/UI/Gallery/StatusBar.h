@@ -262,8 +262,8 @@ public:
             juce::Colour badgeColour = cockpitBypassed_ ? juce::Colour(0xFFFF6B6B) // red when bypassed (full bright)
                                                         : get(t3());               // T3 gray when active (dimming on)
             g.setColour(badgeColour);
-            g.setFont(GalleryFonts::value(8.0f));
-            const int badgeW = 68;
+            g.setFont(GalleryFonts::value(10.0f)); // (#885: 8pt→10pt legibility floor)
+            const int badgeW = 72; // slightly wider to accommodate 10pt text
             const int badgeX = dotsLeft - badgeW - 6;
             g.drawText(badge, badgeX, 0, badgeW, getHeight(), juce::Justification::centredRight);
         }

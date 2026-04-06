@@ -181,7 +181,7 @@ public:
             juce::Colour textCol = isActive ? juce::Colours::white : modeCol.withAlpha(0.60f);
 
             g.setColour(textCol);
-            g.setFont(GalleryFonts::label(juce::jmax(8.0f, pillH * 0.36f)));
+            g.setFont(GalleryFonts::label(juce::jmax(10.0f, pillH * 0.36f))); // (#885: 8pt floor→10pt)
             g.drawText(names[i], juce::Rectangle<float>(textX, pill.getY(), textW, pill.getHeight()),
                        juce::Justification::centred, true);
         }
@@ -358,7 +358,7 @@ public:
             barWidth = 4.0f;
 
         // ── 1. Left label ─────────────────────────────────────────────────
-        g.setFont(GalleryFonts::label(juce::jmax(8.0f, barH * 0.32f)));
+        g.setFont(GalleryFonts::label(juce::jmax(10.0f, barH * 0.32f))); // (#885: 8pt floor→10pt)
         g.setColour(colLeft);
         g.drawText(lblLeft, juce::Rectangle<float>(b.getX(), b.getY(), labelW - 4.0f, barH),
                    juce::Justification::centredRight, true);

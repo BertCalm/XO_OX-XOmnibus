@@ -73,7 +73,7 @@ public:
             g.drawVerticalLine((int)x1, 0.0f, bounds.getHeight() - 18.0f);
 
             g.setColour(GalleryColors::get(GalleryColors::textDark()));
-            g.setFont(GalleryFonts::value(9.0f));
+            g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.drawText(z.noteName, (int)((x1 + x2) / 2.0f - 16), (int)(bounds.getHeight() - 16), 32, 14,
                        juce::Justification::centred);
 

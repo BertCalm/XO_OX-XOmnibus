@@ -154,7 +154,7 @@ public:
 
             // Amount label below knob
             card.amountLabel.setText("AMT", juce::dontSendNotification);
-            card.amountLabel.setFont(GalleryFonts::heading(8.0f));
+            card.amountLabel.setFont(GalleryFonts::heading(10.0f)); // (#885: 8pt→10pt legibility floor)
             card.amountLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::t3()));
             card.amountLabel.setJustificationType(juce::Justification::centred);
             addChildComponent(card.amountLabel); // hidden until expanded
@@ -322,7 +322,7 @@ public:
             // ── Route number label (T2 when inactive, T1 when active) ─────────
             {
                 juce::String routeNumStr = "R" + juce::String(r + 1);
-                g.setFont(GalleryFonts::heading(9.0f));
+                g.setFont(GalleryFonts::heading(10.0f)); // (#885: 9pt→10pt legibility floor)
                 g.setColour(active ? get(t1()) : get(t2()));
                 g.drawText(routeNumStr,
                            juce::Rectangle<int>((int)cardRect.getX() + kInnerPad + (active ? 5 : 3),
@@ -361,7 +361,7 @@ public:
                 juce::Colour srcColor = srcEng ? srcEng->getAccentColour() : get(active ? t2() : t3());
                 juce::Colour tgtColor = tgtEng ? tgtEng->getAccentColour() : get(active ? t2() : t3());
 
-                g.setFont(GalleryFonts::body(9.5f));
+                g.setFont(GalleryFonts::body(10.0f)); // (#885: 9.5pt→10pt legibility floor)
                 auto font = g.getCurrentFont();
 
                 // Starting x for the summary segment
@@ -426,7 +426,7 @@ public:
             // ── Expanded section labels (TYPE / SRC / TGT) ────────────────────
             if (routeCards[r].expanded)
             {
-                g.setFont(GalleryFonts::heading(8.0f));
+                g.setFont(GalleryFonts::heading(10.0f)); // (#885: 8pt→10pt legibility floor)
                 g.setColour(get(t3()));
 
                 // "TYPE" label
@@ -480,7 +480,7 @@ public:
 
                 if (hintH > 0)
                 {
-                    g.setFont(GalleryFonts::value(8.5f));
+                    g.setFont(GalleryFonts::value(10.0f)); // (#885: 8.5pt→10pt legibility floor)
                     g.setColour(get(t3()));
                     g.drawText(hintText, juce::Rectangle<int>(kCardMargin, hintY, getWidth() - kCardMargin * 2, hintH),
                                juce::Justification::centred, false);

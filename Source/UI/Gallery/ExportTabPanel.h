@@ -192,7 +192,7 @@ public:
         drawDivider(kHeaderH + kKitInfoH + kFormatH + kExportBtnH + kQuickSettingsH);
 
         // ── Section labels ───────────────────────────────────────────────────
-        g.setFont(GalleryFonts::heading(8.5f));
+        g.setFont(GalleryFonts::heading(10.0f)); // (#885: 8.5pt→10pt legibility floor)
         g.setColour(get(textMid()));
 
         g.drawText("KIT", 12, kHeaderH + 4, 200, 14, juce::Justification::topLeft);
@@ -353,11 +353,11 @@ private:
         constexpr int chipGap = 4;
         constexpr int maxRight = 4; // margin from right edge
 
-        g.setFont(GalleryFonts::label(9.0f));
+        g.setFont(GalleryFonts::label(10.0f)); // (#885: 9pt→10pt legibility floor)
 
         for (const auto& eng : engineChipLabels)
         {
-            int chipW = juce::roundToInt(GalleryFonts::label(9.0f).getStringWidthFloat(eng)) + chipPadX * 2;
+            int chipW = juce::roundToInt(GalleryFonts::label(10.0f).getStringWidthFloat(eng)) + chipPadX * 2;
 
             // Wrap to next row if needed
             if (x + chipW > getWidth() - maxRight)

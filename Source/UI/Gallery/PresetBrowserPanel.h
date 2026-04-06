@@ -71,7 +71,7 @@ public:
         A11y::setup(listBox, "Preset List", "Scrollable list of presets matching current filter");
 
         // Count label
-        countLabel.setFont(GalleryFonts::label(8.5f));
+        countLabel.setFont(GalleryFonts::label(10.0f)); // (#885: 8.5pt→10pt legibility floor)
         countLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));
         countLabel.setJustificationType(juce::Justification::centredRight);
         addAndMakeVisible(countLabel);
@@ -210,10 +210,10 @@ public:
         if (!preset.engines.isEmpty() && preset.engines[0].isNotEmpty())
         {
             auto tag = preset.engines[0].substring(0, juce::jmin(3, preset.engines[0].length())).toUpperCase();
-            // Prototype: JetBrains Mono 8px for engine badge
+            // Engine tag badge — JetBrains Mono 10pt (#885: 8pt→10pt legibility floor)
             g.setColour(get(t3()).withAlpha(0.50f));
-            g.setFont(GalleryFonts::value(8.0f));
-            g.drawText(tag, w - 28, 0, 26, h, juce::Justification::centredRight);
+            g.setFont(GalleryFonts::value(10.0f));
+            g.drawText(tag, w - 30, 0, 28, h, juce::Justification::centredRight);
         }
     }
 

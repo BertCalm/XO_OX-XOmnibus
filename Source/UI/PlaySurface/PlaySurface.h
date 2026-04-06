@@ -826,7 +826,7 @@ private:
                 if (!isHit && scaleMode == ScaleMode::Highlight && mode != Mode::Drum && !isNoteInScale(note))
                     labelAlpha = 0.25f;
                 g.setColour(isHit ? juce::Colours::white : accentColour.withAlpha(labelAlpha));
-                g.setFont(GalleryFonts::body(9.0f));
+                g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
                 g.drawText(label, padRect, juce::Justification::centred);
             }
         }
@@ -837,7 +837,7 @@ private:
             juce::String badge = juce::String("BNK ") + kBankNames[(int)currentBank];
             auto badgeRect = juce::Rectangle<float>(originX + gridW - 50.0f, originY, 48.0f, 16.0f);
             g.setColour(accentColour.withAlpha(0.75f));
-            g.setFont(GalleryFonts::display(9.0f));
+            g.setFont(GalleryFonts::display(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.drawText(badge, badgeRect, juce::Justification::centredRight);
         }
     }
@@ -901,9 +901,9 @@ private:
                 g.setColour(zoneColor.withAlpha(0.35f));
                 g.drawHorizontalLine((int)y, b.getX(), b.getRight());
                 int octNum = (24 + semi) / 12 - 1;
-                g.setFont(GalleryFonts::body(8.0f));
+                g.setFont(GalleryFonts::body(10.0f)); // (#885: 8pt→10pt legibility floor)
                 g.setColour(zoneColor.withAlpha(0.55f));
-                g.drawText("C" + juce::String(octNum), juce::Rectangle<float>(4, y - 10, 24, 12),
+                g.drawText("C" + juce::String(octNum), juce::Rectangle<float>(4, y - 10, 26, 12),
                            juce::Justification::centredLeft);
             }
             else if (isScaleNote)

@@ -196,7 +196,7 @@ private:
         progressTechLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         addAndMakeVisible(progressTechLabel);
 
-        unverifiedBadge.setFont(GalleryFonts::value(9.0f));
+        unverifiedBadge.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
         unverifiedBadge.setColour(juce::Label::textColourId, juce::Colour(0xFFE9A84A));
         unverifiedBadge.setVisible(false);
         addAndMakeVisible(unverifiedBadge);

@@ -127,7 +127,7 @@ public:
 
         // "TOUCHÉ" label at bottom
         g.setColour(juce::Colour(0xFF999999));
-        g.setFont(8.0f);
+        g.setFont(10.0f); // (#885: 8pt→10pt legibility floor)
         g.drawText(juce::CharPointer_UTF8("TOUCH\xc3\x89"), bounds.reduced(4.0f), juce::Justification::bottomCentre,
                    false);
     }

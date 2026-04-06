@@ -102,7 +102,7 @@ public:
                 A11y::setup(pillars[i], foundNames[i]);
 
                 pillarLabels[i].setText(foundNames[i], juce::dontSendNotification);
-                pillarLabels[i].setFont(GalleryFonts::value(8.0f));
+                pillarLabels[i].setFont(GalleryFonts::value(10.0f)); // (#885: 8pt→10pt legibility floor)
                 pillarLabels[i].setColour(juce::Label::textColourId,
                                           juce::Colour(GalleryColors::xoGold).withAlpha(0.75f));
                 pillarLabels[i].setJustificationType(juce::Justification::centred);

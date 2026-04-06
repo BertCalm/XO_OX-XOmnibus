@@ -35,7 +35,7 @@ public:
                         "Advanced FX parameter: " + paramDefs[static_cast<size_t>(i)].second);
 
             lbls[i].setText(paramDefs[static_cast<size_t>(i)].second, juce::dontSendNotification);
-            lbls[i].setFont(GalleryFonts::heading(8.5f));
+            lbls[i].setFont(GalleryFonts::heading(10.0f)); // (#885: 8.5pt→10pt legibility floor)
             lbls[i].setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
             lbls[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(lbls[i]);
@@ -49,7 +49,7 @@ public:
         using namespace GalleryColors;
         g.fillAll(get(shellWhite()));
         g.setColour(get(textMid()).withAlpha(0.40f));
-        g.setFont(GalleryFonts::heading(8.0f));
+        g.setFont(GalleryFonts::heading(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.drawText(titleText, getLocalBounds().removeFromTop(14).reduced(8, 0), juce::Justification::centredLeft);
     }
 

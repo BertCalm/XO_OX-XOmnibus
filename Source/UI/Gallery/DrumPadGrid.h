@@ -104,8 +104,8 @@ public:
 
         // Fonts and fallback name strings cached as static locals to avoid
         // per-pad, per-paint allocations (16 pads × 2 Font constructions).
-        static const auto kParamFont = GalleryFonts::value(8.0f);
-        static const auto kVoiceFont = juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(9.0f));
+        static const auto kParamFont = GalleryFonts::value(10.0f); // (#885: 8pt was below legibility floor)
+        static const auto kVoiceFont = juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(10.0f)); // (#885: 9pt→10pt)
         static const juce::String kFallbackNames[] = {
             "V1",  "V2",  "V3",  "V4",  "V5",  "V6",  "V7",  "V8",
             "V9",  "V10", "V11", "V12", "V13", "V14", "V15", "V16"
@@ -459,7 +459,7 @@ private:
             sk.knob->setVisible(false);
 
             sk.label->setText(kLabels[i], juce::dontSendNotification);
-            sk.label->setFont(GalleryFonts::label(8.0f));
+            sk.label->setFont(GalleryFonts::label(10.0f)); // (#885: 8pt→10pt legibility floor)
             sk.label->setColour(juce::Label::textColourId,
                                 GalleryColors::get(GalleryColors::textMid()));
             sk.label->setJustificationType(juce::Justification::centred);

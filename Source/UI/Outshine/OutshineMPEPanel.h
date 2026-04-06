@@ -143,7 +143,7 @@ private:
         if (route.manualConfigOnly)
         {
             g.setColour(juce::Colour(0xFFE9A84A));
-            g.setFont(GalleryFonts::body(9.0f));
+            g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.drawText("(manual config)", rowBounds, juce::Justification::centredLeft);
         }
     }

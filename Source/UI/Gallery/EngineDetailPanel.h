@@ -86,7 +86,7 @@ public:
         drawDot(x0 + aW + dW + sW + rW, y0); // release end
 
         // A D S R labels at bottom
-        g.setFont(GalleryFonts::body(9.0f));
+        g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
         g.setColour(juce::Colour(GalleryColors::t3())); // T3
         float labelY = b.getBottom() - 10;
         g.drawText("A", (int)(x0 + aW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
@@ -440,8 +440,10 @@ public:
             // Engine name — 16px Overbit (D2), accent color
             g.setFont(GalleryFonts::engineName(16.0f));
             g.setColour(accentColour);
-            g.drawText(cachedEngineName, juce::Rectangle<int>(12, 0, getWidth() - 24, kHeaderH),
-                       juce::Justification::centredLeft);
+            // (#884: ellipsizeText so long engine names show "..." instead of clipping silently)
+            auto displayCachedName = GalleryUtils::ellipsizeText(g.getCurrentFont(), cachedEngineName, (float)(getWidth() - 24));
+            g.drawText(displayCachedName, juce::Rectangle<int>(12, 0, getWidth() - 24, kHeaderH),
+                       juce::Justification::centredLeft, false);
 
             // Thin accent line under header (2px)
             g.setColour(accentColour.withAlpha(0.5f));
@@ -451,7 +453,7 @@ public:
         // ── "OSCILLOSCOPE" label above waveform display ───────────────────────
         if (!oscLabelBounds.isEmpty())
         {
-            g.setFont(GalleryFonts::value(9.0f));
+            g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.setColour(get(t3()));
             g.drawText("OSCILLOSCOPE", oscLabelBounds.withTrimmedLeft(8), juce::Justification::centredLeft, false);
         }
@@ -459,7 +461,7 @@ public:
         // ── "ENVELOPE" label above ADSR display ───────────────────────────────
         if (!envLabelBounds.isEmpty())
         {
-            g.setFont(GalleryFonts::value(9.0f));
+            g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.setColour(get(t3()));
             g.drawText("ENVELOPE", envLabelBounds.withTrimmedLeft(8), juce::Justification::centredLeft, false);
         }

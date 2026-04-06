@@ -374,7 +374,7 @@ public:
                 "DECAY", "TONE", "SNAP", "BODY", "BLEND", "PITCH", "LEVEL", "PAN", "CHAR"
             };
 
-            g.setFont(GalleryFonts::value(8.0f));
+            g.setFont(GalleryFonts::value(10.0f)); // (#885: 8pt→10pt legibility floor)
             g.setColour(get(t3()));
 
             int ry = voiceGridBounds.getY()

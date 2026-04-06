@@ -430,8 +430,8 @@ public:
             g.drawText(displayName, 22, 0, w - 72, h / 2, juce::Justification::centredLeft, false);
         }
 
-        // Engine tag badge — JetBrains Mono 9px, below preset name
-        g.setFont(GalleryFonts::value(9.0f));
+        // Engine tag badge — JetBrains Mono 10pt (#885: 9pt→10pt legibility floor)
+        g.setFont(GalleryFonts::value(10.0f));
         g.setColour(GalleryColors::get(GalleryColors::textMid()));
 
         juce::String meta = preset.mood;

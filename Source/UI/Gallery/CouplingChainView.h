@@ -277,7 +277,7 @@ public:
         if (nodes.empty())
         {
             g.setColour(get(textMid()));
-            g.setFont(GalleryFonts::body(9.0f));
+            g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
             g.drawText("No signal chain", bounds.toNearestInt(), juce::Justification::centred);
             return;
         }
@@ -320,9 +320,9 @@ public:
             g.setColour(node.accent);
             g.drawRoundedRectangle(nr, kCornerR * scale, kBorderW);
 
-            // Engine name — Space Grotesk SemiBold, ALL CAPS, 9pt (scaled)
+            // Engine name — Space Grotesk SemiBold, ALL CAPS, 9pt (scaled), floor 9pt (#886)
             g.setColour(get(textDark()));
-            g.setFont(GalleryFonts::display(9.0f * scale));
+            g.setFont(GalleryFonts::display(juce::jmax(9.0f, 9.0f * scale)));
             g.drawFittedText(node.engineName.toUpperCase(), nr.reduced(kBadgeR * scale, 0.0f).toNearestInt(),
                              juce::Justification::centred, 1);
 
@@ -334,7 +334,7 @@ public:
                 g.setColour(node.accent.withAlpha(0.85f));
                 g.fillEllipse(bx, by, bd, bd);
                 g.setColour(juce::Colour(GalleryColors::get(GalleryColors::t1())).withAlpha(0.90f));
-                g.setFont(GalleryFonts::value(juce::jmax(8.0f, 7.0f * scale)));
+                g.setFont(GalleryFonts::value(juce::jmax(9.0f, 7.0f * scale))); // (#886: 9pt floor)
                 g.drawText(juce::String(node.slot + 1), (int)bx, (int)by, (int)bd, (int)bd,
                            juce::Justification::centred);
             }
@@ -363,7 +363,7 @@ public:
             g.setColour(get(xoGold));
             g.drawRoundedRectangle(fxr, kCornerR * scale, kBorderW);
             g.setColour(get(xoGoldText()));
-            g.setFont(GalleryFonts::display(9.0f * scale));
+            g.setFont(GalleryFonts::display(juce::jmax(9.0f, 9.0f * scale))); // (#886: 9pt floor)
             g.drawText("FX", fxr.toNearestInt(), juce::Justification::centred);
         }
         curX += fxW;
@@ -436,7 +436,7 @@ public:
 
             // "CYCLE" micro-label centred below the arc
             g.setColour(cycleColour.withAlpha(0.70f));
-            g.setFont(GalleryFonts::value(juce::jmax(8.0f, 7.0f * scale)));
+            g.setFont(GalleryFonts::value(juce::jmax(9.0f, 7.0f * scale))); // (#886: 9pt floor)
             g.drawText("CYCLE", (int)chainStartX, (int)(markerY + 10.0f * scale), (int)(lastEngineEndX - chainStartX),
                        10, juce::Justification::centred);
         }
@@ -491,7 +491,7 @@ private:
         {
             const float midX = (x1 + x2) * 0.5f;
             g.setColour(colour.withAlpha(0.85f));
-            g.setFont(GalleryFonts::value(juce::jmax(8.0f, 7.0f * scale)));
+            g.setFont(GalleryFonts::value(juce::jmax(9.0f, 7.0f * scale))); // (#886: 9pt floor)
             g.drawText(label, (int)(midX - 20.0f), (int)(cy + 3.0f * scale), 40, (int)(10.0f * scale),
                        juce::Justification::centred);
         }

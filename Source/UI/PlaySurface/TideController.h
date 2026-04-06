@@ -177,7 +177,7 @@ public:
 
         // ── Label ────────────────────────────────────────────────────────────
         g.setColour(accent_.withAlpha(0.60f));
-        g.setFont(GalleryFonts::body(8.0f));
+        g.setFont(GalleryFonts::body(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.drawText("TIDE", bounds.removeFromBottom(12.0f), juce::Justification::centred, false);
     }
 
