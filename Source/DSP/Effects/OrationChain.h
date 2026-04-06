@@ -247,8 +247,10 @@ private:
                 // Route through per-channel smoother to prevent zipper noise on
                 // fast envelope-driven cutoff changes. L channel: taps 0+1,
                 // R channel: tap 2 (mirrors the L = tap0+tap1, R = tap1+tap2 mix).
-                float smoothedCutoff = (t < 2) ? freqSmootherL.process(cutoff)
-                                               : freqSmootherR.process(cutoff);
+                if (t < 2) freqSmootherL.set(cutoff);
+                else       freqSmootherR.set(cutoff);
+                float smoothedCutoff = (t < 2) ? freqSmootherL.process()
+                                               : freqSmootherR.process();
                 filters[t].setMode(CytomicSVF::Mode::LowPass);
                 filters[t].setCoefficients(smoothedCutoff, res, srF);
             }

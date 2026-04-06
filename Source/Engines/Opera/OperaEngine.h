@@ -948,7 +948,7 @@ public:
             // 6d. Vibrato — pitch multiplier for all voices
             float vibSample = vibratoLFO_.process() * vibDepth_eff;
             // vibDepth=1.0 -> 100 cents max deviation
-            float vibPitchMult = FastMath::fastPow2(vibSample * (100.0f / 1200.0f));
+            float vibPitchMult = xoceanus::fastPow2(vibSample * (100.0f / 1200.0f));
 
             // 6e. Coupling FM and Ring mod values for this sample
             float couplingFM = (s < blockSize_) ? couplingFMBuffer_[s] : 0.0f;
