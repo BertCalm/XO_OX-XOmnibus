@@ -54,7 +54,8 @@ public:
                     "Click to open the full engine picker.");
 
         buildEngineOrder();
-        setSize(kDialSize, kDialSize);
+        // #914: Add kLabelH (10pt) below the dial face for the slot label.
+        setSize(kDialSize, kDialSize + kLabelH);
 
         // Poll at 4 Hz to detect external slot changes (e.g. preset load).
         startTimerHz(4);
@@ -63,10 +64,24 @@ public:
     ~DepthZoneDial() override { stopTimer(); }
 
     //==========================================================================
+    // #914: Set a visible label text that appears below the dial face.
+    // D1-specified: shows "SLOT N" (where N is 1-indexed) to confirm which
+    // slot the dial is currently controlling.  Updated from setSlot().
+    void setDialLabel(const juce::String& label)
+    {
+        if (dialLabel_ == label)
+            return;
+        dialLabel_ = label;
+        repaint();
+    }
+
+    //==========================================================================
     // Set the slot index this dial controls (0–4, where 4 is the Ghost Slot). W17: clamp now includes index 4.
     void setSlot(int slot)
     {
         currentSlot = juce::jlimit(0, 4, slot); // W17: extended to include Ghost Slot (index 4)
+        // #914: Update the visible label to reflect the new slot.
+        setDialLabel("SLOT " + juce::String(currentSlot + 1));
         refresh();
     }
 
@@ -251,6 +266,18 @@ public:
         // ── Keyboard focus ring ───────────────────────────────────────────────
         if (hasKeyboardFocus(false))
             A11y::drawCircularFocusRing(g, cx, cy, outer + 2.0f);
+
+        // ── #914: D1-specified label below dial face ──────────────────────────
+        // "SLOT N" in JetBrains Mono 8pt — confirms the targeted slot so
+        // users with multiple loaded engines know which slot the dial drives.
+        if (dialLabel_.isNotEmpty())
+        {
+            g.setFont(GalleryFonts::value(8.0f));
+            g.setColour(GalleryColors::get(GalleryColors::textMid()).withAlpha(0.75f));
+            g.drawText(dialLabel_,
+                       juce::Rectangle<int>(0, kDialSize, kDialSize, kLabelH),
+                       juce::Justification::centred, false);
+        }
     }
 
     void resized() override
@@ -579,6 +606,7 @@ private:
     // Constants
     static constexpr int kDialSize = 48;
     static constexpr int kInnerSize = 36;
+    static constexpr int kLabelH = 10; // #914: height of the slot label below the dial
     static constexpr float kDotRadius = 2.0f;
     static constexpr float kSnapDegrees = 15.0f;
     static constexpr float kWheelThreshold = 0.15f;
@@ -595,6 +623,7 @@ private:
     XOceanusProcessor& processor;
 
     int currentSlot = 0;
+    juce::String dialLabel_ = "SLOT 1"; // #914: visible slot label below the dial face
     juce::String currentEngineId;
     juce::Colour currentAccent{GalleryColors::get(GalleryColors::emptySlot())};
 

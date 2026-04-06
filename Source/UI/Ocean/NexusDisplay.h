@@ -166,6 +166,12 @@ public:
         const int pillW = moodTextW + 2 * kMoodPillPadH;
         const int pillH = static_cast<int>(std::ceil(kMoodFontSize)) + 2 * kMoodPillPadV;
         moodBadgeBounds_ = juce::Rectangle<int>((w - pillW) / 2, y, pillW, pillH);
+        y += pillH + kGapMoodReadout;
+
+        // ── #909: Live readouts strip — voice count pill + 4 macro bars ───────
+        // Height = 4 bars × 4pt + 3 gaps × 3pt = 25pt total
+        constexpr int kReadoutH = 25;
+        liveReadoutsBounds_ = juce::Rectangle<int>(0, y, w, kReadoutH);
     }
 
     void mouseDown(const juce::MouseEvent& e) override
@@ -277,9 +283,10 @@ private:
     int voiceCount_ = 0;
     std::array<float, 4> macroValues_{{0.0f, 0.0f, 0.0f, 0.0f}};
 
-    // Cached hit-test rects — computed in resized().
+    // Cached layout rects — computed in resized().
     juce::Rectangle<int> presetNameBounds_;
     juce::Rectangle<int> moodBadgeBounds_;
+    juce::Rectangle<int> liveReadoutsBounds_; // #909: voice count + macro bars
 
     //==========================================================================
     // Layout constants
@@ -288,6 +295,7 @@ private:
     static constexpr int   kDnaSize        = 64;
     static constexpr int   kGapHexName     = 8;
     static constexpr int   kGapNameMood    = 4;
+    static constexpr int   kGapMoodReadout = 6;  // #909: gap between mood badge and live readouts
     static constexpr float kPresetFontSize = 18.0f;
     static constexpr float kMoodFontSize   = 11.0f;
     static constexpr float kMoodPillAlpha  = 0.12f;

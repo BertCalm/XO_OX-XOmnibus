@@ -504,6 +504,14 @@ public:
             orbits_[slot].setVoiceCount(count);
     }
 
+    // #909: Forward live readouts to NexusDisplay so Overview shows parameter activity.
+    // voiceCount: total polyphonic voices across all slots.
+    // macroValues: current normalised [0,1] values for macros 1-4.
+    void setLiveReadouts(int voiceCount, const std::array<float, 4>& macroValues)
+    {
+        nexus_.setLiveReadouts(voiceCount, macroValues);
+    }
+
     void setCouplingLean(int slot, float lean)
     {
         if (slot >= 0 && slot < 5)
