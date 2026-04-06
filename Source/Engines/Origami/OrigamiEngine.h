@@ -1416,8 +1416,8 @@ private:
             float magnitude = std::max(voice.foldedMagnitude[static_cast<size_t>(bin)], kMagnitudeFloor);
             float binPhase = voice.foldedPhase[static_cast<size_t>(bin)];
 
-            voice.ifftReal[static_cast<size_t>(bin)] = magnitude * std::cos(binPhase);
-            voice.ifftImaginary[static_cast<size_t>(bin)] = magnitude * std::sin(binPhase);
+            voice.ifftReal[static_cast<size_t>(bin)] = magnitude * fastCos(binPhase);
+            voice.ifftImaginary[static_cast<size_t>(bin)] = magnitude * fastSin(binPhase);
         }
 
         // Mirror conjugate for negative frequencies.
