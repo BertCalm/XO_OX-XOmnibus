@@ -313,7 +313,7 @@ private:
         }
 
         float process(float in, int patternIndex, float attackMs, float dutyFrac,
-                      double bpm, int numSamplesElapsed)
+                      double bpm)
         {
             // Compute step duration in samples (16th notes at bpm)
             float srF        = static_cast<float>(sr);
@@ -494,7 +494,7 @@ inline void OublietteChain::processBlock(const float* monoIn, float* L, float* R
         x = pll_.process(x, pllTrack, pllSub, pllMult, pllDry);
 
         // Stage 3: Rhythmic Slicer
-        x = slicer_.process(x, slicePattern, sliceAttack, sliceDuty, bpm, i);
+        x = slicer_.process(x, slicePattern, sliceAttack, sliceDuty, bpm);
 
         L[i] = x;
     }
