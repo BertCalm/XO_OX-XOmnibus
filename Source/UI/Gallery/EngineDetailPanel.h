@@ -96,7 +96,10 @@ public:
     }
 
 private:
-    float a = 0.1f, d = 0.3f, s = 0.7f, r = 0.4f; // defaults
+    // #881: These defaults are only visible for <1 frame before the 30Hz timer
+    // (timerCallback in EngineDetailPanel) pushes real APVTS values via setValues().
+    // They are intentionally neutral so the initial paint is not misleading.
+    float a = 0.1f, d = 0.3f, s = 0.7f, r = 0.4f;
     juce::Colour accent{0xFF1E8B7E};
 };
 
