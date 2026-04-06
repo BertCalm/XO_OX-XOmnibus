@@ -58,8 +58,9 @@ namespace xoceanus
 class EpicChainSlotController
 {
 public:
-    static constexpr int kNumSlots  = 3;
-    static constexpr int kNumChains = 30;
+    static constexpr int kNumSlots   = 3;
+    static constexpr int kNumChains  = 30;
+    static constexpr int kMaxChainID = 30;  // == static_cast<int>(Orrery)
 
     enum ChainID : int
     {
@@ -143,7 +144,7 @@ private:
         // Crossfade scratch buffer (allocated in prepare)
         juce::AudioBuffer<float> crossfadeBuf;
 
-        // All 6 existing chain instances (pre-allocated, never on audio-thread heap)
+        // All 30 chain instances (pre-allocated, never on audio-thread heap)
         AquaticFXSuite    aquatic;
         MathFXChain       math;
         BoutiqueFXChain   boutique;
@@ -183,7 +184,7 @@ private:
         OutbreakChain   outbreak;
         OrreryChain     orrery;
 
-        // Mono scratch buffer for Mono-In chains (Onrush, Obliterate, Obscurity)
+        // Mono scratch buffer for Mono-In chains (19 Wave 2 + Onrush, Obliterate, Obscurity)
         std::vector<float> monoScratch;
 
         // ---- Cached slot control param pointers (added per slot in cacheParameterPointers) ----
@@ -677,7 +678,7 @@ inline void EpicChainSlotController::addParameters(
         layout.add(std::make_unique<AP>(
             juce::ParameterID{prefix + "chain", 1},
             prefix + "Chain",
-            NR(0.0f, static_cast<float>(kNumChains), 1.0f),
+            NR(0.0f, static_cast<float>(kMaxChainID), 1.0f),
             0.0f));
         layout.add(std::make_unique<AP>(
             juce::ParameterID{prefix + "mix", 1},
