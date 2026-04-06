@@ -150,6 +150,31 @@ static constexpr uint32_t emptySlot = t4;    // empty slot indicator
 static constexpr uint32_t xoGoldText = 0xFFE9C46A;
 } // namespace Dark
 
+// Ocean palette — radial depth view (Ocean View redesign, 2026-04-06)
+// These tokens replace the Gallery dark palette when the Ocean View is active.
+// The 8 depth-graduated backgrounds move from neutral gray to blue-tinted depths.
+namespace Ocean
+{
+// Depth backgrounds — from deepest edge to brightest center
+static constexpr uint32_t abyss    = 0xFF04040A; // deepest background, plugin edges
+static constexpr uint32_t deep     = 0xFF0A0E18; // radial view outer edge
+static constexpr uint32_t twilight = 0xFF0E1428; // mid-depth surfaces
+static constexpr uint32_t shallow  = 0xFF142040; // near-center surfaces, overlays
+static constexpr uint32_t surface  = 0xFF1A2848; // cards, panels, elevated content
+static constexpr uint32_t foam     = 0xFFE8E4DF; // primary text (warm white)
+static constexpr uint32_t salt     = 0xFF9E9B97; // secondary text
+static constexpr uint32_t plankton = 0xFF5E6878; // tertiary text, disabled
+
+// Depth zone tint colours — applied at low alpha over the radial gradient
+static constexpr uint32_t sunlitTint   = 0xFF48CAE4; // warm cyan (Sunlit zone, 4% alpha)
+static constexpr uint32_t twilightTint = 0xFF0096C7; // blue (Twilight zone, 3% alpha)
+static constexpr uint32_t midnightTint = 0xFF7B2FBE; // violet (Midnight zone, 4% alpha)
+
+// Ambient edge glow defaults
+static constexpr uint32_t edgeCyan   = 0xFF48CAE4;
+static constexpr uint32_t edgeViolet = 0xFF7B2FBE;
+} // namespace Ocean
+
 // Brand constants — unchanged between modes
 constexpr uint32_t xoGold = 0xFFE9C46A;
 
