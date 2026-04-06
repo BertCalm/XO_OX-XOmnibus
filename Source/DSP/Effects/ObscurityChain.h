@@ -46,7 +46,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_ = 44100.0;
+    double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
 
     //==========================================================================
     // Stage 1 — PLL Synthesizer (EQD Data Corrupter)
@@ -62,7 +62,7 @@ private:
         PolyBLEP sub1Osc;
         PolyBLEP sub2Osc;
         ParameterSmoother freqGlide;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -137,7 +137,7 @@ private:
         CytomicSVF fatSVF;
         CytomicSVF muscleSVF;
         float aaState = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate) { sr = sampleRate; reset(); }
         void reset() { fatSVF.reset(); muscleSVF.reset(); aaState = 0.0f; }
@@ -198,7 +198,7 @@ private:
         std::vector<float> delay1, delay2;
         int write1 = 0, write2 = 0;
         StandardLFO lfo1, lfo2;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -269,7 +269,7 @@ private:
         std::vector<float> delayBuf;
         int writePos = 0;
         CytomicSVF feedbackLP;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -324,7 +324,7 @@ private:
         std::array<std::vector<float>, kNumTaps> tapBufs;
         std::array<int, kNumTaps> writePos{};
         std::array<float, kNumTaps> tapState{};
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

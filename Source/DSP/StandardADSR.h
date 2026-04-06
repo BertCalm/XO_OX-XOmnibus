@@ -236,7 +236,7 @@ struct StandardADSR
     float level = 0.0f;
 
 private:
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use (guarded with std::max(1.0f,...))
     Shape shape = Shape::ADSR;
 
     float attackRate = 0.01f;

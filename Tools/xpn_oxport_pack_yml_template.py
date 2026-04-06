@@ -29,7 +29,9 @@ KNOWN_ENGINES = {
 }
 
 VALID_MOODS = {
-    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"
+    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+    "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+    "Organic", "Shadow"
 }
 
 DNA_DEFAULTS = {
@@ -74,8 +76,8 @@ def compute_dna_centroid(preset_files: list[Path]) -> dict:
                 for k in DNA_KEYS:
                     accum[k] += dna[k]
                 count += 1
-        except Exception:
-            pass
+        except Exception as exc:
+            print(f"[WARN] Reading preset DNA from {path.name}: {exc}", file=sys.stderr)
     if count == 0:
         return dict(DNA_DEFAULTS)
     return {k: round(accum[k] / count, 3) for k in DNA_KEYS}
@@ -97,8 +99,8 @@ def detect_engines_from_dir(preset_dir: Path) -> list[str]:
                     name = str(e).upper()
                     if name in KNOWN_ENGINES:
                         found.add(name)
-        except Exception:
-            pass
+        except Exception as exc:
+            print(f"[WARN] Reading engines from preset {path.name}: {exc}", file=sys.stderr)
     return sorted(found)
 
 

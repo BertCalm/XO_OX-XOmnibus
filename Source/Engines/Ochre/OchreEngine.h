@@ -328,7 +328,7 @@ struct OchreBody
         bodyMode3.reset();
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     OchreMode bodyMode1, bodyMode2, bodyMode3;
 };
 
@@ -397,7 +397,7 @@ struct OchreSympathetic
         activeStringCount = 0;
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     std::array<OchreMode, kNumStrings> resonators;
     int activeStringCount = 0;
 };
@@ -1020,8 +1020,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
 
     std::array<OchreVoice, kMaxVoices> voices;
     OchreSympathetic sympathetics;

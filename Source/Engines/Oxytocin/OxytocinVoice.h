@@ -174,7 +174,7 @@ private:
 
     float phase = 0.0f;
     float inc = 0.01f;
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 };
 
 /// OxytocinVoice — one polyphonic voice.

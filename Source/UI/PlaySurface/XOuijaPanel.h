@@ -12,7 +12,8 @@
       - Pre-generated 128x128 noise texture at opacity 0.05
       - Circle-of-fifths markers (13 positions) with tension coloring and
         parabolic arc layout, using HarmonicField math
-      - YES / NO labels in GalleryFonts::body italic 11px at opacity 0.20
+      - DEEP / FREE harmonic influence labels in GalleryFonts::body italic 11px at opacity 0.45,
+        plus translucent onboarding axis guides (KEY SELECTION / HARMONIC DEPTH) at opacity 0.12
       - Planchette (B042): translucent oval lens with Lissajous idle drift,
         spring lock-on, warm memory hold, and interior text
       - GestureButtonBar (Task 7): FREEZE/HOME/DRIFT buttons with bank system
@@ -2018,7 +2019,10 @@ private:
     }
 
     //==========================================================================
-    // YES / NO labels
+    // Harmonic influence labels + onboarding axis guides
+    // "YES" / "NO" replaced with "DEEP" / "FREE" (issue #887):
+    //   DEEP  — Y near top    — harmonic field strongly colors the pads
+    //   FREE  — Y near bottom — pads play freely without harmonic constraint
     //==========================================================================
     void paintYesNoLabels(juce::Graphics& g)
     {
@@ -2028,19 +2032,49 @@ private:
         g.setColour(labelColour);
         // Static local font — constructed once, shared across all paint() calls
         // Font size raised 9px → 11px for improved legibility (UIX Fix 2)
-        static const juce::Font kYesNoFont = GalleryFonts::body(11.0f).withStyle(juce::Font::italic);
-        g.setFont(kYesNoFont);
+        static const juce::Font kLabelFont = GalleryFonts::body(11.0f).withStyle(juce::Font::italic);
+        g.setFont(kLabelFont);
 
-        // YES — near the top of the component
-        const float yesY = b.getY() + 10.0f;
-        g.drawText("YES", juce::Rectangle<float>(b.getX(), yesY, b.getWidth(), 14.0f), juce::Justification::centred,
-                   false);
+        // DEEP — near the top of the harmonic surface (high influence)
+        const float deepY = b.getY() + 10.0f;
+        g.drawText("DEEP", juce::Rectangle<float>(b.getX(), deepY, b.getWidth(), 14.0f),
+                   juce::Justification::centred, false);
 
-        // NO — above the bottom reserved area
+        // FREE — above the bottom reserved area (no harmonic constraint)
         const float reservedBottom = static_cast<float>(kGestureBarH + kGoodbyeH);
-        const float noY = b.getBottom() - reservedBottom - 18.0f;
-        g.drawText("NO", juce::Rectangle<float>(b.getX(), noY, b.getWidth(), 14.0f), juce::Justification::centred,
-                   false);
+        const float freeY = b.getBottom() - reservedBottom - 18.0f;
+        g.drawText("FREE", juce::Rectangle<float>(b.getX(), freeY, b.getWidth(), 14.0f),
+                   juce::Justification::centred, false);
+
+        // ── Onboarding axis labels (translucent guide text, issue #887) ──────
+        // Watermark-style text that helps first-time users understand the axes.
+        {
+            static const juce::Font kGuideFont = GalleryFonts::body(10.0f);
+            g.setFont(kGuideFont);
+            g.setColour(juce::Colours::white.withAlpha(0.12f));
+
+            // X-axis label — centered horizontally, near the top edge
+            g.drawText(juce::CharPointer_UTF8("\xe2\x86\x90 KEY SELECTION \xe2\x86\x92"),
+                       juce::Rectangle<float>(b.getX(), b.getY() + 8.0f, b.getWidth(), 14.0f),
+                       juce::Justification::centred, false);
+
+            // Y-axis label — rotated vertically on the right edge, centered vertically
+            // on the harmonic surface (above the gesture bar).
+            const float surfaceBottom = b.getBottom() - reservedBottom;
+            const float surfaceCentreY = (b.getY() + surfaceBottom) * 0.5f;
+            const float rightEdgeX = b.getRight() - 12.0f;
+
+            juce::GlyphArrangement glyphs;
+            glyphs.addLineOfText(kGuideFont,
+                                 juce::CharPointer_UTF8("HARMONIC DEPTH \xe2\x86\x95"),
+                                 0.0f, 0.0f);
+
+            // Rotate -90° around the right-edge anchor, then translate to position
+            const juce::AffineTransform rotate =
+                juce::AffineTransform::rotation(-juce::MathConstants<float>::halfPi)
+                    .translated(rightEdgeX, surfaceCentreY);
+            glyphs.draw(g, rotate);
+        }
     }
 
     //==========================================================================

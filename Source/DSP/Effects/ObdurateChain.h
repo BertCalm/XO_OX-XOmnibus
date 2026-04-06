@@ -60,7 +60,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -178,7 +178,7 @@ private:
         int             chunkFillPos = 0;
         bool            chunkReady   = false;
         CytomicSVF      postLP;
-        double          sr = 44100.0;
+        double          sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -254,7 +254,7 @@ private:
         float           fbR      = 0.0f;
         float           delaySampL = 0.0f;
         float           delaySampR = 0.0f;
-        double          sr       = 44100.0;
+        double          sr       = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

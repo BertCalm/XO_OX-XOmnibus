@@ -21,7 +21,9 @@ from pathlib import Path
 # Constants
 # ---------------------------------------------------------------------------
 
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 DNA_KEYS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 ENTANGLED_PAIRS_TOTAL = 561
 
@@ -45,8 +47,8 @@ def load_presets(presets_dir: Path) -> list[dict]:
                 data = json.load(fh)
             data["_path"] = str(path)
             presets.append(data)
-        except Exception:
-            pass
+        except Exception as exc:
+            print(f"[WARN] Loading preset {path.name}: {exc}", file=sys.stderr)
     return presets
 
 
@@ -89,8 +91,8 @@ def build_snapshot(presets: list[dict], tools_count: int, docs_count: int) -> di
             if val is not None:
                 try:
                     dna_vectors[key].append(float(val))
-                except (TypeError, ValueError):
-                    pass
+                except (TypeError, ValueError) as exc:
+                    print(f"[WARN] Parsing DNA value for '{key}': {exc}", file=sys.stderr)
 
     dna_fleet_mean: dict[str, float] = {}
     dna_fleet_std: dict[str, float] = {}

@@ -24,7 +24,9 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 # Mood targets (min%, max%)
 # ---------------------------------------------------------------------------
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 
 TARGETS = {
     "Foundation":  (20, 30),

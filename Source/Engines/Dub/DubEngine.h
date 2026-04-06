@@ -99,7 +99,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float level = 0.0f;
     float depth = 0.0f;
     float decayCoeff = 0.99f;
@@ -243,7 +243,7 @@ private:
         return ((c3 * frac + c2) * frac + c1) * frac + c0;
     }
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     std::vector<float> bufferL, bufferR;
     int bufferSize = 0;
     int writePos = 0;
@@ -356,7 +356,7 @@ private:
         return output;
     }
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     std::vector<float> allpassL[kNumAllpass], allpassR[kNumAllpass];
     int apLengthL[kNumAllpass] = {};
     int apLengthR[kNumAllpass] = {};
@@ -493,6 +493,7 @@ public:
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
+        jassert(sr > 0.0);  // sr=0.0 sentinel: prepare() must be called before renderBlock()
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
@@ -1261,8 +1262,8 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     std::array<DubVoice, kMaxVoices> voices;
     uint64_t voiceAllocationCounter = 0; // Monotonic counter for LRU voice stealing
 

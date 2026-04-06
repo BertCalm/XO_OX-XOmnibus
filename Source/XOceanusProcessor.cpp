@@ -319,7 +319,7 @@ XOceanusProcessor::XOceanusProcessor()
     : AudioProcessor(BusesProperties()
                          .withInput("Input", juce::AudioChannelSet::stereo(), false)
                          .withOutput("Output", juce::AudioChannelSet::stereo(), true)),
-      apvts(*this, nullptr, "XOceanusParams", createParameterLayout()), macroSystem_(apvts),
+      apvts(*this, &undoManager, "XOceanusParams", createParameterLayout()), macroSystem_(apvts),
       couplingPresetManager(apvts,
                             [this](int slot) -> juce::String
                             {

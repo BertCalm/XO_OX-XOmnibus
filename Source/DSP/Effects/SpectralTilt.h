@@ -109,7 +109,7 @@ private:
     ShelfStage stages[kNumStages];
     float tilt = 0.0f;
     float mix = 1.0f;
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     void recalcCoeffs()
     {

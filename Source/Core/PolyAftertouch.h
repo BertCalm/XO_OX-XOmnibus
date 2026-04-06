@@ -131,6 +131,8 @@ public:
 
     void updateBlock(int numSamples)
     {
+        // sr is declared but currently unused — future rate-dependent smoothing placeholder
+        // jassert(sr > 0.0);  // Uncomment when sr-dependent smoothing is added
         for (int v = 0; v < kMaxVoices; ++v)
         {
             float target = rawPressure[static_cast<size_t>(v)] * globalSensitivity;
@@ -174,7 +176,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float globalSensitivity = 1.0f;
     float smoothAttack = 0.1f;
     float smoothRelease = 0.02f;

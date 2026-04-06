@@ -3,7 +3,7 @@
 #pragma once
 // SidebarPanel.h — Column C tabbed sidebar (320pt).
 //
-// Six tabs: PRESET | COUPLE | FX | PLAY | EXPORT | SETTINGS
+// Six tabs: PRESET | COUPLE | FX | PERFORM | EXPORT | SETTINGS
 //
 // Tab bar spec:
 //   Height:    32pt
@@ -69,8 +69,9 @@ public:
             btn->setClickingTogglesState(false);
             btn->setWantsKeyboardFocus(true);
 
-            // Apply WCAG A-01 compliant colours (audit fix A-01)
-            btn->setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::t3()));
+            // Apply WCAG AA compliant colours — inactive tab uses T2 (~4.6:1 on dark bg) not T3
+            // (#924: T3 #5E5C5A at 9pt gives ~2.8:1; T2 meets the 4.5:1 AA requirement)
+            btn->setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::t2()));
             btn->setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::textDark()));
 
             // Accessibility
@@ -227,7 +228,7 @@ public:
             bool isActive = (i == static_cast<int>(activeTab));
             tabButtons[i]->setColour(juce::TextButton::textColourOffId, isActive
                                                                             ? GalleryColors::get(GalleryColors::t1())
-                                                                            : GalleryColors::get(GalleryColors::t3()));
+                                                                            : GalleryColors::get(GalleryColors::t2())); // #924: T2 meets WCAG AA 4.5:1; T3 was ~2.8:1
             tabButtons[i]->setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::t1()));
         }
 
@@ -336,11 +337,12 @@ public:
             {
                 auto y = i * tabH;
                 bool active = (i == static_cast<int>(activeTab));
-                // Active: T1, inactive: T3
-                g.setColour(juce::Colour(active ? GalleryColors::t1() : GalleryColors::t3()));
+                // Active: T1, inactive: T2 (#924: T2 meets WCAG AA 4.5:1 in collapsed icon mode)
+                g.setColour(juce::Colour(active ? GalleryColors::t1() : GalleryColors::t2()));
                 g.setFont(GalleryFonts::display(11.0f));
-                // Use second character for PLAY ('L') to avoid collision with PRESET ('P')
-                juce::String icon(i == Play ? juce::String(tabLabels[i][1]) : juce::String(tabLabels[i][0]));
+                // Use 4th character for PERFORM ('F') to avoid collision with PRESET ('P') and EXPORT ('E').
+                // PERFORM[3]='F' is unique across all six tab labels in collapsed mode.
+                juce::String icon(i == Play ? juce::String(tabLabels[i][3]) : juce::String(tabLabels[i][0]));
                 g.drawText(icon, 0, y, getWidth(), tabH, juce::Justification::centred);
                 if (active)
                 {
@@ -473,7 +475,7 @@ private:
     static constexpr int kTabBarH = 32;
     static constexpr int kUnderlineH = 2;
 
-    static constexpr const char* tabLabels[NumTabs] = {"PRESET", "COUPLE", "FX", "PLAY", "EXPORT", "SETTINGS"};
+    static constexpr const char* tabLabels[NumTabs] = {"PRESET", "COUPLE", "FX", "PERFORM", "EXPORT", "SETTINGS"};
 
     //==========================================================================
     // Inactive tab text colour — WCAG AA on shellWhite (audit fix A-01)

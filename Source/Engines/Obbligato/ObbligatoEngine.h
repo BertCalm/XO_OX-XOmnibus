@@ -880,7 +880,7 @@ private:
 
     static constexpr int kNumVoices = 12; // maximum polyphony
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int rrVoiceIndex = 0; // next victim for round-robin voice stealing
     int rrCounter = 0;    // separate counter for round-robin routing mode
     float lastL = 0.0f;   // last rendered left sample (for coupling output)

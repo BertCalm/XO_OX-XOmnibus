@@ -242,8 +242,8 @@ def _analyze_xpm(xml_data: bytes) -> dict:
                 if rn:
                     try:
                         root_notes.append(int(rn))
-                    except ValueError:
-                        pass
+                    except ValueError as exc:
+                        print(f"[WARN] Parsing root note value '{rn}': {exc}", file=sys.stderr)
 
                 # Tuning: check Tune/tune attribute for extreme values
                 tune_str = layer.get('Tune', '') or layer.get('tune', '')
@@ -255,8 +255,8 @@ def _analyze_xpm(xml_data: bytes) -> dict:
                             tuning_anomalies.append(
                                 f"tune={tune_val:.1f} on pad {pad.get('number', '?')}"
                             )
-                    except ValueError:
-                        pass
+                    except ValueError as exc:
+                        print(f"[WARN] Parsing tune value '{tune_str}': {exc}", file=sys.stderr)
 
     # Velocity layer consistency: flag if spread > 1 across pads
     vel_consistent = True

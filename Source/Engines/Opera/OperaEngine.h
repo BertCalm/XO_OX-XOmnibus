@@ -186,7 +186,7 @@ struct OperaEnvelope
     Stage getStage() const noexcept { return stage; }
 
 private:
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use (guarded in recalcCoeffs)
     float atkTime = 0.005f, decTime = 0.3f, susLvl = 0.0f, relTime = 0.5f;
     float attackRate = 0.0f, decayCoeff = 0.0f, releaseCoeff = 0.0f;
 
@@ -1670,8 +1670,8 @@ private:
     // State
     //==========================================================================
 
-    float sr_ = 44100.0f;
-    float invSr_ = 1.0f / 44100.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
+    float invSr_ = 0.0f;  // Sentinel: computed from sr_ in prepare()
     int blockSize_ = 512;
 
     // Voice pool

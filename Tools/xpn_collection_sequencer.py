@@ -10,7 +10,8 @@ Pack spec JSON fields expected:
   name              str        — pack display name
   engines           list[str]  — engine IDs used (e.g. ["OBLONG", "OHM"])
   mood_distribution dict       — {mood: float} summing to ~1.0
-                                 moods: Foundation/Atmosphere/Entangled/Prism/Flux/Aether/Family
+                                 moods: Foundation/Atmosphere/Entangled/Prism/Flux/Aether/Family/
+                                        Submerged/Coupling/Crystalline/Deep/Ethereal/Kinetic/Luminous/Organic/Shadow
   dna_centroid      dict       — {brightness, warmth, movement, density, space, aggression}
                                  each 0.0–1.0
   engine_accent_color str      — hex accent color (informational, used in output)
@@ -42,7 +43,9 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 
 DNA_DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 
 # feliX axis: bright + warm + movement maps to feliX; dense + aggressive maps to Oscar
 FELIX_WEIGHTS = {"brightness": 0.35, "warmth": 0.25, "movement": 0.20,

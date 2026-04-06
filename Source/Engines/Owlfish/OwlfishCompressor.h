@@ -95,7 +95,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float envState = 0.0f; // envelope follower state (squared amplitude)
     float ratioActual = 1.0f;
     float thresholdDb = 0.0f;

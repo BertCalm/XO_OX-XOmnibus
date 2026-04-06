@@ -3,7 +3,7 @@
 > Extracted from CLAUDE.md to reduce context window size. This is the canonical color/identity reference.
 > For parameter prefixes, see CLAUDE.md (kept inline for daily development use).
 
-## Engine Modules (101 engines)
+## Engine Modules (77 implemented / 101 full fleet design)
 
 | Short Name | Source Instrument | Accent Color |
 |-----------|------------------|-------------|
@@ -91,20 +91,20 @@
 | OUBLIETTE | XOubliette | Dungeon Stone `#4A4A4A` |
 | OSMIUM | XOsmium | Dense Platinum `#E5E4E2` |
 | OROGEN | XOrogen | Tectonic Bronze `#CD7F32` |
-| OCULUS | XOculus | Neural Cyan `#00CED1` |
-| OUTAGE | XOutage | Static Grey `#808080` |
+| OCULUS | XOculus | Neural Spark `#00E5CC` |
+| OUTAGE | XOutage | Flickering Static `#A0A0A0` |
 | OVERRIDE | XOverride | Override Red `#CC0000` |
 | OCCLUSION | XOcclusion | Eclipse Black `#1A1A2E` |
 | OBDURATE | XObdurate | Granite `#696969` |
 | ORISON | XOrison | Stained Glass Gold `#CFB53B` |
 | OVERSHOOT | XOvershoot | Error Pink `#FF69B4` |
-| OBVERSE | XObverse | Mirror Silver `#C0C0C0` |
+| OBVERSE | XObverse | Mirror Silver `#D4D4D4` |
 | OXYMORON | XOxymoron | Paradox Magenta `#8B008B` |
 | ORNATE | XOrnate | Crystal Clear `#E0F7FA` |
 | ORATION | XOration | Vowel Orange `#FF8C42` |
 | OFFCUT | XOffcut | Artifact Green `#556B2F` |
 | OMEN | XOmen | Ghost Indigo `#3F0071` |
-| OPUS | XOpus | Psychedelic Amber `#FFBF00` |
+| OPUS | XOpus | Psychedelic Amber `#FFA500` |
 | OUTLAW | XOutlaw | Hendrix Purple `#6A0DAD` |
 | OUTBREAK | XOutbreak | Grunge Olive `#6B6B3E` |
 | ORRERY | XOrrery | Celestial Blue `#4682B4` |

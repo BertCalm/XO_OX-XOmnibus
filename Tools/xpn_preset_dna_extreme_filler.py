@@ -218,8 +218,8 @@ def load_all_xometa(presets_dir: Path) -> list[dict]:
                 data = json.load(f)
             data["_path"] = str(path)
             presets.append(data)
-        except (json.JSONDecodeError, OSError):
-            pass
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"[WARN] Loading preset {path.name}: {exc}", file=sys.stderr)
     return presets
 
 
@@ -231,8 +231,8 @@ def extract_dna_values(presets: list[dict], dimension: str) -> list[float]:
         if dimension in dna and dna[dimension] is not None:
             try:
                 values.append(float(dna[dimension]))
-            except (TypeError, ValueError):
-                pass
+            except (TypeError, ValueError) as exc:
+                print(f"[WARN] Parsing DNA value for dimension '{dimension}': {exc}", file=sys.stderr)
     return values
 
 

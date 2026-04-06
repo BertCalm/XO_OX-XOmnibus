@@ -60,7 +60,9 @@ from pathlib import Path
 # Constants
 # ---------------------------------------------------------------------------
 
-KNOWN_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"}
+KNOWN_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+               "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+               "Organic", "Shadow"}
 KNOWN_STATUSES = {"planned", "beta", "released"}
 
 # ---------------------------------------------------------------------------

@@ -62,7 +62,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -74,7 +74,7 @@ private:
         EnvelopeFollower envL, envR;
         float            revPosL = 0.0f;
         float            revPosR = 0.0f;
-        double           sr      = 44100.0;
+        double           sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -191,7 +191,7 @@ private:
         FractionalDelay delayL, delayR;
         float           fbL = 0.0f;
         float           fbR = 0.0f;
-        double          sr  = 44100.0;
+        double          sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -330,7 +330,7 @@ private:
         float          loopPosR    = 0.0f;
         float          freezeXfade = 0.0f;  // 0 = live, 1 = frozen loop
         bool           wasFrozen   = false;
-        double         sr          = 44100.0;
+        double         sr          = 0.0;  // Sentinel: must be set by prepare() before use
         std::vector<float> loopL_, loopR_, rvL_, rvR_;
 
         void prepare(double sampleRate, int maxBlockSize)

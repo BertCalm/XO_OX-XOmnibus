@@ -2535,7 +2535,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     const OstiPattern* pattern = nullptr;
     int currentStep = 0;
     double sampleCounter = 0.0;
@@ -3399,7 +3399,7 @@ private:
     OstiReverb reverb;
     OstiCompressor compressor;
     PolyAftertouch aftertouch;
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int blockSize = 512;
     std::atomic<int> activeVoiceCounter{0};
 

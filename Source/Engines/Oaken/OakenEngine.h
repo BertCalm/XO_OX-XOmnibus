@@ -250,7 +250,7 @@ private:
     float feedbackGain = 0.99f;
     float stringLPCoeff = 0.5f;
     float lpState = 0.0f;
-    float sr = 48000.0f; // cached from setFrequency for use in setStringType
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use // cached from setFrequency for use in setStringType
 };
 
 //==============================================================================
@@ -302,7 +302,7 @@ struct OakenBodyResonator
         mode3.reset();
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     CytomicSVF mode1, mode2, mode3;
 };
 
@@ -339,7 +339,7 @@ struct CuringModel
         curingAge = 0.0f;
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float curingAge = 0.0f;
     CytomicSVF curingLP;
 };
@@ -826,8 +826,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     float inverseSr_ = 1.0f / 48000.0f;
 
     std::array<OakenVoice, kMaxVoices> voices;

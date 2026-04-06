@@ -184,7 +184,9 @@ def dim_dna_variety(presets: list[dict]) -> tuple[float, dict]:
 # Dimension 3: Mood balance (Shannon entropy)
 # ---------------------------------------------------------------------------
 
-KNOWN_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"}
+KNOWN_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+               "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+               "Organic", "Shadow"}
 
 
 def dim_mood_balance(presets: list[dict]) -> tuple[float, dict]:

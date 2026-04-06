@@ -61,7 +61,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -76,7 +76,7 @@ private:
         float            zcPeriod      = 0.0f;
         float            zcCounter     = 0.0f;
         float            lastSample    = 0.0f;
-        double           sr            = 44100.0;
+        double           sr            = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -192,7 +192,7 @@ private:
         float            pllPhase     = 0.0f;
         float            inputPhase   = 0.0f;
         float            lastSample   = 0.0f;
-        double           sr           = 44100.0;
+        double           sr           = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -313,7 +313,7 @@ private:
         float           readPtrR     = 0.0f;
         float           readSpeed    = 1.0f; // 1.0 = normal, decels to 0 on stop
         bool            wasStopped   = false;
-        double          sr           = 44100.0;
+        double          sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

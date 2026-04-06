@@ -211,8 +211,8 @@ def load_programs_from_xpn(xpn_path: str) -> list[dict]:
                         note = int(note_el.text)
                         pad_id = f"A{int(pad_num):02d}"
                         pads_info[pad_id] = note
-                    except (ValueError, TypeError):
-                        pass
+                    except (ValueError, TypeError) as exc:
+                        print(f"[WARN] Parsing pad number/note for pad {pad_num}: {exc}", file=sys.stderr)
 
             programs.append({
                 "name": prog_name,

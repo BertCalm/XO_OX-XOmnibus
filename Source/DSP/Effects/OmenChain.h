@@ -62,7 +62,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     // Scratch buffer for dry path (parallel split)
@@ -81,7 +81,7 @@ private:
         FractionalDelay tank;
         float tankFeedback = 0.0f;
         CytomicSVF toneFilter;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // Mutually irrational allpass delay scales (spring dispersion signature)
         static constexpr float kAPFreqs[kNumAllPasses] = {
@@ -158,7 +158,7 @@ private:
         int   zeroCrossCount = 0;
         int   samplesSinceCross = 0;
         float trackedFreqHz = 110.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -240,7 +240,7 @@ private:
 
         FractionalDelay delayL, delayR;
         StandardLFO lfoL, lfoR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -295,7 +295,7 @@ private:
         Saturator satL, satR;
         CytomicSVF dynEqL, dynEqR;
         EnvelopeFollower envL, envR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

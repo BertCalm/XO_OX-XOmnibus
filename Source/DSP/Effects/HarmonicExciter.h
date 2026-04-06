@@ -96,7 +96,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float drive = 0.3f;
     float hpfFreq = 3500.0f;
     float tone = 0.7f;

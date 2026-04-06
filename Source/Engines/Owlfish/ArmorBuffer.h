@@ -212,7 +212,7 @@ private:
     float decayEnv = 0.0f;     // exponential decay envelope
     float decayCoeff = 0.999f; // per-sample decay multiplier
     float scatterRange = 0.0f; // pitch scatter in semitones
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // Simple LCG random (audio-thread safe)
     uint32_t rngState = 54321;

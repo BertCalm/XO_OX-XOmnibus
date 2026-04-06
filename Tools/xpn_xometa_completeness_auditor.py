@@ -21,7 +21,9 @@ from pathlib import Path
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
-VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"}
+VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+               "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+               "Organic", "Shadow"}
 
 SONIC_DNA_DIMENSIONS = {"brightness", "warmth", "density", "motion", "space", "character"}
 

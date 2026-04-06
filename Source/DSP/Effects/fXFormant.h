@@ -132,7 +132,7 @@ private:
         {440.0f, 1020.0f, 2240.0f, 3400.0f}, // U (boot)
     };
 
-    float sr_ = 44100.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
     float shift_ = 0.0f;
     float vowel_ = 0.0f; // 0=A, 1=E, 2=I, 3=O, 4=U
     float resonance_ = 8.0f;

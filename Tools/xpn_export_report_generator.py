@@ -115,8 +115,8 @@ def _wav_info(path: Path) -> dict:
                     return {"sample_rate": sample_rate, "bit_depth": bit_depth}
                 else:
                     f.seek(chunk_size, 1)
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[WARN] Reading WAV format info from {path}: {exc}", file=sys.stderr)
     return {}
 
 
@@ -155,8 +155,8 @@ def _xpm_stats(path: Path) -> dict:
                 layers = kg.findall(".//Layer")
                 max_layers = max(max_layers, len(layers))
             result["velocity_layers"] = max_layers
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[WARN] Parsing XPM program structure from {path}: {exc}", file=sys.stderr)
     return result
 
 

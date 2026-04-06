@@ -22,6 +22,38 @@ public:
     // Store the denormalized default value for Cmd+click reset.
     void setDefaultValue(double v) { defaultValue = v; }
 
+    // Modulation arc state — called by parent component's timer (e.g. a coupling
+    // polling timer) to show active modulation depth on this knob.
+    //
+    //   amount  — bipolar -1.0 to +1.0 depth as a fraction of the full arc sweep.
+    //             Pass 0.0f to clear the arc.
+    //   colour  — coupling-type colour from CouplingTypeColors::forType(); defaults
+    //             to XO standard mod blue when omitted.
+    //
+    // Data is stored in JUCE's NamedValueSet properties so drawRotarySlider can
+    // read it without any LookAndFeel signature change:
+    //   "modAmount"  → float  (-1..1)
+    //   "modColour"  → int64_t (ARGB as returned by Colour::getARGB())
+    void setModulation(float amount, juce::Colour colour = juce::Colour(0xFF4488FF))
+    {
+        const float  clamped = juce::jlimit(-1.0f, 1.0f, amount);
+        const auto   argb    = static_cast<int64_t>(colour.getARGB());
+        auto&        props   = getProperties();
+
+        const bool changed = (static_cast<float>(props["modAmount"]) != clamped)
+                          || (static_cast<int64_t>(props["modColour"]) != argb);
+
+        if (changed)
+        {
+            props.set("modAmount", clamped);
+            props.set("modColour", argb);
+            repaint();
+        }
+    }
+
+    // Convenience overload — clear any active modulation arc.
+    void clearModulation() { setModulation(0.0f); }
+
     // Wire up MIDI Learn for this knob.  Call after SliderAttachment is created.
     // The caller must store the returned listener pointer in a unique_ptr vector.
     MidiLearnMouseListener* setupMidiLearn(const juce::String& pid, MIDILearnManager& mgr)
@@ -118,7 +150,7 @@ private:
         // "ML" text badge — only on knobs >= 34px (hidden on header-size 32px knobs)
         if (isMapped && !isListening && getWidth() >= 34)
         {
-            g.setFont(GalleryFonts::label(6.0f));
+            g.setFont(GalleryFonts::label(8.0f));
             g.setColour(juce::Colour(0xFF4ADE80).withAlpha(0.70f));
             g.drawText("ML", b.getRight() - 15, b.getBottom() - 10, 13, 9, juce::Justification::centred);
         }

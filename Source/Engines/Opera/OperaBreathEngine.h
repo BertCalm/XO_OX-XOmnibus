@@ -260,8 +260,8 @@ private:
     static constexpr float kFormantGains[kMaxFormants] = {1.0f, 0.7f, 0.4f};
 
     //==========================================================================
-    float sr = 44100.0f;
-    float invSr = 1.0f / 44100.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use (guarded with fallback)
+    float invSr = 0.0f;  // Sentinel: computed from sr in prepare()
 
     // LCG noise state (Knuth TAOCP, same as StandardLFO S&H)
     uint32_t noiseState = 48271u;

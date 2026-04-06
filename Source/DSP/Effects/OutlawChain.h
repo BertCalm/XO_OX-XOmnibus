@@ -64,7 +64,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -76,7 +76,7 @@ private:
         SchmittTrigger   zc; // zero-crossing detector (low hysteresis = glitchy)
         PolyBLEP         squarePLL;
         PolyBLEP         squareSub;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // Pitch tracking state
         float   lastSample      = 0.0f;
@@ -154,7 +154,7 @@ private:
         EnvelopeFollower env;
         CytomicSVF       svf;
         ParameterSmoother freqSmoother;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -248,7 +248,7 @@ private:
     {
         StandardLFO lfoL;
         StandardLFO lfoR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -314,7 +314,7 @@ private:
         StandardLFO      wowFlutter;
         CytomicSVF       darkFilter;
         Saturator        tapeSat;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // Spacing ratios for even / triplet / golden-ratio modes
         static constexpr float kEvenRatios[kNumHeads]      = {0.25f, 0.5f, 0.75f, 1.0f};

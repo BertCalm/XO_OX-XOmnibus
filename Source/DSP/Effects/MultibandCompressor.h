@@ -243,7 +243,7 @@ private:
     //--------------------------------------------------------------------------
     static constexpr int kNumBands = 3;
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // Crossover filter state: [channel][stage]
     // 0-1: low crossover LP stages, 2-3: high crossover LP stages

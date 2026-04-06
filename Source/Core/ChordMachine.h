@@ -354,6 +354,7 @@ public:
     void processBlock(const juce::MidiBuffer& inputMidi, std::array<juce::MidiBuffer, kOutputMidiSlots>& outputMidi,
                       int numSamples)
     {
+        jassert(sr > 0.0);  // sr=0.0 sentinel: prepare() must be called before processBlock()
         for (auto& buf : outputMidi)
             buf.clear();
 
@@ -1155,7 +1156,7 @@ private:
     int enoVoicingOffset = 0;  // added to voicing index (survives APVTS sync)
     uint32_t enoRngState = 42; // xorshift32 seed
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // External MIDI clock state (#359) — audio thread only
     int externalClockPulseCount = 0; // 0–5; resets to 0 at each 16th-note boundary

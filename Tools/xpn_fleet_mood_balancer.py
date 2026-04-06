@@ -30,6 +30,15 @@ VALID_MOODS = [
     "Flux",
     "Aether",
     "Family",
+    "Submerged",
+    "Coupling",
+    "Crystalline",
+    "Deep",
+    "Ethereal",
+    "Kinetic",
+    "Luminous",
+    "Organic",
+    "Shadow",
 ]
 
 DEFAULT_TARGETS = {

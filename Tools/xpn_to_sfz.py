@@ -146,8 +146,8 @@ def list_xpn_programs(xpn_path: Path) -> List[str]:
                         name_el = prog_el.find("ProgramName")
                         pname = safe_str(name_el, Path(name).stem)
                         programs.append(pname)
-                except ET.ParseError:
-                    pass
+                except ET.ParseError as exc:
+                    print(f"[WARN] Parsing XPM file {name} for keygroup program list: {exc}", file=sys.stderr)
     return programs
 
 

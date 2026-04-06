@@ -702,7 +702,7 @@ private:
         }
     };
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     CombFilter combL[4], combR[4];
     AllpassFilter apL[2], apR[2];
 };
@@ -759,7 +759,7 @@ private:
     float bufL[kMaxDelay] = {};
     float bufR[kMaxDelay] = {};
     int writePos = 0;
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 };
 
 //==============================================================================
@@ -1433,6 +1433,7 @@ public:
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
+        jassert(sr > 0.0);  // sr=0.0 sentinel: prepare() must be called before renderBlock()
         if (numSamples <= 0 || pSource == nullptr)
             return;
 
@@ -2196,7 +2197,7 @@ private:
 
     //-- State -----------------------------------------------------------------
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // Voice pool
     std::array<OpalCloudVoice, kOpalMaxClouds> voices{};

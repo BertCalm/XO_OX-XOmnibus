@@ -30,6 +30,7 @@ import json
 import math
 import os
 import struct
+import sys
 import wave
 from pathlib import Path
 from typing import Optional
@@ -257,8 +258,8 @@ def load_fingerprints(directory: str) -> dict:
     for wav in sorted(d.glob("*.wav")) + sorted(d.glob("*.WAV")):
         try:
             result[wav.name] = compute_fingerprint(str(wav))
-        except (ValueError, OSError):
-            pass
+        except (ValueError, OSError) as exc:
+            print(f"[WARN] Computing spectral fingerprint for {wav.name}: {exc}", file=sys.stderr)
     return result
 
 

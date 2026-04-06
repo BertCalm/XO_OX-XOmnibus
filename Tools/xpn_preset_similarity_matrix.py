@@ -22,7 +22,9 @@ from typing import Dict, List, Optional, Tuple
 # ─── Constants ────────────────────────────────────────────────────────────────
 
 DNA_KEYS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 BLOCK_CHARS = " ░▒▓█"  # 5 levels: 0–0.2, 0.2–0.4, 0.4–0.6, 0.6–0.8, 0.8–1.0
 
 # ─── DNA helpers ──────────────────────────────────────────────────────────────

@@ -151,7 +151,7 @@ private:
     };
     Grain grains[kMaxGrains];
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float spawnCounter = 0.0f;
     float spawnInterval = 4410.0f; // samples between spawns
     int grainSizeSamples = 200;

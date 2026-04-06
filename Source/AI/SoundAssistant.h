@@ -877,7 +877,7 @@ private:
                "Reverb, FreqShifter, Modulation, GranularSmear, HarmonicExciter, "
                "StereoSculptor, PsychoacousticWidth, MultibandOTT, BusCompressor, "
                "FXSequencer. "
-               "Moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether. "
+               "Moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic, Shadow. "
                "Sonic DNA: brightness(0-1), warmth(0-1), movement(0-1), "
                "density(0-1), space(0-1), aggression(0-1). ";
     }
@@ -943,7 +943,7 @@ private:
             "Generate a complete XOceanus recipe as JSON with these EXACT fields:\n"
             "{\n"
             "  \"name\": \"2-3 word evocative name, max 30 chars\",\n"
-            "  \"mood\": \"Foundation|Atmosphere|Entangled|Prism|Flux|Aether\",\n"
+            "  \"mood\": \"Foundation|Atmosphere|Entangled|Prism|Flux|Aether|Family|Submerged|Coupling|Crystalline|Deep|Ethereal|Kinetic|Luminous|Organic|Shadow\",\n"
             "  \"description\": \"One sentence describing the sound\",\n"
             "  \"explanation\": \"Why you chose these engines and settings\",\n"
             "  \"engines\": [{\"id\": \"EngineId\", \"parameters\": {\"prefix_param\": value}}],\n"
@@ -1007,12 +1007,12 @@ private:
         return buildSystemContext() + "\n\n" + contextToString(context) +
                "\n\n"
                "Name this sound. Return JSON: {\"name\": \"2-3 words, evocative, "
-               "max 30 chars\", \"description\": \"1 sentence\", \"mood\": \"one of 6 moods\", "
+               "max 30 chars\", \"description\": \"1 sentence\", \"mood\": \"one of 16 moods\", "
                "\"tags\": [\"tag1\", \"tag2\", \"tag3\", \"tag4\", \"tag5\"]}.\n\n"
                "RULES:\n"
                "- No synth jargon in the name (no 'FM', 'LFO', 'wavetable').\n"
                "- Name should evoke what the sound FEELS like, not what makes it.\n"
-               "- Mood must be exactly one of: Foundation, Atmosphere, Entangled, Prism, Flux, Aether.\n"
+               "- Mood must be exactly one of: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic, Shadow.\n"
                "- Tags should be useful for search (instrument type, genre, mood, texture).\n";
     }
 
@@ -1161,7 +1161,7 @@ private:
             "Generate a complete XOceanus recipe as JSON with these EXACT fields:\n"
             "{\n"
             "  \"name\": \"2-3 word evocative name, max 30 chars\",\n"
-            "  \"mood\": \"Foundation|Atmosphere|Entangled|Prism|Flux|Aether\",\n"
+            "  \"mood\": \"Foundation|Atmosphere|Entangled|Prism|Flux|Aether|Family|Submerged|Coupling|Crystalline|Deep|Ethereal|Kinetic|Luminous|Organic|Shadow\",\n"
             "  \"description\": \"One sentence describing the sound\",\n"
             "  \"explanation\": \"Why you chose these engines and settings, how they match the reference\",\n"
             "  \"engines\": [{\"id\": \"EngineId\", \"parameters\": {\"prefix_param\": value}}],\n"
@@ -1221,7 +1221,9 @@ private:
 
         // Validate mood
         static const juce::StringArray validMoods{"Foundation", "Atmosphere", "Entangled", "Prism",
-                                                  "Flux",       "Aether",     "Family",    "Submerged"};
+                                                  "Flux",       "Aether",     "Family",    "Submerged",
+                                                  "Coupling",   "Crystalline","Deep",      "Ethereal",
+                                                  "Kinetic",    "Luminous",   "Organic",   "Shadow"};
         if (!validMoods.contains(result.recipe.mood))
         {
             result.validationWarnings.add("Mood '" + result.recipe.mood + "' is not valid. Defaulting to Atmosphere.");

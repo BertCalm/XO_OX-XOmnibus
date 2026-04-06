@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
-// PlayControlPanel.h — Column C, C4 "PLAY" tab content panel (320pt wide).
+// PlayControlPanel.h — Column C, C4 "PERFORM" tab content panel (320pt wide).
 //
 // Layout top-to-bottom:
 //   1. Expression Strip  (320 × 160pt) — Mod Wheel + Pitch Bend side by side
@@ -435,7 +435,7 @@ private:
         }
 
         // Label below strip
-        g.setFont(GalleryFonts::label(7.0f));
+        g.setFont(GalleryFonts::label(8.0f));
         g.setColour(get(textMid()));
         g.drawText(label, juce::Rectangle<float>(x - 8.0f, y + h + 4.0f, w + 16.0f, 10.0f),
                    juce::Justification::centred, false);
@@ -485,7 +485,7 @@ private:
         g.fillRoundedRectangle(x + 2.0f, handleY - 2.0f, w - 4.0f, 4.0f, 2.0f);
 
         // Label below
-        g.setFont(GalleryFonts::label(7.0f));
+        g.setFont(GalleryFonts::label(8.0f));
         g.setColour(get(textMid()));
         g.drawText(label, juce::Rectangle<float>(x - 8.0f, y + h + 4.0f, w + 16.0f, 10.0f),
                    juce::Justification::centred, false);
@@ -634,9 +634,12 @@ private:
 
             juce::Colour textCol = isActive ? juce::Colours::white : accent.withAlpha(0.55f);
 
-            g.setFont(GalleryFonts::label(juce::jmax(6.5f, pillH * 0.34f)));
+            g.setFont(GalleryFonts::label(juce::jmax(8.0f, pillH * 0.34f)));
             g.setColour(textCol);
-            g.drawText(scaleNames[i], pill, juce::Justification::centred, true);
+            {
+                auto displayScale = GalleryUtils::ellipsizeText(g.getCurrentFont(), scaleNames[i], pill.getWidth() - 4.0f);
+                g.drawText(displayScale, pill, juce::Justification::centred, false);
+            }
         }
 
         if (hasKeyboardFocus(true))

@@ -71,7 +71,8 @@ PLACEHOLDER_DNA: Dict[str, float] = {k: 0.5 for k in DNA_KEYS}
 ARC_OPENING  = {"Foundation"}
 ARC_MIDDLE   = {"Entangled", "Prism", "Flux"}
 ARC_CLOSING  = {"Atmosphere", "Aether"}
-ALL_MOODS    = ARC_OPENING | ARC_MIDDLE | ARC_CLOSING | {"Family"}
+ALL_MOODS    = ARC_OPENING | ARC_MIDDLE | ARC_CLOSING | {"Family", "Submerged", "Coupling",
+               "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic", "Shadow"}
 
 MANIFEST_PATH = "bundle_manifest.json"
 

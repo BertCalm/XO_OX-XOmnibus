@@ -99,8 +99,8 @@ def read_smpl_loop_points(path: str) -> list:
             pos += 8 + chunk_size
             if chunk_size % 2 != 0:
                 pos += 1  # word-align
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[WARN] Parsing SMPL loop chunk from {path}: {exc}", file=sys.stderr)
     return loops
 
 
@@ -425,8 +425,8 @@ def _get_n_frames(wav_path: str) -> int:
                 f.seek(csize, 1)
                 if csize % 2 != 0:
                     f.seek(1, 1)
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[WARN] Scanning data chunk for frame count in {wav_path}: {exc}", file=sys.stderr)
     return 0
 
 
@@ -559,8 +559,8 @@ def main() -> int:
                 tree = ET.parse(xpm_path)
                 root = tree.getroot()
                 all_programs.add(root.get("Name", Path(xpm_path).stem))
-            except ET.ParseError:
-                pass
+            except ET.ParseError as exc:
+                print(f"[WARN] Parsing XPM file {Path(xpm_path).name} for program count: {exc}", file=sys.stderr)
 
         if args.format == "json":
             output = {

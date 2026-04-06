@@ -181,7 +181,7 @@ public:
 private:
     State state = State::Idle;
     float level = 0.0f;
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     float attackRate = 0.0f; // per-sample linear increment
     float decayRate = 0.0f;  // per-sample exponential coefficient

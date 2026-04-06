@@ -76,8 +76,8 @@ def load_presets(preset_dir: Path) -> list[dict]:
                 "mood": data.get("mood", ""),
                 "dna": {d: float(dna[d]) for d in DNA_DIMS},
             })
-        except (json.JSONDecodeError, KeyError, TypeError, ValueError):
-            pass
+        except (json.JSONDecodeError, KeyError, TypeError, ValueError) as exc:
+            print(f"[WARN] Loading preset for rebalancing from {path.name}: {exc}", file=sys.stderr)
     return presets
 
 

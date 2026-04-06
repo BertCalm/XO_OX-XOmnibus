@@ -114,7 +114,7 @@ private:
     // Base lengths at 48kHz: 1557, 1617, 1491, 1422 (classic Schroeder ratios)
     static constexpr std::array<int, kNumCombs> kBaseCombMs = {32, 34, 31, 29}; // ms
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float roomSize = 0.4f;
     float decayAmt = 0.4f;
 

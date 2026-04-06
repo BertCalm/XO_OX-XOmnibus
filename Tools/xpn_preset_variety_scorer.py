@@ -33,7 +33,9 @@ from typing import Optional
 
 DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 
 ALL_ENGINES = [
     "OBLONG", "OVERBITE", "OVERDUB", "ODYSSEY", "ONSET", "OPAL",

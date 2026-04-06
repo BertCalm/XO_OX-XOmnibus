@@ -54,7 +54,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -136,7 +136,7 @@ private:
         float vowelMorph       = 0.0f;  // 0=A, 1=B
         float stepAccum        = 0.0f;
         int   numSteps         = 4;     // 4, 6, 8, or 16
-        double sr              = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -227,7 +227,7 @@ private:
         StandardLFO    lfoR;
         ParameterSmoother freqSmootherL;
         ParameterSmoother freqSmootherR;
-        double         sr = 44100.0;
+        double         sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -325,7 +325,7 @@ private:
         FractionalDelay mainDelay;
         CytomicSVF      tapDiffusers[kMaxTaps]; // allpass per tap
         float           feedback    = 0.0f;
-        double          sr          = 44100.0;
+        double          sr          = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

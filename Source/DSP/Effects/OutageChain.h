@@ -57,7 +57,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -122,7 +122,7 @@ private:
         EnvelopeFollower envFollow;
         CytomicSVF       lpg;         // Vactrol LPG filter
         float            smoothedMod = 0.0f;
-        double           sr          = 44100.0;
+        double           sr          = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -176,7 +176,7 @@ private:
     struct MultiHeadStage
     {
         CircularBuffer  circBuf;
-        double          sr        = 44100.0;
+        double          sr = 0.0;  // Sentinel: must be set by prepare() before use
         // 3 read-head speed multipliers: 0.5x, -1.0x (backward), 2.0x
         float           head1Phase = 0.0f; // forward 0.5x
         float           head3Phase = 0.0f; // forward 2.0x

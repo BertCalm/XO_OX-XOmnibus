@@ -798,6 +798,7 @@ public:
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
+        jassert(sr > 0.0);  // sr=0.0 sentinel: prepare() must be called before renderBlock()
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
@@ -1853,8 +1854,8 @@ private:
     // State
     //==========================================================================
 
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     float smoothCoeff = 0.0f;
     float crossfadeRate = 0.0f;
     uint64_t voiceCounter = 0;

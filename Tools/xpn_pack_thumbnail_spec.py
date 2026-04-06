@@ -177,6 +177,14 @@ MOOD_PALETTES = {
         "gradient": "Warm amber radial gradient from golden center, cooling to soft terracotta at edges.",
         "typography_color": "#3C2010",
     },
+    "Shadow": {
+        "description": "Deep void indigo and charcoal. Menacing, tension, chromatic anxiety, predatory.",
+        "primary_bg": "#0A0810",
+        "accent_1": "#3A0A5A",
+        "accent_2": "#1A1428",
+        "gradient": "Near-black radial gradient with the faintest deep violet at center, collapsing to void at edges.",
+        "typography_color": "#8A7AAA",
+    },
 }
 
 # ---------------------------------------------------------------------------
@@ -383,7 +391,9 @@ def main():
     parser.add_argument("--engines", nargs="+", required=True, metavar="ENGINE",
                         help="Engine names, e.g. OPAL ONSET OVERLAP")
     parser.add_argument("--mood", default="Foundation",
-                        choices=["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"],
+                        choices=["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+                                 "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic",
+                                 "Luminous", "Organic", "Shadow"],
                         help="Dominant mood category")
     parser.add_argument("--brightness", type=float, default=0.5,
                         help="DNA brightness centroid 0.0–1.0 (default 0.5)")

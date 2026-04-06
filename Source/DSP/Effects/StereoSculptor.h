@@ -120,7 +120,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float lowWidth = 0.0f;  // Mono bass by default
     float midWidth = 1.0f;  // Natural mids
     float highWidth = 1.5f; // Wide highs

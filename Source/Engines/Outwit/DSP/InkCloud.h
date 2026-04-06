@@ -81,7 +81,7 @@ public:
     bool isIdle() const noexcept { return envelope < 0.00001f; }
 
 private:
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float decayTime = 0.08f;
     float decayCoeff = 0.99f;
     float envelope = 0.0f;

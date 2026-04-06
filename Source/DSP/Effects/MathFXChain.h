@@ -55,6 +55,7 @@ public:
                       // Attractor Drive
                       float adBifurcation, float adDriveBase, float adSpeed, float adMix)
     {
+        juce::ScopedNoDenormals noDenormals; // Issue #902: FTZ/DAZ protection (missed in original Wave 1 chains)
         entropyCooler.processBlock(L, R, numSamples, ecStability, ecCoolRate, ecThreshold, ecMix);
         voronoiShatter.processBlock(L, R, numSamples, vsCrystallize, vsTension, vsGrainSize, vsMix);
         quantumSmear.processBlock(L, R, numSamples, qsObservation, qsFeedback, qsDelayCenter, qsMix);

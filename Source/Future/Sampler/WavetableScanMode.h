@@ -122,7 +122,7 @@ private:
     static constexpr int kNumWaves = 8;
     static constexpr int kWaveSize = 256;
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float scanPos = 0.0f;
     float scanSpeed = 0.0f;
     float quantize = 0.3f;

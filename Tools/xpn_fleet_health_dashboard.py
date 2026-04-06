@@ -32,7 +32,9 @@ PRESETS_ROOT = os.path.join(REPO_ROOT, "Presets", "XOceanus")
 ENTANGLED_DIR = os.path.join(PRESETS_ROOT, "Entangled")
 SNAPSHOT_PATH = os.path.join(REPO_ROOT, "Docs", "snapshots", "fleet_health_latest.json")
 
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 
 DNA_DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 

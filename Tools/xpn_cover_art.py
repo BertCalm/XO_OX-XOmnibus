@@ -41,6 +41,7 @@ import json
 import math
 import os
 import random
+import sys
 from datetime import date
 from pathlib import Path
 
@@ -755,8 +756,8 @@ def _add_text_overlay(img, engine_def, pack_name, preset_count, version):
             if os.path.exists(path):
                 try:
                     return ImageFont.truetype(path, size_pt)
-                except Exception:
-                    pass
+                except Exception as exc:
+                    print(f"[WARN] Loading font {path}: {exc}", file=sys.stderr)
         return ImageFont.load_default()
 
     font_large  = try_font(int(size * 0.055))   # Pack title

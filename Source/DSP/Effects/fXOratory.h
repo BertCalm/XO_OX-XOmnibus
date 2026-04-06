@@ -411,7 +411,7 @@ private:
     };
 
     //--------------------------------------------------------------------------
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // Delay buffers
     std::vector<float> delayL;

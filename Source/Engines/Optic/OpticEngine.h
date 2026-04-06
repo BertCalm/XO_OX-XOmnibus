@@ -224,7 +224,7 @@ public:
     float getTotalEnergy() const noexcept { return totalEnergy; }
 
 private:
-    double cachedSampleRate = 44100.0;
+    double cachedSampleRate = 0.0;  // Sentinel: must be set by prepare() before use
 
     CytomicSVF bandpassFilters[kNumBands];   // One bandpass per frequency band
     CytomicSVF envelopeFollowers[kNumBands]; // One lowpass envelope follower per band
@@ -399,7 +399,7 @@ public:
 private:
     static constexpr double kTwoPi = 6.28318530718;
 
-    double cachedSampleRate = 44100.0;
+    double cachedSampleRate = 0.0;  // Sentinel: must be set by prepare() before use
     double phase = 0.0;                  // Main pulse phase [0, 1)
     double driftOscillatorPhase = 0.0;   // Slow organic drift LFO phase [0, 1)
     double subdivisionAccumulator = 0.0; // Subdivision phase accumulator
@@ -1011,7 +1011,7 @@ private:
     //  S T A T E
     //==========================================================================
 
-    double cachedSampleRate = 44100.0;
+    double cachedSampleRate = 0.0;  // Sentinel: must be set by prepare() before use
 
     // ---- DSP modules ----
     OpticBandAnalyzer analyzer;                                              // 8-band spectral decomposition

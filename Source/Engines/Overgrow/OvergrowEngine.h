@@ -130,7 +130,7 @@ struct KarplusStrongString
         filterState = 0.0f;
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float delaySamples = 100.0f;
     float dampCoeff = 0.5f;
     float feedback = 0.995f;
@@ -215,7 +215,7 @@ struct RunnerGenerator
         runnerString.reset();
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float runnerDecay_ = 0.9995f; // per-sample fade coefficient, SR-scaled in prepare()
     KarplusStrongString runnerString;
     bool active = false;
@@ -781,8 +781,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
 
     std::array<OvergrowVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

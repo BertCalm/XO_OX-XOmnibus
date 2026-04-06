@@ -58,6 +58,7 @@ public:
                       // Submersion
                       int smStages, float smLFORate, float smLFODepth, float smLoopFB, float smClock, float smMix)
     {
+        juce::ScopedNoDenormals noDenormals; // Issue #902: FTZ/DAZ protection (missed in original Wave 1 chains)
         anomaly.processBlock(L, R, numSamples, anTextureBlend, anReverbSize, anTremoloRate, anTimeSlip, anSlipSpeed,
                              anMix);
         dissolving.processBlock(L, R, numSamples, daChance, daDissolve, daGrainMix, daReverbMix, daMix);

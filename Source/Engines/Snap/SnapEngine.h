@@ -149,7 +149,7 @@ public:
 
 private:
     std::array<float, kMaxDelaySamples> delayBuffer{};
-    double sampleRate = 44100.0;
+    double sampleRate = 0.0;  // Sentinel: must be set by prepare() before use
     double delaySamples = 100.0;
     float damping = 0.5f;
     float previousOutput = 0.0f;
@@ -1183,8 +1183,8 @@ private:
     std::atomic<int> activeVoiceCount{0};
 
     // ---- Audio engine state ----
-    double sampleRate = 44100.0;
-    float sampleRateFloat = 44100.0f;
+    double sampleRate = 0.0;  // Sentinel: must be set by prepare() before use
+    float sampleRateFloat = 0.0f;  // Sentinel: must be set by prepare() before use
     std::array<SnapVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
 

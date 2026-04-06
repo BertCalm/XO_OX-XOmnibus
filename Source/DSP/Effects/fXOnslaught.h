@@ -384,7 +384,7 @@ private:
     static constexpr int kNumAPFs = 4;
     static constexpr int kGrainSize = 2048;
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // 4-stage allpass cascade (Flow state)
     CytomicSVF apfL[kNumAPFs];

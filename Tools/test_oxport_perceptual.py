@@ -88,8 +88,8 @@ class _TempWav:
     def __exit__(self, *_) -> None:
         try:
             os.unlink(self._path)
-        except OSError:
-            pass
+        except OSError as exc:
+            print(f"[WARN] Removing temp WAV file {self._path}: {exc}", file=sys.stderr)
 
 
 # ---------------------------------------------------------------------------

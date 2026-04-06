@@ -358,7 +358,7 @@ public:
             barWidth = 4.0f;
 
         // ── 1. Left label ─────────────────────────────────────────────────
-        g.setFont(GalleryFonts::label(juce::jmax(7.0f, barH * 0.32f)));
+        g.setFont(GalleryFonts::label(juce::jmax(8.0f, barH * 0.32f)));
         g.setColour(colLeft);
         g.drawText(lblLeft, juce::Rectangle<float>(b.getX(), b.getY(), labelW - 4.0f, barH),
                    juce::Justification::centredRight, true);

@@ -210,7 +210,10 @@ public:
             int kitY = kHeaderH + 20;
             g.setFont(GalleryFonts::display(13.0f));
             g.setColour(get(textDark()));
-            g.drawText(kitNameCache, 12, kitY, getWidth() - 24, 18, juce::Justification::centredLeft, true);
+            {
+                auto displayKitName = GalleryUtils::ellipsizeText(g.getCurrentFont(), kitNameCache, (float)(getWidth() - 24));
+                g.drawText(displayKitName, 12, kitY, getWidth() - 24, 18, juce::Justification::centredLeft, false);
+            }
 
             // Engine chips row
             paintEngineChips(g, kHeaderH + 42);

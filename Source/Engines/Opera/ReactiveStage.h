@@ -287,8 +287,8 @@ private:
         {0.5f, 0.5f, 0.5f, 0.5f}, {0.5f, -0.5f, 0.5f, -0.5f}, {0.5f, 0.5f, -0.5f, -0.5f}, {0.5f, -0.5f, -0.5f, 0.5f}};
 
     //==========================================================================
-    float sr = 44100.0f;
-    float invSr = 1.0f / 44100.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use (guarded with fallback)
+    float invSr = 0.0f;  // Sentinel: computed from sr in prepare()
 
     // Delay line lengths (in samples, scaled to actual sample rate)
     int delayLengths[kNumLines] = {};

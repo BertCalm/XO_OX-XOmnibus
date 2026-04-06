@@ -20,7 +20,9 @@ from pathlib import Path
 
 # ── Schema constants ──────────────────────────────────────────────────────────
 
-VALID_MOODS = {"foundation", "atmosphere", "entangled", "prism", "flux", "aether", "family"}
+VALID_MOODS = {"foundation", "atmosphere", "entangled", "prism", "flux", "aether", "family",
+               "submerged", "coupling", "crystalline", "deep", "ethereal", "kinetic", "luminous",
+               "organic", "shadow"}
 
 SONIC_DNA_DIMENSIONS = {"brightness", "warmth", "movement", "density", "space", "aggression"}
 

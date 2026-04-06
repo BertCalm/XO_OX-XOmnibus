@@ -37,7 +37,9 @@ from typing import Any, Dict, List, Optional, Tuple
 
 DNA_DIMENSIONS = ("brightness", "warmth", "movement", "density", "space", "aggression")
 
-VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"}
+VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+               "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+               "Organic", "Shadow"}
 
 ERROR = "ERROR"
 WARN  = "WARN"

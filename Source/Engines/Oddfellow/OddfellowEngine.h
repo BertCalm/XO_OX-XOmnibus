@@ -158,7 +158,7 @@ struct WurliReedModel
         warblePhase = 0.0f;
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float vel = 0.0f;
     float phases[kNumPartials] = {};
     float partialLevels[kNumPartials] = {};
@@ -668,8 +668,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
 
     std::array<OddfellowVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

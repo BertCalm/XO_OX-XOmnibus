@@ -19,9 +19,9 @@ namespace xoceanus
 //
 // Features:
 //   - Real-time text search (filters name, tags, description, engine names)
-//   - Mood category filter buttons (all 15 moods: Foundation, Atmosphere, Entangled, Prism,
+//   - Mood category filter buttons (all 16 moods: Foundation, Atmosphere, Entangled, Prism,
 //     Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic,
-//     Luminous, Organic)
+//     Luminous, Organic, Shadow)
 //   - Scrollable preset list with name, mood, engine tags
 //   - DNA-based "Find Similar" button (6D Euclidean distance)
 //   - Favorites system: star button on each row, "Favorites" view filter (#718)
@@ -113,7 +113,7 @@ public:
         // --- Mood filter buttons ---
         static const char* moods[] = {"All",      "Foundation", "Atmosphere", "Entangled", "Prism",       "Flux",
                                       "Aether",   "Family",     "Submerged",  "Coupling",  "Crystalline", "Deep",
-                                      "Ethereal", "Kinetic",    "Luminous",   "Organic"};
+                                      "Ethereal", "Kinetic",    "Luminous",   "Organic",   "Shadow"};
 
         for (auto* mood : moods)
         {
@@ -425,7 +425,10 @@ public:
         // Preset name — Inter 11.5px (right margin extended for hex + star)
         g.setFont(GalleryFonts::body(11.5f));
         g.setColour(GalleryColors::get(GalleryColors::textDark()));
-        g.drawText(preset.name, 22, 0, w - 72, h / 2, juce::Justification::centredLeft, true);
+        {
+            auto displayName = GalleryUtils::ellipsizeText(g.getCurrentFont(), preset.name, (float)(w - 72));
+            g.drawText(displayName, 22, 0, w - 72, h / 2, juce::Justification::centredLeft, false);
+        }
 
         // Engine tag badge — JetBrains Mono 9px, below preset name
         g.setFont(GalleryFonts::value(9.0f));
@@ -437,7 +440,10 @@ public:
             if (eng.isNotEmpty())
                 meta += juce::String::fromUTF8("  \xc2\xb7  ") + eng; // middle dot separator
         }
-        g.drawText(meta, 22, h / 2, w - 72, h / 2, juce::Justification::centredLeft, true);
+        {
+            auto displayMeta = GalleryUtils::ellipsizeText(g.getCurrentFont(), meta, (float)(w - 72));
+            g.drawText(displayMeta, 22, h / 2, w - 72, h / 2, juce::Justification::centredLeft, false);
+        }
 
         // Bottom separator
         g.setColour(GalleryColors::get(GalleryColors::borderGray()).withAlpha(0.25f));
@@ -635,10 +641,12 @@ private:
             }
         }
 
-        // Take a snapshot of the library so the background thread works on an
-        // immutable copy and never races against preset library mutations.
-        const std::vector<PresetData> librarySnapshot = presetManager.getLibrary();
-        const int totalCount = static_cast<int>(librarySnapshot.size());
+        // Grab a shared_ptr snapshot of the library — O(1) reference-counted
+        // pointer copy, NOT a 19 MB vector copy.  The background thread holds
+        // this shared_ptr for the lifetime of its filter pass; a concurrent
+        // scanPresetDirectoryAsync() swap never invalidates the pointed-to data.
+        auto librarySnapshot = presetManager.getLibrary();
+        const int totalCount = static_cast<int>(librarySnapshot->size());
 
         // Bump generation so any in-flight job from a previous keystroke knows
         // its results are obsolete.
@@ -660,7 +668,7 @@ private:
                               viewFilter,
                               favSnapshot,
                               recentSnapshot,
-                              librarySnapshot = std::move(librarySnapshot),
+                              librarySnapshot,   // shared_ptr copy — O(1), ref-counted
                               totalCount,
                               myGeneration,
                               // Raw pointer only used inside callAsync (message thread),
@@ -669,9 +677,9 @@ private:
         {
             // ---- Background thread: filter ----
             std::vector<PresetData> filtered;
-            filtered.reserve(librarySnapshot.size());
+            filtered.reserve(librarySnapshot->size());
 
-            for (const auto& preset : librarySnapshot)
+            for (const auto& preset : *librarySnapshot)
             {
                 // ── View-filter: Favorites / Recent (#718) ────────────────────
                 if (viewFilter == ViewFilter::Favorites)

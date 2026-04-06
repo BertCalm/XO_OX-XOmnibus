@@ -400,8 +400,8 @@ def collect_files(target: str, engine_filter: Optional[str]) -> List[str]:
                     engines = [engines]
                 if ef in [e.upper() for e in engines]:
                     filtered.append(f)
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[WARN] Loading preset metadata from {f.name} for engine filter: {exc}", file=sys.stderr)
         files = filtered
 
     return sorted(files)

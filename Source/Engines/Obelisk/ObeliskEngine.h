@@ -459,7 +459,7 @@ struct ObeliskBoltRattle
     }
     void reset() noexcept { phase = 0.0f; }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float phase = 0.0f;
 };
 
@@ -1195,8 +1195,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
 
     std::array<ObeliskVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

@@ -169,7 +169,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double phase = 0.0;
     double phaseInc = 0.0;
     double baseFreq = 440.0;
@@ -365,7 +365,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double phase = 0.0;
     double phaseInc = 0.0;
     double baseFreq = 440.0;
@@ -501,7 +501,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int mode = 1;
     float tone = 0.5f;
     float width = 0.5f;
@@ -665,7 +665,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
     int mode = 0;
     float cutoffHz = 8000.0f;
@@ -819,7 +819,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
     float voiceOffset = 0.0f;
 
@@ -971,7 +971,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float lpState = 0.0f;
     float lastTone = -1.0f;
     float cachedCoeff = 0.5f;
@@ -1083,6 +1083,7 @@ public:
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
+        jassert(sr > 0.0);  // sr=0.0 sentinel: prepare() must be called before renderBlock()
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
@@ -1816,8 +1817,8 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     uint64_t noteOnCounter = 0; // monotonic counter for VoiceAllocator LRU ordering
     std::array<BobVoice, kMaxVoices> voices;
 

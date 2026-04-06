@@ -68,8 +68,8 @@ def load_state() -> dict:
         try:
             with open(STATE_FILE, "r", encoding="utf-8") as f:
                 return json.load(f)
-        except (json.JSONDecodeError, OSError):
-            pass
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"[WARN] Loading state file {STATE_FILE}: {exc}", file=sys.stderr)
     return {"used_hashes": [], "total_sent": 0, "last_sent": None}
 
 

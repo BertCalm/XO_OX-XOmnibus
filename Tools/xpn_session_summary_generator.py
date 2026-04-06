@@ -107,8 +107,8 @@ def extract_synopsis(docstring: str, filepath: Path) -> str:
         m = re.search(r'ArgumentParser\([^)]*prog\s*=\s*["\']([^"\']+)["\']', source)
         if m:
             return m.group(1)
-    except OSError:
-        pass
+    except OSError as exc:
+        print(f"[WARN] Reading script source for argparse prog name from {filepath.name}: {exc}", file=sys.stderr)
 
     return f"python {filepath.name}"
 
@@ -136,8 +136,8 @@ def extract_spec_first_content_line(filepath: Path) -> str:
             if stripped.startswith("#"):
                 continue
             return stripped[:120]
-    except OSError:
-        pass
+    except OSError as exc:
+        print(f"[WARN] Reading spec file {filepath.name} for first content line: {exc}", file=sys.stderr)
     return ""
 
 
@@ -148,8 +148,8 @@ def extract_spec_title(filepath: Path) -> str:
             stripped = line.strip()
             if stripped.startswith("# "):
                 return stripped[2:].strip()
-    except OSError:
-        pass
+    except OSError as exc:
+        print(f"[WARN] Reading spec file {filepath.name} for title heading: {exc}", file=sys.stderr)
     return filepath.stem
 
 

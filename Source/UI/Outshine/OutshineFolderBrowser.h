@@ -118,7 +118,10 @@ private:
 
         g.setColour(GalleryColors::get(GalleryColors::textDark()));
         g.setFont(GalleryFonts::body(12.0f));
-        g.drawText(entry.file.getFileName(), 32, 0, w - 80, h, juce::Justification::centredLeft, true);
+        {
+            auto displayFileName = GalleryUtils::ellipsizeText(g.getCurrentFont(), entry.file.getFileName(), (float)(w - 80));
+            g.drawText(displayFileName, 32, 0, w - 80, h, juce::Justification::centredLeft, false);
+        }
 
         if (!entry.isDirectory)
         {

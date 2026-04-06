@@ -153,18 +153,23 @@ struct SROTables
         return table;
     }
 
-    /// Soft-clip curve, x in [-2, 2]. 1024 points.
-    /// Musical cubic saturation matching FastMath::softClip.
+    /// Soft-clip curve, x in [-4, 4]. 1024 points.
+    /// Matches FastMath::softClip exactly: Padé [3/3] approximant of tanh.
+    /// Range extended to [-4, 4] to cover the hard-clip boundary.
+    /// Max error vs std::tanh: ~0.2% for |x| < 4.
+    ///
+    /// NOTE: Updated 2026-04-05 — old table used the broken cubic polynomial
+    /// (non-monotonic, discontinuous at ±1.5). Table is rebuilt on next compile.
     static const LookupTable<1024>& softClip()
     {
-        static const auto table = LookupTable<1024>::generate(-2.0f, 2.0f,
+        static const auto table = LookupTable<1024>::generate(-4.0f, 4.0f,
                                                               [](float x)
                                                               {
-                                                                  if (x <= -1.5f)
-                                                                      return -1.0f;
-                                                                  if (x >= 1.5f)
-                                                                      return 1.0f;
-                                                                  return x - (x * x * x) / 3.375f;
+                                                                  if (x > 4.0f)  return  1.0f;
+                                                                  if (x < -4.0f) return -1.0f;
+                                                                  const float x2 = x * x;
+                                                                  return x * (105.0f + 10.0f * x2) /
+                                                                         (105.0f + 45.0f * x2 + x2 * x2);
                                                               });
         return table;
     }

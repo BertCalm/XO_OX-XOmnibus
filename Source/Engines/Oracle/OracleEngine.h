@@ -1620,8 +1620,8 @@ private:
     //==========================================================================
 
     // --- Audio engine state ---
-    double sampleRateDouble = 44100.0;
-    float sampleRateFloat = 44100.0f;
+    double sampleRateDouble = 0.0;  // Sentinel: must be set by prepare() before use
+    float sampleRateFloat = 0.0f;  // Sentinel: must be set by prepare() before use
     float parameterSmoothingCoeff = 0.1f; // 5ms time constant for zipper-free parameter changes
     float voiceCrossfadeRate = 0.01f;     // 5ms gain ramp for voice stealing
 

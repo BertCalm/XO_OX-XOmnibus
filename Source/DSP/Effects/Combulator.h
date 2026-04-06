@@ -203,7 +203,7 @@ public:
 private:
     static constexpr int kNumCombs = 3;
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int maxCombLen = 0;
 
     // Comb filter state

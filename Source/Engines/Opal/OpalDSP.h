@@ -514,7 +514,7 @@ public:
 private:
     std::array<CloudVoice, MAX_CLOUD_COUNT> clouds{};
     GrainParams sharedParams;
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // Simple deterministic pseudo-random (no allocation, audio-safe)
     uint32_t rngState = 12345u;
@@ -605,7 +605,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double phase1 = 0.0;
     double phase2 = 0.0;
     uint32_t noiseState = 54321u;

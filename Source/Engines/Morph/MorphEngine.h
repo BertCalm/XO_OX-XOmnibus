@@ -264,7 +264,7 @@ public:
     }
 
 private:
-    double cachedSampleRate = 44100.0; // stored sample rate for coefficient calculation
+    double cachedSampleRate = 0.0; // Sentinel: must be set by prepare() before use
     float cutoffFrequency = 1000.0f;   // filter cutoff in Hz [20, 20000]
     float resonance = 0.0f;            // resonance amount [0, 1] (1 = self-oscillation)
     double stage[4]{};                 // four cascade stage outputs
@@ -1229,8 +1229,8 @@ private:
     //==========================================================================
 
     //-- Audio system ----------------------------------------------------------
-    double cachedSampleRate = 44100.0;         // stored sample rate (double precision for phase accumulators)
-    float cachedSampleRateFloat = 44100.0f;    // float copy (avoids casts in per-sample code)
+    double cachedSampleRate = 0.0;         // Sentinel: must be set by prepare() before use (double precision for phase accumulators)
+    float cachedSampleRateFloat = 0.0f;    // Sentinel: must be set by prepare() before use
     std::array<MorphVoice, kMaxVoices> voices; // voice pool
     uint64_t voiceCounter = 0;                 // monotonic counter for LRU voice stealing
 

@@ -4,7 +4,8 @@ xpn_mood_arc_designer.py — Mood Arc Designer for XPN packs
 XO_OX XOceanus Tools Suite
 
 Analyzes and optimizes the emotional journey across pad banks in an XPN pack.
-Moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family
+Moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family,
+       Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic, Shadow
 """
 
 import json
@@ -16,7 +17,9 @@ from typing import Optional
 
 # ── Mood definitions ─────────────────────────────────────────────────────────
 
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 
 # Grounded moods that feel like "landing" — good arc endings
 GROUNDING_MOODS = {"Foundation", "Family"}
@@ -352,7 +355,8 @@ Spec JSON format:
     ]
   }
 
-Valid moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family
+Valid moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family,
+             Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic, Shadow
 """,
     )
     parser.add_argument("--spec", required=True, type=Path, help="Path to pack spec JSON")

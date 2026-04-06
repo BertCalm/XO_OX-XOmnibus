@@ -62,7 +62,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -77,7 +77,7 @@ private:
         StandardLFO     flutterLFO; // Sine at 60Hz → subtle flutter
         CytomicSVF      wowSmooth;  // Lowpass smoother for S&H output
         CytomicSVF      bwLimit;    // Bandwidth limiter
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
         uint32_t rngState = 42321u; // For tape hiss
 
         float lastWowVal = 0.0f;
@@ -161,7 +161,7 @@ private:
         OversamplingProcessor<8> ovs;
         CytomicSVF  lowShelfL, lowShelfR;
         CytomicSVF  highShelfL, highShelfR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate, int maxBlockSize)
         {
@@ -306,7 +306,7 @@ private:
         std::array<FractionalDelay, kNumTaps> delR;
         CytomicSVF  darkFiltL;
         CytomicSVF  darkFiltR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
         float feedL = 0.0f;
         float feedR = 0.0f;
 

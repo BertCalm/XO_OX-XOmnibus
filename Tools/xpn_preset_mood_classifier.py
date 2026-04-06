@@ -8,7 +8,8 @@ by scoring them against 7 mood profiles using 6D Sonic DNA weights.
 Usage:
     python xpn_preset_mood_classifier.py <dir> [--dry-run] [--fix] [--threshold 0.7] [--output report.txt]
 
-Moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family
+Moods: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family,
+       Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic, Shadow
 """
 
 import json
@@ -33,6 +34,7 @@ from typing import Optional
 #   Flux        — dynamic/evolving: high movement + density
 #   Aether      — ethereal: high space + brightness, low aggression + density
 #   Family      — warm/accessible: high warmth, low aggression + movement
+#   Shadow      — dark/menacing: low brightness + warmth, high aggression, chromatic anxiety
 # ---------------------------------------------------------------------------
 
 MOOD_WEIGHTS: dict[str, dict[str, float]] = {
@@ -94,6 +96,14 @@ MOOD_WEIGHTS: dict[str, dict[str, float]] = {
         "density":     0.05,
         "space":       0.10,
         "aggression": -0.40,   # low aggression essential
+    },
+    "Shadow": {
+        "brightness": -0.40,   # low brightness defining trait
+        "warmth":     -0.30,   # cold
+        "movement":    0.10,   # variable movement
+        "density":     0.20,   # dense, oppressive
+        "space":       0.05,
+        "aggression":  0.50,   # high aggression defining trait
     },
 }
 

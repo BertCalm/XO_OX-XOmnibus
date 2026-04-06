@@ -79,7 +79,7 @@ private:
         coeff = clamp(coeff, 0.9f, 0.9999f);
     }
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float coeff = 0.9986f;
 
     // State

@@ -191,7 +191,7 @@ struct OlegCassotto
         wallFilter.reset();
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     std::array<float, kMaxDelay> combBuf{};
     std::array<float, kMaxDelay> ap1Buf{};
     std::array<float, kMaxDelay> ap2Buf{};
@@ -270,7 +270,7 @@ struct OlegBuzzBridge
         rattleBPF.reset();
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     CytomicSVF buzzBPF;
     CytomicSVF rattleBPF;
 };
@@ -566,7 +566,7 @@ struct OlegBellowsEnvelope
     float level = 0.0f;
 
 private:
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float atkTime = 0.02f;
     float relTime = 0.15f;
     float susLevel = 0.85f;
@@ -1255,8 +1255,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
 
     std::array<OlegVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

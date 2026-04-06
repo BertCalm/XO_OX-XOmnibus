@@ -36,6 +36,7 @@ VALID_MOODS = {
     "Foundation", "Atmosphere", "Entangled", "Prism", "Flux",
     "Aether", "Family", "Submerged", "Coupling", "Crystalline",
     "Deep", "Ethereal", "Kinetic", "Luminous", "Organic",
+    "Shadow",
 }
 
 DNA_DIMENSIONS = {"brightness", "warmth", "movement", "density", "space", "aggression"}

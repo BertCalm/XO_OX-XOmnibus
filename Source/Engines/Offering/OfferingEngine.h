@@ -135,7 +135,7 @@ struct OfferingParamSnapshot
     float dustVinyl = 0.2f;
     float dustTape = 0.1f;
     int dustBits = 16;
-    float dustSampleRate = 48000.0f;
+    float dustSampleRate = 0.0f;  // Sentinel: must be set by prepare() before use
     float dustWobble = 0.05f;
 
     // Collage / FLIP (4)
@@ -911,7 +911,7 @@ private:
     //--------------------------------------------------------------------------
     // State
     //--------------------------------------------------------------------------
-    float sr_ = 44100.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
     int blockSize_ = 512;
 
     // Voices

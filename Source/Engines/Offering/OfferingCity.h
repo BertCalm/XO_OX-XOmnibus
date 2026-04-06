@@ -432,7 +432,7 @@ private:
     // State
     //--------------------------------------------------------------------------
     int city_ = 0;
-    float sr_ = 44100.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
 
     // Compressors
     OfferingCompressor comp_;
@@ -523,7 +523,7 @@ public:
     }
 
 private:
-    float sr_ = 44100.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
     OfferingCityChain chains_[5];
 };
 

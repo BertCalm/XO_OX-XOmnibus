@@ -228,8 +228,8 @@ def cmd_rename(
             import os
             try:
                 os.close(tmp_fd)
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[WARN] Closing temp file descriptor during cleanup: {exc}", file=sys.stderr)
             tmp_path.unlink(missing_ok=True)
             raise
 

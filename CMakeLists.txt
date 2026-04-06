@@ -105,6 +105,17 @@ else()
     set(XO_HAS_OSCAR OFF)
 endif()
 
+# Init preset — embedded as C++ binary data so first-launch has a guaranteed
+# sound regardless of whether the factory preset directory is installed.
+# Issue #899: auto-loaded when the library is empty on first open.
+# HEADER_NAME avoids collision with XOceanusFont's BinaryData.h (#899).
+juce_add_binary_data(XOceanusInitPreset
+    NAMESPACE "InitPresetData"
+    HEADER_NAME "InitPresetData.h"
+    SOURCES
+    Resources/Init.xometa
+)
+
 # Typography — Space Grotesk (display), Inter (body), JetBrains Mono (values),
 # Overbit (engine nameplate display). All embedded as C++ binary data via JUCE.
 juce_add_binary_data(XOceanusFont
@@ -607,6 +618,7 @@ target_link_libraries(XOceanus PRIVATE
     juce::juce_dsp
     juce::juce_gui_extra
     XOceanusFont
+    XOceanusInitPreset
 )
 if(XO_HAS_RIVE)
     target_link_libraries(XOceanus PRIVATE rive)

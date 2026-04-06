@@ -67,7 +67,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     // Scratch buffer to avoid aliasing when L is passed as both monoIn and output.
@@ -181,7 +181,7 @@ private:
         static constexpr int kMaxGrains         = 64;
 
         CircularBuffer capture;
-        double   sr       = 44100.0;
+        double   sr       = 0.0;  // Sentinel: must be set by prepare() before use
         uint32_t rngSeed_ = 0xDEADBEEFu;
 
         struct Grain
@@ -401,7 +401,7 @@ private:
         StandardLFO wowFlutter;
         float feedbackL = 0.0f;
         float feedbackR = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

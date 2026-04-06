@@ -22,13 +22,17 @@ from typing import Dict, List, Optional
 
 # ─── Mood Complementarity ──────────────────────────────────────────────────────
 
-MOOD_ORDER = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOOD_ORDER = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+              "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+              "Organic", "Shadow"]
 
 COMPLEMENTARY_MOODS = {
     "Foundation": "Aether",
     "Aether": "Foundation",
     "Atmosphere": "Flux",
     "Flux": "Atmosphere",
+    "Luminous": "Shadow",
+    "Shadow": "Luminous",
 }
 
 DNA_KEYS = ["brightness", "warmth", "movement", "density", "space", "aggression"]

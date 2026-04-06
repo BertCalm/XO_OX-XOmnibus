@@ -127,7 +127,7 @@ private:
     float fundPhase = 0.0f;
     float subPhase[4] = {};
     float bodyPhase = 0.0f;
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // Cached params
     int divisions[4] = {0, 0, 0, 0}; // 0=off, 2-8 = actual divisor

@@ -50,7 +50,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_ = 44100.0;
+    double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -108,7 +108,7 @@ private:
         PolyBLEP sineCarrier;
         PolyBLEP squareCarrier;
         float dcOffset = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -255,7 +255,7 @@ private:
         int writePosR = 0;
         float feedbackL = 0.0f;
         float feedbackR = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

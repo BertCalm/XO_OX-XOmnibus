@@ -133,7 +133,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double phase = 0.0;
     double phaseInc = 0.0;
 
@@ -195,7 +195,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     FatNoiseGen rng;
     float smoothed = 0.0f;
     float target = 0.0f;
@@ -297,7 +297,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
     float cutoffHz = 2000.0f;
     float resonance = 0.2f;
@@ -441,7 +441,7 @@ public:
     }
 
 private:
-    double hostSR = 44100.0;
+    double hostSR = 0.0;  // Sentinel: must be set by prepare() before use
     float phaseAcc = 0.0f;
     float held = 0.0f;
     uint32_t rng = 0x1234abcdu;
@@ -578,7 +578,7 @@ public:
     bool hasHeldNotes() const noexcept { return numHeld > 0; }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int heldNotes[kMaxHeldNotes] = {};
     float heldVelocities[kMaxHeldNotes] = {};
     int numHeld = 0;
@@ -770,6 +770,7 @@ public:
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
+        jassert(sr > 0.0);  // sr=0.0 sentinel: prepare() must be called before renderBlock()
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
@@ -1608,8 +1609,8 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     std::array<FatVoice, kMaxVoices> voices;
     std::atomic<int> activeVoiceCount{0};
     bool sustainPedalDown = false;

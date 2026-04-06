@@ -24,6 +24,7 @@ Output: 400x400 PNG with:
 import argparse
 import json
 import struct
+import sys
 import zipfile
 import zlib
 from pathlib import Path
@@ -459,8 +460,8 @@ def _read_xpn(xpn_path: str):
                 if 'sonic_dna' in data:
                     sonic_dna.update(data['sonic_dna'])
                 break
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[WARN] Reading expansion.json {candidate} for cover art metadata: {exc}", file=sys.stderr)
 
         # Try bundle_manifest.json
         for candidate in [n for n in names if n.endswith('bundle_manifest.json')]:
@@ -471,8 +472,8 @@ def _read_xpn(xpn_path: str):
                 if 'sonic_dna' in data:
                     sonic_dna.update(data['sonic_dna'])
                 break
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[WARN] Reading bundle_manifest.json {candidate} for cover art metadata: {exc}", file=sys.stderr)
 
         # Fallback: any JSON with engine/name keys
         if engine == "UNKNOWN":
@@ -487,8 +488,8 @@ def _read_xpn(xpn_path: str):
                                 pack_name = data['name']
                             if 'sonic_dna' in data:
                                 sonic_dna.update(data['sonic_dna'])
-                    except Exception:
-                        pass
+                    except Exception as exc:
+                        print(f"[WARN] Reading fallback JSON {name} for cover art metadata: {exc}", file=sys.stderr)
 
     return engine, pack_name, sonic_dna
 

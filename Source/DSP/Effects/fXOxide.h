@@ -533,7 +533,7 @@ private:
     float digitalHoldR_   = 0.0f;
     int   digitalCounter_ = 0;
 
-    double sampleRate_ = 44100.0;
+    double sampleRate_ = 0.0;  // Sentinel: must be set by prepare() before use
 
     //--------------------------------------------------------------------------
     // Parameters (with sensible defaults matching OXIDIZE spec)

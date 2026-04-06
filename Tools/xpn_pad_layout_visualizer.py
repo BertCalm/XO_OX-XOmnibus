@@ -100,8 +100,8 @@ def parse_xpm(path: Path) -> dict:
                 note = int(pad_elem.get("note", -1))
                 if pad_num > 0:
                     result["pad_note_map"][pad_num] = note
-            except (ValueError, TypeError):
-                pass
+            except (ValueError, TypeError) as exc:
+                print(f"[WARN] Parsing pad/note attribute in PadNoteMap: {exc}", file=sys.stderr)
 
     # Instruments: <Instrument number="N">
     instruments_elem = program_elem.find("Instruments")

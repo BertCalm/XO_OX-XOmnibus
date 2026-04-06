@@ -19,7 +19,9 @@ from collections import defaultdict
 
 # ── Constants ────────────────────────────────────────────────────────────────
 
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 
 DNA_AXES = ["brightness", "warmth", "movement"]  # primary 3 for 3×3×3 zones
 ZONE_LABELS = ["low", "mid", "high"]

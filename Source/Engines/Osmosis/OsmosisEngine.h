@@ -376,7 +376,7 @@ public:
     }
 
 private:
-    double sr_ = 44100.0;
+    double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
     int blockSize_ = 512;
 
     // External audio pointers (set per block by processor, NOT owned)

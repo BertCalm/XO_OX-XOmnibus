@@ -63,7 +63,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -76,7 +76,7 @@ private:
         static constexpr int   kNumTaps    = 3;
 
         FractionalDelay delayLine; // shared write buffer, 3 read heads
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // Pitch ratios per tap (in semitones for storage, converted per block)
         // Tap 0: +5th   (7 semitones  → ×1.4983…  ≈ ×1.5)
@@ -160,7 +160,7 @@ private:
         static constexpr float kMaxDelayMs = 30.0f;
         FractionalDelay delayL, delayR;
         StandardLFO lfo;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -201,7 +201,7 @@ private:
         EnvelopeFollower envFollowers[kNumTaps];
         CytomicSVF filters[kNumTaps];
         ParameterSmoother freqSmootherL, freqSmootherR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

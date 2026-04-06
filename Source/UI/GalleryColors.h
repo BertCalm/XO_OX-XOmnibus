@@ -613,4 +613,35 @@ inline bool prefersReducedMotion()
 
 } // namespace A11y
 
+//==============================================================================
+// GalleryUtils — shared text / layout helpers
+namespace GalleryUtils
+{
+
+/** Truncate text with a Unicode ellipsis ("…") so it fits within maxWidth at
+    the given font.  Returns the original string unchanged when it already fits,
+    or the longest prefix + "…" that fits, or just "…" when nothing else does.
+
+    Usage:
+        auto display = GalleryUtils::ellipsizeText(g.getCurrentFont(), longText, (float)(w - 60));
+        g.drawText(display, x, y, w - 60, h, juce::Justification::centredLeft, false);
+*/
+static inline juce::String ellipsizeText(const juce::Font& font, const juce::String& text, float maxWidth)
+{
+    if (font.getStringWidthFloat(text) <= maxWidth)
+        return text;
+
+    const juce::String ellipsis = juce::String::charToString(0x2026); // "…"
+
+    for (int len = text.length() - 1; len > 0; --len)
+    {
+        juce::String candidate = text.substring(0, len) + ellipsis;
+        if (font.getStringWidthFloat(candidate) <= maxWidth)
+            return candidate;
+    }
+    return ellipsis; // nothing fits except the ellipsis itself
+}
+
+} // namespace GalleryUtils
+
 } // namespace xoceanus

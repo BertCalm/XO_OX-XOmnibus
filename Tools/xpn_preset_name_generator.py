@@ -133,8 +133,8 @@ def load_existing_names(presets_dir: Path) -> set[str]:
             name = data.get("name") or data.get("presetName") or ""
             if name:
                 names.add(name.strip().lower())
-        except (json.JSONDecodeError, OSError):
-            pass
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"[WARN] Reading preset name from {filepath.name}: {exc}", file=sys.stderr)
     return names
 
 

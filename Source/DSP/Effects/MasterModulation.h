@@ -433,7 +433,7 @@ private:
     //--------------------------------------------------------------------------
     static constexpr int kMaxVoices = 3;
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int maxDelayLen = 0;
 
     // Per-voice delay lines (stereo)

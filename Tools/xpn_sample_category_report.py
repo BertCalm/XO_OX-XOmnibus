@@ -119,8 +119,8 @@ def wav_duration_and_size(data: bytes) -> tuple[float, int]:
             total_samples = data_chunk_size // bytes_per_sample
             duration = total_samples / sample_rate
             return duration, size
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[WARN] Parsing WAV header for duration: {exc}", file=sys.stderr)
     return 0.0, size
 
 

@@ -51,7 +51,7 @@ struct VoiceEnvelope
     float coeff = 0.0f;
     float target = 0.0f;
     Stage stage = Stage::Idle;
-    float sampleRate = 44100.0f;
+    float sampleRate = 0.0f;  // Sentinel: must be set by prepare() before use
 
     //==========================================================================
     void prepare(float sr) noexcept

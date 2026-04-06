@@ -223,8 +223,8 @@ def _parse_xometa(path: Path) -> dict:
         if isinstance(dna, dict):
             result["dna_character"] = _dna_character(dna)
 
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[WARN] Reading preset catalog entry from {path.name}: {exc}", file=sys.stderr)
 
     return result
 

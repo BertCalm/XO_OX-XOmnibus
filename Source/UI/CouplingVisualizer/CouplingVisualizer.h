@@ -615,7 +615,7 @@ private:
 
             // Short label
             g.setColour(juce::Colour(GalleryColors::textDark()));
-            g.setFont(GalleryFonts::heading(7.5f));
+            g.setFont(GalleryFonts::heading(8.0f));
             g.drawText(CouplingTypeColors::shortLabel(route.type), (int)(midX + 6), (int)(midY - 5), 38, 10,
                        juce::Justification::left);
         }

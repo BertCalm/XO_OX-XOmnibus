@@ -1413,8 +1413,8 @@ private:
     // State
     //==========================================================================
 
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     float smoothCoeff = 0.0f;
     float crossfadeRate = 0.0f;
     uint64_t voiceCounter = 0;

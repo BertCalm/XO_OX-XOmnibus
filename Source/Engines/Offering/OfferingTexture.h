@@ -185,7 +185,7 @@ private:
     //--------------------------------------------------------------------------
     // State
     //--------------------------------------------------------------------------
-    float sr_ = 44100.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
     OfferingNoiseGen noise_;
 
     // Pink noise state (Paul Kellet method)

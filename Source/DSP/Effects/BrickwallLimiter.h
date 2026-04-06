@@ -164,7 +164,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // Lookahead delay buffers
     std::vector<float> delayBufL;

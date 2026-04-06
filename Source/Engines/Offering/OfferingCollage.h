@@ -202,7 +202,7 @@ private:
     //--------------------------------------------------------------------------
     // State
     //--------------------------------------------------------------------------
-    float sr_ = 44100.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
     int layers_ = 1;
     float chop_ = 0.0f;
     float stretch_ = 1.0f;

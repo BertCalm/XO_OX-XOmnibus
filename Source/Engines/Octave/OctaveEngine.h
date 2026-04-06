@@ -220,7 +220,7 @@ struct OctaveRoomResonance
         mode3.reset();
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     CytomicSVF mode1, mode2, mode3;
 };
 
@@ -1039,8 +1039,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
 
     std::array<OctaveVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

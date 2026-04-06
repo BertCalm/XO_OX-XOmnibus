@@ -83,7 +83,7 @@ struct PhyllotaxisOscBank
     // These are constants — computed once at init, not per sample, so no per-sample pow().
     float cachedPhyllotaxisRatios[kMaxPartials] = {};
     float cachedFundamental = 440.0f;
-    float cachedSampleRate = 48000.0f;
+    float cachedSampleRate = 0.0f;  // Sentinel: must be set by setFundamental() before use
 
     void initPhyllotaxisCache() noexcept
     {
@@ -712,8 +712,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
 
     std::array<OxalisVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

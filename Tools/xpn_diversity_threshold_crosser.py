@@ -43,7 +43,7 @@ COUPLING_TYPES = [
     "HARMONIC_STACK",
 ]
 
-# Mood distribution: 16 batches of 5 = 80 total, spread across 7 moods
+# Mood distribution: spread across 16 moods
 MOODS = [
     ("Foundation",  11),
     ("Atmosphere",  11),
@@ -52,6 +52,15 @@ MOODS = [
     ("Flux",        12),
     ("Aether",      11),
     ("Family",      12),
+    ("Submerged",   0),
+    ("Coupling",    0),
+    ("Crystalline", 0),
+    ("Deep",        0),
+    ("Ethereal",    0),
+    ("Kinetic",     0),
+    ("Luminous",    0),
+    ("Organic",     0),
+    ("Shadow",      0),
 ]
 
 MOOD_ABBREV = {

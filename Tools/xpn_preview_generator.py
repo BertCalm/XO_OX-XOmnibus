@@ -728,8 +728,8 @@ def encode_mp3(wav_path: Path, mp3_path: Path, bitrate: int = 192) -> bool:
         )
         if result.returncode == 0:
             return True
-    except (FileNotFoundError, subprocess.TimeoutExpired):
-        pass
+    except (FileNotFoundError, subprocess.TimeoutExpired) as exc:
+        print(f"[WARN] ffmpeg MP3 conversion for {wav_path.name}: {exc}", file=sys.stderr)
 
     # Try lame
     try:
@@ -739,8 +739,8 @@ def encode_mp3(wav_path: Path, mp3_path: Path, bitrate: int = 192) -> bool:
         )
         if result.returncode == 0:
             return True
-    except (FileNotFoundError, subprocess.TimeoutExpired):
-        pass
+    except (FileNotFoundError, subprocess.TimeoutExpired) as exc:
+        print(f"[WARN] lame MP3 conversion for {wav_path.name}: {exc}", file=sys.stderr)
 
     return False
 

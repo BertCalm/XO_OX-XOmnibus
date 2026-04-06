@@ -60,11 +60,12 @@ COVER_ART_MAX_BYTES = 2 * 1024 * 1024  # 2 MB
 # add them to PresetManager.h and engine_registry.py instead.
 VALID_ENGINES = valid_engines_upper()
 
-# All 15 canonical mood categories — source of truth is PresetManager / CLAUDE.md
+# All 16 canonical mood categories — source of truth is PresetManager / CLAUDE.md
 VALID_MOODS = {
     "Foundation", "Atmosphere", "Entangled", "Prism", "Flux",
     "Aether", "Family", "Submerged", "Coupling", "Crystalline",
     "Deep", "Ethereal", "Kinetic", "Luminous", "Organic",
+    "Shadow",
 }
 
 
@@ -268,8 +269,8 @@ def _infer_pack_yaml(directory: Path, pack_name: str) -> dict:
                 if "mood_tags" in data and isinstance(data["mood_tags"], list):
                     for m in data["mood_tags"]:
                         moods_found.add(str(m))
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[WARN] Reading preset metadata from {xometa.name}: {exc}", file=sys.stderr)
 
     valid_found = sorted(engines_found & VALID_ENGINES)
     # Filter scanned moods against VALID_MOODS; fall back to ["Foundation"] if none recognized

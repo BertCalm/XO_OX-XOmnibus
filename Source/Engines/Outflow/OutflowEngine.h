@@ -549,8 +549,8 @@ private:
     //--------------------------------------------------------------------------
     static constexpr int kFDNChannels = 4;
 
-    double sr_ = 44100.0;
-    float srF_ = 44100.0f;
+    double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
+    float srF_ = 0.0f;  // Sentinel: must be set by prepare() before use
     int blockSize_ = 512;
 
     // Lookahead buffer (Pre-Wake Vacuum)

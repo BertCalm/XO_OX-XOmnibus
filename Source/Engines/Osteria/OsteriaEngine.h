@@ -1852,8 +1852,8 @@ private:
     //==========================================================================
 
     // --- Audio engine state ---
-    double sr = 44100.0;         // Sample rate (double precision for accuracy)
-    float srf = 44100.0f;        // Sample rate (float, for DSP calculations)
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use         // Sample rate (double precision for accuracy)
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use        // Sample rate (float, for DSP calculations)
     float crossfadeRate = 0.01f; // Voice-stealing crossfade: samples to silence in 5ms
 
     // --- Control rate ---

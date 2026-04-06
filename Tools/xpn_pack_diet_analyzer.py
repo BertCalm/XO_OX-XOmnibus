@@ -56,8 +56,8 @@ def _read_wav_duration(data: bytes) -> Optional[float]:
             if bytes_per_sample > 0 and num_channels > 0 and sample_rate > 0:
                 total_samples = data_size // (bytes_per_sample * num_channels)
                 return total_samples / sample_rate
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[WARN] Reading WAV duration from bytes: {exc}", file=sys.stderr)
     return None
 
 
@@ -81,8 +81,8 @@ def _extract_sample_refs_from_xpm(xpm_text: str) -> list[str]:
                 val = elem.get(attr, "")
                 if val:
                     refs.append(val.strip())
-    except ET.ParseError:
-        pass
+    except ET.ParseError as exc:
+        print(f"[WARN] Parsing XPM XML for sample references: {exc}", file=sys.stderr)
     return refs
 
 

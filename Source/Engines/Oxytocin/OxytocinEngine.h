@@ -65,7 +65,7 @@ public:
     }
 
 private:
-    double sr = 48000.0; // Safe default fallback; overridden by prepare()
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float phase = 0.0f;
     float shPhase = 0.0f;
     float shValue = 0.0f;

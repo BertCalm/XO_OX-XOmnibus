@@ -106,8 +106,8 @@ def _macro_range_span(targets: List[dict]) -> Optional[float]:
             try:
                 span = abs(float(mx) - float(mn))
                 spans.append(span)
-            except (TypeError, ValueError):
-                pass
+            except (TypeError, ValueError) as exc:
+                print(f"[WARN] Computing macro span from min={mn} max={mx}: {exc}", file=sys.stderr)
     if not spans:
         return None
     return max(spans)

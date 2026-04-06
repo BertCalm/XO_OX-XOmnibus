@@ -105,8 +105,8 @@ def _read_pack(xpn_path: str) -> Optional[dict]:
             try:
                 raw = zf.read(manifest_paths[0])
                 manifest = json.loads(raw.decode('utf-8', errors='replace'))
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[WARN] Reading expansion.json manifest: {exc}", file=sys.stderr)
 
         # ── Programs (XPM) ───────────────────────────────────────────────
         xpm_paths = [n for n in names if n.lower().endswith('.xpm')]
@@ -149,8 +149,8 @@ def _read_pack(xpn_path: str) -> Optional[dict]:
             try:
                 info = zf.getinfo(sp)
                 sample_total_bytes += info.file_size
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[WARN] Reading sample info for {sp}: {exc}", file=sys.stderr)
 
         # ── Sonic DNA ────────────────────────────────────────────────────
         # Try manifest first, then bundle_manifest.json
@@ -163,8 +163,8 @@ def _read_pack(xpn_path: str) -> Optional[dict]:
                 try:
                     bm = json.loads(zf.read(bm_paths[0]).decode('utf-8', errors='replace'))
                     manifest_dna = bm.get('sonic_dna') or bm.get('SonicDNA') or {}
-                except Exception:
-                    pass
+                except Exception as exc:
+                    print(f"[WARN] Reading bundle_manifest.json for Sonic DNA: {exc}", file=sys.stderr)
 
         for dim in DNA_DIMENSIONS:
             # Accept both lowercase and capitalized keys
@@ -224,8 +224,8 @@ def _score_pack_inline(pack: dict, xpn_path: str) -> dict:
         if not art:
             score -= 15
             penalties.append('No cover art (-15)')
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[WARN] Scoring pack for cover art check: {exc}", file=sys.stderr)
 
     # DNA completeness bonus hint (no penalty — just info)
     dna_missing = [d for d in DNA_DIMENSIONS if pack['dna'].get(d) is None]

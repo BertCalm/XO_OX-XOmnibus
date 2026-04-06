@@ -58,6 +58,10 @@ public:
     {
         if (sampleRate <= 0.0f)
             return;
+        // Store shelf gain so the fast path can recompute A when modulating cutoff.
+        // Fix for issue #907: setCoefficients_fast() was leaving A stale on shelf modes.
+        shelfGainDb_ = shelfGainDb;
+
         // Clamp cutoff to safe range: [20 Hz, just below Nyquist]
         float nyquistLimit = sampleRate * 0.49f;
         float fc = cutoffHz;
@@ -124,6 +128,16 @@ public:
         constexpr float pi = 3.14159265358979323846f;
         g = fastTan(pi * fc / sampleRate);
         k = 2.0f - 2.0f * res;
+
+        // Fix #907: recompute A from stored shelf gain when in a shelf mode.
+        // Non-shelf modes leave A untouched (it was set correctly by setCoefficients()).
+        // Note: dbToGain() uses fastExp — accuracy is ~6.2%, consistent with the fast
+        // path's existing precision contract.  If FastMath.fastExp is patched (parallel
+        // task), this call automatically benefits from the improved accuracy.
+        if (mode == Mode::LowShelf || mode == Mode::HighShelf)
+        {
+            A = dbToGain(shelfGainDb_ * 0.5f);
+        }
 
         a1 = 1.0f / (1.0f + g * (g + k));
         a2 = g * a1;
@@ -221,10 +235,15 @@ private:
     // Coefficients (recomputed when cutoff/resonance/sampleRate change)
     float g = 0.0f;  // prewarped cutoff: tan(pi * fc / sr)
     float k = 2.0f;  // damping: 2 - 2*resonance
-    float A = 1.0f;  // shelf gain factor
+    float A = 1.0f;  // shelf gain factor (pow(10, shelfGainDb/40))
     float a1 = 0.0f; // 1 / (1 + g*(g+k))
     float a2 = 0.0f; // g * a1
     float a3 = 0.0f; // g * a2
+
+    // Stored shelf gain (dB) so setCoefficients_fast() can recompute A.
+    // Fix for issue #907: fast path was reading a stale A when cutoff was
+    // modulated on a LowShelf or HighShelf filter.
+    float shelfGainDb_ = 0.0f;
 
     // State variables (trapezoidal integrator memories)
     float ic1eq = 0.0f; // integrator 1 state

@@ -253,7 +253,7 @@ private:
     AbyssReverb reverb;       // ABYSS REVERB
     AmpEnvelope ampEnv;       // Amp envelope
 
-    double sampleRate = 44100.0;
+    double sampleRate = 0.0;  // Sentinel: must be set by prepare() before use
     float lastOutL = 0.0f;
     float lastOutR = 0.0f;
 

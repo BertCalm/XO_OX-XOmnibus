@@ -85,8 +85,8 @@ def _release_render_lock(lock_fd):
         lock_fd.close()
         try:
             os.remove(LOCKFILE)
-        except OSError:
-            pass
+        except OSError as exc:
+            print(f"[WARN] Removing render lockfile {LOCKFILE}: {exc}", file=sys.stderr)
 
 # ---------------------------------------------------------------------------
 # sd.wait() watchdog (Issue #742 — prevent infinite block on driver hang)
@@ -315,8 +315,8 @@ class RenderProgressTracker:
                 disk_total_gb = usage.total / 1_073_741_824
                 disk_used_str = f"{disk_used_gb:.1f}"
                 total_disk_str = f"{disk_total_gb:.1f}"
-            except OSError:
-                pass
+            except OSError as exc:
+                print(f"[WARN] Reading disk usage for output directory: {exc}", file=sys.stderr)
 
         print(
             f"  [PROGRESS] {processed}/{self.total_jobs} ({pct:.1f}%)  "
@@ -343,8 +343,8 @@ class RenderProgressTracker:
                 ["osascript", "-e", 'display notification "Oxport render complete" with title "XO_OX"'],
                 check=False,
             )
-        except Exception:
-            pass
+        except Exception as exc:
+            print(f"[WARN] Sending macOS completion notification: {exc}", file=sys.stderr)
 
 
 def _format_duration(seconds: float) -> str:
@@ -964,10 +964,10 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
                         print(f"[CORRUPT] {job['filename']} — invalid WAV, re-rendering")
                         try:
                             os.remove(out_path)
-                        except OSError:
-                            pass
-            except OSError:
-                pass  # stat failure — fall through and render normally
+                        except OSError as exc:
+                            print(f"[WARN] Removing corrupt WAV {job['filename']}: {exc}", file=sys.stderr)
+            except OSError as exc:
+                print(f"[WARN] Stat check on {job['filename']} — falling through to render: {exc}", file=sys.stderr)
 
         # Stage 0 voice_map filter: skip jobs whose voice is marked DEAD by the probe.
         # voice_map is keyed by preset name; the job must carry "preset_name" and
@@ -1107,8 +1107,8 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
             try:
                 if os.path.isfile(out_path):
                     os.remove(out_path)
-            except OSError:
-                pass
+            except OSError as exc:
+                print(f"[WARN] Removing partial WAV after disk-full {job['filename']}: {exc}", file=sys.stderr)
             break
 
         # Post-write integrity check: confirm actual file size matches RIFF-declared size.

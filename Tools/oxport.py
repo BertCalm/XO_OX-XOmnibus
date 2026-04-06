@@ -369,8 +369,8 @@ def _stage_render_spec(ctx: PipelineContext) -> None:
             try:
                 with open(xmeta, encoding='utf-8', errors='replace') as _f:
                     _preset_data = json.load(_f)
-            except (json.JSONDecodeError, OSError):
-                pass
+            except (json.JSONDecodeError, OSError) as exc:
+                print(f"[ERROR] Reading preset metadata from {xmeta}: {exc}", file=sys.stderr)
             _mood = _preset_data.get("mood", "")
             _coupling = _preset_data.get("coupling", _preset_data.get("coupling_data", None))
             if _mood == "Entangled" or _coupling:
@@ -1368,8 +1368,8 @@ def _apply_gain_db_numpy(wav_path: Path, gain_db: float) -> None:
     except Exception:
         try:
             os.unlink(temp_path)
-        except OSError:
-            pass
+        except OSError as exc:
+            print(f"[ERROR] Removing temp WAV file {temp_path}: {exc}", file=sys.stderr)
         raise
 
 
@@ -3325,8 +3325,8 @@ def cmd_build(args) -> int:
                 if voice_map:
                     print(f"  [STAGE 0] --skip-probe: loaded existing voice_map.json "
                           f"({len(voice_map)} presets)")
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[ERROR] Loading existing voice_map.json for --skip-probe: {exc}", file=sys.stderr)
 
     # ── STAGE 3: RENDER ──
     if "render" not in skip:
@@ -3876,8 +3876,8 @@ def cmd_build(args) -> int:
                         _sp_data = json.load(_spf)
                     _n_presets_display = _sp_data.get(
                         "count_selected", len(_sp_data.get("presets", [])))
-            except Exception:
-                pass
+            except Exception as exc:
+                print(f"[ERROR] Reading selected_presets.json for display count: {exc}", file=sys.stderr)
 
             # Check for existing approval marker (supports --resume runs)
             _approval_marker = output_dir / ".listen_approved"
@@ -4081,8 +4081,8 @@ def cmd_build(args) -> int:
                                       f"got {len(all_wavs)}")
                             elif expected:
                                 print(f"         [OK] WAV count matches manifest ({expected})")
-                        except Exception:
-                            pass
+                        except Exception as exc:
+                            print(f"[ERROR] Reading render manifest for WAV count audit: {exc}", file=sys.stderr)
             else:
                 print(f"         → No renders/ directory — WAV audit skipped "
                       f"(run RENDER stage first)")
@@ -4106,8 +4106,8 @@ def cmd_build(args) -> int:
         try:
             with open(log_path, encoding='utf-8', errors='replace') as _lf:
                 _existing_log = json.load(_lf)
-        except Exception:
-            pass
+        except Exception as exc:
+            print(f"[ERROR] Reading existing build log {log_path}: {exc}", file=sys.stderr)
     build_log = {
         "pack_id": pack_id,
         "pack_name": pack_name,

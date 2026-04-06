@@ -182,7 +182,7 @@ private:
         hpCoeff = flushDenormal(fastExp(-6.28318530718f * hpFreq / static_cast<float>(sr)));
     }
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int bufferSize = 0;
     std::vector<float> bufferL;
     std::vector<float> bufferR;

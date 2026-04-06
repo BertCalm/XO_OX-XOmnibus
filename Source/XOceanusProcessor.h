@@ -121,6 +121,7 @@ public:
     void setStateInformation(const void* data, int sizeInBytes) override;
 
     juce::AudioProcessorValueTreeState& getAPVTS() { return apvts; }
+    juce::UndoManager& getUndoManager() { return undoManager; }
 
     // Preset management (UI thread only)
     PresetManager& getPresetManager() { return presetManager; }
@@ -333,6 +334,11 @@ public:
 
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
+
+    // UndoManager must be declared before apvts — C++ initialises members in
+    // declaration order, and apvts is constructed with &undoManager.
+    // 30 000 ms history window; max 30 coalesced transactions.
+    juce::UndoManager undoManager{30000, 30};
 
     juce::AudioProcessorValueTreeState apvts;
     MacroSystem macroSystem_;

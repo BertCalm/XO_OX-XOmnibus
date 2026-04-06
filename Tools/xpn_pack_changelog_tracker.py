@@ -73,8 +73,8 @@ class PackReader:
                 if len(parts) == 2:
                     try:
                         return self._zip.read(parts[1]).decode("utf-8", errors="replace")
-                    except KeyError:
-                        pass
+                    except KeyError as exc:
+                        print(f"[WARN] Reading {rel_path} from archive (stripped path): {exc}", file=sys.stderr)
                 return None
         path = self.source / rel_path
         if path.exists():

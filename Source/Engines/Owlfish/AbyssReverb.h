@@ -159,7 +159,7 @@ private:
 
     float feedback = 0.85f;
     float dampCoeff = 0.3f;
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 };
 
 } // namespace xowlfish

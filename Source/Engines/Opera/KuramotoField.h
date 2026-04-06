@@ -575,9 +575,9 @@ private:
     //==========================================================================
 
     // Sample rate and derived constants
-    float sampleRate_ = 48000.0f;
+    float sampleRate_ = 0.0f;  // Sentinel: must be set by prepare() before use
     int maxPartials_ = kMaxPartials;
-    float dt_ = static_cast<float>(kKuraBlock) / 48000.0f;
+    float dt_ = 0.0f;  // Sentinel: computed from sampleRate_ in prepare()
 
     // Order parameter (updated every kKuraBlock samples)
     float orderParameter_ = 0.0f; // r(t) in [0, 1]

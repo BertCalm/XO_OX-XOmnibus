@@ -155,7 +155,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // Sample-and-hold state
     float holdL = 0.0f;

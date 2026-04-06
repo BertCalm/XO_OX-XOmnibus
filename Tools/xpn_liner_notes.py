@@ -1748,8 +1748,8 @@ def build_pack_notes(pack_path: Path) -> list:
                     engine_ids_found = [str(e).upper() for e in engines_raw]
                 elif isinstance(engines_raw, dict):
                     engine_ids_found = [str(k).upper() for k in engines_raw.keys()]
-            except (json.JSONDecodeError, KeyError, UnicodeDecodeError):
-                pass
+            except (json.JSONDecodeError, KeyError, UnicodeDecodeError) as exc:
+                print(f"[WARN] Reading engine list from pack manifest {manifest_name}: {exc}", file=sys.stderr)
 
         if not engine_ids_found:
             # Heuristic: scan XPM filenames for engine name hints

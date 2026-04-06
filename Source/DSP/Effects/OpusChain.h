@@ -59,7 +59,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -72,7 +72,7 @@ private:
         FractionalDelay delay;
         StandardLFO     lfo;
         EnvelopeFollower envFollow;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -122,7 +122,7 @@ private:
         static constexpr float kMaxGrainMs  = 200.0f;
 
         CircularBuffer rec;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // Grain state
         struct Grain
@@ -258,7 +258,7 @@ private:
         StandardLFO lfoR;
         ParameterSmoother freqSmL;
         ParameterSmoother freqSmR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -336,7 +336,7 @@ private:
 
         CircularBuffer  buf;
         FractionalDelay fracDel;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // Scanner state
         float   scanPos      = 0.0f; // current fractional offset (samples)
@@ -395,7 +395,7 @@ private:
     {
         LushReverb  reverb;
         CircularBuffer pitchBuf;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
         float  feedbackL = 0.0f;
         float  feedbackR = 0.0f;
 

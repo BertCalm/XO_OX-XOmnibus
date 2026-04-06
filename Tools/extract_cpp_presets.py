@@ -565,8 +565,8 @@ def process_engine(engine: str, dry_run: bool) -> dict:
                         # Name collision with different engine — add suffix
                         out_path = mood_dir / f"{xometa['name']} ({engine}).xometa"
                         all_issues.append((xometa["name"], f"Name collision with {existing['engines']} — saved with suffix"))
-                except json.JSONDecodeError:
-                    pass
+                except json.JSONDecodeError as exc:
+                    print(f"[WARN] Reading existing preset {out_path.name} for collision check: {exc}", file=sys.stderr)
 
             with open(out_path, "w") as f:
                 json.dump(xometa, f, indent=2)

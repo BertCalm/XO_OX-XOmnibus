@@ -143,7 +143,57 @@ public:
             g.fillEllipse(dotX - dotR, dotY - dotR, dotR * 2.0f, dotR * 2.0f);
         }
 
-        // ── 6b. Passive hover ring — 1px translucent ring, only when hovering ─
+        // ── 6b. Modulation arc — colored arc from current value, depth = modAmount ──
+        // Only drawn on knobs >= 28px (skip tiny knobs where the track is too thin
+        // to distinguish an extra arc layer).  Data comes from GalleryKnob::setModulation
+        // stored in the slider's NamedValueSet properties so the LookAndFeel
+        // signature remains unchanged.
+        if (diameter >= 28.0f)
+        {
+            const float modAmt = static_cast<float>(slider.getProperties()["modAmount"]);
+            if (std::abs(modAmt) > 0.001f)
+            {
+                // Reconstruct the coupling-type colour from the stored ARGB value.
+                const auto   argb    = static_cast<int64_t>(slider.getProperties()["modColour"]);
+                juce::Colour modCol  = (argb != 0)
+                                           ? juce::Colour(static_cast<juce::uint32>(argb))
+                                           : juce::Colour(0xFF4488FF); // fallback blue
+
+                // The mod arc extends from the current fill-end angle by modAmt
+                // fraction of the full arc sweep, clamped to the track bounds.
+                const float arcSweep = rotaryEndAngle - rotaryStartAngle;
+                const float startAngle = rotaryStartAngle + sliderPos * arcSweep;
+                float endAngle = startAngle + modAmt * arcSweep;
+                endAngle = juce::jlimit(rotaryStartAngle, rotaryEndAngle, endAngle);
+
+                if (std::abs(endAngle - startAngle) > 0.001f)
+                {
+                    // Arc body — 2.4px, 45% alpha (thinner + more transparent
+                    // than the 2.8px fill arc so layers remain readable).
+                    juce::Path modArc;
+                    modArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
+                                         juce::jmin(startAngle, endAngle),
+                                         juce::jmax(startAngle, endAngle), true);
+                    g.setColour(modCol.withAlpha(0.45f));
+                    g.strokePath(modArc,
+                                 juce::PathStrokeType(2.4f,
+                                                      juce::PathStrokeType::curved,
+                                                      juce::PathStrokeType::rounded));
+
+                    // Endpoint dot — 2px radius, 70% alpha, marks the modulated
+                    // destination.  Uses the same trig convention as the fill dot:
+                    //   screen_x = cx + r * cos(angle - pi/2)
+                    //   screen_y = cy + r * sin(angle - pi/2)
+                    constexpr float modDotR = 2.0f;
+                    const float dotX = cx + arcRadius * std::cos(endAngle - juce::MathConstants<float>::halfPi);
+                    const float dotY = cy + arcRadius * std::sin(endAngle - juce::MathConstants<float>::halfPi);
+                    g.setColour(modCol.withAlpha(0.70f));
+                    g.fillEllipse(dotX - modDotR, dotY - modDotR, modDotR * 2.0f, modDotR * 2.0f);
+                }
+            }
+        }
+
+        // ── 6c. Passive hover ring — 1px translucent ring, only when hovering ─
         // Shown at all slider positions (including zero) so the user always gets
         // visual confirmation that the knob is interactive when they hover over it.
         if (isPassiveHover)
@@ -172,7 +222,7 @@ public:
             else
                 valStr = juce::String(val, 1);
 
-            float fontSize = juce::jmax(7.0f, discR * 0.7f);
+            float fontSize = juce::jmax(8.0f, discR * 0.7f);
             g.setFont(GalleryFonts::value(fontSize));
             g.setColour(juce::Colour(GalleryColors::t1()).withAlpha(0.85f));
             g.drawText(valStr, juce::Rectangle<float>(cx - discR, cy - discR, discR * 2.0f, discR * 2.0f),
@@ -420,7 +470,11 @@ public:
         // Text — JetBrains Mono 9px
         g.setColour(juce::Colour(t1()));
         g.setFont(GalleryFonts::value(9.0f));
-        g.drawText(text, bounds.reduced(8, 4), juce::Justification::centredLeft, true);
+        {
+            auto tooltipBounds = bounds.reduced(8, 4);
+            auto displayText = GalleryUtils::ellipsizeText(g.getCurrentFont(), text, (float)tooltipBounds.getWidth());
+            g.drawText(displayText, tooltipBounds, juce::Justification::centredLeft, false);
+        }
     }
 
     //==========================================================================

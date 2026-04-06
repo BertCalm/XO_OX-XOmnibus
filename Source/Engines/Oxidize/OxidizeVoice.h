@@ -164,7 +164,7 @@ struct OxidizeVoice
     //==========================================================================
     // Private: sample rate + steal crossfade rate
     //==========================================================================
-    float sampleRate_    = 44100.0f;
+    float sampleRate_    = 0.0f;  // Sentinel: must be set by prepare() before use
     float stealFadeRate_ = 1.0f / (0.005f * 44100.0f); // 5ms linear ramp
 
     //==========================================================================

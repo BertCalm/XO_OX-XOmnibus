@@ -42,7 +42,9 @@ ALL_ENGINES = [
 ]
 
 VALID_MOODS = {
-    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"
+    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+    "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+    "Organic", "Shadow"
 }
 
 PLACEHOLDER_DNA = {d: None for d in DNA_DIMENSIONS}

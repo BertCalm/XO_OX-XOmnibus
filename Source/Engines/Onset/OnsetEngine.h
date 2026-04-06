@@ -440,7 +440,7 @@ public:
     bool isActive() const noexcept { return active; }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double baseFreq = 55.0; // A1 — typical 808 kick fundamental
     double phase = 0.0;
     double subPhase = 0.0;
@@ -567,7 +567,7 @@ public:
     bool isActive() const noexcept { return active; }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double bodyOsc1Freq = 180.0; // 808 snare body resonance 1 (~180Hz)
     double bodyOsc2Freq = 330.0; // 808 snare body resonance 2 (~330Hz)
     double bodyPhase1 = 0.0;
@@ -703,7 +703,7 @@ public:
     bool isActive() const noexcept { return active; }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float oscillatorFrequencies[kNumMetallicOscillators] = {};
     double oscillatorPhases[kNumMetallicOscillators] = {};
     float toneBalance = 0.5f; // Low-band vs. high-band metallic mix
@@ -823,7 +823,7 @@ public:
     bool isActive() const noexcept { return active; }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double carrierFreq = 200.0;
     double carrierPhase = 0.0;
     double modulatorPhase = 0.0;
@@ -1043,7 +1043,7 @@ public:
     bool isActive() const noexcept { return active; }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float delayBuffer[kMaxDelaySamples] = {};
     int delayLength = 100; // Period of fundamental in samples
     int writePosition = 0;
@@ -1162,7 +1162,7 @@ public:
     bool isActive() const noexcept { return active; }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double frequency = 200.0;
     double phase = 0.0;
     float dcwAmount = 0.0f;             // Base DCW depth (Casio's "resonance" amount)
@@ -1329,13 +1329,17 @@ private:
 class OnsetReverb
 {
 public:
+    // Reference rate for Schroeder/Moorer co-prime delay lengths (Freeverb lineage).
+    // 44100 is intentional: the standard Freeverb tap lengths are defined at this rate.
+    static constexpr float kReferenceSampleRate = 44100.0f;
+
     void prepare(double sampleRate) noexcept
     {
         sr = static_cast<float>(sampleRate);
         // Scale delay lengths from 44.1kHz reference to actual sample rate.
         // The base lengths are Schroeder/Moorer co-prime values (originally from
         // Freeverb by Jezar at Dreampoint), chosen to minimize flutter echoes.
-        float sampleRateScale = sr / 44100.0f;
+        float sampleRateScale = sr / kReferenceSampleRate;
         combLen[0] = static_cast<int>(1116 * sampleRateScale); // ~25.3ms at 44.1kHz
         combLen[1] = static_cast<int>(1188 * sampleRateScale); // ~26.9ms
         combLen[2] = static_cast<int>(1277 * sampleRateScale); // ~29.0ms
@@ -1889,6 +1893,7 @@ public:
     //-- Render ------------------------------------------------------------------
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
+        jassert(sr > 0.0);  // sr=0.0 sentinel: prepare() must be called before renderBlock()
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
@@ -2289,7 +2294,7 @@ private:
     OnsetDelay fxDelay;
     OnsetReverb fxReverb;
     OnsetLoFi fxLoFi;
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int blockSize = 512;
 
     // Coupling modulation accumulators

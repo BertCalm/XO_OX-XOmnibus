@@ -118,7 +118,7 @@ private:
         Release
     };
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float attack = 0.01f;
     float decay = 0.2f;
     float sustain = 0.8f;

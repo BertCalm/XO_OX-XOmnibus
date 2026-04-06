@@ -228,7 +228,7 @@ public:
     bool isActive() const noexcept { return active; }
 
 private:
-    double hostSampleRate = 44100.0;
+    double hostSampleRate = 0.0;  // Sentinel: must be set by prepare() before use
     bool active = false;
     int bounceIndex = 0;
     int sampleCounter = 0;
@@ -446,7 +446,7 @@ public:
     }
 
 private:
-    double hostSampleRate = 44100.0;
+    double hostSampleRate = 0.0;  // Sentinel: must be set by prepare() before use
 
     // Circular delay buffer (shared across all facets — single write, 6 reads)
     std::array<float, kMaxDelaySamples> delayBuffer{};
@@ -589,7 +589,7 @@ public:
     }
 
 private:
-    double hostSampleRate = 44100.0;
+    double hostSampleRate = 0.0;  // Sentinel: must be set by prepare() before use
     double lfoPhase = 0.0; // double precision to prevent drift over long sessions
 
     // CPU fix: skip setCoefficients when LFO value hasn't changed enough
@@ -1537,8 +1537,8 @@ private:
     // Core state
     //--------------------------------------------------------------------------
 
-    double hostSampleRate = 44100.0;
-    float sampleRateFloat = 44100.0f;
+    double hostSampleRate = 0.0;  // Sentinel: must be set by prepare() before use
+    float sampleRateFloat = 0.0f;  // Sentinel: must be set by prepare() before use
 
     //--------------------------------------------------------------------------
     // Voice pool — 8-voice polyphony with oldest-note stealing

@@ -103,10 +103,10 @@ public:
     {
         // Layout: LABEL [KNOB] › LABEL [KNOB] › ... — label left of knob, tightly grouped
         auto b = getLocalBounds().reduced(4, 2);
-        constexpr int kh = 34;             // knob diameter
-        constexpr int lblW = 38;           // label width
+        constexpr int kh = 44;             // knob diameter (WCAG 44pt minimum touch target)
+        constexpr int lblW = 30;           // label width (CHAR/MOVE/COUP/SPACE/VOL fit at 9pt mono)
         constexpr int gap = 2;             // between label and knob
-        constexpr int groupGap = 6;        // between knob→next label
+        constexpr int groupGap = 4;        // between knob→next label
         int ky = (b.getHeight() - kh) / 2; // vertically center knobs
 
         int x = b.getX();
@@ -118,8 +118,8 @@ public:
             x += kh + groupGap;
         }
         // Master volume
-        masterLbl.setBounds(x, ky, lblW - 8, kh); // VOL is shorter
-        x += (lblW - 8) + gap;
+        masterLbl.setBounds(x, ky, lblW, kh);
+        x += lblW + gap;
         master.setBounds(x, b.getY() + ky, kh, kh);
     }
 

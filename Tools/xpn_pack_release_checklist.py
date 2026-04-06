@@ -33,6 +33,15 @@ VALID_MOODS = {
     "Flux",
     "Aether",
     "Family",
+    "Submerged",
+    "Coupling",
+    "Crystalline",
+    "Deep",
+    "Ethereal",
+    "Kinetic",
+    "Luminous",
+    "Organic",
+    "Shadow",
 }
 
 FORBIDDEN_NAME_CHARS = set('[]/\\:*?"<>|')
@@ -382,8 +391,8 @@ def check_14_drum_kit_xpm(pack_dir: Path, xpm_files: list) -> CheckResult:
             pack_name = str(data.get("name", "")).lower()
             if any(kw in pack_type or kw in pack_name for kw in DRUM_TYPE_KEYWORDS):
                 is_drum_pack = True
-        except Exception:
-            pass
+        except Exception as exc:
+            print(f"[WARN] Reading expansion.json for drum pack detection: {exc}", file=sys.stderr)
     if not is_drum_pack:
         return CheckResult(
             14, label, SKIP, "Pack does not appear to be a drum/kit pack"

@@ -505,7 +505,7 @@ public:
             // condMode 0=Manual, 1=Conductor, 2=Both (no OFF state exists).
             juce::Colour badgeCol = juce::Colour(0xFFD4AF37); // Aria Gold
 
-            g.setFont(GalleryFonts::display(7.0f));
+            g.setFont(GalleryFonts::display(8.0f));
             g.setColour(badgeCol);
             g.drawText(modeText, juce::Rectangle<float>{w - 40.0f, h - 14.0f, 38.0f, 12.0f},
                        juce::Justification::centredRight, false);
@@ -658,7 +658,7 @@ public:
 
             // Label
             labels[i].setText(kDefs[i].label, juce::dontSendNotification);
-            labels[i].setFont(GalleryFonts::display(7.0f)); // Space Grotesk SemiBold 7pt
+            labels[i].setFont(GalleryFonts::display(8.0f)); // Space Grotesk SemiBold 8pt
             labels[i].setColour(juce::Label::textColourId, col);
             labels[i].setJustificationType(juce::Justification::centred);
             addAndMakeVisible(labels[i]);

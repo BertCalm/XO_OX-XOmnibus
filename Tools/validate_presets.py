@@ -42,7 +42,7 @@ VALID_MOODS = {
     "Foundation", "Atmosphere", "Entangled", "Prism", "Flux",
     "Aether", "Family", "Submerged", "Coupling", "Crystalline",
     "Deep", "Ethereal", "Kinetic", "Luminous", "Organic",
-    "User",
+    "Shadow", "User",
 }
 
 VALID_ENGINES = {
@@ -461,8 +461,8 @@ def run_validation(do_fix: bool = False, report_all: bool = False, strict: bool 
             if name in name_set:
                 duplicate_names.append(name)
             name_set.add(name)
-        except (json.JSONDecodeError, OSError, KeyError, TypeError):
-            pass
+        except (json.JSONDecodeError, OSError, KeyError, TypeError) as exc:
+            print(f"[ERROR] Reading preset stats from {rel}: {exc}", file=sys.stderr)
 
         if result.errors:
             failed += 1
@@ -535,8 +535,8 @@ def run_validation(do_fix: bool = False, report_all: bool = False, strict: bool 
                 if dna and isinstance(dna, dict):
                     vals = {d: dna.get(d, 0.5) for d in DNA_DIMENSIONS}
                     all_dna.append((data.get("name", "?"), data.get("engines", []), vals))
-            except (json.JSONDecodeError, OSError, KeyError, TypeError):
-                pass
+            except (json.JSONDecodeError, OSError, KeyError, TypeError) as exc:
+                print(f"[ERROR] Reading DNA data from {filepath.name}: {exc}", file=sys.stderr)
 
         if all_dna:
             print()
@@ -608,8 +608,8 @@ def run_validation(do_fix: bool = False, report_all: bool = False, strict: bool 
                                 eb = pair.get("engineB", pair.get("target", ""))
                                 if ea and eb:
                                     coupling_pairs_found.add((min(ea, eb), max(ea, eb)))
-            except (json.JSONDecodeError, OSError, KeyError, TypeError):
-                pass
+            except (json.JSONDecodeError, OSError, KeyError, TypeError) as exc:
+                print(f"[ERROR] Reading coupling data from {filepath.name}: {exc}", file=sys.stderr)
 
         print()
         print(f"COUPLING COVERAGE")

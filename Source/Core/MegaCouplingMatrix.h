@@ -97,6 +97,27 @@ public:
         while (ratio * 2 <= rawRatio && ratio < 256)
             ratio *= 2;
         controlRateRatio = std::max(8, std::min(256, ratio));
+
+        // Block-size-aware smoothing coefficient (#910).
+        // Target: ~200ms time constant regardless of block size.
+        // At 512 samples / 48kHz the old constant (0.99) gave ~200ms;
+        // at 32 samples it collapsed to ~6ms — radically different automation feel.
+        // tc = 0.2s * (sampleRate / blockSize) blocks; coeff = exp(-1 / tc)
+        {
+            const double blocksPerSecond = sampleRate / static_cast<double>(maxBlockSize);
+            const double targetTimeConstantSeconds = 0.2; // 200ms
+            const double targetBlocks = targetTimeConstantSeconds * blocksPerSecond;
+            couplingSmooth_ = static_cast<float>(std::exp(-1.0 / targetBlocks));
+        }
+
+        // Reset all in-flight smoothedAmounts to their target to prevent a zipper
+        // pop when the DAW changes buffer size mid-session (#910).
+        auto routes = std::atomic_load(&routeList);
+        if (routes)
+        {
+            for (auto& route : *routes)
+                route.smoothedAmount = route.amount;
+        }
     }
 
     // Set the engine pointers for the active slots (audio thread).
@@ -243,11 +264,11 @@ public:
         for (const auto& route : *routes)
         {
             // One-pole smoother for coupling amount — prevents zipper noise on automation.
-            // Coefficient 0.99 gives a ~200ms lag at 48kHz/512-sample blocks: perceptually
-            // smooth while remaining responsive to macro sweeps. `smoothedAmount` is mutable
-            // so it can be updated here despite the const range-for reference. (#684)
-            constexpr float kCouplingSmooth = 0.99f;
-            route.smoothedAmount += (route.amount - route.smoothedAmount) * (1.0f - kCouplingSmooth);
+            // couplingSmooth_ is computed in prepare() for a ~200ms time constant that is
+            // invariant to block size, so macro sweeps sound identical across all DAW buffer
+            // sizes. `smoothedAmount` is mutable so it can be updated here despite the const
+            // range-for reference. (#684, #910)
+            route.smoothedAmount += (route.amount - route.smoothedAmount) * (1.0f - couplingSmooth_);
 
             if (!route.active || std::abs(route.smoothedAmount) < 0.001f)
                 continue;
@@ -475,6 +496,11 @@ private:
     // controlRateRatio <= 0 as "not prepared" and reads every sample (ratio = 1),
     // which is safe but CPU-heavy — a clear signal that prepare() was missed.
     int controlRateRatio = 0;
+
+    // Block-size-aware one-pole smoothing coefficient for coupling amounts (#910).
+    // Recomputed in prepare() so the ~200ms time constant is invariant to block size.
+    // Default 0.99f matches the old per-block constant at 48kHz/512 samples.
+    float couplingSmooth_ = 0.99f;
 
     //-- Cycle detection helpers (message thread only) -------------------------
 

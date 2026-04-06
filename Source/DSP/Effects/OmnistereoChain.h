@@ -44,7 +44,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_ = 44100.0;
+    double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
 
     //==========================================================================
     // Stage 1 — Tape Saturation & Hysteresis (Strymon Deco V2)
@@ -58,7 +58,7 @@ private:
         ParameterSmoother wowSmooth_L, wowSmooth_R;
         std::vector<float> wowDelayL, wowDelayR;
         int wowWriteL = 0, wowWriteR = 0;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -146,7 +146,7 @@ private:
     {
         CytomicSVF svfL, svfR;
         float lastFreq = 0.0f, lastQ = 0.0f, lastGain = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate) { sr = sampleRate; reset(); }
         void reset() { svfL.reset(); svfR.reset(); lastFreq = lastQ = lastGain = 0.0f; }
@@ -183,7 +183,7 @@ private:
         int writeL = 0, writeR = 0;
         StandardLFO lfo;
         CytomicSVF chebLP1, chebLP2;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -254,7 +254,7 @@ private:
         int writeL = 0, writeR = 0;
         StandardLFO lfoL, lfoR;
         float compStateL = 0.0f, compStateR = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

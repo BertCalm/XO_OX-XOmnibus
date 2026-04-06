@@ -73,7 +73,8 @@ ENGINE_DISPLAY_NAMES = {
 
 VALID_MOODS = {
     "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
-    "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic"
+    "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous", "Organic",
+    "Shadow"
 }
 
 # Placeholder Sonic DNA — caller should override with real values

@@ -774,7 +774,7 @@ private:
 
     //-- State ------------------------------------------------------------------
 
-    double sr = 48000.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int blockSize = 512;
     float modWheel = 0.0f;
     float aftertouch = 0.0f;

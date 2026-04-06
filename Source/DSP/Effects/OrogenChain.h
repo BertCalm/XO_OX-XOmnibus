@@ -54,7 +54,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -216,7 +216,7 @@ private:
 
         CircularBuffer capture;
         int            captureSize  = 0;
-        double         sr           = 44100.0;
+        double         sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         struct Grain
         {
@@ -354,7 +354,7 @@ private:
 
         FractionalDelay combs[4];
         float           combFeedback[4] = {};
-        double          sr = 44100.0;
+        double          sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

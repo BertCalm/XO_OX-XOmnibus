@@ -63,7 +63,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -81,7 +81,7 @@ private:
         float  xfadeSpeed_  = 0.0f;
         int    loopPos_     = 0;
         int    loopLen_     = 0;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -144,7 +144,7 @@ private:
 
         CircularBuffer buf;
         float readPos_ = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
         int    bufSize_ = 0;
 
         void prepare(double sampleRate)
@@ -194,7 +194,7 @@ private:
         FractionalDelay delayR;
         StandardLFO     lfoL;
         StandardLFO     lfoR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // DC-2 mode presets: {rate Hz, depth ms}
         static constexpr float kModeRates[4]  = {0.5f, 0.9f, 1.5f, 2.5f};
@@ -268,7 +268,7 @@ private:
         // Allpass diffusers per tap
         std::array<CytomicSVF, kMaxTaps> diffL;
         std::array<CytomicSVF, kMaxTaps> diffR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // Pitch shift via read-rate manipulation
         // (read slightly faster = pitch up; slower = pitch down)
@@ -361,7 +361,7 @@ private:
         LushReverb   reverb;
         CytomicSVF   resonantFilter;
         StandardLFO  breathLFO;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

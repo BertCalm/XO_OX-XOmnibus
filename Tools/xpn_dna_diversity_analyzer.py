@@ -24,7 +24,9 @@ SNAPSHOT_PATH = os.path.join(
 )
 
 DNA_DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 
 MIDRANGE_LO = 0.3
 MIDRANGE_HI = 0.7

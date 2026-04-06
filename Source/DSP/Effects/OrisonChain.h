@@ -61,7 +61,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     // Temporary mono working buffer (allocated in prepare, size = maxBlockSize).
@@ -243,7 +243,7 @@ private:
         StandardLFO     wowLFO;
         ParameterSmoother wearSmoother;
 
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

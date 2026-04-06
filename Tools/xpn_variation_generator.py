@@ -574,8 +574,8 @@ def build_dna_suggestions(
                     if engines:
                         source_engine = str(engines[0]) if isinstance(engines, list) else str(engines)
                     break
-                except Exception:
-                    pass
+                except Exception as exc:
+                    print(f"[WARN] Reading .xometa file {name} from XPN archive for DNA data: {exc}", file=sys.stderr)
 
     suggestions = []
     if presets_dir:

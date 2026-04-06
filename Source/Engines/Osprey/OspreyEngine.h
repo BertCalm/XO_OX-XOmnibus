@@ -1960,8 +1960,8 @@ private:
     //==========================================================================
 
     // --- Sample rate ---
-    double sampleRateDouble = 44100.0;
-    float sampleRateFloat = 44100.0f;
+    double sampleRateDouble = 0.0;  // Sentinel: must be set by prepare() before use
+    float sampleRateFloat = 0.0f;  // Sentinel: must be set by prepare() before use
 
     // --- Voice-stealing crossfade ---
     float crossfadeRate = 0.01f; // per-sample fade decrement

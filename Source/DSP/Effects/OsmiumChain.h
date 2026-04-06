@@ -53,7 +53,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -73,7 +73,7 @@ private:
         float  lastSample       = 0.0f;
         int    samplesSinceCross = 0;
         int    periodSamples    = 100;
-        double sr               = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -260,7 +260,7 @@ private:
         CytomicSVF      hissFiltR;
         float           motorPhase  = 0.0f;  // 60Hz motor hum
         float           noiseState  = 0.0f;
-        double          sr          = 44100.0;
+        double          sr          = 0.0;  // Sentinel: must be set by prepare() before use
 
         // LCG for tape hiss
         uint32_t lcgState = 9876543u;

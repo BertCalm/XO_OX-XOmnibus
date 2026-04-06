@@ -40,7 +40,9 @@ DNA_DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"
 ZONE_LOW_MAX  = 0.33
 ZONE_HIGH_MIN = 0.67
 
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 
 # Default target centroid (balanced neutral)
 DEFAULT_CENTROID = {d: 0.5 for d in DNA_DIMS}

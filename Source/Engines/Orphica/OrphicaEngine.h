@@ -175,7 +175,7 @@ struct OrphicaAdapterVoice
 {
     bool active = false;
     int note = 0;
-    float vel = 0, freq = 440, ampEnv = 0, sr = 44100;
+    float vel = 0, freq = 440, ampEnv = 0, sr = 0;  // sr: Sentinel — set by host before DSP
     bool releasing = false;
     FamilyDelayLine dl;
     FamilyDampingFilter df;
@@ -788,7 +788,7 @@ private:
     SilenceGate silenceGate;
     static constexpr int kV = 16;
     static constexpr int kMaxBlock = 4096;
-    double sr = 44100;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int nv = 0;
     float lastL = 0, lastR = 0; // ac promoted to base class activeVoiceCount_
 

@@ -129,7 +129,7 @@ public:
     void reset();
 
 private:
-    double sr_         = 44100.0;
+    double sr_         = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_  = 512;
 
     //==========================================================================
@@ -316,6 +316,7 @@ inline void EpicChainSlotController::processBlock(juce::AudioBuffer<float>& buff
                                                    double bpm,
                                                    double ppqPosition)
 {
+    jassert(sr_ > 0.0);  // sr=0.0 sentinel: prepare() must be called before processBlock()
     if (buffer.getNumChannels() < 2 || numSamples <= 0)
         return;
 
@@ -400,14 +401,19 @@ inline void EpicChainSlotController::processBlock(juce::AudioBuffer<float>& buff
                 dispatchChain(slot, slot.pendingChain, L, R, safeSamples, bpm, ppqPosition);
             // else buffer stays as dry input (crossfading out to dry)
 
-            // Blend per sample: buffer = incoming * progress + outgoing * (1 - progress)
+            // Equal-power crossfade prevents -3dB energy dip at midpoint (fix from QDD audit).
+            // Linear law dips ~3dB at 50% progress — audible on sustained pads.
+            // sqrt() is called once per sample only during the 50ms transition window
+            // (~2400 samples at 48kHz), so the cost is negligible vs. a permanent hot path.
             float* xfL = slot.crossfadeBuf.getWritePointer(0);
             float* xfR = slot.crossfadeBuf.getWritePointer(1);
             float progress = slot.crossfadeProgress;
             for (int i = 0; i < safeSamples; ++i)
             {
-                L[i] = L[i] * progress + xfL[i] * (1.0f - progress);
-                R[i] = R[i] * progress + xfR[i] * (1.0f - progress);
+                const float gainNew = std::sqrt(progress);
+                const float gainOld = std::sqrt(1.0f - progress);
+                L[i] = L[i] * gainNew + xfL[i] * gainOld;
+                R[i] = R[i] * gainNew + xfR[i] * gainOld;
                 progress = std::min(1.0f, progress + xfInc);
             }
             slot.crossfadeProgress = progress;

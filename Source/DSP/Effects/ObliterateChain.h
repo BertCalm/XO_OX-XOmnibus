@@ -48,7 +48,9 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_ = 44100.0;
+    double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
+    // NOTE: Stage tap lengths reference 48kHz as the intentional scaling target.
+    // kPrimeTaps in ShimmerReverbStage are at 48kHz reference, scaled at prepare time.
 
     //==========================================================================
     // Stage 1 — Shimmer Reverb (OBNE Dark Star)
@@ -70,7 +72,7 @@ private:
         bool  psolaToggle = false;
         float psolaGrain1 = 1.0f;
         float psolaGrain2 = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: set by prepare()
 
         void prepare(double sampleRate);
         void reset();
@@ -85,7 +87,7 @@ private:
     {
         CytomicSVF baxTreble, baxBass;
         float aaState = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: set by prepare()
 
         void prepare(double sampleRate) { sr = sampleRate; reset(); }
         void reset() { baxTreble.reset(); baxBass.reset(); aaState = 0.0f; }
@@ -135,7 +137,7 @@ private:
         int   writeA = 0, writeB = 0;
         int   readBPos = 0;
         float hannPhase = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: set by prepare()
 
         void prepare(double sampleRate)
         {
@@ -204,7 +206,7 @@ private:
 
         float spawnAccum = 0.0f;
         juce::Random rng{};
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: set by prepare()
 
         void prepare(double sampleRate, int /*maxBlockSize*/)
         {

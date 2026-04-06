@@ -15,6 +15,7 @@ import json
 import math
 import os
 import struct
+import sys
 import tempfile
 from pathlib import Path
 from datetime import datetime
@@ -46,8 +47,8 @@ def save_ledger(ledger):
     except Exception:
         try:
             os.unlink(temp_path)
-        except OSError:
-            pass
+        except OSError as exc:
+            print(f"[WARN] Removing temp loudness ledger file {temp_path}: {exc}", file=sys.stderr)
         raise
 
 

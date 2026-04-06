@@ -1353,7 +1353,7 @@ private:
     MasterFXSequencer sequencer;         // 22
 
     juce::AudioBuffer<float> dryBuffer;
-    double sr = 48000.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int blockSize = 512;
 
     // Cached APVTS raw pointers (null until prepare() called)

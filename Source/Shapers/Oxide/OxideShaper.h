@@ -524,7 +524,7 @@ public:
 private:
     static float loadP(std::atomic<float>* p, float fb) noexcept { return p ? p->load(std::memory_order_relaxed) : fb; }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     LorenzAttractor lorenz;
 
     // Pre-filter state

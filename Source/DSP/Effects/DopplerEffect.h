@@ -121,7 +121,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float targetDistance = 0.0f;
     float currentDistance = 0.0f;
     float speed = 0.3f;

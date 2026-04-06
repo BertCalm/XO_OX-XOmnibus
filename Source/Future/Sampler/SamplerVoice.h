@@ -510,7 +510,7 @@ private:
     //==========================================================================
     // Engine state
     //==========================================================================
-    float sr_ = 48000.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
     float srcSampleRate_ = 48000.0f;
     int rootNote_ = 60;
     int numFrames_ = 0;

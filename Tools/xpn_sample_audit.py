@@ -105,8 +105,8 @@ def detect_bit_depth_label(sampwidth: int, wav_path: str) -> tuple[str, bool]:
                 audio_fmt = struct.unpack_from("<H", header, 20)[0]
                 if audio_fmt == 3:
                     is_float = True
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[WARN] Reading WAV format header from {wav_path}: {exc}", file=sys.stderr)
 
     bits = sampwidth * 8
     if is_float and bits == 32:

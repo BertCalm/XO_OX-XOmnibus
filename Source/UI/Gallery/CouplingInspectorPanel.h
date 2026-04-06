@@ -117,8 +117,8 @@ public:
                                     "PitchToPitch: source pitch interval detunes target | "
                                     "AudioToWavetable: source audio \xe2\x86\x92 target wavetable position | "
                                     "AudioToBuffer: source audio fills target grain/buffer pool | "
-                                    "KnotTopology: topological knot matrix routing (Orbweave) | "
-                                    "TriangularCoupling: 3-engine circular modulation loop");
+                                    "KnotTopology: bidirectional amplitude-to-filter coupling with linking-number depth scaling (Orbweave) | "
+                                    "TriangularCoupling: Sternberg love-state transfer from source to destination; falls back to amplitude-to-filter modulation for non-Oxytocin engines");
             card.typeBox.setColour(juce::ComboBox::backgroundColourId, GalleryColors::get(GalleryColors::raised()));
             card.typeBox.setColour(juce::ComboBox::outlineColourId, GalleryColors::border().withAlpha(0.18f));
             card.typeBox.setColour(juce::ComboBox::textColourId, GalleryColors::get(GalleryColors::t1()));

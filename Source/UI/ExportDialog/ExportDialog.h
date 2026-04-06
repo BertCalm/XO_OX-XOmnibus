@@ -400,15 +400,16 @@ private:
 
     void triggerPreviewForSelectedPreset()
     {
-        if (presetManager.getLibrary().empty())
+        auto lib = presetManager.getLibrary();
+        if (lib->empty())
             return;
 
         // Use the selected preset, or the first one
-        int idx = (selectedPresetIndex >= 0 && selectedPresetIndex < (int)presetManager.getLibrary().size())
+        int idx = (selectedPresetIndex >= 0 && selectedPresetIndex < (int)lib->size())
                       ? selectedPresetIndex
                       : 0;
 
-        const auto& preset = presetManager.getLibrary()[static_cast<size_t>(idx)];
+        const auto& preset = (*lib)[static_cast<size_t>(idx)];
         previewDrip.requestPreview(preset, dialogApvts);
         cachedThumbnail.clear();
         previewPlayBtn.setButtonText("...");
@@ -690,7 +691,7 @@ private:
             repaint();
         };
 
-        entangledSummaryLabel.setFont(GalleryFonts::label(7.5f));
+        entangledSummaryLabel.setFont(GalleryFonts::label(8.0f));
         entangledSummaryLabel.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::textMid()));
         entangledSummaryLabel.setMinimumHorizontalScale(0.4f);
         A11y::setup(entangledSummaryLabel, "Coupling Summary",
@@ -836,7 +837,7 @@ private:
     void updateSizeEstimate()
     {
         auto settings = getCurrentSettings();
-        int presetCount = juce::jmax(1, (int)presetManager.getLibrary().size());
+        int presetCount = juce::jmax(1, (int)presetManager.getLibrary()->size());
         auto est = XOriginate::estimateExportSize(settings, presetCount);
 
         juce::String sizeStr;
@@ -859,7 +860,7 @@ private:
 
     void runValidation()
     {
-        auto result = XOriginate::validateBatch(presetManager.getLibrary());
+        auto result = XOriginate::validateBatch(*presetManager.getLibrary());
 
         juce::String msg;
         if (result.valid)
@@ -925,10 +926,11 @@ private:
         bool useEntangled = entangledToggle.getToggleState() && capturedSnapshot.hasActiveCoupling();
         auto snapshotCopy = useEntangled ? capturedSnapshot : XOriginate::CouplingSnapshot{};
 
-        // Snapshot the preset library on the message thread before launching the worker.
-        // Reading presetManager.getLibrary() from a worker thread is a data race — the
-        // message thread may mutate the library (e.g. preset add/remove) concurrently.
-        auto presetsCopy = presetManager.getLibrary();
+        // Copy the preset library for the export worker thread.  getLibrary() returns a
+        // shared_ptr (O(1)), and we dereference once here to make a stable vector copy that
+        // the worker owns exclusively.  The shared_ptr pattern ensures the source data
+        // remains valid even if a concurrent scanPresetDirectoryAsync() swap fires mid-copy.
+        auto presetsCopy = *presetManager.getLibrary();
 
         // Export runs on a worker thread
         struct ExportThread : public juce::Thread

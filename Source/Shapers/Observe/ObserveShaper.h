@@ -473,7 +473,7 @@ private:
 
     static constexpr float kDefaultFreqs[kNumBands] = {80.0f, 250.0f, 800.0f, 2500.0f, 6000.0f, 16000.0f};
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     std::array<ObserveBand, kNumBands> bands{};
 
     // Coupling

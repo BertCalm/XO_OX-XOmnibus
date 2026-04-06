@@ -31,7 +31,7 @@ struct PillButtonLookAndFeel : public juce::LookAndFeel_V4
 {
     void drawButtonText(juce::Graphics& g, juce::TextButton& btn, bool /*isMouseOver*/, bool /*isButtonDown*/) override
     {
-        g.setFont(GalleryFonts::label(7.5f));
+        g.setFont(GalleryFonts::label(8.0f));
         g.setColour(btn.findColour(btn.getToggleState() ? juce::TextButton::textColourOnId
                                                         : juce::TextButton::textColourOffId));
         g.drawFittedText(btn.getButtonText(), btn.getLocalBounds().reduced(1, 0), juce::Justification::centred, 1,
@@ -190,7 +190,10 @@ public:
             // Header label — uppercase, T3 tonal color with zone hue blended in
             g.setFont(GalleryFonts::label(8.0f));
             g.setColour(get(t3()).interpolatedWith(fr.headerColor, 0.35f));
-            g.drawText(fr.headerLabel.toUpperCase(), 10, 0, w - 14, h, juce::Justification::centredLeft, true);
+            {
+                auto displayLabel = GalleryUtils::ellipsizeText(g.getCurrentFont(), fr.headerLabel.toUpperCase(), (float)(w - 14));
+                g.drawText(displayLabel, 10, 0, w - 14, h, juce::Justification::centredLeft, false);
+            }
             return;
         }
 
@@ -218,20 +221,27 @@ public:
         const int nameH = 16;
         g.setFont(GalleryFonts::display(11.0f));
         g.setColour(isSelected ? fr.accent : get(t1()));
-        g.drawText(fr.engineId.toUpperCase(), 24, nameY, w - 74, nameH, juce::Justification::centredLeft, true);
+        {
+            auto displayName = GalleryUtils::ellipsizeText(g.getCurrentFont(), fr.engineId.toUpperCase(), (float)(w - 74));
+            g.drawText(displayName, 24, nameY, w - 74, nameH, juce::Justification::centredLeft, false);
+        }
 
         // Archetype subtitle — below engine name, muted T3 color
         if (!fr.archetype.isEmpty())
         {
             g.setFont(GalleryFonts::body(8.0f));
             g.setColour(get(t3()).withAlpha(0.70f));
-            g.drawText(fr.archetype, 24, nameY + nameH, w - 74, 11, juce::Justification::centredLeft, true);
+            auto displayArchetype = GalleryUtils::ellipsizeText(g.getCurrentFont(), fr.archetype, (float)(w - 74));
+            g.drawText(displayArchetype, 24, nameY + nameH, w - 74, 11, juce::Justification::centredLeft, false);
         }
 
         // Category badge — right side, T4 muted mono (vertically centred in name row)
         g.setFont(GalleryFonts::value(8.0f));
         g.setColour(get(t4()));
-        g.drawText(fr.category, w - 66, nameY, 62, nameH, juce::Justification::centredRight, true);
+        {
+            auto displayCategory = GalleryUtils::ellipsizeText(g.getCurrentFont(), fr.category, 62.0f);
+            g.drawText(displayCategory, w - 66, nameY, 62, nameH, juce::Justification::centredRight, false);
+        }
     }
 
     void listBoxItemClicked(int row, const juce::MouseEvent&) override { commitSelection(row); }

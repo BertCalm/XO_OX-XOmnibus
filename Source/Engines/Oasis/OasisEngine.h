@@ -550,6 +550,7 @@ public:
     //-- Audio -----------------------------------------------------------------
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
+        jassert(sr_ > 0.0);  // sr=0.0 sentinel: prepare() must be called before renderBlock()
         juce::ScopedNoDenormals noDenormals;
 
         // 1. Parse MIDI
@@ -1210,8 +1211,8 @@ private:
     static_assert(kMaxVoices > 1, "Oasis pan spread divides by kMaxVoices-1");
     static constexpr int kCanopyTaps = 6;
 
-    double sr_ = 44100.0;
-    float srF_ = 44100.0f;
+    double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
+    float srF_ = 0.0f;  // Sentinel: must be set by prepare() before use
     int blockSize_ = 512;
 
     // Voices

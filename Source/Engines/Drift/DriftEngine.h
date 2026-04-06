@@ -90,7 +90,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double phase = 0.0;
     float currentValue = 0.0f;
     float targetValue = 0.0f;
@@ -166,7 +166,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     std::array<double, kNumVoices> phases{};
     std::array<double, kNumVoices> phaseIncs{};
 
@@ -232,7 +232,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double carrierPhase = 0.0;
     double modPhase = 0.0;
     double carrierInc = 0.0;
@@ -303,7 +303,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     std::array<CytomicSVF, 3> bands;
     float lastMorphValue = -999.0f; // sentinel: guarantees first-call recompute
 
@@ -381,7 +381,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float lpState = 0.0f;
     float cachedTone = -1.0f;
     float cachedCoeff = 0.1f;
@@ -434,7 +434,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double phase = 0.0;
 };
 
@@ -522,7 +522,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int bufferSize = 4096; // computed in prepare() as ~93ms at actual SR
     std::vector<float> buffer;
     int writePos = 0;
@@ -636,7 +636,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     std::array<std::vector<float>, 4> combBuffers;
     std::array<size_t, 4> combSizes{};
     std::array<size_t, 4> combPos{};
@@ -828,6 +828,7 @@ public:
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
+        jassert(sr > 0.0);  // sr=0.0 sentinel: prepare() must be called before renderBlock()
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
@@ -1795,8 +1796,8 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     uint64_t voiceCounter = 0; // monotonic counter for VoiceAllocator LRU startTime
     std::array<DriftVoice, kMaxVoices> voices;
 

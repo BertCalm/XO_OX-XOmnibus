@@ -71,7 +71,9 @@ ENGINE_COLORS: dict[str, str] = {
 }
 
 # Moods in canonical order
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 
 # Sonic DNA axis labels in order
 DNA_AXES = ["brightness", "warmth", "movement", "density", "space", "aggression"]

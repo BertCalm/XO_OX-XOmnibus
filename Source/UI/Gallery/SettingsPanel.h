@@ -537,10 +537,13 @@ private:
             g.drawText("CC " + juce::String(m.ccNumber), x + 4, rowY, 46, kRowH, juce::Justification::centredLeft,
                        false);
 
-            // Param ID — Inter 10pt, truncated
+            // Param ID — Inter 10pt, ellipsized
             g.setFont(GalleryFonts::body(10.0f));
             g.setColour(get(textMid()));
-            g.drawText(m.paramId, x + 54, rowY, w - 54 - 28, kRowH, juce::Justification::centredLeft, true);
+            {
+                auto displayParamId = GalleryUtils::ellipsizeText(g.getCurrentFont(), m.paramId, (float)(w - 54 - 28));
+                g.drawText(displayParamId, x + 54, rowY, w - 54 - 28, kRowH, juce::Justification::centredLeft, false);
+            }
 
             rowY += kRowH;
         }

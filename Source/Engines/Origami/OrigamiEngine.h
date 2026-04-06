@@ -1831,8 +1831,8 @@ private:
     //==========================================================================
 
     // ---- Sample Rate ----
-    double storedSampleRate = 44100.0; // Full-precision sample rate for filter coefficient computation
-    float sampleRateFloat = 44100.0f;  // Float-precision sample rate for per-sample DSP
+    double storedSampleRate = 0.0; // Sentinel: must be set by prepare() before use (full-precision)
+    float sampleRateFloat = 0.0f;  // Sentinel: must be set by prepare() before use
 
     // ---- Control Smoothing (shared ParameterSmoother, 5ms) ----
     ParameterSmoother smoothFoldPoint, smoothFoldDepth, smoothRotate, smoothStretch;

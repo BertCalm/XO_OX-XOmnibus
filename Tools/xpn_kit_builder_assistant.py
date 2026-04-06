@@ -86,8 +86,8 @@ def prompt_int(question: str, lo: int, hi: int, default: int) -> int:
             val = int(raw)
             if lo <= val <= hi:
                 return val
-        except ValueError:
-            pass
+        except ValueError as exc:
+            print(f"[WARN] Parsing integer input '{raw}': {exc}", file=sys.stderr)
         print(f"  Please enter a number between {lo} and {hi}.")
 
 

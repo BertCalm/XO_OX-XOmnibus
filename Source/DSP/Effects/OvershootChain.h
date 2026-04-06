@@ -60,7 +60,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     // Mono working buffer (allocated in prepare)
@@ -74,7 +74,7 @@ private:
     {
         static constexpr float kMaxDelayMs = 2000.0f;
         FractionalDelay del;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -118,7 +118,7 @@ private:
         int    zeroCrossCount_ = 0;
         int    periodSamples_  = 400;
         float  trackingError_  = 0.5f; // hysteresis reduction factor (0=normal, 1=max chaos)
-        double sr_             = 44100.0;
+        double sr_             = 0.0;  // Sentinel: must be set by prepare() before use
 
         // Simple ADSR (linear)
         float envLevel_ = 0.0f;
@@ -201,7 +201,7 @@ private:
         StandardLFO     lfoL, lfoR;
         CytomicSVF      combSVFL, combSVFR;
         ParameterSmoother depthSmootherL, depthSmootherR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -293,7 +293,7 @@ private:
         int    grainLen_      = kGrainSamples;
         int    captureLenL_   = kBufSamples;
         int    captureLenR_   = kBufSamples;
-        double sr_            = 44100.0;
+        double sr_            = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

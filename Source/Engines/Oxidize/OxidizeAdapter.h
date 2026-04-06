@@ -479,7 +479,7 @@ private:
 
     OxidizeEngine                           engine_;
     xooxidize::OxidizeParamSnapshot         snap_;
-    double                                  sampleRate_    = 44100.0;
+    double                                  sampleRate_    = 0.0;  // Sentinel: must be set by prepare() before use
     int                                     maxBlockSize_  = 512;
 
     // Per-block coupling accumulators — set by applyCouplingInput(), consumed + reset at START of renderBlock()

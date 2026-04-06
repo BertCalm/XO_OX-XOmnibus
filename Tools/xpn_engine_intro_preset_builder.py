@@ -200,8 +200,10 @@ ENGINES = {
     },
 }
 
-# 7 moods — Entangled skipped (concept engines cannot couple yet)
-MOODS = ["Foundation", "Atmosphere", "Prism", "Flux", "Aether", "Family"]
+# 16 moods — Entangled skipped (concept engines cannot couple yet)
+MOODS = ["Foundation", "Atmosphere", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic",
+         "Luminous", "Organic", "Shadow"]
 # Entangled deliberately excluded per spec
 
 PLACEHOLDER_TAG = "placeholder"

@@ -699,8 +699,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     float inverseSr_ = 1.0f / 48000.0f;
 
     std::array<OmegaVoice, kMaxVoices> voices;

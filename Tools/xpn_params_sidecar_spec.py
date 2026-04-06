@@ -108,8 +108,8 @@ def read_program_engine(xpm_path: Path) -> str | None:
             eng = elem.get("engine") or elem.get("Engine")
             if eng:
                 return eng.strip().upper()
-    except ET.ParseError:
-        pass
+    except ET.ParseError as exc:
+        print(f"[WARN] Parsing XPM file {xpm_path.name} for engine hint: {exc}", file=sys.stderr)
     return None
 
 
@@ -125,8 +125,8 @@ def read_xometa_engine(xometa_path: Path) -> str | None:
         for key in ("engine", "Engine"):
             if key in header:
                 return str(header[key]).upper()
-    except (json.JSONDecodeError, OSError):
-        pass
+    except (json.JSONDecodeError, OSError) as exc:
+        print(f"[WARN] Reading engine from .xometa file {xometa_path.name}: {exc}", file=sys.stderr)
     return None
 
 

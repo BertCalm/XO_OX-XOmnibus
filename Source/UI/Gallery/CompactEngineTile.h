@@ -65,8 +65,17 @@ public:
         isLoading = false; // engine arrived — clear loading state
         hasEngine = newHasEngine;
         engineId = newId;
-        setTooltip(hasEngine ? "Click to open engine detail \xe2\x80\x94 right-click for options"
-                             : "Slot " + juce::String(slot + 1) + ": empty — click to load engine");
+        if (hasEngine)
+        {
+            auto arch = archetypeOf(engineId);
+            auto tipText = arch.isEmpty() ? engineId.toUpperCase()
+                                          : engineId.toUpperCase() + " \xe2\x80\x94 " + arch;
+            setTooltip(tipText);
+        }
+        else
+        {
+            setTooltip("Slot " + juce::String(slot + 1) + ": empty — click to load engine");
+        }
         accent = hasEngine ? eng->getAccentColour() : GalleryColors::get(GalleryColors::emptySlot());
         miniWave.setSlot(slot);
         if (eng)
@@ -209,6 +218,32 @@ public:
             g.fillRoundedRectangle(b, 4.0f);
         }
 
+        // ── Depth-zone gradient overlay ──────────────────────────────────────
+        // Sunlit engines get a warm cyan tint, Twilight get blue, Midnight get violet
+        if (hasEngine)
+        {
+            const int zone = depthZoneOf(engineId); // already exists in this file
+            juce::Colour zoneTop, zoneBot;
+            switch (zone)
+            {
+            case 0: // Sunlit
+                zoneTop = juce::Colour(0xFF48CAE4).withAlpha(0.04f); // warm cyan
+                zoneBot = juce::Colours::transparentBlack;
+                break;
+            case 2: // Midnight
+                zoneTop = juce::Colours::transparentBlack;
+                zoneBot = juce::Colour(0xFF7B2FBE).withAlpha(0.04f); // violet
+                break;
+            default: // Twilight
+                zoneTop = juce::Colour(0xFF3366FF).withAlpha(0.02f); // blue
+                zoneBot = juce::Colour(0xFF3366FF).withAlpha(0.02f);
+                break;
+            }
+            juce::ColourGradient zoneGrad(zoneTop, b.getX(), b.getY(), zoneBot, b.getX(), b.getBottom(), false);
+            g.setGradientFill(zoneGrad);
+            g.fillRoundedRectangle(b, 4.0f);
+        }
+
         if (isSelected && hasEngine)
         {
             // Selected: stronger accent tint
@@ -272,7 +307,7 @@ public:
             {
                 const float rowH = 14.0f;
                 const float rowY = content.getY();
-                const float slotW = 12.0f;
+                const float slotW = 24.0f; // enlarged to match 24px creature icon
                 const float pwrW = 16.0f;
                 const float pwrH = 16.0f;
 
@@ -281,7 +316,7 @@ public:
                 // Falls back to procedural CreatureRenderer which always succeeds.
                 // Falls back further to plain slot number if creature bounds are too small.
                 {
-                    const float creatureSize = 12.0f; // fits within 12px slot column
+                    const float creatureSize = 24.0f; // enlarged for visibility — own 24px slot
                     juce::Rectangle<float> creatureBounds(content.getX(), rowY + (rowH - creatureSize) * 0.5f,
                                                           creatureSize, creatureSize);
 
@@ -297,7 +332,7 @@ public:
                 }
 
                 // Engine name — 14px Overbit (D2), uppercase, accent color
-                // Name starts after the 12px creature column + 3px gap
+                // Name starts after the 24px creature column + 3px gap
                 float nameX = content.getX() + slotW + 3.0f;
 
                 // ── D3 Scaffold: 6px depth zone dot next to engine name ────
@@ -735,6 +770,114 @@ private:
             g.setColour(dotColors[d].withAlpha(0.85f));
             g.fillEllipse(dotX, startY, dotSize, dotSize);
         }
+    }
+
+    // ── Engine archetype lookup ──────────────────────────────────────────────
+    // Returns the one-line archetype description for an engine ID (case-insensitive).
+    // Mirrors the archetype strings in EnginePickerPopup::engineMetadataTable().
+    // Returns empty string if not found (tooltip will omit the archetype suffix).
+    static juce::String archetypeOf(const juce::String& engineId)
+    {
+        struct ArchEntry { const char* id; const char* archetype; };
+        static const ArchEntry kTable[] = {
+            // Kitchen Collection — Organs
+            { "Oto",        "tonewheel drawbar organ" },
+            { "Octave",     "Hammond tonewheel simulation" },
+            { "Oleg",       "theatre pipe organ" },
+            { "Otis",       "gospel soul organ drive" },
+            // Kitchen Collection — Pianos
+            { "Oven",       "Steinway concert grand piano" },
+            { "Ochre",      "wooden resonator piano" },
+            { "Obelisk",    "grand piano sympathetic resonance" },
+            { "Opaline",    "prepared piano rust and objects" },
+            // Kitchen Collection — Bass
+            { "Ogre",       "sub bass synthesizer" },
+            { "Olate",      "fretless bass guitar" },
+            { "Oaken",      "upright double bass" },
+            { "Omega",      "analog synth bass" },
+            // Kitchen Collection — Strings
+            { "Orchard",    "orchestral strings bow pressure" },
+            { "Overgrow",   "overgrown string textures" },
+            { "Osier",      "willow wind strings" },
+            { "Oxalis",     "wood sorrel lilac strings" },
+            // Kitchen Collection — Pads
+            { "Overwash",   "tide foam diffusion pad" },
+            { "Overworn",   "worn felt texture pad" },
+            { "Overflow",   "deep current flowing pad" },
+            { "Overcast",   "cloud diffusion pad" },
+            // Kitchen Collection — EPs
+            { "Oasis",      "desert spring electric piano" },
+            { "Oddfellow",  "spectral fingerprint cache EP" },
+            { "Onkolo",     "spectral amber resonant EP" },
+            { "Opcode",     "dark turquoise code-driven EP" },
+            // Flagship + core synths
+            { "Obrix",      "modular brick reef synthesizer" },
+            { "Oxytocin",   "circuit love triangle synthesizer" },
+            { "Overbite",   "apex predator modal synthesizer" },
+            { "Overworld",  "ERA triangle timbral crossfade" },
+            { "Ouroboros",  "strange attractor chaotic synthesizer" },
+            { "Oracle",     "GENDY stochastic maqam synthesis" },
+            { "Orbital",    "group envelope synthesizer" },
+            { "Opal",       "granular cloud synthesizer" },
+            { "Obsidian",   "crystal resonant synthesizer" },
+            { "Origami",    "fold-point waveshaping synthesizer" },
+            { "Obscura",    "daguerreotype physical modeling" },
+            { "Oblique",    "prismatic bounce synth" },
+            { "Organism",   "cellular automata generative synth" },
+            { "Orbweave",   "topological knot coupling engine" },
+            { "Overtone",   "continued fraction spectral synth" },
+            { "Oxbow",      "entangled reverb synthesizer" },
+            { "Outlook",    "panoramic dual wavetable synth" },
+            { "Overlap",    "knot matrix FDN synthesizer" },
+            { "Orca",       "apex predator wavetable echolocation" },
+            { "Octopus",    "decentralized alien intelligence synth" },
+            { "Ombre",      "dual narrative memory synthesizer" },
+            { "OpenSky",    "euphoric shimmer supersaw synth" },
+            // Percussion
+            { "Onset",      "cross-voice coupling percussion" },
+            { "Offering",   "psychology-driven boom bap drums" },
+            { "Oware",      "Akan tuned mallet percussion" },
+            { "Ostinato",   "modal membrane world rhythm engine" },
+            // Vocal
+            { "Opera",      "additive-vocal Kuramoto synchrony" },
+            { "Obbligato",  "breath articulation vocal synth" },
+            // Bass synths
+            { "Oblong",     "resonant bass synthesizer" },
+            { "Obese",      "fat saturation bass synth" },
+            // Organ & wind
+            { "Organon",    "variational metabolism organ synth" },
+            { "Ohm",        "sage analog organ synthesizer" },
+            { "Ottoni",     "patina brass organ synthesizer" },
+            { "Ole",        "hibiscus flamenco organ synth" },
+            // String / physical modeling
+            { "Orphica",    "siren seafoam plucked string" },
+            { "Osprey",     "shore coastline cultural synthesis" },
+            { "Osteria",    "porto wine shore string synth" },
+            { "Owlfish",    "Mixtur-Trautonium string modeling" },
+            // Character
+            { "OddfeliX",   "neon tetra character synth" },
+            { "OddOscar",   "axolotl character synth" },
+            { "Odyssey",    "drift analog poly synthesizer" },
+            { "Overdub",    "spring reverb dub synthesizer" },
+            { "Oceanic",    "chromatophore phosphorescent synth" },
+            { "Ocelot",     "biome crossfade ocelot synth" },
+            { "Osmosis",    "external audio membrane synth" },
+            // Utility
+            { "Optic",      "visual modulation zero-audio engine" },
+            { "Outwit",     "chromatophore amber effect engine" },
+            // Additional engines
+            { "OceanDeep",  "hydrostatic deep ocean synthesizer" },
+            { "Ouie",       "duophonic hammerhead synthesizer" },
+            { nullptr, nullptr }, // sentinel
+        };
+
+        const juce::String lower = engineId.toLowerCase();
+        for (int i = 0; kTable[i].id != nullptr; ++i)
+        {
+            if (lower == juce::String(kTable[i].id).toLowerCase())
+                return juce::String(kTable[i].archetype);
+        }
+        return {};
     }
 
     // ── D3 Scaffold: Depth zone lookup ──────────────────────────────────────

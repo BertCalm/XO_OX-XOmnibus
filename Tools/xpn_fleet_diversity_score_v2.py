@@ -30,7 +30,9 @@ from datetime import datetime, timezone
 # ---------------------------------------------------------------------------
 
 DNA_DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
-MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOODS = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"]
 
 MIDRANGE_LOW = 0.35
 MIDRANGE_HIGH = 0.65

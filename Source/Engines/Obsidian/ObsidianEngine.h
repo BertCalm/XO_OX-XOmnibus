@@ -1384,8 +1384,8 @@ private:
     //==========================================================================
 
     // ---- Audio configuration ----
-    double sampleRateDouble = 44100.0;
-    float sampleRateFloat = 44100.0f;
+    double sampleRateDouble = 0.0;  // Sentinel: must be set by prepare() before use
+    float sampleRateFloat = 0.0f;  // Sentinel: must be set by prepare() before use
     float paramSmoothingCoefficient = 0.1f; // 5ms time constant (recomputed in prepare)
     float voiceCrossfadeRate = 0.01f;       // 5ms linear fade (recomputed in prepare)
 

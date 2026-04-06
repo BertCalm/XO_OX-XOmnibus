@@ -738,8 +738,8 @@ public:
     int getActiveVoiceCount() const override { return VoiceAllocator::countActive(voices, kMaxVoices); }
 
 private:
-    double sr = 44100.0;
-    float srF = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srF = 0.0f;  // Sentinel: must be set by prepare() before use
     float inverseSr_ = 1.0f / 44100.0f;
     int blockSize = 512;
     // Pressure decay coefficient per sample — precomputed from sampleRate in prepare().

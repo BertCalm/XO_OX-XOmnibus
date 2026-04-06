@@ -534,7 +534,7 @@ private:
     xoutwit::InkCloud inkCloud;
     xoutwit::ParamSnapshot snap;
 
-    double sr = 48000.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     bool noteHeld = false;
     int currentNote = -1;
     int targetNote = -1;     // Seance P1: glide target note

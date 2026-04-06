@@ -140,7 +140,7 @@ public:
     }
 
 private:
-    float sr_ = 44100.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
     float envState_ = 0.0f;
 
     float breathAmount_ = 0.0f;

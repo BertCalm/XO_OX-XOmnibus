@@ -54,7 +54,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -165,7 +165,7 @@ private:
         float           pllFreqSmooth = 0.0f;
         float           pllPhaseAcc  = 0.0f;  // sub-octave phase (manual)
         float           subPhase     = 0.0f;
-        double          sr           = 44100.0;
+        double          sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // Zero-crossing detector for pitch tracking
         float lastSample     = 0.0f;
@@ -286,7 +286,7 @@ private:
         float attackCoeff = 0.0f;
         int   currentStep = 0;
         float stepAccum   = 0.0f;  // fractional step accumulator
-        double sr         = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -359,7 +359,7 @@ private:
         FractionalDelay delayR;
         StandardLFO     lfoL;
         StandardLFO     lfoR;
-        double          sr = 44100.0;
+        double          sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

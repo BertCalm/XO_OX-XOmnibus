@@ -17,6 +17,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Optional
@@ -125,7 +126,9 @@ MOOD_EMOJI: dict[str, str] = {
     "Family":     "🏠",
 }
 
-MOOD_ORDER = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"]
+MOOD_ORDER = ["Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+              "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+              "Organic", "Shadow"]
 
 # ---------------------------------------------------------------------------
 # Producer tips by engine
@@ -175,8 +178,8 @@ def _read_expansion_json(pack_dir: Path) -> dict:
     if path.exists():
         try:
             return json.loads(path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            pass
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"[WARN] Reading expansion.json: {exc}", file=sys.stderr)
     return {}
 
 
@@ -203,8 +206,8 @@ def _read_xpm_programs(pack_dir: Path) -> list[dict]:
                     entry["type"] = raw_type.title() or "Program"
             # Count sample file references
             entry["sample_count"] = len(root.findall(".//SampleFile"))
-        except ET.ParseError:
-            pass
+        except ET.ParseError as exc:
+            print(f"[WARN] Parsing XPM program file {entry.get('name', '?')}: {exc}", file=sys.stderr)
         programs.append(entry)
     return programs
 
@@ -221,8 +224,8 @@ def _read_xometa_presets(pack_dir: Path) -> dict[str, int]:
             mood = data.get("mood", "").strip()
             if mood:
                 mood_counts[mood] = mood_counts.get(mood, 0) + 1
-        except (json.JSONDecodeError, OSError):
-            pass
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"[WARN] Reading preset mood from {meta_path.name}: {exc}", file=sys.stderr)
     return mood_counts
 
 # ---------------------------------------------------------------------------

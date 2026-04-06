@@ -472,7 +472,7 @@ struct LeslieSpeaker
         xoverStateR = 0.0f;
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float hornPhase = 0.0f, drumPhase = 0.25f;
     float currentHornRate = 0.7f, targetHornRate = 0.7f;
     float currentDrumRate = 0.6f, targetDrumRate = 0.6f;
@@ -553,7 +553,7 @@ struct CalliopePipe
 
     bool active = false;
     float baseFreq = 440.0f;
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float phase = 0.0f;
     float wobbleRate = 3.0f;
     float wobblePhase = 0.0f;
@@ -660,7 +660,7 @@ struct BluesHarpVoice
 
     bool active = false;
     float baseFreq = 440.0f;
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float phase = 0.0f;
     float breath = 0.0f;
     float bendCurrent = 0.0f;
@@ -759,7 +759,7 @@ struct ZydecoReed
 
     bool active = false;
     float baseFreq = 440.0f;
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float phase1 = 0.0f, phase2 = 0.0f;
     float detuneRatio = 1.003f;
     float attackEnv = 0.0f;
@@ -1497,8 +1497,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
 
     std::array<OtisVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

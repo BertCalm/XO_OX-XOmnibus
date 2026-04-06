@@ -331,6 +331,13 @@ public:
         const float exciterFreqHz =
             midiToFreq(static_cast<float>(currentNote)) * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
+        // Issue #917: hoist erosionLFO.setRate() out of per-sample loop.
+        // pErosionR is block-stable (read from atomic above). StandardLFO::setRate()
+        // only updates phaseInc — it does NOT reset phase or lastPhase — so hoisting
+        // is behaviorally identical and saves ~4 * numSamples calls per block.
+        for (int a = 0; a < kErosionAPFs; ++a)
+            erosionLFO[a].setRate(pErosionR + 0.01f * a, srF);
+
         for (int i = 0; i < numSamples; ++i)
         {
             // === EXCITER: pitched impulse + noise burst ===
@@ -442,8 +449,7 @@ public:
             for (int a = 0; a < kErosionAPFs; ++a)
             {
                 float lfoVal = erosionLFO[a].process();
-                // Update LFO rate from parameter
-                erosionLFO[a].setRate(pErosionR + 0.01f * a, srF);
+                // setRate() hoisted above the per-sample loop (Issue #917)
 
                 static constexpr float erosionBaseFreqs[4] = {300.0f, 1100.0f, 3200.0f, 7500.0f};
                 float depth = pErosionD * 0.4f;
@@ -699,7 +705,7 @@ private:
     static constexpr int kErosionAPFs = 4;
     static constexpr int kGoldenFilters = 4;
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int blockSize = 512;
 
     // FDN delay lines (8 channels)

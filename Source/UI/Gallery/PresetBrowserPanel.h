@@ -32,10 +32,10 @@ public:
         addAndMakeVisible(searchField);
         A11y::setup(searchField, "Preset Search", "Type to filter presets by name");
 
-        // Mood filter buttons (ALL = index 0, then 15 moods)
+        // Mood filter buttons (ALL = index 0, then 16 moods)
         static const char* moodLabels[] = {"ALL",      "Foundation", "Atmosphere", "Entangled", "Prism",       "Flux",
                                            "Aether",   "Family",     "Submerged",  "Coupling",  "Crystalline", "Deep",
-                                           "Ethereal", "Kinetic",    "Luminous",   "Organic"};
+                                           "Ethereal", "Kinetic",    "Luminous",   "Organic",   "Shadow"};
         for (int i = 0; i < kNumMoods; ++i)
         {
             moodBtns[i].setButtonText(moodLabels[i]);
@@ -125,12 +125,14 @@ public:
             juce::Colour(0xFFE5B80B), // Kinetic     → Crate Wax Yellow
             juce::Colour(0xFFC6E377), // Luminous    → Emergence Lime
             juce::Colour(0xFF228B22), // Organic     → Forest Green
+            juce::Colour(0xFF1A0A2E), // Shadow      → Void Indigo
         };
         static const char* moodIds[] = {"Foundation", "Atmosphere", "Entangled", "Prism",    "Flux",
                                         "Aether",     "Family",     "Submerged", "Coupling", "Crystalline",
-                                        "Deep",       "Ethereal",   "Kinetic",   "Luminous", "Organic"};
+                                        "Deep",       "Ethereal",   "Kinetic",   "Luminous", "Organic",
+                                        "Shadow"};
         juce::Colour dot = get(borderGray());
-        for (int mi = 0; mi < 15; ++mi)
+        for (int mi = 0; mi < 16; ++mi)
             if (preset.mood == moodIds[mi])
             {
                 dot = moodColors[mi];
@@ -199,7 +201,10 @@ public:
         // Preset name — reduced right margin to leave room for hex + engine tag
         g.setColour(get(selected ? t1() : t2()));
         g.setFont(GalleryFonts::body(11.5f)); // Prototype: Inter 11.5px
-        g.drawText(preset.name, 22, 0, w - 60, h, juce::Justification::centredLeft, true);
+        {
+            auto displayName = GalleryUtils::ellipsizeText(g.getCurrentFont(), preset.name, (float)(w - 60));
+            g.drawText(displayName, 22, 0, w - 60, h, juce::Justification::centredLeft, false);
+        }
 
         // Engine tag if multi-engine (rightmost 26px)
         if (!preset.engines.isEmpty() && preset.engines[0].isNotEmpty())
@@ -307,15 +312,16 @@ private:
     {
         static const char* moodNames[] = {"",         "Foundation", "Atmosphere", "Entangled", "Prism",       "Flux",
                                           "Aether",   "Family",     "Submerged",  "Coupling",  "Crystalline", "Deep",
-                                          "Ethereal", "Kinetic",    "Luminous",   "Organic"};
+                                          "Ethereal", "Kinetic",    "Luminous",   "Organic",   "Shadow"};
 
         auto query = searchField.getText().trim();
 
-        // Start with mood filter (index 0 = ALL = no filter)
-        const auto& lib = presetManager.getLibrary();
+        // Start with mood filter (index 0 = ALL = no filter).
+        // getLibrary() returns a shared_ptr — O(1) copy, no vector allocation.
+        const auto lib = presetManager.getLibrary();
         filtered.clear();
 
-        for (const auto& p : lib)
+        for (const auto& p : *lib)
         {
             bool moodMatch = (activeMood == 0) || (p.mood == moodNames[activeMood]);
             bool nameMatch = query.isEmpty() || p.name.containsIgnoreCase(query);
@@ -333,7 +339,7 @@ private:
         countLabel.setText(juce::String(filtered.size()) + " presets", juce::dontSendNotification);
     }
 
-    static constexpr int kNumMoods = 16; // ALL + 15 moods
+    static constexpr int kNumMoods = 17; // ALL + 16 moods
 
     const PresetManager& presetManager;
     std::function<void(const PresetData&)> onPresetSelected;

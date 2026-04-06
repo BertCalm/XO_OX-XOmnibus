@@ -129,7 +129,7 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float width = 0.5f;
     float haasMs = 8.0f;
     float combFreq = 600.0f;

@@ -20,7 +20,9 @@ from pathlib import Path
 
 # ── Constants ──────────────────────────────────────────────────────────────────
 
-MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"}
+MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+         "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+         "Organic", "Shadow"}
 DNA_DIMS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 
 STOP_WORDS = {

@@ -181,7 +181,7 @@ private:
     // delay times are preserved regardless of host sample rate.
     static constexpr int kDelayLengths[kNumDelays] = { 1117, 1571, 1949, 2311 };
 
-    double sampleRate_           = 44100.0;
+    double sampleRate_           = 0.0;  // Sentinel: must be set by prepare() before use
     int    scaledDelayLengths_[kNumDelays] = { 1117, 1571, 1949, 2311 };  // populated in prepare()
 
     std::vector<float> delayLines_[kNumDelays];

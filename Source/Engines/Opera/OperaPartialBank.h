@@ -276,14 +276,15 @@ struct OperaPartialBank
     float nyquistGains[kMaxPartials];    // anti-aliasing fade per partial
 
     int numPartials = 32; // active partial count [4, 48]
-    float sampleRate = 48000.0f;
-    float invSampleRate = 1.0f / 48000.0f;
+    float sampleRate = 0.0f;      // Sentinel: must be set by prepare() before use
+    float invSampleRate = 0.0f;   // Sentinel: computed from sampleRate in prepare()
 
     //--------------------------------------------------------------------------
     /// Call once at startup or when sample rate changes.
     //--------------------------------------------------------------------------
     inline void prepare(float sr) noexcept
     {
+        jassert(sr > 0.0f);  // sr=0.0 sentinel guard: prepare() must receive valid sample rate
         sampleRate = sr;
         invSampleRate = 1.0f / sr;
 

@@ -41,7 +41,9 @@ from typing import Any, Optional
 DNA_DIMENSIONS = ["brightness", "warmth", "movement", "density", "space", "aggression"]
 
 VALID_MOODS = {
-    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"
+    "Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+    "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+    "Organic", "Shadow"
 }
 
 # Score threshold below which a pack is flagged
@@ -279,8 +281,8 @@ def read_pack(path: Path) -> dict[str, Any]:
                         raw = zf.read(matches[0])
                         manifest_data = json.loads(raw.decode('utf-8', errors='replace'))
                         break
-                    except Exception:
-                        pass
+                    except Exception as exc:
+                        print(f"[WARN] Reading {candidate} from pack archive: {exc}", file=sys.stderr)
 
             if manifest_data:
                 result['name'] = manifest_data.get('Name') or manifest_data.get(

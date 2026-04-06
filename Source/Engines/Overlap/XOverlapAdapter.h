@@ -694,7 +694,7 @@ private:
     int previousKnot = -1;
 
     // Sample rate
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // Coupling inputs
     float extPitchMod = 0.0f;  // semitones — routes to tangle depth perturbation

@@ -62,8 +62,8 @@ def _xpms_from_zip(path: Path) -> list[tuple[str, str]]:
             if name.lower().endswith(".xpm"):
                 try:
                     results.append((name, zf.read(name).decode("utf-8", errors="replace")))
-                except Exception:
-                    pass
+                except Exception as exc:
+                    print(f"[WARN] Reading XPM file {name} from archive: {exc}", file=sys.stderr)
     return results
 
 
@@ -261,8 +261,8 @@ def classify_pack(pack_path: Path) -> dict[str, Any]:
             if manifests:
                 data = json.loads(zf.read(manifests[0]).decode("utf-8", errors="replace"))
                 pack_name = data.get("name", pack_name)
-    except Exception:
-        pass
+    except Exception as exc:
+        print(f"[WARN] Reading bundle_manifest.json from {pack_path.name}: {exc}", file=sys.stderr)
 
     xpms = _xpms_from_zip(pack_path)
     programs = []

@@ -253,7 +253,7 @@ private:
     //--------------------------------------------------------------------------
     // State
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     float phaseA = 0.0f;
     float phaseB = 0.0f;

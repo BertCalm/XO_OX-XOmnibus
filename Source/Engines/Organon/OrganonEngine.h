@@ -288,7 +288,7 @@ private:
         }
     }
 
-    double cachedSampleRate = 48000.0; // Overwritten by prepare() — never relied upon
+    double cachedSampleRate = 0.0; // Sentinel: must be set by prepare() before use
     int controlRateDivisor = 24;       // ~2kHz control rate; overwritten by prepare() from actual sampleRate
     int controlCounter = 0;
     int writePosition = 0;
@@ -462,7 +462,7 @@ public:
     float getPredictedEntropy() const noexcept { return predictedEntropy; }
 
 private:
-    double cachedSampleRate = 48000.0; // Overwritten by prepare() — never relied upon
+    double cachedSampleRate = 0.0; // Sentinel: must be set by prepare() before use
     int controlRateDivisor = 24;       // ~2kHz control rate; overwritten by prepare() from actual sampleRate
     int controlCounter = 0;
     float freeEnergy = 0.0f;
@@ -748,7 +748,7 @@ public:
     }
 
 private:
-    double cachedSampleRate = 48000.0;        // Overwritten by prepare() — never relied upon
+    double cachedSampleRate = 0.0;        // Sentinel: must be set by prepare() before use
     double inverseSampleRate = 1.0 / 48000.0; // Overwritten by prepare() from actual sampleRate
 
     // Dirty-flag cache for setFundamental: avoid 32× std::pow when stable
@@ -1726,7 +1726,7 @@ private:
     //  ENGINE STATE
     //==========================================================================
 
-    double cachedSampleRate = 48000.0; // Overwritten by prepare() — never relied upon
+    double cachedSampleRate = 0.0; // Sentinel: must be set by prepare() before use
     int cachedBlockSize = 512;
     uint64_t noteCounter = 0; // Monotonic counter for LRU voice stealing
 

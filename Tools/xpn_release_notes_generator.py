@@ -113,8 +113,8 @@ def _read_zip(zip_path: Path) -> PackInfo:
                 try:
                     raw = zf.read(entry.filename)
                     info.expansion = json.loads(raw.decode("utf-8", errors="replace"))
-                except (json.JSONDecodeError, KeyError):
-                    pass
+                except (json.JSONDecodeError, KeyError) as exc:
+                    print(f"[WARN] Reading expansion.json from ZIP archive: {exc}", file=sys.stderr)
     return info
 
 
@@ -141,8 +141,8 @@ def _read_dir(dir_path: Path) -> PackInfo:
             elif lower == "expansion.json":
                 try:
                     info.expansion = json.loads(fpath.read_text(encoding="utf-8", errors="replace"))
-                except (json.JSONDecodeError, OSError):
-                    pass
+                except (json.JSONDecodeError, OSError) as exc:
+                    print(f"[WARN] Reading expansion.json from directory: {exc}", file=sys.stderr)
     return info
 
 

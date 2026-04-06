@@ -116,7 +116,7 @@ private:
         Attack,
         Decay
     };
-    float sr_ = 44100.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
     Stage stage_ = Stage::Idle;
     float level_ = 0.0f;
     float attackRate_ = 0.01f;
@@ -640,7 +640,7 @@ private:
     //--------------------------------------------------------------------------
     // State
     //--------------------------------------------------------------------------
-    float sr_ = 44100.0f;
+    float sr_ = 0.0f;  // Sentinel: must be set by prepare() before use
     int type_ = 0;
     float velocity_ = 0.0f;
     float body_ = 0.5f;

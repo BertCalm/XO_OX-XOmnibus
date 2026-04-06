@@ -17,7 +17,7 @@ struct OleAdapterVoice
 {
     bool active = false;
     int note = 0;
-    float vel = 0, freq = 440, ampEnv = 0, sr = 44100;
+    float vel = 0, freq = 440, ampEnv = 0, sr = 0;  // sr: Sentinel — set by host before DSP
     bool releasing = false;
     int auntIdx = 0;
     bool isHusband = false;
@@ -552,7 +552,7 @@ public:
 private:
     SilenceGate silenceGate;
     static constexpr int kV = 18;
-    double sr = 44100;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int nv = 0, nhv = 0;
     float lastL = 0, lastR = 0; // ac promoted to base class activeVoiceCount_
     std::array<OleAdapterVoice, kV> voices;

@@ -439,7 +439,7 @@ private:
     oxidize::LookupTables luts_;
 
     // Audio engine state
-    double   sampleRate_   = 44100.0;
+    double   sampleRate_   = 0.0;  // Sentinel: must be set by prepare() before use
     int      maxBlockSize_ = 512;
     uint64_t sampleClock_  = 0;
 

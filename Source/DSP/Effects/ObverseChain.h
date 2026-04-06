@@ -56,7 +56,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     // Working mono buffer
@@ -119,7 +119,7 @@ private:
         float swellPhase_  = 0.0f; // 0→1 over swellTime samples
         float swellInc_    = 0.0f;
         int   swellLen_    = 0;
-        double sr_         = 44100.0;
+        double sr_         = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -253,7 +253,7 @@ private:
     {
         StandardLFO lfoL, lfoR;
         ParameterSmoother gainSmL, gainSmR;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

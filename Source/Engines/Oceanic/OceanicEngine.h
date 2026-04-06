@@ -1342,8 +1342,8 @@ private:
     // Member data
     //==========================================================================
 
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     ParameterSmoother paramSmoother; // 5ms one-pole smoother (replaces inline smoothCoeff)
     float crossfadeRate = 0.01f;
 

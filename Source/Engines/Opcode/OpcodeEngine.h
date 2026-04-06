@@ -113,7 +113,7 @@ struct FMOperator
         cachedPhaseInc = 0.0f;
     }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float phase = 0.0f;
     float cachedPhaseInc = 0.0f;
 };
@@ -208,7 +208,7 @@ struct DXModulationEnvelope
     bool isActive() const noexcept { return stage != Idle; }
     float getLevel() const noexcept { return level; }
 
-    float sr = 48000.0f;
+    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     Stage stage = Idle;
     float level = 0.0f;
     float attackRate = 0.0f;
@@ -745,8 +745,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
 
     std::array<OpcodeVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

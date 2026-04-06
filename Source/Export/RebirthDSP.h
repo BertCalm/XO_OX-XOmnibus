@@ -158,7 +158,7 @@ private:
         }
     }
 
-    double sr_ = 44100.0;
+    double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
     float delayMs_[kNumStages] = {7.1f, 11.3f, 17.9f, 23.7f};
     float feedback_[kNumStages] = {0.6f, 0.6f, 0.6f, 0.6f};
     int delaySamples_[kNumStages] = {0, 0, 0, 0};
@@ -262,7 +262,7 @@ private:
         hpfCoeff_ = std::exp(-2.0f * juce::MathConstants<float>::pi * hpfCutoffHz_ / (float)sr_);
     }
 
-    double sr_ = 44100.0;
+    double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
     float burstLengthMs_ = 5.0f;
     float burstLevel_ = juce::Decibels::decibelsToGain(-24.0f);
     float hpfCutoffHz_ = 4000.0f;
@@ -550,7 +550,7 @@ private:
         }
     }
 
-    double sr_ = 44100.0;
+    double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
     float q_ = 8.0f;
     float mix_ = 0.4f;
 

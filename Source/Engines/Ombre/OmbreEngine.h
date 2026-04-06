@@ -111,7 +111,7 @@ public:
 
 private:
     std::array<float, kMaxBufferSamples> buffer{};
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int writePos = 0;
     float readPhases[4] = {};
 };
@@ -907,8 +907,8 @@ private:
     static float midiToHz(float midiNote) noexcept { return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f); }
 
     //--------------------------------------------------------------------------
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     std::array<OmbreVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
 

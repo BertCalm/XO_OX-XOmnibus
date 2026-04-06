@@ -168,9 +168,9 @@ public:
     }
 
 private:
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float holdTimeMs = kDefaultHoldMs;
-    int holdSamples = 4410; // 100ms at 44.1kHz
+    int holdSamples = 0; // Populated in prepare() — 0 until prepare() is called
     int holdCounter = 0;
 
     float thresholdLinear = 3.16e-5f; // -90 dB

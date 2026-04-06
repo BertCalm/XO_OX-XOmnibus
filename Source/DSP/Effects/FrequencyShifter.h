@@ -232,7 +232,7 @@ private:
     //--------------------------------------------------------------------------
     static constexpr int kNumStages = 3;
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     double oscPhase = 0.0;
 
     // Allpass coefficients for Hilbert transform

@@ -1361,8 +1361,8 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     std::array<SkyVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
 

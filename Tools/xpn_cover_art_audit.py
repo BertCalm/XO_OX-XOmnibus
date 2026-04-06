@@ -201,8 +201,8 @@ def audit_xpn(xpn_path: str, strict: bool = False) -> dict:
                         info = None
                     if info:
                         sizes_found.add((info["width"], info["height"]))
-                except ValueError:
-                    pass
+                except ValueError as exc:
+                    print(f"[WARN] Parsing image dimensions for {name}: {exc}", file=sys.stderr)
 
                 results.append({"file": name, "issues": img_issues})
 

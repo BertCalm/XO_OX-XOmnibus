@@ -58,7 +58,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     // Dry signal tap for sidechain gate
@@ -74,7 +74,7 @@ private:
     {
         PolyBLEP carrier;
         float    dcState_  = 0.0f;
-        double   sr_       = 44100.0;
+        double   sr_       = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -114,7 +114,7 @@ private:
         FractionalDelay drumDelL, drumDelR;
         StandardLFO     hornLFO, drumLFO;
         ParameterSmoother depthSm;
-        double sr_ = 44100.0;
+        double sr_ = 0.0;  // Sentinel: must be set by prepare() before use
         float  targetHz_ = kSlowHz;
 
         void prepare(double sampleRate)
@@ -256,7 +256,7 @@ private:
         float   pitchPhaseL_= 0.0f;
         float   pitchPhaseR_= 0.0f;
         int     pitchBufLen_= 4096;
-        double  sr_         = 44100.0;
+        double  sr_         = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {

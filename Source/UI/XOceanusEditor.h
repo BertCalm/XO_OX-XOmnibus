@@ -49,6 +49,7 @@
 #include "Gallery/CockpitHost.h"
 #include "Gallery/DnaHexagon.h"
 #include "RegisterManager.h"
+#include "ToastOverlay.h"
 
 namespace xoceanus
 {
@@ -61,16 +62,17 @@ namespace xoceanus
 // XOceanusEditor — Gallery Model plugin window.
 //
 // Layout:
-//   ┌─────────────────────────────────────┐
-//   │  Header (title + tagline)           │
-//   ├────────┬────────────────────────────┤
-//   │ Tile 1 │                            │
-//   │ Tile 2 │  Right panel               │
-//   │ Tile 3 │  (OverviewPanel or         │
-//   │ Tile 4 │   EngineDetailPanel)       │
-//   ├────────┴────────────────────────────┤
-//   │  MacroSection                       │
-//   └─────────────────────────────────────┘
+//   ┌──────────────────────────────────────────────────────────────────────────┐
+//   │  Header: Logo | DepthDial | < | > | DNA | A/B | CI | CM | P | DK |      │
+//   │          KEYS | EXPORT | gear                                            │
+//   ├────────┬─────────────────────────────────────────┬────────────────────── ┤
+//   │ Tile 1 │  [MacroSection — top of Col B, 56pt]    │                       │
+//   │ Tile 2 │  ─────────────────────────────────────  │  Column C (Sidebar)   │
+//   │ Tile 3 │  OverviewPanel / EngineDetailPanel       │                       │
+//   │ Tile 4 │                                          │                       │
+//   ├────────┴─────────────────────────────────────────┴───────────────────────┤
+//   │  StatusBar (BPM · Voices · CPU label · MIDI dot · slot dots · LK)        │
+//   └──────────────────────────────────────────────────────────────────────────┘
 //
 // Transition: 150ms opacity cross-fade via juce::ComponentAnimator
 // when switching between overview and engine detail, or between engines.
@@ -204,10 +206,10 @@ public:
         // "PS" toggle button — PlaySurface embedded zone (4-zone performance interface)
         // spec §2.2: PlaySurface occupies a fixed 264pt bottom zone of the main plugin window.
         addAndMakeVisible(surfaceToggleBtn);
-        surfaceToggleBtn.setButtonText("PS");
+        surfaceToggleBtn.setButtonText("KEYS");
         surfaceToggleBtn.setTooltip(
-            "PlaySurface — 4-zone performance interface (pads, orbit, strip, triggers)");
-        A11y::setup(surfaceToggleBtn, "PlaySurface Toggle", "Show or hide the embedded PlaySurface zone");
+            "KEYS — show or hide the embedded PlaySurface keyboard/pads zone");
+        A11y::setup(surfaceToggleBtn, "Keys Toggle", "Show or hide the embedded PlaySurface zone");
         surfaceToggleBtn.setClickingTogglesState(true);
         surfaceToggleBtn.onClick = [this]
         {
@@ -317,7 +319,9 @@ public:
             pm.previousPreset();
             try
             {
-                processor.applyPreset(pm.getCurrentPreset());
+                const auto& preset = pm.getCurrentPreset();
+                processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
+                processor.applyPreset(preset);
             }
             catch (const std::exception& e)
             {
@@ -336,7 +340,9 @@ public:
             pm.nextPreset();
             try
             {
-                processor.applyPreset(pm.getCurrentPreset());
+                const auto& preset = pm.getCurrentPreset();
+                processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
+                processor.applyPreset(preset);
             }
             catch (const std::exception& e)
             {
@@ -391,10 +397,61 @@ public:
                     // library if it was constructed before the async scan completed (shows 0 presets
                     // forever without this call).
                     safeThis->sidebar.refreshPresetBrowser();
+
+                    // Issue #899 — If the directory existed but contained no valid
+                    // presets (empty factory install or all files malformed), fall back
+                    // to the embedded Init preset so the user isn't left with silence.
+                    // Guard: skip if a named preset is already active (restored from
+                    // DAW session state or loaded by another path).
+                    auto& pm = safeThis->processor.getPresetManager();
+                    if (pm.getLibrary()->empty() &&
+                        pm.getCurrentPreset().name.isEmpty())
+                    {
+                        auto initPreset = pm.loadEmbeddedInitPreset();
+                        if (initPreset.name.isNotEmpty())
+                        {
+                            // If slot 0 has no engine (silence condition), load
+                            // Odyssey and apply Welcome parameters.  If an engine
+                            // is already present (e.g. Oxbow from the first-breath
+                            // path in prepareToPlay), just update the preset name
+                            // for the browser strip without clobbering the sound.
+                            if (safeThis->processor.getEngine(0) == nullptr)
+                            {
+                                safeThis->processor.loadEngine(0, "Odyssey");
+                                safeThis->processor.applyPreset(initPreset);
+                            }
+                            pm.addPreset(initPreset);
+                            safeThis->presetBrowser.updateDisplay();
+                            safeThis->sidebar.refreshPresetBrowser();
+                        }
+                    }
                 });
         }
         else
         {
+            // Issue #899 — No preset directory at all (fresh install or user
+            // deleted the directory).  Load the embedded Init preset from
+            // BinaryData immediately on the message thread so the user hears
+            // sound on the first key press and sees a named preset in the strip.
+            // Guard: skip if a named preset was already restored from DAW state.
+            auto& pm = proc.getPresetManager();
+            if (pm.getCurrentPreset().name.isEmpty())
+            {
+                auto initPreset = pm.loadEmbeddedInitPreset();
+                if (initPreset.name.isNotEmpty())
+                {
+                    // If slot 0 is empty (silence condition), load Odyssey and
+                    // apply Welcome parameters.  If already populated (e.g.
+                    // first-breath Oxbow from prepareToPlay), preserve that
+                    // engine and just register the preset name for display.
+                    if (proc.getEngine(0) == nullptr)
+                    {
+                        proc.loadEngine(0, "Odyssey");
+                        proc.applyPreset(initPreset);
+                    }
+                    pm.addPreset(initPreset);
+                }
+            }
             presetBrowser.updateDisplay();
         }
 
@@ -576,6 +633,15 @@ public:
         setTitle("XOceanus Synthesizer");
         setDescription("Multi-engine synthesizer with cross-engine coupling. "
                        "Keys 1-4 select engine slots, Escape returns to overview.");
+
+        // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
+        // JUCE paints children in insertion order; last child paints on top.
+        // setInterceptsMouseClicks(false, false) is set inside ToastOverlay's
+        // constructor so it never captures events that should reach panels below.
+        addAndMakeVisible(toastOverlay_);
+        toastOverlay_.setAlwaysOnTop(true);
+        ToastOverlay::setInstance(&toastOverlay_);
+
         startTimerHz(1); // Reduced from 5Hz — idle polling only as a fallback
     }
 
@@ -587,6 +653,9 @@ public:
         // Detach the embedded PlaySurface from the processor before the processor
         // goes away, so the MidiMessageCollector pointer is not accessed after dealloc.
         playSurface_.setProcessor(nullptr);
+        // Clear the ToastOverlay singleton before child components are destroyed
+        // so any in-flight callAsync lambdas find instance_ == nullptr and are no-ops.
+        ToastOverlay::setInstance(nullptr);
         // S4: Remove this editor from the per-instance dark mode registry BEFORE
         // child components are destroyed, so no child paint() call that fires
         // during teardown finds a dangling pointer in the registry.
@@ -670,6 +739,18 @@ public:
                 return true;
             }
             showOverview();
+            return true;
+        }
+        // Cmd+Z — undo last parameter change or preset load
+        if (key == juce::KeyPress('z', juce::ModifierKeys::commandModifier, 0))
+        {
+            processor.getUndoManager().undo();
+            return true;
+        }
+        // Cmd+Shift+Z — redo
+        if (key == juce::KeyPress('z', juce::ModifierKeys::commandModifier | juce::ModifierKeys::shiftModifier, 0))
+        {
+            processor.getUndoManager().redo();
             return true;
         }
         return false;
@@ -1005,16 +1086,15 @@ public:
         // columnCCollapsed is reserved for a future Column C collapse button.
         layout.compute(getWidth(), getHeight());
 
-        // ── Header (52px): Logo | DepthDial | < | > | [macros] | CI | CM | P | ● | DK | CPU | PLAY | XPN | gear
-        // PLAY button toggles the embedded 264pt PlaySurface zone (spec §2.2)
+        // ── Header (52px): Logo | DepthDial | < | > | DNA | A/B | CI | CM | P | DK | KEYS | EXPORT | gear
+        // Macros moved to top of Column B (56pt strip). CPU meter + MIDI dot moved to StatusBar area.
+        // KEYS button toggles the embedded 264pt PlaySurface zone (spec §2.2)
         auto header = layout.getHeader();
 
         // Park legacy widgets that are no longer shown in the header.
         // D1: enginesBtn replaced by depthDial — park it off-screen.
         enginesBtn.setBounds(0, -100, 0, 0);
         enginesBtn.setVisible(false);
-        abCompare.setBounds(0, -100, 0, 0);
-        abCompare.setVisible(false);
         presetBrowser.setBounds(0, -200, 0, 0);
         presetBrowser.setVisible(false);
 
@@ -1041,33 +1121,32 @@ public:
             headerHex_.setBounds(hexSlice.withSizeKeepingCentre(24, 24));
         }
 
-        // ── Right (from edge inward): gear | EXPORT | PLAY | CPU | utility strip ──
+        // ── Right (from edge inward): gear | EXPORT | KEYS | utility strip ──
+        // CPU meter and MIDI dot have moved to the StatusBar area (issue #906).
         {
             auto gearSlice = header.removeFromRight(36); // 8px margin included
             settingsBtn.setBounds(gearSlice.withSizeKeepingCentre(28, 28));
         }
         exportBtn.setBounds(header.removeFromRight(56).reduced(4, 10));
-        // PLAY button (was PS) — launches PlaySurface popup
-        surfaceToggleBtn.setButtonText("PLAY");
+        // KEYS button — shows/hides the embedded PlaySurface zone (renamed from PLAY to avoid
+        // confusion with the sidebar PLAY/PERFORM performance-controls tab, issue #921)
+        surfaceToggleBtn.setButtonText("KEYS");
         surfaceToggleBtn.setBounds(header.removeFromRight(52).withSizeKeepingCentre(48, 26));
-        cpuMeter.setBounds(header.removeFromRight(68).withSizeKeepingCentre(64, 20));
 
-        // Utility strip — right side, before macros (inward from CPU)
+        // Utility strip — right side (inward from KEYS)
         themeToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
         // D4: Register lock button — 24px wide, visually paired with theme toggle
         registerLockBtn.setBounds(header.removeFromRight(24).reduced(2));
-        {
-            auto midiArea = header.removeFromRight(16);
-            midiIndicator.setBounds(midiArea.withSizeKeepingCentre(8, 8));
-        }
         perfToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
         cmToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
         cinematicToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
 
-        // ── Center: macros fill remaining space ────────────────────────────
-        macros.setBounds(header.reduced(8, 4));
+        // ── A/B Compare toggle — small button in header, left side of remaining space ──
+        // Restored (issue #918): was parked off-screen, now lives in header centre-right.
+        abCompare.setVisible(true);
+        abCompare.setBounds(header.removeFromRight(28).reduced(2));
 
-        // ── Column A — Engine Rack (full height, MacroSection now in header) ──
+        // ── Column A — Engine Rack (full height) ──
         auto colA = layout.getColumnA();
 
         // Reserve bottom 80px for MiniCouplingGraph before dividing tile space.
@@ -1105,8 +1184,14 @@ public:
         auto masterFXBounds = colBPanel.removeFromBottom(kMasterFXH).reduced(14, 6);
         masterFXStrip.setBounds(masterFXBounds);
 
+        // ── Macro strip — top of Column B (issue #906: macros moved out of header) ──
+        // 56pt strip accommodates 44px knobs (enlarged by MacroSection.h) + padding.
+        {
+            auto macroStrip = colBPanel.removeFromTop(56);
+            macros.setBounds(macroStrip.reduced(4, 2));
+        }
+
         // Signal flow strip (28px) at top of Column B — painted in paint().
-        // Macro knobs row removed — redundant with EngineDetailPanel's MacroHeroStrip.
         signalFlowStripBounds = colBPanel.removeFromTop(kSignalFlowStripH);
 
         // Pre-compute signal flow hit rects here (not in paint()) so mouse handlers
@@ -1162,6 +1247,20 @@ public:
         // ── Status Bar ───────────────────────────────────────────────────────
         statusBar.setBounds(layout.getStatusBar());
 
+        // ── CPU meter + MIDI indicator — right side of StatusBar area (issue #906) ──
+        // These are direct children of XOceanusEditor (not StatusBar), positioned
+        // inside the status bar row. StatusBar reserves ~104px on the far right for
+        // its lock button (28px) and slot dots (66px) + padding — so we sit left of that.
+        // The StatusBar's cpuLabel text remains; the CPUMeter graphical pill supplements it.
+        {
+            auto statusArea = layout.getStatusBar();
+            // Leave 104px for StatusBar's internal lock + dots on the far right.
+            statusArea.removeFromRight(104);
+            // Place MIDI dot then CPU pill, right-to-left from that boundary.
+            midiIndicator.setBounds(statusArea.removeFromRight(16).withSizeKeepingCentre(8, 8));
+            cpuMeter.setBounds(statusArea.removeFromRight(68).withSizeKeepingCentre(64, 20));
+        }
+
         // ── Coupling arc overlay — full editor bounds ─────────────────────────
         couplingArcs.setBounds(getLocalBounds());
         for (int i = 0; i < kNumPrimarySlots; ++i)
@@ -1175,6 +1274,10 @@ public:
 
         // ── Coupling arc hit-tester — covers the OverviewPanel bounds ─────────
         couplingHitTester.setBounds(overview.getBounds());
+
+        // ── ToastOverlay — always covers the full editor, paints on top ───────
+        // Must be sized last (mirrors addAndMakeVisible order in constructor).
+        toastOverlay_.setBounds(getLocalBounds());
     }
 
 private:
@@ -1213,61 +1316,104 @@ private:
         if (detail.isVisible())
         {
             // Cross-fade: fade out → swap → fade in
-            anim.fadeOut(&detail, kFadeMs);
-            juce::Timer::callAfterDelay(
-                kFadeMs,
-                [safeThis, slot]
+            // #926: skip animation when the OS/in-app reduced-motion preference is active
+            if (A11y::prefersReducedMotion())
+            {
+                detail.setVisible(false);
+                if (detail.loadSlot(slot))
                 {
-                    if (safeThis == nullptr)
-                        return;
-                    auto& self = *safeThis;
-                    if (slot != self.selectedSlot)
-                        return; // CQ17: user clicked elsewhere during fade
-                    if (self.detail.loadSlot(slot))
+                    overview.setVisible(false);
+                    couplingHitTester.setVisible(false);
+                    detail.setAlpha(1.0f);
+                    detail.setVisible(true);
+                    if (auto* eng = processor.getEngine(slot))
+                        masterFXStrip.setAccentColour(eng->getAccentColour());
+                }
+                else
+                {
+                    showOverview();
+                }
+            }
+            else
+            {
+                anim.fadeOut(&detail, kFadeMs);
+                juce::Timer::callAfterDelay(
+                    kFadeMs,
+                    [safeThis, slot]
                     {
-                        self.overview.setVisible(false);
-                        self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
-                        self.detail.setAlpha(0.0f);
-                        self.detail.setVisible(true);
-                        juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
-                        if (auto* eng = self.processor.getEngine(slot))
-                            self.masterFXStrip.setAccentColour(eng->getAccentColour());
-                    }
-                    else
-                    {
-                        self.showOverview();
-                    }
-                });
+                        if (safeThis == nullptr)
+                            return;
+                        auto& self = *safeThis;
+                        if (slot != self.selectedSlot)
+                            return; // CQ17: user clicked elsewhere during fade
+                        if (self.detail.loadSlot(slot))
+                        {
+                            self.overview.setVisible(false);
+                            self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
+                            self.detail.setAlpha(0.0f);
+                            self.detail.setVisible(true);
+                            juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
+                            if (auto* eng = self.processor.getEngine(slot))
+                                self.masterFXStrip.setAccentColour(eng->getAccentColour());
+                        }
+                        else
+                        {
+                            self.showOverview();
+                        }
+                    });
+            }
         }
         else
         {
             // Fade out overview, fade in detail
-            anim.fadeOut(&overview, kFadeMs);
-            juce::Timer::callAfterDelay(
-                kFadeMs,
-                [safeThis, slot]
+            // #926: skip animation when the OS/in-app reduced-motion preference is active
+            if (A11y::prefersReducedMotion())
+            {
+                overview.setVisible(false);
+                couplingHitTester.setVisible(false);
+                if (detail.loadSlot(slot))
                 {
-                    if (safeThis == nullptr)
-                        return;
-                    auto& self = *safeThis;
-                    if (slot != self.selectedSlot)
-                        return; // CQ17: user clicked elsewhere during fade
-                    if (self.detail.loadSlot(slot))
+                    detail.setAlpha(1.0f);
+                    detail.setVisible(true);
+                    if (auto* eng = processor.getEngine(slot))
+                        masterFXStrip.setAccentColour(eng->getAccentColour());
+                }
+                else
+                {
+                    overview.setAlpha(1.0f);
+                    overview.setVisible(true);
+                    couplingHitTester.setVisible(true);
+                }
+            }
+            else
+            {
+                anim.fadeOut(&overview, kFadeMs);
+                juce::Timer::callAfterDelay(
+                    kFadeMs,
+                    [safeThis, slot]
                     {
-                        self.overview.setVisible(false);
-                        self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
-                        self.detail.setAlpha(0.0f);
-                        self.detail.setVisible(true);
-                        juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
-                        if (auto* eng = self.processor.getEngine(slot))
-                            self.masterFXStrip.setAccentColour(eng->getAccentColour());
-                    }
-                    else
-                    {
-                        self.overview.setAlpha(1.0f);
-                        self.overview.setVisible(true);
-                    }
-                });
+                        if (safeThis == nullptr)
+                            return;
+                        auto& self = *safeThis;
+                        if (slot != self.selectedSlot)
+                            return; // CQ17: user clicked elsewhere during fade
+                        if (self.detail.loadSlot(slot))
+                        {
+                            self.overview.setVisible(false);
+                            self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
+                            self.detail.setAlpha(0.0f);
+                            self.detail.setVisible(true);
+                            juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
+                            if (auto* eng = self.processor.getEngine(slot))
+                                self.masterFXStrip.setAccentColour(eng->getAccentColour());
+                        }
+                        else
+                        {
+                            self.overview.setAlpha(1.0f);
+                            self.overview.setVisible(true);
+                        }
+                    });
+            }
         }
     }
 
@@ -1288,22 +1434,33 @@ private:
                                                                    : nullptr;
         if (outgoing)
         {
-            juce::Component::SafePointer<XOceanusEditor> safeThis(this);
-            juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
-            anim.fadeOut(outgoing, kFadeMs);
-            juce::Timer::callAfterDelay(
-                kFadeMs,
-                [safeThis, safeOutgoing]
-                {
-                    if (safeThis == nullptr)
-                        return;
-                    if (safeOutgoing != nullptr)
-                        safeOutgoing->setVisible(false);
-                    safeThis->overview.setAlpha(0.0f);
-                    safeThis->overview.setVisible(true);
-                    safeThis->couplingHitTester.setVisible(true); // restore — overview needs arc hit-testing
-                    juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->overview, kFadeMs);
-                });
+            // #926: skip cross-fade when reduced-motion preference is active
+            if (A11y::prefersReducedMotion())
+            {
+                outgoing->setVisible(false);
+                overview.setAlpha(1.0f);
+                overview.setVisible(true);
+                couplingHitTester.setVisible(true);
+            }
+            else
+            {
+                juce::Component::SafePointer<XOceanusEditor> safeThis(this);
+                juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
+                anim.fadeOut(outgoing, kFadeMs);
+                juce::Timer::callAfterDelay(
+                    kFadeMs,
+                    [safeThis, safeOutgoing]
+                    {
+                        if (safeThis == nullptr)
+                            return;
+                        if (safeOutgoing != nullptr)
+                            safeOutgoing->setVisible(false);
+                        safeThis->overview.setAlpha(0.0f);
+                        safeThis->overview.setVisible(true);
+                        safeThis->couplingHitTester.setVisible(true); // restore — overview needs arc hit-testing
+                        juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->overview, kFadeMs);
+                    });
+            }
         }
     }
 
@@ -1322,29 +1479,50 @@ private:
                                                                    : nullptr;
         if (outgoing)
         {
-            juce::Component::SafePointer<XOceanusEditor> safeThis(this);
-            juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
-            anim.fadeOut(outgoing, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs,
-                                        [safeThis, safeOutgoing]
-                                        {
-                                            if (safeThis == nullptr)
-                                                return;
-                                            if (safeOutgoing != nullptr)
-                                                safeOutgoing->setVisible(false);
-                                            safeThis->chordPanel.setAlpha(0.0f);
-                                            safeThis->chordPanel.setVisible(true);
-                                            juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->chordPanel,
-                                                                                              kFadeMs);
-                                            safeThis->chordPanel.grabKeyboardFocus();
-                                        });
+            // #926: skip cross-fade when reduced-motion preference is active
+            if (A11y::prefersReducedMotion())
+            {
+                outgoing->setVisible(false);
+                chordPanel.setAlpha(1.0f);
+                chordPanel.setVisible(true);
+                chordPanel.grabKeyboardFocus();
+            }
+            else
+            {
+                juce::Component::SafePointer<XOceanusEditor> safeThis(this);
+                juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
+                anim.fadeOut(outgoing, kFadeMs);
+                juce::Timer::callAfterDelay(kFadeMs,
+                                            [safeThis, safeOutgoing]
+                                            {
+                                                if (safeThis == nullptr)
+                                                    return;
+                                                if (safeOutgoing != nullptr)
+                                                    safeOutgoing->setVisible(false);
+                                                safeThis->chordPanel.setAlpha(0.0f);
+                                                safeThis->chordPanel.setVisible(true);
+                                                juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->chordPanel,
+                                                                                                  kFadeMs);
+                                                safeThis->chordPanel.grabKeyboardFocus();
+                                            });
+            }
         }
         else
         {
-            chordPanel.setAlpha(0.0f);
-            chordPanel.setVisible(true);
-            anim.fadeIn(&chordPanel, kFadeMs);
-            chordPanel.grabKeyboardFocus();
+            // #926: skip fade-in when reduced-motion preference is active
+            if (A11y::prefersReducedMotion())
+            {
+                chordPanel.setAlpha(1.0f);
+                chordPanel.setVisible(true);
+                chordPanel.grabKeyboardFocus();
+            }
+            else
+            {
+                chordPanel.setAlpha(0.0f);
+                chordPanel.setVisible(true);
+                anim.fadeIn(&chordPanel, kFadeMs);
+                chordPanel.grabKeyboardFocus();
+            }
         }
     }
 
@@ -1365,29 +1543,50 @@ private:
                                                              : nullptr;
         if (outgoing)
         {
-            juce::Component::SafePointer<XOceanusEditor> safeThis(this);
-            juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
-            anim.fadeOut(outgoing, kFadeMs);
-            juce::Timer::callAfterDelay(kFadeMs,
-                                        [safeThis, safeOutgoing]
-                                        {
-                                            if (safeThis == nullptr)
-                                                return;
-                                            if (safeOutgoing != nullptr)
-                                                safeOutgoing->setVisible(false);
-                                            safeThis->performancePanel.setAlpha(0.0f);
-                                            safeThis->performancePanel.setVisible(true);
-                                            juce::Desktop::getInstance().getAnimator().fadeIn(
-                                                &safeThis->performancePanel, kFadeMs);
-                                            safeThis->performancePanel.grabKeyboardFocus();
-                                        });
+            // #926: skip cross-fade when reduced-motion preference is active
+            if (A11y::prefersReducedMotion())
+            {
+                outgoing->setVisible(false);
+                performancePanel.setAlpha(1.0f);
+                performancePanel.setVisible(true);
+                performancePanel.grabKeyboardFocus();
+            }
+            else
+            {
+                juce::Component::SafePointer<XOceanusEditor> safeThis(this);
+                juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
+                anim.fadeOut(outgoing, kFadeMs);
+                juce::Timer::callAfterDelay(kFadeMs,
+                                            [safeThis, safeOutgoing]
+                                            {
+                                                if (safeThis == nullptr)
+                                                    return;
+                                                if (safeOutgoing != nullptr)
+                                                    safeOutgoing->setVisible(false);
+                                                safeThis->performancePanel.setAlpha(0.0f);
+                                                safeThis->performancePanel.setVisible(true);
+                                                juce::Desktop::getInstance().getAnimator().fadeIn(
+                                                    &safeThis->performancePanel, kFadeMs);
+                                                safeThis->performancePanel.grabKeyboardFocus();
+                                            });
+            }
         }
         else
         {
-            performancePanel.setAlpha(0.0f);
-            performancePanel.setVisible(true);
-            anim.fadeIn(&performancePanel, kFadeMs);
-            performancePanel.grabKeyboardFocus();
+            // #926: skip fade-in when reduced-motion preference is active
+            if (A11y::prefersReducedMotion())
+            {
+                performancePanel.setAlpha(1.0f);
+                performancePanel.setVisible(true);
+                performancePanel.grabKeyboardFocus();
+            }
+            else
+            {
+                performancePanel.setAlpha(0.0f);
+                performancePanel.setVisible(true);
+                anim.fadeIn(&performancePanel, kFadeMs);
+                performancePanel.grabKeyboardFocus();
+            }
         }
     }
 
@@ -1396,7 +1595,7 @@ private:
     float getCockpitOpacity() const override { return cockpitOpacity_; }
 
     // ── PlaySurface show/hide (embedded zone, spec §2.2) ──────────────────────
-    // Toggling the PLAY button expands/collapses the 264pt bottom zone by resizing
+    // Toggling the KEYS button expands/collapses the 264pt bottom zone by resizing
     // the plugin window.  A 200ms ComponentAnimator transition animates the resize.
     // MIDI wiring and mode/bank/octave state persist across hide/show cycles because
     // playSurface_ is a permanent child of XOceanusEditor (not recreated on each open).
@@ -1448,8 +1647,16 @@ private:
         // Clamp to the resize limit ceiling.
         const int newH = juce::jmin(getHeight() + ColumnLayoutManager::kPlaySurfaceH,
                                     1000 + ColumnLayoutManager::kPlaySurfaceH);
-        juce::Desktop::getInstance().getAnimator().animateComponent(
-            this, getBounds().withHeight(newH), 1.0f, 200, false, 1.0, 0.0);
+        // #926: skip resize animation when reduced-motion preference is active
+        if (A11y::prefersReducedMotion())
+        {
+            setSize(getWidth(), newH);
+        }
+        else
+        {
+            juce::Desktop::getInstance().getAnimator().animateComponent(
+                this, getBounds().withHeight(newH), 1.0f, 200, false, 1.0, 0.0);
+        }
     }
 
     void hidePlaySurface()
@@ -1462,16 +1669,26 @@ private:
         // Collapse plugin window first (200ms animated resize), then hide the zone.
         const int newH = juce::jmax(getHeight() - ColumnLayoutManager::kPlaySurfaceH, 600);
         juce::Component::SafePointer<XOceanusEditor> safeThis(this);
-        juce::Desktop::getInstance().getAnimator().animateComponent(
-            this, getBounds().withHeight(newH), 1.0f, 200, false, 1.0, 0.0);
-        juce::Timer::callAfterDelay(200,
-            [safeThis]()
-            {
-                if (safeThis == nullptr)
-                    return;
-                safeThis->playSurface_.setVisible(false);
-                safeThis->resized(); // recompute layout after hide
-            });
+        // #926: skip resize animation when reduced-motion preference is active
+        if (A11y::prefersReducedMotion())
+        {
+            setSize(getWidth(), newH);
+            playSurface_.setVisible(false);
+            resized();
+        }
+        else
+        {
+            juce::Desktop::getInstance().getAnimator().animateComponent(
+                this, getBounds().withHeight(newH), 1.0f, 200, false, 1.0, 0.0);
+            juce::Timer::callAfterDelay(200,
+                [safeThis]()
+                {
+                    if (safeThis == nullptr)
+                        return;
+                    safeThis->playSurface_.setVisible(false);
+                    safeThis->resized(); // recompute layout after hide
+                });
+        }
     }
 
     void timerCallback() override
@@ -1871,7 +2088,7 @@ private:
     juce::TextButton settingsBtn;
     // PlaySurface — embedded 264pt bottom zone (spec §2.2).
     // Previously a floating DocumentWindow popup; now a permanent direct child.
-    // Visible/hidden by the PLAY button; never recreated so MIDI state persists.
+    // Visible/hidden by the KEYS button; never recreated so MIDI state persists.
     PlaySurface playSurface_;
     // V1 fix: TooltipWindow activates all setTooltip() calls across the entire UI.
     // JUCE requires exactly one TooltipWindow child per top-level component; without it
@@ -1918,6 +2135,14 @@ private:
     double lastTimerMs_ = 0.0;
 
     ColumnLayoutManager layout;
+
+    // ── ToastOverlay — non-blocking notification layer ────────────────────────
+    // Declared last so it is destroyed first (child components destroyed in
+    // reverse declaration order in C++), ensuring the singleton pointer is
+    // cleared before any other members are freed.
+    // setBounds: full editor bounds (set in resized()).
+    // addAndMakeVisible: called LAST in constructor so it paints above all panels.
+    ToastOverlay toastOverlay_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusEditor)
 };

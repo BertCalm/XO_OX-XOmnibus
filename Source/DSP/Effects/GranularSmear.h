@@ -155,7 +155,7 @@ private:
     int bufferSize = 0;
     int writePos = 0;
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float smear = 0.0f;
     float grainMs = 60.0f;
     float density = 0.5f;

@@ -276,6 +276,7 @@ public:
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
+        jassert(sr > 0.0);  // sr=0.0 sentinel: prepare() must be called before renderBlock()
         juce::ScopedNoDenormals noDenormals;
 
         // Read params early for noteOn configuration
@@ -764,8 +765,8 @@ public:
     int getActiveVoiceCount() const override { return VoiceAllocator::countActive(voices, kMaxVoices); }
 
 private:
-    double sr = 44100.0;
-    float srF = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srF = 0.0f;  // Sentinel: must be set by prepare() before use
     float inverseSr_ = 1.0f / 44100.0f;
     int blockSize = 512;
 

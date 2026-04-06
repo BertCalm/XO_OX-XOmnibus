@@ -193,7 +193,7 @@ private:
     //--------------------------------------------------------------------------
     static constexpr int kNumBands = 3;
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
     // 3 stereo bandpass filter bands (the "membrane pores")
     CytomicSVF bandsL[kNumBands];

@@ -35,7 +35,9 @@ DNA_DIMENSIONS = ["brightness", "warmth", "movement", "density", "space", "aggre
 DNA_BAR_WIDTH = 10  # number of chars in the block bar
 
 VALID_TIERS = {"FORM", "TEXTURE", "MOTION", "COLOR", "SPACE", "TIME"}
-VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family"}
+VALID_MOODS = {"Foundation", "Atmosphere", "Entangled", "Prism", "Flux", "Aether", "Family",
+               "Submerged", "Coupling", "Crystalline", "Deep", "Ethereal", "Kinetic", "Luminous",
+               "Organic", "Shadow"}
 
 # Programs with more than this many keygroups are classified as Melodic
 MELODIC_KEYGROUP_THRESHOLD = 20
@@ -208,8 +210,8 @@ def extract_metadata(zf: zipfile.ZipFile) -> dict:
             if dim in dna_src:
                 try:
                     meta["dna"][dim] = float(dna_src[dim])
-                except (ValueError, TypeError):
-                    pass
+                except (ValueError, TypeError) as exc:
+                    print(f"[WARN] Parsing DNA dimension '{dim}' from expansion.json: {exc}", file=sys.stderr)
 
     # --- bundle_manifest.json (supplements/overrides) ---
     manifest = read_json_from_zip(zf, "bundle_manifest.json")
@@ -236,8 +238,8 @@ def extract_metadata(zf: zipfile.ZipFile) -> dict:
             if dim in dna_src and meta["dna"][dim] is None:
                 try:
                     meta["dna"][dim] = float(dna_src[dim])
-                except (ValueError, TypeError):
-                    pass
+                except (ValueError, TypeError) as exc:
+                    print(f"[WARN] Parsing DNA dimension '{dim}' from bundle_manifest.json: {exc}", file=sys.stderr)
 
         # Tags
         if "tags" in manifest and isinstance(manifest["tags"], list) and not meta["tags"]:

@@ -67,7 +67,7 @@ public:
                                 const juce::String& slotPrefix = "");
 
 private:
-    double sr_        = 44100.0;
+    double sr_        = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_ = 512;
 
     //==========================================================================
@@ -79,7 +79,7 @@ private:
 
         FractionalDelay delay;
         float readPhase = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -139,7 +139,7 @@ private:
 
         CircularBuffer loopBuffer;
         float readOffset = 0.0f;
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -233,7 +233,7 @@ private:
         FractionalDelay combs[kNumCombs];
         EnvelopeFollower env;
         float feedbacks[kNumCombs] = {};
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // Base delay times in ms for each comb (prime-like, inharmonic)
         static constexpr float kBaseTimes[kNumCombs] = { 13.7f, 17.3f, 23.1f, 31.9f };

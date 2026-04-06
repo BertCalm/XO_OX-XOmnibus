@@ -239,7 +239,7 @@ private:
         };
         std::array<Voice, kMaxVoices> voices;
 
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         // PRNG state (xorshift32 — no heap, deterministic)
         uint32_t rngState = 0xDEADBEEFu;
@@ -409,7 +409,7 @@ private:
         TPT_SVF svfL;
         TPT_SVF svfR;
 
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -597,7 +597,7 @@ private:
         int predelayWriteL = 0;
         int predelayWriteR = 0;
 
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate, int /*maxBlockSize*/)
         {
@@ -799,7 +799,7 @@ private:
         float gainSmoothed = 0.0f;
         float smoothCoeff = 0.0f;
 
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -916,7 +916,7 @@ private:
         float pitchReadL = 0.0f;
         float pitchReadR = 0.0f;
 
-        double sr = 44100.0;
+        double sr = 0.0;  // Sentinel: must be set by prepare() before use
 
         void prepare(double sampleRate)
         {
@@ -1177,7 +1177,7 @@ private:
         std::atomic<float>* biolumeChar = nullptr;
     } params;
 
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int blockSize = 512;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AquaticFXSuite)
@@ -1212,6 +1212,7 @@ inline void AquaticFXSuite::reset()
 
 inline void AquaticFXSuite::processBlock(float* L, float* R, int numSamples, double bpm)
 {
+    juce::ScopedNoDenormals noDenormals; // Issue #902: FTZ/DAZ protection (missed in original Wave 1 chains)
     //------------------------------------------------------------------
     // Stage 1 — Fathom
     //------------------------------------------------------------------

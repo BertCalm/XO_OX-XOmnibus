@@ -127,8 +127,8 @@ def load_xometa_files(pack_dir: Path) -> list[dict]:
         try:
             data = json.loads(p.read_text(encoding="utf-8"))
             presets.append(data)
-        except (json.JSONDecodeError, OSError):
-            pass
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"[WARN] Reading preset file {p.name}: {exc}", file=sys.stderr)
     return presets
 
 
@@ -137,8 +137,8 @@ def load_expansion_json(pack_dir: Path) -> dict:
     if candidate.exists():
         try:
             return json.loads(candidate.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError):
-            pass
+        except (json.JSONDecodeError, OSError) as exc:
+            print(f"[WARN] Reading expansion.json: {exc}", file=sys.stderr)
     return {}
 
 
