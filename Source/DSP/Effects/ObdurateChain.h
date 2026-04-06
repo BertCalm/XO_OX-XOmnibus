@@ -205,7 +205,7 @@ private:
             ++chunkFillPos;
 
             int chunkLen = static_cast<int>(srF * 0.5f);
-            chunkLen = std::max(1, std::min(chunkLen, static_cast<int>(revChunk.size())));
+            chunkLen = std::max(2, std::min(chunkLen, static_cast<int>(revChunk.size())));
 
             // When a full chunk is collected, fill the reverse buffer (Hann windowed)
             if (chunkFillPos >= chunkLen)
