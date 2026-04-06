@@ -178,7 +178,8 @@ private:
         static constexpr int kMaxGrains         = 64;
 
         CircularBuffer capture;
-        double sr = 44100.0;
+        double   sr       = 44100.0;
+        uint32_t rngSeed_ = 0xDEADBEEFu;
 
         struct Grain
         {
@@ -209,6 +210,7 @@ private:
             for (auto& g : grains)
                 g.active = false;
             spawnAccum = 0.0f;
+            rngSeed_   = 0xDEADBEEFu;
         }
 
         // Simple pseudo-random: LCG, not cryptographic
@@ -229,8 +231,8 @@ private:
             float grainLenMs   = 10.0f + grainSizeMs * 20.0f;
             int   grainLenSamp = std::max(1, static_cast<int>(grainLenMs * srF / 1000.0f));
 
-            // Use a deterministic seed derived from static counter for reproducible scatter
-            static uint32_t seed = 0xDEADBEEFu;
+            // Use per-instance seed (non-static to avoid data race across chain instances)
+            uint32_t& seed = rngSeed_;
 
             for (int i = 0; i < numSamples; ++i)
             {
