@@ -193,6 +193,17 @@ public:
     }
 
     //==========================================================================
+    // Fix S2: Refresh the preset browser list after an async scan completes.
+    // Call from the editor's scanPresetDirectoryAsync completion callback so that
+    // any already-open PresetBrowser (constructed before the scan finished) re-reads
+    // the library and rebuilds its filtered list.
+    void refreshPresetBrowser()
+    {
+        if (presetBrowser != nullptr)
+            presetBrowser->refresh();
+    }
+
+    //==========================================================================
     // Engine accent color — used for active tab underline.
     // Defaults to Reef Jade teal (mockup --accent); call setEngineAccent() when the loaded engine changes.
     juce::Colour engineAccent{juce::Colour(0xFF1E8B7E)};

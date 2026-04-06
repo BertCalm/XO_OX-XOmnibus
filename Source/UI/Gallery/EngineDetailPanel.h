@@ -104,7 +104,8 @@ private:
 // EngineDetailPanel — right-side parameter view for one engine slot.
 // Contains a MacroHeroStrip (4 pillar sliders for engine macros) plus a
 // scrollable ParameterGrid showing all remaining params.
-class EngineDetailPanel : public juce::Component
+class EngineDetailPanel : public juce::Component,
+                          private juce::Timer
 {
 public:
     explicit EngineDetailPanel(XOceanusProcessor& proc) : processor(proc), macroHero(proc), waveformDisplay(proc)
@@ -118,7 +119,12 @@ public:
         addAndMakeVisible(adsrDisplay);
         A11y::setup(*this, "Engine Detail Panel",
                     "Shows parameters for the selected engine. Press Escape to return to overview.");
+        // S5: Poll ADSR parameters at 30Hz (matches WaveformDisplay update rate).
+        const int hz = A11y::prefersReducedMotion() ? 10 : 30;
+        startTimerHz(hz);
     }
+
+    ~EngineDetailPanel() override { stopTimer(); }
 
     // Optional: wire MIDI learn manager before the first loadSlot() call.
     void setMidiLearnManager(MIDILearnManager* mgr)
@@ -169,6 +175,28 @@ public:
 
         // Configure ADSR display accent colour
         adsrDisplay.setAccentColour(accentColour);
+
+        // S5: Cache raw parameter pointers for the ADSR timer poll.
+        // Parameter IDs follow the {prefix}_attack / _decay / _sustain / _release pattern.
+        // getRawParameterValue() returns nullptr if the param doesn't exist for this engine,
+        // which timerCallback() handles gracefully.
+        {
+            auto& apvts = processor.getAPVTS();
+            adsrAttack  = apvts.getRawParameterValue(prefix + "_attack");
+            adsrDecay   = apvts.getRawParameterValue(prefix + "_decay");
+            adsrSustain = apvts.getRawParameterValue(prefix + "_sustain");
+            adsrRelease = apvts.getRawParameterValue(prefix + "_release");
+            // Push an immediate update so the display reflects current values
+            // right after load (before the next timer tick).
+            if (adsrAttack != nullptr)
+            {
+                adsrDisplay.setValues(
+                    adsrAttack->load(),
+                    adsrDecay   != nullptr ? adsrDecay->load()   : 0.3f,
+                    adsrSustain != nullptr ? adsrSustain->load() : 0.7f,
+                    adsrRelease != nullptr ? adsrRelease->load() : 0.4f);
+            }
+        }
 
         // ── Reset ALL specialized components before recreating ────────────────
         fiveMacroDisplay.reset();
@@ -381,6 +409,20 @@ public:
         return true;
     }
 
+    // S5: Poll ADSR parameter values and push them to adsrDisplay.
+    // Runs at 30Hz (matches WaveformDisplay). Uses the 4 raw parameter pointers
+    // cached in loadSlot() — safe to read atomically on the message thread.
+    void timerCallback() override
+    {
+        if (adsrAttack == nullptr)
+            return;
+        const float a = adsrAttack->load();
+        const float d = adsrDecay  != nullptr ? adsrDecay->load()   : 0.3f;
+        const float s = adsrSustain != nullptr ? adsrSustain->load() : 0.7f;
+        const float r = adsrRelease != nullptr ? adsrRelease->load() : 0.4f;
+        adsrDisplay.setValues(a, d, s, r);
+    }
+
     void paint(juce::Graphics& g) override
     {
         using namespace GalleryColors;
@@ -524,6 +566,14 @@ private:
     juce::Rectangle<int> oscLabelBounds;
     // Bounds for the "ENVELOPE" label painted above the ADSR display.
     juce::Rectangle<int> envLabelBounds;
+
+    // S5: Raw pointers to the active engine's ADSR parameters.
+    // Cached in loadSlot() and read by timerCallback() at 30Hz.
+    // Null when the current engine has no standard ADSR params.
+    std::atomic<float>* adsrAttack  = nullptr;
+    std::atomic<float>* adsrDecay   = nullptr;
+    std::atomic<float>* adsrSustain = nullptr;
+    std::atomic<float>* adsrRelease = nullptr;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineDetailPanel)
 };

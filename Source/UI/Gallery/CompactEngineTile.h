@@ -201,18 +201,28 @@ public:
         bool hovered = isMouseOver();
 
         // ── Tile background ──────────────────────────────────────────────────
+        // Always show a subtle engine personality tint when an engine is loaded
+        if (hasEngine)
+        {
+            // Subtle accent wash — gives each engine visual identity
+            g.setColour(accent.withAlpha(0.06f));
+            g.fillRoundedRectangle(b, 4.0f);
+        }
+
         if (isSelected && hasEngine)
         {
-            g.setColour(juce::Colour(0x0AFFFFFF));
+            // Selected: stronger accent tint
+            g.setColour(accent.withAlpha(0.12f));
             g.fillRoundedRectangle(b, 4.0f);
-            juce::ColourGradient grad(accent.withAlpha(0.09f), b.getX(), b.getCentreY(),
+            // Left-to-right accent gradient fade
+            juce::ColourGradient grad(accent.withAlpha(0.15f), b.getX(), b.getCentreY(),
                                       juce::Colours::transparentBlack, b.getRight(), b.getCentreY(), false);
             g.setGradientFill(grad);
             g.fillRoundedRectangle(b, 4.0f);
         }
         else if (hovered)
         {
-            g.setColour(juce::Colour(0x07FFFFFF));
+            g.setColour(accent.withAlpha(0.09f));
             g.fillRoundedRectangle(b, 4.0f);
         }
 
@@ -316,9 +326,9 @@ public:
 
                 float nameW = content.getWidth() - (nameX - content.getX()) - pwrW - 3.0f;
                 g.setFont(GalleryFonts::engineName(14.0f));
-                g.setColour(accent);
+                g.setColour(GalleryColors::ensureMinContrast(accent));
                 g.drawText(engineId.toUpperCase(), (int)nameX, (int)rowY, (int)nameW, (int)rowH,
-                           juce::Justification::centredLeft);
+                           juce::Justification::centredLeft, true);
 
                 // Power button — 16×16 circle, right edge of content
                 // Active (unmuted): border + text in accent color
@@ -326,7 +336,7 @@ public:
                 {
                     float pwrX = content.getRight() - pwrW;
                     float pwrY = rowY + (rowH - pwrH) * 0.5f;
-                    juce::Colour pwrColor = isMuted ? GalleryColors::get(GalleryColors::t3()) : accent;
+                    juce::Colour pwrColor = isMuted ? GalleryColors::get(GalleryColors::t3()) : GalleryColors::ensureMinContrast(accent);
                     g.setColour(pwrColor);
                     g.drawEllipse(pwrX, pwrY, pwrW, pwrH, 1.0f);
                     g.setFont(GalleryFonts::value(8.0f));

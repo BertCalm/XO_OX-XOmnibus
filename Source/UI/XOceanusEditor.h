@@ -98,7 +98,10 @@ public:
             opts.filenameSuffix = "settings";
             opts.osxLibrarySubFolder = "Application Support";
             juce::PropertiesFile earlySettings(opts);
-            GalleryColors::darkMode() = earlySettings.getBoolValue("darkMode", true);
+            const bool savedDark = earlySettings.getBoolValue("darkMode", true);
+            // Register this instance in the per-instance dark mode registry (fix #329).
+            // unregisterInstance() is called in the destructor.
+            GalleryColors::setInstanceDarkMode(this, savedDark);
         }
 
         // Primary tiles (slots 0-3)
@@ -225,7 +228,22 @@ public:
         if (laf)
             playSurface_.setLookAndFeel(laf.get());
         addAndMakeVisible(playSurface_);
-        playSurface_.setVisible(false); // hidden by default; PLAY button reveals it
+        // V2 fix: On first launch (no persisted state) show the PlaySurface so the
+        // user sees a playable keyboard immediately.  On subsequent launches, restore
+        // the last state.  "playSurfaceVisible" is absent on fresh install, so we
+        // default to true; after any explicit toggle it is written and honoured.
+        {
+            juce::PropertiesFile::Options psOpts;
+            psOpts.applicationName = "XOceanus";
+            psOpts.filenameSuffix = "settings";
+            psOpts.osxLibrarySubFolder = "Application Support";
+            juce::PropertiesFile psSettings(psOpts);
+            const bool hasSavedState = psSettings.containsKey("playSurfaceVisible");
+            const bool shouldShow    = hasSavedState ? psSettings.getBoolValue("playSurfaceVisible", false)
+                                                     : true; // first launch: default open
+            playSurface_.setVisible(shouldShow);
+            surfaceToggleBtn.setToggleState(shouldShow, juce::dontSendNotification);
+        }
 
         // Dark mode toggle — dark is primary (brand rule)
         addAndMakeVisible(themeToggleBtn);
@@ -297,7 +315,14 @@ public:
         {
             auto& pm = processor.getPresetManager();
             pm.previousPreset();
-            processor.applyPreset(pm.getCurrentPreset());
+            try
+            {
+                processor.applyPreset(pm.getCurrentPreset());
+            }
+            catch (const std::exception& e)
+            {
+                DBG("Preset load failed (prev): " << e.what());
+            }
             repaint();
         };
 
@@ -309,7 +334,14 @@ public:
         {
             auto& pm = processor.getPresetManager();
             pm.nextPreset();
-            processor.applyPreset(pm.getCurrentPreset());
+            try
+            {
+                processor.applyPreset(pm.getCurrentPreset());
+            }
+            catch (const std::exception& e)
+            {
+                DBG("Preset load failed (next): " << e.what());
+            }
             repaint();
         };
 
@@ -354,7 +386,11 @@ public:
                 {
                     if (safeThis == nullptr)
                         return;
-                    safeThis->presetBrowser.setScanning(false); // clears loading state + refreshes
+                    safeThis->presetBrowser.setScanning(false); // clears loading state + refreshes strip
+                    // Fix S2: also refresh the sidebar's PresetBrowser panel so it re-reads the
+                    // library if it was constructed before the async scan completed (shows 0 presets
+                    // forever without this call).
+                    safeThis->sidebar.refreshPresetBrowser();
                 });
         }
         else
@@ -460,9 +496,12 @@ public:
                 });
         };
 
-        // Base plugin height is 700pt (PlaySurface collapsed by default).
-        // When PlaySurface is shown, the window expands by kPlaySurfaceH (264pt).
-        setSize(1100, 700);
+        // Base plugin height is 700pt (PlaySurface collapsed).
+        // V2: On first launch the PlaySurface starts open, so add kPlaySurfaceH immediately.
+        const int initialHeight = playSurface_.isVisible()
+                                      ? 700 + ColumnLayoutManager::kPlaySurfaceH
+                                      : 700;
+        setSize(1100, initialHeight);
 
         // ── Column C Sidebar: wire PresetManager AFTER setSize() so sidebar
         // has valid bounds when setPresetManager() calls resized() internally.
@@ -548,6 +587,10 @@ public:
         // Detach the embedded PlaySurface from the processor before the processor
         // goes away, so the MidiMessageCollector pointer is not accessed after dealloc.
         playSurface_.setProcessor(nullptr);
+        // S4: Remove this editor from the per-instance dark mode registry BEFORE
+        // child components are destroyed, so no child paint() call that fires
+        // during teardown finds a dangling pointer in the registry.
+        GalleryColors::unregisterInstance(this);
         setLookAndFeel(nullptr);
     }
 
@@ -705,6 +748,10 @@ public:
 
     void paint(juce::Graphics& g) override
     {
+        // S4: Set the active dark mode context for this instance before any paint
+        // logic (or child components) query GalleryColors::darkMode().
+        GalleryColors::setActiveDarkModeContext(this);
+
         using namespace GalleryColors;
 
         // ── Body background — deepest layer (body bg #080809) ────────────────
@@ -1354,10 +1401,24 @@ private:
     // MIDI wiring and mode/bank/octave state persist across hide/show cycles because
     // playSurface_ is a permanent child of XOceanusEditor (not recreated on each open).
 
+    // Persist the playSurface visibility state so V2 first-launch default is honoured
+    // on subsequent sessions and explicit user toggles are remembered.
+    static void persistPlaySurfaceVisible(bool visible)
+    {
+        juce::PropertiesFile::Options opts;
+        opts.applicationName = "XOceanus";
+        opts.filenameSuffix = "settings";
+        opts.osxLibrarySubFolder = "Application Support";
+        juce::PropertiesFile settings(opts);
+        settings.setValue("playSurfaceVisible", visible);
+    }
+
     void showPlaySurface()
     {
         if (playSurface_.isVisible())
             return; // already expanded
+
+        persistPlaySurfaceVisible(true);
 
         // Make visible first so resized() sees it and computes correct bounds.
         playSurface_.setVisible(true);
@@ -1395,6 +1456,8 @@ private:
     {
         if (!playSurface_.isVisible())
             return; // already collapsed
+
+        persistPlaySurfaceVisible(false);
 
         // Collapse plugin window first (200ms animated resize), then hide the zone.
         const int newH = juce::jmax(getHeight() - ColumnLayoutManager::kPlaySurfaceH, 600);
@@ -1810,6 +1873,10 @@ private:
     // Previously a floating DocumentWindow popup; now a permanent direct child.
     // Visible/hidden by the PLAY button; never recreated so MIDI state persists.
     PlaySurface playSurface_;
+    // V1 fix: TooltipWindow activates all setTooltip() calls across the entire UI.
+    // JUCE requires exactly one TooltipWindow child per top-level component; without it
+    // every setTooltip() call is dead code. 400ms delay matches standard plugin UX.
+    juce::TooltipWindow tooltipWindow{this, 400};
     CouplingArcOverlay couplingArcs{processor};
     CouplingArcHitTester couplingHitTester{processor};
     SidebarPanel sidebar;
