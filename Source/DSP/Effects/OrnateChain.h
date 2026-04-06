@@ -70,6 +70,9 @@ private:
     double sr_        = 44100.0;
     int    blockSize_ = 512;
 
+    // Scratch buffer to avoid aliasing when L is passed as both monoIn and output.
+    std::vector<float> monoWork_;
+
     //==========================================================================
     // Stage 1 — Artificial Acoustic Exciter (Boss AC-2)
     //==========================================================================
@@ -506,6 +509,7 @@ inline void OrnateChain::prepare(double sampleRate, int maxBlockSize)
 {
     sr_        = sampleRate;
     blockSize_ = maxBlockSize;
+    monoWork_.assign(static_cast<size_t>(maxBlockSize), 0.0f);
     exciter_.prepare(sampleRate);
     smasher_.prepare(sampleRate);
     granular_.prepare(sampleRate);
@@ -553,7 +557,10 @@ inline void OrnateChain::processBlock(const float* monoIn, float* L, float* R,
     }
 
     // Stage 3: Granular — expands mono → stereo
-    granular_.processBlock(L, L, R, numSamples, grainSize, grainDensity, grainSpread);
+    // Copy L into scratch buffer to avoid aliasing (L is both the source
+    // written by stages 1-2 and the output buffer for the granular stage).
+    std::copy(L, L + numSamples, monoWork_.data());
+    granular_.processBlock(monoWork_.data(), L, R, numSamples, grainSize, grainDensity, grainSpread);
 
     // Stage 4: Dual-LFO Phaser — stereo in-place
     phaser_.processBlock(L, R, numSamples, phaseRate1, phaseRate2, phaseColor, sr_);
