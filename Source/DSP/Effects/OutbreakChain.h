@@ -224,22 +224,21 @@ private:
             float highGainDb = +6.0f; // +6dB high shelf
             // Mid scoop emerges from shelf overlap without explicit parametric notch
 
+            // Coefficients are constant — set once per block, not per sample
+            lowShelfL.setMode(CytomicSVF::Mode::LowShelf);
+            lowShelfL.setCoefficients(300.0f, 0.7f, srF, lowGainDb);
+            highShelfL.setMode(CytomicSVF::Mode::HighShelf);
+            highShelfL.setCoefficients(3000.0f, 0.7f, srF, highGainDb);
+            lowShelfR.setMode(CytomicSVF::Mode::LowShelf);
+            lowShelfR.setCoefficients(300.0f, 0.7f, srF, lowGainDb);
+            highShelfR.setMode(CytomicSVF::Mode::HighShelf);
+            highShelfR.setCoefficients(3000.0f, 0.7f, srF, highGainDb);
+
             for (int i = 0; i < numSamples; ++i)
             {
-                lowShelfL.setMode(CytomicSVF::Mode::LowShelf);
-                lowShelfL.setCoefficients(300.0f, 0.7f, srF, lowGainDb);
                 outL[i] = lowShelfL.processSample(outL[i]);
-
-                highShelfL.setMode(CytomicSVF::Mode::HighShelf);
-                highShelfL.setCoefficients(3000.0f, 0.7f, srF, highGainDb);
                 outL[i] = highShelfL.processSample(outL[i]);
-
-                lowShelfR.setMode(CytomicSVF::Mode::LowShelf);
-                lowShelfR.setCoefficients(300.0f, 0.7f, srF, lowGainDb);
                 outR[i] = lowShelfR.processSample(outR[i]);
-
-                highShelfR.setMode(CytomicSVF::Mode::HighShelf);
-                highShelfR.setCoefficients(3000.0f, 0.7f, srF, highGainDb);
                 outR[i] = highShelfR.processSample(outR[i]);
             }
         }
