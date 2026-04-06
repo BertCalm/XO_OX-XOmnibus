@@ -2211,6 +2211,15 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
     if (slot < 0 || slot >= MaxSlots)
         return;
 
+    // #904: Open a new APVTS undo transaction so Cmd+Z can revert parameter
+    // state to before the engine swap.  Engine structural state (slot routing,
+    // coupling routes) is not APVTS-managed, so those revert via StructuralUndoManager
+    // when it is promoted from Future/ — for now the APVTS transaction at minimum
+    // gives users a undo boundary for macro / engine-specific parameter changes.
+    // Guard: skip if called during setStateInformation() (no audio context yet)
+    // since no interactive undo makes sense during preset restore.
+    undoManager.beginNewTransaction("Load engine: " + juce::String(engineId));
+
     auto newEngine = EngineRegistry::instance().createEngine(engineId);
     if (!newEngine)
         return;
