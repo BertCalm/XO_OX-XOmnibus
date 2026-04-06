@@ -1986,8 +1986,8 @@ def _write_state(ctx: PipelineContext, failed_stage: Optional[str] = None):
         ctx.build_dir.mkdir(parents=True, exist_ok=True)
         with open(state_path, "w", encoding='utf-8') as f:
             json.dump(state, f, indent=2)
-    except OSError:
-        pass  # non-critical
+    except OSError as _state_err:
+        print(f"[WARN] Could not write build state to {state_path}: {_state_err}", file=sys.stderr)
 
 
 # ---------------------------------------------------------------------------
@@ -3774,8 +3774,8 @@ def cmd_build(args) -> int:
                     art_2000_path = output_dir / "artwork_2000.png"
                     art_2000_path.write_bytes(png_2000)
                     print(f"         [OK] artwork_2000.png written ({len(png_2000):,} bytes)")
-                except Exception:
-                    pass  # hi-res is optional
+                except Exception as _art_err:
+                    print(f"         [WARN] artwork_2000.png skipped: {_art_err}", file=sys.stderr)
 
                 stages_run += 1
                 _update_build_log(log_path, "art")

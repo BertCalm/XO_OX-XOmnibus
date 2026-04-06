@@ -902,8 +902,8 @@ def _render_jobs_locked(jobs: list[dict], output_dir: str, midi_port_name: str |
                   f"in Audio MIDI Setup before rendering.")
             port.close()
             return
-    except Exception:
-        pass  # device query failures must not abort the render session
+    except Exception as _dev_err:
+        print(f"[WARN] Audio device sample-rate check skipped: {_dev_err}", file=sys.stderr)
 
     # Mandatory pre-flight: verify audio chain before committing to a full render session
     _preflight_check(device_index, sample_rate, port)
