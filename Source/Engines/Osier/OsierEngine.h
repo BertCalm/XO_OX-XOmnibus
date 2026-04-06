@@ -626,7 +626,10 @@ public:
     {
         for (auto& v : voices)
             if (v.active && v.currentNote == note)
+            {
                 v.ampEnv.release();
+                v.filterEnv.release();
+            }
     }
 
     //==========================================================================
