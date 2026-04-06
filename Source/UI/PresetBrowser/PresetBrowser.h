@@ -319,7 +319,48 @@ public:
         listBox.setBounds(area);
     }
 
-    void paint(juce::Graphics& g) override { g.fillAll(GalleryColors::get(GalleryColors::shellWhite())); }
+    void paint(juce::Graphics& g) override
+    {
+        g.fillAll(GalleryColors::get(GalleryColors::shellWhite()));
+
+        // #923: Spinner overlay drawn in the listBox area while library scan runs.
+        if (isScanning_)
+        {
+            auto spinArea = listBox.getBounds().toFloat();
+            if (spinArea.isEmpty())
+                spinArea = getLocalBounds().toFloat();
+
+            // Semi-transparent background
+            g.setColour(GalleryColors::get(GalleryColors::shellWhite()).withAlpha(0.85f));
+            g.fillRect(spinArea);
+
+            const float cx = spinArea.getCentreX();
+            const float cy = spinArea.getCentreY() - 14.0f;
+            const float r  = 16.0f;
+
+            // Track circle
+            g.setColour(GalleryColors::get(GalleryColors::borderGray()));
+            g.drawEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f, 2.0f);
+
+            // Spinning arc (XO Gold) — 120° sweep rotating at spinnerAngle_
+            {
+                juce::Path arc;
+                const float sweepRad = juce::MathConstants<float>::twoPi / 3.0f; // 120°
+                arc.addArc(cx - r, cy - r, r * 2.0f, r * 2.0f,
+                           spinnerAngle_, spinnerAngle_ + sweepRad, true);
+                g.setColour(juce::Colour(GalleryColors::xoGold));
+                g.strokePath(arc, juce::PathStrokeType(2.5f, juce::PathStrokeType::curved,
+                                                        juce::PathStrokeType::rounded));
+            }
+
+            // "Scanning presets…" caption
+            g.setColour(GalleryColors::get(GalleryColors::textMid()));
+            g.setFont(GalleryFonts::body(12.0f));
+            g.drawText("Scanning presets\xe2\x80\xa6",
+                       juce::Rectangle<float>(cx - 80.0f, cy + r + 6.0f, 160.0f, 18.0f),
+                       juce::Justification::centred, false);
+        }
+    }
 
     //==========================================================================
     // ListBoxModel implementation
@@ -545,6 +586,17 @@ public:
     // juce::Timer
     void timerCallback() override
     {
+        if (isScanning_)
+        {
+            // Spinner animation — advance arc and repaint overlay (#923).
+            spinnerAngle_ += juce::MathConstants<float>::twoPi / 40.0f; // ~40 steps per rotation at 20fps
+            if (spinnerAngle_ >= juce::MathConstants<float>::twoPi)
+                spinnerAngle_ -= juce::MathConstants<float>::twoPi;
+            repaint();
+            return;
+        }
+
+        // Debounce path (search text changed)
         stopTimer();
         // applyFilters() is non-blocking (async) so there is no need to guard
         // against re-entry — a new dispatch simply bumps filterGeneration_ and
@@ -558,6 +610,43 @@ public:
 
     /** Refresh the displayed list (call after preset library changes). */
     void refresh() { applyFilters(); }
+
+    // ── #923: Library scan progress indicator ────────────────────────────────
+    // Call setScanning(true) before scanPresetDirectoryAsync() launches; call
+    // setScanning(false) in the completion callback.  While scanning:
+    //   - The listBox is hidden and a spinner overlay takes its place.
+    //   - Mood/sort/search controls are disabled.
+    //   - A "Scanning 19,574 presets…" status label is shown.
+    //   - A lightweight timer rotates the spinner arc at ~20fps.
+    void setScanning(bool scanning)
+    {
+        isScanning_ = scanning;
+
+        // Disable interactive controls while the library is not yet ready.
+        searchBox.setEnabled(!scanning);
+        sortBox.setEnabled(!scanning);
+        similarBtn.setEnabled(!scanning);
+        for (auto* btn : moodButtons)
+            btn->setEnabled(!scanning);
+        for (auto* btn : {&viewAllBtn, &viewFavoritesBtn, &viewRecentBtn})
+            btn->setEnabled(!scanning);
+
+        if (scanning)
+        {
+            listBox.setVisible(false);
+            statusLabel.setText("Scanning presets\xe2\x80\xa6", juce::dontSendNotification);
+            spinnerAngle_ = 0.0f;
+            startTimerHz(20); // drives spinner animation
+        }
+        else
+        {
+            listBox.setVisible(true);
+            stopTimer();
+            applyFilters(); // rebuild list from the now-ready library
+        }
+
+        repaint();
+    }
 
 private:
     PresetManager& presetManager;
@@ -597,6 +686,13 @@ private:
     // Results travel through move-captured lambda locals; no shared buffer needed.
     std::atomic<uint32_t> filterGeneration_{ 0 };
     std::atomic<bool>     filterPending_{ false };
+
+    // #923: Library scan progress state.
+    // isScanning_ is set via setScanning() by the editor when the async preset
+    // directory scan is in progress.  spinnerAngle_ is advanced by timerCallback()
+    // and used in paint() to draw a rotating arc indicator.
+    bool  isScanning_    = false;
+    float spinnerAngle_  = 0.0f;
 
     //==========================================================================
     // Filtering — async implementation (#753)

@@ -88,6 +88,25 @@ public:
           performancePanel(proc), macros(proc.getAPVTS()), masterFXStrip(proc.getAPVTS()), presetBrowser(proc),
           ghostTile(proc, 4) // Ghost Slot — 5th tile, slot index 4
     {
+        // #893: Constructor extracted into named helpers to reduce monolithic body.
+        initTheme();
+        initLegacyComponents(proc);
+        initHeaderButtons(proc);
+        initPlaySurfaceAndPresets(proc);
+        initSidebarAndWiring(proc);
+        initOceanView(proc);
+        startTimerHz(1); // Reduced from 5Hz — idle polling only as a fallback
+    }
+
+    //==========================================================================
+    // #893 — Constructor helpers
+    // Each helper encapsulates one logical initialisation phase of XOceanusEditor.
+    // Called in order from the constructor above.
+    //==========================================================================
+
+    /** Phase 1: LAF construction and early dark-mode preference restore. */
+    void initTheme()
+    {
         // Dark mode is primary; SettingsPanel restores user's saved preference.
         laf = std::make_unique<GalleryLookAndFeel>();
         setLookAndFeel(laf.get());
@@ -106,7 +125,12 @@ public:
             // unregisterInstance() is called in the destructor.
             GalleryColors::setInstanceDarkMode(this, savedDark);
         }
+    }
 
+    /** Phase 2: Legacy Gallery components — tiles, overview, coupling arcs.
+        These remain in the component tree but are hidden when OceanView is active. */
+    void initLegacyComponents(XOceanusProcessor& proc)
+    {
         // Primary tiles (slots 0-3)
         for (int i = 0; i < kNumPrimarySlots; ++i)
         {
@@ -140,7 +164,12 @@ public:
         chordPanel.setAlpha(0.0f);
         performancePanel.setVisible(false);
         performancePanel.setAlpha(0.0f);
+    }
 
+    /** Phase 3: Legacy header buttons (ENGINES, CM, P, CI, KEYS, DK, lock, nav, gear, XPN).
+        Hidden when OceanView is active, but kept in the tree for keyboard-shortcut parity. */
+    void initHeaderButtons(XOceanusProcessor& proc)
+    {
         // "ENGINES" button in header — engine selection shortcut
         addAndMakeVisible(enginesBtn);
         enginesBtn.setButtonText(juce::String("ENGINES ") + juce::String(juce::CharPointer_UTF8("\xe2\x96\xbe")));
@@ -385,7 +414,12 @@ public:
                                                                                   &processor.getCouplingMatrix()),
                                                    exportBtn.getScreenBounds(), getTopLevelComponent());
         };
+    }
 
+    /** Phase 4: Embedded PlaySurface wiring and async preset library scan (#712).
+        Also handles first-launch and empty-library fallback paths (#899). */
+    void initPlaySurfaceAndPresets(XOceanusProcessor& proc)
+    {
         // Issue #712 — Scan factory preset directory on a background thread so
         // the message thread is never blocked by disk I/O.
         // `setScanning(true)` shows "Loading presets…" immediately; the async
@@ -396,6 +430,8 @@ public:
         if (presetDir.isDirectory())
         {
             presetBrowser.setScanning(true);
+            // #923: Also start the spinner in the sidebar's full PresetBrowser.
+            sidebar.setPresetBrowserScanning(true);
             // SafePointer guards against the editor being destroyed before the
             // background scan completes (e.g., plugin window closed quickly).
             juce::Component::SafePointer<XOceanusEditor> safeThis(this);
@@ -406,6 +442,8 @@ public:
                     if (safeThis == nullptr)
                         return;
                     safeThis->presetBrowser.setScanning(false); // clears loading state + refreshes strip
+                    // #923: Stop the spinner and rebuild the sidebar's full PresetBrowser.
+                    safeThis->sidebar.setPresetBrowserScanning(false);
                     // Fix S2: also refresh the sidebar's PresetBrowser panel so it re-reads the
                     // library if it was constructed before the async scan completed (shows 0 presets
                     // forever without this call).
@@ -467,9 +505,23 @@ public:
             }
             presetBrowser.updateDisplay();
         }
+    }
 
+    /** Phase 5: Sidebar, StatusBar, MIDI-Learn, DepthZoneDial, ABCompare, and
+        engine-change callback wiring.  setSize() is deferred to Phase 6 so the
+        sidebar has valid bounds when PresetManager is attached. */
+    void initSidebarAndWiring(XOceanusProcessor& proc)
+    {
         // ── Column C Sidebar ──────────────────────────────────────────────────
         addAndMakeVisible(sidebar);
+
+        // #913: Wire the double-click expand callback so the collapsed 48pt icon
+        // strip can be restored by the user without hunting for a resize handle.
+        sidebar.onRequestExpand = [this]
+        {
+            layout.columnCCollapsed = false;
+            resized();
+        };
 
         // ── Status Bar ────────────────────────────────────────────────────────
         addAndMakeVisible(statusBar);
@@ -498,6 +550,27 @@ public:
         addAndMakeVisible(headerHex_);
         A11y::setup(headerHex_, "Sonic DNA",
                     "Hexagonal visualization of the active preset's 6D Sonic DNA fingerprint");
+
+        // ── #911: Signal flow breadcrumb accessibility nodes ──────────────────
+        // Six transparent child components that expose WCAG-conformant aria-labels
+        // for each section of the signal flow breadcrumb strip (SRC1→OUT).
+        // setInterceptsMouseClicks(false) on each so the editor's own mouse handlers
+        // still receive events.
+        {
+            static const struct { const char* label; const char* desc; } kSfLabels[] = {
+                { "Source 1",  "First oscillator / sample source in the signal chain. Click to scroll to SRC1 parameters." },
+                { "Source 2",  "Second oscillator / source layer. Click to scroll to SRC2 parameters." },
+                { "Filter",    "Filter stage — cutoff, resonance, envelope amount. Click to scroll to FILTER parameters." },
+                { "Shaper",    "Waveshaper / modulation stage. Click to scroll to SHAPER parameters." },
+                { "FX",        "Effects chain — reverb, delay, chorus. Click to scroll to FX parameters." },
+                { "Output",    "Master output — level, pan, send amount. Click to scroll to OUT parameters." },
+            };
+            for (int i = 0; i < 6; ++i)
+            {
+                A11y::setup(sfAccessNodes[i], kSfLabels[i].label, kSfLabels[i].desc);
+                addAndMakeVisible(sfAccessNodes[i]);
+            }
+        }
 
         // ── MIDI Learn wiring ─────────────────────────────────────────────────
         // Connect the processor's MIDILearnManager to every parameter knob in the UI.
@@ -565,7 +638,12 @@ public:
                     checkCollectionUnlock();
                 });
         };
+    }
 
+    /** Phase 6: OceanView construction, setSize(), state restore, resize limits,
+        and toast overlay (must be added last so it paints on top). */
+    void initOceanView(XOceanusProcessor& proc)
+    {
         // Base plugin height is 700pt (PlaySurface collapsed).
         // V2: On first launch the PlaySurface starts open, so add kPlaySurfaceH immediately.
         const int initialHeight = playSurface_.isVisible()
@@ -770,8 +848,6 @@ public:
         addAndMakeVisible(toastOverlay_);
         toastOverlay_.setAlwaysOnTop(true);
         ToastOverlay::setInstance(&toastOverlay_);
-
-        startTimerHz(1); // Reduced from 5Hz — idle polling only as a fallback
     }
 
     ~XOceanusEditor() override
@@ -1084,9 +1160,14 @@ public:
         // (satisfies Foreseer StaticHeaderComponent constraint).
         header.removeFromLeft(150); // logo rings + "XOceanus" / "XO_OX Designs" text
         {
-            auto dialSlice = header.removeFromLeft(56); // 56px slice, dial is 48×48 centered
+            auto dialSlice = header.removeFromLeft(56); // 56px slice, dial is 48 wide
             depthDial.setVisible(true);
-            depthDial.setBounds(dialSlice.withSizeKeepingCentre(48, 48));
+            // #914: Dial component is now 48×58pt (48pt dial + 10pt slot label).
+            // Anchor top of the component to the header top; the 10pt label
+            // extends below the header row into the body margin.
+            depthDial.setBounds(dialSlice.getX() + (dialSlice.getWidth() - 48) / 2,
+                                dialSlice.getY(),
+                                48, 58);
         }
 
         // Preset nav arrows — just after ENGINES button
@@ -1199,6 +1280,16 @@ public:
                 float secW = font.getStringWidthFloat(kSFSections[i]);
                 sfHitRects[static_cast<size_t>(i)] =
                     juce::Rectangle<float>(startX, cy - 8.0f, secW + 6.0f, 16.0f).expanded(4.0f, 4.0f);
+
+                // #911: Align accessibility node bounds to the hit rect so
+                // screen readers can find each section in the JUCE a11y tree.
+                // Minimum 44pt height so they meet WCAG 2.5.5 even if the
+                // visual strip is only 28pt tall.
+                auto a11yRect = sfHitRects[static_cast<size_t>(i)].toNearestInt();
+                if (a11yRect.getHeight() < 44)
+                    a11yRect = a11yRect.withSizeKeepingCentre(a11yRect.getWidth(), 44);
+                sfAccessNodes[static_cast<size_t>(i)].setBounds(a11yRect);
+
                 startX += secW;
                 if (i < kNumSFSections - 1)
                     startX += arrowW;
@@ -1985,6 +2076,26 @@ private:
                               dna.density, dna.space, dna.aggression);
         }
 
+        // ── #909: Live parameter feedback — voice count + macro values ─────────
+        // Push total voice count and current macro knob positions to NexusDisplay
+        // so the Overview (Orbital) state always shows live activity readouts.
+        {
+            int totalVoices = 0;
+            for (int i = 0; i < XOceanusProcessor::MaxSlots; ++i)
+                if (auto* eng = processor.getEngine(i))
+                    totalVoices += eng->getActiveVoiceCount();
+
+            // Read macro parameter values from APVTS — normalised [0,1].
+            std::array<float, 4> macroVals{};
+            static const char* kMacroIds[] = {"macro1", "macro2", "macro3", "macro4"};
+            for (int m = 0; m < 4; ++m)
+            {
+                if (auto* param = processor.getAPVTS().getParameter(kMacroIds[m]))
+                    macroVals[static_cast<size_t>(m)] = param->getValue();
+            }
+            oceanView_.setLiveReadouts(totalVoices, macroVals);
+        }
+
         // Coupling routes — convert MegaCouplingMatrix routes to OceanView CouplingRoute structs.
         {
             const auto& matrixRoutes = processor.getCouplingMatrix().getRoutes();
@@ -2144,6 +2255,17 @@ private:
     int signalFlowHoveredSection = -1;                // -1 = none hovered
     std::array<juce::Rectangle<float>, 6> sfHitRects; // populated in resized(), read in paint() and mouse handlers
     juce::Rectangle<int> signalFlowStripBounds;       // set in resized()
+
+    // #911: Accessibility overlay for the signal flow breadcrumb.
+    // Six transparent child components placed over the sfHitRects so screen readers
+    // can announce each section by name.  They are invisible to the painter but live
+    // in the JUCE accessibility tree.  Each component has setInterceptsMouseClicks(false)
+    // so the parent editor's mouseDown/mouseMove handlers still receive events.
+    struct SFBreadcrumbSection : public juce::Component
+    {
+        SFBreadcrumbSection() { setInterceptsMouseClicks(false, false); }
+    };
+    std::array<SFBreadcrumbSection, 6> sfAccessNodes;
 
     // Dark Cockpit B041: current UI opacity derived from note activity.
     // 0.15 (ghost, silent) → 1.0 (fully lit, maximum activity).

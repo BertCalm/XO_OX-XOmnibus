@@ -200,6 +200,36 @@ public:
             }
         }
 
+        // ── Expression affordance overlay (#888) ─────────────────────────────
+        // Vertical velocity gradient: top = loud (bright accent), bottom = soft.
+        // Shows players that Y position controls velocity (Seaboard-style).
+        {
+            juce::ColourGradient velGrad(accent_.withAlpha(0.10f), bounds.getX(), bounds.getY(),
+                                         accent_.withAlpha(0.00f), bounds.getX(), bounds.getBottom(), false);
+            g.setGradientFill(velGrad);
+            g.fillRect(bounds);
+        }
+
+        // Velocity affordance label — top-left, very dim
+        {
+            g.setColour(accent_.withAlpha(0.25f));
+            g.setFont(rangeLabelFont_);
+            g.drawText(juce::CharPointer_UTF8("\xe2\x86\x91 vel"),
+                       juce::Rectangle<float>(4.0f, 2.0f, 32.0f, 12.0f),
+                       juce::Justification::centredLeft, false);
+        }
+
+        // Pitch-bend affordance: subtle horizontal arrow at the left edge showing
+        // that left/right drag after touch-down bends pitch.
+        if (activeKeyCount_ == 0)
+        {
+            g.setColour(accent_.withAlpha(0.18f));
+            g.setFont(rangeLabelFont_);
+            g.drawText(juce::CharPointer_UTF8("\xe2\x86\x94 bend"),
+                       juce::Rectangle<float>(4.0f, bounds.getHeight() - 14.0f, 40.0f, 12.0f),
+                       juce::Justification::centredLeft, false);
+        }
+
         // Range label (small, bottom-right)
         auto labelBounds = getLocalBounds().reduced(4);
         auto labelStrip = labelBounds.removeFromBottom(16);

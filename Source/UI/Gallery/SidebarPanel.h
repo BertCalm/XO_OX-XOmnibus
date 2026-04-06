@@ -62,6 +62,11 @@ public:
     //==========================================================================
     SidebarPanel()
     {
+        // #913: Panel-level accessibility label for collapsed state.
+        setTitle("Sidebar Panel");
+        setDescription("Tab panel with Preset, Couple, FX, Perform, Export and Settings sections. "
+                       "Double-click the icon rail to expand.");
+
         // ── Tab buttons ───────────────────────────────────────────────────────
         for (int i = 0; i < NumTabs; ++i)
         {
@@ -204,6 +209,17 @@ public:
             presetBrowser->refresh();
     }
 
+    // #923: Forward scanning state into the sidebar's full PresetBrowser.
+    // Call setPresetBrowserScanning(true) before the async library scan starts
+    // and setPresetBrowserScanning(false) in the completion callback.  If the
+    // PresetBrowser hasn't been constructed yet (setPresetManager() not called)
+    // this is a no-op — the browser will show fresh results on first open.
+    void setPresetBrowserScanning(bool scanning)
+    {
+        if (presetBrowser != nullptr)
+            presetBrowser->setScanning(scanning);
+    }
+
     //==========================================================================
     // Engine accent color — used for active tab underline.
     // Defaults to Reef Jade teal (mockup --accent); call setEngineAccent() when the loaded engine changes.
@@ -214,6 +230,11 @@ public:
         engineAccent = c;
         repaint();
     }
+
+    // #913: Callback fired when the user double-clicks the collapsed icon strip
+    // to request expansion. The editor must respond by setting
+    // layout.columnCCollapsed = false and calling resized().
+    std::function<void()> onRequestExpand;
 
     //==========================================================================
     Tab getActiveTab() const noexcept { return activeTab; }
@@ -331,7 +352,8 @@ public:
 
         if (getWidth() <= 48)
         {
-            // Draw vertical icon strip: single letter per tab
+            // #913: Collapsed icon-rail mode: draw single-letter icon per tab
+            // + a tooltip hint at the top indicating double-click to expand.
             auto tabH = getHeight() / NumTabs;
             for (int i = 0; i < NumTabs; ++i)
             {
@@ -351,6 +373,11 @@ public:
                     g.fillRect(0, y, 2, tabH);
                 }
             }
+            // #913: "double-click to expand" affordance — subtle chevron at top
+            g.setColour(juce::Colour(GalleryColors::t2()).withAlpha(0.55f));
+            g.setFont(GalleryFonts::display(9.0f));
+            g.drawText(juce::String::fromUTF8("\xc2\xbb"), // » right double-angle
+                       0, 2, getWidth(), 12, juce::Justification::centred, false);
             return;
         }
 
@@ -463,6 +490,16 @@ public:
             settingsPanel->setBounds(inner);
 
         presetPlaceholder.setBounds(inner);
+    }
+
+    //==========================================================================
+    // #913: Double-click on the collapsed icon strip to expand Column C.
+    // When getWidth() <= 48 the sidebar is in icon-rail mode; a double-click
+    // fires onRequestExpand so the editor can restore the full panel width.
+    void mouseDoubleClick(const juce::MouseEvent& /*e*/) override
+    {
+        if (getWidth() <= 48 && onRequestExpand)
+            onRequestExpand();
     }
 
     //==========================================================================
