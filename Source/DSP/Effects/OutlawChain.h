@@ -380,8 +380,8 @@ private:
                 // LP darkening on feedback
                 darkFilter.setMode(CytomicSVF::Mode::LowPass);
                 darkFilter.setCoefficients(3000.0f - wear * 1500.0f, 0.5f, srF);
-                fbL = darkFilter.processSample(fbL);
-                fbR = flushDenormal(fbR);
+                fbL = flushDenormal(darkFilter.processSample(fbL));
+                fbR = flushDenormal(darkFilter.processSample(fbR));
 
                 delayL.write(flushDenormal(inL[i] + fbL));
                 delayR.write(flushDenormal(inR[i] + fbR));
