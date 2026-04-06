@@ -244,8 +244,13 @@ private:
             {
                 float env = envFollowers[t].process(tapIn[t] * sensitivity * 4.0f);
                 float cutoff = baseCutoff + env * (maxCutoff - baseCutoff);
+                // Route through per-channel smoother to prevent zipper noise on
+                // fast envelope-driven cutoff changes. L channel: taps 0+1,
+                // R channel: tap 2 (mirrors the L = tap0+tap1, R = tap1+tap2 mix).
+                float smoothedCutoff = (t < 2) ? freqSmootherL.process(cutoff)
+                                               : freqSmootherR.process(cutoff);
                 filters[t].setMode(CytomicSVF::Mode::LowPass);
-                filters[t].setCoefficients(cutoff, res, srF);
+                filters[t].setCoefficients(smoothedCutoff, res, srF);
             }
 
             // L = tap 0 + tap 1 (8th + dotted-8th)
