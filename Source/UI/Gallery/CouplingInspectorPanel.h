@@ -118,7 +118,7 @@ public:
                                     "AudioToWavetable: source audio \xe2\x86\x92 target wavetable position | "
                                     "AudioToBuffer: source audio fills target grain/buffer pool | "
                                     "KnotTopology: bidirectional amplitude-to-filter coupling with linking-number depth scaling (Orbweave) | "
-                                    "TriangularCoupling: Sternberg love-state transfer from source to destination; falls back to amplitude-to-filter modulation for non-Oxytocin engines");
+                                    "TriangularCoupling: transfers Sternberg Triangular Theory love-state (Intimacy/Passion/Commitment) from source engine to destination engine — this is a 2-engine route, NOT a 3-engine loop; 'Triangular' refers to the 3-component I/P/C model, not topology; falls back to amplitude-to-filter for non-Oxytocin engines");
             card.typeBox.setColour(juce::ComboBox::backgroundColourId, GalleryColors::get(GalleryColors::raised()));
             card.typeBox.setColour(juce::ComboBox::outlineColourId, GalleryColors::border().withAlpha(0.18f));
             card.typeBox.setColour(juce::ComboBox::textColourId, GalleryColors::get(GalleryColors::t1()));
