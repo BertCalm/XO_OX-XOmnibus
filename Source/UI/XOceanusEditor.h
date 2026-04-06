@@ -50,6 +50,7 @@
 #include "Gallery/DnaHexagon.h"
 #include "RegisterManager.h"
 #include "ToastOverlay.h"
+#include "Ocean/OceanView.h"
 
 namespace xoceanus
 {
@@ -646,6 +647,122 @@ public:
         setDescription("Multi-engine synthesizer with cross-engine coupling. "
                        "Keys 1-4 select engine slots, Escape returns to overview.");
 
+        // ── Ocean View (primary layout) ──────────────────────────────────────
+        // Added BEFORE toastOverlay_ so the overlay stays on top.
+        addAndMakeVisible(oceanView_);
+        oceanView_.initMacros(proc.getAPVTS());
+        oceanView_.initDetailPanel(proc);
+        oceanView_.initSidebar();
+        oceanView_.initStatusBar();
+
+        // Wire OceanView callbacks
+        oceanView_.onEngineSelected = [this](int slot) { if (slot >= 0) selectSlot(slot); };
+        oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); /* detail panel loaded by OceanView */ };
+        oceanView_.onPresetSelected = [this](int idx)
+        {
+            // Load preset by index from the library snapshot.
+            auto& pm = processor.getPresetManager();
+            auto lib = pm.getLibrary();
+            if (lib && idx >= 0 && idx < static_cast<int>(lib->size()))
+            {
+                const auto& preset = (*lib)[static_cast<size_t>(idx)];
+                processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
+                try
+                {
+                    processor.applyPreset(preset);
+                    pm.setCurrentPreset(preset);
+                }
+                catch (const std::exception& e)
+                {
+                    ToastOverlay::show("Failed to load preset: " + juce::String(e.what()),
+                                       Toast::Level::Warn);
+                }
+            }
+        };
+
+        // Wire MIDI + PlaySurface inside OceanView
+        {
+            auto& ps = oceanView_.getPlaySurface();
+            ps.setMidiCollector(&processor.getMidiCollector(), 1);
+            ps.setProcessor(&processor);
+            if (laf)
+                ps.setLookAndFeel(laf.get());
+        }
+
+        // #897: On first launch (no persisted state) show the OceanView PlaySurface
+        // so users see a playable interface immediately.  On subsequent launches,
+        // restore the persisted state ("playSurfaceVisible" key in XOceanus settings).
+        // The same key is used by the legacy standalone playSurface_ path so both
+        // paths share one persistent preference.
+        {
+            juce::PropertiesFile::Options psOpts;
+            psOpts.applicationName    = "XOceanus";
+            psOpts.filenameSuffix     = "settings";
+            psOpts.osxLibrarySubFolder = "Application Support";
+            juce::PropertiesFile psSettings(psOpts);
+            const bool hasSavedState  = psSettings.containsKey("playSurfaceVisible");
+            const bool shouldShow     = hasSavedState
+                                            ? psSettings.getBoolValue("playSurfaceVisible", false)
+                                            : true; // first launch: default open
+            if (shouldShow)
+                oceanView_.showPlaySurface();
+        }
+
+        // Wire OceanView PlaySurface visibility-change callback so state is
+        // persisted whenever the user toggles it via the KEYS button or K key.
+        oceanView_.onPlaySurfaceVisibilityChanged = [](bool visible)
+        {
+            persistPlaySurfaceVisible(visible);
+        };
+
+        // Wire engine slots into OceanView (initial state)
+        for (int i = 0; i < 4; ++i)
+        {
+            if (auto* eng = processor.getEngine(i))
+            {
+                auto id     = eng->getEngineId();
+                auto accent = eng->getAccentColour();
+                oceanView_.setEngine(i, id, accent, EngineOrbit::DepthZone::Sunlit);
+            }
+        }
+
+        // Hide old Gallery layout components (replaced by OceanView)
+        for (int i = 0; i < kNumPrimarySlots; ++i)
+            tiles[i]->setVisible(false);
+        ghostTile.setVisible(false);
+        fieldMap.setVisible(false);
+        overview.setVisible(false);
+        detail.setVisible(false);
+        chordPanel.setVisible(false);
+        performancePanel.setVisible(false);
+        macros.setVisible(false);
+        masterFXStrip.setVisible(false);
+        presetBrowser.setVisible(false);
+        couplingArcs.setVisible(false);
+        couplingHitTester.setVisible(false);
+        sidebar.setVisible(false);
+        statusBar.setVisible(false);
+        depthDial.setVisible(false);
+        abCompare.setVisible(false);
+        cpuMeter.setVisible(false);
+        midiIndicator.setVisible(false);
+        miniCouplingGraph.setVisible(false);
+        headerHex_.setVisible(false);
+        // Hide header buttons
+        enginesBtn.setVisible(false);
+        cmToggleBtn.setVisible(false);
+        perfToggleBtn.setVisible(false);
+        cinematicToggleBtn.setVisible(false);
+        themeToggleBtn.setVisible(false);
+        registerLockBtn.setVisible(false);
+        surfaceToggleBtn.setVisible(false);
+        exportBtn.setVisible(false);
+        settingsBtn.setVisible(false);
+        presetPrevBtn.setVisible(false);
+        presetNextBtn.setVisible(false);
+        // Hide the old standalone PlaySurface — OceanView owns its own PlaySurfaceOverlay.
+        playSurface_.setVisible(false);
+
         // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.
         // setInterceptsMouseClicks(false, false) is set inside ToastOverlay's
@@ -677,6 +794,11 @@ public:
 
     bool keyPressed(const juce::KeyPress& key) override
     {
+        // Delegate to OceanView first — it handles P (browser), K (PlaySurface),
+        // Escape (exit overlay/state), and 1-5 (zoom-in to slot).
+        if (oceanView_.keyPressed(key))
+            return true;
+
         // Keys 1-4 jump directly to primary engine slots
         for (int i = 0; i < kNumPrimarySlots; ++i)
         {
@@ -847,96 +969,10 @@ public:
         // plugin window could render in the wrong theme.
         GalleryColors::setActiveDarkModeContext(this);
 
-        using namespace GalleryColors;
+        // OceanView handles all rendering as a child component.
+        // paint() only draws the MIDI Learn overlay badge when active.
 
-        // ── Body background — deepest layer (body bg #080809) ────────────────
-        // Note: Dark::bg is #0E0E10 (shell); body is one level darker.
-        g.fillAll(juce::Colour(0xFF080809)); // body bg — below shell layer
-
-        // ── Plugin shell — rounded rect with depth shadow ────────────────────
-        // Leave 4px on each edge for shadow bleed. Shadow layers painted BEFORE shell.
-        auto shellBounds = getLocalBounds().toFloat().reduced(4.0f);
-
-        // Shadow layer 1 — widest, lowest alpha
-        g.setColour(juce::Colour(0x66000000)); // ~40% black
-        g.fillRoundedRectangle(shellBounds.expanded(3.0f), 14.0f);
-        // Shadow layer 2 — tighter
-        g.setColour(juce::Colour(0x33000000)); // ~20% black
-        g.fillRoundedRectangle(shellBounds.expanded(1.5f), 13.0f);
-
-        // Shell fill — Dark::bg (#0E0E10)
-        g.setColour(juce::Colour(Dark::bg));
-        g.fillRoundedRectangle(shellBounds, 12.0f);
-
-        // Shell border — 1px subtle highlight
-        g.setColour(juce::Colour(0x0EFFFFFF));
-        g.drawRoundedRectangle(shellBounds, 12.0f, 1.0f);
-
-        const int headerH = ColumnLayoutManager::kHeaderH;
-
-        // ── Header area — surface layer, 52px nominal height ─────────────────
-        auto header = getLocalBounds().removeFromTop(headerH).toFloat();
-
-        // Surface fill — GalleryColors::surface() = #1A1A1C in dark mode
-        g.setColour(get(surface()));
-        g.fillRect(header);
-
-        // Bottom border — border() = rgba(255,255,255,0.07) in dark mode
-        g.setColour(border());
-        g.fillRect(header.getX(), header.getBottom() - 1.0f, header.getWidth(), 1.0f);
-
-        // ── XO_OX Dual-Circle Logo Mark (30×30px) ───────────────────────────
-        // Two stroke rings with filled center dots; overlap ~8px horizontally.
-        // Left circle: Reef Jade (#1E8B7E), Right circle: XO Gold (#E9C46A)
-        {
-            const float circR = 7.0f;              // ring radius
-            const float dotR = 2.5f;               // center dot radius
-            const float strokeW = 1.5f;            // ring stroke width
-            const float cx1 = 14.0f + circR;       // center x of left circle
-            const float cx2 = cx1 + 8.0f;          // center x of right circle (offset 8px)
-            const float cy = (float)(headerH / 2); // vertically centred in header
-
-            // Left ring — Reef Jade stroke
-            g.setColour(juce::Colour(0xFF1E8B7E).withAlpha(0.85f));
-            g.drawEllipse(cx1 - circR, cy - circR, circR * 2.0f, circR * 2.0f, strokeW);
-            // Left center dot
-            g.fillEllipse(cx1 - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
-
-            // Right ring — XO Gold stroke
-            g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.85f));
-            g.drawEllipse(cx2 - circR, cy - circR, circR * 2.0f, circR * 2.0f, strokeW);
-            // Right center dot
-            g.fillEllipse(cx2 - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
-        }
-
-        // Engine name — T1 text, proportional to header height and component width.
-        // Logo mark ends at ~cx2 + circR = 14 + 7 + 8 + 7 = 36px; start text at 48px.
-        // Text area extends to half the header width to avoid overlap with controls.
-        {
-            const int textX = 48;
-            const int textMaxW = getWidth() / 2 - textX;
-            const int nameH = juce::roundToInt(headerH * 0.38f);
-            const int nameY = juce::roundToInt(headerH * 0.12f);
-            const int subH = juce::roundToInt(headerH * 0.27f);
-            const int subY = juce::roundToInt(headerH * 0.52f);
-
-            g.setColour(get(t1()));
-            g.setFont(GalleryFonts::display(12.0f));
-            g.drawText("XOceanus", juce::Rectangle<int>(textX, nameY, textMaxW, nameH),
-                       juce::Justification::centredLeft);
-
-            // Subtitle — "XO_OX Designs" at 10px, T3 color
-            g.setColour(get(t3()));
-            g.setFont(GalleryFonts::body(10.0f));
-            g.drawText("XO_OX Designs", juce::Rectangle<int>(textX, subY, textMaxW, subH),
-                       juce::Justification::centredLeft);
-        }
-
-        // NOTE: Coupling stats / engine-count text has been moved out of paint().
-        // It will be surfaced via StatusBar::setStatusText() in a future timerCallback() update
-        // (Step 12). For now the header is reserved for the macro knobs component.
-
-        // ── MIDI Learn status badge — appears in header when listening ──────
+        // ── MIDI Learn status badge — appears when listening ──────────────────
         {
             const auto& mlm = processor.getMIDILearnManager();
             if (mlm.isLearning())
@@ -945,154 +981,83 @@ public:
                 double t = juce::Time::getMillisecondCounterHiRes() * 0.002;
                 float pulse = 0.65f + 0.35f * (float)std::sin(t * juce::MathConstants<double>::twoPi);
 
+                const int headerH = ColumnLayoutManager::kHeaderH;
                 juce::String badge = "MIDI LEARN: move controller to map";
                 auto badgeRect = juce::Rectangle<int>(200, 4, getWidth() - 400, headerH - 8);
 
                 g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.18f * pulse));
                 g.fillRoundedRectangle(badgeRect.toFloat(), 4.0f);
                 g.setColour(juce::Colour(0xFFE9C46A).withAlpha(pulse));
-                g.setFont(GalleryFonts::heading(9.0f));
+                g.setFont(GalleryFonts::heading(10.0f)); // (#885: 9pt→10pt legibility floor)
                 g.drawText(badge, badgeRect, juce::Justification::centred);
             }
         }
 
-        // Column A / Column B separator line — border() = rgba(255,255,255,0.07)
-        const int sepX = layout.getColumnAWidth();
-        if (sepX > 0)
-        {
-            g.setColour(border());
-            g.drawVerticalLine(sepX, (float)headerH, (float)getHeight());
-        }
-
-        // ── P0-3: Preset name text — centered between prev/next arrow buttons ──
-        // Draw centered preset name between presetPrevBtn and presetNextBtn.
-        if (presetPrevBtn.isVisible() && presetNextBtn.isVisible())
-        {
-            int nameX = presetPrevBtn.getRight();
-            int nameW = presetNextBtn.getX() - nameX;
-            int nameY = presetPrevBtn.getY();
-            int nameH = presetPrevBtn.getHeight();
-
-            juce::String presetName = processor.getPresetManager().getCurrentPreset().name;
-            if (presetName.isEmpty())
-                presetName = "No Preset";
-
-            g.setColour(get(t1()));
-            g.setFont(GalleryFonts::body(12.0f));
-            // Truncate with ellipsis if too long
-            juce::String truncated = presetName;
-            {
-                auto font = GalleryFonts::body(12.0f);
-                if (font.getStringWidth(presetName) > nameW - 8)
-                {
-                    while (truncated.length() > 1 && font.getStringWidth(truncated + "...") > nameW - 8)
-                        truncated = truncated.dropLastCharacters(1);
-                    truncated += "...";
-                }
-            }
-            g.drawText(truncated, nameX, nameY, nameW, nameH, juce::Justification::centred, false);
-        }
-
-        // ── P0-12: Signal flow breadcrumb strip in Column B ───────────────────
-        {
-            auto colBPanelFull = layout.getColumnBPanel();
-            // Strip sits at the very top of Column B panel (below header edge)
-            auto stripBounds = colBPanelFull.removeFromTop(kSignalFlowStripH).toFloat();
-
-            // Subtle gradient background: rgba(255,255,255,0.015) → transparent
-            {
-                juce::ColourGradient grad(juce::Colour(0xFFFFFFFF).withAlpha(0.015f), stripBounds.getX(),
-                                          stripBounds.getY(), juce::Colour(0x00FFFFFF), stripBounds.getX(),
-                                          stripBounds.getBottom(), false);
-                g.setGradientFill(grad);
-                g.fillRect(stripBounds);
-            }
-
-            // Section labels: SRC1 → SRC2 → FILTER → SHAPER → FX → OUT
-            static const juce::String kSections[] = {"SRC1", "SRC2", "FILTER", "SHAPER", "FX", "OUT"};
-            static const int kNumSections = 6;
-            const int activeSection = signalFlowActiveSection;
-
-            const float hPad = 12.0f;
-            const float usableW = stripBounds.getWidth() - hPad * 2.0f;
-            const float cy = stripBounds.getCentreY();
-
-            // Determine engine accent color for the active label
-            juce::Colour activeAccent = get(t1());
-            {
-                if (selectedSlot >= 0)
-                {
-                    if (auto* eng = processor.getEngine(selectedSlot))
-                        activeAccent = eng->getAccentColour();
-                }
-            }
-
-            // Count total text + arrow widths to distribute evenly
-            g.setFont(GalleryFonts::value(8.5f));
-            float totalTextW = 0.0f;
-            for (int i = 0; i < kNumSections; ++i)
-                totalTextW += g.getCurrentFont().getStringWidthFloat(kSections[i]);
-            const float arrowW = g.getCurrentFont().getStringWidthFloat(" \xe2\x86\x92 "); // " → "
-            float totalW = totalTextW + arrowW * (kNumSections - 1);
-            float startX = stripBounds.getX() + hPad + (usableW - totalW) * 0.5f;
-
-            for (int i = 0; i < kNumSections; ++i)
-            {
-                bool active = (i == activeSection);
-                bool hovered = (!active && i == signalFlowHoveredSection);
-                g.setFont(GalleryFonts::value(8.5f));
-
-                float secW = g.getCurrentFont().getStringWidthFloat(kSections[i]);
-                juce::Rectangle<float> secRect(startX, cy - 8.0f, secW + 6.0f, 16.0f);
-
-                // Pill background for active label (4% white)
-                if (active)
-                {
-                    g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.04f));
-                    g.fillRoundedRectangle(secRect.reduced(-3.0f, -3.0f), 3.0f);
-                }
-
-                // Text color: active=accent, hover=T2, inactive=T3
-                if (active)
-                    g.setColour(activeAccent);
-                else if (hovered)
-                    g.setColour(get(t2()));
-                else
-                    g.setColour(get(t3()));
-
-                g.drawText(kSections[i], secRect, juce::Justification::centredLeft, false);
-
-                startX += secW;
-
-                // Draw arrow separator (not after last)
-                if (i < kNumSections - 1)
-                {
-                    g.setColour(get(t3()));
-                    juce::String arrow(juce::CharPointer_UTF8(" \xe2\x86\x92 "));
-                    float aW = g.getCurrentFont().getStringWidthFloat(arrow);
-                    g.drawText(arrow, juce::Rectangle<float>(startX, cy - 8.0f, aW + 2.0f, 16.0f),
-                               juce::Justification::centredLeft, false);
-                    startX += aW;
-                }
-            }
-        }
-
-        // Macro knobs row removed — EngineDetailPanel has real interactive MacroHeroStrip.
-
         // D4: Coupling register — XO Gold tint overlay at 10-15% alpha.
-        // Painted last so it sits above all other content (subtly warms the whole UI
-        // when the coupling inspector tab is active, fading in/out with 400ms transition).
+        // Painted last so it sits above OceanView content when coupling inspector is active.
         if (couplingTintAlpha_ > 0.002f)
         {
             // XO Gold: #E9C46A
             g.setColour(juce::Colour(0xFFE9C46A).withAlpha(couplingTintAlpha_));
             g.fillAll();
         }
+
+        // ── Legacy Gallery paint code (kept for reference, disabled) ──────────
+        if (false) // NOLINT
+        {
+            using namespace GalleryColors;
+
+            // ── Body background — deepest layer (body bg #080809) ────────────────
+            g.fillAll(juce::Colour(0xFF080809));
+
+            // ── Plugin shell — rounded rect with depth shadow ────────────────────
+            auto shellBounds = getLocalBounds().toFloat().reduced(4.0f);
+            g.setColour(juce::Colour(0x66000000));
+            g.fillRoundedRectangle(shellBounds.expanded(3.0f), 14.0f);
+            g.setColour(juce::Colour(0x33000000));
+            g.fillRoundedRectangle(shellBounds.expanded(1.5f), 13.0f);
+            g.setColour(juce::Colour(Dark::bg));
+            g.fillRoundedRectangle(shellBounds, 12.0f);
+            g.setColour(juce::Colour(0x0EFFFFFF));
+            g.drawRoundedRectangle(shellBounds, 12.0f, 1.0f);
+
+            const int headerH = ColumnLayoutManager::kHeaderH;
+            auto header = getLocalBounds().removeFromTop(headerH).toFloat();
+            g.setColour(get(surface()));
+            g.fillRect(header);
+            g.setColour(border());
+            g.fillRect(header.getX(), header.getBottom() - 1.0f, header.getWidth(), 1.0f);
+
+            // Logo mark
+            {
+                const float circR = 7.0f, dotR = 2.5f, strokeW = 1.5f;
+                const float cx1 = 14.0f + circR, cx2 = cx1 + 8.0f;
+                const float cy = (float)(headerH / 2);
+                g.setColour(juce::Colour(0xFF1E8B7E).withAlpha(0.85f));
+                g.drawEllipse(cx1 - circR, cy - circR, circR * 2.0f, circR * 2.0f, strokeW);
+                g.fillEllipse(cx1 - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
+                g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.85f));
+                g.drawEllipse(cx2 - circR, cy - circR, circR * 2.0f, circR * 2.0f, strokeW);
+                g.fillEllipse(cx2 - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
+            }
+
+            // Column separator
+            const int sepX = layout.getColumnAWidth();
+            if (sepX > 0)
+            {
+                g.setColour(border());
+                g.drawVerticalLine(sepX, (float)headerH, (float)getHeight());
+            }
+        }
     }
 
     void resized() override
     {
-        // ── Sync layout state ────────────────────────────────────────────────
+        // ── Ocean View takes full editor bounds ───────────────────────────────
+        auto fullBounds = getLocalBounds();
+        oceanView_.setBounds(fullBounds);
+
+        // ── Sync layout state (Gallery components hidden but state tracking kept) ────────────────────────────
         // spec §2.2: PlaySurface is an embedded 264pt bottom zone, not a popup.
         // When visible, ColumnLayoutManager reserves kPlaySurfaceH (264pt) for it.
         layout.playSurfaceVisible = playSurface_.isVisible();
@@ -1101,7 +1066,7 @@ public:
         layout.compute(getWidth(), getHeight());
 
         // ── Header (52px): Logo | DepthDial | < | > | DNA | A/B | CI | CM | P | DK | KEYS | EXPORT | gear
-        // Macros moved to top of Column B (56pt strip). CPU meter + MIDI dot moved to StatusBar area.
+        // Macros moved to top of Column B (60pt strip, #901: 48pt knobs). CPU meter + MIDI dot moved to StatusBar area.
         // KEYS button toggles the embedded 264pt PlaySurface zone (spec §2.2)
         auto header = layout.getHeader();
 
@@ -1199,9 +1164,9 @@ public:
         masterFXStrip.setBounds(masterFXBounds);
 
         // ── Macro strip — top of Column B (issue #906: macros moved out of header) ──
-        // 56pt strip accommodates 44px knobs (enlarged by MacroSection.h) + padding.
+        // 60pt strip accommodates 48px knobs (#901: 44→48pt) + padding.
         {
-            auto macroStrip = colBPanel.removeFromTop(56);
+            auto macroStrip = colBPanel.removeFromTop(60);
             macros.setBounds(macroStrip.reduced(4, 2));
         }
 
@@ -1992,6 +1957,52 @@ private:
         // running ShaperEngine destructors on the RT thread.  Drain on every
         // timer tick (worst case 1 second delay — well within acceptable range).
         ShaperRegistry::instance().drainDeferredDeletions();
+
+        // ── Ocean View state updates ──────────────────────────────────────────
+        // Engine presence — push live slot state into OceanView.
+        for (int i = 0; i < 4; ++i)
+        {
+            if (auto* eng = processor.getEngine(i))
+            {
+                auto id     = eng->getEngineId();
+                auto accent = eng->getAccentColour();
+                oceanView_.setEngine(i, id, accent, EngineOrbit::DepthZone::Sunlit);
+                oceanView_.setVoiceCount(i, eng->getActiveVoiceCount());
+            }
+            else
+            {
+                oceanView_.clearEngine(i);
+            }
+        }
+
+        // Preset info — update nexus when preset name changes.
+        {
+            const auto& pm = processor.getPresetManager();
+            oceanView_.setPresetName(pm.getCurrentPreset().name);
+            // DNA update — push 6D vector to OceanView nexus.
+            const auto& dna = pm.getCurrentPreset().dna;
+            oceanView_.setDNA(dna.brightness, dna.warmth, dna.movement,
+                              dna.density, dna.space, dna.aggression);
+        }
+
+        // Coupling routes — convert MegaCouplingMatrix routes to OceanView CouplingRoute structs.
+        {
+            const auto& matrixRoutes = processor.getCouplingMatrix().getRoutes();
+            std::vector<CouplingRoute> oceanRoutes;
+            oceanRoutes.reserve(matrixRoutes.size());
+            for (const auto& r : matrixRoutes)
+            {
+                if (!r.active)
+                    continue;
+                CouplingRoute cr;
+                cr.sourceSlot = r.sourceSlot;
+                cr.destSlot   = r.destSlot;
+                cr.type       = static_cast<int>(r.type);
+                cr.amount     = r.amount;
+                oceanRoutes.push_back(cr);
+            }
+            oceanView_.setCouplingRoutes(oceanRoutes);
+        }
     }
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
@@ -2149,6 +2160,12 @@ private:
     double lastTimerMs_ = 0.0;
 
     ColumnLayoutManager layout;
+
+    // ── Ocean View — primary layout (replaces Gallery 3-column model) ─────────
+    // Declared before toastOverlay_ so it is destroyed after the toast singleton
+    // is cleared.  addAndMakeVisible is called BEFORE toastOverlay_ in the
+    // constructor so it renders beneath the overlay.
+    OceanView oceanView_;
 
     // ── ToastOverlay — non-blocking notification layer ────────────────────────
     // Declared last so it is destroyed first (child components destroyed in
