@@ -904,6 +904,12 @@ public:
             voice.partialBank.computeNyquistGains(f0Block);
         }
 
+        // Portamento glide coefficient — block-constant (snap_.portamento and sr_ don't
+        // change within a block). Pre-computing here eliminates std::exp per sample per voice.
+        const float portGlideCoeff = (snap_.portamento > 0.0f)
+            ? 1.0f - FastMath::fastExp(-kTwoPi / (sr_ * snap_.portamento * 0.5f))
+            : 0.0f;
+
         for (int s = 0; s < numSamples; ++s)
         {
             // 6a. Accumulate modulation offsets for this sample
@@ -942,7 +948,7 @@ public:
             // 6d. Vibrato — pitch multiplier for all voices
             float vibSample = vibratoLFO_.process() * vibDepth_eff;
             // vibDepth=1.0 -> 100 cents max deviation
-            float vibPitchMult = std::pow(2.0f, vibSample * (100.0f / 1200.0f));
+            float vibPitchMult = FastMath::fastPow2(vibSample * (100.0f / 1200.0f));
 
             // 6e. Coupling FM and Ring mod values for this sample
             float couplingFM = (s < blockSize_) ? couplingFMBuffer_[s] : 0.0f;
@@ -985,9 +991,8 @@ public:
                 if (snap_.portamento > 0.0f)
                 {
                     // portamento param 0..1 maps to 0..0.5 seconds glide time
-                    float portTime = snap_.portamento * 0.5f;
-                    float glideCoeff = 1.0f - std::exp(-kTwoPi / (sr_ * portTime));
-                    voice.currentFreq += (voice.targetFreq - voice.currentFreq) * glideCoeff;
+                    // glide coefficient is block-constant — hoisted above sample loop as portGlideCoeff
+                    voice.currentFreq += (voice.targetFreq - voice.currentFreq) * portGlideCoeff;
                 }
                 else
                 {
