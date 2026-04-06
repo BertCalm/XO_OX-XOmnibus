@@ -341,6 +341,7 @@ private:
             delayR.clear();
             wowFlutter.reset();
             darkFilter.reset();
+            tapeSat.reset();
         }
 
         void processBlock(const float* inL, const float* inR,

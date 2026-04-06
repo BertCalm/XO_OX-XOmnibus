@@ -82,6 +82,7 @@ private:
         {
             hpf1.reset(); hpf2.reset();
             lpf1.reset(); lpf2.reset();
+            tubeSat.reset();
         }
         float process(float in, float lowCutHz, float highCutHz, float driveAmt, float srF)
         {
@@ -141,6 +142,7 @@ private:
             modDelay.clear();
             envFollow.reset();
             lpg.reset();
+            smoothLpf.reset();
             smoothedMod = 0.0f;
         }
         float process(float in, float rate, float depth, float lpgSens, float srF)
@@ -254,6 +256,8 @@ private:
         {
             delayL.clear();
             delayR.clear();
+            highShelfL.reset();
+            highShelfR.reset();
         }
         void process(float in, float& outL, float& outR,
                      float rate, float depth, float tone, float srF)
@@ -317,6 +321,7 @@ private:
         void reset()
         {
             reverb.reset();
+            amLfo.reset();
             srHoldCounter = 0.0f;
             srHoldL = srHoldR = 0.0f;
             std::fill(inL_.begin(), inL_.end(), 0.0f);

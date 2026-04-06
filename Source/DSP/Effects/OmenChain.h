@@ -257,6 +257,8 @@ private:
         {
             delayL.clear();
             delayR.clear();
+            lfoL.reset();
+            lfoR.reset();
         }
         void processSampleStereo(float in, float& outL, float& outR,
                                   float rate, float depth, double sampleRate)

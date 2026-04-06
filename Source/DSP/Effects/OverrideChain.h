@@ -94,6 +94,7 @@ private:
         void reset()
         {
             envFollow.reset();
+            trackOsc.reset();
             trackFilter.reset();
             detectedFreq = 220.0f;
             zcPeriod = zcCounter = 0.0f;
@@ -205,6 +206,7 @@ private:
         }
         void reset()
         {
+            pllOsc.reset();
             freqSmoother.snapTo(220.0f);
             pllPhase = inputPhase = 0.0f;
             lastSample = 0.0f;

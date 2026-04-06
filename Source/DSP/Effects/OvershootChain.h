@@ -138,6 +138,7 @@ private:
         void reset()
         {
             env.reset();
+            osc.reset();
             lastSample_ = 0.0f;
             trackedHz_  = 110.0f;
             zeroCrossCount_ = 0;
@@ -231,6 +232,8 @@ private:
             delR.clear();
             combSVFL.reset();
             combSVFR.reset();
+            depthSmootherL.snapTo(4.0f);
+            depthSmootherR.snapTo(4.0f);
         }
 
         void processStereo(const float* in, float* outL, float* outR, int numSamples,

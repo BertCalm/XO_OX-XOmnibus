@@ -174,6 +174,7 @@ private:
         {
             delayL.clear();
             delayR.clear();
+            lfo.reset();
         }
         float processSampleMono(float in, float rate, float depth, double sampleRate)
         {
@@ -302,6 +303,7 @@ inline void OrationChain::reset()
     hedra_.reset();
     warpedVinyl_.reset();
     fx25_.reset();
+    reverb_.reset();
 }
 
 inline void OrationChain::processBlock(const float* monoIn, float* L, float* R,

@@ -189,6 +189,8 @@ private:
         {
             svfL.reset();
             svfR.reset();
+            cutoffSmootherL.snapTo(8000.0f);
+            cutoffSmootherR.snapTo(8000.0f);
         }
 
         static float crush(float in, int bits)
@@ -277,6 +279,10 @@ private:
             fbStateL = fbStateR = 0.0f;
             darkSVFL.reset();
             darkSVFR.reset();
+            tapeSatL.reset();
+            tapeSatR.reset();
+            wowLFO.reset();
+            wearSmoother.snapTo(0.5f);
         }
 
         void processStereo(const float* inL, const float* inR,

@@ -136,6 +136,7 @@ private:
         {
             for (int s = 0; s < kMaxStages; ++s)
                 apf[s].reset();
+            lfo.reset();
         }
         float process(float in, int numStages, float rate, float depth, float srF)
         {
@@ -273,6 +274,7 @@ private:
             delayL.clear();
             delayR.clear();
             fbL = fbR = 0.0f;
+            delaySampL = delaySampR = 0.0f;
         }
         void processBlock(float in, float& outL, float& outR,
                           float delayMs, float degrade, bool havoc, float srF)

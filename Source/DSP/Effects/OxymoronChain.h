@@ -140,6 +140,9 @@ private:
         {
             hornDelL.clear(); hornDelR.clear();
             drumDelL.clear(); drumDelR.clear();
+            hornLFO.reset();
+            drumLFO.reset();
+            depthSm.snapTo(1.0f);
         }
 
         // speed: 0=Slow, 1=Fast. depth [0,1].

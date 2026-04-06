@@ -328,6 +328,10 @@ private:
         {
             for (auto& f : apL) f.reset();
             for (auto& f : apR) f.reset();
+            lfoL.reset();
+            lfoR.reset();
+            freqSmootherL.snapTo(500.0f);
+            freqSmootherR.snapTo(700.0f);
         }
         void processBlock(float* L, float* R, int numSamples,
                           float rate1, float rate2, float color, double sampleRate)
@@ -414,6 +418,8 @@ private:
             delayL.clear();
             delayR.clear();
             feedbackL = feedbackR = 0.0f;
+            wowFlutter.reset();
+            tapeSat.reset();
         }
 
         // headSpacing: 0 = Even, 1 = Triplet, 2 = Golden Ratio

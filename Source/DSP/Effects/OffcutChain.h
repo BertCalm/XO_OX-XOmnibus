@@ -328,6 +328,7 @@ inline void OffcutChain::reset()
     ct5_.reset();
     cali76_.reset();
     teraEcho_.reset();
+    mercury7_.reset();
 }
 
 inline void OffcutChain::processBlock(const float* monoIn, float* L, float* R,

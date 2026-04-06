@@ -207,6 +207,8 @@ private:
             envR.reset();
             svfL.reset();
             svfR.reset();
+            freqSmL.snapTo(300.0f);
+            freqSmR.snapTo(300.0f);
         }
 
         // sens: envelope sensitivity [0,1]
@@ -266,7 +268,13 @@ private:
             gainSmL.snapTo(1.0f);
             gainSmR.snapTo(1.0f);
         }
-        void reset() {}
+        void reset()
+        {
+            lfoL.reset();
+            lfoR.reset();
+            gainSmL.snapTo(1.0f);
+            gainSmR.snapTo(1.0f);
+        }
 
         void processStereo(float* L, float* R, int numSamples,
                            float rateHz, float depth)

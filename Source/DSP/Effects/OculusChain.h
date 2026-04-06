@@ -160,7 +160,10 @@ private:
             bandF1.reset();
             bandF2.reset();
             bandF3.reset();
-            stepAccum = 0.0f;
+            stepAccum     = 0.0f;
+            currentVowelA = 0;
+            currentVowelB = 1;
+            vowelMorph    = 0.0f;
         }
 
         float process(float in, int steps, float seekSpeed, float morphAmt, double bpm)

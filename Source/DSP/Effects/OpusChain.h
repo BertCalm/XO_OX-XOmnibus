@@ -154,6 +154,7 @@ private:
             for (auto& g : grains)
                 g.active = false;
             schedCountdown = 2205.0f;
+            rngState = 99991u;
         }
 
         // Simple LCG RNG
@@ -355,6 +356,7 @@ private:
             buf.clear();
             fracDel.clear();
             scanPos = scanTarget = static_cast<float>(sr) * 0.5f;
+            rngState = 7654321u;
         }
         float nextRand()
         {
