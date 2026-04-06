@@ -568,27 +568,27 @@ inline void OrnateChain::addParameters(
 {
     const juce::String p = slotPrefix + "orna_";
 
-    registerFloat(layout, p + "exciterTop",      p + "Exciter Top",
+    registerFloat(layout, p + "exciterTop",      "Exciter Top",
                   0.0f, 1.0f, 0.4f);
-    registerFloat(layout, p + "exciterBody",     p + "Exciter Body",
+    registerFloat(layout, p + "exciterBody",     "Exciter Body",
                   0.0f, 1.0f, 0.3f);
-    registerChoice(layout, p + "squashRatio",    p + "Squash Ratio",
+    registerChoice(layout, p + "squashRatio",    "Squash Ratio",
                    {"4:1", "10:1", "Limit"}, 1);
-    registerFloat(layout, p + "grainSize",       p + "Grain Size",
+    registerFloat(layout, p + "grainSize",       "Grain Size",
                   0.0f, 1.0f, 0.5f);
-    registerFloat(layout, p + "grainDensity",    p + "Grain Density",
+    registerFloat(layout, p + "grainDensity",    "Grain Density",
                   0.0f, 1.0f, 0.5f);
-    registerFloat(layout, p + "grainSpread",     p + "Grain Spread",
+    registerFloat(layout, p + "grainSpread",     "Grain Spread",
                   0.0f, 1.0f, 0.5f);
-    registerFloatSkewed(layout, p + "phaseRate1", p + "Phase Rate 1",
+    registerFloatSkewed(layout, p + "phaseRate1", "Phase Rate 1",
                         0.05f, 10.0f, 0.5f, 0.001f, 0.35f);
-    registerFloatSkewed(layout, p + "phaseRate2", p + "Phase Rate 2",
+    registerFloatSkewed(layout, p + "phaseRate2", "Phase Rate 2",
                         0.05f, 10.0f, 0.8f, 0.001f, 0.35f);
-    registerFloat(layout, p + "phaseColor",      p + "Phase Color",
+    registerFloat(layout, p + "phaseColor",      "Phase Color",
                   0.0f, 1.0f, 0.4f);
-    registerFloat(layout, p + "drumWear",        p + "Drum Wear",
+    registerFloat(layout, p + "drumWear",        "Drum Wear",
                   0.0f, 1.0f, 0.3f);
-    registerChoice(layout, p + "drumHeadSpacing", p + "Head Spacing",
+    registerChoice(layout, p + "drumHeadSpacing", "Head Spacing",
                    {"Even", "Triplet", "GoldenRatio"}, 0);
 }
 

@@ -358,25 +358,25 @@ inline void OrationChain::addParameters(
 {
     const juce::String p = slotPrefix + "orat_";
 
-    registerFloat(layout, p + "hedraPitch1", p + "Hedra Pitch 1",
+    registerFloat(layout, p + "hedraPitch1", "Hedra Pitch 1",
                   -24.0f, 24.0f, 7.0f, 0.1f);
-    registerFloat(layout, p + "hedraPitch2", p + "Hedra Pitch 2",
+    registerFloat(layout, p + "hedraPitch2", "Hedra Pitch 2",
                   -24.0f, 24.0f, 12.0f, 0.1f);
-    registerFloat(layout, p + "hedraPitch3", p + "Hedra Pitch 3",
+    registerFloat(layout, p + "hedraPitch3", "Hedra Pitch 3",
                   -24.0f, 24.0f, -5.0f, 0.1f);
-    registerFloatSkewed(layout, p + "warpRate",  p + "Warp Rate",
+    registerFloatSkewed(layout, p + "warpRate",  "Warp Rate",
                         0.05f, 5.0f, 0.3f, 0.001f, 0.35f);
-    registerFloat(layout, p + "warpDepth",   p + "Warp Depth",
+    registerFloat(layout, p + "warpDepth",   "Warp Depth",
                   0.0f, 1.0f, 0.25f);
-    registerFloat(layout, p + "fx25Sens",    p + "FX25 Sens",
+    registerFloat(layout, p + "fx25Sens",    "FX25 Sens",
                   0.0f, 1.0f, 0.5f);
-    registerFloat(layout, p + "fx25Range",   p + "FX25 Range",
+    registerFloat(layout, p + "fx25Range",   "FX25 Range",
                   0.0f, 1.0f, 0.6f);
-    registerFloat(layout, p + "fx25Res",     p + "FX25 Res",
+    registerFloat(layout, p + "fx25Res",     "FX25 Res",
                   0.0f, 0.95f, 0.4f);
-    registerFloatSkewed(layout, p + "verbDecay", p + "Verb Decay",
+    registerFloatSkewed(layout, p + "verbDecay", "Verb Decay",
                         0.5f, 20.0f, 3.5f, 0.01f, 0.4f);
-    registerFloat(layout, p + "verbMix",     p + "Verb Mix",
+    registerFloat(layout, p + "verbMix",     "Verb Mix",
                   0.0f, 1.0f, 0.35f);
 }
 
