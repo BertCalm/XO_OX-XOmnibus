@@ -200,12 +200,16 @@ private:
             chunkReady   = false;
             postLP.reset();
         }
-        float process(float in, float mix, float srF)
+        float process(float in, float mix, float chunkSec, float srF)
         {
             recordBuf.write(in);
             ++chunkFillPos;
 
-            int chunkLen = static_cast<int>(srF * 0.5f);
+            // chunkSec: 0.0–1.0 seconds (controlled by backtalkTime param).
+            // Clamp to [0.02s, 0.5s] so the chunk is never too short or longer
+            // than the allocated revChunk buffer.
+            float clampedSec = std::max(0.02f, std::min(chunkSec, 0.5f));
+            int chunkLen = static_cast<int>(clampedSec * srF);
             chunkLen = std::max(2, std::min(chunkLen, static_cast<int>(revChunk.size())));
 
             // When a full chunk is collected, fill the reverse buffer (Hann windowed)
@@ -417,8 +421,7 @@ inline void ObdurateChain::processBlock(const float* monoIn, float* L, float* R,
     const int   empStages      = static_cast<int>(p_empStages->load(std::memory_order_relaxed));
     const float empRate        = p_empRate->load(std::memory_order_relaxed);
     const float empDepth       = p_empDepth->load(std::memory_order_relaxed);
-    const float backtalkTime   = p_backtalkTime->load(std::memory_order_relaxed) * 0.01f;
-    (void)backtalkTime; // reserved for future BackTalk trail-time DSP
+    const float backtalkTime   = p_backtalkTime->load(std::memory_order_relaxed) * 0.01f; // 0–100 → 0.0–1.0 s
     const float backtalkMix    = p_backtalkMix->load(std::memory_order_relaxed);
     const float megaTime       = p_megaTime->load(std::memory_order_relaxed);
     const float megaDegrade    = p_megaDegrade->load(std::memory_order_relaxed);
@@ -441,7 +444,7 @@ inline void ObdurateChain::processBlock(const float* monoIn, float* L, float* R,
         x = empPhaser_.process(x, empStages, empRate, empDepth, srF);
 
         // Stage 3: Back Talk Reverse Delay Trails
-        x = backTalk_.process(x, backtalkMix, srF);
+        x = backTalk_.process(x, backtalkMix, backtalkTime, srF);
 
         L[i] = x;
     }

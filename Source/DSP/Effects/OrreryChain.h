@@ -163,18 +163,21 @@ private:
         {
             buf.write(in);
 
-            // Read backward at 2× speed (read pos advances by 2 in backward direction)
-            // This creates +12 semitone pitch with reverse characteristic
-            readPos_ -= 2.0f; // backward at 2× speed
+            // swellTimeMs (50–800 ms) controls the reverse loop window length.
+            // readPos_ wraps within this window so shorter values create tighter,
+            // faster-cycling reverse swells; longer values give slower, wider sweeps.
+            float loopSamples = std::max(1.0f,
+                std::min(swellTimeMs * static_cast<float>(sr) / 1000.0f,
+                         static_cast<float>(bufSize_)));
+
+            // Read backward at 2× speed (creates +12 semitone pitch with reverse characteristic)
+            readPos_ -= 2.0f;
             if (readPos_ < 0.0f)
-                readPos_ += static_cast<float>(bufSize_);
+                readPos_ += loopSamples;
 
             int iPos = static_cast<int>(readPos_) % std::max(1, bufSize_);
             float reversed = buf.readBackward(iPos);
 
-            // Swell envelope: attack based on swellTimeMs
-            // (simple leaky integrator approximation)
-            (void)swellTimeMs; // applied implicitly via buffer length
             return in * (1.0f - reverseMix) + reversed * reverseMix;
         }
     } xp300_;

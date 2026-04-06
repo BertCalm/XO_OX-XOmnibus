@@ -243,8 +243,6 @@ private:
         StandardLFO     wowLFO;
         ParameterSmoother wearSmoother;
 
-        float fbStateL = 0.0f;
-        float fbStateR = 0.0f;
         double sr = 44100.0;
 
         void prepare(double sampleRate)
@@ -276,7 +274,6 @@ private:
         {
             delL.clear();
             delR.clear();
-            fbStateL = fbStateR = 0.0f;
             darkSVFL.reset();
             darkSVFR.reset();
             tapeSatL.reset();
