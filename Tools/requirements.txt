@@ -22,7 +22,7 @@
 # Exact version pins — update by running: pip-compile --generate-hashes requirements.in
 # These match the CI-tested versions in .github/workflows/xpn-pipeline-ci.yml
 Pillow==12.2.0
-numpy==1.26.4
+numpy==2.4.4
 soundfile==0.13.1
 scipy==1.17.1
 mido==1.3.3
