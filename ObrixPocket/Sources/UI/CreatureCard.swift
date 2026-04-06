@@ -401,7 +401,7 @@ struct CreatureCard: View {
                     .transition(.opacity.combined(with: .move(edge: .top)))
             }
         }
-        .animation(.easeInOut(duration: 0.22), value: isStatsExpanded)
+        .animation(.reducingMotion(.easeInOut(duration: 0.22)), value: isStatsExpanded)
     }
 
     private var statsToggleButton: some View {

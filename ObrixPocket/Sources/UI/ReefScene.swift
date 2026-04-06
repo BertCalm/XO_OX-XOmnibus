@@ -60,13 +60,6 @@ class ReefScene: SKScene {
         }
     }
 
-    // Category colors
-    private let categoryColors: [SpecimenCategory: SKColor] = [
-        .source: SKColor(red: 0.2, green: 0.5, blue: 1.0, alpha: 1.0),
-        .processor: SKColor(red: 1.0, green: 0.3, blue: 0.3, alpha: 1.0),
-        .modulator: SKColor(red: 0.3, green: 0.8, blue: 0.3, alpha: 1.0),
-        .effect: SKColor(red: 0.7, green: 0.3, blue: 1.0, alpha: 1.0)
-    ]
 
     init(size: CGSize, reefStore: ReefStore, onNoteOn: @escaping (Int, Float) -> Void, onNoteOff: @escaping (Int) -> Void, onWiringChanged: (() -> Void)? = nil) {
         self.reefStore = reefStore
@@ -224,7 +217,7 @@ class ReefScene: SKScene {
                 bg.name = "slotBg_\(index)"
 
                 if let specimen = reefStore.specimens[index] {
-                    let color = categoryColors[specimen.category] ?? .white
+                    let color = DesignTokens.skColor(for: specimen.category)
                     let healthAlpha = CGFloat(specimen.health) / 100.0
                     let age = SpecimenAge.from(playSeconds: specimen.totalPlaySeconds)
 
@@ -427,7 +420,7 @@ class ReefScene: SKScene {
         // Legendary sparkles
         for (index, slotNode) in slotNodes.enumerated() {
             guard let specimen = reefStore.specimens[index], specimen.rarity == .legendary else { continue }
-            let sparkle = createSparkleEmitter(color: categoryColors[specimen.category] ?? .white)
+            let sparkle = createSparkleEmitter(color: DesignTokens.skColor(for: specimen.category))
             sparkle.position = .zero
             sparkle.zPosition = 2
             sparkle.name = "sparkles_\(index)"
@@ -476,7 +469,7 @@ class ReefScene: SKScene {
             if let src = srcSpecimen, let dst = dstSpecimen {
                 color = wireValidationColor(from: src.category, to: dst.category)
             } else {
-                color = categoryColors[srcSpecimen?.category ?? .source] ?? .white
+                color = DesignTokens.skColor(for: srcSpecimen?.category ?? .source)
             }
 
             let wire = createWirePath(from: srcPos, to: dstPos, color: color, depth: route.depth)
@@ -796,7 +789,7 @@ class ReefScene: SKScene {
         // Create the in-progress wire line
         let srcPos = slotNodes[slot].position
         let line = SKShapeNode()
-        line.strokeColor = (categoryColors[reefStore.specimens[slot]?.category ?? .source] ?? .white).withAlphaComponent(0.6)
+        line.strokeColor = DesignTokens.skColor(for: reefStore.specimens[slot]?.category ?? .source).withAlphaComponent(0.6)
         line.lineWidth = 2.5
         line.lineCap = .round
         line.zPosition = 2
@@ -847,7 +840,7 @@ class ReefScene: SKScene {
             activeWireLine?.strokeColor = validationColor.withAlphaComponent(0.75)
         } else {
             // No hover target — revert to source category color
-            let baseColor = categoryColors[srcCategory] ?? .white
+            let baseColor = DesignTokens.skColor(for: srcCategory)
             activeWireLine?.strokeColor = baseColor.withAlphaComponent(0.6)
         }
     }
@@ -1020,7 +1013,7 @@ class ReefScene: SKScene {
 
         // Particle burst on note
         guard slot < slotNodes.count else { return }
-        let burst = createNoteBurst(color: categoryColors[reefStore.specimens[slot]?.category ?? .source] ?? .white)
+        let burst = createNoteBurst(color: DesignTokens.skColor(for: reefStore.specimens[slot]?.category ?? .source))
         burst.position = slotNodes[slot].position
         burst.zPosition = 3
         addChild(burst)

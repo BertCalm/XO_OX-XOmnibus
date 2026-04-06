@@ -76,7 +76,7 @@ enum DesignTokens {
     static let errorRed = Color(hex: "FF4D4D")
 
     /// Muted text — secondary labels, timestamps, metadata
-    static let mutedText = Color(hex: "7A7876")
+    static let mutedText = Color(hex: "8A8886")
 
     /// Streak orange — streak rewards, fire imagery
     static let streakOrange = Color(hex: "FF6B35")

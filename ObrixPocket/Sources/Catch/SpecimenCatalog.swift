@@ -65,11 +65,15 @@ enum SpecimenCatalog {
                      creatureConcept: "Long-finned fish with serrated dorsal fin",
                      personalityLine: "Reliable. Warm. The reef's foundation.",
                      defaultParams: [
-                         "obrix_src1Type": 0, "obrix_src1Tune": 0, "obrix_src1Level": 0.8,
-                         "obrix_flt1Cutoff": 0.65, "obrix_flt1Resonance": 0.15,
-                         "obrix_env1Attack": 0.01, "obrix_env1Decay": 0.3,
-                         "obrix_env1Sustain": 0.7, "obrix_env1Release": 0.4,
-                         "obrix_lfo1Rate": 0.3, "obrix_lfo1Depth": 0.1,
+                         "obrix_src1Type": 0, "obrix_src1Tune": 0, "obrix_src1Level": 0.75,
+                         // Warm, filtered — not too bright, not too dull
+                         "obrix_flt1Cutoff": 0.5, "obrix_flt1Resonance": 0.12,
+                         // Soft attack — inviting, not clicky
+                         "obrix_env1Attack": 0.03, "obrix_env1Decay": 0.35,
+                         "obrix_env1Sustain": 0.65, "obrix_env1Release": 0.55,
+                         "obrix_lfo1Rate": 0.25, "obrix_lfo1Depth": 0.08,
+                         // Light reverb — adds space without washing out the sound
+                         "obrix_fx1Mix": 0.3, "obrix_fx1Param1": 0.5,
                      ],
                      preferredBiomes: [.urban, .coastal]),
         // Boxjelly — hollow, woody, pulse-width modulated

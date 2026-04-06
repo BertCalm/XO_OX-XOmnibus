@@ -117,6 +117,16 @@ struct LegendaryEncounterView: View {
     // MARK: - Reveal Sequence
 
     private func runRevealSequence() {
+        // Reduce Motion: skip all staged animation, show content immediately
+        if UIAccessibility.isReduceMotionEnabled {
+            backgroundVisible = true
+            particlesVisible = false  // Skip particle field entirely
+            nameVisible = true
+            descriptionVisible = true
+            buttonVisible = true
+            return
+        }
+
         // Step 1: fade in the black canvas
         withAnimation(.easeIn(duration: 2.0)) {
             backgroundVisible = true

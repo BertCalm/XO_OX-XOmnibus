@@ -205,7 +205,7 @@ enum SpecimenHashGenerator {
         case .source:
             let srcTypeMap: [String: Float] = [
                 "polyblep-saw": 0, "polyblep-square": 1, "polyblep-tri": 2,
-                "noise-white": 3, "noise-pink": 3,
+                "noise-white": 3, "noise-pink": 5,
                 "wt-analog": 4, "wt-vocal": 4,
                 "fm-basic": 5
             ]

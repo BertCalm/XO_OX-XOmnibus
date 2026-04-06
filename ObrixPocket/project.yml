@@ -71,6 +71,7 @@ targets:
       - path: Sources
         excludes:
           - "**/*.md"
+          - "Phase2/**"
           - "Bridge/JuceModule_AudioBasics.mm"
           - "Bridge/JuceModule_AudioDevices.mm"
           - "Bridge/JuceModule_AudioFormats.mm"

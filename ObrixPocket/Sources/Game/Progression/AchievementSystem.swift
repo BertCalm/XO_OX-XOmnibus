@@ -303,16 +303,19 @@ final class AchievementManager: ObservableObject {
     }
 
     /// Call when unique subtype count changes
+    // DEFERRED: No caller wired for this trigger type yet
     func onUniqueSubtypesChanged(_ count: Int) {
         complete(where: { if case .uniqueSubtypes(let req) = $0.requirement { return count >= req }; return false })
     }
 
     /// Call when a new breeding generation is achieved
+    // DEFERRED: No caller wired for this trigger type yet
     func onBreedingGenerationReached(_ gen: Int) {
         complete(where: { if case .breedingGeneration(let req) = $0.requirement { return gen >= req }; return false })
     }
 
     /// Call when total breeding count changes
+    // DEFERRED: No caller wired for this trigger type yet
     func onBreedingTotalChanged(_ count: Int) {
         complete(where: { if case .breedingTotal(let req) = $0.requirement { return count >= req }; return false })
     }
@@ -323,46 +326,55 @@ final class AchievementManager: ObservableObject {
     }
 
     /// Call each day the user logs in with an updated streak
+    // DEFERRED: No caller wired for this trigger type yet
     func onConsecutiveDaysUpdated(_ days: Int) {
         complete(where: { if case .consecutiveDays(let req) = $0.requirement { return days >= req }; return false })
     }
 
     /// Call when the number of distinct coupling types used changes
+    // DEFERRED: No caller wired for this trigger type yet
     func onCouplingTypesUsed(_ count: Int) {
         complete(where: { if case .couplingTypesUsed(let req) = $0.requirement { return count >= req }; return false })
     }
 
     /// Call when an arrangement length milestone is reached (in seconds)
+    // DEFERRED: No caller wired for this trigger type yet
     func onArrangementLength(_ seconds: Int) {
         complete(where: { if case .arrangementLength(let req) = $0.requirement { return seconds >= req }; return false })
     }
 
     /// Call when seasonal completion count changes
+    // DEFERRED: No caller wired for this trigger type yet
     func onSeasonalComplete(_ count: Int) {
         complete(where: { if case .seasonalComplete(let req) = $0.requirement { return count >= req }; return false })
     }
 
     /// Call when lore discovered count changes
+    // DEFERRED: No caller wired for this trigger type yet
     func onLoreDiscovered(_ count: Int) {
         complete(where: { if case .loreDiscovered(let req) = $0.requirement { return count >= req }; return false })
     }
 
     /// Call when elder specimen count changes
+    // DEFERRED: No caller wired for this trigger type yet
     func onElderSpecimensChanged(_ count: Int) {
         complete(where: { if case .elderSpecimens(let req) = $0.requirement { return count >= req }; return false })
     }
 
     /// Call when total play time crosses an hour threshold
+    // DEFERRED: No caller wired for this trigger type yet
     func onTotalPlayTime(hours: Int) {
         complete(where: { if case .totalPlayTime(let req) = $0.requirement { return hours >= req }; return false })
     }
 
     /// Call when MIDI export count changes
+    // DEFERRED: No caller wired for this trigger type yet
     func onExportedMIDI(_ count: Int) {
         complete(where: { if case .exportedMIDI(let req) = $0.requirement { return count >= req }; return false })
     }
 
     /// Call when trade count changes
+    // DEFERRED: No caller wired for this trigger type yet (SpecimenGifting quarantined to Phase2)
     func onTradesCompleted(_ count: Int) {
         complete(where: { if case .tradesCompleted(let req) = $0.requirement { return count >= req }; return false })
     }
@@ -373,6 +385,7 @@ final class AchievementManager: ObservableObject {
     }
 
     /// Trigger a named secret condition
+    // DEFERRED: No caller wired for this trigger type yet
     func triggerSecret(id: String) {
         complete(where: { if case .secretCondition(let reqId) = $0.requirement { return reqId == id }; return false })
     }

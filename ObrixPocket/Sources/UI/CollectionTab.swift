@@ -22,7 +22,7 @@ struct CollectionTab: View {
     @StateObject private var collectionTracker = CollectionTracker()
     @State private var pendingRewards: [CollectionMilestone] = []
     @State private var showRewardAlert = false
-    @StateObject private var tradePost = TradePostManager()
+    // Phase 2: @StateObject private var tradePost = TradePostManager()
     @ObservedObject private var masteryManager = MasteryManager.shared
 
     // Cached discovered subtypes — refreshed on .onAppear only, not every render
@@ -187,7 +187,7 @@ struct CollectionTab: View {
 
                         CollectionSection(
                             title: "Coral (filters)",
-                            categoryColor: DesignTokens.errorRed,
+                            categoryColor: DesignTokens.processorColor,
                             entries: coreProcessors,
                             discoveredSubtypes: subtypes,
                             onDiscoveredTap: { entry in handleDiscoveredTap(entry: entry) }
@@ -238,8 +238,8 @@ struct CollectionTab: View {
                         // MARK: Milestones Section
                         milestonesSection
 
-                        // MARK: Trading Post Section
-                        tradingPostSection
+                        // Phase 2: Trading Post Section (TradePostManager quarantined)
+                        // tradingPostSection
 
                         // MARK: Settings Section
                         settingsSection
@@ -558,85 +558,9 @@ struct CollectionTab: View {
 
     // MARK: - Trading Post Section
 
-    private var tradingPostSection: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Image(systemName: "arrow.left.arrow.right")
-                    .foregroundColor(DesignTokens.reefJade)
-                    .font(.system(size: 10))
-                Text("TRADING POST")
-                    .font(DesignTokens.mono(10))
-                    .tracking(1.5)
-                    .foregroundColor(DesignTokens.reefJade)
-                Spacer()
-                Text("\(tradePost.offers.count) offers")
-                    .font(DesignTokens.mono(9))
-                    .foregroundColor(.white.opacity(0.3))
-            }
-            .padding(.horizontal, 20)
-
-            ForEach(tradePost.offers) { offer in
-                let requestedName = SpecimenCatalog.entry(for: offer.requestedSubtype)?.creatureName ?? offer.requestedSubtype
-                let offeredName = SpecimenCatalog.entry(for: offer.offeredSubtype)?.creatureName ?? offer.offeredSubtype
-                let requestedCategory = SpecimenCatalog.entry(for: offer.requestedSubtype)?.category ?? .source
-                let offeredCategory = SpecimenCatalog.entry(for: offer.offeredSubtype)?.category ?? .source
-
-                HStack(spacing: 8) {
-                    // What they want
-                    VStack(spacing: 2) {
-                        Text("WANT")
-                            .font(DesignTokens.mono(7))
-                            .foregroundColor(.white.opacity(0.2))
-                        SpecimenSprite(subtype: offer.requestedSubtype, category: requestedCategory, size: 24)
-                        Text(requestedName)
-                            .font(DesignTokens.body(8))
-                            .foregroundColor(.white.opacity(0.5))
-                        Text("Lv.\(offer.requestedMinLevel)+")
-                            .font(DesignTokens.mono(7))
-                            .foregroundColor(.white.opacity(0.3))
-                    }
-                    .frame(maxWidth: .infinity)
-
-                    Image(systemName: "arrow.right")
-                        .font(.system(size: 10))
-                        .foregroundColor(.white.opacity(0.2))
-
-                    // What they offer
-                    VStack(spacing: 2) {
-                        Text("GIVE")
-                            .font(DesignTokens.mono(7))
-                            .foregroundColor(.white.opacity(0.2))
-                        SpecimenSprite(subtype: offer.offeredSubtype, category: offeredCategory, size: 24)
-                        Text(offeredName)
-                            .font(DesignTokens.body(8))
-                            .foregroundColor(.white.opacity(0.5))
-                        Text("\(offer.offeredRarity.rawValue) Lv.\(offer.offeredLevel)")
-                            .font(DesignTokens.mono(7))
-                            .foregroundColor(DesignTokens.xoGold.opacity(0.5))
-                    }
-                    .frame(maxWidth: .infinity)
-                }
-                .padding(.vertical, 6)
-                .padding(.horizontal, 20)
-                .background(Color.white.opacity(0.02))
-                .clipShape(RoundedRectangle(cornerRadius: 8))
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .strokeBorder(DesignTokens.reefJade.opacity(0.15), lineWidth: 1)
-                )
-                .padding(.horizontal, 20)
-            }
-
-            if tradePost.offers.isEmpty {
-                Text("No active offers — check back tomorrow.")
-                    .font(DesignTokens.body(10))
-                    .foregroundColor(.white.opacity(0.2))
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 4)
-            }
-        }
-        .padding(.top, 8)
-    }
+    // Phase 2: tradingPostSection removed — TradePostManager quarantined to Sources/Phase2/
+    // Re-enable when trading/gifting discovery mechanism is implemented.
+    // private var tradingPostSection: some View { ... }
 
     // MARK: - Settings Section
 

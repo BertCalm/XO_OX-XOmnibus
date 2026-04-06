@@ -5,6 +5,7 @@ struct ReefTab: View {
     @EnvironmentObject var audioEngine: AudioEngineManager
     @EnvironmentObject var reefStore: ReefStore
     @EnvironmentObject var firstLaunchManager: FirstLaunchManager
+    @EnvironmentObject var gameCoordinator: GameCoordinator
 
     // Owned here because they bridge to PlayKeyboard callbacks or are needed by multiple children
     @StateObject private var metronome = MetronomeManager()
@@ -51,7 +52,14 @@ struct ReefTab: View {
                         .frame(width: gridSize, height: gridSize)
                         .clipShape(RoundedRectangle(cornerRadius: 16))
                         .overlay(
-                            ReefAccessibilityOverlay(reefStore: reefStore, gridSize: gridSize)
+                            ReefAccessibilityOverlay(reefStore: reefStore, gridSize: gridSize, onSlotActivated: { slotIndex in
+                                guard reefStore.specimens[slotIndex] != nil else { return }
+                                audioEngine.applyCachedParams(for: slotIndex)
+                                audioEngine.noteOn(slotIndex: slotIndex, velocity: 0.7)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    audioEngine.noteOff(slotIndex: slotIndex)
+                                }
+                            })
                         )
                         .frame(maxWidth: .infinity, maxHeight: .infinity)  // Center in available space
                         .onReceive(reefStore.objectWillChange) { _ in
@@ -84,6 +92,10 @@ struct ReefTab: View {
                                 if let spec = reefStore.specimens[slot], spec.category == .source {
                                     activeSourceSlot = slot
                                 }
+                                // Route first-note event through GameCoordinator (#Fix6)
+                                if !audioEngine.hasPlayedFirstNote {
+                                    gameCoordinator.onFirstNote()
+                                }
                                 audioEngine.noteOn(slotIndex: slot, velocity: velocity)
                             },
                             onNoteOff: { slot in
@@ -91,6 +103,12 @@ struct ReefTab: View {
                             },
                             onWiringChanged: {
                                 audioEngine.applyReefConfiguration(reefStore)
+                                // Notify GameCoordinator so progression events can fire (#Fix6)
+                                let wireCount = reefStore.routes.count
+                                if wireCount > 0 {
+                                    let typeDesc = "wire_\(wireCount)"
+                                    gameCoordinator.onSpecimensWired(typeDescription: typeDesc)
+                                }
                             }
                         )
                         scene.onChordPreview = { [self] slotA, slotB in
@@ -133,7 +151,7 @@ struct ReefTab: View {
             if firstLaunchManager.journeyStep <= 2 {
                 Text("Tap a specimen to preview its sound. Long-press to wire.")
                     .font(DesignTokens.body(10))
-                    .foregroundColor(.white.opacity(0.25))
+                    .foregroundColor(.white.opacity(0.55))
                     .padding(.horizontal, 20)
             }
 
@@ -143,13 +161,13 @@ struct ReefTab: View {
                     SpecimenParamPanel(slotIndex: slot, onDismiss: { selectedSlot = nil })
                         .frame(maxHeight: 220)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
-                        .animation(.easeInOut(duration: 0.2), value: selectedSlot)
+                        .animation(.reducingMotion(.easeInOut(duration: 0.2)), value: selectedSlot)
                 } else {
                     StasisBrowser(targetSlot: slot, onDismiss: { selectedSlot = nil })
                         .frame(maxHeight: 220)
                         .environmentObject(reefStore)
                         .transition(.move(edge: .bottom).combined(with: .opacity))
-                        .animation(.easeInOut(duration: 0.2), value: selectedSlot)
+                        .animation(.reducingMotion(.easeInOut(duration: 0.2)), value: selectedSlot)
                 }
             }
 
@@ -275,8 +293,8 @@ struct ReefTab: View {
                     .padding(.bottom, 16)
             }
         }
-        .animation(.easeInOut(duration: 0.3), value: reefStore.diveEligibleCount)
-        .animation(.easeInOut(duration: 0.2), value: showRecordingControls)
+        .animation(.reducingMotion(.easeInOut(duration: 0.3)), value: reefStore.diveEligibleCount)
+        .animation(.reducingMotion(.easeInOut(duration: 0.2)), value: showRecordingControls)
         .background(DesignTokens.background)
         .onChange(of: recorder.isRecording) { isRec in
             if isRec { withAnimation { showRecordingControls = true } }
@@ -435,6 +453,9 @@ struct ReefPresetList: View {
 struct ReefAccessibilityOverlay: View {
     let reefStore: ReefStore
     let gridSize: CGFloat
+    /// Called when a VoiceOver user activates a slot. The caller is responsible
+    /// for triggering noteOn and scheduling the auto noteOff.
+    var onSlotActivated: ((Int) -> Void)?
 
     private let gridCount = 4
 
@@ -455,6 +476,9 @@ struct ReefAccessibilityOverlay: View {
                     .accessibilityLabel(slotLabel(index))
                     .accessibilityHint(slotHint(index))
                     .accessibilityAddTraits(.isButton)
+                    .accessibilityAction {
+                        onSlotActivated?(index)
+                    }
             }
         }
         .accessibilityElement(children: .contain)

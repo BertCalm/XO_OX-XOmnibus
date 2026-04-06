@@ -54,6 +54,17 @@ extension View {
     }
 }
 
+// MARK: - ReduceMotion helpers
+
+extension Animation {
+    /// Returns nil when Reduce Motion is enabled, otherwise the supplied animation.
+    /// Use this on every non-essential animated transition so accessibility users
+    /// always receive immediate state changes instead of animated ones.
+    static func reducingMotion(_ animation: Animation) -> Animation? {
+        UIAccessibility.isReduceMotionEnabled ? nil : animation
+    }
+}
+
 /// Dynamic Type support — ensure minimum readable sizes
 struct ScaledFont: ViewModifier {
     let name: String

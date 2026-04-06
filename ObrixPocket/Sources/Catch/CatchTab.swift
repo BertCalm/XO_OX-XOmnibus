@@ -140,7 +140,10 @@ struct CatchTab: View {
 
                     // Also offer Reef Proximity as alternative
                     Button("Use Reef Proximity Instead") {
-                        let home = biomeDetector.lastLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                        let home = biomeDetector.lastLocation ?? {
+                            let approxLon = Double(TimeZone.current.secondsFromGMT()) / 3600.0 * 15.0
+                            return CLLocationCoordinate2D(latitude: 37.7749, longitude: approxLon)
+                        }()
                         biomeDetector.enableReefProximity(home: home)
                     }
                     .font(DesignTokens.body(12))
@@ -178,8 +181,11 @@ struct CatchTab: View {
                 get: { biomeDetector.reefProximityEnabled },
                 set: { enabled in
                     if enabled {
-                        // Use last known location as home, or a neutral coordinate if unavailable
-                        let home = biomeDetector.lastLocation ?? CLLocationCoordinate2D(latitude: 0, longitude: 0)
+                        // Use last known location as home, or timezone-approximate coordinate if unavailable
+                        let home = biomeDetector.lastLocation ?? {
+                            let approxLon = Double(TimeZone.current.secondsFromGMT()) / 3600.0 * 15.0
+                            return CLLocationCoordinate2D(latitude: 37.7749, longitude: approxLon)
+                        }()
                         biomeDetector.enableReefProximity(home: home)
                         // Center map on the fixed home location
                         mapRegion = MKCoordinateRegion(
@@ -303,7 +309,8 @@ struct CatchTab: View {
     /// relative to the user's (or home) position using spherical-earth haversine offsets.
     private func specimenCoordinate(for specimen: WildSpecimen) -> CLLocationCoordinate2D {
         guard let userLoc = biomeDetector.lastLocation else {
-            return CLLocationCoordinate2D(latitude: 0, longitude: 0)
+            let approxLon = Double(TimeZone.current.secondsFromGMT()) / 3600.0 * 15.0
+            return CLLocationCoordinate2D(latitude: 37.7749, longitude: approxLon)
         }
         let earthRadius: Double = 6_371_000 // meters
         let lat1 = userLoc.latitude * .pi / 180

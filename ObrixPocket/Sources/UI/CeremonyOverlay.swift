@@ -62,17 +62,25 @@ struct CeremonyOverlay: View {
             }
             .opacity(opacity)
             .onAppear {
-                // Fade in
-                withAnimation(.easeIn(duration: 0.8)) {
+                // Fade in — skip animation when Reduce Motion is on
+                if UIAccessibility.isReduceMotionEnabled {
                     opacity = 1
+                } else {
+                    withAnimation(.easeIn(duration: 0.8)) {
+                        opacity = 1
+                    }
                 }
                 // Auto-dismiss after 5 seconds
                 scheduleDismiss(for: event.id)
             }
             .onChange(of: event.id) { newID in
                 opacity = 0
-                withAnimation(.easeIn(duration: 0.8)) {
+                if UIAccessibility.isReduceMotionEnabled {
                     opacity = 1
+                } else {
+                    withAnimation(.easeIn(duration: 0.8)) {
+                        opacity = 1
+                    }
                 }
                 scheduleDismiss(for: newID)
             }
@@ -88,6 +96,13 @@ struct CeremonyOverlay: View {
     private func dismiss(id: UUID) {
         dismissTimer?.invalidate()
         dismissTimer = nil
+        guard !UIAccessibility.isReduceMotionEnabled else {
+            opacity = 0
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                ceremonyManager.dismissCeremony(id)
+            }
+            return
+        }
         withAnimation(.easeOut(duration: 0.4)) {
             opacity = 0
         }

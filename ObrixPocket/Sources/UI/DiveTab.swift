@@ -78,6 +78,9 @@ struct DiveTab: View {
     @State private var activeFrames = 0
     @State private var totalFrames = 0
 
+    // Degradation level — wired from DiveComposer.onDegradation callback
+    @State private var currentDegradation: Float = 0
+
     // Tilt modulation
     @StateObject private var motionController = MotionController()
 
@@ -104,7 +107,7 @@ struct DiveTab: View {
                 startPoint: .top, endPoint: .bottom
             )
             .ignoresSafeArea()
-            .animation(.easeInOut(duration: 2.0), value: zone.rawValue)
+            .animation(.reducingMotion(.easeInOut(duration: 2.0)), value: zone.rawValue)
 
             VStack(spacing: 24) {
                 // Header — hidden during active dive (SpriteKit HUD covers it)
@@ -173,7 +176,7 @@ struct DiveTab: View {
 
             VStack(spacing: 4) {
                 requirementRow("Sources", count: sourceCount, required: 1)
-                requirementRow("Total specimens", count: totalCount, required: 4)
+                requirementRow("Total specimens", count: totalCount, required: 2)
             }
             .padding(.horizontal, 40)
 
@@ -194,10 +197,10 @@ struct DiveTab: View {
                     .frame(height: 56)
                     .background(
                         RoundedRectangle(cornerRadius: 28)
-                            .fill(totalCount >= 4 ? DesignTokens.reefJade : Color(hex: "1A1A1C"))
+                            .fill(totalCount >= 2 ? DesignTokens.reefJade : Color(hex: "1A1A1C"))
                     )
             }
-            .disabled(totalCount < 4)
+            .disabled(totalCount < 2)
             .padding(.horizontal, 40)
 
             // Dive stats (if any dives completed)
@@ -328,7 +331,7 @@ struct DiveTab: View {
                 .padding(.top, 52)  // Accounts for status bar + Dynamic Island on modern iPhones
 
                 DegradationWaveform(
-                    degradation: composer?.degradation ?? 0,
+                    degradation: currentDegradation,
                     beat: composer?.currentBeat ?? 0
                 )
                 .opacity(isDiving ? 1 : 0)
@@ -338,7 +341,7 @@ struct DiveTab: View {
                 // Bottom: progress bar + time remaining
                 VStack(spacing: 4) {
                     // Degradation indicator (when > 0)
-                    if composer?.degradation ?? 0 > 0 {
+                    if currentDegradation > 0 {
                         Text("SIGNAL DEGRADED")
                             .font(DesignTokens.mono(8))
                             .foregroundColor(DesignTokens.errorRed.opacity(0.6))
@@ -498,9 +501,10 @@ struct DiveTab: View {
             HapticEngine.diveBeat()
             diveScene?.triggerBeatPulse()
         }
-        newComposer.onDegradation = { [self] (_: Float) in
-            // Trigger view update so HUD reflects current degradation level
-            _ = composer?.degradation
+        newComposer.onDegradation = { degradation in
+            DispatchQueue.main.async {
+                currentDegradation = degradation
+            }
         }
 
         composer = newComposer
@@ -594,6 +598,7 @@ struct DiveTab: View {
         guard isDiving else { return }
         isDiving = false
         diveToken = nil
+        currentDegradation = 0
 
         // Stop tilt modulation
         motionController.stop()

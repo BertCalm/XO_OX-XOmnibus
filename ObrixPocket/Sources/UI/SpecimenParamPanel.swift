@@ -48,7 +48,7 @@ struct SpecimenParamPanel: View {
                         .foregroundColor(catColor(spec.category).opacity(0.6))
 
                     Text(synthDescription(spec.category))
-                        .font(DesignTokens.mono(8))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(.white.opacity(0.15))
 
                     // Level badge
@@ -98,7 +98,7 @@ struct SpecimenParamPanel: View {
 
                 // Category role description — one line teaching what this category does
                 Text(categoryDescription(spec.category))
-                    .font(DesignTokens.body(9))
+                    .font(DesignTokens.body(11))
                     .foregroundColor(.white.opacity(0.3))
                     .padding(.horizontal, 16)
                     .padding(.top, 4)
@@ -156,7 +156,7 @@ struct SpecimenParamPanel: View {
                                 isPreviewPlaying = true
                             }) {
                                 Text(note == 48 ? "C3" : note == 60 ? "C4" : "C5")
-                                    .font(DesignTokens.mono(9))
+                                    .font(DesignTokens.mono(11))
                                     .foregroundColor(.white.opacity(0.4))
                                     .frame(width: 32, height: 28)
                                     .background(Color.white.opacity(0.06))
@@ -193,7 +193,7 @@ struct SpecimenParamPanel: View {
                                 .tracking(1)
                             Spacer()
                             Text(showAdvanced ? "HIDE" : "SHOW")
-                                .font(DesignTokens.mono(8))
+                                .font(DesignTokens.mono(11))
                                 .tracking(1.5)
                         }
                         .foregroundColor(showAdvanced ? DesignTokens.reefJade.opacity(0.6) : .white.opacity(0.4))
@@ -291,7 +291,7 @@ struct SpecimenParamPanel: View {
                             Text("Boost +50 XP")
                                 .font(DesignTokens.body(10))
                             Text("(\(ReefEnergyManager.xpCost)⚡)")
-                                .font(DesignTokens.mono(9))
+                                .font(DesignTokens.mono(11))
                         }
                         .foregroundColor(ReefEnergyManager.shared.canAfford(ReefEnergyManager.xpCost)
                             ? DesignTokens.xoGold : .white.opacity(0.15))
@@ -468,7 +468,7 @@ struct SpecimenParamPanel: View {
     private func sectionHeader(_ title: String) -> some View {
         HStack {
             Text(title)
-                .font(DesignTokens.mono(9))
+                .font(DesignTokens.mono(11))
                 .tracking(1.5)
                 .foregroundColor(.white.opacity(0.2))
             Rectangle()
@@ -486,7 +486,7 @@ struct SpecimenParamPanel: View {
             // Sonic character from catalog — tells user what this source actually produces
             if let entry = SpecimenCatalog.entry(for: spec.subtype) {
                 Text(entry.sonicCharacter)
-                    .font(DesignTokens.body(9))
+                    .font(DesignTokens.body(11))
                     .foregroundColor(catColor(spec.category).opacity(0.4))
                     .padding(.bottom, 2)
             }
@@ -503,7 +503,7 @@ struct SpecimenParamPanel: View {
             // Processor type + filter behavior hint from catalog
             if let entry = SpecimenCatalog.entry(for: spec.subtype) {
                 Text(entry.sonicCharacter)
-                    .font(DesignTokens.body(9))
+                    .font(DesignTokens.body(11))
                     .foregroundColor(catColor(spec.category).opacity(0.4))
                     .padding(.bottom, 2)
             }
@@ -521,11 +521,11 @@ struct SpecimenParamPanel: View {
             // Modulator character + static target hint
             if let entry = SpecimenCatalog.entry(for: spec.subtype) {
                 Text(entry.sonicCharacter)
-                    .font(DesignTokens.body(9))
+                    .font(DesignTokens.body(11))
                     .foregroundColor(catColor(spec.category).opacity(0.4))
             }
             Text("→ Filter Cutoff")
-                .font(DesignTokens.body(9))
+                .font(DesignTokens.body(11))
                 .foregroundColor(catColor(spec.category).opacity(0.3))
                 .padding(.bottom, 2)
             paramSlider("Rate", paramKey: "obrix_lfo1Rate", range: 0.01...10, unit: "Hz", spec: spec)
@@ -541,7 +541,7 @@ struct SpecimenParamPanel: View {
             // Effect type from catalog — names the effect and what it does to the output
             if let entry = SpecimenCatalog.entry(for: spec.subtype) {
                 Text(entry.sonicCharacter)
-                    .font(DesignTokens.body(9))
+                    .font(DesignTokens.body(11))
                     .foregroundColor(catColor(spec.category).opacity(0.4))
                     .padding(.bottom, 2)
             }
@@ -767,10 +767,10 @@ struct SwapPickerView: View {
                                         .foregroundColor(.white)
                                     HStack(spacing: 6) {
                                         Text(specimen.rarity.rawValue.uppercased())
-                                            .font(DesignTokens.mono(8))
+                                            .font(DesignTokens.mono(11))
                                             .foregroundColor(DesignTokens.xoGold)
                                         Text("Lv.\(specimen.level)")
-                                            .font(DesignTokens.mono(8))
+                                            .font(DesignTokens.mono(11))
                                             .foregroundColor(.white.opacity(0.4))
                                     }
                                 }
@@ -865,7 +865,7 @@ struct FusionPickerView: View {
                                         .font(DesignTokens.heading(13))
                                         .foregroundColor(.white)
                                     Text("Lv.\(spec.level) · \(spec.rarity.rawValue)")
-                                        .font(DesignTokens.mono(9))
+                                        .font(DesignTokens.mono(11))
                                         .foregroundColor(.white.opacity(0.4))
                                 }
                                 Spacer()
@@ -961,7 +961,7 @@ struct FusionPreviewView: View {
                         .font(DesignTokens.mono(10))
                         .foregroundColor(.white.opacity(0.7))
                     Text("Lv.\(sourceSpecimen.level)")
-                        .font(DesignTokens.mono(9))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(.white.opacity(0.3))
                 }
 
@@ -975,7 +975,7 @@ struct FusionPreviewView: View {
                         .font(DesignTokens.mono(10))
                         .foregroundColor(.white.opacity(0.7))
                     Text("Lv.\(partnerSpecimen.level)")
-                        .font(DesignTokens.mono(9))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(.white.opacity(0.3))
                 }
             }
@@ -983,13 +983,13 @@ struct FusionPreviewView: View {
             // Blend slider
             VStack(spacing: 8) {
                 Text("BLEND")
-                    .font(DesignTokens.mono(9))
+                    .font(DesignTokens.mono(11))
                     .tracking(1.5)
                     .foregroundColor(.white.opacity(0.4))
 
                 HStack(spacing: 12) {
                     Text(sourceSpecimen.creatureName.prefix(8))
-                        .font(DesignTokens.mono(8))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(.white.opacity(0.3))
 
                     Slider(value: Binding(
@@ -999,7 +999,7 @@ struct FusionPreviewView: View {
                     .tint(DesignTokens.effectColor)
 
                     Text(partnerSpecimen.creatureName.prefix(8))
-                        .font(DesignTokens.mono(8))
+                        .font(DesignTokens.mono(11))
                         .foregroundColor(.white.opacity(0.3))
                 }
                 .padding(.horizontal, 20)

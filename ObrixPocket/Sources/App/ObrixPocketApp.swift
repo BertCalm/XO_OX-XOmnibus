@@ -16,6 +16,7 @@ struct ObrixPocketApp: App {
 
     @State private var importPreview: XOReefFile?
     @State private var showImportPreview = false
+    @State private var importErrorMessage: String?
 
     init() {
         // Build the genetics/aging/memory graph in dependency order so all weak
@@ -63,8 +64,18 @@ struct ObrixPocketApp: App {
                 .environmentObject(reefStore)
                 .environmentObject(firstLaunchManager)
                 .environmentObject(spawnManager)
+                .environmentObject(gameCoordinator)
                 .onOpenURL { url in
                     handleIncomingReefFile(url)
+                }
+                // #958: Surface .xoreef import failures to the user with an alert.
+                .alert("Import Failed", isPresented: Binding(
+                    get: { importErrorMessage != nil },
+                    set: { if !$0 { importErrorMessage = nil } }
+                )) {
+                    Button("OK", role: .cancel) { importErrorMessage = nil }
+                } message: {
+                    Text(importErrorMessage ?? "Could not import reef file.")
                 }
                 .sheet(isPresented: $showImportPreview) {
                     if let reef = importPreview {
@@ -122,6 +133,12 @@ struct ObrixPocketApp: App {
                     audioEngine.applyReefConfiguration(reefStore)
 
                     firstLaunchManager.recordAppOpen()
+
+                    // Kick off deferred init (AchievementManager, LoreCodex,
+                    // PerformanceMonitor) after the first frame has settled.
+                    // runDeferredInit schedules its own internal delays (0.5s + 1.0s)
+                    // so this call returns immediately and does not block the UI.
+                    LazyInitManager.shared.runDeferredInit { }
                 }
                 // Save on background/inactive, manage audio on foreground
                 .onChange(of: scenePhase) { newPhase in
@@ -180,9 +197,19 @@ struct ObrixPocketApp: App {
     }
 
     private func handleIncomingReefFile(_ url: URL) {
-        guard url.pathExtension == "xoreef" else { return }
-        guard let data = try? Data(contentsOf: url) else { return }
-        guard let reef = XOReefImporter.parse(data: data) else { return }
+        // #958: Every failure path must surface a user-visible error — no silent guards.
+        guard url.pathExtension == "xoreef" else {
+            importErrorMessage = "Not a valid reef file (expected .xoreef)."
+            return
+        }
+        guard let data = try? Data(contentsOf: url) else {
+            importErrorMessage = "Could not read reef file. The file may be corrupted or inaccessible."
+            return
+        }
+        guard let reef = XOReefImporter.parse(data: data) else {
+            importErrorMessage = "Could not parse reef file. The file may be from an incompatible version."
+            return
+        }
         importPreview = reef
         showImportPreview = true
     }

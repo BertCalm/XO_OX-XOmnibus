@@ -162,7 +162,7 @@ struct MicroscopeView: View {
             Spacer()
         }
         .frame(height: 22)
-        .animation(.easeInOut(duration: 0.2), value: showSynthParams)
+        .animation(.reducingMotion(.easeInOut(duration: 0.2)), value: showSynthParams)
     }
 
     // MARK: - Provenance
