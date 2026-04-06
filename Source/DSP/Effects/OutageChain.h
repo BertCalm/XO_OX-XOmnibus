@@ -302,18 +302,27 @@ private:
         float         srHoldL       = 0.0f;
         float         srHoldR       = 0.0f;
         float         srReduceFactor = 1.0f;
+        std::vector<float> inL_, inR_, rvL_, rvR_;
 
-        void prepare(double sampleRate)
+        void prepare(double sampleRate, int maxBlockSize)
         {
             reverb.prepare(sampleRate);
             amLfo.setShape(StandardLFO::Sine);
             amLfo.setRate(40.0f, static_cast<float>(sampleRate));
+            inL_.resize(maxBlockSize, 0.0f);
+            inR_.resize(maxBlockSize, 0.0f);
+            rvL_.resize(maxBlockSize, 0.0f);
+            rvR_.resize(maxBlockSize, 0.0f);
         }
         void reset()
         {
             reverb.reset();
             srHoldCounter = 0.0f;
             srHoldL = srHoldR = 0.0f;
+            std::fill(inL_.begin(), inL_.end(), 0.0f);
+            std::fill(inR_.begin(), inR_.end(), 0.0f);
+            std::fill(rvL_.begin(), rvL_.end(), 0.0f);
+            std::fill(rvR_.begin(), rvR_.end(), 0.0f);
         }
         void processBlock(float* L, float* R, int numSamples,
                           float decay, float amRate, float mix, float srF)
@@ -325,13 +334,17 @@ private:
             reverb.setDiffusion(0.6f);
             reverb.setMix(1.0f); // full wet, we mix externally
 
-            // Copy for reverb input
-            std::vector<float> inL(L, L + numSamples);
-            std::vector<float> inR(R, R + numSamples);
-            std::vector<float> rvL(numSamples, 0.0f);
-            std::vector<float> rvR(numSamples, 0.0f);
+            // Copy for reverb input (using pre-allocated member buffers)
+            float* inL = inL_.data();
+            float* inR = inR_.data();
+            float* rvL = rvL_.data();
+            float* rvR = rvR_.data();
+            std::copy(L, L + numSamples, inL);
+            std::copy(R, R + numSamples, inR);
+            std::fill(rvL, rvL + numSamples, 0.0f);
+            std::fill(rvR, rvR + numSamples, 0.0f);
 
-            reverb.processBlock(inL.data(), inR.data(), rvL.data(), rvR.data(), numSamples);
+            reverb.processBlock(inL, inR, rvL, rvR, numSamples);
 
             // AM modulation + sample-rate reduction on reverb output
             amLfo.setRate(amRate, srF);
@@ -400,7 +413,7 @@ inline void OutageChain::prepare(double sampleRate, int maxBlockSize)
     kField_.prepare(sampleRate);
     multiHead_.prepare(sampleRate);
     chorus_.prepare(sampleRate);
-    spectralReverb_.prepare(sampleRate);
+    spectralReverb_.prepare(sampleRate, maxBlockSize);
 }
 
 inline void OutageChain::reset()

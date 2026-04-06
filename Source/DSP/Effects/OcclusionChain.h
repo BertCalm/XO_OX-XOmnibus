@@ -331,8 +331,9 @@ private:
         float          freezeXfade = 0.0f;  // 0 = live, 1 = frozen loop
         bool           wasFrozen   = false;
         double         sr          = 44100.0;
+        std::vector<float> loopL_, loopR_, rvL_, rvR_;
 
-        void prepare(double sampleRate)
+        void prepare(double sampleRate, int maxBlockSize)
         {
             sr = sampleRate;
             int bufSize = static_cast<int>(sampleRate * 2.0) + 4; // 2s
@@ -342,6 +343,10 @@ private:
             loopPosL = loopPosR = 0.0f;
             freezeXfade = 0.0f;
             wasFrozen   = false;
+            loopL_.resize(maxBlockSize, 0.0f);
+            loopR_.resize(maxBlockSize, 0.0f);
+            rvL_.resize(maxBlockSize, 0.0f);
+            rvR_.resize(maxBlockSize, 0.0f);
         }
         void reset()
         {
@@ -351,6 +356,10 @@ private:
             loopPosL = loopPosR = 0.0f;
             freezeXfade = 0.0f;
             wasFrozen   = false;
+            std::fill(loopL_.begin(), loopL_.end(), 0.0f);
+            std::fill(loopR_.begin(), loopR_.end(), 0.0f);
+            std::fill(rvL_.begin(), rvL_.end(), 0.0f);
+            std::fill(rvR_.begin(), rvR_.end(), 0.0f);
         }
         void processBlock(float* L, float* R, int numSamples,
                           float clockRate, bool freeze, float verbSize, float srF)
@@ -367,7 +376,9 @@ private:
 
             int bufSize = loopBufL.getSize();
 
-            std::vector<float> loopL(numSamples), loopR(numSamples);
+            // Use pre-allocated member buffers (no heap allocation on audio thread)
+            float* loopL = loopL_.data();
+            float* loopR = loopR_.data();
 
             // Loop playback: read at clockRate speed
             float loopStep = std::max(0.1f, std::min(clockRate, 4.0f));
@@ -398,10 +409,11 @@ private:
                 moodVerb.setDiffusion(0.8f);
                 moodVerb.setMix(freezeXfade); // scale verb wet with freeze crossfade
 
-                std::vector<float> rvL(numSamples), rvR(numSamples);
-                moodVerb.processBlock(L, R, rvL.data(), rvR.data(), numSamples);
-                std::copy(rvL.begin(), rvL.end(), L);
-                std::copy(rvR.begin(), rvR.end(), R);
+                float* rvL = rvL_.data();
+                float* rvR = rvR_.data();
+                moodVerb.processBlock(L, R, rvL, rvR, numSamples);
+                std::copy(rvL, rvL + numSamples, L);
+                std::copy(rvR, rvR + numSamples, R);
             }
         }
     } mood_;
@@ -437,7 +449,7 @@ inline void OcclusionChain::prepare(double sampleRate, int maxBlockSize)
     fuzzWar_.prepare(sampleRate, maxBlockSize);
     polyphrase_.prepare(sampleRate);
     bitrman_.prepare(sampleRate);
-    mood_.prepare(sampleRate);
+    mood_.prepare(sampleRate, maxBlockSize);
 }
 
 inline void OcclusionChain::reset()
