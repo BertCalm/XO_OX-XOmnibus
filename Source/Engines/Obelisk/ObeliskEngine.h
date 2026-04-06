@@ -798,7 +798,7 @@ public:
             // Damping knob produces click-free, sample-accurate amplitude shortening.
             // Cost: one std::exp per sample (not per voice) — acceptable vs. 8×kNumModes resonators.
             float decayTimeNow = std::max(pDecay * (1.0f - dampNow * 0.8f), 0.01f);
-            float decayCoeffNow = std::exp(-1.0f / (decayTimeNow * srf));
+            float decayCoeffNow = fastExp(-1.0f / (decayTimeNow * srf));
 
             float mixL = 0.0f, mixR = 0.0f;
 
@@ -860,9 +860,9 @@ public:
                             // Compute 2nd-order resonator coefficients (matched-Z)
                             float w = 2.0f * 3.14159265f * modeFreq / srf;
                             float bw = modeFreq / modeQ;
-                            float r = std::exp(-3.14159265f * bw / srf);
-                            voice.modeCoeffsB0[m] = (1.0f - r * r) * std::sin(w);
-                            voice.modeCoeffsA1[m] = 2.0f * r * std::cos(w);
+                            float r = fastExp(-3.14159265f * bw / srf);
+                            voice.modeCoeffsB0[m] = (1.0f - r * r) * fastSin(w);
+                            voice.modeCoeffsA1[m] = 2.0f * r * fastCos(w);
                             voice.modeCoeffsA2[m] = r * r;
                             voice.cachedModeFreqs[m] = modeFreq;
                             voice.cachedModeQs[m] = modeQ;
@@ -925,7 +925,7 @@ public:
                     // BOLT rattle: amplitude modulation on affected modes
                     if (pPrepType == 1 && voicePrepDepth > 0.01f)
                     {
-                        float posSens = std::sin((m + 1.0f) * 3.14159265f * pPrepPosition);
+                        float posSens = fastSin((m + 1.0f) * 3.14159265f * pPrepPosition);
                         posSens *= posSens;
                         if (posSens > 0.1f)
                             modeOut =
