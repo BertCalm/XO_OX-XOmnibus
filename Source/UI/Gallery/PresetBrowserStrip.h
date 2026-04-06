@@ -6,6 +6,7 @@
 #include "../../Core/PresetManager.h"
 #include "../PresetBrowser/PresetBrowser.h"
 #include "../GalleryColors.h"
+#include "../ToastOverlay.h"
 #include "MacroSection.h"
 
 namespace xoceanus
@@ -88,7 +89,20 @@ public:
             pm.previousPreset();
             const auto& preset = pm.getCurrentPreset();
             processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
-            processor.applyPreset(preset);
+            try
+            {
+                processor.applyPreset(preset);
+            }
+            catch (const std::exception& e)
+            {
+                DBG("Preset load failed (prev): " << e.what());
+                // #879: show user-visible toast so the failure is not silent
+                ToastOverlay::show("Failed to load preset: " + juce::String(e.what()),
+                                   Toast::Level::Warn);
+                // #894: flush any in-flight crossfade/FX state so the engine is not
+                // left in an inconsistent state after a partial parameter application.
+                processor.killDelayTails();
+            }
             if (macroSection && !preset.macroLabels.isEmpty())
                 macroSection->setLabels(preset.macroLabels);
             if (onPresetLoaded)
@@ -101,7 +115,20 @@ public:
             pm.nextPreset();
             const auto& preset = pm.getCurrentPreset();
             processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
-            processor.applyPreset(preset);
+            try
+            {
+                processor.applyPreset(preset);
+            }
+            catch (const std::exception& e)
+            {
+                DBG("Preset load failed (next): " << e.what());
+                // #879: show user-visible toast so the failure is not silent
+                ToastOverlay::show("Failed to load preset: " + juce::String(e.what()),
+                                   Toast::Level::Warn);
+                // #894: flush any in-flight crossfade/FX state so the engine is not
+                // left in an inconsistent state after a partial parameter application.
+                processor.killDelayTails();
+            }
             if (macroSection && !preset.macroLabels.isEmpty())
                 macroSection->setLabels(preset.macroLabels);
             if (onPresetLoaded)
@@ -228,7 +255,20 @@ private:
                 return;
             safeThis->processor.getPresetManager().setCurrentPreset(preset);
             safeThis->processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
-            safeThis->processor.applyPreset(preset);
+            try
+            {
+                safeThis->processor.applyPreset(preset);
+            }
+            catch (const std::exception& e)
+            {
+                DBG("Preset load failed (browser select): " << e.what());
+                // #879: show user-visible toast so the failure is not silent
+                ToastOverlay::show("Failed to load preset: " + juce::String(e.what()),
+                                   Toast::Level::Warn);
+                // #894: flush any in-flight crossfade/FX state so the engine is not
+                // left in an inconsistent state after a partial parameter application.
+                safeThis->processor.killDelayTails();
+            }
             safeThis->nameLabel.setText(preset.name, juce::dontSendNotification);
             safeThis->updateFavBtn(preset); // #916: refresh strip star after browser selection
             if (safeThis->macroSection && !preset.macroLabels.isEmpty())

@@ -326,6 +326,12 @@ public:
             catch (const std::exception& e)
             {
                 DBG("Preset load failed (prev): " << e.what());
+                // #879: show user-visible toast so the failure is not silent
+                ToastOverlay::show("Failed to load preset: " + juce::String(e.what()),
+                                   Toast::Level::Warn);
+                // #894: flush any in-flight crossfade/FX state so the engine is not
+                // left in an inconsistent state after a partial parameter application.
+                processor.killDelayTails();
             }
             repaint();
         };
@@ -347,6 +353,12 @@ public:
             catch (const std::exception& e)
             {
                 DBG("Preset load failed (next): " << e.what());
+                // #879: show user-visible toast so the failure is not silent
+                ToastOverlay::show("Failed to load preset: " + juce::String(e.what()),
+                                   Toast::Level::Warn);
+                // #894: flush any in-flight crossfade/FX state so the engine is not
+                // left in an inconsistent state after a partial parameter application.
+                processor.killDelayTails();
             }
             repaint();
         };
