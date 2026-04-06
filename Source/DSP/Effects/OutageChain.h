@@ -196,28 +196,37 @@ private:
             head1Phase = head2Pos = head3Phase = 0.0f;
         }
 
-        float process(float in, int dir1Choice, int dir2Choice, int dir3Choice, float mix)
+        // ct5Len: 0–100 percent of the 500ms capture window the heads can reach.
+        // At 0, heads collapse to the write cursor (no delay). At 100 (default 50),
+        // heads span the full half-second buffer. This makes ct5Len audible by
+        // controlling the maximum read offset for all three playback heads.
+        float process(float in, int dir1Choice, int dir2Choice, int dir3Choice,
+                      float mix, float ct5Len)
         {
             circBuf.write(in);
             int bufSize = circBuf.getSize();
             if (bufSize <= 0) return in;
 
+            // Scale maximum head reach by ct5Len (0–100 → 0.0–1.0 of buffer)
+            float lenScale = juce::jlimit(0.0f, 1.0f, ct5Len * 0.01f);
+            float scaledBuf = std::max(1.0f, static_cast<float>(bufSize) * lenScale);
+
             // Head 1: forward 0.5x (reads half speed)
             head1Phase += 0.5f;
-            if (head1Phase >= static_cast<float>(bufSize)) head1Phase -= static_cast<float>(bufSize);
+            if (head1Phase >= scaledBuf) head1Phase -= scaledBuf;
             float h1 = circBuf.readForward(static_cast<int>(head1Phase));
 
             // Head 2: backward 1.0x
             head2Pos += 1.0f;
-            if (head2Pos >= static_cast<float>(bufSize)) head2Pos -= static_cast<float>(bufSize);
+            if (head2Pos >= scaledBuf) head2Pos -= scaledBuf;
             float h2 = circBuf.readBackward(static_cast<int>(head2Pos));
 
             // Head 3: forward 2.0x
             head3Phase += 2.0f;
-            if (head3Phase >= static_cast<float>(bufSize)) head3Phase -= static_cast<float>(bufSize);
+            if (head3Phase >= scaledBuf) head3Phase -= scaledBuf;
             float h3 = circBuf.readForward(static_cast<int>(head3Phase));
 
-            // dir choice: 0=forward, 1=backward, 2=double
+            // dir choice: 0=forward 0.5x, 1=backward 1x, 2=forward 2x
             auto pickHead = [&](int choice) -> float {
                 switch (choice) {
                     case 0:  return h1;
@@ -443,6 +452,7 @@ inline void OutageChain::processBlock(const float* monoIn, float* L, float* R,
     const float kFieldRate   = p_kFieldRate->load(std::memory_order_relaxed);
     const float kFieldDepth  = p_kFieldDepth->load(std::memory_order_relaxed);
     const float lpgSens      = p_lpgSens->load(std::memory_order_relaxed);
+    const float ct5Len       = p_ct5Len->load(std::memory_order_relaxed);
     const float ct5Mix       = p_ct5Mix->load(std::memory_order_relaxed) * 0.01f;
     const int   ct5Dir1      = static_cast<int>(p_ct5Dir1->load(std::memory_order_relaxed));
     const int   ct5Dir2      = static_cast<int>(p_ct5Dir2->load(std::memory_order_relaxed));
@@ -468,8 +478,8 @@ inline void OutageChain::processBlock(const float* monoIn, float* L, float* R,
         // Stage 2: K-Field Modulator / LPG
         x = kField_.process(x, kFieldRate, kFieldDepth, lpgSens, srF);
 
-        // Stage 3: Multi-Head Buffer
-        x = multiHead_.process(x, ct5Dir1, ct5Dir2, ct5Dir3, ct5Mix);
+        // Stage 3: Multi-Head Buffer (ct5Len controls capture window reach)
+        x = multiHead_.process(x, ct5Dir1, ct5Dir2, ct5Dir3, ct5Mix, ct5Len);
 
         L[i] = x;
     }
