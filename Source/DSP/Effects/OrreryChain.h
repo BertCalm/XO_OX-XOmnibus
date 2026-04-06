@@ -402,8 +402,8 @@ private:
 
                 resonantFilter.setMode(CytomicSVF::Mode::LowPass);
                 resonantFilter.setCoefficients(cutoff, 0.5f, srF);
-                outL[i] = resonantFilter.processSample(outL[i]);
-                outR[i] = resonantFilter.processSample(outR[i]);
+                outL[i] = flushDenormal(resonantFilter.processSample(outL[i]));
+                outR[i] = flushDenormal(resonantFilter.processSample(outR[i]));
             }
         }
     } nightSky_;

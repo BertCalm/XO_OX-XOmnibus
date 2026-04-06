@@ -232,8 +232,8 @@ private:
 
                 freqSmL.set(minHz + normL * range);
                 freqSmR.set(minHz + normR * range);
-                const float fL = freqSmL.process();
-                const float fR = freqSmR.process();
+                const float fL = flushDenormal(freqSmL.process());
+                const float fR = flushDenormal(freqSmR.process());
 
                 svfL.setCoefficients(fL, res, srF);
                 svfR.setCoefficients(fR, res, srF);

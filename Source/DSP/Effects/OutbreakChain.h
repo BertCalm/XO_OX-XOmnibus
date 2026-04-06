@@ -128,7 +128,7 @@ private:
             // Low-pass the S&H output at ~2Hz to get smooth wow
             wowSmooth.setMode(CytomicSVF::Mode::LowPass);
             wowSmooth.setCoefficients(2.0f, 0.5f, srF);
-            float smoothWow = wowSmooth.processSample(rawWow);
+            float smoothWow = flushDenormal(wowSmooth.processSample(rawWow));
 
             // Flutter at 60Hz
             float flutter = flutterLFO.process() * flutterAmt;
@@ -149,7 +149,7 @@ private:
             bwFreq = std::max(2000.0f, bwFreq);
             bwLimit.setMode(CytomicSVF::Mode::LowPass);
             bwLimit.setCoefficients(bwFreq, 0.6f, srF);
-            return bwLimit.processSample(wowDelay.read(delaySamp));
+            return flushDenormal(bwLimit.processSample(wowDelay.read(delaySamp)));
         }
     } genLoss_;
 

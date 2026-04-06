@@ -109,7 +109,7 @@ private:
                 float measuredFreq = srF / zcPeriod;
                 measuredFreq = std::max(20.0f, std::min(measuredFreq, 4000.0f));
                 // One-pole smooth the frequency estimate
-                detectedFreq = detectedFreq * 0.95f + measuredFreq * 0.05f;
+                detectedFreq = flushDenormal(detectedFreq * 0.95f + measuredFreq * 0.05f);
                 zcPeriod = 0.0f;
             }
             zcPeriod = flushDenormal(zcPeriod + 1.0f);
@@ -223,7 +223,7 @@ private:
             freqSmoother.prepare(srF, glideMs * 0.001f);
             float targetFreq = 220.0f * fastPow2(intervalSemitones / 12.0f);
             freqSmoother.set(targetFreq);
-            float smoothFreq = freqSmoother.process();
+            float smoothFreq = flushDenormal(freqSmoother.process());
 
             pllOsc.setFrequency(smoothFreq, srF);
             float pllOut = pllOsc.processSample() * 0.4f;

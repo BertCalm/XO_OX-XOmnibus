@@ -238,6 +238,7 @@ private:
             if (activeCount > 0)
                 out /= static_cast<float>(activeCount);
 
+            out = flushDenormal(out);
             return out;
         }
     } grainLooper_;
