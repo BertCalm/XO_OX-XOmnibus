@@ -69,10 +69,11 @@ private:
         CytomicSVF lpf1, lpf2;   // cascaded LPF
         Saturator  tubeSat;
 
-        void prepare(double /*sampleRate*/)
+        void prepare(double sampleRate)
         {
             hpf1.reset(); hpf2.reset();
             lpf1.reset(); lpf2.reset();
+            tubeSat.prepare(sampleRate);
             tubeSat.setMode(Saturator::SaturationMode::Tube);
             tubeSat.setDrive(0.3f);
             tubeSat.setMix(0.5f);
