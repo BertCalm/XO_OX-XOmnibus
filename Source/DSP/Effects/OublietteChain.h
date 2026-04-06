@@ -192,9 +192,14 @@ private:
         void reset()
         {
             envFollow.reset();
-            pllPhaseAcc = 0.0f;
-            subPhase    = 0.0f;
-            lastSample  = 0.0f;
+            pllOsc.reset();
+            pllFreq       = 220.0f;
+            pllFreqSmooth = 220.0f;
+            pllPhaseAcc   = 0.0f;
+            subPhase      = 0.0f;
+            lastSample    = 0.0f;
+            zeroCrossCount    = 0;
+            periodSamples     = 100;
             samplesSinceCross = 0;
         }
 
@@ -297,6 +302,16 @@ private:
             stepAccum  = 0.0f;
         }
 
+        // Pre-compute attCoeff once per block before the sample loop.
+        // Call prepareAttCoeff(attackMs, srF) in processBlock before the per-sample loop,
+        // then call process() without the attackMs argument.
+        float cachedAttCoeff = 0.0f;
+
+        void prepareAttCoeff(float attackMs, float srF)
+        {
+            cachedAttCoeff = fastExp(-1.0f / (attackMs * 0.001f * srF));
+        }
+
         float process(float in, int patternIndex, float attackMs, float dutyFrac,
                       double bpm, int numSamplesElapsed)
         {
@@ -322,12 +337,12 @@ private:
             float stepPos = stepAccum / stepSamples;
             if (stepPos > dutyFrac) gateOpen = false;
 
-            // Attack coefficient per attackMs parameter
-            float attCoeff = fastExp(-1.0f / (attackMs * 0.001f * srF));
+            // Use pre-computed attCoeff (hoisted above the sample loop via prepareAttCoeff)
+            (void)attackMs; // consumed by prepareAttCoeff before the loop
 
             // Smooth gate with attack
             float targetGain = gateOpen ? 1.0f : 0.0f;
-            gateGain = flushDenormal(gateGain * attCoeff + targetGain * (1.0f - attCoeff));
+            gateGain = flushDenormal(gateGain * cachedAttCoeff + targetGain * (1.0f - cachedAttCoeff));
 
             return in * gateGain;
         }
@@ -363,6 +378,8 @@ private:
         {
             delayL.clear();
             delayR.clear();
+            lfoL.reset();
+            lfoR.reset();
         }
 
         void process(float in, float& outL, float& outR,
@@ -460,6 +477,9 @@ inline void OublietteChain::processBlock(const float* monoIn, float* L, float* R
     widener_.lfoR.setRate(0.97f, srF);
 
     if (bpm <= 0.0) bpm = 120.0;
+
+    // Hoist attCoeff fastExp() computation above the sample loop (constant within block)
+    slicer_.prepareAttCoeff(sliceAttack, srF);
 
     // Mono pipeline stages 1-3 (write to L as temp mono)
     for (int i = 0; i < numSamples; ++i)

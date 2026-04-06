@@ -342,6 +342,13 @@ private:
             float baseFreq = 200.0f + color * 1800.0f;
             float depth    = 800.0f; // ±800 Hz sweep
 
+            // setMode is block-constant — hoist outside the per-sample loop
+            for (int s = 0; s < kAllPassStages; ++s)
+            {
+                apL[s].setMode(CytomicSVF::Mode::AllPass);
+                apR[s].setMode(CytomicSVF::Mode::AllPass);
+            }
+
             for (int i = 0; i < numSamples; ++i)
             {
                 float modL = lfoL.process();
@@ -361,11 +368,9 @@ private:
                 float xR = R[i];
                 for (int s = 0; s < kAllPassStages; ++s)
                 {
-                    apL[s].setMode(CytomicSVF::Mode::AllPass);
                     apL[s].setCoefficients(sFL * (1.0f + 0.3f * static_cast<float>(s)), 0.5f, srF);
                     xL = apL[s].processSample(xL);
 
-                    apR[s].setMode(CytomicSVF::Mode::AllPass);
                     apR[s].setCoefficients(sFR * (1.0f + 0.3f * static_cast<float>(s)), 0.5f, srF);
                     xR = apR[s].processSample(xR);
                 }
