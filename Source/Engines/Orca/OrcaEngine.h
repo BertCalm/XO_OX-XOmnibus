@@ -404,6 +404,13 @@ public:
         float effectiveEchoRate = clamp(pEchoRate + couplingEchoRateMod * 10.0f + macroMove * 5.0f, 0.5f, 40.0f);
         float effectiveEchoMix = clamp(pEchoMix + macroCoup * 0.4f + macroSpace * 0.5f, 0.0f, 1.0f);
 
+        // AmpToChoke coupling: couplingBreachTrigger scales output gain downward.
+        // Semantics: AmpToChoke amount [0..1] → gain reduction [1..0]. At amount=1.0
+        // the orca is fully choked (silent). At amount=0.5 the level is halved.
+        // Named "breach" because a surface-breach partner displaces the orca's
+        // sonic territory — louder partner → more orca displacement. (#944)
+        const float chokeGain = clamp(1.0f - couplingBreachTrigger, 0.0f, 1.0f);
+
         // Reset coupling accumulators
         couplingWTPosMod = 0.0f;
         couplingFormantMod = 0.0f;
@@ -734,9 +741,9 @@ public:
                 }
             }
 
-            // Apply master level
-            float finalL = mixL * pLevel;
-            float finalR = mixR * pLevel;
+            // Apply master level + AmpToChoke gain reduction (chokeGain from couplingBreachTrigger)
+            float finalL = mixL * pLevel * chokeGain;
+            float finalR = mixR * pLevel * chokeGain;
 
             // Write to output buffer
             if (buffer.getNumChannels() >= 2)
@@ -1279,8 +1286,8 @@ private:
     // State
     //==========================================================================
 
-    double sr = 44100.0;
-    float srf = 44100.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     float crossfadeRate = 0.0f;
     uint64_t voiceCounter = 0;
 

@@ -577,7 +577,11 @@ public:
 
         //-- Consume + reset coupling accumulators ------------------------------
         const float pitchOffset = externalPitchMod + pitchBendNorm * 2.0f + orbModPitchOffset;
-        const float morphOffset = externalMorphMod;
+        // EnvToMorph and RhythmToBlend both drive spectral morph position.
+        // RhythmToBlend (externalBlendMod) adds a rhythmic pulse on top of the
+        // smooth envelope morph — drum hits from a partner engine sweep the harmonic
+        // grid with percussive energy. The two offsets sum additively. (#946)
+        const float morphOffset = externalMorphMod + externalBlendMod;
         const float filterOffset = externalFilterMod;
         const float fmAudioAmount = externalFmMod;
         externalPitchMod = externalMorphMod = externalFilterMod = 0.0f;
@@ -1482,8 +1486,8 @@ private:
     float modWheelValue = 0.0f;
 
     //-- Sample rate (cached at prepare()) --------------------------------------
-    double cachedSampleRate = 44100.0;
-    float cachedSampleRateFloat = 44100.0f;
+    double cachedSampleRate = 0.0;  // Sentinel: must be set by prepare() before use
+    float cachedSampleRateFloat = 0.0f;  // Sentinel: must be set by prepare() before use
 
     //-- Voice pool -------------------------------------------------------------
     std::array<OrbitalVoice, kMaxVoices> voices{};

@@ -567,10 +567,10 @@ public:
         smoothBodySize.set(pBodySize);
         smoothShimmer.set(effectiveShimmer);
 
-        // Clear coupling accumulators
+        // Clear couplingFilterMod now — it was consumed above in effectiveBright (line ~555).
+        // couplingPitchMod and couplingInstrumentMod are consumed further below and are
+        // reset there to avoid clearing them before they reach the DSP. (#947)
         couplingFilterMod = 0.0f;
-        couplingPitchMod = 0.0f;
-        couplingInstrumentMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
 
@@ -593,9 +593,11 @@ public:
         }
         thermalState += thermalCoeff * (thermalTarget - thermalState);
 
-        // Select instrument ratio table
+        // Select instrument ratio table — couplingInstrumentMod (from EnvToMorph) sweeps
+        // through the 4 glass/porcelain timbres. Consumed here, then cleared. (#947)
         const float* ratioTable;
         int instrument = std::clamp(pInstrument + static_cast<int>(couplingInstrumentMod * 3.0f + 0.5f), 0, 3);
+        couplingInstrumentMod = 0.0f; // reset after use
         switch (instrument)
         {
         case 0:
@@ -810,6 +812,10 @@ public:
             couplingCacheL = mixL;
             couplingCacheR = mixR;
         }
+
+        // couplingPitchMod was consumed inside the sample loop (per-voice pitch bend, line ~659).
+        // Reset here after the loop so it doesn't accumulate across blocks. (#947)
+        couplingPitchMod = 0.0f;
 
         int count = 0;
         for (const auto& v : voices)
@@ -1030,8 +1036,8 @@ public:
     }
 
 private:
-    double sr = 48000.0;
-    float srf = 48000.0f;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
 
     std::array<OpalineVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

@@ -134,19 +134,26 @@ public:
         // DSP FIX: Apply coupling modulation to grain density (AmpToFilter → grain cloud)
         snapshot.grainDensity = std::clamp(snapshot.grainDensity + couplingGrainMod, 0.0f, 1.0f);
 
-        // Reset coupling accumulators after use
+        // Reset coupling accumulators that have already been consumed above.
         couplingGrainMod = 0.0f;
         couplingSubMod = 0.0f;
-        couplingPitchMod = 0.0f; // applied above as combinedSemitones offset to applyPitchBend
 
-        // Apply pitch bend and LFOToPitch coupling to voice target frequency.
-        // couplingPitchMod is in semitones (±1 at amount=1.0); combined with pitch
-        // bend before passing the unified ratio to the voice so both offsets compose.
+        // Apply pitch bend, LFOToPitch coupling, and AudioToRing FM coupling to voice frequency.
+        // couplingPitchMod: LFOToPitch semitone offset (±1 semitone at full amount).
+        // couplingFMMod: AudioToRing RMS → frequency ratio scale (adds FM-style spread).
+        // Both are consumed here and reset AFTER use. (#945)
         if (voice.isActive())
         {
             float combinedSemitones = pitchBendNorm * 2.0f + couplingPitchMod;
-            voice.applyPitchBend(xoceanus::PitchBendUtil::semitonesToFreqRatio(combinedSemitones));
+            float freqRatio = xoceanus::PitchBendUtil::semitonesToFreqRatio(combinedSemitones);
+            // AudioToRing: scale frequency ratio by (1 + couplingFMMod) for FM-style excitation.
+            // couplingFMMod is bounded [0, 2.0] so this creates a ×1 to ×3 frequency sweep —
+            // partner loudness drives the owlfish deeper into subharmonic abyss.
+            freqRatio *= (1.0f + couplingFMMod);
+            voice.applyPitchBend(freqRatio);
         }
+        couplingPitchMod = 0.0f;
+        couplingFMMod = 0.0f;
 
         // Render the organism
         buffer.clear();
@@ -250,7 +257,7 @@ private:
     std::vector<float> outputCacheL, outputCacheR;
 
     int lastNoteOn = -1;
-    double sr = 44100.0;
+    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int maxBlock = 512;
 
     // D006: mod wheel (CC#1) — deepens mixtur subharmonic mix (+0.45 at full wheel)
