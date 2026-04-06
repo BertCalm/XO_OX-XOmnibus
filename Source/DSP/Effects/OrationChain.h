@@ -248,14 +248,14 @@ private:
             }
 
             // L = tap 0 + tap 1 (8th + dotted-8th)
-            float filtL0 = filters[0].processSample(tapIn[0]);
-            float filtL1 = filters[1].processSample(tapIn[1]);
             // R = tap 1 + tap 2 (dotted-8th + quarter)
-            float filtR1 = filters[1].processSample(tapIn[1]); // second SVF call on same tap for R
-            float filtR2 = filters[2].processSample(tapIn[2]);
+            // filters[1] is stateful (CytomicSVF) — call exactly once and cache
+            float filtL0  = filters[0].processSample(tapIn[0]);
+            float filt1   = filters[1].processSample(tapIn[1]); // cached; shared by L and R
+            float filtR2  = filters[2].processSample(tapIn[2]);
 
-            outL = flushDenormal((filtL0 + filtL1) * 0.5f);
-            outR = flushDenormal((filtR1 + filtR2) * 0.5f);
+            outL = flushDenormal((filtL0 + filt1) * 0.5f);
+            outR = flushDenormal((filt1  + filtR2) * 0.5f);
         }
     } fx25_;
 
