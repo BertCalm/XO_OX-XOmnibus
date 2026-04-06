@@ -209,7 +209,8 @@ struct SpecimenParamPanel: View {
                     if showAdvanced {
                         VStack(spacing: 8) {
                             sectionHeader("OSCILLATOR")
-                            paramSlider("Waveform", paramKey: "obrix_src1Type", range: 0...5, unit: "", spec: spec)
+                            // Range 0...8 mirrors ObrixEngine.h srcChoices: Off/Sine/Saw/Square/Tri/Noise/WT/Pulse/Driftwood
+                            paramSlider("Waveform", paramKey: "obrix_src1Type", range: 0...8, unit: "", spec: spec)
                             paramSlider("Wavetable", paramKey: "obrix_wtBank", range: 0...3, unit: "", spec: spec)
                             paramSlider("Unison Detune", paramKey: "obrix_unisonDetune", range: 0...50, unit: "", spec: spec)
 
@@ -236,7 +237,7 @@ struct SpecimenParamPanel: View {
                             paramSlider("Drift Depth", paramKey: "obrix_driftDepth", range: 0...1, unit: "", spec: spec)
 
                             sectionHeader("SOURCE 2")
-                            paramSlider("Src 2 Type", paramKey: "obrix_src2Type", range: 0...5, unit: "", spec: spec)
+                            paramSlider("Src 2 Type", paramKey: "obrix_src2Type", range: 0...8, unit: "", spec: spec)
                             paramSlider("Src 2 Tune", paramKey: "obrix_src2Tune", range: -24...24, unit: "st", spec: spec)
                             paramSlider("Src 2 PW", paramKey: "obrix_src2PW", range: 0.05...0.95, unit: "", spec: spec)
                             paramSlider("Source Mix", paramKey: "obrix_srcMix", range: 0...1, unit: "", spec: spec)

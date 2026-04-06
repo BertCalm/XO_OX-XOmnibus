@@ -342,7 +342,9 @@ struct MicroscopeView: View {
 
     private func formatOscType(_ value: Float?) -> String {
         guard let v = value else { return "—" }
-        let types = ["Saw", "Square", "Tri", "Noise", "WT", "FM"]
+        // Canonical index matches ObrixEngine.h srcChoices:
+        // 0=Off, 1=Sine, 2=Saw, 3=Square, 4=Triangle, 5=Noise, 6=Wavetable, 7=Pulse, 8=Driftwood
+        let types = ["Off", "Sine", "Saw", "Square", "Tri", "Noise", "WT", "Pulse", "Driftwood"]
         let idx = Int(v)
         return idx < types.count ? types[idx] : "Type \(idx)"
     }

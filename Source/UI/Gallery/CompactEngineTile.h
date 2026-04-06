@@ -36,9 +36,9 @@ public:
         A11y::setup(*this, "Engine Slot " + juce::String(slotIndex + 1),
                     "Click to open engine detail, right-click for options");
         setExplicitFocusOrder(slotIndex + 1);
-        // miniWave is kept as a member for potential future use but hidden —
-        // waveform is now painted directly in paint() per the mockup spec.
-        addChildComponent(miniWave); // add but invisible
+        // miniWave reads live audio from WaveformFifo at 30Hz (or 10Hz in
+        // reduced-motion mode) and draws the real engine output.
+        addAndMakeVisible(miniWave); // live waveform — bounds set in resized()
         macroValues.fill(0.0f);
 
         // P10 fix: cache parameter ID strings once in constructor to avoid
@@ -448,42 +448,16 @@ public:
             }
 
             // ── 4. Mini waveform area ────────────────────────────────────
-            // 22px tall, fake sine polyline, accent at 0.7 alpha, 1.2px stroke
+            // Background tint; the live MiniWaveform child component paints on top.
             {
                 float waveX = content.getX();
                 float waveW = content.getWidth();
 
-                // Background
                 g.setColour(juce::Colour(0x06FFFFFF)); // rgba(255,255,255,0.025)
                 g.fillRoundedRectangle(waveX, waveY, waveW, waveH, 3.0f);
 
-                // Waveform polyline — ~20 points, sine-ish, ±8px amplitude
-                {
-                    const int kPoints = 20;
-                    const float amplitude = 8.0f;
-                    const float cy = waveY + waveH * 0.5f;
-                    const float xStep = waveW / (float)(kPoints - 1);
-                    const float phaseOff = (float)(slot * 37) * 0.1f; // per-slot visual variation
-
-                    juce::Path wavePath;
-                    for (int i = 0; i < kPoints; ++i)
-                    {
-                        float px = waveX + (float)i * xStep;
-                        float t = (float)i / (float)(kPoints - 1);
-                        // Sine-ish with a second harmonic for organic feel
-                        float py =
-                            cy - amplitude *
-                                     (0.65f * std::sin(t * juce::MathConstants<float>::twoPi + phaseOff) +
-                                      0.35f * std::sin(t * juce::MathConstants<float>::twoPi * 2.0f + phaseOff * 1.3f));
-                        if (i == 0)
-                            wavePath.startNewSubPath(px, py);
-                        else
-                            wavePath.lineTo(px, py);
-                    }
-                    g.setColour(accent.withAlpha(0.7f));
-                    g.strokePath(wavePath, juce::PathStrokeType(1.2f, juce::PathStrokeType::curved,
-                                                                juce::PathStrokeType::rounded));
-                }
+                // MiniWaveform accent color must stay in sync with accent changes.
+                // miniWave.setAccentColour() is called in refresh() so it's always current.
             }
 
             // Footer (mood dots, FX indicator) and CPU bar removed —
@@ -534,8 +508,22 @@ public:
 
     void resized() override
     {
-        // miniWave is hidden (addChildComponent, not addAndMakeVisible) — waveform
-        // is drawn directly in paint(). No bounds to set.
+        // Mirror the waveform area calculation from paint() so miniWave occupies
+        // exactly the same region that previously held the fake sine polyline.
+        auto content = getLocalBounds().toFloat();
+        content.removeFromTop(9.0f);
+        content.removeFromRight(11.0f);
+        content.removeFromBottom(8.0f);
+        content.removeFromLeft(14.0f);
+
+        const float gap = 4.0f;
+        const float knobRowH = 40.0f + 10.0f; // knobArcDiam + knobLblH
+        float knobY = content.getY() + 16.0f + gap;
+        float waveTop = knobY + knobRowH + gap;
+        float waveH = content.getBottom() - gap - waveTop;
+        if (waveH < 10.0f) waveH = 10.0f;
+
+        miniWave.setBounds(juce::Rectangle<float>(content.getX(), waveTop, content.getWidth(), waveH).toNearestInt());
     }
 
     // Fix #7: cache CockpitHost pointer once when the component hierarchy is set up,

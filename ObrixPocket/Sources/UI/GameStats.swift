@@ -21,7 +21,7 @@ struct GameStats {
             reflexes:   Self.invert(params["obrix_env1Attack"] ?? 0.1, maxRaw: 0.5),
             stamina:    Self.scale(((params["obrix_env1Decay"] ?? 0.3) + (params["obrix_env1Release"] ?? 0.3)) / 2.0),
             presence:   Self.scale(min((params["obrix_unisonDetune"] ?? 0) / 50.0, 1.0)),
-            complexity: Self.scale(params["obrix_src1Type"].map { $0 / 5.0 } ?? 0.3),
+            complexity: Self.scale(params["obrix_src1Type"].map { $0 / 8.0 } ?? 0.3), // 8 = max index (Driftwood)
             pulse:      Self.scale(params["obrix_lfo1Rate"].map { min($0 / 10.0, 1.0) } ?? 0.3),
             grit:       Self.scale(params["obrix_fx1Param1"] ?? 0.3),
             aura:       Self.scale(params["obrix_fx1Mix"] ?? 0.3)
