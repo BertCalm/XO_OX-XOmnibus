@@ -201,9 +201,13 @@ struct ObrixFXState
     std::vector<float> chorusBufL, chorusBufR;
     int chorusWritePos = 0;
     float chorusLFOPhase = 0.0f;
-    std::vector<float> reverbBuf[4];
-    int reverbPos[4]{};
-    float reverbFilt[4]{};
+    // FDN reverb: 8 feedback delay lines + 2 allpass input diffusors
+    std::vector<float> reverbBuf[8];
+    int reverbPos[8]{};
+    float reverbFilt[8]{};
+    std::vector<float> apBuf[2]; // allpass diffusion stages (142, 379 samples at 44.1kHz)
+    int apPos[2]{};
+    float apState[2]{};
 
     void prepare(float sr)
     {
@@ -217,13 +221,23 @@ struct ObrixFXState
         chorusWritePos = 0;
         chorusLFOPhase = 0.0f;
         float srScale = sr / 44100.0f;
-        static constexpr int kRevLens[4] = {1087, 1283, 1511, 1789}; // Schroeder parallel comb lengths (prime-adjacent)
-        for (int i = 0; i < 4; ++i)
+        // OBRIX-999: 8-line FDN — prime-spaced delays for dense, non-resonant reverb
+        static constexpr int kRevLens[8] = {1087, 1283, 1511, 1789, 2011, 2333, 2677, 3001};
+        for (int i = 0; i < 8; ++i)
         {
             int len = static_cast<int>(static_cast<float>(kRevLens[i]) * srScale) + 1;
             reverbBuf[i].assign(static_cast<size_t>(len), 0.0f);
             reverbPos[i] = 0;
             reverbFilt[i] = 0.0f;
+        }
+        // 2-stage allpass input diffusors (142, 379 samples at 44.1kHz)
+        static constexpr int kApLens[2] = {142, 379};
+        for (int i = 0; i < 2; ++i)
+        {
+            int len = static_cast<int>(static_cast<float>(kApLens[i]) * srScale) + 1;
+            apBuf[i].assign(static_cast<size_t>(len), 0.0f);
+            apPos[i] = 0;
+            apState[i] = 0.0f;
         }
     }
 
@@ -235,10 +249,15 @@ struct ObrixFXState
         std::fill(chorusBufL.begin(), chorusBufL.end(), 0.0f);
         std::fill(chorusBufR.begin(), chorusBufR.end(), 0.0f);
         chorusWritePos = 0;
-        for (int i = 0; i < 4; ++i)
+        for (int i = 0; i < 8; ++i)
         {
             std::fill(reverbBuf[i].begin(), reverbBuf[i].end(), 0.0f);
             reverbFilt[i] = 0.0f;
+        }
+        for (int i = 0; i < 2; ++i)
+        {
+            std::fill(apBuf[i].begin(), apBuf[i].end(), 0.0f);
+            apState[i] = 0.0f;
         }
     }
 };
@@ -549,21 +568,21 @@ public:
 
         // Wave 3 params — Drift Bus, Journey, Spatial
         const float driftRate = loadP(pDriftRate, 0.005f); // Hz: 0.001–0.05
-        const float driftDepth = loadP(pDriftDepth, 0.0f); // 0=off, 1=full ensemble drift
+        const float driftDepth = loadP(pDriftDepth, 0.03f); // OBRIX-1002: subtle default drift (gentle ensemble breathing)
         const bool journeyOn = loadP(pJourneyMode, 0.0f) > 0.5f;
         const float distance = loadP(pDistance, 0.0f); // 0=close, 1=far (HF rolloff)
         const float air = loadP(pAir, 0.5f);           // 0=warm(bass), 1=cold(treble)
         journeyMode_ = journeyOn;                      // cached for noteOff suppression in MIDI handler
 
         // Wave 4 params — Biophonic Synthesis (all default 0 for backward compat)
-        const float fieldStrength = loadP(pFieldStrength, 0.0f);                      // 0=off
+        const float fieldStrength = loadP(pFieldStrength, 0.12f);                      // OBRIX-1002: gentle JI attraction (first keypress reveals the reef)
         const float fieldPolarity = loadP(pFieldPolarity, 1.0f);                      // 1=full attractor
         const float fieldRate = loadP(pFieldRate, 0.01f);                             // IIR convergence rate
         const auto fieldPrimeLimit = static_cast<int>(loadP(pFieldPrimeLimit, 1.0f)); // 0=3-limit,1=5-limit,2=7-limit
-        const float envTemp = loadP(pEnvTemp, 0.0f);                                  // 0=off
+        const float envTemp = loadP(pEnvTemp, 0.35f);                                  // OBRIX-1002: warm oceanic default temperature
         const float envPressure = loadP(pEnvPressure, 0.5f);                          // 0.5=neutral
         const float envCurrent = loadP(pEnvCurrent, 0.0f);                            // 0=no bias
-        const float envTurbidity = loadP(pEnvTurbidity, 0.0f);                        // 0=off
+        const float envTurbidity = loadP(pEnvTurbidity, 0.02f);                        // OBRIX-1002: faint spectral shimmer by default
         const float competitionStrength = loadP(pCompetitionStrength, 0.0f);          // 0=off
         const float symbiosisStrength = loadP(pSymbiosisStrength, 0.0f);              // 0=off
         const float stressDecay = loadP(pStressDecay, 0.0f);                          // 0=off
@@ -793,6 +812,8 @@ public:
             if (gestureLevel > 0.001f)
             {
                 gesturePhase += 5.0f / sr;
+                if (gesturePhase >= 1.0f)
+                    gesturePhase -= 1.0f; // OBRIX-1000: wrap to prevent float precision loss over time
                 switch (gestureType)
                 {
                 case 0:
@@ -837,7 +858,10 @@ public:
 
                 // --- Portamento ---
                 for (int i = 0; i < 2; ++i)
+                {
                     voice.srcFreq[i] += (voice.targetFreq[i] - voice.srcFreq[i]) * glideCoeff;
+                    voice.srcFreq[i] = flushDenormal(voice.srcFreq[i]); // OBRIX-1001: prevent denormal CPU spikes
+                }
 
                 // --- All 4 Modulators ---
                 // MOVEMENT macro scales LFO depth BEFORE routing
@@ -2030,37 +2054,62 @@ private:
             R = dryR * (1.0f - mix) + wR * mix;
             break;
         }
-        case 3: // Reverb (4-tap FDN, damping tracks param)
+        case 3: // Reverb — 8-line FDN with Householder mixing + allpass input diffusion (OBRIX-999)
         {
             float input = (L + R) * 0.5f * (0.5f + space * 0.5f);
-            float tap[4];
-            for (int i = 0; i < 4; ++i)
+
+            // 2-stage allpass input diffusion: smears transients before entering the FDN
+            // Each stage: y = -g*x + buf[rp] + g*y_prev  (Schroeder allpass)
+            static constexpr float kApGain = 0.7f;
+            for (int i = 0; i < 2; ++i)
+            {
+                int len = static_cast<int>(fx.apBuf[i].size());
+                if (len == 0) continue;
+                int rp = (fx.apPos[i] + 1) % len; // oldest sample
+                float bufOut = fx.apBuf[i][static_cast<size_t>(rp)];
+                float out = -kApGain * input + bufOut + kApGain * fx.apState[i];
+                fx.apBuf[i][static_cast<size_t>(fx.apPos[i])] = flushDenormal(input + kApGain * bufOut);
+                fx.apPos[i] = (fx.apPos[i] + 1) % len;
+                fx.apState[i] = flushDenormal(out);
+                input = out;
+            }
+
+            // Read 8 FDN delay lines and apply per-line damping LP
+            float tap[8];
+            float fb = 0.3f + param * 0.55f; // feedback gain (reverb time)
+            for (int i = 0; i < 8; ++i)
             {
                 int len = static_cast<int>(fx.reverbBuf[i].size());
-                if (len == 0)
-                {
-                    tap[i] = 0.0f;
-                    continue;
-                }
-                int readOff = static_cast<int>((0.3f + param * 0.7f) * static_cast<float>(len));
-                readOff = std::max(1, std::min(readOff, len - 1));
-                int rp = (fx.reverbPos[i] - readOff + len) % len;
-                tap[i] = fx.reverbBuf[i][static_cast<size_t>(rp)];
+                if (len == 0) { tap[i] = 0.0f; continue; }
+                tap[i] = fx.reverbBuf[i][static_cast<size_t>(fx.reverbPos[i])];
+                // Per-line damping LP (matches RT60 rolloff at high frequencies)
                 fx.reverbFilt[i] = flushDenormal(fx.reverbFilt[i] + (tap[i] - fx.reverbFilt[i]) * reverbDamp);
                 tap[i] = fx.reverbFilt[i];
             }
-            float tapSum = tap[0] + tap[1] + tap[2] + tap[3];
-            float fb = 0.3f + param * 0.5f;
-            for (int i = 0; i < 4; ++i)
+
+            // Householder mixing matrix: H = I - (2/N)*ones
+            // Each output line = tap[i] - (2/8)*sum = tap[i] - 0.25*sum
+            float tapSum = 0.0f;
+            for (int i = 0; i < 8; ++i) tapSum += tap[i];
+            float householderK = 0.25f; // 2/N = 2/8
+
+            // Write back FDN with Householder-mixed feedback + input injection
+            for (int i = 0; i < 8; ++i)
             {
-                float fbSample = fastTanh((tap[i] - 0.5f * tapSum) * fb + input);
                 int len = static_cast<int>(fx.reverbBuf[i].size());
-                if (len > 0)
-                    fx.reverbBuf[i][static_cast<size_t>(fx.reverbPos[i])] = flushDenormal(fbSample);
-                fx.reverbPos[i] = (fx.reverbPos[i] + 1) % std::max(1, len);
+                if (len == 0) continue;
+                float mixed = tap[i] - householderK * tapSum; // Householder row
+                float fbSample = mixed * fb + input;
+                fx.reverbBuf[i][static_cast<size_t>(fx.reverbPos[i])] = flushDenormal(fbSample);
+                fx.reverbPos[i] = (fx.reverbPos[i] + 1) % len;
             }
-            float rvL = tap[0] * 0.6f + tap[1] * 0.4f - tap[2] * 0.3f;
-            float rvR = -tap[1] * 0.3f + tap[2] * 0.4f + tap[3] * 0.6f;
+
+            // Stereo decorrelation: alternate lines L/R with cross-bleed
+            float rvL = tap[0] + tap[2] + tap[4] + tap[6] - 0.3f * (tap[1] + tap[3]);
+            float rvR = tap[1] + tap[3] + tap[5] + tap[7] - 0.3f * (tap[0] + tap[2]);
+            // Normalise: sum of 4 full lines + 2 partial cross-bleed terms
+            rvL *= 0.22f;
+            rvR *= 0.22f;
             L = dryL * (1.0f - mix) + rvL * mix;
             R = dryR * (1.0f - mix) + rvR * mix;
             break;
