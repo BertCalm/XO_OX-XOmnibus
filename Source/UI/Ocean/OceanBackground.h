@@ -191,11 +191,15 @@ private:
         );
 
         // Intermediate colour stops mapped to normalised [0, 1] positions.
-        // juce::ColourGradient uses the distance from the centre point,
-        // normalised by the distance to the end point (cornerRadius).
-        // We target visual radii that are fractions of cornerRadius.
-        grad.addColour(kSunlitRadius,   juce::Colour(GalleryColors::Ocean::twilight));
-        grad.addColour(kMidnightRadius, juce::Colour(GalleryColors::Ocean::deep));
+        // juce::ColourGradient normalises positions by the distance to the
+        // gradient's end point (cornerRadius here).  Our depth-zone constants
+        // are expressed as fractions of halfMin, so we scale them into the
+        // [0, cornerRadius] space to preserve visual alignment on non-square
+        // components.
+        const float halfMin = std::min(cx, cy);   // cx = w/2, cy = h/2
+        const float scale   = (cornerRadius > 0.0f) ? halfMin / cornerRadius : 1.0f;
+        grad.addColour(kSunlitRadius   * scale, juce::Colour(GalleryColors::Ocean::twilight));
+        grad.addColour(kMidnightRadius * scale, juce::Colour(GalleryColors::Ocean::deep));
 
         ig.setGradientFill(grad);
         ig.fillAll();
@@ -248,11 +252,8 @@ private:
                                 float cx, float cy,
                                 float halfMin) const
     {
-        // Respect the reduce-motion / reduce-transparency preference.
-        // Static rings are decorative — omitting them harms no functionality.
-        if (A11y::prefersReducedMotion())
-            return;
-
+        // Static rings are purely decorative and not animated — they do not
+        // trigger vestibular issues, so prefersReducedMotion does not gate them.
         const juce::Colour ringColour = juce::Colours::white.withAlpha(0.05f);
         g.setColour(ringColour);
 
