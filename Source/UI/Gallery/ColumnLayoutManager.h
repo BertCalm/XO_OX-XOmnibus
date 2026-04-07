@@ -6,6 +6,11 @@
 namespace xoceanus
 {
 
+// TODO(#979): ColumnLayoutManager is superseded by OceanView (Ocean View is now primary).
+// Retained because StatusBar.h includes it for kPlaySurfaceH and XOceanusEditor.h
+// references its constants in resize limits and PlaySurface height calculations.
+// Remove after those call sites are migrated to OceanView constants.
+
 // ColumnLayoutManager — computes all zone rectangles for the 3-column + header
 // + status bar + PlaySurface layout. Pure data struct, no JUCE Component inheritance.
 // Used by XOceanusEditor::resized() to get bounds for all zones.

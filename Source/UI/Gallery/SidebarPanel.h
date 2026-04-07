@@ -1,6 +1,11 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
+// TODO(#979): SidebarPanel is superseded by the sidebar inside OceanView (Ocean View is
+// now primary). Retained because OceanView.h creates a SidebarPanel via initSidebar(),
+// and XOceanusEditor.h still declares `SidebarPanel sidebar` for the legacy code path.
+// Remove after OceanView's sidebar_ becomes the sole sidebar instance.
+
 // SidebarPanel.h — Column C tabbed sidebar (320pt).
 //
 // Six tabs: PRESET | COUPLE | FX | PERFORM | EXPORT | SETTINGS

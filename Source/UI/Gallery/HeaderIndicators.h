@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
+// TODO(#979): CPUMeter and MIDIActivityIndicator from this file are still used by
+// XOceanusEditor in the legacy status-bar layout. Retain until the Ocean View
+// StatusBar or OceanView's own status strip absorbs these indicators.
+
 // HeaderIndicators.h — XOceanus header utility strip indicators.
 //
 // Components:

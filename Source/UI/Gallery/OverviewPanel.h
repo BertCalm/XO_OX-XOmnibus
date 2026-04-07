@@ -1,6 +1,11 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
+// TODO(#979): OverviewPanel is superseded by OceanView (Ocean View is now primary).
+// Retained because XOceanusEditor.h still declares `OverviewPanel overview` and
+// several Gallery sub-components reference it by name in comments/geometry.
+// Remove after XOceanusEditor migration is complete.
+
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
