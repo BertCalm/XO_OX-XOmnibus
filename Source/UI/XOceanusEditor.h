@@ -800,7 +800,11 @@ public:
             {
                 auto id     = eng->getEngineId();
                 auto accent = eng->getAccentColour();
-                oceanView_.setEngine(i, id, accent, EngineOrbit::DepthZone::Sunlit);
+                const int zoneInt = DepthZoneDial::depthZoneOf(id);
+                const auto zone = (zoneInt == 0) ? EngineOrbit::DepthZone::Sunlit
+                                : (zoneInt == 2) ? EngineOrbit::DepthZone::Midnight
+                                                 : EngineOrbit::DepthZone::Twilight;
+                oceanView_.setEngine(i, id, accent, zone);
             }
         }
 
@@ -2057,7 +2061,11 @@ private:
             {
                 auto id     = eng->getEngineId();
                 auto accent = eng->getAccentColour();
-                oceanView_.setEngine(i, id, accent, EngineOrbit::DepthZone::Sunlit);
+                const int zoneInt = DepthZoneDial::depthZoneOf(id);
+                const auto zone = (zoneInt == 0) ? EngineOrbit::DepthZone::Sunlit
+                                : (zoneInt == 2) ? EngineOrbit::DepthZone::Midnight
+                                                 : EngineOrbit::DepthZone::Twilight;
+                oceanView_.setEngine(i, id, accent, zone);
                 oceanView_.setVoiceCount(i, eng->getActiveVoiceCount());
             }
             else
