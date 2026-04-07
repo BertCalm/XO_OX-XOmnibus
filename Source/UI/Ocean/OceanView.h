@@ -568,7 +568,12 @@ public:
     void setVoiceCount(int slot, int count)
     {
         if (slot >= 0 && slot < 5)
+        {
             orbits_[slot].setVoiceCount(count);
+            // Forward to CouplingSubstrate so Coupling Evolution can detect
+            // when both endpoints of a route are actively playing.
+            substrate_.setSlotVoiceCount(slot, count);
+        }
     }
 
     // #909: Forward live readouts to NexusDisplay so Overview shows parameter activity.
