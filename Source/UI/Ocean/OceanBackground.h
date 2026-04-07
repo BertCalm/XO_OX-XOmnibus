@@ -190,16 +190,33 @@ private:
             /*isRadial=*/true
         );
 
-        // Intermediate colour stops mapped to normalised [0, 1] positions.
-        // juce::ColourGradient normalises positions by the distance to the
-        // gradient's end point (cornerRadius here).  Our depth-zone constants
-        // are expressed as fractions of halfMin, so we scale them into the
-        // [0, cornerRadius] space to preserve visual alignment on non-square
-        // components.
+        // #1008 FIX 3: 4 gradient stops that correctly represent all 3 depth zones.
+        // Zone 1 (Sunlit):   centre → kSunlitRadius   → Ocean::shallow → Ocean::twilight
+        // Zone 2 (Twilight): kSunlitRadius → midpoint → Ocean::twilight → midpoint colour
+        // Zone 3 (Midnight): midpoint → kMidnightRadius → Ocean::deep
+        // Edge:              kMidnightRadius → corner   → Ocean::abyss (already set)
+        //
+        // Positions are in juce::ColourGradient normalised space [0,1] where 1.0 =
+        // cornerRadius.  Depth-zone constants are fractions of halfMin, so we
+        // scale by halfMin/cornerRadius to align them visually on non-square windows.
         const float halfMin = std::min(cx, cy);   // cx = w/2, cy = h/2
         const float scale   = (cornerRadius > 0.0f) ? halfMin / cornerRadius : 1.0f;
-        grad.addColour(kSunlitRadius   * scale, juce::Colour(GalleryColors::Ocean::twilight));
-        grad.addColour(kMidnightRadius * scale, juce::Colour(GalleryColors::Ocean::deep));
+
+        // Stop 1: inner edge of sunlit zone → twilight colour
+        grad.addColour(kSunlitRadius * scale,
+                       juce::Colour(GalleryColors::Ocean::twilight));
+
+        // Stop 2: midpoint between twilight and midnight zones — bridging colour.
+        // Derived as the 50% blend of twilight and deep so there is no sharp jump.
+        const float midStop = ((kTwilightRadius + kMidnightRadius) * 0.5f) * scale;
+        const juce::Colour midColour =
+            juce::Colour(GalleryColors::Ocean::twilight)
+                .interpolatedWith(juce::Colour(GalleryColors::Ocean::deep), 0.5f);
+        grad.addColour(midStop, midColour);
+
+        // Stop 3: outer edge of midnight zone → deep colour
+        grad.addColour(kMidnightRadius * scale,
+                       juce::Colour(GalleryColors::Ocean::deep));
 
         ig.setGradientFill(grad);
         ig.fillAll();

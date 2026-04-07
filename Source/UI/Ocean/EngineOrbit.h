@@ -55,7 +55,9 @@ namespace xoceanus
     applies those bounds directly (the parent drives animation of position;
     this component animates only scale, breath, and glow).
 */
-class EngineOrbit : public juce::Component, private juce::Timer
+class EngineOrbit : public juce::Component,
+                    public juce::SettableTooltipClient,  // #1008 FIX 4: setTooltip() for minimized creatures
+                    private juce::Timer
 {
 public:
     //==========================================================================
@@ -146,10 +148,11 @@ public:
                                        couplingLean_);
 
         // ── Engine name label ────────────────────────────────────────────────
-        // Orbital state only: Minimized, SplitTransform, and ZoomIn omit the
-        // label.  ZoomIn is suppressed because at 120px the label extends beyond
-        // the component bounds, and the name is already shown in the detail panel
-        // (HIGH fix — #1006).
+        // Orbital state: full name below the creature.
+        // Minimized state (#1008 FIX 4): draw first 2 chars at 7px INSIDE the
+        //   circle so the creature is identifiable at 32px.  The tooltip (set in
+        //   setEngine()) provides the full name on hover.
+        // ZoomIn / SplitTransform: name shown in detail panel, omit here.
         if (interactionState_ == InteractionState::Orbital)
         {
             const float labelY    = cy + halfSize + 3.0f;
@@ -163,6 +166,18 @@ public:
             // than being silently clipped (#1006).
             g.drawText(engineId_, labelBounds.toNearestInt(),
                        juce::Justification::centredTop, true);
+        }
+        else if (interactionState_ == InteractionState::Minimized)
+        {
+            // #1008 FIX 4: 2-char initial inside the 32px circle so the creature
+            // is identifiable even without hovering.
+            const juce::String initials = engineId_.substring(0, 2).toUpperCase();
+            g.setFont(GalleryFonts::label(kMinimizedLabelSize));
+            g.setColour(accentColour_.withAlpha(0.85f));
+            const juce::Rectangle<float> initBounds(cx - halfSize, cy - halfSize,
+                                                     creatureSize, creatureSize);
+            g.drawText(initials, initBounds.toNearestInt(),
+                       juce::Justification::centred, false);
         }
 
         // ── Accessibility focus ring ─────────────────────────────────────────
@@ -212,6 +227,11 @@ public:
         // Announce the new engine name to accessibility clients.
         setTitle("Engine: " + engineId);
         setDescription("Depth zone: " + depthZoneName(zone) + ". Click to zoom in.");
+
+        // #1008 FIX 4: Always set a tooltip so hovering over a minimized (32px)
+        // creature shows the engine name.  The tooltip is visible in all states,
+        // but it is most critical when the label text is suppressed (Minimized).
+        setTooltip(engineId);
 
         // MEDIUM fix (#1006): start the animation timer only when an engine is
         // loaded — avoids 30 Hz wakeups on empty slots.
@@ -312,7 +332,8 @@ public:
         if (dist < kMagnetRange && dist > 1.0f)
         {
             float strength = (1.0f - dist / kMagnetRange) * kMagnetStrength;
-            targetMagnetOffset_ = delta.normalised() * strength;
+            // juce::Point<float> has no normalised() — divide by distance manually.
+            targetMagnetOffset_ = (delta / dist) * strength;
         }
         else
         {
@@ -502,9 +523,10 @@ private:
     // are declared in the public section above so OceanView can reference them).
     //==========================================================================
 
-    static constexpr float kBorderWidth      = 2.0f;   ///< Accent ring stroke width
-    static constexpr float kBreathAmplitude  = 0.05f;  ///< ±5 % scale oscillation
-    static constexpr float kNameFontSize     = 12.0f;  ///< Overbit label below creature
+    static constexpr float kBorderWidth         = 2.0f;   ///< Accent ring stroke width
+    static constexpr float kBreathAmplitude    = 0.05f;  ///< ±5 % scale oscillation
+    static constexpr float kNameFontSize       = 12.0f;  ///< Overbit label below creature
+    static constexpr float kMinimizedLabelSize = 7.0f;   ///< #1008: 2-char initial inside 32px circle
 
     // Proximity magnetism constants
     static constexpr float kMagnetRange    = 60.0f;   ///< Cursor proximity radius (px)
