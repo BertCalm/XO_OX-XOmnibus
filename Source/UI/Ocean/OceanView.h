@@ -68,6 +68,50 @@ namespace xoceanus
 
 //==============================================================================
 /**
+    DimOverlay — #1008 FIX 7
+
+    A transparent Component that sits in the Z-stack above the floating header
+    buttons but below PlaySurfaceOverlay.  When dimAlpha < 1.0 it fills its
+    bounds with Ocean::abyss at (1 - dimAlpha) opacity, dimming everything
+    underneath — including the header buttons that the old paint()-based rect
+    could never reach because juce::Component::paint() draws behind children.
+
+    setInterceptsMouseClicks(false, false) so the overlay is invisible to
+    the event system and clicks pass through to PlaySurfaceOverlay above it.
+*/
+struct DimOverlay : public juce::Component
+{
+    DimOverlay()
+    {
+        setInterceptsMouseClicks(false, false);
+        setOpaque(false);
+    }
+
+    void setDimAlpha(float alpha)
+    {
+        if (std::abs(alpha - dimAlpha_) < 0.001f)
+            return;
+        dimAlpha_ = alpha;
+        setVisible(dimAlpha_ < 0.999f);
+        repaint();
+    }
+
+    void paint(juce::Graphics& g) override
+    {
+        if (dimAlpha_ < 0.999f)
+        {
+            g.setColour(juce::Colour(GalleryColors::Ocean::abyss)
+                            .withAlpha(1.0f - dimAlpha_));
+            g.fillRect(getLocalBounds());
+        }
+    }
+
+private:
+    float dimAlpha_ = 1.0f;
+};
+
+//==============================================================================
+/**
     OceanView
 
     The single top-level component of the XOceanus Ocean View redesign.
@@ -160,11 +204,20 @@ public:
         addAndMakeVisible(settingsButton_);
         addAndMakeVisible(keysButton_);
 
+        // 11b. #1008 FIX 7: DimOverlay sits above all buttons but below
+        // PlaySurfaceOverlay.  Added after the buttons so it is painted on top.
+        // reorderZStack() will enforce the correct final ordering on each
+        // deferred init call.
+        addAndMakeVisible(dimOverlay_);
+        dimOverlay_.setVisible(false);  // hidden until dimAlpha_ drops below 1
+
         // 12. StatusBar placeholder until initStatusBar()
         // statusBar_ is a unique_ptr — added in initStatusBar()
 
         // ── Button styling ────────────────────────────────────────────────────
-        auto styleHeaderButton = [](juce::TextButton& btn, int minW)
+        // #1007 FIX 1: Add PointingHandCursor + hover state so buttons look
+        // polished rather than raw WinAmp-era TextButtons.
+        auto styleHeaderButton = [this](juce::TextButton& btn, int minW)
         {
             btn.setColour(juce::TextButton::buttonColourId,
                           juce::Colour(GalleryColors::Ocean::deep));
@@ -174,8 +227,23 @@ public:
                           juce::Colour(GalleryColors::Ocean::foam));
             btn.setColour(juce::TextButton::textColourOnId,
                           juce::Colour(GalleryColors::xoGold));
+            // Pointing cursor makes the interactive affordance unambiguous.
+            btn.setMouseCursor(juce::MouseCursor::PointingHandCursor);
+            // Hover tint: XO Gold at 15% alpha blended over Ocean::deep.
+            // We wire mouseEnter/mouseExit to flip a gold highlight on the
+            // button background colour so the hover state is visible.
+            btn.onStateChange = [&btn]()
+            {
+                const bool hovered = btn.isOver();
+                const juce::Colour baseColour = juce::Colour(GalleryColors::Ocean::deep);
+                const juce::Colour hoverColour =
+                    baseColour.interpolatedWith(juce::Colour(GalleryColors::xoGold), 0.15f);
+                btn.setColour(juce::TextButton::buttonColourId,
+                              hovered ? hoverColour : baseColour);
+            };
             // #908: initial size hint — layoutFloatingControls() sets definitive bounds.
             btn.setSize(minW, 44); // 44pt height = WCAG AA minimum touch target
+            juce::ignoreUnused(this);
         };
         styleHeaderButton(presetPrev_,   44);
         styleHeaderButton(presetNext_,   44);
@@ -183,11 +251,21 @@ public:
         styleHeaderButton(settingsButton_, 44);
         styleHeaderButton(keysButton_,   56);
 
-        favButton_.setTooltip("Toggle favourite");
+        // #1007 FIX 1: Tooltip text as fallback label for Unicode icon buttons.
+        favButton_.setTooltip("Favourite");
         settingsButton_.setTooltip("Settings");
         keysButton_.setTooltip("Toggle Play Surface (K)");
         presetPrev_.setTooltip("Previous preset");
         presetNext_.setTooltip("Next preset");
+
+        // #1007 FIX 3: Inline preset name label between < and > buttons.
+        // This creates spatial grouping so users understand the navigation relationship.
+        presetNameLabel_.setFont(GalleryFonts::label(12.0f));
+        presetNameLabel_.setColour(juce::Label::textColourId,
+                                   juce::Colour(GalleryColors::Ocean::foam));
+        presetNameLabel_.setJustificationType(juce::Justification::centred);
+        presetNameLabel_.setInterceptsMouseClicks(false, false); // pass clicks through to nexus
+        addAndMakeVisible(presetNameLabel_);
 
         A11y::setup(keysButton_,      "Keys toggle", "Show or hide the Play Surface panel");
         A11y::setup(settingsButton_,  "Settings");
@@ -216,7 +294,9 @@ public:
         playSurfaceOverlay_.onDimStateChanged = [this](bool dim)
         {
             dimAlpha_ = dim ? 0.35f : 1.0f;
-            repaint();
+            // #1008 FIX 7: drive the overlay component so header buttons are
+            // covered.  dimOverlay_ is a transparent child above buttons.
+            dimOverlay_.setDimAlpha(dimAlpha_);
         };
 
         keysButton_.onClick = [this]() { togglePlaySurface(); };
@@ -276,13 +356,18 @@ public:
 
     /**
         Initialise the StatusBar.
-        Must be called before the component becomes visible.
+        Must be the last deferred-init call — it sets fullyInitialised_ = true
+        and triggers the first valid resized() pass.
     */
     void initStatusBar()
     {
         statusBar_ = std::make_unique<StatusBar>();
         addAndMakeVisible(*statusBar_);
         reorderZStack();
+
+        // #1007 FIX 4: All 4 deferred-init methods have now been called.
+        // Unlock resized() and paint() before the first layout pass.
+        fullyInitialised_ = true;
         resized();
     }
 
@@ -292,19 +377,26 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        // The dim overlay for PlaySurface / BrowserOpen is handled by the
-        // individual overlay components (frosted glass, dimmed background).
-        // We apply a faint dimming rect over the ocean scene when dimAlpha_ < 1.
-        if (dimAlpha_ < 0.999f)
-        {
-            g.setColour(juce::Colour(GalleryColors::Ocean::abyss)
-                            .withAlpha(1.0f - dimAlpha_));
-            g.fillRect(getLocalBounds());
-        }
+        // #1007 FIX 4: Skip paint until fully initialised to avoid rendering
+        // with partially-constructed child components.
+        if (!fullyInitialised_)
+            return;
+
+        // #1008 FIX 7: The old paint()-based dim rect was behind all children
+        // so header buttons were never dimmed.  Dimming is now handled by
+        // dimOverlay_ (a transparent child component that sits above header
+        // buttons but below PlaySurfaceOverlay).  Nothing to paint here.
+        juce::ignoreUnused(g);
     }
 
     void resized() override
     {
+        // #1007 FIX 4: Don't layout before all deferred init methods have run.
+        // initMacros / initDetailPanel / initSidebar / initStatusBar must all be
+        // called before the component becomes interactive.
+        if (!fullyInitialised_)
+            return;
+
         switch (viewState_)
         {
             case ViewState::Orbital:        layoutOrbital();        break;
@@ -325,6 +417,10 @@ public:
         // PlaySurface overlay always covers the full parent area so it can
         // self-position via repositionFromOffset() inside PlaySurfaceOverlay.
         playSurfaceOverlay_.setBounds(getLocalBounds());
+
+        // #1008 FIX 7: DimOverlay also covers the full area so it can dim
+        // everything including the floating header buttons above it.
+        dimOverlay_.setBounds(getLocalBounds());
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -525,7 +621,13 @@ public:
     // Preset data setters
     //==========================================================================
 
-    void setPresetName(const juce::String& name)  { nexus_.setPresetName(name); }
+    void setPresetName(const juce::String& name)
+    {
+        nexus_.setPresetName(name);
+        // #1007 FIX 3: Keep the inline header label in sync so the spatial grouping
+        // "< Preset Name >" is always accurate.
+        presetNameLabel_.setText(name, juce::dontSendNotification);
+    }
     void setMoodName(const juce::String& mood)     { nexus_.setMoodName(mood); }
     void setMoodColour(juce::Colour colour)        { nexus_.setMoodColour(colour); }
 
@@ -1066,7 +1168,7 @@ private:
 
     void layoutFloatingControls()
     {
-        // ── Left cluster: prev | next | fav ──────────────────────────────────
+        // ── Left cluster: prev | presetName | next | fav ─────────────────────
         // #908: WCAG 2.5.5 requires a minimum 44×44pt touch target.
         // Visual height stays ~28pt via GalleryLookAndFeel's text rendering,
         // but the component bounds are expanded to 44pt so pointer/touch events
@@ -1083,11 +1185,19 @@ private:
                               kTopMargin,
                               kNavW, kBtnH);
 
-        presetNext_.setBounds(kLeftMargin + kNavW + kGap,
+        // #1007 FIX 3: Inline preset name label sits between < and > so the
+        // spatial grouping "< Preset Name >" is immediately legible.
+        // Width is capped at 160pt so it doesn't crowd the fav button.
+        constexpr int kNameLabelW = 160;
+        presetNameLabel_.setBounds(kLeftMargin + kNavW,
+                                   kTopMargin,
+                                   kNameLabelW, kBtnH);
+
+        presetNext_.setBounds(kLeftMargin + kNavW + kNameLabelW + kGap,
                               kTopMargin,
                               kNavW, kBtnH);
 
-        favButton_.setBounds(kLeftMargin + kNavW * 2 + kGap * 2,
+        favButton_.setBounds(kLeftMargin + kNavW + kNameLabelW + kNavW + kGap * 2,
                              kTopMargin,
                              kFavW, kBtnH);
 
@@ -1120,16 +1230,22 @@ private:
         };
     }
 
-    /** Map a DepthZone to its fractional radius (as a fraction of halfMin). */
+    /** Map a DepthZone to its fractional radius (as a fraction of halfMin).
+     *
+     *  #1008 FIX 5: Sunlit radius raised from 0.30 → 0.38.
+     *  At 0.30 the creature edge (radius + kOrbitalSize/2 ≈ 0.30*halfMin + 36px)
+     *  overlapped the NexusDisplay border at the default 1100×750 window size.
+     *  0.38 gives ~10 px clearance between the nexus edge and the creature edge.
+     */
     static float radiusForZone(EngineOrbit::DepthZone zone) noexcept
     {
         switch (zone)
         {
-            case EngineOrbit::DepthZone::Sunlit:   return 0.30f;
+            case EngineOrbit::DepthZone::Sunlit:   return 0.38f;  // #1008: was 0.30
             case EngineOrbit::DepthZone::Twilight: return 0.45f;
             case EngineOrbit::DepthZone::Midnight: return 0.60f;
         }
-        return 0.30f;
+        return 0.38f;
     }
 
     /**
@@ -1140,9 +1256,10 @@ private:
         front and disturbs the Z-stack.
 
         Order (bottom → top):
-          ambientEdge_ | detail_ | sidebar_ | browser_ | playSurfaceOverlay_ |
+          ambientEdge_ | detail_ | sidebar_ | browser_ |
           presetPrev_ | presetNext_ | favButton_ | settingsButton_ | keysButton_ |
-          statusBar_
+          dimOverlay_  ← #1008 FIX 7: above buttons, so buttons are dimmed |
+          playSurfaceOverlay_ | statusBar_
     */
     void reorderZStack()
     {
@@ -1150,12 +1267,14 @@ private:
         if (detail_)   detail_->toFront(false);
         if (sidebar_)  sidebar_->toFront(false);
         browser_.toFront(false);
-        playSurfaceOverlay_.toFront(false);
         presetPrev_.toFront(false);
         presetNext_.toFront(false);
         favButton_.toFront(false);
         settingsButton_.toFront(false);
         keysButton_.toFront(false);
+        // #1008 FIX 7: dimOverlay_ above buttons but below PlaySurfaceOverlay.
+        dimOverlay_.toFront(false);
+        playSurfaceOverlay_.toFront(false);
         if (statusBar_) statusBar_->toFront(false);
     }
 
@@ -1192,6 +1311,9 @@ private:
 
     // Overlay components.
     DnaMapBrowser        browser_;
+    // #1008 FIX 7: DimOverlay must be declared BEFORE PlaySurfaceOverlay so
+    // it is constructed first and can be placed below it in the Z-stack.
+    DimOverlay           dimOverlay_;
     PlaySurfaceOverlay   playSurfaceOverlay_;
 
     // Floating header controls.
@@ -1200,6 +1322,14 @@ private:
     juce::TextButton favButton_     { juce::String::charToString (0x2605) };  // ★
     juce::TextButton settingsButton_{ juce::String::charToString (0x2699) };  // ⚙
     juce::TextButton keysButton_    { "KEYS" };
+
+    // #1007 FIX 3: Inline preset name label between < and > for spatial grouping.
+    juce::Label      presetNameLabel_;
+
+    // #1007 FIX 4: Guard that all 4 deferred init methods have been called.
+    // resized() and paint() check this flag before executing — prevents layout
+    // and rendering crashes during the construction-to-visible window.
+    bool fullyInitialised_ = false;
 
     //==========================================================================
     // Layout constants

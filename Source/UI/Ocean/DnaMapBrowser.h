@@ -185,15 +185,29 @@ public:
             return;
         }
 
-        // ── Click on empty space — start panning ──────────────────────────────
-        panning_  = true;
-        panStart_ = e.position - viewOffset_;
+        // ── Click on empty space — arm pan but don't commit yet ──────────────
+        // #1007 FIX 5: Store the down position and set maybePanning_ = true.
+        // Actual panning (panning_ = true) is only committed once the mouse
+        // moves more than kPanThreshold pixels.  This prevents a 1px miss on a
+        // dot from accidentally hijacking the cursor into pan mode.
+        maybePanning_  = true;
+        panDownPos_    = e.position;
+        panStart_      = e.position - viewOffset_;
     }
 
     void mouseDrag(const juce::MouseEvent& e) override
     {
-        if (!panning_)
+        if (!maybePanning_)
             return;
+
+        // #1007 FIX 5: Only commit to panning once the drag exceeds threshold.
+        if (!panning_)
+        {
+            const float dist = e.position.getDistanceFrom(panDownPos_);
+            if (dist < kPanThreshold)
+                return;  // Still within threshold — treat as stationary
+            panning_ = true;
+        }
 
         viewOffset_ = e.position - panStart_;
         dotBufferDirty_ = true;
@@ -206,7 +220,8 @@ public:
     {
         if (panning_)
             rebuildSpatialGrid();  // Rebuild once pan is committed.
-        panning_ = false;
+        panning_     = false;
+        maybePanning_ = false;
     }
 
     void mouseMove(const juce::MouseEvent& e) override
@@ -898,11 +913,17 @@ private:
                    w - 106, h / 2 - 8, 100, 16,
                    juce::Justification::centredRight, false);
 
-        // Y axis: top and bottom labels (Warmth: top=cool, bottom=warm)
-        g.drawText("cool ↑",
+        // #1008 FIX 8: Y-axis labels derived dynamically from yAxis_ so they
+        // correctly reflect whatever axis is currently selected (not hard-wired
+        // to Warmth "cool/warm" labels that are nonsensical for other axes).
+        // Y is inverted in map-space (mapY=1 → top of screen), so "axis ↑"
+        // represents higher axis values at the top of the window.
+        const juce::String yTopLabel = axisLabel(yAxis_) + juce::String::fromUTF8(" \xe2\x86\x91");  // "Axis ↑"
+        const juce::String yBotLabel = juce::String::fromUTF8("\xe2\x86\x93 ") + axisLabel(yAxis_);   // "↓ Axis"
+        g.drawText(yTopLabel,
                    w / 2 - 50, m, 100, 14,
                    juce::Justification::centred, false);
-        g.drawText("↓ warm",
+        g.drawText(yBotLabel,
                    w / 2 - 50, h - m - 14, 100, 14,
                    juce::Justification::centred, false);
     }
@@ -1071,6 +1092,13 @@ private:
     juce::Point<float> viewOffset_ { 0.0f, 0.0f };
     bool               panning_    = false;
     juce::Point<float> panStart_   { 0.0f, 0.0f };
+
+    // #1007 FIX 5: Two-phase pan arming to prevent misfire when a dot click misses
+    // by 1px.  maybePanning_ is set on any empty-space mouseDown; panning_ is only
+    // committed once the drag exceeds kPanThreshold pixels.
+    bool               maybePanning_  = false;
+    juce::Point<float> panDownPos_    { 0.0f, 0.0f };
+    static constexpr float kPanThreshold = 4.0f; // pixels before pan commits
 
     // 32×32 spatial index
     static constexpr int kGridCells = 32;
