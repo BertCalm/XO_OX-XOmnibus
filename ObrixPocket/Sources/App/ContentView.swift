@@ -72,7 +72,7 @@ struct ContentView: View {
                             }) {
                                 VStack(spacing: 4) {
                                     Image(systemName: "music.note")
-                                        .font(.system(size: 20, weight: .semibold, relativeTo: .title3))
+                                        .font(.system(size: 20, weight: .semibold))
                                         .foregroundColor(.white)
                                     Text("SONG")
                                         .font(DesignTokens.mono(8))

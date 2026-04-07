@@ -29,7 +29,7 @@ extension ReefStore {
 
         ReefStore.saveWorkItem?.cancel()
         let workItem = DispatchWorkItem { [weak self] in
-            guard self != nil else { return }
+            guard let self else { return }
             guard let db = DatabaseManager.shared.db else { return }
             do {
                 try db.write { db in
@@ -51,11 +51,11 @@ extension ReefStore {
                     }
 
                     // Save reef metadata
-                    try saveMetadata(db, key: "reefName", value: snapshotReefName)
-                    try saveMetadata(db, key: "totalDiveDepth", value: "\(snapshotDiveDepth)")
+                    try self.saveMetadata(db, key: "reefName", value: snapshotReefName)
+                    try self.saveMetadata(db, key: "totalDiveDepth", value: "\(snapshotDiveDepth)")
                 }
             } catch {
-                self?.reportDBError("Reef save failed", error)
+                self.reportDBError("Reef save failed", error)
             }
         }
         ReefStore.saveWorkItem = workItem

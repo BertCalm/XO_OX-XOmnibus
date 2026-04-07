@@ -308,6 +308,7 @@ final class SpawnManager: ObservableObject {
     ///   Night + any    → Bio cosmetic  — Uncommon        at 35% probability
     ///
     /// Falls back gracefully when WeatherService is unavailable (no spawn).
+    @MainActor
     func checkWeatherBonus() {
         guard let weather = weatherService?.bestAvailable else { return }
 

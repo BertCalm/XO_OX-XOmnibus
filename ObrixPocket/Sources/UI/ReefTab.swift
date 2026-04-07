@@ -104,7 +104,7 @@ struct ReefTab: View {
                             onWiringChanged: {
                                 audioEngine.applyReefConfiguration(reefStore)
                                 // Notify GameCoordinator so progression events can fire (#Fix6)
-                                let wireCount = reefStore.routes.count
+                                let wireCount = reefStore.couplingRoutes.count
                                 if wireCount > 0 {
                                     let typeDesc = "wire_\(wireCount)"
                                     gameCoordinator.onSpecimensWired(typeDescription: typeDesc)
@@ -177,7 +177,7 @@ struct ReefTab: View {
                     Button(action: { withAnimation { showRecordingControls = true } }) {
                         HStack(spacing: 4) {
                             Image(systemName: "record.circle")
-                                .font(.system(size: 10, relativeTo: .caption2))
+                                .font(.system(size: 10))
                             Text("REC")
                                 .font(DesignTokens.mono(9))
                         }
@@ -195,7 +195,7 @@ struct ReefTab: View {
                         Spacer()
                         Button(action: { withAnimation { showRecordingControls = false } }) {
                             Image(systemName: "chevron.down.circle.fill")
-                                .font(.system(size: 14, relativeTo: .footnote))
+                                .font(.system(size: 14))
                                 .foregroundColor(.white.opacity(0.3))
                         }
                     }
@@ -255,8 +255,7 @@ struct ReefTab: View {
                         loopRecorder.recordNoteOff(midiNote: midiNote)
                         ambientResumeTimer?.invalidate()
                         if ambientEnabled {
-                            let t = Timer(timeInterval: 3.0, repeats: false) { [weak self] _ in
-                                guard let self else { return }
+                            let t = Timer(timeInterval: 3.0, repeats: false) { _ in
                                 ambientManager.start(reefStore: reefStore, audioEngine: audioEngine)
                             }
                             RunLoop.main.add(t, forMode: .common)
@@ -347,7 +346,7 @@ struct StasisBrowser: View {
                 Spacer()
                 Button(action: { onDismiss?() }) {
                     Image(systemName: "xmark")
-                        .font(.system(size: 10, weight: .bold, relativeTo: .caption2))
+                        .font(.system(size: 10, weight: .bold))
                         .foregroundColor(.white.opacity(0.3))
                 }
             }

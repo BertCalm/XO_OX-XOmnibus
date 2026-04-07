@@ -57,31 +57,35 @@ final class MotionController: ObservableObject {
         applyDeltasToEngine()
     }
 
-    /// Apply motion as **additive modulation deltas** via the bridge's delta API.
+    /// Apply motion as **additive modulation deltas** via immediate parameter writes.
     ///
-    /// Using delta/offset calls instead of absolute `setParameterImmediate` means
-    /// the specimen cache layer remains the authoritative base value.  The next
-    /// `applyCachedParams` call from the audio engine will re-establish the base,
-    /// and any subsequent delta application produces a correct combined result.
+    /// ObrixBridge has no native delta API, so we read the current parameter value,
+    /// add the motion offset, and write it back via `setParameterImmediate`.  The
+    /// specimen cache layer re-establishes the base on the next `applyCachedParams`
+    /// call, so these writes are inherently transient — when motion stops (tilt/shake
+    /// near zero) the engine returns to the cached base on the next load cycle.
     private func applyDeltasToEngine() {
         guard let bridge = ObrixBridge.shared() else { return }
 
         // Tilt X → filter cutoff delta (±cutoffDeltaRange Hz around the base value)
         let cutoffDelta = tiltX * cutoffDeltaRange
-        bridge.setParameterDelta("obrix_proc1Cutoff", delta: cutoffDelta)
+        let currentCutoff = bridge.getParameter("obrix_proc1Cutoff")
+        bridge.setParameterImmediate("obrix_proc1Cutoff", value: currentCutoff + cutoffDelta)
 
         // Tilt Y → resonance delta (±resoDeltaRange around the base value)
         let resoDelta = tiltY * resoDeltaRange
-        bridge.setParameterDelta("obrix_proc1Reso", delta: resoDelta)
+        let currentReso = bridge.getParameter("obrix_proc1Reso")
+        bridge.setParameterImmediate("obrix_proc1Reso", value: currentReso + resoDelta)
 
         // Shake → stutter burst via LFO rate/depth deltas (only when shaking)
         if shakeIntensity > 0.1 {
-            bridge.setParameterDelta("obrix_mod2Rate",  delta: shakeIntensity * 20.0)
-            bridge.setParameterDelta("obrix_mod2Depth", delta: shakeIntensity * 0.8)
-        } else {
-            // Return LFO deltas to zero when shake subsides
-            bridge.setParameterDelta("obrix_mod2Rate",  delta: 0)
-            bridge.setParameterDelta("obrix_mod2Depth", delta: 0)
+            let currentRate  = bridge.getParameter("obrix_mod2Rate")
+            let currentDepth = bridge.getParameter("obrix_mod2Depth")
+            bridge.setParameterImmediate("obrix_mod2Rate",  value: currentRate  + shakeIntensity * 20.0)
+            bridge.setParameterImmediate("obrix_mod2Depth", value: currentDepth + shakeIntensity * 0.8)
         }
+        // When shake subsides (shakeIntensity ≤ 0.1) the next applyCachedParams
+        // call from the audio engine will restore the base LFO values — no explicit
+        // zero write needed.
     }
 }

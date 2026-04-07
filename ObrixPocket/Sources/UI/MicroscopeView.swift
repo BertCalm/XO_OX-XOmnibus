@@ -87,7 +87,7 @@ struct MicroscopeView: View {
             if specimen.isFavorite {
                 HStack(spacing: 4) {
                     Image(systemName: "heart.fill")
-                        .font(.system(size: 10, relativeTo: .caption2))
+                        .font(.system(size: 10))
                         .foregroundColor(DesignTokens.errorRed)
                     Text("Favorite")
                         .font(DesignTokens.body(10))
@@ -147,7 +147,7 @@ struct MicroscopeView: View {
             if showSynthParams {
                 HStack(spacing: 4) {
                     Text("→")
-                        .font(.system(size: 10, relativeTo: .caption))
+                        .font(.system(size: 10))
                         .foregroundColor(.white.opacity(0.2))
                     Text(synthParam)
                         .font(DesignTokens.mono(9))
@@ -260,7 +260,7 @@ struct MicroscopeView: View {
                 ForEach(recentEntries) { entry in
                     HStack(alignment: .top, spacing: 8) {
                         Image(systemName: journalIcon(entry.type))
-                            .font(.system(size: 9, relativeTo: .caption2))
+                            .font(.system(size: 9))
                             .foregroundColor(journalColor(entry.type))
                             .frame(width: 16)
 
@@ -371,12 +371,13 @@ struct MicroscopeView: View {
     /// VoiceOver value summarising the specimen's spectral DNA dimensions.
     private var spectralAccessibilityValue: String {
         let dna = specimen.spectralDNA
-        let brightness = Int(dna.brightness * 100)
-        let warmth     = Int(dna.warmth     * 100)
-        let movement   = Int(dna.movement   * 100)
-        let density    = Int(dna.density    * 100)
-        let space      = Int(dna.space      * 100)
-        let aggression = Int(dna.aggression * 100)
+        // spectralDNA is a [Float] with 6D Sonic DNA order: brightness[0], warmth[1], movement[2], density[3], space[4], aggression[5]
+        let brightness = Int((dna.count > 0 ? dna[0] : 0) * 100)
+        let warmth     = Int((dna.count > 1 ? dna[1] : 0) * 100)
+        let movement   = Int((dna.count > 2 ? dna[2] : 0) * 100)
+        let density    = Int((dna.count > 3 ? dna[3] : 0) * 100)
+        let space      = Int((dna.count > 4 ? dna[4] : 0) * 100)
+        let aggression = Int((dna.count > 5 ? dna[5] : 0) * 100)
         return "Brightness \(brightness)%, warmth \(warmth)%, movement \(movement)%, " +
                "density \(density)%, space \(space)%, aggression \(aggression)%"
     }

@@ -536,9 +536,9 @@ struct RecipeDetailSheet: View {
                             .lineSpacing(2)
 
                         if !entry.personalityLine.isEmpty {
-                            Text(""\(entry.personalityLine)"")
-                                .font(DesignTokens.body(10))
-                                .foregroundColor(.white.opacity(0.3))
+                            Text("\u{201C}\(entry.personalityLine)\u{201D}")
+                                .font(DesignTokens.body(11))
+                                .foregroundColor(.white.opacity(0.55))
                                 .italic()
                         }
 
@@ -709,50 +709,29 @@ struct RecipeDetailSheet: View {
 // MARK: - Preview
 
 #if DEBUG
-private func makeTestRecipe(
-    p1: String, p2: String, offspring: String,
-    tier: CouplingRecipe.AffinityTier, isResonant: Bool,
-    name: String? = nil
-) -> CouplingRecipe {
-    CouplingRecipe(
-        id: UUID(),
-        parent1Subtype: p1,
-        parent2Subtype: p2,
-        affinityTier: tier,
-        offspringSubtype: offspring,
-        discoveredDate: Date().addingTimeInterval(-Double.random(in: 0...86400 * 30)),
-        communityName: name,
-        isResonantPair: isResonant
-    )
-}
-
 #Preview("Cookbook — partial progress") {
-    let cookbook = CookbookManager.shared
-    // Inject a few resonant discoveries for the preview
-    // (CookbookManager.shared starts empty in previews)
     CookbookView()
         .onAppear {
-            // Reset for clean preview state
-            cookbook.discoveredRecipes = [
-                makeTestRecipe(p1: "polyblep-saw", p2: "svf-lp",        offspring: "svf-lp",       tier: .high, isResonant: true, name: "Sawfin's Waltz"),
-                makeTestRecipe(p1: "fm-basic",     p2: "shaper-hard",   offspring: "shaper-hard",   tier: .high, isResonant: true),
-                makeTestRecipe(p1: "noise-white",  p2: "feedback",      offspring: "polyblep-saw",  tier: .high, isResonant: true, name: "Storm Shore"),
-                makeTestRecipe(p1: "lfo-sine",     p2: "delay-stereo",  offspring: "lfo-sine",      tier: .medium, isResonant: false),
-            ]
+            CookbookManager.shared.recordDiscovery(parent1: "polyblep-saw", parent2: "svf-lp", offspring: "svf-lp", affinity: .high)
+            CookbookManager.shared.recordDiscovery(parent1: "fm-basic", parent2: "shaper-hard", offspring: "shaper-hard", affinity: .high)
+            CookbookManager.shared.recordDiscovery(parent1: "noise-white", parent2: "feedback", offspring: "polyblep-saw", affinity: .high)
+            CookbookManager.shared.recordDiscovery(parent1: "lfo-sine", parent2: "delay-stereo", offspring: "lfo-sine", affinity: .medium)
         }
 }
 
 #Preview("Cookbook — Master Alchemist") {
     CookbookView()
         .onAppear {
-            // Fill all 12 resonant slots for the badge preview
-            CookbookManager.shared.discoveredRecipes = (0..<12).map { i in
-                makeTestRecipe(
-                    p1: "polyblep-saw", p2: "svf-lp",
-                    offspring: "svf-lp",
-                    tier: .high, isResonant: true,
-                    name: i % 3 == 0 ? "Recipe \(i + 1)" : nil
-                )
+            let pairs: [(String, String)] = [
+                ("polyblep-saw", "svf-lp"), ("fm-basic", "shaper-hard"),
+                ("noise-white", "feedback"), ("lfo-sine", "delay-stereo"),
+                ("polyblep-square", "svf-bp"), ("adsr-fast", "chorus-lush"),
+                ("vel-map", "reverb-hall"), ("lfo-random", "dist-warm"),
+                ("polyblep-tri", "svf-hp"), ("noise-pink", "shaper-soft"),
+                ("adsr-slow", "at-map"), ("wt-analog", "wt-vocal"),
+            ]
+            for (a, b) in pairs {
+                CookbookManager.shared.recordDiscovery(parent1: a, parent2: b, offspring: a, affinity: .high)
             }
         }
 }
