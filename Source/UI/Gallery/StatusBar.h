@@ -189,6 +189,21 @@ public:
             bpmLabel.setText(txt, juce::dontSendNotification);
     }
 
+    // Feature 7 (Schulze): Session timeline entry — one active coupling route.
+    struct TimelineEntry
+    {
+        juce::Colour colour;
+        float age = 0.0f;   // 0.0 (brand new) to 1.0 (fully mature)
+    };
+
+    // Feature 7 (Schulze): Push coupling age data for the session timeline.
+    // Called from the editor timer. Each entry represents one active coupling route.
+    void setCouplingTimeline(const std::vector<TimelineEntry>& entries)
+    {
+        timelineEntries_ = entries;
+        repaint();
+    }
+
     // slot: 0-3. accent is the engine colour when active, or ignored when inactive.
     void setSlotActive(int slot, bool active, juce::Colour accent)
     {
@@ -214,6 +229,29 @@ public:
         // ── Top border — border() = rgba(255,255,255,0.07) layer separator ───
         g.setColour(border());
         g.drawHorizontalLine(0, 0.0f, (float)getWidth());
+
+        // ── Feature 7 (Schulze): Session timeline color bar ──────────────────
+        if (!timelineEntries_.empty())
+        {
+            constexpr int kTimelineH = 3;   // 3px thin strip
+            constexpr int kTimelineY = 1;   // just below the top border
+            const int barW = getWidth();
+            const int numEntries = static_cast<int>(timelineEntries_.size());
+            const float segmentW = static_cast<float>(barW) / static_cast<float>(numEntries);
+
+            for (int i = 0; i < numEntries; ++i)
+            {
+                const auto& entry = timelineEntries_[static_cast<size_t>(i)];
+                // Alpha proportional to coupling age: mature routes are more visible
+                const float alpha = 0.15f + entry.age * 0.55f;
+                g.setColour(entry.colour.withAlpha(alpha));
+                g.fillRect(juce::Rectangle<float>(
+                    static_cast<float>(i) * segmentW,
+                    static_cast<float>(kTimelineY),
+                    segmentW + 1.0f,   // +1 to prevent sub-pixel gaps
+                    static_cast<float>(kTimelineH)));
+            }
+        }
 
         // ── Slot dots (right side, before lock button) — paint() is READ-ONLY ──
         // Prototype: 7×7px dots, T4 default, accent when active with 0 0 5px glow
@@ -438,6 +476,9 @@ private:
 
     // ── Cockpit bypass state ─────────────────────────────────────────────────
     bool cockpitBypassed_ = false;
+
+    // Feature 7 (Schulze): Session timeline — coupling age history
+    std::vector<TimelineEntry> timelineEntries_;
 
     // ── Keyboard shortcut listener ───────────────────────────────────────────
     ShortcutListener shortcutListener{*this};

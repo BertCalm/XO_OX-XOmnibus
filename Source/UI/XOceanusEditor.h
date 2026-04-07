@@ -2290,6 +2290,10 @@ private:
                     macroVals[static_cast<size_t>(m)] = param->getValue();
             }
             oceanView_.setLiveReadouts(totalVoices, macroVals);
+
+            // Feature 6 (Schulze): Sustained-voice DNA accumulation.
+            // Drive continuous DNA drift when voices are held (0.1s dt at 10 Hz).
+            oceanView_.tickSustainedDna(totalVoices, 0.1f);
         }
 
         // Coupling routes — convert MegaCouplingMatrix routes to OceanView CouplingRoute structs.
@@ -2331,6 +2335,9 @@ private:
                 oceanView_.setCouplingLean(i, lean);
             }
         }
+
+        // Feature 7 (Schulze): Push coupling age timeline to StatusBar.
+        oceanView_.updateCouplingTimeline();
 
         // Fix #1005: MIDI auto-show — forward any note-on to OceanView so the
         // PlaySurface overlay slides up when the user first plays a key.

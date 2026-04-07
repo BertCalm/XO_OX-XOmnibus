@@ -6,7 +6,7 @@
 // NexusDisplay — Center identity hub for the Ocean View radial layout.
 //
 // Renders the current preset's sonic identity in three stacked layers:
-//   1. DnaHexagon (64×64) — 6D Sonic DNA profile at full gallery size.
+//   1. DnaHexagon (96×96) — 6D Sonic DNA profile at full gallery size.
 //   2. Preset name — 18px Space Grotesk Bold, XO Gold with a subtle glow.
 //   3. Mood badge  — inline pill, mood colour at 12% alpha fill.
 //
@@ -14,7 +14,7 @@
 //   onPresetNameClicked — user clicked the name label (open DNA browser).
 //   onDnaClicked        — user clicked the hexagon (cycle axis projection).
 //
-// Preferred height: ~110px  (64 hex + 8 gap + 22 name + 4 gap + 18 badge).
+// Preferred height: ~142px  (96 hex + 8 gap + 22 name + 4 gap + 18 badge).
 // Width is unconstrained; components are always horizontally centred.
 //==============================================================================
 
@@ -31,6 +31,15 @@ public:
     //==========================================================================
     NexusDisplay()
     {
+        // Ghost hexagons must be added BEFORE dnaHex_ so they paint behind it.
+        addAndMakeVisible(ghostHex60_);
+        ghostHex60_.setInterceptsMouseClicks(false, false);
+        ghostHex60_.setAlpha(0.05f);
+
+        addAndMakeVisible(ghostHex30_);
+        ghostHex30_.setInterceptsMouseClicks(false, false);
+        ghostHex30_.setAlpha(0.10f);
+
         addAndMakeVisible(dnaHex_);
         dnaHex_.setAccentColor(accentColour_);
 
@@ -161,8 +170,10 @@ public:
         const auto bounds = getLocalBounds();
         const int w = bounds.getWidth();
 
-        // ── DNA Hexagon: 64×64, horizontally centred at top ──────────────────
+        // ── DNA Hexagon + ghost trails: all share the same bounds ────────────
         const int hexX = (w - kDnaSize) / 2;
+        ghostHex60_.setBounds(hexX, 0, kDnaSize, kDnaSize);
+        ghostHex30_.setBounds(hexX, 0, kDnaSize, kDnaSize);
         dnaHex_.setBounds(hexX, 0, kDnaSize, kDnaSize);
 
         int y = kDnaSize + kGapHexName;
@@ -329,6 +340,27 @@ public:
         repaint();
     }
 
+    // Feature 6 (Schulze): Sustained-voice DNA accumulation.
+    // Call from the editor timer to store the current polyphonic voice count.
+    void setSustainedVoiceCount(int count)
+    {
+        sustainedVoiceCount_ = count;
+    }
+
+    // Feature 6 (Schulze): Drift sessionDna_ toward presetDna_ at 0.001/sec
+    // while any voices are held. Call from the editor timer (e.g. dtSeconds=0.1
+    // at 10 Hz). Has no effect when no voices are sounding.
+    void tickSustainedDna(float dtSeconds)
+    {
+        if (sustainedVoiceCount_ <= 0)
+            return;
+
+        for (int i = 0; i < 6; ++i)
+            sessionDna_[i] += (presetDna_[i] - sessionDna_[i]) * 0.001f * dtSeconds;
+
+        blendAndApplyDna();
+    }
+
     //==========================================================================
     // Callbacks
     //==========================================================================
@@ -343,6 +375,11 @@ private:
     //==========================================================================
     // Child components
     //==========================================================================
+
+    // Feature 5 (Tomita): Ghost trail hexagons — added before dnaHex_ so they
+    // render behind it. ghostHex30_ = 30s ago (10% alpha), ghostHex60_ = 60s ago (5% alpha).
+    DnaHexagon ghostHex30_;
+    DnaHexagon ghostHex60_;
 
     DnaHexagon dnaHex_;
 
@@ -362,10 +399,20 @@ private:
     // Live DNA drift: session accumulator and blend weight.
     // sessionDna_  — leaky integrator over note-on events this session.
     // presetDna_   — last raw preset values passed to setDNA().
-    // kSessionBlend — 20% session character, 80% preset identity.
-    static constexpr float kSessionBlend = 0.20f;
+    // kSessionBlend — 35% session character, 65% preset identity.
+    static constexpr float kSessionBlend = 0.35f;
     std::array<float, 6> sessionDna_ = {0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f};
     std::array<float, 6> presetDna_  = {0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f};
+
+    // Feature 5 (Tomita): DNA drift trail history.
+    // dnaHistory_[0] = blended DNA ~30s ago, dnaHistory_[1] = ~60s ago.
+    std::array<std::array<float, 6>, 2> dnaHistory_
+        {{{{0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f}},
+          {{0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f}}}};
+    double lastHistorySnapshotMs_ = 0.0;
+
+    // Feature 6 (Schulze): Sustained-voice count for continuous DNA drift.
+    int sustainedVoiceCount_ = 0;
 
     // Cached layout rects — computed in resized().
     juce::Rectangle<int> presetNameBounds_;
@@ -376,7 +423,7 @@ private:
     // Layout constants
     //==========================================================================
 
-    static constexpr int   kDnaSize        = 64;
+    static constexpr int   kDnaSize        = 96;
     static constexpr int   kGapHexName     = 8;
     static constexpr int   kGapNameMood    = 4;
     static constexpr int   kGapMoodReadout = 6;  // #909: gap between mood badge and live readouts
@@ -391,6 +438,8 @@ private:
     //==========================================================================
 
     // Blend preset + session DNA at kSessionBlend ratio and push to DnaHexagon.
+    // Feature 5 (Tomita): every 30 seconds, rotate the blended value into
+    // dnaHistory_ and update the ghost hexagons.
     void blendAndApplyDna()
     {
         std::array<float, 6> blended;
@@ -401,6 +450,25 @@ private:
         dnaHex_.setDNA(blended[0], blended[1], blended[2],
                        blended[3], blended[4], blended[5]);
         // DnaHexagon calls repaint() internally.
+
+        // Feature 5 (Tomita): rotate history snapshot every 30 seconds.
+        const double nowMs = juce::Time::getMillisecondCounterHiRes();
+        if (lastHistorySnapshotMs_ == 0.0)
+            lastHistorySnapshotMs_ = nowMs;
+
+        if (nowMs - lastHistorySnapshotMs_ >= 30000.0)
+        {
+            // Rotate: slot[1] (60s ago) ← slot[0] (30s ago) ← current blended
+            dnaHistory_[1] = dnaHistory_[0];
+            dnaHistory_[0] = blended;
+            lastHistorySnapshotMs_ = nowMs;
+
+            // Push historical DNA values into the ghost hexagons.
+            const auto& h30 = dnaHistory_[0];
+            ghostHex30_.setDNA(h30[0], h30[1], h30[2], h30[3], h30[4], h30[5]);
+            const auto& h60 = dnaHistory_[1];
+            ghostHex60_.setDNA(h60[0], h60[1], h60[2], h60[3], h60[4], h60[5]);
+        }
     }
 
     //==========================================================================

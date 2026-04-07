@@ -293,10 +293,15 @@ public:
 
         playSurfaceOverlay_.onDimStateChanged = [this](bool dim)
         {
-            dimAlpha_ = dim ? 0.35f : 1.0f;
+            dimAlpha_ = dim ? 0.50f : 1.0f;
             // #1008 FIX 7: drive the overlay component so header buttons are
             // covered.  dimOverlay_ is a transparent child above buttons.
             dimOverlay_.setDimAlpha(dimAlpha_);
+
+            // Feature 3 (Vangelis): Forward PlaySurface visibility to all
+            // engine orbits so active-voice creatures glow brighter.
+            for (auto& orbit : orbits_)
+                orbit.setPlaySurfaceVisible(dim);
         };
 
         keysButton_.onClick = [this]() { togglePlaySurface(); };
@@ -684,6 +689,31 @@ public:
     void setLiveReadouts(int voiceCount, const std::array<float, 4>& macroValues)
     {
         nexus_.setLiveReadouts(voiceCount, macroValues);
+    }
+
+    // Feature 6 (Schulze): Sustained-voice DNA accumulation.
+    // Call from the editor's 10 Hz timer to drive continuous DNA drift when
+    // voices are held.  totalVoices is the sum across all engine slots.
+    void tickSustainedDna(int totalVoices, float dtSeconds)
+    {
+        nexus_.setSustainedVoiceCount(totalVoices);
+        nexus_.tickSustainedDna(dtSeconds);
+    }
+
+    // Feature 7 (Schulze): Forward coupling timeline data to StatusBar.
+    // Reads current route states from the substrate and pushes a snapshot
+    // to the StatusBar's session timeline strip.
+    void updateCouplingTimeline()
+    {
+        if (!statusBar_)
+            return;
+
+        const auto snapshots = substrate_.getTimelineSnapshot();
+        std::vector<StatusBar::TimelineEntry> entries;
+        entries.reserve(snapshots.size());
+        for (const auto& s : snapshots)
+            entries.push_back({ s.colour, s.age });
+        statusBar_->setCouplingTimeline(entries);
     }
 
     void setCouplingLean(int slot, float lean)

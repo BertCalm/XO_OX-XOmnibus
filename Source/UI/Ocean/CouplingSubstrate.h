@@ -154,14 +154,20 @@ private:
         drives the Coupling Evolution age accumulation. */
     std::array<int, kMaxSlots> slotVoiceCounts_{};
 
+    /** Index into routeStates_ of the route currently under the cursor, or -1. */
+    int hoveredRouteIdx_ = -1;
+
+    /** Last known mouse position in local coordinates — used for tooltip placement. */
+    juce::Point<float> lastMousePos_;
+
 public:
     //==========================================================================
     CouplingSubstrate()
     {
         // Transparent overlay — do not fill background.
         setOpaque(false);
-        // Substrate is purely decorative; mouse events pass through to creatures.
-        setInterceptsMouseClicks(false, false);
+        // hitTest() below returns true only when the cursor is within 8 px of a
+        // thread, so clicks on empty ocean pass through to creatures underneath.
         // Zero-initialise creature centres to an off-screen sentinel.
         centers_.fill(juce::Point<float>(-1.0f, -1.0f));
 
@@ -323,6 +329,31 @@ public:
     }
 
     //==========================================================================
+    /** Lightweight snapshot of one route's visual state for the session timeline. */
+    struct RouteSnapshot
+    {
+        juce::Colour colour;
+        float age = 0.0f;   ///< 0.0 (new) – 1.0 (60s mature)
+    };
+
+    /** Return a snapshot of all active (non-fading) route ages and colours.
+        Used by OceanView to feed StatusBar::setCouplingTimeline(). */
+    std::vector<RouteSnapshot> getTimelineSnapshot() const
+    {
+        std::vector<RouteSnapshot> out;
+        for (const auto& rs : routeStates_)
+        {
+            if (rs.isFading_)
+                continue;
+            out.push_back({
+                colourForType(rs.route.type),
+                rs.couplingAge_
+            });
+        }
+        return out;
+    }
+
+    //==========================================================================
     /** Returns true if there is at least one active (non-fading) coupling route. */
     bool hasActiveRoutes() const
     {
@@ -330,6 +361,62 @@ public:
             if (!rs.isFading_)
                 return true;
         return false;
+    }
+
+    //==========================================================================
+    /**
+        Returns true only when the cursor is within 8 px of a live Bézier thread.
+        This allows clicks on threads to register (for future interaction) while
+        all other cursor positions fall through to the creature layer underneath.
+    */
+    bool hitTest(int x, int y) override
+    {
+        const float px = static_cast<float>(x);
+        const float py = static_cast<float>(y);
+        for (const auto& rs : routeStates_)
+        {
+            if (rs.isFading_) continue;
+            juce::Point<float> nearest;
+            rs.path.getNearestPoint(juce::Point<float>(px, py), nearest);
+            if (nearest.getDistanceFrom({px, py}) < 8.0f)
+                return true;
+        }
+        return false;
+    }
+
+    //==========================================================================
+    void mouseMove(const juce::MouseEvent& e) override
+    {
+        lastMousePos_ = e.position;
+        int   best     = -1;
+        float bestDist = 8.0f;
+        for (int i = 0; i < static_cast<int>(routeStates_.size()); ++i)
+        {
+            if (routeStates_[static_cast<size_t>(i)].isFading_) continue;
+            juce::Point<float> nearest;
+            routeStates_[static_cast<size_t>(i)].path.getNearestPoint(e.position, nearest);
+            const float dist = nearest.getDistanceFrom(e.position);
+            if (dist < bestDist)
+            {
+                bestDist = dist;
+                best     = i;
+            }
+        }
+        if (best != hoveredRouteIdx_)
+        {
+            hoveredRouteIdx_ = best;
+            repaint();
+        }
+    }
+
+    //==========================================================================
+    void mouseExit(const juce::MouseEvent&) override
+    {
+        if (hoveredRouteIdx_ >= 0)
+        {
+            hoveredRouteIdx_ = -1;
+            repaint();
+        }
     }
 
     //==========================================================================
@@ -427,6 +514,45 @@ public:
                     g.fillEllipse(px - r, py - r, kParticleDiameter, kParticleDiameter);
                 }
             }
+        }
+
+        // ── Hover tooltip ────────────────────────────────────────────────────
+        if (hoveredRouteIdx_ >= 0 && hoveredRouteIdx_ < static_cast<int>(routeStates_.size()))
+        {
+            const auto& rs = routeStates_[static_cast<size_t>(hoveredRouteIdx_)];
+
+            // Build tooltip text: "Amplitude to Filter  75%  42s"
+            const juce::String typeName = CouplingTypeColors::displayName(
+                static_cast<CouplingType>(rs.route.type));
+            const int amountPct = static_cast<int>(std::round(rs.route.amount * 100.0f));
+            // couplingAge_ is 0–1 over 60 seconds (see kAgeIncrement = 1/(60*30))
+            const int ageSec    = static_cast<int>(std::round(rs.couplingAge_ * 60.0f));
+
+            const juce::String tip = typeName + "  "
+                + juce::String(amountPct) + "%  "
+                + juce::String(ageSec) + "s";
+
+            // Measure text and position the pill
+            const juce::Font tipFont(juce::FontOptions(12.0f));
+            g.setFont(tipFont);
+            const int tipW = static_cast<int>(std::ceil(tipFont.getStringWidthFloat(tip))) + 16;
+            const int tipH = 24;
+
+            // Position: just above and to the right of the cursor; clamp to bounds.
+            int tipX = static_cast<int>(lastMousePos_.x) + 12;
+            int tipY = static_cast<int>(lastMousePos_.y) - tipH - 4;
+            tipX = juce::jlimit(0, juce::jmax(0, getWidth()  - tipW), tipX);
+            tipY = juce::jlimit(0, juce::jmax(0, getHeight() - tipH), tipY);
+
+            const auto tipBounds = juce::Rectangle<int>(tipX, tipY, tipW, tipH).toFloat();
+
+            // Dark translucent pill background
+            g.setColour(juce::Colour(0xEE1A1A2E));
+            g.fillRoundedRectangle(tipBounds, 6.0f);
+
+            // Foam-white text
+            g.setColour(juce::Colour(GalleryColors::Ocean::foam));
+            g.drawText(tip, tipBounds.toNearestInt(), juce::Justification::centred, false);
         }
     }
 

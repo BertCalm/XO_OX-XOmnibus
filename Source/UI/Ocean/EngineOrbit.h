@@ -115,6 +115,13 @@ public:
         const float creatureSize   = kOrbitalSize * effectiveScale;
         const float halfSize       = creatureSize * 0.5f;
 
+        // ── Per-creature heartbeat glow (Vangelis) ────────────────────────────
+        // When PlaySurface is visible and this engine has active voices,
+        // add a pulsing brightness boost proportional to voice activity.
+        const float heartbeatGlow = (playSurfaceVisible_ && voiceCount_ > 0)
+            ? 0.15f + 0.10f * std::sin(breathPhase_ * 2.0f)  // double-speed pulse
+            : 0.0f;
+
         const juce::Rectangle<float> creatureBounds(cx - halfSize, cy - halfSize,
                                                     creatureSize, creatureSize);
 
@@ -127,12 +134,29 @@ public:
                           glowRadius * 2.0f, glowRadius * 2.0f);
         }
 
+        // ── Heartbeat outer glow ──────────────────────────────────────────────
+        if (heartbeatGlow > 0.0f)
+        {
+            const float glowR = halfSize + 6.0f;
+            g.setColour(accentColour_.withAlpha(heartbeatGlow * 0.5f));
+            g.fillEllipse(cx - glowR, cy - glowR, glowR * 2.0f, glowR * 2.0f);
+        }
+
+        // ── Proximity shimmer (Buchla) ───────────────────────────────────────
+        if (isShimmering_)
+        {
+            const float shimmerAlpha = 0.12f + 0.08f * std::sin(shimmerPhase_);
+            const float shimmerR = halfSize + 10.0f;
+            g.setColour(accentColour_.withAlpha(shimmerAlpha));
+            g.fillEllipse(cx - shimmerR, cy - shimmerR, shimmerR * 2.0f, shimmerR * 2.0f);
+        }
+
         // ── Accent border ring ───────────────────────────────────────────────
         // Drawn behind the sprite as a filled circle, then the sprite overdraw.
-        // Ring = accent at 40 % alpha, kBorderWidth px wide.
+        // Ring = accent at 40 % alpha (+ heartbeat boost), kBorderWidth px wide.
         {
             const float ringRadius = halfSize;
-            g.setColour(accentColour_.withAlpha(0.40f));
+            g.setColour(accentColour_.withAlpha(0.40f + heartbeatGlow));
             g.drawEllipse(cx - ringRadius, cy - ringRadius,
                           ringRadius * 2.0f, ringRadius * 2.0f,
                           kBorderWidth);
@@ -289,6 +313,18 @@ public:
     void setSlotIndex(int index)
     {
         slotIndex_ = index;
+    }
+
+    /**
+        Notify the creature whether the PlaySurface is currently visible.
+
+        When true and voiceCount_ > 0, the creature displays a pulsing
+        brightness boost (heartbeat glow) on top of the normal breath animation.
+        Call this whenever the PlaySurface panel shows or hides.
+    */
+    void setPlaySurfaceVisible(bool visible)
+    {
+        playSurfaceVisible_ = visible;
     }
 
     //==========================================================================
@@ -473,6 +509,31 @@ private:
             }
         }
 
+        // ── Proximity shimmer: dwell detection ────────────────────────────────
+        if (targetMagnetOffset_.getDistanceFromOrigin() > 0.1f)
+        {
+            ++dwellTicks_;
+            if (dwellTicks_ >= 60)  // 2 seconds at 30 Hz
+                isShimmering_ = true;
+        }
+        else
+        {
+            dwellTicks_ = 0;
+            isShimmering_ = false;
+        }
+
+        // Shimmer animation phase advance
+        if (isShimmering_)
+        {
+            shimmerPhase_ += juce::MathConstants<float>::twoPi / (1.5f * 30.0f);  // 1.5s period
+            if (shimmerPhase_ >= juce::MathConstants<float>::twoPi)
+                shimmerPhase_ -= juce::MathConstants<float>::twoPi;
+        }
+        else
+        {
+            shimmerPhase_ = 0.0f;
+        }
+
         repaint();
     }
 
@@ -505,8 +566,9 @@ private:
     int              slotIndex_        = 0;
 
     // Live audio state
-    int   voiceCount_   = 0;
-    float couplingLean_ = 0.0f;   // -1..+1
+    int   voiceCount_        = 0;
+    float couplingLean_      = 0.0f;   // -1..+1
+    bool  playSurfaceVisible_ = false;  // Heartbeat glow active when true + voiceCount_ > 0
 
     // Animation state — owned entirely by the Timer thread (message thread only)
     float breathPhase_   = 0.0f;        ///< Current radians in the breath sine
@@ -517,6 +579,11 @@ private:
     // Proximity magnetism — creature drifts toward nearby cursor
     juce::Point<float> magnetOffset_       = { 0.0f, 0.0f };   ///< Smoothed draw offset (px)
     juce::Point<float> targetMagnetOffset_ = { 0.0f, 0.0f };   ///< Desired offset (px)
+
+    // Proximity shimmer: cursor dwell detection
+    int   dwellTicks_    = 0;       ///< Ticks cursor has been within magnet range
+    bool  isShimmering_  = false;   ///< True after 2s dwell
+    float shimmerPhase_  = 0.0f;   ///< Phase for shimmer pulse animation
 
     //==========================================================================
     // Private size constants (non-public ones; kOrbitalSize/kZoomInSize/kMinimizedSize

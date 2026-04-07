@@ -91,6 +91,14 @@ public:
 
         // Build the static mood-pill list once; bounds are set in resized().
         buildMoodPills();
+
+        // ── Dive button ───────────────────────────────────────────────────────
+        addAndMakeVisible(diveButton_);
+        diveButton_.setColour(juce::TextButton::buttonColourId,  juce::Colour(0xFFE9C46A));
+        diveButton_.setColour(juce::TextButton::textColourOffId, juce::Colour(0xFF1A1A2E));
+        diveButton_.setMouseCursor(juce::MouseCursor::PointingHandCursor);
+        diveButton_.onClick = [this]() { diveToRandomPreset(); };
+        diveButton_.setTooltip("Load a random visible preset");
     }
 
     //==========================================================================
@@ -152,6 +160,14 @@ public:
 
         dotBufferDirty_ = true;
         rebuildSpatialGrid();
+
+        // ── Dive button — lower-right corner ─────────────────────────────────
+        constexpr int kDiveBtnW  = 80;
+        constexpr int kDiveBtnH  = 36;
+        constexpr int kDiveMargin = 16;
+        diveButton_.setBounds(getWidth()  - kDiveBtnW  - kDiveMargin,
+                              getHeight() - kDiveBtnH  - kDiveMargin,
+                              kDiveBtnW, kDiveBtnH);
     }
 
     void mouseDown(const juce::MouseEvent& e) override
@@ -1066,6 +1082,26 @@ private:
         packRow(pillsPerRow, static_cast<int>(moodPills_.size()), row2Y);
     }
 
+    /** Pick a random preset from the current filtered view and load it. */
+    void diveToRandomPreset()
+    {
+        // Collect indices of all visible (filtered) presets
+        std::vector<int> visible;
+        for (int i = 0; i < static_cast<int>(presets_.size()); ++i)
+            if (matchesFilter(presets_[static_cast<size_t>(i)]))
+                visible.push_back(i);
+
+        if (visible.empty())
+            return;
+
+        // Pick a random one
+        const int pick = visible[static_cast<size_t>(
+            juce::Random::getSystemRandom().nextInt(static_cast<int>(visible.size())))];
+
+        if (onPresetSelected)
+            onPresetSelected(presets_[static_cast<size_t>(pick)].presetIndex);
+    }
+
     /** Toggle the mood filter: clicking the active pill clears the filter. */
     void toggleMoodFilter(const juce::String& mood)
     {
@@ -1145,6 +1181,9 @@ private:
     static constexpr int kPillSpacing          = 4;
     static constexpr int kPillMarginBottom     = 10;
     static constexpr float kPillCornerRadius   = 10.0f;
+
+    // Dive button
+    juce::TextButton diveButton_ { "Dive" };
 
     //==========================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(DnaMapBrowser)
