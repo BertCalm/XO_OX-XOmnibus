@@ -34,12 +34,15 @@ public:
         addAndMakeVisible(dnaHex_);
         dnaHex_.setAccentColor(accentColour_);
 
-        // Accessibility: use A11y::setup() so reduced-motion and focus-ring
-        // helpers are consistently wired (BLOCKER 2 fix).
+        // #1007 FIX 2: NexusDisplay must be keyboard-reachable (WCAG 2.1.1).
+        // wantsKeyFocus=true lets Tab navigation reach it and enables the
+        // Space/Return/D key handlers below.
         A11y::setup(*this,
                     "Preset Identity",
-                    "Current preset DNA, name, and mood. Click name to browse presets.",
-                    /*wantsKeyFocus=*/false);
+                    "Current preset DNA, name, and mood. "
+                    "Press Space or Return to browse presets. "
+                    "Press D to cycle DNA axis projection.",
+                    /*wantsKeyFocus=*/true);
     }
 
     //==========================================================================
@@ -49,20 +52,29 @@ public:
     void paint(juce::Graphics& g) override
     {
         // ── Preset name ───────────────────────────────────────────────────────
-        // Two-pass glow: shadow draw at 30% alpha offset 1px down, then sharp.
+        // #1008 FIX 2: Multi-pass glow effect.
+        // 4 offset passes at ±1px with decreasing alpha, then one sharp pass
+        // on top.  This produces a real XO-Gold halo rather than a faux drop
+        // shadow.  Offsets: (+1,+1), (-1,-1), (+1,-1), (-1,+1) at 20% alpha,
+        // followed by the opaque sharp foreground.
         if (presetNameBounds_.getWidth() > 0)
         {
             const juce::Font nameFont = GalleryFonts::display(kPresetFontSize);
             g.setFont(nameFont);
 
-            // Shadow pass (glow approximation)
-            g.setColour(accentColour_.withAlpha(0.30f));
-            g.drawText(presetName_,
-                       presetNameBounds_.translated(0, 1),
-                       juce::Justification::centred,
-                       false);
+            // Glow passes: 4 offset draws at 20% alpha to simulate a halo.
+            const juce::Colour glowColour = accentColour_.withAlpha(0.20f);
+            g.setColour(glowColour);
+            static constexpr int kGlowOffsets[4][2] = { {1, 1}, {-1, -1}, {1, -1}, {-1, 1} };
+            for (const auto& off : kGlowOffsets)
+            {
+                g.drawText(presetName_,
+                           presetNameBounds_.translated(off[0], off[1]),
+                           juce::Justification::centred,
+                           false);
+            }
 
-            // Sharp foreground pass
+            // Sharp foreground pass on top.
             g.setColour(accentColour_);
             g.drawText(presetName_,
                        presetNameBounds_,
@@ -138,6 +150,10 @@ public:
                 }
             }
         }
+
+        // #1007 FIX 2: Visible focus ring for keyboard users (WCAG 2.1.1).
+        if (hasKeyboardFocus(false))
+            A11y::drawFocusRing(g, getLocalBounds().toFloat(), 4.0f);
     }
 
     void resized() override
@@ -178,6 +194,8 @@ public:
 
     void mouseDown(const juce::MouseEvent& e) override
     {
+        grabKeyboardFocus();
+
         // Hit-test hexagon first (it owns the top region).
         if (dnaHex_.getBounds().contains(e.getPosition()))
         {
@@ -193,6 +211,32 @@ public:
                 onPresetNameClicked();
         }
     }
+
+    // #1007 FIX 2: Keyboard handler so the component is WCAG 2.1.1 compliant.
+    // Space/Return → open preset browser (same as clicking the name label).
+    // D            → cycle DNA axis projection (same as clicking the hexagon).
+    bool keyPressed(const juce::KeyPress& key) override
+    {
+        if (key == juce::KeyPress::spaceKey || key == juce::KeyPress::returnKey)
+        {
+            if (onPresetNameClicked)
+                onPresetNameClicked();
+            return true;
+        }
+
+        if (key == juce::KeyPress('d') || key == juce::KeyPress('D'))
+        {
+            if (onDnaClicked)
+                onDnaClicked();
+            return true;
+        }
+
+        return false;
+    }
+
+    // #1007 FIX 2: Focus change triggers repaint so the focus ring appears/disappears.
+    void focusGained(FocusChangeType) override { repaint(); }
+    void focusLost(FocusChangeType)   override { repaint(); }
 
     //==========================================================================
     // Data setters
@@ -225,8 +269,38 @@ public:
     void setDNA(float brightness, float warmth, float movement,
                 float density, float space, float aggression)
     {
-        dnaHex_.setDNA(brightness, warmth, movement, density, space, aggression);
-        // DnaHexagon calls repaint() internally.
+        // Cache preset DNA then blend with session drift before forwarding.
+        presetDna_[0] = brightness;
+        presetDna_[1] = warmth;
+        presetDna_[2] = movement;
+        presetDna_[3] = density;
+        presetDna_[4] = space;
+        presetDna_[5] = aggression;
+        blendAndApplyDna();
+    }
+
+    // Feed a note-on event into the leaky-integrator that accumulates session DNA.
+    // pitch:    raw MIDI note number 0-127
+    // velocity: normalised 0.0-1.0
+    // interval: absolute semitone distance from the previous note (pass 0 for first note)
+    void updateSessionDna(float pitch, float velocity, float interval)
+    {
+        // Normalise pitch: high notes → high brightness value
+        const float pitchNorm    = pitch / 127.0f;
+        const float intervalNorm = std::min(interval / 24.0f, 1.0f);
+
+        // Leaky integrator: 98% old state + 2% new input per note
+        constexpr float kLeak  = 0.98f;
+        constexpr float kInput = 0.02f;
+
+        sessionDna_[0] = kLeak * sessionDna_[0] + kInput * pitchNorm;            // brightness
+        sessionDna_[1] = kLeak * sessionDna_[1] + kInput * (1.0f - pitchNorm);   // warmth (inverse brightness)
+        sessionDna_[2] = kLeak * sessionDna_[2] + kInput * velocity;             // movement
+        sessionDna_[3] = kLeak * sessionDna_[3] + kInput * velocity;             // density
+        sessionDna_[4] = kLeak * sessionDna_[4] + kInput * intervalNorm;         // space
+        sessionDna_[5] = kLeak * sessionDna_[5] + kInput * velocity * 0.8f;      // aggression
+
+        blendAndApplyDna();
     }
 
     void setAccentColour(juce::Colour accent)
@@ -285,6 +359,14 @@ private:
     int voiceCount_ = 0;
     std::array<float, 4> macroValues_{{0.0f, 0.0f, 0.0f, 0.0f}};
 
+    // Live DNA drift: session accumulator and blend weight.
+    // sessionDna_  — leaky integrator over note-on events this session.
+    // presetDna_   — last raw preset values passed to setDNA().
+    // kSessionBlend — 20% session character, 80% preset identity.
+    static constexpr float kSessionBlend = 0.20f;
+    std::array<float, 6> sessionDna_ = {0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f};
+    std::array<float, 6> presetDna_  = {0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f};
+
     // Cached layout rects — computed in resized().
     juce::Rectangle<int> presetNameBounds_;
     juce::Rectangle<int> moodBadgeBounds_;
@@ -303,6 +385,23 @@ private:
     static constexpr float kMoodPillAlpha  = 0.12f;
     static constexpr int   kMoodPillPadH   = 6;   // horizontal padding inside pill
     static constexpr int   kMoodPillPadV   = 2;   // vertical padding inside pill
+
+    //==========================================================================
+    // Helpers
+    //==========================================================================
+
+    // Blend preset + session DNA at kSessionBlend ratio and push to DnaHexagon.
+    void blendAndApplyDna()
+    {
+        std::array<float, 6> blended;
+        for (int i = 0; i < 6; ++i)
+            blended[i] = presetDna_[i] * (1.0f - kSessionBlend)
+                       + sessionDna_[i] * kSessionBlend;
+
+        dnaHex_.setDNA(blended[0], blended[1], blended[2],
+                       blended[3], blended[4], blended[5]);
+        // DnaHexagon calls repaint() internally.
+    }
 
     //==========================================================================
 

@@ -95,7 +95,10 @@ public:
         initPlaySurfaceAndPresets(proc);
         initSidebarAndWiring(proc);
         initOceanView(proc);
-        startTimerHz(1); // Reduced from 5Hz — idle polling only as a fallback
+        startTimerHz(10); // #1008 FIX 6: raised from 1Hz — OceanView voice counts,
+                          // coupling routes, and NexusDisplay live readouts need
+                          // 10Hz minimum for responsive feel.  MIDI-learn boost to
+                          // 30Hz is applied separately in the MIDI listener callback.
     }
 
     //==========================================================================
@@ -128,41 +131,44 @@ public:
     }
 
     /** Phase 2: Legacy Gallery components — tiles, overview, coupling arcs.
-        These remain in the component tree but are hidden when OceanView is active. */
+        These remain in the component tree but are hidden when OceanView is active.
+        #1007 FIX 6: Use addChildComponent (invisible by default, zero repaint cost)
+        instead of addAndMakeVisible + setVisible(false).  Components that were
+        previously shown then hidden still triggered repaint() invalidations on every
+        parent dirty rect — especially expensive with 19,574 preset dots populating
+        the DnaMapBrowser.  addChildComponent() never marks the component as visible
+        so JUCE skips the repaint subtree entirely. */
     void initLegacyComponents(XOceanusProcessor& proc)
     {
-        // Primary tiles (slots 0-3)
+        // Primary tiles (slots 0-3) — start hidden; made visible by selectSlot()
         for (int i = 0; i < kNumPrimarySlots; ++i)
         {
             tiles[i] = std::make_unique<CompactEngineTile>(proc, i);
             tiles[i]->onSelect = [this](int slot) { selectSlot(slot); };
-            addAndMakeVisible(*tiles[i]);
+            addChildComponent(*tiles[i]); // #1007 FIX 6: invisible by default, no repaint
         }
 
         // Ghost tile (slot 4) — hidden until collection detection fires
         ghostTile.onSelect = [this](int slot) { selectSlot(slot); };
-        addAndMakeVisible(ghostTile);
-        ghostTile.setVisible(false);
+        addChildComponent(ghostTile); // #1007 FIX 6
 
-        addAndMakeVisible(fieldMap);
-        addAndMakeVisible(overview);
-        addAndMakeVisible(detail);
-        addAndMakeVisible(chordPanel);
-        addAndMakeVisible(performancePanel);
-        addAndMakeVisible(macros);
-        addAndMakeVisible(masterFXStrip);
-        addAndMakeVisible(presetBrowser);
+        addChildComponent(fieldMap);         // #1007 FIX 6
+        addChildComponent(overview);         // #1007 FIX 6
+        addChildComponent(detail);           // #1007 FIX 6
+        addChildComponent(chordPanel);       // #1007 FIX 6
+        addChildComponent(performancePanel); // #1007 FIX 6
+        addChildComponent(macros);           // #1007 FIX 6
+        addChildComponent(masterFXStrip);    // #1007 FIX 6
+        addChildComponent(presetBrowser);    // #1007 FIX 6
 
         // Coupling arc overlay: must be added AFTER tiles so it paints on top.
         // setInterceptsMouseClicks(false,false) means tiles still receive clicks.
-        addAndMakeVisible(couplingArcs);
-        addAndMakeVisible(couplingHitTester);
+        addChildComponent(couplingArcs);      // #1007 FIX 6
+        addChildComponent(couplingHitTester); // #1007 FIX 6
 
-        detail.setVisible(false);
+        // Preserve alpha=0.0f so the fade-in animation still works when toggled on.
         detail.setAlpha(0.0f);
-        chordPanel.setVisible(false);
         chordPanel.setAlpha(0.0f);
-        performancePanel.setVisible(false);
         performancePanel.setAlpha(0.0f);
     }
 
@@ -1938,7 +1944,18 @@ private:
                 midiIndicator.flash(colour); // flash on every incoming note event
                 // velocity > 0 = note-on; velocity == 0 = note-off.
                 if (ev.velocity > 0.0f)
+                {
                     hadNoteOn = true;
+
+                    // Live DNA drift — feed this note into the session accumulator.
+                    // interval = semitone distance from last note (0 for first note).
+                    const float interval = (lastNote_ >= 0)
+                                               ? std::abs((float)(ev.midiNote - lastNote_))
+                                               : 0.0f;
+                    oceanView_.getNexus().updateSessionDna(
+                        (float)ev.midiNote, ev.velocity, interval);
+                    lastNote_ = ev.midiNote;
+                }
             });
 
         // ── Status Bar updates ────────────────────────────────────────────────
@@ -2452,6 +2469,10 @@ private:
     DnaHexagon headerHex_;
     // Cache the last preset name to detect changes without polling every frame.
     juce::String lastHeaderHexPreset_;
+
+    // Last MIDI note number seen (for interval computation in session DNA drift).
+    // -1 = no note played yet this session.
+    int lastNote_ = -1;
 
     int selectedSlot = -1;
 
