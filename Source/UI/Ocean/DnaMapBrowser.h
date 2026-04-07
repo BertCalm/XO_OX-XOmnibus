@@ -107,11 +107,16 @@ public:
         g.fillAll(juce::Colour(GalleryColors::Ocean::abyss));
 
         // ── 2. Rebuild the dot back-buffer if stale ───────────────────────────
-        if (dotBufferDirty_ || dotBuffer_.isNull()
-            || dotBuffer_.getWidth()  != bounds.getWidth()
-            || dotBuffer_.getHeight() != bounds.getHeight())
+        // Throttle rebuilds to at most 30fps (one every 33ms) to avoid blocking
+        // the paint callback on large preset lists.
+        const bool sizeChanged = (dotBuffer_.isNull()
+                                  || dotBuffer_.getWidth()  != bounds.getWidth()
+                                  || dotBuffer_.getHeight() != bounds.getHeight());
+        if (sizeChanged || (dotBufferDirty_
+            && juce::Time::getMillisecondCounterHiRes() - lastDotRebuildMs_ > 33.0))
         {
             rebuildDotBuffer();
+            lastDotRebuildMs_ = juce::Time::getMillisecondCounterHiRes();
         }
 
         g.drawImageAt(dotBuffer_, 0, 0);
@@ -191,12 +196,15 @@ public:
 
         viewOffset_ = e.position - panStart_;
         dotBufferDirty_ = true;
-        rebuildSpatialGrid();
+        // Spatial grid rebuild is deferred to mouseUp — no need to rebuild every
+        // drag event since findPresetAt() uses the grid only on hover/click.
         repaint();
     }
 
     void mouseUp(const juce::MouseEvent& /*e*/) override
     {
+        if (panning_)
+            rebuildSpatialGrid();  // Rebuild once pan is committed.
         panning_ = false;
     }
 
@@ -426,6 +434,9 @@ private:
     {
         const float fw = static_cast<float>(getWidth());
         const float fh = static_cast<float>(getHeight());
+        // Guard: return map centre if component has zero dimensions.
+        if (fw <= 0.0f || fh <= 0.0f)
+            return { 0.5f, 0.5f };
         const float mx = (screen.x - viewOffset_.x) / (fw * viewScale_);
         const float my = (screen.y - viewOffset_.y) / (fh * viewScale_);
         return { mx, 1.0f - my };
@@ -1078,7 +1089,8 @@ private:
 
     // Back-buffer
     juce::Image dotBuffer_;
-    bool        dotBufferDirty_ = true;
+    bool        dotBufferDirty_   = true;
+    double      lastDotRebuildMs_ = 0.0;  ///< Hi-res timestamp of last rebuildDotBuffer() call
 
     // Mood pills
     struct MoodPill

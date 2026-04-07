@@ -252,16 +252,17 @@ public:
             currentSlideOffset_ = 1.0f;
             repositionFromOffset();
             setVisible(false);
+            // Reduced-motion: instant dismiss — notify immediately.
+            if (onDimStateChanged)
+                onDimStateChanged(false);
         }
         else
         {
             startTimerHz(60);
-            // setVisible(false) is called at the end of the animation in
-            // timerCallback() once currentSlideOffset_ reaches 1.0.
+            // setVisible(false) and onDimStateChanged(false) are both deferred
+            // to timerCallback() so the parent un-dims only after the slide-out
+            // animation finishes (avoids a jarring flash before the panel clears).
         }
-
-        if (onDimStateChanged)
-            onDimStateChanged(false);
     }
 
     /** Returns true if the overlay is currently shown (or animating toward shown). */
@@ -328,9 +329,15 @@ private:
             stopTimer();
 
             // If we just finished hiding, make the component invisible so it
-            // no longer participates in layout or hit-testing.
+            // no longer participates in layout or hit-testing, then notify the
+            // parent to restore full alpha.  Deferring here ensures the parent
+            // un-dims only after the slide-out animation is visually complete.
             if (!showing_)
+            {
                 setVisible(false);
+                if (onDimStateChanged)
+                    onDimStateChanged(false);
+            }
         }
         else
         {
@@ -377,13 +384,18 @@ private:
             const int parentH = parent->getHeight();
             const int parentW = parent->getWidth();
 
-            // Y position: when offset=0, top is at (parentH - kOverlayHeight).
+            // Cap overlay height at 50% of parent so it doesn't swallow the Ocean
+            // View on small windows or compact plugin hosts.
+            const float overlayH = std::min(kOverlayHeight,
+                                            static_cast<float>(parentH) * 0.50f);
+
+            // Y position: when offset=0, top is at (parentH - overlayH).
             //             when offset=1, top is at parentH (fully off-screen below).
             const int newY = parentH
-                             - static_cast<int>(kOverlayHeight)
-                             + static_cast<int>(currentSlideOffset_ * kOverlayHeight);
+                             - static_cast<int>(overlayH)
+                             + static_cast<int>(currentSlideOffset_ * overlayH);
 
-            setBounds(0, newY, parentW, static_cast<int>(kOverlayHeight));
+            setBounds(0, newY, parentW, static_cast<int>(overlayH));
         }
     }
 

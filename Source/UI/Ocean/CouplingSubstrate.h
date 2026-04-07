@@ -81,7 +81,7 @@ public:
     static constexpr int   kParticlesPerRoute = 6;      ///< particles per route (RouteState uses 8 slots)
     static constexpr float kParticleSpeed    = 0.15f;   ///< fraction of path per second
     static constexpr float kParticleDiameter = 4.0f;   ///< px
-    static constexpr float kControlBow       = 40.0f;  ///< perpendicular bow distance (px)
+    static constexpr float kControlBowFactor = 0.15f;  ///< bow = chordLength * factor, clamped [20,80]
     static constexpr int   kTimerHz          = 30;      ///< timer frequency
 
 private:
@@ -269,6 +269,12 @@ public:
                 const juce::Point<float> p2 = centers_[static_cast<size_t>(dst)];
                 const juce::Point<float> p1 = rs.control;
 
+                // Skip if either center is still at the off-screen sentinel (-1, -1).
+                // Matches the guard used in rebuildPaths() to avoid painting particles
+                // along degenerate paths before creature positions are registered.
+                if (p0.x < 0.0f || p2.x < 0.0f)
+                    continue;
+
                 for (int p = 0; p < kParticlesPerRoute; ++p)
                 {
                     const float t   = rs.particles[static_cast<size_t>(p)].t;
@@ -390,8 +396,11 @@ private:
             // Perpendicular unit vector: (-dy/len, dx/len)
             const float perpX = -dy / len;
             const float perpY =  dx / len;
-            control = { mx + perpX * kControlBow * bowSign,
-                        my + perpY * kControlBow * bowSign };
+            // Bow is proportional to chord length, clamped to [20, 80] px so
+            // short connections get a visible arc and long ones don't over-curve.
+            const float bow = std::clamp(len * kControlBowFactor, 20.0f, 80.0f);
+            control = { mx + perpX * bow * bowSign,
+                        my + perpY * bow * bowSign };
         }
 
         controlOut = control;

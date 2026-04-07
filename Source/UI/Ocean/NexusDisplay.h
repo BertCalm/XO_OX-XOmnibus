@@ -111,7 +111,7 @@ public:
             // Each bar is 8pt tall, 2pt gap between bars, label "M1"..."M4" on left.
             const int barAreaX = rb.getX() + 32;
             const int barAreaW = juce::jmax(0, w - barAreaX * 2); // symmetric margins
-            const int barH = 4;
+            const int barH = 8;   // increased from 4px for legibility
             const int barGapV = 3;
             const int totalBarH = 4 * barH + 3 * barGapV;
             const int barStartY = rb.getCentreY() - totalBarH / 2;
@@ -169,8 +169,8 @@ public:
         y += pillH + kGapMoodReadout;
 
         // ── #909: Live readouts strip — voice count pill + 4 macro bars ───────
-        // Height = 4 bars × 4pt + 3 gaps × 3pt = 25pt total
-        constexpr int kReadoutH = 25;
+        // Height = 4 bars × 8pt + 3 gaps × 3pt = 41pt total
+        constexpr int kReadoutH = 41;
         liveReadoutsBounds_ = juce::Rectangle<int>(0, y, w, kReadoutH);
     }
 
