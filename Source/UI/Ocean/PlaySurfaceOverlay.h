@@ -221,6 +221,12 @@ public:
     /** Slide the overlay up into view.  Safe to call when already showing. */
     void show()
     {
+        // BLOCKER 4: guard against being called before we have a parent.
+        // The timer-driven repositionFromOffset() will also guard itself,
+        // but we must not start the timer if there is nothing to reposition into.
+        if (getParentComponent() == nullptr)
+            return;
+
         showing_           = true;
         targetSlideOffset_ = 0.0f;
         setVisible(true);
@@ -317,9 +323,10 @@ private:
 
     void timerCallback() override
     {
-        // Lerp current offset toward target at ~15% per frame (≈ 60 fps).
-        // This gives an exponential ease-out feel matching the spec.
-        constexpr float kLerpRate = 0.15f;
+        // Lerp current offset toward target at ~28% per frame (≈ 60 fps).
+        // 0.28f gives approximately 200ms settle time at 60Hz, matching the
+        // §6.1 spec requirement.  (0.15f was ~467ms — too slow.)
+        constexpr float kLerpRate = 0.28f;
         const float     delta     = targetSlideOffset_ - currentSlideOffset_;
 
         if (std::abs(delta) < 0.005f)
@@ -379,24 +386,28 @@ private:
     */
     void repositionFromOffset()
     {
-        if (auto* parent = getParentComponent())
-        {
-            const int parentH = parent->getHeight();
-            const int parentW = parent->getWidth();
+        // BLOCKER 4: null guard — component may be called before it is parented
+        // during deferred init.  Return silently; the next resized() / show()
+        // call will position correctly once the parent is available.
+        auto* parent = getParentComponent();
+        if (parent == nullptr)
+            return;
 
-            // Cap overlay height at 50% of parent so it doesn't swallow the Ocean
-            // View on small windows or compact plugin hosts.
-            const float overlayH = std::min(kOverlayHeight,
-                                            static_cast<float>(parentH) * 0.50f);
+        const int parentH = parent->getHeight();
+        const int parentW = parent->getWidth();
 
-            // Y position: when offset=0, top is at (parentH - overlayH).
-            //             when offset=1, top is at parentH (fully off-screen below).
-            const int newY = parentH
-                             - static_cast<int>(overlayH)
-                             + static_cast<int>(currentSlideOffset_ * overlayH);
+        // Cap overlay height at 50% of parent so it doesn't swallow the Ocean
+        // View on small windows or compact plugin hosts.
+        const float overlayH = std::min(kOverlayHeight,
+                                        static_cast<float>(parentH) * 0.50f);
 
-            setBounds(0, newY, parentW, static_cast<int>(overlayH));
-        }
+        // Y position: when offset=0, top is at (parentH - overlayH).
+        //             when offset=1, top is at parentH (fully off-screen below).
+        const int newY = parentH
+                         - static_cast<int>(overlayH)
+                         + static_cast<int>(currentSlideOffset_ * overlayH);
+
+        setBounds(0, newY, parentW, static_cast<int>(overlayH));
     }
 
     //==========================================================================

@@ -83,7 +83,7 @@ namespace xoceanus
     5. Start a 10 Hz editor-side timer and call setCouplingRoutes() / setVoiceCount()
        from it to feed live state.
 */
-class OceanView : public juce::Component, private juce::Timer
+class OceanView : public juce::Component
 {
 public:
     //==========================================================================
@@ -139,6 +139,17 @@ public:
         addAndMakeVisible(browser_);
         browser_.setVisible(false);
 
+        // 9b. BLOCKER 1: Empty-state label — shown when no engines are loaded.
+        // Appears centred below the nexus with a subtle call-to-action.
+        emptyStateLabel_.setText("Load an engine to begin",
+                                 juce::dontSendNotification);
+        emptyStateLabel_.setFont(GalleryFonts::label(13.0f));
+        emptyStateLabel_.setColour(juce::Label::textColourId,
+                                   juce::Colour(GalleryColors::Ocean::foam).withAlpha(0.55f));
+        emptyStateLabel_.setJustificationType(juce::Justification::centred);
+        emptyStateLabel_.setVisible(false);  // visible only when numLoaded == 0
+        addAndMakeVisible(emptyStateLabel_);
+
         // 10. PlaySurface overlay (hidden by default; manages its own visibility)
         addAndMakeVisible(playSurfaceOverlay_);
 
@@ -192,6 +203,7 @@ public:
         }
 
         nexus_.onPresetNameClicked = [this]() { transitionToBrowser(); };
+        nexus_.onDnaClicked        = [this]() { if (onDnaClicked) onDnaClicked(); };
 
         browser_.onPresetSelected = [this](int idx)
         {
@@ -209,15 +221,11 @@ public:
 
         keysButton_.onClick = [this]() { togglePlaySurface(); };
 
-        // ── Keyboard focus + polling timer ────────────────────────────────────
+        // ── Keyboard focus ────────────────────────────────────────────────────
         setWantsKeyboardFocus(true);
-        startTimerHz(10);
     }
 
-    ~OceanView() override
-    {
-        stopTimer();
-    }
+    ~OceanView() override = default;
 
     //==========================================================================
     // Deferred initialisation — called by XOceanusEditor before first show
@@ -233,22 +241,8 @@ public:
         addAndMakeVisible(*macros_);
 
         // Re-stack above the orbits and nexus, but below ambientEdge.
-        // JUCE renders children in the order they were added, so we need to
-        // push macros below ambientEdge in paint order.  The simplest way is
-        // to rearrange z-order explicitly.
         macros_->toFront(false);
-        ambientEdge_.toFront(false);
-        if (detail_)   detail_->toFront(false);
-        if (sidebar_)  sidebar_->toFront(false);
-        browser_.toFront(false);
-        playSurfaceOverlay_.toFront(false);
-        presetPrev_.toFront(false);
-        presetNext_.toFront(false);
-        favButton_.toFront(false);
-        settingsButton_.toFront(false);
-        keysButton_.toFront(false);
-        if (statusBar_) statusBar_->toFront(false);
-
+        reorderZStack();
         resized();
     }
 
@@ -262,16 +256,7 @@ public:
         addAndMakeVisible(*detail_);
         detail_->setVisible(false);
 
-        // Push to correct z position.
-        browser_.toFront(false);
-        playSurfaceOverlay_.toFront(false);
-        presetPrev_.toFront(false);
-        presetNext_.toFront(false);
-        favButton_.toFront(false);
-        settingsButton_.toFront(false);
-        keysButton_.toFront(false);
-        if (statusBar_) statusBar_->toFront(false);
-
+        reorderZStack();
         resized();
     }
 
@@ -285,15 +270,7 @@ public:
         addAndMakeVisible(*sidebar_);
         sidebar_->setVisible(false);
 
-        browser_.toFront(false);
-        playSurfaceOverlay_.toFront(false);
-        presetPrev_.toFront(false);
-        presetNext_.toFront(false);
-        favButton_.toFront(false);
-        settingsButton_.toFront(false);
-        keysButton_.toFront(false);
-        if (statusBar_) statusBar_->toFront(false);
-
+        reorderZStack();
         resized();
     }
 
@@ -305,7 +282,7 @@ public:
     {
         statusBar_ = std::make_unique<StatusBar>();
         addAndMakeVisible(*statusBar_);
-        statusBar_->toFront(false);
+        reorderZStack();
         resized();
     }
 
@@ -509,8 +486,15 @@ public:
 
         orbits_[slot].clearEngine();
 
-        // If the cleared slot was selected, return to Orbital.
-        if (selectedSlot_ == slot)
+        // Fix #1005 (callAsync race): only reset view state if we are currently
+        // zoomed into THIS slot.  If the user has already double-clicked into a
+        // different slot (selectedSlot_ != slot) or returned to Orbital between
+        // when the engine removal was queued and when this runs, do not clobber
+        // the new state.  Only ZoomIn / SplitTransform warrant a reset.
+        const bool slotIsSelected = (selectedSlot_ == slot);
+        const bool inEngagedState = (viewState_ == ViewState::ZoomIn ||
+                                     viewState_ == ViewState::SplitTransform);
+        if (slotIsSelected && inEngagedState)
             transitionToOrbital();
         else
             resized();
@@ -577,12 +561,11 @@ public:
             orbits_[slot].setCouplingLean(lean);
     }
 
-    /** Notify OceanBackground of which depth zones are populated. */
+    /** Notify AmbientEdge of which depth zones are populated so the edge glow activates. */
     void setDepthZones(bool sunlit, bool twilight, bool midnight)
     {
-        juce::ignoreUnused(sunlit, twilight, midnight);
-        // OceanBackground always renders all three ring tiers; this hook is
-        // reserved for future per-zone glow intensity adaptation.
+        ambientEdge_.setActiveZones(sunlit, twilight, midnight);
+        ambientEdge_.setEnginesActive(sunlit || twilight || midnight);
     }
 
     //==========================================================================
@@ -644,6 +627,10 @@ public:
         last user-chosen state.  true = overlay is now showing, false = hidden. */
     std::function<void(bool visible)> onPlaySurfaceVisibilityChanged;
 
+    /** Fired when the user clicks the DNA hexagon in the nexus.
+        Wire this to open the DnaMapBrowser or cycle the axis projection. */
+    std::function<void()> onDnaClicked;
+
     //==========================================================================
     // State queries
     //==========================================================================
@@ -652,17 +639,6 @@ public:
     int       getSelectedSlot() const noexcept { return selectedSlot_; }
 
 private:
-    //==========================================================================
-    // juce::Timer — 10 Hz state polling
-    //==========================================================================
-
-    void timerCallback() override
-    {
-        // Reserved for future live-state polling that the editor has not
-        // already handled (e.g. per-frame breath sync, MIDI activity indicators).
-        // Kept deliberately lightweight — real work is triggered by editor callbacks.
-    }
-
     //==========================================================================
     // State machine transitions
     //==========================================================================
@@ -715,8 +691,10 @@ private:
 
         for (int i = 0; i < 5; ++i)
         {
+            // Fix #1005: selected orbit must enter SplitTransform state (not ZoomIn)
+            // so EngineOrbit renders the correct layout hint for the 20% mini-strip.
             orbits_[i].setInteractionState(
-                i == slot ? EngineOrbit::InteractionState::ZoomIn
+                i == slot ? EngineOrbit::InteractionState::SplitTransform
                           : EngineOrbit::InteractionState::Minimized);
         }
 
@@ -728,14 +706,44 @@ private:
 
     void transitionToBrowser()
     {
+        // Snapshot the pre-browser state so exitBrowser() can restore it exactly.
+        preBrowserState_    = viewState_;
+        preBrowserSlot_     = selectedSlot_;
+
         viewState_ = ViewState::BrowserOpen;
         resized();
     }
 
     void exitBrowser()
     {
-        viewState_ = ViewState::Orbital;
-        resized();
+        // Restore whatever state was active before the browser was opened.
+        if (preBrowserState_ == ViewState::ZoomIn && preBrowserSlot_ >= 0)
+        {
+            // transitionToZoomIn re-enters ZoomIn and fires onEngineSelected.
+            transitionToZoomIn(preBrowserSlot_);
+        }
+        else if (preBrowserState_ == ViewState::SplitTransform && preBrowserSlot_ >= 0)
+        {
+            transitionToSplitTransform(preBrowserSlot_);
+        }
+        else
+        {
+            // Default: return to Orbital and clear selection.
+            viewState_    = ViewState::Orbital;
+            selectedSlot_ = -1;
+
+            for (int i = 0; i < 5; ++i)
+                orbits_[i].setInteractionState(EngineOrbit::InteractionState::Orbital);
+
+            resized();
+
+            if (onEngineSelected)
+                onEngineSelected(-1);
+        }
+
+        // Reset saved pre-browser state so it cannot be accidentally re-used.
+        preBrowserState_ = ViewState::Orbital;
+        preBrowserSlot_  = -1;
     }
 
     //==========================================================================
@@ -756,8 +764,10 @@ private:
         substrate_.setVisible(true);
 
         // ── Nexus (centre, slightly above geometric centre) ──────────────────
+        // kNexusH raised from 120 → 160 to accommodate the 41px live-readout
+        // strip added in #909 without clipping (HIGH fix — #1006).
         constexpr int kNexusW = 160;
-        constexpr int kNexusH = 120;
+        constexpr int kNexusH = 160;
         nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
                          static_cast<int>(centerF.y) - kNexusH / 2 - 20,
                          kNexusW, kNexusH);
@@ -797,7 +807,10 @@ private:
                 const float radius = radiusForZone(orbits_[i].getDepthZone()) * halfMin;
                 const auto  pos    = polarToCartesian(angle, radius, centerF);
 
-                const int size = static_cast<int>(kOrbitSize_Orbital);
+                // HIGH fix (#1006): expand bounds by kBreathPadding so the ±5%
+                // breath scale oscillation paints inside the component rect.
+                // kBreathPadding = ceil(kOrbitalSize * kBreathAmplitude) = ceil(3.6) = 4px.
+                const int size = static_cast<int>(kOrbitSize_Orbital) + kBreathPadding * 2;
                 orbits_[i].setTargetBounds({
                     static_cast<int>(pos.x) - size / 2,
                     static_cast<int>(pos.y) - size / 2,
@@ -812,9 +825,21 @@ private:
         }
         else
         {
+            // BLOCKER 1: empty-state — no engines loaded.
+            // Show a centred call-to-action label and hide all orbits.
             for (auto& o : orbits_)
                 o.setVisible(false);
+
+            emptyStateLabel_.setVisible(true);
+            emptyStateLabel_.setBounds(
+                static_cast<int>(centerF.x) - 150,
+                static_cast<int>(centerF.y) + 20,
+                300, 32);
         }
+
+        // If we have engines, keep the empty-state label hidden.
+        if (numLoaded > 0)
+            emptyStateLabel_.setVisible(false);
 
         // Hide panels that belong to other states.
         if (detail_)  { detail_->setVisible(false); }
@@ -824,6 +849,8 @@ private:
 
     void layoutZoomIn()
     {
+        jassert(selectedSlot_ >= 0 && selectedSlot_ < 5);
+
         const auto area    = getLocalBounds().withTrimmedBottom(kStatusBarH);
         const auto centerF = area.getCentre().toFloat();
         const float halfMin = static_cast<float>(std::min(area.getWidth(),
@@ -835,8 +862,10 @@ private:
         substrate_.setVisible(true);
 
         // Nexus shifts toward top to give vertical room for the zoomed creature.
+        // kNexusH raised from 100 → 140 to accommodate the 41px live-readout
+        // strip added in #909 without clipping (HIGH fix — #1006).
         constexpr int kNexusW = 160;
-        constexpr int kNexusH = 100;
+        constexpr int kNexusH = 140;
         nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
                          30,
                          kNexusW, kNexusH);
@@ -908,10 +937,13 @@ private:
         if (detail_)  { detail_->setVisible(false); }
         if (sidebar_) { sidebar_->setVisible(false); }
         browser_.setVisible(false);
+        emptyStateLabel_.setVisible(false);  // ZoomIn always has an engine selected
     }
 
     void layoutSplitTransform()
     {
+        jassert(selectedSlot_ >= 0 && selectedSlot_ < 5);
+
         const auto area   = getLocalBounds().withTrimmedBottom(kStatusBarH);
         const int  orbW   = static_cast<int>(static_cast<float>(area.getWidth())
                                               * kSplitOrbitalFraction);
@@ -927,7 +959,8 @@ private:
 
         // ── Mini orbital strip ────────────────────────────────────────────────
         // Stack loaded creatures vertically within the left strip.
-        int  y        = 40;
+        // y starts at 48 (was 40) to clear the 44px header button strip (#1006).
+        int  y        = 48;
         int  stripCx  = orbW / 2;
         const int miniSize = static_cast<int>(kOrbitSize_Minimized);
 
@@ -972,6 +1005,7 @@ private:
 
         if (sidebar_) sidebar_->setVisible(false);
         browser_.setVisible(false);
+        emptyStateLabel_.setVisible(false);  // SplitTransform always has an engine selected
     }
 
     void layoutBrowser()
@@ -994,6 +1028,7 @@ private:
         if (macros_)  macros_->setVisible(false);
         if (detail_)  detail_->setVisible(false);
         if (sidebar_) sidebar_->setVisible(false);
+        emptyStateLabel_.setVisible(false);  // browser has its own empty state
     }
 
     //==========================================================================
@@ -1068,13 +1103,44 @@ private:
         return 0.30f;
     }
 
+    /**
+        Restore the canonical Z-order of all overlay and floating components.
+
+        Called after each deferred init (initMacros, initDetailPanel, initSidebar,
+        initStatusBar) because addAndMakeVisible() pushes the new component to the
+        front and disturbs the Z-stack.
+
+        Order (bottom → top):
+          ambientEdge_ | detail_ | sidebar_ | browser_ | playSurfaceOverlay_ |
+          presetPrev_ | presetNext_ | favButton_ | settingsButton_ | keysButton_ |
+          statusBar_
+    */
+    void reorderZStack()
+    {
+        ambientEdge_.toFront(false);
+        if (detail_)   detail_->toFront(false);
+        if (sidebar_)  sidebar_->toFront(false);
+        browser_.toFront(false);
+        playSurfaceOverlay_.toFront(false);
+        presetPrev_.toFront(false);
+        presetNext_.toFront(false);
+        favButton_.toFront(false);
+        settingsButton_.toFront(false);
+        keysButton_.toFront(false);
+        if (statusBar_) statusBar_->toFront(false);
+    }
+
     //==========================================================================
     // State
     //==========================================================================
 
-    ViewState viewState_    = ViewState::Orbital;
-    int       selectedSlot_ = -1;
-    float     dimAlpha_     = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
+    ViewState viewState_       = ViewState::Orbital;
+    int       selectedSlot_    = -1;
+    float     dimAlpha_        = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
+
+    /// State saved on entering BrowserOpen so exitBrowser() can restore it exactly.
+    ViewState preBrowserState_ = ViewState::Orbital;
+    int       preBrowserSlot_  = -1;
 
     //==========================================================================
     // Child components — Z-ordered (bottom → top) as declared
@@ -1091,6 +1157,9 @@ private:
     std::unique_ptr<EngineDetailPanel> detail_;
     std::unique_ptr<SidebarPanel>      sidebar_;
     std::unique_ptr<StatusBar>         statusBar_;
+
+    // BLOCKER 1: empty-state label — shown when no engines are loaded.
+    juce::Label          emptyStateLabel_;
 
     // Overlay components.
     DnaMapBrowser        browser_;
@@ -1115,11 +1184,21 @@ private:
     static constexpr float kMacroStripH         = 60.0f;  // #901: 56→60pt to fit 48pt knobs + 6pt pad
     static constexpr float kSplitOrbitalFraction = 0.20f;  ///< 20% width for mini orbital
 
-    // Mirror the private EngineOrbit size constants so layout code can access them.
-    // Values must be kept in sync with EngineOrbit.h.
-    static constexpr float kOrbitSize_Orbital   = 72.0f;   ///< EngineOrbit::kOrbitalSize
-    static constexpr float kOrbitSize_ZoomIn    = 120.0f;  ///< EngineOrbit::kZoomInSize
-    static constexpr float kOrbitSize_Minimized = 32.0f;   ///< EngineOrbit::kMinimizedSize
+    // HIGH fix (#1006): padding added to orbital bounds so ±5% breath animation
+    // paints inside the component rect.  ceil(72 * 0.05) = 4px each side.
+    static constexpr int kBreathPadding = 4;
+
+    // Orbit size aliases: reference EngineOrbit constants directly so there is
+    // only one source of truth.  static_asserts below catch any drift.
+    static constexpr float kOrbitSize_Orbital   = EngineOrbit::kOrbitalSize;
+    static constexpr float kOrbitSize_ZoomIn    = EngineOrbit::kZoomInSize;
+    static constexpr float kOrbitSize_Minimized = EngineOrbit::kMinimizedSize;
+
+    // Compile-time guard: these must match EngineOrbit — if they drift the
+    // assert fires at build time, not at runtime.
+    static_assert(kOrbitSize_Orbital   == EngineOrbit::kOrbitalSize,   "kOrbitSize_Orbital out of sync");
+    static_assert(kOrbitSize_ZoomIn    == EngineOrbit::kZoomInSize,    "kOrbitSize_ZoomIn out of sync");
+    static_assert(kOrbitSize_Minimized == EngineOrbit::kMinimizedSize, "kOrbitSize_Minimized out of sync");
 
     //==========================================================================
 

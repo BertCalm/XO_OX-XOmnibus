@@ -34,10 +34,12 @@ public:
         addAndMakeVisible(dnaHex_);
         dnaHex_.setAccentColor(accentColour_);
 
-        // Accessibility: the outer component announces as a group.
-        setTitle("Preset Identity");
-        setDescription("DNA hexagon, preset name, and mood badge.");
-        setWantsKeyboardFocus(false);
+        // Accessibility: use A11y::setup() so reduced-motion and focus-ring
+        // helpers are consistently wired (BLOCKER 2 fix).
+        A11y::setup(*this,
+                    "Preset Identity",
+                    "Current preset DNA, name, and mood. Click name to browse presets.",
+                    /*wantsKeyFocus=*/false);
     }
 
     //==========================================================================

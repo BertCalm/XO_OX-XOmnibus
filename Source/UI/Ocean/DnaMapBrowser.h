@@ -171,7 +171,8 @@ public:
         // ── Search bar hit-test ───────────────────────────────────────────────
         if (searchBarBounds_.contains(e.getPosition()))
         {
-            // Simple: bring keyboard focus; typed characters are appended below.
+            // Grab keyboard focus so typed characters are routed to keyPressed().
+            grabKeyboardFocus();
             return;
         }
 
@@ -427,19 +428,6 @@ private:
             viewOffset_.x + x * fw * viewScale_,
             viewOffset_.y + (1.0f - y) * fh * viewScale_
         };
-    }
-
-    /** Convert a screen point back to normalised map space [0,1]. */
-    juce::Point<float> screenToMap(juce::Point<float> screen) const
-    {
-        const float fw = static_cast<float>(getWidth());
-        const float fh = static_cast<float>(getHeight());
-        // Guard: return map centre if component has zero dimensions.
-        if (fw <= 0.0f || fh <= 0.0f)
-            return { 0.5f, 0.5f };
-        const float mx = (screen.x - viewOffset_.x) / (fw * viewScale_);
-        const float my = (screen.y - viewOffset_.y) / (fh * viewScale_);
-        return { mx, 1.0f - my };
     }
 
     //==========================================================================
@@ -983,9 +971,10 @@ private:
                        false);
         }
 
-        // Search icon placeholder (simple magnifier approximation using text)
+        // MEDIUM fix (#1006): use right-pointing magnifier U+1F50D instead of
+        // U+2315 (⌕ telephone receiver) which was incorrect.
         g.setColour(juce::Colour(GalleryColors::Ocean::salt));
-        g.drawText(juce::String::charToString(0x2315),  // "⌕" telescope
+        g.drawText(juce::String::charToString(0x1F50D),  // 🔍 right-pointing magnifier
                    searchBarBounds_.getRight() - 24, searchBarBounds_.getY(),
                    20, searchBarBounds_.getHeight(),
                    juce::Justification::centred, false);

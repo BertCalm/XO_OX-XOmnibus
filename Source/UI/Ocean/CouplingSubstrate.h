@@ -176,13 +176,22 @@ public:
         routeStates_.reserve(routes.size());
 
         float bowSign = 1.0f;
+        const int numRoutes = static_cast<int>(routes.size());
+        int routeIdx = 0;
         for (const auto& route : routes)
         {
             RouteState rs;
-            rs.route     = route;
-            rs.pulsePhase = 0.0f;
+            rs.route = route;
+            // MEDIUM fix (#1006): seed pulse phases distributed across [0, 2π)
+            // so routes do not all peak simultaneously on load (sync-flash bug).
+            // Phase = i / N × 2π, giving an evenly-spread stagger.
+            rs.pulsePhase = (numRoutes > 1)
+                ? (static_cast<float>(routeIdx) / static_cast<float>(numRoutes))
+                    * juce::MathConstants<float>::twoPi
+                : 0.0f;
             rs.bowSign   = bowSign;
             bowSign = -bowSign;  // alternate bow direction
+            ++routeIdx;
 
             // Seed particles with evenly-spaced t values.
             const float step = 1.0f / static_cast<float>(kParticlesPerRoute);

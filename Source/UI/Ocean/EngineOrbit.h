@@ -66,14 +66,22 @@ public:
     enum class InteractionState { Orbital, ZoomIn, SplitTransform, Minimized };
 
     //==========================================================================
+    // Size constants (public so OceanView can reference them directly and avoid
+    // mirrored copies that can drift out of sync).
+    static constexpr float kOrbitalSize    = 72.0f;    ///< Normal orbital diameter
+    static constexpr float kZoomInSize     = 120.0f;   ///< Zoomed-in diameter
+    static constexpr float kMinimizedSize  = 32.0f;    ///< Minimized diameter
+
+    //==========================================================================
     EngineOrbit()
     {
         // Accessibility: announces as an interactive creature slot.
         A11y::setup(*this, "Engine Creature", "Engine orbit slot. Click to zoom in.");
         setWantsKeyboardFocus(true);
 
-        // 30 Hz animation timer.
-        startTimerHz(30);
+        // MEDIUM fix (#1006): do NOT start the 30 Hz timer here.
+        // The timer is started in setEngine() and stopped in clearEngine() so
+        // empty slots never wake the message thread unnecessarily.
     }
 
     ~EngineOrbit() override
@@ -137,9 +145,11 @@ public:
                                        couplingLean_);
 
         // ── Engine name label ────────────────────────────────────────────────
-        // Only draw when large enough to be legible (Minimized state omits it).
-        if (interactionState_ != InteractionState::Minimized
-            && interactionState_ != InteractionState::SplitTransform)
+        // Orbital state only: Minimized, SplitTransform, and ZoomIn omit the
+        // label.  ZoomIn is suppressed because at 120px the label extends beyond
+        // the component bounds, and the name is already shown in the detail panel
+        // (HIGH fix — #1006).
+        if (interactionState_ == InteractionState::Orbital)
         {
             const float labelY    = cy + halfSize + 3.0f;
             const float labelH    = kNameFontSize + 4.0f;
@@ -148,8 +158,10 @@ public:
 
             g.setFont(GalleryFonts::engineName(kNameFontSize));
             g.setColour(GalleryColors::get(GalleryColors::Ocean::foam));
+            // MEDIUM fix: ellipsis=true so long engine names get "..." rather
+            // than being silently clipped (#1006).
             g.drawText(engineId_, labelBounds.toNearestInt(),
-                       juce::Justification::centredTop, false);
+                       juce::Justification::centredTop, true);
         }
 
         // ── Accessibility focus ring ─────────────────────────────────────────
@@ -200,6 +212,11 @@ public:
         setTitle("Engine: " + engineId);
         setDescription("Depth zone: " + depthZoneName(zone) + ". Click to zoom in.");
 
+        // MEDIUM fix (#1006): start the animation timer only when an engine is
+        // loaded — avoids 30 Hz wakeups on empty slots.
+        if (!isTimerRunning())
+            startTimerHz(30);
+
         repaint();
     }
 
@@ -210,6 +227,11 @@ public:
         engineId_  = {};
         setTitle("Empty engine slot");
         setDescription({});
+
+        // MEDIUM fix (#1006): stop the timer when the slot is emptied —
+        // no animation needed for a component that renders nothing.
+        stopTimer();
+
         repaint();
     }
 
@@ -419,15 +441,13 @@ private:
     float targetScale_   = 1.0f;        ///< Desired fraction (set by setInteractionState)
 
     //==========================================================================
-    // Size constants (all in logical pixels)
+    // Private size constants (non-public ones; kOrbitalSize/kZoomInSize/kMinimizedSize
+    // are declared in the public section above so OceanView can reference them).
     //==========================================================================
 
-    static constexpr float kOrbitalSize   = 72.0f;   ///< Normal orbital diameter
-    static constexpr float kZoomInSize    = 120.0f;  ///< Zoomed-in diameter
-    static constexpr float kMinimizedSize = 32.0f;   ///< Minimized (other engine zoomed)
-    static constexpr float kBorderWidth   = 2.0f;    ///< Accent ring stroke width
-    static constexpr float kBreathAmplitude = 0.05f; ///< ±5 % scale oscillation
-    static constexpr float kNameFontSize    = 12.0f; ///< Overbit label below creature
+    static constexpr float kBorderWidth      = 2.0f;   ///< Accent ring stroke width
+    static constexpr float kBreathAmplitude  = 0.05f;  ///< ±5 % scale oscillation
+    static constexpr float kNameFontSize     = 12.0f;  ///< Overbit label below creature
 
     //==========================================================================
 
