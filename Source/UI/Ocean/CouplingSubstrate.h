@@ -325,6 +325,10 @@ public:
             stopTimer();
         }
 
+        // Reset hovered index — the vector contents have changed and the next
+        // mouseMove will perform a fresh hit-test.
+        hoveredRouteIdx_ = -1;
+
         repaint();
     }
 
@@ -376,6 +380,7 @@ public:
         for (const auto& rs : routeStates_)
         {
             if (rs.isFading_) continue;
+            if (rs.path.isEmpty()) continue;
             juce::Point<float> nearest;
             rs.path.getNearestPoint(juce::Point<float>(px, py), nearest);
             if (nearest.getDistanceFrom({px, py}) < 8.0f)
@@ -393,6 +398,7 @@ public:
         for (int i = 0; i < static_cast<int>(routeStates_.size()); ++i)
         {
             if (routeStates_[static_cast<size_t>(i)].isFading_) continue;
+            if (routeStates_[static_cast<size_t>(i)].path.isEmpty()) continue;
             juce::Point<float> nearest;
             routeStates_[static_cast<size_t>(i)].path.getNearestPoint(e.position, nearest);
             const float dist = nearest.getDistanceFrom(e.position);
@@ -636,6 +642,10 @@ private:
                                return rs.isFading_ && rs.fadeAlpha_ < kFadeRemoveThreshold;
                            }),
             routeStates_.end());
+
+        // Invalidate hovered index after pruning — the vector may have shifted.
+        if (hoveredRouteIdx_ >= static_cast<int>(routeStates_.size()))
+            hoveredRouteIdx_ = -1;
 
         // Stop the timer if all routes have been removed and faded out.
         if (routeStates_.empty())

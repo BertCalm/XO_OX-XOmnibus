@@ -273,6 +273,17 @@ public:
         setTitle("Empty engine slot");
         setDescription({});
 
+        // Reset animation state so a subsequent setEngine() starts clean.
+        dwellTicks_          = 0;
+        isShimmering_        = false;
+        shimmerPhase_        = 0.0f;
+        breathPhase_         = 0.0f;
+        currentScale_        = 1.0f;
+        targetScale_         = 1.0f;
+        magnetOffset_        = { 0.0f, 0.0f };
+        targetMagnetOffset_  = { 0.0f, 0.0f };
+        playSurfaceVisible_  = false;
+
         // MEDIUM fix (#1006): stop the timer when the slot is emptied —
         // no animation needed for a component that renders nothing.
         stopTimer();

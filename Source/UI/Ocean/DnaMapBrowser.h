@@ -161,12 +161,12 @@ public:
         dotBufferDirty_ = true;
         rebuildSpatialGrid();
 
-        // ── Dive button — lower-right corner ─────────────────────────────────
+        // ── Dive button — upper-right corner, aligned with search bar ────────
         constexpr int kDiveBtnW  = 80;
         constexpr int kDiveBtnH  = 36;
         constexpr int kDiveMargin = 16;
-        diveButton_.setBounds(getWidth()  - kDiveBtnW  - kDiveMargin,
-                              getHeight() - kDiveBtnH  - kDiveMargin,
+        diveButton_.setBounds(getWidth() - kDiveBtnW - kDiveMargin,
+                              kSearchBarMarginTop,
                               kDiveBtnW, kDiveBtnH);
     }
 

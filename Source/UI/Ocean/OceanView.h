@@ -925,10 +925,11 @@ private:
         substrate_.setVisible(true);
 
         // ── Nexus (centre, slightly above geometric centre) ──────────────────
-        // kNexusH raised from 120 → 160 to accommodate the 41px live-readout
-        // strip added in #909 without clipping (HIGH fix — #1006).
+        // kNexusH = 200: 96 hex + 8 gap + 22 name + 4 gap + 15 mood + 6 gap
+        //              + 41 readouts + 8 margin = 200px total.
+        // Raised from 160 so the 96px hex + readout strip fits without clipping.
         constexpr int kNexusW = 160;
-        constexpr int kNexusH = 160;
+        constexpr int kNexusH = 200;
         nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
                          static_cast<int>(centerF.y) - kNexusH / 2 - 20,
                          kNexusW, kNexusH);
@@ -1023,10 +1024,11 @@ private:
         substrate_.setVisible(true);
 
         // Nexus shifts toward top to give vertical room for the zoomed creature.
-        // kNexusH raised from 100 → 140 to accommodate the 41px live-readout
-        // strip added in #909 without clipping (HIGH fix — #1006).
+        // kNexusH = 200: 96 hex + 8 gap + 22 name + 4 gap + 15 mood + 6 gap
+        //              + 41 readouts + 8 margin = 200px total.
+        // Raised from 140 so the 96px hex + readout strip fits without clipping.
         constexpr int kNexusW = 160;
-        constexpr int kNexusH = 140;
+        constexpr int kNexusH = 200;
         nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
                          30,
                          kNexusW, kNexusH);

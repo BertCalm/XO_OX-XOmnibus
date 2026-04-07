@@ -458,14 +458,17 @@ private:
 
         if (nowMs - lastHistorySnapshotMs_ >= 30000.0)
         {
-            // Rotate: slot[1] (60s ago) ← slot[0] (30s ago) ← current blended
-            dnaHistory_[1] = dnaHistory_[0];
-            dnaHistory_[0] = blended;
+            // Rotate: slot[1] (60s ago) ← slot[0] (30s ago) ← current blended.
+            // Save the pre-rotation slot[0] BEFORE overwriting it so the ghost
+            // hexagons receive the value that was actually 30 s old, not the
+            // brand-new blended value that was just computed.
+            const auto old30 = dnaHistory_[0];  // capture what WAS 30s ago
+            dnaHistory_[1] = old30;             // promote to 60s ago
+            dnaHistory_[0] = blended;           // store current as next 30s snapshot
             lastHistorySnapshotMs_ = nowMs;
 
             // Push historical DNA values into the ghost hexagons.
-            const auto& h30 = dnaHistory_[0];
-            ghostHex30_.setDNA(h30[0], h30[1], h30[2], h30[3], h30[4], h30[5]);
+            ghostHex30_.setDNA(old30[0], old30[1], old30[2], old30[3], old30[4], old30[5]);
             const auto& h60 = dnaHistory_[1];
             ghostHex60_.setDNA(h60[0], h60[1], h60[2], h60[3], h60[4], h60[5]);
         }
