@@ -403,6 +403,65 @@ public:
             return true;
         }
 
+        // ── Orbit cycling — Tab / arrow keys (#974) ──────────────────────────
+
+        // Helper: find the next populated slot after 'start' in direction +1 or -1,
+        // wrapping around.  Returns -1 if no slots are populated.
+        auto nextPopulatedSlot = [this](int start, int direction) -> int
+        {
+            for (int step = 1; step <= 5; ++step)
+            {
+                int candidate = (start + direction * step + 5) % 5;
+                if (orbits_[candidate].hasEngine())
+                    return candidate;
+            }
+            return -1;
+        };
+
+        // Tab / Right arrow: advance to next populated orbit slot.
+        const bool isTab      = (key.getKeyCode() == juce::KeyPress::tabKey &&
+                                  !key.getModifiers().isShiftDown());
+        const bool isRight    = (key.getKeyCode() == juce::KeyPress::rightKey &&
+                                  viewState_ == ViewState::Orbital);
+        if (isTab || isRight)
+        {
+            const int from = (selectedSlot_ >= 0) ? selectedSlot_ : -1;
+            const int next = nextPopulatedSlot(from, +1);
+            if (next >= 0)
+                transitionToZoomIn(next);
+            return true;
+        }
+
+        // Shift+Tab / Left arrow: go back to previous populated orbit slot.
+        const bool isShiftTab = (key.getKeyCode() == juce::KeyPress::tabKey &&
+                                  key.getModifiers().isShiftDown());
+        const bool isLeft     = (key.getKeyCode() == juce::KeyPress::leftKey &&
+                                  viewState_ == ViewState::Orbital);
+        if (isShiftTab || isLeft)
+        {
+            const int from = (selectedSlot_ >= 0) ? selectedSlot_ : 0;
+            const int prev = nextPopulatedSlot(from, -1);
+            if (prev >= 0)
+                transitionToZoomIn(prev);
+            return true;
+        }
+
+        // Up arrow: in ZoomIn state, step to the previous preset.
+        if (key.getKeyCode() == juce::KeyPress::upKey &&
+            viewState_ == ViewState::ZoomIn)
+        {
+            presetPrev_.triggerClick();
+            return true;
+        }
+
+        // Down arrow: in ZoomIn state, step to the next preset.
+        if (key.getKeyCode() == juce::KeyPress::downKey &&
+            viewState_ == ViewState::ZoomIn)
+        {
+            presetNext_.triggerClick();
+            return true;
+        }
+
         return false;
     }
 
