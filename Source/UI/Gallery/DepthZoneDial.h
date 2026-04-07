@@ -485,8 +485,10 @@ private:
                 engineOrder.push_back(id);
     }
 
+public:
     //==========================================================================
     // Depth-zone lookup — mirrors EnginePickerPopup::engineMetadataTable().
+    // Public so editor and OceanView can resolve zones without duplicating the table.
     static int depthZoneOf(const juce::String& engineId)
     {
         // This table mirrors the zone assignments in EnginePickerPopup exactly.

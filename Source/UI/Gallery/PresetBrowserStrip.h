@@ -176,6 +176,18 @@ public:
         processor.getPresetManager().removeListener(this);
     }
 
+    /** Toggle favourite state for the current preset and refresh the star button.
+        Called by OceanView's favToggleButton onClick (fix #1005). */
+    void toggleFavoriteForCurrentPreset()
+    {
+        auto& pm = processor.getPresetManager();
+        if (pm.getLibrarySize() == 0)
+            return;
+        const auto& preset = pm.getCurrentPreset();
+        toggleFavoriteInSettings(preset);
+        updateFavBtn(preset);
+    }
+
     // Show / hide the "Loading presets…" state.
     // Called by XOceanusEditor before and after scanPresetDirectoryAsync().
     void setScanning(bool scanning)

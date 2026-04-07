@@ -808,6 +808,98 @@ public:
             }
         }
 
+        // ── Fix #1005: Wire OceanView floating buttons ────────────────────────
+
+        // presetPrev / presetNext — same logic as the legacy header buttons.
+        oceanView_.presetPrevButton().onClick = [this]
+        {
+            auto& pm = processor.getPresetManager();
+            pm.previousPreset();
+            try
+            {
+                const auto& preset = pm.getCurrentPreset();
+                processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
+                processor.applyPreset(preset);
+            }
+            catch (const std::exception& e)
+            {
+                ToastOverlay::show("Failed to load preset: " + juce::String(e.what()),
+                                   Toast::Level::Warn);
+                processor.killDelayTails();
+            }
+        };
+
+        oceanView_.presetNextButton().onClick = [this]
+        {
+            auto& pm = processor.getPresetManager();
+            pm.nextPreset();
+            try
+            {
+                const auto& preset = pm.getCurrentPreset();
+                processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
+                processor.applyPreset(preset);
+            }
+            catch (const std::exception& e)
+            {
+                ToastOverlay::show("Failed to load preset: " + juce::String(e.what()),
+                                   Toast::Level::Warn);
+                processor.killDelayTails();
+            }
+        };
+
+        // favToggleButton — toggle current preset favourite in shared settings.
+        oceanView_.favToggleButton().onClick = [this]
+        {
+            auto& pm = processor.getPresetManager();
+            if (pm.getLibrarySize() == 0)
+                return;
+            presetBrowser.toggleFavoriteForCurrentPreset();
+        };
+
+        // settingsTogButton — open the Settings tab in the OceanView sidebar.
+        oceanView_.settingsTogButton().onClick = [this]
+        {
+            if (auto* sb = oceanView_.getSidebar())
+                sb->selectTab(SidebarPanel::Settings);
+        };
+
+        // DNA hexagon click — toggle the DNA map browser (same as pressing 'P').
+        oceanView_.onDnaClicked = [this]
+        {
+            juce::KeyPress p('p');
+            oceanView_.keyPressed(p);
+        };
+
+        // ── Fix #1005: Seed the DnaMapBrowser with all preset dots ────────────
+        // Build PresetDot vector from the current library snapshot so the scatter
+        // map is populated on first open (not empty).  Re-seeded in timerCallback
+        // whenever the library changes (preset scan completes after editor opens).
+        {
+            auto lib = processor.getPresetManager().getLibrary();
+            if (lib && !lib->empty())
+            {
+                std::vector<PresetDot> dots;
+                dots.reserve(lib->size());
+                for (int idx = 0; idx < static_cast<int>(lib->size()); ++idx)
+                {
+                    const auto& p = (*lib)[static_cast<size_t>(idx)];
+                    PresetDot dot;
+                    dot.name        = p.name;
+                    dot.mood        = p.mood;
+                    dot.brightness  = p.dna.brightness;
+                    dot.warmth      = p.dna.warmth;
+                    dot.movement    = p.dna.movement;
+                    dot.density     = p.dna.density;
+                    dot.space       = p.dna.space;
+                    dot.aggression  = p.dna.aggression;
+                    dot.presetIndex = idx;
+                    dots.push_back(std::move(dot));
+                }
+                oceanView_.setPresetDots(std::move(dots));
+            }
+            // setActivePresetIndex will be kept live via timerCallback.
+        }
+
         // Hide old Gallery layout components (replaced by OceanView)
         for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->setVisible(false);
@@ -1830,6 +1922,7 @@ private:
         // Color is resolved here on the message thread (safe: getEngine / getAccentColour).
         // XO Gold is used as fallback when no engine occupies the slot.
         static const juce::Colour kXOGold = juce::Colour(0xFFE9C46A);
+        bool hadNoteOn = false; // Fix #1005: detect any note-on for PlaySurface auto-show
         processor.drainNoteEvents(
             [&](const XOceanusProcessor::NoteMapEvent& ev)
             {
@@ -1843,6 +1936,9 @@ private:
                 if (fieldMap.isVisible())
                     fieldMap.addNote(ev.midiNote, ev.velocity, colour);
                 midiIndicator.flash(colour); // flash on every incoming note event
+                // velocity > 0 = note-on; velocity == 0 = note-off.
+                if (ev.velocity > 0.0f)
+                    hadNoteOn = true;
             });
 
         // ── Status Bar updates ────────────────────────────────────────────────
@@ -2055,33 +2151,108 @@ private:
 
         // ── Ocean View state updates ──────────────────────────────────────────
         // Engine presence — push live slot state into OceanView.
-        for (int i = 0; i < 4; ++i)
         {
-            if (auto* eng = processor.getEngine(i))
+            bool hasSunlit   = false;
+            bool hasTwilight = false;
+            bool hasMidnight = false;
+
+            for (int i = 0; i < 4; ++i)
             {
-                auto id     = eng->getEngineId();
-                auto accent = eng->getAccentColour();
-                const int zoneInt = DepthZoneDial::depthZoneOf(id);
-                const auto zone = (zoneInt == 0) ? EngineOrbit::DepthZone::Sunlit
-                                : (zoneInt == 2) ? EngineOrbit::DepthZone::Midnight
-                                                 : EngineOrbit::DepthZone::Twilight;
-                oceanView_.setEngine(i, id, accent, zone);
-                oceanView_.setVoiceCount(i, eng->getActiveVoiceCount());
+                if (auto* eng = processor.getEngine(i))
+                {
+                    auto id     = eng->getEngineId();
+                    auto accent = eng->getAccentColour();
+                    const int zoneInt = DepthZoneDial::depthZoneOf(id);
+                    const auto zone = (zoneInt == 0) ? EngineOrbit::DepthZone::Sunlit
+                                    : (zoneInt == 2) ? EngineOrbit::DepthZone::Midnight
+                                                     : EngineOrbit::DepthZone::Twilight;
+                    oceanView_.setEngine(i, id, accent, zone);
+                    oceanView_.setVoiceCount(i, eng->getActiveVoiceCount());
+
+                    if (zone == EngineOrbit::DepthZone::Sunlit)   hasSunlit   = true;
+                    if (zone == EngineOrbit::DepthZone::Twilight)  hasTwilight = true;
+                    if (zone == EngineOrbit::DepthZone::Midnight)  hasMidnight = true;
+                }
+                else
+                {
+                    oceanView_.clearEngine(i);
+                }
             }
-            else
-            {
-                oceanView_.clearEngine(i);
-            }
+
+            // Fix #1005: drive AmbientEdge depth glow from populated zones.
+            oceanView_.setDepthZones(hasSunlit, hasTwilight, hasMidnight);
         }
 
         // Preset info — update nexus when preset name changes.
         {
             const auto& pm = processor.getPresetManager();
-            oceanView_.setPresetName(pm.getCurrentPreset().name);
+            const auto& currentPreset = pm.getCurrentPreset();
+            oceanView_.setPresetName(currentPreset.name);
+
+            // Fix #1005: push mood name + colour to NexusDisplay so badge updates.
+            oceanView_.setMoodName(currentPreset.mood);
+            // Map mood string to colour — same table used by DnaMapBrowser.
+            auto moodColourFor = [](const juce::String& mood) -> juce::Colour
+            {
+                if (mood == "Foundation")  return juce::Colour(0xFF9E9B97);
+                if (mood == "Atmosphere")  return juce::Colour(0xFF48CAE4);
+                if (mood == "Entangled")   return juce::Colour(0xFF9B5DE5);
+                if (mood == "Prism")       return juce::Colour(0xFFBF40FF);
+                if (mood == "Flux")        return juce::Colour(0xFFFF6B6B);
+                if (mood == "Aether")      return juce::Colour(0xFFA8D8EA);
+                if (mood == "Family")      return juce::Colour(0xFFE9C46A);
+                if (mood == "Submerged")   return juce::Colour(0xFF0096C7);
+                if (mood == "Coupling")    return juce::Colour(0xFFE9C46A);
+                if (mood == "Crystalline") return juce::Colour(0xFFFFFFF0);
+                if (mood == "Deep")        return juce::Colour(0xFF1A6B5A);
+                if (mood == "Ethereal")    return juce::Colour(0xFF7FDBCA);
+                if (mood == "Kinetic")     return juce::Colour(0xFFFF8C00);
+                if (mood == "Luminous")    return juce::Colour(0xFFC6E377);
+                if (mood == "Organic")     return juce::Colour(0xFF228B22);
+                if (mood == "Shadow")      return juce::Colour(0xFF546E7A);
+                return juce::Colour(0xFF9E9B97); // fallback
+            };
+            oceanView_.setMoodColour(moodColourFor(currentPreset.mood));
+
             // DNA update — push 6D vector to OceanView nexus.
-            const auto& dna = pm.getCurrentPreset().dna;
+            const auto& dna = currentPreset.dna;
             oceanView_.setDNA(dna.brightness, dna.warmth, dna.movement,
                               dna.density, dna.space, dna.aggression);
+
+            // Fix #1005: keep activePresetIndex live so the browser dot glows.
+            oceanView_.setActivePresetIndex(pm.getCurrentPresetIndex());
+
+            // Fix #1005: re-seed preset dots when library size changes (scan just completed).
+            {
+                auto lib = pm.getLibrary();
+                static int lastLibrarySize = 0;
+                const int currentLibSize = lib ? static_cast<int>(lib->size()) : 0;
+                if (currentLibSize != lastLibrarySize)
+                {
+                    lastLibrarySize = currentLibSize;
+                    if (lib && currentLibSize > 0)
+                    {
+                        std::vector<PresetDot> dots;
+                        dots.reserve(static_cast<size_t>(currentLibSize));
+                        for (int idx = 0; idx < currentLibSize; ++idx)
+                        {
+                            const auto& p = (*lib)[static_cast<size_t>(idx)];
+                            PresetDot dot;
+                            dot.name        = p.name;
+                            dot.mood        = p.mood;
+                            dot.brightness  = p.dna.brightness;
+                            dot.warmth      = p.dna.warmth;
+                            dot.movement    = p.dna.movement;
+                            dot.density     = p.dna.density;
+                            dot.space       = p.dna.space;
+                            dot.aggression  = p.dna.aggression;
+                            dot.presetIndex = idx;
+                            dots.push_back(std::move(dot));
+                        }
+                        oceanView_.setPresetDots(std::move(dots));
+                    }
+                }
+            }
         }
 
         // ── #909: Live parameter feedback — voice count + macro values ─────────
@@ -2105,10 +2276,16 @@ private:
         }
 
         // Coupling routes — convert MegaCouplingMatrix routes to OceanView CouplingRoute structs.
+        // Fix #1005: also compute per-slot lean from net coupling amounts and call setCouplingLean().
         {
             const auto& matrixRoutes = processor.getCouplingMatrix().getRoutes();
             std::vector<CouplingRoute> oceanRoutes;
             oceanRoutes.reserve(matrixRoutes.size());
+
+            // Accumulate per-slot net lean: sum of (amount) for routes FROM that slot.
+            // Positive = leans right (more modulator), negative = leans left (more target).
+            std::array<float, 5> leanAccum{};
+
             for (const auto& r : matrixRoutes)
             {
                 if (!r.active)
@@ -2119,9 +2296,29 @@ private:
                 cr.type       = static_cast<int>(r.type);
                 cr.amount     = r.amount;
                 oceanRoutes.push_back(cr);
+
+                // Accumulate lean: source leans toward destination (positive),
+                // destination leans back toward source (negative fraction).
+                if (r.sourceSlot >= 0 && r.sourceSlot < 5)
+                    leanAccum[static_cast<size_t>(r.sourceSlot)] += r.amount;
+                if (r.destSlot >= 0 && r.destSlot < 5)
+                    leanAccum[static_cast<size_t>(r.destSlot)]   -= r.amount * 0.5f;
             }
             oceanView_.setCouplingRoutes(oceanRoutes);
+
+            // Fix #1005: drive per-slot coupling lean into EngineOrbit.
+            for (int i = 0; i < 5; ++i)
+            {
+                const float lean = juce::jlimit(-1.0f, 1.0f,
+                                               leanAccum[static_cast<size_t>(i)]);
+                oceanView_.setCouplingLean(i, lean);
+            }
         }
+
+        // Fix #1005: MIDI auto-show — forward any note-on to OceanView so the
+        // PlaySurface overlay slides up when the user first plays a key.
+        if (hadNoteOn)
+            oceanView_.onMidiNoteReceived();
     }
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.

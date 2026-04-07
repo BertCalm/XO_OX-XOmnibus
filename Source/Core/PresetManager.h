@@ -991,6 +991,8 @@ public:
     //==========================================================================
 
     const PresetData& getCurrentPreset() const { return currentPreset; }
+    /** Returns the 0-based index of the current preset in the library, or -1 if unknown. */
+    int getCurrentPresetIndex() const { return currentIndex; }
 
     void setCurrentPreset(const PresetData& preset)
     {

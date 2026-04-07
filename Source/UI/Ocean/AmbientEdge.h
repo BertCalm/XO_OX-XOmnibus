@@ -215,13 +215,14 @@ private:
         const float sideAlpha = (topAlpha + bottomAlpha) * 0.5f;
         const juce::Colour sideColour = computeSideColour(topColour, bottomColour, 0.5f);
 
+        const float w     = bounds.getWidth();
+        const float h     = bounds.getHeight();
+
         // Scale glow depth to 2.5% of the smallest window dimension so it
         // remains proportional across different plugin window sizes, with a
         // minimum of kGlowDepth (20px) to stay visible on small windows.
         const float depth = std::max(kGlowDepth,
                                      std::min(w, h) * 0.025f);
-        const float w     = bounds.getWidth();
-        const float h     = bounds.getHeight();
         const float x0    = bounds.getX();
         const float y0    = bounds.getY();
 
