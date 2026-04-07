@@ -99,8 +99,9 @@ public:
             return;
 
         const auto localBounds = getLocalBounds().toFloat();
-        const float cx = localBounds.getCentreX();
-        const float cy = localBounds.getCentreY();
+        // Proximity magnetism: shift the draw origin toward the cursor.
+        const float cx = localBounds.getCentreX() + magnetOffset_.x;
+        const float cy = localBounds.getCentreY() + magnetOffset_.y;
 
         // ── Effective size ───────────────────────────────────────────────────
         // currentScale_ is the smoothed fractional scale (1.0 = kOrbitalSize).
@@ -287,6 +288,38 @@ public:
         setBounds(targetBounds);
     }
 
+    /**
+        Called by OceanView::mouseMove when the cursor moves within the Orbital
+        view.  Computes a target drift offset so the creature drifts up to
+        kMagnetStrength px toward the cursor when it is within kMagnetRange px.
+        Passing a point far off-screen (e.g. {-1000, -1000}) forces an immediate
+        reset to zero — used from OceanView::mouseExit.
+
+        Has no effect when hasEngine_ is false or prefersReducedMotion() is true.
+    */
+    void setMouseProximity(juce::Point<float> mousePos)
+    {
+        if (!hasEngine_ || A11y::prefersReducedMotion())
+        {
+            targetMagnetOffset_ = { 0.0f, 0.0f };
+            return;
+        }
+
+        auto centre = getBounds().getCentre().toFloat();
+        auto delta  = mousePos - centre;
+        float dist  = delta.getDistanceFromOrigin();
+
+        if (dist < kMagnetRange && dist > 1.0f)
+        {
+            float strength = (1.0f - dist / kMagnetRange) * kMagnetStrength;
+            targetMagnetOffset_ = delta.normalised() * strength;
+        }
+        else
+        {
+            targetMagnetOffset_ = { 0.0f, 0.0f };
+        }
+    }
+
     //==========================================================================
     // Interaction state management
     //==========================================================================
@@ -399,6 +432,26 @@ private:
                 currentScale_ = targetScale_;
         }
 
+        // ── Proximity magnetism smooth-lerp ──────────────────────────────────
+        // Bypass under reduced motion — jump straight to target (which is always
+        // zero when prefersReducedMotion() is true, set in setMouseProximity).
+        if (reducedMotion)
+        {
+            magnetOffset_ = targetMagnetOffset_;
+        }
+        else
+        {
+            magnetOffset_ = magnetOffset_
+                            + (targetMagnetOffset_ - magnetOffset_) * kMagnetLerp;
+
+            // Snap to zero when essentially at rest to avoid endless tiny repaints.
+            if (magnetOffset_.getDistanceFromOrigin() < 0.01f
+                && targetMagnetOffset_.getDistanceFromOrigin() < 0.01f)
+            {
+                magnetOffset_ = { 0.0f, 0.0f };
+            }
+        }
+
         repaint();
     }
 
@@ -440,6 +493,10 @@ private:
     float currentScale_  = 1.0f;        ///< Smoothed fraction of kOrbitalSize
     float targetScale_   = 1.0f;        ///< Desired fraction (set by setInteractionState)
 
+    // Proximity magnetism — creature drifts toward nearby cursor
+    juce::Point<float> magnetOffset_       = { 0.0f, 0.0f };   ///< Smoothed draw offset (px)
+    juce::Point<float> targetMagnetOffset_ = { 0.0f, 0.0f };   ///< Desired offset (px)
+
     //==========================================================================
     // Private size constants (non-public ones; kOrbitalSize/kZoomInSize/kMinimizedSize
     // are declared in the public section above so OceanView can reference them).
@@ -448,6 +505,11 @@ private:
     static constexpr float kBorderWidth      = 2.0f;   ///< Accent ring stroke width
     static constexpr float kBreathAmplitude  = 0.05f;  ///< ±5 % scale oscillation
     static constexpr float kNameFontSize     = 12.0f;  ///< Overbit label below creature
+
+    // Proximity magnetism constants
+    static constexpr float kMagnetRange    = 60.0f;   ///< Cursor proximity radius (px)
+    static constexpr float kMagnetStrength = 8.0f;    ///< Max drift distance (px)
+    static constexpr float kMagnetLerp     = 0.08f;   ///< Smoothing factor per 30 Hz tick
 
     //==========================================================================
 

@@ -454,6 +454,27 @@ public:
         }
     }
 
+    void mouseMove(const juce::MouseEvent& e) override
+    {
+        // Proximity magnetism: in Orbital state, feed each creature the cursor
+        // position (in OceanView coordinates) so it can drift toward it.
+        // Other states leave the offset at zero — creatures are not in orbit.
+        if (viewState_ == ViewState::Orbital)
+        {
+            const auto pos = e.getPosition().toFloat();
+            for (auto& orbit : orbits_)
+                orbit.setMouseProximity(pos);
+        }
+    }
+
+    void mouseExit(const juce::MouseEvent& /*e*/) override
+    {
+        // Cursor has left the component entirely — clear all magnet targets so
+        // creatures return smoothly to their resting positions.
+        for (auto& orbit : orbits_)
+            orbit.setMouseProximity({ -1000.0f, -1000.0f });
+    }
+
     //==========================================================================
     // Engine slot management
     //==========================================================================
@@ -512,6 +533,9 @@ public:
     {
         nexus_.setDNA(b, w, m, d, s, a);
     }
+
+    /** Direct access to the NexusDisplay for feeding session DNA drift. */
+    NexusDisplay& getNexus() { return nexus_; }
 
     void setPresetDots(std::vector<PresetDot> dots)
     {
