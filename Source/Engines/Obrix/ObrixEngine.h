@@ -808,9 +808,13 @@ public:
                 const int unisonSize = calcUnisonSize(voiceModeIdx, unisonDetune);
                 for (int u = 1; u < unisonSize; ++u)
                 {
-                    float spread = (unisonSize > 1)
-                        ? (static_cast<float>(u) / static_cast<float>(unisonSize - 1) * 2.0f - 1.0f)
-                        : 0.0f;
+                    // Symmetric ± pairs: extras alternate left/right around the primary.
+                    // u=1→-mag, u=2→+mag, u=3→-2mag, u=4→+2mag, etc.
+                    int pairIdx = (u + 1) / 2;
+                    float magnitude = static_cast<float>(pairIdx)
+                                    / static_cast<float>(std::max(1, (unisonSize - 1 + 1) / 2));
+                    magnitude = std::min(magnitude, 1.0f);
+                    float spread = (u % 2 == 1) ? -magnitude : magnitude;
                     float detST = spread * unisonDetune / 100.0f;
                     float panOff = spread * 0.75f;
                     noteOn(msg.getNoteNumber(), msg.getFloatVelocity(), ampA, ampD, ampS, ampR, src1Tune, src2Tune,
@@ -1285,7 +1289,16 @@ public:
                 {
                     voice.procFbState[2] = 0.0f; // clear stale filter state
                     float fold = charFoldScale * velFoldBoost;
-                    if (preFolded) fold *= 0.25f; // compensate: pre-folded signal is already saturated
+                    if (preFolded)
+                    {
+                        // Scale compensation by the srcMix-weighted fraction of pre-folded content.
+                        // At srcMix=1.0 with proc1 folded: fraction=1.0, fold *= 0.25 (full compensation)
+                        // At srcMix=0.5 with proc1 folded: fraction=0.5, fold *= 0.625 (partial)
+                        // At srcMix=0.5 with both folded:  fraction=1.0, fold *= 0.25 (full)
+                        float foldedFrac = (proc1Type == 4 ? srcMix : 0.0f)
+                                         + (proc2Type == 4 ? (1.0f - srcMix) : 0.0f);
+                        fold *= (1.0f - clamp(foldedFrac, 0.0f, 1.0f) * 0.75f);
+                    }
                     signal = fastTanh(fastSin(signal * fold * kPi));
                 }
                 else if (proc3Type == 5 && src2Type > 0) // Ring mod — post-mix × src2 carrier

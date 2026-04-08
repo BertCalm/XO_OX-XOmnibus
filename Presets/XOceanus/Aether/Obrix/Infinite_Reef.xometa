@@ -56,7 +56,7 @@
       "obrix_src2Tune": 7.03,
       "obrix_src1PW": 0.333,
       "obrix_src2PW": 0.5,
-      "obrix_srcMix": 0.45,
+      "obrix_srcMix": 1.0,
       "obrix_proc1Type": 4,
       "obrix_proc1Cutoff": 3500.0,
       "obrix_proc1Reso": 0.0,
