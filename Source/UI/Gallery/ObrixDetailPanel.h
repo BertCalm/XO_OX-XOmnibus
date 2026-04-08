@@ -857,7 +857,7 @@ public:
         // Update the toggle button text to reflect current state.
         {
             bool polOn = fieldPolarityBtn.getToggleState();
-            fieldPolarityBtn.setButtonText(polOn ? "REPULSOR" : "ATTRACTOR");
+            fieldPolarityBtn.setButtonText(polOn ? "ATTRACTOR" : "REPULSOR");
         }
 
         // fxModeCB is a ComboBox — label is shown natively; no manual update needed.

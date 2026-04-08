@@ -300,6 +300,7 @@ struct ObrixVoice
     float procFbState[3]{};
 
     float pan = 0.0f;
+    bool  sustainHeld = false; // sustain pedal deferred note-off
 
     // Voice steal crossfade — 5ms linear ramp-down prevents clicks on polyphony overflow
     int stealFadeSamples = 0;   // samples remaining in fade-out (0 = not stealing)
@@ -336,6 +337,7 @@ struct ObrixVoice
         for (auto& o : srcOsc)
             o.reset();
         ampEnv.reset();
+        sustainHeld = false;
         for (auto& e : modEnvs)
             e.reset();
         for (auto& l : modLFOs)
@@ -392,6 +394,8 @@ public:
         buildWavetables();
         // Cache reef HP coefficient at 2kHz (used in parasite mode; sample-rate dependent)
         reefHpCoeff_ = std::exp(-kTwoPi * 2000.0f / sr);
+        // Bleach recovery per-sample coefficient — cached to avoid std::pow on audio thread
+        bleachRecoveryLog2_ = fastLog2(1.0f - 1.0f / (sr * 300.0f));
         // Invalidate stress decay coefficient cache so it is recomputed on the
         // first block after a sample-rate change (#620 block-rate caching).
         cachedStressDecay_ = -1.0f;
@@ -435,6 +439,7 @@ public:
         couplingCutoffMod.store(0.0f);
         couplingWtPosMod.store(0.0f);
         couplingDecayMod.store(0.0f);
+        sustainPedal_ = false;
     }
 
     // ═══ SIGNAL TRACER ═══
@@ -530,7 +535,7 @@ public:
             couplingCutoffMod.store(0.0f);
             couplingWtPosMod.store(0.0f);
             couplingDecayMod.store(0.0f);
-            gestureLevel_ = 0.0f;    // prevent ghost gesture sweep on resume
+            gestureLevel = 0.0f;     // prevent ghost gesture sweep on resume
             distFiltL_ = distFiltR_ = 0.0f; // reset spatial filter state
             airFiltL_ = airFiltR_ = 0.0f;
             return;
@@ -721,7 +726,7 @@ public:
             if (bcount > 0)
                 avgBright /= static_cast<float>(bcount);
             bleachLevel_ = std::min(1.0f, bleachLevel_ + avgBright * bleachRate / (sr * 60.0f));
-            bleachLevel_ *= std::pow(1.0f - 1.0f / (sr * 300.0f), static_cast<float>(numSamples)); // natural recovery ~5 min
+            bleachLevel_ *= fastPow2(static_cast<float>(numSamples) * bleachRecoveryLog2_); // natural recovery ~5 min
             bleachLevel_ = flushDenormal(bleachLevel_);
         }
 
@@ -758,7 +763,7 @@ public:
                 float parasiteBleachInput = reefCouplingHfRms_ * residentStrength;
                 bleachLevel_ = std::min(1.0f, bleachLevel_ + parasiteBleachInput / (sr * 60.0f));
                 if (bleachRate <= 0.001f) // no natural recovery from velocity block — apply here
-                    bleachLevel_ *= std::pow(1.0f - 1.0f / (sr * 300.0f), static_cast<float>(numSamples));
+                    bleachLevel_ *= fastPow2(static_cast<float>(numSamples) * bleachRecoveryLog2_);
                 bleachLevel_ = flushDenormal(bleachLevel_);
             }
         }
@@ -841,6 +846,21 @@ public:
                 pitchBend_ = (msg.getPitchWheelValue() - 8192) / 8192.0f;
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheel_ = msg.getControllerValue() / 127.0f;
+            else if (msg.isController() && msg.getControllerNumber() == 64)
+            {
+                bool wasSustained = sustainPedal_;
+                sustainPedal_ = (msg.getControllerValue() >= 64);
+                // On pedal release, send deferred note-offs for sustained voices
+                if (wasSustained && !sustainPedal_)
+                    for (auto& v : voices)
+                        if (v.active && v.sustainHeld)
+                        {
+                            v.sustainHeld = false;
+                            v.ampEnv.noteOff();
+                            for (auto& e : v.modEnvs)
+                                e.noteOff();
+                        }
+            }
         }
 
         // === Consume coupling accumulators ===
@@ -2395,9 +2415,16 @@ private:
         for (auto& v : voices)
             if (v.active && v.note == noteNum)
             {
-                v.ampEnv.noteOff();
-                for (auto& e : v.modEnvs)
-                    e.noteOff();
+                if (sustainPedal_)
+                {
+                    v.sustainHeld = true; // defer until pedal release
+                }
+                else
+                {
+                    v.ampEnv.noteOff();
+                    for (auto& e : v.modEnvs)
+                        e.noteOff();
+                }
             }
     }
 
@@ -2409,6 +2436,7 @@ private:
     std::array<ObrixVoice, kMaxVoices> voices{};
     std::atomic<int> activeVoices{0};
     float modWheel_ = 0.0f;
+    bool  sustainPedal_ = false;
     float pitchBend_ = 0.0f;
     int polyLimit_ = 8;
     std::atomic<float> couplingPitchMod{0.0f};
@@ -2456,6 +2484,7 @@ private:
     float reefCouplingBufPrev_ = 0.0f;           // previous sample for HP difference equation
     float reefCouplingHfRms_ = 0.0f;             // smoothed high-frequency RMS (parasite bleach)
     float reefHpCoeff_ = 0.0f;                   // cached 1-pole HP coefficient at 2kHz (computed in prepare)
+    float bleachRecoveryLog2_ = 0.0f;            // log2 of per-sample bleach recovery coeff (cached in prepare)
 
     // 3 independent FX slots
     ObrixFXState fxSlots[3];
