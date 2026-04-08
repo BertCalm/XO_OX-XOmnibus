@@ -335,6 +335,16 @@ public:
         makeLabel(proc3ResLbl, "RESO");
         makeLabel(proc3FbLbl,  "FEEDBACK");
 
+        // Hide proc3Fb knob when proc3 is Wavefolder (4) or Ring Mod (5) —
+        // feedback has no effect in those modes.
+        proc3TypeCB.onChange = [this] {
+            int idx = proc3TypeCB.getSelectedItemIndex();
+            bool showFb = (idx > 0 && idx <= 3); // LP/HP/BP only
+            proc3FbKnob.setVisible(showFb);
+            proc3FbLbl.setVisible(showFb);
+        };
+        proc3TypeCB.onChange(); // seed from initial attachment value
+
         // ── Section 9 — Other / Global params ────────────────────────────────
         levelAtt        = makeKnob    (levelKnob,        "obrix_level");
         polyphonyAtt    = makeComboBox(polyphonyCB,      "obrix_polyphony");

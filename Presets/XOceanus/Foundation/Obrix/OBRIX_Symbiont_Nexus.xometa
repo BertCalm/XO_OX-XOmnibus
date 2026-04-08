@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Coral Triangle: the center of marine biodiversity, where three oceans meet. The planet's highest density of species per square mile. Brick Ecology symbiosis and competition both active — organisms helping and competing simultaneously. The foundational sound of mutual dependency.",
+  "description": "Coral Triangle: the center of marine biodiversity, where three oceans meet. The planet's highest density of species per square mile. Brick Ecology symbiosis and competition both active \u2014 organisms helping and competing simultaneously. The foundational sound of mutual dependency.",
   "tags": [
     "obrix",
     "foundation",
@@ -116,10 +116,7 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 0,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3,
-      "obrix_fltEnvAmt": 0.377,
-      "obrix_lfo1Rate": 0.212,
-      "obrix_lfo1Depth": 0.15
+      "obrix_residentStrength": 0.3
     }
   },
   "coupling": {

@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Noise src1 plus Sine src2 run through a 7-limit repulsor (fieldPolarity=-1.0) — the field actively repels all voices away from pure ratios, creating maximum inharmonicity. What would naturally want to resolve into consonance is constantly pushed outward. The result is a dense, harmonically unstable cloud that never settles. Biophonics at its most abyssal.",
+  "description": "Noise src1 plus Sine src2 run through a 7-limit repulsor (fieldPolarity=-1.0) \u2014 the field actively repels all voices away from pure ratios, creating maximum inharmonicity. What would naturally want to resolve into consonance is constantly pushed outward. The result is a dense, harmonically unstable cloud that never settles. Biophonics at its most abyssal.",
   "tags": [
     "obrix",
     "submerged",
@@ -126,10 +126,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.463,
-      "obrix_lfo1Rate": 0.039,
-      "obrix_lfo1Depth": 0.204
+      "obrix_fxMode": 0
     }
   }
 }

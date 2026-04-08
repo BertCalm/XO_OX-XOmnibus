@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Krakatoa Ash Plain: the seabed around the 1883 eruption site, still covered in volcanic debris 140 years later. Bleaching and Stress both active — the reef remembers catastrophe. Maximum Turbidity models perpetual ash suspension. Harsh wavefolder distortion for the remnant heat.",
+  "description": "Krakatoa Ash Plain: the seabed around the 1883 eruption site, still covered in volcanic debris 140 years later. Bleaching and Stress both active \u2014 the reef remembers catastrophe. Maximum Turbidity models perpetual ash suspension. Harsh wavefolder distortion for the remnant heat.",
   "tags": [
     "obrix",
     "submerged",
@@ -116,10 +116,7 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 0,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3,
-      "obrix_fltEnvAmt": 0.543,
-      "obrix_lfo1Rate": 0.1,
-      "obrix_lfo1Depth": 0.275
+      "obrix_residentStrength": 0.3
     }
   },
   "coupling": {

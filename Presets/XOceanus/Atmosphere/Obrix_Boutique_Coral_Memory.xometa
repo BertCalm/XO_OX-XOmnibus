@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX through Boutique Chain: the reef as archive. OBRIX's dual pulse/saw collision (Coral Architecture recipe) fed through Dissolving Archive — each note's harmonic collision is stored in the Archive with Chance 0.20 and Dissolve 0.50. Previous coral architectures dissolve into grain clouds and reverb, creating a layered acoustic ecology where each new note is played against decaying ghosts of its predecessors. Anomaly TextureBlend 0.52 and ReverbSize 0.42. Cathedral DarkMix 0.65, BitCrush 0.10 (minimal degradation — the coral should age gracefully). Submersion 5 stages at 0.15 Hz.",
+  "description": "OBRIX through Boutique Chain: the reef as archive. OBRIX's dual pulse/saw collision (Coral Architecture recipe) fed through Dissolving Archive \u2014 each note's harmonic collision is stored in the Archive with Chance 0.20 and Dissolve 0.50. Previous coral architectures dissolve into grain clouds and reverb, creating a layered acoustic ecology where each new note is played against decaying ghosts of its predecessors. Anomaly TextureBlend 0.52 and ReverbSize 0.42. Cathedral DarkMix 0.65, BitCrush 0.10 (minimal degradation \u2014 the coral should age gracefully). Submersion 5 stages at 0.15 Hz.",
   "tags": [
     "obrix",
     "boutique-chain",
@@ -99,10 +99,7 @@
       "obrix_driftDepth": 0.22,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.28,
-      "obrix_air": 0.45,
-      "obrix_fltEnvAmt": 0.472,
-      "obrix_lfo1Rate": 0.038,
-      "obrix_lfo1Depth": 0.158
+      "obrix_air": 0.45
     }
   },
   "coupling": {

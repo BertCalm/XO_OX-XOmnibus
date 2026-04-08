@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX through Mathematical Chain with Entropy Cooler as the primary character shaper. OBRIX with Brick Ecology active (Symbiosis mode: noise src1 amplitude feeds FM depth on src2) creates interdependent spectral content. Entropy Cooler at Stability 0.25 (moderate disorder) measures the Shannon entropy of this ecological output and applies ordering pressure — the Maxwell's Demon spectral gate is active, shaping which frequency bands pass through based on energy. The effect is a dynamic spectral shaping that responds to the ecosystem state. Voronoi Shatter at Crystallize 0.35. Quantum Smear at Observation 0.28. Attractor Drive at Bifurcation 0.45.",
+  "description": "OBRIX through Mathematical Chain with Entropy Cooler as the primary character shaper. OBRIX with Brick Ecology active (Symbiosis mode: noise src1 amplitude feeds FM depth on src2) creates interdependent spectral content. Entropy Cooler at Stability 0.25 (moderate disorder) measures the Shannon entropy of this ecological output and applies ordering pressure \u2014 the Maxwell's Demon spectral gate is active, shaping which frequency bands pass through based on energy. The effect is a dynamic spectral shaping that responds to the ecosystem state. Voronoi Shatter at Crystallize 0.35. Quantum Smear at Observation 0.28. Attractor Drive at Bifurcation 0.45.",
   "tags": [
     "obrix",
     "ecology",
@@ -98,10 +98,7 @@
       "obrix_driftDepth": 0.28,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.4,
-      "obrix_air": 0.48,
-      "obrix_fltEnvAmt": 0.646,
-      "obrix_lfo1Rate": 0.286,
-      "obrix_lfo1Depth": 0.448
+      "obrix_air": 0.48
     }
   },
   "coupling": {

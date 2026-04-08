@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Maximum ecological competition (competitionStrength=1.0): Saw src1 and Square src2 fight for survival. proc1=Wavefolder on the Saw adds aggressive harmonic content; proc2=HP strips the Square's body, leaving only edges. Total resource exclusion — only the strongest timbral content at any moment gets through. The most aggressive brick ecology preset: a coral reef collapse in miniature.",
+  "description": "Maximum ecological competition (competitionStrength=1.0): Saw src1 and Square src2 fight for survival. proc1=Wavefolder on the Saw adds aggressive harmonic content; proc2=HP strips the Square's body, leaving only edges. Total resource exclusion \u2014 only the strongest timbral content at any moment gets through. The most aggressive brick ecology preset: a coral reef collapse in miniature.",
   "tags": [
     "obrix",
     "prism",
@@ -126,10 +126,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.471,
-      "obrix_lfo1Rate": 0.202,
-      "obrix_lfo1Depth": 0.265
+      "obrix_fxMode": 0
     }
   }
 }

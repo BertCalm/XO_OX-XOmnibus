@@ -59,9 +59,6 @@
     },
     "Obrix": {
       "obrix_src1Type": 0.88,
-      "obrix_filterEnvAmt": 0.75,
-      "obrix_lfo1Rate": 0.22,
-      "obrix_lfo1Depth": 0.42,
       "obrix_macroCharacter": 0.72,
       "obrix_macroMovement": 0.85,
       "obrix_macroCoupling": 0.88,

@@ -96,10 +96,7 @@
       "obrix_driftDepth": 0.0,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.0,
-      "obrix_air": 0.5,
-      "obrix_fltEnvAmt": 0.476,
-      "obrix_lfo1Rate": 0.237,
-      "obrix_lfo1Depth": 0.204
+      "obrix_air": 0.5
     }
   },
   "macros": {

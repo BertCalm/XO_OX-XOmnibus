@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Iceland Geothermal Vent: superheated plumes breaking through a cold surface. Turbidity models the steam shimmer. Temperature maxed for maximum thermal drift. Wavefolder Proc3 adds the harmonic snap of eruption — then the hot air cools.",
+  "description": "Iceland Geothermal Vent: superheated plumes breaking through a cold surface. Turbidity models the steam shimmer. Temperature maxed for maximum thermal drift. Wavefolder Proc3 adds the harmonic snap of eruption \u2014 then the hot air cools.",
   "tags": [
     "obrix",
     "atmosphere",
@@ -115,10 +115,7 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 0,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3,
-      "obrix_fltEnvAmt": 0.351,
-      "obrix_lfo1Rate": 0.097,
-      "obrix_lfo1Depth": 0.266
+      "obrix_residentStrength": 0.3
     }
   },
   "coupling": {

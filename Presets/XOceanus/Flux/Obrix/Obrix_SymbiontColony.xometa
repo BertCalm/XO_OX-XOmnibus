@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Noise src1 and Saw src2 in deep symbiosis (symbiosisStrength=0.8). The ecology amplifies FM between voices — the noise modulates the saw's timbre more intensely as symbiosis deepens, and the saw feeds amplitude data back to sustain the noise. fmDepth=0.2 seeds the interaction. The patch grows louder and more complex over sustained notes as the symbiotic relationship strengthens.",
+  "description": "Noise src1 and Saw src2 in deep symbiosis (symbiosisStrength=0.8). The ecology amplifies FM between voices \u2014 the noise modulates the saw's timbre more intensely as symbiosis deepens, and the saw feeds amplitude data back to sustain the noise. fmDepth=0.2 seeds the interaction. The patch grows louder and more complex over sustained notes as the symbiotic relationship strengthens.",
   "tags": [
     "obrix",
     "entangled",
@@ -125,10 +125,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.617,
-      "obrix_lfo1Rate": 0.378,
-      "obrix_lfo1Depth": 0.349
+      "obrix_fxMode": 0
     }
   }
 }

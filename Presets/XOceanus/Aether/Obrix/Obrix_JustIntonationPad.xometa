@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "The most transparent demonstration of the 5-limit attractor: maximum field strength (0.9), very slow attack (0.5s), held in reverb. Every note you play gradually bends toward its 5-limit just ratio. Sustain long enough and you hear equal temperament dissolve into pure mathematics. The pad itself disappears — only the tuning system remains.",
+  "description": "The most transparent demonstration of the 5-limit attractor: maximum field strength (0.9), very slow attack (0.5s), held in reverb. Every note you play gradually bends toward its 5-limit just ratio. Sustain long enough and you hear equal temperament dissolve into pure mathematics. The pad itself disappears \u2014 only the tuning system remains.",
   "tags": [
     "obrix",
     "aether",
@@ -126,10 +126,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.359,
-      "obrix_lfo1Rate": 0.035,
-      "obrix_lfo1Depth": 0.224
+      "obrix_fxMode": 0
     }
   }
 }

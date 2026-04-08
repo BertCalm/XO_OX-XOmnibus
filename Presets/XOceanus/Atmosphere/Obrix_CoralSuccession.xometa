@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Noise src1 drives Wavetable src2 (bank 0) through maximal symbiosis (symbiosisStrength=0.9). The noise feeds FM energy into the wavetable position, causing the wavetable to scan continuously — driven by the ecology, not by an LFO. Ecological succession in audio: the noise community establishes first, then creates conditions for the wavetable community to thrive and complexify. A reef building itself.",
+  "description": "Noise src1 drives Wavetable src2 (bank 0) through maximal symbiosis (symbiosisStrength=0.9). The noise feeds FM energy into the wavetable position, causing the wavetable to scan continuously \u2014 driven by the ecology, not by an LFO. Ecological succession in audio: the noise community establishes first, then creates conditions for the wavetable community to thrive and complexify. A reef building itself.",
   "tags": [
     "obrix",
     "atmosphere",
@@ -125,10 +125,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.378,
-      "obrix_lfo1Rate": 0.103,
-      "obrix_lfo1Depth": 0.301
+      "obrix_fxMode": 0
     }
   }
 }

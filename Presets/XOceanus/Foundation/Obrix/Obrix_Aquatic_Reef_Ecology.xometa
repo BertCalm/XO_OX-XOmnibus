@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX through Aquatic Chain — thematic resonance: OBRIX is the Coral Reef engine. Reef FDN reverb wraps OBRIX brick synthesis in the spatial context that matches its identity. Fathom Character 0.15 (deep emphasis) amplifies the low-mid body of OBRIX's dual-source architecture. Drift at 4 voices gives the two sources (Pulse + Saw) an ensemble width they could not have with just unison detune. Tide in AutoFilter at 0.12 Hz — the reef environment breathes. Reef at size 0.65, density 0.7. The chain is not adding effects to OBRIX — it is placing OBRIX in the environment it belongs to.",
+  "description": "OBRIX through Aquatic Chain \u2014 thematic resonance: OBRIX is the Coral Reef engine. Reef FDN reverb wraps OBRIX brick synthesis in the spatial context that matches its identity. Fathom Character 0.15 (deep emphasis) amplifies the low-mid body of OBRIX's dual-source architecture. Drift at 4 voices gives the two sources (Pulse + Saw) an ensemble width they could not have with just unison detune. Tide in AutoFilter at 0.12 Hz \u2014 the reef environment breathes. Reef at size 0.65, density 0.7. The chain is not adding effects to OBRIX \u2014 it is placing OBRIX in the environment it belongs to.",
   "tags": [
     "obrix",
     "aquatic-chain",
@@ -99,10 +99,7 @@
       "obrix_driftDepth": 0.25,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.32,
-      "obrix_air": 0.5,
-      "obrix_fltEnvAmt": 0.491,
-      "obrix_lfo1Rate": 0.18,
-      "obrix_lfo1Depth": 0.189
+      "obrix_air": 0.5
     }
   },
   "coupling": {

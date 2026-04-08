@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Repulsor mode (fieldPolarity=-1) actively pushes pitch away from just ratios — pure intervals become unstable. Saw src1 and Triangle src2 are processed through a Wavefolder that folds the already-repulsed harmonics into new complexity. The system is in perpetual tension: you can hear the field fighting the natural acoustic tendency toward consonance.",
+  "description": "Repulsor mode (fieldPolarity=-1) actively pushes pitch away from just ratios \u2014 pure intervals become unstable. Saw src1 and Triangle src2 are processed through a Wavefolder that folds the already-repulsed harmonics into new complexity. The system is in perpetual tension: you can hear the field fighting the natural acoustic tendency toward consonance.",
   "tags": [
     "obrix",
     "flux",
@@ -126,10 +126,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.501,
-      "obrix_lfo1Rate": 0.43,
-      "obrix_lfo1Depth": 0.403
+      "obrix_fxMode": 0
     }
   }
 }

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Red Sea Thermocline: where warm surface water meets cool deep water at 50m — a sharp invisible boundary you can feel with your hand. Above: clear blue. Below: cold dark. Air parameter split exactly at 0.5 — spectral tilt perfectly balanced. Wavefolder at the post-mix adds the refractive shimmer at the boundary.",
+  "description": "Red Sea Thermocline: where warm surface water meets cool deep water at 50m \u2014 a sharp invisible boundary you can feel with your hand. Above: clear blue. Below: cold dark. Air parameter split exactly at 0.5 \u2014 spectral tilt perfectly balanced. Wavefolder at the post-mix adds the refractive shimmer at the boundary.",
   "tags": [
     "obrix",
     "foundation",
@@ -116,10 +116,7 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 0,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3,
-      "obrix_fltEnvAmt": 0.391,
-      "obrix_lfo1Rate": 0.107,
-      "obrix_lfo1Depth": 0.259
+      "obrix_residentStrength": 0.3
     }
   },
   "coupling": {

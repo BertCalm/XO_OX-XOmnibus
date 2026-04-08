@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Two Sine oscillators — fundamental and seventh partial (+7 semitones, tuned to the 7-limit harmonic) — drift through a 7-limit attractor field. Journey mode engaged: the field slowly evolves over time, pulling intervals through the 7-limit just network. Reverb opens the space. The septimal minor seventh (7:4) is the destination the field is always seeking.",
+  "description": "Two Sine oscillators \u2014 fundamental and seventh partial (+7 semitones, tuned to the 7-limit harmonic) \u2014 drift through a 7-limit attractor field. Journey mode engaged: the field slowly evolves over time, pulling intervals through the 7-limit just network. Reverb opens the space. The septimal minor seventh (7:4) is the destination the field is always seeking.",
   "tags": [
     "obrix",
     "atmosphere",
@@ -126,10 +126,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.409,
-      "obrix_lfo1Rate": 0.068,
-      "obrix_lfo1Depth": 0.191
+      "obrix_fxMode": 0
     }
   }
 }

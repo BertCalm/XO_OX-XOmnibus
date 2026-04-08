@@ -310,9 +310,8 @@ struct ObrixVoice
     float pendingFreq1       = 440.0f;
     float pendingFreq2       = 440.0f;
     float pendingPan         = 0.0f;
-    int   pendingModTypes[4]{};
-    float pendingModRates[4]{};
-    float pendingAmpA = 0.01f, pendingAmpD = 0.3f, pendingAmpS = 0.7f, pendingAmpR = 0.3f;
+    // pendingModTypes, pendingModRates, and pendingAmpA/D/S/R removed — renderBlock
+    // uses current-block values (ampA/D/S/R, modTypes[], modRates[]) at fade completion.
 
     // Biophonic Phase 1 — Harmonic Field JI correction (cents per source, IIR state)
     float jifiOffset[2]{};
@@ -922,9 +921,8 @@ public:
                                   voice.pendingNote, voice.pendingVel,
                                   voice.pendingFreq1, voice.pendingFreq2,
                                   voice.pendingPan,
-                                  voice.pendingAmpA, voice.pendingAmpD,
-                                  voice.pendingAmpS, voice.pendingAmpR,
-                                  voice.pendingModTypes, voice.pendingModRates);
+                                  ampA, ampD, ampS, ampR,  // use current block values, not stale pending
+                                  modTypes, modRates);
                         voice.pendingNote = -1;
                         continue; // New note starts on the next sample
                     }
@@ -2355,15 +2353,9 @@ private:
                     sv.pendingFreq1     = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune1) / 12.0f + detuneOffsetST);
                     sv.pendingFreq2     = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune2) / 12.0f + detuneOffsetST);
                     sv.pendingPan       = panOffset;
-                    sv.pendingAmpA      = ampA;
-                    sv.pendingAmpD      = ampD;
-                    sv.pendingAmpS      = ampS;
-                    sv.pendingAmpR      = ampR;
-                    for (int m = 0; m < 4; ++m)
-                    {
-                        sv.pendingModTypes[m] = modTypes[m];
-                        sv.pendingModRates[m] = modRates[m];
-                    }
+                    // Amp envelope and mod values are NOT cached here — renderBlock
+                    // reads current-block ampA/D/S/R and modTypes/modRates at fade
+                    // completion, so coupling changes during the fade are honoured.
                     return; // Fade will complete in renderBlock — new note deferred
                 }
                 // Voice already mid-fade — replace pending note (no hard cut)
@@ -2372,15 +2364,8 @@ private:
                 sv.pendingFreq1 = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune1) / 12.0f + detuneOffsetST);
                 sv.pendingFreq2 = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune2) / 12.0f + detuneOffsetST);
                 sv.pendingPan   = panOffset;
-                sv.pendingAmpA  = ampA;
-                sv.pendingAmpD  = ampD;
-                sv.pendingAmpS  = ampS;
-                sv.pendingAmpR  = ampR;
-                for (int m = 0; m < 4; ++m)
-                {
-                    sv.pendingModTypes[m] = modTypes[m];
-                    sv.pendingModRates[m] = modRates[m];
-                }
+                // Amp envelope and mod values are NOT cached here — same rationale
+                // as the initial steal path above.
                 return; // Fade continues — newest note wins when it completes
             }
         }
