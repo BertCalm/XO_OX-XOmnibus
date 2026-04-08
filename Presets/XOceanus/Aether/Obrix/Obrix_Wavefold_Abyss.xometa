@@ -90,7 +90,7 @@
       "obrix_mod4Target": 7,
       "obrix_mod4Depth": 0.5,
       "obrix_mod4Rate": 1.0,
-      "obrix_fx1Type": 4,
+      "obrix_fx1Type": 0,
       "obrix_fx1Mix": 0.15,
       "obrix_fx1Param": 0.25,
       "obrix_fx2Type": 3,

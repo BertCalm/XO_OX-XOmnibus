@@ -531,6 +531,9 @@ public:
             couplingCutoffMod.store(0.0f);
             couplingWtPosMod.store(0.0f);
             couplingDecayMod.store(0.0f);
+            gestureLevel_ = 0.0f;    // prevent ghost gesture sweep on resume
+            distFiltL_ = distFiltR_ = 0.0f; // reset spatial filter state
+            airFiltL_ = airFiltR_ = 0.0f;
             return;
         }
 

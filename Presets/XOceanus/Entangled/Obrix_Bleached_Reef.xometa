@@ -115,7 +115,7 @@
       "obrix_distance": 0.7,
       "obrix_air": 0.25,
       "obrix_fieldStrength": 0.15,
-      "obrix_fieldPolarity": 0.3,
+      "obrix_fieldPolarity": 1.0,
       "obrix_fieldRate": 0.01,
       "obrix_fieldPrimeLimit": 0,
       "obrix_envTemp": 0.9,
