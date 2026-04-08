@@ -547,10 +547,13 @@ public:
         // EnvToDecay coupling: scale decay time multiplicatively; couplingDecayMod consumed early
         // so that noteOn calls in the MIDI loop below receive the modulated value.
         float ampD = loadP(pAmpDecay, 0.3f);
-        if (couplingDecayMod != 0.0f)
         {
-            ampD = std::max(0.001f, ampD * (1.0f + couplingDecayMod));
-            couplingDecayMod = 0.0f;
+            float decayMod = couplingDecayMod.exchange(0.0f);
+            if (decayMod != 0.0f)
+            {
+                float clampedMod = clamp(decayMod, -0.8f, 4.0f);
+                ampD = std::max(0.01f, ampD * (1.0f + clampedMod));
+            }
         }
         const float ampS = loadP(pAmpSustain, 0.7f);
         const float ampR = loadP(pAmpRelease, 0.5f);
@@ -825,12 +828,9 @@ public:
         }
 
         // === Consume coupling accumulators ===
-        float blockPitchCoupling = couplingPitchMod;
-        couplingPitchMod = 0.0f;
-        float blockCutoffCoupling = couplingCutoffMod;
-        couplingCutoffMod = 0.0f;
-        float blockWtPosCoupling = couplingWtPosMod;
-        couplingWtPosMod = 0.0f;
+        float blockPitchCoupling = couplingPitchMod.exchange(0.0f);
+        float blockCutoffCoupling = couplingCutoffMod.exchange(0.0f);
+        float blockWtPosCoupling = couplingWtPosMod.exchange(0.0f);
         // couplingDecayMod was already consumed and reset in the ParamSnapshot section above
         // (applied to ampD before the MIDI noteOn loop). couplingRingMod routes through
         // pitchMod/cutoffMod in applyCouplingInput — no separate block variable needed.
@@ -1250,6 +1250,11 @@ public:
                     signal = voice.procFilters[2].processSample(sig3);
                     voice.procFbState[2] = flushDenormal(signal);
                 }
+                else if (proc3Type > 3)
+                {
+                    // Wavefolder/Ring Mod don't use feedback — clear stale state
+                    voice.procFbState[2] = 0.0f;
+                }
 
                 // Wavefolder — applies to any proc slot that selects it
                 bool doFold = (proc1Type == 4 || proc2Type == 4 || proc3Type == 4);
@@ -1423,16 +1428,16 @@ public:
         switch (type)
         {
         case CouplingType::AudioToFM:
-            couplingPitchMod += amount * 0.5f;
+            couplingPitchMod.store(couplingPitchMod.load() + amount * 0.5f);
             break;
         case CouplingType::AmpToFilter:
-            couplingCutoffMod += amount;
+            couplingCutoffMod.store(couplingCutoffMod.load() + amount);
             break;
         case CouplingType::LFOToPitch:
-            couplingPitchMod += amount * 0.5f;
+            couplingPitchMod.store(couplingPitchMod.load() + amount * 0.5f);
             break;
         case CouplingType::AmpToPitch:
-            couplingPitchMod += amount * 0.3f;
+            couplingPitchMod.store(couplingPitchMod.load() + amount * 0.3f);
             break;
         case CouplingType::AmpToChoke:
             for (auto& v : voices)
@@ -1441,29 +1446,29 @@ public:
             break;
         case CouplingType::EnvToMorph:
             // Partner envelope drives wavetable morph position (±1 range).
-            couplingWtPosMod += amount;
+            couplingWtPosMod.store(couplingWtPosMod.load() + amount);
             break;
         case CouplingType::PitchToPitch:
             // Harmony coupling: partner pitch shifts OBRIX pitch. Scaling of 0.5f matches
             // AudioToFM and LFOToPitch, giving ±50 cents at full amount through * 100.0f
             // in renderBlock. Use amount * 12.0f for ±1200 cents (±1 octave) if desired.
-            couplingPitchMod += amount * 0.5f;
+            couplingPitchMod.store(couplingPitchMod.load() + amount * 0.5f);
             break;
         case CouplingType::EnvToDecay:
             // Partner envelope scales OBRIX amp decay time (applied multiplicatively in renderBlock).
-            couplingDecayMod += amount;
+            couplingDecayMod.store(couplingDecayMod.load() + amount);
             break;
         case CouplingType::AudioToRing:
             // Partner audio energy ring-excites OBRIX: drives pitch and filter simultaneously,
             // creating a ring-mod-like timbral effect without per-sample buffer dependency.
-            couplingPitchMod  += amount * 0.3f;
-            couplingCutoffMod += amount * 0.5f;
+            couplingPitchMod.store(couplingPitchMod.load() + amount * 0.3f);
+            couplingCutoffMod.store(couplingCutoffMod.load() + amount * 0.5f);
             break;
         case CouplingType::RhythmToBlend:
-            couplingCutoffMod += amount * 0.3f;  // rhythm energy → filter movement
+            couplingCutoffMod.store(couplingCutoffMod.load() + amount * 0.3f);  // rhythm energy → filter movement
             break;
         case CouplingType::FilterToFilter:
-            couplingCutoffMod += amount * 0.8f;  // partner filter → our filter (strong)
+            couplingCutoffMod.store(couplingCutoffMod.load() + amount * 0.8f);  // partner filter → our filter (strong)
             break;
         default:
             break;
@@ -1837,7 +1842,10 @@ private:
         float effFreq = (fmSemitones != 0.0f) ? freq * fastPow2(fmSemitones / 12.0f) : freq;
         // Clamp to Nyquist for non-bandlimited source types (Sine, WT, LoFi)
         if (type != 2 && type != 3 && type != 4)
+        {
+            effFreq = std::max(0.0f, effFreq);  // prevent negative phase increment
             effFreq = std::min(effFreq, sr * 0.49f);
+        }
         float dt = effFreq / sr;
 
         switch (type)
@@ -2359,10 +2367,10 @@ private:
     float modWheel_ = 0.0f;
     float pitchBend_ = 0.0f;
     int polyLimit_ = 8;
-    float couplingPitchMod = 0.0f;
-    float couplingCutoffMod = 0.0f;
-    float couplingWtPosMod = 0.0f;  // EnvToMorph: partner envelope → wavetable position
-    float couplingDecayMod = 0.0f;  // EnvToDecay: partner envelope → amp decay time scale
+    std::atomic<float> couplingPitchMod{0.0f};
+    std::atomic<float> couplingCutoffMod{0.0f};
+    std::atomic<float> couplingWtPosMod{0.0f};  // EnvToMorph: partner envelope → wavetable position
+    std::atomic<float> couplingDecayMod{0.0f};  // EnvToDecay: partner envelope → amp decay time scale
     // AudioToRing routes directly into couplingPitchMod and couplingCutoffMod — no separate member needed.
 
     // Coupling output (fixed: real audio)

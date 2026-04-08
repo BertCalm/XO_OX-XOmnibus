@@ -58,7 +58,7 @@ public:
         // parameter panel" before navigating the child knobs.
         setFocusContainerType(juce::Component::FocusContainerType::keyboardFocusContainer);
         setTitle("OBRIX Engine Parameters");
-        setDescription("Reef modular synth: 81 parameters across 10 sections "
+        setDescription("Reef modular synth: 82 parameters across 10 sections "
                        "(Sources, Reef Ecology, Harmonic Field, Environmental, "
                        "Amp Envelope, Modulators, Post-Mix, FX, Stateful, Global)");
 
