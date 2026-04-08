@@ -1191,6 +1191,15 @@ public:
                     voice.procFbState[0] = flushDenormal(filtOut);
                     sig1 = filtOut;
                 }
+                else if (proc1Type == 4) // Wavefolder — per-proc on sig1
+                {
+                    float fold = charFoldScale * velFoldBoost;
+                    sig1 = fastTanh(fastSin(sig1 * fold * kPi));
+                }
+                else if (proc1Type == 5 && src2Type > 0) // Ring mod — sig1 × src2
+                {
+                    sig1 = sig1 * src2;
+                }
                 recordTap(TracerTap::Proc1Output, sig1);
 
                 // Proc2 processes Source 2 independently (with optional feedback)
@@ -1211,6 +1220,15 @@ public:
                     float filtOut = voice.procFilters[1].processSample(fbIn);
                     voice.procFbState[1] = flushDenormal(filtOut);
                     sig2 = filtOut;
+                }
+                else if (proc2Type == 4 && src2Type > 0) // Wavefolder — per-proc on sig2
+                {
+                    float fold = charFoldScale * velFoldBoost;
+                    sig2 = fastTanh(fastSin(sig2 * fold * kPi));
+                }
+                else if (proc2Type == 5 && src2Type > 0) // Ring mod — sig2 × src1
+                {
+                    sig2 = sig2 * src1;
                 }
                 recordTap(TracerTap::Proc2Output, sig2);
 
@@ -1260,24 +1278,21 @@ public:
                     signal = voice.procFilters[2].processSample(sig3);
                     voice.procFbState[2] = flushDenormal(signal);
                 }
+                else if (proc3Type == 4) // Wavefolder — post-mix on signal
+                {
+                    voice.procFbState[2] = 0.0f; // clear stale filter state
+                    float fold = charFoldScale * velFoldBoost;
+                    signal = fastTanh(fastSin(signal * fold * kPi));
+                }
+                else if (proc3Type == 5 && src2Type > 0) // Ring mod — post-mix
+                {
+                    voice.procFbState[2] = 0.0f; // clear stale filter state
+                    signal = src1 * src2;
+                }
                 else if (proc3Type > 3)
                 {
-                    // Wavefolder/Ring Mod don't use feedback — clear stale state
-                    voice.procFbState[2] = 0.0f;
+                    voice.procFbState[2] = 0.0f; // future proc types: clear stale state
                 }
-
-                // Wavefolder — applies to any proc slot that selects it
-                bool doFold = (proc1Type == 4 || proc2Type == 4 || proc3Type == 4);
-                if (doFold)
-                {
-                    float fold = charFoldScale * velFoldBoost;
-                    signal = fastTanh(fastSin(signal * fold * kPi)); // CPU fix: fastSin replaces std::sin
-                }
-
-                // Ring mod — multiplies the two sources (requires Src2 active)
-                bool doRing = (proc1Type == 5 || proc2Type == 5 || proc3Type == 5);
-                if (doRing && src2Type > 0)
-                    signal = src1 * src2;
                 recordTap(TracerTap::Proc3Output, signal);
 
                 // --- Amp envelope ---
