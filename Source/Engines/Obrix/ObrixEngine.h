@@ -919,6 +919,9 @@ public:
                     (static_cast<float>(turbRng_ & 0xFFFF) / 32768.0f - 1.0f) * envTurbidity * 1200.0f;
             }
 
+            float fxMixModBus = 0.0f; // accumulated from per-voice FX Mix mod target
+            int   fxMixModVoices = 0;
+
             for (int vi = 0; vi < kMaxVoices; ++vi)
             {
                 auto& voice = voices[vi];
@@ -942,7 +945,7 @@ public:
                                   voice.pendingFreq1, voice.pendingFreq2,
                                   voice.pendingPan,
                                   ampA, ampD, ampS, ampR,  // use current block values, not stale pending
-                                  modTypes, modRates);
+                                  modType, modRate);
                         voice.pendingNote = -1;
                         continue; // New note starts on the next sample
                     }
@@ -1352,7 +1355,17 @@ public:
                 float panR = 0.5f + effPan * 0.5f;
                 mixL += signal * panL;
                 mixR += signal * panR;
+
+                // Propagate per-voice FX Mix mod to bus-level accumulator
+                if (fxMixMod != 0.0f)
+                {
+                    fxMixModBus += fxMixMod;
+                    ++fxMixModVoices;
+                }
             }
+            // Average per-voice FX Mix mod for bus-level application
+            if (fxMixModVoices > 0)
+                fxMixModBus /= static_cast<float>(fxMixModVoices);
 
             // --- Effects chain: Serial (default) or Parallel (Biophonic Phase 5) ---
             // Serial: each FX processes the output of the previous (depth layering).
@@ -1363,7 +1376,7 @@ public:
                 {
                     if (fxType[fx] > 0)
                     {
-                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]) + fxMixMod, 0.0f, 1.0f);
+                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]) + fxMixModBus, 0.0f, 1.0f);
                         if (effMix > 0.001f)
                             applyEffect(fxType[fx], mixL, mixR, effMix, fxParam[fx], macroSpace, fxSlots[fx]);
                     }
@@ -1381,7 +1394,7 @@ public:
                     if (fxType[fx] > 0)
                     {
                         float slotL = dryL, slotR = dryR;
-                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]) + fxMixMod, 0.0f, 1.0f);
+                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]) + fxMixModBus, 0.0f, 1.0f);
                         if (effMix > 0.001f)
                         {
                             applyEffect(fxType[fx], slotL, slotR, 1.0f, fxParam[fx], macroSpace, fxSlots[fx]);
