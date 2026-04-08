@@ -266,6 +266,7 @@ public:
         presetNameLabel_.setJustificationType(juce::Justification::centred);
         presetNameLabel_.setInterceptsMouseClicks(false, false); // pass clicks through to nexus
         addAndMakeVisible(presetNameLabel_);
+        A11y::setup(presetNameLabel_, "Current preset", "Name of the currently loaded preset");
 
         A11y::setup(keysButton_,      "Keys toggle", "Show or hide the Play Surface panel");
         A11y::setup(settingsButton_,  "Settings");
@@ -1304,6 +1305,7 @@ private:
         favButton_.toFront(false);
         settingsButton_.toFront(false);
         keysButton_.toFront(false);
+        presetNameLabel_.toFront(false);
         // #1008 FIX 7: dimOverlay_ above buttons but below PlaySurfaceOverlay.
         dimOverlay_.toFront(false);
         playSurfaceOverlay_.toFront(false);
