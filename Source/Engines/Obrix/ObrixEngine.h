@@ -1284,10 +1284,10 @@ public:
                     float fold = charFoldScale * velFoldBoost;
                     signal = fastTanh(fastSin(signal * fold * kPi));
                 }
-                else if (proc3Type == 5 && src2Type > 0) // Ring mod — post-mix
+                else if (proc3Type == 5 && src2Type > 0) // Ring mod — post-mix × src2 carrier
                 {
                     voice.procFbState[2] = 0.0f; // clear stale filter state
-                    signal = src1 * src2;
+                    signal *= src2; // ring-mod the processed mix against src2 as carrier
                 }
                 else if (proc3Type > 3)
                 {
