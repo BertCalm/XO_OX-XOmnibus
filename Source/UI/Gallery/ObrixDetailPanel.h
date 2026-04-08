@@ -13,7 +13,7 @@ namespace xoceanus {
 //==============================================================================
 // ObrixDetailPanel — flagship custom hierarchical UI for the OBRIX engine.
 //
-// OBRIX is the reef: 81 params (obrix_*) spanning Brick Sources, Brick Ecology,
+// OBRIX is the reef: 82 params (obrix_*) spanning Brick Sources, Brick Ecology,
 // Harmonic Field, Environmental, FX/Stateful, and Remaining sections.
 //
 // Sections stacked vertically inside a juce::Viewport:
@@ -32,7 +32,7 @@ namespace xoceanus {
 //  AFTER knobs/combos to ensure listeners are gone before their observed controls.)
 //
 // Gallery code: OBRIX | Accent: Reef Jade #1E8B7E | Prefix: obrix_
-// All 81 obrix_* params wired — D004 doctrine compliance guaranteed.
+// All 82 obrix_* params wired — D004 doctrine compliance guaranteed.
 //==============================================================================
 
 class ObrixDetailPanel : public juce::Component

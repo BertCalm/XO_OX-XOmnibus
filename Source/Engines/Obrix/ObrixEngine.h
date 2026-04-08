@@ -81,7 +81,7 @@ namespace xoceanus
 //   FX Mode — Serial (default, existing behavior) vs Parallel (each slot on dry, summed).
 //             (obrix_fxMode)
 //
-// Wave 5 — Reef Residency (81 params total):
+// Wave 5 — Reef Residency (82 params total):
 //   Reef Residency — coupling input becomes a third ecological organism in the Brick
 //                    Ecology system. Instead of linear pitch/cutoff modulation, the
 //                    coupled engine participates as Competitor (amplitude cross-suppression),
@@ -590,7 +590,7 @@ public:
         const float newResetTrig = loadP(pStateReset, 0.0f);
         const auto fxMode = static_cast<int>(loadP(pFxMode, 0.0f)); // 0=Serial
 
-        // Wave 5 params — Reef Residency (2 params → 81 total)
+        // Wave 5 params — Reef Residency (2 params → 82 total)
         const auto reefResident = static_cast<int>(loadP(pReefResident, 0.0f)); // 0=Off
         const float residentStrength = (reefResident != 0) ? loadP(pResidentStrength, 0.3f) : 0.0f;
 
@@ -937,10 +937,6 @@ public:
                     }
                 }
 
-                // wtPosMod (target 5) and fxMixMod (target 7) are routed but not yet
-                // applied to DSP — suppress unused-variable warnings until wired.
-                (void)wtPosMod;
-                (void)fxMixMod;
 
                 // --- Macro modulation (Guru Bin remapping) ---
                 // CHARACTER: cutoff + exponential fold depth + resonance boost
@@ -1069,8 +1065,12 @@ public:
                         freq2 *= fastPow2(voice.jifiOffset[1] / 1200.0f);
                 }
 
+                // Apply WT position modulation to morph position for wavetable sources
+                float effPW1wt = (src1Type == 6) ? clamp(effPW1 + wtPosMod, 0.05f, 0.95f) : effPW1;
+                float effPW2wt = (src2Type == 6) ? clamp(effPW2 + wtPosMod, 0.05f, 0.95f) : effPW2;
+
                 // --- Source 1 (rendered first — drives FM into Src2) ---
-                float src1 = renderSourceSample(src1Type, voice, 0, freq1, effPW1, 0.0f, wtBankVal);
+                float src1 = renderSourceSample(src1Type, voice, 0, freq1, effPW1wt, 0.0f, wtBankVal);
                 recordTap(TracerTap::Src1Output, src1);
 
                 // --- Source 2 (Src1 FM-modulates Src2 frequency at audio rate) ---
@@ -1094,7 +1094,7 @@ public:
                         float baseFM = std::max(std::fabs(fmDepth), 0.25f); // min 0.25 = ±6st
                         fmSemitones += reefCouplingRms_ * residentStrength * baseFM * 36.0f;
                     }
-                    src2 = renderSourceSample(src2Type, voice, 1, freq2, effPW2, fmSemitones, wtBankVal);
+                    src2 = renderSourceSample(src2Type, voice, 1, freq2, effPW2wt, fmSemitones, wtBankVal);
                 }
                 recordTap(TracerTap::Src2Output, src2);
 
@@ -1234,7 +1234,7 @@ public:
                 {
                     if (fxType[fx] > 0)
                     {
-                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]), 0.0f, 1.0f);
+                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]) + fxMixMod, 0.0f, 1.0f);
                         if (effMix > 0.001f)
                             applyEffect(fxType[fx], mixL, mixR, effMix, fxParam[fx], macroSpace, fxSlots[fx]);
                     }
@@ -1252,7 +1252,7 @@ public:
                     if (fxType[fx] > 0)
                     {
                         float slotL = dryL, slotR = dryR;
-                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]), 0.0f, 1.0f);
+                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]) + fxMixMod, 0.0f, 1.0f);
                         if (effMix > 0.001f)
                         {
                             applyEffect(fxType[fx], slotL, slotR, 1.0f, fxParam[fx], macroSpace, fxSlots[fx]);
@@ -1394,7 +1394,7 @@ public:
     }
 
     //==========================================================================
-    // Parameters (81 total — Wave 5: Reef Residency)
+    // Parameters (82 total — Wave 5: Reef Residency)
     //==========================================================================
 
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
@@ -1621,7 +1621,7 @@ public:
         params.push_back(std::make_unique<PC>(juce::ParameterID{"obrix_fxMode", 1}, "Obrix FX Mode", fxModeChoices,
                                               0)); // default: Serial (existing behavior)
 
-        // Wave 5: Reef Residency (2 params → 81 total)
+        // Wave 5: Reef Residency (2 params → 82 total)
         // Coupling input becomes a third ecological organism in the Brick Ecology system.
         auto residentChoices = juce::StringArray{"Off", "Competitor", "Symbiote", "Parasite"};
         params.push_back(std::make_unique<PC>(juce::ParameterID{"obrix_reefResident", 1}, "Obrix Reef Resident",
