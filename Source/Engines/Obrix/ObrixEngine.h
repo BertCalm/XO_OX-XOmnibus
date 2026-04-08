@@ -81,7 +81,7 @@ namespace xoceanus
 //   FX Mode — Serial (default, existing behavior) vs Parallel (each slot on dry, summed).
 //             (obrix_fxMode)
 //
-// Wave 5 — Reef Residency (83 params total):
+// Wave 5 — Reef Residency (82 params total):
 //   Reef Residency — coupling input becomes a third ecological organism in the Brick
 //                    Ecology system. Instead of linear pitch/cutoff modulation, the
 //                    coupled engine participates as Competitor (amplitude cross-suppression),
@@ -616,7 +616,7 @@ public:
         const float newResetTrig = loadP(pStateReset, 0.0f);
         const auto fxMode = static_cast<int>(loadP(pFxMode, 0.0f)); // 0=Serial
 
-        // Wave 5 params — Reef Residency (2 params → 83 total, +proc3Feedback)
+        // Wave 5 params — Reef Residency (82 total)
         const auto reefResident = static_cast<int>(loadP(pReefResident, 0.0f)); // 0=Off
         const float residentStrength = (reefResident != 0) ? loadP(pResidentStrength, 0.3f) : 0.0f;
 
@@ -1481,7 +1481,7 @@ public:
     }
 
     //==========================================================================
-    // Parameters (83 total — Wave 5: Reef Residency + proc3Feedback)
+    // Parameters (82 total — Wave 5: Reef Residency)
     //==========================================================================
 
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
@@ -1710,7 +1710,7 @@ public:
         params.push_back(std::make_unique<PC>(juce::ParameterID{"obrix_fxMode", 1}, "Obrix FX Mode", fxModeChoices,
                                               0)); // default: Serial (existing behavior)
 
-        // Wave 5: Reef Residency (2 params → 83 total, +proc3Feedback)
+        // Wave 5: Reef Residency (82 total)
         // Coupling input becomes a third ecological organism in the Brick Ecology system.
         auto residentChoices = juce::StringArray{"Off", "Competitor", "Symbiote", "Parasite"};
         params.push_back(std::make_unique<PC>(juce::ParameterID{"obrix_reefResident", 1}, "Obrix Reef Resident",
