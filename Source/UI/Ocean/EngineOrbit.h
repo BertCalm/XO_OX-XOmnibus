@@ -218,6 +218,7 @@ public:
 
     void mouseDown(const juce::MouseEvent& /*e*/) override
     {
+        if (!hasEngine_) return;
         if (onClicked)
             onClicked(slotIndex_);
     }

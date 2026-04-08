@@ -180,8 +180,8 @@ public:
         // sidebar_ is a unique_ptr — added in initSidebar()
 
         // 9. DNA map browser (hidden by default)
-        addAndMakeVisible(browser_);
-        browser_.setVisible(false);
+        // Use addChildComponent so it starts hidden without a visible flash.
+        addChildComponent(browser_);
 
         // 9b. BLOCKER 1: Empty-state label — shown when no engines are loaded.
         // Appears centred below the nexus with a subtle call-to-action.
@@ -208,8 +208,8 @@ public:
         // PlaySurfaceOverlay.  Added after the buttons so it is painted on top.
         // reorderZStack() will enforce the correct final ordering on each
         // deferred init call.
-        addAndMakeVisible(dimOverlay_);
-        dimOverlay_.setVisible(false);  // hidden until dimAlpha_ drops below 1
+        // Use addChildComponent so it starts hidden without a visible flash.
+        addChildComponent(dimOverlay_);
 
         // 12. StatusBar placeholder until initStatusBar()
         // statusBar_ is a unique_ptr — added in initStatusBar()
@@ -264,7 +264,7 @@ public:
         presetNameLabel_.setColour(juce::Label::textColourId,
                                    juce::Colour(GalleryColors::Ocean::foam));
         presetNameLabel_.setJustificationType(juce::Justification::centred);
-        presetNameLabel_.setInterceptsMouseClicks(false, false); // pass clicks through to nexus
+        presetNameLabel_.setInterceptsMouseClicks(true, false); // absorb clicks without passing to parent
         addAndMakeVisible(presetNameLabel_);
         A11y::setup(presetNameLabel_, "Current preset", "Name of the currently loaded preset");
 
@@ -936,6 +936,11 @@ private:
                          kNexusW, kNexusH);
         nexus_.setVisible(true);
 
+        // ── Engine creatures in polar orbit ───────────────────────────────────
+        int numLoaded = 0;
+        for (const auto& o : orbits_)
+            if (o.hasEngine()) ++numLoaded;
+
         // ── Macros below nexus ────────────────────────────────────────────────
         if (macros_)
         {
@@ -943,13 +948,9 @@ private:
                                nexus_.getBottom() + 8,
                                400,
                                static_cast<int>(kMacroStripH));
-            macros_->setVisible(true);
+            // Fix 4: only show macros when at least one engine is loaded.
+            macros_->setVisible(numLoaded > 0);
         }
-
-        // ── Engine creatures in polar orbit ───────────────────────────────────
-        int numLoaded = 0;
-        for (const auto& o : orbits_)
-            if (o.hasEngine()) ++numLoaded;
 
         if (numLoaded > 0)
         {
@@ -1297,6 +1298,8 @@ private:
     void reorderZStack()
     {
         ambientEdge_.toFront(false);
+        // Fix 6: macros must render above the vignette overlay (ambientEdge_).
+        if (macros_) macros_->toFront(false);
         if (detail_)   detail_->toFront(false);
         if (sidebar_)  sidebar_->toFront(false);
         browser_.toFront(false);

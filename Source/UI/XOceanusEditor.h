@@ -997,9 +997,8 @@ public:
         // 'M' toggles Cinematic Mode
         if (key == juce::KeyPress('m') || key == juce::KeyPress('M'))
         {
-            bool nowCinematic = cinematicToggleBtn.getToggleState();
-            cinematicToggleBtn.setToggleState(!nowCinematic, juce::dontSendNotification);
-            layout.cinematicMode = !nowCinematic;
+            layout.cinematicMode = !layout.cinematicMode;
+            cinematicToggleBtn.setToggleState(layout.cinematicMode, juce::dontSendNotification);
             resized();
             return true;
         }
@@ -1234,6 +1233,23 @@ public:
         // ── Ocean View takes full editor bounds ───────────────────────────────
         auto fullBounds = getLocalBounds();
         oceanView_.setBounds(fullBounds);
+
+        // ── OceanView mode: skip the entire legacy Gallery layout ─────────────
+        // All legacy tiles, overview, detail, chord panel, sidebar, etc. are
+        // permanently hidden when OceanView is active.  Only statusBar and
+        // toastOverlay_ need bounds; everything else is dead weight.
+        if (oceanView_.isVisible())
+        {
+            statusBar.setBounds(layout.getStatusBar());
+            {
+                auto statusArea = layout.getStatusBar();
+                statusArea.removeFromRight(104);
+                midiIndicator.setBounds(statusArea.removeFromRight(16).withSizeKeepingCentre(8, 8));
+                cpuMeter.setBounds(statusArea.removeFromRight(68).withSizeKeepingCentre(64, 20));
+            }
+            toastOverlay_.setBounds(getLocalBounds());
+            return;
+        }
 
         // ── Sync layout state (Gallery components hidden but state tracking kept) ────────────────────────────
         // spec §2.2: PlaySurface is an embedded 264pt bottom zone, not a popup.
@@ -1470,7 +1486,7 @@ private:
         processor.setPersistedSelectedSlot(selectedSlot);
         processor.setPersistedSignalFlowSection(signalFlowActiveSection);
         repaint(signalFlowStripBounds);
-        depthDial.setSlot(juce::jlimit(0, 3, slot)); // DepthDial tracks the selected slot
+        depthDial.setSlot(juce::jlimit(0, 4, slot)); // DepthDial tracks the selected slot
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
         perfToggleBtn.setToggleState(false, juce::dontSendNotification);
 
@@ -1865,15 +1881,19 @@ private:
 
     void timerCallback() override
     {
-        for (int i = 0; i < kNumPrimarySlots; ++i)
-            tiles[i]->refresh();
-        if (ghostTile.isVisible())
-            ghostTile.refresh();
+        // ── Legacy Gallery refresh — skip entirely when OceanView is active ───
+        if (!oceanView_.isVisible())
+        {
+            for (int i = 0; i < kNumPrimarySlots; ++i)
+                tiles[i]->refresh();
+            if (ghostTile.isVisible())
+                ghostTile.refresh();
+            if (!detail.isVisible())
+                overview.refresh();
+            if (performancePanel.isVisible())
+                performancePanel.refresh();
+        }
         checkCollectionUnlock();
-        if (!detail.isVisible())
-            overview.refresh();
-        if (performancePanel.isVisible())
-            performancePanel.refresh();
 
         // ── Refresh Export tab panel with current preset/kit info ────────────
         sidebar.refreshExportPanel();
@@ -1920,7 +1940,7 @@ private:
             }
             else
             {
-                startTimerHz(1);
+                startTimerHz(10);
             }
         }
 
@@ -2242,11 +2262,10 @@ private:
             // Fix #1005: re-seed preset dots when library size changes (scan just completed).
             {
                 auto lib = pm.getLibrary();
-                static int lastLibrarySize = 0;
                 const int currentLibSize = lib ? static_cast<int>(lib->size()) : 0;
-                if (currentLibSize != lastLibrarySize)
+                if (currentLibSize != lastLibrarySize_)
                 {
-                    lastLibrarySize = currentLibSize;
+                    lastLibrarySize_ = currentLibSize;
                     if (lib && currentLibSize > 0)
                     {
                         std::vector<PresetDot> dots;
@@ -2480,6 +2499,11 @@ private:
     // Last MIDI note number seen (for interval computation in session DNA drift).
     // -1 = no note played yet this session.
     int lastNote_ = -1;
+
+    // Tracks the last known preset library size so we only re-seed preset dots
+    // when the library is first populated or changes (e.g. after a background scan).
+    // Promoted from function-local static to avoid per-instance aliasing bugs.
+    int lastLibrarySize_ = 0;
 
     int selectedSlot = -1;
 

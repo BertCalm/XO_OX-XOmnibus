@@ -144,6 +144,10 @@ public:
         const auto  bounds      = getLocalBounds();
 
         playSurface_.setBounds(bounds.withTrimmedTop(static_cast<int>(handleAreaH)));
+
+        // Re-apply the slide offset so the overlay sits at the correct Y position
+        // (bottom 300px, not full window) whenever the parent reassigns our bounds.
+        repositionFromOffset();
     }
 
     void mouseDown(const juce::MouseEvent& e) override
