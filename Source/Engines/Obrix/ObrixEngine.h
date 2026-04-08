@@ -310,7 +310,6 @@ struct ObrixVoice
     float pendingFreq1       = 440.0f;
     float pendingFreq2       = 440.0f;
     float pendingPan         = 0.0f;
-    float pendingDetuneST    = 0.0f;
     int   pendingModTypes[4]{};
     float pendingModRates[4]{};
     float pendingAmpA = 0.01f, pendingAmpD = 0.3f, pendingAmpS = 0.7f, pendingAmpR = 0.3f;
@@ -430,6 +429,13 @@ public:
         reefCouplingHpFilt_ = 0.0f;
         reefCouplingHfRms_ = 0.0f;
         reefCouplingBufLen_ = 0;
+
+        // Coupling accumulators — must be zeroed on reset to prevent state leaking
+        // across preset changes and AllNotesOff events
+        couplingPitchMod.store(0.0f);
+        couplingCutoffMod.store(0.0f);
+        couplingWtPosMod.store(0.0f);
+        couplingDecayMod.store(0.0f);
     }
 
     // ═══ SIGNAL TRACER ═══
@@ -521,6 +527,10 @@ public:
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
             buffer.clear();
+            couplingPitchMod.store(0.0f);
+            couplingCutoffMod.store(0.0f);
+            couplingWtPosMod.store(0.0f);
+            couplingDecayMod.store(0.0f);
             return;
         }
 
@@ -1649,7 +1659,7 @@ public:
                                               juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"obrix_proc2Feedback", 1}, "Obrix Proc 2 Feedback",
                                               juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
-        params.push_back(std::make_unique<PF>(juce::ParameterID{"obrix_proc3Feedback", 1}, "Obrix Proc3 Feedback",
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"obrix_proc3Feedback", 1}, "Obrix Proc 3 Feedback",
                                               juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
         params.push_back(
             std::make_unique<PC>(juce::ParameterID{"obrix_wtBank", 1}, "Obrix Wavetable Bank", wtChoices, 0));
@@ -2310,7 +2320,6 @@ private:
                     sv.pendingFreq1     = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune1) / 12.0f + detuneOffsetST);
                     sv.pendingFreq2     = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune2) / 12.0f + detuneOffsetST);
                     sv.pendingPan       = panOffset;
-                    sv.pendingDetuneST  = detuneOffsetST;
                     sv.pendingAmpA      = ampA;
                     sv.pendingAmpD      = ampD;
                     sv.pendingAmpS      = ampS;
