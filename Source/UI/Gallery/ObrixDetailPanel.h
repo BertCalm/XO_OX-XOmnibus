@@ -266,13 +266,43 @@ public:
         makeLabel(fx2MixLbl,  "MIX");  makeLabel(fx2ParamLbl,  "PARAM");
         makeLabel(fx3MixLbl,  "MIX");  makeLabel(fx3ParamLbl,  "PARAM");
 
+        // Dynamic FX param labels — update when type selection changes
+        fx1TypeCB.onChange = [this] { updateFxParamLabel(fx1TypeCB, fx1ParamLbl); };
+        fx2TypeCB.onChange = [this] { updateFxParamLabel(fx2TypeCB, fx2ParamLbl); };
+        fx3TypeCB.onChange = [this] { updateFxParamLabel(fx3TypeCB, fx3ParamLbl); };
+        // Seed initial label text — ComboBoxAttachment fires sendInitialUpdate()
+        // before onChange is wired, so the initial sync doesn't trigger our callback
+        updateFxParamLabel(fx1TypeCB, fx1ParamLbl);
+        updateFxParamLabel(fx2TypeCB, fx2ParamLbl);
+        updateFxParamLabel(fx3TypeCB, fx3ParamLbl);
+
         // ── Section 5b — Stateful Synthesis ──────────────────────────────────
         stressDecayAtt = makeKnob  (stressDecayKnob, "obrix_stressDecay", juce::Colour(0xFFE9A84A));
         bleachRateAtt  = makeKnob  (bleachRateKnob,  "obrix_bleachRate",  juce::Colour(0xFFF0EDE8));
-        stateResetAtt  = makeKnob  (stateResetKnob,  "obrix_stateReset",  juce::Colour(0xFF9E9B97));
         makeLabel(stressDecayLbl, "STRESS\nDECAY");
         makeLabel(bleachRateLbl,  "BLEACH\nRATE");
-        makeLabel(stateResetLbl,  "RESET");
+
+        // stateReset is a rising-edge trigger — momentary button, not a knob
+        stateResetBtn.setButtonText("RESET REEF");
+        stateResetBtn.setColour(juce::TextButton::buttonColourId,
+                                GalleryColors::get(GalleryColors::slotBg()));
+        stateResetBtn.setColour(juce::TextButton::textColourOffId,
+                                juce::Colour(kReefJade));
+        A11y::setup(stateResetBtn, "obrix_stateReset",
+                    "OBRIX: Reset reef state", true);
+        addAndMakeVisible(stateResetBtn);
+        stateResetBtn.onClick = [this] {
+            if (auto* p = apvts.getParameter("obrix_stateReset"))
+            {
+                p->setValueNotifyingHost(1.0f);
+                juce::Timer::callAfterDelay(100,
+                    [safeThis = juce::Component::SafePointer<ObrixDetailPanel>(this)] {
+                        if (safeThis)
+                            if (auto* p2 = safeThis->apvts.getParameter("obrix_stateReset"))
+                                p2->setValueNotifyingHost(0.0f);
+                    });
+            }
+        };
 
         // ── Section 6 — Amp Envelope ─────────────────────────────────────────
         ampAttAtt  = makeKnob(ampAttKnob, "obrix_ampAttack",  juce::Colour(0xFF00FF41));
@@ -309,13 +339,39 @@ public:
         pitchBendAtt    = makeKnob    (pitchBendKnob,    "obrix_pitchBendRange");
         glideTimeAtt    = makeKnob    (glideTimeKnob,    "obrix_glideTime");
         gestureTypeAtt  = makeComboBox(gestureTypeCB,    "obrix_gestureType");
-        flashTriggerAtt = makeKnob    (flashTriggerKnob, "obrix_flashTrigger",
-                                       juce::Colour(kReefJade));
+        // flashTrigger is a rising-edge trigger — momentary button, not a knob
+        flashTriggerBtn.setButtonText("FLASH");
+        flashTriggerBtn.setColour(juce::TextButton::buttonColourId,
+                                  GalleryColors::get(GalleryColors::slotBg()));
+        flashTriggerBtn.setColour(juce::TextButton::textColourOffId,
+                                  juce::Colour(kReefJade));
+        A11y::setup(flashTriggerBtn, "obrix_flashTrigger",
+                    "OBRIX: Flash trigger", true);
+        addAndMakeVisible(flashTriggerBtn);
+        flashTriggerBtn.onClick = [this] {
+            if (auto* p = apvts.getParameter("obrix_flashTrigger"))
+            {
+                p->setValueNotifyingHost(1.0f);
+                juce::Timer::callAfterDelay(100,
+                    [safeThis = juce::Component::SafePointer<ObrixDetailPanel>(this)] {
+                        if (safeThis)
+                            if (auto* p2 = safeThis->apvts.getParameter("obrix_flashTrigger"))
+                                p2->setValueNotifyingHost(0.0f);
+                    });
+            }
+        };
         wtBankAtt       = makeComboBox(wtBankCB,         "obrix_wtBank");
         unisonDetuneAtt = makeKnob    (unisonDetuneKnob, "obrix_unisonDetune");
         driftRateAtt    = makeKnob    (driftRateKnob,    "obrix_driftRate",  juce::Colour(0xFF7FDBCA));
         driftDepthAtt   = makeKnob    (driftDepthKnob,   "obrix_driftDepth", juce::Colour(0xFF7FDBCA));
-        journeyModeAtt  = makeKnob    (journeyModeKnob,  "obrix_journeyMode");
+        // journeyMode is binary on/off — toggle button, not a knob
+        journeyBtn.setColour(juce::ToggleButton::tickColourId,
+                             juce::Colour(kReefJade));
+        A11y::setup(journeyBtn, "obrix_journeyMode",
+                    "OBRIX: Journey mode on/off", true);
+        addAndMakeVisible(journeyBtn);
+        journeyModeAtt = std::make_unique<ButtonAtt>(apvts, "obrix_journeyMode",
+                                                     journeyBtn);
         distanceAtt     = makeKnob    (distanceKnob,     "obrix_distance");
         airAtt          = makeKnob    (airKnob,          "obrix_air");
         macroCharAtt    = makeKnob    (macroCharKnob,    "obrix_macroCharacter", juce::Colour(GalleryColors::xoGold));
@@ -326,17 +382,20 @@ public:
         makeLabel(levelLbl,       "LEVEL");
         makeLabel(pitchBendLbl,   "BEND");
         makeLabel(glideTimeLbl,   "GLIDE");
-        makeLabel(flashTrigLbl,   "FLASH");
         makeLabel(unisonDetLbl,   "UNISON");
         makeLabel(driftRateLbl,   "DRIFT RATE");
         makeLabel(driftDepthLbl,  "DRIFT DEPTH");
-        makeLabel(journeyLbl,     "JOURNEY");
         makeLabel(distanceLbl,    "DISTANCE");
         makeLabel(airLbl,         "AIR");
         makeLabel(macroCharLbl,   "CHARACTER");
         makeLabel(macroMoveLbl,   "MOVEMENT");
         makeLabel(macroCoupLbl,   "COUPLING");
         makeLabel(macroSpaceLbl,  "SPACE");
+
+        // Data-driven: expand SRC 2 if the loaded preset uses it
+        if (auto* p = apvts.getRawParameterValue("obrix_src2Type"))
+            if (p->load() > 0.5f)
+                brick2Header.setToggleState(true, juce::dontSendNotification);
     }
 
     ~ObrixDetailPanel() override
@@ -621,7 +680,7 @@ public:
             const int colW3 = aW / 3;
             placeKnob(stressDecayKnob, stressDecayLbl, x0,           y, colW3);
             placeKnob(bleachRateKnob,  bleachRateLbl,  x0 + colW3,   y, colW3);
-            placeKnob(stateResetKnob,  stateResetLbl,  x0 + colW3*2, y, colW3);
+            stateResetBtn.setBounds(x0 + colW3*2, y, colW3, knobW);
             y += knobW + 14 + kPad;
         }
 
@@ -650,7 +709,7 @@ public:
 
             // Gesture + wavetable + unison + journey
             gestureTypeCB.setBounds(x0, y, colW4, comboH);
-            placeKnob(flashTriggerKnob, flashTrigLbl, x0 + colW4,    y, colW4);
+            flashTriggerBtn.setBounds(x0 + colW4, y, colW4, knobW);
             wtBankCB.setBounds(x0 + colW4*2, y, colW4, comboH);
             placeKnob(unisonDetuneKnob, unisonDetLbl, x0 + colW4*3,  y, colW4);
             y += knobW + 14 + 4;
@@ -658,7 +717,7 @@ public:
             // Drift + journey + distance + air
             placeKnob(driftRateKnob,  driftRateLbl,  x0,           y, colW4);
             placeKnob(driftDepthKnob, driftDepthLbl, x0 + colW4,   y, colW4);
-            placeKnob(journeyModeKnob,journeyLbl,    x0 + colW4*2, y, colW4);
+            journeyBtn.setBounds(x0 + colW4*2, y, colW4, knobW);
             placeKnob(distanceKnob,   distanceLbl,   x0 + colW4*3, y, colW4);
             y += knobW + 14 + 4;
 
@@ -797,6 +856,16 @@ public:
 private:
     // ── Smart accordion toggle logic ─────────────────────────────────────────
     // brickIdx: 0 = Src1, 1 = Src2
+    // Update FX PARAM label text based on the selected FX type.
+    // Off→"—", Delay→"TIME", Chorus→"RATE", Reverb→"SIZE"
+    void updateFxParamLabel(juce::ComboBox& cb, juce::Label& lbl)
+    {
+        static const char* labels[] = { "\xE2\x80\x94", "TIME", "RATE", "SIZE" };
+        const int idx = cb.getSelectedItemIndex();
+        lbl.setText(juce::String(labels[juce::jlimit(0, 3, idx)]),
+                    juce::dontSendNotification);
+    }
+
     void onBrickHeaderClicked(int brickIdx)
     {
         if (compactMode)
@@ -823,7 +892,7 @@ private:
     // ──────────────────────────────────────────────────────────────────────────
     static constexpr int kPad             = 10;
     static constexpr int kSectionHeaderH  = 22;
-    static constexpr int kBrickHeaderH    = 26;
+    static constexpr int kBrickHeaderH    = 44;
     static constexpr int kBrickExpandedH  = 110; // approximate per-brick body height
     static constexpr int kKnobSize        = 44;
 
@@ -925,18 +994,21 @@ private:
     juce::Label      fx3MixLbl, fx3ParamLbl;
 
     // ── Section 9: Stateful Synthesis ─────────────────────────────────────────
-    GalleryKnob    stressDecayKnob, bleachRateKnob, stateResetKnob;
-    juce::Label    stressDecayLbl, bleachRateLbl, stateResetLbl;
+    GalleryKnob    stressDecayKnob, bleachRateKnob;
+    juce::TextButton stateResetBtn;
+    juce::Label    stressDecayLbl, bleachRateLbl;
 
     // ── Section 10: Global / Other ────────────────────────────────────────────
-    GalleryKnob    levelKnob, pitchBendKnob, glideTimeKnob, flashTriggerKnob;
+    GalleryKnob    levelKnob, pitchBendKnob, glideTimeKnob;
+    juce::TextButton flashTriggerBtn;
     GalleryKnob    unisonDetuneKnob, driftRateKnob, driftDepthKnob;
-    GalleryKnob    journeyModeKnob, distanceKnob, airKnob;
+    juce::ToggleButton journeyBtn {"JOURNEY"};
+    GalleryKnob    distanceKnob, airKnob;
     GalleryKnob    macroCharKnob, macroMoveKnob, macroCoupKnob, macroSpaceKnob;
     juce::ComboBox polyphonyCB, gestureTypeCB, wtBankCB;
-    juce::Label    levelLbl, pitchBendLbl, glideTimeLbl, flashTrigLbl;
+    juce::Label    levelLbl, pitchBendLbl, glideTimeLbl;
     juce::Label    unisonDetLbl, driftRateLbl, driftDepthLbl;
-    juce::Label    journeyLbl, distanceLbl, airLbl;
+    juce::Label    distanceLbl, airLbl;
     juce::Label    macroCharLbl, macroMoveLbl, macroCoupLbl, macroSpaceLbl;
 
     // ──────────────────────────────────────────────────────────────────────────
@@ -985,11 +1057,12 @@ private:
     std::unique_ptr<SliderAtt> fx2MixAtt, fx2ParamAtt;
     std::unique_ptr<SliderAtt> fx3MixAtt, fx3ParamAtt;
     // Stateful
-    std::unique_ptr<SliderAtt> stressDecayAtt, bleachRateAtt, stateResetAtt;
+    std::unique_ptr<SliderAtt> stressDecayAtt, bleachRateAtt;
     // Global
-    std::unique_ptr<SliderAtt> levelAtt, pitchBendAtt, glideTimeAtt, flashTriggerAtt;
+    std::unique_ptr<SliderAtt> levelAtt, pitchBendAtt, glideTimeAtt;
     std::unique_ptr<SliderAtt> unisonDetuneAtt, driftRateAtt, driftDepthAtt;
-    std::unique_ptr<SliderAtt> journeyModeAtt, distanceAtt, airAtt;
+    std::unique_ptr<ButtonAtt> journeyModeAtt;
+    std::unique_ptr<SliderAtt> distanceAtt, airAtt;
     std::unique_ptr<SliderAtt> macroCharAtt, macroMoveAtt, macroCoupAtt, macroSpaceAtt;
     std::unique_ptr<ComboAtt>  polyphonyAtt, gestureTypeAtt, wtBankAtt;
 

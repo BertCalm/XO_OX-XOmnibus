@@ -1584,7 +1584,7 @@ public:
         // Wave 4: Biophonic Synthesis (14 params → 79 total)
         // Harmonic Field — JI attractor/repulsor
         auto fieldPrimeChoices =
-            juce::StringArray{"3-Limit (Pythagorean)", "5-Limit (Extended JI)", "7-Limit (Harmonic)"};
+            juce::StringArray{"3-Limit (Pythagorean)", "5-Limit (Extended JI)", "7-Limit (Septimal)"};
         params.push_back(std::make_unique<PF>(juce::ParameterID{"obrix_fieldStrength", 1}, "Obrix Field Strength",
                                               juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
         params.push_back(std::make_unique<juce::AudioParameterBool>(juce::ParameterID{"obrix_fieldPolarity", 1},

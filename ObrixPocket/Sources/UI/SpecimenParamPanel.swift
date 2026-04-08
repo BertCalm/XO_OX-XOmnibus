@@ -188,7 +188,7 @@ struct SpecimenParamPanel: View {
                         HStack(spacing: 8) {
                             Image(systemName: showAdvanced ? "chevron.down" : "chevron.right")
                                 .font(.system(size: 10, weight: .medium))
-                            Text("ADVANCED (\(showAdvanced ? "48" : "48") params)")
+                            Text("ADVANCED (\(showAdvanced ? "HIDE" : "48") params)")
                                 .font(DesignTokens.mono(10))
                                 .tracking(1)
                             Spacer()
