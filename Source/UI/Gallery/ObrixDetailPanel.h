@@ -328,10 +328,12 @@ public:
 
         // ── Section 8 — Proc 3 (post-mix processor) ──────────────────────────
         proc3TypeAtt   = makeComboBox(proc3TypeCB,  "obrix_proc3Type");
-        proc3CutoffAtt = makeKnob    (proc3CutKnob, "obrix_proc3Cutoff", juce::Colour(0xFFFF6B6B));
-        proc3ResoAtt   = makeKnob    (proc3ResKnob, "obrix_proc3Reso",   juce::Colour(0xFFFF6B6B));
+        proc3CutoffAtt = makeKnob    (proc3CutKnob, "obrix_proc3Cutoff",   juce::Colour(0xFFFF6B6B));
+        proc3ResoAtt   = makeKnob    (proc3ResKnob, "obrix_proc3Reso",     juce::Colour(0xFFFF6B6B));
+        proc3FbAtt     = makeKnob    (proc3FbKnob,  "obrix_proc3Feedback", juce::Colour(0xFFFF6B6B));
         makeLabel(proc3CutLbl, "CUTOFF");
         makeLabel(proc3ResLbl, "RESO");
+        makeLabel(proc3FbLbl,  "FEEDBACK");
 
         // ── Section 9 — Other / Global params ────────────────────────────────
         levelAtt        = makeKnob    (levelKnob,        "obrix_level");
@@ -635,10 +637,11 @@ public:
             const int comboH = 22;
             const int aW     = W - kPad * 2;
             const int x0     = kPad;
-            const int colW3  = aW / 3;
-            proc3TypeCB.setBounds(x0, y, colW3, comboH);
-            placeKnob(proc3CutKnob, proc3CutLbl, x0 + colW3,   y, colW3);
-            placeKnob(proc3ResKnob, proc3ResLbl, x0 + colW3*2, y, colW3);
+            const int colW4  = aW / 4;
+            proc3TypeCB.setBounds(x0, y, colW4, comboH);
+            placeKnob(proc3CutKnob, proc3CutLbl, x0 + colW4,   y, colW4);
+            placeKnob(proc3ResKnob, proc3ResLbl, x0 + colW4*2, y, colW4);
+            placeKnob(proc3FbKnob,  proc3FbLbl,  x0 + colW4*3, y, colW4);
             y += knobW + 14 + kPad;
         }
 
@@ -980,8 +983,8 @@ private:
 
     // ── Section 7: Proc 3 ─────────────────────────────────────────────────────
     juce::ComboBox proc3TypeCB;
-    GalleryKnob    proc3CutKnob, proc3ResKnob;
-    juce::Label    proc3CutLbl, proc3ResLbl;
+    GalleryKnob    proc3CutKnob, proc3ResKnob, proc3FbKnob;
+    juce::Label    proc3CutLbl, proc3ResLbl, proc3FbLbl;
 
     // ── Section 8: FX ─────────────────────────────────────────────────────────
     juce::ComboBox   fxModeCB;
@@ -1049,7 +1052,7 @@ private:
     std::array<std::unique_ptr<SliderAtt>, 4> modDepthAtts, modRateAtts;
     // Proc 3
     std::unique_ptr<ComboAtt>  proc3TypeAtt;
-    std::unique_ptr<SliderAtt> proc3CutoffAtt, proc3ResoAtt;
+    std::unique_ptr<SliderAtt> proc3CutoffAtt, proc3ResoAtt, proc3FbAtt;
     // FX
     std::unique_ptr<ComboAtt>  fxModeAtt;
     std::unique_ptr<ComboAtt>  fx1TypeAtt, fx2TypeAtt, fx3TypeAtt;
