@@ -490,6 +490,7 @@ public:
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
+        if (sr <= 0.0f) { buffer.clear(); return; }
         if (numSamples <= 0)
             return;
 
@@ -526,7 +527,14 @@ public:
         const float proc3Res = loadP(pProc3Reso, 0.0f);
 
         const float ampA = loadP(pAmpAttack, 0.01f);
-        const float ampD = loadP(pAmpDecay, 0.3f);
+        // EnvToDecay coupling: scale decay time multiplicatively; couplingDecayMod consumed early
+        // so that noteOn calls in the MIDI loop below receive the modulated value.
+        float ampD = loadP(pAmpDecay, 0.3f);
+        if (couplingDecayMod != 0.0f)
+        {
+            ampD = std::max(0.001f, ampD * (1.0f + couplingDecayMod));
+            couplingDecayMod = 0.0f;
+        }
         const float ampS = loadP(pAmpSustain, 0.7f);
         const float ampR = loadP(pAmpRelease, 0.5f);
 
@@ -617,7 +625,7 @@ public:
                 {
                     float in = reefCouplingBuf_[i];
                     reefCouplingHpFilt_ = hpCoeff * (reefCouplingHpFilt_ + in - reefCouplingBufPrev_);
-                    reefCouplingBufPrev_ = in;
+                    reefCouplingBufPrev_ = flushDenormal(in);
                     reefCouplingHpFilt_ = flushDenormal(reefCouplingHpFilt_);
                     hfSumSq += reefCouplingHpFilt_ * reefCouplingHpFilt_;
                 }
@@ -680,7 +688,7 @@ public:
             if (bcount > 0)
                 avgBright /= static_cast<float>(bcount);
             bleachLevel_ = std::min(1.0f, bleachLevel_ + avgBright * bleachRate / (sr * 60.0f));
-            bleachLevel_ *= (1.0f - 1.0f / (sr * 300.0f)); // natural recovery ~5 min
+            bleachLevel_ *= std::pow(1.0f - 1.0f / (sr * 300.0f), static_cast<float>(numSamples)); // natural recovery ~5 min
             bleachLevel_ = flushDenormal(bleachLevel_);
         }
 
@@ -717,7 +725,7 @@ public:
                 float parasiteBleachInput = reefCouplingHfRms_ * residentStrength;
                 bleachLevel_ = std::min(1.0f, bleachLevel_ + parasiteBleachInput / (sr * 60.0f));
                 if (bleachRate <= 0.001f) // no natural recovery from velocity block — apply here
-                    bleachLevel_ *= (1.0f - 1.0f / (sr * 300.0f));
+                    bleachLevel_ *= std::pow(1.0f - 1.0f / (sr * 300.0f), static_cast<float>(numSamples));
                 bleachLevel_ = flushDenormal(bleachLevel_);
             }
         }
@@ -769,7 +777,9 @@ public:
                 const int unisonSize = calcUnisonSize(voiceModeIdx, unisonDetune);
                 for (int u = 1; u < unisonSize; ++u)
                 {
-                    float spread = static_cast<float>(u) / static_cast<float>(unisonSize - 1) * 2.0f - 1.0f;
+                    float spread = (unisonSize > 1)
+                        ? (static_cast<float>(u) / static_cast<float>(unisonSize - 1) * 2.0f - 1.0f)
+                        : 0.0f;
                     float detST = spread * unisonDetune / 100.0f;
                     float panOff = spread * 0.75f;
                     noteOn(msg.getNoteNumber(), msg.getFloatVelocity(), ampA, ampD, ampS, ampR, src1Tune, src2Tune,
@@ -801,6 +811,11 @@ public:
         couplingPitchMod = 0.0f;
         float blockCutoffCoupling = couplingCutoffMod;
         couplingCutoffMod = 0.0f;
+        float blockWtPosCoupling = couplingWtPosMod;
+        couplingWtPosMod = 0.0f;
+        // couplingDecayMod was already consumed and reset in the ParamSnapshot section above
+        // (applied to ampD before the MIDI noteOn loop). couplingRingMod routes through
+        // pitchMod/cutoffMod in applyCouplingInput — no separate block variable needed.
 
         // === Sample Loop ===
         for (int s = 0; s < numSamples; ++s)
@@ -968,8 +983,9 @@ public:
                 cutoffMod += gestureOut * 4000.0f;
 
                 // Coupling modulation
-                pitchMod += blockPitchCoupling * 100.0f;
+                pitchMod  += blockPitchCoupling  * 100.0f;
                 cutoffMod += blockCutoffCoupling * 3000.0f;
+                wtPosMod  += blockWtPosCoupling;  // EnvToMorph: direct ±1 addition to morph position
 
                 // OBRIX-002: COUPLING macro self-routing fallback (Kakehashi/Smith seance).
                 // When no partner engine is coupled (accumulators + reef all zero), the macro
@@ -979,8 +995,9 @@ public:
                 // it becomes expressive internal cross-modulation. The shimmer uses an
                 // independent rate (~3 Hz base × voice offset) so it doesn't correlate
                 // with existing LFOs — it feels like the bricks breathing together.
-                bool hasCouplingInput = (std::fabs(blockPitchCoupling) > 0.001f ||
+                bool hasCouplingInput = (std::fabs(blockPitchCoupling)  > 0.001f ||
                                          std::fabs(blockCutoffCoupling) > 0.001f ||
+                                         std::fabs(blockWtPosCoupling)  > 0.001f ||
                                          reefCouplingRms_ > 0.001f);
                 if (macroCoup > 0.001f && !hasCouplingInput)
                 {
@@ -1378,6 +1395,26 @@ public:
                 if (v.active)
                     v.ampEnv.noteOff();
             break;
+        case CouplingType::EnvToMorph:
+            // Partner envelope drives wavetable morph position (±1 range).
+            couplingWtPosMod += amount;
+            break;
+        case CouplingType::PitchToPitch:
+            // Harmony coupling: partner pitch shifts OBRIX pitch. Scaling of 0.5f matches
+            // AudioToFM and LFOToPitch, giving ±50 cents at full amount through * 100.0f
+            // in renderBlock. Use amount * 12.0f for ±1200 cents (±1 octave) if desired.
+            couplingPitchMod += amount * 0.5f;
+            break;
+        case CouplingType::EnvToDecay:
+            // Partner envelope scales OBRIX amp decay time (applied multiplicatively in renderBlock).
+            couplingDecayMod += amount;
+            break;
+        case CouplingType::AudioToRing:
+            // Partner audio energy ring-excites OBRIX: drives pitch and filter simultaneously,
+            // creating a ring-mod-like timbral effect without per-sample buffer dependency.
+            couplingPitchMod  += amount * 0.3f;
+            couplingCutoffMod += amount * 0.5f;
+            break;
         default:
             break;
         }
@@ -1745,6 +1782,9 @@ private:
     {
         // FM: apply frequency deviation (±24 st from Src1 output)
         float effFreq = (fmSemitones != 0.0f) ? freq * fastPow2(fmSemitones / 12.0f) : freq;
+        // Clamp to Nyquist for non-bandlimited source types (Sine, WT, LoFi)
+        if (type != 2 && type != 3 && type != 4)
+            effFreq = std::min(effFreq, sr * 0.49f);
         float dt = effFreq / sr;
 
         switch (type)
@@ -2232,6 +2272,9 @@ private:
     int polyLimit_ = 8;
     float couplingPitchMod = 0.0f;
     float couplingCutoffMod = 0.0f;
+    float couplingWtPosMod = 0.0f;  // EnvToMorph: partner envelope → wavetable position
+    float couplingDecayMod = 0.0f;  // EnvToDecay: partner envelope → amp decay time scale
+    // AudioToRing routes directly into couplingPitchMod and couplingCutoffMod — no separate member needed.
 
     // Coupling output (fixed: real audio)
     float lastSampleL = 0.0f;
@@ -2266,7 +2309,7 @@ private:
     // Wave 5 — Reef Residency (pre-allocated, no audio-thread allocation)
     static constexpr int kMaxReefBufSize = 4096; // max block size we'll ever see
     float reefCouplingBuf_[kMaxReefBufSize]{};   // coupling buffer copy from applyCouplingInput
-    int reefCouplingBufLen_ = 0;                 // valid samples in reefCouplingBuf_
+    std::atomic<int> reefCouplingBufLen_{0};     // valid samples in reefCouplingBuf_
     float reefCouplingRms_ = 0.0f;               // smoothed full-band RMS of coupling input
     float reefCouplingHpFilt_ = 0.0f;            // 1-pole HP filter state for HF extraction
     float reefCouplingBufPrev_ = 0.0f;           // previous sample for HP difference equation
