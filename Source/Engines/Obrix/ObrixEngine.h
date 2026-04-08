@@ -1171,6 +1171,7 @@ public:
 
                 // Proc1 processes Source 1 independently (with optional feedback)
                 float sig1 = src1;
+                bool preFolded = false; // track whether a pre-mix proc applied wavefold
                 if (proc1Type > 0 && proc1Type <= 3)
                 {
                     setFilterMode(voice.procFilters[0], proc1Type);
@@ -1195,6 +1196,7 @@ public:
                 {
                     float fold = charFoldScale * velFoldBoost;
                     sig1 = fastTanh(fastSin(sig1 * fold * kPi));
+                    preFolded = true;
                 }
                 else if (proc1Type == 5 && src2Type > 0) // Ring mod — sig1 × src2
                 {
@@ -1225,6 +1227,7 @@ public:
                 {
                     float fold = charFoldScale * velFoldBoost;
                     sig2 = fastTanh(fastSin(sig2 * fold * kPi));
+                    preFolded = true;
                 }
                 else if (proc2Type == 5 && src2Type > 0) // Ring mod — sig2 × src1
                 {
@@ -1234,12 +1237,12 @@ public:
 
                 // === BRICK ECOLOGY: Competition (Biophonic Phase 3) ===
                 // Cross-suppression: the louder brick suppresses the quieter one.
-                // Mimics resource competition between coral polyp populations.
-                // 0.1 floor preserves each brick's identity even at max competition.
+                // Uses pre-processor source amplitudes so competition dynamics are
+                // independent of proc type selection (fold/filter/ring don't bias it).
                 if (competitionStrength > 0.001f && src2Type > 0)
                 {
-                    float env1 = std::fabs(sig1);
-                    float env2 = std::fabs(sig2);
+                    float env1 = std::fabs(src1); // raw source amplitude, not post-proc
+                    float env2 = std::fabs(src2);
                     sig1 *= clamp(1.0f - env2 * competitionStrength, 0.1f, 1.0f);
                     sig2 *= clamp(1.0f - env1 * competitionStrength, 0.1f, 1.0f);
                 }
@@ -1282,6 +1285,7 @@ public:
                 {
                     voice.procFbState[2] = 0.0f; // clear stale filter state
                     float fold = charFoldScale * velFoldBoost;
+                    if (preFolded) fold *= 0.25f; // compensate: pre-folded signal is already saturated
                     signal = fastTanh(fastSin(signal * fold * kPi));
                 }
                 else if (proc3Type == 5 && src2Type > 0) // Ring mod — post-mix × src2 carrier
@@ -2346,7 +2350,22 @@ private:
                     }
                     return; // Fade will complete in renderBlock — new note deferred
                 }
-                slot = oldestSlot; // Voice already fading — take it now (hard cut)
+                // Voice already mid-fade — replace pending note (no hard cut)
+                sv.pendingNote  = noteNum;
+                sv.pendingVel   = vel;
+                sv.pendingFreq1 = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune1) / 12.0f + detuneOffsetST);
+                sv.pendingFreq2 = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune2) / 12.0f + detuneOffsetST);
+                sv.pendingPan   = panOffset;
+                sv.pendingAmpA  = ampA;
+                sv.pendingAmpD  = ampD;
+                sv.pendingAmpS  = ampS;
+                sv.pendingAmpR  = ampR;
+                for (int m = 0; m < 4; ++m)
+                {
+                    sv.pendingModTypes[m] = modTypes[m];
+                    sv.pendingModRates[m] = modRates[m];
+                }
+                return; // Fade continues — newest note wins when it completes
             }
         }
 
