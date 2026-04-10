@@ -34,12 +34,13 @@
     "preset-breed",
     "coupling-design",
     "composite",
-    "recall"
+    "recall",
+    "ringleader"
   ],
   "skill_categories": {
     "meta": ["log-session", "mine-skills", "meta-mine", "discover-skills", "optimize-chains", "toolbox", "recall"],
     "engineering": ["build", "test", "lint", "benchmark", "preflight", "preset-qa", "review", "new-xo-engine", "debug-audio"],
-    "strategy": ["research", "feature-review", "recommend"],
+    "strategy": ["research", "feature-review", "recommend", "ringleader"],
     "workflow": ["migrate", "release", "refactor", "composite"],
     "creative": ["preset-breed", "coupling-design"]
   },
@@ -62,7 +63,8 @@
     "benchmark": { "depends_on": ["build"], "feeds_into": ["preflight", "recommend"] },
     "debug-audio": { "depends_on": ["build"], "feeds_into": ["recommend", "release"] },
     "preset-qa": { "depends_on": [], "feeds_into": ["release", "recommend"] },
-    "review": { "depends_on": [], "feeds_into": ["recommend"] }
+    "review": { "depends_on": [], "feeds_into": ["recommend"] },
+    "ringleader": { "depends_on": ["research", "feature-review", "recommend"], "feeds_into": [] }
   },
   "composites": {
     "full-audit": ["lint", "test", "benchmark", "debug-audio", "preset-qa", "feature-review", "recommend"],
