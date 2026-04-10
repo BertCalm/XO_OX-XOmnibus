@@ -1,0 +1,2033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XOceanus UI Preview</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #16181e;
+    color: #c8ccd8;
+    font-family: -apple-system, 'SF Pro Display', system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  /* ── OCEAN BACKGROUND ────────────────────── */
+  .ocean {
+    flex: 1;
+    position: relative;
+    background: radial-gradient(ellipse at 50% 55%, #1a2438 0%, #16181e 70%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .ocean::before {
+    content: '';
+    position: absolute;
+    width: 800px; height: 800px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 1px solid rgba(60, 180, 170, 0.06);
+    box-shadow:
+      0 0 0 120px transparent, 0 0 0 121px rgba(60, 180, 170, 0.04),
+      0 0 0 240px transparent, 0 0 0 241px rgba(60, 180, 170, 0.03),
+      0 0 0 360px transparent, 0 0 0 361px rgba(60, 180, 170, 0.02);
+    pointer-events: none;
+  }
+
+  /* ── ENGINE SLOTS (orbital) ──────────────── */
+  .slot-ring {
+    position: absolute;
+    width: 280px; height: 280px;
+    top: calc(50% - 20px); left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: width 0.3s, height 0.3s, top 0.3s;
+  }
+  .ocean-split:has(.surface-right.open) .slot-ring {
+    width: 240px; height: 240px;
+    top: calc(50% - 30px);
+  }
+
+  .engine-slot {
+    position: absolute;
+    width: 56px; height: 56px;
+    border-radius: 16px;
+    border: 2px dashed rgba(60, 180, 170, 0.15);
+    background: rgba(60, 180, 170, 0.03);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.2s;
+    pointer-events: all;
+  }
+  .engine-slot:hover {
+    border-color: rgba(60, 180, 170, 0.4);
+    background: rgba(60, 180, 170, 0.08);
+    transform: scale(1.08);
+  }
+  .engine-slot.empty { opacity: 0.5; }
+  .engine-slot.empty:hover { opacity: 1; }
+  .engine-slot.empty::after {
+    content: '+';
+    font-size: 20px;
+    color: rgba(60, 180, 170, 0.4);
+    font-weight: 300;
+  }
+  .engine-slot.loaded {
+    border-style: solid;
+    border-color: rgba(60, 180, 170, 0.3);
+    background: rgba(60, 180, 170, 0.06);
+    opacity: 1;
+  }
+  .engine-slot.loaded:hover {
+    border-color: rgba(60, 180, 170, 0.6);
+    box-shadow: 0 0 20px rgba(60, 180, 170, 0.15);
+  }
+  .engine-slot.active {
+    border-color: rgba(60, 180, 170, 0.6);
+    background: rgba(60, 180, 170, 0.1);
+    box-shadow: 0 0 24px rgba(60, 180, 170, 0.2);
+  }
+
+  .slot-label {
+    position: absolute;
+    bottom: -18px;
+    left: 50%; transform: translateX(-50%);
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(200, 204, 216, 0.3);
+    white-space: nowrap;
+  }
+  .engine-slot.loaded .slot-label { color: rgba(60, 180, 170, 0.6); }
+
+  /* Position slots around the ring */
+  .engine-slot:nth-child(1) { top: -28px; left: 50%; transform: translateX(-50%); }
+  .engine-slot:nth-child(2) { top: 50%; right: -28px; transform: translateY(-50%); }
+  .engine-slot:nth-child(3) { bottom: -28px; left: 50%; transform: translateX(-50%); }
+  .engine-slot:nth-child(4) { top: 50%; left: -28px; transform: translateY(-50%); }
+  .engine-slot:nth-child(5) { top: 10%; right: 10%; }
+
+  /* ── NEXUS (center) ──────────────────────── */
+  .nexus {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .creature {
+    width: 80px; height: 80px;
+    background: rgba(60, 180, 170, 0.08);
+    border: 1px solid rgba(60, 180, 170, 0.2);
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    animation: breathe 4s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.04); opacity: 1; }
+  }
+
+  .preset-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: rgba(60, 180, 170, 0.9);
+    letter-spacing: 0.5px;
+  }
+  .preset-category {
+    font-size: 11px;
+    color: rgba(200, 204, 216, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+
+  /* ── MACRO STRIP ─────────────────────────── */
+  .macro-strip {
+    position: absolute;
+    bottom: 316px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 24px;
+    z-index: 4;
+    transition: bottom 0.3s;
+  }
+  .macro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+  .macro-knob {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(60, 180, 170, 0.3);
+    background: rgba(60, 180, 170, 0.05);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .macro-knob:hover {
+    border-color: rgba(60, 180, 170, 0.6);
+    background: rgba(60, 180, 170, 0.1);
+  }
+  .macro-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(200, 204, 216, 0.5);
+  }
+
+  /* ── ENGINE PICKER (slide-out drawer) ────── */
+  .picker-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 100;
+  }
+  .picker-backdrop.open { display: block; }
+
+  .engine-picker {
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    width: 320px;
+    background: linear-gradient(to right, #1a1c24 0%, #16181e 100%);
+    border-right: 1px solid rgba(60, 180, 170, 0.1);
+    z-index: 101;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    overflow: hidden;
+  }
+  .picker-backdrop.open .engine-picker { transform: translateX(0); }
+
+  .picker-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .picker-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(60, 180, 170, 0.9);
+    letter-spacing: 0.5px;
+    flex: 1;
+  }
+  .picker-close {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    background: transparent;
+    color: rgba(200, 204, 216, 0.4);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .picker-close:hover {
+    background: rgba(200, 204, 216, 0.06);
+    color: rgba(200, 204, 216, 0.8);
+  }
+
+  .picker-search {
+    margin: 12px 20px;
+    padding: 8px 12px;
+    background: rgba(200, 204, 216, 0.04);
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    border-radius: 8px;
+    color: #c8ccd8;
+    font-size: 12px;
+    outline: none;
+  }
+  .picker-search::placeholder { color: rgba(200, 204, 216, 0.25); }
+  .picker-search:focus { border-color: rgba(60, 180, 170, 0.3); }
+
+  .picker-categories {
+    display: flex;
+    gap: 4px;
+    padding: 0 20px 12px;
+    overflow-x: auto;
+    flex-shrink: 0;
+  }
+  .picker-cat {
+    padding: 4px 10px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200, 204, 216, 0.35);
+    background: transparent;
+    border: 1px solid rgba(200, 204, 216, 0.06);
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .picker-cat:hover { color: rgba(200, 204, 216, 0.7); border-color: rgba(200, 204, 216, 0.15); }
+  .picker-cat.active {
+    color: rgba(60, 180, 170, 0.9);
+    border-color: rgba(60, 180, 170, 0.3);
+    background: rgba(60, 180, 170, 0.06);
+  }
+
+  .picker-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 12px 12px;
+  }
+
+  .engine-tile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    cursor: grab;
+    transition: all 0.15s;
+    margin-bottom: 2px;
+  }
+  .engine-tile:hover {
+    background: rgba(60, 180, 170, 0.06);
+  }
+  .engine-tile:active {
+    cursor: grabbing;
+    background: rgba(60, 180, 170, 0.1);
+  }
+
+  .engine-tile-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .engine-tile-info { flex: 1; min-width: 0; }
+  .engine-tile-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(200, 204, 216, 0.85);
+  }
+  .engine-tile-desc {
+    font-size: 10px;
+    color: rgba(200, 204, 216, 0.35);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .engine-tile-depth {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── PLAY SURFACE ────────────────────────── */
+  .play-surface {
+    height: 300px;
+    background: linear-gradient(to bottom, rgba(22, 24, 30, 0.95), rgba(16, 18, 22, 0.98));
+    border-top: 1px solid rgba(60, 180, 170, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .drag-handle {
+    width: 40px; height: 4px;
+    background: rgba(200, 204, 216, 0.2);
+    border-radius: 2px;
+    margin: 8px auto;
+    cursor: ns-resize;
+  }
+  .surface-tabs {
+    display: flex;
+    gap: 2px;
+    padding: 0 16px;
+    margin-bottom: 8px;
+  }
+  .surface-tab {
+    padding: 6px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(200, 204, 216, 0.4);
+    background: transparent;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .surface-tab:hover { color: rgba(200, 204, 216, 0.7); }
+  .surface-tab.active {
+    color: rgba(60, 180, 170, 0.9);
+    background: rgba(60, 180, 170, 0.08);
+  }
+  .surface-tab-spacer { flex: 1; }
+
+  /* MPE keys */
+  .mpe-surface {
+    flex: 1;
+    display: flex;
+    padding: 0 16px 16px;
+    gap: 1px;
+    overflow: hidden;
+  }
+  .mpe-key {
+    flex: 1;
+    position: relative;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.1s;
+    min-width: 0;
+  }
+  .mpe-key.white {
+    background: linear-gradient(to bottom, rgba(200,204,216,0.12) 0%, rgba(200,204,216,0.06) 100%);
+    border: 1px solid rgba(200,204,216,0.08);
+  }
+  .mpe-key.white:hover {
+    background: linear-gradient(to bottom, rgba(60,180,170,0.15) 0%, rgba(60,180,170,0.08) 100%);
+    border-color: rgba(60,180,170,0.2);
+  }
+  .mpe-key.white:active {
+    background: linear-gradient(to bottom, rgba(60,180,170,0.3) 0%, rgba(60,180,170,0.15) 100%);
+    border-color: rgba(60,180,170,0.4);
+  }
+  .mpe-key.black {
+    flex: 0.6;
+    background: linear-gradient(to bottom, rgba(16,18,22,0.9) 0%, rgba(10,12,16,0.95) 100%);
+    border: 1px solid rgba(200,204,216,0.05);
+    margin: 0 -4px;
+    z-index: 1;
+    height: 55%;
+  }
+  .mpe-key.black:hover {
+    background: linear-gradient(to bottom, rgba(140,100,220,0.2) 0%, rgba(140,100,220,0.1) 100%);
+    border-color: rgba(140,100,220,0.3);
+  }
+  .mpe-key.black:active {
+    background: linear-gradient(to bottom, rgba(140,100,220,0.4) 0%, rgba(140,100,220,0.2) 100%);
+  }
+  .mpe-key .pressure {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 0%;
+    background: linear-gradient(to top, rgba(60,180,170,0.4) 0%, rgba(60,180,170,0) 100%);
+    border-radius: 0 0 4px 4px;
+    transition: height 0.05s;
+    pointer-events: none;
+  }
+  .mpe-key:active .pressure { height: 60%; }
+  .mpe-key .note-label {
+    position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; color: rgba(200,204,216,0.2); pointer-events: none;
+  }
+  .mpe-key:hover .note-label { color: rgba(200,204,216,0.5); }
+
+  /* ── SPLIT VIEW: ocean left, surface right ─ */
+  .ocean-split {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  .ocean { transition: flex 0.3s ease; }
+
+  .surface-right {
+    width: 0;
+    flex-shrink: 0;
+    background: linear-gradient(to bottom, rgba(22, 26, 34, 0.97), rgba(16, 18, 22, 0.98));
+    border-left: 1px solid rgba(60, 180, 170, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: width 0.3s ease;
+  }
+  .surface-right.open { width: 420px; }
+
+  .surface-right-header {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.06);
+    flex-shrink: 0;
+  }
+  .surface-right-title {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(60, 180, 170, 0.7);
+    flex: 1;
+  }
+  .surface-right-close {
+    width: 24px; height: 24px;
+    border-radius: 6px;
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    background: transparent;
+    color: rgba(200, 204, 216, 0.4);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .surface-right-close:hover { background: rgba(200,204,216,0.06); color: rgba(200,204,216,0.8); }
+
+  .surface-right-body {
+    flex: 1;
+    padding: 12px;
+    min-height: 0;
+  }
+
+  .split-pad-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 6px;
+    height: 100%;
+  }
+
+  .split-drum-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 6px;
+    height: 100%;
+  }
+
+  .split-xy-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+  }
+
+  .pad-surface { display: none; }
+  .drum-surface { display: none; }
+
+  .pad-cell {
+    border-radius: 12px;
+    background: linear-gradient(145deg, rgba(200,204,216,0.06) 0%, rgba(200,204,216,0.02) 100%);
+    border: 1px solid rgba(200,204,216,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.08s;
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+  }
+  .pad-cell:hover {
+    background: linear-gradient(to bottom, rgba(60,180,170,0.1) 0%, rgba(60,180,170,0.05) 100%);
+    border-color: rgba(60,180,170,0.2);
+  }
+  .pad-cell:active {
+    background: linear-gradient(to bottom, rgba(60,180,170,0.25) 0%, rgba(60,180,170,0.12) 100%);
+    border-color: rgba(60,180,170,0.4);
+    transform: scale(0.97);
+  }
+  .pad-cell .pad-note {
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(200,204,216,0.5);
+  }
+  .pad-cell:active .pad-note { color: rgba(60,180,170,0.9); }
+  .pad-cell .pad-vel {
+    font-size: 8px;
+    color: rgba(200,204,216,0.2);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  /* Velocity ripple on press */
+  .pad-cell::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(60,180,170,0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.08s;
+    pointer-events: none;
+  }
+  .pad-cell:active::after { opacity: 1; }
+
+  .drum-surface { display: none; }
+
+  .drum-pad {
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(200,204,216,0.05) 0%, rgba(200,204,216,0.02) 100%);
+    border: 1px solid rgba(200,204,216,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.08s;
+    position: relative;
+  }
+  .drum-pad:hover {
+    background: linear-gradient(135deg, rgba(140,100,220,0.08) 0%, rgba(60,180,170,0.06) 100%);
+    border-color: rgba(140,100,220,0.2);
+  }
+  .drum-pad:active {
+    background: linear-gradient(135deg, rgba(140,100,220,0.2) 0%, rgba(60,180,170,0.15) 100%);
+    border-color: rgba(140,100,220,0.4);
+    transform: scale(0.96);
+  }
+  .drum-pad .drum-icon { font-size: 24px; opacity: 0.7; }
+  .drum-pad:active .drum-icon { opacity: 1; }
+  .drum-pad .drum-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200,204,216,0.35);
+  }
+  .drum-pad:active .drum-label { color: rgba(140,100,220,0.9); }
+
+  .xy-surface { display: none; }
+
+  .xy-pad {
+    flex: 1;
+    background: rgba(200,204,216,0.03);
+    border: 1px solid rgba(200,204,216,0.06);
+    border-radius: 12px;
+    position: relative;
+    cursor: crosshair;
+    overflow: hidden;
+  }
+  .xy-pad::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 1px;
+    background: rgba(200,204,216,0.04);
+  }
+  .xy-pad::after {
+    content: '';
+    position: absolute;
+    left: 50%; top: 0; bottom: 0;
+    width: 1px;
+    background: rgba(200,204,216,0.04);
+  }
+  .xy-cursor {
+    position: absolute;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: rgba(60,180,170,0.5);
+    border: 2px solid rgba(60,180,170,0.8);
+    box-shadow: 0 0 16px rgba(60,180,170,0.3);
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    transition: left 0.05s, top 0.05s;
+    left: 50%; top: 50%;
+  }
+  .xy-label {
+    position: absolute;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200,204,216,0.2);
+  }
+  .xy-label.x-label { bottom: 8px; left: 50%; transform: translateX(-50%); }
+  .xy-label.y-label { left: 8px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+
+  .xy-info {
+    width: 140px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-top: 8px;
+  }
+  .xy-readout {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .xy-readout label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200,204,216,0.35);
+  }
+  .xy-readout .xy-val {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(60,180,170,0.8);
+    font-family: 'JetBrains Mono', monospace;
+  }
+  .xy-assign {
+    padding: 6px 12px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200,204,216,0.4);
+    background: transparent;
+    border: 1px solid rgba(200,204,216,0.08);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .xy-assign:hover {
+    color: rgba(200,204,216,0.7);
+    border-color: rgba(200,204,216,0.15);
+  }
+
+  /* ── STATUS BAR ──────────────────────────── */
+  .status-bar {
+    height: 24px;
+    background: rgba(10, 12, 16, 0.9);
+    border-top: 1px solid rgba(200, 204, 216, 0.06);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 24px;
+    font-size: 10px;
+    color: rgba(200, 204, 216, 0.35);
+    flex-shrink: 0;
+  }
+  .status-bar .spacer { flex: 1; }
+  .status-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(60,180,170,0.5); }
+
+  /* ── FLOATING NAV ────────────────────────── */
+  .nav-row {
+    position: absolute;
+    top: 12px; left: 16px; right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+  }
+  .nav-btn {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(200,204,216,0.08);
+    background: rgba(200,204,216,0.04);
+    color: rgba(200,204,216,0.5);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .nav-btn:hover {
+    background: rgba(200,204,216,0.08);
+    color: rgba(200,204,216,0.8);
+  }
+  .nav-btn.engines-btn {
+    width: auto;
+    padding: 0 12px;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+  .nav-preset {
+    font-size: 13px; font-weight: 500;
+    color: rgba(200,204,216,0.6);
+    padding: 0 12px; cursor: pointer;
+  }
+  .nav-preset:hover { color: rgba(200,204,216,0.9); }
+  .nav-spacer { flex: 1; }
+
+  /* ── ENGINE DETAIL PANEL ──────────────── */
+  .detail-panel {
+    display: none;
+    position: absolute;
+    top: 48px; left: 60px; right: 60px; bottom: 20px;
+    background: linear-gradient(to bottom, rgba(22, 26, 34, 0.96), rgba(16, 18, 22, 0.97));
+    border: 1px solid rgba(60, 180, 170, 0.12);
+    border-radius: 16px;
+    z-index: 20;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .detail-panel.open { display: flex; }
+
+  /* Click-off area behind panel */
+  .detail-backdrop {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 19;
+    cursor: pointer;
+  }
+  .detail-backdrop.open { display: block; }
+
+  .detail-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.06);
+    flex-shrink: 0;
+  }
+  .detail-back {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    background: transparent;
+    color: rgba(200, 204, 216, 0.5);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .detail-back:hover { background: rgba(200,204,216,0.06); color: rgba(200,204,216,0.8); }
+  .detail-engine-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+  }
+  .detail-engine-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(200, 204, 216, 0.9);
+    flex: 1;
+  }
+  .detail-engine-desc {
+    font-size: 10px;
+    color: rgba(200, 204, 216, 0.35);
+  }
+
+  .detail-body {
+    flex: 1;
+    display: flex;
+    gap: 1px;
+    overflow: hidden;
+    padding: 16px;
+  }
+
+  /* Left: waveform + ADSR */
+  .detail-viz {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-width: 0;
+  }
+
+  .waveform-display {
+    height: 120px;
+    background: rgba(200, 204, 216, 0.03);
+    border: 1px solid rgba(200, 204, 216, 0.06);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .waveform-display canvas { width: 100%; height: 100%; }
+
+  .adsr-display {
+    height: 100px;
+    background: rgba(200, 204, 216, 0.03);
+    border: 1px solid rgba(200, 204, 216, 0.06);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .adsr-display canvas { width: 100%; height: 100%; }
+
+  .adsr-sliders {
+    display: flex;
+    gap: 16px;
+    padding: 0 4px;
+  }
+  .adsr-param {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .adsr-param label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200, 204, 216, 0.4);
+  }
+  .adsr-param input[type="range"] {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    background: rgba(200, 204, 216, 0.1);
+    border-radius: 2px;
+    outline: none;
+  }
+  .adsr-param input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: rgba(60, 180, 170, 0.8);
+    border: 2px solid rgba(60, 180, 170, 0.4);
+    cursor: pointer;
+  }
+  .adsr-param .adsr-val {
+    font-size: 10px;
+    color: rgba(60, 180, 170, 0.7);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* Right: parameter knobs grid */
+  .detail-params {
+    width: 340px;
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding: 0 0 0 16px;
+  }
+
+  .param-section-title {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(60, 180, 170, 0.5);
+    padding: 8px 0 8px 4px;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.04);
+    margin-bottom: 8px;
+  }
+
+  .param-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .param-knob {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .param-knob:hover { background: rgba(200, 204, 216, 0.04); }
+
+  .knob-ring {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 2px solid rgba(200, 204, 216, 0.15);
+    background: rgba(200, 204, 216, 0.03);
+    position: relative;
+    transition: border-color 0.15s;
+  }
+  .param-knob:hover .knob-ring {
+    border-color: rgba(60, 180, 170, 0.4);
+  }
+  /* Arc indicator */
+  .knob-ring::after {
+    content: '';
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: rgba(60, 180, 170, 0.6);
+    border-right-color: rgba(60, 180, 170, 0.6);
+    transform: rotate(var(--knob-angle, 45deg));
+    pointer-events: none;
+  }
+
+  .knob-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200, 204, 216, 0.4);
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .knob-value {
+    font-size: 9px;
+    color: rgba(60, 180, 170, 0.6);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ── PRESET BROWSER (pop-out) ──────────── */
+  .preset-browser-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 90;
+  }
+  .preset-browser-backdrop.open { display: flex; align-items: center; justify-content: center; }
+
+  .preset-browser {
+    width: 500px;
+    max-height: 70vh;
+    background: linear-gradient(to bottom, #1e2028, #16181e);
+    border: 1px solid rgba(60, 180, 170, 0.15);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  }
+
+  .preset-browser-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.06);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .preset-browser-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(60, 180, 170, 0.9);
+    flex: 1;
+  }
+  .preset-browser-engine {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(200, 204, 216, 0.35);
+    padding: 3px 8px;
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    border-radius: 4px;
+  }
+  .preset-browser-close {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    background: transparent;
+    color: rgba(200, 204, 216, 0.4);
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .preset-browser-close:hover { background: rgba(200,204,216,0.06); color: rgba(200,204,216,0.8); }
+
+  .preset-search {
+    margin: 10px 20px;
+    padding: 8px 12px;
+    background: rgba(200, 204, 216, 0.04);
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    border-radius: 8px;
+    color: #c8ccd8;
+    font-size: 12px;
+    outline: none;
+  }
+  .preset-search::placeholder { color: rgba(200,204,216,0.25); }
+  .preset-search:focus { border-color: rgba(60,180,170,0.3); }
+
+  .preset-moods {
+    display: flex;
+    gap: 4px;
+    padding: 0 20px 10px;
+    overflow-x: auto;
+    flex-shrink: 0;
+  }
+  .preset-mood {
+    padding: 3px 8px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(200, 204, 216, 0.35);
+    background: transparent;
+    border: 1px solid rgba(200, 204, 216, 0.06);
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .preset-mood:hover { color: rgba(200,204,216,0.7); border-color: rgba(200,204,216,0.15); }
+  .preset-mood.active {
+    color: rgba(60,180,170,0.9);
+    border-color: rgba(60,180,170,0.3);
+    background: rgba(60,180,170,0.06);
+  }
+
+  .preset-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 12px 12px;
+  }
+
+  .preset-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.12s;
+    margin-bottom: 1px;
+  }
+  .preset-item:hover { background: rgba(60,180,170,0.06); }
+  .preset-item.active-preset {
+    background: rgba(60,180,170,0.1);
+    border-left: 2px solid rgba(60,180,170,0.6);
+  }
+
+  .preset-item-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(200, 204, 216, 0.8);
+    flex: 1;
+  }
+  .preset-item.active-preset .preset-item-name { color: rgba(60,180,170,0.9); }
+
+  .preset-item-mood {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200, 204, 216, 0.25);
+    padding: 2px 6px;
+    border: 1px solid rgba(200, 204, 216, 0.06);
+    border-radius: 3px;
+  }
+
+  .preset-item-fav {
+    font-size: 12px;
+    color: rgba(200, 204, 216, 0.15);
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .preset-item-fav:hover { color: rgba(233, 196, 106, 0.8); }
+  .preset-item-fav.faved { color: rgba(233, 196, 106, 0.9); }
+
+  /* ── DROP TARGET HIGHLIGHT ───────────────── */
+  .engine-slot.drop-hover {
+    border-color: rgba(60, 180, 170, 0.8) !important;
+    background: rgba(60, 180, 170, 0.15) !important;
+    box-shadow: 0 0 30px rgba(60, 180, 170, 0.3) !important;
+    transform: scale(1.15) !important;
+  }
+
+  /* Coupling lines */
+  .coupling-line {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+  }
+</style>
+</head>
+<body>
+
+  <!-- SPLIT: OCEAN + SURFACE RIGHT -->
+  <div class="ocean-split">
+  <div class="ocean" id="ocean">
+    <div class="nav-row">
+      <button class="nav-btn engines-btn" id="enginesBtn">&#9776; Engines</button>
+      <div class="nav-spacer"></div>
+      <button class="nav-btn">&#9664;</button>
+      <span class="nav-preset">Welcome</span>
+      <button class="nav-btn">&#9654;</button>
+      <button class="nav-btn">&#9825;</button>
+      <div class="nav-spacer"></div>
+      <button class="nav-btn">&#9881;</button>
+    </div>
+
+    <!-- Engine slots orbiting center -->
+    <div class="slot-ring" id="slotRing">
+      <div class="engine-slot loaded active" data-slot="0">
+        <span style="font-size:22px">&#127754;</span>
+        <span class="slot-label">OBRIX</span>
+      </div>
+      <div class="engine-slot empty" data-slot="1">
+        <span class="slot-label">SLOT 2</span>
+      </div>
+      <div class="engine-slot empty" data-slot="2">
+        <span class="slot-label">SLOT 3</span>
+      </div>
+      <div class="engine-slot empty" data-slot="3">
+        <span class="slot-label">SLOT 4</span>
+      </div>
+      <div class="engine-slot empty" data-slot="4" style="opacity:0.3">
+        <span class="slot-label">GHOST</span>
+      </div>
+    </div>
+
+    <!-- Nexus -->
+    <div class="nexus">
+      <div class="creature">&#127754;</div>
+      <div class="preset-name">Welcome</div>
+      <div class="preset-category">Foundation</div>
+    </div>
+
+    <!-- Engine Detail Panel (opens on engine click) -->
+    <div class="detail-backdrop" id="detailBackdrop"></div>
+    <div class="detail-panel" id="detailPanel">
+      <div class="detail-header">
+        <button class="detail-back" id="detailBack">&#8592;</button>
+        <div class="detail-engine-icon" id="detailIcon"></div>
+        <div>
+          <div class="detail-engine-name" id="detailName"></div>
+          <div class="detail-engine-desc" id="detailDesc"></div>
+        </div>
+      </div>
+      <div class="detail-body">
+        <div class="detail-viz">
+          <div class="waveform-display"><canvas id="waveformCanvas"></canvas></div>
+          <div class="adsr-display"><canvas id="adsrCanvas"></canvas></div>
+          <div class="adsr-sliders">
+            <div class="adsr-param"><label>Attack</label><input type="range" min="0" max="100" value="5" class="adsr-slider" data-param="a"><span class="adsr-val">5ms</span></div>
+            <div class="adsr-param"><label>Decay</label><input type="range" min="0" max="100" value="30" class="adsr-slider" data-param="d"><span class="adsr-val">30ms</span></div>
+            <div class="adsr-param"><label>Sustain</label><input type="range" min="0" max="100" value="70" class="adsr-slider" data-param="s"><span class="adsr-val">70%</span></div>
+            <div class="adsr-param"><label>Release</label><input type="range" min="0" max="100" value="40" class="adsr-slider" data-param="r"><span class="adsr-val">40ms</span></div>
+          </div>
+        </div>
+        <div class="detail-params" id="detailParams"></div>
+      </div>
+    </div>
+
+  </div><!-- /ocean -->
+
+  <!-- RIGHT-SIDE SURFACE PANEL -->
+  <div class="surface-right" id="surfaceRight">
+    <div class="surface-right-header">
+      <span class="surface-right-title" id="surfaceRightTitle">Pad</span>
+      <button class="surface-right-close" id="surfaceRightClose">&times;</button>
+    </div>
+    <div class="surface-right-body" id="surfaceRightBody">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+  </div><!-- /ocean-split -->
+
+    <!-- Macros -->
+    <div class="macro-strip">
+      <div class="macro"><div class="macro-knob"></div><div class="macro-label">CHAR</div></div>
+      <div class="macro"><div class="macro-knob"></div><div class="macro-label">MOVE</div></div>
+      <div class="macro"><div class="macro-knob"></div><div class="macro-label">COUP</div></div>
+      <div class="macro"><div class="macro-knob"></div><div class="macro-label">SPACE</div></div>
+      <div class="macro"><div class="macro-knob"></div><div class="macro-label">VOL</div></div>
+    </div>
+  </div>
+
+  <!-- ENGINE PICKER DRAWER -->
+  <div class="picker-backdrop" id="pickerBackdrop">
+    <div class="engine-picker">
+      <div class="picker-header">
+        <span class="picker-title">Engine Library</span>
+        <button class="picker-close" id="pickerClose">&times;</button>
+      </div>
+      <input class="picker-search" placeholder="Search engines..." id="pickerSearch">
+      <div class="picker-categories">
+        <button class="picker-cat active">All</button>
+        <button class="picker-cat">Synth</button>
+        <button class="picker-cat">Keys</button>
+        <button class="picker-cat">Bass</button>
+        <button class="picker-cat">Pad</button>
+        <button class="picker-cat">Strings</button>
+        <button class="picker-cat">Perc</button>
+        <button class="picker-cat">FX</button>
+      </div>
+      <div class="picker-list" id="pickerList"></div>
+    </div>
+  </div>
+
+  <!-- PRESET BROWSER -->
+  <div class="preset-browser-backdrop" id="presetBackdrop">
+    <div class="preset-browser">
+      <div class="preset-browser-header">
+        <span class="preset-browser-title">Presets</span>
+        <span class="preset-browser-engine" id="presetEngineLabel">OBRIX</span>
+        <button class="preset-browser-close" id="presetClose">&times;</button>
+      </div>
+      <input class="preset-search" placeholder="Search presets..." id="presetSearch">
+      <div class="preset-moods" id="presetMoods"></div>
+      <div class="preset-list" id="presetList"></div>
+    </div>
+  </div>
+
+  <!-- PLAY SURFACE -->
+  <div class="play-surface">
+    <div class="drag-handle"></div>
+    <div class="surface-tabs">
+      <button class="surface-tab active">KEYS</button>
+      <button class="surface-tab">PAD</button>
+      <button class="surface-tab">DRUM</button>
+      <button class="surface-tab">XY</button>
+      <div class="surface-tab-spacer"></div>
+      <button class="surface-tab">DETAIL</button>
+      <button class="surface-tab">FX</button>
+      <button class="surface-tab">CPL</button>
+    </div>
+    <div class="mpe-surface active" id="mpe"></div>
+
+    <!-- PAD surface -->
+    <div class="pad-surface" id="padSurface"></div>
+
+    <!-- DRUM surface -->
+    <div class="drum-surface" id="drumSurface"></div>
+
+    <!-- XY surface -->
+    <div class="xy-surface" id="xySurface">
+      <div class="xy-pad" id="xyPad">
+        <div class="xy-cursor" id="xyCursor"></div>
+        <span class="xy-label x-label">Cutoff</span>
+        <span class="xy-label y-label">Resonance</span>
+      </div>
+      <div class="xy-info">
+        <div class="xy-readout"><label>X: Cutoff</label><span class="xy-val" id="xyXVal">50%</span></div>
+        <div class="xy-readout"><label>Y: Resonance</label><span class="xy-val" id="xyYVal">50%</span></div>
+        <button class="xy-assign">Assign X</button>
+        <button class="xy-assign">Assign Y</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATUS BAR -->
+  <div class="status-bar">
+    <span>120 BPM</span>
+    <span>Voices: 0</span>
+    <div class="spacer"></div>
+    <span>CPU: 0%</span>
+    <span class="status-dot"></span>
+  </div>
+
+<script>
+  // ── ENGINE DATA ──
+  const engines = [
+    { name: 'Obrix', desc: 'Flagship wavetable + FM hybrid', icon: '🌊', color: '#3CB4AA', depth: 'sunlit' },
+    { name: 'Oxytocin', desc: 'Circuit love synthesizer', icon: '💗', color: '#E06090', depth: 'twilight' },
+    { name: 'Opera', desc: 'Additive vocal Kuramoto', icon: '🎭', color: '#C8A040', depth: 'deep' },
+    { name: 'Oware', desc: 'Akan tuned percussion', icon: '🥁', color: '#D4A574', depth: 'sunlit' },
+    { name: 'Offering', desc: 'Boom bap drum engine', icon: '🎯', color: '#8B6914', depth: 'sunlit' },
+    { name: 'Onset', desc: 'Transient percussion', icon: '⚡', color: '#E8A030', depth: 'sunlit' },
+    { name: 'Ouroboros', desc: 'Self-feeding feedback', icon: '🐍', color: '#7C3AED', depth: 'midnight' },
+    { name: 'Obscura', desc: 'Stiff string resonance', icon: '🔮', color: '#6B21A8', depth: 'deep' },
+    { name: 'Orbital', desc: 'Phase-locked oscillators', icon: '🪐', color: '#3B82F6', depth: 'twilight' },
+    { name: 'Organon', desc: 'Metabolic synthesis', icon: '🧬', color: '#10B981', depth: 'deep' },
+    { name: 'Odyssey', desc: 'Classic analog drift', icon: '🚀', color: '#F59E0B', depth: 'sunlit' },
+    { name: 'Overdub', desc: 'Tape saturation engine', icon: '📼', color: '#EF4444', depth: 'sunlit' },
+    { name: 'Opal', desc: 'Granular crystalline', icon: '💎', color: '#A78BFA', depth: 'twilight' },
+    { name: 'Oceanic', desc: 'Spectral ocean model', icon: '🌀', color: '#0EA5E9', depth: 'midnight' },
+    { name: 'Oto', desc: 'Tonewheel organ', icon: '🎹', color: '#84CC16', depth: 'sunlit' },
+    { name: 'Ogre', desc: 'Sub bass monster', icon: '👹', color: '#DC2626', depth: 'midnight' },
+  ];
+
+  const depthColors = { sunlit: '#3CB4AA', twilight: '#7C3AED', deep: '#1E40AF', midnight: '#1a1c24' };
+
+  // ── POPULATE PICKER ──
+  const pickerList = document.getElementById('pickerList');
+  engines.forEach(eng => {
+    const tile = document.createElement('div');
+    tile.className = 'engine-tile';
+    tile.draggable = true;
+    tile.dataset.engine = eng.name;
+    tile.innerHTML = `
+      <div class="engine-tile-icon" style="background:${eng.color}20; border:1px solid ${eng.color}40">${eng.icon}</div>
+      <div class="engine-tile-info">
+        <div class="engine-tile-name">${eng.name}</div>
+        <div class="engine-tile-desc">${eng.desc}</div>
+      </div>
+      <div class="engine-tile-depth" style="background:${depthColors[eng.depth]}"></div>
+    `;
+    // Drag start
+    tile.addEventListener('dragstart', (e) => {
+      e.dataTransfer.setData('text/plain', eng.name);
+      e.dataTransfer.effectAllowed = 'copy';
+    });
+    pickerList.appendChild(tile);
+  });
+
+  // ── PICKER OPEN/CLOSE ──
+  const backdrop = document.getElementById('pickerBackdrop');
+  document.getElementById('enginesBtn').addEventListener('click', () => backdrop.classList.add('open'));
+  document.getElementById('pickerClose').addEventListener('click', () => backdrop.classList.remove('open'));
+  backdrop.addEventListener('click', (e) => { if (e.target === backdrop) backdrop.classList.remove('open'); });
+
+  // ── SEARCH ──
+  document.getElementById('pickerSearch').addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('.engine-tile').forEach(t => {
+      t.style.display = t.dataset.engine.toLowerCase().includes(q) ? '' : 'none';
+    });
+  });
+
+  // ── CATEGORY FILTER ──
+  document.querySelectorAll('.picker-cat').forEach(cat => {
+    cat.addEventListener('click', () => {
+      document.querySelectorAll('.picker-cat').forEach(c => c.classList.remove('active'));
+      cat.classList.add('active');
+    });
+  });
+
+  // ── DROP TARGETS (engine slots) ──
+  document.querySelectorAll('.engine-slot').forEach(slot => {
+    slot.addEventListener('dragover', (e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; slot.classList.add('drop-hover'); });
+    slot.addEventListener('dragleave', () => slot.classList.remove('drop-hover'));
+    slot.addEventListener('drop', (e) => {
+      e.preventDefault();
+      slot.classList.remove('drop-hover');
+      const engineName = e.dataTransfer.getData('text/plain');
+      const eng = engines.find(en => en.name === engineName);
+      if (!eng) return;
+      // Load engine into slot
+      slot.classList.remove('empty');
+      slot.classList.add('loaded');
+      slot.querySelector('span:first-child')?.remove();
+      const icon = document.createElement('span');
+      icon.style.fontSize = '22px';
+      icon.textContent = eng.icon;
+      slot.insertBefore(icon, slot.firstChild);
+      const label = slot.querySelector('.slot-label');
+      if (label) label.textContent = eng.name.toUpperCase();
+    });
+    // Click empty slot opens picker
+    slot.addEventListener('click', () => {
+      if (slot.classList.contains('empty')) backdrop.classList.add('open');
+    });
+  });
+
+  // ── MPE KEYBOARD ──
+  const mpe = document.getElementById('mpe');
+  const notes = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
+  const isBlack = [0,1,0,1,0,0,1,0,1,0,1,0];
+  for (let octave = 2; octave <= 5; octave++) {
+    for (let i = 0; i < 12; i++) {
+      const key = document.createElement('div');
+      key.className = `mpe-key ${isBlack[i] ? 'black' : 'white'}`;
+      const pressure = document.createElement('div');
+      pressure.className = 'pressure';
+      key.appendChild(pressure);
+      if (!isBlack[i]) {
+        const label = document.createElement('div');
+        label.className = 'note-label';
+        label.textContent = `${notes[i]}${octave}`;
+        key.appendChild(label);
+      }
+      mpe.appendChild(key);
+    }
+  }
+
+  // ── ENGINE DETAIL PANEL ──
+  const detailPanel = document.getElementById('detailPanel');
+  const paramSections = {
+    'Obrix': [
+      { title: 'Oscillator', params: ['Wave','Shape','Detune','Spread','FM Amt','FM Ratio','Sub','Noise'] },
+      { title: 'Filter', params: ['Cutoff','Res','Drive','Env','Key Track','Type'] },
+      { title: 'Modulation', params: ['LFO Rate','LFO Depth','Mod Wheel','Aftertouch'] },
+    ],
+    '_default': [
+      { title: 'Oscillator', params: ['Wave','Tune','Detune','Mix'] },
+      { title: 'Filter', params: ['Cutoff','Res','Type','Env'] },
+      { title: 'Modulation', params: ['LFO Rate','LFO Depth','Mod Amt','Vel Sens'] },
+    ],
+  };
+
+  function openEngineDetail(eng) {
+    document.getElementById('detailIcon').textContent = eng.icon;
+    document.getElementById('detailIcon').style.background = eng.color + '20';
+    document.getElementById('detailIcon').style.border = '1px solid ' + eng.color + '40';
+    document.getElementById('detailName').textContent = eng.name;
+    document.getElementById('detailDesc').textContent = eng.desc;
+
+    // Build param knobs
+    const paramsEl = document.getElementById('detailParams');
+    paramsEl.innerHTML = '';
+    const sections = paramSections[eng.name] || paramSections['_default'];
+    sections.forEach(section => {
+      const title = document.createElement('div');
+      title.className = 'param-section-title';
+      title.textContent = section.title;
+      paramsEl.appendChild(title);
+
+      const grid = document.createElement('div');
+      grid.className = 'param-grid';
+      section.params.forEach(p => {
+        const angle = Math.floor(Math.random() * 270);
+        const val = Math.floor(Math.random() * 100);
+        const knob = document.createElement('div');
+        knob.className = 'param-knob';
+        knob.innerHTML = `
+          <div class="knob-ring" style="--knob-angle: ${angle}deg"></div>
+          <div class="knob-label">${p}</div>
+          <div class="knob-value">${val}%</div>
+        `;
+        grid.appendChild(knob);
+      });
+      paramsEl.appendChild(grid);
+    });
+
+    drawWaveform(eng.color);
+    drawADSR(eng.color);
+    detailPanel.classList.add('open');
+    document.getElementById('detailBackdrop').classList.add('open');
+  }
+
+  function closeDetail() {
+    detailPanel.classList.remove('open');
+    document.getElementById('detailBackdrop').classList.remove('open');
+  }
+
+  document.getElementById('detailBack').addEventListener('click', closeDetail);
+  document.getElementById('detailBackdrop').addEventListener('click', closeDetail);
+
+  // Click loaded engine slots to open detail
+  document.querySelectorAll('.engine-slot').forEach(slot => {
+    slot.addEventListener('click', () => {
+      if (slot.classList.contains('loaded')) {
+        const label = slot.querySelector('.slot-label')?.textContent;
+        const eng = engines.find(e => e.name.toUpperCase() === label);
+        if (eng) openEngineDetail(eng);
+      }
+    });
+  });
+
+  // Draw waveform visualization
+  function drawWaveform(color) {
+    const canvas = document.getElementById('waveformCanvas');
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * 2;
+    canvas.height = rect.height * 2;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(2, 2);
+    const w = rect.width, h = rect.height;
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Draw a wavetable-style waveform
+    ctx.beginPath();
+    ctx.strokeStyle = color || 'rgba(60, 180, 170, 0.8)';
+    ctx.lineWidth = 1.5;
+    const mid = h / 2;
+    for (let x = 0; x < w; x++) {
+      const t = x / w;
+      const y = mid + Math.sin(t * Math.PI * 8) * (mid * 0.6) *
+        (1 + 0.3 * Math.sin(t * Math.PI * 3)) *
+        Math.exp(-t * 0.5);
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Glow
+    ctx.strokeStyle = (color || 'rgba(60, 180, 170)') + '30';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    for (let x = 0; x < w; x++) {
+      const t = x / w;
+      const y = mid + Math.sin(t * Math.PI * 8) * (mid * 0.6) *
+        (1 + 0.3 * Math.sin(t * Math.PI * 3)) *
+        Math.exp(-t * 0.5);
+      if (x === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+
+    // Center line
+    ctx.strokeStyle = 'rgba(200, 204, 216, 0.06)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, mid);
+    ctx.lineTo(w, mid);
+    ctx.stroke();
+  }
+
+  // Draw ADSR curve
+  function drawADSR(color) {
+    const canvas = document.getElementById('adsrCanvas');
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width = rect.width * 2;
+    canvas.height = rect.height * 2;
+    const ctx = canvas.getContext('2d');
+    ctx.scale(2, 2);
+    const w = rect.width, h = rect.height;
+    const pad = 8;
+
+    const sliders = document.querySelectorAll('.adsr-slider');
+    const a = sliders[0].value / 100;
+    const d = sliders[1].value / 100;
+    const s = sliders[2].value / 100;
+    const r = sliders[3].value / 100;
+
+    ctx.clearRect(0, 0, w, h);
+
+    // Grid lines
+    ctx.strokeStyle = 'rgba(200, 204, 216, 0.04)';
+    ctx.lineWidth = 1;
+    for (let i = 1; i < 4; i++) {
+      ctx.beginPath();
+      ctx.moveTo(0, (h / 4) * i);
+      ctx.lineTo(w, (h / 4) * i);
+      ctx.stroke();
+    }
+
+    const usableW = w - pad * 2;
+    const usableH = h - pad * 2;
+    const attackW = a * usableW * 0.3;
+    const decayW = d * usableW * 0.25;
+    const sustainW = usableW * 0.2;
+    const releaseW = r * usableW * 0.25;
+
+    const x0 = pad;
+    const y0 = pad + usableH; // bottom
+    const yTop = pad; // top
+    const ySus = pad + usableH * (1 - s);
+
+    // Fill
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x0 + attackW, yTop); // attack
+    ctx.lineTo(x0 + attackW + decayW, ySus); // decay
+    ctx.lineTo(x0 + attackW + decayW + sustainW, ySus); // sustain
+    ctx.lineTo(x0 + attackW + decayW + sustainW + releaseW, y0); // release
+    ctx.lineTo(x0, y0);
+    ctx.fillStyle = (color || 'rgba(60, 180, 170)') + '15';
+    ctx.fill();
+
+    // Stroke
+    ctx.beginPath();
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x0 + attackW, yTop);
+    ctx.lineTo(x0 + attackW + decayW, ySus);
+    ctx.lineTo(x0 + attackW + decayW + sustainW, ySus);
+    ctx.lineTo(x0 + attackW + decayW + sustainW + releaseW, y0);
+    ctx.strokeStyle = color || 'rgba(60, 180, 170, 0.8)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Control points
+    const points = [
+      [x0, y0],
+      [x0 + attackW, yTop],
+      [x0 + attackW + decayW, ySus],
+      [x0 + attackW + decayW + sustainW, ySus],
+      [x0 + attackW + decayW + sustainW + releaseW, y0],
+    ];
+    points.forEach(([px, py]) => {
+      ctx.beginPath();
+      ctx.arc(px, py, 4, 0, Math.PI * 2);
+      ctx.fillStyle = color || 'rgba(60, 180, 170, 0.9)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(22, 24, 30, 0.8)';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    });
+  }
+
+  // Wire ADSR sliders to redraw
+  document.querySelectorAll('.adsr-slider').forEach(slider => {
+    slider.addEventListener('input', (e) => {
+      const val = e.target.value;
+      const param = e.target.dataset.param;
+      const label = e.target.nextElementSibling;
+      if (param === 's') label.textContent = val + '%';
+      else label.textContent = val + 'ms';
+      const eng = engines.find(e => e.name === currentEngine);
+      drawADSR(eng?.color);
+    });
+  });
+
+  // ── PRESET BROWSER ──
+  const moods = ['Foundation','Atmosphere','Entangled','Prism','Flux','Aether','Deep','Kinetic','Luminous','Organic','Shadow','Crystalline'];
+
+  // Sample presets per engine (in real plugin these come from PresetManager)
+  const presetsByEngine = {
+    'Obrix': [
+      { name: 'Welcome', mood: 'Foundation' },
+      { name: 'Deep Current', mood: 'Deep' },
+      { name: 'Crystal Tide', mood: 'Crystalline' },
+      { name: 'Neon Reef', mood: 'Luminous' },
+      { name: 'Midnight Pulse', mood: 'Atmosphere' },
+      { name: 'Solar Wind', mood: 'Kinetic' },
+      { name: 'Entangled Roots', mood: 'Entangled' },
+      { name: 'Shadow Drift', mood: 'Shadow' },
+      { name: 'Organic Growth', mood: 'Organic' },
+      { name: 'Prism Split', mood: 'Prism' },
+      { name: 'Flux Capacitor', mood: 'Flux' },
+      { name: 'Aether Walk', mood: 'Aether' },
+    ],
+    'Oxytocin': [
+      { name: 'First Touch', mood: 'Foundation' },
+      { name: 'Warm Embrace', mood: 'Atmosphere' },
+      { name: 'Heart Circuit', mood: 'Kinetic' },
+      { name: 'Love Signal', mood: 'Luminous' },
+      { name: 'Bonding Agent', mood: 'Deep' },
+      { name: 'Intimate Space', mood: 'Organic' },
+    ],
+    '_default': [
+      { name: 'Init', mood: 'Foundation' },
+      { name: 'Warm Pad', mood: 'Atmosphere' },
+      { name: 'Bright Lead', mood: 'Luminous' },
+      { name: 'Dark Texture', mood: 'Shadow' },
+    ],
+  };
+
+  let currentEngine = 'Obrix';
+  let currentPreset = 'Welcome';
+  let activeMoodFilter = null;
+
+  const presetBackdrop = document.getElementById('presetBackdrop');
+  const presetList = document.getElementById('presetList');
+  const presetMoodsEl = document.getElementById('presetMoods');
+  const presetEngineLabel = document.getElementById('presetEngineLabel');
+  const presetNameEl = document.querySelector('.nav-preset');
+
+  // Open preset browser on preset name click
+  presetNameEl.addEventListener('click', () => {
+    activeMoodFilter = null;
+    renderPresetBrowser();
+    presetBackdrop.classList.add('open');
+  });
+
+  document.getElementById('presetClose').addEventListener('click', () => presetBackdrop.classList.remove('open'));
+  presetBackdrop.addEventListener('click', (e) => { if (e.target === presetBackdrop) presetBackdrop.classList.remove('open'); });
+
+  function renderPresetBrowser() {
+    presetEngineLabel.textContent = currentEngine.toUpperCase();
+    const presets = presetsByEngine[currentEngine] || presetsByEngine['_default'];
+
+    // Mood pills
+    const usedMoods = [...new Set(presets.map(p => p.mood))];
+    presetMoodsEl.innerHTML = '<button class="preset-mood ' + (!activeMoodFilter ? 'active' : '') + '" data-mood="">All</button>';
+    usedMoods.forEach(m => {
+      presetMoodsEl.innerHTML += `<button class="preset-mood ${activeMoodFilter === m ? 'active' : ''}" data-mood="${m}">${m}</button>`;
+    });
+
+    // Wire mood filter clicks
+    presetMoodsEl.querySelectorAll('.preset-mood').forEach(btn => {
+      btn.addEventListener('click', () => {
+        activeMoodFilter = btn.dataset.mood || null;
+        renderPresetBrowser();
+      });
+    });
+
+    // Filtered presets
+    const filtered = activeMoodFilter ? presets.filter(p => p.mood === activeMoodFilter) : presets;
+
+    presetList.innerHTML = '';
+    filtered.forEach(p => {
+      const item = document.createElement('div');
+      item.className = 'preset-item' + (p.name === currentPreset ? ' active-preset' : '');
+      item.innerHTML = `
+        <span class="preset-item-name">${p.name}</span>
+        <span class="preset-item-mood">${p.mood}</span>
+        <span class="preset-item-fav">&#9825;</span>
+      `;
+      item.addEventListener('click', () => {
+        currentPreset = p.name;
+        presetNameEl.textContent = p.name;
+        document.querySelector('.preset-name').textContent = p.name;
+        document.querySelector('.preset-category').textContent = p.mood;
+        renderPresetBrowser(); // re-render to update active state
+      });
+      // Fav toggle
+      item.querySelector('.preset-item-fav').addEventListener('click', (e) => {
+        e.stopPropagation();
+        e.target.classList.toggle('faved');
+        e.target.innerHTML = e.target.classList.contains('faved') ? '&#9829;' : '&#9825;';
+      });
+      presetList.appendChild(item);
+    });
+  }
+
+  // Preset search
+  document.getElementById('presetSearch').addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    presetList.querySelectorAll('.preset-item').forEach(item => {
+      const name = item.querySelector('.preset-item-name').textContent.toLowerCase();
+      item.style.display = name.includes(q) ? '' : 'none';
+    });
+  });
+
+  // Prev/next preset buttons
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    if (btn.textContent.includes('◀')) {
+      btn.addEventListener('click', () => {
+        const presets = presetsByEngine[currentEngine] || presetsByEngine['_default'];
+        const idx = presets.findIndex(p => p.name === currentPreset);
+        const prev = presets[(idx - 1 + presets.length) % presets.length];
+        currentPreset = prev.name;
+        presetNameEl.textContent = prev.name;
+        document.querySelector('.preset-name').textContent = prev.name;
+        document.querySelector('.preset-category').textContent = prev.mood;
+      });
+    }
+    if (btn.textContent.includes('▶')) {
+      btn.addEventListener('click', () => {
+        const presets = presetsByEngine[currentEngine] || presetsByEngine['_default'];
+        const idx = presets.findIndex(p => p.name === currentPreset);
+        const next = presets[(idx + 1) % presets.length];
+        currentPreset = next.name;
+        presetNameEl.textContent = next.name;
+        document.querySelector('.preset-name').textContent = next.name;
+        document.querySelector('.preset-category').textContent = next.mood;
+      });
+    }
+  });
+
+  // Update preset browser when engine changes (from drop)
+  const origDropHandler = (slot, eng) => {
+    currentEngine = eng.name;
+    currentPreset = (presetsByEngine[eng.name] || presetsByEngine['_default'])[0].name;
+    presetNameEl.textContent = currentPreset;
+    document.querySelector('.preset-name').textContent = currentPreset;
+    document.querySelector('.preset-category').textContent = (presetsByEngine[eng.name] || presetsByEngine['_default'])[0].mood;
+    document.querySelector('.creature').textContent = eng.icon;
+  };
+
+  // Re-wire drop handlers to also update presets
+  document.querySelectorAll('.engine-slot').forEach(slot => {
+    const oldDrop = slot.ondrop;
+    slot.addEventListener('drop', (e) => {
+      const engineName = e.dataTransfer.getData('text/plain');
+      const eng = engines.find(en => en.name === engineName);
+      if (eng) origDropHandler(slot, eng);
+    });
+  });
+
+  // ── SPLIT RIGHT PANEL ──
+  const surfaceRight = document.getElementById('surfaceRight');
+  const surfaceRightBody = document.getElementById('surfaceRightBody');
+  const surfaceRightTitle = document.getElementById('surfaceRightTitle');
+  let xyDragging = false;
+  let currentSurfaceMode = null;
+
+  const padNotes = ['C2','D2','E2','F2','G2','A2','B2','C3','D3','E3','F3','G3','A3','B3','C4','D4'];
+  const drums = [
+    { icon: '🥁', label: 'Kick' }, { icon: '🪘', label: 'Snare' },
+    { icon: '🎩', label: 'Hi-Hat C' }, { icon: '🥊', label: 'Hi-Hat O' },
+    { icon: '💥', label: 'Clap' }, { icon: '🔔', label: 'Ride' },
+    { icon: '🥇', label: 'Crash' }, { icon: '🪇', label: 'Shaker' },
+    { icon: '🎯', label: 'Perc 1' }, { icon: '🪘', label: 'Perc 2' },
+    { icon: '🔊', label: 'Perc 3' }, { icon: '🪈', label: 'Perc 4' },
+    { icon: '🌊', label: 'FX 1' }, { icon: '⚡', label: 'FX 2' },
+    { icon: '💫', label: 'FX 3' }, { icon: '🔔', label: 'FX 4' },
+  ];
+
+  function openSurfaceRight(mode) {
+    currentSurfaceMode = mode;
+    surfaceRightTitle.textContent = mode;
+    surfaceRightBody.innerHTML = '';
+
+    if (mode === 'PAD') {
+      const grid = document.createElement('div');
+      grid.className = 'split-pad-grid';
+      padNotes.forEach(note => {
+        const pad = document.createElement('div');
+        pad.className = 'pad-cell';
+        pad.innerHTML = `<span class="pad-note">${note}</span><span class="pad-vel">127</span>`;
+        grid.appendChild(pad);
+      });
+      surfaceRightBody.appendChild(grid);
+    }
+
+    if (mode === 'DRUM') {
+      const grid = document.createElement('div');
+      grid.className = 'split-drum-grid';
+      drums.forEach(d => {
+        const pad = document.createElement('div');
+        pad.className = 'drum-pad';
+        pad.innerHTML = `<span class="drum-icon">${d.icon}</span><span class="drum-label">${d.label}</span>`;
+        grid.appendChild(pad);
+      });
+      surfaceRightBody.appendChild(grid);
+    }
+
+    if (mode === 'XY') {
+      const wrap = document.createElement('div');
+      wrap.className = 'split-xy-wrap';
+      wrap.innerHTML = `
+        <div class="xy-pad" id="xyPadSplit" style="flex:1; min-height:0;">
+          <div class="xy-cursor" id="xyCursorSplit" style="left:50%;top:50%"></div>
+          <span class="xy-label x-label">Cutoff</span>
+          <span class="xy-label y-label">Resonance</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-shrink:0;padding:4px;align-items:center;flex-wrap:wrap;">
+          <div class="xy-readout"><label>X: Cutoff</label><span class="xy-val" id="xyXValSplit">50%</span></div>
+          <div class="xy-readout"><label>Y: Resonance</label><span class="xy-val" id="xyYValSplit">50%</span></div>
+          <div style="flex:1"></div>
+          <button class="xy-assign">Assign X</button>
+          <button class="xy-assign">Assign Y</button>
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0;padding:4px;align-items:center;border-top:1px solid rgba(200,204,216,0.06);margin-top:4px;padding-top:8px;">
+          <span style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:rgba(200,204,216,0.35);">Auto:</span>
+          <button class="xy-assign xy-auto-btn" data-shape="circle">Circle</button>
+          <button class="xy-assign xy-auto-btn" data-shape="figure8">Fig-8</button>
+          <button class="xy-assign xy-auto-btn" data-shape="sweep">Sweep</button>
+          <button class="xy-assign xy-auto-btn" data-shape="random">Random</button>
+          <div style="flex:1"></div>
+          <span style="font-size:9px;color:rgba(200,204,216,0.35);">BPM:</span>
+          <select id="xyBpmDiv" style="background:rgba(200,204,216,0.04);border:1px solid rgba(200,204,216,0.08);border-radius:4px;color:#c8ccd8;font-size:10px;padding:2px 6px;outline:none;">
+            <option value="0.25">1/4</option>
+            <option value="0.5">1/2</option>
+            <option value="1" selected>1 bar</option>
+            <option value="2">2 bars</option>
+            <option value="4">4 bars</option>
+            <option value="8">8 bars</option>
+          </select>
+          <button class="xy-assign" id="xyAutoStop" style="color:rgba(239,68,68,0.7);border-color:rgba(239,68,68,0.2);display:none;">Stop</button>
+        </div>
+      `;
+      surfaceRightBody.appendChild(wrap);
+
+      // Wire XY interaction
+      setTimeout(() => {
+        const pad = document.getElementById('xyPadSplit');
+        const cursor = document.getElementById('xyCursorSplit');
+        if (pad) {
+          pad.addEventListener('mousedown', (e) => { xyDragging = true; updateXYSplit(e); });
+        }
+      }, 0);
+    }
+
+    surfaceRight.classList.add('open');
+  }
+
+  function updateXYSplit(e) {
+    const pad = document.getElementById('xyPadSplit');
+    const cursor = document.getElementById('xyCursorSplit');
+    if (!pad || !cursor) return;
+    const rect = pad.getBoundingClientRect();
+    const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+    const y = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+    cursor.style.left = (x * 100) + '%';
+    cursor.style.top = (y * 100) + '%';
+    const xv = document.getElementById('xyXValSplit');
+    const yv = document.getElementById('xyYValSplit');
+    if (xv) xv.textContent = Math.round(x * 100) + '%';
+    if (yv) yv.textContent = Math.round((1 - y) * 100) + '%';
+  }
+
+  window.addEventListener('mousemove', (e) => { if (xyDragging) updateXYSplit(e); });
+  window.addEventListener('mouseup', () => { xyDragging = false; });
+
+  // ── XY AUTOMATION PATHS ──
+  let xyAutoRaf = null;
+  let xyAutoShape = null;
+  const bpm = 120;
+
+  function startXYAuto(shape) {
+    stopXYAuto();
+    xyAutoShape = shape;
+    const stopBtn = document.getElementById('xyAutoStop');
+    if (stopBtn) stopBtn.style.display = '';
+    // Highlight active shape button
+    document.querySelectorAll('.xy-auto-btn').forEach(b => {
+      b.style.color = b.dataset.shape === shape ? 'rgba(60,180,170,0.9)' : '';
+      b.style.borderColor = b.dataset.shape === shape ? 'rgba(60,180,170,0.3)' : '';
+    });
+
+    const startTime = performance.now();
+    function tick() {
+      const cursor = document.getElementById('xyCursorSplit');
+      const xvEl = document.getElementById('xyXValSplit');
+      const yvEl = document.getElementById('xyYValSplit');
+      if (!cursor) { stopXYAuto(); return; }
+
+      const bpmDiv = parseFloat(document.getElementById('xyBpmDiv')?.value || '1');
+      const cycleDuration = (60000 / bpm) * 4 * bpmDiv; // ms per cycle
+      const t = ((performance.now() - startTime) % cycleDuration) / cycleDuration;
+      const tau = t * Math.PI * 2;
+
+      let x = 0.5, y = 0.5;
+      if (shape === 'circle') {
+        x = 0.5 + 0.35 * Math.cos(tau);
+        y = 0.5 + 0.35 * Math.sin(tau);
+      } else if (shape === 'figure8') {
+        x = 0.5 + 0.35 * Math.sin(tau);
+        y = 0.5 + 0.35 * Math.sin(tau * 2);
+      } else if (shape === 'sweep') {
+        x = t;
+        y = 0.5 + 0.4 * Math.sin(tau * 3);
+      } else if (shape === 'random') {
+        // Smooth random via noise approximation
+        x = 0.5 + 0.4 * Math.sin(tau * 1.3 + 1.7) * Math.cos(tau * 0.7);
+        y = 0.5 + 0.4 * Math.cos(tau * 0.9 + 2.3) * Math.sin(tau * 1.1);
+      }
+
+      cursor.style.left = (x * 100) + '%';
+      cursor.style.top = (y * 100) + '%';
+      cursor.style.boxShadow = '0 0 20px rgba(60,180,170,0.4)';
+      if (xvEl) xvEl.textContent = Math.round(x * 100) + '%';
+      if (yvEl) yvEl.textContent = Math.round((1 - y) * 100) + '%';
+
+      xyAutoRaf = requestAnimationFrame(tick);
+    }
+    xyAutoRaf = requestAnimationFrame(tick);
+  }
+
+  function stopXYAuto() {
+    if (xyAutoRaf) cancelAnimationFrame(xyAutoRaf);
+    xyAutoRaf = null;
+    xyAutoShape = null;
+    const stopBtn = document.getElementById('xyAutoStop');
+    if (stopBtn) stopBtn.style.display = 'none';
+    document.querySelectorAll('.xy-auto-btn').forEach(b => {
+      b.style.color = '';
+      b.style.borderColor = '';
+    });
+    const cursor = document.getElementById('xyCursorSplit');
+    if (cursor) cursor.style.boxShadow = '0 0 16px rgba(60,180,170,0.3)';
+  }
+
+  // Wire automation buttons (delegated since they're dynamically created)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.xy-auto-btn');
+    if (btn) startXYAuto(btn.dataset.shape);
+    if (e.target.id === 'xyAutoStop') stopXYAuto();
+  });
+
+  function closeSurfaceRight() {
+    surfaceRight.classList.remove('open');
+    currentSurfaceMode = null;
+    // Reset tab highlight to KEYS
+    document.querySelectorAll('.surface-tab').forEach(t => t.classList.remove('active'));
+    document.querySelector('.surface-tab').classList.add('active'); // first tab = KEYS
+  }
+
+  document.getElementById('surfaceRightClose').addEventListener('click', closeSurfaceRight);
+
+  // ── TAB SWITCHING ──
+  document.querySelectorAll('.surface-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      const mode = tab.textContent.trim();
+
+      document.querySelectorAll('.surface-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      if (mode === 'KEYS') {
+        closeSurfaceRight();
+        document.getElementById('mpe').style.display = 'flex';
+        tab.classList.add('active');
+        return;
+      }
+
+      // DETAIL, FX, CPL — future
+      if (mode === 'DETAIL' || mode === 'FX' || mode === 'CPL') return;
+
+      // PAD, DRUM, XY — slide in right panel
+      document.getElementById('mpe').style.display = 'flex'; // keep keys visible
+      openSurfaceRight(mode);
+    });
+  });
+</script>
+
+</body>
+</html>

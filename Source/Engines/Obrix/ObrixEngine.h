@@ -522,7 +522,7 @@ public:
             return;
 
         // SRO SilenceGate: wake on note-on, bypass when silent
-        for (const auto& md : midi)
+        for (const auto md : midi)
             if (md.getMessage().isNoteOn())
             {
                 wakeSilenceGate();

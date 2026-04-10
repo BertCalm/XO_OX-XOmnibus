@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>XOceanus — Buoy Ocean Prototype</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #12141a;
+    font-family: -apple-system, 'SF Pro Display', system-ui, sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    user-select: none;
+  }
+
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+  }
+  canvas:active { cursor: grabbing; }
+
+  /* ── HUD overlay ──────────────────────── */
+  .hud {
+    position: fixed;
+    top: 12px; left: 16px; right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .hud > * { pointer-events: all; }
+
+  .hud-btn {
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(200, 204, 216, 0.5);
+    background: rgba(200, 204, 216, 0.04);
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .hud-btn:hover {
+    background: rgba(200, 204, 216, 0.08);
+    color: rgba(200, 204, 216, 0.8);
+  }
+  .hud-btn.active {
+    color: rgba(60, 180, 170, 0.9);
+    border-color: rgba(60, 180, 170, 0.3);
+    background: rgba(60, 180, 170, 0.08);
+  }
+
+  .hud-spacer { flex: 1; }
+
+  .hud-hint {
+    font-size: 10px;
+    color: rgba(200, 204, 216, 0.25);
+    letter-spacing: 0.5px;
+  }
+
+  /* Status bar */
+  .status {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    height: 24px;
+    background: rgba(10, 12, 16, 0.9);
+    border-top: 1px solid rgba(200, 204, 216, 0.06);
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 24px;
+    font-size: 10px;
+    color: rgba(200, 204, 216, 0.35);
+    z-index: 10;
+  }
+  .status .spacer { flex: 1; }
+</style>
+</head>
+<body>
+
+<div class="hud">
+  <button class="hud-btn" id="addEngineBtn">+ Engine</button>
+  <button class="hud-btn" id="addFxBtn">+ FX</button>
+  <button class="hud-btn" id="chainModeBtn">Chain Mode</button>
+  <div class="hud-spacer"></div>
+  <span class="hud-hint" id="hint">Drag buoys to reposition. Click "Chain Mode" then drag between buoys to connect.</span>
+  <span class="hud-hint">Energy:</span>
+  <input type="range" id="energySlider" min="0" max="100" value="10" style="width:100px;accent-color:#3CB4AA;">
+</div>
+
+<canvas id="ocean"></canvas>
+
+<div class="status">
+  <span>120 BPM</span>
+  <span id="buoyCount">Engines: 0 | FX: 0</span>
+  <span id="chainCount">Chains: 0</span>
+  <div class="spacer"></div>
+  <span>CPU: 0%</span>
+</div>
+
+<script>
+const canvas = document.getElementById('ocean');
+const ctx = canvas.getContext('2d');
+let W, H, dpr;
+
+function resize() {
+  dpr = window.devicePixelRatio || 1;
+  W = window.innerWidth;
+  H = window.innerHeight;
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+resize();
+window.addEventListener('resize', resize);
+
+// ── DATA ──
+const enginePool = [
+  { name: 'Obrix', icon: '🌊', color: '#3CB4AA' },
+  { name: 'Oxytocin', icon: '💗', color: '#E06090' },
+  { name: 'Opera', icon: '🎭', color: '#C8A040' },
+  { name: 'Ouroboros', icon: '🐍', color: '#7C3AED' },
+  { name: 'Orbital', icon: '🪐', color: '#3B82F6' },
+  { name: 'Odyssey', icon: '🚀', color: '#F59E0B' },
+  { name: 'Obscura', icon: '🔮', color: '#6B21A8' },
+  { name: 'Opal', icon: '💎', color: '#A78BFA' },
+];
+
+const fxPool = [
+  { name: 'Reverb', icon: '🌀', color: '#0EA5E9' },
+  { name: 'Delay', icon: '📡', color: '#8B5CF6' },
+  { name: 'Chorus', icon: '🎵', color: '#10B981' },
+  { name: 'Distort', icon: '⚡', color: '#EF4444' },
+  { name: 'Filter', icon: '🔧', color: '#F59E0B' },
+  { name: 'Compress', icon: '🔨', color: '#6366F1' },
+];
+
+let engineIdx = 0;
+let fxIdx = 0;
+
+const buoys = [];
+const chains = [];
+
+let chainMode = false;
+let chainStart = null; // buoy being dragged from
+let mouseX = 0, mouseY = 0;
+let dragBuoy = null;
+let dragOffX = 0, dragOffY = 0;
+let time = 0;
+let intensity = 0.0; // 0 = calm, 1 = storm. Simulates audio energy.
+let targetIntensity = 0.0;
+
+// Water surface wave points
+const wavePoints = 120;
+const waveY = []; // displacement per column
+for (let i = 0; i < wavePoints; i++) waveY[i] = 0;
+
+// ── BUOY CLASS ──
+function createBuoy(type, data, x, y) {
+  return {
+    type, // 'engine' or 'fx'
+    name: data.name,
+    icon: data.icon,
+    color: data.color,
+    x, y,
+    vx: 0, vy: 0,
+    radius: type === 'engine' ? 36 : 28,
+    bobPhase: Math.random() * Math.PI * 2,
+    bobSpeed: 0.3 + Math.random() * 0.2,
+    bobAmp: 2 + Math.random() * 2,
+  };
+}
+
+// ── ADD BUOYS ──
+document.getElementById('addEngineBtn').addEventListener('click', () => {
+  const data = enginePool[engineIdx % enginePool.length];
+  engineIdx++;
+  const x = 200 + Math.random() * (W - 400);
+  const y = 150 + Math.random() * (H - 350);
+  buoys.push(createBuoy('engine', data, x, y));
+  updateCounts();
+});
+
+document.getElementById('addFxBtn').addEventListener('click', () => {
+  const data = fxPool[fxIdx % fxPool.length];
+  fxIdx++;
+  const x = 200 + Math.random() * (W - 400);
+  const y = 150 + Math.random() * (H - 350);
+  buoys.push(createBuoy('fx', data, x, y));
+  updateCounts();
+});
+
+// ── CHAIN MODE ──
+document.getElementById('chainModeBtn').addEventListener('click', () => {
+  chainMode = !chainMode;
+  document.getElementById('chainModeBtn').classList.toggle('active', chainMode);
+  document.getElementById('hint').textContent = chainMode
+    ? 'Click a buoy, then click another to create a chain. Right-click a chain to remove.'
+    : 'Drag buoys to reposition. Click "Chain Mode" then drag between buoys to connect.';
+});
+
+function updateCounts() {
+  const eng = buoys.filter(b => b.type === 'engine').length;
+  const fx = buoys.filter(b => b.type === 'fx').length;
+  document.getElementById('buoyCount').textContent = `Engines: ${eng} | FX: ${fx}`;
+  document.getElementById('chainCount').textContent = `Chains: ${chains.length}`;
+}
+
+// ── MOUSE ──
+function getBuoyAt(x, y) {
+  for (let i = buoys.length - 1; i >= 0; i--) {
+    const b = buoys[i];
+    const dx = x - b.x, dy = y - b.y;
+    if (dx * dx + dy * dy < (b.radius + 8) * (b.radius + 8)) return b;
+  }
+  return null;
+}
+
+canvas.addEventListener('mousedown', (e) => {
+  const x = e.clientX, y = e.clientY;
+  mouseX = x; mouseY = y;
+  const hit = getBuoyAt(x, y);
+
+  if (chainMode) {
+    if (hit) {
+      if (!chainStart) {
+        chainStart = hit;
+      } else if (hit !== chainStart) {
+        // Check for existing chain
+        const exists = chains.some(c =>
+          (c.a === chainStart && c.b === hit) || (c.a === hit && c.b === chainStart));
+        if (!exists) {
+          chains.push({ a: chainStart, b: hit });
+          updateCounts();
+        }
+        chainStart = null;
+      }
+    } else {
+      chainStart = null;
+    }
+    return;
+  }
+
+  if (hit) {
+    dragBuoy = hit;
+    dragOffX = x - hit.x;
+    dragOffY = y - hit.y;
+    canvas.style.cursor = 'grabbing';
+  }
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  if (dragBuoy) {
+    dragBuoy.x = mouseX - dragOffX;
+    dragBuoy.y = mouseY - dragOffY;
+  }
+});
+
+canvas.addEventListener('mouseup', () => {
+  dragBuoy = null;
+  canvas.style.cursor = 'grab';
+});
+
+// Right-click to remove chain
+canvas.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  if (!chainMode) return;
+  const x = e.clientX, y = e.clientY;
+  // Find nearest chain
+  let closest = null, closestDist = 20;
+  chains.forEach((c, i) => {
+    const mx = (c.a.x + c.b.x) / 2, my = (c.a.y + c.b.y) / 2;
+    const d = Math.hypot(x - mx, y - my);
+    if (d < closestDist) { closest = i; closestDist = d; }
+  });
+  if (closest !== null) {
+    chains.splice(closest, 1);
+    updateCounts();
+  }
+});
+
+// ── ENERGY SLIDER ──
+document.getElementById('energySlider').addEventListener('input', (e) => {
+  targetIntensity = e.target.value / 100;
+});
+
+// ── RENDER LOOP ──
+function draw() {
+  time += 0.016;
+  // Smooth intensity transition
+  intensity += (targetIntensity - intensity) * 0.03;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Ocean background — shifts color with intensity
+  const grad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W, H) * 0.6);
+  const r1 = Math.round(26 + intensity * 10);
+  const g1 = Math.round(36 + intensity * 5);
+  const b1 = Math.round(56 + intensity * 15);
+  grad.addColorStop(0, `rgb(${r1},${g1},${b1})`);
+  grad.addColorStop(1, '#12141a');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // ── WATER SURFACE WAVES ──
+  // Multiple sine waves at different frequencies, amplitude scales with intensity
+  const baseAmp = 1.5 + intensity * 12;
+  const chop = intensity * 6;
+  for (let i = 0; i < wavePoints; i++) {
+    const x = (i / wavePoints) * W;
+    const t = time;
+    waveY[i] =
+      Math.sin(t * 0.8 + i * 0.08) * baseAmp +
+      Math.sin(t * 1.3 + i * 0.15) * baseAmp * 0.6 +
+      Math.sin(t * 2.1 + i * 0.22) * chop +
+      Math.sin(t * 3.7 + i * 0.35) * chop * 0.4 +
+      (intensity > 0.5 ? Math.sin(t * 5.3 + i * 0.5) * (intensity - 0.5) * 8 : 0);
+  }
+
+  // Draw wave lines (3 layers at different depths for parallax)
+  for (let layer = 0; layer < 3; layer++) {
+    const yBase = H * (0.35 + layer * 0.18);
+    const alpha = 0.03 + intensity * 0.04 - layer * 0.01;
+    const speed = 1 - layer * 0.2;
+
+    ctx.beginPath();
+    for (let i = 0; i < wavePoints; i++) {
+      const x = (i / wavePoints) * W;
+      const y = yBase + waveY[i] * speed * (1 + layer * 0.3);
+      if (i === 0) ctx.moveTo(x, y);
+      else ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = `rgba(60, 180, 170, ${alpha})`;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+  }
+
+  // Depth rings — wobble with intensity
+  ctx.lineWidth = 1;
+  for (let r = 100; r < 600; r += 120) {
+    ctx.beginPath();
+    const wobble = Math.sin(time * 0.3 + r * 0.005) * intensity * 4;
+    ctx.arc(W/2, H/2 + wobble, r, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(60, 180, 170, ${0.03 + intensity * 0.02})`;
+    ctx.stroke();
+  }
+
+  // ── CHAINS ──
+  chains.forEach(c => {
+    // Match buoy wave positions
+    const aWaveIdx = Math.floor((c.a.x / W) * wavePoints);
+    const bWaveIdx = Math.floor((c.b.x / W) * wavePoints);
+    const aWave = waveY[Math.max(0, Math.min(wavePoints-1, aWaveIdx))] || 0;
+    const bWave = waveY[Math.max(0, Math.min(wavePoints-1, bWaveIdx))] || 0;
+    const ax = c.a.x;
+    const ay = c.a.y + Math.sin(time * c.a.bobSpeed + c.a.bobPhase) * (c.a.bobAmp + intensity * 4) + aWave * 0.7;
+    const bx = c.b.x;
+    const by = c.b.y + Math.sin(time * c.b.bobSpeed + c.b.bobPhase) * (c.b.bobAmp + intensity * 4) + bWave * 0.7;
+
+    // Chain sag (catenary approximation)
+    const mx = (ax + bx) / 2;
+    const my = (ay + by) / 2;
+    const dist = Math.hypot(bx - ax, by - ay);
+    const sag = Math.min(dist * 0.15, 30) + Math.sin(time * 0.8) * 3;
+
+    // Draw chain as bezier with sag
+    ctx.beginPath();
+    ctx.moveTo(ax, ay);
+    ctx.quadraticCurveTo(mx, my + sag, bx, by);
+    ctx.strokeStyle = 'rgba(60, 180, 170, 0.35)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Glow
+    ctx.beginPath();
+    ctx.moveTo(ax, ay);
+    ctx.quadraticCurveTo(mx, my + sag, bx, by);
+    ctx.strokeStyle = 'rgba(60, 180, 170, 0.08)';
+    ctx.lineWidth = 8;
+    ctx.stroke();
+
+    // Chain links (dots along the curve)
+    for (let t = 0.15; t <= 0.85; t += 0.15) {
+      const tt = t;
+      const cx = (1-tt)*(1-tt)*ax + 2*(1-tt)*tt*mx + tt*tt*bx;
+      const cy = (1-tt)*(1-tt)*ay + 2*(1-tt)*tt*(my+sag) + tt*tt*by;
+      ctx.beginPath();
+      ctx.arc(cx, cy, 2.5, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(60, 180, 170, 0.4)';
+      ctx.fill();
+    }
+  });
+
+  // ── CHAIN IN PROGRESS ──
+  if (chainMode && chainStart) {
+    const ay = chainStart.y + Math.sin(time * chainStart.bobSpeed + chainStart.bobPhase) * chainStart.bobAmp;
+    ctx.beginPath();
+    ctx.moveTo(chainStart.x, ay);
+    ctx.lineTo(mouseX, mouseY);
+    ctx.strokeStyle = 'rgba(60, 180, 170, 0.5)';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([6, 4]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // ── BUOYS ──
+  buoys.forEach(b => {
+    // Sample the wave surface at this buoy's X position
+    const waveIdx = Math.floor((b.x / W) * wavePoints);
+    const surfaceDisp = waveY[Math.max(0, Math.min(wavePoints - 1, waveIdx))] || 0;
+
+    // Buoy bobs with its own rhythm + the water surface
+    const ownBob = Math.sin(time * b.bobSpeed + b.bobPhase) * (b.bobAmp + intensity * 4);
+    const bobY = ownBob + surfaceDisp * 0.7;
+    const drawY = b.y + bobY;
+
+    // Tilt with the wave slope (rotation)
+    const nextIdx = Math.min(wavePoints - 1, waveIdx + 1);
+    const slope = ((waveY[nextIdx] || 0) - surfaceDisp) * 0.03;
+    const tilt = slope * (1 + intensity * 2);
+
+    // Water reflection
+    ctx.beginPath();
+    ctx.ellipse(b.x, drawY + b.radius + 6, b.radius * 0.8, 4, 0, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(60, 180, 170, 0.04)';
+    ctx.fill();
+
+    // Shadow/glow on water
+    const glowGrad = ctx.createRadialGradient(b.x, drawY, b.radius * 0.5, b.x, drawY, b.radius * 2);
+    glowGrad.addColorStop(0, b.color + '15');
+    glowGrad.addColorStop(1, 'transparent');
+    ctx.fillStyle = glowGrad;
+    ctx.fillRect(b.x - b.radius * 2, drawY - b.radius * 2, b.radius * 4, b.radius * 4);
+
+    // Apply tilt
+    ctx.save();
+    ctx.translate(b.x, drawY);
+    ctx.rotate(tilt);
+
+    // Buoy body
+    ctx.beginPath();
+    ctx.arc(0, 0, b.radius, 0, Math.PI * 2);
+    const bodyGrad = ctx.createRadialGradient(-4, -4, 0, 0, 0, b.radius);
+    bodyGrad.addColorStop(0, b.color + '30');
+    bodyGrad.addColorStop(1, b.color + '10');
+    ctx.fillStyle = bodyGrad;
+    ctx.fill();
+
+    // Border — pulses slightly with intensity
+    ctx.beginPath();
+    ctx.arc(0, 0, b.radius, 0, Math.PI * 2);
+    const borderAlpha = Math.round(96 + intensity * 80);
+    ctx.strokeStyle = b.color + borderAlpha.toString(16).padStart(2, '0');
+    ctx.lineWidth = (b.type === 'engine' ? 2 : 1.5) + intensity * 1;
+    ctx.stroke();
+
+    // FX buoys: hexagonal hint
+    if (b.type === 'fx') {
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const angle = (Math.PI / 3) * i - Math.PI / 6;
+        const px = (b.radius - 4) * Math.cos(angle);
+        const py = (b.radius - 4) * Math.sin(angle);
+        if (i === 0) ctx.moveTo(px, py);
+        else ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = b.color + '25';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Icon
+    ctx.font = `${b.type === 'engine' ? 22 : 16}px serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#fff';
+    ctx.fillText(b.icon, 0, -2);
+
+    ctx.restore(); // end tilt transform
+
+    // Label (drawn without tilt so text stays readable)
+    ctx.font = `600 ${b.type === 'engine' ? 9 : 8}px -apple-system, sans-serif`;
+    ctx.fillStyle = b.color + '90';
+    ctx.textAlign = 'center';
+    ctx.fillText(b.name.toUpperCase(), b.x, drawY + b.radius + 16);
+
+    // Type badge
+    if (b.type === 'fx') {
+      ctx.font = '7px -apple-system, sans-serif';
+      ctx.fillStyle = 'rgba(200, 204, 216, 0.25)';
+      ctx.fillText('FX', b.x, drawY + b.radius + 26);
+    }
+  });
+
+  requestAnimationFrame(draw);
+}
+draw();
+
+// Start with a couple buoys
+setTimeout(() => {
+  document.getElementById('addEngineBtn').click();
+  setTimeout(() => {
+    document.getElementById('addEngineBtn').click();
+    setTimeout(() => {
+      document.getElementById('addFxBtn').click();
+      // Auto-chain engine 0 → fx 0 → engine 1
+      setTimeout(() => {
+        if (buoys.length >= 3) {
+          chains.push({ a: buoys[0], b: buoys[2] }); // engine → fx
+          chains.push({ a: buoys[2], b: buoys[1] }); // fx → engine
+          updateCounts();
+        }
+      }, 100);
+    }, 100);
+  }, 100);
+}, 100);
+
+</script>
+</body>
+</html>

@@ -21,6 +21,7 @@
 //     SidebarPanel      — settings/export/FX sidebar (unique_ptr)
 //     AmbientEdge       — vignette + edge glow overlay
 //     DnaMapBrowser     — full-window scatter map (BrowserOpen state)
+//     DetailOverlay     — floating detail panel with backdrop (Step 4)
 //     PlaySurfaceOverlay— slide-up keyboard/pads (on-demand)
 //     Floating controls — presetPrev/Next, fav, settings, KEYS
 //     StatusBar         — bottom strip (unique_ptr)
@@ -48,6 +49,7 @@
 #include "EngineOrbit.h"
 #include "CouplingSubstrate.h"
 #include "DnaMapBrowser.h"
+#include "DetailOverlay.h"
 #include "PlaySurfaceOverlay.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
@@ -183,6 +185,9 @@ public:
         // Use addChildComponent so it starts hidden without a visible flash.
         addChildComponent(browser_);
 
+        // 9c. Detail overlay (hidden by default; floats above orbits/substrate)
+        addChildComponent(detailOverlay_);
+
         // 9b. BLOCKER 1: Empty-state label — shown when no engines are loaded.
         // Appears centred below the nexus with a subtle call-to-action.
         emptyStateLabel_.setText("Load an engine to begin",
@@ -193,6 +198,10 @@ public:
         emptyStateLabel_.setJustificationType(juce::Justification::centred);
         emptyStateLabel_.setVisible(false);  // visible only when numLoaded == 0
         addAndMakeVisible(emptyStateLabel_);
+
+        // 9d. Step 6: Dashboard waterline separator and tab bar.
+        addAndMakeVisible(waterline_);
+        addAndMakeVisible(tabBar_);
 
         // 10. PlaySurface overlay (hidden by default; manages its own visibility)
         addAndMakeVisible(playSurfaceOverlay_);
@@ -278,7 +287,22 @@ public:
         for (int i = 0; i < 5; ++i)
         {
             orbits_[i].onClicked       = [this](int s) { transitionToZoomIn(s); };
-            orbits_[i].onDoubleClicked = [this](int s) { transitionToSplitTransform(s); };
+            orbits_[i].onDoubleClicked = [this](int s)
+            {
+                if (detail_)
+                    detailOverlay_.show(s, detail_.get());
+            };
+            orbits_[i].onPositionChanged = [this](int slot)
+            {
+                auto pos = orbits_[slot].getNormalizedPosition();
+                auto area = getOceanArea();
+                int sz = orbits_[slot].getBuoySize() + kBreathPadding * 2;
+                int x = static_cast<int>(pos.x * area.getWidth()) - sz / 2;
+                int y = static_cast<int>(pos.y * area.getHeight()) - sz / 2;
+                orbits_[slot].setBounds(x + area.getX(), y + area.getY(), sz, sz);
+                substrate_.setCreatureCenter(slot, orbits_[slot].getCenter());
+                saveSlotPosition(slot);
+            };
         }
 
         nexus_.onPresetNameClicked = [this]() { transitionToBrowser(); };
@@ -306,6 +330,34 @@ public:
         };
 
         keysButton_.onClick = [this]() { togglePlaySurface(); };
+
+        // ── Step 6: Dashboard tab bar callback ───────────────────────────────
+        tabBar_.onTabChanged = [](const juce::String& tab)
+        {
+            // Currently only KEYS tab uses the PlaySurface.
+            // PAD / DRUM / XY will be added in a later step.
+            juce::ignoreUnused(tab);
+        };
+
+        // ── DetailOverlay callbacks ───────────────────────────────────────────
+        detailOverlay_.onHidden = [this]()
+        {
+            if (detail_)
+                detail_->setVisible(false);
+        };
+
+        // ── Buoy positions — load saved positions (or defaults) ──────────────
+        loadSlotPositions();
+
+        // ── Step 7: First-launch lifesaver ────────────────────────────────────
+        addChildComponent(lifesaver_); // hidden by default, shown when no engines loaded
+        lifesaver_.onClick = [this]()
+        {
+            firstLaunch_ = false;
+            lifesaver_.setVisible(false);
+            // Open engine picker — fire callback that editor handles
+            if (onEnginePickerRequested) onEnginePickerRequested();
+        };
 
         // ── Keyboard focus ────────────────────────────────────────────────────
         setWantsKeyboardFocus(true);
@@ -413,6 +465,37 @@ public:
 
         layoutFloatingControls();
 
+        // ── Step 6: Submarine dashboard layout ──────────────────────────────
+        // Slice the window into: ocean viewport | waterline | dashboard | status bar.
+        const auto  fullBounds = getLocalBounds();
+        const auto  oceanArea  = getOceanArea();  // already excludes waterline + dashboard + status
+
+        // Waterline separator strip.
+        waterline_.setBounds(fullBounds.getX(),
+                             oceanArea.getBottom(),
+                             fullBounds.getWidth(),
+                             kWaterlineH);
+
+        // Dashboard area: between the waterline and the status bar.
+        auto dashArea = fullBounds
+                            .withTrimmedTop(oceanArea.getHeight() + kWaterlineH)
+                            .withTrimmedBottom(kStatusBarH);
+
+        // Macro strip (top of dashboard).
+        if (macros_)
+            macros_->setBounds(dashArea.removeFromTop(static_cast<int>(kMacroStripH)));
+
+        // Tab bar row.
+        tabBar_.setBounds(dashArea.removeFromTop(kTabBarH));
+
+        // Remaining dashboard space → PlaySurface (keyboard / pads / drum / XY).
+        // The overlay is given a fixed rect here; its internal slide animation
+        // operates within this region (offset=0 means fully visible, offset=height
+        // means hidden below the bottom edge of dashArea).
+        playSurfaceOverlay_.setBounds(dashArea);
+        if (!playSurfaceOverlay_.isShowing())
+            playSurfaceOverlay_.show();
+
         // Status bar always spans the full bottom strip.
         if (statusBar_)
             statusBar_->setBounds(0,
@@ -420,13 +503,12 @@ public:
                                   getWidth(),
                                   kStatusBarH);
 
-        // PlaySurface overlay always covers the full parent area so it can
-        // self-position via repositionFromOffset() inside PlaySurfaceOverlay.
-        playSurfaceOverlay_.setBounds(getLocalBounds());
+        // DetailOverlay covers the ocean area (excludes dashboard).
+        detailOverlay_.setBounds(oceanArea);
 
-        // #1008 FIX 7: DimOverlay also covers the full area so it can dim
-        // everything including the floating header buttons above it.
-        dimOverlay_.setBounds(getLocalBounds());
+        // #1008 FIX 7: DimOverlay covers the ocean + waterline area so the dim
+        // effect extends to the waterline but doesn't dim the dashboard itself.
+        dimOverlay_.setBounds(fullBounds.withTrimmedBottom(kDashboardH + kStatusBarH));
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -558,23 +640,11 @@ public:
 
     void mouseMove(const juce::MouseEvent& e) override
     {
-        // Proximity magnetism: in Orbital state, feed each creature the cursor
-        // position (in OceanView coordinates) so it can drift toward it.
-        // Other states leave the offset at zero — creatures are not in orbit.
-        if (viewState_ == ViewState::Orbital)
-        {
-            const auto pos = e.getPosition().toFloat();
-            for (auto& orbit : orbits_)
-                orbit.setMouseProximity(pos);
-        }
+        juce::ignoreUnused(e);
     }
 
     void mouseExit(const juce::MouseEvent& /*e*/) override
     {
-        // Cursor has left the component entirely — clear all magnet targets so
-        // creatures return smoothly to their resting positions.
-        for (auto& orbit : orbits_)
-            orbit.setMouseProximity({ -1000.0f, -1000.0f });
     }
 
     //==========================================================================
@@ -596,6 +666,10 @@ public:
     {
         if (slot < 0 || slot >= 5)
             return;
+
+        // Step 7: Dismiss first-launch lifesaver when the first engine is loaded.
+        firstLaunch_ = false;
+        lifesaver_.setVisible(false);
 
         orbits_[slot].setEngine(engineId, accent, zone);
         resized();  // recompute polar positions now numLoaded has changed
@@ -682,6 +756,47 @@ public:
             // when both endpoints of a route are actively playing.
             substrate_.setSlotVoiceCount(slot, count);
         }
+    }
+
+    void pushSlotWaveData(int slot, const float* samples, int count, float rms)
+    {
+        if (slot >= 0 && slot < 5)
+            orbits_[slot].setWreathData(samples, count, rms);
+    }
+
+    /** Step 8c: Trigger a ripple animation on the buoy wreath for the given slot.
+        Called from the editor timer when the voice count increases (note-on). */
+    void triggerBuoyRipple(int slot)
+    {
+        if (slot >= 0 && slot < 5)
+            orbits_[slot].triggerRipple();
+    }
+
+    /**
+        Push master output waveform data to the ocean background wave surface.
+        Call from the editor's 10 Hz timer with the processor's master WaveformFifo.
+    */
+    void pushMasterWaveData(const WaveformFifo& fifo)
+    {
+        // Read 120 samples from the 512-sample fifo (downsampled)
+        constexpr int kDisplayPoints = 120;
+        std::array<float, 512> raw {};
+        fifo.readLatest(raw.data(), 512);
+
+        // Downsample 512 → 120 points
+        std::array<float, kDisplayPoints> display {};
+        const float step = 512.0f / kDisplayPoints;
+        for (int i = 0; i < kDisplayPoints; ++i)
+            display[static_cast<size_t>(i)] = raw[static_cast<size_t>(static_cast<int>(i * step))];
+
+        // Compute RMS from last 64 samples
+        float rms = 0.0f;
+        for (int i = 512 - 64; i < 512; ++i)
+            rms += raw[static_cast<size_t>(i)] * raw[static_cast<size_t>(i)];
+        rms = std::sqrt(rms / 64.0f);
+
+        background_.setWaveData(display.data(), kDisplayPoints, rms);
+        background_.repaint();
     }
 
     // #909: Forward live readouts to NexusDisplay so Overview shows parameter activity.
@@ -793,6 +908,10 @@ public:
         Wire this to open the DnaMapBrowser or cycle the axis projection. */
     std::function<void()> onDnaClicked;
 
+    /** Step 7: Fired when the user clicks the first-launch lifesaver ring.
+        Wire this to open the engine picker so the user can load their first engine. */
+    std::function<void()> onEnginePickerRequested;
+
     //==========================================================================
     // State queries
     //==========================================================================
@@ -802,6 +921,178 @@ public:
 
 private:
     //==========================================================================
+    // Inner helper components — Step 6 submarine dashboard
+    //==========================================================================
+
+    /** Thin teal gradient strip that visually separates the ocean viewport
+        from the submarine dashboard below it. */
+    struct WaterlineSeparator : public juce::Component
+    {
+        WaterlineSeparator() { setInterceptsMouseClicks(false, false); }
+        void paint(juce::Graphics& g) override
+        {
+            auto b = getLocalBounds().toFloat();
+            juce::ColourGradient grad(
+                juce::Colour(60, 180, 170).withAlpha(0.04f), 0, b.getY(),
+                juce::Colour(60, 180, 170).withAlpha(0.12f), 0, b.getBottom(), false);
+            g.setGradientFill(grad);
+            g.fillRect(b);
+            // Bottom edge glow line
+            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.18f));
+            g.fillRect(b.getX(), b.getBottom() - 1.0f, b.getWidth(), 1.0f);
+        }
+    };
+
+    /** Horizontal tab strip that selects the play-surface mode shown in the
+        dashboard area below the macro strip. */
+    struct DashboardTabBar : public juce::Component
+    {
+        DashboardTabBar()
+        {
+            for (auto& name : { "KEYS", "PAD", "DRUM", "XY" })
+            {
+                auto* btn = tabs_.add(new juce::TextButton(name));
+                btn->setColour(juce::TextButton::buttonColourId,
+                               juce::Colours::transparentBlack);
+                btn->setColour(juce::TextButton::textColourOffId,
+                               juce::Colour(200, 204, 216).withAlpha(0.35f));
+                btn->onClick = [this, tabName = juce::String(name)]()
+                {
+                    activeTab_ = tabName;
+                    updateTabColours();
+                    if (onTabChanged) onTabChanged(tabName);
+                };
+                addAndMakeVisible(btn);
+            }
+            activeTab_ = "KEYS";
+            updateTabColours();
+        }
+
+        void resized() override
+        {
+            auto b = getLocalBounds();
+            constexpr int kTabW = 60;
+            int x = 16;
+            for (auto* btn : tabs_)
+            {
+                btn->setBounds(x, 0, kTabW, b.getHeight());
+                x += kTabW + 2;
+            }
+        }
+
+        void paint(juce::Graphics& g) override
+        {
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
+            g.fillRect(getLocalBounds().removeFromBottom(1));
+        }
+
+        const juce::String& activeTab() const noexcept { return activeTab_; }
+
+        std::function<void(const juce::String&)> onTabChanged;
+
+    private:
+        void updateTabColours()
+        {
+            for (auto* btn : tabs_)
+            {
+                const bool active = (btn->getButtonText() == activeTab_);
+                btn->setColour(juce::TextButton::textColourOffId,
+                    active ? juce::Colour(60, 180, 170).withAlpha(0.9f)
+                           : juce::Colour(200, 204, 216).withAlpha(0.35f));
+                btn->setColour(juce::TextButton::buttonColourId,
+                    active ? juce::Colour(60, 180, 170).withAlpha(0.07f)
+                           : juce::Colours::transparentBlack);
+            }
+        }
+
+        juce::OwnedArray<juce::TextButton> tabs_;
+        juce::String                       activeTab_;
+    };
+
+    //==========================================================================
+    // Step 7: First-launch lifesaver overlay
+    //==========================================================================
+
+    struct LifesaverOverlay : public juce::Component, private juce::Timer
+    {
+        LifesaverOverlay()
+        {
+            setInterceptsMouseClicks(true, false);
+            startTimerHz(30);
+        }
+
+        void paint(juce::Graphics& g) override
+        {
+            auto bounds = getLocalBounds().toFloat();
+            const float cx = bounds.getCentreX();
+            const float cy = bounds.getCentreY() - 20.0f;
+            const float lr = 40.0f;
+            const float pulse = 1.0f + std::sin(phase_ * 2.0f) * 0.08f;
+            const float bobY = std::sin(phase_ * 0.6f) * 6.0f;
+            const float drawY = cy + bobY;
+
+            // Outer glow
+            juce::ColourGradient glow(
+                juce::Colour(239, 68, 68).withAlpha(0.08f), cx, drawY,
+                juce::Colours::transparentBlack, cx + lr * 2.5f, drawY, true);
+            g.setGradientFill(glow);
+            g.fillEllipse(cx - lr * 3, drawY - lr * 3, lr * 6, lr * 6);
+
+            // Red ring
+            g.setColour(juce::Colour(239, 68, 68).withAlpha(0.7f));
+            juce::Path ringPath;
+            ringPath.addEllipse(cx - lr * pulse, drawY - lr * pulse, lr * 2 * pulse, lr * 2 * pulse);
+            g.strokePath(ringPath, juce::PathStrokeType(8.0f));
+
+            // White stripes (lifesaver pattern — 4 segments)
+            for (int i = 0; i < 4; ++i)
+            {
+                float a1 = juce::MathConstants<float>::halfPi * i
+                          + juce::MathConstants<float>::pi / 4.0f + phase_ * 0.15f;
+                float a2 = a1 + juce::MathConstants<float>::pi / 6.0f;
+                juce::Path stripe;
+                stripe.addCentredArc(cx, drawY, lr * pulse, lr * pulse, 0, a1, a2, true);
+                g.setColour(juce::Colours::white.withAlpha(0.85f));
+                g.strokePath(stripe, juce::PathStrokeType(8.0f));
+            }
+
+            // Inner circle
+            g.setColour(juce::Colour(239, 68, 68).withAlpha(0.3f));
+            g.drawEllipse(cx - (lr * pulse - 6), drawY - (lr * pulse - 6),
+                          (lr * pulse - 6) * 2, (lr * pulse - 6) * 2, 1.0f);
+
+            // "CLICK ME" text
+            float textAlpha = 0.5f + std::sin(phase_ * 2.5f) * 0.2f;
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(textAlpha));
+            g.setFont(juce::Font(juce::FontOptions(12.0f).withStyle("Bold")));
+            g.drawText("CLICK ME",
+                       juce::Rectangle<float>(cx - 40, drawY - 8, 80, 16).toNearestInt(),
+                       juce::Justification::centred, false);
+
+            // Subtitle
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.25f));
+            g.setFont(juce::Font(juce::FontOptions(9.0f)));
+            g.drawText("Drop your first engine into the ocean",
+                       juce::Rectangle<float>(cx - 140, drawY + lr + 16, 280, 14).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
+        void mouseDown(const juce::MouseEvent&) override
+        {
+            if (onClick) onClick();
+        }
+
+        void timerCallback() override
+        {
+            phase_ += 0.033f;
+            repaint();
+        }
+
+        std::function<void()> onClick;
+        float phase_ = 0.0f;
+    };
+
+    //==========================================================================
     // State machine transitions
     //==========================================================================
 
@@ -809,11 +1100,6 @@ private:
     {
         viewState_    = ViewState::Orbital;
         selectedSlot_ = -1;
-
-        for (int i = 0; i < 5; ++i)
-        {
-            orbits_[i].setInteractionState(EngineOrbit::InteractionState::Orbital);
-        }
 
         resized();
 
@@ -833,13 +1119,6 @@ private:
         viewState_    = ViewState::ZoomIn;
         selectedSlot_ = slot;
 
-        for (int i = 0; i < 5; ++i)
-        {
-            orbits_[i].setInteractionState(
-                i == slot ? EngineOrbit::InteractionState::ZoomIn
-                          : EngineOrbit::InteractionState::Minimized);
-        }
-
         resized();
 
         if (onEngineSelected)
@@ -850,15 +1129,6 @@ private:
     {
         viewState_    = ViewState::SplitTransform;
         selectedSlot_ = slot;
-
-        for (int i = 0; i < 5; ++i)
-        {
-            // Fix #1005: selected orbit must enter SplitTransform state (not ZoomIn)
-            // so EngineOrbit renders the correct layout hint for the 20% mini-strip.
-            orbits_[i].setInteractionState(
-                i == slot ? EngineOrbit::InteractionState::SplitTransform
-                          : EngineOrbit::InteractionState::Minimized);
-        }
 
         resized();
 
@@ -894,9 +1164,6 @@ private:
             viewState_    = ViewState::Orbital;
             selectedSlot_ = -1;
 
-            for (int i = 0; i < 5; ++i)
-                orbits_[i].setInteractionState(EngineOrbit::InteractionState::Orbital);
-
             resized();
 
             if (onEngineSelected)
@@ -914,12 +1181,12 @@ private:
 
     void layoutOrbital()
     {
-        const auto area   = getLocalBounds().withTrimmedBottom(kStatusBarH);
+        // Step 6: use getOceanArea() so background/substrate/nexus only fill
+        // the ocean viewport above the waterline, not the full window.
+        const auto area    = getOceanArea();
         const auto centerF = area.getCentre().toFloat();
-        const float halfMin = static_cast<float>(std::min(area.getWidth(),
-                                                          area.getHeight())) * 0.5f;
 
-        // Background, substrate, and ambient edge always span the full area.
+        // Background, substrate, and ambient edge span the ocean viewport only.
         background_.setBounds(area);
         ambientEdge_.setBounds(area);
         substrate_.setBounds(area);
@@ -936,27 +1203,18 @@ private:
                          kNexusW, kNexusH);
         nexus_.setVisible(true);
 
-        // ── Engine creatures in polar orbit ───────────────────────────────────
+        // ── Engine creatures (freeform normalized positions) ─────────────────
         int numLoaded = 0;
         for (const auto& o : orbits_)
             if (o.hasEngine()) ++numLoaded;
 
-        // ── Macros below nexus ────────────────────────────────────────────────
+        // ── Macros: now positioned in the dashboard strip via resized() ──────
+        // Fix 4: only show macros when at least one engine is loaded.
         if (macros_)
-        {
-            macros_->setBounds(static_cast<int>(centerF.x) - 200,
-                               nexus_.getBottom() + 8,
-                               400,
-                               static_cast<int>(kMacroStripH));
-            // Fix 4: only show macros when at least one engine is loaded.
             macros_->setVisible(numLoaded > 0);
-        }
 
         if (numLoaded > 0)
         {
-            const float angleStep = juce::MathConstants<float>::twoPi
-                                    / static_cast<float>(numLoaded);
-            int idx = 0;
             for (int i = 0; i < 5; ++i)
             {
                 if (!orbits_[i].hasEngine())
@@ -965,26 +1223,14 @@ private:
                     continue;
                 }
 
-                // Start angle from top (−π/2) and rotate clockwise.
-                const float angle  = static_cast<float>(idx) * angleStep
-                                     - juce::MathConstants<float>::halfPi;
-                const float radius = radiusForZone(orbits_[i].getDepthZone()) * halfMin;
-                const auto  pos    = polarToCartesian(angle, radius, centerF);
-
-                // HIGH fix (#1006): expand bounds by kBreathPadding so the ±5%
-                // breath scale oscillation paints inside the component rect.
-                // kBreathPadding = ceil(kOrbitalSize * kBreathAmplitude) = ceil(3.6) = 4px.
-                const int size = static_cast<int>(kOrbitSize_Orbital) + kBreathPadding * 2;
-                orbits_[i].setTargetBounds({
-                    static_cast<int>(pos.x) - size / 2,
-                    static_cast<int>(pos.y) - size / 2,
-                    size, size
-                });
-                orbits_[i].setInteractionState(EngineOrbit::InteractionState::Orbital);
+                auto pos = orbits_[i].getNormalizedPosition();
+                int sz = orbits_[i].getBuoySize() + kBreathPadding * 2;
+                int x = static_cast<int>(pos.x * area.getWidth()) - sz / 2;
+                int y = static_cast<int>(pos.y * area.getHeight()) - sz / 2;
+                orbits_[i].setBounds(x + area.getX(), y + area.getY(), sz, sz);
                 orbits_[i].setVisible(true);
 
-                substrate_.setCreatureCenter(i, pos);
-                ++idx;
+                substrate_.setCreatureCenter(i, orbits_[i].getCenter());
             }
         }
         else
@@ -1005,6 +1251,10 @@ private:
         if (numLoaded > 0)
             emptyStateLabel_.setVisible(false);
 
+        // Step 7: Show the pulsing lifesaver ring on first launch when empty.
+        lifesaver_.setVisible(firstLaunch_ && numLoaded == 0);
+        lifesaver_.setBounds(getOceanArea());
+
         // Hide panels that belong to other states.
         if (detail_)  { detail_->setVisible(false); }
         if (sidebar_) { sidebar_->setVisible(false); }
@@ -1015,7 +1265,9 @@ private:
     {
         jassert(selectedSlot_ >= 0 && selectedSlot_ < 5);
 
-        const auto area    = getLocalBounds().withTrimmedBottom(kStatusBarH);
+        // Step 6: use getOceanArea() so background/substrate/nexus only fill
+        // the ocean viewport above the waterline.
+        const auto area    = getOceanArea();
         const auto centerF = area.getCentre().toFloat();
         const float halfMin = static_cast<float>(std::min(area.getWidth(),
                                                           area.getHeight())) * 0.5f;
@@ -1032,7 +1284,7 @@ private:
         constexpr int kNexusW = 160;
         constexpr int kNexusH = 200;
         nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
-                         30,
+                         area.getY() + 30,
                          kNexusW, kNexusH);
         nexus_.setVisible(true);
 
@@ -1060,12 +1312,11 @@ private:
             if (i == selectedSlot_)
             {
                 // Zoomed-in creature at the centre (slightly above geometric centre).
-                const int size = static_cast<int>(kOrbitSize_ZoomIn);
-                orbits_[i].setTargetBounds({
+                const int size = static_cast<int>(kOrbitSize_Orbital);
+                orbits_[i].setBounds(
                     static_cast<int>(centerF.x) - size / 2,
                     static_cast<int>(centerF.y) - size / 2 - 40,
-                    size, size
-                });
+                    size, size);
                 substrate_.setCreatureCenter(i, orbits_[i].getCenter());
             }
             else
@@ -1073,13 +1324,12 @@ private:
                 // Minimised creatures arranged along the outer arc.
                 const float angle = arcStart + static_cast<float>(edgeIdx) * arcStep;
                 const auto  pos   = polarToCartesian(angle, edgeRadius, centerF);
-                const int   size  = static_cast<int>(kOrbitSize_Minimized);
+                const int   size  = static_cast<int>(kOrbitSize_Orbital);
 
-                orbits_[i].setTargetBounds({
+                orbits_[i].setBounds(
                     static_cast<int>(pos.x) - size / 2,
                     static_cast<int>(pos.y) - size / 2,
-                    size, size
-                });
+                    size, size);
                 substrate_.setCreatureCenter(i, pos);
                 ++edgeIdx;
             }
@@ -1087,17 +1337,9 @@ private:
             orbits_[i].setVisible(true);
         }
 
-        // Macros below the zoomed creature.
+        // Macros: now positioned in the dashboard strip via resized().
         if (macros_)
-        {
-            const int macroY = static_cast<int>(centerF.y)
-                               + static_cast<int>(kOrbitSize_ZoomIn / 2.0f)
-                               + 16;
-            macros_->setBounds(static_cast<int>(centerF.x) - 200,
-                               macroY, 400,
-                               static_cast<int>(kMacroStripH));
             macros_->setVisible(true);
-        }
 
         if (detail_)  { detail_->setVisible(false); }
         if (sidebar_) { sidebar_->setVisible(false); }
@@ -1109,12 +1351,14 @@ private:
     {
         jassert(selectedSlot_ >= 0 && selectedSlot_ < 5);
 
-        const auto area   = getLocalBounds().withTrimmedBottom(kStatusBarH);
-        const int  orbW   = static_cast<int>(static_cast<float>(area.getWidth())
-                                              * kSplitOrbitalFraction);
+        // Step 6: use getOceanArea() so background/ambient edge stay within the
+        // ocean viewport above the waterline.
+        const auto area    = getOceanArea();
+        const int  orbW    = static_cast<int>(static_cast<float>(area.getWidth())
+                                               * kSplitOrbitalFraction);
         const int  detailW = area.getWidth() - orbW;
 
-        // Background and ambient edge span the full area (they layer under everything).
+        // Background and ambient edge span the ocean viewport.
         background_.setBounds(area);
         ambientEdge_.setBounds(area);
 
@@ -1127,7 +1371,7 @@ private:
         // y starts at 48 (was 40) to clear the 44px header button strip (#1006).
         int  y        = 48;
         int  stripCx  = orbW / 2;
-        const int miniSize = static_cast<int>(kOrbitSize_Minimized);
+        const int miniSize = static_cast<int>(kOrbitSize_Orbital);
 
         for (int i = 0; i < 5; ++i)
         {
@@ -1138,17 +1382,10 @@ private:
             }
 
             const int sz = (i == selectedSlot_)
-                               ? static_cast<int>(kOrbitSize_ZoomIn * 0.6f)
+                               ? static_cast<int>(kOrbitSize_Orbital * 0.6f)
                                : miniSize;
 
-            orbits_[i].setTargetBounds({
-                stripCx - sz / 2,
-                y,
-                sz, sz
-            });
-            orbits_[i].setInteractionState(
-                i == selectedSlot_ ? EngineOrbit::InteractionState::ZoomIn
-                                   : EngineOrbit::InteractionState::Minimized);
+            orbits_[i].setBounds(stripCx - sz / 2, y, sz, sz);
             orbits_[i].setVisible(true);
 
             substrate_.setCreatureCenter(i, orbits_[i].getCenter());
@@ -1175,9 +1412,10 @@ private:
 
     void layoutBrowser()
     {
-        const auto area = getLocalBounds().withTrimmedBottom(kStatusBarH);
+        // Step 6: browser covers the ocean viewport above the waterline only.
+        const auto area = getOceanArea();
 
-        // Browser covers the entire canvas.
+        // Browser covers the ocean viewport.
         browser_.setBounds(area);
         browser_.setVisible(true);
 
@@ -1253,6 +1491,15 @@ private:
     // Geometry helpers
     //==========================================================================
 
+    /** Returns the ocean viewport bounds — the area above the waterline separator
+        and submarine dashboard.  Previously this was everything minus the status
+        bar; it now also excludes the waterline and dashboard rows. */
+    juce::Rectangle<int> getOceanArea() const
+    {
+        const int bottomH = kDashboardH + kWaterlineH + kStatusBarH;
+        return getLocalBounds().withTrimmedBottom(bottomH);
+    }
+
     /** Convert polar angle + radius to Cartesian in the given coordinate frame. */
     juce::Point<float> polarToCartesian(float angle,
                                         float radius,
@@ -1282,6 +1529,56 @@ private:
         return 0.38f;
     }
 
+    //==========================================================================
+    // Buoy position persistence (PropertiesFile, keyed by slot index)
+    // Design decision D1: Global positions, NOT per-preset. Never APVTS.
+    //==========================================================================
+
+    /** Save a single slot's normalised position to the XOceanus settings file. */
+    void saveSlotPosition(int slot)
+    {
+        juce::PropertiesFile::Options opts;
+        opts.applicationName     = "XOceanus";
+        opts.filenameSuffix      = "settings";
+        opts.osxLibrarySubFolder = "Application Support";
+        juce::PropertiesFile settings(opts);
+
+        auto pos = orbits_[slot].getNormalizedPosition();
+        settings.setValue("buoyPosX_" + juce::String(slot), static_cast<double>(pos.x));
+        settings.setValue("buoyPosY_" + juce::String(slot), static_cast<double>(pos.y));
+        settings.saveIfNeeded();
+    }
+
+    /** Load all 5 slot positions from settings; fall back to default arc positions. */
+    void loadSlotPositions()
+    {
+        // Default positions: five buoys spread across the ocean in an arc.
+        const float defaultPositions[5][2] = {
+            { 0.30f, 0.40f }, // slot 0
+            { 0.55f, 0.30f }, // slot 1
+            { 0.70f, 0.50f }, // slot 2
+            { 0.45f, 0.60f }, // slot 3
+            { 0.20f, 0.55f }, // slot 4 (ghost)
+        };
+
+        juce::PropertiesFile::Options opts;
+        opts.applicationName     = "XOceanus";
+        opts.filenameSuffix      = "settings";
+        opts.osxLibrarySubFolder = "Application Support";
+        juce::PropertiesFile settings(opts);
+
+        for (int i = 0; i < 5; ++i)
+        {
+            const float x = static_cast<float>(
+                settings.getDoubleValue("buoyPosX_" + juce::String(i),
+                                        static_cast<double>(defaultPositions[i][0])));
+            const float y = static_cast<float>(
+                settings.getDoubleValue("buoyPosY_" + juce::String(i),
+                                        static_cast<double>(defaultPositions[i][1])));
+            orbits_[i].setNormalizedPosition({ x, y });
+        }
+    }
+
     /**
         Restore the canonical Z-order of all overlay and floating components.
 
@@ -1303,6 +1600,8 @@ private:
         if (detail_)   detail_->toFront(false);
         if (sidebar_)  sidebar_->toFront(false);
         browser_.toFront(false);
+        // DetailOverlay floats above orbits/substrate/browser but below header buttons.
+        detailOverlay_.toFront(false);
         presetPrev_.toFront(false);
         presetNext_.toFront(false);
         favButton_.toFront(false);
@@ -1311,6 +1610,10 @@ private:
         presetNameLabel_.toFront(false);
         // #1008 FIX 7: dimOverlay_ above buttons but below PlaySurfaceOverlay.
         dimOverlay_.toFront(false);
+        // Step 6: waterline and tab bar sit above the dim overlay but below
+        // the PlaySurface so they are always legible.
+        waterline_.toFront(false);
+        tabBar_.toFront(false);
         playSurfaceOverlay_.toFront(false);
         if (statusBar_) statusBar_->toFront(false);
     }
@@ -1322,6 +1625,9 @@ private:
     ViewState viewState_       = ViewState::Orbital;
     int       selectedSlot_    = -1;
     float     dimAlpha_        = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
+
+    /// Step 7: true until the user loads their first engine or clicks the lifesaver.
+    bool firstLaunch_ = true;
 
     /// State saved on entering BrowserOpen so exitBrowser() can restore it exactly.
     ViewState preBrowserState_ = ViewState::Orbital;
@@ -1346,12 +1652,22 @@ private:
     // BLOCKER 1: empty-state label — shown when no engines are loaded.
     juce::Label          emptyStateLabel_;
 
+    // Step 7: Pulsing lifesaver ring shown on first launch (no engines loaded).
+    LifesaverOverlay     lifesaver_;
+
     // Overlay components.
     DnaMapBrowser        browser_;
     // #1008 FIX 7: DimOverlay must be declared BEFORE PlaySurfaceOverlay so
     // it is constructed first and can be placed below it in the Z-stack.
     DimOverlay           dimOverlay_;
     PlaySurfaceOverlay   playSurfaceOverlay_;
+
+    // Step 4: Floating detail overlay (wraps EngineDetailPanel with backdrop + close btn).
+    DetailOverlay        detailOverlay_;
+
+    // Step 6: Submarine dashboard — waterline separator + tab bar.
+    WaterlineSeparator   waterline_;
+    DashboardTabBar      tabBar_;
 
     // Floating header controls.
     juce::TextButton presetPrev_    { "<" };
@@ -1379,22 +1695,16 @@ private:
     static constexpr int   kStatusBarH          = 28;
     static constexpr float kMacroStripH         = 60.0f;  // #901: 56→60pt to fit 48pt knobs + 6pt pad
     static constexpr float kSplitOrbitalFraction = 0.20f;  ///< 20% width for mini orbital
+    static constexpr int   kWaterlineH          = 6;
+    static constexpr int   kDashboardH          = 340;    ///< macros (60) + tabs (30) + keyboard (~250)
+    static constexpr int   kTabBarH             = 30;
 
     // HIGH fix (#1006): padding added to orbital bounds so ±5% breath animation
     // paints inside the component rect.  ceil(72 * 0.05) = 4px each side.
     static constexpr int kBreathPadding = 4;
 
-    // Orbit size aliases: reference EngineOrbit constants directly so there is
-    // only one source of truth.  static_asserts below catch any drift.
-    static constexpr float kOrbitSize_Orbital   = EngineOrbit::kOrbitalSize;
-    static constexpr float kOrbitSize_ZoomIn    = EngineOrbit::kZoomInSize;
-    static constexpr float kOrbitSize_Minimized = EngineOrbit::kMinimizedSize;
-
-    // Compile-time guard: these must match EngineOrbit — if they drift the
-    // assert fires at build time, not at runtime.
-    static_assert(kOrbitSize_Orbital   == EngineOrbit::kOrbitalSize,   "kOrbitSize_Orbital out of sync");
-    static_assert(kOrbitSize_ZoomIn    == EngineOrbit::kZoomInSize,    "kOrbitSize_ZoomIn out of sync");
-    static_assert(kOrbitSize_Minimized == EngineOrbit::kMinimizedSize, "kOrbitSize_Minimized out of sync");
+    // Orbit size alias: reference EngineOrbit constant directly.
+    static constexpr float kOrbitSize_Orbital = EngineOrbit::kOrbitalSize;
 
     //==========================================================================
 

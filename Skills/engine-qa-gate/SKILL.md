@@ -35,7 +35,7 @@ Pass criteria: Zero errors. Warnings are noted but don't block.
 If fail: STOP. Report errors. Fix before proceeding.
 
 ### Stage 1: PARAM PARITY
-Run: `python3 Tools/validate_obrix_presets.py` (or equivalent for the target engine)
+Run: `python3 Tools/validate_presets.py` (generic — works for all engines)
 Also: grep count `params.push_back` in the engine vs grep count unique `obrix_*` IDs in the panel
 Pass criteria:
 - Zero ghost parameters in any preset

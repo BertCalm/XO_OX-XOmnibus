@@ -2014,6 +2014,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         }
     }
     masterFX.processBlock(buffer, numSamples, ppqPos, bpm);
+    masterOutputFifo.push(buffer.getReadPointer(0), static_cast<size_t>(numSamples));
 
     // CPU load measurement: elapsed / buffer_duration, smoothed with a leaky integrator.
     // Uses high-resolution ticks so measurements are host-independent.

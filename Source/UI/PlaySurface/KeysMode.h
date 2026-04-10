@@ -42,14 +42,14 @@ public:
     // Constants
 
     static constexpr int kOctavesVisible = 2;
-    static constexpr int kNaturalKeysVisible = 14; // 2 octaves x 7 natural keys
-    static constexpr int kSemitonesVisible = 24;   // 2 x 12
+    static constexpr int kNaturalKeysVisible = 28; // 4 octaves x 7 natural keys
+    static constexpr int kSemitonesVisible = 48;   // 4 x 12
     static constexpr int kOctaveMin = 1;
     static constexpr int kOctaveMax = 5; // so 2 visible octaves fit C1-C7
 
     // Colors
-    static constexpr uint32_t kNaturalKeyColor = 0xFFF0EDE8; // Warm white
-    static constexpr uint32_t kSharpKeyColor = 0xFF2A2A2A;   // Charcoal
+    static constexpr uint32_t kNaturalKeyColor = 0xFF1A1C22; // Dark ocean natural
+    static constexpr uint32_t kSharpKeyColor   = 0xFF0C0E12; // Near-black sharp
     static constexpr uint32_t kXoGold = 0xFFE9C46A;          // Root note marker
 
     // Key proportions
@@ -204,7 +204,7 @@ public:
         // Vertical velocity gradient: top = loud (bright accent), bottom = soft.
         // Shows players that Y position controls velocity (Seaboard-style).
         {
-            juce::ColourGradient velGrad(accent_.withAlpha(0.10f), bounds.getX(), bounds.getY(),
+            juce::ColourGradient velGrad(accent_.withAlpha(0.06f), bounds.getX(), bounds.getY(),
                                          accent_.withAlpha(0.00f), bounds.getX(), bounds.getBottom(), false);
             g.setGradientFill(velGrad);
             g.fillRect(bounds);
@@ -421,38 +421,109 @@ private:
                 break;
             }
 
-        // --- Base fill -------------------------------------------------------
-        juce::Colour baseColor = sharp ? juce::Colour(kSharpKeyColor) : juce::Colour(kNaturalKeyColor);
+        // Rounded key rectangle
+        const float cornerR = 4.0f;
 
-        if (!inKey && !active)
-            baseColor = baseColor.withAlpha(0.20f);
-
-        g.setColour(baseColor);
-        g.fillRect(rect);
-
-        // --- Accent glow overlay (in-key or active) --------------------------
-        if (inKey || active)
+        // --- Base fill (dark theme — ocean keyboard) -------------------------
+        if (sharp)
         {
-            // Passive in-key glow raised 0.12 → 0.22: now perceptible without being garish (UIX Fix 3)
-            float glowAlpha = active ? 0.30f : 0.22f;
+            // Black keys: near-black with subtle gradient
+            juce::ColourGradient sharpGrad(
+                juce::Colour(0xFF0C0E12).withAlpha(0.92f), rect.getX(), rect.getY(),
+                juce::Colour(0xFF080A0E).withAlpha(0.96f), rect.getX(), rect.getBottom(), false);
+            g.setGradientFill(sharpGrad);
+            g.fillRoundedRectangle(rect, cornerR);
+
+            // Border
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.04f));
+            g.drawRoundedRectangle(rect, cornerR, 1.0f);
+        }
+        else
+        {
+            // White keys: dark with subtle gradient
+            juce::ColourGradient natGrad(
+                juce::Colour(200, 204, 216).withAlpha(0.10f), rect.getX(), rect.getY(),
+                juce::Colour(200, 204, 216).withAlpha(0.05f), rect.getX(), rect.getBottom(), false);
+            g.setGradientFill(natGrad);
+            g.fillRoundedRectangle(rect, cornerR);
+
+            // Border
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.07f));
+            g.drawRoundedRectangle(rect, cornerR, 1.0f);
+        }
+
+        // --- Hover/active glow (teal for white, purple for black) ------------
+        if (active)
+        {
+            if (sharp)
+            {
+                // Purple active glow for black keys
+                juce::ColourGradient activeGrad(
+                    juce::Colour(140, 100, 220).withAlpha(0.35f), rect.getX(), rect.getY(),
+                    juce::Colour(140, 100, 220).withAlpha(0.18f), rect.getX(), rect.getBottom(), false);
+                g.setGradientFill(activeGrad);
+                g.fillRoundedRectangle(rect, cornerR);
+            }
+            else
+            {
+                // Teal active glow for white keys
+                juce::ColourGradient activeGrad(
+                    juce::Colour(60, 180, 170).withAlpha(0.28f), rect.getX(), rect.getY(),
+                    juce::Colour(60, 180, 170).withAlpha(0.14f), rect.getX(), rect.getBottom(), false);
+                g.setGradientFill(activeGrad);
+                g.fillRoundedRectangle(rect, cornerR);
+            }
+
+            // Pressure glow from bottom (like prototype's .pressure div)
+            juce::Colour pressureColor = sharp
+                ? juce::Colour(140, 100, 220).withAlpha(0.35f)
+                : juce::Colour(60, 180, 170).withAlpha(0.35f);
+            juce::ColourGradient pressGrad(
+                pressureColor, rect.getX(), rect.getBottom(),
+                juce::Colours::transparentBlack, rect.getX(), rect.getBottom() - rect.getHeight() * 0.6f, false);
+            g.setGradientFill(pressGrad);
+            g.fillRoundedRectangle(rect, cornerR);
+
+            // Inset box shadow effect
+            juce::Colour shadowColor = sharp
+                ? juce::Colour(140, 100, 220).withAlpha(0.2f)
+                : juce::Colour(60, 180, 170).withAlpha(0.2f);
+            g.setColour(shadowColor);
+            g.drawRoundedRectangle(rect.reduced(1.0f), cornerR, 2.0f);
+        }
+        else if (inKey)
+        {
+            // Subtle in-key highlight
+            float glowAlpha = 0.08f;
             g.setColour(accent_.withAlpha(glowAlpha));
-            g.fillRect(rect);
+            g.fillRoundedRectangle(rect, cornerR);
         }
 
         // --- Root note: XO Gold bottom border --------------------------------
         if (isRoot)
         {
             float borderH = sharp ? 3.0f : 5.0f;
-            juce::Rectangle<float> border(rect.getX(), rect.getBottom() - borderH, rect.getWidth(), borderH);
-            g.setColour(juce::Colour(kXoGold));
-            g.fillRect(border);
+            juce::Rectangle<float> border(rect.getX() + 2.0f, rect.getBottom() - borderH,
+                                           rect.getWidth() - 4.0f, borderH);
+            g.setColour(juce::Colour(0xFFE9C46A)); // XO Gold
+            g.fillRoundedRectangle(border, 1.5f);
         }
 
-        // --- Key outline (hairline) — theme-aware (#393) ---------------------
-        // Sharp key outline: dark text color (dark on dark bg, dark on light bg — both legible).
-        // Natural key outline: border gray (adapts between dark/light palette).
-        g.setColour(sharp ? juce::Colour(GalleryColors::textDark()) : juce::Colour(GalleryColors::borderGray()));
-        g.drawRect(rect, 1.0f);
+        // --- Note label on white keys (like prototype) -----------------------
+        if (!sharp)
+        {
+            int pitchClass = midiNote % 12;
+            int octave = midiNote / 12 - 1;
+            static const char* noteNames[] = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
+            juce::String label = juce::String(noteNames[pitchClass]) + juce::String(octave);
+
+            g.setFont(juce::Font(juce::FontOptions(8.0f)));
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(active ? 0.45f : 0.18f));
+            g.drawText(label,
+                       juce::Rectangle<float>(rect.getX(), rect.getBottom() - 16.0f,
+                                              rect.getWidth(), 14.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
     }
 
     //--------------------------------------------------------------------------

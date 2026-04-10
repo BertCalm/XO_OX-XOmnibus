@@ -248,7 +248,7 @@ final class ReefStore: ObservableObject {
     private func removeFromStasis(specimenId: UUID) {
         guard let db = DatabaseManager.shared.db else { return }
         do {
-            try db.write { db in
+            _ = try db.write { db in
                 try SpecimenRecord
                     .filter(Column("id") == specimenId.uuidString)
                     .deleteAll(db)

@@ -2204,7 +2204,25 @@ private:
                                     : (zoneInt == 2) ? EngineOrbit::DepthZone::Midnight
                                                      : EngineOrbit::DepthZone::Twilight;
                     oceanView_.setEngine(i, id, accent, zone);
-                    oceanView_.setVoiceCount(i, eng->getActiveVoiceCount());
+
+                    // Step 8b: Track voice count changes to trigger buoy ripples on note-on.
+                    int newVoices = eng->getActiveVoiceCount();
+                    if (newVoices > prevVoiceCounts_[static_cast<size_t>(i)])
+                        oceanView_.triggerBuoyRipple(i);
+                    prevVoiceCounts_[static_cast<size_t>(i)] = newVoices;
+
+                    oceanView_.setVoiceCount(i, newVoices);
+
+                    // Step 8a: Push waveform data to buoy wreath.
+                    {
+                        std::array<float, 128> wreathSamples {};
+                        processor.getWaveformFifo(i).readLatest(wreathSamples.data(), 128);
+                        float slotRms = 0.0f;
+                        for (int s = 64; s < 128; ++s)
+                            slotRms += wreathSamples[static_cast<size_t>(s)] * wreathSamples[static_cast<size_t>(s)];
+                        slotRms = std::sqrt(slotRms / 64.0f);
+                        oceanView_.pushSlotWaveData(i, wreathSamples.data(), 128, slotRms);
+                    }
 
                     if (zone == EngineOrbit::DepthZone::Sunlit)   hasSunlit   = true;
                     if (zone == EngineOrbit::DepthZone::Twilight)  hasTwilight = true;
@@ -2219,6 +2237,9 @@ private:
             // Fix #1005: drive AmbientEdge depth glow from populated zones.
             oceanView_.setDepthZones(hasSunlit, hasTwilight, hasMidnight);
         }
+
+        // Ocean wave surface — push master output waveform to background.
+        oceanView_.pushMasterWaveData(processor.getMasterWaveformFifo());
 
         // Preset info — update nexus when preset name changes.
         {
@@ -2545,6 +2566,10 @@ private:
     // is cleared.  addAndMakeVisible is called BEFORE toastOverlay_ in the
     // constructor so it renders beneath the overlay.
     OceanView oceanView_;
+
+    // Step 8b: Previous voice counts per slot — used to detect note-on events
+    // (voice count increase) and trigger buoy ripple animations.
+    std::array<int, 5> prevVoiceCounts_ {};
 
     // ── ToastOverlay — non-blocking notification layer ────────────────────────
     // Declared last so it is destroyed first (child components destroyed in

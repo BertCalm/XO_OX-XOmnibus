@@ -1,0 +1,3514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>XOceanus — Submarine Cockpit</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #12141a;
+    color: rgba(200, 204, 216, 0.8);
+    font-family: -apple-system, 'SF Pro Display', system-ui, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    user-select: none;
+    min-width: 900px;
+    min-height: 600px;
+  }
+
+  /* ════════════════════════════════════════
+     OCEAN VIEWPORT
+  ════════════════════════════════════════ */
+  .ocean-viewport {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  #oceanCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    cursor: grab;
+  }
+  #oceanCanvas:active { cursor: grabbing; }
+
+  /* ── FLOATING NAV BAR ── */
+  .hud-nav {
+    position: absolute;
+    top: 12px; left: 16px; right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    z-index: 20;
+    pointer-events: none;
+  }
+  .hud-nav > * { pointer-events: all; }
+
+  .hud-btn {
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(200, 204, 216, 0.55);
+    background: rgba(14, 16, 22, 0.7);
+    border: 1px solid rgba(200, 204, 216, 0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.15s;
+    backdrop-filter: blur(8px);
+  }
+  .hud-btn:hover {
+    background: rgba(200, 204, 216, 0.08);
+    color: rgba(200, 204, 216, 0.85);
+    border-color: rgba(200, 204, 216, 0.18);
+  }
+  .hud-btn.active {
+    color: rgba(60, 180, 170, 0.9);
+    border-color: rgba(60, 180, 170, 0.35);
+    background: rgba(60, 180, 170, 0.1);
+  }
+  .hud-btn.icon-btn {
+    width: 32px; height: 32px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+  }
+
+  .hud-preset-nav {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    background: rgba(14, 16, 22, 0.7);
+    border: 1px solid rgba(200, 204, 216, 0.1);
+    border-radius: 8px;
+    padding: 0 4px;
+    backdrop-filter: blur(8px);
+  }
+  .hud-preset-btn {
+    width: 28px; height: 32px;
+    background: transparent;
+    border: none;
+    color: rgba(200, 204, 216, 0.4);
+    font-size: 11px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s;
+  }
+  .hud-preset-btn:hover { color: rgba(200, 204, 216, 0.8); }
+
+  .hud-preset-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(200, 204, 216, 0.65);
+    padding: 0 8px;
+    cursor: pointer;
+    transition: color 0.15s;
+    min-width: 100px;
+    text-align: center;
+  }
+  .hud-preset-name:hover { color: rgba(200, 204, 216, 0.9); }
+
+  .hud-fav-btn {
+    background: transparent;
+    border: none;
+    color: rgba(200, 204, 216, 0.25);
+    font-size: 14px;
+    cursor: pointer;
+    width: 28px; height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s;
+  }
+  .hud-fav-btn:hover { color: rgba(233, 196, 106, 0.7); }
+  .hud-fav-btn.faved { color: rgba(233, 196, 106, 0.9); }
+
+  .hud-spacer { flex: 1; }
+
+  /* (energy slider is now inline in hud-nav) */
+
+  /* ── DETAIL PANEL (inset in ocean) ── */
+  .detail-backdrop {
+    display: none;
+    position: absolute;
+    inset: 0;
+    z-index: 30;
+    background: rgba(0,0,0,0.35);
+    cursor: pointer;
+  }
+  .detail-backdrop.open { display: block; }
+
+  .detail-panel {
+    display: none;
+    position: absolute;
+    top: 52px; left: 50px; right: 50px; bottom: 16px;
+    background: linear-gradient(160deg, rgba(20, 23, 32, 0.97) 0%, rgba(14, 16, 22, 0.98) 100%);
+    border: 1px solid rgba(60, 180, 170, 0.14);
+    border-radius: 16px;
+    z-index: 31;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(60,180,170,0.04);
+  }
+  .detail-panel.open { display: flex; }
+
+  .detail-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.06);
+    flex-shrink: 0;
+  }
+  .detail-back {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    background: transparent;
+    color: rgba(200, 204, 216, 0.5);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .detail-back:hover { background: rgba(200,204,216,0.06); color: rgba(200,204,216,0.8); }
+
+  .detail-engine-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .detail-engine-name {
+    font-size: 16px; font-weight: 600;
+    color: rgba(200, 204, 216, 0.9);
+    flex: 1;
+  }
+  .detail-engine-type {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(200, 204, 216, 0.3);
+  }
+
+  .detail-body {
+    flex: 1;
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+    padding: 16px;
+  }
+  .detail-viz {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-width: 0;
+  }
+  .waveform-display {
+    height: 100px;
+    background: rgba(200, 204, 216, 0.025);
+    border: 1px solid rgba(200, 204, 216, 0.06);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .waveform-display canvas { width: 100%; height: 100%; }
+  .adsr-display {
+    height: 90px;
+    background: rgba(200, 204, 216, 0.025);
+    border: 1px solid rgba(200, 204, 216, 0.06);
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .adsr-display canvas { width: 100%; height: 100%; }
+  .adsr-sliders {
+    display: flex;
+    gap: 12px;
+    padding: 0 4px;
+    flex-shrink: 0;
+  }
+  .adsr-param {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+  .adsr-param label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200, 204, 216, 0.4);
+  }
+  .adsr-param input[type="range"] {
+    width: 100%; height: 4px;
+    -webkit-appearance: none;
+    background: rgba(200, 204, 216, 0.1);
+    border-radius: 2px;
+    outline: none;
+  }
+  .adsr-param input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: rgba(60, 180, 170, 0.8);
+    border: 2px solid rgba(60, 180, 170, 0.4);
+    cursor: pointer;
+  }
+  .adsr-param .adsr-val {
+    font-size: 10px;
+    color: rgba(60, 180, 170, 0.7);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .detail-params {
+    width: 320px;
+    flex-shrink: 0;
+    overflow-y: auto;
+    padding: 0 0 0 4px;
+  }
+  .param-section-title {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(60, 180, 170, 0.5);
+    padding: 8px 0 6px 4px;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.04);
+    margin-bottom: 8px;
+  }
+  .param-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .param-knob {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 4px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .param-knob:hover { background: rgba(200, 204, 216, 0.04); }
+  .knob-ring {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    border: 2px solid rgba(200, 204, 216, 0.15);
+    background: rgba(200, 204, 216, 0.03);
+    position: relative;
+    transition: border-color 0.15s;
+  }
+  .param-knob:hover .knob-ring { border-color: rgba(60, 180, 170, 0.4); }
+  .knob-ring::after {
+    content: '';
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: rgba(60, 180, 170, 0.6);
+    border-right-color: rgba(60, 180, 170, 0.6);
+    transform: rotate(var(--knob-angle, 45deg));
+    pointer-events: none;
+  }
+  .knob-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: rgba(200, 204, 216, 0.4);
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .knob-value {
+    font-size: 9px;
+    color: rgba(60, 180, 170, 0.6);
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* ════════════════════════════════════════
+     WATERLINE SEPARATOR
+  ════════════════════════════════════════ */
+  .waterline {
+    height: 6px;
+    flex-shrink: 0;
+    position: relative;
+    background: linear-gradient(to bottom,
+      rgba(60, 180, 170, 0.04) 0%,
+      rgba(60, 180, 170, 0.12) 60%,
+      rgba(60, 180, 170, 0.02) 100%
+    );
+    overflow: visible;
+    z-index: 10;
+  }
+  .waterline::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: rgba(60, 180, 170, 0.18);
+    box-shadow: 0 0 8px rgba(60, 180, 170, 0.1);
+  }
+
+  /* ════════════════════════════════════════
+     DASHBOARD
+  ════════════════════════════════════════ */
+  .dashboard {
+    height: 340px;
+    flex-shrink: 0;
+    background: #1a1c22;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: height 0.28s ease;
+  }
+  .dashboard.right-open {
+    height: auto;
+  }
+  /* Subtle noise texture via SVG filter */
+  .dashboard::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  /* ── MACRO STRIP ── */
+  .macro-strip {
+    height: 72px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+    gap: 0;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.05);
+  }
+
+  .macros-center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  .macro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s;
+  }
+  .macro-knob {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(200, 204, 216, 0.03);
+    border: 2px solid rgba(60, 180, 170, 0.25);
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s, background 0.2s;
+    flex-shrink: 0;
+  }
+  .macro-knob:hover {
+    border-color: rgba(60, 180, 170, 0.6);
+    background: rgba(60, 180, 170, 0.08);
+  }
+  /* Ring arc indicator */
+  .macro-knob::after {
+    content: '';
+    position: absolute;
+    top: -4px; left: -4px; right: -4px; bottom: -4px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: rgba(60, 180, 170, 0.7);
+    border-right-color: rgba(60, 180, 170, 0.5);
+    transform: rotate(var(--macro-angle, 0deg));
+    pointer-events: none;
+    transition: transform 0.1s;
+  }
+  /* Dot indicator */
+  .macro-knob::before {
+    content: '';
+    position: absolute;
+    top: 4px; left: 50%; transform: translateX(-50%);
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: rgba(60, 180, 170, 0.7);
+    pointer-events: none;
+  }
+  .macro-label {
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: rgba(200, 204, 216, 0.4);
+    transition: opacity 0.2s, font-size 0.2s;
+  }
+
+  /* Compact macros when right panel open — keep knob size, just tighten gap */
+  .dashboard.right-open .macros-center { gap: 10px; }
+
+  /* Volume + meter on right */
+  .vol-section {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .vol-label {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(200, 204, 216, 0.3);
+  }
+  .vol-slider {
+    writing-mode: horizontal-tb;
+    width: 80px; height: 4px;
+    -webkit-appearance: none;
+    background: rgba(200, 204, 216, 0.1);
+    border-radius: 2px;
+    outline: none;
+    accent-color: #3CB4AA;
+  }
+  .vol-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: rgba(60, 180, 170, 0.8);
+    border: 2px solid rgba(60, 180, 170, 0.4);
+    cursor: pointer;
+  }
+  .level-meter {
+    width: 4px; height: 48px;
+    background: rgba(200, 204, 216, 0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    position: relative;
+  }
+  .level-fill {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(60, 180, 170, 0.7), rgba(60, 180, 170, 0.3));
+    border-radius: 2px;
+    height: 30%;
+    transition: height 0.05s;
+  }
+
+  /* ── TABS ── */
+  .surface-tabs {
+    display: flex;
+    gap: 2px;
+    padding: 6px 16px 0;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.05);
+    flex-shrink: 0;
+  }
+  .surface-tab {
+    padding: 5px 14px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: rgba(200, 204, 216, 0.35);
+    background: transparent;
+    border: none;
+    border-radius: 6px 6px 0 0;
+    cursor: pointer;
+    transition: all 0.15s;
+    margin-bottom: 0;
+  }
+  .surface-tab:hover { color: rgba(200, 204, 216, 0.65); }
+  .surface-tab.active {
+    color: rgba(60, 180, 170, 0.9);
+    background: rgba(60, 180, 170, 0.07);
+  }
+  .tab-spacer { flex: 1; }
+
+  /* ── PLAY AREA (below tabs) ── */
+  .play-area {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    min-height: 0;
+  }
+
+  /* KEYS surface */
+  .mpe-surface {
+    flex: 1;
+    display: flex;
+    padding: 10px 16px 14px;
+    gap: 1px;
+    overflow: hidden;
+    min-width: 0;
+  }
+  .mpe-key {
+    flex: 1;
+    position: relative;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.08s;
+    min-width: 0;
+  }
+  .mpe-key.white {
+    background: linear-gradient(to bottom, rgba(200,204,216,0.1) 0%, rgba(200,204,216,0.05) 100%);
+    border: 1px solid rgba(200,204,216,0.07);
+  }
+  .mpe-key.white:hover {
+    background: linear-gradient(to bottom, rgba(60,180,170,0.14) 0%, rgba(60,180,170,0.07) 100%);
+    border-color: rgba(60,180,170,0.2);
+  }
+  .mpe-key.white:active {
+    background: linear-gradient(to bottom, rgba(60,180,170,0.28) 0%, rgba(60,180,170,0.14) 100%);
+  }
+  .mpe-key.black {
+    flex: 0.6;
+    background: linear-gradient(to bottom, rgba(12,14,18,0.92) 0%, rgba(8,10,14,0.96) 100%);
+    border: 1px solid rgba(200,204,216,0.04);
+    margin: 0 -4px;
+    z-index: 1;
+    height: 55%;
+  }
+  .mpe-key.black:hover {
+    background: linear-gradient(to bottom, rgba(140,100,220,0.18) 0%, rgba(140,100,220,0.09) 100%);
+    border-color: rgba(140,100,220,0.25);
+  }
+  .mpe-key.black:active {
+    background: linear-gradient(to bottom, rgba(140,100,220,0.35) 0%, rgba(140,100,220,0.18) 100%);
+  }
+  .mpe-key .pressure {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 0%;
+    background: linear-gradient(to top, rgba(60,180,170,0.35), transparent);
+    border-radius: 0 0 4px 4px;
+    pointer-events: none;
+    transition: height 0.05s;
+  }
+  .mpe-key:active .pressure { height: 60%; }
+  .mpe-key:active {
+    box-shadow: 0 0 16px rgba(60,180,170,0.2) inset;
+  }
+  .mpe-key.black:active {
+    box-shadow: 0 0 16px rgba(140,100,220,0.2) inset;
+  }
+  .mpe-key .note-label {
+    position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
+    font-size: 8px; color: rgba(200,204,216,0.18); pointer-events: none;
+  }
+  .mpe-key:hover .note-label { color: rgba(200,204,216,0.45); }
+
+  /* Right-slide panel — ocean height only, beside ocean-viewport inside oceanSplit */
+  .surface-right {
+    width: 0;
+    flex-shrink: 0;
+    background: linear-gradient(to bottom, #16181e 0%, #1a1c22 40%, #1a1c22 100%);
+    border-left: 1px solid rgba(60, 180, 170, 0.08);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: width 0.28s ease;
+  }
+  .surface-right.open { width: min(420px, 40%); }
+
+  .surface-right-header {
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.05);
+    flex-shrink: 0;
+  }
+  .surface-right-title {
+    font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(60, 180, 170, 0.65);
+    flex: 1;
+  }
+  .surface-right-close {
+    width: 22px; height: 22px;
+    border-radius: 5px;
+    border: 1px solid rgba(200, 204, 216, 0.07);
+    background: transparent;
+    color: rgba(200, 204, 216, 0.35);
+    font-size: 12px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .surface-right-close:hover { background: rgba(200,204,216,0.06); color: rgba(200,204,216,0.8); }
+
+  .surface-right-body {
+    flex: 1;
+    padding: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Pad / Drum grids */
+  .split-pad-grid, .split-drum-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    align-content: center;
+    flex: 1;
+    padding: 8px 0;
+  }
+  .pad-cell {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background: linear-gradient(145deg, rgba(200,204,216,0.05) 0%, rgba(200,204,216,0.02) 100%);
+    border: 1px solid rgba(200,204,216,0.06);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 4px; cursor: pointer;
+    transition: all 0.07s;
+    position: relative; overflow: hidden;
+  }
+  .pad-cell:hover {
+    background: linear-gradient(to bottom, rgba(60,180,170,0.09), rgba(60,180,170,0.04));
+    border-color: rgba(60,180,170,0.18);
+  }
+  .pad-cell:active {
+    background: linear-gradient(to bottom, rgba(60,180,170,0.22), rgba(60,180,170,0.1));
+    border-color: rgba(60,180,170,0.4);
+    transform: scale(0.97);
+  }
+  .pad-cell::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(circle at center, rgba(60,180,170,0.25) 0%, transparent 70%);
+    opacity: 0; transition: opacity 0.07s; pointer-events: none;
+  }
+  .pad-cell:active::after { opacity: 1; }
+  .pad-note { font-size: 12px; font-weight: 600; color: rgba(200,204,216,0.45); }
+  .pad-cell:active .pad-note { color: rgba(60,180,170,0.9); }
+  .pad-vel { font-size: 8px; color: rgba(200,204,216,0.18); font-family: 'JetBrains Mono', monospace; }
+
+  .drum-pad {
+    aspect-ratio: 1;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(200,204,216,0.04) 0%, rgba(200,204,216,0.02) 100%);
+    border: 1px solid rgba(200,204,216,0.05);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 5px; cursor: pointer;
+    transition: all 0.07s; position: relative;
+  }
+  .drum-pad:hover {
+    background: linear-gradient(135deg, rgba(140,100,220,0.07), rgba(60,180,170,0.05));
+    border-color: rgba(140,100,220,0.18);
+  }
+  .drum-pad:active {
+    background: linear-gradient(135deg, rgba(140,100,220,0.18), rgba(60,180,170,0.12));
+    border-color: rgba(140,100,220,0.4);
+    transform: scale(0.96);
+  }
+  .drum-icon { font-size: 20px; opacity: 0.65; }
+  .drum-pad:active .drum-icon { opacity: 1; }
+  .drum-label { font-size: 8px; text-transform: uppercase; letter-spacing: 0.8px; color: rgba(200,204,216,0.3); }
+  .drum-pad:active .drum-label { color: rgba(140,100,220,0.9); }
+
+  /* XY surface */
+  .split-xy-wrap {
+    display: flex; flex-direction: column;
+    gap: 10px; flex: 1;
+  }
+  .xy-pad {
+    flex: 1;
+    background: rgba(200,204,216,0.025);
+    border: 1px solid rgba(200,204,216,0.06);
+    border-radius: 10px;
+    position: relative; cursor: crosshair; overflow: hidden;
+    min-height: 0;
+  }
+  .xy-pad::before {
+    content: ''; position: absolute;
+    top: 50%; left: 0; right: 0; height: 1px;
+    background: rgba(200,204,216,0.035);
+  }
+  .xy-pad::after {
+    content: ''; position: absolute;
+    left: 50%; top: 0; bottom: 0; width: 1px;
+    background: rgba(200,204,216,0.035);
+  }
+  .xy-cursor {
+    position: absolute;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: rgba(60,180,170,0.45);
+    border: 2px solid rgba(60,180,170,0.8);
+    box-shadow: 0 0 14px rgba(60,180,170,0.3);
+    transform: translate(-50%, -50%);
+    pointer-events: none; left: 50%; top: 50%;
+  }
+  .xy-label {
+    position: absolute; font-size: 8px;
+    text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(200,204,216,0.18);
+  }
+  .xy-label.x-label { bottom: 6px; left: 50%; transform: translateX(-50%); }
+  .xy-label.y-label { left: 7px; top: 50%; transform: translateY(-50%) rotate(-90deg); }
+
+  .xy-bottom {
+    display: flex; gap: 8px; flex-shrink: 0;
+    align-items: center; flex-wrap: wrap;
+  }
+  .xy-readout { display: flex; flex-direction: column; gap: 1px; }
+  .xy-readout label { font-size: 8px; text-transform: uppercase; letter-spacing: 1px; color: rgba(200,204,216,0.3); }
+  .xy-val { font-size: 14px; font-weight: 600; color: rgba(60,180,170,0.8); font-family: 'JetBrains Mono', monospace; }
+
+  .xy-assign {
+    padding: 4px 10px; font-size: 9px; text-transform: uppercase; letter-spacing: 0.8px;
+    color: rgba(200,204,216,0.35); background: transparent;
+    border: 1px solid rgba(200,204,216,0.07); border-radius: 5px;
+    cursor: pointer; transition: all 0.15s;
+  }
+  .xy-assign:hover { color: rgba(200,204,216,0.65); border-color: rgba(200,204,216,0.14); }
+
+  .xy-auto-row {
+    display: flex; gap: 5px; flex-shrink: 0;
+    align-items: center;
+    border-top: 1px solid rgba(200,204,216,0.05);
+    padding-top: 7px; margin-top: 2px;
+  }
+  .xy-auto-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: rgba(200,204,216,0.3); }
+
+  /* ════════════════════════════════════════
+     STATUS BAR
+  ════════════════════════════════════════ */
+  .status-bar {
+    height: 24px; flex-shrink: 0;
+    background: rgba(10, 12, 16, 0.95);
+    border-top: 1px solid rgba(200, 204, 216, 0.05);
+    display: flex; align-items: center;
+    padding: 0 16px; gap: 20px;
+    font-size: 10px;
+    color: rgba(200, 204, 216, 0.32);
+    z-index: 5;
+  }
+  .status-bar .spacer { flex: 1; }
+  .status-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(60,180,170,0.55); }
+
+  /* ════════════════════════════════════════
+     ENGINE PICKER DRAWER
+  ════════════════════════════════════════ */
+  .picker-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 100;
+  }
+  .picker-backdrop.open { display: block; }
+  .engine-picker {
+    position: fixed;
+    top: 0; bottom: 0; left: 0; width: 320px;
+    background: linear-gradient(to right, #1a1c24 0%, #16181e 100%);
+    border-right: 1px solid rgba(60, 180, 170, 0.1);
+    z-index: 101; display: flex; flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    overflow: hidden;
+  }
+  .picker-backdrop.open .engine-picker { transform: translateX(0); }
+  .picker-header {
+    padding: 16px 20px; border-bottom: 1px solid rgba(200, 204, 216, 0.06);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .picker-title { font-size: 14px; font-weight: 600; color: rgba(60, 180, 170, 0.9); flex: 1; letter-spacing: 0.5px; }
+  .picker-close {
+    width: 28px; height: 28px; border-radius: 6px;
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    background: transparent; color: rgba(200, 204, 216, 0.4);
+    font-size: 14px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .picker-close:hover { background: rgba(200,204,216,0.06); color: rgba(200,204,216,0.8); }
+  .picker-search {
+    margin: 12px 20px; padding: 8px 12px;
+    background: rgba(200, 204, 216, 0.04);
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    border-radius: 8px; color: #c8ccd8;
+    font-size: 12px; outline: none;
+  }
+  .picker-search::placeholder { color: rgba(200, 204, 216, 0.25); }
+  .picker-search:focus { border-color: rgba(60, 180, 170, 0.3); }
+  .picker-categories {
+    display: flex; gap: 4px; padding: 0 20px 12px;
+    overflow-x: auto; flex-shrink: 0;
+  }
+  .picker-cat {
+    padding: 4px 10px; font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(200, 204, 216, 0.35); background: transparent;
+    border: 1px solid rgba(200, 204, 216, 0.06); border-radius: 4px;
+    cursor: pointer; white-space: nowrap; transition: all 0.15s;
+  }
+  .picker-cat:hover { color: rgba(200,204,216,0.7); border-color: rgba(200,204,216,0.15); }
+  .picker-cat.active { color: rgba(60,180,170,0.9); border-color: rgba(60,180,170,0.3); background: rgba(60,180,170,0.06); }
+  .picker-list { flex: 1; overflow-y: auto; padding: 0 12px 12px; }
+  .engine-tile {
+    display: flex; align-items: center; gap: 12px; padding: 10px 12px;
+    border-radius: 8px; cursor: grab; transition: all 0.15s; margin-bottom: 2px;
+  }
+  .engine-tile:hover { background: rgba(60, 180, 170, 0.06); }
+  .engine-tile:active { cursor: grabbing; background: rgba(60, 180, 170, 0.1); }
+  .engine-tile-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+  .engine-tile-info { flex: 1; min-width: 0; }
+  .engine-tile-name { font-size: 13px; font-weight: 600; color: rgba(200, 204, 216, 0.85); }
+  .engine-tile-desc { font-size: 10px; color: rgba(200, 204, 216, 0.35); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .engine-tile-depth { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+
+  /* ════════════════════════════════════════
+     PRESET BROWSER MODAL
+  ════════════════════════════════════════ */
+  .preset-browser-backdrop {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4); z-index: 90;
+  }
+  .preset-browser-backdrop.open { display: flex; align-items: center; justify-content: center; }
+  .preset-browser {
+    width: 500px; max-height: 70vh;
+    background: linear-gradient(to bottom, #1e2028, #16181e);
+    border: 1px solid rgba(60, 180, 170, 0.15);
+    border-radius: 12px; display: flex; flex-direction: column;
+    overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.6);
+  }
+  .preset-browser-header {
+    padding: 14px 20px; border-bottom: 1px solid rgba(200, 204, 216, 0.06);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .preset-browser-title { font-size: 13px; font-weight: 600; color: rgba(60, 180, 170, 0.9); flex: 1; }
+  .preset-browser-engine {
+    font-size: 10px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(200, 204, 216, 0.35);
+    padding: 3px 8px; border: 1px solid rgba(200, 204, 216, 0.08); border-radius: 4px;
+  }
+  .preset-browser-close {
+    width: 28px; height: 28px; border-radius: 6px;
+    border: 1px solid rgba(200, 204, 216, 0.08); background: transparent;
+    color: rgba(200, 204, 216, 0.4); font-size: 14px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+  }
+  .preset-browser-close:hover { background: rgba(200,204,216,0.06); color: rgba(200,204,216,0.8); }
+  .preset-search {
+    margin: 10px 20px; padding: 8px 12px;
+    background: rgba(200, 204, 216, 0.04);
+    border: 1px solid rgba(200, 204, 216, 0.08);
+    border-radius: 8px; color: #c8ccd8; font-size: 12px; outline: none;
+  }
+  .preset-search::placeholder { color: rgba(200,204,216,0.25); }
+  .preset-search:focus { border-color: rgba(60,180,170,0.3); }
+  .preset-moods {
+    display: flex; gap: 4px; padding: 0 20px 10px;
+    overflow-x: auto; flex-shrink: 0;
+  }
+  .preset-mood {
+    padding: 3px 8px; font-size: 9px; text-transform: uppercase; letter-spacing: 0.8px;
+    color: rgba(200, 204, 216, 0.35); background: transparent;
+    border: 1px solid rgba(200, 204, 216, 0.06); border-radius: 4px;
+    cursor: pointer; white-space: nowrap; transition: all 0.15s;
+  }
+  .preset-mood:hover { color: rgba(200,204,216,0.7); border-color: rgba(200,204,216,0.15); }
+  .preset-mood.active { color: rgba(60,180,170,0.9); border-color: rgba(60,180,170,0.3); background: rgba(60,180,170,0.06); }
+  .preset-list { flex: 1; overflow-y: auto; padding: 0 12px 12px; }
+  .preset-item {
+    display: flex; align-items: center; gap: 12px; padding: 8px 12px;
+    border-radius: 6px; cursor: pointer; transition: all 0.12s; margin-bottom: 1px;
+  }
+  .preset-item:hover { background: rgba(60,180,170,0.06); }
+  .preset-item.active-preset {
+    background: rgba(60,180,170,0.1);
+    border-left: 2px solid rgba(60,180,170,0.6);
+  }
+  .preset-item-name { font-size: 13px; font-weight: 500; color: rgba(200, 204, 216, 0.8); flex: 1; }
+  .preset-item.active-preset .preset-item-name { color: rgba(60,180,170,0.9); }
+  .preset-item-mood {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(200, 204, 216, 0.25); padding: 2px 6px;
+    border: 1px solid rgba(200, 204, 216, 0.06); border-radius: 3px;
+  }
+  .preset-item-fav { font-size: 12px; color: rgba(200, 204, 216, 0.15); cursor: pointer; transition: color 0.15s; }
+  .preset-item-fav:hover { color: rgba(233, 196, 106, 0.8); }
+  .preset-item-fav.faved { color: rgba(233, 196, 106, 0.9); }
+
+  /* ════════════════════════════════════════
+     COUPLING CONFIG POPUP
+  ════════════════════════════════════════ */
+  .coupling-backdrop {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 90;
+  }
+  .coupling-backdrop.open { display: flex; align-items: center; justify-content: center; }
+
+  .coupling-popup {
+    width: 440px;
+    background: linear-gradient(to bottom, #1e2028, #16181e);
+    border: 1px solid rgba(60, 180, 170, 0.18);
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.6), 0 0 0 1px rgba(60,180,170,0.05);
+  }
+
+  /* Direction bar */
+  .coupling-direction {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 16px;
+    background: rgba(60, 180, 170, 0.06);
+    border-bottom: 1px solid rgba(200, 204, 216, 0.06);
+  }
+  .dir-arrow {
+    width: 32px; height: 28px;
+    border-radius: 6px;
+    border: 1px solid rgba(200, 204, 216, 0.1);
+    background: rgba(200, 204, 216, 0.04);
+    color: rgba(200, 204, 216, 0.5);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s;
+  }
+  .dir-arrow:hover { background: rgba(200, 204, 216, 0.08); color: rgba(200, 204, 216, 0.8); }
+  .dir-arrow.active {
+    background: rgba(60, 180, 170, 0.15);
+    border-color: rgba(60, 180, 170, 0.4);
+    color: rgba(60, 180, 170, 0.9);
+  }
+  .dir-label {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px;
+    color: rgba(200, 204, 216, 0.35);
+    margin: 0 6px;
+  }
+
+  /* Flow visualization */
+  .coupling-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px 20px;
+  }
+  .coupling-flow-source, .coupling-flow-dest {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 100px;
+  }
+  .coupling-flow-engine-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .coupling-flow-engine-name {
+    font-size: 12px; font-weight: 600;
+    color: rgba(200, 204, 216, 0.8);
+  }
+  .coupling-flow-param {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 5px;
+    background: rgba(60, 180, 170, 0.1);
+    border: 1px solid rgba(60, 180, 170, 0.25);
+    color: rgba(60, 180, 170, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .coupling-flow-arrow {
+    flex-shrink: 0;
+  }
+  .coupling-desc {
+    text-align: center;
+    font-size: 11px;
+    color: rgba(200, 204, 216, 0.4);
+    padding: 0 20px 16px;
+    font-style: italic;
+  }
+
+  /* Bottom controls */
+  .coupling-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-top: 1px solid rgba(200, 204, 216, 0.06);
+    background: rgba(10, 12, 16, 0.3);
+  }
+  .coupling-type-select {
+    background: rgba(200, 204, 216, 0.04);
+    border: 1px solid rgba(200, 204, 216, 0.1);
+    border-radius: 6px;
+    color: rgba(200, 204, 216, 0.7);
+    font-size: 11px;
+    padding: 5px 10px;
+    outline: none;
+    cursor: pointer;
+  }
+  .coupling-type-select:focus { border-color: rgba(60, 180, 170, 0.3); }
+  .coupling-depth-wrap {
+    display: flex; align-items: center; gap: 6px; flex: 1;
+  }
+  .coupling-depth-label {
+    font-size: 9px; text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(200, 204, 216, 0.3);
+  }
+  .coupling-depth-slider {
+    flex: 1; height: 4px;
+    -webkit-appearance: none;
+    background: rgba(200, 204, 216, 0.1);
+    border-radius: 2px; outline: none;
+  }
+  .coupling-depth-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: rgba(60, 180, 170, 0.8);
+    border: 2px solid rgba(60, 180, 170, 0.4);
+    cursor: pointer;
+  }
+  .coupling-depth-val {
+    font-size: 11px; font-family: 'JetBrains Mono', monospace;
+    color: rgba(60, 180, 170, 0.7);
+    min-width: 32px; text-align: right;
+  }
+  .coupling-done-btn {
+    padding: 6px 16px;
+    font-size: 11px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    color: rgba(60, 180, 170, 0.9);
+    background: rgba(60, 180, 170, 0.1);
+    border: 1px solid rgba(60, 180, 170, 0.3);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .coupling-done-btn:hover {
+    background: rgba(60, 180, 170, 0.18);
+    border-color: rgba(60, 180, 170, 0.5);
+  }
+  .coupling-remove-btn {
+    padding: 6px 12px;
+    font-size: 10px;
+    color: rgba(239, 68, 68, 0.6);
+    background: transparent;
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .coupling-remove-btn:hover {
+    color: rgba(239, 68, 68, 0.9);
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+.coupling-tier-badge {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+.coupling-tier-badge.tier-safe {
+  color: rgba(16, 185, 129, 0.9);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+.coupling-tier-badge.tier-standard {
+  color: rgba(245, 158, 11, 0.9);
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+}
+.coupling-tier-badge.tier-caution {
+  color: rgba(239, 68, 68, 0.8);
+  background: rgba(239, 68, 68, 0.08);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.coupling-tier-badge.tier-exotic {
+  color: rgba(168, 85, 247, 0.9);
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+}
+.coupling-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(245, 158, 11, 0.06);
+  border-top: 1px solid rgba(245, 158, 11, 0.12);
+  font-size: 10px;
+  color: rgba(245, 158, 11, 0.75);
+  line-height: 1.4;
+}
+.coupling-warning-icon {
+  font-size: 12px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+  /* ════════════════════════════════════════
+     SETTINGS PANEL (in right panel)
+  ════════════════════════════════════════ */
+  .settings-section {
+    padding: 0 4px;
+  }
+  .settings-section-title {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(60, 180, 170, 0.5);
+    padding: 6px 0 8px;
+    border-bottom: 1px solid rgba(200, 204, 216, 0.04);
+    margin-bottom: 8px;
+  }
+  .settings-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+  }
+  .settings-label {
+    font-size: 11px;
+    color: rgba(200, 204, 216, 0.55);
+    flex: 1;
+    min-width: 0;
+  }
+  .settings-select {
+    background: rgba(200, 204, 216, 0.04);
+    border: 1px solid rgba(200, 204, 216, 0.1);
+    border-radius: 5px;
+    color: rgba(200, 204, 216, 0.7);
+    font-size: 11px;
+    padding: 4px 8px;
+    outline: none;
+    cursor: pointer;
+    min-width: 70px;
+  }
+  .settings-select:focus {
+    border-color: rgba(60, 180, 170, 0.3);
+  }
+  .settings-slider {
+    width: 80px;
+    height: 4px;
+    -webkit-appearance: none;
+    background: rgba(200, 204, 216, 0.1);
+    border-radius: 2px;
+    outline: none;
+    flex-shrink: 0;
+  }
+  .settings-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: rgba(60, 180, 170, 0.8);
+    border: 2px solid rgba(60, 180, 170, 0.4);
+    cursor: pointer;
+  }
+  .settings-value {
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    color: rgba(60, 180, 170, 0.6);
+    min-width: 36px;
+    text-align: right;
+  }
+  .settings-toggle {
+    padding: 4px 14px;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(200, 204, 216, 0.4);
+    background: rgba(200, 204, 216, 0.04);
+    border: 1px solid rgba(200, 204, 216, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+    min-width: 44px;
+  }
+  .settings-toggle:hover {
+    background: rgba(200, 204, 216, 0.08);
+  }
+  .settings-toggle.active {
+    color: rgba(60, 180, 170, 0.9);
+    background: rgba(60, 180, 170, 0.12);
+    border-color: rgba(60, 180, 170, 0.35);
+  }
+  .settings-toggle-wrap {
+    display: flex;
+  }
+
+  /* ════════════════════════════════════════
+     CONTEXT MENU
+  ════════════════════════════════════════ */
+  .ctx-menu {
+    display: none;
+    position: fixed;
+    z-index: 200;
+    background: linear-gradient(to bottom, #1e2028, #16181e);
+    border: 1px solid rgba(60, 180, 170, 0.15);
+    border-radius: 8px;
+    padding: 4px 0;
+    min-width: 160px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(60,180,170,0.05);
+    overflow: hidden;
+  }
+  .ctx-menu.open { display: block; }
+  .ctx-item {
+    padding: 7px 14px;
+    font-size: 11px;
+    color: rgba(200, 204, 216, 0.7);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.1s;
+  }
+  .ctx-item:hover {
+    background: rgba(60, 180, 170, 0.1);
+    color: rgba(200, 204, 216, 0.95);
+  }
+  .ctx-item.danger { color: rgba(239, 68, 68, 0.7); }
+  .ctx-item.danger:hover { background: rgba(239, 68, 68, 0.1); color: rgba(239, 68, 68, 0.95); }
+  .ctx-sep {
+    height: 1px;
+    background: rgba(200, 204, 216, 0.06);
+    margin: 3px 0;
+  }
+  .ctx-item-icon { font-size: 13px; width: 18px; text-align: center; }
+
+  /* ════════════════════════════════════════
+     TOOLTIPS
+  ════════════════════════════════════════ */
+  .tooltip {
+    display: none;
+    position: fixed;
+    z-index: 300;
+    background: rgba(14, 16, 22, 0.95);
+    border: 1px solid rgba(60, 180, 170, 0.2);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 10px;
+    color: rgba(200, 204, 216, 0.8);
+    pointer-events: none;
+    white-space: nowrap;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    backdrop-filter: blur(8px);
+    max-width: 220px;
+    white-space: normal;
+    line-height: 1.4;
+  }
+  .tooltip.visible { display: block; }
+  .tooltip-key {
+    font-size: 9px;
+    color: rgba(60, 180, 170, 0.6);
+    margin-top: 2px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<!-- OCEAN SPLIT: ocean viewport + right panel side by side -->
+<!-- waterline and dashboard sit BELOW this row, outside it -->
+<div id="oceanSplit" style="display:flex;flex:1;min-height:0;overflow:hidden;">
+
+<!-- ══════════════════════════════════════════
+     OCEAN VIEWPORT
+══════════════════════════════════════════ -->
+<div class="ocean-viewport" id="oceanViewport" style="flex:1;min-width:0;transition:flex 0.28s ease;">
+  <canvas id="oceanCanvas"></canvas>
+
+  <!-- Floating nav bar -->
+  <div class="hud-nav">
+    <button class="hud-btn" id="enginesBtn">&#9776; Engines</button>
+    <div class="hud-spacer"></div>
+    <div class="hud-preset-nav">
+      <button class="hud-preset-btn" id="prevPresetBtn">&#9664;</button>
+      <span class="hud-preset-name" id="presetNameHud">Welcome</span>
+      <button class="hud-preset-btn" id="nextPresetBtn">&#9654;</button>
+      <button class="hud-fav-btn" id="favBtn">&#9825;</button>
+    </div>
+    <div class="hud-spacer"></div>
+    <button class="hud-btn" id="chainModeBtn">&#128279; Chain</button>
+    <span style="font-size:9px;text-transform:uppercase;letter-spacing:1px;color:rgba(200,204,216,0.25)">Output</span>
+    <input type="range" id="energySlider" min="0" max="100" value="10"
+      style="width:70px;accent-color:#3CB4AA;cursor:pointer;" title="Simulates master output level — auto in real plugin">
+    <button class="hud-btn icon-btn" id="settingsBtn">&#9881;</button>
+  </div>
+
+  <!-- Detail backdrop -->
+  <div class="detail-backdrop" id="detailBackdrop"></div>
+
+  <!-- Engine Detail Panel -->
+  <div class="detail-panel" id="detailPanel">
+    <div class="detail-header">
+      <button class="detail-back" id="detailBack">&#8592;</button>
+      <div class="detail-engine-icon" id="detailIcon"></div>
+      <div style="flex:1">
+        <div class="detail-engine-name" id="detailName">Obrix</div>
+        <div class="detail-engine-type" id="detailType">Engine</div>
+      </div>
+    </div>
+    <div class="detail-body">
+      <div class="detail-viz">
+        <div class="waveform-display"><canvas id="waveformCanvas"></canvas></div>
+        <div class="adsr-display"><canvas id="adsrCanvas"></canvas></div>
+        <div class="adsr-sliders">
+          <div class="adsr-param"><label>A</label><input type="range" min="0" max="100" value="5" class="adsr-slider" data-param="a"><span class="adsr-val">5ms</span></div>
+          <div class="adsr-param"><label>D</label><input type="range" min="0" max="100" value="30" class="adsr-slider" data-param="d"><span class="adsr-val">30ms</span></div>
+          <div class="adsr-param"><label>S</label><input type="range" min="0" max="100" value="70" class="adsr-slider" data-param="s"><span class="adsr-val">70%</span></div>
+          <div class="adsr-param"><label>R</label><input type="range" min="0" max="100" value="40" class="adsr-slider" data-param="r"><span class="adsr-val">40ms</span></div>
+        </div>
+      </div>
+      <div class="detail-params" id="detailParams"></div>
+    </div>
+  </div>
+</div><!-- /ocean-viewport -->
+
+<!-- RIGHT PANEL: pad/drum/xy grid — sibling of ocean-viewport inside oceanSplit -->
+<div class="surface-right" id="surfaceRight">
+  <div class="surface-right-header">
+    <span class="surface-right-title" id="surfaceRightTitle">Pad</span>
+    <button class="surface-right-close" id="surfaceRightClose">&times;</button>
+  </div>
+  <div class="surface-right-body" id="surfaceRightBody"></div>
+</div><!-- /surface-right -->
+
+</div><!-- /oceanSplit -->
+
+<!-- ══════════════════════════════════════════
+     WATERLINE — below oceanSplit, outside it
+══════════════════════════════════════════ -->
+<div class="waterline"></div>
+
+<!-- ══════════════════════════════════════════
+     DASHBOARD — below waterline, always visible
+══════════════════════════════════════════ -->
+<div class="dashboard" id="dashboard">
+
+  <!-- Macro strip -->
+  <div class="macro-strip">
+    <div class="macros-center" id="macrosCenter">
+      <div class="macro"><div class="macro-knob" style="--macro-angle:-60deg" data-macro="char"></div><div class="macro-label">CHAR</div></div>
+      <div class="macro"><div class="macro-knob" style="--macro-angle:30deg" data-macro="move"></div><div class="macro-label">MOVE</div></div>
+      <div class="macro"><div class="macro-knob" style="--macro-angle:-20deg" data-macro="coup"></div><div class="macro-label">COUP</div></div>
+      <div class="macro"><div class="macro-knob" style="--macro-angle:80deg" data-macro="space"></div><div class="macro-label">SPACE</div></div>
+      <div class="macro"><div class="macro-knob" style="--macro-angle:50deg" data-macro="vol"></div><div class="macro-label">VOL</div></div>
+    </div>
+    <div class="vol-section">
+      <span class="vol-label">Vol</span>
+      <input type="range" class="vol-slider" min="0" max="100" value="80">
+      <div class="level-meter"><div class="level-fill" id="levelFill"></div></div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="surface-tabs">
+    <button class="surface-tab active" data-tab="KEYS">KEYS</button>
+    <button class="surface-tab" data-tab="PAD">PAD</button>
+    <button class="surface-tab" data-tab="DRUM">DRUM</button>
+    <button class="surface-tab" data-tab="XY">XY</button>
+    <div class="tab-spacer"></div>
+  </div>
+
+  <!-- Play area -->
+  <div class="play-area">
+    <div class="mpe-surface" id="mpeKeys"></div>
+  </div>
+</div><!-- /dashboard -->
+
+<!-- ══════════════════════════════════════════
+     STATUS BAR
+══════════════════════════════════════════ -->
+<div class="status-bar">
+  <span>120 BPM</span>
+  <span>Voices: 0</span>
+  <div class="spacer"></div>
+  <span id="buoyStatus">Engines: 1 | FX: 1 | Chains: 1</span>
+  <span>CPU: 0%</span>
+  <span class="status-dot"></span>
+</div>
+
+<!-- ENGINE PICKER DRAWER -->
+<div class="picker-backdrop" id="pickerBackdrop">
+  <div class="engine-picker">
+    <div class="picker-header">
+      <span class="picker-title">Engine Library</span>
+      <button class="picker-close" id="pickerClose">&times;</button>
+    </div>
+    <input class="picker-search" placeholder="Search engines..." id="pickerSearch">
+    <div class="picker-categories">
+      <button class="picker-cat active">All</button>
+      <button class="picker-cat">Synth</button>
+      <button class="picker-cat">Keys</button>
+      <button class="picker-cat">Bass</button>
+      <button class="picker-cat">Pad</button>
+      <button class="picker-cat">Strings</button>
+      <button class="picker-cat">Perc</button>
+      <button class="picker-cat">FX</button>
+    </div>
+    <div class="picker-list" id="pickerList"></div>
+  </div>
+</div>
+
+<!-- PRESET BROWSER MODAL -->
+<div class="preset-browser-backdrop" id="presetBackdrop">
+  <div class="preset-browser">
+    <div class="preset-browser-header">
+      <span class="preset-browser-title">Presets</span>
+      <span class="preset-browser-engine" id="presetEngineLabel">OBRIX</span>
+      <button class="preset-browser-close" id="presetClose">&times;</button>
+    </div>
+    <input class="preset-search" placeholder="Search presets..." id="presetSearch">
+    <div class="preset-moods" id="presetMoods"></div>
+    <div class="preset-list" id="presetList"></div>
+  </div>
+</div>
+
+<!-- COUPLING CONFIG POPUP -->
+<div class="coupling-backdrop" id="couplingBackdrop">
+  <div class="coupling-popup">
+    <!-- Direction bar -->
+    <div class="coupling-direction">
+      <span class="coupling-side-icon" id="cplSourceIcon" style="font-size:16px"></span>
+      <span style="font-size:11px;font-weight:600;color:rgba(200,204,216,0.7)" id="cplSourceName"></span>
+      <div style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px;">
+        <button class="dir-arrow active" data-dir="a-to-b" id="dirAtoB">&#8594;</button>
+        <button class="dir-arrow" data-dir="b-to-a" id="dirBtoA">&#8592;</button>
+        <button class="dir-arrow" data-dir="both" id="dirBoth">&#8596;</button>
+      </div>
+      <span style="font-size:11px;font-weight:600;color:rgba(200,204,216,0.7)" id="cplDestName"></span>
+      <span class="coupling-side-icon" id="cplDestIcon" style="font-size:16px"></span>
+    </div>
+
+    <!-- Flow visualization -->
+    <div class="coupling-flow" id="cplFlow">
+      <div class="coupling-flow-source" id="cplFlowSource">
+        <div class="coupling-flow-engine-icon" id="cplFlowSourceIcon"></div>
+        <div class="coupling-flow-engine-name" id="cplFlowSourceName"></div>
+        <div class="coupling-flow-param" id="cplFlowSourceParam">Amplitude</div>
+      </div>
+      <div class="coupling-flow-arrow" id="cplFlowArrow">
+        <svg width="80" height="24" viewBox="0 0 80 24">
+          <line x1="0" y1="12" x2="68" y2="12" stroke="rgba(60,180,170,0.5)" stroke-width="2" stroke-dasharray="4,3"/>
+          <polygon points="68,6 80,12 68,18" fill="rgba(60,180,170,0.6)"/>
+        </svg>
+      </div>
+      <div class="coupling-flow-dest" id="cplFlowDest">
+        <div class="coupling-flow-engine-icon" id="cplFlowDestIcon"></div>
+        <div class="coupling-flow-engine-name" id="cplFlowDestName"></div>
+        <div class="coupling-flow-param" id="cplFlowDestParam">Filter Cutoff</div>
+      </div>
+    </div>
+    <div class="coupling-desc" id="cplDesc">Engine loudness modulates filter cutoff</div>
+
+    <!-- Footer -->
+    <div class="coupling-footer">
+      <select class="coupling-type-select" id="cplTypeSelect"></select>
+      <span class="coupling-tier-badge" id="cplTierBadge"></span>
+      <div class="coupling-depth-wrap">
+        <span class="coupling-depth-label">Depth</span>
+        <input type="range" class="coupling-depth-slider" id="cplDepthSlider" min="0" max="100" value="50">
+        <span class="coupling-depth-val" id="cplDepthVal">50%</span>
+      </div>
+      <button class="coupling-remove-btn" id="cplRemoveBtn">Remove</button>
+      <button class="coupling-done-btn" id="cplDoneBtn">Done</button>
+    </div>
+    <div class="coupling-warning" id="cplWarning" style="display:none">
+      <span class="coupling-warning-icon">⚠</span>
+      <span class="coupling-warning-text" id="cplWarningText"></span>
+    </div>
+  </div>
+</div>
+
+<!-- CONTEXT MENU -->
+<div class="ctx-menu" id="ctxMenu"></div>
+
+<!-- TOOLTIP -->
+<div class="tooltip" id="tooltip"></div>
+
+<script>
+// ════════════════════════════════════════
+//  DATA
+// ════════════════════════════════════════
+const engines = [
+  { name: 'Obrix',     desc: 'Flagship wavetable + FM hybrid', icon: '🌊', color: '#3CB4AA', depth: 'sunlit', type: 'engine' },
+  { name: 'Oxytocin', desc: 'Circuit love synthesizer',       icon: '💗', color: '#E06090', depth: 'twilight', type: 'engine' },
+  { name: 'Opera',    desc: 'Additive vocal Kuramoto',        icon: '🎭', color: '#C8A040', depth: 'deep', type: 'engine' },
+  { name: 'Oware',    desc: 'Akan tuned percussion',          icon: '🥁', color: '#D4A574', depth: 'sunlit', type: 'engine' },
+  { name: 'Offering', desc: 'Boom bap drum engine',           icon: '🎯', color: '#8B6914', depth: 'sunlit', type: 'engine' },
+  { name: 'Onset',    desc: 'Transient percussion',           icon: '⚡', color: '#E8A030', depth: 'sunlit', type: 'engine' },
+  { name: 'Ouroboros',desc: 'Self-feeding feedback',          icon: '🐍', color: '#7C3AED', depth: 'midnight', type: 'engine' },
+  { name: 'Obscura',  desc: 'Stiff string resonance',         icon: '🔮', color: '#6B21A8', depth: 'deep', type: 'engine' },
+  { name: 'Orbital',  desc: 'Phase-locked oscillators',       icon: '🪐', color: '#3B82F6', depth: 'twilight', type: 'engine' },
+  { name: 'Organon',  desc: 'Metabolic synthesis',            icon: '🧬', color: '#10B981', depth: 'deep', type: 'engine' },
+  { name: 'Odyssey',  desc: 'Classic analog drift',           icon: '🚀', color: '#F59E0B', depth: 'sunlit', type: 'engine' },
+  { name: 'Overdub',  desc: 'Tape saturation engine',         icon: '📼', color: '#EF4444', depth: 'sunlit', type: 'engine' },
+  { name: 'Opal',     desc: 'Granular crystalline',           icon: '💎', color: '#A78BFA', depth: 'twilight', type: 'engine' },
+  { name: 'Oceanic',  desc: 'Spectral ocean model',           icon: '🌀', color: '#0EA5E9', depth: 'midnight', type: 'engine' },
+  { name: 'Oto',      desc: 'Tonewheel organ',                icon: '🎹', color: '#84CC16', depth: 'sunlit', type: 'engine' },
+  { name: 'Ogre',     desc: 'Sub bass monster',               icon: '👹', color: '#DC2626', depth: 'midnight', type: 'engine' },
+];
+
+// Epic Chain FX — 3 master bus processing slots (large barges in ocean)
+const masterFxPool = [
+  { name: 'Epic 1',   desc: 'FX Chain Slot 1',      icon: '🔷', color: '#0EA5E9', type: 'master-fx' },
+  { name: 'Epic 2',   desc: 'FX Chain Slot 2',      icon: '🔷', color: '#8B5CF6', type: 'master-fx' },
+  { name: 'Epic 3',   desc: 'FX Chain Slot 3',      icon: '🔷', color: '#6366F1', type: 'master-fx' },
+];
+
+
+const depthColors = { sunlit: '#3CB4AA', twilight: '#7C3AED', deep: '#1E40AF', midnight: '#1a1c24' };
+
+const paramSections = {
+  'Obrix': [
+    { title: 'Oscillator', params: ['Wave','Shape','Detune','Spread','FM Amt','FM Ratio','Sub','Noise'] },
+    { title: 'Filter',     params: ['Cutoff','Res','Drive','Env','Key Track','Type'] },
+    { title: 'Modulation', params: ['LFO Rate','LFO Depth','Mod Wheel','Aftertouch'] },
+  ],
+  '_default': [
+    { title: 'Oscillator', params: ['Wave','Tune','Detune','Mix'] },
+    { title: 'Filter',     params: ['Cutoff','Res','Type','Env'] },
+    { title: 'Modulation', params: ['LFO Rate','LFO Depth','Mod Amt','Vel Sens'] },
+  ],
+  'Epic 1': [
+    { title: 'FX Type', params: ['Type', 'Preset'] },
+    { title: 'Controls', params: ['Mix', 'Drive', 'Tone', 'Rate', 'Depth', 'Feedback'] },
+    { title: 'Output', params: ['Level', 'Pan', 'Width'] },
+  ],
+  'Epic 2': [
+    { title: 'FX Type', params: ['Type', 'Preset'] },
+    { title: 'Controls', params: ['Mix', 'Drive', 'Tone', 'Rate', 'Depth', 'Feedback'] },
+    { title: 'Output', params: ['Level', 'Pan', 'Width'] },
+  ],
+  'Epic 3': [
+    { title: 'FX Type', params: ['Type', 'Preset'] },
+    { title: 'Controls', params: ['Mix', 'Drive', 'Tone', 'Rate', 'Depth', 'Feedback'] },
+    { title: 'Output', params: ['Level', 'Pan', 'Width'] },
+  ],
+};
+
+const presetsByEngine = {
+  'Obrix': [
+    { name: 'Welcome',       mood: 'Foundation' },
+    { name: 'Deep Current',  mood: 'Deep' },
+    { name: 'Crystal Tide',  mood: 'Crystalline' },
+    { name: 'Neon Reef',     mood: 'Luminous' },
+    { name: 'Midnight Pulse',mood: 'Atmosphere' },
+    { name: 'Solar Wind',    mood: 'Kinetic' },
+    { name: 'Entangled Roots',mood:'Entangled' },
+    { name: 'Shadow Drift',  mood: 'Shadow' },
+    { name: 'Organic Growth',mood: 'Organic' },
+    { name: 'Prism Split',   mood: 'Prism' },
+    { name: 'Flux Capacitor',mood: 'Flux' },
+    { name: 'Aether Walk',   mood: 'Aether' },
+  ],
+  'Oxytocin': [
+    { name: 'First Touch',   mood: 'Foundation' },
+    { name: 'Warm Embrace',  mood: 'Atmosphere' },
+    { name: 'Heart Circuit', mood: 'Kinetic' },
+    { name: 'Love Signal',   mood: 'Luminous' },
+    { name: 'Bonding Agent', mood: 'Deep' },
+    { name: 'Intimate Space',mood: 'Organic' },
+  ],
+  '_default': [
+    { name: 'Init',          mood: 'Foundation' },
+    { name: 'Warm Pad',      mood: 'Atmosphere' },
+    { name: 'Bright Lead',   mood: 'Luminous' },
+    { name: 'Dark Texture',  mood: 'Shadow' },
+  ],
+};
+
+// ════════════════════════════════════════
+//  OCEAN CANVAS — BUOY PHYSICS
+// ════════════════════════════════════════
+const canvas = document.getElementById('oceanCanvas');
+const ctx = canvas.getContext('2d');
+const viewport = document.getElementById('oceanViewport');
+let W, H, dpr;
+
+function resizeCanvas() {
+  dpr = window.devicePixelRatio || 1;
+  W = viewport.offsetWidth;
+  H = viewport.offsetHeight;
+  canvas.width  = W * dpr;
+  canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+resizeCanvas();
+window.addEventListener('resize', resizeCanvas);
+// Also resize when the ocean viewport changes size (e.g. right panel open/close)
+new ResizeObserver(() => resizeCanvas()).observe(viewport);
+
+// Wave points
+const wavePoints = 120;
+const waveY = new Float32Array(wavePoints);
+
+let time = 0;
+let intensity = 0.0;
+let targetIntensity = 0.1;
+
+// ── BUOY STATE ──
+const buoys = [];
+const chains = [];
+
+let chainMode = false;
+let chainStart = null;
+let mouseX = 0, mouseY = 0;
+let dragBuoy = null;
+let dragOffX = 0, dragOffY = 0;
+
+// Waveform shapes for the wreath ring
+const waveShapes = {
+  sine:    (t) => Math.sin(t),
+  saw:     (t) => 2 * ((t / (Math.PI*2)) % 1) - 1,
+  square:  (t) => Math.sin(t) > 0 ? 1 : -1,
+  tri:     (t) => 2 * Math.abs(2 * ((t / (Math.PI*2)) % 1) - 1) - 1,
+  noise:   (t) => Math.sin(t * 7.3) * Math.cos(t * 3.1) + Math.sin(t * 13.7) * 0.5,
+  organ:   (t) => Math.sin(t) * 0.6 + Math.sin(t*2) * 0.25 + Math.sin(t*3) * 0.15,
+  pulse:   (t) => Math.sin(t) > 0.3 ? 1 : -1,
+  harmonic:(t) => Math.sin(t) + Math.sin(t*3)*0.4 + Math.sin(t*5)*0.2,
+};
+
+// Assign waveform shapes by engine character
+const engineWaveMap = {
+  'Obrix': 'harmonic', 'Oxytocin': 'sine', 'Opera': 'organ',
+  'Oware': 'pulse', 'Offering': 'square', 'Onset': 'noise',
+  'Ouroboros': 'noise', 'Obscura': 'tri', 'Orbital': 'sine',
+  'Organon': 'noise', 'Odyssey': 'saw', 'Overdub': 'saw',
+  'Opal': 'noise', 'Oceanic': 'sine', 'Oto': 'organ', 'Ogre': 'square',
+};
+
+function makeBuoy(data, x, y) {
+  return {
+    type:     data.type || 'engine',
+    name:     data.name,
+    icon:     data.icon,
+    color:    data.color,
+    waveShape: engineWaveMap[data.name] || 'sine',
+    wavePhase: Math.random() * Math.PI * 2,
+    harmonics: 6 + Math.floor(Math.random() * 6), // how many wave cycles around the ring
+    x, y,
+    vx: 0, vy: 0,
+    radius:   data.type === 'master-fx' ? 38 : data.type === 'fx' ? 26 : 36,
+    bobPhase: Math.random() * Math.PI * 2,
+    bobSpeed: 0.28 + Math.random() * 0.18,
+    bobAmp:   2 + Math.random() * 2.5,
+    selected: false,
+  };
+}
+
+// Ripple system — visual feedback for note-on events
+function triggerRipple(buoy) {
+  if (!buoy._ripples) buoy._ripples = [];
+  buoy._ripples.push({ time: 0, maxTime: 1.5 });
+  buoy._flare = 1.0; // wreath flare
+}
+
+// Demo: trigger ripples on any pad/key click
+document.addEventListener('mousedown', (e) => {
+  const target = e.target.closest('.mpe-key, .pad-cell, .drum-pad');
+  if (target && buoys.length > 0) {
+    // Trigger ripple on a random engine buoy
+    const engineBuoys = buoys.filter(b => b.type === 'engine');
+    if (engineBuoys.length > 0) {
+      triggerRipple(engineBuoys[Math.floor(Math.random() * engineBuoys.length)]);
+    }
+  }
+});
+
+// First launch: empty ocean — lifesaver prompt
+let firstLaunch = true;
+
+window.addEventListener('load', () => {
+  updateBuoyStatus();
+});
+
+function updateBuoyStatus() {
+  const eng = buoys.filter(b => b.type === 'engine').length;
+  const fx  = buoys.filter(b => b.type === 'fx' || b.type === 'master-fx').length;
+  document.getElementById('buoyStatus').textContent = `Engines: ${eng} | FX: ${fx} | Chains: ${chains.length}`;
+}
+
+// ── CHAIN KNOT MIDPOINTS (updated each frame for hit testing) ──
+const chainMidpoints = []; // [{x, y, chain, index}]
+
+// ── CANVAS MOUSE ──
+function getBuoyAt(x, y) {
+  for (let i = buoys.length - 1; i >= 0; i--) {
+    const b = buoys[i];
+    const dx = x - b.x, dy = y - b.y;
+    if (dx*dx + dy*dy < (b.radius + 8)*(b.radius + 8)) return b;
+  }
+  return null;
+}
+
+function getChainKnotAt(x, y) {
+  for (let i = chainMidpoints.length - 1; i >= 0; i--) {
+    const k = chainMidpoints[i];
+    const dx = x - k.x, dy = y - k.y;
+    if (dx*dx + dy*dy < 14*14) return k;
+  }
+  return null;
+}
+
+canvas.addEventListener('mousedown', (e) => {
+  const x = e.clientX, y = e.clientY;
+  const rect = canvas.getBoundingClientRect();
+  const cx = x - rect.left, cy = y - rect.top;
+  mouseX = cx; mouseY = cy;
+
+  // First launch lifesaver click
+  if (firstLaunch && buoys.length === 0) {
+    const lx = W / 2, ly = H * 0.42 + Math.sin(time * 0.6) * 6;
+    if (Math.hypot(cx - lx, cy - ly) < 50) {
+      firstLaunch = false;
+      document.getElementById('pickerBackdrop').classList.add('open');
+      return;
+    }
+  }
+
+  const hit = getBuoyAt(cx, cy);
+
+  if (chainMode) {
+    if (hit) {
+      if (!chainStart) {
+        chainStart = hit;
+      } else if (hit !== chainStart) {
+        const exists = chains.some(c =>
+          (c.a === chainStart && c.b === hit) || (c.a === hit && c.b === chainStart));
+        if (!exists) {
+          const newChain = { a: chainStart, b: hit, direction: 'a-to-b', couplingType: 'AmpToFilter', depth: 50 };
+          chains.push(newChain);
+          updateBuoyStatus();
+          openCouplingConfig(newChain, chains.length - 1);
+        }
+        chainStart = null;
+      }
+    } else {
+      chainStart = null;
+    }
+    return;
+  }
+
+  if (hit) {
+    dragBuoy = hit;
+    dragOffX = cx - hit.x;
+    dragOffY = cy - hit.y;
+    canvas.style.cursor = 'grabbing';
+  }
+});
+
+canvas.addEventListener('mousemove', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  mouseX = e.clientX - rect.left;
+  mouseY = e.clientY - rect.top;
+  if (dragBuoy) {
+    dragBuoy.x = mouseX - dragOffX;
+    dragBuoy.y = mouseY - dragOffY;
+  }
+});
+
+canvas.addEventListener('mouseup', () => {
+  dragBuoy = null;
+  canvas.style.cursor = chainMode ? 'crosshair' : 'grab';
+});
+
+canvas.addEventListener('dblclick', (e) => {
+  if (chainMode) return;
+  const rect = canvas.getBoundingClientRect();
+  const cx = e.clientX - rect.left, cy = e.clientY - rect.top;
+
+  // Check knot first (smaller target, higher priority)
+  const knot = getChainKnotAt(cx, cy);
+  if (knot) { openCouplingConfig(knot.chain, knot.index); return; }
+
+  // Then buoy
+  const hit = getBuoyAt(cx, cy);
+  if (hit) openEngineDetail(hit);
+});
+
+// (context menu handling moved to capture-phase handler at end of script)
+
+// Chain mode toggle
+document.getElementById('chainModeBtn').addEventListener('click', () => {
+  chainMode = !chainMode;
+  chainStart = null;
+  const btn = document.getElementById('chainModeBtn');
+  btn.classList.toggle('active', chainMode);
+  canvas.style.cursor = chainMode ? 'crosshair' : 'grab';
+});
+
+document.getElementById('settingsBtn').addEventListener('click', () => {
+  openSurfaceRight('SETTINGS');
+});
+
+// Energy slider
+document.getElementById('energySlider').addEventListener('input', (e) => {
+  targetIntensity = e.target.value / 100;
+});
+
+// ── DRAW LOOP ──
+function drawOcean() {
+  time += 0.016;
+  intensity += (targetIntensity - intensity) * 0.03;
+
+  ctx.clearRect(0, 0, W, H);
+
+  // Background gradient
+  const grad = ctx.createRadialGradient(W/2, H/2, 0, W/2, H/2, Math.max(W, H) * 0.65);
+  const r1 = Math.round(26 + intensity * 12);
+  const g1 = Math.round(36 + intensity * 6);
+  const b1 = Math.round(56 + intensity * 18);
+  grad.addColorStop(0, `rgb(${r1},${g1},${b1})`);
+  grad.addColorStop(1, '#12141a');
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  // Wave surface — simulated master output waveform
+  // In real JUCE: reads from master output ring buffer
+  const baseAmp = 1.5 + intensity * 14;
+  const chop    = intensity * 7;
+  for (let i = 0; i < wavePoints; i++) {
+    waveY[i] =
+      Math.sin(time * 0.8  + i * 0.08) * baseAmp +
+      Math.sin(time * 1.3  + i * 0.15) * baseAmp * 0.6 +
+      Math.sin(time * 2.1  + i * 0.22) * chop +
+      Math.sin(time * 3.7  + i * 0.35) * chop * 0.4 +
+      (intensity > 0.5 ? Math.sin(time * 5.3 + i * 0.5) * (intensity - 0.5) * 8 : 0);
+  }
+
+  // PRIMARY WAVEFORM — the master output trace
+  // Centered horizontally across the ocean, reads like an oscilloscope
+  const primaryY = H * 0.45;
+
+  // Glow underneath the primary waveform
+  ctx.beginPath();
+  ctx.moveTo(0, primaryY);
+  for (let i = 0; i < wavePoints; i++) {
+    const x = (i / wavePoints) * W;
+    const y = primaryY + waveY[i] * 1.2;
+    ctx.lineTo(x, y);
+  }
+  ctx.lineTo(W, primaryY + 40);
+  ctx.lineTo(0, primaryY + 40);
+  ctx.closePath();
+  const glowFill = ctx.createLinearGradient(0, primaryY, 0, primaryY + 40);
+  glowFill.addColorStop(0, `rgba(60,180,170,${0.04 + intensity * 0.06})`);
+  glowFill.addColorStop(1, 'transparent');
+  ctx.fillStyle = glowFill;
+  ctx.fill();
+
+  // Primary waveform line — thick, prominent
+  ctx.beginPath();
+  for (let i = 0; i < wavePoints; i++) {
+    const x = (i / wavePoints) * W;
+    const y = primaryY + waveY[i] * 1.2;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.strokeStyle = `rgba(60,180,170,${0.15 + intensity * 0.35})`;
+  ctx.lineWidth = 2 + intensity * 1.5;
+  ctx.stroke();
+
+  // Thinner bright core on top
+  ctx.beginPath();
+  for (let i = 0; i < wavePoints; i++) {
+    const x = (i / wavePoints) * W;
+    const y = primaryY + waveY[i] * 1.2;
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.strokeStyle = `rgba(120,220,210,${0.08 + intensity * 0.25})`;
+  ctx.lineWidth = 1;
+  ctx.stroke();
+
+  // Depth layers — 3 stacked echo waves behind the primary, giving ocean depth
+  for (let layer = 0; layer < 3; layer++) {
+    const yBase = H * (0.22 + layer * 0.18);
+    const alpha = 0.025 + intensity * 0.03 - layer * 0.006;
+    const speed = 0.7 - layer * 0.15;
+    const scale = 0.5 - layer * 0.1;
+    const phaseOff = layer * 0.6;
+    ctx.beginPath();
+    for (let i = 0; i < wavePoints; i++) {
+      const x = (i / wavePoints) * W;
+      const wave = waveY[i] * scale * (1 + layer * 0.2);
+      const drift = Math.sin(time * speed + i * 0.05 + phaseOff) * (2 + intensity * 3);
+      const y = yBase + wave + drift;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = `rgba(60,180,170,${alpha})`;
+    ctx.lineWidth = 0.7;
+    ctx.stroke();
+  }
+
+  // Depth rings
+  ctx.lineWidth = 1;
+  for (let r = 80; r < 520; r += 110) {
+    ctx.beginPath();
+    const wobble = Math.sin(time * 0.3 + r * 0.005) * intensity * 4;
+    ctx.arc(W/2, H/2 + wobble, r, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(60,180,170,${0.025 + intensity * 0.018})`;
+    ctx.stroke();
+  }
+
+  // ── FIRST LAUNCH LIFESAVER ──
+  if (firstLaunch && buoys.length === 0) {
+    const lx = W / 2, ly = H * 0.42;
+    const lr = 40;
+    const pulse = 1 + Math.sin(time * 2) * 0.08;
+    const bobY = Math.sin(time * 0.6) * 6;
+    const drawLY = ly + bobY;
+
+    // Outer glow
+    const glow = ctx.createRadialGradient(lx, drawLY, lr, lx, drawLY, lr * 2.5);
+    glow.addColorStop(0, 'rgba(239, 68, 68, 0.08)');
+    glow.addColorStop(1, 'transparent');
+    ctx.fillStyle = glow;
+    ctx.fillRect(lx - lr*3, drawLY - lr*3, lr*6, lr*6);
+
+    // Ring
+    ctx.beginPath();
+    ctx.arc(lx, drawLY, lr * pulse, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(239, 68, 68, 0.7)';
+    ctx.lineWidth = 8;
+    ctx.stroke();
+
+    // White stripes on ring (lifesaver pattern)
+    for (let i = 0; i < 4; i++) {
+      const a1 = (Math.PI / 2) * i + Math.PI / 4 + time * 0.15;
+      const a2 = a1 + Math.PI / 6;
+      ctx.beginPath();
+      ctx.arc(lx, drawLY, lr * pulse, a1, a2);
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.85)';
+      ctx.lineWidth = 8;
+      ctx.stroke();
+    }
+
+    // Inner circle
+    ctx.beginPath();
+    ctx.arc(lx, drawLY, lr * pulse - 6, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(239, 68, 68, 0.3)';
+    ctx.lineWidth = 1;
+    ctx.stroke();
+
+    // Text
+    ctx.font = '600 12px -apple-system, sans-serif';
+    ctx.fillStyle = `rgba(200, 204, 216, ${0.5 + Math.sin(time * 2.5) * 0.2})`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('CLICK ME', lx, drawLY);
+
+    // Subtitle
+    ctx.font = '9px -apple-system, sans-serif';
+    ctx.fillStyle = 'rgba(200, 204, 216, 0.25)';
+    ctx.fillText('Drop your first engine into the ocean', lx, drawLY + lr + 20);
+  }
+
+  // ── CHAINS ──
+  chainMidpoints.length = 0; // reset for hit testing
+  chains.forEach((c, ci) => {
+    const aiWave = waveY[Math.max(0, Math.min(wavePoints-1, Math.floor((c.a.x/W)*wavePoints)))] || 0;
+    const biWave = waveY[Math.max(0, Math.min(wavePoints-1, Math.floor((c.b.x/W)*wavePoints)))] || 0;
+    const ax = c.a.x;
+    const ay = c.a.y + Math.sin(time * c.a.bobSpeed + c.a.bobPhase) * (c.a.bobAmp + intensity*4) + aiWave * 0.7;
+    const bx = c.b.x;
+    const by = c.b.y + Math.sin(time * c.b.bobSpeed + c.b.bobPhase) * (c.b.bobAmp + intensity*4) + biWave * 0.7;
+
+    const mx = (ax + bx) / 2, my = (ay + by) / 2;
+    const dist = Math.hypot(bx - ax, by - ay);
+    const sag  = Math.min(dist * 0.15, 28) + Math.sin(time * 0.8) * 2.5;
+
+    // Knot midpoint on the curve (t=0.5 of quadratic bezier)
+    const knotX = 0.25*ax + 0.5*mx + 0.25*bx;
+    const knotY = 0.25*ay + 0.5*(my+sag) + 0.25*by;
+    chainMidpoints.push({ x: knotX, y: knotY, chain: c, index: ci });
+
+    // Glow
+    ctx.beginPath();
+    ctx.moveTo(ax, ay);
+    ctx.quadraticCurveTo(mx, my + sag, bx, by);
+    ctx.strokeStyle = 'rgba(60,180,170,0.07)';
+    ctx.lineWidth = 9;
+    ctx.stroke();
+
+    // Direction arrow flow — animated dots along the chain
+    const dir = c.direction || 'a-to-b';
+    if (dir !== 'none') {
+      const flowSpeed = time * 1.5;
+      for (let f = 0; f < 3; f++) {
+        let t = ((flowSpeed * 0.15 + f * 0.33) % 1);
+        if (dir === 'b-to-a') t = 1 - t;
+        const fx = (1-t)*(1-t)*ax + 2*(1-t)*t*mx + t*t*bx;
+        const fy = (1-t)*(1-t)*ay + 2*(1-t)*t*(my+sag) + t*t*by;
+        const alpha = Math.sin(t * Math.PI) * 0.5; // fade at endpoints
+        ctx.beginPath();
+        ctx.arc(fx, fy, 2, 0, Math.PI*2);
+        ctx.fillStyle = `rgba(60,180,170,${alpha.toFixed(2)})`;
+        ctx.fill();
+        if (dir === 'both') {
+          // Second set flowing opposite direction
+          const t2 = 1 - t;
+          const fx2 = (1-t2)*(1-t2)*ax + 2*(1-t2)*t2*mx + t2*t2*bx;
+          const fy2 = (1-t2)*(1-t2)*ay + 2*(1-t2)*t2*(my+sag) + t2*t2*by;
+          const alpha2 = Math.sin(t2 * Math.PI) * 0.35;
+          ctx.beginPath();
+          ctx.arc(fx2, fy2, 2, 0, Math.PI*2);
+          ctx.fillStyle = `rgba(140,100,220,${alpha2.toFixed(2)})`;
+          ctx.fill();
+        }
+      }
+    }
+
+    // Line
+    ctx.beginPath();
+    ctx.moveTo(ax, ay);
+    ctx.quadraticCurveTo(mx, my + sag, bx, by);
+    ctx.strokeStyle = 'rgba(60,180,170,0.32)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Chain links (skip near the knot)
+    for (let t = 0.12; t <= 0.88; t += 0.14) {
+      if (Math.abs(t - 0.5) < 0.1) continue; // gap for knot
+      const lcx = (1-t)*(1-t)*ax + 2*(1-t)*t*mx + t*t*bx;
+      const lcy = (1-t)*(1-t)*ay + 2*(1-t)*t*(my+sag) + t*t*by;
+      ctx.beginPath();
+      ctx.arc(lcx, lcy, 2.5, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(60,180,170,0.42)';
+      ctx.fill();
+    }
+
+    // ── COUPLING KNOT ──
+    // Glowing circle at the midpoint — double-click to configure
+    const knotPulse = 0.7 + Math.sin(time * 2 + ci) * 0.3;
+    // Outer glow
+    ctx.beginPath();
+    ctx.arc(knotX, knotY, 10, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(60,180,170,${(0.06 * knotPulse).toFixed(3)})`;
+    ctx.fill();
+    // Knot body
+    ctx.beginPath();
+    ctx.arc(knotX, knotY, 7, 0, Math.PI*2);
+    const knotGrad = ctx.createRadialGradient(knotX-1, knotY-1, 0, knotX, knotY, 7);
+    knotGrad.addColorStop(0, `rgba(60,180,170,${(0.35 * knotPulse).toFixed(2)})`);
+    knotGrad.addColorStop(1, `rgba(60,180,170,${(0.12 * knotPulse).toFixed(2)})`);
+    ctx.fillStyle = knotGrad;
+    ctx.fill();
+    // Knot ring
+    ctx.beginPath();
+    ctx.arc(knotX, knotY, 7, 0, Math.PI*2);
+    ctx.strokeStyle = `rgba(60,180,170,${(0.5 * knotPulse).toFixed(2)})`;
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+    // Inner dot
+    ctx.beginPath();
+    ctx.arc(knotX, knotY, 2.5, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(120,220,210,${(0.6 * knotPulse).toFixed(2)})`;
+    ctx.fill();
+  });
+
+  // ── CHAIN IN PROGRESS ──
+  if (chainMode && chainStart) {
+    const ay = chainStart.y + Math.sin(time * chainStart.bobSpeed + chainStart.bobPhase) * chainStart.bobAmp;
+    ctx.beginPath();
+    ctx.moveTo(chainStart.x, ay);
+    ctx.lineTo(mouseX, mouseY);
+    ctx.strokeStyle = 'rgba(60,180,170,0.55)';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([6, 4]);
+    ctx.stroke();
+    ctx.setLineDash([]);
+  }
+
+  // ── BUOYS ──
+  buoys.forEach(b => {
+    // Clamp buoy positions to current viewport
+    b.x = Math.max(b.radius + 10, Math.min(W - b.radius - 10, b.x));
+    b.y = Math.max(b.radius + 40, Math.min(H - b.radius - 30, b.y));
+    const wIdx = Math.max(0, Math.min(wavePoints-1, Math.floor((b.x/W)*wavePoints)));
+    const surfDisp = waveY[wIdx] || 0;
+    const ownBob = Math.sin(time * b.bobSpeed + b.bobPhase) * (b.bobAmp + intensity * 4);
+    const bobY   = ownBob + surfDisp * 0.7;
+    const drawY  = b.y + bobY;
+
+    const nextIdx = Math.min(wavePoints-1, wIdx+1);
+    const slope   = ((waveY[nextIdx]||0) - surfDisp) * 0.03;
+    const tilt    = slope * (1 + intensity * 2);
+
+    // Water reflection ellipse
+    ctx.beginPath();
+    ctx.ellipse(b.x, drawY + b.radius + 5, b.radius * 0.75, 3.5, 0, 0, Math.PI*2);
+    ctx.fillStyle = 'rgba(60,180,170,0.04)';
+    ctx.fill();
+
+    // Glow halo
+    const glowGrad = ctx.createRadialGradient(b.x, drawY, b.radius*0.5, b.x, drawY, b.radius*2.2);
+    glowGrad.addColorStop(0, b.color + '18');
+    glowGrad.addColorStop(1, 'transparent');
+    ctx.fillStyle = glowGrad;
+    ctx.fillRect(b.x - b.radius*2.5, drawY - b.radius*2.5, b.radius*5, b.radius*5);
+
+    ctx.save();
+    ctx.translate(b.x, drawY);
+    ctx.rotate(tilt);
+
+    // Body fill
+    const isFx = b.type === 'fx' || b.type === 'master-fx';
+    if (isFx) {
+      // Hexagon body for FX buoys
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const a = (Math.PI/3)*i - Math.PI/6;
+        const px = b.radius * Math.cos(a), py = b.radius * Math.sin(a);
+        i===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+      }
+      ctx.closePath();
+      const hg = ctx.createRadialGradient(-3,-3,0, 0,0, b.radius);
+      hg.addColorStop(0, b.color+'2a');
+      hg.addColorStop(1, b.color+'0c');
+      ctx.fillStyle = hg;
+      ctx.fill();
+
+      // Hex border
+      ctx.strokeStyle = b.color + (Math.round(100 + intensity*80)).toString(16).padStart(2,'0');
+      ctx.lineWidth = 1.5 + intensity*0.8;
+      ctx.stroke();
+
+      // Inner hex ring
+      ctx.beginPath();
+      for (let i = 0; i < 6; i++) {
+        const a = (Math.PI/3)*i - Math.PI/6;
+        const px = (b.radius-5)*Math.cos(a), py = (b.radius-5)*Math.sin(a);
+        i===0 ? ctx.moveTo(px,py) : ctx.lineTo(px,py);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = b.color + '22';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    } else {
+      // Circle body fill for engine buoys
+      ctx.beginPath();
+      ctx.arc(0, 0, b.radius, 0, Math.PI*2);
+      const bg = ctx.createRadialGradient(-5,-5,0, 0,0, b.radius);
+      bg.addColorStop(0, b.color+'32');
+      bg.addColorStop(1, b.color+'10');
+      ctx.fillStyle = bg;
+      ctx.fill();
+
+      // ── WAVEFORM WREATH ──
+      // Animated waveform ring that wraps around the buoy like a circular oscilloscope
+      const waveFn = waveShapes[b.waveShape] || waveShapes.sine;
+      const wreathRadius = b.radius + 3;
+      const flare = b._flare || 0;
+      const wreathAmp = 4 + intensity * 6 + flare * 12; // wave displacement from the ring
+      const steps = 128; // smoothness
+      const phase = time * 1.8 + b.wavePhase; // animate over time
+
+      // Glow layer
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const angle = (i / steps) * Math.PI * 2;
+        const waveT = angle * b.harmonics + phase;
+        const displacement = waveFn(waveT) * wreathAmp;
+        const r = wreathRadius + displacement;
+        const px = r * Math.cos(angle), py = r * Math.sin(angle);
+        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = b.color + '18';
+      ctx.lineWidth = 6;
+      ctx.stroke();
+
+      // Main waveform line
+      ctx.beginPath();
+      for (let i = 0; i <= steps; i++) {
+        const angle = (i / steps) * Math.PI * 2;
+        const waveT = angle * b.harmonics + phase;
+        const displacement = waveFn(waveT) * wreathAmp;
+        const r = wreathRadius + displacement;
+        const px = r * Math.cos(angle), py = r * Math.sin(angle);
+        i === 0 ? ctx.moveTo(px, py) : ctx.lineTo(px, py);
+      }
+      ctx.closePath();
+      const alphaHex = (Math.round(Math.min(255, 130 + intensity * 80 + flare * 100))).toString(16).padStart(2,'0');
+      ctx.strokeStyle = b.color + alphaHex;
+      ctx.lineWidth = 1.5 + intensity * 0.5;
+      ctx.stroke();
+
+      // Subtle inner circle (base ring reference)
+      ctx.beginPath();
+      ctx.arc(0, 0, b.radius - 1, 0, Math.PI*2);
+      ctx.strokeStyle = b.color + '15';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+
+    // Selected ring
+    if (b.selected) {
+      ctx.beginPath();
+      ctx.arc(0, 0, b.radius + 12, 0, Math.PI*2);
+      ctx.strokeStyle = b.color + 'AA';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    // Icon
+    const iconSize = b.type === 'master-fx' ? 20 : b.type === 'engine' ? 20 : 15;
+    ctx.font = `${iconSize}px serif`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(b.icon, 0, -1);
+
+    ctx.restore();
+
+    // Label (no tilt)
+    const labelSize = b.type === 'fx' ? 8 : 9;
+    ctx.font = `600 ${labelSize}px -apple-system,sans-serif`;
+    ctx.fillStyle = b.color + '95';
+    ctx.textAlign = 'center';
+    ctx.fillText(b.name.toUpperCase(), b.x, drawY + b.radius + 14);
+
+    if (b.type === 'fx') {
+      ctx.font = '7px -apple-system,sans-serif';
+      ctx.fillStyle = 'rgba(200,204,216,0.22)';
+      ctx.fillText('FX ENGINE', b.x, drawY + b.radius + 24);
+    }
+    if (b.type === 'master-fx') {
+      ctx.font = '7px -apple-system,sans-serif';
+      ctx.fillStyle = 'rgba(200,204,216,0.28)';
+      ctx.fillText('MASTER FX', b.x, drawY + b.radius + 24);
+    }
+
+    // ── RIPPLE RINGS ── visual note-on feedback
+    if (b._ripples) {
+      for (let ri = b._ripples.length - 1; ri >= 0; ri--) {
+        const rip = b._ripples[ri];
+        rip.time += 0.016;
+        const progress = rip.time / rip.maxTime;
+        if (progress >= 1) { b._ripples.splice(ri, 1); continue; }
+        const ripRadius = b.radius + progress * 80;
+        const ripAlpha = (1 - progress) * 0.4;
+        ctx.beginPath();
+        ctx.arc(b.x, drawY, ripRadius, 0, Math.PI * 2);
+        ctx.strokeStyle = b.color + Math.round(ripAlpha * 255).toString(16).padStart(2, '0');
+        ctx.lineWidth = 2 * (1 - progress);
+        ctx.stroke();
+      }
+    }
+
+    // ── WREATH FLARE ── brightens wreath momentarily
+    if (b._flare && b._flare > 0.01) {
+      b._flare *= 0.94; // decay
+    }
+  });
+
+  requestAnimationFrame(drawOcean);
+}
+drawOcean();
+
+// ════════════════════════════════════════
+//  ENGINE PICKER
+// ════════════════════════════════════════
+const allTiles = [...engines, ...masterFxPool];
+const pickerList = document.getElementById('pickerList');
+allTiles.forEach(eng => {
+  const tile = document.createElement('div');
+  tile.className = 'engine-tile';
+  tile.draggable = true;
+  tile.dataset.engine = eng.name;
+  tile.dataset.type = eng.type;
+  tile.innerHTML = `
+    <div class="engine-tile-icon" style="background:${eng.color}20;border:1px solid ${eng.color}40">${eng.icon}</div>
+    <div class="engine-tile-info">
+      <div class="engine-tile-name">${eng.name}</div>
+      <div class="engine-tile-desc">${eng.desc}</div>
+    </div>
+    <div class="engine-tile-depth" style="background:${eng.color}80"></div>
+  `;
+  tile.addEventListener('dragstart', (e) => {
+    e.dataTransfer.setData('text/plain', eng.name);
+    e.dataTransfer.effectAllowed = 'copy';
+  });
+  // Click to add directly
+  tile.addEventListener('click', () => {
+    const data = allTiles.find(d => d.name === eng.name);
+    if (!data) return;
+    const x = W * 0.2 + Math.random() * W * 0.6;
+    const y = H * 0.15 + Math.random() * H * 0.65;
+    firstLaunch = false;
+    buoys.push(makeBuoy(data, x, y));
+    updateBuoyStatus();
+    pickerBackdrop.classList.remove('open');
+  });
+  pickerList.appendChild(tile);
+});
+
+const pickerBackdrop = document.getElementById('pickerBackdrop');
+document.getElementById('enginesBtn').addEventListener('click', () => pickerBackdrop.classList.add('open'));
+document.getElementById('pickerClose').addEventListener('click', () => pickerBackdrop.classList.remove('open'));
+pickerBackdrop.addEventListener('click', (e) => { if (e.target === pickerBackdrop) pickerBackdrop.classList.remove('open'); });
+
+document.getElementById('pickerSearch').addEventListener('input', (e) => {
+  const q = e.target.value.toLowerCase();
+  document.querySelectorAll('.engine-tile').forEach(t => {
+    t.style.display = t.dataset.engine.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+document.querySelectorAll('.picker-cat').forEach(cat => {
+  cat.addEventListener('click', () => {
+    document.querySelectorAll('.picker-cat').forEach(c => c.classList.remove('active'));
+    cat.classList.add('active');
+  });
+});
+
+// Drop onto canvas
+canvas.addEventListener('dragover', (e) => { e.preventDefault(); e.dataTransfer.dropEffect = 'copy'; });
+canvas.addEventListener('drop', (e) => {
+  e.preventDefault();
+  const name = e.dataTransfer.getData('text/plain');
+  const data = allTiles.find(d => d.name === name);
+  if (!data) return;
+  const rect = canvas.getBoundingClientRect();
+  const x = e.clientX - rect.left;
+  const y = e.clientY - rect.top;
+  firstLaunch = false;
+  buoys.push(makeBuoy(data, x, y));
+  updateBuoyStatus();
+  pickerBackdrop.classList.remove('open');
+});
+
+// ════════════════════════════════════════
+//  DETAIL PANEL
+// ════════════════════════════════════════
+let currentDetailBuoy = null;
+
+function openEngineDetail(buoy) {
+  currentDetailBuoy = buoy;
+  const icon = document.getElementById('detailIcon');
+  icon.textContent = buoy.icon;
+  icon.style.background = buoy.color + '20';
+  icon.style.border = '1px solid ' + buoy.color + '40';
+  document.getElementById('detailName').textContent = buoy.name;
+  document.getElementById('detailType').textContent = buoy.type === 'master-fx' ? 'Master FX' : buoy.type === 'fx' ? 'FX Engine' : 'Engine';
+
+  const paramsEl = document.getElementById('detailParams');
+  paramsEl.innerHTML = '';
+  const sections = paramSections[buoy.name] || paramSections['_default'];
+  sections.forEach(sec => {
+    const title = document.createElement('div');
+    title.className = 'param-section-title';
+    title.textContent = sec.title;
+    paramsEl.appendChild(title);
+    const grid = document.createElement('div');
+    grid.className = 'param-grid';
+    sec.params.forEach(p => {
+      const angle = Math.floor(Math.random()*270);
+      const val   = Math.floor(Math.random()*100);
+      const knob  = document.createElement('div');
+      knob.className = 'param-knob';
+      knob.innerHTML = `
+        <div class="knob-ring" style="--knob-angle:${angle}deg"></div>
+        <div class="knob-label">${p}</div>
+        <div class="knob-value">${val}%</div>
+      `;
+      grid.appendChild(knob);
+    });
+    paramsEl.appendChild(grid);
+  });
+
+  drawWaveform(buoy.color);
+  drawADSR(buoy.color);
+  document.getElementById('detailPanel').classList.add('open');
+  document.getElementById('detailBackdrop').classList.add('open');
+}
+
+function closeDetail() {
+  document.getElementById('detailPanel').classList.remove('open');
+  document.getElementById('detailBackdrop').classList.remove('open');
+  currentDetailBuoy = null;
+}
+document.getElementById('detailBack').addEventListener('click', closeDetail);
+document.getElementById('detailBackdrop').addEventListener('click', closeDetail);
+
+function drawWaveform(color) {
+  const c = document.getElementById('waveformCanvas');
+  const rect = c.parentElement.getBoundingClientRect();
+  if (!rect.width) return;
+  c.width = rect.width * 2; c.height = rect.height * 2;
+  const cx = c.getContext('2d');
+  cx.scale(2, 2);
+  const w = rect.width, h = rect.height;
+  const mid = h / 2;
+  cx.clearRect(0, 0, w, h);
+  const draw = (lw, alpha) => {
+    cx.beginPath();
+    for (let x = 0; x < w; x++) {
+      const t = x / w;
+      const y = mid + Math.sin(t*Math.PI*8)*(mid*0.6)*(1+0.3*Math.sin(t*Math.PI*3))*Math.exp(-t*0.5);
+      x===0 ? cx.moveTo(x,y) : cx.lineTo(x,y);
+    }
+    cx.strokeStyle = color + alpha;
+    cx.lineWidth = lw;
+    cx.stroke();
+  };
+  draw(5, '28');
+  draw(1.5, 'CC');
+  cx.strokeStyle = 'rgba(200,204,216,0.05)';
+  cx.lineWidth = 1;
+  cx.beginPath(); cx.moveTo(0,mid); cx.lineTo(w,mid); cx.stroke();
+}
+
+function drawADSR(color) {
+  const c = document.getElementById('adsrCanvas');
+  const rect = c.parentElement.getBoundingClientRect();
+  if (!rect.width) return;
+  c.width = rect.width * 2; c.height = rect.height * 2;
+  const cx = c.getContext('2d');
+  cx.scale(2, 2);
+  const w = rect.width, h = rect.height;
+  const pad = 8;
+  const sliders = document.querySelectorAll('.adsr-slider');
+  const a = sliders[0]?.value/100 || 0.05;
+  const d = sliders[1]?.value/100 || 0.3;
+  const s = sliders[2]?.value/100 || 0.7;
+  const r = sliders[3]?.value/100 || 0.4;
+
+  cx.clearRect(0, 0, w, h);
+  cx.strokeStyle = 'rgba(200,204,216,0.04)';
+  cx.lineWidth = 1;
+  for (let i=1;i<4;i++) { cx.beginPath(); cx.moveTo(0,(h/4)*i); cx.lineTo(w,(h/4)*i); cx.stroke(); }
+
+  const uw=w-pad*2, uh=h-pad*2;
+  const aw=a*uw*0.3, dw=d*uw*0.25, sw=uw*0.2, rw=r*uw*0.25;
+  const x0=pad, y0=pad+uh, yt=pad, ys=pad+uh*(1-s);
+
+  cx.beginPath();
+  cx.moveTo(x0,y0);
+  cx.lineTo(x0+aw,yt);
+  cx.lineTo(x0+aw+dw,ys);
+  cx.lineTo(x0+aw+dw+sw,ys);
+  cx.lineTo(x0+aw+dw+sw+rw,y0);
+  cx.lineTo(x0,y0);
+  cx.fillStyle = (color||'rgba(60,180,170)')+'18';
+  cx.fill();
+
+  cx.beginPath();
+  cx.moveTo(x0,y0);
+  cx.lineTo(x0+aw,yt);
+  cx.lineTo(x0+aw+dw,ys);
+  cx.lineTo(x0+aw+dw+sw,ys);
+  cx.lineTo(x0+aw+dw+sw+rw,y0);
+  cx.strokeStyle = color||'rgba(60,180,170,0.8)';
+  cx.lineWidth = 2; cx.stroke();
+
+  [[x0,y0],[x0+aw,yt],[x0+aw+dw,ys],[x0+aw+dw+sw,ys],[x0+aw+dw+sw+rw,y0]].forEach(([px,py])=>{
+    cx.beginPath(); cx.arc(px,py,3.5,0,Math.PI*2);
+    cx.fillStyle = color||'rgba(60,180,170,0.9)'; cx.fill();
+    cx.strokeStyle='rgba(14,16,22,0.8)'; cx.lineWidth=2; cx.stroke();
+  });
+}
+
+document.querySelectorAll('.adsr-slider').forEach(sl => {
+  sl.addEventListener('input', (e) => {
+    const val = e.target.value, param = e.target.dataset.param;
+    const label = e.target.nextElementSibling;
+    label.textContent = param==='s' ? val+'%' : val+'ms';
+    if (currentDetailBuoy) drawADSR(currentDetailBuoy.color);
+  });
+});
+
+// ════════════════════════════════════════
+//  PRESET BROWSER
+// ════════════════════════════════════════
+let currentEngine = 'Obrix';
+let currentPreset = 'Welcome';
+let activeMoodFilter = null;
+let xyDragging = false;
+
+const presetBackdrop = document.getElementById('presetBackdrop');
+const presetNameHud = document.getElementById('presetNameHud');
+
+document.getElementById('presetNameHud').addEventListener('click', () => {
+  activeMoodFilter = null;
+  renderPresetBrowser();
+  presetBackdrop.classList.add('open');
+});
+document.getElementById('presetClose').addEventListener('click', () => presetBackdrop.classList.remove('open'));
+presetBackdrop.addEventListener('click', (e) => { if (e.target===presetBackdrop) presetBackdrop.classList.remove('open'); });
+
+function renderPresetBrowser() {
+  document.getElementById('presetEngineLabel').textContent = currentEngine.toUpperCase();
+  const presets = presetsByEngine[currentEngine] || presetsByEngine['_default'];
+  const moods = [...new Set(presets.map(p=>p.mood))];
+  const mEl = document.getElementById('presetMoods');
+  mEl.innerHTML = `<button class="preset-mood ${!activeMoodFilter?'active':''}" data-mood="">All</button>`;
+  moods.forEach(m => mEl.innerHTML += `<button class="preset-mood ${activeMoodFilter===m?'active':''}" data-mood="${m}">${m}</button>`);
+  mEl.querySelectorAll('.preset-mood').forEach(btn => btn.addEventListener('click', () => {
+    activeMoodFilter = btn.dataset.mood || null;
+    renderPresetBrowser();
+  }));
+
+  const filtered = activeMoodFilter ? presets.filter(p=>p.mood===activeMoodFilter) : presets;
+  const pList = document.getElementById('presetList');
+  pList.innerHTML = '';
+  filtered.forEach(p => {
+    const item = document.createElement('div');
+    item.className = 'preset-item' + (p.name===currentPreset?' active-preset':'');
+    item.innerHTML = `
+      <span class="preset-item-name">${p.name}</span>
+      <span class="preset-item-mood">${p.mood}</span>
+      <span class="preset-item-fav">&#9825;</span>
+    `;
+    item.addEventListener('click', () => {
+      currentPreset = p.name;
+      presetNameHud.textContent = p.name;
+      renderPresetBrowser();
+    });
+    item.querySelector('.preset-item-fav').addEventListener('click', (e) => {
+      e.stopPropagation();
+      e.target.classList.toggle('faved');
+      e.target.innerHTML = e.target.classList.contains('faved') ? '&#9829;' : '&#9825;';
+    });
+    pList.appendChild(item);
+  });
+}
+
+document.getElementById('presetSearch').addEventListener('input', (e) => {
+  const q = e.target.value.toLowerCase();
+  document.querySelectorAll('#presetList .preset-item').forEach(item => {
+    item.style.display = item.querySelector('.preset-item-name').textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+});
+
+function cyclePreset(dir) {
+  const presets = presetsByEngine[currentEngine] || presetsByEngine['_default'];
+  const idx = presets.findIndex(p=>p.name===currentPreset);
+  const next = presets[((idx+dir)+presets.length)%presets.length];
+  currentPreset = next.name;
+  presetNameHud.textContent = next.name;
+}
+document.getElementById('prevPresetBtn').addEventListener('click', ()=>cyclePreset(-1));
+document.getElementById('nextPresetBtn').addEventListener('click', ()=>cyclePreset(1));
+
+document.getElementById('favBtn').addEventListener('click', () => {
+  const btn = document.getElementById('favBtn');
+  btn.classList.toggle('faved');
+  btn.innerHTML = btn.classList.contains('faved') ? '&#9829;' : '&#9825;';
+});
+
+// ════════════════════════════════════════
+//  MPE KEYBOARD
+// ════════════════════════════════════════
+const mpeEl = document.getElementById('mpeKeys');
+const noteNames = ['C','Db','D','Eb','E','F','Gb','G','Ab','A','Bb','B'];
+const isBlack   = [0,1,0,1,0,0,1,0,1,0,1,0];
+for (let oct=2; oct<=5; oct++) {
+  for (let i=0; i<12; i++) {
+    const key = document.createElement('div');
+    key.className = `mpe-key ${isBlack[i]?'black':'white'}`;
+    const p = document.createElement('div');
+    p.className = 'pressure';
+    key.appendChild(p);
+    if (!isBlack[i]) {
+      const lbl = document.createElement('div');
+      lbl.className = 'note-label';
+      lbl.textContent = `${noteNames[i]}${oct}`;
+      key.appendChild(lbl);
+    }
+    mpeEl.appendChild(key);
+  }
+}
+
+// ════════════════════════════════════════
+//  RIGHT SURFACE PANEL
+// ════════════════════════════════════════
+const surfaceRight = document.getElementById('surfaceRight');
+const surfaceRightBody = document.getElementById('surfaceRightBody');
+const surfaceRightTitle = document.getElementById('surfaceRightTitle');
+const dashboard = document.getElementById('dashboard');
+let xyAutoRaf = null;
+const BPM = 120;
+
+const padNotes = ['C2','D2','E2','F2','G2','A2','B2','C3','D3','E3','F3','G3','A3','B3','C4','D4'];
+const drumKit = [
+  {icon:'🥁',label:'Kick'},{icon:'🪘',label:'Snare'},{icon:'🎩',label:'Hi-Hat C'},{icon:'🥊',label:'Hi-Hat O'},
+  {icon:'💥',label:'Clap'},{icon:'🔔',label:'Ride'},{icon:'🥇',label:'Crash'},{icon:'🪇',label:'Shaker'},
+  {icon:'🎯',label:'Perc 1'},{icon:'🪘',label:'Perc 2'},{icon:'🔊',label:'Perc 3'},{icon:'🪈',label:'Perc 4'},
+  {icon:'🌊',label:'FX 1'},{icon:'⚡',label:'FX 2'},{icon:'💫',label:'FX 3'},{icon:'🔔',label:'FX 4'},
+];
+
+function openSurfaceRight(mode) {
+  surfaceRightTitle.textContent = mode;
+  surfaceRightBody.innerHTML = '';
+  surfaceRightBody.style.flexDirection = 'column';
+  dashboard.classList.add('right-open');
+
+  if (mode === 'PAD') {
+    const grid = document.createElement('div');
+    grid.className = 'split-pad-grid';
+    padNotes.forEach(note => {
+      const pad = document.createElement('div');
+      pad.className = 'pad-cell';
+      pad.innerHTML = `<span class="pad-note">${note}</span><span class="pad-vel">127</span>`;
+      grid.appendChild(pad);
+    });
+    surfaceRightBody.appendChild(grid);
+    // Pad afterglow
+    grid.querySelectorAll('.pad-cell').forEach(pad => {
+      pad.addEventListener('mousedown', () => {
+        pad.style.boxShadow = '0 0 20px ' + 'rgba(60,180,170,0.3)';
+        pad.style.borderColor = 'rgba(60,180,170,0.4)';
+      });
+      pad.addEventListener('mouseup', () => {
+        pad.style.transition = 'box-shadow 0.6s ease-out, border-color 0.6s ease-out';
+        pad.style.boxShadow = 'none';
+        pad.style.borderColor = 'rgba(200,204,216,0.06)';
+        setTimeout(() => { pad.style.transition = 'all 0.07s'; }, 600);
+      });
+      pad.addEventListener('mouseleave', () => {
+        pad.style.transition = 'box-shadow 0.6s ease-out, border-color 0.6s ease-out';
+        pad.style.boxShadow = 'none';
+        pad.style.borderColor = 'rgba(200,204,216,0.06)';
+        setTimeout(() => { pad.style.transition = 'all 0.07s'; }, 600);
+      });
+    });
+  }
+
+  if (mode === 'DRUM') {
+    const grid = document.createElement('div');
+    grid.className = 'split-drum-grid';
+    drumKit.forEach(d => {
+      const pad = document.createElement('div');
+      pad.className = 'drum-pad';
+      pad.innerHTML = `<span class="drum-icon">${d.icon}</span><span class="drum-label">${d.label}</span>`;
+      grid.appendChild(pad);
+    });
+    surfaceRightBody.appendChild(grid);
+    // Drum afterglow
+    grid.querySelectorAll('.drum-pad').forEach(pad => {
+      pad.addEventListener('mousedown', () => {
+        pad.style.boxShadow = '0 0 20px ' + 'rgba(140,100,220,0.3)';
+        pad.style.borderColor = 'rgba(140,100,220,0.4)';
+      });
+      pad.addEventListener('mouseup', () => {
+        pad.style.transition = 'box-shadow 0.6s ease-out, border-color 0.6s ease-out';
+        pad.style.boxShadow = 'none';
+        pad.style.borderColor = 'rgba(200,204,216,0.05)';
+        setTimeout(() => { pad.style.transition = 'all 0.07s'; }, 600);
+      });
+      pad.addEventListener('mouseleave', () => {
+        pad.style.transition = 'box-shadow 0.6s ease-out, border-color 0.6s ease-out';
+        pad.style.boxShadow = 'none';
+        pad.style.borderColor = 'rgba(200,204,216,0.05)';
+        setTimeout(() => { pad.style.transition = 'all 0.07s'; }, 600);
+      });
+    });
+  }
+
+  if (mode === 'XY') {
+    const wrap = document.createElement('div');
+    wrap.className = 'split-xy-wrap';
+    wrap.innerHTML = `
+      <div class="xy-pad" id="xyPadSplit" style="flex:1;min-height:0">
+        <div class="xy-cursor" id="xyCursorSplit"></div>
+        <span class="xy-label x-label">Cutoff</span>
+        <span class="xy-label y-label">Resonance</span>
+      </div>
+      <div class="xy-bottom">
+        <div class="xy-readout"><label>X: Cutoff</label><span class="xy-val" id="xyXS">50%</span></div>
+        <div class="xy-readout"><label>Y: Res</label><span class="xy-val" id="xyYS">50%</span></div>
+        <div style="flex:1"></div>
+        <button class="xy-assign">Assign X</button>
+        <button class="xy-assign">Assign Y</button>
+      </div>
+      <div class="xy-auto-row">
+        <span class="xy-auto-label">Auto:</span>
+        <button class="xy-assign xy-auto-btn" data-shape="circle">Circle</button>
+        <button class="xy-assign xy-auto-btn" data-shape="figure8">Fig-8</button>
+        <button class="xy-assign xy-auto-btn" data-shape="sweep">Sweep</button>
+        <button class="xy-assign xy-auto-btn" data-shape="random">Random</button>
+        <div style="flex:1"></div>
+        <select id="xyBpmDiv" style="background:rgba(200,204,216,0.04);border:1px solid rgba(200,204,216,0.08);border-radius:4px;color:#c8ccd8;font-size:10px;padding:2px 6px;outline:none;">
+          <option value="0.25">1/4</option>
+          <option value="0.5">1/2</option>
+          <option value="1" selected>1 bar</option>
+          <option value="2">2 bars</option>
+          <option value="4">4 bars</option>
+        </select>
+        <button class="xy-assign" id="xyAutoStop" style="color:rgba(239,68,68,0.7);border-color:rgba(239,68,68,0.2);display:none">Stop</button>
+      </div>
+    `;
+    surfaceRightBody.appendChild(wrap);
+
+    setTimeout(() => {
+      const pad = document.getElementById('xyPadSplit');
+      if (pad) {
+        pad.addEventListener('mousedown', (e) => { xyDragging = true; updateXY(e); });
+      }
+    }, 0);
+  }
+
+  if (mode === 'SETTINGS') {
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'display:flex;flex-direction:column;gap:14px;padding:4px 0;overflow-y:auto;flex:1;';
+    wrap.innerHTML = `
+      <div class="settings-section">
+        <div class="settings-section-title">Voice</div>
+        <div class="settings-row">
+          <span class="settings-label">Polyphony</span>
+          <select class="settings-select">
+            <option>4</option><option>8</option><option selected>16</option><option>32</option><option>64</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">Voice Mode</span>
+          <select class="settings-select">
+            <option selected>Poly</option><option>Mono</option><option>Legato</option><option>Unison</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">Unison Voices</span>
+          <select class="settings-select">
+            <option selected>1</option><option>2</option><option>4</option><option>8</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">Unison Detune</span>
+          <input type="range" class="settings-slider" min="0" max="100" value="25">
+          <span class="settings-value">25ct</span>
+        </div>
+      </div>
+      <div class="settings-section">
+        <div class="settings-section-title">Tuning</div>
+        <div class="settings-row">
+          <span class="settings-label">Master Tune</span>
+          <input type="range" class="settings-slider" min="-100" max="100" value="0">
+          <span class="settings-value">A440</span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">Pitch Bend Range</span>
+          <select class="settings-select">
+            <option>1</option><option selected>2</option><option>5</option><option>7</option><option>12</option><option>24</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">Glide Time</span>
+          <input type="range" class="settings-slider" min="0" max="100" value="0">
+          <span class="settings-value">0ms</span>
+        </div>
+      </div>
+      <div class="settings-section">
+        <div class="settings-section-title">MIDI</div>
+        <div class="settings-row">
+          <span class="settings-label">MIDI Channel</span>
+          <select class="settings-select">
+            <option selected>All</option><option>1</option><option>2</option><option>3</option><option>4</option>
+            <option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+            <option>11</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">MPE Mode</span>
+          <div class="settings-toggle-wrap">
+            <button class="settings-toggle" id="mpeToggle">Off</button>
+          </div>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">Velocity Curve</span>
+          <select class="settings-select">
+            <option>Soft</option><option selected>Linear</option><option>Hard</option><option>Fixed</option>
+          </select>
+        </div>
+      </div>
+      <div class="settings-section">
+        <div class="settings-section-title">Engine</div>
+        <div class="settings-row">
+          <span class="settings-label">Max Engines</span>
+          <select class="settings-select">
+            <option>1</option><option>2</option><option>3</option><option selected>4</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">Crossfade Time</span>
+          <input type="range" class="settings-slider" min="10" max="200" value="50">
+          <span class="settings-value">50ms</span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">Oversampling</span>
+          <select class="settings-select">
+            <option selected>Off</option><option>2x</option><option>4x</option>
+          </select>
+        </div>
+      </div>
+      <div class="settings-section">
+        <div class="settings-section-title">Display</div>
+        <div class="settings-row">
+          <span class="settings-label">UI Scale</span>
+          <select class="settings-select">
+            <option>75%</option><option selected>100%</option><option>125%</option><option>150%</option>
+          </select>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">Wave Sensitivity</span>
+          <input type="range" class="settings-slider" min="0" max="100" value="50">
+          <span class="settings-value">50%</span>
+        </div>
+        <div class="settings-row">
+          <span class="settings-label">Show Labels</span>
+          <div class="settings-toggle-wrap">
+            <button class="settings-toggle active" id="labelsToggle">On</button>
+          </div>
+        </div>
+      </div>
+    `;
+    surfaceRightBody.appendChild(wrap);
+
+    // Wire toggles
+    wrap.querySelectorAll('.settings-toggle').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        btn.textContent = btn.classList.contains('active') ? 'On' : 'Off';
+      });
+    });
+  }
+
+  surfaceRight.classList.add('open');
+  // Hide keyboard and collapse play area when pad/drum/xy is open
+  document.querySelector('.play-area').style.display = 'none';
+}
+
+function updateXY(e) {
+  const pad = document.getElementById('xyPadSplit');
+  const cursor = document.getElementById('xyCursorSplit');
+  if (!pad || !cursor) return;
+  const rect = pad.getBoundingClientRect();
+  const x = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+  const y = Math.max(0, Math.min(1, (e.clientY - rect.top) / rect.height));
+  cursor.style.left = (x*100)+'%';
+  cursor.style.top  = (y*100)+'%';
+  const xv = document.getElementById('xyXS');
+  const yv = document.getElementById('xyYS');
+  if (xv) xv.textContent = Math.round(x*100)+'%';
+  if (yv) yv.textContent = Math.round((1-y)*100)+'%';
+}
+
+window.addEventListener('mousemove', (e) => { if (xyDragging) updateXY(e); });
+window.addEventListener('mouseup', () => { xyDragging = false; });
+
+// XY Automation
+let xyAutoShape = null;
+function startXYAuto(shape) {
+  stopXYAuto();
+  xyAutoShape = shape;
+  const stopBtn = document.getElementById('xyAutoStop');
+  if (stopBtn) stopBtn.style.display = '';
+  document.querySelectorAll('.xy-auto-btn').forEach(b => {
+    b.style.color        = b.dataset.shape===shape ? 'rgba(60,180,170,0.9)' : '';
+    b.style.borderColor  = b.dataset.shape===shape ? 'rgba(60,180,170,0.3)' : '';
+  });
+  const t0 = performance.now();
+  function tick() {
+    const cursor = document.getElementById('xyCursorSplit');
+    if (!cursor) { stopXYAuto(); return; }
+    const bpmDiv = parseFloat(document.getElementById('xyBpmDiv')?.value || '1');
+    const cycle  = (60000/BPM)*4*bpmDiv;
+    const t  = ((performance.now()-t0)%cycle)/cycle;
+    const tau = t*Math.PI*2;
+    let x=0.5, y=0.5;
+    if (shape==='circle')  { x=0.5+0.35*Math.cos(tau); y=0.5+0.35*Math.sin(tau); }
+    else if (shape==='figure8') { x=0.5+0.35*Math.sin(tau); y=0.5+0.35*Math.sin(tau*2); }
+    else if (shape==='sweep')   { x=t; y=0.5+0.4*Math.sin(tau*3); }
+    else { x=0.5+0.4*Math.sin(tau*1.3+1.7)*Math.cos(tau*0.7); y=0.5+0.4*Math.cos(tau*0.9+2.3)*Math.sin(tau*1.1); }
+    cursor.style.left = (x*100)+'%'; cursor.style.top = (y*100)+'%';
+    cursor.style.boxShadow = '0 0 18px rgba(60,180,170,0.4)';
+    const xv = document.getElementById('xyXS');
+    const yv = document.getElementById('xyYS');
+    if (xv) xv.textContent = Math.round(x*100)+'%';
+    if (yv) yv.textContent = Math.round((1-y)*100)+'%';
+    xyAutoRaf = requestAnimationFrame(tick);
+  }
+  xyAutoRaf = requestAnimationFrame(tick);
+}
+
+function stopXYAuto() {
+  if (xyAutoRaf) cancelAnimationFrame(xyAutoRaf);
+  xyAutoRaf = null; xyAutoShape = null;
+  const stopBtn = document.getElementById('xyAutoStop');
+  if (stopBtn) stopBtn.style.display = 'none';
+  document.querySelectorAll('.xy-auto-btn').forEach(b => { b.style.color=''; b.style.borderColor=''; });
+  const c = document.getElementById('xyCursorSplit');
+  if (c) c.style.boxShadow = '0 0 14px rgba(60,180,170,0.3)';
+}
+
+document.addEventListener('click', (e) => {
+  const ab = e.target.closest('.xy-auto-btn');
+  if (ab) startXYAuto(ab.dataset.shape);
+  if (e.target.id === 'xyAutoStop') stopXYAuto();
+});
+
+function closeSurfaceRight() {
+  surfaceRight.classList.remove('open');
+  dashboard.classList.remove('right-open');
+  stopXYAuto();
+  // Show keyboard and play area again
+  document.querySelector('.play-area').style.display = 'flex';
+  document.querySelectorAll('.surface-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelector('.surface-tab[data-tab="KEYS"]').classList.add('active');
+}
+document.getElementById('surfaceRightClose').addEventListener('click', closeSurfaceRight);
+
+// ── TAB SWITCHING ──
+document.querySelectorAll('.surface-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.surface-tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const mode = tab.dataset.tab;
+    if (mode === 'KEYS') { closeSurfaceRight(); return; }
+    openSurfaceRight(mode);
+  });
+});
+
+// ════════════════════════════════════════
+//  MACRO KNOB INTERACTION
+// ════════════════════════════════════════
+let activeMacroKnob = null;
+let macroStartY = 0;
+let macroStartAngle = 0;
+
+document.querySelectorAll('.macro-knob').forEach(knob => {
+  knob.addEventListener('mousedown', (e) => {
+    activeMacroKnob = knob;
+    macroStartY = e.clientY;
+    const raw = knob.style.getPropertyValue('--macro-angle') || '0deg';
+    macroStartAngle = parseFloat(raw);
+    e.preventDefault();
+  });
+});
+
+window.addEventListener('mousemove', (e) => {
+  if (!activeMacroKnob) return;
+  const dy = macroStartY - e.clientY;
+  const newAngle = Math.max(-135, Math.min(135, macroStartAngle + dy * 1.2));
+  activeMacroKnob.style.setProperty('--macro-angle', newAngle + 'deg');
+});
+
+window.addEventListener('mouseup', () => { activeMacroKnob = null; });
+
+// ════════════════════════════════════════
+//  LEVEL METER ANIMATION (demo)
+// ════════════════════════════════════════
+let meterPhase = 0;
+function animateMeter() {
+  meterPhase += 0.05;
+  const base = 0.2 + intensity * 0.3;
+  const lvl  = Math.max(0, Math.min(1, base + Math.sin(meterPhase) * 0.15 + Math.sin(meterPhase * 3.7) * 0.08));
+  document.getElementById('levelFill').style.height = (lvl * 100) + '%';
+  requestAnimationFrame(animateMeter);
+}
+animateMeter();
+
+// ════════════════════════════════════════
+//  COUPLING CONFIG POPUP
+// ════════════════════════════════════════
+let currentCouplingChain = null;
+let currentCouplingIndex = -1;
+
+const couplingTypes = [
+  // Tier 1 — Safe
+  { name: 'AmpToFilter',      label: 'Amp → Filter',       tier: 'safe',     tierLabel: 'Safe',     color: '#10B981',
+    desc: 'Engine loudness modulates filter cutoff', warning: null },
+  { name: 'AmpToPitch',       label: 'Amp → Pitch',        tier: 'safe',     tierLabel: 'Safe',     color: '#10B981',
+    desc: 'Engine loudness modulates pitch', warning: null },
+  { name: 'LFOToPitch',       label: 'LFO → Pitch',        tier: 'safe',     tierLabel: 'Safe',     color: '#10B981',
+    desc: 'LFO cross-modulation of pitch', warning: null },
+  { name: 'EnvToMorph',       label: 'Env → Morph',        tier: 'safe',     tierLabel: 'Safe',     color: '#10B981',
+    desc: 'Envelope drives wavetable/morph position', warning: null },
+  { name: 'EnvToDecay',       label: 'Env → Decay',        tier: 'safe',     tierLabel: 'Safe',     color: '#10B981',
+    desc: 'Envelope controls decay time', warning: null },
+  // Tier 2 — Standard
+  { name: 'FilterToFilter',   label: 'Filter → Filter',    tier: 'standard', tierLabel: 'Standard', color: '#F59E0B',
+    desc: 'Filter output feeds another filter', warning: 'Narrow support — works best with OPTIC' },
+  { name: 'PitchToPitch',     label: 'Pitch → Pitch',      tier: 'standard', tierLabel: 'Standard', color: '#F59E0B',
+    desc: 'Harmonic pitch tracking between engines', warning: null },
+  { name: 'RhythmToBlend',    label: 'Rhythm → Blend',     tier: 'standard', tierLabel: 'Standard', color: '#F59E0B',
+    desc: 'Rhythm patterns drive blend/morph', warning: null },
+  { name: 'AmpToChoke',       label: 'Amp → Choke',        tier: 'standard', tierLabel: 'Standard', color: '#F59E0B',
+    desc: 'Engine A amplitude chokes Engine B', warning: 'Best with percussion engines (ONSET, OVERBITE)' },
+  // Tier 3 — Caution (audio-rate)
+  { name: 'AudioToFM',        label: 'Audio → FM',         tier: 'caution',  tierLabel: 'Caution',  color: '#EF4444',
+    desc: 'Raw audio as FM modulation source', warning: 'Audio-rate — feedback loops are blocked automatically' },
+  { name: 'AudioToRing',      label: 'Audio → Ring',       tier: 'caution',  tierLabel: 'Caution',  color: '#EF4444',
+    desc: 'Ring modulation between engines', warning: 'Risk of DC drift if both engines have DC offset' },
+  { name: 'AudioToWavetable', label: 'Audio → Wavetable',  tier: 'caution',  tierLabel: 'Caution',  color: '#EF4444',
+    desc: 'Audio snapshots used as wavetable source', warning: 'Best with band-limited sources' },
+  { name: 'AudioToBuffer',    label: 'Audio → Buffer',     tier: 'caution',  tierLabel: 'Caution',  color: '#EF4444',
+    desc: 'Stereo audio stream to grain buffer', warning: 'Only OPAL supports this as a destination' },
+  // Tier 4 — Exotic
+  { name: 'KnotTopology',     label: 'Knot Topology',      tier: 'exotic',   tierLabel: 'Exotic',   color: '#A855F7',
+    desc: 'Bidirectional — both engines modulate each other', warning: 'Irreducible coupling — neither engine can be separated without destroying the patch' },
+  { name: 'TriangularCoupling', label: 'Triangular',       tier: 'exotic',   tierLabel: 'Exotic',   color: '#A855F7',
+    desc: 'Love-triangle state transfer (I/P/C)', warning: 'Designed for Oxytocin — degrades to Amp→Filter for other engines' },
+];
+
+const couplingParamMap = {
+  'AmpToFilter':      { source: 'Amplitude',    dest: 'Filter Cutoff' },
+  'AmpToPitch':       { source: 'Amplitude',    dest: 'Pitch' },
+  'LFOToPitch':       { source: 'LFO',          dest: 'Pitch' },
+  'EnvToMorph':       { source: 'Envelope',     dest: 'Morph Position' },
+  'EnvToDecay':       { source: 'Envelope',     dest: 'Decay Time' },
+  'FilterToFilter':   { source: 'Filter Out',   dest: 'Filter In' },
+  'PitchToPitch':     { source: 'Pitch',        dest: 'Pitch' },
+  'RhythmToBlend':    { source: 'Rhythm',       dest: 'Blend' },
+  'AmpToChoke':       { source: 'Amplitude',    dest: 'Choke Gate' },
+  'AudioToFM':        { source: 'Audio Out',    dest: 'FM Input' },
+  'AudioToRing':      { source: 'Audio Out',    dest: 'Ring Mod' },
+  'AudioToWavetable': { source: 'Audio Out',    dest: 'Wavetable' },
+  'AudioToBuffer':    { source: 'Audio Out',    dest: 'Grain Buffer' },
+  'KnotTopology':     { source: 'Entangled',    dest: 'Entangled' },
+  'TriangularCoupling': { source: 'I/P/C State', dest: 'I/P/C State' },
+};
+
+const couplingBackdrop = document.getElementById('couplingBackdrop');
+
+function openCouplingConfig(chain, index) {
+  currentCouplingChain = chain;
+  currentCouplingIndex = index;
+
+  // Source info
+  document.getElementById('cplSourceIcon').textContent = chain.a.icon;
+  document.getElementById('cplSourceIcon').style.background = chain.a.color + '20';
+  document.getElementById('cplSourceIcon').style.border = '1px solid ' + chain.a.color + '40';
+  document.getElementById('cplSourceIcon').style.borderRadius = '6px';
+  document.getElementById('cplSourceName').textContent = chain.a.name;
+
+  // Dest info
+  document.getElementById('cplDestIcon').textContent = chain.b.icon;
+  document.getElementById('cplDestIcon').style.background = chain.b.color + '20';
+  document.getElementById('cplDestIcon').style.border = '1px solid ' + chain.b.color + '40';
+  document.getElementById('cplDestIcon').style.borderRadius = '6px';
+  document.getElementById('cplDestName').textContent = chain.b.name;
+
+  // Direction buttons
+  const dir = chain.direction || 'a-to-b';
+  document.querySelectorAll('.dir-arrow').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.dir-arrow[data-dir="${dir}"]`)?.classList.add('active');
+
+  // Coupling type — populate with tiered options
+  const typeSelect = document.getElementById('cplTypeSelect');
+  typeSelect.innerHTML = '';
+  const tierOrder = ['safe', 'standard', 'caution', 'exotic'];
+  const tierLabels = { safe: '── SAFE ──', standard: '── STANDARD ──', caution: '── CAUTION ──', exotic: '── EXOTIC ──' };
+  tierOrder.forEach(tier => {
+    const group = document.createElement('optgroup');
+    group.label = tierLabels[tier];
+    couplingTypes.filter(t => t.tier === tier).forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t.name;
+      opt.textContent = t.label;
+      group.appendChild(opt);
+    });
+    typeSelect.appendChild(group);
+  });
+  typeSelect.value = chain.couplingType || 'AmpToFilter';
+  updateCouplingTierBadge();
+
+  // Update flow visualization
+  updateCouplingFlow(chain);
+
+  // Depth
+  const depthSlider = document.getElementById('cplDepthSlider');
+  const depthVal = document.getElementById('cplDepthVal');
+  depthSlider.value = chain.depth || 50;
+  depthVal.textContent = depthSlider.value + '%';
+
+  couplingBackdrop.classList.add('open');
+}
+
+function closeCouplingConfig() {
+  if (currentCouplingChain) {
+    // Save settings back to chain
+    const activeDir = document.querySelector('.dir-arrow.active');
+    currentCouplingChain.direction = activeDir?.dataset.dir || 'a-to-b';
+    currentCouplingChain.couplingType = document.getElementById('cplTypeSelect').value;
+    currentCouplingChain.depth = parseInt(document.getElementById('cplDepthSlider').value);
+  }
+  couplingBackdrop.classList.remove('open');
+  currentCouplingChain = null;
+  currentCouplingIndex = -1;
+}
+
+// Direction buttons
+document.querySelectorAll('.dir-arrow').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.dir-arrow').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    updateCouplingFlow();
+  });
+});
+
+function updateCouplingFlow(chain) {
+  if (!chain) chain = currentCouplingChain;
+  if (!chain) return;
+  const typeVal = document.getElementById('cplTypeSelect').value;
+  const params = couplingParamMap[typeVal] || { source: '?', dest: '?' };
+  const ct = couplingTypes.find(t => t.name === typeVal);
+
+  // Source side
+  const srcIcon = document.getElementById('cplFlowSourceIcon');
+  srcIcon.textContent = chain.a.icon;
+  srcIcon.style.background = chain.a.color + '20';
+  srcIcon.style.border = '1px solid ' + chain.a.color + '40';
+  document.getElementById('cplFlowSourceName').textContent = chain.a.name;
+  document.getElementById('cplFlowSourceParam').textContent = params.source;
+  document.getElementById('cplFlowSourceParam').style.background = chain.a.color + '15';
+  document.getElementById('cplFlowSourceParam').style.borderColor = chain.a.color + '35';
+  document.getElementById('cplFlowSourceParam').style.color = chain.a.color + 'cc';
+
+  // Dest side
+  const destIcon = document.getElementById('cplFlowDestIcon');
+  destIcon.textContent = chain.b.icon;
+  destIcon.style.background = chain.b.color + '20';
+  destIcon.style.border = '1px solid ' + chain.b.color + '40';
+  document.getElementById('cplFlowDestName').textContent = chain.b.name;
+  document.getElementById('cplFlowDestParam').textContent = params.dest;
+  document.getElementById('cplFlowDestParam').style.background = chain.b.color + '15';
+  document.getElementById('cplFlowDestParam').style.borderColor = chain.b.color + '35';
+  document.getElementById('cplFlowDestParam').style.color = chain.b.color + 'cc';
+
+  // Description
+  document.getElementById('cplDesc').textContent = ct ? ct.desc : '';
+
+  // Arrow direction
+  const dir = document.querySelector('.dir-arrow.active')?.dataset.dir || 'a-to-b';
+  const arrow = document.getElementById('cplFlowArrow');
+  if (dir === 'b-to-a') {
+    arrow.innerHTML = '<svg width="80" height="24" viewBox="0 0 80 24"><line x1="12" y1="12" x2="80" y2="12" stroke="rgba(60,180,170,0.5)" stroke-width="2" stroke-dasharray="4,3"/><polygon points="12,6 0,12 12,18" fill="rgba(60,180,170,0.6)"/></svg>';
+  } else if (dir === 'both') {
+    arrow.innerHTML = '<svg width="80" height="24" viewBox="0 0 80 24"><line x1="12" y1="12" x2="68" y2="12" stroke="rgba(60,180,170,0.5)" stroke-width="2" stroke-dasharray="4,3"/><polygon points="12,6 0,12 12,18" fill="rgba(60,180,170,0.6)"/><polygon points="68,6 80,12 68,18" fill="rgba(140,100,220,0.6)"/></svg>';
+  } else {
+    arrow.innerHTML = '<svg width="80" height="24" viewBox="0 0 80 24"><line x1="0" y1="12" x2="68" y2="12" stroke="rgba(60,180,170,0.5)" stroke-width="2" stroke-dasharray="4,3"/><polygon points="68,6 80,12 68,18" fill="rgba(60,180,170,0.6)"/></svg>';
+  }
+}
+
+function updateCouplingTierBadge() {
+  const typeSelect = document.getElementById('cplTypeSelect');
+  const badge = document.getElementById('cplTierBadge');
+  const warning = document.getElementById('cplWarning');
+  const warningText = document.getElementById('cplWarningText');
+  const ct = couplingTypes.find(t => t.name === typeSelect.value);
+  if (!ct) return;
+  badge.textContent = ct.tierLabel;
+  badge.className = 'coupling-tier-badge tier-' + ct.tier;
+  if (ct.warning) {
+    warning.style.display = 'flex';
+    warningText.textContent = ct.warning;
+    // Color warning based on tier
+    if (ct.tier === 'caution' || ct.tier === 'exotic') {
+      warning.style.background = ct.color + '0a';
+      warning.style.borderColor = ct.color + '20';
+      warning.style.color = ct.color + 'bb';
+    } else {
+      warning.style.background = 'rgba(245,158,11,0.06)';
+      warning.style.borderColor = 'rgba(245,158,11,0.12)';
+      warning.style.color = 'rgba(245,158,11,0.75)';
+    }
+  } else {
+    warning.style.display = 'none';
+  }
+  updateCouplingFlow();
+}
+
+// Type select change
+document.getElementById('cplTypeSelect').addEventListener('change', updateCouplingTierBadge);
+
+// Depth slider
+document.getElementById('cplDepthSlider').addEventListener('input', (e) => {
+  document.getElementById('cplDepthVal').textContent = e.target.value + '%';
+});
+
+// Done button
+document.getElementById('cplDoneBtn').addEventListener('click', closeCouplingConfig);
+
+// Remove button
+document.getElementById('cplRemoveBtn').addEventListener('click', () => {
+  if (currentCouplingIndex >= 0) {
+    chains.splice(currentCouplingIndex, 1);
+    updateBuoyStatus();
+  }
+  couplingBackdrop.classList.remove('open');
+  currentCouplingChain = null;
+  currentCouplingIndex = -1;
+});
+
+// Backdrop click to close
+couplingBackdrop.addEventListener('click', (e) => {
+  if (e.target === couplingBackdrop) closeCouplingConfig();
+});
+
+// ════════════════════════════════════════
+//  CONTEXT MENU
+// ════════════════════════════════════════
+const ctxMenu = document.getElementById('ctxMenu');
+let ctxTarget = null;
+
+function showCtxMenu(x, y, items) {
+  ctxMenu.innerHTML = '';
+  items.forEach(item => {
+    if (item === '---') {
+      const sep = document.createElement('div');
+      sep.className = 'ctx-sep';
+      ctxMenu.appendChild(sep);
+      return;
+    }
+    const el = document.createElement('div');
+    el.className = 'ctx-item' + (item.danger ? ' danger' : '');
+    el.innerHTML = `<span class="ctx-item-icon">${item.icon||''}</span>${item.label}`;
+    el.addEventListener('click', () => { item.action(); hideCtxMenu(); });
+    ctxMenu.appendChild(el);
+  });
+  // Position with bounds check
+  ctxMenu.style.left = Math.min(x, window.innerWidth - 180) + 'px';
+  ctxMenu.style.top = Math.min(y, window.innerHeight - 200) + 'px';
+  ctxMenu.classList.add('open');
+}
+
+function hideCtxMenu() {
+  ctxMenu.classList.remove('open');
+  ctxTarget = null;
+}
+
+document.addEventListener('click', () => hideCtxMenu());
+
+canvas.addEventListener('contextmenu', (e) => {
+  e.preventDefault();
+  const rect = canvas.getBoundingClientRect();
+  const cx = e.clientX - rect.left, cy = e.clientY - rect.top;
+
+  // Check buoy first
+  const buoy = getBuoyAt(cx, cy);
+  if (buoy) {
+    ctxTarget = buoy;
+    const isMuted = buoy._muted || false;
+    const isSoloed = buoy._soloed || false;
+    showCtxMenu(e.clientX, e.clientY, [
+      { icon: '🔍', label: 'Open Detail', action: () => openEngineDetail(buoy) },
+      '---',
+      { icon: isMuted ? '🔊' : '🔇', label: isMuted ? 'Unmute' : 'Mute', action: () => { buoy._muted = !buoy._muted; } },
+      { icon: '🎯', label: isSoloed ? 'Unsolo' : 'Solo', action: () => { buoy._soloed = !buoy._soloed; } },
+      '---',
+      { icon: '🔄', label: 'Swap Engine...', action: () => { document.getElementById('pickerBackdrop').classList.add('open'); } },
+      { icon: '🗑️', label: 'Remove', danger: true, action: () => {
+        const idx = buoys.indexOf(buoy);
+        if (idx >= 0) {
+          buoys.splice(idx, 1);
+          // Remove associated chains
+          for (let i = chains.length - 1; i >= 0; i--) {
+            if (chains[i].a === buoy || chains[i].b === buoy) chains.splice(i, 1);
+          }
+          updateBuoyStatus();
+        }
+      }},
+    ]);
+    return;
+  }
+
+  // Check chain knot
+  const knot = getChainKnotAt(cx, cy);
+  if (knot) {
+    ctxTarget = knot;
+    showCtxMenu(e.clientX, e.clientY, [
+      { icon: '⚙️', label: 'Edit Coupling', action: () => openCouplingConfig(knot.chain, knot.index) },
+      '---',
+      { icon: '🗑️', label: 'Delete Chain', danger: true, action: () => {
+        chains.splice(knot.index, 1);
+        updateBuoyStatus();
+      }},
+    ]);
+    return;
+  }
+
+  // Right-click on empty ocean — option to add engine
+  showCtxMenu(e.clientX, e.clientY, [
+    { icon: '➕', label: 'Add Engine...', action: () => { document.getElementById('pickerBackdrop').classList.add('open'); } },
+  ]);
+}, true); // use capture to override the old handler
+
+// ════════════════════════════════════════
+//  TOOLTIPS
+// ════════════════════════════════════════
+const tooltipEl = document.getElementById('tooltip');
+let tooltipTimeout = null;
+
+function showTooltip(e, text, shortcut) {
+  clearTimeout(tooltipTimeout);
+  tooltipTimeout = setTimeout(() => {
+    let html = text;
+    if (shortcut) html += `<div class="tooltip-key">${shortcut}</div>`;
+    tooltipEl.innerHTML = html;
+    tooltipEl.classList.add('visible');
+    positionTooltip(e);
+  }, 400); // 400ms delay before showing
+}
+
+function positionTooltip(e) {
+  const x = Math.min(e.clientX + 12, window.innerWidth - tooltipEl.offsetWidth - 10);
+  const y = Math.min(e.clientY + 16, window.innerHeight - tooltipEl.offsetHeight - 10);
+  tooltipEl.style.left = x + 'px';
+  tooltipEl.style.top = y + 'px';
+}
+
+function hideTooltip() {
+  clearTimeout(tooltipTimeout);
+  tooltipEl.classList.remove('visible');
+}
+
+// Add tooltips to existing elements using data-tooltip attribute
+const tooltipTargets = [
+  { sel: '#enginesBtn', tip: 'Browse and add engines or FX', key: 'E' },
+  { sel: '#chainModeBtn', tip: 'Toggle chain mode — click two buoys to connect them', key: 'C' },
+  { sel: '#settingsBtn', tip: 'Synth settings — voice, tuning, MIDI', key: 'S' },
+  { sel: '#prevPresetBtn', tip: 'Previous preset', key: '←' },
+  { sel: '#nextPresetBtn', tip: 'Next preset', key: '→' },
+  { sel: '#favBtn', tip: 'Toggle favorite' },
+  { sel: '.surface-tab[data-tab="KEYS"]', tip: 'MPE keyboard surface' },
+  { sel: '.surface-tab[data-tab="PAD"]', tip: '4×4 chromatic pad grid' },
+  { sel: '.surface-tab[data-tab="DRUM"]', tip: '4×4 drum machine pads' },
+  { sel: '.surface-tab[data-tab="XY"]', tip: 'XY modulation pad with automation paths' },
+  { sel: '.vol-slider', tip: 'Master volume' },
+  { sel: '#energySlider', tip: 'Simulates audio output level — drives wave intensity' },
+];
+
+tooltipTargets.forEach(({ sel, tip, key }) => {
+  const el = document.querySelector(sel);
+  if (!el) return;
+  el.addEventListener('mouseenter', (e) => showTooltip(e, tip, key));
+  el.addEventListener('mousemove', (e) => { if (tooltipEl.classList.contains('visible')) positionTooltip(e); });
+  el.addEventListener('mouseleave', hideTooltip);
+});
+
+// Tooltips for macro knobs
+document.querySelectorAll('.macro-knob').forEach(knob => {
+  const macroNames = { char: 'CHARACTER — timbral complexity', move: 'MOVEMENT — modulation depth', coup: 'COUPLING — cross-engine interaction', space: 'SPACE — reverb and width', vol: 'VOLUME — output level' };
+  const name = knob.dataset.macro;
+  knob.addEventListener('mouseenter', (e) => showTooltip(e, macroNames[name] || name, 'Drag up/down to adjust'));
+  knob.addEventListener('mousemove', (e) => { if (tooltipEl.classList.contains('visible')) positionTooltip(e); });
+  knob.addEventListener('mouseleave', hideTooltip);
+});
+
+// Canvas hover tooltip for buoys
+let lastHoveredBuoy = null;
+canvas.addEventListener('mousemove', (e) => {
+  if (dragBuoy || chainMode) { hideTooltip(); return; }
+  const rect = canvas.getBoundingClientRect();
+  const cx = e.clientX - rect.left, cy = e.clientY - rect.top;
+  const buoy = getBuoyAt(cx, cy);
+  if (buoy && buoy !== lastHoveredBuoy) {
+    lastHoveredBuoy = buoy;
+    const typeLabel = buoy.type === 'master-fx' ? 'Master FX' : buoy.type === 'fx' ? 'FX Engine' : 'Engine';
+    showTooltip(e, `<strong>${buoy.name}</strong> — ${typeLabel}`, 'Double-click to edit · Right-click for options');
+  } else if (!buoy) {
+    if (lastHoveredBuoy) { hideTooltip(); lastHoveredBuoy = null; }
+  }
+});
+canvas.addEventListener('mouseleave', () => { hideTooltip(); lastHoveredBuoy = null; });
+
+// ════════════════════════════════════════
+//  KEYBOARD SHORTCUTS
+// ════════════════════════════════════════
+document.addEventListener('keydown', (e) => {
+  // Don't capture when typing in inputs
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA') return;
+
+  const key = e.key.toLowerCase();
+
+  // Escape — close any open panel/modal
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    // Close in priority order
+    if (ctxMenu.classList.contains('open')) { hideCtxMenu(); return; }
+    if (document.getElementById('couplingBackdrop').classList.contains('open')) { closeCouplingConfig(); return; }
+    if (document.getElementById('detailPanel').classList.contains('open')) { closeDetail(); return; }
+    if (document.getElementById('presetBackdrop').classList.contains('open')) { document.getElementById('presetBackdrop').classList.remove('open'); return; }
+    if (document.getElementById('pickerBackdrop').classList.contains('open')) { document.getElementById('pickerBackdrop').classList.remove('open'); return; }
+    if (surfaceRight.classList.contains('open')) { closeSurfaceRight(); return; }
+    return;
+  }
+
+  // E — toggle engine picker
+  if (key === 'e') {
+    const picker = document.getElementById('pickerBackdrop');
+    picker.classList.toggle('open');
+    return;
+  }
+
+  // C — toggle chain mode
+  if (key === 'c') {
+    document.getElementById('chainModeBtn').click();
+    return;
+  }
+
+  // S — toggle settings
+  if (key === 's') {
+    if (surfaceRight.classList.contains('open')) {
+      closeSurfaceRight();
+    } else {
+      openSurfaceRight('SETTINGS');
+    }
+    return;
+  }
+
+  // P — open preset browser
+  if (key === 'p') {
+    const pb = document.getElementById('presetBackdrop');
+    pb.classList.toggle('open');
+    if (pb.classList.contains('open')) renderPresetBrowser();
+    return;
+  }
+
+  // Arrow keys — cycle presets
+  if (e.key === 'ArrowLeft') { cyclePreset(-1); return; }
+  if (e.key === 'ArrowRight') { cyclePreset(1); return; }
+
+  // Delete/Backspace — remove last added buoy (simple version)
+  if (e.key === 'Delete' || e.key === 'Backspace') {
+    if (buoys.length > 0) {
+      const removed = buoys.pop();
+      // Remove associated chains
+      for (let i = chains.length - 1; i >= 0; i--) {
+        if (chains[i].a === removed || chains[i].b === removed) chains.splice(i, 1);
+      }
+      updateBuoyStatus();
+    }
+    return;
+  }
+
+  // 1-4 — switch play surface tabs
+  if (key === '1') { document.querySelector('.surface-tab[data-tab="KEYS"]')?.click(); return; }
+  if (key === '2') { document.querySelector('.surface-tab[data-tab="PAD"]')?.click(); return; }
+  if (key === '3') { document.querySelector('.surface-tab[data-tab="DRUM"]')?.click(); return; }
+  if (key === '4') { document.querySelector('.surface-tab[data-tab="XY"]')?.click(); return; }
+});
+
+</script>
+</body>
+</html>
