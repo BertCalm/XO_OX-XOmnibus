@@ -48,6 +48,7 @@
 #include "NexusDisplay.h"
 #include "EngineOrbit.h"
 #include "CouplingSubstrate.h"
+#include "CouplingConfigPopup.h"
 #include "DnaMapBrowser.h"
 #include "DetailOverlay.h"
 #include "PlaySurfaceOverlay.h"
@@ -188,6 +189,9 @@ public:
         // 9c. Detail overlay (hidden by default; floats above orbits/substrate)
         addChildComponent(detailOverlay_);
 
+        // 9e. Coupling config popup (hidden by default; shown on knot double-click)
+        addChildComponent(couplingPopup_);
+
         // 9b. BLOCKER 1: Empty-state label — shown when no engines are loaded.
         // Appears centred below the nexus with a subtle call-to-action.
         emptyStateLabel_.setText("Load an engine to begin",
@@ -307,6 +311,16 @@ public:
 
         nexus_.onPresetNameClicked = [this]() { transitionToBrowser(); };
         nexus_.onDnaClicked        = [this]() { if (onDnaClicked) onDnaClicked(); };
+
+        // ── CouplingSubstrate knot interaction ────────────────────────────────
+        substrate_.onKnotDoubleClicked = [this](int routeIndex)
+        {
+            // Get route info to populate popup.
+            // For now, show with placeholder names — will wire to real engine names.
+            couplingPopup_.show(routeIndex, "Engine A", juce::Colour(60, 180, 170),
+                               "Engine B", juce::Colour(140, 100, 220),
+                               0, 0.5f);
+        };
 
         browser_.onPresetSelected = [this](int idx)
         {
@@ -505,6 +519,9 @@ public:
 
         // DetailOverlay covers the ocean area (excludes dashboard).
         detailOverlay_.setBounds(oceanArea);
+
+        // Phase 2: CouplingConfigPopup covers the full ocean area.
+        couplingPopup_.setBounds(getOceanArea());
 
         // #1008 FIX 7: DimOverlay covers the ocean + waterline area so the dim
         // effect extends to the waterline but doesn't dim the dashboard itself.
@@ -1602,6 +1619,8 @@ private:
         browser_.toFront(false);
         // DetailOverlay floats above orbits/substrate/browser but below header buttons.
         detailOverlay_.toFront(false);
+        // Phase 2: CouplingConfigPopup sits above detailOverlay_ but below header buttons.
+        couplingPopup_.toFront(false);
         presetPrev_.toFront(false);
         presetNext_.toFront(false);
         favButton_.toFront(false);
@@ -1664,6 +1683,9 @@ private:
 
     // Step 4: Floating detail overlay (wraps EngineDetailPanel with backdrop + close btn).
     DetailOverlay        detailOverlay_;
+
+    // Phase 2: Coupling knot configuration popup (shown on double-click of a knot).
+    CouplingConfigPopup  couplingPopup_;
 
     // Step 6: Submarine dashboard — waterline separator + tab bar.
     WaterlineSeparator   waterline_;
