@@ -324,6 +324,7 @@ Reusable skill guides live in `Skills/` — invoke the relevant one before start
 | [preset-audit-checklist](Skills/preset-audit-checklist/SKILL.md) | `/preset-audit-checklist` | 7-phase Guru-informed preset audit |
 | [new-xo-engine](Skills/new-xo-engine/SKILL.md) | `/new-xo-engine` | End-to-end new engine creation |
 | [skill-friction-detective](Skills/skill-friction-detective/SKILL.md) | `/skill-friction-detective` | Meta-skill: detect friction/failures across all skills |
+| ringleader (`.claude/skills/`) | `/ringleader` | Strategic leadership — RAC verdicts, battle plans, handoffs, fleet governance, triage |
 
 Full index: `Skills/README.md`
 
