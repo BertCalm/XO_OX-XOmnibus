@@ -86,6 +86,10 @@ public:
     MasterFXChain() = default;
 
     //--------------------------------------------------------------------------
+    /// Read-only access to the step sequencer — for UI playhead + state display.
+    const MasterFXSequencer& getSequencer() const { return sequencer; }
+
+    //--------------------------------------------------------------------------
     // Shaper slot management — delegates to ShaperRegistry.
     // Call from the message thread (before or after prepare); the registry
     // stores shared_ptr<ShaperEngine> and calls prepare() internally.

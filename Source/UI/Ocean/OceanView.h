@@ -52,6 +52,8 @@
 #include "DnaMapBrowser.h"
 #include "DetailOverlay.h"
 #include "PlaySurfaceOverlay.h"
+#include "EnginePickerDrawer.h"
+#include "SettingsDrawer.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -211,6 +213,7 @@ public:
         addAndMakeVisible(playSurfaceOverlay_);
 
         // 11. Floating header controls
+        addAndMakeVisible(enginesButton_);
         addAndMakeVisible(presetPrev_);
         addAndMakeVisible(presetNext_);
         addAndMakeVisible(favButton_);
@@ -258,6 +261,7 @@ public:
             btn.setSize(minW, 44); // 44pt height = WCAG AA minimum touch target
             juce::ignoreUnused(this);
         };
+        styleHeaderButton(enginesButton_, 90);
         styleHeaderButton(presetPrev_,   44);
         styleHeaderButton(presetNext_,   44);
         styleHeaderButton(favButton_,    44);
@@ -265,6 +269,7 @@ public:
         styleHeaderButton(keysButton_,   56);
 
         // #1007 FIX 1: Tooltip text as fallback label for Unicode icon buttons.
+        enginesButton_.setTooltip("Toggle Engine Library");
         favButton_.setTooltip("Favourite");
         settingsButton_.setTooltip("Settings");
         keysButton_.setTooltip("Toggle Play Surface (K)");
@@ -322,6 +327,11 @@ public:
                                0, 0.5f);
         };
 
+        substrate_.onKnotRightClicked = [this](int routeIndex, juce::Point<int> /*screenPos*/)
+        {
+            showKnotContextMenu(routeIndex);
+        };
+
         browser_.onPresetSelected = [this](int idx)
         {
             if (onPresetSelected)
@@ -369,9 +379,25 @@ public:
         {
             firstLaunch_ = false;
             lifesaver_.setVisible(false);
-            // Open engine picker — fire callback that editor handles
-            if (onEnginePickerRequested) onEnginePickerRequested();
+            // Open engine picker drawer instead of external callback
+            engineDrawer_.open();
         };
+
+        // ── Phase 3: Engine picker drawer ────────────────────────────────────
+        addChildComponent(engineDrawer_); // starts hidden; toggle via enginesButton_
+        engineDrawer_.onEngineSelected = [this](const juce::String& engineId)
+        {
+            engineDrawer_.close();
+            if (onEnginePickerRequested)
+                onEnginePickerRequested();
+            if (onEngineSelectedFromDrawer)
+                onEngineSelectedFromDrawer(engineId);
+        };
+        enginesButton_.onClick = [this]() { engineDrawer_.toggle(); };
+
+        // ── Settings drawer (slide from right) ────────────────────────────────
+        addChildComponent(settingsDrawer_); // starts hidden; toggle via settingsButton_
+        settingsButton_.onClick = [this]() { settingsDrawer_.toggle(); };
 
         // ── Keyboard focus ────────────────────────────────────────────────────
         setWantsKeyboardFocus(true);
@@ -526,13 +552,31 @@ public:
         // #1008 FIX 7: DimOverlay covers the ocean + waterline area so the dim
         // effect extends to the waterline but doesn't dim the dashboard itself.
         dimOverlay_.setBounds(fullBounds.withTrimmedBottom(kDashboardH + kStatusBarH));
+
+        // Phase 3: Engine picker drawer — full height of ocean area, fixed width.
+        engineDrawer_.setBounds(oceanArea.withWidth(EnginePickerDrawer::kDrawerWidth));
+
+        // Settings drawer — slides from the RIGHT edge of the ocean area.
+        settingsDrawer_.setBounds(oceanArea
+            .withLeft(oceanArea.getRight() - SettingsDrawer::kDrawerWidth)
+            .withWidth(SettingsDrawer::kDrawerWidth));
     }
 
     bool keyPressed(const juce::KeyPress& key) override
     {
-        // Escape: exit any overlay, or return to Orbital from any state.
+        // Escape: close engine drawer or settings drawer first, then exit overlays, then return to Orbital.
         if (key == juce::KeyPress::escapeKey)
         {
+            if (settingsDrawer_.isOpen())
+            {
+                settingsDrawer_.close();
+                return true;
+            }
+            if (engineDrawer_.isOpen())
+            {
+                engineDrawer_.close();
+                return true;
+            }
             if (viewState_ == ViewState::BrowserOpen)
             {
                 exitBrowser();
@@ -645,9 +689,37 @@ public:
 
     void mouseDown(const juce::MouseEvent& e) override
     {
-        // Clicking the backdrop in ZoomIn mode (outside any creature) returns
-        // to Orbital.  We check whether the click landed on a child component
-        // via hitTest propagation — if we receive it here, no child caught it.
+        if (e.mods.isRightButtonDown())
+        {
+            // ── Right-click hit-detection order: buoy → empty ocean ─────────
+            // (Knot right-clicks are handled by CouplingSubstrate itself via
+            //  its onKnotRightClicked callback, so we only deal with buoys and
+            //  the empty-ocean fallback here.)
+
+            // 1. Check each visible orbit's bounds.
+            for (int i = 0; i < 5; ++i)
+            {
+                if (!orbits_[i].isVisible() || !orbits_[i].hasEngine())
+                    continue;
+
+                // Convert OceanView-local click position to orbit-local.
+                const auto orbitLocal = e.getEventRelativeTo(&orbits_[i]).position;
+                if (orbits_[i].getLocalBounds().toFloat().contains(orbitLocal))
+                {
+                    showBuoyContextMenu(i);
+                    return;
+                }
+            }
+
+            // 2. Empty ocean — no buoy or knot hit.
+            showEmptyOceanContextMenu();
+            return;
+        }
+
+        // Left-click: Clicking the backdrop in ZoomIn mode (outside any creature)
+        // returns to Orbital.  We check whether the click landed on a child
+        // component via hitTest propagation — if we receive it here, no child
+        // caught it.
         if (viewState_ == ViewState::ZoomIn)
         {
             transitionToOrbital();
@@ -913,6 +985,10 @@ public:
     /** Fired when an engine slot enters SplitTransform (double-click dive). */
     std::function<void(int slot)> onEngineDiveDeep;
 
+    /** Fired when the user selects an engine from the Engine Library drawer (Phase 3).
+        The editor should load this engine into the active slot (or next available). */
+    std::function<void(const juce::String& engineId)> onEngineSelectedFromDrawer;
+
     /** Fired when the user clicks a preset dot in the DNA map browser. */
     std::function<void(int presetIndex)> onPresetSelected;
 
@@ -929,12 +1005,41 @@ public:
         Wire this to open the engine picker so the user can load their first engine. */
     std::function<void()> onEnginePickerRequested;
 
+    /** Fired when the user right-clicks a buoy and chooses "Mute" / "Unmute".
+        OceanView tracks toggle state internally so the menu label reflects current
+        state.  The callback receives the slot index; callers should query
+        isSlotMuted(slot) for the new value after the callback fires. */
+    std::function<void(int slot)> onEngineMuteToggled;
+
+    /** Fired when the user right-clicks a buoy and chooses "Solo" / "Unsolo".
+        OceanView tracks toggle state internally.  Callers should query
+        isSlotSoloed(slot) for the new value after the callback fires. */
+    std::function<void(int slot)> onEngineSoloToggled;
+
+    /** Fired when the user right-clicks a buoy and chooses "Remove". */
+    std::function<void(int slot)> onEngineRemoveRequested;
+
+    /** Fired when the user right-clicks a coupling knot and chooses "Delete Chain". */
+    std::function<void(int chainIndex)> onCouplingDeleteRequested;
+
     //==========================================================================
     // State queries
     //==========================================================================
 
     ViewState getViewState()    const noexcept { return viewState_; }
     int       getSelectedSlot() const noexcept { return selectedSlot_; }
+
+    bool isSlotMuted  (int slot) const noexcept
+    {
+        if (slot < 0 || slot >= 5) return false;
+        return slotMuted_[static_cast<size_t>(slot)];
+    }
+
+    bool isSlotSoloed (int slot) const noexcept
+    {
+        if (slot < 0 || slot >= 5) return false;
+        return slotSoloed_[static_cast<size_t>(slot)];
+    }
 
 private:
     //==========================================================================
@@ -1108,6 +1213,125 @@ private:
         std::function<void()> onClick;
         float phase_ = 0.0f;
     };
+
+    //==========================================================================
+    // Context menus
+    //==========================================================================
+
+    /** Show a PopupMenu for a right-click on engine buoy at @p slot. */
+    void showBuoyContextMenu(int slot)
+    {
+        const bool muted  = slotMuted_ [static_cast<size_t>(slot)];
+        const bool soloed = slotSoloed_[static_cast<size_t>(slot)];
+
+        juce::PopupMenu menu;
+
+        // Item 1: Open Detail
+        menu.addItem(1, "Open Detail");
+
+        menu.addSeparator();
+
+        // Items 2-3: Mute / Solo toggles
+        menu.addItem(2, muted  ? "Unmute" : "Mute");
+        menu.addItem(3, soloed ? "Unsolo" : "Solo");
+
+        menu.addSeparator();
+
+        // Item 4: Swap Engine
+        menu.addItem(4, "Swap Engine...");
+
+        // Item 5: Remove (destructive — shown in a slightly dimmer colour by
+        // default via JUCE's native popup styling)
+        menu.addItem(5, "Remove");
+
+        menu.showMenuAsync(juce::PopupMenu::Options{},
+            [this, slot](int result)
+            {
+                switch (result)
+                {
+                    case 1:
+                        // Open Detail — transition to ZoomIn then split.
+                        transitionToZoomIn(slot);
+                        transitionToSplitTransform(slot);
+                        break;
+
+                    case 2:
+                        // Mute toggle.
+                        slotMuted_[static_cast<size_t>(slot)] = !slotMuted_[static_cast<size_t>(slot)];
+                        if (onEngineMuteToggled)
+                            onEngineMuteToggled(slot);
+                        break;
+
+                    case 3:
+                        // Solo toggle.
+                        slotSoloed_[static_cast<size_t>(slot)] = !slotSoloed_[static_cast<size_t>(slot)];
+                        if (onEngineSoloToggled)
+                            onEngineSoloToggled(slot);
+                        break;
+
+                    case 4:
+                        // Swap Engine — open the engine picker drawer.
+                        engineDrawer_.open();
+                        break;
+
+                    case 5:
+                        // Remove engine.
+                        if (onEngineRemoveRequested)
+                            onEngineRemoveRequested(slot);
+                        break;
+
+                    default:
+                        break;
+                }
+            });
+    }
+
+    /** Show a PopupMenu for a right-click on a coupling knot at @p chainIndex. */
+    void showKnotContextMenu(int chainIndex)
+    {
+        juce::PopupMenu menu;
+
+        menu.addItem(1, "Edit Coupling");
+        menu.addSeparator();
+        menu.addItem(2, "Delete Chain");
+
+        menu.showMenuAsync(juce::PopupMenu::Options{},
+            [this, chainIndex](int result)
+            {
+                switch (result)
+                {
+                    case 1:
+                        // Show the coupling config popup (same as double-click).
+                        couplingPopup_.show(chainIndex,
+                                            "Engine A", juce::Colour(60, 180, 170),
+                                            "Engine B", juce::Colour(140, 100, 220),
+                                            0, 0.5f);
+                        break;
+
+                    case 2:
+                        if (onCouplingDeleteRequested)
+                            onCouplingDeleteRequested(chainIndex);
+                        break;
+
+                    default:
+                        break;
+                }
+            });
+    }
+
+    /** Show a PopupMenu for a right-click on empty ocean (no buoy or knot hit). */
+    void showEmptyOceanContextMenu()
+    {
+        juce::PopupMenu menu;
+        menu.addItem(1, "Add Engine...");
+
+        menu.showMenuAsync(juce::PopupMenu::Options{},
+            [this](int result)
+            {
+                if (result == 1)
+                    engineDrawer_.open();
+            });
+    }
 
     //==========================================================================
     // State machine transitions
@@ -1457,20 +1681,21 @@ private:
 
     void layoutFloatingControls()
     {
-        // ── Left cluster: prev | presetName | next | fav ─────────────────────
+        // ── Left cluster: engines | prev | presetName | next | fav ───────────
         // #908: WCAG 2.5.5 requires a minimum 44×44pt touch target.
-        // Visual height stays ~28pt via GalleryLookAndFeel's text rendering,
-        // but the component bounds are expanded to 44pt so pointer/touch events
-        // have a compliant target size.  The button background fill matches the
-        // ocean scene so the extra transparent hit area is invisible.
-        constexpr int kBtnH      = 44;   // #908: WCAG AA minimum (was 28)
-        constexpr int kNavW      = 44;   // #908: square touch target for nav arrows
-        constexpr int kFavW      = 44;   // #908: square touch target for favourite star
-        constexpr int kTopMargin = 0;    // anchored to top edge; visual centre is at 22pt
-        constexpr int kLeftMargin = 4;
-        constexpr int kGap       = 0;    // targets are flush — no visual gap needed
+        constexpr int kBtnH        = 44;   // #908: WCAG AA minimum (was 28)
+        constexpr int kNavW        = 44;   // #908: square touch target for nav arrows
+        constexpr int kFavW        = 44;   // #908: square touch target for favourite star
+        constexpr int kEnginesW    = 90;   // Phase 3: Engines button width
+        constexpr int kTopMargin   = 0;    // anchored to top edge
+        constexpr int kLeftMargin  = 4;
+        constexpr int kGap         = 0;    // targets are flush
 
-        presetPrev_.setBounds(kLeftMargin,
+        // Phase 3: Engines button (leftmost)
+        enginesButton_.setBounds(kLeftMargin, kTopMargin, kEnginesW, kBtnH);
+        const int afterEngines = kLeftMargin + kEnginesW + 4;
+
+        presetPrev_.setBounds(afterEngines,
                               kTopMargin,
                               kNavW, kBtnH);
 
@@ -1478,15 +1703,15 @@ private:
         // spatial grouping "< Preset Name >" is immediately legible.
         // Width is capped at 160pt so it doesn't crowd the fav button.
         constexpr int kNameLabelW = 160;
-        presetNameLabel_.setBounds(kLeftMargin + kNavW,
+        presetNameLabel_.setBounds(afterEngines + kNavW,
                                    kTopMargin,
                                    kNameLabelW, kBtnH);
 
-        presetNext_.setBounds(kLeftMargin + kNavW + kNameLabelW + kGap,
+        presetNext_.setBounds(afterEngines + kNavW + kNameLabelW + kGap,
                               kTopMargin,
                               kNavW, kBtnH);
 
-        favButton_.setBounds(kLeftMargin + kNavW + kNameLabelW + kNavW + kGap * 2,
+        favButton_.setBounds(afterEngines + kNavW + kNameLabelW + kNavW + kGap * 2,
                              kTopMargin,
                              kFavW, kBtnH);
 
@@ -1645,6 +1870,11 @@ private:
     int       selectedSlot_    = -1;
     float     dimAlpha_        = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
 
+    /// Per-slot mute / solo toggle state — tracked locally so the context menu
+    /// label can reflect the current state without a round-trip to the processor.
+    std::array<bool, 5> slotMuted_  {};
+    std::array<bool, 5> slotSoloed_ {};
+
     /// Step 7: true until the user loads their first engine or clicks the lifesaver.
     bool firstLaunch_ = true;
 
@@ -1692,11 +1922,18 @@ private:
     DashboardTabBar      tabBar_;
 
     // Floating header controls.
+    juce::TextButton enginesButton_ { juce::String::charToString(0x2261) + " Engines" }; // ≡ Engines
     juce::TextButton presetPrev_    { "<" };
     juce::TextButton presetNext_    { ">" };
     juce::TextButton favButton_     { juce::String::charToString (0x2605) };  // ★
     juce::TextButton settingsButton_{ juce::String::charToString (0x2699) };  // ⚙
     juce::TextButton keysButton_    { "KEYS" };
+
+    // Phase 3: Engine picker drawer (slide from left)
+    EnginePickerDrawer engineDrawer_;
+
+    // Settings drawer (slide from right)
+    SettingsDrawer settingsDrawer_;
 
     // #1007 FIX 3: Inline preset name label between < and > for spatial grouping.
     juce::Label      presetNameLabel_;
