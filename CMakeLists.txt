@@ -272,6 +272,8 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Orrery/OrreryEngine.cpp
     Source/Engines/Opsin/OpsinEngine.h
     Source/Engines/Opsin/OpsinEngine.cpp
+    Source/Engines/Oort/OortEngine.h
+    Source/Engines/Oort/OortEngine.cpp
     Source/Engines/Bite/BiteEngine.h
     Source/Engines/Bite/BiteEngine.cpp
     Source/Engines/Origami/OrigamiEngine.h

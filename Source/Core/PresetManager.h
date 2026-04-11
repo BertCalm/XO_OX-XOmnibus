@@ -254,6 +254,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Orrery", "orry_"},
         // Bioluminescent Neural Feedback
         {"Opsin", "ops_"},
+        // Stochastic Cloud Synthesis
+        {"Oort", "oort_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();
