@@ -59,6 +59,7 @@
 #include "MasterFXStripCompact.h"
 #include "TransportBar.h"
 #include "SubmarineOuijaPanel.h"
+#include "ExpressionStrips.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -217,6 +218,9 @@ public:
         // 9e. Submarine XOuija panel (hidden by default, shown when OUIJA tab selected).
         ouijaPanel_.setVisible(false);
         addAndMakeVisible(ouijaPanel_);
+
+        // 9f. Expression strips (PB + MW) — always visible in play area.
+        addAndMakeVisible(exprStrips_);
 
         // 10. PlaySurface overlay (hidden by default; manages its own visibility)
         addAndMakeVisible(playSurfaceOverlay_);
@@ -618,6 +622,9 @@ public:
         // Chord bar (visible when CHORD toggle is on, ~28px).
         if (chordBar_ && chordBar_->isVisible())
             chordBar_->setBounds(dashArea.removeFromTop(28));
+
+        // Expression strips (36px) on the left of the play area.
+        exprStrips_.setBounds(dashArea.removeFromLeft(ExpressionStrips::kStripWidth));
 
         // Remaining dashboard space → PlaySurface or XOuija.
         if (ouijaPanel_.isVisible())
@@ -1995,6 +2002,7 @@ private:
         dimOverlay_.toFront(false);
         // Step 6: waterline and tab bar sit above the dim overlay but below
         // the PlaySurface so they are always legible.
+        exprStrips_.toFront(false);
         playSurfaceOverlay_.toFront(false);
         ouijaPanel_.toFront(false);
         if (waterline_) waterline_->toFront(false);
@@ -2066,6 +2074,7 @@ private:
     std::unique_ptr<MasterFXStripCompact> masterFxStrip_;
     std::unique_ptr<TransportBar>         transportBar_;
     SubmarineOuijaPanel                   ouijaPanel_;
+    ExpressionStrips                      exprStrips_;
     DashboardTabBar      tabBar_;
 
     // Floating header controls.
@@ -2102,7 +2111,7 @@ private:
     static constexpr float kMacroStripH         = 60.0f;  // #901: 56→60pt to fit 48pt knobs + 6pt pad
     static constexpr float kSplitOrbitalFraction = 0.20f;  ///< 20% width for mini orbital
     static constexpr int   kWaterlineH          = 6;
-    static constexpr int   kDashboardH          = 340;    ///< macros (60) + tabs (30) + keyboard (~250)
+    static constexpr int   kDashboardH          = 290;    ///< macros (60) + FX (48) + tabs (30) + play (~152)
     static constexpr int   kTabBarH             = 30;
 
     // HIGH fix (#1006): padding added to orbital bounds so ±5% breath animation
