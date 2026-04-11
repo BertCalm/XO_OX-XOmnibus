@@ -270,6 +270,8 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Observandum/ObservandumEngine.cpp
     Source/Engines/Orrery/OrreryEngine.h
     Source/Engines/Orrery/OrreryEngine.cpp
+    Source/Engines/Opsin/OpsinEngine.h
+    Source/Engines/Opsin/OpsinEngine.cpp
     Source/Engines/Bite/BiteEngine.h
     Source/Engines/Bite/BiteEngine.cpp
     Source/Engines/Origami/OrigamiEngine.h
