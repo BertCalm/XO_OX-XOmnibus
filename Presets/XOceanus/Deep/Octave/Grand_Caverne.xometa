@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Grand Caverne",
+  "mood": "Deep",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The lowest register of a Cavaillé-Coll organ in a cave-like resonance. Sub-frequencies accumulate and reinforce, the darkness thickening with each sustained chord.",
+  "tier": "standard",
+  "tags": ["deep", "cavaille-coll", "romantic", "cavern", "sub-bass"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.06,
+    "SPACE": 0.92
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.96,
+    "movement": 0.05,
+    "density": 0.98,
+    "space": 0.92,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.95,
+      "oct_chiff": 0.03,
+      "oct_detune": 0.02,
+      "oct_buzz": 0.02,
+      "oct_pressure": 0.2,
+      "oct_crosstalk": 0.4,
+      "oct_brightness": 0.06,
+      "oct_registration": 1.0,
+      "oct_roomDepth": 0.92,
+      "oct_attack": 0.3,
+      "oct_decay": 2.5,
+      "oct_sustain": 1.0,
+      "oct_release": 4.0,
+      "oct_filterEnvAmount": 0.03,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.9,
+      "oct_macroMovement": 0.06,
+      "oct_macroCoupling": 0.06,
+      "oct_macroSpace": 0.92,
+      "oct_lfo1Rate": 0.03,
+      "oct_lfo1Depth": 0.03,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.1,
+      "oct_lfo2Depth": 0.02,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.04
+    }
+  },
+  "tempo": null
+}

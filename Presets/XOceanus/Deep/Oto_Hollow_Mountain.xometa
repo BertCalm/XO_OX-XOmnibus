@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Hollow Mountain",
+  "mood": "Deep",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene inside a hollow mountain — the buzz muffled by rock walls, crosstalk high because the pipes cannot distinguish inside from outside. A sound without bottom.",
+  "tier": "standard",
+  "tags": ["deep", "khene", "hollow", "muffled", "vast"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.25,
+    "SPACE": 0.7
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.16,
+    "warmth": 0.7,
+    "movement": 0.12,
+    "density": 0.68,
+    "space": 0.75,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.68,
+      "oto_chiff": 0.05,
+      "oto_detune": 0.28,
+      "oto_buzz": 0.45,
+      "oto_pressure": 0.22,
+      "oto_crosstalk": 0.55,
+      "oto_filterCutoff": 800.0,
+      "oto_filterRes": 0.32,
+      "oto_attack": 1.5,
+      "oto_decay": 2.8,
+      "oto_sustain": 0.94,
+      "oto_release": 3.0,
+      "oto_lfo1Rate": 0.05,
+      "oto_lfo1Depth": 0.04,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.5,
+      "oto_macroB": 0.15,
+      "oto_macroC": 0.25,
+      "oto_macroD": 0.7
+    }
+  },
+  "tempo": null
+}

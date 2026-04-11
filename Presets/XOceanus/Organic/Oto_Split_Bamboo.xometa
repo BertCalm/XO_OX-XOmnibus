@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Split Bamboo",
+  "mood": "Organic",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene where one of the pipes has slightly cracked — asymmetric buzz, unpredictable crosstalk. The imperfection is the point; the split bamboo breathes differently than whole.",
+  "tier": "standard",
+  "tags": ["organic", "khene", "cracked", "imperfect", "raw"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.25,
+    "SPACE": 0.22
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.6,
+    "density": 0.48,
+    "space": 0.22,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.45,
+      "oto_chiff": 0.3,
+      "oto_detune": 0.42,
+      "oto_buzz": 0.8,
+      "oto_pressure": 0.55,
+      "oto_crosstalk": 0.4,
+      "oto_filterCutoff": 6500.0,
+      "oto_filterRes": 0.3,
+      "oto_attack": 0.018,
+      "oto_decay": 0.12,
+      "oto_sustain": 0.72,
+      "oto_release": 0.2,
+      "oto_lfo1Rate": 4.0,
+      "oto_lfo1Depth": 0.25,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.68,
+      "oto_macroB": 0.6,
+      "oto_macroC": 0.25,
+      "oto_macroD": 0.22
+    }
+  },
+  "tempo": null
+}

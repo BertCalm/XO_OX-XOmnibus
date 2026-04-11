@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Filter Tide",
+  "mood": "Flux",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng with the filter LFO routed for a slow tidal sweep — bright then dark then bright again. The chiff appears and disappears with each cycle like a shore uncovered by retreating water.",
+  "tier": "standard",
+  "tags": ["flux", "sheng", "filter", "tidal", "lfo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.15,
+    "SPACE": 0.5
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.32,
+    "movement": 0.65,
+    "density": 0.38,
+    "space": 0.52,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.38,
+      "oto_chiff": 0.25,
+      "oto_detune": 0.05,
+      "oto_buzz": 0.02,
+      "oto_pressure": 0.15,
+      "oto_crosstalk": 0.1,
+      "oto_filterCutoff": 8000.0,
+      "oto_filterRes": 0.3,
+      "oto_attack": 0.04,
+      "oto_decay": 0.3,
+      "oto_sustain": 0.85,
+      "oto_release": 0.6,
+      "oto_lfo1Rate": 0.3,
+      "oto_lfo1Depth": 0.5,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.55,
+      "oto_macroB": 0.65,
+      "oto_macroC": 0.15,
+      "oto_macroD": 0.5
+    }
+  },
+  "tempo": null
+}

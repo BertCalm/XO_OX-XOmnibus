@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Temple Chord",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho with maximum cluster density and extended release — the signature aitake harmonic stack held until it dissolves. A living chord that breathes with the room.",
+  "tier": "standard",
+  "tags": ["foundation", "sho", "cluster", "ceremonial", "harmonic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.15,
+    "SPACE": 0.75
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.4,
+    "movement": 0.08,
+    "density": 0.95,
+    "space": 0.8,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.95,
+      "oto_chiff": 0.05,
+      "oto_detune": 0.15,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.12,
+      "oto_crosstalk": 0.4,
+      "oto_filterCutoff": 3500.0,
+      "oto_filterRes": 0.05,
+      "oto_attack": 0.5,
+      "oto_decay": 1.2,
+      "oto_sustain": 0.95,
+      "oto_release": 2.5,
+      "oto_lfo1Rate": 0.08,
+      "oto_lfo1Depth": 0.03,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.45,
+      "oto_macroB": 0.1,
+      "oto_macroC": 0.15,
+      "oto_macroD": 0.75
+    }
+  },
+  "tempo": null
+}

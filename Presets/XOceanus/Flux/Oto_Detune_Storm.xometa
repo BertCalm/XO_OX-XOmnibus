@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Detune Storm",
+  "mood": "Flux",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng in a storm — detune pushed wide, the LFO adding further instability, pressure lurching. The instrument fights the weather and loses, producing something beautiful and chaotic.",
+  "tier": "standard",
+  "tags": ["flux", "sheng", "detune", "storm", "chaotic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.75,
+    "COUPLING": 0.2,
+    "SPACE": 0.42
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.35,
+    "movement": 0.75,
+    "density": 0.45,
+    "space": 0.44,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.45,
+      "oto_chiff": 0.32,
+      "oto_detune": 0.55,
+      "oto_buzz": 0.1,
+      "oto_pressure": 0.55,
+      "oto_crosstalk": 0.2,
+      "oto_filterCutoff": 9000.0,
+      "oto_filterRes": 0.25,
+      "oto_attack": 0.015,
+      "oto_decay": 0.22,
+      "oto_sustain": 0.78,
+      "oto_release": 0.45,
+      "oto_lfo1Rate": 6.0,
+      "oto_lfo1Depth": 0.55,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.65,
+      "oto_macroB": 0.75,
+      "oto_macroC": 0.2,
+      "oto_macroD": 0.42
+    }
+  },
+  "tempo": null
+}

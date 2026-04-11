@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Palace Reed",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng in a formal court setting — noble bearing, precise articulation, moderate brightness. The sound that accompanied dynastic ceremonies across centuries of Chinese history.",
+  "tier": "standard",
+  "tags": ["foundation", "sheng", "formal", "court", "precise"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.1,
+    "SPACE": 0.5
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.3,
+    "movement": 0.15,
+    "density": 0.35,
+    "space": 0.5,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.38,
+      "oto_chiff": 0.28,
+      "oto_detune": 0.05,
+      "oto_buzz": 0.03,
+      "oto_pressure": 0.12,
+      "oto_crosstalk": 0.1,
+      "oto_filterCutoff": 8000.0,
+      "oto_filterRes": 0.08,
+      "oto_attack": 0.012,
+      "oto_decay": 0.22,
+      "oto_sustain": 0.78,
+      "oto_release": 0.4,
+      "oto_lfo1Rate": 0.35,
+      "oto_lfo1Depth": 0.04,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.6,
+      "oto_macroB": 0.2,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.5
+    }
+  },
+  "tempo": null
+}

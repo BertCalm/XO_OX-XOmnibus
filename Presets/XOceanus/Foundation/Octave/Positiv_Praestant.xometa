@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Positiv Praestant",
+  "mood": "Foundation",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Praestant 4' of a North German Baroque Positiv — open metal pipes speaking with transparency and discipline. No excess, no sentimentality; pure articulated polyphony.",
+  "tier": "standard",
+  "tags": ["foundation", "baroque", "positiv", "praestant", "principal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.08,
+    "SPACE": 0.45
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.4,
+    "movement": 0.12,
+    "density": 0.4,
+    "space": 0.45,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 1,
+      "oct_cluster": 0.38,
+      "oct_chiff": 0.38,
+      "oct_detune": 0.03,
+      "oct_buzz": 0.04,
+      "oct_pressure": 0.1,
+      "oct_crosstalk": 0.1,
+      "oct_brightness": 0.65,
+      "oct_registration": 0.5,
+      "oct_roomDepth": 0.42,
+      "oct_attack": 0.01,
+      "oct_decay": 0.2,
+      "oct_sustain": 1.0,
+      "oct_release": 0.7,
+      "oct_filterEnvAmount": 0.08,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.55,
+      "oct_macroMovement": 0.15,
+      "oct_macroCoupling": 0.08,
+      "oct_macroSpace": 0.45,
+      "oct_lfo1Rate": 0.08,
+      "oct_lfo1Depth": 0.05,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.3,
+      "oct_lfo2Depth": 0.03,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.05
+    }
+  },
+  "tempo": null
+}

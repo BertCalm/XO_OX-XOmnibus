@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Ceremony Unknown",
+  "mood": "Aether",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho at a ceremony that has no name — maximum pressure instability combined with extreme resonance, each note blooming unpredictably, the harmonic cluster shifting like weather. You are attendant to something vast.",
+  "tier": "standard",
+  "tags": ["aether", "sho", "ceremony", "extreme", "pressure"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.25,
+    "SPACE": 0.82
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.35,
+    "movement": 0.6,
+    "density": 0.85,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.85,
+      "oto_chiff": 0.04,
+      "oto_detune": 0.25,
+      "oto_buzz": 0.05,
+      "oto_pressure": 1.0,
+      "oto_crosstalk": 0.55,
+      "oto_filterCutoff": 3200.0,
+      "oto_filterRes": 0.65,
+      "oto_attack": 1.0,
+      "oto_decay": 3.0,
+      "oto_sustain": 0.96,
+      "oto_release": 3.0,
+      "oto_lfo1Rate": 0.03,
+      "oto_lfo1Depth": 0.7,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.42,
+      "oto_macroB": 0.58,
+      "oto_macroC": 0.25,
+      "oto_macroD": 0.82
+    }
+  },
+  "tempo": null
+}

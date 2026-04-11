@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Incense Column",
+  "mood": "Atmosphere",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho ascending like smoke from a single stick of incense — thin column of harmonic cluster, upward drift suggested by the very slow LFO, release that never fully resolves.",
+  "tier": "standard",
+  "tags": ["atmosphere", "sho", "incense", "ascending", "meditative"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.1,
+    "SPACE": 0.76
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.36,
+    "movement": 0.15,
+    "density": 0.65,
+    "space": 0.82,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.65,
+      "oto_chiff": 0.05,
+      "oto_detune": 0.12,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.12,
+      "oto_crosstalk": 0.3,
+      "oto_filterCutoff": 4800.0,
+      "oto_filterRes": 0.05,
+      "oto_attack": 0.7,
+      "oto_decay": 1.8,
+      "oto_sustain": 0.94,
+      "oto_release": 2.8,
+      "oto_lfo1Rate": 0.06,
+      "oto_lfo1Depth": 0.05,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.38,
+      "oto_macroB": 0.18,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.76
+    }
+  },
+  "tempo": null
+}

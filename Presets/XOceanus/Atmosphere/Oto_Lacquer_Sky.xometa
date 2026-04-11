@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Lacquer Sky",
+  "mood": "Atmosphere",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng against a glossy nighttime sky — bright filter with smooth LFO shimmer, long release catching the edge of stars. Polished but never cold.",
+  "tier": "standard",
+  "tags": ["atmosphere", "sheng", "night", "bright", "shimmer"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.1,
+    "SPACE": 0.7
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.28,
+    "movement": 0.3,
+    "density": 0.38,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.35,
+      "oto_chiff": 0.12,
+      "oto_detune": 0.04,
+      "oto_buzz": 0.01,
+      "oto_pressure": 0.1,
+      "oto_crosstalk": 0.08,
+      "oto_filterCutoff": 10000.0,
+      "oto_filterRes": 0.14,
+      "oto_attack": 0.25,
+      "oto_decay": 0.7,
+      "oto_sustain": 0.88,
+      "oto_release": 2.4,
+      "oto_lfo1Rate": 0.18,
+      "oto_lfo1Depth": 0.1,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.5,
+      "oto_macroB": 0.3,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.7
+    }
+  },
+  "tempo": null
+}

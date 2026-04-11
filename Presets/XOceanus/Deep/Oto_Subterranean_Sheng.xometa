@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Subterranean Sheng",
+  "mood": "Deep",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng buried in low register — the brightness filtered away, attack slow and heavy as lifting stone. The chiff still cuts through the darkness like a single ray of light.",
+  "tier": "standard",
+  "tags": ["deep", "sheng", "dark", "low", "filtered"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.12,
+    "SPACE": 0.6
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.5,
+    "movement": 0.12,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.55,
+      "oto_chiff": 0.2,
+      "oto_detune": 0.08,
+      "oto_buzz": 0.06,
+      "oto_pressure": 0.15,
+      "oto_crosstalk": 0.2,
+      "oto_filterCutoff": 1800.0,
+      "oto_filterRes": 0.2,
+      "oto_attack": 0.7,
+      "oto_decay": 1.5,
+      "oto_sustain": 0.88,
+      "oto_release": 2.0,
+      "oto_lfo1Rate": 0.08,
+      "oto_lfo1Depth": 0.05,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.5,
+      "oto_macroB": 0.15,
+      "oto_macroC": 0.12,
+      "oto_macroD": 0.6
+    }
+  },
+  "tempo": null
+}

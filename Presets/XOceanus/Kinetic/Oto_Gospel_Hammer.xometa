@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Gospel Hammer",
+  "mood": "Kinetic",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica hammered with purpose — rapid attack, strong chiff almost like a struck key, the warmth still intact but the intention is percussive. Every note a declaration.",
+  "tier": "standard",
+  "tags": ["kinetic", "melodica", "gospel", "percussive", "declaration"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.15,
+    "SPACE": 0.18
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.68,
+    "movement": 0.6,
+    "density": 0.28,
+    "space": 0.18,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.28,
+      "oto_chiff": 0.75,
+      "oto_detune": 0.08,
+      "oto_buzz": 0.22,
+      "oto_pressure": 0.25,
+      "oto_crosstalk": 0.06,
+      "oto_filterCutoff": 7000.0,
+      "oto_filterRes": 0.2,
+      "oto_attack": 0.002,
+      "oto_decay": 0.1,
+      "oto_sustain": 0.68,
+      "oto_release": 0.12,
+      "oto_lfo1Rate": 2.2,
+      "oto_lfo1Depth": 0.22,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.72,
+      "oto_macroB": 0.6,
+      "oto_macroC": 0.15,
+      "oto_macroD": 0.18
+    }
+  },
+  "tempo": null
+}

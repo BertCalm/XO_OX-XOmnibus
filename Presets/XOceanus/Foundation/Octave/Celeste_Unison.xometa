@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Celeste Unison",
+  "mood": "Foundation",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two slightly detuned flute ranks breathe against one another in perfect celeste. The wavering unison is warm and intimate — church morning light through amber glass.",
+  "tier": "standard",
+  "tags": ["foundation", "cavaille-coll", "romantic", "celeste", "flute"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.1,
+    "SPACE": 0.7
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.82,
+    "movement": 0.45,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.4,
+      "oct_chiff": 0.06,
+      "oct_detune": 0.28,
+      "oct_buzz": 0.03,
+      "oct_pressure": 0.22,
+      "oct_crosstalk": 0.18,
+      "oct_brightness": 0.35,
+      "oct_registration": 0.45,
+      "oct_roomDepth": 0.72,
+      "oct_attack": 0.1,
+      "oct_decay": 0.6,
+      "oct_sustain": 1.0,
+      "oct_release": 1.6,
+      "oct_filterEnvAmount": 0.06,
+      "oct_bendRange": 1,
+      "oct_macroCharacter": 0.4,
+      "oct_macroMovement": 0.45,
+      "oct_macroCoupling": 0.1,
+      "oct_macroSpace": 0.7,
+      "oct_lfo1Rate": 0.35,
+      "oct_lfo1Depth": 0.28,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.6,
+      "oct_lfo2Depth": 0.12,
+      "oct_lfo2Shape": 1,
+      "oct_competition": 0.05
+    }
+  },
+  "tempo": null
+}

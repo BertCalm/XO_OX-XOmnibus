@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Infinite Nave",
+  "mood": "Aether",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum room depth and release — the nave extends beyond any real architecture, sound decaying over geological time. A single note sustains into something closer to hum than music.",
+  "tier": "standard",
+  "tags": ["aether", "cavaille-coll", "romantic", "extreme", "infinite-reverb"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.05,
+    "SPACE": 1.0
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.88,
+    "movement": 0.06,
+    "density": 0.55,
+    "space": 1.0,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.5,
+      "oct_chiff": 0.03,
+      "oct_detune": 0.02,
+      "oct_buzz": 0.01,
+      "oct_pressure": 0.1,
+      "oct_crosstalk": 0.18,
+      "oct_brightness": 0.15,
+      "oct_registration": 0.55,
+      "oct_roomDepth": 1.0,
+      "oct_attack": 0.5,
+      "oct_decay": 3.0,
+      "oct_sustain": 1.0,
+      "oct_release": 5.0,
+      "oct_filterEnvAmount": 0.03,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.5,
+      "oct_macroMovement": 0.08,
+      "oct_macroCoupling": 0.05,
+      "oct_macroSpace": 1.0,
+      "oct_lfo1Rate": 0.005,
+      "oct_lfo1Depth": 0.06,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.008,
+      "oct_lfo2Depth": 0.04,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.02
+    }
+  },
+  "tempo": null
+}
