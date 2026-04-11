@@ -740,6 +740,7 @@ public:
         oceanView_.initWaterline(proc.getAPVTS(), proc.getMasterFXChain().getSequencer());
         oceanView_.initChordBar(proc.getAPVTS(), proc.getChordMachine());
         oceanView_.initMasterFxStrip(proc.getAPVTS());
+        oceanView_.initTransportBar();
         oceanView_.initStatusBar();
 
         // Wire OceanView callbacks
@@ -2018,8 +2019,8 @@ private:
             statusBar.setVoiceCount(totalVoices);
 
             // W03: BPM — read from host transport if available; 0.0 means "not connected".
+            double bpm = 0.0;
             {
-                double bpm = 0.0;
                 if (auto* ph = processor.getPlayHead())
                 {
                     auto pos = ph->getPosition();
@@ -2030,7 +2031,16 @@ private:
             }
 
             // W03: CPU — read from processor's measured processBlock load.
-            statusBar.setCpuPercent(processor.getProcessingLoad() * 100.0f);
+            const float cpuPct = processor.getProcessingLoad() * 100.0f;
+            statusBar.setCpuPercent(cpuPct);
+
+            // Push same data to submarine TransportBar.
+            if (auto* tb = oceanView_.getTransportBar())
+            {
+                tb->setVoiceCount(totalVoices);
+                tb->setBpm(bpm > 0.0 ? bpm : 120.0);
+                tb->setCpuPercent(cpuPct);
+            }
         }
 
         // ── Header indicators ─────────────────────────────────────────────────

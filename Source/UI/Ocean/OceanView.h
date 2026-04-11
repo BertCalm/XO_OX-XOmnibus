@@ -57,6 +57,7 @@
 #include "TideWaterline.h"
 #include "ChordBarComponent.h"
 #include "MasterFXStripCompact.h"
+#include "TransportBar.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -514,6 +515,19 @@ public:
     }
 
     /**
+        Initialise the TransportBar (submarine-style bottom status strip).
+    */
+    void initTransportBar()
+    {
+        transportBar_ = std::make_unique<TransportBar>();
+        addAndMakeVisible(*transportBar_);
+        reorderZStack();
+    }
+
+    /// Get the TransportBar so the editor can push BPM/voices/CPU.
+    TransportBar* getTransportBar() noexcept { return transportBar_.get(); }
+
+    /**
         Initialise the StatusBar.
         Must be the last deferred-init call — it sets fullyInitialised_ = true
         and triggers the first valid resized() pass.
@@ -607,12 +621,24 @@ public:
         if (!playSurfaceOverlay_.isShowing())
             playSurfaceOverlay_.show();
 
-        // Status bar always spans the full bottom strip.
+        // Transport bar (submarine) replaces the old status bar at the bottom.
+        if (transportBar_)
+            transportBar_->setBounds(0,
+                                     getHeight() - kStatusBarH,
+                                     getWidth(),
+                                     kStatusBarH);
+
+        // Legacy status bar (Gallery) — hidden when transport bar is active.
         if (statusBar_)
-            statusBar_->setBounds(0,
-                                  getHeight() - kStatusBarH,
-                                  getWidth(),
-                                  kStatusBarH);
+        {
+            if (transportBar_)
+                statusBar_->setVisible(false);
+            else
+                statusBar_->setBounds(0,
+                                      getHeight() - kStatusBarH,
+                                      getWidth(),
+                                      kStatusBarH);
+        }
 
         // DetailOverlay covers the ocean area (excludes dashboard).
         detailOverlay_.setBounds(oceanArea);
@@ -1962,6 +1988,7 @@ private:
         if (masterFxStrip_) masterFxStrip_->toFront(false);
         tabBar_.toFront(false);
         if (chordBar_) chordBar_->toFront(false);
+        if (transportBar_) transportBar_->toFront(false);
         if (statusBar_) statusBar_->toFront(false);
     }
 
@@ -2024,6 +2051,7 @@ private:
     std::unique_ptr<TideWaterline>        waterline_;
     std::unique_ptr<ChordBarComponent>    chordBar_;
     std::unique_ptr<MasterFXStripCompact> masterFxStrip_;
+    std::unique_ptr<TransportBar>         transportBar_;
     DashboardTabBar      tabBar_;
 
     // Floating header controls.
