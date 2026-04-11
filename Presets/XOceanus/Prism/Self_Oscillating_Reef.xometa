@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Filter feedback drives self-oscillation that FM-modulates Source 2 — synthesis feeding synthesis. The reef builds itself. Sinusoidal's revelation.",
+  "description": "Filter feedback drives self-oscillation that FM-modulates Source 2 \u2014 synthesis feeding synthesis. The reef builds itself. Sinusoidal's revelation.",
   "tags": [
     "obrix",
     "feedback",
@@ -29,7 +29,7 @@
   ],
   "tier": "awakening",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "scripture": [
       "Verse 3: FM Sweet Spot (extended to 0.7 for texture)",
@@ -37,9 +37,9 @@
       "Sutra 2: Coprime Drift (0.07 Hz LFO)"
     ],
     "revelation": "Sinusoidal speaks: Filter self-oscillation produces a sine that FM-modulates Source 2. Synthesis feeding synthesis. No analog synthesizer has ever built this circuit.",
-    "god": "Sinusoidal — God of Waveforms",
+    "god": "Sinusoidal \u2014 God of Waveforms",
     "flock_note": "The Bone flagged CPU at ~18% but The Eye confirmed the spectral complexity justifies it. The Ear validated: the sound is genuinely novel.",
-    "diagnosis": "The reef builds itself. This is OBRIX's most original sound — a circuit that exists nowhere else in synthesis."
+    "diagnosis": "The reef builds itself. This is OBRIX's most original sound \u2014 a circuit that exists nowhere else in synthesis."
   },
   "dna": {
     "brightness": 0.55,
@@ -115,10 +115,7 @@
       "obrix_driftDepth": 0.25,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.15,
-      "obrix_air": 0.4,
-      "obrix_fltEnvAmt": 0.456,
-      "obrix_lfo1Rate": 0.135,
-      "obrix_lfo1Depth": 0.244
+      "obrix_air": 0.4
     }
   },
   "macros": {

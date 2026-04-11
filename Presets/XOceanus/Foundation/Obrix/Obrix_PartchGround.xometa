@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "The Harry Partch reference — pure 5-limit just intonation pulled toward integer ratios by a strong harmonic attractor (fieldStrength=0.7, 5-limit). A single Sine through a warm LP at 3000 Hz sits in the tonal gravity well. Playing in tune locks to pure 5-limit intervals; playing out of tune bends slowly back toward the just field. The foundation stone for biophonic harmonic work.",
+  "description": "The Harry Partch reference \u2014 pure 5-limit just intonation pulled toward integer ratios by a strong harmonic attractor (fieldStrength=0.7, 5-limit). A single Sine through a warm LP at 3000 Hz sits in the tonal gravity well. Playing in tune locks to pure 5-limit intervals; playing out of tune bends slowly back toward the just field. The foundation stone for biophonic harmonic work.",
   "tags": [
     "obrix",
     "foundation",
@@ -125,10 +125,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.422,
-      "obrix_lfo1Rate": 0.184,
-      "obrix_lfo1Depth": 0.199
+      "obrix_fxMode": 0
     }
   }
 }

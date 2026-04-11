@@ -160,6 +160,10 @@ private:
     /** Last known mouse position in local coordinates — used for tooltip placement. */
     juce::Point<float> lastMousePos_;
 
+    /** Bézier midpoint (t=0.5) for each active route — updated each paint() call.
+        Used for knot hit-testing in getKnotAtPosition() and mouseDown/mouseDoubleClick. */
+    std::array<juce::Point<float>, 32> knotPositions_ {};  // max 32 routes
+
 public:
     //==========================================================================
     CouplingSubstrate()
@@ -369,14 +373,20 @@ public:
 
     //==========================================================================
     /**
-        Returns true only when the cursor is within 8 px of a live Bézier thread.
-        This allows clicks on threads to register (for future interaction) while
-        all other cursor positions fall through to the creature layer underneath.
+        Returns true only when the cursor is within 8 px of a live Bézier thread
+        or within 14 px of a coupling knot.
+        This allows clicks on threads/knots to register while all other cursor
+        positions fall through to the creature layer underneath.
     */
     bool hitTest(int x, int y) override
     {
         const float px = static_cast<float>(x);
         const float py = static_cast<float>(y);
+
+        // Check knots first (they're on top)
+        if (getKnotAtPosition({ px, py }) >= 0)
+            return true;
+
         for (const auto& rs : routeStates_)
         {
             if (rs.isFading_) continue;
@@ -388,6 +398,45 @@ public:
         }
         return false;
     }
+
+    //==========================================================================
+    /** Returns the index of the route whose knot is within 14 px of pos, or -1. */
+    int getKnotAtPosition(juce::Point<float> pos) const
+    {
+        for (int i = 0; i < static_cast<int>(routeStates_.size()); ++i)
+        {
+            if (routeStates_[static_cast<size_t>(i)].isFading_) continue;
+            if (i >= static_cast<int>(knotPositions_.size())) break;
+            const auto& kp = knotPositions_[static_cast<size_t>(i)];
+            if (kp.getDistanceFrom(pos) < 14.0f)
+                return i;
+        }
+        return -1;
+    }
+
+    //==========================================================================
+    void mouseDown(const juce::MouseEvent& e) override
+    {
+        // Right-click on knot → context menu
+        if (e.mods.isRightButtonDown())
+        {
+            int knotIdx = getKnotAtPosition(e.position);
+            if (knotIdx >= 0 && onKnotRightClicked)
+                onKnotRightClicked(knotIdx, e.getScreenPosition());
+        }
+    }
+
+    void mouseDoubleClick(const juce::MouseEvent& e) override
+    {
+        int knotIdx = getKnotAtPosition(e.position);
+        if (knotIdx >= 0 && onKnotDoubleClicked)
+            onKnotDoubleClicked(knotIdx);
+    }
+
+    //==========================================================================
+    // Public callbacks — wire these in OceanView.
+    std::function<void(int routeIndex)> onKnotDoubleClicked;
+    std::function<void(int routeIndex, juce::Point<int> screenPos)> onKnotRightClicked;
 
     //==========================================================================
     void mouseMove(const juce::MouseEvent& e) override
@@ -433,8 +482,9 @@ public:
 
         const juce::Colour xoGold = juce::Colour(GalleryColors::xoGold);
 
-        for (const auto& rs : routeStates_)
+        for (int routeIdx = 0; routeIdx < static_cast<int>(routeStates_.size()); ++routeIdx)
         {
+            const auto& rs = routeStates_[static_cast<size_t>(routeIdx)];
             const juce::Colour typeColour = colourForType(rs.route.type);
 
             // ── Coupling Evolution: age-modulated properties ───────────────
@@ -520,7 +570,57 @@ public:
                     g.fillEllipse(px - r, py - r, kParticleDiameter, kParticleDiameter);
                 }
             }
-        }
+
+            // ── COUPLING KNOT ── pulsing circle at Bézier midpoint (t=0.5)
+            // Double-click to open coupling config popup
+            {
+                const int knotSrc = rs.route.sourceSlot;
+                const int knotDst = rs.route.destSlot;
+                const bool knotSrcValid = (knotSrc >= 0 && knotSrc < kMaxSlots);
+                const bool knotDstValid = (knotDst >= 0 && knotDst < kMaxSlots);
+
+                if (knotSrcValid && knotDstValid)
+                {
+                const float t = 0.5f;
+                const float it = 1.0f - t;
+                const auto& p0 = centers_[static_cast<size_t>(knotSrc)];
+                const auto& p2 = centers_[static_cast<size_t>(knotDst)];
+                const auto& p1 = rs.control;
+
+                // Skip if endpoints are at sentinel positions
+                if (p0.x >= 0 && p2.x >= 0)
+                {
+                    const float kx = it*it*p0.x + 2.0f*it*t*p1.x + t*t*p2.x;
+                    const float ky = it*it*p0.y + 2.0f*it*t*p1.y + t*t*p2.y;
+
+                    const float knotPulse = 0.7f + 0.3f * std::sin(rs.pulsePhase * 2.0f);
+
+                    // Store knot position for hit testing
+                    if (routeIdx < static_cast<int>(knotPositions_.size()))
+                        knotPositions_[static_cast<size_t>(routeIdx)] = { kx, ky };
+
+                    // Outer glow
+                    g.setColour(baseColour.withAlpha(0.06f * knotPulse));
+                    g.fillEllipse(kx - 10.0f, ky - 10.0f, 20.0f, 20.0f);
+
+                    // Knot body
+                    juce::ColourGradient knotGrad(
+                        baseColour.withAlpha(0.35f * knotPulse), kx - 1, ky - 1,
+                        baseColour.withAlpha(0.12f * knotPulse), kx + 7, ky + 7, true);
+                    g.setGradientFill(knotGrad);
+                    g.fillEllipse(kx - 7.0f, ky - 7.0f, 14.0f, 14.0f);
+
+                    // Knot ring
+                    g.setColour(baseColour.withAlpha(0.5f * knotPulse));
+                    g.drawEllipse(kx - 7.0f, ky - 7.0f, 14.0f, 14.0f, 1.5f);
+
+                    // Inner dot
+                    g.setColour(juce::Colour(120, 220, 210).withAlpha(0.6f * knotPulse));
+                    g.fillEllipse(kx - 2.5f, ky - 2.5f, 5.0f, 5.0f);
+                }
+                } // if knotSrcValid && knotDstValid
+            } // knot drawing block
+        } // for routeIdx
 
         // ── Hover tooltip ────────────────────────────────────────────────────
         if (hoveredRouteIdx_ >= 0 && hoveredRouteIdx_ < static_cast<int>(routeStates_.size()))

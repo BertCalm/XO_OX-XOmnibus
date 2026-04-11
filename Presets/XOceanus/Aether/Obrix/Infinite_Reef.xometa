@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Every brick type active. All 3 FX engaged. Drift Bus, Journey Mode, FLASH. The full OBRIX architecture singing at once. The reef at its most alive — the transcendence preset.",
+  "description": "Every brick type active. All 3 FX engaged. Drift Bus, Journey Mode, FLASH. The full OBRIX architecture singing at once. The reef at its most alive \u2014 the transcendence preset.",
   "tags": [
     "obrix",
     "transcendent",
@@ -29,7 +29,7 @@
   ],
   "tier": "awakening",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "scripture": [
       "Blessing B016: Brick Independence",
@@ -37,7 +37,7 @@
     ],
     "revelation": null,
     "god": null,
-    "flock_note": "The Eye saw all three FX lit simultaneously — the only preset that uses the full OBRIX architecture at once.",
+    "flock_note": "The Eye saw all three FX lit simultaneously \u2014 the only preset that uses the full OBRIX architecture at once.",
     "diagnosis": "Infinite Reef is the transcendence preset: every brick type, all 3 FX, Drift Bus, Journey Mode, and FLASH active together. It reveals OBRIX's full orchestral depth and is the benchmark for maximum complexity."
   },
   "dna": {
@@ -56,7 +56,7 @@
       "obrix_src2Tune": 7.03,
       "obrix_src1PW": 0.333,
       "obrix_src2PW": 0.5,
-      "obrix_srcMix": 0.45,
+      "obrix_srcMix": 1.0,
       "obrix_proc1Type": 4,
       "obrix_proc1Cutoff": 3500.0,
       "obrix_proc1Reso": 0.0,
@@ -114,10 +114,7 @@
       "obrix_driftDepth": 0.6,
       "obrix_journeyMode": 1.0,
       "obrix_distance": 0.25,
-      "obrix_air": 0.4,
-      "obrix_fltEnvAmt": 0.438,
-      "obrix_lfo1Rate": 0.073,
-      "obrix_lfo1Depth": 0.115
+      "obrix_air": 0.4
     }
   },
   "macros": {

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "One Shell, one Current, no Coral. A single sine polyp — the smallest living unit of the reef. From here, every other preset grows.",
+  "description": "One Shell, one Current, no Coral. A single sine polyp \u2014 the smallest living unit of the reef. From here, every other preset grows.",
   "tags": [
     "lesson",
     "sine",
@@ -96,10 +96,7 @@
       "obrix_driftDepth": 0.0,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.0,
-      "obrix_air": 0.5,
-      "obrix_fltEnvAmt": 0.487,
-      "obrix_lfo1Rate": 0.146,
-      "obrix_lfo1Depth": 0.28
+      "obrix_air": 0.5
     }
   },
   "macros": {

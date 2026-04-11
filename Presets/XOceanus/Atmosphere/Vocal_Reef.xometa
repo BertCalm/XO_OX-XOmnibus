@@ -29,7 +29,7 @@
   ],
   "tier": "awakening",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "scripture": [
       "Psalm 2: The Reef Speaks",
@@ -37,8 +37,8 @@
     ],
     "revelation": null,
     "god": null,
-    "flock_note": "The Tongue recognized the vowel sweep — the LFO through 270–1850 Hz is the exact formant trajectory of an open O to a closed E.",
-    "diagnosis": "Vocal Reef uses vocal wavetables through a resonant filter swept slowly by LFO, revealing OBRIX's ability to animate speech-like timbres — the reef breathes and almost speaks."
+    "flock_note": "The Tongue recognized the vowel sweep \u2014 the LFO through 270\u20131850 Hz is the exact formant trajectory of an open O to a closed E.",
+    "diagnosis": "Vocal Reef uses vocal wavetables through a resonant filter swept slowly by LFO, revealing OBRIX's ability to animate speech-like timbres \u2014 the reef breathes and almost speaks."
   },
   "dna": {
     "brightness": 0.45,
@@ -114,10 +114,7 @@
       "obrix_driftDepth": 0.2,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.1,
-      "obrix_air": 0.45,
-      "obrix_fltEnvAmt": 0.302,
-      "obrix_lfo1Rate": 0.05,
-      "obrix_lfo1Depth": 0.21
+      "obrix_air": 0.45
     }
   },
   "macros": {

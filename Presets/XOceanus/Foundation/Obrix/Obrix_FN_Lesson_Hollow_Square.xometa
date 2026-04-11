@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "A square wave — hollow, woody, with only odd harmonics. Compare with saw to hear the missing partials.",
+  "description": "A square wave \u2014 hollow, woody, with only odd harmonics. Compare with saw to hear the missing partials.",
   "tags": [
     "lesson",
     "square",
@@ -96,10 +96,7 @@
       "obrix_driftDepth": 0.0,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.0,
-      "obrix_air": 0.5,
-      "obrix_fltEnvAmt": 0.494,
-      "obrix_lfo1Rate": 0.19,
-      "obrix_lfo1Depth": 0.205
+      "obrix_air": 0.5
     }
   },
   "category": "lesson",

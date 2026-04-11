@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Dead Sea: hypersaline, 34% salt, water so dense nothing sinks normally. A bass foundation with unusual weight — the Harmonic Field repulsor mode creates dissonance-adjacent tuning that resolves against itself. Heavy slow attack.",
+  "description": "Dead Sea: hypersaline, 34% salt, water so dense nothing sinks normally. A bass foundation with unusual weight \u2014 the Harmonic Field repulsor mode creates dissonance-adjacent tuning that resolves against itself. Heavy slow attack.",
   "tags": [
     "obrix",
     "foundation",
@@ -116,10 +116,7 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 0,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3,
-      "obrix_fltEnvAmt": 0.397,
-      "obrix_lfo1Rate": 0.204,
-      "obrix_lfo1Depth": 0.169
+      "obrix_residentStrength": 0.3
     }
   },
   "coupling": {

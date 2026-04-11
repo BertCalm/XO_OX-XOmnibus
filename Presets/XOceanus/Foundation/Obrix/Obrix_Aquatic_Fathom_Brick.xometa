@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX through Aquatic Chain with Fathom as the primary character effect. Sub-oscillator (src1Type=0, sine) paired with noise source creates a foundational weight. Fathom at Character 0.0 (maximum deep emphasis) compresses this foundation into maximum density and low-mid body. Drift minimal — 2 voices, small depth — the brickwork should be stable. Tide off. Reef at size 0.4, decay 0.65 — just enough space to breathe. This preset demonstrates Fathom's ability to create the impression of mass in a signal — OBRIX already has density, Fathom concentrates it into a brick.",
+  "description": "OBRIX through Aquatic Chain with Fathom as the primary character effect. Sub-oscillator (src1Type=0, sine) paired with noise source creates a foundational weight. Fathom at Character 0.0 (maximum deep emphasis) compresses this foundation into maximum density and low-mid body. Drift minimal \u2014 2 voices, small depth \u2014 the brickwork should be stable. Tide off. Reef at size 0.4, decay 0.65 \u2014 just enough space to breathe. This preset demonstrates Fathom's ability to create the impression of mass in a signal \u2014 OBRIX already has density, Fathom concentrates it into a brick.",
   "tags": [
     "obrix",
     "aquatic-chain",
@@ -99,10 +99,7 @@
       "obrix_driftDepth": 0.12,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.22,
-      "obrix_air": 0.3,
-      "obrix_fltEnvAmt": 0.414,
-      "obrix_lfo1Rate": 0.161,
-      "obrix_lfo1Depth": 0.284
+      "obrix_air": 0.3
     }
   },
   "coupling": {

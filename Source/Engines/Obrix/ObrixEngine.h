@@ -296,10 +296,23 @@ struct ObrixVoice
     float procLastCut[3]{-1.0f, -1.0f, -1.0f}; // -1 forces update on first sample
     float procLastRes[3]{-1.0f, -1.0f, -1.0f};
 
-    // Filter feedback state (Proc1, Proc2) — one sample memory for the loop
-    float procFbState[2]{};
+    // Filter feedback state (Proc1, Proc2, Proc3) — one sample memory for the loop
+    float procFbState[3]{};
 
     float pan = 0.0f;
+    bool  sustainHeld = false; // sustain pedal deferred note-off
+
+    // Voice steal crossfade — 5ms linear ramp-down prevents clicks on polyphony overflow
+    int stealFadeSamples = 0;   // samples remaining in fade-out (0 = not stealing)
+    int stealFadeTotal   = 0;   // total fade length for this steal event
+    // Pending note parameters — stored during the fade, applied when it completes
+    int   pendingNote        = -1;
+    float pendingVel         = 0.0f;
+    float pendingFreq1       = 440.0f;
+    float pendingFreq2       = 440.0f;
+    float pendingPan         = 0.0f;
+    // pendingModTypes, pendingModRates, and pendingAmpA/D/S/R removed — renderBlock
+    // uses current-block values (ampA/D/S/R, modTypes[], modRates[]) at fade completion.
 
     // Biophonic Phase 1 — Harmonic Field JI correction (cents per source, IIR state)
     float jifiOffset[2]{};
@@ -324,19 +337,23 @@ struct ObrixVoice
         for (auto& o : srcOsc)
             o.reset();
         ampEnv.reset();
+        sustainHeld = false;
         for (auto& e : modEnvs)
             e.reset();
         for (auto& l : modLFOs)
             l.reset();
         for (auto& f : procFilters)
             f.reset();
-        procFbState[0] = procFbState[1] = 0.0f;
+        procFbState[0] = procFbState[1] = procFbState[2] = 0.0f;
         procLastCut[0] = procLastCut[1] = procLastCut[2] = -1.0f;
         procLastRes[0] = procLastRes[1] = procLastRes[2] = -1.0f;
         pan = 0.0f;
         jifiOffset[0] = jifiOffset[1] = 0.0f;
         cachedJIRatio[0] = cachedJIRatio[1] = -1.0f;
         cachedJICents[0] = cachedJICents[1] = 0.0f;
+        stealFadeSamples = 0;
+        stealFadeTotal   = 0;
+        pendingNote      = -1;
     }
 };
 
@@ -377,6 +394,8 @@ public:
         buildWavetables();
         // Cache reef HP coefficient at 2kHz (used in parasite mode; sample-rate dependent)
         reefHpCoeff_ = std::exp(-kTwoPi * 2000.0f / sr);
+        // Bleach recovery per-sample coefficient — cached to avoid std::pow on audio thread
+        bleachRecoveryLog2_ = fastLog2(1.0f - 1.0f / (sr * 300.0f));
         // Invalidate stress decay coefficient cache so it is recomputed on the
         // first block after a sample-rate change (#620 block-rate caching).
         cachedStressDecay_ = -1.0f;
@@ -413,6 +432,14 @@ public:
         reefCouplingHpFilt_ = 0.0f;
         reefCouplingHfRms_ = 0.0f;
         reefCouplingBufLen_ = 0;
+
+        // Coupling accumulators — must be zeroed on reset to prevent state leaking
+        // across preset changes and AllNotesOff events
+        couplingPitchMod.store(0.0f);
+        couplingCutoffMod.store(0.0f);
+        couplingWtPosMod.store(0.0f);
+        couplingDecayMod.store(0.0f);
+        sustainPedal_ = false;
     }
 
     // ═══ SIGNAL TRACER ═══
@@ -495,7 +522,7 @@ public:
             return;
 
         // SRO SilenceGate: wake on note-on, bypass when silent
-        for (const auto& md : midi)
+        for (const auto md : midi)
             if (md.getMessage().isNoteOn())
             {
                 wakeSilenceGate();
@@ -504,6 +531,13 @@ public:
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
             buffer.clear();
+            couplingPitchMod.store(0.0f);
+            couplingCutoffMod.store(0.0f);
+            couplingWtPosMod.store(0.0f);
+            couplingDecayMod.store(0.0f);
+            gestureLevel = 0.0f;     // prevent ghost gesture sweep on resume
+            distFiltL_ = distFiltR_ = 0.0f; // reset spatial filter state
+            airFiltL_ = airFiltR_ = 0.0f;
             return;
         }
 
@@ -530,10 +564,13 @@ public:
         // EnvToDecay coupling: scale decay time multiplicatively; couplingDecayMod consumed early
         // so that noteOn calls in the MIDI loop below receive the modulated value.
         float ampD = loadP(pAmpDecay, 0.3f);
-        if (couplingDecayMod != 0.0f)
         {
-            ampD = std::max(0.001f, ampD * (1.0f + couplingDecayMod));
-            couplingDecayMod = 0.0f;
+            float decayMod = couplingDecayMod.exchange(0.0f);
+            if (decayMod != 0.0f)
+            {
+                float clampedMod = clamp(decayMod, -0.8f, 4.0f);
+                ampD = std::max(0.01f, ampD * (1.0f + clampedMod));
+            }
         }
         const float ampS = loadP(pAmpSustain, 0.7f);
         const float ampR = loadP(pAmpRelease, 0.5f);
@@ -571,6 +608,7 @@ public:
         const float fmDepth = loadP(pFmDepth, 0.0f);
         const float proc1Fb = loadP(pProc1Fb, 0.0f);
         const float proc2Fb = loadP(pProc2Fb, 0.0f);
+        const float proc3Fb = loadP(pProc3Fb, 0.0f);
         const auto wtBankVal = static_cast<int>(loadP(pWtBank, 0.0f));
         const float unisonDetune = loadP(pUnisonDetune, 0.0f);
 
@@ -598,7 +636,7 @@ public:
         const float newResetTrig = loadP(pStateReset, 0.0f);
         const auto fxMode = static_cast<int>(loadP(pFxMode, 0.0f)); // 0=Serial
 
-        // Wave 5 params — Reef Residency (2 params → 82 total)
+        // Wave 5 params — Reef Residency (82 total)
         const auto reefResident = static_cast<int>(loadP(pReefResident, 0.0f)); // 0=Off
         const float residentStrength = (reefResident != 0) ? loadP(pResidentStrength, 0.3f) : 0.0f;
 
@@ -688,7 +726,7 @@ public:
             if (bcount > 0)
                 avgBright /= static_cast<float>(bcount);
             bleachLevel_ = std::min(1.0f, bleachLevel_ + avgBright * bleachRate / (sr * 60.0f));
-            bleachLevel_ *= std::pow(1.0f - 1.0f / (sr * 300.0f), static_cast<float>(numSamples)); // natural recovery ~5 min
+            bleachLevel_ *= fastPow2(static_cast<float>(numSamples) * bleachRecoveryLog2_); // natural recovery ~5 min
             bleachLevel_ = flushDenormal(bleachLevel_);
         }
 
@@ -725,7 +763,7 @@ public:
                 float parasiteBleachInput = reefCouplingHfRms_ * residentStrength;
                 bleachLevel_ = std::min(1.0f, bleachLevel_ + parasiteBleachInput / (sr * 60.0f));
                 if (bleachRate <= 0.001f) // no natural recovery from velocity block — apply here
-                    bleachLevel_ *= std::pow(1.0f - 1.0f / (sr * 300.0f), static_cast<float>(numSamples));
+                    bleachLevel_ *= fastPow2(static_cast<float>(numSamples) * bleachRecoveryLog2_);
                 bleachLevel_ = flushDenormal(bleachLevel_);
             }
         }
@@ -777,9 +815,13 @@ public:
                 const int unisonSize = calcUnisonSize(voiceModeIdx, unisonDetune);
                 for (int u = 1; u < unisonSize; ++u)
                 {
-                    float spread = (unisonSize > 1)
-                        ? (static_cast<float>(u) / static_cast<float>(unisonSize - 1) * 2.0f - 1.0f)
-                        : 0.0f;
+                    // Symmetric ± pairs: extras alternate left/right around the primary.
+                    // u=1→-mag, u=2→+mag, u=3→-2mag, u=4→+2mag, etc.
+                    int pairIdx = (u + 1) / 2;
+                    float magnitude = static_cast<float>(pairIdx)
+                                    / static_cast<float>(std::max(1, (unisonSize - 1 + 1) / 2));
+                    magnitude = std::min(magnitude, 1.0f);
+                    float spread = (u % 2 == 1) ? -magnitude : magnitude;
                     float detST = spread * unisonDetune / 100.0f;
                     float panOff = spread * 0.75f;
                     noteOn(msg.getNoteNumber(), msg.getFloatVelocity(), ampA, ampD, ampS, ampR, src1Tune, src2Tune,
@@ -804,15 +846,27 @@ public:
                 pitchBend_ = (msg.getPitchWheelValue() - 8192) / 8192.0f;
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheel_ = msg.getControllerValue() / 127.0f;
+            else if (msg.isController() && msg.getControllerNumber() == 64)
+            {
+                bool wasSustained = sustainPedal_;
+                sustainPedal_ = (msg.getControllerValue() >= 64);
+                // On pedal release, send deferred note-offs for sustained voices
+                if (wasSustained && !sustainPedal_)
+                    for (auto& v : voices)
+                        if (v.active && v.sustainHeld)
+                        {
+                            v.sustainHeld = false;
+                            v.ampEnv.noteOff();
+                            for (auto& e : v.modEnvs)
+                                e.noteOff();
+                        }
+            }
         }
 
         // === Consume coupling accumulators ===
-        float blockPitchCoupling = couplingPitchMod;
-        couplingPitchMod = 0.0f;
-        float blockCutoffCoupling = couplingCutoffMod;
-        couplingCutoffMod = 0.0f;
-        float blockWtPosCoupling = couplingWtPosMod;
-        couplingWtPosMod = 0.0f;
+        float blockPitchCoupling = couplingPitchMod.exchange(0.0f);
+        float blockCutoffCoupling = couplingCutoffMod.exchange(0.0f);
+        float blockWtPosCoupling = couplingWtPosMod.exchange(0.0f);
         // couplingDecayMod was already consumed and reset in the ParamSnapshot section above
         // (applied to ampD before the MIDI noteOn loop). couplingRingMod routes through
         // pitchMod/cutoffMod in applyCouplingInput — no separate block variable needed.
@@ -865,11 +919,37 @@ public:
                     (static_cast<float>(turbRng_ & 0xFFFF) / 32768.0f - 1.0f) * envTurbidity * 1200.0f;
             }
 
+            float fxMixModBus = 0.0f; // accumulated from per-voice FX Mix mod target
+            int   fxMixModVoices = 0;
+
             for (int vi = 0; vi < kMaxVoices; ++vi)
             {
                 auto& voice = voices[vi];
                 if (!voice.active)
                     continue;
+
+                // --- Voice steal crossfade ---
+                // stealFade linearly ramps from 1.0 → 0.0 over stealFadeTotal samples.
+                // When the ramp hits 0 the pending note is installed via initVoice().
+                float stealFade = 1.0f;
+                if (voice.stealFadeSamples > 0)
+                {
+                    stealFade = static_cast<float>(voice.stealFadeSamples)
+                                / static_cast<float>(std::max(1, voice.stealFadeTotal));
+                    --voice.stealFadeSamples;
+                    if (voice.stealFadeSamples == 0 && voice.pendingNote >= 0)
+                    {
+                        // Fade complete — initialise the pending note in-place
+                        initVoice(voice, vi,
+                                  voice.pendingNote, voice.pendingVel,
+                                  voice.pendingFreq1, voice.pendingFreq2,
+                                  voice.pendingPan,
+                                  ampA, ampD, ampS, ampR,  // use current block values, not stale pending
+                                  modType, modRate);
+                        voice.pendingNote = -1;
+                        continue; // New note starts on the next sample
+                    }
+                }
 
                 // --- Portamento ---
                 for (int i = 0; i < 2; ++i)
@@ -1119,6 +1199,7 @@ public:
 
                 // Proc1 processes Source 1 independently (with optional feedback)
                 float sig1 = src1;
+                bool preFolded = false; // track whether a pre-mix proc applied wavefold
                 if (proc1Type > 0 && proc1Type <= 3)
                 {
                     setFilterMode(voice.procFilters[0], proc1Type);
@@ -1138,6 +1219,16 @@ public:
                     float filtOut = voice.procFilters[0].processSample(fbIn);
                     voice.procFbState[0] = flushDenormal(filtOut);
                     sig1 = filtOut;
+                }
+                else if (proc1Type == 4) // Wavefolder — per-proc on sig1
+                {
+                    float fold = charFoldScale * velFoldBoost;
+                    sig1 = fastTanh(fastSin(sig1 * fold * kPi));
+                    preFolded = true;
+                }
+                else if (proc1Type == 5 && src2Type > 0) // Ring mod — sig1 × src2
+                {
+                    sig1 = sig1 * src2;
                 }
                 recordTap(TracerTap::Proc1Output, sig1);
 
@@ -1160,16 +1251,26 @@ public:
                     voice.procFbState[1] = flushDenormal(filtOut);
                     sig2 = filtOut;
                 }
+                else if (proc2Type == 4 && src2Type > 0) // Wavefolder — per-proc on sig2
+                {
+                    float fold = charFoldScale * velFoldBoost;
+                    sig2 = fastTanh(fastSin(sig2 * fold * kPi));
+                    preFolded = true;
+                }
+                else if (proc2Type == 5 && src2Type > 0) // Ring mod — sig2 × src1
+                {
+                    sig2 = sig2 * src1;
+                }
                 recordTap(TracerTap::Proc2Output, sig2);
 
                 // === BRICK ECOLOGY: Competition (Biophonic Phase 3) ===
                 // Cross-suppression: the louder brick suppresses the quieter one.
-                // Mimics resource competition between coral polyp populations.
-                // 0.1 floor preserves each brick's identity even at max competition.
+                // Uses pre-processor source amplitudes so competition dynamics are
+                // independent of proc type selection (fold/filter/ring don't bias it).
                 if (competitionStrength > 0.001f && src2Type > 0)
                 {
-                    float env1 = std::fabs(sig1);
-                    float env2 = std::fabs(sig2);
+                    float env1 = std::fabs(src1); // raw source amplitude, not post-proc
+                    float env2 = std::fabs(src2);
                     sig1 *= clamp(1.0f - env2 * competitionStrength, 0.1f, 1.0f);
                     sig2 *= clamp(1.0f - env1 * competitionStrength, 0.1f, 1.0f);
                 }
@@ -1204,21 +1305,35 @@ public:
                         voice.procLastCut[2] = cut;
                         voice.procLastRes[2] = res;
                     }
-                    signal = voice.procFilters[2].processSample(signal);
+                    float sig3 = signal + fastTanh(voice.procFbState[2] * proc3Fb * 4.0f);
+                    signal = voice.procFilters[2].processSample(sig3);
+                    voice.procFbState[2] = flushDenormal(signal);
                 }
-
-                // Wavefolder — applies to any proc slot that selects it
-                bool doFold = (proc1Type == 4 || proc2Type == 4 || proc3Type == 4);
-                if (doFold)
+                else if (proc3Type == 4) // Wavefolder — post-mix on signal
                 {
+                    voice.procFbState[2] = 0.0f; // clear stale filter state
                     float fold = charFoldScale * velFoldBoost;
-                    signal = fastTanh(fastSin(signal * fold * kPi)); // CPU fix: fastSin replaces std::sin
+                    if (preFolded)
+                    {
+                        // Scale compensation by the srcMix-weighted fraction of pre-folded content.
+                        // At srcMix=1.0 with proc1 folded: fraction=1.0, fold *= 0.25 (full compensation)
+                        // At srcMix=0.5 with proc1 folded: fraction=0.5, fold *= 0.625 (partial)
+                        // At srcMix=0.5 with both folded:  fraction=1.0, fold *= 0.25 (full)
+                        float foldedFrac = (proc1Type == 4 ? srcMix : 0.0f)
+                                         + (proc2Type == 4 ? (1.0f - srcMix) : 0.0f);
+                        fold *= (1.0f - clamp(foldedFrac, 0.0f, 1.0f) * 0.75f);
+                    }
+                    signal = fastTanh(fastSin(signal * fold * kPi));
                 }
-
-                // Ring mod — multiplies the two sources (requires Src2 active)
-                bool doRing = (proc1Type == 5 || proc2Type == 5 || proc3Type == 5);
-                if (doRing && src2Type > 0)
-                    signal = src1 * src2;
+                else if (proc3Type == 5 && src2Type > 0) // Ring mod — post-mix × src2 carrier
+                {
+                    voice.procFbState[2] = 0.0f; // clear stale filter state
+                    signal *= src2; // ring-mod the processed mix against src2 as carrier
+                }
+                else if (proc3Type > 3)
+                {
+                    voice.procFbState[2] = 0.0f; // future proc types: clear stale state
+                }
                 recordTap(TracerTap::Proc3Output, signal);
 
                 // --- Amp envelope ---
@@ -1229,7 +1344,7 @@ public:
                     continue;
                 }
 
-                float gain = ampLevel * voice.velocity * (1.0f + volMod);
+                float gain = ampLevel * voice.velocity * (1.0f + volMod) * stealFade;
                 gain = clamp(gain, 0.0f, 2.0f);
 
                 signal *= gain;
@@ -1240,7 +1355,17 @@ public:
                 float panR = 0.5f + effPan * 0.5f;
                 mixL += signal * panL;
                 mixR += signal * panR;
+
+                // Propagate per-voice FX Mix mod to bus-level accumulator
+                if (fxMixMod != 0.0f)
+                {
+                    fxMixModBus += fxMixMod;
+                    ++fxMixModVoices;
+                }
             }
+            // Average per-voice FX Mix mod for bus-level application
+            if (fxMixModVoices > 0)
+                fxMixModBus /= static_cast<float>(fxMixModVoices);
 
             // --- Effects chain: Serial (default) or Parallel (Biophonic Phase 5) ---
             // Serial: each FX processes the output of the previous (depth layering).
@@ -1251,7 +1376,7 @@ public:
                 {
                     if (fxType[fx] > 0)
                     {
-                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]) + fxMixMod, 0.0f, 1.0f);
+                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]) + fxMixModBus, 0.0f, 1.0f);
                         if (effMix > 0.001f)
                             applyEffect(fxType[fx], mixL, mixR, effMix, fxParam[fx], macroSpace, fxSlots[fx]);
                     }
@@ -1269,7 +1394,7 @@ public:
                     if (fxType[fx] > 0)
                     {
                         float slotL = dryL, slotR = dryR;
-                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]) + fxMixMod, 0.0f, 1.0f);
+                        float effMix = clamp(fxMix[fx] + macroSpace * (1.0f - fxMix[fx]) + fxMixModBus, 0.0f, 1.0f);
                         if (effMix > 0.001f)
                         {
                             applyEffect(fxType[fx], slotL, slotR, 1.0f, fxParam[fx], macroSpace, fxSlots[fx]);
@@ -1379,16 +1504,16 @@ public:
         switch (type)
         {
         case CouplingType::AudioToFM:
-            couplingPitchMod += amount * 0.5f;
+            couplingPitchMod.store(couplingPitchMod.load() + amount * 0.5f);
             break;
         case CouplingType::AmpToFilter:
-            couplingCutoffMod += amount;
+            couplingCutoffMod.store(couplingCutoffMod.load() + amount);
             break;
         case CouplingType::LFOToPitch:
-            couplingPitchMod += amount * 0.5f;
+            couplingPitchMod.store(couplingPitchMod.load() + amount * 0.5f);
             break;
         case CouplingType::AmpToPitch:
-            couplingPitchMod += amount * 0.3f;
+            couplingPitchMod.store(couplingPitchMod.load() + amount * 0.3f);
             break;
         case CouplingType::AmpToChoke:
             for (auto& v : voices)
@@ -1397,23 +1522,29 @@ public:
             break;
         case CouplingType::EnvToMorph:
             // Partner envelope drives wavetable morph position (±1 range).
-            couplingWtPosMod += amount;
+            couplingWtPosMod.store(couplingWtPosMod.load() + amount);
             break;
         case CouplingType::PitchToPitch:
             // Harmony coupling: partner pitch shifts OBRIX pitch. Scaling of 0.5f matches
             // AudioToFM and LFOToPitch, giving ±50 cents at full amount through * 100.0f
             // in renderBlock. Use amount * 12.0f for ±1200 cents (±1 octave) if desired.
-            couplingPitchMod += amount * 0.5f;
+            couplingPitchMod.store(couplingPitchMod.load() + amount * 0.5f);
             break;
         case CouplingType::EnvToDecay:
             // Partner envelope scales OBRIX amp decay time (applied multiplicatively in renderBlock).
-            couplingDecayMod += amount;
+            couplingDecayMod.store(couplingDecayMod.load() + amount);
             break;
         case CouplingType::AudioToRing:
             // Partner audio energy ring-excites OBRIX: drives pitch and filter simultaneously,
             // creating a ring-mod-like timbral effect without per-sample buffer dependency.
-            couplingPitchMod  += amount * 0.3f;
-            couplingCutoffMod += amount * 0.5f;
+            couplingPitchMod.store(couplingPitchMod.load() + amount * 0.3f);
+            couplingCutoffMod.store(couplingCutoffMod.load() + amount * 0.5f);
+            break;
+        case CouplingType::RhythmToBlend:
+            couplingCutoffMod.store(couplingCutoffMod.load() + amount * 0.3f);  // rhythm energy → filter movement
+            break;
+        case CouplingType::FilterToFilter:
+            couplingCutoffMod.store(couplingCutoffMod.load() + amount * 0.8f);  // partner filter → our filter (strong)
             break;
         default:
             break;
@@ -1594,6 +1725,8 @@ public:
                                               juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"obrix_proc2Feedback", 1}, "Obrix Proc 2 Feedback",
                                               juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"obrix_proc3Feedback", 1}, "Obrix Proc 3 Feedback",
+                                              juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
         params.push_back(
             std::make_unique<PC>(juce::ParameterID{"obrix_wtBank", 1}, "Obrix Wavetable Bank", wtChoices, 0));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"obrix_unisonDetune", 1}, "Obrix Unison Detune",
@@ -1658,7 +1791,7 @@ public:
         params.push_back(std::make_unique<PC>(juce::ParameterID{"obrix_fxMode", 1}, "Obrix FX Mode", fxModeChoices,
                                               0)); // default: Serial (existing behavior)
 
-        // Wave 5: Reef Residency (2 params → 82 total)
+        // Wave 5: Reef Residency (82 total)
         // Coupling input becomes a third ecological organism in the Brick Ecology system.
         auto residentChoices = juce::StringArray{"Off", "Competitor", "Symbiote", "Parasite"};
         params.push_back(std::make_unique<PC>(juce::ParameterID{"obrix_reefResident", 1}, "Obrix Reef Resident",
@@ -1728,6 +1861,7 @@ public:
         pFmDepth = apvts.getRawParameterValue("obrix_fmDepth");
         pProc1Fb = apvts.getRawParameterValue("obrix_proc1Feedback");
         pProc2Fb = apvts.getRawParameterValue("obrix_proc2Feedback");
+        pProc3Fb = apvts.getRawParameterValue("obrix_proc3Feedback");
         pWtBank = apvts.getRawParameterValue("obrix_wtBank");
         pUnisonDetune = apvts.getRawParameterValue("obrix_unisonDetune");
 
@@ -1784,7 +1918,10 @@ private:
         float effFreq = (fmSemitones != 0.0f) ? freq * fastPow2(fmSemitones / 12.0f) : freq;
         // Clamp to Nyquist for non-bandlimited source types (Sine, WT, LoFi)
         if (type != 2 && type != 3 && type != 4)
+        {
+            effFreq = std::max(0.0f, effFreq);  // prevent negative phase increment
             effFreq = std::min(effFreq, sr * 0.49f);
+        }
         float dt = effFreq / sr;
 
         switch (type)
@@ -2158,6 +2295,42 @@ private:
     }
 
     //==========================================================================
+    // initVoice — full voice initialisation extracted from the noteOn non-legato path.
+    // Safe to call from the audio thread: no allocations, no I/O.
+    void initVoice(ObrixVoice& v, int slot, int noteNum, float vel,
+                   float freq1, float freq2, float panOffset,
+                   float ampA, float ampD, float ampS, float ampR,
+                   const int modTypes[4], const float modRates[4]) noexcept
+    {
+        v.reset();
+        v.active     = true;
+        v.note       = noteNum;
+        v.velocity   = vel;
+        v.startTime  = ++voiceCounter;
+        v.noiseRng   = static_cast<uint32_t>(slot * 777 + noteNum * 31 + voiceCounter);
+        v.srcFreq[0]    = freq1;
+        v.srcFreq[1]    = freq2;
+        v.targetFreq[0] = freq1;
+        v.targetFreq[1] = freq2;
+        v.pan        = panOffset;
+        v.ampEnv.setParams(ampA, ampD, ampS, ampR, sr);
+        v.ampEnv.noteOn();
+        for (int m = 0; m < 4; ++m)
+        {
+            if (modTypes[m] == 1)
+            {
+                float rate = modRates[m];
+                v.modEnvs[m].setParams(0.01f, rate * 0.3f + 0.01f, 0.0f, rate * 0.3f + 0.01f, sr);
+                v.modEnvs[m].noteOn();
+            }
+            if (modTypes[m] == 2)
+            {
+                v.modLFOs[m].setRate(modRates[m], sr);
+                v.modLFOs[m].shape = 0;
+            }
+        }
+    }
+
     void noteOn(int noteNum, float vel, float ampA, float ampD, float ampS, float ampR, float tune1, float tune2,
                 const int modTypes[4], const float modRates[4], int voiceMode, float glideCoeff,
                 float detuneOffsetST = 0.0f, float panOffset = 0.0f, bool isUnisonExtra = false)
@@ -2197,8 +2370,37 @@ private:
                     oldestSlot = i;
                 }
             }
+
             if (slot < 0)
-                slot = oldestSlot;
+            {
+                // All voices active — steal the oldest one.
+                // If it isn't already mid-fade, start a 5ms linear ramp-down
+                // and defer the incoming note to the render loop.
+                auto& sv = voices[oldestSlot];
+                if (sv.active && sv.stealFadeSamples == 0)
+                {
+                    sv.stealFadeTotal   = std::max(1, static_cast<int>(sr * 0.005f));
+                    sv.stealFadeSamples = sv.stealFadeTotal;
+                    sv.pendingNote      = noteNum;
+                    sv.pendingVel       = vel;
+                    sv.pendingFreq1     = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune1) / 12.0f + detuneOffsetST);
+                    sv.pendingFreq2     = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune2) / 12.0f + detuneOffsetST);
+                    sv.pendingPan       = panOffset;
+                    // Amp envelope and mod values are NOT cached here — renderBlock
+                    // reads current-block ampA/D/S/R and modTypes/modRates at fade
+                    // completion, so coupling changes during the fade are honoured.
+                    return; // Fade will complete in renderBlock — new note deferred
+                }
+                // Voice already mid-fade — replace pending note (no hard cut)
+                sv.pendingNote  = noteNum;
+                sv.pendingVel   = vel;
+                sv.pendingFreq1 = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune1) / 12.0f + detuneOffsetST);
+                sv.pendingFreq2 = 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f + tune2) / 12.0f + detuneOffsetST);
+                sv.pendingPan   = panOffset;
+                // Amp envelope and mod values are NOT cached here — same rationale
+                // as the initial steal path above.
+                return; // Fade continues — newest note wins when it completes
+            }
         }
 
         auto& v = voices[slot];
@@ -2216,36 +2418,8 @@ private:
         }
         else
         {
-            v.reset();
-            v.active = true;
-            v.note = noteNum;
-            v.velocity = vel;
-            v.startTime = ++voiceCounter;
-            v.noiseRng = static_cast<uint32_t>(slot * 777 + noteNum * 31 + voiceCounter);
-            v.srcFreq[0] = newFreq1;
-            v.srcFreq[1] = newFreq2;
-            v.targetFreq[0] = newFreq1;
-            v.targetFreq[1] = newFreq2;
-
-            v.pan = panOffset;
-            v.ampEnv.setParams(ampA, ampD, ampS, ampR, sr);
-            v.ampEnv.noteOn();
-
-            // Configure all 4 mod slots
-            for (int m = 0; m < 4; ++m)
-            {
-                if (modTypes[m] == 1)
-                {
-                    float rate = modRates[m];
-                    v.modEnvs[m].setParams(0.01f, rate * 0.3f + 0.01f, 0.0f, rate * 0.3f + 0.01f, sr);
-                    v.modEnvs[m].noteOn();
-                }
-                if (modTypes[m] == 2)
-                {
-                    v.modLFOs[m].setRate(modRates[m], sr);
-                    v.modLFOs[m].shape = 0;
-                }
-            }
+            initVoice(v, slot, noteNum, vel, newFreq1, newFreq2, panOffset,
+                      ampA, ampD, ampS, ampR, modTypes, modRates);
         }
     }
 
@@ -2254,9 +2428,16 @@ private:
         for (auto& v : voices)
             if (v.active && v.note == noteNum)
             {
-                v.ampEnv.noteOff();
-                for (auto& e : v.modEnvs)
-                    e.noteOff();
+                if (sustainPedal_)
+                {
+                    v.sustainHeld = true; // defer until pedal release
+                }
+                else
+                {
+                    v.ampEnv.noteOff();
+                    for (auto& e : v.modEnvs)
+                        e.noteOff();
+                }
             }
     }
 
@@ -2268,12 +2449,13 @@ private:
     std::array<ObrixVoice, kMaxVoices> voices{};
     std::atomic<int> activeVoices{0};
     float modWheel_ = 0.0f;
+    bool  sustainPedal_ = false;
     float pitchBend_ = 0.0f;
     int polyLimit_ = 8;
-    float couplingPitchMod = 0.0f;
-    float couplingCutoffMod = 0.0f;
-    float couplingWtPosMod = 0.0f;  // EnvToMorph: partner envelope → wavetable position
-    float couplingDecayMod = 0.0f;  // EnvToDecay: partner envelope → amp decay time scale
+    std::atomic<float> couplingPitchMod{0.0f};
+    std::atomic<float> couplingCutoffMod{0.0f};
+    std::atomic<float> couplingWtPosMod{0.0f};  // EnvToMorph: partner envelope → wavetable position
+    std::atomic<float> couplingDecayMod{0.0f};  // EnvToDecay: partner envelope → amp decay time scale
     // AudioToRing routes directly into couplingPitchMod and couplingCutoffMod — no separate member needed.
 
     // Coupling output (fixed: real audio)
@@ -2315,6 +2497,7 @@ private:
     float reefCouplingBufPrev_ = 0.0f;           // previous sample for HP difference equation
     float reefCouplingHfRms_ = 0.0f;             // smoothed high-frequency RMS (parasite bleach)
     float reefHpCoeff_ = 0.0f;                   // cached 1-pole HP coefficient at 2kHz (computed in prepare)
+    float bleachRecoveryLog2_ = 0.0f;            // log2 of per-sample bleach recovery coeff (cached in prepare)
 
     // 3 independent FX slots
     ObrixFXState fxSlots[3];
@@ -2342,6 +2525,7 @@ private:
     std::atomic<float>* pFmDepth = nullptr;
     std::atomic<float>* pProc1Fb = nullptr;
     std::atomic<float>* pProc2Fb = nullptr;
+    std::atomic<float>* pProc3Fb = nullptr;
     std::atomic<float>* pWtBank = nullptr;
     std::atomic<float>* pUnisonDetune = nullptr;
 

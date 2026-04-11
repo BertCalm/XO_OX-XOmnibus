@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX through Aquatic Chain with Drift as the defining feature. Supersaw source (src1Type=6) through proc1 LP creates a rich harmonic base. Drift at maximum 6 voices with diffusion 0.72 and stereoSpread 0.85 turns the supersaw into a massive ensemble texture that no simple unison/detune approach could match — the Brownian walk gives each voice an independent, non-repetitive trajectory. Fathom Character 0.35. Tide in AutoFilter at 0.08 Hz. Reef at size 0.55. The resulting sound is OBRIX transcribed into a 6-voice string section filtered through water.",
+  "description": "OBRIX through Aquatic Chain with Drift as the defining feature. Supersaw source (src1Type=6) through proc1 LP creates a rich harmonic base. Drift at maximum 6 voices with diffusion 0.72 and stereoSpread 0.85 turns the supersaw into a massive ensemble texture that no simple unison/detune approach could match \u2014 the Brownian walk gives each voice an independent, non-repetitive trajectory. Fathom Character 0.35. Tide in AutoFilter at 0.08 Hz. Reef at size 0.55. The resulting sound is OBRIX transcribed into a 6-voice string section filtered through water.",
   "tags": [
     "obrix",
     "supersaw",
@@ -98,10 +98,7 @@
       "obrix_driftDepth": 0.28,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.38,
-      "obrix_air": 0.55,
-      "obrix_fltEnvAmt": 0.444,
-      "obrix_lfo1Rate": 0.059,
-      "obrix_lfo1Depth": 0.248
+      "obrix_air": 0.55
     }
   },
   "coupling": {

@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Great Barrier Reef: the largest living structure on earth. Columns of coral that took ten thousand years to build their height. A massive hollow warmth with slow drift from voice to voice — the architecture of accumulated time.",
+  "description": "Great Barrier Reef: the largest living structure on earth. Columns of coral that took ten thousand years to build their height. A massive hollow warmth with slow drift from voice to voice \u2014 the architecture of accumulated time.",
   "tags": [
     "obrix",
     "atmosphere",
@@ -115,10 +115,7 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 0,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3,
-      "obrix_fltEnvAmt": 0.368,
-      "obrix_lfo1Rate": 0.02,
-      "obrix_lfo1Depth": 0.235
+      "obrix_residentStrength": 0.3
     }
   },
   "coupling": {

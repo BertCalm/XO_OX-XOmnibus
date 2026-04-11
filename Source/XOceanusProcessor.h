@@ -197,6 +197,7 @@ public:
     // The UI oscilloscope component calls getWaveformFifo(slot).readLatest()
     // at its ~30Hz repaint timer to grab the latest window of samples.
     std::array<WaveformFifo, MaxSlots> waveformFifos;
+    WaveformFifo masterOutputFifo;  // master bus output (post-FX) for ocean wave surface
 
     // UI-thread accessor — returns a const reference; safe to call at any time.
     const WaveformFifo& getWaveformFifo(int slot) const noexcept
@@ -205,6 +206,8 @@ public:
             slot = 0; // safety fallback — clamp OOB slot
         return waveformFifos[static_cast<size_t>(slot)];
     }
+
+    const WaveformFifo& getMasterWaveformFifo() const noexcept { return masterOutputFifo; }
 
     // Coupling matrix — access for the UI visualization (message thread)
     const MegaCouplingMatrix& getCouplingMatrix() const { return couplingMatrix; }

@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Maximum harmonic field demonstration: fieldStrength=1.0, full attractor, 7-limit, fieldRate=0.05 (fast snap). OBRIX becomes a Partch-class instrument — play in tune and intervals lock to pure 7-limit JI immediately. Pitch deviations snap back rapidly. This is the Blessing B016 Brick Independence property made sonically explicit: the field acts globally on all voices while each voice retains MIDI independence.",
+  "description": "Maximum harmonic field demonstration: fieldStrength=1.0, full attractor, 7-limit, fieldRate=0.05 (fast snap). OBRIX becomes a Partch-class instrument \u2014 play in tune and intervals lock to pure 7-limit JI immediately. Pitch deviations snap back rapidly. This is the Blessing B016 Brick Independence property made sonically explicit: the field acts globally on all voices while each voice retains MIDI independence.",
   "tags": [
     "obrix",
     "foundation",
@@ -125,10 +125,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.363,
-      "obrix_lfo1Rate": 0.197,
-      "obrix_lfo1Depth": 0.186
+      "obrix_fxMode": 0
     }
   }
 }

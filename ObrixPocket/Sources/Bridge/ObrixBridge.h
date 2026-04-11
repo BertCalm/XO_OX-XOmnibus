@@ -8,7 +8,7 @@
 /// JUCE's internal audio thread.
 @interface ObrixBridge : NSObject
 
-+ (instancetype)shared;
++ (instancetype _Nullable)shared;
 
 /// Audio lifecycle
 - (void)startAudio;

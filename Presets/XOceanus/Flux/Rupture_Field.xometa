@@ -2,12 +2,25 @@
   "schema_version": 1,
   "name": "Rupture Field",
   "mood": "Flux",
-  "engines": ["Obrix"],
+  "engines": [
+    "Obrix"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Harmonic field in rupture state. JI attractor field inverted to repulsor mode — harmony as weapon.",
-  "tags": ["flux", "aggressive", "rupture", "harmonic", "field"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Harmonic field in rupture state. JI attractor field inverted to repulsor mode \u2014 harmony as weapon.",
+  "tags": [
+    "flux",
+    "aggressive",
+    "rupture",
+    "harmonic",
+    "field"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -27,19 +40,12 @@
       "obrix_src1Type": 1.0,
       "obrix_src2Type": 3.0,
       "obrix_fieldPolarity": -1.0,
-      "obrix_fieldStrength": 0.88,
-      "obrix_filterEnvAmt": 0.76,
-      "obrix_lfo1Rate": 0.48,
-      "obrix_lfo1Depth": 0.44,
-      "obrix_filterCutoff": 0.62,
-      "obrix_filterRes": 0.72,
-      "obrix_attackTime": 0.008,
-      "obrix_decayTime": 0.24,
-      "obrix_sustain": 0.35,
-      "obrix_releaseTime": 0.2
+      "obrix_fieldStrength": 0.88
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.86,

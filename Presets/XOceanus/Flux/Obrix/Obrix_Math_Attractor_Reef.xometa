@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX through Mathematical Chain — the coral reef as mathematical system. Attractor Drive at Bifurcation 0.65 (above the period-doubling threshold, entering chaos) applies Lorenz-modulated distortion to OBRIX's dual-source synthesis. This matches OBRIX's own Brick Ecology system (Harmonic Field attractors, Environmental parameters) with the Mathematical Chain's attractor-driven processing — two attractor systems in series. Entropy Cooler at Stability 0.3 provides Shannon entropy measurement. Voronoi Shatter minimal. Quantum Smear at Observation 0.3 adds a moderate reverb. The overall character is OBRIX as a mathematical ecological system with its own chaotic drive amplified.",
+  "description": "OBRIX through Mathematical Chain \u2014 the coral reef as mathematical system. Attractor Drive at Bifurcation 0.65 (above the period-doubling threshold, entering chaos) applies Lorenz-modulated distortion to OBRIX's dual-source synthesis. This matches OBRIX's own Brick Ecology system (Harmonic Field attractors, Environmental parameters) with the Mathematical Chain's attractor-driven processing \u2014 two attractor systems in series. Entropy Cooler at Stability 0.3 provides Shannon entropy measurement. Voronoi Shatter minimal. Quantum Smear at Observation 0.3 adds a moderate reverb. The overall character is OBRIX as a mathematical ecological system with its own chaotic drive amplified.",
   "tags": [
     "obrix",
     "math-chain",
@@ -99,10 +99,7 @@
       "obrix_driftDepth": 0.32,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.42,
-      "obrix_air": 0.45,
-      "obrix_fltEnvAmt": 0.577,
-      "obrix_lfo1Rate": 0.498,
-      "obrix_lfo1Depth": 0.441
+      "obrix_air": 0.45
     }
   },
   "coupling": {

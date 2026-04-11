@@ -20,6 +20,7 @@
 //   bg.setBounds(getLocalBounds());
 //   bg.setHasCouplingRoutes(matrix.getRouteCount() > 0);
 
+#include <array>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"  // GalleryColors::Ocean, A11y::prefersReducedMotion
 
@@ -97,7 +98,14 @@ public:
 
         paintDepthZoneRings(g, cx, cy, halfMin);
 
-        // 3. When the ocean is empty (no coupling routes), draw additional faint
+        // 3. Animated wave surface — master output waveform trace + depth echoes.
+        //    Driven by waveData_ pushed from OceanView's timer reading the
+        //    master WaveformFifo.  Skipped if reduced motion is preferred.
+        if (!A11y::prefersReducedMotion())
+            paintWaveSurface(g, static_cast<float>(bounds.getWidth()),
+                                static_cast<float>(bounds.getHeight()));
+
+        // 4. When the ocean is empty (no coupling routes), draw additional faint
         //    concentric ring outlines as a background texture.
         if (!hasCouplingRoutes_)
             paintEmptyStateTexture(g, cx, cy, halfMin);
@@ -126,15 +134,44 @@ public:
     }
 
     //==========================================================================
+    /**
+        Push latest master output waveform data for the ocean wave surface.
+        Called from OceanView's timer (10 Hz) — not from audio thread.
+
+        @param samples  Array of waveform samples (typically 120 points,
+                        downsampled from the 512-sample WaveformFifo)
+        @param count    Number of samples (clamped to kWavePoints max)
+        @param rms      RMS level 0-1, drives wave intensity/amplitude
+    */
+    void setWaveData(const float* samples, int count, float rms)
+    {
+        const int n = std::min(count, kWavePoints);
+        for (int i = 0; i < n; ++i)
+            waveData_[i] = samples[i];
+        for (int i = n; i < kWavePoints; ++i)
+            waveData_[i] = 0.0f;
+        intensity_ = juce::jlimit(0.0f, 1.0f, rms);
+        waveTime_ += 0.1f; // advance animation phase (~10 Hz tick)
+    }
+
+    //==========================================================================
     // Accessors
 
     bool hasCouplingRoutes() const noexcept { return hasCouplingRoutes_; }
 
 private:
     //==========================================================================
+    // Wave surface constants
+    static constexpr int kWavePoints = 120;
+
     juce::Image cachedGradient_;
     bool        hasCouplingRoutes_ = false;
     bool        needsRedraw_       = true;
+
+    // Wave surface state (pushed from OceanView timer, not audio thread)
+    std::array<float, kWavePoints> waveData_ {};
+    float waveTime_   = 0.0f;
+    float intensity_  = 0.0f;
 
     //==========================================================================
     /**
@@ -286,6 +323,99 @@ private:
             const float r = fraction * halfMin;
             g.drawEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f, 1.0f);
         }
+    }
+
+    //==========================================================================
+    /**
+        Paint the animated ocean wave surface.
+
+        Draws 4 waveform traces across the ocean:
+          - 3 subtle depth echo layers (parallax, progressively fading)
+          - 1 primary master-output trace (thick, with glow fill underneath)
+
+        The primary trace shows the actual master bus waveform; the depth layers
+        are scaled/phase-shifted copies for visual depth.  Wave amplitude scales
+        with intensity_ (RMS level from master output).
+    */
+    void paintWaveSurface(juce::Graphics& g, float w, float h) const
+    {
+        // Build wave displacement array from master output data + sine modulation
+        // When no audio is playing (intensity_ ≈ 0), subtle ambient sine waves
+        // keep the ocean alive.  When audio plays, real waveform data dominates.
+        const float baseAmp = 1.5f + intensity_ * 14.0f;
+        const float chop    = intensity_ * 7.0f;
+
+        std::array<float, kWavePoints> waveY {};
+        for (int i = 0; i < kWavePoints; ++i)
+        {
+            const float fi = static_cast<float>(i);
+            // Ambient sine waves (always present, subtle)
+            float ambient = std::sin(waveTime_ * 0.8f + fi * 0.08f) * baseAmp
+                          + std::sin(waveTime_ * 1.3f + fi * 0.15f) * baseAmp * 0.6f
+                          + std::sin(waveTime_ * 2.1f + fi * 0.22f) * chop;
+            // Blend in real waveform data when audio is active
+            float real = waveData_[static_cast<size_t>(i)] * 40.0f * intensity_;
+            waveY[static_cast<size_t>(i)] = ambient + real;
+        }
+
+        const juce::Colour teal(60, 180, 170);
+
+        // ── 3 depth echo layers (subtle, behind primary) ──
+        for (int layer = 0; layer < 3; ++layer)
+        {
+            const float yBase = h * (0.22f + static_cast<float>(layer) * 0.18f);
+            const float alpha = 0.025f + intensity_ * 0.03f - static_cast<float>(layer) * 0.006f;
+            const float scale = 0.5f - static_cast<float>(layer) * 0.1f;
+            const float phaseOff = static_cast<float>(layer) * 0.6f;
+
+            juce::Path depthPath;
+            for (int i = 0; i < kWavePoints; ++i)
+            {
+                const float x = (static_cast<float>(i) / kWavePoints) * w;
+                const float wave = waveY[static_cast<size_t>(i)] * scale;
+                const float drift = std::sin(waveTime_ * (0.7f - static_cast<float>(layer) * 0.15f)
+                                           + static_cast<float>(i) * 0.05f + phaseOff)
+                                  * (2.0f + intensity_ * 3.0f);
+                const float y = yBase + wave + drift;
+                if (i == 0) depthPath.startNewSubPath(x, y);
+                else        depthPath.lineTo(x, y);
+            }
+            g.setColour(teal.withAlpha(std::max(0.0f, alpha)));
+            g.strokePath(depthPath, juce::PathStrokeType(0.7f));
+        }
+
+        // ── Primary waveform trace (master output) ──
+        const float primaryY = h * 0.45f;
+
+        juce::Path primaryPath;
+        for (int i = 0; i < kWavePoints; ++i)
+        {
+            const float x = (static_cast<float>(i) / kWavePoints) * w;
+            const float y = primaryY + waveY[static_cast<size_t>(i)] * 1.2f;
+            if (i == 0) primaryPath.startNewSubPath(x, y);
+            else        primaryPath.lineTo(x, y);
+        }
+
+        // Glow fill underneath the primary trace
+        juce::Path fillPath(primaryPath);
+        fillPath.lineTo(w, primaryY + 40.0f);
+        fillPath.lineTo(0.0f, primaryY + 40.0f);
+        fillPath.closeSubPath();
+        juce::ColourGradient glowFill(
+            teal.withAlpha(0.04f + intensity_ * 0.06f),
+            0.0f, primaryY,
+            juce::Colours::transparentBlack,
+            0.0f, primaryY + 40.0f, false);
+        g.setGradientFill(glowFill);
+        g.fillPath(fillPath);
+
+        // Thick primary line
+        g.setColour(teal.withAlpha(0.15f + intensity_ * 0.35f));
+        g.strokePath(primaryPath, juce::PathStrokeType(2.0f + intensity_ * 1.5f));
+
+        // Bright core on top
+        g.setColour(juce::Colour(120, 220, 210).withAlpha(0.08f + intensity_ * 0.25f));
+        g.strokePath(primaryPath, juce::PathStrokeType(1.0f));
     }
 
     //==========================================================================

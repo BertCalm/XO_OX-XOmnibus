@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Bandpass filter isolates a frequency band — nasal, vocal, telephone-like. Sweep cutoff to find the formant sweet spot.",
+  "description": "Bandpass filter isolates a frequency band \u2014 nasal, vocal, telephone-like. Sweep cutoff to find the formant sweet spot.",
   "tags": [
     "lesson",
     "bandpass",
@@ -97,10 +97,7 @@
       "obrix_driftDepth": 0.0,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.0,
-      "obrix_air": 0.5,
-      "obrix_fltEnvAmt": 0.518,
-      "obrix_lfo1Rate": 0.163,
-      "obrix_lfo1Depth": 0.279
+      "obrix_air": 0.5
     }
   },
   "category": "lesson",

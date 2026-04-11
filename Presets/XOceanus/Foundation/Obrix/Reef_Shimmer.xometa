@@ -98,10 +98,7 @@
       "obrix_driftDepth": 0.0,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.0,
-      "obrix_air": 0.5,
-      "obrix_fltEnvAmt": 0.357,
-      "obrix_lfo1Rate": 0.126,
-      "obrix_lfo1Depth": 0.212
+      "obrix_air": 0.5
     }
   },
   "category": "lesson",

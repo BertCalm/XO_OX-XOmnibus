@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sargasso Sea: the only sea with no land boundary, defined entirely by ocean currents. Seaweed that traps plastic. Almost no current — a becalmed zone. The lowest Pressure value slows all LFOs dramatically. Near-zero Turbidity. Maximum drift depth because the stillness here is deceptive.",
+  "description": "Sargasso Sea: the only sea with no land boundary, defined entirely by ocean currents. Seaweed that traps plastic. Almost no current \u2014 a becalmed zone. The lowest Pressure value slows all LFOs dramatically. Near-zero Turbidity. Maximum drift depth because the stillness here is deceptive.",
   "tags": [
     "obrix",
     "atmosphere",
@@ -116,10 +116,7 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 0,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3,
-      "obrix_fltEnvAmt": 0.31,
-      "obrix_lfo1Rate": 0.086,
-      "obrix_lfo1Depth": 0.199
+      "obrix_residentStrength": 0.3
     }
   },
   "coupling": {

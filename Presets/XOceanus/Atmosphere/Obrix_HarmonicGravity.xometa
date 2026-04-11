@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Two Sine oscillators separated by an octave (src2 tuned +12 semitones), drawn together by a strong 7-limit gravitational field (fieldStrength=0.8, fieldRate=0.02). The faster field rate means quicker correction to just ratios. Chorus adds shimmer and spatial width. When notes cluster near JI ratios they lock — when played far apart the gravity becomes audible as a bending force.",
+  "description": "Two Sine oscillators separated by an octave (src2 tuned +12 semitones), drawn together by a strong 7-limit gravitational field (fieldStrength=0.8, fieldRate=0.02). The faster field rate means quicker correction to just ratios. Chorus adds shimmer and spatial width. When notes cluster near JI ratios they lock \u2014 when played far apart the gravity becomes audible as a bending force.",
   "tags": [
     "obrix",
     "entangled",
@@ -125,10 +125,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.415,
-      "obrix_lfo1Rate": 0.084,
-      "obrix_lfo1Depth": 0.334
+      "obrix_fxMode": 0
     }
   }
 }

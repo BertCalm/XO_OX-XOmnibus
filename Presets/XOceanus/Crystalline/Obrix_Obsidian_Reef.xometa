@@ -37,10 +37,7 @@
       "obrix_macroCharacter": 0.64,
       "obrix_macroMovement": 0.43,
       "obrix_macroCoupling": 0.23,
-      "obrix_macroSpace": 0.59,
-      "obrix_filterEnvAmt": 0.62,
-      "obrix_lfo1Rate": 0.12,
-      "obrix_lfo1Depth": 0.22
+      "obrix_macroSpace": 0.59
     },
     "Obsidian": {
       "obsidian_macroCharacter": 0.64,

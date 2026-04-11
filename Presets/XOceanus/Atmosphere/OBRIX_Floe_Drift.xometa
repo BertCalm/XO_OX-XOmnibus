@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Arctic Ice Shelf: vast flat white stretching to the horizon, wind crossing open water. Cold Air tilt brightens the top. Maximum Distance rolloff hides the bass. Drift Bus very slow, very wide — the shelf moves but you cannot perceive it moving.",
+  "description": "Arctic Ice Shelf: vast flat white stretching to the horizon, wind crossing open water. Cold Air tilt brightens the top. Maximum Distance rolloff hides the bass. Drift Bus very slow, very wide \u2014 the shelf moves but you cannot perceive it moving.",
   "tags": [
     "obrix",
     "atmosphere",
@@ -116,10 +116,7 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 0,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3,
-      "obrix_fltEnvAmt": 0.486,
-      "obrix_lfo1Rate": 0.066,
-      "obrix_lfo1Depth": 0.321
+      "obrix_residentStrength": 0.3
     }
   },
   "coupling": {

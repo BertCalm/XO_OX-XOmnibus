@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Maximum competition ecology (competitionStrength=0.9) between Square src1 and Sine src2. An LFO sweeps srcMix continuously — as the mix shifts, whichever source has more amplitude becomes the temporary predator. The other recedes, only to surge back when the cycle turns. Population dynamics made audible: one dominates, the other survives, then they reverse. Classic Lotka-Volterra behaviour in a synth.",
+  "description": "Maximum competition ecology (competitionStrength=0.9) between Square src1 and Sine src2. An LFO sweeps srcMix continuously \u2014 as the mix shifts, whichever source has more amplitude becomes the temporary predator. The other recedes, only to surge back when the cycle turns. Population dynamics made audible: one dominates, the other survives, then they reverse. Classic Lotka-Volterra behaviour in a synth.",
   "tags": [
     "obrix",
     "flux",
@@ -126,10 +126,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.623,
-      "obrix_lfo1Rate": 0.461,
-      "obrix_lfo1Depth": 0.406
+      "obrix_fxMode": 0
     }
   }
 }

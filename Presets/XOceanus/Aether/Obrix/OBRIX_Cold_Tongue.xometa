@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Galapagos Upwelling: cold nutrient-rich water rising from depth off the Galapagos Islands, driving an ecosystem that Darwin used to understand evolution. 7-Limit Harmonic Field in attractor mode — evolution toward the most harmonically rational configurations. The Organic wavetable bank as biological diversity.",
+  "description": "Galapagos Upwelling: cold nutrient-rich water rising from depth off the Galapagos Islands, driving an ecosystem that Darwin used to understand evolution. 7-Limit Harmonic Field in attractor mode \u2014 evolution toward the most harmonically rational configurations. The Organic wavetable bank as biological diversity.",
   "tags": [
     "obrix",
     "aether",
@@ -116,10 +116,7 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 1,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3,
-      "obrix_fltEnvAmt": 0.436,
-      "obrix_lfo1Rate": 0.01,
-      "obrix_lfo1Depth": 0.222
+      "obrix_residentStrength": 0.3
     }
   },
   "coupling": {

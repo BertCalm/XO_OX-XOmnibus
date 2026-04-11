@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OCELOT biome crossfade data heavily feeds OBRIX habitat type parameters — savanna becoming coral reef, habitat logic rewriting synthesis ecology.",
+  "description": "OCELOT biome crossfade data heavily feeds OBRIX habitat type parameters \u2014 savanna becoming coral reef, habitat logic rewriting synthesis ecology.",
   "tags": [
     "coupling",
     "heavy",
@@ -47,9 +47,6 @@
     },
     "Obrix": {
       "obrix_src1Type": 0.68,
-      "obrix_filterEnvAmt": 0.62,
-      "obrix_lfo1Rate": 0.16,
-      "obrix_lfo1Depth": 0.32,
       "obrix_macroCharacter": 0.62,
       "obrix_macroMovement": 0.65,
       "obrix_macroCoupling": 0.72,

@@ -787,7 +787,6 @@ class ReefScene: SKScene {
         }
 
         // Create the in-progress wire line
-        let srcPos = slotNodes[slot].position
         let line = SKShapeNode()
         line.strokeColor = DesignTokens.skColor(for: reefStore.specimens[slot]?.category ?? .source).withAlphaComponent(0.6)
         line.lineWidth = 2.5
