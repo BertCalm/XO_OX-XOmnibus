@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Romantic Pedal Reed",
+  "mood": "Deep",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Cavaillé-Coll Contrebasse 16' combined with reed 8' in pedal — a full bass registration for Romantic-era symphonic works. Weighty, articulate, and harmonically complete.",
+  "tier": "standard",
+  "tags": ["deep", "cavaille-coll", "romantic", "contrebasse", "reed-pedal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.08,
+    "SPACE": 0.82
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.88,
+    "movement": 0.08,
+    "density": 0.88,
+    "space": 0.82,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.85,
+      "oct_chiff": 0.06,
+      "oct_detune": 0.03,
+      "oct_buzz": 0.22,
+      "oct_pressure": 0.22,
+      "oct_crosstalk": 0.32,
+      "oct_brightness": 0.18,
+      "oct_registration": 0.92,
+      "oct_roomDepth": 0.82,
+      "oct_attack": 0.08,
+      "oct_decay": 1.0,
+      "oct_sustain": 1.0,
+      "oct_release": 2.8,
+      "oct_filterEnvAmount": 0.07,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.82,
+      "oct_macroMovement": 0.1,
+      "oct_macroCoupling": 0.08,
+      "oct_macroSpace": 0.82,
+      "oct_lfo1Rate": 0.05,
+      "oct_lfo1Depth": 0.05,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.15,
+      "oct_lfo2Depth": 0.03,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.06
+    }
+  },
+  "tempo": null
+}
