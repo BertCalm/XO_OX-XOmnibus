@@ -58,6 +58,7 @@
 #include "ChordBarComponent.h"
 #include "MasterFXStripCompact.h"
 #include "TransportBar.h"
+#include "SubmarineOuijaPanel.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -213,6 +214,10 @@ public:
         // waterline_ is deferred (needs APVTS + sequencer) — see initWaterline().
         addAndMakeVisible(tabBar_);
 
+        // 9e. Submarine XOuija panel (hidden by default, shown when OUIJA tab selected).
+        ouijaPanel_.setVisible(false);
+        addAndMakeVisible(ouijaPanel_);
+
         // 10. PlaySurface overlay (hidden by default; manages its own visibility)
         addAndMakeVisible(playSurfaceOverlay_);
 
@@ -360,11 +365,11 @@ public:
         keysButton_.onClick = [this]() { togglePlaySurface(); };
 
         // ── Step 6: Dashboard tab bar callback ───────────────────────────────
-        tabBar_.onTabChanged = [](const juce::String& tab)
+        tabBar_.onTabChanged = [this](const juce::String& tab)
         {
-            // Currently only KEYS tab uses the PlaySurface.
-            // PAD / DRUM / XY / OUIJA will be added in a later step.
-            juce::ignoreUnused(tab);
+            // Show XOuija panel when OUIJA tab is selected, hide otherwise.
+            ouijaPanel_.setVisible(tab == "OUIJA");
+            resized();
         };
 
         // SEQ toggle → expand/collapse TideWaterline.
@@ -614,13 +619,19 @@ public:
         if (chordBar_ && chordBar_->isVisible())
             chordBar_->setBounds(dashArea.removeFromTop(28));
 
-        // Remaining dashboard space → PlaySurface (keyboard / pads / drum / XY).
-        // The overlay is given a fixed rect here; its internal slide animation
-        // operates within this region (offset=0 means fully visible, offset=height
-        // means hidden below the bottom edge of dashArea).
-        playSurfaceOverlay_.setBounds(dashArea);
-        if (!playSurfaceOverlay_.isShowing())
-            playSurfaceOverlay_.show();
+        // Remaining dashboard space → PlaySurface or XOuija.
+        if (ouijaPanel_.isVisible())
+        {
+            ouijaPanel_.setBounds(dashArea);
+            playSurfaceOverlay_.setVisible(false);
+        }
+        else
+        {
+            playSurfaceOverlay_.setVisible(true);
+            playSurfaceOverlay_.setBounds(dashArea);
+            if (!playSurfaceOverlay_.isShowing())
+                playSurfaceOverlay_.show();
+        }
 
         // Transport bar (submarine) replaces the old status bar at the bottom.
         if (transportBar_)
@@ -1985,6 +1996,7 @@ private:
         // Step 6: waterline and tab bar sit above the dim overlay but below
         // the PlaySurface so they are always legible.
         playSurfaceOverlay_.toFront(false);
+        ouijaPanel_.toFront(false);
         if (waterline_) waterline_->toFront(false);
         if (masterFxStrip_) masterFxStrip_->toFront(false);
         tabBar_.toFront(false);
@@ -2053,6 +2065,7 @@ private:
     std::unique_ptr<ChordBarComponent>    chordBar_;
     std::unique_ptr<MasterFXStripCompact> masterFxStrip_;
     std::unique_ptr<TransportBar>         transportBar_;
+    SubmarineOuijaPanel                   ouijaPanel_;
     DashboardTabBar      tabBar_;
 
     // Floating header controls.
