@@ -1917,6 +1917,13 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         if (slotMuted[i].load(std::memory_order_relaxed))
             continue;
 
+        // Process engine output through its insert shaper (if loaded).
+        // Uses the same shared_ptr-copy pattern as bus shapers in MasterFXChain.
+        {
+            juce::MidiBuffer emptyMidi;
+            ShaperRegistry::instance().processInsert(i, engineBuffers[i], emptyMidi, numSamples);
+        }
+
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
             buffer.addFrom(ch, 0, engineBuffers[i], ch, 0, numSamples, masterVol);
     }
@@ -2227,7 +2234,7 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
 
     newEngine->attachParameters(apvts);
     {
-        const double sr = currentSampleRate.load(std::memory_order_relaxed);
+        const double sr = atomicSampleRate_.load(std::memory_order_relaxed);
         // #700: Only call prepare() if prepareToPlay() has already run (sr > 0).
         // If loadEngine() is called before the host calls prepareToPlay() — e.g.
         // during setStateInformation() at construction time — sr is 0.0 and passing
@@ -2267,7 +2274,7 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         pending.outgoing = oldEngine;
         pending.fadeGain = 1.0f;
         pending.fadeSamplesRemaining =
-            static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
+            static_cast<int>(atomicSampleRate_.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
         // Release-store: makes the fields above visible to the audio thread
         // before it observes ready==true.
         pending.ready.store(true, std::memory_order_release);
@@ -2315,7 +2322,7 @@ void XOceanusProcessor::unloadEngine(int slot)
         pending.outgoing = oldEngine;
         pending.fadeGain = 1.0f;
         pending.fadeSamplesRemaining =
-            static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
+            static_cast<int>(atomicSampleRate_.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
         // Release-store: makes the fields above visible to the audio thread
         // before it observes ready==true.
         pending.ready.store(true, std::memory_order_release);

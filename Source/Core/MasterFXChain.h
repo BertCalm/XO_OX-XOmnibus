@@ -263,7 +263,7 @@ public:
         // ====================================================================
 
         // Stage 1: Saturation
-        const float satDrive = pSatDrive->load(std::memory_order_relaxed);
+        const float satDrive = pSatDrive ? pSatDrive->load(std::memory_order_relaxed) : 0.0f;
         const float satMode = pSatMode ? pSatMode->load(std::memory_order_relaxed) : 1.0f;
 
         // Stage 2: Corroder
