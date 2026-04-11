@@ -741,6 +741,41 @@ public:
         oceanView_.initChordBar(proc.getAPVTS(), proc.getChordMachine());
         oceanView_.initMasterFxStrip(proc.getAPVTS());
         oceanView_.initTransportBar();
+        // Wire transport bar callbacks.
+        if (auto* tb = oceanView_.getTransportBar())
+        {
+            tb->onPlayToggled = [&proc, this]()
+            {
+                // Toggle sequencer enabled via APVTS.
+                if (auto* p = proc.getAPVTS().getParameter("master_seqEnabled"))
+                {
+                    bool nowOn = p->getValue() < 0.5f;
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(nowOn ? 1.0f : 0.0f);
+                    p->endChangeGesture();
+                    if (auto* bar = oceanView_.getTransportBar())
+                        bar->setPlaying(nowOn);
+                    // Also expand the waterline when starting.
+                    if (nowOn)
+                        if (auto* wl = oceanView_.getWaterline())
+                            wl->setExpanded(true);
+                }
+            };
+            tb->onBpmChanged = [&proc](double newBpm)
+            {
+                // Write BPM to chord machine's sequencer (cm_seq_bpm).
+                if (auto* p = proc.getAPVTS().getParameter("cm_seq_bpm"))
+                {
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(newBpm)));
+                    p->endChangeGesture();
+                }
+            };
+            tb->onCoupleClicked = []()
+            {
+                // TODO: open coupling inspector panel
+            };
+        }
         oceanView_.initStatusBar();
 
         // Wire OceanView callbacks

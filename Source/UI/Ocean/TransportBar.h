@@ -351,12 +351,27 @@ private:
             g.setColour(borderCol);
             g.drawRoundedRectangle(playBtnBounds_, 3.0f, 1.0f);
 
-            g.setFont(bodyFont);
+            // Draw play/stop icon as a filled shape instead of text glyphs
+            // (UTF-8 triangles don't render reliably across all fonts).
             g.setColour(textCol);
-            // UTF-8: "▶" = \xe2\x96\xb6, "■" = \xe2\x96\xa0
-            g.drawText(playing_ ? "\xe2\x96\xa0" : "\xe2\x96\xb6",
-                       playBtnBounds_.toNearestInt(),
-                       juce::Justification::centred, false);
+            if (playing_)
+            {
+                // Stop: filled square
+                const float sq = 7.0f;
+                g.fillRect(playBtnBounds_.getCentreX() - sq * 0.5f,
+                           playBtnBounds_.getCentreY() - sq * 0.5f, sq, sq);
+            }
+            else
+            {
+                // Play: filled triangle pointing right
+                juce::Path tri;
+                const float cx = playBtnBounds_.getCentreX();
+                const float cy = playBtnBounds_.getCentreY();
+                tri.addTriangle(cx - 4.0f, cy - 5.0f,
+                                cx - 4.0f, cy + 5.0f,
+                                cx + 5.0f, cy);
+                g.fillPath(tri);
+            }
         }
 
         // --- BPM value ---

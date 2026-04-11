@@ -525,7 +525,8 @@ public:
     }
 
     /// Get the TransportBar so the editor can push BPM/voices/CPU.
-    TransportBar* getTransportBar() noexcept { return transportBar_.get(); }
+    TransportBar*    getTransportBar() noexcept { return transportBar_.get(); }
+    TideWaterline*   getWaterline()    noexcept { return waterline_.get(); }
 
     /**
         Initialise the StatusBar.
