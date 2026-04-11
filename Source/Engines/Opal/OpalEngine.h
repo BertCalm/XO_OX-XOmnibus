@@ -494,7 +494,7 @@ struct OpalCloudVoice
         {
             glideTarget = frequency;
             glideFreq = legatoActive ? glideFreq : prevFreq;
-            glideRate = 1.0f / (static_cast<float>(sr) * glideTime);
+            glideRate = 1.0f / std::max(static_cast<float>(sr) * glideTime, 1e-6f);
         }
         else
         {
