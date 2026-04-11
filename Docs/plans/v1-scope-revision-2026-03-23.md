@@ -37,7 +37,7 @@ An engine must meet **all** of the following to be included in V1:
 
 ---
 
-## Confirmed V1-Ready Engines (21)
+## Confirmed V1-Ready Engines (22)
 
 These engines meet all criteria as of this revision:
 
@@ -57,13 +57,14 @@ These engines meet all criteria as of this revision:
 | 12 | **Osprey** | Approved | 166 | ShoreSystem (B012) |
 | 13 | **Osteria** | Production-grade | 234 | ShoreSystem shared (B012) |
 | 14 | **Ostinato** | 8.7 | 229 | Modal membrane synthesis (B017); 96 rhythm patterns (B019) |
-| 15 | **Oto** | 8.6 post-fix | 34 | Chef quad — preset expansion in progress |
+| 15 | **Oto** | 8.6 post-fix | 132 | Chef quad — preset expansion complete ✅ |
 | 16 | **Ouie** | 8.5 | 396 | HAMMER axis (B025); duophonic |
 | 17 | **Ouroboros** | Production-ready | 346 | Chaos attractors; Leash (B003) |
 | 18 | **Outwit** | 8.7 | 593 | Cellular automata stepsynth |
 | 19 | **Oware** | 8.7 | 175 | Mallet physics — Chaigne 1997 (B032) |
 | 20 | **Oxbow** | 9.0 | 175 | Chiasmus FDN entangled reverb synth |
 | 21 | **Oxytocin** | 9.5 (fleet leader) | 130 | Circuit × love topology; Note Duration (B040) |
+| 22 | **OpenSky** | 8.5 re-seance 2026-04-11 | 417 | Shepard shimmer (B023) + RISE macro (B024); preset schema migration required before ship |
 
 ---
 
@@ -80,10 +81,10 @@ These engines are strong candidates but require a formal re-seance, a preset pus
 | OddfeliX | ~8.5 est. | 531 | Post-fix recovery; no retreat doc |
 | Obsidian | ~8.2 est. | 280 | Below 8.5 threshold; post-fix estimate |
 | Ocelot | ~8.5 est. | 271 | EcosystemMatrix now live; formal re-seance needed |
-| Octave | 8.01 → ~8.7 | 25 | Post-fix strong; only 25 presets — critical gap |
+| Octave | 8.01 → ~8.7 | 114 | Post-fix strong; preset expansion complete ✅ (6→114 2026-04-11); needs formal numeric re-seance |
 | Octopus | ~8.5 est. | 257 | Aftertouch fixed; formal numeric re-seance needed |
 | Orca | ~8.6 est. | 270 | Echolocation LFO strong; needs formal numeric seance on record |
-| OpenSky | 8.1 | 385 | Needs formal numeric re-seance (8.1 score is partial); `sky_subWave` D004 was a false positive — parameter is fully dispatched |
+| ~~OpenSky~~ | ~~8.1~~ | ~~385~~ | **PROMOTED** — re-seance 2026-04-11 scored 8.5/10. Moved to Confirmed V1. Preset schema migration required. |
 | Orbweave | 8.4 | 451 | Just below 8.5; Knot Phase Coupling (B021) unique |
 | Organism | 8.1 / 7.2 | 433 | CA fix applied; re-seance to confirm |
 | Orphica | ~8.7 est. | 264 | Buffer extended; velocity→resonance wired; needs formal numeric seance on record |

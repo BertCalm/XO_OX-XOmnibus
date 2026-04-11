@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-04-05 — 75 seanced (OXIDIZE first seance 8.7/10 pre-fix → 9.2+ post-fix 2026-04-05); OBIONT, OUTFLOW not yet seanced
+**Updated:** 2026-04-11 — 76 seanced (OPENSKY re-seance 8.1→8.5 formal numeric pass 2026-04-11; see `Docs/seances/opensky-seance-verdict-2026-04-11.md`); OBIONT, OUTFLOW not yet seanced
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -52,7 +52,7 @@
 | XOlé | OLE | 7.0/10 | None | None | isHusband regression post-SP7.5 fix; 4 dead params (fixed) | "The Alliance is the most interesting social dynamic in synthesis — and it is a bug." |
 | XOverlap | OVERLAP | 8.4/10 (latest re-seance) | KnotMatrix FDN + Voice Entrainment Architecture | None | Global filter env vs. FDN long tails (ongoing); integer delay pitch stepping | "The Chiasmus FDN does something no other engine does — notes do not decay, they transform each other." — Buchla |
 | XOutwit | OUTWIT | 7.9/10 → 8.7/10 (re-seance 2026-03-20) | None | None | Pitch wheel unhandled; mono Den reverb; step rate ceiling 40 Hz | "The CA synthesis is 40 Hz away from audio rate — and it cannot take that step." — Buchla |
-| XOpenSky | OPENSKY | 8.1/10 | B023 Shepard Shimmer Architecture; B024 RISE Macro | None | sky_subWave D004 partial; shimmer/chorus mutual exclusion debate | "Every time you hold a note, the room grows taller." — Buchla |
+| XOpenSky | OPENSKY | **8.5/10** (re-seance 2026-04-11; supersedes 8.1 partial) | B023 Shepard Shimmer Architecture; B024 RISE Macro | None | sky_subWave D004 FALSE POSITIVE — fully dispatched (switch at lines 841–853); preset schema split (1/3 of presets use stale param names) logged as separate issue; shimmer/chorus DB001 noted | "Every time you hold a note, the room grows taller." — Buchla |
 | XOceanDeep | OCEANDEEP | 7.8/10 | B029 Hydrostatic Compressor; B030 Bioluminescent Exciter; B031 Darkness Filter Ceiling | None | No independent filter ADSR; missing pitch bend | "The pressure is physics, not a compressor." — Moog |
 | XOuie | OUIE | 8.5/10 | B025 HAMMER Interaction Axis; B026 Interval-as-Parameter; B027 8-Algorithm Palette | None | CURRENT macro chorus-only; harmonic lock in LOVE section unimplemented | "STRIFE and LOVE are not opposites — they are a spectrum, and you are always somewhere on it." — Buchla |
 | XObrix | OBRIX | 7.2/10 → 9.4 roadmap | B016 Brick Independence (AMENDED 2026-03-21) | None | No factory presets at seance time; default Sine source; LFO ceiling 30 Hz | "The ecology is real. The bricks are alive. But the reef has no presets." — Kakehashi |
@@ -176,7 +176,7 @@
 
 ---
 
-## Seance Score Ranking (Updated 2026-04-05 — 77 Engines; 75 Seanced)
+## Seance Score Ranking (Updated 2026-04-11 — 77 Engines; 76 Seanced)
 
 ### Tier 1 — Excellent (9.0+)
 
@@ -217,6 +217,7 @@
 | 19 | OVERWORN | 8.6/10 | ReductionState synthesis. Most radical conceptual pad. |
 | 19 | OMEGA | 8.6/10 | Distillation synthesis FM+subtractive. |
 | 24 | ODDFELLOW | 8.5/10 | Wurlitzer. Inharmonic reed ratios correct. |
+| 24 | OPENSKY | **8.5/10** (re-seance 2026-04-11) | B023 Shepard Shimmer; B024 RISE Macro. D004 false positive cleared. 417 presets. V1 PASS. |
 | 24 | OUIE | 8.5/10 | B025/B026/B027. HAMMER axis. |
 | 24 | OBESE | ~8.5 est. (post-fix) | LFO1 exposed, B015 Mojo now breathes. |
 | 24 | OCELOT | ~8.5 est. (post-fix) | Biome crossfade live, all macros wired. |
