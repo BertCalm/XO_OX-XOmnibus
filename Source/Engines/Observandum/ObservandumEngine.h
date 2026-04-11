@@ -109,6 +109,10 @@ struct ObservandumVoice
     CytomicSVF filterL;
     CytomicSVF filterR;
 
+    // ---- Per-voice LFOs (D002/D005) ----
+    StandardLFO lfo1;
+    StandardLFO lfo2;
+
     void reset() noexcept
     {
         active          = false;
@@ -128,6 +132,8 @@ struct ObservandumVoice
         distEnv.kill();
         filterL.reset();
         filterR.reset();
+        lfo1.reset();
+        lfo2.reset();
     }
 };
 
@@ -167,6 +173,7 @@ public:
         // Output cache for coupling reads
         outputCacheLeft.assign(static_cast<size_t>(maxBlockSize), 0.0f);
         outputCacheRight.assign(static_cast<size_t>(maxBlockSize), 0.0f);
+        envSignalBuffer.assign(static_cast<size_t>(maxBlockSize), 0.0f);
 
         // Build the 8 distortion curves
         buildDistortionCurves();
@@ -190,6 +197,9 @@ public:
             voice.reset();
 
         currentFacetCount = 2;
+
+        blockLfo1.reset();
+        blockLfo2.reset();
     }
 
     void releaseResources() override {}
@@ -204,7 +214,7 @@ public:
         couplingMorphMod           = 0.0f;
         envFollower                = 0.0f;
         envelopeFollowerOutput     = 0.0f;
-        smoothedMorph              = 50.0f;
+        smoothedMorph              = 0.0f;
         smoothedDetune             = 0.0f;
         smoothedSpread             = 0.0f;
         smoothedDistortion         = 0.0f;
@@ -224,6 +234,8 @@ public:
     {
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
+            return;
+        if (sampleRateFloat <= 0.0f)
             return;
 
         // ---- ParamSnapshot: read all parameter values once per block ----
@@ -264,12 +276,12 @@ public:
 
         // LFO 1
         const float paramLfo1Rate  = loadParam(pLfo1Rate,  1.0f);
-        const float paramLfo1Depth = loadParam(pLfo1Depth, 0.0f); (void)paramLfo1Depth;
+        const float paramLfo1Depth = loadParam(pLfo1Depth, 0.0f);
         const int   paramLfo1Shape = static_cast<int>(loadParam(pLfo1Shape, 0.0f));
 
         // LFO 2
         const float paramLfo2Rate  = loadParam(pLfo2Rate,  0.3f);
-        const float paramLfo2Depth = loadParam(pLfo2Depth, 0.0f); (void)paramLfo2Depth;
+        const float paramLfo2Depth = loadParam(pLfo2Depth, 0.0f);
         const int   paramLfo2Shape = static_cast<int>(loadParam(pLfo2Shape, 0.0f));
 
         // Morph env amount (D002)
@@ -339,49 +351,42 @@ public:
             paramFilterCutoff + couplingFilterMod * 4000.0f + modWheelValue * 10000.0f,
             20.0f, 20000.0f);
 
-        // Reset coupling accumulators for next block
+        // Save coupling filter mod before zeroing so per-voice cutoff calculation can use it
+        const float savedCouplingFilterMod = couplingFilterMod;
+
+        // Coupling accumulators consumed — zero for next block.
+        // Assumes applyCouplingInput() was called before renderBlock() by MegaCouplingMatrix.
         couplingPhaseDeflectionMod = 0.0f;
         couplingFilterMod          = 0.0f;
         couplingMorphMod           = 0.0f;
 
-        // ---- Build the active distortion curve (transfer-function-space morph) ----
-        // morphPos maps [0,100] → [0,7] curve index space
-        float morphPos = morphWithCoupling * (static_cast<float>(kObservNumCurves - 1)) / 100.0f;
-        int curveA = std::min(static_cast<int>(morphPos), kObservNumCurves - 1);
-        int curveB = std::min(curveA + 1,                 kObservNumCurves - 1);
-        float morphT = morphPos - static_cast<float>(curveA);
-
-        float activeCurve[kObservCurveSize];
-        for (int i = 0; i < kObservCurveSize; ++i)
-            activeCurve[i] = distortionCurves[curveA][i] * (1.0f - morphT)
-                           + distortionCurves[curveB][i] * morphT;
-        enforceMonotonicity(activeCurve, kObservCurveSize);
+        // Curve morph is now per-voice (D002): see voiceMorph / vCurveA / vCurveB in voice loop
 
         // ---- Environmental curve modifier (per-block signal generation) ----
         // envSignalBuffer holds one sample per output sample (Mode 2)
         // or is filled from env follower (Mode 1) or coupling (Mode 0)
-        float envSignalBuffer[1024]; // max block size assumed ≤ 1024
-        const int safeNumSamples = std::min(numSamples, 1024);
+        if (static_cast<int>(envSignalBuffer.size()) < numSamples)
+            envSignalBuffer.assign(static_cast<size_t>(numSamples), 0.0f);
 
         if (paramEnvMode == 1)
         {
             // Sidechain follower — we track the left input channel if present
             // (In JUCE plugin context the sidechain bus would be separate;
             // here we run the follower on our own output cache as a self-envelope)
-            for (int i = 0; i < safeNumSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
             {
                 float inputSig = std::fabs(outputCacheLeft.size() > static_cast<size_t>(i)
                                            ? outputCacheLeft[static_cast<size_t>(i)] : 0.0f);
                 float coeff = (inputSig > envFollower) ? envFollowerAttackCoeff : envFollowerReleaseCoeff;
                 envFollower = envFollower * coeff + inputSig * (1.0f - coeff);
                 envFollower = flushDenormal(envFollower);
-                envSignalBuffer[i] = envFollower * 2.0f - 1.0f; // map [0,1] → [-1,1]
+                envSignalBuffer[static_cast<size_t>(i)] = envFollower * 2.0f - 1.0f; // map [0,1] → [-1,1]
             }
         }
         else if (paramEnvMode == 2)
         {
             // Parametric models — generate per-block
-            for (int i = 0; i < safeNumSamples; ++i)
+            for (int i = 0; i < numSamples; ++i)
             {
                 double t = parametricModelPhase;
                 float sig = 0.0f;
@@ -419,7 +424,7 @@ public:
                         sig = std::sin(kObservTwoPi * static_cast<float>(t));
                         break;
                 }
-                envSignalBuffer[i] = sig;
+                envSignalBuffer[static_cast<size_t>(i)] = sig;
                 parametricModelPhase += static_cast<double>(paramEnvRate) / static_cast<double>(sampleRateFloat);
                 if (parametricModelPhase >= 1.0)
                     parametricModelPhase -= 1.0;
@@ -429,33 +434,52 @@ public:
         {
             // Mode 0: coupling — use the coupling curve modifier accumulator
             float coupVal = couplingCurveModAccum;
-            for (int i = 0; i < safeNumSamples; ++i)
-                envSignalBuffer[i] = coupVal;
+            for (int i = 0; i < numSamples; ++i)
+                envSignalBuffer[static_cast<size_t>(i)] = coupVal;
         }
         couplingCurveModAccum = 0.0f;
 
-        // Apply env modifier to active curve
+        // ---- D002 mod matrix — apply per-block ----
+        // Block-rate LFOs are ticked here once per block for mod matrix use.
+        // Per-voice LFOs still provide sample-rate modulation on their hardcoded routes.
+        // Destinations: 0=Off, 1=FilterCutoff, 2=MorphPosition, 3=Pitch, 4=AmpLevel, 5=Distortion
+        blockLfo1.setRate(paramLfo1Rate, sampleRateFloat);
+        blockLfo1.setShape(paramLfo1Shape);
+        blockLfo2.setRate(paramLfo2Rate, sampleRateFloat);
+        blockLfo2.setShape(paramLfo2Shape);
+        float blockLfo1Val = blockLfo1.process() * paramLfo1Depth;
+        float blockLfo2Val = blockLfo2.process() * paramLfo2Depth;
+
+        float modCutoffOffset = 0.0f, modMorphOffset = 0.0f, modPitchOffset = 0.0f;
+        float modAmpOffset = 0.0f, modDistOffset = 0.0f;
         {
-            float envModScaled = effectiveEnvDepth; // [0,1] → scale with depth
-            for (int i = 0; i < kObservCurveSize; ++i)
-            {
-                // Use the first env signal sample as block-rate env value
-                float envSig = (safeNumSamples > 0) ? envSignalBuffer[0] : 0.0f;
-                float envMod = envSig * envModScaled;
-                float normPhase = static_cast<float>(i) / static_cast<float>(kObservCurveSize - 1);
-                activeCurve[i] += envMod * 0.3f * std::sin(kObservTwoPi * normPhase);
-            }
-            enforceMonotonicity(activeCurve, kObservCurveSize);
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = blockLfo1Val;
+            mSrc.lfo2       = blockLfo2Val;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = lastNoteVelocity;
+            mSrc.keyTrack   = lastNoteKeyTrack;
+            mSrc.modWheel   = modWheelValue;
+            mSrc.aftertouch = aftertouchValue;
+            float mDst[6]   = {};
+            modMatrix.apply(mSrc, mDst);
+            modCutoffOffset = mDst[1] * 5000.0f;
+            modMorphOffset  = mDst[2] * 50.0f;
+            modPitchOffset  = mDst[3] * 12.0f;
+            modAmpOffset    = mDst[4] * 0.5f;
+            modDistOffset   = mDst[5] * 0.3f;
         }
+        effectiveCutoff = clamp(effectiveCutoff + modCutoffOffset, 20.0f, 20000.0f);
+        morphWithCoupling = clamp(morphWithCoupling + modMorphOffset, 0.0f, 100.0f);
 
         // ---- Compute per-facet detune ratios and phase offsets ----
-        // Detune: spread across facets symmetrically in cents
-        // Phase offset: spread across facets by deflectedSpread (degrees)
+        // Detune: spread across facets symmetrically in cents (smoothed)
+        // Phase offset: spread across facets by smoothedSpread (degrees, smoothed)
         float detuneRatio[kObservMaxFacets];
         float phaseOffset[kObservMaxFacets];
         {
-            float detuneHalfRangeCents = (numFacets > 1) ? effectiveDetune * 0.5f : 0.0f;
-            float spreadDeg = (numFacets > 1) ? deflectedSpread : 0.0f;
+            float detuneHalfRangeCents = (numFacets > 1) ? smoothedDetune * 0.5f : 0.0f;
+            float spreadDeg = (numFacets > 1) ? smoothedSpread : 0.0f;
             for (int f = 0; f < numFacets; ++f)
             {
                 float t = (numFacets > 1) ? static_cast<float>(f) / static_cast<float>(numFacets - 1) : 0.5f;
@@ -531,8 +555,8 @@ public:
             return;
         }
 
-        // Pitch bend ratio (±2 semitones)
-        float pitchBendRatio = std::pow(2.0f, pitchBendNorm * 2.0f / 12.0f);
+        // Pitch bend ratio (±2 semitones + mod matrix pitch offset in semitones)
+        float pitchBendRatio = std::pow(2.0f, (pitchBendNorm * 2.0f + modPitchOffset) / 12.0f);
 
         // D006: aftertouch → distortion boost
         float atDistBoost = aftertouchValue * 0.2f;
@@ -543,12 +567,20 @@ public:
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
         {
             // Smooth control parameters (5 ms)
-            smoothedMorph      += (morphWithCoupling - smoothedMorph)    * paramSmoothCoeff;
-            smoothedDistortion += (effectiveDistortion - smoothedDistortion) * paramSmoothCoeff;
-            smoothedCutoff     += (effectiveCutoff    - smoothedCutoff)   * paramSmoothCoeff;
+            smoothedMorph      += (morphWithCoupling   - smoothedMorph)      * paramSmoothCoeff;
+            smoothedDistortion += (effectiveDistortion  - smoothedDistortion) * paramSmoothCoeff;
+            smoothedCutoff     += (effectiveCutoff      - smoothedCutoff)     * paramSmoothCoeff;
+            smoothedDetune     += (effectiveDetune      - smoothedDetune)     * paramSmoothCoeff;
+            smoothedSpread     += (deflectedSpread      - smoothedSpread)     * paramSmoothCoeff;
             smoothedMorph      = flushDenormal(smoothedMorph);
             smoothedDistortion = flushDenormal(smoothedDistortion);
             smoothedCutoff     = flushDenormal(smoothedCutoff);
+            smoothedDetune     = flushDenormal(smoothedDetune);
+            smoothedSpread     = flushDenormal(smoothedSpread);
+
+            // Envelope curve warp: read per-sample from env signal buffer
+            float envCurveWarpAmt = envSignalBuffer[static_cast<size_t>(sampleIdx)]
+                                  * effectiveEnvDepth * 0.3f;
 
             float mixLeft = 0.0f, mixRight = 0.0f;
 
@@ -589,25 +621,38 @@ public:
                     continue;
                 }
 
+                // ---- Per-voice LFO tick (D002/D005) ----
+                float lfo1Output = flushDenormal(voice.lfo1.process() * paramLfo1Depth);
+                float lfo2Output = flushDenormal(voice.lfo2.process() * paramLfo2Depth);
+
                 // ---- D001: Velocity → distortion timbre ----
                 float effectiveDistAmt = clamp(smoothedDistortion
                     + voice.velocity * 0.15f
                     + distLevel * paramDistEnvAmt
-                    + atDistBoost, 0.0f, 1.0f);
+                    + atDistBoost
+                    + modDistOffset, 0.0f, 1.0f);
 
                 // ---- Morph env modulation (D002) ----
                 // distLevel reused as morph env signal scaled by morphEnvAmount
-                float morphEnvOffset = distLevel * paramMorphEnvAmt * 50.0f; (void)morphEnvOffset; // max ±50 morph units
-                // (We intentionally reuse distLevel here as a cheap "any envelope" signal
-                //  for morph. If you want true independence, add a 4th ADSR.)
+                // LFO1 routes to morph position
+                float morphEnvOffset = distLevel * paramMorphEnvAmt * 50.0f; // max ±50 morph units
+                // Per-voice effective morph: smoothed base + per-voice envelope offset + LFO1
+                float voiceMorph = clamp(smoothedMorph + morphEnvOffset + lfo1Output * 50.0f, 0.0f, 100.0f);
+                float vMorphIdx = voiceMorph * static_cast<float>(kObservNumCurves - 1) / 100.0f;
+                int vCurveA = std::min(static_cast<int>(vMorphIdx), kObservNumCurves - 2);
+                int vCurveB = vCurveA + 1;
+                float vMorphT = vMorphIdx - static_cast<float>(vCurveA);
 
-                // Effective filter cutoff for this voice: base + filter env (bipolar) + coupling
+                // Effective filter cutoff for this voice: base + filter env (velocity-scaled, D001) + coupling + LFO2
                 float voiceCutoff = clamp(smoothedCutoff
-                    + fltLevel * paramFltEnvAmt
-                    + couplingFilterMod * 4000.0f, 20.0f, 20000.0f);
+                    + fltLevel * paramFltEnvAmt * voice.velocity
+                    + savedCouplingFilterMod * 4000.0f
+                    + lfo2Output * 4000.0f, 20.0f, 20000.0f);
 
-                // Update per-voice filter coefficients once per block (per-sample on first block sample)
-                if (sampleIdx == 0)
+                // Update per-voice filter coefficients every 16 samples (sub-block rate).
+                // This gives 16x better filter cutoff tracking than block-rate at a fraction
+                // of the cost of per-sample coefficient computation.
+                if ((sampleIdx & 15) == 0)
                 {
                     CytomicSVF::Mode fMode = CytomicSVF::Mode::LowPass;
                     switch (paramFilterType)
@@ -637,13 +682,19 @@ public:
                     {
                         double ph = voice.phase[f];
 
-                        // Lookup distorted phase from active curve (linear interpolation)
+                        // Lookup distorted phase via per-voice curve morph (D002)
                         float fIdx = static_cast<float>(ph) * static_cast<float>(kObservCurveSize - 1);
                         int idx0   = static_cast<int>(fIdx);
                         int idx1   = std::min(idx0 + 1, kObservCurveSize - 1);
                         float frac = fIdx - static_cast<float>(idx0);
-                        float distortedPhase = activeCurve[idx0] * (1.0f - frac)
-                                             + activeCurve[idx1] * frac;
+                        float dA = distortionCurves[vCurveA][idx0]
+                                 + (distortionCurves[vCurveA][idx1] - distortionCurves[vCurveA][idx0]) * frac;
+                        float dB = distortionCurves[vCurveB][idx0]
+                                 + (distortionCurves[vCurveB][idx1] - distortionCurves[vCurveB][idx0]) * frac;
+                        float distortedPhase = dA + (dB - dA) * vMorphT;
+
+                        // Envelope curve warp (sin approximation via cosine LUT)
+                        distortedPhase += envCurveWarpAmt * lookupCosine(static_cast<float>(ph) - 0.25f);
 
                         // Blend linear phase with distorted phase by effectiveDistAmt
                         float finalPhase = static_cast<float>(ph)
@@ -685,7 +736,7 @@ public:
                 facetOutR = voice.filterR.processSample(facetOutR);
 
                 // ---- Amplitude shaping ----
-                float voiceGain = ampLevel * voice.velocity * voice.crossfadeGain;
+                float voiceGain = ampLevel * voice.velocity * voice.crossfadeGain * clamp(1.0f + modAmpOffset, 0.0f, 2.0f);
                 facetOutL *= voiceGain;
                 facetOutR *= voiceGain;
 
@@ -1272,6 +1323,10 @@ private:
     {
         float freq = midiNoteToHz(static_cast<float>(noteNum));
 
+        // Track last note state for block-rate mod matrix sources
+        lastNoteVelocity = velocity;
+        lastNoteKeyTrack = (static_cast<float>(noteNum) - 60.0f) / 60.0f;
+
         if (monoMode)
         {
             auto& voice = voices[0];
@@ -1301,6 +1356,12 @@ private:
                                    fltA, fltD, fltS, fltR,
                                    distA, distD, distS, distR);
                 initVoiceFilters(voice, cutoff, reso, filterType);
+                voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
+                voice.lfo1.setShape(lfo1Shape);
+                voice.lfo1.reset();
+                voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
+                voice.lfo2.setShape(lfo2Shape);
+                voice.lfo2.reset();
             }
             return;
         }
@@ -1333,6 +1394,12 @@ private:
                            fltA, fltD, fltS, fltR,
                            distA, distD, distS, distR);
         initVoiceFilters(voice, cutoff, reso, filterType);
+        voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
+        voice.lfo1.setShape(lfo1Shape);
+        voice.lfo1.reset();
+        voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
+        voice.lfo2.setShape(lfo2Shape);
+        voice.lfo2.reset();
     }
 
     void noteOff(int noteNum)
@@ -1411,8 +1478,8 @@ private:
     //==========================================================================
 
     // ---- Audio configuration (set in prepare()) ----
-    double sampleRateDouble   = 0.0;
-    float  sampleRateFloat    = 0.0f;
+    double sampleRateDouble   = 44100.0;
+    float  sampleRateFloat    = 44100.0f;
     float  paramSmoothCoeff   = 0.1f;
     float  voiceFadeRate      = 0.01f;
 
@@ -1424,7 +1491,7 @@ private:
     uint64_t voiceTimestamp   = 0;
 
     // ---- Smoothed control parameters ----
-    float smoothedMorph       = 50.0f;
+    float smoothedMorph       = 0.0f;
     float smoothedDistortion  = 0.5f;
     float smoothedCutoff      = 8000.0f;
     float smoothedDetune      = 0.0f;
@@ -1458,6 +1525,9 @@ private:
     std::vector<float> outputCacheLeft;
     std::vector<float> outputCacheRight;
 
+    // ---- Environmental signal buffer (replaces stack array — safe for any block size) ----
+    std::vector<float> envSignalBuffer;
+
     // ---- 8 Distortion Curves: [curve_index][phase_sample] ----
     // Built once in prepare(). Each curve maps phase [0,1] → [0,1] monotonically.
     float distortionCurves[kObservNumCurves][kObservCurveSize] = {};
@@ -1467,6 +1537,16 @@ private:
 
     // ---- D002 Mod Matrix ----
     ModMatrix<4> modMatrix;
+
+    // ---- Block-rate LFOs for mod matrix sources ----
+    // Ticked once per block before modMatrix.apply(); per-voice LFOs still
+    // provide sample-rate modulation on their hardcoded routes.
+    StandardLFO blockLfo1;
+    StandardLFO blockLfo2;
+
+    // ---- Last noteOn state for block-rate mod matrix sources ----
+    float lastNoteVelocity = 0.0f;
+    float lastNoteKeyTrack = 0.0f; // (midiNote - 60) / 60, normalised bipolar
 
     // ---- Cached APVTS parameter pointers (ParamSnapshot pattern) ----
     // Oscillator

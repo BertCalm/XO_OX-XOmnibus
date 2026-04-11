@@ -248,6 +248,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Obiont", "obnt_"},
         // Age-based corrosion synthesis
         {"Oxidize", "oxidize_"},
+        // Crystalline Phase Distortion
+        {"Observandum", "observ_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();
