@@ -21,6 +21,7 @@
 #include "Engines/Orrery/OrreryEngine.h"
 #include "Engines/Opsin/OpsinEngine.h"
 #include "Engines/Oort/OortEngine.h"
+#include "Engines/Ondine/OndineEngine.h"
 #include "Engines/Origami/OrigamiEngine.h"
 #include "Engines/Oracle/OracleEngine.h"
 #include "Engines/Obscura/ObscuraEngine.h"
@@ -144,6 +145,9 @@ static bool registered_Opsin =
 static bool registered_Oort =
     xoceanus::EngineRegistry::instance().registerEngine("Oort", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OortEngine>(); });
+static bool registered_Ondine =
+    xoceanus::EngineRegistry::instance().registerEngine("Ondine", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OndineEngine>(); });
 static bool registered_Origami = xoceanus::EngineRegistry::instance().registerEngine(
     "Origami", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrigamiEngine>(); });
 static bool registered_Oracle = xoceanus::EngineRegistry::instance().registerEngine(
