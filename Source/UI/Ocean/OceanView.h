@@ -60,6 +60,7 @@
 #include "TransportBar.h"
 #include "SubmarineOuijaPanel.h"
 #include "ExpressionStrips.h"
+#include "SubmarinePlaySurface.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -222,6 +223,9 @@ public:
         // 9f. Expression strips (PB + MW) — always visible in play area.
         addAndMakeVisible(exprStrips_);
 
+        // 9g. Submarine play surface (replaces Gallery PlaySurface).
+        addAndMakeVisible(subPlaySurface_);
+
         // 10. PlaySurface overlay (hidden by default; manages its own visibility)
         addAndMakeVisible(playSurfaceOverlay_);
 
@@ -372,7 +376,16 @@ public:
         tabBar_.onTabChanged = [this](const juce::String& tab)
         {
             // Show XOuija panel when OUIJA tab is selected, hide otherwise.
-            ouijaPanel_.setVisible(tab == "OUIJA");
+            const bool isOuija = (tab == "OUIJA");
+            ouijaPanel_.setVisible(isOuija);
+            subPlaySurface_.setVisible(!isOuija);
+
+            // Set play surface mode based on tab.
+            if (tab == "KEYS")      subPlaySurface_.setMode(SubmarinePlaySurface::Mode::Keys);
+            else if (tab == "PAD")  subPlaySurface_.setMode(SubmarinePlaySurface::Mode::Pad);
+            else if (tab == "DRUM") subPlaySurface_.setMode(SubmarinePlaySurface::Mode::Drum);
+            else if (tab == "XY")   subPlaySurface_.setMode(SubmarinePlaySurface::Mode::XY);
+
             resized();
         };
 
@@ -626,18 +639,19 @@ public:
         // Expression strips (36px) on the left of the play area.
         exprStrips_.setBounds(dashArea.removeFromLeft(ExpressionStrips::kStripWidth));
 
-        // Remaining dashboard space → PlaySurface or XOuija.
+        // Remaining dashboard space → Submarine PlaySurface or XOuija.
+        // The old PlaySurfaceOverlay is hidden when submarine components are active.
+        playSurfaceOverlay_.setVisible(false);
+
         if (ouijaPanel_.isVisible())
         {
             ouijaPanel_.setBounds(dashArea);
-            playSurfaceOverlay_.setVisible(false);
+            subPlaySurface_.setVisible(false);
         }
         else
         {
-            playSurfaceOverlay_.setVisible(true);
-            playSurfaceOverlay_.setBounds(dashArea);
-            if (!playSurfaceOverlay_.isShowing())
-                playSurfaceOverlay_.show();
+            subPlaySurface_.setBounds(dashArea);
+            subPlaySurface_.setVisible(true);
         }
 
         // Transport bar (submarine) replaces the old status bar at the bottom.
@@ -2003,6 +2017,7 @@ private:
         // Step 6: waterline and tab bar sit above the dim overlay but below
         // the PlaySurface so they are always legible.
         exprStrips_.toFront(false);
+        subPlaySurface_.toFront(false);
         playSurfaceOverlay_.toFront(false);
         ouijaPanel_.toFront(false);
         if (waterline_) waterline_->toFront(false);
@@ -2075,6 +2090,7 @@ private:
     std::unique_ptr<TransportBar>         transportBar_;
     SubmarineOuijaPanel                   ouijaPanel_;
     ExpressionStrips                      exprStrips_;
+    SubmarinePlaySurface                  subPlaySurface_;
     DashboardTabBar      tabBar_;
 
     // Floating header controls.
