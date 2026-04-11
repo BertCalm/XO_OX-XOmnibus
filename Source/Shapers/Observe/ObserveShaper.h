@@ -277,7 +277,7 @@ public:
                 sampleR = bandR;
 
                 // RMS energy tracking for coupling output
-                float energy = bandL * bandL + (R ? bandR * bandR : bandL * bandL);
+                float energy = bandL * bandL + (R ? bandR * bandR : 0.0f);
                 band.rmsSmooth += (energy - band.rmsSmooth) * 0.001f;
                 band.rmsEnergy = flushDenormal(band.rmsSmooth);
             }
