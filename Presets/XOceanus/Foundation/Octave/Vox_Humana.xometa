@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Vox Humana",
+  "mood": "Foundation",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The voice human stop — trembling, intimate, mimicking a soprano held on a single vowel. The Romantic organ at its most vulnerable and expressive.",
+  "tier": "standard",
+  "tags": ["foundation", "cavaille-coll", "vox-humana", "tremulant", "intimate"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.15,
+    "SPACE": 0.7
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.78,
+    "movement": 0.62,
+    "density": 0.45,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.4,
+      "oct_chiff": 0.05,
+      "oct_detune": 0.2,
+      "oct_buzz": 0.08,
+      "oct_pressure": 0.45,
+      "oct_crosstalk": 0.2,
+      "oct_brightness": 0.45,
+      "oct_registration": 0.45,
+      "oct_roomDepth": 0.72,
+      "oct_attack": 0.08,
+      "oct_decay": 0.5,
+      "oct_sustain": 1.0,
+      "oct_release": 1.2,
+      "oct_filterEnvAmount": 0.18,
+      "oct_bendRange": 2,
+      "oct_macroCharacter": 0.6,
+      "oct_macroMovement": 0.6,
+      "oct_macroCoupling": 0.15,
+      "oct_macroSpace": 0.7,
+      "oct_lfo1Rate": 5.8,
+      "oct_lfo1Depth": 0.38,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 5.2,
+      "oct_lfo2Depth": 0.15,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.08
+    }
+  },
+  "tempo": null
+}
