@@ -56,6 +56,7 @@
 #include "SettingsDrawer.h"
 #include "TideWaterline.h"
 #include "ChordBarComponent.h"
+#include "MasterFXStripCompact.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -503,6 +504,16 @@ public:
     }
 
     /**
+        Initialise the compact Master FX strip (submarine-style).
+    */
+    void initMasterFxStrip(juce::AudioProcessorValueTreeState& apvts)
+    {
+        masterFxStrip_ = std::make_unique<MasterFXStripCompact>(apvts);
+        addAndMakeVisible(*masterFxStrip_);
+        reorderZStack();
+    }
+
+    /**
         Initialise the StatusBar.
         Must be the last deferred-init call — it sets fullyInitialised_ = true
         and triggers the first valid resized() pass.
@@ -576,6 +587,10 @@ public:
         // Macro strip (top of dashboard).
         if (macros_)
             macros_->setBounds(dashArea.removeFromTop(static_cast<int>(kMacroStripH)));
+
+        // Master FX compact strip (48px, between macros and tab bar).
+        if (masterFxStrip_)
+            masterFxStrip_->setBounds(dashArea.removeFromTop(48));
 
         // Tab bar row.
         tabBar_.setBounds(dashArea.removeFromTop(kTabBarH));
@@ -1944,6 +1959,7 @@ private:
         // the PlaySurface so they are always legible.
         playSurfaceOverlay_.toFront(false);
         if (waterline_) waterline_->toFront(false);
+        if (masterFxStrip_) masterFxStrip_->toFront(false);
         tabBar_.toFront(false);
         if (chordBar_) chordBar_->toFront(false);
         if (statusBar_) statusBar_->toFront(false);
@@ -2005,8 +2021,9 @@ private:
     CouplingConfigPopup  couplingPopup_;
 
     // Step 6: Submarine dashboard — waterline separator + tab bar.
-    std::unique_ptr<TideWaterline>      waterline_;
-    std::unique_ptr<ChordBarComponent>  chordBar_;
+    std::unique_ptr<TideWaterline>        waterline_;
+    std::unique_ptr<ChordBarComponent>    chordBar_;
+    std::unique_ptr<MasterFXStripCompact> masterFxStrip_;
     DashboardTabBar      tabBar_;
 
     // Floating header controls.
