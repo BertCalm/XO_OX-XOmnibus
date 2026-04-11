@@ -58,7 +58,7 @@ public:
     };
     static constexpr const char* kClockLabels[] = {
         "1/1", "1/2", "1/4", "1/8", "1/16", "1/32",
-        "\xe2\x85\x9b.", "\xc2\xbc" "T"
+        "\xe2\x85\x9b.", ("\xc2\xbc" "T")
     };
     static constexpr const char* kTargetNames[] = {
         "None", "SatDrive", "Delay FB", "Delay Mix", "Reverb Mix",
@@ -335,7 +335,7 @@ private:
     //--------------------------------------------------------------------------
     void paintLabeledSlider(juce::Graphics&          g,
                             const juce::Font&         labelFont,
-                            float                     midY,
+                            float                     /*midY*/,
                             const juce::Rectangle<float>& labelBounds,
                             const SliderRegion&       sr,
                             const char*               labelText) const
@@ -485,7 +485,7 @@ private:
     //--------------------------------------------------------------------------
     /// Layout all control sub-regions from left to right in the controls row.
     /// Called from both resized() and paint() so it is always up-to-date.
-    void layoutControls(float w)
+    void layoutControls(float /*w*/)
     {
         pillRegions_.clear();
         separatorXs_.clear();
@@ -651,7 +651,7 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    void mouseUp(const juce::MouseEvent& e) override
+    void mouseUp(const juce::MouseEvent& /*e*/) override
     {
         if (!expanded_)
             return;

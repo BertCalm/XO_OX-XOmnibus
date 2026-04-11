@@ -54,6 +54,8 @@
 #include "PlaySurfaceOverlay.h"
 #include "EnginePickerDrawer.h"
 #include "SettingsDrawer.h"
+#include "TideWaterline.h"
+#include "ChordBarComponent.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -205,8 +207,8 @@ public:
         emptyStateLabel_.setVisible(false);  // visible only when numLoaded == 0
         addAndMakeVisible(emptyStateLabel_);
 
-        // 9d. Step 6: Dashboard waterline separator and tab bar.
-        addAndMakeVisible(waterline_);
+        // 9d. Step 6: Dashboard waterline + tab bar.
+        // waterline_ is deferred (needs APVTS + sequencer) — see initWaterline().
         addAndMakeVisible(tabBar_);
 
         // 10. PlaySurface overlay (hidden by default; manages its own visibility)
@@ -359,8 +361,25 @@ public:
         tabBar_.onTabChanged = [](const juce::String& tab)
         {
             // Currently only KEYS tab uses the PlaySurface.
-            // PAD / DRUM / XY will be added in a later step.
+            // PAD / DRUM / XY / OUIJA will be added in a later step.
             juce::ignoreUnused(tab);
+        };
+
+        // SEQ toggle → expand/collapse TideWaterline.
+        tabBar_.onSeqToggled = [this](bool on)
+        {
+            if (waterline_)
+                waterline_->setExpanded(on);
+        };
+
+        // CHORD toggle → show/hide ChordBarComponent.
+        tabBar_.onChordToggled = [this](bool on)
+        {
+            if (chordBar_)
+            {
+                chordBar_->setVisible(on);
+                resized(); // re-layout dashboard to accommodate chord bar
+            }
         };
 
         // ── DetailOverlay callbacks ───────────────────────────────────────────
@@ -453,6 +472,37 @@ public:
     }
 
     /**
+        Initialise the TideWaterline (submarine step sequencer strip).
+        Must be called after the processor is available — needs APVTS and
+        the MasterFXSequencer reference for playhead tracking.
+    */
+    void initWaterline(juce::AudioProcessorValueTreeState& apvts,
+                       const MasterFXSequencer& sequencer)
+    {
+        waterline_ = std::make_unique<TideWaterline>(apvts, sequencer);
+        waterline_->onHeightChanged = [this]()
+        {
+            // When waterline expands/collapses, re-layout the whole view.
+            resized();
+        };
+        addAndMakeVisible(*waterline_);
+        reorderZStack();
+    }
+
+    /**
+        Initialise the ChordBarComponent (submarine-style chord strip).
+        Needs APVTS + ChordMachine reference.
+    */
+    void initChordBar(juce::AudioProcessorValueTreeState& apvts,
+                      const ChordMachine& chordMachine)
+    {
+        chordBar_ = std::make_unique<ChordBarComponent>(apvts, chordMachine);
+        chordBar_->setVisible(false); // starts hidden, toggled by CHORD button
+        addAndMakeVisible(*chordBar_);
+        reorderZStack();
+    }
+
+    /**
         Initialise the StatusBar.
         Must be the last deferred-init call — it sets fullyInitialised_ = true
         and triggers the first valid resized() pass.
@@ -463,7 +513,7 @@ public:
         addAndMakeVisible(*statusBar_);
         reorderZStack();
 
-        // #1007 FIX 4: All 4 deferred-init methods have now been called.
+        // #1007 FIX 4: All 5 deferred-init methods have now been called.
         // Unlock resized() and paint() before the first layout pass.
         fullyInitialised_ = true;
         resized();
@@ -510,15 +560,17 @@ public:
         const auto  fullBounds = getLocalBounds();
         const auto  oceanArea  = getOceanArea();  // already excludes waterline + dashboard + status
 
-        // Waterline separator strip.
-        waterline_.setBounds(fullBounds.getX(),
-                             oceanArea.getBottom(),
-                             fullBounds.getWidth(),
-                             kWaterlineH);
+        // Waterline separator strip — height is dynamic (6px collapsed, 96px expanded).
+        const int wlH = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
+        if (waterline_)
+            waterline_->setBounds(fullBounds.getX(),
+                                  oceanArea.getBottom(),
+                                  fullBounds.getWidth(),
+                                  wlH);
 
         // Dashboard area: between the waterline and the status bar.
         auto dashArea = fullBounds
-                            .withTrimmedTop(oceanArea.getHeight() + kWaterlineH)
+                            .withTrimmedTop(oceanArea.getHeight() + wlH)
                             .withTrimmedBottom(kStatusBarH);
 
         // Macro strip (top of dashboard).
@@ -527,6 +579,10 @@ public:
 
         // Tab bar row.
         tabBar_.setBounds(dashArea.removeFromTop(kTabBarH));
+
+        // Chord bar (visible when CHORD toggle is on, ~28px).
+        if (chordBar_ && chordBar_->isVisible())
+            chordBar_->setBounds(dashArea.removeFromTop(28));
 
         // Remaining dashboard space → PlaySurface (keyboard / pads / drum / XY).
         // The overlay is given a fixed rect here; its internal slide animation
@@ -1048,22 +1104,8 @@ private:
 
     /** Thin teal gradient strip that visually separates the ocean viewport
         from the submarine dashboard below it. */
-    struct WaterlineSeparator : public juce::Component
-    {
-        WaterlineSeparator() { setInterceptsMouseClicks(false, false); }
-        void paint(juce::Graphics& g) override
-        {
-            auto b = getLocalBounds().toFloat();
-            juce::ColourGradient grad(
-                juce::Colour(60, 180, 170).withAlpha(0.04f), 0, b.getY(),
-                juce::Colour(60, 180, 170).withAlpha(0.12f), 0, b.getBottom(), false);
-            g.setGradientFill(grad);
-            g.fillRect(b);
-            // Bottom edge glow line
-            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.18f));
-            g.fillRect(b.getX(), b.getBottom() - 1.0f, b.getWidth(), 1.0f);
-        }
-    };
+    // WaterlineSeparator replaced by TideWaterline (deferred-init unique_ptr).
+    // See initWaterline() and Source/UI/Ocean/TideWaterline.h.
 
     /** Horizontal tab strip that selects the play-surface mode shown in the
         dashboard area below the macro strip. */
@@ -1071,7 +1113,7 @@ private:
     {
         DashboardTabBar()
         {
-            for (auto& name : { "KEYS", "PAD", "DRUM", "XY" })
+            for (auto& name : { "KEYS", "PAD", "DRUM", "XY", "OUIJA" })
             {
                 auto* btn = tabs_.add(new juce::TextButton(name));
                 btn->setColour(juce::TextButton::buttonColourId,
@@ -1088,6 +1130,39 @@ private:
             }
             activeTab_ = "KEYS";
             updateTabColours();
+
+            // SEQ + CHORD toggle pills (right side of tab bar).
+            seqToggle_.setButtonText("SEQ");
+            seqToggle_.setClickingTogglesState(true);
+            seqToggle_.setColour(juce::TextButton::buttonColourId,
+                                 juce::Colours::transparentBlack);
+            seqToggle_.setColour(juce::TextButton::textColourOffId,
+                                 juce::Colour(200, 204, 216).withAlpha(0.35f));
+            seqToggle_.setColour(juce::TextButton::textColourOnId,
+                                 juce::Colour(127, 219, 202).withAlpha(0.90f));
+            seqToggle_.setColour(juce::TextButton::buttonOnColourId,
+                                 juce::Colour(127, 219, 202).withAlpha(0.08f));
+            seqToggle_.onClick = [this]()
+            {
+                if (onSeqToggled) onSeqToggled(seqToggle_.getToggleState());
+            };
+            addAndMakeVisible(seqToggle_);
+
+            chordToggle_.setButtonText("CHORD");
+            chordToggle_.setClickingTogglesState(true);
+            chordToggle_.setColour(juce::TextButton::buttonColourId,
+                                   juce::Colours::transparentBlack);
+            chordToggle_.setColour(juce::TextButton::textColourOffId,
+                                   juce::Colour(200, 204, 216).withAlpha(0.35f));
+            chordToggle_.setColour(juce::TextButton::textColourOnId,
+                                   juce::Colour(127, 219, 202).withAlpha(0.90f));
+            chordToggle_.setColour(juce::TextButton::buttonOnColourId,
+                                   juce::Colour(127, 219, 202).withAlpha(0.08f));
+            chordToggle_.onClick = [this]()
+            {
+                if (onChordToggled) onChordToggled(chordToggle_.getToggleState());
+            };
+            addAndMakeVisible(chordToggle_);
         }
 
         void resized() override
@@ -1100,6 +1175,12 @@ private:
                 btn->setBounds(x, 0, kTabW, b.getHeight());
                 x += kTabW + 2;
             }
+            // SEQ + CHORD pills from the right edge.
+            constexpr int kPillW = 52;
+            int rx = b.getRight() - 16;
+            chordToggle_.setBounds(rx - kPillW, 2, kPillW, b.getHeight() - 4);
+            rx -= kPillW + 6;
+            seqToggle_.setBounds(rx - kPillW, 2, kPillW, b.getHeight() - 4);
         }
 
         void paint(juce::Graphics& g) override
@@ -1111,6 +1192,8 @@ private:
         const juce::String& activeTab() const noexcept { return activeTab_; }
 
         std::function<void(const juce::String&)> onTabChanged;
+        std::function<void(bool)> onSeqToggled;
+        std::function<void(bool)> onChordToggled;
 
     private:
         void updateTabColours()
@@ -1129,6 +1212,8 @@ private:
 
         juce::OwnedArray<juce::TextButton> tabs_;
         juce::String                       activeTab_;
+        juce::TextButton                   seqToggle_;
+        juce::TextButton                   chordToggle_;
     };
 
     //==========================================================================
@@ -1738,7 +1823,8 @@ private:
         bar; it now also excludes the waterline and dashboard rows. */
     juce::Rectangle<int> getOceanArea() const
     {
-        const int bottomH = kDashboardH + kWaterlineH + kStatusBarH;
+        const int wlH = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
+        const int bottomH = kDashboardH + wlH + kStatusBarH;
         return getLocalBounds().withTrimmedBottom(bottomH);
     }
 
@@ -1856,9 +1942,10 @@ private:
         dimOverlay_.toFront(false);
         // Step 6: waterline and tab bar sit above the dim overlay but below
         // the PlaySurface so they are always legible.
-        waterline_.toFront(false);
-        tabBar_.toFront(false);
         playSurfaceOverlay_.toFront(false);
+        if (waterline_) waterline_->toFront(false);
+        tabBar_.toFront(false);
+        if (chordBar_) chordBar_->toFront(false);
         if (statusBar_) statusBar_->toFront(false);
     }
 
@@ -1918,7 +2005,8 @@ private:
     CouplingConfigPopup  couplingPopup_;
 
     // Step 6: Submarine dashboard — waterline separator + tab bar.
-    WaterlineSeparator   waterline_;
+    std::unique_ptr<TideWaterline>      waterline_;
+    std::unique_ptr<ChordBarComponent>  chordBar_;
     DashboardTabBar      tabBar_;
 
     // Floating header controls.

@@ -737,6 +737,8 @@ public:
         oceanView_.initMacros(proc.getAPVTS());
         oceanView_.initDetailPanel(proc);
         oceanView_.initSidebar();
+        oceanView_.initWaterline(proc.getAPVTS(), proc.getMasterFXChain().getSequencer());
+        oceanView_.initChordBar(proc.getAPVTS(), proc.getChordMachine());
         oceanView_.initStatusBar();
 
         // Wire OceanView callbacks
