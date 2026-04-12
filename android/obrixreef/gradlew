@@ -1,0 +1,20 @@
+#!/bin/sh
+# Gradle wrapper bootstrap — downloads Gradle if not present
+# This is a minimal wrapper. For production, generate with `gradle wrapper`.
+
+GRADLE_VERSION="8.7"
+GRADLE_DIST_URL="https://services.gradle.org/distributions/gradle-${GRADLE_VERSION}-bin.zip"
+GRADLE_USER_HOME="${GRADLE_USER_HOME:-$HOME/.gradle}"
+GRADLE_DIR="$GRADLE_USER_HOME/wrapper/dists/gradle-${GRADLE_VERSION}-bin"
+GRADLE_BIN="$GRADLE_DIR/gradle-${GRADLE_VERSION}/bin/gradle"
+
+if [ ! -f "$GRADLE_BIN" ]; then
+    echo "Downloading Gradle ${GRADLE_VERSION}..."
+    mkdir -p "$GRADLE_DIR"
+    TMPZIP=$(mktemp /tmp/gradle-XXXXXX.zip)
+    curl -L -o "$TMPZIP" "$GRADLE_DIST_URL"
+    unzip -q "$TMPZIP" -d "$GRADLE_DIR"
+    rm "$TMPZIP"
+fi
+
+exec "$GRADLE_BIN" "$@"
