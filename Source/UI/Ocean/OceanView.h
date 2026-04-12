@@ -61,6 +61,7 @@
 #include "SubmarineOuijaPanel.h"
 #include "ExpressionStrips.h"
 #include "SubmarinePlaySurface.h"
+#include "SurfaceRightPanel.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -226,6 +227,17 @@ public:
         // 9g. Submarine play surface (replaces Gallery PlaySurface).
         addAndMakeVisible(subPlaySurface_);
 
+        // 9h. Right-side panel for PAD/DRUM/XY/OUIJA modes.
+        surfaceRight_.setVisible(false);
+        surfaceRight_.onCloseClicked = [this]()
+        {
+            surfaceRight_.setOpen(false);
+            surfaceRight_.setVisible(false);
+            // Switch tab bar back to KEYS
+            resized();
+        };
+        addAndMakeVisible(surfaceRight_);
+
         // 10. PlaySurface overlay (hidden by default; manages its own visibility)
         addAndMakeVisible(playSurfaceOverlay_);
 
@@ -375,16 +387,28 @@ public:
         // ── Step 6: Dashboard tab bar callback ───────────────────────────────
         tabBar_.onTabChanged = [this](const juce::String& tab)
         {
-            // Show XOuija panel when OUIJA tab is selected, hide otherwise.
-            const bool isOuija = (tab == "OUIJA");
-            ouijaPanel_.setVisible(isOuija);
-            subPlaySurface_.setVisible(!isOuija);
+            if (tab == "KEYS")
+            {
+                // KEYS: keyboard in dashboard, right panel closed.
+                surfaceRight_.setOpen(false);
+                surfaceRight_.setVisible(false);
+                subPlaySurface_.setVisible(true);
+                ouijaPanel_.setVisible(false);
+            }
+            else
+            {
+                // PAD/DRUM/XY/OUIJA: right panel opens, keyboard stays in dashboard.
+                subPlaySurface_.setVisible(true); // keyboard still visible
+                ouijaPanel_.setVisible(false);
 
-            // Set play surface mode based on tab.
-            if (tab == "KEYS")      subPlaySurface_.setMode(SubmarinePlaySurface::Mode::Keys);
-            else if (tab == "PAD")  subPlaySurface_.setMode(SubmarinePlaySurface::Mode::Pad);
-            else if (tab == "DRUM") subPlaySurface_.setMode(SubmarinePlaySurface::Mode::Drum);
-            else if (tab == "XY")   subPlaySurface_.setMode(SubmarinePlaySurface::Mode::XY);
+                if (tab == "PAD")        surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
+                else if (tab == "DRUM")  surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
+                else if (tab == "XY")    surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
+                else if (tab == "OUIJA") surfaceRight_.setMode(SurfaceRightPanel::Mode::Ouija);
+
+                surfaceRight_.setOpen(true);
+                surfaceRight_.setVisible(true);
+            }
 
             resized();
         };
@@ -606,7 +630,20 @@ public:
         // ── Step 6: Submarine dashboard layout ──────────────────────────────
         // Slice the window into: ocean viewport | waterline | dashboard | status bar.
         const auto  fullBounds = getLocalBounds();
-        const auto  oceanArea  = getOceanArea();  // already excludes waterline + dashboard + status
+        const auto  oceanArea  = getOceanArea();  // already excludes waterline + dashboard + status + right panel
+
+        // Right-side panel (PAD/DRUM/XY/OUIJA) — sits beside the ocean.
+        if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
+        {
+            const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
+                                     static_cast<int>(fullBounds.getWidth() * 0.40f));
+            const int wlH2 = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
+            const int bottomH = kDashboardH + wlH2 + kStatusBarH;
+            surfaceRight_.setBounds(oceanArea.getRight(),
+                                    fullBounds.getY(),
+                                    rpW,
+                                    fullBounds.getHeight() - bottomH);
+        }
 
         // Waterline separator strip — height is dynamic (6px collapsed, 96px expanded).
         const int wlH = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
@@ -639,20 +676,12 @@ public:
         // Expression strips (36px) on the left of the play area.
         exprStrips_.setBounds(dashArea.removeFromLeft(ExpressionStrips::kStripWidth));
 
-        // Remaining dashboard space → Submarine PlaySurface or XOuija.
-        // The old PlaySurfaceOverlay is hidden when submarine components are active.
+        // Remaining dashboard space → Submarine PlaySurface (KEYS keyboard).
+        // The old PlaySurfaceOverlay is hidden. OUIJA is in the right panel now.
         playSurfaceOverlay_.setVisible(false);
-
-        if (ouijaPanel_.isVisible())
-        {
-            ouijaPanel_.setBounds(dashArea);
-            subPlaySurface_.setVisible(false);
-        }
-        else
-        {
-            subPlaySurface_.setBounds(dashArea);
-            subPlaySurface_.setVisible(true);
-        }
+        ouijaPanel_.setVisible(false); // ouija now lives inside SurfaceRightPanel
+        subPlaySurface_.setBounds(dashArea);
+        subPlaySurface_.setVisible(true);
 
         // Transport bar (submarine) replaces the old status bar at the bottom.
         if (transportBar_)
@@ -1899,7 +1928,15 @@ private:
     {
         const int wlH = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
         const int bottomH = kDashboardH + wlH + kStatusBarH;
-        return getLocalBounds().withTrimmedBottom(bottomH);
+        auto area = getLocalBounds().withTrimmedBottom(bottomH);
+        // When right panel is open, ocean narrows from the right.
+        if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
+        {
+            const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
+                                     static_cast<int>(area.getWidth() * 0.40f));
+            area = area.withTrimmedRight(rpW);
+        }
+        return area;
     }
 
     /** Convert polar angle + radius to Cartesian in the given coordinate frame. */
@@ -2016,6 +2053,7 @@ private:
         dimOverlay_.toFront(false);
         // Step 6: waterline and tab bar sit above the dim overlay but below
         // the PlaySurface so they are always legible.
+        surfaceRight_.toFront(false);
         exprStrips_.toFront(false);
         subPlaySurface_.toFront(false);
         playSurfaceOverlay_.toFront(false);
@@ -2091,6 +2129,7 @@ private:
     SubmarineOuijaPanel                   ouijaPanel_;
     ExpressionStrips                      exprStrips_;
     SubmarinePlaySurface                  subPlaySurface_;
+    SurfaceRightPanel                     surfaceRight_;
     DashboardTabBar      tabBar_;
 
     // Floating header controls.
