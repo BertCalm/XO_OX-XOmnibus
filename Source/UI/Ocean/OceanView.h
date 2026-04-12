@@ -397,8 +397,8 @@ public:
             }
             else
             {
-                // PAD/DRUM/XY/OUIJA: right panel opens, keyboard stays in dashboard.
-                subPlaySurface_.setVisible(true); // keyboard still visible
+                // PAD/DRUM/XY/OUIJA: right panel opens, keyboard HIDES.
+                subPlaySurface_.setVisible(false);
                 ouijaPanel_.setVisible(false);
 
                 if (tab == "PAD")        surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
@@ -1212,111 +1212,138 @@ private:
 
     /** Horizontal tab strip that selects the play-surface mode shown in the
         dashboard area below the macro strip. */
+    /** Submarine-style tab bar — all custom paint, no TextButtons.
+        Matches prototype: 10px uppercase, rounded-top tabs, teal active state.
+        SEQ + CHORD toggles on the right side. */
     struct DashboardTabBar : public juce::Component
     {
         DashboardTabBar()
         {
-            for (auto& name : { "KEYS", "PAD", "DRUM", "XY", "OUIJA" })
-            {
-                auto* btn = tabs_.add(new juce::TextButton(name));
-                btn->setColour(juce::TextButton::buttonColourId,
-                               juce::Colours::transparentBlack);
-                btn->setColour(juce::TextButton::textColourOffId,
-                               juce::Colour(200, 204, 216).withAlpha(0.35f));
-                btn->onClick = [this, tabName = juce::String(name)]()
-                {
-                    activeTab_ = tabName;
-                    updateTabColours();
-                    if (onTabChanged) onTabChanged(tabName);
-                };
-                addAndMakeVisible(btn);
-            }
-            activeTab_ = "KEYS";
-            updateTabColours();
-
-            // SEQ + CHORD toggle pills (right side of tab bar).
-            seqToggle_.setButtonText("SEQ");
-            seqToggle_.setClickingTogglesState(true);
-            seqToggle_.setColour(juce::TextButton::buttonColourId,
-                                 juce::Colours::transparentBlack);
-            seqToggle_.setColour(juce::TextButton::textColourOffId,
-                                 juce::Colour(200, 204, 216).withAlpha(0.35f));
-            seqToggle_.setColour(juce::TextButton::textColourOnId,
-                                 juce::Colour(127, 219, 202).withAlpha(0.90f));
-            seqToggle_.setColour(juce::TextButton::buttonOnColourId,
-                                 juce::Colour(127, 219, 202).withAlpha(0.08f));
-            seqToggle_.onClick = [this]()
-            {
-                if (onSeqToggled) onSeqToggled(seqToggle_.getToggleState());
-            };
-            addAndMakeVisible(seqToggle_);
-
-            chordToggle_.setButtonText("CHORD");
-            chordToggle_.setClickingTogglesState(true);
-            chordToggle_.setColour(juce::TextButton::buttonColourId,
-                                   juce::Colours::transparentBlack);
-            chordToggle_.setColour(juce::TextButton::textColourOffId,
-                                   juce::Colour(200, 204, 216).withAlpha(0.35f));
-            chordToggle_.setColour(juce::TextButton::textColourOnId,
-                                   juce::Colour(127, 219, 202).withAlpha(0.90f));
-            chordToggle_.setColour(juce::TextButton::buttonOnColourId,
-                                   juce::Colour(127, 219, 202).withAlpha(0.08f));
-            chordToggle_.onClick = [this]()
-            {
-                if (onChordToggled) onChordToggled(chordToggle_.getToggleState());
-            };
-            addAndMakeVisible(chordToggle_);
-        }
-
-        void resized() override
-        {
-            auto b = getLocalBounds();
-            constexpr int kTabW = 60;
-            int x = 16;
-            for (auto* btn : tabs_)
-            {
-                btn->setBounds(x, 0, kTabW, b.getHeight());
-                x += kTabW + 2;
-            }
-            // SEQ + CHORD pills from the right edge.
-            constexpr int kPillW = 52;
-            int rx = b.getRight() - 16;
-            chordToggle_.setBounds(rx - kPillW, 2, kPillW, b.getHeight() - 4);
-            rx -= kPillW + 6;
-            seqToggle_.setBounds(rx - kPillW, 2, kPillW, b.getHeight() - 4);
+            setInterceptsMouseClicks(true, true);
+            setOpaque(false);
         }
 
         void paint(juce::Graphics& g) override
         {
+            const auto b = getLocalBounds().toFloat();
+            // Bottom border
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
-            g.fillRect(getLocalBounds().removeFromBottom(1));
+            g.fillRect(0.0f, b.getBottom() - 1.0f, b.getWidth(), 1.0f);
+
+            const juce::Font tabFont(juce::FontOptions{}
+                .withName(juce::Font::getDefaultSansSerifFontName())
+                .withStyle("Bold")
+                .withHeight(10.0f));
+            g.setFont(tabFont);
+
+            // Rebuild tab regions
+            tabRegions_.clear();
+            float x = 16.0f;
+            for (int i = 0; i < kNumTabs; ++i)
+            {
+                const float tw = tabFont.getStringWidthFloat(kTabNames[i]) + 28.0f;
+                const float th = b.getHeight() - 1.0f;
+                juce::Rectangle<float> tr(x, 0.0f, tw, th);
+                tabRegions_.push_back(tr);
+
+                const bool active = (activeIdx_ == i);
+                if (active)
+                {
+                    g.setColour(juce::Colour(60, 180, 170).withAlpha(0.07f));
+                    g.fillRoundedRectangle(tr.getX(), tr.getY(), tr.getWidth(), tr.getHeight() + 2.0f, 6.0f);
+                    g.setColour(juce::Colour(60, 180, 170).withAlpha(0.90f));
+                }
+                else
+                {
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.35f));
+                }
+                g.drawText(kTabNames[i], tr.toNearestInt(), juce::Justification::centred, false);
+                x += tw + 2.0f;
+            }
+
+            // SEQ + CHORD toggles from the right
+            float rx = b.getRight() - 16.0f;
+            for (int t = 1; t >= 0; --t) // CHORD first (rightmost), then SEQ
+            {
+                const char* label = (t == 0) ? "SEQ" : "CHORD";
+                const bool on = (t == 0) ? seqOn_ : chordOn_;
+                const float pw = tabFont.getStringWidthFloat(label) + 16.0f;
+                const float ph = b.getHeight() - 6.0f;
+                juce::Rectangle<float> pr(rx - pw, 3.0f, pw, ph);
+                if (t == 0) seqBounds_ = pr; else chordBounds_ = pr;
+
+                if (on)
+                {
+                    g.setColour(juce::Colour(127, 219, 202).withAlpha(0.08f));
+                    g.fillRoundedRectangle(pr, 4.0f);
+                    g.setColour(juce::Colour(127, 219, 202).withAlpha(0.25f));
+                    g.drawRoundedRectangle(pr, 4.0f, 1.0f);
+                    g.setColour(juce::Colour(127, 219, 202).withAlpha(0.90f));
+                }
+                else
+                {
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.08f));
+                    g.drawRoundedRectangle(pr, 4.0f, 1.0f);
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.35f));
+                }
+                g.drawText(label, pr.toNearestInt(), juce::Justification::centred, false);
+                rx -= pw + 6.0f;
+            }
         }
 
-        const juce::String& activeTab() const noexcept { return activeTab_; }
+        void mouseDown(const juce::MouseEvent& e) override
+        {
+            const auto pos = e.position;
+            // Check tabs
+            for (int i = 0; i < static_cast<int>(tabRegions_.size()); ++i)
+            {
+                if (tabRegions_[static_cast<size_t>(i)].contains(pos))
+                {
+                    activeIdx_ = i;
+                    if (onTabChanged) onTabChanged(kTabNames[i]);
+                    repaint();
+                    return;
+                }
+            }
+            // SEQ toggle
+            if (seqBounds_.contains(pos))
+            {
+                seqOn_ = !seqOn_;
+                if (onSeqToggled) onSeqToggled(seqOn_);
+                repaint();
+                return;
+            }
+            // CHORD toggle
+            if (chordBounds_.contains(pos))
+            {
+                chordOn_ = !chordOn_;
+                if (onChordToggled) onChordToggled(chordOn_);
+                repaint();
+                return;
+            }
+        }
+
+        const juce::String& activeTab() const noexcept
+        {
+            static const juce::String names[] = {"KEYS","PAD","DRUM","XY","OUIJA"};
+            return names[juce::jlimit(0, kNumTabs - 1, activeIdx_)];
+        }
 
         std::function<void(const juce::String&)> onTabChanged;
         std::function<void(bool)> onSeqToggled;
         std::function<void(bool)> onChordToggled;
 
     private:
-        void updateTabColours()
-        {
-            for (auto* btn : tabs_)
-            {
-                const bool active = (btn->getButtonText() == activeTab_);
-                btn->setColour(juce::TextButton::textColourOffId,
-                    active ? juce::Colour(60, 180, 170).withAlpha(0.9f)
-                           : juce::Colour(200, 204, 216).withAlpha(0.35f));
-                btn->setColour(juce::TextButton::buttonColourId,
-                    active ? juce::Colour(60, 180, 170).withAlpha(0.07f)
-                           : juce::Colours::transparentBlack);
-            }
-        }
+        static constexpr int kNumTabs = 5;
+        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY", "OUIJA"};
 
-        juce::OwnedArray<juce::TextButton> tabs_;
-        juce::String                       activeTab_;
-        juce::TextButton                   seqToggle_;
-        juce::TextButton                   chordToggle_;
+        int  activeIdx_ = 0;
+        bool seqOn_     = false;
+        bool chordOn_   = false;
+
+        std::vector<juce::Rectangle<float>> tabRegions_;
+        juce::Rectangle<float> seqBounds_;
+        juce::Rectangle<float> chordBounds_;
     };
 
     //==========================================================================

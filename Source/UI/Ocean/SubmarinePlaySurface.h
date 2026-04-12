@@ -173,8 +173,8 @@ private:
     static constexpr uint8_t kSaltR = 200, kSaltG = 204, kSaltB = 216;
 
     // Keyboard layout constants
-    static constexpr int   kOctavesVisible  = 2;
-    static constexpr int   kWhiteKeysTotal  = 14; // 2 octaves × 7 white
+    static constexpr int   kOctavesVisible  = 4;
+    static constexpr int   kWhiteKeysTotal  = 28; // 4 octaves × 7 white
     static constexpr float kBlackWidthRatio = 0.60f;
     static constexpr float kBlackHeightRatio = 0.55f;
     static constexpr float kKeyGap = 1.0f;
@@ -209,7 +209,7 @@ private:
 
     Mode           mode_       = Mode::Keys;
     juce::Colour   accent_     = juce::Colour(kTealR, kTealG, kTealB);
-    int            baseOctave_ = 4;
+    int            baseOctave_ = 2;
 
     // Keys mode — active key tracking
     int  activeNote_   = -1;  // single active note (keyboard)
@@ -226,12 +226,11 @@ private:
     //==========================================================================
     // Precomputed geometry — rebuilt in resized()
 
-    // White key rects (14 keys for 2 octaves)
-    std::array<juce::Rectangle<float>, 14> whiteRects_{};
-    // Black key rects (10 keys for 2 octaves — indexed by white-key pair)
-    // Stored for the 10 black keys: C#,D#,F#,G#,A# repeated twice
+    // White key rects (28 keys for 4 octaves)
+    std::array<juce::Rectangle<float>, 28> whiteRects_{};
+    // Black key rects (20 keys for 4 octaves)
     struct BlackKey { juce::Rectangle<float> rect; int midiNote; };
-    std::array<BlackKey, 10> blackKeys_{};
+    std::array<BlackKey, 20> blackKeys_{};
     int numBlackKeys_ = 0;
 
     // 4x4 grid cells
