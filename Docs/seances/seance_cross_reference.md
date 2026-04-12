@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-04-12 — 78 seanced (OORT 8.5/10 V1-ready B046; OPSIN 8.4 B045; OBSERVANDUM 8.1 not ready); OBIONT, OUTFLOW not yet seanced
+**Updated:** 2026-04-12 — 79 seanced (ORRERY 8.2 B047 not ready; OORT 8.5 V1-ready B046; OPSIN 8.4 B045; OBSERVANDUM 8.1 not ready); OBIONT, OUTFLOW not yet seanced
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -98,6 +98,17 @@
 
 ---
 
+### Engines 78–81 — RAC Session 2026-04-12
+
+| Engine | Gallery Code | Score | Key Blessing | P0 Bugs | D-Violations | Key Ghost Quote |
+|--------|-------------|-------|--------------|---------|--------------|-----------------|
+| XObservandum | OBSERVANDUM | **8.1/10** (first seance 2026-04-12) | None — architecture strong, preset library insufficient | None | D004 CONDITIONAL: MOVEMENT macro → envDepth only; dead in Coupling mode with no signal. PhaseDeflection CouplingType pending. | "Eight transfer function curves morphed in real-time by an environmental signal bus — West Coast thinking in digital form." — Buchla |
+| XOpsin | OPSIN | **8.4/10** (first seance 2026-04-12) | B045 "The Rewiring Instrument" — only fleet engine whose synthesis structure is physically different after performance than at the start (Hebbian synapse rewiring) | None | D001 PARTIAL: velocity scales filter env only, not PCO network energy. Fix: add `velocity * 0.2f` to excitation. | "This is the architecture I was reaching for. The engine teaches itself." — Buchla |
+| XOort | OORT | **8.5/10** V1-READY (≥50 presets before ship) (first seance 2026-04-12) | B046 "The Composer Axis" — INTENT (0=Cage, 1=Xenakis) is the only synthesis parameter that names its philosophical positions after composers | None | None (all D001–D006 PASS; D001 exemplary: `velScatter = scatter*(1-velTimbre*velocity)`) | "The INTENT axis — Cage at zero, Xenakis at one — is exactly the question I was always trying to pose." — Buchla |
+| XOrrery | ORRERY | **8.2/10** (first seance 2026-04-12) | B047 "The Captured Orbit" — Custom Ephemeris records performer X/Y trajectory at 30Hz → cubic Catmull-Rom playback as a repeating autobiographical orbit; first fleet engine to capture performance gesture as a synthesis trajectory | None | None (all D001–D006 PASS; gravity wells respond to coupling energy) | "An elliptical orbit at 0.125 Hz, 3.5-second amp release — that is Irrlicht in synthesis form." — Schulze |
+
+---
+
 ### Kitchen Collection — Chef Quad (Organs)
 
 *Seanced 2026-03-21 | Sources: `Docs/seance-oto-verdict.md`, `Docs/seance-octave-verdict.md`, `Docs/seance-oleg-verdict.md`, `Docs/seance-otis-verdict.md`*
@@ -176,7 +187,7 @@
 
 ---
 
-## Seance Score Ranking (Updated 2026-04-05 — 77 Engines; 75 Seanced)
+## Seance Score Ranking (Updated 2026-04-12 — 81 Engines; 79 Seanced)
 
 ### Tier 1 — Excellent (9.0+)
 
@@ -222,9 +233,11 @@
 | 24 | OCELOT | ~8.5 est. (post-fix) | Biome crossfade live, all macros wired. |
 | 24 | ODDOSCAR | ~8.5 est. (post-fix) | LFO1 + aftertouch→resonance wired. |
 | 24 | ODDFELIX | ~8.5 est. (post-fix) | LFO rates exposed, aftertouch-rate wired. |
-| 30 | ORBWEAVE | 8.4/10 | B021 + B022. Knot topology. |
-| 30 | OVERLAP | 8.4/10 (re-seance) | KnotMatrix FDN. |
-| 30 | OAKEN | 8.4/10 | Sympathetic resonance network with material aging. |
+| 24 | OORT | 8.5/10 V1-READY | B046. GENDY + 4 distributions + Markov chain. INTENT axis. ≥50 presets before ship. |
+| 31 | OPSIN | 8.4/10 | B045. PCO + Hebbian learning. 100 presets needed. D001 velocity→excitation fix pending. |
+| 31 | ORBWEAVE | 8.4/10 | B021 + B022. Knot topology. |
+| 31 | OVERLAP | 8.4/10 (re-seance) | KnotMatrix FDN. |
+| 31 | OAKEN | 8.4/10 | Sympathetic resonance network with material aging. |
 
 ### Tier 4 — Acceptable (8.0–8.3)
 
@@ -238,10 +251,12 @@
 | 38 | ORCHARD | 8.2/10 | Bow pressure physics. |
 | 38 | OCHRE | 8.2/10 | Caramel saturation. LFO2 dead (P0). |
 | 38 | OBSIDIAN | 8.2 est. (post-sweep) | Both P0s fixed. Formant LFO breathing added. |
-| 41 | OPAL | Concept reviewed | Coupling crown jewel. opal_smear fixed. |
-| 41 | OPENSKY | 8.1/10 | B023 + B024. Shepard shimmer. |
-| 41 | OLATE | 8.1/10 | FermentationIntegrator. Terroir partial D004. |
-| 41 | ORCA | 8.1/10 (initial) | See post-fix 8.6 above. |
+| 38 | ORRERY | 8.2/10 | B047. 4-source vector synthesis + orbital paths + Custom Ephemeris. 50 presets needed. |
+| 42 | OPAL | Concept reviewed | Coupling crown jewel. opal_smear fixed. |
+| 42 | OPENSKY | 8.1/10 | B023 + B024. Shepard shimmer. |
+| 42 | OLATE | 8.1/10 | FermentationIntegrator. Terroir partial D004. |
+| 42 | ORCA | 8.1/10 (initial) | See post-fix 8.6 above. |
+| 42 | OBSERVANDUM | 8.1/10 | Phase Distortion, 8 transfer-function curves. 100 presets needed. MOVEMENT macro fix pending. |
 | 45 | OVERFLOW | 8.0/10 | Pressure cooker synthesis. |
 | 45 | OTO | 8.0/10 | East Asian reed organ. Breath instability. 3 bugs → 8.6 post-retreat. |
 | 45 | OCTAVE | 8.0/10 | Americana organs. Leslie Doppler gap. |
@@ -446,6 +461,7 @@ OBLIQUE was the fleet's lowest scorer at 5.9/10. Rounds 3B, 7B, 7C, 7D, 7F addre
 | OBSERVANDUM | `Docs/seances/seance-observandum-2026-04-12.md` | Multi-Facet Crystalline Phase Distortion. 8 transfer-function curves, variable facet geometry, 3-mode Environmental Curve Modifier. 8.1/10. Not V1-ready: preset library (21) must reach 100+. MOVEMENT macro conditional dead-path. PhaseDeflection CouplingType pending. |
 | OPSIN | `Docs/seances/seance-opsin-2026-04-12.md` | 6-node Pulse-Coupled Oscillator network with Hebbian learning (Mirollo & Strogatz 1990 / Hebb 1949 / Tudor 1989). Sound from mutual node excitation — no oscillators. 8.4/10. B045 "The Rewiring Instrument" awarded. Not V1-ready: 21 presets need 100+. Add velocity → excitation (D001 partial). |
 | OORT | `Docs/seances/seance-oort-2026-04-12.md` | GENDY polyphonic breakpoint waveform synthesis (Xenakis 1991 / Formalized Music 1971 / Einstein 1905 / Markov 1906). 4 distribution types, Markov chain, Poisson events. 8.5/10. V1-READY (≥50 presets before ship). B046 "The Composer Axis" (INTENT = Cage 0 ↔ Xenakis 1). D001 exemplary: velocity narrows scatter. |
+| ORRERY | `Docs/seances/seance-orrery-2026-04-12.md` | 4-source vector synthesis with 2D bilinear blend pad. Orbital paths: Circle, Ellipse, Figure-8, Custom Ephemeris (30Hz performance capture → cubic Catmull-Rom playback). Gravity wells driven by coupling energy or ZCR spectral centroid. 8.2/10. NOT V1-READY: expand to 50+ presets. B047 "The Captured Orbit" — autobiographical orbit from performance gesture. ch2 exports orbit phase 0..1. |
 
 ---
 
