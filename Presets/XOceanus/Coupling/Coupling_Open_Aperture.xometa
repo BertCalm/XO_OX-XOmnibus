@@ -18,10 +18,10 @@
     "euphoric"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
   ],
   "couplingIntensity": "Moderate",
   "tempo": null,
@@ -35,14 +35,13 @@
   },
   "parameters": {
     "OpenSky": {
-      "sky_macroRise": 0.62,
+      "sky_macroRise": 0.54,
       "sky_filterEnvAmt": 0.52,
       "sky_lfo1Rate": 0.14,
       "sky_lfo1Depth": 0.3,
-      "sky_macroCharacter": 0.54,
-      "sky_macroMovement": 0.58,
-      "sky_macroCoupling": 0.65,
-      "sky_macroSpace": 0.6,
+      "sky_macroWidth": 0.58,
+      "sky_macroGlow": 0.65,
+      "sky_macroAir": 0.6,
       "sky_velSensitivity": 0.616
     },
     "Oblique": {
@@ -68,9 +67,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.53,
-    "MOVEMENT": 0.57,
-    "COUPLING": 0.64,
-    "SPACE": 0.59
+    "RISE": 0.53,
+    "WIDTH": 0.57,
+    "GLOW": 0.64,
+    "AIR": 0.59
   }
 }

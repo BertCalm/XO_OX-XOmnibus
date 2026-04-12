@@ -83,7 +83,7 @@ These engines are strong candidates but require a formal re-seance, a preset pus
 | Octave | 8.01 → ~8.7 | 25 | Post-fix strong; only 25 presets — critical gap |
 | Octopus | ~8.5 est. | 257 | Aftertouch fixed; formal numeric re-seance needed |
 | Orca | ~8.6 est. | 270 | Echolocation LFO strong; needs formal numeric seance on record |
-| OpenSky | 8.1 | 385 | D004 partial (`sky_subWave` not dispatched); fix then re-seance |
+| OpenSky | 8.5 | 385 | Needs formal numeric re-seance (8.1 score was partial; `sky_subWave` D004 was a false positive — parameter is fully dispatched); preset migration required (#1081) |
 | Orbweave | 8.4 | 451 | Just below 8.5; Knot Phase Coupling (B021) unique |
 | Organism | 8.1 / 7.2 | 433 | CA fix applied; re-seance to confirm |
 | Orphica | ~8.7 est. | 264 | Buffer extended; velocity→resonance wired; needs formal numeric seance on record |

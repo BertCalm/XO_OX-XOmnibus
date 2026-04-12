@@ -16,10 +16,10 @@
     "altitude"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
   ],
   "couplingIntensity": "None",
   "tempo": null,
@@ -33,11 +33,10 @@
   },
   "parameters": {
     "OpenSky": {
-      "sky_macroCharacter": 0.3,
-      "sky_macroMovement": 0.3,
-      "sky_macroCoupling": 0.07,
-      "sky_macroSpace": 0.91,
       "sky_macroRise": 0.5,
+      "sky_macroWidth": 0.3,
+      "sky_macroGlow": 0.07,
+      "sky_macroAir": 0.91,
       "sky_filterEnvAmt": 0.27,
       "sky_lfo1Rate": 0.018,
       "sky_lfo1Depth": 0.13,
@@ -51,9 +50,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.3,
-    "MOVEMENT": 0.3,
-    "COUPLING": 0.07,
-    "SPACE": 0.91
+    "RISE": 0.3,
+    "WIDTH": 0.3,
+    "GLOW": 0.07,
+    "AIR": 0.91
   }
 }
