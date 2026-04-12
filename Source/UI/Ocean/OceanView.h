@@ -62,6 +62,7 @@
 #include "ExpressionStrips.h"
 #include "SubmarinePlaySurface.h"
 #include "DotMatrixDisplay.h"
+#include "SubmarineHudBar.h"
 #include "SurfaceRightPanel.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
@@ -227,6 +228,9 @@ public:
 
         // 9g-vis. Dot-matrix visualizer — fills empty space right of macros.
         addAndMakeVisible(dotMatrix_);
+
+        // 9h-hud. Floating HUD nav bar — top of ocean viewport.
+        addAndMakeVisible(hudBar_);
 
         // 9g. Submarine play surface (replaces Gallery PlaySurface).
         addAndMakeVisible(subPlaySurface_);
@@ -650,6 +654,12 @@ public:
                                     fullBounds.getHeight() - bottomH);
         }
 
+        // HUD nav bar — floats at top of ocean area (12px from top, 16px from sides).
+        hudBar_.setBounds(oceanArea.getX() + 16,
+                          oceanArea.getY() + 12,
+                          oceanArea.getWidth() - 32,
+                          40);
+
         // Waterline separator strip — height is dynamic (6px collapsed, 96px expanded).
         const int wlH = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
         if (waterline_)
@@ -668,8 +678,8 @@ public:
             auto macroRow = dashArea.removeFromTop(static_cast<int>(kMacroStripH));
             if (macros_)
             {
-                // Macros take ~360px on the left (5 knobs × ~70px each).
-                const int macroW = std::min(360, macroRow.getWidth() / 2);
+                // Macros take ~480px on the left (5 knobs × ~90px each + padding).
+                const int macroW = std::min(480, macroRow.getWidth() / 2);
                 macros_->setBounds(macroRow.removeFromLeft(macroW));
             }
             // Dot-matrix display fills the remaining space.
@@ -2108,6 +2118,7 @@ private:
         dimOverlay_.toFront(false);
         // Step 6: waterline and tab bar sit above the dim overlay but below
         // the PlaySurface so they are always legible.
+        hudBar_.toFront(false);
         surfaceRight_.toFront(false);
         exprStrips_.toFront(false);
         subPlaySurface_.toFront(false);
@@ -2184,6 +2195,7 @@ private:
     SubmarineOuijaPanel                   ouijaPanel_;
     ExpressionStrips                      exprStrips_;
     DotMatrixDisplay                      dotMatrix_;
+    SubmarineHudBar                       hudBar_;
     SubmarinePlaySurface                  subPlaySurface_;
     SurfaceRightPanel                     surfaceRight_;
     DashboardTabBar      tabBar_;
