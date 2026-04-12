@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-04-12 — 77 seanced (OPSIN first seance 8.4/10, B045 awarded; OBSERVANDUM 8.1/10); OBIONT, OUTFLOW not yet seanced
+**Updated:** 2026-04-12 — 78 seanced (OORT 8.5/10 V1-ready B046; OPSIN 8.4 B045; OBSERVANDUM 8.1 not ready); OBIONT, OUTFLOW not yet seanced
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -445,6 +445,7 @@ OBLIQUE was the fleet's lowest scorer at 5.9/10. Rounds 3B, 7B, 7C, 7D, 7F addre
 | OXIDIZE | `Docs/seances/seance-oxidize-2026-04-05.md` | Temporal degradation synthesis, 6-stage corrosion cascade, 7 independent LUT curves. 8.7 pre-fix → 9.2+ post-fix. B044 proposed. |
 | OBSERVANDUM | `Docs/seances/seance-observandum-2026-04-12.md` | Multi-Facet Crystalline Phase Distortion. 8 transfer-function curves, variable facet geometry, 3-mode Environmental Curve Modifier. 8.1/10. Not V1-ready: preset library (21) must reach 100+. MOVEMENT macro conditional dead-path. PhaseDeflection CouplingType pending. |
 | OPSIN | `Docs/seances/seance-opsin-2026-04-12.md` | 6-node Pulse-Coupled Oscillator network with Hebbian learning (Mirollo & Strogatz 1990 / Hebb 1949 / Tudor 1989). Sound from mutual node excitation — no oscillators. 8.4/10. B045 "The Rewiring Instrument" awarded. Not V1-ready: 21 presets need 100+. Add velocity → excitation (D001 partial). |
+| OORT | `Docs/seances/seance-oort-2026-04-12.md` | GENDY polyphonic breakpoint waveform synthesis (Xenakis 1991 / Formalized Music 1971 / Einstein 1905 / Markov 1906). 4 distribution types, Markov chain, Poisson events. 8.5/10. V1-READY (≥50 presets before ship). B046 "The Composer Axis" (INTENT = Cage 0 ↔ Xenakis 1). D001 exemplary: velocity narrows scatter. |
 
 ---
 
