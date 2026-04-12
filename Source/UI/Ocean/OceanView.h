@@ -48,9 +48,16 @@
 #include "NexusDisplay.h"
 #include "EngineOrbit.h"
 #include "CouplingSubstrate.h"
+#include "CouplingConfigPopup.h"
 #include "DnaMapBrowser.h"
 #include "DetailOverlay.h"
 #include "PlaySurfaceOverlay.h"
+#include "EnginePickerDrawer.h"
+#include "SettingsDrawer.h"
+#include "TideWaterline.h"
+#include "ChordBarComponent.h"
+#include "MasterFXStripCompact.h"
+#include "TransportBar.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -188,6 +195,9 @@ public:
         // 9c. Detail overlay (hidden by default; floats above orbits/substrate)
         addChildComponent(detailOverlay_);
 
+        // 9e. Coupling config popup (hidden by default; shown on knot double-click)
+        addChildComponent(couplingPopup_);
+
         // 9b. BLOCKER 1: Empty-state label — shown when no engines are loaded.
         // Appears centred below the nexus with a subtle call-to-action.
         emptyStateLabel_.setText("Load an engine to begin",
@@ -199,14 +209,15 @@ public:
         emptyStateLabel_.setVisible(false);  // visible only when numLoaded == 0
         addAndMakeVisible(emptyStateLabel_);
 
-        // 9d. Step 6: Dashboard waterline separator and tab bar.
-        addAndMakeVisible(waterline_);
+        // 9d. Step 6: Dashboard waterline + tab bar.
+        // waterline_ is deferred (needs APVTS + sequencer) — see initWaterline().
         addAndMakeVisible(tabBar_);
 
         // 10. PlaySurface overlay (hidden by default; manages its own visibility)
         addAndMakeVisible(playSurfaceOverlay_);
 
         // 11. Floating header controls
+        addAndMakeVisible(enginesButton_);
         addAndMakeVisible(presetPrev_);
         addAndMakeVisible(presetNext_);
         addAndMakeVisible(favButton_);
@@ -254,6 +265,7 @@ public:
             btn.setSize(minW, 44); // 44pt height = WCAG AA minimum touch target
             juce::ignoreUnused(this);
         };
+        styleHeaderButton(enginesButton_, 90);
         styleHeaderButton(presetPrev_,   44);
         styleHeaderButton(presetNext_,   44);
         styleHeaderButton(favButton_,    44);
@@ -261,6 +273,7 @@ public:
         styleHeaderButton(keysButton_,   56);
 
         // #1007 FIX 1: Tooltip text as fallback label for Unicode icon buttons.
+        enginesButton_.setTooltip("Toggle Engine Library");
         favButton_.setTooltip("Favourite");
         settingsButton_.setTooltip("Settings");
         keysButton_.setTooltip("Toggle Play Surface (K)");
@@ -308,6 +321,21 @@ public:
         nexus_.onPresetNameClicked = [this]() { transitionToBrowser(); };
         nexus_.onDnaClicked        = [this]() { if (onDnaClicked) onDnaClicked(); };
 
+        // ── CouplingSubstrate knot interaction ────────────────────────────────
+        substrate_.onKnotDoubleClicked = [this](int routeIndex)
+        {
+            // Get route info to populate popup.
+            // For now, show with placeholder names — will wire to real engine names.
+            couplingPopup_.show(routeIndex, "Engine A", juce::Colour(60, 180, 170),
+                               "Engine B", juce::Colour(140, 100, 220),
+                               0, 0.5f);
+        };
+
+        substrate_.onKnotRightClicked = [this](int routeIndex, juce::Point<int> /*screenPos*/)
+        {
+            showKnotContextMenu(routeIndex);
+        };
+
         browser_.onPresetSelected = [this](int idx)
         {
             if (onPresetSelected)
@@ -335,8 +363,25 @@ public:
         tabBar_.onTabChanged = [](const juce::String& tab)
         {
             // Currently only KEYS tab uses the PlaySurface.
-            // PAD / DRUM / XY will be added in a later step.
+            // PAD / DRUM / XY / OUIJA will be added in a later step.
             juce::ignoreUnused(tab);
+        };
+
+        // SEQ toggle → expand/collapse TideWaterline.
+        tabBar_.onSeqToggled = [this](bool on)
+        {
+            if (waterline_)
+                waterline_->setExpanded(on);
+        };
+
+        // CHORD toggle → show/hide ChordBarComponent.
+        tabBar_.onChordToggled = [this](bool on)
+        {
+            if (chordBar_)
+            {
+                chordBar_->setVisible(on);
+                resized(); // re-layout dashboard to accommodate chord bar
+            }
         };
 
         // ── DetailOverlay callbacks ───────────────────────────────────────────
@@ -355,9 +400,25 @@ public:
         {
             firstLaunch_ = false;
             lifesaver_.setVisible(false);
-            // Open engine picker — fire callback that editor handles
-            if (onEnginePickerRequested) onEnginePickerRequested();
+            // Open engine picker drawer instead of external callback
+            engineDrawer_.open();
         };
+
+        // ── Phase 3: Engine picker drawer ────────────────────────────────────
+        addChildComponent(engineDrawer_); // starts hidden; toggle via enginesButton_
+        engineDrawer_.onEngineSelected = [this](const juce::String& engineId)
+        {
+            engineDrawer_.close();
+            if (onEnginePickerRequested)
+                onEnginePickerRequested();
+            if (onEngineSelectedFromDrawer)
+                onEngineSelectedFromDrawer(engineId);
+        };
+        enginesButton_.onClick = [this]() { engineDrawer_.toggle(); };
+
+        // ── Settings drawer (slide from right) ────────────────────────────────
+        addChildComponent(settingsDrawer_); // starts hidden; toggle via settingsButton_
+        settingsButton_.onClick = [this]() { settingsDrawer_.toggle(); };
 
         // ── Keyboard focus ────────────────────────────────────────────────────
         setWantsKeyboardFocus(true);
@@ -413,6 +474,61 @@ public:
     }
 
     /**
+        Initialise the TideWaterline (submarine step sequencer strip).
+        Must be called after the processor is available — needs APVTS and
+        the MasterFXSequencer reference for playhead tracking.
+    */
+    void initWaterline(juce::AudioProcessorValueTreeState& apvts,
+                       const MasterFXSequencer& sequencer)
+    {
+        waterline_ = std::make_unique<TideWaterline>(apvts, sequencer);
+        waterline_->onHeightChanged = [this]()
+        {
+            // When waterline expands/collapses, re-layout the whole view.
+            resized();
+        };
+        addAndMakeVisible(*waterline_);
+        reorderZStack();
+    }
+
+    /**
+        Initialise the ChordBarComponent (submarine-style chord strip).
+        Needs APVTS + ChordMachine reference.
+    */
+    void initChordBar(juce::AudioProcessorValueTreeState& apvts,
+                      const ChordMachine& chordMachine)
+    {
+        chordBar_ = std::make_unique<ChordBarComponent>(apvts, chordMachine);
+        chordBar_->setVisible(false); // starts hidden, toggled by CHORD button
+        addAndMakeVisible(*chordBar_);
+        reorderZStack();
+    }
+
+    /**
+        Initialise the compact Master FX strip (submarine-style).
+    */
+    void initMasterFxStrip(juce::AudioProcessorValueTreeState& apvts)
+    {
+        masterFxStrip_ = std::make_unique<MasterFXStripCompact>(apvts);
+        addAndMakeVisible(*masterFxStrip_);
+        reorderZStack();
+    }
+
+    /**
+        Initialise the TransportBar (submarine-style bottom status strip).
+    */
+    void initTransportBar()
+    {
+        transportBar_ = std::make_unique<TransportBar>();
+        addAndMakeVisible(*transportBar_);
+        reorderZStack();
+    }
+
+    /// Get the TransportBar so the editor can push BPM/voices/CPU.
+    TransportBar*    getTransportBar() noexcept { return transportBar_.get(); }
+    TideWaterline*   getWaterline()    noexcept { return waterline_.get(); }
+
+    /**
         Initialise the StatusBar.
         Must be the last deferred-init call — it sets fullyInitialised_ = true
         and triggers the first valid resized() pass.
@@ -423,7 +539,7 @@ public:
         addAndMakeVisible(*statusBar_);
         reorderZStack();
 
-        // #1007 FIX 4: All 4 deferred-init methods have now been called.
+        // #1007 FIX 4: All 5 deferred-init methods have now been called.
         // Unlock resized() and paint() before the first layout pass.
         fullyInitialised_ = true;
         resized();
@@ -470,23 +586,33 @@ public:
         const auto  fullBounds = getLocalBounds();
         const auto  oceanArea  = getOceanArea();  // already excludes waterline + dashboard + status
 
-        // Waterline separator strip.
-        waterline_.setBounds(fullBounds.getX(),
-                             oceanArea.getBottom(),
-                             fullBounds.getWidth(),
-                             kWaterlineH);
+        // Waterline separator strip — height is dynamic (6px collapsed, 96px expanded).
+        const int wlH = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
+        if (waterline_)
+            waterline_->setBounds(fullBounds.getX(),
+                                  oceanArea.getBottom(),
+                                  fullBounds.getWidth(),
+                                  wlH);
 
         // Dashboard area: between the waterline and the status bar.
         auto dashArea = fullBounds
-                            .withTrimmedTop(oceanArea.getHeight() + kWaterlineH)
+                            .withTrimmedTop(oceanArea.getHeight() + wlH)
                             .withTrimmedBottom(kStatusBarH);
 
         // Macro strip (top of dashboard).
         if (macros_)
             macros_->setBounds(dashArea.removeFromTop(static_cast<int>(kMacroStripH)));
 
+        // Master FX compact strip (48px, between macros and tab bar).
+        if (masterFxStrip_)
+            masterFxStrip_->setBounds(dashArea.removeFromTop(48));
+
         // Tab bar row.
         tabBar_.setBounds(dashArea.removeFromTop(kTabBarH));
+
+        // Chord bar (visible when CHORD toggle is on, ~28px).
+        if (chordBar_ && chordBar_->isVisible())
+            chordBar_->setBounds(dashArea.removeFromTop(28));
 
         // Remaining dashboard space → PlaySurface (keyboard / pads / drum / XY).
         // The overlay is given a fixed rect here; its internal slide animation
@@ -496,26 +622,59 @@ public:
         if (!playSurfaceOverlay_.isShowing())
             playSurfaceOverlay_.show();
 
-        // Status bar always spans the full bottom strip.
+        // Transport bar (submarine) replaces the old status bar at the bottom.
+        if (transportBar_)
+            transportBar_->setBounds(0,
+                                     getHeight() - kStatusBarH,
+                                     getWidth(),
+                                     kStatusBarH);
+
+        // Legacy status bar (Gallery) — hidden when transport bar is active.
         if (statusBar_)
-            statusBar_->setBounds(0,
-                                  getHeight() - kStatusBarH,
-                                  getWidth(),
-                                  kStatusBarH);
+        {
+            if (transportBar_)
+                statusBar_->setVisible(false);
+            else
+                statusBar_->setBounds(0,
+                                      getHeight() - kStatusBarH,
+                                      getWidth(),
+                                      kStatusBarH);
+        }
 
         // DetailOverlay covers the ocean area (excludes dashboard).
         detailOverlay_.setBounds(oceanArea);
 
+        // Phase 2: CouplingConfigPopup covers the full ocean area.
+        couplingPopup_.setBounds(getOceanArea());
+
         // #1008 FIX 7: DimOverlay covers the ocean + waterline area so the dim
         // effect extends to the waterline but doesn't dim the dashboard itself.
         dimOverlay_.setBounds(fullBounds.withTrimmedBottom(kDashboardH + kStatusBarH));
+
+        // Phase 3: Engine picker drawer — full height of ocean area, fixed width.
+        engineDrawer_.setBounds(oceanArea.withWidth(EnginePickerDrawer::kDrawerWidth));
+
+        // Settings drawer — slides from the RIGHT edge of the ocean area.
+        settingsDrawer_.setBounds(oceanArea
+            .withLeft(oceanArea.getRight() - SettingsDrawer::kDrawerWidth)
+            .withWidth(SettingsDrawer::kDrawerWidth));
     }
 
     bool keyPressed(const juce::KeyPress& key) override
     {
-        // Escape: exit any overlay, or return to Orbital from any state.
+        // Escape: close engine drawer or settings drawer first, then exit overlays, then return to Orbital.
         if (key == juce::KeyPress::escapeKey)
         {
+            if (settingsDrawer_.isOpen())
+            {
+                settingsDrawer_.close();
+                return true;
+            }
+            if (engineDrawer_.isOpen())
+            {
+                engineDrawer_.close();
+                return true;
+            }
             if (viewState_ == ViewState::BrowserOpen)
             {
                 exitBrowser();
@@ -628,9 +787,37 @@ public:
 
     void mouseDown(const juce::MouseEvent& e) override
     {
-        // Clicking the backdrop in ZoomIn mode (outside any creature) returns
-        // to Orbital.  We check whether the click landed on a child component
-        // via hitTest propagation — if we receive it here, no child caught it.
+        if (e.mods.isRightButtonDown())
+        {
+            // ── Right-click hit-detection order: buoy → empty ocean ─────────
+            // (Knot right-clicks are handled by CouplingSubstrate itself via
+            //  its onKnotRightClicked callback, so we only deal with buoys and
+            //  the empty-ocean fallback here.)
+
+            // 1. Check each visible orbit's bounds.
+            for (int i = 0; i < 5; ++i)
+            {
+                if (!orbits_[i].isVisible() || !orbits_[i].hasEngine())
+                    continue;
+
+                // Convert OceanView-local click position to orbit-local.
+                const auto orbitLocal = e.getEventRelativeTo(&orbits_[i]).position;
+                if (orbits_[i].getLocalBounds().toFloat().contains(orbitLocal))
+                {
+                    showBuoyContextMenu(i);
+                    return;
+                }
+            }
+
+            // 2. Empty ocean — no buoy or knot hit.
+            showEmptyOceanContextMenu();
+            return;
+        }
+
+        // Left-click: Clicking the backdrop in ZoomIn mode (outside any creature)
+        // returns to Orbital.  We check whether the click landed on a child
+        // component via hitTest propagation — if we receive it here, no child
+        // caught it.
         if (viewState_ == ViewState::ZoomIn)
         {
             transitionToOrbital();
@@ -896,6 +1083,10 @@ public:
     /** Fired when an engine slot enters SplitTransform (double-click dive). */
     std::function<void(int slot)> onEngineDiveDeep;
 
+    /** Fired when the user selects an engine from the Engine Library drawer (Phase 3).
+        The editor should load this engine into the active slot (or next available). */
+    std::function<void(const juce::String& engineId)> onEngineSelectedFromDrawer;
+
     /** Fired when the user clicks a preset dot in the DNA map browser. */
     std::function<void(int presetIndex)> onPresetSelected;
 
@@ -912,12 +1103,41 @@ public:
         Wire this to open the engine picker so the user can load their first engine. */
     std::function<void()> onEnginePickerRequested;
 
+    /** Fired when the user right-clicks a buoy and chooses "Mute" / "Unmute".
+        OceanView tracks toggle state internally so the menu label reflects current
+        state.  The callback receives the slot index; callers should query
+        isSlotMuted(slot) for the new value after the callback fires. */
+    std::function<void(int slot)> onEngineMuteToggled;
+
+    /** Fired when the user right-clicks a buoy and chooses "Solo" / "Unsolo".
+        OceanView tracks toggle state internally.  Callers should query
+        isSlotSoloed(slot) for the new value after the callback fires. */
+    std::function<void(int slot)> onEngineSoloToggled;
+
+    /** Fired when the user right-clicks a buoy and chooses "Remove". */
+    std::function<void(int slot)> onEngineRemoveRequested;
+
+    /** Fired when the user right-clicks a coupling knot and chooses "Delete Chain". */
+    std::function<void(int chainIndex)> onCouplingDeleteRequested;
+
     //==========================================================================
     // State queries
     //==========================================================================
 
     ViewState getViewState()    const noexcept { return viewState_; }
     int       getSelectedSlot() const noexcept { return selectedSlot_; }
+
+    bool isSlotMuted  (int slot) const noexcept
+    {
+        if (slot < 0 || slot >= 5) return false;
+        return slotMuted_[static_cast<size_t>(slot)];
+    }
+
+    bool isSlotSoloed (int slot) const noexcept
+    {
+        if (slot < 0 || slot >= 5) return false;
+        return slotSoloed_[static_cast<size_t>(slot)];
+    }
 
 private:
     //==========================================================================
@@ -926,22 +1146,8 @@ private:
 
     /** Thin teal gradient strip that visually separates the ocean viewport
         from the submarine dashboard below it. */
-    struct WaterlineSeparator : public juce::Component
-    {
-        WaterlineSeparator() { setInterceptsMouseClicks(false, false); }
-        void paint(juce::Graphics& g) override
-        {
-            auto b = getLocalBounds().toFloat();
-            juce::ColourGradient grad(
-                juce::Colour(60, 180, 170).withAlpha(0.04f), 0, b.getY(),
-                juce::Colour(60, 180, 170).withAlpha(0.12f), 0, b.getBottom(), false);
-            g.setGradientFill(grad);
-            g.fillRect(b);
-            // Bottom edge glow line
-            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.18f));
-            g.fillRect(b.getX(), b.getBottom() - 1.0f, b.getWidth(), 1.0f);
-        }
-    };
+    // WaterlineSeparator replaced by TideWaterline (deferred-init unique_ptr).
+    // See initWaterline() and Source/UI/Ocean/TideWaterline.h.
 
     /** Horizontal tab strip that selects the play-surface mode shown in the
         dashboard area below the macro strip. */
@@ -949,7 +1155,7 @@ private:
     {
         DashboardTabBar()
         {
-            for (auto& name : { "KEYS", "PAD", "DRUM", "XY" })
+            for (auto& name : { "KEYS", "PAD", "DRUM", "XY", "OUIJA" })
             {
                 auto* btn = tabs_.add(new juce::TextButton(name));
                 btn->setColour(juce::TextButton::buttonColourId,
@@ -966,6 +1172,39 @@ private:
             }
             activeTab_ = "KEYS";
             updateTabColours();
+
+            // SEQ + CHORD toggle pills (right side of tab bar).
+            seqToggle_.setButtonText("SEQ");
+            seqToggle_.setClickingTogglesState(true);
+            seqToggle_.setColour(juce::TextButton::buttonColourId,
+                                 juce::Colours::transparentBlack);
+            seqToggle_.setColour(juce::TextButton::textColourOffId,
+                                 juce::Colour(200, 204, 216).withAlpha(0.35f));
+            seqToggle_.setColour(juce::TextButton::textColourOnId,
+                                 juce::Colour(127, 219, 202).withAlpha(0.90f));
+            seqToggle_.setColour(juce::TextButton::buttonOnColourId,
+                                 juce::Colour(127, 219, 202).withAlpha(0.08f));
+            seqToggle_.onClick = [this]()
+            {
+                if (onSeqToggled) onSeqToggled(seqToggle_.getToggleState());
+            };
+            addAndMakeVisible(seqToggle_);
+
+            chordToggle_.setButtonText("CHORD");
+            chordToggle_.setClickingTogglesState(true);
+            chordToggle_.setColour(juce::TextButton::buttonColourId,
+                                   juce::Colours::transparentBlack);
+            chordToggle_.setColour(juce::TextButton::textColourOffId,
+                                   juce::Colour(200, 204, 216).withAlpha(0.35f));
+            chordToggle_.setColour(juce::TextButton::textColourOnId,
+                                   juce::Colour(127, 219, 202).withAlpha(0.90f));
+            chordToggle_.setColour(juce::TextButton::buttonOnColourId,
+                                   juce::Colour(127, 219, 202).withAlpha(0.08f));
+            chordToggle_.onClick = [this]()
+            {
+                if (onChordToggled) onChordToggled(chordToggle_.getToggleState());
+            };
+            addAndMakeVisible(chordToggle_);
         }
 
         void resized() override
@@ -978,6 +1217,12 @@ private:
                 btn->setBounds(x, 0, kTabW, b.getHeight());
                 x += kTabW + 2;
             }
+            // SEQ + CHORD pills from the right edge.
+            constexpr int kPillW = 52;
+            int rx = b.getRight() - 16;
+            chordToggle_.setBounds(rx - kPillW, 2, kPillW, b.getHeight() - 4);
+            rx -= kPillW + 6;
+            seqToggle_.setBounds(rx - kPillW, 2, kPillW, b.getHeight() - 4);
         }
 
         void paint(juce::Graphics& g) override
@@ -989,6 +1234,8 @@ private:
         const juce::String& activeTab() const noexcept { return activeTab_; }
 
         std::function<void(const juce::String&)> onTabChanged;
+        std::function<void(bool)> onSeqToggled;
+        std::function<void(bool)> onChordToggled;
 
     private:
         void updateTabColours()
@@ -1007,6 +1254,8 @@ private:
 
         juce::OwnedArray<juce::TextButton> tabs_;
         juce::String                       activeTab_;
+        juce::TextButton                   seqToggle_;
+        juce::TextButton                   chordToggle_;
     };
 
     //==========================================================================
@@ -1091,6 +1340,125 @@ private:
         std::function<void()> onClick;
         float phase_ = 0.0f;
     };
+
+    //==========================================================================
+    // Context menus
+    //==========================================================================
+
+    /** Show a PopupMenu for a right-click on engine buoy at @p slot. */
+    void showBuoyContextMenu(int slot)
+    {
+        const bool muted  = slotMuted_ [static_cast<size_t>(slot)];
+        const bool soloed = slotSoloed_[static_cast<size_t>(slot)];
+
+        juce::PopupMenu menu;
+
+        // Item 1: Open Detail
+        menu.addItem(1, "Open Detail");
+
+        menu.addSeparator();
+
+        // Items 2-3: Mute / Solo toggles
+        menu.addItem(2, muted  ? "Unmute" : "Mute");
+        menu.addItem(3, soloed ? "Unsolo" : "Solo");
+
+        menu.addSeparator();
+
+        // Item 4: Swap Engine
+        menu.addItem(4, "Swap Engine...");
+
+        // Item 5: Remove (destructive — shown in a slightly dimmer colour by
+        // default via JUCE's native popup styling)
+        menu.addItem(5, "Remove");
+
+        menu.showMenuAsync(juce::PopupMenu::Options{},
+            [this, slot](int result)
+            {
+                switch (result)
+                {
+                    case 1:
+                        // Open Detail — transition to ZoomIn then split.
+                        transitionToZoomIn(slot);
+                        transitionToSplitTransform(slot);
+                        break;
+
+                    case 2:
+                        // Mute toggle.
+                        slotMuted_[static_cast<size_t>(slot)] = !slotMuted_[static_cast<size_t>(slot)];
+                        if (onEngineMuteToggled)
+                            onEngineMuteToggled(slot);
+                        break;
+
+                    case 3:
+                        // Solo toggle.
+                        slotSoloed_[static_cast<size_t>(slot)] = !slotSoloed_[static_cast<size_t>(slot)];
+                        if (onEngineSoloToggled)
+                            onEngineSoloToggled(slot);
+                        break;
+
+                    case 4:
+                        // Swap Engine — open the engine picker drawer.
+                        engineDrawer_.open();
+                        break;
+
+                    case 5:
+                        // Remove engine.
+                        if (onEngineRemoveRequested)
+                            onEngineRemoveRequested(slot);
+                        break;
+
+                    default:
+                        break;
+                }
+            });
+    }
+
+    /** Show a PopupMenu for a right-click on a coupling knot at @p chainIndex. */
+    void showKnotContextMenu(int chainIndex)
+    {
+        juce::PopupMenu menu;
+
+        menu.addItem(1, "Edit Coupling");
+        menu.addSeparator();
+        menu.addItem(2, "Delete Chain");
+
+        menu.showMenuAsync(juce::PopupMenu::Options{},
+            [this, chainIndex](int result)
+            {
+                switch (result)
+                {
+                    case 1:
+                        // Show the coupling config popup (same as double-click).
+                        couplingPopup_.show(chainIndex,
+                                            "Engine A", juce::Colour(60, 180, 170),
+                                            "Engine B", juce::Colour(140, 100, 220),
+                                            0, 0.5f);
+                        break;
+
+                    case 2:
+                        if (onCouplingDeleteRequested)
+                            onCouplingDeleteRequested(chainIndex);
+                        break;
+
+                    default:
+                        break;
+                }
+            });
+    }
+
+    /** Show a PopupMenu for a right-click on empty ocean (no buoy or knot hit). */
+    void showEmptyOceanContextMenu()
+    {
+        juce::PopupMenu menu;
+        menu.addItem(1, "Add Engine...");
+
+        menu.showMenuAsync(juce::PopupMenu::Options{},
+            [this](int result)
+            {
+                if (result == 1)
+                    engineDrawer_.open();
+            });
+    }
 
     //==========================================================================
     // State machine transitions
@@ -1440,20 +1808,21 @@ private:
 
     void layoutFloatingControls()
     {
-        // ── Left cluster: prev | presetName | next | fav ─────────────────────
+        // ── Left cluster: engines | prev | presetName | next | fav ───────────
         // #908: WCAG 2.5.5 requires a minimum 44×44pt touch target.
-        // Visual height stays ~28pt via GalleryLookAndFeel's text rendering,
-        // but the component bounds are expanded to 44pt so pointer/touch events
-        // have a compliant target size.  The button background fill matches the
-        // ocean scene so the extra transparent hit area is invisible.
-        constexpr int kBtnH      = 44;   // #908: WCAG AA minimum (was 28)
-        constexpr int kNavW      = 44;   // #908: square touch target for nav arrows
-        constexpr int kFavW      = 44;   // #908: square touch target for favourite star
-        constexpr int kTopMargin = 0;    // anchored to top edge; visual centre is at 22pt
-        constexpr int kLeftMargin = 4;
-        constexpr int kGap       = 0;    // targets are flush — no visual gap needed
+        constexpr int kBtnH        = 44;   // #908: WCAG AA minimum (was 28)
+        constexpr int kNavW        = 44;   // #908: square touch target for nav arrows
+        constexpr int kFavW        = 44;   // #908: square touch target for favourite star
+        constexpr int kEnginesW    = 90;   // Phase 3: Engines button width
+        constexpr int kTopMargin   = 0;    // anchored to top edge
+        constexpr int kLeftMargin  = 4;
+        constexpr int kGap         = 0;    // targets are flush
 
-        presetPrev_.setBounds(kLeftMargin,
+        // Phase 3: Engines button (leftmost)
+        enginesButton_.setBounds(kLeftMargin, kTopMargin, kEnginesW, kBtnH);
+        const int afterEngines = kLeftMargin + kEnginesW + 4;
+
+        presetPrev_.setBounds(afterEngines,
                               kTopMargin,
                               kNavW, kBtnH);
 
@@ -1461,15 +1830,15 @@ private:
         // spatial grouping "< Preset Name >" is immediately legible.
         // Width is capped at 160pt so it doesn't crowd the fav button.
         constexpr int kNameLabelW = 160;
-        presetNameLabel_.setBounds(kLeftMargin + kNavW,
+        presetNameLabel_.setBounds(afterEngines + kNavW,
                                    kTopMargin,
                                    kNameLabelW, kBtnH);
 
-        presetNext_.setBounds(kLeftMargin + kNavW + kNameLabelW + kGap,
+        presetNext_.setBounds(afterEngines + kNavW + kNameLabelW + kGap,
                               kTopMargin,
                               kNavW, kBtnH);
 
-        favButton_.setBounds(kLeftMargin + kNavW + kNameLabelW + kNavW + kGap * 2,
+        favButton_.setBounds(afterEngines + kNavW + kNameLabelW + kNavW + kGap * 2,
                              kTopMargin,
                              kFavW, kBtnH);
 
@@ -1496,7 +1865,8 @@ private:
         bar; it now also excludes the waterline and dashboard rows. */
     juce::Rectangle<int> getOceanArea() const
     {
-        const int bottomH = kDashboardH + kWaterlineH + kStatusBarH;
+        const int wlH = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
+        const int bottomH = kDashboardH + wlH + kStatusBarH;
         return getLocalBounds().withTrimmedBottom(bottomH);
     }
 
@@ -1602,6 +1972,8 @@ private:
         browser_.toFront(false);
         // DetailOverlay floats above orbits/substrate/browser but below header buttons.
         detailOverlay_.toFront(false);
+        // Phase 2: CouplingConfigPopup sits above detailOverlay_ but below header buttons.
+        couplingPopup_.toFront(false);
         presetPrev_.toFront(false);
         presetNext_.toFront(false);
         favButton_.toFront(false);
@@ -1612,9 +1984,12 @@ private:
         dimOverlay_.toFront(false);
         // Step 6: waterline and tab bar sit above the dim overlay but below
         // the PlaySurface so they are always legible.
-        waterline_.toFront(false);
-        tabBar_.toFront(false);
         playSurfaceOverlay_.toFront(false);
+        if (waterline_) waterline_->toFront(false);
+        if (masterFxStrip_) masterFxStrip_->toFront(false);
+        tabBar_.toFront(false);
+        if (chordBar_) chordBar_->toFront(false);
+        if (transportBar_) transportBar_->toFront(false);
         if (statusBar_) statusBar_->toFront(false);
     }
 
@@ -1625,6 +2000,11 @@ private:
     ViewState viewState_       = ViewState::Orbital;
     int       selectedSlot_    = -1;
     float     dimAlpha_        = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
+
+    /// Per-slot mute / solo toggle state — tracked locally so the context menu
+    /// label can reflect the current state without a round-trip to the processor.
+    std::array<bool, 5> slotMuted_  {};
+    std::array<bool, 5> slotSoloed_ {};
 
     /// Step 7: true until the user loads their first engine or clicks the lifesaver.
     bool firstLaunch_ = true;
@@ -1665,16 +2045,29 @@ private:
     // Step 4: Floating detail overlay (wraps EngineDetailPanel with backdrop + close btn).
     DetailOverlay        detailOverlay_;
 
+    // Phase 2: Coupling knot configuration popup (shown on double-click of a knot).
+    CouplingConfigPopup  couplingPopup_;
+
     // Step 6: Submarine dashboard — waterline separator + tab bar.
-    WaterlineSeparator   waterline_;
+    std::unique_ptr<TideWaterline>        waterline_;
+    std::unique_ptr<ChordBarComponent>    chordBar_;
+    std::unique_ptr<MasterFXStripCompact> masterFxStrip_;
+    std::unique_ptr<TransportBar>         transportBar_;
     DashboardTabBar      tabBar_;
 
     // Floating header controls.
+    juce::TextButton enginesButton_ { juce::String::charToString(0x2261) + " Engines" }; // ≡ Engines
     juce::TextButton presetPrev_    { "<" };
     juce::TextButton presetNext_    { ">" };
     juce::TextButton favButton_     { juce::String::charToString (0x2605) };  // ★
     juce::TextButton settingsButton_{ juce::String::charToString (0x2699) };  // ⚙
     juce::TextButton keysButton_    { "KEYS" };
+
+    // Phase 3: Engine picker drawer (slide from left)
+    EnginePickerDrawer engineDrawer_;
+
+    // Settings drawer (slide from right)
+    SettingsDrawer settingsDrawer_;
 
     // #1007 FIX 3: Inline preset name label between < and > for spatial grouping.
     juce::Label      presetNameLabel_;

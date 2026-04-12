@@ -323,13 +323,19 @@ public:
                 float oddHigh7 = harm7th * modHarmBal;
                 float s2L = satL * satL;
                 float s2R = satR * satR;
-                satL += satL * s2L * s2L * evenHigh * 0.15f      // x^4 (even)
-                        + satL * s2L * s2L * satL * oddHigh5 * 0.1f  // x^5 (odd)
-                        + satL * s2L * s2L * s2L * satL * oddHigh7 * 0.05f; // x^7 (odd)
-                satR += satR * s2R * s2R * evenHigh * 0.15f
-                        + satR * s2R * s2R * satR * oddHigh5 * 0.1f
-                        + satR * s2R * s2R * s2R * satR * oddHigh7 * 0.05f;
+                satL += s2L * s2L * evenHigh * 0.15f                  // x^4 (even)
+                        + satL * s2L * s2L * oddHigh5 * 0.1f         // x^5 (odd)
+                        + satL * s2L * s2L * s2L * oddHigh7 * 0.05f; // x^7 (odd)
+                satR += s2R * s2R * evenHigh * 0.15f
+                        + satR * s2R * s2R * oddHigh5 * 0.1f
+                        + satR * s2R * s2R * s2R * oddHigh7 * 0.05f;
             }
+
+            // NaN guard: saturation modes (especially Lorenz Chaos) can produce
+            // NaN downstream even though the attractor itself is guarded.
+            // Flush NaN/inf before coupling accumulation and output.
+            if (!std::isfinite(satL)) satL = 0.0f;
+            if (!std::isfinite(satR)) satR = 0.0f;
 
             // Harmonic density tracking
             harmonicSum += std::fabs(satL - inL) + std::fabs(satR - inR);
