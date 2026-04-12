@@ -560,6 +560,67 @@ inline juce::Font dotMatrixLight(float size)
 {
     return juce::Font(juce::FontOptions{}.withTypeface(dotoRegular()).withHeight(size));
 }
+// ── Mood fonts — unique typeface per preset mood category ──────────────────
+// Each mood gets its own display font for preset names and mood labels.
+// When a mood font is not yet embedded, falls back to Inter Bold.
+enum class MoodType
+{
+    Foundation, Atmosphere, Entangled, Prism, Flux, Aether,
+    Family, Submerged, Coupling, Crystalline, Deep, Ethereal,
+    Kinetic, Luminous, Organic, Shadow
+};
+
+inline juce::Typeface::Ptr moodTypeface(MoodType mood)
+{
+    switch (mood)
+    {
+        case MoodType::Foundation:  { static auto tf = loadTypeface(FontData::FjordRegular_otf,       FontData::FjordRegular_otfSize);       return tf; }
+        case MoodType::Deep:        { static auto tf = loadTypeface(FontData::BionixFat_otf,          FontData::BionixFat_otfSize);          return tf; }
+        case MoodType::Crystalline: { static auto tf = loadTypeface(FontData::Norqen_otf,             FontData::Norqen_otfSize);             return tf; }
+        case MoodType::Luminous:    { static auto tf = loadTypeface(FontData::MaleahRegular_otf,      FontData::MaleahRegular_otfSize);      return tf; }
+        case MoodType::Atmosphere:  { static auto tf = loadTypeface(FontData::SaesonBold_ttf,         FontData::SaesonBold_ttfSize);         return tf; }
+        case MoodType::Kinetic:     { static auto tf = loadTypeface(FontData::NebulicaRegular_ttf,    FontData::NebulicaRegular_ttfSize);    return tf; }
+        case MoodType::Entangled:   { static auto tf = loadTypeface(FontData::RoyalOcean_otf,         FontData::RoyalOcean_otfSize);         return tf; }
+        case MoodType::Shadow:      { static auto tf = loadTypeface(FontData::ForgeSans_otf,          FontData::ForgeSans_otfSize);          return tf; }
+        case MoodType::Organic:     { static auto tf = loadTypeface(FontData::OtfitsGroteskBold_otf,  FontData::OtfitsGroteskBold_otfSize);  return tf; }
+        case MoodType::Prism:       { static auto tf = loadTypeface(FontData::LokanovaProBold_otf,    FontData::LokanovaProBold_otfSize);    return tf; }
+        case MoodType::Flux:        { static auto tf = loadTypeface(FontData::NeoformDisplay_otf,     FontData::NeoformDisplay_otfSize);     return tf; }
+        case MoodType::Aether:      { static auto tf = loadTypeface(FontData::Apestron_otf,           FontData::Apestron_otfSize);           return tf; }
+        case MoodType::Submerged:   { static auto tf = loadTypeface(FontData::CostalineRegular_otf,   FontData::CostalineRegular_otfSize);   return tf; }
+        case MoodType::Coupling:    { static auto tf = loadTypeface(FontData::NeuticalRegular_otf,    FontData::NeuticalRegular_otfSize);    return tf; }
+        case MoodType::Family:      { static auto tf = loadTypeface(FontData::ZTOtezRegular_otf,      FontData::ZTOtezRegular_otfSize);      return tf; }
+        case MoodType::Ethereal:    { static auto tf = loadTypeface(FontData::Elijah_otf,             FontData::Elijah_otfSize);             return tf; }
+        default:                    return interBold();
+    }
+}
+
+inline juce::Font moodFont(MoodType mood, float size)
+{
+    return juce::Font(juce::FontOptions{}.withTypeface(moodTypeface(mood)).withHeight(size));
+}
+
+/// Resolve a mood name string (from .xometa) to a MoodType enum.
+inline MoodType moodFromString(const juce::String& name)
+{
+    if (name == "Foundation")  return MoodType::Foundation;
+    if (name == "Atmosphere")  return MoodType::Atmosphere;
+    if (name == "Entangled")   return MoodType::Entangled;
+    if (name == "Prism")       return MoodType::Prism;
+    if (name == "Flux")        return MoodType::Flux;
+    if (name == "Aether")      return MoodType::Aether;
+    if (name == "Family")      return MoodType::Family;
+    if (name == "Submerged")   return MoodType::Submerged;
+    if (name == "Coupling")    return MoodType::Coupling;
+    if (name == "Crystalline") return MoodType::Crystalline;
+    if (name == "Deep")        return MoodType::Deep;
+    if (name == "Ethereal")    return MoodType::Ethereal;
+    if (name == "Kinetic")     return MoodType::Kinetic;
+    if (name == "Luminous")    return MoodType::Luminous;
+    if (name == "Organic")     return MoodType::Organic;
+    if (name == "Shadow")      return MoodType::Shadow;
+    return MoodType::Foundation; // fallback
+}
+
 // Overbit — engine nameplate display font (accent-colored, Column B hero text).
 // Decision D2: Overbit at ≥12px; Space Grotesk Bold fallback below 12px.
 //

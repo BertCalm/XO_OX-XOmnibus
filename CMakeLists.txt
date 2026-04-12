@@ -151,6 +151,22 @@ juce_add_binary_data(XOceanusFont
     Assets/fonts/Overbit-Regular.otf
     Assets/fonts/Doto-Regular.ttf
     Assets/fonts/Doto-Bold.ttf
+    Assets/fonts/Fjord-Regular.otf
+    Assets/fonts/Bionix-Fat.otf
+    Assets/fonts/Norqen.otf
+    Assets/fonts/Maleah-Regular.otf
+    Assets/fonts/Saeson-Bold.ttf
+    Assets/fonts/Nebulica-Regular.ttf
+    Assets/fonts/RoyalOcean.otf
+    Assets/fonts/ForgeSans.otf
+    Assets/fonts/OtfitsGrotesk-Bold.otf
+    Assets/fonts/LokanovaPro-Bold.otf
+    Assets/fonts/Neoform-Display.otf
+    Assets/fonts/Apestron.otf
+    Assets/fonts/Costaline-Regular.otf
+    Assets/fonts/Neutical-Regular.otf
+    Assets/fonts/ZTOtez-Regular.otf
+    Assets/fonts/Elijah.otf
 )
 
 juce_add_plugin(XOceanus
