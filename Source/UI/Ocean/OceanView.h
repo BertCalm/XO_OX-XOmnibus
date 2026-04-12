@@ -250,12 +250,13 @@ public:
         addAndMakeVisible(playSurfaceOverlay_);
 
         // 11. Floating header controls
-        addAndMakeVisible(enginesButton_);
-        addAndMakeVisible(presetPrev_);
-        addAndMakeVisible(presetNext_);
-        addAndMakeVisible(favButton_);
-        addAndMakeVisible(settingsButton_);
-        addAndMakeVisible(keysButton_);
+        // Old Gallery floating header buttons — hidden, replaced by SubmarineHudBar.
+        enginesButton_.setVisible(false);
+        presetPrev_.setVisible(false);
+        presetNext_.setVisible(false);
+        favButton_.setVisible(false);
+        settingsButton_.setVisible(false);
+        keysButton_.setVisible(false);
 
         // 11b. #1008 FIX 7: DimOverlay sits above all buttons but below
         // PlaySurfaceOverlay.  Added after the buttons so it is painted on top.
@@ -315,6 +316,7 @@ public:
 
         // #1007 FIX 3: Inline preset name label between < and > buttons.
         // This creates spatial grouping so users understand the navigation relationship.
+        presetNameLabel_.setVisible(false); // replaced by SubmarineHudBar
         presetNameLabel_.setFont(GalleryFonts::label(12.0f));
         presetNameLabel_.setColour(juce::Label::textColourId,
                                    juce::Colour(GalleryColors::Ocean::foam));
