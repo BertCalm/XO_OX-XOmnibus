@@ -149,6 +149,8 @@ juce_add_binary_data(XOceanusFont
     Assets/fonts/Inter-Bold.ttf
     Assets/fonts/JetBrainsMono-Regular.ttf
     Assets/fonts/Overbit-Regular.otf
+    Assets/fonts/Doto-Regular.ttf
+    Assets/fonts/Doto-Bold.ttf
 )
 
 juce_add_plugin(XOceanus

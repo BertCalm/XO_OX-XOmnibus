@@ -377,11 +377,7 @@ private:
             }
 
             // Preset name — dot-matrix monospace style
-            const juce::Font presetFont(juce::FontOptions{}
-                .withName(juce::Font::getDefaultMonospacedFontName())
-                .withStyle("Bold")
-                .withHeight(11.0f));
-            g.setFont(presetFont);
+            g.setFont(GalleryFonts::dotMatrix(12.0f));
             g.setColour(juce::Colour(127, 219, 202).withAlpha(0.75f));
             g.drawText(presetName_.isEmpty() ? "INIT" : presetName_,
                        presetNameBounds_.toNearestInt(),

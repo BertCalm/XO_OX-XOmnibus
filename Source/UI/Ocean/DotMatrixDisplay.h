@@ -182,7 +182,7 @@ private:
 
         // ── Mode label ────────────────────────────────────────────────────────
         static constexpr const char* kLabels[] = { "WAV", "FFT", "ENG", "SEQ" };
-        g.setFont(juce::Font(juce::FontOptions{}.withHeight(7.0f)));
+        g.setFont(GalleryFonts::dotMatrix(8.0f));
         g.setColour(juce::Colour(0x33C8CCD8));   // rgba(200,204,216,0.20)
         g.drawText(kLabels[static_cast<int>(mode_)],
                    getWidth() - 22, getHeight() - 10, 20, 8,

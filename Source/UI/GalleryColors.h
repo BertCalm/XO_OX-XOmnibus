@@ -519,6 +519,16 @@ inline juce::Typeface::Ptr overbitRegular()
     static auto tf = loadTypeface(FontData::OverbitRegular_otf, FontData::OverbitRegular_otfSize);
     return tf;
 }
+inline juce::Typeface::Ptr dotoRegular()
+{
+    static auto tf = loadTypeface(FontData::DotoRegular_ttf, FontData::DotoRegular_ttfSize);
+    return tf;
+}
+inline juce::Typeface::Ptr dotoBold()
+{
+    static auto tf = loadTypeface(FontData::DotoBold_ttf, FontData::DotoBold_ttfSize);
+    return tf;
+}
 
 inline juce::Font display(float size)
 {
@@ -539,6 +549,16 @@ inline juce::Font label(float size)
 inline juce::Font value(float size)
 {
     return juce::Font(juce::FontOptions{}.withTypeface(jetBrainsMono()).withHeight(size));
+}
+// Doto — dot-matrix display font (submarine instrumentation aesthetic).
+// Used for: preset display, visualizer labels, BPM readout, transport values.
+inline juce::Font dotMatrix(float size)
+{
+    return juce::Font(juce::FontOptions{}.withTypeface(dotoBold()).withHeight(size));
+}
+inline juce::Font dotMatrixLight(float size)
+{
+    return juce::Font(juce::FontOptions{}.withTypeface(dotoRegular()).withHeight(size));
 }
 // Overbit — engine nameplate display font (accent-colored, Column B hero text).
 // Decision D2: Overbit at ≥12px; Space Grotesk Bold fallback below 12px.

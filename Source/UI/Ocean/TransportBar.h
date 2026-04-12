@@ -309,10 +309,7 @@ private:
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withHeight(10.0f));
 
-        const juce::Font monoFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultMonospacedFontName())
-            .withStyle("Bold")
-            .withHeight(11.0f));
+        const juce::Font monoFont = GalleryFonts::dotMatrix(12.0f);
 
         const juce::Font smallFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultSansSerifFontName())
