@@ -56,8 +56,9 @@ class EngineOrbit : public juce::Component,
 {
 public:
     //==========================================================================
-    enum class DepthZone { Sunlit, Twilight, Midnight };
-    enum class BuoyType  { Engine, FxEngine, MasterFx };
+    enum class DepthZone  { Sunlit, Twilight, Midnight };
+    enum class BuoyType   { Engine, FxEngine, MasterFx };
+    enum class WreathShape { Sine, Saw, Square, Tri, Noise, Organ, Pulse, Harmonic };
 
     //==========================================================================
     static constexpr float kOrbitalSize = 72.0f;   ///< Engine buoy diameter
@@ -97,6 +98,15 @@ public:
         const float heartbeatGlow = (playSurfaceVisible_ && voiceCount_ > 0)
             ? 0.15f + 0.10f * std::sin(breathPhase_ * 2.0f)
             : 0.0f;
+
+        // ── Apply bobbing + tilt transforms (FIX 2) ────────────────────────
+        // ScopedSaveState ensures these transforms don't bleed to parent painting.
+        juce::Graphics::ScopedSaveState saveState(g);
+        if (!A11y::prefersReducedMotion())
+        {
+            g.addTransform(juce::AffineTransform::translation(0.0f, bobOffset_));
+            g.addTransform(juce::AffineTransform::rotation(tiltAngle_, cx, cy + bobOffset_));
+        }
 
         // ── Water reflection ellipse (subtle, below buoy) ──────────────────
         g.setColour(juce::Colour(60, 180, 170).withAlpha(0.04f));
@@ -169,9 +179,9 @@ public:
             g.setGradientFill(bodyGrad);
             g.fillEllipse(cx - radius, cy - radius, radius * 2.0f, radius * 2.0f);
 
-            // ── Waveform wreath ─────────────────────────────────────────────
-            // Animated ring showing real audio output (reads from WaveformFifo
-            // data pushed via setWreathData).
+            // ── Waveform wreath (FIX 1: shape-blend) ──────────────────────
+            // Blends idle shape function (personality) with live audio data.
+            // wreathIntensity_ == 0 → pure shape, == 1 → pure audio buffer.
             if (!A11y::prefersReducedMotion())
             {
                 const float wreathRadius = radius + 3.0f;
@@ -184,11 +194,15 @@ public:
                     const float angle = (static_cast<float>(i) / steps)
                                       * juce::MathConstants<float>::twoPi;
                     const float waveT = angle * static_cast<float>(wreathHarmonics_) + wreathPhase_;
-                    // Read from wreath buffer (real audio) + fallback sine
+                    // Read from wreath buffer (real audio)
                     const int bufIdx = static_cast<int>(
                         std::fmod(std::abs(waveT), juce::MathConstants<float>::twoPi)
                         / juce::MathConstants<float>::twoPi * kWreathBufferSize) % kWreathBufferSize;
-                    const float sample = wreathBuffer_[static_cast<size_t>(bufIdx)];
+                    const float audioSample = wreathBuffer_[static_cast<size_t>(bufIdx)];
+                    const float shapeSample = computeWreathSample(waveT);
+                    // Blend: idle → shape dominates, active → audio dominates
+                    const float blend = wreathIntensity_; // 0=shape only, 1=audio only
+                    const float sample = shapeSample * (1.0f - blend) + audioSample * blend;
                     const float displacement = sample * wreathAmp;
                     const float r = wreathRadius + displacement;
                     const float px = cx + r * std::cos(angle);
@@ -207,6 +221,14 @@ public:
                     0.50f + wreathIntensity_ * 0.30f + wreathFlare_ * 0.40f);
                 g.setColour(accentColour_.withAlpha(coreAlpha));
                 g.strokePath(wreathPath, juce::PathStrokeType(1.5f + wreathIntensity_ * 0.5f));
+
+                // ── Ambient edge glow (FIX 4: post-wreath, over wreath) ────
+                juce::ColourGradient ambientGlow(
+                    accentColour_.withAlpha(0.08f), cx, cy,
+                    accentColour_.withAlpha(0.0f), cx + radius * 2.2f, cy, true);
+                g.setGradientFill(ambientGlow);
+                g.fillEllipse(cx - radius * 2.2f, cy - radius * 2.2f,
+                              radius * 4.4f, radius * 4.4f);
             }
 
             // Subtle inner reference ring
@@ -315,6 +337,45 @@ public:
                           2.0f * (1.0f - rip.progress));
         }
 
+        // ── Mute / solo badges (FIX 3) ────────────────────────────────────
+        // Mute badge: top-right of buoy, red circle with white "M"
+        if (muted_)
+        {
+            const float mbX = cx + radius * 0.5f;
+            const float mbY = cy - radius * 0.5f;
+            constexpr float mbR = 8.0f;
+            g.setColour(juce::Colour(239, 68, 68).withAlpha(0.9f));
+            g.fillEllipse(mbX - mbR, mbY - mbR, mbR * 2.0f, mbR * 2.0f);
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f).withStyle("Bold")));
+            g.setColour(juce::Colours::white);
+            g.drawText("M",
+                       juce::Rectangle<float>(mbX - mbR, mbY - mbR, mbR * 2.0f, mbR * 2.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
+        // Solo badge: top-right (or top-left if muted occupies top-right),
+        // gold circle with dark "S" + outer ring
+        if (soloed_)
+        {
+            // Offset to top-left so it doesn't collide with the mute badge
+            const float sbX = muted_ ? cx - radius * 0.5f : cx + radius * 0.5f;
+            const float sbY = cy - radius * 0.5f;
+            constexpr float sbR = 8.0f;
+            // Outer gold ring
+            g.setColour(juce::Colour(233, 196, 106).withAlpha(0.35f));
+            g.drawEllipse(sbX - sbR - 2.0f, sbY - sbR - 2.0f,
+                          (sbR + 2.0f) * 2.0f, (sbR + 2.0f) * 2.0f, 2.0f);
+            // Fill
+            g.setColour(juce::Colour(233, 196, 106).withAlpha(0.95f));
+            g.fillEllipse(sbX - sbR, sbY - sbR, sbR * 2.0f, sbR * 2.0f);
+            // "S" label
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f).withStyle("Bold")));
+            g.setColour(juce::Colour(30, 20, 5));
+            g.drawText("S",
+                       juce::Rectangle<float>(sbX - sbR, sbY - sbR, sbR * 2.0f, sbR * 2.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
         // ── Accessibility focus ring ───────────────────────────────────────
         if (hasKeyboardFocus(false))
             A11y::drawCircularFocusRing(g, cx, cy, radius + kBorderWidth + 2.0f);
@@ -373,6 +434,15 @@ public:
         setTitle("Engine: " + engineId);
         setDescription("Depth zone: " + depthZoneName(zone) + ". Double-click to edit.");
         setTooltip(engineId);
+
+        // Randomize wreath harmonics for per-engine variety
+        wreathHarmonics_ = 6 + (juce::Random::getSystemRandom().nextInt(6));
+
+        // Randomize bobbing parameters so each buoy floats at its own rhythm
+        auto& rng = juce::Random::getSystemRandom();
+        bobPhase_ = rng.nextFloat() * juce::MathConstants<float>::twoPi;
+        bobSpeed_ = 0.28f + rng.nextFloat() * 0.18f;
+        bobAmp_   = 2.0f  + rng.nextFloat() * 2.5f;
 
         if (!isTimerRunning())
             startTimerHz(30);
@@ -448,6 +518,18 @@ public:
         wreathIntensity_ = juce::jlimit(0.0f, 1.0f, rms * 4.0f); // amplify RMS for visual effect
     }
 
+    void setWreathShape(WreathShape s) { wreathShape_ = s; }
+
+    //==========================================================================
+    // Mute / solo state
+    //==========================================================================
+
+    void setMuted(bool m)  { muted_  = m; repaint(); }
+    void setSoloed(bool s) { soloed_ = s; repaint(); }
+
+    bool isMuted()  const noexcept { return muted_;  }
+    bool isSoloed() const noexcept { return soloed_; }
+
     //==========================================================================
     // Ripple + flare triggers (called from UI timer on note-on events)
     //==========================================================================
@@ -485,6 +567,33 @@ public:
 
 private:
     //==========================================================================
+    /** Returns a -1..+1 sample for the given phase t based on wreathShape_. */
+    float computeWreathSample(float t) const
+    {
+        switch (wreathShape_)
+        {
+            case WreathShape::Sine:
+                return std::sin(t);
+            case WreathShape::Saw:
+                return 2.0f * std::fmod(t / juce::MathConstants<float>::twoPi, 1.0f) - 1.0f;
+            case WreathShape::Square:
+                return std::sin(t) > 0.0f ? 1.0f : -1.0f;
+            case WreathShape::Tri:
+                return 2.0f * std::abs(2.0f * std::fmod(t / juce::MathConstants<float>::twoPi, 1.0f) - 1.0f) - 1.0f;
+            case WreathShape::Noise:
+                return std::sin(t * 7.3f) * std::cos(t * 3.1f) + std::sin(t * 13.7f) * 0.5f;
+            case WreathShape::Organ:
+                return std::sin(t) * 0.6f + std::sin(t * 2.0f) * 0.25f + std::sin(t * 3.0f) * 0.15f;
+            case WreathShape::Pulse:
+                return std::sin(t) > 0.3f ? 1.0f : -1.0f;
+            case WreathShape::Harmonic:
+                return std::sin(t) + std::sin(t * 3.0f) * 0.4f + std::sin(t * 5.0f) * 0.2f;
+            default:
+                return std::sin(t);
+        }
+    }
+
+    //==========================================================================
     void timerCallback() override
     {
         if (!hasEngine_) return;
@@ -518,6 +627,20 @@ private:
             wreathFlare_ *= 0.94f;
         else
             wreathFlare_ = 0.0f;
+
+        // ── Bob + tilt animation (FIX 2) ───────────────────────────────────
+        if (!reducedMotion)
+        {
+            bobOffset_  = std::sin(breathPhase_ * bobSpeed_ + bobPhase_)
+                          * (bobAmp_ + wreathIntensity_ * 4.0f);
+            tiltAngle_  = std::sin(breathPhase_ * 0.7f)
+                          * 0.03f * (1.0f + wreathIntensity_ * 2.0f);
+        }
+        else
+        {
+            bobOffset_ = 0.0f;
+            tiltAngle_ = 0.0f;
+        }
 
         // ── Ripple advance ──────────────────────────────────────────────────
         for (auto& rip : ripples_)
@@ -570,10 +693,22 @@ private:
     // Waveform wreath
     static constexpr int kWreathBufferSize = 128;
     std::array<float, kWreathBufferSize> wreathBuffer_ {};
-    float wreathPhase_     = 0.0f;
-    float wreathIntensity_ = 0.0f;
-    float wreathFlare_     = 0.0f;
-    int   wreathHarmonics_ = 8;
+    float      wreathPhase_     = 0.0f;
+    float      wreathIntensity_ = 0.0f;
+    float      wreathFlare_     = 0.0f;
+    int        wreathHarmonics_ = 8;
+    WreathShape wreathShape_    = WreathShape::Sine;
+
+    // Bobbing / tilt animation (FIX 2)
+    float bobPhase_  = 0.0f;   ///< random initial phase, set in setEngine()
+    float bobSpeed_  = 0.28f;  ///< cycles-per-breath-cycle; randomized in setEngine()
+    float bobAmp_    = 2.0f;   ///< pixels amplitude; randomized in setEngine()
+    float bobOffset_ = 0.0f;   ///< current computed Y offset (updated by timerCallback)
+    float tiltAngle_ = 0.0f;   ///< current tilt radians (updated by timerCallback)
+
+    // Mute / solo (FIX 3)
+    bool muted_  = false;
+    bool soloed_ = false;
 
     // Ripple effects (fixed-size, no heap allocation — RAC finding F4)
     static constexpr size_t kMaxRipples = 8;

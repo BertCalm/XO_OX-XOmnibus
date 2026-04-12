@@ -188,6 +188,16 @@ public:
         @param slot   Engine slot index, 0 – (kMaxSlots-1).
         @param center Centre point in the component's local coordinate space.
     */
+    /// Show a dashed chain-in-progress line from a slot to the mouse cursor.
+    void setChainInProgress(bool active, int startSlot = -1,
+                            juce::Point<float> mousePos = {})
+    {
+        chainInProgress_ = active;
+        chainStartSlot_ = startSlot;
+        chainMousePos_ = mousePos;
+        repaint();
+    }
+
     void setCreatureCenter(int slot, juce::Point<float> center)
     {
         if (slot < 0 || slot >= kMaxSlots)
@@ -477,7 +487,7 @@ public:
     //==========================================================================
     void paint(juce::Graphics& g) override
     {
-        if (routeStates_.empty())
+        if (routeStates_.empty() && !chainInProgress_)
             return;
 
         const juce::Colour xoGold = juce::Colour(GalleryColors::xoGold);
@@ -659,6 +669,25 @@ public:
             // Foam-white text
             g.setColour(juce::Colour(GalleryColors::Ocean::foam));
             g.drawText(tip, tipBounds.toNearestInt(), juce::Justification::centred, false);
+        }
+
+        // ── Chain-in-progress dashed line ──────────────────────────────────
+        if (chainInProgress_ && chainStartSlot_ >= 0 && chainStartSlot_ < kMaxSlots)
+        {
+            const auto startPt = centers_[static_cast<size_t>(chainStartSlot_)];
+            if (startPt.x >= 0.0f)
+            {
+                juce::Path dashPath;
+                dashPath.startNewSubPath(startPt);
+                dashPath.lineTo(chainMousePos_);
+
+                juce::Path dashedPath;
+                const float dashLengths[] = { 6.0f, 4.0f };
+                juce::PathStrokeType(2.0f).createDashedStroke(dashedPath, dashPath,
+                    dashLengths, 2);
+                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.55f));
+                g.fillPath(dashedPath);
+            }
         }
     }
 
@@ -853,6 +882,11 @@ private:
         // branch of the switch inside CouplingTypeColors::forType().
         return CouplingTypeColors::forType(static_cast<CouplingType>(typeInt));
     }
+
+    // Chain-in-progress state
+    bool                   chainInProgress_ = false;
+    int                    chainStartSlot_  = -1;
+    juce::Point<float>     chainMousePos_;
 
     //==========================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingSubstrate)

@@ -115,7 +115,7 @@ public:
         {
             const float bw = static_cast<float>(bounds.getWidth());
             const float bh = static_cast<float>(bounds.getHeight());
-            const float breatheX = (std::sin(waveTime_ * 0.2f) * 0.5f + 0.5f) * bw;
+            const float breatheX = (std::sin(waveTime_ * 1.2f) * 0.5f + 0.5f) * bw;
             juce::ColourGradient breatheGrad(
                 juce::Colour(60, 180, 170).withAlpha(0.018f),
                 breatheX, bh * 0.5f,
@@ -140,10 +140,11 @@ public:
             paintWaveSurface(g, static_cast<float>(bounds.getWidth()),
                                 static_cast<float>(bounds.getHeight()));
 
-        // 4. When the ocean is empty (no coupling routes), draw additional faint
-        //    concentric ring outlines as a background texture.
-        if (!hasCouplingRoutes_)
-            paintEmptyStateTexture(g, cx, cy, halfMin);
+        // 4. Animated teal depth rings — ALWAYS drawn (not just when empty).
+        //    Prototype: 4 rings at r=80,190,300,410 that wobble with intensity.
+        if (!A11y::prefersReducedMotion())
+            paintAnimatedDepthRings(g, cx, cy, static_cast<float>(bounds.getWidth()),
+                                   static_cast<float>(bounds.getHeight()));
     }
 
     //==========================================================================
@@ -322,6 +323,32 @@ private:
             const float r = kMidnightRadius * halfMin;
             g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.04f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
+        }
+    }
+
+    //==========================================================================
+    /**
+        Paint animated teal depth rings — always visible, wobble with intensity.
+        Prototype: 4 rings at r=80, 190, 300, 410px that wobble with wave time.
+    */
+    void paintAnimatedDepthRings(juce::Graphics& g,
+                                  float cx, float cy,
+                                  float /*w*/, float /*h*/) const
+    {
+        const juce::Colour teal(60, 180, 170);
+        static constexpr float kRingRadii[] = { 80.0f, 190.0f, 300.0f, 410.0f };
+
+        for (int i = 0; i < 4; ++i)
+        {
+            const float baseR = kRingRadii[i];
+            // Wobble: subtle radius oscillation driven by wave time + ring index
+            const float wobble = std::sin(waveTime_ * 0.3f + baseR * 0.005f)
+                               * intensity_ * 4.0f;
+            const float r = baseR + wobble;
+            const float alpha = 0.025f + intensity_ * 0.018f;
+
+            g.setColour(teal.withAlpha(alpha));
+            g.drawEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f, 1.0f);
         }
     }
 
