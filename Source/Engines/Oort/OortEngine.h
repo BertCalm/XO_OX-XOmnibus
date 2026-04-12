@@ -20,58 +20,65 @@ namespace xoceanus
 //==============================================================================
 //
 //  O O R T   E N G I N E
-//  Stochastic Cloud Synthesis (GENDY Algorithm)
+//  Agent-Based Flocking Synthesis (Reynolds Boids)
 //
 //  XO_OX Aquatic Identity: The Oort Cloud — a vast halo of primordial bodies
-//  orbiting the sun at the edge of the solar system. Chaotic, ancient, and
-//  mutating over astronomical timescales. Each breakpoint = a voice in the crowd.
-//  INTENT parameter: Cage (0, pure chance) <-> Xenakis (1, shaped distributions).
+//  orbiting the sun at the edge of the solar system. N autonomous agents drifting
+//  on a 1D amplitude axis. When they flock together -> tonal. When they scatter ->
+//  noise. Emergent timbre from collective behaviour — not from an oscillator.
+//
+//  "Each agent = a voice in the crowd."
+//  SOLIDARITY controls flocking strength.
+//  INTENT: Cage (0, agents ignore each other, pure random) <-> Xenakis (1, full
+//  behavioural dynamics, emergent order).
 //
 //  References (D003):
-//    Iannis Xenakis, GENDY algorithm (1991)
-//    Xenakis, "Formalized Music" (1971)
-//    Einstein, Brownian motion (1905)
-//    Markov, Markov chains (1906)
+//    Craig W. Reynolds, "Flocks, Herds, and Schools: A Distributed Behavioral
+//    Model" (SIGGRAPH 1987)
+//    Vicsek et al., "Novel Type of Phase Transition in a System of Self-Driven
+//    Particles" (1995)
+//    Cucker & Smale, "Emergent Behavior in Flocks" (2007)
 //
-//  Architecture: GENDY polyphonic breakpoint waveform synthesis.
-//    - Waveform = N breakpoints (amplitude, duration) linearly interpolated
-//    - Per-cycle mutation via probability distributions (Gaussian/Cauchy/Logistic/Uniform)
-//    - Markov chain state memory biases walk toward previous steps
-//    - Poisson-distributed event overlay for granular textures
+//  Architecture: Boids polyphonic waveform synthesis.
+//    - Waveform = N agents linearly interpolated (period = pitch cycle)
+//    - Per-cycle Boids update: separation, alignment, cohesion forces
+//    - Random perturbation scaled by (1 - intent) for Cage component
+//    - Poisson event overlay (gusts of wind on the flock)
 //    - CytomicSVF filter -> VCA -> output
 //
 //  Signal Flow:
-//    GENDY Breakpoint Waveform (per-voice, mutating per-cycle)
+//    N Agents (Boids simulation, per-cycle update)
+//      -> Linear interpolation between agent positions = waveform
 //      + Poisson Event Layer (when eventDensity > 0)
-//      -> DC Block (when dcBlock=1, essential for Cauchy)
+//      -> DC Block (when dcBlock=1)
 //      -> Wavefold (foldAmt)
-//      -> CytomicSVF Filter (post-GENDY)
+//      -> CytomicSVF Filter
 //      -> VCA (amp envelope * velocity)
 //      -> Output
 //
 //  Coupling:
-//    Output: stereo (ch0=L, ch1=R), scatter value 0-1 (ch2)
-//    Input:  AudioToFM      -> modulates breakpoint durations (FM-like effect)
+//    Output: stereo (ch0=L, ch1=R), flock coherence 0-1 (ch2)
+//    Input:  AudioToFM      -> perturbs agent positions (wind gust on flock)
 //            AmpToFilter    -> filter cutoff modulation
-//            EnvToMorph     -> scatter (distribution width) modulation
+//            EnvToMorph     -> solidarity (tighter/looser flocking)
 //            RhythmToBlend  -> triggers Poisson events
 //
 //  Gallery code: OORT | Accent: Oort Cloud Violet #9B7FD4 | Prefix: oort_
 //
 //==============================================================================
 
-static constexpr int   kOortMaxVoices = 8;
-static constexpr int   kOortMaxBP     = 16;    // maximum breakpoints per voice
-static constexpr float kOortTwoPi     = 6.28318530717958647692f;
-static constexpr float kOortPi        = 3.14159265358979323846f;
+static constexpr int   kOortMaxVoices  = 8;
+static constexpr int   kOortMaxAgents  = 32;   // maximum agents per voice
+static constexpr float kOortTwoPi      = 6.28318530717958647692f;
+static constexpr float kOortPi         = 3.14159265358979323846f;
 
 //==============================================================================
-// GendyBreakpoint — one amplitude/duration vertex in the GENDY waveform
+// FlockAgent — one autonomous agent on the amplitude axis [-1, +1]
 //==============================================================================
-struct GendyBreakpoint
+struct FlockAgent
 {
-    float amplitude = 0.0f;   // -1.0 to +1.0
-    float duration  = 256.0f; // in samples (time to next breakpoint)
+    float position = 0.0f;  // amplitude, -1 to +1
+    float velocity = 0.0f;  // change per cycle step
 };
 
 //==============================================================================
@@ -86,40 +93,40 @@ struct OortPoissonGrain
 };
 
 //==============================================================================
-// OortVoice — one GENDY synthesis voice
+// OortVoice — one Boids synthesis voice
 //==============================================================================
 struct OortVoice
 {
     bool  active    = false;
     bool  releasing = false;
+    bool  gliding   = false;  // true while sliding from a previous note (Legato mode)
     int   note      = -1;
-    float velocity  = 0.0f;  // normalized 0..1
+    float velocity  = 0.0f;  // normalised 0..1
     float keyTrack  = 0.0f;  // (note-60)/60, bipolar
 
-    // ---- GENDY breakpoint state ----
-    std::vector<GendyBreakpoint> breakpoints;  // sized kOortMaxBP in prepare()
-    int   bpCount   = 8;      // active breakpoints (2-16)
-    int   bpIdx     = 0;      // current breakpoint index
-    float bpPhase   = 0.0f;   // progress from bpIdx to bpIdx+1 in [0,1]
-
-    // ---- Markov chain state ----
-    float prevAmpStep  = 0.0f;
-    float prevTimeStep = 0.0f;
+    // ---- Boids flock state ----
+    std::vector<FlockAgent> agents;  // sized kOortMaxAgents in prepare()
+    int   agentCount  = 16;          // active agents (8..32 step 4)
+    float cyclePhase  = 0.0f;        // progress through the period [0, 1)
+    float cyclePeriod = 100.0f;      // samples per cycle (determined by pitch)
+    int   readIdx     = 0;           // which agent pair we're interpolating
+    float agentPhase  = 0.0f;        // progress between readIdx and readIdx+1
 
     // ---- Glide state ----
-    float glideBaseFreq = 440.0f; // current (smoothed) base frequency
+    float glideBaseFreq = 440.0f;    // smoothed base frequency
 
     // ---- Poisson event layer ----
-    float poissonTimer = 0.0f;   // counts down to next event in samples
+    float poissonTimer = 0.0f;
     OortPoissonGrain grain;
 
     // ---- DC blocker state ----
-    float dcBlockX = 0.0f;  // input delay (x[n-1])
-    float dcBlockY = 0.0f;  // output delay (y[n-1])
+    float dcBlockX = 0.0f;
+    float dcBlockY = 0.0f;
 
     // ---- Filter ----
     CytomicSVF filterL;
     CytomicSVF filterR;
+    int   filterCoeffCounter = 0;
 
     // ---- Envelopes ----
     StandardADSR ampEnv;
@@ -136,53 +143,286 @@ struct OortVoice
     // ---- PRNG state (xorshift32, per-voice) ----
     uint32_t rng = 12345u;
 
-    // ---- Coupling AudioToFM accumulator ----
-    float fmCouplingAccum = 0.0f;
+    // ---- Coupling accumulators ----
+    float audioToFMAccum = 0.0f;
 
+    //--------------------------------------------------------------------------
+    // xorshift32 — fast per-voice PRNG
+    //--------------------------------------------------------------------------
+    float nextRandom() noexcept
+    {
+        rng ^= rng << 13;
+        rng ^= rng >> 17;
+        rng ^= rng << 5;
+        return static_cast<float>(rng & 0xFFFFFF) / 8388608.0f - 1.0f; // [-1, +1]
+    }
+
+    float nextRandomUnipolar() noexcept
+    {
+        rng ^= rng << 13;
+        rng ^= rng >> 17;
+        rng ^= rng << 5;
+        return static_cast<float>(rng & 0xFFFFFF) / 16777216.0f; // [0, 1)
+    }
+
+    //--------------------------------------------------------------------------
+    // sampleDistribution — draw a random step from the selected distribution
+    //--------------------------------------------------------------------------
+    float sampleDistribution(int distType, float scatter) noexcept
+    {
+        // Gaussian: Box-Muller (single sample via uniform approximation)
+        // Cauchy: gamma * tan(pi * (u - 0.5))
+        // Logistic: log(u / (1-u))
+        // Uniform: raw
+        float u = nextRandomUnipolar();
+        // Guard u from edges
+        u = std::max(0.001f, std::min(0.999f, u));
+
+        float step = 0.0f;
+        switch (distType)
+        {
+        case 0: // Gaussian — sum of 3 uniforms approximation (central limit)
+        {
+            float u2 = nextRandomUnipolar();
+            float u3 = nextRandomUnipolar();
+            step = ((u + u2 + u3) / 3.0f - 0.5f) * 2.0f; // roughly [-1, +1]
+            break;
+        }
+        case 1: // Cauchy — gamma * tan(pi * (u - 0.5)), clamped at ±4σ
+        {
+            float t = std::tan(kOortPi * (u - 0.5f));
+            t = std::max(-4.0f, std::min(4.0f, t));
+            step = t * 0.25f; // scale to approx [-1, +1]
+            break;
+        }
+        case 2: // Logistic — log(u/(1-u))
+        {
+            float lv = std::log(u / (1.0f - u));
+            lv = std::max(-4.0f, std::min(4.0f, lv));
+            step = lv * 0.25f;
+            break;
+        }
+        default: // Uniform
+        {
+            step = u * 2.0f - 1.0f;
+            break;
+        }
+        }
+        return step * scatter;
+    }
+
+    //--------------------------------------------------------------------------
+    // initAgents — distribute agents across [-1, +1] on note-on
+    //   scatter: amount of initial randomisation
+    //   velocity: higher velocity = more initial scatter + excitation energy (D001)
+    //--------------------------------------------------------------------------
+    void initAgents(int count, float scatter, float vel, int distType) noexcept
+    {
+        const int n = std::min(count, static_cast<int>(agents.size()));
+        agentCount = n;
+        if (n <= 0) return;
+
+        // Velocity -> initial scatter + excitation energy (D001)
+        const float velScatter = scatter + vel * scatter;
+
+        for (int i = 0; i < n; ++i)
+        {
+            const float even = (n > 1)
+                ? (static_cast<float>(i) / static_cast<float>(n - 1)) * 2.0f - 1.0f
+                : 0.0f;
+            const float jitter = sampleDistribution(distType, velScatter * 0.2f);
+            agents[i].position = std::max(-1.0f, std::min(1.0f, even + jitter));
+            // Small random initial velocities scaled by velocity (D001 excitation energy)
+            agents[i].velocity = sampleDistribution(distType, 0.02f * (1.0f + vel));
+            agents[i].velocity = flushDenormal(agents[i].velocity);
+        }
+
+        readIdx    = 0;
+        agentPhase = 0.0f;
+        cyclePhase = 0.0f;
+    }
+
+    //--------------------------------------------------------------------------
+    // updateFlock — Reynolds Boids per-cycle update
+    //   solidarity: overall flocking strength
+    //   intent:     0=Cage (chaos only), 1=Xenakis (full flocking)
+    //   scatter:    random perturbation amplitude
+    //   sep:        separation force weight
+    //   coh:        cohesion force weight
+    //   damping:    velocity damping
+    //   distType:   random distribution
+    //   audioFM:    external perturbation from AudioToFM coupling
+    //--------------------------------------------------------------------------
+    void updateFlock(float solidarity, float intent, float scatter, float sep,
+                     float coh, float damping, int distType, float audioFM) noexcept
+    {
+        const int n = agentCount;
+        if (n <= 0) return;
+
+        // Compute group center for cohesion
+        float center = 0.0f;
+        for (int i = 0; i < n; ++i)
+            center += agents[i].position;
+        center /= static_cast<float>(n);
+
+        // Separation radius scales with agent count to prevent overcrowding
+        const float sepRadius = 0.2f * (8.0f / std::max(1.0f, static_cast<float>(n)));
+
+        for (int i = 0; i < n; ++i)
+        {
+            float sepForce = 0.0f;
+            float aliSum   = 0.0f;
+            int   aliCount = 0;
+
+            const float posI = agents[i].position;
+            const float aliRadius = sepRadius * 2.0f;
+
+            for (int j = 0; j < n; ++j)
+            {
+                if (j == i) continue;
+                const float dist  = posI - agents[j].position;
+                const float absDist = std::fabs(dist);
+
+                // Separation: inverse distance repulsion when too close
+                if (absDist < sepRadius)
+                {
+                    const float sign = (dist >= 0.0f) ? 1.0f : -1.0f;
+                    sepForce += sign / std::max(absDist, 0.001f);
+                }
+
+                // Alignment: match neighbours' velocity
+                if (absDist < aliRadius)
+                {
+                    aliSum += agents[j].velocity;
+                    ++aliCount;
+                }
+            }
+
+            // Separation force
+            const float fSep = sepForce * sep * 0.01f;
+
+            // Alignment force
+            const float fAli = (aliCount > 0)
+                ? (aliSum / static_cast<float>(aliCount) - agents[i].velocity) * 0.5f
+                : 0.0f;
+
+            // Cohesion: move toward group center
+            const float fCoh = (center - posI) * coh;
+
+            // Flocking force (scaled by solidarity and intent)
+            const float flockForce = (fSep + fAli + fCoh) * solidarity * intent;
+
+            // Random perturbation (Cage component — scales with 1-intent)
+            const float chaos = sampleDistribution(distType, scatter) * (1.0f - intent);
+
+            // AudioToFM coupling: external wind gust on the flock
+            const float wind = audioFM * 0.1f;
+
+            // Update agent
+            agents[i].velocity += flockForce + chaos + wind;
+            agents[i].velocity *= damping;
+            agents[i].velocity  = flushDenormal(agents[i].velocity);
+
+            agents[i].position += agents[i].velocity;
+            agents[i].position  = flushDenormal(agents[i].position);
+
+            // Reflect at boundaries (bounce, don't hard-clamp)
+            if (agents[i].position > 1.0f)
+            {
+                agents[i].position = 2.0f - agents[i].position;
+                agents[i].velocity *= -1.0f;
+            }
+            if (agents[i].position < -1.0f)
+            {
+                agents[i].position = -2.0f - agents[i].position;
+                agents[i].velocity *= -1.0f;
+            }
+            // Safety clamp (after reflection)
+            agents[i].position = std::max(-1.0f, std::min(1.0f, agents[i].position));
+        }
+
+        // Decay the AudioToFM accumulator
+        audioToFMAccum *= 0.999f;
+        audioToFMAccum  = flushDenormal(audioToFMAccum);
+    }
+
+    //--------------------------------------------------------------------------
+    // computeCoherence — flock coherence metric for coupling output ch2
+    //   = 1 - min(1, stddev(positions) * 4)
+    //--------------------------------------------------------------------------
+    float computeCoherence() const noexcept
+    {
+        const int n = agentCount;
+        if (n <= 1) return 1.0f;
+
+        float mean = 0.0f;
+        for (int i = 0; i < n; ++i) mean += agents[i].position;
+        mean /= static_cast<float>(n);
+
+        float variance = 0.0f;
+        for (int i = 0; i < n; ++i)
+        {
+            const float d = agents[i].position - mean;
+            variance += d * d;
+        }
+        variance /= static_cast<float>(n);
+        const float stddev = std::sqrt(variance);
+
+        return std::max(0.0f, 1.0f - std::min(1.0f, stddev * 4.0f));
+    }
+
+    //--------------------------------------------------------------------------
+    // reset
+    //--------------------------------------------------------------------------
     void reset(float sampleRate) noexcept
     {
         active    = false;
         releasing = false;
+        gliding   = false;
         note      = -1;
         velocity  = 0.0f;
         keyTrack  = 0.0f;
 
-        bpIdx   = 0;
-        bpPhase = 0.0f;
-        prevAmpStep  = 0.0f;
-        prevTimeStep = 0.0f;
+        agentCount  = 16;
+        cyclePhase  = 0.0f;
+        cyclePeriod = (sampleRate > 0.0f) ? sampleRate / 440.0f : 100.0f;
+        readIdx     = 0;
+        agentPhase  = 0.0f;
         glideBaseFreq = 440.0f;
+
         poissonTimer = 0.0f;
-        grain.active  = false;
-        grain.level   = 0.0f;
+        grain.active = false;
+        grain.level  = 0.0f;
+
         dcBlockX = 0.0f;
         dcBlockY = 0.0f;
+
         filterL.reset();
         filterR.reset();
+        filterCoeffCounter = 0;
+
         ampEnv.reset();
         filterEnv.reset();
         lfo1.reset();
         lfo2.reset();
         lastLfo1Val = 0.0f;
         lastLfo2Val = 0.0f;
-        fmCouplingAccum = 0.0f;
+        audioToFMAccum = 0.0f;
 
-        // Initialise breakpoints to a sine-like waveform
-        const int bpN = static_cast<int>(breakpoints.size());
-        if (bpN <= 0) return;
-        const float sr = (sampleRate > 0.0f) ? sampleRate : 44100.0f;
-        const float defaultDur = sr / (440.0f * static_cast<float>(bpN));
-        for (int i = 0; i < bpN; ++i)
+        // Initialise agents to evenly spaced sine-like distribution
+        const int n = static_cast<int>(agents.size());
+        if (n <= 0) return;
+        for (int i = 0; i < n; ++i)
         {
-            const float phase = static_cast<float>(i) / static_cast<float>(bpN);
-            breakpoints[i].amplitude = fastSin(phase * kOortTwoPi);
-            breakpoints[i].duration  = std::max(1.0f, defaultDur);
+            const float phase = static_cast<float>(i) / static_cast<float>(n);
+            agents[i].position = fastSin(phase * kOortTwoPi);
+            agents[i].velocity = 0.0f;
         }
     }
 };
 
 //==============================================================================
-// OortEngine — GENDY Stochastic Cloud Synthesis
+// OortEngine — Agent-Based Flocking Synthesis
 //==============================================================================
 class OortEngine : public SynthEngine
 {
@@ -196,30 +436,29 @@ public:
         sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 44100.0f;
         maxBlock = maxBlockSize;
 
-        // Size voice breakpoint buffers and reset
         for (int i = 0; i < kOortMaxVoices; ++i)
         {
-            voices[i].breakpoints.resize(kOortMaxBP);
+            voices[i].agents.resize(kOortMaxAgents);
             voices[i].rng = 12345u + static_cast<uint32_t>(i) * 31337u;
             voices[i].reset(sampleRateFloat);
         }
 
-        // Reset coupling accumulators
-        couplingFMBuf      = 0.0f;
+        // Coupling accumulators
+        couplingFMVal      = 0.0f;
         couplingAmpFilter  = 0.0f;
-        couplingEnvScatter = 0.0f;
+        couplingEnvSolid   = 0.0f;
         couplingRhythm     = 0.0f;
 
         modWheelValue   = 0.0f;
         aftertouchValue = 0.0f;
 
-        lastSampleL = 0.0f;
-        lastSampleR = 0.0f;
-        lastScatter = 0.0f;
+        lastSampleL    = 0.0f;
+        lastSampleR    = 0.0f;
+        lastCoherence  = 0.0f;
 
         activeVoiceCount_.store(0, std::memory_order_relaxed);
 
-        // SilenceGate — GENDY can have long stochastic tails
+        // Flocking synths can have long evolving tails
         prepareSilenceGate(sampleRate, maxBlockSize, 400.0f);
     }
 
@@ -230,23 +469,24 @@ public:
         for (auto& v : voices)
             v.reset(sampleRateFloat);
 
-        couplingFMBuf      = 0.0f;
+        couplingFMVal      = 0.0f;
         couplingAmpFilter  = 0.0f;
-        couplingEnvScatter = 0.0f;
+        couplingEnvSolid   = 0.0f;
         couplingRhythm     = 0.0f;
         modWheelValue      = 0.0f;
         aftertouchValue    = 0.0f;
-        lastSampleL = 0.0f;
-        lastSampleR = 0.0f;
-        lastScatter = 0.0f;
+        lastSampleL  = 0.0f;
+        lastSampleR  = 0.0f;
+        lastCoherence = 0.0f;
         activeVoiceCount_.store(0, std::memory_order_relaxed);
     }
 
     //==========================================================================
-    // Coupling — applyCouplingInput (called BEFORE renderBlock)
+    // Coupling
     //==========================================================================
 
-    void applyCouplingInput(CouplingType type, float amount, const float* sourceBuffer, int numSamples) override
+    void applyCouplingInput(CouplingType type, float amount,
+                            const float* sourceBuffer, int numSamples) override
     {
         if (sourceBuffer == nullptr || numSamples <= 0)
             return;
@@ -255,11 +495,12 @@ public:
         {
         case CouplingType::AudioToFM:
         {
-            // Modulates breakpoint durations (FM-like effect on GENDY period)
-            couplingFMBuf = sourceBuffer[numSamples - 1] * amount;
+            // Perturbs agent positions (wind gust on the flock)
+            const float last = sourceBuffer[numSamples - 1] * amount;
+            couplingFMVal = last;
             for (auto& v : voices)
                 if (v.active)
-                    v.fmCouplingAccum = sourceBuffer[numSamples - 1] * amount;
+                    v.audioToFMAccum = last;
             break;
         }
         case CouplingType::AmpToFilter:
@@ -273,8 +514,8 @@ public:
         }
         case CouplingType::EnvToMorph:
         {
-            // Coupling envelope modulates scatter (distribution width)
-            couplingEnvScatter = sourceBuffer[numSamples - 1] * amount;
+            // Coupling envelope modulates solidarity (tighter/looser flocking)
+            couplingEnvSolid = sourceBuffer[numSamples - 1] * amount;
             break;
         }
         case CouplingType::RhythmToBlend:
@@ -303,7 +544,7 @@ public:
     {
         if (channel == 0) return lastSampleL;
         if (channel == 1) return lastSampleR;
-        if (channel == 2) return lastScatter; // current scatter value 0..1
+        if (channel == 2) return lastCoherence; // flock coherence 0..1
         return 0.0f;
     }
 
@@ -318,35 +559,34 @@ public:
         using APC = juce::AudioParameterChoice;
         using PID = juce::ParameterID;
 
-        // ---- Group A: GENDY Core (8 params) ----
-        // Choice range 4-16: index 0="4", index 4="8", index 12="16"
-        static const juce::StringArray kBpChoices {"4","5","6","7","8","9","10","11","12","13","14","15","16"};
-        params.push_back(std::make_unique<APC>(PID{"oort_breakpoints", 1}, "oort_breakpoints",
-            kBpChoices, 4)); // default index 4 = "8" breakpoints
+        // ---- Group A: Flock Core (8 params) ----
+        static const juce::StringArray kAgentChoices {"8","12","16","20","24","28","32"};
+        params.push_back(std::make_unique<APC>(PID{"oort_agentCount", 1}, "oort_agentCount",
+            kAgentChoices, 2)); // default index 2 = "16" agents
+
+        params.push_back(std::make_unique<AP>(PID{"oort_solidarity", 1}, "oort_solidarity",
+            NRange{0.0f, 1.0f, 0.001f}, 0.5f));
+
+        params.push_back(std::make_unique<AP>(PID{"oort_intent", 1}, "oort_intent",
+            NRange{0.0f, 1.0f, 0.001f}, 0.5f));
 
         params.push_back(std::make_unique<AP>(PID{"oort_scatter", 1}, "oort_scatter",
-            NRange{0.0f, 1.0f, 0.001f}, 0.15f));
+            NRange{0.0f, 1.0f, 0.001f}, 0.3f));
 
         static const juce::StringArray kDistTypes {"Gaussian","Cauchy","Logistic","Uniform"};
         params.push_back(std::make_unique<APC>(PID{"oort_distType", 1}, "oort_distType",
             kDistTypes, 0));
 
-        params.push_back(std::make_unique<AP>(PID{"oort_intent", 1}, "oort_intent",
+        params.push_back(std::make_unique<AP>(PID{"oort_damping", 1}, "oort_damping",
+            NRange{0.8f, 1.0f, 0.0001f}, 0.95f));
+
+        params.push_back(std::make_unique<AP>(PID{"oort_separation", 1}, "oort_separation",
             NRange{0.0f, 1.0f, 0.001f}, 0.5f));
 
-        params.push_back(std::make_unique<AP>(PID{"oort_mutationRate", 1}, "oort_mutationRate",
-            NRange{0.0f, 1.0f, 0.001f}, 0.3f));
-
-        params.push_back(std::make_unique<AP>(PID{"oort_ampScatter", 1}, "oort_ampScatter",
+        params.push_back(std::make_unique<AP>(PID{"oort_cohesion", 1}, "oort_cohesion",
             NRange{0.0f, 1.0f, 0.001f}, 0.5f));
 
-        params.push_back(std::make_unique<AP>(PID{"oort_timeScatter", 1}, "oort_timeScatter",
-            NRange{0.0f, 1.0f, 0.001f}, 0.5f));
-
-        params.push_back(std::make_unique<AP>(PID{"oort_stepFloor", 1}, "oort_stepFloor",
-            NRange{0.0f, 0.5f, 0.0001f}, 0.05f));
-
-        // ---- Group B: Waveform Shaping (4 params) ----
+        // ---- Group B: Waveform Shaping (5 params) ----
         params.push_back(std::make_unique<AP>(PID{"oort_symmetry", 1}, "oort_symmetry",
             NRange{0.0f, 1.0f, 0.001f}, 0.5f));
 
@@ -355,26 +595,18 @@ public:
 
         static const juce::StringArray kDCOnOff {"Off","On"};
         params.push_back(std::make_unique<APC>(PID{"oort_dcBlock", 1}, "oort_dcBlock",
-            kDCOnOff, 1)); // default On
+            kDCOnOff, 1));
 
         params.push_back(std::make_unique<AP>(PID{"oort_pitchTrack", 1}, "oort_pitchTrack",
             NRange{0.0f, 1.0f, 0.001f}, 1.0f));
 
-        // ---- Group C: Markov Chain (4 params) ----
-        params.push_back(std::make_unique<AP>(PID{"oort_markovMix", 1}, "oort_markovMix",
-            NRange{0.0f, 1.0f, 0.001f}, 0.0f));
+        {
+            NRange r{20.0f, 800.0f, 0.1f};
+            r.setSkewForCentre(0.3f);
+            params.push_back(std::make_unique<AP>(PID{"oort_delayBase", 1}, "oort_delayBase", r, 110.0f));
+        }
 
-        params.push_back(std::make_unique<AP>(PID{"oort_stateMemory", 1}, "oort_stateMemory",
-            NRange{0.0f, 1.0f, 0.001f}, 0.3f));
-
-        static const juce::StringArray kResetTrig {"Off","On"};
-        params.push_back(std::make_unique<APC>(PID{"oort_resetTrigger", 1}, "oort_resetTrigger",
-            kResetTrig, 0));
-
-        params.push_back(std::make_unique<AP>(PID{"oort_convergePitch", 1}, "oort_convergePitch",
-            NRange{0.0f, 1.0f, 0.001f}, 0.0f));
-
-        // ---- Group D: Event Density (4 params) ----
+        // ---- Group C: Poisson Events (4 params) ----
         params.push_back(std::make_unique<AP>(PID{"oort_eventDensity", 1}, "oort_eventDensity",
             NRange{0.0f, 1.0f, 0.001f}, 0.0f));
 
@@ -390,7 +622,7 @@ public:
         params.push_back(std::make_unique<AP>(PID{"oort_densityJitter", 1}, "oort_densityJitter",
             NRange{0.0f, 1.0f, 0.001f}, 0.3f));
 
-        // ---- Group E: Filter + Filter Envelope (9 params) ----
+        // ---- Group D: Filter + Filter Envelope (9 params) ----
         {
             NRange r{20.0f, 20000.0f, 0.1f};
             r.setSkewForCentre(0.3f);
@@ -430,7 +662,7 @@ public:
             params.push_back(std::make_unique<AP>(PID{"oort_fltRel", 1}, "oort_fltRel", r, 0.4f));
         }
 
-        // ---- Group F: Amp Envelope + velTimbre (5 params) ----
+        // ---- Group E: Amp Envelope (5 params) ----
         {
             NRange r{0.0f, 10.0f, 0.001f};
             r.setSkewForCentre(0.3f);
@@ -454,9 +686,9 @@ public:
         params.push_back(std::make_unique<AP>(PID{"oort_velTimbre", 1}, "oort_velTimbre",
             NRange{0.0f, 1.0f, 0.001f}, 0.6f));
 
-        // ---- Group G: LFOs (8 params) ----
+        // ---- Group F: LFOs (8 params) ----
         static const juce::StringArray kLFOShapes  {"Sine","Tri","Saw","Square","S&H"};
-        static const juce::StringArray kLFOTargets {"Scatter","Intent","Filter Cutoff","Event Density"};
+        static const juce::StringArray kLFOTargets {"Solidarity","Intent","Filter Cutoff","Event Density"};
 
         {
             NRange r{0.01f, 20.0f, 0.001f};
@@ -468,7 +700,7 @@ public:
         params.push_back(std::make_unique<APC>(PID{"oort_lfo1Shape", 1}, "oort_lfo1Shape",
             kLFOShapes, 0));
         params.push_back(std::make_unique<APC>(PID{"oort_lfo1Target", 1}, "oort_lfo1Target",
-            kLFOTargets, 0)); // Scatter
+            kLFOTargets, 0)); // Solidarity
 
         {
             NRange r{0.01f, 20.0f, 0.001f};
@@ -482,24 +714,24 @@ public:
         params.push_back(std::make_unique<APC>(PID{"oort_lfo2Target", 1}, "oort_lfo2Target",
             kLFOTargets, 1)); // Intent
 
-        // ---- Group H: Mod Matrix (4 slots x 3 params = 12 params) ----
+        // ---- Group G: Mod Matrix (4 slots x 3 params = 12 params) ----
         static const juce::StringArray kOortModDests {
-            "Off", "Filter Cutoff", "Scatter", "Intent",
-            "Event Density", "Mutation Rate", "Amp Level"
+            "Off", "Filter Cutoff", "Solidarity", "Intent",
+            "Event Density", "Scatter", "Amp Level"
         };
         ModMatrix<4>::addParameters(params, "oort_", "Oort", kOortModDests);
 
-        // ---- Group I: Macros + Voice (7 params) ----
-        // M1=SOLIDARITY: inverted scatter + breakpoint spread
+        // ---- Group H: Macros + Voice (7 params) ----
+        // M1=SOLIDARITY: overall flocking strength
         params.push_back(std::make_unique<AP>(PID{"oort_macro1", 1}, "oort_macro1",
             NRange{0.0f, 1.0f, 0.001f}, 0.5f));
-        // M2=INTENT: distribution type morph
+        // M2=INTENT: Cage<->Xenakis axis
         params.push_back(std::make_unique<AP>(PID{"oort_macro2", 1}, "oort_macro2",
             NRange{0.0f, 1.0f, 0.001f}, 0.5f));
-        // M3=DRIFT: mutation rate + Markov memory
+        // M3=DRIFT: scatter + damping inverse
         params.push_back(std::make_unique<AP>(PID{"oort_macro3", 1}, "oort_macro3",
             NRange{0.0f, 1.0f, 0.001f}, 0.3f));
-        // M4=SPACE: filter cutoff + width
+        // M4=SPACE: filter cutoff
         params.push_back(std::make_unique<AP>(PID{"oort_macro4", 1}, "oort_macro4",
             NRange{0.0f, 1.0f, 0.001f}, 0.5f));
 
@@ -528,34 +760,29 @@ public:
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         // Group A
-        pBreakpoints   = apvts.getRawParameterValue("oort_breakpoints");
+        pAgentCount    = apvts.getRawParameterValue("oort_agentCount");
+        pSolidarity    = apvts.getRawParameterValue("oort_solidarity");
+        pIntent        = apvts.getRawParameterValue("oort_intent");
         pScatter       = apvts.getRawParameterValue("oort_scatter");
         pDistType      = apvts.getRawParameterValue("oort_distType");
-        pIntent        = apvts.getRawParameterValue("oort_intent");
-        pMutationRate  = apvts.getRawParameterValue("oort_mutationRate");
-        pAmpScatter    = apvts.getRawParameterValue("oort_ampScatter");
-        pTimeScatter   = apvts.getRawParameterValue("oort_timeScatter");
-        pStepFloor     = apvts.getRawParameterValue("oort_stepFloor");
+        pDamping       = apvts.getRawParameterValue("oort_damping");
+        pSeparation    = apvts.getRawParameterValue("oort_separation");
+        pCohesion      = apvts.getRawParameterValue("oort_cohesion");
 
         // Group B
         pSymmetry      = apvts.getRawParameterValue("oort_symmetry");
         pFoldAmt       = apvts.getRawParameterValue("oort_foldAmt");
         pDCBlock       = apvts.getRawParameterValue("oort_dcBlock");
         pPitchTrack    = apvts.getRawParameterValue("oort_pitchTrack");
+        pDelayBase     = apvts.getRawParameterValue("oort_delayBase");
 
         // Group C
-        pMarkovMix     = apvts.getRawParameterValue("oort_markovMix");
-        pStateMemory   = apvts.getRawParameterValue("oort_stateMemory");
-        pResetTrigger  = apvts.getRawParameterValue("oort_resetTrigger");
-        pConvergePitch = apvts.getRawParameterValue("oort_convergePitch");
-
-        // Group D
         pEventDensity  = apvts.getRawParameterValue("oort_eventDensity");
         pEventAmp      = apvts.getRawParameterValue("oort_eventAmp");
         pEventDecay    = apvts.getRawParameterValue("oort_eventDecay");
         pDensityJitter = apvts.getRawParameterValue("oort_densityJitter");
 
-        // Group E
+        // Group D
         pFltCutoff     = apvts.getRawParameterValue("oort_fltCutoff");
         pFltReso       = apvts.getRawParameterValue("oort_fltReso");
         pFltType       = apvts.getRawParameterValue("oort_fltType");
@@ -566,14 +793,14 @@ public:
         pFltSus        = apvts.getRawParameterValue("oort_fltSus");
         pFltRel        = apvts.getRawParameterValue("oort_fltRel");
 
-        // Group F
+        // Group E
         pAmpAtk        = apvts.getRawParameterValue("oort_ampAtk");
         pAmpDec        = apvts.getRawParameterValue("oort_ampDec");
         pAmpSus        = apvts.getRawParameterValue("oort_ampSus");
         pAmpRel        = apvts.getRawParameterValue("oort_ampRel");
         pVelTimbre     = apvts.getRawParameterValue("oort_velTimbre");
 
-        // Group G
+        // Group F
         pLfo1Rate      = apvts.getRawParameterValue("oort_lfo1Rate");
         pLfo1Depth     = apvts.getRawParameterValue("oort_lfo1Depth");
         pLfo1Shape     = apvts.getRawParameterValue("oort_lfo1Shape");
@@ -583,10 +810,10 @@ public:
         pLfo2Shape     = apvts.getRawParameterValue("oort_lfo2Shape");
         pLfo2Target    = apvts.getRawParameterValue("oort_lfo2Target");
 
-        // Group H
+        // Group G
         modMatrix.attachParameters(apvts, "oort_");
 
-        // Group I
+        // Group H
         pMacro1    = apvts.getRawParameterValue("oort_macro1");
         pMacro2    = apvts.getRawParameterValue("oort_macro2");
         pMacro3    = apvts.getRawParameterValue("oort_macro3");
@@ -635,76 +862,77 @@ public:
         const float macro3 = pMacro3 ? pMacro3->load() : 0.3f;
         const float macro4 = pMacro4 ? pMacro4->load() : 0.5f;
 
-        // M1=SOLIDARITY: inverted scatter multiplier
-        //   macro1=0 -> 2x scatter (chaotic), macro1=1 -> 0 scatter (focused/ordered)
-        const float solidarityScatterMult = 2.0f * (1.0f - macro1);
+        // M1=SOLIDARITY: overall flocking strength multiplier
+        // M2=INTENT: Cage<->Xenakis multiplier
+        // M3=DRIFT: scatter + inverse damping
+        // M4=SPACE: filter cutoff multiplier
 
-        // M2=INTENT: scales intent (distribution character morph)
-        const float intentMacroMult = macro2 * 2.0f;
+        // Group A: Flock core
+        const int agentCountIdx = pAgentCount ? static_cast<int>(pAgentCount->load()) : 2;
+        // Indices 0..6 -> 8,12,16,20,24,28,32
+        const int agentCountBase  = 8 + agentCountIdx * 4;
+        const int agentCount      = std::clamp(agentCountBase, 8, kOortMaxAgents);
 
-        // M3=DRIFT: scales mutationRate + convergePitch
-        const float driftMult = macro3 * 2.0f;
+        float solidarity = pSolidarity ? pSolidarity->load() : 0.5f;
+        solidarity = std::clamp(solidarity * (1.0f + macro1), 0.0f, 2.0f);
+        // EnvToMorph coupling modulates solidarity (tighter/looser flocking)
+        solidarity = std::clamp(solidarity + couplingEnvSolid, 0.0f, 2.0f);
 
-        // M4=SPACE: scales filter cutoff
-        const float spaceMult = 0.5f + macro4; // [0.5..1.5]
+        float intent = pIntent ? pIntent->load() : 0.5f;
+        intent = std::clamp(intent * (0.5f + macro2 * 1.5f), 0.0f, 1.0f);
 
-        // ---- Base GENDY params ----
-        // oort_breakpoints choice: index 0="4" ... index 12="16"
-        const int bpCountIdx = pBreakpoints ? static_cast<int>(pBreakpoints->load()) : 4;
-        const int bpCount = std::clamp(bpCountIdx + 4, 4, kOortMaxBP);
+        // M3=DRIFT: scatter increase + damping decrease
+        float scatter = pScatter ? pScatter->load() : 0.3f;
+        scatter = std::clamp(scatter * (1.0f + macro3 * 2.0f), 0.0f, 2.0f);
 
-        float scatter = pScatter ? pScatter->load() : 0.15f;
-        scatter = std::clamp(scatter * (solidarityScatterMult + 0.0001f), 0.0f, 2.0f);
+        const int   distType   = pDistType   ? static_cast<int>(pDistType->load())   : 0;
+        float       damping    = pDamping    ? pDamping->load()    : 0.95f;
+        // M3=DRIFT: lower damping (more runaway) when macro3 is high
+        damping = std::clamp(damping - macro3 * 0.15f, 0.5f, 1.0f);
 
-        const int   distType    = pDistType    ? static_cast<int>(pDistType->load())    : 0;
-        float       intent      = pIntent      ? pIntent->load()      : 0.5f;
-        intent = std::clamp(intent * intentMacroMult, 0.0f, 1.0f);
+        const float separation = pSeparation ? pSeparation->load() : 0.5f;
+        const float cohesion   = pCohesion   ? pCohesion->load()   : 0.5f;
 
-        float mutationRate = pMutationRate ? pMutationRate->load() : 0.3f;
-        mutationRate = std::clamp(mutationRate * driftMult, 0.0f, 2.0f);
+        // Group B
+        const float symmetry   = pSymmetry   ? pSymmetry->load()   : 0.5f;
+        const float foldAmt    = pFoldAmt    ? pFoldAmt->load()    : 0.0f;
+        const int   dcBlock    = pDCBlock    ? static_cast<int>(pDCBlock->load())  : 1;
+        const float pitchTrack = pPitchTrack ? pPitchTrack->load() : 1.0f;
+        const float delayBase  = pDelayBase  ? pDelayBase->load()  : 110.0f;
 
-        const float ampScatter   = pAmpScatter   ? pAmpScatter->load()   : 0.5f;
-        const float timeScatter  = pTimeScatter  ? pTimeScatter->load()  : 0.5f;
-        const float stepFloor    = pStepFloor    ? pStepFloor->load()    : 0.05f;
-        const float symmetry     = pSymmetry     ? pSymmetry->load()     : 0.5f;
-        const float foldAmt      = pFoldAmt      ? pFoldAmt->load()      : 0.0f;
-        const int   dcBlock      = pDCBlock      ? static_cast<int>(pDCBlock->load())  : 1;
-        const float pitchTrack   = pPitchTrack   ? pPitchTrack->load()   : 1.0f;
-        const float markovMix    = pMarkovMix    ? pMarkovMix->load()    : 0.0f;
-        const float stateMemory  = pStateMemory  ? pStateMemory->load()  : 0.3f;
-        const int   resetTrig    = pResetTrigger ? static_cast<int>(pResetTrigger->load()) : 0;
-        float       convergePitch= pConvergePitch? pConvergePitch->load(): 0.0f;
-        convergePitch = std::clamp(convergePitch * driftMult, 0.0f, 2.0f);
-
+        // Group C
         float eventDensity = pEventDensity ? pEventDensity->load() : 0.0f;
         // RhythmToBlend coupling drives Poisson event density
         eventDensity = std::clamp(eventDensity + std::fabs(couplingRhythm), 0.0f, 1.0f);
+        const float eventAmp      = pEventAmp      ? pEventAmp->load()      : 0.8f;
+        const float eventDecaySec = pEventDecay    ? pEventDecay->load()    : 0.02f;
+        const float densityJitter = pDensityJitter ? pDensityJitter->load() : 0.3f;
 
-        const float eventAmp     = pEventAmp     ? pEventAmp->load()     : 0.8f;
-        const float eventDecay   = pEventDecay   ? pEventDecay->load()   : 0.02f;
-        const float densityJitter= pDensityJitter? pDensityJitter->load(): 0.3f;
-
-        float baseCutoff = (pFltCutoff ? pFltCutoff->load() : 8000.0f) * spaceMult;
+        // Group D: filter
+        float baseCutoff = (pFltCutoff ? pFltCutoff->load() : 8000.0f);
+        // M4=SPACE: filter cutoff
+        baseCutoff *= (0.5f + macro4);
         // AmpToFilter coupling raises cutoff
         baseCutoff += couplingAmpFilter * 8000.0f;
         baseCutoff = std::clamp(baseCutoff, 20.0f, 20000.0f);
 
-        const float fltReso      = pFltReso      ? pFltReso->load()      : 0.1f;
-        const int   fltType      = pFltType      ? static_cast<int>(pFltType->load())  : 0;
-        const float fltEnvAmt    = pFltEnvAmt    ? pFltEnvAmt->load()    : 0.3f;
-        const float fltKeyTrack  = pFltKeyTrack  ? pFltKeyTrack->load()  : 0.5f;
-        const float fltAtk       = pFltAtk       ? pFltAtk->load()       : 0.01f;
-        const float fltDec       = pFltDec       ? pFltDec->load()       : 0.3f;
-        const float fltSus       = pFltSus       ? pFltSus->load()       : 0.0f;
-        const float fltRel       = pFltRel       ? pFltRel->load()       : 0.4f;
+        const float fltReso     = pFltReso    ? pFltReso->load()    : 0.1f;
+        const int   fltType     = pFltType    ? static_cast<int>(pFltType->load())  : 0;
+        const float fltEnvAmt   = pFltEnvAmt  ? pFltEnvAmt->load()  : 0.3f;
+        const float fltKeyTrack = pFltKeyTrack? pFltKeyTrack->load(): 0.5f;
+        const float fltAtk      = pFltAtk     ? pFltAtk->load()     : 0.01f;
+        const float fltDec      = pFltDec     ? pFltDec->load()     : 0.3f;
+        const float fltSus      = pFltSus     ? pFltSus->load()     : 0.0f;
+        const float fltRel      = pFltRel     ? pFltRel->load()     : 0.4f;
 
-        const float ampAtk       = pAmpAtk       ? pAmpAtk->load()       : 0.005f;
-        const float ampDec       = pAmpDec       ? pAmpDec->load()       : 0.4f;
-        const float ampSus       = pAmpSus       ? pAmpSus->load()       : 0.7f;
-        const float ampRel       = pAmpRel       ? pAmpRel->load()       : 0.6f;
-        const float velTimbre    = pVelTimbre    ? pVelTimbre->load()    : 0.6f;
+        // Group E: amp envelope
+        const float ampAtk   = pAmpAtk  ? pAmpAtk->load()  : 0.005f;
+        const float ampDec   = pAmpDec  ? pAmpDec->load()  : 0.4f;
+        const float ampSus   = pAmpSus  ? pAmpSus->load()  : 0.7f;
+        const float ampRel   = pAmpRel  ? pAmpRel->load()  : 0.6f;
+        const float velTimbre= pVelTimbre? pVelTimbre->load(): 0.6f;
 
-        // LFO rates: enforce floor 0.01 Hz (D005)
+        // Group F: LFOs (floor 0.01 Hz, D005)
         const float lfo1Rate  = std::max(0.01f, pLfo1Rate  ? pLfo1Rate->load()  : 0.5f);
         const float lfo1Depth = pLfo1Depth ? pLfo1Depth->load() : 0.0f;
         const int   lfo1Shape = pLfo1Shape ? static_cast<int>(pLfo1Shape->load()) : 0;
@@ -715,11 +943,12 @@ public:
         const int   lfo2Shape = pLfo2Shape ? static_cast<int>(pLfo2Shape->load()) : 2;
         const int   lfo2Tgt   = pLfo2Target? static_cast<int>(pLfo2Target->load()): 1;
 
+        // Voice / glide
         const int   voiceMode = pVoiceMode ? static_cast<int>(pVoiceMode->load()) : 2;
         const float glideTime = pGlide     ? pGlide->load()     : 0.0f;
         const int   glideMode = pGlideMode ? static_cast<int>(pGlideMode->load()) : 0;
 
-        // Glide coefficient (USE IT — Lesson 8)
+        // Glide coefficient — use it (Lesson 8)
         const float glideCoeff = (glideTime > 0.0001f)
             ? fastExp(-1.0f / (glideTime * sampleRateFloat))
             : 0.0f;
@@ -729,18 +958,12 @@ public:
             ? (eventDensity * 100.0f) / sampleRateFloat
             : 0.0f;
 
-        // Breakpoint duration clamp
-        // min: sampleRate/20000 (prevents aliasing above 20kHz)
-        // max: sampleRate/20 (ensures waveform stays in audible range)
-        const float bpDurMin = sampleRateFloat / 20000.0f;
-        const float bpDurMax = sampleRateFloat / 20.0f;
+        // Per-sample event decay coefficient
+        const float grainDecayCoeff = (eventDecaySec > 0.001f)
+            ? 1.0f - fastExp(-1.0f / (eventDecaySec * sampleRateFloat))
+            : 0.5f;
 
-        // EnvToMorph coupling modulates scatter (Distribution width)
-        scatter = std::clamp(scatter + std::fabs(couplingEnvScatter) * 0.5f, 0.0f, 2.0f);
-        // Store for coupling output (ch2)
-        lastScatter = std::clamp(scatter * 0.5f, 0.0f, 1.0f);
-
-        // ---- Mod matrix sources: gather from active voices ----
+        // ---- Gather mod matrix sources from active voices ----
         {
             float lfo1Sum = 0.0f, lfo2Sum = 0.0f, envSum = 0.0f;
             float velSum  = 0.0f, ktSum   = 0.0f;
@@ -771,16 +994,16 @@ public:
         }
 
         // ---- Apply mod matrix ----
-        // Destinations: 0=Off, 1=Filter Cutoff, 2=Scatter, 3=Intent,
-        //               4=Event Density, 5=Mutation Rate, 6=Amp Level
+        // Destinations: 0=Off, 1=Filter Cutoff, 2=Solidarity, 3=Intent,
+        //               4=Event Density, 5=Scatter, 6=Amp Level
         float modDestOffsets[7] = {};
         modMatrix.apply(blockModSrc, modDestOffsets);
 
-        baseCutoff    = std::clamp(baseCutoff   + modDestOffsets[1] * 8000.0f, 20.0f, 20000.0f);
-        scatter       = std::clamp(scatter      + modDestOffsets[2] * 0.5f,    0.0f,  2.0f);
-        intent        = std::clamp(intent       + modDestOffsets[3],           0.0f,  1.0f);
-        eventDensity  = std::clamp(eventDensity + modDestOffsets[4],           0.0f,  1.0f);
-        mutationRate  = std::clamp(mutationRate + modDestOffsets[5],           0.0f,  2.0f);
+        baseCutoff   = std::clamp(baseCutoff   + modDestOffsets[1] * 8000.0f, 20.0f, 20000.0f);
+        solidarity   = std::clamp(solidarity   + modDestOffsets[2],            0.0f,   2.0f);
+        intent       = std::clamp(intent       + modDestOffsets[3],            0.0f,   1.0f);
+        eventDensity = std::clamp(eventDensity + modDestOffsets[4],            0.0f,   1.0f);
+        scatter      = std::clamp(scatter      + modDestOffsets[5] * 0.5f,     0.0f,   2.0f);
         const float modAmpLevel = modDestOffsets[6];
 
         // CC1 mod wheel -> scatter (D006: expression input)
@@ -801,14 +1024,11 @@ public:
             const auto& msg    = midiEvent.getMessage();
             const int   msgPos = std::min(midiEvent.samplePosition, numSamples - 1);
 
-            // Render up to this MIDI event
             renderVoicesRange(writeL, writeR, midiSamplePos, msgPos,
-                              bpCount, scatter, distType, intent, mutationRate,
-                              ampScatter, timeScatter, stepFloor,
-                              symmetry, foldAmt, dcBlock, pitchTrack,
-                              markovMix, stateMemory, convergePitch,
-                              lambdaPerSample, eventAmp, eventDecay, densityJitter,
-                              bpDurMin, bpDurMax,
+                              agentCount, solidarity, intent, scatter,
+                              distType, damping, separation, cohesion,
+                              symmetry, foldAmt, dcBlock, pitchTrack, delayBase,
+                              lambdaPerSample, eventAmp, grainDecayCoeff, densityJitter,
                               baseCutoff, fltReso, fltType, fltEnvAmt, fltKeyTrack,
                               fltAtk, fltDec, fltSus, fltRel,
                               ampAtk, ampDec, ampSus, ampRel, velTimbre,
@@ -822,7 +1042,8 @@ public:
                 handleNoteOn(msg.getNoteNumber(), msg.getVelocity(),
                              ampAtk, ampDec, ampSus, ampRel,
                              fltAtk, fltDec, fltSus, fltRel,
-                             bpCount, voiceMode, glideCoeff, glideMode, resetTrig);
+                             agentCount, scatter, distType,
+                             voiceMode, glideCoeff, glideMode);
             }
             else if (msg.isNoteOff())
             {
@@ -844,12 +1065,10 @@ public:
 
         // Render remaining samples after last MIDI event
         renderVoicesRange(writeL, writeR, midiSamplePos, numSamples,
-                          bpCount, scatter, distType, intent, mutationRate,
-                          ampScatter, timeScatter, stepFloor,
-                          symmetry, foldAmt, dcBlock, pitchTrack,
-                          markovMix, stateMemory, convergePitch,
-                          lambdaPerSample, eventAmp, eventDecay, densityJitter,
-                          bpDurMin, bpDurMax,
+                          agentCount, solidarity, intent, scatter,
+                          distType, damping, separation, cohesion,
+                          symmetry, foldAmt, dcBlock, pitchTrack, delayBase,
+                          lambdaPerSample, eventAmp, grainDecayCoeff, densityJitter,
                           baseCutoff, fltReso, fltType, fltEnvAmt, fltKeyTrack,
                           fltAtk, fltDec, fltSus, fltRel,
                           ampAtk, ampDec, ampSus, ampRel, velTimbre,
@@ -857,161 +1076,55 @@ public:
                           lfo2Rate, lfo2Depth, lfo2Shape, lfo2Tgt,
                           glideCoeff, glideMode, modAmpLevel);
 
-        // ---- Cache last output samples for coupling ----
-        if (numSamples > 0)
-        {
-            lastSampleL = writeL[numSamples - 1];
-            lastSampleR = writeR[numSamples - 1];
-        }
+        // ---- Update cached coupling outputs ----
+        lastSampleL = writeL[numSamples - 1];
+        lastSampleR = writeR[numSamples - 1];
 
-        // ---- Coupling accumulator decay (0.999x per block — Lesson 10) ----
-        couplingAmpFilter  *= 0.999f;
-        couplingEnvScatter *= 0.999f;
-        couplingRhythm     *= 0.999f;
-        couplingFMBuf      *= 0.999f;
-
-        // ---- Update active voice count (atomic) ----
-        int av = 0;
+        // Compute flock coherence across active voices
+        float cohSum = 0.0f;
+        int cohCount = 0;
         for (auto& v : voices)
-            if (v.active) ++av;
-        activeVoiceCount_.store(av, std::memory_order_relaxed);
+        {
+            if (v.active)
+            {
+                cohSum += v.computeCoherence();
+                ++cohCount;
+            }
+        }
+        lastCoherence = (cohCount > 0) ? cohSum / static_cast<float>(cohCount) : 0.0f;
 
-        // SRO: SilenceGate analysis
+        // ---- Update silence gate and active voice count ----
+        int activeCount = 0;
+        for (auto& v : voices)
+            if (v.active) ++activeCount;
+        activeVoiceCount_.store(activeCount, std::memory_order_relaxed);
+
         analyzeForSilenceGate(buffer, numSamples);
+
+        // ---- Decay coupling accumulators (Lesson 10) ----
+        couplingFMVal     *= 0.999f;
+        couplingAmpFilter *= 0.999f;
+        couplingEnvSolid  *= 0.999f;
+        couplingRhythm    *= 0.999f;
+        couplingFMVal     = flushDenormal(couplingFMVal);
+        couplingAmpFilter = flushDenormal(couplingAmpFilter);
+        couplingEnvSolid  = flushDenormal(couplingEnvSolid);
+        couplingRhythm    = flushDenormal(couplingRhythm);
     }
 
 private:
     //==========================================================================
-    // PRNG — xorshift32 (fast, no allocation, per-voice)
+    // renderVoicesRange — render samples [startSample, endSample)
     //==========================================================================
-    static inline float xorRand(uint32_t& state) noexcept
-    {
-        state ^= state << 13u;
-        state ^= state >> 17u;
-        state ^= state << 5u;
-        return static_cast<float>(state) * 2.3283064365e-10f; // [0, 1)
-    }
 
-    //==========================================================================
-    // randomStep — generate one random step with the selected distribution.
-    //
-    // intent:     0 = Uniform, 1 = full shaped distribution
-    // scale:      overall step magnitude
-    // stepFloor:  minimum step magnitude (when non-zero)
-    //
-    // D003: Cauchy uses proper heavy-tail formula with hard clamp at +-4*scale.
-    //==========================================================================
-    static float randomStep(uint32_t& rng, int distType, float scale, float intent,
-                            float stepFloor) noexcept
-    {
-        const float u1 = std::max(1e-7f, xorRand(rng));
-        const float u2 = xorRand(rng);
-
-        // Uniform step (baseline for INTENT lerp)
-        const float uRaw = xorRand(rng);
-        const float uniformStep = (uRaw - 0.5f) * 2.0f * scale;
-
-        float shapedStep = uniformStep;
-        switch (distType)
-        {
-        case 0: // Gaussian — Box-Muller transform
-        {
-            float g = scale * std::sqrt(-2.0f * std::log(u1))
-                            * fastCos(kOortTwoPi * u2);
-            g = std::clamp(g, -4.0f * scale, 4.0f * scale);
-            shapedStep = g;
-            break;
-        }
-        case 1: // Cauchy — D003: gamma*tan(pi*(u-0.5)), hard clamp at +-4*scale
-        {
-            const float gamma = scale * 0.5f;
-            float c = gamma * std::tan(kOortPi * (u1 - 0.5f));
-            c = std::clamp(c, -4.0f * scale, 4.0f * scale);
-            shapedStep = c;
-            break;
-        }
-        case 2: // Logistic
-        {
-            const float s = scale * 0.3f;
-            const float denom = std::max(1e-7f, 1.0f - u1);
-            float l = s * std::log(u1 / denom);
-            l = std::clamp(l, -4.0f * scale, 4.0f * scale);
-            shapedStep = l;
-            break;
-        }
-        case 3: // Uniform (explicit)
-        default:
-            shapedStep = uniformStep;
-            break;
-        }
-
-        // INTENT morph: lerp from Uniform (intent=0) to shaped (intent=1)
-        float step = lerp(uniformStep, shapedStep, intent);
-
-        // Apply step floor (minimum step size)
-        if (stepFloor > 0.0f && step != 0.0f && std::fabs(step) < stepFloor)
-            step = (step > 0.0f) ? stepFloor : -stepFloor;
-
-        return step;
-    }
-
-    //==========================================================================
-    // mutateCycle — Markov random walk on all breakpoints after one full cycle
-    //==========================================================================
-    void mutateCycle(OortVoice& v, int bpCount, float scatter, int distType, float intent,
-                     float ampScatterMult, float timeScatterMult, float stepFloor,
-                     float markovMix, float stateMemory, float mutationRate,
-                     float convergePitch, float basePeriod,
-                     float bpDurMin, float bpDurMax, float symmetry) noexcept
-    {
-        // mutationRate gates how fully we apply the walk (probabilistic skip)
-        const float muteGate = xorRand(v.rng);
-        if (muteGate > mutationRate) return;
-
-        for (int i = 0; i < bpCount; ++i)
-        {
-            // ---- Amplitude mutation ----
-            float ampStep = randomStep(v.rng, distType, scatter * ampScatterMult, intent, stepFloor);
-            // Markov: blend with memory of previous step
-            const float finalAmpStep = lerp(ampStep, v.prevAmpStep * stateMemory, markovMix);
-            v.prevAmpStep = finalAmpStep;
-            float amp = v.breakpoints[i].amplitude + finalAmpStep;
-            // Symmetry bias: shifts the clamp center
-            amp += (symmetry - 0.5f) * 0.1f;
-            amp = std::clamp(amp, -1.0f, 1.0f);
-            v.breakpoints[i].amplitude = amp;
-
-            // ---- Duration mutation ----
-            float timeStep = randomStep(v.rng, distType, scatter * timeScatterMult, intent, stepFloor);
-            const float finalTimeStep = lerp(timeStep, v.prevTimeStep * stateMemory, markovMix);
-            v.prevTimeStep = finalTimeStep;
-            float dur = v.breakpoints[i].duration
-                      + finalTimeStep * std::max(1.0f, basePeriod) * 0.1f;
-
-            // convergePitch: bias durations toward harmonic ratios of base period
-            if (convergePitch > 0.0f && basePeriod > 0.0f && bpCount > 0)
-            {
-                const float harmTarget = basePeriod / static_cast<float>(bpCount);
-                dur = lerp(dur, harmTarget, convergePitch * 0.3f);
-            }
-
-            dur = flushDenormal(dur);
-            dur = std::clamp(dur, bpDurMin, bpDurMax);
-            v.breakpoints[i].duration = dur;
-        }
-    }
-
-    //==========================================================================
-    // renderVoicesRange — render all active voices from [startSample, endSample)
-    //==========================================================================
-    void renderVoicesRange(float* writeL, float* writeR, int startSample, int endSample,
-                           int bpCount, float scatter, int distType, float intent, float mutationRate,
-                           float ampScatter, float timeScatter, float stepFloor,
-                           float symmetry, float foldAmt, int dcBlock, float pitchTrack,
-                           float markovMix, float stateMemory, float convergePitch,
-                           float lambdaPerSample, float eventAmp, float eventDecay,
+    void renderVoicesRange(float* writeL, float* writeR,
+                           int startSample, int endSample,
+                           int agentCount, float solidarity, float intent, float scatter,
+                           int distType, float damping, float separation, float cohesion,
+                           float symmetry, float foldAmt, int dcBlock,
+                           float pitchTrack, float delayBase,
+                           float lambdaPerSample, float eventAmp, float grainDecayCoeff,
                            float densityJitter,
-                           float bpDurMin, float bpDurMax,
                            float baseCutoff, float fltReso, int fltType,
                            float fltEnvAmt, float fltKeyTrack,
                            float fltAtk, float fltDec, float fltSus, float fltRel,
@@ -1019,8 +1132,7 @@ private:
                            float velTimbre,
                            float lfo1Rate, float lfo1Depth, int lfo1Shape, int lfo1Tgt,
                            float lfo2Rate, float lfo2Depth, int lfo2Shape, int lfo2Tgt,
-                           float glideCoeff, int /*glideMode*/,
-                           float modAmpLevel) noexcept
+                           float glideCoeff, int glideMode, float modAmpLevel) noexcept
     {
         if (startSample >= endSample) return;
 
@@ -1028,153 +1140,167 @@ private:
         {
             if (!v.active) continue;
 
-            // ---- Set LFO rates and shapes ----
+            // ---- agentCount: update live if changed (D004 — every param affects audio) ----
+            // If the agent count knob has changed, reinitialise to match. We only change the
+            // count when it differs to avoid resetting the flock on every block.
+            if (v.agentCount != agentCount && agentCount >= 1 && agentCount <= kOortMaxAgents)
+            {
+                // Preserve existing positions for the agents that remain; new ones interpolate
+                const int oldN = v.agentCount;
+                const int newN = agentCount;
+                if (newN > oldN)
+                {
+                    for (int i = oldN; i < newN; ++i)
+                    {
+                        // Insert new agents by interpolating between their neighbours
+                        const float t = static_cast<float>(i) / static_cast<float>(newN - 1);
+                        const float srcPos = (oldN > 1)
+                            ? lerp(v.agents[0].position, v.agents[oldN - 1].position, t)
+                            : 0.0f;
+                        v.agents[i].position = std::clamp(srcPos, -1.0f, 1.0f);
+                        v.agents[i].velocity = v.agents[oldN > 0 ? oldN - 1 : 0].velocity * 0.5f;
+                    }
+                }
+                v.agentCount = newN;
+                v.readIdx    = std::min(v.readIdx, std::max(0, newN - 1));
+            }
+
+            // ---- Configure LFOs (per block) ----
             v.lfo1.setRate(lfo1Rate, sampleRateFloat);
             v.lfo1.setShape(lfo1Shape);
             v.lfo2.setRate(lfo2Rate, sampleRateFloat);
             v.lfo2.setShape(lfo2Shape);
 
-            // ---- Update envelope parameters ----
+            // ---- Configure envelopes ----
             v.ampEnv.setParams(ampAtk, ampDec, ampSus, ampRel, sampleRateFloat);
             v.filterEnv.setParams(fltAtk, fltDec, fltSus, fltRel, sampleRateFloat);
 
-            // ---- D001: Velocity -> Timbre (narrows scatter at high velocity) ----
-            const float velScatter = scatter * (1.0f - velTimbre * v.velocity);
-
-            // ---- Target frequency + base period ----
-            const float targetFreq = midiToFreq(v.note);
-            const float basePeriod = sampleRateFloat / std::max(1.0f, v.glideBaseFreq);
-
-            // ---- Filter coefficients update counter ----
-            int sampleIdx = startSample;
-
-            for (int i = startSample; i < endSample; ++i, ++sampleIdx)
+            for (int s = startSample; s < endSample; ++s)
             {
-                // ---- Tick LFOs every sample (Lesson 3: ALL smoothers per-sample) ----
-                const float lfo1Val = v.lfo1.process();
-                const float lfo2Val = v.lfo2.process();
-                v.lastLfo1Val = lfo1Val;
-                v.lastLfo2Val = lfo2Val;
+                // ---- LFO tick (block-rate LFOs on engine, Lesson 2) ----
+                const float lfo1Out = v.lfo1.process();
+                const float lfo2Out = v.lfo2.process();
+                v.lastLfo1Val = lfo1Out;
+                v.lastLfo2Val = lfo2Out;
 
-                // ---- Apply LFO modulation to target parameters ----
-                // lfoTarget: 0=Scatter, 1=Intent, 2=FilterCutoff, 3=EventDensity
-                const float lfo1Effect = lfo1Val * lfo1Depth;
-                const float lfo2Effect = lfo2Val * lfo2Depth;
+                // ---- Apply LFO modulation to targets ----
+                float effSolidarity  = solidarity;
+                float effIntent      = intent;
+                float effCutoff      = baseCutoff;
+                float effEventDensity= lambdaPerSample;
 
-                float sampScatter     = velScatter;
-                float sampIntent      = intent;
-                float sampCutOff      = baseCutoff;
-                float sampLambda      = lambdaPerSample;
-
+                // LFO1 target
+                const float lfo1Mod = lfo1Out * lfo1Depth;
                 switch (lfo1Tgt)
                 {
-                case 0: sampScatter = std::clamp(sampScatter + lfo1Effect * 0.5f, 0.0f, 2.0f); break;
-                case 1: sampIntent  = std::clamp(sampIntent  + lfo1Effect,        0.0f, 1.0f); break;
-                case 2: sampCutOff  = std::clamp(sampCutOff  + lfo1Effect * 4000.0f, 20.0f, 20000.0f); break;
-                case 3: sampLambda  = std::clamp(sampLambda  + lfo1Effect * (100.0f / sampleRateFloat), 0.0f, 1.0f); break;
+                case 0: effSolidarity   = std::clamp(solidarity   + lfo1Mod * 0.5f, 0.0f, 2.0f); break;
+                case 1: effIntent       = std::clamp(intent       + lfo1Mod * 0.3f, 0.0f, 1.0f); break;
+                case 2: effCutoff       = std::clamp(baseCutoff   + lfo1Mod * 8000.0f, 20.0f, 20000.0f); break;
+                case 3: effEventDensity = std::clamp(lambdaPerSample + lfo1Mod * 0.001f, 0.0f, 0.01f); break;
                 default: break;
                 }
+
+                // LFO2 target
+                const float lfo2Mod = lfo2Out * lfo2Depth;
                 switch (lfo2Tgt)
                 {
-                case 0: sampScatter = std::clamp(sampScatter + lfo2Effect * 0.5f, 0.0f, 2.0f); break;
-                case 1: sampIntent  = std::clamp(sampIntent  + lfo2Effect,        0.0f, 1.0f); break;
-                case 2: sampCutOff  = std::clamp(sampCutOff  + lfo2Effect * 4000.0f, 20.0f, 20000.0f); break;
-                case 3: sampLambda  = std::clamp(sampLambda  + lfo2Effect * (100.0f / sampleRateFloat), 0.0f, 1.0f); break;
+                case 0: effSolidarity   = std::clamp(effSolidarity  + lfo2Mod * 0.5f, 0.0f, 2.0f); break;
+                case 1: effIntent       = std::clamp(effIntent       + lfo2Mod * 0.3f, 0.0f, 1.0f); break;
+                case 2: effCutoff       = std::clamp(effCutoff       + lfo2Mod * 8000.0f, 20.0f, 20000.0f); break;
+                case 3: effEventDensity = std::clamp(effEventDensity + lfo2Mod * 0.001f, 0.0f, 0.01f); break;
                 default: break;
                 }
 
-                // ---- Glide: smooth pitch toward target (USE IT — Lesson 8) ----
-                if (glideCoeff > 0.0f)
-                {
-                    v.glideBaseFreq = lerp(targetFreq, v.glideBaseFreq, glideCoeff);
-                    v.glideBaseFreq = flushDenormal(v.glideBaseFreq);
-                }
+                // ---- Glide: smooth base frequency (Lesson 8) ----
+                // glideMode=0 (Legato): glide only when this voice is actively gliding (set
+                //   in handleNoteOn when the voice was already playing).
+                // glideMode=1 (Always): always apply portamento from the previous note.
+                const float targetFreq = midiToFreq(v.note);
+                // Effective glide coeff: Always mode uses full coeff; Legato mode uses coeff
+                // only when the voice is marked as gliding (flag set in handleNoteOn).
+                const float effGlideCoeff = (glideMode == 1) ? glideCoeff
+                                          : (v.gliding ? glideCoeff : 0.0f);
+                if (effGlideCoeff > 0.0f)
+                    v.glideBaseFreq = v.glideBaseFreq * effGlideCoeff + targetFreq * (1.0f - effGlideCoeff);
                 else
-                {
                     v.glideBaseFreq = targetFreq;
+                v.glideBaseFreq = flushDenormal(v.glideBaseFreq);
+
+                // ---- Compute cycle period from pitch ----
+                const float baseFreq = (pitchTrack > 0.0f)
+                    ? lerp(delayBase, v.glideBaseFreq, pitchTrack)
+                    : delayBase;
+                v.cyclePeriod = std::max(2.0f, sampleRateFloat / std::max(0.1f, baseFreq));
+
+                // ---- Read waveform from current agent positions ----
+                // Linear interpolation between agents in index order
+                const int   n       = v.agentCount;
+                const float stepLen = v.cyclePeriod / static_cast<float>(n);
+
+                // How many samples into the current agent segment?
+                float raw = 0.0f;
+                if (n > 1)
+                {
+                    // Linear interp between agent[readIdx] and agent[(readIdx+1) % n]
+                    const int   nextIdx = (v.readIdx + 1) % n;
+                    // Symmetry bias: shift all agent positions toward positive (symmetry=0.5 = neutral)
+                    const float symBias = (symmetry - 0.5f) * 0.5f;
+                    const float pA = std::clamp(v.agents[v.readIdx].position + symBias, -1.0f, 1.0f);
+                    const float pB = std::clamp(v.agents[nextIdx].position   + symBias, -1.0f, 1.0f);
+                    raw = lerp(pA, pB, v.agentPhase);
+                }
+                else if (n == 1)
+                {
+                    raw = v.agents[0].position;
                 }
 
-                // ---- GENDY waveform sample generation ----
-                // Current segment duration; guard against zero
-                const float dur = std::max(1.0f, v.breakpoints[v.bpIdx].duration);
-
-                // Phase increment — with optional pitch tracking
-                float phaseInc = 1.0f / dur;
-                if (pitchTrack > 0.0f)
+                // Advance position within current agent segment
+                v.agentPhase += 1.0f / stepLen;
+                if (v.agentPhase >= 1.0f)
                 {
-                    // Compute total cycle duration (sum of all breakpoint durations)
-                    float totalDur = 0.0f;
-                    for (int b = 0; b < bpCount; ++b)
-                        totalDur += v.breakpoints[b].duration;
-                    totalDur = std::max(1.0f, totalDur);
-
-                    // Target cycle duration from MIDI pitch
-                    const float targetCycLen = (v.glideBaseFreq > 0.0f)
-                        ? (sampleRateFloat / v.glideBaseFreq)
-                        : basePeriod;
-
-                    // Scale phaseInc so that total cycle = targetCycLen
-                    const float scaleFactor = totalDur / std::max(1.0f, targetCycLen);
-                    phaseInc *= lerp(1.0f, scaleFactor, pitchTrack);
-                    phaseInc = std::max(1e-7f, phaseInc);
+                    v.agentPhase -= 1.0f;
+                    v.readIdx = (v.readIdx + 1) % std::max(1, n);
                 }
 
-                // AudioToFM coupling: FM-like modulation of period
-                if (std::fabs(v.fmCouplingAccum) > 1e-6f)
+                // Advance full cycle counter
+                v.cyclePhase += 1.0f / v.cyclePeriod;
+                if (v.cyclePhase >= 1.0f)
                 {
-                    phaseInc *= (1.0f + v.fmCouplingAccum * 0.5f);
-                    phaseInc = std::max(1e-7f, phaseInc);
+                    v.cyclePhase -= 1.0f;
+                    // ---- Per-cycle Boids update ----
+                    // velTimbre (D001): velocity scales scatter ongoing — higher velocity
+                    // = more perturbation per cycle = brighter, more agitated timbre
+                    const float velScatterMod = scatter * (1.0f + v.velocity * velTimbre);
+                    v.updateFlock(effSolidarity, effIntent, velScatterMod,
+                                  separation, cohesion, damping,
+                                  distType, v.audioToFMAccum);
                 }
 
-                v.bpPhase += phaseInc;
-
-                // Interpolated amplitude between current and next breakpoint
-                const int nextBpIdx = (v.bpIdx + 1) % bpCount;
-                float sample = lerp(v.breakpoints[v.bpIdx].amplitude,
-                                    v.breakpoints[nextBpIdx].amplitude,
-                                    std::clamp(v.bpPhase, 0.0f, 1.0f));
-
-                // ---- Advance to next breakpoint if phase crossed 1.0 ----
-                if (v.bpPhase >= 1.0f)
+                // ---- Poisson event layer ----
+                float poissonOut = 0.0f;
+                if (effEventDensity > 0.0f)
                 {
-                    v.bpPhase -= 1.0f;
-                    v.bpIdx = nextBpIdx;
-
-                    // If we've completed a full cycle (wrapped to index 0), mutate
-                    if (v.bpIdx == 0)
+                    if (!v.grain.active)
                     {
-                        mutateCycle(v, bpCount, sampScatter, distType, sampIntent,
-                                    ampScatter, timeScatter, stepFloor,
-                                    markovMix, stateMemory, mutationRate,
-                                    convergePitch, basePeriod,
-                                    bpDurMin, bpDurMax, symmetry);
-                    }
-                }
+                        v.poissonTimer -= 1.0f;
+                        if (v.poissonTimer <= 0.0f)
+                        {
+                            v.grain.active     = true;
+                            v.grain.amplitude  = eventAmp;
+                            v.grain.level      = 1.0f;
+                            v.grain.decayCoeff = grainDecayCoeff;
 
-                // ---- Poisson event overlay ----
-                if (sampLambda > 0.0f)
-                {
-                    v.poissonTimer -= 1.0f;
-                    if (v.poissonTimer <= 0.0f)
-                    {
-                        // Trigger a new grain event
-                        v.grain.active    = true;
-                        v.grain.amplitude = eventAmp;
-                        v.grain.level     = 1.0f;
-                        const float decaySamples = std::max(1.0f, eventDecay * sampleRateFloat);
-                        v.grain.decayCoeff = 1.0f - fastExp(-1.0f / decaySamples);
-
-                        // Poisson inter-event: exponential(1/lambda), scaled
-                        const float u = std::max(1e-7f, xorRand(v.rng));
-                        const float meanInterval = 1.0f / std::max(1e-7f, sampLambda);
-                        const float jitter = densityJitter * meanInterval
-                                           * (xorRand(v.rng) - 0.5f) * 2.0f;
-                        v.poissonTimer = std::max(1.0f, -std::log(u) * meanInterval + jitter);
+                            // Next event time: Poisson (exponential inter-arrival)
+                            const float u = std::max(0.001f, v.nextRandomUnipolar());
+                            const float jitter = 1.0f + densityJitter * (v.nextRandom() * 0.5f);
+                            const float lambda = effEventDensity;
+                            v.poissonTimer = (-std::log(u) / std::max(lambda, 1e-9f)) * jitter;
+                        }
                     }
 
                     if (v.grain.active)
                     {
-                        sample += v.grain.level * v.grain.amplitude;
+                        poissonOut = v.grain.level * v.grain.amplitude;
                         v.grain.level -= v.grain.level * v.grain.decayCoeff;
                         v.grain.level  = flushDenormal(v.grain.level);
                         if (v.grain.level < 1e-5f)
@@ -1185,72 +1311,76 @@ private:
                     }
                 }
 
-                // ---- Wavefold ----
-                if (foldAmt > 0.0f)
-                {
-                    const float foldGain = 1.0f + foldAmt * 3.0f;
-                    sample *= foldGain;
-                    // Fold by reflecting outside [-1, 1]
-                    while (sample >  1.0f) sample = 2.0f  - sample;
-                    while (sample < -1.0f) sample = -2.0f - sample;
-                }
+                // Mix flock waveform + Poisson events
+                float sig = raw + poissonOut;
 
-                // ---- DC blocker: first-order HPF at ~5 Hz (Lesson: essential for Cauchy) ----
-                // y[n] = x[n] - x[n-1] + 0.995 * y[n-1]
-                if (dcBlock == 1)
+                // ---- DC Block ----
+                if (dcBlock)
                 {
-                    const float dcOut = sample - v.dcBlockX + 0.995f * v.dcBlockY;
-                    v.dcBlockX = sample;
+                    // First-order highpass at ~5 Hz
+                    constexpr float dcCoeff = 0.9997f;
+                    const float dcOut = sig - v.dcBlockX + dcCoeff * v.dcBlockY;
+                    v.dcBlockX = sig;
                     v.dcBlockY = flushDenormal(dcOut);
-                    sample = dcOut;
+                    sig = dcOut;
                 }
 
-                // ---- Filter coefficient update every 16 samples (Lesson 4) ----
-                if ((sampleIdx & 15) == 0)
+                // ---- Wavefold ----
+                if (foldAmt > 0.001f)
                 {
-                    const float fltEnvLevel = v.filterEnv.getLevel();
-                    const float keyTrackHz  = fltKeyTrack * v.keyTrack * 2000.0f;
-                    float cutoff = sampCutOff
-                                 + fltEnvAmt * fltEnvLevel * 8000.0f
-                                 + keyTrackHz;
-                    cutoff = std::clamp(cutoff, 20.0f, 20000.0f);
-
-                    CytomicSVF::Mode mode = CytomicSVF::Mode::LowPass;
-                    switch (fltType)
-                    {
-                    case 1: mode = CytomicSVF::Mode::HighPass; break;
-                    case 2: mode = CytomicSVF::Mode::BandPass; break;
-                    case 3: mode = CytomicSVF::Mode::Notch;    break;
-                    default: break;
-                    }
-                    v.filterL.setMode(mode);
-                    v.filterR.setMode(mode);
-                    v.filterL.setCoefficients_fast(cutoff, fltReso, sampleRateFloat);
-                    v.filterR.setCoefficients_fast(cutoff, fltReso, sampleRateFloat);
+                    const float foldGain = 1.0f + foldAmt * 4.0f;
+                    sig = sig * foldGain;
+                    // Fold by reflecting through ±1 boundaries
+                    while (sig > 1.0f)  sig = 2.0f - sig;
+                    while (sig < -1.0f) sig = -2.0f - sig;
+                    sig = std::clamp(sig, -1.0f, 1.0f);
                 }
 
-                // Tick filter envelope every sample (Lesson 3)
-                v.filterEnv.process();
-
-                // ---- Filter ----
-                const float sampleL = v.filterL.processSample(sample);
-                const float sampleR = v.filterR.processSample(sample);
-
-                // ---- Amp envelope ----
+                // ---- Envelope ticks ----
                 const float ampLevel = v.ampEnv.process();
+                const float fltLevel = v.filterEnv.process();
 
-                // Deactivate voice when envelope finishes
                 if (!v.ampEnv.isActive())
                 {
                     v.active    = false;
                     v.releasing = false;
+                    break;
                 }
 
-                // ---- VCA: amp envelope * (1 + amp mod offset) ----
-                const float gain = ampLevel * std::clamp(1.0f + modAmpLevel * 0.5f, 0.0f, 2.0f);
+                // ---- Filter ----
+                // Update filter coefficients every 16 samples (Lesson 4)
+                ++v.filterCoeffCounter;
+                if ((v.filterCoeffCounter & 15) == 0)
+                {
+                    const float keyOffset = v.keyTrack * fltKeyTrack * 4800.0f; // ±4800 Hz at ±1 keytrack
+                    // fltEnvAmt is bipolar: use != 0 (Lesson, bipolar mod)
+                    const float envOffset = (fltEnvAmt != 0.0f)
+                        ? fltLevel * fltEnvAmt * 8000.0f
+                        : 0.0f;
+                    const float fCutoff = std::clamp(effCutoff + keyOffset + envOffset, 20.0f, 20000.0f);
 
-                writeL[i] += sampleL * gain;
-                writeR[i] += sampleR * gain;
+                    const CytomicSVF::Mode fltMode =
+                        (fltType == 1) ? CytomicSVF::Mode::HighPass :
+                        (fltType == 2) ? CytomicSVF::Mode::BandPass :
+                        (fltType == 3) ? CytomicSVF::Mode::Notch    :
+                                         CytomicSVF::Mode::LowPass;
+
+                    v.filterL.setMode(fltMode);
+                    v.filterR.setMode(fltMode);
+                    v.filterL.setCoefficients_fast(fCutoff, fltReso, sampleRateFloat);
+                    v.filterR.setCoefficients_fast(fCutoff, fltReso, sampleRateFloat);
+                }
+
+                float sigL = v.filterL.processSample(sig);
+                float sigR = v.filterR.processSample(sig);
+
+                // ---- VCA ----
+                const float gain = ampLevel * v.velocity * (1.0f + modAmpLevel);
+                sigL *= gain;
+                sigR *= gain;
+
+                writeL[s] += sigL;
+                writeR[s] += sigR;
             }
         }
     }
@@ -1258,120 +1388,88 @@ private:
     //==========================================================================
     // handleNoteOn
     //==========================================================================
+
     void handleNoteOn(int note, int midiVel,
                       float ampAtk, float ampDec, float ampSus, float ampRel,
                       float fltAtk, float fltDec, float fltSus, float fltRel,
-                      int bpCount, int voiceMode, float glideCoeff, int glideMode,
-                      int resetTrig) noexcept
+                      int agentCount, float scatter, int distType,
+                      int voiceMode, float glideCoeff, int glideMode) noexcept
     {
-        const float vel = static_cast<float>(midiVel) / 127.0f;
-        const float targetFreq = midiToFreq(note);
+        const float vel = midiVel / 127.0f;
 
-        // Determine max polyphony from voiceMode
-        // 0=Mono, 1=Legato, 2=Poly4, 3=Poly8
-        const int maxVoices = (voiceMode == 0 || voiceMode == 1) ? 1
-                            : (voiceMode == 2) ? 4
-                            : 8;
+        // Determine max polyphony
+        const int maxPoly = (voiceMode == 0 || voiceMode == 1) ? 1
+                          : (voiceMode == 2)                   ? 4
+                                                               : 8;
 
-        // ---- Voice allocation ----
-        OortVoice* target = nullptr;
+        // Find a free voice or steal the oldest
+        int idx = -1;
 
         if (voiceMode == 0 || voiceMode == 1)
         {
             // Mono/Legato: always use voice 0
-            target = &voices[0];
+            idx = 0;
         }
         else
         {
-            // Poly: find free voice
-            for (int vi = 0; vi < maxVoices && vi < kOortMaxVoices; ++vi)
+            // Poly: find free voice first
+            for (int i = 0; i < maxPoly; ++i)
             {
-                if (!voices[vi].active)
+                if (!voices[i].active)
                 {
-                    target = &voices[vi];
+                    idx = i;
                     break;
                 }
             }
-            // No free voice: steal a releasing voice
-            if (target == nullptr)
-            {
-                for (int vi = 0; vi < maxVoices && vi < kOortMaxVoices; ++vi)
-                {
-                    if (voices[vi].releasing)
-                    {
-                        target = &voices[vi];
-                        break;
-                    }
-                }
-            }
-            // Still none: steal voice 0 (oldest)
-            if (target == nullptr)
-                target = &voices[0];
+            // If none free, steal voice 0 (simple steal)
+            if (idx == -1)
+                idx = 0;
         }
 
-        if (target == nullptr) return;
+        auto& v = voices[idx];
+        const float prevFreq = v.glideBaseFreq;
 
-        const bool isLegato = (voiceMode == 1) && target->active;
-        const float prevFreq = target->glideBaseFreq;
+        // Apply glide: flag voice as gliding if legato mode+was active, or glideMode=Always
+        const bool doGlide = (glideCoeff > 0.0f) &&
+                             ((glideMode == 1) || (voiceMode == 1 && v.active));
+        v.gliding = doGlide;
+        if (!doGlide)
+            v.glideBaseFreq = midiToFreq(note);
+        else
+            v.glideBaseFreq = prevFreq; // let the per-sample smoother handle it
 
-        // ---- Reset/retrigger breakpoints ----
-        if (resetTrig == 1 || !isLegato)
+        v.note     = note;
+        v.velocity = vel;
+        v.keyTrack = (static_cast<float>(note) - 60.0f) / 60.0f;
+        v.active   = true;
+        v.releasing= false;
+
+        // Legato retrigger vs fresh start
+        if (voiceMode == 1 && v.ampEnv.isActive())
         {
-            const float initPeriod = sampleRateFloat / std::max(1.0f, targetFreq);
-            const float durPerBP   = initPeriod / std::max(1.0f, static_cast<float>(bpCount));
-            for (int b = 0; b < bpCount && b < kOortMaxBP; ++b)
-            {
-                const float phase = static_cast<float>(b) / static_cast<float>(bpCount);
-                target->breakpoints[b].amplitude = fastSin(phase * kOortTwoPi);
-                target->breakpoints[b].duration  = std::max(1.0f, durPerBP);
-            }
-            target->bpIdx        = 0;
-            target->bpPhase      = 0.0f;
-            target->prevAmpStep  = 0.0f;
-            target->prevTimeStep = 0.0f;
-        }
-
-        target->active    = true;
-        target->releasing = false;
-        target->note      = note;
-        target->velocity  = vel;
-        target->keyTrack  = (static_cast<float>(note) - 60.0f) / 60.0f;
-        target->fmCouplingAccum = 0.0f;
-        target->grain.active = false;
-
-        // ---- Glide: set starting frequency ----
-        // glideMode=0 (Legato): only glide on legato transitions
-        // glideMode=1 (Always): always glide from previous pitch
-        if (glideMode == 1 || isLegato)
-        {
-            target->glideBaseFreq = (prevFreq > 0.0f) ? prevFreq : targetFreq;
+            v.ampEnv.retriggerFrom(v.ampEnv.getLevel(), ampAtk, ampDec, ampSus, ampRel);
+            v.filterEnv.retriggerFrom(v.filterEnv.getLevel(), fltAtk, fltDec, fltSus, fltRel);
         }
         else
         {
-            target->glideBaseFreq = targetFreq;
+            v.ampEnv.setParams(ampAtk, ampDec, ampSus, ampRel, sampleRateFloat);
+            v.filterEnv.setParams(fltAtk, fltDec, fltSus, fltRel, sampleRateFloat);
+            v.ampEnv.noteOn();
+            v.filterEnv.noteOn();
         }
 
-        // ---- Trigger envelopes ----
-        if (isLegato)
-        {
-            target->ampEnv.retriggerFrom(target->ampEnv.getLevel(),
-                                         ampAtk, ampDec, ampSus, ampRel);
-        }
-        else
-        {
-            target->ampEnv.setParams(ampAtk, ampDec, ampSus, ampRel, sampleRateFloat);
-            target->ampEnv.noteOn();
-        }
-        target->filterEnv.setParams(fltAtk, fltDec, fltSus, fltRel, sampleRateFloat);
-        target->filterEnv.noteOn();
+        // Velocity -> initial agent scatter + excitation energy (D001)
+        const float velScatter = scatter * (1.0f + vel * (pVelTimbre ? pVelTimbre->load() : 0.6f));
+        v.initAgents(agentCount, velScatter, vel, distType);
+        v.cyclePeriod = sampleRateFloat / midiToFreq(note);
 
-        // Randomise Poisson timer to avoid sync on attack
-        target->poissonTimer = xorRand(target->rng) * 100.0f + 1.0f;
+        wakeSilenceGate();
     }
 
     //==========================================================================
     // handleNoteOff
     //==========================================================================
+
     void handleNoteOff(int note) noexcept
     {
         for (auto& v : voices)
@@ -1381,108 +1479,102 @@ private:
                 v.releasing = true;
                 v.ampEnv.noteOff();
                 v.filterEnv.noteOff();
+                break;
             }
         }
     }
 
     //==========================================================================
-    // Data members
+    // State
     //==========================================================================
 
     float sampleRateFloat = 44100.0f;
-    int   maxBlock = 512;
+    int   maxBlock        = 512;
 
     std::array<OortVoice, kOortMaxVoices> voices;
 
     // Coupling accumulators
-    float couplingFMBuf      = 0.0f;
+    float couplingFMVal      = 0.0f;
     float couplingAmpFilter  = 0.0f;
-    float couplingEnvScatter = 0.0f;
+    float couplingEnvSolid   = 0.0f;
     float couplingRhythm     = 0.0f;
-
-    // Modulation
-    ModMatrix<4>           modMatrix;
-    ModMatrix<4>::Sources  blockModSrc;
 
     // Expression inputs
     float modWheelValue   = 0.0f;
     float aftertouchValue = 0.0f;
 
-    // Coupling output cache
-    float lastSampleL = 0.0f;
-    float lastSampleR = 0.0f;
-    float lastScatter = 0.0f; // ch2: current scatter intensity 0..1
+    // Cached coupling outputs (O(1))
+    float lastSampleL   = 0.0f;
+    float lastSampleR   = 0.0f;
+    float lastCoherence = 0.0f;
 
-    // activeVoiceCount_ is inherited from SynthEngine base class
+    // Mod matrix
+    ModMatrix<4>          modMatrix;
+    ModMatrix<4>::Sources blockModSrc;
 
     //==========================================================================
-    // Parameter pointers (cached from APVTS, read-only on audio thread)
+    // Parameter pointers (cached from APVTS)
     //==========================================================================
 
-    // Group A — GENDY Core
-    std::atomic<float>* pBreakpoints   = nullptr;
-    std::atomic<float>* pScatter       = nullptr;
-    std::atomic<float>* pDistType      = nullptr;
-    std::atomic<float>* pIntent        = nullptr;
-    std::atomic<float>* pMutationRate  = nullptr;
-    std::atomic<float>* pAmpScatter    = nullptr;
-    std::atomic<float>* pTimeScatter   = nullptr;
-    std::atomic<float>* pStepFloor     = nullptr;
+    // Group A: Flock Core
+    std::atomic<float>* pAgentCount  = nullptr;
+    std::atomic<float>* pSolidarity  = nullptr;
+    std::atomic<float>* pIntent      = nullptr;
+    std::atomic<float>* pScatter     = nullptr;
+    std::atomic<float>* pDistType    = nullptr;
+    std::atomic<float>* pDamping     = nullptr;
+    std::atomic<float>* pSeparation  = nullptr;
+    std::atomic<float>* pCohesion    = nullptr;
 
-    // Group B — Waveform Shaping
-    std::atomic<float>* pSymmetry      = nullptr;
-    std::atomic<float>* pFoldAmt       = nullptr;
-    std::atomic<float>* pDCBlock       = nullptr;
-    std::atomic<float>* pPitchTrack    = nullptr;
+    // Group B: Waveform Shaping
+    std::atomic<float>* pSymmetry    = nullptr;
+    std::atomic<float>* pFoldAmt     = nullptr;
+    std::atomic<float>* pDCBlock     = nullptr;
+    std::atomic<float>* pPitchTrack  = nullptr;
+    std::atomic<float>* pDelayBase   = nullptr;
 
-    // Group C — Markov Chain
-    std::atomic<float>* pMarkovMix     = nullptr;
-    std::atomic<float>* pStateMemory   = nullptr;
-    std::atomic<float>* pResetTrigger  = nullptr;
-    std::atomic<float>* pConvergePitch = nullptr;
-
-    // Group D — Event Density
+    // Group C: Poisson Events
     std::atomic<float>* pEventDensity  = nullptr;
     std::atomic<float>* pEventAmp      = nullptr;
     std::atomic<float>* pEventDecay    = nullptr;
     std::atomic<float>* pDensityJitter = nullptr;
 
-    // Group E — Filter + Filter Envelope
-    std::atomic<float>* pFltCutoff     = nullptr;
-    std::atomic<float>* pFltReso       = nullptr;
-    std::atomic<float>* pFltType       = nullptr;
-    std::atomic<float>* pFltEnvAmt     = nullptr;
-    std::atomic<float>* pFltKeyTrack   = nullptr;
-    std::atomic<float>* pFltAtk        = nullptr;
-    std::atomic<float>* pFltDec        = nullptr;
-    std::atomic<float>* pFltSus        = nullptr;
-    std::atomic<float>* pFltRel        = nullptr;
+    // Group D: Filter
+    std::atomic<float>* pFltCutoff    = nullptr;
+    std::atomic<float>* pFltReso      = nullptr;
+    std::atomic<float>* pFltType      = nullptr;
+    std::atomic<float>* pFltEnvAmt    = nullptr;
+    std::atomic<float>* pFltKeyTrack  = nullptr;
+    std::atomic<float>* pFltAtk       = nullptr;
+    std::atomic<float>* pFltDec       = nullptr;
+    std::atomic<float>* pFltSus       = nullptr;
+    std::atomic<float>* pFltRel       = nullptr;
 
-    // Group F — Amp Envelope + VelTimbre
-    std::atomic<float>* pAmpAtk        = nullptr;
-    std::atomic<float>* pAmpDec        = nullptr;
-    std::atomic<float>* pAmpSus        = nullptr;
-    std::atomic<float>* pAmpRel        = nullptr;
-    std::atomic<float>* pVelTimbre     = nullptr;
+    // Group E: Amp Envelope
+    std::atomic<float>* pAmpAtk       = nullptr;
+    std::atomic<float>* pAmpDec       = nullptr;
+    std::atomic<float>* pAmpSus       = nullptr;
+    std::atomic<float>* pAmpRel       = nullptr;
+    std::atomic<float>* pVelTimbre    = nullptr;
 
-    // Group G — LFOs
-    std::atomic<float>* pLfo1Rate      = nullptr;
-    std::atomic<float>* pLfo1Depth     = nullptr;
-    std::atomic<float>* pLfo1Shape     = nullptr;
-    std::atomic<float>* pLfo1Target    = nullptr;
-    std::atomic<float>* pLfo2Rate      = nullptr;
-    std::atomic<float>* pLfo2Depth     = nullptr;
-    std::atomic<float>* pLfo2Shape     = nullptr;
-    std::atomic<float>* pLfo2Target    = nullptr;
+    // Group F: LFOs
+    std::atomic<float>* pLfo1Rate     = nullptr;
+    std::atomic<float>* pLfo1Depth    = nullptr;
+    std::atomic<float>* pLfo1Shape    = nullptr;
+    std::atomic<float>* pLfo1Target   = nullptr;
+    std::atomic<float>* pLfo2Rate     = nullptr;
+    std::atomic<float>* pLfo2Depth    = nullptr;
+    std::atomic<float>* pLfo2Shape    = nullptr;
+    std::atomic<float>* pLfo2Target   = nullptr;
 
-    // Group I — Macros + Voice
-    std::atomic<float>* pMacro1        = nullptr;
-    std::atomic<float>* pMacro2        = nullptr;
-    std::atomic<float>* pMacro3        = nullptr;
-    std::atomic<float>* pMacro4        = nullptr;
-    std::atomic<float>* pVoiceMode     = nullptr;
-    std::atomic<float>* pGlide         = nullptr;
-    std::atomic<float>* pGlideMode     = nullptr;
+    // Group H: Macros + Voice
+    std::atomic<float>* pMacro1    = nullptr;
+    std::atomic<float>* pMacro2    = nullptr;
+    std::atomic<float>* pMacro3    = nullptr;
+    std::atomic<float>* pMacro4    = nullptr;
+    std::atomic<float>* pVoiceMode = nullptr;
+    std::atomic<float>* pGlide     = nullptr;
+    std::atomic<float>* pGlideMode = nullptr;
 };
 
 } // namespace xoceanus
