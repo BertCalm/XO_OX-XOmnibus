@@ -85,7 +85,7 @@ public:
     static constexpr int   kParticlesPerRoute    = 6;       ///< particles per route (RouteState uses 8 slots)
     static constexpr float kParticleSpeed        = 0.15f;   ///< fraction of path per second
     static constexpr float kParticleDiameter     = 4.0f;    ///< px
-    static constexpr float kControlBowFactor     = 0.15f;   ///< bow = chordLength * factor, clamped [20,80]
+    static constexpr float kControlBowFactor     = 0.15f;   ///< bow = chordLength * factor, clamped [20,28]
     static constexpr int   kTimerHz              = 30;      ///< timer frequency
 
     // Coupling Evolution constants
@@ -544,6 +544,24 @@ public:
                 g.strokePath(rs.path, coreStroke);
             }
 
+            // 4b. Static chain-link dots (FIX 19) — decorative dots along the chain.
+            //     Skipped for fading routes to avoid visual noise during fade-out.
+            if (!rs.isFading_ && !rs.path.isEmpty())
+            {
+                static constexpr float kLinkDotTs[] = { 0.12f, 0.26f, 0.40f, 0.54f, 0.68f, 0.82f };
+                const float pathLen = rs.path.getLength();
+                if (pathLen > 0.0f)
+                {
+                    for (float lt : kLinkDotTs)
+                    {
+                        if (std::abs(lt - 0.5f) < 0.1f) continue; // skip knot zone
+                        const auto dotPt = rs.path.getPointAlongPath(lt * pathLen);
+                        g.setColour(baseColour.withAlpha(alpha * 0.45f));
+                        g.fillEllipse(dotPt.x - 2.5f, dotPt.y - 2.5f, 5.0f, 5.0f);
+                    }
+                }
+            }
+
             // 5. Particles — small filled circles positioned along the Bézier.
             //    Skip particles for fading routes to avoid visual noise during fade.
             if (!rs.isFading_)
@@ -576,8 +594,12 @@ public:
                     // Quadratic Bézier: B(t) = (1-t)²·P₀ + 2(1-t)t·P₁ + t²·P₂
                     const float px  = it * it * p0.x + 2.0f * it * t * p1.x + t * t * p2.x;
                     const float py  = it * it * p0.y + 2.0f * it * t * p1.y + t * t * p2.y;
-                    const float r   = kParticleDiameter * 0.5f;
-                    g.fillEllipse(px - r, py - r, kParticleDiameter, kParticleDiameter);
+                    // FIX 20: depth-scaled particle size + sin-fade alpha
+                    const float particleDiam = 2.0f + amount * 2.0f;
+                    const float sinFade      = std::sin(t * juce::MathConstants<float>::pi);
+                    const float r   = particleDiam * 0.5f;
+                    g.setColour(baseColour.withAlpha(particleAlpha * sinFade));
+                    g.fillEllipse(px - r, py - r, particleDiam, particleDiam);
                 }
             }
 
@@ -698,6 +720,12 @@ private:
     {
         const bool reducedMotion = A11y::prefersReducedMotion();
 
+        // Advance wobble time for animated chain bow (FIX 18)
+        wobbleTime_ += 1.0f / static_cast<float>(kTimerHz);
+        // Rebuild paths each tick so the bow wobble is reflected in the drawn curves.
+        if (!reducedMotion && !routeStates_.empty())
+            rebuildPaths();
+
         if (!reducedMotion)
         {
             // Phase advance per tick: one full cycle in kPulsePeriod seconds.
@@ -811,7 +839,9 @@ private:
                 continue;
             }
 
-            rs.path    = buildBezierPath(from, to, rs.bowSign, rs.control);
+            // FIX 18: animate bow with wobbleTime_ so chains breathe/wobble
+            const float wobble = std::sin(wobbleTime_ * 0.8f) * 2.5f;
+            rs.path    = buildBezierPath(from, to, rs.bowSign, rs.control, wobble);
         }
     }
 
@@ -833,7 +863,8 @@ private:
     static juce::Path buildBezierPath(juce::Point<float>  from,
                                       juce::Point<float>  to,
                                       float               bowSign,
-                                      juce::Point<float>& controlOut)
+                                      juce::Point<float>& controlOut,
+                                      float               wobbleOffset = 0.0f)
     {
         // Midpoint of the chord.
         const float mx = (from.x + to.x) * 0.5f;
@@ -855,9 +886,11 @@ private:
             // Perpendicular unit vector: (-dy/len, dx/len)
             const float perpX = -dy / len;
             const float perpY =  dx / len;
-            // Bow is proportional to chord length, clamped to [20, 80] px so
+            // Bow is proportional to chord length, clamped to [20, 28] px so
             // short connections get a visible arc and long ones don't over-curve.
-            const float bow = std::clamp(len * kControlBowFactor, 20.0f, 80.0f);
+            // wobbleOffset adds a time-based sine breath to the bow (FIX 18).
+            const float bow = std::clamp(len * kControlBowFactor, 20.0f, 28.0f)
+                            + wobbleOffset;
             control = { mx + perpX * bow * bowSign,
                         my + perpY * bow * bowSign };
         }
@@ -887,6 +920,9 @@ private:
     bool                   chainInProgress_ = false;
     int                    chainStartSlot_  = -1;
     juce::Point<float>     chainMousePos_;
+
+    // Wobble time for animated chain bow (FIX 18)
+    float wobbleTime_ = 0.0f;
 
     //==========================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingSubstrate)

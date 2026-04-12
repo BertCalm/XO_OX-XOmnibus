@@ -104,8 +104,9 @@ public:
         juce::Graphics::ScopedSaveState saveState(g);
         if (!A11y::prefersReducedMotion())
         {
-            g.addTransform(juce::AffineTransform::translation(0.0f, bobOffset_));
-            g.addTransform(juce::AffineTransform::rotation(tiltAngle_, cx, cy + bobOffset_));
+            // FIX 22: include bounceOffset_ so new buoys drop in from above
+            g.addTransform(juce::AffineTransform::translation(0.0f, bobOffset_ + bounceOffset_));
+            g.addTransform(juce::AffineTransform::rotation(tiltAngle_, cx, cy + bobOffset_ + bounceOffset_));
         }
 
         // ── Water reflection ellipse (subtle, below buoy) ──────────────────
@@ -340,6 +341,20 @@ public:
                           2.0f * (1.0f - rip.progress));
         }
 
+        // ── Splash rings (FIX 22) — expanding rings when buoy first loads ──
+        if (splashAnim_ > 0.01f)
+        {
+            float splashR1 = radius + (1.0f - splashAnim_) * 40.0f;
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(splashAnim_ * 0.4f));
+            g.drawEllipse(cx - splashR1, cy - splashR1,
+                          splashR1 * 2.0f, splashR1 * 2.0f,
+                          2.0f * splashAnim_);
+            float splashR2 = radius + (1.0f - splashAnim_) * 60.0f;
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(splashAnim_ * 0.12f));
+            g.drawEllipse(cx - splashR2, cy - splashR2,
+                          splashR2 * 2.0f, splashR2 * 2.0f, 1.0f);
+        }
+
         // ── Mute / solo badges (FIX 3) ────────────────────────────────────
         // Mute badge: top-right of buoy, red circle with white "M"
         if (muted_)
@@ -464,6 +479,10 @@ public:
         bobPhase_ = rng.nextFloat() * juce::MathConstants<float>::twoPi;
         bobSpeed_ = 0.28f + rng.nextFloat() * 0.18f;
         bobAmp_   = 2.0f  + rng.nextFloat() * 2.5f;
+
+        // FIX 22: trigger drop splash + bounce-in on load
+        splashAnim_   = 1.0f;
+        bounceOffset_ = -30.0f;
 
         if (!isTimerRunning())
             startTimerHz(30);
@@ -691,6 +710,18 @@ private:
                 rip.progress = 0.0f;
         }
 
+        // ── Splash animation decay (FIX 22) ────────────────────────────────
+        if (splashAnim_ > 0.01f)
+        {
+            splashAnim_   *= 0.94f;
+            bounceOffset_ *= 0.88f;
+        }
+        else
+        {
+            splashAnim_   = 0.0f;
+            bounceOffset_ = 0.0f;
+        }
+
         repaint();
     }
 
@@ -746,6 +777,10 @@ private:
     float bobAmp_    = 2.0f;   ///< pixels amplitude; randomized in setEngine()
     float bobOffset_ = 0.0f;   ///< current computed Y offset (updated by timerCallback)
     float tiltAngle_ = 0.0f;   ///< current tilt radians (updated by timerCallback)
+
+    // Buoy drop splash animation (FIX 22)
+    float splashAnim_   = 0.0f;  ///< 1.0 on load, decays to 0
+    float bounceOffset_ = 0.0f;  ///< starts at -30px, eases to 0
 
     // Mute / solo (FIX 3)
     bool muted_  = false;

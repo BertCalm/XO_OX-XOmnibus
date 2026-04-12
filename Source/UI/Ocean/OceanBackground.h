@@ -140,6 +140,25 @@ public:
             paintWaveSurface(g, static_cast<float>(bounds.getWidth()),
                                 static_cast<float>(bounds.getHeight()));
 
+        // 3b. Preset transition ripple (FIX 23) — vertical sweep line on preset change.
+        if (presetRippleProgress_ > 0.0f && presetRippleProgress_ < 1.0f)
+        {
+            const float w = static_cast<float>(bounds.getWidth());
+            const float h = static_cast<float>(bounds.getHeight());
+            const float ripX = presetRippleFromLeft_
+                ? presetRippleProgress_ * w
+                : (1.0f - presetRippleProgress_) * w;
+            const float ripAlpha = (1.0f - presetRippleProgress_) * 0.4f;
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(ripAlpha));
+            g.drawLine(ripX, 0.0f, ripX, h, 3.0f * (1.0f - presetRippleProgress_));
+            // Secondary wave
+            const float rip2X = presetRippleFromLeft_
+                ? (presetRippleProgress_ - 0.05f) * w
+                : (1.0f - presetRippleProgress_ + 0.05f) * w;
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(ripAlpha * 0.3f));
+            g.drawLine(rip2X, 0.0f, rip2X, h, 1.5f);
+        }
+
         // 4. Animated teal depth rings — ALWAYS drawn (not just when empty).
         //    Prototype: 4 rings at r=80,190,300,410 that wobble with intensity.
         if (!A11y::prefersReducedMotion())
@@ -195,6 +214,10 @@ public:
             waveData_[i] = 0.0f;
         intensity_ = juce::jlimit(0.0f, 1.0f, rms);
         waveTime_ += 0.1f; // advance animation phase (~10 Hz tick)
+
+        // FIX 23: advance preset ripple progress at ~10 Hz
+        if (presetRippleProgress_ > 0.0f && presetRippleProgress_ < 1.0f)
+            presetRippleProgress_ += 0.03f;
     }
 
     //==========================================================================
@@ -211,6 +234,18 @@ public:
             engineCount_ = clamped;
             repaint();
         }
+    }
+
+    //==========================================================================
+    /**
+        Trigger a vertical sweep ripple across the ocean when a preset changes (FIX 23).
+        @param fromLeft  true = ripple sweeps left-to-right, false = right-to-left.
+    */
+    void triggerPresetRipple(bool fromLeft)
+    {
+        presetRippleProgress_ = 0.001f;
+        presetRippleFromLeft_ = fromLeft;
+        repaint();
     }
 
     //==========================================================================
@@ -233,6 +268,10 @@ private:
     std::array<float, kWavePoints> waveData_ {};
     float waveTime_   = 0.0f;
     float intensity_  = 0.0f;
+
+    // Preset transition ripple (FIX 23)
+    float presetRippleProgress_ = 0.0f;
+    bool  presetRippleFromLeft_ = true;
 
     //==========================================================================
     /**
