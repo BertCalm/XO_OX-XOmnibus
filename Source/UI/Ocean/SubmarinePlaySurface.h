@@ -273,11 +273,12 @@ private:
         numBlackKeys_ = 0;
         int base = baseMidiForKeys();
 
-        // Walk the 2 octaves
-        for (int oct = 0; oct < kOctavesVisible && numBlackKeys_ < 10; ++oct)
+        // Walk all octaves (5 black keys per octave × 4 octaves = 20 max)
+        static constexpr int kMaxBlackKeys = kOctavesVisible * 5;
+        for (int oct = 0; oct < kOctavesVisible && numBlackKeys_ < kMaxBlackKeys; ++oct)
         {
             int whiteOffset = oct * 7; // first white key index for this octave
-            for (int bi = 0; bi < 5 && numBlackKeys_ < 10; ++bi)
+            for (int bi = 0; bi < 5 && numBlackKeys_ < kMaxBlackKeys; ++bi)
             {
                 int wIdx = whiteOffset + kBlackAfterWhite[bi];
                 if (wIdx >= kWhiteKeysTotal - 1)

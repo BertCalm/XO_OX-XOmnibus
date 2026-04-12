@@ -638,7 +638,7 @@ public:
             const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
                                      static_cast<int>(fullBounds.getWidth() * 0.40f));
             const int wlH2 = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
-            const int bottomH = kDashboardH + wlH2 + kStatusBarH;
+            const int bottomH = getEffectiveDashboardH() + wlH2 + kStatusBarH;
             surfaceRight_.setBounds(oceanArea.getRight(),
                                     fullBounds.getY(),
                                     rpW,
@@ -671,7 +671,7 @@ public:
 
         // Chord bar (visible when CHORD toggle is on, ~28px).
         if (chordBar_ && chordBar_->isVisible())
-            chordBar_->setBounds(dashArea.removeFromTop(28));
+            chordBar_->setBounds(dashArea.removeFromTop(42));
 
         // Expression strips (36px) on the left of the play area.
         exprStrips_.setBounds(dashArea.removeFromLeft(ExpressionStrips::kStripWidth));
@@ -681,7 +681,12 @@ public:
         playSurfaceOverlay_.setVisible(false);
         ouijaPanel_.setVisible(false); // ouija now lives inside SurfaceRightPanel
         subPlaySurface_.setBounds(dashArea);
-        subPlaySurface_.setVisible(true);
+        // Only show keyboard when right panel is closed (KEYS mode).
+        // When right panel is open (PAD/DRUM/XY/OUIJA), keyboard hides.
+        if (!surfaceRight_.isOpen() || !surfaceRight_.isVisible())
+            subPlaySurface_.setVisible(true);
+        else
+            subPlaySurface_.setVisible(false);
 
         // Transport bar (submarine) replaces the old status bar at the bottom.
         if (transportBar_)
@@ -710,7 +715,7 @@ public:
 
         // #1008 FIX 7: DimOverlay covers the ocean + waterline area so the dim
         // effect extends to the waterline but doesn't dim the dashboard itself.
-        dimOverlay_.setBounds(fullBounds.withTrimmedBottom(kDashboardH + kStatusBarH));
+        dimOverlay_.setBounds(fullBounds.withTrimmedBottom(getEffectiveDashboardH() + kStatusBarH));
 
         // Phase 3: Engine picker drawer — full height of ocean area, fixed width.
         engineDrawer_.setBounds(oceanArea.withWidth(EnginePickerDrawer::kDrawerWidth));
@@ -1951,10 +1956,19 @@ private:
     /** Returns the ocean viewport bounds — the area above the waterline separator
         and submarine dashboard.  Previously this was everything minus the status
         bar; it now also excludes the waterline and dashboard rows. */
+    /// Effective dashboard height — collapses when right panel is open
+    /// (keyboard hidden, only macros + FX + tabs remain).
+    int getEffectiveDashboardH() const
+    {
+        if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
+            return static_cast<int>(kMacroStripH) + 48 + kTabBarH; // macros + FX + tabs, no keyboard
+        return kDashboardH;
+    }
+
     juce::Rectangle<int> getOceanArea() const
     {
         const int wlH = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
-        const int bottomH = kDashboardH + wlH + kStatusBarH;
+        const int bottomH = getEffectiveDashboardH() + wlH + kStatusBarH;
         auto area = getLocalBounds().withTrimmedBottom(bottomH);
         // When right panel is open, ocean narrows from the right.
         if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
@@ -2193,7 +2207,7 @@ private:
     static constexpr float kMacroStripH         = 60.0f;  // #901: 56→60pt to fit 48pt knobs + 6pt pad
     static constexpr float kSplitOrbitalFraction = 0.20f;  ///< 20% width for mini orbital
     static constexpr int   kWaterlineH          = 6;
-    static constexpr int   kDashboardH          = 290;    ///< macros (60) + FX (48) + tabs (30) + play (~152)
+    static constexpr int   kDashboardH          = 400;    ///< macros (60) + FX (48) + tabs (30) + play (~262)
     static constexpr int   kTabBarH             = 30;
 
     // HIGH fix (#1006): padding added to orbital bounds so ±5% breath animation
