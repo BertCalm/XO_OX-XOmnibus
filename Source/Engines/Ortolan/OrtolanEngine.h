@@ -1435,11 +1435,9 @@ private:
                     if (v.pitchPeriodAccum >= pitchPeriodSamp)
                     {
                         v.pitchPeriodAccum -= pitchPeriodSamp;
-                        float driftFormants[4];
-                        for (int f = 0; f < 4; ++f) driftFormants[f] = sampleFormants[f];
                         advanceSongStructure(v, sampleSongLevel, phraseLength, phraseGapFac,
                                              themeDrift, pitchDrift, pitchPeriodSamp,
-                                             driftFormants);
+                                             sampleFormants);
                     }
 
                     // Apply coupling rhythm: strong hit resets burst counter
@@ -1487,7 +1485,7 @@ private:
                 // ---- Amplitude envelope + VCA ----
                 const float ampLevel = v.ampEnv.process();
                 const float finalAmp = std::clamp(
-                    ampLevel * v.velocity + modAmpLevel * 0.3f, 0.0f, 1.5f);
+                    ampLevel * v.velocity * (1.0f + modAmpLevel * 0.3f), 0.0f, 1.5f);
 
                 writeL[i] += filteredL * finalAmp;
                 writeR[i] += filteredR * finalAmp;
