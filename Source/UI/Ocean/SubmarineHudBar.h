@@ -96,6 +96,9 @@ public:
         }
     }
 
+    /** Returns true when the Chain mode toggle is currently active. */
+    bool isChainModeActive() const noexcept { return chainModeActive_; }
+
     void setOutputLevel(float level01)
     {
         const float clamped = juce::jlimit(0.0f, 1.0f, level01);

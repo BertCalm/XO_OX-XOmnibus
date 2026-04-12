@@ -376,6 +376,17 @@ public:
                        juce::Justification::centred, false);
         }
 
+        // ── Dim overlay (mute/solo alpha dimming — FIX 9) ─────────────────
+        // When a sibling buoy is soloed (dimAlpha_ < 1), darken this buoy by
+        // drawing a semi-transparent Ocean::abyss rectangle on top.
+        // Muted buoys receive alpha 0.30 → overlay at 70% opacity.
+        // Non-soloed siblings receive alpha 0.50 → overlay at 50% opacity.
+        if (dimAlpha_ < 0.99f)
+        {
+            g.setColour(juce::Colour(0xFF0A0E18).withAlpha(1.0f - dimAlpha_));
+            g.fillRect(getLocalBounds());
+        }
+
         // ── Accessibility focus ring ───────────────────────────────────────
         if (hasKeyboardFocus(false))
             A11y::drawCircularFocusRing(g, cx, cy, radius + kBorderWidth + 2.0f);
@@ -397,10 +408,17 @@ public:
         if (!parent) return;
 
         auto parentPos = e.getEventRelativeTo(parent).position;
-        auto parentBounds = parent->getLocalBounds().toFloat();
 
-        normalizedPosition_.x = juce::jlimit(0.05f, 0.95f, parentPos.x / parentBounds.getWidth());
-        normalizedPosition_.y = juce::jlimit(0.05f, 0.95f, parentPos.y / parentBounds.getHeight());
+        // Normalize against the ocean area (not full OceanView which includes dashboard).
+        // oceanAreaBounds_ is set by the parent via setOceanAreaBounds().
+        const auto area = oceanAreaBounds_.isEmpty()
+            ? parent->getLocalBounds().toFloat()
+            : oceanAreaBounds_;
+
+        normalizedPosition_.x = juce::jlimit(0.05f, 0.95f,
+            (parentPos.x - area.getX()) / area.getWidth());
+        normalizedPosition_.y = juce::jlimit(0.05f, 0.95f,
+            (parentPos.y - area.getY()) / area.getHeight());
 
         if (onPositionChanged)
             onPositionChanged(slotIndex_);
@@ -504,6 +522,8 @@ public:
     void setCouplingLean(float lean) { couplingLean_ = juce::jlimit(-1.0f, 1.0f, lean); }
     void setSlotIndex(int index) { slotIndex_ = index; }
     void setSelected(bool sel) { selected_ = sel; repaint(); }
+    /// Set the ocean area bounds (in parent coordinates) so drag normalization is correct.
+    void setOceanAreaBounds(juce::Rectangle<float> area) { oceanAreaBounds_ = area; }
     void setPlaySurfaceVisible(bool visible) { playSurfaceVisible_ = visible; }
 
     //==========================================================================
@@ -529,6 +549,23 @@ public:
 
     bool isMuted()  const noexcept { return muted_;  }
     bool isSoloed() const noexcept { return soloed_; }
+
+    //==========================================================================
+    // Dim alpha — driven by OceanView when any sibling buoy is soloed.
+    // soloed sibling: set to 0.50f; muted: set to 0.30f; normal: 1.0f.
+    //==========================================================================
+
+    void setDimAlpha(float a)
+    {
+        const float clamped = juce::jlimit(0.0f, 1.0f, a);
+        if (std::abs(clamped - dimAlpha_) > 0.005f)
+        {
+            dimAlpha_ = clamped;
+            repaint();
+        }
+    }
+
+    float getDimAlpha() const noexcept { return dimAlpha_; }
 
     //==========================================================================
     // Ripple + flare triggers (called from UI timer on note-on events)
@@ -685,6 +722,7 @@ private:
     bool isDragging_ = false;
     juce::Point<float> dragStartPos_ {};
     juce::Point<float> normalizedPosition_ { 0.5f, 0.5f };
+    juce::Rectangle<float> oceanAreaBounds_ {}; // parent ocean area for drag normalization
 
     // Animation
     float breathPhase_ = 0.0f;
@@ -709,6 +747,9 @@ private:
     // Mute / solo (FIX 3)
     bool muted_  = false;
     bool soloed_ = false;
+
+    // Dim alpha — set by OceanView when a sibling buoy is soloed (FIX 9)
+    float dimAlpha_ = 1.0f;
 
     // Ripple effects (fixed-size, no heap allocation — RAC finding F4)
     static constexpr size_t kMaxRipples = 8;

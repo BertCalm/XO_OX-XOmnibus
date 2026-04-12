@@ -478,6 +478,20 @@ public:
         addChildComponent(settingsDrawer_); // starts hidden; toggle via settingsButton_
         settingsButton_.onClick = [this]() { settingsDrawer_.toggle(); };
 
+        // ── HUD bar callbacks ─────────────────────────────────────────────────
+        hudBar_.onEnginesClicked = [this]() { engineDrawer_.toggle(); };
+        hudBar_.onSettingsClicked = [this]() { settingsDrawer_.toggle(); };
+
+        // FIX 11: Chain mode toggles crosshair cursor over the ocean viewport
+        // and clears any in-progress chain drawing on the substrate.
+        hudBar_.onChainToggled = [this]()
+        {
+            const bool chainOn = hudBar_.isChainModeActive();
+            setMouseCursor(chainOn ? juce::MouseCursor::CrosshairCursor
+                                   : juce::MouseCursor::NormalCursor);
+            substrate_.setChainInProgress(false); // clear any pending chain start
+        };
+
         // ── Keyboard focus ────────────────────────────────────────────────────
         setWantsKeyboardFocus(true);
     }
@@ -1697,6 +1711,9 @@ private:
         for (const auto& o : orbits_)
             if (o.hasEngine()) ++numLoaded;
 
+        // FIX 12: Keep OceanBackground informed so it can show/hide ghost outlines.
+        background_.setEngineCount(numLoaded);
+
         // ── Macros: now positioned in the dashboard strip via resized() ──────
         // Fix 4: only show macros when at least one engine is loaded.
         if (macros_)
@@ -1717,6 +1734,7 @@ private:
                 int x = static_cast<int>(pos.x * area.getWidth()) - sz / 2;
                 int y = static_cast<int>(pos.y * area.getHeight()) - sz / 2;
                 orbits_[i].setBounds(x + area.getX(), y + area.getY(), sz, sz);
+                orbits_[i].setOceanAreaBounds(area.toFloat());
                 orbits_[i].setVisible(true);
 
                 substrate_.setCreatureCenter(i, orbits_[i].getCenter());

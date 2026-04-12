@@ -145,6 +145,13 @@ public:
         if (!A11y::prefersReducedMotion())
             paintAnimatedDepthRings(g, cx, cy, static_cast<float>(bounds.getWidth()),
                                    static_cast<float>(bounds.getHeight()));
+
+        // 5. Ghost buoy outlines — shown when no engines are loaded (FIX 12).
+        //    Four faint dashed circles hint at the slot positions so new users
+        //    know where to drop engines.
+        if (engineCount_ == 0)
+            paintGhostOutlines(g, static_cast<float>(bounds.getWidth()),
+                               static_cast<float>(bounds.getHeight()));
     }
 
     //==========================================================================
@@ -191,9 +198,26 @@ public:
     }
 
     //==========================================================================
+    /**
+        Call whenever the count of loaded engines changes.
+        When engineCount_ == 0 the background paints ghost buoy outlines as an
+        empty-state affordance.
+    */
+    void setEngineCount(int count)
+    {
+        const int clamped = juce::jmax(0, count);
+        if (engineCount_ != clamped)
+        {
+            engineCount_ = clamped;
+            repaint();
+        }
+    }
+
+    //==========================================================================
     // Accessors
 
     bool hasCouplingRoutes() const noexcept { return hasCouplingRoutes_; }
+    int  getEngineCount()    const noexcept { return engineCount_; }
 
 private:
     //==========================================================================
@@ -203,6 +227,7 @@ private:
     juce::Image cachedGradient_;
     bool        hasCouplingRoutes_ = false;
     bool        needsRedraw_       = true;
+    int         engineCount_       = 0;  ///< number of loaded engines; 0 → ghost outlines shown
 
     // Wave surface state (pushed from OceanView timer, not audio thread)
     std::array<float, kWavePoints> waveData_ {};
@@ -478,6 +503,59 @@ private:
         // Bright core on top
         g.setColour(juce::Colour(120, 220, 210).withAlpha(0.08f + intensity_ * 0.25f));
         g.strokePath(primaryPath, juce::PathStrokeType(1.0f));
+    }
+
+    //==========================================================================
+    /**
+        Paint four ghost buoy outlines when no engines are loaded (FIX 12).
+
+        Positions match the prototype spec:
+            slot 0: (30%W, 35%H)   slot 1: (70%W, 35%H)
+            slot 2: (30%W, 65%H)   slot 3: (70%W, 65%H)
+
+        Each ghost is drawn as:
+          - A dashed circle stroke (4px dash, 4px gap), radius 28px,
+            teal rgba(127,219,202,0.12)
+          - A "+" centred in the circle, rgba(127,219,202,0.15), 20px font
+          - A slot number below the circle, rgba(127,219,202,0.10), 8px font
+    */
+    void paintGhostOutlines(juce::Graphics& g, float w, float h) const
+    {
+        static constexpr float kGhostPositions[4][2] = {
+            { 0.30f, 0.35f }, { 0.70f, 0.35f },
+            { 0.30f, 0.65f }, { 0.70f, 0.65f }
+        };
+        const juce::Colour ghostCol(127, 219, 202);
+
+        for (int i = 0; i < 4; ++i)
+        {
+            const float gx = kGhostPositions[i][0] * w;
+            const float gy = kGhostPositions[i][1] * h;
+            const float r  = 28.0f;
+
+            // ── Dashed circle ─────────────────────────────────────────────
+            juce::Path circle;
+            circle.addEllipse(gx - r, gy - r, r * 2.0f, r * 2.0f);
+            juce::Path dashedCircle;
+            const float dashes[] = { 4.0f, 4.0f };
+            juce::PathStrokeType(1.5f).createDashedStroke(dashedCircle, circle, dashes, 2);
+            g.setColour(ghostCol.withAlpha(0.12f));
+            g.fillPath(dashedCircle);
+
+            // ── "+" text ──────────────────────────────────────────────────
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(20.0f)));
+            g.setColour(ghostCol.withAlpha(0.15f));
+            g.drawText("+",
+                       juce::Rectangle<float>(gx - 15.0f, gy - 12.0f, 30.0f, 24.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+
+            // ── Slot number ───────────────────────────────────────────────
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
+            g.setColour(ghostCol.withAlpha(0.10f));
+            g.drawText(juce::String(i + 1),
+                       juce::Rectangle<float>(gx - 10.0f, gy + r + 4.0f, 20.0f, 10.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
     }
 
     //==========================================================================
