@@ -258,6 +258,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Oort", "oort_"},
         // Formant Vocal Tract Synthesis
         {"Ondine", "ond_"},
+        // VOSIM Hierarchical Pulse Synthesis
+        {"Ortolan", "ort_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();

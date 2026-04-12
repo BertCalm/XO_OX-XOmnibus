@@ -180,7 +180,10 @@ public:
             addAndMakeVisible(orbit);
 
         // 4. Nexus: DNA hexagon + preset name + mood badge
-        addAndMakeVisible(nexus_);
+        // NexusDisplay hidden — preset name moved to FX strip dot-matrix display.
+        // DNA hexagon may be re-added as an optional overlay later.
+        nexus_.setVisible(false);
+        addChildComponent(nexus_);
 
         // 5. Macro section (conditionally visible; placeholder until initMacros())
         // macros_ is a unique_ptr — added in initMacros()
@@ -316,13 +319,12 @@ public:
 
         // #1007 FIX 3: Inline preset name label between < and > buttons.
         // This creates spatial grouping so users understand the navigation relationship.
-        presetNameLabel_.setVisible(false); // replaced by SubmarineHudBar
         presetNameLabel_.setFont(GalleryFonts::label(12.0f));
         presetNameLabel_.setColour(juce::Label::textColourId,
                                    juce::Colour(GalleryColors::Ocean::foam));
         presetNameLabel_.setJustificationType(juce::Justification::centred);
         presetNameLabel_.setInterceptsMouseClicks(true, false); // absorb clicks without passing to parent
-        addAndMakeVisible(presetNameLabel_);
+        addChildComponent(presetNameLabel_); // hidden — preset info in FX strip
         A11y::setup(presetNameLabel_, "Current preset", "Name of the currently loaded preset");
 
         A11y::setup(keysButton_,      "Keys toggle", "Show or hide the Play Surface panel");
@@ -1688,7 +1690,7 @@ private:
         nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
                          static_cast<int>(centerF.y) - kNexusH / 2 - 20,
                          kNexusW, kNexusH);
-        nexus_.setVisible(true);
+        nexus_.setVisible(false); // hidden — preset info in FX strip
 
         // ── Engine creatures (freeform normalized positions) ─────────────────
         int numLoaded = 0;
@@ -1773,7 +1775,7 @@ private:
         nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
                          area.getY() + 30,
                          kNexusW, kNexusH);
-        nexus_.setVisible(true);
+        nexus_.setVisible(false); // hidden — preset info in FX strip
 
         // Count non-selected loaded engines (for edge positioning).
         int edgeCount = 0;

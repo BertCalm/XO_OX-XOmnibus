@@ -278,6 +278,8 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Oort/OortEngine.cpp
     Source/Engines/Ondine/OndineEngine.h
     Source/Engines/Ondine/OndineEngine.cpp
+    Source/Engines/Ortolan/OrtolanEngine.h
+    Source/Engines/Ortolan/OrtolanEngine.cpp
     Source/Engines/Bite/BiteEngine.h
     Source/Engines/Bite/BiteEngine.cpp
     Source/Engines/Origami/OrigamiEngine.h
