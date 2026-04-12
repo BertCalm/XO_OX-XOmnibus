@@ -90,6 +90,41 @@ public:
         // 1. Draw the cached radial-gradient image.
         g.drawImageAt(cachedGradient_, 0, 0);
 
+        // 1b. Intensity-responsive gradient overlay — brightens center when audio plays.
+        //     Prototype: center rgb(26+i*12, 36+i*6, 56+i*18) → edge stays dark.
+        if (intensity_ > 0.01f)
+        {
+            const float cxf = static_cast<float>(bounds.getCentreX());
+            const float cyf = static_cast<float>(bounds.getCentreY());
+            const float maxDim = static_cast<float>(std::max(bounds.getWidth(),
+                                                              bounds.getHeight())) * 0.65f;
+            juce::ColourGradient intensityGrad(
+                juce::Colour(static_cast<juce::uint8>(26 + intensity_ * 12),
+                             static_cast<juce::uint8>(36 + intensity_ * 6),
+                             static_cast<juce::uint8>(56 + intensity_ * 18)).withAlpha(intensity_ * 0.3f),
+                cxf, cyf,
+                juce::Colours::transparentBlack,
+                cxf + maxDim, cyf, true);
+            g.setGradientFill(intensityGrad);
+            g.fillRect(bounds);
+        }
+
+        // 1c. Ambient breathing sweep — slow teal radial gradient drifts horizontally.
+        //     Prototype: sin(time * 0.02) maps to X position, very subtle 1.8% alpha.
+        if (!A11y::prefersReducedMotion())
+        {
+            const float bw = static_cast<float>(bounds.getWidth());
+            const float bh = static_cast<float>(bounds.getHeight());
+            const float breatheX = (std::sin(waveTime_ * 0.2f) * 0.5f + 0.5f) * bw;
+            juce::ColourGradient breatheGrad(
+                juce::Colour(60, 180, 170).withAlpha(0.018f),
+                breatheX, bh * 0.5f,
+                juce::Colours::transparentBlack,
+                breatheX + bw * 0.4f, bh * 0.5f, true);
+            g.setGradientFill(breatheGrad);
+            g.fillRect(bounds);
+        }
+
         // 2. Overlay depth-zone ring fills (tinted, very low alpha).
         const float cx = static_cast<float>(bounds.getCentreX());
         const float cy = static_cast<float>(bounds.getCentreY());
