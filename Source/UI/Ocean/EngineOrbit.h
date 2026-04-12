@@ -262,6 +262,45 @@ public:
             }
         }
 
+        // ── Depth zone ring (thin colored outer ring) ─────────────────────
+        {
+            static constexpr juce::uint32 kDepthColors[] = {
+                0x66FFDC78, // sunlit — warm gold
+                0x6664A0DC, // twilight — cool blue
+                0x663C5AA0, // midnight — deep blue
+            };
+            const int zoneIdx = juce::jlimit(0, 2, static_cast<int>(depthZone_));
+            g.setColour(juce::Colour(kDepthColors[zoneIdx]));
+            g.drawEllipse(cx - radius - 4.0f, cy - radius - 4.0f,
+                          (radius + 4.0f) * 2.0f, (radius + 4.0f) * 2.0f, 2.0f);
+        }
+
+        // ── Slot number badge (top-left) ──────────────────────────────────
+        if (!isFx && slotIndex_ >= 0)
+        {
+            const float badgeX = cx - radius * 0.7f;
+            const float badgeY = cy - radius * 0.7f;
+            const float badgeR = 10.0f;
+            g.setColour(juce::Colour(14, 16, 22).withAlpha(0.82f));
+            g.fillEllipse(badgeX - badgeR, badgeY - badgeR, badgeR * 2.0f, badgeR * 2.0f);
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.18f));
+            g.drawEllipse(badgeX - badgeR, badgeY - badgeR, badgeR * 2.0f, badgeR * 2.0f, 1.0f);
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f).withStyle("Bold")));
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.75f));
+            g.drawText(juce::String(slotIndex_ + 1),
+                       juce::Rectangle<float>(badgeX - badgeR, badgeY - badgeR, badgeR * 2.0f, badgeR * 2.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
+        // ── Selection pulsing ring (when selected) ────────────────────────
+        if (selected_)
+        {
+            const float selPulse = 0.7f + 0.3f * std::sin(breathPhase_ * 4.0f);
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(0.4f * selPulse));
+            g.drawEllipse(cx - radius - 6.0f, cy - radius - 6.0f,
+                          (radius + 6.0f) * 2.0f, (radius + 6.0f) * 2.0f, 2.0f);
+        }
+
         // ── Ripple rings (note-on feedback) ────────────────────────────────
         for (size_t ri = 0; ri < kMaxRipples; ++ri)
         {
@@ -394,6 +433,7 @@ public:
     void setVoiceCount(int count) { voiceCount_ = count; }
     void setCouplingLean(float lean) { couplingLean_ = juce::jlimit(-1.0f, 1.0f, lean); }
     void setSlotIndex(int index) { slotIndex_ = index; }
+    void setSelected(bool sel) { selected_ = sel; repaint(); }
     void setPlaySurfaceVisible(bool visible) { playSurfaceVisible_ = visible; }
 
     //==========================================================================
@@ -510,6 +550,7 @@ private:
     DepthZone    depthZone_      = DepthZone::Sunlit;
     BuoyType     buoyType_       = BuoyType::Engine;
     bool         hasEngine_      = false;
+    bool         selected_       = false;
     int          slotIndex_      = 0;
 
     // Live audio state
