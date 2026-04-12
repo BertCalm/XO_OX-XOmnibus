@@ -2076,6 +2076,27 @@ private:
                 tb->setBpm(bpm > 0.0 ? bpm : 120.0);
                 tb->setCpuPercent(cpuPct);
             }
+
+            // Push audio levels to dot-matrix visualizer.
+            if (auto* dm = oceanView_.getDotMatrix())
+            {
+                // Use CPU load as a proxy for audio activity until we have real RMS.
+                const float activity = cpuPct / 100.0f;
+                dm->pushLevels(activity * 0.7f, activity * 0.5f);
+
+                // Push engine activity levels.
+                float engLevels[4] = {};
+                for (int i = 0; i < 4; ++i)
+                {
+                    if (auto* eng = processor.getEngine(i))
+                        engLevels[i] = static_cast<float>(eng->getActiveVoiceCount()) / static_cast<float>(std::max(1, eng->getMaxVoices()));
+                }
+                dm->pushEngineActivity(engLevels, 4);
+
+                // Push sequencer step.
+                const auto& seq = processor.getMasterFXChain().getSequencer();
+                dm->pushSequencerStep(seq.getCurrentStep(), 16, seq.isEnabled());
+            }
         }
 
         // ── Header indicators ─────────────────────────────────────────────────

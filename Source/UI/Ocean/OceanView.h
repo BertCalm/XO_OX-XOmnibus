@@ -61,6 +61,7 @@
 #include "SubmarineOuijaPanel.h"
 #include "ExpressionStrips.h"
 #include "SubmarinePlaySurface.h"
+#include "DotMatrixDisplay.h"
 #include "SurfaceRightPanel.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
@@ -223,6 +224,9 @@ public:
 
         // 9f. Expression strips (PB + MW) — always visible in play area.
         addAndMakeVisible(exprStrips_);
+
+        // 9g-vis. Dot-matrix visualizer — fills empty space right of macros.
+        addAndMakeVisible(dotMatrix_);
 
         // 9g. Submarine play surface (replaces Gallery PlaySurface).
         addAndMakeVisible(subPlaySurface_);
@@ -571,8 +575,9 @@ public:
     }
 
     /// Get the TransportBar so the editor can push BPM/voices/CPU.
-    TransportBar*    getTransportBar() noexcept { return transportBar_.get(); }
-    TideWaterline*   getWaterline()    noexcept { return waterline_.get(); }
+    TransportBar*      getTransportBar() noexcept { return transportBar_.get(); }
+    TideWaterline*     getWaterline()    noexcept { return waterline_.get(); }
+    DotMatrixDisplay*  getDotMatrix()    noexcept { return &dotMatrix_; }
 
     /**
         Initialise the StatusBar.
@@ -658,9 +663,18 @@ public:
                             .withTrimmedTop(oceanArea.getHeight() + wlH)
                             .withTrimmedBottom(kStatusBarH);
 
-        // Macro strip (top of dashboard).
-        if (macros_)
-            macros_->setBounds(dashArea.removeFromTop(static_cast<int>(kMacroStripH)));
+        // Macro strip (top of dashboard) — macros left, dot-matrix right.
+        {
+            auto macroRow = dashArea.removeFromTop(static_cast<int>(kMacroStripH));
+            if (macros_)
+            {
+                // Macros take ~360px on the left (5 knobs × ~70px each).
+                const int macroW = std::min(360, macroRow.getWidth() / 2);
+                macros_->setBounds(macroRow.removeFromLeft(macroW));
+            }
+            // Dot-matrix display fills the remaining space.
+            dotMatrix_.setBounds(macroRow.reduced(4, 4));
+        }
 
         // Master FX compact strip (48px, between macros and tab bar).
         if (masterFxStrip_)
@@ -2169,6 +2183,7 @@ private:
     std::unique_ptr<TransportBar>         transportBar_;
     SubmarineOuijaPanel                   ouijaPanel_;
     ExpressionStrips                      exprStrips_;
+    DotMatrixDisplay                      dotMatrix_;
     SubmarinePlaySurface                  subPlaySurface_;
     SurfaceRightPanel                     surfaceRight_;
     DashboardTabBar      tabBar_;
