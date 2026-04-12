@@ -167,6 +167,9 @@ juce_add_binary_data(XOceanusFont
     Assets/fonts/Neutical-Regular.otf
     Assets/fonts/ZTOtez-Regular.otf
     Assets/fonts/Elijah.otf
+    Assets/fonts/Satoshi-Regular.otf
+    Assets/fonts/Satoshi-Medium.otf
+    Assets/fonts/Satoshi-Bold.otf
 )
 
 juce_add_plugin(XOceanus
@@ -296,6 +299,10 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Ondine/OndineEngine.cpp
     Source/Engines/Ortolan/OrtolanEngine.h
     Source/Engines/Ortolan/OrtolanEngine.cpp
+    Source/Engines/Octant/OctantEngine.h
+    Source/Engines/Octant/OctantEngine.cpp
+    Source/Engines/Overtide/OvertideEngine.h
+    Source/Engines/Overtide/OvertideEngine.cpp
     Source/Engines/Bite/BiteEngine.h
     Source/Engines/Bite/BiteEngine.cpp
     Source/Engines/Origami/OrigamiEngine.h

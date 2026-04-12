@@ -259,7 +259,10 @@ public:
         {
             const float labelY = cy + radius + 3.0f;
             const float labelH = kNameFontSize + 4.0f;
-            g.setFont(GalleryFonts::engineName(isFx ? 8.0f : 9.0f));
+            // Fjørd for engine identity text (submarine typography system)
+            g.setFont(juce::Font(juce::FontOptions{}
+                .withTypeface(GalleryFonts::moodTypeface(GalleryFonts::MoodType::Foundation))
+                .withHeight(isFx ? 8.0f : 11.0f)));
             g.setColour(accentColour_.withAlpha(0.58f));
             g.drawText(engineId_.toUpperCase(),
                        juce::Rectangle<float>(0.0f, labelY, localBounds.getWidth(), labelH).toNearestInt(),

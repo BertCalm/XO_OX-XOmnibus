@@ -509,6 +509,22 @@ inline juce::Typeface::Ptr interBold()
     static auto tf = loadTypeface(FontData::InterBold_ttf, FontData::InterBold_ttfSize);
     return tf;
 }
+// Satoshi — functional UI font (replaces Inter for labels, buttons, controls)
+inline juce::Typeface::Ptr satoshiRegular()
+{
+    static auto tf = loadTypeface(FontData::SatoshiRegular_otf, FontData::SatoshiRegular_otfSize);
+    return tf;
+}
+inline juce::Typeface::Ptr satoshiMedium()
+{
+    static auto tf = loadTypeface(FontData::SatoshiMedium_otf, FontData::SatoshiMedium_otfSize);
+    return tf;
+}
+inline juce::Typeface::Ptr satoshiBold()
+{
+    static auto tf = loadTypeface(FontData::SatoshiBold_otf, FontData::SatoshiBold_otfSize);
+    return tf;
+}
 inline juce::Typeface::Ptr jetBrainsMono()
 {
     static auto tf = loadTypeface(FontData::JetBrainsMonoRegular_ttf, FontData::JetBrainsMonoRegular_ttfSize);
@@ -536,15 +552,15 @@ inline juce::Font display(float size)
 }
 inline juce::Font heading(float size)
 {
-    return juce::Font(juce::FontOptions{}.withTypeface(interBold()).withHeight(size));
+    return juce::Font(juce::FontOptions{}.withTypeface(satoshiBold()).withHeight(size));
 }
 inline juce::Font body(float size)
 {
-    return juce::Font(juce::FontOptions{}.withTypeface(interRegular()).withHeight(size));
+    return juce::Font(juce::FontOptions{}.withTypeface(satoshiRegular()).withHeight(size));
 }
 inline juce::Font label(float size)
 {
-    return juce::Font(juce::FontOptions{}.withTypeface(interMedium()).withHeight(size));
+    return juce::Font(juce::FontOptions{}.withTypeface(satoshiMedium()).withHeight(size));
 }
 inline juce::Font value(float size)
 {
