@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Rattan Hum",
+  "mood": "Organic",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene made of rattan and woven grass — the buzz is botanical, the paired beating feels like an insect's wings. Each pipe vibrates with its own agenda.",
+  "tier": "standard",
+  "tags": ["organic", "khene", "buzz", "natural", "insect"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.18,
+    "SPACE": 0.28
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.68,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.28,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.5,
+      "oto_chiff": 0.22,
+      "oto_detune": 0.38,
+      "oto_buzz": 0.7,
+      "oto_pressure": 0.45,
+      "oto_crosstalk": 0.28,
+      "oto_filterCutoff": 5800.0,
+      "oto_filterRes": 0.25,
+      "oto_attack": 0.02,
+      "oto_decay": 0.15,
+      "oto_sustain": 0.75,
+      "oto_release": 0.25,
+      "oto_lfo1Rate": 3.5,
+      "oto_lfo1Depth": 0.22,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.62,
+      "oto_macroB": 0.55,
+      "oto_macroC": 0.18,
+      "oto_macroD": 0.28
+    }
+  },
+  "tempo": null
+}

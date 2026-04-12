@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Fog Ritual",
+  "mood": "Atmosphere",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho disappearing into morning fog — maximum release, ultra-slow attack, cluster held at high density. Notes bloom like breath in cold air, then dissolve without ending.",
+  "tier": "standard",
+  "tags": ["atmosphere", "sho", "ambient", "sustained", "fog"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.1,
+    "SPACE": 0.8
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.35,
+    "movement": 0.08,
+    "density": 0.8,
+    "space": 0.9,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.8,
+      "oto_chiff": 0.04,
+      "oto_detune": 0.14,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.1,
+      "oto_crosstalk": 0.35,
+      "oto_filterCutoff": 3200.0,
+      "oto_filterRes": 0.04,
+      "oto_attack": 0.8,
+      "oto_decay": 1.5,
+      "oto_sustain": 0.95,
+      "oto_release": 3.0,
+      "oto_lfo1Rate": 0.05,
+      "oto_lfo1Depth": 0.03,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.35,
+      "oto_macroB": 0.1,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.8
+    }
+  },
+  "tempo": null
+}

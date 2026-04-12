@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Cloud Drift",
+  "mood": "Flux",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho drifting in and out of harmonic focus — the LFO modulating detune width creates a gentle in-and-out of phase relationship between pipes. Clouds forming and dissolving.",
+  "tier": "standard",
+  "tags": ["flux", "sho", "drift", "evolving", "phase"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.62,
+    "COUPLING": 0.15,
+    "SPACE": 0.62
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.36,
+    "movement": 0.62,
+    "density": 0.68,
+    "space": 0.65,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.68,
+      "oto_chiff": 0.09,
+      "oto_detune": 0.16,
+      "oto_buzz": 0.01,
+      "oto_pressure": 0.18,
+      "oto_crosstalk": 0.28,
+      "oto_filterCutoff": 5200.0,
+      "oto_filterRes": 0.1,
+      "oto_attack": 0.18,
+      "oto_decay": 0.7,
+      "oto_sustain": 0.9,
+      "oto_release": 1.4,
+      "oto_lfo1Rate": 0.22,
+      "oto_lfo1Depth": 0.42,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.45,
+      "oto_macroB": 0.62,
+      "oto_macroC": 0.15,
+      "oto_macroD": 0.62
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Transistor Chorale",
+  "mood": "Foundation",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Farfisa Compact in chorale mode — buzzy and bright, but pulled toward warmth by careful registration. A sound that knows its roots in Italian pop but aspires to something more.",
+  "tier": "standard",
+  "tags": ["foundation", "farfisa", "transistor", "chorale", "vintage"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.15,
+    "SPACE": 0.35
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.35,
+    "movement": 0.35,
+    "density": 0.6,
+    "space": 0.35,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 3,
+      "oct_cluster": 0.55,
+      "oct_chiff": 0.15,
+      "oct_detune": 0.08,
+      "oct_buzz": 0.62,
+      "oct_pressure": 0.25,
+      "oct_crosstalk": 0.35,
+      "oct_brightness": 0.68,
+      "oct_registration": 0.6,
+      "oct_roomDepth": 0.35,
+      "oct_attack": 0.025,
+      "oct_decay": 0.2,
+      "oct_sustain": 1.0,
+      "oct_release": 0.5,
+      "oct_filterEnvAmount": 0.18,
+      "oct_bendRange": 2,
+      "oct_macroCharacter": 0.7,
+      "oct_macroMovement": 0.35,
+      "oct_macroCoupling": 0.15,
+      "oct_macroSpace": 0.35,
+      "oct_lfo1Rate": 5.5,
+      "oct_lfo1Depth": 0.25,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.5,
+      "oct_lfo2Depth": 0.12,
+      "oct_lfo2Shape": 2,
+      "oct_competition": 0.12
+    }
+  },
+  "tempo": null
+}

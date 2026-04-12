@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Paper Garden",
+  "mood": "Atmosphere",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica in a hushed garden after rain — delicate pressure variations, minimal chiff, filter warm but slightly dark. The sound of small things noticed.",
+  "tier": "standard",
+  "tags": ["atmosphere", "melodica", "delicate", "ambient", "garden"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.1,
+    "SPACE": 0.6
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.78,
+    "movement": 0.25,
+    "density": 0.25,
+    "space": 0.65,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.16,
+      "oto_chiff": 0.05,
+      "oto_detune": 0.07,
+      "oto_buzz": 0.04,
+      "oto_pressure": 0.38,
+      "oto_crosstalk": 0.04,
+      "oto_filterCutoff": 4000.0,
+      "oto_filterRes": 0.06,
+      "oto_attack": 0.15,
+      "oto_decay": 0.4,
+      "oto_sustain": 0.9,
+      "oto_release": 1.8,
+      "oto_lfo1Rate": 0.2,
+      "oto_lfo1Depth": 0.08,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.35,
+      "oto_macroB": 0.25,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.6
+    }
+  },
+  "tempo": null
+}

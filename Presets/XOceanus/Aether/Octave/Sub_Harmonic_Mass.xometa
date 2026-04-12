@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Sub Harmonic Mass",
+  "mood": "Aether",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full cluster, maximum registration, extreme room depth, near-zero brightness — the organ becomes a subharmonic mass of resonance that is more environmental event than instrument.",
+  "tier": "standard",
+  "tags": ["aether", "cavaille-coll", "experimental", "sub-harmonic", "mass"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 1.0,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.08,
+    "SPACE": 1.0
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 1.0,
+    "movement": 0.04,
+    "density": 1.0,
+    "space": 1.0,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 1.0,
+      "oct_chiff": 0.02,
+      "oct_detune": 0.02,
+      "oct_buzz": 0.02,
+      "oct_pressure": 0.15,
+      "oct_crosstalk": 0.5,
+      "oct_brightness": 0.04,
+      "oct_registration": 1.0,
+      "oct_roomDepth": 1.0,
+      "oct_attack": 0.5,
+      "oct_decay": 3.0,
+      "oct_sustain": 1.0,
+      "oct_release": 5.0,
+      "oct_filterEnvAmount": 0.02,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 1.0,
+      "oct_macroMovement": 0.05,
+      "oct_macroCoupling": 0.08,
+      "oct_macroSpace": 1.0,
+      "oct_lfo1Rate": 0.005,
+      "oct_lfo1Depth": 0.05,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.006,
+      "oct_lfo2Depth": 0.03,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.03
+    }
+  },
+  "tempo": null
+}

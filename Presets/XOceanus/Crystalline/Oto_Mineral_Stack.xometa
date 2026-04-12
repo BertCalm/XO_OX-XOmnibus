@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Mineral Stack",
+  "mood": "Crystalline",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho with maximum harmonic cluster at maximum filter openness — the overtone layers stack like mineral strata, each identifiable, all forming one coherent crystalline formation.",
+  "tier": "standard",
+  "tags": ["crystalline", "sho", "stack", "harmonic", "layered"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.15,
+    "SPACE": 0.7
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.2,
+    "movement": 0.1,
+    "density": 0.9,
+    "space": 0.72,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.9,
+      "oto_chiff": 0.12,
+      "oto_detune": 0.06,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.07,
+      "oto_crosstalk": 0.2,
+      "oto_filterCutoff": 16500.0,
+      "oto_filterRes": 0.1,
+      "oto_attack": 0.08,
+      "oto_decay": 0.6,
+      "oto_sustain": 0.9,
+      "oto_release": 1.5,
+      "oto_lfo1Rate": 0.12,
+      "oto_lfo1Depth": 0.03,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.52,
+      "oto_macroB": 0.12,
+      "oto_macroC": 0.15,
+      "oto_macroD": 0.7
+    }
+  },
+  "tempo": null
+}

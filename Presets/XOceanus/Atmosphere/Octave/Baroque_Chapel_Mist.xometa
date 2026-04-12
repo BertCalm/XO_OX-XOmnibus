@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Baroque Chapel Mist",
+  "mood": "Atmosphere",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A small Baroque positiv in a damp stone chapel, the chiff softened by humidity and distance. Notes emerge and dissolve slowly, as if the chapel itself is breathing.",
+  "tier": "standard",
+  "tags": ["atmosphere", "baroque", "positiv", "chapel", "ambient"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.05,
+    "SPACE": 0.85
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.15,
+    "density": 0.38,
+    "space": 0.85,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 1,
+      "oct_cluster": 0.32,
+      "oct_chiff": 0.22,
+      "oct_detune": 0.05,
+      "oct_buzz": 0.04,
+      "oct_pressure": 0.15,
+      "oct_crosstalk": 0.12,
+      "oct_brightness": 0.45,
+      "oct_registration": 0.4,
+      "oct_roomDepth": 0.85,
+      "oct_attack": 0.06,
+      "oct_decay": 0.8,
+      "oct_sustain": 1.0,
+      "oct_release": 3.2,
+      "oct_filterEnvAmount": 0.08,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.35,
+      "oct_macroMovement": 0.18,
+      "oct_macroCoupling": 0.05,
+      "oct_macroSpace": 0.85,
+      "oct_lfo1Rate": 0.08,
+      "oct_lfo1Depth": 0.1,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.3,
+      "oct_lfo2Depth": 0.05,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.04
+    }
+  },
+  "tempo": null
+}
