@@ -222,6 +222,9 @@ public:
     // Chord Machine — read access for UI, state control from message thread
     ChordMachine& getChordMachine() { return chordMachine; }
 
+    // Master FX chain — read access for UI (sequencer playhead, etc.)
+    MasterFXChain& getMasterFXChain() { return masterFX; }
+
     // MPE Manager — per-note expression for Roli Seaboard, Linnstrument, Sensel, etc.
     MPEManager& getMPEManager() { return mpeManager; }
 

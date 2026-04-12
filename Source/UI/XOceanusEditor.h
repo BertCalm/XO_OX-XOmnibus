@@ -737,6 +737,45 @@ public:
         oceanView_.initMacros(proc.getAPVTS());
         oceanView_.initDetailPanel(proc);
         oceanView_.initSidebar();
+        oceanView_.initWaterline(proc.getAPVTS(), proc.getMasterFXChain().getSequencer());
+        oceanView_.initChordBar(proc.getAPVTS(), proc.getChordMachine());
+        oceanView_.initMasterFxStrip(proc.getAPVTS());
+        oceanView_.initTransportBar();
+        // Wire transport bar callbacks.
+        if (auto* tb = oceanView_.getTransportBar())
+        {
+            tb->onPlayToggled = [&proc, this]()
+            {
+                // Toggle sequencer enabled via APVTS.
+                if (auto* p = proc.getAPVTS().getParameter("master_seqEnabled"))
+                {
+                    bool nowOn = p->getValue() < 0.5f;
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(nowOn ? 1.0f : 0.0f);
+                    p->endChangeGesture();
+                    if (auto* bar = oceanView_.getTransportBar())
+                        bar->setPlaying(nowOn);
+                    // Also expand the waterline when starting.
+                    if (nowOn)
+                        if (auto* wl = oceanView_.getWaterline())
+                            wl->setExpanded(true);
+                }
+            };
+            tb->onBpmChanged = [&proc](double newBpm)
+            {
+                // Write BPM to chord machine's sequencer (cm_seq_bpm).
+                if (auto* p = proc.getAPVTS().getParameter("cm_seq_bpm"))
+                {
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(newBpm)));
+                    p->endChangeGesture();
+                }
+            };
+            tb->onCoupleClicked = []()
+            {
+                // TODO: open coupling inspector panel
+            };
+        }
         oceanView_.initStatusBar();
 
         // Wire OceanView callbacks
@@ -2015,8 +2054,8 @@ private:
             statusBar.setVoiceCount(totalVoices);
 
             // W03: BPM — read from host transport if available; 0.0 means "not connected".
+            double bpm = 0.0;
             {
-                double bpm = 0.0;
                 if (auto* ph = processor.getPlayHead())
                 {
                     auto pos = ph->getPosition();
@@ -2027,7 +2066,16 @@ private:
             }
 
             // W03: CPU — read from processor's measured processBlock load.
-            statusBar.setCpuPercent(processor.getProcessingLoad() * 100.0f);
+            const float cpuPct = processor.getProcessingLoad() * 100.0f;
+            statusBar.setCpuPercent(cpuPct);
+
+            // Push same data to submarine TransportBar.
+            if (auto* tb = oceanView_.getTransportBar())
+            {
+                tb->setVoiceCount(totalVoices);
+                tb->setBpm(bpm > 0.0 ? bpm : 120.0);
+                tb->setCpuPercent(cpuPct);
+            }
         }
 
         // ── Header indicators ─────────────────────────────────────────────────
