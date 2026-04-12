@@ -88,7 +88,7 @@ These engines are strong candidates but require a formal re-seance, a preset pus
 | ~~OpenSky~~ | ~~8.1~~ | ~~385~~ | **PROMOTED** — re-seance 2026-04-11 scored 8.5/10. Moved to Confirmed V1. Preset schema migration required. |
 | Orbweave | 8.4 | 451 | Just below 8.5; Knot Phase Coupling (B021) unique |
 | Organism | 8.1 / 7.2 | 433 | CA fix applied; re-seance to confirm |
-| Orphica | ~8.7 est. | 264 | Buffer extended; velocity→resonance wired; needs formal numeric seance on record |
+| Orphica | **8.4/10** (formal re-seance 2026-04-12) | 264 | D002 FAIL: no LFO2, no mod matrix (path to V1: add orph_lfo2Rate/Depth/Shape + 2-slot mod matrix); preset schema split fleet-wide (macro dict keys + stale params require migration); getSampleForCoupling scalar only. Score below 8.5 threshold. |
 | Overlap | 8.4 | 577 | Just below 8.5; adapter-based |
 
 ---

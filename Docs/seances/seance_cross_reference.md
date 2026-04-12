@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-04-12 — 76 seanced (OPENSKY 8.1→8.5 formal pass 2026-04-11; OVERBITE "~9.2 est."→9.1/10 formal pass 2026-04-12; OBIONT, OUTFLOW not yet seanced)
+**Updated:** 2026-04-12 — 76 seanced (OPENSKY 8.1→8.5 formal pass 2026-04-11; OVERBITE "~9.2 est."→9.1/10 formal pass 2026-04-12; ORPHICA "~8.7 est."→8.4/10 formal re-seance 2026-04-12 — Under Consideration; OBIONT, OUTFLOW not yet seanced)
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -46,7 +46,7 @@
 | XOrganism | ORGANISM | 8.1/10 → 7.2/10 → **8.7/10** (re-seance 2026-04-03) | OrgScopeHistory moving-average system; B028-adjacent: per-note XOR seed | CytomicSVF replacing biquad (FIXED); SR-scaled reverb (FIXED); PolyBLEP oscillators (ADDED); pitch bend (FIXED); 397 presets | No key tracking (ongoing); scope ceiling 16 | "The cellular automaton IS the synthesis architecture — not a gimmick." — Buchla |
 | XOutlook | OUTLOOK | 7.1/10 → ~8.0 (post-fix 2026-03-23) | B039 candidate: Parallax Stereo Field (conditional) | P0-OUTLOOK-01–04 fixed 2026-03-23 | D004: look_delayMix/macroCoupling were dead (FIXED) | "The parallax stereo field is genuinely novel — note pitch as stereo depth. But the horizon scan is inert for 5/8 waveforms." — Buchla |
 | XOhm | OHM | 7.6/10 | None | None | D001 partial (intensity not brightness); mono voice summing | "The Dad ensemble knows which instrument to play — and then plays them all in the center." |
-| XOrphica | ORPHICA | 8.0/10 → ~8.7 est. (post-fix 2026-03-21) | None | None | kBufSize 186ms too short (FIXED: extended to 1 s); D001 partial (FIXED: velocity→body resonance frequency wired) | "The granular pluck is beautiful — and it runs out of memory before the note blooms." |
+| XOrphica | ORPHICA | 8.0/10 → **8.4/10** (formal re-seance 2026-04-12) | None | None | D002 FAIL: no LFO2, no mod matrix; preset schema split fleet-wide (macro dict keys CHARACTER/MOVEMENT/COUPLING/SPACE → PLUCK/FRACTURE/SURFACE/DIVINE + stale params); getSampleForCoupling weakest in fleet (scalar only, no buffer, no envelope ch2); kBufSize extended to 1s; D001 PASS (velocity→body resonance freq wired) | "Only one drift oscillator and no mod matrix means the performer cannot explore the modulation space live." — Moog |
 | XObbligato | OBBLIGATO | 7.8/10 | None | None | D001 partial (intensity not brightness, Constellation-wide); FX chain routing misrouted (V2 backlog) | "The breath is genuine but the FX chain is sending it to the wrong room." |
 | XOttoni | OTTONI | 7.2/10 | None | None | D004: instrument choice params dead (FIXED); D001 partial (FIXED); reverb not SR-scaled (FIXED) | "Four instrument voices and none of them chose to speak." |
 | XOlé | OLE | 7.0/10 | None | None | isHusband regression post-SP7.5 fix; 4 dead params (fixed) | "The Alliance is the most interesting social dynamic in synthesis — and it is a bug." |
@@ -203,7 +203,7 @@
 | 13 | OASIS | 8.7/10 | Rhodes. Correct partial ratios, asymmetric clipping. |
 | 13 | OUTWIT | 8.7/10 (re-seance) | CA synthesis; re-seanced 2026-03-20. |
 | 13 | OSTINATO | 8.7/10 (re-seance) | B016–B020. Initial 8.0 → 8.7. |
-| 13 | ORPHICA | ~8.7 est. (post-fix) | Buffer extended to 1s. Velocity→body resonance wired. |
+| 13 | ORPHICA | ~~8.7 est.~~ → see Tier 3 | Formal re-seance 2026-04-12 scored 8.4. Moved to Tier 3. |
 | 13 | OXIDIZE | 8.7/10 pre-fix → 9.2+ post-fix | B044 proposed (Independent LUT curves); B040 shared with OXYTOCIN. Time as primary synthesis parameter. First seance 2026-04-05. |
 | 18 | ORGANON | 8/8 PASS | VFE metabolism. B011. Equivalent to ~9.0+. |
 
@@ -226,6 +226,7 @@
 | 30 | ORBWEAVE | 8.4/10 | B021 + B022. Knot topology. |
 | 30 | OVERLAP | 8.4/10 (re-seance) | KnotMatrix FDN. |
 | 30 | OAKEN | 8.4/10 | Sympathetic resonance network with material aging. |
+| 30 | ORPHICA | **8.4/10** (formal re-seance 2026-04-12) | D002 FAIL (no LFO2, no mod matrix). Preset schema split (macro dict + stale params). Under Consideration — D002 fix + schema migration required for V1. |
 
 ### Tier 4 — Acceptable (8.0–8.3)
 
