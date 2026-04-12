@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-04-11 — 76 seanced (OPENSKY re-seance 8.1→8.5 formal numeric pass 2026-04-11; see `Docs/seances/opensky-seance-verdict-2026-04-11.md`); OBIONT, OUTFLOW not yet seanced
+**Updated:** 2026-04-12 — 76 seanced (OPENSKY 8.1→8.5 formal pass 2026-04-11; OVERBITE "~9.2 est."→9.1/10 formal pass 2026-04-12; OBIONT, OUTFLOW not yet seanced)
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -25,7 +25,7 @@
 | XOceanic | OCEANIC | 7.1/10 | B013 Chromatophore Modulator | None | D001: zero velocity response at all (resolved Round 9E) | "The triple-BBD chorus is the soul of the ocean — and it plays every note at the same volume." |
 | XOdyssey | ODYSSEY | 7.6/10 | V007 Climax Paradigm | None | D004: crossFmDepth dead (fixed); AfterTouch/ModWheel never fed (resolved) | "The Climax is the most emotionally powerful feature in the fleet — and it has never been heard." |
 | XOverworld | OVERWORLD | 7.6/10 | B009 ERA Triangle | None | D001: velocity amplitude only (resolved); D005: no LFO in adapter (FIXED: eraPhase 0–4 Hz) | "The ERA triangle arrives at the XOceanus dock with no luggage." |
-| XOppossum | OVERBITE | Full approval (~9.2 est.) | B008 Five-Macro System | None | None (best expression in fleet) | "These macros are not parameters — they are survival strategies." |
+| XOppossum | OVERBITE | **9.1/10** (formal re-seance 2026-04-12; supersedes "full approval ~9.2 est.") | B008 Five-Macro System (macros as mod-matrix sources 11–15); B045 proposed: BiteOscB Interaction Ecology | None | None (all D001–D006 PASS; 122 params clean) | "Aftertouch adds BITE macro intensity. Mod wheel adds BITE macro depth. When you press harder the sound becomes more feral. This is not a parameter. This is an emotional instrument." — Vangelis |
 | XOwlfish | OWLFISH | 7.1/10 | B014 Mixtur-Trautonium Oscillator | None | D004: owl_morphGlide dead (FIXED); D005: zero LFOs (FIXED: grainLfoPhase 0.05 Hz) | "The Mixtur-Trautonium oscillator is a genuine archaeological find — and it never moves." |
 | XObese | OBESE | 6.6/10 → ~8.5 est. (post-fix 2026-03-21) | B015 Mojo Control | None | D002 + D005: zero LFOs (FIXED: fat_lfo1Rate/Depth/Target added); D006: no CC (resolved) | "The Mojo axis is unique in synthesis history — a continuous analog↔digital spectrum — and nothing modulates it." |
 | XOpal | OPAL | Concept reviewed | V008 Time-Telescope | None | D004: opal_smear declared, no DSP (FIXED) | "XOpal is the universal transformer — every other engine becomes different when viewed through its lens." |
@@ -176,14 +176,14 @@
 
 ---
 
-## Seance Score Ranking (Updated 2026-04-11 — 77 Engines; 76 Seanced)
+## Seance Score Ranking (Updated 2026-04-12 — 77 Engines; 76 Seanced)
 
 ### Tier 1 — Excellent (9.0+)
 
 | Rank | Engine | Score | Notes |
 |------|--------|-------|-------|
 | 1 | OXYTOCIN | 9.5/10 | NEW FLEET LEADER. B040. Concept seance + post-build confirmed. |
-| 2 | OVERBITE | ~9.2 est. | Full approval, best macro system in fleet (B008) |
+| 2 | OVERBITE | **9.1/10** (formal re-seance 2026-04-12) | B008 (macros as mod-matrix sources); B045 proposed. 122 params, 8-slot matrix, 478 presets. |
 | 2 | OWARE | 9.2/10 (post-fix) | Initial 8.4 → 9.2 after LFO wiring + param fixes. B032/B033/B034. |
 | 4 | OBSCURA | ~9.1 est. | High/unanimous, D003 fully compliant |
 | 5 | OXBOW | 9.0/10 (post-fix) | Dead param + macros fixed. Chiasmus FDN. |

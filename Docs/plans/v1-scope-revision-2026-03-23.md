@@ -37,7 +37,7 @@ An engine must meet **all** of the following to be included in V1:
 
 ---
 
-## Confirmed V1-Ready Engines (22)
+## Confirmed V1-Ready Engines (23)
 
 These engines meet all criteria as of this revision:
 
@@ -65,6 +65,7 @@ These engines meet all criteria as of this revision:
 | 20 | **Oxbow** | 9.0 | 175 | Chiasmus FDN entangled reverb synth |
 | 21 | **Oxytocin** | 9.5 (fleet leader) | 130 | Circuit × love topology; Note Duration (B040) |
 | 22 | **OpenSky** | 8.5 re-seance 2026-04-11 | 417 | Shepard shimmer (B023) + RISE macro (B024); preset schema migration required before ship |
+| 23 | **Overbite** | 9.1 re-seance 2026-04-12 | 478 | Five-macro system (B008); B045 proposed; fleet Tier 1; PLAY DEAD macroLabel verify before ship |
 
 ---
 
@@ -74,7 +75,7 @@ These engines are strong candidates but require a formal re-seance, a preset pus
 
 | Engine | Seance | Presets | Blocker |
 |--------|--------|--------:|---------|
-| Overbite | Full approval | 255 | Needs formal numeric re-seance |
+| ~~Overbite~~ | ~~Full approval~~ | ~~255~~ | **PROMOTED** — re-seance 2026-04-12 scored 9.1/10 (Tier 1). Moved to Confirmed V1. |
 | Oblong | ~8.5 est. | 802 | CuriosityEngine responsiveness; needs formal score |
 | Obese | ~8.5 est. | 408 | Post-fix recovery; needs formal re-seance |
 | OddOscar | ~8.5 est. | 444 | Post-fix recovery; no retreat doc |
