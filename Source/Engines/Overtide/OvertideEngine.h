@@ -30,10 +30,10 @@ namespace xoceanus
 //
 //  Gallery code: OVERTIDE | Accent: Tidal Cobalt #2A6BB5 | Prefix: ovt_
 //
-//  References (D003):
-//    Jean Morlet, "Sampling Theory and Wave Propagation" (1982)
-//    Ingrid Daubechies, "Ten Lectures on Wavelets" (1992)
-//    Dennis Gabor, "Theory of Communication" (1946)
+//  Inspired by (D003):
+//    Wavelet-informed multi-scale synthesis — Gaussian-windowed oscillators
+//    at octave-spaced frequencies, inspired by wavelet time-frequency
+//    localization (Morlet 1982, Daubechies 1992, Gabor 1946).
 //
 //  Signal Flow:
 //    8x WaveletGenerator (scales 1-8, octave spacing)
@@ -70,6 +70,7 @@ struct OvtWaveletGenerator
     float envPhase     = 0.0f;   // Gaussian envelope position (sweeps from 0 outward)
     float amplitude    = 1.0f;   // target per-scale amplitude
     float ampSmoothed  = 1.0f;   // one-pole smoothed amplitude (zipper prevention)
+    float smoothCoeff  = 0.005f; // set from outer loop with sample-rate-scaled value
     float retrigOffset = 0.0f;   // Random mode: stochastic offset on retrig threshold
     uint32_t rng       = 12345u; // per-generator PRNG for phase randomization
 
@@ -100,7 +101,7 @@ struct OvtWaveletGenerator
                       bool forceRetrig, float phaseRandom) noexcept
     {
         // Smooth amplitude target (one-pole, per-sample -- zipper prevention)
-        ampSmoothed += (amplitude - ampSmoothed) * 0.005f;
+        ampSmoothed += (amplitude - ampSmoothed) * smoothCoeff;
         ampSmoothed  = flushDenormal(ampSmoothed);
         if (ampSmoothed < 1e-6f) return 0.0f;
 
@@ -140,7 +141,7 @@ struct OvtWaveletGenerator
                 rng ^= rng << 13u;
                 rng ^= rng >> 17u;
                 rng ^= rng << 5u;
-                retrigOffset = static_cast<float>(rng & 0x3FF) / 4096.0f * 0.003f;
+                retrigOffset = static_cast<float>(rng & 0x3FF) / 4096.0f * 0.03f;
             }
         }
 
@@ -155,19 +156,21 @@ struct OvtWaveletGenerator
             carrier = fastSin(phaseRad);
             break;
 
-        case 1: // Gabor: cos(2pift) x Gaussian (exact Gaussian modulation)
-            carrier = fastCos(phaseRad);
+        case 1: // Gabor: half-rectified cosine — punchier, more percussive atom
+            carrier = std::max(0.0f, fastCos(phaseRad));
             break;
 
-        case 2: // Mexican Hat (Ricker): (1 - t^2/sigma^2) x Gaussian
+        case 2: // Mexican Hat (Ricker): purely the second derivative of Gaussian
         {
-            const float mexicanFactor = 1.0f - envPhase * envPhase / sig2;
-            carrier = fastSin(phaseRad) * mexicanFactor;
+            const float t2s2 = envPhase * envPhase / sig2;
+            carrier = (1.0f - t2s2) * 2.0f;  // scale factor for audibility
             break;
         }
 
-        case 3: // Haar: step function
-            carrier = (phase < 0.5f) ? 1.0f : -1.0f;
+        case 3: // Haar: localized bipolar step — positive then negative with silence
+            if (phase < 0.25f)       carrier =  1.0f;
+            else if (phase < 0.5f)   carrier = -1.0f;
+            else                     carrier =  0.0f;  // silence in second half = localization
             break;
         }
 
@@ -215,7 +218,7 @@ struct OvertideVoice
     int filterUpdateCounter = 0;
 
     // RhythmToBlend Sync retrigger request flag
-    bool syncRetrigRequest = false;
+    std::atomic<bool> syncRetrigRequest{false};
 
     void reset(float /*sr*/) noexcept
     {
@@ -245,7 +248,7 @@ struct OvertideVoice
         lastLfo2Val         = 0.0f;
         couplingFmAccum     = 0.0f;
         filterUpdateCounter = 0;
-        syncRetrigRequest   = false;
+        syncRetrigRequest.store(false, std::memory_order_relaxed);
     }
 };
 
@@ -286,10 +289,10 @@ public:
         params.push_back(std::make_unique<AP>(PID{"ovt_bandwidth",1}, "Overtide Bandwidth",
             NR{0.1f, 2.0f, 0.001f}, 0.5f));
 
-        params.push_back(std::make_unique<AP>(PID{"ovt_scaleBalance",1}, "Overtide Scale Balance",
+        params.push_back(std::make_unique<AP>(PID{"ovt_scaleBalance",1}, "Overtide Frequency Tilt",
             NR{0.0f, 1.0f, 0.001f}, 0.5f));
 
-        params.push_back(std::make_unique<AP>(PID{"ovt_scaleSpread",1}, "Overtide Scale Spread",
+        params.push_back(std::make_unique<AP>(PID{"ovt_scaleSpread",1}, "Overtide Stereo Width",
             NR{0.0f, 1.0f, 0.001f}, 0.0f));
 
         params.push_back(std::make_unique<APC>(PID{"ovt_retrigMode",1}, "Overtide Retrig Mode",
@@ -299,7 +302,7 @@ public:
             NR{0.0f, 1.0f, 0.001f}, 0.5f));
 
         // ---- B: Wavelet Shape (4 params) ----
-        params.push_back(std::make_unique<AP>(PID{"ovt_envDecay",1}, "Overtide Env Decay",
+        params.push_back(std::make_unique<AP>(PID{"ovt_envDecay",1}, "Overtide Shimmer Rate",
             NR{0.01f, 1.0f, 0.001f}, 0.3f));
 
         params.push_back(std::make_unique<AP>(PID{"ovt_phaseRandom",1}, "Overtide Phase Random",
@@ -415,7 +418,7 @@ public:
         // M2=CHOP: envDecay + brightness -- surface texture
         params.push_back(std::make_unique<AP>(PID{"ovt_macro2",1}, "Overtide Macro2",
             NR{0.0f, 1.0f, 0.001f}, 0.0f));
-        // M3=TIDE: scale spread + retrigger behavior
+        // M3=TIDE: stereo width via scale spread
         params.push_back(std::make_unique<AP>(PID{"ovt_macro3",1}, "Overtide Macro3",
             NR{0.0f, 1.0f, 0.001f}, 0.0f));
         // M4=SPACE: filter cutoff + width
@@ -465,7 +468,6 @@ public:
         couplingAmpFilter = 0.0f;
         couplingEnvMorph  = 0.0f;
         couplingRhythm    = 0.0f;
-        couplingFmLevel   = 0.0f;
         modWheelValue     = 0.0f;
         aftertouchValue   = 0.0f;
         lastSampleL       = 0.0f;
@@ -489,9 +491,9 @@ public:
         couplingAmpFilter = 0.0f;
         couplingEnvMorph  = 0.0f;
         couplingRhythm    = 0.0f;
-        couplingFmLevel   = 0.0f;
         modWheelValue     = 0.0f;
         aftertouchValue   = 0.0f;
+        pitchBendValue    = 0.0f;
         lastSampleL       = 0.0f;
         lastSampleR       = 0.0f;
         lastScaleBalance  = 0.5f;
@@ -515,7 +517,6 @@ public:
             const int copyLen = std::min(numSamples, maxBlock);
             for (int i = 0; i < copyLen; ++i)
                 couplingFmBuf[static_cast<size_t>(i)] = sourceBuffer[i] * amount;
-            couplingFmLevel = amount;
             for (auto& v : voices)
                 if (v.active)
                     v.couplingFmAccum = sourceBuffer[numSamples - 1] * amount;
@@ -542,7 +543,7 @@ public:
             // Strong hit triggers wavelet retrigger burst (Sync mode)
             if (std::fabs(couplingRhythm) > 0.5f)
                 for (auto& v : voices)
-                    if (v.active) v.syncRetrigRequest = true;
+                    if (v.active) v.syncRetrigRequest.store(true, std::memory_order_release);
             break;
         }
         default:
@@ -670,9 +671,9 @@ public:
         const int retrigMode    = pRetrigMode   ? static_cast<int>(pRetrigMode->load())   : 0;
         float brightness        = pBrightness   ? pBrightness->load()   : 0.5f;
 
-        // M1=SWELL: bandwidth narrows (more tonal), scale balance shifts toward lows
-        bandwidth    = std::clamp(bandwidth    - macro1 * 0.3f, 0.1f, 2.0f);
-        scaleBalance = std::clamp(scaleBalance - macro1 * 0.3f, 0.0f, 1.0f);
+        // M1=SWELL: bipolar — above 0.5 widens bandwidth + shifts to highs (swelling)
+        bandwidth    = std::clamp(bandwidth    + (macro1 - 0.5f) * 0.6f, 0.1f, 2.0f);
+        scaleBalance = std::clamp(scaleBalance + (macro1 - 0.5f) * 0.6f, 0.0f, 1.0f);
 
         // Group B -- Wavelet Shape
         float envDecay = pEnvDecay    ? pEnvDecay->load()    : 0.3f;
@@ -684,7 +685,7 @@ public:
         const float pitchTrack  = pPitchTrack  ? pPitchTrack->load()  : 1.0f;
         const float baseFreq    = pBaseFreq    ? pBaseFreq->load()    : 110.0f;
 
-        // M3=TIDE: scale spread widens
+        // M3=TIDE: stereo width widens
         scaleSpread = std::clamp(scaleSpread + macro3 * 0.8f, 0.0f, 1.0f);
 
         // Apply EnvToMorph coupling: shifts scaleBalance
@@ -830,6 +831,10 @@ public:
             {
                 aftertouchValue = msg.getAfterTouchValue() / 127.0f;
             }
+            else if (msg.isPitchWheel())
+            {
+                pitchBendValue = (msg.getPitchWheelValue() - 8192) / 8192.0f;
+            }
         }
 
         // Render remaining samples after last MIDI event
@@ -853,11 +858,11 @@ public:
             lastScaleBalance = finalScaleBalance;
         }
 
-        // Coupling accumulator decay 0.999x per block (Lesson 10)
-        couplingAmpFilter *= 0.999f;
-        couplingEnvMorph  *= 0.999f;
-        couplingRhythm    *= 0.999f;
-        couplingFmLevel   *= 0.999f;
+        // Coupling accumulator decay — sample-rate and block-size independent (~1s time constant)
+        const float couplingDecay = std::exp(-static_cast<float>(numSamples) / (sampleRateFloat * 1.0f));
+        couplingAmpFilter *= couplingDecay;
+        couplingEnvMorph  *= couplingDecay;
+        couplingRhythm    *= couplingDecay;
 
         // Active voice count (atomic write)
         int av = 0;
@@ -906,7 +911,7 @@ private:
         // Low scales breathe slowly; high scales shimmer quickly
         const float scaleFactor = 0.02f + static_cast<float>(scaleIndex) * 0.015f;
         const float rate = (centerFreq / sampleRate) * scaleFactor / std::max(0.01f, envDecay);
-        return flushDenormal(std::max(1e-7f, rate));
+        return flushDenormal(std::clamp(rate, 1e-7f, 0.1f));  // cap prevents sub-sample Gaussian collapse
     }
 
     // Stereo panning: scaleSpread=0 -> centered; scaleSpread=1 -> low=L, high=R
@@ -960,12 +965,17 @@ private:
             v.lfo2.setRate(lfo2Rate, sampleRateFloat);
             v.lfo2.setShape(lfo2Shape);
 
+            // Sample-rate-scaled amplitude smoother (~5ms smoothing time)
+            const float ampSmoothCoeff = 1.0f - std::exp(-1.0f / (0.005f * sampleRateFloat));
+            for (int sc = 0; sc < scaleCount; ++sc)
+                v.gens[sc].smoothCoeff = ampSmoothCoeff;
+
             const float noteFundamental = midiToFreq(v.note);
             const float keyTrackHz = static_cast<float>(v.note - 60)
                 * (baseCutoff * fltKeyTrack / 60.0f);
 
-            const bool syncRetrig = v.syncRetrigRequest;
-            v.syncRetrigRequest   = false;
+            const bool syncRetrig = v.syncRetrigRequest.load(std::memory_order_acquire);
+            v.syncRetrigRequest.store(false, std::memory_order_relaxed);
 
             for (int s = startSample; s < endSample; ++s)
             {
@@ -976,7 +986,8 @@ private:
                     v.glideFreq = noteFundamental;
                 v.glideFreq = flushDenormal(v.glideFreq);
 
-                const float fundamental = std::max(10.0f, v.glideFreq);
+                const float fundamental = std::max(10.0f, v.glideFreq
+                    * fastPow2(pitchBendValue * 2.0f / 12.0f));  // ±2 semitones
 
                 // LFO values (LIVE, per-sample, D002)
                 const float lfo1Val = v.lfo1.process() * lfo1Depth;
@@ -1024,9 +1035,7 @@ private:
                 const float fltEnvLevel = v.filterEnv.process();
 
                 // FM coupling for this sample
-                const float fmMod = (s < maxBlock)
-                    ? couplingFmBuf[static_cast<size_t>(s)]
-                    : 0.0f;
+                const float fmMod = couplingFmBuf[std::min(static_cast<size_t>(s), static_cast<size_t>(maxBlock - 1))];
 
                 // Sum all active wavelet generators
                 float sumL = 0.0f;
@@ -1156,14 +1165,27 @@ private:
         // Voice stealing: steal quietest releasing voice
         if (voiceIdx < 0)
         {
+            // Pass 1: prefer quietest releasing voice
             voiceIdx = 0;
-            float minLevel = 1.0f;
+            float minLevel = 2.0f;
             for (int i = 0; i < maxVoices; ++i)
             {
                 if (voices[i].releasing && voices[i].ampEnv.getLevel() < minLevel)
                 {
                     minLevel = voices[i].ampEnv.getLevel();
                     voiceIdx = i;
+                }
+            }
+            // Pass 2: if no releasing voice found, steal quietest overall
+            if (minLevel >= 2.0f)
+            {
+                for (int i = 0; i < maxVoices; ++i)
+                {
+                    if (voices[i].ampEnv.getLevel() < minLevel)
+                    {
+                        minLevel = voices[i].ampEnv.getLevel();
+                        voiceIdx = i;
+                    }
                 }
             }
         }
@@ -1245,11 +1267,11 @@ private:
     float couplingAmpFilter = 0.0f;
     float couplingEnvMorph  = 0.0f;
     float couplingRhythm    = 0.0f;
-    float couplingFmLevel   = 0.0f;
 
     // Expression
     float modWheelValue   = 0.0f;
     float aftertouchValue = 0.0f;
+    float pitchBendValue  = 0.0f;  // [-1, +1] range, ±2 semitones
 
     // Coupling output cache
     float lastSampleL      = 0.0f;

@@ -68,6 +68,12 @@ public:
     {
         A11y::setup(*this, "Engine Buoy", "Engine slot. Double-click to edit.");
         setWantsKeyboardFocus(true);
+        // Allow glow, wreath, bob animation, and name label to paint outside
+        // the component's bounds without being clipped by JUCE.
+        setPaintingIsUnclipped(true);
+        // Ghost slots are visual only — pass mouse events through until an
+        // engine is loaded.  setEngine() restores full interactivity.
+        setInterceptsMouseClicks(false, false);
         // Timer started in setEngine(), stopped in clearEngine().
     }
 
@@ -80,7 +86,42 @@ public:
     void paint(juce::Graphics& g) override
     {
         if (!hasEngine_)
+        {
+            // Ghost slot: dashed circle outline + "+" sign + slot number label.
+            // Matches the HTML prototype empty-state spec and OceanBackground ghost style.
+            const auto localBounds = getLocalBounds().toFloat();
+            const float cx = localBounds.getCentreX();
+            const float cy = localBounds.getCentreY();
+            const float r  = getBuoyRadius();
+            const juce::Colour ghostCol(127, 219, 202);
+
+            // Dashed circle outline (1.5px stroke, 4px dash / 4px gap)
+            juce::Path circle;
+            circle.addEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
+            juce::Path dashedCircle;
+            const float dashes[] = { 4.0f, 4.0f };
+            juce::PathStrokeType(1.5f).createDashedStroke(dashedCircle, circle, dashes, 2);
+            g.setColour(ghostCol.withAlpha(0.30f));
+            g.fillPath(dashedCircle);
+
+            // "+" centred in the circle
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(20.0f)));
+            g.setColour(ghostCol.withAlpha(0.35f));
+            g.drawText("+",
+                       juce::Rectangle<float>(cx - 15.0f, cy - 12.0f, 30.0f, 24.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+
+            // Slot number below the circle
+            if (slotIndex_ >= 0)
+            {
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
+                g.setColour(ghostCol.withAlpha(0.25f));
+                g.drawText("Slot " + juce::String(slotIndex_ + 1),
+                           juce::Rectangle<float>(cx - 20.0f, cy + r + 4.0f, 40.0f, 10.0f).toNearestInt(),
+                           juce::Justification::centred, false);
+            }
             return;
+        }
 
         const auto localBounds = getLocalBounds().toFloat();
         const float cx = localBounds.getCentreX();
@@ -433,9 +474,9 @@ public:
             ? parent->getLocalBounds().toFloat()
             : oceanAreaBounds_;
 
-        normalizedPosition_.x = juce::jlimit(0.05f, 0.95f,
+        normalizedPosition_.x = juce::jlimit(0.08f, 0.92f,
             (parentPos.x - area.getX()) / area.getWidth());
-        normalizedPosition_.y = juce::jlimit(0.05f, 0.95f,
+        normalizedPosition_.y = juce::jlimit(0.08f, 0.85f,
             (parentPos.y - area.getY()) / area.getHeight());
 
         if (onPositionChanged)
@@ -445,13 +486,31 @@ public:
     void mouseUp(const juce::MouseEvent& e) override
     {
         isDragging_ = false;
-        // Detect click vs drag — only fire onClicked if minimal movement
+        // Detect click vs drag — only fire onClicked if minimal movement.
+        // Delay single-click by 300ms so a double-click can cancel it.
+        // Without this delay, the first click fires transitionToZoomIn which
+        // MOVES the orbit, and JUCE won't fire mouseDoubleClick because the
+        // second click no longer hits the same component at its new position.
         if (e.getDistanceFromDragStart() < 4 && onClicked)
-            onClicked(slotIndex_);
+        {
+            pendingClickSlot_ = slotIndex_;
+            pendingClickActive_ = true;
+            const int slot = slotIndex_;
+            juce::Timer::callAfterDelay(300, [this, slot]()
+            {
+                if (pendingClickActive_ && pendingClickSlot_ == slot && onClicked)
+                {
+                    pendingClickActive_ = false;
+                    onClicked(slot);
+                }
+            });
+        }
     }
 
     void mouseDoubleClick(const juce::MouseEvent& /*e*/) override
     {
+        // Cancel the pending single-click — double-click takes priority
+        pendingClickActive_ = false;
         if (onDoubleClicked)
             onDoubleClicked(slotIndex_);
     }
@@ -466,6 +525,9 @@ public:
         accentColour_ = accent;
         depthZone_    = zone;
         hasEngine_    = true;
+
+        // Restore full mouse interactivity when an engine is loaded.
+        setInterceptsMouseClicks(true, true);
 
         setTitle("Engine: " + engineId);
         setDescription("Depth zone: " + depthZoneName(zone) + ". Double-click to edit.");
@@ -496,6 +558,10 @@ public:
         engineId_    = {};
         setTitle("Empty engine slot");
         setDescription({});
+
+        // Ghost slots are visual only — pass mouse events through so the
+        // lifesaver overlay and ocean background can receive them.
+        setInterceptsMouseClicks(false, false);
 
         breathPhase_      = 0.0f;
         wreathPhase_      = 0.0f;
@@ -754,6 +820,8 @@ private:
 
     // Freeform drag
     bool isDragging_ = false;
+    bool pendingClickActive_ = false;   ///< true while waiting to fire single-click
+    int  pendingClickSlot_   = -1;      ///< slot index for pending click
     juce::Point<float> dragStartPos_ {};
     juce::Point<float> normalizedPosition_ { 0.5f, 0.5f };
     juce::Rectangle<float> oceanAreaBounds_ {}; // parent ocean area for drag normalization

@@ -410,14 +410,15 @@ public:
             juce::String secText = sectionName(run.sec);
             bool collapsed = collapsedSections.count(run.sec) > 0;
 
-            // ── Section header background — visible shade difference from content ──
+            // ── Section header background — submarine surface tint (teal, 6%) ──
             {
-                g.setColour(juce::Colour(GalleryColors::surface())); // surface color — distinct from bg
+                // Submarine: rgba(60,180,170,0.06) — subtle teal tint on headers
+                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
                 g.fillRect(0, y, getWidth(), kHeaderRowH);
             }
 
-            // ── Bottom border on each section header — rgba(255,255,255,0.07) ─
-            g.setColour(GalleryColors::border());
+            // ── Bottom border on each section header — rgba(200,204,216,0.08) ─
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.08f));
             g.drawHorizontalLine(y + kHeaderRowH - 1, 0.0f, (float)getWidth());
 
             // ── Color dot — 8×8px, 4-color cycling palette ────────────────────
@@ -436,14 +437,16 @@ public:
             static const juce::String kArrowCollapsed(juce::CharPointer_UTF8("\xe2\x96\xb8")); // ▸
             static const juce::String kArrowExpanded(juce::CharPointer_UTF8("\xe2\x96\xbc"));  // ▼
 
-            g.setColour(GalleryColors::get(GalleryColors::t1())); // T1 primary text
+            // Submarine primary text: rgba(200,204,216,0.8)
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.8f));
             g.setFont(kSectionFont);
             g.drawText(secText, dotX + dotSize + 6, y, getWidth() - dotX - dotSize - 16, kHeaderRowH,
                        juce::Justification::centredLeft);
 
-            // ── Collapse indicator arrow — right-aligned, T3 color, 9px ───────
+            // ── Collapse indicator arrow — right-aligned, submarine muted, 9px ─
             {
-                g.setColour(GalleryColors::get(GalleryColors::t3()));
+                // Submarine muted text: rgba(200,204,216,0.3)
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.3f));
                 g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
                 g.drawText(collapsed ? kArrowCollapsed : kArrowExpanded, 0, y, getWidth() - 10, kHeaderRowH,
                            juce::Justification::centredRight);

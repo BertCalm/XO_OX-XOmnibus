@@ -86,9 +86,9 @@ public:
         drawDot(x0 + aW + dW + sW, ySus);    // sustain end
         drawDot(x0 + aW + dW + sW + rW, y0); // release end
 
-        // A D S R labels at bottom
+        // A D S R labels at bottom — submarine muted text rgba(200,204,216,0.4)
         g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
-        g.setColour(juce::Colour(GalleryColors::t3())); // T3
+        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.4f));
         float labelY = b.getBottom() - 10;
         g.drawText("A", (int)(x0 + aW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
         g.drawText("D", (int)(x0 + aW + dW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
@@ -171,7 +171,7 @@ public:
         if (getWidth() > 0 && getHeight() > 0)
             cachedHeaderGrad =
                 juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
-                                     GalleryColors::get(GalleryColors::shellWhite()), (float)getWidth(), 0.0f, false);
+                                     juce::Colours::transparentBlack, (float)getWidth(), 0.0f, false);
 
         // Load macro hero strip — it shows/hides itself based on discovery
         auto prefix = GalleryColors::prefixForEngine(engineId);
@@ -442,8 +442,18 @@ public:
     {
         using namespace GalleryColors;
 
+        // Submarine secondary text — matches rgba(200,204,216,0.6) from prototype
+        static const juce::Colour kSubSecondary = juce::Colour(200, 204, 216).withAlpha(0.6f);
+
+        // ── Opaque dark panel background (submarine) ─────────────────────────
+        g.fillAll(juce::Colour(20, 23, 32));
+
+        // Subtle teal border
+        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.14f));
+        g.drawRoundedRectangle(getLocalBounds().toFloat().reduced(0.5f), 8.0f, 1.0f);
+
         // ── Clean header: engine name + thin accent line ──────────────────────
-        // No heavy gradient, no zone bands — matches v05 mockup.
+        // No heavy gradient, no zone bands — matches submarine prototype.
         {
             // Engine name — 16px Overbit (D2), accent color
             g.setFont(GalleryFonts::engineName(16.0f));
@@ -462,7 +472,7 @@ public:
         if (!oscLabelBounds.isEmpty())
         {
             g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
-            g.setColour(get(t3()));
+            g.setColour(kSubSecondary);
             g.drawText("OSCILLOSCOPE", oscLabelBounds.withTrimmedLeft(8), juce::Justification::centredLeft, false);
         }
 
@@ -470,7 +480,7 @@ public:
         if (!envLabelBounds.isEmpty())
         {
             g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
-            g.setColour(get(t3()));
+            g.setColour(kSubSecondary);
             g.drawText("ENVELOPE", envLabelBounds.withTrimmedLeft(8), juce::Justification::centredLeft, false);
         }
     }
@@ -478,16 +488,19 @@ public:
     void resized() override
     {
         auto area = getLocalBounds();
-        area.removeFromTop(kHeaderH);
+
+        // ── Header: 40px with engine name ─────────────────────
+        auto headerArea = area.removeFromTop(kHeaderH);
+        (void)headerArea; // header is painted in paint(), no child components needed
 
         // P29: rebuild header gradient when width changes.
         // #895: guard against zero-size bounds — skip if not yet laid out.
         if (getWidth() > 0 && getHeight() > 0)
             cachedHeaderGrad =
                 juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
-                                     GalleryColors::get(GalleryColors::shellWhite()), (float)getWidth(), 0.0f, false);
+                                     juce::Colours::transparentBlack, (float)getWidth(), 0.0f, false);
 
-        // MacroHeroStrip hidden — macros are in the header row.
+        // MacroHeroStrip hidden — we use the macro section in the body instead
         macroHero.setBounds(0, 0, 0, 0);
         macroHero.setVisible(false);
         if (fiveMacroDisplay)
@@ -496,46 +509,49 @@ public:
             fiveMacroDisplay->setVisible(false);
         }
 
-        // ── Bottom: labels (12px) + waveform/ADSR displays (70px) split 50/50 ──
+        // ── Body: horizontal 3-zone layout ────────────────────
+        auto body = area.reduced(8, 4);  // small padding
+
+        // RIGHT: Waveform + ADSR column (200px)
         {
-            int waveH = 70;
-            int labelH = 12;
-            auto bottomArea = area.removeFromBottom(waveH + labelH);
-            auto labelRow = bottomArea.removeFromTop(labelH);
-            // Split label row: left = OSCILLOSCOPE, right = ENVELOPE
-            oscLabelBounds = labelRow.removeFromLeft(labelRow.getWidth() / 2);
-            envLabelBounds = labelRow; // painted in paint()
-            // Split display row: left = waveformDisplay, right = adsrDisplay
-            auto displayRow = bottomArea;
-            auto leftDisplay = displayRow.removeFromLeft(displayRow.getWidth() / 2);
-            auto rightDisplay = displayRow;
-            waveformDisplay.setBounds(leftDisplay.reduced(4, 2));
-            adsrDisplay.setBounds(rightDisplay.reduced(4, 2));
+            auto rightCol = body.removeFromRight(200);
+
+            // Oscilloscope label + display
+            oscLabelBounds = rightCol.removeFromTop(14);
+            waveformDisplay.setBounds(rightCol.removeFromTop(70).reduced(4, 2));
+
+            rightCol.removeFromTop(4);  // gap
+
+            // Envelope label + display
+            envLabelBounds = rightCol.removeFromTop(14);
+            adsrDisplay.setBounds(rightCol.removeFromTop(70).reduced(4, 2));
         }
+
+        body.removeFromRight(8);  // gap between waveform and params
 
         // ── Specialized displays (engine-specific, above parameter grid) ─────
         if (drumGrid)
         {
-            int drumH = drumGrid->getRequiredHeight(area.getWidth());
-            drumGrid->setBounds(area.removeFromTop(juce::jmin(drumH, 160)));
+            int drumH = drumGrid->getRequiredHeight(body.getWidth());
+            drumGrid->setBounds(body.removeFromTop(juce::jmin(drumH, 160)));
         }
         if (trianglePad)
         {
-            auto padArea = area.removeFromTop(144);
+            auto padArea = body.removeFromTop(144);
             trianglePad->setBounds(padArea.withSizeKeepingCentre(160, 140));
         }
         if (conductorArc)
         {
-            auto arcArea = area.removeFromTop(64);
+            auto arcArea = body.removeFromTop(64);
             conductorArc->setBounds(arcArea.withSizeKeepingCentre(200, 60));
         }
         if (modeSelector)
-            modeSelector->setBounds(area.removeFromTop(36).reduced(4, 2));
+            modeSelector->setBounds(body.removeFromTop(36).reduced(4, 2));
         if (axisBar)
-            axisBar->setBounds(area.removeFromTop(32).reduced(4, 2));
+            axisBar->setBounds(body.removeFromTop(32).reduced(4, 2));
 
-        // ── Main area: Viewport with ParameterGrid (fills remaining space) ───
-        viewport.setBounds(area);
+        // CENTER: Parameter grid viewport (fills remaining space)
+        viewport.setBounds(body);
 
         // Resize viewport content: support ParameterGrid, ObrixDetailPanel, DrumDetailPanel
         {

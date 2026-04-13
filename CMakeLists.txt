@@ -764,6 +764,7 @@ target_link_libraries(XOceanusTests PRIVATE
     juce::juce_audio_formats
     juce::juce_audio_processors
     juce::juce_gui_basics
+    XOceanusInitPreset
 )
 
 target_compile_definitions(XOceanusTests PRIVATE

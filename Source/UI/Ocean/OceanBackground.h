@@ -116,13 +116,31 @@ public:
             const float bw = static_cast<float>(bounds.getWidth());
             const float bh = static_cast<float>(bounds.getHeight());
             const float breatheX = (std::sin(waveTime_ * 1.2f) * 0.5f + 0.5f) * bw;
+            // Alpha raised from 0.032 → 0.06 so the teal warmth reads prominently
+            // on the brighter baseline gradient even before any audio is playing.
             juce::ColourGradient breatheGrad(
-                juce::Colour(60, 180, 170).withAlpha(0.018f),
+                juce::Colour(60, 180, 170).withAlpha(0.06f),
                 breatheX, bh * 0.5f,
                 juce::Colours::transparentBlack,
                 breatheX + bw * 0.4f, bh * 0.5f, true);
             g.setGradientFill(breatheGrad);
             g.fillRect(bounds);
+        }
+
+        // 1d. Atmospheric teal glow from above — creates depth perception.
+        //     Radial overlay centred at 30 % height (above centre) simulates
+        //     sunlight filtering down through shallow water.  Always drawn so
+        //     the ocean has visible warmth even at zero intensity.
+        {
+            const float cx = getWidth() * 0.5f;
+            const float cy = getHeight() * 0.3f;  // above center
+            const float radius = static_cast<float>(std::max(getWidth(), getHeight())) * 0.7f;
+            juce::ColourGradient atmo(
+                juce::Colour(60, 180, 170).withAlpha(0.04f), cx, cy,
+                juce::Colours::transparentBlack, cx, cy + radius,
+                true);
+            g.setGradientFill(atmo);
+            g.fillRect(getLocalBounds());
         }
 
         // 2. Overlay depth-zone ring fills (tinted, very low alpha).
@@ -319,19 +337,32 @@ private:
         // Radius to corner ensures no un-filled rectangle corners.
         const float cornerRadius = std::sqrt(cx * cx + cy * cy);
 
+        // Baseline gradient colours — brighter than GalleryColors::Ocean tokens so
+        // the ocean is visible and vivid at silent startup.  Bumped above the
+        // HTML prototype reference (Tools/ui-preview/submarine.html) to match
+        // the "layered soundwaves + color differentiation" design direction:
+        //   centre (no audio): rgb(32, 48, 72)   ← was rgb(26, 36, 56)
+        //   edge:              rgb(16, 22, 32)    ← was rgb(18, 20, 26), now bluer
+        // GalleryColors::Ocean constants are intentionally NOT used here; they are
+        // too dark for the background gradient (abyss=#04040A, shallow=#142040).
+        static const juce::Colour kBaseCenter  (32,  48,  72);   // brighter blue-vivid center
+        static const juce::Colour kBaseTwilight(25,  38,  58);   // brighter interpolated midpoint
+        static const juce::Colour kBaseDeep    (22,  30,  48);   // brighter outer-mid zone
+        static const juce::Colour kBaseEdge    (16,  22,  32);   // bluer, less grey edge
+
         juce::ColourGradient grad(
-            juce::Colour(GalleryColors::Ocean::shallow),   // centre colour
+            kBaseCenter,            // centre colour (brighter baseline)
             cx, cy,
-            juce::Colour(GalleryColors::Ocean::abyss),     // edge colour
-            cx + cornerRadius, cy,                          // point at edge
+            kBaseEdge,              // edge colour (brighter baseline, not abyss)
+            cx + cornerRadius, cy,  // point at edge
             /*isRadial=*/true
         );
 
         // #1008 FIX 3: 4 gradient stops that correctly represent all 3 depth zones.
-        // Zone 1 (Sunlit):   centre → kSunlitRadius   → Ocean::shallow → Ocean::twilight
-        // Zone 2 (Twilight): kSunlitRadius → midpoint → Ocean::twilight → midpoint colour
-        // Zone 3 (Midnight): midpoint → kMidnightRadius → Ocean::deep
-        // Edge:              kMidnightRadius → corner   → Ocean::abyss (already set)
+        // Zone 1 (Sunlit):   centre → kSunlitRadius   → kBaseCenter  → kBaseTwilight
+        // Zone 2 (Twilight): kSunlitRadius → midpoint → kBaseTwilight → mid blend
+        // Zone 3 (Midnight): midpoint → kMidnightRadius → kBaseDeep
+        // Edge:              kMidnightRadius → corner   → kBaseEdge (already set)
         //
         // Positions are in juce::ColourGradient normalised space [0,1] where 1.0 =
         // cornerRadius.  Depth-zone constants are fractions of halfMin, so we
@@ -340,20 +371,16 @@ private:
         const float scale   = (cornerRadius > 0.0f) ? halfMin / cornerRadius : 1.0f;
 
         // Stop 1: inner edge of sunlit zone → twilight colour
-        grad.addColour(kSunlitRadius * scale,
-                       juce::Colour(GalleryColors::Ocean::twilight));
+        grad.addColour(kSunlitRadius * scale, kBaseTwilight);
 
         // Stop 2: midpoint between twilight and midnight zones — bridging colour.
         // Derived as the 50% blend of twilight and deep so there is no sharp jump.
-        const float midStop = ((kTwilightRadius + kMidnightRadius) * 0.5f) * scale;
-        const juce::Colour midColour =
-            juce::Colour(GalleryColors::Ocean::twilight)
-                .interpolatedWith(juce::Colour(GalleryColors::Ocean::deep), 0.5f);
+        const float midStop   = ((kTwilightRadius + kMidnightRadius) * 0.5f) * scale;
+        const juce::Colour midColour = kBaseTwilight.interpolatedWith(kBaseDeep, 0.5f);
         grad.addColour(midStop, midColour);
 
         // Stop 3: outer edge of midnight zone → deep colour
-        grad.addColour(kMidnightRadius * scale,
-                       juce::Colour(GalleryColors::Ocean::deep));
+        grad.addColour(kMidnightRadius * scale, kBaseDeep);
 
         ig.setGradientFill(grad);
         ig.fillAll();
@@ -368,24 +395,27 @@ private:
                              float cx, float cy,
                              float halfMin) const
     {
-        // Sunlit zone — warm cyan tint, 4 % alpha.
+        // Sunlit zone — warm cyan tint.
+        // Alpha raised to 0.12 (was 0.07) for stronger zone differentiation.
         {
             const float r = kSunlitRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.04f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.12f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
-        // Twilight zone — blue tint, 3 % alpha.
+        // Twilight zone — blue tint.
+        // Alpha raised to 0.09 (was 0.05) for stronger zone differentiation.
         {
             const float r = kTwilightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.03f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.09f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
-        // Midnight zone — violet tint, 4 % alpha.
+        // Midnight zone — violet tint.
+        // Alpha raised to 0.10 (was 0.06) for stronger zone differentiation.
         {
             const float r = kMidnightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.04f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.10f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
     }
@@ -409,7 +439,8 @@ private:
             const float wobble = std::sin(waveTime_ * 0.3f + baseR * 0.005f)
                                * intensity_ * 4.0f;
             const float r = baseR + wobble;
-            const float alpha = 0.025f + intensity_ * 0.018f;
+            // Raised floor from 0.025 → 0.045 so rings read on brighter baseline gradient.
+            const float alpha = 0.045f + intensity_ * 0.018f;
 
             g.setColour(teal.withAlpha(alpha));
             g.drawEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f, 1.0f);

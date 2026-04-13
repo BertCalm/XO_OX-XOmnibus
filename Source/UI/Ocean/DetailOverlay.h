@@ -44,12 +44,30 @@ public:
         currentSlot_ = slot;
         detailPanel_ = detailPanel;
 
-        // Re-parent the detail panel into our container
-        addAndMakeVisible(detailPanel_);
-        detailPanel_->loadSlot(slot);
-
+        // DON'T re-parent the detail panel — keep it in OceanView's child list
+        // to preserve APVTS connections and child component state.
+        // Instead, we just position it over our panel bounds and make it visible.
         setVisible(true);
-        resized();
+        resized();   // positions backdrop, close button, and computes panel bounds
+
+        // Position the detail panel (still a child of our parent, OceanView)
+        // at absolute coordinates matching our panel area.
+        auto panelRect = getPanelBounds();
+        // Convert from our local coords to parent (OceanView) coords
+        auto absPanel = panelRect.translated(getBounds().getX(), getBounds().getY());
+        auto finalBounds = absPanel.reduced(4, 4).withTrimmedTop(8);
+        detailPanel_->setBounds(finalBounds);
+        detailPanel_->setVisible(true);
+        bool loaded = detailPanel_->loadSlot(slot);
+        detailPanel_->resized();
+        detailPanel_->toFront(false);
+
+        DBG("DetailOverlay::show slot=" + juce::String(slot)
+            + " loaded=" + juce::String(loaded ? "YES" : "NO")
+            + " panelBounds=" + finalBounds.toString()
+            + " overlayBounds=" + getBounds().toString()
+            + " panelParent=" + juce::String(detailPanel_->getParentComponent() ? detailPanel_->getParentComponent()->getName() : "NULL"));
+
         grabKeyboardFocus();
 
         if (onShown) onShown();
@@ -57,12 +75,9 @@ public:
 
     void hide()
     {
-        // Return the detail panel to its original parent
         if (detailPanel_)
-        {
             detailPanel_->setVisible(false);
-            // Don't removeChildComponent — let the parent manage ownership
-        }
+
         setVisible(false);
         currentSlot_ = -1;
 

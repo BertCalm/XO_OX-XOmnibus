@@ -64,6 +64,7 @@
 #include "DotMatrixDisplay.h"
 #include "SubmarineHudBar.h"
 #include "SurfaceRightPanel.h"
+#include "SubmarineMenuStyle.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -339,8 +340,18 @@ public:
             orbits_[i].onClicked       = [this](int s) { transitionToZoomIn(s); };
             orbits_[i].onDoubleClicked = [this](int s)
             {
-                if (detail_)
-                    detailOverlay_.show(s, detail_.get());
+                if (!detail_) return;
+
+                // Position over full window with padding
+                detail_->setBounds(getLocalBounds().reduced(50, 44));
+                detail_->loadSlot(s);
+                detail_->setVisible(true);
+                detail_->resized();
+
+                // Nuclear Z-order: remove and re-add as the LAST child
+                removeChildComponent(detail_.get());
+                addAndMakeVisible(*detail_);
+                detailShowing_ = true;
             };
             orbits_[i].onPositionChanged = [this](int slot)
             {
@@ -349,6 +360,9 @@ public:
                 int sz = orbits_[slot].getBuoySize() + kBreathPadding * 2;
                 int x = static_cast<int>(pos.x * area.getWidth()) - sz / 2;
                 int y = static_cast<int>(pos.y * area.getHeight()) - sz / 2;
+                // Clamp to keep buoy fully inside ocean area
+                x = juce::jlimit(0, area.getWidth() - sz, x);
+                y = juce::jlimit(0, area.getHeight() - sz, y);
                 orbits_[slot].setBounds(x + area.getX(), y + area.getY(), sz, sz);
                 substrate_.setCreatureCenter(slot, orbits_[slot].getCenter());
                 saveSlotPosition(slot);
@@ -749,23 +763,32 @@ public:
                                       kStatusBarH);
         }
 
-        // DetailOverlay covers the ocean area (excludes dashboard).
-        detailOverlay_.setBounds(oceanArea);
+        // ── Modal overlays and drawers: FULL WINDOW HEIGHT ──────────────────
+        // These sit above everything in Z-order (enforced by reorderZStack) and
+        // must cover the full window including dashboard/keyboard — matching the
+        // HTML prototype which uses `position:fixed; top:0; bottom:0`.
 
-        // Phase 2: CouplingConfigPopup covers the full ocean area.
-        couplingPopup_.setBounds(getOceanArea());
+        // DetailOverlay covers the full window (engine parameters on double-click).
+        detailOverlay_.setBounds(fullBounds);
 
-        // #1008 FIX 7: DimOverlay covers the ocean + waterline area so the dim
-        // effect extends to the waterline but doesn't dim the dashboard itself.
-        dimOverlay_.setBounds(fullBounds.withTrimmedBottom(getEffectiveDashboardH() + kStatusBarH));
+        // CouplingConfigPopup covers the full window (modal coupling config).
+        couplingPopup_.setBounds(fullBounds);
 
-        // Phase 3: Engine picker drawer — full height of ocean area, fixed width.
-        engineDrawer_.setBounds(oceanArea.withWidth(EnginePickerDrawer::kDrawerWidth));
+        // DimOverlay covers the full window (dims everything when drawer is open).
+        dimOverlay_.setBounds(fullBounds);
 
-        // Settings drawer — slides from the RIGHT edge of the ocean area.
-        settingsDrawer_.setBounds(oceanArea
-            .withLeft(oceanArea.getRight() - SettingsDrawer::kDrawerWidth)
+        // Engine picker drawer — full window height, fixed width on left.
+        engineDrawer_.setBounds(fullBounds.withWidth(EnginePickerDrawer::kDrawerWidth));
+
+        // Settings drawer — full window height, slides from right edge.
+        settingsDrawer_.setBounds(fullBounds
+            .withLeft(fullBounds.getRight() - SettingsDrawer::kDrawerWidth)
             .withWidth(SettingsDrawer::kDrawerWidth));
+
+        // ── Canonical Z-order ────────────────────────────────────────────────
+        // Called at end of every resized() to ensure drawers/overlays stay above
+        // all dashboard components regardless of init order or visibility changes.
+        reorderZStack();
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -781,6 +804,13 @@ public:
             if (engineDrawer_.isOpen())
             {
                 engineDrawer_.close();
+                return true;
+            }
+            if (detailShowing_)
+            {
+                detail_->setVisible(false);
+                dimOverlay_.setVisible(false);
+                detailShowing_ = false;
                 return true;
             }
             if (viewState_ == ViewState::BrowserOpen)
@@ -1228,6 +1258,9 @@ public:
     /** Fired when the user right-clicks a coupling knot and chooses "Delete Chain". */
     std::function<void(int chainIndex)> onCouplingDeleteRequested;
 
+    /** Fired when the user chooses "Add Coupling..." from a buoy context menu. */
+    std::function<void(int slot)> onChainModeRequested;
+
     //==========================================================================
     // State queries
     //==========================================================================
@@ -1480,118 +1513,152 @@ private:
     // Context menus
     //==========================================================================
 
-    /** Show a PopupMenu for a right-click on engine buoy at @p slot. */
+    /** Show a submarine-styled PopupMenu for a right-click on engine buoy at @p slot. */
     void showBuoyContextMenu(int slot)
     {
         const bool muted  = slotMuted_ [static_cast<size_t>(slot)];
         const bool soloed = slotSoloed_[static_cast<size_t>(slot)];
 
         juce::PopupMenu menu;
+        menu.setLookAndFeel(&menuLnF_);
 
-        // Item 1: Open Detail
-        menu.addItem(1, "Open Detail");
-
+        menu.addItem(1, juce::String::fromUTF8("\xf0\x9f\x94\x8d  Open Detail"));           // 🔍
+        menu.addItem(2, juce::String::fromUTF8("\xf0\x9f\x94\x84  Swap Engine..."));         // 🔄
+        menu.addSeparator();
+        menu.addItem(3, muted  ? juce::String::fromUTF8("\xf0\x9f\x94\x8a  Unmute")         // 🔊
+                               : juce::String::fromUTF8("\xf0\x9f\x94\x87  Mute"));          // 🔇
+        menu.addItem(4, soloed ? juce::String::fromUTF8("\xf0\x9f\x8e\xaf  Unsolo")         // 🎯
+                               : juce::String::fromUTF8("\xf0\x9f\x8e\xaf  Solo"));          // 🎯
+        menu.addItem(5, juce::String::fromUTF8("\xe2\xad\x90  Set as Master"));               // ⭐
+        menu.addItem(6, juce::String::fromUTF8("\xf0\x9f\x94\x97  Add Coupling..."));        // 🔗
         menu.addSeparator();
 
-        // Items 2-3: Mute / Solo toggles
-        menu.addItem(2, muted  ? "Unmute" : "Mute");
-        menu.addItem(3, soloed ? "Unsolo" : "Solo");
+        // Danger item: Remove
+        juce::PopupMenu::Item removeItem;
+        removeItem.itemID = 7;
+        removeItem.text   = juce::String::fromUTF8("\xf0\x9f\x97\x91  Remove Engine");       // 🗑
+        removeItem.colour = SubmarineMenuLookAndFeel::kDangerRed;
+        menu.addItem(removeItem);
 
-        menu.addSeparator();
-
-        // Item 4: Swap Engine
-        menu.addItem(4, "Swap Engine...");
-
-        // Item 5: Remove (destructive — shown in a slightly dimmer colour by
-        // default via JUCE's native popup styling)
-        menu.addItem(5, "Remove");
-
-        menu.showMenuAsync(juce::PopupMenu::Options{},
+        SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
+            juce::PopupMenu::Options{},
             [this, slot](int result)
             {
                 switch (result)
                 {
                     case 1:
-                        // Open Detail — transition to ZoomIn then split.
                         transitionToZoomIn(slot);
                         transitionToSplitTransform(slot);
                         break;
-
                     case 2:
-                        // Mute toggle.
+                        engineDrawer_.open();
+                        break;
+                    case 3:
                         slotMuted_[static_cast<size_t>(slot)] = !slotMuted_[static_cast<size_t>(slot)];
                         if (onEngineMuteToggled)
                             onEngineMuteToggled(slot);
                         break;
-
-                    case 3:
-                        // Solo toggle.
+                    case 4:
                         slotSoloed_[static_cast<size_t>(slot)] = !slotSoloed_[static_cast<size_t>(slot)];
                         if (onEngineSoloToggled)
                             onEngineSoloToggled(slot);
                         break;
-
-                    case 4:
-                        // Swap Engine — open the engine picker drawer.
-                        engineDrawer_.open();
-                        break;
-
                     case 5:
-                        // Remove engine.
+                        // Set as Master — future: promote this slot's engine to primary.
+                        break;
+                    case 6:
+                        // Add Coupling — enter chain-drawing mode from this slot.
+                        if (onChainModeRequested)
+                            onChainModeRequested(slot);
+                        break;
+                    case 7:
                         if (onEngineRemoveRequested)
                             onEngineRemoveRequested(slot);
                         break;
-
                     default:
                         break;
                 }
             });
     }
 
-    /** Show a PopupMenu for a right-click on a coupling knot at @p chainIndex. */
+    /** Show a submarine-styled PopupMenu for a right-click on a coupling knot. */
     void showKnotContextMenu(int chainIndex)
     {
         juce::PopupMenu menu;
+        menu.setLookAndFeel(&menuLnF_);
 
-        menu.addItem(1, "Edit Coupling");
+        menu.addItem(1, juce::String::fromUTF8("\xf0\x9f\x94\x84  Flip Direction"));        // 🔄
+        menu.addItem(2, juce::String::fromUTF8("\xe2\x9a\x99  Configure..."));                // ⚙
+        menu.addItem(3, juce::String::fromUTF8("\xf0\x9f\x93\x8b  Copy Settings"));          // 📋
         menu.addSeparator();
-        menu.addItem(2, "Delete Chain");
 
-        menu.showMenuAsync(juce::PopupMenu::Options{},
+        juce::PopupMenu::Item removeItem;
+        removeItem.itemID = 4;
+        removeItem.text   = juce::String::fromUTF8("\xf0\x9f\x97\x91  Remove Coupling");     // 🗑
+        removeItem.colour = SubmarineMenuLookAndFeel::kDangerRed;
+        menu.addItem(removeItem);
+
+        SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
+            juce::PopupMenu::Options{},
             [this, chainIndex](int result)
             {
                 switch (result)
                 {
                     case 1:
-                        // Show the coupling config popup (same as double-click).
+                        // Flip coupling direction — future: reverse source/target.
+                        break;
+                    case 2:
                         couplingPopup_.show(chainIndex,
                                             "Engine A", juce::Colour(60, 180, 170),
                                             "Engine B", juce::Colour(140, 100, 220),
                                             0, 0.5f);
                         break;
-
-                    case 2:
+                    case 3:
+                        // Copy coupling settings to clipboard — future.
+                        break;
+                    case 4:
                         if (onCouplingDeleteRequested)
                             onCouplingDeleteRequested(chainIndex);
                         break;
-
                     default:
                         break;
                 }
             });
     }
 
-    /** Show a PopupMenu for a right-click on empty ocean (no buoy or knot hit). */
+    /** Show a submarine-styled PopupMenu for a right-click on empty ocean. */
     void showEmptyOceanContextMenu()
     {
         juce::PopupMenu menu;
-        menu.addItem(1, "Add Engine...");
+        menu.setLookAndFeel(&menuLnF_);
 
-        menu.showMenuAsync(juce::PopupMenu::Options{},
+        menu.addItem(1, juce::String::fromUTF8("\xe2\x9e\x95  Add Engine..."));               // ➕
+        menu.addItem(2, juce::String::fromUTF8("\xf0\x9f\x94\x97  Toggle Chain Mode"));      // 🔗
+
+        juce::PopupMenu::Item pasteItem;
+        pasteItem.itemID    = 3;
+        pasteItem.text      = juce::String::fromUTF8("\xf0\x9f\x93\x8b  Paste Engine");      // 📋
+        pasteItem.isEnabled = false;  // disabled until clipboard has engine data
+        menu.addItem(pasteItem);
+
+        SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
+            juce::PopupMenu::Options{},
             [this](int result)
             {
-                if (result == 1)
-                    engineDrawer_.open();
+                switch (result)
+                {
+                    case 1:
+                        engineDrawer_.open();
+                        break;
+                    case 2:
+                        // Toggle chain-drawing mode — future.
+                        break;
+                    case 3:
+                        // Paste engine from clipboard — future.
+                        break;
+                    default:
+                        break;
+                }
             });
     }
 
@@ -1719,51 +1786,50 @@ private:
         if (macros_)
             macros_->setVisible(numLoaded > 0);
 
-        if (numLoaded > 0)
+        // Layout all 4 primary orbits at their normalized positions regardless of
+        // whether an engine is loaded.  Empty slots render as ghost outlines
+        // (dashed circle + "+" sign) via EngineOrbit::paint().  Slot 4 (index 4)
+        // is the ghost overflow slot and stays hidden when no engine occupies it.
+        for (int i = 0; i < 5; ++i)
         {
-            for (int i = 0; i < 5; ++i)
+            if (i == 4 && !orbits_[i].hasEngine())
             {
-                if (!orbits_[i].hasEngine())
-                {
-                    orbits_[i].setVisible(false);
-                    continue;
-                }
-
-                auto pos = orbits_[i].getNormalizedPosition();
-                int sz = orbits_[i].getBuoySize() + kBreathPadding * 2;
-                int x = static_cast<int>(pos.x * area.getWidth()) - sz / 2;
-                int y = static_cast<int>(pos.y * area.getHeight()) - sz / 2;
-                orbits_[i].setBounds(x + area.getX(), y + area.getY(), sz, sz);
-                orbits_[i].setOceanAreaBounds(area.toFloat());
-                orbits_[i].setVisible(true);
-
-                substrate_.setCreatureCenter(i, orbits_[i].getCenter());
+                // Ghost overflow slot — only visible when an engine is assigned.
+                orbits_[i].setVisible(false);
+                continue;
             }
-        }
-        else
-        {
-            // BLOCKER 1: empty-state — no engines loaded.
-            // Show a centred call-to-action label and hide all orbits.
-            for (auto& o : orbits_)
-                o.setVisible(false);
 
-            emptyStateLabel_.setVisible(true);
+            auto pos = orbits_[i].getNormalizedPosition();
+            int sz = orbits_[i].getBuoySize() + kBreathPadding * 2;
+            int x = static_cast<int>(pos.x * area.getWidth()) - sz / 2;
+            int y = static_cast<int>(pos.y * area.getHeight()) - sz / 2;
+            // Clamp buoy fully inside ocean area (prevent clipping by dashboard)
+            x = juce::jlimit(0, area.getWidth() - sz, x);
+            y = juce::jlimit(0, area.getHeight() - sz, y);
+            orbits_[i].setBounds(x + area.getX(), y + area.getY(), sz, sz);
+            orbits_[i].setOceanAreaBounds(area.toFloat());
+            orbits_[i].setVisible(true);
+
+            if (orbits_[i].hasEngine())
+                substrate_.setCreatureCenter(i, orbits_[i].getCenter());
+        }
+
+        // Empty-state label: centred below the ocean midpoint when no engines loaded.
+        emptyStateLabel_.setVisible(numLoaded == 0);
+        if (numLoaded == 0)
+        {
             emptyStateLabel_.setBounds(
                 static_cast<int>(centerF.x) - 150,
                 static_cast<int>(centerF.y) + 20,
                 300, 32);
         }
 
-        // If we have engines, keep the empty-state label hidden.
-        if (numLoaded > 0)
-            emptyStateLabel_.setVisible(false);
-
         // Step 7: Show the pulsing lifesaver ring on first launch when empty.
         lifesaver_.setVisible(firstLaunch_ && numLoaded == 0);
         lifesaver_.setBounds(getOceanArea());
 
         // Hide panels that belong to other states.
-        if (detail_)  { detail_->setVisible(false); }
+        if (detail_ && !detailShowing_)  { detail_->setVisible(false); }
         if (sidebar_) { sidebar_->setVisible(false); }
         browser_.setVisible(false);
     }
@@ -1848,7 +1914,7 @@ private:
         if (macros_)
             macros_->setVisible(true);
 
-        if (detail_)  { detail_->setVisible(false); }
+        if (detail_ && !detailShowing_)  { detail_->setVisible(false); }
         if (sidebar_) { sidebar_->setVisible(false); }
         browser_.setVisible(false);
         emptyStateLabel_.setVisible(false);  // ZoomIn always has an engine selected
@@ -1936,7 +2002,7 @@ private:
 
         nexus_.setVisible(false);
         if (macros_)  macros_->setVisible(false);
-        if (detail_)  detail_->setVisible(false);
+        if (detail_ && !detailShowing_)  detail_->setVisible(false);
         if (sidebar_) sidebar_->setVisible(false);
         emptyStateLabel_.setVisible(false);  // browser has its own empty state
     }
@@ -2121,6 +2187,10 @@ private:
     void reorderZStack()
     {
         ambientEdge_.toFront(false);
+        // Engine orbits must sit above the ambient edge and below the HUD / overlays
+        // so they're visible even when near the waterline boundary.
+        for (auto& orbit : orbits_)
+            orbit.toFront(false);
         // Fix 6: macros must render above the vignette overlay (ambientEdge_).
         if (macros_) macros_->toFront(false);
         if (detail_)   detail_->toFront(false);
@@ -2138,6 +2208,12 @@ private:
         presetNameLabel_.toFront(false);
         // #1008 FIX 7: dimOverlay_ above buttons but below PlaySurfaceOverlay.
         dimOverlay_.toFront(false);
+        // Empty-state elements: emptyStateLabel_ and lifesaver_ must float above
+        // the HUD bar (otherwise hudBar_ — added later — buries them).  Place them
+        // here so they appear in the ocean viewport above all other ocean content
+        // but are covered by the engine picker / settings drawers when open.
+        emptyStateLabel_.toFront(false);
+        lifesaver_.toFront(false);
         // Step 6: waterline and tab bar sit above the dim overlay but below
         // the PlaySurface so they are always legible.
         hudBar_.toFront(false);
@@ -2152,6 +2228,19 @@ private:
         if (chordBar_) chordBar_->toFront(false);
         if (transportBar_) transportBar_->toFront(false);
         if (statusBar_) statusBar_->toFront(false);
+
+        // Drawers and modal overlays must sit above EVERYTHING — including
+        // the dashboard, keyboard, transport bar, and status bar.
+        engineDrawer_.toFront(false);
+        settingsDrawer_.toFront(false);
+        // DetailOverlay backdrop sits above dashboard.
+        detailOverlay_.toFront(false);
+        // The EngineDetailPanel must sit ABOVE the overlay backdrop so its
+        // knobs, waveform, and labels are visible (not hidden behind the
+        // overlay's dark fill).  Only relevant when detail is showing.
+        if (detail_ && detail_->isVisible())
+            detail_->toFront(false);
+        couplingPopup_.toFront(false);
     }
 
     //==========================================================================
@@ -2169,6 +2258,7 @@ private:
 
     /// Step 7: true until the user loads their first engine or clicks the lifesaver.
     bool firstLaunch_ = true;
+    bool detailShowing_ = false;
 
     /// State saved on entering BrowserOpen so exitBrowser() can restore it exactly.
     ViewState preBrowserState_ = ViewState::Orbital;
@@ -2205,6 +2295,9 @@ private:
 
     // Step 4: Floating detail overlay (wraps EngineDetailPanel with backdrop + close btn).
     DetailOverlay        detailOverlay_;
+
+    // Submarine-styled popup menu LookAndFeel (dark glass, teal accents, fade-in).
+    SubmarineMenuLookAndFeel menuLnF_;
 
     // Phase 2: Coupling knot configuration popup (shown on double-click of a knot).
     CouplingConfigPopup  couplingPopup_;
@@ -2256,12 +2349,12 @@ private:
     static constexpr float kMacroStripH         = 60.0f;  // #901: 56→60pt to fit 48pt knobs + 6pt pad
     static constexpr float kSplitOrbitalFraction = 0.20f;  ///< 20% width for mini orbital
     static constexpr int   kWaterlineH          = 6;
-    static constexpr int   kDashboardH          = 400;    ///< macros (60) + FX (48) + tabs (30) + play (~262)
+    static constexpr int   kDashboardH          = 340;    ///< macros (60) + FX (48) + tabs (30) + play (~202)
     static constexpr int   kTabBarH             = 30;
 
     // HIGH fix (#1006): padding added to orbital bounds so ±5% breath animation
     // paints inside the component rect.  ceil(72 * 0.05) = 4px each side.
-    static constexpr int kBreathPadding = 4;
+    static constexpr int kBreathPadding = 30;
 
     // Orbit size alias: reference EngineOrbit constant directly.
     static constexpr float kOrbitSize_Orbital = EngineOrbit::kOrbitalSize;

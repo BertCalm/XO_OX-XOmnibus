@@ -29,12 +29,11 @@ namespace xoceanus
 //
 //  Gallery code: Octant | Accent: Deep Ocean Teal #1A6B7C | Prefix: octn_
 //
-//  References (D003):
-//    Ledyard Tucker, "Some Mathematical Notes on Three-Mode Factor Analysis"
-//      Psychometrika 31(3):279-311 (1966)
-//    Lieven De Lathauwer, Bart De Moor, Joos Vandewalle,
-//      "A Multilinear Singular Value Decomposition" SIAM J. Matrix Anal. Appl.
-//      21(4):1253-1278 (2000) — HOSVD
+//  Inspired by (D003):
+//    Tensor-organized additive synthesis — spectral amplitudes stored in a
+//    3D array [harmonics × layers × morphs] with bilinear interpolation.
+//    Concept draws on multi-modal data representation (Tucker 1966,
+//    De Lathauwer et al. 2000) as an organizing principle for timbral space.
 //
 //  Tensor Structure:
 //    tensor[16][4][4]: 16 harmonics × 4 depth layers × 4 morph states
@@ -323,7 +322,7 @@ public:
             NR{0.0f, 1.0f, 0.001f}, 0.5f));
 
         params.push_back(std::make_unique<AP>(PID{"octn_morph",1}, "Octant Morph",
-            NR{0.0f, 1.0f, 0.001f}, 0.0f));
+            NR{0.0f, 1.0f, 0.001f}, 0.25f));
 
         params.push_back(std::make_unique<AP>(PID{"octn_rotation",1}, "Octant Rotation",
             NR{0.0f, 360.0f, 0.1f}, 0.0f));
@@ -331,20 +330,20 @@ public:
         params.push_back(std::make_unique<AP>(PID{"octn_spread",1}, "Octant Spread",
             NR{0.0f, 1.0f, 0.001f}, 0.0f));
 
-        params.push_back(std::make_unique<AP>(PID{"octn_harmonicShift",1}, "Octant Harmonic Shift",
+        params.push_back(std::make_unique<AP>(PID{"octn_harmonicShift",1}, "Octant Pitch Offset",
             NR{-12.0f, 12.0f, 0.01f}, 0.0f));
 
         params.push_back(std::make_unique<APC>(PID{"octn_partialCount",1}, "Octant Partial Count",
             juce::StringArray{"4","8","12","16"}, 3));
 
         // ---- B: Tensor Character (4 params) ----
-        params.push_back(std::make_unique<AP>(PID{"octn_tensorWarp",1}, "Octant Tensor Warp",
+        params.push_back(std::make_unique<AP>(PID{"octn_tensorWarp",1}, "Octant Spectrum Contrast",
             NR{0.0f, 1.0f, 0.001f}, 0.0f));
 
         params.push_back(std::make_unique<AP>(PID{"octn_spectralTilt",1}, "Octant Spectral Tilt",
             NR{-1.0f, 1.0f, 0.001f}, 0.0f));
 
-        params.push_back(std::make_unique<AP>(PID{"octn_oddEvenBalance",1}, "Octant Odd Even Balance",
+        params.push_back(std::make_unique<AP>(PID{"octn_oddEvenBalance",1}, "Octant Harmonic Balance",
             NR{0.0f, 1.0f, 0.001f}, 0.5f));
 
         params.push_back(std::make_unique<AP>(PID{"octn_inharmonicity",1}, "Octant Inharmonicity",
@@ -415,7 +414,7 @@ public:
             params.push_back(std::make_unique<AP>(PID{"octn_lfo1Rate",1}, "Octant LFO1 Rate", r, 0.4f));
         }
         params.push_back(std::make_unique<AP>(PID{"octn_lfo1Depth",1}, "Octant LFO1 Depth",
-            NR{0.0f, 1.0f, 0.001f}, 0.0f));
+            NR{0.0f, 1.0f, 0.001f}, 0.2f));
         params.push_back(std::make_unique<APC>(PID{"octn_lfo1Shape",1}, "Octant LFO1 Shape",
             kLFOShapes, 0));
         params.push_back(std::make_unique<APC>(PID{"octn_lfo1Target",1}, "Octant LFO1 Target",
@@ -516,6 +515,7 @@ public:
         couplingRhythm    = 0.0f;
         modWheelValue     = 0.0f;
         aftertouchValue   = 0.0f;
+        pitchBendValue    = 0.0f;
         lastSampleL       = 0.0f;
         lastSampleR       = 0.0f;
         lastDepth         = 0.5f;
@@ -695,8 +695,8 @@ public:
         float baseMorph  = pMorph     ? pMorph->load()     : 0.0f;
         float baseRotation = pRotation ? pRotation->load() : 0.0f;
 
-        // M1 shifts depth brighter (smaller depth value = brighter)
-        baseDepth    = std::clamp(baseDepth - macro1 * 0.4f, 0.0f, 1.0f);
+        // M1=DEPTH: bipolar — below 0.5 darkens, above 0.5 brightens; at 0.5 no change
+        baseDepth    = std::clamp(baseDepth + (macro1 - 0.5f) * 0.8f, 0.0f, 1.0f);
         // M2 adds morph
         baseMorph    = std::clamp(baseMorph  + macro2 * 0.8f, 0.0f, 1.0f);
         // M3 adds rotation
@@ -845,13 +845,12 @@ public:
             targetAmps[h] *= std::max(0.0f, tiltFactor);
         }
 
-        // Apply odd/even balance: 0=odd only, 1=even only, 0.5=balanced
+        // Apply odd/even balance: 0=odd only, 0.5=balanced, 1=even only
+        // Linear crossfade across full range — normalization below handles level
         for (int h = 0; h < numPartials; ++h)
         {
             const bool isOdd = ((h + 1) % 2 == 1);  // h+1 is harmonic number
-            float balance = isOdd ? (1.0f - oddEvenBalance) * 2.0f
-                                  : oddEvenBalance * 2.0f;
-            balance = std::clamp(balance, 0.0f, 1.0f);
+            const float balance = isOdd ? (1.0f - oddEvenBalance) : oddEvenBalance;
             targetAmps[h] *= balance;
         }
 
@@ -889,8 +888,7 @@ public:
                               lfo1Rate, lfo1Depth, lfo1Shape, lfo1Tgt,
                               lfo2Rate, lfo2Depth, lfo2Shape, lfo2Tgt,
                               velTimbre, glideCoeff, modAmpLevel,
-                              finalSpread, harmonicShift, inharmonicity,
-                              baseDepth);
+                              finalSpread, harmonicShift, inharmonicity);
             midiSamplePos = msgPos;
 
             if (msg.isNoteOn())
@@ -916,6 +914,10 @@ public:
             {
                 aftertouchValue = msg.getAfterTouchValue() / 127.0f;
             }
+            else if (msg.isPitchWheel())
+            {
+                pitchBendValue = (msg.getPitchWheelValue() - 8192) / 8192.0f;
+            }
         }
 
         // Render remaining samples after last MIDI event
@@ -927,8 +929,7 @@ public:
                           lfo1Rate, lfo1Depth, lfo1Shape, lfo1Tgt,
                           lfo2Rate, lfo2Depth, lfo2Shape, lfo2Tgt,
                           velTimbre, glideCoeff, modAmpLevel,
-                          finalSpread, harmonicShift, inharmonicity,
-                          baseDepth);
+                          finalSpread, harmonicShift, inharmonicity);
 
         // ---- Cache last output samples for coupling ----
         if (numSamples > 0)
@@ -938,10 +939,11 @@ public:
             lastDepth   = baseDepth;
         }
 
-        // ---- Coupling accumulator decay 0.999x per block (Lesson 10) ----
-        couplingAmpFilter *= 0.999f;
-        couplingEnvMorph  *= 0.999f;
-        couplingRhythm    *= 0.999f;
+        // Coupling accumulator decay — sample-rate and block-size independent (~1s time constant)
+        const float couplingDecay = std::exp(-static_cast<float>(numSamples) / (sampleRateFloat * 1.0f));
+        couplingAmpFilter *= couplingDecay;
+        couplingEnvMorph  *= couplingDecay;
+        couplingRhythm    *= couplingDecay;
 
         // ---- Count active voices ----
         {
@@ -972,8 +974,7 @@ private:
                            float lfo1Rate, float lfo1Depth, int lfo1Shape, int lfo1Tgt,
                            float lfo2Rate, float lfo2Depth, int lfo2Shape, int lfo2Tgt,
                            float velTimbre, float glideCoeff, float modAmpLevel,
-                           float spread, float harmonicShift, float inharmonicity,
-                           float /*currentDepth*/) noexcept
+                           float spread, float harmonicShift, float inharmonicity) noexcept
     {
         if (startSample >= endSample) return;
 
@@ -1031,7 +1032,8 @@ private:
 
                 // ---- Glide-smooth frequency ----
                 {
-                    const float targetFreq = midiToFreqTune(v.note, harmonicShift);
+                    const float targetFreq = midiToFreqTune(v.note, harmonicShift)
+                        * fastPow2(pitchBendValue * 2.0f / 12.0f);  // ±2 semitones
                     if (glideCoeff > 0.0001f)
                         v.glideFreq = v.glideFreq + (targetFreq - v.glideFreq) * (1.0f - glideCoeff);
                     else
@@ -1072,12 +1074,9 @@ private:
                 const float totalDepthMod   = lfo1DepthOffset + lfo2DepthOffset;
                 const float totalMorphMod   = lfo1MorphOffset + lfo2MorphOffset;
                 const float totalFilterMod  = lfo1FilterOffset + lfo2FilterOffset;
-                // rotation mod affects amplitude mix via the lfo1RotOffset/lfo2RotOffset --
-                // we apply it as a crossfade between depth-like and morph-like amplitude patterns
+                // rotation mod cross-fades between depth-dominant (low-partial) and
+                // morph-dominant (high-partial) amplitude weighting — applied per-partial below
                 const float totalRotMod     = lfo1RotOffset + lfo2RotOffset;
-                (void)totalDepthMod;  // used below
-                (void)totalMorphMod;  // used below
-                (void)totalRotMod;    // used below
 
                 // ---- Filter cutoff with key tracking, env, and LFO ----
                 float effectiveCutoff = baseCutoff
@@ -1106,44 +1105,36 @@ private:
                 // ---- Build 16-partial additive sum ----
                 float sumL = 0.0f, sumR = 0.0f;
 
-                // FM coupling from AudioToFM — applied to partial phases
-                const float fmSample = (s < maxBlock)
-                    ? couplingFmBuf[static_cast<size_t>(s)]
-                    : 0.0f;
-
                 for (int h = 0; h < numPartials; ++h)
                 {
                     // Harmonic number (1-indexed) with inharmonicity stretch
                     // B-coefficient inharmonicity: fn = n * f0 * sqrt(1 + B*n^2)
                     // Use B = inharmonicity * 0.001 for subtle stretching
                     const float n = static_cast<float>(h + 1);
-                    const float inhFactor = 1.0f + inharmonicity * 0.001f * n * n;
+                    const float inhFactor = std::sqrt(1.0f + inharmonicity * 0.001f * n * n);
                     const float partialFreq = v.glideFreq * n * inhFactor;
+                    if (partialFreq >= sampleRateFloat * 0.499f) continue; // Nyquist guard
 
                     // Phase increment per sample
                     const float phaseInc = partialFreq / sampleRateFloat;
 
-                    // Spread: detune adjacent pairs slightly for stereo width
-                    // Odd partials: slight sharp, even: slight flat for L
-                    // Reverse for R. Maximum cents deviation = spread * 5 cents
-                    const float spreadSemitones = spread * 0.05f;  // max 5% of a semitone
-                    const float sign = ((h % 2) == 0) ? 1.0f : -1.0f;
-                    const float spreadFactor = fastPow2(sign * spreadSemitones / 12.0f);
+                    // FM coupling modulates the phase increment (true FM)
+                    const float fmMod = couplingFmBuf[std::min(static_cast<size_t>(s), static_cast<size_t>(maxBlock - 1))];
+                    const float fmPhaseAdd = fmMod * 0.01f;
 
-                    // Add FM coupling to phase (scaled to be pitch-like)
-                    const float fmPhaseAdd = fmSample * 0.01f;
-
-                    // Advance phase
-                    v.partialPhase[h] += phaseInc;
+                    // Advance phase accumulator with FM baked into the increment
+                    v.partialPhase[h] += phaseInc + fmPhaseAdd;
                     if (v.partialPhase[h] >= 1.0f)
                         v.partialPhase[h] -= 1.0f;
 
-                    // Compute sine
-                    const float phaseL = v.partialPhase[h] + fmPhaseAdd;
-                    const float phaseR = v.partialPhase[h] * spreadFactor + fmPhaseAdd;
+                    // Spread: add a small stereo phase offset per partial
+                    // Alternating sign creates L/R decorrelation
+                    const float sign = ((h % 2) == 0) ? 1.0f : -1.0f;
+                    const float spreadOffset = sign * spread * 0.02f * static_cast<float>(h + 1);
 
-                    const float sineL = fastSin(phaseL * kOctantTwoPi);
-                    const float sineR = fastSin(phaseR * kOctantTwoPi);
+                    // Compute sine
+                    const float sineL = fastSin(v.partialPhase[h] * kOctantTwoPi);
+                    const float sineR = fastSin((v.partialPhase[h] + spreadOffset) * kOctantTwoPi);
 
                     // LFO depth/morph modulation on amplitude: crude but effective
                     // Scale the smoothed amplitude by a small LFO-driven envelope
@@ -1159,6 +1150,15 @@ private:
                         // morph modulation: odd partials respond more
                         const bool isOdd = ((h + 1) % 2 == 1);
                         ampMod += totalMorphMod * (isOdd ? 0.3f : -0.1f);
+                    }
+                    if (std::fabs(totalRotMod) > 0.0001f)
+                    {
+                        // Rotation modulates the balance between low and high partials:
+                        // positive rotation boosts high partials (morph-projection dominant),
+                        // negative rotation boosts low partials (depth-projection dominant).
+                        // rotWeight runs [-1, 1] across the partial stack.
+                        const float rotWeight = (static_cast<float>(h) / 15.0f) * 2.0f - 1.0f;
+                        ampMod += totalRotMod * rotWeight * 0.3f;
                     }
                     ampMod = std::clamp(ampMod, 0.0f, 2.0f);
 
@@ -1226,7 +1226,20 @@ private:
                     break;
                 }
             }
-            // Steal: find the longest-active (lowest env level in release)
+            // Steal: pass 1 — prefer the quietest RELEASING voice
+            if (target == nullptr)
+            {
+                float lowestAmp = 2.0f;
+                for (int i = 0; i < maxV; ++i)
+                {
+                    if (voices[i].releasing && voices[i].ampEnv.getLevel() < lowestAmp)
+                    {
+                        lowestAmp = voices[i].ampEnv.getLevel();
+                        target = &voices[i];
+                    }
+                }
+            }
+            // Steal: pass 2 — fall back to the quietest voice regardless of state
             if (target == nullptr)
             {
                 float lowestAmp = 2.0f;
@@ -1327,6 +1340,7 @@ private:
     // Expression state
     float modWheelValue   = 0.0f;
     float aftertouchValue = 0.0f;
+    float pitchBendValue  = 0.0f;  // [-1, +1] range, ±2 semitones
 
     // Coupling output cache
     float lastSampleL = 0.0f;
