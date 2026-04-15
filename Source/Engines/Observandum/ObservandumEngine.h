@@ -365,8 +365,8 @@ public:
         // ---- Environmental curve modifier (per-block signal generation) ----
         // envSignalBuffer holds one sample per output sample (Mode 2)
         // or is filled from env follower (Mode 1) or coupling (Mode 0)
-        if (static_cast<int>(envSignalBuffer.size()) < numSamples)
-            envSignalBuffer.assign(static_cast<size_t>(numSamples), 0.0f);
+        // Clamp to pre-allocated buffer size (no heap allocation on audio thread)
+        numSamples = std::min(numSamples, static_cast<int>(envSignalBuffer.size()));
 
         if (paramEnvMode == 1)
         {
