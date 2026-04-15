@@ -1072,7 +1072,7 @@ public:
     //==========================================================================
 
     juce::String getEngineId()    const override { return "Opsin"; }
-    juce::Colour getAccentColour() const override { return juce::Colour(0xFF, 0x00, 0xCC); } // Bioluminescent Cyan ~#00FFCC mapped
+    juce::Colour getAccentColour() const override { return juce::Colour(0x00, 0xFF, 0xCC); } // Bioluminescent Cyan #00FFCC
     int          getMaxVoices()   const override { return 1; } // Monophonic: the network IS the voice
 
 private:
