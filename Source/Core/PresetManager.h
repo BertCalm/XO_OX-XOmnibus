@@ -74,7 +74,7 @@ inline const juce::StringArray validEngineNames{
     // KITCHEN Quad Collection
     "Oven", "Ochre", "Obelisk", "Opaline",
     // CELLAR Quad Collection
-    "Ogre", "Olate", "Oaken", "Omega",
+    "Ogive", "Olvido", "Ogre", "Olate", "Oaken", "Omega",
     // GARDEN Quad Collection
     "Orchard", "Overgrow", "Osier", "Oxalis",
     // BROTH Quad Collection
@@ -216,6 +216,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Obelisk", "obel_"},
         {"Opaline", "opal2_"},
         // CELLAR Quad Collection
+        {"Ogive", "ogv_"},
+        {"Olvido", "olv_"},
         {"Ogre", "ogre_"},
         {"Olate", "olate_"},
         {"Oaken", "oaken_"},

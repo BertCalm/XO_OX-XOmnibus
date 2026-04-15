@@ -96,8 +96,10 @@
 #include "Engines/Obiont/ObiontEngine.h"
 // OXIDIZE — age-based corrosion synthesis engine
 #include "Engines/Oxidize/OxidizeAdapter.h"
-// OGIVE — scanned glass synthesis (engine #78)
+// OGIVE — scanned glass synthesis (engine #86)
 #include "Engines/Ogive/OgiveEngine.h"
+// OLVIDO — spectral erosion synthesis (engine #87)
+#include "Engines/Olvido/OlvidoEngine.h"
 #include "DSP/Effects/MathFXChain.h"
 #include "DSP/Effects/BoutiqueFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
@@ -345,10 +347,14 @@ static bool registered_Obiont = xoceanus::EngineRegistry::instance().registerEng
 // OXIDIZE — age-based corrosion synthesis engine
 static bool registered_Oxidize = xoceanus::EngineRegistry::instance().registerEngine(
     "Oxidize", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OxidizeAdapter>(); });
-// OGIVE — scanned glass synthesis (engine #78)
+// OGIVE — scanned glass synthesis (engine #86)
 static bool registered_Ogive =
     xoceanus::EngineRegistry::instance().registerEngine("Ogive", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OgiveEngine>(); });
+// OLVIDO — spectral erosion synthesis (engine #87)
+static bool registered_Olvido =
+    xoceanus::EngineRegistry::instance().registerEngine("Olvido", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OlvidoEngine>(); });
 
 namespace xoceanus
 {

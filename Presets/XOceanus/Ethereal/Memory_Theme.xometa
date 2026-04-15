@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Memory of a Theme",
+  "mood": "Ethereal",
+  "engines": ["Olvido"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Not a theme — the memory of one. Triangle waveform with slight asymmetry and 8-second erosion softens every phrase into something half-recalled. Large reverb and 0.5 memory link sustain the impression long after the notes are gone. Cinematic restraint: nothing is fully stated, everything is felt.",
+  "tags": ["cinematic", "ethereal", "triangle", "theme", "memory", "strings"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.40,
+    "density": 0.50,
+    "space": 0.65,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Olvido": {
+      "olv_drift_type": 2,
+      "olv_drift_asym": 0.6,
+      "olv_foam": 0.12,
+      "olv_fm_ratio": 2.0,
+      "olv_fm_depth": 0.3,
+      "olv_depth": 0.7,
+      "olv_current": 0.3,
+      "olv_erosion": 8.0,
+      "olv_shoreline": 0.55,
+      "olv_flotsam": 0.3,
+      "olv_abyss_hold": 0.9,
+      "olv_filter_cutoff": 5500.0,
+      "olv_filter_reso": 0.2,
+      "olv_filter_drive": 0.25,
+      "olv_filter_env": 0.45,
+      "olv_reverb_size": 0.75,
+      "olv_reverb_mix": 0.5,
+      "olv_patina": 0.15,
+      "olv_lfo_rate": 0.12,
+      "olv_lfo_shape": 0,
+      "olv_lfo_depth": 0.35,
+      "olv_env_attack": 0.06,
+      "olv_env_decay": 2.0,
+      "olv_env_sustain": 0.65,
+      "olv_env_release": 4.0,
+      "olv_voice_mode": 0,
+      "olv_memory_link": 0.5,
+      "olv_anchor": 0,
+      "olv_tempo_sync": 0,
+      "olv_macro1": 0.45,
+      "olv_macro2": 0.4,
+      "olv_macro3": 0.0,
+      "olv_macro4": 0.65
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.0,
+    "SPACE": 0.65
+  }
+}

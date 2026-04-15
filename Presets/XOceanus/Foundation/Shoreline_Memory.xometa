@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Shoreline Memory",
+  "mood": "Foundation",
+  "engines": ["Olvido"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The default voice of XOlvido. A warm saw with gentle erosion and a 3-second decay — present without insisting, remembered without effort. The tide at its most neutral.",
+  "tags": ["init", "warm", "saw", "neutral", "foundation"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.50,
+    "warmth": 0.65,
+    "movement": 0.35,
+    "density": 0.45,
+    "space": 0.35,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Olvido": {
+      "olv_drift_type": 0,
+      "olv_drift_asym": 0.5,
+      "olv_foam": 0.2,
+      "olv_fm_ratio": 2.0,
+      "olv_fm_depth": 0.3,
+      "olv_depth": 0.3,
+      "olv_current": 0.0,
+      "olv_erosion": 3.0,
+      "olv_shoreline": 0.5,
+      "olv_flotsam": 0.0,
+      "olv_abyss_hold": 0.8,
+      "olv_filter_cutoff": 6000.0,
+      "olv_filter_reso": 0.2,
+      "olv_filter_drive": 0.1,
+      "olv_filter_env": 0.3,
+      "olv_reverb_size": 0.4,
+      "olv_reverb_mix": 0.25,
+      "olv_patina": 0.0,
+      "olv_lfo_rate": 0.3,
+      "olv_lfo_shape": 0,
+      "olv_lfo_depth": 0.2,
+      "olv_env_attack": 0.01,
+      "olv_env_decay": 1.0,
+      "olv_env_sustain": 0.5,
+      "olv_env_release": 1.5,
+      "olv_voice_mode": 0,
+      "olv_memory_link": 0.0,
+      "olv_anchor": 0,
+      "olv_tempo_sync": 0,
+      "olv_macro1": 0.5,
+      "olv_macro2": 0.5,
+      "olv_macro3": 0.0,
+      "olv_macro4": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  }
+}

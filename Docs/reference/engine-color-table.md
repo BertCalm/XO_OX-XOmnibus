@@ -3,7 +3,7 @@
 > Extracted from CLAUDE.md to reduce context window size. This is the canonical color/identity reference.
 > For parameter prefixes, see CLAUDE.md (kept inline for daily development use).
 
-## Engine Modules (77 implemented / 101 full fleet design)
+## Engine Modules (79 implemented / 101 full fleet design)
 
 | Short Name | Source Instrument | Accent Color |
 |-----------|------------------|-------------|
@@ -63,6 +63,8 @@
 | OCHRE | XOchre | Ochre Pigment `#CC7722` |
 | OBELISK | XObelisk | Grand Ivory `#FFFFF0` |
 | OPALINE | XOpaline | Prepared Rust `#B7410E` |
+| OGIV | XOgive | Selenium Ruby `#9B1B30` |
+| OLVI | XOlvido | Coelacanth Blue `#3B6E8F` |
 | OGRE | XOgre | Sub Bass Black `#0D0D0D` |
 | OLATE | XOlate | Fretless Walnut `#5C3317` |
 | OAKEN | XOaken | Upright Oak `#9C6B30` |
