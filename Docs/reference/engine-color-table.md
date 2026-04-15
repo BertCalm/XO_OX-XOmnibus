@@ -3,7 +3,7 @@
 > Extracted from CLAUDE.md to reduce context window size. This is the canonical color/identity reference.
 > For parameter prefixes, see CLAUDE.md (kept inline for daily development use).
 
-## Engine Modules (79 implemented / 101 full fleet design)
+## Engine Modules (88 implemented / 101 full fleet design)
 
 | Short Name | Source Instrument | Accent Color |
 |-----------|------------------|-------------|
@@ -109,8 +109,11 @@
 | OPUS | XOpus | Psychedelic Amber `#FFA500` |
 | OUTLAW | XOutlaw | Hendrix Purple `#6A0DAD` |
 | OUTBREAK | XOutbreak | Grunge Olive `#6B6B3E` |
-| ORRERY | XOrrery | Celestial Blue `#4682B4` |
+| ORRERY | XOrrery | Orrery Brass `#C8A84B` |
 | OSTR | XOstracon | Shard Terracotta `#C0785A` |
+| OBSERVANDUM | XObservandum | Cuttlefish Teal `#4ECDC4` |
+| OPSIN | XOpsin | Bioluminescent Cyan `#00FFCC` |
+| OORT | XOort | Oort Cloud Violet `#9B7FD4` |
 
 ## The 43 Blessings
 

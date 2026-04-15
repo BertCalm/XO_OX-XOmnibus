@@ -157,6 +157,9 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Outbreak | `outb_` | `outb_virusFilter` |
 | Orrery | `orry_` | `orry_planetSpeed` |
 | Ostracon | `ostr_` | `ostr_oxide` |
+| Observandum | `observ_` | `observ_curveMorph` |
+| Opsin | `ops_` | `ops_topology` |
+| Oort | `oort_` | `oort_scatter` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -168,7 +171,7 @@ See `Docs/specs/xoceanus_name_migration_reference.md` for the full mapping and g
 |------|---------|
 | `Docs/specs/xoceanus_master_specification.md` | **THE** single source of truth |
 | `Docs/specs/xoceanus_name_migration_reference.md` | Legacy → canonical engine name mapping |
-| `Docs/reference/engine-color-table.md` | Full engine color table + Blessings + Debates (79 implemented, 101 fleet design) |
+| `Docs/reference/engine-color-table.md` | Full engine color table + Blessings + Debates (88 implemented, 101 fleet design) |
 | `Source/Core/SynthEngine.h` | Engine interface (all engines implement this) |
 | `Source/Core/EngineRegistry.h` | Factory + 4-slot management |
 | `Source/Core/MegaCouplingMatrix.h` | Cross-engine modulation |
@@ -292,7 +295,7 @@ All 6 quads built, seanced, and Guru Bin retreats complete (2026-03-23):
 
 ## Fleet Quality Summary
 
-- **75/79 engines seanced** (75/101 full fleet design). Fleet average ~8.8/10. Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0).
+- **80/88 engines seanced** (80/101 full fleet design). Observandum 8.6, Orrery 8.7, Opsin 8.7, Oort 8.7 (seanced 2026-04-15). OBIONT 8.2 (seanced 2026-04-15, D004+D002 fixes applied). Fleet average ~8.8/10. Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0).
 - **All 6 doctrines resolved fleet-wide** (D001–D006). Prism Sweep 12-round pass complete (2026-03-14).
 - **43 Blessings** awarded — full table: `Docs/reference/engine-color-table.md`
 - **5 Ongoing Debates** (DB001–DB005) — see reference table
