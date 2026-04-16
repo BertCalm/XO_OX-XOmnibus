@@ -2,7 +2,7 @@
 
 **Synthesis from the deepest place.**
 
-XOceanus is a free, open-source multi-engine synthesizer by XO_OX Designs. It contains 77 engines — each one a distinct creature from the aquatic deep, with its own DSP architecture, sonic character, and bioluminescent identity. Load any four. Couple them. Reach sounds that only exist when they touch.
+XOceanus is a free, open-source multi-engine synthesizer by XO_OX Designs. It contains <!-- ENGINE_COUNT -->81<!-- /ENGINE_COUNT --> engines — each one a distinct creature from the aquatic deep, with its own DSP architecture, sonic character, and bioluminescent identity. Load any four. Couple them. Reach sounds that only exist when they touch.
 
 ## Why It Exists
 
@@ -20,7 +20,7 @@ This is not a feature. This is the ecology.
 
 ## The Engines
 
-77 engines. Every one a standalone instrument before it entered the fleet.
+<!-- ENGINE_COUNT -->81<!-- /ENGINE_COUNT --> engines. Every one a standalone instrument before it entered the fleet.
 
 | Engine | Creature | Character |
 |--------|----------|-----------|
