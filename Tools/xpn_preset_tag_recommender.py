@@ -35,7 +35,7 @@ TAG_TARGET_MAX = 8
 
 # ---------------------------------------------------------------------------
 # Engine → genre + use case hints
-# (covers all 34 registered engines + V1 concepts)
+# (covers all 34 registered engines + concept engines)
 # ---------------------------------------------------------------------------
 
 ENGINE_HINTS: dict[str, dict] = {
@@ -73,7 +73,7 @@ ENGINE_HINTS: dict[str, dict] = {
     "Ombre":      {"genre": ["ambient", "cinematic"],           "use_case": ["pad", "atmosphere", "texture"]},
     "Orca":       {"genre": ["cinematic", "electronic"],        "use_case": ["bass", "atmosphere"]},
     "Octopus":    {"genre": ["electronic", "cinematic"],        "use_case": ["texture", "fx", "atmosphere"]},
-    # V1 concepts
+    # Concept engines
     "Ostinato":   {"genre": ["world", "electronic"],            "use_case": ["percussion", "texture"]},
     "OpenSky":    {"genre": ["ambient", "cinematic"],           "use_case": ["pad", "atmosphere"]},
     "OceanDeep":  {"genre": ["ambient", "cinematic"],           "use_case": ["bass", "drone", "atmosphere"]},

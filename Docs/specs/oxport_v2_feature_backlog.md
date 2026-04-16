@@ -3,7 +3,7 @@
 **Status:** Living Backlog
 **Date:** 2026-03-16
 **Author:** XO_OX Designs
-**Scope:** Post-V1 feature roadmap for the Oxport XPN pipeline after 10+ R&D rounds
+**Scope:** Future feature roadmap for the Oxport XPN pipeline after 10+ R&D rounds
 
 ---
 

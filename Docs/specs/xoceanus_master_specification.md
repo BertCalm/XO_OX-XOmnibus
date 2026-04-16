@@ -1228,7 +1228,7 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 
 ---
 
-## 17. Engine Addenda (Post-V1.0 Additions)
+## 17. Engine Addenda (Later Additions)
 
 ### 17.1 OBRIX — Modular Brick Synth (Added 2026-03-19, Wave 1 Complete)
 
@@ -1241,7 +1241,7 @@ Modules used by multiple engines, extracted to `Source/DSP/`:
 - This split routing is OBRIX's defining identity — not a subtractive synth with options but a construction set for timbral collisions
 
 **Wave 1 Status (2026-03-19, commit de89586):** COMPLETE
-- 55 parameters (expanded from 34 in V1.3a)
+- 55 parameters (expanded from 34 in earlier revision)
 - PolyBLEP anti-aliasing on Saw/Square/Triangle/Pulse; Lo-Fi Saw (type 8) intentionally naive
 - All 4 modulators wired with routes to pitch, cutoff, amplitude, pulse-width, fold-depth
 - 3 FX slots wired in series (FX1→FX2→FX3); Delay, Reverb, Chorus, BitCrush available

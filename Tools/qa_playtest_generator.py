@@ -42,8 +42,8 @@ DEFAULT_OUTPUT = REPO_ROOT / "Docs" / "qa" / "playtest-checklist.md"
 PRESETS_ROOT = REPO_ROOT / "Presets" / "XOceanus"
 ENGINES_DIR = REPO_ROOT / "Source" / "Engines"
 
-# V1 priority engine (always included in deep-test regardless of preset count).
-V1_FLAGSHIP = "Obrix"
+# Flagship engine (always included in deep-test regardless of preset count).
+FLAGSHIP = "Obrix"
 
 
 # ---------------------------------------------------------------------------
@@ -149,10 +149,10 @@ def select_deep_test_engines(
     preset_counts: dict[str, int],
     n: int,
 ) -> list[tuple[str, int]]:
-    """Return up to n engines for deep testing, always leading with the V1 flagship.
+    """Return up to n engines for deep testing, always leading with the flagship.
 
     Ordering:
-      1. V1_FLAGSHIP (Obrix) first — always included if present.
+      1. FLAGSHIP (Obrix) first — always included if present.
       2. Remaining slots filled by preset count (descending), then alphabetically.
 
     Returns a list of (engine_name, preset_count) tuples.
@@ -160,20 +160,20 @@ def select_deep_test_engines(
     engine_set = {e.lower(): e for e in all_engines}
 
     # Canonical casing for flagship
-    flagship_canonical = engine_set.get(V1_FLAGSHIP.lower(), V1_FLAGSHIP)
+    flagship_canonical = engine_set.get(FLAGSHIP.lower(), FLAGSHIP)
     flagship_count = preset_counts.get(flagship_canonical, 0)
 
     # Sort remaining engines by preset count desc, then name asc
     others = [
         (e, preset_counts.get(e, 0))
         for e in all_engines
-        if e.lower() != V1_FLAGSHIP.lower()
+        if e.lower() != FLAGSHIP.lower()
     ]
     others.sort(key=lambda x: (-x[1], x[0].lower()))
 
     selected: list[tuple[str, int]] = []
 
-    if flagship_canonical in all_engines or V1_FLAGSHIP in all_engines:
+    if flagship_canonical in all_engines or FLAGSHIP in all_engines:
         selected.append((flagship_canonical, flagship_count))
 
     for engine, count in others:
@@ -219,7 +219,7 @@ def build_checklist(
         f"> Generated: {today}  ",
         f"> Engines in registry: **{len(all_engines)}**  ",
         f"> Total factory presets: **{total_preset_files}** (.xometa files)  ",
-        f"> Deep-test engines: **{n_deep}** (V1 flagship + top by preset count)  ",
+        f"> Deep-test engines: **{n_deep}** (flagship + top by preset count)  ",
         "",
         "## How to use this checklist",
         "",
@@ -253,10 +253,10 @@ def build_checklist(
 
     # ── Section 2: Deep Playtest ─────────────────────────────────────────────
     lines += [
-        f"## Section 2 — Deep Playtest (V1 priority engines — top {n_deep} by preset count)",
+        f"## Section 2 — Deep Playtest (Priority engines — top {n_deep} by preset count)",
         "",
         "For each engine below, run the full functional checklist.  "
-        "The V1 flagship (**Obrix**) must pass every item before release.",
+        "The flagship (**Obrix**) must pass every item before release.",
         "",
     ]
 
@@ -404,7 +404,7 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_ENGINES_COUNT,
         metavar="N",
         help=f"Number of engines to include in Section 2 deep-test (default: {DEFAULT_ENGINES_COUNT}). "
-             "Obrix (V1 flagship) always counts as one of the N slots.",
+             "Obrix (flagship) always counts as one of the N slots.",
     )
     parser.add_argument(
         "--output",
@@ -469,7 +469,7 @@ def main() -> None:
     print()
     print("Deep-test engines selected:")
     for i, (engine, count) in enumerate(deep_engines, 1):
-        tag = " [V1 flagship]" if engine.lower() == V1_FLAGSHIP.lower() else ""
+        tag = " [flagship]" if engine.lower() == FLAGSHIP.lower() else ""
         print(f"  {i:2}. {engine:<20} {count:>5} presets{tag}")
     print()
 

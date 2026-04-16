@@ -375,8 +375,8 @@ Focused preset packs for specific production genres. Each pack draws from the be
 
 ## F. Feature Ideas (6 ideas)
 
-### F01. KnotCoupling (V2 Architecture)
-- **Pitch:** Bidirectional topological coupling -- the post-V1 coupling paradigm shift
+### F01. KnotCoupling (Next-Gen Architecture)
+- **Pitch:** Bidirectional topological coupling -- the next coupling paradigm shift
 - **What It Does:** Two engines modulate each other simultaneously with feedback damping, creating stable resonant coupling states
 - **Why It Matters:** Current 13 coupling types are unidirectional. KnotCoupling makes the connection itself a synthesis parameter.
 - **Engines Involved:** ORBWEAVE + OVERLAP (prototype pair), then fleet-wide
@@ -386,19 +386,19 @@ Focused preset packs for specific production genres. Each pack draws from the be
 - **Pitch:** Save and recall coupling matrix states as named snapshots within a preset
 - **What It Does:** A-B-C-D coupling snapshots morphable via COUPLING macro, enabling preset-internal arrangement
 - **Why It Matters:** Currently coupling is static within a preset. Snapshots make coupling performable.
-- **Effort:** 1 week | **Revenue:** Free | **Release:** V1.5 (July 2026)
+- **Effort:** 1 week | **Revenue:** Free | **Release:** July 2026
 
 ### F03. Preset DNA Search API
 - **Pitch:** Expose the 6D Sonic DNA as a searchable API -- find presets by vector similarity
 - **What It Does:** "Find me something like this but brighter and with more movement" as a programmable query
 - **Why It Matters:** 22,000 presets need smart navigation. DNA search makes the library feel smaller and more curated.
-- **Effort:** 1 week | **Revenue:** Free | **Release:** V1.5 (August 2026)
+- **Effort:** 1 week | **Revenue:** Free | **Release:** August 2026
 
 ### F04. MPCe Quad-Corner 3D Pad Integration
 - **Pitch:** Map XOceanus macros to MPCe's quad-corner 3D pressure pads -- first-mover advantage
 - **What It Does:** Four macros (CHARACTER, MOVEMENT, COUPLING, SPACE) mapped to 4 pad corners with pressure = depth
 - **Why It Matters:** Zero competitors designing for MPCe's 3D pads. 6-12 month window to own this space.
-- **Effort:** 1 week | **Revenue:** Premium (MPCe pack) | **Release:** V1.5 (timing dependent on MPCe availability)
+- **Effort:** 1 week | **Revenue:** Premium (MPCe pack) | **Release:** timing dependent on MPCe availability
 
 ### F05. Visual Coupling Matrix UI
 - **Pitch:** Interactive node graph showing engine connections with real-time signal flow visualization
@@ -410,7 +410,7 @@ Focused preset packs for specific production genres. Each pack draws from the be
 - **Pitch:** Expose ODYSSEY's full standalone parameter set as an FX processing chain available to all engines
 - **What It Does:** Any engine can route through Drift's analog-modeled filter, VCA, envelope followers
 - **Why It Matters:** 1,353 params from ODYSSEY standalone are currently not exposed in XOceanus (identified gap)
-- **Effort:** 1 week | **Revenue:** Free | **Release:** V1.1 or V1.2
+- **Effort:** 1 week | **Revenue:** Free | **Release:** near-term
 
 ---
 

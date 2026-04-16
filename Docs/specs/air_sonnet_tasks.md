@@ -86,13 +86,13 @@ Pack-level sidecar placed at the pack root, with a `mappings[]` array:
 
 **Recommendation**: Use Option 1 (pack-level) for the initial implementation. It matches the
 existing tool, is simpler to validate, and XOceanus can read it on pack import. Option 2 can
-be added in V1.1 as a per-program companion alongside the pack-level file.
+be added in a later update as a per-program companion alongside the pack-level file.
 
 ### Files to modify
 
 - `Tools/xpn_params_sidecar_spec.py` — no changes needed if Option 1 chosen
 - `Docs/specs/xpn_air_plugin_architecture_rnd.md` — update §4 to note the pack-level schema
-  is canonical for V1; per-program variant is V1.1
+  is canonical initially; per-program variant is a later addition
 
 ### Sonnet-ready?
 
@@ -357,5 +357,5 @@ These items are referenced for completeness but require Opus sessions or externa
 - Full `plugin_bundle/` ZIP architecture — requires MPC Software firmware support from Akai.
 - Hardware MPC native plugin port — requires Akai OEM arrangement.
 - Per-program sidecar (Schema A / Option 2) — straightforward but involves rewriting the
-  existing tool; defer to V1.1 after the pack-level sidecar ships.
+  existing tool; defer to a later update after the pack-level sidecar ships.
 - Apple notarization — process work, not code. Requires Apple Developer account activation.

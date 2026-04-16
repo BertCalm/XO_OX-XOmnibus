@@ -24,7 +24,7 @@ This contract must be maintained through all waves of development.
 
 | Timeline | Drop | Contents | Effort |
 |----------|------|----------|--------|
-| V1 Launch | Standard Kit | 8 sources, 6 procs, 5 mods, 4 effects | Included |
+| Launch | Standard Kit | 8 sources, 6 procs, 5 mods, 4 effects | Included |
 | Month 3 | Chaos Pack | Chaos osc + Chaos LFO + Saturator | ~40 LOC |
 | Month 5 | Retro Pack | Chip osc + Bit Crusher + Tape Delay | ~40 LOC |
 | Month 7 | Organic Pack | Grain osc + Metabolic osc + Spring Reverb | ~65 LOC |

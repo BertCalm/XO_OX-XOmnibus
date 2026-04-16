@@ -1,7 +1,7 @@
 # Coupling Performance System — Architecture Spec
 
 **Status:** APPROVED (RAC Brief 2026-03-20)
-**Scope:** V1.2 → V2 (phased delivery)
+**Scope:** Near-term → future (phased delivery)
 **Author:** RAC (Ringleader + Architect + Consultant)
 **Visionary Origin:** Vision Quest 001 — Coupling as Live Performance Tool
 
@@ -269,7 +269,7 @@ A step sequencer that sequences **coupling type changes** over time, not notes.
 
 **Implementation approach:** New component, likely a `CouplingSequencer` class that writes to the `cp_rN_type` and `cp_rN_amount` params on a timer synced to host BPM.
 
-Not designed here — separate spec when V1.x coupling performance is stable.
+Not designed here — separate spec when coupling performance is stable.
 
 ---
 
@@ -309,24 +309,24 @@ Not designed here — requires fundamental re-architecture of the slot system.
 
 ## 10. Implementation Phases
 
-### Phase A: Foundation (V1.2)
+### Phase A: Foundation
 1. Add 20 APVTS params (`cp_r1_*` through `cp_r4_*`)
 2. Wire overlay logic in processBlock
 3. Extend MacroSystem to target coupling amounts
 4. Add crossfade engine for type switching
 
-### Phase B: UI (V1.2)
+### Phase B: UI
 1. Wire CouplingStripEditor into XOceanusEditor
 2. Build PerformanceViewPanel
 3. Add "P" toggle button
 4. Route detail controls (type dropdown, depth slider)
 
-### Phase C: MIDI (V1.2)
+### Phase C: MIDI
 1. Add default CC mappings for coupling params
 2. MIDI Learn UI in Performance View
 3. MPCe quad-corner documentation
 
-### Phase D: Polish (V1.3)
+### Phase D: Polish
 1. Coupling performance presets (demo content)
 2. "Bake" button functionality
 3. Tutorial content

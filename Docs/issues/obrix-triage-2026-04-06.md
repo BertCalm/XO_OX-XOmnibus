@@ -4,7 +4,7 @@ Systematic audit of the Obrix flagship engine. Issues logged for GitHub migratio
 
 ---
 
-## P0 — Must Fix Before V1
+## P0 — Must Fix Before Release
 
 ### OBRIX-001: Voice orphaning on poly→mono mode switch
 - **Category:** DSP / Voice Management
@@ -28,7 +28,7 @@ Systematic audit of the Obrix flagship engine. Issues logged for GitHub migratio
 
 ---
 
-## P1 — Fix Before V1 macOS Launch
+## P1 — Fix Before macOS Launch
 
 ### OBRIX-003: findNearestJICents called per-sample per-voice
 - **Category:** DSP / CPU Optimization
@@ -69,7 +69,7 @@ Systematic audit of the Obrix flagship engine. Issues logged for GitHub migratio
 
 ---
 
-## P2 — Post-V1
+## P2 — Post-Launch
 
 ### OBRIX-007: Wavetable content limited to 4 banks with basic crossfade
 - **Category:** DSP / Content
@@ -77,7 +77,7 @@ Systematic audit of the Obrix flagship engine. Issues logged for GitHub migratio
 - **Problem:** Tomita's seance criticism: "a wavetable costume." Current banks (Analog/Vocal/Metallic/Organic) are functional but not distinctive. Seance recommended 8–16 ocean-sourced wavetable banks.
 - **Expected:** Expanded wavetable library with unique content (recorded ocean acoustics, bioluminescent spectra).
 - **Model:** Opus
-- **Rationale:** Content creation + DSP integration; post-V1 roadmap item.
+- **Rationale:** Content creation + DSP integration; post-launch roadmap item.
 
 ---
 

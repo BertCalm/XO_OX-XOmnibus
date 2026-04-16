@@ -112,7 +112,7 @@ Run the pipeline for multiple engines from a JSON config.
 **batch.json format:**
 ```json
 {
-  "batch_name": "V1 Launch Export",
+  "batch_name": "Launch Export",
   "output_base_dir": "./dist/",
   "jobs": [
     {

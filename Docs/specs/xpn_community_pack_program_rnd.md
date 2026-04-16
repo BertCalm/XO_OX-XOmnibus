@@ -95,7 +95,7 @@ Creators are expected to run QA locally before submitting. The automated gate at
 
 ---
 
-## Open Questions for V1 Launch
+## Open Questions for Launch
 
 - Does Barry OB's team need a formal brief / rubric for Stage 2, or is the DNA review intentionally qualitative?
 - Stripe payout setup — does XO_OX need a creator portal, or is manual monthly export sufficient for first cohort?

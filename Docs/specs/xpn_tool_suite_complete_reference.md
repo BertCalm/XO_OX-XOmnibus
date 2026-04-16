@@ -332,7 +332,7 @@ The full MPC export path: `.xometa` presets → WAV samples → `.xpm` programs 
 | `xpn_tide_tables_pack_builder.py` | Build spec + README for TIDE TABLES (free Patreon gateway pack: SURGE/DRIFT/CURRENT/SWELL) |
 | `xpn_tide_tables_build_validator.py` | Validate a TIDE TABLES pack directory against spec |
 | `xpn_free_pack_pipeline.py` | Full pipeline for free/gateway packs |
-| `xpn_engine_intro_preset_builder.py` | Generate placeholder presets for V1 concept engines without source code yet (OSTINATO, OPENSKY, OCEANDEEP, OUIE) |
+| `xpn_engine_intro_preset_builder.py` | Generate placeholder presets for concept engines without source code yet (OSTINATO, OPENSKY, OCEANDEEP, OUIE) |
 | `xpn_flagship_trio_deep_expansion.py` | 50-preset deep expansion for founding trio engines |
 | `xpn_collection_arc_validator.py` | Validate a collection (Kitchen/Travel/Artwork) arc for completeness |
 | `xpn_collection_sequencer.py` | Sequence a collection's presets into a logical arc |

@@ -1,11 +1,11 @@
-# XPN Pack Concepts — V1 Concept Engines + Utility Engine Selection
+# XPN Pack Concepts — Concept Engines + Utility Engine Selection
 **R&D Document | XO_OX Designs | 2026-03-16**
 
 ---
 
 ## Purpose
 
-This document explores what XPN packs are uniquely possible with the four V1 concept engines
+This document explores what XPN packs are uniquely possible with the four concept engines
 (OSTINATO, OPENSKY, OCEANDEEP, OUIE) and five selected utility engines from the CRATE DIGGERS
 bundle (XOrrery, XOware, XOlvido, XOscillograph, XOtagai). These engines have no source code yet,
 so pack design here is prospective — defining what we want before the DSP exists, to ensure the

@@ -274,7 +274,7 @@ All files in `Docs/specs/`. Title extracted from first `#` heading.
 | unconventional_kit_ideas_21_40.md       | Unconventional Kit/Keygroup Concepts — Ideas 21–40                   |
 | unconventional_xpn_strategies.md        | Unconventional XPN/XPM Output Strategies                             |
 | utility_engine_concepts.md              | XOceanus Utility Engine Concepts — R&D Brainstorm                    |
-| utility_engine_rapper_bundle.md         | The Rappers — V1 Utility Engine Bundle                               |
+| utility_engine_rapper_bundle.md         | The Rappers — Utility Engine Bundle                                  |
 | velocity_science_rnd.md                 | Velocity Science R&D — MPC XPN Pack Design                           |
 | world_instrument_dsp_research.md        | World Instrument DSP Research — Collections Preparation              |
 | xobserve_competitive_analysis.md        | XObserve — Competitive Analysis and Design Refinement                |
@@ -307,12 +307,12 @@ All files in `Docs/specs/`. Title extracted from first `#` heading.
 | xpn_format_future_proofing_rnd.md       | XPN/XPM Format Future-Proofing — R&D Spec                            |
 | xpn_format_innovations_rnd.md           | XPN Format Innovations — Beyond Standard Pack Design                 |
 | xpn_free_pack_strategy_rnd.md           | XPN Free Pack Strategy — R&D Spec                                    |
-| xpn_future_engine_pack_concepts_rnd.md  | XPN Pack Concepts — V1 Concept Engines + Utility Engine Selection    |
+| xpn_future_engine_pack_concepts_rnd.md  | XPN Pack Concepts — Concept Engines + Utility Engine Selection       |
 | xpn_hardware_compatibility_rnd.md       | XPN Hardware Compatibility Matrix — R&D Spec                         |
 | xpn_hardware_testing_protocol_rnd.md    | XPN Hardware Testing Protocol — R&D Spec                             |
 | xpn_kit_builder_guide_rnd.md            | XPN Kit Builder Guide — R&D Reference                                |
 | xpn_label_design_rnd.md                 | XPN Pack Label & Visual Identity System — R&D Spec                   |
-| xpn_launch_checklist_v1_rnd.md          | XO_OX V1 Expansion Pack Launch Checklist                             |
+| xpn_launch_checklist_v1_rnd.md          | XO_OX Expansion Pack Launch Checklist                                |
 | xpn_live_performance_rnd.md             | XPN Live Performance R&D                                             |
 | xpn_marketplace_playbook_rnd.md         | XO_OX Expansion Pack Marketplace Playbook                            |
 | xpn_metadata_standards_rnd.md           | XPN Metadata Standards — R&D                                         |

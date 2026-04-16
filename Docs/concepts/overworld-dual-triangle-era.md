@@ -167,8 +167,8 @@ All new parameters default to:
 - ow_triBx=0, ow_triBy=0, ow_triBRotation=180° → Star of David as default V2 behavior
 - ow_eraConfig=1 (Star) for new presets; old presets get ow_eraConfig=0 (Single/overlap) for identical behavior
 
-### V1 Compatibility
-If ow_eraConfig=0 (Single triangle / full overlap), the system behaves identically to V1. All existing presets are unaffected.
+### Legacy Compatibility
+If ow_eraConfig=0 (Single triangle / full overlap), the system behaves identically to the prior implementation. All existing presets are unaffected.
 
 ---
 

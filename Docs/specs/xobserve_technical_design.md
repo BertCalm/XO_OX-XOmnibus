@@ -248,7 +248,7 @@ struct DynamicEQState {
 4. The resulting gain offset modifies the band's `obs_b{N}_gain` parameter (added on top of the static setting, not replacing it).
 5. Gain offset is smoothed with a one-pole lowpass at 20 Hz to prevent high-frequency amplitude modulation artifacts.
 
-**Self-sidechain only for V1.** External sidechain routing (e.g., ONSET kick triggering Band 1 compression) is handled via the coupling system (see §6).
+**Self-sidechain only initially.** External sidechain routing (e.g., ONSET kick triggering Band 1 compression) is handled via the coupling system (see §6).
 
 ### 4.6 Spectral Analyzer
 

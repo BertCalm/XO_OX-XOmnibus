@@ -43,7 +43,7 @@ Every Collection has a Synesthesia domain:
    - What's the minimum viable version — recipe→preset only, or multi-domain from launch?
    - How does `NaturalLanguageInterpreter.h` (which already has synesthesia-style mappings for food/taste/mood→DNA) relate to the full Synesthesia Engine? Is it the seed, or a separate thing?
    - Community rating/calibration loop — how does user feedback improve the model over time?
-   - Reverse synesthesia (preset → recipe/poem/color palette) — V1 scope or later?
+   - Reverse synesthesia (preset → recipe/poem/color palette) — initial scope or later?
 
 4. **It intersects with existing code** — `Source/AI/NaturalLanguageInterpreter.h` already maps natural language descriptors (including food/taste terms like "sweet", "bitter", "spicy") to 6D Sonic DNA vectors. This is arguably a proto-Synesthesia Engine. The relationship needs to be clarified before both evolve independently.
 

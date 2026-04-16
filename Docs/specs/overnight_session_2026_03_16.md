@@ -59,7 +59,7 @@ Tools built/upgraded: 7 | Specs written: 3 | Skill created: 1 | Memory files upd
 5. **10 R&D Oxport features** (Loop Point Cartographer, Expression Curve Forge, etc.) — These were discussed but not saved to any file. Need to be captured from the memory file `oxport-tool-suite.md` and built. Each is Opus-level DSP/algorithm work.
 6. **Collection preparation research** — Was being built by another agent, status unknown. Check if any output landed.
 
-### Deferred (V2 / Post-V1)
+### Deferred (Future Release)
 
 7. The 10 utility engine concepts in `utility_engine_concepts.md` are design-phase only — no source code exists
 8. Fleet render automation (the spec exists but no implementation)

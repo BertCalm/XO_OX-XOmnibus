@@ -65,7 +65,7 @@ _ENGINE_DATA: list[tuple[str, str, str, str]] = [
     ("Octopus",    "octo",     "#E040FB", "phase4"),
     ("Overlap",    "olap",     "#00FFB4", "phase4"),
     ("Outwit",     "owit",     "#CC6600", "phase4"),
-    # V1 concept engines
+    # Concept engines
     ("OpenSky",    "sky",      "#FF8C00", "v1concept"),
     ("Ostinato",   "osti",     "#E8701A", "v1concept"),
     ("OceanDeep",  "deep",     "#2D0A4E", "v1concept"),

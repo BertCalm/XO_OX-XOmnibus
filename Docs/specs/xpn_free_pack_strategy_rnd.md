@@ -93,6 +93,6 @@ The funnel is: free pack → email list → site visit → paid pack considerati
 
 **Secondary**: Gumroad, pay-what-you-want. Email capture, social proof via download count, option for voluntary payment.
 
-**Tertiary**: Akaipro.com free expansions, once a partner relationship is established. This is a future channel — not blocking V1 release. TIDE TABLES ships on XO-OX.org first, Akaipro second if and when the partnership exists.
+**Tertiary**: Akaipro.com free expansions, once a partner relationship is established. This is a future channel — not blocking release. TIDE TABLES ships on XO-OX.org first, Akaipro second if and when the partnership exists.
 
-**Timing**: TIDE TABLES ships with XOceanus V1 launch or within the first 30 days. It is the first artifact a producer encounters from XO_OX that costs nothing — it sets the tone for everything that follows.
+**Timing**: TIDE TABLES ships with the XOceanus launch or within the first 30 days. It is the first artifact a producer encounters from XO_OX that costs nothing — it sets the tone for everything that follows.

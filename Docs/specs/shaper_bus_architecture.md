@@ -49,7 +49,7 @@ class ShaperEngine {
 
 ---
 
-## 3. The 12 Launch Shapers (V1)
+## 3. The 12 Launch Shapers
 
 | # | Name | ID | Prefix | Category | Accent | Creature |
 |---|------|----|--------|----------|--------|----------|
@@ -155,7 +155,7 @@ New optional `shaperBus` field in .xometa:
 
 ---
 
-## 7. OBRIX Pocket (iPhone V1)
+## 7. OBRIX Pocket (iPhone — Initial Release)
 
 A mobile-first version of OBRIX optimized for iPhone touch interaction:
 - Brick selector as swipeable cards (not dropdowns)
@@ -171,16 +171,16 @@ A mobile-first version of OBRIX optimized for iPhone touch interaction:
 
 | Phase | Ships | Shapers | Platform |
 |-------|-------|---------|----------|
-| V1.0 | Interface + routing + 2 shapers | XObserve + XOxide | macOS |
-| V1.1 | Bus slots + 4 more shapers | +XOpress, XOgate, XOltre, XOverb | macOS + iPad |
-| V1.2 | Remaining 6 + OBRIX Pocket | +all creative/utility/mod | All platforms |
-| V2.0 | Expansion packs | Genre-specific shaper collections | All |
+| Phase 1 | Interface + routing + 2 shapers | XObserve + XOxide | macOS |
+| Phase 2 | Bus slots + 4 more shapers | +XOpress, XOgate, XOltre, XOverb | macOS + iPad |
+| Phase 3 | Remaining 6 + OBRIX Pocket | +all creative/utility/mod | All platforms |
+| Expansion | Expansion packs | Genre-specific shaper collections | All |
 
 ---
 
 ## 9. Governance Notes (Architect)
 
-- All 12 parameter prefixes FROZEN on V1.0 ship
+- All 12 parameter prefixes FROZEN at initial release
 - D004 applies — every shaper parameter must affect audio
 - Backward-compatible preset schema — old presets load clean
 - DB001 (chaining vs mutual exclusivity) — documented: inserts chain, this is a design choice

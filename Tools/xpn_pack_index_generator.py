@@ -63,7 +63,7 @@ ENGINE_COLORS: dict[str, str] = {
     "OWLFISH":    "#B8860B",
     "ODDFELIX":   "#00A6D6",
     "ODDOSCAR":   "#E8839B",
-    # V1 concept engines
+    # Concept engines
     "OSTINATO":   "#E8701A",
     "OPENSKY":    "#FF8C00",
     "OCEANDEEP":  "#2D0A4E",

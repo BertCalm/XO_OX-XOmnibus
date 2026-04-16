@@ -89,7 +89,7 @@ These five packs must exist before the first patron joins. They prove the system
 
 **Month 5+**: Steady state — 1 Current pack/month, 1 Deep Water exclusive/month.
 
-**During V1 Engine Builds (OSTINATO/OPENSKY/OCEANDEEP/OUIE)**: Content gap is real. Strategy: release "engine preview" packs — 30–40 presets from a single new engine, marketed as early access. These serve as both pack content and beta testing. Deep Water gets the raw Sonic DNA files from the build process. The build itself becomes content.
+**During Concept Engine Builds (OSTINATO/OPENSKY/OCEANDEEP/OUIE)**: Content gap is real. Strategy: release "engine preview" packs — 30–40 presets from a single new engine, marketed as early access. These serve as both pack content and beta testing. Deep Water gets the raw Sonic DNA files from the build process. The build itself becomes content.
 
 ---
 

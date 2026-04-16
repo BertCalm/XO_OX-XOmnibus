@@ -317,7 +317,7 @@ This is not a checkbox. This is the reason the project exists:
 
 ## VII. Implementation Priority
 
-### Phase 1 — Ship with V1 (Minimum)
+### Phase 1 — Ship at Launch (Minimum)
 - [ ] `/freebies` gallery (grid, filtering, downloads — no login wall)
 - [ ] `/learn` landing page + Tidepools level (5 lessons)
 - [ ] `/influences` page (at least musical pioneers section)
