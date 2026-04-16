@@ -368,7 +368,7 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Obrix/ObrixEngine.h
     Source/Engines/Obrix/ObrixEngine.cpp
 
-    # V1 Concept Engines — Full DSP Builds
+    # Concept Engines — Full DSP Builds
     Source/Engines/Ostinato/OstinatoEngine.h
     Source/Engines/Ostinato/OstinatoEngine.cpp
     Source/Engines/OpenSky/OpenSkyEngine.h

@@ -1,7 +1,15 @@
-# XOceanus V1 — Launch Day Content
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> The "V1 launch day" framing has been retired. XOceanus does not operate on a fixed
+> launch day. Release copy will be written fresh when an actual release is imminent.
+> Preserved for historical reference only. See `CLAUDE.md` → *Release Philosophy*.
 
-**Date drafted:** 2026-03-21
-**Product state:** 76 engines | ~22,000 presets | macOS AU + Standalone | MIT license | Free
+---
+
+# XOceanus V1 — Launch Day Content (HISTORICAL)
+
+**Date drafted:** 2026-03-21 — RETIRED 2026-04-16
+**Product state at time of writing:** 76 engines | ~22,000 presets | macOS AU + Standalone | MIT license | Free
 
 ---
 

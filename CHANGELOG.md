@@ -29,7 +29,7 @@ re-titled when a version is cut.
 - Navigation links for 19 previously orphaned site pages (#323)
 - Alignment Rite page reference restored in documentation (#405)
 - HTTPS enforcement before API key transmission in SoundAssistant (#431)
-- `v1-engines.json` — machine-readable V1 engine roster for CI/build automation
+- `engines.json` roster file — machine-readable engine manifest for CI/build automation
 - `.github/ISSUE_TEMPLATE/engine_fix.md` — structured template for doctrine violations and seance score regressions
 
 ### Changed

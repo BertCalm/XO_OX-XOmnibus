@@ -1,11 +1,17 @@
-> **STATUS: ACTIVE** | Operational launch timeline. Pre-launch gates defined; L+0 date TBD.
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> The "V1 launch" framing has been retired. XOceanus does not operate on a fixed-version
+> release model with L-minus gates. Build and refine until ready; ship when ready. This
+> document is preserved for historical reference only. See `CLAUDE.md` → *Release Philosophy*.
 
-# XOceanus V1 — Launch Coordinator's Master Timeline
+---
 
-**Document type:** Operational master plan
+# XOceanus V1 — Launch Coordinator's Master Timeline (HISTORICAL)
+
+**Document type:** Operational master plan — RETIRED 2026-04-16
 **Owner:** Launch Coordinator (XO_OX Designs)
 **Version:** 1.0 — 2026-03-17
-**Launch target:** L+0 (exact date TBD — set L once all L-7 gates are green)
+**Launch target:** Retired — no fixed launch target
 **Scope:** XOceanus plugin (AU/Standalone, macOS) + TIDE TABLES (free XPN) + MACHINE GUN REEF ($15 XPN)
 
 ---

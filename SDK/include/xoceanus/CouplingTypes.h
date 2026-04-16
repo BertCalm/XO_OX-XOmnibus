@@ -41,10 +41,10 @@ enum class CouplingType {
     // --- Pattern -----------------------------------------------------------
     RhythmToBlend,     ///< Source rhythm pattern modulates destination blend parameter
 
-    // --- Bidirectional (post-V1) -------------------------------------------
+    // --- Bidirectional -----------------------------------------------------
     KnotTopology,      ///< Both engines mutually modulate each other's pitch/filter/morph
-                       ///< via a shared knot state variable. Included now for forward
-                       ///< compatibility; the MegaCouplingMatrix activates it in V1.1.
+                       ///< via a shared knot state variable. Activation in the
+                       ///< MegaCouplingMatrix is planned — see coupling roadmap.
 
     // --- Love triangle ---------------------------------------------------
     TriangularCoupling ///< Source engine's intimacy/passion/connection bleed into

@@ -268,11 +268,13 @@ Then update these external files:
 
 Full process: `Docs/specs/xoceanus_new_engine_process.md`
 
-## V1 Scope — "The Deep Opens"
+## Release Philosophy — "The Deep Opens"
 
-V1 ships OBRIX flagship + 6-8 FX engines + 20-25 curated engines (~28-34 total). Full 101-engine fleet design is personal; V1 gating is public release only (77 engines implemented to date). See `Docs/plans/v1-scope-revision-2026-03-23.md`.
+XOceanus does **not** operate on a fixed release cutoff. Build and refine until it's ready; ship when it's ready. There is no "V1 scope", no feature freeze, no curated subset gating a launch. The full 101-engine fleet design is the long-arc target; 77 engines are implemented to date.
 
-**Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked.
+Do not propose "V1 readiness" plans, "V1 candidate" lists, or "ship V1" timelines. If a Claude session generates a cutoff-style roadmap, it is off-brief — correct it.
+
+**Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked. (These are release milestones tied to patron count, not a version gate.)
 
 ### Kitchen Collection (24 engines across 6 quads)
 
@@ -337,7 +339,6 @@ Full index: `Skills/README.md`
 - Master specification: `Docs/specs/xoceanus_master_specification.md`
 - Discovery index: `Docs/INDEX.md`
 - Community strategy: `Docs/plans/community-strategy-v2.md`
-- V1 scope: `Docs/plans/v1-scope-revision-2026-03-23.md`
 - Kitchen Collection release calendar: `Docs/plans/kitchen-collection-release-calendar.md`
 - Fleet seance scores: `Docs/fleet-audit/fleet-seance-scores-2026-03-20.md`
 
