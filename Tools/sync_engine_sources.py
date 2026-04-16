@@ -52,6 +52,9 @@ LEGACY_DIRS: dict[str, str] = {
 SENTINEL_PATTERN = re.compile(
     r"<!--\s*ENGINE_COUNT\s*-->[^<]*<!--\s*/ENGINE_COUNT\s*-->"
 )
+SENTINEL_DESIGNED_PATTERN = re.compile(
+    r"<!--\s*ENGINE_COUNT_DESIGNED\s*-->[^<]*<!--\s*/ENGINE_COUNT_DESIGNED\s*-->"
+)
 
 
 # ---------------------------------------------------------------------------
@@ -320,29 +323,65 @@ SENTINEL_FILES: list[str] = [
 ]
 
 
-def update_sentinels(count: int, check_only: bool = False) -> bool:
-    """Update <!-- ENGINE_COUNT -->N<!-- /ENGINE_COUNT --> markers.
-    Returns True if everything is already in sync (or was updated)."""
+def _apply_sentinel(text: str, pattern: re.Pattern, tag: str, n: int) -> tuple[str, int]:
+    """Replace every sentinel of the given tag with the count N. Returns (new_text, count_found)."""
+    matches = pattern.findall(text)
+    if not matches:
+        return text, 0
+    replacement = f"<!-- {tag} -->{n}<!-- /{tag} -->"
+    return pattern.sub(replacement, text), len(matches)
+
+
+def update_sentinels(implemented: int, designed: int, check_only: bool = False) -> bool:
+    """Update both ENGINE_COUNT (implemented) and ENGINE_COUNT_DESIGNED (full fleet design)
+    sentinel markers across SENTINEL_FILES."""
     ok = True
-    replacement = f"<!-- ENGINE_COUNT -->{count}<!-- /ENGINE_COUNT -->"
     for rel in SENTINEL_FILES:
         path = REPO_ROOT / rel
         if not path.exists():
             continue
         text = path.read_text()
-        matches = SENTINEL_PATTERN.findall(text)
-        if not matches:
+        new_text, n_impl = _apply_sentinel(text, SENTINEL_PATTERN, "ENGINE_COUNT", implemented)
+        new_text, n_des = _apply_sentinel(new_text, SENTINEL_DESIGNED_PATTERN, "ENGINE_COUNT_DESIGNED", designed)
+        if n_impl == 0 and n_des == 0:
             continue
-        new_text = SENTINEL_PATTERN.sub(replacement, text)
+        tag = f"{n_impl} impl + {n_des} designed marker(s)"
         if new_text == text:
-            print(f"[sync]  sentinel OK:  {rel} ({len(matches)} marker(s))")
+            print(f"[sync]  sentinel OK:  {rel} ({tag})")
             continue
         if check_only:
             print(f"[check] sentinel STALE: {rel}")
             ok = False
         else:
             path.write_text(new_text)
-            print(f"[sync]  sentinel updated: {rel} ({len(matches)} marker(s) → {count})")
+            print(f"[sync]  sentinel updated: {rel} ({tag} → {implemented}/{designed})")
+    return ok
+
+
+def claude_md_table_drift_check(data: dict) -> bool:
+    """Verify CLAUDE.md's parameter-prefix table matches engines.json roster and prefixes."""
+    path = REPO_ROOT / "CLAUDE.md"
+    if not path.exists():
+        return True
+    text = path.read_text()
+    pattern = re.compile(r'^\| ([A-Z][a-zA-Z]+)(?:\s*\([^)]+\))?\s*\|\s*`([a-z0-9_]+_)`', re.MULTILINE)
+    claude_map = dict(pattern.findall(text))
+    json_map = {e["id"]: e.get("param_prefix") for e in data["synthesis_engines"]}
+    json_ids = set(json_map) - {None}
+
+    ok = True
+    claude_only = set(claude_map) - set(json_map)
+    json_only = set(json_map) - set(claude_map)
+    if claude_only:
+        print(f"[check] DRIFT: in CLAUDE.md param-prefix table but not engines.json: {sorted(claude_only)}")
+        ok = False
+    if json_only:
+        print(f"[check] DRIFT: in engines.json but missing from CLAUDE.md table: {sorted(json_only)}")
+        ok = False
+    for eid in sorted(set(claude_map) & set(json_map)):
+        if claude_map[eid] != json_map[eid]:
+            print(f"[check] DRIFT: {eid} prefix CLAUDE.md='{claude_map[eid]}' vs engines.json='{json_map[eid]}'")
+            ok = False
     return ok
 
 
@@ -350,28 +389,46 @@ def update_sentinels(count: int, check_only: bool = False) -> bool:
 # Drift check
 # ---------------------------------------------------------------------------
 def drift_check(data: dict) -> bool:
-    """Verify engines.json is consistent with PresetManager.h and Source/Engines/."""
+    """Verify engines.json is consistent with PresetManager.h and Source/Engines/.
+
+    Status-aware: 'implemented' engines must be in both runtime sources;
+    'designed' engines should be absent from runtime (prefix reserved in design
+    registry / CLAUDE.md only)."""
     ok = True
-    json_ids = {e["id"] for e in data["synthesis_engines"]}
+    impl_ids = {e["id"] for e in data["synthesis_engines"] if e.get("status") == "implemented"}
+    designed_ids = {e["id"] for e in data["synthesis_engines"] if e.get("status") == "designed"}
     prefix_map = parse_frozen_prefix_map()
     prefix_ids = set(prefix_map.keys())
     dir_ids = list_canonical_engine_dirs()
 
-    only_json = json_ids - prefix_ids - dir_ids
-    only_prefix = prefix_ids - json_ids
-    only_dir = dir_ids - json_ids
+    # Implemented status: must be in runtime + dirs
+    impl_missing_prefix = impl_ids - prefix_ids
+    impl_missing_dir = impl_ids - dir_ids
+    if impl_missing_prefix:
+        print(f"[check] DRIFT: status=implemented but not in PresetManager.h frozenPrefixForEngine: {sorted(impl_missing_prefix)}")
+        ok = False
+    if impl_missing_dir:
+        print(f"[check] DRIFT: status=implemented but no Source/Engines/ dir: {sorted(impl_missing_dir)}")
+        ok = False
 
+    # Unregistered: in runtime/dirs but not engines.json at all
+    all_json = impl_ids | designed_ids
+    only_prefix = prefix_ids - all_json
+    only_dir = dir_ids - all_json
     if only_prefix:
-        print(f"[check] DRIFT: in PresetManager.h but not engines.json: {sorted(only_prefix)}")
+        print(f"[check] DRIFT: in PresetManager.h frozenPrefixForEngine but not engines.json: {sorted(only_prefix)}")
         ok = False
     if only_dir:
-        print(f"[check] DRIFT: Source/Engines/ dirs not in engines.json: {sorted(only_dir)}")
-        ok = False
-    if only_json:
-        print(f"[check] DRIFT: in engines.json but nowhere else: {sorted(only_json)}")
+        print(f"[check] DRIFT: Source/Engines/ dir but not engines.json: {sorted(only_dir)}")
         ok = False
 
-    # Per-engine prefix agreement
+    # Designed status: should NOT have a Source/Engines/ dir yet (that'd make it implemented)
+    designed_with_dir = designed_ids & dir_ids
+    if designed_with_dir:
+        print(f"[check] DRIFT: status=designed but has Source/Engines/ dir (update status to 'implemented'?): {sorted(designed_with_dir)}")
+        ok = False
+
+    # Per-engine prefix agreement (only for engines present in both)
     for e in data["synthesis_engines"]:
         eid = e["id"]
         exp_prefix = prefix_map.get(eid)
@@ -401,27 +458,29 @@ def main() -> int:
 
     data = load_engines_json()
     implemented_count = data["_meta"]["engine_count"]
+    designed_count = data["_meta"].get("engine_count_designed", data["_meta"].get("engine_count_total", implemented_count))
 
-    print(f"[sync]  implemented engine count: {implemented_count}")
+    print(f"[sync]  implemented: {implemented_count}  |  designed (fleet design): {designed_count}")
 
     # Drift check
     drift_ok = drift_check(data)
+    table_ok = claude_md_table_drift_check(data)
 
     # Sentinels
-    sentinel_ok = update_sentinels(implemented_count, check_only=args.check)
+    sentinel_ok = update_sentinels(implemented_count, designed_count, check_only=args.check)
 
     if not args.check:
         regenerate_engine_registry_py(data)
 
     if args.check:
-        if drift_ok and sentinel_ok:
+        if drift_ok and table_ok and sentinel_ok:
             print("[check] OK — engine sources are in sync.")
             return 0
         print("[check] FAIL — drift detected.")
         return 1
 
     print("[sync]  done.")
-    return 0 if drift_ok else 1
+    return 0 if (drift_ok and table_ok) else 1
 
 
 if __name__ == "__main__":

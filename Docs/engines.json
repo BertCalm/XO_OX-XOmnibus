@@ -4,13 +4,14 @@
     "last_updated": "2026-04-16",
     "status_values": [
       "implemented",
+      "designed",
       "pending_prefix",
       "pending_directory"
     ],
     "notes": "This file is the single source of truth for engine roster and count. Parameter prefixes are FROZEN \u2014 never change after first registration. XOceanus has no fixed release cutoff. `status` reflects build state: 'implemented' means the engine has both a Source/Engines/ directory AND a frozen prefix in PresetManager.h; 'pending_*' flags work-in-progress. Run Tools/sync_engine_sources.py to regenerate dependent files.",
     "last_sync": "2026-04-16",
     "engine_count": 81,
-    "engine_count_total": 81,
+    "engine_count_total": 104,
     "legacy_dir_aliases": {
       "Bite": "Overbite",
       "Bob": "Oblong",
@@ -19,7 +20,8 @@
       "Fat": "Obese",
       "Morph": "OddOscar",
       "Snap": "OddfeliX"
-    }
+    },
+    "engine_count_designed": 104
   },
   "synthesis_engines": [
     {
@@ -39,6 +41,12 @@
       "param_prefix": "obbl_",
       "header": "Source/Engines/Obbligato/ObbligatoEngine.h",
       "status": "implemented"
+    },
+    {
+      "id": "Obdurate",
+      "param_prefix": "obdr_",
+      "header": "Source/Engines/Obdurate/ObdurateEngine.h",
+      "status": "designed"
     },
     {
       "id": "Obelisk",
@@ -71,6 +79,12 @@
       "param_prefix": "oblq_",
       "header": "Source/Engines/Oblique/ObliqueEngine.h",
       "status": "implemented"
+    },
+    {
+      "id": "Obliterate",
+      "param_prefix": "oblt_",
+      "header": "Source/Engines/Obliterate/ObliterateEngine.h",
+      "status": "designed"
     },
     {
       "id": "Oblong",
@@ -108,6 +122,12 @@
       "status": "implemented"
     },
     {
+      "id": "Obscurity",
+      "param_prefix": "obsc_",
+      "header": "Source/Engines/Obscurity/ObscurityEngine.h",
+      "status": "designed"
+    },
+    {
       "id": "Observandum",
       "param_prefix": "observ_",
       "header": "Source/Engines/Observandum/ObservandumEngine.h",
@@ -123,6 +143,18 @@
       "param_prefix": "obsidian_",
       "header": "Source/Engines/Obsidian/ObsidianEngine.h",
       "status": "implemented"
+    },
+    {
+      "id": "Obverse",
+      "param_prefix": "obvr_",
+      "header": "Source/Engines/Obverse/ObverseEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Occlusion",
+      "param_prefix": "occl_",
+      "header": "Source/Engines/Occlusion/OcclusionEngine.h",
+      "status": "designed"
     },
     {
       "id": "OceanDeep",
@@ -176,15 +208,10 @@
       "status": "implemented"
     },
     {
-      "id": "OddOscar",
-      "source_instrument": "OddOscar",
-      "seance_score_note": "~8.5 est.",
-      "preset_count": 444,
-      "accent_color": "#E8839B",
-      "accent_name": "Axolotl Gill Pink",
-      "param_prefix": "morph_",
-      "header": "Source/Engines/OddOscar/OddOscarEngine.h",
-      "status": "implemented"
+      "id": "Oculus",
+      "param_prefix": "ocul_",
+      "header": "Source/Engines/Oculus/OculusEngine.h",
+      "status": "designed"
     },
     {
       "id": "OddfeliX",
@@ -204,10 +231,27 @@
       "status": "implemented"
     },
     {
+      "id": "OddOscar",
+      "source_instrument": "OddOscar",
+      "seance_score_note": "~8.5 est.",
+      "preset_count": 444,
+      "accent_color": "#E8839B",
+      "accent_name": "Axolotl Gill Pink",
+      "param_prefix": "morph_",
+      "header": "Source/Engines/OddOscar/OddOscarEngine.h",
+      "status": "implemented"
+    },
+    {
       "id": "Odyssey",
       "param_prefix": "drift_",
       "header": "Source/Engines/Odyssey/OdysseyEngine.h",
       "status": "implemented"
+    },
+    {
+      "id": "Offcut",
+      "param_prefix": "offc_",
+      "header": "Source/Engines/Offcut/OffcutEngine.h",
+      "status": "designed"
     },
     {
       "id": "Offering",
@@ -273,10 +317,28 @@
       "status": "implemented"
     },
     {
+      "id": "Omen",
+      "param_prefix": "omen_",
+      "header": "Source/Engines/Omen/OmenEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Omnistereo",
+      "param_prefix": "omni_",
+      "header": "Source/Engines/Omnistereo/OmnistereoEngine.h",
+      "status": "designed"
+    },
+    {
       "id": "Onkolo",
       "param_prefix": "onko_",
       "header": "Source/Engines/Onkolo/OnkoloEngine.h",
       "status": "implemented"
+    },
+    {
+      "id": "Onrush",
+      "param_prefix": "onr_",
+      "header": "Source/Engines/Onrush/OnrushEngine.h",
+      "status": "designed"
     },
     {
       "id": "Onset",
@@ -374,6 +436,12 @@
       "status": "implemented"
     },
     {
+      "id": "Opus",
+      "param_prefix": "opus_",
+      "header": "Source/Engines/Opus/OpusEngine.h",
+      "status": "designed"
+    },
+    {
       "id": "Oracle",
       "source_instrument": "XOracle",
       "seance_score": 8.6,
@@ -386,6 +454,12 @@
       "param_prefix": "oracle_",
       "header": "Source/Engines/Oracle/OracleEngine.h",
       "status": "implemented"
+    },
+    {
+      "id": "Oration",
+      "param_prefix": "orat_",
+      "header": "Source/Engines/Oration/OrationEngine.h",
+      "status": "designed"
     },
     {
       "id": "Orbital",
@@ -470,6 +544,24 @@
       "status": "implemented"
     },
     {
+      "id": "Orison",
+      "param_prefix": "oris_",
+      "header": "Source/Engines/Orison/OrisonEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Ornate",
+      "param_prefix": "orna_",
+      "header": "Source/Engines/Ornate/OrnateEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Orogen",
+      "param_prefix": "orog_",
+      "header": "Source/Engines/Orogen/OrogenEngine.h",
+      "status": "designed"
+    },
+    {
       "id": "Orphica",
       "source_instrument": "XOrphica",
       "seance_score_note": "~8.7 est.",
@@ -491,6 +583,12 @@
       "param_prefix": "osier_",
       "header": "Source/Engines/Osier/OsierEngine.h",
       "status": "implemented"
+    },
+    {
+      "id": "Osmium",
+      "param_prefix": "osmi_",
+      "header": "Source/Engines/Osmium/OsmiumEngine.h",
+      "status": "designed"
     },
     {
       "id": "Osmosis",
@@ -568,6 +666,12 @@
       "status": "implemented"
     },
     {
+      "id": "Oubliette",
+      "param_prefix": "oubl_",
+      "header": "Source/Engines/Oubliette/OublietteEngine.h",
+      "status": "designed"
+    },
+    {
       "id": "Ouie",
       "source_instrument": "XOuie",
       "seance_score": 8.5,
@@ -599,10 +703,28 @@
       "status": "implemented"
     },
     {
+      "id": "Outage",
+      "param_prefix": "outg_",
+      "header": "Source/Engines/Outage/OutageEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Outbreak",
+      "param_prefix": "outb_",
+      "header": "Source/Engines/Outbreak/OutbreakEngine.h",
+      "status": "designed"
+    },
+    {
       "id": "Outflow",
       "param_prefix": "out_",
       "header": "Source/Engines/Outflow/OutflowEngine.h",
       "status": "implemented"
+    },
+    {
+      "id": "Outlaw",
+      "param_prefix": "outl_",
+      "header": "Source/Engines/Outlaw/OutlawEngine.h",
+      "status": "designed"
     },
     {
       "id": "Outlook",
@@ -677,6 +799,18 @@
       "status": "implemented"
     },
     {
+      "id": "Override",
+      "param_prefix": "ovrd_",
+      "header": "Source/Engines/Override/OverrideEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Overshoot",
+      "param_prefix": "ovsh_",
+      "header": "Source/Engines/Overshoot/OvershootEngine.h",
+      "status": "designed"
+    },
+    {
       "id": "Overtone",
       "param_prefix": "over_",
       "header": "Source/Engines/Overtone/OvertoneEngine.h",
@@ -744,6 +878,12 @@
       "param_prefix": "oxidize_",
       "header": "Source/Engines/Oxidize/OxidizeEngine.h",
       "status": "implemented"
+    },
+    {
+      "id": "Oxymoron",
+      "param_prefix": "oxym_",
+      "header": "Source/Engines/Oxymoron/OxymoronEngine.h",
+      "status": "designed"
     },
     {
       "id": "Oxytocin",
