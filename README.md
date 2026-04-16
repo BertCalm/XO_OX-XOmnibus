@@ -131,10 +131,10 @@ auval -v aumu Xocn XoOx
 
 ## Formats
 
-- **AU** — macOS (shipping V1)
-- **Standalone** — macOS (shipping V1)
-- **AUv3** — iOS (planned V1.1)
-- **VST3** — V2
+- **AU** — macOS (available)
+- **Standalone** — macOS (available)
+- **AUv3** — iOS (on the roadmap)
+- **VST3** — on the roadmap
 
 ## Documentation
 

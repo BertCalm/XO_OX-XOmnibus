@@ -1,3 +1,11 @@
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> This "launch readiness audit" was premised on a V1 release cutoff. XOceanus does not
+> operate on a fixed-version release model. Build and refine until ready; ship when ready.
+> Preserved for historical reference only. See `CLAUDE.md` → *Release Philosophy*.
+>
+> ---
+
 # XOceanus Launch Readiness Audit — 2026-03-18
 
 > **Mission**: The kid who grew up making music in Fruity Loops demos — who couldn't save,
