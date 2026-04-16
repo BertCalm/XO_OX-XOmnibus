@@ -185,18 +185,18 @@ static bool registered_Orca = xoceanus::EngineRegistry::instance().registerEngin
     "Orca", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrcaEngine>(); });
 static bool registered_Octopus = xoceanus::EngineRegistry::instance().registerEngine(
     "Octopus", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OctopusEngine>(); });
-// V1 Concept Engines — OPENSKY
+// Concept Engines —OPENSKY
 static bool registered_OpenSky = xoceanus::EngineRegistry::instance().registerEngine(
     "OpenSky", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OpenSkyEngine>(); });
-// V1 Concept Engines — OSTINATO
+// Concept Engines —OSTINATO
 static bool registered_Ostinato =
     xoceanus::EngineRegistry::instance().registerEngine("Ostinato", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OstinatoEngine>(); });
-// V1 Concept Engines — OCEANDEEP
+// Concept Engines —OCEANDEEP
 static bool registered_OceanDeep =
     xoceanus::EngineRegistry::instance().registerEngine("OceanDeep", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OceandeepEngine>(); });
-// V1 Concept Engines — OUIE
+// Concept Engines —OUIE
 static bool registered_Ouie = xoceanus::EngineRegistry::instance().registerEngine(
     "Ouie", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OuieEngine>(); });
 // Flagship — OBRIX (modular brick synthesis)
@@ -466,7 +466,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     OmbreEngine::addParameters(params);
     OrcaEngine::addParameters(params);
     OctopusEngine::addParameters(params);
-    // V1 Concept Engines
+    // Concept Engines
     OstinatoEngine::addParameters(params);
     OpenSkyEngine::addParameters(params);
     OceandeepEngine::addParameters(params);

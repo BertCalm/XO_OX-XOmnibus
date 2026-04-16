@@ -233,7 +233,7 @@ public:
 
     // SRO: CPU profiling and resource optimization report (UI thread safe)
     // NOTE: SRO profiling runs in processBlock but no UI surface reads this report yet.
-    // Wire to a StatusBar or debug panel in V1.1.
+    // Wire to a StatusBar or debug panel when that surface lands.
     SROAuditor::Report getSROReport() const { return sroAuditor.getReport(); }
 
     // Coupling preset management — bake, save, load coupling presets (UI thread only)

@@ -1,8 +1,17 @@
-# XO_OX / XOceanus — Extended Release Roadmap
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> This 12-month extended roadmap was structured around fixed-date release
+> milestones premised on a V1 launch. XOceanus has retired that framing —
+> build and refine until ready; ship when ready. Content preserved for
+> historical reference. See `CLAUDE.md` → *Release Philosophy*.
+
+---
+
+# XO_OX / XOceanus — Extended Release Roadmap (HISTORICAL)
 ## Months 7–12: October 2026 – March 2027
 
-**Companion to:** `Docs/6-month-release-calendar-2026.md`
-**Created:** 2026-03-20
+**Companion to:** `Docs/6-month-release-calendar-2026.md` (also retired)
+**Created:** 2026-03-20 — retired 2026-04-16
 **Scope:** Weeks 27–52 of the XOceanus year — the V2 Collections era, KNOT coupling, community expansion, and the 1-year anniversary arc.
 
 ---
