@@ -10,7 +10,7 @@
 
 ---
 
-**[City, Date]** — XO_OX Designs today announced the V1 release of XOceanus, a free and open-source multi-engine synthesizer for macOS. XOceanus ships with 77 distinct synthesis engines, more than 19,500 factory presets, and a cross-engine coupling system that produces sounds impossible on any single synthesizer.
+**[City, Date]** — XO_OX Designs today announced XOceanus, a free and open-source multi-engine synthesizer for macOS. XOceanus ships with 77 distinct synthesis engines, more than 19,500 factory presets, and a cross-engine coupling system that produces sounds impossible on any single synthesizer.
 
 The instrument is available at no cost, permanently, under the MIT open-source license. No subscription, no trial period, no upgrade gate.
 
@@ -32,7 +32,7 @@ Professional-grade synthesizer plugins routinely cost $100–$500. Coupling and 
 
 The instrument was built by a single developer over the course of several months. The source code is available on GitHub under the MIT license, meaning the entire DSP architecture, preset format, and coupling protocol are available for inspection, modification, and extension.
 
-The preset format — `.xometa` JSON — is documented and stable. The parameter prefix system is frozen at V1 and will not change between versions. Backward compatibility is a first-class design constraint, not a secondary concern.
+The preset format — `.xometa` JSON — is documented and stable. The parameter prefix system is frozen at first public release and will not change between versions. Backward compatibility is a first-class design constraint, not a secondary concern.
 
 ---
 
@@ -75,7 +75,7 @@ The mythology is not decorative. The depth placement determines how engines are 
 
 ### Availability
 
-XOceanus V1 is available now at:
+XOceanus is available now at:
 
 - **Website:** https://xo-ox.org
 - **GitHub:** https://github.com/BertCalm/XO_OX-XOmnibus

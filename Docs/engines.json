@@ -1,24 +1,23 @@
 {
   "_meta": {
-    "description": "Machine-readable V1 engine roster for XOceanus. CI/build scripts reference this file to scope QA sweeps, release builds, and preset validation. Source of truth: Docs/v1-scope-revision-2026-03-23.md",
-    "last_updated": "2026-03-31",
-    "v1_formula": "OBRIX flagship + 6-8 FX engines + 20-25 curated synthesis engines = 28-34 total",
+    "description": "Machine-readable engine roster for XOceanus. CI/build scripts reference this file to scope QA sweeps, builds, and preset validation.",
+    "last_updated": "2026-04-16",
     "status_values": ["confirmed", "under_consideration", "deferred", "personal_only"],
-    "notes": "Parameter prefixes are FROZEN and must never change after first public release."
+    "notes": "Parameter prefixes are FROZEN and must never change after first public release. XOceanus has no fixed release cutoff — 'confirmed' means the engine is production-quality today; it does not imply membership in a version-gated scope."
   },
   "synthesis_engines": [
     {
       "id": "OBRIX",
       "source_instrument": "XObrix",
       "status": "confirmed",
-      "v1_role": "flagship",
+      "role": "flagship",
       "seance_score": 9.2,
       "preset_count": 466,
       "param_prefix": "obrix_",
       "accent_color": "#1E8B7E",
       "accent_name": "Reef Jade",
       "header": "Source/Engines/Obrix/ObrixEngine.h",
-      "notes": "FLAGSHIP — mandatory V1 inclusion"
+      "notes": "FLAGSHIP"
     },
     {
       "id": "OBSCURA",
