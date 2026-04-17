@@ -1724,7 +1724,30 @@ private:
             return;
         }
 
-        transitionToZoomIn(slot);
+        // Selection in place — no state transition, no orbit movement.
+        // Visual emphasis (glow, ring) handled by EngineOrbit::setSelected().
+        selectOrbitInPlace(slot);
+    }
+
+    void selectOrbitInPlace(int slot)
+    {
+        // Toggle: clicking the already-selected orbit deselects it.
+        if (selectedSlot_ == slot)
+        {
+            selectedSlot_ = -1;
+            for (auto& o : orbits_)
+                o.setSelected(false);
+            if (onEngineSelected)
+                onEngineSelected(-1);
+            return;
+        }
+
+        selectedSlot_ = slot;
+        for (int i = 0; i < 5; ++i)
+            orbits_[i].setSelected(i == slot);
+
+        if (onEngineSelected)
+            onEngineSelected(slot);
     }
 
     void dismissDetailPanel()

@@ -486,31 +486,15 @@ public:
     void mouseUp(const juce::MouseEvent& e) override
     {
         isDragging_ = false;
-        // Detect click vs drag — only fire onClicked if minimal movement.
-        // Delay single-click by 300ms so a double-click can cancel it.
-        // Without this delay, the first click fires transitionToZoomIn which
-        // MOVES the orbit, and JUCE won't fire mouseDoubleClick because the
-        // second click no longer hits the same component at its new position.
-        if (e.getDistanceFromDragStart() < 4 && onClicked)
-        {
-            pendingClickSlot_ = slotIndex_;
-            pendingClickActive_ = true;
-            const int slot = slotIndex_;
-            juce::Timer::callAfterDelay(300, [this, slot]()
-            {
-                if (pendingClickActive_ && pendingClickSlot_ == slot && onClicked)
-                {
-                    pendingClickActive_ = false;
-                    onClicked(slot);
-                }
-            });
-        }
+        // Click vs drag: only fire onClicked if minimal movement.
+        // No delay needed — single-click selects in place (no orbit movement),
+        // so double-click still hits the same component reliably.
+        if (e.getDistanceFromDragStart() < 8 && onClicked)
+            onClicked(slotIndex_);
     }
 
     void mouseDoubleClick(const juce::MouseEvent& /*e*/) override
     {
-        // Cancel the pending single-click — double-click takes priority
-        pendingClickActive_ = false;
         if (onDoubleClicked)
             onDoubleClicked(slotIndex_);
     }
