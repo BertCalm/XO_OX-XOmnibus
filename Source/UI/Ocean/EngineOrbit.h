@@ -540,7 +540,7 @@ public:
         auto& rng = juce::Random::getSystemRandom();
         bobPhase_ = rng.nextFloat() * juce::MathConstants<float>::twoPi;
         bobSpeed_ = 0.28f + rng.nextFloat() * 0.18f;
-        bobAmp_   = 2.0f  + rng.nextFloat() * 2.5f;
+        bobAmp_   = 0.8f  + rng.nextFloat() * 0.7f;  // subtle idle bob (0.8-1.5px)
 
         // FIX 22: trigger drop splash + bounce-in on load
         splashAnim_   = 1.0f;
@@ -759,7 +759,7 @@ private:
             bobOffset_  = std::sin(breathPhase_ * bobSpeed_ + bobPhase_)
                           * (bobAmp_ + wreathIntensity_ * 4.0f);
             tiltAngle_  = std::sin(breathPhase_ * 0.7f)
-                          * 0.03f * (1.0f + wreathIntensity_ * 2.0f);
+                          * 0.012f * (1.0f + wreathIntensity_ * 3.0f);
         }
         else
         {

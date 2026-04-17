@@ -806,6 +806,17 @@ public:
             }
             processor.loadEngine(slot, engineId.toStdString());
         };
+        oceanView_.onCouplingRouteRequested = [this](int srcSlot, int dstSlot)
+        {
+            MegaCouplingMatrix::CouplingRoute route;
+            route.sourceSlot  = srcSlot;
+            route.destSlot    = dstSlot;
+            route.type        = CouplingType::AmpToFilter;
+            route.amount      = 0.5f;
+            route.isNormalled = false;
+            route.active      = true;
+            processor.getCouplingMatrix().addRoute(route);
+        };
         oceanView_.onPresetSelected = [this](int idx)
         {
             // Load preset by index from the library snapshot.

@@ -337,7 +337,7 @@ public:
         // ── Internal callbacks ────────────────────────────────────────────────
         for (int i = 0; i < 5; ++i)
         {
-            orbits_[i].onClicked       = [this](int s) { transitionToZoomIn(s); };
+            orbits_[i].onClicked       = [this](int s) { handleOrbitClicked(s); };
             orbits_[i].onDoubleClicked = [this](int s)
             {
                 if (!detail_) return;
@@ -508,7 +508,8 @@ public:
             const bool chainOn = hudBar_.isChainModeActive();
             setMouseCursor(chainOn ? juce::MouseCursor::CrosshairCursor
                                    : juce::MouseCursor::NormalCursor);
-            substrate_.setChainInProgress(false); // clear any pending chain start
+            chainStartSlot_ = -1;
+            substrate_.setChainInProgress(false);
         };
 
         // ── Keyboard focus ────────────────────────────────────────────────────
@@ -815,6 +816,14 @@ public:
                 engineDrawer_.close();
                 return true;
             }
+            if (chainStartSlot_ >= 0)
+            {
+                chainStartSlot_ = -1;
+                substrate_.setChainInProgress(false);
+                hudBar_.setChainModeActive(false);
+                setMouseCursor(juce::MouseCursor::NormalCursor);
+                return true;
+            }
             if (detailShowing_)
             {
                 dismissDetailPanel();
@@ -972,7 +981,14 @@ public:
 
     void mouseMove(const juce::MouseEvent& e) override
     {
-        juce::ignoreUnused(e);
+        // Update chain line endpoint during chain-in-progress
+        if (hudBar_.isChainModeActive() && chainStartSlot_ >= 0)
+        {
+            auto localPos = e.getPosition().toFloat();
+            // Translate to substrate's coordinate space
+            auto subPos = localPos - substrate_.getPosition().toFloat();
+            substrate_.setChainMousePos(subPos);
+        }
     }
 
     void mouseExit(const juce::MouseEvent& /*e*/) override
@@ -1234,6 +1250,10 @@ public:
 
     /** Fired when the user clicks a preset dot in the DNA map browser. */
     std::function<void(int presetIndex)> onPresetSelected;
+
+    /** Fired when the user completes a chain gesture (two orbit clicks in chain mode).
+        The editor should create a coupling route between sourceSlot and destSlot. */
+    std::function<void(int sourceSlot, int destSlot)> onCouplingRouteRequested;
 
     /** Fired when the PlaySurface overlay is shown or hidden (including first-launch auto-show).
         Use this to persist the visibility preference so subsequent plugin launches restore the
@@ -1672,6 +1692,40 @@ private:
     //==========================================================================
     // State machine transitions
     //==========================================================================
+
+    void handleOrbitClicked(int slot)
+    {
+        if (hudBar_.isChainModeActive())
+        {
+            if (chainStartSlot_ < 0)
+            {
+                // First click: start the chain from this slot
+                chainStartSlot_ = slot;
+                substrate_.setChainInProgress(true, slot, orbits_[slot].getCenter());
+            }
+            else if (chainStartSlot_ != slot)
+            {
+                // Second click on a different slot: create coupling route
+                if (onCouplingRouteRequested)
+                    onCouplingRouteRequested(chainStartSlot_, slot);
+
+                // Reset chain state
+                chainStartSlot_ = -1;
+                substrate_.setChainInProgress(false);
+                hudBar_.setChainModeActive(false);
+                setMouseCursor(juce::MouseCursor::NormalCursor);
+            }
+            // Clicking the same slot cancels the chain
+            else
+            {
+                chainStartSlot_ = -1;
+                substrate_.setChainInProgress(false);
+            }
+            return;
+        }
+
+        transitionToZoomIn(slot);
+    }
 
     void dismissDetailPanel()
     {
@@ -2285,6 +2339,7 @@ private:
     /// Step 7: true until the user loads their first engine or clicks the lifesaver.
     bool firstLaunch_ = true;
     bool detailShowing_ = false;
+    int  chainStartSlot_ = -1;  // -1 = no chain in progress
 
     /// State saved on entering BrowserOpen so exitBrowser() can restore it exactly.
     ViewState preBrowserState_ = ViewState::Orbital;

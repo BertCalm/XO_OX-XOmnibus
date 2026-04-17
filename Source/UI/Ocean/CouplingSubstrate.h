@@ -198,6 +198,12 @@ public:
         repaint();
     }
 
+    void setChainMousePos(juce::Point<float> pos)
+    {
+        chainMousePos_ = pos;
+        if (chainInProgress_) repaint();
+    }
+
     void setCreatureCenter(int slot, juce::Point<float> center)
     {
         if (slot < 0 || slot >= kMaxSlots)
@@ -719,6 +725,16 @@ private:
     void timerCallback() override
     {
         const bool reducedMotion = A11y::prefersReducedMotion();
+
+        // Poll mouse position during chain-in-progress for smooth line tracking.
+        // mouseMove on OceanView doesn't fire when cursor is over child components.
+        if (chainInProgress_)
+        {
+            auto mouseScreenPos = juce::Desktop::getInstance()
+                                      .getMainMouseSource().getScreenPosition();
+            chainMousePos_ = getLocalPoint(nullptr, mouseScreenPos).toFloat();
+            repaint();
+        }
 
         // Advance wobble time for animated chain bow (FIX 18)
         wobbleTime_ += 1.0f / static_cast<float>(kTimerHz);
