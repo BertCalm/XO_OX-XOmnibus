@@ -143,7 +143,8 @@ private:
     5. Start a 10 Hz editor-side timer and call setCouplingRoutes() / setVoiceCount()
        from it to feed live state.
 */
-class OceanView : public juce::Component
+class OceanView : public juce::Component,
+                  private juce::Timer
 {
 public:
     //==========================================================================
@@ -514,9 +515,17 @@ public:
 
         // ── Keyboard focus ────────────────────────────────────────────────────
         setWantsKeyboardFocus(true);
+
+        // ── Shared orbit animation timer ──────────────────────────────────────
+        // One 30 Hz timer drives all EngineOrbit animations in lock-step,
+        // synchronizing breathe/bob/wreath phases and reducing OS timer allocations.
+        startTimerHz(30);
     }
 
-    ~OceanView() override = default;
+    ~OceanView() override
+    {
+        stopTimer();
+    }
 
     //==========================================================================
     // Deferred initialisation — called by XOceanusEditor before first show
@@ -1687,6 +1696,22 @@ private:
                         break;
                 }
             });
+    }
+
+    //==========================================================================
+    // Shared orbit animation timer (juce::Timer override)
+    //==========================================================================
+
+    void timerCallback() override
+    {
+        // Drive all orbit animations from one synchronized 30 Hz timer.
+        for (auto& orbit : orbits_)
+            orbit.stepAnimation();
+
+        // Repaint only orbits that have engines loaded.
+        for (auto& orbit : orbits_)
+            if (orbit.hasEngine())
+                orbit.requestRepaint();
     }
 
     //==========================================================================

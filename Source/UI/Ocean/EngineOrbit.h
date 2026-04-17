@@ -46,13 +46,13 @@ namespace xoceanus
       - Ripple rings on note-on
       - Freeform drag positioning
 
-    Animation is driven by a 30 Hz Timer, started in setEngine(), stopped
-    in clearEngine().  Breath and wreath are frozen when
+    Animation is driven by OceanView's single shared 30 Hz Timer, which
+    calls stepAnimation() on every tick and requestRepaint() for orbits
+    that have engines.  Breath and wreath are frozen when
     A11y::prefersReducedMotion() returns true.
 */
 class EngineOrbit : public juce::Component,
-                    public juce::SettableTooltipClient,
-                    private juce::Timer
+                    public juce::SettableTooltipClient
 {
 public:
     //==========================================================================
@@ -74,10 +74,10 @@ public:
         // Ghost slots are visual only — pass mouse events through until an
         // engine is loaded.  setEngine() restores full interactivity.
         setInterceptsMouseClicks(false, false);
-        // Timer started in setEngine(), stopped in clearEngine().
+        // Animation is driven by OceanView's shared 30 Hz timer via stepAnimation().
     }
 
-    ~EngineOrbit() override { stopTimer(); }
+    ~EngineOrbit() override = default;
 
     //==========================================================================
     // juce::Component overrides
@@ -530,9 +530,6 @@ public:
         splashAnim_   = 1.0f;
         bounceOffset_ = -30.0f;
 
-        if (!isTimerRunning())
-            startTimerHz(30);
-
         repaint();
     }
 
@@ -555,7 +552,6 @@ public:
         rippleWriteIdx_   = 0;
         for (auto& r : ripples_) r.progress = 0.0f;
 
-        stopTimer();
         repaint();
     }
 
@@ -674,36 +670,12 @@ public:
     std::function<void(int slotIndex)> onDoubleClicked;
     std::function<void(int slotIndex)> onPositionChanged;
 
-private:
     //==========================================================================
-    /** Returns a -1..+1 sample for the given phase t based on wreathShape_. */
-    float computeWreathSample(float t) const
-    {
-        switch (wreathShape_)
-        {
-            case WreathShape::Sine:
-                return std::sin(t);
-            case WreathShape::Saw:
-                return 2.0f * std::fmod(t / juce::MathConstants<float>::twoPi, 1.0f) - 1.0f;
-            case WreathShape::Square:
-                return std::sin(t) > 0.0f ? 1.0f : -1.0f;
-            case WreathShape::Tri:
-                return 2.0f * std::abs(2.0f * std::fmod(t / juce::MathConstants<float>::twoPi, 1.0f) - 1.0f) - 1.0f;
-            case WreathShape::Noise:
-                return std::sin(t * 7.3f) * std::cos(t * 3.1f) + std::sin(t * 13.7f) * 0.5f;
-            case WreathShape::Organ:
-                return std::sin(t) * 0.6f + std::sin(t * 2.0f) * 0.25f + std::sin(t * 3.0f) * 0.15f;
-            case WreathShape::Pulse:
-                return std::sin(t) > 0.3f ? 1.0f : -1.0f;
-            case WreathShape::Harmonic:
-                return std::sin(t) + std::sin(t * 3.0f) * 0.4f + std::sin(t * 5.0f) * 0.2f;
-            default:
-                return std::sin(t);
-        }
-    }
+    // Animation — called by OceanView's single shared timer at 30 Hz
+    //==========================================================================
 
-    //==========================================================================
-    void timerCallback() override
+    /** Advance all animation state by one 30 Hz tick. Called by OceanView. */
+    void stepAnimation()
     {
         if (!hasEngine_) return;
 
@@ -771,8 +743,38 @@ private:
             splashAnim_   = 0.0f;
             bounceOffset_ = 0.0f;
         }
+        // Repaint is triggered by OceanView after all orbits have been stepped.
+    }
 
-        repaint();
+    /** Called by OceanView after stepping all orbits to trigger a repaint. */
+    void requestRepaint() { repaint(); }
+
+private:
+    //==========================================================================
+    /** Returns a -1..+1 sample for the given phase t based on wreathShape_. */
+    float computeWreathSample(float t) const
+    {
+        switch (wreathShape_)
+        {
+            case WreathShape::Sine:
+                return std::sin(t);
+            case WreathShape::Saw:
+                return 2.0f * std::fmod(t / juce::MathConstants<float>::twoPi, 1.0f) - 1.0f;
+            case WreathShape::Square:
+                return std::sin(t) > 0.0f ? 1.0f : -1.0f;
+            case WreathShape::Tri:
+                return 2.0f * std::abs(2.0f * std::fmod(t / juce::MathConstants<float>::twoPi, 1.0f) - 1.0f) - 1.0f;
+            case WreathShape::Noise:
+                return std::sin(t * 7.3f) * std::cos(t * 3.1f) + std::sin(t * 13.7f) * 0.5f;
+            case WreathShape::Organ:
+                return std::sin(t) * 0.6f + std::sin(t * 2.0f) * 0.25f + std::sin(t * 3.0f) * 0.15f;
+            case WreathShape::Pulse:
+                return std::sin(t) > 0.3f ? 1.0f : -1.0f;
+            case WreathShape::Harmonic:
+                return std::sin(t) + std::sin(t * 3.0f) * 0.4f + std::sin(t * 5.0f) * 0.2f;
+            default:
+                return std::sin(t);
+        }
     }
 
     //==========================================================================
@@ -827,8 +829,8 @@ private:
     float bobPhase_  = 0.0f;   ///< random initial phase, set in setEngine()
     float bobSpeed_  = 0.28f;  ///< cycles-per-breath-cycle; randomized in setEngine()
     float bobAmp_    = 2.0f;   ///< pixels amplitude; randomized in setEngine()
-    float bobOffset_ = 0.0f;   ///< current computed Y offset (updated by timerCallback)
-    float tiltAngle_ = 0.0f;   ///< current tilt radians (updated by timerCallback)
+    float bobOffset_ = 0.0f;   ///< current computed Y offset (updated by stepAnimation)
+    float tiltAngle_ = 0.0f;   ///< current tilt radians (updated by stepAnimation)
 
     // Buoy drop splash animation (FIX 22)
     float splashAnim_   = 0.0f;  ///< 1.0 on load, decays to 0
