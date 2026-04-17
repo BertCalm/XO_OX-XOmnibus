@@ -1104,6 +1104,13 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     chordMachine.prepare(sampleRate, samplesPerBlock);
     masterFX.prepare(sampleRate, samplesPerBlock, apvts);
 
+    // EpicChainSlotController: 3-slot FX router (Epic Chains + Wave 2).
+    // Runs after masterFX in the signal chain. All slots default to Off
+    // (zero-cost passthrough) so existing presets are unaffected until
+    // a user selects a chain for a slot.
+    epicSlots.prepare(sampleRate, samplesPerBlock);
+    epicSlots.cacheParameterPointers(apvts);
+
     // SRO: Prepare profilers and auditor
     for (auto& prof : engineProfilers)
         prof.prepare(sampleRate, samplesPerBlock);
@@ -1221,6 +1228,7 @@ void XOceanusProcessor::releaseResources()
             eng->releaseResources();
     }
     masterFX.reset();
+    epicSlots.reset();
 }
 
 void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi)
@@ -1237,6 +1245,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     if (killDelayTailsPending.load(std::memory_order_acquire))
     {
         masterFX.reset();
+        epicSlots.reset();
         killDelayTailsPending.store(false, std::memory_order_release);
     }
 
@@ -2037,6 +2046,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         }
     }
     masterFX.processBlock(buffer, numSamples, ppqPos, bpm);
+    // EpicChainSlotController: 3 assignable FX slots (each holds one of 30 chains
+    // or Off). Runs post-master FX. Note argument order: (buffer, numSamples,
+    // bpm, ppqPos) — differs from masterFX's (buffer, numSamples, ppqPos, bpm).
+    epicSlots.processBlock(buffer, numSamples, bpm, ppqPos);
     masterOutputFifo.push(buffer.getReadPointer(0), static_cast<size_t>(numSamples));
 
     // CPU load measurement: elapsed / buffer_duration, smoothed with a leaky integrator.

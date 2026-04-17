@@ -8,6 +8,7 @@
 #include "Core/MegaCouplingMatrix.h"
 #include "Core/CouplingCrossfader.h"
 #include "Core/MasterFXChain.h"
+#include "Core/EpicChainSlotController.h"
 #include "Core/ChordMachine.h"
 #include "Core/MPEManager.h"
 #include "Core/MIDILearnManager.h"
@@ -360,6 +361,7 @@ private:
     std::shared_ptr<std::vector<MegaCouplingMatrix::CouplingRoute>> mergedRoutePtr;
 
     MasterFXChain masterFX;
+    xoceanus::EpicChainSlotController epicSlots;  // 3-slot Epic Chains FX router
     ChordMachine chordMachine;
     MPEManager mpeManager;
     MIDILearnManager midiLearnManager;
