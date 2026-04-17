@@ -213,13 +213,15 @@ public:
     ~ParameterGrid() override
     {
         stopTimer();
-        // Tear down all live knobs in safe destruction order
         for (auto& lk : liveKnobs)
             destroyLiveKnob(lk);
     }
 
-    // ── Viewport linkage ────────────────────────────────────────────────────
     void setParentViewport(juce::Viewport* vp) { parentViewport = vp; }
+
+    // When the viewport scrolls, JUCE moves this component — `moved()` fires
+    // immediately, so we can update visible knobs without timer lag.
+    void moved() override { updateVisibleAttachments(); }
 
     // ── Scroll viewport to the first occurrence of a section (MUST A1-04) ───
     // Iterates sectionRuns to compute the Y offset of target and scrolls.
@@ -235,12 +237,11 @@ public:
                 parentViewport->setViewPosition(0, juce::jmax(0, y - 4));
                 return;
             }
-            y += kHeaderRowH; // section header height
-            if (!collapsedSections.count(run.sec))
-            {
-                int cols = juce::jmax(1, getWidth() / kCellW);
-                y += (run.count + cols - 1) / cols * kCellH;
-            }
+            y += flatMode_ ? kFlatHeaderH : kHeaderRowH;
+            if (!flatMode_ && collapsedSections.count(run.sec))
+                continue;
+            int cols = juce::jmax(1, getWidth() / cellW());
+            y += (run.count + cols - 1) / cols * cellH();
         }
     }
 
@@ -299,20 +300,45 @@ public:
                 lk->knob->clearModulation();
     }
 
+    // ── Flat mode — suppresses section headers and collapse behavior ────────
+    // Used by the submarine detail panel for a continuous 4-column knob grid.
+    void setFlatMode(bool flat)
+    {
+        if (flatMode_ == flat)
+            return;
+        flatMode_ = flat;
+        if (flat)
+            collapsedSections.clear();
+        setSize(getWidth(), getRequiredHeight(getWidth()));
+        repaint();
+    }
+
+    int cellW()    const { return flatMode_ ? kFlatCellW    : kCellW;    }
+    int cellH()    const { return flatMode_ ? kFlatCellH    : kCellH;    }
+    int knobSize() const { return flatMode_ ? kFlatKnobSize : kKnobSize; }
+
     // ── Height calculation — accounts for per-section header rows ───────────
     // Collapsed sections contribute only kHeaderRowH (no knob rows).
+    // In flat mode, section headers are omitted entirely.
     int getRequiredHeight(int availableWidth) const
     {
-        int cols = juce::jmax(1, availableWidth / kCellW);
+        int cols = juce::jmax(1, availableWidth / cellW());
         int y = kPad;
 
         for (auto& run : sectionRuns)
         {
-            y += kHeaderRowH; // section header strip always visible
-            if (collapsedSections.count(run.sec))
-                continue; // header only, no knob rows
+            if (flatMode_)
+            {
+                y += kFlatHeaderH; // minimal title row
+            }
+            else
+            {
+                y += kHeaderRowH;
+                if (collapsedSections.count(run.sec))
+                    continue;
+            }
             int rows = (run.count + cols - 1) / cols;
-            y += rows * kCellH;
+            y += rows * cellH();
         }
 
         return y + kPad;
@@ -323,8 +349,8 @@ public:
 
     void resized() override
     {
-        int cols = juce::jmax(1, getWidth() / kCellW);
-        int offsetX = (getWidth() - cols * kCellW) / 2;
+        int cols = juce::jmax(1, getWidth() / cellW());
+        int offsetX = (getWidth() - cols * cellW()) / 2;
         int y = kPad;
 
         knobBounds.resize(paramSlots.size());
@@ -332,9 +358,9 @@ public:
 
         for (auto& run : sectionRuns)
         {
-            y += kHeaderRowH; // skip over section header
+            y += flatMode_ ? kFlatHeaderH : kHeaderRowH;
 
-            if (collapsedSections.count(run.sec))
+            if (!flatMode_ && collapsedSections.count(run.sec))
             {
                 // Section is collapsed — place all knobs off-screen so
                 // updateVisibleAttachments() will tear them down.
@@ -347,22 +373,22 @@ public:
             {
                 int col = i % cols;
                 int row = i / cols;
-                int cx = offsetX + col * kCellW;
-                int cy = y + row * kCellH;
+                int cx = offsetX + col * cellW();
+                int cy = y + row * cellH();
 
                 knobBounds[flatIdx] = {cx, cy};
 
                 // If the live knob already exists, update its bounds immediately
                 if (auto& lk = liveKnobs[flatIdx]; lk != nullptr)
                 {
-                    const int knobX = cx + (kCellW - kKnobSize) / 2;
-                    lk->knob->setBounds(knobX, cy + 2, kKnobSize, kKnobSize);
-                    lk->label->setBounds(cx, cy + kKnobSize + 4, kCellW, 14);
+                    const int knobX = cx + (cellW() - knobSize()) / 2;
+                    lk->knob->setBounds(knobX, cy + kCellPadTop, knobSize(), knobSize());
+                    lk->label->setBounds(cx, cy + knobSize() + kLabelGap, cellW(), kLabelH);
                 }
             }
 
             int rows = (run.count + cols - 1) / cols;
-            y += rows * kCellH;
+            y += rows * cellH();
         }
 
         // After geometry changes, immediately update which knobs are live
@@ -400,78 +426,95 @@ public:
             g.fillRect(getLocalBounds());
         }
 
-        int cols = juce::jmax(1, getWidth() / kCellW);
+        int cols = juce::jmax(1, getWidth() / cellW());
         int y = kPad;
-        int secIdx = 0; // used to cycle dot colors by display order
+        int secIdx = 0;
 
         for (auto& run : sectionRuns)
         {
             juce::Colour dotCol = sectionDotColour(secIdx);
-            juce::String secText = sectionName(run.sec);
-            bool collapsed = collapsedSections.count(run.sec) > 0;
+            bool collapsed = !flatMode_ && collapsedSections.count(run.sec) > 0;
 
-            // ── Section header background — submarine surface tint (teal, 6%) ──
+            if (!flatMode_)
             {
-                // Submarine: rgba(60,180,170,0.06) — subtle teal tint on headers
+                juce::String secText = sectionName(run.sec);
+
+                // ── Section header background — submarine surface tint (teal, 6%) ──
                 g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
                 g.fillRect(0, y, getWidth(), kHeaderRowH);
-            }
 
-            // ── Bottom border on each section header — rgba(200,204,216,0.08) ─
-            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.08f));
-            g.drawHorizontalLine(y + kHeaderRowH - 1, 0.0f, (float)getWidth());
+                // ── Bottom border — rgba(200,204,216,0.08) ─
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.08f));
+                g.drawHorizontalLine(y + kHeaderRowH - 1, 0.0f, (float)getWidth());
 
-            // ── Color dot — 8×8px, 4-color cycling palette ────────────────────
-            const int dotSize = 8;
-            const int dotX = 10;
-            const int dotY = y + (kHeaderRowH - dotSize) / 2;
-            g.setColour(dotCol);
-            g.fillEllipse((float)dotX, (float)dotY, (float)dotSize, (float)dotSize);
+                // ── Color dot — 8×8px ────────────────────
+                const int dotSize = 8;
+                const int dotX = 10;
+                const int dotY = y + (kHeaderRowH - dotSize) / 2;
+                g.setColour(dotCol);
+                g.fillEllipse((float)dotX, (float)dotY, (float)dotSize, (float)dotSize);
 
-            // ── Section title — 11px, Space Grotesk Bold, uppercase, T1 text ──
-            // P6 fix: cache the section font and arrow strings as static locals
-            // to avoid reconstructing them on every paint() call.
-            static const juce::Font kSectionFont =
-                juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(11.0f));
-            // ▼ DOWNWARD-POINTING TRIANGLE (expanded)  ▸ RIGHT-POINTING (collapsed)
-            static const juce::String kArrowCollapsed(juce::CharPointer_UTF8("\xe2\x96\xb8")); // ▸
-            static const juce::String kArrowExpanded(juce::CharPointer_UTF8("\xe2\x96\xbc"));  // ▼
+                // ── Section title ──
+                static const juce::Font kSectionFont =
+                    juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(11.0f));
+                static const juce::String kArrowCollapsed(juce::CharPointer_UTF8("\xe2\x96\xb8"));
+                static const juce::String kArrowExpanded(juce::CharPointer_UTF8("\xe2\x96\xbc"));
 
-            // Submarine primary text: rgba(200,204,216,0.8)
-            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.8f));
-            g.setFont(kSectionFont);
-            g.drawText(secText, dotX + dotSize + 6, y, getWidth() - dotX - dotSize - 16, kHeaderRowH,
-                       juce::Justification::centredLeft);
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.8f));
+                g.setFont(kSectionFont);
+                g.drawText(secText, dotX + dotSize + 6, y, getWidth() - dotX - dotSize - 16, kHeaderRowH,
+                           juce::Justification::centredLeft);
 
-            // ── Collapse indicator arrow — right-aligned, submarine muted, 9px ─
-            {
-                // Submarine muted text: rgba(200,204,216,0.3)
+                // ── Collapse arrow ─
                 g.setColour(juce::Colour(200, 204, 216).withAlpha(0.3f));
-                g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
+                g.setFont(GalleryFonts::value(10.0f));
                 g.drawText(collapsed ? kArrowCollapsed : kArrowExpanded, 0, y, getWidth() - 10, kHeaderRowH,
                            juce::Justification::centredRight);
+
+                y += kHeaderRowH;
+                ++secIdx;
+
+                if (collapsed)
+                    continue;
+
+                // ── Section content: thin left border ────
+                int rows = (run.count + cols - 1) / cols;
+                int contentH = rows * cellH();
+                g.setColour(dotCol.withAlpha(0.40f));
+                g.fillRect(4, y, 2, contentH);
+
+                y += contentH;
             }
+            else
+            {
+                // Flat mode: minimal section title — text + thin line, no chrome
+                juce::String secText = sectionName(run.sec);
 
-            y += kHeaderRowH;
-            ++secIdx;
+                static const juce::Font kSectionFont =
+                    juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(11.0f));
 
-            if (collapsed)
-                continue;
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.5f));
+                g.setFont(kSectionFont);
+                g.drawText(secText, 8, y, getWidth() - 16, kFlatHeaderH,
+                           juce::Justification::centredLeft);
 
-            // ── Section content: thin left border only (no lighter bg) ────
-            int rows = (run.count + cols - 1) / cols;
-            int contentH = rows * kCellH;
-            // 2px left border in section color
-            g.setColour(dotCol.withAlpha(0.40f));
-            g.fillRect(4, y, 2, contentH);
+                // Thin separator
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.06f));
+                g.drawHorizontalLine(y + kFlatHeaderH - 1, 0.0f, (float)getWidth());
 
-            y += contentH;
+                y += kFlatHeaderH;
+                int rows = (run.count + cols - 1) / cols;
+                y += rows * cellH();
+                ++secIdx;
+            }
         }
     }
 
     // ── Mouse handling — toggle collapse on header click ────────────────────
     void mouseDown(const juce::MouseEvent& e) override
     {
+        if (flatMode_)
+            return; // no collapse in flat mode
         int y = kPad;
         for (auto& run : sectionRuns)
         {
@@ -503,9 +546,9 @@ public:
             y += kHeaderRowH;
             if (!collapsedSections.count(run.sec))
             {
-                int cols = juce::jmax(1, getWidth() / kCellW);
+                int cols = juce::jmax(1, getWidth() / cellW());
                 int rows = (run.count + cols - 1) / cols;
-                y += rows * kCellH;
+                y += rows * cellH();
             }
         }
     }
@@ -513,6 +556,8 @@ public:
     // ── Cursor change — pointing hand over section headers ──────────────────
     void mouseMove(const juce::MouseEvent& e) override
     {
+        if (flatMode_)
+            return;
         int y = kPad;
         for (auto& run : sectionRuns)
         {
@@ -524,8 +569,8 @@ public:
             y += kHeaderRowH;
             if (!collapsedSections.count(run.sec))
             {
-                int cols = juce::jmax(1, getWidth() / kCellW);
-                y += (run.count + cols - 1) / cols * kCellH;
+                int cols = juce::jmax(1, getWidth() / cellW());
+                y += (run.count + cols - 1) / cols * cellH();
             }
         }
         setMouseCursor(juce::MouseCursor::NormalCursor);
@@ -635,13 +680,13 @@ private:
         lk->label->setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::t2()));
         lk->label->setJustificationType(juce::Justification::centred);
         lk->label->setInterceptsMouseClicks(false, false);
-        // If the label text is wider than kCellW the knob already has a tooltip
+        // If the label text is wider than cellW() the knob already has a tooltip
         // via rp->getName(). Add the full parameter name as a tooltip on the
         // label too so text that clips on narrow windows is still accessible
         // (addresses #391: ParameterGrid labels clip on narrow panels).
         {
             float textW = labelFont.getStringWidthFloat(slot.shortLabel);
-            if (textW > (float)kCellW)
+            if (textW > (float)cellW())
                 lk->label->setTooltip(rp->getName(64));
         }
         addAndMakeVisible(*lk->label);
@@ -665,9 +710,9 @@ private:
         if (idx < (int)knobBounds.size())
         {
             auto [cx, cy] = knobBounds[idx];
-            const int knobX = cx + (kCellW - kKnobSize) / 2;
-            lk->knob->setBounds(knobX, cy + 2, kKnobSize, kKnobSize);
-            lk->label->setBounds(cx, cy + kKnobSize + 4, kCellW, 14);
+            const int knobX = cx + (cellW() - knobSize()) / 2;
+            lk->knob->setBounds(knobX, cy + kCellPadTop, knobSize(), knobSize());
+            lk->label->setBounds(cx, cy + knobSize() + kLabelGap, cellW(), kLabelH);
         }
 
         liveKnobs[idx] = std::move(lk);
@@ -705,7 +750,7 @@ private:
                 break;
 
             auto [cx, cy] = knobBounds[i];
-            juce::Rectangle<int> cellRect(cx, cy, kCellW, kCellH);
+            juce::Rectangle<int> cellRect(cx, cy, cellW(), cellH());
 
             bool shouldBeAlive = paddedRect.intersects(cellRect);
 
@@ -781,13 +826,22 @@ private:
                   "kCellH must equal kCellPadTop + kKnobSize + kLabelGap + kLabelH — see #720");
     static_assert(kKnobSize + kLabelGap + kLabelH + kCellPadTop <= kCellH,
                   "Label overflows cell: kCellH is too small for the combined knob + label height — see #720");
+
+    // ── Flat mode cell dimensions (submarine detail panel) ───────────────────
+    // Prototype: ~44px knobs in ~86px cells, 4 columns in the param zone.
+    static constexpr int kFlatCellW    = 86;
+    static constexpr int kFlatKnobSize = 44;
+    static constexpr int kFlatCellH    = kCellPadTop + kFlatKnobSize + kLabelGap + kLabelH; // = 2+44+4+14 = 64
+
     static constexpr int kPad = 8;
     static constexpr int kHeaderRowH = 32;        // height of each section header strip
-    static constexpr int kVisibilityMargin = 120; // px preload margin for smooth scrolling
+    static constexpr int kFlatHeaderH = 22;       // flat mode: minimal title, no chrome
+    static constexpr int kVisibilityMargin = 300; // px preload margin for smooth scrolling
 
     // ── Collapse state — which sections are currently collapsed ──────────────
     // All sections start expanded by default (set is empty at construction).
     std::set<Section> collapsedSections;
+    bool flatMode_ = false; // submarine: no section headers, no collapse
 
     // ── Construction-time state captured for lazy creation ───────────────────
     XOceanusProcessor& proc;

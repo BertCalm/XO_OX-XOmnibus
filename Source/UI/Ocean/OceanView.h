@@ -342,8 +342,13 @@ public:
             {
                 if (!detail_) return;
 
-                // Position over full window with padding
-                detail_->setBounds(getLocalBounds().reduced(50, 44));
+                // Position as compact band centered in the ocean area
+                {
+                    auto ocean = getOceanArea().reduced(40, 0);
+                    int panelH = juce::jmin(ocean.getHeight(), 280);
+                    int panelY = ocean.getY() + (ocean.getHeight() - panelH) / 2;
+                    detail_->setBounds(ocean.withHeight(panelH).withY(panelY));
+                }
                 detail_->loadSlot(s);
                 detail_->setVisible(true);
                 detail_->resized();
@@ -538,9 +543,8 @@ public:
     void initDetailPanel(XOceanusProcessor& proc)
     {
         detail_ = std::make_unique<EngineDetailPanel>(proc);
-        addAndMakeVisible(*detail_);
-        detail_->setVisible(false);
-
+        detail_->onBackClicked = [this]() { dismissDetailPanel(); };
+        addChildComponent(*detail_);  // hidden until double-click shows it
         reorderZStack();
         resized();
     }
@@ -789,6 +793,11 @@ public:
         // Called at end of every resized() to ensure drawers/overlays stay above
         // all dashboard components regardless of init order or visibility changes.
         reorderZStack();
+
+        // Nuclear safeguard: ensure detail panel is hidden when not actively showing.
+        // Something in the layout chain is re-showing it; this is the absolute last word.
+        if (detail_ && !detailShowing_)
+            detail_->setVisible(false);
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -808,9 +817,7 @@ public:
             }
             if (detailShowing_)
             {
-                detail_->setVisible(false);
-                dimOverlay_.setVisible(false);
-                detailShowing_ = false;
+                dismissDetailPanel();
                 return true;
             }
             if (viewState_ == ViewState::BrowserOpen)
@@ -1666,8 +1673,18 @@ private:
     // State machine transitions
     //==========================================================================
 
+    void dismissDetailPanel()
+    {
+        if (detail_)
+            detail_->setVisible(false);
+        dimOverlay_.setVisible(false);
+        detailShowing_ = false;
+    }
+
     void transitionToOrbital()
     {
+        dismissDetailPanel();
+
         viewState_    = ViewState::Orbital;
         selectedSlot_ = -1;
 
@@ -1686,6 +1703,8 @@ private:
             return;
         }
 
+        dismissDetailPanel();
+
         viewState_    = ViewState::ZoomIn;
         selectedSlot_ = slot;
 
@@ -1697,6 +1716,8 @@ private:
 
     void transitionToSplitTransform(int slot)
     {
+        dismissDetailPanel();
+
         viewState_    = ViewState::SplitTransform;
         selectedSlot_ = slot;
 
@@ -1708,6 +1729,8 @@ private:
 
     void transitionToBrowser()
     {
+        dismissDetailPanel();
+
         // Snapshot the pre-browser state so exitBrowser() can restore it exactly.
         preBrowserState_    = viewState_;
         preBrowserSlot_     = selectedSlot_;
@@ -1829,7 +1852,8 @@ private:
         lifesaver_.setBounds(getOceanArea());
 
         // Hide panels that belong to other states.
-        if (detail_ && !detailShowing_)  { detail_->setVisible(false); }
+        if (detail_ && !detailShowing_)
+            detail_->setVisible(false);
         if (sidebar_) { sidebar_->setVisible(false); }
         browser_.setVisible(false);
     }
@@ -1914,7 +1938,8 @@ private:
         if (macros_)
             macros_->setVisible(true);
 
-        if (detail_ && !detailShowing_)  { detail_->setVisible(false); }
+        if (detail_ && !detailShowing_)
+            detail_->setVisible(false);
         if (sidebar_) { sidebar_->setVisible(false); }
         browser_.setVisible(false);
         emptyStateLabel_.setVisible(false);  // ZoomIn always has an engine selected
@@ -2002,7 +2027,8 @@ private:
 
         nexus_.setVisible(false);
         if (macros_)  macros_->setVisible(false);
-        if (detail_ && !detailShowing_)  detail_->setVisible(false);
+        if (detail_ && !detailShowing_)
+            detail_->setVisible(false);
         if (sidebar_) sidebar_->setVisible(false);
         emptyStateLabel_.setVisible(false);  // browser has its own empty state
     }

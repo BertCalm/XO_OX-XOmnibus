@@ -778,9 +778,34 @@ public:
         }
         oceanView_.initStatusBar();
 
+        // Ocean View is the primary layout — hide ALL legacy Gallery-mode panels
+        // so they don't ghost behind the Ocean View.
+        detail.setVisible(false);
+        overview.setVisible(false);
+        removeChildComponent(&detail);
+        removeChildComponent(&overview);
+
         // Wire OceanView callbacks
         oceanView_.onEngineSelected = [this](int slot) { if (slot >= 0) selectSlot(slot); };
-        oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); /* detail panel loaded by OceanView */ };
+        oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); };
+        oceanView_.onEngineSelectedFromDrawer = [this](const juce::String& engineId)
+        {
+            // Prefer the selected slot. If it's already occupied, find the first empty slot.
+            // If all slots are full, replace the selected slot.
+            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots) ? selectedSlot : 0;
+            if (processor.getEngine(slot) != nullptr)
+            {
+                for (int i = 0; i < kNumPrimarySlots; ++i)
+                {
+                    if (processor.getEngine(i) == nullptr)
+                    {
+                        slot = i;
+                        break;
+                    }
+                }
+            }
+            processor.loadEngine(slot, engineId.toStdString());
+        };
         oceanView_.onPresetSelected = [this](int idx)
         {
             // Load preset by index from the library snapshot.
