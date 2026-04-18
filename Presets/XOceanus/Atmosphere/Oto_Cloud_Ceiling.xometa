@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Cloud Ceiling",
+  "mood": "Atmosphere",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng ascending into overcast sky — moderate brightness with a hint of filter resonance that shimmers on long tones. The cloud ceiling is high; there is room to float.",
+  "tier": "standard",
+  "tags": ["atmosphere", "sheng", "ambient", "floating", "overcast"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.1,
+    "SPACE": 0.68
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.32,
+    "movement": 0.18,
+    "density": 0.42,
+    "space": 0.72,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.42,
+      "oto_chiff": 0.1,
+      "oto_detune": 0.06,
+      "oto_buzz": 0.02,
+      "oto_pressure": 0.1,
+      "oto_crosstalk": 0.12,
+      "oto_filterCutoff": 7800.0,
+      "oto_filterRes": 0.18,
+      "oto_attack": 0.35,
+      "oto_decay": 0.9,
+      "oto_sustain": 0.9,
+      "oto_release": 2.2,
+      "oto_lfo1Rate": 0.12,
+      "oto_lfo1Depth": 0.06,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.45,
+      "oto_macroB": 0.2,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.68
+    }
+  },
+  "tempo": null
+}

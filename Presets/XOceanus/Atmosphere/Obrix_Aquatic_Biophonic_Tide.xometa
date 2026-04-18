@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX through Aquatic Chain with Tide as the primary rhythmic feature. Wavetable source (src1Type=8) with slow scan creates a continuously evolving timbral base. Tide in Both mode (tremolo + AutoFilter simultaneously) at 0.22 Hz with sine shape creates a breathing rhythm that feels like the tidal cycle of a reef — the filter opens as the water rises, the amplitude swells, both together. Fathom Character 0.28 (slight dark). Drift 3 voices. Reef at size 0.5. The OBRIX Biophonic systems (Harmonic Field, Brick Ecology) respond to the rhythmic envelope of Tide, creating a synthesis that responds to its own spatial environment.",
+  "description": "OBRIX through Aquatic Chain with Tide as the primary rhythmic feature. Wavetable source (src1Type=8) with slow scan creates a continuously evolving timbral base. Tide in Both mode (tremolo + AutoFilter simultaneously) at 0.22 Hz with sine shape creates a breathing rhythm that feels like the tidal cycle of a reef \u2014 the filter opens as the water rises, the amplitude swells, both together. Fathom Character 0.28 (slight dark). Drift 3 voices. Reef at size 0.5. The OBRIX Biophonic systems (Harmonic Field, Brick Ecology) respond to the rhythmic envelope of Tide, creating a synthesis that responds to its own spatial environment.",
   "tags": [
     "obrix",
     "wavetable",
@@ -99,10 +99,7 @@
       "obrix_driftDepth": 0.2,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.35,
-      "obrix_air": 0.52,
-      "obrix_fltEnvAmt": 0.33,
-      "obrix_lfo1Rate": 0.022,
-      "obrix_lfo1Depth": 0.175
+      "obrix_air": 0.52
     }
   },
   "coupling": {

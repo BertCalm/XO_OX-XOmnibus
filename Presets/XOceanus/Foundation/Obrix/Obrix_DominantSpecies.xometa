@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Saw src1 and Sine src2 at equal mix (srcMix=0.5) with competition ecology active (competitionStrength=0.7). When both voices are active, resources compete — one will begin to suppress the other based on amplitude and harmonic content. The Saw, being richer in harmonics, tends to dominate. Low-note attacks hear the competition as a subtle dynamic push-pull between sources.",
+  "description": "Saw src1 and Sine src2 at equal mix (srcMix=0.5) with competition ecology active (competitionStrength=0.7). When both voices are active, resources compete \u2014 one will begin to suppress the other based on amplitude and harmonic content. The Saw, being richer in harmonics, tends to dominate. Low-note attacks hear the competition as a subtle dynamic push-pull between sources.",
   "tags": [
     "obrix",
     "foundation",
@@ -124,10 +124,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.508,
-      "obrix_lfo1Rate": 0.158,
-      "obrix_lfo1Depth": 0.231
+      "obrix_fxMode": 0
     }
   }
 }

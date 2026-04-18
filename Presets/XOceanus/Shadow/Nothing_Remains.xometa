@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Nothing Remains But The Tide",
+  "mood": "Shadow",
+  "engines": ["Olvido"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Total erasure. Depth at maximum, erosion at 80ms, current surging forward at 0.8 — notes arrive and are immediately consumed by the tide. Mono mode with full memory link ensures nothing escapes; one voice surrenders everything to the next.",
+  "tags": ["extreme", "shadow", "erasure", "mono", "dark", "abyssal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.10,
+    "warmth": 0.40,
+    "movement": 0.15,
+    "density": 0.25,
+    "space": 0.70,
+    "aggression": 0.30
+  },
+  "parameters": {
+    "Olvido": {
+      "olv_drift_type": 0,
+      "olv_drift_asym": 0.5,
+      "olv_foam": 0.4,
+      "olv_fm_ratio": 2.0,
+      "olv_fm_depth": 0.3,
+      "olv_depth": 1.0,
+      "olv_current": 0.8,
+      "olv_erosion": 0.08,
+      "olv_shoreline": 0.1,
+      "olv_flotsam": 0.05,
+      "olv_abyss_hold": 1.0,
+      "olv_filter_cutoff": 2000.0,
+      "olv_filter_reso": 0.2,
+      "olv_filter_drive": 0.3,
+      "olv_filter_env": 0.3,
+      "olv_reverb_size": 0.8,
+      "olv_reverb_mix": 0.6,
+      "olv_patina": 0.45,
+      "olv_lfo_rate": 0.05,
+      "olv_lfo_shape": 0,
+      "olv_lfo_depth": 0.2,
+      "olv_env_attack": 0.001,
+      "olv_env_decay": 0.05,
+      "olv_env_sustain": 0.1,
+      "olv_env_release": 5.0,
+      "olv_voice_mode": 1,
+      "olv_memory_link": 1.0,
+      "olv_anchor": 0,
+      "olv_tempo_sync": 0,
+      "olv_macro1": 0.5,
+      "olv_macro2": 0.2,
+      "olv_macro3": 0.0,
+      "olv_macro4": 0.7
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.7
+  }
+}

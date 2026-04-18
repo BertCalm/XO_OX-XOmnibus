@@ -85,7 +85,7 @@ public:
     static constexpr int   kParticlesPerRoute    = 6;       ///< particles per route (RouteState uses 8 slots)
     static constexpr float kParticleSpeed        = 0.15f;   ///< fraction of path per second
     static constexpr float kParticleDiameter     = 4.0f;    ///< px
-    static constexpr float kControlBowFactor     = 0.15f;   ///< bow = chordLength * factor, clamped [20,80]
+    static constexpr float kControlBowFactor     = 0.15f;   ///< bow = chordLength * factor, clamped [20,28]
     static constexpr int   kTimerHz              = 30;      ///< timer frequency
 
     // Coupling Evolution constants
@@ -160,6 +160,10 @@ private:
     /** Last known mouse position in local coordinates — used for tooltip placement. */
     juce::Point<float> lastMousePos_;
 
+    /** Bézier midpoint (t=0.5) for each active route — updated each paint() call.
+        Used for knot hit-testing in getKnotAtPosition() and mouseDown/mouseDoubleClick. */
+    std::array<juce::Point<float>, 32> knotPositions_ {};  // max 32 routes
+
 public:
     //==========================================================================
     CouplingSubstrate()
@@ -184,6 +188,22 @@ public:
         @param slot   Engine slot index, 0 – (kMaxSlots-1).
         @param center Centre point in the component's local coordinate space.
     */
+    /// Show a dashed chain-in-progress line from a slot to the mouse cursor.
+    void setChainInProgress(bool active, int startSlot = -1,
+                            juce::Point<float> mousePos = {})
+    {
+        chainInProgress_ = active;
+        chainStartSlot_ = startSlot;
+        chainMousePos_ = mousePos;
+        repaint();
+    }
+
+    void setChainMousePos(juce::Point<float> pos)
+    {
+        chainMousePos_ = pos;
+        if (chainInProgress_) repaint();
+    }
+
     void setCreatureCenter(int slot, juce::Point<float> center)
     {
         if (slot < 0 || slot >= kMaxSlots)
@@ -195,6 +215,15 @@ public:
         centers_[slot] = center;
         rebuildPaths();
         repaint();
+    }
+
+    /** Store an updated centre without rebuilding paths or repainting.
+        The substrate's own 30 Hz timer will pick it up on the next tick.
+        Use this during drag to avoid rebuilding curves at mouse rate. */
+    void setCreatureCenterDeferred(int slot, juce::Point<float> center)
+    {
+        if (slot >= 0 && slot < kMaxSlots)
+            centers_[slot] = center;
     }
 
     //==========================================================================
@@ -369,14 +398,20 @@ public:
 
     //==========================================================================
     /**
-        Returns true only when the cursor is within 8 px of a live Bézier thread.
-        This allows clicks on threads to register (for future interaction) while
-        all other cursor positions fall through to the creature layer underneath.
+        Returns true only when the cursor is within 8 px of a live Bézier thread
+        or within 14 px of a coupling knot.
+        This allows clicks on threads/knots to register while all other cursor
+        positions fall through to the creature layer underneath.
     */
     bool hitTest(int x, int y) override
     {
         const float px = static_cast<float>(x);
         const float py = static_cast<float>(y);
+
+        // Check knots first (they're on top)
+        if (getKnotAtPosition({ px, py }) >= 0)
+            return true;
+
         for (const auto& rs : routeStates_)
         {
             if (rs.isFading_) continue;
@@ -388,6 +423,45 @@ public:
         }
         return false;
     }
+
+    //==========================================================================
+    /** Returns the index of the route whose knot is within 14 px of pos, or -1. */
+    int getKnotAtPosition(juce::Point<float> pos) const
+    {
+        for (int i = 0; i < static_cast<int>(routeStates_.size()); ++i)
+        {
+            if (routeStates_[static_cast<size_t>(i)].isFading_) continue;
+            if (i >= static_cast<int>(knotPositions_.size())) break;
+            const auto& kp = knotPositions_[static_cast<size_t>(i)];
+            if (kp.getDistanceFrom(pos) < 14.0f)
+                return i;
+        }
+        return -1;
+    }
+
+    //==========================================================================
+    void mouseDown(const juce::MouseEvent& e) override
+    {
+        // Right-click on knot → context menu
+        if (e.mods.isRightButtonDown())
+        {
+            int knotIdx = getKnotAtPosition(e.position);
+            if (knotIdx >= 0 && onKnotRightClicked)
+                onKnotRightClicked(knotIdx, e.getScreenPosition());
+        }
+    }
+
+    void mouseDoubleClick(const juce::MouseEvent& e) override
+    {
+        int knotIdx = getKnotAtPosition(e.position);
+        if (knotIdx >= 0 && onKnotDoubleClicked)
+            onKnotDoubleClicked(knotIdx);
+    }
+
+    //==========================================================================
+    // Public callbacks — wire these in OceanView.
+    std::function<void(int routeIndex)> onKnotDoubleClicked;
+    std::function<void(int routeIndex, juce::Point<int> screenPos)> onKnotRightClicked;
 
     //==========================================================================
     void mouseMove(const juce::MouseEvent& e) override
@@ -428,13 +502,14 @@ public:
     //==========================================================================
     void paint(juce::Graphics& g) override
     {
-        if (routeStates_.empty())
+        if (routeStates_.empty() && !chainInProgress_)
             return;
 
         const juce::Colour xoGold = juce::Colour(GalleryColors::xoGold);
 
-        for (const auto& rs : routeStates_)
+        for (int routeIdx = 0; routeIdx < static_cast<int>(routeStates_.size()); ++routeIdx)
         {
+            const auto& rs = routeStates_[static_cast<size_t>(routeIdx)];
             const juce::Colour typeColour = colourForType(rs.route.type);
 
             // ── Coupling Evolution: age-modulated properties ───────────────
@@ -484,6 +559,24 @@ public:
                 g.strokePath(rs.path, coreStroke);
             }
 
+            // 4b. Static chain-link dots (FIX 19) — decorative dots along the chain.
+            //     Skipped for fading routes to avoid visual noise during fade-out.
+            if (!rs.isFading_ && !rs.path.isEmpty())
+            {
+                static constexpr float kLinkDotTs[] = { 0.12f, 0.26f, 0.40f, 0.54f, 0.68f, 0.82f };
+                const float pathLen = rs.path.getLength();
+                if (pathLen > 0.0f)
+                {
+                    for (float lt : kLinkDotTs)
+                    {
+                        if (std::abs(lt - 0.5f) < 0.1f) continue; // skip knot zone
+                        const auto dotPt = rs.path.getPointAlongPath(lt * pathLen);
+                        g.setColour(baseColour.withAlpha(alpha * 0.45f));
+                        g.fillEllipse(dotPt.x - 2.5f, dotPt.y - 2.5f, 5.0f, 5.0f);
+                    }
+                }
+            }
+
             // 5. Particles — small filled circles positioned along the Bézier.
             //    Skip particles for fading routes to avoid visual noise during fade.
             if (!rs.isFading_)
@@ -516,11 +609,65 @@ public:
                     // Quadratic Bézier: B(t) = (1-t)²·P₀ + 2(1-t)t·P₁ + t²·P₂
                     const float px  = it * it * p0.x + 2.0f * it * t * p1.x + t * t * p2.x;
                     const float py  = it * it * p0.y + 2.0f * it * t * p1.y + t * t * p2.y;
-                    const float r   = kParticleDiameter * 0.5f;
-                    g.fillEllipse(px - r, py - r, kParticleDiameter, kParticleDiameter);
+                    // FIX 20: depth-scaled particle size + sin-fade alpha
+                    const float particleDiam = 2.0f + amount * 2.0f;
+                    const float sinFade      = std::sin(t * juce::MathConstants<float>::pi);
+                    const float r   = particleDiam * 0.5f;
+                    g.setColour(baseColour.withAlpha(particleAlpha * sinFade));
+                    g.fillEllipse(px - r, py - r, particleDiam, particleDiam);
                 }
             }
-        }
+
+            // ── COUPLING KNOT ── pulsing circle at Bézier midpoint (t=0.5)
+            // Double-click to open coupling config popup
+            {
+                const int knotSrc = rs.route.sourceSlot;
+                const int knotDst = rs.route.destSlot;
+                const bool knotSrcValid = (knotSrc >= 0 && knotSrc < kMaxSlots);
+                const bool knotDstValid = (knotDst >= 0 && knotDst < kMaxSlots);
+
+                if (knotSrcValid && knotDstValid)
+                {
+                const float t = 0.5f;
+                const float it = 1.0f - t;
+                const auto& p0 = centers_[static_cast<size_t>(knotSrc)];
+                const auto& p2 = centers_[static_cast<size_t>(knotDst)];
+                const auto& p1 = rs.control;
+
+                // Skip if endpoints are at sentinel positions
+                if (p0.x >= 0 && p2.x >= 0)
+                {
+                    const float kx = it*it*p0.x + 2.0f*it*t*p1.x + t*t*p2.x;
+                    const float ky = it*it*p0.y + 2.0f*it*t*p1.y + t*t*p2.y;
+
+                    const float knotPulse = 0.7f + 0.3f * std::sin(rs.pulsePhase * 2.0f);
+
+                    // Store knot position for hit testing
+                    if (routeIdx < static_cast<int>(knotPositions_.size()))
+                        knotPositions_[static_cast<size_t>(routeIdx)] = { kx, ky };
+
+                    // Outer glow
+                    g.setColour(baseColour.withAlpha(0.06f * knotPulse));
+                    g.fillEllipse(kx - 10.0f, ky - 10.0f, 20.0f, 20.0f);
+
+                    // Knot body
+                    juce::ColourGradient knotGrad(
+                        baseColour.withAlpha(0.35f * knotPulse), kx - 1, ky - 1,
+                        baseColour.withAlpha(0.12f * knotPulse), kx + 7, ky + 7, true);
+                    g.setGradientFill(knotGrad);
+                    g.fillEllipse(kx - 7.0f, ky - 7.0f, 14.0f, 14.0f);
+
+                    // Knot ring
+                    g.setColour(baseColour.withAlpha(0.5f * knotPulse));
+                    g.drawEllipse(kx - 7.0f, ky - 7.0f, 14.0f, 14.0f, 1.5f);
+
+                    // Inner dot
+                    g.setColour(juce::Colour(120, 220, 210).withAlpha(0.6f * knotPulse));
+                    g.fillEllipse(kx - 2.5f, ky - 2.5f, 5.0f, 5.0f);
+                }
+                } // if knotSrcValid && knotDstValid
+            } // knot drawing block
+        } // for routeIdx
 
         // ── Hover tooltip ────────────────────────────────────────────────────
         if (hoveredRouteIdx_ >= 0 && hoveredRouteIdx_ < static_cast<int>(routeStates_.size()))
@@ -560,6 +707,45 @@ public:
             g.setColour(juce::Colour(GalleryColors::Ocean::foam));
             g.drawText(tip, tipBounds.toNearestInt(), juce::Justification::centred, false);
         }
+
+        // ── Chain-in-progress curved dashed line ───────────────────────────
+        if (chainInProgress_ && chainStartSlot_ >= 0 && chainStartSlot_ < kMaxSlots)
+        {
+            const auto startPt = centers_[static_cast<size_t>(chainStartSlot_)];
+            if (startPt.x >= 0.0f)
+            {
+                // Anchor at orbit edge, curve toward the mouse
+                const float dx = chainMousePos_.x - startPt.x;
+                const float dy = chainMousePos_.y - startPt.y;
+                const float len = std::sqrt(dx * dx + dy * dy);
+                constexpr float kR = 36.0f;
+
+                juce::Point<float> edgeStart = startPt;
+                if (len > kR)
+                {
+                    edgeStart = { startPt.x + (dx / len) * kR,
+                                  startPt.y + (dy / len) * kR };
+                }
+
+                // Catenary droop — hangs downward like a cable in water
+                const float droop = std::clamp(len * 0.15f, 8.0f, 50.0f);
+                juce::Point<float> ctrl = {
+                    (edgeStart.x + chainMousePos_.x) * 0.5f,
+                    (edgeStart.y + chainMousePos_.y) * 0.5f + droop
+                };
+
+                juce::Path dashPath;
+                dashPath.startNewSubPath(edgeStart);
+                dashPath.quadraticTo(ctrl, chainMousePos_);
+
+                juce::Path dashedPath;
+                const float dashLengths[] = { 8.0f, 5.0f };
+                juce::PathStrokeType(2.0f).createDashedStroke(dashedPath, dashPath,
+                    dashLengths, 2);
+                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.55f));
+                g.fillPath(dashedPath);
+            }
+        }
     }
 
 private:
@@ -568,6 +754,22 @@ private:
     void timerCallback() override
     {
         const bool reducedMotion = A11y::prefersReducedMotion();
+
+        // Poll mouse position during chain-in-progress for smooth line tracking.
+        // mouseMove on OceanView doesn't fire when cursor is over child components.
+        if (chainInProgress_)
+        {
+            auto mouseScreenPos = juce::Desktop::getInstance()
+                                      .getMainMouseSource().getScreenPosition();
+            chainMousePos_ = getLocalPoint(nullptr, mouseScreenPos).toFloat();
+            repaint();
+        }
+
+        // Advance wobble time for animated chain bow (FIX 18)
+        wobbleTime_ += 1.0f / static_cast<float>(kTimerHz);
+        // Rebuild paths each tick so the bow wobble is reflected in the drawn curves.
+        if (!reducedMotion && !routeStates_.empty())
+            rebuildPaths();
 
         if (!reducedMotion)
         {
@@ -682,7 +884,10 @@ private:
                 continue;
             }
 
-            rs.path    = buildBezierPath(from, to, rs.bowSign, rs.control);
+            // FIX 18: wobble DISABLED for diagnostic — isolating jumpiness source.
+            const float wobble = 0.0f;
+            juce::ignoreUnused(wobbleTime_);
+            rs.path    = buildBezierPath(from, to, rs.bowSign, rs.control, wobble);
         }
     }
 
@@ -704,40 +909,54 @@ private:
     static juce::Path buildBezierPath(juce::Point<float>  from,
                                       juce::Point<float>  to,
                                       float               bowSign,
-                                      juce::Point<float>& controlOut)
+                                      juce::Point<float>& controlOut,
+                                      float               wobbleOffset = 0.0f)
     {
-        // Midpoint of the chord.
-        const float mx = (from.x + to.x) * 0.5f;
-        const float my = (from.y + to.y) * 0.5f;
-
-        // Perpendicular direction (rotate chord vector 90°, then normalise).
+        // Direction vector and length between centers.
         const float dx = to.x - from.x;
         const float dy = to.y - from.y;
         const float len = std::sqrt(dx * dx + dy * dy);
 
         juce::Point<float> control;
+        juce::Point<float> edgeFrom = from;
+        juce::Point<float> edgeTo   = to;
+
         if (len < 1.0f)
         {
-            // Degenerate case: source and dest are the same point.
-            control = { mx, my };
+            control = { from.x, from.y };
         }
         else
         {
-            // Perpendicular unit vector: (-dy/len, dx/len)
-            const float perpX = -dy / len;
-            const float perpY =  dx / len;
-            // Bow is proportional to chord length, clamped to [20, 80] px so
-            // short connections get a visible arc and long ones don't over-curve.
-            const float bow = std::clamp(len * kControlBowFactor, 20.0f, 80.0f);
-            control = { mx + perpX * bow * bowSign,
-                        my + perpY * bow * bowSign };
+            // Unit direction vector along the chord.
+            const float ux = dx / len;
+            const float uy = dy / len;
+
+            // Anchor at orbit perimeters (inset by buoy radius ~36px).
+            constexpr float kBuoyRadius = 36.0f;
+            edgeFrom = { from.x + ux * kBuoyRadius, from.y + uy * kBuoyRadius };
+            edgeTo   = { to.x   - ux * kBuoyRadius, to.y   - uy * kBuoyRadius };
+
+            // Midpoint of the edge-to-edge segment.
+            const float mx = (edgeFrom.x + edgeTo.x) * 0.5f;
+            const float my = (edgeFrom.y + edgeTo.y) * 0.5f;
+
+            // Catenary droop — always hangs downward like an underwater cable.
+            // Droop proportional to horizontal distance (more sag on longer spans).
+            const float edgeLen = std::max(1.0f, len - kBuoyRadius * 2.0f);
+            const float droop = std::clamp(edgeLen * 0.20f, 12.0f, 70.0f)
+                              + wobbleOffset;
+            // Perpendicular sway (subtle lateral offset so overlapping routes separate)
+            const float perpX = -uy;
+            const float sway = bowSign * std::clamp(edgeLen * 0.04f, 4.0f, 12.0f);
+            control = { mx + perpX * sway,
+                        my + droop }; // droop is always positive = downward
         }
 
         controlOut = control;
 
         juce::Path path;
-        path.startNewSubPath(from);
-        path.quadraticTo(control, to);
+        path.startNewSubPath(edgeFrom);
+        path.quadraticTo(control, edgeTo);
         return path;
     }
 
@@ -753,6 +972,14 @@ private:
         // branch of the switch inside CouplingTypeColors::forType().
         return CouplingTypeColors::forType(static_cast<CouplingType>(typeInt));
     }
+
+    // Chain-in-progress state
+    bool                   chainInProgress_ = false;
+    int                    chainStartSlot_  = -1;
+    juce::Point<float>     chainMousePos_;
+
+    // Wobble time for animated chain bow (FIX 18)
+    float wobbleTime_ = 0.0f;
 
     //==========================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingSubstrate)

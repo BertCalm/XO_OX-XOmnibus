@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "3 unison voices at 5 cents detune — fat without excess. Chorus for stereo width. Scripture Verse 5: fewer voices, tighter spread, more coherent phase.",
+  "description": "3 unison voices at 5 cents detune \u2014 fat without excess. Chorus for stereo width. Scripture Verse 5: fewer voices, tighter spread, more coherent phase.",
   "tags": [
     "obrix",
     "supersaw",
@@ -29,15 +29,15 @@
   ],
   "tier": "awakening",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "scripture": [
       "Verse 5: Fewer Voices, Tighter Spread, More Coherent Phase"
     ],
     "revelation": null,
     "god": null,
-    "flock_note": "The Bone felt 3 unison voices at 5 cents as a single wall — the chorus adds width without destroying phase coherence.",
-    "diagnosis": "Brick Supersaw demonstrates OBRIX's unison and dual-saw architecture for lead performance — fat enough to carry a track, controlled enough to sit in a mix."
+    "flock_note": "The Bone felt 3 unison voices at 5 cents as a single wall \u2014 the chorus adds width without destroying phase coherence.",
+    "diagnosis": "Brick Supersaw demonstrates OBRIX's unison and dual-saw architecture for lead performance \u2014 fat enough to carry a track, controlled enough to sit in a mix."
   },
   "dna": {
     "brightness": 0.7,
@@ -113,10 +113,7 @@
       "obrix_driftDepth": 0.1,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.0,
-      "obrix_air": 0.6,
-      "obrix_fltEnvAmt": 0.596,
-      "obrix_lfo1Rate": 0.5,
-      "obrix_lfo1Depth": 0.336
+      "obrix_air": 0.6
     }
   },
   "macros": {

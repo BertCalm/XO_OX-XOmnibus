@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX",
   "version": "1.0.0",
-  "description": "Triangle wave — the gentlest oscillator. Almost a sine with subtle odd harmonics. Perfect for flutes and soft leads.",
+  "description": "Triangle wave \u2014 the gentlest oscillator. Almost a sine with subtle odd harmonics. Perfect for flutes and soft leads.",
   "tags": [
     "lesson",
     "triangle",
@@ -96,10 +96,7 @@
       "obrix_driftDepth": 0.0,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.0,
-      "obrix_air": 0.5,
-      "obrix_fltEnvAmt": 0.412,
-      "obrix_lfo1Rate": 0.125,
-      "obrix_lfo1Depth": 0.286
+      "obrix_air": 0.5
     }
   },
   "category": "lesson",

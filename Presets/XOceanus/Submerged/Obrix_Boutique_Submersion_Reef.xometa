@@ -7,7 +7,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "OBRIX through Boutique Chain emphasizing Submersion Engine at maximum configuration. OBRIX with heavy filter emphasis (proc1 and proc2 both low-passed, proc3 as bandpass) creates a filtered, resonant base. Submersion at 8 stages and LFODepth 0.80 applies the maximum all-pass cascade, wrapping the OBRIX brick architecture in deep phase rotation. LoopFB 0.55 builds a feedback-sustained tail. LFORate 0.06 Hz — extremely slow phase rotation. Anomaly TextureBlend 0.45. Archive Chance 0.08. Cathedral DarkMix 0.70, Decay 0.75. The reef is fully submerged in this preset — only the phase structure of the brick architecture remains audible through layers of all-pass phase water.",
+  "description": "OBRIX through Boutique Chain emphasizing Submersion Engine at maximum configuration. OBRIX with heavy filter emphasis (proc1 and proc2 both low-passed, proc3 as bandpass) creates a filtered, resonant base. Submersion at 8 stages and LFODepth 0.80 applies the maximum all-pass cascade, wrapping the OBRIX brick architecture in deep phase rotation. LoopFB 0.55 builds a feedback-sustained tail. LFORate 0.06 Hz \u2014 extremely slow phase rotation. Anomaly TextureBlend 0.45. Archive Chance 0.08. Cathedral DarkMix 0.70, Decay 0.75. The reef is fully submerged in this preset \u2014 only the phase structure of the brick architecture remains audible through layers of all-pass phase water.",
   "tags": [
     "obrix",
     "boutique-chain",
@@ -99,10 +99,7 @@
       "obrix_driftDepth": 0.15,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.3,
-      "obrix_air": 0.35,
-      "obrix_fltEnvAmt": 0.446,
-      "obrix_lfo1Rate": 0.061,
-      "obrix_lfo1Depth": 0.266
+      "obrix_air": 0.35
     }
   },
   "coupling": {

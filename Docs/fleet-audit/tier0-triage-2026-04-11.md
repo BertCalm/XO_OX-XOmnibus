@@ -49,31 +49,47 @@
 
 ---
 
-## REMAINING TIER 0 (Session 2 — Shaper DSP fixes)
+## RESOLVED — Session 2 (commit `c86e37a5`)
 
-### OPEN-001: ObserveShaper EQ band accumulation broken
-- **File:** `Source/Shapers/Observe/ObserveShaper.h`
-- **Finding:** Only band 6 survives — earlier bands are overwritten
-- **Priority:** P0 — fundamentally broken DSP
-- **Model:** Sonnet
+### FIX-004: ObserveShaper mono RMS energy doubling in coupling output
+- **File:** `Source/Shapers/Observe/ObserveShaper.h:280`
+- **Finding:** Mono path computed `bandL*bandL + bandL*bandL` (6dB hot). Real bug.
+- **Fix:** Changed to `bandL*bandL + 0.0f` for mono — matches stereo path convention
+- **Commit:** `c86e37a5`
+- **Priority:** P1 — coupling output was 2× too loud for mono sources
 
-### OPEN-002: OxideShaper Lorenz attractor NaN risk
+### FIX-005: OxideShaper Lorenz attractor NaN propagation
 - **File:** `Source/Shapers/Oxide/OxideShaper.h`
-- **Finding:** No NaN guard on chaotic attractor output
+- **Finding:** No NaN guard on chaotic attractor output; NaN could propagate to coupling outputs
+- **Fix:** Added NaN guard after attractor output
+- **Commit:** `c86e37a5`
 - **Priority:** P0 — NaN propagation kills audio
-- **Model:** Sonnet
 
-### OPEN-003: OxideShaper tape mode HF rolloff is no-op
+### FIX-006: OxideShaper harmonic polynomial exponents
 - **File:** `Source/Shapers/Oxide/OxideShaper.h`
-- **Finding:** Tape mode high-frequency rolloff code exists but produces no effect
-- **Priority:** P1 — dead parameter (D004 violation)
-- **Model:** Sonnet
+- **Finding:** Harmonic injection polynomials were x^5/x^6/x^8 (extra `satL` multiplier); documented as x^4/x^5/x^7
+- **Fix:** Corrected exponents to match design document
+- **Commit:** `c86e37a5`
+- **Priority:** P1 — harmonic character was wrong
 
-### OPEN-004: ObserveShaper iron emulation mono-only
-- **File:** `Source/Shapers/Observe/ObserveShaper.h`
-- **Finding:** Iron (transformer) emulation processes only left channel
-- **Priority:** P1 — stereo image collapse
-- **Model:** Sonnet
+---
+
+## FALSE POSITIVES — Session 2 (verified by `c86e37a5`)
+
+### FP-004: ObserveShaper EQ band accumulation (#1068)
+- **Original finding:** Only band 6 survives — earlier bands are overwritten
+- **Reality:** Serial EQ topology is correct by design — `sampleL = bandL` chains bands in series. Band 6 output IS the signal after passing through all 6 bands. Audit agent misidentified serial chaining as overwrite.
+- **Action:** None.
+
+### FP-005: OxideShaper tape mode HF rolloff is no-op (#1070)
+- **Original finding:** Tape mode HF rolloff code exists but produces no effect
+- **Reality:** Working one-pole LP filter with independent L/R state. Coefficient correctly computed from `exp(-2πf/sr)` where f ranges 6–12kHz based on drive. Fully functional.
+- **Action:** None.
+
+### FP-006: ObserveShaper iron emulation mono-only (#1071)
+- **Original finding:** Iron emulation processes only left channel
+- **Reality:** Both L and R channels are processed with independent `ironStateXR`/`ironStateYR` state variables (lines 267–270). R path was present and correct in original code.
+- **Action:** None.
 
 ---
 
@@ -96,5 +112,11 @@
 
 ---
 
-*Ringleader Authority | TIER 0 Triage Session*
+## TIER 0 STATUS: CLEAR
+
+All P0 and P1 findings resolved or verified as false positives.
+6 real fixes across 2 sessions. 6 false positives documented.
+No launch blockers remain in the FATHOM x QDD Level 5 certification scope.
+
+*Ringleader Authority | TIER 0 Triage — CLOSED*
 *2026-04-11*

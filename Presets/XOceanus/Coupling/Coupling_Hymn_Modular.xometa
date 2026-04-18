@@ -36,9 +36,6 @@
   "parameters": {
     "Obrix": {
       "obrix_src1Type": 0.55,
-      "obrix_filterEnvAmt": 0.52,
-      "obrix_lfo1Rate": 0.13,
-      "obrix_lfo1Depth": 0.28,
       "obrix_macroCharacter": 0.52,
       "obrix_macroMovement": 0.52,
       "obrix_macroCoupling": 0.62,

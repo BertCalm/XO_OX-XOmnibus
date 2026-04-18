@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Reed Cell Vibration",
+  "mood": "Organic",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The physical reed cell of a musette accordion vibrating at its natural frequency. The buzz is the sound of metal in motion — a cellular, biological oscillation at the edge of control.",
+  "tier": "standard",
+  "tags": ["organic", "musette", "french", "reed", "vibration"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.12,
+    "SPACE": 0.38
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.72,
+    "movement": 0.48,
+    "density": 0.58,
+    "space": 0.38,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 2,
+      "oct_cluster": 0.55,
+      "oct_chiff": 0.25,
+      "oct_detune": 0.52,
+      "oct_buzz": 0.65,
+      "oct_pressure": 0.38,
+      "oct_crosstalk": 0.28,
+      "oct_brightness": 0.52,
+      "oct_registration": 0.6,
+      "oct_roomDepth": 0.38,
+      "oct_attack": 0.03,
+      "oct_decay": 0.25,
+      "oct_sustain": 1.0,
+      "oct_release": 0.7,
+      "oct_filterEnvAmount": 0.18,
+      "oct_bendRange": 2,
+      "oct_macroCharacter": 0.58,
+      "oct_macroMovement": 0.48,
+      "oct_macroCoupling": 0.12,
+      "oct_macroSpace": 0.38,
+      "oct_lfo1Rate": 1.2,
+      "oct_lfo1Depth": 0.28,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.25,
+      "oct_lfo2Depth": 0.15,
+      "oct_lfo2Shape": 1,
+      "oct_competition": 0.1
+    }
+  },
+  "tempo": null
+}

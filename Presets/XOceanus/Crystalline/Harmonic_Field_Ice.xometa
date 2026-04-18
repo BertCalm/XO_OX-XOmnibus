@@ -36,10 +36,7 @@
       "obrix_macroCharacter": 0.56,
       "obrix_macroMovement": 0.42,
       "obrix_macroCoupling": 0.2,
-      "obrix_macroSpace": 0.55,
-      "obrix_filterEnvAmt": 0.46,
-      "obrix_lfo1Rate": 0.09,
-      "obrix_lfo1Depth": 0.21
+      "obrix_macroSpace": 0.55
     }
   },
   "coupling": {

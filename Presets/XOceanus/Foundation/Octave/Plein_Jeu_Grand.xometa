@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Plein Jeu Grand",
+  "mood": "Foundation",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The full French plein jeu chorus blazes across the upper work. Mixtures cascade through a bright Cavaillé-Coll plenum, every partial locked in harmonic order.",
+  "tier": "standard",
+  "tags": ["foundation", "cavaille-coll", "romantic", "plenum", "mixture"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.9,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.15,
+    "SPACE": 0.8
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.6,
+    "movement": 0.1,
+    "density": 0.95,
+    "space": 0.8,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.9,
+      "oct_chiff": 0.1,
+      "oct_detune": 0.03,
+      "oct_buzz": 0.04,
+      "oct_pressure": 0.18,
+      "oct_crosstalk": 0.35,
+      "oct_brightness": 0.75,
+      "oct_registration": 0.95,
+      "oct_roomDepth": 0.82,
+      "oct_attack": 0.06,
+      "oct_decay": 0.6,
+      "oct_sustain": 1.0,
+      "oct_release": 1.8,
+      "oct_filterEnvAmount": 0.08,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.9,
+      "oct_macroMovement": 0.1,
+      "oct_macroCoupling": 0.15,
+      "oct_macroSpace": 0.8,
+      "oct_lfo1Rate": 0.05,
+      "oct_lfo1Depth": 0.05,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.2,
+      "oct_lfo2Depth": 0.03,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.1
+    }
+  },
+  "tempo": null
+}

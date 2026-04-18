@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Chef Adversarial Core",
+  "mood": "Coupling",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum competition and coupling — Octave asserts its classical authority over the Chef Quad engines. Harmonic suppression is at full, imposing the organ's structural discipline on any partner.",
+  "tier": "standard",
+  "tags": ["coupling", "cavaille-coll", "romantic", "adversarial", "chef-quad"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.95,
+    "SPACE": 0.72
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "High",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.78,
+    "movement": 0.15,
+    "density": 0.92,
+    "space": 0.72,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.85,
+      "oct_chiff": 0.07,
+      "oct_detune": 0.04,
+      "oct_buzz": 0.06,
+      "oct_pressure": 0.22,
+      "oct_crosstalk": 0.35,
+      "oct_brightness": 0.45,
+      "oct_registration": 0.92,
+      "oct_roomDepth": 0.72,
+      "oct_attack": 0.1,
+      "oct_decay": 0.9,
+      "oct_sustain": 1.0,
+      "oct_release": 2.0,
+      "oct_filterEnvAmount": 0.1,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.85,
+      "oct_macroMovement": 0.15,
+      "oct_macroCoupling": 0.95,
+      "oct_macroSpace": 0.72,
+      "oct_lfo1Rate": 0.06,
+      "oct_lfo1Depth": 0.08,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.2,
+      "oct_lfo2Depth": 0.05,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.95
+    }
+  },
+  "tempo": null
+}

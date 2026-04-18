@@ -2,12 +2,26 @@
   "schema_version": 1,
   "name": "Reef FM War",
   "mood": "Entangled",
-  "engines": ["Obrix", "Ouroboros"],
+  "engines": [
+    "Obrix",
+    "Ouroboros"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Reef ecology AudioToFM coupling into chaos system. Brick ecology stress output feeding attractor instability.",
-  "tags": ["entangled", "aggressive", "reef", "fm", "ecology"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "entangled",
+    "aggressive",
+    "reef",
+    "fm",
+    "ecology"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "Heavy",
   "tempo": null,
   "dna": {
@@ -27,16 +41,7 @@
       "obrix_src1Type": 1.0,
       "obrix_src2Type": 2.0,
       "obrix_reefResident": 1.0,
-      "obrix_residentStrength": 0.85,
-      "obrix_filterEnvAmt": 0.72,
-      "obrix_lfo1Rate": 0.44,
-      "obrix_lfo1Depth": 0.42,
-      "obrix_filterCutoff": 0.6,
-      "obrix_filterRes": 0.68,
-      "obrix_attackTime": 0.01,
-      "obrix_decayTime": 0.26,
-      "obrix_sustain": 0.38,
-      "obrix_releaseTime": 0.22
+      "obrix_residentStrength": 0.85
     },
     "Ouroboros": {
       "ouro_macroCharacter": 0.86,

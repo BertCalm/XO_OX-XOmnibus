@@ -737,11 +737,86 @@ public:
         oceanView_.initMacros(proc.getAPVTS());
         oceanView_.initDetailPanel(proc);
         oceanView_.initSidebar();
+        oceanView_.initWaterline(proc.getAPVTS(), proc.getMasterFXChain().getSequencer());
+        oceanView_.initChordBar(proc.getAPVTS(), proc.getChordMachine());
+        oceanView_.initMasterFxStrip(proc.getAPVTS());
+        oceanView_.initTransportBar();
+        // Wire transport bar callbacks.
+        if (auto* tb = oceanView_.getTransportBar())
+        {
+            tb->onPlayToggled = [&proc, this]()
+            {
+                // Toggle sequencer enabled via APVTS.
+                if (auto* p = proc.getAPVTS().getParameter("master_seqEnabled"))
+                {
+                    bool nowOn = p->getValue() < 0.5f;
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(nowOn ? 1.0f : 0.0f);
+                    p->endChangeGesture();
+                    if (auto* bar = oceanView_.getTransportBar())
+                        bar->setPlaying(nowOn);
+                    // Also expand the waterline when starting.
+                    if (nowOn)
+                        if (auto* wl = oceanView_.getWaterline())
+                            wl->setExpanded(true);
+                }
+            };
+            tb->onBpmChanged = [&proc](double newBpm)
+            {
+                // Write BPM to chord machine's sequencer (cm_seq_bpm).
+                if (auto* p = proc.getAPVTS().getParameter("cm_seq_bpm"))
+                {
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(newBpm)));
+                    p->endChangeGesture();
+                }
+            };
+            tb->onCoupleClicked = []()
+            {
+                // TODO: open coupling inspector panel
+            };
+        }
         oceanView_.initStatusBar();
+
+        // Ocean View is the primary layout — hide ALL legacy Gallery-mode panels
+        // so they don't ghost behind the Ocean View.
+        detail.setVisible(false);
+        overview.setVisible(false);
+        removeChildComponent(&detail);
+        removeChildComponent(&overview);
 
         // Wire OceanView callbacks
         oceanView_.onEngineSelected = [this](int slot) { if (slot >= 0) selectSlot(slot); };
-        oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); /* detail panel loaded by OceanView */ };
+        oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); };
+        oceanView_.onEngineSelectedFromDrawer = [this](const juce::String& engineId)
+        {
+            // Prefer the selected slot. If it's already occupied, find the first empty slot.
+            // If all slots are full, replace the selected slot.
+            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots) ? selectedSlot : 0;
+            if (processor.getEngine(slot) != nullptr)
+            {
+                for (int i = 0; i < kNumPrimarySlots; ++i)
+                {
+                    if (processor.getEngine(i) == nullptr)
+                    {
+                        slot = i;
+                        break;
+                    }
+                }
+            }
+            processor.loadEngine(slot, engineId.toStdString());
+        };
+        oceanView_.onCouplingRouteRequested = [this](int srcSlot, int dstSlot)
+        {
+            MegaCouplingMatrix::CouplingRoute route;
+            route.sourceSlot  = srcSlot;
+            route.destSlot    = dstSlot;
+            route.type        = CouplingType::AmpToFilter;
+            route.amount      = 0.5f;
+            route.isNormalled = false;
+            route.active      = true;
+            processor.getCouplingMatrix().addRoute(route);
+        };
         oceanView_.onPresetSelected = [this](int idx)
         {
             // Load preset by index from the library snapshot.
@@ -997,9 +1072,8 @@ public:
         // 'M' toggles Cinematic Mode
         if (key == juce::KeyPress('m') || key == juce::KeyPress('M'))
         {
-            bool nowCinematic = cinematicToggleBtn.getToggleState();
-            cinematicToggleBtn.setToggleState(!nowCinematic, juce::dontSendNotification);
-            layout.cinematicMode = !nowCinematic;
+            layout.cinematicMode = !layout.cinematicMode;
+            cinematicToggleBtn.setToggleState(layout.cinematicMode, juce::dontSendNotification);
             resized();
             return true;
         }
@@ -1234,6 +1308,23 @@ public:
         // ── Ocean View takes full editor bounds ───────────────────────────────
         auto fullBounds = getLocalBounds();
         oceanView_.setBounds(fullBounds);
+
+        // ── OceanView mode: skip the entire legacy Gallery layout ─────────────
+        // All legacy tiles, overview, detail, chord panel, sidebar, etc. are
+        // permanently hidden when OceanView is active.  Only statusBar and
+        // toastOverlay_ need bounds; everything else is dead weight.
+        if (oceanView_.isVisible())
+        {
+            statusBar.setBounds(layout.getStatusBar());
+            {
+                auto statusArea = layout.getStatusBar();
+                statusArea.removeFromRight(104);
+                midiIndicator.setBounds(statusArea.removeFromRight(16).withSizeKeepingCentre(8, 8));
+                cpuMeter.setBounds(statusArea.removeFromRight(68).withSizeKeepingCentre(64, 20));
+            }
+            toastOverlay_.setBounds(getLocalBounds());
+            return;
+        }
 
         // ── Sync layout state (Gallery components hidden but state tracking kept) ────────────────────────────
         // spec §2.2: PlaySurface is an embedded 264pt bottom zone, not a popup.
@@ -1470,7 +1561,7 @@ private:
         processor.setPersistedSelectedSlot(selectedSlot);
         processor.setPersistedSignalFlowSection(signalFlowActiveSection);
         repaint(signalFlowStripBounds);
-        depthDial.setSlot(juce::jlimit(0, 3, slot)); // DepthDial tracks the selected slot
+        depthDial.setSlot(juce::jlimit(0, 4, slot)); // DepthDial tracks the selected slot
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
         perfToggleBtn.setToggleState(false, juce::dontSendNotification);
 
@@ -1865,15 +1956,19 @@ private:
 
     void timerCallback() override
     {
-        for (int i = 0; i < kNumPrimarySlots; ++i)
-            tiles[i]->refresh();
-        if (ghostTile.isVisible())
-            ghostTile.refresh();
+        // ── Legacy Gallery refresh — skip entirely when OceanView is active ───
+        if (!oceanView_.isVisible())
+        {
+            for (int i = 0; i < kNumPrimarySlots; ++i)
+                tiles[i]->refresh();
+            if (ghostTile.isVisible())
+                ghostTile.refresh();
+            if (!detail.isVisible())
+                overview.refresh();
+            if (performancePanel.isVisible())
+                performancePanel.refresh();
+        }
         checkCollectionUnlock();
-        if (!detail.isVisible())
-            overview.refresh();
-        if (performancePanel.isVisible())
-            performancePanel.refresh();
 
         // ── Refresh Export tab panel with current preset/kit info ────────────
         sidebar.refreshExportPanel();
@@ -1920,7 +2015,7 @@ private:
             }
             else
             {
-                startTimerHz(1);
+                startTimerHz(10);
             }
         }
 
@@ -1995,8 +2090,8 @@ private:
             statusBar.setVoiceCount(totalVoices);
 
             // W03: BPM — read from host transport if available; 0.0 means "not connected".
+            double bpm = 0.0;
             {
-                double bpm = 0.0;
                 if (auto* ph = processor.getPlayHead())
                 {
                     auto pos = ph->getPosition();
@@ -2007,7 +2102,37 @@ private:
             }
 
             // W03: CPU — read from processor's measured processBlock load.
-            statusBar.setCpuPercent(processor.getProcessingLoad() * 100.0f);
+            const float cpuPct = processor.getProcessingLoad() * 100.0f;
+            statusBar.setCpuPercent(cpuPct);
+
+            // Push same data to submarine TransportBar.
+            if (auto* tb = oceanView_.getTransportBar())
+            {
+                tb->setVoiceCount(totalVoices);
+                tb->setBpm(bpm > 0.0 ? bpm : 120.0);
+                tb->setCpuPercent(cpuPct);
+            }
+
+            // Push audio levels to dot-matrix visualizer.
+            if (auto* dm = oceanView_.getDotMatrix())
+            {
+                // Use CPU load as a proxy for audio activity until we have real RMS.
+                const float activity = cpuPct / 100.0f;
+                dm->pushLevels(activity * 0.7f, activity * 0.5f);
+
+                // Push engine activity levels.
+                float engLevels[4] = {};
+                for (int i = 0; i < 4; ++i)
+                {
+                    if (auto* eng = processor.getEngine(i))
+                        engLevels[i] = static_cast<float>(eng->getActiveVoiceCount()) / static_cast<float>(std::max(1, eng->getMaxVoices()));
+                }
+                dm->pushEngineActivity(engLevels, 4);
+
+                // Push sequencer step.
+                const auto& seq = processor.getMasterFXChain().getSequencer();
+                dm->pushSequencerStep(seq.getCurrentStep(), 16, seq.isEnabled());
+            }
         }
 
         // ── Header indicators ─────────────────────────────────────────────────
@@ -2184,7 +2309,25 @@ private:
                                     : (zoneInt == 2) ? EngineOrbit::DepthZone::Midnight
                                                      : EngineOrbit::DepthZone::Twilight;
                     oceanView_.setEngine(i, id, accent, zone);
-                    oceanView_.setVoiceCount(i, eng->getActiveVoiceCount());
+
+                    // Step 8b: Track voice count changes to trigger buoy ripples on note-on.
+                    int newVoices = eng->getActiveVoiceCount();
+                    if (newVoices > prevVoiceCounts_[static_cast<size_t>(i)])
+                        oceanView_.triggerBuoyRipple(i);
+                    prevVoiceCounts_[static_cast<size_t>(i)] = newVoices;
+
+                    oceanView_.setVoiceCount(i, newVoices);
+
+                    // Step 8a: Push waveform data to buoy wreath.
+                    {
+                        std::array<float, 128> wreathSamples {};
+                        processor.getWaveformFifo(i).readLatest(wreathSamples.data(), 128);
+                        float slotRms = 0.0f;
+                        for (int s = 64; s < 128; ++s)
+                            slotRms += wreathSamples[static_cast<size_t>(s)] * wreathSamples[static_cast<size_t>(s)];
+                        slotRms = std::sqrt(slotRms / 64.0f);
+                        oceanView_.pushSlotWaveData(i, wreathSamples.data(), 128, slotRms);
+                    }
 
                     if (zone == EngineOrbit::DepthZone::Sunlit)   hasSunlit   = true;
                     if (zone == EngineOrbit::DepthZone::Twilight)  hasTwilight = true;
@@ -2199,6 +2342,9 @@ private:
             // Fix #1005: drive AmbientEdge depth glow from populated zones.
             oceanView_.setDepthZones(hasSunlit, hasTwilight, hasMidnight);
         }
+
+        // Ocean wave surface — push master output waveform to background.
+        oceanView_.pushMasterWaveData(processor.getMasterWaveformFifo());
 
         // Preset info — update nexus when preset name changes.
         {
@@ -2242,11 +2388,10 @@ private:
             // Fix #1005: re-seed preset dots when library size changes (scan just completed).
             {
                 auto lib = pm.getLibrary();
-                static int lastLibrarySize = 0;
                 const int currentLibSize = lib ? static_cast<int>(lib->size()) : 0;
-                if (currentLibSize != lastLibrarySize)
+                if (currentLibSize != lastLibrarySize_)
                 {
-                    lastLibrarySize = currentLibSize;
+                    lastLibrarySize_ = currentLibSize;
                     if (lib && currentLibSize > 0)
                     {
                         std::vector<PresetDot> dots;
@@ -2481,6 +2626,11 @@ private:
     // -1 = no note played yet this session.
     int lastNote_ = -1;
 
+    // Tracks the last known preset library size so we only re-seed preset dots
+    // when the library is first populated or changes (e.g. after a background scan).
+    // Promoted from function-local static to avoid per-instance aliasing bugs.
+    int lastLibrarySize_ = 0;
+
     int selectedSlot = -1;
 
     // Signal flow strip interaction state (MUST A1-01)
@@ -2521,6 +2671,10 @@ private:
     // is cleared.  addAndMakeVisible is called BEFORE toastOverlay_ in the
     // constructor so it renders beneath the overlay.
     OceanView oceanView_;
+
+    // Step 8b: Previous voice counts per slot — used to detect note-on events
+    // (voice count increase) and trigger buoy ripple animations.
+    std::array<int, 5> prevVoiceCounts_ {};
 
     // ── ToastOverlay — non-blocking notification layer ────────────────────────
     // Declared last so it is destroyed first (child components destroyed in

@@ -14,6 +14,7 @@
 #include "DrumPadGrid.h"
 #include "SpecializedDisplays.h"
 #include "SpecializedWidgets.h"
+#include "ModMatrixDrawer.h"
 
 namespace xoceanus
 {
@@ -86,9 +87,9 @@ public:
         drawDot(x0 + aW + dW + sW, ySus);    // sustain end
         drawDot(x0 + aW + dW + sW + rW, y0); // release end
 
-        // A D S R labels at bottom
+        // A D S R labels at bottom — submarine muted text rgba(200,204,216,0.4)
         g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
-        g.setColour(juce::Colour(GalleryColors::t3())); // T3
+        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.4f));
         float labelY = b.getBottom() - 10;
         g.drawText("A", (int)(x0 + aW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
         g.drawText("D", (int)(x0 + aW + dW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
@@ -105,6 +106,50 @@ private:
 };
 
 //==============================================================================
+// SubmarineSliderLnF — thick track + large thumb for ADSR sliders.
+// Matches the submarine prototype's slider style.
+class SubmarineSliderLnF : public juce::LookAndFeel_V4
+{
+public:
+    void drawLinearSlider(juce::Graphics& g, int x, int y, int width, int height,
+                          float sliderPos, float /*minPos*/, float /*maxPos*/,
+                          juce::Slider::SliderStyle style, juce::Slider& slider) override
+    {
+        if (style != juce::Slider::LinearHorizontal)
+        {
+            juce::LookAndFeel_V4::drawLinearSlider(g, x, y, width, height, sliderPos, 0, 0, style, slider);
+            return;
+        }
+
+        const float trackH = 6.0f;
+        const float thumbR = 8.0f;
+        const float cy = (float)y + (float)height * 0.5f;
+        const float trackY = cy - trackH * 0.5f;
+        const float trackX = (float)x + thumbR;
+        const float trackW = (float)width - thumbR * 2.0f;
+
+        // Background track (gray bar)
+        g.setColour(slider.findColour(juce::Slider::backgroundColourId));
+        g.fillRoundedRectangle(trackX, trackY, trackW, trackH, trackH * 0.5f);
+
+        // Filled portion (teal bar)
+        float fillW = sliderPos - trackX;
+        if (fillW > 0.0f)
+        {
+            g.setColour(slider.findColour(juce::Slider::trackColourId));
+            g.fillRoundedRectangle(trackX, trackY, juce::jmin(fillW, trackW), trackH, trackH * 0.5f);
+        }
+
+        // Thumb circle
+        g.setColour(slider.findColour(juce::Slider::thumbColourId));
+        g.fillEllipse(sliderPos - thumbR, cy - thumbR, thumbR * 2.0f, thumbR * 2.0f);
+        // Subtle border on thumb
+        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.15f));
+        g.drawEllipse(sliderPos - thumbR, cy - thumbR, thumbR * 2.0f, thumbR * 2.0f, 1.0f);
+    }
+};
+
+//==============================================================================
 // EngineDetailPanel — right-side parameter view for one engine slot.
 // Contains a MacroHeroStrip (4 pillar sliders for engine macros) plus a
 // scrollable ParameterGrid showing all remaining params.
@@ -112,8 +157,9 @@ class EngineDetailPanel : public juce::Component,
                           private juce::Timer
 {
 public:
-    explicit EngineDetailPanel(XOceanusProcessor& proc) : processor(proc), macroHero(proc), waveformDisplay(proc)
+    explicit EngineDetailPanel(XOceanusProcessor& proc) : processor(proc), macroHero(proc), waveformDisplay(proc), modMatrix_(proc.getAPVTS())
     {
+        macroHero.setCompactMode(true); // Zone 2: no header, sliders fill height
         addAndMakeVisible(macroHero);
         addAndMakeVisible(viewport);
         // Disable scroll-on-drag — it steals vertical mouse drags from
@@ -121,6 +167,36 @@ public:
         viewport.setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::never);
         addAndMakeVisible(waveformDisplay);
         addAndMakeVisible(adsrDisplay);
+
+        // ModMatrixDrawer — starts hidden; shown when the MOD tab is clicked.
+        addChildComponent(modMatrix_);
+        modMatrix_.onExpandedChanged = [this](bool)
+        {
+            resized();
+            repaint();
+        };
+
+        // ADSR horizontal sliders — custom thick-track LookAndFeel
+        static const char* adsrNames[] = {"A", "D", "S", "R"};
+        for (int i = 0; i < 4; ++i)
+        {
+            adsrSliders[i].setLookAndFeel(&adsrSliderLnF);
+            adsrSliders[i].setSliderStyle(juce::Slider::LinearHorizontal);
+            adsrSliders[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
+            adsrSliders[i].setColour(juce::Slider::thumbColourId, juce::Colour(127, 219, 202));
+            adsrSliders[i].setColour(juce::Slider::trackColourId, juce::Colour(60, 180, 170));
+            adsrSliders[i].setColour(juce::Slider::backgroundColourId, juce::Colour(60, 70, 85));
+            adsrSliders[i].setRange(0.0, 1.0, 0.001);
+            adsrSliders[i].setValue(0.5);
+            addAndMakeVisible(adsrSliders[i]);
+
+            adsrSliderLabels[i].setText(adsrNames[i], juce::dontSendNotification);
+            adsrSliderLabels[i].setFont(GalleryFonts::value(10.0f));
+            adsrSliderLabels[i].setColour(juce::Label::textColourId, juce::Colour(127, 219, 202).withAlpha(0.6f));
+            adsrSliderLabels[i].setJustificationType(juce::Justification::centred);
+            addAndMakeVisible(adsrSliderLabels[i]);
+        }
+
         A11y::setup(*this, "Engine Detail Panel",
                     "Shows parameters for the selected engine. Press Escape to return to overview.");
         // S5: Poll ADSR parameters at 30Hz (matches WaveformDisplay update rate).
@@ -128,7 +204,12 @@ public:
         startTimerHz(hz);
     }
 
-    ~EngineDetailPanel() override { stopTimer(); }
+    ~EngineDetailPanel() override
+    {
+        stopTimer();
+        for (auto& s : adsrSliders)
+            s.setLookAndFeel(nullptr);
+    }
 
     // Optional: wire MIDI learn manager before the first loadSlot() call.
     void setMidiLearnManager(MIDILearnManager* mgr)
@@ -143,6 +224,27 @@ public:
     {
         if (auto* grid = dynamic_cast<ParameterGrid*>(viewport.getViewedComponent()))
             grid->scrollToSection(s);
+    }
+
+    // Callback: fired when the back button is clicked. Parent should hide this panel.
+    std::function<void()> onBackClicked;
+
+    void mouseDown(const juce::MouseEvent& e) override
+    {
+        // Click on the collapsed MOD tab → expand the drawer.
+        if (!modMatrix_.isExpanded() && modTabBounds_.contains(e.getPosition()))
+        {
+            modMatrix_.setExpanded(true);
+            return;
+        }
+
+        // Back button (top-left, 32x32 at pad=12, y=20)
+        auto backRect = juce::Rectangle<int>(12, 20, 32, 32);
+        if (backRect.contains(e.getPosition()))
+        {
+            if (onBackClicked)
+                onBackClicked();
+        }
     }
 
     // Called when the user selects an engine slot to inspect.
@@ -171,12 +273,9 @@ public:
         if (getWidth() > 0 && getHeight() > 0)
             cachedHeaderGrad =
                 juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
-                                     GalleryColors::get(GalleryColors::shellWhite()), (float)getWidth(), 0.0f, false);
+                                     juce::Colours::transparentBlack, (float)getWidth(), 0.0f, false);
 
-        // Load macro hero strip — it shows/hides itself based on discovery
         auto prefix = GalleryColors::prefixForEngine(engineId);
-        if (macroHero.isVisible())
-            macroHero.loadEngine(engineId, prefix, accentColour);
 
         // Configure waveform display for this slot
         waveformDisplay.setSlot(slot);
@@ -186,18 +285,51 @@ public:
         // Configure ADSR display accent colour
         adsrDisplay.setAccentColour(accentColour);
 
-        // S5: Cache raw parameter pointers for the ADSR timer poll.
-        // Parameter IDs follow the {prefix}_attack / _decay / _sustain / _release pattern.
-        // getRawParameterValue() returns nullptr if the param doesn't exist for this engine,
-        // which timerCallback() handles gracefully.
+        // S5: Discover ADSR parameters by scanning ALL engine params.
+        // Engines use varied names — scan for keywords in the inner param name.
         {
             auto& apvts = processor.getAPVTS();
-            adsrAttack  = apvts.getRawParameterValue(prefix + "_attack");
-            adsrDecay   = apvts.getRawParameterValue(prefix + "_decay");
-            adsrSustain = apvts.getRawParameterValue(prefix + "_sustain");
-            adsrRelease = apvts.getRawParameterValue(prefix + "_release");
-            // Push an immediate update so the display reflects current values
-            // right after load (before the next timer tick).
+            juce::String pfx = prefix.endsWith("_") ? prefix : (prefix + "_");
+
+            juce::String foundPids[4]; // A, D, S, R
+            adsrAttack = adsrDecay = adsrSustain = adsrRelease = nullptr;
+
+            for (auto* p : processor.getParameters())
+            {
+                auto* rp = dynamic_cast<juce::RangedAudioParameter*>(p);
+                if (!rp) continue;
+                juce::String pid = rp->getParameterID();
+                if (!pid.startsWithIgnoreCase(pfx)) continue;
+
+                juce::String inner = pid.substring(pfx.length()).toLowerCase();
+
+                // Match attack / atk
+                if (!adsrAttack && (inner.contains("attack") || inner.endsWith("atk")))
+                {
+                    adsrAttack = apvts.getRawParameterValue(pid);
+                    foundPids[0] = pid;
+                }
+                // Match decay / dec
+                else if (!adsrDecay && (inner.contains("decay") || inner.endsWith("dec")))
+                {
+                    adsrDecay = apvts.getRawParameterValue(pid);
+                    foundPids[1] = pid;
+                }
+                // Match sustain / sus
+                else if (!adsrSustain && (inner.contains("sustain") || inner.endsWith("sus")))
+                {
+                    adsrSustain = apvts.getRawParameterValue(pid);
+                    foundPids[2] = pid;
+                }
+                // Match release / rel
+                else if (!adsrRelease && (inner.contains("release") || inner.endsWith("rel")))
+                {
+                    adsrRelease = apvts.getRawParameterValue(pid);
+                    foundPids[3] = pid;
+                }
+            }
+
+            // Push immediate ADSR display update
             if (adsrAttack != nullptr)
             {
                 adsrDisplay.setValues(
@@ -205,6 +337,18 @@ public:
                     adsrDecay   != nullptr ? adsrDecay->load()   : 0.3f,
                     adsrSustain != nullptr ? adsrSustain->load() : 0.7f,
                     adsrRelease != nullptr ? adsrRelease->load() : 0.4f);
+            }
+
+            // Wire ADSR horizontal sliders — show only if attack param found
+            bool hasAdsr = (adsrAttack != nullptr);
+            for (int i = 0; i < 4; ++i)
+            {
+                adsrAttachments[i].reset();
+                if (foundPids[i].isNotEmpty())
+                    adsrAttachments[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+                        apvts, foundPids[i], adsrSliders[i]);
+                adsrSliders[i].setVisible(hasAdsr);
+                adsrSliderLabels[i].setVisible(hasAdsr);
             }
         }
 
@@ -230,7 +374,8 @@ public:
         }
         else
         {
-            macroHero.setVisible(true);
+            // loadEngine shows the strip if macros found, hides if not
+            macroHero.loadEngine(engineId, prefix, accentColour);
         }
 
         // ── Percussion engines ────────────────────────────────────────────────
@@ -406,6 +551,7 @@ public:
             drumDetailPanel.reset();
             obrixPanel.reset();
             auto* newGrid = new ParameterGrid(processor, engineId, prefix, accentColour, learnManager);
+            newGrid->setFlatMode(true); // submarine: continuous grid, no section headers
             newGrid->setParentViewport(&viewport);
             viewport.setViewedComponent(newGrid, true);
         }
@@ -413,6 +559,10 @@ public:
         // W11: Only reset scroll to top when the engine actually changed.
         if (engineChanged)
             viewport.setViewPosition(0, 0);
+
+        // Reload mod matrix for the new engine (clear first to drop old attachments).
+        modMatrix_.clear();
+        modMatrix_.loadEngine(prefix);
 
         resized();
         repaint();
@@ -442,27 +592,83 @@ public:
     {
         using namespace GalleryColors;
 
-        // ── Clean header: engine name + thin accent line ──────────────────────
-        // No heavy gradient, no zone bands — matches v05 mockup.
+        // Submarine secondary text — matches rgba(200,204,216,0.6) from prototype
+        static const juce::Colour kSubSecondary = juce::Colour(200, 204, 216).withAlpha(0.6f);
+
+        // ── Opaque dark panel background (submarine) ─────────────────────────
+        g.fillAll(juce::Colour(20, 23, 32));
+
+        // Subtle teal border
+        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.14f));
+        g.drawRoundedRectangle(getLocalBounds().toFloat().reduced(0.5f), 8.0f, 1.0f);
+
+        // ── Submarine header: breadcrumb + back button + creature icon + name ──
         {
-            // Engine name — 16px Overbit (D2), accent color
-            g.setFont(GalleryFonts::engineName(16.0f));
-            g.setColour(accentColour);
-            // (#884: ellipsizeText so long engine names show "..." instead of clipping silently)
-            auto displayCachedName = GalleryUtils::ellipsizeText(g.getCurrentFont(), cachedEngineName, (float)(getWidth() - 24));
-            g.drawText(displayCachedName, juce::Rectangle<int>(12, 0, getWidth() - 24, kHeaderH),
+            const int pad = 12;
+
+            // Row 1: Breadcrumb "Ocean › {Engine}"
+            g.setFont(GalleryFonts::value(10.0f));
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.35f));
+            g.drawText("Ocean  >  " + cachedEngineName,
+                       pad, 4, getWidth() - pad * 2, 14,
                        juce::Justification::centredLeft, false);
 
-            // Thin accent line under header (2px)
-            g.setColour(accentColour.withAlpha(0.5f));
-            g.fillRect(12, kHeaderH - 2, getWidth() - 24, 2);
+            // Row 2: Back button area (32x32) + creature icon (36x36) + engine name + "ENGINE"
+            const int row2Y = 20;
+
+            // Back arrow circle — painted, click handled by parent overlay
+            {
+                auto backRect = juce::Rectangle<int>(pad, row2Y, 32, 32).toFloat();
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.06f));
+                g.fillRoundedRectangle(backRect, 6.0f);
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.12f));
+                g.drawRoundedRectangle(backRect, 6.0f, 1.0f);
+                // Arrow glyph
+                g.setFont(GalleryFonts::display(16.0f));
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.7f));
+                g.drawText(juce::String(juce::CharPointer_UTF8("\xe2\x86\x90")), // ←
+                           backRect.toNearestInt(), juce::Justification::centred);
+            }
+
+            // Creature icon placeholder (rounded square, accent-tinted)
+            {
+                auto iconRect = juce::Rectangle<int>(pad + 40, row2Y - 2, 36, 36).toFloat();
+                g.setColour(accentColour.withAlpha(0.12f));
+                g.fillRoundedRectangle(iconRect, 8.0f);
+                g.setColour(accentColour.withAlpha(0.25f));
+                g.drawRoundedRectangle(iconRect, 8.0f, 1.0f);
+                // Creature emoji placeholder — engine initial
+                g.setFont(GalleryFonts::display(16.0f));
+                g.setColour(accentColour.withAlpha(0.6f));
+                g.drawText(cachedEngineName.substring(0, 1),
+                           iconRect.toNearestInt(), juce::Justification::centred);
+            }
+
+            // Engine name — bold, primary text
+            const int textX = pad + 84;
+            g.setFont(GalleryFonts::engineName(16.0f));
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.9f));
+            auto displayName = GalleryUtils::ellipsizeText(
+                g.getCurrentFont(), cachedEngineName, (float)(getWidth() - textX - pad));
+            g.drawText(displayName, textX, row2Y - 2, getWidth() - textX - pad, 20,
+                       juce::Justification::centredLeft, false);
+
+            // "ENGINE" subtitle
+            g.setFont(GalleryFonts::value(10.0f));
+            g.setColour(accentColour.withAlpha(0.4f));
+            g.drawText("ENGINE", textX, row2Y + 18, 100, 14,
+                       juce::Justification::centredLeft, false);
+
+            // Thin border under header
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.06f));
+            g.drawHorizontalLine(kHeaderH - 1, (float)pad, (float)(getWidth() - pad));
         }
 
         // ── "OSCILLOSCOPE" label above waveform display ───────────────────────
         if (!oscLabelBounds.isEmpty())
         {
             g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
-            g.setColour(get(t3()));
+            g.setColour(kSubSecondary);
             g.drawText("OSCILLOSCOPE", oscLabelBounds.withTrimmedLeft(8), juce::Justification::centredLeft, false);
         }
 
@@ -470,72 +676,157 @@ public:
         if (!envLabelBounds.isEmpty())
         {
             g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
-            g.setColour(get(t3()));
+            g.setColour(kSubSecondary);
             g.drawText("ENVELOPE", envLabelBounds.withTrimmedLeft(8), juce::Justification::centredLeft, false);
+        }
+
+        // ── Collapsed MOD tab on right edge ──────────────────────────────────
+        if (!modTabBounds_.isEmpty())
+        {
+            // Tab background
+            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+            g.fillRoundedRectangle(modTabBounds_.toFloat(), 4.0f);
+            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.15f));
+            g.drawRoundedRectangle(modTabBounds_.toFloat().reduced(0.5f), 4.0f, 1.0f);
+
+            // "MOD" text drawn vertically
+            g.setFont(GalleryFonts::value(10.0f));
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.4f));
+            // Draw each letter stacked vertically
+            int textX = modTabBounds_.getX();
+            int textW = modTabBounds_.getWidth();
+            int centerY = modTabBounds_.getCentreY() - 18;
+            g.drawText("M", textX, centerY,      textW, 14, juce::Justification::centred);
+            g.drawText("O", textX, centerY + 12,  textW, 14, juce::Justification::centred);
+            g.drawText("D", textX, centerY + 24,  textW, 14, juce::Justification::centred);
         }
     }
 
     void resized() override
     {
         auto area = getLocalBounds();
-        area.removeFromTop(kHeaderH);
+
+        // ── Header: 40px with engine name ─────────────────────
+        auto headerArea = area.removeFromTop(kHeaderH);
+        (void)headerArea; // header is painted in paint(), no child components needed
 
         // P29: rebuild header gradient when width changes.
         // #895: guard against zero-size bounds — skip if not yet laid out.
         if (getWidth() > 0 && getHeight() > 0)
             cachedHeaderGrad =
                 juce::ColourGradient(accentColour.withAlpha(0.14f), 0.0f, 0.0f,
-                                     GalleryColors::get(GalleryColors::shellWhite()), (float)getWidth(), 0.0f, false);
+                                     juce::Colours::transparentBlack, (float)getWidth(), 0.0f, false);
 
-        // MacroHeroStrip hidden — macros are in the header row.
-        macroHero.setBounds(0, 0, 0, 0);
-        macroHero.setVisible(false);
-        if (fiveMacroDisplay)
+        // ── Body: horizontal 4-zone layout (submarine prototype) ──
+        // Prototype is COMPACT — fixed heights, not dynamic fill.
+        auto body = area.reduced(8, 4);
+
+        // ZONE 1 (LEFT): Viz column — 40% normally, 20% when mod matrix is open
         {
-            fiveMacroDisplay->setBounds(0, 0, 0, 0);
-            fiveMacroDisplay->setVisible(false);
+            const int vizPct = modMatrix_.isExpanded() ? 20 : 40;
+            const int vizW = juce::jmax(120, body.getWidth() * vizPct / 100);
+            auto vizCol = body.removeFromLeft(vizW);
+
+            const bool hasAdsr = adsrSliders[0].isVisible();
+            const bool hasSpecialViz = drumGrid || trianglePad || conductorArc
+                                    || modeSelector || axisBar;
+
+            // Always show oscilloscope
+            oscLabelBounds = vizCol.removeFromTop(12);
+
+            if (hasAdsr)
+            {
+                // Full layout: oscilloscope + envelope + ADSR sliders
+                waveformDisplay.setBounds(vizCol.removeFromTop(54).reduced(2, 1));
+                vizCol.removeFromTop(3);
+
+                envLabelBounds = vizCol.removeFromTop(12);
+                adsrDisplay.setBounds(vizCol.removeFromTop(70).reduced(2, 1));
+                adsrDisplay.setVisible(true);
+                vizCol.removeFromTop(3);
+
+                auto adsrRow = vizCol.removeFromTop(36);
+                const int sliderW = adsrRow.getWidth() / 4;
+                for (int i = 0; i < 4; ++i)
+                {
+                    auto col = adsrRow.removeFromLeft(sliderW).reduced(3, 0);
+                    adsrSliderLabels[i].setBounds(col.removeFromTop(12));
+                    col.removeFromTop(2);
+                    adsrSliders[i].setBounds(col);
+                }
+            }
+            else if (hasSpecialViz)
+            {
+                // Engine-specific viz: oscilloscope + specialized display
+                waveformDisplay.setBounds(vizCol.removeFromTop(54).reduced(2, 1));
+                vizCol.removeFromTop(3);
+                envLabelBounds = {};
+                adsrDisplay.setVisible(false);
+
+                if (drumGrid)
+                {
+                    int drumH = drumGrid->getRequiredHeight(vizCol.getWidth());
+                    drumGrid->setBounds(vizCol.removeFromTop(juce::jmin(drumH, vizCol.getHeight())));
+                }
+                if (trianglePad)
+                    trianglePad->setBounds(vizCol.removeFromTop(juce::jmin(120, vizCol.getHeight()))
+                        .withSizeKeepingCentre(juce::jmin(140, vizCol.getWidth()), juce::jmin(116, vizCol.getHeight())));
+                if (conductorArc)
+                    conductorArc->setBounds(vizCol.removeFromTop(50).withSizeKeepingCentre(
+                        juce::jmin(180, vizCol.getWidth()), 46));
+                if (modeSelector)
+                    modeSelector->setBounds(vizCol.removeFromTop(30).reduced(2, 1));
+                if (axisBar)
+                    axisBar->setBounds(vizCol.removeFromTop(28).reduced(2, 1));
+            }
+            else
+            {
+                // Fallback: oscilloscope fills the viz column
+                envLabelBounds = {};
+                adsrDisplay.setVisible(false);
+                waveformDisplay.setBounds(vizCol.reduced(2, 1));
+            }
         }
 
-        // ── Bottom: labels (12px) + waveform/ADSR displays (70px) split 50/50 ──
+        body.removeFromLeft(8);
+
+        // ZONE 2: M1-M4 Macro pillar sliders — compact, aligned to viz content
         {
-            int waveH = 70;
-            int labelH = 12;
-            auto bottomArea = area.removeFromBottom(waveH + labelH);
-            auto labelRow = bottomArea.removeFromTop(labelH);
-            // Split label row: left = OSCILLOSCOPE, right = ENVELOPE
-            oscLabelBounds = labelRow.removeFromLeft(labelRow.getWidth() / 2);
-            envLabelBounds = labelRow; // painted in paint()
-            // Split display row: left = waveformDisplay, right = adsrDisplay
-            auto displayRow = bottomArea;
-            auto leftDisplay = displayRow.removeFromLeft(displayRow.getWidth() / 2);
-            auto rightDisplay = displayRow;
-            waveformDisplay.setBounds(leftDisplay.reduced(4, 2));
-            adsrDisplay.setBounds(rightDisplay.reduced(4, 2));
+            bool showMacros = macroHero.isVisible() || (fiveMacroDisplay != nullptr);
+            if (showMacros)
+            {
+                auto macroCol = body.removeFromLeft(kMacroColW);
+                if (fiveMacroDisplay)
+                    fiveMacroDisplay->setBounds(macroCol);
+                else
+                    macroHero.setBounds(macroCol);
+                body.removeFromLeft(8);
+            }
+            else
+            {
+                macroHero.setBounds(0, 0, 0, 0);
+                if (fiveMacroDisplay)
+                    fiveMacroDisplay->setBounds(0, 0, 0, 0);
+            }
         }
 
-        // ── Specialized displays (engine-specific, above parameter grid) ─────
-        if (drumGrid)
+        // ZONE 4: MOD tab / ModMatrixDrawer
+        if (modMatrix_.isExpanded())
         {
-            int drumH = drumGrid->getRequiredHeight(area.getWidth());
-            drumGrid->setBounds(area.removeFromTop(juce::jmin(drumH, 160)));
+            auto drawerArea = body.removeFromRight(ModMatrixDrawer::kExpandedWidth);
+            modMatrix_.setBounds(drawerArea);
+            modMatrix_.setVisible(true);
+            modTabBounds_ = {}; // tab is replaced by the drawer header
         }
-        if (trianglePad)
+        else
         {
-            auto padArea = area.removeFromTop(144);
-            trianglePad->setBounds(padArea.withSizeKeepingCentre(160, 140));
+            modMatrix_.setVisible(false);
+            modMatrix_.setBounds(0, 0, 0, 0);
+            modTabBounds_ = body.removeFromRight(24);
         }
-        if (conductorArc)
-        {
-            auto arcArea = area.removeFromTop(64);
-            conductorArc->setBounds(arcArea.withSizeKeepingCentre(200, 60));
-        }
-        if (modeSelector)
-            modeSelector->setBounds(area.removeFromTop(36).reduced(4, 2));
-        if (axisBar)
-            axisBar->setBounds(area.removeFromTop(32).reduced(4, 2));
 
-        // ── Main area: Viewport with ParameterGrid (fills remaining space) ───
-        viewport.setBounds(area);
+        // ZONE 3 (CENTER): Parameter grid viewport — fills remaining space
+        viewport.setBounds(body);
 
         // Resize viewport content: support ParameterGrid, ObrixDetailPanel, DrumDetailPanel
         {
@@ -558,8 +849,9 @@ public:
     }
 
 private:
-    static constexpr int kHeaderH = 38;
-    static constexpr int kHeroH = 88; // height of the macro hero strip
+    static constexpr int kHeaderH = 64; // prototype: breadcrumb(14) + icon row(40) + pad(10)
+    static constexpr int kHeroH = 88;     // height of the macro hero strip (unused in 4-zone)
+    static constexpr int kMacroColW = 130; // width of Zone 2 macro pillar column
 
     // #903: Map a CouplingType to parameter keyword patterns so the modulation
     // arc refresh can find the right knobs in the ParameterGrid without knowing
@@ -658,6 +950,10 @@ private:
     MacroHeroStrip macroHero;
     WaveformDisplay waveformDisplay;
     ADSRDisplay adsrDisplay;
+    // ADSR horizontal sliders — interactive controls below the envelope curve
+    std::array<juce::Slider, 4> adsrSliders;
+    std::array<juce::Label, 4> adsrSliderLabels;
+    std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> adsrAttachments;
     std::unique_ptr<ObrixDetailPanel> obrixPanel;       // only created when OBRIX is loaded
     std::unique_ptr<DrumDetailPanel> drumDetailPanel;  // only created when ONSET is loaded
     std::unique_ptr<DrumPadGrid> drumGrid;              // created for OFFERING (ONSET uses DrumDetailPanel)
@@ -689,6 +985,11 @@ private:
     std::atomic<float>* adsrDecay   = nullptr;
     std::atomic<float>* adsrSustain = nullptr;
     std::atomic<float>* adsrRelease = nullptr;
+
+    // Bounds for the collapsed MOD tab painted on the right edge.
+    juce::Rectangle<int> modTabBounds_;
+    ModMatrixDrawer modMatrix_;        // collapsible mod matrix panel (Zone 4)
+    SubmarineSliderLnF adsrSliderLnF; // thick-track rendering for ADSR sliders
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineDetailPanel)
 };

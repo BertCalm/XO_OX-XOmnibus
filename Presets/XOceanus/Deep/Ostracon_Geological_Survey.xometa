@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Geological Survey",
+  "mood": "Deep",
+  "engines": ["Ostracon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Ambient strata. A single head moves across an 8-second reel at near-minimum bias, letting print-through and oxide build the texture while the signal rests. The ultra-slow LFO at 0.02Hz takes 50 seconds to complete one cycle — a geological breath. Sustained notes dissolve into reverberant oxide trails; the release outlasts most sequences.",
+  "tags": ["ostracon", "deep", "ambient", "drone", "geological", "slow", "tape", "sustain"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.7,
+    "movement": 0.3,
+    "density": 0.2,
+    "space": 0.9,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Ostracon": {
+      "ostr_waveform": 2,
+      "ostr_tune": 0,
+      "ostr_fine": 0.0,
+      "ostr_source_mix": 0.45,
+      "ostr_reel_size": 8.0,
+      "ostr_head_count": 1,
+      "ostr_head_spread": 0.0,
+      "ostr_bias": 0.08,
+      "ostr_record_mode": 0,
+      "ostr_freeze": 0,
+      "ostr_oxide": 0.5,
+      "ostr_flutter": 0.12,
+      "ostr_flutter_rate": 2.2,
+      "ostr_wow": 0.45,
+      "ostr_print": 0.4,
+      "ostr_filter_cutoff": 4500.0,
+      "ostr_filter_reso": 0.15,
+      "ostr_filter_type": 0,
+      "ostr_attack": 0.8,
+      "ostr_decay": 3.0,
+      "ostr_sustain": 1.0,
+      "ostr_release": 5.0,
+      "ostr_lfo_rate": 0.02,
+      "ostr_lfo_shape": 0,
+      "ostr_lfo_depth": 0.2,
+      "ostr_lfo_target": 5,
+      "ostr_speed": 1.0,
+      "ostr_reverse": 0,
+      "ostr_macro1": 0.0,
+      "ostr_macro2": 0.0,
+      "ostr_macro3": 0.0,
+      "ostr_macro4": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  }
+}

@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Two sources — saw + triangle — blended through dual processors. The reef begins to grow. Warm analog character from the FM Sweet Spot at 0.09.",
+  "description": "Two sources \u2014 saw + triangle \u2014 blended through dual processors. The reef begins to grow. Warm analog character from the FM Sweet Spot at 0.09.",
   "tags": [
     "obrix",
     "warm",
@@ -29,7 +29,7 @@
   ],
   "tier": "awakening",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "scripture": [
       "Gospel 4: FM Sweet Spot at 0.09",
@@ -37,8 +37,8 @@
     ],
     "revelation": null,
     "god": null,
-    "flock_note": "The Bone recognized the FM Sweet Spot warmth immediately — 0.09 fmDepth is the exact value where the reef starts breathing.",
-    "diagnosis": "Coral Nursery is the OBRIX foundation patch — saw plus triangle through dual processors, FM Sweet Spot engaged. It reveals the engine's baseline analog warmth before any advanced features are added."
+    "flock_note": "The Bone recognized the FM Sweet Spot warmth immediately \u2014 0.09 fmDepth is the exact value where the reef starts breathing.",
+    "diagnosis": "Coral Nursery is the OBRIX foundation patch \u2014 saw plus triangle through dual processors, FM Sweet Spot engaged. It reveals the engine's baseline analog warmth before any advanced features are added."
   },
   "dna": {
     "brightness": 0.4,
@@ -114,10 +114,7 @@
       "obrix_driftDepth": 0.15,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.0,
-      "obrix_air": 0.5,
-      "obrix_fltEnvAmt": 0.475,
-      "obrix_lfo1Rate": 0.089,
-      "obrix_lfo1Depth": 0.277
+      "obrix_air": 0.5
     }
   },
   "macros": {

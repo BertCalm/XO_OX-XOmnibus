@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Sho Sparse Voice",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Sho with cluster dialed back to near-solo — three or four pipes at most, letting you hear the instrument's tonal character without the cloud of aitake harmony obscuring individual pitch.",
+  "tier": "standard",
+  "tags": ["foundation", "sho", "sparse", "tonal", "defined"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.6
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.2,
+    "movement": 0.08,
+    "density": 0.25,
+    "space": 0.6,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.28,
+      "oto_chiff": 0.06,
+      "oto_detune": 0.04,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.06,
+      "oto_crosstalk": 0.06,
+      "oto_filterCutoff": 7000.0,
+      "oto_filterRes": 0.05,
+      "oto_attack": 0.05,
+      "oto_decay": 0.25,
+      "oto_sustain": 0.9,
+      "oto_release": 0.65,
+      "oto_lfo1Rate": 0.1,
+      "oto_lfo1Depth": 0.02,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.35,
+      "oto_macroB": 0.1,
+      "oto_macroC": 0.0,
+      "oto_macroD": 0.6
+    }
+  },
+  "tempo": null
+}

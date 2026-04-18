@@ -1,37 +1,26 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
-// EngineOrbit.h — Single engine creature in the radial Ocean View.
+// EngineOrbit.h — Floating buoy in the Ocean View.
 //
-// Represents one engine slot (0-4) as a living creature that orbits the
-// centre nexus at a position determined by its depth zone and slot index.
+// Represents one engine slot (0-4) or FX slot as a buoy floating in the ocean.
+// Engines render as circles with waveform wreaths showing real audio output.
+// FX slots render as hexagons (small for FX engines, large for master FX).
 //
-// Spec §2.3 — Positioning:
-//   angle  = slot_index * (2π / num_loaded_engines) + rotation_offset
-//   radius = depth_zone_radius * min(width, height) / 2
-//     Sunlit   → 30 %  of half-min-dimension
-//     Twilight → 45 %
-//     Midnight → 60 %
+// Spec (ocean-ui-phase1-design.md):
+//   - Buoys are freeform-draggable within the ocean viewport
+//   - Double-click opens the floating detail overlay
+//   - Waveform wreath reads from WaveformFifo (real audio visualization)
+//   - Creature sprites render inside the buoy circle (D5 hybrid decision)
+//   - Ripple rings expand on note-on events
+//   - Breath animation scales with voice activity
 //
-// Spec §2.3 — Creature:
-//   64-80 px diameter circle containing a procedural creature sprite.
-//   Accent-coloured border ring (2 px, 40 % alpha).
-//   Engine name below in Overbit 12 px.
-//   Breath animation: scale oscillation at voice-activity rate.
-//   Coupling lean: directional tilt from active coupling routes.
-//
-// Spec §4 — Two-Level Dive:
-//   Level 1 (single click)   — ZoomIn:        scale → 120 px, moves to centre.
-//   Level 2 (double-click)   — SplitTransform: collapses to left strip.
-//   Other engines → Minimized (32 px) while one is in ZoomIn / SplitTransform.
-//
-// Callbacks:
-//   onClicked       — notifies parent (single click, slotIndex)
-//   onDoubleClicked — notifies parent (double click, slotIndex)
-//
-// Animation is driven by a 30 Hz Timer.  Breath and scale-lerp are frozen
-// when A11y::prefersReducedMotion() returns true.
+// RAC Audit:
+//   - No InteractionState enum (removed per merged Steps 3+5)
+//   - Ripples use std::array<Ripple,8> not std::vector (F4)
+//   - Wreath reads from WaveformFifo, not WaveformRingBuffer (F1-F3)
 
+#include <array>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 #include "../Gallery/CreatureRenderer.h"
@@ -47,49 +36,49 @@ namespace xoceanus
 
 //==============================================================================
 /**
-    EngineOrbit
+    EngineOrbit — a floating buoy in the Ocean View.
 
-    A JUCE Component + 30 Hz Timer that renders one engine creature slot in
-    the radial Ocean View.  The parent OceanView is responsible for computing
-    and setting the target screen bounds via setTargetBounds(); EngineOrbit
-    applies those bounds directly (the parent drives animation of position;
-    this component animates only scale, breath, and glow).
+    Renders one engine/FX slot as a buoy with:
+      - Circle body (engines) or hexagon body (FX)
+      - Waveform wreath ring showing real audio output
+      - Creature sprite inside the buoy (engines only)
+      - Breath animation, coupling lean, heartbeat glow
+      - Ripple rings on note-on
+      - Freeform drag positioning
+
+    Animation is driven by OceanView's single shared 30 Hz Timer, which
+    calls stepAnimation() on every tick and requestRepaint() for orbits
+    that have engines.  Breath and wreath are frozen when
+    A11y::prefersReducedMotion() returns true.
 */
 class EngineOrbit : public juce::Component,
-                    public juce::SettableTooltipClient,  // #1008 FIX 4: setTooltip() for minimized creatures
-                    private juce::Timer
+                    public juce::SettableTooltipClient
 {
 public:
     //==========================================================================
-    // Depth zone — mirrors OceanBackground radius constants.
-    enum class DepthZone { Sunlit, Twilight, Midnight };
-
-    // Interaction state — controlled by the parent OceanView.
-    enum class InteractionState { Orbital, ZoomIn, SplitTransform, Minimized };
+    enum class DepthZone  { Sunlit, Twilight, Midnight };
+    enum class BuoyType   { Engine, FxEngine, MasterFx };
+    enum class WreathShape { Sine, Saw, Square, Tri, Noise, Organ, Pulse, Harmonic };
+    enum class InputState  { Idle, UserDragging, Settling };
 
     //==========================================================================
-    // Size constants (public so OceanView can reference them directly and avoid
-    // mirrored copies that can drift out of sync).
-    static constexpr float kOrbitalSize    = 72.0f;    ///< Normal orbital diameter
-    static constexpr float kZoomInSize     = 120.0f;   ///< Zoomed-in diameter
-    static constexpr float kMinimizedSize  = 32.0f;    ///< Minimized diameter
+    static constexpr float kOrbitalSize = 72.0f;   ///< Engine buoy diameter
 
     //==========================================================================
     EngineOrbit()
     {
-        // Accessibility: announces as an interactive creature slot.
-        A11y::setup(*this, "Engine Creature", "Engine orbit slot. Click to zoom in.");
+        A11y::setup(*this, "Engine Buoy", "Engine slot. Double-click to edit.");
         setWantsKeyboardFocus(true);
-
-        // MEDIUM fix (#1006): do NOT start the 30 Hz timer here.
-        // The timer is started in setEngine() and stopped in clearEngine() so
-        // empty slots never wake the message thread unnecessarily.
+        // Allow glow, wreath, bob animation, and name label to paint outside
+        // the component's bounds without being clipped by JUCE.
+        setPaintingIsUnclipped(true);
+        // Ghost slots are visual only — pass mouse events through until an
+        // engine is loaded.  setEngine() restores full interactivity.
+        setInterceptsMouseClicks(false, false);
+        // Animation is driven by OceanView's shared 30 Hz timer via stepAnimation().
     }
 
-    ~EngineOrbit() override
-    {
-        stopTimer();
-    }
+    ~EngineOrbit() override = default;
 
     //==========================================================================
     // juce::Component overrides
@@ -97,129 +86,491 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        if (!hasEngine())
+        // DEBUG: count paints per second for slot 0
+        if (slotIndex_ == 0)
+        {
+            ++debugPaintCount_;
+            if (debugPaintCount_ % 30 == 0)
+                DBG("ORBIT[0] paint count=" + juce::String(debugPaintCount_));
+        }
+
+        if (!hasEngine_)
+        {
+            // Ghost slot: dashed circle outline + "+" sign + slot number label.
+            // Matches the HTML prototype empty-state spec and OceanBackground ghost style.
+            const auto localBounds = getLocalBounds().toFloat();
+            const float cx = localBounds.getCentreX();
+            const float cy = localBounds.getCentreY();
+            const float r  = getBuoyRadius();
+            const juce::Colour ghostCol(127, 219, 202);
+
+            // Dashed circle outline (1.5px stroke, 4px dash / 4px gap)
+            juce::Path circle;
+            circle.addEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
+            juce::Path dashedCircle;
+            const float dashes[] = { 4.0f, 4.0f };
+            juce::PathStrokeType(1.5f).createDashedStroke(dashedCircle, circle, dashes, 2);
+            g.setColour(ghostCol.withAlpha(0.30f));
+            g.fillPath(dashedCircle);
+
+            // "+" centred in the circle
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(20.0f)));
+            g.setColour(ghostCol.withAlpha(0.35f));
+            g.drawText("+",
+                       juce::Rectangle<float>(cx - 15.0f, cy - 12.0f, 30.0f, 24.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+
+            // Slot number below the circle
+            if (slotIndex_ >= 0)
+            {
+                g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
+                g.setColour(ghostCol.withAlpha(0.25f));
+                g.drawText("Slot " + juce::String(slotIndex_ + 1),
+                           juce::Rectangle<float>(cx - 20.0f, cy + r + 4.0f, 40.0f, 10.0f).toNearestInt(),
+                           juce::Justification::centred, false);
+            }
             return;
+        }
 
         const auto localBounds = getLocalBounds().toFloat();
-        // Proximity magnetism: shift the draw origin toward the cursor.
-        const float cx = localBounds.getCentreX() + magnetOffset_.x;
-        const float cy = localBounds.getCentreY() + magnetOffset_.y;
+        const float cx = localBounds.getCentreX();
+        const float cy = localBounds.getCentreY();
 
-        // ── Effective size ───────────────────────────────────────────────────
-        // currentScale_ is the smoothed fractional scale (1.0 = kOrbitalSize).
-        // Breath adds ± kBreathAmplitude on top of that.
+        // ── Effective size with breath ──────────────────────────────────────
+        // Zero breath at idle — the buoy is perfectly still on calm water.
+        // Breath scales in proportionally with activity (playing).
         const float breathAmplitude = A11y::prefersReducedMotion()
-                                          ? 0.0f
-                                          : kBreathAmplitude * std::sin(breathPhase_);
-        const float effectiveScale = currentScale_ * (1.0f + breathAmplitude);
-        const float creatureSize   = kOrbitalSize * effectiveScale;
-        const float halfSize       = creatureSize * 0.5f;
+            ? 0.0f
+            : kBreathAmplitude * std::sin(breathPhase_) * activityLevel_;
+        const float creatureSize = kOrbitalSize * (1.0f + breathAmplitude);
+        const float halfSize     = creatureSize * 0.5f;
+        const float radius       = getBuoyRadius();
 
-        // ── Per-creature heartbeat glow (Vangelis) ────────────────────────────
-        // When PlaySurface is visible and this engine has active voices,
-        // add a pulsing brightness boost proportional to voice activity.
+        // ── Heartbeat glow ─────────────────────────────────────────────────
         const float heartbeatGlow = (playSurfaceVisible_ && voiceCount_ > 0)
-            ? 0.15f + 0.10f * std::sin(breathPhase_ * 2.0f)  // double-speed pulse
+            ? 0.15f + 0.10f * std::sin(breathPhase_ * 2.0f)
             : 0.0f;
 
-        const juce::Rectangle<float> creatureBounds(cx - halfSize, cy - halfSize,
-                                                    creatureSize, creatureSize);
-
-        // ── ZoomIn glow ring (drawn first — behind the creature) ─────────────
-        if (interactionState_ == InteractionState::ZoomIn)
+        // ── Apply bobbing + tilt transforms (FIX 2) ────────────────────────
+        // ScopedSaveState ensures these transforms don't bleed to parent painting.
+        juce::Graphics::ScopedSaveState saveState(g);
+        if (!A11y::prefersReducedMotion())
         {
-            const float glowRadius = halfSize + 8.0f;
-            g.setColour(accentColour_.withAlpha(0.10f));
-            g.fillEllipse(cx - glowRadius, cy - glowRadius,
-                          glowRadius * 2.0f, glowRadius * 2.0f);
+            // Tidepool float: lateral sway + vertical bob + drop-in bounce
+            g.addTransform(juce::AffineTransform::translation(lateralOffset_, bobOffset_ + bounceOffset_));
+            g.addTransform(juce::AffineTransform::rotation(tiltAngle_, cx + lateralOffset_,
+                                                            cy + bobOffset_ + bounceOffset_));
         }
 
-        // ── Heartbeat outer glow ──────────────────────────────────────────────
-        if (heartbeatGlow > 0.0f)
+        // ── Water reflection ellipse (subtle, below buoy) ──────────────────
+        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.04f));
+        g.fillEllipse(cx - radius * 0.75f, cy + radius + 3.0f,
+                       radius * 1.5f, 5.0f);
+
+        // ── Glow halo ──────────────────────────────────────────────────────
         {
-            const float glowR = halfSize + 6.0f;
-            g.setColour(accentColour_.withAlpha(heartbeatGlow * 0.5f));
-            g.fillEllipse(cx - glowR, cy - glowR, glowR * 2.0f, glowR * 2.0f);
+            juce::ColourGradient glowGrad(
+                accentColour_.withAlpha(0.09f + heartbeatGlow * 0.3f),
+                cx, cy, accentColour_.withAlpha(0.0f),
+                cx + radius * 2.2f, cy, true);
+            g.setGradientFill(glowGrad);
+            g.fillRect(cx - radius * 2.5f, cy - radius * 2.5f,
+                       radius * 5.0f, radius * 5.0f);
         }
 
-        // ── Proximity shimmer (Buchla) ───────────────────────────────────────
-        if (isShimmering_)
-        {
-            const float shimmerAlpha = 0.12f + 0.08f * std::sin(shimmerPhase_);
-            const float shimmerR = halfSize + 10.0f;
-            g.setColour(accentColour_.withAlpha(shimmerAlpha));
-            g.fillEllipse(cx - shimmerR, cy - shimmerR, shimmerR * 2.0f, shimmerR * 2.0f);
-        }
+        const bool isFx = (buoyType_ == BuoyType::FxEngine || buoyType_ == BuoyType::MasterFx);
 
-        // ── Accent border ring ───────────────────────────────────────────────
-        // Drawn behind the sprite as a filled circle, then the sprite overdraw.
-        // Ring = accent at 40 % alpha (+ heartbeat boost), kBorderWidth px wide.
+        if (isFx)
         {
-            const float ringRadius = halfSize;
+            // ── HEXAGON BODY (FX buoys) ────────────────────────────────────
+            juce::Path hexPath;
+            for (int i = 0; i < 6; ++i)
+            {
+                const float a = (juce::MathConstants<float>::pi / 3.0f) * i
+                              - juce::MathConstants<float>::pi / 6.0f;
+                const float px = cx + radius * std::cos(a);
+                const float py = cy + radius * std::sin(a);
+                if (i == 0) hexPath.startNewSubPath(px, py);
+                else        hexPath.lineTo(px, py);
+            }
+            hexPath.closeSubPath();
+
+            // Body fill
+            juce::ColourGradient hexGrad(
+                accentColour_.withAlpha(0.16f), cx - 3, cy - 3,
+                accentColour_.withAlpha(0.05f), cx + radius, cy + radius, true);
+            g.setGradientFill(hexGrad);
+            g.fillPath(hexPath);
+
+            // Border
             g.setColour(accentColour_.withAlpha(0.40f + heartbeatGlow));
-            g.drawEllipse(cx - ringRadius, cy - ringRadius,
-                          ringRadius * 2.0f, ringRadius * 2.0f,
-                          kBorderWidth);
+            g.strokePath(hexPath, juce::PathStrokeType(kBorderWidth));
+
+            // Inner hex ring
+            juce::Path innerHex;
+            for (int i = 0; i < 6; ++i)
+            {
+                const float a = (juce::MathConstants<float>::pi / 3.0f) * i
+                              - juce::MathConstants<float>::pi / 6.0f;
+                const float r2 = radius - 5.0f;
+                const float px = cx + r2 * std::cos(a);
+                const float py = cy + r2 * std::sin(a);
+                if (i == 0) innerHex.startNewSubPath(px, py);
+                else        innerHex.lineTo(px, py);
+            }
+            innerHex.closeSubPath();
+            g.setColour(accentColour_.withAlpha(0.12f));
+            g.strokePath(innerHex, juce::PathStrokeType(1.0f));
+        }
+        else
+        {
+            // ── CIRCLE BODY + WAVEFORM WREATH (engine buoys) ───────────────
+
+            // Circle body fill
+            juce::ColourGradient bodyGrad(
+                accentColour_.withAlpha(0.20f), cx - 5, cy - 5,
+                accentColour_.withAlpha(0.06f), cx + radius, cy + radius, true);
+            g.setGradientFill(bodyGrad);
+            g.fillEllipse(cx - radius, cy - radius, radius * 2.0f, radius * 2.0f);
+
+            // ── Waveform wreath (FIX 1: shape-blend) ──────────────────────
+            // Blends idle shape function (personality) with live audio data.
+            // wreathIntensity_ == 0 → pure shape, == 1 → pure audio buffer.
+            if (!A11y::prefersReducedMotion())
+            {
+                const float wreathRadius = radius + 3.0f;
+                // Zero at idle (smooth circle). Activity + audio drive oscillation.
+                const float wreathAmp = activityLevel_ * 4.0f
+                                      + wreathIntensity_ * 6.0f + wreathFlare_ * 12.0f;
+
+                // At idle (near-zero amplitude): draw a clean ellipse instead
+                // of the 128-point shape path.  This avoids sub-pixel
+                // antialiasing shimmer from path reconstruction on repaint.
+                if (wreathAmp < 0.5f)
+                {
+                    g.setColour(accentColour_.withAlpha(0.10f));
+                    g.drawEllipse(cx - wreathRadius, cy - wreathRadius,
+                                  wreathRadius * 2.0f, wreathRadius * 2.0f, 6.0f);
+                    g.setColour(accentColour_.withAlpha(0.50f));
+                    g.drawEllipse(cx - wreathRadius, cy - wreathRadius,
+                                  wreathRadius * 2.0f, wreathRadius * 2.0f, 1.5f);
+                }
+                else
+                {
+                constexpr int steps = 128;
+
+                juce::Path wreathPath;
+                for (int i = 0; i <= steps; ++i)
+                {
+                    const float angle = (static_cast<float>(i) / steps)
+                                      * juce::MathConstants<float>::twoPi;
+                    const float waveT = angle * static_cast<float>(wreathHarmonics_) + wreathPhase_;
+                    // Read from wreath buffer (real audio)
+                    const int bufIdx = static_cast<int>(
+                        std::fmod(std::abs(waveT), juce::MathConstants<float>::twoPi)
+                        / juce::MathConstants<float>::twoPi * kWreathBufferSize) % kWreathBufferSize;
+                    const float audioSample = wreathBuffer_[static_cast<size_t>(bufIdx)];
+                    const float shapeSample = computeWreathSample(waveT);
+                    // Blend: idle → shape dominates, active → audio dominates
+                    const float blend = wreathIntensity_; // 0=shape only, 1=audio only
+                    const float sample = shapeSample * (1.0f - blend) + audioSample * blend;
+                    const float displacement = sample * wreathAmp;
+                    const float r = wreathRadius + displacement;
+                    const float px = cx + r * std::cos(angle);
+                    const float py = cy + r * std::sin(angle);
+                    if (i == 0) wreathPath.startNewSubPath(px, py);
+                    else        wreathPath.lineTo(px, py);
+                }
+                wreathPath.closeSubPath();
+
+                // Glow pass
+                g.setColour(accentColour_.withAlpha(0.10f));
+                g.strokePath(wreathPath, juce::PathStrokeType(6.0f));
+
+                // Core pass
+                const float coreAlpha = std::min(1.0f,
+                    0.50f + wreathIntensity_ * 0.30f + wreathFlare_ * 0.40f);
+                g.setColour(accentColour_.withAlpha(coreAlpha));
+                g.strokePath(wreathPath, juce::PathStrokeType(1.5f + wreathIntensity_ * 0.5f));
+                } // end wreath path block
+
+                // ── Ambient edge glow (FIX 4: post-wreath, over wreath) ────
+                juce::ColourGradient ambientGlow(
+                    accentColour_.withAlpha(0.08f), cx, cy,
+                    accentColour_.withAlpha(0.0f), cx + radius * 2.2f, cy, true);
+                g.setGradientFill(ambientGlow);
+                g.fillEllipse(cx - radius * 2.2f, cy - radius * 2.2f,
+                              radius * 4.4f, radius * 4.4f);
+            }
+
+            // Subtle inner reference ring
+            g.setColour(accentColour_.withAlpha(0.08f));
+            g.drawEllipse(cx - radius + 1, cy - radius + 1,
+                          (radius - 1) * 2.0f, (radius - 1) * 2.0f, 1.0f);
+
+            // ── Creature sprite inside buoy (D5 hybrid) ────────────────────
+            const juce::Rectangle<float> creatureBounds(
+                cx - halfSize, cy - halfSize, creatureSize, creatureSize);
+            CreatureRenderer::drawCreature(g, creatureBounds, engineId_,
+                                           accentColour_,
+                                           1.0f + breathAmplitude,
+                                           couplingLean_);
         }
 
-        // ── Creature sprite ──────────────────────────────────────────────────
-        // CreatureRenderer uses the engine ID to select the archetype.
-        // breathScale = 1.0 + breathAmplitude (scaled into the same ± range).
-        // couplingLean is passed through directly.
-        CreatureRenderer::drawCreature(g, creatureBounds, engineId_,
-                                       accentColour_,
-                                       1.0f + breathAmplitude,
-                                       couplingLean_);
-
-        // ── Engine name label ────────────────────────────────────────────────
-        // Orbital state: full name below the creature.
-        // Minimized state (#1008 FIX 4): draw first 2 chars at 7px INSIDE the
-        //   circle so the creature is identifiable at 32px.  The tooltip (set in
-        //   setEngine()) provides the full name on hover.
-        // ZoomIn / SplitTransform: name shown in detail panel, omit here.
-        if (interactionState_ == InteractionState::Orbital)
+        // ── FX icon (for FX buoys only) ────────────────────────────────────
+        if (isFx)
         {
-            const float labelY    = cy + halfSize + 3.0f;
-            const float labelH    = kNameFontSize + 4.0f;
-            const juce::Rectangle<float> labelBounds(0.0f, labelY,
-                                                     localBounds.getWidth(), labelH);
-
-            g.setFont(GalleryFonts::engineName(kNameFontSize));
-            g.setColour(GalleryColors::get(GalleryColors::Ocean::foam));
-            // MEDIUM fix: ellipsis=true so long engine names get "..." rather
-            // than being silently clipped (#1006).
-            g.drawText(engineId_, labelBounds.toNearestInt(),
-                       juce::Justification::centredTop, true);
-        }
-        else if (interactionState_ == InteractionState::Minimized)
-        {
-            // #1008 FIX 4: 2-char initial inside the 32px circle so the creature
-            // is identifiable even without hovering.
-            const juce::String initials = engineId_.substring(0, 2).toUpperCase();
-            g.setFont(GalleryFonts::label(kMinimizedLabelSize));
-            g.setColour(accentColour_.withAlpha(0.85f));
-            const juce::Rectangle<float> initBounds(cx - halfSize, cy - halfSize,
-                                                     creatureSize, creatureSize);
-            g.drawText(initials, initBounds.toNearestInt(),
+            g.setFont(juce::Font(juce::FontOptions(buoyType_ == BuoyType::MasterFx ? 20.0f : 15.0f)));
+            g.setColour(accentColour_.withAlpha(0.8f));
+            g.drawText(juce::String::charToString(0x2756), // ❖
+                       juce::Rectangle<float>(cx - 10, cy - 10, 20, 20).toNearestInt(),
                        juce::Justification::centred, false);
         }
 
-        // ── Accessibility focus ring ─────────────────────────────────────────
-        if (hasKeyboardFocus(false))
+        // ── Engine name label ──────────────────────────────────────────────
         {
-            A11y::drawCircularFocusRing(g, cx, cy, halfSize + kBorderWidth + 2.0f);
+            const float labelY = cy + radius + 3.0f;
+            const float labelH = kNameFontSize + 4.0f;
+            // Fjørd for engine identity text (submarine typography system)
+            g.setFont(juce::Font(juce::FontOptions{}
+                .withTypeface(GalleryFonts::moodTypeface(GalleryFonts::MoodType::Foundation))
+                .withHeight(isFx ? 8.0f : 11.0f)));
+            g.setColour(accentColour_.withAlpha(0.58f));
+            g.drawText(engineId_.toUpperCase(),
+                       juce::Rectangle<float>(0.0f, labelY, localBounds.getWidth(), labelH).toNearestInt(),
+                       juce::Justification::centredTop, true);
+
+            // Type sublabel for FX
+            if (buoyType_ == BuoyType::MasterFx)
+            {
+                g.setFont(juce::Font(juce::FontOptions(7.0f)));
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.28f));
+                g.drawText("MASTER FX",
+                           juce::Rectangle<float>(0.0f, labelY + labelH - 2, localBounds.getWidth(), 10.0f).toNearestInt(),
+                           juce::Justification::centredTop, false);
+            }
+            else if (buoyType_ == BuoyType::FxEngine)
+            {
+                g.setFont(juce::Font(juce::FontOptions(7.0f)));
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.22f));
+                g.drawText("FX ENGINE",
+                           juce::Rectangle<float>(0.0f, labelY + labelH - 2, localBounds.getWidth(), 10.0f).toNearestInt(),
+                           juce::Justification::centredTop, false);
+            }
         }
+
+        // ── Depth zone ring (thin colored outer ring) ─────────────────────
+        {
+            static constexpr juce::uint32 kDepthColors[] = {
+                0x66FFDC78, // sunlit — warm gold
+                0x6664A0DC, // twilight — cool blue
+                0x663C5AA0, // midnight — deep blue
+            };
+            const int zoneIdx = juce::jlimit(0, 2, static_cast<int>(depthZone_));
+            g.setColour(juce::Colour(kDepthColors[zoneIdx]));
+            g.drawEllipse(cx - radius - 4.0f, cy - radius - 4.0f,
+                          (radius + 4.0f) * 2.0f, (radius + 4.0f) * 2.0f, 2.0f);
+        }
+
+        // ── Slot number badge (top-left) ──────────────────────────────────
+        if (!isFx && slotIndex_ >= 0)
+        {
+            const float badgeX = cx - radius * 0.7f;
+            const float badgeY = cy - radius * 0.7f;
+            const float badgeR = 10.0f;
+            g.setColour(juce::Colour(14, 16, 22).withAlpha(0.82f));
+            g.fillEllipse(badgeX - badgeR, badgeY - badgeR, badgeR * 2.0f, badgeR * 2.0f);
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.18f));
+            g.drawEllipse(badgeX - badgeR, badgeY - badgeR, badgeR * 2.0f, badgeR * 2.0f, 1.0f);
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f).withStyle("Bold")));
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.75f));
+            g.drawText(juce::String(slotIndex_ + 1),
+                       juce::Rectangle<float>(badgeX - badgeR, badgeY - badgeR, badgeR * 2.0f, badgeR * 2.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
+        // ── Selection pulsing ring (when selected) ────────────────────────
+        if (selected_)
+        {
+            const float selPulse = 0.7f + 0.3f * std::sin(breathPhase_ * 4.0f);
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(0.4f * selPulse));
+            g.drawEllipse(cx - radius - 6.0f, cy - radius - 6.0f,
+                          (radius + 6.0f) * 2.0f, (radius + 6.0f) * 2.0f, 2.0f);
+        }
+
+        // ── Ripple rings (note-on feedback) ────────────────────────────────
+        for (size_t ri = 0; ri < kMaxRipples; ++ri)
+        {
+            const auto& rip = ripples_[ri];
+            if (rip.progress <= 0.0f || rip.progress >= 1.0f)
+                continue;
+            const float ripRadius = radius + rip.progress * 80.0f;
+            const float ripAlpha  = (1.0f - rip.progress) * 0.4f;
+            g.setColour(accentColour_.withAlpha(ripAlpha));
+            g.drawEllipse(cx - ripRadius, cy - ripRadius,
+                          ripRadius * 2.0f, ripRadius * 2.0f,
+                          2.0f * (1.0f - rip.progress));
+        }
+
+        // ── Splash rings (FIX 22) — expanding rings when buoy first loads ──
+        if (splashAnim_ > 0.01f)
+        {
+            float splashR1 = radius + (1.0f - splashAnim_) * 40.0f;
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(splashAnim_ * 0.4f));
+            g.drawEllipse(cx - splashR1, cy - splashR1,
+                          splashR1 * 2.0f, splashR1 * 2.0f,
+                          2.0f * splashAnim_);
+            float splashR2 = radius + (1.0f - splashAnim_) * 60.0f;
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(splashAnim_ * 0.12f));
+            g.drawEllipse(cx - splashR2, cy - splashR2,
+                          splashR2 * 2.0f, splashR2 * 2.0f, 1.0f);
+        }
+
+        // ── Mute / solo badges (FIX 3) ────────────────────────────────────
+        // Mute badge: top-right of buoy, red circle with white "M"
+        if (muted_)
+        {
+            const float mbX = cx + radius * 0.5f;
+            const float mbY = cy - radius * 0.5f;
+            constexpr float mbR = 8.0f;
+            g.setColour(juce::Colour(239, 68, 68).withAlpha(0.9f));
+            g.fillEllipse(mbX - mbR, mbY - mbR, mbR * 2.0f, mbR * 2.0f);
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f).withStyle("Bold")));
+            g.setColour(juce::Colours::white);
+            g.drawText("M",
+                       juce::Rectangle<float>(mbX - mbR, mbY - mbR, mbR * 2.0f, mbR * 2.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
+        // Solo badge: top-right (or top-left if muted occupies top-right),
+        // gold circle with dark "S" + outer ring
+        if (soloed_)
+        {
+            // Offset to top-left so it doesn't collide with the mute badge
+            const float sbX = muted_ ? cx - radius * 0.5f : cx + radius * 0.5f;
+            const float sbY = cy - radius * 0.5f;
+            constexpr float sbR = 8.0f;
+            // Outer gold ring
+            g.setColour(juce::Colour(233, 196, 106).withAlpha(0.35f));
+            g.drawEllipse(sbX - sbR - 2.0f, sbY - sbR - 2.0f,
+                          (sbR + 2.0f) * 2.0f, (sbR + 2.0f) * 2.0f, 2.0f);
+            // Fill
+            g.setColour(juce::Colour(233, 196, 106).withAlpha(0.95f));
+            g.fillEllipse(sbX - sbR, sbY - sbR, sbR * 2.0f, sbR * 2.0f);
+            // "S" label
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(9.0f).withStyle("Bold")));
+            g.setColour(juce::Colour(30, 20, 5));
+            g.drawText("S",
+                       juce::Rectangle<float>(sbX - sbR, sbY - sbR, sbR * 2.0f, sbR * 2.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
+        // ── Dim overlay (mute/solo alpha dimming — FIX 9) ─────────────────
+        // When a sibling buoy is soloed (dimAlpha_ < 1), darken this buoy by
+        // drawing a semi-transparent Ocean::abyss rectangle on top.
+        // Muted buoys receive alpha 0.30 → overlay at 70% opacity.
+        // Non-soloed siblings receive alpha 0.50 → overlay at 50% opacity.
+        if (dimAlpha_ < 0.99f)
+        {
+            g.setColour(juce::Colour(0xFF0A0E18).withAlpha(1.0f - dimAlpha_));
+            g.fillRect(getLocalBounds());
+        }
+
+        // ── Accessibility focus ring ───────────────────────────────────────
+        if (hasKeyboardFocus(false))
+            A11y::drawCircularFocusRing(g, cx, cy, radius + kBorderWidth + 2.0f);
     }
 
-    void resized() override
+    void resized() override {}
+
+    void mouseDown(const juce::MouseEvent& e) override
     {
-        // No child components to lay out; bounds are set by the parent OceanView.
+        if (!hasEngine_) return;
+        isDragging_ = true;
+        dragStartPos_ = e.position;
+
+        // Spring physics: record anchor in parent coords, accounting for any
+        // pre-existing offset so grabbing a settling orbit doesn't snap to home.
+        auto* parent = getParentComponent();
+        if (parent)
+        {
+            auto parentPos = e.getEventRelativeTo(parent).position;
+            dragAnchorParent_ = parentPos - springOffset_;
+            lastDragParentPos_ = parentPos;
+            prevDragParentPos_ = parentPos;
+        }
+
+        inputState_ = InputState::UserDragging;
+        springVelocity_ = {};
     }
 
-    void mouseDown(const juce::MouseEvent& /*e*/) override
+    void mouseDrag(const juce::MouseEvent& e) override
     {
-        if (onClicked)
-            onClicked(slotIndex_);
+        if (!isDragging_ || !hasEngine_) return;
+        auto* parent = getParentComponent();
+        if (!parent) return;
+
+        auto parentPos = e.getEventRelativeTo(parent).position;
+
+        // Track mouse positions for velocity estimation on release
+        prevDragParentPos_ = lastDragParentPos_;
+        lastDragParentPos_ = parentPos;
+
+        // Spring offset = displacement from home.  dragAnchorParent_ accounts
+        // for any pre-existing offset when grabbing a settling orbit.
+        springOffset_ = parentPos - dragAnchorParent_;
+        setTransform(juce::AffineTransform::translation(springOffset_.x, springOffset_.y));
+
+        // Update coupling curves at mouse rate, not 30Hz timer rate.
+        if (onDragMoved) onDragMoved(slotIndex_);
+    }
+
+    void mouseUp(const juce::MouseEvent& e) override
+    {
+        isDragging_ = false;
+
+        if (e.getDistanceFromDragStart() < 8)
+        {
+            // Click, not drag — clear any micro-offset and fire handler.
+            inputState_ = InputState::Idle;
+            springOffset_ = {};
+            springVelocity_ = {};
+            setTransform({});
+            if (onClicked) onClicked(slotIndex_);
+        }
+        else
+        {
+            // Drag release: move home to drop position, then settle there
+            // with momentum.  This makes repositioning persistent.
+            auto* parent = getParentComponent();
+            if (parent)
+            {
+                // Compute new normalized position from drop point
+                const auto area = oceanAreaBounds_.isEmpty()
+                    ? parent->getLocalBounds().toFloat()
+                    : oceanAreaBounds_;
+                auto dropPos = lastDragParentPos_;
+                normalizedPosition_.x = juce::jlimit(0.08f, 0.92f,
+                    (dropPos.x - area.getX()) / area.getWidth());
+                normalizedPosition_.y = juce::jlimit(0.08f, 0.85f,
+                    (dropPos.y - area.getY()) / area.getHeight());
+
+                // Update home via callback (setBounds + save + substrate)
+                if (onPositionChanged)
+                    onPositionChanged(slotIndex_);
+            }
+
+            // Spring offset is now relative to the NEW home.
+            // Small momentum gives a satisfying settle at the drop point.
+            springOffset_ = {};
+            setTransform({});
+            inputState_ = InputState::Settling;
+            springVelocity_ = (lastDragParentPos_ - prevDragParentPos_) * 15.0f;
+
+            constexpr float kMaxVel = 400.0f;
+            springVelocity_.x = juce::jlimit(-kMaxVel, kMaxVel, springVelocity_.x);
+            springVelocity_.y = juce::jlimit(-kMaxVel, kMaxVel, springVelocity_.y);
+        }
     }
 
     void mouseDoubleClick(const juce::MouseEvent& /*e*/) override
@@ -232,61 +583,64 @@ public:
     // Engine data
     //==========================================================================
 
-    /**
-        Assign an engine to this slot.
-
-        @param engineId   Canonical engine ID (e.g. "Obrix", "Oxytocin").
-        @param accent     Engine accent colour.
-        @param zone       Depth zone determining orbital radius.
-    */
-    void setEngine(const juce::String& engineId,
-                   juce::Colour        accent,
-                   DepthZone           zone)
+    void setEngine(const juce::String& engineId, juce::Colour accent, DepthZone zone)
     {
-        engineId_    = engineId;
+        // Guard: the editor calls this every timer tick.  Only run the
+        // full setup (splash animation, randomization) on a real change.
+        if (hasEngine_ && engineId_ == engineId)
+        {
+            // Update accent/zone in case they changed, but skip splash.
+            accentColour_ = accent;
+            depthZone_    = zone;
+            return;
+        }
+
+        engineId_     = engineId;
         accentColour_ = accent;
-        depthZone_   = zone;
-        hasEngine_   = true;
+        depthZone_    = zone;
+        hasEngine_    = true;
 
-        // Announce the new engine name to accessibility clients.
+        // Restore full mouse interactivity when an engine is loaded.
+        setInterceptsMouseClicks(true, true);
+
         setTitle("Engine: " + engineId);
-        setDescription("Depth zone: " + depthZoneName(zone) + ". Click to zoom in.");
-
-        // #1008 FIX 4: Always set a tooltip so hovering over a minimized (32px)
-        // creature shows the engine name.  The tooltip is visible in all states,
-        // but it is most critical when the label text is suppressed (Minimized).
+        setDescription("Depth zone: " + depthZoneName(zone) + ". Double-click to edit.");
         setTooltip(engineId);
 
-        // MEDIUM fix (#1006): start the animation timer only when an engine is
-        // loaded — avoids 30 Hz wakeups on empty slots.
-        if (!isTimerRunning())
-            startTimerHz(30);
+        // Randomize wreath harmonics for per-engine variety
+        wreathHarmonics_ = 6 + (juce::Random::getSystemRandom().nextInt(6));
+
+        // Randomize tidepool phase so each buoy drifts independently
+        auto& rng = juce::Random::getSystemRandom();
+        bobPhase_ = rng.nextFloat() * juce::MathConstants<float>::twoPi;
+
+        // FIX 22: trigger drop splash + bounce-in on load
+        splashAnim_   = 1.0f;
+        bounceOffset_ = -30.0f;
 
         repaint();
     }
 
-    /** Remove the engine from this slot. The component renders nothing when empty. */
     void clearEngine()
     {
-        hasEngine_ = false;
-        engineId_  = {};
+        hasEngine_   = false;
+        engineId_    = {};
         setTitle("Empty engine slot");
         setDescription({});
 
-        // Reset animation state so a subsequent setEngine() starts clean.
-        dwellTicks_          = 0;
-        isShimmering_        = false;
-        shimmerPhase_        = 0.0f;
-        breathPhase_         = 0.0f;
-        currentScale_        = 1.0f;
-        targetScale_         = 1.0f;
-        magnetOffset_        = { 0.0f, 0.0f };
-        targetMagnetOffset_  = { 0.0f, 0.0f };
-        playSurfaceVisible_  = false;
+        // Ghost slots are visual only — pass mouse events through so the
+        // lifesaver overlay and ocean background can receive them.
+        setInterceptsMouseClicks(false, false);
 
-        // MEDIUM fix (#1006): stop the timer when the slot is emptied —
-        // no animation needed for a component that renders nothing.
-        stopTimer();
+        breathPhase_      = 0.0f;
+        wreathPhase_      = 0.0f;
+        wreathFlare_      = 0.0f;
+        wreathIntensity_  = 0.0f;
+        activityLevel_    = 0.0f;
+        lateralOffset_    = 0.0f;
+        playSurfaceVisible_ = false;
+        rippleWriteIdx_   = 0;
+        for (auto& r : ripples_) r.progress = 0.0f;
 
         repaint();
     }
@@ -297,143 +651,130 @@ public:
     DepthZone     getDepthZone()    const noexcept { return depthZone_; }
 
     //==========================================================================
-    // Live state updates — called from the parent's timer or audio thread proxy
+    // Buoy type
     //==========================================================================
 
-    /**
-        Update the current voice count.  Drives the breath rate:
-        0 voices → 0.2 Hz idle;  >0 voices → scales toward 0.5 Hz.
-    */
-    void setVoiceCount(int count)
+    void setBuoyType(BuoyType type) { buoyType_ = type; }
+    BuoyType getBuoyType() const noexcept { return buoyType_; }
+
+    float getBuoyRadius() const noexcept
     {
-        voiceCount_ = count;
-    }
-
-    /**
-        Set the coupling lean direction.
-
-        @param lean  -1.0 (full left lean) → 0.0 (neutral) → +1.0 (full right lean).
-                     Passed directly to CreatureRenderer for directional tilt.
-    */
-    void setCouplingLean(float lean)
-    {
-        couplingLean_ = juce::jlimit(-1.0f, 1.0f, lean);
-    }
-
-    /** Set the slot index (0-4). Used by the onClicked / onDoubleClicked callbacks. */
-    void setSlotIndex(int index)
-    {
-        slotIndex_ = index;
-    }
-
-    /**
-        Notify the creature whether the PlaySurface is currently visible.
-
-        When true and voiceCount_ > 0, the creature displays a pulsing
-        brightness boost (heartbeat glow) on top of the normal breath animation.
-        Call this whenever the PlaySurface panel shows or hides.
-    */
-    void setPlaySurfaceVisible(bool visible)
-    {
-        playSurfaceVisible_ = visible;
-    }
-
-    //==========================================================================
-    // Orbital positioning
-    //==========================================================================
-
-    /**
-        Apply new target bounds immediately.
-
-        The parent OceanView computes the orbital position from polar coordinates
-        and calls this each time the layout changes.  Positional animation is the
-        parent's responsibility (it may use ComponentAnimator or direct setBounds
-        at fixed intervals); EngineOrbit's own Timer handles only scale and breath.
-    */
-    void setTargetBounds(juce::Rectangle<int> targetBounds)
-    {
-        setBounds(targetBounds);
-    }
-
-    /**
-        Called by OceanView::mouseMove when the cursor moves within the Orbital
-        view.  Computes a target drift offset so the creature drifts up to
-        kMagnetStrength px toward the cursor when it is within kMagnetRange px.
-        Passing a point far off-screen (e.g. {-1000, -1000}) forces an immediate
-        reset to zero — used from OceanView::mouseExit.
-
-        Has no effect when hasEngine_ is false or prefersReducedMotion() is true.
-    */
-    void setMouseProximity(juce::Point<float> mousePos)
-    {
-        if (!hasEngine_ || A11y::prefersReducedMotion())
+        switch (buoyType_)
         {
-            targetMagnetOffset_ = { 0.0f, 0.0f };
-            return;
-        }
-
-        auto centre = getBounds().getCentre().toFloat();
-        auto delta  = mousePos - centre;
-        float dist  = delta.getDistanceFromOrigin();
-
-        if (dist < kMagnetRange && dist > 1.0f)
-        {
-            float strength = (1.0f - dist / kMagnetRange) * kMagnetStrength;
-            // juce::Point<float> has no normalised() — divide by distance manually.
-            targetMagnetOffset_ = (delta / dist) * strength;
-        }
-        else
-        {
-            targetMagnetOffset_ = { 0.0f, 0.0f };
+            case BuoyType::MasterFx: return 38.0f;
+            case BuoyType::FxEngine: return 26.0f;
+            default:                 return kOrbitalSize * 0.5f; // 36
         }
     }
 
-    //==========================================================================
-    // Interaction state management
-    //==========================================================================
-
-    /**
-        Transition to a new interaction state.
-
-        Updates targetScale_ so that timerCallback() smoothly lerps currentScale_
-        toward the new size.  Triggers a repaint.
-    */
-    void setInteractionState(InteractionState state)
+    int getBuoySize() const noexcept
     {
-        if (interactionState_ == state)
-            return;
-
-        interactionState_ = state;
-
-        switch (state)
-        {
-            case InteractionState::Orbital:
-                targetScale_ = 1.0f;
-                break;
-
-            case InteractionState::ZoomIn:
-                targetScale_ = kZoomInSize / kOrbitalSize;
-                break;
-
-            case InteractionState::Minimized:
-                targetScale_ = kMinimizedSize / kOrbitalSize;
-                break;
-
-            case InteractionState::SplitTransform:
-                targetScale_ = kMinimizedSize / kOrbitalSize;
-                break;
-        }
-
-        repaint();
+        return static_cast<int>(getBuoyRadius() * 2.0f);
     }
 
-    InteractionState getInteractionState() const noexcept { return interactionState_; }
-
     //==========================================================================
-    // Geometry helpers
+    // Live state updates
     //==========================================================================
 
-    /** Returns the component centre in parent coordinates (for coupling threads). */
+    void setVoiceCount(int count) { voiceCount_ = count; }
+    void setCouplingLean(float lean) { couplingLean_ = juce::jlimit(-1.0f, 1.0f, lean); }
+    void setSlotIndex(int index) { slotIndex_ = index; }
+    void setSelected(bool sel) { selected_ = sel; repaint(); }
+    /// Set the ocean area bounds (in parent coordinates) so drag normalization is correct.
+    void setOceanAreaBounds(juce::Rectangle<float> area) { oceanAreaBounds_ = area; }
+    void setPlaySurfaceVisible(bool visible) { playSurfaceVisible_ = visible; }
+
+    //==========================================================================
+    // Waveform wreath data (pushed from OceanView timer reading WaveformFifo)
+    //==========================================================================
+
+    void setWreathData(const float* samples, int count, float rms)
+    {
+        const int n = std::min(count, kWreathBufferSize);
+        for (int i = 0; i < n; ++i)
+            wreathBuffer_[static_cast<size_t>(i)] = samples[i];
+        // Noise gate: below -34 dB (~0.02 RMS) is silence.
+        // Smooth toward target to prevent frame-to-frame jitter.
+        const float target = rms > 0.02f
+            ? juce::jlimit(0.0f, 1.0f, rms * 4.0f) : 0.0f;
+        wreathIntensity_ += (target - wreathIntensity_) * 0.15f;
+        if (wreathIntensity_ < 0.005f) wreathIntensity_ = 0.0f;
+    }
+
+    void setWreathShape(WreathShape s) { wreathShape_ = s; }
+
+    //==========================================================================
+    // Mute / solo state
+    //==========================================================================
+
+    void setMuted(bool m)  { muted_  = m; repaint(); }
+    void setSoloed(bool s) { soloed_ = s; repaint(); }
+
+    bool isMuted()  const noexcept { return muted_;  }
+    bool isSoloed() const noexcept { return soloed_; }
+
+    //==========================================================================
+    // Dim alpha — driven by OceanView when any sibling buoy is soloed.
+    // soloed sibling: set to 0.50f; muted: set to 0.30f; normal: 1.0f.
+    //==========================================================================
+
+    void setDimAlpha(float a)
+    {
+        const float clamped = juce::jlimit(0.0f, 1.0f, a);
+        if (std::abs(clamped - dimAlpha_) > 0.005f)
+        {
+            dimAlpha_ = clamped;
+            repaint();
+        }
+    }
+
+    float getDimAlpha() const noexcept { return dimAlpha_; }
+
+    //==========================================================================
+    // Ripple + flare triggers (called from UI timer on note-on events)
+    //==========================================================================
+
+    void triggerRipple()
+    {
+        ripples_[rippleWriteIdx_].progress = 0.001f; // start
+        rippleWriteIdx_ = (rippleWriteIdx_ + 1) % kMaxRipples;
+        wreathFlare_ = 1.0f;
+    }
+
+    //==========================================================================
+    // Freeform positioning
+    //==========================================================================
+
+    juce::Point<float> getNormalizedPosition() const noexcept { return normalizedPosition_; }
+
+    void setNormalizedPosition(juce::Point<float> pos)
+    {
+        normalizedPosition_ = pos;
+    }
+
+    //==========================================================================
+    // Spring physics (VQ 015 Step 4)
+    //==========================================================================
+
+    InputState getInputState() const noexcept { return inputState_; }
+    juce::Point<float> getSpringOffset() const noexcept { return springOffset_; }
+
+    /** Centre of the buoy including any spring displacement (for coupling curves). */
+    juce::Point<float> getVisualCenter() const
+    {
+        auto c = getBounds().toFloat().getCentre();
+        return { c.x + springOffset_.x, c.y + springOffset_.y };
+    }
+
+    /** Kill any in-flight spring animation (call on view-state transitions). */
+    void resetSpring()
+    {
+        inputState_ = InputState::Idle;
+        springOffset_ = {};
+        springVelocity_ = {};
+        setTransform({});
+    }
+
     juce::Point<float> getCenter() const
     {
         return getBounds().toFloat().getCentre();
@@ -443,115 +784,235 @@ public:
     // Callbacks
     //==========================================================================
 
-    /** Fired on single click. Argument is the slot index (0-4). */
     std::function<void(int slotIndex)> onClicked;
-
-    /** Fired on double-click. Argument is the slot index (0-4). */
     std::function<void(int slotIndex)> onDoubleClicked;
+    std::function<void(int slotIndex)> onPositionChanged;
+    std::function<void(int slotIndex)> onDragMoved;  ///< visual pos changed during drag
 
-private:
     //==========================================================================
-    // juce::Timer override — 30 Hz animation tick
+    // Animation — called by OceanView's single shared timer at 30 Hz
     //==========================================================================
 
-    void timerCallback() override
+    /** Advance all animation state by one 30 Hz tick. Called by OceanView. */
+    void stepAnimation()
     {
-        if (!hasEngine_)
-            return;
+        if (!hasEngine_) return;
+
+        // ── DEBUG: write diagnostic values to file once per second (slot 0) ─
+        if (slotIndex_ == 0 && ++debugTick_ >= 30)
+        {
+            debugTick_ = 0;
+            auto f = juce::File("/tmp/orbit_debug.log");
+            f.appendText("vc=" + juce::String(voiceCount_)
+                + " wi=" + juce::String(wreathIntensity_, 4)
+                + " act=" + juce::String(activityLevel_, 4)
+                + " splash=" + juce::String(splashAnim_, 4)
+                + " bounce=" + juce::String(bounceOffset_, 2)
+                + " flare=" + juce::String(wreathFlare_, 4)
+                + " bob=" + juce::String(bobOffset_, 2)
+                + " lat=" + juce::String(lateralOffset_, 2)
+                + " anim=" + juce::String(isAnimating() ? 1 : 0)
+                + " buf=" + juce::String(bufferedToImage_ ? 1 : 0)
+                + " pc=" + juce::String(debugPaintCount_)
+                + "\n");
+        }
 
         const bool reducedMotion = A11y::prefersReducedMotion();
+        constexpr float twoPi = juce::MathConstants<float>::twoPi;
 
-        // ── Breath phase advance ─────────────────────────────────────────────
+        // ── Activity level — driven by actual audio energy only ─────────────
+        // Voice count is unreliable at idle (engines report active voices for
+        // LFOs, feedback tails, etc.).  Audio RMS = true playing intensity.
+        const float rawActivity = wreathIntensity_;
+        activityLevel_ += (rawActivity - activityLevel_) * 0.02f; // ~1.7s smoothing
+        if (activityLevel_ < 0.005f) activityLevel_ = 0.0f;      // hard floor
+
+        // ── Breath phase advance ────────────────────────────────────────────
         if (!reducedMotion)
         {
-            // Target breath rate: 0.2 Hz idle, ramps linearly to 0.5 Hz when
-            // voices are active.  The ramp is bounded at 4 voices to avoid
-            // jitter from high polyphony.
-            const float voiceRamp  = juce::jlimit(0.0f, 1.0f,
-                                                   static_cast<float>(voiceCount_) / 4.0f);
-            breathRate_  = 0.2f + voiceRamp * (0.5f - 0.2f);
-
-            // Advance phase by one tick (30 Hz).
-            // Phase wraps at 2π to keep sin() argument in a clean range.
-            breathPhase_ += breathRate_ / 30.0f * juce::MathConstants<float>::twoPi;
-            if (breathPhase_ >= juce::MathConstants<float>::twoPi)
-                breathPhase_ -= juce::MathConstants<float>::twoPi;
+            breathRate_ = 0.15f + activityLevel_ * 0.35f;
+            breathPhase_ += breathRate_ / 30.0f * twoPi;
+            if (breathPhase_ >= twoPi)
+                breathPhase_ -= twoPi;
         }
         else
         {
-            // Freeze breath at sin(0) = 0 (no scale oscillation).
             breathPhase_ = 0.0f;
         }
 
-        // ── Scale smooth-lerp toward targetScale_ ────────────────────────────
-        // 15 % per tick at 30 Hz ≈ 4-5 tick ramp to within 1 % of target.
-        // Bypass lerp under reduced motion — jump straight to the target.
-        if (reducedMotion)
+        // ── Wreath phase advance ────────────────────────────────────────────
+        // Only spin the wreath ring when there's meaningful audio.
+        // Threshold high enough to ignore noise floor.
+        if (!reducedMotion && wreathIntensity_ > 0.05f)
         {
-            currentScale_ = targetScale_;
+            wreathPhase_ += 1.8f / 30.0f * wreathIntensity_;
+            if (wreathPhase_ > 100.0f) wreathPhase_ -= 100.0f;
+        }
+
+        // ── Wreath flare decay ──────────────────────────────────────────────
+        if (wreathFlare_ > 0.01f)
+            wreathFlare_ *= 0.94f;
+        else
+            wreathFlare_ = 0.0f;
+
+        // ── Tidepool dynamics — multi-frequency float (VQ 015) ─────────────
+        // Two independent slow phases, per-engine bobPhase_ as offset,
+        // so each buoy drifts at its own rhythm.  ALL motion amplitude is
+        // proportional to activity — true stillness at idle, motion only
+        // emerges when the engine is producing sound.
+        if (!reducedMotion)
+        {
+            // Phase advance: keep ticking even at idle so motion resumes
+            // smoothly — it's the amplitude that gates visibility, not phase.
+            tidePhaseSlow_ += (0.012f + activityLevel_ * 0.008f) * twoPi / 30.0f;
+            tidePhaseMed_  += (0.03f  + activityLevel_ * 0.02f)  * twoPi / 30.0f;
+            if (tidePhaseSlow_ > twoPi) tidePhaseSlow_ -= twoPi;
+            if (tidePhaseMed_  > twoPi) tidePhaseMed_  -= twoPi;
+
+            // Y-axis: zero at idle → 3.5px at full activity
+            const float ampY = activityLevel_ * 3.5f;
+            bobOffset_ = std::sin(tidePhaseSlow_ + bobPhase_) * ampY
+                       + std::sin(tidePhaseMed_ + bobPhase_ * 1.7f) * ampY * 0.35f;
+
+            // X-axis: zero at idle → 2px at full activity
+            const float ampX = activityLevel_ * 2.0f;
+            lateralOffset_ = std::sin(tidePhaseSlow_ * 0.7f + bobPhase_ * 1.3f) * ampX
+                           + std::sin(tidePhaseMed_ * 1.2f + bobPhase_ * 0.8f) * ampX * 0.3f;
+
+            // Tilt: zero at idle, proportional to activity
+            tiltAngle_ = activityLevel_ * std::sin(tidePhaseMed_ + bobPhase_) * 0.015f;
+
+            // Dead zone: snap to zero below 0.5px to prevent sub-pixel
+            // antialiasing shimmer on retina displays.
+            if (std::abs(bobOffset_) < 0.5f)     bobOffset_     = 0.0f;
+            if (std::abs(lateralOffset_) < 0.5f)  lateralOffset_ = 0.0f;
+            if (std::abs(tiltAngle_) < 0.001f)    tiltAngle_     = 0.0f;
         }
         else
         {
-            constexpr float kLerpAlpha = 0.15f;
-            currentScale_ += (targetScale_ - currentScale_) * kLerpAlpha;
-
-            // Clamp rounding error: snap when within 0.1 % of target.
-            if (std::abs(currentScale_ - targetScale_) < 0.001f)
-                currentScale_ = targetScale_;
+            bobOffset_     = 0.0f;
+            lateralOffset_ = 0.0f;
+            tiltAngle_     = 0.0f;
         }
 
-        // ── Proximity magnetism smooth-lerp ──────────────────────────────────
-        // Bypass under reduced motion — jump straight to target (which is always
-        // zero when prefersReducedMotion() is true, set in setMouseProximity).
-        if (reducedMotion)
+        // ── Ripple advance ──────────────────────────────────────────────────
+        for (auto& rip : ripples_)
         {
-            magnetOffset_ = targetMagnetOffset_;
+            if (rip.progress > 0.0f && rip.progress < 1.0f)
+                rip.progress += 0.016f; // ~0.5s total at 30Hz
+            if (rip.progress >= 1.0f)
+                rip.progress = 0.0f;
+        }
+
+        // ── Splash animation decay (FIX 22) ────────────────────────────────
+        if (splashAnim_ > 0.01f)
+        {
+            splashAnim_   *= 0.94f;
+            bounceOffset_ *= 0.88f;
         }
         else
         {
-            magnetOffset_ = magnetOffset_
-                            + (targetMagnetOffset_ - magnetOffset_) * kMagnetLerp;
+            splashAnim_   = 0.0f;
+            bounceOffset_ = 0.0f;
+        }
 
-            // Snap to zero when essentially at rest to avoid endless tiny repaints.
-            if (magnetOffset_.getDistanceFromOrigin() < 0.01f
-                && targetMagnetOffset_.getDistanceFromOrigin() < 0.01f)
+        // ── Spring physics — damped harmonic oscillator (VQ 015 Step 4) ────
+        // When Settling, drive springOffset_ toward zero (home position) with
+        // momentum from drag release.  Slightly underdamped for organic bounce.
+        if (inputState_ == InputState::Settling)
+        {
+            constexpr float dt        = 1.0f / 30.0f;
+            constexpr float stiffness = 300.0f;   // spring constant (N/m equiv)
+            constexpr float damping   = 22.0f;    // < 2*sqrt(k) = slightly underdamped
+
+            const float ax = -stiffness * springOffset_.x - damping * springVelocity_.x;
+            const float ay = -stiffness * springOffset_.y - damping * springVelocity_.y;
+
+            springVelocity_.x += ax * dt;
+            springVelocity_.y += ay * dt;
+            springOffset_.x   += springVelocity_.x * dt;
+            springOffset_.y   += springVelocity_.y * dt;
+
+            // Snap to home when displacement and velocity are negligible
+            const float offsetSq = springOffset_.x * springOffset_.x
+                                 + springOffset_.y * springOffset_.y;
+            const float velSq    = springVelocity_.x * springVelocity_.x
+                                 + springVelocity_.y * springVelocity_.y;
+
+            if (offsetSq < 0.25f && velSq < 1.0f)
             {
-                magnetOffset_ = { 0.0f, 0.0f };
+                springOffset_   = {};
+                springVelocity_ = {};
+                inputState_     = InputState::Idle;
+                setTransform({});
+            }
+            else
+            {
+                setTransform(juce::AffineTransform::translation(
+                    springOffset_.x, springOffset_.y));
             }
         }
 
-        // ── Proximity shimmer: dwell detection ────────────────────────────────
-        if (targetMagnetOffset_.getDistanceFromOrigin() > 0.1f)
+        // ── Image cache toggle ──────────────────────────────────────────────
+        // When idle, cache paint() as a bitmap.  The CouplingSubstrate is a
+        // transparent overlay that repaints 30x/sec — JUCE's compositor must
+        // re-render everything behind it.  Without caching, orbits get their
+        // 128-point wreath path reconstructed every frame, producing sub-pixel
+        // antialiasing variance (the "shaking" at idle).  With caching, JUCE
+        // blits the frozen bitmap — identical pixels every frame.
+        const bool shouldCache = !isAnimating();
+        if (shouldCache != bufferedToImage_)
         {
-            ++dwellTicks_;
-            if (dwellTicks_ >= 60)  // 2 seconds at 30 Hz
-                isShimmering_ = true;
-        }
-        else
-        {
-            dwellTicks_ = 0;
-            isShimmering_ = false;
-        }
-
-        // Shimmer animation phase advance
-        if (isShimmering_)
-        {
-            shimmerPhase_ += juce::MathConstants<float>::twoPi / (1.5f * 30.0f);  // 1.5s period
-            if (shimmerPhase_ >= juce::MathConstants<float>::twoPi)
-                shimmerPhase_ -= juce::MathConstants<float>::twoPi;
-        }
-        else
-        {
-            shimmerPhase_ = 0.0f;
+            bufferedToImage_ = shouldCache;
+            setBufferedToImage(shouldCache);
         }
 
-        repaint();
+        // Repaint is triggered by OceanView after all orbits have been stepped.
+    }
+
+    /** Called by OceanView after stepping all orbits to trigger a repaint. */
+    void requestRepaint() { repaint(); }
+
+    /** True when this orbit has visual changes that need repainting.
+        Idle orbits return false — stopping the 30Hz repaint eliminates
+        sub-pixel antialiasing shimmer from the wreath path. */
+    bool isAnimating() const noexcept
+    {
+        return activityLevel_ > 0.01f
+            || wreathFlare_   > 0.01f
+            || splashAnim_    > 0.01f
+            || inputState_   != InputState::Idle;
+    }
+
+private:
+    //==========================================================================
+    /** Returns a -1..+1 sample for the given phase t based on wreathShape_. */
+    float computeWreathSample(float t) const
+    {
+        switch (wreathShape_)
+        {
+            case WreathShape::Sine:
+                return std::sin(t);
+            case WreathShape::Saw:
+                return 2.0f * std::fmod(t / juce::MathConstants<float>::twoPi, 1.0f) - 1.0f;
+            case WreathShape::Square:
+                return std::sin(t) > 0.0f ? 1.0f : -1.0f;
+            case WreathShape::Tri:
+                return 2.0f * std::abs(2.0f * std::fmod(t / juce::MathConstants<float>::twoPi, 1.0f) - 1.0f) - 1.0f;
+            case WreathShape::Noise:
+                return std::sin(t * 7.3f) * std::cos(t * 3.1f) + std::sin(t * 13.7f) * 0.5f;
+            case WreathShape::Organ:
+                return std::sin(t) * 0.6f + std::sin(t * 2.0f) * 0.25f + std::sin(t * 3.0f) * 0.15f;
+            case WreathShape::Pulse:
+                return std::sin(t) > 0.3f ? 1.0f : -1.0f;
+            case WreathShape::Harmonic:
+                return std::sin(t) + std::sin(t * 3.0f) * 0.4f + std::sin(t * 5.0f) * 0.2f;
+            default:
+                return std::sin(t);
+        }
     }
 
     //==========================================================================
-    // Helpers
-    //==========================================================================
-
     static juce::String depthZoneName(DepthZone zone) noexcept
     {
         switch (zone)
@@ -565,53 +1026,85 @@ private:
 
     //==========================================================================
     // Engine state
-    //==========================================================================
-
     juce::String engineId_;
-    juce::Colour accentColour_  = juce::Colour(GalleryColors::xoGold);
-    DepthZone    depthZone_     = DepthZone::Sunlit;
-    bool         hasEngine_     = false;
-
-    // Interaction / layout
-    InteractionState interactionState_ = InteractionState::Orbital;
-    int              slotIndex_        = 0;
+    juce::Colour accentColour_   = juce::Colour(GalleryColors::xoGold);
+    DepthZone    depthZone_      = DepthZone::Sunlit;
+    BuoyType     buoyType_       = BuoyType::Engine;
+    bool         hasEngine_      = false;
+    bool         selected_       = false;
+    int          slotIndex_      = 0;
 
     // Live audio state
-    int   voiceCount_        = 0;
-    float couplingLean_      = 0.0f;   // -1..+1
-    bool  playSurfaceVisible_ = false;  // Heartbeat glow active when true + voiceCount_ > 0
+    int   voiceCount_          = 0;
+    float couplingLean_        = 0.0f;
+    bool  playSurfaceVisible_  = false;
 
-    // Animation state — owned entirely by the Timer thread (message thread only)
-    float breathPhase_   = 0.0f;        ///< Current radians in the breath sine
-    float breathRate_    = 0.2f;        ///< Hz — 0.2 idle, up to 0.5 with voices
-    float currentScale_  = 1.0f;        ///< Smoothed fraction of kOrbitalSize
-    float targetScale_   = 1.0f;        ///< Desired fraction (set by setInteractionState)
+    // Freeform drag
+    bool isDragging_ = false;
+    bool pendingClickActive_ = false;   ///< true while waiting to fire single-click
+    int  pendingClickSlot_   = -1;      ///< slot index for pending click
+    juce::Point<float> dragStartPos_ {};
+    juce::Point<float> normalizedPosition_ { 0.5f, 0.5f };
+    juce::Rectangle<float> oceanAreaBounds_ {}; // parent ocean area for drag normalization
 
-    // Proximity magnetism — creature drifts toward nearby cursor
-    juce::Point<float> magnetOffset_       = { 0.0f, 0.0f };   ///< Smoothed draw offset (px)
-    juce::Point<float> targetMagnetOffset_ = { 0.0f, 0.0f };   ///< Desired offset (px)
+    // Spring physics (VQ 015 Step 4)
+    InputState inputState_ = InputState::Idle;
+    juce::Point<float> springOffset_ {};        ///< px displacement from home (setBounds) position
+    juce::Point<float> springVelocity_ {};      ///< px/second
+    juce::Point<float> dragAnchorParent_ {};    ///< parent-coord anchor for drag offset computation
+    juce::Point<float> lastDragParentPos_ {};   ///< last frame mouse pos (parent coords)
+    juce::Point<float> prevDragParentPos_ {};   ///< frame before last (for velocity estimation)
 
-    // Proximity shimmer: cursor dwell detection
-    int   dwellTicks_    = 0;       ///< Ticks cursor has been within magnet range
-    bool  isShimmering_  = false;   ///< True after 2s dwell
-    float shimmerPhase_  = 0.0f;   ///< Phase for shimmer pulse animation
+    // Animation
+    float breathPhase_ = 0.0f;
+    float breathRate_  = 0.2f;
 
-    //==========================================================================
-    // Private size constants (non-public ones; kOrbitalSize/kZoomInSize/kMinimizedSize
-    // are declared in the public section above so OceanView can reference them).
-    //==========================================================================
+    // Waveform wreath
+    static constexpr int kWreathBufferSize = 128;
+    std::array<float, kWreathBufferSize> wreathBuffer_ {};
+    float      wreathPhase_     = 0.0f;
+    float      wreathIntensity_ = 0.0f;
+    float      wreathFlare_     = 0.0f;
+    int        wreathHarmonics_ = 8;
+    WreathShape wreathShape_    = WreathShape::Sine;
 
-    static constexpr float kBorderWidth         = 2.0f;   ///< Accent ring stroke width
-    static constexpr float kBreathAmplitude    = 0.05f;  ///< ±5 % scale oscillation
-    static constexpr float kNameFontSize       = 12.0f;  ///< Overbit label below creature
-    static constexpr float kMinimizedLabelSize = 7.0f;   ///< #1008: 2-char initial inside 32px circle
+    // Tidepool dynamics (VQ 015) — replaces single-sine bob
+    float bobPhase_      = 0.0f;   ///< random per-engine phase offset (set in setEngine)
+    float bobOffset_     = 0.0f;   ///< current Y offset (px, from tidepool calc)
+    float lateralOffset_ = 0.0f;   ///< current X offset (px, lateral sway)
+    float tiltAngle_     = 0.0f;   ///< current tilt (radians)
+    float activityLevel_ = 0.0f;   ///< smoothed 0..1 blend of voiceCount + audio RMS
+    float tidePhaseSlow_ = 0.0f;   ///< primary swell phase (~80s idle cycle)
+    float tidePhaseMed_  = 0.0f;   ///< secondary wave phase (~33s idle cycle)
 
-    // Proximity magnetism constants
-    static constexpr float kMagnetRange    = 60.0f;   ///< Cursor proximity radius (px)
-    static constexpr float kMagnetStrength = 8.0f;    ///< Max drift distance (px)
-    static constexpr float kMagnetLerp     = 0.08f;   ///< Smoothing factor per 30 Hz tick
+    // Buoy drop splash animation (FIX 22)
+    float splashAnim_   = 0.0f;  ///< 1.0 on load, decays to 0
+    float bounceOffset_ = 0.0f;  ///< starts at -30px, eases to 0
 
-    //==========================================================================
+    // Mute / solo (FIX 3)
+    bool muted_  = false;
+    bool soloed_ = false;
+
+    // Dim alpha — set by OceanView when a sibling buoy is soloed (FIX 9)
+    float dimAlpha_ = 1.0f;
+
+    // Image cache state — tracks setBufferedToImage() calls
+    bool bufferedToImage_ = false;
+
+    // Debug
+    int debugTick_ = 0;
+    int debugPaintCount_ = 0;
+
+    // Ripple effects (fixed-size, no heap allocation — RAC finding F4)
+    static constexpr size_t kMaxRipples = 8;
+    struct Ripple { float progress = 0.0f; };
+    std::array<Ripple, kMaxRipples> ripples_ {};
+    size_t rippleWriteIdx_ = 0;
+
+    // Constants
+    static constexpr float kBorderWidth      = 2.0f;
+    static constexpr float kBreathAmplitude  = 0.05f;
+    static constexpr float kNameFontSize     = 12.0f;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineOrbit)
 };

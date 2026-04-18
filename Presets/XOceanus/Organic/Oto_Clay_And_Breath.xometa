@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Clay And Breath",
+  "mood": "Organic",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica with clay-colored warmth — heavy pressure instability like a deeply human exhalation, filter dark as terracotta, the attack slow enough to feel bodily.",
+  "tier": "standard",
+  "tags": ["organic", "melodica", "clay", "bodily", "warm"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.1,
+    "SPACE": 0.35
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.88,
+    "movement": 0.45,
+    "density": 0.3,
+    "space": 0.38,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.22,
+      "oto_chiff": 0.12,
+      "oto_detune": 0.2,
+      "oto_buzz": 0.2,
+      "oto_pressure": 0.65,
+      "oto_crosstalk": 0.08,
+      "oto_filterCutoff": 2800.0,
+      "oto_filterRes": 0.12,
+      "oto_attack": 0.06,
+      "oto_decay": 0.2,
+      "oto_sustain": 0.84,
+      "oto_release": 0.45,
+      "oto_lfo1Rate": 0.95,
+      "oto_lfo1Depth": 0.2,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.55,
+      "oto_macroB": 0.42,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.35
+    }
+  },
+  "tempo": null
+}

@@ -40,13 +40,13 @@ extension ReefStore {
                     // Save reef specimens with slot indices
                     for (index, specimen) in snapshotSpecimens.enumerated() {
                         guard let spec = specimen else { continue }
-                        var record = SpecimenRecord(from: spec, reefSlotIndex: index)
+                        let record = SpecimenRecord(from: spec, reefSlotIndex: index)
                         try record.save(db)
                     }
 
                     // Save coupling routes
                     for route in snapshotRoutes {
-                        var record = CouplingRouteRecord(from: route)
+                        let record = CouplingRouteRecord(from: route)
                         try record.save(db)
                     }
 
@@ -83,12 +83,12 @@ extension ReefStore {
 
                 for (index, specimen) in snapshotSpecimens.enumerated() {
                     guard let spec = specimen else { continue }
-                    var record = SpecimenRecord(from: spec, reefSlotIndex: index)
+                    let record = SpecimenRecord(from: spec, reefSlotIndex: index)
                     try record.save(db)
                 }
 
                 for route in snapshotRoutes {
-                    var record = CouplingRouteRecord(from: route)
+                    let record = CouplingRouteRecord(from: route)
                     try record.save(db)
                 }
 
@@ -154,7 +154,7 @@ extension ReefStore {
         guard let db = DatabaseManager.shared.db else { return }
         do {
             try db.write { db in
-                var record = SpecimenRecord(from: specimen)
+                let record = SpecimenRecord(from: specimen)
                 try record.save(db)
             }
         } catch {

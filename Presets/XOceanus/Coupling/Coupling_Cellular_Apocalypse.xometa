@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORGANISM cellular emergence reaches extinction event — and at that moment the reef collapse signal from OBRIX triggers complete rule reset, a loop of birth and extinction.",
+  "description": "ORGANISM cellular emergence reaches extinction event \u2014 and at that moment the reef collapse signal from OBRIX triggers complete rule reset, a loop of birth and extinction.",
   "tags": [
     "coupling",
     "extreme",
@@ -48,9 +48,6 @@
     },
     "Obrix": {
       "obrix_src1Type": 0.85,
-      "obrix_filterEnvAmt": 0.75,
-      "obrix_lfo1Rate": 0.22,
-      "obrix_lfo1Depth": 0.42,
       "obrix_macroCharacter": 0.72,
       "obrix_macroMovement": 0.85,
       "obrix_macroCoupling": 0.88,

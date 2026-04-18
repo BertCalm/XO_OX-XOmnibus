@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "404 Not Found",
+  "mood": "Submerged",
+  "engines": ["Ostracon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Lo-fi hip hop tape machine — the short reel and heavy oxide push every note into cassette warmth. Minimal source input (12% mix) means the tape artifacts are the instrument; the signal is just an excuse for the saturation to happen. Gentle wow adds the human tremor that DAW quantization removes.",
+  "tags": ["ostracon", "submerged", "lo-fi", "hip-hop", "cassette", "warm", "chill", "vinyl"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.85,
+    "movement": 0.4,
+    "density": 0.4,
+    "space": 0.4,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Ostracon": {
+      "ostr_waveform": 0,
+      "ostr_tune": 0,
+      "ostr_fine": 0.0,
+      "ostr_source_mix": 0.12,
+      "ostr_reel_size": 1.2,
+      "ostr_head_count": 2,
+      "ostr_head_spread": 0.2,
+      "ostr_bias": 0.5,
+      "ostr_record_mode": 0,
+      "ostr_freeze": 0,
+      "ostr_oxide": 0.6,
+      "ostr_flutter": 0.35,
+      "ostr_flutter_rate": 2.8,
+      "ostr_wow": 0.3,
+      "ostr_print": 0.45,
+      "ostr_filter_cutoff": 3500.0,
+      "ostr_filter_reso": 0.2,
+      "ostr_filter_type": 0,
+      "ostr_attack": 0.008,
+      "ostr_decay": 0.4,
+      "ostr_sustain": 0.65,
+      "ostr_release": 0.8,
+      "ostr_lfo_rate": 0.06,
+      "ostr_lfo_shape": 1,
+      "ostr_lfo_depth": 0.15,
+      "ostr_lfo_target": 2,
+      "ostr_speed": 0.98,
+      "ostr_reverse": 0,
+      "ostr_macro1": 0.0,
+      "ostr_macro2": 0.0,
+      "ostr_macro3": 0.0,
+      "ostr_macro4": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  }
+}

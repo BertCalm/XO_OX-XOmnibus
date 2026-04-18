@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Musette Low Reed",
+  "mood": "Deep",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "French musette in the low register — the reeds detune even more dramatically at bass pitches, creating a warm, growling thickness. Bass notes breathe and throb with life.",
+  "tier": "standard",
+  "tags": ["deep", "musette", "french", "bass", "reed"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.1,
+    "SPACE": 0.55
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.88,
+    "movement": 0.5,
+    "density": 0.75,
+    "space": 0.55,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 2,
+      "oct_cluster": 0.72,
+      "oct_chiff": 0.18,
+      "oct_detune": 0.65,
+      "oct_buzz": 0.45,
+      "oct_pressure": 0.35,
+      "oct_crosstalk": 0.28,
+      "oct_brightness": 0.25,
+      "oct_registration": 0.78,
+      "oct_roomDepth": 0.55,
+      "oct_attack": 0.05,
+      "oct_decay": 0.5,
+      "oct_sustain": 1.0,
+      "oct_release": 1.5,
+      "oct_filterEnvAmount": 0.12,
+      "oct_bendRange": 2,
+      "oct_macroCharacter": 0.65,
+      "oct_macroMovement": 0.5,
+      "oct_macroCoupling": 0.1,
+      "oct_macroSpace": 0.55,
+      "oct_lfo1Rate": 1.0,
+      "oct_lfo1Depth": 0.28,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.2,
+      "oct_lfo2Depth": 0.12,
+      "oct_lfo2Shape": 1,
+      "oct_competition": 0.08
+    }
+  },
+  "tempo": null
+}

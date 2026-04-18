@@ -103,7 +103,7 @@
       "obrix_pitchBendRange": 2.0,
       "obrix_glideTime": 0.0,
       "obrix_gestureType": 3,
-      "obrix_flashTrigger": 0.65,
+      "obrix_flashTrigger": 0.0,
       "obrix_fmDepth": 0.0,
       "obrix_wtBank": 0,
       "obrix_unisonDetune": 0.0,

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Pulse Ceremony",
+  "mood": "Flux",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene with the LFO set as ritual pulse — medium rate, deep depth, each modulation cycle a ceremonial gesture. The buzz emphasizes each downbeat of the LFO.",
+  "tier": "standard",
+  "tags": ["flux", "khene", "pulse", "ritual", "lfo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.68,
+    "COUPLING": 0.22,
+    "SPACE": 0.38
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.65,
+    "movement": 0.68,
+    "density": 0.58,
+    "space": 0.4,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.58,
+      "oto_chiff": 0.2,
+      "oto_detune": 0.25,
+      "oto_buzz": 0.5,
+      "oto_pressure": 0.42,
+      "oto_crosstalk": 0.3,
+      "oto_filterCutoff": 6200.0,
+      "oto_filterRes": 0.22,
+      "oto_attack": 0.025,
+      "oto_decay": 0.18,
+      "oto_sustain": 0.8,
+      "oto_release": 0.4,
+      "oto_lfo1Rate": 2.0,
+      "oto_lfo1Depth": 0.48,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.6,
+      "oto_macroB": 0.68,
+      "oto_macroC": 0.22,
+      "oto_macroD": 0.38
+    }
+  },
+  "tempo": null
+}

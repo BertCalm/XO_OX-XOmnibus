@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Reed Beat LFO",
+  "mood": "Flux",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Musette reed detuning depth modulated by a slow LFO — the beating rate swells and contracts over time. From near-unison to wide vibrato, the reed never settles.",
+  "tier": "standard",
+  "tags": ["flux", "musette", "french", "beating", "lfo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.78,
+    "COUPLING": 0.1,
+    "SPACE": 0.5
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.75,
+    "movement": 0.78,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 2,
+      "oct_cluster": 0.55,
+      "oct_chiff": 0.2,
+      "oct_detune": 0.58,
+      "oct_buzz": 0.4,
+      "oct_pressure": 0.3,
+      "oct_crosstalk": 0.22,
+      "oct_brightness": 0.5,
+      "oct_registration": 0.6,
+      "oct_roomDepth": 0.5,
+      "oct_attack": 0.04,
+      "oct_decay": 0.4,
+      "oct_sustain": 1.0,
+      "oct_release": 1.2,
+      "oct_filterEnvAmount": 0.14,
+      "oct_bendRange": 2,
+      "oct_macroCharacter": 0.58,
+      "oct_macroMovement": 0.78,
+      "oct_macroCoupling": 0.1,
+      "oct_macroSpace": 0.5,
+      "oct_lfo1Rate": 0.1,
+      "oct_lfo1Depth": 0.55,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.45,
+      "oct_lfo2Depth": 0.35,
+      "oct_lfo2Shape": 1,
+      "oct_competition": 0.08
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Wave",
+  "mood": "Flux",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica with extreme pressure instability — breath pressure swells and collapses in slow waves, each note a different shape than the last. Expression as accident.",
+  "tier": "standard",
+  "tags": ["flux", "melodica", "pressure", "expressive", "evolving"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.7,
+    "COUPLING": 0.12,
+    "SPACE": 0.4
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.78,
+    "movement": 0.72,
+    "density": 0.3,
+    "space": 0.42,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.3,
+      "oto_chiff": 0.12,
+      "oto_detune": 0.15,
+      "oto_buzz": 0.12,
+      "oto_pressure": 0.8,
+      "oto_crosstalk": 0.08,
+      "oto_filterCutoff": 5500.0,
+      "oto_filterRes": 0.12,
+      "oto_attack": 0.05,
+      "oto_decay": 0.2,
+      "oto_sustain": 0.86,
+      "oto_release": 0.5,
+      "oto_lfo1Rate": 0.5,
+      "oto_lfo1Depth": 0.55,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.58,
+      "oto_macroB": 0.7,
+      "oto_macroC": 0.12,
+      "oto_macroD": 0.4
+    }
+  },
+  "tempo": null
+}

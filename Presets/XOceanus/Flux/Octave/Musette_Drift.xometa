@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Musette Drift",
+  "mood": "Flux",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The musette tuning drifts as if the accordion is warming up — slow LFO modulation expands and contracts the detuning interval over time, never settling on a single beat rate.",
+  "tier": "standard",
+  "tags": ["flux", "musette", "french", "detuning", "drift"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.1,
+    "SPACE": 0.48
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.78,
+    "movement": 0.72,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 2,
+      "oct_cluster": 0.52,
+      "oct_chiff": 0.18,
+      "oct_detune": 0.7,
+      "oct_buzz": 0.35,
+      "oct_pressure": 0.32,
+      "oct_crosstalk": 0.22,
+      "oct_brightness": 0.48,
+      "oct_registration": 0.58,
+      "oct_roomDepth": 0.48,
+      "oct_attack": 0.04,
+      "oct_decay": 0.35,
+      "oct_sustain": 1.0,
+      "oct_release": 1.0,
+      "oct_filterEnvAmount": 0.12,
+      "oct_bendRange": 2,
+      "oct_macroCharacter": 0.55,
+      "oct_macroMovement": 0.72,
+      "oct_macroCoupling": 0.1,
+      "oct_macroSpace": 0.48,
+      "oct_lfo1Rate": 0.08,
+      "oct_lfo1Depth": 0.5,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.35,
+      "oct_lfo2Depth": 0.3,
+      "oct_lfo2Shape": 1,
+      "oct_competition": 0.08
+    }
+  },
+  "tempo": null
+}

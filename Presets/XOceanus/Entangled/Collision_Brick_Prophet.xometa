@@ -8,7 +8,7 @@
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "ORACLE's stochastic GENDY breakpoints perturb OBRIX's modular brick routing — prophecy reorders the signal chain in real time while OBRIX's brick amplitude feeds back to shift the oracle's probability distribution.",
+  "description": "ORACLE's stochastic GENDY breakpoints perturb OBRIX's modular brick routing \u2014 prophecy reorders the signal chain in real time while OBRIX's brick amplitude feeds back to shift the oracle's probability distribution.",
   "tags": [
     "collision",
     "modular",
@@ -37,18 +37,10 @@
   "parameters": {
     "Obrix": {
       "obrix_src1Type": 2,
-      "obrix_driftBusAmount": 0.55,
-      "obrix_flashAmount": 0.48,
-      "obrix_fxDrive": 0.6,
-      "obrix_filterCutoff": 0.52,
-      "obrix_outputLevel": 0.8,
       "obrix_macroCharacter": 0.626,
       "obrix_macroMovement": 0.553,
       "obrix_macroCoupling": 0.569,
-      "obrix_macroSpace": 0.5,
-      "obrix_fltEnvAmt": 0.525,
-      "obrix_lfo1Rate": 0.275,
-      "obrix_lfo1Depth": 0.266
+      "obrix_macroSpace": 0.5
     },
     "Oracle": {
       "oracle_breakpoints": 0.72,

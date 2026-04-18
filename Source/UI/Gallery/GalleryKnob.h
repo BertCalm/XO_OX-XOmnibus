@@ -93,6 +93,7 @@ public:
         if (e.mods.isCommandDown())
         {
             setValue(defaultValue, juce::sendNotificationAsync);
+            juce::Slider::mouseDown(e);
             return;
         }
         juce::Slider::mouseDown(e);

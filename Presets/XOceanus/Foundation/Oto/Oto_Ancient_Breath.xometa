@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Ancient Breath",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho at its most essential — slow bloom, dense cluster, minimal ornamentation. The sound of a reed instrument played in a stone hall where centuries have accumulated.",
+  "tier": "standard",
+  "tags": ["foundation", "sho", "dense", "ceremonial"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.1,
+    "SPACE": 0.7
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.35,
+    "movement": 0.1,
+    "density": 0.8,
+    "space": 0.75,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.85,
+      "oto_chiff": 0.06,
+      "oto_detune": 0.12,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.2,
+      "oto_crosstalk": 0.3,
+      "oto_filterCutoff": 4200.0,
+      "oto_filterRes": 0.06,
+      "oto_attack": 0.3,
+      "oto_decay": 0.8,
+      "oto_sustain": 0.92,
+      "oto_release": 1.8,
+      "oto_lfo1Rate": 0.12,
+      "oto_lfo1Depth": 0.04,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.4,
+      "oto_macroB": 0.15,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.7
+    }
+  },
+  "tempo": null
+}

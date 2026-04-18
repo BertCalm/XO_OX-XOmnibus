@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Sine + triangle through ring mod processor — crystalline inharmonic bells. Detuned sources create sum/difference tones that shimmer like glass.",
+  "description": "Sine + triangle through ring mod processor \u2014 crystalline inharmonic bells. Detuned sources create sum/difference tones that shimmer like glass.",
   "tags": [
     "obrix",
     "bell",
@@ -29,7 +29,7 @@
   ],
   "tier": "awakening",
   "guru_bin": {
-    "retreat": "OBRIX — The Living Reef",
+    "retreat": "OBRIX \u2014 The Living Reef",
     "retreat_date": "2026-03-19",
     "scripture": [
       "Verse 4: The Ring Modulator Processor",
@@ -37,8 +37,8 @@
     ],
     "revelation": null,
     "god": null,
-    "flock_note": "The Finger placed two detuned sources into Processor 3 and heard glass — The Ear confirmed the inharmonic shimmer is uniquely OBRIX.",
-    "diagnosis": "Ring Mod Bells demonstrates the ring modulator processor brick — sine and triangle detuned by a fifth generate metallic, inharmonic bell tones that no other XOceanus engine can produce in this way."
+    "flock_note": "The Finger placed two detuned sources into Processor 3 and heard glass \u2014 The Ear confirmed the inharmonic shimmer is uniquely OBRIX.",
+    "diagnosis": "Ring Mod Bells demonstrates the ring modulator processor brick \u2014 sine and triangle detuned by a fifth generate metallic, inharmonic bell tones that no other XOceanus engine can produce in this way."
   },
   "dna": {
     "brightness": 0.7,
@@ -114,10 +114,7 @@
       "obrix_driftDepth": 0.15,
       "obrix_journeyMode": 0.0,
       "obrix_distance": 0.2,
-      "obrix_air": 0.65,
-      "obrix_fltEnvAmt": 0.353,
-      "obrix_lfo1Rate": 0.119,
-      "obrix_lfo1Depth": 0.281
+      "obrix_air": 0.65
     }
   },
   "macros": {

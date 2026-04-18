@@ -116,10 +116,7 @@
       "obrix_stateReset": 0.0,
       "obrix_fxMode": 0,
       "obrix_reefResident": 0,
-      "obrix_residentStrength": 0.3,
-      "obrix_fltEnvAmt": 0.406,
-      "obrix_lfo1Rate": 0.068,
-      "obrix_lfo1Depth": 0.217
+      "obrix_residentStrength": 0.3
     }
   },
   "coupling": {

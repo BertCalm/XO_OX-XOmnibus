@@ -19,7 +19,7 @@
   "engines": [
     "Obrix"
   ],
-  "description": "Noise src1 and Sine src2 in balanced ecology: symbiosis=0.6 and competition=0.3. Neither pure cooperation nor pure competition — both forces operate simultaneously. The noise benefits from the sine's periodic structure; the sine's timbral stability is disrupted (and enriched) by the noise. Over sustained chords the balance shifts moment to moment. Mutualism is dynamic, not static.",
+  "description": "Noise src1 and Sine src2 in balanced ecology: symbiosis=0.6 and competition=0.3. Neither pure cooperation nor pure competition \u2014 both forces operate simultaneously. The noise benefits from the sine's periodic structure; the sine's timbral stability is disrupted (and enriched) by the noise. Over sustained chords the balance shifts moment to moment. Mutualism is dynamic, not static.",
   "tags": [
     "obrix",
     "entangled",
@@ -126,10 +126,7 @@
       "obrix_stressDecay": 0.0,
       "obrix_bleachRate": 0.0,
       "obrix_stateReset": 0.0,
-      "obrix_fxMode": 0,
-      "obrix_fltEnvAmt": 0.45,
-      "obrix_lfo1Rate": 0.114,
-      "obrix_lfo1Depth": 0.297
+      "obrix_fxMode": 0
     }
   }
 }

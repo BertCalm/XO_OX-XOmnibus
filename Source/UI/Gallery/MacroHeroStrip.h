@@ -21,7 +21,14 @@ namespace xoceanus
 class MacroHeroStrip : public juce::Component
 {
 public:
-    explicit MacroHeroStrip(XOceanusProcessor& proc) : processor(proc) {}
+    explicit MacroHeroStrip(XOceanusProcessor& proc) : processor(proc)
+    {
+        for (int i = 0; i < 4; ++i)
+        {
+            addChildComponent(pillars[i]);      // hidden until loadEngine
+            addChildComponent(pillarLabels[i]);
+        }
+    }
 
     // Remove MIDI learn mouse listeners from their sliders before the
     // unique_ptrs are destroyed — prevents use-after-free if a Slider still
@@ -35,6 +42,9 @@ public:
 
     // Optional: wire MIDI learn before the first loadEngine() call.
     void setMidiLearnManager(MIDILearnManager* mgr) { learnManager = mgr; }
+
+    // Compact mode: suppress header, sliders fill full height. Used in Zone 2.
+    void setCompactMode(bool c) { compactMode_ = c; resized(); repaint(); }
 
     // Call after an engine slot is selected. Returns true if at least one
     // macro param was found and the strip should be shown.
@@ -95,9 +105,23 @@ public:
             {
                 pillars[i].setSliderStyle(juce::Slider::LinearVertical);
                 pillars[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
-                pillars[i].setColour(juce::Slider::trackColourId, accent.withAlpha(0.18f));
-                pillars[i].setColour(juce::Slider::thumbColourId, accent);
-                pillars[i].setColour(juce::Slider::backgroundColourId, GalleryColors::get(GalleryColors::borderGray()));
+                if (compactMode_)
+                {
+                    // Submarine: XO Gold faders, visible track against dark glass
+                    pillars[i].setColour(juce::Slider::trackColourId,
+                                         juce::Colour(GalleryColors::xoGold).withAlpha(0.25f));
+                    pillars[i].setColour(juce::Slider::thumbColourId,
+                                         juce::Colour(GalleryColors::xoGold));
+                    pillars[i].setColour(juce::Slider::backgroundColourId,
+                                         juce::Colour(200, 204, 216).withAlpha(0.08f));
+                }
+                else
+                {
+                    pillars[i].setColour(juce::Slider::trackColourId, accent.withAlpha(0.18f));
+                    pillars[i].setColour(juce::Slider::thumbColourId, accent);
+                    pillars[i].setColour(juce::Slider::backgroundColourId,
+                                         GalleryColors::get(GalleryColors::borderGray()));
+                }
                 pillars[i].setTooltip(foundNames[i]);
                 A11y::setup(pillars[i], foundNames[i]);
 
@@ -140,31 +164,48 @@ public:
         using namespace GalleryColors;
         auto b = getLocalBounds().toFloat();
 
-        // Background — slightly tinted with accent
-        g.setColour(get(elevated()));
-        g.fillRoundedRectangle(b, 4.0f);
-
-        // Gradient overlay — subtle top-down highlight
+        if (compactMode_)
         {
-            juce::ColourGradient overlay(juce::Colour(0x04FFFFFF), 0.0f, 0.0f, juce::Colours::transparentBlack, 0.0f,
-                                         b.getHeight(), false);
+            // Submarine dark glass background — distinct from panel bg (20,23,32)
+            g.setColour(juce::Colour(30, 34, 46));
+            g.fillRoundedRectangle(b, 6.0f);
+            // Subtle teal border
+            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.10f));
+            g.drawRoundedRectangle(b.reduced(0.5f), 6.0f, 1.0f);
+            // "MACROS" label at top
+            g.setFont(GalleryFonts::value(9.0f));
+            g.setColour(juce::Colour(GalleryColors::xoGold).withAlpha(0.5f));
+            g.drawText("MACROS", b.toNearestInt().removeFromTop(16).reduced(2, 0),
+                       juce::Justification::centred);
+        }
+        else
+        {
+            // Gallery mode background
+            g.setColour(get(elevated()));
+            g.fillRoundedRectangle(b, 4.0f);
+            // Gradient overlay
+            juce::ColourGradient overlay(juce::Colour(0x04FFFFFF), 0.0f, 0.0f,
+                                         juce::Colours::transparentBlack, 0.0f, b.getHeight(), false);
             g.setGradientFill(overlay);
             g.fillRoundedRectangle(b, 4.0f);
         }
 
-        // Accent top strip
-        g.setColour(accentColour);
-        g.fillRect(b.removeFromTop(3.0f));
+        if (!compactMode_)
+        {
+            // Accent top strip
+            g.setColour(accentColour);
+            g.fillRect(b.removeFromTop(3.0f));
 
-        // Engine name header line
-        g.setColour(accentColour.darker(0.2f));
-        g.setFont(GalleryFonts::display(11.0f));
-        g.drawText(engineName.toUpperCase() + "  —  MACROS", 8, 3, getWidth() - 16, kHeaderH - 3,
-                   juce::Justification::centredLeft);
+            // Engine name header line
+            g.setColour(accentColour.darker(0.2f));
+            g.setFont(GalleryFonts::display(11.0f));
+            g.drawText(engineName.toUpperCase() + "  —  MACROS", 8, 3, getWidth() - 16, kHeaderH - 3,
+                       juce::Justification::centredLeft);
 
-        // Thin separator under header
-        g.setColour(juce::Colour(GalleryColors::xoGold).withAlpha(0.45f));
-        g.drawHorizontalLine(kHeaderH, 8.0f, (float)(getWidth() - 8));
+            // Thin separator under header
+            g.setColour(juce::Colour(GalleryColors::xoGold).withAlpha(0.45f));
+            g.drawHorizontalLine(kHeaderH, 8.0f, (float)(getWidth() - 8));
+        }
     }
 
     // W25: Repaint when the LookAndFeel (theme) changes so colours update.
@@ -176,9 +217,9 @@ public:
             return;
 
         const int labelH = 14;
-        const int sliderY = kHeaderH + 4;
+        const int sliderY = compactMode_ ? 18 : (kHeaderH + 4); // 18px: below "MACROS" label
         const int sliderH = getHeight() - sliderY - labelH - 4;
-        const int colW = getWidth() / 4;
+        const int colW = getWidth() / juce::jmax(1, numMacros);
 
         for (int i = 0; i < numMacros; ++i)
         {
@@ -195,6 +236,7 @@ private:
     juce::String engineName;
     juce::Colour accentColour{GalleryColors::get(GalleryColors::borderGray())};
     int numMacros = 0;
+    bool compactMode_ = false;
     MIDILearnManager* learnManager = nullptr;
 
     std::array<juce::Slider, 4> pillars;

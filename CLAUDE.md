@@ -6,7 +6,7 @@
 
 XOceanus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **77 engines implemented (101 in full fleet design)**
+and mutate into sounds impossible with any single synth. **88 engines implemented (101 in full fleet design)**
 — full engine color table + accent colors: `Docs/reference/engine-color-table.md`
 
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
@@ -109,6 +109,8 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Ochre | `ochre_` | `ochre_woodResonance` |
 | Obelisk | `obel_` | `obel_stringMass` |
 | Opaline | `opal2_` | `opal2_preparedDensity` |
+| Ogive | `ogv_` | `ogv_tracery_stiff` |
+| Olvido | `olv_` | `olv_depth` |
 | Ogre | `ogre_` | `ogre_subFreq` |
 | Olate | `olate_` | `olate_fretlessGlide` |
 | Oaken | `oaken_` | `oaken_stringAge` |
@@ -154,6 +156,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Outlaw | `outl_` | `outl_diodeClip` |
 | Outbreak | `outb_` | `outb_virusFilter` |
 | Orrery | `orry_` | `orry_planetSpeed` |
+| Ostracon | `ostr_` | `ostr_oxide` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -165,7 +168,7 @@ See `Docs/specs/xoceanus_name_migration_reference.md` for the full mapping and g
 |------|---------|
 | `Docs/specs/xoceanus_master_specification.md` | **THE** single source of truth |
 | `Docs/specs/xoceanus_name_migration_reference.md` | Legacy → canonical engine name mapping |
-| `Docs/reference/engine-color-table.md` | Full engine color table + Blessings + Debates (77 implemented, 101 fleet design) |
+| `Docs/reference/engine-color-table.md` | Full engine color table + Blessings + Debates (79 implemented, 101 fleet design) |
 | `Source/Core/SynthEngine.h` | Engine interface (all engines implement this) |
 | `Source/Core/EngineRegistry.h` | Factory + 4-slot management |
 | `Source/Core/MegaCouplingMatrix.h` | Cross-engine modulation |
@@ -270,7 +273,7 @@ Full process: `Docs/specs/xoceanus_new_engine_process.md`
 
 ## V1 Scope — "The Deep Opens"
 
-V1 ships OBRIX flagship + 6-8 FX engines + 20-25 curated engines (~28-34 total). Full 101-engine fleet design is personal; V1 gating is public release only (77 engines implemented to date). See `Docs/plans/v1-scope-revision-2026-03-23.md`.
+V1 ships OBRIX flagship + 6-8 FX engines + 20-25 curated engines (~28-34 total). Full 101-engine fleet design is personal; V1 gating is public release only (79 engines implemented to date). See `Docs/plans/v1-scope-revision-2026-03-23.md`.
 
 **Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked.
 
@@ -289,7 +292,7 @@ All 6 quads built, seanced, and Guru Bin retreats complete (2026-03-23):
 
 ## Fleet Quality Summary
 
-- **75/77 engines seanced** (75/101 full fleet design). Fleet average ~8.8/10. Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0).
+- **75/79 engines seanced** (75/101 full fleet design). Fleet average ~8.8/10. Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0).
 - **All 6 doctrines resolved fleet-wide** (D001–D006). Prism Sweep 12-round pass complete (2026-03-14).
 - **43 Blessings** awarded — full table: `Docs/reference/engine-color-table.md`
 - **5 Ongoing Debates** (DB001–DB005) — see reference table

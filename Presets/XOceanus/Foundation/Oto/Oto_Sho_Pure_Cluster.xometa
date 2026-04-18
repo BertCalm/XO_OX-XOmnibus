@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Sho Pure Cluster",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Sho at its most essential — eleven pipes sounding together in perfect aitake cluster. Zero buzz, zero pressure flutter, just the luminous spread of harmonics that made the Sho a voice of the gods.",
+  "tier": "standard",
+  "tags": ["foundation", "sho", "cluster", "clean", "japanese"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.25,
+    "movement": 0.1,
+    "density": 0.7,
+    "space": 0.5,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.75,
+      "oto_chiff": 0.08,
+      "oto_detune": 0.05,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.05,
+      "oto_crosstalk": 0.15,
+      "oto_filterCutoff": 7500.0,
+      "oto_filterRes": 0.08,
+      "oto_attack": 0.04,
+      "oto_decay": 0.2,
+      "oto_sustain": 0.92,
+      "oto_release": 0.5,
+      "oto_lfo1Rate": 0.15,
+      "oto_lfo1Depth": 0.03,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.6,
+      "oto_macroB": 0.1,
+      "oto_macroC": 0.0,
+      "oto_macroD": 0.5
+    }
+  },
+  "tempo": null
+}

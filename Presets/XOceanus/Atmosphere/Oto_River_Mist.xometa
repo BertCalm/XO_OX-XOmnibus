@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "River Mist",
+  "mood": "Atmosphere",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene drift becoming ambient — the buzz softened to near-nothing, pressure instability creating a gentle organic swell, the long release leaving traces of each note behind.",
+  "tier": "standard",
+  "tags": ["atmosphere", "khene", "mist", "drift", "sustained"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.12,
+    "SPACE": 0.72
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.62,
+    "movement": 0.3,
+    "density": 0.5,
+    "space": 0.78,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.5,
+      "oto_chiff": 0.05,
+      "oto_detune": 0.18,
+      "oto_buzz": 0.08,
+      "oto_pressure": 0.35,
+      "oto_crosstalk": 0.2,
+      "oto_filterCutoff": 5000.0,
+      "oto_filterRes": 0.08,
+      "oto_attack": 0.45,
+      "oto_decay": 1.2,
+      "oto_sustain": 0.9,
+      "oto_release": 2.6,
+      "oto_lfo1Rate": 0.25,
+      "oto_lfo1Depth": 0.1,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.42,
+      "oto_macroB": 0.3,
+      "oto_macroC": 0.12,
+      "oto_macroD": 0.72
+    }
+  },
+  "tempo": null
+}
