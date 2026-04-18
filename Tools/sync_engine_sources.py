@@ -55,6 +55,11 @@ SENTINEL_PATTERN = re.compile(
 SENTINEL_DESIGNED_PATTERN = re.compile(
     r"<!--\s*ENGINE_COUNT_DESIGNED\s*-->[^<]*<!--\s*/ENGINE_COUNT_DESIGNED\s*-->"
 )
+# HTML attribute-value trap: <!-- ... --> inside a content="..." attribute becomes
+# literal text (not a comment) and leaks into SEO/social previews. Detect it.
+ATTR_SENTINEL_TRAP = re.compile(
+    r'\w+\s*=\s*"[^"]*<!--\s*ENGINE_COUNT(?:_DESIGNED)?\s*-->'
+)
 
 
 # ---------------------------------------------------------------------------
@@ -323,6 +328,15 @@ SENTINEL_FILES: list[str] = [
 ]
 
 
+# Detects a sentinel comment sitting inside an HTML attribute value (between an
+# =" and the next "). HTML comments are NOT parsed inside attribute values, so
+# any <!-- ... --> placed there will leak verbatim into SEO / social previews.
+# Guard for this so we catch the mistake at sync time.
+_ATTR_TRAPPED_SENTINEL = re.compile(
+    r'=\s*"[^"]*<!--\s*ENGINE_COUNT(?:_DESIGNED)?\s*-->'
+)
+
+
 def _apply_sentinel(text: str, pattern: re.Pattern, tag: str, n: int) -> tuple[str, int]:
     """Replace every sentinel of the given tag with the count N. Returns (new_text, count_found)."""
     matches = pattern.findall(text)
@@ -341,6 +355,14 @@ def update_sentinels(implemented: int, designed: int, check_only: bool = False) 
         if not path.exists():
             continue
         text = path.read_text()
+
+        # Guard: sentinels trapped inside HTML attribute values are unparsed
+        # comments and will appear as literal text in output. Fail fast.
+        if _ATTR_TRAPPED_SENTINEL.search(text):
+            print(f"[check] sentinel in HTML attribute value (leaks as literal text): {rel}")
+            print(f"        hardcode the number in attribute values; sentinels only work in element body.")
+            ok = False
+
         new_text, n_impl = _apply_sentinel(text, SENTINEL_PATTERN, "ENGINE_COUNT", implemented)
         new_text, n_des = _apply_sentinel(new_text, SENTINEL_DESIGNED_PATTERN, "ENGINE_COUNT_DESIGNED", designed)
         if n_impl == 0 and n_des == 0:

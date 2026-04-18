@@ -43,8 +43,11 @@ enum class CouplingType {
 
     // --- Bidirectional -----------------------------------------------------
     KnotTopology,      ///< Both engines mutually modulate each other's pitch/filter/morph
-                       ///< via a shared knot state variable. Activation in the
-                       ///< MegaCouplingMatrix is planned — see coupling roadmap.
+                       ///< via a shared knot state variable. Active in the host —
+                       ///< MegaCouplingMatrix routes knot traffic through
+                       ///< processKnotRoute() and intentionally excludes
+                       ///< KnotTopology from acyclic-graph cycle detection
+                       ///< because the coupling is bidirectional by design.
 
     // --- Love triangle ---------------------------------------------------
     TriangularCoupling ///< Source engine's intimacy/passion/connection bleed into
