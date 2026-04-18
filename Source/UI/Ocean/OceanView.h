@@ -1713,10 +1713,11 @@ private:
             orbit.stepAnimation();
 
         // Update coupling curves with visual positions (spring offset included).
-        // setCreatureCenter early-outs when position is unchanged, so this is
-        // cheap for idle orbits and only rebuilds paths during drag/settling.
+        // Skip orbits that are being dragged — their drag callback handles it
+        // exclusively to avoid competing updates.
         for (int i = 0; i < 5; ++i)
-            if (orbits_[i].hasEngine())
+            if (orbits_[i].hasEngine()
+                && orbits_[i].getInputState() != EngineOrbit::InputState::UserDragging)
                 substrate_.setCreatureCenter(i, orbits_[i].getVisualCenter());
 
         // Repaint only orbits that are actively animating.
