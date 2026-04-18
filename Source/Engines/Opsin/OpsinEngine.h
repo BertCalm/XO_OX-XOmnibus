@@ -387,6 +387,7 @@ public:
         ampEnv.kill();
         filterEnv.kill();
         outputFilter.reset();
+        outputFilterR.reset();
 
         lfo1.reset();
         lfo2.reset();
@@ -805,6 +806,7 @@ public:
                 const float effectiveCutoff = clamp(smoothCutoff + fenvOffset, 20.0f, 20000.0f);
 
                 outputFilter.setCoefficients_fast(effectiveCutoff, rawReso, sampleRateFloat);
+                outputFilterR.setCoefficients_fast(effectiveCutoff, rawReso, sampleRateFloat);
             }
 
             // ---- Per-node processing ----
@@ -907,28 +909,34 @@ public:
             for (int n = 0; n < kOpsinNodes; ++n)
                 nodeOutputs[n] *= govScale;
 
-            // ---- Sum all node outputs ----
-            float mixedOut = 0.0f;
-            for (int n = 0; n < kOpsinNodes; ++n)
-                mixedOut += nodeOutputs[n];
-            mixedOut *= (1.0f / static_cast<float>(kOpsinNodes)); // normalize
-            mixedOut  = flushDenormal(mixedOut);
+            // ---- Sum node outputs with stereo spread ----
+            // Even nodes (0,2,4) → L bias, odd nodes (1,3,5) → R bias
+            float sumEven = 0.0f;
+            float sumOdd  = 0.0f;
+            for (int n = 0; n < kOpsinNodes; n += 2)
+                sumEven += nodeOutputs[n];
+            for (int n = 1; n < kOpsinNodes; n += 2)
+                sumOdd  += nodeOutputs[n];
 
-            // ---- Output filter ----
-            float filtered = outputFilter.processSample(mixedOut);
-            filtered = flushDenormal(filtered);
+            constexpr float kNodeNorm = 1.0f / static_cast<float>(kOpsinNodes);
+            const float mono = (sumEven + sumOdd) * kNodeNorm;
+
+            // Crossfade: spread 0 = mono (both get same mix), spread 1 = full separation
+            const float spr = paramSpread;
+            const float mixL = flushDenormal(mono + spr * (sumEven * (2.0f * kNodeNorm) - mono));
+            const float mixR = flushDenormal(mono + spr * (sumOdd  * (2.0f * kNodeNorm) - mono));
+
+            // ---- Output filter (per-channel for stereo coherence) ----
+            float filteredL = flushDenormal(outputFilter.processSample(mixL));
+            float filteredR = flushDenormal(outputFilterR.processSample(mixR));
 
             // ---- Amp envelope (shapes network output level) ----
             const float ampLevel = ampEnv.process() * smoothAmpLevel;
             filterEnv.process(); // tick filter env
 
-            // ---- Final output sample ----
-            float outSample = filtered * ampLevel;
-
-            // ---- Stereo (slight spread using node index modulation) ----
-            // Pairs: L uses nodes 0,2,4 / R uses nodes 1,3,5
-            float outL = outSample;
-            float outR = outSample;
+            // ---- Final output samples ----
+            float outL = filteredL * ampLevel;
+            float outR = filteredR * ampLevel;
 
             // cache
             if (s < static_cast<int>(outCacheL.size()))
@@ -1302,11 +1310,11 @@ private:
     {
         switch (fltType)
         {
-            case 0: outputFilter.setMode(CytomicSVF::Mode::LowPass);  break;
-            case 1: outputFilter.setMode(CytomicSVF::Mode::HighPass); break;
-            case 2: outputFilter.setMode(CytomicSVF::Mode::BandPass); break;
-            case 3: outputFilter.setMode(CytomicSVF::Mode::Notch);    break;
-            default: outputFilter.setMode(CytomicSVF::Mode::LowPass); break;
+            case 0: outputFilter.setMode(CytomicSVF::Mode::LowPass);  outputFilterR.setMode(CytomicSVF::Mode::LowPass);  break;
+            case 1: outputFilter.setMode(CytomicSVF::Mode::HighPass); outputFilterR.setMode(CytomicSVF::Mode::HighPass); break;
+            case 2: outputFilter.setMode(CytomicSVF::Mode::BandPass); outputFilterR.setMode(CytomicSVF::Mode::BandPass); break;
+            case 3: outputFilter.setMode(CytomicSVF::Mode::Notch);    outputFilterR.setMode(CytomicSVF::Mode::Notch);    break;
+            default: outputFilter.setMode(CytomicSVF::Mode::LowPass); outputFilterR.setMode(CytomicSVF::Mode::LowPass); break;
         }
     }
 
@@ -1357,6 +1365,7 @@ private:
 
     // ---- Output filter ----
     CytomicSVF outputFilter;
+    CytomicSVF outputFilterR;  // stereo spread: separate filter for R channel
 
     // ---- Envelopes ----
     StandardADSR ampEnv;
