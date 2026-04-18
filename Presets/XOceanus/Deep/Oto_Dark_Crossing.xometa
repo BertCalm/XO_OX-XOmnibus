@@ -1,21 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Dark Crossing",
+  "name": "Dark Crossing II",
   "mood": "Deep",
-  "engines": ["Oto"],
+  "engines": [
+    "Oto"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sheng at the threshold where it stops being bright — filter pulled far below its natural range, slow attack crossing into unknown territory. Still recognizably Sheng, but transformed.",
+  "description": "Sheng at the threshold where it stops being bright \u2014 filter pulled far below its natural range, slow attack crossing into unknown territory. Still recognizably Sheng, but transformed.",
   "tier": "standard",
-  "tags": ["deep", "sheng", "dark", "threshold", "slow"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "sheng",
+    "dark",
+    "threshold",
+    "slow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.48,
     "MOVEMENT": 0.18,
     "COUPLING": 0.12,
     "SPACE": 0.62
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.15,

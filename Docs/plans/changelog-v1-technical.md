@@ -1,3 +1,12 @@
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> The "V1 launch" / "V1 release" framing has been retired. XOceanus does not
+> operate on a fixed-version release model. Build and refine until ready; ship
+> when ready. This document is preserved for historical reference only.
+> See `CLAUDE.md` → *Release Philosophy*.
+>
+> ---
+
 # XOceanus V1 Technical Changelog
 
 **Date Range:** March 2026 (2026-03-01 through 2026-03-20)

@@ -45,7 +45,7 @@
       "flow_macroSpace": 0.56
     },
     "OpenSky": {
-      "sky_macroRise": 0.62,
+      "sky_macroRise": 0.52,
       "sky_filterEnvAmt": 0.5,
       "sky_lfo1Rate": 0.15,
       "sky_lfo1Depth": 0.28,

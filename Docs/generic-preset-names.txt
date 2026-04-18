@@ -13,7 +13,7 @@ All 13 are in the Foundation mood (starter/init patches for their engines).
 
 These names are NOT bugs — they are functional init patches used as blank
 canvases. However, per CLAUDE.md naming rules ("evocative, max 30 chars,
-no jargon"), they should receive identity names before V1 release.
+no jargon"), they should receive identity names before public release.
 
 WHAT TO DO
 ==========

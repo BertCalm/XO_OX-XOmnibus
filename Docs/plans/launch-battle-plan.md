@@ -1,4 +1,12 @@
-# XOceanus Launch Battle Plan — Path to 10/10
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> The "launch battle plan" / "path to V1" framing has been retired. XOceanus does not
+> operate on a fixed-version release model. Build and refine until ready; ship when ready.
+> This document is preserved for historical reference only. See `CLAUDE.md` → *Release Philosophy*.
+
+---
+
+# XOceanus Launch Battle Plan — Path to 10/10 (HISTORICAL)
 
 ## Top 50 Opus Tracks (Creative / Architecture / Design)
 

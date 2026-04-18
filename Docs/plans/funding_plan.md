@@ -89,7 +89,7 @@ Khan Sultan's highest-value insight: the SDK isn't for 1,000 amateur engine crea
 
 ## What Stays Free (Non-Negotiable)
 
-- XOceanus core (all 34+ V1 engines)
+- XOceanus core (all 34+ core engines)
 - All factory presets (11,000+)
 - OBRIX Level 1 (core synthesis toy box)
 - OBRIX training mode (Professor Oscar)
@@ -117,15 +117,15 @@ Khan Sultan's highest-value insight: the SDK isn't for 1,000 amateur engine crea
 
 ## Timeline
 
-- **V1.0 launch:** Patreon goes live. First patron tier active.
-- **V1.1 (Aquatic FX):** First patron-exclusive preset pack ships.
-- **V1.2:** First XPN expansion pack ships ($10).
-- **Post-V1.2:** OSTINATO ships as first premium boutique engine ($20).
+- **Core launch:** Patreon goes live. First patron tier active.
+- **Aquatic FX milestone:** First patron-exclusive preset pack ships.
+- **First XPN pack:** XPN expansion pack ships ($10).
+- **Next milestone:** OSTINATO ships as first premium boutique engine ($20).
 - **OBRIX launch:** B2B outreach to education platforms begins.
 
 ## Open Questions
 
-1. Should OBRIX Levels 2-4 be free or paid? (Depends on Patreon trajectory by V1.4)
+1. Should OBRIX Levels 2-4 be free or paid? (Depends on Patreon trajectory)
 2. Should Collections (Kitchen/Travel/Artwork) be paid expansions or Patreon-funded free content?
 3. What's the right price for premium engines? ($15? $20? $25? Market test with OSTINATO)
 4. Should XPN packs be sold through the MPC Store (Akai takes a cut) or direct on xoox.design?

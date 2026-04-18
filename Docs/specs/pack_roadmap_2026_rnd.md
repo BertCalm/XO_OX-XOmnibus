@@ -8,7 +8,7 @@
 
 Fleet Render Automation (renderNoteToWav() in JUCE) is the production multiplier that makes a pack economy viable. Without it, sound design is $2/hr equivalent output. With it, $166-333/hr. This roadmap assumes render automation ships in April 2026 alongside the first pack. If it slips, Q2 packs slip with it — do not hand-render 500 samples.
 
-Current fleet: 39 engines in XOceanus (as of 2026-03-19: OSTINATO, OPENSKY, OCEANDEEP, OUIE DSP-complete 2026-03-18; OBRIX added 2026-03-19). 39 engines total is the addressable V1 catalog.
+Current fleet: 39 engines in XOceanus (as of 2026-03-19: OSTINATO, OPENSKY, OCEANDEEP, OUIE DSP-complete 2026-03-18; OBRIX added 2026-03-19). 39 engines total is the addressable catalog.
 
 Distribution stack Year 1: Gumroad (primary), Patreon (subscription layer), MPC-Forums (free seeding). MPCe 3D pad packs carry a 25% premium — that window is open now and closes in 6-12 months as competitors catch up.
 
@@ -28,10 +28,10 @@ Distribution stack Year 1: Gumroad (primary), Patreon (subscription layer), MPC-
 | Jul 2026 | **String Theory** | OBBLIGATO | 40 dual-wind programs | $12 | Constellation showcase pack |
 | Aug 2026 | **ONSET Complete Collection** | ONSET | all 8 kits, all vel layers, bonus FX | $28 | First "complete" bundle, 2x kit count |
 | Aug 2026 | **Copper Wash** | OVERDUB | 40 dub/tape programs | $12 | Performance-ready, coupling presets |
-| Sep 2026 | **Deep Signal** | OCEANDEEP | 50 abyssal bass programs | $14 | V1 engine debut pack |
+| Sep 2026 | **Deep Signal** | OCEANDEEP | 50 abyssal bass programs | $14 | New engine debut pack |
 | Sep 2026 | **Community Drop Vol. 1** | mixed | curated community submissions | FREE/$8 | Pipeline test — free tier + supporter edition |
 | Oct 2026 | **Harvest Bundle** | ONSET+OVERBITE+DRIFT | 3-pack bundle | $28 | Holiday ramp-up, saves $10 vs individual |
-| Oct 2026 | **Open Sky Sessions** | OPENSKY | 50 euphoric shimmer programs | $14 | V1 engine debut |
+| Oct 2026 | **Open Sky Sessions** | OPENSKY | 50 euphoric shimmer programs | $14 | New engine debut |
 | Nov 2026 | **Black Friday Vault** | 10+ engines | mega-bundle, deepest discount | $49 | Everything released to date, 50% off |
 | Nov 2026 | **Brass Circle** | OTTONI | 40 triple-brass programs, MPCe | $18 | MPCe premium, third quad-format pack |
 | Dec 2026 | **Year 1 Retrospective Drop** | all | Patreon-exclusive "vault keys" | Patreon | Patron reward, no public release |
@@ -99,6 +99,6 @@ If Theorem engine ORGANISM ships in V2, a beta release in February tests the gen
 ## Dependencies
 
 1. **renderNoteToWav() must ship before April 15** — all Q2 pack production assumes automation.
-2. **V1 engines (OSTINATO/OPENSKY/OCEANDEEP/OUIE) must ship by August** — Sep packs depend on them.
+2. **Concept engines (OSTINATO/OPENSKY/OCEANDEEP/OUIE) must ship by August** — Sep packs depend on them.
 3. **MPCe format validation** — confirm 3D pad quad-corner mapping works in MPC 3.x firmware before committing Prism Vol. 1 to May slot.
 4. **Patreon page live by May 15** — June launch target requires 2-week ramp with existing audience.

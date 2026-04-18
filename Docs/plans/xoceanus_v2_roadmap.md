@@ -1,7 +1,16 @@
-# XOceanus V2 Roadmap
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> This document was structured around a V1/V2 release-gated roadmap. XOceanus
+> has retired that framing — there is no fixed release cutoff. The ideas below
+> may still be relevant as "future work", but the V1-vs-V2 partitioning should
+> not be cited as current direction. See `CLAUDE.md` → *Release Philosophy*.
 
-*Drafted: 2026-03-14 (mid next week target: ~2026-03-18)*
-*Scope rule: V1 = everything that existed by 2026-03-14 EOD. V2 = anything born after that date.*
+---
+
+# XOceanus V2 Roadmap (HISTORICAL)
+
+*Drafted: 2026-03-14 — retired 2026-04-16*
+*Original scope rule: V1 = everything that existed by 2026-03-14 EOD. V2 = anything born after that date. This partitioning has been retired.*
 
 ---
 

@@ -740,6 +740,7 @@ public:
         oceanView_.initWaterline(proc.getAPVTS(), proc.getMasterFXChain().getSequencer());
         oceanView_.initChordBar(proc.getAPVTS(), proc.getChordMachine());
         oceanView_.initMasterFxStrip(proc.getAPVTS());
+        oceanView_.initEpicSlotsPanel(proc.getAPVTS());
         oceanView_.initTransportBar();
         // Wire transport bar callbacks.
         if (auto* tb = oceanView_.getTransportBar())

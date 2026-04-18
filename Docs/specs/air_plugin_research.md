@@ -98,9 +98,9 @@ These tasks require novel architecture decisions, DSP porting, or SDK reverse-en
 
 1. **Now**: Ship `params_sidecar.json` in all new XPN packs. Zero dependencies, immediate value
    for XOceanus users.
-2. **V1.1**: Build XOceanus sidecar importer. Sonnet-buildable in one session.
-3. **V1.x**: Notarize XOceanus for signed distribution. Link from pack pages.
-4. **V2**: Monitor MPC Software for third-party plugin bundle support. File a feature request with
+2. **Next**: Build XOceanus sidecar importer. Sonnet-buildable in one session.
+3. **Follow-up**: Notarize XOceanus for signed distribution. Link from pack pages.
+4. **Later**: Monitor MPC Software for third-party plugin bundle support. File a feature request with
    Akai. Full `plugin_bundle/` ZIP architecture is the target when that gate opens.
 
 Full architecture detail (bundle layout, manifest spec, expansion.json format) lives in

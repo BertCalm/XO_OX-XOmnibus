@@ -14,11 +14,21 @@
     "pairs": []
   },
   "sequencer": null,
-  "name": "Sediment Layer",
+  "name": "Sediment Layer II",
   "mood": "Deep",
-  "engines": ["Oxidize"],
-  "description": "Each note adds another geological layer to the shared FDN reverb — attacks are clean but sink into accumulating thick sediment, the space itself aging across the session as notes deposit their reverb tails.",
-  "tags": ["oxidize", "deep", "sediment", "layer", "reverb", "accumulate", "geological"],
+  "engines": [
+    "Oxidize"
+  ],
+  "description": "Each note adds another geological layer to the shared FDN reverb \u2014 attacks are clean but sink into accumulating thick sediment, the space itself aging across the session as notes deposit their reverb tails.",
+  "tags": [
+    "oxidize",
+    "deep",
+    "sediment",
+    "layer",
+    "reverb",
+    "accumulate",
+    "geological"
+  ],
   "tier": "awakening",
   "dna": {
     "brightness": 0.15,

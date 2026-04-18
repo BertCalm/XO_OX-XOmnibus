@@ -49,7 +49,7 @@ Even after this sprint, several engines will remain undercoupled:
 
 **Overlap** — external coverage limited to OPAL, ORACLE, and sparse Constellation pairs. Needs systematic pairing with DRIFT, OBLONG, OVERBITE, ONSET.
 
-**4 Concept Engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE)** — zero coupling coverage possible until DSP is built and integrated. These 4 engines represent 4 × 30 = 120 potential pairs (against all other 30 engines), meaning the hard ceiling for coupling coverage without them is 441/561 = 78.6%. A true 100% pass is blocked until V1 DSP is complete.
+**4 Concept Engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE)** — zero coupling coverage possible until DSP is built and integrated. These 4 engines represent 4 × 30 = 120 potential pairs (against all other 30 engines), meaning the hard ceiling for coupling coverage without them is 441/561 = 78.6%. A true 100% pass is blocked until concept engine DSP is complete.
 
 ---
 

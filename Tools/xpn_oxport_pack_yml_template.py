@@ -24,7 +24,7 @@ KNOWN_ENGINES = {
     "OVERBITE", "OPTIC", "OBLIQUE", "OSPREY", "OSTERIA", "OWLFISH",
     "OHM", "ORPHICA", "OBBLIGATO", "OTTONI", "OLE", "OMBRE", "ORCA",
     "OCTOPUS", "OVERLAP", "OUTWIT",
-    # V1 concept engines (no source yet)
+    # Concept engines (no source yet)
     "OSTINATO", "OPENSKY", "OCEANDEEP", "OUIE",
 }
 

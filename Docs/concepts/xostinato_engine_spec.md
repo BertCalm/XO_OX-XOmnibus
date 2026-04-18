@@ -2,7 +2,7 @@
 
 **Date:** March 16, 2026
 **Phase:** 1 — Architecture R&D
-**Status:** V1 Scope — DSP build pending
+**Status:** Initial Scope — DSP build pending
 **Gallery code:** OSTINATO
 **Accent color:** Firelight Orange `#E8701A`
 **Parameter prefix:** `osti_`
@@ -387,4 +387,4 @@ Names should feel communal, warm, physical:
 
 ---
 
-*XO_OX Designs | Engine: OSTINATO | Accent: #E8701A | Prefix: osti_ | V1 scope | Phase 1 R&D*
+*XO_OX Designs | Engine: OSTINATO | Accent: #E8701A | Prefix: osti_ | initial scope | Phase 1 R&D*

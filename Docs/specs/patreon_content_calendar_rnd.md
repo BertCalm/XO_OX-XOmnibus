@@ -68,7 +68,7 @@ The model is straightforward: give away enough that the value is obvious at ever
 
 **Theme:** Why XO_OX Patreon exists
 
-**Pack (T2 free):** ONSET Drum Essentials — 8-voice electronic kit, 4 velocity layers, full Sonic DNA spread. First public demonstration of V1 drum synthesis quality.
+**Pack (T2 free):** ONSET Drum Essentials — 8-voice electronic kit, 4 velocity layers, full Sonic DNA spread. First public demonstration of drum synthesis quality.
 
 **Posts:**
 1. **Launch post** — the honest version of why we're doing this. Not a pitch. A story. Where XO_OX came from, where it's going, what Patreon enables that retail alone can't.
@@ -133,10 +133,10 @@ The model is straightforward: give away enough that the value is obvious at ever
 **Pack:** No new paid pack this month — consolidation month.
 
 **Posts:**
-1. **Mid-year check-in** — what's been built, what's coming, honest status on V1 scope.
+1. **Mid-year check-in** — what's been built, what's coming, honest status on scope.
 2. **Community challenge results: Constellation engines** — the best submissions, Kai's notes.
 3. **Field Guide cross-post** — republish or excerpt a Field Guide entry relevant to Patreon producers. Introduce the Field Guide to patrons who don't know it.
-4. **T1 exclusive: What's in the V1 pipeline** — the engines and packs coming in the next 6 months.
+4. **T1 exclusive: What's in the pipeline** — the engines and packs coming in the next 6 months.
 
 **Subscriber milestone:** Celebrate first milestone (25/50/100 T2 subscribers reached — whichever is next).
 
@@ -255,7 +255,7 @@ The Patreon launch should not go live before this threshold is reached or public
 
 > **Why XO_OX Patreon exists**
 >
-> [2–3 paragraphs: honest account of what it costs to build this many engines, how Patreon enables the V1 scope, what recurring funding means for the pace of development and the quality of the tools]
+> [2–3 paragraphs: honest account of what it costs to build this many engines, how Patreon enables the scope, what recurring funding means for the pace of development and the quality of the tools]
 >
 > [1 paragraph: what patrons get — the three tiers summarized plainly, the break-even logic explained without embarrassment]
 >

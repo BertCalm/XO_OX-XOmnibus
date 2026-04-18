@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Trench Drone",
+  "name": "Trench Drone II",
   "mood": "Foundation",
-  "engines": ["Overlap"],
+  "engines": [
+    "Overlap"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Tidal knot locked at maximum depth — bioluminescence extinguished, only the slow current remains. A foundational tone from the ocean floor.",
-  "tags": ["foundation", "dark", "drone", "trench", "sub-bass"],
-  "macroLabels": ["KNOT", "PULSE", "ENTRAIN", "BLOOM"],
+  "description": "Tidal knot locked at maximum depth \u2014 bioluminescence extinguished, only the slow current remains. A foundational tone from the ocean floor.",
+  "tags": [
+    "foundation",
+    "dark",
+    "drone",
+    "trench",
+    "sub-bass"
+  ],
+  "macroLabels": [
+    "KNOT",
+    "PULSE",
+    "ENTRAIN",
+    "BLOOM"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -65,7 +78,9 @@
       "olap_atPressureDepth": 0.28
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "KNOT": 0.12,

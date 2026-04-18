@@ -128,7 +128,7 @@ Per voice:
 - Gravity mass (accumulated weight)
 - Gravity parameter value (user-controlled pull strength)
 
-**How receiving engines use it (V2 — not implemented in V1):**
+**How receiving engines use it (Phase 2 — not yet implemented):**
 - Read active notes from CELLAR engine via SynthEngine interface
 - Compute harmonic series from CELLAR fundamental (8 harmonics)
 - Apply per-voice pitch displacement toward nearest harmonic at control rate

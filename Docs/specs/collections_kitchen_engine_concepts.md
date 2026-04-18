@@ -560,8 +560,8 @@ The collection's unique contribution is:
 3. XPN exports tuned for each voice's culinary identity
 4. The COLLECTION_MANIFEST.json architecture enabling multi-pack coherence on MPC
 
-**V2 timeline implication:**
-Because Grand Cuisine reuses ORACLE, and the eight quad voices reuse existing engines, the Kitchen Essentials Collection is a sound design project, not a DSP build project. Estimated timeline: 6–8 weeks of preset creation and XPN export work once the V1 fleet ships.
+**Timeline implication:**
+Because Grand Cuisine reuses ORACLE, and the eight quad voices reuse existing engines, the Kitchen Essentials Collection is a sound design project, not a DSP build project. Estimated timeline: 6–8 weeks of preset creation and XPN export work once the core fleet ships.
 
 ---
 

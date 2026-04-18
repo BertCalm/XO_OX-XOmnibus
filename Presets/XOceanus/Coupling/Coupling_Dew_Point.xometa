@@ -35,7 +35,7 @@
   },
   "parameters": {
     "OpenSky": {
-      "sky_macroRise": 0.5,
+      "sky_macroRise": 0.46,
       "sky_filterEnvAmt": 0.4,
       "sky_lfo1Rate": 0.1,
       "sky_lfo1Depth": 0.2,

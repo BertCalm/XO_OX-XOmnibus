@@ -911,6 +911,8 @@ struct ObiontVoice
     float evoCounter = 0.f;       // sample counter between evolution steps
     float evoEnergy = 0.5f;       // Grid Energy (last evolve() result), smoothed
     float evoEnergySmooth = 0.5f; // IIR-smoothed grid energy (for mod source)
+    float modEvoMul = 1.f;        // mod matrix EvolutionRate multiplier (persists between evo steps)
+    float modProjDelta = 0.f;     // mod matrix Projection offset (persists between evo steps)
 
     // DSP chain
     ObiontReconLP reconFilter;
@@ -918,6 +920,7 @@ struct ObiontVoice
     ObiontSVF svf;
     StandardADSR adsr;
     ObiontLFO lfo;
+    ObiontLFO lfo2;
 
     // 1D mode: snapshot of the CA ring for the current render block
     uint8_t gridSnapshot[kObiontGridWidth1D] = {};
@@ -954,6 +957,7 @@ struct ObiontVoice
         svf.reset();
         adsr.prepare((float)sampleRate);
         lfo.prepare(sampleRate);
+        lfo2.prepare(sampleRate);
         rng = 0xCAFEBABEu ^ (uint32_t)(uintptr_t)this;
     }
 
@@ -993,6 +997,7 @@ struct ObiontVoice
 
         adsr.noteOn();
         lfo.reset();
+        lfo2.reset();
         dcBlocker.reset();
         reconFilter.reset();
         svf.reset();
@@ -1045,6 +1050,7 @@ struct ObiontVoice
         adsr.prepare((float)sampleRate);
         adsr.noteOn();
         lfo.reset();
+        lfo2.reset();
     }
 
     bool isIdle() const noexcept { return !active; }
@@ -1098,6 +1104,8 @@ public:
         // --- LFO 1 ---
         params.push_back(std::make_unique<PF>(P("obnt_lfo1Rate", 1), "LFO1 Rate", nr(0.01f, 10.f), 0.5f));
         params.push_back(std::make_unique<PF>(P("obnt_lfo1Depth", 1), "LFO1 Depth", nr(0.f, 1.f), 0.2f));
+        params.push_back(std::make_unique<PF>(P("obnt_lfo2Rate", 1), "LFO2 Rate", nr(0.01f, 10.f), 0.15f));
+        params.push_back(std::make_unique<PF>(P("obnt_lfo2Depth", 1), "LFO2 Depth", nr(0.f, 1.f), 0.0f));
 
         // --- Modulation matrix (4 slots × src/dst/amt) ---
         // Src: 0=Envelope, 1=LFO, 2=Velocity, 3=GridEnergy
@@ -1191,6 +1199,8 @@ public:
         p_velSens = apvts.getRawParameterValue("obnt_velSens");
         p_lfo1Rate = apvts.getRawParameterValue("obnt_lfo1Rate");
         p_lfo1Depth = apvts.getRawParameterValue("obnt_lfo1Depth");
+        p_lfo2Rate = apvts.getRawParameterValue("obnt_lfo2Rate");
+        p_lfo2Depth = apvts.getRawParameterValue("obnt_lfo2Depth");
         for (int s = 1; s <= kObiontModSlots; ++s)
         {
             p_modSrc[s - 1] = apvts.getRawParameterValue(("obnt_modSrc" + std::to_string(s)).c_str());
@@ -1298,6 +1308,8 @@ public:
         const float velSens = p_velSens->load();
         const float lfo1Rate = p_lfo1Rate->load();
         const float lfo1Depth = p_lfo1Depth->load();
+        const float lfo2Rate = p_lfo2Rate->load();
+        const float lfo2Depth = p_lfo2Depth->load();
 
         // Mod matrix snapshot
         int modSrc[kObiontModSlots], modDst[kObiontModSlots];
@@ -1360,27 +1372,31 @@ public:
             // --- Per-sample loop ---
             for (int n = 0; n < numSamples; ++n)
             {
-                // --- LFO tick — single call per sample, result reused throughout ---
+                // --- LFO ticks — single call per sample each, results reused throughout ---
                 float lfoOut = v.lfo.tick(lfo1Rate);
+                float lfo2Out = v.lfo2.tick(lfo2Rate);
 
-                // --- Evolution step gate ---
-                v.evoCounter += 1.f;
+                // --- Evolution step gate (modulated by EvolutionRate dst) ---
+                v.evoCounter += v.modEvoMul;
                 if (v.evoCounter >= samplesPerEvo)
                 {
                     v.evoCounter -= samplesPerEvo;
 
                     // Apply modulation matrix to CA parameters
                     float modChaos = effectiveChaos;
-                    float modRuleMorph = effectiveRuleMorph;
+                    // LFO2 → rule morph (D002: second LFO source)
+                    float modRuleMorph = std::clamp(effectiveRuleMorph + lfo2Out * lfo2Depth * 0.5f, 0.f, 1.f);
                     float gridEnergy = v.evoEnergySmooth;
+
+                    float modEvoRateMul = 1.f; // dst 0: EvolutionRate multiplier
 
                     for (int s = 0; s < kObiontModSlots; ++s)
                     {
                         int dst = modDst[s];
                         if (dst == (kObiontModDstCount - 1))
                             continue; // None
-                        // Only process CA-side destinations here (1=Chaos, 2=RuleMorph)
-                        if (dst != 1 && dst != 2)
+                        // CA-side destinations: 0=EvolutionRate, 1=Chaos, 2=RuleMorph
+                        if (dst != 0 && dst != 1 && dst != 2)
                             continue;
 
                         float srcVal = 0.f;
@@ -1403,11 +1419,15 @@ public:
                         }
                         float modVal = srcVal * modAmt[s];
 
-                        if (dst == 1)
+                        if (dst == 0)
+                            modEvoRateMul = std::clamp(modEvoRateMul + modVal * 3.f, 0.1f, 4.f); // scale evo rate 0.1x–4x
+                        else if (dst == 1)
                             modChaos = std::clamp(modChaos + modVal, 0.f, 1.f);
                         else
                             modRuleMorph = std::clamp(modRuleMorph + modVal, 0.f, 1.f);
                     }
+                    // Persist evo rate multiplier for subsequent samples
+                    v.modEvoMul = modEvoRateMul;
 
                     if (modeParam == 1)
                     {
@@ -1471,16 +1491,18 @@ public:
                     v.phase -= 1.f;
 
                 // --- Spatial projection readout (mode-specific) ---
+                // Apply Projection mod matrix destination (dst 3)
+                const float modProj = std::clamp(projectionParam + v.modProjDelta, 0.f, 1.f);
                 float projOut;
                 if (modeParam == 1)
                 {
                     // 2D: column-additive harmonic synthesis
-                    projOut = v.proj2D.read(v.phase, projectionParam);
+                    projOut = v.proj2D.read(v.phase, modProj);
                 }
                 else
                 {
                     // 1D: cosine-weighted spatial scan
-                    projOut = ObiontProjection::read(v.gridSnapshot, v.phase, projectionParam);
+                    projOut = ObiontProjection::read(v.gridSnapshot, v.phase, modProj);
                 }
 
                 // --- Reconstruction filter (4-pole LP, tracks baseCutoff/2) ---
@@ -1493,11 +1515,12 @@ public:
                 // --- Modulation matrix: filter-side destinations (per-sample) ---
                 float modFilterCutoffDelta = 0.f;
                 float modFilterResDelta = 0.f;
+                float modProjDelta = 0.f;
                 for (int s = 0; s < kObiontModSlots; ++s)
                 {
                     int dst = modDst[s];
-                    if (dst != 4 && dst != 5)
-                        continue; // only filter destinations here
+                    if (dst != 3 && dst != 4 && dst != 5)
+                        continue; // Projection + filter destinations
                     float srcVal = 0.f;
                     switch (modSrc[s])
                     {
@@ -1516,11 +1539,14 @@ public:
                     default:
                         break;
                     }
-                    if (dst == 4)
+                    if (dst == 3)
+                        modProjDelta += srcVal * modAmt[s];
+                    else if (dst == 4)
                         modFilterCutoffDelta += srcVal * modAmt[s] * 8000.f;
                     else
                         modFilterResDelta += srcVal * modAmt[s];
                 }
+                v.modProjDelta = modProjDelta; // persist for projection readout
 
                 // LFO1 independently modulates filter cutoff (D005)
                 float lfoCutoff = lfoOut * lfo1Depth * 2000.f;
@@ -1675,6 +1701,8 @@ private:
     std::atomic<float>* p_velSens = nullptr;
     std::atomic<float>* p_lfo1Rate = nullptr;
     std::atomic<float>* p_lfo1Depth = nullptr;
+    std::atomic<float>* p_lfo2Rate = nullptr;
+    std::atomic<float>* p_lfo2Depth = nullptr;
     std::atomic<float>* p_modSrc[kObiontModSlots] = {};
     std::atomic<float>* p_modDst[kObiontModSlots] = {};
     std::atomic<float>* p_modAmt[kObiontModSlots] = {};

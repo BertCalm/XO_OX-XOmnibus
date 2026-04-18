@@ -3,7 +3,7 @@
 > Extracted from CLAUDE.md to reduce context window size. This is the canonical color/identity reference.
 > For parameter prefixes, see CLAUDE.md (kept inline for daily development use).
 
-## Engine Modules (79 implemented / 101 full fleet design)
+## Engine Modules (88 implemented / 101 full fleet design)
 
 | Short Name | Source Instrument | Accent Color |
 |-----------|------------------|-------------|
@@ -111,6 +111,9 @@
 | OUTBREAK | XOutbreak | Grunge Olive `#6B6B3E` |
 | ORRERY | XOrrery | Celestial Blue `#4682B4` |
 | OSTR | XOstracon | Shard Terracotta `#C0785A` |
+| OBSERVANDUM | XObservandum | Cuttlefish Teal `#4ECDC4` |
+| OPSIN | XOpsin | Bioluminescent Cyan `#00FFCC` |
+| OORT | XOort | Oort Cloud Violet `#9B7FD4` |
 
 ## The 43 Blessings
 
@@ -154,11 +157,17 @@
 | B036 | Coherence-Driven Spatial Panning — stereo field is a live readout of Kuramoto order parameter R: locked partials spread wide, chaotic partials collapse to center. The stereo field breathes with the dramatic arc. Blessed by Tomita, Buchla. | OPERA |
 | B037 | EmotionalMemory: Phase Persistence Across Note Boundaries — partial phases stored at note-off, recalled within 500ms window. The Kuramoto field wakes up knowing where it was. Named after Vangelis in source code. Blessed by Vangelis. | OPERA |
 | B038 | Psychology-as-DSP: First synthesizer deriving timbral variation from cited experimental psychology (Berlyne 1960, Wundt 1874, Csikszentmihalyi 1975) implemented as real-time DSP. Alien shift above curiosity=0.7 is emergent theoretical consequence. Ratified 8-0. | OFFERING |
-| B039 | City-as-Processing-Chain (conditional): Five structurally distinct architectures encoding cultural production aesthetics — NY noise gate, Detroit feedback sat + drunk timing, LA parallel compression, Toronto sidechain sub, Bay Area prime-delay allpass fog. Spatial character V1.1. Ratified 6-2. | OFFERING |
+| B039 | City-as-Processing-Chain (conditional): Five structurally distinct architectures encoding cultural production aesthetics — NY noise gate, Detroit feedback sat + drunk timing, LA parallel compression, Toronto sidechain sub, Bay Area prime-delay allpass fog. Spatial character refinement follows. Ratified 6-2. | OFFERING |
 | B040 | Note Duration as Synthesis Parameter — note length drives circuit warmth, bond depth, and intimacy accumulation; long notes unlock timbral states unavailable to short notes. Unanimous. | OXYTO |
 | B041 | Dark Cockpit Attentional Design — five-level opacity hierarchy (100%/80%/45%/20%/0%) derived from maritime bridge design (OpenBridge 6.0) that actively preserves performer cognitive bandwidth by dimming non-essential controls during performance. No synthesizer has treated the performer's attention as a resource to protect. Ratified 8-0. | UI |
 | B042 | The Planchette as Autonomous Entity — first synthesizer UI element with its own autonomous behavior: Lissajous idle drift (0.3Hz/0.2Hz), spring lock-on, bioluminescent velocity-scaled trail, and warm memory hold. The interface communicates awareness of the performer's presence through the cursor's behavior before any interaction begins. Ratified 7-1 (Rams dissents). | UI |
 | B043 | Gesture Trail as First-Class Modulation Source — the bioluminescent performance trail (already a ring buffer of 256 x/y/velocity/time tuples) promoted to a replayable, freezable, coupleable DSP modulation signal. The performer's gesture history becomes a live modulation output. Two performers' trails create interference-pattern modulation neither intended alone. Ratified 6-2. | UI |
+| B044 | Chromatophore Curves — 8 mathematically-derived monotonic phase distortion transfer functions (including Chebyshev T4 polynomial and Bessel J1 FM sidebands) with enforced monotonicity preventing aliasing from phase reversal. Environmental curve modifier bus with Brownian drift and tidal models. Seance 2026-04-15. | OBSERVANDUM |
+| B045 | Ephemeris Gesture Capture — recording user pad gestures at 30 Hz into a Catmull-Rom interpolated circular buffer, then replaying them as custom orbit shapes. A performance-capture feature unique in the fleet. Seance 2026-04-15. | ORRERY |
+| B046 | Gravity Well Coupling — coupling energy (amplitude or spectral centroid) displaces the vector synthesis position via smoothed gravity wells. Other engines literally pull Orrery's timbral position around. Seance 2026-04-15. | ORRERY |
+| B047 | Hebbian Plasticity — first XOceanus engine with live Hebbian learning in the signal path. Co-firing nodes strengthen synapse weights during sustained notes, producing genuine emergent timbral evolution. Seance 2026-04-15. | OPSIN |
+| B048 | Markov Stochastic Walk — per-cycle Markov chain mutation of GENDY breakpoints with state memory. Timbral evolution that remembers where it has been. Seance 2026-04-15. | OORT |
+| B049 | The Living Waveform — cellular automata as oscillator source via cosine-weighted spatial projection. The CA grid IS the waveform, read by a sliding cosine window whose width controls harmonic content. Seance 2026-04-15. | OBIONT |
 
 ## The 5 Ongoing Debates
 
@@ -168,4 +177,4 @@
 | DB002 | Silence as paradigm vs. accessibility (Schulze/Buchla vs. Kakehashi/Pearlman) | UNRESOLVED |
 | DB003 | Init patch: immediate beauty vs. blank canvas (Vangelis/Kakehashi vs. Schulze) | RESOLVED for percussion — immediate beauty wins (OSTINATO seance 2026-03-20) |
 | DB004 | Expression vs. Evolution: gesture vs. temporal depth (Vangelis vs. Schulze) | RESOLVED for OSTINATO — expression AND evolution are not in tension; both possible simultaneously |
-| DB005 | Autonomy vs. Agency — machine Conductor arc vs. player expressive control (Kakehashi named; OPERA is the first engine where this tension is architecturally explicit). Current resolution: Conductor + Manual/Both mode is correct; debate is about *degree* not *principle*. | OPEN |
+| DB005 | Autonomy vs. Agency — machine Conductor arc vs. player expressive control (Kakehashi named; OPERA is the first engine where this tension is architecturally explicit). | RESOLVED (RAC 2026-04-18) — Both mode is the default. Conductor yields on live MIDI (OSTINATO Live Override pattern B020). COUPLING macro controls degree: 0=manual, 1=full Conductor. |

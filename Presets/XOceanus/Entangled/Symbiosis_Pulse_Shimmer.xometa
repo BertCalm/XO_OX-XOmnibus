@@ -49,7 +49,7 @@
       "osti_lfo1Depth": 0.22
     },
     "OpenSky": {
-      "sky_macroRise": 0.72,
+      "sky_macroRise": 0.473,
       "sky_shimmerMix": 0.65,
       "sky_chorusMix": 0.5,
       "sky_filterCutoff": 0.68,

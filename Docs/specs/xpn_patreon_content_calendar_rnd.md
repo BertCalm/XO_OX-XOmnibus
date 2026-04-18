@@ -121,7 +121,7 @@ Each month runs on a four-week cycle. This is the default rhythm; special months
 - **Week 3 Technical:** Preset evolution demo video — one ODDFELIX patch evolving into an ODDOSCAR patch through 4 stages of COUPLING macro movement. Screen capture, live XOceanus session, no script.
 - **Week 4 Roundup:** Community challenge announced — submit your own ODDFELIX/ODDOSCAR coupling patch. Best 5 get included in a bonus Patreon-only pack in July.
 
-**Producer+ extras:** FORM pack — OPENSKY/OCEANDEEP concept preview patches (rendered audio, not beta builds). First preview of the feliX-Oscar axis in the context of V1 scope.
+**Producer+ extras:** FORM pack — OPENSKY/OCEANDEEP concept preview patches (rendered audio, not beta builds). First preview of the feliX-Oscar axis in the context of the initial scope.
 
 ---
 

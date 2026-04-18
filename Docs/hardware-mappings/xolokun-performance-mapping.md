@@ -298,7 +298,7 @@ Pads 13–16: Coupling type preset recall (PC 0–3 quick slots)
 
 ## Coupling Recipe Guide
 
-### OBRIX + ONSET (Flagship V1 Pairing)
+### OBRIX + ONSET (Flagship Pairing)
 
 **Setup:** Slot A = OBRIX, Slot B = ONSET
 **Coupling A→B:** Type = Rhythm (8) — OBRIX's long sustained notes create envelopes for ONSET drums

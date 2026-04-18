@@ -50,7 +50,7 @@ audience, AIR Pro EQ is the baseline every user will compare against — even un
 **Dynamic EQ:**
 - Dynamic bands available: yes, at least 4 bands can be set to dynamic mode
 - Per-band threshold, attack, release, and ratio: yes
-- Sidechain: internal self-sidechain only (matching XObserve V1 scope)
+- Sidechain: internal self-sidechain only (matching XObserve initial scope)
 
 **Metering and display:**
 - Real-time spectrum analyzer
@@ -75,7 +75,7 @@ audience, AIR Pro EQ is the baseline every user will compare against — even un
    drum processing, single-instrument shaping — 6 bands is sufficient. For mastering or complex
    multiband shaping, 8 gives more headroom. This is an acceptable tradeoff given XObserve's
    complexity per band (9 params × 6 vs. a simpler AIR band). However, the technical design should
-   include a note that V2 could expand to 8 bands. Do not expand to 8 in V1 — the additional
+   include a note that a later revision could expand to 8 bands. Do not expand to 8 initially — the additional
    per-band dynamic and Tide parameters would push the count from 126 to 162+ and complicate
    the UI meaningfully.
 
@@ -177,7 +177,7 @@ sound needs to become something else, not just be corrected.
 
 **Design note:** The masking display from Pro-Q 3 is genuinely useful for mixing. XObserve's
 spectrum display is single-instance (pre/post of itself). A V2 feature would be dual-instance
-comparison. This is out of V1 scope but worth logging.
+comparison. This is out of initial scope but worth logging.
 
 ### Kirchhoff-EQ
 
@@ -224,7 +224,7 @@ circuit (different saturation flavors) while XObserve offers *how much* analog c
 "tanh + matched-Z transformer + all-pass phase rotation." This is a single Oscar flavor. A V2
 enhancement would be an Oscar Flavor selector (Tranny = transformer iron, Tape = tape saturation,
 Console = passive transformer, Tube = soft triode). This mirrors EQuilibrium's circuit model
-selector but applied per-band. Log this for V2; do not add to V1.
+selector but applied per-band. Log this for a later revision; do not add initially.
 
 ### Tokyo Dawn Slick EQ (Gentleman's Edition)
 
@@ -361,7 +361,7 @@ comes close to this conceptual territory.
 
 ## 4. Design Recommendations from Competitive Research
 
-### 4.1 Features Worth Adding to the V1 Spec
+### 4.1 Features Worth Adding to the Initial Spec
 
 **4.1.1 A dedicated "Natural Phase" mode between linear and minimum phase.**
 
@@ -403,8 +403,8 @@ for reference comparison (masking visualization). This is genuinely useful for m
 it requires inter-plugin communication that is outside the XOceanus coupling system and would
 add considerable complexity.
 
-**Recommended:** Log for V2. Not V1 scope. The XOceanus coupling system's spectral centroid
-output (ch2) is already a rudimentary form of this, sufficient for V1.
+**Recommended:** Log for a later revision. Not initial scope. The XOceanus coupling system's spectral centroid
+output (ch2) is already a rudimentary form of this, sufficient for now.
 
 ### 4.2 XObserve Features That Overlap in Boring Ways
 
@@ -624,7 +624,7 @@ on plugin load. Adding `obs_b{N}_tide_phase` (0–360 degrees, default = 0) woul
 where each band's LFO is staggered — Band 1 starts at 0°, Band 2 at 60°, Band 3 at 120°, etc.
 This enables "Storm Cell" type presets to be designed intentionally (the current spec notes prime-
 rate staggering, which is a workaround for the lack of phase offset). Adds 6 parameters (total 132
-with proportional-Q, or 138 if both added). Low priority for V1 but elegant for preset design.
+with proportional-Q, or 138 if both added). Low priority initially but elegant for preset design.
 
 **6.4 Oversampling scope clarification (priority: medium).** The technical design states oversampling
 applies to "the saturation stage" (§4.2). But with linear phase mode active, the saturation stage
@@ -637,7 +637,7 @@ the native sample rate). Document this explicitly in §4.3.
 parameter routes all coupling input to a single target. This means only one coupling route can
 be active at a time via the global selector. For multi-engine patches where ONSET → AmpToFilter
 and DUB → EnvToMorph are both desirable simultaneously, the current design forces a choice. A
-V1 solution: expand `obs_coupling_target` from a single choice to a routing matrix (per-CouplingType
+A solution: expand `obs_coupling_target` from a single choice to a routing matrix (per-CouplingType
 output channel assignment). This is not a parameter count change — it is a data model change in
 how `applyCouplingInput()` dispatches. Add an appendix to §6 covering the multi-source routing
 case.

@@ -1,21 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Cloud Drift",
+  "name": "Cloud Drift II",
   "mood": "Flux",
-  "engines": ["Oto"],
+  "engines": [
+    "Oto"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sho drifting in and out of harmonic focus — the LFO modulating detune width creates a gentle in-and-out of phase relationship between pipes. Clouds forming and dissolving.",
+  "description": "Sho drifting in and out of harmonic focus \u2014 the LFO modulating detune width creates a gentle in-and-out of phase relationship between pipes. Clouds forming and dissolving.",
   "tier": "standard",
-  "tags": ["flux", "sho", "drift", "evolving", "phase"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "sho",
+    "drift",
+    "evolving",
+    "phase"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
     "MOVEMENT": 0.62,
     "COUPLING": 0.15,
     "SPACE": 0.62
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.42,

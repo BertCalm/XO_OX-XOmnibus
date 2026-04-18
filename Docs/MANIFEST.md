@@ -67,7 +67,7 @@ For the detailed documentation improvement plan, see `fleet-audit/documentation_
 |----------|-----------------|-------------|----------------------|
 | `xo_mega_tool_preset_system.md` | Original preset system spec | Superseded | `xoceanus_preset_spec_for_builder.md` |
 | `xo_mega_tool_visual_identity.md` | Original visual identity spec | Superseded | `xoceanus_technical_design_system.md` |
-| `plans/v1-launch-plan.md` | V1 launch roadmap | V1 complete | `prism_sweep_final_report.md` |
+| `plans/v1-launch-plan.md` | Launch roadmap (RETIRED 2026-04-16 — V1-gating framing abandoned) | Historical | `prism_sweep_final_report.md` |
 | `plans/2026-03-12-xostinato-design.md` | XOSTINATO design | Engine shipped 2026-03-18 | `seances/ostinato_seance_verdict.md` |
 
 ---

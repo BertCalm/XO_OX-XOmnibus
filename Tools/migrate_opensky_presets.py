@@ -40,12 +40,12 @@ PARAM_RENAME = {
     "sky_lfoShape":       "sky_lfo1Shape",
     "sky_shimmerOct":     "sky_shimmerOctave",
     "sky_outputGain":     "sky_level",
+    "sky_sawDetune":      "sky_sawSpread",
+    "sky_shimmerBright":  "sky_shimmerDamping",
     "sky_macroCharacter": "sky_macroRise",
     "sky_macroMovement":  "sky_macroWidth",
     "sky_macroCoupling":  "sky_macroGlow",
     "sky_macroSpace":     "sky_macroAir",
-    "sky_sawDetune":      "sky_sawSpread",
-    "sky_shimmerBright":  "sky_shimmerDamping",
 }
 
 # Parameters removed outright (no replacement)
@@ -87,6 +87,14 @@ VALID_ENGINE_PARAMS = {
 # Detection
 # ---------------------------------------------------------------------------
 
+def find_opensky_key(params: dict):
+    """Find the OpenSky engine key, handling case variations in coupling presets."""
+    for k in params:
+        if k.lower() == "opensky":
+            return k
+    return None
+
+
 def is_old_schema(params: dict) -> bool:
     """Return True if the OpenSky parameter block uses the legacy vocabulary."""
     return "sky_filterFc" in params or "sky_macroCharacter" in params
@@ -109,8 +117,12 @@ def migrate_preset(data: dict) -> tuple[bool, list[str]]:
     if "OpenSky" not in data.get("engines", []):
         return changed, warnings
 
-    params = data.get("parameters", {}).get("OpenSky")
-    if params is None:
+    engine_key = find_opensky_key(data.get("parameters", {}))
+    if engine_key is None:
+        return changed, warnings
+
+    params = data["parameters"][engine_key]
+    if not isinstance(params, dict):
         return changed, warnings
 
     if not is_old_schema(params):
@@ -132,7 +144,7 @@ def migrate_preset(data: dict) -> tuple[bool, list[str]]:
         else:
             new_params[key] = value
 
-    data["parameters"]["OpenSky"] = new_params
+    data["parameters"][engine_key] = new_params
 
     # --- 2. Update macroLabels ---
     labels = data.get("macroLabels")
@@ -150,7 +162,7 @@ def migrate_preset(data: dict) -> tuple[bool, list[str]]:
         changed = True
 
     # --- 4. Validate against current engine parameter list ---
-    final_params = data["parameters"]["OpenSky"]
+    final_params = data["parameters"][engine_key]
     for key in sorted(final_params):
         if key not in VALID_ENGINE_PARAMS:
             warnings.append(f"  UNKNOWN PARAM after migration: {key}")
@@ -172,6 +184,8 @@ def main() -> int:
         description="Migrate legacy OpenSky preset parameters to current schema.")
     parser.add_argument("--apply", action="store_true",
                         help="Write changes in-place (default is dry-run).")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Report what would change without writing (same as default).")
     parser.add_argument("--preset-dir", type=Path, default=PRESETS_ROOT,
                         help="Root preset directory to scan.")
     args = parser.parse_args()

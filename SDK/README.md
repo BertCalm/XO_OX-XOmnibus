@@ -279,7 +279,7 @@ To have your engine included in a future XOceanus release:
 SDK ABI version: **1**
 
 The `sdkVersion` field in `EngineMetadata` will be bumped on any breaking interface change.
-V1 engines will continue loading without modification until at least V2.
+Engines built against a given SDK version will continue loading without modification until the next breaking change.
 
 ---
 

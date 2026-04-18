@@ -37,7 +37,7 @@ ALL_ENGINES = [
     "ORBITAL", "OPTIC", "OBLIQUE", "OSPREY", "OSTERIA", "OWLFISH",
     "OHM", "ORPHICA", "OBBLIGATO", "OTTONI", "OLE", "OVERLAP", "OUTWIT",
     "OMBRE", "ORCA", "OCTOPUS",
-    # V1 concept engines (no packs yet but should appear in coverage gaps)
+    # Concept engines (no packs yet but should appear in coverage gaps)
     "OSTINATO", "OPENSKY", "OCEANDEEP", "OUIE",
 ]
 
