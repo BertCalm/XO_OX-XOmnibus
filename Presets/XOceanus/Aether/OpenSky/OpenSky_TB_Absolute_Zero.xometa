@@ -94,10 +94,6 @@
       "sky_modSlot2Src": 0,
       "sky_modSlot2Dst": 0,
       "sky_modSlot2Amt": 0.0,
-      "sky_macroCharacter": 0.492,
-      "sky_macroMovement": 0.409,
-      "sky_macroCoupling": 0.227,
-      "sky_macroSpace": 0.774,
       "sky_filterEnvAmt": 0.417,
       "sky_velSensitivity": 0.42
     }
@@ -107,9 +103,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.483,
-    "MOVEMENT": 0.4,
-    "COUPLING": 0.218,
-    "SPACE": 0.765
+    "RISE": 0.483,
+    "WIDTH": 0.4,
+    "GLOW": 0.218,
+    "AIR": 0.765
   }
 }

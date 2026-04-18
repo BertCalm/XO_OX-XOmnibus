@@ -16,10 +16,10 @@
     "kinetic"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
   ],
   "couplingIntensity": "None",
   "tempo": null,
@@ -33,11 +33,10 @@
   },
   "parameters": {
     "OpenSky": {
-      "sky_macroCharacter": 0.56,
-      "sky_macroMovement": 0.55,
-      "sky_macroCoupling": 0.17,
-      "sky_macroSpace": 0.72,
       "sky_macroRise": 0.65,
+      "sky_macroWidth": 0.55,
+      "sky_macroGlow": 0.17,
+      "sky_macroAir": 0.72,
       "sky_filterEnvAmt": 0.58,
       "sky_lfo1Rate": 0.14,
       "sky_lfo1Depth": 0.28,
@@ -48,13 +47,12 @@
       "sky_sustain": 0.8,
       "sky_release": 4.0,
       "sky_filterCutoff": 10000,
-      "sky_filterRes": 0.2,
+      "sky_filterReso": 0.2,
       "sky_shimmerDepth": 0.7,
       "sky_shimmerRate": 0.15,
       "sky_unisonVoices": 6,
       "sky_unisonDetune": 0.24,
       "sky_chorusDepth": 0.42,
-      "sky_reverbMix": 0.58,
       "sky_output": 0,
       "sky_velSensitivity": 0.588
     }
@@ -64,9 +62,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.56,
-    "MOVEMENT": 0.55,
-    "COUPLING": 0.17,
-    "SPACE": 0.72
+    "RISE": 0.56,
+    "WIDTH": 0.55,
+    "GLOW": 0.17,
+    "AIR": 0.72
   }
 }

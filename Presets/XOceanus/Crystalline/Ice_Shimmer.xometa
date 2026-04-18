@@ -16,10 +16,10 @@
     "chorus"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
   ],
   "couplingIntensity": "None",
   "tempo": null,
@@ -33,10 +33,10 @@
   },
   "parameters": {
     "OpenSky": {
-      "sky_macroCharacter": 0.56,
-      "sky_macroMovement": 0.3,
-      "sky_macroCoupling": 0.2,
-      "sky_macroSpace": 0.61,
+      "sky_macroRise": 0.56,
+      "sky_macroWidth": 0.3,
+      "sky_macroGlow": 0.2,
+      "sky_macroAir": 0.61,
       "sky_filterEnvAmt": 0.45,
       "sky_lfo1Rate": 0.06,
       "sky_lfo1Depth": 0.16,
@@ -48,9 +48,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.56,
-    "MOVEMENT": 0.3,
-    "COUPLING": 0.2,
-    "SPACE": 0.61
+    "RISE": 0.56,
+    "WIDTH": 0.3,
+    "GLOW": 0.2,
+    "AIR": 0.61
   }
 }
