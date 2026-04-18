@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Sub Quinte Choir",
+  "mood": "Deep",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Sub-Quinte 10⅔' creates the acoustic illusion of a 32' fundamental by adding its quint to the 16' register. The bass appears to descend below the physical pipe length.",
+  "tier": "standard",
+  "tags": ["deep", "cavaille-coll", "romantic", "quinte", "acoustic-bass"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.07,
+    "SPACE": 0.85
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.92,
+    "movement": 0.06,
+    "density": 0.9,
+    "space": 0.85,
+    "aggression": 0.07
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.88,
+      "oct_chiff": 0.04,
+      "oct_detune": 0.02,
+      "oct_buzz": 0.03,
+      "oct_pressure": 0.18,
+      "oct_crosstalk": 0.32,
+      "oct_brightness": 0.12,
+      "oct_registration": 0.92,
+      "oct_roomDepth": 0.85,
+      "oct_attack": 0.22,
+      "oct_decay": 1.8,
+      "oct_sustain": 1.0,
+      "oct_release": 3.5,
+      "oct_filterEnvAmount": 0.04,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.78,
+      "oct_macroMovement": 0.07,
+      "oct_macroCoupling": 0.07,
+      "oct_macroSpace": 0.85,
+      "oct_lfo1Rate": 0.04,
+      "oct_lfo1Depth": 0.04,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.12,
+      "oct_lfo2Depth": 0.02,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.05
+    }
+  },
+  "tempo": null
+}

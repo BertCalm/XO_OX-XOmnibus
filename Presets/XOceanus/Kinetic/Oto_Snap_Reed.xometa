@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Snap Reed",
+  "mood": "Kinetic",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica played with snapping articulation — very short attack, fast decay into a short sustain. Like a thumb-piano crossed with a reed instrument. Crisp and decisive.",
+  "tier": "standard",
+  "tags": ["kinetic", "melodica", "snap", "short", "crisp"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.12,
+    "SPACE": 0.15
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.55,
+    "movement": 0.55,
+    "density": 0.22,
+    "space": 0.15,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.22,
+      "oto_chiff": 0.65,
+      "oto_detune": 0.06,
+      "oto_buzz": 0.18,
+      "oto_pressure": 0.2,
+      "oto_crosstalk": 0.05,
+      "oto_filterCutoff": 7500.0,
+      "oto_filterRes": 0.18,
+      "oto_attack": 0.001,
+      "oto_decay": 0.08,
+      "oto_sustain": 0.5,
+      "oto_release": 0.08,
+      "oto_lfo1Rate": 2.0,
+      "oto_lfo1Depth": 0.2,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.7,
+      "oto_macroB": 0.55,
+      "oto_macroC": 0.12,
+      "oto_macroD": 0.15
+    }
+  },
+  "tempo": null
+}

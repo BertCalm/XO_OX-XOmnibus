@@ -17,6 +17,14 @@
 #include "Engines/Ocelot/OcelotEngine.h"
 #include "Engines/Ouroboros/OuroborosEngine.h"
 #include "Engines/Obsidian/ObsidianEngine.h"
+#include "Engines/Observandum/ObservandumEngine.h"
+#include "Engines/Orrery/OrreryEngine.h"
+#include "Engines/Opsin/OpsinEngine.h"
+#include "Engines/Oort/OortEngine.h"
+#include "Engines/Ondine/OndineEngine.h"
+#include "Engines/Ortolan/OrtolanEngine.h"
+#include "Engines/Octant/OctantEngine.h"
+#include "Engines/Overtide/OvertideEngine.h"
 #include "Engines/Origami/OrigamiEngine.h"
 #include "Engines/Oracle/OracleEngine.h"
 #include "Engines/Obscura/ObscuraEngine.h"
@@ -39,7 +47,7 @@
 #include "Engines/Octopus/OctopusEngine.h"
 #include "Engines/OpenSky/OpenSkyEngine.h"
 #include "Engines/Ostinato/OstinatoEngine.h"
-#include "Engines/OceanDeep/OceandeepEngine.h"
+#include "Engines/OceanDeep/OceanDeepEngine.h"
 #include "Engines/Ouie/OuieEngine.h"
 #include "Engines/Obrix/ObrixEngine.h"
 #include "Engines/Orbweave/OrbweaveEngine.h"
@@ -88,6 +96,12 @@
 #include "Engines/Obiont/ObiontEngine.h"
 // OXIDIZE — age-based corrosion synthesis engine
 #include "Engines/Oxidize/OxidizeAdapter.h"
+// OGIVE — scanned glass synthesis (engine #86)
+#include "Engines/Ogive/OgiveEngine.h"
+// OLVIDO — spectral erosion synthesis (engine #87)
+#include "Engines/Olvido/OlvidoEngine.h"
+// OSTRACON — corpus-buffer synthesis (engine #88)
+#include "Engines/Ostracon/OstraconEngine.h"
 #include "DSP/Effects/MathFXChain.h"
 #include "DSP/Effects/BoutiqueFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
@@ -128,6 +142,30 @@ static bool registered_Ouroboros =
 static bool registered_Obsidian =
     xoceanus::EngineRegistry::instance().registerEngine("Obsidian", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::ObsidianEngine>(); });
+static bool registered_Observandum =
+    xoceanus::EngineRegistry::instance().registerEngine("Observandum", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::ObservandumEngine>(); });
+static bool registered_Orrery =
+    xoceanus::EngineRegistry::instance().registerEngine("Orrery", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OrreryEngine>(); });
+static bool registered_Opsin =
+    xoceanus::EngineRegistry::instance().registerEngine("Opsin", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OpsinEngine>(); });
+static bool registered_Oort =
+    xoceanus::EngineRegistry::instance().registerEngine("Oort", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OortEngine>(); });
+static bool registered_Ondine =
+    xoceanus::EngineRegistry::instance().registerEngine("Ondine", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OndineEngine>(); });
+static bool registered_Ortolan =
+    xoceanus::EngineRegistry::instance().registerEngine("Ortolan", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OrtolanEngine>(); });
+static bool registered_Octant =
+    xoceanus::EngineRegistry::instance().registerEngine("Octant", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OctantEngine>(); });
+static bool registered_Overtide =
+    xoceanus::EngineRegistry::instance().registerEngine("Overtide", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OvertideEngine>(); });
 static bool registered_Origami = xoceanus::EngineRegistry::instance().registerEngine(
     "Origami", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrigamiEngine>(); });
 static bool registered_Oracle = xoceanus::EngineRegistry::instance().registerEngine(
@@ -311,6 +349,19 @@ static bool registered_Obiont = xoceanus::EngineRegistry::instance().registerEng
 // OXIDIZE — age-based corrosion synthesis engine
 static bool registered_Oxidize = xoceanus::EngineRegistry::instance().registerEngine(
     "Oxidize", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OxidizeAdapter>(); });
+// OGIVE — scanned glass synthesis (engine #86)
+static bool registered_Ogive =
+    xoceanus::EngineRegistry::instance().registerEngine("Ogive", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OgiveEngine>(); });
+// OLVIDO — spectral erosion synthesis (engine #87)
+static bool registered_Olvido =
+    xoceanus::EngineRegistry::instance().registerEngine("Olvido", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OlvidoEngine>(); });
+
+// OSTRACON — corpus-buffer synthesis (engine #88)
+static bool registered_Ostracon =
+    xoceanus::EngineRegistry::instance().registerEngine("Ostracon", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OstraconEngine>(); });
 
 namespace xoceanus
 {
@@ -1917,6 +1968,13 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         if (slotMuted[i].load(std::memory_order_relaxed))
             continue;
 
+        // Process engine output through its insert shaper (if loaded).
+        // Uses the same shared_ptr-copy pattern as bus shapers in MasterFXChain.
+        {
+            juce::MidiBuffer emptyMidi;
+            ShaperRegistry::instance().processInsert(i, engineBuffers[i], emptyMidi, numSamples);
+        }
+
         for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
             buffer.addFrom(ch, 0, engineBuffers[i], ch, 0, numSamples, masterVol);
     }
@@ -2227,7 +2285,7 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
 
     newEngine->attachParameters(apvts);
     {
-        const double sr = currentSampleRate.load(std::memory_order_relaxed);
+        const double sr = atomicSampleRate_.load(std::memory_order_relaxed);
         // #700: Only call prepare() if prepareToPlay() has already run (sr > 0).
         // If loadEngine() is called before the host calls prepareToPlay() — e.g.
         // during setStateInformation() at construction time — sr is 0.0 and passing
@@ -2267,7 +2325,7 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         pending.outgoing = oldEngine;
         pending.fadeGain = 1.0f;
         pending.fadeSamplesRemaining =
-            static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
+            static_cast<int>(atomicSampleRate_.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
         // Release-store: makes the fields above visible to the audio thread
         // before it observes ready==true.
         pending.ready.store(true, std::memory_order_release);
@@ -2315,7 +2373,7 @@ void XOceanusProcessor::unloadEngine(int slot)
         pending.outgoing = oldEngine;
         pending.fadeGain = 1.0f;
         pending.fadeSamplesRemaining =
-            static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
+            static_cast<int>(atomicSampleRate_.load(std::memory_order_relaxed) * CrossfadeMs * 0.001);
         // Release-store: makes the fields above visible to the audio thread
         // before it observes ready==true.
         pending.ready.store(true, std::memory_order_release);

@@ -692,7 +692,7 @@ public:
         // Voice-stealing crossfade: 5ms ramp prevents clicks when
         // stealing a voice. Rate = samples needed to fade from 1.0 to 0.0.
         static constexpr float kCrossfadeTimeSeconds = 0.005f;
-        crossfadeRate = 1.0f / (kCrossfadeTimeSeconds * sampleRateFloat);
+        crossfadeRate = 1.0f / std::max(kCrossfadeTimeSeconds * sampleRateFloat, 1e-6f);
 
         // Output cache for coupling reads (other engines read our output)
         outputCacheL.resize(static_cast<size_t>(maxBlockSize), 0.0f);
@@ -1343,7 +1343,7 @@ public:
             {
                 float effectiveBitDepth = 16.0f - pBrine * 12.0f; // 16-bit -> 4-bit
                 float quantizationLevels = fastPow2(effectiveBitDepth);
-                float inverseQuantization = 1.0f / quantizationLevels;
+                float inverseQuantization = 1.0f / std::max(quantizationLevels, 1e-6f);
                 mixL = std::floor(mixL * quantizationLevels) * inverseQuantization;
                 mixR = std::floor(mixR * quantizationLevels) * inverseQuantization;
             }

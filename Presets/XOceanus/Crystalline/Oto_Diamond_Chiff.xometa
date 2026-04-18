@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Diamond Chiff",
+  "mood": "Crystalline",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng with the chiff amplified and the filter fully open — the attack transient cuts like a faceted diamond, precise and refractive. The sustain is almost an afterthought to the chiff's brilliance.",
+  "tier": "standard",
+  "tags": ["crystalline", "sheng", "chiff", "bright", "precise"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.1,
+    "SPACE": 0.5
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.15,
+    "movement": 0.18,
+    "density": 0.25,
+    "space": 0.52,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.25,
+      "oto_chiff": 0.8,
+      "oto_detune": 0.02,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.06,
+      "oto_crosstalk": 0.03,
+      "oto_filterCutoff": 15000.0,
+      "oto_filterRes": 0.15,
+      "oto_attack": 0.001,
+      "oto_decay": 0.15,
+      "oto_sustain": 0.72,
+      "oto_release": 0.6,
+      "oto_lfo1Rate": 0.4,
+      "oto_lfo1Depth": 0.04,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.65,
+      "oto_macroB": 0.2,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.5
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Reed Bass Profundo",
+  "mood": "Deep",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Bombarde 16' reed pipes in pedal — massive, grainy, slightly raw. The beating reeds generate a low growl that shakes the floor and establishes harmonic dominance.",
+  "tier": "standard",
+  "tags": ["deep", "cavaille-coll", "romantic", "bombarde", "reed-bass"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.1,
+    "SPACE": 0.78
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.85,
+    "movement": 0.1,
+    "density": 0.92,
+    "space": 0.78,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.9,
+      "oct_chiff": 0.12,
+      "oct_detune": 0.06,
+      "oct_buzz": 0.35,
+      "oct_pressure": 0.25,
+      "oct_crosstalk": 0.35,
+      "oct_brightness": 0.1,
+      "oct_registration": 0.95,
+      "oct_roomDepth": 0.78,
+      "oct_attack": 0.08,
+      "oct_decay": 1.0,
+      "oct_sustain": 1.0,
+      "oct_release": 2.5,
+      "oct_filterEnvAmount": 0.08,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.88,
+      "oct_macroMovement": 0.1,
+      "oct_macroCoupling": 0.1,
+      "oct_macroSpace": 0.78,
+      "oct_lfo1Rate": 0.06,
+      "oct_lfo1Depth": 0.06,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.2,
+      "oct_lfo2Depth": 0.04,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.08
+    }
+  },
+  "tempo": null
+}

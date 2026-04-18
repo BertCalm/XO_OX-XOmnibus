@@ -149,6 +149,27 @@ juce_add_binary_data(XOceanusFont
     Assets/fonts/Inter-Bold.ttf
     Assets/fonts/JetBrainsMono-Regular.ttf
     Assets/fonts/Overbit-Regular.otf
+    Assets/fonts/Doto-Regular.ttf
+    Assets/fonts/Doto-Bold.ttf
+    Assets/fonts/Fjord-Regular.otf
+    Assets/fonts/Bionix-Fat.otf
+    Assets/fonts/Norqen.otf
+    Assets/fonts/Maleah-Regular.otf
+    Assets/fonts/Saeson-Bold.ttf
+    Assets/fonts/Nebulica-Regular.ttf
+    Assets/fonts/RoyalOcean.otf
+    Assets/fonts/ForgeSans.otf
+    Assets/fonts/OtfitsGrotesk-Bold.otf
+    Assets/fonts/LokanovaPro-Bold.otf
+    Assets/fonts/Neoform-Display.otf
+    Assets/fonts/Apestron.otf
+    Assets/fonts/Costaline-Regular.otf
+    Assets/fonts/Neutical-Regular.otf
+    Assets/fonts/ZTOtez-Regular.otf
+    Assets/fonts/Elijah.otf
+    Assets/fonts/Satoshi-Regular.otf
+    Assets/fonts/Satoshi-Medium.otf
+    Assets/fonts/Satoshi-Bold.otf
 )
 
 juce_add_plugin(XOceanus
@@ -266,6 +287,22 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Orbital/OrbitalEngine.cpp
     Source/Engines/Obsidian/ObsidianEngine.h
     Source/Engines/Obsidian/ObsidianEngine.cpp
+    Source/Engines/Observandum/ObservandumEngine.h
+    Source/Engines/Observandum/ObservandumEngine.cpp
+    Source/Engines/Orrery/OrreryEngine.h
+    Source/Engines/Orrery/OrreryEngine.cpp
+    Source/Engines/Opsin/OpsinEngine.h
+    Source/Engines/Opsin/OpsinEngine.cpp
+    Source/Engines/Oort/OortEngine.h
+    Source/Engines/Oort/OortEngine.cpp
+    Source/Engines/Ondine/OndineEngine.h
+    Source/Engines/Ondine/OndineEngine.cpp
+    Source/Engines/Ortolan/OrtolanEngine.h
+    Source/Engines/Ortolan/OrtolanEngine.cpp
+    Source/Engines/Octant/OctantEngine.h
+    Source/Engines/Octant/OctantEngine.cpp
+    Source/Engines/Overtide/OvertideEngine.h
+    Source/Engines/Overtide/OvertideEngine.cpp
     Source/Engines/Bite/BiteEngine.h
     Source/Engines/Bite/BiteEngine.cpp
     Source/Engines/Origami/OrigamiEngine.h
@@ -727,6 +764,7 @@ target_link_libraries(XOceanusTests PRIVATE
     juce::juce_audio_formats
     juce::juce_audio_processors
     juce::juce_gui_basics
+    XOceanusInitPreset
 )
 
 target_compile_definitions(XOceanusTests PRIVATE

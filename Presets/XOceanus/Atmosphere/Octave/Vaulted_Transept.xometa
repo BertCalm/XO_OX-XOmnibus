@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Vaulted Transept",
+  "mood": "Atmosphere",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sound arrives from the transept and lingers eight seconds in the stone crossing. The Cavaillé-Coll diapasons sustain long past the keyrelease, fading into the nave.",
+  "tier": "standard",
+  "tags": ["atmosphere", "cavaille-coll", "romantic", "cathedral", "reverb"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.05,
+    "SPACE": 0.98
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.85,
+    "movement": 0.07,
+    "density": 0.75,
+    "space": 0.98,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.72,
+      "oct_chiff": 0.04,
+      "oct_detune": 0.03,
+      "oct_buzz": 0.02,
+      "oct_pressure": 0.14,
+      "oct_crosstalk": 0.25,
+      "oct_brightness": 0.25,
+      "oct_registration": 0.78,
+      "oct_roomDepth": 0.98,
+      "oct_attack": 0.2,
+      "oct_decay": 1.5,
+      "oct_sustain": 1.0,
+      "oct_release": 4.5,
+      "oct_filterEnvAmount": 0.04,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.6,
+      "oct_macroMovement": 0.08,
+      "oct_macroCoupling": 0.05,
+      "oct_macroSpace": 0.98,
+      "oct_lfo1Rate": 0.04,
+      "oct_lfo1Depth": 0.06,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.15,
+      "oct_lfo2Depth": 0.03,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.04
+    }
+  },
+  "tempo": null
+}

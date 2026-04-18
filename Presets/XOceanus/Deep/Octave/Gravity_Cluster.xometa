@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Gravity Cluster",
+  "mood": "Deep",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum cluster density at the lowest registration — all 12 drawbar partials engaged simultaneously, pulling the harmonic spectrum into a gravitational mass of organ tone.",
+  "tier": "standard",
+  "tags": ["deep", "cavaille-coll", "romantic", "cluster", "maximum"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 1.0,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.08,
+    "SPACE": 0.88
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.98,
+    "movement": 0.05,
+    "density": 1.0,
+    "space": 0.88,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 1.0,
+      "oct_chiff": 0.04,
+      "oct_detune": 0.03,
+      "oct_buzz": 0.05,
+      "oct_pressure": 0.2,
+      "oct_crosstalk": 0.45,
+      "oct_brightness": 0.1,
+      "oct_registration": 1.0,
+      "oct_roomDepth": 0.88,
+      "oct_attack": 0.3,
+      "oct_decay": 2.5,
+      "oct_sustain": 1.0,
+      "oct_release": 4.5,
+      "oct_filterEnvAmount": 0.03,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 1.0,
+      "oct_macroMovement": 0.06,
+      "oct_macroCoupling": 0.08,
+      "oct_macroSpace": 0.88,
+      "oct_lfo1Rate": 0.03,
+      "oct_lfo1Depth": 0.04,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.1,
+      "oct_lfo2Depth": 0.02,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.05
+    }
+  },
+  "tempo": null
+}

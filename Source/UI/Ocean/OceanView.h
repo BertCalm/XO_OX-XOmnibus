@@ -48,9 +48,23 @@
 #include "NexusDisplay.h"
 #include "EngineOrbit.h"
 #include "CouplingSubstrate.h"
+#include "CouplingConfigPopup.h"
 #include "DnaMapBrowser.h"
 #include "DetailOverlay.h"
 #include "PlaySurfaceOverlay.h"
+#include "EnginePickerDrawer.h"
+#include "SettingsDrawer.h"
+#include "TideWaterline.h"
+#include "ChordBarComponent.h"
+#include "MasterFXStripCompact.h"
+#include "TransportBar.h"
+#include "SubmarineOuijaPanel.h"
+#include "ExpressionStrips.h"
+#include "SubmarinePlaySurface.h"
+#include "DotMatrixDisplay.h"
+#include "SubmarineHudBar.h"
+#include "SurfaceRightPanel.h"
+#include "SubmarineMenuStyle.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
@@ -129,7 +143,8 @@ private:
     5. Start a 10 Hz editor-side timer and call setCouplingRoutes() / setVoiceCount()
        from it to feed live state.
 */
-class OceanView : public juce::Component
+class OceanView : public juce::Component,
+                  private juce::Timer
 {
 public:
     //==========================================================================
@@ -167,7 +182,10 @@ public:
             addAndMakeVisible(orbit);
 
         // 4. Nexus: DNA hexagon + preset name + mood badge
-        addAndMakeVisible(nexus_);
+        // NexusDisplay hidden — preset name moved to FX strip dot-matrix display.
+        // DNA hexagon may be re-added as an optional overlay later.
+        nexus_.setVisible(false);
+        addChildComponent(nexus_);
 
         // 5. Macro section (conditionally visible; placeholder until initMacros())
         // macros_ is a unique_ptr — added in initMacros()
@@ -188,6 +206,9 @@ public:
         // 9c. Detail overlay (hidden by default; floats above orbits/substrate)
         addChildComponent(detailOverlay_);
 
+        // 9e. Coupling config popup (hidden by default; shown on knot double-click)
+        addChildComponent(couplingPopup_);
+
         // 9b. BLOCKER 1: Empty-state label — shown when no engines are loaded.
         // Appears centred below the nexus with a subtle call-to-action.
         emptyStateLabel_.setText("Load an engine to begin",
@@ -199,19 +220,48 @@ public:
         emptyStateLabel_.setVisible(false);  // visible only when numLoaded == 0
         addAndMakeVisible(emptyStateLabel_);
 
-        // 9d. Step 6: Dashboard waterline separator and tab bar.
-        addAndMakeVisible(waterline_);
+        // 9d. Step 6: Dashboard waterline + tab bar.
+        // waterline_ is deferred (needs APVTS + sequencer) — see initWaterline().
         addAndMakeVisible(tabBar_);
+
+        // 9e. Submarine XOuija panel (hidden by default, shown when OUIJA tab selected).
+        ouijaPanel_.setVisible(false);
+        addAndMakeVisible(ouijaPanel_);
+
+        // 9f. Expression strips (PB + MW) — always visible in play area.
+        addAndMakeVisible(exprStrips_);
+
+        // 9g-vis. Dot-matrix visualizer — fills empty space right of macros.
+        addAndMakeVisible(dotMatrix_);
+
+        // 9h-hud. Floating HUD nav bar — top of ocean viewport.
+        addAndMakeVisible(hudBar_);
+
+        // 9g. Submarine play surface (replaces Gallery PlaySurface).
+        addAndMakeVisible(subPlaySurface_);
+
+        // 9h. Right-side panel for PAD/DRUM/XY/OUIJA modes.
+        surfaceRight_.setVisible(false);
+        surfaceRight_.onCloseClicked = [this]()
+        {
+            surfaceRight_.setOpen(false);
+            surfaceRight_.setVisible(false);
+            // Switch tab bar back to KEYS
+            resized();
+        };
+        addAndMakeVisible(surfaceRight_);
 
         // 10. PlaySurface overlay (hidden by default; manages its own visibility)
         addAndMakeVisible(playSurfaceOverlay_);
 
         // 11. Floating header controls
-        addAndMakeVisible(presetPrev_);
-        addAndMakeVisible(presetNext_);
-        addAndMakeVisible(favButton_);
-        addAndMakeVisible(settingsButton_);
-        addAndMakeVisible(keysButton_);
+        // Old Gallery floating header buttons — hidden, replaced by SubmarineHudBar.
+        enginesButton_.setVisible(false);
+        presetPrev_.setVisible(false);
+        presetNext_.setVisible(false);
+        favButton_.setVisible(false);
+        settingsButton_.setVisible(false);
+        keysButton_.setVisible(false);
 
         // 11b. #1008 FIX 7: DimOverlay sits above all buttons but below
         // PlaySurfaceOverlay.  Added after the buttons so it is painted on top.
@@ -254,6 +304,7 @@ public:
             btn.setSize(minW, 44); // 44pt height = WCAG AA minimum touch target
             juce::ignoreUnused(this);
         };
+        styleHeaderButton(enginesButton_, 90);
         styleHeaderButton(presetPrev_,   44);
         styleHeaderButton(presetNext_,   44);
         styleHeaderButton(favButton_,    44);
@@ -261,6 +312,7 @@ public:
         styleHeaderButton(keysButton_,   56);
 
         // #1007 FIX 1: Tooltip text as fallback label for Unicode icon buttons.
+        enginesButton_.setTooltip("Toggle Engine Library");
         favButton_.setTooltip("Favourite");
         settingsButton_.setTooltip("Settings");
         keysButton_.setTooltip("Toggle Play Surface (K)");
@@ -274,7 +326,7 @@ public:
                                    juce::Colour(GalleryColors::Ocean::foam));
         presetNameLabel_.setJustificationType(juce::Justification::centred);
         presetNameLabel_.setInterceptsMouseClicks(true, false); // absorb clicks without passing to parent
-        addAndMakeVisible(presetNameLabel_);
+        addChildComponent(presetNameLabel_); // hidden — preset info in FX strip
         A11y::setup(presetNameLabel_, "Current preset", "Name of the currently loaded preset");
 
         A11y::setup(keysButton_,      "Keys toggle", "Show or hide the Play Surface panel");
@@ -286,11 +338,26 @@ public:
         // ── Internal callbacks ────────────────────────────────────────────────
         for (int i = 0; i < 5; ++i)
         {
-            orbits_[i].onClicked       = [this](int s) { transitionToZoomIn(s); };
+            orbits_[i].onClicked       = [this](int s) { handleOrbitClicked(s); };
             orbits_[i].onDoubleClicked = [this](int s)
             {
-                if (detail_)
-                    detailOverlay_.show(s, detail_.get());
+                if (!detail_) return;
+
+                // Position as compact band centered in the ocean area
+                {
+                    auto ocean = getOceanArea().reduced(40, 0);
+                    int panelH = juce::jmin(ocean.getHeight(), 280);
+                    int panelY = ocean.getY() + (ocean.getHeight() - panelH) / 2;
+                    detail_->setBounds(ocean.withHeight(panelH).withY(panelY));
+                }
+                detail_->loadSlot(s);
+                detail_->setVisible(true);
+                detail_->resized();
+
+                // Nuclear Z-order: remove and re-add as the LAST child
+                removeChildComponent(detail_.get());
+                addAndMakeVisible(*detail_);
+                detailShowing_ = true;
             };
             orbits_[i].onPositionChanged = [this](int slot)
             {
@@ -299,14 +366,36 @@ public:
                 int sz = orbits_[slot].getBuoySize() + kBreathPadding * 2;
                 int x = static_cast<int>(pos.x * area.getWidth()) - sz / 2;
                 int y = static_cast<int>(pos.y * area.getHeight()) - sz / 2;
+                // Clamp to keep buoy fully inside ocean area
+                x = juce::jlimit(0, area.getWidth() - sz, x);
+                y = juce::jlimit(0, area.getHeight() - sz, y);
                 orbits_[slot].setBounds(x + area.getX(), y + area.getY(), sz, sz);
                 substrate_.setCreatureCenter(slot, orbits_[slot].getCenter());
                 saveSlotPosition(slot);
+            };
+            orbits_[i].onDragMoved = [this](int slot)
+            {
+                substrate_.setCreatureCenter(slot, orbits_[slot].getVisualCenter());
             };
         }
 
         nexus_.onPresetNameClicked = [this]() { transitionToBrowser(); };
         nexus_.onDnaClicked        = [this]() { if (onDnaClicked) onDnaClicked(); };
+
+        // ── CouplingSubstrate knot interaction ────────────────────────────────
+        substrate_.onKnotDoubleClicked = [this](int routeIndex)
+        {
+            // Get route info to populate popup.
+            // For now, show with placeholder names — will wire to real engine names.
+            couplingPopup_.show(routeIndex, "Engine A", juce::Colour(60, 180, 170),
+                               "Engine B", juce::Colour(140, 100, 220),
+                               0, 0.5f);
+        };
+
+        substrate_.onKnotRightClicked = [this](int routeIndex, juce::Point<int> /*screenPos*/)
+        {
+            showKnotContextMenu(routeIndex);
+        };
 
         browser_.onPresetSelected = [this](int idx)
         {
@@ -332,11 +421,49 @@ public:
         keysButton_.onClick = [this]() { togglePlaySurface(); };
 
         // ── Step 6: Dashboard tab bar callback ───────────────────────────────
-        tabBar_.onTabChanged = [](const juce::String& tab)
+        tabBar_.onTabChanged = [this](const juce::String& tab)
         {
-            // Currently only KEYS tab uses the PlaySurface.
-            // PAD / DRUM / XY will be added in a later step.
-            juce::ignoreUnused(tab);
+            if (tab == "KEYS")
+            {
+                // KEYS: keyboard in dashboard, right panel closed.
+                surfaceRight_.setOpen(false);
+                surfaceRight_.setVisible(false);
+                subPlaySurface_.setVisible(true);
+                ouijaPanel_.setVisible(false);
+            }
+            else
+            {
+                // PAD/DRUM/XY/OUIJA: right panel opens, keyboard HIDES.
+                subPlaySurface_.setVisible(false);
+                ouijaPanel_.setVisible(false);
+
+                if (tab == "PAD")        surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
+                else if (tab == "DRUM")  surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
+                else if (tab == "XY")    surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
+                else if (tab == "OUIJA") surfaceRight_.setMode(SurfaceRightPanel::Mode::Ouija);
+
+                surfaceRight_.setOpen(true);
+                surfaceRight_.setVisible(true);
+            }
+
+            resized();
+        };
+
+        // SEQ toggle → expand/collapse TideWaterline.
+        tabBar_.onSeqToggled = [this](bool on)
+        {
+            if (waterline_)
+                waterline_->setExpanded(on);
+        };
+
+        // CHORD toggle → show/hide ChordBarComponent.
+        tabBar_.onChordToggled = [this](bool on)
+        {
+            if (chordBar_)
+            {
+                chordBar_->setVisible(on);
+                resized(); // re-layout dashboard to accommodate chord bar
+            }
         };
 
         // ── DetailOverlay callbacks ───────────────────────────────────────────
@@ -355,15 +482,54 @@ public:
         {
             firstLaunch_ = false;
             lifesaver_.setVisible(false);
-            // Open engine picker — fire callback that editor handles
-            if (onEnginePickerRequested) onEnginePickerRequested();
+            // Open engine picker drawer instead of external callback
+            engineDrawer_.open();
+        };
+
+        // ── Phase 3: Engine picker drawer ────────────────────────────────────
+        addChildComponent(engineDrawer_); // starts hidden; toggle via enginesButton_
+        engineDrawer_.onEngineSelected = [this](const juce::String& engineId)
+        {
+            engineDrawer_.close();
+            if (onEnginePickerRequested)
+                onEnginePickerRequested();
+            if (onEngineSelectedFromDrawer)
+                onEngineSelectedFromDrawer(engineId);
+        };
+        enginesButton_.onClick = [this]() { engineDrawer_.toggle(); };
+
+        // ── Settings drawer (slide from right) ────────────────────────────────
+        addChildComponent(settingsDrawer_); // starts hidden; toggle via settingsButton_
+        settingsButton_.onClick = [this]() { settingsDrawer_.toggle(); };
+
+        // ── HUD bar callbacks ─────────────────────────────────────────────────
+        hudBar_.onEnginesClicked = [this]() { engineDrawer_.toggle(); };
+        hudBar_.onSettingsClicked = [this]() { settingsDrawer_.toggle(); };
+
+        // FIX 11: Chain mode toggles crosshair cursor over the ocean viewport
+        // and clears any in-progress chain drawing on the substrate.
+        hudBar_.onChainToggled = [this]()
+        {
+            const bool chainOn = hudBar_.isChainModeActive();
+            setMouseCursor(chainOn ? juce::MouseCursor::CrosshairCursor
+                                   : juce::MouseCursor::NormalCursor);
+            chainStartSlot_ = -1;
+            substrate_.setChainInProgress(false);
         };
 
         // ── Keyboard focus ────────────────────────────────────────────────────
         setWantsKeyboardFocus(true);
+
+        // ── Shared orbit animation timer ──────────────────────────────────────
+        // One 30 Hz timer drives all EngineOrbit animations in lock-step,
+        // synchronizing breathe/bob/wreath phases and reducing OS timer allocations.
+        startTimerHz(30);
     }
 
-    ~OceanView() override = default;
+    ~OceanView() override
+    {
+        stopTimer();
+    }
 
     //==========================================================================
     // Deferred initialisation — called by XOceanusEditor before first show
@@ -391,9 +557,8 @@ public:
     void initDetailPanel(XOceanusProcessor& proc)
     {
         detail_ = std::make_unique<EngineDetailPanel>(proc);
-        addAndMakeVisible(*detail_);
-        detail_->setVisible(false);
-
+        detail_->onBackClicked = [this]() { dismissDetailPanel(); };
+        addChildComponent(*detail_);  // hidden until double-click shows it
         reorderZStack();
         resized();
     }
@@ -413,6 +578,62 @@ public:
     }
 
     /**
+        Initialise the TideWaterline (submarine step sequencer strip).
+        Must be called after the processor is available — needs APVTS and
+        the MasterFXSequencer reference for playhead tracking.
+    */
+    void initWaterline(juce::AudioProcessorValueTreeState& apvts,
+                       const MasterFXSequencer& sequencer)
+    {
+        waterline_ = std::make_unique<TideWaterline>(apvts, sequencer);
+        waterline_->onHeightChanged = [this]()
+        {
+            // When waterline expands/collapses, re-layout the whole view.
+            resized();
+        };
+        addAndMakeVisible(*waterline_);
+        reorderZStack();
+    }
+
+    /**
+        Initialise the ChordBarComponent (submarine-style chord strip).
+        Needs APVTS + ChordMachine reference.
+    */
+    void initChordBar(juce::AudioProcessorValueTreeState& apvts,
+                      const ChordMachine& chordMachine)
+    {
+        chordBar_ = std::make_unique<ChordBarComponent>(apvts, chordMachine);
+        chordBar_->setVisible(false); // starts hidden, toggled by CHORD button
+        addAndMakeVisible(*chordBar_);
+        reorderZStack();
+    }
+
+    /**
+        Initialise the compact Master FX strip (submarine-style).
+    */
+    void initMasterFxStrip(juce::AudioProcessorValueTreeState& apvts)
+    {
+        masterFxStrip_ = std::make_unique<MasterFXStripCompact>(apvts);
+        addAndMakeVisible(*masterFxStrip_);
+        reorderZStack();
+    }
+
+    /**
+        Initialise the TransportBar (submarine-style bottom status strip).
+    */
+    void initTransportBar()
+    {
+        transportBar_ = std::make_unique<TransportBar>();
+        addAndMakeVisible(*transportBar_);
+        reorderZStack();
+    }
+
+    /// Get the TransportBar so the editor can push BPM/voices/CPU.
+    TransportBar*      getTransportBar() noexcept { return transportBar_.get(); }
+    TideWaterline*     getWaterline()    noexcept { return waterline_.get(); }
+    DotMatrixDisplay*  getDotMatrix()    noexcept { return &dotMatrix_; }
+
+    /**
         Initialise the StatusBar.
         Must be the last deferred-init call — it sets fullyInitialised_ = true
         and triggers the first valid resized() pass.
@@ -423,7 +644,7 @@ public:
         addAndMakeVisible(*statusBar_);
         reorderZStack();
 
-        // #1007 FIX 4: All 4 deferred-init methods have now been called.
+        // #1007 FIX 4: All 5 deferred-init methods have now been called.
         // Unlock resized() and paint() before the first layout pass.
         fullyInitialised_ = true;
         resized();
@@ -468,54 +689,159 @@ public:
         // ── Step 6: Submarine dashboard layout ──────────────────────────────
         // Slice the window into: ocean viewport | waterline | dashboard | status bar.
         const auto  fullBounds = getLocalBounds();
-        const auto  oceanArea  = getOceanArea();  // already excludes waterline + dashboard + status
+        const auto  oceanArea  = getOceanArea();  // already excludes waterline + dashboard + status + right panel
 
-        // Waterline separator strip.
-        waterline_.setBounds(fullBounds.getX(),
-                             oceanArea.getBottom(),
-                             fullBounds.getWidth(),
-                             kWaterlineH);
+        // Right-side panel (PAD/DRUM/XY/OUIJA) — sits beside the ocean.
+        if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
+        {
+            const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
+                                     static_cast<int>(fullBounds.getWidth() * 0.40f));
+            const int wlH2 = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
+            const int bottomH = getEffectiveDashboardH() + wlH2 + kStatusBarH;
+            surfaceRight_.setBounds(oceanArea.getRight(),
+                                    fullBounds.getY(),
+                                    rpW,
+                                    fullBounds.getHeight() - bottomH);
+        }
+
+        // HUD nav bar — floats at top of ocean area (12px from top, 16px from sides).
+        hudBar_.setBounds(oceanArea.getX() + 16,
+                          oceanArea.getY() + 12,
+                          oceanArea.getWidth() - 32,
+                          40);
+
+        // Waterline separator strip — height is dynamic (6px collapsed, 96px expanded).
+        const int wlH = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
+        if (waterline_)
+            waterline_->setBounds(fullBounds.getX(),
+                                  oceanArea.getBottom(),
+                                  fullBounds.getWidth(),
+                                  wlH);
 
         // Dashboard area: between the waterline and the status bar.
         auto dashArea = fullBounds
-                            .withTrimmedTop(oceanArea.getHeight() + kWaterlineH)
+                            .withTrimmedTop(oceanArea.getHeight() + wlH)
                             .withTrimmedBottom(kStatusBarH);
 
-        // Macro strip (top of dashboard).
-        if (macros_)
-            macros_->setBounds(dashArea.removeFromTop(static_cast<int>(kMacroStripH)));
+        // Macro strip (top of dashboard) — macros left, dot-matrix right.
+        {
+            auto macroRow = dashArea.removeFromTop(static_cast<int>(kMacroStripH));
+            if (macros_)
+            {
+                // Macros take ~480px on the left (5 knobs × ~90px each + padding).
+                const int macroW = std::min(480, macroRow.getWidth() / 2);
+                macros_->setBounds(macroRow.removeFromLeft(macroW));
+            }
+            // Dot-matrix display fills the remaining space.
+            dotMatrix_.setBounds(macroRow.reduced(4, 4));
+        }
+
+        // Master FX compact strip (48px, between macros and tab bar).
+        if (masterFxStrip_)
+            masterFxStrip_->setBounds(dashArea.removeFromTop(48));
 
         // Tab bar row.
         tabBar_.setBounds(dashArea.removeFromTop(kTabBarH));
 
-        // Remaining dashboard space → PlaySurface (keyboard / pads / drum / XY).
-        // The overlay is given a fixed rect here; its internal slide animation
-        // operates within this region (offset=0 means fully visible, offset=height
-        // means hidden below the bottom edge of dashArea).
-        playSurfaceOverlay_.setBounds(dashArea);
-        if (!playSurfaceOverlay_.isShowing())
-            playSurfaceOverlay_.show();
+        // Chord bar (visible when CHORD toggle is on, ~28px).
+        if (chordBar_ && chordBar_->isVisible())
+            chordBar_->setBounds(dashArea.removeFromTop(42));
 
-        // Status bar always spans the full bottom strip.
+        // Expression strips (36px) on the left of the play area.
+        exprStrips_.setBounds(dashArea.removeFromLeft(ExpressionStrips::kStripWidth));
+
+        // Remaining dashboard space → Submarine PlaySurface (KEYS keyboard).
+        // The old PlaySurfaceOverlay is hidden. OUIJA is in the right panel now.
+        playSurfaceOverlay_.setVisible(false);
+        ouijaPanel_.setVisible(false); // ouija now lives inside SurfaceRightPanel
+        subPlaySurface_.setBounds(dashArea);
+        // Only show keyboard when right panel is closed (KEYS mode).
+        // When right panel is open (PAD/DRUM/XY/OUIJA), keyboard hides.
+        if (!surfaceRight_.isOpen() || !surfaceRight_.isVisible())
+            subPlaySurface_.setVisible(true);
+        else
+            subPlaySurface_.setVisible(false);
+
+        // Transport bar (submarine) replaces the old status bar at the bottom.
+        if (transportBar_)
+            transportBar_->setBounds(0,
+                                     getHeight() - kStatusBarH,
+                                     getWidth(),
+                                     kStatusBarH);
+
+        // Legacy status bar (Gallery) — hidden when transport bar is active.
         if (statusBar_)
-            statusBar_->setBounds(0,
-                                  getHeight() - kStatusBarH,
-                                  getWidth(),
-                                  kStatusBarH);
+        {
+            if (transportBar_)
+                statusBar_->setVisible(false);
+            else
+                statusBar_->setBounds(0,
+                                      getHeight() - kStatusBarH,
+                                      getWidth(),
+                                      kStatusBarH);
+        }
 
-        // DetailOverlay covers the ocean area (excludes dashboard).
-        detailOverlay_.setBounds(oceanArea);
+        // ── Modal overlays and drawers: FULL WINDOW HEIGHT ──────────────────
+        // These sit above everything in Z-order (enforced by reorderZStack) and
+        // must cover the full window including dashboard/keyboard — matching the
+        // HTML prototype which uses `position:fixed; top:0; bottom:0`.
 
-        // #1008 FIX 7: DimOverlay covers the ocean + waterline area so the dim
-        // effect extends to the waterline but doesn't dim the dashboard itself.
-        dimOverlay_.setBounds(fullBounds.withTrimmedBottom(kDashboardH + kStatusBarH));
+        // DetailOverlay covers the full window (engine parameters on double-click).
+        detailOverlay_.setBounds(fullBounds);
+
+        // CouplingConfigPopup covers the full window (modal coupling config).
+        couplingPopup_.setBounds(fullBounds);
+
+        // DimOverlay covers the full window (dims everything when drawer is open).
+        dimOverlay_.setBounds(fullBounds);
+
+        // Engine picker drawer — full window height, fixed width on left.
+        engineDrawer_.setBounds(fullBounds.withWidth(EnginePickerDrawer::kDrawerWidth));
+
+        // Settings drawer — full window height, slides from right edge.
+        settingsDrawer_.setBounds(fullBounds
+            .withLeft(fullBounds.getRight() - SettingsDrawer::kDrawerWidth)
+            .withWidth(SettingsDrawer::kDrawerWidth));
+
+        // ── Canonical Z-order ────────────────────────────────────────────────
+        // Called at end of every resized() to ensure drawers/overlays stay above
+        // all dashboard components regardless of init order or visibility changes.
+        reorderZStack();
+
+        // Nuclear safeguard: ensure detail panel is hidden when not actively showing.
+        // Something in the layout chain is re-showing it; this is the absolute last word.
+        if (detail_ && !detailShowing_)
+            detail_->setVisible(false);
     }
 
     bool keyPressed(const juce::KeyPress& key) override
     {
-        // Escape: exit any overlay, or return to Orbital from any state.
+        // Escape: close engine drawer or settings drawer first, then exit overlays, then return to Orbital.
         if (key == juce::KeyPress::escapeKey)
         {
+            if (settingsDrawer_.isOpen())
+            {
+                settingsDrawer_.close();
+                return true;
+            }
+            if (engineDrawer_.isOpen())
+            {
+                engineDrawer_.close();
+                return true;
+            }
+            if (chainStartSlot_ >= 0)
+            {
+                chainStartSlot_ = -1;
+                substrate_.setChainInProgress(false);
+                hudBar_.setChainModeActive(false);
+                setMouseCursor(juce::MouseCursor::NormalCursor);
+                return true;
+            }
+            if (detailShowing_)
+            {
+                dismissDetailPanel();
+                return true;
+            }
             if (viewState_ == ViewState::BrowserOpen)
             {
                 exitBrowser();
@@ -628,9 +954,37 @@ public:
 
     void mouseDown(const juce::MouseEvent& e) override
     {
-        // Clicking the backdrop in ZoomIn mode (outside any creature) returns
-        // to Orbital.  We check whether the click landed on a child component
-        // via hitTest propagation — if we receive it here, no child caught it.
+        if (e.mods.isRightButtonDown())
+        {
+            // ── Right-click hit-detection order: buoy → empty ocean ─────────
+            // (Knot right-clicks are handled by CouplingSubstrate itself via
+            //  its onKnotRightClicked callback, so we only deal with buoys and
+            //  the empty-ocean fallback here.)
+
+            // 1. Check each visible orbit's bounds.
+            for (int i = 0; i < 5; ++i)
+            {
+                if (!orbits_[i].isVisible() || !orbits_[i].hasEngine())
+                    continue;
+
+                // Convert OceanView-local click position to orbit-local.
+                const auto orbitLocal = e.getEventRelativeTo(&orbits_[i]).position;
+                if (orbits_[i].getLocalBounds().toFloat().contains(orbitLocal))
+                {
+                    showBuoyContextMenu(i);
+                    return;
+                }
+            }
+
+            // 2. Empty ocean — no buoy or knot hit.
+            showEmptyOceanContextMenu();
+            return;
+        }
+
+        // Left-click: Clicking the backdrop in ZoomIn mode (outside any creature)
+        // returns to Orbital.  We check whether the click landed on a child
+        // component via hitTest propagation — if we receive it here, no child
+        // caught it.
         if (viewState_ == ViewState::ZoomIn)
         {
             transitionToOrbital();
@@ -640,7 +994,14 @@ public:
 
     void mouseMove(const juce::MouseEvent& e) override
     {
-        juce::ignoreUnused(e);
+        // Update chain line endpoint during chain-in-progress
+        if (hudBar_.isChainModeActive() && chainStartSlot_ >= 0)
+        {
+            auto localPos = e.getPosition().toFloat();
+            // Translate to substrate's coordinate space
+            auto subPos = localPos - substrate_.getPosition().toFloat();
+            substrate_.setChainMousePos(subPos);
+        }
     }
 
     void mouseExit(const juce::MouseEvent& /*e*/) override
@@ -896,8 +1257,16 @@ public:
     /** Fired when an engine slot enters SplitTransform (double-click dive). */
     std::function<void(int slot)> onEngineDiveDeep;
 
+    /** Fired when the user selects an engine from the Engine Library drawer (Phase 3).
+        The editor should load this engine into the active slot (or next available). */
+    std::function<void(const juce::String& engineId)> onEngineSelectedFromDrawer;
+
     /** Fired when the user clicks a preset dot in the DNA map browser. */
     std::function<void(int presetIndex)> onPresetSelected;
+
+    /** Fired when the user completes a chain gesture (two orbit clicks in chain mode).
+        The editor should create a coupling route between sourceSlot and destSlot. */
+    std::function<void(int sourceSlot, int destSlot)> onCouplingRouteRequested;
 
     /** Fired when the PlaySurface overlay is shown or hidden (including first-launch auto-show).
         Use this to persist the visibility preference so subsequent plugin launches restore the
@@ -912,12 +1281,44 @@ public:
         Wire this to open the engine picker so the user can load their first engine. */
     std::function<void()> onEnginePickerRequested;
 
+    /** Fired when the user right-clicks a buoy and chooses "Mute" / "Unmute".
+        OceanView tracks toggle state internally so the menu label reflects current
+        state.  The callback receives the slot index; callers should query
+        isSlotMuted(slot) for the new value after the callback fires. */
+    std::function<void(int slot)> onEngineMuteToggled;
+
+    /** Fired when the user right-clicks a buoy and chooses "Solo" / "Unsolo".
+        OceanView tracks toggle state internally.  Callers should query
+        isSlotSoloed(slot) for the new value after the callback fires. */
+    std::function<void(int slot)> onEngineSoloToggled;
+
+    /** Fired when the user right-clicks a buoy and chooses "Remove". */
+    std::function<void(int slot)> onEngineRemoveRequested;
+
+    /** Fired when the user right-clicks a coupling knot and chooses "Delete Chain". */
+    std::function<void(int chainIndex)> onCouplingDeleteRequested;
+
+    /** Fired when the user chooses "Add Coupling..." from a buoy context menu. */
+    std::function<void(int slot)> onChainModeRequested;
+
     //==========================================================================
     // State queries
     //==========================================================================
 
     ViewState getViewState()    const noexcept { return viewState_; }
     int       getSelectedSlot() const noexcept { return selectedSlot_; }
+
+    bool isSlotMuted  (int slot) const noexcept
+    {
+        if (slot < 0 || slot >= 5) return false;
+        return slotMuted_[static_cast<size_t>(slot)];
+    }
+
+    bool isSlotSoloed (int slot) const noexcept
+    {
+        if (slot < 0 || slot >= 5) return false;
+        return slotSoloed_[static_cast<size_t>(slot)];
+    }
 
 private:
     //==========================================================================
@@ -926,87 +1327,143 @@ private:
 
     /** Thin teal gradient strip that visually separates the ocean viewport
         from the submarine dashboard below it. */
-    struct WaterlineSeparator : public juce::Component
-    {
-        WaterlineSeparator() { setInterceptsMouseClicks(false, false); }
-        void paint(juce::Graphics& g) override
-        {
-            auto b = getLocalBounds().toFloat();
-            juce::ColourGradient grad(
-                juce::Colour(60, 180, 170).withAlpha(0.04f), 0, b.getY(),
-                juce::Colour(60, 180, 170).withAlpha(0.12f), 0, b.getBottom(), false);
-            g.setGradientFill(grad);
-            g.fillRect(b);
-            // Bottom edge glow line
-            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.18f));
-            g.fillRect(b.getX(), b.getBottom() - 1.0f, b.getWidth(), 1.0f);
-        }
-    };
+    // WaterlineSeparator replaced by TideWaterline (deferred-init unique_ptr).
+    // See initWaterline() and Source/UI/Ocean/TideWaterline.h.
 
     /** Horizontal tab strip that selects the play-surface mode shown in the
         dashboard area below the macro strip. */
+    /** Submarine-style tab bar — all custom paint, no TextButtons.
+        Matches prototype: 10px uppercase, rounded-top tabs, teal active state.
+        SEQ + CHORD toggles on the right side. */
     struct DashboardTabBar : public juce::Component
     {
         DashboardTabBar()
         {
-            for (auto& name : { "KEYS", "PAD", "DRUM", "XY" })
-            {
-                auto* btn = tabs_.add(new juce::TextButton(name));
-                btn->setColour(juce::TextButton::buttonColourId,
-                               juce::Colours::transparentBlack);
-                btn->setColour(juce::TextButton::textColourOffId,
-                               juce::Colour(200, 204, 216).withAlpha(0.35f));
-                btn->onClick = [this, tabName = juce::String(name)]()
-                {
-                    activeTab_ = tabName;
-                    updateTabColours();
-                    if (onTabChanged) onTabChanged(tabName);
-                };
-                addAndMakeVisible(btn);
-            }
-            activeTab_ = "KEYS";
-            updateTabColours();
-        }
-
-        void resized() override
-        {
-            auto b = getLocalBounds();
-            constexpr int kTabW = 60;
-            int x = 16;
-            for (auto* btn : tabs_)
-            {
-                btn->setBounds(x, 0, kTabW, b.getHeight());
-                x += kTabW + 2;
-            }
+            setInterceptsMouseClicks(true, true);
+            setOpaque(false);
         }
 
         void paint(juce::Graphics& g) override
         {
+            const auto b = getLocalBounds().toFloat();
+            // Bottom border
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
-            g.fillRect(getLocalBounds().removeFromBottom(1));
-        }
+            g.fillRect(0.0f, b.getBottom() - 1.0f, b.getWidth(), 1.0f);
 
-        const juce::String& activeTab() const noexcept { return activeTab_; }
+            const juce::Font tabFont(juce::FontOptions{}
+                .withName(juce::Font::getDefaultSansSerifFontName())
+                .withStyle("Bold")
+                .withHeight(10.0f));
+            g.setFont(tabFont);
 
-        std::function<void(const juce::String&)> onTabChanged;
-
-    private:
-        void updateTabColours()
-        {
-            for (auto* btn : tabs_)
+            // Rebuild tab regions
+            tabRegions_.clear();
+            float x = 16.0f;
+            for (int i = 0; i < kNumTabs; ++i)
             {
-                const bool active = (btn->getButtonText() == activeTab_);
-                btn->setColour(juce::TextButton::textColourOffId,
-                    active ? juce::Colour(60, 180, 170).withAlpha(0.9f)
-                           : juce::Colour(200, 204, 216).withAlpha(0.35f));
-                btn->setColour(juce::TextButton::buttonColourId,
-                    active ? juce::Colour(60, 180, 170).withAlpha(0.07f)
-                           : juce::Colours::transparentBlack);
+                const float tw = tabFont.getStringWidthFloat(kTabNames[i]) + 28.0f;
+                const float th = b.getHeight() - 1.0f;
+                juce::Rectangle<float> tr(x, 0.0f, tw, th);
+                tabRegions_.push_back(tr);
+
+                const bool active = (activeIdx_ == i);
+                if (active)
+                {
+                    g.setColour(juce::Colour(60, 180, 170).withAlpha(0.07f));
+                    g.fillRoundedRectangle(tr.getX(), tr.getY(), tr.getWidth(), tr.getHeight() + 2.0f, 6.0f);
+                    g.setColour(juce::Colour(60, 180, 170).withAlpha(0.90f));
+                }
+                else
+                {
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.35f));
+                }
+                g.drawText(kTabNames[i], tr.toNearestInt(), juce::Justification::centred, false);
+                x += tw + 2.0f;
+            }
+
+            // SEQ + CHORD toggles from the right
+            float rx = b.getRight() - 16.0f;
+            for (int t = 1; t >= 0; --t) // CHORD first (rightmost), then SEQ
+            {
+                const char* label = (t == 0) ? "SEQ" : "CHORD";
+                const bool on = (t == 0) ? seqOn_ : chordOn_;
+                const float pw = tabFont.getStringWidthFloat(label) + 16.0f;
+                const float ph = b.getHeight() - 6.0f;
+                juce::Rectangle<float> pr(rx - pw, 3.0f, pw, ph);
+                if (t == 0) seqBounds_ = pr; else chordBounds_ = pr;
+
+                if (on)
+                {
+                    g.setColour(juce::Colour(127, 219, 202).withAlpha(0.08f));
+                    g.fillRoundedRectangle(pr, 4.0f);
+                    g.setColour(juce::Colour(127, 219, 202).withAlpha(0.25f));
+                    g.drawRoundedRectangle(pr, 4.0f, 1.0f);
+                    g.setColour(juce::Colour(127, 219, 202).withAlpha(0.90f));
+                }
+                else
+                {
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.08f));
+                    g.drawRoundedRectangle(pr, 4.0f, 1.0f);
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.35f));
+                }
+                g.drawText(label, pr.toNearestInt(), juce::Justification::centred, false);
+                rx -= pw + 6.0f;
             }
         }
 
-        juce::OwnedArray<juce::TextButton> tabs_;
-        juce::String                       activeTab_;
+        void mouseDown(const juce::MouseEvent& e) override
+        {
+            const auto pos = e.position;
+            // Check tabs
+            for (int i = 0; i < static_cast<int>(tabRegions_.size()); ++i)
+            {
+                if (tabRegions_[static_cast<size_t>(i)].contains(pos))
+                {
+                    activeIdx_ = i;
+                    if (onTabChanged) onTabChanged(kTabNames[i]);
+                    repaint();
+                    return;
+                }
+            }
+            // SEQ toggle
+            if (seqBounds_.contains(pos))
+            {
+                seqOn_ = !seqOn_;
+                if (onSeqToggled) onSeqToggled(seqOn_);
+                repaint();
+                return;
+            }
+            // CHORD toggle
+            if (chordBounds_.contains(pos))
+            {
+                chordOn_ = !chordOn_;
+                if (onChordToggled) onChordToggled(chordOn_);
+                repaint();
+                return;
+            }
+        }
+
+        const juce::String& activeTab() const noexcept
+        {
+            static const juce::String names[] = {"KEYS","PAD","DRUM","XY","OUIJA"};
+            return names[juce::jlimit(0, kNumTabs - 1, activeIdx_)];
+        }
+
+        std::function<void(const juce::String&)> onTabChanged;
+        std::function<void(bool)> onSeqToggled;
+        std::function<void(bool)> onChordToggled;
+
+    private:
+        static constexpr int kNumTabs = 5;
+        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY", "OUIJA"};
+
+        int  activeIdx_ = 0;
+        bool seqOn_     = false;
+        bool chordOn_   = false;
+
+        std::vector<juce::Rectangle<float>> tabRegions_;
+        juce::Rectangle<float> seqBounds_;
+        juce::Rectangle<float> chordBounds_;
     };
 
     //==========================================================================
@@ -1093,11 +1550,260 @@ private:
     };
 
     //==========================================================================
+    // Context menus
+    //==========================================================================
+
+    /** Show a submarine-styled PopupMenu for a right-click on engine buoy at @p slot. */
+    void showBuoyContextMenu(int slot)
+    {
+        const bool muted  = slotMuted_ [static_cast<size_t>(slot)];
+        const bool soloed = slotSoloed_[static_cast<size_t>(slot)];
+
+        juce::PopupMenu menu;
+        menu.setLookAndFeel(&menuLnF_);
+
+        menu.addItem(1, juce::String::fromUTF8("\xf0\x9f\x94\x8d  Open Detail"));           // 🔍
+        menu.addItem(2, juce::String::fromUTF8("\xf0\x9f\x94\x84  Swap Engine..."));         // 🔄
+        menu.addSeparator();
+        menu.addItem(3, muted  ? juce::String::fromUTF8("\xf0\x9f\x94\x8a  Unmute")         // 🔊
+                               : juce::String::fromUTF8("\xf0\x9f\x94\x87  Mute"));          // 🔇
+        menu.addItem(4, soloed ? juce::String::fromUTF8("\xf0\x9f\x8e\xaf  Unsolo")         // 🎯
+                               : juce::String::fromUTF8("\xf0\x9f\x8e\xaf  Solo"));          // 🎯
+        menu.addItem(5, juce::String::fromUTF8("\xe2\xad\x90  Set as Master"));               // ⭐
+        menu.addItem(6, juce::String::fromUTF8("\xf0\x9f\x94\x97  Add Coupling..."));        // 🔗
+        menu.addSeparator();
+
+        // Danger item: Remove
+        juce::PopupMenu::Item removeItem;
+        removeItem.itemID = 7;
+        removeItem.text   = juce::String::fromUTF8("\xf0\x9f\x97\x91  Remove Engine");       // 🗑
+        removeItem.colour = SubmarineMenuLookAndFeel::kDangerRed;
+        menu.addItem(removeItem);
+
+        SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
+            juce::PopupMenu::Options{},
+            [this, slot](int result)
+            {
+                switch (result)
+                {
+                    case 1:
+                        transitionToZoomIn(slot);
+                        transitionToSplitTransform(slot);
+                        break;
+                    case 2:
+                        engineDrawer_.open();
+                        break;
+                    case 3:
+                        slotMuted_[static_cast<size_t>(slot)] = !slotMuted_[static_cast<size_t>(slot)];
+                        if (onEngineMuteToggled)
+                            onEngineMuteToggled(slot);
+                        break;
+                    case 4:
+                        slotSoloed_[static_cast<size_t>(slot)] = !slotSoloed_[static_cast<size_t>(slot)];
+                        if (onEngineSoloToggled)
+                            onEngineSoloToggled(slot);
+                        break;
+                    case 5:
+                        // Set as Master — future: promote this slot's engine to primary.
+                        break;
+                    case 6:
+                        // Add Coupling — enter chain-drawing mode from this slot.
+                        if (onChainModeRequested)
+                            onChainModeRequested(slot);
+                        break;
+                    case 7:
+                        if (onEngineRemoveRequested)
+                            onEngineRemoveRequested(slot);
+                        break;
+                    default:
+                        break;
+                }
+            });
+    }
+
+    /** Show a submarine-styled PopupMenu for a right-click on a coupling knot. */
+    void showKnotContextMenu(int chainIndex)
+    {
+        juce::PopupMenu menu;
+        menu.setLookAndFeel(&menuLnF_);
+
+        menu.addItem(1, juce::String::fromUTF8("\xf0\x9f\x94\x84  Flip Direction"));        // 🔄
+        menu.addItem(2, juce::String::fromUTF8("\xe2\x9a\x99  Configure..."));                // ⚙
+        menu.addItem(3, juce::String::fromUTF8("\xf0\x9f\x93\x8b  Copy Settings"));          // 📋
+        menu.addSeparator();
+
+        juce::PopupMenu::Item removeItem;
+        removeItem.itemID = 4;
+        removeItem.text   = juce::String::fromUTF8("\xf0\x9f\x97\x91  Remove Coupling");     // 🗑
+        removeItem.colour = SubmarineMenuLookAndFeel::kDangerRed;
+        menu.addItem(removeItem);
+
+        SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
+            juce::PopupMenu::Options{},
+            [this, chainIndex](int result)
+            {
+                switch (result)
+                {
+                    case 1:
+                        // Flip coupling direction — future: reverse source/target.
+                        break;
+                    case 2:
+                        couplingPopup_.show(chainIndex,
+                                            "Engine A", juce::Colour(60, 180, 170),
+                                            "Engine B", juce::Colour(140, 100, 220),
+                                            0, 0.5f);
+                        break;
+                    case 3:
+                        // Copy coupling settings to clipboard — future.
+                        break;
+                    case 4:
+                        if (onCouplingDeleteRequested)
+                            onCouplingDeleteRequested(chainIndex);
+                        break;
+                    default:
+                        break;
+                }
+            });
+    }
+
+    /** Show a submarine-styled PopupMenu for a right-click on empty ocean. */
+    void showEmptyOceanContextMenu()
+    {
+        juce::PopupMenu menu;
+        menu.setLookAndFeel(&menuLnF_);
+
+        menu.addItem(1, juce::String::fromUTF8("\xe2\x9e\x95  Add Engine..."));               // ➕
+        menu.addItem(2, juce::String::fromUTF8("\xf0\x9f\x94\x97  Toggle Chain Mode"));      // 🔗
+
+        juce::PopupMenu::Item pasteItem;
+        pasteItem.itemID    = 3;
+        pasteItem.text      = juce::String::fromUTF8("\xf0\x9f\x93\x8b  Paste Engine");      // 📋
+        pasteItem.isEnabled = false;  // disabled until clipboard has engine data
+        menu.addItem(pasteItem);
+
+        SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
+            juce::PopupMenu::Options{},
+            [this](int result)
+            {
+                switch (result)
+                {
+                    case 1:
+                        engineDrawer_.open();
+                        break;
+                    case 2:
+                        // Toggle chain-drawing mode — future.
+                        break;
+                    case 3:
+                        // Paste engine from clipboard — future.
+                        break;
+                    default:
+                        break;
+                }
+            });
+    }
+
+    //==========================================================================
+    // Shared orbit animation timer (juce::Timer override)
+    //==========================================================================
+
+    void timerCallback() override
+    {
+        // Drive all orbit animations from one synchronized 30 Hz timer.
+        for (auto& orbit : orbits_)
+            orbit.stepAnimation();
+
+        // Update coupling curves with visual positions (spring offset included).
+        // setCreatureCenter early-outs when position is unchanged, so this is
+        // cheap for idle orbits and only rebuilds paths during drag/settling.
+        for (int i = 0; i < 5; ++i)
+            if (orbits_[i].hasEngine())
+                substrate_.setCreatureCenter(i, orbits_[i].getVisualCenter());
+
+        // Repaint only orbits that are actively animating.
+        // Idle orbits freeze after their last frame — no 30Hz repaint means
+        // no sub-pixel antialiasing shimmer from wreath path recalculation.
+        for (auto& orbit : orbits_)
+            if (orbit.hasEngine() && orbit.isAnimating())
+                orbit.requestRepaint();
+    }
+
+    //==========================================================================
     // State machine transitions
     //==========================================================================
 
+    void handleOrbitClicked(int slot)
+    {
+        if (hudBar_.isChainModeActive())
+        {
+            if (chainStartSlot_ < 0)
+            {
+                // First click: start the chain from this slot
+                chainStartSlot_ = slot;
+                substrate_.setChainInProgress(true, slot, orbits_[slot].getCenter());
+            }
+            else if (chainStartSlot_ != slot)
+            {
+                // Second click on a different slot: create coupling route
+                if (onCouplingRouteRequested)
+                    onCouplingRouteRequested(chainStartSlot_, slot);
+
+                // Reset chain state
+                chainStartSlot_ = -1;
+                substrate_.setChainInProgress(false);
+                hudBar_.setChainModeActive(false);
+                setMouseCursor(juce::MouseCursor::NormalCursor);
+            }
+            // Clicking the same slot cancels the chain
+            else
+            {
+                chainStartSlot_ = -1;
+                substrate_.setChainInProgress(false);
+            }
+            return;
+        }
+
+        // Selection in place — no state transition, no orbit movement.
+        // Visual emphasis (glow, ring) handled by EngineOrbit::setSelected().
+        selectOrbitInPlace(slot);
+    }
+
+    void selectOrbitInPlace(int slot)
+    {
+        // Toggle: clicking the already-selected orbit deselects it.
+        if (selectedSlot_ == slot)
+        {
+            selectedSlot_ = -1;
+            for (auto& o : orbits_)
+                o.setSelected(false);
+            if (onEngineSelected)
+                onEngineSelected(-1);
+            return;
+        }
+
+        selectedSlot_ = slot;
+        for (int i = 0; i < 5; ++i)
+            orbits_[i].setSelected(i == slot);
+
+        if (onEngineSelected)
+            onEngineSelected(slot);
+    }
+
+    void dismissDetailPanel()
+    {
+        if (detail_)
+            detail_->setVisible(false);
+        dimOverlay_.setVisible(false);
+        detailShowing_ = false;
+    }
+
     void transitionToOrbital()
     {
+        dismissDetailPanel();
+
+        // Kill any in-flight spring animations before layout changes setBounds.
+        for (auto& orbit : orbits_)
+            orbit.resetSpring();
+
         viewState_    = ViewState::Orbital;
         selectedSlot_ = -1;
 
@@ -1116,6 +1822,10 @@ private:
             return;
         }
 
+        dismissDetailPanel();
+        for (auto& orbit : orbits_)
+            orbit.resetSpring();
+
         viewState_    = ViewState::ZoomIn;
         selectedSlot_ = slot;
 
@@ -1127,6 +1837,10 @@ private:
 
     void transitionToSplitTransform(int slot)
     {
+        dismissDetailPanel();
+        for (auto& orbit : orbits_)
+            orbit.resetSpring();
+
         viewState_    = ViewState::SplitTransform;
         selectedSlot_ = slot;
 
@@ -1138,6 +1852,10 @@ private:
 
     void transitionToBrowser()
     {
+        dismissDetailPanel();
+        for (auto& orbit : orbits_)
+            orbit.resetSpring();
+
         // Snapshot the pre-browser state so exitBrowser() can restore it exactly.
         preBrowserState_    = viewState_;
         preBrowserSlot_     = selectedSlot_;
@@ -1201,62 +1919,66 @@ private:
         nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
                          static_cast<int>(centerF.y) - kNexusH / 2 - 20,
                          kNexusW, kNexusH);
-        nexus_.setVisible(true);
+        nexus_.setVisible(false); // hidden — preset info in FX strip
 
         // ── Engine creatures (freeform normalized positions) ─────────────────
         int numLoaded = 0;
         for (const auto& o : orbits_)
             if (o.hasEngine()) ++numLoaded;
 
+        // FIX 12: Keep OceanBackground informed so it can show/hide ghost outlines.
+        background_.setEngineCount(numLoaded);
+
         // ── Macros: now positioned in the dashboard strip via resized() ──────
         // Fix 4: only show macros when at least one engine is loaded.
         if (macros_)
             macros_->setVisible(numLoaded > 0);
 
-        if (numLoaded > 0)
+        // Layout all 4 primary orbits at their normalized positions regardless of
+        // whether an engine is loaded.  Empty slots render as ghost outlines
+        // (dashed circle + "+" sign) via EngineOrbit::paint().  Slot 4 (index 4)
+        // is the ghost overflow slot and stays hidden when no engine occupies it.
+        for (int i = 0; i < 5; ++i)
         {
-            for (int i = 0; i < 5; ++i)
+            if (i == 4 && !orbits_[i].hasEngine())
             {
-                if (!orbits_[i].hasEngine())
-                {
-                    orbits_[i].setVisible(false);
-                    continue;
-                }
-
-                auto pos = orbits_[i].getNormalizedPosition();
-                int sz = orbits_[i].getBuoySize() + kBreathPadding * 2;
-                int x = static_cast<int>(pos.x * area.getWidth()) - sz / 2;
-                int y = static_cast<int>(pos.y * area.getHeight()) - sz / 2;
-                orbits_[i].setBounds(x + area.getX(), y + area.getY(), sz, sz);
-                orbits_[i].setVisible(true);
-
-                substrate_.setCreatureCenter(i, orbits_[i].getCenter());
+                // Ghost overflow slot — only visible when an engine is assigned.
+                orbits_[i].setVisible(false);
+                continue;
             }
-        }
-        else
-        {
-            // BLOCKER 1: empty-state — no engines loaded.
-            // Show a centred call-to-action label and hide all orbits.
-            for (auto& o : orbits_)
-                o.setVisible(false);
 
-            emptyStateLabel_.setVisible(true);
+            auto pos = orbits_[i].getNormalizedPosition();
+            int sz = orbits_[i].getBuoySize() + kBreathPadding * 2;
+            int x = static_cast<int>(pos.x * area.getWidth()) - sz / 2;
+            int y = static_cast<int>(pos.y * area.getHeight()) - sz / 2;
+            // Clamp buoy fully inside ocean area (prevent clipping by dashboard)
+            x = juce::jlimit(0, area.getWidth() - sz, x);
+            y = juce::jlimit(0, area.getHeight() - sz, y);
+            orbits_[i].setBounds(x + area.getX(), y + area.getY(), sz, sz);
+            orbits_[i].setOceanAreaBounds(area.toFloat());
+            orbits_[i].setVisible(true);
+
+            if (orbits_[i].hasEngine())
+                substrate_.setCreatureCenter(i, orbits_[i].getCenter());
+        }
+
+        // Empty-state label: centred below the ocean midpoint when no engines loaded.
+        emptyStateLabel_.setVisible(numLoaded == 0);
+        if (numLoaded == 0)
+        {
             emptyStateLabel_.setBounds(
                 static_cast<int>(centerF.x) - 150,
                 static_cast<int>(centerF.y) + 20,
                 300, 32);
         }
 
-        // If we have engines, keep the empty-state label hidden.
-        if (numLoaded > 0)
-            emptyStateLabel_.setVisible(false);
-
         // Step 7: Show the pulsing lifesaver ring on first launch when empty.
         lifesaver_.setVisible(firstLaunch_ && numLoaded == 0);
         lifesaver_.setBounds(getOceanArea());
 
         // Hide panels that belong to other states.
-        if (detail_)  { detail_->setVisible(false); }
+        if (detail_ && !detailShowing_)
+            detail_->setVisible(false);
         if (sidebar_) { sidebar_->setVisible(false); }
         browser_.setVisible(false);
     }
@@ -1286,7 +2008,7 @@ private:
         nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
                          area.getY() + 30,
                          kNexusW, kNexusH);
-        nexus_.setVisible(true);
+        nexus_.setVisible(false); // hidden — preset info in FX strip
 
         // Count non-selected loaded engines (for edge positioning).
         int edgeCount = 0;
@@ -1341,7 +2063,8 @@ private:
         if (macros_)
             macros_->setVisible(true);
 
-        if (detail_)  { detail_->setVisible(false); }
+        if (detail_ && !detailShowing_)
+            detail_->setVisible(false);
         if (sidebar_) { sidebar_->setVisible(false); }
         browser_.setVisible(false);
         emptyStateLabel_.setVisible(false);  // ZoomIn always has an engine selected
@@ -1429,7 +2152,8 @@ private:
 
         nexus_.setVisible(false);
         if (macros_)  macros_->setVisible(false);
-        if (detail_)  detail_->setVisible(false);
+        if (detail_ && !detailShowing_)
+            detail_->setVisible(false);
         if (sidebar_) sidebar_->setVisible(false);
         emptyStateLabel_.setVisible(false);  // browser has its own empty state
     }
@@ -1440,20 +2164,21 @@ private:
 
     void layoutFloatingControls()
     {
-        // ── Left cluster: prev | presetName | next | fav ─────────────────────
+        // ── Left cluster: engines | prev | presetName | next | fav ───────────
         // #908: WCAG 2.5.5 requires a minimum 44×44pt touch target.
-        // Visual height stays ~28pt via GalleryLookAndFeel's text rendering,
-        // but the component bounds are expanded to 44pt so pointer/touch events
-        // have a compliant target size.  The button background fill matches the
-        // ocean scene so the extra transparent hit area is invisible.
-        constexpr int kBtnH      = 44;   // #908: WCAG AA minimum (was 28)
-        constexpr int kNavW      = 44;   // #908: square touch target for nav arrows
-        constexpr int kFavW      = 44;   // #908: square touch target for favourite star
-        constexpr int kTopMargin = 0;    // anchored to top edge; visual centre is at 22pt
-        constexpr int kLeftMargin = 4;
-        constexpr int kGap       = 0;    // targets are flush — no visual gap needed
+        constexpr int kBtnH        = 44;   // #908: WCAG AA minimum (was 28)
+        constexpr int kNavW        = 44;   // #908: square touch target for nav arrows
+        constexpr int kFavW        = 44;   // #908: square touch target for favourite star
+        constexpr int kEnginesW    = 90;   // Phase 3: Engines button width
+        constexpr int kTopMargin   = 0;    // anchored to top edge
+        constexpr int kLeftMargin  = 4;
+        constexpr int kGap         = 0;    // targets are flush
 
-        presetPrev_.setBounds(kLeftMargin,
+        // Phase 3: Engines button (leftmost)
+        enginesButton_.setBounds(kLeftMargin, kTopMargin, kEnginesW, kBtnH);
+        const int afterEngines = kLeftMargin + kEnginesW + 4;
+
+        presetPrev_.setBounds(afterEngines,
                               kTopMargin,
                               kNavW, kBtnH);
 
@@ -1461,15 +2186,15 @@ private:
         // spatial grouping "< Preset Name >" is immediately legible.
         // Width is capped at 160pt so it doesn't crowd the fav button.
         constexpr int kNameLabelW = 160;
-        presetNameLabel_.setBounds(kLeftMargin + kNavW,
+        presetNameLabel_.setBounds(afterEngines + kNavW,
                                    kTopMargin,
                                    kNameLabelW, kBtnH);
 
-        presetNext_.setBounds(kLeftMargin + kNavW + kNameLabelW + kGap,
+        presetNext_.setBounds(afterEngines + kNavW + kNameLabelW + kGap,
                               kTopMargin,
                               kNavW, kBtnH);
 
-        favButton_.setBounds(kLeftMargin + kNavW + kNameLabelW + kNavW + kGap * 2,
+        favButton_.setBounds(afterEngines + kNavW + kNameLabelW + kNavW + kGap * 2,
                              kTopMargin,
                              kFavW, kBtnH);
 
@@ -1494,10 +2219,28 @@ private:
     /** Returns the ocean viewport bounds — the area above the waterline separator
         and submarine dashboard.  Previously this was everything minus the status
         bar; it now also excludes the waterline and dashboard rows. */
+    /// Effective dashboard height — collapses when right panel is open
+    /// (keyboard hidden, only macros + FX + tabs remain).
+    int getEffectiveDashboardH() const
+    {
+        if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
+            return static_cast<int>(kMacroStripH) + 48 + kTabBarH; // macros + FX + tabs, no keyboard
+        return kDashboardH;
+    }
+
     juce::Rectangle<int> getOceanArea() const
     {
-        const int bottomH = kDashboardH + kWaterlineH + kStatusBarH;
-        return getLocalBounds().withTrimmedBottom(bottomH);
+        const int wlH = waterline_ ? waterline_->getDesiredHeight() : kWaterlineH;
+        const int bottomH = getEffectiveDashboardH() + wlH + kStatusBarH;
+        auto area = getLocalBounds().withTrimmedBottom(bottomH);
+        // When right panel is open, ocean narrows from the right.
+        if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
+        {
+            const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
+                                     static_cast<int>(area.getWidth() * 0.40f));
+            area = area.withTrimmedRight(rpW);
+        }
+        return area;
     }
 
     /** Convert polar angle + radius to Cartesian in the given coordinate frame. */
@@ -1595,6 +2338,10 @@ private:
     void reorderZStack()
     {
         ambientEdge_.toFront(false);
+        // Engine orbits must sit above the ambient edge and below the HUD / overlays
+        // so they're visible even when near the waterline boundary.
+        for (auto& orbit : orbits_)
+            orbit.toFront(false);
         // Fix 6: macros must render above the vignette overlay (ambientEdge_).
         if (macros_) macros_->toFront(false);
         if (detail_)   detail_->toFront(false);
@@ -1602,6 +2349,8 @@ private:
         browser_.toFront(false);
         // DetailOverlay floats above orbits/substrate/browser but below header buttons.
         detailOverlay_.toFront(false);
+        // Phase 2: CouplingConfigPopup sits above detailOverlay_ but below header buttons.
+        couplingPopup_.toFront(false);
         presetPrev_.toFront(false);
         presetNext_.toFront(false);
         favButton_.toFront(false);
@@ -1610,12 +2359,39 @@ private:
         presetNameLabel_.toFront(false);
         // #1008 FIX 7: dimOverlay_ above buttons but below PlaySurfaceOverlay.
         dimOverlay_.toFront(false);
+        // Empty-state elements: emptyStateLabel_ and lifesaver_ must float above
+        // the HUD bar (otherwise hudBar_ — added later — buries them).  Place them
+        // here so they appear in the ocean viewport above all other ocean content
+        // but are covered by the engine picker / settings drawers when open.
+        emptyStateLabel_.toFront(false);
+        lifesaver_.toFront(false);
         // Step 6: waterline and tab bar sit above the dim overlay but below
         // the PlaySurface so they are always legible.
-        waterline_.toFront(false);
-        tabBar_.toFront(false);
+        hudBar_.toFront(false);
+        surfaceRight_.toFront(false);
+        exprStrips_.toFront(false);
+        subPlaySurface_.toFront(false);
         playSurfaceOverlay_.toFront(false);
+        ouijaPanel_.toFront(false);
+        if (waterline_) waterline_->toFront(false);
+        if (masterFxStrip_) masterFxStrip_->toFront(false);
+        tabBar_.toFront(false);
+        if (chordBar_) chordBar_->toFront(false);
+        if (transportBar_) transportBar_->toFront(false);
         if (statusBar_) statusBar_->toFront(false);
+
+        // Drawers and modal overlays must sit above EVERYTHING — including
+        // the dashboard, keyboard, transport bar, and status bar.
+        engineDrawer_.toFront(false);
+        settingsDrawer_.toFront(false);
+        // DetailOverlay backdrop sits above dashboard.
+        detailOverlay_.toFront(false);
+        // The EngineDetailPanel must sit ABOVE the overlay backdrop so its
+        // knobs, waveform, and labels are visible (not hidden behind the
+        // overlay's dark fill).  Only relevant when detail is showing.
+        if (detail_ && detail_->isVisible())
+            detail_->toFront(false);
+        couplingPopup_.toFront(false);
     }
 
     //==========================================================================
@@ -1626,8 +2402,15 @@ private:
     int       selectedSlot_    = -1;
     float     dimAlpha_        = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
 
+    /// Per-slot mute / solo toggle state — tracked locally so the context menu
+    /// label can reflect the current state without a round-trip to the processor.
+    std::array<bool, 5> slotMuted_  {};
+    std::array<bool, 5> slotSoloed_ {};
+
     /// Step 7: true until the user loads their first engine or clicks the lifesaver.
     bool firstLaunch_ = true;
+    bool detailShowing_ = false;
+    int  chainStartSlot_ = -1;  // -1 = no chain in progress
 
     /// State saved on entering BrowserOpen so exitBrowser() can restore it exactly.
     ViewState preBrowserState_ = ViewState::Orbital;
@@ -1665,16 +2448,38 @@ private:
     // Step 4: Floating detail overlay (wraps EngineDetailPanel with backdrop + close btn).
     DetailOverlay        detailOverlay_;
 
+    // Submarine-styled popup menu LookAndFeel (dark glass, teal accents, fade-in).
+    SubmarineMenuLookAndFeel menuLnF_;
+
+    // Phase 2: Coupling knot configuration popup (shown on double-click of a knot).
+    CouplingConfigPopup  couplingPopup_;
+
     // Step 6: Submarine dashboard — waterline separator + tab bar.
-    WaterlineSeparator   waterline_;
+    std::unique_ptr<TideWaterline>        waterline_;
+    std::unique_ptr<ChordBarComponent>    chordBar_;
+    std::unique_ptr<MasterFXStripCompact> masterFxStrip_;
+    std::unique_ptr<TransportBar>         transportBar_;
+    SubmarineOuijaPanel                   ouijaPanel_;
+    ExpressionStrips                      exprStrips_;
+    DotMatrixDisplay                      dotMatrix_;
+    SubmarineHudBar                       hudBar_;
+    SubmarinePlaySurface                  subPlaySurface_;
+    SurfaceRightPanel                     surfaceRight_;
     DashboardTabBar      tabBar_;
 
     // Floating header controls.
+    juce::TextButton enginesButton_ { juce::String::charToString(0x2261) + " Engines" }; // ≡ Engines
     juce::TextButton presetPrev_    { "<" };
     juce::TextButton presetNext_    { ">" };
     juce::TextButton favButton_     { juce::String::charToString (0x2605) };  // ★
     juce::TextButton settingsButton_{ juce::String::charToString (0x2699) };  // ⚙
     juce::TextButton keysButton_    { "KEYS" };
+
+    // Phase 3: Engine picker drawer (slide from left)
+    EnginePickerDrawer engineDrawer_;
+
+    // Settings drawer (slide from right)
+    SettingsDrawer settingsDrawer_;
 
     // #1007 FIX 3: Inline preset name label between < and > for spatial grouping.
     juce::Label      presetNameLabel_;
@@ -1696,12 +2501,12 @@ private:
     static constexpr float kMacroStripH         = 60.0f;  // #901: 56→60pt to fit 48pt knobs + 6pt pad
     static constexpr float kSplitOrbitalFraction = 0.20f;  ///< 20% width for mini orbital
     static constexpr int   kWaterlineH          = 6;
-    static constexpr int   kDashboardH          = 340;    ///< macros (60) + tabs (30) + keyboard (~250)
+    static constexpr int   kDashboardH          = 340;    ///< macros (60) + FX (48) + tabs (30) + play (~202)
     static constexpr int   kTabBarH             = 30;
 
     // HIGH fix (#1006): padding added to orbital bounds so ±5% breath animation
     // paints inside the component rect.  ceil(72 * 0.05) = 4px each side.
-    static constexpr int kBreathPadding = 4;
+    static constexpr int kBreathPadding = 30;
 
     // Orbit size alias: reference EngineOrbit constant directly.
     static constexpr float kOrbitSize_Orbital = EngineOrbit::kOrbitalSize;

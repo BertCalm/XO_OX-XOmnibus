@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Baroque Principals",
+  "mood": "Foundation",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bright Baroque principals ring with clarity and authority. The Positiv's chiff speaks each note into being with the precision of a north German master.",
+  "tier": "standard",
+  "tags": ["foundation", "baroque", "positiv", "principals", "bright"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.15,
+    "SPACE": 0.5
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.35,
+    "movement": 0.15,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 1,
+      "oct_cluster": 0.55,
+      "oct_chiff": 0.65,
+      "oct_detune": 0.08,
+      "oct_buzz": 0.05,
+      "oct_pressure": 0.1,
+      "oct_crosstalk": 0.15,
+      "oct_brightness": 0.78,
+      "oct_registration": 0.65,
+      "oct_roomDepth": 0.5,
+      "oct_attack": 0.005,
+      "oct_decay": 0.2,
+      "oct_sustain": 1.0,
+      "oct_release": 0.4,
+      "oct_filterEnvAmount": 0.15,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.7,
+      "oct_macroMovement": 0.2,
+      "oct_macroCoupling": 0.15,
+      "oct_macroSpace": 0.5,
+      "oct_lfo1Rate": 0.15,
+      "oct_lfo1Depth": 0.06,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.8,
+      "oct_lfo2Depth": 0.04,
+      "oct_lfo2Shape": 1,
+      "oct_competition": 0.1
+    }
+  },
+  "tempo": null
+}

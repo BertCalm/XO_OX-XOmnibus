@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Warble Keys",
+  "mood": "Flux",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica where the pressure is never quite stable — a fast warble LFO adds a songbird nervousness to each note, the instrument singing its own accompaniment.",
+  "tier": "standard",
+  "tags": ["flux", "melodica", "warble", "lfo", "nervous"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.12,
+    "SPACE": 0.32
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.72,
+    "movement": 0.72,
+    "density": 0.28,
+    "space": 0.32,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.28,
+      "oto_chiff": 0.15,
+      "oto_detune": 0.12,
+      "oto_buzz": 0.14,
+      "oto_pressure": 0.65,
+      "oto_crosstalk": 0.07,
+      "oto_filterCutoff": 5800.0,
+      "oto_filterRes": 0.15,
+      "oto_attack": 0.028,
+      "oto_decay": 0.14,
+      "oto_sustain": 0.84,
+      "oto_release": 0.28,
+      "oto_lfo1Rate": 7.0,
+      "oto_lfo1Depth": 0.48,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.55,
+      "oto_macroB": 0.72,
+      "oto_macroC": 0.12,
+      "oto_macroD": 0.32
+    }
+  },
+  "tempo": null
+}

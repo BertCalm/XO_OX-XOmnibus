@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Accordion Register",
+  "mood": "Foundation",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Three detuned reeds in close musette tuning — the French accordion's fundamental voice. The beating is rich and warm, pulling you toward a corner cafe at dusk.",
+  "tier": "standard",
+  "tags": ["foundation", "musette", "french", "accordion", "reed"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.12,
+    "SPACE": 0.4
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.8,
+    "movement": 0.5,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 2,
+      "oct_cluster": 0.6,
+      "oct_chiff": 0.2,
+      "oct_detune": 0.55,
+      "oct_buzz": 0.35,
+      "oct_pressure": 0.3,
+      "oct_crosstalk": 0.25,
+      "oct_brightness": 0.5,
+      "oct_registration": 0.65,
+      "oct_roomDepth": 0.38,
+      "oct_attack": 0.04,
+      "oct_decay": 0.3,
+      "oct_sustain": 1.0,
+      "oct_release": 0.6,
+      "oct_filterEnvAmount": 0.12,
+      "oct_bendRange": 2,
+      "oct_macroCharacter": 0.6,
+      "oct_macroMovement": 0.5,
+      "oct_macroCoupling": 0.12,
+      "oct_macroSpace": 0.4,
+      "oct_lfo1Rate": 0.9,
+      "oct_lfo1Depth": 0.22,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 1.5,
+      "oct_lfo2Depth": 0.12,
+      "oct_lfo2Shape": 1,
+      "oct_competition": 0.1
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Organ Loft Dawn",
+  "mood": "Atmosphere",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The organist arrives before the congregation, practicing alone as dawn light touches the loft. A quiet 8' Principal sustains beneath the stone ceiling's long, merciful decay.",
+  "tier": "standard",
+  "tags": ["atmosphere", "baroque", "positiv", "dawn", "solo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.04,
+    "SPACE": 0.88
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.12,
+    "density": 0.32,
+    "space": 0.88,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 1,
+      "oct_cluster": 0.28,
+      "oct_chiff": 0.28,
+      "oct_detune": 0.04,
+      "oct_buzz": 0.03,
+      "oct_pressure": 0.12,
+      "oct_crosstalk": 0.1,
+      "oct_brightness": 0.5,
+      "oct_registration": 0.35,
+      "oct_roomDepth": 0.88,
+      "oct_attack": 0.02,
+      "oct_decay": 0.5,
+      "oct_sustain": 1.0,
+      "oct_release": 3.5,
+      "oct_filterEnvAmount": 0.06,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.38,
+      "oct_macroMovement": 0.15,
+      "oct_macroCoupling": 0.04,
+      "oct_macroSpace": 0.88,
+      "oct_lfo1Rate": 0.07,
+      "oct_lfo1Depth": 0.08,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.25,
+      "oct_lfo2Depth": 0.04,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.03
+    }
+  },
+  "tempo": null
+}

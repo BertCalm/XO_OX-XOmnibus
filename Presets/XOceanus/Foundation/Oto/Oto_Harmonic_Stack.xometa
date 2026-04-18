@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Harmonic Stack",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho mid-register with a carefully tuned cluster density — enough pipes to create harmonic richness, not so many that the texture collapses. The sweet spot between solo and ensemble.",
+  "tier": "standard",
+  "tags": ["foundation", "sho", "harmonic", "balanced"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.15,
+    "SPACE": 0.55
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.38,
+    "movement": 0.15,
+    "density": 0.6,
+    "space": 0.58,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.6,
+      "oto_chiff": 0.12,
+      "oto_detune": 0.1,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.18,
+      "oto_crosstalk": 0.22,
+      "oto_filterCutoff": 5200.0,
+      "oto_filterRes": 0.1,
+      "oto_attack": 0.08,
+      "oto_decay": 0.4,
+      "oto_sustain": 0.88,
+      "oto_release": 0.9,
+      "oto_lfo1Rate": 0.2,
+      "oto_lfo1Depth": 0.05,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.55,
+      "oto_macroB": 0.2,
+      "oto_macroC": 0.15,
+      "oto_macroD": 0.55
+    }
+  },
+  "tempo": null
+}

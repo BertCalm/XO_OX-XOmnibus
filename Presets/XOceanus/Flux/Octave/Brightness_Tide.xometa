@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Brightness Tide",
+  "mood": "Flux",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Brightness cycles slowly like a tide — at the bright peak the mixtures dominate, at the dark trough only the flues remain. A slow harmonic breathing across several minutes.",
+  "tier": "standard",
+  "tags": ["flux", "cavaille-coll", "romantic", "brightness", "evolving"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.1,
+    "SPACE": 0.78
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.72,
+    "movement": 0.72,
+    "density": 0.65,
+    "space": 0.78,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.62,
+      "oct_chiff": 0.06,
+      "oct_detune": 0.04,
+      "oct_buzz": 0.04,
+      "oct_pressure": 0.2,
+      "oct_crosstalk": 0.25,
+      "oct_brightness": 0.5,
+      "oct_registration": 0.68,
+      "oct_roomDepth": 0.78,
+      "oct_attack": 0.12,
+      "oct_decay": 1.0,
+      "oct_sustain": 1.0,
+      "oct_release": 3.0,
+      "oct_filterEnvAmount": 0.15,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.6,
+      "oct_macroMovement": 0.72,
+      "oct_macroCoupling": 0.1,
+      "oct_macroSpace": 0.78,
+      "oct_lfo1Rate": 0.04,
+      "oct_lfo1Depth": 0.58,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.09,
+      "oct_lfo2Depth": 0.42,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.08
+    }
+  },
+  "tempo": null
+}

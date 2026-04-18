@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Stone Breath",
+  "mood": "Deep",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene at the pace of geological time — buzz muted to a low rumble, slow attack like tectonic movement, filter at the edge of darkness. Even the pipes feel made of stone.",
+  "tier": "standard",
+  "tags": ["deep", "khene", "slow", "geological", "dark"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.18,
+    "SPACE": 0.68
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.68,
+    "movement": 0.1,
+    "density": 0.75,
+    "space": 0.72,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.75,
+      "oto_chiff": 0.06,
+      "oto_detune": 0.25,
+      "oto_buzz": 0.35,
+      "oto_pressure": 0.2,
+      "oto_crosstalk": 0.42,
+      "oto_filterCutoff": 1400.0,
+      "oto_filterRes": 0.25,
+      "oto_attack": 1.2,
+      "oto_decay": 2.5,
+      "oto_sustain": 0.93,
+      "oto_release": 2.8,
+      "oto_lfo1Rate": 0.06,
+      "oto_lfo1Depth": 0.05,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.52,
+      "oto_macroB": 0.12,
+      "oto_macroC": 0.18,
+      "oto_macroD": 0.68
+    }
+  },
+  "tempo": null
+}

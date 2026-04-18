@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Reed Cathedral",
+  "mood": "Atmosphere",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho filling an imaginary cathedral — maximum space, dense cluster, each note arriving slowly and lingering far beyond its intention. Architecture made of breath.",
+  "tier": "standard",
+  "tags": ["atmosphere", "sho", "cathedral", "ambient", "dense"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.15,
+    "SPACE": 0.8
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.45,
+    "movement": 0.06,
+    "density": 0.88,
+    "space": 0.88,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.9,
+      "oto_chiff": 0.04,
+      "oto_detune": 0.16,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.08,
+      "oto_crosstalk": 0.45,
+      "oto_filterCutoff": 2800.0,
+      "oto_filterRes": 0.04,
+      "oto_attack": 1.2,
+      "oto_decay": 2.0,
+      "oto_sustain": 0.96,
+      "oto_release": 3.0,
+      "oto_lfo1Rate": 0.04,
+      "oto_lfo1Depth": 0.02,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.42,
+      "oto_macroB": 0.08,
+      "oto_macroC": 0.15,
+      "oto_macroD": 0.8
+    }
+  },
+  "tempo": null
+}

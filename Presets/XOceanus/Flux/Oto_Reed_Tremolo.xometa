@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Reed Tremolo",
+  "mood": "Flux",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene with its natural beating pushed into deliberate tremolo territory — LFO rate matching the acoustic intermodulation frequency of paired pipes. The instrument doubles itself.",
+  "tier": "standard",
+  "tags": ["flux", "khene", "tremolo", "evolving", "beat"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.72,
+    "density": 0.55,
+    "space": 0.35,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.55,
+      "oto_chiff": 0.18,
+      "oto_detune": 0.3,
+      "oto_buzz": 0.45,
+      "oto_pressure": 0.38,
+      "oto_crosstalk": 0.28,
+      "oto_filterCutoff": 6500.0,
+      "oto_filterRes": 0.2,
+      "oto_attack": 0.02,
+      "oto_decay": 0.2,
+      "oto_sustain": 0.82,
+      "oto_release": 0.35,
+      "oto_lfo1Rate": 5.5,
+      "oto_lfo1Depth": 0.45,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.6,
+      "oto_macroB": 0.72,
+      "oto_macroC": 0.2,
+      "oto_macroD": 0.35
+    }
+  },
+  "tempo": null
+}

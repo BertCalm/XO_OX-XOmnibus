@@ -737,11 +737,86 @@ public:
         oceanView_.initMacros(proc.getAPVTS());
         oceanView_.initDetailPanel(proc);
         oceanView_.initSidebar();
+        oceanView_.initWaterline(proc.getAPVTS(), proc.getMasterFXChain().getSequencer());
+        oceanView_.initChordBar(proc.getAPVTS(), proc.getChordMachine());
+        oceanView_.initMasterFxStrip(proc.getAPVTS());
+        oceanView_.initTransportBar();
+        // Wire transport bar callbacks.
+        if (auto* tb = oceanView_.getTransportBar())
+        {
+            tb->onPlayToggled = [&proc, this]()
+            {
+                // Toggle sequencer enabled via APVTS.
+                if (auto* p = proc.getAPVTS().getParameter("master_seqEnabled"))
+                {
+                    bool nowOn = p->getValue() < 0.5f;
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(nowOn ? 1.0f : 0.0f);
+                    p->endChangeGesture();
+                    if (auto* bar = oceanView_.getTransportBar())
+                        bar->setPlaying(nowOn);
+                    // Also expand the waterline when starting.
+                    if (nowOn)
+                        if (auto* wl = oceanView_.getWaterline())
+                            wl->setExpanded(true);
+                }
+            };
+            tb->onBpmChanged = [&proc](double newBpm)
+            {
+                // Write BPM to chord machine's sequencer (cm_seq_bpm).
+                if (auto* p = proc.getAPVTS().getParameter("cm_seq_bpm"))
+                {
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(newBpm)));
+                    p->endChangeGesture();
+                }
+            };
+            tb->onCoupleClicked = []()
+            {
+                // TODO: open coupling inspector panel
+            };
+        }
         oceanView_.initStatusBar();
+
+        // Ocean View is the primary layout — hide ALL legacy Gallery-mode panels
+        // so they don't ghost behind the Ocean View.
+        detail.setVisible(false);
+        overview.setVisible(false);
+        removeChildComponent(&detail);
+        removeChildComponent(&overview);
 
         // Wire OceanView callbacks
         oceanView_.onEngineSelected = [this](int slot) { if (slot >= 0) selectSlot(slot); };
-        oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); /* detail panel loaded by OceanView */ };
+        oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); };
+        oceanView_.onEngineSelectedFromDrawer = [this](const juce::String& engineId)
+        {
+            // Prefer the selected slot. If it's already occupied, find the first empty slot.
+            // If all slots are full, replace the selected slot.
+            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots) ? selectedSlot : 0;
+            if (processor.getEngine(slot) != nullptr)
+            {
+                for (int i = 0; i < kNumPrimarySlots; ++i)
+                {
+                    if (processor.getEngine(i) == nullptr)
+                    {
+                        slot = i;
+                        break;
+                    }
+                }
+            }
+            processor.loadEngine(slot, engineId.toStdString());
+        };
+        oceanView_.onCouplingRouteRequested = [this](int srcSlot, int dstSlot)
+        {
+            MegaCouplingMatrix::CouplingRoute route;
+            route.sourceSlot  = srcSlot;
+            route.destSlot    = dstSlot;
+            route.type        = CouplingType::AmpToFilter;
+            route.amount      = 0.5f;
+            route.isNormalled = false;
+            route.active      = true;
+            processor.getCouplingMatrix().addRoute(route);
+        };
         oceanView_.onPresetSelected = [this](int idx)
         {
             // Load preset by index from the library snapshot.
@@ -2015,8 +2090,8 @@ private:
             statusBar.setVoiceCount(totalVoices);
 
             // W03: BPM — read from host transport if available; 0.0 means "not connected".
+            double bpm = 0.0;
             {
-                double bpm = 0.0;
                 if (auto* ph = processor.getPlayHead())
                 {
                     auto pos = ph->getPosition();
@@ -2027,7 +2102,37 @@ private:
             }
 
             // W03: CPU — read from processor's measured processBlock load.
-            statusBar.setCpuPercent(processor.getProcessingLoad() * 100.0f);
+            const float cpuPct = processor.getProcessingLoad() * 100.0f;
+            statusBar.setCpuPercent(cpuPct);
+
+            // Push same data to submarine TransportBar.
+            if (auto* tb = oceanView_.getTransportBar())
+            {
+                tb->setVoiceCount(totalVoices);
+                tb->setBpm(bpm > 0.0 ? bpm : 120.0);
+                tb->setCpuPercent(cpuPct);
+            }
+
+            // Push audio levels to dot-matrix visualizer.
+            if (auto* dm = oceanView_.getDotMatrix())
+            {
+                // Use CPU load as a proxy for audio activity until we have real RMS.
+                const float activity = cpuPct / 100.0f;
+                dm->pushLevels(activity * 0.7f, activity * 0.5f);
+
+                // Push engine activity levels.
+                float engLevels[4] = {};
+                for (int i = 0; i < 4; ++i)
+                {
+                    if (auto* eng = processor.getEngine(i))
+                        engLevels[i] = static_cast<float>(eng->getActiveVoiceCount()) / static_cast<float>(std::max(1, eng->getMaxVoices()));
+                }
+                dm->pushEngineActivity(engLevels, 4);
+
+                // Push sequencer step.
+                const auto& seq = processor.getMasterFXChain().getSequencer();
+                dm->pushSequencerStep(seq.getCurrentStep(), 16, seq.isEnabled());
+            }
         }
 
         // ── Header indicators ─────────────────────────────────────────────────
