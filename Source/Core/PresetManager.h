@@ -267,6 +267,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Octant", "octn_"},
         // Wavelet Multi-Resolution Synthesis
         {"Overtide", "ovt_"},
+        // Reaction-Diffusion Wavetable Synthesis
+        {"Oobleck", "oobl_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();

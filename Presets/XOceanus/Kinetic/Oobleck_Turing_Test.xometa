@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Turing Test",
+  "mood": "Kinetic",
+  "engines": [
+    "Oobleck"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High feed/kill near the chaos boundary — Mirror readout and Saw LFO thrashing Diffusion creates aggressive machine-like motion.",
+  "tags": [
+    "oobleck",
+    "kinetic",
+    "aggressive",
+    "experimental",
+    "industrial",
+    "machine",
+    "chaotic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.2,
+    "movement": 0.9,
+    "density": 0.7,
+    "space": 0.15,
+    "aggression": 0.85
+  },
+  "parameters": {
+    "Oobleck": {
+      "oobl_feed": 0.062,
+      "oobl_kill": 0.068,
+      "oobl_diffusion": 0.7,
+      "oobl_evolution": 18.0,
+      "oobl_persistence": 0.35,
+      "oobl_substrate": 0.25,
+      "oobl_temperature": 0.2,
+      "oobl_seed": 0,
+      "oobl_readout_mode": 3,
+      "oobl_field_bias": 0.5,
+      "oobl_fold": 0.65,
+      "oobl_filter_cutoff": 10000.0,
+      "oobl_filter_reso": 0.4,
+      "oobl_filter_type": 2,
+      "oobl_drive": 0.55,
+      "oobl_attack": 0.008,
+      "oobl_decay": 0.3,
+      "oobl_sustain": 0.55,
+      "oobl_release": 0.6,
+      "oobl_lfo_rate": 1.2,
+      "oobl_lfo_shape": 2,
+      "oobl_lfo_depth": 0.55,
+      "oobl_lfo_target": 4,
+      "oobl_reverb": 0.1,
+      "oobl_space_decay": 0.8,
+      "oobl_tune": 0,
+      "oobl_fine": 0.0,
+      "oobl_glide": 0.0,
+      "oobl_freeze": 0.0,
+      "oobl_macro1": 0.0,
+      "oobl_macro2": 0.0,
+      "oobl_macro3": 0.0,
+      "oobl_macro4": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

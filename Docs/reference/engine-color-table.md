@@ -109,8 +109,11 @@
 | OPUS | XOpus | Psychedelic Amber `#FFA500` |
 | OUTLAW | XOutlaw | Hendrix Purple `#6A0DAD` |
 | OUTBREAK | XOutbreak | Grunge Olive `#6B6B3E` |
-| ORRERY | XOrrery | Celestial Blue `#4682B4` |
-| OSTR | XOstracon | Shard Terracotta `#C0785A` |
+| ORRERY | XOrrery | Orrery Brass `#C8A84B` |
+| OBSERVANDUM | XObservandum | Cuttlefish Teal `#4ECDC4` |
+| OPSIN | XOpsin | Bioluminescent Cyan `#00FFCC` |
+| OORT | XOort | Oort Cloud Violet `#9B7FD4` |
+| OOBL | XOobleck | Oobleck Slime `#B4FF39` |
 
 ## The 43 Blessings
 

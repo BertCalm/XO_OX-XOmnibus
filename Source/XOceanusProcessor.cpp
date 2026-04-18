@@ -25,6 +25,7 @@
 #include "Engines/Ortolan/OrtolanEngine.h"
 #include "Engines/Octant/OctantEngine.h"
 #include "Engines/Overtide/OvertideEngine.h"
+#include "Engines/Oobleck/OobleckEngine.h"
 #include "Engines/Origami/OrigamiEngine.h"
 #include "Engines/Oracle/OracleEngine.h"
 #include "Engines/Obscura/ObscuraEngine.h"
@@ -166,6 +167,9 @@ static bool registered_Octant =
 static bool registered_Overtide =
     xoceanus::EngineRegistry::instance().registerEngine("Overtide", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OvertideEngine>(); });
+static bool registered_Oobleck =
+    xoceanus::EngineRegistry::instance().registerEngine("Oobleck", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OobleckEngine>(); });
 static bool registered_Origami = xoceanus::EngineRegistry::instance().registerEngine(
     "Origami", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrigamiEngine>(); });
 static bool registered_Oracle = xoceanus::EngineRegistry::instance().registerEngine(
@@ -1332,6 +1336,9 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         }
     }
 
+    // Drain PlaySurface MIDI before early return to prevent unbounded queue growth
+    playSurfaceMidiCollector.removeNextBlockOfMessages(midi, numSamples);
+
     if (activeCount == 0)
         return;
 
@@ -1340,8 +1347,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     // Merge PlaySurface note-on/off events queued from the message thread.
     // removeNextBlockOfMessages() is thread-safe; it drains the lock-free queue
     // and appends the messages into `midi` so the rest of the pipeline sees them
-    // exactly like host-generated MIDI events.
-    playSurfaceMidiCollector.removeNextBlockOfMessages(midi, numSamples);
+    // exactly like host-generated MIDI events. (Drained above, before early return.)
 
     // Process MIDI learn CC → parameter routing (audio thread safe)
     midiLearnManager.processMidi(midi);
@@ -2049,15 +2055,6 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         juce::MessageManager::callAsync([this] { drainGraveyard(); });
     }
 
-    // NaN/inf guard — engine bugs should not crash the host
-    for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
-    {
-        auto* data = buffer.getWritePointer(ch);
-        for (int i = 0; i < numSamples; ++i)
-            if (!std::isfinite(data[i]))
-                data[i] = 0.0f;
-    }
-
     // Master FX chain: sat → delay → reverb → mod → comp + sequencer (post all engines)
     double ppqPos = -1.0;
     double bpm = 0.0;
@@ -2073,6 +2070,15 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     }
     masterFX.processBlock(buffer, numSamples, ppqPos, bpm);
     masterOutputFifo.push(buffer.getReadPointer(0), static_cast<size_t>(numSamples));
+
+    // NaN/inf guard — engine bugs should not crash the host
+    for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+    {
+        auto* data = buffer.getWritePointer(ch);
+        for (int i = 0; i < numSamples; ++i)
+            if (!std::isfinite(data[i]))
+                data[i] = 0.0f;
+    }
 
     // CPU load measurement: elapsed / buffer_duration, smoothed with a leaky integrator.
     // Uses high-resolution ticks so measurements are host-independent.

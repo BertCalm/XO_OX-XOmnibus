@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Cornstarch",
+  "mood": "Shadow",
+  "engines": [
+    "Oobleck"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme non-Newtonian dynamics — S&H LFO rattles the feed rate into unpredictable staccato aggression.",
+  "tags": [
+    "oobleck",
+    "shadow",
+    "aggressive",
+    "non-newtonian",
+    "chaotic",
+    "experimental"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.2,
+    "movement": 0.8,
+    "density": 0.5,
+    "space": 0.2,
+    "aggression": 0.7
+  },
+  "parameters": {
+    "Oobleck": {
+      "oobl_feed": 0.055,
+      "oobl_kill": 0.062,
+      "oobl_diffusion": 0.6,
+      "oobl_evolution": 30.0,
+      "oobl_persistence": 0.5,
+      "oobl_substrate": 0.35,
+      "oobl_temperature": 0.12,
+      "oobl_seed": 0,
+      "oobl_readout_mode": 0,
+      "oobl_field_bias": 0.0,
+      "oobl_fold": 0.5,
+      "oobl_filter_cutoff": 12000.0,
+      "oobl_filter_reso": 0.1,
+      "oobl_filter_type": 0,
+      "oobl_drive": 0.4,
+      "oobl_attack": 0.005,
+      "oobl_decay": 1.2,
+      "oobl_sustain": 0.5,
+      "oobl_release": 1.0,
+      "oobl_lfo_rate": 0.15,
+      "oobl_lfo_shape": 3,
+      "oobl_lfo_depth": 0.45,
+      "oobl_lfo_target": 0,
+      "oobl_reverb": 0.15,
+      "oobl_space_decay": 1.0,
+      "oobl_tune": 0,
+      "oobl_fine": 0.0,
+      "oobl_glide": 0.0,
+      "oobl_freeze": 0.0,
+      "oobl_macro1": 0.0,
+      "oobl_macro2": 0.0,
+      "oobl_macro3": 0.0,
+      "oobl_macro4": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

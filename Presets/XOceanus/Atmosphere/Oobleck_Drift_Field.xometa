@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Drift Field",
+  "mood": "Atmosphere",
+  "engines": [
+    "Oobleck"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Near-static reaction field with ultra-slow Kill LFO — long attack and vast reverb decay create an infinite ambient drone.",
+  "tags": [
+    "oobleck",
+    "atmosphere",
+    "ambient",
+    "drone",
+    "slow",
+    "immersive",
+    "spacious"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.6,
+    "movement": 0.8,
+    "density": 0.3,
+    "space": 0.9,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Oobleck": {
+      "oobl_feed": 0.025,
+      "oobl_kill": 0.047,
+      "oobl_diffusion": 0.38,
+      "oobl_evolution": 2.0,
+      "oobl_persistence": 0.95,
+      "oobl_substrate": 0.65,
+      "oobl_temperature": 0.04,
+      "oobl_seed": 4,
+      "oobl_readout_mode": 0,
+      "oobl_field_bias": 0.0,
+      "oobl_fold": 0.1,
+      "oobl_filter_cutoff": 4500.0,
+      "oobl_filter_reso": 0.12,
+      "oobl_filter_type": 0,
+      "oobl_drive": 0.1,
+      "oobl_attack": 2.0,
+      "oobl_decay": 0.5,
+      "oobl_sustain": 0.9,
+      "oobl_release": 8.0,
+      "oobl_lfo_rate": 0.005,
+      "oobl_lfo_shape": 0,
+      "oobl_lfo_depth": 0.4,
+      "oobl_lfo_target": 1,
+      "oobl_reverb": 0.55,
+      "oobl_space_decay": 6.0,
+      "oobl_tune": 0,
+      "oobl_fine": 0.0,
+      "oobl_glide": 0.8,
+      "oobl_freeze": 0.0,
+      "oobl_macro1": 0.0,
+      "oobl_macro2": 0.0,
+      "oobl_macro3": 0.0,
+      "oobl_macro4": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}
