@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "The Archive Burns",
+  "mood": "Shadow",
+  "engines": ["Ostracon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "EXTREME. Pure noise floods an 8-second reel at near-zero bias, saturated to the oxide ceiling. Four heads stretched to maximum spread ensure no single moment of the original survives intact. The filter clamps at 800Hz; everything above is consumed. The long release tail is the smell of smoke.",
+  "tags": ["ostracon", "shadow", "extreme", "noise", "destruction", "tape", "industrial", "abrasive"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.3,
+    "movement": 0.9,
+    "density": 0.9,
+    "space": 0.9,
+    "aggression": 0.7
+  },
+  "parameters": {
+    "Ostracon": {
+      "ostr_waveform": 3,
+      "ostr_tune": 0,
+      "ostr_fine": 0.0,
+      "ostr_source_mix": 0.8,
+      "ostr_reel_size": 8.0,
+      "ostr_head_count": 4,
+      "ostr_head_spread": 1.0,
+      "ostr_bias": 0.05,
+      "ostr_record_mode": 0,
+      "ostr_freeze": 0,
+      "ostr_oxide": 1.0,
+      "ostr_flutter": 1.0,
+      "ostr_flutter_rate": 7.5,
+      "ostr_wow": 0.6,
+      "ostr_print": 0.85,
+      "ostr_filter_cutoff": 800.0,
+      "ostr_filter_reso": 0.75,
+      "ostr_filter_type": 0,
+      "ostr_attack": 0.001,
+      "ostr_decay": 2.0,
+      "ostr_sustain": 0.6,
+      "ostr_release": 8.0,
+      "ostr_lfo_rate": 3.2,
+      "ostr_lfo_shape": 3,
+      "ostr_lfo_depth": 0.7,
+      "ostr_lfo_target": 3,
+      "ostr_speed": 0.92,
+      "ostr_reverse": 0,
+      "ostr_macro1": 0.0,
+      "ostr_macro2": 0.0,
+      "ostr_macro3": 0.0,
+      "ostr_macro4": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  }
+}

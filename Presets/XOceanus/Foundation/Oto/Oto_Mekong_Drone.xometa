@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Mekong Drone",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene in its drone configuration — sustained tonic and fifth humming beneath everything else. The river doesn't stop; neither does this.",
+  "tier": "standard",
+  "tags": ["foundation", "khene", "drone", "sustained", "folk"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.25,
+    "SPACE": 0.45
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.7,
+    "movement": 0.35,
+    "density": 0.6,
+    "space": 0.45,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.65,
+      "oto_chiff": 0.1,
+      "oto_detune": 0.25,
+      "oto_buzz": 0.3,
+      "oto_pressure": 0.28,
+      "oto_crosstalk": 0.3,
+      "oto_filterCutoff": 5500.0,
+      "oto_filterRes": 0.2,
+      "oto_attack": 0.04,
+      "oto_decay": 0.35,
+      "oto_sustain": 0.9,
+      "oto_release": 0.5,
+      "oto_lfo1Rate": 1.5,
+      "oto_lfo1Depth": 0.1,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.5,
+      "oto_macroB": 0.35,
+      "oto_macroC": 0.25,
+      "oto_macroD": 0.45
+    }
+  },
+  "tempo": null
+}

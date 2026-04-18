@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Mud Drone",
+  "mood": "Deep",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene at the bottom of a river — thick buzz filtered through muddy water, the paired pipes churning slowly, attack glutinous and slow. A sound with weight.",
+  "tier": "standard",
+  "tags": ["deep", "khene", "drone", "thick", "dark"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.72,
+    "movement": 0.25,
+    "density": 0.7,
+    "space": 0.58,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.7,
+      "oto_chiff": 0.08,
+      "oto_detune": 0.3,
+      "oto_buzz": 0.65,
+      "oto_pressure": 0.3,
+      "oto_crosstalk": 0.38,
+      "oto_filterCutoff": 1500.0,
+      "oto_filterRes": 0.28,
+      "oto_attack": 0.8,
+      "oto_decay": 2.0,
+      "oto_sustain": 0.92,
+      "oto_release": 2.2,
+      "oto_lfo1Rate": 0.12,
+      "oto_lfo1Depth": 0.1,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.55,
+      "oto_macroB": 0.25,
+      "oto_macroC": 0.2,
+      "oto_macroD": 0.55
+    }
+  },
+  "tempo": null
+}

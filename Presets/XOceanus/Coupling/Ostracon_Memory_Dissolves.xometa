@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Memory Dissolves",
+  "mood": "Coupling",
+  "engines": ["Ostracon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Designed to couple with Olvido — the tape mechanism feeds the spectral erosion engine like two forms of forgetting working in parallel. Three heads across a 4-second reel let the bias drift under LFO control, creating slow wavering that Olvido's f\u00b2-scaled decay reads as organic memory loss. Open high-pass space above 8kHz keeps the coupling channel clean.",
+  "tags": ["ostracon", "coupling", "olvido", "tape", "erosion", "memory", "ambient", "drift"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Whisper",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.5,
+    "density": 0.5,
+    "space": 0.7,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Ostracon": {
+      "ostr_waveform": 0,
+      "ostr_tune": 0,
+      "ostr_fine": 0.0,
+      "ostr_source_mix": 0.55,
+      "ostr_reel_size": 4.0,
+      "ostr_head_count": 3,
+      "ostr_head_spread": 0.5,
+      "ostr_bias": 0.2,
+      "ostr_record_mode": 0,
+      "ostr_freeze": 0,
+      "ostr_oxide": 0.3,
+      "ostr_flutter": 0.2,
+      "ostr_flutter_rate": 3.0,
+      "ostr_wow": 0.25,
+      "ostr_print": 0.35,
+      "ostr_filter_cutoff": 8000.0,
+      "ostr_filter_reso": 0.3,
+      "ostr_filter_type": 0,
+      "ostr_attack": 0.02,
+      "ostr_decay": 0.8,
+      "ostr_sustain": 0.6,
+      "ostr_release": 3.0,
+      "ostr_lfo_rate": 0.08,
+      "ostr_lfo_shape": 0,
+      "ostr_lfo_depth": 0.35,
+      "ostr_lfo_target": 4,
+      "ostr_speed": 1.0,
+      "ostr_reverse": 0,
+      "ostr_macro1": 0.0,
+      "ostr_macro2": 0.0,
+      "ostr_macro3": 0.0,
+      "ostr_macro4": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  }
+}

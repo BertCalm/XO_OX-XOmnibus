@@ -21,6 +21,10 @@
 #include "Engines/Orrery/OrreryEngine.h"
 #include "Engines/Opsin/OpsinEngine.h"
 #include "Engines/Oort/OortEngine.h"
+#include "Engines/Ondine/OndineEngine.h"
+#include "Engines/Ortolan/OrtolanEngine.h"
+#include "Engines/Octant/OctantEngine.h"
+#include "Engines/Overtide/OvertideEngine.h"
 #include "Engines/Origami/OrigamiEngine.h"
 #include "Engines/Oracle/OracleEngine.h"
 #include "Engines/Obscura/ObscuraEngine.h"
@@ -43,7 +47,7 @@
 #include "Engines/Octopus/OctopusEngine.h"
 #include "Engines/OpenSky/OpenSkyEngine.h"
 #include "Engines/Ostinato/OstinatoEngine.h"
-#include "Engines/OceanDeep/OceandeepEngine.h"
+#include "Engines/OceanDeep/OceanDeepEngine.h"
 #include "Engines/Ouie/OuieEngine.h"
 #include "Engines/Obrix/ObrixEngine.h"
 #include "Engines/Orbweave/OrbweaveEngine.h"
@@ -92,6 +96,12 @@
 #include "Engines/Obiont/ObiontEngine.h"
 // OXIDIZE — age-based corrosion synthesis engine
 #include "Engines/Oxidize/OxidizeAdapter.h"
+// OGIVE — scanned glass synthesis (engine #86)
+#include "Engines/Ogive/OgiveEngine.h"
+// OLVIDO — spectral erosion synthesis (engine #87)
+#include "Engines/Olvido/OlvidoEngine.h"
+// OSTRACON — corpus-buffer synthesis (engine #88)
+#include "Engines/Ostracon/OstraconEngine.h"
 #include "DSP/Effects/MathFXChain.h"
 #include "DSP/Effects/BoutiqueFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
@@ -144,6 +154,18 @@ static bool registered_Opsin =
 static bool registered_Oort =
     xoceanus::EngineRegistry::instance().registerEngine("Oort", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OortEngine>(); });
+static bool registered_Ondine =
+    xoceanus::EngineRegistry::instance().registerEngine("Ondine", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OndineEngine>(); });
+static bool registered_Ortolan =
+    xoceanus::EngineRegistry::instance().registerEngine("Ortolan", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OrtolanEngine>(); });
+static bool registered_Octant =
+    xoceanus::EngineRegistry::instance().registerEngine("Octant", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OctantEngine>(); });
+static bool registered_Overtide =
+    xoceanus::EngineRegistry::instance().registerEngine("Overtide", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OvertideEngine>(); });
 static bool registered_Origami = xoceanus::EngineRegistry::instance().registerEngine(
     "Origami", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrigamiEngine>(); });
 static bool registered_Oracle = xoceanus::EngineRegistry::instance().registerEngine(
@@ -327,6 +349,19 @@ static bool registered_Obiont = xoceanus::EngineRegistry::instance().registerEng
 // OXIDIZE — age-based corrosion synthesis engine
 static bool registered_Oxidize = xoceanus::EngineRegistry::instance().registerEngine(
     "Oxidize", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OxidizeAdapter>(); });
+// OGIVE — scanned glass synthesis (engine #86)
+static bool registered_Ogive =
+    xoceanus::EngineRegistry::instance().registerEngine("Ogive", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OgiveEngine>(); });
+// OLVIDO — spectral erosion synthesis (engine #87)
+static bool registered_Olvido =
+    xoceanus::EngineRegistry::instance().registerEngine("Olvido", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OlvidoEngine>(); });
+
+// OSTRACON — corpus-buffer synthesis (engine #88)
+static bool registered_Ostracon =
+    xoceanus::EngineRegistry::instance().registerEngine("Ostracon", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OstraconEngine>(); });
 
 namespace xoceanus
 {

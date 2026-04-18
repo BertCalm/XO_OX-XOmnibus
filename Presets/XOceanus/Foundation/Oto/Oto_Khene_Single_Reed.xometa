@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Khene Single Reed",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "One Khene pipe speaking alone — sparse, focused, the fundamental resonance stripped of cluster complexity. Folk music at its simplest and most direct, a single voice in an open field.",
+  "tier": "standard",
+  "tags": ["foundation", "khene", "sparse", "folk", "raw"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.45
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.6,
+    "movement": 0.2,
+    "density": 0.2,
+    "space": 0.45,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.18,
+      "oto_chiff": 0.22,
+      "oto_detune": 0.1,
+      "oto_buzz": 0.15,
+      "oto_pressure": 0.18,
+      "oto_crosstalk": 0.08,
+      "oto_filterCutoff": 4800.0,
+      "oto_filterRes": 0.1,
+      "oto_attack": 0.02,
+      "oto_decay": 0.18,
+      "oto_sustain": 0.85,
+      "oto_release": 0.3,
+      "oto_lfo1Rate": 1.0,
+      "oto_lfo1Depth": 0.08,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.4,
+      "oto_macroB": 0.2,
+      "oto_macroC": 0.0,
+      "oto_macroD": 0.45
+    }
+  },
+  "tempo": null
+}

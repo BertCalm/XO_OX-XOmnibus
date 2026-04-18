@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Spirit Khene",
+  "mood": "Aether",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene played for spirits rather than people — the buzz maximized until it crosses from instrument to voice, pressure wildly unstable, crosstalk so high the pipes blur into one organism. A sound for between states.",
+  "tier": "standard",
+  "tags": ["aether", "khene", "spirit", "extreme", "otherworldly"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.3,
+    "SPACE": 0.72
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.65,
+    "movement": 0.62,
+    "density": 0.75,
+    "space": 0.78,
+    "aggression": 0.52
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.75,
+      "oto_chiff": 0.08,
+      "oto_detune": 0.5,
+      "oto_buzz": 0.95,
+      "oto_pressure": 0.85,
+      "oto_crosstalk": 0.65,
+      "oto_filterCutoff": 4500.0,
+      "oto_filterRes": 0.5,
+      "oto_attack": 0.2,
+      "oto_decay": 1.5,
+      "oto_sustain": 0.9,
+      "oto_release": 2.8,
+      "oto_lfo1Rate": 0.08,
+      "oto_lfo1Depth": 0.6,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.55,
+      "oto_macroB": 0.6,
+      "oto_macroC": 0.3,
+      "oto_macroD": 0.72
+    }
+  },
+  "tempo": null
+}

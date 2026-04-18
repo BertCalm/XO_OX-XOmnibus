@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Farmhouse Pump",
+  "mood": "Organic",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A small pump organ from a rural chapel — hand-pumped bellows giving slightly uneven wind pressure. The sound is sincere and imperfect, like hymns sung without a pitch pipe.",
+  "tier": "standard",
+  "tags": ["organic", "cavaille-coll", "romantic", "pump-organ", "rural"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.08,
+    "SPACE": 0.45
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.72,
+    "movement": 0.48,
+    "density": 0.42,
+    "space": 0.45,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.38,
+      "oct_chiff": 0.08,
+      "oct_detune": 0.15,
+      "oct_buzz": 0.12,
+      "oct_pressure": 0.65,
+      "oct_crosstalk": 0.18,
+      "oct_brightness": 0.32,
+      "oct_registration": 0.42,
+      "oct_roomDepth": 0.45,
+      "oct_attack": 0.12,
+      "oct_decay": 0.5,
+      "oct_sustain": 0.85,
+      "oct_release": 1.0,
+      "oct_filterEnvAmount": 0.1,
+      "oct_bendRange": 1,
+      "oct_macroCharacter": 0.38,
+      "oct_macroMovement": 0.48,
+      "oct_macroCoupling": 0.08,
+      "oct_macroSpace": 0.45,
+      "oct_lfo1Rate": 0.28,
+      "oct_lfo1Depth": 0.18,
+      "oct_lfo1Shape": 3,
+      "oct_lfo2Rate": 0.55,
+      "oct_lfo2Depth": 0.1,
+      "oct_lfo2Shape": 3,
+      "oct_competition": 0.06
+    }
+  },
+  "tempo": null
+}

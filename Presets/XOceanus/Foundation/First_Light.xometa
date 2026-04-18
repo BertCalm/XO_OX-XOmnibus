@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "First Light",
+  "mood": "Foundation",
+  "engines": [
+    "Ogive"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The window at dawn. A warm crystalline saw pad — familiar synthwave character with glass shimmer. The Init patch of XOgive.",
+  "tags": [
+    "foundation",
+    "init",
+    "glass",
+    "pad",
+    "synthwave",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.70,
+    "movement": 0.40,
+    "density": 0.45,
+    "space": 0.35,
+    "aggression": 0.10
+  },
+  "parameters": {
+    "Ogive": {
+      "ogv_waveform": 0,
+      "ogv_wave_asym": 0.5,
+      "ogv_pane_count": 3,
+      "ogv_tracery_stiff": 0.45,
+      "ogv_lead_damp": 0.025,
+      "ogv_glass_q": 60.0,
+      "ogv_scan_rate": 1.0,
+      "ogv_scan_pos": 0.5,
+      "ogv_lancet_shape": 1.5,
+      "ogv_scan_mode": 0,
+      "ogv_sync_div": 2,
+      "ogv_surface_memory": 0.0,
+      "ogv_neon_cutoff": 3800.0,
+      "ogv_neon_reso": 0.25,
+      "ogv_neon_drive": 0.10,
+      "ogv_chorus_depth": 0.35,
+      "ogv_chorus_rate": 0.3,
+      "ogv_gate_time": 0.3,
+      "ogv_nave_size": 0.45,
+      "ogv_nave_mix": 0.20,
+      "ogv_lfo1_rate": 0.5,
+      "ogv_lfo1_shape": 0,
+      "ogv_lfo1_depth": 0.35,
+      "ogv_env_attack": 0.015,
+      "ogv_env_decay": 0.6,
+      "ogv_env_sustain": 0.70,
+      "ogv_env_release": 0.9,
+      "ogv_voice_mode": 0,
+      "ogv_thermal": 0.0,
+      "ogv_macro1": 0.5,
+      "ogv_macro2": 0.5,
+      "ogv_macro3": 0.0,
+      "ogv_macro4": 0.3
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.0,
+    "SPACE": 0.3
+  }
+}

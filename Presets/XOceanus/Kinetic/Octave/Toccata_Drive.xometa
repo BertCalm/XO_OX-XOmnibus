@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Toccata Drive",
+  "mood": "Kinetic",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Built for the manual dexterity runs of Bach toccatas — the Baroque positiv at its most responsive. Sixteenth-note passages articulate cleanly with zero smear between attacks.",
+  "tier": "standard",
+  "tags": ["kinetic", "baroque", "positiv", "toccata", "bach"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.12,
+    "SPACE": 0.4
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.35,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.4,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 1,
+      "oct_cluster": 0.42,
+      "oct_chiff": 0.72,
+      "oct_detune": 0.03,
+      "oct_buzz": 0.08,
+      "oct_pressure": 0.12,
+      "oct_crosstalk": 0.08,
+      "oct_brightness": 0.8,
+      "oct_registration": 0.52,
+      "oct_roomDepth": 0.4,
+      "oct_attack": 0.005,
+      "oct_decay": 0.1,
+      "oct_sustain": 1.0,
+      "oct_release": 0.4,
+      "oct_filterEnvAmount": 0.22,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.7,
+      "oct_macroMovement": 0.4,
+      "oct_macroCoupling": 0.12,
+      "oct_macroSpace": 0.4,
+      "oct_lfo1Rate": 0.12,
+      "oct_lfo1Depth": 0.08,
+      "oct_lfo1Shape": 2,
+      "oct_lfo2Rate": 0.4,
+      "oct_lfo2Depth": 0.04,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.1
+    }
+  },
+  "tempo": null
+}

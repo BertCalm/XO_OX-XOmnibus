@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Schoolyard Squeeze",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica as a child's first instrument — a little breathless, a little buzzy, played with enthusiasm rather than technique. Instantly nostalgic and unpretentious.",
+  "tier": "standard",
+  "tags": ["foundation", "melodica", "nostalgic", "playful", "intimate"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.1,
+    "SPACE": 0.2
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.72,
+    "movement": 0.38,
+    "density": 0.28,
+    "space": 0.2,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.18,
+      "oto_chiff": 0.15,
+      "oto_detune": 0.18,
+      "oto_buzz": 0.22,
+      "oto_pressure": 0.42,
+      "oto_crosstalk": 0.06,
+      "oto_filterCutoff": 4200.0,
+      "oto_filterRes": 0.12,
+      "oto_attack": 0.03,
+      "oto_decay": 0.1,
+      "oto_sustain": 0.8,
+      "oto_release": 0.18,
+      "oto_lfo1Rate": 1.0,
+      "oto_lfo1Depth": 0.12,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.45,
+      "oto_macroB": 0.4,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.2
+    }
+  },
+  "tempo": null
+}

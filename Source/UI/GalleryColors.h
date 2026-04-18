@@ -509,6 +509,22 @@ inline juce::Typeface::Ptr interBold()
     static auto tf = loadTypeface(FontData::InterBold_ttf, FontData::InterBold_ttfSize);
     return tf;
 }
+// Satoshi — functional UI font (replaces Inter for labels, buttons, controls)
+inline juce::Typeface::Ptr satoshiRegular()
+{
+    static auto tf = loadTypeface(FontData::SatoshiRegular_otf, FontData::SatoshiRegular_otfSize);
+    return tf;
+}
+inline juce::Typeface::Ptr satoshiMedium()
+{
+    static auto tf = loadTypeface(FontData::SatoshiMedium_otf, FontData::SatoshiMedium_otfSize);
+    return tf;
+}
+inline juce::Typeface::Ptr satoshiBold()
+{
+    static auto tf = loadTypeface(FontData::SatoshiBold_otf, FontData::SatoshiBold_otfSize);
+    return tf;
+}
 inline juce::Typeface::Ptr jetBrainsMono()
 {
     static auto tf = loadTypeface(FontData::JetBrainsMonoRegular_ttf, FontData::JetBrainsMonoRegular_ttfSize);
@@ -519,6 +535,16 @@ inline juce::Typeface::Ptr overbitRegular()
     static auto tf = loadTypeface(FontData::OverbitRegular_otf, FontData::OverbitRegular_otfSize);
     return tf;
 }
+inline juce::Typeface::Ptr dotoRegular()
+{
+    static auto tf = loadTypeface(FontData::DotoRegular_ttf, FontData::DotoRegular_ttfSize);
+    return tf;
+}
+inline juce::Typeface::Ptr dotoBold()
+{
+    static auto tf = loadTypeface(FontData::DotoBold_ttf, FontData::DotoBold_ttfSize);
+    return tf;
+}
 
 inline juce::Font display(float size)
 {
@@ -526,20 +552,91 @@ inline juce::Font display(float size)
 }
 inline juce::Font heading(float size)
 {
-    return juce::Font(juce::FontOptions{}.withTypeface(interBold()).withHeight(size));
+    return juce::Font(juce::FontOptions{}.withTypeface(satoshiBold()).withHeight(size));
 }
 inline juce::Font body(float size)
 {
-    return juce::Font(juce::FontOptions{}.withTypeface(interRegular()).withHeight(size));
+    return juce::Font(juce::FontOptions{}.withTypeface(satoshiRegular()).withHeight(size));
 }
 inline juce::Font label(float size)
 {
-    return juce::Font(juce::FontOptions{}.withTypeface(interMedium()).withHeight(size));
+    return juce::Font(juce::FontOptions{}.withTypeface(satoshiMedium()).withHeight(size));
 }
 inline juce::Font value(float size)
 {
     return juce::Font(juce::FontOptions{}.withTypeface(jetBrainsMono()).withHeight(size));
 }
+// Doto — dot-matrix display font (submarine instrumentation aesthetic).
+// Used for: preset display, visualizer labels, BPM readout, transport values.
+inline juce::Font dotMatrix(float size)
+{
+    return juce::Font(juce::FontOptions{}.withTypeface(dotoBold()).withHeight(size));
+}
+inline juce::Font dotMatrixLight(float size)
+{
+    return juce::Font(juce::FontOptions{}.withTypeface(dotoRegular()).withHeight(size));
+}
+// ── Mood fonts — unique typeface per preset mood category ──────────────────
+// Each mood gets its own display font for preset names and mood labels.
+// When a mood font is not yet embedded, falls back to Inter Bold.
+enum class MoodType
+{
+    Foundation, Atmosphere, Entangled, Prism, Flux, Aether,
+    Family, Submerged, Coupling, Crystalline, Deep, Ethereal,
+    Kinetic, Luminous, Organic, Shadow
+};
+
+inline juce::Typeface::Ptr moodTypeface(MoodType mood)
+{
+    switch (mood)
+    {
+        case MoodType::Foundation:  { static auto tf = loadTypeface(FontData::FjordRegular_otf,       FontData::FjordRegular_otfSize);       return tf; }
+        case MoodType::Deep:        { static auto tf = loadTypeface(FontData::BionixFat_otf,          FontData::BionixFat_otfSize);          return tf; }
+        case MoodType::Crystalline: { static auto tf = loadTypeface(FontData::Norqen_otf,             FontData::Norqen_otfSize);             return tf; }
+        case MoodType::Luminous:    { static auto tf = loadTypeface(FontData::MaleahRegular_otf,      FontData::MaleahRegular_otfSize);      return tf; }
+        case MoodType::Atmosphere:  { static auto tf = loadTypeface(FontData::SaesonBold_ttf,         FontData::SaesonBold_ttfSize);         return tf; }
+        case MoodType::Kinetic:     { static auto tf = loadTypeface(FontData::NebulicaRegular_ttf,    FontData::NebulicaRegular_ttfSize);    return tf; }
+        case MoodType::Entangled:   { static auto tf = loadTypeface(FontData::RoyalOcean_otf,         FontData::RoyalOcean_otfSize);         return tf; }
+        case MoodType::Shadow:      { static auto tf = loadTypeface(FontData::ForgeSans_otf,          FontData::ForgeSans_otfSize);          return tf; }
+        case MoodType::Organic:     { static auto tf = loadTypeface(FontData::OtfitsGroteskBold_otf,  FontData::OtfitsGroteskBold_otfSize);  return tf; }
+        case MoodType::Prism:       { static auto tf = loadTypeface(FontData::LokanovaProBold_otf,    FontData::LokanovaProBold_otfSize);    return tf; }
+        case MoodType::Flux:        { static auto tf = loadTypeface(FontData::NeoformDisplay_otf,     FontData::NeoformDisplay_otfSize);     return tf; }
+        case MoodType::Aether:      { static auto tf = loadTypeface(FontData::Apestron_otf,           FontData::Apestron_otfSize);           return tf; }
+        case MoodType::Submerged:   { static auto tf = loadTypeface(FontData::CostalineRegular_otf,   FontData::CostalineRegular_otfSize);   return tf; }
+        case MoodType::Coupling:    { static auto tf = loadTypeface(FontData::NeuticalRegular_otf,    FontData::NeuticalRegular_otfSize);    return tf; }
+        case MoodType::Family:      { static auto tf = loadTypeface(FontData::ZTOtezRegular_otf,      FontData::ZTOtezRegular_otfSize);      return tf; }
+        case MoodType::Ethereal:    { static auto tf = loadTypeface(FontData::Elijah_otf,             FontData::Elijah_otfSize);             return tf; }
+        default:                    return interBold();
+    }
+}
+
+inline juce::Font moodFont(MoodType mood, float size)
+{
+    return juce::Font(juce::FontOptions{}.withTypeface(moodTypeface(mood)).withHeight(size));
+}
+
+/// Resolve a mood name string (from .xometa) to a MoodType enum.
+inline MoodType moodFromString(const juce::String& name)
+{
+    if (name == "Foundation")  return MoodType::Foundation;
+    if (name == "Atmosphere")  return MoodType::Atmosphere;
+    if (name == "Entangled")   return MoodType::Entangled;
+    if (name == "Prism")       return MoodType::Prism;
+    if (name == "Flux")        return MoodType::Flux;
+    if (name == "Aether")      return MoodType::Aether;
+    if (name == "Family")      return MoodType::Family;
+    if (name == "Submerged")   return MoodType::Submerged;
+    if (name == "Coupling")    return MoodType::Coupling;
+    if (name == "Crystalline") return MoodType::Crystalline;
+    if (name == "Deep")        return MoodType::Deep;
+    if (name == "Ethereal")    return MoodType::Ethereal;
+    if (name == "Kinetic")     return MoodType::Kinetic;
+    if (name == "Luminous")    return MoodType::Luminous;
+    if (name == "Organic")     return MoodType::Organic;
+    if (name == "Shadow")      return MoodType::Shadow;
+    return MoodType::Foundation; // fallback
+}
+
 // Overbit — engine nameplate display font (accent-colored, Column B hero text).
 // Decision D2: Overbit at ≥12px; Space Grotesk Bold fallback below 12px.
 //

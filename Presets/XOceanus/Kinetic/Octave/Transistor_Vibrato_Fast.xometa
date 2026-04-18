@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Transistor Vibrato Fast",
+  "mood": "Kinetic",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Farfisa's fast transistor vibrato at maximum rate — a motorized tremble that became the signature of 1960s Italian pop. Rapid, pulsing, insistent, impossible to ignore.",
+  "tier": "standard",
+  "tags": ["kinetic", "farfisa", "transistor", "vibrato", "italian-pop"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.15,
+    "SPACE": 0.28
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.28,
+    "movement": 0.82,
+    "density": 0.55,
+    "space": 0.28,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 3,
+      "oct_cluster": 0.52,
+      "oct_chiff": 0.1,
+      "oct_detune": 0.06,
+      "oct_buzz": 0.75,
+      "oct_pressure": 0.18,
+      "oct_crosstalk": 0.38,
+      "oct_brightness": 0.72,
+      "oct_registration": 0.6,
+      "oct_roomDepth": 0.28,
+      "oct_attack": 0.015,
+      "oct_decay": 0.18,
+      "oct_sustain": 1.0,
+      "oct_release": 0.3,
+      "oct_filterEnvAmount": 0.22,
+      "oct_bendRange": 2,
+      "oct_macroCharacter": 0.7,
+      "oct_macroMovement": 0.82,
+      "oct_macroCoupling": 0.15,
+      "oct_macroSpace": 0.28,
+      "oct_lfo1Rate": 7.5,
+      "oct_lfo1Depth": 0.45,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.5,
+      "oct_lfo2Depth": 0.2,
+      "oct_lfo2Shape": 2,
+      "oct_competition": 0.15
+    }
+  },
+  "tempo": null
+}

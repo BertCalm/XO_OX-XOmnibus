@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Morning Sheng",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Clean Sheng registration at first light — bright attack, precise melodic response. The sharper transient snaps to attention like a bird call across still water.",
+  "tier": "standard",
+  "tags": ["foundation", "sheng", "bright", "melodic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.1,
+    "SPACE": 0.4
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.3,
+    "movement": 0.2,
+    "density": 0.4,
+    "space": 0.4,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.3,
+      "oto_chiff": 0.35,
+      "oto_detune": 0.04,
+      "oto_buzz": 0.05,
+      "oto_pressure": 0.1,
+      "oto_crosstalk": 0.08,
+      "oto_filterCutoff": 9500.0,
+      "oto_filterRes": 0.12,
+      "oto_attack": 0.015,
+      "oto_decay": 0.2,
+      "oto_sustain": 0.8,
+      "oto_release": 0.3,
+      "oto_lfo1Rate": 0.4,
+      "oto_lfo1Depth": 0.04,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.6,
+      "oto_macroB": 0.3,
+      "oto_macroC": 0.1,
+      "oto_macroD": 0.4
+    }
+  },
+  "tempo": null
+}

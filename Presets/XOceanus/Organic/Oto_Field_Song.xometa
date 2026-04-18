@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Field Song",
+  "mood": "Organic",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng adapted to accompany field workers — brighter and more melodic than typical organic fare, the chiff like a bird call above the rows, the sustain stretching across open ground.",
+  "tier": "standard",
+  "tags": ["organic", "sheng", "melodic", "open", "field"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.15,
+    "SPACE": 0.45
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.45,
+    "movement": 0.35,
+    "density": 0.38,
+    "space": 0.48,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.38,
+      "oto_chiff": 0.35,
+      "oto_detune": 0.1,
+      "oto_buzz": 0.08,
+      "oto_pressure": 0.22,
+      "oto_crosstalk": 0.12,
+      "oto_filterCutoff": 8500.0,
+      "oto_filterRes": 0.14,
+      "oto_attack": 0.015,
+      "oto_decay": 0.25,
+      "oto_sustain": 0.8,
+      "oto_release": 0.55,
+      "oto_lfo1Rate": 0.8,
+      "oto_lfo1Depth": 0.12,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.6,
+      "oto_macroB": 0.35,
+      "oto_macroC": 0.15,
+      "oto_macroD": 0.45
+    }
+  },
+  "tempo": null
+}

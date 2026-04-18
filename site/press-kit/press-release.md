@@ -100,4 +100,4 @@ https://xo-ox.org/press-kit/
 
 ---
 
-*XOceanus is free and open-source software released under the MIT license. All 76 engines, all presets, and all coupling system code are included in the public release.*
+*XOceanus is free and open-source software released under the MIT license. All 77 engines, all presets, and all coupling system code are included in the public release.*

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "The Shard Speaks",
+  "mood": "Kinetic",
+  "engines": ["Ostracon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "SIGNATURE. Four playback heads chase each other across a 3.5s reel — the signal becomes its own memory, answering itself from 875ms apart. Oxide drives warmth into the print layer while flutter keeps the tempo from ever locking down. This is the tape that refuses to be erased.",
+  "tags": ["ostracon", "kinetic", "signature", "tape", "looping", "memory", "drive"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.8,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.6,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ostracon": {
+      "ostr_waveform": 0,
+      "ostr_tune": 0,
+      "ostr_fine": 0.0,
+      "ostr_source_mix": 0.6,
+      "ostr_reel_size": 3.5,
+      "ostr_head_count": 4,
+      "ostr_head_spread": 0.55,
+      "ostr_bias": 0.35,
+      "ostr_record_mode": 0,
+      "ostr_freeze": 0,
+      "ostr_oxide": 0.42,
+      "ostr_flutter": 0.45,
+      "ostr_flutter_rate": 3.5,
+      "ostr_wow": 0.2,
+      "ostr_print": 0.25,
+      "ostr_filter_cutoff": 6000.0,
+      "ostr_filter_reso": 0.25,
+      "ostr_filter_type": 0,
+      "ostr_attack": 0.003,
+      "ostr_decay": 0.5,
+      "ostr_sustain": 0.7,
+      "ostr_release": 1.2,
+      "ostr_lfo_rate": 0.18,
+      "ostr_lfo_shape": 1,
+      "ostr_lfo_depth": 0.3,
+      "ostr_lfo_target": 1,
+      "ostr_speed": 1.0,
+      "ostr_reverse": 0,
+      "ostr_macro1": 0.0,
+      "ostr_macro2": 0.0,
+      "ostr_macro3": 0.0,
+      "ostr_macro4": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  }
+}

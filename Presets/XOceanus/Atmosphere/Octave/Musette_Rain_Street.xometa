@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Musette Rain Street",
+  "mood": "Atmosphere",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rain-soaked cobblestones outside, the musette drifting from a half-open window. The detuned reeds beat slowly against the city's ambient hum — melancholy and beautiful.",
+  "tier": "standard",
+  "tags": ["atmosphere", "musette", "french", "ambient", "street"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.06,
+    "SPACE": 0.8
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.75,
+    "movement": 0.42,
+    "density": 0.45,
+    "space": 0.8,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 2,
+      "oct_cluster": 0.42,
+      "oct_chiff": 0.12,
+      "oct_detune": 0.42,
+      "oct_buzz": 0.25,
+      "oct_pressure": 0.25,
+      "oct_crosstalk": 0.18,
+      "oct_brightness": 0.42,
+      "oct_registration": 0.5,
+      "oct_roomDepth": 0.8,
+      "oct_attack": 0.05,
+      "oct_decay": 0.7,
+      "oct_sustain": 1.0,
+      "oct_release": 3.0,
+      "oct_filterEnvAmount": 0.08,
+      "oct_bendRange": 1,
+      "oct_macroCharacter": 0.48,
+      "oct_macroMovement": 0.42,
+      "oct_macroCoupling": 0.06,
+      "oct_macroSpace": 0.8,
+      "oct_lfo1Rate": 0.65,
+      "oct_lfo1Depth": 0.18,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.12,
+      "oct_lfo2Depth": 0.08,
+      "oct_lfo2Shape": 1,
+      "oct_competition": 0.05
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Collapse",
+  "mood": "Aether",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Extreme pressure instability with fast random-like modulation — the organ behaves as if its wind supply is failing. Pitch lurches, tone warps, the instrument breathes its last.",
+  "tier": "standard",
+  "tags": ["aether", "experimental", "extreme-pressure", "failure", "collapse"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.95,
+    "COUPLING": 0.2,
+    "SPACE": 0.6
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.62,
+    "movement": 0.95,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.55,
+      "oct_chiff": 0.08,
+      "oct_detune": 0.35,
+      "oct_buzz": 0.15,
+      "oct_pressure": 1.0,
+      "oct_crosstalk": 0.3,
+      "oct_brightness": 0.25,
+      "oct_registration": 0.6,
+      "oct_roomDepth": 0.6,
+      "oct_attack": 0.25,
+      "oct_decay": 1.5,
+      "oct_sustain": 0.7,
+      "oct_release": 2.0,
+      "oct_filterEnvAmount": 0.2,
+      "oct_bendRange": 3,
+      "oct_macroCharacter": 0.35,
+      "oct_macroMovement": 0.95,
+      "oct_macroCoupling": 0.2,
+      "oct_macroSpace": 0.6,
+      "oct_lfo1Rate": 0.3,
+      "oct_lfo1Depth": 0.75,
+      "oct_lfo1Shape": 4,
+      "oct_lfo2Rate": 0.7,
+      "oct_lfo2Depth": 0.55,
+      "oct_lfo2Shape": 4,
+      "oct_competition": 0.15
+    }
+  },
+  "tempo": null
+}

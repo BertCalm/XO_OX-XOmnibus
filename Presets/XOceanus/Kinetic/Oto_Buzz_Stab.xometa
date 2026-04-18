@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Buzz Stab",
+  "mood": "Kinetic",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene as a stab instrument — maximum buzz on contact, extremely short decay, the membrane vibration cutting on and off like a switch. Aggressive and precise.",
+  "tier": "standard",
+  "tags": ["kinetic", "khene", "stab", "buzz", "aggressive"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.18,
+    "SPACE": 0.12
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.55,
+    "movement": 0.6,
+    "density": 0.5,
+    "space": 0.12,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.5,
+      "oto_chiff": 0.4,
+      "oto_detune": 0.2,
+      "oto_buzz": 0.9,
+      "oto_pressure": 0.3,
+      "oto_crosstalk": 0.15,
+      "oto_filterCutoff": 8500.0,
+      "oto_filterRes": 0.28,
+      "oto_attack": 0.001,
+      "oto_decay": 0.06,
+      "oto_sustain": 0.4,
+      "oto_release": 0.06,
+      "oto_lfo1Rate": 3.0,
+      "oto_lfo1Depth": 0.25,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.78,
+      "oto_macroB": 0.6,
+      "oto_macroC": 0.18,
+      "oto_macroD": 0.12
+    }
+  },
+  "tempo": null
+}

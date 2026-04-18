@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-04-12 — 79 seanced (ORRERY 8.2 B047 not ready; OORT 8.5 V1-ready B046; OPSIN 8.4 B045; OBSERVANDUM 8.1 not ready); OBIONT, OUTFLOW not yet seanced
+**Updated:** 2026-04-12 — 79 seanced (OPENSKY 8.1→8.5 formal pass 2026-04-11; OVERBITE "~9.2 est."→9.1/10 formal pass 2026-04-12; ORPHICA "~8.7 est."→8.4/10 formal re-seance 2026-04-12 — Under Consideration; ORRERY 8.2 B047 not ready; OORT 8.5 V1-ready B046; OPSIN 8.4 B045; OBSERVANDUM 8.1 not ready); OBIONT, OUTFLOW not yet seanced
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -25,7 +25,7 @@
 | XOceanic | OCEANIC | 7.1/10 | B013 Chromatophore Modulator | None | D001: zero velocity response at all (resolved Round 9E) | "The triple-BBD chorus is the soul of the ocean — and it plays every note at the same volume." |
 | XOdyssey | ODYSSEY | 7.6/10 | V007 Climax Paradigm | None | D004: crossFmDepth dead (fixed); AfterTouch/ModWheel never fed (resolved) | "The Climax is the most emotionally powerful feature in the fleet — and it has never been heard." |
 | XOverworld | OVERWORLD | 7.6/10 | B009 ERA Triangle | None | D001: velocity amplitude only (resolved); D005: no LFO in adapter (FIXED: eraPhase 0–4 Hz) | "The ERA triangle arrives at the XOceanus dock with no luggage." |
-| XOppossum | OVERBITE | Full approval (~9.2 est.) | B008 Five-Macro System | None | None (best expression in fleet) | "These macros are not parameters — they are survival strategies." |
+| XOppossum | OVERBITE | **9.1/10** (formal re-seance 2026-04-12; supersedes "full approval ~9.2 est.") | B008 Five-Macro System (macros as mod-matrix sources 11–15); B045 proposed: BiteOscB Interaction Ecology | None | None (all D001–D006 PASS; 122 params clean) | "Aftertouch adds BITE macro intensity. Mod wheel adds BITE macro depth. When you press harder the sound becomes more feral. This is not a parameter. This is an emotional instrument." — Vangelis |
 | XOwlfish | OWLFISH | 7.1/10 | B014 Mixtur-Trautonium Oscillator | None | D004: owl_morphGlide dead (FIXED); D005: zero LFOs (FIXED: grainLfoPhase 0.05 Hz) | "The Mixtur-Trautonium oscillator is a genuine archaeological find — and it never moves." |
 | XObese | OBESE | 6.6/10 → ~8.5 est. (post-fix 2026-03-21) | B015 Mojo Control | None | D002 + D005: zero LFOs (FIXED: fat_lfo1Rate/Depth/Target added); D006: no CC (resolved) | "The Mojo axis is unique in synthesis history — a continuous analog↔digital spectrum — and nothing modulates it." |
 | XOpal | OPAL | Concept reviewed | V008 Time-Telescope | None | D004: opal_smear declared, no DSP (FIXED) | "XOpal is the universal transformer — every other engine becomes different when viewed through its lens." |
@@ -46,13 +46,13 @@
 | XOrganism | ORGANISM | 8.1/10 → 7.2/10 → **8.7/10** (re-seance 2026-04-03) | OrgScopeHistory moving-average system; B028-adjacent: per-note XOR seed | CytomicSVF replacing biquad (FIXED); SR-scaled reverb (FIXED); PolyBLEP oscillators (ADDED); pitch bend (FIXED); 397 presets | No key tracking (ongoing); scope ceiling 16 | "The cellular automaton IS the synthesis architecture — not a gimmick." — Buchla |
 | XOutlook | OUTLOOK | 7.1/10 → ~8.0 (post-fix 2026-03-23) | B039 candidate: Parallax Stereo Field (conditional) | P0-OUTLOOK-01–04 fixed 2026-03-23 | D004: look_delayMix/macroCoupling were dead (FIXED) | "The parallax stereo field is genuinely novel — note pitch as stereo depth. But the horizon scan is inert for 5/8 waveforms." — Buchla |
 | XOhm | OHM | 7.6/10 | None | None | D001 partial (intensity not brightness); mono voice summing | "The Dad ensemble knows which instrument to play — and then plays them all in the center." |
-| XOrphica | ORPHICA | 8.0/10 → ~8.7 est. (post-fix 2026-03-21) | None | None | kBufSize 186ms too short (FIXED: extended to 1 s); D001 partial (FIXED: velocity→body resonance frequency wired) | "The granular pluck is beautiful — and it runs out of memory before the note blooms." |
+| XOrphica | ORPHICA | 8.0/10 → **8.4/10** (formal re-seance 2026-04-12) | None | None | D002 FAIL: no LFO2, no mod matrix; preset schema split fleet-wide (macro dict keys CHARACTER/MOVEMENT/COUPLING/SPACE → PLUCK/FRACTURE/SURFACE/DIVINE + stale params); getSampleForCoupling weakest in fleet (scalar only, no buffer, no envelope ch2); kBufSize extended to 1s; D001 PASS (velocity→body resonance freq wired) | "Only one drift oscillator and no mod matrix means the performer cannot explore the modulation space live." — Moog |
 | XObbligato | OBBLIGATO | 7.8/10 | None | None | D001 partial (intensity not brightness, Constellation-wide); FX chain routing misrouted (V2 backlog) | "The breath is genuine but the FX chain is sending it to the wrong room." |
 | XOttoni | OTTONI | 7.2/10 | None | None | D004: instrument choice params dead (FIXED); D001 partial (FIXED); reverb not SR-scaled (FIXED) | "Four instrument voices and none of them chose to speak." |
 | XOlé | OLE | 7.0/10 | None | None | isHusband regression post-SP7.5 fix; 4 dead params (fixed) | "The Alliance is the most interesting social dynamic in synthesis — and it is a bug." |
 | XOverlap | OVERLAP | 8.4/10 (latest re-seance) | KnotMatrix FDN + Voice Entrainment Architecture | None | Global filter env vs. FDN long tails (ongoing); integer delay pitch stepping | "The Chiasmus FDN does something no other engine does — notes do not decay, they transform each other." — Buchla |
 | XOutwit | OUTWIT | 7.9/10 → 8.7/10 (re-seance 2026-03-20) | None | None | Pitch wheel unhandled; mono Den reverb; step rate ceiling 40 Hz | "The CA synthesis is 40 Hz away from audio rate — and it cannot take that step." — Buchla |
-| XOpenSky | OPENSKY | 8.1/10 | B023 Shepard Shimmer Architecture; B024 RISE Macro | None | sky_subWave D004 partial; shimmer/chorus mutual exclusion debate | "Every time you hold a note, the room grows taller." — Buchla |
+| XOpenSky | OPENSKY | **8.5/10** (re-seance 2026-04-11; supersedes 8.1 partial) | B023 Shepard Shimmer Architecture; B024 RISE Macro | None | sky_subWave D004 FALSE POSITIVE — fully dispatched (switch at lines 841–853); preset schema split (1/3 of presets use stale param names) logged as separate issue; shimmer/chorus DB001 noted | "Every time you hold a note, the room grows taller." — Buchla |
 | XOceanDeep | OCEANDEEP | 7.8/10 | B029 Hydrostatic Compressor; B030 Bioluminescent Exciter; B031 Darkness Filter Ceiling | None | No independent filter ADSR; missing pitch bend | "The pressure is physics, not a compressor." — Moog |
 | XOuie | OUIE | 8.5/10 | B025 HAMMER Interaction Axis; B026 Interval-as-Parameter; B027 8-Algorithm Palette | None | CURRENT macro chorus-only; harmonic lock in LOVE section unimplemented | "STRIFE and LOVE are not opposites — they are a spectrum, and you are always somewhere on it." — Buchla |
 | XObrix | OBRIX | 7.2/10 → 9.4 roadmap | B016 Brick Independence (AMENDED 2026-03-21) | None | No factory presets at seance time; default Sine source; LFO ceiling 30 Hz | "The ecology is real. The bricks are alive. But the reef has no presets." — Kakehashi |
@@ -187,14 +187,14 @@
 
 ---
 
-## Seance Score Ranking (Updated 2026-04-12 — 81 Engines; 79 Seanced)
+## Seance Score Ranking (Updated 2026-04-12 — 88 Engines; 79 Seanced)
 
 ### Tier 1 — Excellent (9.0+)
 
 | Rank | Engine | Score | Notes |
 |------|--------|-------|-------|
 | 1 | OXYTOCIN | 9.5/10 | NEW FLEET LEADER. B040. Concept seance + post-build confirmed. |
-| 2 | OVERBITE | ~9.2 est. | Full approval, best macro system in fleet (B008) |
+| 2 | OVERBITE | **9.1/10** (formal re-seance 2026-04-12) | B008 (macros as mod-matrix sources); B045 proposed. 122 params, 8-slot matrix, 478 presets. |
 | 2 | OWARE | 9.2/10 (post-fix) | Initial 8.4 → 9.2 after LFO wiring + param fixes. B032/B033/B034. |
 | 4 | OBSCURA | ~9.1 est. | High/unanimous, D003 fully compliant |
 | 5 | OXBOW | 9.0/10 (post-fix) | Dead param + macros fixed. Chiasmus FDN. |
@@ -214,7 +214,7 @@
 | 13 | OASIS | 8.7/10 | Rhodes. Correct partial ratios, asymmetric clipping. |
 | 13 | OUTWIT | 8.7/10 (re-seance) | CA synthesis; re-seanced 2026-03-20. |
 | 13 | OSTINATO | 8.7/10 (re-seance) | B016–B020. Initial 8.0 → 8.7. |
-| 13 | ORPHICA | ~8.7 est. (post-fix) | Buffer extended to 1s. Velocity→body resonance wired. |
+| 13 | ORPHICA | ~~8.7 est.~~ → see Tier 3 | Formal re-seance 2026-04-12 scored 8.4. Moved to Tier 3. |
 | 13 | OXIDIZE | 8.7/10 pre-fix → 9.2+ post-fix | B044 proposed (Independent LUT curves); B040 shared with OXYTOCIN. Time as primary synthesis parameter. First seance 2026-04-05. |
 | 18 | ORGANON | 8/8 PASS | VFE metabolism. B011. Equivalent to ~9.0+. |
 
@@ -228,6 +228,7 @@
 | 19 | OVERWORN | 8.6/10 | ReductionState synthesis. Most radical conceptual pad. |
 | 19 | OMEGA | 8.6/10 | Distillation synthesis FM+subtractive. |
 | 24 | ODDFELLOW | 8.5/10 | Wurlitzer. Inharmonic reed ratios correct. |
+| 24 | OPENSKY | **8.5/10** (re-seance 2026-04-11) | B023 Shepard Shimmer; B024 RISE Macro. D004 false positive cleared. 417 presets. V1 PASS. |
 | 24 | OUIE | 8.5/10 | B025/B026/B027. HAMMER axis. |
 | 24 | OBESE | ~8.5 est. (post-fix) | LFO1 exposed, B015 Mojo now breathes. |
 | 24 | OCELOT | ~8.5 est. (post-fix) | Biome crossfade live, all macros wired. |
@@ -238,6 +239,7 @@
 | 31 | ORBWEAVE | 8.4/10 | B021 + B022. Knot topology. |
 | 31 | OVERLAP | 8.4/10 (re-seance) | KnotMatrix FDN. |
 | 31 | OAKEN | 8.4/10 | Sympathetic resonance network with material aging. |
+| 31 | ORPHICA | **8.4/10** (formal re-seance 2026-04-12) | D002 FAIL (no LFO2, no mod matrix). Preset schema split (macro dict + stale params). Under Consideration — D002 fix + schema migration required for V1. |
 
 ### Tier 4 — Acceptable (8.0–8.3)
 

@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Temporal Sculpture",
+  "mood": "Kinetic",
+  "engines": ["Ostracon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Triggered recording sculpts the reel in real time — each key-press punches in on a fresh window of the 2.5-second loop while four heads read back what came before. Square wave attack is instantaneous; oxide and bias keep the teeth but round the corners. The LFO at 0.22Hz targets flutter directly, making the rhythm breathe.",
+  "tags": ["ostracon", "kinetic", "performance", "triggered", "square", "loop", "rhythmic", "live"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.8,
+    "density": 0.5,
+    "space": 0.3,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Ostracon": {
+      "ostr_waveform": 1,
+      "ostr_tune": 0,
+      "ostr_fine": 0.0,
+      "ostr_source_mix": 0.7,
+      "ostr_reel_size": 2.5,
+      "ostr_head_count": 4,
+      "ostr_head_spread": 0.6,
+      "ostr_bias": 0.4,
+      "ostr_record_mode": 2,
+      "ostr_freeze": 0,
+      "ostr_oxide": 0.3,
+      "ostr_flutter": 0.22,
+      "ostr_flutter_rate": 5.0,
+      "ostr_wow": 0.1,
+      "ostr_print": 0.18,
+      "ostr_filter_cutoff": 9000.0,
+      "ostr_filter_reso": 0.3,
+      "ostr_filter_type": 0,
+      "ostr_attack": 0.005,
+      "ostr_decay": 0.25,
+      "ostr_sustain": 0.5,
+      "ostr_release": 0.8,
+      "ostr_lfo_rate": 0.22,
+      "ostr_lfo_shape": 1,
+      "ostr_lfo_depth": 0.4,
+      "ostr_lfo_target": 0,
+      "ostr_speed": 1.0,
+      "ostr_reverse": 0,
+      "ostr_macro1": 0.0,
+      "ostr_macro2": 0.0,
+      "ostr_macro3": 0.0,
+      "ostr_macro4": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  }
+}

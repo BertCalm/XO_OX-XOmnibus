@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "All Models At Once",
+  "mood": "Aether",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "An impossible organ — Cavaillé-Coll grandeur blending with Baroque chiff, Musette beating reeds, and Farfisa transistor buzz simultaneously. Organ history collapsed into one sound.",
+  "tier": "standard",
+  "tags": ["aether", "experimental", "all-models", "extreme", "impossible"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.35,
+    "SPACE": 0.75
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.65,
+    "movement": 0.65,
+    "density": 0.9,
+    "space": 0.75,
+    "aggression": 0.45
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.9,
+      "oct_chiff": 0.75,
+      "oct_detune": 0.65,
+      "oct_buzz": 0.72,
+      "oct_pressure": 0.55,
+      "oct_crosstalk": 0.62,
+      "oct_brightness": 0.65,
+      "oct_registration": 0.92,
+      "oct_roomDepth": 0.75,
+      "oct_attack": 0.04,
+      "oct_decay": 0.8,
+      "oct_sustain": 1.0,
+      "oct_release": 2.5,
+      "oct_filterEnvAmount": 0.25,
+      "oct_bendRange": 4,
+      "oct_macroCharacter": 0.75,
+      "oct_macroMovement": 0.65,
+      "oct_macroCoupling": 0.35,
+      "oct_macroSpace": 0.75,
+      "oct_lfo1Rate": 0.35,
+      "oct_lfo1Depth": 0.42,
+      "oct_lfo1Shape": 3,
+      "oct_lfo2Rate": 2.5,
+      "oct_lfo2Depth": 0.35,
+      "oct_lfo2Shape": 1,
+      "oct_competition": 0.35
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Moss And Pipe",
+  "mood": "Organic",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho overgrown — dense cluster, dark filter, the pipes covered in something living. Crosstalk between pipes suggests they are no longer playing separately but as one slow organism.",
+  "tier": "standard",
+  "tags": ["organic", "sho", "dark", "overgrown", "dense"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.3,
+    "SPACE": 0.55
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.58,
+    "movement": 0.2,
+    "density": 0.85,
+    "space": 0.58,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.85,
+      "oto_chiff": 0.08,
+      "oto_detune": 0.2,
+      "oto_buzz": 0.08,
+      "oto_pressure": 0.28,
+      "oto_crosstalk": 0.5,
+      "oto_filterCutoff": 2500.0,
+      "oto_filterRes": 0.18,
+      "oto_attack": 0.2,
+      "oto_decay": 0.8,
+      "oto_sustain": 0.92,
+      "oto_release": 1.4,
+      "oto_lfo1Rate": 0.15,
+      "oto_lfo1Depth": 0.07,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.5,
+      "oto_macroB": 0.2,
+      "oto_macroC": 0.3,
+      "oto_macroD": 0.55
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Reed Trumpet Fanfare",
+  "mood": "Kinetic",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Trompette en Chamade — horizontal reed pipes pointed at the congregation. A fanfare registration that speaks with immediacy and brightness, announcing rather than sustaining.",
+  "tier": "standard",
+  "tags": ["kinetic", "cavaille-coll", "romantic", "trumpet", "fanfare"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.15,
+    "SPACE": 0.5
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.5,
+    "movement": 0.25,
+    "density": 0.72,
+    "space": 0.5,
+    "aggression": 0.55
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.68,
+      "oct_chiff": 0.15,
+      "oct_detune": 0.03,
+      "oct_buzz": 0.52,
+      "oct_pressure": 0.25,
+      "oct_crosstalk": 0.25,
+      "oct_brightness": 0.82,
+      "oct_registration": 0.75,
+      "oct_roomDepth": 0.5,
+      "oct_attack": 0.04,
+      "oct_decay": 0.35,
+      "oct_sustain": 1.0,
+      "oct_release": 0.8,
+      "oct_filterEnvAmount": 0.2,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.85,
+      "oct_macroMovement": 0.25,
+      "oct_macroCoupling": 0.15,
+      "oct_macroSpace": 0.5,
+      "oct_lfo1Rate": 0.1,
+      "oct_lfo1Depth": 0.08,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.35,
+      "oct_lfo2Depth": 0.06,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.12
+    }
+  },
+  "tempo": null
+}

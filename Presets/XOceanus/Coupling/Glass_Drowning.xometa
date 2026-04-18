@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "name": "Glass Remembers Drowning",
+  "mood": "Coupling",
+  "engines": ["Olvido"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A sine source tuned for coupling — transparent enough that a partner engine shines through, but carrying its own slow grief via triangle LFO and 5-second erosion. The glass doesn't break; it just holds the shape of what was lost. Memory link at 0.6 keeps the sorrow circulating.",
+  "tags": ["coupling", "sine", "glass", "transparent", "lfo", "memory"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Medium",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.40,
+    "warmth": 0.50,
+    "movement": 0.45,
+    "density": 0.50,
+    "space": 0.45,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Olvido": {
+      "olv_drift_type": 3,
+      "olv_drift_asym": 0.5,
+      "olv_foam": 0.05,
+      "olv_fm_ratio": 2.0,
+      "olv_fm_depth": 0.3,
+      "olv_depth": 0.55,
+      "olv_current": 0.1,
+      "olv_erosion": 5.0,
+      "olv_shoreline": 0.65,
+      "olv_flotsam": 0.35,
+      "olv_abyss_hold": 0.7,
+      "olv_filter_cutoff": 8000.0,
+      "olv_filter_reso": 0.35,
+      "olv_filter_drive": 0.1,
+      "olv_filter_env": 0.5,
+      "olv_reverb_size": 0.55,
+      "olv_reverb_mix": 0.35,
+      "olv_patina": 0.0,
+      "olv_lfo_rate": 0.2,
+      "olv_lfo_shape": 1,
+      "olv_lfo_depth": 0.25,
+      "olv_env_attack": 0.03,
+      "olv_env_decay": 1.5,
+      "olv_env_sustain": 0.6,
+      "olv_env_release": 2.0,
+      "olv_voice_mode": 0,
+      "olv_memory_link": 0.6,
+      "olv_anchor": 0,
+      "olv_tempo_sync": 0,
+      "olv_macro1": 0.4,
+      "olv_macro2": 0.45,
+      "olv_macro3": 0.6,
+      "olv_macro4": 0.45
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.6,
+    "SPACE": 0.45
+  }
+}

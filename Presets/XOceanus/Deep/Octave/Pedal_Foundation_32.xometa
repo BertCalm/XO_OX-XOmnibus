@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Pedal Foundation 32",
+  "mood": "Deep",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A 32-foot open wood pedal pipe at full registation — a frequency so low it is felt as much as heard. The room shakes at the sub-bass, the floor vibrates beneath your feet.",
+  "tier": "standard",
+  "tags": ["deep", "cavaille-coll", "romantic", "pedal", "32-foot"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.08,
+    "SPACE": 0.88
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.95,
+    "movement": 0.06,
+    "density": 0.95,
+    "space": 0.88,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.92,
+      "oct_chiff": 0.04,
+      "oct_detune": 0.02,
+      "oct_buzz": 0.04,
+      "oct_pressure": 0.22,
+      "oct_crosstalk": 0.35,
+      "oct_brightness": 0.08,
+      "oct_registration": 0.98,
+      "oct_roomDepth": 0.88,
+      "oct_attack": 0.25,
+      "oct_decay": 2.0,
+      "oct_sustain": 1.0,
+      "oct_release": 3.0,
+      "oct_filterEnvAmount": 0.04,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.85,
+      "oct_macroMovement": 0.08,
+      "oct_macroCoupling": 0.08,
+      "oct_macroSpace": 0.88,
+      "oct_lfo1Rate": 0.04,
+      "oct_lfo1Depth": 0.04,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.12,
+      "oct_lfo2Depth": 0.02,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.05
+    }
+  },
+  "tempo": null
+}

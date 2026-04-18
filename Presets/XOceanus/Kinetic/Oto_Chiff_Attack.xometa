@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Chiff Attack",
+  "mood": "Kinetic",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng front-loaded with maximum chiff — the transient snaps so hard the sustain feels like an afterthought. Percussive as a drum, melodic as a reed. Both at once.",
+  "tier": "standard",
+  "tags": ["kinetic", "sheng", "chiff", "percussive", "attack"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.15,
+    "SPACE": 0.2
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.22,
+    "movement": 0.5,
+    "density": 0.28,
+    "space": 0.2,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.28,
+      "oto_chiff": 0.9,
+      "oto_detune": 0.04,
+      "oto_buzz": 0.05,
+      "oto_pressure": 0.12,
+      "oto_crosstalk": 0.08,
+      "oto_filterCutoff": 13000.0,
+      "oto_filterRes": 0.2,
+      "oto_attack": 0.001,
+      "oto_decay": 0.12,
+      "oto_sustain": 0.6,
+      "oto_release": 0.1,
+      "oto_lfo1Rate": 1.5,
+      "oto_lfo1Depth": 0.15,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.75,
+      "oto_macroB": 0.5,
+      "oto_macroC": 0.15,
+      "oto_macroD": 0.2
+    }
+  },
+  "tempo": null
+}

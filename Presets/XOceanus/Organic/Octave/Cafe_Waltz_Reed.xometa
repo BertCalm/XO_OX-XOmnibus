@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Cafe Waltz Reed",
+  "mood": "Organic",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "A French accordion at a Bastille Day dance — three detuned reeds breathing together in the classic musette style. The detuning is warm and precisely imprecise, like love.",
+  "tier": "standard",
+  "tags": ["organic", "musette", "french", "accordion", "waltz"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.1,
+    "SPACE": 0.35
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.82,
+    "movement": 0.55,
+    "density": 0.6,
+    "space": 0.35,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 2,
+      "oct_cluster": 0.58,
+      "oct_chiff": 0.22,
+      "oct_detune": 0.6,
+      "oct_buzz": 0.38,
+      "oct_pressure": 0.32,
+      "oct_crosstalk": 0.22,
+      "oct_brightness": 0.55,
+      "oct_registration": 0.62,
+      "oct_roomDepth": 0.35,
+      "oct_attack": 0.04,
+      "oct_decay": 0.3,
+      "oct_sustain": 1.0,
+      "oct_release": 0.6,
+      "oct_filterEnvAmount": 0.14,
+      "oct_bendRange": 2,
+      "oct_macroCharacter": 0.65,
+      "oct_macroMovement": 0.55,
+      "oct_macroCoupling": 0.1,
+      "oct_macroSpace": 0.35,
+      "oct_lfo1Rate": 1.1,
+      "oct_lfo1Depth": 0.25,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.22,
+      "oct_lfo2Depth": 0.12,
+      "oct_lfo2Shape": 1,
+      "oct_competition": 0.08
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Melodica Studio Take",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Melodica close-miked in a recording studio — all the breath noise preserved, filter open, decay natural. This is how it sounds on a thousand beloved records: honest, slightly imperfect, alive.",
+  "tier": "standard",
+  "tags": ["foundation", "melodica", "studio", "lo-fi", "recorded"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.0,
+    "SPACE": 0.25
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.7,
+    "movement": 0.22,
+    "density": 0.3,
+    "space": 0.25,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.22,
+      "oto_chiff": 0.18,
+      "oto_detune": 0.09,
+      "oto_buzz": 0.12,
+      "oto_pressure": 0.22,
+      "oto_crosstalk": 0.06,
+      "oto_filterCutoff": 5500.0,
+      "oto_filterRes": 0.06,
+      "oto_attack": 0.02,
+      "oto_decay": 0.14,
+      "oto_sustain": 0.8,
+      "oto_release": 0.18,
+      "oto_lfo1Rate": 0.7,
+      "oto_lfo1Depth": 0.07,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.55,
+      "oto_macroB": 0.25,
+      "oto_macroC": 0.0,
+      "oto_macroD": 0.25
+    }
+  },
+  "tempo": null
+}

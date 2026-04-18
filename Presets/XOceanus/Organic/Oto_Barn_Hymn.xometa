@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Barn Hymn",
+  "mood": "Organic",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica played in a hay-filled barn — the natural reverberance of wood and straw, warm filter, slight pressure sag like breath on a cold morning. Humble and sincere.",
+  "tier": "standard",
+  "tags": ["organic", "melodica", "rural", "warm", "sincere"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.12,
+    "SPACE": 0.4
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.33,
+    "warmth": 0.85,
+    "movement": 0.38,
+    "density": 0.28,
+    "space": 0.42,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.2,
+      "oto_chiff": 0.1,
+      "oto_detune": 0.15,
+      "oto_buzz": 0.18,
+      "oto_pressure": 0.48,
+      "oto_crosstalk": 0.08,
+      "oto_filterCutoff": 3200.0,
+      "oto_filterRes": 0.1,
+      "oto_attack": 0.03,
+      "oto_decay": 0.15,
+      "oto_sustain": 0.85,
+      "oto_release": 0.5,
+      "oto_lfo1Rate": 0.75,
+      "oto_lfo1Depth": 0.12,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.5,
+      "oto_macroB": 0.38,
+      "oto_macroC": 0.12,
+      "oto_macroD": 0.4
+    }
+  },
+  "tempo": null
+}

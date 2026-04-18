@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Ice Cathedral",
+  "mood": "Crystalline",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho in a cathedral of ice — extremely bright filter, high cluster, very long release as the harmonic stack echoes off frozen walls. Beautiful and cold in equal measure.",
+  "tier": "standard",
+  "tags": ["crystalline", "sho", "ice", "bright", "cathedral"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.12,
+    "SPACE": 0.75
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.1,
+    "movement": 0.08,
+    "density": 0.82,
+    "space": 0.8,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.82,
+      "oto_chiff": 0.1,
+      "oto_detune": 0.05,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.06,
+      "oto_crosstalk": 0.18,
+      "oto_filterCutoff": 16000.0,
+      "oto_filterRes": 0.12,
+      "oto_attack": 0.1,
+      "oto_decay": 0.8,
+      "oto_sustain": 0.92,
+      "oto_release": 2.5,
+      "oto_lfo1Rate": 0.08,
+      "oto_lfo1Depth": 0.03,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.5,
+      "oto_macroB": 0.1,
+      "oto_macroC": 0.12,
+      "oto_macroD": 0.75
+    }
+  },
+  "tempo": null
+}
