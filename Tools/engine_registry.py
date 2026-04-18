@@ -67,6 +67,48 @@ def get_legacy_aliases() -> dict[str, str]:
     return dict(_data()["_meta"].get("legacy_dir_aliases", {}))
 
 
+def get_color(engine_name: str) -> str:
+    """Return the hex accent color for engine_name (e.g. "#1E8B7E").
+
+    Raises KeyError if engine_name is not a canonical engine, or if the engine
+    has no accent_color set in engines.json.
+    """
+    for e in _data()["synthesis_engines"]:
+        if e["id"] == engine_name:
+            color = e.get("accent_color")
+            if color is None:
+                raise KeyError(
+                    f"Engine {engine_name!r} has no accent_color in engines.json"
+                )
+            return color
+    raise KeyError(f"Unknown engine: {engine_name!r}")
+
+
+def get_category(engine_name: str) -> str:
+    """Return the category/role string for engine_name.
+
+    Falls back to the engine's `role` field if no explicit `category` is set;
+    returns "unknown" if neither is present.
+    """
+    for e in _data()["synthesis_engines"]:
+        if e["id"] == engine_name:
+            return e.get("category") or e.get("role") or "unknown"
+    raise KeyError(f"Unknown engine: {engine_name!r}")
+
+
+def canonical_from_upper(upper_name: str) -> "str | None":
+    """Map ALL-CAPS engine name back to canonical mixed-case form. None if unknown."""
+    for e in _data()["synthesis_engines"]:
+        if e["id"].upper() == upper_name:
+            return e["id"]
+    return None
+
+
+def valid_engines_upper() -> set:
+    """Return the set of all canonical engine names in ALL-CAPS form."""
+    return {e["id"].upper() for e in _data()["synthesis_engines"]}
+
+
 if __name__ == "__main__":
     import sys
     n = get_engine_count()
