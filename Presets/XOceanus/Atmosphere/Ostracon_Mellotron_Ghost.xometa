@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "name": "Mellotron Ghost",
+  "mood": "Atmosphere",
+  "engines": ["Ostracon"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The M400 lives here. Three heads on a 2-second reel capture the exact character of the original — oxide and flutter recreate the inconsistent tape path, flutter rate at 4.2Hz matches the mechanical flutter frequency of the original transport, and the 3800Hz low-pass filter mirrors the bandwidth ceiling of the original 3/8\" tape strips. Wow adds the slight pitch drift that made every Mellotron a unique instrument.",
+  "tags": ["ostracon", "atmosphere", "mellotron", "tape", "vintage", "orchestral", "cinematic", "m400"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.9,
+    "movement": 0.4,
+    "density": 0.5,
+    "space": 0.5,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Ostracon": {
+      "ostr_waveform": 2,
+      "ostr_tune": 0,
+      "ostr_fine": 0.0,
+      "ostr_source_mix": 0.5,
+      "ostr_reel_size": 2.0,
+      "ostr_head_count": 3,
+      "ostr_head_spread": 0.35,
+      "ostr_bias": 0.3,
+      "ostr_record_mode": 0,
+      "ostr_freeze": 0,
+      "ostr_oxide": 0.38,
+      "ostr_flutter": 0.28,
+      "ostr_flutter_rate": 4.2,
+      "ostr_wow": 0.15,
+      "ostr_print": 0.2,
+      "ostr_filter_cutoff": 3800.0,
+      "ostr_filter_reso": 0.18,
+      "ostr_filter_type": 0,
+      "ostr_attack": 0.015,
+      "ostr_decay": 0.6,
+      "ostr_sustain": 0.85,
+      "ostr_release": 1.5,
+      "ostr_lfo_rate": 0.12,
+      "ostr_lfo_shape": 0,
+      "ostr_lfo_depth": 0.12,
+      "ostr_lfo_target": 0,
+      "ostr_speed": 1.0,
+      "ostr_reverse": 0,
+      "ostr_macro1": 0.0,
+      "ostr_macro2": 0.0,
+      "ostr_macro3": 0.0,
+      "ostr_macro4": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  }
+}

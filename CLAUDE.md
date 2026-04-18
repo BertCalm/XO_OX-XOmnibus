@@ -6,7 +6,7 @@
 
 XOceanus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **79 engines implemented (101 in full fleet design)**
+and mutate into sounds impossible with any single synth. **80 engines implemented (101 in full fleet design)**
 — full engine color table + accent colors: `Docs/reference/engine-color-table.md`
 
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
@@ -156,6 +156,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Outlaw | `outl_` | `outl_diodeClip` |
 | Outbreak | `outb_` | `outb_virusFilter` |
 | Orrery | `orry_` | `orry_planetSpeed` |
+| Ostracon | `ostr_` | `ostr_oxide` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.

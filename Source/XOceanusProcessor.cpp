@@ -100,6 +100,8 @@
 #include "Engines/Ogive/OgiveEngine.h"
 // OLVIDO — spectral erosion synthesis (engine #87)
 #include "Engines/Olvido/OlvidoEngine.h"
+// OSTRACON — corpus-buffer synthesis (engine #88)
+#include "Engines/Ostracon/OstraconEngine.h"
 #include "DSP/Effects/MathFXChain.h"
 #include "DSP/Effects/BoutiqueFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
@@ -355,6 +357,11 @@ static bool registered_Ogive =
 static bool registered_Olvido =
     xoceanus::EngineRegistry::instance().registerEngine("Olvido", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OlvidoEngine>(); });
+
+// OSTRACON — corpus-buffer synthesis (engine #88)
+static bool registered_Ostracon =
+    xoceanus::EngineRegistry::instance().registerEngine("Ostracon", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OstraconEngine>(); });
 
 namespace xoceanus
 {

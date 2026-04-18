@@ -110,6 +110,7 @@
 | OUTLAW | XOutlaw | Hendrix Purple `#6A0DAD` |
 | OUTBREAK | XOutbreak | Grunge Olive `#6B6B3E` |
 | ORRERY | XOrrery | Celestial Blue `#4682B4` |
+| OSTR | XOstracon | Shard Terracotta `#C0785A` |
 
 ## The 43 Blessings
 
