@@ -93,22 +93,25 @@
 
 ---
 
-## DEFERRED (not V1 — Ringleader decision)
+## DEFERRED (post-release roadmap — Ringleader decision)
+
+> Note 2026-04-18: "Not V1" framing retired alongside the broader V1 cutoff.
+> These are deferred work — the fleet ships when ready, these aren't blockers.
 
 ### DEFER-001: OBIONT — 0 presets + CPU bomb + dead mod destinations
 - **Score:** 3.5/10
-- **Decision:** Not V1. Post-launch engine.
+- **Decision:** Deferred. Needs CPU rework and preset library before it's ready.
 
 ### DEFER-002: OUTFLOW — Zero presets
 - **Score:** 6.8/10
-- **Decision:** Not V1. Params now wired, needs presets and re-seance.
+- **Decision:** Deferred. Params now wired, needs presets and re-seance.
 
 ### DEFER-003: OBLIQUE — 12 trig/sample phaser + steal click
 - **Score:** 5.8/10
-- **Decision:** Not V1. CPU bomb requires architectural rework.
+- **Decision:** Deferred. CPU bomb requires architectural rework.
 
 ### DEFER-004: OVERWORLD — Score 6.5 (DSP works, score is stale)
-- **Decision:** Re-seance needed. DSP is implemented and functional. If re-seance yields 8.5+, include in V1.
+- **Decision:** Re-seance needed. DSP is implemented and functional. If re-seance yields 8.5+, remove the deferral.
 
 ---
 
@@ -116,7 +119,7 @@
 
 All P0 and P1 findings resolved or verified as false positives.
 6 real fixes across 2 sessions. 6 false positives documented.
-No launch blockers remain in the FATHOM x QDD Level 5 certification scope.
+No critical issues remain in the FATHOM x QDD Level 5 certification scope.
 
 *Ringleader Authority | TIER 0 Triage — CLOSED*
 *2026-04-11*
