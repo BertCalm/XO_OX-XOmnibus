@@ -365,15 +365,15 @@ public:
         // ---- Environmental curve modifier (per-block signal generation) ----
         // envSignalBuffer holds one sample per output sample (Mode 2)
         // or is filled from env follower (Mode 1) or coupling (Mode 0)
-        if (static_cast<int>(envSignalBuffer.size()) < numSamples)
-            envSignalBuffer.assign(static_cast<size_t>(numSamples), 0.0f);
+        // Use separate length for env buffer to avoid truncating the main render loop
+        const int envSamples = std::min(numSamples, static_cast<int>(envSignalBuffer.size()));
 
         if (paramEnvMode == 1)
         {
             // Sidechain follower — we track the left input channel if present
             // (In JUCE plugin context the sidechain bus would be separate;
             // here we run the follower on our own output cache as a self-envelope)
-            for (int i = 0; i < numSamples; ++i)
+            for (int i = 0; i < envSamples; ++i)
             {
                 float inputSig = std::fabs(outputCacheLeft.size() > static_cast<size_t>(i)
                                            ? outputCacheLeft[static_cast<size_t>(i)] : 0.0f);
@@ -386,7 +386,7 @@ public:
         else if (paramEnvMode == 2)
         {
             // Parametric models — generate per-block
-            for (int i = 0; i < numSamples; ++i)
+            for (int i = 0; i < envSamples; ++i)
             {
                 double t = parametricModelPhase;
                 float sig = 0.0f;
@@ -434,7 +434,7 @@ public:
         {
             // Mode 0: coupling — use the coupling curve modifier accumulator
             float coupVal = couplingCurveModAccum;
-            for (int i = 0; i < numSamples; ++i)
+            for (int i = 0; i < envSamples; ++i)
                 envSignalBuffer[static_cast<size_t>(i)] = coupVal;
         }
         couplingCurveModAccum = 0.0f;
@@ -579,7 +579,7 @@ public:
             smoothedSpread     = flushDenormal(smoothedSpread);
 
             // Envelope curve warp: read per-sample from env signal buffer
-            float envCurveWarpAmt = envSignalBuffer[static_cast<size_t>(sampleIdx)]
+            float envCurveWarpAmt = (sampleIdx < envSamples ? envSignalBuffer[static_cast<size_t>(sampleIdx)] : 0.0f)
                                   * effectiveEnvDepth * 0.3f;
 
             float mixLeft = 0.0f, mixRight = 0.0f;

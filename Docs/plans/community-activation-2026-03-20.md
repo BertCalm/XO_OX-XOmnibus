@@ -1,3 +1,11 @@
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> The "V1 launch day" framing has been retired. XOceanus does not operate on a
+> fixed-version release model. Build and refine until ready; ship when ready.
+> Preserved for historical reference only. See `CLAUDE.md` → *Release Philosophy*.
+>
+> ---
+
 # XOceanus V1 — Community Activation Plan
 
 **Author:** Barry OB (Community Lead)

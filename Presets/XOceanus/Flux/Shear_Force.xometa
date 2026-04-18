@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Shear Force",
+  "name": "Shear Force II",
   "mood": "Flux",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Shear force transient at structural failure threshold. Noise spike fusing with velocity coupling output.",
-  "tags": ["flux", "aggressive", "shear", "transient", "force"],
-  "macroLabels": ["PUNCH", "MUTATE", "MACHINE", "SPACE"],
+  "tags": [
+    "flux",
+    "aggressive",
+    "shear",
+    "transient",
+    "force"
+  ],
+  "macroLabels": [
+    "PUNCH",
+    "MUTATE",
+    "MACHINE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -37,7 +50,9 @@
       "perc_releaseTime": 0.07
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.92,

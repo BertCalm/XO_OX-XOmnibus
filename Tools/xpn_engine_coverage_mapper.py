@@ -256,7 +256,7 @@ def render_report(
         sep,
         "  XO_OX ENGINE COVERAGE MAPPER",
         f"  Preset directory : {preset_dir}",
-        f"  Engines tracked  : {len(ALL_ENGINES)} ({len(REGISTERED_ENGINES)} registered + {len(CONCEPT_ENGINES)} V1 concept)",
+        f"  Engines tracked  : {len(ALL_ENGINES)} ({len(REGISTERED_ENGINES)} registered + {len(CONCEPT_ENGINES)} concept)",
         f"  Total presets    : {sum(engine_counts.values())}",
         sep,
         "",
@@ -289,7 +289,7 @@ def render_report(
 
     lines += [
         "-" * 72,
-        "  * = V1 concept engine (no source code yet)",
+        "  * = concept engine (no source code yet)",
         "",
     ]
 
@@ -352,7 +352,7 @@ def render_report(
     ]
     for rank, (engine, score, count, novelty) in enumerate(recommendations, 1):
         tier = tier_map.get(engine, "?")
-        concept_note = " [V1 concept — no DSP yet]" if engine in CONCEPT_ENGINES else ""
+        concept_note = " [concept — no DSP yet]" if engine in CONCEPT_ENGINES else ""
         reason = f"{tier} coverage, novelty={novelty}{concept_note}"
         lines.append(f"  {rank:<5} {engine:<14} {score:>6.3f}  {count:>7}  {novelty:>7}  {reason}")
     lines.append("")

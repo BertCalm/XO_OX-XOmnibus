@@ -29,7 +29,7 @@ re-titled when a version is cut.
 - Navigation links for 19 previously orphaned site pages (#323)
 - Alignment Rite page reference restored in documentation (#405)
 - HTTPS enforcement before API key transmission in SoundAssistant (#431)
-- `v1-engines.json` — machine-readable V1 engine roster for CI/build automation
+- `engines.json` roster file — machine-readable engine manifest for CI/build automation
 - `.github/ISSUE_TEMPLATE/engine_fix.md` — structured template for doctrine violations and seance score regressions
 
 ### Changed
@@ -49,7 +49,7 @@ re-titled when a version is cut.
 ## [0.9.0] — 2026-03-29 — FATHOM QDD Level 5 Fleet Certification
 
 ### Added
-- FATHOM QDD Level 5 fleet audit complete: 76 engines + DSP lib + core, 20 agents, 47 CRITs resolved
+- FATHOM QDD Level 5 fleet audit complete: full fleet + DSP lib + core, 20 agents, 47 CRITs resolved
 - Fleet average score: 8.1/10 post-audit
 - Ship-ready engines (≥9.0): ONSET, OWARE, OPALINE, OPTIC, ORGANON, OXYTOCIN, OSTERIA, OUROBOROS, OSTINATO, OXBOW, OBSCURA
 - TIDEsigns UI/UX audit: 450 findings, score 5.4→7.2; 4 LOCKED design decisions documented

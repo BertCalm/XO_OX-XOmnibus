@@ -1,6 +1,6 @@
 # Pi 5 + Elk Audio OS — Hardware Independence R&D
 
-> Status: RESEARCH | Priority: Long-term (post-V1)
+> Status: RESEARCH | Priority: Long-term
 > Owner: Hex | Effort: XL (ongoing investigation)
 
 ## Concept
@@ -40,6 +40,6 @@ bypassing the locked MPC firmware entirely.
 
 ## Not a Priority Until
 
-- V1 ships and adoption is validated
+- Core ships and adoption is validated
 - MPC firmware remains closed (if Akai opens VST3 standalone, this becomes less urgent)
 - Patreon/funding reaches "Growth" tier ($5K/month) to justify hardware R&D time

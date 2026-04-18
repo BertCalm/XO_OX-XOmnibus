@@ -1,6 +1,19 @@
-# Engine Expansion Toolkit — Post-V1 Strategy
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE STRATEGY DOC (2026-04-16)**
+>
+> This strategy document was structured around a "post-V1" release model.
+> XOceanus has retired V1 gating entirely — the fleet grows as engines are
+> built, without a launch-and-expand partitioning. Content here may still be
+> directionally useful for thinking about the SDK / third-party engine
+> program, but the timeline, "Post-V1" gating, and "34 engines" baseline are
+> all stale. See `CLAUDE.md` → *Release Philosophy*.
 
-> How XOceanus grows from 34 engines to an open ecosystem,
+---
+
+# Engine Expansion Toolkit — Growth Strategy (HISTORICAL)
+
+*Retired 2026-04-16.*
+
+> How XOceanus grows into an open ecosystem,
 > and how we give people an ocean of toy bricks to learn synthesis by building.
 
 ---

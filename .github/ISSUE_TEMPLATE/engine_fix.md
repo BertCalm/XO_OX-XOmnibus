@@ -43,7 +43,7 @@ assignees: ''
 <!-- Optional but encouraged — preferred approach, gotchas to watch for -->
 
 ## Impact
-<!-- Does this block V1 inclusion? Does it affect any coupling routes? Any preset families broken? -->
+<!-- Does this affect any coupling routes? Any preset families broken? How urgent is the fix? -->
 
 ## DAW / Environment
 - **OS**: <!-- e.g., macOS 15.1 -->

@@ -301,7 +301,7 @@ ENGINE_DEFS = {
         "style":    "particle_scatter",
         "label":    "OCTOPUS",
     },
-    # V1 concept engines
+    # Concept engines
     "OSTINATO": {
         "accent":   (232, 112,  26),     # Firelight Orange
         "bg_base":  (16,   6,   0),

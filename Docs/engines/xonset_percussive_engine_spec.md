@@ -217,7 +217,7 @@ Direct 808 hi-hat/cymbal topology:
 - `decay` = closed hat (~50ms) to open hat (~600ms) to cymbal (~1200ms)
 - `character` = oscillator waveshape (square → pulse → noise-modulated)
 
-#### 4.1.4 Self-Oscillating Filter Kick (Alternative for V1)
+#### 4.1.4 Self-Oscillating Filter Kick (Alternative for Voice 1)
 
 ```
 SVF set to resonance ~0.99 (just below self-oscillation)

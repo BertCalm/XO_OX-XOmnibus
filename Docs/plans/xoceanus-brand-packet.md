@@ -172,7 +172,7 @@ This is the one. It works on every level:
 | Product page hero | *"Every depth. Every creature. Every coupling."* |
 | Preset browser | *"Sound that only exists in the deep."* |
 | Coupling callout | *"One engine's breath becomes another's heartbeat."* |
-| V1 launch | **"The deep opens."** |
+| Launch | **"The deep opens."** |
 | Patreon | *"Join the expedition."* |
 | Field Guide | *"Dispatches from the deep."* |
 | Signal/news | *"Sonar — signals from the deep."* |
@@ -192,20 +192,20 @@ This is the one. It works on every level:
 
 ---
 
-## V. V1 Launch Architecture
+## V. Launch Architecture
 
 ### The Fleet Composition
 
-**V1.0 — "The Deep Opens"**
+**"The Deep Opens"**
 
 | Category | Count | Description |
 |----------|-------|-------------|
 | **Flagship** | 1 | OBRIX — the modular reef. 419 presets. The centerpiece. |
 | **FX Engines** | 6-8 | The currents that shape the deep. |
 | **Curated Engines** | 20-25 | The crown jewels. Seance 8.5+, 150+ presets, fully differentiated. |
-| **Total V1** | ~28-34 | A curated deep-sea expedition, not a trawl net. |
+| **Total** | ~28-34 | A curated deep-sea expedition, not a trawl net. |
 
-### Recommended V1 Curated Engines
+### Recommended Curated Engines
 
 **The Abyssal Lords (9.0+)**
 1. OXYTOCIN (9.5) — Love as circuit modeling. Fleet leader.
@@ -360,7 +360,7 @@ Rebrand the blog as expedition dispatches:
 
 **Launch Day: "The Deep Opens"**
 - Product page live at `/xoceanus`
-- V1 download available
+- Download available
 - First MPCe pack drops simultaneously (mpce-perc-001)
 - Aquarium goes live (Phase 0)
 - Expedition page goes live with milestone tracker
@@ -425,7 +425,7 @@ XOceanus is the flagship product. XO_OX is the studio.
 ### This Week
 - [x] Brand rename commits (other terminal — in progress)
 - [x] Brand packet written (this document)
-- [ ] Define exact V1 engine list (25 curated + OBRIX + 6-8 FX)
+- [ ] Define exact launch engine list (25 curated + OBRIX + 6-8 FX)
 - [ ] Render mpce-perc-001 (pipeline ready, needs BlackHole + XOceanus open)
 - [ ] Update Patreon with XOceanus name + Expedition framing
 

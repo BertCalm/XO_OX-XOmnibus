@@ -286,7 +286,7 @@ XOxide's processing chain can be approximated in rendered XPN samples for produc
 - feliX velocity response (bright, attack-forward at high velocities): at feliX X positions, the Vibe curve creates more transient attack boost at high velocities — already musically correct since loud hits should feel more percussive and sharp.
 - Oscar velocity response (warm, sustained at low velocities): at Oscar X positions, the curve creates more sustained/warm character at low velocities — correct since quiet, intimate playing benefits from warmth.
 
-This suggests a potential `oxide_velocitySensitivity` parameter (future V1.1 addition): a single knob that scales how much velocity modulates `oxide_y`. At 0.0: velocity has no character effect. At 1.0: velocity fully determines depth (Y) regardless of the `oxide_y` static setting. This would make XOxide the first character processor where your playing dynamics change not just volume but timbre character holistically.
+This suggests a potential `oxide_velocitySensitivity` parameter (future addition): a single knob that scales how much velocity modulates `oxide_y`. At 0.0: velocity has no character effect. At 1.0: velocity fully determines depth (Y) regardless of the `oxide_y` static setting. This would make XOxide the first character processor where your playing dynamics change not just volume but timbre character holistically.
 
 ---
 

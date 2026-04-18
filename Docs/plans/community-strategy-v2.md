@@ -57,7 +57,7 @@ Lead with the sounds. Let the mythology be discovered.
 
 v1 described seven rings expanding simultaneously. The Wedge Model replaces that with three phases, each gated on the previous phase being genuinely alive, not just initiated.
 
-### Phase 0 — Signal Seeding (4-8 weeks before V1 launch)
+### Phase 0 — Signal Seeding (4-8 weeks before public release)
 
 This phase is preparation, not community building. Nothing launches publicly here. Everything here prevents a cold-launch disaster.
 

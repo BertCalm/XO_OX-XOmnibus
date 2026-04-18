@@ -90,10 +90,10 @@ Generate a comprehensive prioritized roadmap across all project domains.
 
 **Process:**
 1. Audit the current state: `git log --oneline -20`, open issues, recent session work
-2. Read `CLAUDE.md` for fleet status, V1 scope, and current priorities
+2. Read `CLAUDE.md` for fleet status, release philosophy, and current priorities
 3. Scan `Docs/plans/` for existing roadmaps and what's been completed
 4. Categorize work across domains: Code Quality, Presets, Docs, UI, Web, Tools, Community, Architecture
-5. Assign priorities (P0 = launch blocker, P1 = important, P2 = nice to have, P3 = future)
+5. Assign priorities (P0 = must fix now, P1 = important, P2 = nice to have, P3 = future). Do **not** frame priorities as "launch blockers" or "V1 blockers" — XOceanus has no release cutoff.
 6. Assign model recommendations (Haiku for mechanical, Sonnet for moderate, Opus for novel/critical)
 7. Sequence P0s into an execution order
 
@@ -252,8 +252,9 @@ Fleet-wide governance check: current state, health, and what needs Ringleader at
 1. Read `CLAUDE.md` for fleet stats (engine count, seance scores, doctrine status)
 2. Read `Docs/fleet-audit/` for most recent certification
 3. Check `Docs/reference/engine-color-table.md` for blessings and debates
-4. Check V1 scope doc for ship-readiness
-5. Identify what needs Ringleader-level decisions
+4. Identify what needs Ringleader-level decisions
+
+Do not ask about or report on "V1 readiness" or "ship-readiness" — the project has no release cutoff. Report on fleet health, not launch milestones.
 
 **Output:**
 

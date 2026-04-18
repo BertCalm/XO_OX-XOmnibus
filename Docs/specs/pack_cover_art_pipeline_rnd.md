@@ -160,4 +160,4 @@ The XO_OX aquatic brand establishes a water column atlas: 9 depth zones from the
 - Brand consistency: photographic results vary. A human review pass over all 34 engine backgrounds before committing to the batch pipeline is required.
 - Licensing: DALL-E 3 outputs are commercially usable under OpenAI's terms. Stable Diffusion local models require model-specific license review.
 
-This path is worth pursuing in V2 after the V1 procedural pipeline is shipping and stable.
+This path is worth pursuing later after the procedural pipeline is shipping and stable.

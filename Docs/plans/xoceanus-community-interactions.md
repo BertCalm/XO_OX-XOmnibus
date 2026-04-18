@@ -320,7 +320,7 @@ These aren't presets — they're *techniques*. The community documents what they
 
 ## VII. Implementation Priority
 
-### Phase 1 — Launch with V1
+### Phase 1 — Ship at Launch
 - [ ] Community Preset Gallery (upload, browse, download — no account wall)
 - [ ] Depth Rating system (1-5 depth votes)
 - [ ] Message in a Bottle (daily rotating preset on homepage)

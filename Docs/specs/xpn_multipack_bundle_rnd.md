@@ -9,7 +9,7 @@
 
 ## Overview
 
-XO_OX ships instruments with doctrine — aquatic mythology, sonic DNA, emotional polarity. Packs sold individually tell a story. Packs sold together tell an ecosystem. This document designs the technical, pricing, and marketing architecture for multi-pack bundles across the three V1 collections: Kitchen Essentials, Travel/Water/Vessels, and Artwork/Color.
+XO_OX ships instruments with doctrine — aquatic mythology, sonic DNA, emotional polarity. Packs sold individually tell a story. Packs sold together tell an ecosystem. This document designs the technical, pricing, and marketing architecture for multi-pack bundles across the three initial collections: Kitchen Essentials, Travel/Water/Vessels, and Artwork/Color.
 
 The goal is not to discount product. The goal is to make the full collection feel inevitable — and to reward the producer who already believes in the system.
 
@@ -17,7 +17,7 @@ The goal is not to discount product. The goal is to make the full collection fee
 
 ## 1. Bundle Concepts Already Designed
 
-Three collections enter V1 with complete engine inventories. Each is a natural bundle candidate because each is built around a governing metaphor that makes more sense as a set than as individual items.
+Three collections enter the catalog with complete engine inventories. Each is a natural bundle candidate because each is built around a governing metaphor that makes more sense as a set than as individual items.
 
 ### Kitchen Essentials
 - **24 engines**, 6 quads × 4 engines per quad
@@ -192,7 +192,7 @@ The model rewards commitment without requiring it upfront:
 2. Customer purchases Pack 2 with that code → new receipt includes `COLLECTION-STEP3` code (30% off, 60-day expiry)
 3. After Pack 3, the discount path ends — instead, include a message: "You've collected 3 of 6 Kitchen Essentials packs. Upgrade to the Full Kitchen Collection and we'll apply what you've already paid."
 
-The upgrade credit logic requires manual fulfillment in V1 (customer emails xo-ox.org with receipts). Automate in Year 2 via Gumroad API if volume justifies it.
+The upgrade credit logic requires manual fulfillment initially (customer emails xo-ox.org with receipts). Automate in Year 2 via Gumroad API if volume justifies it.
 
 ### Psychology
 
@@ -229,13 +229,13 @@ Reasons:
 
 ## 7. Cross-Collection Bundles
 
-### The XO_OX Complete V1 Library
+### The XO_OX Complete Library
 
 Once all three collections are complete, the cross-collection bundle is the capstone product.
 
 **Scope**: Kitchen Essentials (24) + Travel/Water/Vessels (20) + Artwork/Color (24) = 68 engines, ~1,700 presets
 
-**Name**: "The XO_OX V1 Complete Library" or "The Full Aquarium"
+**Name**: "The XO_OX Complete Library" or "The Full Aquarium"
 
 **Launch price**: $149–179 (limited-time, 60–90 day window from collection completion)
 **Catalog price**: $199–229 (permanent, after launch window closes)
@@ -253,7 +253,7 @@ The launch window creates a genuine event. The catalog price means it remains as
 
 Customers who already own individual packs or sub-collections should be able to upgrade.
 
-V1 approach: email xo-ox.org with receipts → manual credit toward V1 Complete Library. This requires trust and goodwill, which XO_OX has. Automate in Year 2.
+Initial approach: email xo-ox.org with receipts → manual credit toward the Complete Library. This requires trust and goodwill, which XO_OX has. Automate in Year 2.
 
 A simpler alternative: offer a flat loyalty code (`ALREADY-IN`) that gives 15% off the Complete Library to anyone on the XO_OX mailing list, no proof required. The goodwill signal is worth the margin.
 

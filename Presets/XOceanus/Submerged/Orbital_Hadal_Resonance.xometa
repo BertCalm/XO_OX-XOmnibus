@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Hadal Resonance",
+  "name": "Hadal Resonance II",
   "mood": "Submerged",
   "engines": [
     "Orbital"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Resonant body at hadal depth — filter resonance trapped under immense pressure, slow group flutter.",
+  "description": "Resonant body at hadal depth \u2014 filter resonance trapped under immense pressure, slow group flutter.",
   "tags": [
     "hadal",
     "resonance",

@@ -1,6 +1,16 @@
-# Chapter 9: The Future of XO_OX — What's Coming
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE REFERENCE (2026-04-16)**
+>
+> This ebook chapter was written under the V1/V2 release-gating framing that
+> XOceanus has since retired. Many of the specific "V2 features" called out
+> below are still part of the project's future work, but the V1-vs-V2
+> partitioning should not be read as active direction. Preserved for
+> historical reference. See `CLAUDE.md` → *Release Philosophy*.
 
-*Written by Kai, Sound Design Lead, XO_OX Designs*
+---
+
+# Chapter 9: The Future of XO_OX — What's Coming (HISTORICAL)
+
+*Written by Kai, Sound Design Lead, XO_OX Designs — retired 2026-04-16*
 
 ---
 
