@@ -19,10 +19,10 @@
     "entangled"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
   ],
   "couplingIntensity": "Moderate",
   "tempo": null,
@@ -49,16 +49,15 @@
       "osti_lfo1Depth": 0.22
     },
     "OpenSky": {
-      "sky_macroRise": 0.72,
+      "sky_macroRise": 0.473,
       "sky_shimmerMix": 0.65,
       "sky_chorusMix": 0.5,
       "sky_filterCutoff": 0.68,
       "sky_reverbSize": 0.65,
       "sky_outputLevel": 0.78,
-      "sky_macroCharacter": 0.473,
-      "sky_macroMovement": 0.442,
-      "sky_macroCoupling": 0.558,
-      "sky_macroSpace": 0.42,
+      "sky_macroWidth": 0.442,
+      "sky_macroGlow": 0.558,
+      "sky_macroAir": 0.42,
       "sky_filterEnvAmt": 0.586,
       "sky_lfo1Rate": 0.102,
       "sky_lfo1Depth": 0.22,
@@ -83,9 +82,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.464,
-    "MOVEMENT": 0.433,
-    "COUPLING": 0.549,
-    "SPACE": 0.411
+    "RISE": 0.464,
+    "WIDTH": 0.433,
+    "GLOW": 0.549,
+    "AIR": 0.411
   }
 }

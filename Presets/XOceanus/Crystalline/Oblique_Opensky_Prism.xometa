@@ -17,10 +17,10 @@
     "prism"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
   ],
   "couplingIntensity": "Subtle",
   "tempo": null,
@@ -43,10 +43,10 @@
       "oblq_lfo1Depth": 0.11
     },
     "OpenSky": {
-      "sky_macroCharacter": 0.59,
-      "sky_macroMovement": 0.31,
-      "sky_macroCoupling": 0.13,
-      "sky_macroSpace": 0.55,
+      "sky_macroRise": 0.59,
+      "sky_macroWidth": 0.31,
+      "sky_macroGlow": 0.13,
+      "sky_macroAir": 0.55,
       "sky_filterEnvAmt": 0.47,
       "sky_lfo1Rate": 0.09,
       "sky_lfo1Depth": 0.11,
@@ -65,9 +65,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.59,
-    "MOVEMENT": 0.31,
-    "COUPLING": 0.13,
-    "SPACE": 0.55
+    "RISE": 0.59,
+    "WIDTH": 0.31,
+    "GLOW": 0.13,
+    "AIR": 0.55
   }
 }

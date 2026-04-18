@@ -16,10 +16,10 @@
     "contrail"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
   ],
   "couplingIntensity": "None",
   "tempo": null,
@@ -33,11 +33,10 @@
   },
   "parameters": {
     "OpenSky": {
-      "sky_macroCharacter": 0.28,
-      "sky_macroMovement": 0.27,
-      "sky_macroCoupling": 0.06,
-      "sky_macroSpace": 0.93,
       "sky_macroRise": 0.45,
+      "sky_macroWidth": 0.27,
+      "sky_macroGlow": 0.06,
+      "sky_macroAir": 0.93,
       "sky_filterEnvAmt": 0.25,
       "sky_lfo1Rate": 0.02,
       "sky_lfo1Depth": 0.12,
@@ -51,9 +50,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.28,
-    "MOVEMENT": 0.27,
-    "COUPLING": 0.06,
-    "SPACE": 0.93
+    "RISE": 0.28,
+    "WIDTH": 0.27,
+    "GLOW": 0.06,
+    "AIR": 0.93
   }
 }

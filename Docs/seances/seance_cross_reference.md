@@ -98,6 +98,17 @@
 
 ---
 
+### Engines 78–81 — RAC Session 2026-04-12
+
+| Engine | Gallery Code | Score | Key Blessing | P0 Bugs | D-Violations | Key Ghost Quote |
+|--------|-------------|-------|--------------|---------|--------------|-----------------|
+| XObservandum | OBSERVANDUM | **8.1/10** (first seance 2026-04-12) | None — architecture strong, preset library insufficient | None | D004 CONDITIONAL: MOVEMENT macro → envDepth only; dead in Coupling mode with no signal. PhaseDeflection CouplingType pending. | "Eight transfer function curves morphed in real-time by an environmental signal bus — West Coast thinking in digital form." — Buchla |
+| XOpsin | OPSIN | **8.4/10** (first seance 2026-04-12) | B045 "The Rewiring Instrument" — only fleet engine whose synthesis structure is physically different after performance than at the start (Hebbian synapse rewiring) | None | D001 PARTIAL: velocity scales filter env only, not PCO network energy. Fix: add `velocity * 0.2f` to excitation. | "This is the architecture I was reaching for. The engine teaches itself." — Buchla |
+| XOort | OORT | **8.5/10** V1-READY (≥50 presets before ship) (first seance 2026-04-12) | B046 "The Composer Axis" — INTENT (0=Cage, 1=Xenakis) is the only synthesis parameter that names its philosophical positions after composers | None | None (all D001–D006 PASS; D001 exemplary: `velScatter = scatter*(1-velTimbre*velocity)`) | "The INTENT axis — Cage at zero, Xenakis at one — is exactly the question I was always trying to pose." — Buchla |
+| XOrrery | ORRERY | **8.2/10** (first seance 2026-04-12) | B047 "The Captured Orbit" — Custom Ephemeris records performer X/Y trajectory at 30Hz → cubic Catmull-Rom playback as a repeating autobiographical orbit; first fleet engine to capture performance gesture as a synthesis trajectory | None | None (all D001–D006 PASS; gravity wells respond to coupling energy) | "An elliptical orbit at 0.125 Hz, 3.5-second amp release — that is Irrlicht in synthesis form." — Schulze |
+
+---
+
 ### Kitchen Collection — Chef Quad (Organs)
 
 *Seanced 2026-03-21 | Sources: `Docs/seance-oto-verdict.md`, `Docs/seance-octave-verdict.md`, `Docs/seance-oleg-verdict.md`, `Docs/seance-otis-verdict.md`*
@@ -176,7 +187,7 @@
 
 ---
 
-## Seance Score Ranking (Updated 2026-04-15 — 81 Engines; 80 Seanced)
+## Seance Score Ranking (Updated 2026-04-15 — 88 Engines; 80 Seanced)
 
 ### Tier 1 — Excellent (9.0+)
 
@@ -223,10 +234,12 @@
 | 24 | OCELOT | ~8.5 est. (post-fix) | Biome crossfade live, all macros wired. |
 | 24 | ODDOSCAR | ~8.5 est. (post-fix) | LFO1 + aftertouch→resonance wired. |
 | 24 | ODDFELIX | ~8.5 est. (post-fix) | LFO rates exposed, aftertouch-rate wired. |
-| 30 | ORBWEAVE | 8.4/10 | B021 + B022. Knot topology. |
-| 30 | OVERLAP | 8.4/10 (re-seance) | KnotMatrix FDN. |
-| 30 | OAKEN | 8.4/10 | Sympathetic resonance network with material aging. |
-| 30 | ORPHICA | **8.4/10** (formal re-seance 2026-04-12) | D002 FAIL (no LFO2, no mod matrix). Preset schema split (macro dict + stale params). Under Consideration — D002 fix + schema migration required for V1. |
+| 24 | OORT | 8.5/10 V1-READY | B046. GENDY + 4 distributions + Markov chain. INTENT axis. ≥50 presets before ship. |
+| 31 | OPSIN | 8.4/10 | B045. PCO + Hebbian learning. 100 presets needed. D001 velocity→excitation fix pending. |
+| 31 | ORBWEAVE | 8.4/10 | B021 + B022. Knot topology. |
+| 31 | OVERLAP | 8.4/10 (re-seance) | KnotMatrix FDN. |
+| 31 | OAKEN | 8.4/10 | Sympathetic resonance network with material aging. |
+| 31 | ORPHICA | **8.4/10** (formal re-seance 2026-04-12) | D002 FAIL (no LFO2, no mod matrix). Preset schema split (macro dict + stale params). Under Consideration — D002 fix + schema migration required for V1. |
 
 ### Tier 4 — Acceptable (8.0–8.3)
 
@@ -240,10 +253,12 @@
 | 38 | ORCHARD | 8.2/10 | Bow pressure physics. |
 | 38 | OCHRE | 8.2/10 | Caramel saturation. LFO2 dead (P0). |
 | 38 | OBSIDIAN | 8.2 est. (post-sweep) | Both P0s fixed. Formant LFO breathing added. |
-| 41 | OPAL | Concept reviewed | Coupling crown jewel. opal_smear fixed. |
-| 41 | OPENSKY | 8.1/10 | B023 + B024. Shepard shimmer. |
-| 41 | OLATE | 8.1/10 | FermentationIntegrator. Terroir partial D004. |
-| 41 | ORCA | 8.1/10 (initial) | See post-fix 8.6 above. |
+| 38 | ORRERY | 8.2/10 | B047. 4-source vector synthesis + orbital paths + Custom Ephemeris. 50 presets needed. |
+| 42 | OPAL | Concept reviewed | Coupling crown jewel. opal_smear fixed. |
+| 42 | OPENSKY | 8.1/10 | B023 + B024. Shepard shimmer. |
+| 42 | OLATE | 8.1/10 | FermentationIntegrator. Terroir partial D004. |
+| 42 | ORCA | 8.1/10 (initial) | See post-fix 8.6 above. |
+| 42 | OBSERVANDUM | 8.1/10 | Phase Distortion, 8 transfer-function curves. 100 presets needed. MOVEMENT macro fix pending. |
 | 45 | OVERFLOW | 8.0/10 | Pressure cooker synthesis. |
 | 45 | OTO | 8.0/10 | East Asian reed organ. Breath instability. 3 bugs → 8.6 post-retreat. |
 | 45 | OCTAVE | 8.0/10 | Americana organs. Leslie Doppler gap. |

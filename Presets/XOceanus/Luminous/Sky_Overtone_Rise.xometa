@@ -2,29 +2,42 @@
   "schema_version": 1,
   "name": "Sky Overtone Rise",
   "mood": "Luminous",
-  "engines": ["OpenSky", "Overtone"],
+  "engines": [
+    "OpenSky",
+    "Overtone"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "OpenSky's euphoric shimmer feeds into Overtone's continued-fraction harmonics, each rising note becoming a tower of spectral ice and aurora light.",
-  "tags": ["luminous", "coupled", "shimmer", "spectral", "rise"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "luminous",
+    "coupled",
+    "shimmer",
+    "spectral",
+    "rise"
+  ],
+  "macroLabels": [
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
+  ],
   "couplingIntensity": "Light",
   "tempo": null,
   "dna": {
-    "brightness": 0.90,
+    "brightness": 0.9,
     "warmth": 0.45,
     "movement": 0.48,
     "density": 0.42,
-    "space": 0.70,
+    "space": 0.7,
     "aggression": 0.05
   },
   "parameters": {
     "OpenSky": {
-      "sky_macroCharacter": 0.58,
-      "sky_macroMovement": 0.48,
-      "sky_macroCoupling": 0.28,
-      "sky_macroSpace": 0.68,
       "sky_macroRise": 0.62,
+      "sky_macroWidth": 0.48,
+      "sky_macroGlow": 0.28,
+      "sky_macroAir": 0.68,
       "sky_filterEnvAmt": 0.55,
       "sky_lfo1Rate": 0.07,
       "sky_lfo1Depth": 0.24,
@@ -32,7 +45,7 @@
       "sky_lfo2Depth": 0.18,
       "sky_attack": 0.25,
       "sky_decay": 1.2,
-      "sky_sustain": 0.80,
+      "sky_sustain": 0.8,
       "sky_release": 4.0,
       "sky_filterCutoff": 8500,
       "sky_shimmerDepth": 0.65,
@@ -41,18 +54,18 @@
       "sky_output": 0
     },
     "Overtone": {
-      "over_macroDepth": 0.50,
+      "over_macroDepth": 0.5,
       "over_macroColor": 0.58,
       "over_macroCoupling": 0.28,
       "over_macroSpace": 0.68,
-      "over_filterEnvAmt": 0.50,
+      "over_filterEnvAmt": 0.5,
       "over_constant": 2,
       "over_depth": 2.5,
       "over_partial0": 1.0,
       "over_partial1": 0.65,
       "over_partial2": 0.45,
-      "over_partial3": 0.30,
-      "over_partial4": 0.20,
+      "over_partial3": 0.3,
+      "over_partial4": 0.2,
       "over_partial5": 0.14,
       "over_partial6": 0.09,
       "over_partial7": 0.06,
@@ -60,7 +73,7 @@
       "over_lfo1Rate": 0.05,
       "over_lfo1Depth": 0.16,
       "over_lfo2Rate": 0.12,
-      "over_lfo2Depth": 0.10,
+      "over_lfo2Depth": 0.1,
       "over_cfDepth": 0.38
     }
   },
@@ -76,9 +89,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.58,
-    "MOVEMENT": 0.48,
-    "COUPLING": 0.28,
-    "SPACE": 0.68
+    "RISE": 0.58,
+    "WIDTH": 0.48,
+    "GLOW": 0.28,
+    "AIR": 0.68
   }
 }

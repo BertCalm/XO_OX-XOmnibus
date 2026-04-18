@@ -19,10 +19,10 @@
     "horizon"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
   ],
   "couplingIntensity": "Whisper",
   "tempo": null,
@@ -36,11 +36,10 @@
   },
   "parameters": {
     "OpenSky": {
-      "sky_macroCharacter": 0.48,
-      "sky_macroMovement": 0.42,
-      "sky_macroCoupling": 0.15,
-      "sky_macroSpace": 0.82,
       "sky_macroRise": 0.35,
+      "sky_macroWidth": 0.42,
+      "sky_macroGlow": 0.15,
+      "sky_macroAir": 0.82,
       "sky_filterEnvAmt": 0.38,
       "sky_lfo1Rate": 0.07,
       "sky_lfo1Depth": 0.22,
@@ -74,9 +73,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.43,
-    "MOVEMENT": 0.38,
-    "COUPLING": 0.13,
-    "SPACE": 0.84
+    "RISE": 0.43,
+    "WIDTH": 0.38,
+    "GLOW": 0.13,
+    "AIR": 0.84
   }
 }
