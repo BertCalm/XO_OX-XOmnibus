@@ -2,6 +2,7 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 #include "../../Core/SynthEngine.h"
+#include "../../Core/SharedTransport.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/StandardLFO.h"
@@ -547,6 +548,14 @@ public:
     int           getActiveVoiceCount() const override { return activeVoices.load(std::memory_order_relaxed); }
 
     //==========================================================================
+    // Transport
+    //==========================================================================
+
+    // Called by the processor to give Orrery access to SharedTransport.
+    // Must be called before the first renderBlock().
+    void setSharedTransport(const SharedTransport* transport) noexcept { sharedTransport = transport; }
+
+    //==========================================================================
     // renderBlock
     //==========================================================================
 
@@ -594,7 +603,14 @@ public:
         float orbitSpeed       = pOrbitSpeed ? pOrbitSpeed->load() : 0.25f;
         const int   orbitSync  = pOrbitSync  ? static_cast<int>(pOrbitSync->load())  : 0;
         if (orbitSync >= 1)
-            orbitSpeed *= (120.0f / 60.0f); // TempoSync: treat speed as beat division multiplier at 120 BPM
+        {
+            // TempoSync: treat speed as beat division multiplier at host BPM.
+            // Read BPM from SharedTransport if available, fall back to 120 BPM.
+            const float bpm = (sharedTransport != nullptr)
+                ? static_cast<float>(std::max(sharedTransport->getBPM(), 1.0))
+                : 120.0f;
+            orbitSpeed *= (bpm / 60.0f);
+        }
         orbitSpeed = std::max(0.01f, orbitSpeed) * macroOrbitMult;
         const float orbitDepth = clamp((pOrbitDepth ? pOrbitDepth->load() : 0.5f) * macroOrbitMult, 0.0f, 0.5f);
         const float orbitPhaseOffset = pOrbitPhaseParam ? (pOrbitPhaseParam->load() / 360.0f) : 0.0f;
@@ -1517,6 +1533,9 @@ private:
     int   ephWritePos = 0;
     int   ephSize     = 0;
     float ephRecordTimer = 0.0f;
+
+    // SharedTransport — host BPM for TempoSync orbit speed
+    const SharedTransport* sharedTransport = nullptr;
 };
 
 } // namespace xoceanus
