@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Reed Section",
+  "mood": "Foundation",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Full reed chorus on a French Romantic organ — trumpets, oboes, and clarinets stacked into a wall of warm harmonic brilliance. Ceremonial and uncompromising.",
+  "tier": "standard",
+  "tags": ["foundation", "cavaille-coll", "reeds", "chorus", "romantic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.15,
+    "SPACE": 0.8
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.7,
+    "movement": 0.18,
+    "density": 0.88,
+    "space": 0.82,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.85,
+      "oct_chiff": 0.15,
+      "oct_detune": 0.06,
+      "oct_buzz": 0.25,
+      "oct_pressure": 0.25,
+      "oct_crosstalk": 0.3,
+      "oct_brightness": 0.65,
+      "oct_registration": 0.88,
+      "oct_roomDepth": 0.82,
+      "oct_attack": 0.05,
+      "oct_decay": 0.4,
+      "oct_sustain": 1.0,
+      "oct_release": 1.5,
+      "oct_filterEnvAmount": 0.12,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.85,
+      "oct_macroMovement": 0.2,
+      "oct_macroCoupling": 0.15,
+      "oct_macroSpace": 0.8,
+      "oct_lfo1Rate": 0.1,
+      "oct_lfo1Depth": 0.07,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.6,
+      "oct_lfo2Depth": 0.05,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.08
+    }
+  },
+  "tempo": null
+}

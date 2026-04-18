@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Sheng Morning Reed",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Sheng wakes up bright and deliberate — crisp attack, melodic clarity, each note arriving with intention. A workhorse registration that sits perfectly in any ensemble mix without crowding.",
+  "tier": "standard",
+  "tags": ["foundation", "sheng", "melodic", "bright", "chinese"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.35,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.4,
+      "oto_chiff": 0.25,
+      "oto_detune": 0.08,
+      "oto_buzz": 0.05,
+      "oto_pressure": 0.1,
+      "oto_crosstalk": 0.08,
+      "oto_filterCutoff": 9500.0,
+      "oto_filterRes": 0.12,
+      "oto_attack": 0.015,
+      "oto_decay": 0.15,
+      "oto_sustain": 0.88,
+      "oto_release": 0.25,
+      "oto_lfo1Rate": 0.4,
+      "oto_lfo1Depth": 0.06,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.5,
+      "oto_macroB": 0.2,
+      "oto_macroC": 0.0,
+      "oto_macroD": 0.35
+    }
+  },
+  "tempo": null
+}

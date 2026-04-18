@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Dark Crossing",
+  "mood": "Deep",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng at the threshold where it stops being bright — filter pulled far below its natural range, slow attack crossing into unknown territory. Still recognizably Sheng, but transformed.",
+  "tier": "standard",
+  "tags": ["deep", "sheng", "dark", "threshold", "slow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.12,
+    "SPACE": 0.62
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.45,
+    "movement": 0.16,
+    "density": 0.62,
+    "space": 0.68,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.62,
+      "oto_chiff": 0.12,
+      "oto_detune": 0.1,
+      "oto_buzz": 0.04,
+      "oto_pressure": 0.18,
+      "oto_crosstalk": 0.28,
+      "oto_filterCutoff": 1100.0,
+      "oto_filterRes": 0.22,
+      "oto_attack": 0.9,
+      "oto_decay": 2.0,
+      "oto_sustain": 0.9,
+      "oto_release": 2.2,
+      "oto_lfo1Rate": 0.07,
+      "oto_lfo1Depth": 0.06,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.48,
+      "oto_macroB": 0.18,
+      "oto_macroC": 0.12,
+      "oto_macroD": 0.62
+    }
+  },
+  "tempo": null
+}

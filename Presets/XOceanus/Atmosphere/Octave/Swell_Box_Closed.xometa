@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Swell Box Closed",
+  "mood": "Atmosphere",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The swell shutters are nearly closed — the Grand Chœur muffled behind heavy wooden louvres. All that escapes is warmth, pressure, and a faint sense of immense latent force.",
+  "tier": "standard",
+  "tags": ["atmosphere", "cavaille-coll", "romantic", "swell", "muffled"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.06,
+    "SPACE": 0.82
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.92,
+    "movement": 0.07,
+    "density": 0.78,
+    "space": 0.82,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 0,
+      "oct_cluster": 0.78,
+      "oct_chiff": 0.03,
+      "oct_detune": 0.03,
+      "oct_buzz": 0.03,
+      "oct_pressure": 0.2,
+      "oct_crosstalk": 0.28,
+      "oct_brightness": 0.15,
+      "oct_registration": 0.85,
+      "oct_roomDepth": 0.82,
+      "oct_attack": 0.25,
+      "oct_decay": 1.5,
+      "oct_sustain": 1.0,
+      "oct_release": 3.8,
+      "oct_filterEnvAmount": 0.03,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.7,
+      "oct_macroMovement": 0.08,
+      "oct_macroCoupling": 0.06,
+      "oct_macroSpace": 0.82,
+      "oct_lfo1Rate": 0.04,
+      "oct_lfo1Depth": 0.05,
+      "oct_lfo1Shape": 0,
+      "oct_lfo2Rate": 0.15,
+      "oct_lfo2Depth": 0.03,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.04
+    }
+  },
+  "tempo": null
+}

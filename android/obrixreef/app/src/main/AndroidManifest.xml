@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- USB MIDI host support -->
+    <uses-feature android:name="android.software.midi" android:required="false" />
+
+    <!-- Audio focus management -->
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <!-- Nothing Glyph Interface (optional) -->
+    <uses-permission android:name="com.nothing.ketchum.permission.ENABLE"
+        android:required="false" />
+
+    <application
+        android:name=".ObrixReefApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="ObrixReef"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ObrixReef">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:configChanges="orientation|screenSize|screenLayout|smallestScreenSize"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

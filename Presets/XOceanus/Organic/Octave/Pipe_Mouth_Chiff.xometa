@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Pipe Mouth Chiff",
+  "mood": "Organic",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The attack transient of a Baroque flue pipe — the chiff before the tone settles. Wind hits the languid, the edge cuts the airstream, and the pipe speaks with a natural catch.",
+  "tier": "standard",
+  "tags": ["organic", "baroque", "positiv", "chiff", "pipe-speech"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.1,
+    "SPACE": 0.48
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.52,
+    "movement": 0.22,
+    "density": 0.42,
+    "space": 0.48,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 1,
+      "oct_cluster": 0.4,
+      "oct_chiff": 0.82,
+      "oct_detune": 0.04,
+      "oct_buzz": 0.06,
+      "oct_pressure": 0.18,
+      "oct_crosstalk": 0.12,
+      "oct_brightness": 0.65,
+      "oct_registration": 0.45,
+      "oct_roomDepth": 0.48,
+      "oct_attack": 0.008,
+      "oct_decay": 0.15,
+      "oct_sustain": 1.0,
+      "oct_release": 0.8,
+      "oct_filterEnvAmount": 0.22,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.62,
+      "oct_macroMovement": 0.22,
+      "oct_macroCoupling": 0.1,
+      "oct_macroSpace": 0.48,
+      "oct_lfo1Rate": 0.12,
+      "oct_lfo1Depth": 0.1,
+      "oct_lfo1Shape": 3,
+      "oct_lfo2Rate": 0.5,
+      "oct_lfo2Depth": 0.05,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.08
+    }
+  },
+  "tempo": null
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "name": "Bright Pavilion",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng in the upper register — open filter, spare cluster density, crisp chiff on each attack. Feels like sunlight through lacquered timber.",
+  "tier": "standard",
+  "tags": ["foundation", "sheng", "bright", "open"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.15,
+    "SPACE": 0.45
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.25,
+    "movement": 0.2,
+    "density": 0.25,
+    "space": 0.45,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.22,
+      "oto_chiff": 0.45,
+      "oto_detune": 0.03,
+      "oto_buzz": 0.02,
+      "oto_pressure": 0.08,
+      "oto_crosstalk": 0.06,
+      "oto_filterCutoff": 12000.0,
+      "oto_filterRes": 0.1,
+      "oto_attack": 0.01,
+      "oto_decay": 0.18,
+      "oto_sustain": 0.75,
+      "oto_release": 0.28,
+      "oto_lfo1Rate": 0.5,
+      "oto_lfo1Depth": 0.03,
+      "oto_competition": 0.0,
+      "oto_macroA": 0.7,
+      "oto_macroB": 0.25,
+      "oto_macroC": 0.15,
+      "oto_macroD": 0.45
+    }
+  },
+  "tempo": null
+}

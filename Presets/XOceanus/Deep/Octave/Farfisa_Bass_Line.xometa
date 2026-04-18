@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Farfisa Bass Line",
+  "mood": "Deep",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The Farfisa in its lowest register — buzzy, square-wave, transistor-thick. A bass line that could anchor a garage-rock song or cut through a dense mix with sheer electronic aggression.",
+  "tier": "standard",
+  "tags": ["deep", "farfisa", "transistor", "bass", "garage"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.15,
+    "SPACE": 0.3
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.3,
+    "movement": 0.22,
+    "density": 0.72,
+    "space": 0.3,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 3,
+      "oct_cluster": 0.65,
+      "oct_chiff": 0.1,
+      "oct_detune": 0.06,
+      "oct_buzz": 0.85,
+      "oct_pressure": 0.22,
+      "oct_crosstalk": 0.38,
+      "oct_brightness": 0.38,
+      "oct_registration": 0.7,
+      "oct_roomDepth": 0.3,
+      "oct_attack": 0.02,
+      "oct_decay": 0.3,
+      "oct_sustain": 1.0,
+      "oct_release": 0.6,
+      "oct_filterEnvAmount": 0.2,
+      "oct_bendRange": 2,
+      "oct_macroCharacter": 0.75,
+      "oct_macroMovement": 0.22,
+      "oct_macroCoupling": 0.15,
+      "oct_macroSpace": 0.3,
+      "oct_lfo1Rate": 5.8,
+      "oct_lfo1Depth": 0.18,
+      "oct_lfo1Shape": 2,
+      "oct_lfo2Rate": 0.4,
+      "oct_lfo2Depth": 0.1,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.15
+    }
+  },
+  "tempo": null
+}

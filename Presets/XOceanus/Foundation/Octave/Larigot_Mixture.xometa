@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Larigot Mixture",
+  "mood": "Foundation",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High-pitched mixture stops shimmer above the principals, adding celestial overtones that ring well into the stone vault. Baroque brilliance at its most sparkling.",
+  "tier": "standard",
+  "tags": ["foundation", "baroque", "mixture", "overtones", "bright"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.1,
+    "SPACE": 0.65
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.3,
+    "movement": 0.16,
+    "density": 0.72,
+    "space": 0.67,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 1,
+      "oct_cluster": 0.7,
+      "oct_chiff": 0.7,
+      "oct_detune": 0.06,
+      "oct_buzz": 0.04,
+      "oct_pressure": 0.12,
+      "oct_crosstalk": 0.2,
+      "oct_brightness": 0.88,
+      "oct_registration": 0.72,
+      "oct_roomDepth": 0.65,
+      "oct_attack": 0.005,
+      "oct_decay": 0.12,
+      "oct_sustain": 1.0,
+      "oct_release": 0.35,
+      "oct_filterEnvAmount": 0.2,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.65,
+      "oct_macroMovement": 0.2,
+      "oct_macroCoupling": 0.1,
+      "oct_macroSpace": 0.65,
+      "oct_lfo1Rate": 0.18,
+      "oct_lfo1Depth": 0.07,
+      "oct_lfo1Shape": 1,
+      "oct_lfo2Rate": 1.2,
+      "oct_lfo2Depth": 0.05,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.08
+    }
+  },
+  "tempo": null
+}

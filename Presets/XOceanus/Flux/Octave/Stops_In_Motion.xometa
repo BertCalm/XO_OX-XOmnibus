@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "name": "Stops In Motion",
+  "mood": "Flux",
+  "engines": ["Octave"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Multiple LFOs modulate different organ parameters simultaneously — registration, brightness, and pressure all evolving at coprime rates, creating a constantly shifting sonic landscape.",
+  "tier": "standard",
+  "tags": ["flux", "baroque", "positiv", "evolving", "multi-lfo"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.9,
+    "COUPLING": 0.15,
+    "SPACE": 0.6
+  },
+  "coupling": {"pairs": []},
+  "couplingIntensity": "None",
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.48,
+    "movement": 0.9,
+    "density": 0.55,
+    "space": 0.6,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Octave": {
+      "oct_organ": 1,
+      "oct_cluster": 0.55,
+      "oct_chiff": 0.3,
+      "oct_detune": 0.07,
+      "oct_buzz": 0.07,
+      "oct_pressure": 0.35,
+      "oct_crosstalk": 0.2,
+      "oct_brightness": 0.6,
+      "oct_registration": 0.58,
+      "oct_roomDepth": 0.6,
+      "oct_attack": 0.015,
+      "oct_decay": 0.3,
+      "oct_sustain": 1.0,
+      "oct_release": 1.5,
+      "oct_filterEnvAmount": 0.18,
+      "oct_bendRange": 0,
+      "oct_macroCharacter": 0.62,
+      "oct_macroMovement": 0.9,
+      "oct_macroCoupling": 0.15,
+      "oct_macroSpace": 0.6,
+      "oct_lfo1Rate": 0.15,
+      "oct_lfo1Depth": 0.48,
+      "oct_lfo1Shape": 1,
+      "oct_lfo2Rate": 0.07,
+      "oct_lfo2Depth": 0.52,
+      "oct_lfo2Shape": 0,
+      "oct_competition": 0.1
+    }
+  },
+  "tempo": null
+}
