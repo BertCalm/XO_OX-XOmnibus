@@ -336,7 +336,7 @@ iterating all XPMs in the archive and rendering one grid per program (or a singl
 multi-program view). Is per-program rendering sufficient, or do pack designers need a fleet view
 showing all 20 programs side-by-side? The latter requires a wider terminal or paginated output.
 
-**OQ3 — Velocity curves for V1 concept engines**
+**OQ3 — Velocity curves for concept engines**
 OSTINATO, OPENSKY, OCEANDEEP, and OUIE have not yet defined instrument-family velocity curves.
 The visualizer should not hard-fail on unknown families — fall back to the Vibe Musical Curve
 baseline and log a `[FAMILY_UNKNOWN]` advisory. Once those engines define their curves, add
@@ -345,7 +345,7 @@ them to the `VEL_LAYERS_*` table in `xpn_keygroup_export.py`.
 **OQ4 — CI integration**
 Should a `--strict` flag cause the tool to exit with code 1 on hard gaps or hard overlaps, enabling
 use in a pre-commit or GitHub Actions check? This would gate XPN exports in automated pipelines.
-Low friction implementation; recommended for V1 of the tool.
+Low friction implementation; recommended for the first release of the tool.
 
 **OQ5 — SVG color palette for print**
 The ANSI cyan/orange palette is designed for dark terminal backgrounds. The SVG export targets

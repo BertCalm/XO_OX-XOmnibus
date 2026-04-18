@@ -1,4 +1,4 @@
-# The Rappers — V1 Utility Engine Bundle
+# The Rappers — Utility Engine Bundle
 **XO_OX Designs | Utility Engine Creative Identity Layer**
 **Date**: 2026-03-16 | **Status**: Design Complete
 
@@ -11,7 +11,7 @@ who take raw material and transform it into something else entirely. Where synth
 aquatic creatures that MAKE sound, utility engines are the people in the booth who decide what it
 BECOMES.
 
-V1 utility bundle identity: **Rappers** — artists who chop, sample, loop, layer, and reconstruct.
+Initial utility bundle identity: **Rappers** — artists who chop, sample, loop, layer, and reconstruct.
 No genre is more built on transformation of raw material than hip-hop. The chopped break, the
 pitched sample, the gated stutter, the hall reverb on the snare — these are the utility engine
 instincts made famous.
@@ -422,7 +422,7 @@ colorful labels — each label is a different engine accent color (`#7DF9FF`, `#
 slightly fanned out so all ten colors are visible. The crate is wooden, worn, the kind that lived
 in a record store basement. XO_OX logo stamped on the crate side.
 
-**Typography**: "CRATE DIGGERS" in Space Grotesk heavy, warm white on dark background. "V1 Utility
+**Typography**: "CRATE DIGGERS" in Space Grotesk heavy, warm white on dark background. "Utility
 Bundle — 10 Engines" in smaller Inter below. Each record label shows the engine name and accent
 color with minimal text.
 
@@ -511,7 +511,7 @@ and fed back through itself until it had a personality.
 
 ---
 
-## Open Questions for V1 Build
+## Open Questions for Initial Build
 
 - XObserve (EQ) and XOxide (2D character shaper) are also utility engines — do they join this
   bundle or anchor a second bundle?

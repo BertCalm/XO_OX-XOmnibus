@@ -5,7 +5,7 @@
 
 ## Overview
 
-XOceanus ships with 34 registered engines + 4 V1 concept engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE).
+XOceanus ships with 34 registered engines + 4 concept engines (OSTINATO, OPENSKY, OCEANDEEP, OUIE).
 No XPN packs exist yet. This document answers: which engines get packs first, in what order, and why.
 
 A pack is a curated `.xpn` bundle — programs, kits, and/or keygroup instruments — built from an
@@ -278,7 +278,7 @@ Quaternary audience. Value: complexity, environmental sound, systems that evolve
 
 ---
 
-## 5. V1 Concept Engine Packs
+## 5. Concept Engine Packs
 
 These four engines had their DSP completed on 2026-03-18 and are now installed in XOceanus.
 Their pack strategies below were planned before DSP and remain valid — preset libraries still need building.
@@ -375,12 +375,12 @@ substitute OPAL "Grain Theory" (granular engine with strong cinematic appeal).
    (Splice, MPC forum)? Platform choice affects pack pricing, bundle strategy, and community submission
    pipeline timing.
 
-3. **OSTINATO DSP timeline**: Month 12 assumes OSTINATO ships in V1. If concept-engine DSP build takes
+3. **OSTINATO DSP timeline**: Month 12 assumes OSTINATO ships at initial release. If concept-engine DSP build takes
    longer than 6 months post-Constellation, OPAL "Grain Theory" is the Month 12 fallback.
 
 4. **Coupling packs**: Several engines (OUROBOROS, OBLIQUE, OVERLAP) are most interesting when
    coupled. A future "Coupling Collection" format — where programs are rendered from coupled
-   engine pairs — is worth scoping in year 2 but is outside V1 XPN scope.
+   engine pairs — is worth scoping in year 2 but is outside the initial XPN scope.
 
 5. **Community submission cadence**: The community_pack_submission_rnd.md pipeline should be open
    by Month 6, so community creators can submit packs that complement Months 7–12.

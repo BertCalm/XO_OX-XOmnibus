@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Null Field",
+  "name": "Null Field II",
   "mood": "Foundation",
-  "engines": ["Oxbow"],
+  "engines": [
+    "Oxbow"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Chiasmus FDN with all high frequencies absorbed — a reverb that exists only in the sub-bass register. The golden resonance operating in darkness.",
-  "tags": ["foundation", "dark", "sub-bass", "reverb", "null"],
-  "macroLabels": ["ENTANGLE", "EROSION", "CONVERGE", "CANTILEVER"],
+  "description": "Chiasmus FDN with all high frequencies absorbed \u2014 a reverb that exists only in the sub-bass register. The golden resonance operating in darkness.",
+  "tags": [
+    "foundation",
+    "dark",
+    "sub-bass",
+    "reverb",
+    "null"
+  ],
+  "macroLabels": [
+    "ENTANGLE",
+    "EROSION",
+    "CONVERGE",
+    "CANTILEVER"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -43,7 +56,9 @@
       "oxb_lfo1Depth": 0.12
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "ENTANGLE": 0.22,

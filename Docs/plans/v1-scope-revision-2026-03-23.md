@@ -1,6 +1,15 @@
-# XOceanus V1 Scope Revision
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> The "V1 scope" / "V1 release cutoff" framing has been retired. XOceanus does not operate
+> on a fixed-version release model. Build and refine until ready; ship when ready. This document
+> is preserved for historical reference only. Do not cite it as current direction and do not
+> generate new "V1 readiness" plans from it. See `CLAUDE.md` → *Release Philosophy*.
+
+---
+
+# XOceanus V1 Scope Revision (HISTORICAL)
 **Date:** 2026-03-23
-**Status:** LIVING DOCUMENT — no hard release deadline; quality before ship
+**Status:** RETIRED 2026-04-16 — preserved for historical reference
 **Supersedes:** `Docs/plans/v1-launch-plan.md`, `Docs/v1-launch-plan-2026-03-20.md`
 **Related:** `Docs/fleet-health-dashboard-2026-03-24.md` (detailed per-engine readiness)
 

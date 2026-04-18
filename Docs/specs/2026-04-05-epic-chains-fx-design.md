@@ -714,7 +714,7 @@ Reviewed 2026-04-05. Verdict: **APPROVE WITH CONDITIONS** — 2 blocking finding
 **Action items:**
 - Singularity FX move to end-of-chain slot positions (no pre/post complexity)
 - Any factory presets using Singularity FX must be re-tuned after migration to sound correct at their new signal position
-- Document the stage repositioning in the V1 changelog
+- Document the stage repositioning in the release changelog
 
 ### Finding #2: Parameter ID Automation Breakage — RESOLVED (Option A)
 

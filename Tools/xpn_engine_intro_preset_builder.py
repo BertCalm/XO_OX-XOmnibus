@@ -2,7 +2,7 @@
 """
 xpn_engine_intro_preset_builder.py
 
-Generates placeholder .xometa intro presets for V1 concept engines that have
+Generates placeholder .xometa intro presets for concept engines that have
 zero source code yet. Presets describe what the engine WILL do, enabling the
 preset system to be ready the moment DSP builds are complete.
 
@@ -337,7 +337,7 @@ def generate_presets(engine_key: str, count: int) -> list[dict]:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Generate placeholder .xometa intro presets for V1 concept engines.",
+        description="Generate placeholder .xometa intro presets for concept engines.",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Engines:

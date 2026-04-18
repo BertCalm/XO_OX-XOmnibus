@@ -40,7 +40,7 @@
 
 **Coupling gap**: 465 of 561 engine coupling pairs have zero Entangled presets. This is the highest-leverage gap for future preset work — newer engines (OVERLAP/OUTWIT/OMBRE/ORCA/OCTOPUS) are especially underserved.
 
-**Concept engines**: 4 V1 engines (OSTINATO/OPENSKY/OCEANDEEP/OUIE) have zero presets. DSP builds are required before any preset work can begin.
+**Concept engines**: 4 concept engines (OSTINATO/OPENSKY/OCEANDEEP/OUIE) have zero presets. DSP builds are required before any preset work can begin.
 
 **XPN↔XOceanus bridge**: `params_sidecar.json` is the buildable path for bridging XPN export data into XOceanus. Full hardware plugin install requires an Akai OEM deal — not a near-term option.
 

@@ -499,7 +499,7 @@ to full competition, pull back. One knob tells the whole story.
 
 ---
 
-## 9. Open Questions for V1 Decision
+## 9. Open Questions for Initial Release Decision
 
 1. **Output buffer write access:** `processAdversarialRoute()` needs to apply per-band gain
    multiplication to the submissive engine's rendered output buffer. The current API exposes output
@@ -514,8 +514,8 @@ to full competition, pull back. One knob tells the whole story.
    three filter states × 2 engines × N adversarial routes adds CPU. For the Chef Quad (typically 2
    engines in competition), this is 12 filter states per block — acceptable. For 4 engines
    simultaneously adversarial (6 routes possible), this is 36 filter states. Consider a simpler
-   broadband RMS comparison for V1, with multiband as a V1.1 enhancement.
-   **Decision needed:** Broadband ducking V1 → multiband V1.1, or multiband from day one?
+   broadband RMS comparison initially, with multiband as a later enhancement.
+   **Decision needed:** Broadband ducking initially → multiband later, or multiband from day one?
 
 3. **`setVoiceQuota()` as interface method:** Adding `setVoiceQuota(int)` to `SynthEngine` with a
    default no-op implementation is backward compatible (all 44 existing engines get the no-op for

@@ -1,21 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Detune Storm",
+  "name": "Detune Storm II",
   "mood": "Flux",
-  "engines": ["Oto"],
+  "engines": [
+    "Oto"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sheng in a storm — detune pushed wide, the LFO adding further instability, pressure lurching. The instrument fights the weather and loses, producing something beautiful and chaotic.",
+  "description": "Sheng in a storm \u2014 detune pushed wide, the LFO adding further instability, pressure lurching. The instrument fights the weather and loses, producing something beautiful and chaotic.",
   "tier": "standard",
-  "tags": ["flux", "sheng", "detune", "storm", "chaotic"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "sheng",
+    "detune",
+    "storm",
+    "chaotic"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.65,
     "MOVEMENT": 0.75,
     "COUPLING": 0.2,
     "SPACE": 0.42
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.62,

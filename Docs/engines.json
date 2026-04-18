@@ -1,0 +1,1089 @@
+{
+  "_meta": {
+    "description": "Machine-readable engine roster for XOceanus. CI/build scripts reference this file to scope QA sweeps, builds, and preset validation.",
+    "last_updated": "2026-04-16",
+    "status_values": [
+      "implemented",
+      "designed",
+      "pending_prefix",
+      "pending_directory"
+    ],
+    "notes": "This file is the single source of truth for engine roster and count. Parameter prefixes are FROZEN \u2014 never change after first registration. XOceanus has no fixed release cutoff. `status` reflects build state: 'implemented' means the engine has both a Source/Engines/ directory AND a frozen prefix in PresetManager.h; 'pending_*' flags work-in-progress. Run Tools/sync_engine_sources.py to regenerate dependent files.",
+    "last_sync": "2026-04-16",
+    "engine_count": 88,
+    "engine_count_total": 111,
+    "legacy_dir_aliases": {
+      "Bite": "Overbite",
+      "Bob": "Oblong",
+      "Drift": "Odyssey",
+      "Dub": "Overdub",
+      "Fat": "Obese",
+      "Morph": "OddOscar",
+      "Snap": "OddfeliX"
+    },
+    "engine_count_designed": 111
+  },
+  "synthesis_engines": [
+    {
+      "id": "Oaken",
+      "param_prefix": "oaken_",
+      "header": "Source/Engines/Oaken/OakenEngine.h",
+      "status": "implemented",
+      "accent_color": "#9C6B30",
+      "category": "cellar"
+    },
+    {
+      "id": "Oasis",
+      "param_prefix": "oas_",
+      "header": "Source/Engines/Oasis/OasisEngine.h",
+      "status": "implemented",
+      "accent_color": "#00827F",
+      "category": "dual"
+    },
+    {
+      "id": "Obbligato",
+      "param_prefix": "obbl_",
+      "header": "Source/Engines/Obbligato/ObbligatoEngine.h",
+      "status": "implemented",
+      "accent_color": "#FF8A7A",
+      "category": "constellation"
+    },
+    {
+      "id": "Obdurate",
+      "param_prefix": "obdr_",
+      "header": "Source/Engines/Obdurate/ObdurateEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Obelisk",
+      "param_prefix": "obel_",
+      "header": "Source/Engines/Obelisk/ObeliskEngine.h",
+      "status": "implemented",
+      "accent_color": "#FFFFF0",
+      "category": "kitchen"
+    },
+    {
+      "id": "Obese",
+      "source_instrument": "XObese",
+      "seance_score_note": "~8.5 est.",
+      "preset_count": 408,
+      "accent_color": "#FF1493",
+      "accent_name": "Hot Pink",
+      "blessings": [
+        "B015"
+      ],
+      "param_prefix": "fat_",
+      "header": "Source/Engines/Obese/ObeseEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Obiont",
+      "param_prefix": "obnt_",
+      "header": "Source/Engines/Obiont/ObiontEngine.h",
+      "status": "implemented",
+      "accent_color": "#E8A030",
+      "category": "cellular"
+    },
+    {
+      "id": "Oblique",
+      "param_prefix": "oblq_",
+      "header": "Source/Engines/Oblique/ObliqueEngine.h",
+      "status": "implemented",
+      "accent_color": "#BF40FF",
+      "category": "original"
+    },
+    {
+      "id": "Obliterate",
+      "param_prefix": "oblt_",
+      "header": "Source/Engines/Obliterate/ObliterateEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Oblong",
+      "source_instrument": "XOblong",
+      "seance_score_note": "~8.5 est.",
+      "preset_count": 802,
+      "accent_color": "#E9A84A",
+      "accent_name": "Amber",
+      "param_prefix": "bob_",
+      "header": "Source/Engines/Oblong/OblongEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Obrix",
+      "source_instrument": "XObrix",
+      "role": "flagship",
+      "seance_score": 9.2,
+      "preset_count": 466,
+      "accent_color": "#1E8B7E",
+      "accent_name": "Reef Jade",
+      "notes": "FLAGSHIP",
+      "param_prefix": "obrix_",
+      "header": "Source/Engines/Obrix/ObrixEngine.h",
+      "status": "implemented",
+      "category": "flagship"
+    },
+    {
+      "id": "Obscura",
+      "source_instrument": "XObscura",
+      "seance_score": 9.1,
+      "preset_count": 143,
+      "accent_color": "#8A9BA8",
+      "accent_name": "Daguerreotype Silver",
+      "param_prefix": "obscura_",
+      "header": "Source/Engines/Obscura/ObscuraEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Obscurity",
+      "param_prefix": "obsc_",
+      "header": "Source/Engines/Obscurity/ObscurityEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Observandum",
+      "param_prefix": "observ_",
+      "header": "Source/Engines/Observandum/ObservandumEngine.h",
+      "status": "implemented",
+      "accent_color": "#B0C4DE",
+      "category": "crystalline"
+    },
+    {
+      "id": "Obsidian",
+      "source_instrument": "XObsidian",
+      "seance_score_note": "~8.2 est.",
+      "preset_count": 280,
+      "accent_color": "#E8E0D8",
+      "accent_name": "Crystal White",
+      "param_prefix": "obsidian_",
+      "header": "Source/Engines/Obsidian/ObsidianEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Obverse",
+      "param_prefix": "obvr_",
+      "header": "Source/Engines/Obverse/ObverseEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Occlusion",
+      "param_prefix": "occl_",
+      "header": "Source/Engines/Occlusion/OcclusionEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "OceanDeep",
+      "param_prefix": "deep_",
+      "header": "Source/Engines/OceanDeep/OceanDeepEngine.h",
+      "status": "implemented",
+      "accent_color": "#2D0A4E",
+      "category": "concept"
+    },
+    {
+      "id": "Oceanic",
+      "param_prefix": "ocean_",
+      "header": "Source/Engines/Oceanic/OceanicEngine.h",
+      "status": "implemented",
+      "accent_color": "#00B4A0",
+      "category": "original"
+    },
+    {
+      "id": "Ocelot",
+      "source_instrument": "XOcelot",
+      "seance_score_note": "~8.5 est.",
+      "preset_count": 271,
+      "accent_color": "#C5832B",
+      "accent_name": "Ocelot Tawny",
+      "param_prefix": "ocelot_",
+      "header": "Source/Engines/Ocelot/OcelotEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Ochre",
+      "param_prefix": "ochre_",
+      "header": "Source/Engines/Ochre/OchreEngine.h",
+      "status": "implemented",
+      "accent_color": "#CC7722",
+      "category": "kitchen"
+    },
+    {
+      "id": "Octant",
+      "param_prefix": "octn_",
+      "header": "Source/Engines/Octant/OctantEngine.h",
+      "status": "implemented",
+      "accent_color": "#8B6F47",
+      "category": "navigation"
+    },
+    {
+      "id": "Octave",
+      "source_instrument": "XOctave",
+      "seance_score_note": "8.01\u2192~8.7 post-fix",
+      "preset_count": 25,
+      "accent_color": "#8B6914",
+      "accent_name": "Hammond Teak",
+      "param_prefix": "oct_",
+      "header": "Source/Engines/Octave/OctaveEngine.h",
+      "status": "implemented",
+      "category": "chef"
+    },
+    {
+      "id": "Octopus",
+      "source_instrument": "XOctopus",
+      "seance_score_note": "~8.5 est.",
+      "preset_count": 257,
+      "accent_color": "#E040FB",
+      "accent_name": "Chromatophore Magenta",
+      "param_prefix": "octo_",
+      "header": "Source/Engines/Octopus/OctopusEngine.h",
+      "status": "implemented",
+      "category": "phase4"
+    },
+    {
+      "id": "Oculus",
+      "param_prefix": "ocul_",
+      "header": "Source/Engines/Oculus/OculusEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "OddfeliX",
+      "source_instrument": "OddfeliX",
+      "seance_score_note": "~8.5 est.",
+      "preset_count": 531,
+      "accent_color": "#00A6D6",
+      "accent_name": "Neon Tetra Blue",
+      "param_prefix": "snap_",
+      "header": "Source/Engines/OddfeliX/OddfeliXEngine.h",
+      "status": "implemented",
+      "category": "mascot"
+    },
+    {
+      "id": "Oddfellow",
+      "param_prefix": "oddf_",
+      "header": "Source/Engines/Oddfellow/OddfellowEngine.h",
+      "status": "implemented",
+      "accent_color": "#B87333",
+      "category": "fusion"
+    },
+    {
+      "id": "OddOscar",
+      "source_instrument": "OddOscar",
+      "seance_score_note": "~8.5 est.",
+      "preset_count": 444,
+      "accent_color": "#E8839B",
+      "accent_name": "Axolotl Gill Pink",
+      "param_prefix": "morph_",
+      "header": "Source/Engines/OddOscar/OddOscarEngine.h",
+      "status": "implemented",
+      "category": "mascot"
+    },
+    {
+      "id": "Odyssey",
+      "param_prefix": "drift_",
+      "header": "Source/Engines/Odyssey/OdysseyEngine.h",
+      "status": "implemented",
+      "accent_color": "#7B2D8B",
+      "category": "original"
+    },
+    {
+      "id": "Offcut",
+      "param_prefix": "offc_",
+      "header": "Source/Engines/Offcut/OffcutEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Offering",
+      "source_instrument": "XOffering",
+      "seance_score": 8.8,
+      "preset_count": 154,
+      "accent_color": "#E5B80B",
+      "accent_name": "Crate Wax Yellow",
+      "blessings": [
+        "B038",
+        "B039"
+      ],
+      "param_prefix": "ofr_",
+      "header": "Source/Engines/Offering/OfferingEngine.h",
+      "status": "implemented",
+      "category": "drums"
+    },
+    {
+      "id": "Ogive",
+      "param_prefix": "ogv_",
+      "header": "Source/Engines/Ogive/OgiveEngine.h",
+      "status": "implemented",
+      "accent_color": "#9B1B30",
+      "category": "cathedral",
+      "accent_name": "Selenium Ruby"
+    },
+    {
+      "id": "Ogre",
+      "param_prefix": "ogre_",
+      "header": "Source/Engines/Ogre/OgreEngine.h",
+      "status": "implemented",
+      "accent_color": "#0D0D0D",
+      "category": "cellar"
+    },
+    {
+      "id": "Ohm",
+      "param_prefix": "ohm_",
+      "header": "Source/Engines/Ohm/OhmEngine.h",
+      "status": "implemented",
+      "accent_color": "#87AE73",
+      "category": "constellation"
+    },
+    {
+      "id": "Okeanos",
+      "param_prefix": "okan_",
+      "header": "Source/Engines/Okeanos/OkeanosEngine.h",
+      "status": "implemented",
+      "accent_color": "#C49B3F",
+      "category": "fusion"
+    },
+    {
+      "id": "Olate",
+      "param_prefix": "olate_",
+      "header": "Source/Engines/Olate/OlateEngine.h",
+      "status": "implemented",
+      "accent_color": "#5C3317",
+      "category": "cellar"
+    },
+    {
+      "id": "Ole",
+      "param_prefix": "ole_",
+      "header": "Source/Engines/Ole/OleEngine.h",
+      "status": "implemented",
+      "accent_color": "#C9377A",
+      "category": "constellation"
+    },
+    {
+      "id": "Oleg",
+      "param_prefix": "oleg_",
+      "header": "Source/Engines/Oleg/OlegEngine.h",
+      "status": "implemented",
+      "accent_color": "#C0392B",
+      "category": "chef"
+    },
+    {
+      "id": "Olvido",
+      "param_prefix": "olv_",
+      "header": "Source/Engines/Olvido/OlvidoEngine.h",
+      "status": "implemented",
+      "accent_color": "#3B6E8F",
+      "category": "memory",
+      "accent_name": "Coelacanth Blue"
+    },
+    {
+      "id": "Ombre",
+      "param_prefix": "ombre_",
+      "header": "Source/Engines/Ombre/OmbreEngine.h",
+      "status": "implemented",
+      "accent_color": "#7B6B8A",
+      "category": "phase4"
+    },
+    {
+      "id": "Omega",
+      "param_prefix": "omega_",
+      "header": "Source/Engines/Omega/OmegaEngine.h",
+      "status": "implemented",
+      "accent_color": "#003366",
+      "category": "cellar"
+    },
+    {
+      "id": "Omen",
+      "param_prefix": "omen_",
+      "header": "Source/Engines/Omen/OmenEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Omnistereo",
+      "param_prefix": "omni_",
+      "header": "Source/Engines/Omnistereo/OmnistereoEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Ondine",
+      "param_prefix": "ond_",
+      "header": "Source/Engines/Ondine/OndineEngine.h",
+      "status": "implemented",
+      "accent_color": "#2E8B8B",
+      "category": "water"
+    },
+    {
+      "id": "Onkolo",
+      "param_prefix": "onko_",
+      "header": "Source/Engines/Onkolo/OnkoloEngine.h",
+      "status": "implemented",
+      "accent_color": "#FFBF00",
+      "category": "fusion"
+    },
+    {
+      "id": "Onrush",
+      "param_prefix": "onr_",
+      "header": "Source/Engines/Onrush/OnrushEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Onset",
+      "source_instrument": "XOnset",
+      "seance_score_note": "Ahead of industry",
+      "preset_count": 480,
+      "accent_color": "#0066FF",
+      "accent_name": "Electric Blue",
+      "blessings": [
+        "B002",
+        "B006"
+      ],
+      "param_prefix": "perc_",
+      "header": "Source/Engines/Onset/OnsetEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Oort",
+      "param_prefix": "oort_",
+      "header": "Source/Engines/Oort/OortEngine.h",
+      "status": "implemented",
+      "accent_color": "#A9A9A9",
+      "category": "stochastic"
+    },
+    {
+      "id": "Opal",
+      "source_instrument": "XOpal",
+      "seance_score_note": "Approved",
+      "preset_count": 357,
+      "accent_color": "#A78BFA",
+      "accent_name": "Lavender",
+      "param_prefix": "opal_",
+      "header": "Source/Engines/Opal/OpalEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Opaline",
+      "param_prefix": "opal2_",
+      "header": "Source/Engines/Opaline/OpalineEngine.h",
+      "status": "implemented",
+      "accent_color": "#B7410E",
+      "category": "kitchen"
+    },
+    {
+      "id": "Opcode",
+      "param_prefix": "opco_",
+      "header": "Source/Engines/Opcode/OpcodeEngine.h",
+      "status": "implemented",
+      "accent_color": "#5F9EA0",
+      "category": "fusion"
+    },
+    {
+      "id": "OpenSky",
+      "source_instrument": "XOpenSky",
+      "seance_score": 8.1,
+      "preset_count": 385,
+      "accent_color": "#FF8C00",
+      "accent_name": "Sunburst",
+      "blessings": [
+        "B023",
+        "B024"
+      ],
+      "param_prefix": "sky_",
+      "header": "Source/Engines/OpenSky/OpenSkyEngine.h",
+      "status": "implemented",
+      "category": "concept"
+    },
+    {
+      "id": "Opera",
+      "source_instrument": "XOpera",
+      "seance_score": 8.85,
+      "preset_count": 156,
+      "accent_color": "#D4AF37",
+      "accent_name": "Aria Gold",
+      "blessings": [
+        "B035",
+        "B036",
+        "B037"
+      ],
+      "param_prefix": "opera_",
+      "header": "Source/Engines/Opera/OperaEngine.h",
+      "status": "implemented",
+      "category": "vocal"
+    },
+    {
+      "id": "Opsin",
+      "param_prefix": "ops_",
+      "header": "Source/Engines/Opsin/OpsinEngine.h",
+      "status": "implemented",
+      "accent_color": "#00FFFF",
+      "category": "bioluminescent"
+    },
+    {
+      "id": "Optic",
+      "source_instrument": "XOptic",
+      "seance_score_note": "Revolutionary",
+      "preset_count": 308,
+      "accent_color": "#00FF41",
+      "accent_name": "Phosphor Green",
+      "blessings": [
+        "B005"
+      ],
+      "param_prefix": "optic_",
+      "header": "Source/Engines/Optic/OpticEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Opus",
+      "param_prefix": "opus_",
+      "header": "Source/Engines/Opus/OpusEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Oracle",
+      "source_instrument": "XOracle",
+      "seance_score": 8.6,
+      "preset_count": 241,
+      "accent_color": "#4B0082",
+      "accent_name": "Prophecy Indigo",
+      "blessings": [
+        "B010"
+      ],
+      "param_prefix": "oracle_",
+      "header": "Source/Engines/Oracle/OracleEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Oration",
+      "param_prefix": "orat_",
+      "header": "Source/Engines/Oration/OrationEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Orbital",
+      "source_instrument": "XOrbital",
+      "seance_score_note": "Approved",
+      "preset_count": 262,
+      "accent_color": "#FF6B6B",
+      "accent_name": "Warm Red",
+      "blessings": [
+        "B001"
+      ],
+      "param_prefix": "orb_",
+      "header": "Source/Engines/Orbital/OrbitalEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Orbweave",
+      "source_instrument": "XOrbweave",
+      "seance_score": 8.4,
+      "preset_count": 451,
+      "accent_color": "#8E4585",
+      "accent_name": "Kelp Knot Purple",
+      "blessings": [
+        "B021",
+        "B022"
+      ],
+      "param_prefix": "weave_",
+      "header": "Source/Engines/Orbweave/OrbweaveEngine.h",
+      "status": "implemented",
+      "category": "theorem"
+    },
+    {
+      "id": "Orca",
+      "source_instrument": "XOrca",
+      "seance_score_note": "~8.6 est.",
+      "preset_count": 270,
+      "accent_color": "#1B2838",
+      "accent_name": "Deep Ocean",
+      "param_prefix": "orca_",
+      "header": "Source/Engines/Orca/OrcaEngine.h",
+      "status": "implemented",
+      "category": "phase4"
+    },
+    {
+      "id": "Orchard",
+      "param_prefix": "orch_",
+      "header": "Source/Engines/Orchard/OrchardEngine.h",
+      "status": "implemented",
+      "accent_color": "#FFB7C5",
+      "category": "garden"
+    },
+    {
+      "id": "Organism",
+      "source_instrument": "XOrganism",
+      "seance_score_note": "8.1 / 7.2; CA fix applied",
+      "preset_count": 433,
+      "accent_color": "#C6E377",
+      "accent_name": "Emergence Lime",
+      "param_prefix": "org_",
+      "header": "Source/Engines/Organism/OrganismEngine.h",
+      "status": "implemented",
+      "category": "theorem"
+    },
+    {
+      "id": "Organon",
+      "source_instrument": "XOrganon",
+      "seance_score_note": "8/8 PASS",
+      "preset_count": 365,
+      "accent_color": "#00CED1",
+      "accent_name": "Bioluminescent Cyan",
+      "blessings": [
+        "B011"
+      ],
+      "param_prefix": "organon_",
+      "header": "Source/Engines/Organon/OrganonEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Origami",
+      "source_instrument": "XOrigami",
+      "seance_score_note": "Approved",
+      "preset_count": 216,
+      "accent_color": "#E63946",
+      "accent_name": "Vermillion Fold",
+      "param_prefix": "origami_",
+      "header": "Source/Engines/Origami/OrigamiEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Orison",
+      "param_prefix": "oris_",
+      "header": "Source/Engines/Orison/OrisonEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Ornate",
+      "param_prefix": "orna_",
+      "header": "Source/Engines/Ornate/OrnateEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Orogen",
+      "param_prefix": "orog_",
+      "header": "Source/Engines/Orogen/OrogenEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Orphica",
+      "source_instrument": "XOrphica",
+      "seance_score_note": "~8.7 est.",
+      "preset_count": 264,
+      "accent_color": "#7FDBCA",
+      "accent_name": "Siren Seafoam",
+      "param_prefix": "orph_",
+      "header": "Source/Engines/Orphica/OrphicaEngine.h",
+      "status": "implemented",
+      "category": "constellation"
+    },
+    {
+      "id": "Orrery",
+      "param_prefix": "orry_",
+      "header": "Source/Engines/Orrery/OrreryEngine.h",
+      "status": "implemented",
+      "accent_color": "#4682B4",
+      "category": "navigation"
+    },
+    {
+      "id": "Ortolan",
+      "param_prefix": "ort_",
+      "header": "Source/Engines/Ortolan/OrtolanEngine.h",
+      "status": "implemented",
+      "accent_color": "#D4A574",
+      "category": "song"
+    },
+    {
+      "id": "Osier",
+      "param_prefix": "osier_",
+      "header": "Source/Engines/Osier/OsierEngine.h",
+      "status": "implemented",
+      "accent_color": "#C0C8C8",
+      "category": "garden"
+    },
+    {
+      "id": "Osmium",
+      "param_prefix": "osmi_",
+      "header": "Source/Engines/Osmium/OsmiumEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Osmosis",
+      "param_prefix": "osmo_",
+      "header": "Source/Engines/Osmosis/OsmosisEngine.h",
+      "status": "implemented",
+      "accent_color": "#C0C0C0",
+      "category": "membrane"
+    },
+    {
+      "id": "Osprey",
+      "source_instrument": "XOsprey",
+      "seance_score_note": "Approved",
+      "preset_count": 166,
+      "accent_color": "#1B4F8A",
+      "accent_name": "Azulejo Blue",
+      "blessings": [
+        "B012"
+      ],
+      "param_prefix": "osprey_",
+      "header": "Source/Engines/Osprey/OspreyEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Osteria",
+      "source_instrument": "XOsteria",
+      "seance_score_note": "Production-grade",
+      "preset_count": 234,
+      "accent_color": "#722F37",
+      "accent_name": "Porto Wine",
+      "blessings": [
+        "B012"
+      ],
+      "param_prefix": "osteria_",
+      "header": "Source/Engines/Osteria/OsteriaEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Ostinato",
+      "source_instrument": "XOstinato",
+      "seance_score": 8.7,
+      "preset_count": 229,
+      "accent_color": "#E8701A",
+      "accent_name": "Firelight Orange",
+      "blessings": [
+        "B017",
+        "B018",
+        "B019",
+        "B020"
+      ],
+      "param_prefix": "osti_",
+      "header": "Source/Engines/Ostinato/OstinatoEngine.h",
+      "status": "implemented",
+      "category": "concept"
+    },
+    {
+      "id": "Ostracon",
+      "param_prefix": "ostr_",
+      "header": "Source/Engines/Ostracon/OstraconEngine.h",
+      "status": "implemented",
+      "accent_color": "#C0785A",
+      "category": "fragment",
+      "accent_name": "Shard Terracotta"
+    },
+    {
+      "id": "Otis",
+      "param_prefix": "otis_",
+      "header": "Source/Engines/Otis/OtisEngine.h",
+      "status": "implemented",
+      "accent_color": "#D4A017",
+      "category": "chef"
+    },
+    {
+      "id": "Oto",
+      "source_instrument": "XOto",
+      "seance_score": 8.6,
+      "preset_count": 34,
+      "accent_color": "#F5F0E8",
+      "accent_name": "Pipe Organ Ivory",
+      "notes": "Preset expansion in progress \u2014 target 100+",
+      "param_prefix": "oto_",
+      "header": "Source/Engines/Oto/OtoEngine.h",
+      "status": "implemented",
+      "category": "chef"
+    },
+    {
+      "id": "Ottoni",
+      "param_prefix": "otto_",
+      "header": "Source/Engines/Ottoni/OttoniEngine.h",
+      "status": "implemented",
+      "accent_color": "#5B8A72",
+      "category": "constellation"
+    },
+    {
+      "id": "Oubliette",
+      "param_prefix": "oubl_",
+      "header": "Source/Engines/Oubliette/OublietteEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Ouie",
+      "source_instrument": "XOuie",
+      "seance_score": 8.5,
+      "preset_count": 396,
+      "accent_color": "#708090",
+      "accent_name": "Hammerhead Steel",
+      "blessings": [
+        "B025",
+        "B026",
+        "B027"
+      ],
+      "param_prefix": "ouie_",
+      "header": "Source/Engines/Ouie/OuieEngine.h",
+      "status": "implemented",
+      "category": "concept"
+    },
+    {
+      "id": "Ouroboros",
+      "source_instrument": "XOuroboros",
+      "seance_score": 9.0,
+      "preset_count": 346,
+      "accent_color": "#FF2D2D",
+      "accent_name": "Strange Attractor Red",
+      "blessings": [
+        "B003",
+        "B007"
+      ],
+      "param_prefix": "ouro_",
+      "header": "Source/Engines/Ouroboros/OuroborosEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Outage",
+      "param_prefix": "outg_",
+      "header": "Source/Engines/Outage/OutageEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Outbreak",
+      "param_prefix": "outb_",
+      "header": "Source/Engines/Outbreak/OutbreakEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Outflow",
+      "param_prefix": "out_",
+      "header": "Source/Engines/Outflow/OutflowEngine.h",
+      "status": "implemented",
+      "accent_color": "#1A1A40",
+      "category": "dual"
+    },
+    {
+      "id": "Outlaw",
+      "param_prefix": "outl_",
+      "header": "Source/Engines/Outlaw/OutlawEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Outlook",
+      "param_prefix": "look_",
+      "header": "Source/Engines/Outlook/OutlookEngine.h",
+      "status": "implemented",
+      "accent_color": "#4169E1",
+      "category": "visionary"
+    },
+    {
+      "id": "Outwit",
+      "source_instrument": "XOutwit",
+      "seance_score": 8.7,
+      "preset_count": 593,
+      "accent_color": "#CC6600",
+      "accent_name": "Chromatophore Amber",
+      "param_prefix": "owit_",
+      "header": "Source/Engines/Outwit/OutwitEngine.h",
+      "status": "implemented",
+      "category": "phase4"
+    },
+    {
+      "id": "Oven",
+      "param_prefix": "oven_",
+      "header": "Source/Engines/Oven/OvenEngine.h",
+      "status": "implemented",
+      "accent_color": "#1C1C1C",
+      "category": "kitchen"
+    },
+    {
+      "id": "Overbite",
+      "source_instrument": "XOverbite",
+      "seance_score_note": "Full approval",
+      "preset_count": 255,
+      "accent_color": "#F0EDE8",
+      "accent_name": "Fang White",
+      "blessings": [
+        "B008"
+      ],
+      "param_prefix": "poss_",
+      "header": "Source/Engines/Overbite/OverbiteEngine.h",
+      "status": "implemented",
+      "category": "original"
+    },
+    {
+      "id": "Overcast",
+      "param_prefix": "cast_",
+      "header": "Source/Engines/Overcast/OvercastEngine.h",
+      "status": "implemented",
+      "accent_color": "#778899",
+      "category": "broth"
+    },
+    {
+      "id": "Overdub",
+      "param_prefix": "dub_",
+      "header": "Source/Engines/Overdub/OverdubEngine.h",
+      "status": "implemented",
+      "accent_color": "#6B7B3A",
+      "category": "original"
+    },
+    {
+      "id": "Overflow",
+      "param_prefix": "flow_",
+      "header": "Source/Engines/Overflow/OverflowEngine.h",
+      "status": "implemented",
+      "accent_color": "#1A3A5C",
+      "category": "broth"
+    },
+    {
+      "id": "Overgrow",
+      "param_prefix": "grow_",
+      "header": "Source/Engines/Overgrow/OvergrowEngine.h",
+      "status": "implemented",
+      "accent_color": "#228B22",
+      "category": "garden"
+    },
+    {
+      "id": "Overlap",
+      "source_instrument": "XOverlap",
+      "seance_score": 8.4,
+      "preset_count": 577,
+      "accent_color": "#00FFB4",
+      "accent_name": "Bioluminescent Cyan-Green",
+      "param_prefix": "olap_",
+      "header": "Source/Engines/Overlap/OverlapEngine.h",
+      "status": "implemented",
+      "category": "phase4"
+    },
+    {
+      "id": "Override",
+      "param_prefix": "ovrd_",
+      "header": "Source/Engines/Override/OverrideEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Overshoot",
+      "param_prefix": "ovsh_",
+      "header": "Source/Engines/Overshoot/OvershootEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Overtide",
+      "param_prefix": "ovt_",
+      "header": "Source/Engines/Overtide/OvertideEngine.h",
+      "status": "implemented",
+      "accent_color": "#1E4D6B",
+      "category": "tidal"
+    },
+    {
+      "id": "Overtone",
+      "param_prefix": "over_",
+      "header": "Source/Engines/Overtone/OvertoneEngine.h",
+      "status": "implemented",
+      "accent_color": "#A8D8EA",
+      "category": "theorem"
+    },
+    {
+      "id": "Overwash",
+      "param_prefix": "wash_",
+      "header": "Source/Engines/Overwash/OverwashEngine.h",
+      "status": "implemented",
+      "accent_color": "#F0F8FF",
+      "category": "broth"
+    },
+    {
+      "id": "Overworld",
+      "param_prefix": "ow_",
+      "header": "Source/Engines/Overworld/OverworldEngine.h",
+      "status": "implemented",
+      "accent_color": "#39FF14",
+      "category": "original"
+    },
+    {
+      "id": "Overworn",
+      "param_prefix": "worn_",
+      "header": "Source/Engines/Overworn/OverwornEngine.h",
+      "status": "implemented",
+      "accent_color": "#808080",
+      "category": "broth"
+    },
+    {
+      "id": "Oware",
+      "source_instrument": "XOware",
+      "seance_score": 9.2,
+      "preset_count": 175,
+      "accent_color": "#B5883E",
+      "accent_name": "Akan Goldweight",
+      "blessings": [
+        "B032",
+        "B033",
+        "B034"
+      ],
+      "param_prefix": "owr_",
+      "header": "Source/Engines/Oware/OwareEngine.h",
+      "status": "implemented",
+      "category": "singularity"
+    },
+    {
+      "id": "Owlfish",
+      "param_prefix": "owl_",
+      "header": "Source/Engines/Owlfish/OwlfishEngine.h",
+      "status": "implemented",
+      "accent_color": "#B8860B",
+      "category": "original"
+    },
+    {
+      "id": "Oxalis",
+      "param_prefix": "oxal_",
+      "header": "Source/Engines/Oxalis/OxalisEngine.h",
+      "status": "implemented",
+      "accent_color": "#9B59B6",
+      "category": "garden"
+    },
+    {
+      "id": "Oxbow",
+      "source_instrument": "XOxbow",
+      "seance_score": 9.0,
+      "preset_count": 175,
+      "accent_color": "#1A6B5A",
+      "accent_name": "Oxbow Teal",
+      "param_prefix": "oxb_",
+      "header": "Source/Engines/Oxbow/OxbowEngine.h",
+      "status": "implemented",
+      "category": "singularity"
+    },
+    {
+      "id": "Oxidize",
+      "param_prefix": "oxidize_",
+      "header": "Source/Engines/Oxidize/OxidizeEngine.h",
+      "status": "implemented",
+      "accent_color": "#4A9E8E",
+      "category": "corrosion"
+    },
+    {
+      "id": "Oxymoron",
+      "param_prefix": "oxym_",
+      "header": "Source/Engines/Oxymoron/OxymoronEngine.h",
+      "status": "designed"
+    },
+    {
+      "id": "Oxytocin",
+      "source_instrument": "XOxytocin",
+      "seance_score": 9.5,
+      "preset_count": 130,
+      "accent_color": "#9B5DE5",
+      "accent_name": "Synapse Violet",
+      "blessings": [
+        "B040"
+      ],
+      "notes": "Fleet leader \u2014 highest seance score",
+      "param_prefix": "oxy_",
+      "header": "Source/Engines/Oxytocin/OxytocinEngine.h",
+      "status": "implemented",
+      "category": "circuit"
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 **Date:** March 16, 2026
 **Phase:** 1 — Architecture R&D
-**Status:** V1 Scope — DSP build pending
+**Status:** Initial Scope — DSP build pending
 **Gallery code:** OUIE
 **Accent color:** Hammerhead Steel `#708090`
 **Parameter prefix:** `ouie_`
@@ -576,5 +576,5 @@ Accepted: `AmpToFilter`, `EnvToMorph`, `LFOToPitch`, `AudioToFM`. Sent: `getSamp
 
 ---
 
-*XO_OX Designs | Engine: OUIE | Accent: #708090 | Prefix: ouie_ | V1 scope | Phase 1 R&D*
+*XO_OX Designs | Engine: OUIE | Accent: #708090 | Prefix: ouie_ | initial scope | Phase 1 R&D*
 *"Two brothers. Two algorithms. One axis decides if they harmonize or destroy each other."*

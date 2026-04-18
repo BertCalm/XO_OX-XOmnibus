@@ -800,4 +800,4 @@ sequence — they are facets of a single character gesture.
 19. auval validation pass
 
 **Estimated parameter count**: 47 (within comfortable single-engine range)
-**Target fleet preset count**: 20 factory presets at launch (expandable to 50+ in V1.1)
+**Target fleet preset count**: 20 factory presets at launch (expandable to 50+ in a future update)

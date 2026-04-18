@@ -132,7 +132,7 @@
 | xpn_format_future_proofing_rnd.md      | XPN/XPM Format Future-Proofing — R&D Spec                            | 381   |
 | xpn_format_innovations_rnd.md          | XPN Format Innovations — Beyond Standard Pack Design                 | 467   |
 | xpn_free_pack_strategy_rnd.md          | XPN Free Pack Strategy — R&D                                         | 354   |
-| xpn_future_engine_pack_concepts_rnd.md | XPN Pack Concepts — V1 Concept Engines + Utility Engine Selection    | 289   |
+| xpn_future_engine_pack_concepts_rnd.md | XPN Pack Concepts — Concept Engines + Utility Engine Selection       | 289   |
 | xpn_hardware_compatibility_rnd.md      | XPN Hardware Compatibility Matrix — R&D Spec                         | 477   |
 | xpn_label_design_rnd.md                | XPN Pack Label & Visual Identity System — R&D Spec                   | 281   |
 | xpn_live_performance_rnd.md            | XPN Live Performance R&D                                             | 137   |

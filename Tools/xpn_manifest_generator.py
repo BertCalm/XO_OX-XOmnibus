@@ -28,7 +28,7 @@ from datetime import datetime, timezone
 OXPORT_VERSION = "2.0"
 MANUFACTURER = "XO_OX Designs"
 
-# Canonical engine short-name → display name mapping (all 34 registered + 4 V1 concept)
+# Canonical engine short-name → display name mapping (all 34 registered + 4 concept)
 ENGINE_DISPLAY_NAMES = {
     "ODDFELIX":  "OddfeliX",
     "ODDOSCAR":  "OddOscar",
@@ -64,7 +64,7 @@ ENGINE_DISPLAY_NAMES = {
     "OMBRE":     "XOmbre",
     "ORCA":      "XOrca",
     "OCTOPUS":   "XOctopus",
-    # V1 concept engines (no source yet, valid names)
+    # Concept engines (no source yet, valid names)
     "OSTINATO":  "XOstinato",
     "OPENSKY":   "XOpenSky",
     "OCEANDEEP": "XOceanDeep",

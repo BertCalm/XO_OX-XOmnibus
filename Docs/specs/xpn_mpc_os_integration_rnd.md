@@ -347,4 +347,4 @@ there is any configuration required. The answer is no.
 - **Q-Link range validation listening pass**: Current `Min`/`Max` ranges in both Python exporters
   are set conservatively. A formal listening pass with hardware MPC against each range across all
   four Q-Link presets (drum/melodic/atmospheric/character) would confirm or refine the ranges
-  before V1 pack release.
+  before the first pack release.

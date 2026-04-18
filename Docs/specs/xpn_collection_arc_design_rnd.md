@@ -199,7 +199,7 @@ Each collection should maintain a simple arc document alongside the pack specs: 
 
 ## 6. Cross-Collection Arc: Three Chapters
 
-Kitchen Essentials, Travel/Water/Vessels, and Artwork/Color are the three chapters of the XO_OX V1 library. In sequence they tell a larger story about the relationship between the maker, the world, and the imagination.
+Kitchen Essentials, Travel/Water/Vessels, and Artwork/Color are the three chapters of the XO_OX library. In sequence they tell a larger story about the relationship between the maker, the world, and the imagination.
 
 ### Chapter 1: Kitchen Essentials — The Inner World
 

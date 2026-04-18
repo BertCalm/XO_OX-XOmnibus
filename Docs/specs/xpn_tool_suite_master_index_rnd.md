@@ -65,7 +65,7 @@ Scripts that generate or expand preset collections — quadrant fills, DNA extre
 | `xpn_preset_rebalancer.py` | Analyze DNA centroid and suggest/generate rebalancing presets | Rebalance report + optional stubs |
 | `xpn_preset_variation_generator.py` | Generate N variations from a single XPM preset via parameter sweep | XPM variation files |
 | `xpn_variation_generator.py` | Generate tonal/spatial/character variations from a full XPN pack | Variant `.xpn` packs |
-| `xpn_engine_intro_preset_builder.py` | Generate placeholder intro presets for V1 concept engines with no code yet | `.xometa` intro presets |
+| `xpn_engine_intro_preset_builder.py` | Generate placeholder intro presets for concept engines with no code yet | `.xometa` intro presets |
 
 ---
 

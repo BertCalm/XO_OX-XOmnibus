@@ -1,6 +1,15 @@
-# XOceanus 6-Month Release Calendar
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> This 6-month release calendar was structured around fixed-date milestones
+> premised on a V1 launch window. XOceanus has retired that framing — there
+> is no fixed release cutoff. Content preserved for historical reference.
+> See `CLAUDE.md` → *Release Philosophy*.
+
+---
+
+# XOceanus 6-Month Release Calendar (HISTORICAL)
 **March 23 -- September 27, 2026 | 26 Weeks**
-**Created:** 2026-03-20
+**Created:** 2026-03-20 — retired 2026-04-16
 
 ---
 

@@ -167,9 +167,9 @@ The sidecar functions as a "preset import protocol": the XPN pack ships sounds, 
 
 **Recommended sequence:**
 1. Ship `params_sidecar.json` in all XO_OX packs immediately — zero external dependencies.
-2. Build XOceanus sidecar importer as a V1.1 feature.
+2. Build XOceanus sidecar importer as a follow-up feature.
 3. Pursue Apple notarization so XOceanus can distribute as a signed free download linked from pack pages.
 4. Monitor MPC Software changelog for third-party plugin bundle support — file a feature request with Akai.
-5. Full `plugin_bundle/` ZIP architecture is the V2 target, contingent on MPC Software support.
+5. Full `plugin_bundle/` ZIP architecture is a longer-term target, contingent on MPC Software support.
 
 The sidecar path delivers 80% of the user value (sounds + engine preset) with 0% of the firmware negotiation overhead.

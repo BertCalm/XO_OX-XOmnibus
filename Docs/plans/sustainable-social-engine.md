@@ -343,7 +343,7 @@ Curiosity. Not sold-to. The difference: sold-to means you already know the answe
 **3. What am I NOT pretending?**
 - Not pretending I have a team. This is one person.
 - Not pretending the community is large. It is small, and it is early.
-- Not pretending the product is finished. It is a V1, and more is coming.
+- Not pretending the product is finished. It is early, and more is coming.
 - Not pretending I am not excited. I am building something I have never seen before, and that is audible.
 
 **Month 1 voice:** Personal journal. Building in public. Honest numbers.

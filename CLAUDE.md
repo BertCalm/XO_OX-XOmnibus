@@ -6,8 +6,8 @@
 
 XOceanus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-and mutate into sounds impossible with any single synth. **88 engines implemented (101 in full fleet design)**
-— full engine color table + accent colors: `Docs/reference/engine-color-table.md`
+and mutate into sounds impossible with any single synth. **<!-- ENGINE_COUNT -->88<!-- /ENGINE_COUNT --> engines implemented (<!-- ENGINE_COUNT_DESIGNED -->111<!-- /ENGINE_COUNT_DESIGNED --> in full fleet design)**
+— single source of truth: `Docs/engines.json` · color table: `Docs/reference/engine-color-table.md`
 
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
@@ -156,10 +156,14 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Outlaw | `outl_` | `outl_diodeClip` |
 | Outbreak | `outb_` | `outb_virusFilter` |
 | Orrery | `orry_` | `orry_planetSpeed` |
+| Observandum | `observ_` | `observ_scanOffset` |
+| Oort | `oort_` | `oort_cloudDensity` |
+| Opsin | `ops_` | `ops_photonFlux` |
+| Octant | `octn_` | `octn_bearing` |
+| Ondine | `ond_` | `ond_driftRate` |
+| Ortolan | `ort_` | `ort_songPhase` |
 | Ostracon | `ostr_` | `ostr_oxide` |
-| Observandum | `observ_` | `observ_curveMorph` |
-| Opsin | `ops_` | `ops_topology` |
-| Oort | `oort_` | `oort_scatter` |
+| Overtide | `ovt_` | `ovt_tidalDepth` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -171,7 +175,8 @@ See `Docs/specs/xoceanus_name_migration_reference.md` for the full mapping and g
 |------|---------|
 | `Docs/specs/xoceanus_master_specification.md` | **THE** single source of truth |
 | `Docs/specs/xoceanus_name_migration_reference.md` | Legacy → canonical engine name mapping |
-| `Docs/reference/engine-color-table.md` | Full engine color table + Blessings + Debates (88 implemented, 101 fleet design) |
+| `Docs/engines.json` | **Single source of truth** for engine roster + count. Edit here; run `python Tools/sync_engine_sources.py` to propagate. |
+| `Docs/reference/engine-color-table.md` | Full engine color table + Blessings + Debates (<!-- ENGINE_COUNT -->88<!-- /ENGINE_COUNT --> implemented, <!-- ENGINE_COUNT_DESIGNED -->111<!-- /ENGINE_COUNT_DESIGNED --> fleet design) |
 | `Source/Core/SynthEngine.h` | Engine interface (all engines implement this) |
 | `Source/Core/EngineRegistry.h` | Factory + 4-slot management |
 | `Source/Core/MegaCouplingMatrix.h` | Cross-engine modulation |
@@ -274,11 +279,13 @@ Then update these external files:
 
 Full process: `Docs/specs/xoceanus_new_engine_process.md`
 
-## V1 Scope — "The Deep Opens"
+## Release Philosophy — "The Deep Opens"
 
-V1 ships OBRIX flagship + 6-8 FX engines + 20-25 curated engines (~28-34 total). Full 101-engine fleet design is personal; V1 gating is public release only (79 engines implemented to date). See `Docs/plans/v1-scope-revision-2026-03-23.md`.
+XOceanus does **not** operate on a fixed release cutoff. Build and refine until it's ready; ship when it's ready. There is no "V1 scope", no feature freeze, no curated subset gating a launch. The full <!-- ENGINE_COUNT_DESIGNED -->111<!-- /ENGINE_COUNT_DESIGNED -->-engine fleet design is the long-arc target; <!-- ENGINE_COUNT -->88<!-- /ENGINE_COUNT --> engines are implemented to date.
 
-**Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked.
+Do not propose "V1 readiness" plans, "V1 candidate" lists, or "ship V1" timelines. If a Claude session generates a cutoff-style roadmap, it is off-brief — correct it.
+
+**Patreon milestone unlocks:** Kitchen Collection quads released at patron thresholds (10/25/50/100/250/500). Permanent free once unlocked. (These are release milestones tied to patron count, not a version gate.)
 
 ### Kitchen Collection (24 engines across 6 quads)
 
@@ -295,7 +302,7 @@ All 6 quads built, seanced, and Guru Bin retreats complete (2026-03-23):
 
 ## Fleet Quality Summary
 
-- **80/88 engines seanced** (80/101 full fleet design). Observandum 8.6, Orrery 8.7, Opsin 8.7, Oort 8.7 (seanced 2026-04-15). OBIONT 8.2 (seanced 2026-04-15, D004+D002 fixes applied). Fleet average ~8.8/10. Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0).
+- **Fleet seanced:** see `Docs/engines.json` for authoritative per-engine status; fleet average ~8.8/10. Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0). Recent: Observandum 8.6, Orrery 8.7, Opsin 8.7, Oort 8.7 (seanced 2026-04-15). OBIONT 8.2 (D004+D002 fixes applied).
 - **All 6 doctrines resolved fleet-wide** (D001–D006). Prism Sweep 12-round pass complete (2026-03-14).
 - **49 Blessings** awarded — full table: `Docs/reference/engine-color-table.md`
 - **2 Open Debates** (DB001, DB002) — DB003–DB005 resolved. See reference table
@@ -343,7 +350,6 @@ Full index: `Skills/README.md`
 - Master specification: `Docs/specs/xoceanus_master_specification.md`
 - Discovery index: `Docs/INDEX.md`
 - Community strategy: `Docs/plans/community-strategy-v2.md`
-- V1 scope: `Docs/plans/v1-scope-revision-2026-03-23.md`
 - Kitchen Collection release calendar: `Docs/plans/kitchen-collection-release-calendar.md`
 - Fleet seance scores: `Docs/fleet-audit/fleet-seance-scores-2026-03-20.md`
 

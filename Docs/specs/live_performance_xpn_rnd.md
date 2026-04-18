@@ -180,7 +180,7 @@ The producer maintains a `set_dna_profile.json` that accumulates data during the
 }
 ```
 
-This profile is updated manually (producer fills a JSON template after each song, or via a companion iOS shortcut that prompts for ratings). In a future hardware integration, the MPC's MIDI output could auto-populate this during playback — but that is V2. V1 is manual.
+This profile is updated manually (producer fills a JSON template after each song, or via a companion iOS shortcut that prompts for ratings). In a future hardware integration, the MPC's MIDI output could auto-populate this during playback — but that is a later enhancement. For now, it is manual.
 
 **Generation Pipeline (between-song window, ~90 seconds)**
 

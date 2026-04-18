@@ -27,7 +27,7 @@ from pathlib import Path
 
 
 # ---------------------------------------------------------------------------
-# Engine accent color lookup (34 registered engines + 4 V1 concept engines)
+# Engine accent color lookup (34 registered engines + 4 concept engines)
 # ---------------------------------------------------------------------------
 ENGINE_COLORS = {
     "ODDFELIX":  (0x00, 0xA6, 0xD6),  # Neon Tetra Blue
@@ -64,7 +64,7 @@ ENGINE_COLORS = {
     "OCTOPUS":   (0xE0, 0x40, 0xFB),  # Chromatophore Magenta
     "OVERLAP":   (0x00, 0xFF, 0xB4),  # Lion's Mane Green
     "OUTWIT":    (0xCC, 0x66, 0x00),  # Octopus Amber
-    # V1 concept engines
+    # Concept engines
     "OSTINATO":  (0xE8, 0x70, 0x1A),  # Firelight Orange
     "OPENSKY":   (0xFF, 0x8C, 0x00),  # Sunburst
     "OCEANDEEP": (0x2D, 0x0A, 0x4E),  # Trench Violet

@@ -267,14 +267,14 @@ Oxport from a metadata pipeline into a complete end-to-end production system.
 
 ## 5. Oxport v2 Vision — 12-Month Roadmap
 
-### P0 (Ship before V1 release)
+### P0 (Ship before launch)
 | Item | Description |
 |------|-------------|
 | `renderNoteToWav()` | Fleet render integration — closes the manual render bottleneck |
 | Gumroad upload integration | `oxport publish --platform gumroad` — automated ZIP + asset upload |
 | Fleet DNA index | SQLite fleet DB updated on each pack build; queryable by all tools |
 
-### P1 (V1.x — within 6 months of V1 ship)
+### P1 (within 6 months of launch)
 | Item | Description |
 |------|-------------|
 | Audio preview generation | Post-render: auto-generate 15s MP3 previews from rendered WAVs |
@@ -282,7 +282,7 @@ Oxport from a metadata pipeline into a complete end-to-end production system.
 | Maschine format output | XPN → Maschine expansion XML via `xpn_to_maschine.py` |
 | CI pack validation | GitHub Actions gate on `xpn_validator.py` + `xpn_qa_checker.py` |
 
-### P2 (V2 — 6–12 months post V1)
+### P2 (6–12 months post launch)
 | Item | Description |
 |------|-------------|
 | XO-OX.org upload API | Direct publish to site store from `oxport publish` |
@@ -290,7 +290,7 @@ Oxport from a metadata pipeline into a complete end-to-end production system.
 | Community submission pipeline | `xpn_community_qa.py` + `xpn_submission_packager.py` → full review queue |
 | DAW session generator | Export a Logic/Ableton session pre-loaded with a pack's stems in quad-corner layout |
 
-### P3 (Exploratory / V2+)
+### P3 (Exploratory / longer-term)
 | Item | Description |
 |------|-------------|
 | Streaming infrastructure | If XO-OX.org adds a web player: server-side sample streaming |
@@ -342,10 +342,10 @@ competitive landscape is better understood.
 
 | Tier | Tools | Release Status |
 |------|-------|---------------|
-| **Open** | Format tools: `xpn_validator.py`, `xpn_drum_export.py`, `xpn_keygroup_export.py`, `xpn_kit_expander.py`, `xpn_bundle_builder.py`, `xpn_packager.py`, `xpn_normalize.py`, `xpn_smart_trim.py`, `xpn_choke_group_assigner.py` | Release with V1 |
-| **Open** | Utility tools: `xpn_manifest_generator.py`, `xpn_cover_art.py`, `xpn_liner_notes.py`, `xpn_pack_readme_generator.py` | Release with V1 |
-| **Hold** | Analytics/DNA tools: `xpn_pack_analytics.py`, `xpn_pack_score.py`, `xpn_setlist_builder.py`, `xpn_evolution_builder.py`, `xpn_auto_dna.py`, `xpn_optic_fingerprint.py` | Hold until V2 review |
-| **Hold** | Render pipeline: `XPNExporter.h` render methods, `renderNoteToWav()` | Hold until V2 |
+| **Open** | Format tools: `xpn_validator.py`, `xpn_drum_export.py`, `xpn_keygroup_export.py`, `xpn_kit_expander.py`, `xpn_bundle_builder.py`, `xpn_packager.py`, `xpn_normalize.py`, `xpn_smart_trim.py`, `xpn_choke_group_assigner.py` | Release at launch |
+| **Open** | Utility tools: `xpn_manifest_generator.py`, `xpn_cover_art.py`, `xpn_liner_notes.py`, `xpn_pack_readme_generator.py` | Release at launch |
+| **Hold** | Analytics/DNA tools: `xpn_pack_analytics.py`, `xpn_pack_score.py`, `xpn_setlist_builder.py`, `xpn_evolution_builder.py`, `xpn_auto_dna.py`, `xpn_optic_fingerprint.py` | Hold for later review |
+| **Hold** | Render pipeline: `XPNExporter.h` render methods, `renderNoteToWav()` | Hold for later |
 
 A dedicated `oxport-tools` GitHub repository can host the Open tier with MIT license.
 The Hold-tier tools remain in the XOceanus monorepo.
@@ -366,7 +366,7 @@ The Hold-tier tools remain in the XOceanus monorepo.
 | Format breadth | XPN + SFZ | NI: NKS + Maschine; Output: Kontakt |
 
 The Oxport suite is ahead of any publicly known toolchain in MPC format fidelity, pack analytics,
-and generative content. The single highest-leverage gap to close before V1 ship is `renderNoteToWav()`
+and generative content. The single highest-leverage gap to close before launch is `renderNoteToWav()`
 in `XPNExporter.h` — without it, every pack still requires manual DAW recording sessions that
 do not scale to the 34+ engine fleet.
 

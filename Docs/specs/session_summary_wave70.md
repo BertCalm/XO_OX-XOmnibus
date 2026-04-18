@@ -67,7 +67,7 @@ Total new tools this session: ~50+
 
 ## Opus-Deferred (logged, not blocking)
 
-- DSP builds for the 4 V1 concept engines: OSTINATO, OPENSKY, OCEANDEEP, OUIE
+- DSP builds for the 4 concept engines: OSTINATO, OPENSKY, OCEANDEEP, OUIE
 - XOscillograph IR library curation (impossible acoustic spaces — requires original recordings)
 - Revenue model validation once real Patreon patron counts are available
 - Seances for OVERLAP and OUTWIT (both installed and auval-passing; seance is the last ritual step)

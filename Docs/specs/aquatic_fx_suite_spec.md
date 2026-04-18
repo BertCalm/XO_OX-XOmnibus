@@ -1,6 +1,6 @@
 # Aquatic FX Suite — Design Specification
 
-**Status:** V1.1 scope — design + skeleton phase (implementation sessions follow)
+**Status:** Early-release scope — design + skeleton phase (implementation sessions follow)
 **Prefix:** `aqua_` for all parameters
 **Location:** `Source/DSP/Effects/AquaticFXSuite.h`
 **Integration point:** `Source/Core/MasterFXChain.h` — inserted as a named sub-chain
