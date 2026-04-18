@@ -74,7 +74,7 @@ inline const juce::StringArray validEngineNames{
     // KITCHEN Quad Collection
     "Oven", "Ochre", "Obelisk", "Opaline",
     // CELLAR Quad Collection
-    "Ogre", "Olate", "Oaken", "Omega",
+    "Ogive", "Olvido", "Ostracon", "Ogre", "Olate", "Oaken", "Omega",
     // GARDEN Quad Collection
     "Orchard", "Overgrow", "Osier", "Oxalis",
     // BROTH Quad Collection
@@ -216,6 +216,9 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Obelisk", "obel_"},
         {"Opaline", "opal2_"},
         // CELLAR Quad Collection
+        {"Ogive", "ogv_"},
+        {"Olvido", "olv_"},
+        {"Ostracon", "ostr_"},
         {"Ogre", "ogre_"},
         {"Olate", "olate_"},
         {"Oaken", "oaken_"},
@@ -256,6 +259,14 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Opsin", "ops_"},
         // Stochastic Cloud Synthesis
         {"Oort", "oort_"},
+        // Formant Vocal Tract Synthesis
+        {"Ondine", "ond_"},
+        // VOSIM Hierarchical Pulse Synthesis
+        {"Ortolan", "ort_"},
+        // Tensor Spectral Synthesis
+        {"Octant", "octn_"},
+        // Wavelet Multi-Resolution Synthesis
+        {"Overtide", "ovt_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();

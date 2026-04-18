@@ -89,6 +89,21 @@ public:
     /// Fired when the user clicks an ADV button. sectionIndex: 0=SAT … 4=COMP.
     std::function<void(int sectionIndex)> onAdvClicked;
 
+    /// Fired when prev/next preset buttons are clicked. direction: -1 or +1.
+    std::function<void(int direction)> onPresetNav;
+    /// Fired when the preset name display is clicked (open browser).
+    std::function<void()> onPresetClicked;
+
+    /// Set the displayed preset name (pushed from editor).
+    void setPresetName(const juce::String& name)
+    {
+        if (presetName_ != name)
+        {
+            presetName_ = name;
+            repaint();
+        }
+    }
+
 private:
     //==========================================================================
     // Geometry structs — rebuilt in resized(), used in paint() + mouse handlers.
@@ -159,11 +174,8 @@ private:
             totalContent += pillW;
         }
 
-        // Centre the content. If narrower than available, shift inward.
+        // Left-align the FX controls — preset display fills the right.
         float startX = padX;
-        const float availW = w - 2.0f * padX;
-        if (totalContent < availW)
-            startX = padX + (availW - totalContent) * 0.5f;
 
         float curX = startX;
         int   knobIdx = 0;
@@ -202,6 +214,27 @@ private:
 
             // Suppress unused variable warning for kSectionNames.
             (void)kSectionNames;
+        }
+
+        // ── Dot-matrix preset display in the remaining right space ──
+        const float presetPadding = 24.0f;
+        const float presetLeft = curX + presetPadding;
+        const float presetRight = w - padX;
+        if (presetRight - presetLeft > 100.0f) // only if enough space
+        {
+            // Prev/Next buttons (18×18)
+            const float btnSz = 18.0f;
+            presetPrevBounds_ = juce::Rectangle<float>(presetLeft, midY - btnSz * 0.5f, btnSz, btnSz);
+            presetNextBounds_ = juce::Rectangle<float>(presetRight - btnSz, midY - btnSz * 0.5f, btnSz, btnSz);
+            // Preset name fills between prev/next
+            presetNameBounds_ = juce::Rectangle<float>(
+                presetPrevBounds_.getRight() + 8.0f, midY - 10.0f,
+                presetNextBounds_.getX() - presetPrevBounds_.getRight() - 16.0f, 20.0f);
+            hasPresetDisplay_ = true;
+        }
+        else
+        {
+            hasPresetDisplay_ = false;
         }
     }
 
@@ -300,6 +333,56 @@ private:
             g.drawText("ADV", ar.bounds.toNearestInt(),
                        juce::Justification::centred, false);
         }
+
+        // ── Dot-matrix preset display (right side) ──
+        if (hasPresetDisplay_)
+        {
+            // Background panel — dot-matrix feel
+            auto displayRect = juce::Rectangle<float>(
+                presetPrevBounds_.getX() - 6.0f,
+                h * 0.5f - 14.0f,
+                presetNextBounds_.getRight() - presetPrevBounds_.getX() + 12.0f,
+                28.0f);
+            g.setColour(juce::Colour(8, 10, 14).withAlpha(0.60f));
+            g.fillRoundedRectangle(displayRect, 4.0f);
+            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+            g.drawRoundedRectangle(displayRect, 4.0f, 1.0f);
+
+            // Dot-matrix grid texture (subtle)
+            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.03f));
+            for (float dy = displayRect.getY() + 3.0f; dy < displayRect.getBottom() - 2.0f; dy += 3.0f)
+                for (float dx = displayRect.getX() + 3.0f; dx < displayRect.getRight() - 2.0f; dx += 3.0f)
+                    g.fillRect(dx, dy, 1.0f, 1.0f);
+
+            // Prev button (◀)
+            {
+                const auto& pb = presetPrevBounds_;
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(hoveredPresetBtn_ == 0 ? 0.6f : 0.25f));
+                juce::Path tri;
+                tri.addTriangle(pb.getRight() - 4.0f, pb.getY() + 4.0f,
+                                pb.getRight() - 4.0f, pb.getBottom() - 4.0f,
+                                pb.getX() + 4.0f, pb.getCentreY());
+                g.fillPath(tri);
+            }
+
+            // Next button (▶)
+            {
+                const auto& nb = presetNextBounds_;
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(hoveredPresetBtn_ == 1 ? 0.6f : 0.25f));
+                juce::Path tri;
+                tri.addTriangle(nb.getX() + 4.0f, nb.getY() + 4.0f,
+                                nb.getX() + 4.0f, nb.getBottom() - 4.0f,
+                                nb.getRight() - 4.0f, nb.getCentreY());
+                g.fillPath(tri);
+            }
+
+            // Preset name — dot-matrix monospace style
+            g.setFont(GalleryFonts::dotMatrix(12.0f));
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(0.75f));
+            g.drawText(presetName_.isEmpty() ? "INIT" : presetName_,
+                       presetNameBounds_.toNearestInt(),
+                       juce::Justification::centred, true);
+        }
     }
 
     //--------------------------------------------------------------------------
@@ -362,6 +445,26 @@ private:
     {
         const float mx = static_cast<float>(e.x);
         const float my = static_cast<float>(e.y);
+
+        // Preset display buttons.
+        if (hasPresetDisplay_)
+        {
+            if (presetPrevBounds_.expanded(4.0f).contains(mx, my))
+            {
+                if (onPresetNav) onPresetNav(-1);
+                return;
+            }
+            if (presetNextBounds_.expanded(4.0f).contains(mx, my))
+            {
+                if (onPresetNav) onPresetNav(1);
+                return;
+            }
+            if (presetNameBounds_.contains(mx, my))
+            {
+                if (onPresetClicked) onPresetClicked();
+                return;
+            }
+        }
 
         // ADV buttons.
         for (const auto& ar : advRegions_)
@@ -521,6 +624,14 @@ private:
     // Hover state
     int hoveredKnob_ = -1;
     int hoveredAdv_  = -1;
+    int hoveredPresetBtn_ = -1; // 0=prev, 1=next, -1=none
+
+    // Preset display state
+    juce::String presetName_;
+    bool hasPresetDisplay_ = false;
+    juce::Rectangle<float> presetPrevBounds_;
+    juce::Rectangle<float> presetNextBounds_;
+    juce::Rectangle<float> presetNameBounds_;
 
     // Laid-out regions (rebuilt each layoutControls() call)
     std::vector<KnobRegion>  knobRegions_;

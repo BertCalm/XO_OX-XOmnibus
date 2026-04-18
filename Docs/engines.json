@@ -10,8 +10,8 @@
     ],
     "notes": "This file is the single source of truth for engine roster and count. Parameter prefixes are FROZEN \u2014 never change after first registration. XOceanus has no fixed release cutoff. `status` reflects build state: 'implemented' means the engine has both a Source/Engines/ directory AND a frozen prefix in PresetManager.h; 'pending_*' flags work-in-progress. Run Tools/sync_engine_sources.py to regenerate dependent files.",
     "last_sync": "2026-04-16",
-    "engine_count": 81,
-    "engine_count_total": 104,
+    "engine_count": 88,
+    "engine_count_total": 111,
     "legacy_dir_aliases": {
       "Bite": "Overbite",
       "Bob": "Oblong",
@@ -21,7 +21,7 @@
       "Morph": "OddOscar",
       "Snap": "OddfeliX"
     },
-    "engine_count_designed": 104
+    "engine_count_designed": 111
   },
   "synthesis_engines": [
     {
@@ -212,6 +212,14 @@
       "category": "kitchen"
     },
     {
+      "id": "Octant",
+      "param_prefix": "octn_",
+      "header": "Source/Engines/Octant/OctantEngine.h",
+      "status": "implemented",
+      "accent_color": "#8B6F47",
+      "category": "navigation"
+    },
+    {
       "id": "Octave",
       "source_instrument": "XOctave",
       "seance_score_note": "8.01\u2192~8.7 post-fix",
@@ -304,6 +312,15 @@
       "category": "drums"
     },
     {
+      "id": "Ogive",
+      "param_prefix": "ogv_",
+      "header": "Source/Engines/Ogive/OgiveEngine.h",
+      "status": "implemented",
+      "accent_color": "#9B1B30",
+      "category": "cathedral",
+      "accent_name": "Selenium Ruby"
+    },
+    {
       "id": "Ogre",
       "param_prefix": "ogre_",
       "header": "Source/Engines/Ogre/OgreEngine.h",
@@ -352,6 +369,15 @@
       "category": "chef"
     },
     {
+      "id": "Olvido",
+      "param_prefix": "olv_",
+      "header": "Source/Engines/Olvido/OlvidoEngine.h",
+      "status": "implemented",
+      "accent_color": "#3B6E8F",
+      "category": "memory",
+      "accent_name": "Coelacanth Blue"
+    },
+    {
       "id": "Ombre",
       "param_prefix": "ombre_",
       "header": "Source/Engines/Ombre/OmbreEngine.h",
@@ -378,6 +404,14 @@
       "param_prefix": "omni_",
       "header": "Source/Engines/Omnistereo/OmnistereoEngine.h",
       "status": "designed"
+    },
+    {
+      "id": "Ondine",
+      "param_prefix": "ond_",
+      "header": "Source/Engines/Ondine/OndineEngine.h",
+      "status": "implemented",
+      "accent_color": "#2E8B8B",
+      "category": "water"
     },
     {
       "id": "Onkolo",
@@ -657,6 +691,14 @@
       "category": "navigation"
     },
     {
+      "id": "Ortolan",
+      "param_prefix": "ort_",
+      "header": "Source/Engines/Ortolan/OrtolanEngine.h",
+      "status": "implemented",
+      "accent_color": "#D4A574",
+      "category": "song"
+    },
+    {
       "id": "Osier",
       "param_prefix": "osier_",
       "header": "Source/Engines/Osier/OsierEngine.h",
@@ -725,6 +767,15 @@
       "header": "Source/Engines/Ostinato/OstinatoEngine.h",
       "status": "implemented",
       "category": "concept"
+    },
+    {
+      "id": "Ostracon",
+      "param_prefix": "ostr_",
+      "header": "Source/Engines/Ostracon/OstraconEngine.h",
+      "status": "implemented",
+      "accent_color": "#C0785A",
+      "category": "fragment",
+      "accent_name": "Shard Terracotta"
     },
     {
       "id": "Otis",
@@ -918,6 +969,14 @@
       "param_prefix": "ovsh_",
       "header": "Source/Engines/Overshoot/OvershootEngine.h",
       "status": "designed"
+    },
+    {
+      "id": "Overtide",
+      "param_prefix": "ovt_",
+      "header": "Source/Engines/Overtide/OvertideEngine.h",
+      "status": "implemented",
+      "accent_color": "#1E4D6B",
+      "category": "tidal"
     },
     {
       "id": "Overtone",

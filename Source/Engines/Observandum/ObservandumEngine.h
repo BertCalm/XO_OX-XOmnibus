@@ -20,7 +20,7 @@ namespace xoceanus
 //==============================================================================
 //
 //  O B S E R V A N D U M   E N G I N E
-//  Multi-Facet Crystalline Phase Distortion
+//  Polychromatic Phase Synthesis
 //
 //  XO_OX Aquatic Identity: Cuttlefish — Epipelagic zone. Chromatophore-rich
 //  skin shifts colour and pattern in real time, each "facet" of its skin a

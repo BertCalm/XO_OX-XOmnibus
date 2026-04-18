@@ -90,6 +90,59 @@ public:
         // 1. Draw the cached radial-gradient image.
         g.drawImageAt(cachedGradient_, 0, 0);
 
+        // 1b. Intensity-responsive gradient overlay — brightens center when audio plays.
+        //     Prototype: center rgb(26+i*12, 36+i*6, 56+i*18) → edge stays dark.
+        if (intensity_ > 0.01f)
+        {
+            const float cxf = static_cast<float>(bounds.getCentreX());
+            const float cyf = static_cast<float>(bounds.getCentreY());
+            const float maxDim = static_cast<float>(std::max(bounds.getWidth(),
+                                                              bounds.getHeight())) * 0.65f;
+            juce::ColourGradient intensityGrad(
+                juce::Colour(static_cast<juce::uint8>(26 + intensity_ * 12),
+                             static_cast<juce::uint8>(36 + intensity_ * 6),
+                             static_cast<juce::uint8>(56 + intensity_ * 18)).withAlpha(intensity_ * 0.3f),
+                cxf, cyf,
+                juce::Colours::transparentBlack,
+                cxf + maxDim, cyf, true);
+            g.setGradientFill(intensityGrad);
+            g.fillRect(bounds);
+        }
+
+        // 1c. Ambient breathing sweep — slow teal radial gradient drifts horizontally.
+        //     Prototype: sin(time * 0.02) maps to X position, very subtle 1.8% alpha.
+        if (!A11y::prefersReducedMotion())
+        {
+            const float bw = static_cast<float>(bounds.getWidth());
+            const float bh = static_cast<float>(bounds.getHeight());
+            const float breatheX = (std::sin(waveTime_ * 1.2f) * 0.5f + 0.5f) * bw;
+            // Alpha raised from 0.032 → 0.06 so the teal warmth reads prominently
+            // on the brighter baseline gradient even before any audio is playing.
+            juce::ColourGradient breatheGrad(
+                juce::Colour(60, 180, 170).withAlpha(0.06f),
+                breatheX, bh * 0.5f,
+                juce::Colours::transparentBlack,
+                breatheX + bw * 0.4f, bh * 0.5f, true);
+            g.setGradientFill(breatheGrad);
+            g.fillRect(bounds);
+        }
+
+        // 1d. Atmospheric teal glow from above — creates depth perception.
+        //     Radial overlay centred at 30 % height (above centre) simulates
+        //     sunlight filtering down through shallow water.  Always drawn so
+        //     the ocean has visible warmth even at zero intensity.
+        {
+            const float cx = getWidth() * 0.5f;
+            const float cy = getHeight() * 0.3f;  // above center
+            const float radius = static_cast<float>(std::max(getWidth(), getHeight())) * 0.7f;
+            juce::ColourGradient atmo(
+                juce::Colour(60, 180, 170).withAlpha(0.04f), cx, cy,
+                juce::Colours::transparentBlack, cx, cy + radius,
+                true);
+            g.setGradientFill(atmo);
+            g.fillRect(getLocalBounds());
+        }
+
         // 2. Overlay depth-zone ring fills (tinted, very low alpha).
         const float cx = static_cast<float>(bounds.getCentreX());
         const float cy = static_cast<float>(bounds.getCentreY());
@@ -105,10 +158,37 @@ public:
             paintWaveSurface(g, static_cast<float>(bounds.getWidth()),
                                 static_cast<float>(bounds.getHeight()));
 
-        // 4. When the ocean is empty (no coupling routes), draw additional faint
-        //    concentric ring outlines as a background texture.
-        if (!hasCouplingRoutes_)
-            paintEmptyStateTexture(g, cx, cy, halfMin);
+        // 3b. Preset transition ripple (FIX 23) — vertical sweep line on preset change.
+        if (presetRippleProgress_ > 0.0f && presetRippleProgress_ < 1.0f)
+        {
+            const float w = static_cast<float>(bounds.getWidth());
+            const float h = static_cast<float>(bounds.getHeight());
+            const float ripX = presetRippleFromLeft_
+                ? presetRippleProgress_ * w
+                : (1.0f - presetRippleProgress_) * w;
+            const float ripAlpha = (1.0f - presetRippleProgress_) * 0.4f;
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(ripAlpha));
+            g.drawLine(ripX, 0.0f, ripX, h, 3.0f * (1.0f - presetRippleProgress_));
+            // Secondary wave
+            const float rip2X = presetRippleFromLeft_
+                ? (presetRippleProgress_ - 0.05f) * w
+                : (1.0f - presetRippleProgress_ + 0.05f) * w;
+            g.setColour(juce::Colour(127, 219, 202).withAlpha(ripAlpha * 0.3f));
+            g.drawLine(rip2X, 0.0f, rip2X, h, 1.5f);
+        }
+
+        // 4. Animated teal depth rings — ALWAYS drawn (not just when empty).
+        //    Prototype: 4 rings at r=80,190,300,410 that wobble with intensity.
+        if (!A11y::prefersReducedMotion())
+            paintAnimatedDepthRings(g, cx, cy, static_cast<float>(bounds.getWidth()),
+                                   static_cast<float>(bounds.getHeight()));
+
+        // 5. Ghost buoy outlines — shown when no engines are loaded (FIX 12).
+        //    Four faint dashed circles hint at the slot positions so new users
+        //    know where to drop engines.
+        if (engineCount_ == 0)
+            paintGhostOutlines(g, static_cast<float>(bounds.getWidth()),
+                               static_cast<float>(bounds.getHeight()));
     }
 
     //==========================================================================
@@ -152,12 +232,45 @@ public:
             waveData_[i] = 0.0f;
         intensity_ = juce::jlimit(0.0f, 1.0f, rms);
         waveTime_ += 0.1f; // advance animation phase (~10 Hz tick)
+
+        // FIX 23: advance preset ripple progress at ~10 Hz
+        if (presetRippleProgress_ > 0.0f && presetRippleProgress_ < 1.0f)
+            presetRippleProgress_ += 0.03f;
+    }
+
+    //==========================================================================
+    /**
+        Call whenever the count of loaded engines changes.
+        When engineCount_ == 0 the background paints ghost buoy outlines as an
+        empty-state affordance.
+    */
+    void setEngineCount(int count)
+    {
+        const int clamped = juce::jmax(0, count);
+        if (engineCount_ != clamped)
+        {
+            engineCount_ = clamped;
+            repaint();
+        }
+    }
+
+    //==========================================================================
+    /**
+        Trigger a vertical sweep ripple across the ocean when a preset changes (FIX 23).
+        @param fromLeft  true = ripple sweeps left-to-right, false = right-to-left.
+    */
+    void triggerPresetRipple(bool fromLeft)
+    {
+        presetRippleProgress_ = 0.001f;
+        presetRippleFromLeft_ = fromLeft;
+        repaint();
     }
 
     //==========================================================================
     // Accessors
 
     bool hasCouplingRoutes() const noexcept { return hasCouplingRoutes_; }
+    int  getEngineCount()    const noexcept { return engineCount_; }
 
 private:
     //==========================================================================
@@ -167,11 +280,16 @@ private:
     juce::Image cachedGradient_;
     bool        hasCouplingRoutes_ = false;
     bool        needsRedraw_       = true;
+    int         engineCount_       = 0;  ///< number of loaded engines; 0 → ghost outlines shown
 
     // Wave surface state (pushed from OceanView timer, not audio thread)
     std::array<float, kWavePoints> waveData_ {};
     float waveTime_   = 0.0f;
     float intensity_  = 0.0f;
+
+    // Preset transition ripple (FIX 23)
+    float presetRippleProgress_ = 0.0f;
+    bool  presetRippleFromLeft_ = true;
 
     //==========================================================================
     /**
@@ -219,19 +337,32 @@ private:
         // Radius to corner ensures no un-filled rectangle corners.
         const float cornerRadius = std::sqrt(cx * cx + cy * cy);
 
+        // Baseline gradient colours — brighter than GalleryColors::Ocean tokens so
+        // the ocean is visible and vivid at silent startup.  Bumped above the
+        // HTML prototype reference (Tools/ui-preview/submarine.html) to match
+        // the "layered soundwaves + color differentiation" design direction:
+        //   centre (no audio): rgb(32, 48, 72)   ← was rgb(26, 36, 56)
+        //   edge:              rgb(16, 22, 32)    ← was rgb(18, 20, 26), now bluer
+        // GalleryColors::Ocean constants are intentionally NOT used here; they are
+        // too dark for the background gradient (abyss=#04040A, shallow=#142040).
+        static const juce::Colour kBaseCenter  (32,  48,  72);   // brighter blue-vivid center
+        static const juce::Colour kBaseTwilight(25,  38,  58);   // brighter interpolated midpoint
+        static const juce::Colour kBaseDeep    (22,  30,  48);   // brighter outer-mid zone
+        static const juce::Colour kBaseEdge    (16,  22,  32);   // bluer, less grey edge
+
         juce::ColourGradient grad(
-            juce::Colour(GalleryColors::Ocean::shallow),   // centre colour
+            kBaseCenter,            // centre colour (brighter baseline)
             cx, cy,
-            juce::Colour(GalleryColors::Ocean::abyss),     // edge colour
-            cx + cornerRadius, cy,                          // point at edge
+            kBaseEdge,              // edge colour (brighter baseline, not abyss)
+            cx + cornerRadius, cy,  // point at edge
             /*isRadial=*/true
         );
 
         // #1008 FIX 3: 4 gradient stops that correctly represent all 3 depth zones.
-        // Zone 1 (Sunlit):   centre → kSunlitRadius   → Ocean::shallow → Ocean::twilight
-        // Zone 2 (Twilight): kSunlitRadius → midpoint → Ocean::twilight → midpoint colour
-        // Zone 3 (Midnight): midpoint → kMidnightRadius → Ocean::deep
-        // Edge:              kMidnightRadius → corner   → Ocean::abyss (already set)
+        // Zone 1 (Sunlit):   centre → kSunlitRadius   → kBaseCenter  → kBaseTwilight
+        // Zone 2 (Twilight): kSunlitRadius → midpoint → kBaseTwilight → mid blend
+        // Zone 3 (Midnight): midpoint → kMidnightRadius → kBaseDeep
+        // Edge:              kMidnightRadius → corner   → kBaseEdge (already set)
         //
         // Positions are in juce::ColourGradient normalised space [0,1] where 1.0 =
         // cornerRadius.  Depth-zone constants are fractions of halfMin, so we
@@ -240,20 +371,16 @@ private:
         const float scale   = (cornerRadius > 0.0f) ? halfMin / cornerRadius : 1.0f;
 
         // Stop 1: inner edge of sunlit zone → twilight colour
-        grad.addColour(kSunlitRadius * scale,
-                       juce::Colour(GalleryColors::Ocean::twilight));
+        grad.addColour(kSunlitRadius * scale, kBaseTwilight);
 
         // Stop 2: midpoint between twilight and midnight zones — bridging colour.
         // Derived as the 50% blend of twilight and deep so there is no sharp jump.
-        const float midStop = ((kTwilightRadius + kMidnightRadius) * 0.5f) * scale;
-        const juce::Colour midColour =
-            juce::Colour(GalleryColors::Ocean::twilight)
-                .interpolatedWith(juce::Colour(GalleryColors::Ocean::deep), 0.5f);
+        const float midStop   = ((kTwilightRadius + kMidnightRadius) * 0.5f) * scale;
+        const juce::Colour midColour = kBaseTwilight.interpolatedWith(kBaseDeep, 0.5f);
         grad.addColour(midStop, midColour);
 
         // Stop 3: outer edge of midnight zone → deep colour
-        grad.addColour(kMidnightRadius * scale,
-                       juce::Colour(GalleryColors::Ocean::deep));
+        grad.addColour(kMidnightRadius * scale, kBaseDeep);
 
         ig.setGradientFill(grad);
         ig.fillAll();
@@ -268,25 +395,55 @@ private:
                              float cx, float cy,
                              float halfMin) const
     {
-        // Sunlit zone — warm cyan tint, 4 % alpha.
+        // Sunlit zone — warm cyan tint.
+        // Alpha raised to 0.12 (was 0.07) for stronger zone differentiation.
         {
             const float r = kSunlitRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.04f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.12f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
-        // Twilight zone — blue tint, 3 % alpha.
+        // Twilight zone — blue tint.
+        // Alpha raised to 0.09 (was 0.05) for stronger zone differentiation.
         {
             const float r = kTwilightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.03f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.09f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
-        // Midnight zone — violet tint, 4 % alpha.
+        // Midnight zone — violet tint.
+        // Alpha raised to 0.10 (was 0.06) for stronger zone differentiation.
         {
             const float r = kMidnightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.04f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.10f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
+        }
+    }
+
+    //==========================================================================
+    /**
+        Paint animated teal depth rings — always visible, wobble with intensity.
+        Prototype: 4 rings at r=80, 190, 300, 410px that wobble with wave time.
+    */
+    void paintAnimatedDepthRings(juce::Graphics& g,
+                                  float cx, float cy,
+                                  float /*w*/, float /*h*/) const
+    {
+        const juce::Colour teal(60, 180, 170);
+        static constexpr float kRingRadii[] = { 80.0f, 190.0f, 300.0f, 410.0f };
+
+        for (int i = 0; i < 4; ++i)
+        {
+            const float baseR = kRingRadii[i];
+            // Wobble: subtle radius oscillation driven by wave time + ring index
+            const float wobble = std::sin(waveTime_ * 0.3f + baseR * 0.005f)
+                               * intensity_ * 4.0f;
+            const float r = baseR + wobble;
+            // Raised floor from 0.025 → 0.045 so rings read on brighter baseline gradient.
+            const float alpha = 0.045f + intensity_ * 0.018f;
+
+            g.setColour(teal.withAlpha(alpha));
+            g.drawEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f, 1.0f);
         }
     }
 
@@ -416,6 +573,59 @@ private:
         // Bright core on top
         g.setColour(juce::Colour(120, 220, 210).withAlpha(0.08f + intensity_ * 0.25f));
         g.strokePath(primaryPath, juce::PathStrokeType(1.0f));
+    }
+
+    //==========================================================================
+    /**
+        Paint four ghost buoy outlines when no engines are loaded (FIX 12).
+
+        Positions match the prototype spec:
+            slot 0: (30%W, 35%H)   slot 1: (70%W, 35%H)
+            slot 2: (30%W, 65%H)   slot 3: (70%W, 65%H)
+
+        Each ghost is drawn as:
+          - A dashed circle stroke (4px dash, 4px gap), radius 28px,
+            teal rgba(127,219,202,0.12)
+          - A "+" centred in the circle, rgba(127,219,202,0.15), 20px font
+          - A slot number below the circle, rgba(127,219,202,0.10), 8px font
+    */
+    void paintGhostOutlines(juce::Graphics& g, float w, float h) const
+    {
+        static constexpr float kGhostPositions[4][2] = {
+            { 0.30f, 0.35f }, { 0.70f, 0.35f },
+            { 0.30f, 0.65f }, { 0.70f, 0.65f }
+        };
+        const juce::Colour ghostCol(127, 219, 202);
+
+        for (int i = 0; i < 4; ++i)
+        {
+            const float gx = kGhostPositions[i][0] * w;
+            const float gy = kGhostPositions[i][1] * h;
+            const float r  = 28.0f;
+
+            // ── Dashed circle ─────────────────────────────────────────────
+            juce::Path circle;
+            circle.addEllipse(gx - r, gy - r, r * 2.0f, r * 2.0f);
+            juce::Path dashedCircle;
+            const float dashes[] = { 4.0f, 4.0f };
+            juce::PathStrokeType(1.5f).createDashedStroke(dashedCircle, circle, dashes, 2);
+            g.setColour(ghostCol.withAlpha(0.12f));
+            g.fillPath(dashedCircle);
+
+            // ── "+" text ──────────────────────────────────────────────────
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(20.0f)));
+            g.setColour(ghostCol.withAlpha(0.15f));
+            g.drawText("+",
+                       juce::Rectangle<float>(gx - 15.0f, gy - 12.0f, 30.0f, 24.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+
+            // ── Slot number ───────────────────────────────────────────────
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
+            g.setColour(ghostCol.withAlpha(0.10f));
+            g.drawText(juce::String(i + 1),
+                       juce::Rectangle<float>(gx - 10.0f, gy + r + 4.0f, 20.0f, 10.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
     }
 
     //==========================================================================

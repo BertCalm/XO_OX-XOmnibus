@@ -8,8 +8,8 @@ DO NOT EDIT BY HAND — your changes will be overwritten on the next sync.
 To modify the engine roster, edit Docs/engines.json and run:
     python Tools/sync_engine_sources.py
 
-Implemented engines: 81
-Total entries (including pending): 104
+Implemented engines: 88
+Total entries (including pending): 111
 
 Usage:
     from engine_registry import get_all_engines, get_prefix, is_valid_engine
