@@ -223,8 +223,9 @@ private:
         juce::WeakReference<juce::Component> weakSelf { this };
         juce::MessageManager::callAsync([weakSelf, paramID]()
         {
-            if (weakSelf == nullptr) return;
-            auto* panel = static_cast<EpicSlotsPanel*>(weakSelf.get());
+            auto* raw = weakSelf.get();
+            if (raw == nullptr) return;
+            auto* panel = static_cast<EpicSlotsPanel*>(raw);
             for (int i = 0; i < kNumSlots; ++i)
                 if (paramID == chainParamId(i))
                     panel->updateChainPickerFromApvts(i);
