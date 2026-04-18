@@ -373,6 +373,10 @@ public:
                 substrate_.setCreatureCenter(slot, orbits_[slot].getCenter());
                 saveSlotPosition(slot);
             };
+            orbits_[i].onDragMoved = [this](int slot)
+            {
+                substrate_.setCreatureCenter(slot, orbits_[slot].getVisualCenter());
+            };
         }
 
         nexus_.onPresetNameClicked = [this]() { transitionToBrowser(); };
@@ -1708,9 +1712,18 @@ private:
         for (auto& orbit : orbits_)
             orbit.stepAnimation();
 
-        // Repaint only orbits that have engines loaded.
+        // Update coupling curves with visual positions (spring offset included).
+        // setCreatureCenter early-outs when position is unchanged, so this is
+        // cheap for idle orbits and only rebuilds paths during drag/settling.
+        for (int i = 0; i < 5; ++i)
+            if (orbits_[i].hasEngine())
+                substrate_.setCreatureCenter(i, orbits_[i].getVisualCenter());
+
+        // Repaint only orbits that are actively animating.
+        // Idle orbits freeze after their last frame — no 30Hz repaint means
+        // no sub-pixel antialiasing shimmer from wreath path recalculation.
         for (auto& orbit : orbits_)
-            if (orbit.hasEngine())
+            if (orbit.hasEngine() && orbit.isAnimating())
                 orbit.requestRepaint();
     }
 
@@ -1787,6 +1800,10 @@ private:
     {
         dismissDetailPanel();
 
+        // Kill any in-flight spring animations before layout changes setBounds.
+        for (auto& orbit : orbits_)
+            orbit.resetSpring();
+
         viewState_    = ViewState::Orbital;
         selectedSlot_ = -1;
 
@@ -1806,6 +1823,8 @@ private:
         }
 
         dismissDetailPanel();
+        for (auto& orbit : orbits_)
+            orbit.resetSpring();
 
         viewState_    = ViewState::ZoomIn;
         selectedSlot_ = slot;
@@ -1819,6 +1838,8 @@ private:
     void transitionToSplitTransform(int slot)
     {
         dismissDetailPanel();
+        for (auto& orbit : orbits_)
+            orbit.resetSpring();
 
         viewState_    = ViewState::SplitTransform;
         selectedSlot_ = slot;
@@ -1832,6 +1853,8 @@ private:
     void transitionToBrowser()
     {
         dismissDetailPanel();
+        for (auto& orbit : orbits_)
+            orbit.resetSpring();
 
         // Snapshot the pre-browser state so exitBrowser() can restore it exactly.
         preBrowserState_    = viewState_;

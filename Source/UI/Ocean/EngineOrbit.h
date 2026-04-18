@@ -59,6 +59,7 @@ public:
     enum class DepthZone  { Sunlit, Twilight, Midnight };
     enum class BuoyType   { Engine, FxEngine, MasterFx };
     enum class WreathShape { Sine, Saw, Square, Tri, Noise, Organ, Pulse, Harmonic };
+    enum class InputState  { Idle, UserDragging, Settling };
 
     //==========================================================================
     static constexpr float kOrbitalSize = 72.0f;   ///< Engine buoy diameter
@@ -85,6 +86,14 @@ public:
 
     void paint(juce::Graphics& g) override
     {
+        // DEBUG: count paints per second for slot 0
+        if (slotIndex_ == 0)
+        {
+            ++debugPaintCount_;
+            if (debugPaintCount_ % 30 == 0)
+                DBG("ORBIT[0] paint count=" + juce::String(debugPaintCount_));
+        }
+
         if (!hasEngine_)
         {
             // Ghost slot: dashed circle outline + "+" sign + slot number label.
@@ -128,9 +137,11 @@ public:
         const float cy = localBounds.getCentreY();
 
         // ── Effective size with breath ──────────────────────────────────────
+        // Zero breath at idle — the buoy is perfectly still on calm water.
+        // Breath scales in proportionally with activity (playing).
         const float breathAmplitude = A11y::prefersReducedMotion()
-                                          ? 0.0f
-                                          : kBreathAmplitude * std::sin(breathPhase_);
+            ? 0.0f
+            : kBreathAmplitude * std::sin(breathPhase_) * activityLevel_;
         const float creatureSize = kOrbitalSize * (1.0f + breathAmplitude);
         const float halfSize     = creatureSize * 0.5f;
         const float radius       = getBuoyRadius();
@@ -145,9 +156,10 @@ public:
         juce::Graphics::ScopedSaveState saveState(g);
         if (!A11y::prefersReducedMotion())
         {
-            // FIX 22: include bounceOffset_ so new buoys drop in from above
-            g.addTransform(juce::AffineTransform::translation(0.0f, bobOffset_ + bounceOffset_));
-            g.addTransform(juce::AffineTransform::rotation(tiltAngle_, cx, cy + bobOffset_ + bounceOffset_));
+            // Tidepool float: lateral sway + vertical bob + drop-in bounce
+            g.addTransform(juce::AffineTransform::translation(lateralOffset_, bobOffset_ + bounceOffset_));
+            g.addTransform(juce::AffineTransform::rotation(tiltAngle_, cx + lateralOffset_,
+                                                            cy + bobOffset_ + bounceOffset_));
         }
 
         // ── Water reflection ellipse (subtle, below buoy) ──────────────────
@@ -227,7 +239,24 @@ public:
             if (!A11y::prefersReducedMotion())
             {
                 const float wreathRadius = radius + 3.0f;
-                const float wreathAmp = 4.0f + wreathIntensity_ * 6.0f + wreathFlare_ * 12.0f;
+                // Zero at idle (smooth circle). Activity + audio drive oscillation.
+                const float wreathAmp = activityLevel_ * 4.0f
+                                      + wreathIntensity_ * 6.0f + wreathFlare_ * 12.0f;
+
+                // At idle (near-zero amplitude): draw a clean ellipse instead
+                // of the 128-point shape path.  This avoids sub-pixel
+                // antialiasing shimmer from path reconstruction on repaint.
+                if (wreathAmp < 0.5f)
+                {
+                    g.setColour(accentColour_.withAlpha(0.10f));
+                    g.drawEllipse(cx - wreathRadius, cy - wreathRadius,
+                                  wreathRadius * 2.0f, wreathRadius * 2.0f, 6.0f);
+                    g.setColour(accentColour_.withAlpha(0.50f));
+                    g.drawEllipse(cx - wreathRadius, cy - wreathRadius,
+                                  wreathRadius * 2.0f, wreathRadius * 2.0f, 1.5f);
+                }
+                else
+                {
                 constexpr int steps = 128;
 
                 juce::Path wreathPath;
@@ -263,6 +292,7 @@ public:
                     0.50f + wreathIntensity_ * 0.30f + wreathFlare_ * 0.40f);
                 g.setColour(accentColour_.withAlpha(coreAlpha));
                 g.strokePath(wreathPath, juce::PathStrokeType(1.5f + wreathIntensity_ * 0.5f));
+                } // end wreath path block
 
                 // ── Ambient edge glow (FIX 4: post-wreath, over wreath) ────
                 juce::ColourGradient ambientGlow(
@@ -458,6 +488,20 @@ public:
         if (!hasEngine_) return;
         isDragging_ = true;
         dragStartPos_ = e.position;
+
+        // Spring physics: record anchor in parent coords, accounting for any
+        // pre-existing offset so grabbing a settling orbit doesn't snap to home.
+        auto* parent = getParentComponent();
+        if (parent)
+        {
+            auto parentPos = e.getEventRelativeTo(parent).position;
+            dragAnchorParent_ = parentPos - springOffset_;
+            lastDragParentPos_ = parentPos;
+            prevDragParentPos_ = parentPos;
+        }
+
+        inputState_ = InputState::UserDragging;
+        springVelocity_ = {};
     }
 
     void mouseDrag(const juce::MouseEvent& e) override
@@ -468,29 +512,65 @@ public:
 
         auto parentPos = e.getEventRelativeTo(parent).position;
 
-        // Normalize against the ocean area (not full OceanView which includes dashboard).
-        // oceanAreaBounds_ is set by the parent via setOceanAreaBounds().
-        const auto area = oceanAreaBounds_.isEmpty()
-            ? parent->getLocalBounds().toFloat()
-            : oceanAreaBounds_;
+        // Track mouse positions for velocity estimation on release
+        prevDragParentPos_ = lastDragParentPos_;
+        lastDragParentPos_ = parentPos;
 
-        normalizedPosition_.x = juce::jlimit(0.08f, 0.92f,
-            (parentPos.x - area.getX()) / area.getWidth());
-        normalizedPosition_.y = juce::jlimit(0.08f, 0.85f,
-            (parentPos.y - area.getY()) / area.getHeight());
+        // Spring offset = displacement from home.  dragAnchorParent_ accounts
+        // for any pre-existing offset when grabbing a settling orbit.
+        springOffset_ = parentPos - dragAnchorParent_;
+        setTransform(juce::AffineTransform::translation(springOffset_.x, springOffset_.y));
 
-        if (onPositionChanged)
-            onPositionChanged(slotIndex_);
+        // Update coupling curves at mouse rate, not 30Hz timer rate.
+        if (onDragMoved) onDragMoved(slotIndex_);
     }
 
     void mouseUp(const juce::MouseEvent& e) override
     {
         isDragging_ = false;
-        // Click vs drag: only fire onClicked if minimal movement.
-        // No delay needed — single-click selects in place (no orbit movement),
-        // so double-click still hits the same component reliably.
-        if (e.getDistanceFromDragStart() < 8 && onClicked)
-            onClicked(slotIndex_);
+
+        if (e.getDistanceFromDragStart() < 8)
+        {
+            // Click, not drag — clear any micro-offset and fire handler.
+            inputState_ = InputState::Idle;
+            springOffset_ = {};
+            springVelocity_ = {};
+            setTransform({});
+            if (onClicked) onClicked(slotIndex_);
+        }
+        else
+        {
+            // Drag release: move home to drop position, then settle there
+            // with momentum.  This makes repositioning persistent.
+            auto* parent = getParentComponent();
+            if (parent)
+            {
+                // Compute new normalized position from drop point
+                const auto area = oceanAreaBounds_.isEmpty()
+                    ? parent->getLocalBounds().toFloat()
+                    : oceanAreaBounds_;
+                auto dropPos = lastDragParentPos_;
+                normalizedPosition_.x = juce::jlimit(0.08f, 0.92f,
+                    (dropPos.x - area.getX()) / area.getWidth());
+                normalizedPosition_.y = juce::jlimit(0.08f, 0.85f,
+                    (dropPos.y - area.getY()) / area.getHeight());
+
+                // Update home via callback (setBounds + save + substrate)
+                if (onPositionChanged)
+                    onPositionChanged(slotIndex_);
+            }
+
+            // Spring offset is now relative to the NEW home.
+            // Small momentum gives a satisfying settle at the drop point.
+            springOffset_ = {};
+            setTransform({});
+            inputState_ = InputState::Settling;
+            springVelocity_ = (lastDragParentPos_ - prevDragParentPos_) * 15.0f;
+
+            constexpr float kMaxVel = 400.0f;
+            springVelocity_.x = juce::jlimit(-kMaxVel, kMaxVel, springVelocity_.x);
+            springVelocity_.y = juce::jlimit(-kMaxVel, kMaxVel, springVelocity_.y);
+        }
     }
 
     void mouseDoubleClick(const juce::MouseEvent& /*e*/) override
@@ -505,6 +585,16 @@ public:
 
     void setEngine(const juce::String& engineId, juce::Colour accent, DepthZone zone)
     {
+        // Guard: the editor calls this every timer tick.  Only run the
+        // full setup (splash animation, randomization) on a real change.
+        if (hasEngine_ && engineId_ == engineId)
+        {
+            // Update accent/zone in case they changed, but skip splash.
+            accentColour_ = accent;
+            depthZone_    = zone;
+            return;
+        }
+
         engineId_     = engineId;
         accentColour_ = accent;
         depthZone_    = zone;
@@ -520,11 +610,9 @@ public:
         // Randomize wreath harmonics for per-engine variety
         wreathHarmonics_ = 6 + (juce::Random::getSystemRandom().nextInt(6));
 
-        // Randomize bobbing parameters so each buoy floats at its own rhythm
+        // Randomize tidepool phase so each buoy drifts independently
         auto& rng = juce::Random::getSystemRandom();
         bobPhase_ = rng.nextFloat() * juce::MathConstants<float>::twoPi;
-        bobSpeed_ = 0.28f + rng.nextFloat() * 0.18f;
-        bobAmp_   = 0.8f  + rng.nextFloat() * 0.7f;  // subtle idle bob (0.8-1.5px)
 
         // FIX 22: trigger drop splash + bounce-in on load
         splashAnim_   = 1.0f;
@@ -548,6 +636,8 @@ public:
         wreathPhase_      = 0.0f;
         wreathFlare_      = 0.0f;
         wreathIntensity_  = 0.0f;
+        activityLevel_    = 0.0f;
+        lateralOffset_    = 0.0f;
         playSurfaceVisible_ = false;
         rippleWriteIdx_   = 0;
         for (auto& r : ripples_) r.progress = 0.0f;
@@ -603,7 +693,12 @@ public:
         const int n = std::min(count, kWreathBufferSize);
         for (int i = 0; i < n; ++i)
             wreathBuffer_[static_cast<size_t>(i)] = samples[i];
-        wreathIntensity_ = juce::jlimit(0.0f, 1.0f, rms * 4.0f); // amplify RMS for visual effect
+        // Noise gate: below -34 dB (~0.02 RMS) is silence.
+        // Smooth toward target to prevent frame-to-frame jitter.
+        const float target = rms > 0.02f
+            ? juce::jlimit(0.0f, 1.0f, rms * 4.0f) : 0.0f;
+        wreathIntensity_ += (target - wreathIntensity_) * 0.15f;
+        if (wreathIntensity_ < 0.005f) wreathIntensity_ = 0.0f;
     }
 
     void setWreathShape(WreathShape s) { wreathShape_ = s; }
@@ -657,6 +752,29 @@ public:
         normalizedPosition_ = pos;
     }
 
+    //==========================================================================
+    // Spring physics (VQ 015 Step 4)
+    //==========================================================================
+
+    InputState getInputState() const noexcept { return inputState_; }
+    juce::Point<float> getSpringOffset() const noexcept { return springOffset_; }
+
+    /** Centre of the buoy including any spring displacement (for coupling curves). */
+    juce::Point<float> getVisualCenter() const
+    {
+        auto c = getBounds().toFloat().getCentre();
+        return { c.x + springOffset_.x, c.y + springOffset_.y };
+    }
+
+    /** Kill any in-flight spring animation (call on view-state transitions). */
+    void resetSpring()
+    {
+        inputState_ = InputState::Idle;
+        springOffset_ = {};
+        springVelocity_ = {};
+        setTransform({});
+    }
+
     juce::Point<float> getCenter() const
     {
         return getBounds().toFloat().getCentre();
@@ -669,6 +787,7 @@ public:
     std::function<void(int slotIndex)> onClicked;
     std::function<void(int slotIndex)> onDoubleClicked;
     std::function<void(int slotIndex)> onPositionChanged;
+    std::function<void(int slotIndex)> onDragMoved;  ///< visual pos changed during drag
 
     //==========================================================================
     // Animation — called by OceanView's single shared timer at 30 Hz
@@ -679,17 +798,42 @@ public:
     {
         if (!hasEngine_) return;
 
+        // ── DEBUG: write diagnostic values to file once per second (slot 0) ─
+        if (slotIndex_ == 0 && ++debugTick_ >= 30)
+        {
+            debugTick_ = 0;
+            auto f = juce::File("/tmp/orbit_debug.log");
+            f.appendText("vc=" + juce::String(voiceCount_)
+                + " wi=" + juce::String(wreathIntensity_, 4)
+                + " act=" + juce::String(activityLevel_, 4)
+                + " splash=" + juce::String(splashAnim_, 4)
+                + " bounce=" + juce::String(bounceOffset_, 2)
+                + " flare=" + juce::String(wreathFlare_, 4)
+                + " bob=" + juce::String(bobOffset_, 2)
+                + " lat=" + juce::String(lateralOffset_, 2)
+                + " anim=" + juce::String(isAnimating() ? 1 : 0)
+                + " buf=" + juce::String(bufferedToImage_ ? 1 : 0)
+                + " pc=" + juce::String(debugPaintCount_)
+                + "\n");
+        }
+
         const bool reducedMotion = A11y::prefersReducedMotion();
+        constexpr float twoPi = juce::MathConstants<float>::twoPi;
+
+        // ── Activity level — driven by actual audio energy only ─────────────
+        // Voice count is unreliable at idle (engines report active voices for
+        // LFOs, feedback tails, etc.).  Audio RMS = true playing intensity.
+        const float rawActivity = wreathIntensity_;
+        activityLevel_ += (rawActivity - activityLevel_) * 0.02f; // ~1.7s smoothing
+        if (activityLevel_ < 0.005f) activityLevel_ = 0.0f;      // hard floor
 
         // ── Breath phase advance ────────────────────────────────────────────
         if (!reducedMotion)
         {
-            const float voiceRamp = juce::jlimit(0.0f, 1.0f,
-                                                  static_cast<float>(voiceCount_) / 4.0f);
-            breathRate_ = 0.2f + voiceRamp * 0.3f;
-            breathPhase_ += breathRate_ / 30.0f * juce::MathConstants<float>::twoPi;
-            if (breathPhase_ >= juce::MathConstants<float>::twoPi)
-                breathPhase_ -= juce::MathConstants<float>::twoPi;
+            breathRate_ = 0.15f + activityLevel_ * 0.35f;
+            breathPhase_ += breathRate_ / 30.0f * twoPi;
+            if (breathPhase_ >= twoPi)
+                breathPhase_ -= twoPi;
         }
         else
         {
@@ -697,10 +841,12 @@ public:
         }
 
         // ── Wreath phase advance ────────────────────────────────────────────
-        if (!reducedMotion)
+        // Only spin the wreath ring when there's meaningful audio.
+        // Threshold high enough to ignore noise floor.
+        if (!reducedMotion && wreathIntensity_ > 0.05f)
         {
-            wreathPhase_ += 1.8f / 30.0f;
-            if (wreathPhase_ > 100.0f) wreathPhase_ -= 100.0f; // prevent float overflow
+            wreathPhase_ += 1.8f / 30.0f * wreathIntensity_;
+            if (wreathPhase_ > 100.0f) wreathPhase_ -= 100.0f;
         }
 
         // ── Wreath flare decay ──────────────────────────────────────────────
@@ -709,18 +855,44 @@ public:
         else
             wreathFlare_ = 0.0f;
 
-        // ── Bob + tilt animation (FIX 2) ───────────────────────────────────
+        // ── Tidepool dynamics — multi-frequency float (VQ 015) ─────────────
+        // Two independent slow phases, per-engine bobPhase_ as offset,
+        // so each buoy drifts at its own rhythm.  ALL motion amplitude is
+        // proportional to activity — true stillness at idle, motion only
+        // emerges when the engine is producing sound.
         if (!reducedMotion)
         {
-            bobOffset_  = std::sin(breathPhase_ * bobSpeed_ + bobPhase_)
-                          * (bobAmp_ + wreathIntensity_ * 4.0f);
-            tiltAngle_  = std::sin(breathPhase_ * 0.7f)
-                          * 0.012f * (1.0f + wreathIntensity_ * 3.0f);
+            // Phase advance: keep ticking even at idle so motion resumes
+            // smoothly — it's the amplitude that gates visibility, not phase.
+            tidePhaseSlow_ += (0.012f + activityLevel_ * 0.008f) * twoPi / 30.0f;
+            tidePhaseMed_  += (0.03f  + activityLevel_ * 0.02f)  * twoPi / 30.0f;
+            if (tidePhaseSlow_ > twoPi) tidePhaseSlow_ -= twoPi;
+            if (tidePhaseMed_  > twoPi) tidePhaseMed_  -= twoPi;
+
+            // Y-axis: zero at idle → 3.5px at full activity
+            const float ampY = activityLevel_ * 3.5f;
+            bobOffset_ = std::sin(tidePhaseSlow_ + bobPhase_) * ampY
+                       + std::sin(tidePhaseMed_ + bobPhase_ * 1.7f) * ampY * 0.35f;
+
+            // X-axis: zero at idle → 2px at full activity
+            const float ampX = activityLevel_ * 2.0f;
+            lateralOffset_ = std::sin(tidePhaseSlow_ * 0.7f + bobPhase_ * 1.3f) * ampX
+                           + std::sin(tidePhaseMed_ * 1.2f + bobPhase_ * 0.8f) * ampX * 0.3f;
+
+            // Tilt: zero at idle, proportional to activity
+            tiltAngle_ = activityLevel_ * std::sin(tidePhaseMed_ + bobPhase_) * 0.015f;
+
+            // Dead zone: snap to zero below 0.5px to prevent sub-pixel
+            // antialiasing shimmer on retina displays.
+            if (std::abs(bobOffset_) < 0.5f)     bobOffset_     = 0.0f;
+            if (std::abs(lateralOffset_) < 0.5f)  lateralOffset_ = 0.0f;
+            if (std::abs(tiltAngle_) < 0.001f)    tiltAngle_     = 0.0f;
         }
         else
         {
-            bobOffset_ = 0.0f;
-            tiltAngle_ = 0.0f;
+            bobOffset_     = 0.0f;
+            lateralOffset_ = 0.0f;
+            tiltAngle_     = 0.0f;
         }
 
         // ── Ripple advance ──────────────────────────────────────────────────
@@ -743,11 +915,74 @@ public:
             splashAnim_   = 0.0f;
             bounceOffset_ = 0.0f;
         }
+
+        // ── Spring physics — damped harmonic oscillator (VQ 015 Step 4) ────
+        // When Settling, drive springOffset_ toward zero (home position) with
+        // momentum from drag release.  Slightly underdamped for organic bounce.
+        if (inputState_ == InputState::Settling)
+        {
+            constexpr float dt        = 1.0f / 30.0f;
+            constexpr float stiffness = 300.0f;   // spring constant (N/m equiv)
+            constexpr float damping   = 22.0f;    // < 2*sqrt(k) = slightly underdamped
+
+            const float ax = -stiffness * springOffset_.x - damping * springVelocity_.x;
+            const float ay = -stiffness * springOffset_.y - damping * springVelocity_.y;
+
+            springVelocity_.x += ax * dt;
+            springVelocity_.y += ay * dt;
+            springOffset_.x   += springVelocity_.x * dt;
+            springOffset_.y   += springVelocity_.y * dt;
+
+            // Snap to home when displacement and velocity are negligible
+            const float offsetSq = springOffset_.x * springOffset_.x
+                                 + springOffset_.y * springOffset_.y;
+            const float velSq    = springVelocity_.x * springVelocity_.x
+                                 + springVelocity_.y * springVelocity_.y;
+
+            if (offsetSq < 0.25f && velSq < 1.0f)
+            {
+                springOffset_   = {};
+                springVelocity_ = {};
+                inputState_     = InputState::Idle;
+                setTransform({});
+            }
+            else
+            {
+                setTransform(juce::AffineTransform::translation(
+                    springOffset_.x, springOffset_.y));
+            }
+        }
+
+        // ── Image cache toggle ──────────────────────────────────────────────
+        // When idle, cache paint() as a bitmap.  The CouplingSubstrate is a
+        // transparent overlay that repaints 30x/sec — JUCE's compositor must
+        // re-render everything behind it.  Without caching, orbits get their
+        // 128-point wreath path reconstructed every frame, producing sub-pixel
+        // antialiasing variance (the "shaking" at idle).  With caching, JUCE
+        // blits the frozen bitmap — identical pixels every frame.
+        const bool shouldCache = !isAnimating();
+        if (shouldCache != bufferedToImage_)
+        {
+            bufferedToImage_ = shouldCache;
+            setBufferedToImage(shouldCache);
+        }
+
         // Repaint is triggered by OceanView after all orbits have been stepped.
     }
 
     /** Called by OceanView after stepping all orbits to trigger a repaint. */
     void requestRepaint() { repaint(); }
+
+    /** True when this orbit has visual changes that need repainting.
+        Idle orbits return false — stopping the 30Hz repaint eliminates
+        sub-pixel antialiasing shimmer from the wreath path. */
+    bool isAnimating() const noexcept
+    {
+        return activityLevel_ > 0.01f
+            || wreathFlare_   > 0.01f
+            || splashAnim_    > 0.01f
+            || inputState_   != InputState::Idle;
+    }
 
 private:
     //==========================================================================
@@ -812,6 +1047,14 @@ private:
     juce::Point<float> normalizedPosition_ { 0.5f, 0.5f };
     juce::Rectangle<float> oceanAreaBounds_ {}; // parent ocean area for drag normalization
 
+    // Spring physics (VQ 015 Step 4)
+    InputState inputState_ = InputState::Idle;
+    juce::Point<float> springOffset_ {};        ///< px displacement from home (setBounds) position
+    juce::Point<float> springVelocity_ {};      ///< px/second
+    juce::Point<float> dragAnchorParent_ {};    ///< parent-coord anchor for drag offset computation
+    juce::Point<float> lastDragParentPos_ {};   ///< last frame mouse pos (parent coords)
+    juce::Point<float> prevDragParentPos_ {};   ///< frame before last (for velocity estimation)
+
     // Animation
     float breathPhase_ = 0.0f;
     float breathRate_  = 0.2f;
@@ -825,12 +1068,14 @@ private:
     int        wreathHarmonics_ = 8;
     WreathShape wreathShape_    = WreathShape::Sine;
 
-    // Bobbing / tilt animation (FIX 2)
-    float bobPhase_  = 0.0f;   ///< random initial phase, set in setEngine()
-    float bobSpeed_  = 0.28f;  ///< cycles-per-breath-cycle; randomized in setEngine()
-    float bobAmp_    = 2.0f;   ///< pixels amplitude; randomized in setEngine()
-    float bobOffset_ = 0.0f;   ///< current computed Y offset (updated by stepAnimation)
-    float tiltAngle_ = 0.0f;   ///< current tilt radians (updated by stepAnimation)
+    // Tidepool dynamics (VQ 015) — replaces single-sine bob
+    float bobPhase_      = 0.0f;   ///< random per-engine phase offset (set in setEngine)
+    float bobOffset_     = 0.0f;   ///< current Y offset (px, from tidepool calc)
+    float lateralOffset_ = 0.0f;   ///< current X offset (px, lateral sway)
+    float tiltAngle_     = 0.0f;   ///< current tilt (radians)
+    float activityLevel_ = 0.0f;   ///< smoothed 0..1 blend of voiceCount + audio RMS
+    float tidePhaseSlow_ = 0.0f;   ///< primary swell phase (~80s idle cycle)
+    float tidePhaseMed_  = 0.0f;   ///< secondary wave phase (~33s idle cycle)
 
     // Buoy drop splash animation (FIX 22)
     float splashAnim_   = 0.0f;  ///< 1.0 on load, decays to 0
@@ -842,6 +1087,13 @@ private:
 
     // Dim alpha — set by OceanView when a sibling buoy is soloed (FIX 9)
     float dimAlpha_ = 1.0f;
+
+    // Image cache state — tracks setBufferedToImage() calls
+    bool bufferedToImage_ = false;
+
+    // Debug
+    int debugTick_ = 0;
+    int debugPaintCount_ = 0;
 
     // Ripple effects (fixed-size, no heap allocation — RAC finding F4)
     static constexpr size_t kMaxRipples = 8;

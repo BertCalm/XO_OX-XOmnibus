@@ -217,6 +217,15 @@ public:
         repaint();
     }
 
+    /** Store an updated centre without rebuilding paths or repainting.
+        The substrate's own 30 Hz timer will pick it up on the next tick.
+        Use this during drag to avoid rebuilding curves at mouse rate. */
+    void setCreatureCenterDeferred(int slot, juce::Point<float> center)
+    {
+        if (slot >= 0 && slot < kMaxSlots)
+            centers_[slot] = center;
+    }
+
     //==========================================================================
     /**
         Report the current voice count for a single engine slot.
@@ -875,8 +884,9 @@ private:
                 continue;
             }
 
-            // FIX 18: animate bow with wobbleTime_ so chains breathe/wobble
-            const float wobble = std::sin(wobbleTime_ * 0.6f) * 5.0f;
+            // FIX 18: wobble DISABLED for diagnostic — isolating jumpiness source.
+            const float wobble = 0.0f;
+            juce::ignoreUnused(wobbleTime_);
             rs.path    = buildBezierPath(from, to, rs.bowSign, rs.control, wobble);
         }
     }
