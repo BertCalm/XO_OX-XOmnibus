@@ -297,8 +297,8 @@ All 6 quads built, seanced, and Guru Bin retreats complete (2026-03-23):
 
 - **80/88 engines seanced** (80/101 full fleet design). Observandum 8.6, Orrery 8.7, Opsin 8.7, Oort 8.7 (seanced 2026-04-15). OBIONT 8.2 (seanced 2026-04-15, D004+D002 fixes applied). Fleet average ~8.8/10. Six engines at 9.0+ (OXYTO 9.5, OVERBITE 9.2, OWARE 9.2, OBSCURA 9.1, OUROBOROS 9.0, OXBOW 9.0).
 - **All 6 doctrines resolved fleet-wide** (D001–D006). Prism Sweep 12-round pass complete (2026-03-14).
-- **43 Blessings** awarded — full table: `Docs/reference/engine-color-table.md`
-- **5 Ongoing Debates** (DB001–DB005) — see reference table
+- **49 Blessings** awarded — full table: `Docs/reference/engine-color-table.md`
+- **2 Open Debates** (DB001, DB002) — DB003–DB005 resolved. See reference table
 - Detailed scores: `Docs/fleet-audit/fleet-seance-scores-2026-03-20.md`
 - Seance cross-reference: `Docs/seances/seance_cross_reference.md`
 - Individual verdicts: `Docs/seances/` and `scripture/seances/`
