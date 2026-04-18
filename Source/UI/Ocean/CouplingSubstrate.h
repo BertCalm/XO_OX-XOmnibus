@@ -217,13 +217,16 @@ public:
         repaint();
     }
 
-    /** Store an updated centre without rebuilding paths or repainting.
-        The substrate's own 30 Hz timer will pick it up on the next tick.
-        Use this during drag to avoid rebuilding curves at mouse rate. */
-    void setCreatureCenterDeferred(int slot, juce::Point<float> center)
+    /** Update centre and rebuild paths but skip repaint.
+        The substrate's own 30 Hz timer handles repaint consistently.
+        Avoids ~90 full-ocean repaints/sec that cause frame drops during drag. */
+    void setCreatureCenterForDrag(int slot, juce::Point<float> center)
     {
-        if (slot >= 0 && slot < kMaxSlots)
-            centers_[slot] = center;
+        if (slot < 0 || slot >= kMaxSlots) return;
+        if (centers_[slot] == center) return;
+        centers_[slot] = center;
+        rebuildPaths();
+        // No repaint — substrate timer repaints at a steady 30 Hz.
     }
 
     //==========================================================================
@@ -884,9 +887,8 @@ private:
                 continue;
             }
 
-            // FIX 18: wobble DISABLED for diagnostic — isolating jumpiness source.
-            const float wobble = 0.0f;
-            juce::ignoreUnused(wobbleTime_);
+            // FIX 18: gentle wobble so chains breathe like underwater cables.
+            const float wobble = std::sin(wobbleTime_ * 0.4f) * 1.5f;
             rs.path    = buildBezierPath(from, to, rs.bowSign, rs.control, wobble);
         }
     }

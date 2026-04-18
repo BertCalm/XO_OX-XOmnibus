@@ -86,14 +86,6 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        // DEBUG: count paints per second for slot 0
-        if (slotIndex_ == 0)
-        {
-            ++debugPaintCount_;
-            if (debugPaintCount_ % 30 == 0)
-                DBG("ORBIT[0] paint count=" + juce::String(debugPaintCount_));
-        }
-
         if (!hasEngine_)
         {
             // Ghost slot: dashed circle outline + "+" sign + slot number label.
@@ -516,13 +508,20 @@ public:
         prevDragParentPos_ = lastDragParentPos_;
         lastDragParentPos_ = parentPos;
 
-        // Spring offset = displacement from home.  dragAnchorParent_ accounts
-        // for any pre-existing offset when grabbing a settling orbit.
-        springOffset_ = parentPos - dragAnchorParent_;
-        setTransform(juce::AffineTransform::translation(springOffset_.x, springOffset_.y));
+        // Use setBounds (via onPositionChanged) during drag — proven to keep
+        // coupling curves attached.  setTransform is used only for post-release
+        // spring settle where there are no coupling curve endpoints to track.
+        const auto area = oceanAreaBounds_.isEmpty()
+            ? parent->getLocalBounds().toFloat()
+            : oceanAreaBounds_;
 
-        // Update coupling curves at mouse rate, not 30Hz timer rate.
-        if (onDragMoved) onDragMoved(slotIndex_);
+        normalizedPosition_.x = juce::jlimit(0.08f, 0.92f,
+            (parentPos.x - area.getX()) / area.getWidth());
+        normalizedPosition_.y = juce::jlimit(0.08f, 0.85f,
+            (parentPos.y - area.getY()) / area.getHeight());
+
+        if (onPositionChanged)
+            onPositionChanged(slotIndex_);
     }
 
     void mouseUp(const juce::MouseEvent& e) override
@@ -540,28 +539,9 @@ public:
         }
         else
         {
-            // Drag release: move home to drop position, then settle there
-            // with momentum.  This makes repositioning persistent.
-            auto* parent = getParentComponent();
-            if (parent)
-            {
-                // Compute new normalized position from drop point
-                const auto area = oceanAreaBounds_.isEmpty()
-                    ? parent->getLocalBounds().toFloat()
-                    : oceanAreaBounds_;
-                auto dropPos = lastDragParentPos_;
-                normalizedPosition_.x = juce::jlimit(0.08f, 0.92f,
-                    (dropPos.x - area.getX()) / area.getWidth());
-                normalizedPosition_.y = juce::jlimit(0.08f, 0.85f,
-                    (dropPos.y - area.getY()) / area.getHeight());
-
-                // Update home via callback (setBounds + save + substrate)
-                if (onPositionChanged)
-                    onPositionChanged(slotIndex_);
-            }
-
-            // Spring offset is now relative to the NEW home.
-            // Small momentum gives a satisfying settle at the drop point.
+            // Drag release: home is already at drop position (setBounds was
+            // called continuously during drag via onPositionChanged).
+            // Add a brief spring settle with momentum for organic feel.
             springOffset_ = {};
             setTransform({});
             inputState_ = InputState::Settling;
@@ -797,25 +777,6 @@ public:
     void stepAnimation()
     {
         if (!hasEngine_) return;
-
-        // ── DEBUG: write diagnostic values to file once per second (slot 0) ─
-        if (slotIndex_ == 0 && ++debugTick_ >= 30)
-        {
-            debugTick_ = 0;
-            auto f = juce::File("/tmp/orbit_debug.log");
-            f.appendText("vc=" + juce::String(voiceCount_)
-                + " wi=" + juce::String(wreathIntensity_, 4)
-                + " act=" + juce::String(activityLevel_, 4)
-                + " splash=" + juce::String(splashAnim_, 4)
-                + " bounce=" + juce::String(bounceOffset_, 2)
-                + " flare=" + juce::String(wreathFlare_, 4)
-                + " bob=" + juce::String(bobOffset_, 2)
-                + " lat=" + juce::String(lateralOffset_, 2)
-                + " anim=" + juce::String(isAnimating() ? 1 : 0)
-                + " buf=" + juce::String(bufferedToImage_ ? 1 : 0)
-                + " pc=" + juce::String(debugPaintCount_)
-                + "\n");
-        }
 
         const bool reducedMotion = A11y::prefersReducedMotion();
         constexpr float twoPi = juce::MathConstants<float>::twoPi;
@@ -1090,10 +1051,6 @@ private:
 
     // Image cache state — tracks setBufferedToImage() calls
     bool bufferedToImage_ = false;
-
-    // Debug
-    int debugTick_ = 0;
-    int debugPaintCount_ = 0;
 
     // Ripple effects (fixed-size, no heap allocation — RAC finding F4)
     static constexpr size_t kMaxRipples = 8;
