@@ -4,20 +4,38 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-  "name": "Coral Memory",
+  "name": "Coral Memory II",
   "mood": "Organic",
-  "engines": ["Obrix"],
-  "description": "A reef that remembers. Stateful synthesis accumulates stress from velocity over minutes — aggressive playing brightens future notes, sustained gentle play bleaches harmonics away. The instrument learns your performance style.",
-  "tags": ["obrix", "biophonic", "stateful", "organic", "signature"],
+  "engines": [
+    "Obrix"
+  ],
+  "description": "A reef that remembers. Stateful synthesis accumulates stress from velocity over minutes \u2014 aggressive playing brightens future notes, sustained gentle play bleaches harmonics away. The instrument learns your performance style.",
+  "tags": [
+    "obrix",
+    "biophonic",
+    "stateful",
+    "organic",
+    "signature"
+  ],
   "tier": "signature",
   "guru_bin": {
-    "retreat": "OBRIX — Wave 4 Signature Campaign",
+    "retreat": "OBRIX \u2014 Wave 4 Signature Campaign",
     "retreat_date": "2026-04-06",
-    "scripture": ["Verse 14: Stateful Synthesis — The Reef Remembers", "Gospel 5: Stress and Bleach"],
-    "revelation": "Stress decay at 0.6 with bleach at 0.4 creates a timbre that shifts over a 2-minute performance arc — bright and aggressive at first, then gradually softening if the player becomes gentle.",
+    "scripture": [
+      "Verse 14: Stateful Synthesis \u2014 The Reef Remembers",
+      "Gospel 5: Stress and Bleach"
+    ],
+    "revelation": "Stress decay at 0.6 with bleach at 0.4 creates a timbre that shifts over a 2-minute performance arc \u2014 bright and aggressive at first, then gradually softening if the player becomes gentle.",
     "god": null,
     "flock_note": "No other synthesizer changes its timbre based on cumulative performance history across notes.",
     "diagnosis": "Coral Memory is a statement preset for stateful synthesis: the instrument has memory. Play hard for a minute and the reef brightens. Play soft and it bleaches. State persists until reset."

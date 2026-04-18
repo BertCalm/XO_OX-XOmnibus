@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Tidal Pressure",
+  "name": "Tidal Pressure II",
   "mood": "Submerged",
   "engines": [
     "Orphica"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Nylon strings pressed under deep water — sub harmonic doubles every note an octave below, dark delay echoes into the abyss. Heavy, resonant, barely surfacing.",
+  "description": "Nylon strings pressed under deep water \u2014 sub harmonic doubles every note an octave below, dark delay echoes into the abyss. Heavy, resonant, barely surfacing.",
   "tags": [
     "nylon",
     "sub",

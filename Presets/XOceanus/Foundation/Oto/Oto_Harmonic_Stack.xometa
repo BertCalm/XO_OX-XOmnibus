@@ -1,21 +1,35 @@
 {
   "schema_version": 1,
-  "name": "Harmonic Stack",
+  "name": "Harmonic Stack II",
   "mood": "Foundation",
-  "engines": ["Oto"],
+  "engines": [
+    "Oto"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sho mid-register with a carefully tuned cluster density — enough pipes to create harmonic richness, not so many that the texture collapses. The sweet spot between solo and ensemble.",
+  "description": "Sho mid-register with a carefully tuned cluster density \u2014 enough pipes to create harmonic richness, not so many that the texture collapses. The sweet spot between solo and ensemble.",
   "tier": "standard",
-  "tags": ["foundation", "sho", "harmonic", "balanced"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "foundation",
+    "sho",
+    "harmonic",
+    "balanced"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.55,
     "MOVEMENT": 0.2,
     "COUPLING": 0.15,
     "SPACE": 0.55
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.42,

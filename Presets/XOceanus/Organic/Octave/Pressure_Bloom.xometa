@@ -1,21 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Pressure Bloom",
+  "name": "Pressure Bloom II",
   "mood": "Organic",
-  "engines": ["Octave"],
+  "engines": [
+    "Octave"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Wind pressure builds and blooms as the key is held — pitch rises slightly then settles, mimicking a real pipe's speech behavior. Each note feels unique, alive, unpredictable.",
+  "description": "Wind pressure builds and blooms as the key is held \u2014 pitch rises slightly then settles, mimicking a real pipe's speech behavior. Each note feels unique, alive, unpredictable.",
   "tier": "standard",
-  "tags": ["organic", "cavaille-coll", "romantic", "pressure", "speech"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "organic",
+    "cavaille-coll",
+    "romantic",
+    "pressure",
+    "speech"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.5,
     "MOVEMENT": 0.58,
     "COUPLING": 0.1,
     "SPACE": 0.58
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.35,

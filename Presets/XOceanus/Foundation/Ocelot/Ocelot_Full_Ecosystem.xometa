@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Full Ecosystem",
+  "name": "Full Ecosystem II",
   "mood": "Foundation",
   "engines": [
     "Ocelot"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Guru Bin Awakening 10 — All 12 EcosystemMatrix routes active. Notes are perturbations. The ecosystem has memory. Every stratum modulates every other. The forest plays itself.",
+  "description": "Guru Bin Awakening 10 \u2014 All 12 EcosystemMatrix routes active. Notes are perturbations. The ecosystem has memory. Every stratum modulates every other. The forest plays itself.",
   "tags": [
     "foundation",
     "guru-bin",

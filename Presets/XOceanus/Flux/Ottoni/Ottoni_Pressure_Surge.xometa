@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Pressure Surge",
+  "name": "Pressure Surge II",
   "mood": "Flux",
   "engines": [
     "Ottoni"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "All voices at maximum pressure with drive and drift surging — the brass pressure rising.",
+  "description": "All voices at maximum pressure with drive and drift surging \u2014 the brass pressure rising.",
   "tags": [
     "brass",
     "pressure",

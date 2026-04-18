@@ -1,21 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Stone Breath",
+  "name": "Stone Breath II",
   "mood": "Deep",
-  "engines": ["Oto"],
+  "engines": [
+    "Oto"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Khene at the pace of geological time — buzz muted to a low rumble, slow attack like tectonic movement, filter at the edge of darkness. Even the pipes feel made of stone.",
+  "description": "Khene at the pace of geological time \u2014 buzz muted to a low rumble, slow attack like tectonic movement, filter at the edge of darkness. Even the pipes feel made of stone.",
   "tier": "standard",
-  "tags": ["deep", "khene", "slow", "geological", "dark"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "deep",
+    "khene",
+    "slow",
+    "geological",
+    "dark"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.52,
     "MOVEMENT": 0.12,
     "COUPLING": 0.18,
     "SPACE": 0.68
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.2,

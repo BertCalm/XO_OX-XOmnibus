@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Fault Line",
+  "name": "Fault Line II",
   "mood": "Kinetic",
-  "engines": ["Origami"],
+  "engines": [
+    "Origami"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Geological fault line snapping at maximum tectonic kinetic energy. The fold isn't paper — it's continental crust.",
-  "tags": ["kinetic", "aggressive", "fault", "tectonic", "snap"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "Geological fault line snapping at maximum tectonic kinetic energy. The fold isn't paper \u2014 it's continental crust.",
+  "tags": [
+    "kinetic",
+    "aggressive",
+    "fault",
+    "tectonic",
+    "snap"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -37,7 +50,9 @@
       "origami_releaseTime": 0.18
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.9,

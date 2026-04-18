@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "name": "Abyssal Plain",
+  "name": "Abyssal Plain II",
   "mood": "Ethereal",
   "engines": [
     "Orca"
   ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The abyssal plain 4,000 meters below sea level — flattest terrain on Earth, sediment-silenced, where pressure exceeds 400 atmospheres and no light has penetrated in geological time.",
+  "description": "The abyssal plain 4,000 meters below sea level \u2014 flattest terrain on Earth, sediment-silenced, where pressure exceeds 400 atmospheres and no light has penetrated in geological time.",
   "tags": [
     "ethereal",
     "abyssal",
