@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-04-12 — 76 seanced (OPENSKY 8.1→8.5 formal pass 2026-04-11; OVERBITE "~9.2 est."→9.1/10 formal pass 2026-04-12; ORPHICA "~8.7 est."→8.4/10 formal re-seance 2026-04-12 — Under Consideration; OBIONT, OUTFLOW not yet seanced)
+**Updated:** 2026-04-15 — 80 seanced / 81 fleet (4 new engines seanced: OBSERVANDUM 8.6, ORRERY 8.7, OPSIN 8.7, OORT 8.7. OBIONT not yet seanced). Previous: OPENSKY 8.5 formal pass 2026-04-11; OVERBITE 9.1/10 formal pass 2026-04-12; ORPHICA 8.4/10 re-seance 2026-04-12
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -176,7 +176,7 @@
 
 ---
 
-## Seance Score Ranking (Updated 2026-04-12 — 77 Engines; 76 Seanced)
+## Seance Score Ranking (Updated 2026-04-15 — 81 Engines; 80 Seanced)
 
 ### Tier 1 — Excellent (9.0+)
 
@@ -445,6 +445,10 @@ OBLIQUE was the fleet's lowest scorer at 5.9/10. Rounds 3B, 7B, 7C, 7D, 7F addre
 | OLEG | `Docs/seance-oleg-verdict.md` | Sacred bellows (Bayan/Hurdy-gurdy/Bandoneon/Garmon), buzz bridge |
 | OTIS | `Docs/seance-otis-verdict.md` | Gospel organs (Hammond/Blues Harmonica/Accordion/Calliope) |
 | OXIDIZE | `Docs/seances/seance-oxidize-2026-04-05.md` | Temporal degradation synthesis, 6-stage corrosion cascade, 7 independent LUT curves. 8.7 pre-fix → 9.2+ post-fix. B044 proposed. |
+| OBSERVANDUM | `Docs/seances/seance-observandum-2026-04-15.md` | 8.6/10 Strong. Multi-facet crystalline phase distortion; 8 transfer-function curves (Chebyshev T4, Bessel J1); monotonicity enforcement. Blessing proposed: "Chromatophore Curves". RT safety fix applied (envSignalBuffer). |
+| ORRERY | `Docs/seances/seance-orrery-2026-04-15.md` | 8.7/10 Strong. Fleet navigation vector synthesis; 4-corner orbital pad. Two Blessings proposed: "Ephemeris Gesture Capture" (Catmull-Rom gesture replay) + "Gravity Well Coupling" (coupling-driven timbral displacement). TempoSync hardcoded at 120 BPM (minor). |
+| OPSIN | `Docs/seances/seance-opsin-2026-04-15.md` | 8.7/10 Strong. 6-node pulse-coupled oscillator network (Mirollo & Strogatz 1990). Blessing proposed: "Hebbian Plasticity" (live fire-together-wire-together learning). Accent color fix applied (#FF00CC → #00FFCC). D003 PASS with citations. |
+| OORT | `Docs/seances/seance-oort-2026-04-15.md` | 8.7/10 Strong. GENDY stochastic cloud synthesis (Xenakis 1991). Blessing proposed: "Markov Stochastic Walk" (per-cycle Markov chain mutation). std::vector→std::array fix applied for RT safety. D003 PASS with 4 citations. |
 
 ---
 

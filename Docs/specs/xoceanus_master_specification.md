@@ -160,7 +160,7 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 2.6 Design Doctrines
 
-The 6 Doctrines are the quality contract every XOceanus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 77 engines.
+The 6 Doctrines are the quality contract every XOceanus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 81 engines.
 
 | ID | Doctrine | Requirement |
 |----|----------|------------|
@@ -179,7 +179,7 @@ The 6 Doctrines are the quality contract every XOceanus engine must satisfy. The
 
 ## 3. Engine Modules
 
-### 3.1 The 77 Engines
+### 3.1 The 81 Engines
 
 | Short Name | Source Instrument | Accent Color | Parameter Prefix |
 |-----------|------------------|-------------|-----------------|
@@ -260,6 +260,10 @@ The 6 Doctrines are the quality contract every XOceanus engine must satisfy. The
 | **OKEANOS** | XOkeanos | Cardamom Gold `#C49B3F` | `okan_` |
 | **OUTFLOW** | XOutflow | Deep Storm Indigo `#1A1A40` | `out_` |
 | **OXIDIZE** | XOxidize | Verdigris `#4A9E8E` | `oxidize_` |
+| **ORRERY** | XOrrery | Orrery Brass `#C8A84B` | `orry_` |
+| **OBSERVANDUM** | XObservandum | Cuttlefish Teal `#4ECDC4` | `observ_` |
+| **OPSIN** | XOpsin | Bioluminescent Cyan `#00FFCC` | `ops_` |
+| **OORT** | XOort | Oort Cloud Violet `#9B7FD4` | `oort_` |
 
 ### 3.2 Engine Visual Identity
 
@@ -1111,7 +1115,7 @@ The MVP ships with:
 
 ### 12.2 v1.0 Target
 
-- All 77 engines wrapped and integrated
+- All 81 engines wrapped and integrated
 - Full coupling matrix (15 types)
 - PlaySurface (all 3 modes)
 - 17,000+ factory presets with DNA fingerprints
