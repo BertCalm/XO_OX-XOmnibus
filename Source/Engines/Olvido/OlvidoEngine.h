@@ -444,6 +444,24 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
 
+        // ---- Per-block per-voice crossover filter setup ----
+        // Crossover frequencies are block-constant (depend on shorelineShift only),
+        // so set mode + coefficients once per block per voice instead of per sample
+        // (was 5 LP + 5 HP × N samples × maxVoices = up to ~32k redundant SVF
+        // coefficient calculations per block).
+        for (auto& voice : voices)
+        {
+            if (!voice.active)
+                continue;
+            for (int ci = 0; ci < 5; ++ci)
+            {
+                voice.crossoverLP[ci].setMode(CytomicSVF::Mode::LowPass);
+                voice.crossoverLP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+                voice.crossoverHP[ci].setMode(CytomicSVF::Mode::HighPass);
+                voice.crossoverHP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+            }
+        }
+
         // ---- Per-sample render loop ----
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
         {
@@ -583,15 +601,10 @@ public:
 
                 for (int ci = 0; ci < 5; ++ci)
                 {
-                    // Low-pass at this crossover → goes into band ci
-                    voice.crossoverLP[ci].setMode(CytomicSVF::Mode::LowPass);
-                    voice.crossoverLP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+                    // Crossover mode + coefficients set once per block above — only
+                    // the per-sample state update happens here.
                     bandSignal[ci] = voice.crossoverLP[ci].processSample(residual);
-
-                    // High-pass continues to next band
-                    voice.crossoverHP[ci].setMode(CytomicSVF::Mode::HighPass);
-                    voice.crossoverHP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
-                    residual = voice.crossoverHP[ci].processSample(residual);
+                    residual       = voice.crossoverHP[ci].processSample(residual);
 
                     bandSignal[ci] = flushDenormal(bandSignal[ci]);
                     residual       = flushDenormal(residual);
