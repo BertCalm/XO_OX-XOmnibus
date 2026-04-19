@@ -214,6 +214,11 @@ public:
         float sumI = 0.0f, sumP = 0.0f, sumC = 0.0f;
         int activeCount = 0;
 
+        // Pan gains are block-constant (snap.pan is stable per block) and identical
+        // for every voice — compute once here instead of inside the per-voice loop.
+        const float blockPanL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
+        const float blockPanR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
+
         for (int vi = 0; vi < maxV; ++vi)
         {
             auto& v = voices[vi];
@@ -246,16 +251,14 @@ public:
             sumC += v.lastEffC;
             ++activeCount;
 
-            // Mix to stereo with pan
-            float panL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
-            float panR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
-
+            // Mix to stereo with pan (blockPanL/R precomputed above — block-constant,
+            // identical for all voices so the sqrt is hoisted out of the voice loop).
             auto* outL = buffer.getWritePointer(0);
             auto* outR = buffer.getWritePointer(1);
             for (int s = 0; s < numSamples; ++s)
             {
-                outL[s] += monoBuffer[s] * panL;
-                outR[s] += monoBuffer[s] * panR;
+                outL[s] += monoBuffer[s] * blockPanL;
+                outR[s] += monoBuffer[s] * blockPanR;
             }
         }
 
