@@ -454,9 +454,16 @@ public:
         sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 44100.0f;
         maxBlock = maxBlockSize;
 
+        // Cache 5 ms amp smoother coefficient — was recomputed every block via std::exp.
+        cachedAmpSmoothCoeff = 1.0f - fastExp(-1.0f / (0.005f * sampleRateFloat));
+
         for (int i = 0; i < kOvertideMaxVoices; ++i)
         {
             voices[i].reset(sampleRateFloat);
+            // Prepare envelopes once (they only need the sample rate; per-block
+            // setADSR calls then update A/D/S/R without touching sr).
+            voices[i].ampEnv.prepare(sampleRateFloat);
+            voices[i].filterEnv.prepare(sampleRateFloat);
             // Per-voice PRNG seed diversification
             for (int s = 0; s < kOvertideNumScales; ++s)
                 voices[i].gens[s].rng = 12345u
@@ -858,8 +865,9 @@ public:
             lastScaleBalance = finalScaleBalance;
         }
 
-        // Coupling accumulator decay — sample-rate and block-size independent (~1s time constant)
-        const float couplingDecay = std::exp(-static_cast<float>(numSamples) / (sampleRateFloat * 1.0f));
+        // Coupling accumulator decay — sample-rate and block-size independent (~1s time constant).
+        // fastExp (~6% worst case) is ample for an envelope decay coefficient.
+        const float couplingDecay = fastExp(-static_cast<float>(numSamples) / sampleRateFloat);
         couplingAmpFilter *= couplingDecay;
         couplingEnvMorph  *= couplingDecay;
         couplingRhythm    *= couplingDecay;
@@ -902,6 +910,18 @@ private:
     {
         const float f = lerp(baseFreq, fundamental, pitchTrack);
         return f * fastPow2(static_cast<float>(scaleIndex));
+    }
+
+    // Nyquist-aware amplitude fade for a given scale frequency. Returns 1.0 below
+    // 0.45·sr, 0.0 at or above 0.499·sr, linear in between. Fixes the "cliff"
+    // artefact when upper scales cross Nyquist during pitch sweeps.
+    static float nyquistFade(float centerFreq, float sampleRate) noexcept
+    {
+        const float nyTop   = sampleRate * 0.499f;
+        const float nyStart = sampleRate * 0.45f;
+        if (centerFreq < nyStart) return 1.0f;
+        if (centerFreq >= nyTop)  return 0.0f;
+        return 1.0f - (centerFreq - nyStart) / (nyTop - nyStart);
     }
 
     // Envelope rate: inversely proportional to freq (natural wavelet behavior)
@@ -949,14 +969,16 @@ private:
     {
         if (startSample >= endSample) return;
 
+        // 5 ms smoothing coefficient for wavelet amplitudes — constant across the block.
+        // Cached once per block per voice instead of per voice per block with std::exp.
+        const float ampSmoothCoeff = cachedAmpSmoothCoeff;
+
         for (auto& v : voices)
         {
             if (!v.active) continue;
 
-            // Set envelope params
-            v.ampEnv.prepare(sampleRateFloat);
+            // ADSR parameters (prepare() is a one-time call done at engine prepare / note-on).
             v.ampEnv.setADSR(ampAtk, ampDec, ampSus, ampRel);
-            v.filterEnv.prepare(sampleRateFloat);
             v.filterEnv.setADSR(fltAtk, fltDec, fltSus, fltRel);
 
             // LFO setup (block-rate)
@@ -965,14 +987,15 @@ private:
             v.lfo2.setRate(lfo2Rate, sampleRateFloat);
             v.lfo2.setShape(lfo2Shape);
 
-            // Sample-rate-scaled amplitude smoother (~5ms smoothing time)
-            const float ampSmoothCoeff = 1.0f - std::exp(-1.0f / (0.005f * sampleRateFloat));
             for (int sc = 0; sc < scaleCount; ++sc)
                 v.gens[sc].smoothCoeff = ampSmoothCoeff;
 
             const float noteFundamental = midiToFreq(v.note);
-            const float keyTrackHz = static_cast<float>(v.note - 60)
-                * (baseCutoff * fltKeyTrack / 60.0f);
+            // Exponential filter keytracking: each semitone above C3 multiplies cutoff by
+            // 2^(keyTrack/12). True musical keytracking (was a hand-rolled linear mix of
+            // baseCutoff and note offset that mis-scaled at the extremes).
+            const float keyTrackMul = fastPow2(
+                static_cast<float>(v.note - 60) * fltKeyTrack * (1.0f / 12.0f));
 
             const bool syncRetrig = v.syncRetrigRequest.load(std::memory_order_acquire);
             v.syncRetrigRequest.store(false, std::memory_order_relaxed);
@@ -986,8 +1009,10 @@ private:
                     v.glideFreq = noteFundamental;
                 v.glideFreq = flushDenormal(v.glideFreq);
 
+                // Pitch bend ±2 semitones: compile-time constant avoids per-sample divide.
+                constexpr float kPitchBendOver12 = 2.0f / 12.0f;
                 const float fundamental = std::max(10.0f, v.glideFreq
-                    * fastPow2(pitchBendValue * 2.0f / 12.0f));  // ±2 semitones
+                    * fastPow2(pitchBendValue * kPitchBendOver12));
 
                 // LFO values (LIVE, per-sample, D002)
                 const float lfo1Val = v.lfo1.process() * lfo1Depth;
@@ -1034,8 +1059,9 @@ private:
                 // Filter envelope
                 const float fltEnvLevel = v.filterEnv.process();
 
-                // FM coupling for this sample
-                const float fmMod = couplingFmBuf[std::min(static_cast<size_t>(s), static_cast<size_t>(maxBlock - 1))];
+                // FM coupling for this sample — bounds check hoisted out of the 8-scale loop.
+                const size_t fmIdx = static_cast<size_t>(std::min(s, maxBlock - 1));
+                const float fmMod = couplingFmBuf[fmIdx];
 
                 // Sum all active wavelet generators
                 float sumL = 0.0f;
@@ -1045,13 +1071,19 @@ private:
                 for (int sc = 0; sc < scaleCount; ++sc)
                 {
                     const float centerFreq = computeScaleFreq(sc, fundamental, pitchTrack, baseFreq);
+                    // Anti-aliasing fade: skip scales above 0.499·sr, ramp linearly from 0.45·sr.
+                    // Was: silent hard cutoff on upper scales as pitch swept up, producing
+                    // audible "cliff" artefacts. Now smoothly fades out-of-range scales.
+                    const float aaFade = nyquistFade(centerFreq, sampleRateFloat);
+                    if (aaFade <= 0.0f) continue;
+
                     const float envRate    = computeEnvRate(sc, centerFreq, effEnvDecay, sampleRateFloat);
 
                     // Per-scale amplitude target (D001 velTimbre applies)
                     const float scaleAmp = computeScaleAmplitude(
                         sc, scaleCount, effScaleBalance, brightness, v.velocity, velTimbre);
 
-                    v.gens[sc].amplitude = scaleAmp;
+                    v.gens[sc].amplitude = scaleAmp * aaFade;
 
                     // Sync mode retrigger on RhythmToBlend
                     const bool forceRetrig = syncRetrig && (retrigMode == 1);
@@ -1070,33 +1102,34 @@ private:
 
                     sumL += waveSample * gainL;
                     sumR += waveSample * gainR;
-                    totalAmp += scaleAmp;
+                    totalAmp += scaleAmp * aaFade;
                 }
 
-                // Soft normalization to prevent clipping when many scales are active
-                if (totalAmp > 0.001f)
-                {
-                    const float normFactor = 1.0f / (totalAmp + 0.5f);
-                    sumL *= normFactor;
-                    sumR *= normFactor;
-                }
+                // Soft normalisation: scale gracefully from quiet (1 scale) to loud (8
+                // scales). Was dividing by `totalAmp + 0.5` which squashed low-scale-count
+                // presets to half volume.
+                const float normFactor = 1.0f / (0.5f + 0.5f * totalAmp);
+                sumL *= normFactor;
+                sumR *= normFactor;
 
-                sumL = flushDenormal(sumL);
-                sumR = flushDenormal(sumR);
+                // Soft-clip additive sum: stacked scales + FM coupling can exceed unity.
+                sumL = softClip(sumL);
+                sumR = softClip(sumR);
 
-                // Filter coefficient update every 16 samples
+                // Filter coefficient update every 8 samples (was 16). Halves the
+                // stepping artefact during fast LFO-on-cutoff sweeps.
                 ++v.filterUpdateCounter;
-                if (v.filterUpdateCounter >= 16)
+                if (v.filterUpdateCounter >= 8)
                 {
                     v.filterUpdateCounter = 0;
 
-                    // Bipolar filter env mod: use != 0 check (negative sweeps downward)
+                    // Bipolar filter env mod: |x| > eps (was exact !=).
                     float envContrib = 0.0f;
-                    if (fltEnvAmt != 0.0f)
+                    if (std::fabs(fltEnvAmt) > 1e-6f)
                         envContrib = fltEnvLevel * fltEnvAmt * 8000.0f;
 
                     const float effectiveCutoff = std::clamp(
-                        baseCutoff + keyTrackHz + envContrib + lfoModCutoff * 4000.0f,
+                        baseCutoff * keyTrackMul + envContrib + lfoModCutoff * 4000.0f,
                         20.0f, 20000.0f);
 
                     CytomicSVF::Mode mode = CytomicSVF::Mode::LowPass;
@@ -1114,11 +1147,8 @@ private:
                     v.filterR.setCoefficients_fast(effectiveCutoff, fltReso, sampleRateFloat);
                 }
 
-                sumL = v.filterL.processSample(sumL);
-                sumR = v.filterR.processSample(sumR);
-
-                sumL = flushDenormal(sumL);
-                sumR = flushDenormal(sumR);
+                sumL = flushDenormal(v.filterL.processSample(sumL));
+                sumR = flushDenormal(v.filterR.processSample(sumR));
 
                 // VCA: amp envelope x velocity x mod matrix amp
                 const float vcaGain = ampLevel * v.velocity * (1.0f + modAmpLevel);
@@ -1212,20 +1242,20 @@ private:
                 v.gens[sc].envPhase = 0.0f;
         }
 
-        v.filterUpdateCounter = 0;
+        // Force filter-coefficient update on the very first sample of the note
+        // (was 0 with ++counter then check >=16, so first 15 samples used stale coeffs).
+        v.filterUpdateCounter = 8;
 
-        // Amp envelope
+        // Amp envelope — prepare() is a one-time call done at engine prepare.
         if (voiceMode == 1 && v.ampEnv.isActive())
             v.ampEnv.retriggerFrom(v.ampEnv.getLevel(), ampAtk, ampDec, ampSus, ampRel);
         else
         {
-            v.ampEnv.prepare(sampleRateFloat);
             v.ampEnv.setADSR(ampAtk, ampDec, ampSus, ampRel);
             v.ampEnv.noteOn();
         }
 
         // Filter envelope
-        v.filterEnv.prepare(sampleRateFloat);
         v.filterEnv.setADSR(fltAtk, fltDec, fltSus, fltRel);
         v.filterEnv.noteOn();
 
@@ -1257,8 +1287,9 @@ private:
     //  S T A T E
     //==========================================================================
 
-    float sampleRateFloat = 44100.0f;
-    int   maxBlock        = 512;
+    float sampleRateFloat       = 44100.0f;
+    int   maxBlock              = 512;
+    float cachedAmpSmoothCoeff  = 0.005f; // set at prepare()
 
     std::array<OvertideVoice, kOvertideMaxVoices> voices;
 
