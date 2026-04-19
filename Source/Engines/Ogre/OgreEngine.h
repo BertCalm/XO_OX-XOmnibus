@@ -337,6 +337,10 @@ public:
 
         const float dtSec = inverseSr_; // for mass accumulation
 
+        // bendSemitones + couplingPitchMod are block-constant; hoist pitch-bend ratio.
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+
         for (int s = 0; s < numSamples; ++s)
         {
             const bool updateFilter = ((s & 15) == 0);
@@ -355,7 +359,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 // Tectonic LFO: extremely slow pitch drift (±pTecDep cents at most)
                 float tecMod = voice.tectonicLFO.process() * pTecDep;

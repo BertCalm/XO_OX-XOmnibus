@@ -356,6 +356,10 @@ public:
 
         const float dtSec = inverseSr_;
 
+        // bendSemitones + couplingPitchMod are block-constant; hoist pitch-bend ratio.
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+
         for (int s = 0; s < numSamples; ++s)
         {
             const bool updateFilter = ((s & 15) == 0);
@@ -374,7 +378,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 // LFO modulations
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;

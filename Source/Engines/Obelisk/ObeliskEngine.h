@@ -785,6 +785,11 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // bendSemitones + couplingPitchMod are both block-constant; hoist the
+        // pitch-bend ratio out of the per-sample per-voice loop.
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+
         // Step 4: Per-sample render loop
         for (int s = 0; s < numSamples; ++s)
         {
@@ -809,7 +814,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 // LFO modulation
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 → brightness

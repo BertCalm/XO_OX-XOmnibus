@@ -676,6 +676,10 @@ public:
             voice.lfo2.setShape(lfo2Shape);
         }
 
+        // bendSemitones + couplingPitchMod are block-constant; hoist pitch-bend ratio.
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+
         // Per-sample rendering
         for (int s = 0; s < numSamples; ++s)
         {
@@ -695,7 +699,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
