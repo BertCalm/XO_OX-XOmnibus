@@ -1716,6 +1716,7 @@ public:
         // =====================================================================
         for (int sample = 0; sample < numSamples; ++sample)
         {
+            const bool updateFilter = ((sample & 15) == 0);
             float mixL = 0.0f, mixR = 0.0f;
 
             float externalFM = 0.0f;
@@ -1925,13 +1926,20 @@ public:
                 // LFO2 → filter cutoff unconditionally (Scurry scales rate, not presence).
                 // LFO3 → filter cutoff unconditionally (wider sweep range).
                 // modEnvCutoff is non-zero only when modEnvDest==2 (Filter Cutoff).
-                float modCutoff = filterCutoff + filtEnvAmt * filtEnvVal * voice.velocity * 10000.0f + bellyCutoffMod +
-                                  playDeadCutoff + filterMod * 2000.0f + lfo2val * 2000.0f + lfo3val * 2000.0f +
-                                  modEnvCutoff + keyTrackOffset;
-                modCutoff = clamp(modCutoff, 20.0f, 18000.0f);
+                // Decimate SVF coefficient refresh to every 16 samples — env + LFOs
+                // still advance per sample (already ticked above), only the expensive
+                // filter coefficient update is throttled. ~0.36ms refresh @ 44.1k is
+                // well below audible cutoff-tracking lag.
+                if (updateFilter)
+                {
+                    float modCutoff = filterCutoff + filtEnvAmt * filtEnvVal * voice.velocity * 10000.0f + bellyCutoffMod +
+                                      playDeadCutoff + filterMod * 2000.0f + lfo2val * 2000.0f + lfo3val * 2000.0f +
+                                      modEnvCutoff + keyTrackOffset;
+                    modCutoff = clamp(modCutoff, 20.0f, 18000.0f);
 
-                float voiceFilterReso = clamp(effFilterReso + mmDst[11], 0.0f, 0.95f); // mmDst[11]=FilterReso
-                voice.filter.setCoefficients_fast(modCutoff, voiceFilterReso, srf);
+                    float voiceFilterReso = clamp(effFilterReso + mmDst[11], 0.0f, 0.95f); // mmDst[11]=FilterReso
+                    voice.filter.setCoefficients_fast(modCutoff, voiceFilterReso, srf);
+                }
                 float filtered = voice.filter.processSample(oscOut);
 
                 // Add post-filter noise
@@ -1942,8 +1950,13 @@ public:
                 float effChewAmtMod = clamp(chewAmount + mmDst[14], 0.0f, 1.0f); // mmDst[14]=Chew
                 if (effChewAmtMod > 0.001f)
                 {
-                    voice.chewFilter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.chewFilter.setCoefficients_fast(chewFreq, 0.5f, srf);
+                    // chewFreq is block-constant (loaded from pChewFreq at block start);
+                    // refresh coefficients only when the filter tick fires.
+                    if (updateFilter)
+                    {
+                        voice.chewFilter.setMode(CytomicSVF::Mode::LowPass);
+                        voice.chewFilter.setCoefficients_fast(chewFreq, 0.5f, srf);
+                    }
                     float chewBand = voice.chewFilter.processSample(filtered);
                     float chewOut = voice.chew.process(chewBand, effChewAmtMod) + (filtered - chewBand);
                     filtered = lerp(filtered, chewOut, chewMix);
