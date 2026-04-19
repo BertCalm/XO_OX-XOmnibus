@@ -504,6 +504,17 @@ public:
         auto* outL = buf.getWritePointer(0);
         auto* outR = buf.getWritePointer(1);
 
+        // Body-resonator coefficients are note-constant (voice.freq × block-rate
+        // bodyFreqRatio/bodyQVal pair, selected by voice.isBroA). Hoist setParams
+        // to a per-voice block-setup pass.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            const float bodyFreqRatio = voice.isBroA ? bodyFreqRatioA : bodyFreqRatioB;
+            const float bodyQVal      = voice.isBroA ? bodyQValA      : bodyQValB;
+            voice.bodyResonator.setParams(voice.freq * bodyFreqRatio, bodyQVal);
+        }
+
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
         {
             float sumL = 0.0f;
@@ -583,10 +594,7 @@ public:
                                                               std::clamp(damping + blockExtDampMod, 0.0f, 1.0f));
                 voice.delayLine.write(dampedSample);
 
-                // --- Body resonance: adds instrument-body coloration per instrument type ---
-                float bodyFreqRatio = voice.isBroA ? bodyFreqRatioA : bodyFreqRatioB;
-                float bodyQVal = voice.isBroA ? bodyQValA : bodyQValB;
-                voice.bodyResonator.setParams(voice.freq * bodyFreqRatio, bodyQVal);
+                // --- Body resonance: setParams hoisted to per-block voice setup above ---
                 float bodyOut = waveguideOut + voice.bodyResonator.process(waveguideOut) * 0.2f;
 
                 // --- Sympathetic resonance: shimmer from 8-comb bank ---
