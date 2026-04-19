@@ -443,6 +443,7 @@ public:
         couplingFunkMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
+        const float blockBendRatio = PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
 
         // LFO params
         const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
@@ -481,7 +482,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
+                freq *= blockBendRatio; // hoisted above — block-const bend + pitch coupling snapshot
 
                 // LFO1 -> pitch
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;

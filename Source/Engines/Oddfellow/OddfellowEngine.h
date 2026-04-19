@@ -391,6 +391,9 @@ public:
         couplingReedMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
+        // Block-constant portion of pitch-bend ratio; inner loop multiplies this in once
+        // and then applies the per-sample vibrato ratio as the only remaining fastPow2.
+        const float blockBendRatio = PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
 
         // LFO params
         const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
@@ -438,7 +441,7 @@ public:
                     paramRelease ? paramRelease->load() : 0.4f);
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
+                freq *= blockBendRatio; // hoisted above — block-const bend + pitch coupling snapshot
 
                 // LFO1 -> pitch vibrato
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;

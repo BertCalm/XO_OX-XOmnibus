@@ -1724,6 +1724,11 @@ public:
             }
         }
 
+        // Block-constant pitch-bend ratio (channel pitch wheel) — hoist the
+        // fastPow2 call out of the per-sample loop; LFO1 pitch vibrato stays
+        // per-sample as a separate linear scale.
+        const float blockChannelBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+
         // =====================================================================
         // Render voices (per-sample loop)
         // =====================================================================
@@ -1816,7 +1821,7 @@ public:
                 // LFO1 -> pitch (subtle vibrato), scaled by Scurry
                 float pitchMod = lfo1val * 0.005f * (1.0f + macroScurry);
                 freq *= (1.0f + pitchMod);
-                freq *= PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                freq *= blockChannelBendRatio; // hoisted above — block-const pitch bend
 
                 // --- OscA (Belly) ---
                 voice.oscA.setFrequency(freq);
