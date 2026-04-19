@@ -414,8 +414,9 @@ public:
                     reduction.spectralMass[b] = clamp(remaining - bandRate, 0.0f, 1.0f);
                 }
 
-                // Caramelization (Maillard reaction) increases with reduction
-                reduction.concentrateDark = clamp(reduction.sessionAge * pMaillard * 1.5f, 0.0f, 1.0f);
+                // Caramelization (Maillard reaction) increases with reduction.
+                // pConcentrate scales the export strength: higher concentrate = darker, denser timbre.
+                reduction.concentrateDark = clamp(reduction.sessionAge * pMaillard * pConcentrate * 1.5f, 0.0f, 1.0f);
 
                 // Umami bed: fundamentals concentrate as everything else reduces
                 reduction.umamiBed = clamp((1.0f - reduction.totalSpectralMass()) * pUmamiDepth, 0.0f, 1.0f);

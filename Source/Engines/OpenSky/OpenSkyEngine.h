@@ -731,6 +731,41 @@ public:
         float breathLfoVal = breathLfo.process(lfo1Rate) * lfo1Depth;
         effectiveFilterCutoff = clamp(effectiveFilterCutoff + breathLfoVal * 2000.0f, 20.0f, 20000.0f);
 
+        // D002: Mod matrix — 2 slots. Src: 0=LFO1, 1=LFO2, 2=ModWheel, 3=Aftertouch.
+        // Dst: 0=FilterCutoff, 1=PitchOffset (semitones), 2=ShimmerMix, 3=Amp.
+        // LFO snapshot: calling process() once here for a block-rate mod sample is intentional;
+        // the per-sample loop calls process() again each sample for audio-rate LFO output.
+        // The one-sample offset is inaudible at block-rate mod routing.
+        float modSrcValues[4] = {
+            lfo1.process() * lfo1Depth,  // 0: LFO1 (block-rate snapshot)
+            lfo2.process() * lfo2Depth,  // 1: LFO2 (block-rate snapshot)
+            modWheelAmount_,             // 2: ModWheel [0,1]
+            aftertouch_                  // 3: Aftertouch [0,1]
+        };
+        // Slot 1
+        float modMatrixAmpMod = 0.0f;
+        {
+            const int src1   = static_cast<int>(clamp(pLoad(pModSlot1Src, 0.0f), 0.0f, 3.0f));
+            const int dst1   = static_cast<int>(clamp(pLoad(pModSlot1Dst, 0.0f), 0.0f, 3.0f));
+            const float amt1 = pLoad(pModSlot1Amt, 0.0f);
+            const float mod1 = modSrcValues[src1] * amt1;
+            if (dst1 == 0)      effectiveFilterCutoff = clamp(effectiveFilterCutoff + mod1 * 8000.0f, 20.0f, 20000.0f);
+            else if (dst1 == 1) pitchMod              = pitchMod + mod1 * 12.0f; // ±12 semitones at full amt
+            else if (dst1 == 2) effectiveShimmerMix   = clamp(effectiveShimmerMix + mod1 * 0.5f, 0.0f, 1.0f);
+            else if (dst1 == 3) modMatrixAmpMod       += mod1;  // applied to gain in per-sample loop
+        }
+        // Slot 2
+        {
+            const int src2   = static_cast<int>(clamp(pLoad(pModSlot2Src, 0.0f), 0.0f, 3.0f));
+            const int dst2   = static_cast<int>(clamp(pLoad(pModSlot2Dst, 0.0f), 0.0f, 3.0f));
+            const float amt2 = pLoad(pModSlot2Amt, 0.0f);
+            const float mod2 = modSrcValues[src2] * amt2;
+            if (dst2 == 0)      effectiveFilterCutoff = clamp(effectiveFilterCutoff + mod2 * 8000.0f, 20.0f, 20000.0f);
+            else if (dst2 == 1) pitchMod              = pitchMod + mod2 * 12.0f;
+            else if (dst2 == 2) effectiveShimmerMix   = clamp(effectiveShimmerMix + mod2 * 0.5f, 0.0f, 1.0f);
+            else if (dst2 == 3) modMatrixAmpMod       += mod2;  // accumulated from both slots
+        }
+
         // Set up envelopes for all active voices
         for (auto& voice : voices)
         {
@@ -888,8 +923,8 @@ public:
                 float filteredR = voice.hpf.processSample(voiceR);
                 filteredR = voice.lpf.processSample(filteredR);
 
-                // Apply envelope and velocity
-                float gain = envVal * voice.velocity * stealFade;
+                // Apply envelope and velocity (+ mod matrix amp destination)
+                float gain = envVal * voice.velocity * stealFade * clamp(1.0f + modMatrixAmpMod, 0.0f, 2.0f);
                 mixL += filteredL * gain;
                 mixR += filteredR * gain;
 
