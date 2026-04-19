@@ -299,6 +299,16 @@ public:
         // and vibrato (both per-sample) on top via separate fastPow2 calls.
         const float blockPitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
+        // Body resonance is note-constant (v.freq + block-rate instrument scalars).
+        // Hoist setParams out of per-sample loop.
+        const float bodyFreqScale = instrFreqMult * (1.0f + effFC * 0.3f);
+        const float bodyQScaled   = instrQ + effFC * 4.0f;
+        for (auto& v : voices)
+        {
+            if (v.active)
+                v.body.setParams(v.freq * bodyFreqScale, bodyQScaled);
+        }
+
         for (int i = 0; i < ns; ++i)
         {
             float sL = 0, sR = 0;
@@ -374,9 +384,7 @@ public:
 
                 v.dl.write(flushDenormal(damped));
 
-                // --- Body resonance: instrument-specific freq/Q + foreign cold offset ---
-                float bFreq = v.freq * instrFreqMult * (1 + effFC * 0.3f);
-                v.body.setParams(bFreq, instrQ + effFC * 4);
+                // --- Body resonance: hoisted to per-block voice setup (note-constant) ---
                 float bo = out + v.body.process(out) * 0.2f;
 
                 // --- Sympathetic resonance ---
