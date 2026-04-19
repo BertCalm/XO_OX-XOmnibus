@@ -140,8 +140,15 @@ private:
     //--------------------------------------------------------------------------
     float processBitCrush(float input, int bits) noexcept
     {
-        float levels = std::pow(2.0f, static_cast<float>(bits));
-        float quantized = std::round(input * levels) / levels;
+        // Update cached levels only when bits changes (Template B).
+        // std::pow(2, bits) is block-constant — avoid recompute every sample.
+        if (bits != cachedBits_)
+        {
+            cachedBits_      = bits;
+            cachedLevels_    = std::pow(2.0f, static_cast<float>(bits));
+            cachedInvLevels_ = 1.0f / cachedLevels_;
+        }
+        float quantized = std::round(input * cachedLevels_) * cachedInvLevels_;
         return quantized;
     }
 
@@ -197,6 +204,12 @@ private:
 
     // Wobble state
     float wobblePhase_ = 0.0f;
+
+    // Bit-crush cached levels (Template B): updated when bits changes.
+    // Avoids std::pow(2, bits) per sample inside processBitCrush.
+    int   cachedBits_       = -1;   // sentinel: force update on first call
+    float cachedLevels_     = 1.0f;
+    float cachedInvLevels_  = 1.0f;
 };
 
 } // namespace xoceanus

@@ -429,6 +429,19 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
 
+        // ---- Pre-block: precompute band decay/emergence scales (Template B) ----
+        // std::pow(bi+1, 2*depth) is block-constant: bi is fixed per band, effectiveDepth
+        // is a param snapshot (doesn't change per sample). Eliminates 2–3 std::pow calls
+        // per sample per active voice (up to 18 calls/sample at 6-voice polyphony).
+        float bandDecayScaleArr[kOlvidoNumBands];
+        float bandEmergenceScaleArr[kOlvidoNumBands];
+        for (int bi = 0; bi < kOlvidoNumBands; ++bi)
+        {
+            bandDecayScaleArr[bi]     = std::pow(static_cast<float>(bi + 1), 2.0f * effectiveDepth);
+            float invertBandIdx       = static_cast<float>((kOlvidoNumBands - 1) - bi);
+            bandEmergenceScaleArr[bi] = std::pow(invertBandIdx + 1.0f, 2.0f * effectiveDepth);
+        }
+
         // ---- Per-sample render loop ----
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
         {
@@ -604,9 +617,8 @@ public:
                     else if (effectiveCurrentNow > 0.0f)
                     {
                         // STANDARD DECAY (forgetting): bands erode over time
-                        // decay_rate[band] = base_rate * pow(band_index+1, 2.0 * depth)
-                        float decayScale = std::pow(static_cast<float>(bi + 1), 2.0f * effectiveDepth);
-                        float perSampleDecay = baseRate * decayScale * effectiveCurrentNow;
+                        // decay_rate[band] = base_rate * bandDecayScaleArr[bi] (precomputed per-block)
+                        float perSampleDecay = baseRate * bandDecayScaleArr[bi] * effectiveCurrentNow;
 
                         // Flotsam: stochastic decay skip (per-band, per-sample)
                         if (effectiveFlotsam > 0.001f && rng.nextFloat() < effectiveFlotsam)
@@ -628,9 +640,8 @@ public:
                         // EMERGENCE: bands sharpen TOWARD full amplitude
                         // Higher bands emerge SLOWER (inverse of decay order)
                         // Band 5 (highest) emerges slowest — inverse scaling
-                        float invertBandIdx   = static_cast<float>((kOlvidoNumBands - 1) - bi);
-                        float emergenceScale  = std::pow(invertBandIdx + 1.0f, 2.0f * effectiveDepth);
-                        float emergenceRate   = baseRate * emergenceScale * std::fabs(effectiveCurrentNow);
+                        // bandEmergenceScaleArr[bi] precomputed per-block (Template B)
+                        float emergenceRate   = baseRate * bandEmergenceScaleArr[bi] * std::fabs(effectiveCurrentNow);
 
                         voice.bandAmplitude[bi] += emergenceRate;
 
@@ -640,8 +651,8 @@ public:
                     }
                     // current == 0: no spectral change (bypass erosion)
 
-                    voice.bandDecayRate[bi] = baseRate *
-                        std::pow(static_cast<float>(bi + 1), 2.0f * effectiveDepth);
+                    // bandDecayScaleArr[bi] precomputed per-block (Template B)
+                    voice.bandDecayRate[bi] = baseRate * bandDecayScaleArr[bi];
                 }
 
                 // ---- RECONSTRUCT: sum bands × amplitude ----

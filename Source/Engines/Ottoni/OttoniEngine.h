@@ -36,6 +36,10 @@ struct OttoniAdapterVoice
     int pendingNote = 0;
     float pendingVel = 0.0f;
 
+    // Cached SR-only-dependent release coefficient (Template A: precomputed at prepare()).
+    // Eliminates per-sample std::exp(-1/(sr*0.3)) inside the render loop.
+    float cachedReleaseCoeff = 0.9999f;
+
     void prepare(double s)
     {
         sr = (float)s;
@@ -47,6 +51,7 @@ struct OttoniAdapterVoice
         drift.prepare(s);
         lipBuzz.prepare(s);
         vib.reset();
+        cachedReleaseCoeff = std::exp(-1.0f / (sr * 0.3f));
     }
     void reset()
     {
@@ -308,11 +313,9 @@ public:
 
                 // Exponential release — eliminates the "soft note releases fast"
                 // bug from linear subtraction on small ampEnv values.
+                // cachedReleaseCoeff is precomputed at prepare() (Template A).
                 if (v.releasing)
-                {
-                    float releaseCoeff = std::exp(-1.0f / (v.sr * 0.3f));
-                    v.ampEnv *= releaseCoeff;
-                }
+                    v.ampEnv *= v.cachedReleaseCoeff;
                 v.ampEnv = flushDenormal(v.ampEnv);
                 if (v.ampEnv < 0.0001f && v.releasing)
                 {
