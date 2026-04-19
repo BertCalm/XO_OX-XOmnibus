@@ -587,7 +587,7 @@ public:
         // 0.001s minimum prevents instant glide from bypassing the smoothing.
         float glideCoefficient = 1.0f;
         if (glideTime > 0.001f)
-            glideCoefficient = 1.0f - std::exp(-1.0f / (glideTime * sampleRateFloat));
+            glideCoefficient = 1.0f - fastExp(-1.0f / (glideTime * sampleRateFloat));
 
         // ----- Apply macro and coupling offsets to effective parameters -----
         // Macros and coupling modulation are additive — they push parameters
