@@ -1383,7 +1383,7 @@ private:
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
             g.fillRect(0.0f, b.getBottom() - 1.0f, b.getWidth(), 1.0f);
 
-            const juce::Font tabFont(juce::FontOptions{}
+            static const juce::Font tabFont(juce::FontOptions{}
                 .withName(juce::Font::getDefaultSansSerifFontName())
                 .withStyle("Bold")
                 .withHeight(10.0f));
@@ -1554,14 +1554,16 @@ private:
             // "CLICK ME" text
             float textAlpha = 0.5f + std::sin(phase_ * 2.5f) * 0.2f;
             g.setColour(juce::Colour(200, 204, 216).withAlpha(textAlpha));
-            g.setFont(juce::Font(juce::FontOptions(12.0f).withStyle("Bold")));
+            static const juce::Font boldFont(juce::FontOptions(12.0f).withStyle("Bold"));
+            g.setFont(boldFont);
             g.drawText("CLICK ME",
                        juce::Rectangle<float>(cx - 40, drawY - 8, 80, 16).toNearestInt(),
                        juce::Justification::centred, false);
 
             // Subtitle
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.25f));
-            g.setFont(juce::Font(juce::FontOptions(9.0f)));
+            static const juce::Font captionFont(juce::FontOptions(9.0f));
+            g.setFont(captionFont);
             g.drawText("Drop your first engine into the ocean",
                        juce::Rectangle<float>(cx - 140, drawY + lr + 16, 280, 14).toNearestInt(),
                        juce::Justification::centred, false);

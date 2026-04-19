@@ -160,6 +160,10 @@ private:
     /** Last known mouse position in local coordinates — used for tooltip placement. */
     juce::Point<float> lastMousePos_;
 
+    /** Cached tooltip string — rebuilt when hoveredRouteIdx_ changes or the timer ticks
+        while a route is hovered. Avoids constructing juce::String inside paint(). */
+    juce::String cachedTooltipText_;
+
     /** Bézier midpoint (t=0.5) for each active route — updated each paint() call.
         Used for knot hit-testing in getKnotAtPosition() and mouseDown/mouseDoubleClick. */
     std::array<juce::Point<float>, 32> knotPositions_ {};  // max 32 routes
@@ -488,6 +492,7 @@ public:
         if (best != hoveredRouteIdx_)
         {
             hoveredRouteIdx_ = best;
+            rebuildTooltipText();
             repaint();
         }
     }
@@ -498,6 +503,7 @@ public:
         if (hoveredRouteIdx_ >= 0)
         {
             hoveredRouteIdx_ = -1;
+            cachedTooltipText_.clear();
             repaint();
         }
     }
@@ -675,21 +681,11 @@ public:
         // ── Hover tooltip ────────────────────────────────────────────────────
         if (hoveredRouteIdx_ >= 0 && hoveredRouteIdx_ < static_cast<int>(routeStates_.size()))
         {
-            const auto& rs = routeStates_[static_cast<size_t>(hoveredRouteIdx_)];
-
-            // Build tooltip text: "Amplitude to Filter  75%  42s"
-            const juce::String typeName = CouplingTypeColors::displayName(
-                static_cast<CouplingType>(rs.route.type));
-            const int amountPct = static_cast<int>(std::round(rs.route.amount * 100.0f));
-            // couplingAge_ is 0–1 over 60 seconds (see kAgeIncrement = 1/(60*30))
-            const int ageSec    = static_cast<int>(std::round(rs.couplingAge_ * 60.0f));
-
-            const juce::String tip = typeName + "  "
-                + juce::String(amountPct) + "%  "
-                + juce::String(ageSec) + "s";
+            // Use the pre-built tooltip string (rebuilt in timerCallback / on hover change).
+            const juce::String& tip = cachedTooltipText_;
 
             // Measure text and position the pill
-            const juce::Font tipFont(juce::FontOptions(12.0f));
+            static const juce::Font tipFont(juce::FontOptions(12.0f));
             g.setFont(tipFont);
             const int tipW = static_cast<int>(std::ceil(tipFont.getStringWidthFloat(tip))) + 16;
             const int tipH = 24;
@@ -852,11 +848,35 @@ private:
         if (hoveredRouteIdx_ >= static_cast<int>(routeStates_.size()))
             hoveredRouteIdx_ = -1;
 
+        // Rebuild the tooltip string each tick while a route is hovered
+        // (ageSec increments ~once per second at 30 Hz).
+        rebuildTooltipText();
+
         // Stop the timer if all routes have been removed and faded out.
         if (routeStates_.empty())
             stopTimer();
 
         repaint();
+    }
+
+    //==========================================================================
+    /** Rebuild the cached tooltip string from the currently hovered route.
+        Call whenever hoveredRouteIdx_ changes or the timer ticks while hovered. */
+    void rebuildTooltipText()
+    {
+        if (hoveredRouteIdx_ < 0 || hoveredRouteIdx_ >= static_cast<int>(routeStates_.size()))
+        {
+            cachedTooltipText_.clear();
+            return;
+        }
+        const auto& rs = routeStates_[static_cast<size_t>(hoveredRouteIdx_)];
+        const juce::String typeName = CouplingTypeColors::displayName(
+            static_cast<CouplingType>(rs.route.type));
+        const int amountPct = static_cast<int>(std::round(rs.route.amount * 100.0f));
+        const int ageSec    = static_cast<int>(std::round(rs.couplingAge_ * 60.0f));
+        cachedTooltipText_ = typeName + "  "
+            + juce::String(amountPct) + "%  "
+            + juce::String(ageSec) + "s";
     }
 
     //==========================================================================

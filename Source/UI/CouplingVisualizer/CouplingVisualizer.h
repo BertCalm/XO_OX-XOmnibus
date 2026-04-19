@@ -29,8 +29,7 @@ namespace xoceanus
 //   - Right-click arc                             →  context menu (edit/delete)
 //   - Delete key on selected arc                  →  remove user route
 //
-// Drop-in replacement for CouplingStripEditor inside PerformanceViewPanel.
-// Constructor signature is identical so callers need no changes:
+// Constructor signature:
 //   CouplingVisualizer viz(matrix, slotNameFn, slotColorFn);
 //
 // Thread safety:
@@ -136,7 +135,23 @@ public:
     {
         JUCE_ASSERT_MESSAGE_THREAD
         cachedRoutes = couplingMatrix.getRoutes();
+        rebuildLegendCache();
         repaint();
+    }
+
+    void rebuildLegendCache()
+    {
+        std::map<CouplingType, int> typeCounts;
+        for (const auto& route : cachedRoutes)
+            if (route.active && route.amount >= 0.001f)
+                typeCounts[route.type]++;
+
+        cachedLegendItems_.clear();
+        for (const auto& [type, count] : typeCounts)
+            cachedLegendItems_.push_back({
+                CouplingTypeColors::forType(type),
+                CouplingTypeColors::shortLabel(type) + " (" + juce::String(count) + ")"
+            });
     }
 
     //--------------------------------------------------------------------------
@@ -314,6 +329,7 @@ private:
 
         // Snapshot route list once per tick (single atomic_load)
         cachedRoutes = couplingMatrix.getRoutes();
+        rebuildLegendCache();
 
         // Check for any active routes before doing further work
         bool hasActive = false;
@@ -424,8 +440,15 @@ private:
             }
             else
             {
+                // Slot labels are fixed ("SLOT 1"…"SLOT 5") — use static cache.
+                static const juce::String kSlotLabels[] = {
+                    "SLOT 1", "SLOT 2", "SLOT 3", "SLOT 4", "SLOT 5"
+                };
+                const juce::String& slotLabel = (i >= 0 && i < 5)
+                    ? kSlotLabels[static_cast<size_t>(i)]
+                    : ("SLOT " + juce::String(i + 1));
                 g.setColour(juce::Colour(GalleryColors::textMid()));
-                g.drawText("SLOT " + juce::String(i + 1), (int)(centre.x - kNodeRadius), (int)(centre.y - 5),
+                g.drawText(slotLabel, (int)(centre.x - kNodeRadius), (int)(centre.y - 5),
                            (int)(kNodeRadius * 2), 10, juce::Justification::centred);
             }
 
@@ -709,25 +732,18 @@ private:
         g.setColour(juce::Colour(GalleryColors::borderGray()));
         g.drawHorizontalLine((int)stripBounds.getY(), stripBounds.getX(), stripBounds.getRight());
 
-        // Count active routes per type
-        std::map<CouplingType, int> typeCounts;
-        for (const auto& route : cachedRoutes)
-            if (route.active && route.amount >= 0.001f)
-                typeCounts[route.type]++;
-
         float x = stripBounds.getX() + 8.0f;
         float cy = stripBounds.getCentreY();
 
-        for (const auto& [type, count] : typeCounts)
+        // Use pre-built legend items (rebuilt in refresh() — no String alloc in paint).
+        for (const auto& item : cachedLegendItems_)
         {
-            auto colour = CouplingTypeColors::forType(type);
-            g.setColour(colour);
+            g.setColour(item.colour);
             g.fillEllipse(x, cy - 4.0f, 8.0f, 8.0f);
 
             g.setColour(juce::Colour(GalleryColors::textMid()));
             g.setFont(GalleryFonts::body(10.0f)); // (#885: 8pt→10pt legibility floor)
-            juce::String label = CouplingTypeColors::shortLabel(type) + " (" + juce::String(count) + ")";
-            g.drawText(label, (int)(x + 11), (int)(cy - 5), 60, 10, juce::Justification::left);
+            g.drawText(item.label, (int)(x + 11), (int)(cy - 5), 60, 10, juce::Justification::left);
 
             x += 72.0f;
             if (x > stripBounds.getRight() - 70.0f)
@@ -1081,6 +1097,11 @@ private:
 
     // Route snapshot — refreshed once per timerCallback()
     std::vector<MegaCouplingMatrix::CouplingRoute> cachedRoutes;
+
+    // Cached legend items — rebuilt in refresh() alongside cachedRoutes.
+    // Each entry holds the dot colour and the pre-built label string.
+    struct LegendItem { juce::Colour colour; juce::String label; };
+    std::vector<LegendItem> cachedLegendItems_;
 
     // Per-route RMS — written by audio thread, read by message thread
     std::array<std::atomic<float>, kMaxRMSSlots> routeRMS;

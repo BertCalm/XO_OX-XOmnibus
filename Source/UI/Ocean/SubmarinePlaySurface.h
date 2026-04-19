@@ -613,7 +613,8 @@ private:
                 int pc  = note % 12;
                 int oct = note / 12 - 1;
                 juce::String label = juce::String(kNoteNames[pc]) + juce::String(oct);
-                g.setFont(juce::Font(juce::FontOptions(8.0f)));
+                static const juce::Font keyLabelFont(juce::FontOptions(8.0f));
+                g.setFont(keyLabelFont);
                 g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(active ? 0.45f : 0.18f));
                 g.drawText(label,
                            r.withTop(r.getBottom() - 16.0f).toNearestInt(),

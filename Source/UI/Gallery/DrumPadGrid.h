@@ -174,7 +174,16 @@ public:
             int stripY = getParamStripY();
             g.setColour(accentColour.withAlpha(0.80f));
             g.setFont(kVoiceFont);
-            juce::String header = "VOICE " + juce::String(selectedPad + 1);
+            // Use a static lookup to avoid constructing juce::String in paint.
+            static const juce::String kVoiceHeaders[] = {
+                "VOICE 1",  "VOICE 2",  "VOICE 3",  "VOICE 4",
+                "VOICE 5",  "VOICE 6",  "VOICE 7",  "VOICE 8",
+                "VOICE 9",  "VOICE 10", "VOICE 11", "VOICE 12",
+                "VOICE 13", "VOICE 14", "VOICE 15", "VOICE 16"
+            };
+            const juce::String& header = (selectedPad >= 0 && selectedPad < 16)
+                ? kVoiceHeaders[selectedPad]
+                : ("VOICE " + juce::String(selectedPad + 1));
             g.drawText(header, kPadGap, stripY - kParamHeaderH, getWidth() - kPadGap * 2, kParamHeaderH,
                        juce::Justification::centredLeft);
 

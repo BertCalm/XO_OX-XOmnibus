@@ -147,8 +147,9 @@ private:
         std::array<float, 12> ny;
     };
 
-    mutable Geometry geo_;
-    mutable bool geoValid_ = false;
+    mutable Geometry    geo_;
+    mutable bool        geoValid_          = false;
+    mutable juce::Font  cachedNoteFont_    { juce::FontOptions{}.withHeight(10.0f) };
 
     //==========================================================================
     // juce::Timer
@@ -281,6 +282,11 @@ private:
             geo_.ny[i] = geo_.cy + std::sin(a) * geo_.ringRadius;
         }
 
+        cachedNoteFont_ = juce::Font(juce::FontOptions{}
+            .withName(juce::Font::getDefaultSansSerifFontName())
+            .withStyle("Bold")
+            .withHeight(geo_.noteCircleRadius * 0.7f));
+
         geoValid_ = true;
     }
 
@@ -399,12 +405,6 @@ private:
     void paintNoteRing(juce::Graphics& g) const
     {
         const float ncr = geo_.noteCircleRadius;
-        const float fontSize = ncr * 0.7f;
-
-        const juce::Font noteFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(fontSize));
 
         for (int i = 0; i < 12; ++i)
         {
@@ -429,7 +429,7 @@ private:
             else
                 g.setColour(juce::Colour(200, 204, 216).withAlpha(0.60f));
 
-            g.setFont(noteFont);
+            g.setFont(cachedNoteFont_);
             g.drawText(juce::String(kNoteNames[i]),
                        juce::Rectangle<float>(geo_.nx[i] - ncr, geo_.ny[i] - ncr,
                                               ncr * 2.0f, ncr * 2.0f).toNearestInt(),
@@ -474,7 +474,7 @@ private:
         constexpr float kRadius  = 4.0f;
         constexpr float kBtnH    = kFontSz + kPadV * 2.0f;
 
-        const juce::Font btnFont(juce::FontOptions{}
+        static const juce::Font btnFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withStyle("Bold")
             .withHeight(kFontSz));

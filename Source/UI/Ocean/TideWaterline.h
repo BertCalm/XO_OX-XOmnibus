@@ -95,6 +95,7 @@ public:
         // Seed steps from current APVTS pattern on construction.
         syncFromApvts();
         applyPattern(currentPattern_);
+        rebuildRootNoteLabels();
 
         // 30 Hz timer for playhead animation.
         startTimerHz(30);
@@ -217,11 +218,11 @@ private:
         // paint may run before the first resized if bounds are set externally).
         layoutControls(w);
 
-        const juce::Font pillFont(juce::FontOptions{}
+        static const juce::Font pillFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withStyle("Bold")
             .withHeight(9.0f));
-        const juce::Font labelFont(juce::FontOptions{}
+        static const juce::Font labelFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withHeight(8.0f));
 
@@ -302,7 +303,7 @@ private:
         // ── ALGO badge ──
         if (algoBadgeBounds_.getWidth() > 0.0f)
         {
-            const juce::Font badgeFont(juce::FontOptions{}
+            static const juce::Font badgeFont(juce::FontOptions{}
                 .withName(juce::Font::getDefaultSansSerifFontName())
                 .withStyle("Bold")
                 .withHeight(8.0f));
@@ -322,7 +323,7 @@ private:
             const float phase = std::sin(breathePhase_ * static_cast<float>(M_PI));
             const float alpha = 0.35f + phase * 0.35f;
 
-            const juce::Font breatheFont(juce::FontOptions{}
+            static const juce::Font breatheFont(juce::FontOptions{}
                 .withName(juce::Font::getDefaultSansSerifFontName())
                 .withHeight(11.0f));
             g.setFont(breatheFont);
@@ -430,13 +431,13 @@ private:
             // Root note label (shown when rootNote >= 0)
             if (!isBeyond && steps_[i].rootNote >= 0)
             {
-                const juce::Font noteFont(juce::FontOptions{}
+                static const juce::Font noteFont(juce::FontOptions{}
                     .withName(juce::Font::getDefaultSansSerifFontName())
                     .withStyle("Bold")
                     .withHeight(7.0f));
                 g.setFont(noteFont);
                 g.setColour(juce::Colour(127, 219, 202).withAlpha(0.70f));
-                g.drawText(juce::String(steps_[i].rootNote),
+                g.drawText(cachedRootNoteLabels_[static_cast<size_t>(i)],
                            juce::Rectangle<int>(static_cast<int>(sx),
                                                 static_cast<int>(rowY) + 2,
                                                 static_cast<int>(stepW),
@@ -1077,6 +1078,16 @@ private:
 
     // Per-step data (kMaxSteps = 16)
     std::array<Step, kMaxSteps> steps_;
+
+    // Cached per-step root-note label strings — rebuilt whenever steps_ root notes change.
+    // Avoids constructing juce::String(int) inside a 16-iteration paint loop.
+    std::array<juce::String, kMaxSteps> cachedRootNoteLabels_;
+
+    void rebuildRootNoteLabels()
+    {
+        for (int i = 0; i < kMaxSteps; ++i)
+            cachedRootNoteLabels_[static_cast<size_t>(i)] = juce::String(steps_[i].rootNote);
+    }
 
     // APVTS-mirrored local values (written by pill/slider handlers)
     int   currentPattern_  = 0;
