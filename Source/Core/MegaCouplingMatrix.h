@@ -110,6 +110,16 @@ public:
             couplingSmooth_ = static_cast<float>(std::exp(-1.0 / targetBlocks));
         }
 
+        // (#1093 item 17) Post-interpolation LP coefficient for SRO control-rate
+        // buffer. Cutoff = 3 kHz (well above any musical control-rate motion,
+        // below the audio band where a staircase from linear interp would beat
+        // against carrier harmonics). One-pole coeff = 1 - exp(-2π·fc/sr).
+        {
+            constexpr double cutoffHz = 3000.0;
+            controlRateLPCoeff_ = static_cast<float>(
+                1.0 - std::exp(-2.0 * 3.14159265358979323846 * cutoffHz / sampleRate));
+        }
+
         // Reset all in-flight smoothedAmounts to their target to prevent a zipper
         // pop when the DAW changes buffer size mid-session (#910).
         auto routes = std::atomic_load(&routeList);
@@ -222,6 +232,52 @@ public:
             resolveAudioToBufferSinks();
     }
 
+    // (#1093 item 52) Find a route by triple. Returns -1 if no match.
+    // Message-thread only. Use the returned index with setRouteAmount/Active
+    // to avoid the full addRoute/removeUserRoute round-trip for simple updates.
+    int findRoute(int sourceSlot, int destSlot, CouplingType type) const
+    {
+        auto routes = std::atomic_load(&routeList);
+        if (!routes)
+            return -1;
+        for (int i = 0; i < static_cast<int>(routes->size()); ++i)
+        {
+            const auto& r = (*routes)[static_cast<size_t>(i)];
+            if (r.sourceSlot == sourceSlot && r.destSlot == destSlot && r.type == type)
+                return i;
+        }
+        return -1;
+    }
+
+    // (#1093 item 51) Update a route's target amount in-place. Cheaper than
+    // remove+add for automation-style updates: reuses the existing
+    // smoothedAmount so the UI knob doesn't reset the smoother to zero.
+    // Returns true on success.
+    bool setRouteAmount(int routeIdx, float amount)
+    {
+        auto current = std::atomic_load(&routeList);
+        if (!current || routeIdx < 0 || routeIdx >= static_cast<int>(current->size()))
+            return false;
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+        (*newRoutes)[static_cast<size_t>(routeIdx)].amount = amount;
+        std::atomic_store(&routeList, newRoutes);
+        return true;
+    }
+
+    // (#1093 item 51) Toggle a route on/off without removing it. Useful for
+    // A/B testing patches and UI mute toggles. The smoother continues to track
+    // toward `amount` so re-activating doesn't snap the level.
+    bool setRouteActive(int routeIdx, bool active)
+    {
+        auto current = std::atomic_load(&routeList);
+        if (!current || routeIdx < 0 || routeIdx >= static_cast<int>(current->size()))
+            return false;
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+        (*newRoutes)[static_cast<size_t>(routeIdx)].active = active;
+        std::atomic_store(&routeList, newRoutes);
+        return true;
+    }
+
     void removeUserRoute(int sourceSlot, int destSlot, CouplingType type)
     {
         auto current = std::atomic_load(&routeList);
@@ -263,14 +319,28 @@ public:
 
         for (const auto& route : *routes)
         {
+            // (#1093 item 38) Skip inactive routes BEFORE the smoother update. An
+            // inactive route's smoother state is irrelevant — running the
+            // multiply-add on every disabled route is wasted work in patches with
+            // many normalled-but-disabled routes. Re-activation in addRoute() seeds
+            // smoothedAmount=amount so we don't lose any ramp-from-zero behaviour.
+            if (!route.active)
+                continue;
+
+            // (#1093 item 47) Snapshot `route.amount` once per block so a UI
+            // automation jump can't be partially observed by the smoother across
+            // dependent reads (the field is non-atomic float; reading it once also
+            // helps the compiler hold it in a register across the smoother step).
+            const float targetAmount = route.amount;
+
             // One-pole smoother for coupling amount — prevents zipper noise on automation.
             // couplingSmooth_ is computed in prepare() for a ~200ms time constant that is
             // invariant to block size, so macro sweeps sound identical across all DAW buffer
             // sizes. `smoothedAmount` is mutable so it can be updated here despite the const
             // range-for reference. (#684, #910)
-            route.smoothedAmount += (route.amount - route.smoothedAmount) * (1.0f - couplingSmooth_);
+            route.smoothedAmount += (targetAmount - route.smoothedAmount) * (1.0f - couplingSmooth_);
 
-            if (!route.active || std::abs(route.smoothedAmount) < 0.001f)
+            if (std::abs(route.smoothedAmount) < 0.001f)
                 continue;
 
             // Bounds check slot indices to prevent OOB access
@@ -501,6 +571,12 @@ private:
     // Default 0.99f matches the old per-block constant at 48kHz/512 samples.
     float couplingSmooth_ = 0.99f;
 
+    // (#1093 item 17) One-pole LP coefficient applied to fillControlRateBuffer
+    // output to remove the stair-step artefact left by linear interpolation
+    // between SRO control points. Computed in prepare() for ~3 kHz cutoff.
+    // 0.0 (default) disables the LP — safe fallback if prepare() never ran.
+    float controlRateLPCoeff_ = 0.0f;
+
     //-- Cycle detection helpers (message thread only) -------------------------
 
     // Returns true for coupling types that propagate at audio rate and can
@@ -602,6 +678,29 @@ private:
 
             currentVal = nextVal;
             blockStart = blockEnd;
+        }
+
+        // (#1093 item 17) Post-interpolation 1-pole LP to remove the stair-step
+        // artefact that linear interp leaves at the control-rate boundaries.
+        // Without this, upper harmonics get a faint "stepping" coloration when the
+        // source signal has high-frequency content modulated at control rate.
+        // controlRateLPCoeff_ is precomputed in prepare() — ~3 kHz cutoff, well
+        // above any musical control-rate motion (~1.5 kHz Nyquist of decimated
+        // stream) so the LP smooths the staircase without softening modulation.
+        //
+        // State is local to this call (initialised to first sample) — fillControlRateBuffer
+        // is called serially per route within a block, so a persistent member would
+        // bleed source A's tail into source B's head. Initialising to couplingBuffer[0]
+        // also prevents an initial transient.
+        const float coeff = controlRateLPCoeff_;
+        if (coeff > 0.0f && coeff < 1.0f && numSamples > 0)
+        {
+            float state = couplingBuffer[0];
+            for (int i = 0; i < numSamples; ++i)
+            {
+                state += coeff * (couplingBuffer[static_cast<size_t>(i)] - state);
+                couplingBuffer[static_cast<size_t>(i)] = flushDenormal(state);
+            }
         }
     }
 
