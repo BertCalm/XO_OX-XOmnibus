@@ -1144,14 +1144,16 @@ private:
                 // ---- Filter ----
                 if (updateFilter)
                 {
-                    // Key tracking: shift cutoff up/down based on note (D001 path)
-                    float keyTrackOffset = v.keyTrack * fltKeyTrack * 5000.0f;
-                    // Filter envelope modulates cutoff (bipolar — use != 0 not > 0)
-                    float envOffset = fltEnvAmt != 0.0f
+                    // Exponential keytracking: cutoff · 2^((note-60)·keyTrack/12).
+                    // Was linear (keyTrack01 × 5 kHz), which was non-musical at extremes.
+                    const float keyTrackMul = fastPow2(
+                        static_cast<float>(v.note - 60) * fltKeyTrack * (1.0f / 12.0f));
+                    // Filter envelope modulates cutoff (bipolar — |x| > 1e-6).
+                    float envOffset = std::fabs(fltEnvAmt) > 1e-6f
                         ? fltEnvLevel * fltEnvAmt * 10000.0f * v.velocity
                         : 0.0f;
                     // Coupling + mod matrix offsets
-                    float effectiveCutoff = clamp(baseCutoff + keyTrackOffset + envOffset + modCutoffOffset, 20.0f, 20000.0f);
+                    float effectiveCutoff = clamp(baseCutoff * keyTrackMul + envOffset + modCutoffOffset, 20.0f, 20000.0f);
                     float effectiveReso   = clamp(fltReso + aftertouchValue * 0.3f, 0.0f, 0.99f);
 
                     CytomicSVF::Mode fMode = CytomicSVF::Mode::LowPass;

@@ -526,11 +526,13 @@ public:
         }
         default:
         {
-            float rms = 0.0f;
+            // Generic fallback: treat as AmpToFilter. Assign (not +=) so repeated
+            // unknown coupling types cannot accumulate across blocks.
+            float mav = 0.0f;
             for (int i = 0; i < numSamples; ++i)
-                rms += std::fabs(sourceBuffer[i]);
-            rms /= static_cast<float>(numSamples);
-            couplingAmpFilter += rms * amount;
+                mav += std::fabs(sourceBuffer[i]);
+            mav /= static_cast<float>(numSamples);
+            couplingAmpFilter = mav * amount;
             break;
         }
         }
@@ -1352,12 +1354,16 @@ private:
                 ++v.filterCoeffCounter;
                 if ((v.filterCoeffCounter & 15) == 0)
                 {
-                    const float keyOffset = v.keyTrack * fltKeyTrack * 4800.0f; // ±4800 Hz at ±1 keytrack
-                    // fltEnvAmt is bipolar: use != 0 (Lesson, bipolar mod)
-                    const float envOffset = (fltEnvAmt != 0.0f)
+                    // Exponential keytracking: cutoff · 2^((note-60)·keyTrack/12).
+                    // Was linear in normalised-note space (keyTrack01 × 4800 Hz) which
+                    // gave a mis-scaled response at the note extremes.
+                    const float keyTrackMul = fastPow2(
+                        static_cast<float>(v.note - 60) * fltKeyTrack * (1.0f / 12.0f));
+                    // fltEnvAmt is bipolar — |x| > 1e-6 (was exact !=).
+                    const float envOffset = (std::fabs(fltEnvAmt) > 1e-6f)
                         ? fltLevel * fltEnvAmt * 8000.0f
                         : 0.0f;
-                    const float fCutoff = std::clamp(effCutoff + keyOffset + envOffset, 20.0f, 20000.0f);
+                    const float fCutoff = std::clamp(effCutoff * keyTrackMul + envOffset, 20.0f, 20000.0f);
 
                     const CytomicSVF::Mode fltMode =
                         (fltType == 1) ? CytomicSVF::Mode::HighPass :

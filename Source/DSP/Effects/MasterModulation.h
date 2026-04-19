@@ -408,9 +408,11 @@ private:
                 phaserStateL[s] = flushDenormal(xL - aL * yn);
                 xL = yn;
             }
-            xL = clamp(
-                xL, -4.0f,
-                4.0f); // hard clip: prevents Inf/NaN from allpass runaway; may crunch at max feedback + resonance (by design)
+            // Soft-limit feedback: Padé [3/3] tanh saturator scaled to ±4. Still
+            // bounds the allpass state against Inf/NaN but replaces the hard-clip
+            // corner with a smooth knee, removing zipper noise when feedback and
+            // resonance peak together.
+            xL = softClip(xL * 0.25f) * 4.0f;
             phaserFBL = flushDenormal(xL);
             L[i] = L[i] * (1.0f - mix) + xL * mix;
 
@@ -422,9 +424,7 @@ private:
                 phaserStateR[s] = flushDenormal(xR - aR * yn);
                 xR = yn;
             }
-            xR = clamp(
-                xR, -4.0f,
-                4.0f); // hard clip: prevents Inf/NaN from allpass runaway; may crunch at max feedback + resonance (by design)
+            xR = softClip(xR * 0.25f) * 4.0f;
             phaserFBR = flushDenormal(xR);
             R[i] = R[i] * (1.0f - mix) + xR * mix;
         }

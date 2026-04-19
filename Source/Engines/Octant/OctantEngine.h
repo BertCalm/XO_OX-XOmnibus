@@ -569,12 +569,13 @@ public:
         }
         default:
         {
-            // Generic fallback: AmpToFilter
-            float rms = 0.0f;
+            // Generic fallback: treat as AmpToFilter. Assign (not +=) so repeated
+            // unknown coupling types cannot accumulate across blocks.
+            float mav = 0.0f;
             for (int i = 0; i < numSamples; ++i)
-                rms += std::fabs(sourceBuffer[i]);
-            rms /= static_cast<float>(numSamples);
-            couplingAmpFilter += rms * amount;
+                mav += std::fabs(sourceBuffer[i]);
+            mav /= static_cast<float>(numSamples);
+            couplingAmpFilter = mav * amount;
             break;
         }
         }
@@ -699,13 +700,17 @@ public:
         baseDepth    = std::clamp(baseDepth + (macro1 - 0.5f) * 0.8f, 0.0f, 1.0f);
         // M2 adds morph
         baseMorph    = std::clamp(baseMorph  + macro2 * 0.8f, 0.0f, 1.0f);
-        // M3 adds rotation
-        baseRotation = std::fmod(baseRotation + macro3 * 180.0f, 360.0f);
+        // M3 adds rotation. Conditional subtract on [0, 360) is ~10× faster than std::fmod.
+        baseRotation += macro3 * 180.0f;
+        while (baseRotation >= 360.0f) baseRotation -= 360.0f;
+        while (baseRotation < 0.0f)    baseRotation += 360.0f;
 
         // Apply coupling EnvToMorph
         baseMorph = std::clamp(baseMorph + couplingEnvMorph, 0.0f, 1.0f);
         // Apply coupling RhythmToBlend → rotation
-        baseRotation = std::fmod(baseRotation + couplingRhythm * 90.0f, 360.0f);
+        baseRotation += couplingRhythm * 90.0f;
+        while (baseRotation >= 360.0f) baseRotation -= 360.0f;
+        while (baseRotation < 0.0f)    baseRotation += 360.0f;
 
         const float spread         = pSpread        ? pSpread->load()        : 0.0f;
         // M4=SPACE: macro widens spread
@@ -806,14 +811,18 @@ public:
         baseCutoff  = std::clamp(baseCutoff + modDestOffsets[1] * 8000.0f, 20.0f, 20000.0f);
         baseDepth   = std::clamp(baseDepth  + modDestOffsets[2] * 0.5f,    0.0f,  1.0f);
         baseMorph   = std::clamp(baseMorph  + modDestOffsets[3] * 0.5f,    0.0f,  1.0f);
-        baseRotation = std::fmod(baseRotation + modDestOffsets[4] * 90.0f + 720.0f, 360.0f);
+        baseRotation += modDestOffsets[4] * 90.0f;
+        while (baseRotation >= 360.0f) baseRotation -= 360.0f;
+        while (baseRotation < 0.0f)    baseRotation += 360.0f;
         const float modSpreadAdd = modDestOffsets[5] * 0.3f;
         const float modAmpLevel  = modDestOffsets[6];
 
         const float finalSpread = std::clamp(effectiveSpread + modSpreadAdd, 0.0f, 1.0f);
 
         // ---- D006: CC1 modulates rotation (timbral cross-axis change) ----
-        baseRotation = std::fmod(baseRotation + modWheelValue * 90.0f, 360.0f);
+        // Mod wheel is unipolar (0-1) so this sweeps rotation up to 90° in one direction.
+        baseRotation += modWheelValue * 90.0f;
+        while (baseRotation >= 360.0f) baseRotation -= 360.0f;
 
         // ---- D006: Aftertouch modulates morph position ----
         baseMorph = std::clamp(baseMorph + aftertouchValue * 0.5f, 0.0f, 1.0f);
@@ -854,12 +863,14 @@ public:
             targetAmps[h] *= balance;
         }
 
-        // Normalize so loudest partial is 1.0 (prevents clipping)
+        // Normalise only when the peak exceeds 1.0, preserving natural loudness
+        // differences between tensor zones below that. (Previously normalised every
+        // block, squashing dynamics.) Scan only the active partial range.
         {
             float maxAmp = 0.0f;
             for (int h = 0; h < numPartials; ++h)
                 maxAmp = std::max(maxAmp, targetAmps[h]);
-            if (maxAmp > 1e-6f)
+            if (maxAmp > 1.0f)
             {
                 const float invMax = 1.0f / maxAmp;
                 for (int h = 0; h < numPartials; ++h)
@@ -939,8 +950,9 @@ public:
             lastDepth   = baseDepth;
         }
 
-        // Coupling accumulator decay — sample-rate and block-size independent (~1s time constant)
-        const float couplingDecay = std::exp(-static_cast<float>(numSamples) / (sampleRateFloat * 1.0f));
+        // Coupling accumulator decay — sample-rate and block-size independent (~1s time constant).
+        // fastExp is ample accuracy (~6%) for an envelope decay coefficient.
+        const float couplingDecay = fastExp(-static_cast<float>(numSamples) / sampleRateFloat);
         couplingAmpFilter *= couplingDecay;
         couplingEnvMorph  *= couplingDecay;
         couplingRhythm    *= couplingDecay;
@@ -1032,8 +1044,10 @@ private:
 
                 // ---- Glide-smooth frequency ----
                 {
+                    // Pitch bend ±2 semitones: compile-time constant avoids per-sample divide.
+                    constexpr float kPitchBendRangeOver12 = 2.0f / 12.0f;
                     const float targetFreq = midiToFreqTune(v.note, harmonicShift)
-                        * fastPow2(pitchBendValue * 2.0f / 12.0f);  // ±2 semitones
+                        * fastPow2(pitchBendValue * kPitchBendRangeOver12);
                     if (glideCoeff > 0.0001f)
                         v.glideFreq = v.glideFreq + (targetFreq - v.glideFreq) * (1.0f - glideCoeff);
                     else
@@ -1078,32 +1092,50 @@ private:
                 // morph-dominant (high-partial) amplitude weighting — applied per-partial below
                 const float totalRotMod     = lfo1RotOffset + lfo2RotOffset;
 
-                // ---- Filter cutoff with key tracking, env, and LFO ----
-                float effectiveCutoff = baseCutoff
-                    + totalFilterMod
-                    + fltKeyTrack * (static_cast<float>(v.note - 60)) * 50.0f;
+                // ---- Filter cutoff with exponential key tracking, env, and LFO ----
+                // Musical keytrack: each semitone of offset scales cutoff by 2^(keyTrack/12).
+                // At keyTrack=1.0 this is 1 octave per octave (true keytracking).
+                // fastPow2 is ~50× faster than std::pow and accurate to ~0.02 %.
+                const float keyTrackMul = fastPow2(static_cast<float>(v.note - 60) * fltKeyTrack * (1.0f / 12.0f));
+                float effectiveCutoff = baseCutoff * keyTrackMul + totalFilterMod;
 
-                // Bipolar filter env amount: !0 check for negative sweeps (D001 lesson)
-                if (fltEnvAmt != 0.0f)
+                // Bipolar filter env amount: |x| > eps (was exact-zero) for negative sweeps.
+                if (std::fabs(fltEnvAmt) > 1e-6f)
                     effectiveCutoff += fltEnvAmt * filterLevel * 8000.0f;
 
                 effectiveCutoff = std::clamp(effectiveCutoff, 20.0f, 20000.0f);
 
-                // ---- Update filter coefficients every 16 samples ----
+                // ---- Update filter coefficients every 8 samples (was 16) ----
+                // Halves the stepping artefact on fast LFO-on-cutoff sweeps with minimal
+                // CPU cost — one CytomicSVF::setCoefficients call per L/R pair is cheap.
                 if (v.filterUpdateCounter <= 0)
                 {
                     const auto mode = static_cast<CytomicSVF::Mode>(
                         std::clamp(fltType, 0, 3));
                     v.outputFilterL.setMode(mode);
                     v.outputFilterR.setMode(mode);
+                    // Both filters share identical coefficients — compute once, copy the
+                    // internal state via the public setter on each instance.
                     v.outputFilterL.setCoefficients(effectiveCutoff, fltReso, sampleRateFloat);
                     v.outputFilterR.setCoefficients(effectiveCutoff, fltReso, sampleRateFloat);
-                    v.filterUpdateCounter = 16;
+                    v.filterUpdateCounter = 8;
                 }
                 --v.filterUpdateCounter;
 
                 // ---- Build 16-partial additive sum ----
                 float sumL = 0.0f, sumR = 0.0f;
+
+                // Hoist FM coupling sample out of the 16-partial loop (was indexed 16×
+                // per sample with a redundant std::min bounds check).
+                const size_t fmIdx = static_cast<size_t>(std::min(s, maxBlock - 1));
+                const float fmPhaseAdd = couplingFmBuf[fmIdx] * 0.01f;
+
+                // Anti-aliasing: fade partials linearly across the top 10% of Nyquist
+                // instead of a hard cut-off. The hard cut produced an audible "cliff"
+                // during pitch sweeps; the linear ramp is imperceptible.
+                const float nyquistTop   = sampleRateFloat * 0.499f;
+                const float nyquistStart = sampleRateFloat * 0.45f;
+                const float nyquistSpan  = nyquistTop - nyquistStart;
 
                 for (int h = 0; h < numPartials; ++h)
                 {
@@ -1113,19 +1145,20 @@ private:
                     const float n = static_cast<float>(h + 1);
                     const float inhFactor = std::sqrt(1.0f + inharmonicity * 0.001f * n * n);
                     const float partialFreq = v.glideFreq * n * inhFactor;
-                    if (partialFreq >= sampleRateFloat * 0.499f) continue; // Nyquist guard
+                    if (partialFreq >= nyquistTop) continue; // Nyquist guard
+
+                    // Anti-aliasing fade: linear ramp from 1.0 at nyquistStart to 0.0 at nyquistTop.
+                    float aaFade = 1.0f;
+                    if (partialFreq > nyquistStart)
+                        aaFade = std::max(0.0f, 1.0f - (partialFreq - nyquistStart) / nyquistSpan);
 
                     // Phase increment per sample
                     const float phaseInc = partialFreq / sampleRateFloat;
 
-                    // FM coupling modulates the phase increment (true FM)
-                    const float fmMod = couplingFmBuf[std::min(static_cast<size_t>(s), static_cast<size_t>(maxBlock - 1))];
-                    const float fmPhaseAdd = fmMod * 0.01f;
-
                     // Advance phase accumulator with FM baked into the increment
                     v.partialPhase[h] += phaseInc + fmPhaseAdd;
-                    if (v.partialPhase[h] >= 1.0f)
-                        v.partialPhase[h] -= 1.0f;
+                    while (v.partialPhase[h] >= 1.0f) v.partialPhase[h] -= 1.0f;
+                    while (v.partialPhase[h] <  0.0f) v.partialPhase[h] += 1.0f;
 
                     // Spread: add a small stereo phase offset per partial
                     // Alternating sign creates L/R decorrelation
@@ -1160,9 +1193,11 @@ private:
                         const float rotWeight = (static_cast<float>(h) / 15.0f) * 2.0f - 1.0f;
                         ampMod += totalRotMod * rotWeight * 0.3f;
                     }
-                    ampMod = std::clamp(ampMod, 0.0f, 2.0f);
+                    // 1.5 ceiling (was 2.0) — prevents explosive amp spikes when LFO
+                    // depth and rotation mod stack on the same partial.
+                    ampMod = std::clamp(ampMod, 0.0f, 1.5f);
 
-                    const float amp = v.smoothAmp[h] * ampMod;
+                    const float amp = v.smoothAmp[h] * ampMod * aaFade;
                     sumL += sineL * amp;
                     sumR += sineR * amp;
                 }

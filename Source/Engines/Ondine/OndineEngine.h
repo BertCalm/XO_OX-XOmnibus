@@ -487,11 +487,13 @@ public:
         }
         default:
         {
-            float rms = 0.0f;
+            // Generic fallback: treat as AmpToFilter. Assign (not +=) so repeated
+            // unknown coupling types cannot accumulate across blocks.
+            float mav = 0.0f;
             for (int i = 0; i < numSamples; ++i)
-                rms += std::fabs(sourceBuffer[i]);
-            rms /= static_cast<float>(numSamples);
-            couplingAmpFilter += rms * amount;
+                mav += std::fabs(sourceBuffer[i]);
+            mav /= static_cast<float>(numSamples);
+            couplingAmpFilter = mav * amount;
             break;
         }
         }
@@ -1172,7 +1174,7 @@ private:
 
                     // Output filter
                     const float fenvLevel    = v.filterEnv.getLevel();
-                    const float fenvOffset   = fenvAmt != 0.0f ? fenvAmt * fenvLevel * 6000.0f : 0.0f;
+                    const float fenvOffset   = std::fabs(fenvAmt) > 1e-6f ? fenvAmt * fenvLevel * 6000.0f : 0.0f;
                     const float effectCutoff = std::clamp(baseCutoff + fenvOffset, 20.0f, 20000.0f);
                     const CytomicSVF::Mode outMode = filterModeFromInt(fltType);
                     v.outputFilterL.setMode(outMode);

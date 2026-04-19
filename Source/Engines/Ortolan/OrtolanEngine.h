@@ -124,9 +124,10 @@ struct VosimGenerator
             return 0.0f;
         }
 
-        // Effective formant with FM modulation; keep at least 20 Hz
-        const float effFormant  = std::max(formantFreq + fmMod, 20.0f);
-        const float periodSamp  = sampleRate / effFormant;  // samples per cosine cycle
+        // Effective formant with FM modulation; keep at least 20 Hz and below
+        // 0.45·sr to avoid aliasing when heavy FM pushes the formant toward Nyquist.
+        const float effFormant  = std::clamp(formantFreq + fmMod, 20.0f, sampleRate * 0.45f);
+        const float periodSamp  = std::max(sampleRate / effFormant, 2.0f);  // samples per cosine cycle
 
         // Generate squared waveform sample from current phase position
         const float t = phase / std::max(periodSamp, 1.0f);  // 0..1 over one period
@@ -630,12 +631,13 @@ public:
         }
         default:
         {
-            // Generic fallback: treat as AmpToFilter
-            float rms = 0.0f;
+            // Generic fallback: treat as AmpToFilter. Assign (not +=) so repeated
+            // unknown coupling types cannot accumulate across blocks.
+            float mav = 0.0f;
             for (int i = 0; i < numSamples; ++i)
-                rms += std::fabs(sourceBuffer[i]);
-            rms /= static_cast<float>(numSamples);
-            couplingAmpFilter += rms * amount;
+                mav += std::fabs(sourceBuffer[i]);
+            mav /= static_cast<float>(numSamples);
+            couplingAmpFilter = mav * amount;
             break;
         }
         }
@@ -1462,13 +1464,17 @@ private:
                 if ((v.filterUpdateCounter & 15) == 0)
                 {
                     const float fEnvLevel  = v.filterEnv.getLevel();
-                    const float keyTrackHz = v.keyTrack * fltKeyTrack * 5000.0f;
-                    // Bipolar env amt: != 0 check (Lesson 7 -- negative sweeps are valid)
-                    const float envHz = (fltEnvAmt != 0.0f)
+                    // Exponential keytracking: cutoff · 2^((note-60)·keyTrack/12).
+                    // Was linear: keyTrack01 * fltKeyTrack * 5000 Hz, which was
+                    // non-musical at the extremes (too much cut low, too much open high).
+                    const float keyTrackMul = fastPow2(
+                        static_cast<float>(v.note - 60) * fltKeyTrack * (1.0f / 12.0f));
+                    // Bipolar env amt: |x| > eps (Lesson 7 -- negative sweeps are valid).
+                    const float envHz = (std::fabs(fltEnvAmt) > 1e-6f)
                         ? fltEnvAmt * fEnvLevel * 8000.0f
                         : 0.0f;
                     const float effectiveCutoff = std::clamp(
-                        baseCutoff + keyTrackHz + envHz, 20.0f, 20000.0f);
+                        baseCutoff * keyTrackMul + envHz, 20.0f, 20000.0f);
 
                     v.outputFilterL.setCoefficients_fast(effectiveCutoff, fltReso, sampleRateFloat);
                     v.outputFilterR.setCoefficients_fast(effectiveCutoff, fltReso, sampleRateFloat);

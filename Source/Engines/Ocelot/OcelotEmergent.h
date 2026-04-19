@@ -210,23 +210,24 @@ private:
         f2 = kFormantTable[t][1];
         f3 = kFormantTable[t][2];
 
-        // MIDI note transposition from baseNote (C3=60 = concert pitch)
+        // MIDI note transposition from baseNote (C3=60 = concert pitch).
+        // fastPow2 is ~50× faster than std::pow and accurate to ~0.02%.
         float noteSemitones = static_cast<float>(baseNote - 60);
-        float noteMul = std::pow(2.0f, noteSemitones / 12.0f);
+        float noteMul = xoceanus::fastPow2(noteSemitones * (1.0f / 12.0f));
 
         // User creaturePitch: -1..+1 (centered at 0.5) → ±1 octave range
         float pitchUser = (snap.creaturePitch - 0.5f) * 2.0f;
         float pitchMod = std::clamp(pitchUser + mod.emergentPitchMod, -1.0f, 1.0f);
-        float pitchMul = std::pow(2.0f, pitchMod * 0.5f); // ±0.5 oct from user pitch
+        float pitchMul = xoceanus::fastPow2(pitchMod * 0.5f); // ±0.5 oct from user pitch
 
         // Formant additive mod from Canopy→Emergent (spectral route)
         float formantMod = mod.emergentFormantMod;
-        float formantMul = std::pow(2.0f, formantMod * 0.3f);
+        float formantMul = xoceanus::fastPow2(formantMod * 0.3f);
 
         // Biome: emergentPitchRange encodes the "creature character scale"
         // 0.35 (Winter/wolf) → lower formants; 0.8 (Underwater/whale) → much lower
         float biomeTilt = (biome.emergentPitchRange - 0.5f); // -0.15 to +0.30
-        float biomeMul = std::pow(2.0f, -biomeTilt * 1.2f);  // Underwater = lower
+        float biomeMul = xoceanus::fastPow2(-biomeTilt * 1.2f); // Underwater = lower
 
         float mul = noteMul * pitchMul * formantMul * biomeMul;
         f1 = std::clamp(f1 * mul, 40.0f, 16000.0f);
