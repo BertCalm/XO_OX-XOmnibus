@@ -339,6 +339,7 @@ public:
 
         for (int i = 0; i < numSamples; ++i)
         {
+            const bool updateFilter = ((i & 15) == 0);
             float lfo1Val = lfo1.process();
             float lfo2Val = lfo2.process();
             float breathVal = breathLfo.process();
@@ -513,11 +514,14 @@ public:
                     voiceSample *= duck;
                 }
 
-                // Per-voice filter
-                float voiceCutoff = pFilterCut + pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity -
-                                    pressureState.strainLevel * 2000.0f * pStrainColor;
-                voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
-                voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                // Per-voice filter (coeff refresh decimated)
+                if (updateFilter)
+                {
+                    float voiceCutoff = pFilterCut + pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity -
+                                        pressureState.strainLevel * 2000.0f * pStrainColor;
+                    voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
+                    voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                }
                 voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 voiceSample *= ampLevel;

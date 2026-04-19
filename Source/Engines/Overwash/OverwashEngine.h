@@ -363,6 +363,7 @@ public:
 
         for (int i = 0; i < numSamples; ++i)
         {
+            const bool updateFilter = ((i & 15) == 0);
             float lfo1Val = lfo1.process();
             float lfo2Val = lfo2.process();
             float breathVal = breathLfo.process();
@@ -399,10 +400,14 @@ public:
                 // Per-voice filter cutoff with filter envelope and velocity.
                 // pBrightness has a standalone additive effect on cutoff so it reaches
                 // the synthesis path independently of the CHARACTER macro combination.
-                float voiceCutoff = pFilterCut * velBright + pFiltEnvAmt * filtLevel * 8000.0f * voice.velocity +
-                                    pBrightness * 4000.0f; // brightness independently brightens the tone
-                voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
-                voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                // SVF coeff refresh decimated to every 16 samples.
+                if (updateFilter)
+                {
+                    float voiceCutoff = pFilterCut * velBright + pFiltEnvAmt * filtLevel * 8000.0f * voice.velocity +
+                                        pBrightness * 4000.0f; // brightness independently brightens the tone
+                    voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
+                    voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                }
 
                 // LFOToPitch coupling: extPitchMod is accumulated in applyCouplingInput()
                 // and reset at end of block. Convert semitone offset to a frequency ratio

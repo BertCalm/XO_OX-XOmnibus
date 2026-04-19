@@ -471,6 +471,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float cutNow = smoothCutoff.process();
             float wildNow = smoothWildness.process();
             float bowNow = smoothBowNoise.process();
@@ -530,12 +531,15 @@ public:
                     growthGain = voice.growthPhase * voice.growthPhase;
                 }
 
-                // Filter
+                // Filter (env ticked per-sample, SVF decimated)
                 float envLevel = voice.filterEnv.process();
-                float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 3000.0f, 200.0f, 20000.0f);
-                voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
-                                             srf); // l2 → resonance shimmer
+                if (updateFilter)
+                {
+                    float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 3000.0f, 200.0f, 20000.0f);
+                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
+                                                 srf); // l2 → resonance shimmer
+                }
                 float filtered = voice.filter.processSample(stringOut + runnerOut);
 
                 // Amp envelope

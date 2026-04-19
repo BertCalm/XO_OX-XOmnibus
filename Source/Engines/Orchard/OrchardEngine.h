@@ -407,6 +407,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float cutNow = smoothCutoff.process();
             float detNow = smoothDetune.process();
             float formNow = smoothFormant.process();
@@ -469,21 +470,27 @@ public:
                                 accumulators.getDormancyAttackNoise() * 0.1f;
                 }
 
-                // Formant-shaped filter (orchestral body resonance)
-                float formFreq = 300.0f + formNow * 2500.0f; // formant center
-                voice.formantFilter.setMode(CytomicSVF::Mode::BandPass);
-                voice.formantFilter.setCoefficients(formFreq, 0.3f + formNow * 0.4f, srf);
+                // Formant-shaped filter (orchestral body resonance; coeff refresh decimated)
+                if (updateFilter)
+                {
+                    float formFreq = 300.0f + formNow * 2500.0f; // formant center
+                    voice.formantFilter.setMode(CytomicSVF::Mode::BandPass);
+                    voice.formantFilter.setCoefficients(formFreq, 0.3f + formNow * 0.4f, srf);
+                }
                 float formantSig = voice.formantFilter.processSample(oscMix);
                 float blended = oscMix * (1.0f - formNow * 0.5f) + formantSig * formNow * 0.5f;
 
-                // Main filter
+                // Main filter (env ticked per-sample, SVF decimated)
                 float envLevel = voice.filterEnv.process();
-                float fCut =
-                    std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 3000.0f + aftertouchAmount * 3000.0f,
-                               200.0f, 20000.0f);
-                voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
-                                             srf); // l2 → resonance shimmer
+                if (updateFilter)
+                {
+                    float fCut =
+                        std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 3000.0f + aftertouchAmount * 3000.0f,
+                                   200.0f, 20000.0f);
+                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
+                                                 srf); // l2 → resonance shimmer
+                }
                 float filtered = voice.filter.processSample(blended + dormNoise);
 
                 // Amplitude envelope
