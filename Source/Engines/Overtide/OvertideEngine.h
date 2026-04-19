@@ -555,11 +555,13 @@ public:
         }
         default:
         {
-            float rms = 0.0f;
+            // Generic fallback: treat as AmpToFilter. Assign (not +=) so repeated
+            // unknown coupling types cannot accumulate across blocks.
+            float mav = 0.0f;
             for (int i = 0; i < numSamples; ++i)
-                rms += std::fabs(sourceBuffer[i]);
-            rms /= static_cast<float>(numSamples);
-            couplingAmpFilter += rms * amount;
+                mav += std::fabs(sourceBuffer[i]);
+            mav /= static_cast<float>(numSamples);
+            couplingAmpFilter = mav * amount;
             break;
         }
         }
