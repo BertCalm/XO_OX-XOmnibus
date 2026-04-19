@@ -25,23 +25,17 @@
 #include "Gallery/ParameterGrid.h"
 #include "Gallery/MacroHeroStrip.h"
 #include "Gallery/EngineDetailPanel.h"
-#include "Gallery/FieldMapPanel.h"
 #include "Gallery/OverviewPanel.h"
 #include "Gallery/CompactEngineTile.h"
 #include "Gallery/MacroSection.h"
 #include "Gallery/AdvancedFXPanel.h"
-#include "Gallery/MasterFXSection.h"
 #include "Gallery/PresetBrowserPanel.h"
-#include "Gallery/PresetBrowserStrip.h"
-#include "Gallery/ChordMachinePanel.h"
 #include "Gallery/PerformanceViewPanel.h"
-#include "Gallery/CouplingArcOverlay.h"
 #include "Gallery/ColumnLayoutManager.h"
 #include "Gallery/SidebarPanel.h"
 #include "Gallery/StatusBar.h"
 #include "Gallery/WaveformDisplay.h"
 #include "Gallery/EnginePickerPopup.h"
-#include "Gallery/CouplingPopover.h"
 #include "Gallery/DepthZoneDial.h"
 #include "Gallery/ABCompare.h"
 #include "Gallery/HeaderIndicators.h"
@@ -152,23 +146,13 @@ public:
         ghostTile.onSelect = [this](int slot) { selectSlot(slot); };
         addChildComponent(ghostTile); // #1007 FIX 6
 
-        addChildComponent(fieldMap);         // #1007 FIX 6
         addChildComponent(overview);         // #1007 FIX 6
         addChildComponent(detail);           // #1007 FIX 6
-        addChildComponent(chordPanel);       // #1007 FIX 6
         addChildComponent(performancePanel); // #1007 FIX 6
         addChildComponent(macros);           // #1007 FIX 6
-        addChildComponent(masterFXStrip);    // #1007 FIX 6
-        addChildComponent(presetBrowser);    // #1007 FIX 6
-
-        // Coupling arc overlay: must be added AFTER tiles so it paints on top.
-        // setInterceptsMouseClicks(false,false) means tiles still receive clicks.
-        addChildComponent(couplingArcs);      // #1007 FIX 6
-        addChildComponent(couplingHitTester); // #1007 FIX 6
 
         // Preserve alpha=0.0f so the fade-in animation still works when toggled on.
         detail.setAlpha(0.0f);
-        chordPanel.setAlpha(0.0f);
         performancePanel.setAlpha(0.0f);
     }
 
@@ -300,11 +284,8 @@ public:
             ghostTile.repaint();
             overview.repaint();
             detail.repaint();
-            chordPanel.repaint();
             performancePanel.repaint();
             macros.repaint();
-            masterFXStrip.repaint();
-            presetBrowser.repaint();
             sidebar.repaint();
             // Also repaint the embedded PlaySurface if visible.
             if (playSurface_.isVisible())
@@ -432,10 +413,8 @@ public:
         // callback fires on the message thread once the library is ready.
         auto presetDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
                              .getChildFile("Application Support/XO_OX/XOceanus/Presets");
-        presetBrowser.setMacroSection(&macros); // wire preset macroLabels → macro knob labels
         if (presetDir.isDirectory())
         {
-            presetBrowser.setScanning(true);
             // #923: Also start the spinner in the sidebar's full PresetBrowser.
             sidebar.setPresetBrowserScanning(true);
             // SafePointer guards against the editor being destroyed before the
@@ -447,7 +426,6 @@ public:
                 {
                     if (safeThis == nullptr)
                         return;
-                    safeThis->presetBrowser.setScanning(false); // clears loading state + refreshes strip
                     // #923: Stop the spinner and rebuild the sidebar's full PresetBrowser.
                     safeThis->sidebar.setPresetBrowserScanning(false);
                     // Fix S2: also refresh the sidebar's PresetBrowser panel so it re-reads the
@@ -478,7 +456,6 @@ public:
                                 safeThis->processor.applyPreset(initPreset);
                             }
                             pm.addPreset(initPreset);
-                            safeThis->presetBrowser.updateDisplay();
                             safeThis->sidebar.refreshPresetBrowser();
                         }
                     }
@@ -509,7 +486,6 @@ public:
                     pm.addPreset(initPreset);
                 }
             }
-            presetBrowser.updateDisplay();
         }
     }
 
@@ -585,7 +561,6 @@ public:
             auto& mlm = proc.getMIDILearnManager();
             detail.setMidiLearnManager(&mlm);
             macros.setupMidiLearn(mlm);
-            masterFXStrip.setupMidiLearn(mlm);
         }
 
         // ── MIDI Learn learn-complete notification ──────────────────────────
@@ -613,18 +588,6 @@ public:
         };
 
         // ── ABCompare wiring ─────────────────────────────────────────────────
-        // W04: Fire onPresetLoaded() and also refresh tiles + detail panel.
-        presetBrowser.onPresetLoaded = [this]()
-        {
-            abCompare.onPresetLoaded();
-            // Refresh all primary tiles so engine names/accents update immediately.
-            for (int i = 0; i < kNumPrimarySlots; ++i)
-                if (tiles[i])
-                    tiles[i]->refresh();
-            // Refresh detail panel if it is currently visible.
-            if (detail.isVisible())
-                detail.loadSlot(selectedSlot);
-        };
 
         // Event-driven tile refresh: only repaint the affected tile and overview on engine change.
         // CQ02: callback fires from the audio thread — marshal all UI calls to the message thread.
@@ -716,9 +679,6 @@ public:
                     overview.setVisible(false);
                     detail.setAlpha(1.0f);
                     detail.setVisible(true);
-                    couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
-                    if (auto* eng = processor.getEngine(effectiveSlot))
-                        masterFXStrip.setAccentColour(eng->getAccentColour());
                 }
             }
         }
@@ -772,9 +732,10 @@ public:
                     p->endChangeGesture();
                 }
             };
-            tb->onCoupleClicked = []()
+            tb->onCoupleClicked = [this]()
             {
-                // TODO: open coupling inspector panel
+                if (auto* sb = oceanView_.getSidebar())
+                    sb->selectTab(SidebarPanel::Couple);
             };
         }
         oceanView_.initStatusBar();
@@ -979,12 +940,12 @@ public:
         };
 
         // favToggleButton — toggle current preset favourite in shared settings.
+        // #1114: PresetBrowserStrip (Gallery-era strip) removed. Favourite toggling is
+        // now the responsibility of the OceanView sidebar's full PresetBrowser.
         oceanView_.favToggleButton().onClick = [this]
         {
-            auto& pm = processor.getPresetManager();
-            if (pm.getLibrarySize() == 0)
-                return;
-            presetBrowser.toggleFavoriteForCurrentPreset();
+            if (auto* sb = oceanView_.getSidebar())
+                sb->selectTab(SidebarPanel::Preset);
         };
 
         // settingsTogButton — open the Settings tab in the OceanView sidebar.
@@ -1035,16 +996,10 @@ public:
         for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->setVisible(false);
         ghostTile.setVisible(false);
-        fieldMap.setVisible(false);
         overview.setVisible(false);
         detail.setVisible(false);
-        chordPanel.setVisible(false);
         performancePanel.setVisible(false);
         macros.setVisible(false);
-        masterFXStrip.setVisible(false);
-        presetBrowser.setVisible(false);
-        couplingArcs.setVisible(false);
-        couplingHitTester.setVisible(false);
         sidebar.setVisible(false);
         statusBar.setVisible(false);
         depthDial.setVisible(false);
@@ -1354,9 +1309,7 @@ private:
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
         perfToggleBtn.setToggleState(false, juce::dontSendNotification);
 
-        // Hide chord/performance panels if visible
-        if (chordPanel.isVisible())
-            chordPanel.setVisible(false);
+        // Hide performance panel if visible
         if (performancePanel.isVisible())
             performancePanel.setVisible(false);
 
@@ -1375,11 +1328,8 @@ private:
                 if (detail.loadSlot(slot))
                 {
                     overview.setVisible(false);
-                    couplingHitTester.setVisible(false);
                     detail.setAlpha(1.0f);
                     detail.setVisible(true);
-                    if (auto* eng = processor.getEngine(slot))
-                        masterFXStrip.setAccentColour(eng->getAccentColour());
                 }
                 else
                 {
@@ -1401,12 +1351,9 @@ private:
                         if (self.detail.loadSlot(slot))
                         {
                             self.overview.setVisible(false);
-                            self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
                             self.detail.setAlpha(0.0f);
                             self.detail.setVisible(true);
                             juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
-                            if (auto* eng = self.processor.getEngine(slot))
-                                self.masterFXStrip.setAccentColour(eng->getAccentColour());
                         }
                         else
                         {
@@ -1422,19 +1369,15 @@ private:
             if (A11y::prefersReducedMotion())
             {
                 overview.setVisible(false);
-                couplingHitTester.setVisible(false);
                 if (detail.loadSlot(slot))
                 {
                     detail.setAlpha(1.0f);
                     detail.setVisible(true);
-                    if (auto* eng = processor.getEngine(slot))
-                        masterFXStrip.setAccentColour(eng->getAccentColour());
                 }
                 else
                 {
                     overview.setAlpha(1.0f);
                     overview.setVisible(true);
-                    couplingHitTester.setVisible(true);
                 }
             }
             else
@@ -1452,12 +1395,9 @@ private:
                         if (self.detail.loadSlot(slot))
                         {
                             self.overview.setVisible(false);
-                            self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
                             self.detail.setAlpha(0.0f);
                             self.detail.setVisible(true);
                             juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
-                            if (auto* eng = self.processor.getEngine(slot))
-                                self.masterFXStrip.setAccentColour(eng->getAccentColour());
                         }
                         else
                         {
@@ -1481,7 +1421,6 @@ private:
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
         juce::Component* outgoing = detail.isVisible()             ? static_cast<juce::Component*>(&detail)
-                                    : chordPanel.isVisible()       ? static_cast<juce::Component*>(&chordPanel)
                                     : performancePanel.isVisible() ? static_cast<juce::Component*>(&performancePanel)
                                                                    : nullptr;
         if (outgoing)
@@ -1492,7 +1431,6 @@ private:
                 outgoing->setVisible(false);
                 overview.setAlpha(1.0f);
                 overview.setVisible(true);
-                couplingHitTester.setVisible(true);
             }
             else
             {
@@ -1509,7 +1447,6 @@ private:
                             safeOutgoing->setVisible(false);
                         safeThis->overview.setAlpha(0.0f);
                         safeThis->overview.setVisible(true);
-                        safeThis->couplingHitTester.setVisible(true); // restore — overview needs arc hit-testing
                         juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->overview, kFadeMs);
                     });
             }
@@ -1518,64 +1455,11 @@ private:
 
     void showChordMachine()
     {
-        selectedSlot = -1;
-        processor.setPersistedSelectedSlot(-1); // persist for session restore (#357)
-        for (int i = 0; i < kNumPrimarySlots; ++i)
-            tiles[i]->setSelected(false);
-        ghostTile.setSelected(false);
-
-        auto& anim = juce::Desktop::getInstance().getAnimator();
-        juce::Component* outgoing = detail.isVisible()             ? static_cast<juce::Component*>(&detail)
-                                    : performancePanel.isVisible() ? static_cast<juce::Component*>(&performancePanel)
-                                    : overview.isVisible()         ? static_cast<juce::Component*>(&overview)
-                                                                   : nullptr;
-        if (outgoing)
-        {
-            // #926: skip cross-fade when reduced-motion preference is active
-            if (A11y::prefersReducedMotion())
-            {
-                outgoing->setVisible(false);
-                chordPanel.setAlpha(1.0f);
-                chordPanel.setVisible(true);
-                chordPanel.grabKeyboardFocus();
-            }
-            else
-            {
-                juce::Component::SafePointer<XOceanusEditor> safeThis(this);
-                juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
-                anim.fadeOut(outgoing, kFadeMs);
-                juce::Timer::callAfterDelay(kFadeMs,
-                                            [safeThis, safeOutgoing]
-                                            {
-                                                if (safeThis == nullptr)
-                                                    return;
-                                                if (safeOutgoing != nullptr)
-                                                    safeOutgoing->setVisible(false);
-                                                safeThis->chordPanel.setAlpha(0.0f);
-                                                safeThis->chordPanel.setVisible(true);
-                                                juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->chordPanel,
-                                                                                                  kFadeMs);
-                                                safeThis->chordPanel.grabKeyboardFocus();
-                                            });
-            }
-        }
-        else
-        {
-            // #926: skip fade-in when reduced-motion preference is active
-            if (A11y::prefersReducedMotion())
-            {
-                chordPanel.setAlpha(1.0f);
-                chordPanel.setVisible(true);
-                chordPanel.grabKeyboardFocus();
-            }
-            else
-            {
-                chordPanel.setAlpha(0.0f);
-                chordPanel.setVisible(true);
-                anim.fadeIn(&chordPanel, kFadeMs);
-                chordPanel.grabKeyboardFocus();
-            }
-        }
+        // #1114: Gallery-era ChordMachinePanel removed. In OceanView mode the chord
+        // machine is exposed via the OceanView's TideWaterline/ChordBar. The cmToggleBtn
+        // is hidden under OceanView so this path is unreachable at runtime; kept as a
+        // stub to avoid orphaned caller references.
+        juce::ignoreUnused(this);
     }
 
     void showPerformanceView()
@@ -1589,10 +1473,9 @@ private:
         performancePanel.refresh();
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
-        juce::Component* outgoing = detail.isVisible()       ? static_cast<juce::Component*>(&detail)
-                                    : chordPanel.isVisible() ? static_cast<juce::Component*>(&chordPanel)
-                                    : overview.isVisible()   ? static_cast<juce::Component*>(&overview)
-                                                             : nullptr;
+        juce::Component* outgoing = detail.isVisible()     ? static_cast<juce::Component*>(&detail)
+                                    : overview.isVisible() ? static_cast<juce::Component*>(&overview)
+                                                           : nullptr;
         if (outgoing)
         {
             // #926: skip cross-fade when reduced-motion preference is active
@@ -1763,31 +1646,6 @@ private:
         if (!oceanView_.isVisible())
             sidebar.refreshExportPanel();
 
-        // ── Update coupling hit tester with current arc data ─────────────────
-        if (!oceanView_.isVisible())
-        {
-            auto routes = processor.getCouplingMatrix().getRoutes();
-            std::array<juce::Point<float>, EngineRegistry::MaxSlots> nodeCenters;
-            // Compute node centers matching OverviewPanel's diamond layout
-            float w = (float)overview.getWidth();
-            float h = (float)overview.getHeight();
-            float portraitH = h * 0.38f;
-            float chainY = portraitH + (h - portraitH) * 0.28f;
-            float routeY = chainY + 12.0f + 12.0f;
-            float padding = 16.0f;
-            auto nodeArea = juce::Rectangle<float>(padding, routeY, w - 2.0f * padding, 60.0f);
-            nodeCenters[0] = nodeArea.getTopLeft().translated(8.0f, 8.0f);
-            nodeCenters[1] = nodeArea.getTopRight().translated(-8.0f, 8.0f);
-            nodeCenters[2] = nodeArea.getBottomLeft().translated(8.0f, -8.0f);
-            nodeCenters[3] = nodeArea.getBottomRight().translated(-8.0f, -8.0f);
-            // Ghost Slot position — below the 4 primary nodes if visible
-            if (ghostTile.isVisible())
-                nodeCenters[4] = ghostTile.getBounds().getCentre().toFloat() - overview.getPosition().toFloat();
-            else
-                nodeCenters[4] = nodeCenters[3].translated(0.0f, 20.0f); // fallback
-            couplingHitTester.updateArcs(routes, nodeCenters);
-        }
-
         // ── MIDI Learn: finalise pending learn captures ───────────────────────
         // checkPendingLearn() is safe to call from the message thread at any rate.
         // It reads a single atomic written by processMidi() on the audio thread
@@ -1825,8 +1683,6 @@ private:
                     if (auto* eng = processor.getEngine(ev.slot))
                         colour = eng->getAccentColour();
                 }
-                if (fieldMap.isVisible())
-                    fieldMap.addNote(ev.midiNote, ev.velocity, colour);
                 midiIndicator.flash(colour); // flash on every incoming note event
                 // velocity > 0 = note-on; velocity == 0 = note-off.
                 if (ev.velocity > 0.0f)
@@ -2362,15 +2218,11 @@ private:
     std::unique_ptr<GalleryLookAndFeel> laf;
 
     std::array<std::unique_ptr<CompactEngineTile>, kNumPrimarySlots> tiles;
-    FieldMapPanel fieldMap;
     OverviewPanel overview;
     EngineDetailPanel detail;
-    ChordMachinePanel chordPanel;
     PerformanceViewPanel performancePanel;
     MacroSection macros;
-    MasterFXSection masterFXStrip;
-    PresetBrowserStrip presetBrowser;
-    // Ghost Slot tile — declared after presetBrowser to match constructor MIL order.
+    // Ghost Slot tile — declared after macros to maintain constructor MIL order.
     // Hidden until EngineRegistry::detectCollection() returns a non-empty collection.
     CompactEngineTile ghostTile;
     juce::TextButton enginesBtn;
@@ -2395,8 +2247,6 @@ private:
     // JUCE requires exactly one TooltipWindow child per top-level component; without it
     // every setTooltip() call is dead code. 400ms delay matches standard plugin UX.
     juce::TooltipWindow tooltipWindow{this, 400};
-    CouplingArcOverlay couplingArcs{processor};
-    CouplingArcHitTester couplingHitTester{processor};
     SidebarPanel sidebar;
     StatusBar statusBar;
 
