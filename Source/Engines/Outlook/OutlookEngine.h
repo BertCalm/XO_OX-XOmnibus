@@ -210,6 +210,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             const float lfo1Val = lfo1.process();
             const float lfo2Val = lfo2.process();
 
@@ -297,12 +298,17 @@ public:
                 const float modCutoff = envCutoff * (1.0f + lfo1Val * pLfo1Dep * std::max(movementAmt, 0.1f));
                 const float finalCutoff = std::clamp(modCutoff + aftertouch * pAfterDep * 4000.0f, 20.0f, 20000.0f);
 
-                v.filterLP.setCoefficients_fast(finalCutoff, pFilterRes, static_cast<float>(sr));
+                if (updateFilter)
+                    v.filterLP.setCoefficients_fast(finalCutoff, pFilterRes, static_cast<float>(sr));
                 const float filtered = v.filterLP.processSample(oscMix);
 
-                // HP for clearing low mud based on horizon
-                const float hpCutoff = 20.0f + (1.0f - pVistaOpen) * 300.0f;
-                v.filterHP.setCoefficients_fast(hpCutoff, 0.5f, static_cast<float>(sr));
+                // HP for clearing low mud based on horizon (block-constant: pVistaOpen is smoothed
+                // per-block-ish; decimate SVF coefficient refresh).
+                if (updateFilter)
+                {
+                    const float hpCutoff = 20.0f + (1.0f - pVistaOpen) * 300.0f;
+                    v.filterHP.setCoefficients_fast(hpCutoff, 0.5f, static_cast<float>(sr));
+                }
                 const float cleaned = v.filterHP.processSample(filtered);
 
                 // Aurora luminosity modulates amplitude

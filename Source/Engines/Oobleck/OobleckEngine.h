@@ -842,6 +842,7 @@ public:
             // Per-sample loop
             for (int s = 0; s < numSamples; ++s)
             {
+                const bool updateFilter = ((s & 15) == 0);
                 // ── RD evolution scheduling ──────────────────────────────────
                 voice.rdAccumulator += effEvolutionWithAT / static_cast<float>(currentSampleRate_);
 
@@ -933,12 +934,15 @@ public:
                 // If LFO target is filter (case 3), lastCouplingOut holds LFO-modulated cutoff
                 const float activeCutoff = (snap_.lfoTarget == 3 && voice.lastCouplingOut > 0.0f)
                     ? voice.lastCouplingOut : voiceFilterCutoff;
-                voice.outputFilterL.setMode(filterMode);
-                voice.outputFilterR.setMode(filterMode);
-                voice.outputFilterL.setCoefficients_fast(activeCutoff, snap_.filterReso,
-                                                         static_cast<float>(currentSampleRate_));
-                voice.outputFilterR.setCoefficients_fast(activeCutoff, snap_.filterReso,
-                                                         static_cast<float>(currentSampleRate_));
+                if (updateFilter)
+                {
+                    voice.outputFilterL.setMode(filterMode);
+                    voice.outputFilterR.setMode(filterMode);
+                    voice.outputFilterL.setCoefficients_fast(activeCutoff, snap_.filterReso,
+                                                             static_cast<float>(currentSampleRate_));
+                    voice.outputFilterR.setCoefficients_fast(activeCutoff, snap_.filterReso,
+                                                             static_cast<float>(currentSampleRate_));
+                }
                 float sampleL = voice.outputFilterL.processSample(sample);
                 float sampleR = voice.outputFilterR.processSample(sample);
                 sampleL = flushDenormal(sampleL);

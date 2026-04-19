@@ -755,6 +755,7 @@ public:
         // --- Render audio per sample ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
+            const bool updateFilter = ((sample & 15) == 0);
             float mixL = 0.0f, mixR = 0.0f;
 
             // Advance LFOs
@@ -874,12 +875,14 @@ public:
                 voiceR *= unisonNorm;
 
                 // --- Filter ---
-                // D001: velocity drives filter brightness
-                float velCutoffMod = voice.velocity * velFilterEnv * 8000.0f;
-                float filterEnvMod = voice.filterEnvLevel * filterEnvAmt * 6000.0f;
-                float voiceCutoff = clamp(effectiveFilterCutoff + velCutoffMod + filterEnvMod, 20.0f, 20000.0f);
-
-                voice.lpf.setCoefficients_fast(voiceCutoff, filterReso, srf);
+                // D001: velocity drives filter brightness (coeff refresh decimated to every 16 samples)
+                if (updateFilter)
+                {
+                    float velCutoffMod = voice.velocity * velFilterEnv * 8000.0f;
+                    float filterEnvMod = voice.filterEnvLevel * filterEnvAmt * 6000.0f;
+                    float voiceCutoff = clamp(effectiveFilterCutoff + velCutoffMod + filterEnvMod, 20.0f, 20000.0f);
+                    voice.lpf.setCoefficients_fast(voiceCutoff, filterReso, srf);
+                }
                 // HPF coefficients are set once per block (block-rate setup above)
 
                 // Apply filters (series: HP -> LP for bright tonal shaping)
