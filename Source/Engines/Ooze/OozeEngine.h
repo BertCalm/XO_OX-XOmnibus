@@ -870,9 +870,10 @@ public:
                 }
 
                 // Edge-tone sine oscillator — frequency at jet offset pitch
+                // (fastSin: ~0.01% err, per-sample per-voice)
                 const float edgeFreq = currentFreq * (1.0f + lfoJetOffset * 3.0f);
                 constexpr float kTwoPi = 6.28318530718f;
-                const float jetSine = std::sin(voice.jetPhase) * toneAmount;
+                const float jetSine = fastSin(voice.jetPhase) * toneAmount;
                 voice.jetPhase += edgeFreq / static_cast<float>(currentSampleRate_) * kTwoPi;
                 if (voice.jetPhase >= kTwoPi) voice.jetPhase -= kTwoPi;
 

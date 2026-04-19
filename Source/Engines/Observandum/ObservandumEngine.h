@@ -392,8 +392,8 @@ public:
                 float sig = 0.0f;
                 switch (paramEnvModel)
                 {
-                    case 0: // Wave: sin
-                        sig = std::sin(kObservTwoPi * static_cast<float>(t));
+                    case 0: // Wave: sin (fastSin: ~0.01% err, per-sample)
+                        sig = fastSin(kObservTwoPi * static_cast<float>(t));
                         break;
                     case 1: // Turbulence: smoothed noise
                     {
@@ -404,12 +404,15 @@ public:
                         sig = flushDenormal(turbulenceSmoothed);
                         break;
                     }
-                    case 2: // Tidal: superposition of 3 sines
-                        sig = std::sin(kObservTwoPi * static_cast<float>(t))
-                            + 0.5f * std::sin(1.7f * kObservTwoPi * static_cast<float>(t))
-                            + 0.3f * std::sin(2.9f * kObservTwoPi * static_cast<float>(t));
+                    case 2: // Tidal: superposition of 3 sines (fastSin per-sample)
+                    {
+                        const float ph = kObservTwoPi * static_cast<float>(t);
+                        sig = fastSin(ph)
+                            + 0.5f * fastSin(1.7f * ph)
+                            + 0.3f * fastSin(2.9f * ph);
                         sig *= (1.0f / 1.8f); // normalise
                         break;
+                    }
                     case 3: // Drift: Brownian motion
                     {
                         turbulenceSeed = turbulenceSeed * 6364136223846793005ULL + 1442695040888963407ULL;
@@ -421,7 +424,7 @@ public:
                         break;
                     }
                     default:
-                        sig = std::sin(kObservTwoPi * static_cast<float>(t));
+                        sig = fastSin(kObservTwoPi * static_cast<float>(t));
                         break;
                 }
                 envSignalBuffer[static_cast<size_t>(i)] = sig;

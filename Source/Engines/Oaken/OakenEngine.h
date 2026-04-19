@@ -548,6 +548,7 @@ public:
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
         const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
+        const float roomSpread = pRoom * 0.15f;
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -558,6 +559,14 @@ public:
             voice.lfo2.setShape(lfo2Shape);
             voice.glide.setTime(pGlide, srf);
             voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
+
+            // Pre-compute pan gains per voice — depends on currentNote (note-constant) and
+            // roomSpread (block-constant). Hoists per-sample std::cos + std::sin out of
+            // inner render loop (was up to 64×N pairs of trig calls per block).
+            const float panOffset = (static_cast<float>((voice.currentNote * 7) % 13) / 13.0f - 0.5f) * roomSpread;
+            const float panPos    = 0.5f + panOffset;
+            voice.panL = fastCos(panPos * 1.5707963f);
+            voice.panR = fastSin(panPos * 1.5707963f);
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -631,12 +640,9 @@ public:
 
                 float output = filtered * ampLevel * voice.velocity;
 
-                // Room bleed: wider stereo on higher room values
-                float roomSpread = pRoom * 0.15f;
-                float panOffset = (static_cast<float>((voice.currentNote * 7) % 13) / 13.0f - 0.5f) * roomSpread;
-                float panPos = 0.5f + panOffset;
-                mixL += output * std::cos(panPos * 1.5707963f);
-                mixR += output * std::sin(panPos * 1.5707963f);
+                // Room bleed: pan gains cached per voice in per-block setup loop above.
+                mixL += output * voice.panL;
+                mixR += output * voice.panR;
             }
 
             outL[s] = mixL;
