@@ -1038,6 +1038,11 @@ private:
             const float effectExcBright = std::clamp(excBright + velBrightBoost, 0.0f, 1.0f);
             const float effectSpread    = std::clamp(formantSpread + velSpreadBoost, 0.5f, 2.5f);
 
+            // formantQ is block-constant; pre-compute the bandwidth-scale factor once
+            // per voice rather than repeating the multiply-subtract inside the 5-iteration
+            // formant loop on every sample.
+            const float formantBwScale  = 2.0f - formantQ * 1.5f;
+
             // ---- Vowel morph auto-oscillator ----
             // vowelMorphRate [0..1] → Hz [0..2] morph cycle
             const float morphHz   = vowelMorphRate * 2.0f;
@@ -1147,9 +1152,10 @@ private:
                     fBWs[f]  = std::max(20.0f, fBWs[f] * effectSpread);
                 }
 
-                // formantQ scales bandwidth (lower Q = wider = more overlap)
+                // formantQ scales bandwidth (lower Q = wider = more overlap).
+                // formantBwScale precomputed per voice above — block-constant.
                 for (int f = 0; f < 5; ++f)
-                    fBWs[f] = fBWs[f] * (2.0f - formantQ * 1.5f);
+                    fBWs[f] = fBWs[f] * formantBwScale;
 
                 // formantTilt: spectral tilt on formant amplitudes
                 // Negative = darker (boost low formants), Positive = brighter (boost high)
