@@ -629,7 +629,10 @@ public:
         smoothSympathy.set(effectiveSympathy);
         smoothCaramel.set(effectiveCaramel);
 
-        // Reset coupling accumulators
+        // Snapshot pitch coupling before reset (#1118 — Approach A). Filter +
+        // conductivity accumulators are consumed above (lines 617/621), the pitch
+        // mod is used below in the hoisted blockBendRatio.
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingConductivityMod = 0.0f;
@@ -676,9 +679,9 @@ public:
             voice.lfo2.setShape(lfo2Shape);
         }
 
-        // bendSemitones + couplingPitchMod are block-constant; hoist pitch-bend ratio.
+        // Hoist pitch-bend ratio; uses the pre-reset snapshot (#1118).
         const float blockBendRatio =
-            PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
         // Per-sample rendering
         for (int s = 0; s < numSamples; ++s)

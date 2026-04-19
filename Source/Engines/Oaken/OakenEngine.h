@@ -535,9 +535,12 @@ public:
         smoothWoodAge.set(pWoodAge);
         smoothCuringRate.set(pCuringRate);
 
+        // Snapshot coupling accumulators (Approach A from #1118) — consume into
+        // block-local values before the reset, so applyCouplingInput values
+        // accumulated during the prior frame actually influence this block.
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
-
         const float bendSemitones = pitchBendNorm * pBendRange;
 
         // LFO params — macroMove speeds both LFOs for more organic bowing movement
@@ -574,10 +577,12 @@ public:
 
         const float dtSec = inverseSr_;
 
-        // bendSemitones + couplingPitchMod are both block-constant here. Hoist the
+        // bendSemitones + coupling pitch mod are both block-constant here. Hoist the
         // semitonesToFreqRatio call (fastPow2 inside) out of the per-sample loop.
+        // Uses the pre-reset snapshot so applyCouplingInput pitch accumulators are
+        // honoured (#1118).
         const float blockBendRatio =
-            PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
         for (int s = 0; s < numSamples; ++s)
         {

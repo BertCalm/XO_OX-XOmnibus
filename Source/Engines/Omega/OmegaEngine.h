@@ -367,6 +367,8 @@ public:
         smoothBrightness.set(effectiveBright);
         smoothDistillRate.set(pDistill);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
 
@@ -416,9 +418,9 @@ public:
             voices[vi].panR = std::sin(pan * 1.5707963f);
         }
 
-        // bendSemitones + couplingPitchMod are block-constant; hoist pitch-bend ratio.
+        // Hoist pitch-bend ratio; uses the pre-reset snapshot (#1118).
         const float blockBendRatio =
-            PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
         for (int s = 0; s < numSamples; ++s)
         {

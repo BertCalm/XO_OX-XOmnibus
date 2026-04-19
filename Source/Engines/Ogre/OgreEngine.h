@@ -297,6 +297,9 @@ public:
         smoothBrightness.set(effectiveBright);
         smoothDensity.set(pDensity);
 
+        // Snapshot pitch coupling before reset (#1118). couplingFilterMod is
+        // already consumed above; couplingPitchMod is used below in blockBendRatio.
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
 
@@ -337,9 +340,9 @@ public:
 
         const float dtSec = inverseSr_; // for mass accumulation
 
-        // bendSemitones + couplingPitchMod are block-constant; hoist pitch-bend ratio.
+        // Hoist pitch-bend ratio; uses the pre-reset snapshot (#1118).
         const float blockBendRatio =
-            PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
         for (int s = 0; s < numSamples; ++s)
         {

@@ -732,7 +732,11 @@ public:
         smoothBrightness.set(effectiveBright);
         smoothDamping.set(pDamping);
 
-        // Reset coupling accumulators
+        // Snapshot pitch coupling before reset (Approach A from #1118).
+        // couplingFilterMod + couplingPrepMod are consumed above (lines 720–722) so
+        // those resets are already in the right order; only the pitch mod is used
+        // downstream (block-hoisted blockBendRatio below).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingPrepMod = 0.0f;
@@ -785,10 +789,11 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
-        // bendSemitones + couplingPitchMod are both block-constant; hoist the
-        // pitch-bend ratio out of the per-sample per-voice loop.
+        // bendSemitones + coupling pitch mod are both block-constant; hoist the
+        // pitch-bend ratio out of the per-sample per-voice loop. Uses pre-reset
+        // snapshot so applyCouplingInput pitch accumulators aren't wiped (#1118).
         const float blockBendRatio =
-            PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
         // Step 4: Per-sample render loop
         for (int s = 0; s < numSamples; ++s)
