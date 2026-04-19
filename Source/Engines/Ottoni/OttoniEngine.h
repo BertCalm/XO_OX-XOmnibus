@@ -177,7 +177,13 @@ public:
             return;
         }
 
-        // Reset coupling accumulators — stale values from disconnected routes must not persist
+        // Snapshot coupling accumulators before reset (#1118 pattern — the previous
+        // block's applyCouplingInput writes must be consumed by this block). Reset
+        // handles the disconnected-route case where applyCouplingInput wouldn't run
+        // for the next block — without the snapshot, per-block writes never take effect.
+        const float blockExtPitchMod = extPitchMod;
+        const float blockExtDampMod  = extDampMod;
+        const float blockExtIntens   = extIntens;
         extPitchMod = 0.f;
         extDampMod = 0.f;
         extIntens = 1.f;
@@ -289,6 +295,10 @@ public:
         // releasing voice). Now one fastExp per block.
         const float releaseCoeff = xoceanus::fastExp(-1.0f / (static_cast<float>(sr) * 0.3f));
 
+        // Block-constant channel pitch-bend ratio; inner per-sample code adds drift
+        // and vibrato (both per-sample) on top via separate fastPow2 calls.
+        const float blockPitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+
         for (int i = 0; i < ns; ++i)
         {
             float sL = 0, sR = 0;
@@ -325,8 +335,7 @@ public:
 
                 // --- Organic drift ---
                 float ds = v.drift.tick(pDR, pDD);
-                float df = v.freq * fastPow2((ds + extPitchMod) / 12.f) *
-                           PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                float df = v.freq * fastPow2((ds + blockExtPitchMod) / 12.f) * blockPitchBendRatio;
 
                 // --- Teen vibrato (StandardLFO replaces inline vibPhase accumulator) ---
                 v.vib.process(); // advance phase; use v.vib.phase for multi-frequency reads
@@ -345,7 +354,7 @@ public:
 
                 // --- D001 spectral: velocity scales embouchure tightness (brighter at ff) ---
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
-                float effIntens = extIntens * velIntens;
+                float effIntens = blockExtIntens * velIntens;
 
                 // --- Excitation: blended lip buzz from 3 voice sections ---
                 // Toddler: loose lips, low pressure, simple
@@ -360,7 +369,7 @@ public:
 
                 // --- Waveguide feedback ---
                 // --- Bore width (teen): wider bore = lower damping, darker ---
-                float boreDamp = std::clamp(pDa + extDampMod, 0.f, 1.f) * (1.f - pTnBore * growTeen * 0.05f);
+                float boreDamp = std::clamp(pDa + blockExtDampMod, 0.f, 1.f) * (1.f - pTnBore * growTeen * 0.05f);
                 float damped = v.df.process(out + exc * 0.3f, boreDamp);
 
                 v.dl.write(flushDenormal(damped));
