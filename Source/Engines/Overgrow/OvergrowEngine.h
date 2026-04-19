@@ -606,7 +606,9 @@ public:
         v.startTime = ++voiceCounter;
         v.glide.setTargetOrSnap(freq);
 
-        v.string.prepare(srf);
+        // RT-fix: string.prepare() already called at engine prepare()-time for all
+        // voice slots.  On noteOn, zero the delay buffer via reset() then reconfigure.
+        v.string.reset();
         v.string.setFrequency(freq);
         v.string.setDamping(paramDamping ? paramDamping->load() : 0.4f);
         v.string.setFeedback(paramFeedback ? paramFeedback->load() : 0.995f);
@@ -627,12 +629,12 @@ public:
         attackTime *= (1.3f - vel * 0.5f);
         float releaseTime = paramRelease ? paramRelease->load() : 1.5f;
 
-        v.ampEnv.prepare(srf);
+        // RT-fix: ampEnv/filterEnv.prepare() already called at engine prepare()-time.
+        // setADSR() reconfigures the envelope in-place (no allocation), then trigger.
         v.ampEnv.setADSR(attackTime, paramDecay ? paramDecay->load() : 0.3f, paramSustain ? paramSustain->load() : 0.7f,
                          releaseTime);
         v.ampEnv.triggerHard();
 
-        v.filterEnv.prepare(srf);
         v.filterEnv.setADSR(attackTime * 0.3f, 0.5f, 0.1f, releaseTime * 0.6f);
         v.filterEnv.triggerHard();
 
