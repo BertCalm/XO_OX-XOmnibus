@@ -409,6 +409,8 @@ public:
         smoothPhi.set(effectivePhi);
         smoothSpread.set(pSpread);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingPhiMod = 0.0f;
@@ -455,7 +457,7 @@ public:
                 // Threshold of 0.005 semitones keeps tuning error < 0.01 cents inaudible.
                 static constexpr float kPitchCacheThreshold = 0.005f;
                 float bendInput =
-                    bendSemitones + couplingPitchMod + vibrato * 0.08f + voice.dormancyPitchCents / 100.0f;
+                    bendSemitones + blockCouplingPitchMod + vibrato * 0.08f + voice.dormancyPitchCents / 100.0f;
                 if (std::fabs(bendInput - voice.lastBendInput) > kPitchCacheThreshold)
                 {
                     voice.cachedPitchRatio = PitchBendUtil::semitonesToFreqRatio(bendInput);

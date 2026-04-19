@@ -449,6 +449,8 @@ public:
         smoothMigration.set(effectiveMigration);
 
         couplingFilterMod = 0.0f;
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingPitchMod = 0.0f;
         couplingWarmthMod = 0.0f;
 
@@ -475,6 +477,10 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Hoist block-constant pitch-bend ratio out of per-sample loop (#1118 fix).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         for (int s = 0; s < numSamples; ++s)
         {
             const bool updateFilter = ((s & 15) == 0);
@@ -500,7 +506,7 @@ public:
                     paramRelease ? paramRelease->load() : 0.5f);
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted; uses pre-reset pitch coupling snapshot
 
                 // LFO1 -> pitch vibrato (subtle, +-50 cents at full depth)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;

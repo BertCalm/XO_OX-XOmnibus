@@ -816,6 +816,8 @@ public:
         smoothDetune.set(effectiveDetune);
         smoothFormant.set(effectiveFormant);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         // Reset coupling accumulators
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -877,7 +879,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
                 // LFO processing (rate/shape already set once per block above)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;

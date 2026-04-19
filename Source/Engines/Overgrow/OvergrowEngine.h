@@ -448,6 +448,8 @@ public:
         smoothWildness.set(effectiveWildness);
         smoothBowNoise.set(pBowNoise);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
 
@@ -497,7 +499,7 @@ public:
                 }
 
                 float freq =
-                    baseFreq * PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod + vibrato * 0.15f +
+                    baseFreq * PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod + vibrato * 0.15f +
                                                                    pitchJitter + voice.dormancyPitchCents / 100.0f);
 
                 float l1 = voice.lfo1.process() * lfo1Depth;

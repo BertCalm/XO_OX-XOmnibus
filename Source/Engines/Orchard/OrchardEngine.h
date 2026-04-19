@@ -340,6 +340,8 @@ public:
         smoothDetune.set(effectiveDetune);
         smoothFormant.set(effectiveFormant);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingFormantMod = 0.0f;
@@ -422,7 +424,7 @@ public:
                 float baseFreq = voice.glide.process();
                 float vibrato = voice.vibratoLFO.process() * effectiveVibratoDepth;
                 float freq =
-                    baseFreq * PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod + vibrato * 0.1f +
+                    baseFreq * PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod + vibrato * 0.1f +
                                                                    voice.dormancyPitchCents / 100.0f);
 
                 float l1 = voice.lfo1.process() * lfo1Depth;

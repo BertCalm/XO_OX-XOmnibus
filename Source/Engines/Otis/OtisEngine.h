@@ -1016,6 +1016,9 @@ public:
         // Pitch bend
         const float bendSemitones = pitchBendNorm * pBendRange;
 
+        // Snapshot pitch + FM coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
+        const float blockCouplingFMMod   = couplingFMMod;
         // Reset coupling accumulators
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -1077,7 +1080,7 @@ public:
                 }
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
                 // Per-voice LFO setRate/setShape hoisted to per-block voice loop above.
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
@@ -1092,7 +1095,7 @@ public:
                 freq *= PitchBendUtil::semitonesToFreqRatio(lfo1PitchVal * 2.0f);
 
                 // FM coupling input
-                freq += couplingFMMod * 100.0f;
+                freq += blockCouplingFMMod * 100.0f;
 
                 float voiceOut = 0.0f;
 

@@ -619,11 +619,16 @@ public:
         smoothSympathy.set(effectiveSympathy);
         smoothBrightness.set(effectiveBright);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingMaterialMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
+        // Pitch-bend ratio: block-constant portion, hoisted above per-sample loop.
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
         // Improvement #1: material exponent alpha — controls per-mode decay differentiation
         // Wood alpha=2.0 (upper modes die fast), Metal alpha=0.3 (all modes ring together)
@@ -713,7 +718,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted; pre-reset pitch coupling snapshot
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 → brightness
                 float lfo2Val = voice.lfo2.process() * lfo2Depth; // LFO2 → material

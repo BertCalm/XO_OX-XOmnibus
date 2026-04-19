@@ -612,7 +612,12 @@ public:
         float effectiveDrift = clamp(driftAmount + macroDrift * 0.3f, 0.0f, 1.0f);
         int effectiveMaqam = std::max(0, std::min(kNumMaqamat, maqamIndex));
 
-        // Reset coupling accumulators for next block
+        // Snapshot breakpoint coupling before reset (#1118 — the comment said
+        // "for next block" but the reset actually runs before the accumulator
+        // is read later in this block; snapshot preserves the value).
+        // couplingBarrierMod + couplingDistributionMod are consumed above
+        // (lines 604, 607) so their resets are in the right order already.
+        const float blockCouplingBreakpointMod = couplingBreakpointMod;
         couplingBreakpointMod = 0.0f;
         couplingBarrierMod = 0.0f;
         couplingDistributionMod = 0.0f;
@@ -767,7 +772,7 @@ public:
 
                     // Evolve breakpoints via stochastic random walk
                     evolveBreakpoints(voice, modulatedTimeStep * stochasticDepth, modulatedAmpStep * stochasticDepth,
-                                      smoothedDistribution, effectiveElasticity, couplingBreakpointMod);
+                                      smoothedDistribution, effectiveElasticity, blockCouplingBreakpointMod);
                 }
 
                 // --- Cubic Hermite interpolation across breakpoints ---

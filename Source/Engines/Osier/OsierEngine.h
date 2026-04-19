@@ -406,6 +406,8 @@ public:
         smoothCutoff.set(effectiveCutoff);
         smoothCompanion.set(effectiveCompanion);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
 
@@ -473,7 +475,7 @@ public:
                 float vibrato = voice.vibratoLFO.process() * effectiveVibratoDepth * cfg.vibratoDepthMult;
 
                 float freq = baseFreq * PitchBendUtil::semitonesToFreqRatio(
-                                            bendSemitones + couplingPitchMod + vibrato * 0.12f +
+                                            bendSemitones + blockCouplingPitchMod + vibrato * 0.12f +
                                             voice.dormancyPitchCents / 100.0f + voice.companionPitchCents / 100.0f +
                                             cfg.detuneCents / 100.0f);
 

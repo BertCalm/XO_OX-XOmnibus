@@ -479,6 +479,9 @@ public:
         // Chromatophore filter morph target: 0=LP, 0.33=BP, 0.66=HP, 1.0=Notch
         float chromaMorphTarget = clamp(pChromaMorph + macroMove * 0.3f, 0.0f, 1.0f);
 
+        // Snapshot pitch + ring-mod coupling before reset (#1118).
+        const float blockCouplingPitchMod   = couplingPitchMod;
+        const float blockCouplingRingModSrc = couplingRingModSrc;
         // Reset coupling accumulators
         couplingWTPosMod = 0.0f;
         couplingChromaMod = 0.0f;
@@ -623,7 +626,7 @@ public:
                 // Apply microtonal offset + arm pitch modulation + coupling pitch + MPE + pitch bend
                 float pitchCents = pShiftMicro + voice.microtonalOffset +
                                    armMods[ArmPitch] * 50.0f // arm 3 modulates pitch +/-50 cents
-                                   + couplingPitchMod * 100.0f +
+                                   + blockCouplingPitchMod * 100.0f +
                                    voice.mpeExpression.pitchBendSemitones * 100.0f // MPE pitch bend in cents
                                    + pitchBendNorm * 200.0f; // channel pitch bend in cents (±2 semitones)
                 float freqMod = voice.currentFreq * fastPow2(pitchCents / 1200.0f);
@@ -656,8 +659,9 @@ public:
                 float voiceSignal = voice.wtOsc.processSample();
 
                 // AudioToRing coupling: ring modulate the carrier with the incoming signal
-                if (couplingRingModSrc != 0.0f)
-                    voiceSignal *= (1.0f + couplingRingModSrc);
+                // (pre-reset snapshot used; the reset wipes couplingRingModSrc upstream)
+                if (blockCouplingRingModSrc != 0.0f)
+                    voiceSignal *= (1.0f + blockCouplingRingModSrc);
 
                 // =====================================================
                 // 5. SUCKERS — Ultra-fast transient pluck

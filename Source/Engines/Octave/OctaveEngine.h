@@ -511,6 +511,9 @@ public:
         // When couplingOrganMod < 0, morph direction reverses (CC→Baroque vs Baroque→CC)
         const bool morphToBright = (couplingOrganMod >= 0.0f);
 
+        // Snapshot pitch coupling before reset (#1118) — applyCouplingInput
+        // accumulators are consumed by the next block's renderBlock.
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingOrganMod = 0.0f;
@@ -532,6 +535,11 @@ public:
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
         }
+
+        // Hoist block-constant pitch-bend ratio out of per-sample loop; uses
+        // pre-reset pitch coupling snapshot (#1118).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -559,7 +567,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above (block-const bend + coupling snapshot)
 
                 // LFO setRate/setShape hoisted to per-block voice loop above.
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;

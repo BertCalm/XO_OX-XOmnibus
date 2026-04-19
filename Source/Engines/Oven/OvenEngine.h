@@ -664,6 +664,8 @@ public:
         smoothBodyResonance.set(effectiveBodyRes);
         smoothBloom.set(pBloomTime);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingBodyMod = 0.0f;
@@ -727,6 +729,10 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Hoist pitch-bend ratio; uses pre-reset pitch coupling snapshot (#1118).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         for (int s = 0; s < numSamples; ++s)
         {
             const bool updateFilter = ((s & 15) == 0);
@@ -747,7 +753,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted; pre-reset pitch coupling snapshot
 
                 // D002: LFO modulation
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 -> brightness
