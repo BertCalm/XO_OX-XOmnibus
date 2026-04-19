@@ -1,7 +1,7 @@
 # XOceanus UI Components — Dimensions & Layout Specifications
 
 **Report Generated:** 2026-03-26
-**Codebase:** XO_OX-XOceanus (Gallery Model)
+**Codebase:** XO_OX-XOmnibus (Gallery Model)
 **Primary Files Analyzed:**
 - `Source/UI/Gallery/ParameterGrid.h` (knob grid)
 - `Source/UI/Gallery/StatusBar.h` (bottom strip)

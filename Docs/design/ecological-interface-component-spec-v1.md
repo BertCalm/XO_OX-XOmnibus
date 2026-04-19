@@ -238,7 +238,7 @@ void paintEcologicalKnob(juce::Graphics& g, float cx, float cy, float totalRadiu
 ## Component 2: Engine Slot Panel
 
 ### Overview
-The porthole container. Each of the 76 engines lives in one of up to 8 active engine slots. The slot is styled as a porthole — you are looking through rounded glass at the creature's habitat. Engine accent color anchors the header bar and all knob arcs within the slot.
+The porthole container. Each of the 88 engines lives in one of up to 8 active engine slots. The slot is styled as a porthole — you are looking through rounded glass at the creature's habitat. Engine accent color anchors the header bar and all knob arcs within the slot.
 
 ### Dimensions
 - Minimum slot size: 280px wide × 220px tall (compact layout, 3 engines visible)

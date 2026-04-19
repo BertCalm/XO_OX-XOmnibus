@@ -533,7 +533,7 @@ CPU cost: negligible (256 float operations per frame at 30fps).
 
 #### 5.6.3 Engine Selector Dial
 
-A rotary selector that scrolls through the 76 registered engines. Visual: circular dial showing the current engine name and accent color, with adjacent engine names fading in on each side. Turning the dial crossfades between engines using the existing 50ms hot-swap mechanism.
+A rotary selector that scrolls through the 88 registered engines. Visual: circular dial showing the current engine name and accent color, with adjacent engine names fading in on each side. Turning the dial crossfades between engines using the existing 50ms hot-swap mechanism.
 
 This is not strictly an expression controller — it is a performance tool for live engine switching. Placing it alongside the expression controllers means a performer can switch engines without leaving the performance view.
 
