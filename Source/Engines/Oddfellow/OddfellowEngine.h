@@ -415,6 +415,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float reedNow = smoothReed.process();
             float driveNow = smoothDrive.process();
             float brightNow = smoothBrightness.process();
@@ -473,12 +474,19 @@ public:
                     continue;
                 }
 
-                // Filter — Wurli has a warmer, lower cutoff ceiling than Rhodes
+                // Filter — Wurli has a warmer, lower cutoff ceiling than Rhodes.
+                // Tick filter env every sample (advances envelope state), but only
+                // refresh SVF coefficients every 16 samples (~0.36ms @ 44.1k — well
+                // below audible lag and matches the smoother time-constant). Saves
+                // N×voices SVF coefficient trig calls per block.
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 3000.0f;
-                float velBright = voice.velocity * 2500.0f;
-                float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 16000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.2f, srf);
+                if (updateFilter)
+                {
+                    float velBright = voice.velocity * 2500.0f;
+                    float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 16000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.2f, srf);
+                }
                 float filtered = voice.svf.processSample(preampOut);
 
                 float output = filtered * ampLevel * tremGain;
