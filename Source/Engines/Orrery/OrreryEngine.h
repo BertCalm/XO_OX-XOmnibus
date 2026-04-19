@@ -1490,7 +1490,9 @@ private:
     // Members — Engine State
     //==========================================================================
 
-    float sampleRateFloat = 44100.0f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float sampleRateFloat = 0.0f;
     int   maxBlock        = 0;
 
     std::array<OrreryVoice, kOrryMaxVoices> voices;

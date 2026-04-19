@@ -1416,7 +1416,9 @@ private:
     OobleckFDN fdn_;
     xoceanus::DCBlocker engineDCBlocker_; // engine-level DC block (final stage)
 
-    double currentSampleRate_ = 44100.0;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    double currentSampleRate_ = 0.0;
     int    maxBlockSize_      = 512;
 
     // MIDI expression state

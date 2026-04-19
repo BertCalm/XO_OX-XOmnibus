@@ -1231,7 +1231,9 @@ private:
     int                reelBufferSize = 0;    // total allocated size (maxReelSize * SR)
     int                reelSizeSamples = 0;   // current active reel size in samples
     bool               frozen          = false;
-    float              currentSampleRate = 44100.0f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float              currentSampleRate = 0.0f;
 
     //==========================================================================
     //  V O I C E   A R R A Y

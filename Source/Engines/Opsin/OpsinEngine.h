@@ -1418,8 +1418,10 @@ private:
     std::vector<float> outCacheL;
     std::vector<float> outCacheR;
 
-    // ---- Sample rate ----
-    float sampleRateFloat = 44100.0f;
+    // ---- Sample rate (set in prepare()) ----
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float sampleRateFloat = 0.0f;
 
     //==========================================================================
     //  P A R A M E T E R   P O I N T E R S
