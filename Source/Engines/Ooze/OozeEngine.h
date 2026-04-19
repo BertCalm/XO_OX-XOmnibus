@@ -808,6 +808,7 @@ public:
             // ── Per-sample loop ────────────────────────────────────────────────
             for (int s = 0; s < numSamples; ++s)
             {
+                const bool updateFilter = ((s & 15) == 0);
                 // ── LFO tick ─────────────────────────────────────────────────
                 const float lfoVal  = voice.lfo.process();
                 const float lmod    = lfoVal * effLfoDepth;
@@ -1026,13 +1027,16 @@ public:
                 // ── Output sample = delayed + direct jet component ────────────
                 float sample = apOut + reflectedB + excitation * 0.05f;
 
-                // ── Output filter ─────────────────────────────────────────────
-                voice.outputFilterL.setMode(filterMode);
-                voice.outputFilterR.setMode(filterMode);
-                voice.outputFilterL.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
-                                                         static_cast<float>(currentSampleRate_));
-                voice.outputFilterR.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
-                                                         static_cast<float>(currentSampleRate_));
+                // ── Output filter — decimate coefficient refresh to every 16 samples ────
+                if (updateFilter)
+                {
+                    voice.outputFilterL.setMode(filterMode);
+                    voice.outputFilterR.setMode(filterMode);
+                    voice.outputFilterL.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
+                                                             static_cast<float>(currentSampleRate_));
+                    voice.outputFilterR.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
+                                                             static_cast<float>(currentSampleRate_));
+                }
                 float sampleL = voice.outputFilterL.processSample(sample);
                 float sampleR = voice.outputFilterR.processSample(sample);
                 sampleL = flushDenormal(sampleL);
