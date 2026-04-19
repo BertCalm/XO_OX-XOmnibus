@@ -338,6 +338,21 @@ public:
         for (int a = 0; a < kErosionAPFs; ++a)
             erosionLFO[a].setRate(pErosionR + 0.01f * a, srF);
 
+        // Hoist golden resonator coefficients out of the per-sample loop.
+        // Both inputs are block-constant:
+        //   goldenFreqHz[g] is cached at note-on (line ~696) and stable until next noteOn
+        //   liveQ = pResQ / 20.0f comes from a block-rate atomic load
+        // Previously these setCoefficients_fast calls ran kGoldenFilters × numSamples
+        // times per block when resonance gate was open. Now they run kGoldenFilters.
+        {
+            const float liveQ = pResQ / 20.0f;
+            for (int g = 0; g < kGoldenFilters; ++g)
+            {
+                goldenL[g].setCoefficients_fast(goldenFreqHz[g], liveQ, srF);
+                goldenR[g].setCoefficients_fast(goldenFreqHz[g], liveQ, srF);
+            }
+        }
+
         for (int i = 0; i < numSamples; ++i)
         {
             // === EXCITER: pitched impulse + noise burst ===
@@ -493,16 +508,12 @@ public:
 
             if (resonanceGain > 0.001f)
             {
-                // Update golden resonator Q from live parameter so Q knob responds
-                // during a held note (D004: dead param fix — pResQ was previously only
-                // read at note-on, making the knob inert until the next key strike).
-                float liveQ = pResQ / 20.0f; // normalize to [0, 1] for CytomicSVF
+                // Golden resonator coefficients are set once per block above (hoisted
+                // out of this per-sample loop — goldenFreqHz + liveQ are both block-
+                // constant). Per-sample processing still runs; only the expensive
+                // coefficient refresh moved.
                 for (int g = 0; g < kGoldenFilters; ++g)
                 {
-                    // Peak mode output = 2*v2 - input + k*v1; gain param only affects shelves,
-                    // so setCoefficients_fast (3-arg) is correct here.
-                    goldenL[g].setCoefficients_fast(goldenFreqHz[g], liveQ, srF);
-                    goldenR[g].setCoefficients_fast(goldenFreqHz[g], liveQ, srF);
                     goldenOutL += goldenL[g].processSample(erosionL) * goldenGains[g];
                     goldenOutR += goldenR[g].processSample(erosionR) * goldenGains[g];
                 }
