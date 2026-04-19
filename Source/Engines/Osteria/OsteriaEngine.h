@@ -396,6 +396,7 @@ struct MurmurGenerator
     CytomicSVF formant1;   // Low vocal resonance band (~350 Hz)
     CytomicSVF formant2;   // High sibilance/brightness band (~2-4 kHz)
     float modPhase = 0.0f; // Slow modulation LFO phase
+    int coeffUpdateCounter = 0; // CPU fix: throttle 0.5 Hz LFO coeff updates
 
     void prepare(float sampleRate) noexcept
     {
@@ -417,14 +418,21 @@ struct MurmurGenerator
             modPhase -= 1.0f;
         float mod = fastSin(modPhase * kOsteriaTwoPi);
 
-        // Formant 1: vocal chest resonance, gently modulated +/- 50 Hz
-        float lowFormantFreq = 350.0f + mod * 50.0f;
-        // Formant 2: sibilance band, brightness-dependent (2-4 kHz range),
-        // modulated +/- 200 Hz for natural variation
-        float highFormantFreq = lerp(2000.0f, 4000.0f, brightness) + mod * 200.0f;
+        // CPU fix (OBL-W4-01 class): 0.5 Hz LFO changes by ~0.00007 rad/sample at 44.1 kHz —
+        // updating filter coefficients every 16 samples is inaudible and saves ~15/16 of the
+        // coefficient computation cost. The murmur is a background texture, not a solo signal.
+        ++coeffUpdateCounter;
+        if ((coeffUpdateCounter & 15) == 0)
+        {
+            // Formant 1: vocal chest resonance, gently modulated +/- 50 Hz
+            float lowFormantFreq = 350.0f + mod * 50.0f;
+            // Formant 2: sibilance band, brightness-dependent (2-4 kHz range),
+            // modulated +/- 200 Hz for natural variation
+            float highFormantFreq = lerp(2000.0f, 4000.0f, brightness) + mod * 200.0f;
 
-        formant1.setCoefficients(lowFormantFreq, 0.4f, sampleRate);
-        formant2.setCoefficients(highFormantFreq, 0.3f, sampleRate);
+            formant1.setCoefficients(lowFormantFreq, 0.4f, sampleRate);
+            formant2.setCoefficients(highFormantFreq, 0.3f, sampleRate);
+        }
 
         // Blend: 60% low vocal body, 40% high brightness
         float out = formant1.processSample(noise) * 0.6f + formant2.processSample(noise) * 0.4f;
@@ -440,6 +448,7 @@ struct MurmurGenerator
         formant2.reset();
         modPhase = 0.0f;
         rng = 77777u;
+        coeffUpdateCounter = 0;
     }
 };
 

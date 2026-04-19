@@ -374,18 +374,32 @@ public:
         static constexpr float kBaseResonance = 0.35f;
         static constexpr float kResonanceRange = 0.3f;
 
-        for (int i = 0; i < kNumFacets; ++i)
+        // CPU fix: skip 6× setCoefficients when colorSpread hasn't changed enough to matter.
+        // colorSpread is audio-rate (LFO-modulated) but changes by ~0.0001/sample at typical
+        // LFO rates — the change-guard fires at most every ~10 samples in practice, saving
+        // ~5 setCoefficients calls per sample on average.
+        if (std::abs(prismParams.colorSpread - lastColorSpread) >= 0.001f)
         {
-            float targetFreq = lerp(kConvergenceFreq, kColorCenterFreqs[i], prismParams.colorSpread);
-            float resonance = kBaseResonance + prismParams.colorSpread * kResonanceRange;
-            facetFilters[i].setCoefficients(targetFreq, resonance, sampleRateFloat);
+            lastColorSpread = prismParams.colorSpread;
+            for (int i = 0; i < kNumFacets; ++i)
+            {
+                float targetFreq = lerp(kConvergenceFreq, kColorCenterFreqs[i], prismParams.colorSpread);
+                float resonance = kBaseResonance + prismParams.colorSpread * kResonanceRange;
+                facetFilters[i].setCoefficients(targetFreq, resonance, sampleRateFloat);
+            }
         }
 
-        // Feedback damping: sweep lowpass from 16kHz (bright) to 2kHz (dark)
+        // Feedback damping: sweep lowpass from 16kHz (bright) to 2kHz (dark).
+        // CPU fix (OBL-W4-01): prismParams.damping is block-constant (loaded once per block
+        // from a param pointer). Guard skips setCoefficients when damping hasn't changed.
         static constexpr float kDampBrightFreq = 16000.0f;
         static constexpr float kDampDarkFreq = 2000.0f;
         float dampFreq = lerp(kDampBrightFreq, kDampDarkFreq, prismParams.damping);
-        feedbackDampingFilter.setCoefficients(dampFreq, 0.0f, sampleRateFloat);
+        if (dampFreq != lastDampFreq)
+        {
+            lastDampFreq = dampFreq;
+            feedbackDampingFilter.setCoefficients(dampFreq, 0.0f, sampleRateFloat);
+        }
 
         // --- Read from each facet tap ---
         float wetL = 0.0f, wetR = 0.0f;
@@ -459,6 +473,10 @@ private:
     // Feedback path
     CytomicSVF feedbackDampingFilter;
     float feedbackAccumulator = 0.0f;
+
+    // Change guards to avoid redundant setCoefficients calls (OBL-W4-01 fix)
+    float lastColorSpread = -999.0f; // force update on first process() call
+    float lastDampFreq    = -999.0f; // force update on first process() call
 };
 
 //==============================================================================
@@ -898,25 +916,18 @@ public:
         externalPitchModulation = 0.0f;
         externalFilterModulation = 0.0f;
 
-        // Hoist filter coefficient update outside the sample loop.
-        // Filter coefficients only need recalculating once per block
-        // (parameter changes are block-rate, not sample-rate).
+        // Block-constant base cutoff (coupling mod is block-rate).
         static constexpr float kCouplingFilterModRange = 4000.0f; // max coupling offset in Hz
         float baseCutoff = filterCutoff + couplingFilterMod * kCouplingFilterModRange;
         baseCutoff = clamp(baseCutoff, 20.0f, 20000.0f);
 
-        // D001: per-voice filter envelope depth — velocity × envelopeLevel sweeps
-        // the SVF cutoff open at the attack peak and decays with the amplitude.
-        // Max additional sweep: filterEnvDepth × velocity × 7000 Hz.
+        // OBL-W4-02 fix: voice filter coefficients are updated per-sample inside the
+        // render loop (see below, just before voice.voiceFilter.processSample) using the
+        // live envelopeLevel. Previously this was computed once here with the block-start
+        // envelopeLevel, causing the filter to miss fast attack sweeps (the cutoff would
+        // jump at the block boundary rather than opening smoothly during the attack phase).
+        // kFilterEnvMaxSweep and kFilterEnvDepth are hoisted here as block-constants.
         static constexpr float kFilterEnvMaxSweep = 7000.0f;
-        for (auto& voice : voices)
-        {
-            if (!voice.active)
-                continue;
-            float envVelBoost = filterEnvDepth * voice.velocity * voice.envelopeLevel * kFilterEnvMaxSweep;
-            float voiceCutoff = clamp(baseCutoff + envVelBoost, 20.0f, 20000.0f);
-            voice.voiceFilter.setCoefficients(voiceCutoff, filterResonance, sampleRateFloat);
-        }
 
         // ======================================================================
         // Per-sample rendering
@@ -1061,6 +1072,15 @@ public:
                 oscillatorOutput = wavefolder.process(oscillatorOutput, velocityFoldAmount);
 
                 // --- Voice filter (Cytomic SVF lowpass) ---
+                // OBL-W4-02 fix: update filter coefficients with live envelopeLevel so
+                // the cutoff sweeps smoothly through fast attacks rather than stepping
+                // at block boundaries. Block-constants baseCutoff/filterResonance are
+                // precomputed above; only the envelope contribution needs live envelopeLevel.
+                {
+                    float envVelBoost = filterEnvDepth * voice.velocity * voice.envelopeLevel * kFilterEnvMaxSweep;
+                    float voiceCutoff = clamp(baseCutoff + envVelBoost, 20.0f, 20000.0f);
+                    voice.voiceFilter.setCoefficients(voiceCutoff, filterResonance, sampleRateFloat);
+                }
                 oscillatorOutput = voice.voiceFilter.processSample(oscillatorOutput);
 
                 // --- Apply envelope + velocity + steal fade + outgoing fade ---
