@@ -398,6 +398,13 @@ public:
             }
         }
 
+        // Hoist envelope setADSR out of per-sample loop — 2× std::exp per call.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+        }
+
         for (int i = 0; i < numSamples; ++i)
         {
             const bool updateFilter = ((i & 15) == 0);
@@ -421,7 +428,7 @@ public:
                 if (!voice.active)
                     continue;
 
-                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+                // Envelope setADSR hoisted to per-block voice loop above.
                 float ampLevel = voice.ampEnv.process();
 
                 if (!voice.ampEnv.isActive())

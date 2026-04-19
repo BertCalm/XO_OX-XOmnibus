@@ -381,6 +381,15 @@ public:
                 ++activeVoiceCount;
         }
 
+        // Hoist envelope setADSR out of per-sample loop — setADSR does 2× std::exp,
+        // ADSR knobs are block-rate.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+            voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
+        }
+
         for (int i = 0; i < numSamples; ++i)
         {
             const bool updateFilter = ((i & 15) == 0);
@@ -453,10 +462,7 @@ public:
                 if (voice.velocity < 0.3f && voice.holdDuration > 8.0f)
                     voice.isInfusion = true;
 
-                // Update envelopes
-                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
-                voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
-
+                // Envelope setADSR hoisted to per-block voice loop above.
                 float ampLevel = voice.ampEnv.process();
                 float filtLevel = voice.filterEnv.process();
 

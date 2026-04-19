@@ -520,6 +520,14 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Hoist envelope setADSR out of per-sample loop — 2× std::exp per call,
+        // all four ADSR inputs are block-constant (effectiveAttack computed above).
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
+        }
+
         for (int s = 0; s < numSamples; ++s)
         {
             const bool updateFilter = ((s & 15) == 0);
@@ -760,8 +768,7 @@ public:
                     sample += voices[vi - 1].svf.processSample(0.0f) * crosstalkNow * 0.05f;
                 }
 
-                //--- Amplitude envelope ---
-                voice.ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
+                //--- Amplitude envelope (setADSR hoisted to per-block voice loop) ---
                 float ampLevel = voice.ampEnv.process();
                 if (!voice.ampEnv.isActive())
                 {

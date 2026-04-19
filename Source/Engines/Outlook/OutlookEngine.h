@@ -208,6 +208,15 @@ public:
         auto* outL = buffer.getWritePointer(0);
         auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
 
+        // Hoist envelope setADSR out of per-sample loop — 2× std::exp per call,
+        // ADSR inputs are block-rate.
+        for (auto& v : voices)
+        {
+            if (!v.active && !v.ampEnv.isActive()) continue;
+            v.ampEnv.setADSR(pAtt, pDec, pSus, pRel);
+            v.filterEnv.setADSR(pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f);
+        }
+
         for (int s = 0; s < numSamples; ++s)
         {
             const bool updateFilter = ((s & 15) == 0);
@@ -227,8 +236,7 @@ public:
 
                 ++v.age; // Track voice age for oldest-voice stealing
 
-                // Amp envelope (StandardADSR — exponential decay/release, click-free)
-                v.ampEnv.setADSR(pAtt, pDec, pSus, pRel);
+                // Amp envelope setADSR hoisted to per-block voice loop above.
                 const float ampEnvVal = v.ampEnv.process();
                 if (ampEnvVal < 1e-7f && !v.ampEnv.isActive())
                 {
@@ -254,8 +262,7 @@ public:
                     }
                 }
 
-                // Filter envelope
-                v.filterEnv.setADSR(pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f);
+                // Filter envelope setADSR hoisted to per-block voice loop above.
                 const float filtEnvVal = v.filterEnv.process();
 
                 // Velocity → timbre (D001): velocity scales filter brightness

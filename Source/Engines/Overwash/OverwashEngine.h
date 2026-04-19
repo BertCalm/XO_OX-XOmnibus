@@ -361,6 +361,16 @@ public:
                 voiceSpreadBlock[v] = 0.0f;
         }
 
+        // Hoist envelope setADSR out of the per-sample loop — setADSR internally
+        // calls two std::exp()s for decay/release coefficients; ADSR knob values
+        // are block-rate so per-sample recomputation was pure waste.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+            voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
+        }
+
         for (int i = 0; i < numSamples; ++i)
         {
             const bool updateFilter = ((i & 15) == 0);
@@ -381,10 +391,7 @@ public:
                 voice.diffusionClock += inverseSr;
                 voice.noteAge += inverseSr;
 
-                // Update envelopes
-                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
-                voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
-
+                // Envelope setADSR hoisted to per-block voice loop above.
                 float ampLevel = voice.ampEnv.process();
                 float filtLevel = voice.filterEnv.process();
 
