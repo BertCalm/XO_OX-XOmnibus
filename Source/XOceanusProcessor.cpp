@@ -26,6 +26,7 @@
 #include "Engines/Octant/OctantEngine.h"
 #include "Engines/Overtide/OvertideEngine.h"
 #include "Engines/Oobleck/OobleckEngine.h"
+#include "Engines/Ooze/OozeEngine.h"
 #include "Engines/Origami/OrigamiEngine.h"
 #include "Engines/Oracle/OracleEngine.h"
 #include "Engines/Obscura/ObscuraEngine.h"
@@ -170,6 +171,9 @@ static bool registered_Overtide =
 static bool registered_Oobleck =
     xoceanus::EngineRegistry::instance().registerEngine("Oobleck", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OobleckEngine>(); });
+static bool registered_Ooze =
+    xoceanus::EngineRegistry::instance().registerEngine("Ooze", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OozeEngine>(); });
 static bool registered_Origami = xoceanus::EngineRegistry::instance().registerEngine(
     "Origami", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrigamiEngine>(); });
 static bool registered_Oracle = xoceanus::EngineRegistry::instance().registerEngine(

@@ -269,6 +269,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Overtide", "ovt_"},
         // Reaction-Diffusion Wavetable Synthesis
         {"Oobleck", "oobl_"},
+        // Fluid Dynamics Synthesis
+        {"Ooze", "ooze_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();

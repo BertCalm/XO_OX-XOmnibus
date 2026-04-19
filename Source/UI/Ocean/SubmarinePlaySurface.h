@@ -456,10 +456,14 @@ private:
         int note = hitTestKey(static_cast<float>(e.x), static_cast<float>(e.y));
         if (note < 0)
             return;
+
+        // Latch: release previous note before starting new one
+        if (activeNote_ >= 0 && activeNote_ != note)
+            fireNoteOff(activeNote_);
+
         activeNote_ = note;
         keyIsDown_  = true;
         float vel = [&]() -> float {
-            // Determine which key was hit and derive velocity from Y within that key
             int bi = hitBlackKey(static_cast<float>(e.x), static_cast<float>(e.y));
             if (bi >= 0)
                 return velFromY(static_cast<float>(e.y), blackKeys_[bi].rect);
@@ -478,7 +482,7 @@ private:
         int note = hitTestKey(static_cast<float>(e.x), static_cast<float>(e.y));
         if (note < 0 || note == activeNote_)
             return;
-        // Slide to new key
+        // Slide to new key — release old, start new
         fireNoteOff(activeNote_);
         activeNote_ = note;
         fireNoteOn(activeNote_, 0.75f);
@@ -486,11 +490,10 @@ private:
 
     void handleKeysUp(const juce::MouseEvent& /*e*/)
     {
-        if (!keyIsDown_ || activeNote_ < 0)
-            return;
-        fireNoteOff(activeNote_);
-        activeNote_ = -1;
-        keyIsDown_  = false;
+        // Latch mode: note sustains after release.  It is silenced when
+        // a different key is pressed (handleKeysDown releases the old note)
+        // or when the mode changes (releaseAllNotes).
+        keyIsDown_ = false;
     }
 
     //==========================================================================

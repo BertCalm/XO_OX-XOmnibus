@@ -114,6 +114,7 @@
 | OPSIN | XOpsin | Bioluminescent Cyan `#00FFCC` |
 | OORT | XOort | Oort Cloud Violet `#9B7FD4` |
 | OOBL | XOobleck | Oobleck Slime `#B4FF39` |
+| OOZE | XOoze | Hydrothermal Teal `#2D5F5D` |
 
 ## The 43 Blessings
 

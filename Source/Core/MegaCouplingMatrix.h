@@ -283,15 +283,14 @@ public:
             if (!source || !dest)
                 continue;
 
-            // Issue #421: skip coupling delivery to silence-gated destination engines.
-            // If the dest engine skipped renderBlock() (silence gate active), its
-            // coupling accumulation variables are never reset, causing stale modulation
-            // to pop on the first audible block after the gate releases. Skipping
-            // delivery here prevents accumulation while the engine is idle.
-            // AudioToBuffer routes are exempt: the ring buffer is the sink, not the
-            // engine's accumulation vars, so delivery is always safe.
-            if (route.type != CouplingType::AudioToBuffer && dest->isSilenceGateBypassed())
-                continue;
+            // Allow coupling to modulate idle engines — coupling from a playing engine
+            // should be able to influence the destination's parameters even before
+            // the destination receives its own note-on.
+            // NOTE: Issue #421 originally skipped delivery here to prevent stale modulation
+            // popping when the silence gate releases. That guard was too aggressive: it
+            // prevented coupling from ever waking a silent engine. The stale-accumulation
+            // problem is better addressed by resetting accumulation vars on gate-open inside
+            // each engine's renderBlock(), not by suppressing delivery in the matrix.
 
             // Use pre-allocated scratch buffer (sized in prepare()).
             // Audio coupling types carry stereo content — mix L+R to mono.

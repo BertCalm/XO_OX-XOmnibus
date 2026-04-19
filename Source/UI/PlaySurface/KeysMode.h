@@ -281,6 +281,7 @@ public:
         if (midiCollector != nullptr)
         {
             auto pitchMsg = juce::MidiMessage::pitchWheel(midiChannel, wheelValue);
+            pitchMsg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
             midiCollector->addMessageToQueue(pitchMsg);
         }
 
@@ -292,6 +293,7 @@ public:
         if (midiCollector != nullptr)
         {
             auto atMsg = juce::MidiMessage::channelPressureChange(midiChannel, atValue);
+            atMsg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
             midiCollector->addMessageToQueue(atMsg);
         }
 
@@ -336,9 +338,11 @@ public:
             if (midiCollector != nullptr)
             {
                 auto pitchMsg = juce::MidiMessage::pitchWheel(midiChannel, 8192);
+                pitchMsg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
                 midiCollector->addMessageToQueue(pitchMsg);
 
                 auto atMsg = juce::MidiMessage::channelPressureChange(midiChannel, 0);
+                atMsg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
                 midiCollector->addMessageToQueue(atMsg);
             }
 
@@ -588,6 +592,7 @@ private:
         {
             auto velByte = static_cast<juce::uint8>(juce::jlimit(1, 127, static_cast<int>(velocity)));
             auto msg = juce::MidiMessage::noteOn(midiChannel, midiNote, velByte);
+            msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
             midiCollector->addMessageToQueue(msg);
         }
         else if (onNoteOn)
@@ -599,6 +604,7 @@ private:
         if (midiCollector != nullptr)
         {
             auto msg = juce::MidiMessage::noteOff(midiChannel, midiNote);
+            msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
             midiCollector->addMessageToQueue(msg);
         }
         else if (onNoteOff)

@@ -392,6 +392,18 @@ public:
                                0, 0.5f);
         };
 
+        couplingPopup_.onConfigChanged = [this](int routeIndex, int newType, float newDepth, int direction)
+        {
+            if (onCouplingConfigChanged)
+                onCouplingConfigChanged(routeIndex, newType, newDepth, direction);
+        };
+
+        couplingPopup_.onRemove = [this](int routeIndex)
+        {
+            if (onCouplingDeleteRequested)
+                onCouplingDeleteRequested(routeIndex);
+        };
+
         substrate_.onKnotRightClicked = [this](int routeIndex, juce::Point<int> /*screenPos*/)
         {
             showKnotContextMenu(routeIndex);
@@ -1211,6 +1223,7 @@ public:
     //==========================================================================
 
     PlaySurface& getPlaySurface()       { return playSurfaceOverlay_.getPlaySurface(); }
+    SubmarinePlaySurface& getSubmarinePlaySurface() { return subPlaySurface_; }
     void showPlaySurface()
     {
         playSurfaceOverlay_.show();
@@ -1297,6 +1310,10 @@ public:
 
     /** Fired when the user right-clicks a coupling knot and chooses "Delete Chain". */
     std::function<void(int chainIndex)> onCouplingDeleteRequested;
+
+    /** Fired when the user confirms changes in the coupling config popup (Done or Escape).
+        Arguments: routeIndex, newType, newDepth [0–1], direction (0=fwd, 1=rev, 2=bidi). */
+    std::function<void(int routeIndex, int newType, float newDepth, int direction)> onCouplingConfigChanged;
 
     /** Fired when the user chooses "Add Coupling..." from a buoy context menu. */
     std::function<void(int slot)> onChainModeRequested;
@@ -1591,6 +1608,14 @@ private:
                         transitionToSplitTransform(slot);
                         break;
                     case 2:
+                        // Force-select the target slot (no toggle) so the drawer
+                        // replacement lands on the correct slot even if it was
+                        // already selected before the right-click.
+                        selectedSlot_ = slot;
+                        for (int i = 0; i < 5; ++i)
+                            orbits_[i].setSelected(i == slot);
+                        if (onEngineSelected)
+                            onEngineSelected(slot);
                         engineDrawer_.open();
                         break;
                     case 3:

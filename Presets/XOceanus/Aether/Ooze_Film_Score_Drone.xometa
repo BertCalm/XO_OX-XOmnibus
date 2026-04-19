@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Film Score Drone",
+  "mood": "Aether",
+  "engines": [
+    "Ooze"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sustained open-pipe cinematic drone — glacial LFO shimmer, long glide, generous reverb tail built for underscore work.",
+  "tags": [
+    "ooze",
+    "aether",
+    "drone",
+    "cinematic",
+    "sustained",
+    "film",
+    "ambient",
+    "glide"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.8,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Ooze": {
+      "ooze_end_type": 0,
+      "ooze_geometry": 0.0,
+      "ooze_damping": 0.4,
+      "ooze_reynolds": 0.22,
+      "ooze_pressure": 0.5,
+      "ooze_viscosity": 0.5,
+      "ooze_jet_offset": 0.5,
+      "ooze_bubble_rate": 0.08,
+      "ooze_bubble_size": 0.4,
+      "ooze_bubble_decay": 0.9,
+      "ooze_bubble_track": 0,
+      "ooze_burst_rate": 2.0,
+      "ooze_cascade": 0.2,
+      "ooze_filter_cutoff": 5000.0,
+      "ooze_filter_reso": 0.1,
+      "ooze_filter_type": 0,
+      "ooze_drive": 0.05,
+      "ooze_attack": 0.8,
+      "ooze_decay": 0.5,
+      "ooze_sustain": 0.85,
+      "ooze_release": 4.0,
+      "ooze_lfo_rate": 0.03,
+      "ooze_lfo_shape": 0,
+      "ooze_lfo_depth": 0.12,
+      "ooze_lfo_target": 0,
+      "ooze_reverb": 0.6,
+      "ooze_space_decay": 5.0,
+      "ooze_tune": 0,
+      "ooze_fine": 0.0,
+      "ooze_glide": 0.3,
+      "ooze_macro1": 0.0,
+      "ooze_macro2": 0.0,
+      "ooze_macro3": 0.0,
+      "ooze_macro4": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

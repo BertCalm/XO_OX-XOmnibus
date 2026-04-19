@@ -790,11 +790,13 @@ public:
         oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); };
         oceanView_.onEngineSelectedFromDrawer = [this](const juce::String& engineId)
         {
-            // Prefer the selected slot. If it's already occupied, find the first empty slot.
-            // If all slots are full, replace the selected slot.
-            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots) ? selectedSlot : 0;
-            if (processor.getEngine(slot) != nullptr)
+            // If a slot is explicitly selected, always replace it directly.
+            // Only search for an empty slot when nothing is selected.
+            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots) ? selectedSlot : -1;
+            if (slot < 0)
             {
+                // No slot selected — find first empty, or use slot 0
+                slot = 0;
                 for (int i = 0; i < kNumPrimarySlots; ++i)
                 {
                     if (processor.getEngine(i) == nullptr)
@@ -846,6 +848,32 @@ public:
             ps.setProcessor(&processor);
             if (laf)
                 ps.setLookAndFeel(laf.get());
+        }
+
+        // Wire SubmarinePlaySurface MIDI callbacks to the processor's MidiMessageCollector.
+        // Without this wiring the keyboard/pad/drum surface was completely silent — clicks
+        // fired the onNoteOn/onNoteOff lambdas but they were null (never assigned).
+        {
+            auto& subPS = oceanView_.getSubmarinePlaySurface();
+            subPS.onNoteOn = [this](int note, float velocity)
+            {
+                auto msg = juce::MidiMessage::noteOn(1, note, velocity);
+                msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                processor.getMidiCollector().addMessageToQueue(msg);
+            };
+            subPS.onNoteOff = [this](int note)
+            {
+                auto msg = juce::MidiMessage::noteOff(1, note);
+                msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                processor.getMidiCollector().addMessageToQueue(msg);
+            };
+            subPS.onAftertouch = [this](int note, float pressure)
+            {
+                auto msg = juce::MidiMessage::aftertouchChange(1, note,
+                               juce::jlimit(0, 127, juce::roundToInt(pressure * 127.0f)));
+                msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                processor.getMidiCollector().addMessageToQueue(msg);
+            };
         }
 
         // #897: On first launch (no persisted state) show the OceanView PlaySurface
@@ -1017,6 +1045,7 @@ public:
         presetNextBtn.setVisible(false);
         // Hide the old standalone PlaySurface — OceanView owns its own PlaySurfaceOverlay.
         playSurface_.setVisible(false);
+        playSurface_.setMidiCollector(nullptr);  // Detach — OceanView owns MIDI now
 
         // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.
@@ -1035,6 +1064,7 @@ public:
         // Detach the embedded PlaySurface from the processor before the processor
         // goes away, so the MidiMessageCollector pointer is not accessed after dealloc.
         playSurface_.setProcessor(nullptr);
+        oceanView_.getPlaySurface().setProcessor(nullptr);
         // Clear the ToastOverlay singleton before child components are destroyed
         // so any in-flight callAsync lambdas find instance_ == nullptr and are no-ops.
         ToastOverlay::setInstance(nullptr);
