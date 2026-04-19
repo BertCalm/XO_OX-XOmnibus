@@ -520,12 +520,17 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
-        // Hoist envelope setADSR out of per-sample loop — 2× std::exp per call,
-        // all four ADSR inputs are block-constant (effectiveAttack computed above).
+        // Hoist envelope setADSR + LFO config out of per-sample loop. Both are
+        // block-rate from knob values; setADSR does 2× std::exp per call and
+        // setRate does a divide — neither should run inside the sample loop.
         for (auto& voice : voices)
         {
             if (!voice.active) continue;
             voice.ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
+            voice.lfo1.setRate(lfo1Rate, srf);
+            voice.lfo1.setShape(lfo1Shape);
+            voice.lfo2.setRate(lfo2Rate, srf);
+            voice.lfo2.setShape(lfo2Shape);
         }
 
         for (int s = 0; s < numSamples; ++s)
@@ -556,12 +561,7 @@ public:
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
 
-                // LFO processing
-                voice.lfo1.setRate(lfo1Rate, srf);
-                voice.lfo1.setShape(lfo1Shape);
-                voice.lfo2.setRate(lfo2Rate, srf);
-                voice.lfo2.setShape(lfo2Shape);
-
+                // LFO setRate/setShape hoisted to per-block voice loop above.
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 

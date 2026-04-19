@@ -594,6 +594,20 @@ public:
             }
         }
 
+        // Hoist per-voice LFO config. pLFO1Rate is block-rate; D005 floor enforced.
+        {
+            const float lfo1RateClamped = std::max(0.01f, pLFO1Rate);
+            for (int vi = 0; vi < kMaxVoices; ++vi)
+            {
+                auto& voice = voices[vi];
+                if (voice.active)
+                {
+                    voice.lfo1.setRate(lfo1RateClamped, srf);
+                    voice.lfo1.setShape(StandardLFO::Sine);
+                }
+            }
+        }
+
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
@@ -634,9 +648,7 @@ public:
                 voice.breath.process(pressureNow, pitchDriftCents, ampMod);
                 freq *= fastPow2(pitchDriftCents / 1200.0f);
 
-                // ---- LFO1 -> pitch vibrato ----
-                voice.lfo1.setRate(std::max(0.01f, pLFO1Rate), srf); // D005: rate floor
-                voice.lfo1.setShape(StandardLFO::Sine);
+                // ---- LFO1 -> pitch vibrato (setRate/setShape hoisted to per-block loop) ----
                 float lfo1Val = voice.lfo1.process() * effLFODepth;
                 freq *= fastPow2(lfo1Val * 0.5f / 12.0f); // max +/-0.5 semitone vibrato
 

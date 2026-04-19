@@ -518,8 +518,10 @@ public:
                 // Amp stage — warmth and velocity-dependent bark
                 float ampOut = voice.amp.process(pickupOut, warmthNow, voice.velocity);
 
-                // Tremolo (Rhodes' optional built-in stereo vibrato)
-                voice.tremoloLFO.setRate(tremRateNow, srf);
+                // Tremolo (Rhodes' optional built-in stereo vibrato) — setRate decimated
+                // to every 16 samples (smoother output differences inaudible at that grain).
+                if (updateFilter)
+                    voice.tremoloLFO.setRate(tremRateNow, srf);
                 float tremVal = voice.tremoloLFO.process();
                 float tremGain = 1.0f - tremDepthNow * 0.5f * (1.0f + tremVal);
 

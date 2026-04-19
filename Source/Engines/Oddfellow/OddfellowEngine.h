@@ -454,8 +454,10 @@ public:
                 // Preamp with drive
                 float preampOut = voice.preamp.process(reedOut, voiceDrive);
 
-                // Wurlitzer signature tremolo
-                voice.tremoloLFO.setRate(tremRateN, srf);
+                // Wurlitzer signature tremolo — setRate decimated to every 16 samples
+                // (tremRateN is smoothed so tiny per-sample differences are inaudible).
+                if (updateFilter)
+                    voice.tremoloLFO.setRate(tremRateN, srf);
                 float tremVal = voice.tremoloLFO.process();
                 float tremGain = 1.0f - tremDepthN * 0.5f * (1.0f + tremVal);
 

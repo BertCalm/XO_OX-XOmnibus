@@ -672,6 +672,7 @@ public:
         const int lfo2Shape = paramLfo2Shape ? static_cast<int>(paramLfo2Shape->load()) : 0;
 
         // Apply LFO rate/shape once per block per voice — not per sample
+        const float shimmerLfoRate = std::max(0.05f, pShimmerHz * 0.05f);
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -680,6 +681,8 @@ public:
             voice.lfo1.setShape(lfo1Shape);
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
+            // Shimmer LFO rate depends only on pShimmerHz (block-constant); hoist.
+            voice.shimmerLFO.setRate(shimmerLfoRate, srf);
         }
 
         // malletNow is block-constant (smoothMallet advances each sample but inside
@@ -725,7 +728,7 @@ public:
 
                 // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio)
                 // BUG-2 FIX: use pShimmerHz parameter instead of hardcoded 0.3
-                voice.shimmerLFO.setRate(std::max(0.05f, pShimmerHz * 0.05f), srf); // modulate shimmer slowly
+                // (shimmerLFO.setRate hoisted to per-block voice loop above.)
                 float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f;      // [0,1]
                 float shimmerOffset = pShimmerHz * shimmerMod;                      // 0 to shimmerHz
                 // Apply as additive Hz offset (Balinese: beat rate in Hz, not cents)

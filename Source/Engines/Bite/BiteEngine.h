@@ -1683,6 +1683,19 @@ public:
                                     filtR * scurryEnvMul * playDeadRelMul);
             voice.modEnv.setADSR(modA, modD, modS, modR);
 
+            // LFO config: shape/rate/startPhase are all block-constant per voice.
+            // Hoisted here from the per-sample loop — was setRate × 3 LFOs ×
+            // N samples × V voices per block.
+            voice.lfo1.setShape(lfo1Shape);
+            voice.lfo1.setRate(lfo1Rate * scurryLfoMul);
+            voice.lfo1.setStartPhase(lfo1Phase);
+            voice.lfo2.setShape(lfo2Shape);
+            voice.lfo2.setRate(lfo2Rate * scurryLfoMul);
+            voice.lfo2.setStartPhase(lfo2Phase);
+            voice.lfo3.setShape(lfo3Shape);
+            voice.lfo3.setRate(lfo3Rate * scurryLfoMul);
+            voice.lfo3.setStartPhase(lfo3Phase);
+
             float targetFreq = midiToFreq(voice.noteNumber);
             // MPE pitch bend (fastPow2: ~0.1% error, per-block per-voice)
             targetFreq *= fastPow2(voice.mpeExpression.pitchBendSemitones * (1.0f / 12.0f));
@@ -1739,16 +1752,7 @@ public:
                 // --- Velocity sensitivity ---
                 float velGain = 1.0f - ampVelSens + ampVelSens * voice.velocity;
 
-                // --- LFOs ---
-                voice.lfo1.setShape(lfo1Shape);
-                voice.lfo1.setRate(lfo1Rate * scurryLfoMul);
-                voice.lfo1.setStartPhase(lfo1Phase);
-                voice.lfo2.setShape(lfo2Shape);
-                voice.lfo2.setRate(lfo2Rate * scurryLfoMul);
-                voice.lfo2.setStartPhase(lfo2Phase);
-                voice.lfo3.setShape(lfo3Shape);
-                voice.lfo3.setRate(lfo3Rate * scurryLfoMul);
-                voice.lfo3.setStartPhase(lfo3Phase);
+                // --- LFOs (setShape/setRate/setStartPhase hoisted to per-block voice loop) ---
                 float lfo1val = voice.lfo1.process() * lfo1Depth;
                 float lfo2val = voice.lfo2.process() * lfo2Depth;
                 float lfo3val = voice.lfo3.process() * lfo3Depth;
