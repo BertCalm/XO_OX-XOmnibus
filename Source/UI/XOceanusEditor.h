@@ -731,11 +731,9 @@ public:
                     p->endChangeGesture();
                 }
             };
-            tb->onCoupleClicked = [this]()
-            {
-                if (auto* sb = oceanView_.getSidebar())
-                    sb->selectTab(SidebarPanel::Couple);
-            };
+            // #1097: Coupling tab removed (CPL-tab-removed). Coupling configuration
+            // lives in CouplingConfigPopup triggered by knot double-click on OceanView.
+            tb->onCoupleClicked = nullptr;
         }
         oceanView_.initStatusBar();
 
@@ -1855,7 +1853,11 @@ private:
 
             const float activity        = processor.getNoteActivity();
             const bool  hasNoteActivity = activity > 0.01f;
-            const bool  couplingVisible = (sidebar.getActiveTab() == SidebarPanel::Couple);
+            // #1097: SidebarPanel::Couple tab removed (CPL-tab-removed). Coupling
+            // configuration now lives in CouplingConfigPopup (knot double-click).
+            // couplingVisible is permanently false; RegisterManager::Coupling register
+            // can no longer be triggered from the sidebar.
+            constexpr bool couplingVisible = false;
 
             registerMgr_.update(hasNoteActivity, couplingVisible, dtMs);
 
