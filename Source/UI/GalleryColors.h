@@ -20,14 +20,8 @@
 #include <CoreFoundation/CoreFoundation.h> // CFPreferencesGetAppBooleanValue for A11y::prefersReducedMotion()
 #endif
 
-#if JUCE_IOS
-// Forward declaration of the Objective-C++ bridge for UIAccessibility.isReduceMotionEnabled.
-// Definition lives in HapticEngine_iOS.mm, compiled only on iOS.
-namespace xoceanus::a11y_platform
-{
-bool isReduceMotionEnabled();
-}
-#endif
+// iOS port archived 2026-03-26 (issue #1107) — xoceanus::a11y_platform::isReduceMotionEnabled()
+// forward-declaration removed. Source/UI/Mobile/ recoverable from git history.
 
 namespace xoceanus
 {
@@ -723,11 +717,6 @@ inline bool prefersReducedMotion()
     Boolean val =
         CFPreferencesGetAppBooleanValue(CFSTR("reduceMotion"), CFSTR("com.apple.universalaccess"), &keyExists);
     return keyExists && static_cast<bool>(val);
-#elif JUCE_IOS
-    // UIAccessibility.isReduceMotionEnabled — implemented in HapticEngine_iOS.mm
-    // via xoceanus::a11y_platform::isReduceMotionEnabled() bridge function.
-    // The definition is in that .mm file compiled only on iOS.
-    return xoceanus::a11y_platform::isReduceMotionEnabled();
 #else
     return false;
 #endif
