@@ -1760,9 +1760,11 @@ private:
         checkCollectionUnlock();
 
         // ── Refresh Export tab panel with current preset/kit info ────────────
-        sidebar.refreshExportPanel();
+        if (!oceanView_.isVisible())
+            sidebar.refreshExportPanel();
 
         // ── Update coupling hit tester with current arc data ─────────────────
+        if (!oceanView_.isVisible())
         {
             auto routes = processor.getCouplingMatrix().getRoutes();
             std::array<juce::Point<float>, EngineRegistry::MaxSlots> nodeCenters;
