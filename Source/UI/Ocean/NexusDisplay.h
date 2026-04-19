@@ -119,13 +119,11 @@ public:
             const auto rb = liveReadoutsBounds_;
 
             // Voice count pill — "Vx" where x is the polyphonic voice count.
+            // String is pre-built in setLiveReadouts() — no allocation here.
             g.setFont(GalleryFonts::value(9.0f));
             const juce::Colour readoutCol = accentColour_.withAlpha(0.55f);
             g.setColour(readoutCol);
-            juce::String voiceStr = (voiceCount_ > 0)
-                                        ? ("V" + juce::String(voiceCount_))
-                                        : "V0";
-            g.drawText(voiceStr,
+            g.drawText(cachedVoiceStr_,
                        juce::Rectangle<int>(rb.getX(), rb.getY(), 28, rb.getHeight()),
                        juce::Justification::centredLeft,
                        false);
@@ -337,6 +335,10 @@ public:
 
         voiceCount_ = voiceCount;
         macroValues_ = macroValues;
+        // Pre-build the voice string so paint() never allocates juce::String.
+        cachedVoiceStr_ = (voiceCount_ > 0)
+                            ? ("V" + juce::String(voiceCount_))
+                            : "V0";
         repaint();
     }
 
@@ -395,6 +397,8 @@ private:
     // #909: Live parameter readouts — updated via setLiveReadouts()
     int voiceCount_ = 0;
     std::array<float, 4> macroValues_{{0.0f, 0.0f, 0.0f, 0.0f}};
+    // Pre-built voice string — updated in setLiveReadouts() to avoid String alloc in paint().
+    juce::String cachedVoiceStr_ = "V0";
 
     // Live DNA drift: session accumulator and blend weight.
     // sessionDna_  — leaky integrator over note-on events this session.
