@@ -327,9 +327,21 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
-        // Pre-compute pitch-bent exciter frequency for this block
-        const float exciterFreqHz =
-            midiToFreq(static_cast<float>(currentNote)) * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+        // Pre-compute pitch-bent exciter frequency for this block.
+        // Nyquist guard: clamp to 0.45 × sample rate so very high notes + pitch
+        // bend can't push fastSin past the sample rate (would alias even though
+        // phase wraps). 0.45 leaves headroom for any coupling-driven pitch wobble.
+        const float exciterFreqHz = std::min(
+            midiToFreq(static_cast<float>(currentNote)) * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f),
+            srF * 0.45f);
+
+        // Block-constant cross-channel entanglement mix (was recomputed per sample
+        // inside the FDN channel loop, even though pEntangle is block-rate).
+        const float entangleMix = pEntangle * 0.3f;
+
+        // Pre-scaled FDN input divisor — kFDNChannels is a compile-time constant (8),
+        // so this is just `0.125f`. Named for clarity; any sane compiler folds it.
+        constexpr float fdnInputScale = 1.0f / static_cast<float>(kFDNChannels);
 
         // Issue #917: hoist erosionLFO.setRate() out of per-sample loop.
         // pErosionR is block-stable (read from atomic above). StandardLFO::setRate()
@@ -415,7 +427,7 @@ public:
 
             // Cross-coupling: entanglement blends L↔R channels
             // At entangle=0: channels are independent. At 1: fully blended.
-            float entangleMix = pEntangle * 0.3f; // subtle coupling
+            // entangleMix precomputed above per block.
             for (int ch = 0; ch < 4; ++ch)
             {
                 float lCh = fdnOut[ch];
@@ -441,13 +453,14 @@ public:
                 fdnOut[ch] = fdnDamp[ch].processSample(fdnOut[ch]);
             }
 
-            // Write back to delay lines with feedback + input injection
+            // Write back to delay lines with feedback + input injection.
+            // fdnInputScaled is block-constant-per-sample — hoist the divide out
+            // of the channel loop.
+            const float fdnInputScaled = fdnInput * fdnInputScale;
             for (int ch = 0; ch < kFDNChannels; ++ch)
             {
                 float fb = flushDenormal(fdnOut[ch] * feedbackCoeff);
-                // Inject input into all channels
-                float inp = fdnInput * (1.0f / static_cast<float>(kFDNChannels));
-                fdnDelay[ch][static_cast<size_t>(fdnWritePos[ch])] = inp + fb;
+                fdnDelay[ch][static_cast<size_t>(fdnWritePos[ch])] = fdnInputScaled + fb;
                 fdnWritePos[ch] = (fdnWritePos[ch] + 1) % fdnDelaySize[ch];
             }
 
