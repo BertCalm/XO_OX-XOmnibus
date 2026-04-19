@@ -277,10 +277,24 @@ public:
         // ---- Husband level lookup ----
         float husbandLvl[3] = {pHOud, pHBouz, pHPin};
 
-        // Update tremolo LFO rate once per block for all active Aunt 3 voices
+        // Update tremolo LFO rate once per block for all active Aunt 3 voices,
+        // and pre-compute Aunt-2 gourd body-resonance coefficients (note-constant
+        // since v.freq and pA2Gs are both stable across the block).
+        const float gourdBodyQ = 2.0f + pA2Gs * 4.0f;
         for (auto& v : voices)
-            if (v.active && !v.isHusband && v.auntIdx == 2)
+        {
+            if (!v.active) continue;
+            if (!v.isHusband && v.auntIdx == 2)
                 v.tremoloLFO.setRate(pA3Tr, v.sr);
+            if (!v.isHusband && v.auntIdx == 1)
+            {
+                float gourdFreq = v.freq * (1.5f - pA2Gs * 0.5f);
+                v.body.setParams(gourdFreq, gourdBodyQ);
+            }
+        }
+
+        // Block pitch-bend ratio (channel pitch wheel is block-rate).
+        const float blockPitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         auto* oL = buf.getWritePointer(0);
         auto* oR = buf.getNumChannels() > 1 ? buf.getWritePointer(1) : buf.getWritePointer(0);
@@ -350,8 +364,7 @@ public:
 
                 // ---- Drift ----
                 float ds = v.drift.tick(pDR, pDD);
-                float df = v.freq * fastPow2((ds + extPitchMod) / 12.f) *
-                           PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                float df = v.freq * fastPow2((ds + extPitchMod) / 12.f) * blockPitchBendRatio;
 
                 // ---- Aunt 2: Coin press pitch bend ----
                 if (!v.isHusband && v.auntIdx == 1)
@@ -386,14 +399,10 @@ public:
                 }
 
                 // ---- Aunt 2: Gourd body resonance ----
+                // body.setParams() hoisted to per-block voice setup (note-constant).
                 float bodyGain = 0.2f;
                 if (!v.isHusband && v.auntIdx == 1)
-                {
-                    // Gourd size scales the body resonance (bigger gourd = more body, lower resonance)
-                    float gourdFreq = v.freq * (1.5f - pA2Gs * 0.5f); // gourd shifts resonance
-                    v.body.setParams(gourdFreq, 2.0f + pA2Gs * 4.0f);
                     bodyGain = 0.2f + pA2Gs * 0.3f; // bigger gourd = more resonance
-                }
 
                 float damped = v.df.process(out + exc * 0.3f, std::clamp(pDa + extDampMod, 0.f, 1.f));
                 v.dl.write(flushDenormal(damped));
