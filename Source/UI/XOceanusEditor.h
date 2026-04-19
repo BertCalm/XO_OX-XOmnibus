@@ -89,10 +89,9 @@ public:
         initPlaySurfaceAndPresets(proc);
         initSidebarAndWiring(proc);
         initOceanView(proc);
-        startTimerHz(10); // #1008 FIX 6: raised from 1Hz — OceanView voice counts,
-                          // coupling routes, and NexusDisplay live readouts need
-                          // 10Hz minimum for responsive feel.  MIDI-learn boost to
-                          // 30Hz is applied separately in the MIDI listener callback.
+        startTimerHz(10); // #1008 FIX 6: raised from 1Hz — OceanView voice counts
+                          // and coupling routes need 10Hz minimum for responsive feel.
+                          // MIDI-learn boost to 30Hz applied separately in MIDI callback.
     }
 
     //==========================================================================
@@ -1689,13 +1688,8 @@ private:
                 {
                     hadNoteOn = true;
 
-                    // Live DNA drift — feed this note into the session accumulator.
-                    // interval = semitone distance from last note (0 for first note).
-                    const float interval = (lastNote_ >= 0)
-                                               ? std::abs((float)(ev.midiNote - lastNote_))
-                                               : 0.0f;
-                    oceanView_.getNexus().updateSessionDna(
-                        (float)ev.midiNote, ev.velocity, interval);
+                    // D6 (#1096): NexusDisplay removed. Session DNA drift was fed here;
+                    // TODO(#1096-followup): route session DNA to preset browser overlay.
                     lastNote_ = ev.midiNote;
                 }
             });
@@ -1999,7 +1993,7 @@ private:
             const auto& currentPreset = pm.getCurrentPreset();
             oceanView_.setPresetName(currentPreset.name);
 
-            // Fix #1005: push mood name + colour to NexusDisplay so badge updates.
+            // Fix #1005: push mood name + colour (no-op since D6 — NexusDisplay removed).
             oceanView_.setMoodName(currentPreset.mood);
             // Map mood string to colour — same table used by DnaMapBrowser.
             auto moodColourFor = [](const juce::String& mood) -> juce::Colour
@@ -2065,8 +2059,8 @@ private:
         }
 
         // ── #909: Live parameter feedback — voice count + macro values ─────────
-        // Push total voice count and current macro knob positions to NexusDisplay
-        // so the Overview (Orbital) state always shows live activity readouts.
+        // D6 (#1096): NexusDisplay removed. setLiveReadouts / tickSustainedDna are
+        // now no-ops; calls retained so call sites compile without change.
         {
             int totalVoices = 0;
             for (int i = 0; i < XOceanusProcessor::MaxSlots; ++i)
