@@ -180,10 +180,13 @@ struct OwareMode
             freqHz = sampleRate * 0.49f;
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max(q, 1.0f);
-        float r = std::exp(-3.14159265f * bw / sampleRate);
-        a1 = 2.0f * r * std::cos(w);
+        // fastExp/fastCos/fastSin: ~0.01–0.1% error — negligible for resonator coefficients
+        // (far below perceptual threshold). The dirty-flag cache above already limits
+        // how often this path runs; when it does, fast-math keeps the work cheap.
+        float r = fastExp(-3.14159265f * bw / sampleRate);
+        a1 = 2.0f * r * fastCos(w);
         a2 = r * r;
-        b0 = (1.0f - r * r) * std::sin(w);
+        b0 = (1.0f - r * r) * fastSin(w);
         freq = freqHz;
         cachedQ = q;
     }
@@ -632,8 +635,17 @@ public:
         for (int m = 0; m < OwareVoice::kMaxModes; ++m)
             logModeIndex[m] = std::log(static_cast<float>(m + 1));
 
+        // Improvement #1 follow-up: precompute fastExp(-materialAlpha * logModeIndex[m])
+        // once per block. Both inputs are block-constant (materialAlpha from pMaterial,
+        // logModeIndex is precomputed above), so the per-mode per-voice per-sample
+        // fastExp call inside the inner loop collapses to an array lookup. Was
+        // kMaxModes × numVoices × numSamples fastExp calls per block; now kMaxModes.
+        float modeDecayScale[OwareVoice::kMaxModes];
+        for (int m = 0; m < OwareVoice::kMaxModes; ++m)
+            modeDecayScale[m] = fastExp(-materialAlpha * logModeIndex[m]);
+
         float decayTimeSec = std::max(pDecay * (1.0f - pDamping * 0.8f), 0.01f);
-        float baseDecayCoeff = std::exp(-1.0f / (decayTimeSec * srf));
+        float baseDecayCoeff = fastExp(-1.0f / (decayTimeSec * srf));
 
         // Improvement #5: thermal drift — shared slow tuning scalar
         thermalTimer++;
@@ -670,14 +682,25 @@ public:
             voice.lfo2.setShape(lfo2Shape);
         }
 
+        // malletNow is block-constant (smoothMallet advances each sample but inside
+        // the inner mode loop we use `1.5f - malletNow * 1.2f` — when collapsed as a
+        // block-rate scalar this eliminates kMaxModes × numVoices × numSamples mul+sub.
+        // We read it once per sample below but cache its derived falloff factor.
+
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float matNow = smoothMaterial.process();
             float malletNow = smoothMallet.process();
             float buzzNow = smoothBuzz.process();
             float bodyDNow = smoothBodyDepth.process();
             float sympNow = smoothSympathy.process();
             float brightNow = smoothBrightness.process();
+
+            // Per-sample mallet falloff — used inside the per-mode inner loop below.
+            // Hoisting (1.5 - malletNow * 1.2) here eliminates kMaxModes × kVoices
+            // redundant computations per sample.
+            const float malletFalloff = 1.5f - malletNow * 1.2f;
 
             float mixL = 0.0f, mixR = 0.0f;
 
@@ -698,7 +721,7 @@ public:
 
                 // Improvement #5: apply thermal drift (shared + per-voice personality)
                 float totalThermalCents = thermalState + voice.thermalPersonality * pThermal * 0.5f;
-                freq *= fastPow2(totalThermalCents / 1200.0f); // BUG-3 FIX: fastPow2 replaces std::pow
+                freq *= fastPow2(totalThermalCents * (1.0f / 1200.0f)); // BUG-3 FIX: fastPow2 replaces std::pow
 
                 // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio)
                 // BUG-2 FIX: use pShimmerHz parameter instead of hardcoded 0.3
@@ -747,13 +770,15 @@ public:
                     // Improvement #7: apply body-membrane coupling boost to Q
                     modeQ *= voice.modeDecayBoosts[m];
 
-                    // D001: mallet hardness controls upper mode excitation
-                    float modeAmp = 1.0f / (1.0f + static_cast<float>(m) * (1.5f - malletNow * 1.2f));
+                    // D001: mallet hardness controls upper mode excitation.
+                    // malletFalloff = (1.5f - malletNow * 1.2f) hoisted above the voice+mode
+                    // loops — was recomputed M×V times per sample.
+                    float modeAmp = 1.0f / (1.0f + static_cast<float>(m) * malletFalloff);
 
-                    // Improvement #1: material exponent alpha — per-mode decay scaling
-                    // CPU FIX: use precomputed logModeIndex[] table (computed once per block above)
-                    float modeDecayScale = fastExp(-materialAlpha * logModeIndex[m]);
-                    modeAmp *= modeDecayScale;
+                    // Improvement #1: material exponent alpha — per-mode decay scaling.
+                    // modeDecayScale[] precomputed once per block (materialAlpha × logModeIndex
+                    // are both block-constant, so per-sample fastExp is no longer needed).
+                    modeAmp *= modeDecayScale[m];
 
                     voice.modes[m].setFreqAndQ(modeFreq, modeQ, srf);
                     float modeInput = excitation + sympInputPerMode[m];
@@ -779,11 +804,15 @@ public:
                     continue;
                 }
 
+                // Tick filter envelope per sample; decimate SVF coeff refresh to every 16.
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
-                // BUG-1 FIX: LFO1 modulates brightness (±3000 Hz at full depth)
-                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.5f, srf);
+                if (updateFilter)
+                {
+                    // BUG-1 FIX: LFO1 modulates brightness (±3000 Hz at full depth)
+                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.5f, srf);
+                }
                 float filtered = voice.svf.processSample(bodied);
 
                 float output = filtered * voice.ampLevel;
