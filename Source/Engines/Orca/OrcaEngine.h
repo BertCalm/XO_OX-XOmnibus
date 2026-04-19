@@ -536,6 +536,7 @@ public:
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
+            const bool updateFilter = ((sample & 15) == 0);
             // Advance smoothed control-rate parameters (shared ParameterSmoother)
             float smoothedWTPos = smoothWTPos.process();
             float smoothedFormant = smoothFormant.process();
@@ -665,6 +666,7 @@ public:
                 }
 
                 // --- Main filter (LFO2 modulates cutoff per sample) ---
+                if (updateFilter)
                 {
                     static constexpr float kMaxCutoffOffsetInner = 3000.0f;
                     float baseCutoff = clamp(effectiveCutoff + pVelCutoffAmt * voice.velocity * kMaxCutoffOffsetInner,

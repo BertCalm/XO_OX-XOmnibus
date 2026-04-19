@@ -561,6 +561,7 @@ public:
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
+            const bool updateFilter = ((sample & 15) == 0);
             // Smooth control-rate parameters
             smoothedWTPos += (effectiveWTPos - smoothedWTPos) * smoothCoeff;
             smoothedChromaDepth += (effectiveChromaDepth - smoothedChromaDepth) * smoothCoeff;
@@ -667,9 +668,12 @@ public:
                     float suckerLevel = voice.suckerEnv.process();
                     if (suckerLevel > 0.001f)
                     {
-                        // Ultra-fast envelope into high-Q bandpass = sticky plonk
-                        float suckerFreqMod = clamp(pSuckerFreq + armMods[ArmSuckerFreq] * 2000.0f, 200.0f, 8000.0f);
-                        voice.suckerFilter.setCoefficients(suckerFreqMod, pSuckerReso, srf);
+                        // Ultra-fast envelope into high-Q bandpass = sticky plonk (coeff refresh decimated)
+                        if (updateFilter)
+                        {
+                            float suckerFreqMod = clamp(pSuckerFreq + armMods[ArmSuckerFreq] * 2000.0f, 200.0f, 8000.0f);
+                            voice.suckerFilter.setCoefficients(suckerFreqMod, pSuckerReso, srf);
+                        }
                         float suckerSig = voice.suckerFilter.processSample(voiceSignal) * suckerLevel * 2.0f;
                         voiceSignal =
                             voiceSignal * (1.0f - smoothedSuckerMix) + (voiceSignal + suckerSig) * smoothedSuckerMix;
@@ -697,8 +701,11 @@ public:
                     // We process through LP and HP, then blend
                     // LFO2 continuously shifts the chromatophore morph position
                     float voiceMorphTarget = clamp(chromaMorphTarget + lfo2Val * 0.5f, 0.0f, 1.0f);
-                    voice.chromaFilter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.chromaFilter.setCoefficients(chromaFreqMod, 0.5f + smoothedChromaDepth * 0.4f, srf);
+                    if (updateFilter)
+                    {
+                        voice.chromaFilter.setMode(CytomicSVF::Mode::LowPass);
+                        voice.chromaFilter.setCoefficients(chromaFreqMod, 0.5f + smoothedChromaDepth * 0.4f, srf);
+                    }
                     float lpOut = voice.chromaFilter.processSample(voiceSignal);
 
                     // Use morph to blend between filter types
@@ -730,10 +737,13 @@ public:
 
                 // --- Main filter with arm modulation ---
                 // D001: continuous velocity→timbre — higher velocity opens the filter further
-                float filterCutoffMod =
-                    clamp(effectiveCutoff + armMods[ArmFilterCutoff] * 4000.0f + voice.velocity * 0.3f * 3000.0f, 20.0f,
-                          20000.0f);
-                voice.mainFilter.setCoefficients(filterCutoffMod, effectiveReso, srf);
+                if (updateFilter)
+                {
+                    float filterCutoffMod =
+                        clamp(effectiveCutoff + armMods[ArmFilterCutoff] * 4000.0f + voice.velocity * 0.3f * 3000.0f, 20.0f,
+                              20000.0f);
+                    voice.mainFilter.setCoefficients(filterCutoffMod, effectiveReso, srf);
+                }
                 voiceSignal = voice.mainFilter.processSample(voiceSignal);
 
                 // =====================================================
@@ -746,8 +756,11 @@ public:
                     float fShift = armMods[ArmFormantShift]; // -1..+1, already depth-scaled
                     float f1Freq = clamp(550.0f + fShift * 250.0f, 200.0f, 900.0f);
                     float f2Freq = clamp(1650.0f - fShift * 850.0f, 600.0f, 3000.0f);
-                    voice.formant1.setCoefficients(f1Freq, 0.6f, srf);
-                    voice.formant2.setCoefficients(f2Freq, 0.5f, srf);
+                    if (updateFilter)
+                    {
+                        voice.formant1.setCoefficients(f1Freq, 0.6f, srf);
+                        voice.formant2.setCoefficients(f2Freq, 0.5f, srf);
+                    }
                     float formantSig = voice.formant1.processSample(voiceSignal) * 0.6f +
                                        voice.formant2.processSample(voiceSignal) * 0.4f;
                     // Blend at a modest level — more pronounced when arm depth is high
