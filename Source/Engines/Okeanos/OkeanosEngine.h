@@ -475,6 +475,15 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): atomic loads and setADSR fire once per block, not per sample.
+        const float envA = paramAttack  ? paramAttack->load()  : 0.005f;
+        const float envD = paramDecay   ? paramDecay->load()   : 0.8f;
+        const float envS = paramSustain ? paramSustain->load() : 0.6f;
+        const float envR = paramRelease ? paramRelease->load() : 0.5f;
+        for (auto& voice : voices)
+            if (voice.active)
+                voice.ampEnv.setADSR(envA, envD, envS, envR);
+
         for (int s = 0; s < numSamples; ++s)
         {
             float warmthNow = smoothWarmth.process();
@@ -491,12 +500,6 @@ public:
                 if (!voice.active)
                     continue;
 
-                // Update amp envelope ADSR per block so knob changes take effect on held notes
-                voice.ampEnv.setADSR(
-                    paramAttack  ? paramAttack->load()  : 0.005f,
-                    paramDecay   ? paramDecay->load()   : 0.8f,
-                    paramSustain ? paramSustain->load() : 0.6f,
-                    paramRelease ? paramRelease->load() : 0.5f);
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);

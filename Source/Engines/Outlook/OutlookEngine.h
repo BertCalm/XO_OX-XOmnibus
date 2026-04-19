@@ -204,6 +204,16 @@ public:
         lfo1.setRate(pLfo1Rate, static_cast<float>(sr));
         lfo2.setRate(pLfo2Rate, static_cast<float>(sr));
 
+        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): setADSR fires once per block, not per sample.
+        for (auto& v : voices)
+        {
+            if (v.active || v.ampEnv.isActive())
+            {
+                v.ampEnv.setADSR(pAtt, pDec, pSus, pRel);
+                v.filterEnv.setADSR(pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f);
+            }
+        }
+
         // ---- Render per-sample ----
         auto* outL = buffer.getWritePointer(0);
         auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
@@ -227,7 +237,6 @@ public:
                 ++v.age; // Track voice age for oldest-voice stealing
 
                 // Amp envelope (StandardADSR — exponential decay/release, click-free)
-                v.ampEnv.setADSR(pAtt, pDec, pSus, pRel);
                 const float ampEnvVal = v.ampEnv.process();
                 if (ampEnvVal < 1e-7f && !v.ampEnv.isActive())
                 {
@@ -254,7 +263,6 @@ public:
                 }
 
                 // Filter envelope
-                v.filterEnv.setADSR(pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f);
                 const float filtEnvVal = v.filterEnv.process();
 
                 // Velocity → timbre (D001): velocity scales filter brightness

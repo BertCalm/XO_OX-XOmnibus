@@ -398,6 +398,11 @@ public:
             }
         }
 
+        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): setADSR fires once per block, not per sample.
+        for (int v = 0; v < kMaxVoices; ++v)
+            if (voices[v].active)
+                voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+
         for (int i = 0; i < numSamples; ++i)
         {
             // Gate LFOs: advance state but output 0 when fully frozen.
@@ -420,7 +425,6 @@ public:
                 if (!voice.active)
                     continue;
 
-                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
                 float ampLevel = voice.ampEnv.process();
 
                 if (!voice.ampEnv.isActive())
