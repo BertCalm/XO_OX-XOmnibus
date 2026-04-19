@@ -339,6 +339,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float driveNow = smoothDrive.process();
             float mixNow = smoothOscMix.process();
             float rootDNow = smoothRootDepth.process();
@@ -389,9 +390,12 @@ public:
                 float combined = oscOut * (1.0f - rootDNow * 0.6f) + subSample * rootDNow * subLevel;
 
                 // Density: adds sub-frequency content below hearing (infrasound presence)
-                // Implemented as very low frequency emphasis on the sub
-                voice.subFilter.setMode(CytomicSVF::Mode::LowPass);
-                voice.subFilter.setCoefficients(40.0f + densNow * 20.0f, 0.3f + densNow * 0.4f, srf);
+                // Implemented as very low frequency emphasis on the sub (coeff refresh decimated)
+                if (updateFilter)
+                {
+                    voice.subFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.subFilter.setCoefficients(40.0f + densNow * 20.0f, 0.3f + densNow * 0.4f, srf);
+                }
                 float subEmphasis = voice.subFilter.processSample(combined) * densNow * 0.5f;
                 combined += subEmphasis;
 
@@ -417,20 +421,23 @@ public:
                 float lfo2FilterMod = lfo2Val * 1500.0f;
 
                 float filtered;
-                if (pSoil < 0.5f)
+                if (updateFilter)
                 {
-                    // Soil sets base character: clay = darker, sandy = brighter
-                    float soilBaseCutoff = velBright * (0.6f + pSoil * 0.8f);
-                    // Envelope and LFO2 modulate on top of soil base
-                    float finalCutoff = std::clamp(soilBaseCutoff + envMod + lfo2FilterMod, 100.0f, 20000.0f);
-                    voice.bodyFilter.setCoefficients(finalCutoff, soilQ, srf);
-                }
-                else
-                {
-                    // Rocky: BandPass for notched character — soil pSoil > 0.5 means rock
-                    float soilBaseCutoff = velBright * (0.3f + (pSoil - 0.5f) * 0.4f);
-                    float finalCutoff = std::clamp(soilBaseCutoff + envMod + lfo2FilterMod, 100.0f, 20000.0f);
-                    voice.bodyFilter.setCoefficients(finalCutoff, soilQ + 0.2f, srf);
+                    if (pSoil < 0.5f)
+                    {
+                        // Soil sets base character: clay = darker, sandy = brighter
+                        float soilBaseCutoff = velBright * (0.6f + pSoil * 0.8f);
+                        // Envelope and LFO2 modulate on top of soil base
+                        float finalCutoff = std::clamp(soilBaseCutoff + envMod + lfo2FilterMod, 100.0f, 20000.0f);
+                        voice.bodyFilter.setCoefficients(finalCutoff, soilQ, srf);
+                    }
+                    else
+                    {
+                        // Rocky: BandPass for notched character — soil pSoil > 0.5 means rock
+                        float soilBaseCutoff = velBright * (0.3f + (pSoil - 0.5f) * 0.4f);
+                        float finalCutoff = std::clamp(soilBaseCutoff + envMod + lfo2FilterMod, 100.0f, 20000.0f);
+                        voice.bodyFilter.setCoefficients(finalCutoff, soilQ + 0.2f, srf);
+                    }
                 }
                 // Single filter pass — soil character AND envelope both shape the result
                 filtered = voice.bodyFilter.processSample(saturated);

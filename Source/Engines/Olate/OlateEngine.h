@@ -358,6 +358,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float cutNow = smoothCutoff.process();
             float resNow = smoothResonance.process();
             float drvNow = smoothDrive.process();
@@ -407,16 +408,22 @@ public:
                 float voiceCutoff = std::clamp(
                     cutNow + filtEnv * 6000.0f + velCutMod + lfo1Val * 2000.0f + sessionCutShift, 100.0f, 20000.0f);
 
-                voice.ladderFilter.setMode(CytomicSVF::Mode::LowPass);
-                voice.ladderFilter.setCoefficients(voiceCutoff, resNow, srf);
+                if (updateFilter)
+                {
+                    voice.ladderFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.ladderFilter.setCoefficients(voiceCutoff, resNow, srf);
+                }
                 float filtered = voice.ladderFilter.processSample(driven);
 
                 // Warmth filter: low shelf boost — tube vs transistor character
                 // Warmth parameter controls low-frequency saturation character
                 if (warmNow > 0.01f)
                 {
-                    voice.warmthFilter.setMode(CytomicSVF::Mode::LowShelf);
-                    voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
+                    if (updateFilter)
+                    {
+                        voice.warmthFilter.setMode(CytomicSVF::Mode::LowShelf);
+                        voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
+                    }
                     filtered = voice.warmthFilter.processSample(filtered);
                 }
 

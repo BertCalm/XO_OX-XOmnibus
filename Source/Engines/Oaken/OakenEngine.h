@@ -576,6 +576,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float bowPNow = smoothBowPressure.process();
             float strTNow = smoothStringTension.process();
             float bodyDNow = smoothBodyDepth.process();
@@ -614,13 +615,16 @@ public:
                 // Curing model: HF removal over sustain time
                 float cured = voice.curing.process(bodied, curingRNow, dtSec);
 
-                // Output brightness filter
+                // Output brightness filter (env ticked per-sample, SVF decimated)
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 4000.0f;
-                float cutoff =
-                    std::clamp(brightNow + envMod + lfo1Val * 2000.0f + lfo2Val * 2000.0f + voice.velocity * 2000.0f,
-                               200.0f, 20000.0f);
-                voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                voice.outputFilter.setCoefficients(cutoff, 0.3f, srf);
+                if (updateFilter)
+                {
+                    float cutoff =
+                        std::clamp(brightNow + envMod + lfo1Val * 2000.0f + lfo2Val * 2000.0f + voice.velocity * 2000.0f,
+                                   200.0f, 20000.0f);
+                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.outputFilter.setCoefficients(cutoff, 0.3f, srf);
+                }
                 float filtered = voice.outputFilter.processSample(cured);
 
                 // Room: simple one-pole reverb-like diffusion
