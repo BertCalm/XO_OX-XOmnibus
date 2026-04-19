@@ -23,6 +23,7 @@
 //==============================================================================
 
 #include <juce_gui_basics/juce_gui_basics.h>
+#include <atomic>
 #include <array>
 #include <algorithm>
 #include <cmath>
@@ -72,14 +73,22 @@ public:
     /** Push a stereo RMS frame (0–1 each). Used by Waveform mode. */
     void pushLevels(float leftRMS, float rightRMS)
     {
+        jassert(juce::MessageManager::getInstance()->isThisTheMessageThread());
+
         const float l = juce::jlimit(0.0f, 1.0f, leftRMS);
         const float r = juce::jlimit(0.0f, 1.0f, rightRMS);
 
-        // Encode both channels into one slot: positive = left, negative = right.
-        // We reconstruct sign during paint.
-        waveBuffer_[waveHead_] = l;
-        waveBufferR_[waveHead_] = r;
-        waveHead_ = (waveHead_ + 1) % kWaveLen;
+        // Load head for this cycle; ARM safety pattern: write buffer first, then release-store head.
+        int head = waveHead_.load(std::memory_order_relaxed);
+
+        // Write buffer slot first.
+        waveBuffer_[head] = l;
+        waveBufferR_[head] = r;
+
+        // Advance head with release semantics so paint() sees buffered writes before new index.
+        int next = (head + 1) % kWaveLen;
+        std::atomic_thread_fence(std::memory_order_release);
+        waveHead_.store(next, std::memory_order_relaxed);
 
         lastPushMs_ = juce::Time::getMillisecondCounterHiRes();
     }
@@ -205,10 +214,13 @@ private:
 
         // Map ring buffer columns to the visible column count.
         // The most recent sample is at waveHead_ - 1, oldest at waveHead_.
+        // Read head with acquire semantics to ensure we see all buffer writes.
+        const int head = waveHead_.load(std::memory_order_acquire);
+
         for (int col = 0; col < cols_; ++col)
         {
             // Map col 0 = oldest, col cols_-1 = newest
-            const int bufIdx = (waveHead_ + col) % kWaveLen;
+            const int bufIdx = (head + col) % kWaveLen;
             const float lVal = waveBuffer_[bufIdx];
             const float rVal = waveBufferR_[bufIdx];
 
@@ -454,7 +466,7 @@ private:
     // Waveform ring buffers
     std::array<float, kWaveLen> waveBuffer_{};   // left channel
     std::array<float, kWaveLen> waveBufferR_{};  // right channel
-    int waveHead_ = 0;
+    std::atomic<int> waveHead_{0};
 
     // Spectrum decay buffer
     std::array<float, kSpecBins> specBins_{};

@@ -820,6 +820,27 @@ public:
             route.active      = true;
             processor.getCouplingMatrix().addRoute(route);
         };
+        oceanView_.onCouplingConfigChanged = [this](int routeIndex, int newType, float newDepth, int /*direction*/)
+        {
+            processor.getCouplingMatrix().updateRoute(routeIndex,
+                                                      static_cast<CouplingType>(newType),
+                                                      newDepth);
+        };
+
+        oceanView_.onCouplingDeleteRequested = [this](int routeIndex)
+        {
+            auto& matrix = processor.getCouplingMatrix();
+            auto routes = matrix.getRoutes();
+            if (routeIndex < 0 || routeIndex >= static_cast<int>(routes.size()))
+                return;
+            const auto& r = routes[static_cast<size_t>(routeIndex)];
+            if (r.isNormalled)
+            {
+                ToastOverlay::show("Cannot remove default coupling route", Toast::Level::Info);
+                return;
+            }
+            matrix.removeUserRoute(r.sourceSlot, r.destSlot, r.type);
+        };
         oceanView_.onPresetSelected = [this](int idx)
         {
             // Load preset by index from the library snapshot.
