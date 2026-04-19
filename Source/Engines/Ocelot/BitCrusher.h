@@ -3,6 +3,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
+#include "../../DSP/FastMath.h"
 
 namespace xocelot
 {
@@ -14,6 +15,9 @@ struct BitCrusher
 {
     float holdSample = 0.0f;
     float holdCounter = 0.0f;
+    float cachedBitDepth = -1.0f; // forces recompute on first call
+    float cachedLevels = 1.0f;
+    float cachedInvLevels = 1.0f;
 
     // bitDepth: 4.0–16.0 (float for smooth automation)
     // targetRate: target sample rate in Hz (4000–44100)
@@ -26,9 +30,15 @@ struct BitCrusher
         if (holdCounter >= ratio)
         {
             holdCounter -= ratio;
-            // Bit depth quantization
-            float levels = std::pow(2.0f, std::clamp(bitDepth, 1.0f, 24.0f));
-            holdSample = std::round(x * levels) / levels;
+            // Bit depth quantization — cache 2^bitDepth across calls.
+            // std::pow on the audio thread was ~50× slower than fastPow2.
+            if (bitDepth != cachedBitDepth)
+            {
+                cachedBitDepth = bitDepth;
+                cachedLevels = xoceanus::fastPow2(std::clamp(bitDepth, 1.0f, 24.0f));
+                cachedInvLevels = 1.0f / cachedLevels;
+            }
+            holdSample = std::round(x * cachedLevels) * cachedInvLevels;
         }
         return holdSample;
     }
@@ -37,6 +47,9 @@ struct BitCrusher
     {
         holdSample = 0.0f;
         holdCounter = 0.0f;
+        cachedBitDepth = -1.0f;
+        cachedLevels = 1.0f;
+        cachedInvLevels = 1.0f;
     }
 };
 

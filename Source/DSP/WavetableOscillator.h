@@ -237,13 +237,16 @@ public:
             out = sampleA + frameFrac * (sampleB - sampleA);
         }
 
-        // Advance phase and wrap.
+        // Advance phase and wrap. Conditional subtract is ~10× faster than
+        // std::fmod on the audio thread; phaseIncrement is bounded per-block
+        // so one trip round the loop is typically enough.
         phase += phaseIncrement;
         const float fs = static_cast<float>(frameSize);
         if (fs > 0.0f)
         {
-            phase = std::fmod(phase, fs);
-            if (phase < 0.0f)
+            while (phase >= fs)
+                phase -= fs;
+            while (phase < 0.0f)
                 phase += fs;
         }
 

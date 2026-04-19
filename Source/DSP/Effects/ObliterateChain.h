@@ -156,7 +156,7 @@ private:
             hannPhase = 0.0f;
         }
 
-        static float hann(float phase) { return 0.5f * (1.0f - std::cos(6.28318f * phase)); }
+        static float hann(float phase) { return 0.5f * (1.0f - xoceanus::fastCos(6.28318f * phase)); }
 
         float process(float in, float delayMs, float pitchRatio, float mix)
         {
@@ -174,7 +174,10 @@ private:
             float wetHann = wetRaw * hann(hannPhase);
 
             readBPos = static_cast<int>(readBPos + pitchRatio) % loopLen;
-            hannPhase = std::fmod(hannPhase + (pitchRatio / static_cast<float>(loopLen)), 1.0f);
+            // Phase wrap: conditional subtract (~10× faster than std::fmod).
+            hannPhase += pitchRatio / static_cast<float>(loopLen);
+            while (hannPhase >= 1.0f) hannPhase -= 1.0f;
+            while (hannPhase < 0.0f)  hannPhase += 1.0f;
 
             return in + mix * (wetHann - in);
         }

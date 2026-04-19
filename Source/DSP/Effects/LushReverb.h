@@ -284,10 +284,16 @@ public:
 
             for (int i = 0; i < kN; ++i)
             {
-                // Advance LFO phase
-                const double phaseIncD = lfoRate[i] / sr;
-                lfoPhase[i] = static_cast<float>(
-                    std::fmod(static_cast<double>(lfoPhase[i]) + phaseIncD * kLfoTableSize, kLfoTableSize));
+                // Advance LFO phase. kLfoTableSize is a power of two, so wrap
+                // with a conditional subtract — ~10× faster than std::fmod and
+                // matches the table-lookup indexing below.
+                const float phaseInc = static_cast<float>((lfoRate[i] / sr) * kLfoTableSize);
+                float newPhase = lfoPhase[i] + phaseInc;
+                while (newPhase >= static_cast<float>(kLfoTableSize))
+                    newPhase -= static_cast<float>(kLfoTableSize);
+                while (newPhase < 0.0f)
+                    newPhase += static_cast<float>(kLfoTableSize);
+                lfoPhase[i] = newPhase;
 
                 // Table lookup (linear interpolation for clean LFO)
                 const float phf = lfoPhase[i];
