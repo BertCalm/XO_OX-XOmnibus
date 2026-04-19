@@ -161,7 +161,7 @@ Neve speaks: *"The hierarchy is correct. I can hear the importance of each contr
 
 ### Ghost 7: Isao Tomita
 
-**Original Concern**: All 76 engine colors must be visible and recognizable. The interface itself should feel like a living organism. Coupling should be experienced as a chromatic relationship — color mixing between engines.
+**Original Concern**: All 88 engine colors must be visible and recognizable. The interface itself should feel like a living organism. Coupling should be experienced as a chromatic relationship — color mixing between engines.
 
 **Does the spec satisfy this?**
 
@@ -171,7 +171,7 @@ The Coupling Visualizer arcs (Section 1.4) blend both engines' accent colors in 
 
 The Living Background: the emotion-responsive UI (Section 5.2.3) shifts the entire interface color temperature based on the audio character being produced. The parameter sensitivity maps glow brighter where expression is richest. The coupling arc glow pulses with audio energy. The engine nameplate identity band runs the full panel height in accent color. The breathing animation formula (Section 5.1.3) gives every living element a shared organic respiration.
 
-The Constellation View (Section 5.2.4) shows all 76 engine colors simultaneously as a star chart — this is Tomita's request made literal: 76 colors at once, interactive, beautiful.
+The Constellation View (Section 5.2.4) shows all 88 engine colors simultaneously as a star chart — this is Tomita's request made literal: 88 colors at once, interactive, beautiful.
 
 **What would raise the score?**
 
@@ -242,9 +242,9 @@ The Spatial Preset Navigation (Section 5.2.1) transforms the browser from a list
 
 Yes, in two forms:
 1. The Depth-Zone Dial (Section 1.5) — circular 80pt dial navigating engines by water-column depth order. Clockwise/counterclockwise drag. Depth zone gradient (Sunlit/Twilight/Midnight/Abyss) encodes position. Engine name below. 50ms hot-swap crossfade.
-2. The Constellation View (Section 5.2.4) — full-window overlay showing all 76 engines as a star map, organized by water column depth. Click to load. Drag between stars to create coupling.
+2. The Constellation View (Section 5.2.4) — full-window overlay showing all 88 engines as a star map, organized by water column depth. Click to load. Drag between stars to create coupling.
 
-The 2D aspect is satisfied by the Constellation View, which gives a genuine X/Y navigable space across all 76 engines. The water column depth provides the Y axis; the left-right distribution provides genre/character grouping.
+The 2D aspect is satisfied by the Constellation View, which gives a genuine X/Y navigable space across all 88 engines. The water column depth provides the Y axis; the left-right distribution provides genre/character grouping.
 
 **Verdict**: FULLY SATISFIED by Constellation View (V1 if promoted from "Second 25%"). Depth-Zone Dial satisfies sequential navigation at V1.
 
@@ -327,7 +327,7 @@ Needs warm, imperfect, breathing sounds. OWARE (tuned percussion with material p
 
 **Film Composer**
 
-Needs complex evolving textures, atmospheric pads, tension-building sounds. The ETHEREAL and DEEP mood filters are dedicated to this territory. OXBOW (entangled reverb), OCEANDEEP (Darkness Filter ceiling at 800Hz), OPERA (autonomous dramatic arc) are the engines. The OperaConductor — autonomous narrative arc — actually writes the emotional arc for the composer. The coupling system creates emergent textures between engines. **30-second test: PASS.** Film composers benefit most from the Constellation View (all 76 engines visible at once for pairing).
+Needs complex evolving textures, atmospheric pads, tension-building sounds. The ETHEREAL and DEEP mood filters are dedicated to this territory. OXBOW (entangled reverb), OCEANDEEP (Darkness Filter ceiling at 800Hz), OPERA (autonomous dramatic arc) are the engines. The OperaConductor — autonomous narrative arc — actually writes the emotional arc for the composer. The coupling system creates emergent textures between engines. **30-second test: PASS.** Film composers benefit most from the Constellation View (all 88 engines visible at once for pairing).
 
 ---
 
