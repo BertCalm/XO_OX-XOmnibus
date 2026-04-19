@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "name": "Extinction Event",
+  "name": "Extinction Event II",
   "mood": "Flux",
   "engines": [
     "Obiont"
@@ -9,7 +9,7 @@
   "version": "1.0.0",
   "tier": "awakening",
   "created": "2026-03-28",
-  "description": "High chaos (Rule 30) held near its tipping point. Medium evolution starts stable, but mod wheel (via LFO depth as proxy) sweeps evolution rate from slow to catastrophic. At max macro EVOLUTION the grid goes berserk — near maximum chaos, near-extinction, anti-extinction re-seeding fires and the sound jolts back. LFO sweeps filter in long, dramatic arcs. For dramatic builds and controlled collapses. One automated macro, one performance moment.",
+  "description": "High chaos (Rule 30) held near its tipping point. Medium evolution starts stable, but mod wheel (via LFO depth as proxy) sweeps evolution rate from slow to catastrophic. At max macro EVOLUTION the grid goes berserk \u2014 near maximum chaos, near-extinction, anti-extinction re-seeding fires and the sound jolts back. LFO sweeps filter in long, dramatic arcs. For dramatic builds and controlled collapses. One automated macro, one performance moment.",
   "tags": [
     "awakening",
     "sweep",

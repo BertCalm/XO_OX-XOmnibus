@@ -17,10 +17,10 @@
     "mirror"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
   ],
   "couplingIntensity": "Light",
   "tempo": null,
@@ -50,11 +50,10 @@
       "obsidian_output": 0
     },
     "OpenSky": {
-      "sky_macroCharacter": 0.52,
-      "sky_macroMovement": 0.45,
-      "sky_macroCoupling": 0.25,
-      "sky_macroSpace": 0.7,
       "sky_macroRise": 0.55,
+      "sky_macroWidth": 0.45,
+      "sky_macroGlow": 0.25,
+      "sky_macroAir": 0.7,
       "sky_filterEnvAmt": 0.5,
       "sky_lfo1Rate": 0.08,
       "sky_lfo1Depth": 0.22,
@@ -82,9 +81,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.62,
-    "MOVEMENT": 0.42,
-    "COUPLING": 0.25,
-    "SPACE": 0.68
+    "RISE": 0.62,
+    "WIDTH": 0.42,
+    "GLOW": 0.25,
+    "AIR": 0.68
   }
 }

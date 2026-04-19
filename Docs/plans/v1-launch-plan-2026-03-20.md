@@ -1,5 +1,13 @@
-# XOceanus V1 Launch Plan
-**Status:** ACTIVE PLANNING DOCUMENT
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> The "V1 launch" framing has been retired. XOceanus does not operate on a fixed-version
+> release model. Build and refine until ready; ship when ready. This document is preserved
+> for historical reference only. See `CLAUDE.md` → *Release Philosophy*.
+
+---
+
+# XOceanus V1 Launch Plan (HISTORICAL)
+**Status:** RETIRED 2026-04-16 — preserved for historical reference
 **Date:** 2026-03-20
 **Product State:** 46 engines | ~22,000+ presets | Build PASS | auval PASS
 *(Note: OXBOW + OWARE were added 2026-03-20, pushing fleet from 42 to 44; counts below referencing 42 are historical and should be read as 44)*

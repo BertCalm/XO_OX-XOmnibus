@@ -1,9 +1,16 @@
-> **STATUS: ACTIVE** | V1 launch criteria defined and ratified. Prism Sweep complete (2026-03-20). Awaiting final launch gates.
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> The "V1 launch" framing has been retired. XOceanus does not operate on a fixed-version
+> release model. Build and refine until ready; ship when ready. This document is preserved
+> for historical reference only. Do not cite it as current direction and do not generate new
+> "V1 launch" plans from it. See `CLAUDE.md` → *Release Philosophy*.
 
-# XOceanus V1 Launch Plan
+---
 
-*Drafted: 2026-03-17 | Updated: 2026-03-17 (RAC review + owner ratification)*
-*Goal: Ship a clean, confident, no-apologies V1*
+# XOceanus V1 Launch Plan (HISTORICAL)
+
+*Drafted: 2026-03-17 | Retired: 2026-04-16*
+*Original goal: Ship a clean, confident, no-apologies V1 — this goal has been retired.*
 
 ---
 

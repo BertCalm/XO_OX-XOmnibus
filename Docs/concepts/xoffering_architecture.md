@@ -65,7 +65,7 @@ XOffering doesn't sample records. It synthesizes the *entire signal chain of cra
 │         ▼                                        │
 │  ┌──────────────┐                                │
 │  │  CITY         │ ← Psychoacoustic processing   │
-│  │  PROCESSING   │   chain (5 cities V1)          │
+│  │  PROCESSING   │   chain (5 cities)             │
 │  │  CHAIN        │   Controlled by CITY macro     │
 │  └──────┬───────┘                                │
 │         │                                        │
@@ -200,7 +200,7 @@ All 8 slots active. D001, D002, D005, D006 fully covered.
 
 ---
 
-## The Five City Processing Chains (V1)
+## The Five City Processing Chains
 
 Each city is a complete psychoacoustic processing chain applied after the collage engine.
 
@@ -699,9 +699,9 @@ void processCityChain(float* buffer, int numSamples, const OfferingParamSnapshot
 
 ---
 
-## V1 vs V2 Scope
+## Initial vs Later Scope
 
-### V1 (Build Now)
+### Initial Build (Now)
 - 8 drum voices with full transient + texture + collage + city signal chain
 - 5 city processing chains (NY, Detroit, LA, Toronto, Bay Area)
 - 4 macros: DIG, CITY, FLIP, DUST
@@ -712,7 +712,7 @@ void processCityChain(float* buffer, int numSamples, const OfferingParamSnapshot
 - BAKE function for XPN export
 - 150+ presets (target)
 
-### V2 (Future — Global Boroughs + Intelligence)
+### Future Expansion (Global Boroughs + Intelligence)
 - 5 international city additions: London, Tokyo, Berlin, Sao Paulo, Seoul
 - Parent→Dialect morphing (2D city space)
 - Cultural psychology DSP: mono no aware, gambiarra, Sachlichkeit, make-do-and-mend, ppalli ppalli
@@ -768,6 +768,6 @@ void processCityChain(float* buffer, int numSamples, const OfferingParamSnapshot
 1. **Scaffold** — `/new-xo-project` with name=XOffering, code=XOFR
 2. **Build** — Phase 2: TransientGenerator → TextureLayer → CollageEngine → CityProcessor → CuriosityEngine → Voice → Master
 3. **Presets** — `/exo-meta` for initial 150 presets, then `/preset-audit-checklist` for 9.0+ quality gate
-4. **Retreat** — `/guru-bin` refinement on the V1 presets
+4. **Retreat** — `/guru-bin` refinement on the initial presets
 5. **Integrate** — Phase 3-4: Adapter → XOceanus registration → engine #45
 6. **Re-seance** — Post-build ghost scoring (target 9.0+ with P0 fixes applied)

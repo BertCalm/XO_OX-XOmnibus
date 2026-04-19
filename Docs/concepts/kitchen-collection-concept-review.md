@@ -107,7 +107,7 @@ KITCHEN is the first instrument in the Culinary Collection that competes directl
 
 **Defer:**
 - XObelisk's full preparation library (5+ objects). Ship with 3 well-chosen preparations (bolt, rubber, wood). Add to Guru Bin later.
-- Thermal Drift at full material accuracy. Ship with a simplified Temperature knob; reserve the full per-material drift coefficient calculation for a V1.1 patch.
+- Thermal Drift at full material accuracy. Ship with a simplified Temperature knob; reserve the full per-material drift coefficient calculation for a post-launch patch.
 - Half-pedal interpolation. Ship with a high-quality binary sustain/release and a half-pedal approximation. Full continuous half-pedaling can be a noted enhancement.
 
 ### What Producers Actually USE vs. What's Clever
@@ -297,7 +297,7 @@ Harmonic emergence following the golden angle: each partial appears at φ interv
 
 **Build first:** XOrchard and XOxalis as immediately playable string sounds. The W/A/D accumulator system as a background behavior (visible through seasonal display). The succession sequence in full-quad operation.
 
-**Defer:** Growth Mode to V1.1 after extensive testing. The full mycorrhizal network with configurable delay (ship with fixed 8-second delay as default). XOsier and XOvergrow (complete as instruments, but their Growth Mode per-engine specifics are complex enough to merit dedicated development time).
+**Defer:** Growth Mode to a post-launch patch after extensive testing. The full mycorrhizal network with configurable delay (ship with fixed 8-second delay as default). XOsier and XOvergrow (complete as instruments, but their Growth Mode per-engine specifics are complex enough to merit dedicated development time).
 
 ### Accessibility Check
 
@@ -480,7 +480,7 @@ The 5th slot mechanic is rare in synthesis marketing: a feature whose existence 
 
 **Build first:** XOasis (Rhodes) and XOpcode (FM EP) as the most tonally distinct pair (warm organic vs. cold digital). These two engines together demonstrate the full range of the FUSION quad's timbral space. The 5th slot activation sequence and KitchenCompleteWatcher — this is the product moment and must be implemented correctly from day one.
 
-**Defer:** XOddfellow and XOnkolo (complete the EP quartet in V1.1 if scope is tight). Full Cultural Artifact Bus for all six pairing combinations (build for the two most dramatically different pairs first: XOasis↔XOnkolo and XOddfellow↔XOpcode).
+**Defer:** XOddfellow and XOnkolo (complete the EP quartet in a later update if scope is tight). Full Cultural Artifact Bus for all six pairing combinations (build for the two most dramatically different pairs first: XOasis↔XOnkolo and XOddfellow↔XOpcode).
 
 ### Accessibility Check
 
@@ -570,7 +570,7 @@ The FUSION quad's second community buzz driver: the cultural narrative (Rhodes a
 
 2. **Specify the CPU budget target per engine.** KITCHEN's 32-64 modal resonators + 88 sympathetic strings is the most expensive per-note calculation in any engine reviewed. Before DSP design begins, establish a per-engine CPU ceiling (suggest: OSTINATO or OWARE as benchmarks — both have modal resonator banks). If KITCHEN cannot meet the ceiling at full polyphony, the simplified Lite bank (16 resonators) must be designed from the start, not added as a patch.
 
-3. **Confirm the Growth Mode acceleration option (GARDEN) as a launch requirement.** Growth Mode with 20-second germination cycles is unusable in live performance contexts. The 10× Live acceleration option must be designed before the first Growth Mode preset is written. This is not optional for V1.
+3. **Confirm the Growth Mode acceleration option (GARDEN) as a launch requirement.** Growth Mode with 20-second germination cycles is unusable in live performance contexts. The 10× Live acceleration option must be designed before the first Growth Mode preset is written. This is not optional.
 
 4. **Specify the XOverworn Reduction Rate range explicitly.** The concept document frames XOverworn as "30 minutes to session-scale reduction." This is inaccessible for 5-minute demo contexts. Define the Reduction Rate parameter range (suggest 1 minute to 4 hours) before DSP design, and build the Fast Demo preset as part of the initial preset pack.
 
@@ -598,7 +598,7 @@ The FUSION quad's second community buzz driver: the cultural narrative (Rhodes a
 
 ### Priority 4 — Long-Term Vision Investments
 
-11. **CELLAR session-scale character development visibility.** The session warmth accumulation is the most likely feature to go undiscovered without a visual indicator. Design a Session Warmth display (analog-style warm glow, no numbers) as part of the CELLAR UI before V1.
+11. **CELLAR session-scale character development visibility.** The session warmth accumulation is the most likely feature to go undiscovered without a visual indicator. Design a Session Warmth display (analog-style warm glow, no numbers) as part of the CELLAR UI before launch.
 
 12. **FUSION Migratory coupling demonstration presets.** Build presets for XOasis ↔ XOnkolo at 0%, 25%, 50%, 75%, 100% coupling depth before writing documentation. These presets are the tutorial material. If the coupling is audible and interesting at every step, documentation becomes almost unnecessary.
 

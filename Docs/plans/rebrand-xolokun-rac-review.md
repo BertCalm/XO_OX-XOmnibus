@@ -3,7 +3,7 @@
 **Date:** 2026-03-23
 **Reviewers:** Ringleader (Joshua), Architect (Raj), Consultant (Rufus)
 **Decision:** Rename the synthesizer from XOceanus to XOceanus. "Omnibus" becomes the tagline — "XOceanus — for all."
-**Timing:** Pre-V1, zero external users. The rename window is now.
+**Timing:** Pre-release, zero external users. The rename window is now.
 
 ---
 
@@ -32,7 +32,7 @@ This is the authoritative source of the plugin's machine-visible identity. Every
 | `target_link_libraries(XOceanus ...)` | `XOceanus` | `XOceanus` | Appears multiple times |
 | `XOceanusFont` in `target_link_libraries` | `XOceanusFont` | `XOceanusFont` | Font binary data link |
 
-**PLUGIN_CODE critical note:** `Xomn` is the four-character AU/VST3 identifier baked into saved DAW sessions. Changing it to `Xolk` is safe and correct pre-V1 because no external sessions reference the old code. After V1 ships, this must never change. Choose `Xolk` now and lock it.
+**PLUGIN_CODE critical note:** `Xomn` is the four-character AU/VST3 identifier baked into saved DAW sessions. Changing it to `Xolk` is safe and correct pre-release because no external sessions reference the old code. Once shipped publicly, this must never change. Choose `Xolk` now and lock it.
 
 ---
 
@@ -137,7 +137,7 @@ Option B — **Keep the namespace as `xoceanus` internally**
 - Precedent exists: JUCE uses `juce::` even though products built on it are not called JUCE. Many companies keep internal technical names distinct from brand names.
 - Docs and comments still need updating, but no code logic changes.
 
-**Architect recommendation: Option B for V1.** The namespace is a private implementation detail. Users never see it. Rename it in a dedicated V2 cleanup sprint after V1 ships. Document the divergence explicitly in CLAUDE.md.
+**Architect recommendation: Option B for initial release.** The namespace is a private implementation detail. Users never see it. Rename it in a dedicated cleanup sprint later. Document the divergence explicitly in CLAUDE.md.
 
 The two SDK function symbols (`xoceanus_create_engine`, `xoceanus_engine_info`) are a slightly stronger case for renaming since they form the public plugin module ABI — but again, zero external SDK users exist. If renamed, do it atomically with all SDK consumers.
 
@@ -219,7 +219,7 @@ All 18 site HTML/XML files contain XOceanus references and require updates:
 - `site/index.html`, `site/aquarium.html`, `site/manifesto.html`, `site/packs.html`, `site/updates.html`, `site/guide.html`, `site/guide-collections.html`, `site/feed.xml`
 - All `site/guide-*.html` files
 
-These are public-facing and must be updated before any V1 announcement.
+These are public-facing and must be updated before any public announcement.
 
 ---
 
@@ -292,14 +292,14 @@ Execute in this sequence to minimize broken-build time:
 
 | Risk | Severity | Notes |
 |------|----------|-------|
-| PLUGIN_CODE change (`Xomn` → `Xolk`) | Low — pre-V1 | Must never change again after V1 |
-| BUNDLE_ID change | Low — pre-V1 | Old AU entry in Audio Unit database will become stale; run `auval` after change |
+| PLUGIN_CODE change (`Xomn` → `Xolk`) | Low — pre-release | Must never change again once shipped |
+| BUNDLE_ID change | Low — pre-release | Old AU entry in Audio Unit database will become stale; run `auval` after change |
 | Namespace change (if Option A) | Medium | ~397 edit sites, but purely mechanical — no logic change |
 | Filesystem path strings in source | Medium | `CouplingPresetManager.h`, `SecureKeyStore.h` write to user home directory paths |
 | Preset directory rename | Low | `git mv` preserves history |
 | 415 Docs files | Low | Content-only, no build impact |
 
-**The rename is architecturally clean.** Pre-V1, there are no saved DAW sessions, no installed plugins, no user presets, and no SDK consumers to protect. The blast radius is large in file count but low in technical risk. A scripted replacement followed by a clean build and auval pass is sufficient validation.
+**The rename is architecturally clean.** Pre-release, there are no saved DAW sessions, no installed plugins, no user presets, and no SDK consumers to protect. The blast radius is large in file count but low in technical risk. A scripted replacement followed by a clean build and auval pass is sufficient validation.
 
 ---
 
@@ -405,7 +405,7 @@ XO_OX Designs welcomes critique, correction, and relationship from practitioners
 
 **Assessment:** The composite mark "XOceanus" in the International Class 9 (software) or Class 41 (entertainment/music services) category appears clear. The OLOKUN music duo operates in a different class (performing artists, recordings) and the composite "XOceanus" with the XO prefix distinguishes further.
 
-**Recommended action:** Commission a formal USPTO trademark search for "XOceanus" in Class 9 (computer software) and Class 41 (entertainment services) before V1 launch. This is standard pre-launch diligence. The informal research here suggests the mark is available, but a formal search is required before filing.
+**Recommended action:** Commission a formal USPTO trademark search for "XOceanus" in Class 9 (computer software) and Class 41 (entertainment services) before public launch. This is standard pre-launch diligence. The informal research here suggests the mark is available, but a formal search is required before filing.
 
 **Note on cultural trademark ethics:** Some practitioners and scholars have raised concerns about trademarking the names of sacred figures. "Olokun" as a standalone word is a religious name held by a community, not a word that can or should be owned. The composite "XOceanus" — XO_OX's brand prefix plus Olokun — is the actual mark being used, which is both legally and ethically the appropriate approach: the brand owns the composite, not the sacred name itself.
 
@@ -415,7 +415,7 @@ XO_OX Designs welcomes critique, correction, and relationship from practitioners
 
 This review was written with the understanding that it should be reviewed by a cultural advisor with direct knowledge of Yoruba tradition and the African diaspora before the Cultural Acknowledgment text appears in any public-facing product. The text above is a first draft for internal review.
 
-Recommended next step: identify an advisor — a practitioner, scholar, or cultural organization connected to Yoruba religion or the diaspora — and share the Cultural Acknowledgment for feedback before V1. The XO_OX community channels (Patreon, Discord) may be a route to finding such a reviewer. Organizations such as the Yoruba Cultural Alliance or academic departments of African and African Diaspora Studies at major universities could also be approached.
+Recommended next step: identify an advisor — a practitioner, scholar, or cultural organization connected to Yoruba religion or the diaspora — and share the Cultural Acknowledgment for feedback before public release. The XO_OX community channels (Patreon, Discord) may be a route to finding such a reviewer. Organizations such as the Yoruba Cultural Alliance or academic departments of African and African Diaspora Studies at major universities could also be approached.
 
 The owner's stated intention — "I want to completely honor that culture. I hope the tool clearly demonstrates deep respect and reverence" — is the right foundation. Honoring that intention requires going beyond self-review.
 
@@ -427,11 +427,11 @@ The owner's stated intention — "I want to completely honor that culture. I hop
 
 The rename to XOceanus is approved on all three axes reviewed:
 
-1. **Architecturally feasible:** Large surface area, low technical risk. Pre-V1 timing is ideal. The namespace question (Option A vs B) is the only genuine architectural decision; Option B (keep `namespace xoceanus` internally, rename only the user-visible product) is the safer V1 path.
+1. **Architecturally feasible:** Large surface area, low technical risk. Pre-release timing is ideal. The namespace question (Option A vs B) is the only genuine architectural decision; Option B (keep `namespace xoceanus` internally, rename only the user-visible product) is the safer path.
 
 2. **Culturally grounded:** Olokun fits the instrument's actual architecture and mythology in specific, non-superficial ways. The commitment to reverence is sound in intention. External cultural review before public launch is required to complete due diligence.
 
-3. **Legally clear:** No competing "XOceanus" products found. Formal USPTO search recommended before V1 filing.
+3. **Legally clear:** No competing "XOceanus" products found. Formal USPTO search recommended before public filing.
 
 ### Immediate Actions (by priority)
 
@@ -446,7 +446,7 @@ The rename to XOceanus is approved on all three axes reviewed:
 | 7 | Update `CLAUDE.md`, `README.md`, `site/` | Claude | Same session |
 | 8 | Update `Skills/`, `patreon/`, active `Docs/` files | Claude | Same session |
 | 9 | Identify cultural advisor for Acknowledgment review | Owner | This week |
-| 10 | Formal USPTO trademark search | Owner | Before V1 announcement |
+| 10 | Formal USPTO trademark search | Owner | Before public announcement |
 
 ### What Does Not Change
 
@@ -454,7 +454,7 @@ The rename to XOceanus is approved on all three axes reviewed:
 - The `.xometa` preset file format and schema
 - The XPN export format
 - The `.xocoupling` format
-- All parameter IDs (these must never change post-V1 regardless)
+- All parameter IDs (these must never change once shipped regardless)
 - The XO_OX company name and domain (xo-ox.org)
 - The repo name `XO_OX-XOceanus` on GitHub (can be renamed at the owner's discretion)
 

@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Jungle Void",
+  "name": "Jungle Void II",
   "mood": "Atmosphere",
-  "engines": ["Ocelot"],
+  "engines": [
+    "Ocelot"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "The ecosystem at absolute night — all light blocked by canopy, floor creatures silent, only the sub-bass resonance of the earth remains.",
-  "tags": ["atmosphere", "dark", "jungle", "void", "sub-bass"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "description": "The ecosystem at absolute night \u2014 all light blocked by canopy, floor creatures silent, only the sub-bass resonance of the earth remains.",
+  "tags": [
+    "atmosphere",
+    "dark",
+    "jungle",
+    "void",
+    "sub-bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -31,7 +44,7 @@
       "ocelot_canopyDetune": 0.05,
       "ocelot_canopyLevel": 0.04,
       "ocelot_canopyPartials": 1,
-      "ocelot_canopyPitch": 0.10,
+      "ocelot_canopyPitch": 0.1,
       "ocelot_canopyShimmer": 0.05,
       "ocelot_canopySpectralFilter": 0.08,
       "ocelot_canopyWavefold": 0.04,
@@ -59,7 +72,7 @@
       "ocelot_floorModel": 0,
       "ocelot_floorPattern": 0,
       "ocelot_floorPitch": 0.08,
-      "ocelot_floorStrike": 0.10,
+      "ocelot_floorStrike": 0.1,
       "ocelot_floorTension": 0.08,
       "ocelot_floorVelocity": 0.12,
       "ocelot_foliage": 0.12,
@@ -73,14 +86,14 @@
       "ocelot_tapeAge": 0.02,
       "ocelot_tapeWobble": 0.02,
       "ocelot_understoryLevel": 0.18,
-      "ocelot_understorySrc": 0.10,
-      "ocelot_xf_canopyEmerg": 0.10,
+      "ocelot_understorySrc": 0.1,
+      "ocelot_xf_canopyEmerg": 0.1,
       "ocelot_xf_canopyFloor": 0.08,
-      "ocelot_xf_canopyUnder": 0.10,
+      "ocelot_xf_canopyUnder": 0.1,
       "ocelot_xf_emergCanopy": 0.12,
-      "ocelot_xf_emergFloor": 0.10,
+      "ocelot_xf_emergFloor": 0.1,
       "ocelot_xf_emergUnder": 0.12,
-      "ocelot_xf_floorCanopy": 0.10,
+      "ocelot_xf_floorCanopy": 0.1,
       "ocelot_xf_floorEmerg": 0.12,
       "ocelot_xf_floorUnder": 0.15,
       "ocelot_xf_underCanopy": 0.12,
@@ -88,7 +101,9 @@
       "ocelot_xf_underFloor": 0.18
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.15,

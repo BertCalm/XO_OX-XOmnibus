@@ -8,7 +8,7 @@
 
 XOxytocin is the most strategically loaded concept in the XO_OX engine portfolio. It is either the brand's masterstroke or its most dangerous overreach — and the difference is entirely in execution. The raw concept passes every strategic filter: the name is perfect, the timing is defensible, the content potential is exceptional. The risk is not the idea — it is the weight of expectation the idea carries. This report argues for a deliberate, unhurried rollout that lets the *sound* lead and the *concept* amplify.
 
-**Strategic verdict: Greenlight. V1.2 headliner. Handle with precision.**
+**Strategic verdict: Greenlight. Future headliner. Handle with precision.**
 
 ---
 
@@ -138,7 +138,7 @@ XOxytocin is the first engine in the fleet with a realistic path to audiences ou
 
 ### Premium Pricing Potential
 
-XOxytocin is a candidate for **premium boutique engine status** as defined in the V1 launch decisions. The 5th-slot architecture supports voice + custom FX panel self-contained instruments. The TriangularCoupling mechanic, Remember mode, and Circuit Age parameter create enough novel architecture to justify a premium price point.
+XOxytocin is a candidate for **premium boutique engine status** as defined in the launch decisions. The 5th-slot architecture supports voice + custom FX panel self-contained instruments. The TriangularCoupling mechanic, Remember mode, and Circuit Age parameter create enough novel architecture to justify a premium price point.
 
 **Estimated pricing**: $15-25 standalone premium engine if released as boutique. Alternatively, $49 as the headliner of a "Depth Collection" expansion alongside 3-4 companion engines (could form a quad around the Bathypelagic zone).
 
@@ -190,15 +190,15 @@ The framework is for *context and communication*, not for *justification of the 
 
 **The engine needs to pass the "would I buy this without knowing the concept?" test. Based on the sonic territory description — lo-fi, neo-soul, industrial, ambient — the answer is yes.**
 
-### Timing Risk: V1.1 vs. V1.2
+### Timing Risk: Early vs. Later Release
 
 **Probability: Low (this is the right slot).**
 
-V1.0 should establish XO_OX's breadth and technical credibility. Loading V1.0 with XOxytocin risks making the first impression about love rather than about synthesis depth. V1.1 was claimed by Aquatic FX Suite. V1.2 is the right slot: the user base has been established, the first wave of press has happened, the community exists to receive a conceptually ambitious engine.
+The initial release should establish XO_OX's breadth and technical credibility. Loading the first release with XOxytocin risks making the first impression about love rather than about synthesis depth. The early post-launch window is claimed by Aquatic FX Suite. A later release slot is the right moment: the user base has been established, the first wave of press has happened, the community exists to receive a conceptually ambitious engine.
 
-V1.2 as a headliner (alongside preset expansion and XPN pack #2 per the release calendar) creates a meaningful upgrade moment — the version that shipped "the love engine" — which becomes a part of XO_OX's release lore.
+Shipping as a headliner (alongside preset expansion and XPN pack #2 per the release calendar) creates a meaningful upgrade moment — the version that shipped "the love engine" — which becomes a part of XO_OX's release lore.
 
-There is a timing risk in the other direction: if a competitor (however unlikely) ships something adjacent before V1.2, XO_OX loses the "first" claim. Given the analysis in Section 2, this is low probability. No current competitor is in this territory.
+There is a timing risk in the other direction: if a competitor (however unlikely) ships something adjacent before XOxytocin ships, XO_OX loses the "first" claim. Given the analysis in Section 2, this is low probability. No current competitor is in this territory.
 
 ---
 
@@ -216,18 +216,18 @@ This framing accomplishes two things simultaneously: it signals that XO_OX takes
 ### Recommendation 2: Build the "First Date to Consummate" Demo
 **Impact: High**
 
-Before V1.2 ships, produce a single 3-5 minute audio/video demonstration that takes the listener from a cold circuit init through each love type, ending in Remember mode recording a "Fuse" checkpoint. This demo should require no narration — the sound alone should tell the story.
+Before XOxytocin ships, produce a single 3-5 minute audio/video demonstration that takes the listener from a cold circuit init through each love type, ending in Remember mode recording a "Fuse" checkpoint. This demo should require no narration — the sound alone should tell the story.
 
 This demo is the primary press asset, the Patreon teaser, the social hook, and the documentation for sound designers evaluating purchase. It is also the hardest thing to make badly — if the demo does not emotionally land, the engine is not ready.
 
-**Action**: The demo gates the V1.2 launch. Build the engine. Make the demo. If the demo does not cause the listener to feel something in the first 90 seconds, more work is needed.
+**Action**: The demo gates the launch. Build the engine. Make the demo. If the demo does not cause the listener to feel something in the first 90 seconds, more work is needed.
 
-### Recommendation 3: Run the Guru Bin Retreat Before V1.2
+### Recommendation 3: Run the Guru Bin Retreat Before Launch
 **Impact: High**
 
 The 8 love types from Sternberg's taxonomy map directly to 8 Guru Bin Awakening preset categories. The Transcendental tier retreat for XOxytocin — with full Scripture, God revelation, and lore for each love type — is the best Guru Bin content opportunity in the fleet.
 
-This retreat should be completed and bundled as the V1.2 launch content. Releasing XOxytocin without its Guru Bin materials is leaving the best content asset unused at the highest-visibility launch moment.
+This retreat should be completed and bundled as the launch content. Releasing XOxytocin without its Guru Bin materials is leaving the best content asset unused at the highest-visibility launch moment.
 
 **Action**: Run the retreat during engine development, not after. Target: 10 Awakening presets (one per love type + 2 extreme states: Non-Love and Consummate) + 16-20 Transcendental presets for the first paid volume.
 
@@ -238,7 +238,7 @@ TriangularCoupling should not ship as just an XOxytocin-specific coupling type. 
 
 This positions the innovation as platform architecture, not engine feature. It also makes the SDK more compelling to the B2B audience.
 
-**Action**: Before V1.2, document TriangularCoupling in `SDK/include/xoceanus/` alongside KnotTopology. Write one SDK Field Guide post explaining how to use it. This turns a single-engine innovation into a platform story.
+**Action**: Before XOxytocin ships, document TriangularCoupling in `SDK/include/xoceanus/` alongside KnotTopology. Write one SDK Field Guide post explaining how to use it. This turns a single-engine innovation into a platform story.
 
 ### Recommendation 5: Create the "Love Triangle" Community Ritual
 **Impact: Medium**
@@ -263,7 +263,7 @@ This ritual should be formalized before launch: create a template for sharing (c
 
 **Who**: Owner (with Khan Sultan review)
 
-**When**: Before any public-facing content is written — minimum 6 weeks before V1.2 launch
+**When**: Before any public-facing content is written — minimum 6 weeks before launch
 
 **Priority**: Critical — foundational to all downstream communications
 
@@ -275,7 +275,7 @@ This ritual should be formalized before launch: create a template for sharing (c
 
 **Who**: Owner (performance) + Claude Code (engine must be built and stable)
 
-**When**: 2 weeks before V1.2 launch date
+**When**: 2 weeks before launch date
 
 **Priority**: High — gates the launch
 
@@ -299,7 +299,7 @@ This ritual should be formalized before launch: create a template for sharing (c
 
 **Who**: Claude Code
 
-**When**: During engine build phase — before V1.2 launch
+**When**: During engine build phase — before launch
 
 **Priority**: Medium-High — turns engine feature into platform innovation
 
@@ -307,11 +307,11 @@ This ritual should be formalized before launch: create a template for sharing (c
 
 ### Action Item R-005: "My Love Triangle" Community Format Design
 
-**What**: Design the shareable triangle screenshot format — dimensions, visual style, readability at 400x400px (Instagram square). Create a Discord channel "my-triangle" in the XO_OX server. Prepare 5 seed examples using early presets to launch the channel at V1.2 release.
+**What**: Design the shareable triangle screenshot format — dimensions, visual style, readability at 400x400px (Instagram square). Create a Discord channel "my-triangle" in the XO_OX server. Prepare 5 seed examples using early presets to launch the channel at release.
 
 **Who**: Owner (visual design) + Claude Code (preset examples)
 
-**When**: 1 week before V1.2 launch
+**When**: 1 week before launch
 
 **Priority**: Medium — community momentum at launch depends on ritual artifacts existing
 
@@ -325,7 +325,7 @@ The strategic risk is not the concept. The strategic risk is overconfidence. Thi
 
 If those execution conditions are met, XOxytocin becomes the engine that XO_OX is remembered for introducing. Not because it makes the best sound in the fleet — but because it is the engine that could only come from a company called hugs-and-kisses, building instruments about connection, at a depth of 3000 meters where the only light is bioluminescence and everything that bonds, bonds permanently.
 
-**Ship it. Ship it right. Ship it at V1.2.**
+**Ship it. Ship it right. Ship it when ready.**
 
 ---
 

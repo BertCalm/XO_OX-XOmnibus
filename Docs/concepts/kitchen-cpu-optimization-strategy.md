@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-The Kitchen Collection introduces the most CPU-demanding DSP in XOceanus history. Five quads, each with novel synthesis architectures that push past anything in the existing 46-engine fleet. This document analyzes the real computational cost of each, identifies the hot paths, and provides V1/V2 optimization strategies that keep every engine under the 5% per-engine CPU target.
+The Kitchen Collection introduces the most CPU-demanding DSP in XOceanus history. Five quads, each with novel synthesis architectures that push past anything in the existing 46-engine fleet. This document analyzes the real computational cost of each, identifies the hot paths, and provides phase-1 / phase-2 optimization strategies that keep every engine under the 5% per-engine CPU target.
 
 **The single most creative optimization idea for the entire collection:**
 
@@ -105,7 +105,7 @@ A piano with only 16 audible body modes sounds like a *particular* piano — a s
 
 ### Concrete Recommendations
 
-**V1 approach (ships first, <5% CPU per engine):**
+**Phase-1 approach (ships first, <5% CPU per engine):**
 
 1. 16 full IIR modal resonators (low-frequency body modes)
 2. Material-shaped filtered noise burst for HF body character (one CytomicSVF per voice, negligible cost)
@@ -121,14 +121,14 @@ CPU estimate:
   Total: ~732 ns/sample = ~3.2% CPU at 512-sample block
 ```
 
-**V2 approach (optimized, post-V1 learnings):**
+**Phase-2 approach (optimized, post-launch learnings):**
 
 1. SIMD-vectorized modal bank: process 4 resonators per NEON/SSE cycle
 2. Increase to 24-32 modes if SIMD provides headroom
 3. Sympathetic network on ControlRateReducer<32> — update every 32 samples
 4. Per-voice mode count scaling: higher velocity = more modes activated (perceptually masked by attack transient at low velocity)
 
-**Code sketch (V1 modal bank with dynamic pruning):**
+**Code sketch (phase-1 modal bank with dynamic pruning):**
 
 ```cpp
 struct ModalResonator {
@@ -162,7 +162,7 @@ bodyOut += noiseSVF.processSample(noiseSource * hfEnvelope);
 
 ### Architecture Decision: NOW
 
-**Decision K1: Modal count = 16 for V1.** Do not design the parameter system, preset format, or coupling interface around 64 modes. The 16-mode architecture with HF noise shaping is the V1 target. If V2 SIMD vectorization provides headroom, modes can be added without changing the external interface.
+**Decision K1: Modal count = 16 for initial launch.** Do not design the parameter system, preset format, or coupling interface around 64 modes. The 16-mode architecture with HF noise shaping is the initial target. If a later SIMD vectorization pass provides headroom, modes can be added without changing the external interface.
 
 **Decision K2: Sympathetic string network is shared across voices, not per-voice.** One set of 12 active sympathetic resonators is driven by the sum of all voice outputs. This is physically accurate (the soundboard is shared) and saves 7x computation.
 
@@ -198,7 +198,7 @@ The hot path is the analysis, not the gravity math. The gravity computation itse
 
 **What can be approximated without audible loss:**
 - Top-4 harmonics instead of full harmonic series — beyond the 4th harmonic, gravitational capture radius is so small it's inaudible
-- Binary capture model (captured vs. free) instead of the three-tier capture/orbital/escaped — orbital state is musically interesting but computationally unnecessary in V1
+- Binary capture model (captured vs. free) instead of the three-tier capture/orbital/escaped — orbital state is musically interesting but computationally unnecessary at launch
 
 ### Visionary Reframe
 
@@ -214,7 +214,7 @@ This is how **film scoring software** handles orchestral tuning: the conductor's
 
 ### Concrete Recommendations
 
-**V1 approach (<5% CPU for CELLAR engine itself; coupling cost is marginal):**
+**Phase-1 approach (<5% CPU for CELLAR engine itself; coupling cost is marginal):**
 
 1. MIDI-domain gravity: read active note list from coupled engine slots
 2. Compute harmonic series from cellar engine's current pitch (8 harmonics, precomputed on note-on)
@@ -236,7 +236,7 @@ CPU estimate:
 2. Implement orbital state for partials at mid-distance (beating/intermodulation)
 3. Escape velocity transient detection (envelope follower on coupled engine attack transients)
 
-**Code sketch (V1 MIDI-domain gravity):**
+**Code sketch (phase-1 MIDI-domain gravity):**
 
 ```cpp
 // Once per block, in coupling processor:
@@ -276,7 +276,7 @@ void updateGravity(int cellarNote, float pull, float mass,
 
 ### Architecture Decision: NOW
 
-**Decision C1: Gravity is MIDI-domain in V1, not audio-domain.** This eliminates the need for FFT infrastructure in the coupling matrix. The coupled engine's voice allocator exposes its active note list (already accessible through the SynthEngine interface). No new inter-engine audio routing required.
+**Decision C1: Gravity is MIDI-domain initially, not audio-domain.** This eliminates the need for FFT infrastructure in the coupling matrix. The coupled engine's voice allocator exposes its active note list (already accessible through the SynthEngine interface). No new inter-engine audio routing required.
 
 **Decision C2: Cellar coupling is unidirectional outward.** The Cellar engine broadcasts gravity data (pitch + mass + pull). Receiving engines apply displacement locally. The Cellar engine does not receive coupled audio. This halves the coupling cost and matches the physical model (gravity radiates from mass).
 
@@ -331,7 +331,7 @@ This is 5000x less memory and far more cache-friendly. The mycorrhizal network w
 
 ### Concrete Recommendations
 
-**V1 approach (<5% CPU, <100KB memory):**
+**Phase-1 approach (<5% CPU, <100KB memory):**
 
 1. Event-queue mycorrhizal network (no audio delay lines)
 2. W/A/D accumulators updated once per block (512 samples)
@@ -356,7 +356,7 @@ CPU estimate:
 2. Per-voice accumulator modulation for finer grain timbral response
 3. Cross-engine mycorrhizal network (Garden-to-Garden only) via the coupling matrix
 
-**Code sketch (V1 event-queue mycorrhizal network):**
+**Code sketch (phase-1 event-queue mycorrhizal network):**
 
 ```cpp
 struct MycorrhizalEvent {
@@ -392,15 +392,15 @@ public:
     }
 };
 
-// 28 channels for 8 voices (or 6 channels for 4 voices in V1)
+// 28 channels for 8 voices (or 6 channels for 4 voices initially)
 MycorrhizalChannel network[28];
 ```
 
 ### Architecture Decision: NOW
 
-**Decision G1: Mycorrhizal network is event-driven, not audio-domain.** This eliminates the memory problem entirely and makes the feature essentially free. Design the MycorrhizalChannel API now; it can be upgraded to audio-domain in V2 if needed.
+**Decision G1: Mycorrhizal network is event-driven, not audio-domain.** This eliminates the memory problem entirely and makes the feature essentially free. Design the MycorrhizalChannel API now; it can be upgraded to audio-domain later if needed.
 
-**Decision G2: V1 polyphony for Garden engines = 4 voices, not 8.** String sections work with voice layering (multiple detuned oscillators per voice), not high polyphony. 4 voices with 4 oscillators each = 16 sounding elements. This halves the mycorrhizal network size from 28 channels to 6 channels and halves the synthesis cost.
+**Decision G2: Initial polyphony for Garden engines = 4 voices, not 8.** String sections work with voice layering (multiple detuned oscillators per voice), not high polyphony. 4 voices with 4 oscillators each = 16 sounding elements. This halves the mycorrhizal network size from 28 channels to 6 channels and halves the synthesis cost.
 
 ---
 
@@ -470,7 +470,7 @@ Where dt_i is the time since event i. This is a sum of Gaussians — one per not
 
 ### Concrete Recommendations
 
-**V1 approach (<5% CPU per BROTH engine):**
+**Phase-1 approach (<5% CPU per BROTH engine):**
 
 1. **XOverwash:** Analytical Gaussian diffusion (sum of expanding Gaussians per note event). No FFT. Maintain circular buffer of 32 recent note events with timestamps. Per-block: compute 32 Gaussians across the spectral output. Apply result as spectral envelope to oscillator bank or noise source.
 2. **XOverworn:** Single CytomicSVF high-shelf per voice, cutoff decreasing with session age. Caramelization via fastTanh on the output. ReductionState updated once per block.
@@ -492,7 +492,7 @@ CPU estimate per BROTH engine (worst case = XOverwash):
 2. XOverworn: multi-band reduction with independent time constants per band (3 bands: sub, mid, air)
 3. Cross-engine cooperative coupling: ReductionState shared via coupling matrix (scalar metadata, not audio)
 
-**Code sketch (V1 analytical Gaussian diffusion for XOverwash):**
+**Code sketch (phase-1 analytical Gaussian diffusion for XOverwash):**
 
 ```cpp
 struct DiffusionFront {
@@ -556,7 +556,7 @@ class SpectralDiffusion {
 **The naive arithmetic.**
 
 5 engines * 8 voices * full DSP chains:
-- If each Kitchen engine costs 4% (V1 optimized): 4 * 4% = 16%
+- If each Kitchen engine costs 4% (phase-1 optimized): 4 * 4% = 16%
 - If the Fusion engine costs 4%: 16% + 4% = **20% CPU**
 - This is within the 25% ceiling but leaves only 5% headroom for effects, coupling matrix, and UI. Too tight.
 
@@ -606,12 +606,12 @@ Here is the Spectral Fingerprint Cache (SFC) architecture:
    - The spectral centroid shapes the Fusion engine's tonal character
    - The temperature affects the Fusion engine's decay characteristics
 
-3. **The Kitchen engines don't change their DSP when Fusion activates.** They continue running their normal V1-optimized modal synthesis. The only additional cost is writing the SpectralFingerprint struct once per block — effectively zero.
+3. **The Kitchen engines don't change their DSP when Fusion activates.** They continue running their normal phase-1 optimized modal synthesis. The only additional cost is writing the SpectralFingerprint struct once per block — effectively zero.
 
 4. **The Fusion engine runs its own synthesis (Rhodes/Wurlitzer/Clavinet/FM) at full quality** plus a lightweight "virtual body" composed from the 4 Kitchen fingerprints. The virtual body is a bank of 16 resonators (the same as a single Kitchen engine) whose frequencies and decay rates are computed from the 4 fingerprint averages.
 
 **Cost:**
-- 4 Kitchen engines: 4 * 3.2% = 12.8% (V1 optimized, unchanged)
+- 4 Kitchen engines: 4 * 3.2% = 12.8% (phase-1 optimized, unchanged)
 - Fingerprint export: 4 * 0.01% = 0.04%
 - Fusion engine synthesis: ~3%
 - Fusion virtual body (16 resonators from fingerprints): ~0.4%
@@ -622,7 +622,7 @@ That leaves 8.4% headroom below the 25% ceiling. Comfortable.
 
 ### Concrete Recommendations
 
-**V1 approach (ships first, <25% total for full 5-engine configuration):**
+**Phase-1 approach (ships first, <25% total for full 5-engine configuration):**
 
 1. **Spectral Fingerprint Cache:** Each Kitchen engine exports a SpectralFingerprint struct (152 bytes) updated once per block. Zero-cost to exporter. Used by Fusion engine.
 2. **Perceptual Priority System:** The most recently played engine gets full voice count. The other 4 get reduced voice count (4 voices instead of 8). Managed by a shared voice budget.
@@ -631,7 +631,7 @@ That leaves 8.4% headroom below the 25% ceiling. Comfortable.
 5. **MegaCouplingMatrix extension: Ghost Slot architecture as spec'd in the Fusion visionary doc.** The 5th slot's coupling is fingerprint-based, so the matrix doesn't need audio routing — just metadata forwarding.
 
 ```
-CPU budget (V1):
+CPU budget (phase-1):
   Kitchen engines (4 * 3.2%):    12.8%
   Fingerprint export (4 * 0.01%): 0.04%
   Fusion synthesis:                3.0%
@@ -771,7 +771,7 @@ The SROAuditor's `MaxSlots = 4` constant must be conditionally extended when the
 
 ## Per-Quad CPU Budget Summary
 
-| Quad | V1 Target | V2 Target | Key Optimization |
+| Quad | Phase-1 Target | Phase-2 Target | Key Optimization |
 |------|-----------|-----------|------------------|
 | **KITCHEN** | 3.2% per engine | 2.5% per engine | 16-mode hybrid modal + HF noise, dynamic pruning |
 | **CELLAR** | 3.1% per engine | 2.8% per engine | MIDI-domain gravity, no FFT |

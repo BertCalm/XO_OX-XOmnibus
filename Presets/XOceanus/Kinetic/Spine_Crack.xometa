@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Spine Crack",
+  "name": "Spine Crack II",
   "mood": "Kinetic",
-  "engines": ["Onset"],
+  "engines": [
+    "Onset"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Vertebral crack transient with full noise spectrum. The spine breaks, the resonance radiates outward.",
-  "tags": ["kinetic", "aggressive", "crack", "spine", "transient"],
-  "macroLabels": ["PUNCH", "MUTATE", "MACHINE", "SPACE"],
+  "tags": [
+    "kinetic",
+    "aggressive",
+    "crack",
+    "spine",
+    "transient"
+  ],
+  "macroLabels": [
+    "PUNCH",
+    "MUTATE",
+    "MACHINE",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -37,7 +50,9 @@
       "perc_releaseTime": 0.06
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.94,

@@ -642,7 +642,7 @@ inline MoodType moodFromString(const juce::String& name)
 //
 // NOTE (Windows ClearType): Overbit at 12–14px requires ClearType verification
 // before shipping on Windows — hinting may differ from macOS CoreText rendering.
-// Verify on a ClearType-enabled Windows display before V1 release.
+// Verify on a ClearType-enabled Windows display before any Windows release.
 inline juce::Font engineName(float size)
 {
     if (size >= 12.0f)

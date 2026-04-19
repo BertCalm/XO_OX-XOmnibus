@@ -3,7 +3,7 @@
 > Generated: 2026-04-05  
 > Engines in registry: **76**  
 > Total factory presets: **19563** (.xometa files)  
-> Deep-test engines: **10** (V1 flagship + top by preset count)  
+> Deep-test engines: **10** (flagship + top by preset count)  
 
 ## How to use this checklist
 
@@ -99,9 +99,9 @@ For each engine: load it in Slot 1, confirm the plugin opens without crashing, t
 
 ---
 
-## Section 2 — Deep Playtest (V1 priority engines — top 10 by preset count)
+## Section 2 — Deep Playtest (Priority engines — top 10 by preset count)
 
-For each engine below, run the full functional checklist.  The V1 flagship (**Obrix**) must pass every item before release.
+For each engine below, run the full functional checklist.  The flagship (**Obrix**) must pass every item before release.
 
 ### Obrix (262 presets)
 

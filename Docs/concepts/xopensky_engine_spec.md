@@ -2,7 +2,7 @@
 
 **Date:** March 16, 2026
 **Phase:** 1 — Architecture R&D
-**Status:** V1 Scope — DSP build pending
+**Status:** Initial Scope — DSP build pending
 **Gallery code:** OPENSKY
 **Accent color:** Sunburst `#FF8C00`
 **Parameter prefix:** `sky_`
@@ -392,4 +392,4 @@ Names should feel like looking up, moving forward, light:
 
 ---
 
-*XO_OX Designs | Engine: OPENSKY | Accent: #FF8C00 | Prefix: sky_ | V1 scope | Phase 1 R&D*
+*XO_OX Designs | Engine: OPENSKY | Accent: #FF8C00 | Prefix: sky_ | initial scope | Phase 1 R&D*

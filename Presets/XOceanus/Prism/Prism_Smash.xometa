@@ -1,13 +1,26 @@
 {
   "schema_version": 1,
-  "name": "Prism Smash",
+  "name": "Prism Smash II",
   "mood": "Prism",
-  "engines": ["Oblique"],
+  "engines": [
+    "Oblique"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
   "description": "Prism shattering under direct impact. Violet geometry exploding into a thousand refractive shards.",
-  "tags": ["prism", "aggressive", "smash", "shatter", "refraction"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "prism",
+    "aggressive",
+    "smash",
+    "shatter",
+    "refraction"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "couplingIntensity": "None",
   "tempo": null,
   "dna": {
@@ -37,7 +50,9 @@
       "oblq_releaseTime": 0.18
     }
   },
-  "coupling": { "pairs": [] },
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
   "macros": {
     "CHARACTER": 0.88,

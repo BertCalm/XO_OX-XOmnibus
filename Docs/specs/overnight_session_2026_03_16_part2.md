@@ -293,7 +293,7 @@ The following items were researched, scoped, and specced during this session but
    - XOscillograph (oscilloscope-driven visualiser/filter)
    - XOtagai (互い: mutual exchange, feedback network)
 
-5. **V1 Concept Engine DSP** — All 4 are V1-scope (see `v1-scope-decision-march-2026.md`):
+5. **Concept Engine DSP** — All 4 are in-scope (see `v1-scope-decision-march-2026.md`):
    - OSTINATO (communal drum circle, phrase looping)
    - OPENSKY (euphoric shimmer, pure feliX signal chain)
    - OCEANDEEP (abyssal bass, pure Oscar signal chain)

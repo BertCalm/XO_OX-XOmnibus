@@ -18,10 +18,10 @@
     "atmospheric"
   ],
   "macroLabels": [
-    "CHARACTER",
-    "MOVEMENT",
-    "COUPLING",
-    "SPACE"
+    "RISE",
+    "WIDTH",
+    "GLOW",
+    "AIR"
   ],
   "couplingIntensity": "Moderate",
   "tempo": null,
@@ -45,14 +45,13 @@
       "flow_macroSpace": 0.56
     },
     "OpenSky": {
-      "sky_macroRise": 0.62,
+      "sky_macroRise": 0.52,
       "sky_filterEnvAmt": 0.5,
       "sky_lfo1Rate": 0.15,
       "sky_lfo1Depth": 0.28,
-      "sky_macroCharacter": 0.52,
-      "sky_macroMovement": 0.58,
-      "sky_macroCoupling": 0.62,
-      "sky_macroSpace": 0.62,
+      "sky_macroWidth": 0.58,
+      "sky_macroGlow": 0.62,
+      "sky_macroAir": 0.62,
       "sky_velSensitivity": 0.623
     }
   },
@@ -68,9 +67,9 @@
   },
   "sequencer": null,
   "macros": {
-    "CHARACTER": 0.52,
-    "MOVEMENT": 0.58,
-    "COUPLING": 0.62,
-    "SPACE": 0.59
+    "RISE": 0.52,
+    "WIDTH": 0.58,
+    "GLOW": 0.62,
+    "AIR": 0.59
   }
 }

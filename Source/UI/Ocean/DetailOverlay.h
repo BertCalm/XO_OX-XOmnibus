@@ -58,7 +58,7 @@ public:
         auto finalBounds = absPanel.reduced(4, 4).withTrimmedTop(8);
         detailPanel_->setBounds(finalBounds);
         detailPanel_->setVisible(true);
-        bool loaded = detailPanel_->loadSlot(slot);
+        [[maybe_unused]] bool loaded = detailPanel_->loadSlot(slot);
         detailPanel_->resized();
         detailPanel_->toFront(false);
 

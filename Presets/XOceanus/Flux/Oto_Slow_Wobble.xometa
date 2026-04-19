@@ -1,21 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Slow Wobble",
+  "name": "Slow Wobble II",
   "mood": "Flux",
-  "engines": ["Oto"],
+  "engines": [
+    "Oto"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Sho with a deep, sub-Hz wobble at the threshold of perception — the cluster seems to breathe rather than oscillate, each cycle taking forever. A sound you feel as much as hear.",
+  "description": "Sho with a deep, sub-Hz wobble at the threshold of perception \u2014 the cluster seems to breathe rather than oscillate, each cycle taking forever. A sound you feel as much as hear.",
   "tier": "standard",
-  "tags": ["flux", "sho", "wobble", "sub-hz", "evolving"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "flux",
+    "sho",
+    "wobble",
+    "sub-hz",
+    "evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.45,
     "MOVEMENT": 0.55,
     "COUPLING": 0.15,
     "SPACE": 0.65
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.38,

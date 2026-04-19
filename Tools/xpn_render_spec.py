@@ -347,7 +347,7 @@ ENGINE_STRATEGIES = {
                        "distributed modulation to develop.",
         "variants": ["shallow_arms", "deep_arms"],
     },
-    # V1 concept engines (DSP pending — strategies ready for when they ship)
+    # Concept engines (DSP pending — strategies ready for when they ship)
     "Ostinato": {
         "program_type": "drum",
         "voices": ["drum1", "drum2", "drum3", "drum4", "bell", "shaker", "bass", "accent"],

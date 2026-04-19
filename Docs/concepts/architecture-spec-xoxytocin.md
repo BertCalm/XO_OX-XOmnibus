@@ -20,10 +20,10 @@
 | **Zone** | Bathypelagic (1000–4000m) |
 | **feliX-Oscar** | 35 feliX / 65 Oscar |
 | **Engine Number** | 48 |
-| **Release Slot** | V1.2 headliner |
+| **Release Slot** | Future headliner |
 | **Seance Score (concept)** | 9.1/10 — target 9.7–9.8 post-build |
 | **Guild Verdict** | 14/25 at 4+ stars — commercially viable |
-| **Consultant Verdict** | Greenlight. V1.2 headliner. Handle with precision. |
+| **Consultant Verdict** | Greenlight. Future headliner. Handle with precision. |
 | **Architect Verdict** | Approved with 5 conditions (all resolved below) |
 
 ### 1.1 One-Sentence Thesis
@@ -504,7 +504,7 @@ Build-phase D004 audit must confirm all 27 timbral parameters are wired before s
 
 ### External Blessing (Seance Pre-Build)
 
-**B038 (TriangularCoupling — Spectral Emotional State Encoding)**: Proposed as the 16th coupling type. Deferred to V2 SDK as a formal enum value per Architect C4 ruling. Ships in V1.2 as documented AudioToFM convention. SDK proposal documented separately.
+**B038 (TriangularCoupling — Spectral Emotional State Encoding)**: Proposed as the 16th coupling type. Deferred to a later SDK revision as a formal enum value per Architect C4 ruling. Ships in the XOxytocin release as documented AudioToFM convention. SDK proposal documented separately.
 
 ---
 
@@ -598,18 +598,18 @@ Build-phase D004 audit must confirm all 27 timbral parameters are wired before s
 
 ### 11.5 Consultant (Strategic Greenlight)
 
-**Strategic verdict**: Greenlight. V1.2 headliner.
+**Strategic verdict**: Greenlight. Future headliner.
 
 **5 Strategic Recommendations (all accepted):**
 1. **Position the Dragonfish, not the heart** — lead with biological extremity and circuit physics credentials, not Valentine's Day framing. Every external communication centers the dragonfish and circuit physics within the first two paragraphs.
-2. **Build the First-Date-to-Consummate demo** — 3–5 min audio/video showing cold circuit through each love type into Fuse checkpoint. No narration. This demo gates the V1.2 launch.
-3. **Run Guru Bin Retreat before V1.2** — 10 Awakening + 16–20 Transcendental presets. Best Guru Bin content opportunity in the fleet.
+2. **Build the First-Date-to-Consummate demo** — 3–5 min audio/video showing cold circuit through each love type into Fuse checkpoint. No narration. This demo gates the launch.
+3. **Run Guru Bin Retreat before launch** — 10 Awakening + 16–20 Transcendental presets. Best Guru Bin content opportunity in the fleet.
 4. **Pitch TriangularCoupling as SDK feature** — document in `SDK/include/xoceanus/` as first-class platform innovation alongside KnotTopology. Write one SDK Field Guide post.
 5. **Create "Love Triangle" community ritual** — "What's your love triangle?" shareable triangle screenshot format. Discord channel "my-triangle". 5 seed examples from alpha testers before launch.
 
 **Content pipeline rating: 9.5/10** — highest in fleet. Estimated 8–12 Field Guide articles seedable from concept alone. Patreon exclusive opportunities: "Relationship Sessions" video series, Lineage Pack, Transcendental tier presets.
 
-**Timing**: V1.0 establishes breadth; V1.1 was Aquatic FX; V1.2 is correct slot — user base established, first press wave complete, community ready for a conceptually ambitious engine.
+**Timing**: Initial release establishes breadth; Aquatic FX arrives shortly after; XOxytocin in a later release slot — user base established, first press wave complete, community ready for a conceptually ambitious engine.
 
 ---
 
@@ -743,9 +743,9 @@ These appear in the Entangled mood category. Preset names use the vocabulary: En
 
 ## 14. Release Positioning
 
-### 14.1 V1.2 Headliner
+### 14.1 Future Headliner
 
-XOxytocin ships as the V1.2 headliner alongside preset expansion and XPN pack #2. This is the correct slot: user base established after V1.0 and V1.1, first press wave complete, community exists to receive a conceptually ambitious engine.
+XOxytocin ships as a future headliner alongside preset expansion and XPN pack #2. This is the correct slot: user base established after the initial release and the Aquatic FX milestone, first press wave complete, community exists to receive a conceptually ambitious engine.
 
 ### 14.2 Marketing Strategy — "Anglerfish, Not Heart"
 
@@ -768,7 +768,7 @@ The canonical launch demo (Consultant R-002):
 - Fuse checkpoint triggered → circuit locked in
 - Ends on a chord held long enough for the Triangle display arc to complete
 
-This demo **gates the V1.2 launch**. If the demo does not cause the listener to feel something in the first 90 seconds, the engine needs more work.
+This demo **gates the launch**. If the demo does not cause the listener to feel something in the first 90 seconds, the engine needs more work.
 
 ### 14.4 Competitive Position
 
@@ -794,7 +794,7 @@ No direct competitor. Market position defensible 24–36 months (Consultant anal
 **Community ritual (Consultant R-005)**:
 - "What's your love triangle?" shareable screenshot format
 - Discord channel "my-triangle"
-- Launched with 5 seed examples at V1.2
+- Launched with 5 seed examples at release
 
 ---
 

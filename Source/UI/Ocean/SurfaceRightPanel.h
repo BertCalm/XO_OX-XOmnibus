@@ -367,8 +367,7 @@ private:
     SubmarineOuijaPanel  ouijaPanel_;
 
     // XY assign label state (toggle for hover, not interactive here)
-    bool  assignXHover_    = false;
-    bool  assignYHover_    = false;
+    // assignXHover_ / assignYHover_ reserved for future XY-assign hover highlight
 
     //==========================================================================
     // Precomputed geometry — rebuilt in resized()

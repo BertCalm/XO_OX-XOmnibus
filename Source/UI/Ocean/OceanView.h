@@ -57,6 +57,7 @@
 #include "TideWaterline.h"
 #include "ChordBarComponent.h"
 #include "MasterFXStripCompact.h"
+#include "EpicSlotsPanel.h"
 #include "TransportBar.h"
 #include "SubmarineOuijaPanel.h"
 #include "ExpressionStrips.h"
@@ -631,6 +632,17 @@ public:
     }
 
     /**
+        Initialise the Epic Slots panel — the 3-slot FX chain picker for the
+        EpicChainSlotController. Mount beneath the Master FX strip.
+    */
+    void initEpicSlotsPanel(juce::AudioProcessorValueTreeState& apvts)
+    {
+        epicSlots_ = std::make_unique<EpicSlotsPanel>(apvts);
+        addAndMakeVisible(*epicSlots_);
+        reorderZStack();
+    }
+
+    /**
         Initialise the TransportBar (submarine-style bottom status strip).
     */
     void initTransportBar()
@@ -751,6 +763,10 @@ public:
         // Master FX compact strip (48px, between macros and tab bar).
         if (masterFxStrip_)
             masterFxStrip_->setBounds(dashArea.removeFromTop(48));
+
+        // Epic Slots panel (3-slot FX picker — below Master FX strip).
+        if (epicSlots_)
+            epicSlots_->setBounds(dashArea.removeFromTop(EpicSlotsPanel::preferredHeight()));
 
         // Tab bar row.
         tabBar_.setBounds(dashArea.removeFromTop(kTabBarH));
@@ -2401,6 +2417,7 @@ private:
         ouijaPanel_.toFront(false);
         if (waterline_) waterline_->toFront(false);
         if (masterFxStrip_) masterFxStrip_->toFront(false);
+        if (epicSlots_) epicSlots_->toFront(false);
         tabBar_.toFront(false);
         if (chordBar_) chordBar_->toFront(false);
         if (transportBar_) transportBar_->toFront(false);
@@ -2484,6 +2501,7 @@ private:
     std::unique_ptr<TideWaterline>        waterline_;
     std::unique_ptr<ChordBarComponent>    chordBar_;
     std::unique_ptr<MasterFXStripCompact> masterFxStrip_;
+    std::unique_ptr<EpicSlotsPanel>       epicSlots_;
     std::unique_ptr<TransportBar>         transportBar_;
     SubmarineOuijaPanel                   ouijaPanel_;
     ExpressionStrips                      exprStrips_;

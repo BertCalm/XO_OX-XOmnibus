@@ -1,5 +1,5 @@
 # Kitchen Essentials Collection — Release Calendar
-**V2 Paid Content | $39–49 | 6 Quads | 24 Engines**
+**Paid Expansion Content | $39–49 | 6 Quads | 24 Engines**
 **Created:** 2026-03-21
 **Scope:** Chef Quad in active development (March 2026) through Full Kitchen complete
 
@@ -13,7 +13,7 @@
 
 ## How to Read This Document
 
-This calendar assumes V1 ships Week 1 (March 23, 2026) as planned in `6-month-release-calendar-2026.md`. The Kitchen Collection is V2 paid content — it cannot ship before V1 is stable and the community has formed.
+This calendar was drafted assuming the core release shipped Week 1 (March 23, 2026) as planned in `6-month-release-calendar-2026.md`. The Kitchen Collection is paid expansion content — it cannot ship before the core platform is stable and the community has formed.
 
 Each quad entry includes:
 - **Build window** — DSP, presets, coupling recipes
@@ -53,7 +53,7 @@ As of March 21, 2026 (original note — superseded):
 - NOTHING is yet built in code — no engine files, no presets, no coupling recipes
 - Earliest realistic ship date for CHEF public: **mid-August 2026** (accounting for engine build, preset generation, retreat, editorial, and Patreon gate)
 
-This is not a slip — this is realistic. V1 ships March 23. CHEF ships August 18. That is 21 weeks. That is the minimum viable timeline for 4 new engines built and shipped to quality standard.
+This is not a slip — this is realistic. Core ships March 23. CHEF ships August 18. That is 21 weeks. That is the minimum viable timeline for 4 new engines built and shipped to quality standard.
 
 ---
 
@@ -63,7 +63,7 @@ This is not a slip — this is realistic. V1 ships March 23. CHEF ships August 1
 
 ### Build Window: April 7 – June 22, 2026 (11 weeks)
 
-**Gates before starting:** V1 must be stable (Week 2+). Engine quality sprint must not still need emergency intervention.
+**Gates before starting:** core platform must be stable (Week 2+). Engine quality sprint must not still need emergency intervention.
 
 | Week | Work |
 |------|------|
@@ -175,7 +175,7 @@ This is not a slip — this is realistic. V1 ships March 23. CHEF ships August 1
 
 **Note:** Kitchen build overlaps with Chef editorial. This is intentional — Chef editorial is a writing task, not engineering. Kitchen DSP development begins while Chef cookbook is in editorial.
 
-**Gates:** CHEF seance scores 8.0+. No critical DSP fires from Month 1–3 V1 sprint.
+**Gates:** CHEF seance scores 8.0+. No critical DSP fires from Month 1–3 release sprint.
 
 | Week | Work |
 |------|------|
@@ -432,7 +432,7 @@ The Complete Kitchen is not a new book — it is a curation, indexing, and bindi
 ### Technical Gates
 | Gate | Required For | Due Date |
 |------|-------------|----------|
-| V1 stable (no critical DSP fires) | Chef build start | April 7, 2026 |
+| Core stable (no critical DSP fires) | Chef build start | April 7, 2026 |
 | CHEF seance 8.0+ all 4 engines | Chef editorial start | June 22, 2026 |
 | 5th-slot Fusion mechanic spec approved | Kitchen build | July 7, 2026 |
 | 5th-slot Fusion mechanic passing auval | Kitchen ship | October 20, 2026 |

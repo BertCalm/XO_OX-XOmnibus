@@ -4,19 +4,37 @@
   "version": "1.0.0",
   "couplingIntensity": "None",
   "tempo": null,
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
-  "coupling": { "pairs": [] },
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "coupling": {
+    "pairs": []
+  },
   "sequencer": null,
-  "name": "Harmonic Gravity",
+  "name": "Harmonic Gravity II",
   "mood": "Flux",
-  "engines": ["Obrix"],
-  "description": "5-limit JI attractor at full strength — every note is pulled toward pure harmonic ratios. Play a chromatic scale and hear equal temperament dissolve into just intonation. The field is magnetic; consonance has mass.",
-  "tags": ["obrix", "biophonic", "harmonic-field", "flux", "signature"],
+  "engines": [
+    "Obrix"
+  ],
+  "description": "5-limit JI attractor at full strength \u2014 every note is pulled toward pure harmonic ratios. Play a chromatic scale and hear equal temperament dissolve into just intonation. The field is magnetic; consonance has mass.",
+  "tags": [
+    "obrix",
+    "biophonic",
+    "harmonic-field",
+    "flux",
+    "signature"
+  ],
   "tier": "signature",
   "guru_bin": {
-    "retreat": "OBRIX — Wave 4 Signature Campaign",
+    "retreat": "OBRIX \u2014 Wave 4 Signature Campaign",
     "retreat_date": "2026-04-06",
-    "scripture": ["Verse 10: Harmonic Field — JI Attractor/Repulsor", "Gospel 4: Consonance Has Mass"],
+    "scripture": [
+      "Verse 10: Harmonic Field \u2014 JI Attractor/Repulsor",
+      "Gospel 4: Consonance Has Mass"
+    ],
     "revelation": "fieldStrength=0.8 with fieldPrimeLimit=1 (5-limit) creates the most distinctive OBRIX-only harmonic gravity. No commercial synthesizer does per-voice JI attraction in real time.",
     "god": null,
     "flock_note": "Play a major seventh chord and listen to the beating slow then stop as voices converge toward pure ratios.",

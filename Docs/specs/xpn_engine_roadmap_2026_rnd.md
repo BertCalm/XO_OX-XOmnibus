@@ -6,7 +6,7 @@
 
 ## Overview
 
-XOceanus ships with 34 registered engines — all seanced, all doctrine-compliant — plus 4 V1 concept engines pending DSP build (OSTINATO, OPENSKY, OCEANDEEP, OUIE). Expansion pack production must be sequenced to maximize momentum: early packs should have obvious MPC workflow fit, strong sonic identity, and broad producer appeal. Later packs can serve narrower audiences once the catalog has established trust.
+XOceanus ships with 34 registered engines — all seanced, all doctrine-compliant — plus 4 concept engines pending DSP build (OSTINATO, OPENSKY, OCEANDEEP, OUIE). Expansion pack production must be sequenced to maximize momentum: early packs should have obvious MPC workflow fit, strong sonic identity, and broad producer appeal. Later packs can serve narrower audiences once the catalog has established trust.
 
 This spec defines readiness tiers, production order, collection arcs, and coupling pack opportunities for the full 2026 calendar.
 
@@ -59,7 +59,7 @@ Engines pending DSP build. Pack production begins once engines clear auval and s
 
 ## 4. Tier 3 — Concept Engines Pending Build (H2 2026)
 
-**OSTINATO** (communal drum circle) — Drums. Urgency is real: the MPC drum audience is the largest single segment. OSTINATO should move to DSP build immediately after V1 stabilizes. Target: seance complete by end of Q2, pack in Q3.
+**OSTINATO** (communal drum circle) — Drums. Urgency is real: the MPC drum audience is the largest single segment. OSTINATO should move to DSP build immediately after the core stabilizes. Target: seance complete by end of Q2, pack in Q3.
 
 **OPENSKY** (euphoric shimmer, pure feliX pole) — Synth pads. Summer release timing is natural. Target: Q3 2026.
 

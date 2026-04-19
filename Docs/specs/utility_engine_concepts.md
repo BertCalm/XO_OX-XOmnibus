@@ -9,7 +9,7 @@
 ## Thematic Identity: Musicians
 
 Utility engines are metaphorically **musicians** — performers who shape, chop, remix, and transform sound.
-- **V1 bundle**: Rappers (artists who chop, sample, layer, transform)
+- **Initial bundle**: Rappers (artists who chop, sample, layer, transform)
 - **Future bundles**: Icons of genres (electronic, jazz, classical, rock, world, avant-garde)
 - **Brand distinction**: Synthesis engines = aquatic creatures that MAKE sound. Utility engines = musicians who SHAPE sound.
 

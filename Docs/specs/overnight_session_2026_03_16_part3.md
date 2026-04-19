@@ -183,7 +183,7 @@ All specs below were created after `overnight_session_2026_03_16_part2.md` was w
 - **Gumroad**: Primary storefront for paid packs. Direct to consumer, low friction, good for single-pack sales.
 - **Patreon**: Subscription tier gets early access + exclusive DOCTRINE packs. Builds recurring revenue base.
 - **MPC-Forums free seeding**: 1–2 SIGNAL packs per engine released free on MPC-Forums to build community presence before monetization.
-- **Not pursuing**: Splice (requires stems), Sounds.com (requires exclusivity), Akai Marketplace (approval pipeline too slow for V1 window).
+- **Not pursuing**: Splice (requires stems), Sounds.com (requires exclusivity), Akai Marketplace (approval pipeline too slow for the initial window).
 
 ### Oxport v2 — OxportSession Architecture
 - Current oxport.py passes data between stages via filesystem (JSON files + WAV directories).
@@ -218,9 +218,9 @@ These items are explicitly deferred because they require novel DSP design, compl
 - Full design is in `Docs/specs/fleet_render_automation_spec.md`.
 - **Why Opus**: OfflineAudioContext threading in JUCE, worker thread lifecycle, denormal protection in offline render path, multi-engine parameter snapshot for render isolation.
 
-### P1 — V1 Concept Engine DSP Builds
+### P1 — Concept Engine DSP Builds
 
-All four V1 concept engines have approved identity cards, design specs, and preset targets but zero source code:
+All four concept engines have approved identity cards, design specs, and preset targets but zero source code:
 
 | Engine | Spec Doc | DSP Challenge |
 |--------|----------|--------------|

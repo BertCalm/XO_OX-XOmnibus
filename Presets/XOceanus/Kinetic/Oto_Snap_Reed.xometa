@@ -1,21 +1,36 @@
 {
   "schema_version": 1,
-  "name": "Snap Reed",
+  "name": "Snap Reed II",
   "mood": "Kinetic",
-  "engines": ["Oto"],
+  "engines": [
+    "Oto"
+  ],
   "author": "XO_OX Designs",
   "version": "1.0.0",
-  "description": "Melodica played with snapping articulation — very short attack, fast decay into a short sustain. Like a thumb-piano crossed with a reed instrument. Crisp and decisive.",
+  "description": "Melodica played with snapping articulation \u2014 very short attack, fast decay into a short sustain. Like a thumb-piano crossed with a reed instrument. Crisp and decisive.",
   "tier": "standard",
-  "tags": ["kinetic", "melodica", "snap", "short", "crisp"],
-  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "tags": [
+    "kinetic",
+    "melodica",
+    "snap",
+    "short",
+    "crisp"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
   "macros": {
     "CHARACTER": 0.7,
     "MOVEMENT": 0.55,
     "COUPLING": 0.12,
     "SPACE": 0.15
   },
-  "coupling": {"pairs": []},
+  "coupling": {
+    "pairs": []
+  },
   "couplingIntensity": "None",
   "dna": {
     "brightness": 0.55,

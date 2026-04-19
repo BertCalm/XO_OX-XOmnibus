@@ -218,7 +218,7 @@ Oxport should generate pad colors from the 34-engine accent palette when buildin
 | OVERLAP | Bioluminescent Green | `#00FFB4` |
 | OUTWIT | Copper | `#CC6600` |
 
-**V1 concept engines (not yet registered):**
+**Concept engines (not yet registered):**
 
 | Engine | Accent Color | Hex |
 |---|---|---|

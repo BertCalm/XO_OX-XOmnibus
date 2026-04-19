@@ -1,6 +1,15 @@
-# XOceanus V1 Scope Revision
+> ⚠️ **RETIRED — DO NOT USE AS A LIVE PLANNING DOC (2026-04-16)**
+>
+> The "V1 scope" / "V1 release cutoff" framing has been retired. XOceanus does not operate
+> on a fixed-version release model. Build and refine until ready; ship when ready. This document
+> is preserved for historical reference only. Do not cite it as current direction and do not
+> generate new "V1 readiness" plans from it. See `CLAUDE.md` → *Release Philosophy*.
+
+---
+
+# XOceanus V1 Scope Revision (HISTORICAL)
 **Date:** 2026-03-23
-**Status:** LIVING DOCUMENT — no hard release deadline; quality before ship
+**Status:** RETIRED 2026-04-16 — preserved for historical reference
 **Supersedes:** `Docs/plans/v1-launch-plan.md`, `Docs/v1-launch-plan-2026-03-20.md`
 **Related:** `Docs/fleet-health-dashboard-2026-03-24.md` (detailed per-engine readiness)
 
@@ -18,7 +27,7 @@ V1 ships when the fleet is ready — not on a calendar date. The purpose of this
 
 **Formula:** OBRIX flagship + 6–8 FX engines + 20–25 curated synthesis engines = **28–34 total**
 
-The full 76-engine fleet remains active in the personal build. V1 gating applies to public distribution only.
+The full 81-engine fleet remains active in the personal build. V1 gating applies to public distribution only.
 
 ---
 
@@ -90,6 +99,10 @@ These engines are strong candidates but require a formal re-seance, a preset pus
 | Organism | 8.1 / 7.2 | 433 | CA fix applied; re-seance to confirm |
 | Orphica | **8.4/10** (formal re-seance 2026-04-12) | 264 | D002 FAIL: no LFO2, no mod matrix (path to V1: add orph_lfo2Rate/Depth/Shape + 2-slot mod matrix); preset schema split fleet-wide (macro dict keys + stale params require migration); getSampleForCoupling scalar only. Score below 8.5 threshold. |
 | Overlap | 8.4 | 577 | Just below 8.5; adapter-based |
+| **Observandum** | Unseanced | 21 | V1 target (RAC verdict 2026-04-15). Multi-Facet Crystalline Phase Distortion. Needs seance + preset expansion to ≥100 |
+| **Orrery** | Unseanced | 21 | V1 target (RAC verdict 2026-04-15). Fleet Navigation Vector Synthesis. Needs seance + preset expansion to ≥100 |
+| **Opsin** | Unseanced | 21 | V1 target (RAC verdict 2026-04-15). Bioluminescent Neural Feedback Synthesis. Needs seance + preset expansion to ≥100 |
+| **Oort** | Unseanced | 21 | V1 target (RAC verdict 2026-04-15). Stochastic Cloud Synthesis (GENDY). Needs seance + preset expansion to ≥100 |
 
 ---
 
@@ -116,6 +129,18 @@ Engines with confirmed scores below 8.5, unresolved P0 DSP blockers, or insuffic
 
 ---
 
+## Submarine UI — V1 (In Terminal)
+
+**RAC Verdict 2026-04-15:** Submarine UI is V1 scope. Currently in active development (Phases 1–5 committed: TideWaterline, ChordBarComponent, MasterFXStripCompact, TransportBar). Work-in-progress — ships as part of V1 terminal experience.
+
+---
+
+## Android ObrixReef — V1 Beta
+
+**RAC Verdict 2026-04-15:** Android ships as V1 Beta. The ObrixReef app (Oboe audio engine, Glyph Matrix support) is included in V1 distribution with explicit "Beta" labeling. Not held to the same exit criteria as macOS/iOS — shipping as preview.
+
+---
+
 ## Exit Criteria (What "V1 Ready" Means)
 
 Before any public distribution, the following must all be true:
@@ -137,3 +162,4 @@ Before any public distribution, the following must all be true:
 | Date | Change |
 |------|--------|
 | 2026-03-23 | Initial scope revision — derived from fleet-health-dashboard and v1-launch-plan-2026-03-20; no hard deadline established |
+| 2026-04-15 | RAC Ringleader verdicts: 4 new engines (Observandum, Orrery, Opsin, Oort) → V1 target; Submarine UI → V1 (in terminal); Android ObrixReef → V1 Beta. Fleet count 76→81. |

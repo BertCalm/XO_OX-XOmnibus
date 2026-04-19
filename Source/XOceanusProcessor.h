@@ -8,6 +8,7 @@
 #include "Core/MegaCouplingMatrix.h"
 #include "Core/CouplingCrossfader.h"
 #include "Core/MasterFXChain.h"
+#include "Core/EpicChainSlotController.h"
 #include "Core/ChordMachine.h"
 #include "Core/MPEManager.h"
 #include "Core/MIDILearnManager.h"
@@ -233,7 +234,7 @@ public:
 
     // SRO: CPU profiling and resource optimization report (UI thread safe)
     // NOTE: SRO profiling runs in processBlock but no UI surface reads this report yet.
-    // Wire to a StatusBar or debug panel in V1.1.
+    // Wire to a StatusBar or debug panel when that surface lands.
     SROAuditor::Report getSROReport() const { return sroAuditor.getReport(); }
 
     // Coupling preset management — bake, save, load coupling presets (UI thread only)
@@ -360,6 +361,7 @@ private:
     std::shared_ptr<std::vector<MegaCouplingMatrix::CouplingRoute>> mergedRoutePtr;
 
     MasterFXChain masterFX;
+    xoceanus::EpicChainSlotController epicSlots;  // 3-slot Epic Chains FX router
     ChordMachine chordMachine;
     MPEManager mpeManager;
     MIDILearnManager midiLearnManager;

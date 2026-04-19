@@ -386,9 +386,8 @@ User: "dark evolving pad with shimmer, massive and spacious"
   The CMakeLists.txt comment on line 463 documents this move.
 - All seven AI capabilities (`textToRecipe`, `refineRecipe`, `matchSound`, `adviseCoupling`,
   `suggestMacros`, `namePreset`, `explainSound`) are fully implemented in `SoundAssistant.h`.
-- `AIParameterSchema::buildDefaultSchema()` (declared in `SoundAssistant.h`) is the only
-  function that needs completion before V1 — it must be populated with `AIEngineProfile`
-  entries for every engine that ships in V1.
+- `AIParameterSchema::buildDefaultSchema()` (declared in `SoundAssistant.h`) still needs
+  completion — it must be populated with `AIEngineProfile` entries for every engine.
 - `SharedRecipeVault` and `CommunityInsights` both require Supabase project credentials to
   be set at runtime; they are inert without configuration.
 
