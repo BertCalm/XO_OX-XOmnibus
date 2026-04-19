@@ -814,11 +814,13 @@ public:
             lastSampleR = writeR[numSamples - 1];
         }
 
-        // ---- Coupling accumulator decay (0.999× per block) ----
-        couplingAmpFilter    *= 0.999f;
-        couplingEnvVowelX    *= 0.999f;
-        couplingRhythmVowelY *= 0.999f;
-        couplingExcLevel     *= 0.999f;
+        // ---- Coupling accumulator decay — block-size-invariant (~1s tau) ----
+        // Old `*= 0.999f` was block-rate so feel varied with DAW buffer size.
+        const float couplingDecayCoeff = fastExp(-static_cast<float>(numSamples) / sampleRateFloat);
+        couplingAmpFilter    *= couplingDecayCoeff;
+        couplingEnvVowelX    *= couplingDecayCoeff;
+        couplingRhythmVowelY *= couplingDecayCoeff;
+        couplingExcLevel     *= couplingDecayCoeff;
 
         // ---- Update active voice count (atomic) ----
         int av = 0;
