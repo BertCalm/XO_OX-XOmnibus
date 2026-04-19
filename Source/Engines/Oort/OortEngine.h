@@ -1104,10 +1104,15 @@ public:
         analyzeForSilenceGate(buffer, numSamples);
 
         // ---- Decay coupling accumulators (Lesson 10) ----
-        couplingFMVal     *= 0.999f;
-        couplingAmpFilter *= 0.999f;
-        couplingEnvSolid  *= 0.999f;
-        couplingRhythm    *= 0.999f;
+        // Block-size-invariant: the old `*= 0.999f` per block gave radically
+        // different time constants across DAW buffer sizes (~11.6s @ 512/44.1k
+        // vs ~0.33s @ 32/96k). Use fastExp on a ~1s time constant so the decay
+        // feel is identical at every buffer size.
+        const float couplingDecayCoeff = fastExp(-static_cast<float>(numSamples) / sampleRateFloat);
+        couplingFMVal     *= couplingDecayCoeff;
+        couplingAmpFilter *= couplingDecayCoeff;
+        couplingEnvSolid  *= couplingDecayCoeff;
+        couplingRhythm    *= couplingDecayCoeff;
         couplingFMVal     = flushDenormal(couplingFMVal);
         couplingAmpFilter = flushDenormal(couplingAmpFilter);
         couplingEnvSolid  = flushDenormal(couplingEnvSolid);
@@ -1176,6 +1181,14 @@ private:
             // ---- Configure envelopes ----
             v.ampEnv.setParams(ampAtk, ampDec, ampSus, ampRel, sampleRateFloat);
             v.filterEnv.setParams(fltAtk, fltDec, fltSus, fltRel, sampleRateFloat);
+
+            // Filter mode is block-constant from paramFltType — compute once per voice
+            // instead of switching on every 16-sample coefficient refresh below.
+            const CytomicSVF::Mode blockFltMode =
+                (fltType == 1) ? CytomicSVF::Mode::HighPass :
+                (fltType == 2) ? CytomicSVF::Mode::BandPass :
+                (fltType == 3) ? CytomicSVF::Mode::Notch    :
+                                 CytomicSVF::Mode::LowPass;
 
             for (int s = startSample; s < endSample; ++s)
             {
@@ -1365,14 +1378,8 @@ private:
                         : 0.0f;
                     const float fCutoff = std::clamp(effCutoff * keyTrackMul + envOffset, 20.0f, 20000.0f);
 
-                    const CytomicSVF::Mode fltMode =
-                        (fltType == 1) ? CytomicSVF::Mode::HighPass :
-                        (fltType == 2) ? CytomicSVF::Mode::BandPass :
-                        (fltType == 3) ? CytomicSVF::Mode::Notch    :
-                                         CytomicSVF::Mode::LowPass;
-
-                    v.filterL.setMode(fltMode);
-                    v.filterR.setMode(fltMode);
+                    v.filterL.setMode(blockFltMode);
+                    v.filterR.setMode(blockFltMode);
                     v.filterL.setCoefficients_fast(fCutoff, fltReso, sampleRateFloat);
                     v.filterR.setCoefficients_fast(fCutoff, fltReso, sampleRateFloat);
                 }
