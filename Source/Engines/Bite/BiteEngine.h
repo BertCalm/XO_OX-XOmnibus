@@ -1254,6 +1254,7 @@ struct BiteVoice
 
     // Cached per-block
     float cachedBaseFreq = 261.63f;
+    float cachedUnisonDetuneRatio = 1.0f; // hoist std::pow out of per-sample/per-voice loop
 
     // MPE per-voice expression state
     MPEVoiceExpression mpeExpression;
@@ -1683,8 +1684,8 @@ public:
             voice.modEnv.setADSR(modA, modD, modS, modR);
 
             float targetFreq = midiToFreq(voice.noteNumber);
-            // MPE pitch bend
-            targetFreq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+            // MPE pitch bend (fastPow2: ~0.1% error, per-block per-voice)
+            targetFreq *= fastPow2(voice.mpeExpression.pitchBendSemitones * (1.0f / 12.0f));
             // Glide
             if (glideMode > 0 && glideTime > 0.001f && voice.hasPlayedBefore)
                 voice.glide.setTarget(targetFreq);
@@ -1692,6 +1693,22 @@ public:
                 voice.glide.snapTo(targetFreq);
             voice.cachedBaseFreq = targetFreq;
             voice.filter.setMode(svfMode);
+
+            // Pre-compute unison detune ratio per voice — block-constant so we hoist the
+            // std::pow out of the per-sample render loop.
+            if (voice.unisonTotal > 1)
+            {
+                const float detuneRange = unisonDetune * 50.0f; // cents
+                const float unisonPos = (static_cast<float>(voice.unisonIndex) -
+                                          static_cast<float>(voice.unisonTotal - 1) * 0.5f) /
+                                         static_cast<float>(voice.unisonTotal - 1);
+                const float detuneSemitones = unisonPos * detuneRange / 100.0f;
+                voice.cachedUnisonDetuneRatio = fastPow2(detuneSemitones * (1.0f / 12.0f));
+            }
+            else
+            {
+                voice.cachedUnisonDetuneRatio = 1.0f;
+            }
         }
 
         // =====================================================================
@@ -1714,16 +1731,9 @@ public:
                 float freq = voice.glide.process();
 
                 // --- Unison detune ---
+                // (cached in per-block voice setup loop — block-constant)
                 if (voice.unisonTotal > 1)
-                {
-                    float detuneRange = unisonDetune * 50.0f; // 0-1 maps to 0-50 cents max spread
-                    float unisonPos = (voice.unisonTotal > 1) ? (static_cast<float>(voice.unisonIndex) -
-                                                                 static_cast<float>(voice.unisonTotal - 1) * 0.5f) /
-                                                                    static_cast<float>(voice.unisonTotal - 1)
-                                                              : 0.0f;
-                    float detuneSemitones = unisonPos * detuneRange / 100.0f;
-                    freq *= std::pow(2.0f, detuneSemitones / 12.0f);
-                }
+                    freq *= voice.cachedUnisonDetuneRatio;
 
                 // --- Velocity sensitivity ---
                 float velGain = 1.0f - ampVelSens + ampVelSens * voice.velocity;

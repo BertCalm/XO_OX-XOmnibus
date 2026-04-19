@@ -485,7 +485,7 @@ public:
                 float t = (numFacets > 1) ? static_cast<float>(f) / static_cast<float>(numFacets - 1) : 0.5f;
                 // t in [0,1] → detune offset in [-half, +half] cents
                 float centOffset = (t - 0.5f) * 2.0f * detuneHalfRangeCents;
-                detuneRatio[f] = std::pow(2.0f, centOffset / 1200.0f);
+                detuneRatio[f] = fastPow2(centOffset * (1.0f / 1200.0f));
                 // Phase offset in [0, spreadDeg/360] cycle fraction
                 float spreadFrac = spreadDeg / 360.0f;
                 phaseOffset[f] = (numFacets > 1) ? t * spreadFrac : 0.0f;
@@ -556,7 +556,7 @@ public:
         }
 
         // Pitch bend ratio (±2 semitones + mod matrix pitch offset in semitones)
-        float pitchBendRatio = std::pow(2.0f, (pitchBendNorm * 2.0f + modPitchOffset) / 12.0f);
+        float pitchBendRatio = fastPow2((pitchBendNorm * 2.0f + modPitchOffset) * (1.0f / 12.0f));
 
         // D006: aftertouch → distortion boost
         float atDistBoost = aftertouchValue * 0.2f;

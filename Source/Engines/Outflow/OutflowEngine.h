@@ -250,8 +250,8 @@ public:
         float excBrightness = 0.3f + currentVelocity_ * 0.7f;
         float excDecayCoeff = fastExp(-6.9078f / (pExcDecay * srF_));
 
-        // Pitch-bent exciter frequency
-        float exciterFreq = 440.0f * std::pow(2.0f, (currentNote_ - 69) / 12.0f) *
+        // Pitch-bent exciter frequency (fastPow2: ~0.1% error, block-rate)
+        float exciterFreq = 440.0f * fastPow2(static_cast<float>(currentNote_ - 69) * (1.0f / 12.0f)) *
                             PitchBendUtil::semitonesToFreqRatio(pitchBendNorm_ * 2.0f);
 
         // Update wind LFO rate based on chaos

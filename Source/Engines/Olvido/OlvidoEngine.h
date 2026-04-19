@@ -328,6 +328,21 @@ public:
         const float effectiveCurrent   = juce::jlimit(-1.0f, 1.0f, paramCurrent  + (macroCoup * 2.0f - 1.0f) * 0.5f);
         const float effectiveFlotsam   = juce::jlimit(0.0f, 1.0f, paramFlotsam   + macroCoup * 0.4f);
 
+        // Pre-compute per-band decay/emergence scales — depend only on bi (constant)
+        // and effectiveDepth (block-constant). Hoists 3× std::pow out of per-sample
+        // per-voice per-band loop (was up to 6×64×N std::pow per block).
+        float decayScalePow[kOlvidoNumBands];
+        float emergenceScalePow[kOlvidoNumBands];
+        {
+            const float exponent = 2.0f * effectiveDepth;
+            for (int bi = 0; bi < kOlvidoNumBands; ++bi)
+            {
+                decayScalePow[bi] = std::pow(static_cast<float>(bi + 1), exponent);
+                const float invertIdx = static_cast<float>((kOlvidoNumBands - 1) - bi);
+                emergenceScalePow[bi] = std::pow(invertIdx + 1.0f, exponent);
+            }
+        }
+
         // M4 SPACE: reverb_mix ↑, patina ↑, abyss_hold ↑
         const float effectiveReverbMix = juce::jlimit(0.0f, 1.0f, paramReverbMix + macroSpace * 0.5f);
         const float effectivePatina    = juce::jlimit(0.0f, 1.0f, paramPatina    + macroSpace * 0.4f);
@@ -359,15 +374,15 @@ public:
         couplingFilterAccum   = 0.0f;
 
         // ---- Crossover frequencies shifted by shoreline ----
-        // shoreline = 0.5 → no shift; ±1 octave at extremes
-        const float shorelineShift = std::pow(2.0f, (paramShoreline - 0.5f) * 2.0f);
+        // shoreline = 0.5 → no shift; ±1 octave at extremes (fastPow2: ~0.1% err, per-block)
+        const float shorelineShift = fastPow2((paramShoreline - 0.5f) * 2.0f);
         float actualCrossover[5];
         for (int i = 0; i < 5; ++i)
             actualCrossover[i] = juce::jlimit(20.0f, 20000.0f,
                 kOlvidoCrossoverBase[i] * shorelineShift);
 
         // ---- Pitch bend ratio (±2 semitones) ----
-        const float pitchBendRatio = std::pow(2.0f, pitchBendNorm * 2.0f / 12.0f);
+        const float pitchBendRatio = fastPow2(pitchBendNorm * 2.0f * (1.0f / 12.0f));
 
         // ---- Process MIDI ----
         for (const auto metadata : midi)
@@ -605,8 +620,8 @@ public:
                     {
                         // STANDARD DECAY (forgetting): bands erode over time
                         // decay_rate[band] = base_rate * pow(band_index+1, 2.0 * depth)
-                        float decayScale = std::pow(static_cast<float>(bi + 1), 2.0f * effectiveDepth);
-                        float perSampleDecay = baseRate * decayScale * effectiveCurrentNow;
+                        // (decayScalePow precomputed above renderloop — block-constant)
+                        float perSampleDecay = baseRate * decayScalePow[bi] * effectiveCurrentNow;
 
                         // Flotsam: stochastic decay skip (per-band, per-sample)
                         if (effectiveFlotsam > 0.001f && rng.nextFloat() < effectiveFlotsam)
@@ -628,9 +643,8 @@ public:
                         // EMERGENCE: bands sharpen TOWARD full amplitude
                         // Higher bands emerge SLOWER (inverse of decay order)
                         // Band 5 (highest) emerges slowest — inverse scaling
-                        float invertBandIdx   = static_cast<float>((kOlvidoNumBands - 1) - bi);
-                        float emergenceScale  = std::pow(invertBandIdx + 1.0f, 2.0f * effectiveDepth);
-                        float emergenceRate   = baseRate * emergenceScale * std::fabs(effectiveCurrentNow);
+                        // (emergenceScalePow precomputed above renderloop)
+                        float emergenceRate   = baseRate * emergenceScalePow[bi] * std::fabs(effectiveCurrentNow);
 
                         voice.bandAmplitude[bi] += emergenceRate;
 
@@ -640,8 +654,7 @@ public:
                     }
                     // current == 0: no spectral change (bypass erosion)
 
-                    voice.bandDecayRate[bi] = baseRate *
-                        std::pow(static_cast<float>(bi + 1), 2.0f * effectiveDepth);
+                    voice.bandDecayRate[bi] = baseRate * decayScalePow[bi];
                 }
 
                 // ---- RECONSTRUCT: sum bands × amplitude ----
