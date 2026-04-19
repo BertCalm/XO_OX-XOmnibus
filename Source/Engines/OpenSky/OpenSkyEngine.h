@@ -495,6 +495,7 @@ struct SkyVoice
     static constexpr int kMaxUnison = 7;
     std::array<SkySupersaw, kMaxUnison> unisonSaws;
     int activeUnison = 1;
+    float unisonNormGain = 1.0f; // cached = 1/sqrt(activeUnison) — set at noteOn, avoids per-sample sqrt
 
     // Filters
     CytomicSVF lpf;
@@ -869,10 +870,9 @@ public:
                     voiceR += voiceSample * unisonPan;
                 }
 
-                // Normalize by unison count
-                float unisonNorm = 1.0f / std::sqrt(static_cast<float>(std::max(1, numUnison)));
-                voiceL *= unisonNorm;
-                voiceR *= unisonNorm;
+                // Normalize by unison count (cached at noteOn — was per-sample std::sqrt).
+                voiceL *= voice.unisonNormGain;
+                voiceR *= voice.unisonNormGain;
 
                 // --- Filter ---
                 // D001: velocity drives filter brightness (coeff refresh decimated to every 16 samples)
@@ -1312,6 +1312,7 @@ private:
         voice.velocity = velocity;
         voice.startTime = voiceCounter++;
         voice.activeUnison = unisonCount;
+        voice.unisonNormGain = 1.0f / std::sqrt(static_cast<float>(std::max(1, unisonCount)));
 
         // Reset amp envelope
         voice.ampEnv.reset();
