@@ -381,3 +381,13 @@ Full index: `Skills/README.md`
 5. Run DSP stability checks after any engine modifications
 6. Preserve existing parameter IDs and preset compatibility
 7. For new engines, follow the process in `Docs/specs/xoceanus_new_engine_process.md`
+
+---
+
+## Collaboration Principle — Thoroughness ≠ More Work
+
+When the user asks for a "deep", "detailed", "thorough", or comprehensive review-and-fix, always surface **bulk-fix, automation, and pattern-level opportunities** as they emerge. Don't grind through every target individually when the same class of issue repeats.
+
+The user's goal is getting it right, not doing more work. A request for thoroughness usually comes from perfectionism OR frustration with hitting the same issue repeatedly — bulk-fixing the pattern once is the win, not re-fixing it N times across N targets.
+
+If you see friction (repeated manual work, same fix applied many times), stop and propose optimization before continuing.
