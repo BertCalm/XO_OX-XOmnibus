@@ -6,8 +6,12 @@
 // OceanView is the top-level UI component that replaces the 3-column
 // ColumnLayoutManager-based Gallery layout.  It owns and orchestrates all
 // Ocean sub-components in a radial composition: engine creatures orbit a
-// central NexusDisplay, coupling threads connect them via CouplingSubstrate,
+// central area, coupling threads connect them via CouplingSubstrate,
 // and ambient layers wrap the whole scene.
+//
+// D6 (locked): NexusDisplay removed — preset identity lives in the HUD/DotMatrix
+// strip (MasterFXStripCompact::setPresetName). DNA hexagons live in the preset
+// browser overlay. See issue #1096.
 //
 // Architecture overview
 // ─────────────────────
@@ -15,7 +19,6 @@
 //     OceanBackground   — depth-gradient field
 //     CouplingSubstrate — luminescent Bézier threads
 //     EngineOrbit[0-4]  — creature orbital sprites
-//     NexusDisplay      — centre DNA + preset identity
 //     MacroSection      — 4 macro knobs (unique_ptr, needs APVTS)
 //     EngineDetailPanel — detail panel (unique_ptr, needs Processor)
 //     SidebarPanel      — settings/export/FX sidebar (unique_ptr)
@@ -28,7 +31,7 @@
 //
 // State machine
 // ─────────────
-//   Orbital       — all creatures orbit the nexus (default)
+//   Orbital       — all creatures orbit the centre (default)
 //   ZoomIn        — one creature enlarged at centre, others minimised at edges
 //   SplitTransform— 20% mini-orbital strip left, 80% EngineDetailPanel right
 //   BrowserOpen   — full-window DnaMapBrowser
@@ -45,7 +48,6 @@
 #include "../GalleryColors.h"
 #include "OceanBackground.h"
 #include "AmbientEdge.h"
-#include "NexusDisplay.h"
 #include "EngineOrbit.h"
 #include "CouplingSubstrate.h"
 #include "CouplingConfigPopup.h"
@@ -182,11 +184,8 @@ public:
         for (auto& orbit : orbits_)
             addAndMakeVisible(orbit);
 
-        // 4. Nexus: DNA hexagon + preset name + mood badge
-        // NexusDisplay hidden — preset name moved to FX strip dot-matrix display.
-        // DNA hexagon may be re-added as an optional overlay later.
-        nexus_.setVisible(false);
-        addChildComponent(nexus_);
+        // 4. (D6) NexusDisplay removed — preset identity lives in MasterFXStripCompact
+        //    dot-matrix. DNA hexagons live in the preset browser overlay. (#1096)
 
         // 5. Macro section (conditionally visible; placeholder until initMacros())
         // macros_ is a unique_ptr — added in initMacros()
@@ -379,9 +378,6 @@ public:
                 substrate_.setCreatureCenter(slot, orbits_[slot].getVisualCenter());
             };
         }
-
-        nexus_.onPresetNameClicked = [this]() { transitionToBrowser(); };
-        nexus_.onDnaClicked        = [this]() { if (onDnaClicked) onDnaClicked(); };
 
         // ── CouplingSubstrate knot interaction ────────────────────────────────
         substrate_.onKnotDoubleClicked = [this](int routeIndex)
@@ -1092,21 +1088,20 @@ public:
 
     void setPresetName(const juce::String& name)
     {
-        nexus_.setPresetName(name);
+        // D6 (#1096): delegate to MasterFXStripCompact dot-matrix display.
+        if (masterFxStrip_)
+            masterFxStrip_->setPresetName(name);
         // #1007 FIX 3: Keep the inline header label in sync so the spatial grouping
         // "< Preset Name >" is always accurate.
         presetNameLabel_.setText(name, juce::dontSendNotification);
     }
-    void setMoodName(const juce::String& mood)     { nexus_.setMoodName(mood); }
-    void setMoodColour(juce::Colour colour)        { nexus_.setMoodColour(colour); }
+    // D6 (#1096): mood identity lives in browser/HUD — no-op here.
+    void setMoodName(const juce::String&) {}
+    void setMoodColour(juce::Colour)      {}
 
-    void setDNA(float b, float w, float m, float d, float s, float a)
-    {
-        nexus_.setDNA(b, w, m, d, s, a);
-    }
-
-    /** Direct access to the NexusDisplay for feeding session DNA drift. */
-    NexusDisplay& getNexus() { return nexus_; }
+    // D6 (#1096): DNA hexagon lives in preset browser overlay — no-op here.
+    // TODO(#1096-followup): route DNA to DnaMapBrowser or a dedicated overlay.
+    void setDNA(float /*b*/, float /*w*/, float /*m*/, float /*d*/, float /*s*/, float /*a*/) {}
 
     void setPresetDots(std::vector<PresetDot> dots)
     {
@@ -1188,22 +1183,14 @@ public:
         background_.repaint();
     }
 
-    // #909: Forward live readouts to NexusDisplay so Overview shows parameter activity.
-    // voiceCount: total polyphonic voices across all slots.
-    // macroValues: current normalised [0,1] values for macros 1-4.
-    void setLiveReadouts(int voiceCount, const std::array<float, 4>& macroValues)
-    {
-        nexus_.setLiveReadouts(voiceCount, macroValues);
-    }
+    // D6 (#1096): NexusDisplay removed. Live readouts previously shown on the
+    // central nexus — no replacement target yet.
+    // TODO(#1096-followup): route voice-count readout to HUD/StatusBar overlay.
+    void setLiveReadouts(int /*voiceCount*/, const std::array<float, 4>& /*macroValues*/) {}
 
-    // Feature 6 (Schulze): Sustained-voice DNA accumulation.
-    // Call from the editor's 10 Hz timer to drive continuous DNA drift when
-    // voices are held.  totalVoices is the sum across all engine slots.
-    void tickSustainedDna(int totalVoices, float dtSeconds)
-    {
-        nexus_.setSustainedVoiceCount(totalVoices);
-        nexus_.tickSustainedDna(dtSeconds);
-    }
+    // D6 (#1096): DNA drift animation was driven by the hidden NexusDisplay.
+    // No-op now that NexusDisplay is removed.
+    void tickSustainedDna(int /*totalVoices*/, float /*dtSeconds*/) {}
 
     // Feature 7 (Schulze): Forward coupling timeline data to StatusBar.
     // Reads current route states from the substrate and pushes a snapshot
@@ -1954,16 +1941,7 @@ private:
         substrate_.setBounds(area);
         substrate_.setVisible(true);
 
-        // ── Nexus (centre, slightly above geometric centre) ──────────────────
-        // kNexusH = 200: 96 hex + 8 gap + 22 name + 4 gap + 15 mood + 6 gap
-        //              + 41 readouts + 8 margin = 200px total.
-        // Raised from 160 so the 96px hex + readout strip fits without clipping.
-        constexpr int kNexusW = 160;
-        constexpr int kNexusH = 200;
-        nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
-                         static_cast<int>(centerF.y) - kNexusH / 2 - 20,
-                         kNexusW, kNexusH);
-        nexus_.setVisible(false); // hidden — preset info in FX strip
+        // (D6 / #1096): NexusDisplay removed — no bounds to set here.
 
         // ── Engine creatures (freeform normalized positions) ─────────────────
         int numLoaded = 0;
@@ -2043,16 +2021,7 @@ private:
         substrate_.setBounds(area);
         substrate_.setVisible(true);
 
-        // Nexus shifts toward top to give vertical room for the zoomed creature.
-        // kNexusH = 200: 96 hex + 8 gap + 22 name + 4 gap + 15 mood + 6 gap
-        //              + 41 readouts + 8 margin = 200px total.
-        // Raised from 140 so the 96px hex + readout strip fits without clipping.
-        constexpr int kNexusW = 160;
-        constexpr int kNexusH = 200;
-        nexus_.setBounds(static_cast<int>(centerF.x) - kNexusW / 2,
-                         area.getY() + 30,
-                         kNexusW, kNexusH);
-        nexus_.setVisible(false); // hidden — preset info in FX strip
+        // (D6 / #1096): NexusDisplay removed — no bounds to set here.
 
         // Count non-selected loaded engines (for edge positioning).
         int edgeCount = 0;
@@ -2159,9 +2128,8 @@ private:
             y += sz + 16;
         }
 
-        // Nexus and macros are hidden in SplitTransform — the detail panel
-        // owns the identity display on the right.
-        nexus_.setVisible(false);
+        // (D6 / #1096) NexusDisplay removed. Macros hidden in SplitTransform —
+        // the detail panel owns the identity display on the right.
         if (macros_) macros_->setVisible(false);
 
         // ── Detail panel occupies the right 80% ───────────────────────────────
@@ -2194,7 +2162,7 @@ private:
         for (auto& o : orbits_)
             o.setVisible(false);
 
-        nexus_.setVisible(false);
+        // (D6 / #1096): NexusDisplay removed — no nexus_.setVisible() needed here.
         if (macros_)  macros_->setVisible(false);
         if (detail_ && !detailShowing_)
             detail_->setVisible(false);
@@ -2302,8 +2270,8 @@ private:
      *
      *  #1008 FIX 5: Sunlit radius raised from 0.30 → 0.38.
      *  At 0.30 the creature edge (radius + kOrbitalSize/2 ≈ 0.30*halfMin + 36px)
-     *  overlapped the NexusDisplay border at the default 1100×750 window size.
-     *  0.38 gives ~10 px clearance between the nexus edge and the creature edge.
+     *  overlapped the centre area at the default 1100×750 window size.
+     *  0.38 gives ~10 px clearance around the centre.
      */
     static float radiusForZone(EngineOrbit::DepthZone zone) noexcept
     {
@@ -2468,7 +2436,6 @@ private:
     OceanBackground background_;
     CouplingSubstrate substrate_;
     std::array<EngineOrbit, 5> orbits_;      ///< 4 primary engine slots + 1 ghost slot
-    NexusDisplay nexus_;
     AmbientEdge  ambientEdge_;
 
     // Deferred-init components (require external references at construction time).
