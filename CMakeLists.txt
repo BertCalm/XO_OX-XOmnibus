@@ -501,8 +501,6 @@ target_sources(XOceanus PRIVATE
     Source/UI/Gallery/DrumPadGrid.h
     Source/UI/Gallery/SpecializedWidgets.h
     Source/UI/Gallery/SpecializedDisplays.h
-    Source/UI/Gallery/CouplingInspectorPanel.h
-    Source/UI/Gallery/FXInspectorPanel.h
     Source/UI/Gallery/PlayControlPanel.h
     Source/UI/Gallery/SettingsPanel.h
     Source/UI/Gallery/ExportTabPanel.h
