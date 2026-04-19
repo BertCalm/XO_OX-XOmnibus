@@ -788,6 +788,7 @@ public:
         // Step 4: Per-sample render loop
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float densNow = smoothDensity.process();
             float hardNow = smoothHardness.process();
             float prepDNow = smoothPrepDepth.process();
@@ -980,12 +981,15 @@ public:
                 // ampEnv scales the overall voice amplitude (D004: envelope must shape output).
                 float ampEnvVal = voice.ampEnv.process();
 
-                // Filter envelope + LFO1 → brightness
+                // Filter envelope + LFO1 → brightness (env ticked per-sample, SVF decimated)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
-                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.3f,
-                                          srf); // low resonance — stone is not resonant in the filter sense
+                if (updateFilter)
+                {
+                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.3f,
+                                              srf); // low resonance — stone is not resonant in the filter sense
+                }
                 float filtered = voice.svf.processSample(resonanceSum);
 
                 float output = filtered * voice.ampLevel * ampEnvVal;

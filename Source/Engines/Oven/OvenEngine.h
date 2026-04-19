@@ -729,6 +729,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float brightNow = smoothBrightness.process();
             float hardNow = smoothHardness.process();
             float densNow = smoothDensity.process();
@@ -825,12 +826,15 @@ public:
                     continue;
                 }
 
-                // Filter envelope: D001 velocity-scaled filter sweep
+                // Filter envelope: D001 velocity-scaled filter sweep.
+                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float filterEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 6000.0f * voice.velocity;
-                float cutoff = std::clamp(brightNow + filterEnvMod + lfo1Val * 3000.0f, 200.0f, 16000.0f);
-
-                voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                voice.outputFilter.setCoefficients(cutoff, 0.15f, srf); // low resonance — piano filters are gentle
+                if (updateFilter)
+                {
+                    float cutoff = std::clamp(brightNow + filterEnvMod + lfo1Val * 3000.0f, 200.0f, 16000.0f);
+                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.outputFilter.setCoefficients(cutoff, 0.15f, srf); // low resonance — piano filters are gentle
+                }
                 float filtered = voice.outputFilter.processSample(voiceOut);
 
                 float output = filtered * ampEnvLevel * voice.velocity;
