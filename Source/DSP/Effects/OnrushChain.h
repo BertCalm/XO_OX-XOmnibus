@@ -232,8 +232,9 @@ private:
             freqSmoother.set(targetFreq);
             float smoothedFreq = freqSmoother.process();
 
-            // Map Q to CytomicSVF resonance (0–1 range)
-            float res = 1.0f - (1.0f / resonanceQ);
+            // Map Q to CytomicSVF resonance (0–1 range).
+            // Guard against zero/near-zero Q so the divide cannot produce Inf.
+            float res = 1.0f - (1.0f / std::max(resonanceQ, 0.1f));
             res = juce::jlimit(0.0f, 0.99f, res);
             svf.setMode(CytomicSVF::Mode::LowPass);
             svf.setCoefficients(smoothedFreq, res, srF);
