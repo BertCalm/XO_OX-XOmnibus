@@ -78,8 +78,8 @@ class XOceanusEditor : public juce::AudioProcessorEditor,
 {
 public:
     explicit XOceanusEditor(XOceanusProcessor& proc)
-        : AudioProcessorEditor(proc), processor(proc), overview(proc), detail(proc), chordPanel(proc),
-          performancePanel(proc), macros(proc.getAPVTS()), masterFXStrip(proc.getAPVTS()), presetBrowser(proc),
+        : AudioProcessorEditor(proc), processor(proc), overview(proc), detail(proc),
+          performancePanel(proc), macros(proc.getAPVTS()),
           ghostTile(proc, 4) // Ghost Slot — 5th tile, slot index 4
     {
         // #893: Constructor extracted into named helpers to reduce monolithic body.
