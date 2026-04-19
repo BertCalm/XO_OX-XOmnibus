@@ -159,13 +159,9 @@ public:
                        juce::Justification::centredLeft);
 
             // ── Voice name — center, Space Grotesk SemiBold 9pt ───────────
-            // Use the per-voice label if discovered; otherwise cached "V{N}"
-            const juce::String& voiceName = (i < (int)voiceLabels.size() && voiceLabels[i].isNotEmpty())
-                                        ? voiceLabels[i]
-                                        : kFallbackNames[i];
             g.setColour(juce::Colours::white.withAlpha(0.85f));
             g.setFont(kVoiceFont);
-            g.drawText(voiceName, cell.bounds, juce::Justification::centred);
+            g.drawText(kFallbackNames[i], cell.bounds, juce::Justification::centred);
         }
 
         // ── Param strip header label ──────────────────────────────────────────
@@ -353,12 +349,10 @@ private:
     // Also accepts flattened names: `{prefix}_voice{N}{Suffix}` (no underscore
     // between digit and suffix) so engines that name params "voice1tune" work too.
     //
-    // Discovery is called once at construction; results are stored in voiceParamMap
-    // and voiceLabels.
+    // Discovery is called once at construction; results are stored in voiceParamMap.
     void discoverVoiceParams()
     {
         voiceParamMap.assign((size_t)numVoices, VoiceParams{});
-        voiceLabels.assign((size_t)numVoices, {});
         hasVoiceParams = false;
 
         auto& rawParams = proc.getParameters();
@@ -670,7 +664,6 @@ private:
 
     // Discovered param IDs per voice (size == numVoices)
     std::vector<VoiceParams> voiceParamMap;
-    std::vector<juce::String> voiceLabels;    // display name per voice (currently empty; reserved)
     bool hasVoiceParams = false;
 
     // Pad cells (size == numVoices)

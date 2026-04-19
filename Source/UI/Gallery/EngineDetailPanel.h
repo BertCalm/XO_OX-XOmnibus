@@ -850,7 +850,6 @@ public:
 
 private:
     static constexpr int kHeaderH = 64; // prototype: breadcrumb(14) + icon row(40) + pad(10)
-    static constexpr int kHeroH = 88;     // height of the macro hero strip (unused in 4-zone)
     static constexpr int kMacroColW = 130; // width of Zone 2 macro pillar column
 
     // #903: Map a CouplingType to parameter keyword patterns so the modulation
