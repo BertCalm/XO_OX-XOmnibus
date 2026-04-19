@@ -841,7 +841,7 @@ public:
         // M4 SPACE:     filter cutoff offset ±5000 Hz
         // ------------------------------------------------------------------
         snap_.drama = std::clamp(snap_.drama + (snap_.macroCharacter - 0.5f) * 0.8f, 0.0f, 1.0f);
-        snap_.lfo1Rate = std::clamp(snap_.lfo1Rate * std::pow(4.0f, snap_.macroMovement - 0.5f), 0.01f, 20.0f);
+        snap_.lfo1Rate = std::clamp(snap_.lfo1Rate * xoceanus::fastPow2(2.0f * (snap_.macroMovement - 0.5f)), 0.01f, 20.0f);
         snap_.filterCutoff = std::clamp(snap_.filterCutoff + (snap_.macroSpace - 0.5f) * 10000.0f, 20.0f, 20000.0f);
         // macroCoupling (M3) is used by the coupling output read path; no snap modification needed.
 
@@ -909,6 +909,13 @@ public:
         const float portGlideCoeff = (snap_.portamento > 0.0f)
             ? 1.0f - FastMath::fastExp(-kTwoPi / (sr_ * snap_.portamento * 0.5f))
             : 0.0f;
+
+        // Block-constant unison scalars — snap_.unison + snap_.detune are block-rate,
+        // so hoisting these out of the per-sample per-voice inner loop eliminates
+        // N × V per-sample std::sqrt calls plus redundant clamps/mults.
+        const int   blockUnisonCount  = std::clamp(snap_.unison, 1, 4);
+        const float blockUnisonGain   = 1.0f / std::sqrt(static_cast<float>(blockUnisonCount));
+        const float blockUnisonSpread = snap_.detune * 0.02f;
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -1043,10 +1050,10 @@ public:
                 float pL = 0.0f, pR = 0.0f;
                 float monoSample = 0.0f;
 
-                int unisonCount = std::clamp(snap_.unison, 1, 4);
-                float unisonGain = 1.0f / std::sqrt(static_cast<float>(unisonCount));
-                // spread: detune * 2% max total spread
-                float unisonSpread = snap_.detune * 0.02f;
+                // Unison scalars hoisted to per-block scope above — block-constant.
+                const int   unisonCount  = blockUnisonCount;
+                const float unisonGain   = blockUnisonGain;
+                const float unisonSpread = blockUnisonSpread;
 
                 // Unison pan positions: 1={C}, 2={L,R}, 3={L,C,R}, 4={L,C,R,C}
                 static constexpr float kUniPan[4][4] = {
