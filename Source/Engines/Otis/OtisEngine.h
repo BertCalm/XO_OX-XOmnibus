@@ -1033,6 +1033,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             // Per-sample smoothed values
             float smoothedDrawbars[9];
             for (int d = 0; d < 9; ++d)
@@ -1187,15 +1188,19 @@ public:
                 }
 
                 // Filter envelope
+                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float filterEnvLevel = voice.filterEnv.process();
-                float envMod = filterEnvLevel * pFilterEnvAmt * 4000.0f;
-                // LFO2 → filter cutoff
-                float cutoff = std::clamp(brightNow + envMod + lfo2Val * 3000.0f, 200.0f, 20000.0f);
-                // D001: velocity → filter brightness
-                cutoff = std::clamp(cutoff * (0.5f + voice.velocity * 0.5f), 200.0f, 20000.0f);
+                if (updateFilter)
+                {
+                    float envMod = filterEnvLevel * pFilterEnvAmt * 4000.0f;
+                    // LFO2 → filter cutoff
+                    float cutoff = std::clamp(brightNow + envMod + lfo2Val * 3000.0f, 200.0f, 20000.0f);
+                    // D001: velocity → filter brightness
+                    cutoff = std::clamp(cutoff * (0.5f + voice.velocity * 0.5f), 200.0f, 20000.0f);
 
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients_fast(cutoff, 0.15f, srf);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients_fast(cutoff, 0.15f, srf);
+                }
                 float filtered = voice.svf.processSample(voiceOut);
 
                 float output = filtered * ampEnvLevel;

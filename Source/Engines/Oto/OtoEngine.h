@@ -555,6 +555,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float clusterNow = smoothCluster.process();
             float chiffNow = smoothChiff.process();
             float detuneNow = smoothDetune.process();
@@ -837,8 +838,14 @@ public:
                 // LFO1 -> filter modulation (secondary target)
                 voiceCutoff = std::clamp(voiceCutoff + lfo1Val * 2000.0f, 20.0f, 20000.0f);
 
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients_fast(voiceCutoff, resNow, srf);
+                // Decimate SVF coefficient refresh to every 16 samples (~0.36ms @
+                // 44.1k — below audible lag). Filter env is still ticked per-sample
+                // above so envelope state advances at audio rate.
+                if (updateFilter)
+                {
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients_fast(voiceCutoff, resNow, srf);
+                }
                 float filtered = voice.svf.processSample(signal);
 
                 float output = filtered * envLevel;
