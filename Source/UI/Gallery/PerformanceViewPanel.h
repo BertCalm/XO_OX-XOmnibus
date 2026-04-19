@@ -554,7 +554,7 @@ private:
     XOceanusProcessor& processor;
     juce::AudioProcessorValueTreeState& apvts;
 
-    // Left panel: full-graph coupling visualizer (replaces CouplingStripEditor)
+    // Left panel: full-graph coupling visualizer
     CouplingVisualizer couplingVisualizer;
 
     // Header controls
