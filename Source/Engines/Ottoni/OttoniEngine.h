@@ -284,6 +284,11 @@ public:
 
         auto* oL = buf.getWritePointer(0);
         auto* oR = buf.getNumChannels() > 1 ? buf.getWritePointer(1) : buf.getWritePointer(0);
+        // Block-constant release coefficient — depends only on sampleRate × 0.3 s tau.
+        // Was std::exp per sample inside the release branch (once per sample per
+        // releasing voice). Now one fastExp per block.
+        const float releaseCoeff = xoceanus::fastExp(-1.0f / (static_cast<float>(sr) * 0.3f));
+
         for (int i = 0; i < ns; ++i)
         {
             float sL = 0, sR = 0;
@@ -308,11 +313,9 @@ public:
 
                 // Exponential release — eliminates the "soft note releases fast"
                 // bug from linear subtraction on small ampEnv values.
+                // releaseCoeff precomputed at block start (block-constant from sampleRate).
                 if (v.releasing)
-                {
-                    float releaseCoeff = std::exp(-1.0f / (v.sr * 0.3f));
                     v.ampEnv *= releaseCoeff;
-                }
                 v.ampEnv = flushDenormal(v.ampEnv);
                 if (v.ampEnv < 0.0001f && v.releasing)
                 {

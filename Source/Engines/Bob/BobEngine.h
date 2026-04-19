@@ -1248,7 +1248,7 @@ public:
         if (glideAmt > 0.0f)
         {
             float glideTimeSec = 0.005f + glideAmt * 0.495f;
-            glideCoeff = 1.0f - std::exp(-1.0f / (srf * glideTimeSec));
+            glideCoeff = 1.0f - fastExp(-1.0f / (srf * glideTimeSec));
         }
 
         for (auto& voice : voices)
