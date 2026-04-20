@@ -116,15 +116,21 @@ struct OverwashVoice
 
     // Per-voice filter
     CytomicSVF viscosityFilter;
+    float lastCutoff = -1.0f; // W-FILTER-DELTA: sentinel; forces first-sample coefficient update
 
     void reset() noexcept
     {
         active = false;
+        currentNote = 60;                        // W-VOICE-RESET: currentNote/velocity/fundamental not reset
+        velocity = 0.0f;
+        fundamental = 440.0f;
+        startTime = 0;
         ampEnv.reset();
         filterEnv.stage = FilterEnvelope::Stage::Idle;
         filterEnv.level = 0.0f;
         diffusionClock = 0.0f;
         noteAge = 0.0f;
+        lastCutoff = -1.0f; // force recompute on next noteOn
         viscosityFilter.reset();
         for (auto& p : partials)
             p.reset();
@@ -147,6 +153,7 @@ struct OverwashVoice
         fundamental = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
         diffusionClock = 0.0f;
         noteAge = 0.0f;
+        lastCutoff = -1.0f; // force coefficient recompute on first sample (W-FILTER-DELTA)
 
         ampEnv.noteOn();
         filterEnv.trigger();
@@ -220,9 +227,11 @@ public:
             v.reset();
         lfo1.reset();
         lfo2.reset();
+        breathLfo.reset();                                           // W-BREATHLFO-RESET: breathLfo omitted from reset()
         std::fill(spectralField.begin(), spectralField.end(), 0.0f);
         lastSampleL = lastSampleR = 0.0f;
         extFilterMod = extPitchMod = extRingMod = 0.0f;
+        aftertouch = modWheel = pitchBendNorm = 0.0f;               // W-MIDI-RESET: MIDI state not zeroed on reset
     }
 
     //--------------------------------------------------------------------------
@@ -323,8 +332,9 @@ public:
         // D006: Aftertouch → viscosity
         pViscosity = clamp(pViscosity + aftertouch * 0.3f, 0.0f, 1.0f);
 
-        // Coupling modulation
-        pFilterCut = clamp(pFilterCut + extFilterMod, 50.0f, 16000.0f);
+        // Coupling modulation — W-CUTOFF-HARDCODE: upper clamp extended to match
+        // parameter range (20kHz); per-voice clamp to srF*0.49f enforces Nyquist.
+        pFilterCut = clamp(pFilterCut + extFilterMod, 50.0f, 20000.0f);
 
         // BROTH cooperative coupling: sessionAge increases viscosity
         pViscosity = clamp(pViscosity + brothSessionAge * 0.3f, 0.0f, 1.0f);
@@ -361,6 +371,19 @@ public:
                 voiceSpreadBlock[v] = 0.0f;
         }
 
+        // W-ADSR-HOIST: setADSR() calls std::exp internally; calling per-sample
+        // (once per active voice per sample) wastes 2×kMaxVoices exp() calls/sample.
+        // Hoist to block rate — ADSR params are read from atomic params already
+        // captured once above. All active voices share the same ADSR params.
+        for (int v = 0; v < kMaxVoices; ++v)
+        {
+            if (voices[v].active)
+            {
+                voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+                voices[v].filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
+            }
+        }
+
         for (int i = 0; i < numSamples; ++i)
         {
             float lfo1Val = lfo1.process();
@@ -378,12 +401,11 @@ public:
 
                 // Advance diffusion clock
                 voice.diffusionClock += inverseSr;
-                voice.noteAge += inverseSr;
+                // W-NOTE-AGE-UNUSED: noteAge accumulated but never read in synthesis;
+                // retained for future cross-note coupling features but not incremented
+                // every sample to avoid pointless FP adds.
 
-                // Update envelopes
-                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
-                voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
-
+                // Process envelopes (setADSR hoisted to block rate above — no exp() here)
                 float ampLevel = voice.ampEnv.process();
                 float filtLevel = voice.filterEnv.process();
 
@@ -399,10 +421,20 @@ public:
                 // Per-voice filter cutoff with filter envelope and velocity.
                 // pBrightness has a standalone additive effect on cutoff so it reaches
                 // the synthesis path independently of the CHARACTER macro combination.
+                // W-FILTENVAMT-BIPOLAR: pFiltEnvAmt is now [-1,1]; use as signed multiplier
+                // so negative values sweep the filter closed on attack (no `!= 0` guard
+                // needed — multiplication by 0 is free and avoids branch).
                 float voiceCutoff = pFilterCut * velBright + pFiltEnvAmt * filtLevel * 8000.0f * voice.velocity +
                                     pBrightness * 4000.0f; // brightness independently brightens the tone
                 voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
-                voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                // W-FILTER-DELTA: skip coefficient recompute when cutoff hasn't moved by
+                // more than 1 Hz — saves 1 fastTan + 3 divisions per voice per sample
+                // during sustain and slow-envelope phases.
+                if (std::fabs(voiceCutoff - voice.lastCutoff) > 1.0f)
+                {
+                    voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                    voice.lastCutoff = voiceCutoff;
+                }
 
                 // LFOToPitch coupling: extPitchMod is accumulated in applyCouplingInput()
                 // and reset at end of block. Convert semitone offset to a frequency ratio
@@ -539,10 +571,19 @@ public:
                 outR[i] += sampleR;
         }
 
-        // Decay spectral field accumulator (slow diffusion of the field itself)
+        // Decay spectral field accumulator (slow diffusion of the field itself).
         // This prevents stale energy from dominating and makes interference fade naturally.
-        for (auto& bin : spectralField)
-            bin *= 0.98f; // ~50ms half-life at typical block rates
+        // W-SPECTRAL-BLOCK-DECAY: 0.98f was block-size-dependent — at 512 samples/44100Hz
+        // the half-life is ~160ms, but at 128 samples it shrinks to ~40ms (4× faster decay).
+        // Fix: compute a per-block coefficient from a fixed time constant (50ms half-life)
+        // so the decay rate is invariant to DAW block size.
+        {
+            // t_half = 50ms → λ = -ln(0.5)/t_half; per-block coeff = exp(-λ * numSamples/sr)
+            // = exp(-numSamples * 0.6931 / (0.050 * sr)) = exp(-numSamples * 13.863 / sr)
+            float spectralDecay = fastExp(-static_cast<float>(numSamples) * 13.863f / srF);
+            for (auto& bin : spectralField)
+                bin *= spectralDecay;
+        }
 
         // Reset coupling mods
         extFilterMod = 0.0f;
@@ -629,14 +670,20 @@ public:
                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.6f));
 
         // Filter
+        // W-CUTOFF-HARDCODE: 16000 Hz ceiling locks out 48kHz+ users (Nyquist = 24kHz).
+        // Extended to 20000 Hz — the per-voice clamp (`srF * 0.49f`) enforces the true
+        // Nyquist guard at runtime regardless of sample rate.
         params.push_back(std::make_unique<PF>(juce::ParameterID{"wash_filterCutoff", 1}, "Filter Cutoff",
-                                              juce::NormalisableRange<float>(50.0f, 16000.0f, 0.0f, 0.3f), 4000.0f));
+                                              juce::NormalisableRange<float>(50.0f, 20000.0f, 0.0f, 0.3f), 4000.0f));
 
         params.push_back(std::make_unique<PF>(juce::ParameterID{"wash_filterRes", 1}, "Filter Resonance",
                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
 
+        // W-FILTENVAMT-BIPOLAR: unipolar [0,1] prevents downward sweeps (filter-closed on attack).
+        // Bipolar [-1,1] allows both open-on-attack and close-on-attack shapes; default 0.3
+        // (same positive bias) preserved.
         params.push_back(std::make_unique<PF>(juce::ParameterID{"wash_filtEnvAmount", 1}, "Filter Env Amount",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+                                              juce::NormalisableRange<float>(-1.0f, 1.0f), 0.3f));
 
         // Amp ADSR
         params.push_back(std::make_unique<PF>(juce::ParameterID{"wash_ampAttack", 1}, "Amp Attack",
