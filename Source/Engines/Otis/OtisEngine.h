@@ -1031,6 +1031,18 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Hoist block-constant ADSR update out of per-sample loop (P15 fix).
+        // setADSR calls std::exp — running once per block is correct and faster.
+        {
+            const float atkB = paramAttack  ? paramAttack->load()  : 0.005f;
+            const float decB = paramDecay   ? paramDecay->load()   : 0.3f;
+            const float susB = paramSustain ? paramSustain->load() : 0.8f;
+            const float relB = paramRelease ? paramRelease->load() : 0.3f;
+            for (int vi = 0; vi < kMaxVoices; ++vi)
+                if (voices[vi].active)
+                    voices[vi].ampEnv.setADSR(atkB, decB, susB, relB);
+        }
+
         for (int s = 0; s < numSamples; ++s)
         {
             // Per-sample smoothed values
@@ -1049,12 +1061,7 @@ public:
                 if (!voice.active)
                     continue;
 
-                // Update amp envelope ADSR per block so knob changes take effect on held notes
-                voice.ampEnv.setADSR(
-                    paramAttack  ? paramAttack->load()  : 0.005f,
-                    paramDecay   ? paramDecay->load()   : 0.3f,
-                    paramSustain ? paramSustain->load() : 0.8f,
-                    paramRelease ? paramRelease->load() : 0.3f);
+
 
                 // Process amp envelope
                 float ampEnvLevel = voice.ampEnv.process();

@@ -442,6 +442,9 @@ struct OchreVoice
     float hfNoiseEnv = 0.0f;
     uint32_t hfNoiseState = 12345u;
 
+    // Cached filter cutoff for P19 coefficient-update guard (skip if |delta| < 1 Hz)
+    float lastFilterCutoff = -1.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -781,8 +784,13 @@ public:
                 // Filter envelope + LFO1 → brightness
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                voice.lpf.setMode(CytomicSVF::Mode::LowPass);
-                voice.lpf.setCoefficients(cutoff, 0.4f, srf);
+                // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
+                if (std::fabs(cutoff - voice.lastFilterCutoff) > 1.0f)
+                {
+                    voice.lpf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.lpf.setCoefficients(cutoff, 0.4f, srf);
+                    voice.lastFilterCutoff = cutoff;
+                }
                 float filtered = voice.lpf.processSample(bodied);
 
                 float output = filtered * voice.ampLevel;

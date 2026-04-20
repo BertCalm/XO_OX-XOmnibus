@@ -475,6 +475,18 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Hoist block-constant ADSR update out of per-sample loop (P15 fix).
+        // setADSR calls std::exp — running once per block is correct and faster.
+        {
+            const float atkB = paramAttack  ? paramAttack->load()  : 0.005f;
+            const float decB = paramDecay   ? paramDecay->load()   : 0.8f;
+            const float susB = paramSustain ? paramSustain->load() : 0.6f;
+            const float relB = paramRelease ? paramRelease->load() : 0.5f;
+            for (auto& voice : voices)
+                if (voice.active)
+                    voice.ampEnv.setADSR(atkB, decB, susB, relB);
+        }
+
         for (int s = 0; s < numSamples; ++s)
         {
             float warmthNow = smoothWarmth.process();
@@ -491,12 +503,7 @@ public:
                 if (!voice.active)
                     continue;
 
-                // Update amp envelope ADSR per block so knob changes take effect on held notes
-                voice.ampEnv.setADSR(
-                    paramAttack  ? paramAttack->load()  : 0.005f,
-                    paramDecay   ? paramDecay->load()   : 0.8f,
-                    paramSustain ? paramSustain->load() : 0.6f,
-                    paramRelease ? paramRelease->load() : 0.5f);
+
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);

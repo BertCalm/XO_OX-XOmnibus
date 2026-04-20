@@ -398,6 +398,12 @@ public:
             }
         }
 
+        // Hoist block-constant ADSR update out of per-sample loop (P15 fix).
+        // setADSR calls std::exp — running it once per block is sufficient.
+        for (int v = 0; v < kMaxVoices; ++v)
+            if (voices[v].active)
+                voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+
         for (int i = 0; i < numSamples; ++i)
         {
             // Gate LFOs: advance state but output 0 when fully frozen.
@@ -420,7 +426,7 @@ public:
                 if (!voice.active)
                     continue;
 
-                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+
                 float ampLevel = voice.ampEnv.process();
 
                 if (!voice.ampEnv.isActive())

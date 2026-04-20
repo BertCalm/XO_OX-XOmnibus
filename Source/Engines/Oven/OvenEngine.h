@@ -347,6 +347,9 @@ struct OvenVoice
     // Amp level (exponential decay for cast iron sustain)
     float ampLevel = 0.0f;
 
+    // Cached filter cutoff for P19 coefficient-update guard (skip if |delta| < 1 Hz)
+    float lastFilterCutoff = -1.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -828,9 +831,13 @@ public:
                 // Filter envelope: D001 velocity-scaled filter sweep
                 float filterEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 6000.0f * voice.velocity;
                 float cutoff = std::clamp(brightNow + filterEnvMod + lfo1Val * 3000.0f, 200.0f, 16000.0f);
-
-                voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                voice.outputFilter.setCoefficients(cutoff, 0.15f, srf); // low resonance — piano filters are gentle
+                // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
+                if (std::fabs(cutoff - voice.lastFilterCutoff) > 1.0f)
+                {
+                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.outputFilter.setCoefficients(cutoff, 0.15f, srf); // low resonance — piano filters are gentle
+                    voice.lastFilterCutoff = cutoff;
+                }
                 float filtered = voice.outputFilter.processSample(voiceOut);
 
                 float output = filtered * ampEnvLevel * voice.velocity;
