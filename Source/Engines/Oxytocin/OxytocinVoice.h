@@ -194,6 +194,9 @@ public:
         thermal.prepare(sampleRate);
         drive.prepare(sampleRate);
         reactive.prepare(sampleRate);
+        // F27 fix: cache stealFadeInc at prepare() time — it only depends on sr and the
+        // compile-time constant kStealFadeTimeSec.  Previously recomputed every processBlock().
+        stealFadeInc = (sampleRate > 0.0) ? 1.0f / (kStealFadeTimeSec * static_cast<float>(sampleRate)) : 1.0f;
     }
 
     void noteOn(int midiNote, float velocity) noexcept
@@ -254,8 +257,11 @@ public:
             return;
 
         // --- Base frequency ---
+        // F03 fix: use fastPow2 (available via FastMath.h, included in OxytocinDrive.h
+        // which is included by this file) instead of std::pow — called per active voice
+        // per block on the audio thread.
         float semitones = static_cast<float>(note - 69) + snap.pitch;
-        float baseHz = 440.0f * std::pow(2.0f, semitones / 12.0f) * pitchBendRatio;
+        float baseHz = 440.0f * xoceanus::fastPow2(semitones / 12.0f) * pitchBendRatio;
 
         // D004: per-voice detune spread
         // Voice 0 is lowest, voice (totalVoices-1) is highest.
@@ -267,7 +273,8 @@ public:
                            static_cast<float>(totalVoices - 1);
             detuneOffset = spread * snap.detune; // detune is in cents (0–100)
         }
-        float noteHz = baseHz * std::pow(2.0f, detuneOffset / 1200.0f);
+        // F06 fix: fastPow2 for detune ratio — same rationale as F03.
+        float noteHz = baseHz * xoceanus::fastPow2(detuneOffset / 1200.0f);
 
         osc.setFrequency(noteHz);
 
@@ -296,10 +303,9 @@ public:
         float velAttackScale = 0.5f + 0.5f * vel;
         passionEnv.setAttackScale(velAttackScale);
 
-        // Voice-steal click prevention: compute per-sample ramp increment.
-        // stealFadeInc is only used while stealFading == true; after the ramp
-        // reaches 1.0 the branch is skipped for the remainder of the note.
-        const float stealFadeInc = (sr > 0.0) ? 1.0f / (kStealFadeTimeSec * static_cast<float>(sr)) : 1.0f;
+        // Voice-steal click prevention: stealFadeInc is cached in prepare() (F27 fix).
+        // The ramp is only active while stealFading == true; after it reaches 1.0
+        // the branch is skipped for the remainder of the note.
 
         // P1-6: accumulators for block-average I/P/C
         float accI = 0.0f, accP = 0.0f, accC = 0.0f;
@@ -338,10 +344,15 @@ public:
                 boostedC = coords.C * mag;
             }
 
-            // Velocity: shapes passion peak
+            // Velocity: shapes amplitude and passion peak.
+            // velScale [0.5..1.0] applies to the final output for all topologies.
+            // F37 fix: removed the separate passionVelScale (boostedP *= vel) which
+            // caused triple velocity influence on passion (E5 attack shape + direct
+            // level scale + final velScale).  Passion velocity shaping is already
+            // fully expressed by E5 (attack-rate compression) and the shared velScale.
+            // boostedP is now left unmodified here — its amplitude follows the love
+            // envelope and memory boost without an additional linear velocity warp.
             float velScale = 0.5f + 0.5f * vel; // always some volume
-            float passionVelScale = vel;        // D001: velocity → passion peak
-            boostedP *= passionVelScale;
 
             // P1-6: accumulate block average
             accI += boostedI;
@@ -408,6 +419,8 @@ public:
                     // the Serge C→I patch where commitment's output influences intimacy
                     // warming on the following sample.
                     cToICarry = std::clamp(reactiveOut * entAmt * 0.2f, -0.25f, 0.25f) * boostedC * 0.1f;
+                    // F20: flush denormal — cToICarry can become tiny after long silence
+                    cToICarry = xoceanus::flushDenormal(cToICarry);
                 }
                 else
                 {
@@ -419,7 +432,11 @@ public:
             case 1: // PARALLEL: mix of three parallel paths
             {
                 thermalOut = thermal.processSample(oscSample, snap.circuitAge) * boostedI;
-                driveOut = drive.processSample(oscSample, boostedP, snap.cutoff, snap.circuitAge) * boostedP;
+                // F18 fix: drive.processSample() already uses passion internally for the
+                // drive amount.  Multiplying the output by boostedP again double-scales passion,
+                // causing unexpectedly high levels at moderate passion values.  Use boostedP
+                // only once — as the mix weight for the parallel sum, not as a second gain stage.
+                driveOut = drive.processSample(oscSample, boostedP, snap.cutoff, snap.circuitAge);
                 reactiveOut =
                     reactive.processSample(oscSample, boostedC, boostedI, boostedP, snap.commitRate, snap.release) *
                     boostedC;
@@ -505,6 +522,7 @@ private:
     bool stealFading = false;                          // true while ramp is active
     float stealFadeLevel = 1.0f;                       // current ramp gain [0..1]; starts at 1 (no fade until noteOn)
     static constexpr float kStealFadeTimeSec = 0.005f; // 5 ms
+    float stealFadeInc = 1.0f; // F27: cached in prepare() — 1.0/5ms/sr; not recomputed per block
 
     PolyBLEPOsc osc;
     AmpEnvelope ampEnv;
