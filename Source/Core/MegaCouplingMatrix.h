@@ -584,32 +584,43 @@ public:
         if (slot >= 0 && slot < MaxSlots)
             activeEngines[static_cast<size_t>(slot)].store(newEnginePtr, std::memory_order_release);
 
-        // Re-resolve sink caches. This does the dynamic_cast on the message thread
-        // and determines whether the new engine supports IAudioBufferSink.
-        // No hardcoded engine names — capability is detected via the interface.
-        // (W2 Audit HIGH-3: removed hardcoded "Opal" string)
-        resolveAudioToBufferSinks();
-
-        // Now activate/suspend AudioToBuffer routes based on resolved sinkCache.
+        // (#1093 item 42) Combined resolve + active-flag update in one atomic
+        // publication. Previously resolveAudioToBufferSinks() published a new
+        // route list, then we loaded it again and published a second new list
+        // with active flags updated. The audio thread could observe the
+        // intermediate (resolved but not-yet-activated) state for one block.
+        // Do both updates in a single local temp and publish once.
+        auto engines = getActiveEngines();
         auto current = std::atomic_load(&routeList);
-        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(current ? *current : std::vector<CouplingRoute>{});
 
-        bool changed = false;
+        // Bump generation once — same release-ordering guarantee as the
+        // original resolveAudioToBufferSinks() path. (#755)
+        const uint64_t newGen = routeGeneration_.fetch_add(1, std::memory_order_release) + 1;
+
         for (auto& r : *newRoutes)
         {
-            if (r.type != CouplingType::AudioToBuffer || r.destSlot != slot)
+            if (r.type != CouplingType::AudioToBuffer)
                 continue;
 
-            bool shouldBeActive = (r.sinkCache != nullptr);
-            if (r.active != shouldBeActive)
+            // Step 1: resolve sinkCache for every AudioToBuffer route against
+            // the current engines table — same logic as resolveAudioToBufferSinks().
+            IAudioBufferSink* sink = nullptr;
+            if (r.destSlot >= 0 && r.destSlot < MaxSlots)
             {
-                r.active = shouldBeActive;
-                changed = true;
+                auto* destEngine = engines[static_cast<size_t>(r.destSlot)];
+                sink = (destEngine != nullptr) ? dynamic_cast<IAudioBufferSink*>(destEngine) : nullptr;
             }
+            r.sinkCache       = sink;
+            r.validGeneration = newGen;
+
+            // Step 2: for routes affecting the swapped slot, update active flag
+            // based on the newly-resolved sinkCache (orphan detection).
+            if (r.destSlot == slot)
+                r.active = (sink != nullptr);
         }
 
-        if (changed)
-            std::atomic_store(&routeList, newRoutes);
+        std::atomic_store(&routeList, newRoutes);
     }
 
     // Resolve IAudioBufferSink* caches for all AudioToBuffer routes.
