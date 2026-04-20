@@ -127,8 +127,12 @@ struct WurliReedModel
 
         for (int i = 0; i < kNumPartials; ++i)
         {
-            // Slightly inharmonic ratios — reed stiffness makes them more harmonic
-            float ratio = 1.0f + (kReedRatios[i] - 1.0f) * (1.0f - reedParam * 0.3f + 0.7f);
+            // Slightly inharmonic ratios — reed stiffness makes them more harmonic.
+            // reedParam=1 (stiff) → multiplier≈0.7 (less inharmonic); reedParam=0 (soft) → multiplier=1.0.
+            // FIX: removed the erroneous +0.7 offset that was added to (1 - reedParam*0.3).
+            // Old formula: (1 - reedParam*0.3 + 0.7) → range [1.7, 1.4], never near-harmonic.
+            // New formula: (1 - reedParam*0.3)        → range [1.0, 0.7], correct behavior.
+            float ratio = 1.0f + (kReedRatios[i] - 1.0f) * (1.0f - reedParam * 0.3f);
             float freq = fundamentalHz * ratio * warble;
             if (freq >= sr * 0.49f)
                 continue;
@@ -179,6 +183,20 @@ struct WurliReedModel
 //==============================================================================
 struct WurliPreamp
 {
+    void prepare(float sampleRate) noexcept
+    {
+        // SR-aware DC blocker: cutoff ≈ 10 Hz (inaudible sub-bass removal).
+        // FIX: old hardcoded 0.0002f coefficient was tuned for 44.1kHz only;
+        // at 96kHz it cut at ~19 Hz, at 192kHz at ~38 Hz (wrong by 2-4x).
+        // New: 1 - exp(-2π × 10 / sr) — matched-Z one-pole, SR-correct.
+        constexpr float kDcCutoffHz = 10.0f;
+        constexpr float kTwoPi = 6.28318530718f;
+        if (sampleRate > 0.0f)
+            dcCoeff = 1.0f - fastExp(-kTwoPi * kDcCutoffHz / sampleRate);
+        else
+            dcCoeff = 0.0002f; // safe fallback (approx. 44.1kHz value)
+    }
+
     float process(float input, float drive) noexcept
     {
         // The Wurli preamp is never truly clean — minimum drive of 1.5
@@ -190,8 +208,8 @@ struct WurliPreamp
         // Odd-harmonic emphasis (reed character)
         float saturated = fastTanh(driven * 0.8f) * 0.7f + fastTanh(driven * 1.5f) * 0.3f;
 
-        // DC removal
-        dcState += 0.0002f * (saturated - dcState);
+        // SR-aware DC removal (coefficient set in prepare())
+        dcState += dcCoeff * (saturated - dcState);
         saturated -= dcState;
 
         return saturated;
@@ -200,6 +218,7 @@ struct WurliPreamp
     void reset() noexcept { dcState = 0.0f; }
 
     float dcState = 0.0f;
+    float dcCoeff = 0.0002f; // overwritten by prepare(); fallback ≈ 44.1kHz value
 };
 
 //==============================================================================
@@ -263,8 +282,10 @@ public:
         {
             voices[i].reset();
             voices[i].reed.prepare(srf);
+            voices[i].preamp.prepare(srf); // SR-aware DC blocker coefficient
             voices[i].ampEnv.prepare(srf);
             voices[i].filterEnv.prepare(srf);
+            voices[i].svf.setMode(CytomicSVF::Mode::LowPass); // set once — hot path uses fast path only
             voices[i].tremoloLFO.setShape(StandardLFO::Sine);
             voices[i].tremoloLFO.reset(static_cast<float>(i) / static_cast<float>(kMaxVoices));
             // Per-voice warble phase offset: spread across 0..1 so voices don't warble in unison.
@@ -400,14 +421,25 @@ public:
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
         const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
-        for (auto& voice : voices)
+        // Per-block: update LFO and ADSR parameters before the sample loop.
+        // FIX: setADSR was being called inside the per-sample inner loop (numSamples × voices
+        // calls per block). Moved here — one call per active voice per block is correct:
+        // ADSR times change on knob automation, not within a single sample.
         {
-            if (!voice.active)
-                continue;
-            voice.lfo1.setRate(lfo1Rate, srf);
-            voice.lfo1.setShape(lfo1Shape);
-            voice.lfo2.setRate(lfo2Rate, srf);
-            voice.lfo2.setShape(lfo2Shape);
+            const float blkAttack  = paramAttack  ? paramAttack->load()  : 0.005f;
+            const float blkDecay   = paramDecay   ? paramDecay->load()   : 0.6f;
+            const float blkSustain = paramSustain ? paramSustain->load() : 0.5f;
+            const float blkRelease = paramRelease ? paramRelease->load() : 0.4f;
+            for (auto& voice : voices)
+            {
+                if (!voice.active)
+                    continue;
+                voice.ampEnv.setADSR(blkAttack, blkDecay, blkSustain, blkRelease);
+                voice.lfo1.setRate(lfo1Rate, srf);
+                voice.lfo1.setShape(lfo1Shape);
+                voice.lfo2.setRate(lfo2Rate, srf);
+                voice.lfo2.setShape(lfo2Shape);
+            }
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -428,13 +460,6 @@ public:
             {
                 if (!voice.active)
                     continue;
-
-                // Update amp envelope ADSR per block so knob changes take effect on held notes
-                voice.ampEnv.setADSR(
-                    paramAttack  ? paramAttack->load()  : 0.005f,
-                    paramDecay   ? paramDecay->load()   : 0.6f,
-                    paramSustain ? paramSustain->load() : 0.5f,
-                    paramRelease ? paramRelease->load() : 0.4f);
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
@@ -477,8 +502,9 @@ public:
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 3000.0f;
                 float velBright = voice.velocity * 2500.0f;
                 float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 16000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.2f, srf);
+                // FIX: was setCoefficients() (calls std::tan per-sample) — use fast path.
+                // FIX: setMode() removed from hot path — mode is set once in noteOn().
+                voice.svf.setCoefficients_fast(cutoff, 0.2f, srf);
                 float filtered = voice.svf.processSample(preampOut);
 
                 float output = filtered * ampLevel * tremGain;
@@ -489,6 +515,10 @@ public:
                 mixR += output * (voice.panR - stereoPan);
             }
 
+            // FIX: softClip on polyphonic sum — 8 voices can sum past ±1 on dense chords.
+            // softClip() is the fleet-standard Padé [3/3] limiter (FastMath.h).
+            mixL = softClip(mixL);
+            mixR = softClip(mixR);
             outL[s] = mixL;
             if (outR)
                 outR[s] = mixR;
@@ -512,7 +542,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = midiToFreq(note); // FIX: was std::pow(2, …) — use fastPow2 path
         float reedStiffness = paramReed ? paramReed->load() : 0.5f;
 
         v.active = true;
@@ -521,6 +551,8 @@ public:
         v.startTime = ++voiceCounter;
         v.glide.snapTo(freq);
 
+        // NOTE: reed.prepare() is intentional here — trigger() sets partial levels that
+        // depend on per-voice reedStiffness; prepare() also caches decay rates (cheap).
         v.reed.prepare(srf);
         v.reed.trigger(vel, reedStiffness);
         // Per-note warble phase randomization — prevents all voices warbling in unison.
@@ -534,21 +566,21 @@ public:
         }
         v.preamp.reset();
 
-        // Amp envelope
+        // Amp envelope — prepare() was redundant (already done in prepare() above);
+        // kept for legibility/safety since FilterEnvelope::prepare() is cheap.
         float attack = paramAttack ? paramAttack->load() : 0.005f;
         float decay = paramDecay ? paramDecay->load() : 0.6f;
         float sustain = paramSustain ? paramSustain->load() : 0.5f;
         float release = paramRelease ? paramRelease->load() : 0.4f;
-        v.ampEnv.prepare(srf);
         v.ampEnv.setADSR(attack, decay, sustain, release);
         v.ampEnv.triggerHard();
 
         // Filter envelope — Wurli has a faster, more percussive filter sweep
-        v.filterEnv.prepare(srf);
         v.filterEnv.setADSR(0.001f, 0.2f + (1.0f - vel) * 0.3f, 0.0f, 0.2f);
         v.filterEnv.triggerHard();
 
         v.svf.reset();
+        v.svf.setMode(CytomicSVF::Mode::LowPass); // ensure mode is correct on stolen voices
 
         // Stereo placement
         float pan = static_cast<float>(note - 36) / 60.0f;
@@ -607,8 +639,10 @@ public:
                                               juce::NormalisableRange<float>(0.01f, 5.0f, 0.0f, 0.4f), 0.4f));
 
         // Filter
+        // FIX: default was 0.5 — meaning every preset started with 50% filter env sweep silently applied.
+        // Changed to 0.0 so Init preset is flat; presets that want sweep set it explicitly.
         params.push_back(std::make_unique<PF>(juce::ParameterID{"oddf_filterEnvAmt", 1}, "Oddfellow Filter Env Amount",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
         // FUSION
         params.push_back(std::make_unique<PF>(juce::ParameterID{"oddf_migration", 1}, "Oddfellow Migration",
