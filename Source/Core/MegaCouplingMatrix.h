@@ -158,6 +158,28 @@ public:
         std::atomic_store(&routeList, newRoutes);
     }
 
+    // (#1093 item 44) Clear user routes only, preserving normalled defaults.
+    // Useful for "reset patch" where factory coupling defaults should survive.
+    void clearUserRoutes()
+    {
+        auto current = std::atomic_load(&routeList);
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>();
+        if (current)
+        {
+            newRoutes->reserve(current->size());
+            for (const auto& r : *current)
+                if (r.isNormalled)
+                    newRoutes->push_back(r);
+        }
+        std::atomic_store(&routeList, newRoutes);
+    }
+
+    // (#1093 item 63) Global mute — UI A/B toggle that kills all coupling
+    // without disturbing the route list. processBlock() reads this atomic once
+    // per block and early-returns when muted.
+    void setGlobalCouplingMute(bool muted) { globalMute_.store(muted, std::memory_order_release); }
+    bool isGlobalCouplingMuted() const { return globalMute_.load(std::memory_order_acquire); }
+
     // Returns true if adding a route from sourceSlot → destSlot with the given
     // type would create a directed cycle in the graph of audio-rate coupling routes.
     //
@@ -205,32 +227,64 @@ public:
 
     void addRoute(CouplingRoute route)
     {
-        // Self-route guard (existing check).
+        (void)addRouteChecked(route); // ignore return — existing API swallows failures
+    }
+
+    // (#1093 item 53) Convenience overload — build route from components so
+    // callers don't have to construct the struct. Uses user-defined (non-normalled)
+    // default. Returns true if added (matches addRouteChecked::Ok).
+    bool addRoute(int sourceSlot, int destSlot, CouplingType type, float amount)
+    {
+        CouplingRoute r;
+        r.sourceSlot   = sourceSlot;
+        r.destSlot     = destSlot;
+        r.type         = type;
+        r.amount       = amount;
+        r.isNormalled  = false;
+        r.active       = true;
+        return addRouteChecked(r) == AddRouteResult::Ok;
+    }
+
+    // (#1093 items 43, 48, 56) — typed-return variant with explicit failure reasons.
+    // - Rejects self-routes, cycles, and exact duplicates (same src/dst/type).
+    // - Rejects when the route table is already at MaxRoutes.
+    //
+    // Duplicates would silently double the coupling amount, which felt like a
+    // different knob throwing off the mix. Explicit rejection is cleaner.
+    enum class AddRouteResult { Ok, SelfLoop, Cycle, Duplicate, MaxReached };
+
+    AddRouteResult addRouteChecked(CouplingRoute route)
+    {
         if (route.sourceSlot == route.destSlot)
-            return;
+            return AddRouteResult::SelfLoop;
 
-        // Graph-level cycle detection for audio-rate coupling types (Phase 3).
-        // Prevents A→B→A feedback loops that would clip and rail within one block.
-        // Control-rate types and KnotTopology are intentionally excluded — see
-        // wouldCreateCycle() for the full rationale.
         if (wouldCreateCycle(route.sourceSlot, route.destSlot, route.type))
-            return;
-
-        // Seed smoothedAmount to the target amount so the first block starts at
-        // the correct level rather than ramping up from zero. (#684)
-        route.smoothedAmount = route.amount;
+            return AddRouteResult::Cycle;
 
         auto current = std::atomic_load(&routeList);
-        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+        if (current)
+        {
+            if (static_cast<int>(current->size()) >= MaxRoutes)
+                return AddRouteResult::MaxReached;
+            // (#1093 item 48) Reject duplicates so coupling amount isn't silently
+            // doubled. Use findRoute semantics to detect.
+            for (const auto& r : *current)
+                if (r.sourceSlot == route.sourceSlot && r.destSlot == route.destSlot && r.type == route.type)
+                    return AddRouteResult::Duplicate;
+        }
+
+        route.smoothedAmount = route.amount;
+
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(current ? *current : std::vector<CouplingRoute>{});
         newRoutes->push_back(route);
         std::atomic_store(&routeList, newRoutes);
 
-        // Resolve sinkCache for any newly added AudioToBuffer route.
-        // resolveAudioToBufferSinks() is cheap (only touches AudioToBuffer routes)
-        // and must run on the message thread — safe here since addRoute is message-thread-only.
         if (route.type == CouplingType::AudioToBuffer)
             resolveAudioToBufferSinks();
+
+        return AddRouteResult::Ok;
     }
+
 
     // (#1093 item 52) Find a route by triple. Returns -1 if no match.
     // Message-thread only. Use the returned index with setRouteAmount/Active
@@ -311,6 +365,16 @@ public:
     {
         if (!routes || routes->empty())
             return;
+
+        // (#1093 item 63) Global mute — UI A/B toggle wired via atomic.
+        if (globalMute_.load(std::memory_order_acquire))
+            return;
+
+        // (#1093 item 49) Defensive assert: if the host unexpectedly raised its
+        // block size beyond what prepare() was called with, the scratch buffers
+        // don't cover the full block. std::min below caps numSamples to buffer
+        // size, but the assert surfaces the misconfiguration in Debug builds.
+        jassert(numSamples <= static_cast<int>(couplingBuffer.size()));
 
         // Load the current generation once per block (acquire) so processAudioRoute()
         // can compare it against each route's validGeneration without re-reading the
@@ -576,6 +640,11 @@ private:
     // between SRO control points. Computed in prepare() for ~3 kHz cutoff.
     // 0.0 (default) disables the LP — safe fallback if prepare() never ran.
     float controlRateLPCoeff_ = 0.0f;
+
+    // (#1093 item 63) Global coupling mute — UI A/B toggle that bypasses the
+    // entire processBlock without disturbing the route list. Atomic so the UI
+    // thread can toggle it at any time; audio thread loads once per block.
+    std::atomic<bool> globalMute_{ false };
 
     //-- Cycle detection helpers (message thread only) -------------------------
 
