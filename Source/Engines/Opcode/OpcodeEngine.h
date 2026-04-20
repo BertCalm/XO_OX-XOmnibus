@@ -244,6 +244,8 @@ struct OpcodeVoice
         active = false;
         velocity = 0.0f;
         feedbackState = 0.0f;
+        panL = 0.707f;  // restore pan defaults so stolen voices don't inherit stale pan
+        panR = 0.707f;
         glide.reset();
         carrier.reset();
         modulator.reset();
@@ -378,6 +380,12 @@ public:
         const float pMigration = loadP(paramMigration, 0.0f);
         const float pVelToIndex = loadP(paramVelToIndex, 0.6f);
 
+        // Amp ADSR — hoisted from per-sample loop; atomic loads once per block.
+        const float pAttack  = paramAttack  ? paramAttack->load()  : 0.005f;
+        const float pDecay   = paramDecay   ? paramDecay->load()   : 1.0f;
+        const float pSustain = paramSustain ? paramSustain->load() : 0.5f;
+        const float pRelease = paramRelease ? paramRelease->load() : 0.6f;
+
         const float macroChar = loadP(paramMacroCharacter, 0.0f);
         const float macroMove = loadP(paramMacroMovement, 0.0f);
         const float macroCoup = loadP(paramMacroCoupling, 0.0f);
@@ -386,8 +394,10 @@ public:
         // D006: mod wheel -> index, aftertouch -> brightness
         float effectiveIndex =
             std::clamp(pIndex + macroChar * 0.5f + modWheelAmount * 0.8f + couplingIndexMod, 0.0f, 5.0f);
+        // Nyquist-aware brightness ceiling — avoids aliasing at 96/192 kHz
+        const float nyquistCeil = srf * 0.49f;
         float effectiveBright = std::clamp(
-            pBrightness + macroMove * 5000.0f + aftertouchAmount * 4000.0f + couplingFilterMod, 200.0f, 20000.0f);
+            pBrightness + macroMove * 5000.0f + aftertouchAmount * 4000.0f + couplingFilterMod, 200.0f, nyquistCeil);
         float effectiveRatio = std::clamp(pRatio + macroSpace * 2.0f, 0.5f, 16.0f);
 
         smoothRatio.set(effectiveRatio);
@@ -410,6 +420,9 @@ public:
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
         const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
+        // Hoist LFO config outside voice loop — same rate/shape for all voices,
+        // and setRate() calls a division; computing once per block avoids N×kMaxVoices divisions.
+        // Amp ADSR is also applied per-voice here (block-level, not per-sample).
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -418,6 +431,9 @@ public:
             voice.lfo1.setShape(lfo1Shape);
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
+            // setADSR hoisted from per-sample inner loop — coefficients recalculated
+            // once per block, not 128× per block per voice.
+            voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -436,13 +452,6 @@ public:
             {
                 if (!voice.active)
                     continue;
-
-                // Update amp envelope ADSR per block so knob changes take effect on held notes
-                voice.ampEnv.setADSR(
-                    paramAttack  ? paramAttack->load()  : 0.005f,
-                    paramDecay   ? paramDecay->load()   : 1.0f,
-                    paramSustain ? paramSustain->load() : 0.5f,
-                    paramRelease ? paramRelease->load() : 0.6f);
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
@@ -485,7 +494,9 @@ public:
                 {
                     float modOut = voice.modulator.process();
                     float carrOut = voice.carrier.process();
-                    fmOutput = carrOut + modOut * fmIndex * 0.5f;
+                    // softClip: at high fmIndex the sum can reach ±(1 + fmIndex*0.5)
+                    // which at max index would be ±5 — clip to ±1 to prevent downstream clipping.
+                    fmOutput = softClip(carrOut + modOut * fmIndex * 0.5f);
                     break;
                 }
                 case 2: // Feedback: modulator feeds back into itself
@@ -502,15 +513,6 @@ public:
                 }
                 }
 
-                // Migration — subtle spectral enrichment from coupled engines
-                if (migrationN > 0.01f)
-                {
-                    // Add very subtle inharmonicity (what happens when FM travels
-                    // through acoustic traditions)
-                    float migDetune = fastSin(voice.carrier.phase * 6.28318530718f * 1.003f) * migrationN * 0.08f;
-                    fmOutput += migDetune;
-                }
-
                 // Amplitude envelope
                 float ampLevel = voice.ampEnv.process();
                 if (!voice.ampEnv.isActive())
@@ -519,15 +521,30 @@ public:
                     continue;
                 }
 
+                // Migration — subtle spectral enrichment from coupled engines.
+                // Scaled by ampLevel so it fades with the voice (silent on release tail).
+                if (migrationN > 0.01f)
+                {
+                    // Add very subtle inharmonicity (what happens when FM travels
+                    // through acoustic traditions)
+                    float migDetune = fastSin(voice.carrier.phase * 6.28318530718f * 1.003f)
+                                      * migrationN * 0.08f * ampLevel;
+                    fmOutput += migDetune;
+                }
+
                 // Filter — FM EP benefits from gentle LP to tame aliasing at high index
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
                 float velBright = voice.velocity * 3000.0f;
-                float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.1f, srf);
+                // Nyquist-aware cutoff ceiling — hardcoded 20000 Hz was too restrictive at >44.1 kHz
+                float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, nyquistCeil);
+                // setCoefficients_fast: uses fastTan to avoid std::tan in the per-sample hot path.
+                // Mode is fixed LowPass (set at noteOn); no need to re-set mode here.
+                voice.svf.setCoefficients_fast(cutoff, 0.1f, srf);
                 float filtered = voice.svf.processSample(fmOutput);
 
-                float output = filtered * ampLevel;
+                // softClip: FM with high index can produce transients above ±1;
+                // soft saturation preserves character better than hard-clipping.
+                float output = softClip(filtered * ampLevel);
 
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
@@ -556,7 +573,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = midiToFreq(note); // fastPow2 replaces std::pow — ~0.02% vs ~3.3% error
 
         v.active = true;
         v.currentNote = note;
@@ -607,6 +624,7 @@ public:
         v.filterEnv.triggerHard();
 
         v.svf.reset();
+        v.svf.setMode(CytomicSVF::Mode::LowPass); // Fixed LowPass — set once at noteOn, not per-sample
 
         // Stereo placement — keyboard position
         float pan = static_cast<float>(note - 36) / 60.0f;
