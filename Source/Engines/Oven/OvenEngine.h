@@ -100,6 +100,29 @@ constexpr float kCastIronModeRatios[16] = {
 constexpr float kAudsleyAmplitudes[16] = {1.000f, 0.620f, 0.550f, 0.480f, 0.400f, 0.310f, 0.240f, 0.185f,
                                           0.140f, 0.105f, 0.078f, 0.058f, 0.042f, 0.030f, 0.021f, 0.015f};
 
+// Perf fix: precomputed per-mode frequency-dependent decay factors.
+// exp(-0.0003 * m^2) is constant for a given mode index — computing it every
+// sample per voice per mode (8v * 16m = 128 fastExp/sample) is pure waste.
+// These values are: exp(-0.0003 * {0,1,4,9,16,25,36,49,64,81,100,121,144,169,196,225})
+constexpr float kFreqDecayFactors[16] = {
+    1.000000f, // m=0
+    0.999700f, // m=1
+    0.998801f, // m=2
+    0.997301f, // m=3
+    0.995201f, // m=4
+    0.992509f, // m=5
+    0.989232f, // m=6
+    0.985385f, // m=7
+    0.980980f, // m=8
+    0.976031f, // m=9
+    0.970554f, // m=10
+    0.964563f, // m=11
+    0.958074f, // m=12
+    0.951104f, // m=13
+    0.943668f, // m=14
+    0.935783f  // m=15
+};
+
 } // anonymous namespace
 
 //==============================================================================
@@ -269,11 +292,23 @@ struct OvenHammerModel
 //==============================================================================
 struct OvenHFNoiseFill
 {
-    void trigger(float velocity, float brightness) noexcept
+    // NP-A: SR-aware decay coefficient — recomputed on trigger so 96kHz
+    // sessions have the same perceived tail length as 44.1kHz sessions.
+    // ~10 second half-life at any sample rate (cast iron long sustain).
+    void prepare(float sampleRate) noexcept
+    {
+        // P21 fix: SR-derived decay coefficient (~10s half-life)
+        decayCoeff = std::exp(-1.0f / (10.0f * sampleRate));
+        // NP-B fix: set BandPass mode once here; process() never calls setMode()
+        svf.setMode(CytomicSVF::Mode::BandPass);
+        lastCutoff = -1.0f;
+    }
+
+    void trigger(float velocity, float /*brightness*/) noexcept
     {
         level = velocity * 0.08f; // subtle — this is fill, not the main event
-        decayCoeff = 0.9999f;     // long tail matching cast iron sustain
         noiseState = static_cast<uint32_t>(velocity * 12345.0f) + 67890u;
+        lastCutoff = -1.0f; // force coefficient refresh on next process()
     }
 
     float process(float cutoffHz, float sampleRate) noexcept
@@ -285,9 +320,14 @@ struct OvenHFNoiseFill
         noiseState = noiseState * 1664525u + 1013904223u;
         float noise = static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f;
 
-        // Shape with bandpass: above the modal ceiling but below brightness cutoff
-        svf.setMode(CytomicSVF::Mode::BandPass);
-        svf.setCoefficients(std::min(cutoffHz, sampleRate * 0.49f), 0.3f, sampleRate);
+        // P19 fix: only recompute SVF coefficients when cutoff moves > 1 Hz.
+        // NP-B: setMode() removed — mode set once in prepare().
+        float clampedCutoff = std::min(cutoffHz, sampleRate * 0.49f);
+        if (std::fabs(clampedCutoff - lastCutoff) > 1.0f)
+        {
+            svf.setCoefficients(clampedCutoff, 0.3f, sampleRate);
+            lastCutoff = clampedCutoff;
+        }
         float shaped = svf.processSample(noise) * level;
 
         level *= decayCoeff;
@@ -299,11 +339,13 @@ struct OvenHFNoiseFill
     void reset() noexcept
     {
         level = 0.0f;
+        lastCutoff = -1.0f;
         svf.reset();
     }
 
     float level = 0.0f;
-    float decayCoeff = 0.9999f;
+    float decayCoeff = 0.9997f; // placeholder; overwritten by prepare()
+    float lastCutoff = -1.0f;   // P19 guard
     uint32_t noiseState = 67890u;
     CytomicSVF svf;
 };
@@ -358,6 +400,7 @@ struct OvenVoice
         bloomLevel = 0.0f;
         sustained = false;
         noteHeld = false;
+        lastFilterCutoff = -1.0f; // P19: force coeff refresh on next note
         glide.reset();
         hammer.reset();
         hfFill.reset();
@@ -410,7 +453,8 @@ struct OvenSympatheticNetwork
 
         for (int n = 0; n < numActive && stringIdx < kMaxStrings; ++n)
         {
-            float noteFreq = 440.0f * std::pow(2.0f, (static_cast<float>(activeNotes[n]) - 69.0f) / 12.0f);
+            // P4 fix: std::pow → fastPow2 for MIDI→Hz in sympathetic string tuning
+            float noteFreq = 440.0f * fastPow2((static_cast<float>(activeNotes[n]) - 69.0f) / 12.0f);
 
             // Add sympathetic strings at harmonic intervals: octave, 5th, double octave
             float harmonics[] = {noteFreq * 2.0f, noteFreq * 3.0f, noteFreq * 0.5f};
@@ -492,6 +536,8 @@ public:
             voices[i].reset();
             voices[i].filterEnv.prepare(srf);
             voices[i].ampEnv.prepare(srf);
+            // NP-A fix: HFNoiseFill needs SR-aware decay coeff + mode set once here.
+            voices[i].hfFill.prepare(srf);
 
             // Per-voice thermal personality: cast iron bodies are never perfectly uniform
             // Seeded PRNG gives +-3 cents variance per voice
@@ -641,7 +687,8 @@ public:
 
         // LFO params — macroMovement boosts both LFO depths (D004: movement = more modulation)
         const float lfo1Rate = loadP(paramLfo1Rate, 0.3f);
-        const float lfo1Depth = std::clamp(loadP(paramLfo1Depth, 0.0f) + macroMovement * 0.3f, 0.0f, 1.0f);
+        // Params fix: loadP fallbacks match addParametersImpl defaults (lfo1Depth 0.05, lfo2Depth 0.0).
+        const float lfo1Depth = std::clamp(loadP(paramLfo1Depth, 0.05f) + macroMovement * 0.3f, 0.0f, 1.0f);
         const int lfo1Shape = paramLfo1Shape ? static_cast<int>(paramLfo1Shape->load()) : 0;
         const float lfo2Rate = loadP(paramLfo2Rate, 0.8f);
         const float lfo2Depth = std::clamp(loadP(paramLfo2Depth, 0.0f) + macroMovement * 0.2f, 0.0f, 1.0f);
@@ -666,6 +713,10 @@ public:
         smoothSympathetic.set(sympAmount);
         smoothBodyResonance.set(effectiveBodyRes);
         smoothBloom.set(pBloomTime);
+
+        // P25 fix: snapshot coupling mods BEFORE zeroing so the sample loop
+        // sees the values that arrived this block, not 0.
+        const float blockCouplingPitchMod = couplingPitchMod;
 
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -730,6 +781,12 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Hoist pitch-bend ratio (uses pre-zeroed coupling snapshot — P25 fix).
+        // PitchBendUtil::semitonesToFreqRatio calls fastPow2; hoisting saves one
+        // fastPow2 per active voice per sample.
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         for (int s = 0; s < numSamples; ++s)
         {
             float brightNow = smoothBrightness.process();
@@ -749,7 +806,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted; includes pre-zeroed pitch coupling (P25 fix)
 
                 // D002: LFO modulation
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 -> brightness
@@ -804,9 +861,9 @@ public:
                     modeAmp *= hardnessFalloff;
 
                     // Cast iron character: upper modes decay faster than lower modes
-                    // (material absorption is frequency-dependent)
-                    float freqDecayFactor = fastExp(-0.0003f * static_cast<float>(m * m));
-                    modeAmp *= freqDecayFactor;
+                    // (material absorption is frequency-dependent).
+                    // Perf: table lookup replaces per-sample fastExp (saves 128 calls/sample at 8v×16m).
+                    modeAmp *= kFreqDecayFactors[m];
 
                     resonanceSum += voice.modes[m].process(excitation) * modeAmp;
                 }
@@ -896,7 +953,8 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        // P4 fix: std::pow → fastPow2 for MIDI→Hz conversion
+        float freq = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
 
         float hardness = paramHardness ? paramHardness->load() : 0.4f;
         float brightness = paramBrightness ? paramBrightness->load() : 3000.0f;
@@ -915,18 +973,20 @@ public:
         float effectiveHardness = std::clamp(hardness + vel * 0.5f, 0.0f, 1.0f);
         v.hammer.trigger(vel, effectiveHardness, freq, srf);
 
-        // HF noise fill
+        // HF noise fill — reset first (clears SVF state), then trigger (sets level/seed).
+        // Bug fix: previous order (trigger-then-reset) zeroed the level we just set,
+        // silencing the HF fill entirely. Correct order: reset → trigger.
+        v.hfFill.reset();
         v.hfFill.trigger(vel, brightness);
-        v.hfFill.reset(); // reset SVF state for clean start
 
         // Filter envelope: fast attack, velocity-scaled decay
-        v.filterEnv.prepare(srf);
+        // P18 fix: prepare() already called in OvenEngine::prepare(); skip per-noteOn call.
         float filterDecay = 0.2f + (1.0f - vel) * 0.8f; // hard strikes = fast decay (Maillard sear), soft = slow
         v.filterEnv.setADSR(0.001f, filterDecay, 0.0f, 0.8f);
         v.filterEnv.triggerHard();
 
         // Amp envelope
-        v.ampEnv.prepare(srf);
+        // P18 fix: prepare() already called in OvenEngine::prepare(); skip per-noteOn call.
         float ampAttack = paramAmpAttack ? paramAmpAttack->load() : 0.001f;
         float ampDecay = paramAmpDecay ? paramAmpDecay->load() : 2.0f;
         float ampSustain = paramAmpSustain ? paramAmpSustain->load() : 0.3f;
