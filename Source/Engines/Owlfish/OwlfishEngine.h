@@ -155,19 +155,25 @@ public:
         couplingPitchMod = 0.0f;
         couplingFMMod = 0.0f;
 
-        // Render the organism
-        buffer.clear();
-        auto* outL = buffer.getWritePointer(0);
-        auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
+        // ADDITIVE: render into outputCacheL/R (scratch), then add to buffer.
+        // OwlfishVoice::process uses outL[i]=value (overwrite semantics), so we must
+        // isolate it from the output buffer and add the result at the end.
+        const int cacheSize = static_cast<int>(outputCacheL.size());
+        if (numSamples > cacheSize)
+            return; // guard: should not happen if prepare() was called correctly
+        std::fill(outputCacheL.begin(), outputCacheL.begin() + numSamples, 0.0f);
+        std::fill(outputCacheR.begin(), outputCacheR.begin() + numSamples, 0.0f);
 
         if (voice.isActive())
-            voice.process(outL, outR, numSamples, snapshot);
+            voice.process(outputCacheL.data(), outputCacheR.data(), numSamples, snapshot);
 
-        // Cache output for per-sample coupling reads
-        for (int i = 0; i < numSamples && i < static_cast<int>(outputCacheL.size()); ++i)
+        // Add rendered signal into the output buffer (additive slot-chain mix)
+        auto* outL = buffer.getWritePointer(0);
+        auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
+        for (int i = 0; i < numSamples; ++i)
         {
-            outputCacheL[static_cast<size_t>(i)] = outL[i];
-            outputCacheR[static_cast<size_t>(i)] = outR[i];
+            outL[i] += outputCacheL[static_cast<size_t>(i)];
+            outR[i] += outputCacheR[static_cast<size_t>(i)];
         }
 
         silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
