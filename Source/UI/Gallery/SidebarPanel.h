@@ -144,7 +144,7 @@ public:
         {
             outshineSidebar = std::make_unique<OutshineSidebarPanel>(proc);
             contentArea.addChildComponent(*outshineSidebar);
-            outshineSidebar->setVisible(false); // hidden — ExportTabPanel owns the full Export tab area
+            outshineSidebar->setVisible(activeTab == Export);
         }
 
         if (playPanel == nullptr)
@@ -254,7 +254,7 @@ public:
         if (exportPanel)
             exportPanel->setVisible(t == Export);
         if (outshineSidebar)
-            outshineSidebar->setVisible(false); // always hidden — off-screen
+            outshineSidebar->setVisible(t == Export);
         if (settingsPanel)
             settingsPanel->setVisible(t == Settings);
 
@@ -448,15 +448,22 @@ public:
         if (presetBrowser != nullptr)
             presetBrowser->setBounds(inner);
 
-        // ExportTabPanel owns the full Export tab content area.
-        // OutshineSidebarPanel is hidden and parked off-screen so it doesn't intercept input.
+        // ExportTabPanel takes the top of the Export content area;
+        // OutshineSidebarPanel sits below it with a fixed height.
         if (exportPanel != nullptr)
-            exportPanel->setBounds(contentArea.getLocalBounds());
-
-        if (outshineSidebar != nullptr)
         {
-            outshineSidebar->setBounds(0, 0, 0, 0);
-            outshineSidebar->setVisible(false);
+            auto exportArea = contentArea.getLocalBounds();
+            if (outshineSidebar != nullptr)
+            {
+                auto outshineArea = exportArea.removeFromBottom(kOutshineSidebarH);
+                outshineSidebar->setBounds(outshineArea);
+            }
+            exportPanel->setBounds(exportArea);
+        }
+        else if (outshineSidebar != nullptr)
+        {
+            // Defensive fallback — both panels are created together in setProcessor()
+            outshineSidebar->setBounds(contentArea.getLocalBounds());
         }
 
         if (playPanel != nullptr)
@@ -487,6 +494,7 @@ private:
     // Prototype: 32px tab bar, 2px accent underline
     static constexpr int kTabBarH = 32;
     static constexpr int kUnderlineH = 2;
+    static constexpr int kOutshineSidebarH = 180;
 
     static constexpr const char* tabLabels[NumTabs] = {"PRESET", "PERFORM", "EXPORT", "SETTINGS"};
 
@@ -534,7 +542,7 @@ private:
     // C3 — Export Tab Panel (constructed lazily when setProcessor() is called)
     std::unique_ptr<ExportTabPanel> exportPanel;
 
-    // Outshine sidebar — attached to Export tab below ExportTabPanel
+    // Outshine sidebar — shown in the Export tab below ExportTabPanel
     std::unique_ptr<OutshineSidebarPanel> outshineSidebar;
 
     // C6 — Settings (constructed lazily when setProcessor() is called)
