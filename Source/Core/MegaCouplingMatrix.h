@@ -150,6 +150,15 @@ public:
         return result;
     }
 
+    // (#1093 item 59) Single-slot engine query. Avoids a full 5-element copy
+    // when the caller only needs one slot. Returns nullptr for out-of-range.
+    SynthEngine* getEngineForSlot(int slot) const
+    {
+        if (slot < 0 || slot >= MaxSlots)
+            return nullptr;
+        return activeEngines[static_cast<size_t>(slot)].load(std::memory_order_acquire);
+    }
+
     //-- Route mutation (message thread only) ----------------------------------
 
     void clearRoutes()
