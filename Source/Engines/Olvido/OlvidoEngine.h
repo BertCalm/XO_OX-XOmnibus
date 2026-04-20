@@ -65,7 +65,7 @@ namespace xoceanus
 // ---- Engine-level constants ----
 static constexpr int   kOlvidoMaxVoices    = 8;
 static constexpr int   kOlvidoNumBands     = 6;   // 6 octave-spaced bands
-static constexpr float kOlvidoPI           = 3.14159265358979323846f;
+// kOlvidoPI removed — unused. kOlvidoTwoPI kept for FM modulator.
 static constexpr float kOlvidoTwoPI        = 6.28318530717958647692f;
 // Crossover frequencies for 6 bands: ~80, 320, 650, 1300, 5000 Hz
 // Band 0: <80Hz (abyss), Band 1: 80-320Hz, Band 2: 320-650Hz, Band 3: 650-1.3kHz,
@@ -106,8 +106,8 @@ struct OlvidoVoice
 
     // Per-band state (6 bands)
     float bandAmplitude[kOlvidoNumBands];     // current amplitude per band (0-1)
-    float bandDecayRate[kOlvidoNumBands];     // f²-scaled decay rate per band (per sample)
-    float bandTargetAmp[kOlvidoNumBands];     // target amplitude (for emergence mode)
+    float bandDecayRate[kOlvidoNumBands];     // f²-scaled decay rate (informational; decay computed inline)
+    float bandTargetAmp[kOlvidoNumBands];     // reserved for future emergence-to-target interpolation
 
     // Crossover filters: 5 crossover points, each LP+HP pair
     CytomicSVF crossoverLP[5];  // Low-pass at each crossover
@@ -209,6 +209,7 @@ public:
         smoothedReso         = 0.2f;
         smoothedDrive        = 0.1f;
         modWheelValue        = 0.0f;
+        expressionValue      = 0.0f;
         aftertouchValue      = 0.0f;
         pitchBendNorm        = 0.0f;
 
@@ -239,6 +240,7 @@ public:
         couplingFilterAccum   = 0.0f;
         cachedCouplingOutput  = 0.0f;
         modWheelValue         = 0.0f;
+        expressionValue       = 0.0f;
         aftertouchValue       = 0.0f;
         pitchBendNorm         = 0.0f;
 
@@ -398,18 +400,18 @@ public:
             {
                 if (msg.getControllerNumber() == 1)
                 {
-                    // CC1 mod wheel → depth control (real-time forgetting) (D006)
+                    // CC1 mod wheel → filter cutoff lift (D006)
                     modWheelValue = msg.getControllerValue() / 127.0f;
                 }
                 else if (msg.getControllerNumber() == 11)
                 {
                     // CC11 expression → current sweep (forgetting ↔ emergence) (D006)
-                    aftertouchValue = msg.getControllerValue() / 127.0f;
+                    expressionValue = msg.getControllerValue() / 127.0f;
                 }
             }
             else if (msg.isChannelPressure())
             {
-                // Aftertouch → erosion rate multiplier
+                // Channel pressure (aftertouch) → current sweep overlay
                 aftertouchValue = msg.getChannelPressureValue() / 127.0f;
             }
             else if (msg.isPitchWheel())
@@ -428,6 +430,37 @@ public:
 
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
+
+        // ---- Hoist block-constant per-band decay scales ----
+        // std::pow(bi+1, 2*depth) is constant per block; compute once, reuse every sample.
+        float bandDecayScale[kOlvidoNumBands];
+        float bandEmergenceScale[kOlvidoNumBands];
+        for (int bi = 0; bi < kOlvidoNumBands; ++bi)
+        {
+            bandDecayScale[bi]     = std::pow(static_cast<float>(bi + 1), 2.0f * effectiveDepth);
+            float invertIdx        = static_cast<float>((kOlvidoNumBands - 1) - bi);
+            bandEmergenceScale[bi] = std::pow(invertIdx + 1.0f, 2.0f * effectiveDepth);
+        }
+
+        // ---- Hoist block-constant per-voice crossover and LFO settings ----
+        // actualCrossover[] only changes when shoreline param changes.
+        // Updating coefficients here (once per block) vs per-sample saves
+        // 10 setCoefficients_fast calls × numVoices × numSamples.
+        for (auto& v : voices)
+        {
+            if (v.active)
+            {
+                for (int ci = 0; ci < 5; ++ci)
+                {
+                    v.crossoverLP[ci].setMode(CytomicSVF::Mode::LowPass);
+                    v.crossoverLP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+                    v.crossoverHP[ci].setMode(CytomicSVF::Mode::HighPass);
+                    v.crossoverHP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+                }
+                v.lfo1.setRate(paramLfoRate, sampleRateFloat);
+                v.lfo1.setShape(paramLfoShape);
+            }
+        }
 
         // ---- Per-sample render loop ----
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
@@ -453,7 +486,7 @@ public:
 
                 ++activeCount;
 
-                // Voice stealing crossfade
+                // Voice crossfade: fade-in for new stolen voices, fade-out for released slots
                 if (voice.isFadingOut)
                 {
                     voice.crossfadeGain -= voiceFadeRate;
@@ -464,6 +497,12 @@ public:
                         voice.active        = false;
                         continue;
                     }
+                }
+                else if (voice.crossfadeGain < 1.0f)
+                {
+                    // Fade-in after voice steal (crossfadeGain started at 0)
+                    voice.crossfadeGain += voiceFadeRate;
+                    if (voice.crossfadeGain > 1.0f) voice.crossfadeGain = 1.0f;
                 }
 
                 // Portamento glide
@@ -486,8 +525,7 @@ public:
                 }
 
                 // ---- Per-voice LFO (D002/D005) ----
-                voice.lfo1.setRate(paramLfoRate, sampleRateFloat);
-                voice.lfo1.setShape(paramLfoShape);
+                // Rate/shape already set per-block above — just tick.
                 float lfo1Out = flushDenormal(voice.lfo1.process() * effectiveLfoDepth);
 
                 // ---- OSCILLATOR ----
@@ -558,25 +596,16 @@ public:
                 }
 
                 // ---- CROSSOVER FILTER BANK (6 bands) ----
-                // Use cascaded CytomicSVF LP+HP pairs at each crossover freq
-                // band[0] = LP at crossover[0]
-                // residual = HP at crossover[0]
-                // band[1] = LP at crossover[1] of residual
-                // ...etc
+                // Crossover frequencies are block-constant (actualCrossover[] computed once
+                // per block). setCoefficients_fast was being called every sample — removed.
+                // Coefficients are updated in the per-block hoisting pass below.
                 float bandSignal[kOlvidoNumBands];
                 float residual = oscOut;
 
                 for (int ci = 0; ci < 5; ++ci)
                 {
-                    // Low-pass at this crossover → goes into band ci
-                    voice.crossoverLP[ci].setMode(CytomicSVF::Mode::LowPass);
-                    voice.crossoverLP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
                     bandSignal[ci] = voice.crossoverLP[ci].processSample(residual);
-
-                    // High-pass continues to next band
-                    voice.crossoverHP[ci].setMode(CytomicSVF::Mode::HighPass);
-                    voice.crossoverHP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
-                    residual = voice.crossoverHP[ci].processSample(residual);
+                    residual       = voice.crossoverHP[ci].processSample(residual);
 
                     bandSignal[ci] = flushDenormal(bandSignal[ci]);
                     residual       = flushDenormal(residual);
@@ -585,9 +614,12 @@ public:
                 bandSignal[5] = residual;
 
                 // ---- PER-BAND DECAY (spectral erosion) ----
-                // Effective current: combine param + CC11 expression sweep
+                // Effective current: combine param + CC11 expression + aftertouch
+                // expressionValue [0..1]: centred at 0.5, maps to ±0.5 current offset
+                // aftertouchValue [0..1]: adds up to +0.3 forgetting pressure
                 float effectiveCurrentNow = juce::jlimit(-1.0f, 1.0f,
-                    effectiveCurrent + (aftertouchValue - 0.5f) * 0.5f);
+                    effectiveCurrent + (expressionValue - 0.5f) * 0.5f
+                                     + aftertouchValue * 0.3f);
 
                 // base_rate = 1.0 / erosion_time (per second → per sample)
                 float baseRate = (effectiveErosion > 0.0f) ? (1.0f / (effectiveErosion * sampleRateFloat)) : 0.0f;
@@ -604,9 +636,8 @@ public:
                     else if (effectiveCurrentNow > 0.0f)
                     {
                         // STANDARD DECAY (forgetting): bands erode over time
-                        // decay_rate[band] = base_rate * pow(band_index+1, 2.0 * depth)
-                        float decayScale = std::pow(static_cast<float>(bi + 1), 2.0f * effectiveDepth);
-                        float perSampleDecay = baseRate * decayScale * effectiveCurrentNow;
+                        // decay_rate[band] = base_rate * bandDecayScale[bi] (hoisted per-block)
+                        float perSampleDecay = baseRate * bandDecayScale[bi] * effectiveCurrentNow;
 
                         // Flotsam: stochastic decay skip (per-band, per-sample)
                         if (effectiveFlotsam > 0.001f && rng.nextFloat() < effectiveFlotsam)
@@ -626,11 +657,8 @@ public:
                     else if (effectiveCurrentNow < 0.0f)
                     {
                         // EMERGENCE: bands sharpen TOWARD full amplitude
-                        // Higher bands emerge SLOWER (inverse of decay order)
-                        // Band 5 (highest) emerges slowest — inverse scaling
-                        float invertBandIdx   = static_cast<float>((kOlvidoNumBands - 1) - bi);
-                        float emergenceScale  = std::pow(invertBandIdx + 1.0f, 2.0f * effectiveDepth);
-                        float emergenceRate   = baseRate * emergenceScale * std::fabs(effectiveCurrentNow);
+                        // Higher bands emerge SLOWER — emergenceScale hoisted per-block
+                        float emergenceRate = baseRate * bandEmergenceScale[bi] * std::fabs(effectiveCurrentNow);
 
                         voice.bandAmplitude[bi] += emergenceRate;
 
@@ -640,22 +668,34 @@ public:
                     }
                     // current == 0: no spectral change (bypass erosion)
 
-                    voice.bandDecayRate[bi] = baseRate *
-                        std::pow(static_cast<float>(bi + 1), 2.0f * effectiveDepth);
+                    // bandDecayRate[] is unused in the render path — skip redundant write.
                 }
 
                 // ---- RECONSTRUCT: sum bands × amplitude ----
+                // Apply SpectralShaping coupling: couplingSpectralAccum modulates all bands.
+                // Apply AudioToBuffer coupling: couplingBandFeedAccum injects into top bands (4-5).
                 float postErosion = 0.0f;
                 for (int bi = 0; bi < kOlvidoNumBands; ++bi)
-                    postErosion += bandSignal[bi] * voice.bandAmplitude[bi];
+                {
+                    float modAmp = juce::jlimit(0.0f, 1.0f,
+                        voice.bandAmplitude[bi] + couplingSpectralAccum);
+                    float sig = bandSignal[bi] * modAmp;
+                    // AudioToBuffer injects into highest two bands
+                    if (bi >= 4)
+                        sig += couplingBandFeedAccum;
+                    postErosion += sig;
+                }
                 postErosion = flushDenormal(postErosion);
 
                 // Cache for coupling output (post-erosion, pre-filter)
                 voice.lastCouplingOut = postErosion;
 
                 // ---- OUTPUT FILTER ----
-                // Modulation envelope routes to filter cutoff
-                float modEnvCutoffOffset = modLevel * paramFilterCutoff * paramFilterEnv;
+                // Modulation envelope routes to filter cutoff.
+                // Fixed 4 kHz envelope depth scale (independent of cutoff) so the
+                // offset range is musically consistent across all cutoff settings.
+                static constexpr float kEnvCutoffScale = 4000.0f;
+                float modEnvCutoffOffset = modLevel * kEnvCutoffScale * paramFilterEnv;
                 float voiceCutoff = juce::jlimit(80.0f, 20000.0f,
                     smoothedCutoff + modEnvCutoffOffset + lfo1Out * 1000.0f);
 
@@ -691,13 +731,7 @@ public:
             mixLeft  *= normFactor;
             mixRight *= normFactor;
 
-            // Cache output for coupling
-            if (static_cast<size_t>(sampleIdx) < outputCacheLeft.size())
-            {
-                outputCacheLeft[static_cast<size_t>(sampleIdx)]  = mixLeft;
-                outputCacheRight[static_cast<size_t>(sampleIdx)] = mixRight;
-            }
-
+            // Write to output buffer (output cache written post-reverb below)
             outL[sampleIdx] = mixLeft;
             outR[sampleIdx] = mixRight;
         }
@@ -744,14 +778,12 @@ public:
         // ---- Apply shared FDN reverb ----
         applyReverb(outL, outR, numSamples, paramReverbSize, effectiveReverbMix);
 
-        // Update output cache after effects
-        for (int i = 0; i < numSamples; ++i)
+        // Update output cache (post-reverb, single write per block — pre-reverb write removed)
+        const int cacheN = juce::jmin(numSamples, static_cast<int>(outputCacheLeft.size()));
+        for (int i = 0; i < cacheN; ++i)
         {
-            if (static_cast<size_t>(i) < outputCacheLeft.size())
-            {
-                outputCacheLeft[static_cast<size_t>(i)]  = outL[i];
-                outputCacheRight[static_cast<size_t>(i)] = outR[i];
-            }
+            outputCacheLeft[static_cast<size_t>(i)]  = outL[i];
+            outputCacheRight[static_cast<size_t>(i)] = outR[i];
         }
 
         // ---- Feed silence gate ----
@@ -1117,15 +1149,13 @@ private:
             float inMono = (outL[i] + outR[i]) * 0.5f;
 
             // ---- FDN tick ----
-            int rd0 = (fdnIdx0 + 1) % static_cast<int>(fdnBuf0.size());
-            int rd1 = (fdnIdx1 + 1) % static_cast<int>(fdnBuf1.size());
-            int rd2 = (fdnIdx2 + 1) % static_cast<int>(fdnBuf2.size());
-            int rd3 = (fdnIdx3 + 1) % static_cast<int>(fdnBuf3.size());
-
-            float d0 = fdnBuf0[static_cast<size_t>(rd0)];
-            float d1 = fdnBuf1[static_cast<size_t>(rd1)];
-            float d2 = fdnBuf2[static_cast<size_t>(rd2)];
-            float d3 = fdnBuf3[static_cast<size_t>(rd3)];
+            // Read from current write index (oldest value in the circular buffer).
+            // Previous code used (idx+1)%size which reads one sample ahead of the
+            // write head — effectively 0 delay — defeating the delay line entirely.
+            float d0 = fdnBuf0[static_cast<size_t>(fdnIdx0)];
+            float d1 = fdnBuf1[static_cast<size_t>(fdnIdx1)];
+            float d2 = fdnBuf2[static_cast<size_t>(fdnIdx2)];
+            float d3 = fdnBuf3[static_cast<size_t>(fdnIdx3)];
 
             // Hadamard mixing matrix (lossless, decorrelates channels)
             float s0 =  d0 + d1 + d2 + d3;
@@ -1194,9 +1224,10 @@ private:
 
             if (legatoMode && wasActive)
             {
-                // Legato: glide without reinit
+                // Legato: glide to new pitch without reinitialising spectral state
                 voice.midiNote = noteNum;
                 voice.velocity = velocity;
+                voice.active   = true;  // guard: ensure playing if voice was released
                 // Retrigger envelopes
                 voice.ampEnv.noteOn();
                 voice.modEnv.noteOn();
@@ -1218,12 +1249,9 @@ private:
         int voiceIdx = findVoiceForNoteOn(maxPoly);
         auto& voice  = voices[static_cast<size_t>(voiceIdx)];
 
-        // If stealing an active voice, crossfade to prevent click
-        if (voice.active)
-        {
-            voice.isFadingOut   = true;
-            voice.crossfadeGain = std::min(voice.crossfadeGain, 0.5f);
-        }
+        // Track whether we are stealing so we can fade the new voice in from 0
+        // (single-slot steal: old content is lost, new voice fades in to suppress click).
+        const bool stealingActive = voice.active;
 
         // Compute poly average band state for memory link
         float polyAvgBand[kOlvidoNumBands] = {};
@@ -1250,6 +1278,11 @@ private:
                   depth, erosion, current, abyssHold, anchorBand,
                   memoryLink, polyAvgBand, actualCrossover,
                   /* monoGlide */ false);
+
+        // After initVoice sets crossfadeGain=1, start a fade-in on stolen slots
+        // so the new voice ramps from silence, avoiding the discontinuity click.
+        if (stealingActive)
+            voice.crossfadeGain = 0.0f;  // fade in from zero
     }
 
     // Initialize a single voice on noteOn
@@ -1271,7 +1304,11 @@ private:
         voice.frequency        = freq;
         voice.targetFrequency  = freq;
         voice.currentFrequency = freq;
-        voice.glideCoefficient = monoGlide ? 0.1f : 1.0f;
+        // Glide coefficient derived from ~50ms time constant so portamento speed
+        // is sample-rate-independent (P-OLV-08 / matches fleet standard).
+        voice.glideCoefficient = monoGlide
+            ? (1.0f - std::exp(-1.0f / (0.050f * sampleRateFloat)))
+            : 1.0f;
         voice.startTime        = voiceTimestamp++;
         voice.crossfadeGain    = 1.0f;
         voice.fmModPhase       = 0.0f;
@@ -1295,13 +1332,12 @@ private:
             // Emergence (current < 0): start at decayed level, target = full
             if (current < 0.0f)
             {
-                // Calculate what the decayed level would be after erosion
-                float baseRate = (erosion > 0.0f) ? (1.0f / erosion) : 0.0f;
-                float decayScale = std::pow(static_cast<float>(bi + 1), 2.0f * depth);
-                // Approximate decay after 0.5 erosion time
-                float decayedAmp = initAmp * std::exp(-baseRate * decayScale * 0.5f);
+                // Calculate what the decayed level would be after ~0.5 erosion-time.
+                // baseRate must be in per-second (not per-sample) for exp() to be meaningful.
+                float baseRateSec = (erosion > 0.0f) ? (1.0f / erosion) : 0.0f;
+                float decayScale  = std::pow(static_cast<float>(bi + 1), 2.0f * depth);
+                float decayedAmp  = initAmp * std::exp(-baseRateSec * decayScale * 0.5f);
                 decayedAmp = juce::jlimit(0.0f, 1.0f, decayedAmp);
-                // Start at decayed level
                 voice.bandAmplitude[bi] = decayedAmp;
             }
             else
@@ -1426,6 +1462,7 @@ private:
     //==========================================================================
 
     // ---- Audio configuration ----
+    // sampleRateDouble retained for base-class / future use; all DSP uses sampleRateFloat.
     double sampleRateDouble = 44100.0;
     float  sampleRateFloat  = 44100.0f;
     float  voiceFadeRate    = 0.01f;
@@ -1440,9 +1477,10 @@ private:
     float smoothedDrive  = 0.1f;
 
     // ---- D006: expression ----
-    float modWheelValue   = 0.0f;  // CC1 → depth control
-    float aftertouchValue = 0.0f;  // aftertouch / CC11 expression → current sweep
-    float pitchBendNorm   = 0.0f;  // ±1
+    float modWheelValue      = 0.0f;  // CC1 → filter cutoff lift
+    float expressionValue    = 0.0f;  // CC11 expression → current sweep
+    float aftertouchValue    = 0.0f;  // channel pressure → current sweep
+    float pitchBendNorm      = 0.0f;  // ±1
 
     // ---- Last noteOn state ----
     float lastNoteVelocity = 0.0f;
