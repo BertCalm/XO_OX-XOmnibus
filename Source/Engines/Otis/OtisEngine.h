@@ -113,8 +113,9 @@ static constexpr float kHammondHarmonics[9] = {
 struct TonewheelCrosstalk
 {
     // Generate crosstalk for a given drawbar's harmonic
-    // Returns the additional signal from adjacent tonewheels
-    float process(float fundamentalFreq, int drawbarIndex, float phase, float amount, float sampleRate) noexcept
+    // Returns the additional signal from adjacent tonewheels.
+    // F14/P33: sampleRate parameter was unused — removed from signature.
+    float process(float fundamentalFreq, int drawbarIndex, float phase, float amount) noexcept
     {
         if (amount < 0.001f)
             return 0.0f;
@@ -145,7 +146,7 @@ struct TonewheelCrosstalk
         float farUpperPhase = phase * farUpperRatio / baseHarmonic;
         crosstalkSum += fastSin(farUpperPhase * kTwoPi) * 0.004f;
 
-        (void)sampleRate;
+        (void)fundamentalFreq; // frequency context retained for future use
 
         return crosstalkSum * amount;
     }
@@ -404,15 +405,17 @@ struct LeslieSpeaker
         float readOffsetL = basedelay + dopplerOffset;
         float readOffsetR = basedelay - dopplerOffset; // 180° for stereo Doppler spread
 
-        // Fractional read via linear interpolation
+        // Fractional read via linear interpolation.
+        // F15: replaced `while` loop with single add + modulo — bounded offset
+        // (max 30 samples) is always < kDelayBufferSize, so one correction suffices.
         auto readDelay = [&](const std::array<float, kDelayBufferSize>& buf, float offset) -> float
         {
             float readPosF = static_cast<float>(delayWritePos) - offset;
-            while (readPosF < 0.0f)
+            if (readPosF < 0.0f)
                 readPosF += static_cast<float>(kDelayBufferSize);
             int r0 = static_cast<int>(readPosF) % kDelayBufferSize;
             int r1 = (r0 + 1) % kDelayBufferSize;
-            float frac = readPosF - static_cast<float>(static_cast<int>(readPosF));
+            float frac = readPosF - std::floor(readPosF);
             return buf[r0] + frac * (buf[r1] - buf[r0]);
         };
 
@@ -867,13 +870,19 @@ public:
         smoothDrawbar.fill({});
         for (auto& s : smoothDrawbar)
             s.prepare(srf);
-        smoothLeslie.prepare(srf);
-        smoothKeyClick.prepare(srf);
+        // F19/F20: smoothLeslie and smoothKeyClick removed — their outputs were never
+        // consumed in the per-sample loop. Leslie speed is set once per block;
+        // keyClick level is sampled at noteOn time from the raw parameter pointer.
         smoothBrightness.prepare(srf);
         smoothDrive.prepare(srf);
 
         // Hammond organ: reverb-tail category (organ sustains + Leslie tail)
         prepareSilenceGate(sr, maxBlockSize, 500.0f);
+
+        // F29: reset percussion state on prepare() so a sample-rate change
+        // doesn't leave stale anyKeysHeld counts or disarmed percussion.
+        percussionArmed = true;
+        anyKeysHeld = 0;
     }
 
     void releaseResources() override {}
@@ -991,11 +1000,20 @@ public:
         for (int d = 0; d < 9; ++d)
             drawbarLevels[d] = loadP(paramDrawbar[d], (d == 2) ? 1.0f : 0.0f);
 
+        // F11/F12/P26: capture coupling mods BEFORE zeroing — zero at block start,
+        // then use captured snapshot so the signal reaches pitch and FM processing.
+        const float capturedFilterMod = couplingFilterMod;
+        const float capturedPitchMod  = couplingPitchMod;
+        const float capturedFMMod     = couplingFMMod;
+        couplingFilterMod = 0.0f;
+        couplingPitchMod  = 0.0f;
+        couplingFMMod     = 0.0f;
+
         // Effective parameters with macro influence
         // D006: mod wheel → Leslie speed (organ tradition: swell pedal)
         float effectiveLeslie = std::clamp(pLeslieSpeed + macroMovement * 0.4f + modWheelAmount * 0.5f, 0.0f, 1.0f);
         float effectiveBright = std::clamp(
-            pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, 20000.0f);
+            pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 3000.0f + capturedFilterMod, 200.0f, 20000.0f);
         float effectiveDrive = std::clamp(pDrive + macroCharacter * 0.3f, 0.0f, 1.0f);
         float effectiveCrosstalk = std::clamp(pCrosstalk + macroCoupling * 0.3f, 0.0f, 1.0f);
 
@@ -1006,27 +1024,19 @@ public:
         leslie.setSpeed(effectiveLeslie);
 
         // Smooth parameters
+        // F19/F20: smoothLeslie and smoothKeyClick removed (see prepare comment).
         for (int d = 0; d < 9; ++d)
             smoothDrawbar[d].set(drawbarLevels[d]);
-        smoothLeslie.set(effectiveLeslie);
-        smoothKeyClick.set(pKeyClickLevel);
         smoothBrightness.set(effectiveBright);
         smoothDrive.set(effectiveDrive);
 
         // Pitch bend
         const float bendSemitones = pitchBendNorm * pBendRange;
 
-        // Reset coupling accumulators
-        couplingFilterMod = 0.0f;
-        couplingPitchMod = 0.0f;
-        couplingFMMod = 0.0f;
-
-        // Global steam pressure wobble for calliope (all pipes share this base)
-        // Slow chaotic variation in steam boiler pressure
-        steamPressurePhase += 1.7f / srf; // ~1.7 Hz base wobble
-        if (steamPressurePhase >= 1.0f)
-            steamPressurePhase -= 1.0f;
-        float globalSteamWobble = fastSin(steamPressurePhase * 6.28318530f);
+        // F06/P21: steamPressurePhase must advance per-sample (not once per block)
+        // to give a sample-rate-independent wobble rate of ~1.7 Hz.
+        // globalSteamWobble is now computed inside the per-sample loop below.
+        const float kSteamWobbleInc = 1.7f / srf;
 
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
@@ -1043,12 +1053,36 @@ public:
                     voices[vi].ampEnv.setADSR(atkB, decB, susB, relB);
         }
 
+        // F27/P31: hoist LFO setRate/setShape out of the per-sample loop.
+        // Rate and shape are block-constant params; calling them per-sample
+        // burns compute on identity updates. Do once per block here.
+        for (int vi = 0; vi < kMaxVoices; ++vi)
+        {
+            if (!voices[vi].active)
+                continue;
+            voices[vi].lfo1.setRate(lfo1Rate, srf);
+            voices[vi].lfo1.setShape(lfo1Shape);
+            voices[vi].lfo2.setRate(lfo2Rate, srf);
+            voices[vi].lfo2.setShape(lfo2Shape);
+        }
+
         for (int s = 0; s < numSamples; ++s)
         {
+            // F06/P21: advance steam pressure phase per-sample for sr-independent wobble
+            steamPressurePhase += kSteamWobbleInc;
+            if (steamPressurePhase >= 1.0f)
+                steamPressurePhase -= 1.0f;
+            const float globalSteamWobble = fastSin(steamPressurePhase * 6.28318530f);
+
             // Per-sample smoothed values
-            float smoothedDrawbars[9];
-            for (int d = 0; d < 9; ++d)
-                smoothedDrawbars[d] = smoothDrawbar[d].process();
+            // F32/PERF: only tick drawbar smoothers when Hammond (model 0) is active,
+            // avoiding 9 wasted multiply-adds per sample on other models.
+            float smoothedDrawbars[9] = {};
+            if (organModel == 0)
+            {
+                for (int d = 0; d < 9; ++d)
+                    smoothedDrawbars[d] = smoothDrawbar[d].process();
+            }
 
             float brightNow = smoothBrightness.process();
             float driveNow = smoothDrive.process();
@@ -1061,8 +1095,6 @@ public:
                 if (!voice.active)
                     continue;
 
-
-
                 // Process amp envelope
                 float ampEnvLevel = voice.ampEnv.process();
                 if (voice.ampEnv.getStage() == FilterEnvelope::Stage::Idle)
@@ -1072,14 +1104,12 @@ public:
                 }
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                // F11/P26: use capturedPitchMod (zeroed-before-use bug fix)
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
 
-                // Per-voice LFOs
-                voice.lfo1.setRate(lfo1Rate, srf);
-                voice.lfo1.setShape(lfo1Shape);
-                voice.lfo2.setRate(lfo2Rate, srf);
-                voice.lfo2.setShape(lfo2Shape);
-
+                // F27/P31: LFO rate/shape are block-constant — hoist setRate/setShape
+                // outside the per-voice per-sample loop by running them once above.
+                // (They are set once per block in the pre-loop LFO hoist below.)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
@@ -1091,8 +1121,8 @@ public:
                 float lfo1PitchVal = (organModel == 2) ? lfo1Val * 0.1f : lfo1Val;
                 freq *= PitchBendUtil::semitonesToFreqRatio(lfo1PitchVal * 2.0f);
 
-                // FM coupling input
-                freq += couplingFMMod * 100.0f;
+                // F12/P26: use capturedFMMod (zeroed-before-use bug fix)
+                freq += capturedFMMod * 100.0f;
 
                 float voiceOut = 0.0f;
 
@@ -1124,7 +1154,7 @@ public:
                         float tonewheel = fastSin(harmonicPhase * 6.28318530f);
 
                         // Tonewheel crosstalk
-                        float xtalk = voice.crosstalk.process(freq, d, voice.phase, effectiveCrosstalk, srf);
+                        float xtalk = voice.crosstalk.process(freq, d, voice.phase, effectiveCrosstalk);
 
                         tonewheelSum += (tonewheel + xtalk) * drawbarLevel;
                     }
@@ -1201,7 +1231,7 @@ public:
                 // D001: velocity → filter brightness
                 cutoff = std::clamp(cutoff * (0.5f + voice.velocity * 0.5f), 200.0f, 20000.0f);
 
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                // F02/P31: setMode is constant (LowPass) — moved to noteOn(), removed here.
                 voice.svf.setCoefficients_fast(cutoff, 0.15f, srf);
                 float filtered = voice.svf.processSample(voiceOut);
 
@@ -1268,22 +1298,22 @@ public:
         v.phase = 0.0f;
 
         // Amp envelope
+        // F10/P18: prepare() is called once in the engine prepare() — do not call per noteOn.
         float attack = paramAttack ? paramAttack->load() : 0.005f;
         float decay = paramDecay ? paramDecay->load() : 0.3f;
         float sustain = paramSustain ? paramSustain->load() : 0.8f;
         float release = paramRelease ? paramRelease->load() : 0.3f;
 
-        v.ampEnv.prepare(srf);
         v.ampEnv.setADSR(attack, decay, sustain, release);
         v.ampEnv.triggerHard();
 
-        // Filter envelope
-        v.filterEnv.prepare(srf);
+        // Filter envelope — hardcoded shape (no user-facing env shape params)
         v.filterEnv.setADSR(0.001f, 0.3f, 0.0f, 0.5f);
         v.filterEnv.triggerHard();
 
-        // Reset filter
+        // Reset filter — set mode once here (F02/P31: was per-sample, now per-noteOn)
         v.svf.reset();
+        v.svf.setMode(CytomicSVF::Mode::LowPass);
 
         // Model-specific note-on
         switch (organModel)
@@ -1522,7 +1552,8 @@ private:
 
     // Parameter smoothers
     std::array<ParameterSmoother, 9> smoothDrawbar;
-    ParameterSmoother smoothLeslie, smoothKeyClick, smoothBrightness, smoothDrive;
+    // F19/F20: smoothLeslie and smoothKeyClick removed — outputs were never consumed.
+    ParameterSmoother smoothBrightness, smoothDrive;
 
     // Expression
     float pitchBendNorm = 0.0f;
