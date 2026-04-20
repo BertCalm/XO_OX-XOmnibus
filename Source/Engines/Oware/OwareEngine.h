@@ -133,8 +133,11 @@ struct OwareMalletExciter
             out += fastSin(phase * 3.14159265f) * bounceAmp;
         }
 
-        // Shut off after both strikes complete
-        if (sampleCounter >= bounceSample + contactSamples + 1)
+        // Shut off after both strikes complete.
+        // F12: when no bounce, use contactSamples as shutdown threshold (not the
+        // default bounceSample=720 sentinel which would run 720 silent samples).
+        int shutdownAt = bounceActive ? bounceSample + contactSamples : contactSamples;
+        if (sampleCounter >= shutdownAt)
             active = false;
 
         ++sampleCounter;
@@ -203,9 +206,11 @@ struct OwareMode
         y1 = 0.0f;
         y2 = 0.0f;
         lastOutput = 0.0f;
+        freq = 0.0f;     // F11: reset to 0 so rebuildSympathyCouplingTables skips
+        cachedQ = -1.0f; //      this mode until setFreqAndQ is called next render
     }
 
-    float freq = 440.0f;
+    float freq = 0.0f;     // F11: init to 0 so coupling-table builder skips unset modes
     float cachedQ = -1.0f; // W03: dirty-flag cache; -1 forces first-sample computation
     float b0 = 0.0f, a1 = 0.0f, a2 = 0.0f;
     float y1 = 0.0f, y2 = 0.0f;
@@ -237,13 +242,14 @@ struct OwareBuzzMembrane
 
     void prepare(float sampleRate, int bodyType) noexcept
     {
-        // Buzz frequency depends on body type:
-        // gourd/tube = 300 Hz, frame = 150 Hz, metal = 500 Hz
+        // F6: Buzz frequency matched to owr_bodyType enum (0=tube, 1=frame, 2=bowl, 3=open).
+        // Prior code used bodyType==2 for "metal" but 2 is bowl in the engine's enum.
+        // tube/open=300 Hz, frame=150 Hz, bowl=420 Hz (sub-octave membrane resonance).
         float buzzFreq = 300.0f;
         if (bodyType == 1)
             buzzFreq = 150.0f;
         else if (bodyType == 2)
-            buzzFreq = 500.0f;
+            buzzFreq = 420.0f; // bowl: membrane resonance near sub-octave of typical pitches
 
         buzzBPF.setMode(CytomicSVF::Mode::BandPass);
         buzzBPF.setCoefficients(buzzFreq, 0.6f, sampleRate);
@@ -274,6 +280,14 @@ struct OwareBodyResonator
 
     void setFundamental(float freqHz) noexcept
     {
+        // F9: dirty-flag — frame modes are fixed-frequency (200/580/1100 Hz) so
+        //     their setFreqAndQ calls are already protected by OwareMode's dirty-flag,
+        //     but the bowl trig (fastCos/fastSin) and tube delay are recomputed every
+        //     sample even when freq hasn't changed (e.g., sustaining notes).
+        //     Skip the whole body when freq is within 0.05% of last value.
+        if (std::abs(freqHz - fundamentalHz) < fundamentalHz * 0.0005f)
+            return;
+
         tubeDelaySamples = (freqHz > 20.0f) ? sr / freqHz : sr / 20.0f;
         tubeDelaySamples = std::min(tubeDelaySamples, static_cast<float>(kMaxDelay - 1));
         frameMode1.setFreqAndQ(200.0f, 15.0f, sr);
@@ -281,7 +295,7 @@ struct OwareBodyResonator
         frameMode3.setFreqAndQ(1100.0f, 12.0f, sr);
         bowlFreq = freqHz * 0.5f;
         fundamentalHz = freqHz;
-        // Cache bowl trig once per block (bowlFreq only changes here, not per-sample)
+        // Cache bowl trig — recomputed only when fundamental changes (not per-sample)
         float w = 2.0f * 3.14159265f * std::max(bowlFreq, 20.0f) / sr;
         bowlCosW = xoceanus::fastCos(w);
         bowlSinW = xoceanus::fastSin(w);
@@ -407,8 +421,10 @@ struct OwareVoice
     FilterEnvelope filterEnv;
     CytomicSVF svf;
 
-    float sympatheticOut = 0.0f;
     float ampLevel = 0.0f;
+    // F2/F3: cached cutoff for SVF dirty-flag; -1 forces first-sample computation.
+    // svf mode is set once at noteOn (always LowPass), not per-sample.
+    float lastCutoff = -1.0f;
 
     // Per-voice shimmer + D002 LFOs
     StandardLFO shimmerLFO;
@@ -443,7 +459,7 @@ struct OwareVoice
         velocity = 0.0f;
         ampLevel = 0.0f;
         noteOffDecayBoost = 1.0f;
-        sympatheticOut = 0.0f;
+        lastCutoff = -1.0f;  // F2: force SVF recompute on next active sample
         sympathyCouplingCount = 0;
         glide.reset();
         exciter.reset();
@@ -499,6 +515,10 @@ public:
 
         // ~0.5 second thermal drift time constant, sample-rate scaled
         thermalCoeff = 1.0f - std::exp(-1.0f / (0.5f * srf));
+
+        // F7: precompute noteOff release coefficient — exp(log(0.3)/(0.005*sr)).
+        // noteOff was computing this on every MIDI event; it's a prepare()-level constant.
+        noteOffReleaseBoost = std::exp(std::log(0.3f) / (0.005f * srf));
 
         prepareSilenceGate(sr, maxBlockSize, 500.0f);
     }
@@ -636,8 +656,11 @@ public:
         float decayTimeSec = std::max(pDecay * (1.0f - pDamping * 0.8f), 0.01f);
         float baseDecayCoeff = std::exp(-1.0f / (decayTimeSec * srf));
 
-        // Improvement #5: thermal drift — shared slow tuning scalar
-        thermalTimer++;
+        // Improvement #5: thermal drift — shared slow tuning scalar.
+        // F5: thermalTimer must count samples, not blocks, to honour the "~4 seconds"
+        // comment. Block-count increments make the timer run blockSize× too slow
+        // (e.g., 128 blocks at 96kHz = ~0.000133s per tick, not 1 sample = 10.4 µs).
+        thermalTimer += numSamples;
         if (thermalTimer > static_cast<int>(srf * 4.0f)) // new target every ~4 seconds
         {
             thermalNoiseState = thermalNoiseState * 1664525u + 1013904223u;
@@ -660,7 +683,10 @@ public:
         const float lfo2Depth = paramLfo2Depth ? paramLfo2Depth->load() : 0.0f;
         const int lfo2Shape = paramLfo2Shape ? static_cast<int>(paramLfo2Shape->load()) : 0;
 
-        // Apply LFO rate/shape once per block per voice — not per sample
+        // Apply LFO rate/shape once per block per voice — not per sample.
+        // F1: shimmerLFO rate is also block-level (pShimmerHz is block-constant);
+        //     moved here from inside the sample loop where it fired every sample.
+        const float shimmerLFORate = std::max(0.05f, pShimmerHz * 0.05f);
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -669,6 +695,7 @@ public:
             voice.lfo1.setShape(lfo1Shape);
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
+            voice.shimmerLFO.setRate(shimmerLFORate, srf); // F1: block-level, not per-sample
         }
 
         for (int s = 0; s < numSamples; ++s)
@@ -701,13 +728,14 @@ public:
                 float totalThermalCents = thermalState + voice.thermalPersonality * pThermal * 0.5f;
                 freq *= fastPow2(totalThermalCents / 1200.0f); // BUG-3 FIX: fastPow2 replaces std::pow
 
-                // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio)
-                // BUG-2 FIX: use pShimmerHz parameter instead of hardcoded 0.3
-                voice.shimmerLFO.setRate(std::max(0.05f, pShimmerHz * 0.05f), srf); // modulate shimmer slowly
-                float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f;      // [0,1]
-                float shimmerOffset = pShimmerHz * shimmerMod;                      // 0 to shimmerHz
-                // Apply as additive Hz offset (Balinese: beat rate in Hz, not cents)
-                float freqWithShimmer = freq + shimmerOffset;
+                // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio).
+                // F1: shimmerLFO.setRate() moved to block-level pre-loop above.
+                // F4: shimmerOffset applied only to mode 0 (fundamental) — NOT propagated
+                //     through modal ratios. Balinese ombak is a fixed-Hz beat between
+                //     paired bars tuned ~3-7 Hz apart; scaling it by high modal ratios
+                //     (e.g., 9×) would produce semitone-class detuning at upper modes.
+                float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f; // [0,1]
+                float shimmerOffset = pShimmerHz * shimmerMod;                  // 0 to shimmerHz
 
                 float excitation = voice.exciter.process();
 
@@ -739,7 +767,10 @@ public:
                     else
                         ratio = metalR + (kBowlRatios[m] - metalR) * ((voiceMatNow - 0.66f) / 0.34f);
 
-                    float modeFreq = freqWithShimmer * ratio;
+                    // F4: shimmer applied only to mode 0 (fundamental pair detuning).
+                    //     Upper modes use clean `freq` × ratio — Balinese ombak is a
+                    //     fixed Hz offset between two bars, not a per-mode detuning.
+                    float modeFreq = (m == 0 ? freq + shimmerOffset : freq) * ratio;
 
                     // Q: material-dependent base + mode-dependent falloff
                     float baseQ = 80.0f + voiceMatNow * 1420.0f;
@@ -782,13 +813,20 @@ public:
 
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
                 // BUG-1 FIX: LFO1 modulates brightness (±3000 Hz at full depth)
+                // F3: svf.setMode is constant (always LowPass) — moved to noteOn; removed here.
+                // F2: svf.setCoefficients is now guarded by a cached cutoff — only fires
+                //     when cutoff changes by >0.1 Hz (eliminates expensive coeff recomputation
+                //     on sustaining notes with static brightness/envelope).
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.5f, srf);
+                if (std::abs(cutoff - voice.lastCutoff) > 0.1f)
+                {
+                    voice.svf.setCoefficients(cutoff, 0.5f, srf);
+                    voice.lastCutoff = cutoff;
+                }
                 float filtered = voice.svf.processSample(bodied);
-
+                // F10: voice.sympatheticOut removed — it was set here but never read
+                //      (getSampleForCoupling exports couplingCacheL/R, not sympatheticOut).
                 float output = filtered * voice.ampLevel;
-                voice.sympatheticOut = output;
 
                 // BUG-3 FIX: use cached pan gains (computed at noteOn, not per-sample)
                 mixL += output * voice.panL;
@@ -819,7 +857,8 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        // F8: fastPow2 replaces std::pow for MIDI→Hz conversion (P18 pattern).
+        float freq = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
         int bodyType = paramBodyType ? static_cast<int>(paramBodyType->load()) : 0;
 
         // Read material once — used for filter decay AND body-membrane coupling boosts
@@ -831,7 +870,9 @@ public:
         v.startTime = ++voiceCounter;
         v.glide.snapTo(freq);
         v.ampLevel = 1.0f;
-        v.sympatheticOut = 0.0f;
+        // F3: set SVF mode once at note-on (always LowPass) — not per-sample in renderBlock.
+        v.svf.setMode(CytomicSVF::Mode::LowPass);
+        v.lastCutoff = -1.0f; // force first-sample SVF coefficient computation
 
         // D001 + D006: velocity + aftertouch → mallet hardness
         float hardness = std::clamp((paramMalletHardness ? paramMalletHardness->load() : 0.3f) + vel * 0.5f +
@@ -880,13 +921,13 @@ public:
     void noteOff(int note) noexcept
     {
         // ~5ms smooth release to avoid the -10.5dB step click of ampLevel *= 0.3f.
-        // Coefficient drives ampLevel to near-zero over ~5ms per-sample in the render loop.
-        const float releaseBoost = std::exp(std::log(0.3f) / (0.005f * srf));
+        // F7: releaseBoost precomputed in prepare() — std::exp(std::log(0.3f) / (0.005f * sr))
+        //     is a constant for a given sample rate; computing it on every noteOff wastes cycles.
         for (auto& v : voices)
         {
             if (v.active && v.currentNote == note)
             {
-                v.noteOffDecayBoost = releaseBoost;
+                v.noteOffDecayBoost = noteOffReleaseBoost; // F7: use precomputed constant
                 v.filterEnv.release();
             }
         }
@@ -1062,6 +1103,9 @@ private:
     float thermalCoeff = 0.0001f; // sample-rate-scaled in prepare(); fallback matches old 48kHz value
     int thermalTimer = 0;
     uint32_t thermalNoiseState = 54321u;
+
+    // F7: precomputed noteOff release coefficient — avoid std::exp on every MIDI event.
+    float noteOffReleaseBoost = 0.999f; // fallback; correct value set in prepare()
 
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f, couplingMaterialMod = 0.0f;
     float couplingCacheL = 0.0f, couplingCacheR = 0.0f;
