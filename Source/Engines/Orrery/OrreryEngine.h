@@ -187,6 +187,9 @@ public:
         nextCouplingCorner = 0;
         lastSampleL = lastSampleR = 0.0f;
         ephRecordTimer = 0.0f;
+        // Clear ephemeris state so playback starts from a clean buffer after reset
+        ephWritePos = 0;
+        ephSize     = 0;
         activeVoices.store(0, std::memory_order_relaxed);
     }
 
@@ -220,7 +223,11 @@ public:
             float sumSq = 0.0f;
             for (int i = 0; i < numSamples; ++i)
                 sumSq += sourceBuffer[i] * sourceBuffer[i];
-            couplingEnergyAccum += std::sqrt(sumSq / static_cast<float>(numSamples));
+            // fastPow2(0.5*fastLog2(x)) ≈ sqrt(x) — avoids std::sqrt in coupling path
+            float rmsEnergy = sumSq / static_cast<float>(numSamples);
+            couplingEnergyAccum += (rmsEnergy > 0.0f)
+                ? fastPow2(0.5f * fastLog2(rmsEnergy))
+                : 0.0f;
             couplingEnergyCount++;
             // Spectral centroid: zero-crossing rate of first channel
             for (int i = 1; i < numSamples; ++i)
@@ -437,10 +444,11 @@ public:
         // ---- Group I: Macros + Voice + Ephemeris ----
         params.push_back(std::make_unique<AP>(PID{"orry_macro1", 1}, "orry_macro1",
             NRange{0.0f, 1.0f, 0.001f}, 0.5f));
+        // Macros 2+3 default to 0.5 so multiplier = 1.0× at rest (0.0 muted LFO/gravity)
         params.push_back(std::make_unique<AP>(PID{"orry_macro2", 1}, "orry_macro2",
-            NRange{0.0f, 1.0f, 0.001f}, 0.0f));
+            NRange{0.0f, 1.0f, 0.001f}, 0.5f));
         params.push_back(std::make_unique<AP>(PID{"orry_macro3", 1}, "orry_macro3",
-            NRange{0.0f, 1.0f, 0.001f}, 0.0f));
+            NRange{0.0f, 1.0f, 0.001f}, 0.5f));
         params.push_back(std::make_unique<AP>(PID{"orry_macro4", 1}, "orry_macro4",
             NRange{0.0f, 1.0f, 0.001f}, 0.5f));
 
@@ -580,8 +588,8 @@ public:
 
         // ---- Snapshot parameters (block-rate) ----
         const float macro1 = pMacro1 ? pMacro1->load() : 0.5f;
-        const float macro2 = pMacro2 ? pMacro2->load() : 0.0f;
-        const float macro3 = pMacro3 ? pMacro3->load() : 0.0f;
+        const float macro2 = pMacro2 ? pMacro2->load() : 0.5f;
+        const float macro3 = pMacro3 ? pMacro3->load() : 0.5f;
         const float macro4 = pMacro4 ? pMacro4->load() : 0.5f;
 
         // Macros modify underlying parameters
@@ -871,7 +879,15 @@ private:
         const float orbitPhaseInc = effectiveOrbitSpeed / sampleRateFloat;
         const float kTwoPi = 6.28318530718f;
 
-        // Set up LFO configs for all voices (block-rate)
+        // Pre-compute tilt rotation coefficients — orbitTilt is block-rate, no need to
+        // recompute fastCos/fastSin inside the per-sample × per-voice loop.
+        const float tiltAngle = orbitTilt * (kTwoPi * 0.5f); // ±π
+        const float cosTilt   = fastCos(tiltAngle);
+        const float sinTilt   = fastSin(tiltAngle);
+
+        // Set up LFO configs and ADSR params for all voices (block-rate).
+        // ADSR params don't change sample-to-sample; calling setParams per-sample
+        // was redundant and wastes cycles recomputing rate coefficients.
         for (auto& v : voices)
         {
             if (!v.active) continue;
@@ -879,6 +895,8 @@ private:
             v.lfo1.setShape(lfo1Shape);
             v.lfo2.setRate(lfo2Rate, sampleRateFloat);
             v.lfo2.setShape(lfo2Shape);
+            v.ampEnv.setParams(ampAtk, ampDec, ampSus, ampRel, sampleRateFloat);
+            v.filterEnv.setParams(fltAtk, fltDec, fltSus, fltRel, sampleRateFloat);
         }
 
         for (int s = startSample; s < endSample; ++s)
@@ -893,7 +911,6 @@ private:
                 if (!v.active) continue;
 
                 // ---- Amp envelope ----
-                v.ampEnv.setParams(ampAtk, ampDec, ampSus, ampRel, sampleRateFloat);
                 const float ampLevel = v.ampEnv.process();
 
                 // If envelope finished, deactivate voice
@@ -904,7 +921,6 @@ private:
                 }
 
                 // ---- Filter envelope ----
-                v.filterEnv.setParams(fltAtk, fltDec, fltSus, fltRel, sampleRateFloat);
                 const float fltEnvLevel = v.filterEnv.process();
 
                 // ---- LFO values (per-sample) ----
@@ -974,11 +990,9 @@ private:
                 }
 
                 // Tilt rotation: rotate (cosA, sinA) by tiltAngle
-                const float tiltAngle = orbitTilt * (kTwoPi * 0.5f); // ±π
+                // cosTilt/sinTilt are pre-computed once per block above the sample loop.
                 const float cosA = fastCos(orbitAngle);
                 const float sinA = fastSin(orbitAngle);
-                const float cosTilt = fastCos(tiltAngle);
-                const float sinTilt = fastSin(tiltAngle);
 
                 float orbitX, orbitY;
                 switch (orbitShape)
@@ -1006,7 +1020,8 @@ private:
                         int   idx1 = (idx0 + 1) % ephSize;
                         int   idx2 = (idx0 + 2) % ephSize;
                         int   idxm1 = (idx0 + ephSize - 1) % ephSize;
-                        float t = ephPos - std::floor(ephPos);
+                        // Fractional part via integer cast — avoids std::floor in hot path
+                        float t = ephPos - static_cast<float>(static_cast<int>(ephPos));
 
                         // Cubic Catmull-Rom interpolation
                         auto cubicInterp = [&](float pm1, float p0, float p1, float p2) -> float {
@@ -1041,11 +1056,10 @@ private:
                 gravPushX = clamp(gravPushX, -0.5f, 0.5f);
                 gravPushY = clamp(gravPushY, -0.5f, 0.5f);
 
-                // Coupling modulation from coupling types
+                // Coupling modulation from coupling types.
+                // Read shared state; decay is applied once per sample outside the voice loop.
                 const float couplingMorphX = couplingEnvToMorphX;
                 const float couplingRhythmY = couplingRhythmToY;
-                couplingEnvToMorphX *= 0.999f;
-                couplingRhythmToY   *= 0.999f;
 
                 // ---- Compose final X/Y position ----
                 float finalX = effectivePosX + (orbitX - 0.5f) + gravPushX + lfoXMod + couplingMorphX * 0.5f;
@@ -1062,10 +1076,14 @@ private:
 
                 // ---- 2D Equal-Power Crossfade with blendCurve blend ----
                 // blendCurve=0: linear, blendCurve=1: cosine (equal-power)
-                float eastGainEP  = std::sqrt(finalX);
-                float westGainEP  = std::sqrt(1.0f - finalX);
-                float northGainEP = std::sqrt(finalY);
-                float southGainEP = std::sqrt(1.0f - finalY);
+                // fastPow2(0.5·fastLog2(x)) ≈ sqrt(x): avoids 4× std::sqrt per sample per voice
+                auto fastSqrt = [](float x) -> float {
+                    return (x > 0.0f) ? fastPow2(0.5f * fastLog2(x)) : 0.0f;
+                };
+                float eastGainEP  = fastSqrt(finalX);
+                float westGainEP  = fastSqrt(1.0f - finalX);
+                float northGainEP = fastSqrt(finalY);
+                float southGainEP = fastSqrt(1.0f - finalY);
 
                 float eastGainLin  = finalX;
                 float westGainLin  = 1.0f - finalX;
@@ -1102,6 +1120,12 @@ private:
 
                     float phaseInc = freq / sampleRateFloat;
 
+                    // Nyquist fade: linear taper from -6dB at 0.45·sr to silence at 0.5·sr.
+                    // Prevents hard aliasing edge when sweep or high pitch detune crosses Nyquist.
+                    float nyquistGain = 1.0f;
+                    if (phaseInc > 0.45f)
+                        nyquistGain = clamp(1.0f - (phaseInc - 0.45f) * 20.0f, 0.0f, 1.0f);
+
                     // Coupled source: use accumulated coupling audio
                     float coupledSample = v.couplingAccum[c];
 
@@ -1116,6 +1140,7 @@ private:
                                                    v.noiseRng[c], sampleRateFloat);
                         v.oscPhase[c] += phaseInc;
                         if (v.oscPhase[c] >= 1.0f) v.oscPhase[c] -= 1.0f;
+                        rawSig *= nyquistGain;
                     }
 
                     // 50ms wave-type crossfade
@@ -1192,8 +1217,15 @@ private:
                 outR += filteredR;
             } // end voice loop
 
-            writeL[s] += outL;
-            writeR[s] += outR;
+            // Decay coupling morph values once per sample (was inside voice loop,
+            // causing 12× over-decay with 12 voices — at 44.1kHz that's ~88dB/s
+            // faster than intended).
+            couplingEnvToMorphX = flushDenormal(couplingEnvToMorphX * 0.999f);
+            couplingRhythmToY   = flushDenormal(couplingRhythmToY   * 0.999f);
+
+            // softClip polyphonic sum — 12 voices at full gain can exceed ±1.0.
+            writeL[s] += softClip(outL);
+            writeR[s] += softClip(outR);
 
             // Cache orbit phase from first active voice for coupling output
             for (auto& v : voices)
@@ -1246,7 +1278,8 @@ private:
             if (character > 0.0f)
             {
                 float syncPhase = phase * (1.0f + character * 3.0f);
-                syncPhase -= std::floor(syncPhase);
+                // Conditional subtract avoids std::floor in hot path (syncPhase is in [0, 4])
+                while (syncPhase >= 1.0f) syncPhase -= 1.0f;
                 saw = 2.0f * syncPhase - 1.0f;
             }
             return saw;
@@ -1268,7 +1301,9 @@ private:
 
         case 3: // Triangle — character folds
         {
-            float tri = 4.0f * std::fabs(phase - 0.5f) - 1.0f;
+            // Branchless triangle: avoids std::fabs in hot path
+            float dp = phase - 0.5f;
+            float tri = 4.0f * (dp < 0.0f ? -dp : dp) - 1.0f;
             if (character > 0.0f)
             {
                 float foldAmt = 1.0f + character * 2.0f;
@@ -1326,9 +1361,10 @@ private:
         if (voiceMode == 0 || voiceMode == 1)
         {
             target = &voices[0];
-            if (voiceMode == 1 && target->active)
+            if (target->active)
             {
-                // Legato: retrigger from current level
+                // Mono: retrigger envelope from current level (avoids click from hard reset).
+                // Legato: same path but glide is already handled by glideCoeff in render.
                 target->note     = note;
                 target->velocity = velNorm;
                 target->keyTrack = kt;
@@ -1386,9 +1422,13 @@ private:
         target->filterEnv.setParams(fltAtk, fltDec, fltSus, fltRel, sampleRateFloat);
         target->filterEnv.noteOn();
 
-        // LFOs free-running (no reset per note for smoother texture)
-        target->lfo1.setRate(0.3f, sampleRateFloat);
-        target->lfo2.setRate(0.185f, sampleRateFloat);
+        // LFOs free-running (no reset per note for smoother texture).
+        // Use live parameter values, not the stale defaults — otherwise the first
+        // block of a new voice plays at the wrong LFO rate.
+        const float initLfo1Rate = pLfo1Rate ? std::max(0.01f, pLfo1Rate->load()) : 0.3f;
+        const float initLfo2Rate = pLfo2Rate ? std::max(0.01f, pLfo2Rate->load()) : 0.185f;
+        target->lfo1.setRate(initLfo1Rate, sampleRateFloat);
+        target->lfo2.setRate(initLfo2Rate, sampleRateFloat);
 
     }
 
