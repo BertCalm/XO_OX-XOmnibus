@@ -95,6 +95,8 @@ inline const juce::StringArray validEngineNames{
     "Oxidize",
     // Wave-Terrain Synthesis (engine #89)
     "Outcrop",
+    // NLS Soliton Synthesis (engine #90)
+    "Oneiric",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob", "XObese", "XOnset", "XOrbital", "XOrganon",
     "XOuroboros", "XOpal", "XOpossum", "XOverbite", "XObsidian", "XOrigami", "XOracle", "XObscura", "XOceanic",
@@ -275,6 +277,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Ooze", "ooze_"},
         // Wave-Terrain Synthesis (engine #89)
         {"Outcrop", "outc_"},
+        // NLS Soliton Synthesis (engine #90)
+        {"Oneiric", "oner_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();
