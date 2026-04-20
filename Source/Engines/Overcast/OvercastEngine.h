@@ -270,8 +270,15 @@ public:
             v.reset();
         lfo1.reset();
         lfo2.reset();
+        breathLfo.reset();           // F01: breathLfo was missing from reset()
         lastSampleL = lastSampleR = 0.0f;
         extFilterMod = extRingMod = 0.0f;
+        aftertouch = 0.0f;           // F02: controller state must clear on reset
+        modWheel = 0.0f;
+        pitchBendNorm = 0.0f;
+        noteCounter = 0;
+        noiseRng = 0xDEADBEEF;       // F22: restore deterministic RNG seed on reset
+        brothSpectralMass = 1.0f;    // F02: broth state resets to neutral (fresh/bright)
     }
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
@@ -279,17 +286,55 @@ public:
         jassert(sr > 0.0);  // sr=0.0 sentinel: prepare() must be called before renderBlock()
         juce::ScopedNoDenormals noDenormals;
 
-        // Read params early for noteOn configuration
+        // 1. Read ALL parameters before MIDI parse so noteOn receives already-modulated values.
+        // F03/F04: Previously pFreezeRate + pLatticeSnap were read before MIDI but macro/aftertouch
+        // modifications happened after — noteOn always got pre-modulation values.
         float pFreezeRate = pFreezeRateParam ? pFreezeRateParam->load() : 0.1f;
         float pCrystalSize = pCrystalSizeParam ? pCrystalSizeParam->load() : 0.5f;
         float pNumPeaks = pNumPeaksParam ? pNumPeaksParam->load() : 8.0f;
         float pTransition = pTransitionParam ? pTransitionParam->load() : 1.0f;
         float pLatticeSnap = pLatticeSnapParam ? pLatticeSnapParam->load() : 0.3f;
+        float pPurity = pPurityParam ? pPurityParam->load() : 0.5f;
+        float pCrackle = pCrackleParam ? pCrackleParam->load() : 0.4f;
+        float pShatterGap = pShatterGapParam ? pShatterGapParam->load() : 0.1f;
+        float pStereoWidth = pStereoWidthParam ? pStereoWidthParam->load() : 0.5f;
+        float pFilterCut = pFilterCutParam ? pFilterCutParam->load() : 8000.0f;
+        float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.15f;
+        float pAmpA = pAmpAParam ? pAmpAParam->load() : 0.005f;
+        float pAmpD = pAmpDParam ? pAmpDParam->load() : 0.3f;
+        float pAmpS = pAmpSParam ? pAmpSParam->load() : 1.0f;
+        float pAmpR = pAmpRParam ? pAmpRParam->load() : 1.0f;
+        float pLfo1Rate = pLfo1RateParam ? pLfo1RateParam->load() : 0.2f;
+        float pLfo1Depth = pLfo1DepthParam ? pLfo1DepthParam->load() : 0.15f;
+        float pLfo2Rate = pLfo2RateParam ? pLfo2RateParam->load() : 0.5f;
+        float pLfo2Depth = pLfo2DepthParam ? pLfo2DepthParam->load() : 0.1f;
+        float pLevel = pLevelParam ? pLevelParam->load() : 0.8f;
+
+        // Macros — apply before MIDI parse so noteOn sees modulated pFreezeRate + pLatticeSnap
+        float pMC = pMacroCharacterParam ? pMacroCharacterParam->load() : 0.0f;
+        float pMM = pMacroMovementParam ? pMacroMovementParam->load() : 0.0f;
+        float pMK = pMacroCouplingParam ? pMacroCouplingParam->load() : 0.0f;
+        float pMS = pMacroSpaceParam ? pMacroSpaceParam->load() : 0.0f;
+
+        // CHARACTER → purity
+        pPurity = clamp(pPurity + pMC * 0.4f, 0.0f, 1.0f);
+        // MOVEMENT → freeze rate + crackle  (F06: was missing pFreezeRate term)
+        pFreezeRate = clamp(pFreezeRate - pMM * 0.05f, 0.02f, 0.2f); // higher MOVEMENT = faster freeze
+        pCrackle = clamp(pCrackle + pMM * 0.3f, 0.0f, 1.0f);
+        // COUPLING → lattice snap sensitivity
+        pLatticeSnap = clamp(pLatticeSnap + pMK * 0.3f, 0.0f, 1.0f);
+        // SPACE → stereo width
+        pStereoWidth = clamp(pStereoWidth + pMS * 0.3f, 0.0f, 1.0f);
+
+        // D006: Mod wheel → purity
+        pPurity = clamp(pPurity + modWheel * 0.3f, 0.0f, 1.0f);
+        // D006: Aftertouch → freeze speed (applied before MIDI parse so in-block noteOn sees it)
+        pFreezeRate = clamp(pFreezeRate - aftertouch * 0.08f, 0.02f, 0.2f);
 
         int transMode = static_cast<int>(pTransition + 0.5f);
         int numPeaks = static_cast<int>(pNumPeaks + 0.5f);
 
-        // 1. Parse MIDI
+        // 2. Parse MIDI
         for (const auto& meta : midi)
         {
             auto msg = meta.getMessage();
@@ -324,49 +369,12 @@ public:
             }
         }
 
-        // 2. Bypass check
+        // 3. Bypass check
         if (silenceGate.isBypassed() && midi.isEmpty())
         {
             buffer.clear();
             return;
         }
-
-        // 3. Read remaining parameters
-        float pPurity = pPurityParam ? pPurityParam->load() : 0.5f;
-        float pCrackle = pCrackleParam ? pCrackleParam->load() : 0.4f;
-        float pShatterGap = pShatterGapParam ? pShatterGapParam->load() : 0.1f;
-        float pStereoWidth = pStereoWidthParam ? pStereoWidthParam->load() : 0.5f;
-        float pFilterCut = pFilterCutParam ? pFilterCutParam->load() : 8000.0f;
-        float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.15f;
-        float pAmpA = pAmpAParam ? pAmpAParam->load() : 0.005f;
-        float pAmpD = pAmpDParam ? pAmpDParam->load() : 0.3f;
-        float pAmpS = pAmpSParam ? pAmpSParam->load() : 1.0f;
-        float pAmpR = pAmpRParam ? pAmpRParam->load() : 1.0f;
-        float pLfo1Rate = pLfo1RateParam ? pLfo1RateParam->load() : 0.2f;
-        float pLfo1Depth = pLfo1DepthParam ? pLfo1DepthParam->load() : 0.15f;
-        float pLfo2Rate = pLfo2RateParam ? pLfo2RateParam->load() : 0.5f;
-        float pLfo2Depth = pLfo2DepthParam ? pLfo2DepthParam->load() : 0.1f;
-        float pLevel = pLevelParam ? pLevelParam->load() : 0.8f;
-
-        // Macros
-        float pMC = pMacroCharacterParam ? pMacroCharacterParam->load() : 0.0f;
-        float pMM = pMacroMovementParam ? pMacroMovementParam->load() : 0.0f;
-        float pMK = pMacroCouplingParam ? pMacroCouplingParam->load() : 0.0f;
-        float pMS = pMacroSpaceParam ? pMacroSpaceParam->load() : 0.0f;
-
-        // CHARACTER → purity
-        pPurity = clamp(pPurity + pMC * 0.4f, 0.0f, 1.0f);
-        // MOVEMENT → freeze rate + crackle
-        pCrackle = clamp(pCrackle + pMM * 0.3f, 0.0f, 1.0f);
-        // COUPLING → lattice snap sensitivity
-        pLatticeSnap = clamp(pLatticeSnap + pMK * 0.3f, 0.0f, 1.0f);
-        // SPACE → stereo width
-        pStereoWidth = clamp(pStereoWidth + pMS * 0.3f, 0.0f, 1.0f);
-
-        // D006: Mod wheel → purity
-        pPurity = clamp(pPurity + modWheel * 0.3f, 0.0f, 1.0f);
-        // D006: Aftertouch → freeze speed
-        pFreezeRate = clamp(pFreezeRate - aftertouch * 0.08f, 0.02f, 0.2f);
 
         // Coupling
         pFilterCut = clamp(pFilterCut + extFilterMod, 50.0f, 16000.0f);
@@ -535,6 +543,7 @@ public:
                         // Crackle intensity peaks in the middle of crystallization
                         float crackleEnv = 4.0f * progress * (1.0f - progress); // parabola
                         amp *= (1.0f + crackleNoise * pCrackle * crackleEnv);
+                        if (amp < 0.0f) amp = 0.0f; // F09: crackleNoise is bipolar — clamp to prevent phase inversion
 
                         // Frequency jitter during transition (liquid → solid)
                         float freqJitter = crackleNoise * (1.0f - progress) * 20.0f;
@@ -571,11 +580,13 @@ public:
                     voiceSample *= (2.0f / static_cast<float>(crystal.numPeaks));
 
                 // Per-voice filter
-                float voiceCutoff = pFilterCut;
-                // Frozen state: filter stays put. Crystallizing: filter sweeps
-                if (!crystal.isFrozen)
-                    voiceCutoff = clamp(voiceCutoff * crystal.freezeTimer / crystal.freezeDuration, 50.0f, srF * 0.49f);
-                voice.voiceFilter.setCoefficients_fast(clamp(voiceCutoff, 50.0f, srF * 0.49f), pFilterRes, srF);
+                // F10: was double-clamped (outer clamp wrapping an already-clamped value); unified.
+                // Frozen path: pFilterCut already clamped by coupling line but may exceed srF*0.49 at low sr.
+                float voiceCutoff = crystal.isFrozen
+                                        ? std::min(pFilterCut, srF * 0.49f)
+                                        : clamp(pFilterCut * crystal.freezeTimer / crystal.freezeDuration,
+                                                50.0f, srF * 0.49f);
+                voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
                 voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 voiceSample *= ampLevel;
@@ -773,7 +784,7 @@ public:
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srF = 0.0f;  // Sentinel: must be set by prepare() before use
-    float inverseSr_ = 1.0f / 44100.0f;
+    float inverseSr_ = 1.0f / 44100.0f; // overwritten in prepare() — default is a safe fallback only
     int blockSize = 512;
 
     OvercastVoice voices[kMaxVoices];
