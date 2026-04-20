@@ -64,6 +64,7 @@ struct KarplusStrongString
     void prepare(float sampleRate) noexcept
     {
         sr = sampleRate;
+        invSr = (sampleRate > 0.0f) ? 1.0f / sampleRate : 0.0f;
         std::fill(delayLine.begin(), delayLine.end(), 0.0f);
         writePos = 0;
         filterState = 0.0f;
@@ -97,7 +98,9 @@ struct KarplusStrongString
             float noise = (static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f);
             // Brightness controls the noise burst spectral shape
             float shaped = noise * velocity * (0.3f + brightness * 0.7f);
-            delayLine[(writePos + i) % kMaxDelay] += shaped;
+            // Use = not += so retrigger/steal does not layer new excitation on
+            // stale delay-line contents, which would cause a click.
+            delayLine[(writePos + i) % kMaxDelay] = shaped;
         }
     }
 
@@ -130,7 +133,8 @@ struct KarplusStrongString
         filterState = 0.0f;
     }
 
-    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
+    float sr = 0.0f;    // Sentinel: must be set by prepare() before use
+    float invSr = 0.0f; // Cached 1/sr, computed in prepare()
     float delaySamples = 100.0f;
     float dampCoeff = 0.5f;
     float feedback = 0.995f;
@@ -277,6 +281,8 @@ struct OvergrowVoice
         ampEnv.kill();
         filterEnv.kill();
         vibratoLFO.reset();
+        lfo1.reset();
+        lfo2.reset();
         runner.reset();
     }
 };
@@ -299,6 +305,7 @@ public:
         sampleRate = std::max(sampleRate, 1.0);
         sr = sampleRate;
         srf = static_cast<float>(sr);
+        samplePeriod = 1.0f / srf; // precomputed to avoid per-sample division in growthTimer
 
         for (int i = 0; i < kMaxVoices; ++i)
         {
@@ -528,7 +535,7 @@ public:
                 float growthGain = 1.0f;
                 if (voice.growthMode)
                 {
-                    voice.growthTimer += 1.0f / srf;
+                    voice.growthTimer += samplePeriod; // precomputed in prepare() — no per-sample division
                     voice.growthPhase = std::min(voice.growthTimer / voice.growthDuration, 1.0f);
                     growthGain = voice.growthPhase * voice.growthPhase;
                 }
@@ -554,16 +561,23 @@ public:
                     continue;
                 }
 
-                float output = filtered * ampLevel * (0.4f + voice.velocity * 0.6f);
+                float output = softClip(filtered * ampLevel * (0.4f + voice.velocity * 0.6f));
                 voice.lastOutputLevel = std::fabs(output);
 
                 // Feed engine-level output tracker for silence detection
                 engineLastOutputLevel = std::max(engineLastOutputLevel, std::fabs(output));
 
-                // Mycorrhizal network
+                // Mycorrhizal network — stressed voices send signals to peers,
+                // and receive stress from other voices (sympathetic string resonance).
+                int voiceIdx = static_cast<int>(&voice - voices.data());
                 if (voice.velocity > accumulators.aThreshold)
-                    network.sendStress(&voice - voices.data(), voice.velocity * accumulators.A * 0.15f,
+                    network.sendStress(voiceIdx, voice.velocity * accumulators.A * 0.15f,
                                        accumulators.sessionTime);
+                // Consume incoming stress: modulate string damping for sympathetic response.
+                float receivedStress = network.receiveStress(voiceIdx, accumulators.sessionTime);
+                if (receivedStress > 1e-6f)
+                    voice.string.setDamping(pDamping + accumulators.getWarmthRolloff() * 0.2f +
+                                            std::clamp(receivedStress * 0.15f, 0.0f, 0.15f));
 
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
@@ -605,7 +619,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = midiToFreq(note); // fastPow2 path — avoids std::pow on audio thread
         bool isGrowthMode = paramGrowthMode && paramGrowthMode->load() > 0.5f;
 
         v.active = true;
@@ -614,7 +628,9 @@ public:
         v.startTime = ++voiceCounter;
         v.glide.setTargetOrSnap(freq);
 
-        v.string.prepare(srf);
+        // string.prepare() is called for all voice slots at engine prepare()-time.
+        // On noteOn, reset() zeroes the delay buffer without redundant sr-recompute (P18).
+        v.string.reset();
         v.string.setFrequency(freq);
         v.string.setDamping(paramDamping ? paramDamping->load() : 0.4f);
         v.string.setFeedback(paramFeedback ? paramFeedback->load() : 0.995f);
@@ -635,16 +651,24 @@ public:
         attackTime *= (1.3f - vel * 0.5f);
         float releaseTime = paramRelease ? paramRelease->load() : 1.5f;
 
-        v.ampEnv.prepare(srf);
+        // ampEnv/filterEnv.prepare() already called at engine prepare()-time.
+        // setADSR() internally calls recalcCoeffs(), so prepare() per-noteOn is redundant (P18).
         v.ampEnv.setADSR(attackTime, paramDecay ? paramDecay->load() : 0.3f, paramSustain ? paramSustain->load() : 0.7f,
                          releaseTime);
         v.ampEnv.triggerHard();
 
-        v.filterEnv.prepare(srf);
         v.filterEnv.setADSR(attackTime * 0.3f, 0.5f, 0.1f, releaseTime * 0.6f);
         v.filterEnv.triggerHard();
 
         v.vibratoLFO.reset();
+        v.lfo1.reset();
+        v.lfo2.reset();
+        // Clear SVF state so a stolen voice doesn't carry stale filter history
+        // into the new note — which can produce a click-like transient.
+        v.filter.reset();
+        // Invalidate the P15 delta-guard cache so the first sample forces a
+        // coefficient update (stale cutoff from previous note must not be reused).
+        v.lastFilterCutoff = -1.0f;
         v.runner.reset();
 
         // Growth Mode
@@ -748,7 +772,7 @@ public:
         params.push_back(std::make_unique<PF>(juce::ParameterID{"grow_lfo1Rate", 1}, "Overgrow LFO1 Rate",
                                               juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"grow_lfo1Depth", 1}, "Overgrow LFO1 Depth",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.1f));
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
         params.push_back(std::make_unique<PI>(juce::ParameterID{"grow_lfo1Shape", 1}, "Overgrow LFO1 Shape", 0, 4, 0));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"grow_lfo2Rate", 1}, "Overgrow LFO2 Rate",
                                               juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
@@ -789,8 +813,9 @@ public:
     }
 
 private:
-    double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    float srf = 0.0f;  // Sentinel: must be set by prepare() before use
+    double sr = 0.0;        // Sentinel: must be set by prepare() before use
+    float srf = 0.0f;       // Sentinel: must be set by prepare() before use
+    float samplePeriod = 0.0f; // 1/srf — precomputed in prepare() to avoid per-sample division
 
     std::array<OvergrowVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
