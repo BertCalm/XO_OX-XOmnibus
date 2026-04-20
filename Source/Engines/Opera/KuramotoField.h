@@ -275,11 +275,13 @@ public:
 
             //------------------------------------------------------------------
             // Wrap phase to [0, 2*pi]
+            // FIX F2: replaced while-loops with floor-based modulo — high-frequency
+            // partials (e.g. partial 48 at 48kHz) accumulate up to ~3.5 × 2pi per
+            // Kuramoto block (8 samples), so while-loops iterate 3-4 times each.
+            // std::floor is a single instruction on modern FPUs.
             //------------------------------------------------------------------
-            while (theta[i] > kTwoPi)
-                theta[i] -= kTwoPi;
-            while (theta[i] < 0.0f)
-                theta[i] += kTwoPi;
+            if (theta[i] >= kTwoPi || theta[i] < 0.0f)
+                theta[i] -= kTwoPi * std::floor(theta[i] / kTwoPi);
         }
 
         //----------------------------------------------------------------------
@@ -435,13 +437,19 @@ public:
 
         for (int i = 0; i < overlapCount; ++i)
         {
-            theta[i] = lerp(theta[i], memory_.storedPhases[i], blend);
+            // FIX F10: circular (shortest-arc) interpolation instead of linear lerp.
+            // Linear lerp across the 0/2pi boundary takes the long path (e.g. lerp between
+            // 0.1 and 6.2 goes backward through pi rather than forward through ~0.15),
+            // producing a phase discontinuity click on re-attack.
+            // Circular lerp: wrap the difference to [-pi, pi], then interpolate.
+            float diff = memory_.storedPhases[i] - theta[i];
+            // Wrap diff to [-pi, pi]
+            diff = diff - kTwoPi * std::floor((diff + kPi) / kTwoPi);
+            theta[i] = theta[i] + diff * blend;
 
             // Wrap after interpolation
-            while (theta[i] > kTwoPi)
-                theta[i] -= kTwoPi;
-            while (theta[i] < 0.0f)
-                theta[i] += kTwoPi;
+            if (theta[i] >= kTwoPi || theta[i] < 0.0f)
+                theta[i] -= kTwoPi * std::floor(theta[i] / kTwoPi);
 
             // Restore lock state if recall is strong enough
             if (blend > 0.5f)

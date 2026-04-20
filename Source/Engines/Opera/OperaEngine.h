@@ -841,7 +841,10 @@ public:
         // M4 SPACE:     filter cutoff offset ±5000 Hz
         // ------------------------------------------------------------------
         snap_.drama = std::clamp(snap_.drama + (snap_.macroCharacter - 0.5f) * 0.8f, 0.0f, 1.0f);
-        snap_.lfo1Rate = std::clamp(snap_.lfo1Rate * std::pow(4.0f, snap_.macroMovement - 0.5f), 0.01f, 20.0f);
+        // FIX F9: std::pow(4, x) -> xoceanus::fastPow2(2*x) — pow(4,x) = 2^(2x).
+        // fastPow2 is the fleet-standard fast-power; std::pow was the only remaining
+        // slow-path call in the block-rate macro section.
+        snap_.lfo1Rate = std::clamp(snap_.lfo1Rate * xoceanus::fastPow2(2.0f * (snap_.macroMovement - 0.5f)), 0.01f, 20.0f);
         snap_.filterCutoff = std::clamp(snap_.filterCutoff + (snap_.macroSpace - 0.5f) * 10000.0f, 20.0f, 20000.0f);
         // macroCoupling (M3) is used by the coupling output read path; no snap modification needed.
 
@@ -892,12 +895,18 @@ public:
         // ------------------------------------------------------------------
         // STEP 6 PRE-BLOCK: Update formant weights & Nyquist gains per voice
         // (block-rate — these don't depend on per-sample state)
+        // FIX F11: also compute targetFreq here — pitchBendSemitones_ and snap_.fundamental
+        // only change from MIDI events (processed above), so recomputing per-sample was wasted
+        // fastPow2 calls. All per-voice targetFreq values are now block-constant.
         // ------------------------------------------------------------------
         for (int v = 0; v < kMaxVoices; ++v)
         {
             auto& voice = voices_[v];
             if (voice.state == OperaVoice::State::Idle)
                 continue;
+
+            // Block-rate targetFreq (was per-sample; pitchBend only changes on MIDI event)
+            voice.targetFreq = midiNoteToFreq(voice.note + snap_.fundamental, pitchBendSemitones_);
 
             float f0Block = voice.currentFreq;
             voice.partialBank.updateFormants(f0Block, snap_.vowelA, snap_.vowelB, snap_.voice);
@@ -985,8 +994,10 @@ public:
                 float voiceTilt = std::clamp(tilt_eff + velTiltOff, -1.0f, 1.0f);
 
                 // --- Portamento glide ---
-                // Update targetFreq each sample for pitch bend tracking
-                voice.targetFreq = midiNoteToFreq(voice.note + snap_.fundamental, pitchBendSemitones_);
+                // FIX F11: targetFreq is block-constant (pitchBendSemitones_ and
+                // snap_.fundamental are only updated by MIDI events, not per-sample).
+                // The per-sample recompute was wasting one fastPow2 per active voice per sample.
+                // targetFreq is now set once in the pre-block voice setup loop; we only read it here.
 
                 if (snap_.portamento > 0.0f)
                 {
@@ -1048,12 +1059,15 @@ public:
                 // spread: detune * 2% max total spread
                 float unisonSpread = snap_.detune * 0.02f;
 
-                // Unison pan positions: 1={C}, 2={L,R}, 3={L,C,R}, 4={L,C,R,C}
+                // Unison pan positions: 1={C}, 2={L,R}, 3={L,C,R}, 4={L,LC,RC,R}
+                // FIX F7: 4-voice layout was {-1,0,0,1} — two coincident center voices
+                // caused comb filtering and narrowed perceived width. Changed to evenly-spaced
+                // {-1, -0.33, 0.33, 1} so all four voices occupy distinct stereo positions.
                 static constexpr float kUniPan[4][4] = {
-                    {0.0f, 0.0f, 0.0f, 0.0f},  // 1 voice: center
-                    {-1.0f, 1.0f, 0.0f, 0.0f}, // 2 voices: L, R
-                    {-1.0f, 0.0f, 1.0f, 0.0f}, // 3 voices: L, C, R
-                    {-1.0f, 0.0f, 0.0f, 1.0f}  // 4 voices: L, C, C, R
+                    {0.0f, 0.0f, 0.0f, 0.0f},          // 1 voice: center
+                    {-1.0f, 1.0f, 0.0f, 0.0f},          // 2 voices: L, R
+                    {-1.0f, 0.0f, 1.0f, 0.0f},          // 3 voices: L, C, R
+                    {-1.0f, -0.33f, 0.33f, 1.0f}        // 4 voices: L, LC, RC, R (evenly spaced)
                 };
 
                 // --- Pan cache rebuild (SRO 2026-03-24) ----------------------
@@ -1100,6 +1114,20 @@ public:
                     }
                 }
 
+                // FIX F3: pre-compute per-partial tilt×formant×Nyquist×cluster base amplitude
+                // outside the uLayer loop — these values do not vary per layer or per sample
+                // within the Kuramoto block. computeSpectralTilt calls std::exp+std::log;
+                // moving it here eliminates unisonCount redundant calls per partial (up to 4×).
+                {
+                    int np = voice.partialBank.numPartials;
+                    for (int i = 0; i < np; ++i)
+                        voice.partialBank.partials[i].amplitude =
+                            OperaPartialBank::computeSpectralTilt(i, np, voiceTilt) *
+                            voice.partialBank.formantWeights[i] *
+                            voice.partialBank.nyquistGains[i] *
+                            voice.kuramotoField.getClusterBoost(i) * unisonGain;
+                }
+
                 for (int uLayer = 0; uLayer < unisonCount; ++uLayer)
                 {
                     // Render the partial bank for one sample
@@ -1109,12 +1137,8 @@ public:
                     {
                         auto& p = voice.partialBank.partials[i];
 
-                        // Amplitude: formant weight * tilt * Nyquist fade * cluster boost
-                        float tiltGain = OperaPartialBank::computeSpectralTilt(i, np, voiceTilt);
-                        float amp = voice.partialBank.formantWeights[i] * tiltGain * voice.partialBank.nyquistGains[i] *
-                                    voice.kuramotoField.getClusterBoost(i);
-
-                        amp *= unisonGain;
+                        // Amplitude: read pre-computed base amplitude (tilt * formant * Nyquist * cluster * unisonGain)
+                        float amp = p.amplitude; // pre-computed: tilt * formant * Nyquist * cluster * unisonGain
 
                         if (amp < 1e-8f)
                         {
@@ -1278,13 +1302,16 @@ public:
 
         // ------------------------------------------------------------------
         // STEP 10: Clear coupling input buffers for next block
+        // FIX F5: clear the full blockSize_ not just numSamples — applyCouplingInput
+        // fills up to kMaxBlockSize, so a short block (numSamples < blockSize_) left
+        // residue in the tail that contaminated the next block's coupling reads.
         // ------------------------------------------------------------------
-        std::memset(couplingFMBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
-        std::memset(couplingRingBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
-        std::memset(couplingFilterBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
-        std::memset(couplingMorphBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
-        std::memset(couplingKBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
-        std::memset(couplingPhaseBuffer_, 0, sizeof(float) * static_cast<size_t>(numSamples));
+        std::memset(couplingFMBuffer_, 0, sizeof(float) * static_cast<size_t>(blockSize_));
+        std::memset(couplingRingBuffer_, 0, sizeof(float) * static_cast<size_t>(blockSize_));
+        std::memset(couplingFilterBuffer_, 0, sizeof(float) * static_cast<size_t>(blockSize_));
+        std::memset(couplingMorphBuffer_, 0, sizeof(float) * static_cast<size_t>(blockSize_));
+        std::memset(couplingKBuffer_, 0, sizeof(float) * static_cast<size_t>(blockSize_));
+        std::memset(couplingPhaseBuffer_, 0, sizeof(float) * static_cast<size_t>(blockSize_));
 
         // ------------------------------------------------------------------
         // STEP 11: Update active voice count for thread-safe UI query
@@ -1530,6 +1557,16 @@ private:
 
         if (bestIdx >= 0)
         {
+            // FIX F8a: store emotional memory before killing a release-stage voice,
+            // so the Kuramoto synchronization state survives voice-steal retriggering.
+            {
+                auto& sv = voices_[bestIdx];
+                float theta[kMaxPartials];
+                int np = sv.partialBank.numPartials;
+                for (int i = 0; i < np; ++i)
+                    theta[i] = sv.partialBank.partials[i].theta;
+                sv.kuramotoField.onNoteOff(theta, nullptr, np);
+            }
             voices_[bestIdx].ampEnv.kill();
             voices_[bestIdx].filterEnv.kill();
             return bestIdx;
@@ -1548,6 +1585,16 @@ private:
             }
         }
 
+        // FIX F8b: store emotional memory before LRU-stealing an active voice — prevents
+        // a hard-cut phase discontinuity pop and preserves Kuramoto synchronization context.
+        {
+            auto& sv = voices_[bestIdx];
+            float theta[kMaxPartials];
+            int np = sv.partialBank.numPartials;
+            for (int i = 0; i < np; ++i)
+                theta[i] = sv.partialBank.partials[i].theta;
+            sv.kuramotoField.onNoteOff(theta, nullptr, np);
+        }
         voices_[bestIdx].ampEnv.kill();
         voices_[bestIdx].filterEnv.kill();
         return bestIdx;
@@ -1660,10 +1707,12 @@ private:
     //==========================================================================
 
     /// MIDI note number to frequency (Hz) with semitone offset and pitch bend.
+    /// FIX F1: replaced std::pow(2, x) with xoceanus::fastPow2 — hot path called
+    /// once per active voice per sample during portamento glide.
     static float midiNoteToFreq(int note, float bendSemitones) noexcept
     {
         float n = static_cast<float>(note) + bendSemitones;
-        return 440.0f * std::pow(2.0f, (n - 69.0f) / 12.0f);
+        return 440.0f * xoceanus::fastPow2((n - 69.0f) / 12.0f);
     }
 
     //==========================================================================
