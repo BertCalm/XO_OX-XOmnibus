@@ -218,10 +218,10 @@ struct FormantTable
 
     inline const FormantProfile& operator[](int index) const noexcept
     {
-        return profiles[FastMath::clamp(static_cast<float>(index), 0.0f, static_cast<float>(kNumVowels - 1)) ==
-                                static_cast<float>(index)
-                            ? index
-                            : 0];
+        // FIX F12: previous expression was convoluted and fell back to profiles[0]
+        // for out-of-range indices rather than clamping to the nearest valid profile.
+        // Delegate to the correct get() implementation.
+        return get(index);
     }
 
     inline const FormantProfile& get(int index) const noexcept

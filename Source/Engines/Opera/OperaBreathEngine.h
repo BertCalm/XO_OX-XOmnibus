@@ -240,10 +240,12 @@ public:
         // ------------------------------------------------------------------
         float finalBreath = breathSignal * breathAmplitude;
 
-        // Subtle stereo spread: offset the R channel with a second noise grain
+        // FIX F6: symmetric stereo decorrelation — both channels get opposite-sign noise
+        // grains so L and R have equal RMS. Previous code added stereoNoise only to R,
+        // creating a hard-coded ~0.05× level imbalance at high breath settings.
         float stereoNoise = nextNoiseSample() * 0.05f * breathAmplitude;
 
-        outL += finalBreath;
+        outL += finalBreath - stereoNoise;
         outR += finalBreath + stereoNoise;
     }
 
