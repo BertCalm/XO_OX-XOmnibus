@@ -153,8 +153,8 @@ public:
 
         // ── Status label colours ──────────────────────────────────────────────
         bpmLabel.setColour(juce::Label::textColourId, get(t2()));   // T2
-        voiceLabel.setColour(juce::Label::textColourId, get(t3())); // T3
-        cpuLabel.setColour(juce::Label::textColourId, get(t3()));   // T3
+        voiceLabel.setColour(juce::Label::textColourId, get(t2())); // T2 (WCAG AA, #1112)
+        cpuLabel.setColour(juce::Label::textColourId, get(t2()));   // T2 (WCAG AA, #1112)
 
         // ── Lock button ───────────────────────────────────────────────────────
         lockBtn.setColour(juce::TextButton::buttonColourId, get(emptySlot()));
@@ -308,7 +308,7 @@ public:
         {
             juce::String badge = cockpitBypassed_ ? "COCKPIT: OFF" : "COCKPIT: ON";
             juce::Colour badgeColour = cockpitBypassed_ ? juce::Colour(0xFFFF6B6B) // red when bypassed (full bright)
-                                                        : get(t3());               // T3 gray when active (dimming on)
+                                                        : get(t2());               // T2 gray when active (WCAG AA, #1112)
             g.setColour(badgeColour);
             g.setFont(GalleryFonts::value(10.0f)); // (#885: 8pt→10pt legibility floor)
             const int badgeW = 72; // slightly wider to accommodate 10pt text

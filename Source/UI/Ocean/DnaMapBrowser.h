@@ -915,7 +915,7 @@ private:
     {
         const juce::Font f = GalleryFonts::label(10.0f);
         g.setFont(f);
-        g.setColour(juce::Colour(GalleryColors::Ocean::plankton));
+        g.setColour(juce::Colour(GalleryColors::Ocean::salt));
 
         const int w = getWidth();
         const int h = getHeight();
@@ -1001,7 +1001,7 @@ private:
         }
         else
         {
-            g.setColour(juce::Colour(GalleryColors::Ocean::plankton));
+            g.setColour(juce::Colour(GalleryColors::Ocean::salt));
             g.drawText("Search presets…",
                        searchBarBounds_.reduced(kSearchBarPadH, 0),
                        juce::Justification::centredLeft,
