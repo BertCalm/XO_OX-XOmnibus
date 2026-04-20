@@ -109,12 +109,15 @@ struct OgiveVoice
     CytomicSVF neonFilterL;
     CytomicSVF neonFilterR;
 
-    // DC blocking post-surface
-    float dcBlockStateL = 0.0f;
+    // DC blocking post-surface: state = prev output, prev = prev input
+    float dcBlockStateL = 0.0f;  // y[n-1]
     float dcBlockStateR = 0.0f;
+    float dcBlockPrevL  = 0.0f;  // x[n-1]
+    float dcBlockPrevR  = 0.0f;
 
-    // Coupling output cache
-    float lastCouplingOut = 0.0f;
+    // Coupling output cache (true stereo)
+    float lastCouplingOutL = 0.0f;
+    float lastCouplingOutR = 0.0f;
 
     void reset() noexcept
     {
@@ -140,7 +143,8 @@ struct OgiveVoice
         neonFilterL.reset();
         neonFilterR.reset();
         dcBlockStateL = dcBlockStateR = 0.0f;
-        lastCouplingOut = 0.0f;
+        dcBlockPrevL  = dcBlockPrevR  = 0.0f;
+        lastCouplingOutL = lastCouplingOutR = 0.0f;
     }
 };
 
@@ -175,17 +179,21 @@ public:
         outputCacheLeft.assign(static_cast<size_t>(maxBlockSize), 0.0f);
         outputCacheRight.assign(static_cast<size_t>(maxBlockSize), 0.0f);
 
-        // Chorus buffers — allocate 2048 samples per channel
-        chorusBufL.assign(2048, 0.0f);
-        chorusBufR.assign(2048, 0.0f);
+        // Chorus buffers — max delay ~10ms + mod depth at any SR (~1s overhead)
+        {
+            const int chorusSize = static_cast<int>(sampleRate * 0.050) + 64;  // 50ms headroom
+            chorusBufL.assign(static_cast<size_t>(chorusSize), 0.0f);
+            chorusBufR.assign(static_cast<size_t>(chorusSize), 0.0f);
+        }
         chorusWriteIdx = 0;
-        chorusReadPos  = 0.0f;
 
-        // Gated reverb delay lines (prime lengths for decorrelation)
-        fdnBuf0.assign(1481, 0.0f);
-        fdnBuf1.assign(1823, 0.0f);
-        fdnBuf2.assign(2141, 0.0f);
-        fdnBuf3.assign(2503, 0.0f);
+        // Gated reverb delay lines (prime-ratio lengths, scaled to SR for consistent density)
+        // Ratios ~33.6ms/41.3ms/48.5ms/56.8ms at 44.1kHz — same character at 48k/96k.
+        const double srRatio = sampleRate / 44100.0;
+        fdnBuf0.assign(static_cast<size_t>(1481 * srRatio) + 1, 0.0f);
+        fdnBuf1.assign(static_cast<size_t>(1823 * srRatio) + 1, 0.0f);
+        fdnBuf2.assign(static_cast<size_t>(2141 * srRatio) + 1, 0.0f);
+        fdnBuf3.assign(static_cast<size_t>(2503 * srRatio) + 1, 0.0f);
         fdnIdx0 = fdnIdx1 = fdnIdx2 = fdnIdx3 = 0;
         fdnState0 = fdnState1 = fdnState2 = fdnState3 = 0.0f;
         fdnGateLevel = 0.0f;
@@ -209,13 +217,15 @@ public:
         smoothedGlassQ    = 60.0f;
         modWheelValue     = 0.0f;
         aftertouchValue   = 0.0f;
+        expressionValue   = 0.0f;
         pitchBendNorm     = 0.0f;
 
-        couplingFMAccum      = 0.0f;
-        couplingExciteAccum  = 0.0f;
-        couplingSyncAccum    = 0.0f;
-        couplingFilterAccum  = 0.0f;
-        cachedCouplingOutput = 0.0f;
+        couplingFMAccum       = 0.0f;
+        couplingExciteAccum   = 0.0f;
+        couplingSyncAccum     = 0.0f;
+        couplingFilterAccum   = 0.0f;
+        cachedCouplingOutputL = 0.0f;
+        cachedCouplingOutputR = 0.0f;
 
         // Chorus LFO phase
         chorusLfoPhase = 0.0f;
@@ -228,14 +238,16 @@ public:
         for (auto& v : voices)
             v.reset();
 
-        couplingFMAccum      = 0.0f;
-        couplingExciteAccum  = 0.0f;
-        couplingSyncAccum    = 0.0f;
-        couplingFilterAccum  = 0.0f;
-        cachedCouplingOutput = 0.0f;
-        modWheelValue        = 0.0f;
-        aftertouchValue      = 0.0f;
-        pitchBendNorm        = 0.0f;
+        couplingFMAccum       = 0.0f;
+        couplingExciteAccum   = 0.0f;
+        couplingSyncAccum     = 0.0f;
+        couplingFilterAccum   = 0.0f;
+        cachedCouplingOutputL = 0.0f;
+        cachedCouplingOutputR = 0.0f;
+        modWheelValue         = 0.0f;
+        aftertouchValue       = 0.0f;
+        expressionValue       = 0.0f;
+        pitchBendNorm         = 0.0f;
 
         std::fill(outputCacheLeft.begin(),  outputCacheLeft.end(),  0.0f);
         std::fill(outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
@@ -326,8 +338,9 @@ public:
         // M3 COUPLING: looser (tracery ↓, damp ↓)
         float effectiveDamping   = juce::jlimit(0.001f, 0.2f, paramDamping - macroCoup * 0.01f);
 
-        // M4 SPACE: neon drive ↑, chorus ↑, nave mix ↑
-        float effectiveNeonDrive = juce::jlimit(0.0f, 1.0f, paramNeonDrive + macroSpace * 0.5f);
+        // M4 SPACE: neon drive ↑, chorus ↑, nave mix ↑; CC11 expression also boosts drive (D006)
+        float effectiveNeonDrive = juce::jlimit(0.0f, 1.0f,
+            paramNeonDrive + macroSpace * 0.5f + expressionValue * 0.4f);
         float effectiveChorusDepth = juce::jlimit(0.0f, 1.0f, paramChorusDepth + macroSpace * 0.3f);
         float effectiveNaveMix   = juce::jlimit(0.0f, 1.0f, paramNaveMix + macroSpace * 0.4f);
 
@@ -345,8 +358,8 @@ public:
         couplingSyncAccum   = 0.0f;
         couplingFilterAccum = 0.0f;
 
-        // Nonlinear spring k2 from glass_q
-        const float nonlinearK2 = effectiveGlassQ / 200.0f * 0.5f;
+        // Nonlinear spring k2 pre-block (updated per-sample via smoothedGlassQ below)
+        float nonlinearK2 = smoothedGlassQ / 200.0f * 0.5f;
 
         // Pitch bend ratio (±2 semitones)
         const float pitchBendRatio = std::pow(2.0f, pitchBendNorm * 2.0f / 12.0f);
@@ -382,13 +395,13 @@ public:
                 }
                 else if (msg.getControllerNumber() == 11)
                 {
-                    // CC11 expression → neon drive (D006)
-                    aftertouchValue = msg.getControllerValue() / 127.0f;
+                    // CC11 expression → neon drive boost (D006)
+                    expressionValue = msg.getControllerValue() / 127.0f;
                 }
             }
             else if (msg.isChannelPressure())
             {
-                // Aftertouch → scan position offset
+                // Channel pressure (aftertouch) → scan position offset (D006)
                 aftertouchValue = msg.getChannelPressureValue() / 127.0f;
             }
             else if (msg.isPitchWheel())
@@ -416,14 +429,15 @@ public:
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
         {
             int activeCount = 0;
-            // One-pole smoothing for control parameters
-            smoothedCutoff    += 0.001f * (effectiveCutoff    - smoothedCutoff);
-            smoothedReso      += 0.001f * (paramNeonReso       - smoothedReso);
-            smoothedDrive     += 0.001f * (effectiveNeonDrive  - smoothedDrive);
-            smoothedScanRate  += 0.001f * (effectiveScanRateWithCoupling - smoothedScanRate);
-            smoothedScanPos   += 0.001f * (effectiveScanPos   - smoothedScanPos);
-            smoothedStiffness += 0.001f * (effectiveStiffness  - smoothedStiffness);
-            smoothedDamping   += 0.001f * (effectiveDamping    - smoothedDamping);
+            // One-pole smoothing for control parameters (coeff from prepare — 5ms at current SR)
+            smoothedCutoff    += paramSmoothCoeff * (effectiveCutoff    - smoothedCutoff);
+            smoothedReso      += paramSmoothCoeff * (paramNeonReso       - smoothedReso);
+            smoothedDrive     += paramSmoothCoeff * (effectiveNeonDrive  - smoothedDrive);
+            smoothedScanRate  += paramSmoothCoeff * (effectiveScanRateWithCoupling - smoothedScanRate);
+            smoothedScanPos   += paramSmoothCoeff * (effectiveScanPos   - smoothedScanPos);
+            smoothedStiffness += paramSmoothCoeff * (effectiveStiffness  - smoothedStiffness);
+            smoothedDamping   += paramSmoothCoeff * (effectiveDamping    - smoothedDamping);
+            smoothedGlassQ    += paramSmoothCoeff * (effectiveGlassQ    - smoothedGlassQ);
 
             smoothedCutoff    = flushDenormal(smoothedCutoff);
             smoothedReso      = flushDenormal(smoothedReso);
@@ -432,6 +446,8 @@ public:
             smoothedScanPos   = flushDenormal(smoothedScanPos);
             smoothedStiffness = flushDenormal(smoothedStiffness);
             smoothedDamping   = flushDenormal(smoothedDamping);
+            smoothedGlassQ    = flushDenormal(smoothedGlassQ);
+            nonlinearK2       = smoothedGlassQ / 200.0f * 0.5f;
 
             float mixLeft  = 0.0f;
             float mixRight = 0.0f;
@@ -444,7 +460,7 @@ public:
 
                 ++activeCount;
 
-                // Voice stealing crossfade
+                // Voice stealing crossfade: fade-out for released stolen slot; ramp-in for new slot
                 if (voice.isFadingOut)
                 {
                     voice.crossfadeGain -= voiceFadeRate;
@@ -455,6 +471,11 @@ public:
                         voice.active        = false;
                         continue;
                     }
+                }
+                else if (voice.crossfadeGain < 1.0f)
+                {
+                    // Ramp-in for newly stolen voices (crossfadeGain starts at 0)
+                    voice.crossfadeGain = juce::jmin(1.0f, voice.crossfadeGain + voiceFadeRate);
                 }
 
                 // Portamento glide
@@ -477,8 +498,12 @@ public:
                 }
 
                 // ---- Per-voice LFO (D002/D005) ----
-                voice.lfo1.setRate(paramLfo1Rate, sampleRateFloat);
-                voice.lfo1.setShape(paramLfo1Shape);
+                // setRate/setShape are coeff computations — hoist outside sample loop
+                if (sampleIdx == 0)
+                {
+                    voice.lfo1.setRate(paramLfo1Rate, sampleRateFloat);
+                    voice.lfo1.setShape(paramLfo1Shape);
+                }
                 float lfo1Out = flushDenormal(voice.lfo1.process() * paramLfo1Depth);
 
                 // ---- D001: Velocity shapes timbre — key tracking on damping ----
@@ -490,6 +515,15 @@ public:
                 if (paramThermal > 0.001f)
                     updateThermalDrift(voice.thermalDrift, voice.currentPaneCount,
                                        paramThermal, sampleRateFloat);
+
+                // SpectralShaping coupling: inject excitation into surface velocities
+                if (couplingExciteAccum != 0.0f)
+                {
+                    const int N = voice.currentPaneCount;
+                    for (int ci = 1; ci < N - 1; ++ci)
+                        voice.surfaceVel[ci] += couplingExciteAccum
+                            * fastSin(static_cast<float>(ci) / static_cast<float>(N) * kOgivePI);
+                }
 
                 updateSurface(voice.surfacePos, voice.surfaceVel, voice.currentPaneCount,
                               smoothedStiffness, effectiveDamp, nonlinearK2,
@@ -523,6 +557,14 @@ public:
                         break;
                 }
 
+                // PhaseSync coupling: nudge scan phase
+                if (couplingSyncAccum != 0.0f)
+                {
+                    voice.scanPhase += couplingSyncAccum;
+                    if (voice.scanPhase >= 1.0f) voice.scanPhase -= 1.0f;
+                    if (voice.scanPhase <  0.0f) voice.scanPhase += 1.0f;
+                }
+
                 // Ogive (Gothic arch) trajectory — slow at apex, fast at base
                 float ogivePos = ogiveCurve(voice.scanPhase, effectiveLancet);
 
@@ -552,7 +594,8 @@ public:
                 float saturated = applyNeonSaturation(surfaceSample, velocityDrive);
 
                 // ---- Modulation envelope routes to neon filter cutoff ----
-                float modEnvCutoff = smoothedCutoff + modLevel * paramNeonCutoff * 0.5f;
+                // modEnv sweeps cutoff upward by up to 2× smoothedCutoff
+                float modEnvCutoff = smoothedCutoff * (1.0f + modLevel);
                 modEnvCutoff = juce::jlimit(80.0f, 20000.0f, modEnvCutoff);
 
                 // ---- Per-voice neon filter (L + R independent) ----
@@ -567,11 +610,14 @@ public:
                 filtL = flushDenormal(filtL);
                 filtR = flushDenormal(filtR);
 
-                // ---- Simple per-voice DC block ----
-                float dcL = filtL - voice.dcBlockStateL + 0.9995f * voice.dcBlockStateL;
-                voice.dcBlockStateL = filtL;
-                float dcR = filtR - voice.dcBlockStateR + 0.9995f * voice.dcBlockStateR;
-                voice.dcBlockStateR = filtR;
+                // ---- Simple per-voice DC block: y[n] = x[n] - x[n-1] + R*y[n-1] ----
+                // dcBlockState holds previous *output*, not previous input.
+                float dcL = filtL - voice.dcBlockPrevL + 0.9995f * voice.dcBlockStateL;
+                voice.dcBlockPrevL  = filtL;
+                voice.dcBlockStateL = dcL;
+                float dcR = filtR - voice.dcBlockPrevR + 0.9995f * voice.dcBlockStateR;
+                voice.dcBlockPrevR  = filtR;
+                voice.dcBlockStateR = dcR;
                 dcL = flushDenormal(dcL);
                 dcR = flushDenormal(dcR);
 
@@ -585,8 +631,9 @@ public:
                 mixLeft  += dcL * gain * spreadL;
                 mixRight += dcR * gain * spreadR;
 
-                // Cache for coupling reads
-                voice.lastCouplingOut = (dcL + dcR) * 0.5f * gain;
+                // Cache per-channel for coupling reads (true stereo)
+                voice.lastCouplingOutL = dcL * gain * spreadL;
+                voice.lastCouplingOutR = dcR * gain * spreadR;
             }
 
             // ---- Normalize by voice count ----
@@ -605,15 +652,22 @@ public:
             outR[sampleIdx] = mixRight;
         }
 
-        // Update coupling output cache (average of active voices)
+        // Update coupling output cache (average of active voices, true stereo)
         {
-            float coupSum = 0.0f;
+            float coupSumL = 0.0f, coupSumR = 0.0f;
             int coupCount = 0;
             for (const auto& v : voices)
             {
-                if (v.active) { coupSum += v.lastCouplingOut; ++coupCount; }
+                if (v.active)
+                {
+                    coupSumL += v.lastCouplingOutL;
+                    coupSumR += v.lastCouplingOutR;
+                    ++coupCount;
+                }
             }
-            cachedCouplingOutput = (coupCount > 0) ? (coupSum / static_cast<float>(coupCount)) : 0.0f;
+            const float inv = (coupCount > 0) ? (1.0f / static_cast<float>(coupCount)) : 0.0f;
+            cachedCouplingOutputL = coupSumL * inv;
+            cachedCouplingOutputR = coupSumR * inv;
         }
 
         // Update active voice count (atomic, read by UI thread)
@@ -651,9 +705,9 @@ public:
     float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
     {
         if (channel == 0)
-            return cachedCouplingOutput;
+            return cachedCouplingOutputL;
         if (channel == 1)
-            return cachedCouplingOutput;
+            return cachedCouplingOutputR;
         return 0.0f;
     }
 
@@ -964,6 +1018,11 @@ private:
     // 1. initSurface — Initialize glass surface with synthwave waveform
     inline void initSurface(float* pos, int N, int waveform, float asymmetry) noexcept
     {
+        if (N <= 1)
+        {
+            if (N == 1) pos[0] = 0.0f;  // boundary; can't meaningfully init
+            return;
+        }
         for (int i = 0; i < N; ++i)
         {
             float t = static_cast<float>(i) / static_cast<float>(N - 1);
@@ -1009,8 +1068,10 @@ private:
         }
     }
 
-    // 3. updateSurface — Verlet integration with nonlinear springs (D001 + D003)
-    // Verlet integration with magnitude clamping (Architect Contract #13)
+    // 3. updateSurface — Symplectic Euler integration with nonlinear springs (D001 + D003)
+    // Uses symplectic Euler (vel += accel; pos += vel_new) — better energy conservation
+    // than forward Euler; similar stability to Verlet without requiring previous positions.
+    // Magnitude clamping (Architect Contract #13) prevents runaway at high Q + stiffness.
     inline void updateSurface(float* pos, float* vel, int N,
                                float stiffness, float damping, float nonlinearK2,
                                float* thermalDrift) noexcept
@@ -1037,9 +1098,11 @@ private:
 
     // 4. ogiveCurve — Non-linear Gothic arch scan trajectory
     // Slow at apex, fast at base. shape > 1 = more pointed arch.
+    // Guard: phase must be in [0,1] — pow(negative, fractional) is UB.
     inline float ogiveCurve(float phase, float shape) noexcept
     {
-        float t = std::pow(phase, shape);
+        float p = juce::jlimit(0.0f, 1.0f, phase);
+        float t = std::pow(p, shape);
         return 0.5f * (1.0f - fastCos(kOgivePI * t));
     }
 
@@ -1067,25 +1130,31 @@ private:
     }
 
     // 6. updateThermalDrift — Schulze temporal memory (Brownian drift)
+    // Decay rate: 0.9999 per sample at 44.1kHz ≈ τ ~220ms.  Scale to SR for consistent memory.
     inline void updateThermalDrift(float* thermalDrift, int N, float thermalAmount,
-                                    float /*sampleRate*/) noexcept
+                                    float sampleRate) noexcept
     {
         if (thermalAmount < 0.001f) return;
-        float driftRate = thermalAmount * 0.00001f;
+        float driftRate  = thermalAmount * 0.00001f;
+        // exp(-1/(0.22 * SR)) gives ~220ms memory independent of sample rate
+        float decayCoeff = std::exp(-1.0f / (0.22f * sampleRate));
         for (int i = 1; i < N - 1; ++i)
         {
             thermalDrift[i] += (rng.nextFloat() * 2.0f - 1.0f) * driftRate;
-            thermalDrift[i] *= 0.9999f;  // soft limit to prevent runaway
+            thermalDrift[i] *= decayCoeff;
             thermalDrift[i]  = flushDenormal(thermalDrift[i]);
         }
     }
 
     // 7. applyNeonSaturation — tanh-family odd harmonics (Guru Bin specification)
+    // Post-gain normalization: divides by preGain so that for small signals (below saturation)
+    // the output level matches the input level. Drive then only adds harmonic content, not volume.
     inline float applyNeonSaturation(float input, float drive) noexcept
     {
         if (drive < 0.001f) return input;
-        float gained = input * (1.0f + drive * 4.0f);
-        return fastTanh(gained);  // odd harmonics — neon tube character
+        float preGain = 1.0f + drive * 4.0f;
+        float sat     = fastTanh(input * preGain);
+        return sat / preGain;  // normalize: below clipping ≈ unity, above clipping adds harmonics
     }
 
     //==========================================================================
@@ -1231,16 +1300,17 @@ private:
             revR = flushDenormal(revR);
 
             // ---- Gate logic ----
-            // Level detection on the reverb signal
-            float reverbLevel = std::fabs(revL) + std::fabs(revR);
-            if (reverbLevel > gateThresh)
+            // Key on INPUT signal (not reverb output) — prevents self-referential feedback loop.
+            // Gate opens when input is present; closes (over gateTimeSec) when input goes silent.
+            float inputLevel = std::fabs(inMono);
+            if (inputLevel > gateThresh)
             {
                 fdnGateOpen  = true;
                 fdnGateLevel = 1.0f;
             }
             else if (fdnGateOpen)
             {
-                // Hard-close gate over gateTimeSec
+                // Hard-close gate over gateTimeSec after input goes quiet
                 fdnGateLevel -= gateReleaseRate;
                 if (fdnGateLevel <= 0.0f)
                 {
@@ -1249,7 +1319,7 @@ private:
                 }
             }
 
-            // Apply gate to reverb
+            // Apply gate to reverb output
             revL *= fdnGateLevel;
             revR *= fdnGateLevel;
 
@@ -1342,12 +1412,9 @@ private:
         int voiceIdx = findVoiceForNoteOn(maxPoly);
         auto& voice  = voices[static_cast<size_t>(voiceIdx)];
 
-        // If stealing an active voice, crossfade to prevent click
-        if (voice.active)
-        {
-            voice.isFadingOut   = true;
-            voice.crossfadeGain = std::min(voice.crossfadeGain, 0.5f);
-        }
+        // If stealing an active voice, start new voice with crossfade ramp-in to avoid click.
+        // (isFadingOut=true was previously set then immediately overwritten — that was a bug.)
+        const bool wasActive = voice.active;
 
         // Re-init surface
         float blend = surfaceMemory;
@@ -1367,7 +1434,8 @@ private:
         voice.targetFrequency   = freq;
         voice.glideCoefficient  = 1.0f;  // snap in poly mode
         voice.isFadingOut       = false;
-        voice.crossfadeGain     = 1.0f;
+        // Ramp in from 0 when stealing (prevents click from abrupt old-voice cutoff)
+        voice.crossfadeGain     = wasActive ? 0.0f : 1.0f;
         voice.currentPaneCount  = paneCount;
         voice.scanPhase         = 0.0f;
 
@@ -1447,19 +1515,21 @@ private:
     float smoothedGlassQ    = 60.0f;
 
     // ---- D006: expression ----
-    float modWheelValue   = 0.0f;  // CC1 → scan pos
-    float aftertouchValue = 0.0f;  // aftertouch / CC11 expression → drive
+    float modWheelValue   = 0.0f;  // CC1  → scan pos offset
+    float aftertouchValue = 0.0f;  // channel pressure → scan pos offset
+    float expressionValue = 0.0f;  // CC11 → neon drive boost
     float pitchBendNorm   = 0.0f;  // ±1
 
     // ---- Last noteOn state ----
     float lastNoteVelocity = 0.0f;
 
     // ---- Coupling accumulators (reset each block) ----
-    float couplingFMAccum     = 0.0f;  // scan rate modulation
-    float couplingExciteAccum = 0.0f;  // surface excitation
-    float couplingSyncAccum   = 0.0f;  // phase sync nudge
-    float couplingFilterAccum = 0.0f;  // neon cutoff modulation
-    float cachedCouplingOutput = 0.0f; // O(1) coupling read
+    float couplingFMAccum      = 0.0f;  // scan rate modulation
+    float couplingExciteAccum  = 0.0f;  // surface excitation (applied in voice loop)
+    float couplingSyncAccum    = 0.0f;  // phase sync nudge (applied in voice loop)
+    float couplingFilterAccum  = 0.0f;  // neon cutoff modulation
+    float cachedCouplingOutputL = 0.0f; // O(1) coupling read — left channel
+    float cachedCouplingOutputR = 0.0f; // O(1) coupling read — right channel
 
     // ---- Output cache for coupling reads ----
     std::vector<float> outputCacheLeft;
@@ -1469,7 +1539,6 @@ private:
     std::vector<float> chorusBufL;
     std::vector<float> chorusBufR;
     int   chorusWriteIdx = 0;
-    float chorusReadPos  = 0.0f;
     float chorusLfoPhase = 0.0f;
 
     // ---- Gated Reverb (FDN 4-line) ----
