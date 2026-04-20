@@ -90,7 +90,8 @@ struct OmegaFMOperator
         return out;
     }
 
-    void setFeedback(float fb) noexcept { feedback = fb; }
+    // F16: setFeedback() removed — feedback is applied externally as modInput
+    // (voice.modulator.lastOutput * fbNow), so the feedback field was a dead store.
 
     void reset() noexcept
     {
@@ -100,7 +101,6 @@ struct OmegaFMOperator
 
     float phase = 0.0f;
     float phaseInc = 0.0f;
-    float feedback = 0.0f;
     float lastOutput = 0.0f;
 
     static constexpr float kTwoPi = 6.28318530717958647692f;
@@ -220,7 +220,7 @@ public:
     static constexpr int kNumAlgorithms = 8;
 
     juce::String getEngineId() const override { return "Omega"; }
-    juce::Colour getAccentColour() const override { return juce::Colour(0xFF003366); }
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFFB04010); } // Copper Still — per Visionary identity doc
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
@@ -324,7 +324,7 @@ public:
         const float pFeedback = loadP(paramFeedback, 0.0f);
         const float pPurity = loadP(paramPurity, 0.8f);
         const float pDistill = loadP(paramDistillRate, 0.3f);
-        const int pAlgorithm = static_cast<int>(loadP(paramAlgorithm, 0.0f));
+        const int pAlgorithm = std::clamp(static_cast<int>(loadP(paramAlgorithm, 0.0f)), 0, kNumAlgorithms - 1); // F20: guard OOB
         const float pBrightness = loadP(paramBrightness, 8000.0f);
         const float pGlide = loadP(paramGlide, 0.0f);
         const float pAttack = loadP(paramAttack, 0.001f);
@@ -332,6 +332,8 @@ public:
         const float pSustain = loadP(paramSustain, 0.7f);
         const float pRelease = loadP(paramRelease, 0.2f);
         const float pFiltEnvAmt = loadP(paramFilterEnvAmount, 0.4f);
+        const float pFiltAttack = loadP(paramFilterAttack, 0.001f);
+        const float pFiltDecay = loadP(paramFilterDecay, 0.3f);
         const float pBendRange = loadP(paramBendRange, 2.0f);
         const float pGravity = loadP(paramGravity, 0.5f);
 
@@ -368,6 +370,9 @@ public:
         smoothDistillRate.set(pDistill);
 
         couplingFilterMod = 0.0f;
+        // P25: capture pitch coupling before zeroing — sample loop reads the local,
+        // not the class member (which is now 0 for the next applyCouplingInput cycle).
+        const float capturedPitchMod = couplingPitchMod;
         couplingPitchMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
@@ -390,6 +395,10 @@ public:
             voice.lfo2.setShape(lfo2Shape);
             voice.glide.setTime(pGlide, srf);
             voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
+            // F17: mirror filterEnv ADSR update (sustain=0 → one-shot transient, by design)
+            voice.filterEnv.setADSR(pFiltAttack, pFiltDecay, 0.0f, pRelease);
+            // F19: hoist mode set — LowPass is block-constant, no need to call per sample.
+            voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -437,7 +446,7 @@ public:
                 // panL/panR precomputed before sample loop (CPU fix 2 — block-constant).
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
@@ -460,18 +469,21 @@ public:
 
                 // omega_macroCoupling: coupling adds ratio detune, pulling the modulator
                 // slightly sharp/flat for inter-engine entanglement coloring.
-                gravitatedRatio += macroCoup * 0.1f;
+                // P10: re-centered so 0.5 == no detune; full sweep is ±0.1 ratio units.
+                gravitatedRatio += (macroCoup - 0.5f) * 0.2f;
 
                 // Set operator frequencies using gravity-adjusted ratio
                 float modFreq = freq * gravitatedRatio;
                 voice.modulator.setFrequency(modFreq, srf);
-                voice.modulator.setFeedback(fbNow * 0.5f);
+                // F16: setFeedback() is a dead store — OmegaFMOperator::process() receives
+                // feedback as the modInput argument from the caller; the feedback field is
+                // never read inside process(). Removed.
                 voice.carrier.setFrequency(freq, srf);
 
                 // FM synthesis: modulator -> carrier
                 // Modulator output scaled by mod index (in radians of phase deviation)
                 float modOut = voice.modulator.process(voice.modulator.lastOutput * fbNow * 0.5f);
-                float modSignal = modOut * activeModIndex / (2.0f * 3.14159265f);
+                float modSignal = modOut * activeModIndex / OmegaFMOperator::kTwoPi; // F15: use shared constant
 
                 // Purity: at 1.0, pure FM. At 0.0, noise and instability creep in
                 if (purityNow < 0.99f)
@@ -492,8 +504,9 @@ public:
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 5000.0f;
                 float cutoff = std::clamp(velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
 
-                voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                voice.outputFilter.setCoefficients(cutoff, 0.2f, srf);
+                // F2/P19: use fast path — mode is set block-rate; setCoefficients_fast
+                // uses fastTan (~0.03% error) vs std::tan, avoiding trig per-sample-per-voice.
+                voice.outputFilter.setCoefficients_fast(cutoff, 0.2f, srf);
                 float filtered = voice.outputFilter.processSample(carrierOut);
 
                 // Amplitude envelope
@@ -514,6 +527,9 @@ public:
                 mixR += output * voice.panR;
             }
 
+            // F5: softClip protects against 8-voice summing overload
+            mixL = softClip(mixL);
+            mixR = softClip(mixR);
             outL[s] = mixL;
             if (outR)
                 outR[s] = mixR;
@@ -538,7 +554,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f); // P4: fastPow2 vs std::pow
 
         v.reset();
         v.active = true;
@@ -552,8 +568,9 @@ public:
         float initModIndex = paramModIndex ? paramModIndex->load() : 3.0f;
         v.distill.trigger(initModIndex);
 
-        v.ampEnv.prepare(srf);
-        v.filterEnv.prepare(srf);
+        // P18: prepare() is called for all voices in OmegaEngine::prepare() —
+        // calling it again per-noteOn runs std::exp unnecessarily on every note hit.
+        // Removed: v.ampEnv.prepare(srf) and v.filterEnv.prepare(srf).
 
         float attack = paramAttack ? paramAttack->load() : 0.001f;
         float decay = paramDecay ? paramDecay->load() : 0.3f;
@@ -699,9 +716,9 @@ public:
     }
 
 private:
-    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    double sr = 0.0;   // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
-    float inverseSr_ = 1.0f / 48000.0f;
+    float inverseSr_ = 0.0f; // Sentinel: initialised in prepare(). 0.0 means dtSec=0 until then (safe — render won't run before prepare()).
 
     std::array<OmegaVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
