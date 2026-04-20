@@ -366,6 +366,23 @@ public:
             actualCrossover[i] = juce::jlimit(20.0f, 20000.0f,
                 kOlvidoCrossoverBase[i] * shorelineShift);
 
+        // ---- Hoist crossover filter coefficients (block-constant) ----
+        // actualCrossover[] depends only on paramShoreline (block-constant).
+        // Q=0.7071 and sampleRateFloat are also block-constant.
+        // Computing setCoefficients_fast once per block per voice saves
+        // ~10 trig calls per active voice per sample (5 LP + 5 HP).
+        for (auto& v : voices)
+        {
+            if (!v.active) continue;
+            for (int ci = 0; ci < 5; ++ci)
+            {
+                v.crossoverLP[ci].setMode(CytomicSVF::Mode::LowPass);
+                v.crossoverLP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+                v.crossoverHP[ci].setMode(CytomicSVF::Mode::HighPass);
+                v.crossoverHP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+            }
+        }
+
         // ---- Pitch bend ratio (±2 semitones) ----
         const float pitchBendRatio = std::pow(2.0f, pitchBendNorm * 2.0f / 12.0f);
 
@@ -567,14 +584,11 @@ public:
 
                 for (int ci = 0; ci < 5; ++ci)
                 {
+                    // Coefficients already set at block level (block-constant).
                     // Low-pass at this crossover → goes into band ci
-                    voice.crossoverLP[ci].setMode(CytomicSVF::Mode::LowPass);
-                    voice.crossoverLP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
                     bandSignal[ci] = voice.crossoverLP[ci].processSample(residual);
 
                     // High-pass continues to next band
-                    voice.crossoverHP[ci].setMode(CytomicSVF::Mode::HighPass);
-                    voice.crossoverHP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
                     residual = voice.crossoverHP[ci].processSample(residual);
 
                     bandSignal[ci] = flushDenormal(bandSignal[ci]);

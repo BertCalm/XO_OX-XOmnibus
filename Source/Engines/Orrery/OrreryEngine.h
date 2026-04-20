@@ -870,7 +870,11 @@ private:
         const float orbitPhaseInc = effectiveOrbitSpeed / sampleRateFloat;
         const float kTwoPi = 6.28318530718f;
 
-        // Set up LFO configs for all voices (block-rate)
+        // Set up LFO configs and envelope params for all voices (block-rate)
+        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): setParams fires once per
+        // block, not per sample. ampAtk/Dec/Sus/Rel and fltAtk/Dec/Sus/Rel are block-constant atomic
+        // loads already captured above; recomputing envelope coefficients numSamples× per block was
+        // wasteful and could cause zipper noise if params changed mid-block.
         for (auto& v : voices)
         {
             if (!v.active) continue;
@@ -878,6 +882,8 @@ private:
             v.lfo1.setShape(lfo1Shape);
             v.lfo2.setRate(lfo2Rate, sampleRateFloat);
             v.lfo2.setShape(lfo2Shape);
+            v.ampEnv.setParams(ampAtk, ampDec, ampSus, ampRel, sampleRateFloat);
+            v.filterEnv.setParams(fltAtk, fltDec, fltSus, fltRel, sampleRateFloat);
         }
 
         for (int s = startSample; s < endSample; ++s)
@@ -892,7 +898,6 @@ private:
                 if (!v.active) continue;
 
                 // ---- Amp envelope ----
-                v.ampEnv.setParams(ampAtk, ampDec, ampSus, ampRel, sampleRateFloat);
                 const float ampLevel = v.ampEnv.process();
 
                 // If envelope finished, deactivate voice
@@ -903,7 +908,6 @@ private:
                 }
 
                 // ---- Filter envelope ----
-                v.filterEnv.setParams(fltAtk, fltDec, fltSus, fltRel, sampleRateFloat);
                 const float fltEnvLevel = v.filterEnv.process();
 
                 // ---- LFO values (per-sample) ----
