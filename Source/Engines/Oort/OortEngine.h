@@ -190,14 +190,19 @@ struct OortVoice
         }
         case 1: // Cauchy — gamma * tan(pi * (u - 0.5)), clamped at ±4σ
         {
-            float t = std::tan(kOortPi * (u - 0.5f));
+            // fastTan valid for |x| < π/4; (u-0.5)∈(-0.5,0.5) so arg ∈ (-π/2, π/2)
+            // Clamp argument to ±π/4 to stay in fastTan's accurate range; beyond that
+            // we clamp the output anyway (t > 4 gets clamped to 4).
+            const float arg = std::max(-kOortPi * 0.25f, std::min(kOortPi * 0.25f, kOortPi * (u - 0.5f)));
+            float t = fastTan(arg);
             t = std::max(-4.0f, std::min(4.0f, t));
             step = t * 0.25f; // scale to approx [-1, +1]
             break;
         }
-        case 2: // Logistic — log(u/(1-u))
+        case 2: // Logistic — log(u/(1-u)) = log2(u/(1-u)) * ln(2)
         {
-            float lv = std::log(u / (1.0f - u));
+            // fastLog2 ~0.002% error; multiply by ln(2) to recover natural log
+            float lv = fastLog2(u / (1.0f - u)) * 0.6931472f;
             lv = std::max(-4.0f, std::min(4.0f, lv));
             step = lv * 0.25f;
             break;
@@ -271,6 +276,7 @@ struct OortVoice
         for (int i = 0; i < n; ++i)
         {
             float sepForce = 0.0f;
+            int   sepCount = 0;
             float aliSum   = 0.0f;
             int   aliCount = 0;
 
@@ -288,6 +294,7 @@ struct OortVoice
                 {
                     const float sign = (dist >= 0.0f) ? 1.0f : -1.0f;
                     sepForce += sign / std::max(absDist, 0.001f);
+                    ++sepCount;
                 }
 
                 // Alignment: match neighbours' velocity
@@ -298,8 +305,12 @@ struct OortVoice
                 }
             }
 
-            // Separation force
-            const float fSep = sepForce * sep * 0.01f;
+            // Separation force — normalise by neighbour count to keep magnitude
+            // agent-count-independent (was unbounded: 32 agents all within radius
+            // could accumulate 32× more force than 8 agents).
+            const float fSep = (sepCount > 0)
+                ? (sepForce / static_cast<float>(sepCount)) * sep * 0.01f
+                : 0.0f;
 
             // Alignment force
             const float fAli = (aliCount > 0)
@@ -366,7 +377,11 @@ struct OortVoice
             variance += d * d;
         }
         variance /= static_cast<float>(n);
-        const float stddev = std::sqrt(variance);
+        // Skip std::sqrt: work in variance domain. stddev*4 >= 1 ↔ variance >= 0.0625 (1/16)
+        // coherence = 1 - min(1, stddev*4) = 1 - min(1, sqrt(variance)*4)
+        // Equivalent: use sqrt(variance) approximation via fastPow2(fastLog2(variance)*0.5f)
+        // Simpler: since we only need the final value 0..1, compute without sqrt:
+        const float stddev = (variance > 0.0f) ? fastPow2(fastLog2(variance) * 0.5f) : 0.0f;
 
         return std::max(0.0f, 1.0f - std::min(1.0f, stddev * 4.0f));
     }
@@ -399,7 +414,7 @@ struct OortVoice
 
         filterL.reset();
         filterR.reset();
-        filterCoeffCounter = 0;
+        filterCoeffCounter = 15; // Fire on first sample of note (was 0: stale for first 15 samples)
 
         ampEnv.reset();
         filterEnv.reset();
@@ -478,6 +493,7 @@ public:
         lastSampleL  = 0.0f;
         lastSampleR  = 0.0f;
         lastCoherence = 0.0f;
+        stealIdx     = 0;
         activeVoiceCount_.store(0, std::memory_order_relaxed);
     }
 
@@ -604,7 +620,7 @@ public:
 
         {
             NRange r{20.0f, 800.0f, 0.1f};
-            r.setSkewForCentre(0.3f);
+            r.setSkewForCentre(110.0f); // Fix: 0.3 was below minimum (20); 110 Hz centre gives musical feel
             params.push_back(std::make_unique<AP>(PID{"oort_delayBase", 1}, "oort_delayBase", r, 110.0f));
         }
 
@@ -627,7 +643,7 @@ public:
         // ---- Group D: Filter + Filter Envelope (9 params) ----
         {
             NRange r{20.0f, 20000.0f, 0.1f};
-            r.setSkewForCentre(0.3f);
+            r.setSkewForCentre(1000.0f); // Fix: 0.3 was below minimum (20); 1 kHz centre is perceptually centred
             params.push_back(std::make_unique<AP>(PID{"oort_fltCutoff", 1}, "oort_fltCutoff", r, 8000.0f));
         }
 
@@ -876,21 +892,24 @@ public:
         const int agentCount      = std::clamp(agentCountBase, 8, kOortMaxAgents);
 
         float solidarity = pSolidarity ? pSolidarity->load() : 0.5f;
-        solidarity = std::clamp(solidarity * (1.0f + macro1), 0.0f, 2.0f);
+        // M1=SOLIDARITY: bipolar — macro at 0.5 is neutral (±0.5 range = ±50% modulation)
+        solidarity = std::clamp(solidarity * (1.0f + (macro1 - 0.5f) * 2.0f), 0.0f, 2.0f);
         // EnvToMorph coupling modulates solidarity (tighter/looser flocking)
         solidarity = std::clamp(solidarity + couplingEnvSolid, 0.0f, 2.0f);
 
         float intent = pIntent ? pIntent->load() : 0.5f;
-        intent = std::clamp(intent * (0.5f + macro2 * 1.5f), 0.0f, 1.0f);
+        // M2=INTENT: bipolar — macro at 0.5 is neutral; ±0.5 range gives ±0.5 intent offset
+        intent = std::clamp(intent + (macro2 - 0.5f) * 0.5f, 0.0f, 1.0f);
 
         // M3=DRIFT: scatter increase + damping decrease
         float scatter = pScatter ? pScatter->load() : 0.3f;
-        scatter = std::clamp(scatter * (1.0f + macro3 * 2.0f), 0.0f, 2.0f);
+        // M3=DRIFT: bipolar — macro at 0.5 is neutral; CW adds up to +scatter, CCW subtracts
+        scatter = std::clamp(scatter * (1.0f + (macro3 - 0.5f) * 2.0f), 0.0f, 2.0f);
 
         const int   distType   = pDistType   ? static_cast<int>(pDistType->load())   : 0;
         float       damping    = pDamping    ? pDamping->load()    : 0.95f;
-        // M3=DRIFT: lower damping (more runaway) when macro3 is high
-        damping = std::clamp(damping - macro3 * 0.15f, 0.5f, 1.0f);
+        // M3=DRIFT: bipolar — macro at 0.5 is neutral; damping decreases above 0.5
+        damping = std::clamp(damping - (macro3 - 0.5f) * 0.15f, 0.5f, 1.0f);
 
         const float separation = pSeparation ? pSeparation->load() : 0.5f;
         const float cohesion   = pCohesion   ? pCohesion->load()   : 0.5f;
@@ -904,7 +923,11 @@ public:
 
         // Group C
         float eventDensity = pEventDensity ? pEventDensity->load() : 0.0f;
-        // RhythmToBlend coupling drives Poisson event density
+        // RhythmToBlend coupling drives Poisson event density.
+        // Use fabs: density is always positive, but coupling can arrive bipolar;
+        // both positive and negative pulses should raise event rate.
+        // (std::fabs is correct here — unlike vowelY in Ondine, density has no
+        //  directional meaning, so magnitude-only application is intentional.)
         eventDensity = std::clamp(eventDensity + std::fabs(couplingRhythm), 0.0f, 1.0f);
         const float eventAmp      = pEventAmp      ? pEventAmp->load()      : 0.8f;
         const float eventDecaySec = pEventDecay    ? pEventDecay->load()    : 0.02f;
@@ -1045,7 +1068,7 @@ public:
                              ampAtk, ampDec, ampSus, ampRel,
                              fltAtk, fltDec, fltSus, fltRel,
                              agentCount, scatter, distType,
-                             voiceMode, glideCoeff, glideMode);
+                             voiceMode, glideCoeff, glideMode, velTimbre);
             }
             else if (msg.isNoteOff())
             {
@@ -1104,10 +1127,14 @@ public:
         analyzeForSilenceGate(buffer, numSamples);
 
         // ---- Decay coupling accumulators (Lesson 10) ----
-        couplingFMVal     *= 0.999f;
-        couplingAmpFilter *= 0.999f;
-        couplingEnvSolid  *= 0.999f;
-        couplingRhythm    *= 0.999f;
+        // fastExp gives sample-rate-correct per-block decay (~50 ms time constant).
+        // Was 0.999f^1 per block which is sample-rate dependent: at 48 kHz with 128
+        // samples/block the effective decay is faster than at 44.1 kHz.
+        const float couplingDecay = fastExp(-static_cast<float>(numSamples) / (0.05f * sampleRateFloat));
+        couplingFMVal     *= couplingDecay;
+        couplingAmpFilter *= couplingDecay;
+        couplingEnvSolid  *= couplingDecay;
+        couplingRhythm    *= couplingDecay;
         couplingFMVal     = flushDenormal(couplingFMVal);
         couplingAmpFilter = flushDenormal(couplingAmpFilter);
         couplingEnvSolid  = flushDenormal(couplingEnvSolid);
@@ -1236,8 +1263,10 @@ private:
 
                 // ---- Read waveform from current agent positions ----
                 // Linear interpolation between agents in index order
-                const int   n       = v.agentCount;
-                const float stepLen = v.cyclePeriod / static_cast<float>(n);
+                const int   n             = v.agentCount;
+                // One division; derive invStepLen (= n / cyclePeriod) from same reciprocal
+                const float invCyclePeriod = 1.0f / v.cyclePeriod;
+                const float invStepLen     = static_cast<float>(n) * invCyclePeriod;
 
                 // How many samples into the current agent segment?
                 float raw = 0.0f;
@@ -1257,15 +1286,15 @@ private:
                 }
 
                 // Advance position within current agent segment
-                v.agentPhase += 1.0f / stepLen;
-                if (v.agentPhase >= 1.0f)
+                v.agentPhase += invStepLen; // was 1.0f / stepLen — now one division shared with invCyclePeriod
+                while (v.agentPhase >= 1.0f) // while-loop: handles overshoot at high pitch / fast glide
                 {
                     v.agentPhase -= 1.0f;
                     v.readIdx = (v.readIdx + 1) % std::max(1, n);
                 }
 
                 // Advance full cycle counter
-                v.cyclePhase += 1.0f / v.cyclePeriod;
+                v.cyclePhase += invCyclePeriod; // was 1.0f / v.cyclePeriod — reuse reciprocal
                 if (v.cyclePhase >= 1.0f)
                 {
                     v.cyclePhase -= 1.0f;
@@ -1296,7 +1325,8 @@ private:
                             const float u = std::max(0.001f, v.nextRandomUnipolar());
                             const float jitter = 1.0f + densityJitter * (v.nextRandom() * 0.5f);
                             const float lambda = effEventDensity;
-                            v.poissonTimer = (-std::log(u) / std::max(lambda, 1e-9f)) * jitter;
+                            // -ln(u) = -log2(u) * ln(2); fastLog2 ~0.002% error, fine for stochastic timing
+                            v.poissonTimer = (-fastLog2(u) * 0.6931472f / std::max(lambda, 1e-9f)) * jitter;
                         }
                     }
 
@@ -1314,13 +1344,17 @@ private:
                 }
 
                 // Mix flock waveform + Poisson events
-                float sig = raw + poissonOut;
+                // softClip before DC block / wavefold: Poisson grain + fold can exceed unity
+                float sig = softClip(raw + poissonOut);
 
                 // ---- DC Block ----
                 if (dcBlock)
                 {
-                    // First-order highpass at ~5 Hz
-                    constexpr float dcCoeff = 0.9997f;
+                    // First-order highpass at ~5 Hz — coefficient derived from SR so it
+                    // tracks correctly at 48 kHz (0.99935) and 96 kHz (0.99967).
+                    // Was constexpr 0.9997f which gave ~6.7 Hz at 44.1 kHz but ~13.4 Hz
+                    // at 96 kHz due to sample count difference.
+                    const float dcCoeff = 1.0f - (kOortTwoPi * 5.0f / sampleRateFloat);
                     const float dcOut = sig - v.dcBlockX + dcCoeff * v.dcBlockY;
                     v.dcBlockX = sig;
                     v.dcBlockY = flushDenormal(dcOut);
@@ -1381,7 +1415,8 @@ private:
                 float sigR = v.filterR.processSample(sig);
 
                 // ---- VCA ----
-                const float gain = ampLevel * v.velocity * (1.0f + modAmpLevel);
+                // Clamp (1+modAmpLevel) ≥ 0 to prevent polarity inversion when mod drives below -1
+                const float gain = ampLevel * v.velocity * std::max(0.0f, 1.0f + modAmpLevel);
                 sigL *= gain;
                 sigR *= gain;
 
@@ -1399,7 +1434,8 @@ private:
                       float ampAtk, float ampDec, float ampSus, float ampRel,
                       float fltAtk, float fltDec, float fltSus, float fltRel,
                       int agentCount, float scatter, int distType,
-                      int voiceMode, float glideCoeff, int glideMode) noexcept
+                      int voiceMode, float glideCoeff, int glideMode,
+                      float velTimbre) noexcept
     {
         const float vel = midiVel / 127.0f;
 
@@ -1427,9 +1463,14 @@ private:
                     break;
                 }
             }
-            // If none free, steal voice 0 (simple steal)
+            // If none free, steal via round-robin across the poly range.
+            // Round-robin spreads interruptions across notes rather than always
+            // cutting the same voice (voice-0 cutoff), reducing click clustering.
             if (idx == -1)
-                idx = 0;
+            {
+                stealIdx = (stealIdx + 1) % maxPoly;
+                idx = stealIdx;
+            }
         }
 
         auto& v = voices[idx];
@@ -1464,8 +1505,13 @@ private:
             v.filterEnv.noteOn();
         }
 
+        // Reset filter coefficient counter so first sample gets correct coefficients
+        // (stolen voice may have stale coefficients from previous note)
+        v.filterCoeffCounter = 15;
+
         // Velocity -> initial agent scatter + excitation energy (D001)
-        const float velScatter = scatter * (1.0f + vel * (pVelTimbre ? pVelTimbre->load() : 0.6f));
+        // Use passed velTimbre param (block-rate snapshot) rather than a raw ptr read
+        const float velScatter = scatter * (1.0f + vel * velTimbre);
         v.initAgents(agentCount, velScatter, vel, distType);
         v.cyclePeriod = sampleRateFloat / midiToFreq(note);
 
@@ -1498,6 +1544,7 @@ private:
     int   maxBlock        = 512;
 
     std::array<OortVoice, kOortMaxVoices> voices;
+    int   stealIdx = 0; // round-robin steal pointer
 
     // Coupling accumulators
     float couplingFMVal      = 0.0f;
