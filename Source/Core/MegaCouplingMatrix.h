@@ -381,6 +381,11 @@ public:
         // atomic inside the hot per-route loop. (#755)
         const uint64_t currentGen = routeGeneration_.load(std::memory_order_acquire);
 
+        // (#1093 item 86) Hoist the smoother's (1 - couplingSmooth_) term out of
+        // the per-route loop. With up to MaxRoutes=64 routes per block this saves
+        // 64 subtractions per block for no accuracy loss.
+        const float smootherCoeff = 1.0f - couplingSmooth_;
+
         for (const auto& route : *routes)
         {
             // (#1093 item 38) Skip inactive routes BEFORE the smoother update. An
@@ -402,7 +407,7 @@ public:
             // invariant to block size, so macro sweeps sound identical across all DAW buffer
             // sizes. `smoothedAmount` is mutable so it can be updated here despite the const
             // range-for reference. (#684, #910)
-            route.smoothedAmount += (targetAmount - route.smoothedAmount) * (1.0f - couplingSmooth_);
+            route.smoothedAmount += (targetAmount - route.smoothedAmount) * smootherCoeff;
 
             if (std::abs(route.smoothedAmount) < 0.001f)
                 continue;
@@ -499,6 +504,43 @@ public:
     {
         auto routes = std::atomic_load(&routeList);
         return routes ? *routes : std::vector<CouplingRoute>{};
+    }
+
+    // (#1093 item 54) Zero-copy-style iteration. getRoutes() returns a vector
+    // copy which costs a heap allocation; these two helpers let a caller iterate
+    // without copying when they only need to read a few fields.
+    int getRouteCount() const
+    {
+        auto routes = std::atomic_load(&routeList);
+        return routes ? static_cast<int>(routes->size()) : 0;
+    }
+
+    // Copies one route — returns default-constructed if index out of range.
+    // The returned CouplingRoute is a value copy (4 words + smoothedAmount +
+    // sinkCache) so this is cheap and lock-free.
+    CouplingRoute getRouteAt(int idx) const
+    {
+        auto routes = std::atomic_load(&routeList);
+        if (!routes || idx < 0 || idx >= static_cast<int>(routes->size()))
+            return CouplingRoute{};
+        return (*routes)[static_cast<size_t>(idx)];
+    }
+
+    // (#1093 item 97) Route counts by rate — audio-rate vs control-rate.
+    // Exposed for the Gallery Model sidebar CPU estimation. Message-thread only.
+    struct RouteCounts { int audio = 0; int control = 0; int inactive = 0; };
+    RouteCounts getRouteCounts() const
+    {
+        RouteCounts counts;
+        auto routes = std::atomic_load(&routeList);
+        if (!routes) return counts;
+        for (const auto& r : *routes)
+        {
+            if (!r.active) { ++counts.inactive; continue; }
+            if (isAudioRateType(r.type)) ++counts.audio;
+            else                          ++counts.control;
+        }
+        return counts;
     }
 
     //-- Hot-swap coupling integrity -------------------------------------------
