@@ -104,6 +104,8 @@
 #include "Engines/Olvido/OlvidoEngine.h"
 // OSTRACON — corpus-buffer synthesis (engine #88)
 #include "Engines/Ostracon/OstraconEngine.h"
+// OUTCROP — wave-terrain synthesis (engine #89)
+#include "Engines/Outcrop/OutcropEngine.h"
 #include "DSP/Effects/MathFXChain.h"
 #include "DSP/Effects/BoutiqueFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
@@ -371,6 +373,11 @@ static bool registered_Ostracon =
     xoceanus::EngineRegistry::instance().registerEngine("Ostracon", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OstraconEngine>(); });
 
+// OUTCROP — wave-terrain synthesis (engine #89)
+static bool registered_Outcrop =
+    xoceanus::EngineRegistry::instance().registerEngine("Outcrop", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OutcropEngine>(); });
+
 namespace xoceanus
 {
 
@@ -571,6 +578,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     // FUSION Quad Collection — OASIS + OUTFLOW (ecosystem engines, missing from APVTS)
     OasisEngine::addParameters(params);
     OutflowEngine::addParameters(params);
+    // OUTCROP — wave-terrain synthesis (engine #89)
+    OutcropEngine::addParameters(params);
 
     // ── Three FX suites wired as optional stages in MasterFXChain (issue #153) ──
     // MathFXChain and BoutiqueFXChain use the shared params vector.
