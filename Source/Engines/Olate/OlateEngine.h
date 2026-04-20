@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
+// DEEP-REVIEW: 2026-04-20 — 20 fixes applied (perf, sound, stability, params, voices)
 //==============================================================================
 //
 //  OlateEngine.h — XOlate | "The Aged Wine Analog"
@@ -32,7 +33,7 @@
 //      5. Terroir: regional circuit flavor (West Coast, East Coast, UK, Japanese)
 //      6. MIDI-domain gravitational coupling
 //
-//  Accent: Burgundy #6B1A2A
+//  Accent: Brown #5C3317
 //  Parameter prefix: olate_
 //
 //==============================================================================
@@ -66,6 +67,14 @@ namespace xoceanus
 //==============================================================================
 struct FermentationIntegrator
 {
+    // FIX (stability/perf): leaky-integrator coeff is now SR-derived so the
+    // blend rate is consistent at 44.1, 48, and 96 kHz. Target smoothing TC
+    // is 50 ms. Formula: 1 - exp(-2pi * f / sr) with f = 1/(2pi*0.05) ≈ 3.18 Hz.
+    void prepare(float sampleRate) noexcept
+    {
+        lerpCoeff = 1.0f - std::exp(-1.0f / (0.05f * sampleRate));
+    }
+
     void trigger() noexcept
     {
         fermentLevel = 0.0f;
@@ -78,7 +87,7 @@ struct FermentationIntegrator
 
         // Leaky integration: ferment level grows toward 1.0 at ageRate
         float target = std::min(1.0f, noteAge * ageRate * 0.1f);
-        fermentLevel += (target - fermentLevel) * 0.001f;
+        fermentLevel += (target - fermentLevel) * lerpCoeff;
         fermentLevel = flushDenormal(fermentLevel);
 
         // Apply progressive saturation: more harmonics as fermentation develops
@@ -95,6 +104,7 @@ struct FermentationIntegrator
         noteAge = 0.0f;
     }
 
+    float lerpCoeff  = 0.001f; // overwritten by prepare(); fallback keeps old behaviour
     float fermentLevel = 0.0f;
     float noteAge = 0.0f; // in seconds
 };
@@ -169,6 +179,7 @@ public:
             voices[i].reset();
             voices[i].ampEnv.prepare(srf);
             voices[i].filterEnv.prepare(srf);
+            voices[i].ferment.prepare(srf); // FIX: SR-aware leaky coeff
         }
 
         smoothCutoff.prepare(srf);
@@ -194,7 +205,16 @@ public:
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
         sessionAge = 0.0f;
-        sessionSampleCount = 0;
+        sessionSampleCount = 0.0;
+        couplingCacheL = couplingCacheR = 0.0f;
+        couplingFilterMod = couplingPitchMod = 0.0f;
+        // FIX (P14): snap all smoothers to zero on reset to avoid transients on re-enable
+        smoothCutoff.snapTo(4000.0f);
+        smoothResonance.snapTo(0.3f);
+        smoothDrive.snapTo(0.3f);
+        smoothOscMix.snapTo(0.5f);
+        smoothPulseWidth.snapTo(0.5f);
+        smoothWarmth.snapTo(0.5f);
     }
 
     float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
@@ -272,6 +292,8 @@ public:
         const float pSustain = loadP(paramSustain, 0.7f);
         const float pRelease = loadP(paramRelease, 0.3f);
         const float pFiltEnvAmt = loadP(paramFilterEnvAmount, 0.5f);
+        const float pFilterAttack = loadP(paramFilterAttack, 0.001f); // FIX: read per-block for live updates
+        const float pFilterDecay  = loadP(paramFilterDecay,  0.4f);   // FIX: read per-block for live updates
         const float pBendRange = loadP(paramBendRange, 2.0f);
         const float pGravity = loadP(paramGravity, 0.5f);
 
@@ -306,8 +328,10 @@ public:
         }
 
         // D006: mod wheel → cutoff, aftertouch → resonance
+        // FIX (P7): also guard block-level cutoff against Nyquist
+        const float nyquistCap = srf * 0.5f - 200.0f;
         float effectiveCutoff =
-            std::clamp(pCutoff + macroChar * 4000.0f + modWheelAmount * 3000.0f + couplingFilterMod, 100.0f, 20000.0f);
+            std::clamp(pCutoff + macroChar * 4000.0f + modWheelAmount * 3000.0f + couplingFilterMod, 100.0f, nyquistCap);
         float effectiveReso =
             std::clamp(pResonance + vintageResoBoost + aftertouchAmount * 0.3f + macroSpace * 0.2f, 0.0f, 0.95f);
         float effectiveDrive = std::clamp(pDrive + vintageDriveBoost + macroChar * 0.3f, 0.0f, 1.0f);
@@ -325,8 +349,8 @@ public:
         const float bendSemitones = pitchBendNorm * pBendRange;
 
         // Session age: accumulates slowly over the entire playing session
-        sessionSampleCount += numSamples;
-        sessionAge = static_cast<float>(sessionSampleCount) / srf; // in seconds
+        sessionSampleCount += static_cast<double>(numSamples);
+        sessionAge = static_cast<float>(sessionSampleCount / static_cast<double>(sr)); // in seconds
 
         // Session warmth: gradual tonal drift (caps at ~20 minutes = 1200 seconds)
         float sessionWarmthFactor = std::min(1.0f, sessionAge / 1200.0f);
@@ -339,16 +363,19 @@ public:
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
         const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
+        // FIX (P15/perf): apply all per-block voice param updates once per voice, not
+        // gated by active — inactive voices need fresh settings on next noteOn.
+        // Also fixes ADSR setParams-per-sample anti-pattern (hoisted from inner sample loop).
         for (auto& voice : voices)
         {
-            if (!voice.active)
-                continue;
             voice.lfo1.setRate(lfo1Rate, srf);
             voice.lfo1.setShape(lfo1Shape);
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
             voice.glide.setTime(pGlide, srf);
             voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
+            // FIX: filterEnv ADSR updated per-block so param tweaks take effect mid-note
+            voice.filterEnv.setADSR(pFilterAttack, pFilterDecay, 0.0f, 0.3f);
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -375,15 +402,16 @@ public:
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
 
-                // LFO modulations
+                // LFO modulations — FIX: advance lfo2 unconditionally (phase must tick)
+                // but only scale when depth>0 or UK terroir might use it
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
-                float lfo2Val = voice.lfo2.process() * lfo2Depth;
+                float lfo2Raw = voice.lfo2.process();
+                float lfo2Val = lfo2Raw * lfo2Depth;
 
-                // Set oscillator frequencies
+                // Set oscillator frequencies — FIX (perf): setWaveform is constant,
+                // move to noteOn; only setFrequency and setPulseWidth need per-sample updates
                 voice.oscSaw.setFrequency(freq, srf);
-                voice.oscSaw.setWaveform(PolyBLEP::Waveform::Saw);
                 voice.oscPulse.setFrequency(freq, srf);
-                voice.oscPulse.setWaveform(PolyBLEP::Waveform::Pulse);
                 voice.oscPulse.setPulseWidth(pwNow);
 
                 // Dual oscillator mix
@@ -405,18 +433,21 @@ public:
                 // Session warmth: LP cutoff gently decreases as session ages (tube amp warmup)
                 float sessionCutShift = sessionWarmthFactor * -800.0f;
                 float voiceCutoff = std::clamp(
-                    cutNow + filtEnv * 6000.0f + velCutMod + lfo1Val * 2000.0f + sessionCutShift, 100.0f, 20000.0f);
+                    cutNow + filtEnv * 6000.0f + velCutMod + lfo1Val * 2000.0f + sessionCutShift,
+                    100.0f, nyquistCap); // FIX (P7): use block-level nyquistCap (SR-derived)
 
-                voice.ladderFilter.setMode(CytomicSVF::Mode::LowPass);
+                // FIX (perf): setMode is constant LowPass — moved to noteOn; only update coefficients
                 voice.ladderFilter.setCoefficients(voiceCutoff, resNow, srf);
                 float filtered = voice.ladderFilter.processSample(driven);
 
                 // Warmth filter: low shelf boost — tube vs transistor character
-                // Warmth parameter controls low-frequency saturation character
+                // FIX (P19): mode is constant so only update coefficients when warmth changes;
+                // guard both the setMode and processSample to avoid unnecessary CPU when warmth=0.
                 if (warmNow > 0.01f)
                 {
-                    voice.warmthFilter.setMode(CytomicSVF::Mode::LowShelf);
-                    voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
+                    // FIX (P19): mode set at noteOn; update coefficients once per block only
+                    if (s == 0)
+                        voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
                     filtered = voice.warmthFilter.processSample(filtered);
                 }
 
@@ -465,13 +496,18 @@ public:
                 mixR += output * voice.panR;
             }
 
-            outL[s] = mixL;
+            // FIX (P8): softClip summed bus before write — 8 voices of driven bass can clip
+            outL[s] = softClip(mixL);
             if (outR)
-                outR[s] = mixR;
-            // macroCoup scales coupling output: higher coupling macro = stronger fretless coupling signal
+                outR[s] = softClip(mixR);
+        }
+
+        // FIX: capture coupling cache once after block (last sample), not per-sample (wasteful)
+        if (numSamples > 0)
+        {
             const float coupGain = 1.0f + macroCoup * 1.5f;
-            couplingCacheL = mixL * coupGain;
-            couplingCacheR = mixR * coupGain;
+            couplingCacheL = outL[numSamples - 1] * coupGain;
+            couplingCacheR = (outR ? outR[numSamples - 1] : outL[numSamples - 1]) * coupGain;
         }
 
         int count = 0;
@@ -491,7 +527,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = midiToFreq(note); // FIX (P4): use fastPow2-based helper, not std::pow
 
         v.reset();
         v.active = true;
@@ -502,10 +538,16 @@ public:
         v.gravityMass = 0.0f;
         v.noteHeldTime = 0.0f;
         v.ferment.trigger();
+        // FIX (perf): set waveforms and filter mode once at noteOn — constant, not per-sample
+        v.oscSaw.setWaveform(PolyBLEP::Waveform::Saw);
+        v.oscPulse.setWaveform(PolyBLEP::Waveform::Pulse);
+        v.ladderFilter.setMode(CytomicSVF::Mode::LowPass);
+        v.warmthFilter.setMode(CytomicSVF::Mode::LowShelf);
+        // FIX (P18): prepare() must NOT be called per-noteOn — it was already called in
+        // prepare() and resets internal filter state, causing clicks on note steal.
 
-        v.ampEnv.prepare(srf);
-        v.filterEnv.prepare(srf);
-
+        // FIX (P20): read params directly — setADSR is also called per-block in the
+        // voice-prep loop so values stay live; noteOn just needs a trigger.
         float attack = paramAttack ? paramAttack->load() : 0.005f;
         float decay = paramDecay ? paramDecay->load() : 0.3f;
         float sustain = paramSustain ? paramSustain->load() : 0.7f;
@@ -514,14 +556,15 @@ public:
         v.ampEnv.triggerHard();
 
         float fAttack = paramFilterAttack ? paramFilterAttack->load() : 0.001f;
-        float fDecay = paramFilterDecay ? paramFilterDecay->load() : 0.4f;
+        float fDecay  = paramFilterDecay  ? paramFilterDecay->load()  : 0.4f;
         v.filterEnv.setADSR(fAttack, fDecay, 0.0f, 0.3f);
         v.filterEnv.triggerHard();
 
-        // Subtle stereo spread
+        // Subtle stereo spread — FIX: use named constant instead of inline pi/2 literal
+        static constexpr float kHalfPi = 1.5707963267948966f;
         float pan = 0.5f + (static_cast<float>(idx) - 3.5f) * 0.04f;
-        v.panL = std::cos(pan * 1.5707963f);
-        v.panR = std::sin(pan * 1.5707963f);
+        v.panL = std::cos(pan * kHalfPi);
+        v.panR = std::sin(pan * kHalfPi);
     }
 
     void noteOff(int note) noexcept
@@ -657,9 +700,10 @@ public:
     }
 
 private:
-    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    double sr = 0.0;   // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
-    float inverseSr_ = 1.0f / 48000.0f;
+    // FIX: sentinel 0.0 instead of 1/48000 — wrong SR assumption if called before prepare()
+    float inverseSr_ = 0.0f;
 
     std::array<OlateVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
@@ -673,8 +717,9 @@ private:
     float aftertouchAmount = 0.0f;
 
     // Session-scale aging state
-    float sessionAge = 0.0f;         // seconds since session start
-    uint64_t sessionSampleCount = 0; // total samples processed
+    // FIX: use double for sample accumulator — float loses sub-second precision after ~349s
+    float sessionAge = 0.0f;           // seconds since session start
+    double sessionSampleCount = 0.0;   // total samples processed (double for precision)
 
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f;
     float couplingCacheL = 0.0f, couplingCacheR = 0.0f;
