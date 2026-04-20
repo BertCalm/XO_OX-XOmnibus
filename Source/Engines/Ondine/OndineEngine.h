@@ -632,14 +632,17 @@ public:
 
         // Apply coupling modulation to vowelX/Y
         vowelX = std::clamp(vowelX + couplingEnvVowelX, 0.0f, 1.0f);
-        vowelY = std::clamp(vowelY + std::fabs(couplingRhythmVowelY), 0.0f, 1.0f);
+        // RhythmToBlend is bipolar: drop fabs so coupling can push vowelY in either direction.
+        vowelY = std::clamp(vowelY + couplingRhythmVowelY, 0.0f, 1.0f);
 
-        // M1=APERTURE: push vowelY toward open and widen spread
-        vowelY = std::clamp(vowelY + macro1 * 0.3f, 0.0f, 1.0f);
+        // M1=APERTURE: bipolar vowelY open + formantSpread widen.
+        // Default macro1=0.5 is now neutral (offset = 0); full CCW is -0.3, full CW is +0.3.
+        const float macro1Bipolar = macro1 - 0.5f;  // [-0.5, +0.5]
+        vowelY = std::clamp(vowelY + macro1Bipolar * 0.6f, 0.0f, 1.0f);
 
         const float formantShift   = pFormantShift  ? pFormantShift->load()  : 0.0f;
         float       formantSpread  = pFormantSpread ? pFormantSpread->load() : 1.0f;
-        formantSpread = std::clamp(formantSpread + macro1 * 0.4f, 0.5f, 2.0f);
+        formantSpread = std::clamp(formantSpread + macro1Bipolar * 0.8f, 0.5f, 2.0f);
 
         const float formantTilt    = pFormantTilt   ? pFormantTilt->load()   : 0.0f;
         const float formantQ       = pFormantQ      ? pFormantQ->load()      : 0.5f;
@@ -940,14 +943,12 @@ private:
             }
         }
 
-        // ---- Noise: white noise lowpass filtered ----
-        // Breathiness controls the LP cutoff for the noise component
+        // ---- Noise: white noise spectral-tilt coloring ----
+        // excBright: 0=dark (attenuated) noise, 1=white noise.
+        // Previous code had a dead one-pole LP (no state variable — the formula
+        // noise*coeff + noise*(1-coeff) always equals noise). Removed the no-op
+        // line; only the spectral tilt scale survives.
         float noise = (xorRand(v.rng) * 2.0f - 1.0f);
-        // Simple one-pole LP for noise coloring (approximate)
-        // excBright: 0=dark noise, 1=white noise
-        const float noiseLPCoeff = 0.1f + excBright * 0.85f;
-        noise = noise * noiseLPCoeff + noise * (1.0f - noiseLPCoeff); // just use raw noise scaled
-        // More accurate: simply scale noise by excBright to emulate spectral tilt
         noise *= (0.3f + excBright * 0.7f);
 
         float excSample = 0.0f;
@@ -1110,11 +1111,18 @@ private:
                                                 static_cast<float>(harmN + 1), harmFrac);
                     fBWs[1]   = fFreqs[1] * 0.04f; // very narrow for throat singing isolation
 
-                    // F3-F5: spread harmonics above F2
-                    for (int f = 2; f < 5; ++f)
+                    // F3-F5: spread harmonics above F2, guarded at 0.45×Nyquist
+                    // Previous code multiplied fFreqs[1] (already a shifted harmonic) by f,
+                    // geometrically compounding the shift. Use fundFreq × sequential harmonic
+                    // numbers instead so the partials are correct integer multiples of the pitch.
                     {
-                        fFreqs[f] = fFreqs[1] * static_cast<float>(f);
-                        fBWs[f]   = fFreqs[f] * 0.05f;
+                        const float nyquistGuard = sampleRateFloat * 0.45f;
+                        for (int f = 2; f < 5; ++f)
+                        {
+                            fFreqs[f] = std::min(fundFreq * static_cast<float>(harmN + f - 1),
+                                                 nyquistGuard);
+                            fBWs[f]   = fFreqs[f] * 0.05f;
+                        }
                     }
 
                     // Blend with vowel positions based on overtone amount (0=vowel, 1=harmonic)
@@ -1196,12 +1204,18 @@ private:
                 }
 
                 // ---- Gallery feedback read (from delay buffer) ----
-                // Read 1.5ms back (galDelayLen samples)
-                const int galReadPos = (v.galWritePos + v.galDelayLen - (v.galDelayLen)) % v.galDelayLen;
+                // Read galDelayLen samples behind write pointer to get 1.5ms-old signal.
+                // Previous formula (writePos + len - len) % len == writePos: always read
+                // the current write slot — zero actual delay, feedback was a no-op.
+                const int galReadPos = (v.galWritePos == 0)
+                    ? (v.galDelayLen - 1)
+                    : (v.galWritePos - 1);
                 const float galFeedback = v.galleryDelayBuf[static_cast<size_t>(galReadPos)];
 
                 // ---- Coupled excitation sample ----
-                const float coupledSample = (excType == 3 && !couplingExcBuf.empty() && i < maxBlock)
+                // Guard with couplingExcBuf.size() (filled up to numSamples by applyCouplingInput),
+                // not maxBlock, so we never read beyond what was actually written this block.
+                const float coupledSample = (excType == 3 && i < static_cast<int>(couplingExcBuf.size()))
                     ? couplingExcBuf[static_cast<size_t>(i)]
                     : v.couplingExcAccum;
 
@@ -1237,7 +1251,7 @@ private:
                     fOut *= tiltGain;
 
                     // VOCODE: analyze coupling audio through same-freq BPs
-                    if (vocode > 0.001f && !couplingExcBuf.empty() && i < maxBlock)
+                    if (vocode > 0.001f && i < static_cast<int>(couplingExcBuf.size()))
                     {
                         const float analyzeSample = couplingExcBuf[static_cast<size_t>(i)];
                         const float bpOut = v.vocoderBP[f].processSample(analyzeSample);
@@ -1249,8 +1263,10 @@ private:
                             v.vocoderEnv[f] += (rectified - v.vocoderEnv[f]) * vocoderRelCoeff;
                         v.vocoderEnv[f] = flushDenormal(v.vocoderEnv[f]);
 
-                        // Blend: vocode=0 → internal formant, vocode=1 → vocoded amplitude
-                        fOut = lerp(fOut, fOut * v.vocoderEnv[f] * 8.0f, vocode);
+                        // Blend: vocode=0 → internal formant, vocode=1 → vocoded amplitude.
+                        // Clamp envelope gain; unclamped ×8 blows up when coupling is hot.
+                        const float vocoderGain = std::clamp(v.vocoderEnv[f] * 8.0f, 0.0f, 2.0f);
+                        fOut = lerp(fOut, fOut * vocoderGain, vocode);
                     }
 
                     formantSum += fOut;
@@ -1281,13 +1297,15 @@ private:
                 outR = flushDenormal(outR);
 
                 // ---- VCA: amp envelope × velocity × mod ----
-                const float gain = ampLevel * (0.7f + v.velocity * 0.3f) * (1.0f + modAmpLevel);
+                // Clamp modAmpLevel multiplier: mod matrix ±1 must not push gain negative or >2×.
+                const float gain = ampLevel * (0.7f + v.velocity * 0.3f)
+                    * std::clamp(1.0f + modAmpLevel, 0.0f, 2.0f);
                 outL *= gain;
                 outR *= gain;
 
-                // ---- Accumulate into output ----
-                writeL[i] += outL;
-                writeR[i] += outR;
+                // ---- Accumulate into output (soft-clip per voice to prevent overload) ----
+                writeL[i] += softClip(outL);
+                writeR[i] += softClip(outR);
             }
         }
     }
@@ -1369,7 +1387,7 @@ private:
         v.filterEnv.setParams(fenvAtk, fenvDec, fenvSus, fenvRel, sampleRateFloat);
         v.filterEnv.noteOn();
 
-        // Reset gallery path on new note (prevents bleed)
+        // Reset gallery path + filter counter on new note (prevents bleed / stale coeffs)
         if (!isLegato)
         {
             if (!v.galleryDelayBuf.empty())
@@ -1379,6 +1397,10 @@ private:
             v.galWritePos = 0;
             for (int f = 0; f < 5; ++f)
                 v.vocoderEnv[f] = 0.0f;
+            // Reset counter so coefficients are recalculated on the very first sample
+            // of this voice; without this, a stolen voice may run up to 15 samples with
+            // coeff state from the previous note.
+            v.filterUpdateCounter = 0;
         }
     }
 
