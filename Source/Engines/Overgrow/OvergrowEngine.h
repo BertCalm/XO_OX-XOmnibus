@@ -258,6 +258,9 @@ struct OvergrowVoice
 
     float panL = 0.707f, panR = 0.707f;
 
+    // Cached filter cutoff for P19 coefficient-update guard (skip if |delta| < 1 Hz)
+    float lastFilterCutoff = -1.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -533,9 +536,14 @@ public:
                 // Filter
                 float envLevel = voice.filterEnv.process();
                 float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 3000.0f, 200.0f, 20000.0f);
-                voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
-                                             srf); // l2 → resonance shimmer
+                // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
+                if (std::fabs(fCut - voice.lastFilterCutoff) > 1.0f)
+                {
+                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
+                                                 srf); // l2 → resonance shimmer
+                    voice.lastFilterCutoff = fCut;
+                }
                 float filtered = voice.filter.processSample(stringOut + runnerOut);
 
                 // Amp envelope

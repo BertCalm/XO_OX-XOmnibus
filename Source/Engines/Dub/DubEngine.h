@@ -680,6 +680,12 @@ public:
 
         float peakEnv = 0.0f;
 
+        // Hoist block-constant ADSR update out of per-sample loop (P15 fix).
+        // setADSR calls std::exp — running once per block is correct and faster.
+        for (auto& voice : voices)
+            if (voice.active)
+                voice.ampEnv.setADSR(attack, decay, sustain, release);
+
         // --- Render voices ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
@@ -732,8 +738,7 @@ public:
                 if (!voice.active)
                     continue;
 
-                // Update envelope params
-                voice.ampEnv.setADSR(attack, decay, sustain, release);
+                // ampEnv.setADSR hoisted to block-rate above (P15 fix)
                 voice.pitchEnv.setParams(pitchDepth, pitchDecay);
 
                 // Glide: exponential frequency slew

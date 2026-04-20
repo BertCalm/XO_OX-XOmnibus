@@ -517,6 +517,12 @@ public:
 
         const float bendSemitones = pitchBendNorm * pBendRange;
 
+        // Hoist block-constant ADSR update out of per-sample loop (P15 fix).
+        // effectiveAttack, pDecay, pSustain, pRelease are all block-rate constants.
+        for (int vi = 0; vi < kMaxVoices; ++vi)
+            if (voices[vi].active)
+                voices[vi].ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
+
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
@@ -760,7 +766,7 @@ public:
                 }
 
                 //--- Amplitude envelope ---
-                voice.ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
+                // setADSR hoisted to block-rate above (P15 fix)
                 float ampLevel = voice.ampEnv.process();
                 if (!voice.ampEnv.isActive())
                 {
