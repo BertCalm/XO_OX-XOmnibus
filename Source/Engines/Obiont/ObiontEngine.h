@@ -1047,7 +1047,9 @@ struct ObiontVoice
         couplingFilterMod = 0.f;
         couplingPitchMod = 0.f;
         adsr.kill();
-        adsr.prepare((float)sampleRate);
+        // RT-fix: adsr.prepare() only sets sr — already called once at engine
+        // prepare()-time for all voices.  Calling it here from the audio-thread
+        // steal handler was a P3 lifecycle violation (no allocation, but wrong phase).
         adsr.noteOn();
         lfo.reset();
         lfo2.reset();

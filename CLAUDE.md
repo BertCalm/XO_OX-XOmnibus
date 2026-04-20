@@ -6,13 +6,8 @@
 
 XOceanus ("for all") is a free, open-source multi-engine synthesizer platform by **XO_OX Designs**.
 It merges character instruments into one unified creative environment where engines couple, collide,
-<<<<<<< HEAD
-and mutate into sounds impossible with any single synth. **87 engines implemented (101 in full fleet design)**
-— full engine color table + accent colors: `Docs/reference/engine-color-table.md`
-=======
 and mutate into sounds impossible with any single synth. **<!-- ENGINE_COUNT -->88<!-- /ENGINE_COUNT --> engines implemented (<!-- ENGINE_COUNT_DESIGNED -->111<!-- /ENGINE_COUNT_DESIGNED --> in full fleet design)**
 — single source of truth: `Docs/engines.json` · color table: `Docs/reference/engine-color-table.md`
->>>>>>> 5c65e0bd133b4e1a479f36275ebd62628cf46341
 
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
@@ -161,17 +156,6 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Outlaw | `outl_` | `outl_diodeClip` |
 | Outbreak | `outb_` | `outb_virusFilter` |
 | Orrery | `orry_` | `orry_planetSpeed` |
-<<<<<<< HEAD
-| Observandum | `observ_` | `observ_curveMorph` |
-| Opsin | `ops_` | `ops_topology` |
-| Oort | `oort_` | `oort_scatter` |
-| Ondine | `ond_` | `ond_formant` |
-| Ortolan | `ort_` | `ort_pulse` |
-| Octant | `octn_` | `octn_tensor` |
-| Overtide | `ovt_` | `ovt_wavelet` |
-| Oobleck | `oobl_` | `oobl_feed` |
-| Ooze | `ooze_` | `ooze_reynolds` |
-=======
 | Observandum | `observ_` | `observ_scanOffset` |
 | Oort | `oort_` | `oort_cloudDensity` |
 | Opsin | `ops_` | `ops_photonFlux` |
@@ -180,7 +164,8 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Ortolan | `ort_` | `ort_songPhase` |
 | Ostracon | `ostr_` | `ostr_oxide` |
 | Overtide | `ovt_` | `ovt_tidalDepth` |
->>>>>>> 5c65e0bd133b4e1a479f36275ebd62628cf46341
+| Oobleck | `oobl_` | `oobl_feed` |
+| Ooze | `ooze_` | `ooze_reynolds` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
@@ -381,3 +366,13 @@ Full index: `Skills/README.md`
 5. Run DSP stability checks after any engine modifications
 6. Preserve existing parameter IDs and preset compatibility
 7. For new engines, follow the process in `Docs/specs/xoceanus_new_engine_process.md`
+
+---
+
+## Collaboration Principle — Thoroughness ≠ More Work
+
+When the user asks for a "deep", "detailed", "thorough", or comprehensive review-and-fix, always surface **bulk-fix, automation, and pattern-level opportunities** as they emerge. Don't grind through every target individually when the same class of issue repeats.
+
+The user's goal is getting it right, not doing more work. A request for thoroughness usually comes from perfectionism OR frustration with hitting the same issue repeatedly — bulk-fixing the pattern once is the win, not re-fixing it N times across N targets.
+
+If you see friction (repeated manual work, same fix applied many times), stop and propose optimization before continuing.

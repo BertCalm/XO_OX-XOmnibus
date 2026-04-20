@@ -1045,6 +1045,15 @@ public:
             voice.lfo2.setShape(lfo2Shape);
         }
 
+        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): atomic loads and setADSR fire once per block, not per sample.
+        const float envA = paramAttack  ? paramAttack->load()  : 0.005f;
+        const float envD = paramDecay   ? paramDecay->load()   : 0.3f;
+        const float envS = paramSustain ? paramSustain->load() : 0.8f;
+        const float envR = paramRelease ? paramRelease->load() : 0.3f;
+        for (int vi = 0; vi < kMaxVoices; ++vi)
+            if (voices[vi].active)
+                voices[vi].ampEnv.setADSR(envA, envD, envS, envR);
+
         for (int s = 0; s < numSamples; ++s)
         {
             const bool updateFilter = ((s & 15) == 0);
@@ -1064,12 +1073,6 @@ public:
                 if (!voice.active)
                     continue;
 
-                // Update amp envelope ADSR per block so knob changes take effect on held notes
-                voice.ampEnv.setADSR(
-                    paramAttack  ? paramAttack->load()  : 0.005f,
-                    paramDecay   ? paramDecay->load()   : 0.3f,
-                    paramSustain ? paramSustain->load() : 0.8f,
-                    paramRelease ? paramRelease->load() : 0.3f);
 
                 // Process amp envelope
                 float ampEnvLevel = voice.ampEnv.process();

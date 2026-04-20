@@ -700,12 +700,10 @@ public:
 
         v.string.reset();
         v.exciter.trigger(vel, exciterType, freq, srf);
-        v.body.prepare(srf);
-        v.curing.prepare(srf);
+        // RT-fix: body/curing/ampEnv/filterEnv.prepare() already called at engine
+        // prepare()-time for all voice slots.  On noteOn, only reset/trigger state.
+        // body.prepare() sets sr + resets mode filters — not needed again here.
         v.curing.trigger();
-
-        v.ampEnv.prepare(srf);
-        v.filterEnv.prepare(srf);
 
         float attack = paramAttack ? paramAttack->load() : 0.005f;
         float decay = paramDecay ? paramDecay->load() : 1.0f;

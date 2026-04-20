@@ -629,7 +629,9 @@ public:
 private:
     struct CombFilter
     {
-        static constexpr int kMaxDelay = 8192;
+        // kMaxDelay sized for 50ms at 192kHz (worst case: 96kHz × size=1.0 needs ~8390 samples).
+        // 9601 = ceil(0.05 * 192000) + 1, covers all consumer sample rates without overflow.
+        static constexpr int kMaxDelay = 9601;
         float buffer[kMaxDelay] = {};
         int writePos = 0;
         int delaySamples = 1000;

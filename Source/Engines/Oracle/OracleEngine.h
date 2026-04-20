@@ -1553,9 +1553,10 @@ private:
                 voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
                 voice.lfo2.setShape(lfo2Shape);
 
-                voice.dcBlockerL.prepare(sampleRateFloat);
+                // RT-fix: dcBlocker.prepare() is a lifecycle call (sets sr, no alloc).
+                // Already called once at engine prepare()-time (lines 476-477).
+                // Replace with reset()-only to clear filter state without wrong-phase lifecycle call.
                 voice.dcBlockerL.reset();
-                voice.dcBlockerR.prepare(sampleRateFloat);
                 voice.dcBlockerR.reset();
             }
             return;
@@ -1600,9 +1601,9 @@ private:
         voice.lfo2.setShape(lfo2Shape);
         voice.lfo2.reset();
 
-        voice.dcBlockerL.prepare(sampleRateFloat);
+        // RT-fix: dcBlocker.prepare() already called at engine prepare()-time.
+        // reset()-only clears filter state without the wrong-phase lifecycle call.
         voice.dcBlockerL.reset();
-        voice.dcBlockerR.prepare(sampleRateFloat);
         voice.dcBlockerR.reset();
     }
 

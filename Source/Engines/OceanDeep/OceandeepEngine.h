@@ -56,9 +56,11 @@ namespace xoceanus {
 // ---------------------------------------------------------------------------
 struct DeepSineOsc {
     float phase = 0.f;
-    float sr    = 44100.f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float sr    = 0.0f;
 
-    void prepare(double s) { sr = (float)s; }
+    void prepare(double s) { jassert(s > 0.0); sr = (float)s; }
     void reset()           { phase = 0.f; }
 
     // freq in Hz. Returns one sample.
@@ -114,9 +116,12 @@ struct DeepWaveguideBody {
     std::vector<float> buf;
     int   maxDelay  = 48001; // set by prepare(), matches buf.size()
     int   writePos  = 0;
-    float sr        = 44100.f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float sr        = 0.0f;
 
     void prepare(double s) {
+        jassert(s > 0.0);
         sr = (float)s;
         // Size buffer to cover 1 Hz fundamental (longest possible delay) at
         // the given sample rate.  +1 for the fencepost (delaySamples < maxDelay).
@@ -526,6 +531,7 @@ public:
     //--------------------------------------------------------------------------
     void prepare(double sampleRate, int maxBlockSize) override
     {
+        jassert(sampleRate > 0.0);
         sr = (float)sampleRate;
 
         oscFund.prepare(sampleRate);
@@ -941,7 +947,9 @@ private:
     enum class EnvStage { Idle, Attack, Decay, Sustain, Release };
 
     // DSP state
-    float sr = 44100.f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float sr = 0.0f;
     DeepSineOsc          oscFund, oscSub1, oscSub2;
     DeepHydroCompressor  compressor;
     DeepWaveguideBody    body;

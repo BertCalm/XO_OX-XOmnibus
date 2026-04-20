@@ -563,9 +563,10 @@ public:
         v.startTime = ++voiceCounter;
         v.glide.snapTo(freq);
 
-        v.string.prepare(srf);
+        // RT-fix: string.prepare() / wah.prepare() already called at engine prepare()-time.
+        // On noteOn, trigger string excitation and reset wah state only — no lifecycle re-init.
         v.string.trigger(vel);
-        v.wah.prepare(srf);
+        v.wah.reset();
 
         // Filter envelope — use user ADSR parameters (FIX 1: was hardcoded)
         auto loadP = [](std::atomic<float>* p, float def) { return p ? p->load(std::memory_order_relaxed) : def; };
@@ -574,7 +575,7 @@ public:
         const float fSustain = loadP(paramSustain, 0.4f);
         const float fRelease = loadP(paramRelease, 0.15f);
 
-        v.filterEnv.prepare(srf);
+        // RT-fix: filterEnv.prepare() already called at engine prepare()-time.
         v.filterEnv.setADSR(fAttack, fDecay, fSustain, fRelease);
         v.filterEnv.triggerHard();
 

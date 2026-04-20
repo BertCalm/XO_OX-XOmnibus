@@ -755,7 +755,9 @@ public:
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srF = 0.0f;  // Sentinel: must be set by prepare() before use
-    float inverseSr_ = 1.0f / 44100.0f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float inverseSr_ = 0.0f;
     int blockSize = 512;
 
     OverwashVoice voices[kMaxVoices];

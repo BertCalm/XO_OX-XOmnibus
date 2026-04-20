@@ -166,16 +166,23 @@ public:
 
     void setVoiceCount(int count)
     {
+        // Early-return before constructing String when value hasn't changed.
+        if (count == cachedVoiceCount_)
+            return;
+        cachedVoiceCount_ = count;
         juce::String txt = "Voices: " + juce::String(count);
-        if (voiceLabel.getText() != txt)
-            voiceLabel.setText(txt, juce::dontSendNotification);
+        voiceLabel.setText(txt, juce::dontSendNotification);
     }
 
     void setCpuPercent(float pct)
     {
-        juce::String txt = "CPU: " + juce::String(juce::roundToInt(pct)) + "%";
-        if (cpuLabel.getText() != txt)
-            cpuLabel.setText(txt, juce::dontSendNotification);
+        // Early-return before constructing String when value hasn't changed.
+        int rounded = juce::roundToInt(pct);
+        if (rounded == cachedCpuRounded_)
+            return;
+        cachedCpuRounded_ = rounded;
+        juce::String txt = "CPU: " + juce::String(rounded) + "%";
+        cpuLabel.setText(txt, juce::dontSendNotification);
     }
 
     // setCpuVisible() — show or hide the CPU label + update.
@@ -184,9 +191,12 @@ public:
 
     void setBpm(double bpm)
     {
+        // Early-return before constructing String when value hasn't changed (0.1 BPM precision).
+        if (std::abs(bpm - cachedBpm_) < 0.05)
+            return;
+        cachedBpm_ = bpm;
         juce::String txt = juce::String(bpm, 1) + " BPM";
-        if (bpmLabel.getText() != txt)
-            bpmLabel.setText(txt, juce::dontSendNotification);
+        bpmLabel.setText(txt, juce::dontSendNotification);
     }
 
     // Feature 7 (Schulze): Session timeline entry — one active coupling route.
@@ -476,6 +486,12 @@ private:
 
     // ── Cockpit bypass state ─────────────────────────────────────────────────
     bool cockpitBypassed_ = false;
+
+    // ── Cached values — guard early-return in setVoiceCount/setCpuPercent/setBpm
+    // so juce::String is never constructed when the value hasn't changed.
+    int    cachedVoiceCount_  = -1;
+    int    cachedCpuRounded_  = -1;
+    double cachedBpm_         = -1.0;
 
     // Feature 7 (Schulze): Session timeline — coupling age history
     std::vector<TimelineEntry> timelineEntries_;

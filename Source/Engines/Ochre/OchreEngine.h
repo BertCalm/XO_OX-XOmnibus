@@ -866,7 +866,7 @@ public:
         v.hammer.trigger(vel, hardNow, condNow, freq, srf, caramelNow);
 
         // Filter envelope: copper = shorter decay than iron
-        v.filterEnv.prepare(srf);
+        // RT-fix: filterEnv.prepare() already called at engine prepare()-time.
         float filterDecay = 0.05f + (1.0f - condNow) * 0.45f; // 50ms–500ms
         v.filterEnv.setADSR(0.001f, filterDecay, 0.0f, 0.3f);
         v.filterEnv.triggerHard();
@@ -874,8 +874,8 @@ public:
         // HF noise burst (body character) — triggered on note-on, decays fast
         v.hfNoiseEnv = vel * vel;
 
-        // Body preparation
-        v.body.prepare(srf);
+        // RT-fix: body.prepare() already called at engine prepare()-time (sets sr, resets
+        // filter states).  On noteOn, reconfigure modes only — no lifecycle re-init needed.
         v.body.setFundamental(freq, bodyType);
 
         // Reset modes

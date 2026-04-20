@@ -159,13 +159,9 @@ public:
                        juce::Justification::centredLeft);
 
             // ── Voice name — center, Space Grotesk SemiBold 9pt ───────────
-            // Use the per-voice label if discovered; otherwise cached "V{N}"
-            const juce::String& voiceName = (i < (int)voiceLabels.size() && voiceLabels[i].isNotEmpty())
-                                        ? voiceLabels[i]
-                                        : kFallbackNames[i];
             g.setColour(juce::Colours::white.withAlpha(0.85f));
             g.setFont(kVoiceFont);
-            g.drawText(voiceName, cell.bounds, juce::Justification::centred);
+            g.drawText(kFallbackNames[i], cell.bounds, juce::Justification::centred);
         }
 
         // ── Param strip header label ──────────────────────────────────────────
@@ -174,7 +170,16 @@ public:
             int stripY = getParamStripY();
             g.setColour(accentColour.withAlpha(0.80f));
             g.setFont(kVoiceFont);
-            juce::String header = "VOICE " + juce::String(selectedPad + 1);
+            // Use a static lookup to avoid constructing juce::String in paint.
+            static const juce::String kVoiceHeaders[] = {
+                "VOICE 1",  "VOICE 2",  "VOICE 3",  "VOICE 4",
+                "VOICE 5",  "VOICE 6",  "VOICE 7",  "VOICE 8",
+                "VOICE 9",  "VOICE 10", "VOICE 11", "VOICE 12",
+                "VOICE 13", "VOICE 14", "VOICE 15", "VOICE 16"
+            };
+            const juce::String& header = (selectedPad >= 0 && selectedPad < 16)
+                ? kVoiceHeaders[selectedPad]
+                : ("VOICE " + juce::String(selectedPad + 1));
             g.drawText(header, kPadGap, stripY - kParamHeaderH, getWidth() - kPadGap * 2, kParamHeaderH,
                        juce::Justification::centredLeft);
 
@@ -344,12 +349,10 @@ private:
     // Also accepts flattened names: `{prefix}_voice{N}{Suffix}` (no underscore
     // between digit and suffix) so engines that name params "voice1tune" work too.
     //
-    // Discovery is called once at construction; results are stored in voiceParamMap
-    // and voiceLabels.
+    // Discovery is called once at construction; results are stored in voiceParamMap.
     void discoverVoiceParams()
     {
         voiceParamMap.assign((size_t)numVoices, VoiceParams{});
-        voiceLabels.assign((size_t)numVoices, {});
         hasVoiceParams = false;
 
         auto& rawParams = proc.getParameters();
@@ -661,7 +664,6 @@ private:
 
     // Discovered param IDs per voice (size == numVoices)
     std::vector<VoiceParams> voiceParamMap;
-    std::vector<juce::String> voiceLabels;    // display name per voice (currently empty; reserved)
     bool hasVoiceParams = false;
 
     // Pad cells (size == numVoices)

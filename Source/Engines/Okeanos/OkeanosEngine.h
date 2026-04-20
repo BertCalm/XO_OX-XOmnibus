@@ -104,6 +104,9 @@ struct RhodesToneGenerator
         {
             phases[i] = 0.0f;
             partialLevels[i] = 0.0f;
+            // Precompute per-partial decay coefficient: depends only on sr and partial index.
+            // Higher partials (larger i) have shorter time constants -> faster decay.
+            cachedDecayRate[i] = 1.0f - std::exp(-1.0f / (sr * (2.0f - static_cast<float>(i) * 0.25f)));
         }
         tineEnvLevel = 0.0f;
         bellEnvLevel = 0.0f;
@@ -147,9 +150,9 @@ struct RhodesToneGenerator
 
             out += fastSin(phases[i] * 6.28318530718f) * partialLevels[i];
 
-            // Per-partial decay: higher partials decay faster (tine physics)
-            float decayRate = 1.0f - std::exp(-1.0f / (sr * (2.0f - static_cast<float>(i) * 0.25f)));
-            partialLevels[i] -= partialLevels[i] * decayRate * 0.1f;
+            // Per-partial decay: higher partials decay faster (tine physics).
+            // cachedDecayRate[i] precomputed at prepare() time — pure function of sr and partial index.
+            partialLevels[i] -= partialLevels[i] * cachedDecayRate[i] * 0.1f;
             partialLevels[i] = flushDenormal(partialLevels[i]);
         }
 
@@ -170,6 +173,7 @@ struct RhodesToneGenerator
     float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float phases[kNumPartials] = {};
     float partialLevels[kNumPartials] = {};
+    float cachedDecayRate[kNumPartials] = {};  // Precomputed at prepare(); replaces per-sample std::exp
     float tineEnvLevel = 0.0f;
     float bellEnvLevel = 0.0f;
     float tineVelocity = 0.0f;
@@ -481,6 +485,15 @@ public:
         const float blockBendRatio =
             PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
+        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): atomic loads and setADSR fire once per block, not per sample.
+        const float envA = paramAttack  ? paramAttack->load()  : 0.005f;
+        const float envD = paramDecay   ? paramDecay->load()   : 0.8f;
+        const float envS = paramSustain ? paramSustain->load() : 0.6f;
+        const float envR = paramRelease ? paramRelease->load() : 0.5f;
+        for (auto& voice : voices)
+            if (voice.active)
+                voice.ampEnv.setADSR(envA, envD, envS, envR);
+
         for (int s = 0; s < numSamples; ++s)
         {
             const bool updateFilter = ((s & 15) == 0);
@@ -498,12 +511,6 @@ public:
                 if (!voice.active)
                     continue;
 
-                // Update amp envelope ADSR per block so knob changes take effect on held notes
-                voice.ampEnv.setADSR(
-                    paramAttack  ? paramAttack->load()  : 0.005f,
-                    paramDecay   ? paramDecay->load()   : 0.8f,
-                    paramSustain ? paramSustain->load() : 0.6f,
-                    paramRelease ? paramRelease->load() : 0.5f);
 
                 float freq = voice.glide.process();
                 freq *= blockBendRatio; // hoisted; uses pre-reset pitch coupling snapshot

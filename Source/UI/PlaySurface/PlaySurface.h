@@ -818,7 +818,17 @@ private:
                     // P1-1: In HIGHLIGHT mode the fired note is quantized, so show
                     // the quantized note as the label so the display matches what plays.
                     int displayNote = (scaleMode == ScaleMode::Highlight) ? quantizeToScale(note) : note;
-                    label = juce::String(noteNames[displayNote % 12]) + juce::String(displayNote / 12 - 1);
+                    // Note label cache: 128 slots, built once on first use.
+                    static juce::String kNoteLabels[128];
+                    static bool kNoteLabelsBuilt = false;
+                    if (!kNoteLabelsBuilt)
+                    {
+                        for (int n = 0; n < 128; ++n)
+                            kNoteLabels[n] = juce::String(noteNames[n % 12]) + juce::String(n / 12 - 1);
+                        kNoteLabelsBuilt = true;
+                    }
+                    int safeNote = juce::jlimit(0, 127, displayNote);
+                    label = kNoteLabels[safeNote];
                 }
 
                 // Note label: white on hit; dimmed (0.25) for out-of-scale pads in Highlight mode; accent @ 0.55 otherwise
@@ -833,8 +843,8 @@ private:
 
         // Bank badge — top-right corner, accent-tinted
         {
-            static const char* kBankNames[] = {"A", "B", "C", "D"};
-            juce::String badge = juce::String("BNK ") + kBankNames[(int)currentBank];
+            static const juce::String kBankBadges[] = {"BNK A", "BNK B", "BNK C", "BNK D"};
+            const auto& badge = kBankBadges[juce::jlimit(0, 3, (int)currentBank)];
             auto badgeRect = juce::Rectangle<float>(originX + gridW - 50.0f, originY, 48.0f, 16.0f);
             g.setColour(accentColour.withAlpha(0.75f));
             g.setFont(GalleryFonts::display(10.0f)); // (#885: 9pt→10pt legibility floor)

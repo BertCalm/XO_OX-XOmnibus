@@ -1492,8 +1492,10 @@ private:
     //==========================================================================
 
     // ---- Audio configuration (set in prepare()) ----
-    double sampleRateDouble   = 44100.0;
-    float  sampleRateFloat    = 44100.0f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    double sampleRateDouble   = 0.0;
+    float  sampleRateFloat    = 0.0f;
     float  paramSmoothCoeff   = 0.1f;
     float  voiceFadeRate      = 0.01f;
 

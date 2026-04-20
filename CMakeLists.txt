@@ -501,8 +501,6 @@ target_sources(XOceanus PRIVATE
     Source/UI/Gallery/DrumPadGrid.h
     Source/UI/Gallery/SpecializedWidgets.h
     Source/UI/Gallery/SpecializedDisplays.h
-    Source/UI/Gallery/CouplingInspectorPanel.h
-    Source/UI/Gallery/FXInspectorPanel.h
     Source/UI/Gallery/PlayControlPanel.h
     Source/UI/Gallery/SettingsPanel.h
     Source/UI/Gallery/ExportTabPanel.h
@@ -513,32 +511,8 @@ target_sources(XOceanus PRIVATE
 
     # Oscar (OddOscar animated companion) — requires Rive, added conditionally below
 
-    # UI (Mobile — compiled on all platforms, gated by XO_MOBILE)
-    Source/UI/Mobile/MobileTouchHandler.h
-    Source/UI/Mobile/SensorManager.h
-    Source/UI/Mobile/HapticEngine.h
-    Source/UI/Mobile/MobileLayoutManager.h
-    Source/UI/Mobile/CPUMonitor.h
-    Source/UI/Mobile/MobilePlaySurface.h
-    Source/UI/Mobile/ParameterDrawer.h
-
-    # iOS platform bridge implementations (Objective-C++)
-    # .mm files are only compiled by Clang on Apple platforms; #if JUCE_IOS guards
-    # inside each file further restrict runtime behaviour to iOS only.
-    Source/UI/Mobile/HapticEngine_iOS.mm
-    Source/UI/Mobile/SensorManager_iOS.mm
-    Source/UI/Mobile/AudioSession_iOS.h
-    Source/UI/Mobile/AudioSession_iOS.mm
-    Source/UI/Mobile/TouchForce_iOS.mm
-    Source/UI/Mobile/DisplayLink_iOS.mm
-
-    # SpriteKit Companion Layer — OBRIX Pocket reef + creatures + particles
-    # ReefBridge.h compiles on all platforms (no-op stubs for macOS).
-    # ReefBridge.mm requires SpriteKit; linked conditionally in the XO_MOBILE block.
-    # CreatureBehaviorTimer.h is a pure JUCE header — compiles everywhere.
-    Source/UI/Mobile/ReefBridge.h
-    Source/UI/Mobile/ReefBridge.mm
-    Source/UI/Mobile/CreatureBehaviorTimer.h
+    # Mobile/ (iOS JUCE port) archived 2026-03-26 — issue #1107.
+    # Replaced by OBRIX Pocket (Swift, separate repo). Recoverable from git history.
 
     # Kitchen Collection — Chef (Organs) engines
     Source/Engines/Oto/OtoEngine.h
@@ -687,17 +661,8 @@ if(XO_HAS_OSCAR)
     target_compile_definitions(XOceanus PRIVATE XO_HAS_OSCAR=1)
 endif()
 
-if(XO_MOBILE)
-    target_link_libraries(XOceanus PRIVATE
-        juce::juce_audio_plugin_client
-    )
-    target_link_libraries(XOceanus PRIVATE
-        "-framework CoreMotion"
-        "-framework CoreHaptics"
-        "-framework AVFoundation"
-        "-framework SpriteKit"   # ReefBridge.mm — SpriteKit companion layer
-    )
-endif()
+# Mobile iOS framework linking removed 2026-03-26 — issue #1107.
+# (CoreMotion, CoreHaptics, SpriteKit linked here for Mobile/ JUCE port, now archived.)
 
 # #934: Wire clap-juce-extensions into the plugin target.
 # clap_juce_extensions_plugin() must be called after all target_link_libraries() calls.

@@ -360,6 +360,30 @@ public:
         std::atomic_store(&routeList, newRoutes);
     }
 
+    // Update an existing user route by index. Called from the UI when the
+    // coupling popup's Save path fires. Silently no-ops if the index is out
+    // of range or targets a normalled route (default routes are not user-editable).
+    void updateRoute(int routeIndex, CouplingType newType, float newAmount)
+    {
+        auto current = std::atomic_load(&routeList);
+        if (!current) return;
+        if (routeIndex < 0 || routeIndex >= static_cast<int>(current->size()))
+            return;
+
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+        auto& r = (*newRoutes)[static_cast<size_t>(routeIndex)];
+        if (r.isNormalled) return;
+
+        r.type = newType;
+        r.amount = newAmount;
+        r.smoothedAmount = newAmount;  // match addRoute seeding (#684)
+
+        std::atomic_store(&routeList, newRoutes);
+
+        if (newType == CouplingType::AudioToBuffer)
+            resolveAudioToBufferSinks();
+    }
+
     //-- Audio processing (audio thread only) ----------------------------------
 
     // Load the current route list once per audio callback.

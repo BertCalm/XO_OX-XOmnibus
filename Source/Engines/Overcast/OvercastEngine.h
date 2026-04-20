@@ -398,12 +398,9 @@ public:
             }
         }
 
-        // Hoist envelope setADSR out of per-sample loop — 2× std::exp per call.
-        for (auto& voice : voices)
-        {
-            if (!voice.active) continue;
-            voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
-        }
+        for (int v = 0; v < kMaxVoices; ++v)
+            if (voices[v].active)
+                voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
 
         for (int i = 0; i < numSamples; ++i)
         {

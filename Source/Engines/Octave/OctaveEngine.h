@@ -890,7 +890,10 @@ public:
         v.glide.snapTo(freq);
 
         // Amp envelope
-        v.ampEnv.prepare(srf);
+        // RT-fix: ampEnv.prepare() already called at engine prepare()-time for all
+        // voice slots (sets sr, computes coeffs).  srf does not change between notes,
+        // so calling prepare() here was a P3 lifecycle violation with zero benefit.
+        // setADSR() reconfigures in-place (no allocation); noteOn() triggers.
         float attackMultipliers[4] = {3.0f, 1.5f, 1.0f, 0.1f};
         float attackFloors[4] = {0.05f, 0.005f, 0.003f, 0.001f};
         float atkBase = paramAttack ? paramAttack->load() : 0.1f;
@@ -903,7 +906,7 @@ public:
         v.ampEnv.noteOn();
 
         // Filter envelope
-        v.filterEnv.prepare(srf);
+        // RT-fix: filterEnv.prepare() already called at engine prepare()-time.
         // Filter attack matches organ model character
         float filterAtk = (organModel == 0) ? 0.05f : 0.005f;
         float filterDec = (organModel == 0) ? 0.8f : 0.3f;
@@ -915,8 +918,9 @@ public:
         float chiffWeights[4] = {0.3f, 1.0f, 0.0f, 0.0f}; // Baroque gets full chiff
         v.chiff.trigger(vel, chiffAmt * chiffWeights[std::clamp(organModel, 0, 3)], freq, srf);
 
-        // Room resonance prepare
-        v.room.prepare(srf);
+        // RT-fix: room.prepare() already called at engine prepare()-time.
+        // On noteOn, reset filter states only — no lifecycle re-init needed.
+        v.room.reset();
 
         // Reset oscillator state
         v.partialPhases.fill(0.0f);
