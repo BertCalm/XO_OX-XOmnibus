@@ -9,8 +9,8 @@
       "pending_directory"
     ],
     "notes": "This file is the single source of truth for engine roster and count. Parameter prefixes are FROZEN \u2014 never change after first registration. XOceanus has no fixed release cutoff. `status` reflects build state: 'implemented' means the engine has both a Source/Engines/ directory AND a frozen prefix in PresetManager.h; 'pending_*' flags work-in-progress. Run Tools/sync_engine_sources.py to regenerate dependent files.",
-    "last_sync": "2026-04-20",
-    "engine_count": 90,
+    "last_sync": "2026-04-21",
+    "engine_count": 91,
     "engine_count_total": 111,
     "legacy_dir_aliases": {
       "Bite": "Overbite",
@@ -367,6 +367,17 @@
       "status": "implemented",
       "accent_color": "#C0392B",
       "category": "chef"
+    },
+    {
+      "id": "Ollotron",
+      "param_prefix": "ollo_",
+      "header": "Source/Engines/Ollotron/OllotronEngine.h",
+      "status": "implemented",
+      "accent_color": "#B07050",
+      "category": "kitchen",
+      "accent_name": "Tape Rust",
+      "polyphony": 16,
+      "description": "Tape-chamber keyboard — Mellotron/Chamberlin/Optigan spiritual descendant. Per-key tape wear, flutter, 8-second authentic cutoff. Partner audio dubs over the tape via AudioToWavetable coupling."
     },
     {
       "id": "Olvido",

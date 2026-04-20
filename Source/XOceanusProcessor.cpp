@@ -108,6 +108,8 @@
 #include "Engines/Outcrop/OutcropEngine.h"
 // ONEIRIC — NLS soliton synthesis (engine #90)
 #include "Engines/Oneiric/OneiricEngine.h"
+// OLLOTRON — tape-chamber keyboard synthesis (engine #91)
+#include "Engines/Ollotron/OllotronEngine.h"
 #include "DSP/Effects/MathFXChain.h"
 #include "DSP/Effects/BoutiqueFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
@@ -385,6 +387,11 @@ static bool registered_Oneiric =
     xoceanus::EngineRegistry::instance().registerEngine("Oneiric", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OneiricEngine>(); });
 
+// OLLOTRON — tape-chamber keyboard synthesis (engine #91)
+static bool registered_Ollotron =
+    xoceanus::EngineRegistry::instance().registerEngine("Ollotron", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OllotronEngine>(); });
+
 namespace xoceanus
 {
 
@@ -589,6 +596,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     OutcropEngine::addParameters(params);
     // ONEIRIC — NLS soliton synthesis (engine #90)
     OneiricEngine::addParameters(params);
+    // OLLOTRON — tape-chamber keyboard synthesis (engine #91)
+    xoceanus::OllotronEngine::addParameters(params);
 
     // ── Three FX suites wired as optional stages in MasterFXChain (issue #153) ──
     // MathFXChain and BoutiqueFXChain use the shared params vector.

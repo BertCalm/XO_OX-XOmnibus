@@ -118,6 +118,7 @@
 | OOZE | XOoze | Hydrothermal Teal `#2D5F5D` |
 | OUTCROP | XOutcrop | Mountain Moss `#5B6F57` |
 | ONEIRIC | XOneiric | Phosphene Lavender `#B8A0FF` |
+| OLLO | XOllotron | Tape Rust `#B07050` |
 
 ## The 43 Blessings
 
