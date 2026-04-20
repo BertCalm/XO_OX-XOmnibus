@@ -97,12 +97,6 @@ public:
                 g.fillRect(x, 0.0f, w, (bounds.getHeight() - 18.0f) * 0.6f);
             }
         }
-
-        if (hasKeyboardFocus(false))
-        {
-            g.setColour(GalleryColors::get(GalleryColors::xoGold));
-            g.drawRect(getLocalBounds(), 1);
-        }
     }
 
     void mouseDown(const juce::MouseEvent& e) override

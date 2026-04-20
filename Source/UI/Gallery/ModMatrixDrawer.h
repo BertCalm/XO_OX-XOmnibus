@@ -399,6 +399,9 @@ private:
                 g.setColour(juce::Colour(0xFF7FDBCA).withAlpha(0.75f));
                 g.fillRect(b.reduced(2.0f));
             }
+
+            if (hasKeyboardFocus(false))
+                A11y::drawFocusRing(g, getLocalBounds().toFloat(), 4.0f);
         }
 
         void mouseDown(const juce::MouseEvent&) override

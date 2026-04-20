@@ -460,7 +460,7 @@ private:
 
         // Center detent line
         float centreY = y + h * 0.5f;
-        g.setColour(get(textMid()).withAlpha(0.45f));
+        g.setColour(get(textMid()).withAlpha(0.75f));
         g.drawHorizontalLine((int)centreY, x + 3.0f, x + w - 3.0f);
 
         // Fill from centre toward current position
@@ -588,7 +588,7 @@ private:
         if (xyXParam == nullptr && xyYParam == nullptr)
         {
             g.setFont(GalleryFonts::label(10.0f)); // (#885: 9pt→10pt legibility floor)
-            g.setColour(get(textMid()).withAlpha(0.35f));
+            g.setColour(get(textMid()).withAlpha(0.75f));
             g.drawText("XY", bf, juce::Justification::centred, false);
         }
 

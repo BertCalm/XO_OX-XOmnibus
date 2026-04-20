@@ -180,6 +180,9 @@ public:
 
         // Legend strip at bottom
         paintLegend(g, bounds);
+
+        if (hasKeyboardFocus(false))
+            A11y::drawFocusRing(g, getLocalBounds().toFloat(), 4.0f);
     }
 
     void resized() override
