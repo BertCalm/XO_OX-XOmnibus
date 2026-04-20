@@ -115,9 +115,11 @@ struct OverflowVoice
     void reset() noexcept
     {
         active = false;
+        startTime = 0;
+        currentNote = 60;
+        velocity = 0.0f;
         ampEnv.reset();
-        filterEnv.stage = FilterEnvelope::Stage::Idle;
-        filterEnv.level = 0.0f;
+        filterEnv.kill(); // kill() = level→0 + stage→Idle; safer than manual field access
         voiceFilter.reset();
         std::fill(std::begin(partialPhase), std::end(partialPhase), 0.0f);
     }
@@ -179,8 +181,8 @@ public:
         breathLfo.setRate(0.009f, srF);
 
         // Pressure decay: matched-Z per-sample coefficient derived from sample rate.
-        // Time constant ~2.27 sec (tau = 100000 samples at 44100 Hz).
-        // exp(-1/tau_samples) = exp(-sampleRate / (100000 * 44100)) ≈ 1 - sampleRate/4.41e9.
+        // Time constant tauSec = ~2.268 seconds (100000 samples at 44100 Hz).
+        // coeff = exp(-1 / (tauSec * sampleRate)) — scale-invariant across all sample rates.
         constexpr float tauSec = 100000.0f / 44100.0f; // ~2.268 seconds
         pressureDecayCoeff = std::exp(-1.0f / (tauSec * static_cast<float>(sampleRate)));
 
@@ -202,9 +204,17 @@ public:
             v.reset();
         lfo1.reset();
         lfo2.reset();
+        breathLfo.reset();
         pressureState.reset();
         lastSampleL = lastSampleR = 0.0f;
         extFilterMod = extRingMod = 0.0f;
+        aftertouch = 0.0f;
+        modWheel = 0.0f;
+        pitchBendNorm = 0.0f;
+        brothConcentrateDark = 0.0f;
+        noteCounter = 0;
+        noiseRng = 42u;
+        whistlePhase = 0.0f;
     }
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
@@ -324,6 +334,17 @@ public:
         lfo1.setRate(pLfo1Rate, srF);
         lfo2.setRate(pLfo2Rate, srF);
 
+        // Hoist ADSR coefficient updates out of per-sample loop — params are block-constant.
+        // Calling setADSR per-sample inside a voice loop wastes 8 × numSamples recalculations.
+        for (int v = 0; v < kMaxVoices; ++v)
+        {
+            if (voices[v].active)
+            {
+                voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+                voices[v].filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
+            }
+        }
+
         int valveTypeInt = static_cast<int>(pValveType + 0.5f);
 
         if (numSamples <= 0) { buffer.clear(); return; }
@@ -402,6 +423,8 @@ public:
                     case 2: // Whistle (pitched FM release)
                     {
                         float whistleFreq = pWhistlePitch * (1.0f + releaseProgress * 0.5f);
+                        // Guard whistle phase increment against Nyquist (whistle max 8000 Hz * 1.5 = 12kHz).
+                        whistleFreq = std::min(whistleFreq, srF * 0.49f);
                         whistlePhase += whistleFreq * inverseSr;
                         if (whistlePhase >= 1.0f)
                             whistlePhase -= 1.0f;
@@ -431,9 +454,6 @@ public:
                 auto& voice = voices[v];
                 if (!voice.active)
                     continue;
-
-                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
-                voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
 
                 float ampLevel = voice.ampEnv.process();
                 float filtLevel = voice.filterEnv.process();
@@ -634,7 +654,7 @@ public:
                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
 
         params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_filtEnvAmount", 1}, "Filter Env Amount",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+                                              juce::NormalisableRange<float>(-1.0f, 1.0f), 0.3f));
 
         // Amp ADSR
         params.push_back(std::make_unique<PF>(juce::ParameterID{"flow_ampAttack", 1}, "Amp Attack",
