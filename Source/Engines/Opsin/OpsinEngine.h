@@ -640,7 +640,6 @@ public:
         // Check silence gate
         if (isSilenceGateBypassed())
         {
-            buffer.clear();
             return;
         }
 

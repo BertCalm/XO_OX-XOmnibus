@@ -137,7 +137,7 @@ public:
     }
 
     //-- External audio injection (called by XOceanusProcessor) ----------------
-    void setExternalInput(const float* left, const float* right, int numSamples)
+    void setExternalInput(const float* left, const float* right, int numSamples) override
     {
         externalBufferL_ = left;
         externalBufferR_ = right;
@@ -156,7 +156,6 @@ public:
         // SilenceGate: early-out when no external audio is present
         if (isSilenceGateBypassed())
         {
-            buffer.clear();
             return;
         }
 

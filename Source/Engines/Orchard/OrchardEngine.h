@@ -269,7 +269,6 @@ public:
 
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }

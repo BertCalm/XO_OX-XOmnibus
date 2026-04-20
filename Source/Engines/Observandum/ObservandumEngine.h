@@ -551,7 +551,6 @@ public:
 
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 

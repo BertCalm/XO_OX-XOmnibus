@@ -284,7 +284,6 @@ public:
         // ── 2. SilenceGate bypass ──────────────────────────────────────
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL_ = couplingCacheR_ = 0.0f;
             // Reset coupling accumulators on bypass path too — coupling inputs
             // may still arrive even when engine is silent; discard them cleanly.

@@ -381,6 +381,17 @@ public:
                 ++activeVoiceCount;
         }
 
+        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): setADSR fires once per
+        // block, not per sample. pAmpA/D/S/R and pFiltA/D/S/R are block-constant atomic loads
+        // already captured above; recomputing envelope coefficients 44100× per second was wasteful.
+        for (int v = 0; v < kMaxVoices; ++v)
+        {
+            if (!voices[v].active)
+                continue;
+            voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+            voices[v].filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
+        }
+
         for (int i = 0; i < numSamples; ++i)
         {
             float lfo1Val = lfo1.process();
@@ -452,10 +463,6 @@ public:
                 voice.holdDuration += inverseSr;
                 if (voice.velocity < 0.3f && voice.holdDuration > 8.0f)
                     voice.isInfusion = true;
-
-                // Update envelopes
-                voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
-                voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
 
                 float ampLevel = voice.ampEnv.process();
                 float filtLevel = voice.filterEnv.process();

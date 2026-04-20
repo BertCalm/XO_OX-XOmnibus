@@ -403,7 +403,6 @@ public:
         // Silence gate bypass — if silent and no MIDI events, zero buffer and skip
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 

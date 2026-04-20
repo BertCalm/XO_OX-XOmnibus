@@ -170,7 +170,6 @@ public:
         // ---- Silence gate bypass ----
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
