@@ -229,6 +229,7 @@ struct AutoWahEnvelope
     {
         sr = sampleRate;
         envFollower = 0.0f;
+        cachedWahFreq = -1.0f; // Force coefficient update on first process()
         wahBPF.reset();
         // FIX 4: cache envelope coefficients — avoid two std::exp calls per sample
         attackCoeff = 1.0f - std::exp(-1.0f / (sr * 0.002f));
@@ -250,8 +251,14 @@ struct AutoWahEnvelope
         float wahFreq = 400.0f + envFollower * wahDepth * 3000.0f + velocity * wahDepth * 2000.0f;
         wahFreq = std::clamp(wahFreq, 200.0f, 6000.0f);
 
-        wahBPF.setMode(CytomicSVF::Mode::BandPass);
-        wahBPF.setCoefficients(wahFreq, 0.6f, sr);
+        // Only update filter coefficients when the target frequency has changed
+        // by a perceptible amount — avoids per-sample setCoefficients overhead.
+        if (std::fabs(wahFreq - cachedWahFreq) > 1.0f)
+        {
+            wahBPF.setMode(CytomicSVF::Mode::BandPass);
+            wahBPF.setCoefficients(wahFreq, 0.6f, sr);
+            cachedWahFreq = wahFreq;
+        }
         float wahOut = wahBPF.processSample(input);
 
         return input * (1.0f - wahDepth * 0.6f) + wahOut * wahDepth * 1.5f;
@@ -260,11 +267,13 @@ struct AutoWahEnvelope
     void reset() noexcept
     {
         envFollower = 0.0f;
+        cachedWahFreq = -1.0f; // Force coefficient update on next process()
         wahBPF.reset();
     }
 
     float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float envFollower = 0.0f;
+    float cachedWahFreq = -1.0f; // Tracks last freq to skip redundant setCoefficients
     float attackCoeff = 0.0f;  // FIX 4: cached, set in prepare()
     float releaseCoeff = 0.0f; // FIX 4: cached, set in prepare()
     CytomicSVF wahBPF;
@@ -277,7 +286,7 @@ struct OnkoloVoice
 {
     bool active = false;
     uint64_t startTime = 0;
-    int currentNote = 60;
+    int currentNote = -1; // -1 = no note active; reset clears note association
     float velocity = 0.0f;
 
     GlideProcessor glide;
@@ -285,6 +294,7 @@ struct OnkoloVoice
     AutoWahEnvelope wah;
     FilterEnvelope filterEnv;
     CytomicSVF svf;
+    float svfCachedCutoff = -1.0f; // Forces coefficient update on first render after noteOn
     StandardLFO lfo1, lfo2;
 
     float panL = 0.707f, panR = 0.707f;
@@ -292,7 +302,9 @@ struct OnkoloVoice
     void reset() noexcept
     {
         active = false;
+        currentNote = -1;
         velocity = 0.0f;
+        svfCachedCutoff = -1.0f; // Force coefficient update on next activation
         glide.reset();
         string.reset();
         wah.reset();
@@ -329,6 +341,9 @@ public:
             voices[i].string.prepare(srf);
             voices[i].wah.prepare(srf);
             voices[i].filterEnv.prepare(srf);
+            // Seed LFO phase increments at default rates so first render is valid.
+            voices[i].lfo1.setRate(0.5f, srf);
+            voices[i].lfo2.setRate(1.0f, srf);
         }
 
         smoothFunk.prepare(srf);
@@ -364,16 +379,16 @@ public:
         switch (type)
         {
         case CouplingType::AmpToFilter:
-            couplingFilterMod += val * 2000.0f;
+            couplingFilterMod = val * 2000.0f;
             break;
         case CouplingType::LFOToPitch:
-            couplingPitchMod += val * 2.0f;
+            couplingPitchMod = val * 2.0f;
             break;
         case CouplingType::AmpToPitch:
-            couplingPitchMod += val;
+            couplingPitchMod = val;
             break;
         case CouplingType::EnvToMorph:
-            couplingFunkMod += val;
+            couplingFunkMod = val;
             break;
         default:
             break;
@@ -515,8 +530,14 @@ public:
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
                 float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
                 float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.15f, srf);
+                // Only update SVF coefficients when cutoff changes by a perceptible amount;
+                // avoids redundant coefficient math every sample when the envelope is flat.
+                if (std::fabs(cutoff - voice.svfCachedCutoff) > 0.5f)
+                {
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.15f, srf);
+                    voice.svfCachedCutoff = cutoff;
+                }
                 float filtered = voice.svf.processSample(wahOut);
 
                 float output = filtered;
@@ -524,6 +545,12 @@ public:
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
             }
+
+            // Soft-clip the summed output — 8 harmonics × 8 voices can accumulate
+            // amplitudes well above unity; softClip keeps the output bounded without
+            // hard clipping transients (Padé [3/3] tanh, verified 2026-04-05).
+            mixL = softClip(mixL);
+            mixR = softClip(mixR);
 
             outL[s] = mixL;
             if (outR)
@@ -548,7 +575,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = midiToFreq(note); // fastPow2 path — avoids std::pow (~0.02% error)
 
         v.active = true;
         v.currentNote = note;
@@ -556,21 +583,26 @@ public:
         v.startTime = ++voiceCounter;
         v.glide.snapTo(freq);
 
-        v.string.prepare(srf);
+        // string.prepare() already done in engine prepare() — reset state only.
+        // Calling prepare() per noteOn wastes 8 std::exp calls (cachedDecayRates + fastDamp).
+        v.string.reset();
         v.string.trigger(vel);
-        v.wah.prepare(srf);
 
-        // Filter envelope — use user ADSR parameters (FIX 1: was hardcoded)
+        // wah.prepare() already done in engine prepare() — reset state only (no std::exp).
+        v.wah.reset();
+
+        // Filter envelope — use user ADSR parameters (FIX 1: was hardcoded).
+        // setADSR() recomputes coefficients (cheaper than re-calling prepare() which also
+        // sets sr). filterEnv.prepare() already called once in engine prepare().
         auto loadP = [](std::atomic<float>* p, float def) { return p ? p->load(std::memory_order_relaxed) : def; };
         const float fAttack = loadP(paramAttack, 0.001f);
         const float fDecay = loadP(paramDecay, 0.3f);
         const float fSustain = loadP(paramSustain, 0.4f);
         const float fRelease = loadP(paramRelease, 0.15f);
-
-        v.filterEnv.prepare(srf);
         v.filterEnv.setADSR(fAttack, fDecay, fSustain, fRelease);
         v.filterEnv.triggerHard();
 
+        v.svfCachedCutoff = -1.0f; // Force coefficient update on first sample
         v.svf.reset();
 
         // Stereo placement
@@ -610,7 +642,7 @@ public:
 
         // Core tone
         params.push_back(std::make_unique<PF>(juce::ParameterID{"onko_funk", 1}, "Onkolo Funk (Wah Depth)",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"onko_pickup", 1}, "Onkolo Pickup Position",
                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.7f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"onko_brightness", 1}, "Onkolo Brightness",
@@ -630,7 +662,7 @@ public:
 
         // Filter
         params.push_back(std::make_unique<PF>(juce::ParameterID{"onko_filterEnvAmt", 1}, "Onkolo Filter Env Amount",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.6f));
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
         // FUSION
         params.push_back(std::make_unique<PF>(juce::ParameterID{"onko_migration", 1}, "Onkolo Migration",
