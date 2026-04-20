@@ -112,10 +112,13 @@ struct OctaveChiffGenerator
         noiseState = static_cast<uint32_t>(baseFreq * 1000.0f) + 54321u;
 
         // Chiff filter: centered around pipe resonance (brighter for short pipes)
-        chiffFilterFreq = std::min(baseFreq * 3.0f, sampleRate * 0.49f);
+        // F11-fix: remove redundant double-clamp (same limit applied twice)
+        // F10-fix: use full 2π constant
+        constexpr float kTwoPi = 6.28318530717958647692f;
+        float fc = std::min(baseFreq * 3.0f, sampleRate * 0.49f);
+        chiffFilterFreq = fc;
         filterState = 0.0f;
-        float fc = std::min(chiffFilterFreq, sampleRate * 0.49f);
-        filterCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * fc / sampleRate);
+        filterCoeff = 1.0f - std::exp(-kTwoPi * fc / sampleRate);
     }
 
     float process() noexcept
@@ -166,7 +169,15 @@ struct OctaveChiffGenerator
 //==============================================================================
 struct OctaveWindNoise
 {
-    float process(float amount, float brightness) noexcept
+    // F13-fix: brightness in Hz → normalised [0,1] coefficient so the one-pole
+    // filter stays stable.  At 200 Hz → coeff≈0.01 (very dark); 20 kHz → ≈0.29.
+    // Uses exp(-2π·fc/sr) matched-Z pole; sr defaults to 44100 until prepare() sets it.
+    void prepare(float sampleRate) noexcept
+    {
+        sr = (sampleRate > 0.0f) ? sampleRate : 44100.0f;
+    }
+
+    float process(float amount, float brightnessHz) noexcept
     {
         if (amount < 0.001f)
             return 0.0f;
@@ -174,13 +185,19 @@ struct OctaveWindNoise
         noiseState = noiseState * 1664525u + 1013904223u;
         float noise = (static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f);
 
-        // Shape wind noise — darker for pipe organs, brighter for accordion bellows
-        filterState += (0.01f + brightness * 0.1f) * (noise - filterState); // gentle LP, brightness-controlled
+        // Shape wind noise — darker for pipe organs, brighter for accordion bellows.
+        // Coefficient derived from cutoff frequency (matched-Z): stable for any sr.
+        constexpr float kTwoPi = 6.28318530717958647692f;
+        float fc = std::min(brightnessHz, sr * 0.49f);
+        float coeff = 1.0f - std::exp(-kTwoPi * fc / sr);
+        filterState += coeff * (noise - filterState);
+        filterState = flushDenormal(filterState);
         return filterState * amount * 0.15f;
     }
 
     void reset() noexcept { filterState = 0.0f; }
 
+    float sr = 44100.0f;
     uint32_t noiseState = 98765u;
     float filterState = 0.0f;
 };
@@ -261,6 +278,13 @@ struct OctaveVoice
     // D002: LFOs — LFO1 for brightness, LFO2 for pitch/vibrato
     StandardLFO lfo1, lfo2;
 
+    // F28-fix: stagger offsets preserved across voice steals (set once in prepare())
+    float lfo1PhaseOffset = 0.0f;
+    float lfo2PhaseOffset = 0.0f;
+
+    // F17-fix: per-voice block-rate cluster detuning ratio cache
+    float clusterFreqRatio = 1.0f;
+
     //--- Additive synthesis state (Cavaille-Coll + Baroque) ---
     std::array<float, kMaxPartials> partialPhases{};
     std::array<float, kMaxPartials> partialAmps{};
@@ -288,8 +312,9 @@ struct OctaveVoice
         chiff.reset();
         wind.reset();
         room.reset();
-        lfo1.reset();
-        lfo2.reset();
+        // F28-fix: restore stored phase offsets so ensemble stagger survives voice steals
+        lfo1.reset(lfo1PhaseOffset);
+        lfo2.reset(lfo2PhaseOffset);
         partialPhases.fill(0.0f);
         partialAmps.fill(0.0f);
         musettePhases.fill(0.0f);
@@ -323,11 +348,18 @@ public:
             voices[i].ampEnv.prepare(srf);
             voices[i].filterEnv.prepare(srf);
             voices[i].room.prepare(srf);
+            // F13-fix: propagate sample rate into wind noise filter
+            voices[i].wind.prepare(srf);
             voices[i].lfo1.setShape(StandardLFO::Sine);
             voices[i].lfo2.setShape(StandardLFO::Sine);
             // Stagger LFO phases for ensemble depth
-            voices[i].lfo1.setPhaseOffset(static_cast<float>(i) / static_cast<float>(kMaxVoices));
-            voices[i].lfo2.setPhaseOffset(static_cast<float>(i) * 0.37f); // golden ratio spread
+            float offset1 = static_cast<float>(i) / static_cast<float>(kMaxVoices);
+            float offset2 = static_cast<float>(i) * 0.37f; // golden ratio spread
+            voices[i].lfo1.setPhaseOffset(offset1);
+            voices[i].lfo2.setPhaseOffset(offset2);
+            // F28-fix: store offsets so reset() can re-apply them on voice steal
+            voices[i].lfo1PhaseOffset = offset1;
+            voices[i].lfo2PhaseOffset = offset2;
         }
 
         smoothCluster.prepare(srf);
@@ -511,6 +543,10 @@ public:
         // When couplingOrganMod < 0, morph direction reverses (CC→Baroque vs Baroque→CC)
         const bool morphToBright = (couplingOrganMod >= 0.0f);
 
+        // F06-fix: capture pitch mod before zero so per-sample loop gets the live value.
+        // P25: CAPTURE-THEN-ZERO — couplingFilterMod and couplingOrganMod consumed above;
+        // couplingPitchMod is consumed inside the voice loop (added to bendSemitones per-voice).
+        const float capturedPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingOrganMod = 0.0f;
@@ -519,12 +555,40 @@ public:
 
         // Hoist block-constant ADSR update out of per-sample loop (P15 fix).
         // effectiveAttack, pDecay, pSustain, pRelease are all block-rate constants.
+        // F02-fix: setWaveform is also block-constant for Farfisa — hoist here.
+        // F03-fix: LFO setRate/setShape are block-constant — hoist before sample loop.
+        // F17-fix: cluster freq ratio is per-voice constant — compute once per block.
         for (int vi = 0; vi < kMaxVoices; ++vi)
-            if (voices[vi].active)
-                voices[vi].ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
+        {
+            if (!voices[vi].active)
+                continue;
+            voices[vi].ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
+            voices[vi].lfo1.setRate(lfo1Rate, srf);
+            voices[vi].lfo1.setShape(lfo1Shape);
+            voices[vi].lfo2.setRate(lfo2Rate, srf);
+            voices[vi].lfo2.setShape(lfo2Shape);
+            // F02-fix: Farfisa waveform is constant per model selection — not per-sample
+            voices[vi].farfisaOsc.setWaveform(PolyBLEP::Waveform::Square);
+            // F17-fix: cache per-voice cluster detuning ratio (vi is constant across block)
+            if (pCluster > 0.001f)
+            {
+                float voiceOffset = (static_cast<float>(vi) - 3.5f) / 3.5f;
+                float clusterCents = pCluster * voiceOffset * 15.0f;
+                voices[vi].clusterFreqRatio = fastPow2(clusterCents / 1200.0f);
+            }
+            else
+            {
+                voices[vi].clusterFreqRatio = 1.0f;
+            }
+        }
 
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
+
+        // F26-fix: hoist contrib arrays outside sample loop — avoids re-init overhead
+        // and avoids VLA semantics (kMaxVoices is constexpr, so this is fine either way).
+        float voiceContribL[kMaxVoices];
+        float voiceContribR[kMaxVoices];
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -540,9 +604,8 @@ public:
             float mixL = 0.0f, mixR = 0.0f;
 
             // Competition: per-voice stereo contributions cached for suppression pass.
-            // Fixed-size stack arrays — no heap allocation on audio thread.
-            float voiceContribL[kMaxVoices] = {};
-            float voiceContribR[kMaxVoices] = {};
+            // Arrays hoisted above loop (F26-fix) — zero them each sample here.
+            for (int i = 0; i < kMaxVoices; ++i) { voiceContribL[i] = 0.0f; voiceContribR[i] = 0.0f; }
 
             for (int vi = 0; vi < kMaxVoices; ++vi)
             {
@@ -551,14 +614,10 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                // F06-fix: use capturedPitchMod (zeroed coupling, but captured before zero)
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
 
-                // LFO processing
-                voice.lfo1.setRate(lfo1Rate, srf);
-                voice.lfo1.setShape(lfo1Shape);
-                voice.lfo2.setRate(lfo2Rate, srf);
-                voice.lfo2.setShape(lfo2Shape);
-
+                // LFO processing — rate/shape hoisted to block-rate pre-loop (F03-fix)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
@@ -566,13 +625,9 @@ public:
                 float vibratoSemitones = lfo2Val * 0.5f; // max ±0.5 semitones
                 freq *= PitchBendUtil::semitonesToFreqRatio(vibratoSemitones);
 
-                // Cluster detuning: adds slight pitch offset per-voice for ensemble
+                // F17-fix: use pre-computed per-voice cluster ratio (block-rate constant)
                 if (clusterNow > 0.001f)
-                {
-                    float voiceOffset = (static_cast<float>(vi) - 3.5f) / 3.5f;
-                    float clusterCents = clusterNow * voiceOffset * 15.0f; // ±15 cents max
-                    freq *= fastPow2(clusterCents / 1200.0f);
-                }
+                    freq *= voice.clusterFreqRatio;
 
                 //--- Model-specific synthesis ---
                 float sample = 0.0f;
@@ -696,9 +751,16 @@ public:
                             voice.musettePhases[r] -= 1.0f;
 
                         // Accordion reeds: odd-harmonic-heavy (between square and saw)
+                        // F24-fix: guard upper harmonics against Nyquist — drop harmonics
+                        // that would alias (especially audible at high MIDI notes).
                         float ph = voice.musettePhases[r] * 6.28318530717958647692f;
-                        float reed = fastSin(ph) + fastSin(ph * 3.0f) * 0.33f + fastSin(ph * 5.0f) * 0.15f +
-                                     fastSin(ph * 7.0f) * 0.08f;
+                        // reedFreq = phaseInc * srf (fundamental of this reed)
+                        float reedFreq = voice.musettePhaseIncs[r] * srf;
+                        float nyq = srf * 0.49f;
+                        float reed = fastSin(ph);
+                        if (reedFreq * 3.0f < nyq) reed += fastSin(ph * 3.0f) * 0.33f;
+                        if (reedFreq * 5.0f < nyq) reed += fastSin(ph * 5.0f) * 0.15f;
+                        if (reedFreq * 7.0f < nyq) reed += fastSin(ph * 7.0f) * 0.08f;
                         reedSum += reed;
                     }
                     sample = reedSum * 0.12f; // 3 reeds, scale down
@@ -719,7 +781,7 @@ public:
                 case 3: // Farfisa Compact Organ
                 {
                     // Bandlimited square wave — transistor organ
-                    voice.farfisaOsc.setWaveform(PolyBLEP::Waveform::Square);
+                    // F02-fix: setWaveform hoisted to block-rate pre-loop (constant per model)
 
                     // Farfisa vibrato: fixed 5.5 Hz (original circuit), depth from detune param
                     voice.farfisaVibratoPhase += 5.5f / srf;
@@ -761,8 +823,12 @@ public:
                 //--- Crosstalk: bleed between adjacent voices (organ key crosstalk) ---
                 if (crosstalkNow > 0.001f && vi > 0 && voices[vi - 1].active)
                 {
-                    // Crosstalk is subtle high-frequency bleed from adjacent notes
-                    sample += voices[vi - 1].svf.processSample(0.0f) * crosstalkNow * 0.05f;
+                    // F19-fix: crosstalk reads ic2eq (LP state) via processSample(0) — this
+                    // advances the adjacent voice's filter state, corrupting its output.
+                    // Use the voice's last output level (ampLevel * panL) as a proxy instead.
+                    // The adjacent voice's contribution is already in voiceContribL[vi-1].
+                    float adjSig = (voiceContribL[vi - 1] + voiceContribR[vi - 1]) * 0.5f;
+                    sample += adjSig * crosstalkNow * 0.05f;
                 }
 
                 //--- Amplitude envelope ---
@@ -778,8 +844,9 @@ public:
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f * voice.velocity;
                 // LFO1 modulates brightness (±3000 Hz at full depth)
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.3f, srf);
+                // F01-fix: setMode is constant (LowPass) — hoisted to noteOn; use
+                // setCoefficients_fast() for modulated cutoff (avoids std::tan per-sample).
+                voice.svf.setCoefficients_fast(cutoff, 0.3f, srf);
                 float filtered = voice.svf.processSample(sample);
 
                 float output = filtered * ampLevel;
@@ -865,7 +932,8 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        // F08-fix: use midiToFreq (fastPow2) instead of std::pow on audio thread
+        float freq = midiToFreq(note);
         int organModel = paramOrgan ? static_cast<int>(paramOrgan->load()) : 0;
 
         v.active = true;
@@ -875,8 +943,7 @@ public:
         v.startTime = ++voiceCounter;
         v.glide.snapTo(freq);
 
-        // Amp envelope
-        v.ampEnv.prepare(srf);
+        // Amp envelope — F07-fix: prepare() already called in engine prepare(); skip here
         float attackMultipliers[4] = {3.0f, 1.5f, 1.0f, 0.1f};
         float attackFloors[4] = {0.05f, 0.005f, 0.003f, 0.001f};
         float atkBase = paramAttack ? paramAttack->load() : 0.1f;
@@ -888,21 +955,23 @@ public:
         v.ampEnv.setADSR(effectiveAttack, decVal, susVal, relVal);
         v.ampEnv.noteOn();
 
-        // Filter envelope
-        v.filterEnv.prepare(srf);
+        // Filter envelope — F07-fix: prepare() already called in engine prepare(); skip here
         // Filter attack matches organ model character
         float filterAtk = (organModel == 0) ? 0.05f : 0.005f;
         float filterDec = (organModel == 0) ? 0.8f : 0.3f;
         v.filterEnv.setADSR(filterAtk, filterDec, 0.0f, 0.5f);
         v.filterEnv.triggerHard();
 
+        // F01-fix: hoist SVF mode (constant LowPass) to noteOn; setCoefficients_fast used per-sample
+        v.svf.setMode(CytomicSVF::Mode::LowPass);
+
         // Chiff trigger — weighted per model
         float chiffAmt = paramChiff ? paramChiff->load() : 0.3f;
         float chiffWeights[4] = {0.3f, 1.0f, 0.0f, 0.0f}; // Baroque gets full chiff
         v.chiff.trigger(vel, chiffAmt * chiffWeights[std::clamp(organModel, 0, 3)], freq, srf);
 
-        // Room resonance prepare
-        v.room.prepare(srf);
+        // F04-fix: room.prepare() already called in engine prepare(); not needed per-noteOn
+        // (coefficients are fixed; per-voice room objects are dead weight — postMixRoom handles rendering)
 
         // Reset oscillator state
         v.partialPhases.fill(0.0f);
@@ -911,9 +980,10 @@ public:
         v.farfisaVibratoPhase = 0.0f;
 
         // Stereo spread: distribute voices across stereo field
+        // F18-fix: use fastSin/fastCos instead of std::cos/std::sin on audio thread
         float panAngle = (static_cast<float>(note % 12) / 12.0f - 0.5f) * 0.6f + 0.5f;
-        v.panL = std::cos(panAngle * 1.5707963f);
-        v.panR = std::sin(panAngle * 1.5707963f);
+        v.panL = fastCos(panAngle * 1.5707963f);
+        v.panR = fastSin(panAngle * 1.5707963f);
     }
 
     void noteOff(int note) noexcept
