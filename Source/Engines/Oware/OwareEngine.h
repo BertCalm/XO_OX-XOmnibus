@@ -617,6 +617,7 @@ public:
         smoothBrightness.set(effectiveBright);
 
         couplingFilterMod = 0.0f;
+        const float capturedPitchMod = couplingPitchMod; // P25 fix: capture before zero
         couplingPitchMod = 0.0f;
         couplingMaterialMod = 0.0f;
 
@@ -687,7 +688,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 → brightness
                 float lfo2Val = voice.lfo2.process() * lfo2Depth; // LFO2 → material

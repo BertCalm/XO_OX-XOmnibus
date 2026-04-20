@@ -449,6 +449,7 @@ public:
         smoothMigration.set(effectiveMigration);
 
         couplingFilterMod = 0.0f;
+        const float capturedPitchMod = couplingPitchMod; // P25 fix: capture before zero
         couplingPitchMod = 0.0f;
         couplingWarmthMod = 0.0f;
 
@@ -506,7 +507,7 @@ public:
 
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
 
                 // LFO1 -> pitch vibrato (subtle, +-50 cents at full depth)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;

@@ -613,6 +613,10 @@ public:
         int effectiveMaqam = std::max(0, std::min(kNumMaqamat, maqamIndex));
 
         // Reset coupling accumulators for next block
+        // P25 fix: capture couplingBreakpointMod before zeroing — it is read inside
+        // the per-sample loop via evolveBreakpoints(). The other two mods are already
+        // captured into effectiveDistribution/effectiveElasticity above.
+        const float capturedBreakpointMod = couplingBreakpointMod;
         couplingBreakpointMod = 0.0f;
         couplingBarrierMod = 0.0f;
         couplingDistributionMod = 0.0f;
@@ -767,7 +771,7 @@ public:
 
                     // Evolve breakpoints via stochastic random walk
                     evolveBreakpoints(voice, modulatedTimeStep * stochasticDepth, modulatedAmpStep * stochasticDepth,
-                                      smoothedDistribution, effectiveElasticity, couplingBreakpointMod);
+                                      smoothedDistribution, effectiveElasticity, capturedBreakpointMod);
                 }
 
                 // --- Cubic Hermite interpolation across breakpoints ---
