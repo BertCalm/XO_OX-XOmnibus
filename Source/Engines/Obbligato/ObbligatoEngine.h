@@ -351,7 +351,6 @@ public:
         // SilenceGate: skip all DSP when the engine has been silent long enough
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buf.clear();
             return;
         }
 

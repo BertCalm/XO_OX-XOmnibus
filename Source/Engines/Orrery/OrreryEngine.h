@@ -574,7 +574,6 @@ public:
             }
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
@@ -702,7 +701,7 @@ public:
         // ---- MIDI processing ----
         auto* writeL = buffer.getWritePointer(0);
         auto* writeR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : writeL;
-        buffer.clear();
+        // ADDITIVE: do not clear — engine adds to existing buffer (slot chain convention)
 
         int midiSamplePos = 0;
         for (const auto& midiEvent : midi)
@@ -871,7 +870,11 @@ private:
         const float orbitPhaseInc = effectiveOrbitSpeed / sampleRateFloat;
         const float kTwoPi = 6.28318530718f;
 
-        // Set up LFO configs for all voices (block-rate)
+        // Set up LFO configs and envelope params for all voices (block-rate)
+        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): setParams fires once per
+        // block, not per sample. ampAtk/Dec/Sus/Rel and fltAtk/Dec/Sus/Rel are block-constant atomic
+        // loads already captured above; recomputing envelope coefficients numSamples× per block was
+        // wasteful and could cause zipper noise if params changed mid-block.
         for (auto& v : voices)
         {
             if (!v.active) continue;

@@ -634,7 +634,6 @@ public:
         // 2. Check SilenceGate bypass
         if (isSilenceGateBypassed())
         {
-            buffer.clear();
             return;
         }
 

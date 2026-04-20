@@ -333,6 +333,95 @@ struct ObiontLFO
 };
 
 // ---------------------------------------------------------------------------
+// Precomputed sinusoidal seed lookup tables — eliminates std::sin calls on the
+// audio thread inside ObiontCA1D::doSeed() and ObiontCA2D::doSeed().
+//
+// 1D table: kObiontSeedLUT1D[freq-1][i] = 0.5 + 0.5*sin(2π*freq*i/256)
+//   freqs 1–12 (index 0–11), 256 cells → 12*256 = 3072 floats (12 KB)
+// 2D column table: kObiontSeedColLUT2D[freq-1][col] = sin(2π*freq*col/64)
+//   freqs 1–12, 64 cols → 12*64 = 768 floats (3 KB)
+// 2D row table: kObiontSeedRowLUT2D[row] = sin(π*row/64)
+//   64 rows → 64 floats (256 B)
+// Combined 2D val = 0.5 + 0.4 * colLUT * rowLUT  (same math as original)
+// ---------------------------------------------------------------------------
+namespace ObiontSeedLUT
+{
+    static constexpr int kFreqs  = 12;
+    static constexpr int kN1D    = 256;
+    static constexpr int kW2D    = 64;
+    static constexpr int kH2D    = 64;
+
+    // Build the 1D table at compile time (C++14 constexpr).
+    struct LUT1D
+    {
+        float v[kFreqs][kN1D];
+        constexpr LUT1D() : v{}
+        {
+            for (int f = 0; f < kFreqs; ++f)
+                for (int i = 0; i < kN1D; ++i)
+                {
+                    // constexpr-friendly Bhaskara I sin approximation for table build.
+                    // Full precision std::sin cannot be used in a constexpr context on
+                    // all compilers, so we use a float approximation here (error <0.2%).
+                    // The noise term added in doSeed() (±0.05 range) is >> this error.
+                    float x = 6.28318530718f * (f + 1) * i / (float)kN1D;
+                    // Range-reduce x to [0, 2π] (already is) then to [0, π]
+                    // Using Bhaskara I: sin(x) ≈ 16x(π-x) / (5π²-4x(π-x)) for x∈[0,π]
+                    // Map x into [0, π] by reflecting
+                    bool neg = false;
+                    if (x > 6.28318530718f) x -= 6.28318530718f;
+                    if (x > 3.14159265359f) { x -= 3.14159265359f; neg = true; }
+                    const float pi = 3.14159265359f;
+                    float xpi = x * (pi - x);
+                    float s = 16.f * xpi / (5.f * pi * pi - 4.f * xpi);
+                    if (neg) s = -s;
+                    v[f][i] = 0.5f + 0.5f * s;
+                }
+        }
+    };
+    static constexpr LUT1D lut1D{};
+
+    struct ColLUT2D
+    {
+        float v[kFreqs][kW2D];
+        constexpr ColLUT2D() : v{}
+        {
+            for (int f = 0; f < kFreqs; ++f)
+                for (int col = 0; col < kW2D; ++col)
+                {
+                    float x = 6.28318530718f * (f + 1) * col / (float)kW2D;
+                    bool neg = false;
+                    if (x > 6.28318530718f) x -= 6.28318530718f;
+                    if (x > 3.14159265359f) { x -= 3.14159265359f; neg = true; }
+                    const float pi = 3.14159265359f;
+                    float xpi = x * (pi - x);
+                    float s = 16.f * xpi / (5.f * pi * pi - 4.f * xpi);
+                    if (neg) s = -s;
+                    v[f][col] = s;
+                }
+        }
+    };
+    static constexpr ColLUT2D colLut2D{};
+
+    struct RowLUT2D
+    {
+        float v[kH2D];
+        constexpr RowLUT2D() : v{}
+        {
+            for (int row = 0; row < kH2D; ++row)
+            {
+                float x = 3.14159265359f * row / (float)kH2D;
+                // x is already in [0, π]
+                const float pi = 3.14159265359f;
+                float xpi = x * (pi - x);
+                v[row] = 16.f * xpi / (5.f * pi * pi - 4.f * xpi);
+            }
+        }
+    };
+    static constexpr RowLUT2D rowLut2D{};
+} // namespace ObiontSeedLUT
+
+// ---------------------------------------------------------------------------
 // ObiontCA1D — 1D Elementary Cellular Automaton (256-cell ring, triple-buffered)
 //
 // Thread model:
@@ -402,10 +491,14 @@ struct ObiontCA1D
     {
         const int frequency = pendingSeedFreq_.load(std::memory_order_relaxed);
         const float density = pendingSeedDensity_.load(std::memory_order_relaxed);
+        // Clamp frequency to table range (1–12). Caller always passes 1–12
+        // via (midiNote%12)+1, but guard against edge cases.
+        const int freqIdx = juce::jlimit(0, ObiontSeedLUT::kFreqs - 1, frequency - 1);
+        const float* sinRow = ObiontSeedLUT::lut1D.v[freqIdx];
         for (int i = 0; i < kObiontGridWidth1D; ++i)
         {
-            // Sinusoidal envelope: sin(2π * freq * i / N) → 0..1
-            float val = 0.5f + 0.5f * std::sin(6.28318530718f * frequency * i / (float)kObiontGridWidth1D);
+            // Sinusoidal envelope from precomputed LUT — no std::sin on audio thread
+            float val = sinRow[i];
             // Add small chaos from RNG
             rng = rng * 1664525u + 1013904223u;
             float noise = (float)(rng & 0xFFFF) / 65535.f * 0.1f;
@@ -576,15 +669,16 @@ struct ObiontCA2D
         const int readIdx = readyBuf.load(std::memory_order_relaxed);
         uint8_t* dst = (readIdx == 0) ? gridB : gridA;
 
+        // Clamp frequency to table range (1–12).
+        const int freqIdx2D = juce::jlimit(0, ObiontSeedLUT::kFreqs - 1, seedFreq - 1);
+        const float* colSin = ObiontSeedLUT::colLut2D.v[freqIdx2D];
         for (int row = 0; row < kH; ++row)
         {
+            // Row envelope from precomputed LUT — no std::sin on audio thread
+            const float rowSin = ObiontSeedLUT::rowLut2D.v[row];
             for (int col = 0; col < kW; ++col)
             {
-                // Column-varying sinusoidal probability envelope
-                float colPhase = 6.28318530718f * seedFreq * col / (float)kW;
-                // Row-varying envelope: slow half-wave across height
-                float rowPhase = 3.14159265358979f * row / (float)kH;
-                float val = 0.5f + 0.4f * std::sin(colPhase) * std::sin(rowPhase);
+                float val = 0.5f + 0.4f * colSin[col] * rowSin;
                 // Small RNG perturbation
                 rng = rng * 1664525u + 1013904223u;
                 float noise = (float)(rng & 0xFFFF) / 65535.f * 0.15f;
@@ -1273,7 +1367,6 @@ public:
         // 2. SilenceGate bypass
         if (isSilenceGateBypassed())
         {
-            buffer.clear();
             return;
         }
 
@@ -1337,7 +1430,7 @@ public:
 
         float* L = buffer.getWritePointer(0);
         float* R = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : L;
-        buffer.clear();
+        // ADDITIVE: do not clear — engine adds to existing buffer (slot chain convention)
 
         // 5. Per-voice rendering
         int activeCount = 0;

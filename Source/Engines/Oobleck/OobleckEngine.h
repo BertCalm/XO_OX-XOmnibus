@@ -699,7 +699,6 @@ public:
         // ── Step 2: Silence gate bypass check ────────────────────────────────
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 

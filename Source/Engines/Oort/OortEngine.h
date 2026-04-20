@@ -854,7 +854,6 @@ public:
         }
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
@@ -1016,7 +1015,7 @@ public:
         // ---- Output buffers ----
         auto* writeL = buffer.getWritePointer(0);
         auto* writeR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : writeL;
-        buffer.clear();
+        // ADDITIVE: do not clear — engine adds to existing buffer (slot chain convention)
 
         // ---- MIDI processing interleaved with rendering ----
         int midiSamplePos = 0;

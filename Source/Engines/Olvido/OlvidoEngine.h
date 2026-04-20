@@ -381,6 +381,23 @@ public:
             actualCrossover[i] = juce::jlimit(20.0f, 20000.0f,
                 kOlvidoCrossoverBase[i] * shorelineShift);
 
+        // ---- Hoist crossover filter coefficients (block-constant) ----
+        // actualCrossover[] depends only on paramShoreline (block-constant).
+        // Q=0.7071 and sampleRateFloat are also block-constant.
+        // Computing setCoefficients_fast once per block per voice saves
+        // ~10 trig calls per active voice per sample (5 LP + 5 HP).
+        for (auto& v : voices)
+        {
+            if (!v.active) continue;
+            for (int ci = 0; ci < 5; ++ci)
+            {
+                v.crossoverLP[ci].setMode(CytomicSVF::Mode::LowPass);
+                v.crossoverLP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+                v.crossoverHP[ci].setMode(CytomicSVF::Mode::HighPass);
+                v.crossoverHP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+            }
+        }
+
         // ---- Pitch bend ratio (±2 semitones) ----
         const float pitchBendRatio = fastPow2(pitchBendNorm * 2.0f * (1.0f / 12.0f));
 
@@ -437,7 +454,6 @@ public:
         // Silence gate bypass: if idle and no MIDI, clear and return
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 

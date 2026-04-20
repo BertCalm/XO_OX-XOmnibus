@@ -312,7 +312,6 @@ public:
 
         if (isSilenceGateBypassed())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
@@ -359,6 +358,7 @@ public:
         float effectiveModIndex = std::clamp(pModIndex + macroChar * 3.0f + modWheelAmount * 4.0f, 0.0f, 20.0f);
         float effectiveFeedback = std::clamp(pFeedback + aftertouchAmount * 0.3f + macroMove * 0.2f, 0.0f, 1.0f);
         float effectiveBright = std::clamp(pBrightness + macroChar * 4000.0f + couplingFilterMod, 200.0f, 20000.0f);
+        const float blockCouplingPitchMod = couplingPitchMod;
 
         smoothModIndex.set(effectiveModIndex);
         smoothRatio.set(effectiveRatio);
