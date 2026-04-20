@@ -10,6 +10,7 @@
 #include "OxytocinMemory.h"
 #include "OxytocinTriangle.h"
 #include "OxytocinParamSnapshot.h"
+#include "../../DSP/FastMath.h" // fastPow2, dbToGain
 
 namespace xoxytocin
 {
@@ -28,15 +29,23 @@ public:
     }
 
     /// Returns bipolar value [-1..1].
-    float tick(float rateHz, int shape) noexcept
+    /// blockSize must be passed so the block-rate tick advances phase correctly.
+    /// Without this, the LFO ticks once per block but only advances one sample's
+    /// worth of phase — causing the effective rate to be divided by blockSize. (F11)
+    float tick(float rateHz, int shape, int blockSize = 1) noexcept
     {
         float safeRate = std::max(0.001f, rateHz); // D005 floor (was 0.01f)
-        float inc = static_cast<float>(safeRate / sr);
+        // F11 fix: advance by blockSize samples so block-rate ticking matches
+        // per-sample rate. The LFO is evaluated once per block; its phase must
+        // jump by the same amount as if it had been ticked blockSize times.
+        float inc = static_cast<float>(safeRate / sr) * static_cast<float>(blockSize);
 
         phase += inc;
         if (phase >= 1.0f)
         {
-            phase -= 1.0f;
+            // Wrap phase — use fmodf to handle cases where inc > 1.0 (very fast
+            // LFO at large block sizes) without getting stuck in an infinite loop.
+            phase = std::fmod(phase, 1.0f);
             // S&H: new random value on each cycle
             if (shape == 4)
             {
@@ -49,8 +58,8 @@ public:
 
         switch (shape)
         {
-        case 0: // Sine
-            return std::sin(phase * juce::MathConstants<float>::twoPi);
+        case 0: // Sine — fastSin is block-rate here; ~0.01% error (sufficient for LFO)
+            return xoceanus::fastSin(phase * juce::MathConstants<float>::twoPi);
         case 1: // Triangle
             return (phase < 0.5f) ? (4.0f * phase - 1.0f) : (3.0f - 4.0f * phase);
         case 2: // Saw
@@ -60,7 +69,7 @@ public:
         case 4: // S&H
             return shValue;
         default:
-            return std::sin(phase * juce::MathConstants<float>::twoPi);
+            return xoceanus::fastSin(phase * juce::MathConstants<float>::twoPi);
         }
     }
 
@@ -118,7 +127,8 @@ public:
     {
         // Range is set by RPN 0 (pitch bend sensitivity); defaults to ±2 semitones.
         float bend = (static_cast<float>(value - 8192) / 8192.0f) * static_cast<float>(pitchBendSemitones);
-        float ratio = std::pow(2.0f, bend / 12.0f);
+        // F02 fix: use fastPow2 instead of std::pow — called on audio thread during MIDI processing.
+        float ratio = xoceanus::fastPow2(bend / 12.0f);
         for (auto& v : voices)
             v.setPitchBend(ratio);
         pitchBendRatio = ratio;
@@ -196,9 +206,10 @@ public:
         // Honour voice count from param
         int maxV = std::clamp(snap.voices, 1, MaxVoices);
 
-        // LFO ticks (block-rate approximation — tick once per block)
-        float lfo1Val = lfo1.tick(snap.lfoRate, snap.lfoShape);
-        float lfo2Val = lfo2.tick(snap.lfo2Rate, 0 /*sine always for triangle modulation*/);
+        // LFO ticks (block-rate approximation — tick once per block).
+        // F11 fix: pass numSamples so each tick advances the correct amount of phase.
+        float lfo1Val = lfo1.tick(snap.lfoRate, snap.lfoShape, numSamples);
+        float lfo2Val = lfo2.tick(snap.lfo2Rate, 0 /*sine always for triangle modulation*/, numSamples);
 
         // M2 (MOVEMENT): scale all envelope rates
         // Handled via snap directly — MOVEMENT macro scales rates in host.
@@ -213,6 +224,15 @@ public:
         float sumI = 0.0f, sumP = 0.0f, sumC = 0.0f;
         int activeCount = 0;
 
+        // F07 fix: hoist pan gain computation out of the voice loop — snap.pan is
+        // constant for the block and recomputing sqrt()/max() inside the loop wastes cycles.
+        const float panL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
+        const float panR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
+
+        // F05/F06 fix: pre-compute LFO1 cutoff multiplier and detune ratio at block rate
+        // using fastPow2 instead of std::pow (called per active voice in the old code).
+        const float lfo1CutoffMult = xoceanus::fastPow2(lfo1Val * snap.lfoDepth * 2.0f / 12.0f);
+
         for (int vi = 0; vi < maxV; ++vi)
         {
             auto& v = voices[vi];
@@ -225,7 +245,7 @@ public:
             // Apply LFO1 to cutoff (depth → frequency modulation in semitones)
             // We modify a local copy of snap for this voice
             ParamSnapshot voiceSnap = snap;
-            voiceSnap.cutoff *= std::pow(2.0f, lfo1Val * snap.lfoDepth * 2.0f / 12.0f);
+            voiceSnap.cutoff *= lfo1CutoffMult; // F05/F06: fastPow2 pre-computed above
 
             // LFO2 → triangle position modulates I/P/C balance
             // Blend snap params toward triangle coords by lfo2 depth
@@ -244,10 +264,6 @@ public:
             sumC += v.lastEffC;
             ++activeCount;
 
-            // Mix to stereo with pan
-            float panL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
-            float panR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
-
             auto* outL = buffer.getWritePointer(0);
             auto* outR = buffer.getWritePointer(1);
             for (int s = 0; s < numSamples; ++s)
@@ -264,8 +280,9 @@ public:
         float blockTime = static_cast<float>(numSamples) / static_cast<float>(sr);
         memory.update(avgI, avgP, avgC, anyActive, snap.memoryDepth, snap.memoryDecay, blockTime);
 
-        // Apply master output gain
-        float gainLinear = std::pow(10.0f, snap.output / 20.0f);
+        // Apply master output gain.
+        // F04 fix: use dbToGain (fastExp-based) instead of std::pow — audio thread.
+        float gainLinear = xoceanus::dbToGain(snap.output);
 
         // Simple voice count normalisation (prevent loudness spike with many voices)
         if (activeCount > 1)
