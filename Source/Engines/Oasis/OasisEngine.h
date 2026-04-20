@@ -480,6 +480,9 @@ public:
         breezeLP_.setMode(CytomicSVF::Mode::LowPass);
         breezeLP_.setCoefficients(2000.0f, 0.7f, srF_);
         breezeLP_.reset();
+        breezeLP_R_.setMode(CytomicSVF::Mode::LowPass);
+        breezeLP_R_.setCoefficients(2000.0f, 0.7f, srF_);
+        breezeLP_R_.reset();
 
         resonatorBank_.setMode(CytomicSVF::Mode::BandPass);
         resonatorBank_.setCoefficients(400.0f, 4.0f, srF_);
@@ -536,6 +539,7 @@ public:
         canopyLP_.reset();
         canopyLPR_.reset();
         breezeLP_.reset();
+        breezeLP_R_.reset();
         resonatorBank_.reset();
         biolumLFO_.reset();
         tidalLFO_.reset();
@@ -634,7 +638,7 @@ public:
                     voice.amplitude = 1.0f;
                     voice.noteAge = 0;
 
-                    float freq = 440.0f * std::pow(2.0f, (voice.note - 69) / 12.0f);
+                    float freq = midiToFreq(voice.note);
                     voice.phaseDelta = freq / sr_;
                     voice.glide.setTargetOrSnap(freq);
 
@@ -664,7 +668,7 @@ public:
                     voice.startTime = static_cast<uint64_t>(velBits);
                     // Cache the frequency now (once) so the crossfade branch never
                     // calls std::pow per sample during the fade countdown.
-                    voice.cachedRetriggerFreq = 440.0f * std::pow(2.0f, (voice.currentNote - 69) / 12.0f);
+                    voice.cachedRetriggerFreq = midiToFreq(voice.currentNote);
                 }
             }
             else if (msg.isNoteOff())
@@ -770,6 +774,17 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Block-rate per-voice setup: hoist setTime/setRate out of the per-sample loop.
+        // Both depend only on block-rate param snapshots (pGlideTime, pTremoloRate) and srF_,
+        // which are constant for the entire block — calling them per sample was pure waste.
+        for (int v = 0; v < kMaxVoices; ++v)
+        {
+            if (!voices_[v].active)
+                continue;
+            voices_[v].glide.setTime(pGlideTime, srF_);
+            voices_[v].tremoloLFO.setRate(pTremoloRate, srF_);
+        }
+
         for (int i = 0; i < numSamples; ++i)
         {
             sampleCounter_++;
@@ -798,15 +813,23 @@ public:
                 // that was stored in voice.currentNote / voice.startTime.
                 if (voice.crossfading)
                 {
+                    // A releasing voice that was stolen must still be deactivated when
+                    // its envelope expires — otherwise it runs forever through the crossfade
+                    // counter without ever triggering the re-trigger at counter==0.
+                    voice.ampEnvLevel = voice.ampEnv.process();
+                    if (voice.releasing && voice.ampEnvLevel < 0.0001f)
+                    {
+                        voice.active = false;
+                        continue;
+                    }
+
                     float xfGain = static_cast<float>(voice.crossfadeCounter) /
                                    static_cast<float>(std::max(voice.crossfadeSamples, 1));
 
                     voice.noteAge++;
-                    voice.ampEnvLevel = voice.ampEnv.process();
                     float voiceAmp = voice.ampEnvLevel * voice.velocity * xfGain;
                     voiceAmp = flushDenormal(voiceAmp);
 
-                    voice.glide.setTime(pGlideTime, srF_);
                     float glidedFreq = voice.glide.process() * bendRatio * couplingPitchRatio;
                     glidedFreq = clamp(glidedFreq, 20.0f, srF_ * 0.49f);
                     voice.phaseDelta = static_cast<double>(glidedFreq) / sr_;
@@ -825,7 +848,6 @@ public:
                     float granularOut = fastTanh(rawSub * (1.0f + sagAmount * pSubDrive * 4.0f));
                     float blended = rhodesOut * pRhodesMix + granularOut * (1.0f - pRhodesMix);
 
-                    voice.tremoloLFO.setRate(pTremoloRate, srF_);
                     blended *= (1.0f + voice.tremoloLFO.process() * pTremoloDepth * 0.5f);
 
                     voice.filterEnvLevel = voice.filterEnv.process();
@@ -887,7 +909,7 @@ public:
                 // === GLIDE — derive current frequency from glide processor ===
                 // couplingPitchRatio applies AmpToPitch coupling (extPitchMod_) as a
                 // frequency multiplier — computed once per block before the voice loop.
-                voice.glide.setTime(pGlideTime, srF_);
+                // setTime() hoisted to block-rate pre-loop above.
                 float glidedFreq = voice.glide.process() * bendRatio * couplingPitchRatio;
                 glidedFreq = clamp(glidedFreq, 20.0f, srF_ * 0.49f);
 
@@ -925,8 +947,7 @@ public:
                 float blendedSub = rhodesOut * pRhodesMix + granularOut * (1.0f - pRhodesMix);
 
                 // === TREMOLO (per-voice LFO, D002/D005) ===
-                // Update tremolo LFO rate per block (pTremoloRate changes are block-rate).
-                voice.tremoloLFO.setRate(pTremoloRate, srF_);
+                // setRate() hoisted to block-rate pre-loop above.
                 float tremoloMod = voice.tremoloLFO.process();
                 // Bipolar modulation: pTremoloDepth != 0 activates tremolo (handles negative too).
                 float tremoloScale = 1.0f + tremoloMod * pTremoloDepth * 0.5f;
@@ -987,8 +1008,10 @@ public:
                 // Both lagoonDepth and canopyFB shape the delay feedback.
                 // Entropy also drives feedback: sloppy playing thickens the swarm.
                 // Per CLAUDE.md: feedback path clamped ≤ 0.95 to prevent instability.
+                // ent is already entropy_ * pEntropySens — avoid double-scaling by using
+                // entropy_ directly here (was ent * pEntropySens which squared pEntropySens).
                 float lagoonFB =
-                    clamp(pLagoonDepth * 0.7f + pCanopyFB * 0.1f + ent * pEntropySens * 0.15f, 0.0f, 0.95f);
+                    clamp(pLagoonDepth * 0.7f + pCanopyFB * 0.1f + ent * 0.15f, 0.0f, 0.95f);
                 float feedL = canopySendL + tapL * lagoonFB;
                 float feedR = canopySendR + tapR * lagoonFB;
 
@@ -1036,12 +1059,14 @@ public:
             float noiseR = (static_cast<float>(noiseRng_ & 0xFFFF) / 32768.0f - 1.0f);
             float rawBreezeR = noiseR * (pBreeze * 0.1f + culledEnergy_ * 0.35f) * (1.0f - biolumMod * 0.3f);
 
-            // Apply the culling LP filter (2kHz — gives the stolen-voice warmth)
-            // The breeze LP is stereo via processSample(L) then processSample(R)
-            // using the same single filter (mono LP tracks the signal envelope).
-            float breezeFiltered = breezeLP_.processSample((rawBreezeL + rawBreezeR) * 0.5f);
-            float breezeL = rawBreezeL * 0.3f + breezeFiltered * 0.7f;
-            float breezeR = rawBreezeR * 0.3f + breezeFiltered * 0.7f;
+            // Apply the culling LP filter (2kHz — gives the stolen-voice warmth).
+            // Independent L and R filters (breezeLP_ / breezeLP_R_) preserve the stereo
+            // decorrelation of rawBreezeL vs rawBreezeR. The old mono average defeated
+            // the stereo independence that the two separate noise sequences create.
+            float breezeFiltL = breezeLP_.processSample(rawBreezeL);
+            float breezeFiltR = breezeLP_R_.processSample(rawBreezeR);
+            float breezeL = rawBreezeL * 0.3f + breezeFiltL * 0.7f;
+            float breezeR = rawBreezeR * 0.3f + breezeFiltR * 0.7f;
 
             // Decay culled energy
             culledEnergy_ *= pCullDecay;
@@ -1050,6 +1075,11 @@ public:
             // === FINAL MIX ===
             float sampleL = filteredSub + resSample + canopyOutL * pSwarmDensity + breezeL;
             float sampleR = filteredSub + resSample + canopyOutR * pSwarmDensity + breezeR;
+
+            // softClip: Canopy feedback + culled-energy noise can sum above ±1. Apply
+            // softClip before accumulate to prevent clipping artefacts downstream.
+            sampleL = softClip(sampleL);
+            sampleR = softClip(sampleR);
 
             // Cache for coupling
             lastSampleL_ = sampleL;
@@ -1230,7 +1260,8 @@ private:
     CytomicSVF canopyLP_;  // Canopy smoothing LP (left channel)
     CytomicSVF canopyLPR_; // Canopy smoothing LP (right channel — independent state)
     CytomicSVF resonatorBank_;
-    CytomicSVF breezeLP_; // Harmonic Culling: LP at ~2kHz for ASMR noise floor
+    CytomicSVF breezeLP_;   // Harmonic Culling: LP at ~2kHz for ASMR noise floor (left)
+    CytomicSVF breezeLP_R_; // Independent right-channel breeze LP (stereo decorrelation)
 
     // LFOs
     StandardLFO biolumLFO_;
@@ -1241,7 +1272,7 @@ private:
     float ecologicalHealth_ = 0.5f;
     float culledEnergy_ = 0.0f;
     int64_t lastNoteOnTime_ = 0;
-    int expectedInterval_ = 0;
+    int64_t expectedInterval_ = 0; // was int — int overflow at >~47s silence at 44.1kHz
     int64_t sampleCounter_ = 0;
     uint32_t noiseRng_ = 42u;
 
