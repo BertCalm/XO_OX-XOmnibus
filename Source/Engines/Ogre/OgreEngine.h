@@ -255,7 +255,6 @@ public:
 
         if (isSilenceGateBypassed())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }

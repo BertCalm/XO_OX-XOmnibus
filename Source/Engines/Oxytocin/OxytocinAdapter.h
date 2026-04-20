@@ -87,7 +87,6 @@ public:
         // Zero-idle bypass
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 

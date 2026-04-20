@@ -1273,7 +1273,6 @@ public:
         // 2. SilenceGate bypass
         if (isSilenceGateBypassed())
         {
-            buffer.clear();
             return;
         }
 

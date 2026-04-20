@@ -83,7 +83,6 @@ public:
         // Zero-idle bypass (SRO — eliminates idle CPU when engine is silent)
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 

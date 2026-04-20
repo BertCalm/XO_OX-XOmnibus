@@ -422,7 +422,6 @@ public:
         // Silence gate bypass: if idle and no MIDI, clear and return
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
