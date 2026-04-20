@@ -188,6 +188,9 @@ public:
             g.drawHorizontalLine(stripY - kParamHeaderH - 2,
                                  (float)kPadGap, (float)(getWidth() - kPadGap));
         }
+
+        if (hasKeyboardFocus(false))
+            A11y::drawFocusRing(g, getLocalBounds().toFloat(), 4.0f);
     }
 
     void resized() override
