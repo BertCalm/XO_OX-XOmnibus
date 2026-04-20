@@ -549,11 +549,70 @@ public:
         for (int i = 0; i < kMaxVoices; ++i)
             prevVoiceOut[i] = lastVoiceOutputs[i];
 
+        // Hoist ampEnv.setADSR out of per-sample loop — ADSR knobs are block-rate
+        // and setADSR internally does 2× std::exp. Voice's model-specific clamping
+        // duplicated from the inner per-sample block so values match.
+        {
+            float atkParam = paramAttack  ? paramAttack->load()  : 0.08f;
+            float decParam = paramDecay   ? paramDecay->load()   : 0.5f;
+            float susParam = paramSustain ? paramSustain->load() : 0.8f;
+            float relParam = paramRelease ? paramRelease->load() : 0.4f;
+            float attack, decay, sustain, release;
+            switch (organModel)
+            {
+            case 0: // Sho
+                attack  = std::max(atkParam, 0.05f);
+                decay   = decParam;
+                sustain = susParam;
+                release = std::max(relParam, 0.3f);
+                break;
+            case 1: // Sheng
+                attack  = std::max(atkParam * 0.5f, 0.005f);
+                decay   = decParam * 0.7f;
+                sustain = susParam;
+                release = relParam;
+                break;
+            case 2: // Khene
+                attack  = atkParam;
+                decay   = decParam;
+                sustain = susParam * 0.9f;
+                release = std::max(relParam * 0.6f, 0.05f);
+                break;
+            default: // Melodica
+                attack  = std::max(atkParam * 0.8f, 0.003f);
+                decay   = decParam;
+                sustain = susParam;
+                release = relParam;
+                break;
+            }
+            for (int vi = 0; vi < kMaxVoices; ++vi)
+            {
+                auto& voice = voices[vi];
+                if (voice.active)
+                    voice.ampEnv.setADSR(attack, decay, sustain, release);
+            }
+        }
+
+        // Hoist per-voice LFO config. pLFO1Rate is block-rate; D005 floor enforced.
+        {
+            const float lfo1RateClamped = std::max(0.01f, pLFO1Rate);
+            for (int vi = 0; vi < kMaxVoices; ++vi)
+            {
+                auto& voice = voices[vi];
+                if (voice.active)
+                {
+                    voice.lfo1.setRate(lfo1RateClamped, srf);
+                    voice.lfo1.setShape(StandardLFO::Sine);
+                }
+            }
+        }
+
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float clusterNow = smoothCluster.process();
             float chiffNow = smoothChiff.process();
             float detuneNow = smoothDetune.process();
@@ -577,43 +636,8 @@ public:
                 if (!voice.active)
                     continue;
 
-                // Update amp envelope ADSR per block so knob changes take effect on held notes.
-                // Apply the same model-specific clamping used at noteOn.
-                {
-                    float atkParam = paramAttack  ? paramAttack->load()  : 0.08f;
-                    float decParam = paramDecay   ? paramDecay->load()   : 0.5f;
-                    float susParam = paramSustain ? paramSustain->load() : 0.8f;
-                    float relParam = paramRelease ? paramRelease->load() : 0.4f;
-                    float attack, decay, sustain, release;
-                    switch (organModel)
-                    {
-                    case 0: // Sho
-                        attack  = std::max(atkParam, 0.05f);
-                        decay   = decParam;
-                        sustain = susParam;
-                        release = std::max(relParam, 0.3f);
-                        break;
-                    case 1: // Sheng
-                        attack  = std::max(atkParam * 0.5f, 0.005f);
-                        decay   = decParam * 0.7f;
-                        sustain = susParam;
-                        release = relParam;
-                        break;
-                    case 2: // Khene
-                        attack  = atkParam;
-                        decay   = decParam;
-                        sustain = susParam * 0.9f;
-                        release = std::max(relParam * 0.6f, 0.05f);
-                        break;
-                    default: // Melodica
-                        attack  = std::max(atkParam * 0.8f, 0.003f);
-                        decay   = decParam;
-                        sustain = susParam;
-                        release = relParam;
-                        break;
-                    }
-                    voice.ampEnv.setADSR(attack, decay, sustain, release);
-                }
+                // Amp envelope setADSR hoisted to per-block voice loop above
+                // (model-specific ADSR clamping happens once per block, not per sample).
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
@@ -623,9 +647,7 @@ public:
                 voice.breath.process(pressureNow, pitchDriftCents, ampMod);
                 freq *= fastPow2(pitchDriftCents / 1200.0f);
 
-                // ---- LFO1 -> pitch vibrato ----
-                voice.lfo1.setRate(std::max(0.01f, pLFO1Rate), srf); // D005: rate floor
-                voice.lfo1.setShape(StandardLFO::Sine);
+                // ---- LFO1 -> pitch vibrato (setRate/setShape hoisted to per-block loop) ----
                 float lfo1Val = voice.lfo1.process() * effLFODepth;
                 freq *= fastPow2(lfo1Val * 0.5f / 12.0f); // max +/-0.5 semitone vibrato
 
@@ -836,8 +858,14 @@ public:
                 // LFO1 -> filter modulation (secondary target)
                 voiceCutoff = std::clamp(voiceCutoff + lfo1Val * 2000.0f, 20.0f, 20000.0f);
 
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients_fast(voiceCutoff, resNow, srf);
+                // Decimate SVF coefficient refresh to every 16 samples (~0.36ms @
+                // 44.1k — below audible lag). Filter env is still ticked per-sample
+                // above so envelope state advances at audio rate.
+                if (updateFilter)
+                {
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients_fast(voiceCutoff, resNow, srf);
+                }
                 float filtered = voice.svf.processSample(signal);
 
                 float output = filtered * envLevel;

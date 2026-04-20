@@ -766,6 +766,7 @@ public:
         // ----- Per-sample DSP loop -----
         for (int n = 0; n < numSamples; ++n)
         {
+            const bool updateFilter = ((n & 15) == 0);
 
             // --- Advance cellular automaton ---
             if (!freeze)
@@ -893,9 +894,11 @@ public:
             // reached by parameter alone. gainComp scales proportionally.
             float gainComp = 1.0f / (1.0f + filterRes * 5.75f);
             // CytomicSVF: TPT/matched-Z lowpass. Mode is fixed to LowPass in
-            // prepare(). setCoefficients_fast is used because finalCutoff changes
-            // every sample (automaton cell + LFO modulation).
-            filter.setCoefficients_fast(finalCutoff, filterRes, sr);
+            // prepare(). Coefficient refresh decimated to every 16 samples —
+            // cellular-automaton modulation is cell-rate (much slower than audio),
+            // and LFO modulation is smooth enough to tolerate 16-sample tracking lag.
+            if (updateFilter)
+                filter.setCoefficients_fast(finalCutoff, filterRes, sr);
             float filtered = filter.processSample(mixed * gainComp);
 
             // --- Amp envelope + gain ---

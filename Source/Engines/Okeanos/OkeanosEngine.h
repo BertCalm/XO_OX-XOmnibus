@@ -452,6 +452,8 @@ public:
         smoothMigration.set(effectiveMigration);
 
         couplingFilterMod = 0.0f;
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingPitchMod = 0.0f;
         couplingWarmthMod = 0.0f;
 
@@ -478,6 +480,10 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Hoist block-constant pitch-bend ratio out of per-sample loop (#1118 fix).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): atomic loads and setADSR fire once per block, not per sample.
         const float envA = paramAttack  ? paramAttack->load()  : 0.005f;
         const float envD = paramDecay   ? paramDecay->load()   : 0.8f;
@@ -489,6 +495,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float warmthNow = smoothWarmth.process();
             float bellNow = smoothBell.process();
             float brightNow = smoothBrightness.process();
@@ -505,7 +512,7 @@ public:
 
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted; uses pre-reset pitch coupling snapshot
 
                 // LFO1 -> pitch vibrato (subtle, +-50 cents at full depth)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
@@ -523,8 +530,10 @@ public:
                 // Amp stage — warmth and velocity-dependent bark
                 float ampOut = voice.amp.process(pickupOut, warmthNow, voice.velocity);
 
-                // Tremolo (Rhodes' optional built-in stereo vibrato)
-                voice.tremoloLFO.setRate(tremRateNow, srf);
+                // Tremolo (Rhodes' optional built-in stereo vibrato) — setRate decimated
+                // to every 16 samples (smoother output differences inaudible at that grain).
+                if (updateFilter)
+                    voice.tremoloLFO.setRate(tremRateNow, srf);
                 float tremVal = voice.tremoloLFO.process();
                 float tremGain = 1.0f - tremDepthNow * 0.5f * (1.0f + tremVal);
 
@@ -546,13 +555,17 @@ public:
                     continue;
                 }
 
-                // Filter envelope + brightness
+                // Filter envelope + brightness — env ticked per sample, SVF coeff
+                // refresh decimated to every 16 samples.
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
-                // D001: velocity shapes filter brightness
-                float velBright = voice.velocity * 4000.0f;
-                float cutoff = std::clamp(brightNow + fEnvMod + velBright + lfo2Val * 2000.0f, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.15f, srf);
+                if (updateFilter)
+                {
+                    // D001: velocity shapes filter brightness
+                    float velBright = voice.velocity * 4000.0f;
+                    float cutoff = std::clamp(brightNow + fEnvMod + velBright + lfo2Val * 2000.0f, 200.0f, 20000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.15f, srf);
+                }
                 float filtered = voice.svf.processSample(ampOut);
 
                 float output = filtered * ampLevel * tremGain;

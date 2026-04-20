@@ -801,9 +801,13 @@ public:
             const float voiceFilterCutoff = juce::jlimit(80.0f, 20000.0f,
                 snap_.filterCutoff + velFilterMod + couplingFilterAccum_ * 4000.0f);
 
+            // Block-constant bubble pitch ratio: hoist std::pow out of per-sample loop.
+            const float bubbleTrackRatio = fastPow2(snap_.bubbleTrack * (1.0f / 12.0f));
+
             // ── Per-sample loop ────────────────────────────────────────────────
             for (int s = 0; s < numSamples; ++s)
             {
+                const bool updateFilter = ((s & 15) == 0);
                 // ── LFO tick ─────────────────────────────────────────────────
                 const float lfoVal  = voice.lfo.process();
                 const float lmod    = lfoVal * effLfoDepth;
@@ -866,9 +870,10 @@ public:
                 }
 
                 // Edge-tone sine oscillator — frequency at jet offset pitch
+                // (fastSin: ~0.01% err, per-sample per-voice)
                 const float edgeFreq = currentFreq * (1.0f + lfoJetOffset * 3.0f);
                 constexpr float kTwoPi = 6.28318530718f;
-                const float jetSine = std::sin(voice.jetPhase) * toneAmount;
+                const float jetSine = fastSin(voice.jetPhase) * toneAmount;
                 voice.jetPhase += edgeFreq / static_cast<float>(currentSampleRate_) * kTwoPi;
                 if (voice.jetPhase >= kTwoPi) voice.jetPhase -= kTwoPi;
 
@@ -892,8 +897,9 @@ public:
 
                 // ── Minnaert bubble excitation ────────────────────────────────
                 // Bubble frequency: offset from note by bubble_track semitones
+                // (bubbleTrackRatio precomputed above per-sample loop — fastPow2 cached)
                 const float bubbleFreq = currentFreq
-                    * std::pow(2.0f, snap_.bubbleTrack / 12.0f)
+                    * bubbleTrackRatio
                     * (0.3f + snap_.bubbleSize * 1.7f); // size shifts pitch
 
                 // Bubble trigger at effectiveBubbleRate Hz
@@ -912,9 +918,9 @@ public:
                     }
                 }
 
-                // Damped cosine bubble oscillator
+                // Damped cosine bubble oscillator (fastCos: ~0.002% error per-sample)
                 const float bubbleSample = voice.bubbleAmplitude
-                    * std::cos(voice.bubblePhase * kTwoPi);
+                    * fastCos(voice.bubblePhase * kTwoPi);
                 voice.bubblePhase += bubbleFreq / static_cast<float>(currentSampleRate_);
                 if (voice.bubblePhase >= 1.0f) voice.bubblePhase -= 1.0f;
 
@@ -1020,13 +1026,16 @@ public:
                 // ── Output sample = delayed + direct jet component ────────────
                 float sample = apOut + reflectedB + excitation * 0.05f;
 
-                // ── Output filter ─────────────────────────────────────────────
-                voice.outputFilterL.setMode(filterMode);
-                voice.outputFilterR.setMode(filterMode);
-                voice.outputFilterL.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
-                                                         static_cast<float>(currentSampleRate_));
-                voice.outputFilterR.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
-                                                         static_cast<float>(currentSampleRate_));
+                // ── Output filter — decimate coefficient refresh to every 16 samples ────
+                if (updateFilter)
+                {
+                    voice.outputFilterL.setMode(filterMode);
+                    voice.outputFilterR.setMode(filterMode);
+                    voice.outputFilterL.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
+                                                             static_cast<float>(currentSampleRate_));
+                    voice.outputFilterR.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
+                                                             static_cast<float>(currentSampleRate_));
+                }
                 float sampleL = voice.outputFilterL.processSample(sample);
                 float sampleR = voice.outputFilterR.processSample(sample);
                 sampleL = flushDenormal(sampleL);

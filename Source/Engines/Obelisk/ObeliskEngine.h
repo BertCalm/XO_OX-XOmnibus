@@ -731,7 +731,11 @@ public:
         smoothBrightness.set(effectiveBright);
         smoothDamping.set(pDamping);
 
-        // Reset coupling accumulators
+        // Snapshot pitch coupling before reset (Approach A from #1118).
+        // couplingFilterMod + couplingPrepMod are consumed above (lines 720–722) so
+        // those resets are already in the right order; only the pitch mod is used
+        // downstream (block-hoisted blockBendRatio below).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingPrepMod = 0.0f;
@@ -784,9 +788,16 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // bendSemitones + coupling pitch mod are both block-constant; hoist the
+        // pitch-bend ratio out of the per-sample per-voice loop. Uses pre-reset
+        // snapshot so applyCouplingInput pitch accumulators aren't wiped (#1118).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         // Step 4: Per-sample render loop
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float densNow = smoothDensity.process();
             float hardNow = smoothHardness.process();
             float prepDNow = smoothPrepDepth.process();
@@ -807,7 +818,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 // LFO modulation
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 → brightness
@@ -979,12 +990,15 @@ public:
                 // ampEnv scales the overall voice amplitude (D004: envelope must shape output).
                 float ampEnvVal = voice.ampEnv.process();
 
-                // Filter envelope + LFO1 → brightness
+                // Filter envelope + LFO1 → brightness (env ticked per-sample, SVF decimated)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
-                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.3f,
-                                          srf); // low resonance — stone is not resonant in the filter sense
+                if (updateFilter)
+                {
+                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.3f,
+                                              srf); // low resonance — stone is not resonant in the filter sense
+                }
                 float filtered = voice.svf.processSample(resonanceSum);
 
                 float output = filtered * voice.ampLevel * ampEnvVal;

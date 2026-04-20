@@ -815,6 +815,8 @@ public:
         smoothDetune.set(effectiveDetune);
         smoothFormant.set(effectiveFormant);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         // Reset coupling accumulators
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -860,6 +862,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float buzzNow = smoothBuzz.process();
             float brightNow = smoothBrightness.process();
             float droneNow = smoothDrone.process();
@@ -875,7 +878,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
                 // LFO processing (rate/shape already set once per block above)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
@@ -918,10 +921,13 @@ public:
                     processed = voice.cassotto.process(raw, effectiveCasDepth);
 
                     // Formant filter: Bayan has a warm, rounded resonance.
-                    // formantNow is the per-sample smoothed formant parameter — use it
-                    // directly so the smoother actually drives the coefficient each sample.
-                    voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
-                    voice.formantFilter.setCoefficients(600.0f + formantNow * 2400.0f, formantQ, srf);
+                    // Decimate coefficient refresh to every 16 samples — formantNow
+                    // smoother is slow relative to audio rate.
+                    if (updateFilter)
+                    {
+                        voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
+                        voice.formantFilter.setCoefficients(600.0f + formantNow * 2400.0f, formantQ, srf);
+                    }
                     processed = raw * 0.6f + voice.formantFilter.processSample(processed) * 0.4f;
                     break;
                 }
@@ -932,10 +938,12 @@ public:
                     // Buzz activates above pressure threshold
                     processed = voice.buzzBridge.process(raw, buzzNow, voice.pressure, pBuzzThreshold);
 
-                    // Wooden body resonance (formant).
-                    // formantNow is the per-sample smoothed formant parameter.
-                    voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
-                    voice.formantFilter.setCoefficients(400.0f + formantNow * 1600.0f, formantQ, srf);
+                    // Wooden body resonance (formant). Decimate coeff refresh.
+                    if (updateFilter)
+                    {
+                        voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
+                        voice.formantFilter.setCoefficients(400.0f + formantNow * 1600.0f, formantQ, srf);
+                    }
                     processed = processed * 0.7f + voice.formantFilter.processSample(processed) * 0.3f;
                     break;
                 }
@@ -946,10 +954,12 @@ public:
                     float warmSat = fastTanh(processed * (1.0f + buzzNow * 2.0f));
                     processed = processed * (1.0f - buzzNow * 0.5f) + warmSat * buzzNow * 0.5f;
 
-                    // Reed chamber resonance.
-                    // formantNow is the per-sample smoothed formant parameter.
-                    voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
-                    voice.formantFilter.setCoefficients(500.0f + formantNow * 2500.0f, formantQ, srf);
+                    // Reed chamber resonance. Decimate coeff refresh.
+                    if (updateFilter)
+                    {
+                        voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
+                        voice.formantFilter.setCoefficients(500.0f + formantNow * 2500.0f, formantQ, srf);
+                    }
                     processed = processed * 0.65f + voice.formantFilter.processSample(processed) * 0.35f;
                     break;
                 }
@@ -960,10 +970,12 @@ public:
                     float rawBuzz = softClip(processed * (1.5f + buzzNow * 4.0f));
                     processed = processed * (1.0f - buzzNow * 0.6f) + rawBuzz * buzzNow * 0.6f;
 
-                    // Open box resonance (narrower, more colored).
-                    // formantNow is the per-sample smoothed formant parameter.
-                    voice.formantFilter.setMode(CytomicSVF::Mode::BandPass);
-                    voice.formantFilter.setCoefficients(350.0f + formantNow * 1650.0f, formantQ, srf);
+                    // Open box resonance (narrower, more colored). Decimate coeff refresh.
+                    if (updateFilter)
+                    {
+                        voice.formantFilter.setMode(CytomicSVF::Mode::BandPass);
+                        voice.formantFilter.setCoefficients(350.0f + formantNow * 1650.0f, formantQ, srf);
+                    }
                     processed = processed * 0.5f + voice.formantFilter.processSample(processed) * 0.5f;
                     break;
                 }
@@ -998,8 +1010,11 @@ public:
                 static constexpr float kModelFilterQ[4] = {0.4f, 0.5f, 0.3f, 0.6f};
                 float voiceFilterQ = kModelFilterQ[std::clamp(pOrgan, 0, 3)];
 
-                voice.voiceFilter.setMode(CytomicSVF::Mode::LowPass);
-                voice.voiceFilter.setCoefficients(cutoff, voiceFilterQ, srf);
+                if (updateFilter)
+                {
+                    voice.voiceFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.voiceFilter.setCoefficients(cutoff, voiceFilterQ, srf);
+                }
                 float filtered = voice.voiceFilter.processSample(processed);
 
                 float output = filtered * ampLevel * bellowsAmp * voice.velocity;

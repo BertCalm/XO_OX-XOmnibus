@@ -406,6 +406,7 @@ public:
         // === Sample Loop ===
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float mixL = 0.0f, mixR = 0.0f;
 
             for (int vi = 0; vi < kMaxVoices; ++vi)
@@ -508,26 +509,29 @@ public:
                 // Mix all 4 strands equally
                 float signal = (strandOut[0] + strandOut[1] + strandOut[2] + strandOut[3]) * 0.25f;
 
-                // === Filter ===
-                float effCut = clamp(filterCutoff + cutoffMod + velTimbre, 20.0f, 20000.0f);
-                float effRes = clamp(filterReso + resoMod, 0.0f, 1.0f);
-
-                switch (filterType)
+                // === Filter — coeff refresh decimated to every 16 samples ===
+                if (updateFilter)
                 {
-                case 0:
-                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                    break;
-                case 1:
-                    voice.filter.setMode(CytomicSVF::Mode::HighPass);
-                    break;
-                case 2:
-                    voice.filter.setMode(CytomicSVF::Mode::BandPass);
-                    break;
-                default:
-                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                    break;
+                    float effCut = clamp(filterCutoff + cutoffMod + velTimbre, 20.0f, 20000.0f);
+                    float effRes = clamp(filterReso + resoMod, 0.0f, 1.0f);
+
+                    switch (filterType)
+                    {
+                    case 0:
+                        voice.filter.setMode(CytomicSVF::Mode::LowPass);
+                        break;
+                    case 1:
+                        voice.filter.setMode(CytomicSVF::Mode::HighPass);
+                        break;
+                    case 2:
+                        voice.filter.setMode(CytomicSVF::Mode::BandPass);
+                        break;
+                    default:
+                        voice.filter.setMode(CytomicSVF::Mode::LowPass);
+                        break;
+                    }
+                    voice.filter.setCoefficients(effCut, effRes, sr);
                 }
-                voice.filter.setCoefficients(effCut, effRes, sr);
                 signal = voice.filter.processSample(signal);
 
                 // === Amp envelope ===

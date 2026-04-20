@@ -925,6 +925,11 @@ public:
         float peakEnvelopeLevel = 0.0f;
         // Hoist block-constant detune ratio out of per-sample loop
         const float detuneRatio = fastPow2(oscDetuneCents / 1200.0f);
+        // Hoist block-constant pitch-bend + coupling ratio (couplingPitchMod and
+        // pitchBendNorm are both block-rate): was per-sample per-voice fastPow2 ×
+        // PitchBendUtil call, now collapsed to one block-rate multiply.
+        const float blockBendRatio = fastPow2(couplingPitchMod)
+                                   * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
@@ -1031,9 +1036,8 @@ public:
                 {
                     voice.currentFrequency = voice.targetFrequency;
                 }
-                // Apply coupling pitch modulation (in semitones, via pow2) + pitch bend
-                float frequency = voice.currentFrequency * fastPow2(couplingPitchMod) *
-                                  PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                // Apply block-constant bend + coupling ratio (hoisted above per-sample loop).
+                float frequency = voice.currentFrequency * blockBendRatio;
 
                 // --- Dual Oscillator ---
                 // Primary oscillator at pitch; secondary detuned by oscDetuneCents

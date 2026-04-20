@@ -534,9 +534,12 @@ public:
         smoothWoodAge.set(pWoodAge);
         smoothCuringRate.set(pCuringRate);
 
+        // Snapshot coupling accumulators (Approach A from #1118) — consume into
+        // block-local values before the reset, so applyCouplingInput values
+        // accumulated during the prior frame actually influence this block.
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
-
         const float bendSemitones = pitchBendNorm * pBendRange;
 
         // LFO params — macroMove speeds both LFOs for more organic bowing movement
@@ -547,6 +550,7 @@ public:
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
         const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
+        const float roomSpread = pRoom * 0.15f;
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -557,6 +561,14 @@ public:
             voice.lfo2.setShape(lfo2Shape);
             voice.glide.setTime(pGlide, srf);
             voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
+
+            // Pre-compute pan gains per voice — depends on currentNote (note-constant) and
+            // roomSpread (block-constant). Hoists per-sample std::cos + std::sin out of
+            // inner render loop (was up to 64×N pairs of trig calls per block).
+            const float panOffset = (static_cast<float>((voice.currentNote * 7) % 13) / 13.0f - 0.5f) * roomSpread;
+            const float panPos    = 0.5f + panOffset;
+            voice.panL = fastCos(panPos * 1.5707963f);
+            voice.panR = fastSin(panPos * 1.5707963f);
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -564,8 +576,16 @@ public:
 
         const float dtSec = inverseSr_;
 
+        // bendSemitones + coupling pitch mod are both block-constant here. Hoist the
+        // semitonesToFreqRatio call (fastPow2 inside) out of the per-sample loop.
+        // Uses the pre-reset snapshot so applyCouplingInput pitch accumulators are
+        // honoured (#1118).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float bowPNow = smoothBowPressure.process();
             float strTNow = smoothStringTension.process();
             float bodyDNow = smoothBodyDepth.process();
@@ -581,7 +601,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
@@ -604,13 +624,16 @@ public:
                 // Curing model: HF removal over sustain time
                 float cured = voice.curing.process(bodied, curingRNow, dtSec);
 
-                // Output brightness filter
+                // Output brightness filter (env ticked per-sample, SVF decimated)
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 4000.0f;
-                float cutoff =
-                    std::clamp(brightNow + envMod + lfo1Val * 2000.0f + lfo2Val * 2000.0f + voice.velocity * 2000.0f,
-                               200.0f, 20000.0f);
-                voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                voice.outputFilter.setCoefficients(cutoff, 0.3f, srf);
+                if (updateFilter)
+                {
+                    float cutoff =
+                        std::clamp(brightNow + envMod + lfo1Val * 2000.0f + lfo2Val * 2000.0f + voice.velocity * 2000.0f,
+                                   200.0f, 20000.0f);
+                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.outputFilter.setCoefficients(cutoff, 0.3f, srf);
+                }
                 float filtered = voice.outputFilter.processSample(cured);
 
                 // Room: simple one-pole reverb-like diffusion
@@ -630,12 +653,9 @@ public:
 
                 float output = filtered * ampLevel * voice.velocity;
 
-                // Room bleed: wider stereo on higher room values
-                float roomSpread = pRoom * 0.15f;
-                float panOffset = (static_cast<float>((voice.currentNote * 7) % 13) / 13.0f - 0.5f) * roomSpread;
-                float panPos = 0.5f + panOffset;
-                mixL += output * std::cos(panPos * 1.5707963f);
-                mixR += output * std::sin(panPos * 1.5707963f);
+                // Room bleed: pan gains cached per voice in per-block setup loop above.
+                mixL += output * voice.panL;
+                mixR += output * voice.panR;
             }
 
             outL[s] = mixL;

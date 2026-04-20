@@ -390,6 +390,9 @@ public:
         couplingReedMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
+        // Block-constant portion of pitch-bend ratio; inner loop multiplies this in once
+        // and then applies the per-sample vibrato ratio as the only remaining fastPow2.
+        const float blockBendRatio = PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
 
         // LFO params
         const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
@@ -423,6 +426,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float reedNow = smoothReed.process();
             float driveNow = smoothDrive.process();
             float brightNow = smoothBrightness.process();
@@ -439,7 +443,7 @@ public:
 
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
+                freq *= blockBendRatio; // hoisted above — block-const bend + pitch coupling snapshot
 
                 // LFO1 -> pitch vibrato
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
@@ -455,8 +459,10 @@ public:
                 // Preamp with drive
                 float preampOut = voice.preamp.process(reedOut, voiceDrive);
 
-                // Wurlitzer signature tremolo
-                voice.tremoloLFO.setRate(tremRateN, srf);
+                // Wurlitzer signature tremolo — setRate decimated to every 16 samples
+                // (tremRateN is smoothed so tiny per-sample differences are inaudible).
+                if (updateFilter)
+                    voice.tremoloLFO.setRate(tremRateN, srf);
                 float tremVal = voice.tremoloLFO.process();
                 float tremGain = 1.0f - tremDepthN * 0.5f * (1.0f + tremVal);
 
@@ -475,12 +481,19 @@ public:
                     continue;
                 }
 
-                // Filter — Wurli has a warmer, lower cutoff ceiling than Rhodes
+                // Filter — Wurli has a warmer, lower cutoff ceiling than Rhodes.
+                // Tick filter env every sample (advances envelope state), but only
+                // refresh SVF coefficients every 16 samples (~0.36ms @ 44.1k — well
+                // below audible lag and matches the smoother time-constant). Saves
+                // N×voices SVF coefficient trig calls per block.
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 3000.0f;
-                float velBright = voice.velocity * 2500.0f;
-                float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 16000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.2f, srf);
+                if (updateFilter)
+                {
+                    float velBright = voice.velocity * 2500.0f;
+                    float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 16000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.2f, srf);
+                }
                 float filtered = voice.svf.processSample(preampOut);
 
                 float output = filtered * ampLevel * tremGain;

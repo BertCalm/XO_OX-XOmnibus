@@ -423,6 +423,7 @@ public:
         // ---- Per-sample render loop ----
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
         {
+            const bool updateFilter = ((sampleIdx & 15) == 0);
             int activeCount = 0;
 
             // One-pole smoothing to prevent zipper noise on filter sweeps
@@ -651,11 +652,13 @@ public:
                         float normDist = headDist / static_cast<float>(reelSizeSamples);
 
                         float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
-                        float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
-                        oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
-
-                        voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
-                        voice.oxideFilter[h].setCoefficients_fast(oxideCutoff, 0.3f, currentSampleRate);
+                        if (updateFilter)
+                        {
+                            float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
+                            oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
+                            voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
+                            voice.oxideFilter[h].setCoefficients_fast(oxideCutoff, 0.3f, currentSampleRate);
+                        }
                         rawSample = voice.oxideFilter[h].processSample(rawSample);
                         rawSample = flushDenormal(rawSample);
                     }
@@ -708,11 +711,14 @@ public:
                 outSampleL = flushDenormal(outSampleL);
                 outSampleR = flushDenormal(outSampleR);
 
-                // ---- Output filter (per-voice L/R) ----
-                voice.outputFilterL.setMode(filterMode);
-                voice.outputFilterR.setMode(filterMode);
-                voice.outputFilterL.setCoefficients_fast(finalCutoff, smoothedReso, currentSampleRate);
-                voice.outputFilterR.setCoefficients_fast(finalCutoff, smoothedReso, currentSampleRate);
+                // ---- Output filter (per-voice L/R) — coeff refresh decimated ----
+                if (updateFilter)
+                {
+                    voice.outputFilterL.setMode(filterMode);
+                    voice.outputFilterR.setMode(filterMode);
+                    voice.outputFilterL.setCoefficients_fast(finalCutoff, smoothedReso, currentSampleRate);
+                    voice.outputFilterR.setCoefficients_fast(finalCutoff, smoothedReso, currentSampleRate);
+                }
 
                 outSampleL = voice.outputFilterL.processSample(outSampleL);
                 outSampleR = voice.outputFilterR.processSample(outSampleR);

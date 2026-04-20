@@ -398,13 +398,13 @@ public:
             }
         }
 
-        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): setADSR fires once per block, not per sample.
         for (int v = 0; v < kMaxVoices; ++v)
             if (voices[v].active)
                 voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
 
         for (int i = 0; i < numSamples; ++i)
         {
+            const bool updateFilter = ((i & 15) == 0);
             // Gate LFOs: advance state but output 0 when fully frozen.
             // Always advance to maintain phase continuity for the next crystallization event.
             // Frozen state output = 0 (no evolution = no modulation = CPU-equivalent to zero).
@@ -425,6 +425,7 @@ public:
                 if (!voice.active)
                     continue;
 
+                // Envelope setADSR hoisted to per-block voice loop above.
                 float ampLevel = voice.ampEnv.process();
 
                 if (!voice.ampEnv.isActive())
@@ -568,12 +569,15 @@ public:
                 if (crystal.numPeaks > 0)
                     voiceSample *= (2.0f / static_cast<float>(crystal.numPeaks));
 
-                // Per-voice filter
-                float voiceCutoff = pFilterCut;
-                // Frozen state: filter stays put. Crystallizing: filter sweeps
-                if (!crystal.isFrozen)
-                    voiceCutoff = clamp(voiceCutoff * crystal.freezeTimer / crystal.freezeDuration, 50.0f, srF * 0.49f);
-                voice.voiceFilter.setCoefficients_fast(clamp(voiceCutoff, 50.0f, srF * 0.49f), pFilterRes, srF);
+                // Per-voice filter (coeff refresh decimated)
+                if (updateFilter)
+                {
+                    float voiceCutoff = pFilterCut;
+                    // Frozen state: filter stays put. Crystallizing: filter sweeps
+                    if (!crystal.isFrozen)
+                        voiceCutoff = clamp(voiceCutoff * crystal.freezeTimer / crystal.freezeDuration, 50.0f, srF * 0.49f);
+                    voice.voiceFilter.setCoefficients_fast(clamp(voiceCutoff, 50.0f, srF * 0.49f), pFilterRes, srF);
+                }
                 voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 voiceSample *= ampLevel;

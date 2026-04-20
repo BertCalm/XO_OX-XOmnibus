@@ -628,7 +628,10 @@ public:
         smoothSympathy.set(effectiveSympathy);
         smoothCaramel.set(effectiveCaramel);
 
-        // Reset coupling accumulators
+        // Snapshot pitch coupling before reset (#1118 — Approach A). Filter +
+        // conductivity accumulators are consumed above (lines 617/621), the pitch
+        // mod is used below in the hoisted blockBendRatio.
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingConductivityMod = 0.0f;
@@ -675,9 +678,14 @@ public:
             voice.lfo2.setShape(lfo2Shape);
         }
 
+        // Hoist pitch-bend ratio; uses the pre-reset snapshot (#1118).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         // Per-sample rendering
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float condNow = smoothConductivity.process();
             float hardNow = smoothHardness.process();
             float bodyDNow = smoothBodyDepth.process();
@@ -693,7 +701,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
@@ -742,9 +750,12 @@ public:
                     voice.hfNoiseState = voice.hfNoiseState * 1664525u + 1013904223u;
                     float noise = (static_cast<float>(voice.hfNoiseState & 0xFFFF) / 32768.0f - 1.0f);
 
-                    // Shape noise through body-tuned SVF
-                    voice.hfNoiseShaper.setMode(CytomicSVF::Mode::BandPass);
-                    voice.hfNoiseShaper.setCoefficients(std::clamp(freq * 8.0f, 500.0f, srf * 0.45f), 0.3f, srf);
+                    // Shape noise through body-tuned SVF (coeff refresh decimated)
+                    if (updateFilter)
+                    {
+                        voice.hfNoiseShaper.setMode(CytomicSVF::Mode::BandPass);
+                        voice.hfNoiseShaper.setCoefficients(std::clamp(freq * 8.0f, 500.0f, srf * 0.45f), 0.3f, srf);
+                    }
                     float shapedNoise = voice.hfNoiseShaper.processSample(noise);
 
                     resonanceSum += shapedNoise * voice.hfNoiseEnv * pHFCharacter * 0.3f;
@@ -777,11 +788,14 @@ public:
                     continue;
                 }
 
-                // Filter envelope + LFO1 → brightness
+                // Filter envelope + LFO1 → brightness (env ticked per-sample, SVF decimated)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
-                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                voice.lpf.setMode(CytomicSVF::Mode::LowPass);
-                voice.lpf.setCoefficients(cutoff, 0.4f, srf);
+                if (updateFilter)
+                {
+                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
+                    voice.lpf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.lpf.setCoefficients(cutoff, 0.4f, srf);
+                }
                 float filtered = voice.lpf.processSample(bodied);
 
                 float output = filtered * voice.ampLevel;

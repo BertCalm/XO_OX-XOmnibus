@@ -318,6 +318,8 @@ public:
         smoothPulseWidth.set(pPulseWidth);
         smoothWarmth.set(pWarmth);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
 
@@ -355,8 +357,13 @@ public:
 
         const float dtSec = inverseSr_;
 
+        // Hoist pitch-bend ratio; uses the pre-reset snapshot (#1118).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float cutNow = smoothCutoff.process();
             float resNow = smoothResonance.process();
             float drvNow = smoothDrive.process();
@@ -372,7 +379,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 // LFO modulations
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
@@ -406,16 +413,22 @@ public:
                 float voiceCutoff = std::clamp(
                     cutNow + filtEnv * 6000.0f + velCutMod + lfo1Val * 2000.0f + sessionCutShift, 100.0f, 20000.0f);
 
-                voice.ladderFilter.setMode(CytomicSVF::Mode::LowPass);
-                voice.ladderFilter.setCoefficients(voiceCutoff, resNow, srf);
+                if (updateFilter)
+                {
+                    voice.ladderFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.ladderFilter.setCoefficients(voiceCutoff, resNow, srf);
+                }
                 float filtered = voice.ladderFilter.processSample(driven);
 
                 // Warmth filter: low shelf boost — tube vs transistor character
                 // Warmth parameter controls low-frequency saturation character
                 if (warmNow > 0.01f)
                 {
-                    voice.warmthFilter.setMode(CytomicSVF::Mode::LowShelf);
-                    voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
+                    if (updateFilter)
+                    {
+                        voice.warmthFilter.setMode(CytomicSVF::Mode::LowShelf);
+                        voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
+                    }
                     filtered = voice.warmthFilter.processSample(filtered);
                 }
 

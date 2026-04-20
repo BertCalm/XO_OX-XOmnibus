@@ -381,19 +381,18 @@ public:
                 ++activeVoiceCount;
         }
 
-        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): setADSR fires once per
-        // block, not per sample. pAmpA/D/S/R and pFiltA/D/S/R are block-constant atomic loads
-        // already captured above; recomputing envelope coefficients 44100× per second was wasteful.
-        for (int v = 0; v < kMaxVoices; ++v)
+        // Hoist envelope setADSR out of per-sample loop — setADSR does 2× std::exp,
+        // ADSR knobs are block-rate.
+        for (auto& voice : voices)
         {
-            if (!voices[v].active)
-                continue;
-            voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
-            voices[v].filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+            voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
         }
 
         for (int i = 0; i < numSamples; ++i)
         {
+            const bool updateFilter = ((i & 15) == 0);
             float lfo1Val = lfo1.process();
             float lfo2Val = lfo2.process();
             float breathVal = breathLfo.process();
@@ -464,6 +463,7 @@ public:
                 if (voice.velocity < 0.3f && voice.holdDuration > 8.0f)
                     voice.isInfusion = true;
 
+                // Envelope setADSR hoisted to per-block voice loop above.
                 float ampLevel = voice.ampEnv.process();
                 float filtLevel = voice.filterEnv.process();
 
@@ -542,11 +542,14 @@ public:
                     voiceSample += umamiBass;
                 }
 
-                // Per-voice filter — cutoff reduces with session age
-                float voiceCutoff = pFilterCut * (1.0f - reduction.sessionAge * 0.7f) +
-                                    pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity;
-                voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
-                voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                // Per-voice filter — cutoff reduces with session age (coeff refresh decimated)
+                if (updateFilter)
+                {
+                    float voiceCutoff = pFilterCut * (1.0f - reduction.sessionAge * 0.7f) +
+                                        pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity;
+                    voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
+                    voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                }
                 voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 // Apply amp envelope

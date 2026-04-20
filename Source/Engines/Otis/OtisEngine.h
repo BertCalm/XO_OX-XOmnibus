@@ -1015,6 +1015,9 @@ public:
         // Pitch bend
         const float bendSemitones = pitchBendNorm * pBendRange;
 
+        // Snapshot pitch + FM coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
+        const float blockCouplingFMMod   = couplingFMMod;
         // Reset coupling accumulators
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -1030,6 +1033,17 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Hoist per-voice LFO config out of the per-sample loop — both rate and
+        // shape are block-constant knob values.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.lfo1.setRate(lfo1Rate, srf);
+            voice.lfo1.setShape(lfo1Shape);
+            voice.lfo2.setRate(lfo2Rate, srf);
+            voice.lfo2.setShape(lfo2Shape);
+        }
+
         // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): atomic loads and setADSR fire once per block, not per sample.
         const float envA = paramAttack  ? paramAttack->load()  : 0.005f;
         const float envD = paramDecay   ? paramDecay->load()   : 0.3f;
@@ -1041,6 +1055,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             // Per-sample smoothed values
             float smoothedDrawbars[9];
             for (int d = 0; d < 9; ++d)
@@ -1067,14 +1082,9 @@ public:
                 }
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
-                // Per-voice LFOs
-                voice.lfo1.setRate(lfo1Rate, srf);
-                voice.lfo1.setShape(lfo1Shape);
-                voice.lfo2.setRate(lfo2Rate, srf);
-                voice.lfo2.setShape(lfo2Shape);
-
+                // Per-voice LFO setRate/setShape hoisted to per-block voice loop above.
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
@@ -1087,7 +1097,7 @@ public:
                 freq *= PitchBendUtil::semitonesToFreqRatio(lfo1PitchVal * 2.0f);
 
                 // FM coupling input
-                freq += couplingFMMod * 100.0f;
+                freq += blockCouplingFMMod * 100.0f;
 
                 float voiceOut = 0.0f;
 
@@ -1189,15 +1199,19 @@ public:
                 }
 
                 // Filter envelope
+                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float filterEnvLevel = voice.filterEnv.process();
-                float envMod = filterEnvLevel * pFilterEnvAmt * 4000.0f;
-                // LFO2 → filter cutoff
-                float cutoff = std::clamp(brightNow + envMod + lfo2Val * 3000.0f, 200.0f, 20000.0f);
-                // D001: velocity → filter brightness
-                cutoff = std::clamp(cutoff * (0.5f + voice.velocity * 0.5f), 200.0f, 20000.0f);
+                if (updateFilter)
+                {
+                    float envMod = filterEnvLevel * pFilterEnvAmt * 4000.0f;
+                    // LFO2 → filter cutoff
+                    float cutoff = std::clamp(brightNow + envMod + lfo2Val * 3000.0f, 200.0f, 20000.0f);
+                    // D001: velocity → filter brightness
+                    cutoff = std::clamp(cutoff * (0.5f + voice.velocity * 0.5f), 200.0f, 20000.0f);
 
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients_fast(cutoff, 0.15f, srf);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients_fast(cutoff, 0.15f, srf);
+                }
                 float filtered = voice.svf.processSample(voiceOut);
 
                 float output = filtered * ampEnvLevel;

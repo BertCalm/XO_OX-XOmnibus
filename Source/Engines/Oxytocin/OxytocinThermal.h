@@ -4,6 +4,8 @@
 #include <cmath>
 #include <algorithm>
 
+#include "../../DSP/FastMath.h" // xoceanus::fastSin
+
 /// OxytocinThermal — RE-201 warmth model.
 ///
 /// Three-stage NTC thermistor warming chain: each stage is a one-pole lag on
@@ -158,8 +160,9 @@ public:
 
             // Pitch wobble is applied at the signal level as a subtle AM
             // (a true pitch wobble would require a delay line; this is an
-            //  affordable approximation for the "motor flutter" aesthetic)
-            float wobble = 1.0f + circuitAge * 0.0017f * std::sin(wobblePhase);
+            //  affordable approximation for the "motor flutter" aesthetic).
+            // fastSin: ~0.01% err — indistinguishable for this AM application.
+            float wobble = 1.0f + circuitAge * 0.0017f * xoceanus::fastSin(wobblePhase);
             output *= wobble;
         }
 

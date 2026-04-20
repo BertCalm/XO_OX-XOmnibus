@@ -414,6 +414,7 @@ public:
         // ---- Per-sample render loop ----
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
         {
+            const bool updateFilter = ((sampleIdx & 15) == 0);
             int activeCount = 0;
             // One-pole smoothing for control parameters
             smoothedCutoff    += 0.001f * (effectiveCutoff    - smoothedCutoff);
@@ -554,11 +555,14 @@ public:
                 float modEnvCutoff = smoothedCutoff + modLevel * paramNeonCutoff * 0.5f;
                 modEnvCutoff = juce::jlimit(80.0f, 20000.0f, modEnvCutoff);
 
-                // ---- Per-voice neon filter (L + R independent) ----
-                voice.neonFilterL.setMode(CytomicSVF::Mode::LowPass);
-                voice.neonFilterL.setCoefficients_fast(modEnvCutoff, smoothedReso, sampleRateFloat);
-                voice.neonFilterR.setMode(CytomicSVF::Mode::LowPass);
-                voice.neonFilterR.setCoefficients_fast(modEnvCutoff, smoothedReso, sampleRateFloat);
+                // ---- Per-voice neon filter (L + R independent; coeff refresh decimated) ----
+                if (updateFilter)
+                {
+                    voice.neonFilterL.setMode(CytomicSVF::Mode::LowPass);
+                    voice.neonFilterL.setCoefficients_fast(modEnvCutoff, smoothedReso, sampleRateFloat);
+                    voice.neonFilterR.setMode(CytomicSVF::Mode::LowPass);
+                    voice.neonFilterR.setCoefficients_fast(modEnvCutoff, smoothedReso, sampleRateFloat);
+                }
 
                 float filtL = voice.neonFilterL.processSample(saturated);
                 float filtR = voice.neonFilterR.processSample(saturated);

@@ -367,6 +367,8 @@ public:
         smoothBrightness.set(effectiveBright);
         smoothDistillRate.set(pDistill);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
 
@@ -416,8 +418,13 @@ public:
             voices[vi].panR = std::sin(pan * 1.5707963f);
         }
 
+        // Hoist pitch-bend ratio; uses the pre-reset snapshot (#1118).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float modIdxNow = smoothModIndex.process();
             float ratioNow = smoothRatio.process();
             float fbNow = smoothFeedback.process();
@@ -437,7 +444,7 @@ public:
                 // panL/panR precomputed before sample loop (CPU fix 2 — block-constant).
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
@@ -488,12 +495,15 @@ public:
                 float carrierOut = voice.carrier.process(modSignal);
 
                 // D001: velocity shapes FM brightness (more velocity = brighter attack)
-                float velBright = brightNow + voice.velocity * 4000.0f;
+                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 5000.0f;
-                float cutoff = std::clamp(velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
-
-                voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                voice.outputFilter.setCoefficients(cutoff, 0.2f, srf);
+                if (updateFilter)
+                {
+                    float velBright = brightNow + voice.velocity * 4000.0f;
+                    float cutoff = std::clamp(velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
+                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.outputFilter.setCoefficients(cutoff, 0.2f, srf);
+                }
                 float filtered = voice.outputFilter.processSample(carrierOut);
 
                 // Amplitude envelope

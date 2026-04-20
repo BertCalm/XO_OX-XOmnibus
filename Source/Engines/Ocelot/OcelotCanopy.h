@@ -60,10 +60,11 @@ public:
             return 0.0f;
         }
 
-        // Base frequency from MIDI note + pitch bend
+        // Base frequency from MIDI note + pitch bend.
+        // fastPow2 is ~50× faster than std::pow and accurate to ~0.02%.
         float pitchOffset = (snap.canopyPitch - 0.5f) * 48.0f; // ±24 cents
         float baseFreq =
-            440.0f * std::pow(2.0f, (baseNote - 69 + pitchOffset / 100.0f + snap.pitchBendSemitones) / 12.0f);
+            440.0f * xoceanus::fastPow2((baseNote - 69 + pitchOffset * 0.01f + snap.pitchBendSemitones) * (1.0f / 12.0f));
 
         // Active partials (biome can tilt balance)
         int numPartials = std::clamp(snap.canopyPartials, 1, kMaxPartials);
@@ -74,7 +75,9 @@ public:
 
         // Spectral filter position (modulated by floor via matrix)
         float spectralPos = std::clamp(snap.canopySpectralFilter + mod.canopyFilterMod, 0.0f, 1.0f);
-        float spectralCutoff = 200.0f * std::pow(100.0f, spectralPos); // 200Hz–20kHz log
+        // 200Hz–20kHz log sweep: 100^x == 2^(x·log2(100)); fastPow2 is ~50× faster than std::pow.
+        constexpr float kLog2_100 = 6.6438561897747244f; // log2(100)
+        float spectralCutoff = 200.0f * xoceanus::fastPow2(spectralPos * kLog2_100);
 
         // Wavefold depth
         float wavefold = std::clamp(snap.canopyWavefold + mod.canopyMorphMod, 0.0f, 1.0f);

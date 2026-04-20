@@ -411,6 +411,8 @@ public:
         // sonic territory — louder partner → more orca displacement. (#944)
         const float chokeGain = clamp(1.0f - couplingBreachTrigger, 0.0f, 1.0f);
 
+        // Snapshot ring-mod coupling before reset (#1118).
+        const float blockCouplingRingModSrc = couplingRingModSrc;
         // Reset coupling accumulators
         couplingWTPosMod = 0.0f;
         couplingFormantMod = 0.0f;
@@ -536,6 +538,7 @@ public:
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
+            const bool updateFilter = ((sample & 15) == 0);
             // Advance smoothed control-rate parameters (shared ParameterSmoother)
             float smoothedWTPos = smoothWTPos.process();
             float smoothedFormant = smoothFormant.process();
@@ -665,6 +668,7 @@ public:
                 }
 
                 // --- Main filter (LFO2 modulates cutoff per sample) ---
+                if (updateFilter)
                 {
                     static constexpr float kMaxCutoffOffsetInner = 3000.0f;
                     float baseCutoff = clamp(effectiveCutoff + pVelCutoffAmt * voice.velocity * kMaxCutoffOffsetInner,
@@ -675,9 +679,9 @@ public:
                 voiceSignal = voice.mainFilter.processSample(voiceSignal);
 
                 // --- AudioToRing coupling: ring-modulate voice signal ---
-                // couplingRingModSrc is accumulated in applyCouplingInput() and
-                // zeroed each block before the sample loop (line ~487).
-                voiceSignal *= (1.0f + couplingRingModSrc);
+                // couplingRingModSrc accumulated in applyCouplingInput(); snapshot
+                // preserves the pre-reset value for use here (#1118).
+                voiceSignal *= (1.0f + blockCouplingRingModSrc);
 
                 // --- Apply amplitude envelope, velocity, crossfade ---
                 float gain = ampLevel * voice.velocity * voice.fadeGain;

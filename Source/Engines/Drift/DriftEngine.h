@@ -1034,6 +1034,7 @@ public:
         // --- Render voices sample by sample ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
+            const bool updateFilter = ((sample & 15) == 0);
             // Per-sample LFO
             float lfoVal = 0.0f;
             float lfoPitchMod = 0.0f;
@@ -1201,15 +1202,21 @@ public:
                 cutoffMod += modWheelAmount * 4000.0f;
                 cutoffMod = clamp(cutoffMod, 20.0f, 20000.0f);
 
-                voice.filterA1.setMode(CytomicSVF::Mode::LowPass);
-                voice.filterA1.setCoefficients_fast(cutoffMod, filterRes, srf);
+                if (updateFilter)
+                {
+                    voice.filterA1.setMode(CytomicSVF::Mode::LowPass);
+                    voice.filterA1.setCoefficients_fast(cutoffMod, filterRes, srf);
+                }
                 float filtered = voice.filterA1.processSample(raw);
 
                 // 24dB cascade: run through second SVF
                 if (filterSlope == 1)
                 {
-                    voice.filterA2.setMode(CytomicSVF::Mode::LowPass);
-                    voice.filterA2.setCoefficients_fast(cutoffMod, filterRes, srf);
+                    if (updateFilter)
+                    {
+                        voice.filterA2.setMode(CytomicSVF::Mode::LowPass);
+                        voice.filterA2.setCoefficients_fast(cutoffMod, filterRes, srf);
+                    }
                     filtered = voice.filterA2.processSample(filtered);
                 }
 

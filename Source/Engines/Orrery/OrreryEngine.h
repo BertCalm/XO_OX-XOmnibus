@@ -882,9 +882,19 @@ private:
             v.lfo1.setShape(lfo1Shape);
             v.lfo2.setRate(lfo2Rate, sampleRateFloat);
             v.lfo2.setShape(lfo2Shape);
+            // Hoist envelope setParams out of per-sample loop — ADSR knobs are
+            // block-rate, but setParams() internally recomputes exp() coefficients
+            // on every call. Was V × N × 2 std::exp calls per block.
             v.ampEnv.setParams(ampAtk, ampDec, ampSus, ampRel, sampleRateFloat);
             v.filterEnv.setParams(fltAtk, fltDec, fltSus, fltRel, sampleRateFloat);
         }
+
+        // Tilt rotation coefficients are block-constant (orbitTilt loaded at block
+        // start). Computing fastCos/fastSin(tiltAngle) per sample was wasted work
+        // since every voice at every sample uses the same tilt rotation matrix.
+        const float tiltAngle = orbitTilt * (kTwoPi * 0.5f); // ±π
+        const float cosTilt = fastCos(tiltAngle);
+        const float sinTilt = fastSin(tiltAngle);
 
         for (int s = startSample; s < endSample; ++s)
         {
@@ -897,7 +907,7 @@ private:
             {
                 if (!v.active) continue;
 
-                // ---- Amp envelope ----
+                // ---- Amp envelope (setParams hoisted to per-block voice loop) ----
                 const float ampLevel = v.ampEnv.process();
 
                 // If envelope finished, deactivate voice
@@ -907,7 +917,7 @@ private:
                     continue;
                 }
 
-                // ---- Filter envelope ----
+                // ---- Filter envelope (setParams hoisted to per-block voice loop) ----
                 const float fltEnvLevel = v.filterEnv.process();
 
                 // ---- LFO values (per-sample) ----
@@ -976,12 +986,10 @@ private:
                     orbitAngle = (v.orbitPhase + orbitPhaseOffset) * kTwoPi;
                 }
 
-                // Tilt rotation: rotate (cosA, sinA) by tiltAngle
-                const float tiltAngle = orbitTilt * (kTwoPi * 0.5f); // ±π
+                // Tilt rotation: rotate (cosA, sinA) by tiltAngle.
+                // cosTilt/sinTilt hoisted to block setup (tiltAngle is block-constant).
                 const float cosA = fastCos(orbitAngle);
                 const float sinA = fastSin(orbitAngle);
-                const float cosTilt = fastCos(tiltAngle);
-                const float sinTilt = fastSin(tiltAngle);
 
                 float orbitX, orbitY;
                 switch (orbitShape)
@@ -1147,14 +1155,16 @@ private:
                 // ---- Filter ----
                 if (updateFilter)
                 {
-                    // Key tracking: shift cutoff up/down based on note (D001 path)
-                    float keyTrackOffset = v.keyTrack * fltKeyTrack * 5000.0f;
-                    // Filter envelope modulates cutoff (bipolar — use != 0 not > 0)
-                    float envOffset = fltEnvAmt != 0.0f
+                    // Exponential keytracking: cutoff · 2^((note-60)·keyTrack/12).
+                    // Was linear (keyTrack01 × 5 kHz), which was non-musical at extremes.
+                    const float keyTrackMul = fastPow2(
+                        static_cast<float>(v.note - 60) * fltKeyTrack * (1.0f / 12.0f));
+                    // Filter envelope modulates cutoff (bipolar — |x| > 1e-6).
+                    float envOffset = std::fabs(fltEnvAmt) > 1e-6f
                         ? fltEnvLevel * fltEnvAmt * 10000.0f * v.velocity
                         : 0.0f;
                     // Coupling + mod matrix offsets
-                    float effectiveCutoff = clamp(baseCutoff + keyTrackOffset + envOffset + modCutoffOffset, 20.0f, 20000.0f);
+                    float effectiveCutoff = clamp(baseCutoff * keyTrackMul + envOffset + modCutoffOffset, 20.0f, 20000.0f);
                     float effectiveReso   = clamp(fltReso + aftertouchValue * 0.3f, 0.0f, 0.99f);
 
                     CytomicSVF::Mode fMode = CytomicSVF::Mode::LowPass;

@@ -487,11 +487,13 @@ public:
         }
         default:
         {
-            float rms = 0.0f;
+            // Generic fallback: treat as AmpToFilter. Assign (not +=) so repeated
+            // unknown coupling types cannot accumulate across blocks.
+            float mav = 0.0f;
             for (int i = 0; i < numSamples; ++i)
-                rms += std::fabs(sourceBuffer[i]);
-            rms /= static_cast<float>(numSamples);
-            couplingAmpFilter += rms * amount;
+                mav += std::fabs(sourceBuffer[i]);
+            mav /= static_cast<float>(numSamples);
+            couplingAmpFilter = mav * amount;
             break;
         }
         }
@@ -811,11 +813,13 @@ public:
             lastSampleR = writeR[numSamples - 1];
         }
 
-        // ---- Coupling accumulator decay (0.999× per block) ----
-        couplingAmpFilter    *= 0.999f;
-        couplingEnvVowelX    *= 0.999f;
-        couplingRhythmVowelY *= 0.999f;
-        couplingExcLevel     *= 0.999f;
+        // ---- Coupling accumulator decay — block-size-invariant (~1s tau) ----
+        // Old `*= 0.999f` was block-rate so feel varied with DAW buffer size.
+        const float couplingDecayCoeff = fastExp(-static_cast<float>(numSamples) / sampleRateFloat);
+        couplingAmpFilter    *= couplingDecayCoeff;
+        couplingEnvVowelX    *= couplingDecayCoeff;
+        couplingRhythmVowelY *= couplingDecayCoeff;
+        couplingExcLevel     *= couplingDecayCoeff;
 
         // ---- Update active voice count (atomic) ----
         int av = 0;
@@ -1035,6 +1039,11 @@ private:
             const float effectExcBright = std::clamp(excBright + velBrightBoost, 0.0f, 1.0f);
             const float effectSpread    = std::clamp(formantSpread + velSpreadBoost, 0.5f, 2.5f);
 
+            // formantQ is block-constant; pre-compute the bandwidth-scale factor once
+            // per voice rather than repeating the multiply-subtract inside the 5-iteration
+            // formant loop on every sample.
+            const float formantBwScale  = 2.0f - formantQ * 1.5f;
+
             // ---- Vowel morph auto-oscillator ----
             // vowelMorphRate [0..1] → Hz [0..2] morph cycle
             const float morphHz   = vowelMorphRate * 2.0f;
@@ -1144,9 +1153,10 @@ private:
                     fBWs[f]  = std::max(20.0f, fBWs[f] * effectSpread);
                 }
 
-                // formantQ scales bandwidth (lower Q = wider = more overlap)
+                // formantQ scales bandwidth (lower Q = wider = more overlap).
+                // formantBwScale precomputed per voice above — block-constant.
                 for (int f = 0; f < 5; ++f)
-                    fBWs[f] = fBWs[f] * (2.0f - formantQ * 1.5f);
+                    fBWs[f] = fBWs[f] * formantBwScale;
 
                 // formantTilt: spectral tilt on formant amplitudes
                 // Negative = darker (boost low formants), Positive = brighter (boost high)
@@ -1171,7 +1181,7 @@ private:
 
                     // Output filter
                     const float fenvLevel    = v.filterEnv.getLevel();
-                    const float fenvOffset   = fenvAmt != 0.0f ? fenvAmt * fenvLevel * 6000.0f : 0.0f;
+                    const float fenvOffset   = std::fabs(fenvAmt) > 1e-6f ? fenvAmt * fenvLevel * 6000.0f : 0.0f;
                     const float effectCutoff = std::clamp(baseCutoff + fenvOffset, 20.0f, 20000.0f);
                     const CytomicSVF::Mode outMode = filterModeFromInt(fltType);
                     v.outputFilterL.setMode(outMode);

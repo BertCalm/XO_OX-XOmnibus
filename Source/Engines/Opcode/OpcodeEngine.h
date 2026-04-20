@@ -400,6 +400,7 @@ public:
         couplingIndexMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
+        const float blockBendRatio = PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
 
         // LFO params
         const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
@@ -433,6 +434,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float ratioNow = smoothRatio.process();
             float indexNow = smoothIndex.process();
             float brightNow = smoothBrightness.process();
@@ -447,7 +449,7 @@ public:
 
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
+                freq *= blockBendRatio; // hoisted above — block-const bend + pitch coupling snapshot
 
                 // LFO1 -> pitch vibrato (classic DX vibrato)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
@@ -521,12 +523,17 @@ public:
                     continue;
                 }
 
-                // Filter — FM EP benefits from gentle LP to tame aliasing at high index
+                // Filter — FM EP benefits from gentle LP to tame aliasing at high index.
+                // Tick filter env per sample; refresh SVF coeffs every 16 samples
+                // (~0.36ms @ 44.1k — below audible lag).
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
-                float velBright = voice.velocity * 3000.0f;
-                float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.1f, srf);
+                if (updateFilter)
+                {
+                    float velBright = voice.velocity * 3000.0f;
+                    float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.1f, srf);
+                }
                 float filtered = voice.svf.processSample(fmOutput);
 
                 float output = filtered * ampLevel;

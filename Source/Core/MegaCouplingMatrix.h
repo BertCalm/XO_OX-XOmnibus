@@ -110,6 +110,16 @@ public:
             couplingSmooth_ = static_cast<float>(std::exp(-1.0 / targetBlocks));
         }
 
+        // (#1093 item 17) Post-interpolation LP coefficient for SRO control-rate
+        // buffer. Cutoff = 3 kHz (well above any musical control-rate motion,
+        // below the audio band where a staircase from linear interp would beat
+        // against carrier harmonics). One-pole coeff = 1 - exp(-2π·fc/sr).
+        {
+            constexpr double cutoffHz = 3000.0;
+            controlRateLPCoeff_ = static_cast<float>(
+                1.0 - std::exp(-2.0 * 3.14159265358979323846 * cutoffHz / sampleRate));
+        }
+
         // Reset all in-flight smoothedAmounts to their target to prevent a zipper
         // pop when the DAW changes buffer size mid-session (#910).
         auto routes = std::atomic_load(&routeList);
@@ -140,6 +150,15 @@ public:
         return result;
     }
 
+    // (#1093 item 59) Single-slot engine query. Avoids a full 5-element copy
+    // when the caller only needs one slot. Returns nullptr for out-of-range.
+    SynthEngine* getEngineForSlot(int slot) const
+    {
+        if (slot < 0 || slot >= MaxSlots)
+            return nullptr;
+        return activeEngines[static_cast<size_t>(slot)].load(std::memory_order_acquire);
+    }
+
     //-- Route mutation (message thread only) ----------------------------------
 
     void clearRoutes()
@@ -147,6 +166,28 @@ public:
         auto newRoutes = std::make_shared<std::vector<CouplingRoute>>();
         std::atomic_store(&routeList, newRoutes);
     }
+
+    // (#1093 item 44) Clear user routes only, preserving normalled defaults.
+    // Useful for "reset patch" where factory coupling defaults should survive.
+    void clearUserRoutes()
+    {
+        auto current = std::atomic_load(&routeList);
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>();
+        if (current)
+        {
+            newRoutes->reserve(current->size());
+            for (const auto& r : *current)
+                if (r.isNormalled)
+                    newRoutes->push_back(r);
+        }
+        std::atomic_store(&routeList, newRoutes);
+    }
+
+    // (#1093 item 63) Global mute — UI A/B toggle that kills all coupling
+    // without disturbing the route list. processBlock() reads this atomic once
+    // per block and early-returns when muted.
+    void setGlobalCouplingMute(bool muted) { globalMute_.store(muted, std::memory_order_release); }
+    bool isGlobalCouplingMuted() const { return globalMute_.load(std::memory_order_acquire); }
 
     // Returns true if adding a route from sourceSlot → destSlot with the given
     // type would create a directed cycle in the graph of audio-rate coupling routes.
@@ -195,31 +236,109 @@ public:
 
     void addRoute(CouplingRoute route)
     {
-        // Self-route guard (existing check).
+        (void)addRouteChecked(route); // ignore return — existing API swallows failures
+    }
+
+    // (#1093 item 53) Convenience overload — build route from components so
+    // callers don't have to construct the struct. Uses user-defined (non-normalled)
+    // default. Returns true if added (matches addRouteChecked::Ok).
+    bool addRoute(int sourceSlot, int destSlot, CouplingType type, float amount)
+    {
+        CouplingRoute r;
+        r.sourceSlot   = sourceSlot;
+        r.destSlot     = destSlot;
+        r.type         = type;
+        r.amount       = amount;
+        r.isNormalled  = false;
+        r.active       = true;
+        return addRouteChecked(r) == AddRouteResult::Ok;
+    }
+
+    // (#1093 items 43, 48, 56) — typed-return variant with explicit failure reasons.
+    // - Rejects self-routes, cycles, and exact duplicates (same src/dst/type).
+    // - Rejects when the route table is already at MaxRoutes.
+    //
+    // Duplicates would silently double the coupling amount, which felt like a
+    // different knob throwing off the mix. Explicit rejection is cleaner.
+    enum class AddRouteResult { Ok, SelfLoop, Cycle, Duplicate, MaxReached };
+
+    AddRouteResult addRouteChecked(CouplingRoute route)
+    {
         if (route.sourceSlot == route.destSlot)
-            return;
+            return AddRouteResult::SelfLoop;
 
-        // Graph-level cycle detection for audio-rate coupling types (Phase 3).
-        // Prevents A→B→A feedback loops that would clip and rail within one block.
-        // Control-rate types and KnotTopology are intentionally excluded — see
-        // wouldCreateCycle() for the full rationale.
         if (wouldCreateCycle(route.sourceSlot, route.destSlot, route.type))
-            return;
-
-        // Seed smoothedAmount to the target amount so the first block starts at
-        // the correct level rather than ramping up from zero. (#684)
-        route.smoothedAmount = route.amount;
+            return AddRouteResult::Cycle;
 
         auto current = std::atomic_load(&routeList);
-        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+        if (current)
+        {
+            if (static_cast<int>(current->size()) >= MaxRoutes)
+                return AddRouteResult::MaxReached;
+            // (#1093 item 48) Reject duplicates so coupling amount isn't silently
+            // doubled. Use findRoute semantics to detect.
+            for (const auto& r : *current)
+                if (r.sourceSlot == route.sourceSlot && r.destSlot == route.destSlot && r.type == route.type)
+                    return AddRouteResult::Duplicate;
+        }
+
+        route.smoothedAmount = route.amount;
+
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(current ? *current : std::vector<CouplingRoute>{});
         newRoutes->push_back(route);
         std::atomic_store(&routeList, newRoutes);
 
-        // Resolve sinkCache for any newly added AudioToBuffer route.
-        // resolveAudioToBufferSinks() is cheap (only touches AudioToBuffer routes)
-        // and must run on the message thread — safe here since addRoute is message-thread-only.
         if (route.type == CouplingType::AudioToBuffer)
             resolveAudioToBufferSinks();
+
+        return AddRouteResult::Ok;
+    }
+
+
+    // (#1093 item 52) Find a route by triple. Returns -1 if no match.
+    // Message-thread only. Use the returned index with setRouteAmount/Active
+    // to avoid the full addRoute/removeUserRoute round-trip for simple updates.
+    int findRoute(int sourceSlot, int destSlot, CouplingType type) const
+    {
+        auto routes = std::atomic_load(&routeList);
+        if (!routes)
+            return -1;
+        for (int i = 0; i < static_cast<int>(routes->size()); ++i)
+        {
+            const auto& r = (*routes)[static_cast<size_t>(i)];
+            if (r.sourceSlot == sourceSlot && r.destSlot == destSlot && r.type == type)
+                return i;
+        }
+        return -1;
+    }
+
+    // (#1093 item 51) Update a route's target amount in-place. Cheaper than
+    // remove+add for automation-style updates: reuses the existing
+    // smoothedAmount so the UI knob doesn't reset the smoother to zero.
+    // Returns true on success.
+    bool setRouteAmount(int routeIdx, float amount)
+    {
+        auto current = std::atomic_load(&routeList);
+        if (!current || routeIdx < 0 || routeIdx >= static_cast<int>(current->size()))
+            return false;
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+        (*newRoutes)[static_cast<size_t>(routeIdx)].amount = amount;
+        std::atomic_store(&routeList, newRoutes);
+        return true;
+    }
+
+    // (#1093 item 51) Toggle a route on/off without removing it. Useful for
+    // A/B testing patches and UI mute toggles. The smoother continues to track
+    // toward `amount` so re-activating doesn't snap the level.
+    bool setRouteActive(int routeIdx, bool active)
+    {
+        auto current = std::atomic_load(&routeList);
+        if (!current || routeIdx < 0 || routeIdx >= static_cast<int>(current->size()))
+            return false;
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+        (*newRoutes)[static_cast<size_t>(routeIdx)].active = active;
+        std::atomic_store(&routeList, newRoutes);
+        return true;
     }
 
     void removeUserRoute(int sourceSlot, int destSlot, CouplingType type)
@@ -280,21 +399,50 @@ public:
         if (!routes || routes->empty())
             return;
 
+        // (#1093 item 63) Global mute — UI A/B toggle wired via atomic.
+        if (globalMute_.load(std::memory_order_acquire))
+            return;
+
+        // (#1093 item 49) Defensive assert: if the host unexpectedly raised its
+        // block size beyond what prepare() was called with, the scratch buffers
+        // don't cover the full block. std::min below caps numSamples to buffer
+        // size, but the assert surfaces the misconfiguration in Debug builds.
+        jassert(numSamples <= static_cast<int>(couplingBuffer.size()));
+
         // Load the current generation once per block (acquire) so processAudioRoute()
         // can compare it against each route's validGeneration without re-reading the
         // atomic inside the hot per-route loop. (#755)
         const uint64_t currentGen = routeGeneration_.load(std::memory_order_acquire);
 
+        // (#1093 item 86) Hoist the smoother's (1 - couplingSmooth_) term out of
+        // the per-route loop. With up to MaxRoutes=64 routes per block this saves
+        // 64 subtractions per block for no accuracy loss.
+        const float smootherCoeff = 1.0f - couplingSmooth_;
+
         for (const auto& route : *routes)
         {
+            // (#1093 item 38) Skip inactive routes BEFORE the smoother update. An
+            // inactive route's smoother state is irrelevant — running the
+            // multiply-add on every disabled route is wasted work in patches with
+            // many normalled-but-disabled routes. Re-activation in addRoute() seeds
+            // smoothedAmount=amount so we don't lose any ramp-from-zero behaviour.
+            if (!route.active)
+                continue;
+
+            // (#1093 item 47) Snapshot `route.amount` once per block so a UI
+            // automation jump can't be partially observed by the smoother across
+            // dependent reads (the field is non-atomic float; reading it once also
+            // helps the compiler hold it in a register across the smoother step).
+            const float targetAmount = route.amount;
+
             // One-pole smoother for coupling amount — prevents zipper noise on automation.
             // couplingSmooth_ is computed in prepare() for a ~200ms time constant that is
             // invariant to block size, so macro sweeps sound identical across all DAW buffer
             // sizes. `smoothedAmount` is mutable so it can be updated here despite the const
             // range-for reference. (#684, #910)
-            route.smoothedAmount += (route.amount - route.smoothedAmount) * (1.0f - couplingSmooth_);
+            route.smoothedAmount += (targetAmount - route.smoothedAmount) * smootherCoeff;
 
-            if (!route.active || std::abs(route.smoothedAmount) < 0.001f)
+            if (std::abs(route.smoothedAmount) < 0.001f)
                 continue;
 
             // Bounds check slot indices to prevent OOB access
@@ -391,6 +539,43 @@ public:
         return routes ? *routes : std::vector<CouplingRoute>{};
     }
 
+    // (#1093 item 54) Zero-copy-style iteration. getRoutes() returns a vector
+    // copy which costs a heap allocation; these two helpers let a caller iterate
+    // without copying when they only need to read a few fields.
+    int getRouteCount() const
+    {
+        auto routes = std::atomic_load(&routeList);
+        return routes ? static_cast<int>(routes->size()) : 0;
+    }
+
+    // Copies one route — returns default-constructed if index out of range.
+    // The returned CouplingRoute is a value copy (4 words + smoothedAmount +
+    // sinkCache) so this is cheap and lock-free.
+    CouplingRoute getRouteAt(int idx) const
+    {
+        auto routes = std::atomic_load(&routeList);
+        if (!routes || idx < 0 || idx >= static_cast<int>(routes->size()))
+            return CouplingRoute{};
+        return (*routes)[static_cast<size_t>(idx)];
+    }
+
+    // (#1093 item 97) Route counts by rate — audio-rate vs control-rate.
+    // Exposed for the Gallery Model sidebar CPU estimation. Message-thread only.
+    struct RouteCounts { int audio = 0; int control = 0; int inactive = 0; };
+    RouteCounts getRouteCounts() const
+    {
+        RouteCounts counts;
+        auto routes = std::atomic_load(&routeList);
+        if (!routes) return counts;
+        for (const auto& r : *routes)
+        {
+            if (!r.active) { ++counts.inactive; continue; }
+            if (isAudioRateType(r.type)) ++counts.audio;
+            else                          ++counts.control;
+        }
+        return counts;
+    }
+
     //-- Hot-swap coupling integrity -------------------------------------------
 
     // Called by XOceanusProcessor::loadEngine() after an engine swap on `slot`.
@@ -423,32 +608,43 @@ public:
         if (slot >= 0 && slot < MaxSlots)
             activeEngines[static_cast<size_t>(slot)].store(newEnginePtr, std::memory_order_release);
 
-        // Re-resolve sink caches. This does the dynamic_cast on the message thread
-        // and determines whether the new engine supports IAudioBufferSink.
-        // No hardcoded engine names — capability is detected via the interface.
-        // (W2 Audit HIGH-3: removed hardcoded "Opal" string)
-        resolveAudioToBufferSinks();
-
-        // Now activate/suspend AudioToBuffer routes based on resolved sinkCache.
+        // (#1093 item 42) Combined resolve + active-flag update in one atomic
+        // publication. Previously resolveAudioToBufferSinks() published a new
+        // route list, then we loaded it again and published a second new list
+        // with active flags updated. The audio thread could observe the
+        // intermediate (resolved but not-yet-activated) state for one block.
+        // Do both updates in a single local temp and publish once.
+        auto engines = getActiveEngines();
         auto current = std::atomic_load(&routeList);
-        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(*current);
+        auto newRoutes = std::make_shared<std::vector<CouplingRoute>>(current ? *current : std::vector<CouplingRoute>{});
 
-        bool changed = false;
+        // Bump generation once — same release-ordering guarantee as the
+        // original resolveAudioToBufferSinks() path. (#755)
+        const uint64_t newGen = routeGeneration_.fetch_add(1, std::memory_order_release) + 1;
+
         for (auto& r : *newRoutes)
         {
-            if (r.type != CouplingType::AudioToBuffer || r.destSlot != slot)
+            if (r.type != CouplingType::AudioToBuffer)
                 continue;
 
-            bool shouldBeActive = (r.sinkCache != nullptr);
-            if (r.active != shouldBeActive)
+            // Step 1: resolve sinkCache for every AudioToBuffer route against
+            // the current engines table — same logic as resolveAudioToBufferSinks().
+            IAudioBufferSink* sink = nullptr;
+            if (r.destSlot >= 0 && r.destSlot < MaxSlots)
             {
-                r.active = shouldBeActive;
-                changed = true;
+                auto* destEngine = engines[static_cast<size_t>(r.destSlot)];
+                sink = (destEngine != nullptr) ? dynamic_cast<IAudioBufferSink*>(destEngine) : nullptr;
             }
+            r.sinkCache       = sink;
+            r.validGeneration = newGen;
+
+            // Step 2: for routes affecting the swapped slot, update active flag
+            // based on the newly-resolved sinkCache (orphan detection).
+            if (r.destSlot == slot)
+                r.active = (sink != nullptr);
         }
 
-        if (changed)
-            std::atomic_store(&routeList, newRoutes);
+        std::atomic_store(&routeList, newRoutes);
     }
 
     // Resolve IAudioBufferSink* caches for all AudioToBuffer routes.
@@ -524,6 +720,17 @@ private:
     // Recomputed in prepare() so the ~200ms time constant is invariant to block size.
     // Default 0.99f matches the old per-block constant at 48kHz/512 samples.
     float couplingSmooth_ = 0.99f;
+
+    // (#1093 item 17) One-pole LP coefficient applied to fillControlRateBuffer
+    // output to remove the stair-step artefact left by linear interpolation
+    // between SRO control points. Computed in prepare() for ~3 kHz cutoff.
+    // 0.0 (default) disables the LP — safe fallback if prepare() never ran.
+    float controlRateLPCoeff_ = 0.0f;
+
+    // (#1093 item 63) Global coupling mute — UI A/B toggle that bypasses the
+    // entire processBlock without disturbing the route list. Atomic so the UI
+    // thread can toggle it at any time; audio thread loads once per block.
+    std::atomic<bool> globalMute_{ false };
 
     //-- Cycle detection helpers (message thread only) -------------------------
 
@@ -626,6 +833,29 @@ private:
 
             currentVal = nextVal;
             blockStart = blockEnd;
+        }
+
+        // (#1093 item 17) Post-interpolation 1-pole LP to remove the stair-step
+        // artefact that linear interp leaves at the control-rate boundaries.
+        // Without this, upper harmonics get a faint "stepping" coloration when the
+        // source signal has high-frequency content modulated at control rate.
+        // controlRateLPCoeff_ is precomputed in prepare() — ~3 kHz cutoff, well
+        // above any musical control-rate motion (~1.5 kHz Nyquist of decimated
+        // stream) so the LP smooths the staircase without softening modulation.
+        //
+        // State is local to this call (initialised to first sample) — fillControlRateBuffer
+        // is called serially per route within a block, so a persistent member would
+        // bleed source A's tail into source B's head. Initialising to couplingBuffer[0]
+        // also prevents an initial transient.
+        const float coeff = controlRateLPCoeff_;
+        if (coeff > 0.0f && coeff < 1.0f && numSamples > 0)
+        {
+            float state = couplingBuffer[0];
+            for (int i = 0; i < numSamples; ++i)
+            {
+                state += coeff * (couplingBuffer[static_cast<size_t>(i)] - state);
+                couplingBuffer[static_cast<size_t>(i)] = flushDenormal(state);
+            }
         }
     }
 

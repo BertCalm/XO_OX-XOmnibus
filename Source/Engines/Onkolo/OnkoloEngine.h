@@ -442,6 +442,7 @@ public:
         couplingFunkMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
+        const float blockBendRatio = PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
 
         // LFO params
         const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
@@ -466,6 +467,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float funkNow = smoothFunk.process();
             float pickupNow = smoothPickup.process();
             float brightNow = smoothBrightness.process();
@@ -479,7 +481,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
+                freq *= blockBendRatio; // hoisted above — block-const bend + pitch coupling snapshot
 
                 // LFO1 -> pitch
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
@@ -510,12 +512,17 @@ public:
                     continue;
                 }
 
-                // Filter with velocity-driven brightness (D001)
+                // Filter with velocity-driven brightness (D001).
+                // Tick filter env per sample; refresh SVF coeffs every 16 samples
+                // (~0.36ms @ 44.1k — below audible lag).
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
-                float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
-                float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.15f, srf);
+                if (updateFilter)
+                {
+                    float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
+                    float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.15f, srf);
+                }
                 float filtered = voice.svf.processSample(wahOut);
 
                 float output = filtered;

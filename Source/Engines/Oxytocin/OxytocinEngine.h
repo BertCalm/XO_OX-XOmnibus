@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cstdint>
 
+#include "../../DSP/FastMath.h"
 #include "OxytocinVoice.h"
 #include "OxytocinMemory.h"
 #include "OxytocinTriangle.h"
@@ -221,6 +222,11 @@ public:
         float sumI = 0.0f, sumP = 0.0f, sumC = 0.0f;
         int activeCount = 0;
 
+        // Pan gains are block-constant (snap.pan is stable per block) and identical
+        // for every voice — compute once here instead of inside the per-voice loop.
+        const float blockPanL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
+        const float blockPanR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
+
         for (int vi = 0; vi < maxV; ++vi)
         {
             auto& v = voices[vi];
@@ -232,8 +238,9 @@ public:
 
             // Apply LFO1 to cutoff (depth → frequency modulation in semitones)
             // We modify a local copy of snap for this voice
+            // (fastPow2: ~0.1% error — per-voice per-block)
             ParamSnapshot voiceSnap = snap;
-            voiceSnap.cutoff *= std::pow(2.0f, lfo1Val * snap.lfoDepth * 2.0f / 12.0f);
+            voiceSnap.cutoff *= xoceanus::fastPow2(lfo1Val * snap.lfoDepth * 2.0f * (1.0f / 12.0f));
 
             // LFO2 → triangle position modulates I/P/C balance
             // Blend snap params toward triangle coords by lfo2 depth

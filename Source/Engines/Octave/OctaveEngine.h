@@ -510,6 +510,9 @@ public:
         // When couplingOrganMod < 0, morph direction reverses (CC→Baroque vs Baroque→CC)
         const bool morphToBright = (couplingOrganMod >= 0.0f);
 
+        // Snapshot pitch coupling before reset (#1118) — applyCouplingInput
+        // accumulators are consumed by the next block's renderBlock.
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingOrganMod = 0.0f;
@@ -519,8 +522,27 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
+        // Hoist envelope setADSR + LFO config out of per-sample loop. Both are
+        // block-rate from knob values; setADSR does 2× std::exp per call and
+        // setRate does a divide — neither should run inside the sample loop.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
+            voice.lfo1.setRate(lfo1Rate, srf);
+            voice.lfo1.setShape(lfo1Shape);
+            voice.lfo2.setRate(lfo2Rate, srf);
+            voice.lfo2.setShape(lfo2Shape);
+        }
+
+        // Hoist block-constant pitch-bend ratio out of per-sample loop; uses
+        // pre-reset pitch coupling snapshot (#1118).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float clusterNow = smoothCluster.process();
             float chiffNow = smoothChiff.process();
             float detuneNow = smoothDetune.process();
@@ -544,14 +566,9 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above (block-const bend + coupling snapshot)
 
-                // LFO processing
-                voice.lfo1.setRate(lfo1Rate, srf);
-                voice.lfo1.setShape(lfo1Shape);
-                voice.lfo2.setRate(lfo2Rate, srf);
-                voice.lfo2.setShape(lfo2Shape);
-
+                // LFO setRate/setShape hoisted to per-block voice loop above.
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
@@ -758,8 +775,7 @@ public:
                     sample += voices[vi - 1].svf.processSample(0.0f) * crosstalkNow * 0.05f;
                 }
 
-                //--- Amplitude envelope ---
-                voice.ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
+                //--- Amplitude envelope (setADSR hoisted to per-block voice loop) ---
                 float ampLevel = voice.ampEnv.process();
                 if (!voice.ampEnv.isActive())
                 {
@@ -768,11 +784,15 @@ public:
                 }
 
                 //--- Filter envelope (D001: velocity shapes timbre) ---
+                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f * voice.velocity;
-                // LFO1 modulates brightness (±3000 Hz at full depth)
-                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.3f, srf);
+                if (updateFilter)
+                {
+                    // LFO1 modulates brightness (±3000 Hz at full depth)
+                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.3f, srf);
+                }
                 float filtered = voice.svf.processSample(sample);
 
                 float output = filtered * ampLevel;
