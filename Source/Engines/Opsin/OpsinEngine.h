@@ -327,8 +327,12 @@ public:
             nodes[i].reset();
         }
 
-        // Smooth coefficient: ~5 ms
-        smoothCoeff = 1.0f - std::exp(-kOpsinTwoPi * (1.0f / 0.005f) / sampleRateFloat);
+        // Smooth coefficient: ~5 ms one-pole smoother.
+        // Formula: 1 - exp(-1 / (timeSec * sr)). The previous code erroneously multiplied
+        // by kOpsinTwoPi, making the time constant ~0.8 ms instead of 5 ms and causing
+        // the smoother to track parameter changes almost instantaneously (zipper noise risk
+        // at slow LFO rates or when MIDI parameters change between blocks).
+        smoothCoeff = 1.0f - fastExp(-1.0f / (0.005f * sampleRateFloat));
 
         // Silence gate: 500 ms hold (feedback network has tails)
         prepareSilenceGate(sampleRate, maxBlockSize, 500.0f);
@@ -347,7 +351,7 @@ public:
 
         // Governor RMS follower (~20ms default attack)
         govFollower = 0.0f;
-        govFollowerCoeff = 1.0f - std::exp(-1.0f / (0.02f * sampleRateFloat));
+        govFollowerCoeff = 1.0f - fastExp(-1.0f / (0.02f * sampleRateFloat));
 
         // Clear synapse matrices
         std::memset(synapseWeights, 0, sizeof(synapseWeights));
@@ -569,7 +573,7 @@ public:
         // ---- Glide coefficient ----
         float glideCoeff = 1.0f;
         if (rawGlide > 0.001f)
-            glideCoeff = 1.0f - std::exp(-1.0f / (rawGlide * sampleRateFloat));
+            glideCoeff = 1.0f - fastExp(-1.0f / (rawGlide * sampleRateFloat));
 
         // ---- Parse MIDI ----
         bool noteOnThisBlock = false;
@@ -597,6 +601,11 @@ public:
 
                 currentNote = newNote;
                 currentFreq = newFreq;
+
+                // Advance random seed so topology=Random gets a fresh pattern each note-on.
+                // Without this noteRandSeed stays 42 for the entire session — every note
+                // triggers the same frozen random topology.
+                noteRandSeed = static_cast<int>((static_cast<uint32_t>(noteRandSeed) * 1664525u + 1013904223u) & 0x7FFFFFFFu);
 
                 // Retrigger envelopes
                 ampEnv.setADSR(ampAtk, ampDec, ampSus, ampRel);
@@ -679,40 +688,58 @@ public:
 
         modMatrix.apply(modSrc, destOffsets);
 
-        // ---- Apply LFO targets to smooth targets ----
-        // LFO1/LFO2 pre-apply to their designated targets
-        auto applyLfoToTarget = [&](int target, float lfoSample)
+        // ---- Compute LFO contributions as additive offsets on param targets ----
+        // LFOs inject into target *targets* (not directly into smoothed state) so that
+        // the one-pole smoother integrates LFO motion and removes block-rate zipper noise.
+        float lfoFeedbackOffset   = 0.0f;
+        float lfoThresholdOffset  = 0.0f;
+        float lfoCutoffOffset     = 0.0f;
+        float lfoExcitationOffset = 0.0f;
+
+        auto accumulateLfoOffset = [&](int target, float lfoSample)
         {
             switch (target)
             {
-                case 0: smoothFeedback   += lfoSample * 0.15f; break;
-                case 1: smoothThreshold  += lfoSample * 0.15f; break;
-                case 2: smoothCutoff     += lfoSample * 4000.0f; break;
-                case 3: smoothExcitation += lfoSample * 0.20f; break;
+                case 0: lfoFeedbackOffset   += lfoSample * 0.15f;    break;
+                case 1: lfoThresholdOffset  += lfoSample * 0.15f;    break;
+                case 2: lfoCutoffOffset     += lfoSample * 4000.0f;  break;
+                case 3: lfoExcitationOffset += lfoSample * 0.20f;    break;
                 default: break;
             }
         };
-        applyLfoToTarget(lfo1Target, lfo1Val);
-        applyLfoToTarget(lfo2Target, lfo2Val);
+        accumulateLfoOffset(lfo1Target, lfo1Val);
+        accumulateLfoOffset(lfo2Target, lfo2Val);
 
         // ---- Smooth param targets ----
-        // (one-pole smoothers tick toward raw param + mod matrix offsets)
+        // (one-pole smoothers tick toward raw param + mod matrix offsets + LFO offsets)
         const float targetFeedback   = clamp(paramFeedback   + destOffsets[2] * 0.5f
-                                              + couplingFeedbackMod,            0.0f, 0.98f);
-        const float targetThreshold  = clamp(paramThreshold  + destOffsets[3] * 0.3f, 0.0f, 1.0f);
+                                              + lfoFeedbackOffset + couplingFeedbackMod, 0.0f, 0.98f);
+        const float targetThreshold  = clamp(paramThreshold  + destOffsets[3] * 0.3f
+                                              + lfoThresholdOffset,                      0.0f, 1.0f);
         const float targetExcitation = clamp(paramExcitation + destOffsets[4] * 0.5f
-                                              + couplingExciteMod,              0.0f, 1.0f);
-        const float targetDensity    = clamp(paramDensity    + destOffsets[5] * 0.5f, 0.0f, 1.0f);
-        const float targetAmpLevel   = clamp(1.0f            + destOffsets[6] * 0.5f, 0.0f, 2.0f);
+                                              + lfoExcitationOffset + couplingExciteMod, 0.0f, 1.0f);
+        const float targetDensity    = clamp(paramDensity    + destOffsets[5] * 0.5f,   0.0f, 1.0f);
+        const float targetAmpLevel   = clamp(1.0f            + destOffsets[6] * 0.5f,   0.0f, 2.0f);
 
-        float targetCutoff = clamp(paramCutoff
-                                    + destOffsets[1] * 8000.0f
-                                    + couplingFilterMod * 5000.0f,
-                                   20.0f, 20000.0f);
-
-        // Key tracking: (note - 60) semitones relative to C4 → frequency ratio
-        if (currentNote >= 0)
-            targetCutoff += (static_cast<float>(currentNote) - 60.0f) * rawKeyTrack * 50.0f;
+        // Key tracking: exponential (semitone-correct) — replaces linear Hz offset which
+        // was musically wrong at the extremes (too compressed low, too stretched high).
+        // formula: cutoff × 2^((note−60)×keyTrack/12)
+        float targetCutoff;
+        if (currentNote >= 0 && rawKeyTrack > 1e-6f)
+        {
+            const float semiOffset = (static_cast<float>(currentNote) - 60.0f) * rawKeyTrack;
+            targetCutoff = paramCutoff * fastPow2(semiOffset * (1.0f / 12.0f))
+                           + destOffsets[1] * 8000.0f
+                           + lfoCutoffOffset
+                           + couplingFilterMod * 5000.0f;
+        }
+        else
+        {
+            targetCutoff = paramCutoff
+                           + destOffsets[1] * 8000.0f
+                           + lfoCutoffOffset
+                           + couplingFilterMod * 5000.0f;
+        }
         targetCutoff = clamp(targetCutoff, 20.0f, 20000.0f);
 
         // One-pole smooth
@@ -733,7 +760,7 @@ public:
 
         // ---- Update governor speed ----
         const float govSpeedMapped = 0.001f + rawGovSpeed * 0.099f; // 1ms–100ms
-        govFollowerCoeff = 1.0f - std::exp(-1.0f / (govSpeedMapped * sampleRateFloat));
+        govFollowerCoeff = 1.0f - fastExp(-1.0f / (govSpeedMapped * sampleRateFloat));
         const float govCeiling = clamp(rawGovCeiling, 0.05f, 1.0f);
 
         // ---- Update output filter type/mode ----
@@ -791,8 +818,10 @@ public:
             updateNodeFilter(n, material, paramSpread, spreadOffset);
         }
 
-        // Block-rate coefficient updates (every 16 samples via sampleIdx flag)
-        int sampleIdx = 0;
+        // Block-rate coefficient updates (every 16 samples via sampleIdx flag).
+        // Init to update-interval so first sample of every block recomputes coefficients
+        // rather than running on the previous block's (or prepare()'s) stale values.
+        int sampleIdx = 15;
 
         for (int s = 0; s < numSamples; ++s, ++sampleIdx)
         {
@@ -801,12 +830,15 @@ public:
             {
                 // Compute filter envelope contribution
                 const float fenvLevel = filterEnv.getLevel();
+                // Guard bipolar fltEnvAmt: exact == 0 comparison is unreliable for float params.
                 const float fenvAmt   = rawFltEnvAmt * velFenvScale;
-                const float fenvOffset= fenvLevel * fenvAmt * 8000.0f;
+                const float fenvOffset= (std::abs(rawFltEnvAmt) > 1e-6f)
+                                        ? (fenvLevel * fenvAmt * 8000.0f) : 0.0f;
                 const float effectiveCutoff = clamp(smoothCutoff + fenvOffset, 20.0f, 20000.0f);
 
+                // Both output filters share identical coefficients; compute once and copy.
                 outputFilter.setCoefficients_fast(effectiveCutoff, rawReso, sampleRateFloat);
-                outputFilterR.setCoefficients_fast(effectiveCutoff, rawReso, sampleRateFloat);
+                outputFilterR = outputFilter;
             }
 
             // ---- Per-node processing ----
@@ -895,10 +927,13 @@ public:
             }
 
             // ---- Global RMS governor ----
-            float sumSq = 0.0f;
+            // Use mean absolute value instead of sqrt(mean-of-squares) — avoids
+            // per-sample std::sqrt in the hot path. The 0.7979 factor converts
+            // MAV → approximate RMS for sinusoidal signals (sqrt(2/pi)).
+            float sumAbs = 0.0f;
             for (int n = 0; n < kOpsinNodes; ++n)
-                sumSq += nodeOutputs[n] * nodeOutputs[n];
-            const float globalRMS = std::sqrt(sumSq / static_cast<float>(kOpsinNodes));
+                sumAbs += std::fabs(nodeOutputs[n]);
+            const float globalRMS = (sumAbs / static_cast<float>(kOpsinNodes)) * 0.7979f;
             govFollower += govFollowerCoeff * (globalRMS - govFollower);
             govFollower  = flushDenormal(govFollower);
 
@@ -935,8 +970,12 @@ public:
             filterEnv.process(); // tick filter env
 
             // ---- Final output samples ----
-            float outL = filteredL * ampLevel;
-            float outR = filteredR * ampLevel;
+            // softClip guards against transient runaway from the feedback network.
+            // The energy governor handles steady-state levels, but a sudden topology
+            // change or coupling burst can produce a single-block spike that bypasses
+            // the slow RMS follower — softClip catches those spikes transparently.
+            float outL = softClip(filteredL * ampLevel);
+            float outR = softClip(filteredR * ampLevel);
 
             // cache
             if (s < static_cast<int>(outCacheL.size()))
@@ -1035,35 +1074,39 @@ public:
 
             case CouplingType::AmpToFilter:
             {
-                // Compute average amplitude of source, modulate filter cutoff
+                // Compute average amplitude of source, modulate filter cutoff.
+                // Clamp accumulator to prevent unbounded growth from loud sources.
                 float avg = 0.0f;
                 for (int i = 0; i < numSamples; ++i)
                     avg += std::fabs(sourceBuffer[i]);
                 avg /= static_cast<float>(numSamples);
-                couplingFilterMod += avg * amount;
+                couplingFilterMod = clamp(couplingFilterMod + avg * amount, -2.0f, 2.0f);
                 break;
             }
 
             case CouplingType::EnvToMorph:
             {
-                // Coupling envelope modulates feedback amount
+                // Coupling envelope modulates feedback amount.
+                // Clamp accumulator to prevent unbounded growth.
                 float avg = 0.0f;
                 for (int i = 0; i < numSamples; ++i)
                     avg += sourceBuffer[i];
                 avg /= static_cast<float>(numSamples);
-                couplingFeedbackMod += avg * amount;
+                couplingFeedbackMod = clamp(couplingFeedbackMod + avg * amount, -1.0f, 1.0f);
                 break;
             }
 
             case CouplingType::RhythmToBlend:
             {
-                // Coupling rhythm triggers excitation bursts
+                // Coupling rhythm triggers excitation bursts.
+                // Clamp accumulator: without bounds, rapid-fire transients push excite mod
+                // past 1.0 and hold there until the 0.999 decay bleeds it down.
                 // Detect transients (peak > 0.5) in source
                 for (int i = 0; i < numSamples; ++i)
                 {
                     if (std::fabs(sourceBuffer[i]) > 0.5f)
                     {
-                        couplingExciteMod += amount * 0.3f;
+                        couplingExciteMod = clamp(couplingExciteMod + amount * 0.3f, 0.0f, 1.0f);
                         break; // One burst per block
                     }
                 }
