@@ -86,7 +86,7 @@ struct OgreSubHarmonicGen
     {
         // One-pole LP at ~80 Hz to smooth the sub-octave square into something rounder
         float fc = 80.0f;
-        subCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * fc / sampleRate);
+        subCoeff = 1.0f - std::exp(-2.0f * juce::MathConstants<float>::pi * fc / sampleRate);
     }
 
     void reset() noexcept
@@ -146,7 +146,9 @@ struct OgreVoice
         subFilter.reset();
         lfo1.reset();
         lfo2.reset();
-        tectonicLFO.reset();
+        // F16: tectonicLFO intentionally NOT reset here — it runs continuously like
+        //      continental drift. Phase stagger (set in prepare()) must survive noteOn.
+        //      Resetting it every noteOn destroyed the organic multi-voice de-phasing.
     }
 };
 
@@ -159,7 +161,7 @@ public:
     static constexpr int kMaxVoices = 8;
 
     juce::String getEngineId() const override { return "Ogre"; }
-    juce::Colour getAccentColour() const override { return juce::Colour(0xFF0D0D0D); }
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFF4A2C0A); } // Deep Earth Brown (identity doc)
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
@@ -177,8 +179,15 @@ public:
             voices[i].ampEnv.prepare(srf);
             voices[i].filterEnv.prepare(srf);
             voices[i].tectonicLFO.setShape(StandardLFO::Sine);
-            // Stagger tectonic LFO phases for organic feel
+            // Stagger tectonic LFO phases for organic feel.
+            // reset() is called in OgreVoice::reset() which wipes phase; we set waveform
+            // shapes for lfo1/lfo2 too so per-noteOn resets start from a consistent state.
             voices[i].tectonicLFO.reset(static_cast<float>(i) / static_cast<float>(kMaxVoices));
+            // Prime oscSine/oscTri waveform once at prepare() so per-sample calls are removed.
+            voices[i].oscSine.setWaveform(PolyBLEP::Waveform::Sine);
+            voices[i].oscTri.setWaveform(PolyBLEP::Waveform::Triangle);
+            // Prime subFilter mode here — never changes at runtime.
+            voices[i].subFilter.setMode(CytomicSVF::Mode::LowPass);
         }
 
         smoothDrive.prepare(srf);
@@ -270,7 +279,7 @@ public:
         const float pDensity = loadP(paramDensity, 0.5f);
         const float pSoil = loadP(paramSoil, 0.0f);
         const float pTectonic = loadP(paramTectonicRate, 0.01f);
-        const float pTecDep = loadP(paramTectonicDepth, 0.3f);
+        const float pTecDep = loadP(paramTectonicDepth, 3.0f); // F09: match param default (was 0.3f, param declares 3.0f)
         const float pGlide = loadP(paramGlide, 0.0f);
         const float pAttack = loadP(paramAttack, 0.01f);
         const float pDecay = loadP(paramDecay, 0.5f);
@@ -288,7 +297,8 @@ public:
         // D006: mod wheel -> drive intensity, aftertouch -> body resonance
         float effectiveDrive = std::clamp(pDrive + macroChar * 0.5f + modWheelAmount * 0.4f, 0.0f, 1.0f);
         float effectiveBodyRes = std::clamp(pBodyRes + macroSpace * 0.3f + aftertouchAmount * 0.3f, 0.0f, 1.0f);
-        float effectiveBright = std::clamp(pBrightness + macroChar * 3000.0f + couplingFilterMod, 100.0f, 20000.0f);
+        const float nyquistMax = srf * 0.49f; // F07: sr-aware Nyquist ceiling (works at 44.1/48/96 kHz)
+        float effectiveBright = std::clamp(pBrightness + macroChar * 3000.0f + couplingFilterMod, 100.0f, nyquistMax);
 
         smoothDrive.set(effectiveDrive);
         smoothOscMix.set(pOscMix);
@@ -297,6 +307,11 @@ public:
         smoothBrightness.set(effectiveBright);
         smoothDensity.set(pDensity);
 
+        // F11: Capture coupling accumulators BEFORE zeroing so the per-sample loop reads
+        //      the correct block-level values. Previously couplingPitchMod was zeroed here
+        //      and then read inside the sample loop — always zero (LFOToPitch/AmpToPitch
+        //      coupling was silently ignored every block).
+        const float capturedPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
 
@@ -354,7 +369,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
 
                 // Tectonic LFO: extremely slow pitch drift (±pTecDep cents at most)
                 float tecMod = voice.tectonicLFO.process() * pTecDep;
@@ -364,21 +379,19 @@ public:
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
-                // Set oscillator frequencies
+                // Set oscillator frequencies (waveforms primed at prepare()/noteOn — no per-sample setWaveform).
                 voice.oscSine.setFrequency(freq, srf);
-                voice.oscSine.setWaveform(PolyBLEP::Waveform::Sine);
                 voice.oscTri.setFrequency(freq, srf);
-                voice.oscTri.setWaveform(PolyBLEP::Waveform::Triangle);
 
                 // Dual oscillator mix
                 float sineSample = voice.oscSine.processSample();
                 float triSample = voice.oscTri.processSample();
                 float oscOut = sineSample * (1.0f - mixNow) + triSample * mixNow;
 
-                // Gravitational mass accumulation — grows during note sustain
+                // Gravitational mass accumulation — grows during note sustain.
+                // kMassAccumRate hoisted: 0.1 → full mass in ~10 seconds (constant, not block-dependent).
                 voice.noteHeldTime += dtSec;
-                float massAccumRate = 0.1f; // ~10 seconds to full mass
-                voice.gravityMass = std::min(1.0f, voice.gravityMass + dtSec * massAccumRate * pGravity);
+                voice.gravityMass = std::min(1.0f, voice.gravityMass + dtSec * kMassAccumRate * pGravity);
 
                 // Sub-harmonic generator (octave down)
                 // Gravity pulls more sub energy: heavier notes sink deeper
@@ -389,8 +402,7 @@ public:
                 float combined = oscOut * (1.0f - rootDNow * 0.6f) + subSample * rootDNow * subLevel;
 
                 // Density: adds sub-frequency content below hearing (infrasound presence)
-                // Implemented as very low frequency emphasis on the sub
-                voice.subFilter.setMode(CytomicSVF::Mode::LowPass);
+                // subFilter mode is LowPass — primed at prepare()/noteOn; no per-sample setMode needed.
                 voice.subFilter.setCoefficients(40.0f + densNow * 20.0f, 0.3f + densNow * 0.4f, srf);
                 float subEmphasis = voice.subFilter.processSample(combined) * densNow * 0.5f;
                 combined += subEmphasis;
@@ -404,7 +416,7 @@ public:
                 // D001: velocity shapes saturation intensity and brightness
                 float velBright = brightNow + voice.velocity * 3000.0f;
                 // LFO1 -> brightness
-                velBright = std::clamp(velBright + lfo1Val * 2000.0f, 100.0f, 20000.0f);
+                velBright = std::clamp(velBright + lfo1Val * 2000.0f, 100.0f, nyquistMax);
 
                 // Body resonance filter — mode hoisted to block setup (bodyFilterMode, pSoil-constant).
                 // Clay (0) = tight LP, Sandy (0.5) = wider LP, Rocky (1.0) = BandPass notch character.
@@ -422,14 +434,14 @@ public:
                     // Soil sets base character: clay = darker, sandy = brighter
                     float soilBaseCutoff = velBright * (0.6f + pSoil * 0.8f);
                     // Envelope and LFO2 modulate on top of soil base
-                    float finalCutoff = std::clamp(soilBaseCutoff + envMod + lfo2FilterMod, 100.0f, 20000.0f);
+                    float finalCutoff = std::clamp(soilBaseCutoff + envMod + lfo2FilterMod, 100.0f, nyquistMax);
                     voice.bodyFilter.setCoefficients(finalCutoff, soilQ, srf);
                 }
                 else
                 {
                     // Rocky: BandPass for notched character — soil pSoil > 0.5 means rock
                     float soilBaseCutoff = velBright * (0.3f + (pSoil - 0.5f) * 0.4f);
-                    float finalCutoff = std::clamp(soilBaseCutoff + envMod + lfo2FilterMod, 100.0f, 20000.0f);
+                    float finalCutoff = std::clamp(soilBaseCutoff + envMod + lfo2FilterMod, 100.0f, nyquistMax);
                     voice.bodyFilter.setCoefficients(finalCutoff, soilQ + 0.2f, srf);
                 }
                 // Single filter pass — soil character AND envelope both shape the result
@@ -449,9 +461,10 @@ public:
                 mixR += output * voice.panR;
             }
 
-            outL[s] = mixL;
+            // F08: softClip output mix — multi-voice bass can easily sum beyond ±1
+            outL[s] = softClip(mixL);
             if (outR)
-                outR[s] = mixR;
+                outR[s] = softClip(mixR);
             // macroCoup scales coupling output: higher coupling macro = stronger sub coupling signal
             const float coupGain = 1.0f + macroCoup * 1.5f;
             couplingCacheL = mixL * coupGain;
@@ -472,10 +485,12 @@ public:
 
     void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
+        // F12: prefer stealing release-stage voices (avoids cutting active bass sustains).
+        int idx = VoiceAllocator::findFreeVoicePreferRelease(voices, kMaxVoices,
+                      [](const OgreVoice& v) { return v.active && !v.ampEnv.isActive(); });
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = midiToFreq(note); // F01: use fleet-standard midiToFreq (fastPow2-backed)
 
         v.reset();
         v.active = true;
@@ -485,10 +500,11 @@ public:
         v.glide.snapTo(freq);
         v.gravityMass = 0.0f;
         v.noteHeldTime = 0.0f;
-
-        v.subGen.prepare(srf);
-        v.ampEnv.prepare(srf);
-        v.filterEnv.prepare(srf);
+        // F02: prepare() belongs in prepare(), not noteOn. Waveforms are also fixed at
+        //      prepare() time; restore them after reset() to preserve the prime.
+        v.oscSine.setWaveform(PolyBLEP::Waveform::Sine);
+        v.oscTri.setWaveform(PolyBLEP::Waveform::Triangle);
+        v.subFilter.setMode(CytomicSVF::Mode::LowPass);
 
         float attack = paramAttack ? paramAttack->load() : 0.01f;
         float decay = paramDecay ? paramDecay->load() : 0.5f;
@@ -501,8 +517,8 @@ public:
 
         // Stereo spread — subtle for bass
         float pan = 0.5f + (static_cast<float>(idx) - 3.5f) * 0.03f;
-        v.panL = std::cos(pan * 1.5707963f);
-        v.panR = std::sin(pan * 1.5707963f);
+        v.panL = std::cos(pan * juce::MathConstants<float>::halfPi); // F17: named constant
+        v.panR = std::sin(pan * juce::MathConstants<float>::halfPi);
     }
 
     void noteOff(int note) noexcept
@@ -633,9 +649,12 @@ public:
     }
 
 private:
+    // F06: class-level constant — avoids per-sample stack allocation
+    static constexpr float kMassAccumRate = 0.1f; // ~10 seconds to full gravitational mass
+
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
-    float inverseSr_ = 1.0f / 48000.0f;
+    float inverseSr_ = 0.0f; // F13: initialised to 0 (sentinel); prepare() sets correctly
 
     std::array<OgreVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
