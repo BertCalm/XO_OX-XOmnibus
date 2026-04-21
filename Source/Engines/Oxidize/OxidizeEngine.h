@@ -17,7 +17,7 @@
 //    4. Clear sediment send buffers
 //    5. For each active voice: updateAge, then renderSamples
 //    6. Sum voice outputs to main buffer
-//    7. setParameters on sediment, processBlock
+//    7. setParameters on sediment (only when tail/tone changed), processBlock
 //    8. Mix sediment wet into main buffer
 //    9. Update outputCacheL/R for coupling reads
 //
@@ -92,6 +92,10 @@ public:
         pitchBendPosition_ = 0.0f;
         modWheelPosition_  = 0.0f;
         aftertouchValue_   = 0.0f;
+
+        // Invalidate sediment param cache so first block triggers setParameters.
+        lastSedimentTail_ = -1.0f;
+        lastSedimentTone_ = -1.0f;
     }
 
     //==========================================================================
@@ -107,6 +111,11 @@ public:
 
         sediment_.reset();
 
+        // Invalidate sediment param cache so setParameters is called unconditionally
+        // on the next processBlock (needed after a plugin reset/suspend-resume).
+        lastSedimentTail_ = -1.0f;
+        lastSedimentTone_ = -1.0f;
+
         couplingAgeBoost_   = 0.0f;
         couplingWobbleMod_  = 0.0f;
         couplingFilterMod_  = 0.0f;
@@ -121,7 +130,10 @@ public:
     }
 
     //==========================================================================
-    // getActiveVoiceCount — safe to call from message thread (reads atomic).
+    // getActiveVoiceCount — polls voice active flags.
+    // NOTE: v.active is a plain bool set exclusively on the audio thread.
+    // Call only from the audio thread or accept a ±1 race on the message thread
+    // (the display flicker is cosmetic-only, not a correctness issue).
     //==========================================================================
     int getActiveVoiceCount() const noexcept
     {
@@ -141,6 +153,10 @@ public:
     void setCouplingRingBuffer(const float* src, int numSamples, float amount) noexcept
     {
         couplingRingAmount_ = amount;
+        // Skip copy if amount is below the render-loop threshold — saves a
+        // memcpy per coupling call when ring mod is effectively off.
+        if (amount <= 0.001f)
+            return;
         const int toCopy = std::min(numSamples, maxBlockSize_);
         if (src != nullptr && !couplingRingBuffer_.empty())
             std::copy(src, src + toCopy, couplingRingBuffer_.begin());
@@ -174,8 +190,9 @@ public:
     {
         jassert(numSamples <= maxBlockSize_);
 
+        const bool isStereo = (buffer.getNumChannels() > 1);
         float* outL = buffer.getWritePointer(0);
-        float* outR = (buffer.getNumChannels() > 1) ? buffer.getWritePointer(1) : outL;
+        float* outR = isStereo ? buffer.getWritePointer(1) : outL;
 
         // ── Step 3: Process MIDI events ──────────────────────────────────────
         // (Snapshot already updated + macros applied by the adapter before this call)
@@ -197,6 +214,7 @@ public:
 
         // Apply coupling filter modulation to erosion floor (block-rate)
         // SpectralShaping: coupling spectral centroid shifts erosion cutoff
+        float savedErosionFloor = snap.erosionFloor;
         if (couplingFilterMod_ != 0.0f)
         {
             // couplingFilterMod_ is normalised spectral centroid (0-1) * amount
@@ -213,7 +231,7 @@ public:
 
         // Clear main output accumulation area
         std::fill(outL, outL + numSamples, 0.0f);
-        if (buffer.getNumChannels() > 1)
+        if (isStereo)
             std::fill(outR, outR + numSamples, 0.0f);
 
         for (auto& voice : voices_)
@@ -234,50 +252,69 @@ public:
                                 sedimentSendL_.data(), sedimentSendR_.data(),
                                 hostBPM, hostBeatPos, hostIsPlaying);
 
-            // Apply ring modulation if AudioToRing coupling is active
+            // Apply ring modulation if AudioToRing coupling is active.
+            // Dry/wet blend: signal*(1-wet) + signal*ringSource*wet.
+            // At wet=1: pure ring mod (voice multiplied by source).
+            // At wet=0: dry pass-through.
             if (couplingRingAmount_ > 0.001f && !couplingRingBuffer_.empty())
             {
                 for (int i = 0; i < numSamples; ++i)
                 {
                     float ring = couplingRingBuffer_[static_cast<size_t>(i)];
-                    float dryWet = couplingRingAmount_;
-                    voiceBufL_[static_cast<size_t>(i)] = voiceBufL_[static_cast<size_t>(i)] * (1.0f - dryWet)
-                                                         + voiceBufL_[static_cast<size_t>(i)] * ring * dryWet;
-                    voiceBufR_[static_cast<size_t>(i)] = voiceBufR_[static_cast<size_t>(i)] * (1.0f - dryWet)
-                                                         + voiceBufR_[static_cast<size_t>(i)] * ring * dryWet;
+                    float wet  = couplingRingAmount_;
+                    float dryL = voiceBufL_[static_cast<size_t>(i)];
+                    float dryR = voiceBufR_[static_cast<size_t>(i)];
+                    voiceBufL_[static_cast<size_t>(i)] = dryL * (1.0f - wet) + dryL * ring * wet;
+                    voiceBufR_[static_cast<size_t>(i)] = dryR * (1.0f - wet) + dryR * ring * wet;
                 }
             }
 
             // ── Step 6: Sum voice outputs to main buffer ──────────────────────
+            // In mono mode outR == outL; only add to outL to avoid double-writing.
             for (int i = 0; i < numSamples; ++i)
             {
                 outL[i] += voiceBufL_[static_cast<size_t>(i)];
-                outR[i] += voiceBufR_[static_cast<size_t>(i)];
+                if (isStereo)
+                    outR[i] += voiceBufR_[static_cast<size_t>(i)];
             }
         }
 
-        // Restore snap wobble rates (snap is passed in by ref; adapter re-reads next block)
-        snap.wowRate     = savedWowRate;
-        snap.flutterRate = savedFlutterRate;
+        // Restore snap fields that were mutated for this block only
+        // (snap is passed in by ref; adapter re-reads next block from APVTS)
+        snap.wowRate      = savedWowRate;
+        snap.flutterRate  = savedFlutterRate;
+        snap.erosionFloor = savedErosionFloor;
 
         // ── Step 7: Process shared sediment reverb ────────────────────────────
-        sediment_.setParameters(snap.sedimentTail, snap.sedimentTone, sampleRate_);
+        // setParameters() calls std::pow + std::exp — skip when unchanged to
+        // avoid expensive transcendentals every block (Perf-01).
+        if (snap.sedimentTail != lastSedimentTail_ || snap.sedimentTone != lastSedimentTone_)
+        {
+            sediment_.setParameters(snap.sedimentTail, snap.sedimentTone, sampleRate_);
+            lastSedimentTail_ = snap.sedimentTail;
+            lastSedimentTone_ = snap.sedimentTone;
+        }
         sediment_.processBlock(sedimentSendL_.data(), sedimentSendR_.data(),
                                sedimentOutL_.data(),  sedimentOutR_.data(),
                                numSamples);
 
         // ── Step 8: Mix sediment wet output into main buffer ──────────────────
+        // isStereo guards the right-channel write: in mono-out mode outR == outL,
+        // so writing to outR[i] would double-add sedimentOutR on top of outL.
         for (int i = 0; i < numSamples; ++i)
         {
             outL[i] += sedimentOutL_[static_cast<size_t>(i)];
-            outR[i] += sedimentOutR_[static_cast<size_t>(i)];
+            if (isStereo)
+                outR[i] += sedimentOutR_[static_cast<size_t>(i)];
         }
 
         // ── Step 9: Cache output samples for coupling reads ───────────────────
+        // In mono mode outR == outL, so both cache channels get identical data
+        // (which is correct — the coupling matrix reads either channel).
         for (int i = 0; i < numSamples; ++i)
         {
             outputCacheL_[static_cast<size_t>(i)] = outL[i];
-            outputCacheR_[static_cast<size_t>(i)] = outR[i];
+            outputCacheR_[static_cast<size_t>(i)] = isStereo ? outR[i] : outL[i];
         }
 
         // Advance sample clock (used for LRU voice stealing)
@@ -466,6 +503,12 @@ private:
     float couplingFilterMod_  = 0.0f; // SpectralShaping → erosion floor shift (normalised)
     float couplingRingAmount_ = 0.0f; // AudioToRing → ring mod depth
     std::vector<float> couplingRingBuffer_;   // AudioToRing source audio
+
+    // Sediment parameter cache — avoids calling std::pow + std::exp every block
+    // when sedimentTail/Tone are unchanged (Perf-01). Initialized to -1 so the
+    // first block always triggers setParameters regardless of param values.
+    float lastSedimentTail_ = -1.0f;
+    float lastSedimentTone_ = -1.0f;
 };
 
 } // namespace xoceanus
