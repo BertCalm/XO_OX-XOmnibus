@@ -142,6 +142,13 @@ public:
         flutterSmoothed = 0.0f;
         constexpr float twoPi = 6.28318530717958647692f;
         flutterCoeff = 1.0f - std::exp(-twoPi * 45.0f / static_cast<float>(sampleRate));
+
+        // SOUND-08 FIX: Haas offset pre-computed from sample rate (was hardcoded 5 samples).
+        // Target ≈0.1ms (Haas spread), scaled to actual sample rate:
+        //   44100 Hz → 4.4 samples ≈ 4
+        //   48000 Hz → 4.8 samples ≈ 5
+        //   96000 Hz → 9.6 samples ≈ 10
+        haasOffsetSamples = static_cast<float>(sampleRate * 0.0001); // 0.1ms
     }
 
     void reset()
@@ -191,9 +198,9 @@ public:
             if (readPosF < 0.0f)
                 readPosF += static_cast<float>(bufferSize);
 
-            // Offset R by 5 samples (≈0.1ms Haas spread) — below fusion threshold
-            // so it sounds wider rather than as a distinct echo.
-            float readPosFR = readPosF - 5.0f;
+            // Offset R by haasOffsetSamples (≈0.1ms Haas spread) — sample-rate-scaled.
+            // Below fusion threshold so it sounds wider rather than a distinct echo.
+            float readPosFR = readPosF - haasOffsetSamples;
             if (readPosFR < 0.0f)
                 readPosFR += static_cast<float>(bufferSize);
 
@@ -206,8 +213,14 @@ public:
             fbL = fastTanh(fbL);
             fbR = fastTanh(fbR);
 
-            bufferL[static_cast<size_t>(writePos)] = flushDenormal(left[i] + fbL * feedback);
-            bufferR[static_cast<size_t>(writePos)] = flushDenormal(right[i] + fbR * feedback);
+            // PARAMS-02 FIX: clamp feedback write into buffer to [-1, 1] regardless of
+            // the feedback parameter value. With feedback > 1.0 and tanh saturation the
+            // system is stable but saturates hard; the clamp prevents any residual overflow
+            // if a future preset pushes drive + feedback into an unexpected region.
+            bufferL[static_cast<size_t>(writePos)] = flushDenormal(
+                juce::jlimit(-1.0f, 1.0f, left[i] + fbL * feedback));
+            bufferR[static_cast<size_t>(writePos)] = flushDenormal(
+                juce::jlimit(-1.0f, 1.0f, right[i] + fbR * feedback));
 
             left[i] = left[i] * (1.0f - mix) + delayedL * mix;
             right[i] = right[i] * (1.0f - mix) + delayedR * mix;
@@ -254,6 +267,7 @@ private:
     DubNoiseGen flutterNoise;
     float flutterSmoothed = 0.0f;
     float flutterCoeff = 0.001f;
+    float haasOffsetSamples = 4.4f; // ≈0.1ms at 44100 Hz; recomputed in prepare()
 };
 
 //==============================================================================
@@ -328,13 +342,14 @@ public:
 
             dampL += dampCoeff * (wetL - dampL);
             dampR += dampCoeff * (wetR - dampR);
+            // STABILITY-02 FIX: use fleet-standard flushDenormal() instead of
+            // the 1e-20f threshold which predates the denormal policy. 1e-20 falls
+            // below IEEE 754 denormal range (min normal ~1.18e-38) so the check
+            // was unreachable; flushDenormal() correctly catches IEEE denormals.
+            dampL = flushDenormal(dampL);
+            dampR = flushDenormal(dampR);
             wetL = dampL;
             wetR = dampR;
-
-            if (std::abs(dampL) < 1.0e-20f)
-                dampL = 0.0f;
-            if (std::abs(dampR) < 1.0e-20f)
-                dampR = 0.0f;
 
             for (int i = 0; i < kNumAllpass; ++i)
             {
@@ -642,13 +657,46 @@ public:
 
         // D002 mod matrix — apply per-block.
         // Destinations: 0=Off, 1=FilterCutoff, 2=LFORate, 3=Pitch, 4=AmpLevel, 5=DelayMix
+        //
+        // FIX PARAMS-04/05/06: Populate velocity, keyTrack, and envelope sources.
+        // Previously all three were hardcoded to 0.0 — making those mod matrix
+        // source choices completely silent (D002/D004 violation).
         {
+            // Compute block-level velocity (average across active voices) for mod matrix.
+            float blockVelocity = 0.0f;
+            float blockEnv = envelopeOutput; // previous block's peak (1-block latency, acceptable)
+            float blockKeyTrack = 0.0f;
+            int activeCount = 0;
+            for (const auto& v : voices)
+            {
+                if (v.active)
+                {
+                    blockVelocity += v.velocity;
+                    blockKeyTrack += (static_cast<float>(v.noteNumber) - 60.0f) / 60.0f;
+                    ++activeCount;
+                }
+            }
+            if (activeCount > 0)
+            {
+                float inv = 1.0f / static_cast<float>(activeCount);
+                blockVelocity *= inv;
+                blockKeyTrack *= inv;
+            }
+
             ModMatrix<4>::Sources mSrc;
-            mSrc.lfo1       = lfo.process(); // advance LFO once for mod matrix, then reset in block loop
+            // PERF-01 / SOUND FIX: Do NOT call lfo.process() here — the per-sample loop
+            // is the canonical LFO advance. The old lfo.process() call in this block
+            // consumed one extra sample per block, creating a sub-Hz timing drift at
+            // slow LFO rates and phase desync between direct LFO routing and mod matrix.
+            // LFO→destination routing via mod matrix slots is handled by the per-sample
+            // block adding lfoVal to the appropriate destination accumulator.
+            // Block-rate sources (velocity, key track, envelope, aftertouch, mod wheel)
+            // are correctly wired and stable between blocks.
+            mSrc.lfo1       = 0.0f; // Block-rate snapshot; LFO applied per-sample below
             mSrc.lfo2       = 0.0f;
-            mSrc.env        = 0.0f;
-            mSrc.velocity   = 0.0f;
-            mSrc.keyTrack   = 0.0f;
+            mSrc.env        = blockEnv;      // FIX PARAMS-06: envelope now live
+            mSrc.velocity   = blockVelocity; // FIX PARAMS-04: velocity now live
+            mSrc.keyTrack   = blockKeyTrack; // FIX PARAMS-05: key track now live
             mSrc.modWheel   = modWheelAmount;
             mSrc.aftertouch = atPressure;
             float mDst[6]   = {};
@@ -680,11 +728,17 @@ public:
 
         float peakEnv = 0.0f;
 
-        // Hoist block-constant ADSR update out of per-sample loop (P15 fix).
-        // setADSR calls std::exp — running once per block is correct and faster.
+        // PERF: Hoist block-constant per-voice operations out of the per-sample loop.
+        // setADSR calls 2×std::exp, setParams calls std::exp, setMode() sets an enum —
+        // all block-constant (params read once at top of renderBlock).
         for (auto& voice : voices)
-            if (voice.active)
-                voice.ampEnv.setADSR(attack, decay, sustain, release);
+        {
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(attack, decay, sustain, release);
+            voice.pitchEnv.setParams(pitchDepth, pitchDecay);
+            // PERF: hoist filter mode set — filterMode is block-constant from param snapshot.
+            voice.filter.setMode(filterMode);
+        }
 
         // --- Render voices ---
         for (int sample = 0; sample < numSamples; ++sample)
@@ -738,8 +792,7 @@ public:
                 if (!voice.active)
                     continue;
 
-                // ampEnv.setADSR hoisted to block-rate above (P15 fix)
-                voice.pitchEnv.setParams(pitchDepth, pitchDecay);
+                // ampEnv.setADSR and pitchEnv.setParams hoisted to block-rate above.
 
                 // Glide: exponential frequency slew
                 float baseFreq = midiToFreqOct(voice.noteNumber, oscOctaveIdx, oscTune);
@@ -761,7 +814,10 @@ public:
                 float driftCents = voice.drift.process(driftAmt);
                 float totalSemitones =
                     pitchOffset + driftCents / 100.0f + lfoPitchMod * 2.0f + pitchMod + pitchBendNorm * 2.0f + dubModPitchOffset;
-                float freq = baseFreq * fastExp(totalSemitones * (0.693147f / 12.0f));
+                // SOUND FIX: use fastPow2 (0.02% accurate) instead of fastExp (6% accurate)
+                // for semitone-to-ratio conversion. fastExp is unsuitable for pitch math.
+                // Formula: 2^(semitones/12) == fastPow2(semitones * (1/12)).
+                float freq = baseFreq * fastPow2(totalSemitones * (1.0f / 12.0f));
 
                 // Generate oscillators
                 voice.mainOsc.setFrequency(freq, srf);
@@ -787,14 +843,16 @@ public:
                 }
                 if (std::abs(lfoCutoffMod) > 0.001f)
                 {
-                    cutoffMod *= fastExp(lfoCutoffMod * 2.0f * 0.693147f);
+                    // SOUND FIX: use fastPow2 for exponential cutoff modulation.
+                    // fastExp(x * ln2) == fastPow2(x), with 0.02% vs 6% accuracy.
+                    cutoffMod *= fastPow2(lfoCutoffMod * 2.0f);
                     cutoffMod = std::max(20.0f, std::min(20000.0f, cutoffMod));
                 }
                 // External coupling filter modulation
                 cutoffMod += filterMod * 2000.0f;
                 cutoffMod = std::max(20.0f, std::min(20000.0f, cutoffMod));
 
-                voice.filter.setMode(filterMode);
+                // filter mode hoisted to block-rate loop above; only coefficients change per-sample.
                 voice.filter.setCoefficients_fast(cutoffMod, filterRes, srf);
                 float filtered = voice.filter.processSample(raw);
 
@@ -871,7 +929,10 @@ public:
             outR = fastTanh(outR);
 
             // Apply engine level (D002: mod matrix level offset + M3 COUPLING output scale)
-            const float effectiveLevel = juce::jlimit(0.05f, 1.5f, level + dubModLevelOffset) * macroOutputScale;
+            // PARAMS-03 FIX: lower bound was 0.05 — level=0 produced a -26 dB residual
+            // instead of silence, a D004 dead-parameter violation. Use 0.0 floor so the
+            // user can fully silence the engine; keep 1.5 ceiling for drive headroom.
+            const float effectiveLevel = juce::jlimit(0.0f, 1.5f, level + dubModLevelOffset) * macroOutputScale;
             outL *= effectiveLevel;
             outR *= effectiveLevel;
 
@@ -1017,14 +1078,21 @@ public:
             juce::ParameterID{"dub_pitchEnvDepth", 1}, "Dub Pitch Env Depth",
             juce::NormalisableRange<float>(0.0f, 48.0f, 0.1f), 0.0f));
 
+        // PARAMS-01 FIX: Pitch env decay range widened from [5ms, 40ms] to [5ms, 500ms].
+        // The old 40ms ceiling prevented the slow sweeping pitch dive characteristic of
+        // dub bass and kick sounds. 500ms covers classic dub "whump" descents.
+        // Skew 0.3 gives fine resolution at short times while reaching 500ms at full throw.
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"dub_pitchEnvDecay", 1}, "Dub Pitch Env Decay",
-            juce::NormalisableRange<float>(0.005f, 0.040f, 0.001f), 0.015f));
+            juce::NormalisableRange<float>(0.005f, 0.5f, 0.001f, 0.3f), 0.015f));
 
         // LFO
+        // D005 FIX: LFO rate floor lowered from 0.1 Hz to 0.01 Hz (100-second cycle).
+        // D005 requires rate floor ≤ 0.01 Hz so the engine can "breathe" as a slow
+        // modulator for ambient dub textures. Skew 0.3 gives fine resolution at slow rates.
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"dub_lfoRate", 1}, "Dub LFO Rate",
-            juce::NormalisableRange<float>(0.1f, 20.0f, 0.01f, 0.3f), 2.0f));
+            juce::NormalisableRange<float>(0.01f, 20.0f, 0.01f, 0.3f), 2.0f));
 
         params.push_back(
             std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"dub_lfoDepth", 1}, "Dub LFO Depth",
@@ -1203,6 +1271,13 @@ private:
             {
                 v.ampEnv.noteOn();
                 v.pitchEnv.trigger();
+                // VOICES-02 FIX: Reset filter state in non-legato mono retrigger.
+                // Legato mode (voiceMode==2) intentionally preserves filter state for
+                // smooth crossnote resonance. Mono mode (voiceMode==1) should reset the
+                // filter to give each note a clean attack — otherwise a high-resonance
+                // note bleeds into the next at an unexpected center frequency.
+                if (voiceMode == 1)
+                    v.filter.reset();
             }
             return;
         }
@@ -1232,6 +1307,9 @@ private:
         v.mainOsc.reset();
         v.subOsc.reset();
         v.filter.reset();
+        // VOICES-01 FIX: reset drift state on voice start — prevents pitch-jump artifact
+        // when a stolen voice carries over its LP-filtered drift offset from the previous note.
+        v.drift.reset();
     }
 
     void noteOff(int noteNumber)
@@ -1251,6 +1329,9 @@ private:
             v.ampEnv.reset();
             v.pitchEnv.reset();
             v.glideActive = false;
+            // VOICES-03 FIX: clear drift state so the next note-on doesn't start
+            // with a stale LP-filtered offset that was held from a silenced note.
+            v.drift.reset();
         }
         envelopeOutput = 0.0f;
         externalPitchMod = 0.0f;
