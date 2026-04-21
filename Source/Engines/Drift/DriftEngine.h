@@ -58,6 +58,7 @@ public:
         phase = 0.0;
         currentValue = 0.0f;
         targetValue = 0.0f;
+        lastRate = -1.0f; // force smoothCoeff recompute on next process() call
     }
 
     void seed(uint32_t s) noexcept { rngState = s | 1; }
@@ -227,6 +228,9 @@ public:
         modPhase += modInc;
         if (modPhase >= 1.0)
             modPhase -= 1.0;
+        // Guard: ensure phases never go negative due to floating-point drift
+        if (carrierPhase < 0.0) carrierPhase = 0.0;
+        if (modPhase < 0.0) modPhase = 0.0;
 
         return static_cast<float>(carrierOut);
     }
@@ -298,7 +302,7 @@ public:
         for (auto& bp : bands)
             formant += bp.processSample(input);
 
-        formant *= 0.4f; // normalize 3 parallel BPs
+        formant *= (1.0f / 3.0f); // normalize 3 parallel BPs to unity passband
         return input * (1.0f - mix) + formant * mix;
     }
 
@@ -548,7 +552,7 @@ private:
 class DriftReverb
 {
 public:
-    void prepare(double sampleRate)
+    void prepare(double sampleRate) noexcept
     {
         sr = sampleRate;
 
@@ -556,17 +560,17 @@ public:
         static constexpr float combTimesMs[] = {29.7f, 37.1f, 41.1f, 43.7f};
         for (size_t c = 0; c < 4; ++c)
         {
-            size_t len = static_cast<size_t>(sr * combTimesMs[c] * 0.001);
+            size_t len = std::max(size_t(1), static_cast<size_t>(sr * combTimesMs[c] * 0.001));
             combBuffers[c].assign(len, 0.0f);
             combSizes[c] = len;
             combPos[c] = 0;
         }
 
-        // Allpass delay times
+        // Allpass delay times — guarded to minimum 1 sample (prevents UB at very low SR)
         static constexpr float apTimesMs[] = {5.0f, 1.7f};
         for (size_t a = 0; a < 2; ++a)
         {
-            size_t len = static_cast<size_t>(sr * apTimesMs[a] * 0.001);
+            size_t len = std::max(size_t(1), static_cast<size_t>(sr * apTimesMs[a] * 0.001));
             apBuffers[a].assign(len, 0.0f);
             apSizes[a] = len;
             apPos[a] = 0;
@@ -575,7 +579,7 @@ public:
         combFilterState.fill(0.0f);
     }
 
-    void reset()
+    void reset() noexcept
     {
         for (auto& buf : combBuffers)
             std::fill(buf.begin(), buf.end(), 0.0f);
@@ -592,7 +596,7 @@ public:
     // damping is hardwired to 0.5 (natural sounding default for pads).
     void processStereo(float* left, float* right, int numSamples, float size, float mix) noexcept
     {
-        if (mix < 0.0001f || combSizes[0] == 0)
+        if (mix < 0.0001f || combBuffers[0].empty())
             return;
 
         const float feedback = 0.5f + size * 0.45f; // [0.50, 0.95]
@@ -629,9 +633,12 @@ public:
                 ap = out;
             }
 
-            float wet = ap;
-            left[i] = left[i] * (1.0f - mix) + wet * mix;
-            right[i] = right[i] * (1.0f - mix) + wet * mix * 0.95f; // slight R attenuation for width
+            // Stereo decorrelation: L uses full allpass output; R uses pre-allpass (combSum)
+            // with complementary scaling, giving audible width without a second reverb path.
+            float wetL = ap;
+            float wetR = combSum * 0.9f; // combSum still in scope; slightly darker R channel
+            left[i]  = left[i]  * (1.0f - mix) + wetL * mix;
+            right[i] = right[i] * (1.0f - mix) + wetR * mix;
         }
     }
 
@@ -915,12 +922,12 @@ public:
         // M1 CHARACTER: shift filter cutoff ±5000 Hz around its base value
         const float effFilterCut = clamp(filterCut + (macroCharacter - 0.5f) * 10000.0f, 20.0f, 20000.0f);
         // M2 MOVEMENT: scale LFO1 rate (0.5 = unity, 1.0 = 4×, 0.0 = 0.25×)
-        const float effLfoRate = clamp(lfoRate * std::pow(4.0f, macroMovement - 0.5f), 0.01f, 20.0f);
-        // M3 COUPLING: scale coupling send level (0.5 = unity)
-        const float effCoupling = macroCoupling; // 0–1 scaler applied at coupling output
+        // fastExp avoids std::pow; 4^x = exp(x * ln4) = exp(x * 1.386294f)
+        const float effLfoRate = clamp(lfoRate * fastExp((macroMovement - 0.5f) * 1.386294f), 0.01f, 20.0f);
+        // M3 COUPLING: scale coupling send level (0–1; 0.5 = unity, 0 = muted, 1 = +6 dB)
+        const float effCoupling = macroCoupling * 2.0f; // applied to envelopeOutput below
         // M4 SPACE: blend reverb mix toward 1.0 (additive, capped at 1.0)
         const float effReverbMix = clamp(reverbMix + (macroSpace - 0.5f) * 0.8f, 0.0f, 1.0f);
-        (void)effCoupling; // used by coupling output path
 
         // Voice
         const int voiceMode = (pVoiceMode != nullptr) ? static_cast<int>(pVoiceMode->load()) : 0;
@@ -1163,7 +1170,8 @@ public:
                 }
 
                 // --- Sub + Noise ---
-                voice.subOsc.setFrequency(freqA * 0.5f, srf);
+                // Sub tracks final freqA (post-glide, post-pitch-mod) so it stays in octave
+                voice.subOsc.setFrequency(freqA * 0.5f, srf); // freqA already has glide applied above
                 voice.subOsc.setWaveform(PolyBLEP::Waveform::Sine);
                 float subOut = voice.subOsc.processSample() * subLevel;
 
@@ -1178,7 +1186,8 @@ public:
                 // --- Filter A (LP 12/24 dB) ---
                 float envVal = voice.ampEnv.process();
 
-                float cutoffMod = effFilterCut + driftModCutoffOffset;
+                // D001: velocity shapes filter brightness (+4000 Hz at full velocity)
+                float cutoffMod = effFilterCut + (voice.velocity - 0.5f) * 4000.0f + driftModCutoffOffset;
 
                 // Envelope to filter
                 if (std::abs(filterEnv) > 0.001f)
@@ -1214,8 +1223,11 @@ public:
                 }
 
                 // --- Filter B (Formant) ---
+                // updateCoefficients has internal 0.001f threshold guard; gate the call to
+                // every 16 samples to match FilterA's update cadence and cut SVF overhead.
                 float effectiveMorph = clamp(formantMorph + morphMod, 0.0f, 1.0f);
-                voice.filterB.updateCoefficients(effectiveMorph, 0.5f, srf);
+                if (updateFilter)
+                    voice.filterB.updateCoefficients(effectiveMorph, 0.5f, srf);
                 filtered = voice.filterB.process(filtered, formantMix);
 
                 // --- Fracture glitch (post-filter, pre-envelope — FRACTURE macro) ---
@@ -1230,12 +1242,10 @@ public:
                 // --- Apply envelope and velocity ---
                 float out = filtered * envVal * voice.velocity;
 
-                // LFO amp modulation
+                // LFO amp modulation — bipolar LFO (-1..+1) mapped to gain (0.5..1.5)
+                // using std::max(0.0f,...) prevents sign inversion on large negative swings.
                 if (std::abs(lfoAmpMod) > 0.001f)
-                {
-                    float ampMod = 1.0f + lfoAmpMod * 0.5f;
-                    out *= std::max(0.0f, ampMod);
-                }
+                    out *= std::max(0.0f, 1.0f + lfoAmpMod * 0.5f);
 
                 // Voice-steal fade: linearly ramp output from the stolen note's
                 // last envelope level to zero over the first ~2ms of the new note.
@@ -1255,17 +1265,15 @@ public:
                 }
 
                 // --- TidalPulse amplitude modulation (BREATHE macro) ---
-                // sin² breathing shape modulates output amplitude by up to (1 - tidalDepth).
-                // At tidalDepth=0.0 → no modulation. At tidalDepth=1.0 → output reaches 0
-                // at the trough of the breath cycle (full swell/recede). Applied post-envelope
-                // so the breathing sits on top of the note's natural ADSR shape.
+                // sin² breathing shape modulates output amplitude. breathVal ∈ [0, tidalDepth].
+                // At tidalDepth=0 → no modulation. At tidalDepth=1 → output swells between
+                // full amplitude (breathVal=0) and 10% floor (breathVal=tidalDepth=1).
+                // The 0.1 floor preserves audibility — a fully-silent breath cycle is
+                // unmusical and causes perceptual "off" moments in pad textures.
                 if (tidalDepth > 0.0001f)
                 {
                     float breathVal = voice.tidal.process(tidalRate, tidalDepth);
-                    // breathVal in [0, tidalDepth]. 1.0 - breathVal scales amplitude: swell at 0,
-                    // recede at peak. Inverted: sound is loudest during trough → unipolar "inhale".
-                    // Use 1.0 - breathVal so amplitude = 1.0 at breathVal=0 (silence = exhale).
-                    out *= (1.0f - breathVal);
+                    out *= std::max(0.1f, 1.0f - breathVal);
                 }
 
                 if (!voice.ampEnv.isActive())
@@ -1323,7 +1331,8 @@ public:
             }
         }
 
-        envelopeOutput = peakEnv;
+        // M3 COUPLING macro scales the coupling send level
+        envelopeOutput = peakEnv * effCoupling;
 
         // SilenceGate: analyze output level for next-block bypass decision
         silenceGate.analyzeBlock(buffer.getReadPointer(0),
@@ -1501,7 +1510,7 @@ public:
         // --- LFO ---
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"drift_lfoRate", 1}, "Drift LFO Rate",
-            juce::NormalisableRange<float>(0.01f, 20.0f, 0.001f, 0.3f), 1.5f));
+            juce::NormalisableRange<float>(0.005f, 20.0f, 0.001f, 0.3f), 1.5f)); // D005: floor ≤ 0.01 Hz
 
         params.push_back(
             std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"drift_lfoDepth", 1}, "Drift LFO Depth",
@@ -1652,7 +1661,7 @@ public:
 
     //-- Identity --------------------------------------------------------------
 
-    juce::String getEngineId() const override { return "Odyssey"; }
+    juce::String getEngineId() const override { return "Drift"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFF7B2D8B); }
     int getMaxVoices() const override { return kMaxVoices; }
 
@@ -1692,6 +1701,10 @@ private:
             {
                 v.ampEnv.noteOn();
                 resetOscillators(v);
+                // Reset character stages so new note starts clean (matches poly path)
+                v.shimmer.reset();
+                v.fracture.reset();
+                v.tidal.reset();
             }
             return;
         }
