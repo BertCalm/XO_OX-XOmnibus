@@ -242,6 +242,7 @@ public:
             v.reset();
         for (auto& fx : fxSlots)
             fx.prepare(sr);
+        matrixDirty = true; // invalidate cached matrix on sample-rate change
         // SRO SilenceGate: phase-braided oscillators with reverb FX — 500ms hold
         prepareSilenceGate(sampleRate, maxBlockSize, 500.0f);
     }
@@ -256,6 +257,9 @@ public:
             fx.reset();
         activeVoices.store(0, std::memory_order_relaxed);
         lastSampleL = lastSampleR = 0.0f;
+        matrixDirty = true; // invalidate cached matrix on reset
+        couplingPitchMod = 0.0f;
+        couplingCutoffMod = 0.0f;
     }
 
     //==========================================================================
@@ -265,7 +269,7 @@ public:
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
-        if (numSamples <= 0)
+        if (numSamples <= 0 || sr <= 0.0f) // guard: sr must be set by prepare()
             return;
 
         // SRO SilenceGate: wake on note-on, bypass when silent
@@ -289,7 +293,7 @@ public:
 
         // Knot topology
         const auto knotType = static_cast<int>(loadP(pKnotType, 0.0f));
-        const float braidDepth = loadP(pBraidDepth, 0.5f);
+        const float braidDepth = loadP(pBraidDepth, 0.2f); // matches param declaration default
         const float torusP = loadP(pTorusP, 2.0f);
         const float torusQ = loadP(pTorusQ, 3.0f);
 
@@ -341,14 +345,23 @@ public:
         const float tensionReso = macroTension * 0.4f;
 
         // === MACRO KNOT: morphs between knot types (smooth interpolation) ===
-        // macroKnot 0→1 blends current knot toward the next knot type
+        // macroKnot 0→1 blends current knot toward the next knot type.
+        // knotB wraps to (knotType+1)%4 — the adjacent knot in the enum.
         const int knotA = knotType;
         const int knotB = (knotType + 1) % 4;
         const float knotMorph = macroKnot;
 
-        // Build effective coupling matrix (blend knotA and knotB, apply Torus P/Q)
-        float matrix[4][4];
-        buildEffectiveMatrix(knotA, knotB, knotMorph, torusP, torusQ, matrix);
+        // Rebuild effective coupling matrix only when topology parameters change
+        // (avoids 48-float blend + sin each block when knot is static).
+        if (matrixDirty || knotA != cachedKnotA || knotB != cachedKnotB
+            || knotMorph != cachedKnotMorph || torusP != cachedTorusP || torusQ != cachedTorusQ)
+        {
+            buildEffectiveMatrix(knotA, knotB, knotMorph, torusP, torusQ, cachedMatrix);
+            cachedKnotA = knotA; cachedKnotB = knotB; cachedKnotMorph = knotMorph;
+            cachedTorusP = torusP; cachedTorusQ = torusQ;
+            matrixDirty = false;
+        }
+        const float (&matrix)[4][4] = cachedMatrix;
 
         // Coupling scale: controls the frequency range of phase influence
         // Higher values = more dramatic timbral effect
@@ -387,14 +400,24 @@ public:
         float blockCutoffCoupling = couplingCutoffMod;
         couplingCutoffMod = 0.0f;
 
-        // Hoist LFO rate/shape configuration out of the per-sample loop.
-        // Rate coefficient is sample-rate-dependent but parameter-rate-independent;
-        // setting it once per block per voice is correct and avoids redundant work.
+        // Hoist LFO rate/shape and filter mode configuration out of the per-sample loop.
+        // Rate coefficient and filter mode are parameter-rate quantities; setting them
+        // once per block per voice is correct and avoids redundant work per sample.
+        const CytomicSVF::Mode blockFilterMode = [&]() -> CytomicSVF::Mode {
+            switch (filterType)
+            {
+            case 1:  return CytomicSVF::Mode::HighPass;
+            case 2:  return CytomicSVF::Mode::BandPass;
+            default: return CytomicSVF::Mode::LowPass;
+            }
+        }();
+
         for (int vi = 0; vi < kMaxVoices; ++vi)
         {
             auto& voice = voices[vi];
             if (!voice.active)
                 continue;
+            voice.filter.setMode(blockFilterMode); // once per block, not per sample
             for (int l = 0; l < 2; ++l)
             {
                 if (lfoType[l] == 0)
@@ -452,8 +475,10 @@ public:
                     }
                 }
 
-                // D001: Velocity shapes timbre (filter cutoff)
-                float velTimbre = voice.velocity * 2000.0f;
+                // D001: Velocity shapes timbre (filter cutoff). Scaled to 1500 Hz
+                // so a hard-pressed note at max cutoff (8 kHz default) opens to
+                // ~9.5 kHz — expressive but leaves headroom before the 20 kHz wall.
+                float velTimbre = voice.velocity * 1500.0f;
 
                 // D006: Mod wheel → filter cutoff sweep
                 cutoffMod += modWheel_ * 4000.0f;
@@ -476,10 +501,11 @@ public:
                 // Effective braid depth with LFO/aftertouch modulation
                 float currentBraid = clamp(effBraidDepth + braidMod, 0.0f, 1.0f);
 
-                // Read current strand phases for coupling computation
-                float strandPhases[4];
-                for (int i = 0; i < 4; ++i)
-                    strandPhases[i] = voice.strandPhase[i];
+                // Precompute sin(phase * 2π) for each strand once per sample
+                // so the 4×4 coupling matrix loop reuses them (4 calls vs 16).
+                float sinPhase[4];
+                for (int j = 0; j < 4; ++j)
+                    sinPhase[j] = fastSin(voice.strandPhase[j] * kTwoPi);
 
                 // Compute phase coupling offsets from the knot matrix
                 float phaseOffset[4]{};
@@ -489,7 +515,7 @@ public:
                     {
                         if (i == j)
                             continue;
-                        phaseOffset[i] += matrix[i][j] * fastSin(strandPhases[j] * kTwoPi) * currentBraid;
+                        phaseOffset[i] += matrix[i][j] * sinPhase[j] * currentBraid;
                     }
                 }
 
@@ -510,24 +536,11 @@ public:
                 float signal = (strandOut[0] + strandOut[1] + strandOut[2] + strandOut[3]) * 0.25f;
 
                 // === Filter ===
+                // Filter mode was set once per block above (blockFilterMode).
+                // setCoefficients() is called per-sample because cutoffMod varies
+                // with LFO output; mode is param-rate only.
                 float effCut = clamp(filterCutoff + cutoffMod + velTimbre, 20.0f, 20000.0f);
                 float effRes = clamp(filterReso + resoMod, 0.0f, 1.0f);
-
-                switch (filterType)
-                {
-                case 0:
-                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                    break;
-                case 1:
-                    voice.filter.setMode(CytomicSVF::Mode::HighPass);
-                    break;
-                case 2:
-                    voice.filter.setMode(CytomicSVF::Mode::BandPass);
-                    break;
-                default:
-                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                    break;
-                }
                 voice.filter.setCoefficients(effCut, effRes, sr);
                 signal = voice.filter.processSample(signal);
 
@@ -539,8 +552,9 @@ public:
                     continue;
                 }
 
-                float gain = ampLevel * voice.velocity * (1.0f + volMod);
-                gain = clamp(gain, 0.0f, 2.0f);
+                // volMod is bipolar [-1, +1]; clamp effective sum so LFO at full
+                // depth can silence (mod=-1→gain=0) but not hard-clip above 1.0×.
+                float gain = ampLevel * voice.velocity * clamp(1.0f + volMod, 0.0f, 1.0f);
                 signal *= gain;
                 signal = flushDenormal(signal);
 
@@ -634,6 +648,15 @@ public:
             for (auto& v : voices)
                 if (v.active)
                     v.ampEnv.noteOff();
+            break;
+        case CouplingType::KnotTopology:
+            // KnotTopology: bidirectional braid coupling. The incoming `amount`
+            // encodes linking number (1-5) scaled to [0.25, 1.25]. Modulates
+            // both pitch (oscillator entanglement) and braid cutoff simultaneously,
+            // producing the mutual co-evolution the spec describes.
+            couplingPitchMod += amount * 0.4f;
+            couplingCutoffMod += amount * 0.6f;
+            matrixDirty = true; // force matrix rebuild — topology has changed
             break;
         default:
             break;
@@ -1099,6 +1122,18 @@ private:
             v.targetFreq[3] = newFreq3;
             v.note = noteNum;
             v.velocity = vel;
+            // Legato retrigger: restart attack from current level (smooth crossfade).
+            // Without this the envelope stays in sustain/release regardless of ADSR params.
+            v.ampEnv.retriggerFrom(v.ampEnv.getLevel(), ampA, ampD, ampS, ampR);
+            // Keep LFO params in sync with current block values on legato glide.
+            for (int l = 0; l < 2; ++l)
+            {
+                if (lfoTypes[l] > 0)
+                {
+                    v.lfos[l].setRate(lfoRates[l], sr);
+                    v.lfos[l].shape = lfoTypes[l] - 1;
+                }
+            }
         }
         else
         {
@@ -1165,6 +1200,13 @@ private:
     // Coupling output
     float lastSampleL = 0.0f;
     float lastSampleR = 0.0f;
+
+    // Coupling matrix cache — rebuilt only when topology parameters change
+    float cachedMatrix[4][4]{};
+    int   cachedKnotA = -1, cachedKnotB = -1;
+    float cachedKnotMorph = -1.0f;
+    float cachedTorusP = -1.0f, cachedTorusQ = -1.0f;
+    bool  matrixDirty = true; // true until first prepare() + first block
 
     // 3 FX slots
     OrbweaveFXState fxSlots[3];
