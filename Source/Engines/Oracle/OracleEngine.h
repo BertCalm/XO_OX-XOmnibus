@@ -261,7 +261,7 @@ using OracleLFO = StandardLFO;
 //  and waste headroom.
 //
 //  Transfer function: y[n] = x[n] - x[n-1] + R * y[n-1]
-//  where R = 1 - (2*pi*fc/sr), clamped to [0.9, 0.9999]
+//  where R = exp(-2*pi*fc/sr) (matched-Z), clamped to [0.9, 0.9999]
 //
 //  The R coefficient controls how quickly the blocker forgets DC. At 44.1kHz
 //  with fc=5Hz, R ~= 0.9993 — a very gentle rolloff that preserves all
@@ -279,7 +279,8 @@ struct OracleDCBlocker
     {
         constexpr float cutoffHz = 5.0f; // Remove content below 5Hz
         constexpr float twoPi = 6.28318530718f;
-        feedbackCoeff = 1.0f - (twoPi * cutoffHz / std::max(1.0f, sampleRate));
+        // Matched-Z (bilinear-correct) pole: exp(-2π·fc/sr) — not Euler 1-(2π·fc/sr)
+        feedbackCoeff = std::exp(-twoPi * cutoffHz / std::max(1.0f, sampleRate));
 
         // Clamp R to a safe range:
         //   Below 0.9 = too aggressive (audibly removes bass)
@@ -368,11 +369,12 @@ struct OracleVoice
     // --- Cycle-boundary crossfade ---
     // When breakpoints evolve at a cycle boundary, the waveform shape changes
     // discontinuously. This crossfade blends the last sample of the previous
-    // cycle with the new waveform over 64 samples (~1.5ms at 44.1kHz) to
-    // prevent audible clicks at the seam.
+    // cycle with the new waveform over ~1.5ms to prevent audible clicks at the
+    // seam. Computed from sample rate in initCycleBlendSamples() — not hardcoded
+    // so behaviour is correct at 44.1kHz, 48kHz, 96kHz and above.
     float prevCycleLastSample = 0.0f;
     int cycleBlendCounter = 0;
-    static constexpr int kCycleBlendSamples = 64; // ~1.5ms at 44.1kHz
+    int cycleBlendSamples = 64; // Initialised by the engine from actual sample rate
 
     void reset() noexcept
     {
@@ -396,6 +398,7 @@ struct OracleVoice
         dcBlockerL.reset();
         dcBlockerR.reset();
         rng.seed(1);
+        numBreakpoints = 16; // Default to 16 on reset — initBreakpoints() overrides on noteOn
 
         // Initialize breakpoints to a sine-like shape — the "primordial"
         // waveform before stochastic evolution begins reshaping it
@@ -449,6 +452,9 @@ public:
         sampleRateDouble = sampleRate;
         sampleRateFloat = static_cast<float>(sampleRateDouble);
 
+        // Cycle-blend window: 1.5ms expressed in samples (SR-aware, not hardcoded).
+        cycleBlendSamples_ = std::max(4, static_cast<int>(0.0015f * sampleRateFloat));
+
         // Parameter smoothing coefficient: 5ms time constant.
         // This prevents zipper noise when parameters change mid-block.
         // Formula: 1 - e^(-2*pi * (1/tau) / sr), where tau = 0.005s
@@ -493,6 +499,11 @@ public:
         smoothedTimeStep = 0.3f;
         smoothedAmpStep = 0.3f;
         smoothedDistribution = 0.5f;
+
+        // Clear MIDI performance state — prevents stale values leaking across DAW stop/play
+        modWheelValue = 0.0f;
+        pitchBendNorm = 0.0f;
+        oracleModLfoRateMult = 1.0f;
 
         std::fill(outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill(outputCacheR.begin(), outputCacheR.end(), 0.0f);
@@ -677,6 +688,8 @@ public:
             modMatrix.apply(mSrc, mDst);
             // dst 1: Maqam gravity offset (±0.4 range — matches the existing mod wheel sensitivity)
             effectiveGravity = clamp(effectiveGravity + mDst[1] * 0.4f, 0.0f, 1.0f);
+            // dst 2: LFO rate multiplier (0.1x–4x range over ±1 modulation)
+            oracleModLfoRateMult = std::max(0.1f, 1.0f + mDst[2] * 3.0f);
             // dst 3: pitch offset in semitones (±12)
             oracleModPitchOffset   = mDst[3] * 12.0f;
             // dst 4: amplitude level offset
@@ -731,6 +744,12 @@ public:
                 }
 
                 // --- LFO modulation ---
+                // dst 2 mod-matrix LFO rate mult: apply before process() so phase advances correctly
+                if (oracleModLfoRateMult != 1.0f)
+                {
+                    voice.lfo1.setRate(lfo1RateHz * oracleModLfoRateMult, sampleRateFloat);
+                    voice.lfo2.setRate(lfo2RateHz * oracleModLfoRateMult, sampleRateFloat);
+                }
                 float lfo1Value = voice.lfo1.process() * lfo1DepthAmount;
                 float lfo2Value = voice.lfo2.process() * lfo2DepthAmount;
 
@@ -767,7 +786,7 @@ public:
 
                     // Save last sample of previous cycle for crossfade smoothing
                     voice.prevCycleLastSample = voice.lastOutputL;
-                    voice.cycleBlendCounter = OracleVoice::kCycleBlendSamples;
+                    voice.cycleBlendCounter = cycleBlendSamples_;
 
                     // Evolve breakpoints via stochastic random walk
                     evolveBreakpoints(voice, modulatedTimeStep * stochasticDepth, modulatedAmpStep * stochasticDepth,
@@ -783,7 +802,7 @@ public:
                 if (voice.cycleBlendCounter > 0)
                 {
                     float blendRatio = static_cast<float>(voice.cycleBlendCounter) /
-                                       static_cast<float>(OracleVoice::kCycleBlendSamples);
+                                       static_cast<float>(cycleBlendSamples_);
                     rawSampleL = rawSampleL * (1.0f - blendRatio) + voice.prevCycleLastSample * blendRatio;
                     --voice.cycleBlendCounter;
                 }
@@ -802,8 +821,8 @@ public:
                 float rawSampleR = interpolateBreakpoints(voice, rightChannelPhase);
                 if (voice.cycleBlendCounter > 0)
                 {
-                    float blendRatio = static_cast<float>(voice.cycleBlendCounter + 1) /
-                                       static_cast<float>(OracleVoice::kCycleBlendSamples);
+                    float blendRatio = static_cast<float>(voice.cycleBlendCounter) /
+                                       static_cast<float>(cycleBlendSamples_);
                     rawSampleR = rawSampleR * (1.0f - blendRatio) + voice.prevCycleLastSample * blendRatio;
                 }
                 float outputR = voice.dcBlockerR.process(rawSampleR);
@@ -868,7 +887,10 @@ public:
                 ++count;
         activeVoiceCount_.store(count, std::memory_order_relaxed);
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // Guard against mono buffer — analyzeBlock needs both channels; fall back to L only if needed
+        const float* analyzeL = buffer.getReadPointer(0);
+        const float* analyzeR = (buffer.getNumChannels() >= 2) ? buffer.getReadPointer(1) : analyzeL;
+        silenceGate.analyzeBlock(analyzeL, analyzeR, numSamples);
     }
 
     //==========================================================================
@@ -902,19 +924,22 @@ public:
             // External audio perturbs breakpoint amplitudes — like an
             // earthquake shaking the reef's geological strata.
             // 0.5 scaling prevents coupling from overwhelming evolution.
-            couplingBreakpointMod += amount * 0.5f;
+            // Clamped to ±2.0 so simultaneous sources cannot push the mod arbitrarily.
+            couplingBreakpointMod = std::max(-2.0f, std::min(2.0f, couplingBreakpointMod + amount * 0.5f));
             break;
 
         case CouplingType::AmpToFilter:
             // External amplitude modulates mirror barrier positions —
             // widens or narrows the space breakpoints can occupy.
-            couplingBarrierMod += amount;
+            // Clamped to ±1.0 (barrier mod feeds directly into elasticity [0,1]).
+            couplingBarrierMod = std::max(-1.0f, std::min(1.0f, couplingBarrierMod + amount));
             break;
 
         case CouplingType::EnvToMorph:
             // External envelope drives distribution morph (Cauchy <-> Logistic).
             // 0.4 scaling keeps the blend musically useful.
-            couplingDistributionMod += amount * 0.4f;
+            // Clamped to ±1.0 (distribution morph is blended into a [0,1] range).
+            couplingDistributionMod = std::max(-1.0f, std::min(1.0f, couplingDistributionMod + amount * 0.4f));
             break;
 
         default:
@@ -1428,14 +1453,20 @@ private:
         phase = std::max(0.0f, std::min(0.99999f, phase));
 
         // Find the segment: breakpoint[i] <= phase < breakpoint[i+1]
+        // Binary search (O(log N)) replaces linear scan (O(N)) — critical hot path.
+        // breakpoints[] are sorted by timeOffset after every evolveBreakpoints() call.
         int segmentIndex = breakpointCount - 2; // Default to last segment
-        for (int i = 0; i < breakpointCount - 1; ++i)
         {
-            if (phase < voice.breakpoints[i + 1].timeOffset)
+            int lo = 0, hi = breakpointCount - 2;
+            while (lo < hi)
             {
-                segmentIndex = i;
-                break;
+                int mid = (lo + hi) >> 1;
+                if (phase < voice.breakpoints[mid + 1].timeOffset)
+                    hi = mid;
+                else
+                    lo = mid + 1;
             }
+            segmentIndex = lo;
         }
 
         // Get 4 control points for cubic Hermite (Catmull-Rom needs p[i-1..i+2])
@@ -1511,8 +1542,8 @@ private:
             auto& voice = voices[0];
             bool wasActive = voice.active;
 
+            voice.glide.setCoeff(glideCoeff); // Set before target so the first process() uses the correct coeff
             voice.glide.setTarget(frequency);
-            voice.glide.setCoeff(glideCoeff);
 
             if (isLegatoMode && wasActive)
             {
@@ -1527,8 +1558,7 @@ private:
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
                 voice.startTime = voiceCounter++;
-                voice.glide.snapTo(frequency);
-                voice.glide.setCoeff(glideCoeff);
+                voice.glide.snapTo(frequency); // Instant snap on first note / non-legato retrigger
                 voice.wavePhase = 0.0f;
                 voice.fadingOut = false;
                 voice.fadeGain = 1.0f;
@@ -1549,8 +1579,10 @@ private:
 
                 voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
                 voice.lfo1.setShape(lfo1Shape);
+                voice.lfo1.reset(); // Reset LFO phase on retriggered mono note (matches poly path)
                 voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
                 voice.lfo2.setShape(lfo2Shape);
+                voice.lfo2.reset(); // Reset LFO phase on retriggered mono note
 
                 voice.dcBlockerL.prepare(sampleRateFloat);
                 voice.dcBlockerL.reset();
@@ -1564,11 +1596,16 @@ private:
         int voiceIndex = VoiceAllocator::findFreeVoice(voices, std::min(maxPolyphony, kMaxVoices));
         auto& voice = voices[static_cast<size_t>(voiceIndex)];
 
-        // If stealing an active voice, initiate a crossfade to prevent clicks
+        // If stealing an active voice, seed the cycle-blend from its current output
+        // to smoothly crossfade into the new waveform. Envelope is killed to prevent
+        // the old amplitude from bleeding through (fadingOut logic was previously broken:
+        // it set fadingOut=true then immediately overwrote it with false on the same struct).
         if (voice.active)
         {
-            voice.fadingOut = true;
-            voice.fadeGain = std::min(voice.fadeGain, 0.5f); // Start fade from at most 50%
+            voice.prevCycleLastSample = voice.lastOutputL; // Carry last output into blend
+            voice.cycleBlendCounter = cycleBlendSamples_;  // Blend over 1.5ms
+            voice.amplitudeEnvelope.kill();
+            voice.stochasticEnvelope.kill();
         }
 
         voice.active = true;
@@ -1579,7 +1616,12 @@ private:
         voice.wavePhase = 0.0f;
         voice.fadingOut = false;
         voice.fadeGain = 1.0f;
-        voice.cycleBlendCounter = 0;
+        // Only clear cached outputs when NOT stealing (steal path already set prevCycleLastSample above)
+        if (!voice.cycleBlendCounter)
+        {
+            voice.lastOutputL = 0.0f;
+            voice.lastOutputR = 0.0f;
+        }
 
         // Seed PRNG from note number + voice counter for unique per-voice variation.
         // 2654435761 is the Knuth multiplicative hash constant (golden ratio * 2^32).
@@ -1628,6 +1670,7 @@ private:
     float sampleRateFloat = 0.0f;  // Sentinel: must be set by prepare() before use
     float parameterSmoothingCoeff = 0.1f; // 5ms time constant for zipper-free parameter changes
     float voiceCrossfadeRate = 0.01f;     // 5ms gain ramp for voice stealing
+    int cycleBlendSamples_ = 66;          // ~1.5ms at 44.1kHz; set from actual SR in prepare()
 
     // --- Voice pool ---
     std::array<OracleVoice, kMaxVoices> voices;
@@ -1712,6 +1755,7 @@ private:
     ModMatrix<4> modMatrix;
     float oracleModPitchOffset  = 0.0f;
     float oracleModLevelOffset  = 0.0f;
+    float oracleModLfoRateMult  = 1.0f; // LFO rate multiplier from mod matrix dst 2
 };
 
 } // namespace xoceanus
