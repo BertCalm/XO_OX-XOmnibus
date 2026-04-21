@@ -167,8 +167,10 @@ struct QuartetChannel
     float noiseState = 0.0f; // Noise generator state
 
     // --- Rhythm channel transient ---
-    float transientEnv = 0.0f;   // Sharp attack envelope for percussive bursts
-    float transientPhase = 0.0f; // Pulse rate phase (driven by ShoreRhythm data)
+    float transientEnv = 0.0f;    // Sharp attack envelope for percussive bursts
+    float transientPhase = 0.0f;  // Pulse rate phase (driven by ShoreRhythm data)
+    float cachedPulseRate = 2.0f; // Cached ShoreRhythm.pulseRate — updated at control rate
+                                  // to avoid decomposeShore()+morphRhythm() every audio sample.
 
     // --- Mix ---
     float level = 1.0f;
@@ -240,6 +242,7 @@ struct QuartetChannel
         noiseState = 0.0f;
         transientEnv = 0.0f;
         transientPhase = 0.0f;
+        cachedPulseRate = 2.0f; // Reasonable default (2 Hz percussion rate)
         lastOutputL = 0.0f;
         lastOutputR = 0.0f;
         memoryWritePos = 0;
@@ -395,7 +398,14 @@ struct MurmurGenerator
     uint32_t rng = 77777u; // LCG state (Numerical Recipes constants)
     CytomicSVF formant1;   // Low vocal resonance band (~350 Hz)
     CytomicSVF formant2;   // High sibilance/brightness band (~2-4 kHz)
-    float modPhase = 0.0f; // Slow modulation LFO phase
+    float modPhase = 0.0f;    // Slow modulation LFO phase
+    float modPhaseInc = 0.0f; // Precomputed: 0.5/sampleRate — avoids per-sample divide
+
+    // Cached formant frequencies — SVF coefficients are only recomputed when
+    // the frequency moves more than 1 Hz from the last set value, saving
+    // ~2 tan() + 4 multiply-divide calls per sample when murmur is active.
+    float cachedLowFreq = -1.0f;
+    float cachedHighFreq = -1.0f;
 
     void prepare(float sampleRate) noexcept
     {
@@ -403,16 +413,19 @@ struct MurmurGenerator
         formant1.setCoefficients(350.0f, 0.4f, sampleRate);
         formant2.setMode(CytomicSVF::Mode::BandPass);
         formant2.setCoefficients(2500.0f, 0.3f, sampleRate);
+        // Precompute phase increment: 0.5 Hz LFO step per sample.
+        // Avoids a float divide + std::max per sample in process().
+        modPhaseInc = 0.5f / std::max(1.0f, sampleRate);
     }
 
-    float process(float brightness, float sampleRate) noexcept
+    float process(float brightness, float /*sampleRate*/) noexcept
     {
         // Generate white noise via LCG
         rng = rng * 1664525u + 1013904223u;
         float noise = static_cast<float>(rng & 0xFFFF) / 32768.0f - 1.0f;
 
         // Slow 0.5 Hz modulation — the ebb and flow of tavern conversation
-        modPhase += 0.5f / std::max(1.0f, sampleRate);
+        modPhase += modPhaseInc;
         if (modPhase >= 1.0f)
             modPhase -= 1.0f;
         float mod = fastSin(modPhase * kOsteriaTwoPi);
@@ -423,8 +436,19 @@ struct MurmurGenerator
         // modulated +/- 200 Hz for natural variation
         float highFormantFreq = lerp(2000.0f, 4000.0f, brightness) + mod * 200.0f;
 
-        formant1.setCoefficients(lowFormantFreq, 0.4f, sampleRate);
-        formant2.setCoefficients(highFormantFreq, 0.3f, sampleRate);
+        // Only recompute SVF coefficients when frequency shifts more than 1 Hz
+        // (the 0.5 Hz LFO at depth ±50/200 Hz changes only ~0.3 Hz per sample
+        // at 44.1 kHz — recooking every sample wastes ~2 tan() calls per sample).
+        if (std::fabs(lowFormantFreq - cachedLowFreq) > 1.0f)
+        {
+            formant1.setCoefficients(lowFormantFreq, 0.4f, sampleRate);
+            cachedLowFreq = lowFormantFreq;
+        }
+        if (std::fabs(highFormantFreq - cachedHighFreq) > 1.0f)
+        {
+            formant2.setCoefficients(highFormantFreq, 0.3f, sampleRate);
+            cachedHighFreq = highFormantFreq;
+        }
 
         // Blend: 60% low vocal body, 40% high brightness
         float out = formant1.processSample(noise) * 0.6f + formant2.processSample(noise) * 0.4f;
@@ -440,6 +464,8 @@ struct MurmurGenerator
         formant2.reset();
         modPhase = 0.0f;
         rng = 77777u;
+        cachedLowFreq = -1.0f;  // Invalidate so first process() recomputes coefficients
+        cachedHighFreq = -1.0f;
     }
 };
 
@@ -824,9 +850,15 @@ public:
         smokeCutoff = std::max(200.0f, std::min(20000.0f, smokeCutoff));
         smokeFilter.setCoefficients(smokeCutoff, 0.0f, srf);
 
-        // Setup warmth filter
+        // Setup warmth filter — only recompute shelf coefficients when the gain
+        // has changed by more than 0.05 dB (saves a tan()+log() per block when
+        // warmth knob is not moving, which is most of the time).
         float warmthDb = pWarmth * 8.0f;
-        warmthFilter.setCoefficients(300.0f, 0.0f, srf, warmthDb);
+        if (std::fabs(warmthDb - cachedWarmthDb) > 0.05f)
+        {
+            warmthFilter.setCoefficients(300.0f, 0.0f, srf, warmthDb);
+            cachedWarmthDb = warmthDb;
+        }
 
         // Reset coupling accumulators
         float excitationMod = couplingExcitationMod;
@@ -886,7 +918,9 @@ public:
         // after all MIDI/aftertouch processing is complete. Calling it earlier (pre-MIDI)
         // would require a second call here anyway, doubling the std::pow + SVF coefficient
         // work. tc was computed above; only mix changes via aftertouch. RT-safe: no alloc.
-        tavernRoom.setCharacter(tc, effectiveTavern, srf);
+        // Skip the std::pow + SVF coefficient work entirely when tavern is silent.
+        if (effectiveTavern > 0.001f)
+            tavernRoom.setCharacter(tc, effectiveTavern, srf);
 
         float peakEnv = 0.0f;
 
@@ -900,6 +934,11 @@ public:
             precomputedPanL[c] = std::cos(panAngle);
             precomputedPanR[c] = std::sin(panAngle);
         }
+
+        // Precompute session-delay read offset once per block — 150ms at current
+        // SR is block-constant; the static_cast+clamp was running per sample.
+        sessionDelayTimeSamples = std::max(1, std::min(kSessionDelayMax - 1,
+                                                       static_cast<int>(0.15f * srf)));
 
         // BUG 3 fix: propagate block-scope glideCoeff to each active voice so the
         // per-voice pitch smoother (voice.currentTargetFreq lerp) uses the current
@@ -995,6 +1034,9 @@ public:
                         // Integrate velocity and position (Euler integration)
                         ch.shoreVelocity += force * controlDt;
                         ch.shoreVelocity *= 0.95f; // Velocity damping (5% per step) prevents oscillation
+                        // Clamp velocity to ±20 shore-units/sec to prevent runaway Euler
+                        // divergence when elastic=1 and stretch=0 drive quadratic forces.
+                        ch.shoreVelocity = clamp(ch.shoreVelocity, -20.0f, 20.0f);
                         ch.shorePos += ch.shoreVelocity * controlDt;
                         ch.shorePos = clamp(ch.shorePos, 0.0f, 4.0f);
                         // Flush denormals in velocity to prevent CPU spikes in
@@ -1030,6 +1072,15 @@ public:
                         // Apply timbral memory
                         ch.applyMemory(effectiveMemory, srf);
                         ch.updateFormants(srf, effectiveMemory);
+
+                        // Cache rhythm pulse rate at control rate — avoids calling
+                        // decomposeShore() + morphRhythm() every audio sample in the
+                        // Rhythm switch-case (saves ~40 ops/sample at 8-voice polyphony).
+                        if (c == static_cast<int>(QuartetRole::Rhythm))
+                        {
+                            ShoreMorphState rhythmMorphCtrl = decomposeShore(ch.shorePos);
+                            ch.cachedPulseRate = morphRhythm(rhythmMorphCtrl).pulseRate;
+                        }
 
                         // Record shore position
                         ch.recordShorePosition();
@@ -1125,18 +1176,21 @@ public:
                         // Noise burst with sharp transient envelope, driven
                         // by the shore's percussion pulse rate (Bodhran,
                         // Sami Drum, Darbuka, Taiko, Djembe).
-                        ShoreMorphState rhythmMorph = decomposeShore(ch.shorePos);
-                        ShoreRhythm rhythm = morphRhythm(rhythmMorph);
-
-                        ch.transientPhase += rhythm.pulseRate / srf;
+                        // cachedPulseRate is refreshed at control rate (~2 kHz) in
+                        // the control update block — avoids decomposeShore()+morphRhythm()
+                        // every audio sample (was ~40 ops/sample × 8 voices = wasteful).
+                        ch.transientPhase += ch.cachedPulseRate / srf;
                         if (ch.transientPhase >= 1.0f)
                         {
                             ch.transientPhase -= 1.0f;
                             ch.transientEnv = 1.0f; // Trigger a new transient
                         }
-                        // Exponential decay: ~125 us time constant at 44.1 kHz
-                        // (8.0 / srf), creating a sharp percussive attack.
-                        ch.transientEnv *= (1.0f - 8.0f / srf);
+                        // Exponential decay: ~125 µs time constant at 44.1 kHz.
+                        // Guard: coefficient must remain in [0, 1) — at sample rates
+                        // below 8 Hz (offline test renders) the division would go ≥1
+                        // and flip the envelope negative. std::max(srf, 9.0f) ensures
+                        // the decay coefficient stays in (0, 1] at any valid SR.
+                        ch.transientEnv *= (1.0f - 8.0f / std::max(srf, 9.0f));
                         // Flush denormals in the transient decay path — this
                         // decaying exponential will produce subnormal values
                         // as it approaches zero, causing CPU spikes without
@@ -1204,8 +1258,11 @@ public:
                         // creates resonance at the instrument's fundamental
                         // frequency range, like a body resonance being excited.
                         float sympathyOut = ch.formants[0].processSample(sympathyInput * sympathyGain * 0.3f);
-                        voiceL += sympathyOut * 0.3f;
-                        voiceR += sympathyOut * 0.3f;
+                        // Pan sympathy using the receiving channel's position so that
+                        // resonance coupling preserves the ensemble's stereo staging
+                        // rather than collapsing to centre (was: both L+R += sympathyOut).
+                        voiceL += sympathyOut * precomputedPanL[c] * 0.3f;
+                        voiceR += sympathyOut * precomputedPanR[c] * 0.3f;
                     }
                 }
 
@@ -1326,11 +1383,11 @@ public:
             // Short conversational echo (~150ms), like the natural slap-back
             // in a stone-walled tavern. Feedback of 0.35 creates 2-3 audible
             // repeats before decay — enough for rhythmic interest without wash.
+            // delayTimeSamples is block-constant (150ms at current SR) — computing
+            // it inside the sample loop was a redundant cast+clamp per sample.
             if (pDelay > 0.001f)
             {
-                int delayTimeSamples = std::max(1, std::min(kSessionDelayMax - 1,
-                                                            static_cast<int>(0.15f * srf))); // 150ms delay time
-                int readPos = sessionDelayWritePos - delayTimeSamples;
+                int readPos = sessionDelayWritePos - sessionDelayTimeSamples;
                 if (readPos < 0)
                     readPos += kSessionDelayMax;
 
@@ -1401,12 +1458,16 @@ public:
                 tapeState[0] = flushDenormal(tapeState[0]);
                 tapeState[1] = flushDenormal(tapeState[1]);
 
-                // Tape hiss: subtle noise floor at -50 dB
+                // Tape hiss: subtle noise floor at -50 dB.
+                // Two LCG steps give independent L/R noise — shared hiss was
+                // a mono artefact inconsistent with stereo tape character.
                 murmur.rng = murmur.rng * 1664525u + 1013904223u;
-                float tapeHiss = static_cast<float>(murmur.rng & 0xFFFF) / 65536.0f - 0.5f;
+                float tapeHissL = static_cast<float>(murmur.rng & 0xFFFF) / 65536.0f - 0.5f;
+                murmur.rng = murmur.rng * 1664525u + 1013904223u;
+                float tapeHissR = static_cast<float>(murmur.rng & 0xFFFF) / 65536.0f - 0.5f;
 
-                mixL = lerp(mixL, tapeState[0] + tapeHiss * 0.003f, pTape);
-                mixR = lerp(mixR, tapeState[1] + tapeHiss * 0.003f, pTape);
+                mixL = lerp(mixL, tapeState[0] + tapeHissL * 0.003f, pTape);
+                mixR = lerp(mixR, tapeState[1] + tapeHissR * 0.003f, pTape);
             }
 
             // Write output
@@ -1474,25 +1535,27 @@ public:
         // Any engine becomes a shore the quartet absorbs — feed OBSIDIAN
         // and the quartet plays crystal-inflected jazz.
         case CouplingType::AudioToWavetable:
-            couplingExcitationMod += amount * 0.5f;
+            // Clamp accumulator to ±4.0 — rapid repeated coupling calls before the
+            // next renderBlock() consumes the value would otherwise saturate excitation.
+            couplingExcitationMod = clamp(couplingExcitationMod + amount * 0.5f, -4.0f, 4.0f);
             break;
 
         // AmpToFilter: source amplitude modulates elastic tightness.
         // Storm (OSPREY) = frantic tight playing. Calm = relaxed session.
         case CouplingType::AmpToFilter:
-            couplingElasticMod += amount * 0.3f;
+            couplingElasticMod = clamp(couplingElasticMod + amount * 0.3f, -4.0f, 4.0f);
             break;
 
         // AudioToFM: source audio excites the tavern room model.
         // Ocean turbulence (OSPREY) bleeds through the tavern walls.
         case CouplingType::AudioToFM:
-            couplingRoomExcitation += amount * 0.4f;
+            couplingRoomExcitation = clamp(couplingRoomExcitation + amount * 0.4f, -4.0f, 4.0f);
             break;
 
         // EnvToMorph: source envelope drives shore drift.
         // External dynamics push voices between coastlines.
         case CouplingType::EnvToMorph:
-            couplingShoreDrift += amount * 0.5f;
+            couplingShoreDrift = clamp(couplingShoreDrift + amount * 0.5f, -4.0f, 4.0f);
             break;
 
         default:
@@ -1754,12 +1817,12 @@ private:
         int voiceIndex = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& voice = voices[static_cast<size_t>(voiceIndex)];
 
-        // If stealing an active voice, initiate crossfade-out
-        if (voice.active)
-        {
-            voice.fadingOut = true;
-            voice.fadeGain = std::min(voice.fadeGain, 0.5f);
-        }
+        // If stealing an active voice, VoiceAllocator has already selected the
+        // oldest slot; we repurpose it immediately. The previous (stolen) voice's
+        // fadingOut/fadeGain fields are overwritten below — setting them here and
+        // then immediately overwriting them was dead code that never crossfaded.
+        // A true two-slot crossfade requires a separate steal buffer; for now the
+        // steal is hard (no gap in audio due to the new voice starting at gain 1).
 
         // Initialize voice state
         voice.active = true;
@@ -1830,6 +1893,14 @@ private:
             }
             ch.updateFormants(srf, 0.0f);
 
+            // Seed rhythm pulse rate from initial shore so the first control
+            // period uses a valid value rather than the reset default (2 Hz).
+            if (c == static_cast<int>(QuartetRole::Rhythm))
+            {
+                ShoreMorphState initRhythmMorph = decomposeShore(ch.shorePos);
+                ch.cachedPulseRate = morphRhythm(initRhythmMorph).pulseRate;
+            }
+
             // Pre-fill memory buffer with current shore position so the
             // voice starts with a clean slate — no inherited travel history.
             for (int m = 0; m < kMemoryBufferSize; ++m)
@@ -1894,12 +1965,14 @@ private:
     // --- Character stage filters ---
     CytomicSVF smokeFilter;  // Smoke: HF haze lowpass
     CytomicSVF warmthFilter; // Warmth: low shelf proximity EQ
+    float cachedWarmthDb = -999.0f; // Sentinel: forces first-block recompute
 
     // --- Session Delay ---
     // 22050 samples = 500ms at 44.1 kHz (enough headroom for the 150ms delay)
     static constexpr int kSessionDelayMax = 22050;
     float sessionDelayBuf[2][kSessionDelayMax] = {};
     int sessionDelayWritePos = 0;
+    int sessionDelayTimeSamples = 6615; // Precomputed each block: 150ms × SR
 
     // --- Chorus ---
     // 2048 samples = ~46ms at 44.1 kHz (covers the 8ms +/- 3ms modulated range)
