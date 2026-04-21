@@ -201,8 +201,9 @@ public:
         const float pAfterDep = pAftertouchDep ? pAftertouchDep->load() : 0.5f;
 
         // ---- LFO tick (block-rate) ----
-        lfo1.setRate(pLfo1Rate, static_cast<float>(sr));
-        lfo2.setRate(pLfo2Rate, static_cast<float>(sr));
+        const float srf = static_cast<float>(sr); // P2: cache sr cast once for block
+        lfo1.setRate(pLfo1Rate, srf);
+        lfo2.setRate(pLfo2Rate, srf);
 
         // Hoist block-constant ADSR updates out of per-sample loop (P15 fix).
         // pAtt/pDec/pSus/pRel are loaded once above and are block-rate constants.
@@ -213,6 +214,27 @@ public:
             v.ampEnv.setADSR(pAtt, pDec, pSus, pRel);
             v.filterEnv.setADSR(pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f);
         }
+
+        // P1: hoist coupling scale (identical expression used 3× per voice per sample)
+        const float cplScale = 1.0f + pMacroCouple * 3.0f; // 0→1x, 1→4x
+
+        // P3: precompute crossfade rate (block-constant: only depends on sr)
+        const float crossfadeRate = 1.0f / (0.005f * srf);
+
+        // P5/P6: precompute block-constant reverb tap offsets and HP cutoff
+        // Reverb tap scaling — compute once (sr is constant within a block)
+        const float srScale = srf / 44100.0f;
+        static constexpr int kBaseTaps[4] = {1117, 1543, 2371, 3079};
+        int scaledTaps[4];
+        for (int t = 0; t < 4; ++t)
+            scaledTaps[t] = std::max(1, std::min(static_cast<int>(kBaseTaps[t] * srScale), kReverbBufSize - 1));
+
+        // P6: HP cutoff only depends on pVistaOpen (block-rate param), not per-voice
+        const float hpCutoff = 20.0f + (1.0f - pVistaOpen) * 300.0f;
+
+        // Delay read offsets are block-constants (only depend on sr)
+        const int delayOffL = static_cast<int>(0.375 * sr);
+        const int delayOffR = static_cast<int>(0.25 * sr);
 
         // ---- Render per-sample ----
         auto* outL = buffer.getWritePointer(0);
@@ -247,9 +269,9 @@ public:
                 }
 
                 // Voice-steal crossfade: ramp stealFadeGain → 0 over 5ms
+                // (crossfadeRate precomputed above at block-rate — P3 fix)
                 if (v.isBeingStolen)
                 {
-                    const float crossfadeRate = 1.0f / (0.005f * static_cast<float>(sr));
                     v.stealFadeGain -= crossfadeRate;
                     if (v.stealFadeGain <= 0.0f)
                     {
@@ -272,17 +294,18 @@ public:
                 const float freq = v.baseFreq * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
                 // Macro CHARACTER + coupling modulates horizon scan position
-                const float cplScaleH = 1.0f + pMacroCouple * 3.0f;
+                // (cplScale precomputed once above — P1 fix)
                 const float horizonPos =
-                    std::clamp(pHorizon + pMacroChar * 0.5f - 0.25f + couplingHorizonMod * cplScaleH, 0.0f, 1.0f);
+                    std::clamp(pHorizon + pMacroChar * 0.5f - 0.25f + couplingHorizonMod * cplScale, 0.0f, 1.0f);
 
                 // Panorama oscillator: dual wavetable scanning in opposite directions
                 const float scan1 = horizonPos;
                 const float scan2 = 1.0f - horizonPos;
 
-                const float osc1Sample = renderWavePolyBLEP(v, freq, scan1, pWave1, static_cast<float>(sr), false);
+                // P2: use cached srf instead of repeated static_cast<float>(sr)
+                const float osc1Sample = renderWavePolyBLEP(v, freq, scan1, pWave1, srf, false);
                 const float osc2Sample =
-                    renderWavePolyBLEP(v, freq * 1.001f, scan2, pWave2, static_cast<float>(sr), true);
+                    renderWavePolyBLEP(v, freq * 1.001f, scan2, pWave2, srf, true);
 
                 // Advance legacy phase (used by Sine/Formant/Noise cases 0, 6, 7)
                 const double phaseInc = freq / sr;
@@ -296,38 +319,43 @@ public:
                 const float oscMix = osc1Sample * (1.0f - pOscMix) + osc2Sample * pOscMix;
 
                 // Vista filter: horizon line opens/closes spectral view
-                // COUPLING macro scales all coupling input sensitivity
-                const float cplScale = 1.0f + pMacroCouple * 3.0f; // 0→1x, 1→4x
+                // (cplScale precomputed above — P1 fix)
                 const float baseCutoff = 200.0f + pVistaOpen * 18000.0f + couplingFilterMod * cplScale;
                 const float envCutoff = baseCutoff * (1.0f + filtEnvVal * pFiltEnvAmt * velFilterMod);
                 // MOVEMENT macro directly scales LFO→filter depth (no triple attenuation)
+                // S4: removed erroneous 0.1f floor — at 0 params/wheel the filter should be static
                 const float movementAmt = pMacroMov + modWheel * pModWheelDep;
-                const float modCutoff = envCutoff * (1.0f + lfo1Val * pLfo1Dep * std::max(movementAmt, 0.1f));
+                const float modCutoff = envCutoff * (1.0f + lfo1Val * pLfo1Dep * std::max(movementAmt, 0.0f));
                 const float finalCutoff = std::clamp(modCutoff + aftertouch * pAfterDep * 4000.0f, 20.0f, 20000.0f);
 
-                v.filterLP.setCoefficients_fast(finalCutoff, pFilterRes, static_cast<float>(sr));
+                // P2: use cached srf
+                v.filterLP.setCoefficients_fast(finalCutoff, pFilterRes, srf);
                 const float filtered = v.filterLP.processSample(oscMix);
 
                 // HP for clearing low mud based on horizon
-                const float hpCutoff = 20.0f + (1.0f - pVistaOpen) * 300.0f;
-                v.filterHP.setCoefficients_fast(hpCutoff, 0.5f, static_cast<float>(sr));
+                // hpCutoff precomputed at block-rate above (P6 fix)
+                // S7: resonance 0.0f (Butterworth) — nonzero was adding tonal artifact at HP corner
+                v.filterHP.setCoefficients_fast(hpCutoff, 0.0f, srf);
                 const float cleaned = v.filterHP.processSample(filtered);
 
                 // Aurora luminosity modulates amplitude
-                const float luminosity = 1.0f + (auroraLuminosity - 0.5f) * pLfo2Dep * 0.4f;
+                // S3: clamp luminosity so it cannot exceed 1.5 (was unbounded, could push output >1)
+                const float luminosity = std::clamp(1.0f + (auroraLuminosity - 0.5f) * pLfo2Dep * 0.4f, 0.0f, 1.5f);
                 // Apply voice-steal crossfade gain to prevent click on voice reassignment
                 const float monoOut = cleaned * ampEnvVal * luminosity * v.velocity * v.stealFadeGain;
 
                 // Parallax stereo: high notes spread wider (+ coupling modulation)
-                const float noteNorm = (v.note - 36.0f) / 60.0f; // 0=C2, 1=C7
-                const float cplScaleP = 1.0f + pMacroCouple * 3.0f;
-                const float parallaxTotal = std::clamp(pParallax + couplingParallaxMod * cplScaleP, 0.0f, 1.0f);
+                // S5: clamp noteNorm to [0,1] so sub-bass notes (< C2) still get minimum spread
+                const float noteNorm = std::clamp((v.note - 36.0f) / 60.0f, 0.0f, 1.0f);
+                // P1: use block-precomputed cplScale instead of recomputing cplScaleP
+                const float parallaxTotal = std::clamp(pParallax + couplingParallaxMod * cplScale, 0.0f, 1.0f);
                 const float spread = std::clamp(noteNorm * parallaxTotal, 0.0f, 1.0f);
-                // Equal-power complementary panning
+                // Equal-power complementary panning: L=cos(θ·π/2), R=sin(θ·π/2)
+                // S1/S2: fixed R-channel formula — was adding an extra halfPi*0.5 offset that
+                //        broke equal-power sum and biased R louder than L at all spreads.
                 const float panAngle = spread * 0.4f * (1.0f + lfo2Val * 0.1f);
                 const float gainL = fastCos(panAngle * juce::MathConstants<float>::halfPi);
-                const float gainR =
-                    fastSin(panAngle * juce::MathConstants<float>::halfPi + juce::MathConstants<float>::halfPi * 0.5f);
+                const float gainR = fastSin(panAngle * juce::MathConstants<float>::halfPi);
 
                 mixL += monoOut * gainL;
                 mixR += monoOut * gainR;
@@ -338,36 +366,34 @@ public:
             const float delayAmt = std::clamp(pDelay + pMacroCouple * 0.3f, 0.0f, 1.0f);
 
             // Ping-pong delay (0.375s L, 0.25s R) — uses dynamic buffer sized in prepare()
-            const int delayWriteIdx = delayWritePos % kDelayBufSizeDynamic;
-            const int delayReadL =
-                (delayWritePos - static_cast<int>(0.375 * sr) + kDelayBufSizeDynamic * 4) % kDelayBufSizeDynamic;
-            const int delayReadR =
-                (delayWritePos - static_cast<int>(0.25 * sr) + kDelayBufSizeDynamic * 4) % kDelayBufSizeDynamic;
+            // T4: delayWritePos is uint32_t; cast to int for signed modulo arithmetic.
+            // delayOffL/R precomputed at block-rate above.
+            const int dwp = static_cast<int>(delayWritePos % static_cast<uint32_t>(kDelayBufSizeDynamic));
+            const int delayReadL = ((dwp - delayOffL) % kDelayBufSizeDynamic + kDelayBufSizeDynamic) % kDelayBufSizeDynamic;
+            const int delayReadR = ((dwp - delayOffR) % kDelayBufSizeDynamic + kDelayBufSizeDynamic) % kDelayBufSizeDynamic;
             const float delayOutL = flushDenormal(delayBufL[static_cast<size_t>(delayReadL)]);
             const float delayOutR = flushDenormal(delayBufR[static_cast<size_t>(delayReadR)]);
-            delayBufL[static_cast<size_t>(delayWriteIdx)] = mixR * 0.5f + delayOutR * 0.35f; // Cross-feed for ping-pong
-            delayBufR[static_cast<size_t>(delayWriteIdx)] = mixL * 0.5f + delayOutL * 0.35f;
-            delayWritePos = (delayWritePos + 1) % kDelayBufSizeDynamic;
+            delayBufL[static_cast<size_t>(dwp)] = mixR * 0.5f + delayOutR * 0.35f; // Cross-feed for ping-pong
+            delayBufR[static_cast<size_t>(dwp)] = mixL * 0.5f + delayOutL * 0.35f;
+            delayWritePos = (delayWritePos + 1u) % static_cast<uint32_t>(kDelayBufSizeDynamic);
 
             // Diffusion reverb (4-tap allpass with feedback)
             // Tap offsets are anchored at 44100 Hz and scaled to actual sample rate
             // so reverb density is sample-rate-independent.
-            const int revIdx = reverbWritePos % kReverbBufSize;
+            // P4/P5: scaledTaps[] precomputed at block-rate above — no per-sample recompute.
+            // T3: reverbWritePos is uint32_t; use safe modulo for read indices.
+            const int rwp = static_cast<int>(reverbWritePos % static_cast<uint32_t>(kReverbBufSize));
             const float revIn = (mixL + mixR) * 0.5f;
             float revOut = 0.0f;
             {
-                static constexpr int kBaseTaps[4] = {1117, 1543, 2371, 3079};
-                const float srScale = static_cast<float>(sr) / 44100.0f;
                 for (int t = 0; t < 4; ++t)
                 {
-                    const int scaledTap = static_cast<int>(kBaseTaps[t] * srScale);
-                    const int safeOffset = std::max(1, std::min(scaledTap, kReverbBufSize - 1));
-                    const int readIdx = (reverbWritePos - safeOffset + kReverbBufSize * 4) % kReverbBufSize;
+                    const int readIdx = ((rwp - scaledTaps[t]) % kReverbBufSize + kReverbBufSize) % kReverbBufSize;
                     revOut += reverbBuf[static_cast<size_t>(readIdx)] * 0.25f;
                 }
             }
-            reverbBuf[static_cast<size_t>(revIdx)] = flushDenormal(revIn + revOut * 0.45f);
-            reverbWritePos = (reverbWritePos + 1) % kReverbBufSize;
+            reverbBuf[static_cast<size_t>(rwp)] = flushDenormal(revIn + revOut * 0.45f);
+            reverbWritePos = (reverbWritePos + 1u) % static_cast<uint32_t>(kReverbBufSize);
 
             outL[s] = mixL + revOut * spaceAmt + delayOutL * delayAmt;
             outR[s] = mixR + revOut * spaceAmt + delayOutR * delayAmt;
@@ -585,12 +611,16 @@ private:
         }
         if (idx == -1)
         {
-            // Steal oldest active voice — start a 5ms crossfade on it first
+            // Steal oldest *active* voice — start a 5ms crossfade on it first.
+            // V1: only consider voices with active=true; released (active=false, envelope
+            // still tailing) voices are intentionally excluded to avoid stealing a note
+            // that is already fading out (would cause an audible double-kill artifact).
             uint32_t maxAge = 0;
             idx = 0;
             for (int i = 0; i < kMaxVoices; ++i)
             {
-                if (voices[static_cast<size_t>(i)].age > maxAge)
+                if (voices[static_cast<size_t>(i)].active &&
+                    voices[static_cast<size_t>(i)].age > maxAge)
                 {
                     maxAge = voices[static_cast<size_t>(i)].age;
                     idx = i;
@@ -619,12 +649,11 @@ private:
         v.isBeingStolen = wasStolen;
         v.stealFadeGain = wasStolen ? stolenGain : 1.0f;
 
-        // Configure StandardADSR
-        v.ampEnv.prepare(static_cast<float>(sr));
+        // Configure StandardADSR — prepare() was called once in engine prepare(); no need
+        // to re-call here (sr doesn't change per note). V3: avoids redundant prepare overhead.
         v.ampEnv.setADSR(pAtt, pDec, pSus, pRel);
         v.ampEnv.noteOn();
 
-        v.filterEnv.prepare(static_cast<float>(sr));
         v.filterEnv.setADSR(pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f);
         v.filterEnv.noteOn();
 
@@ -641,8 +670,6 @@ private:
             v.superOsc[d].setFrequency(v.baseFreq * detuneFactor, static_cast<float>(sr));
             v.superOsc[d].setWaveform(PolyBLEP::Waveform::Saw);
         }
-
-        ++voiceCounter;
     }
 
     void releaseVoice(int noteNumber)
@@ -653,7 +680,11 @@ private:
             {
                 v.ampEnv.noteOff();
                 v.filterEnv.noteOff();
-                v.active = false;
+                // V2: do NOT set v.active = false here — the render loop checks
+                // !v.ampEnv.isActive() to deactivate the voice once the release
+                // tail is complete. Setting active=false prematurely causes the
+                // steal search to skip this voice (it's no longer "active") while
+                // the envelope tail is still sounding, producing orphaned voices.
                 break;
             }
         }
@@ -757,7 +788,11 @@ private:
             v.noiseSeed ^= v.noiseSeed << 13;
             v.noiseSeed ^= v.noiseSeed >> 17;
             v.noiseSeed ^= v.noiseSeed << 5;
-            return static_cast<float>(v.noiseSeed) / static_cast<float>(0xFFFFFFFFu) * 2.0f - 1.0f;
+            // S8: fixed range — interpret as signed int for symmetric [-1,+1] output.
+            // Previous cast to float(uint32) / float(0xFFFFFFFFu) had precision loss:
+            // float(0xFFFFFFFFu) rounds to 2^32 so the divisor was correct, but
+            // using signed interpretation avoids the * 2.0f - 1.0f bias subtlety.
+            return static_cast<int32_t>(v.noiseSeed) * (1.0f / 2147483648.0f);
         }
 
         case 7: // Formant — sine product (naturally BL, no PolyBLEP needed)
@@ -776,10 +811,6 @@ private:
         }
     }
 
-    //-- Utility ----------------------------------------------------------------
-
-    static float midiToFreq(float note) { return 440.0f * std::pow(2.0f, (note - 69.0f) / 12.0f); }
-
     //-- State ------------------------------------------------------------------
 
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
@@ -787,7 +818,6 @@ private:
     float modWheel = 0.0f;
     float aftertouch = 0.0f;
     float pitchBendNorm = 0.0f;
-    uint32_t voiceCounter = 0;
 
     // Delay buffers (ping-pong) — dynamically sized in prepare() for sample-rate independence.
     // Max delay time = 0.5s (covers 0.375s L + headroom at any sample rate up to 192 kHz+).
@@ -795,12 +825,14 @@ private:
     int kDelayBufSizeDynamic = 24000; // updated in prepare()
     std::vector<float> delayBufL{};
     std::vector<float> delayBufR{};
-    int delayWritePos = 0;
+    // T4: use uint32_t to prevent signed-integer overflow after ~13 hours at 44100 Hz.
+    uint32_t delayWritePos = 0;
 
     // Reverb buffer (4-tap allpass diffusion)
     static constexpr int kReverbBufSize = 16384; // supports up to ~176kHz (largest tap 3079 * 4x)
     std::array<float, kReverbBufSize> reverbBuf{};
-    int reverbWritePos = 0;
+    // T3: use uint32_t to prevent signed-integer overflow on long sessions.
+    uint32_t reverbWritePos = 0;
 
     // Coupling modulation accumulators
     float couplingFilterMod = 0.0f;
