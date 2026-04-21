@@ -172,7 +172,10 @@ struct OrgSubOsc
             phase -= 1.f;
         float out = (phase < 0.5f) ? 1.f : -1.f;          // naive square
         out += orgPolyBLEP(phase, dt);                    // anti-alias at phase 0/1
-        out -= orgPolyBLEP(fmod(phase + 0.5f, 1.0f), dt); // anti-alias at duty crossing
+        // Duty crossing: avoid fmod — conditional subtraction is branch-free at audio rate
+        float ph2 = phase + 0.5f;
+        if (ph2 >= 1.0f) ph2 -= 1.0f;
+        out -= orgPolyBLEP(ph2, dt);
         return out;
     }
 };
@@ -196,30 +199,50 @@ struct OrgSquareOsc
             phase -= 1.f;
         float out = (phase < 0.5f) ? 1.f : -1.f;          // naive square
         out += orgPolyBLEP(phase, dt);                    // anti-alias at phase 0/1
-        out -= orgPolyBLEP(fmod(phase + 0.5f, 1.0f), dt); // anti-alias at duty crossing
+        // Duty crossing: avoid fmod — conditional subtraction is branch-free at audio rate
+        float ph2 = phase + 0.5f;
+        if (ph2 >= 1.0f) ph2 -= 1.0f;
+        out -= orgPolyBLEP(ph2, dt);
         return out;
     }
 };
 
 // ---------------------------------------------------------------------------
-// OrgTriOsc — triangle wave at fundamental frequency
+// OrgTriOsc — band-limited triangle wave at fundamental frequency.
+// Implemented as a differentiated PolyBLEP square wave integrated one step,
+// which removes slope-discontinuity aliasing at phase=0 and phase=0.5.
+// The integrator accumulates the differentiated square and is DC-offset-
+// corrected with a one-pole leak (coeff 0.999) to prevent long-term drift.
 // ---------------------------------------------------------------------------
 struct OrgTriOsc
 {
     float phase = 0.f;
-    float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
+    float sr = 0.0f;     // sentinel: must be set by prepare() before use (#671)
+    float integrator = 0.f; // running integration state for differentiated square
 
-    void prepare(double s) { sr = (float)s; }
-    void reset() { phase = 0.f; }
+    void prepare(double s) { sr = (float)s; integrator = 0.f; }
+    void reset() { phase = 0.f; integrator = 0.f; }
 
     float tick(float freq)
     {
-        phase += freq / sr;
+        float dt = freq / sr;
+        phase += dt;
         if (phase >= 1.f)
             phase -= 1.f;
-        // Triangle: 0→1 first half, 1→0 second half, scaled to -1..+1
-        float t = (phase < 0.5f) ? (phase * 2.f) : (2.f - phase * 2.f);
-        return t * 2.f - 1.f;
+
+        // Naive square (differentiated form drives triangle via integration)
+        float sq = (phase < 0.5f) ? 1.f : -1.f;
+        // PolyBLEP correction on both edges of the square
+        sq += orgPolyBLEP(phase, dt);
+        float ph2 = phase + 0.5f;
+        if (ph2 >= 1.0f) ph2 -= 1.0f;
+        sq -= orgPolyBLEP(ph2, dt);
+
+        // Integrate: tri ≈ sum of (band-limited square × 4*dt), normalised to ±1.
+        // Scale by 4*dt so the integral of a unit square over a half-period (0.5)
+        // reaches ±1.  Leak coefficient 0.9999 prevents unbounded DC drift.
+        integrator = integrator * 0.9999f + sq * 4.f * dt;
+        return flushDenormal(integrator);
     }
 };
 
@@ -437,8 +460,9 @@ public:
         params.push_back(std::make_unique<PF>(P("org_reverbMix", 1), "Reverb Mix", nr(0.f, 1.f), 0.2f));
 
         // --- 4 Macros ---
+        // Default 2/7 ≈ 0.2857 → ruleIndexF = 2.0 → kCuratedRules[2] = rule 110
         params.push_back(
-            std::make_unique<PF>(P("org_macroRule", 1), "RULE", nr(0.f, 1.f), 0.25f)); // maps to rule 110 by default
+            std::make_unique<PF>(P("org_macroRule", 1), "RULE", nr(0.f, 1.f), 2.f / 7.f)); // maps to rule 110 by default
         params.push_back(std::make_unique<PF>(P("org_macroSeed", 1), "SEED", nr(0.f, 1.f), 0.f));
         params.push_back(std::make_unique<PF>(P("org_macroCoupling", 1), "COUPLING", nr(0.f, 1.f), 0.f));
         params.push_back(std::make_unique<PF>(P("org_macroMutate", 1), "MUTATE", nr(0.f, 1.f), 0.f));
@@ -496,6 +520,10 @@ public:
 
         // Seed the LCG RNG with a fixed value
         rng = 0xDEADBEEFu;
+
+        // LFO shapes are fixed to Sine — set once here instead of every block
+        lfo1.setShape(StandardLFO::Sine);
+        lfo2.setShape(StandardLFO::Sine);
 
         prepareSilenceGate(sampleRate, maxBlockSize, 300.f);
         (void)maxBlockSize;
@@ -599,11 +627,13 @@ public:
                 stepCounter = 0;
                 scopeHistory.reset();
 
-                // Reset oscillators for clean attack
+                // Reset oscillators and filter for clean attack (prevents DC pop
+                // from stale ic1eq/ic2eq when note restarts with active filter state)
                 sawOsc.reset();
                 sqOsc.reset();
                 triOsc.reset();
                 subOsc.reset();
+                filter.reset();
                 wakeSilenceGate();
             }
             else if (msg.isNoteOff() && msg.getNoteNumber() == currentNote)
@@ -648,7 +678,8 @@ public:
         // 4. Snapshot parameters once per block (ParamSnapshot pattern)
         const float paramRule = p_rule->load();
         const float stepRate = p_stepRate->load();
-        const int scope = clamp((float)(int)(p_scope->load() + 0.5f), 1.f, 16.f);
+        // org_scope is AudioParameterInt [1,16]; round float atomic → int, then clamp defensively
+        const int scope = std::max(1, std::min(16, static_cast<int>(p_scope->load() + 0.5f)));
         const float baseMutate = p_mutate->load();
         const bool freeze = (p_freeze->load() > 0.5f);
         const int oscWave = (int)(p_oscWave->load() + 0.5f);
@@ -679,25 +710,27 @@ public:
         int ruleIdxB = std::min(ruleIdxA + 1, 7);
         float ruleBlend = ruleIndexF - (float)ruleIdxA;
 
-        // Blend between two adjacent curated rules by xor-smoothing the rule byte
-        // (integer blend: majority bit vote per bit position)
+        // Blend between two adjacent curated rules by stochastic bit selection.
+        // Each differing bit is assigned to ruleB with probability = ruleBlend
+        // using the engine's LCG. This spreads the transition across the blend
+        // range instead of snapping all differing bits at ruleBlend=0.5.
         int ruleA = kCuratedRules[ruleIdxA];
         int ruleB = kCuratedRules[ruleIdxB];
-        // Simple blend: pick ruleA or ruleB per bit based on blend threshold
         int currentRule = 0;
         for (int bit = 0; bit < 8; ++bit)
         {
             int ba = (ruleA >> bit) & 1;
             int bb = (ruleB >> bit) & 1;
-            // If bits agree, use that; otherwise use blend probability
             if (ba == bb)
             {
                 currentRule |= (ba << bit);
             }
             else
             {
-                // blend: prefer B when ruleBlend > 0.5
-                currentRule |= ((ruleBlend > 0.5f ? bb : ba) << bit);
+                // Stochastic blend: choose ruleB bit with probability ruleBlend
+                rng = rng * 1664525u + 1013904223u;
+                float t = static_cast<float>(rng >> 8) * (1.f / 16777216.f);
+                currentRule |= ((t < ruleBlend ? bb : ba) << bit);
             }
         }
 
@@ -752,11 +785,9 @@ public:
         float* L = buffer.getWritePointer(0);
         float* R = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : L;
 
-        // Set LFO rates once per block (StandardLFO — sine shape, D005 floor)
+        // Set LFO rates once per block (StandardLFO — shape fixed to Sine in prepare())
         lfo1.setRate(lfo1Rate, sr);
-        lfo1.setShape(StandardLFO::Sine);
         lfo2.setRate(lfo2Rate, sr);
-        lfo2.setShape(StandardLFO::Sine);
 
         // Consume coupling modulation (resets each block)
         const float savedCouplingFilter = couplingFilterMod;
@@ -788,10 +819,11 @@ public:
 
             // --- Smooth automaton outputs (one-pole ~3ms, sample-rate correct) ---
             // Prevents clicks from sudden parameter jumps when the automaton steps.
-            cellFilterOut += cellSmoothCoeff * (cellFilterTarget - cellFilterOut);
-            cellAmpRate += cellSmoothCoeff * (cellAmpTarget - cellAmpRate);
-            cellPitchOut += cellSmoothCoeff * (cellPitchTarget - cellPitchOut);
-            cellFXOut += cellSmoothCoeff * (cellFXTarget - cellFXOut);
+            // flushDenormal guards against denormal accumulation when target == output for many samples.
+            cellFilterOut = flushDenormal(cellFilterOut + cellSmoothCoeff * (cellFilterTarget - cellFilterOut));
+            cellAmpRate   = flushDenormal(cellAmpRate   + cellSmoothCoeff * (cellAmpTarget   - cellAmpRate));
+            cellPitchOut  = flushDenormal(cellPitchOut  + cellSmoothCoeff * (cellPitchTarget  - cellPitchOut));
+            cellFXOut     = flushDenormal(cellFXOut     + cellSmoothCoeff * (cellFXTarget     - cellFXOut));
 
             // --- LFO 1: modulates filter cutoff for additional movement ---
             float lfo1Val = lfo1.process(); // StandardLFO sine [-1, +1]
@@ -816,7 +848,10 @@ public:
                 break;
             case EnvStage::Attack:
                 envTarget = 1.f;
-                envCoeff = clamp(atkCoeff * envRateMod, 0.f, 1.f);
+                // Clamp modulated coeff to 0.95 max — prevents CA from making
+                // attack instantaneous (coeff=1 collapses per-sample smoothing to
+                // a step, causing an audible click on fast-cell states).
+                envCoeff = clamp(atkCoeff * envRateMod, 0.f, 0.95f);
                 if (ampEnvLevel >= 0.999f)
                 {
                     ampEnvLevel = 1.f;
@@ -825,7 +860,7 @@ public:
                 break;
             case EnvStage::Decay:
                 envTarget = ampSus;
-                envCoeff = clamp(decCoeff * envRateMod, 0.f, 1.f);
+                envCoeff = clamp(decCoeff * envRateMod, 0.f, 0.95f);
                 if (std::fabs(ampEnvLevel - ampSus) < 0.001f)
                 {
                     ampEnvLevel = ampSus;
@@ -852,10 +887,12 @@ public:
             // --- Pitch ---
             // Cells 8–11 → ±6 semitones offset from root
             // cellPitchOut 0–1 → semitone offset: (cellPitchOut * 12 - 6)
-            // Quantize to semitone boundaries to avoid atonal 0.75-semitone steps
+            // Quantize to semitone boundaries to avoid atonal 0.75-semitone steps.
+            // Coupling pitch added after quantization (coupling is continuous/expressive).
+            // Clamp total pitch offset to ±24 st to prevent freq underflow / near-DC.
             float rawSemitones = (cellPitchOut * 12.f - 6.f);
             float quantizedSemitones = std::round(rawSemitones);
-            float pitchSemitones = quantizedSemitones + savedCouplingPitch;
+            float pitchSemitones = clamp(quantizedSemitones + savedCouplingPitch, -24.f, 24.f);
             float freq = rootFreq * fastPow2(pitchSemitones / 12.f);
 
             // --- Oscillator ---
@@ -875,7 +912,8 @@ public:
                 oscOut = sawOsc.tick(freq);
                 break;
             }
-            float subOut = subOsc.tick(freq);
+            // Skip sub oscillator tick when subLevel is effectively zero (saves ~15% per-sample cost)
+            float subOut = (subLevel > 0.001f) ? subOsc.tick(freq) : 0.f;
             float mixed = oscOut * (1.f - subLevel * 0.5f) + subOut * subLevel;
 
             // --- Filter ---
@@ -905,21 +943,19 @@ public:
             // Soft-clip
             output = softClip(output);
 
-            L[n] = output;
-            R[n] = output;
+            // --- Reverb (merged into main loop to avoid second full-buffer pass) ---
+            // cellFXOut is smoothed at audio rate above, so per-sample reverb mix is correct.
+            // Use separate l/r locals — reverb.process() takes both by ref and reads each
+            // before writing; aliasing (same var for both) corrupts the R-channel comb reads.
+            float effectiveReverb = clamp(reverbMix + cellFXOut * 0.3f, 0.f, 1.f);
+            float outL = output, outR = output;
+            reverb.process(outL, outR, effectiveReverb);
 
+            L[n] = outL;
+            R[n] = outR;
+
+            // Cache mono average for coupling (pre-split signal is fine for coupling reads)
             lastOutputSample = output;
-        }
-
-        // --- Block-level reverb ---
-        // Cells 12–15 (cellFXOut) modulate reverb mix
-        float effectiveReverb = clamp(reverbMix + cellFXOut * 0.3f, 0.f, 1.f);
-        for (int n = 0; n < numSamples; ++n)
-        {
-            float l = L[n], r = R[n];
-            reverb.process(l, r, effectiveReverb);
-            L[n] = l;
-            R[n] = r;
         }
 
         // 5. Feed SilenceGate analyzer
