@@ -39,9 +39,13 @@ public:
 
     void prepare(double sampleRate) noexcept
     {
-        sr = sampleRate;
         std::fill(buffer.begin(), buffer.end(), 0.0f);
         writePos = 0;
+        // FIX (readPhases-prepare): reset drift phases on prepare so stale
+        // values from a previous session do not modulate the first playback.
+        for (auto& h : readPhases)
+            h = 0.0f;
+        (void)sampleRate; // sampleRate passed per-call to readGrains — not stored
     }
 
     void reset() noexcept
@@ -111,7 +115,6 @@ public:
 
 private:
     std::array<float, kMaxBufferSamples> buffer{};
-    double sr = 0.0;  // Sentinel: must be set by prepare() before use
     int writePos = 0;
     float readPhases[4] = {};
 };
@@ -336,11 +339,15 @@ public:
         // --- LFO processing at control rate (every 64 samples) ---
         // LFO1 modulates blend (CHARACTER shimmer/darkness axis + MOVEMENT depth scale)
         // LFO2 modulates filter cutoff (autonomous breathing — D005)
+        //
+        // FIX (P-CTRL-RATE-PHASE-MISS): use -= kControlRate instead of = 0 so
+        // sub-period residual samples carry over, keeping the LFO update interval
+        // accurate across variable block sizes (e.g. 128 or 512 samples).
         static constexpr int kControlRate = 64;
         lfoControlCounter += numSamples;
         if (lfoControlCounter >= kControlRate)
         {
-            lfoControlCounter = 0;
+            lfoControlCounter -= kControlRate;
 
             // LFO1: blend modulation — rate floored at 0.01 Hz for D005 compliance
             // StandardLFO phaseInc = hz / sampleRate; advancing once per kControlRate
@@ -417,7 +424,10 @@ public:
         float lfo2CutoffMod = lfo2Value * 3000.0f; // LFO2 sweeps ±3kHz * depth * movement
         float effectiveCutoff = clamp(cutoff + filterMod + lfo2CutoffMod, 20.0f, 20000.0f);
 
-        // Hoist filter coefficient updates outside sample loop
+        // Hoist per-voice block-rate updates outside the sample loop.
+        // FIX (perf/setWaveform): oscPrimary.setWaveform and oscSub.setWaveform
+        // were called every sample per voice — waveform is constant within a
+        // block, so set them here once instead.
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -426,6 +436,9 @@ public:
             float velCutoffBoost = voice.velocity * velCutoffScale * 8000.0f;
             voice.lpf.setCoefficients(clamp(effectiveCutoff + velCutoffBoost, 20.0f, 20000.0f), reso, srf);
             voice.hpf.setCoefficients(80.0f, 0.0f, srf); // 80Hz HPF for Opsis clarity
+            // Waveform: constant within a block — set once here, not per-sample
+            voice.oscPrimary.setWaveform(waveform);
+            voice.oscSub.setWaveform(PolyBLEP::Waveform::Sine); // sub is always Sine
         }
 
         float peakEnv = 0.0f;
@@ -440,38 +453,42 @@ public:
                 if (!voice.active)
                     continue;
 
-                // --- ADSR envelope ---
-                float envTarget = 0.0f;
-                float envRate = 0.0f;
+                // --- ADSR envelope (P-EULER-ADSR fix) ---
+                // Use exponential (matched-Z) coefficients: coeff = 1 - exp(-1/(T*sr)).
+                // Euler rate 1/(T*sr) overshots unity when T*sr < 1 (short times at
+                // high sample rates), causing clicks on fast attacks and release pops.
                 switch (voice.envStage)
                 {
                 case OmbreVoice::EnvStage::Attack:
-                    envTarget = 1.0f;
-                    envRate = (attack > 0.001f) ? (1.0f / (attack * srf)) : 1.0f;
-                    voice.envLevel += (envTarget - voice.envLevel) * envRate;
-                    if (voice.envLevel >= 1.0f)
+                {
+                    float coeff = (attack > 0.001f) ? (1.0f - fastExp(-1.0f / (attack * srf))) : 1.0f;
+                    voice.envLevel += (1.0f - voice.envLevel) * coeff;
+                    if (voice.envLevel >= 0.9999f)
                     {
                         voice.envLevel = 1.0f;
                         voice.envStage = OmbreVoice::EnvStage::Decay;
                     }
                     break;
+                }
                 case OmbreVoice::EnvStage::Decay:
-                    envRate = (decay > 0.001f) ? (1.0f / (decay * srf)) : 1.0f;
-                    voice.envLevel -= envRate * (voice.envLevel - sustain);
-                    if (voice.envLevel <= sustain + 0.001f)
+                {
+                    float coeff = (decay > 0.001f) ? (1.0f - fastExp(-1.0f / (decay * srf))) : 1.0f;
+                    voice.envLevel += (sustain - voice.envLevel) * coeff;
+                    if (voice.envLevel <= sustain + 0.0001f)
                     {
                         voice.envLevel = sustain;
                         voice.envStage = OmbreVoice::EnvStage::Sustain;
                     }
                     break;
+                }
                 case OmbreVoice::EnvStage::Sustain:
                     voice.envLevel = sustain;
                     break;
                 case OmbreVoice::EnvStage::Release:
-                    envTarget = 0.0f;
-                    envRate = (release > 0.001f) ? (1.0f / (release * srf)) : 1.0f;
-                    voice.envLevel += (envTarget - voice.envLevel) * envRate;
-                    if (voice.envLevel <= 0.0f)
+                {
+                    float coeff = (release > 0.001f) ? (1.0f - fastExp(-1.0f / (release * srf))) : 1.0f;
+                    voice.envLevel += (0.0f - voice.envLevel) * coeff;
+                    if (voice.envLevel <= 1e-5f)
                     {
                         voice.envLevel = 0.0f;
                         voice.envStage = OmbreVoice::EnvStage::Off;
@@ -479,6 +496,7 @@ public:
                         continue;
                     }
                     break;
+                }
                 case OmbreVoice::EnvStage::Off:
                     voice.active = false;
                     continue;
@@ -512,18 +530,26 @@ public:
                         fmFreq = 1.0f;
 
                     voice.oscPrimary.setFrequency(fmFreq, srf);
-                    voice.oscPrimary.setWaveform(waveform);
+                    // setWaveform hoisted to block-level loop above
                     float primary = voice.oscPrimary.processSample();
 
                     // Sub oscillator (one octave down, always sine)
                     voice.oscSub.setFrequency(fmFreq * 0.5f, srf);
-                    voice.oscSub.setWaveform(PolyBLEP::Waveform::Sine);
+                    // setWaveform(Sine) hoisted to block-level loop above
                     float sub = voice.oscSub.processSample() * subLevel;
 
-                    // Transient burst — sharp attack that decays exponentially
-                    // Reactivity controls how much velocity shapes the transient
+                    // Transient burst — sharp attack that decays exponentially.
+                    // FIX (transient-SR): old coefficient (0.999 - reactivity*0.003)
+                    // was applied per-sample without SR scaling, making the transient
+                    // decay 2× slower at 96kHz than at 48kHz. Use fastExp to derive
+                    // a proper SR-correct coefficient targeting ~50ms base decay.
+                    // Reactivity shrinks decay time from 50ms (slow) to 10ms (fast).
                     float transientGain = voice.opsisTransient * reactivity * 4.0f;
-                    voice.opsisTransient *= 0.999f - reactivity * 0.003f;
+                    {
+                        float decayMs = 50.0f - reactivity * 40.0f; // 10ms–50ms
+                        float transientCoeff = fastExp(-1.0f / (decayMs * 0.001f * srf));
+                        voice.opsisTransient *= transientCoeff;
+                    }
                     voice.opsisTransient = flushDenormal(voice.opsisTransient);
 
                     // Transient adds saturation intensity
@@ -559,12 +585,18 @@ public:
 
                 // Interference: Oubli output modulates Opsis pitch slightly
                 // (memories haunt the present)
+                // FIX (haunt-sub-sync): also update oscSub to match the haunted
+                // frequency, otherwise the sub drifts out of octave alignment
+                // when interference > 0, producing inharmonic beating.
                 if (interference > 0.01f)
                 {
                     float hauntMod = oubliOut * interference * 0.02f;
                     float hauntedFreq = freq * (1.0f + hauntMod);
                     if (hauntedFreq > 1.0f)
+                    {
                         voice.oscPrimary.setFrequency(hauntedFreq, srf);
+                        voice.oscSub.setFrequency(hauntedFreq * 0.5f, srf);
+                    }
                 }
 
                 // Crossfade: blend 0.0 = pure Oubli (ghost), 1.0 = pure Opsis (now)
@@ -582,7 +614,10 @@ public:
                 // more dimensional sound. Pushes from 8.0 toward 8.5 territory.
                 float stereoWidth = (1.0f - effectiveBlend) * 0.45f; // wider than 0.3
                 stereoWidth += voice.velocity * 0.1f;                // harder hits = wider
-                float panMod = oubliOut * stereoWidth;
+                // FIX (P-STEREOREV-SHARED): clamp panMod to [-1, +1] — oubliOut is an
+                // unbounded audio signal; unclipped it drives gain factors outside [0, 2]
+                // causing intermodulation distortion on loud grain reconstructions.
+                float panMod = clamp(oubliOut * stereoWidth, -1.0f, 1.0f);
                 // LFO2 adds gentle stereo breathing (subtle L/R sway)
                 float stereoBreathe = lfo2Value * 0.08f;
                 float outL = out * (1.0f - panMod * 0.5f + stereoBreathe);
@@ -618,7 +653,11 @@ public:
 
         envelopeOutput = peakEnv;
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // FIX (silenceGate-mono-UB): guard right-channel pointer — if only one
+        // channel exists, getReadPointer(1) is out of bounds (UB). Pass nullptr
+        // for mono so SilenceGate uses channel 0 only.
+        const float* rightPtr = (buffer.getNumChannels() >= 2) ? buffer.getReadPointer(1) : nullptr;
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), rightPtr, numSamples);
     }
 
     //-- Coupling --------------------------------------------------------------
@@ -675,12 +714,9 @@ public:
 
     //-- Parameters ------------------------------------------------------------
 
+    // FIX (dead-wrapper): addParametersImpl was only ever called via addParameters.
+    // Collapsed into addParameters directly — fleet convention is addParameters only.
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
-    {
-        addParametersImpl(params);
-    }
-
-    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         // --- Dual-narrative core ---
 
@@ -904,8 +940,7 @@ private:
         return oldest;
     }
 
-    static float midiToHz(float midiNote) noexcept { return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f); }
-
+    // midiToHz removed: dead code — fastPow2 inline is used directly in renderBlock.
     //--------------------------------------------------------------------------
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
