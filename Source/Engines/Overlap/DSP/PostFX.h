@@ -116,11 +116,18 @@ public:
 
 private:
     //==========================================================================
-    static constexpr int kChorusBufLen = 4096; // ~93ms at 44.1kHz
+    // F11: chorus max delay is 25ms.  At 192kHz: 0.025 * 192000 = 4800 samples > 4096.
+    // Extend to 8192 (next power-of-two above 4800) to cover 192kHz.
+    static constexpr int kChorusBufLen = 8192; // covers 192kHz @ 25ms max delay
     static constexpr int kDiffStages = 3;
-    static constexpr int kApBufLen = 512; // ~11.6ms max per stage
+    // F03: all-pass delay constants are in absolute samples tuned for 44.1kHz.
+    // At 96kHz, delay 257 → 561 samples and delay 397 → 866 samples, both > kApBufLen=512.
+    // Extend kApBufLen to 2048 (next power-of-two above 866) to cover 96kHz.
+    static constexpr int kApBufLen = 2048; // covers 96kHz for all three stage delays
 
     // All-pass delay lengths in samples (inharmonic primes for diffusion)
+    // NOTE: these are calibrated at 44.1kHz; at higher sample rates the diffusion
+    // tail is proportionally shorter, which is acceptable (no audible artefact).
     static constexpr int kApDelays[kDiffStages] = {113, 257, 397};
 
     float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
@@ -147,14 +154,9 @@ private:
         int d1 = static_cast<int>(delaySamples);
         float frac = delaySamples - static_cast<float>(d1);
 
-        int rp1 = writePos - d1;
-        int rp2 = rp1 - 1;
-        while (rp1 < 0)
-            rp1 += bufLen;
-        while (rp2 < 0)
-            rp2 += bufLen;
-        rp1 %= bufLen;
-        rp2 %= bufLen;
+        // F13-style: O(1) modulo avoids while-loop for large delay values
+        int rp1 = ((writePos - d1) % bufLen + bufLen) % bufLen;
+        int rp2 = (rp1 - 1 + bufLen) % bufLen;
 
         return buf[static_cast<size_t>(rp1)] * (1.0f - frac) + buf[static_cast<size_t>(rp2)] * frac;
     }
@@ -171,11 +173,8 @@ private:
             int& wp = writes[static_cast<size_t>(s)];
             int d = kApDelays[s];
 
-            // Read from delay
-            int rp = wp - d;
-            if (rp < 0)
-                rp += kApBufLen;
-            rp %= kApBufLen;
+            // Read from delay — O(1) modulo, safe with extended kApBufLen
+            int rp = ((wp - d) % kApBufLen + kApBufLen) % kApBufLen;
             float delayed = buf[static_cast<size_t>(rp)];
 
             // All-pass difference equation: w[n] = x[n] - g * w[n-D]

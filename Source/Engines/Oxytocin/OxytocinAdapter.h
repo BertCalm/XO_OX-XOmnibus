@@ -44,7 +44,11 @@ public:
     void prepare(double sampleRate, int maxBlockSize) override
     {
         engine_.prepare(sampleRate, maxBlockSize);
-        snap_.update(*(apvts_)); // safe no-op if apvts_ not yet set
+        // F26 fix: apvts_ may be nullptr if prepare() is called before attachParameters()
+        // (valid JUCE lifecycle).  Forming *(nullptr) is undefined behaviour even though
+        // the overload ignores the reference — guard before dereferencing.
+        if (apvts_ != nullptr)
+            snap_.update(*apvts_);
         // SRO SilenceGate: polyphonic synth with reverb-like tails — 500ms hold
         prepareSilenceGate(sampleRate, maxBlockSize, 500.0f);
         couplingCacheL_ = 0.0f;
@@ -152,13 +156,22 @@ public:
         // Run the DSP engine
         engine_.processBlock(buffer, midi, snap_);
 
-        // Cache last stereo sample for coupling reads
+        // Cache block-peak stereo levels for coupling reads.
+        // F29 fix: previously stored the last sample — unreliable for percussive signals
+        // where the transient may be at the start and the tail is near silence.
+        // Block-peak gives downstream coupling engines a stable, attack-representative value.
         if (numSamples > 0 && buffer.getNumChannels() >= 2)
         {
             const auto* L = buffer.getReadPointer(0);
             const auto* R = buffer.getReadPointer(1);
-            couplingCacheL_ = L[numSamples - 1];
-            couplingCacheR_ = R[numSamples - 1];
+            float peakL = 0.0f, peakR = 0.0f;
+            for (int s = 0; s < numSamples; ++s)
+            {
+                peakL = std::max(peakL, std::abs(L[s]));
+                peakR = std::max(peakR, std::abs(R[s]));
+            }
+            couplingCacheL_ = peakL;
+            couplingCacheR_ = peakR;
         }
 
         // Update active voice count (for UI) — reads live voice state on audio thread,

@@ -107,15 +107,11 @@ public:
             int tapInt = static_cast<int>(tapOffset);
             float tapFrac = tapOffset - static_cast<float>(tapInt);
 
-            // Linear interpolation between two adjacent buffer positions
-            int rp1 = writeHead - tapInt;
-            int rp2 = rp1 - 1;
-            while (rp1 < 0)
-                rp1 += kBufLen;
-            while (rp2 < 0)
-                rp2 += kBufLen;
-            rp1 %= kBufLen;
-            rp2 %= kBufLen;
+            // F07/F13: replace while-loop negative-index correction with O(1) modulo.
+            // When tapInt >> kBufLen the while loop could iterate many times.
+            // Single modulo is safe because kBufLen is chosen to fit any valid tapInt.
+            int rp1 = ((writeHead - tapInt) % kBufLen + kBufLen) % kBufLen;
+            int rp2 = (rp1 - 1 + kBufLen) % kBufLen;
             float tapSample =
                 buffer[static_cast<size_t>(rp1)] * (1.0f - tapFrac) + buffer[static_cast<size_t>(rp2)] * tapFrac;
 
@@ -149,7 +145,11 @@ public:
 private:
     //==========================================================================
     static constexpr int kTaps = 7;
-    static constexpr int kBufLen = 8192; // ~186ms at 44.1kHz — enough for any delayBase
+    // F02: kBufLen must accommodate (delayBase_max_ms * maxTapRatio * sr_max / 1000).
+    // At 44.1kHz, 50ms delayBase, ratio 3.89: 50*3.89*44100/1000 = 8577 samples.
+    // At 96kHz, 50ms: 50*3.89*96000/1000 = 18 672 samples.
+    // Use 24 576 (next power-of-two above 18 672) to cover 96kHz safely.
+    static constexpr int kBufLen = 24576; // covers 96kHz, 50ms × 3.89 tap ratio
 
     // Near-prime tap ratio multipliers for inharmonic shimmer character
     static constexpr float kTapRatios[kTaps] = {1.0f, 1.31f, 1.71f, 2.09f, 2.61f, 3.19f, 3.89f};

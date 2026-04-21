@@ -101,10 +101,14 @@ namespace xoceanus
 // 512*9 vs 2048*11 — roughly 2x fewer operations, with 4x more frequent hops
 // partially offset by the smaller window; net savings ~50% CPU per voice).
 //==============================================================================
-static constexpr int kFFTSize = 512;              // FFT frame length in samples (reduced from 2048, fix #171)
-static constexpr int kFFTHalf = kFFTSize / 2 + 1; // 257 positive-frequency bins (DC through Nyquist)
-static constexpr int kHopSize = kFFTSize / 4;     // 128 samples between analysis frames (4x overlap)
-static constexpr int kOverlapFactor = 4;          // Overlap factor: 4x for smooth Hann-window reconstruction
+// R1: Use inline constexpr (C++17) at namespace scope to avoid ODR violations.
+// Previously 'static constexpr' at namespace scope — static gives each TU its own
+// copy which is fine for integers but misleads static analysis tools. inline constexpr
+// is the idiomatic C++17 form for shared header constants.
+inline constexpr int kOrigamiFFTSize = 512;              // FFT frame length in samples (reduced from 2048, fix #171)
+inline constexpr int kOrigamiFFTHalf = kOrigamiFFTSize / 2 + 1; // 257 positive-frequency bins (DC through Nyquist)
+inline constexpr int kOrigamiHopSize = kOrigamiFFTSize / 4;     // 128 samples between analysis frames (4x overlap)
+// D1/P5: kOverlapFactor omitted — was declared but never referenced in code.
 
 //==============================================================================
 // OrigamiADSR -- Lightweight ADSR Envelope Generator
@@ -237,10 +241,10 @@ using OrigamiLFO = StandardLFO;
 //==============================================================================
 struct SpectralFrame
 {
-    std::array<float, kFFTHalf> magnitude{};         // Magnitude per bin (linear scale)
-    std::array<float, kFFTHalf> phase{};             // Phase per bin (radians, [-PI, PI])
-    std::array<float, kFFTHalf> previousPhase{};     // Phase from the previous hop (for phase vocoder delta)
-    std::array<float, kFFTHalf> instantaneousFreq{}; // True frequency per bin (Hz), accounting for phase deviation
+    std::array<float, kOrigamiFFTHalf> magnitude{};         // Magnitude per bin (linear scale)
+    std::array<float, kOrigamiFFTHalf> phase{};             // Phase per bin (radians, [-PI, PI])
+    std::array<float, kOrigamiFFTHalf> previousPhase{};     // Phase from the previous hop (for phase vocoder delta)
+    std::array<float, kOrigamiFFTHalf> instantaneousFreq{}; // True frequency per bin (Hz), accounting for phase deviation
 
     void clear() noexcept
     {
@@ -289,10 +293,10 @@ struct OrigamiVoice
     OrigamiLFO lfo2; // Secondary LFO: default target is rotate amount
 
     // ---- STFT Analysis / Resynthesis Buffers ----
-    std::array<float, kFFTSize> inputRingBuffer{};       // Circular buffer capturing oscillator output
-    std::array<float, kFFTSize> overlapAddAccumulator{}; // Overlap-add output reconstruction buffer
-    int inputWritePosition = 0;                          // Current write head in the circular input buffer
-    int hopSampleCounter = 0;                            // Samples remaining until next STFT hop
+    std::array<float, kOrigamiFFTSize> inputRingBuffer{};       // Circular buffer capturing oscillator output
+    std::array<float, kOrigamiFFTSize> overlapAddAccumulator{}; // Overlap-add output reconstruction buffer
+    int inputWritePosition = 0;                                  // Current write head in the circular input buffer
+    int hopSampleCounter = 0;                                    // Samples remaining until next STFT hop
 
     // ---- Spectral Frames ----
     SpectralFrame analysisFrame; // Most recent live analysis result
@@ -300,14 +304,15 @@ struct OrigamiVoice
     bool hasFrozenFrame = false; // True once at least one frame has been captured for freeze
 
     // ---- STFT Working Buffers (pre-allocated, reused each hop) ----
-    std::array<float, kFFTSize> windowedInput{};     // Input after Hann window multiplication
-    std::array<float, kFFTSize> fftReal{};           // Real part for forward FFT
-    std::array<float, kFFTSize> fftImaginary{};      // Imaginary part for forward FFT
-    std::array<float, kFFTHalf> foldedMagnitude{};   // Magnitude after spectral operations
-    std::array<float, kFFTHalf> foldedPhase{};       // Phase after spectral operations
-    std::array<float, kFFTSize> ifftReal{};          // Real part for inverse FFT
-    std::array<float, kFFTSize> ifftImaginary{};     // Imaginary part for inverse FFT
-    std::array<float, kFFTSize> resynthesisWindow{}; // Windowed output for overlap-add
+    std::array<float, kOrigamiFFTSize> windowedInput{};     // Input after Hann window multiplication
+    std::array<float, kOrigamiFFTSize> fftReal{};           // Real part for forward FFT
+    std::array<float, kOrigamiFFTSize> fftImaginary{};      // Imaginary part for forward FFT
+    std::array<float, kOrigamiFFTHalf> foldedMagnitude{};   // Magnitude after spectral operations
+    std::array<float, kOrigamiFFTHalf> foldedPhase{};       // Phase after spectral operations
+    std::array<float, kOrigamiFFTSize> ifftReal{};          // Real part for inverse FFT
+    std::array<float, kOrigamiFFTSize> ifftImaginary{};     // Imaginary part for inverse FFT
+    // D2: resynthesisWindow removed — was allocated (2KB/voice, 16KB total) but
+    // never written or read. Overlap-add uses hannWindow directly from OrigamiEngine.
 
     // ---- Post-FFT Smoothing Filter ----
     CytomicSVF postFilter; // Lowpass at ~18kHz to tame FFT artifacts
@@ -324,7 +329,10 @@ struct OrigamiVoice
         sawPhase = 0.0f;
         squarePhase = 0.0f;
         noiseGeneratorState = 12345u;
-        glide.snapTo(440.0f);
+        // V2: was glide.snapTo(440.0f) — hardcoded A4 is wrong for voices not yet
+        // assigned. GlideProcessor initialises its own frequency to 0Hz; snapTo is
+        // only needed in handleNoteOn where the real target frequency is known.
+        glide.snapTo(0.0f);
         crossfadeGain = 1.0f;
         isFadingOut = false;
         inputWritePosition = 0;
@@ -361,6 +369,13 @@ class OrigamiEngine : public SynthEngine
 {
 public:
     static constexpr int kMaxVoices = 8;
+
+    // ---- FFT Constants (aliases for the inline constexpr namespace constants above) ----
+    static constexpr int kFFTSize = kOrigamiFFTSize;
+    static constexpr int kFFTHalf = kOrigamiFFTHalf;
+    static constexpr int kHopSize = kOrigamiHopSize;
+    // D1/P5: kOverlapFactor omitted — was declared but never used; the COLA
+    // normalization factor (2/3) is derived analytically, not from this constant.
 
     // ---- Mathematical Constants ----
     static constexpr float kPI = 3.14159265358979323846f;
@@ -401,7 +416,8 @@ public:
         frequencyPerBin = sampleRateFloat / static_cast<float>(kFFTSize);
 
         // P0-03 fix: guard against host block sizes smaller than the FFT hop size.
-        // The STFT pipeline requires at least kHopSize (512) samples of history
+        // R2: kHopSize is 128 samples (kFFTSize/4 = 512/4), not 512.
+        // The STFT pipeline requires at least kHopSize (128) samples of history
         // per block to trigger a valid analysis frame. Clamp to the minimum.
         int safeBlockSize = std::max(maxBlockSize, kHopSize);
 
@@ -456,10 +472,14 @@ public:
         couplingSourceModulation = 0.0f;
 
         // ---- Reset smoothed parameter states ----
-        smoothFoldPoint.snapTo(0.5f);
-        smoothFoldDepth.snapTo(0.5f);
-        smoothRotate.snapTo(0.0f);
-        smoothStretch.snapTo(0.0f);
+        // T3: Snap smoothers to current parameter values, not hardcoded defaults.
+        // Snapping to 0.5/0.0 when user params differ causes a transient jump on
+        // allNotesOff. loadParam() returns the live atomic value (or the default
+        // if not yet attached), so this is safe before and after attachParameters().
+        smoothFoldPoint.snapTo(loadParam(pFoldPoint, 0.5f));
+        smoothFoldDepth.snapTo(loadParam(pFoldDepth, 0.5f));
+        smoothRotate.snapTo(loadParam(pRotate, 0.0f));
+        smoothStretch.snapTo(loadParam(pStretch, 0.0f));
 
         // ---- Clear output caches ----
         std::fill(outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
@@ -566,10 +586,12 @@ public:
         float effectiveFoldPoint = clamp(paramFoldPoint + macroFold * 0.4f + couplingFoldPointModulation, 0.0f, 1.0f);
         float effectiveFoldDepth = clamp(paramFoldDepth + macroFold * 0.3f + couplingFoldDepthModulation, 0.0f, 1.0f);
 
-        // M2 MOTION: adds 50% of macro range to rotate, 30% to LFO1 depth.
+        // M2 MOTION: adds 50% of macro range to rotate, 30% to both LFO depths.
+        // S2 fix: LFO2 was missing macroMotion modulation; now symmetric with LFO1.
         // Higher motion macro = more spectral movement and modulation depth.
         float effectiveRotate = clamp(paramRotate + macroMotion * 0.5f, -1.0f, 1.0f);
         float lfo1EffectiveDepth = paramLfo1Depth + macroMotion * 0.3f;
+        float lfo2EffectiveDepth = paramLfo2Depth + macroMotion * 0.3f; // S2: was paramLfo2Depth only
 
         // M3 COUPLING: adds 50% of macro range to source blend.
         // Full coupling macro = half external source, still blended with internal.
@@ -653,6 +675,11 @@ public:
         smoothRotate.set(effectiveRotate);
         smoothStretch.set(effectiveStretch);
 
+        // T2: Clear output buffer before addSample accumulation.
+        // Hosts are not required to deliver a zeroed buffer; if the host reuses
+        // the buffer for multiple plugin calls, stale content would corrupt output.
+        buffer.clear();
+
         float peakEnvelopeLevel = 0.0f;
 
         // ---- Pre-compute per-voice constant-power pan gains ----
@@ -719,7 +746,7 @@ public:
 
                 // ---- LFO modulation ----
                 float lfo1Value = voice.lfo1.process() * lfo1EffectiveDepth;
-                float lfo2Value = voice.lfo2.process() * paramLfo2Depth;
+                float lfo2Value = voice.lfo2.process() * lfo2EffectiveDepth; // S2: use macro-modulated depth
 
                 // LFO routing: LFO1 -> fold point, LFO2 -> rotate amount.
                 // 0.3f scaling factor keeps modulation musical -- full LFO depth
@@ -800,6 +827,12 @@ public:
                 outputSample = flushDenormal(outputSample);
 
                 // ---- Post-FFT brightness filter (velocity-modulated) ----
+                // The postFilter is a lowpass SVF that tames FFT artifacts and doubles
+                // as a D001-compliant velocity->brightness control. Higher velocity
+                // opens the filter (brighter), lower velocity darkens. The base cutoff
+                // of 18kHz is pulled down by (1 - velocity) to create a 4kHz-18kHz range.
+                // P4: setCoefficients() is block-constant (velocity doesn't change mid-block);
+                // it was moved to handleNoteOn so it runs once per note rather than once per sample.
                 // velBrightness is note-constant (voice.velocity latched at noteOn),
                 // so the SVF coefficient refresh only needs to happen once per decimated
                 // interval rather than per sample.
@@ -858,12 +891,15 @@ public:
 
         envelopeOutput = peakEnvelopeLevel;
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // T1: Guard against mono buffers — getReadPointer(1) crashes if numChannels == 1.
+        silenceGate.analyzeBlock(buffer.getReadPointer(0),
+                                 buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : nullptr,
+                                 numSamples);
 
-        // Clear coupling input buffer for next block
-        std::fill(couplingInputBuffer.begin(),
-                  couplingInputBuffer.begin() + std::min(static_cast<size_t>(numSamples), couplingInputBuffer.size()),
-                  0.0f);
+        // C1: Clear the full coupling input buffer (not just numSamples) to prevent
+        // stale coupling audio bleeding into a subsequent smaller block. The buffer
+        // is sized to safeBlockSize in prepare(), which may exceed numSamples.
+        std::fill(couplingInputBuffer.begin(), couplingInputBuffer.end(), 0.0f);
 
         // Update active voice count (atomic-safe for UI thread reads)
         int count = 0;
@@ -1388,6 +1424,14 @@ private:
         {
             float cascadedFoldPoint = clamp(foldPoint + static_cast<float>(cascade) * 0.1f, 0.0f, 0.99f);
 
+            // S3: Each cascade uses a shifted driving parameter so repeated passes
+            // produce different spectral shapes rather than identical redundant folds.
+            // FOLD/MIRROR shift their fold point by +10% per cascade (existing behaviour).
+            // ROTATE shifts rotate by +0.1 per cascade; STRETCH shifts by +0.05.
+            // Clamping keeps all values inside their valid ranges.
+            float cascadedRotate  = clamp(rotate  + static_cast<float>(cascade) * 0.1f, -1.0f, 1.0f);
+            float cascadedStretch = clamp(stretch + static_cast<float>(cascade) * 0.05f, -1.0f, 1.0f);
+
             switch (operation)
             {
             case 0: // FOLD -- reflect spectrum at fold point
@@ -1398,10 +1442,10 @@ private:
                                     foldDepth);
                 break;
             case 2: // ROTATE -- circular shift of magnitude spectrum
-                applySpectralRotate(voice.foldedMagnitude.data(), voice.foldedPhase.data(), rotate, foldDepth);
+                applySpectralRotate(voice.foldedMagnitude.data(), voice.foldedPhase.data(), cascadedRotate, foldDepth);
                 break;
             case 3: // STRETCH -- nonlinear frequency-axis warping
-                applySpectralStretch(voice.foldedMagnitude.data(), voice.foldedPhase.data(), stretch, foldDepth);
+                applySpectralStretch(voice.foldedMagnitude.data(), voice.foldedPhase.data(), cascadedStretch, foldDepth);
                 break;
             default:
                 break;
@@ -1599,15 +1643,21 @@ private:
 
             if (lowerBin >= 0 && lowerBin < kFFTHalf)
             {
-                tempMagnitude[static_cast<size_t>(lowerBin)] += magnitude[bin] * (1.0f - interpolationFraction);
-                tempPhase[static_cast<size_t>(lowerBin)] = phase[bin];
+                float contribution = magnitude[bin] * (1.0f - interpolationFraction);
+                // S4: Track the largest contributor per destination bin for phase assignment.
+                // The old guard condition was inverted and used tempMagnitude after accumulation,
+                // causing phase to be overwritten by the last (not dominant) contributor.
+                // Now we compare against the accumulated value before adding.
+                if (contribution > tempMagnitude[static_cast<size_t>(lowerBin)])
+                    tempPhase[static_cast<size_t>(lowerBin)] = phase[bin];
+                tempMagnitude[static_cast<size_t>(lowerBin)] += contribution;
             }
             if (upperBin >= 0 && upperBin < kFFTHalf)
             {
-                tempMagnitude[static_cast<size_t>(upperBin)] += magnitude[bin] * interpolationFraction;
-                // Only overwrite phase if this bin is now the dominant contributor
-                if (tempMagnitude[static_cast<size_t>(upperBin)] < magnitude[bin] * interpolationFraction * 1.1f)
+                float contribution = magnitude[bin] * interpolationFraction;
+                if (contribution > tempMagnitude[static_cast<size_t>(upperBin)])
                     tempPhase[static_cast<size_t>(upperBin)] = phase[bin];
+                tempMagnitude[static_cast<size_t>(upperBin)] += contribution;
             }
         }
 
@@ -1641,15 +1691,24 @@ private:
         //   stretch =  0 -> exponent = 1.0  (identity, no change)
         //   stretch = +1 -> exponent = 2.0  (square-law: darken)
         //   stretch = -1 -> exponent = 0.5  (square-root: brighten)
-        float warpExponent = std::pow(2.0f, stretchAmount);
+        // P1: Use fastPow2 (bit-trick, ~0.02% error) instead of std::pow — computed
+        // once per STFT hop so the single std::pow call is acceptable, but fastPow2
+        // avoids a libm call in the inner loop below.
+        float warpExponent = fastPow2(stretchAmount);
 
+        // P1: Inner loop replaces std::pow(normalizedFrequency, warpExponent) with
+        // fastPow2(warpExponent * fastLog2(normalizedFrequency)) — ~25x faster per bin,
+        // saving ~(kFFTHalf-1)*foldCount std::pow calls per hop across all voices.
+        // fastLog2 returns -126 for x<=0 (IEEE floor), so no special guard needed.
+        // fastLog2 accuracy: ~0.002 ulps; fastPow2 accuracy: ~0.02% — both adequate
+        // for timbral frequency warping where exact math is not perceptually critical.
         for (int bin = 1; bin < kFFTHalf; ++bin)
         {
-            // Normalized frequency position [0, 1]
+            // Normalized frequency position (0, 1]  — bin=0 is DC, preserved below
             float normalizedFrequency = static_cast<float>(bin) / static_cast<float>(kFFTHalf - 1);
 
-            // Apply power-law warp: f_out = f_in ^ exponent
-            float warpedFrequency = std::pow(normalizedFrequency, warpExponent);
+            // Apply power-law warp: f_out = f_in ^ exponent = 2^(exponent * log2(f_in))
+            float warpedFrequency = fastPow2(warpExponent * fastLog2(normalizedFrequency));
 
             // Map warped frequency back to bin index
             float warpedBinPosition = warpedFrequency * static_cast<float>(kFFTHalf - 1);
@@ -1752,6 +1811,23 @@ private:
                 voice.foldEnvelope.setParams(foldAttack, foldDecay, foldSustain, foldRelease, sampleRateFloat);
                 voice.foldEnvelope.noteOn();
 
+                // V1 fix: update LFO state on full retrigger (legato only updates pitch/velocity)
+                voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
+                voice.lfo1.setShape(lfo1Shape);
+                voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
+                voice.lfo2.setShape(lfo2Shape);
+
+                // P4: set brightness filter at note-on (velocity-derived, block-constant)
+                {
+                    float velBrightness = 4000.0f + velocity * 14000.0f;
+                    voice.postFilter.reset();
+                    voice.postFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.postFilter.setCoefficients(velBrightness, 0.3f, sampleRateFloat);
+                }
+            }
+            else
+            {
+                // V1: even in legato mode, update LFO params so param changes take effect
                 voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
                 voice.lfo1.setShape(lfo1Shape);
                 voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
@@ -1801,11 +1877,16 @@ private:
         voice.lfo2.setShape(lfo2Shape);
         voice.lfo2.reset();
 
-        // Post-FFT smoothing filter: 18kHz lowpass at gentle Q to suppress
-        // any residual spectral artifacts above the audible range
-        voice.postFilter.reset();
-        voice.postFilter.setMode(CytomicSVF::Mode::LowPass);
-        voice.postFilter.setCoefficients(18000.0f, 0.1f, storedSampleRate);
+        // P4: Post-FFT brightness filter — set once here at note-on rather than
+        // per-sample in renderBlock. velocity is block-constant so this is safe.
+        // Cutoff range: 4kHz (velocity=0) to 18kHz (velocity=1).
+        // R4: use sampleRateFloat consistently (was storedSampleRate, a double, in the old call).
+        {
+            float velBrightness = 4000.0f + velocity * 14000.0f;
+            voice.postFilter.reset();
+            voice.postFilter.setMode(CytomicSVF::Mode::LowPass);
+            voice.postFilter.setCoefficients(velBrightness, 0.3f, sampleRateFloat);
+        }
     }
 
     void handleNoteOff(int noteNumber)
@@ -1824,9 +1905,10 @@ private:
 
     // Standard MIDI-to-frequency conversion using equal temperament.
     // A4 (MIDI note 69) = 440 Hz, 12 semitones per octave.
+    // P2: Use fastPow2 (~0.02% error) instead of std::pow for consistency with fleet pattern.
     static float midiNoteToFrequency(float midiNote) noexcept
     {
-        return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f);
+        return 440.0f * fastPow2((midiNote - 69.0f) * (1.0f / 12.0f));
     }
 
     //==========================================================================

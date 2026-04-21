@@ -189,8 +189,10 @@ private:
         float offset = nextRandom() * static_cast<float>(kBufferSize - grainSizeSamples);
         g.position = static_cast<float>((writePos - static_cast<int>(offset) + kBufferSize) & (kBufferSize - 1));
 
-        // Per-grain pitch scatter: random offset in semitones
-        float randomOffset = nextRandom() * pitchScatterSemitones;
+        // Per-grain pitch scatter: bipolar random offset in semitones.
+        // FIX: was always positive (only upward pitch), creating systematic brightness
+        // bias. Now ±pitchScatterSemitones for a true symmetric scatter cloud.
+        float randomOffset = (nextRandom() * 2.0f - 1.0f) * pitchScatterSemitones;
         g.phaseInc = std::pow(2.0f, randomOffset / 12.0f);
 
         // Window advances from 0 to 1 over grainSizeSamples

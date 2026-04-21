@@ -71,7 +71,7 @@ struct OsierQuartetRoleConfig
 {
     float vibratoRateMult;  // multiplier on global vibrato rate
     float vibratoDepthMult; // multiplier on global vibrato depth
-    float filterBiasCents;  // filter cutoff offset in Hz
+    float filterBiasHz;     // filter cutoff offset in Hz (was mis-named filterBiasCents)
     float brightnessOffset; // brightness character offset [-1, 1]
     float detuneCents;      // slight per-role detuning for individuality
 };
@@ -81,7 +81,7 @@ static constexpr OsierQuartetRoleConfig kRoleConfigs[4] = {
     {1.0f, 0.9f, 200.0f, 0.0f, 0.5f},    // Alto: medium, warm
     {0.9f, 1.1f, -200.0f, -0.1f, -0.5f}, // Tenor: wider, neutral
     {0.7f, 0.8f, -600.0f, -0.3f, -1.5f}  // Bass: slow, dark — the root
-};
+}; // filterBiasHz values are in Hz (not cents despite former field name)
 
 //==============================================================================
 // OsierSaw — lightweight PolyBLEP sawtooth (same as Orchard)
@@ -209,6 +209,10 @@ struct OsierVoice
 
     float panL = 0.707f, panR = 0.707f;
 
+    // Cached filter cutoffs for P19 coefficient-update guards (skip if |delta| < 1 Hz)
+    float lastToneShaperCutoff = -1.0f;
+    float lastFilterCutoff = -1.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -218,6 +222,10 @@ struct OsierVoice
         growthTimer = 0.0f;
         dormancyPitchCents = 0.0f;
         companionPitchCents = 0.0f;
+        // Reset cached cutoffs so P19 delta-guards don't suppress the first
+        // coefficient update on a freshly stolen or initialised voice.
+        lastToneShaperCutoff = -1.0f;
+        lastFilterCutoff = -1.0f;
         glide.reset();
         for (auto& o : oscs)
             o.reset();
@@ -226,6 +234,8 @@ struct OsierVoice
         ampEnv.kill();
         filterEnv.kill();
         vibratoLFO.reset();
+        lfo1.reset(); // lfo1/lfo2 were missing from reset() — stale phase on stolen voices
+        lfo2.reset();
     }
 };
 
@@ -254,7 +264,10 @@ public:
             voices[i].ampEnv.prepare(srf);
             voices[i].filterEnv.prepare(srf);
             voices[i].vibratoLFO.setShape(StandardLFO::Sine);
+            voices[i].vibratoLFO.setRate(5.0f, srf); // default rate so phaseInc != 0 before first active block
             voices[i].vibratoLFO.reseed(static_cast<uint32_t>(i * 5003 + 201));
+            voices[i].lfo1.setRate(0.5f, srf); // default — matches paramLfo1Rate default
+            voices[i].lfo2.setRate(1.0f, srf); // default — matches paramLfo2Rate default
             for (int o = 0; o < OsierVoice::kNumOscs; ++o)
                 voices[i].oscs[o].reset(static_cast<float>(o) * 0.5f);
         }
@@ -415,11 +428,22 @@ public:
             pVibratoDepth + modWheelAmount * 0.4f + accumulators.getAggressionVibrato() * 0.25f;
 
         //-- Compute companion pitch influence (block rate) --
-        // Each voice is pulled slightly toward its companion voices' pitches
+        // Each voice is pulled slightly toward its companion voices' pitches.
+        // Mycorrhizal network: active voices send their aggression stress each block;
+        // received stress modulates companion affinity over time (delayed 5s).
         for (int i = 0; i < kMaxVoices; ++i)
         {
             if (!voices[i].active)
                 continue;
+            // Mycorrhizal send: stressed voices (high velocity) propagate tension
+            float stress = voices[i].velocity * accumulators.A;
+            network.sendStress(i, stress, accumulators.sessionTime);
+
+            // Mycorrhizal receive: consume pending stress events for this voice
+            float received = network.receiveStress(i, accumulators.sessionTime);
+            // Received stress narrows pitch pull range (shared tension → tighter ensemble)
+            float stressMod = 1.0f + received * 0.5f;
+
             float pull = 0.0f;
             for (int j = 0; j < kMaxVoices; ++j)
             {
@@ -432,7 +456,7 @@ public:
                     float cents = 1200.0f * fastLog2(freqJ / freqI);
                     float aff = companion.getVoiceAffinity(i);
                     // Pull toward the other voice, scaled by affinity and companion strength
-                    pull += cents * aff * effectiveCompanion * 0.01f * pIntimacy;
+                    pull += cents * aff * effectiveCompanion * 0.01f * pIntimacy * stressMod;
                 }
             }
             voices[i].companionPitchCents = pull;
@@ -489,7 +513,11 @@ public:
                     voice.growthPhase = std::min(voice.growthTimer / voice.growthDuration, 1.0f);
                     // Chamber voices enter sequentially based on role
                     float roleDelay = static_cast<float>(vi) * 0.15f;
-                    float effectivePhase = std::max(voice.growthPhase - roleDelay, 0.0f) / (1.0f - roleDelay);
+                    // Guard division: if roleDelay reaches 1.0 (would require vi≥7) avoid NaN.
+                    float divisor = 1.0f - roleDelay;
+                    float effectivePhase = (divisor > 1e-6f)
+                        ? std::max(voice.growthPhase - roleDelay, 0.0f) / divisor
+                        : 1.0f;
                     growthGain = effectivePhase * effectivePhase;
                 }
 
@@ -504,6 +532,14 @@ public:
                 oscMix *= 0.5f;
 
                 // Per-role tonal shaping — each instrument has distinct character
+                float roleCutoff =
+                    std::clamp(cutNow + cfg.filterBiasHz + cfg.brightnessOffset * 2000.0f, 200.0f, 20000.0f);
+                // P19 guard: roleCutoff changes per voice/block but not every sample
+                if (std::fabs(roleCutoff - voice.lastToneShaperCutoff) > 1.0f)
+                {
+                    voice.toneShaper.setMode(CytomicSVF::Mode::LowPass);
+                    voice.toneShaper.setCoefficients(roleCutoff, 0.2f, srf);
+                    voice.lastToneShaperCutoff = roleCutoff;
                 // (coeff refresh decimated; cutNow + cfg constants change slowly).
                 if (updateFilter)
                 {
@@ -516,6 +552,14 @@ public:
 
                 // Main filter with envelope (env ticked per-sample, SVF decimated)
                 float envLevel = voice.filterEnv.process();
+                float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 2500.0f, 200.0f, 20000.0f);
+                // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
+                if (std::fabs(fCut - voice.lastFilterCutoff) > 1.0f)
+                {
+                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
+                                                 srf); // l2 → resonance shimmer
+                    voice.lastFilterCutoff = fCut;
                 if (updateFilter)
                 {
                     float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 2500.0f, 200.0f, 20000.0f);
@@ -551,12 +595,12 @@ public:
                 mixR += output * compPanR;
             }
 
-            // M4 SPACE: mid/side width expansion
+            // M4 SPACE: mid/side width expansion + soft-clip to prevent inter-voice overload
             const float mid = (mixL + mixR) * 0.5f;
             const float side = (mixL - mixR) * 0.5f * effectiveWidth;
-            outL[s] = mid + side;
+            outL[s] = softClip(mid + side);
             if (outR)
-                outR[s] = mid - side;
+                outR[s] = softClip(mid - side);
             couplingCacheL = outL[s];
             couplingCacheR = outR ? outR[s] : mixR;
         }
@@ -578,7 +622,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = midiToFreq(note); // was std::pow(2, ...) — use FastMath fast path
         bool isGrowthMode = paramGrowthMode && paramGrowthMode->load() > 0.5f;
 
         v.active = true;
@@ -601,12 +645,12 @@ public:
         float attackTime = paramAttack ? paramAttack->load() : 0.1f;
         attackTime *= (1.2f - vel * 0.4f);
 
-        v.ampEnv.prepare(srf);
+        // Do NOT call prepare() here — it belongs only in OsierEngine::prepare().
+        // Calling it per-noteOn wastes CPU and resets internal state unnecessarily.
         v.ampEnv.setADSR(attackTime, paramDecay ? paramDecay->load() : 0.4f,
                          paramSustain ? paramSustain->load() : 0.75f, paramRelease ? paramRelease->load() : 0.8f);
         v.ampEnv.triggerHard();
 
-        v.filterEnv.prepare(srf);
         v.filterEnv.setADSR(attackTime * 0.4f, 0.6f, 0.15f, 0.7f);
         v.filterEnv.triggerHard();
 
@@ -623,10 +667,12 @@ public:
         seed = seed * 1664525u + 1013904223u;
         v.dormancyPitchCents = (static_cast<float>(seed & 0xFFFF) / 32768.0f - 1.0f) * dPitch;
 
-        // Quartet panning: traditional seating arrangement
-        // Soprano = left, Alto = center-left, Tenor = center-right, Bass = right
-        float panPositions[4] = {-0.6f, -0.2f, 0.2f, 0.6f};
-        float angle = (panPositions[idx] + 1.0f) * 0.25f * 3.14159265f;
+        // Quartet panning: traditional seating arrangement, keyed on ROLE not slot.
+        // Soprano = left, Alto = centre-left, Tenor = centre-right, Bass = right.
+        // Using idx (allocator slot) was wrong — role is pitch-driven, slot is
+        // arbitrary; a Bass note could land in slot 0 and get Soprano's pan.
+        static constexpr float kRolePan[4] = {-0.6f, -0.2f, 0.2f, 0.6f};
+        float angle = (kRolePan[static_cast<int>(v.role)] + 1.0f) * 0.25f * 3.14159265f;
         v.panL = std::cos(angle);
         v.panR = std::sin(angle);
     }

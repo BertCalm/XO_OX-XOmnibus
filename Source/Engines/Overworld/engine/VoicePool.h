@@ -428,6 +428,14 @@ struct ChipVoice
             break;
         case EnvStage::Decay:
             fmEnvLevel += fmDecayCoeff * (fmSustainLvl - fmEnvLevel);
+            // FIX-V4: FM Decay never transitioned to Sustain — level asymptoted
+            // toward fmSustainLvl forever, burning CPU and causing drift.
+            // Add the same convergence check as the amp envelope.
+            if (std::fabs(fmEnvLevel - fmSustainLvl) < 0.0001f)
+            {
+                fmEnvLevel = fmSustainLvl;
+                fmEnvStage = EnvStage::Sustain;
+            }
             break;
         case EnvStage::Sustain:
             fmEnvLevel = fmSustainLvl;
@@ -495,7 +503,10 @@ struct ChipVoice
         int noisePeriodIdx = std::max(0, std::min(15, snap.noisePeriod));
         float noiseClockRate = 1789773.0f / kNoisePeriods[noisePeriodIdx] / sr;
         noisePhase += noiseClockRate;
-        if (noisePhase >= 1.0f)
+        // FIX-ST2: for high clock rates (short periods at low SR) noiseClockRate
+        // can exceed 1.0, requiring multiple LFSR steps per sample. The previous
+        // single-step approach skipped steps, producing an aliased noise texture.
+        while (noisePhase >= 1.0f)
         {
             noisePhase -= 1.0f;
             noiseOut = lfsr.next();
@@ -847,6 +858,11 @@ public:
             v.active = false;
             v.envStage = ChipVoice::EnvStage::Idle;
             v.envLevel = 0.0f;
+            // FIX-V3: fmEnvStage was not reset — FM modulator envelope could
+            // persist in Decay/Sustain across allNotesOff(), causing FM brightness
+            // to bleed into the next note if a new noteOn arrives quickly.
+            v.fmEnvStage = ChipVoice::EnvStage::Idle;
+            v.fmEnvLevel = 0.0f;
         }
     }
 
@@ -920,6 +936,12 @@ public:
             {
                 v.updateEnv(snap);
                 v.updateFMEnv(snap);
+                // FIX-S4: apply pitch bend + mod-matrix pitch to live voices.
+                // Compute freq from the voice's stored note + masterTune + bend.
+                // This ensures pitch wheel and owModPitchOffset affect chip oscillators
+                // (previously only the filter cutoff was modulated by pitch bend).
+                float bendSemi = snap.masterTune + snap.pitchBendSemitones;
+                v.freq = midiToFreq(v.note) * fastPow2(bendSemi / 12.0f);
             }
         }
     }

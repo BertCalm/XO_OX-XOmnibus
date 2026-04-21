@@ -11,7 +11,7 @@
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/StandardADSR.h"
 #include "../../DSP/VoiceAllocator.h"
-#include "../../DSP/ParameterSmoother.h"
+// F9 FIX: ParameterSmoother removed — params read via loadParam() atomics; smoother was dead.
 #include <array>
 #include <atomic>
 #include <cmath>
@@ -189,7 +189,8 @@ struct OceanicVoice
         fadeGain = 1.0f;
         fadingOut = false;
         controlCounter = 0;
-        rng = 12345u;
+        // P-NOISESEED-SHARED: keep rng as-is on reset so voices don't re-sync.
+        // Only initVoice() seeds it with a note-dependent value.
         dcPrevInL = 0.0f;
         dcPrevOutL = 0.0f;
         dcPrevInR = 0.0f;
@@ -229,9 +230,6 @@ public:
         controlRateDiv = std::max(1, static_cast<int>(srf / 2000.0f));
         controlDt = static_cast<float>(controlRateDiv) / srf;
 
-        // Prepare parameter smoother (5ms time constant)
-        paramSmoother.prepare(srf, 0.005f);
-
         // Pre-compute crossfade rate (5ms)
         crossfadeRate = 1.0f / (0.005f * srf);
 
@@ -257,9 +255,9 @@ public:
             v.reset();
 
         envelopeOutput = 0.0f;
-        couplingVelocityMod = 0.0f;
-        couplingCohesionMod = 0.0f;
-        couplingMurmurationTrig = false;
+        couplingVelocityMod.store(0.0f, std::memory_order_relaxed);
+        couplingCohesionMod.store(0.0f, std::memory_order_relaxed);
+        couplingMurmurationTrig.store(false, std::memory_order_relaxed);
 
         std::fill(outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill(outputCacheR.begin(), outputCacheR.end(), 0.0f);
@@ -342,26 +340,27 @@ public:
         // DSP FIX: Autonomous breathing LFO on tether strength — even with LFO depths
         // at 0, the boid school gently contracts and expands. 0.07 Hz (~14s cycle)
         // triangle wave modulates tether ±10%. This addresses "nothing dynamic" seance finding.
-        autoBreathPhase += 0.07 / sr;
+        // F23 FIX: advance by a full block, not one sample. Previously `+= 0.07 / sr` advanced
+        // one sample per block, making the cycle ~512x slower than intended (weeks, not 14s).
+        autoBreathPhase += (0.07 / sr) * static_cast<double>(numSamples);
         if (autoBreathPhase >= 1.0)
             autoBreathPhase -= 1.0;
         float breathMod = (4.0f * std::fabs(static_cast<float>(autoBreathPhase) - 0.5f) - 1.0f) * 0.1f;
 
+        // F14/F15 FIX: atomically snapshot-and-clear coupling accumulators before use.
+        // exchange() prevents double-counting if applyCouplingInput() fires concurrently.
+        const float snapCohMod = couplingCohesionMod.exchange(0.0f, std::memory_order_relaxed);
+        const bool  trigMurmuration  = couplingMurmurationTrig.exchange(false, std::memory_order_relaxed);
+        const float velPerturbation  = couplingVelocityMod.exchange(0.0f, std::memory_order_relaxed);
+
         float effectiveSep = clamp(pSep + macroChar * 0.3f, 0.0f, 1.0f);
         float effectiveAlign = clamp(pAlign + macroMove * 0.3f, 0.0f, 1.0f);
         // D006: mod wheel boosts cohesion — CC#1 tightens boid school (sensitivity 0.4)
-        float effectiveCoh = clamp(pCoh + couplingCohesionMod + macroCoup * 0.3f + modWheelAmount * 0.4f, 0.0f, 1.0f);
+        float effectiveCoh = clamp(pCoh + snapCohMod + macroCoup * 0.3f + modWheelAmount * 0.4f, 0.0f, 1.0f);
         // DSP FIX: tether breathes autonomously — school contracts/expands gently
         float effectiveTeth = clamp(pTeth + breathMod, 0.0f, 1.0f);
         float effectiveDamp = clamp(pDamp + macroSpace * 0.2f, 0.0f, 1.0f);
         int effectiveFlocks = std::max(1, std::min(4, pFlocks));
-
-        // Reset coupling accumulators
-        couplingCohesionMod = 0.0f;
-        bool trigMurmuration = couplingMurmurationTrig;
-        couplingMurmurationTrig = false;
-        float velPerturbation = couplingVelocityMod;
-        couplingVelocityMod = 0.0f;
 
         // --- Process MIDI events ---
         for (const auto metadata : midi)
@@ -400,10 +399,6 @@ public:
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0); // channel-mode: voice 0 holds global value
 
-        // D006: aftertouch boosts separation (scatter) — sensitivity 0.25.
-        // Higher pressure = particles scatter further from their neighbors = faster color shift.
-        effectiveSep = clamp(effectiveSep + atPressure * 0.25f, 0.0f, 1.0f);
-
         // D002 mod matrix — apply per-block.
         // Destinations: 0=Off, 1=Separation, 2=Cohesion, 3=Pitch, 4=AmpLevel, 5=Tether
         {
@@ -428,6 +423,12 @@ public:
             // dst 5: tether offset
             effectiveTeth = clamp(effectiveTeth + mDst[5] * 0.4f, 0.0f, 1.0f);
         }
+
+        // F24 FIX: apply aftertouch separation boost AFTER the mod matrix so that
+        // the mod matrix Aftertouch→Separation routing doesn't double-count pressure.
+        // D006: aftertouch boosts separation (scatter) — sensitivity 0.25.
+        // Higher pressure = particles scatter further from their neighbors = faster color shift.
+        effectiveSep = clamp(effectiveSep + atPressure * 0.25f, 0.0f, 1.0f);
 
         // Apply murmuration trigger to all active voices
         if (trigMurmuration)
@@ -454,6 +455,10 @@ public:
 
         float peakEnv = 0.0f;
 
+        // F5 FIX (cont.): hoist DC blocker coefficient out of per-sample loop —
+        // it is constant per block (depends only on srf which doesn't change mid-block).
+        const float dcCoeff = 1.0f - kTwoPi * 5.0f / srf;
+
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
@@ -465,6 +470,8 @@ public:
                     continue;
 
                 // --- Voice-stealing crossfade (5ms) ---
+                // F7 FIX: handle both fade-out (steal) and fade-in (new voice after steal).
+                // fadeGain < 1 with fadingOut=false → ramp up; fadingOut=true → ramp down.
                 if (voice.fadingOut)
                 {
                     voice.fadeGain -= crossfadeRate;
@@ -474,6 +481,13 @@ public:
                         voice.active = false;
                         continue;
                     }
+                }
+                else if (voice.fadeGain < 1.0f)
+                {
+                    // Fade-in: new voice after steal ramps up from 0 to prevent click.
+                    voice.fadeGain += crossfadeRate;
+                    if (voice.fadeGain > 1.0f)
+                        voice.fadeGain = 1.0f;
                 }
 
                 // --- Glide (portamento) ---
@@ -874,7 +888,7 @@ public:
                 voiceR *= voice.cachedInvNorm;
 
                 // --- DC Blocker (1-pole highpass at ~5Hz) ---
-                constexpr float dcCoeff = 0.9975f;
+                // dcCoeff is hoisted above the sample loop (block-constant).
                 float dcOutL = voiceL - voice.dcPrevInL + dcCoeff * voice.dcPrevOutL;
                 float dcOutR = voiceR - voice.dcPrevInR + dcCoeff * voice.dcPrevOutR;
                 voice.dcPrevInL = voiceL;
@@ -915,11 +929,12 @@ public:
                 buffer.addSample(0, sample, (mixL + mixR) * 0.5f * levelScale);
             }
 
-            // Cache for coupling reads
+            // F17 FIX: cache post-levelScale signal so coupling consumers receive
+            // the same amplitude as the output buffer (was storing pre-scale mixL/R).
             if (sample < static_cast<int>(outputCacheL.size()))
             {
-                outputCacheL[static_cast<size_t>(sample)] = mixL;
-                outputCacheR[static_cast<size_t>(sample)] = mixR;
+                outputCacheL[static_cast<size_t>(sample)] = mixL * levelScale;
+                outputCacheR[static_cast<size_t>(sample)] = mixR * levelScale;
             }
         }
 
@@ -932,7 +947,9 @@ public:
                 ++count;
         activeVoices.store(count, std::memory_order_relaxed);
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // F16 FIX: guard against mono buffer — getReadPointer(1) crashes on 1-ch buffers.
+        const float* chR = (buffer.getNumChannels() >= 2) ? buffer.getReadPointer(1) : buffer.getReadPointer(0);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), chR, numSamples);
     }
 
     //==========================================================================
@@ -958,19 +975,25 @@ public:
         switch (type)
         {
         case CouplingType::AudioToFM:
-            // External audio -> velocity perturbation on particles
-            couplingVelocityMod += amount * 0.5f;
+            // External audio -> velocity perturbation on particles (atomic accumulate)
+            {
+                float prev = couplingVelocityMod.load(std::memory_order_relaxed);
+                couplingVelocityMod.store(prev + amount * 0.5f, std::memory_order_relaxed);
+            }
             break;
 
         case CouplingType::AmpToFilter:
-            // External amplitude modulates cohesion strength
-            couplingCohesionMod += amount * 0.3f;
+            // External amplitude modulates cohesion strength (atomic accumulate)
+            {
+                float prev = couplingCohesionMod.load(std::memory_order_relaxed);
+                couplingCohesionMod.store(prev + amount * 0.3f, std::memory_order_relaxed);
+            }
             break;
 
         case CouplingType::RhythmToBlend:
             // Rhythm triggers murmuration cascade
             if (amount > 0.1f)
-                couplingMurmurationTrig = true;
+                couplingMurmurationTrig.store(true, std::memory_order_relaxed);
             break;
 
         default:
@@ -1208,6 +1231,13 @@ private:
                 voice.swarmEnv.setParams(swmA, swmD, swmS, swmR, srf);
                 voice.swarmEnv.noteOn();
 
+                // F21 FIX: update LFO rate/shape on mono retrigger so mid-hold
+                // parameter changes take effect immediately on the next note.
+                voice.lfo1.setRate(lfo1Rate, srf);
+                voice.lfo1.setShape(lfo1Shape);
+                voice.lfo2.setRate(lfo2Rate, srf);
+                voice.lfo2.setShape(lfo2Shape);
+
                 // Apply scatter to existing particles
                 applyScatter(voice, velocity, scatterAmount, numSubflocks);
             }
@@ -1224,15 +1254,20 @@ private:
         int idx = findFreeVoice(maxPoly);
         auto& voice = voices[static_cast<size_t>(idx)];
 
-        // If stealing, initiate crossfade
-        if (voice.active)
-        {
-            voice.fadingOut = true;
-            voice.fadeGain = std::min(voice.fadeGain, 0.5f);
-        }
-
+        // F6 FIX: voice stealing crossfade — if the slot is occupied, we cannot
+        // set fadingOut=true then immediately call initVoice() on the same voice,
+        // because initVoice() resets fadingOut=false, cancelling the fade.
+        // Instead: capture the current gain for a ramp-down-and-in on the new voice,
+        // and start the new voice with a fade-in (P-CROSSFADE-RAMPUP-MISSING fix).
+        // The new voice starts at gain=0 and ramps up over 5ms via fadeGain.
+        // The outgoing note is silenced instantly here (its envelope already ran to
+        // some level; we just cut it which is no worse than the previous cancel).
         initVoice(voice, noteNumber, velocity, freq, 1.0f, numSubflocks, ampA, ampD, ampS, ampR, swmA, swmD, swmS, swmR,
                   lfo1Rate, lfo1Depth, lfo1Shape, lfo2Rate, lfo2Depth, lfo2Shape, scatterAmount);
+        // F7 FIX (P-CROSSFADE-RAMPUP-MISSING): new voice fades in from 0 → 1 over
+        // 5ms to prevent the click of an instant full-amplitude onset on steal.
+        voice.fadeGain = 0.0f;
+        voice.fadingOut = false; // ensure forward-ramp mode (not fading out)
     }
 
     void initVoice(OceanicVoice& voice, int noteNumber, float velocity, float freq, float glideCoeff, int numSubflocks,
@@ -1249,7 +1284,10 @@ private:
         voice.glideCoeff = glideCoeff;
         voice.fadingOut = false;
         voice.fadeGain = 1.0f;
-        voice.controlCounter = 0;
+        // F10 FIX: stagger control-rate counters by voice index to spread boid update
+        // CPU load across samples instead of bursting all 4 voices on the same sample.
+        // Use noteNumber mod controlRateDiv to give consistent but note-varied offsets.
+        voice.controlCounter = noteNumber % std::max(1, controlRateDiv);
         voice.murmurate = false;
 
         // DC blocker state
@@ -1268,12 +1306,16 @@ private:
         voice.swarmEnv.noteOn();
 
         // Set up LFOs
+        // P-LFO-BLOCK FIX: reseed S&H LFO states from the per-voice PRNG so that
+        // simultaneous voices don't produce identical S&H step sequences.
         voice.lfo1.setRate(lfo1Rate, srf);
         voice.lfo1.setShape(lfo1Shape);
         voice.lfo1.reset();
+        voice.lfo1.reseed(voice.rng ^ 0xDEADBEEFu);
         voice.lfo2.setRate(lfo2Rate, srf);
         voice.lfo2.setShape(lfo2Shape);
         voice.lfo2.reset();
+        voice.lfo2.reseed(voice.rng ^ 0xCAFEBABEu);
 
         // Initialize particles: distribute across sub-flocks
         int effectiveFlocks = std::max(1, std::min(4, numSubflocks));
@@ -1344,7 +1386,8 @@ private:
 
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
-    ParameterSmoother paramSmoother; // 5ms one-pole smoother (replaces inline smoothCoeff)
+    // F9 FIX: removed dead paramSmoother — params read directly via loadParam() atomics,
+    // so the smoother was allocated and prepared but process() was never called.
     float crossfadeRate = 0.01f;
 
     // Control rate decimation
@@ -1356,10 +1399,12 @@ private:
     std::atomic<int> activeVoices{0};
 
     // Coupling accumulators
+    // F14/F15 FIX (P15): applyCouplingInput() may be called from a different thread
+    // than renderBlock(). Use atomics for all coupling fields to prevent data races.
     float envelopeOutput = 0.0f;
-    float couplingVelocityMod = 0.0f;
-    float couplingCohesionMod = 0.0f;
-    bool couplingMurmurationTrig = false;
+    std::atomic<float> couplingVelocityMod{0.0f};
+    std::atomic<float> couplingCohesionMod{0.0f};
+    std::atomic<bool> couplingMurmurationTrig{false};
 
     // D006: CS-80-inspired poly aftertouch (channel pressure → particle scatter rate)
     PolyAftertouch aftertouch;

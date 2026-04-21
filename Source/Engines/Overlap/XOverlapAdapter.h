@@ -124,8 +124,10 @@ public:
 
         // D004 fix: wire olap_glide to voice glide smoother coefficient.
         // params.glide is in ms; 0 ms → instant (coeff = 1.0), 500 ms → slow glide.
+        // F15: use <= 0.0f for the "instant" gate so that sub-0.5ms values cannot
+        // produce a near-zero exp argument (and thus near-1 coeff).
         {
-            float glideCoeff = (params.glide > 0.5f)
+            float glideCoeff = (params.glide > 0.0f)
                                    ? (1.0f - fastExp(-1.0f / (params.glide * 0.001f * static_cast<float>(sr))))
                                    : 1.0f;
             for (auto& v : voices)
@@ -159,43 +161,51 @@ public:
                                modDelayBase, modFilterCutoff, modSpread, modBioluminescence, modEntrain);
 
         // Apply macros
+        // F05: macro sets a TARGET tangle depth derived from the knot macro position;
+        // rather than overwriting modTangleDepth (which erases LFO modulation), we
+        // clamp-blend the macro target with the already-modulated modTangleDepth so
+        // LFO dest=0 (Tangle) remains audible when a macro is active.
         {
             float mk = params.macroKnot;
+            float macroTangle;
             if (mk < 0.25f)
             {
                 modKnot = 0.0f;
-                modTangleDepth = mk / 0.25f * 0.8f;
+                macroTangle = mk / 0.25f * 0.8f;
             }
             else if (mk < 0.33f)
             {
                 modKnot = 0.0f;
-                modTangleDepth = 0.8f;
+                macroTangle = 0.8f;
             }
             else if (mk < 0.50f)
             {
                 modKnot = 1.0f;
-                modTangleDepth = 0.3f + (mk - 0.33f) / 0.17f * 0.4f;
+                macroTangle = 0.3f + (mk - 0.33f) / 0.17f * 0.4f;
             }
             else if (mk < 0.66f)
             {
                 modKnot = 1.0f;
-                modTangleDepth = 0.7f;
+                macroTangle = 0.7f;
             }
             else if (mk < 0.80f)
             {
                 modKnot = 2.0f;
-                modTangleDepth = 0.5f + (mk - 0.66f) / 0.14f * 0.4f;
+                macroTangle = 0.5f + (mk - 0.66f) / 0.14f * 0.4f;
             }
             else if (mk < 0.90f)
             {
                 modKnot = 2.0f;
-                modTangleDepth = 0.9f;
+                macroTangle = 0.9f;
             }
             else
             {
                 modKnot = 3.0f;
-                modTangleDepth = 0.6f + (mk - 0.90f) / 0.10f * 0.4f;
+                macroTangle = 0.6f + (mk - 0.90f) / 0.10f * 0.4f;
             }
+            // Blend: LFO-modulated tangle is already in modTangleDepth; macro lerps it toward
+            // the target tangle as mk moves away from 0, preserving LFO variation.
+            modTangleDepth = clamp(lerp(modTangleDepth, macroTangle, mk), 0.0f, 1.0f);
 
             float mp = params.macroPulse;
             modPulseRate = 0.01f + mp * (8.0f - 0.01f);
@@ -295,7 +305,9 @@ public:
         auto effectiveMatrix = xoverlap::KnotMatrix::interpolate(knotMat, modTangleDepth);
         fdn.setMatrix(effectiveMatrix);
         fdn.feedback = modFeedback;
-        fdn.dampeningCoeff = params.dampening;
+        // F01: use modDampening (LFO/macro-modulated) rather than the raw param so
+        // LFO destination "Dampening" (dest=1) actually reaches the FDN one-pole.
+        fdn.dampeningCoeff = modDampening;
 
         // Delay ratios per knot type
         int modKnotInt = static_cast<int>(modKnot);
@@ -818,12 +830,18 @@ private:
     void handleNoteOn(int note, float velocity) noexcept
     {
         int idx;
+        bool isLegato = false;
         // D004 fix: Mono mode — steal the single playing voice (lowest midiNote wins).
-        // Legato mode does the same steal but without resetting the envelope phase.
+        // F06: Legato mode does the same steal but WITHOUT restarting the envelope or
+        // resetting the oscillator phase — retrigger only the pitch glide target.
         if (params.voiceMode == 1 || params.voiceMode == 2)
         {
-            // First silence all voices except the one we'll steal
-            int stealIdx = 0;
+            isLegato = (params.voiceMode == 2);
+
+            // F14: find the active voice with the lowest note.  stealIdx defaults to -1
+            // so that when NO voice is active we fall through to allocateVoice() instead
+            // of always hammering voice[0].
+            int stealIdx = -1;
             int lowestNote = 128;
             for (int i = 0; i < kVoices; ++i)
             {
@@ -834,18 +852,40 @@ private:
                     stealIdx = i;
                 }
             }
-            // Release all other active voices immediately
-            for (int i = 0; i < kVoices; ++i)
-                if (i != stealIdx && voices[static_cast<size_t>(i)].isActive())
-                    voices[static_cast<size_t>(i)].noteOff(++noteOrderCounter);
-            idx = stealIdx;
+            if (stealIdx >= 0)
+            {
+                // Release all other active voices immediately
+                for (int i = 0; i < kVoices; ++i)
+                    if (i != stealIdx && voices[static_cast<size_t>(i)].isActive())
+                        voices[static_cast<size_t>(i)].noteOff(++noteOrderCounter);
+                idx = stealIdx;
+            }
+            else
+            {
+                // No active voice — allocate fresh
+                idx = allocateVoice();
+                isLegato = false; // treat as Mono on first note
+            }
         }
         else
         {
             idx = allocateVoice();
         }
         auto& v = voices[static_cast<size_t>(idx)];
-        v.noteOn(note, velocity, ++noteOrderCounter);
+        if (isLegato && v.isActive())
+        {
+            // Legato: retarget pitch (glide will slide) without touching envelope or phase
+            v.midiNote        = note;
+            v.velocity        = velocity;
+            v.held            = true;
+            v.noteOnOrder     = ++noteOrderCounter;
+            v.noteOffOrder    = 0;
+            v.targetGlideFreq = midiToFreq(note);
+        }
+        else
+        {
+            v.noteOn(note, velocity, ++noteOrderCounter);
+        }
         v.env.setParams(params.attack, params.decay, params.sustain, params.release);
 
         filterEnvLevel = 1.0f;

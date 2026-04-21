@@ -183,8 +183,11 @@ struct OuieVA
             if (phase2 < 0.0f)
                 phase2 += 1.0f;
             sq -= polyBLEP(phase2, dt);
-            // Leaky integrator to form triangle from square
-            prevSample = prevSample * 0.999f + sq * dt * 4.0f;
+            // FIX S001: SR-dependent triangle leak — hardcoded 0.999f gives a ~1.7Hz pole
+            // at 44.1kHz but droops 2.2× harder at 96kHz. Use matched-Z at ~10Hz pole.
+            float leakCoeff = 1.0f - (6.28318530718f * 10.0f / sr);
+            if (leakCoeff < 0.9f) leakCoeff = 0.9f; // guard against extreme sample rates
+            prevSample = prevSample * leakCoeff + sq * dt * 4.0f;
             out = prevSample;
             break;
         }
@@ -309,8 +312,9 @@ struct OuieFM
         if (carrierPhase >= 1.0f)
             carrierPhase -= 1.0f;
         modPhase += modFreq;
+        // FIX S002: modPhase wrap — use fmod so high FM ratios (>1) don't drift negative.
         if (modPhase >= 1.0f)
-            modPhase -= 1.0f;
+            modPhase -= std::floor(modPhase);
 
         return out;
     }
@@ -606,6 +610,11 @@ struct OuieInteraction
 
             // Hard sync at extreme STRIFE: reset v1Phase at v2's zero crossing.
             // v2Phase < 0.1f means it just wrapped this sample — true phase-reset sync.
+            // FIX S008: hard sync only resets v1Phase (the VA phase). For non-VA algorithms
+            // (WT, FM, etc.) this is a no-op because those oscillators use their own internal
+            // phase variables. This is acceptable for now — hard sync on VA pairs is the
+            // primary use case. A full multi-algo sync would require per-algorithm phase reset
+            // callbacks, deferred to a future extension (noted).
             if (strife > 0.7f && v2Phase < 0.1f)
                 v1Phase = 0.0f;
 
@@ -671,7 +680,11 @@ struct OuieVoice
 
     // Unison: up to 4 oscillators per voice
     float unisonPhases[4]{};
-    float unisonDetune[4] = {0.0f, 0.003f, -0.003f, 0.006f};
+    // FIX S004: unison detune offsets are normalised spread values, NOT pre-scaled —
+    // the previous {0, 0.003, -0.003, 0.006} were then multiplied by uniDetuneSpread*u
+    // causing voice 3 to be 3× more detuned than voice 2 (double-scaling).
+    // Now uniform spacing: voices get spread * {0, -1, +1, -2} * uniDetuneSpread.
+    float unisonDetune[4] = {0.0f, -1.0f, 1.0f, -2.0f};
 
     // Per-voice filter
     CytomicSVF filter;
@@ -752,13 +765,16 @@ public:
         outputCacheR.resize(static_cast<size_t>(maxBlockSize), 0.0f);
 
         // Build wavetables for both voices
-        for (auto& v : voices)
+        // FIX S007: both voices had the same KS excitation noise seed (54321) —
+        // in Layer mode this produces identical timbres on both voices. Seed per-voice.
+        for (int vi = 0; vi < kMaxVoices; ++vi)
         {
+            auto& v = voices[vi];
             v.reset();
             v.wt.build();
             v.filter.reset();
             v.filter.setMode(CytomicSVF::Mode::LowPass);
-            v.ks.exciteNoise.seed(54321);
+            v.ks.exciteNoise.seed(54321u + static_cast<uint32_t>(vi) * 1103515245u);
         }
 
         breathingLFO.reset();
@@ -783,10 +799,19 @@ public:
         aftertouch_ = 0.0f;
 
         smoothedHammer = 0.0f;
-        smoothedCutoff1 = 8000.0f;
-        smoothedCutoff2 = 8000.0f;
+        // FIX P001: smoothedCutoff1/2 were dead fields — cutoff is smoothed
+        // per-sample via setCoefficients_fast(), not through these. Removed their
+        // misleading reset here; the members themselves are removed from state below.
 
         breathingLFO.reset();
+
+        // FIX ST001: chorus buffers not cleared on reset — stale tail leaked into
+        // the next note. Clear here to guarantee silence after reset().
+        std::memset(chorusBufferL, 0, sizeof(chorusBufferL));
+        std::memset(chorusBufferR, 0, sizeof(chorusBufferR));
+        chorusWritePos = 0;
+        chorusPhase = 0.0f;
+        pitchBendNorm = 0.0f;
 
         std::fill(outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill(outputCacheR.begin(), outputCacheR.end(), 0.0f);
@@ -970,6 +995,14 @@ public:
         }
 
         // --- Update per-voice MPE expression ---
+        // FIX V002: update glide coefficient on active voices each block so that
+        // pGlide param changes take effect without waiting for the next note-on.
+        for (auto& voice : voices)
+        {
+            if (voice.active)
+                voice.glideCoeff = glideCoeff;
+        }
+
         if (mpeManager != nullptr)
         {
             for (auto& voice : voices)
@@ -1084,7 +1117,8 @@ public:
 
                 for (int u = 0; u < uniCount; ++u)
                 {
-                    float detuneRatio = 1.0f + voice.unisonDetune[u] * uniDetuneSpread * static_cast<float>(u);
+                    // FIX S004 (cont): detune spread directly from table; no extra *u factor.
+                    float detuneRatio = 1.0f + voice.unisonDetune[u] * uniDetuneSpread;
                     float uniFreq = freq * detuneRatio;
 
                     float uniSample = 0.0f;
@@ -1119,8 +1153,12 @@ public:
                             float tPos = clamp(wtPos + lfoVal * 0.2f, 0.0f, 1.0f);
                             int ti = static_cast<int>(tPos * 15.0f);
                             ti = std::min(ti, 15);
-                            int si = static_cast<int>(voice.unisonPhases[u] * 255.0f) % 256;
-                            uniSample = voice.wt.tables[ti][si];
+                            // FIX S003: interpolate WT read for unison voices — integer indexing caused zipper artefacts.
+                            float readPosU = voice.unisonPhases[u] * static_cast<float>(OuieWavetable::kTableSize);
+                            int si0 = static_cast<int>(readPosU) % OuieWavetable::kTableSize;
+                            int si1 = (si0 + 1) % OuieWavetable::kTableSize;
+                            float siFrac = readPosU - std::floor(readPosU);
+                            uniSample = voice.wt.tables[ti][si0] + siFrac * (voice.wt.tables[ti][si1] - voice.wt.tables[ti][si0]);
                         }
                         break;
                     case 2: // FM
@@ -1199,8 +1237,11 @@ public:
 
                 // D001: velocity shapes filter cutoff
                 float velFilterBoost = voice.velocity * velScale * 4000.0f;
+                // FIX S006: breath modulation of filter was 500Hz fixed-scale regardless of
+                // pBreathDepth. breathMod already carries pBreathDepth (set above), so
+                // multiply by 1000Hz to give a ±1000Hz max sweep controlled by Breath Depth.
                 float voiceCutoff =
-                    (vi == 0 ? effectiveCutoff1 : effectiveCutoff2) + velFilterBoost + breathMod * 500.0f;
+                    (vi == 0 ? effectiveCutoff1 : effectiveCutoff2) + velFilterBoost + breathMod * 1000.0f;
                 voiceCutoff = clamp(voiceCutoff, 20.0f, 20000.0f);
 
                 // Update filter coefficients every 16 samples (modulation still tracks;
@@ -1215,9 +1256,13 @@ public:
             if (voiceActive[0] && voiceActive[1])
             {
                 // Coupling: ring mod from external engine
+                // FIX C001: unclamped ring coupling could inject DC bias from KS/noise tails.
+                // Clamp the coupling amount to ±1 to bound the multiplicative gain.
                 if (std::fabs(localCouplingRing) > 0.001f)
                 {
-                    voiceSamples[0] *= (1.0f + localCouplingRing * voiceSamples[1]);
+                    float clampedRing = clamp(localCouplingRing, -1.0f, 1.0f);
+                    voiceSamples[0] *= (1.0f + clampedRing * voiceSamples[1]);
+                    voiceSamples[0] = fastTanh(voiceSamples[0]); // soft-limit after ring mod
                 }
 
                 OuieInteraction::process(voiceSamples[0], voiceSamples[1], smoothedHammer, voices[0].va.phase,
@@ -1235,9 +1280,11 @@ public:
 
                 float gain = voiceGains[vi];
 
-                // Voice mix balance
-                float vmix = (vi == 0) ? (1.0f - pVoiceMix) * 2.0f : pVoiceMix * 2.0f;
-                vmix = std::min(vmix, 1.0f);
+                // FIX P002: old voice mix law clipped at 1.0 asymmetrically — turning
+                // down one voice didn't boost the other. Use constant-power crossfade
+                // (sin/cos) so total energy is preserved across the full mix range.
+                float mixAngle = pVoiceMix * (kPI * 0.5f); // 0..π/2
+                float vmix = (vi == 0) ? std::cos(mixAngle) : std::sin(mixAngle);
                 gain *= vmix;
 
                 // CURRENT macro: simple stereo spread by voice index
@@ -1256,7 +1303,10 @@ public:
                 mixL += filtered * gain * panL;
                 mixR += filtered * gain * panR;
 
-                peakEnv = std::max(peakEnv, voiceGains[vi]);
+                // FIX C002: exclude fading-out voices from envelope coupling output —
+                // a rapidly-stolen voice inflated the coupling signal misleadingly.
+                if (!voices[vi].fadingOut)
+                    peakEnv = std::max(peakEnv, voiceGains[vi]);
             }
 
             // === CURRENT macro: environment FX (simple chorus + delay) ===
@@ -1268,12 +1318,14 @@ public:
                 if (chorusPhase >= 1.0f)
                     chorusPhase -= 1.0f;
 
-                float chorusMod = fastSin(chorusPhase * kTwoPi) * pCurrent * 0.003f * srf;
-                float chorusDelay = 5.0f + chorusMod; // ~5ms base delay
-                int chorusIdx = static_cast<int>(chorusDelay);
-                chorusIdx = std::min(chorusIdx, kChorusBufferSize - 2);
-                if (chorusIdx < 0)
-                    chorusIdx = 0;
+                // FIX S005: chorus modulation depth was srf-dependent — at 96kHz depth reached
+                // ~288 samples, pushing chorusDelay negative. Cap mod to 3ms (0.003s * sr).
+                float maxModSamples = 0.003f * srf; // 3ms swing
+                float chorusMod = fastSin(chorusPhase * kTwoPi) * pCurrent * maxModSamples;
+                // 5ms base delay in samples, modulated ±maxModSamples
+                float baseDelaySamples = 0.005f * srf;
+                float chorusDelay = baseDelaySamples + chorusMod;
+                int chorusIdx = std::max(1, std::min(static_cast<int>(chorusDelay), kChorusBufferSize - 2));
 
                 int readPos = chorusWritePos - chorusIdx;
                 if (readPos < 0)
@@ -1794,9 +1846,13 @@ private:
                 voices[1].algorithm = algo2;
                 voices[1].lfo.setRate(lfo2Rate, srf);
                 voices[1].lfo.setShape(lfo2Shape);
-                // Retrigger voice 2 envelope for the carried-over note
+                // FIX V001: Duo mode carried-over voice must retrigger both envelope
+                // setParams AND noteOn — without noteOn the env resumes at the copied
+                // level (often sustain) causing a level discontinuity.
                 voices[1].ampEnv.setParams(ampA2, ampD2, ampS2, ampR2, srf);
+                voices[1].ampEnv.noteOn();
                 voices[1].modEnv.setParams(modA, modD, modS, modR, srf);
+                voices[1].modEnv.noteOn();
             }
 
             // Voice 1 gets the new note
@@ -1884,8 +1940,7 @@ private:
 
     // Smoothed control values
     float smoothedHammer = 0.0f;
-    float smoothedCutoff1 = 8000.0f;
-    float smoothedCutoff2 = 8000.0f;
+    // (smoothedCutoff1/2 removed — cutoff smoothing is per-sample via setCoefficients_fast)
 
     // Breathing LFO (D005)
     BreathingLFO breathingLFO;

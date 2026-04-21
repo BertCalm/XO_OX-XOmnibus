@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Init",
+  "mood": "Foundation",
+  "engines": ["Outflow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "All parameters at factory default. Short exciter burst, moderate FDN reverb, vacuum inactive. The blank canvas from which every predictive-spatial texture begins.",
+  "tags": ["init", "foundation", "neutral", "reverb", "spatial"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.4,
+    "movement": 0.2,
+    "density": 0.3,
+    "space": 0.6,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Outflow": {
+      "out_anchor": 0.8,
+      "out_windChaos": 0.5,
+      "out_undertowPull": 0.5,
+      "out_splashSize": 0.5,
+      "out_decay": 4.0,
+      "out_damping": 6000.0,
+      "out_dryWet": 0.5,
+      "out_exciterDecay": 0.02,
+      "out_vacuumAttack": 0.5,
+      "out_opticalWarmth": 0.5,
+      "out_macroCharacter": 0.0,
+      "out_macroMovement": 0.0,
+      "out_macroCoupling": 0.0,
+      "out_macroSpace": 0.0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "starterFor": "Outflow"
+}

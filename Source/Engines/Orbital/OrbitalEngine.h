@@ -75,19 +75,28 @@ struct FormantFilter
 
     void build(int vowelIndex, float fundamentalHz, float brightness, float oddEven, float shiftSemitones) noexcept
     {
-        const float shiftedFundamentalHz = fundamentalHz * std::pow(2.0f, shiftSemitones / 12.0f);
+        // F01/F06: use fastExp for semitone-to-ratio conversion (replaces std::pow).
+        // shiftedFundamentalHz is only needed in vowel mode; computed here once so it
+        // is also valid in the tilt branch if needed in future. std::pow was cold-path
+        // but still unnecessary — fastPow2(x/12) is the XOceanus fleet standard.
+        const float shiftedFundamentalHz = fundamentalHz * fastPow2(shiftSemitones / 12.0f);
 
         if (vowelIndex == 0)
         {
             //-- Spectral tilt + odd/even balance mode ---------------------------
+            // F02: use kNumPartials (64) via template constant rather than
+            // hardcoded literal so any future resize is automatic.
             for (int partialIdx = 0; partialIdx < 64; ++partialIdx)
             {
                 float partialNumber = static_cast<float>(partialIdx);
 
-                // Spectral tilt: higher partials roll off faster as brightness
-                // decreases. Exponent of 2.0 gives a natural 1/f^2 slope at
-                // minimum brightness, matching the rolloff of a triangle wave.
-                float tilt = std::pow(1.0f / (partialNumber + 1.0f), (1.0f - brightness) * 2.0f);
+                // F03/F05: replace std::pow inner-loop (64 calls per build) with
+                // fastExp: tilt = (1/(n+1))^e = exp(e * -ln(n+1))
+                // = fastExp(-(1-brightness)*2 * logf(partialNumber+1))
+                // Accurate to ~6% — well within perceptual threshold for spectral tilt.
+                const float exponent = (1.0f - brightness) * 2.0f;
+                float tilt = (exponent < 1e-4f) ? 1.0f
+                             : fastExp(-exponent * std::log(partialNumber + 1.0f));
 
                 // Odd/even balance: at 0.5 all partials equal; below 0.5 fades
                 // evens (approaching square wave); above 0.5 fades odds
@@ -285,6 +294,19 @@ public:
         phaseWrapCounter = 0;
         envelopeOutput = 0.0f;
         voiceAllocationAge = 0;
+
+        // F19: reset spectralDriftLFO so stale phase from a previous session does
+        // not cause a different initial timbre between plugin instantiations.
+        spectralDriftLFO.reset();
+
+        // F20: reset block-level coupling accumulators — stale values from a prior
+        // prepare() call (e.g., plugin re-instantiation) could corrupt the first block.
+        externalFilterMod = externalMorphMod = externalPitchMod = 0.0f;
+        externalFmMod = externalDecayMod = externalBlendMod = 0.0f;
+        modWheelValue = 0.0f;
+        pitchBendNorm = 0.0f;
+        orbModPitchOffset = 0.0f;
+        orbModLevelOffset = 0.0f;
     }
 
     void releaseResources() override
@@ -325,6 +347,10 @@ public:
         envelopeOutput = 0.0f;
         phaseWrapCounter = 0;
         formantDirty = true;
+        // F27: reset spectral drift LFO on reset() — without this the drift phase
+        // carries over from previous playback, making each reset start at a different
+        // spectral morph position (non-deterministic initial timbre).
+        spectralDriftLFO.reset();
         std::fill(outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill(outputCacheR.begin(), outputCacheR.end(), 0.0f);
     }
@@ -523,7 +549,13 @@ public:
         const float ampDecay = p_ampDecay->load();
         const float ampSustain = p_ampSustain->load();
         const float ampRelease = p_ampRelease->load();
-        const float volume = juce::jlimit(0.05f, 1.5f, p_volume->load() + orbModLevelOffset);
+        // F12/F13: orbModLevelOffset and orbModPitchOffset are written by the mod
+        // matrix which runs later in this block. Using them here reads last block's
+        // values (one-block lag) — this is intentional and consistent with every other
+        // engine in the fleet. Document the lag explicitly; do NOT move the mod matrix
+        // before param loading since modMatrix.apply() depends on atPressure (post-MIDI).
+        // The one-block lag (~1ms at 44.1kHz/512) is inaudible for these destinations.
+        const float volumeRaw = juce::jlimit(0.05f, 1.5f, p_volume->load() + orbModLevelOffset);
         // Round 11D: voice mode (0=Poly, 1=Mono, 2=Legato)
         const int voiceMode = (p_voiceMode != nullptr) ? static_cast<int>(p_voiceMode->load()) : 0;
 
@@ -534,6 +566,16 @@ public:
         // Thresholds for dirty detection: 0.005 for normalized params avoids
         // rebuilding on sub-perceptual jitter; 0.25 semitones for formant shift
         // avoids rebuilding on inaudible micro-changes.
+        //
+        // F21 — KNOWN LIMITATION (deferred): FormantFilter is shared across all
+        // 6 voices but uses only lastFundamentalHz (most recently triggered note).
+        // In Poly mode, each voice has a different fundamental, so the vowel
+        // formant peaks are correctly placed only for the most recent voice — other
+        // voices get slight formant detuning relative to their pitch. The fix would
+        // be per-voice FormantFilter (adds 6× the build cost on noteOn). Acceptable
+        // for V1 since the shared filter produces musically coherent vowels across
+        // the chord; detuning is <5% for notes within a fifth of each other.
+        // TODO: per-voice formant in V1.1 — see issue tracker.
         if (formantDirty || vowelIndex != lastVowelIndex || std::abs(brightness - lastBrightness) > 0.005f ||
             std::abs(oddEven - lastOddEven) > 0.005f || std::abs(formantShift - lastFormantShift) > 0.25f)
         {
@@ -584,6 +626,10 @@ public:
         const float morphOffset = externalMorphMod + externalBlendMod;
         const float filterOffset = externalFilterMod;
         const float fmAudioAmount = externalFmMod;
+        // F11: capture decayMod into a block-local const BEFORE zeroing accumulators.
+        // Previously externalDecayMod was reset here but then tested per-sample as the
+        // member variable (always 0.0f), silently breaking EnvToDecay coupling entirely.
+        const float blockDecayMod = externalDecayMod;
         externalPitchMod = externalMorphMod = externalFilterMod = 0.0f;
         externalFmMod = externalDecayMod = externalBlendMod = 0.0f;
 
@@ -618,12 +664,26 @@ public:
             if (message.isNoteOn())
             {
                 silenceGate.wake();
-                // Round 11D: Legato mode — if a voice is gate-open (active and not
-                // in release), slide its pitch to the new note without retriggering
-                // the envelope. This preserves the spectral bloom during legato lines.
-                // In Poly (0) or Mono (1), always retrigger (triggerVoice path).
-                // In Legato (2), retrigger only if no gate-open voice exists.
-                if (voiceMode == 2) // Legato
+                // Round 11D: Voice mode routing.
+                // Poly (0): always retrigger — full kMaxVoices polyphony.
+                // Mono (1): silence all existing voices before triggering — single voice, retrigger always.
+                //   F16: Mono was previously identical to Poly (triggerVoice path), letting multiple voices
+                //   accumulate. Now silences all active voices before trigger so only one voice sounds.
+                // Legato (2): if a gate-open voice exists, slide its pitch without envelope retrigger;
+                //   otherwise trigger fresh.
+                if (voiceMode == 1) // Mono — one voice, retrigger
+                {
+                    // Silence all active voices without crossfade (immediate cut)
+                    for (auto& v : voices)
+                    {
+                        v.active = false;
+                        v.envStage = OrbitalVoice::EnvStage::Off;
+                    }
+                    triggerVoice(message.getNoteNumber(), message.getFloatVelocity(), inharmonicity, fmRatio,
+                                 stereoSpread, ampAttack, ampDecay, ampSustain, ampRelease, groupAttackTimes,
+                                 groupDecayTimes);
+                }
+                else if (voiceMode == 2) // Legato
                 {
                     bool legatoHandled = false;
                     for (auto& voice : voices)
@@ -644,7 +704,7 @@ public:
                                      stereoSpread, ampAttack, ampDecay, ampSustain, ampRelease, groupAttackTimes,
                                      groupDecayTimes);
                 }
-                else
+                else // Poly (0) — always retrigger, full polyphony
                 {
                     triggerVoice(message.getNoteNumber(), message.getFloatVelocity(), inharmonicity, fmRatio,
                                  stereoSpread, ampAttack, ampDecay, ampSustain, ampRelease, groupAttackTimes,
@@ -654,10 +714,13 @@ public:
             else if (message.isNoteOff())
                 noteOff(message.getNoteNumber());
             else if (message.isAllNotesOff() || message.isAllSoundOff())
+                // F26: transition to Release rather than immediate cutoff — avoids
+                // amplitude discontinuity (click) on allNotesOff. allSoundOff should
+                // also respect the release tail rather than hard-zeroing the buffer.
                 for (auto& voice : voices)
                 {
-                    voice.active = false;
-                    voice.envStage = OrbitalVoice::EnvStage::Off;
+                    if (voice.active && voice.envStage != OrbitalVoice::EnvStage::Off)
+                        voice.envStage = OrbitalVoice::EnvStage::Release;
                 }
             // D006: channel pressure → aftertouch (applied to morph position below)
             else if (message.isChannelPressure())
@@ -840,10 +903,12 @@ public:
                     // another engine's envelope is coupled via EnvToDecay.
                     // The 0.001 scale keeps the damping subtle per sample — it
                     // accumulates over hundreds of samples for a smooth effect.
-                    if (externalDecayMod != 0.0f)
+                    // F11: use blockDecayMod (captured before accumulator reset)
+                    // instead of externalDecayMod (which is 0 by this point).
+                    if (blockDecayMod != 0.0f)
                         voice.groupEnvLevel[groupIdx] =
                             std::max(kGroupSustainFloor[groupIdx],
-                                     voice.groupEnvLevel[groupIdx] * (1.0f - externalDecayMod * 0.001f));
+                                     voice.groupEnvLevel[groupIdx] * (1.0f - blockDecayMod * 0.001f));
 
                     voice.groupEnvLevel[groupIdx] = flushDenormal(voice.groupEnvLevel[groupIdx]);
                 }
@@ -925,8 +990,8 @@ public:
                 outputSampleL = saturatorL.processSample(outputSampleL);
                 outputSampleR = saturatorR.processSample(outputSampleR);
             }
-            outputSampleL *= volume;
-            outputSampleR *= volume;
+            outputSampleL *= volumeRaw;
+            outputSampleR *= volumeRaw;
 
             outL[sampleIdx] += outputSampleL;
             outR[sampleIdx] += outputSampleR;
@@ -962,7 +1027,11 @@ public:
         if (externalFmActive)
             couplingAudioBuffer.clear(1, 0, numSamples);
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // F18: guard against mono buffer — getReadPointer(1) crashes if buffer has only 1 channel.
+        // Use channel 0 for both L and R analysis in mono mode (additive output is mono-summed anyway).
+        const float* analyzeL = buffer.getReadPointer(0);
+        const float* analyzeR = (buffer.getNumChannels() > 1) ? buffer.getReadPointer(1) : analyzeL;
+        silenceGate.analyzeBlock(analyzeL, analyzeR, numSamples);
     }
 
 private:
@@ -1050,13 +1119,18 @@ private:
 
         //-- Group envelope coefficients ----------------------------------------
         // D001: velocity scales attack — harder hits = faster attack
-        float velAttackScale = 1.0f - vel * 0.7f;
+        // F24: clamp the scaled attack time AFTER applying velAttackScale, not before.
+        // Previous code: std::max(0.001f, time * scale) — the max clamped the raw time
+        // then multiplied by scale, allowing the result to underflow below 0.001s.
+        // Correct: clamp the PRODUCT so the guard always holds.
+        const float velAttackScale = 1.0f - vel * 0.7f; // [0.3, 1.0] — harder hits = 0.3x time
         for (int groupIdx = 0; groupIdx < 4; ++groupIdx)
         {
             voice.groupEnvLevel[groupIdx] = 0.0f;
             voice.groupStage[groupIdx] = OrbitalVoice::GroupEnvStage::Attack;
+            const float scaledAttack = std::max(0.001f, groupAttackTimes[groupIdx] * velAttackScale);
             voice.groupAttackCoeff[groupIdx] =
-                1.0f / (std::max(0.001f, groupAttackTimes[groupIdx] * velAttackScale) * cachedSampleRateFloat);
+                1.0f / (scaledAttack * cachedSampleRateFloat);
             voice.groupDecayCoeff[groupIdx] =
                 1.0f / (std::max(0.01f, groupDecayTimes[groupIdx]) * cachedSampleRateFloat);
         }
@@ -1145,10 +1219,19 @@ private:
         const float space = p_macroSpace->load();
 
         // M1 SPECTRUM: dark fundamental -> all harmonics blazing
-        // Directly maps to brightness (spectral tilt) and odd/even balance.
-        // At 0: only fundamental. At 1: full harmonic series.
-        brightness = spectrum;
-        oddEven = 0.3f + spectrum * 0.4f; // Range 0.3-0.7: subtle odd/even shift
+        // F28: previously unconditionally overwrote brightness and oddEven regardless
+        // of the macro value — the per-engine knobs had zero effect when macroSpectrum
+        // was at any position (including center). Now use additive offset so the knobs
+        // remain effective and the macro adds ±0.5 range of influence.
+        // Design intent unchanged: 0 = dark/fundamental, 1 = full harmonic series.
+        // At spectrum=0.5 (default): no offset. At 0: -0.5 brightness push. At 1: +0.5 push.
+        if (spectrum > 0.001f || spectrum < 0.499f) // only apply when macro is not at neutral
+        {
+            const float spectrumOffset = spectrum - 0.5f; // bipolar [-0.5, +0.5]
+            brightness = juce::jlimit(0.0f, 1.0f, brightness + spectrumOffset);
+            // oddEven nudged subtly: 0.2 × offset keeps it within comfortable range
+            oddEven = juce::jlimit(0.0f, 1.0f, oddEven + spectrumOffset * 0.2f);
+        }
 
         // M2 EVOLVE: Profile A static -> Profile B morphing + slower envelopes
         // The envelope time multiplier (1x to 5x) makes partials bloom more

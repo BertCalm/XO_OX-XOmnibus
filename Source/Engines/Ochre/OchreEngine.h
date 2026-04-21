@@ -271,8 +271,16 @@ struct OchreBody
         bodyMode3.reset();
     }
 
-    void setFundamental(float freqHz, int bodyType) noexcept
+    // F03/F09: freqHz parameter removed — body resonances are fixed per type,
+    // independent of the played note. The misleading parameter caused callers to
+    // pass per-sample voice.freq unnecessarily. Now called only on noteOn or
+    // when bodyType changes (tracked by cachedBodyType).
+    void setBodyType(int bodyType) noexcept
     {
+        if (bodyType == cachedBodyType)
+            return; // delta-guard: skip if unchanged (P19 pattern)
+        cachedBodyType = bodyType;
+
         float freq1, freq2, freq3;
         float q1, q2, q3;
 
@@ -326,9 +334,11 @@ struct OchreBody
         bodyMode1.reset();
         bodyMode2.reset();
         bodyMode3.reset();
+        cachedBodyType = -1; // force recompute on next setBodyType()
     }
 
     float sr = 0.0f;  // Sentinel: must be set by prepare() before use
+    int cachedBodyType = -1; // F03: delta-guard for setBodyType()
     OchreMode bodyMode1, bodyMode2, bodyMode3;
 };
 
@@ -371,7 +381,9 @@ struct OchreSympathetic
                 float sf = f * intv;
                 if (sf > 0.49f * sr)
                     continue;
-                resonators[activeStringCount].setFreqAndQ(sf, 200.0f, sr);
+                // F25: Q=200 was far too narrow (1 Hz BW at 200 Hz → infinite ring).
+                // Q=60 matches upright piano sympathetic sustain (~2-3 seconds).
+                resonators[activeStringCount].setFreqAndQ(sf, 60.0f, sr);
                 activeStringCount++;
             }
         }
@@ -442,6 +454,13 @@ struct OchreVoice
     float hfNoiseEnv = 0.0f;
     uint32_t hfNoiseState = 12345u;
 
+    // Cached filter cutoffs for P19 coefficient-update guard (skip if |delta| < 1 Hz)
+    float lastFilterCutoff = -1.0f;
+    float lastHFCutoff = -1.0f; // F02: guard for hfNoiseShaper.setCoefficients
+
+    // F08: sr-derived HF noise envelope decay coefficient (set in prepare())
+    float hfNoiseDecayCoeff = 0.9995f;
+
     void reset() noexcept
     {
         active = false;
@@ -450,9 +469,13 @@ struct OchreVoice
         isReleasing = false;
         releaseCoeff = 1.0f;
         hfNoiseEnv = 0.0f;
+        lastFilterCutoff = -1.0f; // F07: force coefficient recompute on voice reuse
+        lastHFCutoff = -1.0f;     // F07: same for HF shaper
         glide.reset();
         hammer.reset();
         body.reset();
+        lpf.reset();           // F07: clear SVF state to prevent voice-steal artefacts
+        hfNoiseShaper.reset(); // F07: clear SVF state to prevent voice-steal artefacts
         filterEnv.kill();
         lfo1.reset();
         lfo2.reset();
@@ -488,6 +511,13 @@ public:
             voices[i].filterEnv.prepare(srf);
             voices[i].lfo1.setShape(StandardLFO::Sine);
             voices[i].lfo2.setShape(StandardLFO::Triangle);
+
+            // F01/F11: hfNoiseShaper mode is block-constant — set once here.
+            voices[i].hfNoiseShaper.setMode(CytomicSVF::Mode::BandPass);
+
+            // F08: derive HF noise burst decay from sample rate (~45ms at any sr).
+            // Was hardcoded 0.9995f → decay time halved at 96kHz vs 44.1kHz.
+            voices[i].hfNoiseDecayCoeff = std::exp(-1.0f / (0.045f * srf));
 
             // Pillar 7: per-voice thermal personality from seeded PRNG
             uint32_t seed = static_cast<uint32_t>(i * 6271 + 37);
@@ -594,7 +624,7 @@ public:
         // Parameter reads (once per block)
         const float pConductivity = loadP(paramConductivity, 0.5f);
         const float pHardness = loadP(paramHardness, 0.4f);
-        const int pBodyType = static_cast<int>(loadP(paramBodyType, 0.0f));
+        const int pBodyType = static_cast<int>(std::round(loadP(paramBodyType, 0.0f))); // F12: round int param
         const float pBodyDepth = loadP(paramBodyDepth, 0.4f);
         const float pBrightness = loadP(paramBrightness, 10000.0f);
         const float pDamping = loadP(paramDamping, 0.4f);
@@ -663,10 +693,10 @@ public:
         // LFO params — once per block
         const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
         const float lfo1Depth = loadP(paramLfo1Depth, 0.1f);
-        const int lfo1Shape = static_cast<int>(loadP(paramLfo1Shape, 0.0f));
+        const int lfo1Shape = static_cast<int>(std::round(loadP(paramLfo1Shape, 0.0f))); // F13: round int param
         const float lfo2Rate = loadP(paramLfo2Rate, 1.0f);
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
-        const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 1.0f));
+        const int lfo2Shape = static_cast<int>(std::round(loadP(paramLfo2Shape, 1.0f))); // F13: round int param
 
         for (auto& voice : voices)
         {
@@ -750,6 +780,13 @@ public:
                     voice.hfNoiseState = voice.hfNoiseState * 1664525u + 1013904223u;
                     float noise = (static_cast<float>(voice.hfNoiseState & 0xFFFF) / 32768.0f - 1.0f);
 
+                    // F01/F11: setMode(BandPass) hoisted to prepare() — mode is constant.
+                    // F02: P19 delta-guard — skip setCoefficients when cutoff unchanged.
+                    float hfCutoff = std::clamp(freq * 8.0f, 500.0f, srf * 0.45f);
+                    if (std::fabs(hfCutoff - voice.lastHFCutoff) > 1.0f)
+                    {
+                        voice.hfNoiseShaper.setCoefficients(hfCutoff, 0.3f, srf);
+                        voice.lastHFCutoff = hfCutoff;
                     // Shape noise through body-tuned SVF (coeff refresh decimated)
                     if (updateFilter)
                     {
@@ -759,7 +796,9 @@ public:
                     float shapedNoise = voice.hfNoiseShaper.processSample(noise);
 
                     resonanceSum += shapedNoise * voice.hfNoiseEnv * pHFCharacter * 0.3f;
-                    voice.hfNoiseEnv *= 0.9995f; // Fast decay
+                    // F08: was hardcoded 0.9995f → decay 2× faster at 96kHz than 44.1kHz.
+                    // hfNoiseDecayCoeff is derived from srf in prepare() (~45ms at any sr).
+                    voice.hfNoiseEnv *= voice.hfNoiseDecayCoeff;
                 }
 
                 // Caramel saturation — post-resonator (Pillar 4)
@@ -770,7 +809,10 @@ public:
                 }
 
                 // Body resonance (Pillar 5)
-                voice.body.setFundamental(freq, pBodyType);
+                // F03: setFundamental(freq, type) removed — body frequencies are
+                // type-only constants (do not depend on played note). Delta-guarded
+                // setBodyType() skips the 3 setFreqAndQ calls when type is unchanged.
+                voice.body.setBodyType(pBodyType);
                 float bodied = voice.body.process(resonanceSum, bodyDNow);
 
                 // Amplitude envelope — copper decays faster than iron.
@@ -790,6 +832,13 @@ public:
 
                 // Filter envelope + LFO1 → brightness (env ticked per-sample, SVF decimated)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
+                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
+                // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
+                if (std::fabs(cutoff - voice.lastFilterCutoff) > 1.0f)
+                {
+                    voice.lpf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.lpf.setCoefficients(cutoff, 0.4f, srf);
+                    voice.lastFilterCutoff = cutoff;
                 if (updateFilter)
                 {
                     float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
@@ -844,12 +893,14 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        // F17: replaced std::pow with fastPow2 (avoids double-precision libm call)
+        float freq = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
 
         float condNow = paramConductivity ? paramConductivity->load() : 0.5f;
         float hardNow = std::clamp(
             (paramHardness ? paramHardness->load() : 0.4f) + vel * 0.5f + aftertouchAmount * 0.3f, 0.0f, 1.0f);
-        int bodyType = paramBodyType ? static_cast<int>(paramBodyType->load()) : 0;
+        // F12: round int param to avoid float→int truncation at boundary values (e.g. 0.999→0)
+        int bodyType = paramBodyType ? static_cast<int>(std::round(paramBodyType->load())) : 0;
         float caramelNow = paramCaramel ? paramCaramel->load() : 0.3f;
 
         v.active = true;
@@ -865,14 +916,22 @@ public:
         v.hammer.trigger(vel, hardNow, condNow, freq, srf, caramelNow);
 
         // Filter envelope: copper = shorter decay than iron
-        // RT-fix: filterEnv.prepare() already called at engine prepare()-time.
+        // F04: removed redundant v.filterEnv.prepare(srf) — already called in engine prepare().
         float filterDecay = 0.05f + (1.0f - condNow) * 0.45f; // 50ms–500ms
         v.filterEnv.setADSR(0.001f, filterDecay, 0.0f, 0.3f);
         v.filterEnv.triggerHard();
 
         // HF noise burst (body character) — triggered on note-on, decays fast
         v.hfNoiseEnv = vel * vel;
+        // F01/F11: hfNoiseShaper.setMode(BandPass) was hoisted to engine prepare().
+        // Reset the SVF state here so stale history doesn't colour the burst.
+        v.hfNoiseShaper.reset();
+        v.lastHFCutoff = -1.0f; // force coefficient update on first HF sample
 
+        // F05: removed redundant v.body.prepare(srf) — already called in engine prepare().
+        // F03: setFundamental(freq, type) replaced with setBodyType(type) — body
+        // resonances are type-only constants, independent of played note frequency.
+        v.body.setBodyType(bodyType);
         // RT-fix: body.prepare() already called at engine prepare()-time (sets sr, resets
         // filter states).  On noteOn, reconfigure modes only — no lifecycle re-init needed.
         v.body.setFundamental(freq, bodyType);
@@ -893,14 +952,21 @@ public:
 
     void noteOff(int note) noexcept
     {
+        // F15: release time was hardcoded 5ms regardless of Decay/Damping parameters.
+        // Now scaled: 5ms (max damping) to 50ms (zero damping), preserving copper material
+        // model where conductivity controls the rate at which energy leaves the instrument.
+        float decayNow  = paramDecay   ? paramDecay->load()   : 1.2f;
+        float dampNow   = paramDamping ? paramDamping->load() : 0.4f;
+        // Copper release: 5–50ms scaled by decay and inversely by damping
+        float relMs = std::max(5.0f + decayNow * 20.0f * (1.0f - dampNow * 0.8f), 5.0f);
+        float relCoeff = std::exp(-1.0f / (relMs * 0.001f * srf));
+
         for (auto& v : voices)
         {
             if (v.active && v.currentNote == note && !v.isReleasing)
             {
-                // Copper: faster release than iron (energy leaves quickly).
-                // Exponential 5ms ramp — replaces hard 75% cut that caused clicks.
                 v.isReleasing = true;
-                v.releaseCoeff = std::exp(-1.0f / (0.005f * srf));
+                v.releaseCoeff = relCoeff;
                 v.filterEnv.release();
             }
         }
@@ -915,7 +981,8 @@ public:
         {
             if (v.active && numActive < kMaxVoices)
             {
-                activeFreqs[numActive++] = 440.0f * std::pow(2.0f, (static_cast<float>(v.currentNote) - 69.0f) / 12.0f);
+                // F16: replaced std::pow with fastPow2 (consistent with fleet pattern)
+                activeFreqs[numActive++] = 440.0f * fastPow2((static_cast<float>(v.currentNote) - 69.0f) / 12.0f);
             }
         }
         sympathetics.buildFromActiveNotes(activeFreqs, numActive);

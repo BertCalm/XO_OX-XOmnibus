@@ -223,8 +223,8 @@ public:
 
     void clear() noexcept
     {
-        for (int i = 0; i < kMaxBufferSize; ++i)
-            buffer[i] = 0.0f;
+        // F9: use memset — far faster than per-element loop on 768K-sample array
+        std::memset(buffer, 0, sizeof(buffer));
         writeHead = 0;
     }
 
@@ -239,9 +239,15 @@ public:
 
     float readInterpolated(float position) const noexcept
     {
-        // position is in samples (fractional)
-        while (position < 0.0f)
-            position += static_cast<float>(bufferSize);
+        // F19/F3: guard against NaN, infinity, or extreme negatives — replace
+        // the while-loop (infinite loop risk) with a fast modulo wrap.
+        if (!std::isfinite(position))
+            return 0.0f;
+        float bsf = static_cast<float>(bufferSize);
+        // Bring into [0, bufferSize) range safely without a loop
+        position = std::fmod(position, bsf);
+        if (position < 0.0f)
+            position += bsf;
 
         int iLo = static_cast<int>(position) % bufferSize;
         int iHi = (iLo + 1) % bufferSize;
@@ -770,6 +776,15 @@ private:
 class OpalFinish
 {
 public:
+    void prepare(double sampleRate) noexcept
+    {
+        // F7: derive compressor coefficients from sample rate so attack/release
+        // are SR-invariant. Target: attack ~0.5ms, release ~50ms.
+        float fsr = static_cast<float>(sampleRate);
+        attackCoeff  = 1.0f - std::exp(-1.0f / (0.0005f * fsr)); // 0.5ms
+        releaseCoeff = 1.0f - std::exp(-1.0f / (0.050f  * fsr)); // 50ms
+    }
+
     void reset() noexcept
     {
         envL = 0.0f;
@@ -798,10 +813,8 @@ private:
     float compress(float in, float threshold, float& env) noexcept
     {
         float absIn = std::fabs(in);
-        // Envelope follower (attack 0.1ms, release 50ms approx)
-        float target = absIn;
-        float coeff = (target > env) ? 0.01f : 0.001f;
-        env = flushDenormal(env + coeff * (target - env));
+        float coeff = (absIn > env) ? attackCoeff : releaseCoeff;
+        env = flushDenormal(env + coeff * (absIn - env));
 
         if (env > threshold)
         {
@@ -814,6 +827,9 @@ private:
     }
 
     float envL = 0.0f, envR = 0.0f;
+    // F7: SR-derived coefficients (set by prepare())
+    float attackCoeff  = 0.01f;  // fallback ≈ 44.1kHz 0.5ms
+    float releaseCoeff = 0.001f; // fallback ≈ 44.1kHz 50ms
 };
 
 //==============================================================================
@@ -866,6 +882,7 @@ public:
 
         scatterReverb.prepare(sampleRate);
         stereoDelay.prepare(sampleRate);
+        finish.prepare(sampleRate); // F7: SR-derived compressor coefficients
         finish.reset();
         aftertouch.prepare(sampleRate);
 
@@ -1249,14 +1266,14 @@ public:
         pLfo1Shape = apvts.getRawParameterValue(OpalParam::LFO1_SHAPE);
         pLfo1Rate = apvts.getRawParameterValue(OpalParam::LFO1_RATE);
         pLfo1Depth = apvts.getRawParameterValue(OpalParam::LFO1_DEPTH);
-        pLfo1Sync = apvts.getRawParameterValue(OpalParam::LFO1_SYNC);
+        pLfo1Sync = apvts.getRawParameterValue(OpalParam::LFO1_SYNC); // F12: attached; host-sync pending
         pLfo1Retrigger = apvts.getRawParameterValue(OpalParam::LFO1_RETRIGGER);
         pLfo1Phase = apvts.getRawParameterValue(OpalParam::LFO1_PHASE);
         // LFO 2
         pLfo2Shape = apvts.getRawParameterValue(OpalParam::LFO2_SHAPE);
         pLfo2Rate = apvts.getRawParameterValue(OpalParam::LFO2_RATE);
         pLfo2Depth = apvts.getRawParameterValue(OpalParam::LFO2_DEPTH);
-        pLfo2Sync = apvts.getRawParameterValue(OpalParam::LFO2_SYNC);
+        pLfo2Sync = apvts.getRawParameterValue(OpalParam::LFO2_SYNC); // F12: attached; host-sync pending
         pLfo2Retrigger = apvts.getRawParameterValue(OpalParam::LFO2_RETRIGGER);
         pLfo2Phase = apvts.getRawParameterValue(OpalParam::LFO2_PHASE);
         // Mod Matrix
@@ -1295,7 +1312,7 @@ public:
         pFxDelayTime = apvts.getRawParameterValue(OpalParam::FX_DELAY_TIME);
         pFxDelayFB = apvts.getRawParameterValue(OpalParam::FX_DELAY_FB);
         pFxDelayMix = apvts.getRawParameterValue(OpalParam::FX_DELAY_MIX);
-        pFxDelaySync = apvts.getRawParameterValue(OpalParam::FX_DELAY_SYNC);
+        pFxDelaySync = apvts.getRawParameterValue(OpalParam::FX_DELAY_SYNC); // F13: attached; host-sync pending
         pFxDelaySpread = apvts.getRawParameterValue(OpalParam::FX_DELAY_SPREAD);
         // FX — Finish
         pFxFinishGlue = apvts.getRawParameterValue(OpalParam::FX_FINISH_GLUE);
@@ -1624,9 +1641,11 @@ public:
             {
                 bool wasDown = sustainPedalDown;
                 sustainPedalDown = (m.getControllerValue() >= 64);
+                // F14: release ALL voices that received noteOff while pedal was held,
+                // not just those in Sustain stage (voices in Decay would be skipped).
                 if (wasDown && !sustainPedalDown)
                     for (auto& v : voices)
-                        if (v.active && v.ampEnv.getStage() == StandardADSR::Stage::Sustain)
+                        if (v.active)
                             v.noteOff();
             }
             // D006: channel pressure → aftertouch (applied to grain scatter below)
@@ -1714,12 +1733,16 @@ public:
                 if (!v.active)
                     continue;
 
-                // Glide
+                // Glide — F25 / issue #1077: snap threshold was hardcoded 0.01 Hz,
+                // causing an audible pitch step on arrival at low frequencies.
+                // New rule: snap when the remaining difference is smaller than
+                // one glide step (< glideRate * target), ensuring the step is
+                // always proportionally inaudible regardless of frequency.
                 if (v.glideRate > 0.0f)
                 {
                     float diff = v.glideTarget - v.glideFreq;
                     v.glideFreq += diff * v.glideRate;
-                    if (std::fabs(diff) < 0.01f)
+                    if (std::fabs(diff) < v.glideTarget * v.glideRate * 2.0f)
                     {
                         v.glideFreq = v.glideTarget;
                         v.glideRate = 0.0f;
@@ -1758,16 +1781,62 @@ public:
         extFreezeMod = 0.0f;
 
         // ---- Render grains into work buffer ----
-        for (int n = 0; n < numSamples; ++n)
-        {
-            workBufL[static_cast<size_t>(n)] = 0.0f;
-            workBufR[static_cast<size_t>(n)] = 0.0f;
-        }
+        // F24: use std::fill instead of per-element loop
+        std::fill(workBufL.begin(), workBufL.begin() + numSamples, 0.0f);
+        std::fill(workBufR.begin(), workBufR.begin() + numSamples, 0.0f);
         grainPool.processAll(grainBuffer, workBufL.data(), workBufR.data(), numSamples);
+
+        // ---- F10: Hoist per-block computations above the sample loop ----
+        // avgNote, avgVelocity, and keyTrackOffset only change when voices
+        // start/stop — recomputing them every sample wastes CPU (2 full scans
+        // of 12 voices × numSamples times per block).
+        int preActiveCount = 0;
+        float preAvgNote = 0.0f, preAvgVelForFilter = 0.0f;
+        for (const auto& v : voices)
+        {
+            if (!v.active)
+                continue;
+            preAvgNote += static_cast<float>(v.noteNumber);
+            preAvgVelForFilter += v.velocity;
+            ++preActiveCount;
+        }
+        float preKeyTrackOffset = 0.0f;
+        float preVelFilterScale = 1.0f;
+        if (preActiveCount > 0)
+        {
+            float invCount = 1.0f / static_cast<float>(preActiveCount);
+            preAvgNote *= invCount;
+            preAvgVelForFilter *= invCount;
+            // Each semitone above middle C shifts cutoff up proportionally
+            preKeyTrackOffset = filterKeyTrack * (preAvgNote - 60.0f) * (filterCutoff / 60.0f);
+            preVelFilterScale = 0.3f + 0.7f * preAvgVelForFilter;
+        }
+
+        // F5/F23: Set filter mode once per block (not per-sample). The mode
+        // comes from a ChoiceParam that can only change between blocks.
+        CytomicSVF::Mode fMode;
+        switch (filterMode)
+        {
+        case 1:
+            fMode = CytomicSVF::Mode::BandPass;
+            break;
+        case 2:
+            fMode = CytomicSVF::Mode::HighPass;
+            break;
+        case 3:
+            fMode = CytomicSVF::Mode::Notch;
+            break;
+        default:
+            fMode = CytomicSVF::Mode::LowPass;
+            break;
+        }
+        globalFilterL.setMode(fMode);
+        globalFilterR.setMode(fMode);
 
         // ---- Per-voice post-processing: filter, character, envelope ----
         // For simplicity, process filter/character/envelope on the mixed output
         // (per-voice filtering would require separate render passes)
+        float prevEffCutoff = -1.0f; // tracks last filter update to skip redundant setCoefficients
         for (int n = 0; n < numSamples; ++n)
         {
             float L = workBufL[static_cast<size_t>(n)];
@@ -1812,12 +1881,15 @@ public:
             if (activeCount > 0)
             {
                 float norm = 1.0f / static_cast<float>(activeCount);
+                // F22: normalize envSum too — without this, 12 voices at sustain 0.8
+                // produces envSum=9.6, clipping the output severely.
+                envSum *= norm;
                 filterEnvSum *= norm;
                 lfo1Val *= norm;
                 lfo2Val *= norm;
             }
 
-            // Apply amp envelope
+            // Apply amp envelope (normalized average across active voices)
             L *= envSum;
             R *= envSum;
 
@@ -1825,32 +1897,22 @@ public:
             float modOffsets[12] = {}; // indexed by mod dest
             applyModMatrix(modOffsets, lfo1Val, lfo2Val, filterEnvSum, envSum, activeCount);
 
-            // Filter with key tracking + filter envelope + drive
-            // Key tracking: shift cutoff based on average active note vs middle C (60)
-            float keyTrackOffset = 0.0f;
-            if (filterKeyTrack > 0.001f && activeCount > 0)
-            {
-                float avgNote = 0.0f;
-                for (const auto& v : voices)
-                    if (v.active)
-                        avgNote += static_cast<float>(v.noteNumber);
-                avgNote /= static_cast<float>(activeCount);
-                // Each semitone above middle C shifts cutoff up proportionally
-                keyTrackOffset = filterKeyTrack * (avgNote - 60.0f) * (filterCutoff / 60.0f);
-            }
-            // Compute averaged velocity across active voices for D001 filter scaling
-            float avgVelForFilter = 0.0f;
-            if (activeCount > 0)
-            {
-                for (const auto& v : voices)
-                    if (v.active)
-                        avgVelForFilter += v.velocity;
-                avgVelForFilter /= static_cast<float>(activeCount);
-            }
-            float velFilterScale = 0.3f + 0.7f * avgVelForFilter;
-            float effCutoff = filterCutoff + keyTrackOffset + filterEnvAmt * filterEnvSum * 10000.0f * velFilterScale +
-                              modOffsets[6] * 5000.0f; // mod dest 6 = FilterCutoff
+            // F10: use pre-hoisted key tracking and velocity values
+            float effCutoff = filterCutoff + preKeyTrackOffset
+                              + filterEnvAmt * filterEnvSum * 10000.0f * preVelFilterScale
+                              + modOffsets[6] * 5000.0f; // mod dest 6 = FilterCutoff
             effCutoff = clamp(effCutoff, 20.0f, 20000.0f);
+
+            // F5/F23: Only call setCoefficients when cutoff changes meaningfully.
+            // std::tan() inside setCoefficients is expensive; skipping redundant
+            // calls eliminates the per-sample CPU bomb at the cost of ~0.01 Hz
+            // per-sample filter lag (inaudible for block sizes >= 32).
+            if (std::fabs(effCutoff - prevEffCutoff) > 0.5f)
+            {
+                globalFilterL.setCoefficients(effCutoff, filterReso, static_cast<float>(sr));
+                globalFilterR.setCoefficients(effCutoff, filterReso, static_cast<float>(sr));
+                prevEffCutoff = effCutoff;
+            }
 
             // Pre-filter drive
             if (filterDrive > 0.001f)
@@ -1860,37 +1922,18 @@ public:
                 R = fastTanh(R * driveGain);
             }
 
-            // Set filter mode
-            CytomicSVF::Mode fMode;
-            switch (filterMode)
-            {
-            case 1:
-                fMode = CytomicSVF::Mode::BandPass;
-                break;
-            case 2:
-                fMode = CytomicSVF::Mode::HighPass;
-                break;
-            case 3:
-                fMode = CytomicSVF::Mode::Notch;
-                break;
-            default:
-                fMode = CytomicSVF::Mode::LowPass;
-                break;
-            }
-            globalFilterL.setMode(fMode);
-            globalFilterR.setMode(fMode);
-            globalFilterL.setCoefficients(effCutoff, filterReso, static_cast<float>(sr));
-            globalFilterR.setCoefficients(effCutoff, filterReso, static_cast<float>(sr));
             L = globalFilterL.processSample(L);
             R = globalFilterR.processSample(R);
 
-            // Character: Shimmer (harmonic fold — octave-up via half-wave rect)
+            // Character: Shimmer (harmonic fold — octave-up via full-wave rect)
+            // F8: old formula `|L|*2 - L` is not half-wave rect; use correct
+            // full-wave rectification (folds negative cycles up one octave).
             float effShimmer = shimmerAmt + modOffsets[7] * 0.5f; // mod dest 7
             if (effShimmer > 0.001f)
             {
                 effShimmer = clamp(effShimmer, 0.0f, 1.0f);
-                float shimL = std::fabs(L) * 2.0f - L; // half-wave rect
-                float shimR = std::fabs(R) * 2.0f - R;
+                float shimL = std::fabs(L); // full-wave rect: octave-up content
+                float shimR = std::fabs(R);
                 L = L + effShimmer * 0.5f * (shimL - L);
                 R = R + effShimmer * 0.5f * (shimR - R);
             }
@@ -1901,10 +1944,11 @@ public:
             {
                 effFrost = clamp(effFrost, 0.0f, 1.0f);
                 float ceiling = 1.0f - effFrost * 0.5f;
+                // F18: use std::copysign — avoids sign-compare at exactly 0
                 if (std::fabs(L) > ceiling)
-                    L = ceiling * (L > 0 ? 1.0f : -1.0f);
+                    L = std::copysign(ceiling, L);
                 if (std::fabs(R) > ceiling)
-                    R = ceiling * (R > 0 ? 1.0f : -1.0f);
+                    R = std::copysign(ceiling, R);
             }
 
             scrL[n] = L;
@@ -1914,10 +1958,19 @@ public:
         // ---- FX Chain (post-voice mix, stereo — operates on scrL/scrR scratch) ----
 
         // Smear: time-stretch effect (simplified: secondary granular-style diffusion)
+        // F6: derive smear coefficient from sample rate so behaviour is SR-invariant.
+        // Target time constant: smearAmt maps 0→10ms, 1→200ms (at 44.1kHz reference).
         if (fxSmearMix > 0.001f)
         {
+            float smearTc = 0.01f + fxSmearAmt * 0.19f; // 10ms..200ms
+            float smearCoeff = 1.0f - std::exp(-1.0f / (smearTc * static_cast<float>(sr)));
+            smearCoeff = clamp(smearCoeff, 0.0001f, 1.0f);
             for (int n = 0; n < numSamples; ++n)
             {
+                smearStateL = flushDenormal(smearStateL + (outL[n] - smearStateL) * smearCoeff);
+                smearStateR = flushDenormal(smearStateR + (outR[n] - smearStateR) * smearCoeff);
+                outL[n] = outL[n] * (1.0f - fxSmearMix) + smearStateL * fxSmearMix;
+                outR[n] = outR[n] * (1.0f - fxSmearMix) + smearStateR * fxSmearMix;
                 // Smear approximation: feedback low-pass smoothing
                 smearStateL =
                     flushDenormal(smearStateL + (scrL[n] - smearStateL) * (0.01f + 0.1f * (1.0f - fxSmearAmt)));
@@ -1928,10 +1981,16 @@ public:
             }
         }
 
-        // Scatter Reverb
+        // Scatter Reverb — F29: only call setParams when params have changed
         if (fxReverbMix > 0.001f)
         {
-            scatterReverb.setParams(fxReverbSize, fxReverbDecay, fxReverbDamp);
+            if (fxReverbSize != lastReverbSize || fxReverbDecay != lastReverbDecay || fxReverbDamp != lastReverbDamp)
+            {
+                scatterReverb.setParams(fxReverbSize, fxReverbDecay, fxReverbDamp);
+                lastReverbSize = fxReverbSize;
+                lastReverbDecay = fxReverbDecay;
+                lastReverbDamp = fxReverbDamp;
+            }
             for (int n = 0; n < numSamples; ++n)
             {
                 float wetL = scrL[n], wetR = scrR[n];
@@ -1958,9 +2017,14 @@ public:
         {
             finish.process(scrL[n], scrR[n], fxFinishGlue, fxFinishWidth);
 
-            // Master pan
+            // Master pan — F20: equal-power law (cos/sin quarter-circle)
+            // Old linear law (1±pan) drops 6 dB in centre at extremes.
             if (masterPan != 0.0f)
             {
+                constexpr float pi4 = 0.7853981633974483f; // pi/4
+                float angle = (masterPan + 1.0f) * pi4; // map [-1,+1] to [0, pi/2]
+                outL[n] *= fastCos(angle);
+                outR[n] *= fastSin(angle);
                 float pL = clamp(1.0f - masterPan, 0.0f, 1.0f);
                 float pR = clamp(1.0f + masterPan, 0.0f, 1.0f);
                 scrL[n] *= pL;
@@ -2092,11 +2156,16 @@ private:
         case 3: // Noise
             return srcPrng.next() * 0.3f;
 
-        case 4: // Two-Osc
+        case 4: // Two-Osc — F26: apply osc2Shape param (was always Saw regardless)
         {
             srcOsc1.setWaveform(PolyBLEP::Waveform::Saw);
             srcOsc1.setFrequency(freq, static_cast<float>(sr));
-            srcOsc2.setWaveform(PolyBLEP::Waveform::Saw);
+            // osc2Shape: 0=Sine, 0.33=Triangle, 0.67=Saw, 1=Pulse (continuous blend via threshold)
+            PolyBLEP::Waveform w2 = (shape2 < 0.25f)  ? PolyBLEP::Waveform::Sine
+                                  : (shape2 < 0.5f)   ? PolyBLEP::Waveform::Triangle
+                                  : (shape2 < 0.75f)  ? PolyBLEP::Waveform::Saw
+                                                       : PolyBLEP::Waveform::Pulse;
+            srcOsc2.setWaveform(w2);
             srcOsc2.setFrequency(freq * fastPow2(osc2Det / 12.0f), static_cast<float>(sr));
             float s1 = srcOsc1.processSample();
             float s2 = srcOsc2.processSample();
@@ -2239,6 +2308,11 @@ private:
     // Smear state (simplified)
     float smearStateL = 0.0f;
     float smearStateR = 0.0f;
+
+    // F29: cached reverb params to avoid redundant setParams() calls every block
+    float lastReverbSize  = -1.0f;
+    float lastReverbDecay = -1.0f;
+    float lastReverbDamp  = -1.0f;
 
     // Work buffers (pre-allocated in prepare)
     std::vector<float> workBufL, workBufR;

@@ -272,17 +272,20 @@ private:
                     phasorIm = newIm;
                 }
 
-                float magnitude = std::sqrt(cosSum * cosSum + sinSum * sinSum);
-                magnitudeWeightedBin += magnitude * static_cast<float>(k);
-                totalMagnitude += magnitude;
+                // Use squared magnitude for the centroid ratio — sqrt cancels in the division
+                // (magnitudeWeightedBin / totalMagnitude), so we save 32 std::sqrt calls per tick.
+                float magnitudeSquared = cosSum * cosSum + sinSum * sinSum;
+                magnitudeWeightedBin += magnitudeSquared * static_cast<float>(k);
+                totalMagnitude += magnitudeSquared;
             }
 
             // Normalize result to [0, 1]: 0 = DC bias, 1 = Nyquist bias.
             // The (sampleRate / 2.0 / numBins) Hz-per-bin factor cancels in the
             // ratio, leaving a unit-normalized centroid position.
-            // Guard against silence (totalMagnitude near zero) with a 1e-6f floor.
+            // Guard against silence — threshold is 1e-10f because totalMagnitude is
+            // now sum-of-squared magnitudes (was 1e-6f when it was sum-of-magnitudes).
             spectralCentroid =
-                (totalMagnitude > 1e-6f)
+                (totalMagnitude > 1e-10f)
                     ? clamp(magnitudeWeightedBin / totalMagnitude / static_cast<float>(kNumBins - 1), 0.0f, 1.0f)
                     : 0.5f; // Default to center when signal is silent
         }
@@ -361,6 +364,9 @@ public:
             return;
         controlCounter = 0;
 
+        // Guard against unprepared state — cachedSampleRate defaults to 0.
+        if (cachedSampleRate <= 0.0)
+            return;
         float deltaTime = static_cast<float>(controlRateDivisor) / static_cast<float>(cachedSampleRate);
 
         // =====================================================================
@@ -522,7 +528,7 @@ public:
     void prepare(double sampleRate) noexcept
     {
         cachedSampleRate = sampleRate;
-        inverseSampleRate = 1.0 / sampleRate;
+        inverseSampleRate = (sampleRate > 0.0) ? (1.0 / sampleRate) : (1.0 / 48000.0);
         // Scale weight update divisor to actual sample rate
         weightControlDivisor = std::max(1, static_cast<int>(sampleRate / 2000.0));
         reset();
@@ -538,6 +544,15 @@ public:
         cachedFundamental = -1.0f;
         cachedSpread = -1.0f;
         weightControlCounter = 0;
+    }
+
+    // Invalidate the fundamental/spread cache without clearing modal state.
+    // Used by legatoRetrigger() so the next setFundamental() call recomputes
+    // angularFrequency[] for the new pitch without zeroing displacement[]/velocity[].
+    void invalidateFrequencyCache() noexcept
+    {
+        cachedFundamental = -1.0f;
+        cachedSpread = -1.0f;
     }
 
     // Set fundamental frequency from MIDI note.
@@ -629,10 +644,14 @@ public:
 
             // Fold back modes that exceed Nyquist: reflects frequency back from
             // the boundary, preserving relative spacing between modes.
+            // Clamp the result above 20 Hz — fmod can leave it at exactly 0 Hz
+            // (a DC alias) when excess is a perfect multiple of nyquistLimit.
             if (modeFrequency > nyquistLimit)
             {
                 float excess = modeFrequency - nyquistLimit;
                 modeFrequency = nyquistLimit - std::fmod(excess, nyquistLimit);
+                if (modeFrequency < 20.0f)
+                    modeFrequency = 20.0f; // Prevent DC alias from fold-back
             }
 
             angularFrequency[modeIndex] = kTwoPi * modeFrequency;
@@ -691,6 +710,8 @@ public:
     {
         float deltaTime = static_cast<float>(inverseSampleRate);
         float halfDeltaTime = deltaTime * 0.5f;
+        // Hoist sixthDeltaTime out of the 32-mode loop — same value every iteration.
+        float sixthDeltaTime = deltaTime / 6.0f;
         float output = 0.0f;
 
         for (int modeIndex = 0; modeIndex < kNumModes; ++modeIndex)
@@ -729,7 +750,7 @@ public:
             float dv4 = -omegaSquared * endDisplacement - damping * endVelocity + drivingForce;
 
             // Combine: weighted average of slopes (RK4 formula: 1/6 * (k1 + 2*k2 + 2*k3 + k4))
-            float sixthDeltaTime = deltaTime / 6.0f;
+            // (sixthDeltaTime hoisted above the loop)
 
             // flushDenormal is critical in this feedback path: the displacement
             // and velocity values decay exponentially when damped. Without
@@ -749,7 +770,7 @@ public:
 
 private:
     double cachedSampleRate = 0.0;        // Sentinel: must be set by prepare() before use
-    double inverseSampleRate = 1.0 / 48000.0; // Overwritten by prepare() from actual sampleRate
+    double inverseSampleRate = 0.0;       // Set by prepare() — zero until prepared (prevents stale 48kHz fallback)
 
     // Dirty-flag cache for setFundamental: avoid 32× std::pow when stable
     float cachedFundamental = -1.0f; // Last computed fundamental (Hz); -1 = invalid
@@ -890,9 +911,10 @@ struct OrganonVoice
         velocityLevel = vel;
         startTime = time;
         released = false;
-        // Keep economy.freeEnergy — the organism migrates with its reserves
-        // Reset modes to retune to new fundamental frequency
-        modalArray.reset();
+        // Keep economy.freeEnergy — the organism migrates with its reserves.
+        // Keep displacement[] and velocity[] — zeroing them causes an audible click.
+        // Force setFundamental() to recompute by invalidating its dirty-flag cache.
+        modalArray.invalidateFrequencyCache();
     }
 };
 
@@ -993,6 +1015,10 @@ public:
 
         silenceGate.prepare(sampleRate, maxBlockSize);
         silenceGate.setHoldTime(1000.0f); // Organon has infinite-sustain voices
+
+        // Pre-compute breathing LFO increment — constant for a given sample rate.
+        // 0.02 Hz = 50-second cycle; recomputing every block (1200×/min at 600Hz blockRate) is wasteful.
+        breathingLfoIncrement = (sampleRate > 0.0) ? static_cast<float>(0.02 / sampleRate) : 0.0f;
     }
 
     void releaseResources() override
@@ -1014,7 +1040,7 @@ public:
         externalMorphModulation = 0.0f;
         externalRhythmModulation = 0.0f;
         externalDecayModulation = 0.0f;
-        couplingAudioActive = false;
+        couplingAudioActive.store(false, std::memory_order_relaxed);
         phasonClock = 0.0f;
         reverbSendLevel.store(0.0f, std::memory_order_relaxed);
     }
@@ -1155,7 +1181,7 @@ public:
         // Slow autonomous modulation of metabolic rate (+/- 0.5 Hz) and isotope balance
         // (+/- 0.1). Rate is 0.02 Hz (50-second cycle) — slow enough to feel organic,
         // fast enough to be perceivable within a performance.
-        breathingLfoIncrement = 0.02f / static_cast<float>(cachedSampleRate);
+        // breathingLfoIncrement is pre-computed in prepare() — constant per sample rate.
         breathingLfoPhase += breathingLfoIncrement * static_cast<float>(numSamples);
         if (breathingLfoPhase >= 1.0f)
             breathingLfoPhase -= 1.0f;
@@ -1280,24 +1306,29 @@ public:
             float mixL = 0.0f;
             float mixR = 0.0f;
 
-            int voiceIndex = 0;
-            for (auto& voice : voices)
+            // Index-based loop so voiceIndex is always correct for phasonModulations[],
+            // even when a voice deactivates mid-loop (energy exhausted or steal-fade done).
+            // Prior range-for with mid-loop `continue` would skip the ++voiceIndex increment,
+            // corrupting phason modulation assignment for subsequent voices.
+            for (int voiceIndex = 0; voiceIndex < kMaxVoices; ++voiceIndex)
             {
+                auto& voice = voices[voiceIndex];
                 if (!voice.active)
-                {
-                    ++voiceIndex;
                     continue;
-                }
 
                 // Set entropy window size based on enzyme selectivity
                 voice.entropyAnalyzer.setWindowSize(enzymeSelectivity);
 
                 // ---- INGESTION: the organism feeds ----
                 float ingestedSample = 0.0f;
-                if (couplingAudioActive && voice.hasCouplingInput)
+                if (couplingAudioActive.load(std::memory_order_relaxed) && voice.hasCouplingInput)
                 {
-                    // Read from coupling ingestion buffer (fed by partner engines)
-                    int readPosition = (voice.ingestionWritePosition - 1 + OrganonVoice::kIngestionBufferSize) &
+                    // Read from coupling ingestion buffer, advancing one sample per render sample.
+                    // readPosition tracks numSamples samples behind the write head so each
+                    // audio sample in the block maps to the corresponding coupling input sample,
+                    // rather than always re-reading the last written sample.
+                    int lag = numSamples - sampleIndex; // samples written but not yet consumed
+                    int readPosition = (voice.ingestionWritePosition - lag + OrganonVoice::kIngestionBufferSize) &
                                        (OrganonVoice::kIngestionBufferSize - 1);
                     ingestedSample = voice.ingestionBuffer[readPosition] * effectiveSignalFlux;
                 }
@@ -1343,8 +1374,12 @@ public:
                 }
 
                 // ---- ANABOLISM: reconstruct harmonic content ----
+                // Clamp accumulated coupling pitch before use — multiple partners can
+                // accumulate externalPitchModulation; without a cap the product * 20 Hz
+                // can drive fundamental far out of the audible range.
+                float clampedPitchMod = clamp(externalPitchModulation, -1.0f, 1.0f);
                 float fundamental =
-                    (midiToFreq(voice.noteNumber) + externalPitchModulation * 20.0f) // +/-10 semitones at mod +/-0.5
+                    (midiToFreq(voice.noteNumber) + clampedPitchMod * 20.0f) // +/-10 semitones at mod +/-0.5
                     * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + organonModPitchOffset);
                 if (fundamental < 20.0f)
                     fundamental = 20.0f; // Below 20Hz is inaudible
@@ -1394,11 +1429,13 @@ public:
                 // VFE-driven stereo spread: surprised organisms widen the stereo
                 // image slightly, as if their metabolic turbulence scatters energy
                 // across the spatial field. 0.15f maximum spread.
+                // Mid-side formulation preserves mono-compatible level:
+                //   center = sample; side = sample * stereoSpread * 0.5
+                //   L = center - side; R = center + side
                 float stereoSpread = voice.economy.getSurprise() * 0.15f;
-                mixL += sample * (1.0f - stereoSpread);
-                mixR += sample * (1.0f + stereoSpread);
-
-                ++voiceIndex;
+                float side = sample * stereoSpread * 0.5f;
+                mixL += sample - side;
+                mixR += sample + side;
             }
 
             // D002 mod matrix — Amp Level destination scales final mix
@@ -1427,7 +1464,11 @@ public:
         externalMorphModulation = 0.0f;
         externalRhythmModulation = 0.0f;
         externalDecayModulation = 0.0f;
-        couplingAudioActive = false;
+        couplingAudioActive.store(false, std::memory_order_relaxed);
+        // hasCouplingInput is cleared per-block so voices fall back to
+        // self-feeding noise when a coupling partner disconnects.
+        for (auto& voice : voices)
+            voice.hasCouplingInput = false;
 
         // ---- Update active voice count and membrane reverb send ----
         int count = 0;
@@ -1454,7 +1495,9 @@ public:
             sendLevel = 1.0f;
         reverbSendLevel.store(sendLevel, std::memory_order_relaxed);
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // Guard against mono buffers — getReadPointer(1) asserts if channel 1 doesn't exist.
+        const float* silenceR = (buffer.getNumChannels() > 1) ? buffer.getReadPointer(1) : buffer.getReadPointer(0);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), silenceR, numSamples);
     }
 
     //==========================================================================
@@ -1502,7 +1545,7 @@ public:
                     }
                     voice.hasCouplingInput = true;
                 }
-                couplingAudioActive = true;
+                couplingAudioActive.store(true, std::memory_order_relaxed);
             }
             break;
         }
@@ -1695,6 +1738,7 @@ private:
         }
 
         // If no free voice, steal the oldest (LRU — Least Recently Used)
+        bool stealing = false;
         if (freeSlot < 0)
         {
             uint64_t oldestTime = UINT64_MAX;
@@ -1707,11 +1751,25 @@ private:
                     freeSlot = i;
                 }
             }
-            // Begin 5ms crossfade on stolen voice to prevent click
+            // Compute steal-fade params before noteOn() resets the voice —
+            // noteOn() resets stealFadeGain/stealFadeStep to 1.0f/0.0f,
+            // which would cancel the crossfade if set first.
             voices[freeSlot].beginStealFade(cachedSampleRate);
+            stealing = true;
         }
 
+        float savedStealGain = stealing ? voices[freeSlot].stealFadeGain : 1.0f;
+        float savedStealStep = stealing ? voices[freeSlot].stealFadeStep : 0.0f;
+
         voices[freeSlot].noteOn(note, noteVelocity, noteCounter, cachedSampleRate);
+
+        // Restore steal-fade so the new note fades in over 5ms, masking the click
+        // from the abruptly silenced prior note.
+        if (stealing)
+        {
+            voices[freeSlot].stealFadeGain = savedStealGain;
+            voices[freeSlot].stealFadeStep = savedStealStep;
+        }
     }
 
     void handleNoteOff(int note) noexcept
@@ -1758,7 +1816,7 @@ private:
     float externalMorphModulation = 0.0f;
     float externalRhythmModulation = 0.0f;
     float externalDecayModulation = 0.0f;
-    bool couplingAudioActive = false;
+    std::atomic<bool> couplingAudioActive{false}; // Written by applyCouplingInput (coupling thread), read by renderBlock (audio thread)
 
     // ---- Macro parameter pointers (M1-M4) ----
     std::atomic<float>* paramMacroMetabolism = nullptr;

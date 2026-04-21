@@ -142,9 +142,24 @@ public:
             for (int j = 0; j < 6; ++j)
                 m[static_cast<size_t>(i)][static_cast<size_t>(j)] = 0.0f;
 
+            int fwdCol = (i + stepP) % 6;
+            int bwdCol = (i + 6 - stepQ) % 6;
+
             m[static_cast<size_t>(i)][static_cast<size_t>(i)] = d;
-            m[static_cast<size_t>(i)][static_cast<size_t>((i + stepP) % 6)] = wp;
-            m[static_cast<size_t>(i)][static_cast<size_t>((i + 6 - stepQ) % 6)] = -wq;
+
+            // F10: when fwdCol == bwdCol the two off-diagonal writes land on the same cell
+            // and the +wp and -wq terms cancel to zero, collapsing the row norm to d=1/√3
+            // instead of the intended 1.  Detect the collision and offset bwdCol by ±1 so
+            // both off-diagonal couplings are distinct and the row remains unit-norm.
+            if (fwdCol == i)
+                fwdCol = (fwdCol + 1) % 6; // avoid diagonal collision (should not happen after stepP fix, but guard anyway)
+            if (bwdCol == i)
+                bwdCol = (bwdCol + 5) % 6;
+            if (fwdCol == bwdCol)
+                bwdCol = (bwdCol + 1) % 6; // push bwd away so cells are distinct
+
+            m[static_cast<size_t>(i)][static_cast<size_t>(fwdCol)] = wp;
+            m[static_cast<size_t>(i)][static_cast<size_t>(bwdCol)] = -wq;
         }
         return m;
     }

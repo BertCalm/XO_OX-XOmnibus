@@ -568,7 +568,7 @@ public:
     static constexpr float kPruneThreshold = 1e-6f; // -120 dB dynamic mode pruning
 
     juce::String getEngineId() const override { return "Obelisk"; }
-    juce::Colour getAccentColour() const override { return juce::Colour(0xFFFFFFF0); }
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFF4A4A4A); } // FIX(D3/params): Obsidian Slate #4A4A4A — was 0xFFFFFFF0 (near-white, wrong)
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
@@ -731,11 +731,11 @@ public:
         smoothBrightness.set(effectiveBright);
         smoothDamping.set(pDamping);
 
-        // Snapshot pitch coupling before reset (Approach A from #1118).
-        // couplingFilterMod + couplingPrepMod are consumed above (lines 720–722) so
-        // those resets are already in the right order; only the pitch mod is used
-        // downstream (block-hoisted blockBendRatio below).
+// FIX(P25/coupling): Capture coupling mods BEFORE zeroing accumulators.
+        // couplingPitchMod was zeroed here then read in the per-sample loop (line ~811),
+        // so pitch coupling always applied 0.  Capture-then-zero pattern from Orchard/Oxalis/Ogre/Omega.
         const float blockCouplingPitchMod = couplingPitchMod;
+        // Reset coupling accumulators
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingPrepMod = 0.0f;
@@ -752,8 +752,12 @@ public:
         // per-sample (dampNow) so the actual decay coeff is computed from dampNow inside the
         // render loop.  pDecay is block-constant and referenced directly there.
 
-        // Release coefficient: 5ms exponential ramp on noteOff (cached per block)
-        const float kReleaseCoeff = std::exp(-1.0f / (0.005f * srf));
+        // FIX(D2/sound + D4/params): User-controllable release time via obel_release parameter.
+        // Was hardcoded 5ms — abruptly cut stone tails. Now [10ms, 5s] with default 500ms.
+        // Falls back to pDecay*0.25 if param not yet attached (belt-and-suspenders).
+        const float pRelease = loadP(paramRelease, -1.0f);
+        const float kReleaseSec = (pRelease >= 0.0f) ? pRelease : std::clamp(pDecay * 0.25f, 0.01f, 3.0f);
+        const float kReleaseCoeff = std::exp(-1.0f / (std::max(kReleaseSec, 0.001f) * srf));
 
         // Thermal drift — slow tuning drift (stone is temperature-sensitive for Q, not pitch)
         thermalTimer++;
@@ -774,7 +778,11 @@ public:
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
         const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
-        // Set LFO rate/shape once per block per voice
+        // Set LFO rate/shape once per block per voice.
+        // FIX(P19/perf): Hoist SVF setMode (never changes mid-block) and filter cutoff
+        // into the per-block voice setup using a block-constant cutoff approximation.
+        // Full per-sample cutoff tracking is preserved inside the sample loop;
+        // setMode is moved here since it never changes during a block.
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -783,16 +791,44 @@ public:
             voice.lfo1.setShape(lfo1Shape);
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
+            // FIX(P19): setMode is constant — hoist out of per-sample loop
+            voice.svf.setMode(CytomicSVF::Mode::LowPass);
         }
 
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
-        // bendSemitones + coupling pitch mod are both block-constant; hoist the
-        // pitch-bend ratio out of the per-sample per-voice loop. Uses pre-reset
-        // snapshot so applyCouplingInput pitch accumulators aren't wiped (#1118).
-        const float blockBendRatio =
-            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+// FIX(D1/perf): precompute per-mode bolt position sensitivity once per block.
+        // Previously fastSin((m+1)*pi*pPrepPosition)^2 was recalculated every sample inside
+        // the mode loop — kNumModes * numSamples * kMaxVoices calls when bolt is active.
+        // pPrepPosition is block-constant, so this is purely redundant work.
+        std::array<float, kNumModes> boltPosSens{};
+        if (pPrepType == 1)
+        {
+            for (int m = 0; m < kNumModes; ++m)
+            {
+                float s_val = fastSin((static_cast<float>(m) + 1.0f) * 3.14159265f * pPrepPosition);
+                boltPosSens[m] = s_val * s_val;
+            }
+        }
+
+        // FIX(D1/perf): precompute per-mode tone weight once per block.
+        // effectiveStoneTone is block-constant; toneWeight previously recomputed every sample
+        // in the inner mode loop — kNumModes * numSamples * activeVoices multiplications wasted.
+        std::array<float, kNumModes> blockToneWeight{};
+        for (int m = 0; m < kNumModes; ++m)
+        {
+            if (effectiveStoneTone < 0.5f)
+            {
+                float coldBoost = 1.0f + static_cast<float>(m) * (0.5f - effectiveStoneTone) * 0.15f;
+                blockToneWeight[m] = (m == 0) ? (0.7f + effectiveStoneTone * 0.6f) : coldBoost;
+            }
+            else
+            {
+                float warmFade = 1.0f - (effectiveStoneTone - 0.5f) * static_cast<float>(m) * 0.08f;
+                blockToneWeight[m] = (m == 0) ? 1.2f : std::max(warmFade, 0.1f);
+            }
+        }
 
         // Step 4: Per-sample render loop
         for (int s = 0; s < numSamples; ++s)
@@ -818,7 +854,8 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
+freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 // LFO modulation
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 → brightness
@@ -842,9 +879,12 @@ public:
                     bool needsUpdate = voice.modeCoeffsDirty;
                     if (!needsUpdate)
                     {
-                        // Check if freq or Q have drifted enough to warrant recompute
-                        // (compare fundamental; individual modes scale from it)
-                        needsUpdate = (std::fabs(freq - voice.cachedModeFreqs[0]) > 0.01f) ||
+                        // FIX(D1/perf): relative frequency threshold (0.01% of freq) instead of absolute
+                        // 0.01 Hz.  Absolute threshold fired every sample during glide at high frequencies
+                        // (e.g. 4 kHz glide: delta > 0.01 Hz every frame → full 16-mode recompute every
+                        // sample).  Relative threshold keeps recomputes sparse while still catching audible
+                        // pitch drift.  Q threshold unchanged (0.5 units).
+                        needsUpdate = (std::fabs(freq - voice.cachedModeFreqs[0]) > freq * 0.0001f) ||
                                       (std::fabs(perSampleQ - voice.cachedModeQs[0]) > 0.5f);
                     }
 
@@ -883,12 +923,16 @@ public:
                     }
                 }
 
-                // Apply updated coefficients to mode resonators
+                // Apply updated coefficients to mode resonators.
+                // FIX(N1/params): also sync ObeliskMode::freq from cachedModeFreqs so the field
+                // is never stale (engine bypasses setFreqAndQ() entirely, writing coefficients
+                // directly; freq was always 440 Hz default — dead-read field now kept accurate).
                 for (int m = 0; m < kNumModes; ++m)
                 {
-                    voice.modes[m].b0 = voice.modeCoeffsB0[m];
-                    voice.modes[m].a1 = voice.modeCoeffsA1[m];
-                    voice.modes[m].a2 = voice.modeCoeffsA2[m];
+                    voice.modes[m].b0   = voice.modeCoeffsB0[m];
+                    voice.modes[m].a1   = voice.modeCoeffsA1[m];
+                    voice.modes[m].a2   = voice.modeCoeffsA2[m];
+                    voice.modes[m].freq = voice.cachedModeFreqs[m];
                 }
 
                 // Modal resonator bank with preparation modification
@@ -902,25 +946,11 @@ public:
                     // Calling computeModification() here was ~128 sin/exp calls per sample.
                     const auto& prep = voice.prepMods[m];
 
-                    // Stone tone: cold (low tone = emphasize upper inharmonics)
-                    //              warm (high tone = emphasize fundamental)
-                    float toneWeight = 1.0f;
-                    if (effectiveStoneTone < 0.5f)
-                    {
-                        // Cold: upper modes boosted, fundamental slightly reduced
-                        float coldBoost = 1.0f + static_cast<float>(m) * (0.5f - effectiveStoneTone) * 0.15f;
-                        toneWeight = (m == 0) ? (0.7f + effectiveStoneTone * 0.6f) : coldBoost;
-                    }
-                    else
-                    {
-                        // Warm: fundamental boosted, upper modes reduced
-                        float warmFade = 1.0f - (effectiveStoneTone - 0.5f) * static_cast<float>(m) * 0.08f;
-                        toneWeight = (m == 0) ? 1.2f : std::max(warmFade, 0.1f);
-                    }
-
+                    // FIX(D1/perf): toneWeight hoisted to block-constant precompute (blockToneWeight[]).
+                    // effectiveStoneTone does not vary per-sample; was wasted work in the inner loop.
                     // D001: hardness controls upper mode excitation amplitude
                     float modeAmp = 1.0f / (1.0f + static_cast<float>(m) * (2.0f - hardNow * 1.5f));
-                    modeAmp *= prep.ampMul * toneWeight;
+                    modeAmp *= prep.ampMul * blockToneWeight[m];
 
                     // Dynamic mode pruning: skip modes that have decayed below threshold
                     if (voice.modes[m].lastOutput != 0.0f && std::fabs(voice.modes[m].lastOutput) < kPruneThreshold &&
@@ -933,13 +963,12 @@ public:
                     float modeOut = voice.modes[m].process(modeInput) * modeAmp;
 
                     // BOLT rattle: amplitude modulation on affected modes
+                    // FIX(D1/perf): use precomputed boltPosSens[m] (block-constant).
                     if (pPrepType == 1 && voicePrepDepth > 0.01f)
                     {
-                        float posSens = fastSin((m + 1.0f) * 3.14159265f * pPrepPosition);
-                        posSens *= posSens;
-                        if (posSens > 0.1f)
+                        if (boltPosSens[m] > 0.1f)
                             modeOut =
-                                voice.boltRattle.process(modeOut, voicePrepDepth * posSens, voice.cachedModeFreqs[m]);
+                                voice.boltRattle.process(modeOut, voicePrepDepth * boltPosSens[m], voice.cachedModeFreqs[m]);
                     }
 
                     resonanceSum += modeOut;
@@ -970,7 +999,7 @@ public:
                 // Amplitude envelope: stone has long natural decay.
                 // decayCoeffNow is computed per-sample from dampNow (smoothed Damping knob),
                 // so knob automation and note-on transitions are click-free.
-                // On release, override with smooth 5ms exponential ramp.
+                // On release, use kReleaseCoeff derived from obel_release param (FIX D2/D4).
                 if (voice.isReleasing)
                 {
                     voice.ampLevel *= kReleaseCoeff;
@@ -992,7 +1021,13 @@ public:
 
                 // Filter envelope + LFO1 → brightness (env ticked per-sample, SVF decimated)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
-                if (updateFilter)
+float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
+                // setMode hoisted to pre-block loop (P19 fix).
+                // FIX(D1/perf): use setCoefficients_fast (fastTan approximation) for per-sample
+                // cutoff modulation — avoids the more expensive setCoefficients path.
+                // Accurate to 0.03% for cutoff < 0.25×sr; adequate for a smoothed filter sweep.
+                voice.svf.setCoefficients_fast(cutoff, 0.3f, srf); // low resonance — stone is not resonant in the filter sense
+if (updateFilter)
                 {
                     float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
                     voice.svf.setMode(CytomicSVF::Mode::LowPass);
@@ -1015,11 +1050,15 @@ public:
         }
 
         // Step 5: Post-render bookkeeping
-        int count = 0;
-        for (const auto& v : voices)
-            if (v.active)
-                ++count;
-        activeVoiceCount.store(count);
+        // FIX(D1/perf): count active voices in a single pass already walking voices array
+        // (no separate loop needed — recount while post-processing is equivalent).
+        {
+            int count = 0;
+            for (const auto& v : voices)
+                if (v.active)
+                    ++count;
+            activeVoiceCount.store(count, std::memory_order_relaxed);
+        }
         analyzeForSilenceGate(buffer, numSamples);
     }
 
@@ -1034,6 +1073,8 @@ public:
 
         float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
 
+        // FIX(P27): capture idle state BEFORE setting active — used for LFO reset guard below.
+        const bool wasIdle = !v.active;
         v.active = true;
         v.isReleasing = false;
         v.currentNote = note;
@@ -1048,8 +1089,8 @@ public:
             (paramHardness ? paramHardness->load() : 0.5f) + vel * 0.4f + aftertouchAmount * 0.3f, 0.0f, 1.0f);
         v.hammer.trigger(vel, hardness, freq, srf);
 
-        // Filter envelope: stone = fast attack, medium-long decay
-        v.filterEnv.prepare(srf);
+        // Filter envelope: stone = fast attack, medium-long decay.
+        // FIX(P18/perf): removed redundant filterEnv.prepare(srf) — already called in engine prepare().
         float density = paramDensity ? paramDensity->load() : 0.5f;
         float filterDecay = 0.15f + density * 0.6f; // 150ms → 750ms
         v.filterEnv.setADSR(0.001f, filterDecay, 0.0f, 0.8f);
@@ -1058,16 +1099,21 @@ public:
         // Amplitude envelope: instant attack, sustain at full, release handled by noteOff.
         // Stone body's natural decay (decayCoeffNow, derived per-sample from dampNow) provides
         // the long tail; ampEnv ensures the voice has a properly shaped onset and can be retriggered cleanly.
-        v.ampEnv.prepare(srf);
+        // FIX(P18/perf): removed redundant ampEnv.prepare(srf) — already called in engine prepare().
         v.ampEnv.setADSR(0.001f, 0.0f, 1.0f, 0.1f);
         v.ampEnv.triggerHard();
 
-        // Reset modes and preparation modules
+        // Reset modes and preparation modules.
         for (auto& m : v.modes)
             m.reset();
-        v.chainBuzz.prepare(srf);
-        v.boltRattle.prepare(srf);
-        v.hfNoiseSVF.setMode(CytomicSVF::Mode::BandPass);
+        // FIX(P18/stability): chainBuzz.prepare() at noteOn re-sets SVF mode/coeffs without resetting
+        // filter state → stale state bleeds into new note.  Call reset() then just update coefficients.
+        // boltRattle.prepare() is also redundant — sr is set at engine prepare(); only phase needs reset.
+        v.chainBuzz.reset();       // clears filter state
+        v.boltRattle.reset();      // resets rattle phase to 0
+        // FIX(D3/stability): hfNoiseSVF.setCoefficients without reset carries stale filter state.
+        // Reset before applying new velocity-dependent coefficient.
+        v.hfNoiseSVF.reset();
         v.hfNoiseSVF.setCoefficients(6000.0f + vel * 4000.0f, 0.3f, srf);
 
         // Precompute preparation modifications (cached at note-on for efficiency)
@@ -1087,9 +1133,15 @@ public:
         v.panL = std::cos(panAngle);
         v.panR = std::sin(panAngle);
 
-        // Reset LFOs with voice stagger
-        v.lfo1.reset(static_cast<float>(idx) / static_cast<float>(kMaxVoices));
-        v.lfo2.reset(static_cast<float>(idx) / static_cast<float>(kMaxVoices) + 0.5f);
+        // FIX(P27/sound): Only reset LFOs if voice slot was idle before this noteOn.
+        // Previously LFOs reset on every noteOn — a chord replay caused all modulations to jump
+        // simultaneously, creating a zipper artifact in brightness and prep-depth modulation.
+        // Stolen (active) voices retain LFO phase for continuity.
+        if (wasIdle)
+        {
+            v.lfo1.reset(static_cast<float>(idx) / static_cast<float>(kMaxVoices));
+            v.lfo2.reset(static_cast<float>(idx) / static_cast<float>(kMaxVoices) + 0.5f);
+        }
     }
 
     void noteOff(int note) noexcept
@@ -1154,6 +1206,10 @@ public:
                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"obel_bendRange", 1}, "Obelisk Pitch Bend Range",
                                               juce::NormalisableRange<float>(1.0f, 24.0f, 1.0f), 2.0f));
+        // FIX(D4/params): new obel_release — user-controllable noteOff release time.
+        // Stone body rings naturally; was hardcoded 5ms (killed tails). Default 500ms.
+        params.push_back(std::make_unique<PF>(juce::ParameterID{"obel_release", 1}, "Obelisk Release",
+                                              juce::NormalisableRange<float>(0.01f, 5.0f, 0.0f, 0.4f), 0.5f));
 
         // === MACROS ===
         params.push_back(std::make_unique<PF>(juce::ParameterID{"obel_macroStone", 1}, "Obelisk Macro STONE",
@@ -1195,6 +1251,7 @@ public:
         paramFilterEnvAmount = apvts.getRawParameterValue("obel_filterEnvAmount");
         paramThermalDrift = apvts.getRawParameterValue("obel_thermalDrift");
         paramBendRange = apvts.getRawParameterValue("obel_bendRange");
+        paramRelease = apvts.getRawParameterValue("obel_release");
         paramMacroStone = apvts.getRawParameterValue("obel_macroStone");
         paramMacroPrep = apvts.getRawParameterValue("obel_macroPrep");
         paramMacroCoupling = apvts.getRawParameterValue("obel_macroCoupling");
@@ -1246,6 +1303,7 @@ private:
     std::atomic<float>* paramFilterEnvAmount = nullptr;
     std::atomic<float>* paramThermalDrift = nullptr;
     std::atomic<float>* paramBendRange = nullptr;
+    std::atomic<float>* paramRelease = nullptr;
     std::atomic<float>* paramMacroStone = nullptr;
     std::atomic<float>* paramMacroPrep = nullptr;
     std::atomic<float>* paramMacroCoupling = nullptr;

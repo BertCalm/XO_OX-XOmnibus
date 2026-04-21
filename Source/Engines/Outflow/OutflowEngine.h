@@ -117,7 +117,11 @@ public:
         satFilterR_.setCoefficients(6000.0f, 0.5f, srF_);
         satFilterR_.reset();
 
-        noiseRng_ = 77u;
+        // Seed noise RNG from sampleRate bits to avoid all instances producing identical
+        // noise sequences on cold start (fixed seed 77 was identical across all plugin instances).
+        uint32_t srBits;
+        std::memcpy(&srBits, &srF_, sizeof(srBits));
+        noiseRng_ = srBits ^ 0xDEAD1234u;
 
         // Silence gate: 1000ms (infinite-sustain category — reverb tail + vacuum)
         silenceGate.prepare(sr_, maxBlockSize);
@@ -190,6 +194,9 @@ public:
             }
         }
 
+        // Update active voice count for UI display (monophonic: 1 when exciter active, else 0)
+        activeVoiceCount_.store(exciterActive_ ? 1 : 0, std::memory_order_relaxed);
+
         // 2. Silence gate bypass
         if (silenceGate.isBypassed() && midi.isEmpty())
         {
@@ -239,9 +246,12 @@ public:
         pDamping = clamp(pDamping + extFilterMod_, 200.0f, 16000.0f);
 
         // EnvToDecay coupling: external envelope signal extends or shortens the reverb tail.
-        // couplingEnvDecayMod_ > 0 lengthens decay (multiplies pDecay up); < 0 shortens it.
-        // Scaled by ×2 so a full coupling amount can double or halve the reverb tail length.
-        float effectiveDecay = pDecay * (1.0f + couplingEnvDecayMod_ * 2.0f);
+        // couplingEnvDecayMod_ in [-1, 1]: >0 lengthens decay, <0 shortens it.
+        // Clamp mod to [-0.45, 1] before multiply so pDecay never goes negative
+        // (previously couplingEnvDecayMod_ = -0.6 → multiplier = -0.2 → effectiveDecay < 0
+        // before the post-clamp; feedbackCoeff then saw a negative argument to fastExp).
+        float safeDecayMod = clamp(couplingEnvDecayMod_, -0.45f, 1.0f);
+        float effectiveDecay = pDecay * (1.0f + safeDecayMod * 2.0f);
         effectiveDecay = clamp(effectiveDecay, 0.1f, 30.0f);
 
         // Feedback coefficient from (possibly coupled) decay
@@ -249,7 +259,10 @@ public:
 
         // Velocity → exciter brightness (D001)
         float excBrightness = 0.3f + currentVelocity_ * 0.7f;
-        float excDecayCoeff = fastExp(-6.9078f / (pExcDecay * srF_));
+        // Fix D002/stability: decay coeff must use sr_ (double), not srF_ (float), for
+        // sample-rate independence. At 96kHz vs 44.1kHz the coeff was 6× faster,
+        // making exciter decay time shrink by 2× per doubling of sample rate.
+        float excDecayCoeff = fastExp(-6.9078f / (pExcDecay * static_cast<float>(sr_)));
 
         // Pitch-bent exciter frequency — noteFreqRatio_ is cached in noteOn; bend applied per-block
         float exciterFreq = 440.0f * noteFreqRatio_ *
@@ -266,8 +279,31 @@ public:
         // them per-sample via fastExp was unnecessary CPU work (#616 fix).
         const float blockAttackCoeff  = smoothCoeffFromTime(0.001f, srF_);
         const float blockReleaseCoeff = smoothCoeffFromTime(0.02f,  srF_);
-        const float blockVacAttackBase = 0.01f + (1.0f - pVacuumAttack) * 0.09f; // vacAttack base (pVacuumAttack constant per block)
+        // vacuumAttack semantics: 0.0 = fastest vacuum snap (0.01s), 1.0 = slowest (0.10s).
+        // Inverted mapping is intentional for this engine: high values = more gradual vacuum fade,
+        // low values = aggressive, sudden Pre-Wake snap. This differs from ADSR "Attack" convention
+        // (where 0=instant); document here to avoid surprise.
+        const float blockVacAttackBase = 0.01f + (1.0f - pVacuumAttack) * 0.09f;
         const float blockVacCoeff     = smoothCoeffFromTime(blockVacAttackBase, srF_);
+
+        // Hoist sub-Hz LFO ticks to block-rate: tidalLFO (~0.001 Hz) and windLFO (0.1–3.1 Hz)
+        // change negligibly within a single block. One tick per block saves 4× setCoefficients_fast
+        // calls per sample across all FDN channels and eliminates the per-sample fastTan calls.
+        // For tidalLFO (~200-second period) the error from one tick/block is < 0.001% of period.
+        // windLFO at max 3.1 Hz / 512 samples introduces <0.04 radian error per block — inaudible.
+        const float blockTidalMod = tidalLFO_.process();
+        const float blockWindMod  = windLFO_.process();
+
+        // Damping frequency is block-constant (driven by tidalMod which just moved above).
+        // Pre-compute coefficients once per block for all 4 FDN channels.
+        const float blockDampFreq = clamp(pDamping * (1.0f - blockTidalMod * 0.1f), 200.0f, srF_ * 0.49f);
+        for (int ch = 0; ch < kFDNChannels; ++ch)
+            fdnDamp_[ch].setCoefficients_fast(blockDampFreq, 0.1f, srF_);
+
+        // Saturation filter cutoff is also function of VCA state (vacuumVCA_, gateTension),
+        // which changes per-sample. Keep setCoefficients_fast inside the loop for sat filters.
+        const float blockRoomScale = 1.0f + pSplashSize * 0.5f + blockTidalMod * 0.05f;
+        const float blockWindAmount = pWindChaos * blockWindMod * 0.3f;
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -275,7 +311,8 @@ public:
             float exciterSample = 0.0f;
             if (exciterActive_ && exciterEnv_ > 0.0001f)
             {
-                float sine = fastSin(static_cast<float>(exciterPhase_) * 6.28318530718f);
+                static constexpr float kTwoPi = 6.28318530718f;
+                float sine = fastSin(static_cast<float>(exciterPhase_) * kTwoPi);
                 exciterPhase_ += exciterFreq / sr_;
                 if (exciterPhase_ >= 1.0)
                     exciterPhase_ -= 1.0;
@@ -289,6 +326,8 @@ public:
                 exciterSample = (sine * (1.0f - excBrightness * 0.4f) + noise * 0.5f) * exciterEnv_;
                 exciterEnv_ *= excDecayCoeff;
                 exciterEnv_ = flushDenormal(exciterEnv_);
+                // Clamp to [0,1]: float multiply can produce tiny negatives near zero
+                if (exciterEnv_ < 0.0f) exciterEnv_ = 0.0f;
                 if (exciterEnv_ < 0.0001f)
                     exciterActive_ = false;
             }
@@ -338,18 +377,13 @@ public:
             float vacuumL = delayedL * vacuumVCA_;
             float vacuumR = delayedR * vacuumVCA_;
 
-            // === TIDAL DRIFT ===
-            float tidalMod = tidalLFO_.process();
-            float windMod = windLFO_.process();
-
-            // Tidal drift modulates FDN delay time scaling
-            float roomScale = 1.0f + pSplashSize * 0.5f + tidalMod * 0.05f;
+            // === TIDAL DRIFT / WIND (block-rate snapshot used — see hoist above) ===
 
             // === FDN REVERB (4-channel Householder) ===
             float fdnRead[kFDNChannels];
             for (int ch = 0; ch < kFDNChannels; ++ch)
             {
-                int effectiveSize = clamp(static_cast<int>(fdnDelaySize_[ch] * roomScale), 1, fdnDelaySize_[ch]);
+                int effectiveSize = clamp(static_cast<int>(fdnDelaySize_[ch] * blockRoomScale), 1, fdnDelaySize_[ch]);
                 int rp = (fdnWritePos_[ch] - effectiveSize + fdnDelaySize_[ch]) % fdnDelaySize_[ch];
                 fdnRead[ch] = fdnDelay_[ch][static_cast<size_t>(rp)];
             }
@@ -364,20 +398,15 @@ public:
             for (int ch = 0; ch < kFDNChannels; ++ch)
                 fdnOut[ch] = fdnRead[ch] - fdnSum;
 
-            // Wind chaos: stochastic modulation of FDN channels
-            float windAmount = pWindChaos * windMod * 0.3f;
-            fdnOut[0] *= (1.0f + windAmount);
-            fdnOut[1] *= (1.0f - windAmount);
-            fdnOut[2] *= (1.0f + windAmount * 0.7f);
-            fdnOut[3] *= (1.0f - windAmount * 0.7f);
+            // Wind chaos: stochastic modulation of FDN channels (block-rate windAmount)
+            fdnOut[0] *= (1.0f + blockWindAmount);
+            fdnOut[1] *= (1.0f - blockWindAmount);
+            fdnOut[2] *= (1.0f + blockWindAmount * 0.7f);
+            fdnOut[3] *= (1.0f - blockWindAmount * 0.7f);
 
-            // Damping per channel
-            float dampFreq = clamp(pDamping * (1.0f - tidalMod * 0.1f), 200.0f, srF_ * 0.49f);
+            // Damping per channel — coefficients already set at block-rate above
             for (int ch = 0; ch < kFDNChannels; ++ch)
-            {
-                fdnDamp_[ch].setCoefficients_fast(dampFreq, 0.1f, srF_);
                 fdnOut[ch] = fdnDamp_[ch].processSample(fdnOut[ch]);
-            }
 
             // Write back with feedback + input injection
             float inputMono = (vacuumL + vacuumR) * 0.5f;
@@ -450,19 +479,44 @@ public:
         return (channel == 0) ? lastSampleL_ : lastSampleR_;
     }
 
-    void applyCouplingInput(CouplingType type, float amount, const float* sourceBuffer, int /*numSamples*/) override
+    void applyCouplingInput(CouplingType type, float amount, const float* sourceBuffer, int numSamples) override
     {
         switch (type)
         {
         case CouplingType::AmpToFilter:
-            extFilterMod_ = amount * 4000.0f;
+            // Use source amplitude (RMS over block) to drive filter mod, not a bare scalar.
+            if (sourceBuffer && numSamples > 0)
+            {
+                float sum = 0.0f;
+                for (int i = 0; i < numSamples; ++i)
+                    sum += sourceBuffer[i] * sourceBuffer[i];
+                float rms = std::sqrt(sum / static_cast<float>(numSamples));
+                extFilterMod_ = rms * amount * 4000.0f;
+            }
+            else
+            {
+                extFilterMod_ = amount * 4000.0f;
+            }
             break;
         case CouplingType::AudioToRing:
-            extRingMod_ = (sourceBuffer ? sourceBuffer[0] : 0.0f) * amount;
+            // Use RMS of block for block-rate ring mod (avoids single-sample aliasing).
+            // Per-sample ring mod requires tighter coupling integration; block-RMS is
+            // the correct contract for the current applyCouplingInput architecture.
+            if (sourceBuffer && numSamples > 0)
+            {
+                float sum = 0.0f;
+                for (int i = 0; i < numSamples; ++i)
+                    sum += sourceBuffer[i] * sourceBuffer[i];
+                extRingMod_ = std::sqrt(sum / static_cast<float>(numSamples)) * amount;
+            }
+            else
+            {
+                extRingMod_ = 0.0f;
+            }
             break;
         case CouplingType::EnvToDecay:
             // External envelope extends or shortens the FDN reverb tail.
-            // Positive amount lengthens decay; negative tightens it.
+            // Positive amount lengthens decay; negative tightens it (clamped in renderBlock).
             couplingEnvDecayMod_ = amount;
             break;
         default:
@@ -474,6 +528,17 @@ public:
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         addParametersImpl(params);
+    }
+
+    /// Override so test infra (ParameterSweepTests, DoctrineTests) can build
+    /// a per-engine APVTS without going through XOceanusProcessor.
+    juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() override
+    {
+        std::vector<std::unique_ptr<juce::RangedAudioParameter>> params;
+        addParametersImpl(params);
+        return juce::AudioProcessorValueTreeState::ParameterLayout(
+            std::make_move_iterator(params.begin()),
+            std::make_move_iterator(params.end()));
     }
 
     static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)

@@ -278,7 +278,10 @@ struct ObrixVoice
     float srcPhase[2]{};
     float srcFreq[2]{};
     float targetFreq[2]{}; // portamento targets
-    uint32_t noiseRng = 54321u;
+    // Per-source noise RNG — two independent streams so dual-Noise patches
+    // (src1=Noise + src2=Noise) produce uncorrelated output.  A single shared
+    // RNG produced statistically-adjacent LCG outputs between the two sources.
+    uint32_t noiseRng[2] = {54321u, 98765u};
 
     // Amplitude envelope
     ObrixADSR ampEnv;
@@ -295,6 +298,10 @@ struct ObrixVoice
     // new value differs by less than kFilterDeltaHz / kFilterDeltaRes.
     float procLastCut[3]{-1.0f, -1.0f, -1.0f}; // -1 forces update on first sample
     float procLastRes[3]{-1.0f, -1.0f, -1.0f};
+
+    // Cached filter mode per slot — setFilterMode() (a virtual dispatch) is skipped
+    // when procType hasn't changed since the last block.  -1 forces update on first sample.
+    int procLastMode[3]{-1, -1, -1};
 
     // Filter feedback state (Proc1, Proc2, Proc3) — one sample memory for the loop
     float procFbState[3]{};
@@ -347,6 +354,9 @@ struct ObrixVoice
         procFbState[0] = procFbState[1] = procFbState[2] = 0.0f;
         procLastCut[0] = procLastCut[1] = procLastCut[2] = -1.0f;
         procLastRes[0] = procLastRes[1] = procLastRes[2] = -1.0f;
+        procLastMode[0] = procLastMode[1] = procLastMode[2] = -1;
+        noiseRng[0] = 54321u;
+        noiseRng[1] = 98765u;
         pan = 0.0f;
         jifiOffset[0] = jifiOffset[1] = 0.0f;
         cachedJIRatio[0] = cachedJIRatio[1] = -1.0f;
@@ -394,8 +404,12 @@ public:
         buildWavetables();
         // Cache reef HP coefficient at 2kHz (used in parasite mode; sample-rate dependent)
         reefHpCoeff_ = std::exp(-kTwoPi * 2000.0f / sr);
-        // Bleach recovery per-sample coefficient — cached to avoid std::pow on audio thread
-        bleachRecoveryLog2_ = fastLog2(1.0f - 1.0f / (sr * 300.0f));
+        // Bleach recovery per-sample exponent — used as fastPow2(numSamples * bleachRecoveryLog2_).
+        // Value is -1/(τ*sr) in log2 domain: log2(e^(-1/(τ*sr))) = -1/(τ*sr*ln2).
+        // Using the exact formula avoids fastLog2 inaccuracy for arguments extremely close to 1.0
+        // (e.g. 1 - 6.9e-8 at 48 kHz) where the approximation error exceeds the true value.
+        static constexpr float kLog2e = 1.4426950408889634f; // 1/ln(2)
+        bleachRecoveryLog2_ = -kLog2e / (sr * 300.0f);       // τ = 300 s natural bleach recovery
         // Invalidate stress decay coefficient cache so it is recomputed on the
         // first block after a sample-rate change (#620 block-rate caching).
         cachedStressDecay_ = -1.0f;
@@ -431,7 +445,7 @@ public:
         reefCouplingRms_ = 0.0f;
         reefCouplingHpFilt_ = 0.0f;
         reefCouplingHfRms_ = 0.0f;
-        reefCouplingBufLen_ = 0;
+        reefCouplingBufLen_.store(0, std::memory_order_relaxed);
 
         // Coupling accumulators — must be zeroed on reset to prevent state leaking
         // across preset changes and AllNotesOff events
@@ -613,21 +627,21 @@ public:
 
         // Wave 3 params — Drift Bus, Journey, Spatial
         const float driftRate = loadP(pDriftRate, 0.005f); // Hz: 0.001–0.05
-        const float driftDepth = loadP(pDriftDepth, 0.03f); // OBRIX-1002: subtle default drift (gentle ensemble breathing)
+        const float driftDepth = loadP(pDriftDepth, 0.0f); // matches param default (0.0 = off; preset sets non-zero)
         const bool journeyOn = loadP(pJourneyMode, 0.0f) > 0.5f;
         const float distance = loadP(pDistance, 0.0f); // 0=close, 1=far (HF rolloff)
         const float air = loadP(pAir, 0.5f);           // 0=warm(bass), 1=cold(treble)
         journeyMode_ = journeyOn;                      // cached for noteOff suppression in MIDI handler
 
         // Wave 4 params — Biophonic Synthesis (all default 0 for backward compat)
-        const float fieldStrength = loadP(pFieldStrength, 0.12f);                      // OBRIX-1002: gentle JI attraction (first keypress reveals the reef)
+        const float fieldStrength = loadP(pFieldStrength, 0.0f);                       // matches param default (0=off)
         const float fieldPolarity = loadP(pFieldPolarity, 1.0f);                      // 1=full attractor
         const float fieldRate = loadP(pFieldRate, 0.01f);                             // IIR convergence rate
         const auto fieldPrimeLimit = static_cast<int>(loadP(pFieldPrimeLimit, 1.0f)); // 0=3-limit,1=5-limit,2=7-limit
-        const float envTemp = loadP(pEnvTemp, 0.35f);                                  // OBRIX-1002: warm oceanic default temperature
+        const float envTemp = loadP(pEnvTemp, 0.0f);                                   // matches param default (0=neutral cold)
         const float envPressure = loadP(pEnvPressure, 0.5f);                          // 0.5=neutral
         const float envCurrent = loadP(pEnvCurrent, 0.0f);                            // 0=no bias
-        const float envTurbidity = loadP(pEnvTurbidity, 0.02f);                        // OBRIX-1002: faint spectral shimmer by default
+        const float envTurbidity = loadP(pEnvTurbidity, 0.0f);                         // matches param default (0=off)
         const float competitionStrength = loadP(pCompetitionStrength, 0.0f);          // 0=off
         const float symbiosisStrength = loadP(pSymbiosisStrength, 0.0f);              // 0=off
         const float stressDecay = loadP(pStressDecay, 0.0f);                          // 0=off
@@ -643,13 +657,14 @@ public:
         // Coupling buffer was stored by applyCouplingInput() before renderBlock() runs.
         float reefRms = 0.0f;
         float reefHfRms = 0.0f;
-        if (reefResident != 0 && reefCouplingBufLen_ > 0)
+        const int reefBufSnap = reefCouplingBufLen_.load(std::memory_order_acquire); // snapshot once
+        if (reefResident != 0 && reefBufSnap > 0)
         {
             // Full-band RMS of coupling input
             float sumSq = 0.0f;
-            for (int i = 0; i < reefCouplingBufLen_; ++i)
+            for (int i = 0; i < reefBufSnap; ++i)
                 sumSq += reefCouplingBuf_[i] * reefCouplingBuf_[i];
-            reefRms = std::sqrt(sumSq / static_cast<float>(reefCouplingBufLen_));
+            reefRms = std::sqrt(sumSq / static_cast<float>(reefBufSnap));
             reefCouplingRms_ = reefCouplingRms_ * 0.9f + reefRms * 0.1f; // smooth
             reefCouplingRms_ = flushDenormal(reefCouplingRms_);
 
@@ -658,7 +673,7 @@ public:
             {
                 float hpCoeff = reefHpCoeff_; // cached in prepare() — avoids std::exp on audio thread
                 float hfSumSq = 0.0f;
-                for (int i = 0; i < reefCouplingBufLen_; ++i)
+                for (int i = 0; i < reefBufSnap; ++i)
                 {
                     float in = reefCouplingBuf_[i];
                     reefCouplingHpFilt_ = hpCoeff * (reefCouplingHpFilt_ + in - reefCouplingBufPrev_);
@@ -666,12 +681,12 @@ public:
                     reefCouplingHpFilt_ = flushDenormal(reefCouplingHpFilt_);
                     hfSumSq += reefCouplingHpFilt_ * reefCouplingHpFilt_;
                 }
-                reefHfRms = std::sqrt(hfSumSq / static_cast<float>(reefCouplingBufLen_));
+                reefHfRms = std::sqrt(hfSumSq / static_cast<float>(reefBufSnap));
                 reefCouplingHfRms_ = reefCouplingHfRms_ * 0.9f + reefHfRms * 0.1f;
                 reefCouplingHfRms_ = flushDenormal(reefCouplingHfRms_);
             }
         }
-        reefCouplingBufLen_ = 0; // consumed
+        reefCouplingBufLen_.store(0, std::memory_order_relaxed); // consumed
 
         // State Reset: rising edge triggers hard reef reset
         if (newResetTrig > 0.5f && prevResetTrig_ <= 0.5f)
@@ -893,8 +908,8 @@ public:
                 case 2:
                     gestureOut = gestureLevel * fastSin(gesturePhase * kTwoPi * 2.0f);
                     break;
-                case 3:
-                    gestureOut = gestureLevel * (4.0f * std::fabs(gesturePhase - 0.5f) - 1.0f);
+                case 3: // Surge: triangle that peaks at phase=0.5, consistent with Ripple/Flow centre-peak shape
+                    gestureOut = gestureLevel * (1.0f - 4.0f * std::fabs(gesturePhase - 0.5f));
                     break;
                 }
                 gestureLevel *= (1.0f - 3.0f / sr);
@@ -1078,6 +1093,14 @@ public:
                                          std::fabs(blockCutoffCoupling) > 0.001f ||
                                          std::fabs(blockWtPosCoupling)  > 0.001f ||
                                          reefCouplingRms_ > 0.001f);
+                // COUPLING macro scales external-coupling sensitivity
+                pitchMod *= (1.0f + macroCoup * 2.0f);
+                cutoffMod *= (1.0f + macroCoup * 1.0f);
+
+                // Internal shimmer is added AFTER the coupling-sensitivity scale so it is
+                // not multiplied by (1 + macroCoup*2) — shimmer has its own built-in
+                // macroCoup scaling and should not compound.  Previously adding shimmer
+                // before the scale caused ±12 ct to silently grow to ±36 ct at full macro.
                 if (macroCoup > 0.001f && !hasCouplingInput)
                 {
                     float shimmerPhase = driftPhase_ * 60.0f + static_cast<float>(vi) * 0.37f;
@@ -1085,10 +1108,6 @@ public:
                     pitchMod += shimmer * 12.0f;      // ±12 cents micro-detune (gentle chorus)
                     cutoffMod += shimmer * 600.0f;    // ±600 Hz filter breathing
                 }
-
-                // COUPLING macro scales sensitivity
-                pitchMod *= (1.0f + macroCoup * 2.0f);
-                cutoffMod *= (1.0f + macroCoup * 1.0f);
 
                 // Pitch bend
                 pitchMod += pitchBend_ * bendRange * 100.0f;
@@ -1201,7 +1220,11 @@ public:
                 bool preFolded = false; // track whether a pre-mix proc applied wavefold
                 if (proc1Type > 0 && proc1Type <= 3)
                 {
-                    setFilterMode(voice.procFilters[0], proc1Type);
+                    if (proc1Type != voice.procLastMode[0])
+                    {
+                        setFilterMode(voice.procFilters[0], proc1Type);
+                        voice.procLastMode[0] = proc1Type;
+                    }
                     float cut = clamp(proc1Cut + cutoffMod + velTimbre, 20.0f, 20000.0f);
                     float res = clamp(proc1Res + resoMod, 0.0f, 1.0f);
                     // Delta-threshold: skip expensive trig if cutoff/res haven't changed
@@ -1221,12 +1244,14 @@ public:
                 }
                 else if (proc1Type == 4) // Wavefolder — per-proc on sig1
                 {
+                    voice.procFbState[0] = 0.0f; // clear stale filter feedback state on type change
                     float fold = charFoldScale * velFoldBoost;
                     sig1 = fastTanh(fastSin(sig1 * fold * kPi));
                     preFolded = true;
                 }
                 else if (proc1Type == 5 && src2Type > 0) // Ring mod — sig1 × src2
                 {
+                    voice.procFbState[0] = 0.0f; // clear stale filter feedback state on type change
                     sig1 = sig1 * src2;
                 }
                 recordTap(TracerTap::Proc1Output, sig1);
@@ -1235,7 +1260,11 @@ public:
                 float sig2 = src2;
                 if (proc2Type > 0 && proc2Type <= 3 && src2Type > 0)
                 {
-                    setFilterMode(voice.procFilters[1], proc2Type);
+                    if (proc2Type != voice.procLastMode[1])
+                    {
+                        setFilterMode(voice.procFilters[1], proc2Type);
+                        voice.procLastMode[1] = proc2Type;
+                    }
                     float cut = clamp(proc2Cut + cutoffMod * 0.5f + velTimbre, 20.0f, 20000.0f);
                     float res = clamp(proc2Res + resoMod, 0.0f, 1.0f);
                     if (std::fabs(cut - voice.procLastCut[1]) > kFilterDeltaHz ||
@@ -1252,12 +1281,14 @@ public:
                 }
                 else if (proc2Type == 4 && src2Type > 0) // Wavefolder — per-proc on sig2
                 {
+                    voice.procFbState[1] = 0.0f; // clear stale filter feedback state on type change
                     float fold = charFoldScale * velFoldBoost;
                     sig2 = fastTanh(fastSin(sig2 * fold * kPi));
                     preFolded = true;
                 }
                 else if (proc2Type == 5 && src2Type > 0) // Ring mod — sig2 × src1
                 {
+                    voice.procFbState[1] = 0.0f; // clear stale filter feedback state on type change
                     sig2 = sig2 * src1;
                 }
                 recordTap(TracerTap::Proc2Output, sig2);
@@ -1294,7 +1325,11 @@ public:
                 // Proc3: post-mix insert (wavefolder / ring mod / filter)
                 if (proc3Type > 0 && proc3Type <= 3)
                 {
-                    setFilterMode(voice.procFilters[2], proc3Type);
+                    if (proc3Type != voice.procLastMode[2])
+                    {
+                        setFilterMode(voice.procFilters[2], proc3Type);
+                        voice.procLastMode[2] = proc3Type;
+                    }
                     float cut = clamp(proc3Cut + cutoffMod * 0.3f, 20.0f, 20000.0f);
                     float res = clamp(proc3Res + resoMod, 0.0f, 1.0f);
                     if (std::fabs(cut - voice.procLastCut[2]) > kFilterDeltaHz ||
@@ -1552,11 +1587,17 @@ public:
         // === REEF RESIDENCY: Store coupling buffer for ecological processing ===
         // The buffer is consumed in renderBlock() after applyCouplingInput() runs.
         // We copy into a pre-allocated scratch buffer (no allocation on audio thread).
+        // Threading contract: applyCouplingInput() is called from the SAME audio thread
+        // as renderBlock() in standard JUCE plugin hosting; the atomic reefCouplingBufLen_
+        // guards visibility of the length but the float array itself is not protected by
+        // a mutex.  If the host calls applyCouplingInput() and renderBlock() concurrently
+        // (non-standard), wrap this site in a CriticalSection.
         if (sourceBuffer != nullptr && numSamples > 0)
         {
             int len = std::min(numSamples, kMaxReefBufSize);
+            reefCouplingBufLen_.store(0, std::memory_order_relaxed); // invalidate before copy
             std::memcpy(reefCouplingBuf_, sourceBuffer, static_cast<size_t>(len) * sizeof(float));
-            reefCouplingBufLen_ = len;
+            reefCouplingBufLen_.store(len, std::memory_order_release); // publish after copy
         }
     }
 
@@ -1915,12 +1956,9 @@ private:
     {
         // FM: apply frequency deviation (±24 st from Src1 output)
         float effFreq = (fmSemitones != 0.0f) ? freq * fastPow2(fmSemitones / 12.0f) : freq;
-        // Clamp to Nyquist for non-bandlimited source types (Sine, WT, LoFi)
-        if (type != 2 && type != 3 && type != 4)
-        {
-            effFreq = std::max(0.0f, effFreq);  // prevent negative phase increment
-            effFreq = std::min(effFreq, sr * 0.49f);
-        }
+        // Clamp to Nyquist — PolyBLEP handles normal ranges internally but extreme FM
+        // (±24 st symbiosis/resident paths) can push effFreq above sr/2 or negative.
+        effFreq = std::max(0.0f, std::min(effFreq, sr * 0.49f));
         float dt = effFreq / sr;
 
         switch (type)
@@ -1951,10 +1989,10 @@ private:
             voice.srcOsc[idx].setWaveform(PolyBLEP::Waveform::Triangle);
             return voice.srcOsc[idx].processSample();
         }
-        case 5: // Noise
+        case 5: // Noise — per-source RNG (idx selects stream 0 or 1 for src1/src2)
         {
-            voice.noiseRng = voice.noiseRng * 1664525u + 1013904223u;
-            return static_cast<float>(voice.noiseRng & 0xFFFF) / 32768.0f - 1.0f;
+            voice.noiseRng[idx] = voice.noiseRng[idx] * 1664525u + 1013904223u;
+            return static_cast<float>(voice.noiseRng[idx] & 0xFFFF) / 32768.0f - 1.0f;
         }
         case 6: // Real wavetable banks (Wave 2) — pw = morph position within bank
         {
@@ -1992,58 +2030,6 @@ private:
         default:
             return 0.0f;
         }
-    }
-
-    //==========================================================================
-    // findNearestJIRatio — returns the ratio in the given prime limit closest to 'r'
-    // Input r should be folded into [1.0, 2.0). Tables sorted ascending within octave.
-    // D001 compliance: all ratios are integer fractions, mathematically exact.
-    //==========================================================================
-    static float findNearestJIRatio(float r, int primeLimit) noexcept
-    {
-        // 3-limit (Pythagorean): only perfect 5ths and octave-equivalents
-        static constexpr float kJI3[] = {1.0f,        9.0f / 8.0f,   81.0f / 64.0f,   4.0f / 3.0f,
-                                         3.0f / 2.0f, 27.0f / 16.0f, 243.0f / 128.0f, 2.0f / 1.0f};
-        // 5-limit (extended JI): adds pure major/minor thirds and sixths
-        static constexpr float kJI5[] = {1.0f,        16.0f / 15.0f, 9.0f / 8.0f, 6.0f / 5.0f, 5.0f / 4.0f,
-                                         4.0f / 3.0f, 45.0f / 32.0f, 3.0f / 2.0f, 8.0f / 5.0f, 5.0f / 3.0f,
-                                         9.0f / 5.0f, 15.0f / 8.0f,  2.0f / 1.0f};
-        // 7-limit (harmonic): adds subminor/supermajor intervals and harmonic 7th
-        static constexpr float kJI7[] = {1.0f,         16.0f / 15.0f, 9.0f / 8.0f, 7.0f / 6.0f, 6.0f / 5.0f,
-                                         5.0f / 4.0f,  9.0f / 7.0f,   4.0f / 3.0f, 7.0f / 5.0f, 3.0f / 2.0f,
-                                         14.0f / 9.0f, 8.0f / 5.0f,   5.0f / 3.0f, 7.0f / 4.0f, 9.0f / 5.0f,
-                                         15.0f / 8.0f, 2.0f / 1.0f};
-
-        const float* table;
-        int size;
-        switch (primeLimit)
-        {
-        case 0:
-            table = kJI3;
-            size = 8;
-            break;
-        case 2:
-            table = kJI7;
-            size = 17;
-            break;
-        default:
-            table = kJI5;
-            size = 13;
-            break;
-        }
-
-        float nearest = table[0];
-        float minDist = std::fabs(r - nearest);
-        for (int i = 1; i < size; ++i)
-        {
-            float d = std::fabs(r - table[i]);
-            if (d < minDist)
-            {
-                minDist = d;
-                nearest = table[i];
-            }
-        }
-        return nearest;
     }
 
     //==========================================================================
@@ -2231,6 +2217,10 @@ private:
             break;
         }
         case 3: // Reverb — 8-line FDN with Householder mixing + allpass input diffusion (OBRIX-999)
+        // Architecture note: the FDN processes a mono sum of L+R through a shared state
+        // buffer and then decorrelates the output into pseudo-stereo by routing alternate
+        // delay lines to L and R.  True stereo input imaging is not preserved through the
+        // reverb tail — by design (single ObrixFXState per slot, no dual-FDN overhead).
         {
             float input = (L + R) * 0.5f * (0.5f + space * 0.5f);
 
@@ -2306,7 +2296,8 @@ private:
         v.note       = noteNum;
         v.velocity   = vel;
         v.startTime  = ++voiceCounter;
-        v.noiseRng   = static_cast<uint32_t>(slot * 777 + noteNum * 31 + voiceCounter);
+        v.noiseRng[0] = static_cast<uint32_t>(slot * 777 + noteNum * 31 + voiceCounter);
+        v.noiseRng[1] = static_cast<uint32_t>(slot * 1337 + noteNum * 97 + voiceCounter + 12345u);
         v.srcFreq[0]    = freq1;
         v.srcFreq[1]    = freq2;
         v.targetFreq[0] = freq1;
@@ -2582,14 +2573,17 @@ private:
     // Build 4 single-cycle wavetable banks (runs once at prepare time)
     void buildWavetables() noexcept
     {
-        // Bank 0 — Analog: additive saw (Σ sin(2πkx)/k, 12 harmonics)
+        // Bank 0 — Analog: additive saw (Σ sin(2πkx)/k, 12 harmonics).
+        // Peak of the raw additive sum is π/2 ≈ 1.57 (harmonic series limit).
+        // Normalise to 0.5 peak (× 0.318 ≈ 1/π) so the wavetable stays safely
+        // within ±1 even after the WT-morph blend and feedback chain.
         for (int i = 0; i < kWTSize; ++i)
         {
             float t = static_cast<float>(i) / kWTSize;
             float v = 0.0f;
             for (int k = 1; k <= 12; ++k)
                 v += std::sin(t * kTwoPi * k) / static_cast<float>(k);
-            wavetables[0][i] = v * 0.55f;
+            wavetables[0][i] = v * 0.318f; // 1/π normalises additive-saw peak to ~1.0
         }
 
         // Bank 1 — Vocal: emphasized 2nd + 4th harmonics (formant vowel character)

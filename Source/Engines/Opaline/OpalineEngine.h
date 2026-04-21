@@ -126,8 +126,10 @@ constexpr float kModeRolloff[4] = {0.12f, 0.20f, 0.18f, 0.15f};
 // Per-instrument base Q (glass is VERY high Q — rings forever)
 constexpr float kBaseQ[4] = {200.0f, 120.0f, 500.0f, 350.0f};
 
-// Per-instrument sympathetic ring potential (glass: almost none)
-constexpr float kSympathyScale[4] = {0.15f, 0.10f, 0.05f, 0.08f};
+// Per-instrument sympathetic ring potential (glass: almost none).
+// NOTE: kSympathyScale is reserved for a planned sympathetic resonance feature;
+// currently unused. Kept as a named constant rather than deleted so its intended
+// role (scaling sympathetic coupling between voices) is not lost. (Params/D-new)
 
 } // anonymous namespace
 
@@ -170,7 +172,11 @@ struct OpalineExciter
         float instrumentNoise[4] = {0.05f, 0.20f, 0.02f, 0.10f};
         noiseMix = instrumentNoise[std::clamp(instrument, 0, 3)] + hardness * 0.15f;
 
-        noiseState = static_cast<uint32_t>(velocity * 65535.0f) + 12345u;
+        // Include baseFreq bits so identical-velocity notes on different pitches
+        // produce distinct noise patterns (avoids audible repetition on repeated notes).
+        noiseState = static_cast<uint32_t>(velocity * 65535.0f)
+                     ^ static_cast<uint32_t>(baseFreq * 31.0f)
+                     ^ 12345u;
 
         // Mallet contact lowpass (Hunt-Crossley model)
         malletCutoff = baseFreq * (2.0f + hardness * 16.0f);
@@ -186,16 +192,25 @@ struct OpalineExciter
                              ? std::clamp((velocity * fragility - crackThreshold) / (1.0f - crackThreshold), 0.0f, 1.0f)
                              : 0.0f;
 
-        // Crack noise burst: 2-5ms of broadband noise
+        // Crack noise burst: 2-5ms of broadband noise.
+        // Precompute per-sample multiplicative decay coefficient so process()
+        // needs only one multiply per sample instead of a std::exp call. (Perf)
         if (crackTriggered)
         {
             crackSamples = static_cast<int>((2.0f + crackIntensity * 3.0f) * 0.001f * sampleRate);
             crackAmplitude = velocity * crackIntensity * 0.6f;
+            // exp(-3*n/N) per sample ≡ multiply by exp(-3/N) each step
+            crackDecayCoeff = (crackSamples > 0)
+                                  ? std::exp(-3.0f / static_cast<float>(crackSamples))
+                                  : 1.0f;
+            crackEnvLevel = 1.0f; // reset running envelope to peak on trigger
         }
         else
         {
             crackSamples = 0;
             crackAmplitude = 0.0f;
+            crackDecayCoeff = 1.0f;
+            crackEnvLevel = 0.0f;
         }
     }
 
@@ -216,23 +231,23 @@ struct OpalineExciter
             out = pulse * (1.0f - noiseMix) + noise * noiseMix;
         }
 
-        // Crack noise burst (the glass breaking sound)
+        // Crack noise burst (the glass breaking sound).
+        // crackEnvLevel decays multiplicatively (precomputed in trigger) — no per-sample std::exp.
         if (crackTriggered && sampleCounter < crackSamples)
         {
             noiseState = noiseState * 1664525u + 1013904223u;
             float crackNoise = (static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f);
-            // Crack has a sharp attack and exponential decay
-            float crackEnv =
-                std::exp(-3.0f * static_cast<float>(sampleCounter) / static_cast<float>(std::max(crackSamples, 1)));
-            out += crackNoise * crackAmplitude * crackEnv;
+            out += crackNoise * crackAmplitude * crackEnvLevel;
+            crackEnvLevel *= crackDecayCoeff;
         }
 
-        // Deactivate after both excitation and crack complete
-        int totalSamples = std::max(contactSamples, crackSamples);
-        if (sampleCounter >= totalSamples + 1)
-            active = false;
-
+        // Deactivate after both excitation and crack complete.
+        // Increment first, then check: the condition fires at the sample AFTER the last
+        // output sample, avoiding one extra zero-output iteration of the mallet LP filter.
         ++sampleCounter;
+        int totalSamples = std::max(contactSamples, crackSamples);
+        if (sampleCounter >= totalSamples)
+            active = false;
 
         // Mallet contact lowpass
         malletFilterState += malletLPCoeff * (out - malletFilterState);
@@ -247,6 +262,8 @@ struct OpalineExciter
         malletFilterState = 0.0f;
         crackTriggered = false;
         crackIntensity = 0.0f;
+        crackEnvLevel = 0.0f;
+        crackDecayCoeff = 1.0f;
     }
 
     // Accessors for the render loop
@@ -263,6 +280,8 @@ struct OpalineExciter
     float crackIntensity = 0.0f;
     int crackSamples = 0;
     float crackAmplitude = 0.0f;
+    float crackDecayCoeff = 1.0f; // precomputed per-sample decay for crack envelope
+    float crackEnvLevel = 1.0f;   // running envelope state (starts at 1 on trigger)
 };
 
 //==============================================================================
@@ -408,7 +427,9 @@ public:
     static constexpr int kNumModes = 16; // V1: 16 full IIR modes (CPU optimization strategy)
 
     juce::String getEngineId() const override { return "Opaline"; }
-    juce::Colour getAccentColour() const override { return juce::Colour(0xFFB7410E); }
+    // Crystal Blue #B8D4E3 — matches Accent colour documented in header.
+    // Was 0xFFB7410E (burnt sienna — a copy-paste error from another engine).
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFFB8D4E3); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
@@ -421,6 +442,10 @@ public:
         {
             voices[i].reset();
             voices[i].filterEnv.prepare(srf);
+            // SVF mode for the brightness LPF never changes — set once here
+            // rather than calling setMode() inside the per-sample voice loop.
+            // P31: hoist static setMode() out of render path.
+            voices[i].svf.setMode(CytomicSVF::Mode::LowPass);
             voices[i].shimmerLFO.setShape(StandardLFO::Sine);
 
             // HF noise shaper: bandpass centered at 4kHz (glass brightness)
@@ -441,8 +466,14 @@ public:
         smoothBodySize.prepare(srf);
         smoothShimmer.prepare(srf);
 
-        // Thermal drift: ~1 second time constant (glass is more thermally sensitive)
-        thermalCoeff = 1.0f - std::exp(-1.0f / (1.0f * srf));
+        // Thermal drift: ~1 second time constant (glass is more thermally sensitive).
+        // 1-pole leaky integrator: coeff = 1 - exp(-1/(tau * sr)), tau = 1.0s.
+        thermalCoeff = 1.0f - std::exp(-1.0f / srf);
+
+        // HF noise shaper envelope: ~22ms decay time constant, sample-rate-correct.
+        // Was hardcoded 0.999f per sample — at 96kHz that decays 2× faster than 48kHz.
+        // tau = 0.022s → coeff = exp(-1/(tau * sr)). (Sound/P-new)
+        hfEnvDecay = std::exp(-1.0f / (0.022f * srf));
 
         // Noise PRNG state
         hfNoiseState = 98765u;
@@ -566,10 +597,14 @@ public:
         smoothBodySize.set(pBodySize);
         smoothShimmer.set(effectiveShimmer);
 
-        // Clear couplingFilterMod now — it was consumed above in effectiveBright (line ~555).
-        // couplingPitchMod and couplingInstrumentMod are consumed further below and are
-        // reset there to avoid clearing them before they reach the DSP. (#947)
+        // P25: CAPTURE-THEN-ZERO all coupling accumulators at block start.
+        // couplingFilterMod consumed above in effectiveBright; zero it now.
+        // couplingPitchMod: capture into a local, then zero immediately so new coupling
+        // calls arriving mid-block accumulate into next block rather than doubling this one.
+        // couplingInstrumentMod: same pattern applied below where it is read.
+        const float capturedPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
+        couplingPitchMod = 0.0f; // zeroed here; capturedPitchMod used in sample loop
 
         const float bendSemitones = pitchBendNorm * pBendRange;
 
@@ -581,8 +616,12 @@ public:
         if (pSustainPedal > 0.5f)
             baseDecayCoeff = std::min(baseDecayCoeff * 1.002f, 0.99999f);
 
-        // Pillar 4: Thermal shock — slow thermal drift
-        thermalTimer++;
+        // Pillar 4: Thermal shock — slow thermal drift.
+        // Bug fix: thermalTimer incremented once per renderBlock(), NOT once per sample.
+        // Previous comparison `thermalTimer > srf * 3.0f` used a sample-count threshold
+        // but counted block-render calls — at block size 512, fired every ~68s, not ~3s.
+        // Fixed: accumulate numSamples each block so thermalTimer counts actual samples. (Sound/P-new)
+        thermalTimer += numSamples;
         if (thermalTimer > static_cast<int>(srf * 3.0f)) // new target every ~3 seconds
         {
             thermalNoiseState = thermalNoiseState * 1664525u + 1013904223u;
@@ -616,13 +655,20 @@ public:
         float modeRolloff = kModeRolloff[instrument];
         float baseQ = kBaseQ[instrument];
 
-        // Read LFO params once per block
+        // Read LFO params once per block. Fallbacks match addParametersImpl() defaults
+        // so behavior is correct even before attachParameters() is called. (Params)
         const float lfo1Rate = paramLfo1Rate ? paramLfo1Rate->load() : 0.3f;
-        const float lfo1Depth = paramLfo1Depth ? paramLfo1Depth->load() : 0.0f;
+        const float lfo1Depth = paramLfo1Depth ? paramLfo1Depth->load() : 0.1f; // param default 0.1f
         const int lfo1Shape = paramLfo1Shape ? static_cast<int>(paramLfo1Shape->load()) : 0;
         const float lfo2Rate = paramLfo2Rate ? paramLfo2Rate->load() : 0.8f;
         const float lfo2Depth = paramLfo2Depth ? paramLfo2Depth->load() : 0.0f;
         const int lfo2Shape = paramLfo2Shape ? static_cast<int>(paramLfo2Shape->load()) : 0;
+
+        // Shimmer LFO rate: derive from effectiveShimmer once per block.
+        // Was computed inside the per-sample voice loop (voice.shimmerLFO.setRate()
+        // called once per active-voice per sample), which is 8× wasteful for a
+        // slowly-varying parameter. Block-rate update is perceptually identical. (Perf)
+        const float shimmerBlockRate = std::max(0.05f, effectiveShimmer * 8.0f);
 
         // Set LFO rate/shape per voice (once per block, not per sample)
         for (auto& voice : voices)
@@ -633,6 +679,7 @@ public:
             voice.lfo1.setShape(lfo1Shape);
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
+            voice.shimmerLFO.setRate(shimmerBlockRate, srf);
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -660,6 +707,8 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
+                // capturedPitchMod: block-captured coupling value (P25 — zeroed at block start)
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
                 freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 // LFO modulation
@@ -670,12 +719,16 @@ public:
                 float totalThermalCents = thermalState + voice.thermalPersonality * pThermal * 0.5f;
                 freq *= fastPow2(totalThermalCents / 1200.0f);
 
-                // Body size: scales fundamental pitch (smaller body = higher pitch)
-                float sizeScale = 0.5f + bodySizeNow * 1.5f; // 0.5x to 2.0x
+                // Body size: scales fundamental pitch (smaller body = higher pitch).
+                // Formula: 0.5 + bodySizeNow → at default 0.5, sizeScale = 1.0 (unity pitch).
+                // Range: [0.5x (small body, 1 oct up) … 1.5x (large body, ~7 semitones down)].
+                // Previous formula (0.5 + bodySize * 1.5) placed unity at bodySize≈0.333,
+                // causing default-preset pitch to be +386 cents sharp. (Sound/Params — bug fix)
+                float sizeScale = 0.5f + bodySizeNow; // 0.5x to 1.5x; unity at default (0.5)
                 float baseFreq = freq * sizeScale;
 
-                // Shimmer: subtle pitch modulation for crystalline character
-                voice.shimmerLFO.setRate(std::max(0.05f, shimmerNow * 8.0f), srf);
+                // Shimmer: subtle pitch modulation for crystalline character.
+                // Rate is updated once per block above (shimmerBlockRate) — no per-sample setRate().
                 float shimmerMod = voice.shimmerLFO.process();
                 float shimmerCents = shimmerMod * shimmerNow * 6.0f; // up to +/-6 cents
 
@@ -684,6 +737,11 @@ public:
 
                 // Process excitation
                 float excitation = voice.exciter.process();
+
+                // Hoist loop-invariant LFO2 pitch scale factor out of the mode loop.
+                // lfo2Val * 0.5f / 1200.0f is constant across all m; only (m+1) varies.
+                // Saves one multiply per mode per sample. (Perf)
+                const float lfo2PitchScale = lfo2Val * 0.5f / 1200.0f;
 
                 // Modal resonator bank (Pillar 2)
                 float resonanceSum = 0.0f;
@@ -710,8 +768,8 @@ public:
                     float modeShimmer = shimmerCents * (1.0f + static_cast<float>(m) * 0.15f);
                     modeFreq *= fastPow2(modeShimmer / 1200.0f);
 
-                    // Apply LFO2 as subtle pitch modulation
-                    modeFreq *= fastPow2(lfo2Val * 0.5f * static_cast<float>(m + 1) / 1200.0f);
+                    // Apply LFO2 as subtle pitch modulation (loop-invariant scale hoisted above)
+                    modeFreq *= fastPow2(lfo2PitchScale * static_cast<float>(m + 1));
 
                     // Apply crack detuning: higher modes shift more (glass breaks unevenly)
                     if (voice.cracked)
@@ -756,11 +814,15 @@ public:
                 {
                     hfNoiseState = hfNoiseState * 1664525u + 1013904223u;
                     float noise = (static_cast<float>(hfNoiseState & 0xFFFF) / 32768.0f - 1.0f);
+                    // Shape noise through the HF bandpass.
+                    // P19: use setCoefficients_fast() — avoids full std::tan recompute
+                    // in the per-sample inner loop; accuracy is sufficient for noise shaping.
+                    voice.hfNoiseSVF.setCoefficients_fast(std::clamp(baseFreq * 6.0f, 2000.0f, 16000.0f), 0.4f, srf);
                     // Shape noise through the HF bandpass (coeff refresh decimated)
                     if (updateFilter)
                         voice.hfNoiseSVF.setCoefficients(std::clamp(baseFreq * 6.0f, 2000.0f, 16000.0f), 0.4f, srf);
                     float hfShaped = voice.hfNoiseSVF.processSample(noise);
-                    voice.hfEnvLevel *= 0.999f; // quick HF decay
+                    voice.hfEnvLevel *= hfEnvDecay; // sample-rate-correct HF envelope decay
                     resonanceSum += hfShaped * hfNoiseNow * voice.hfEnvLevel * voice.velocity;
                 }
 
@@ -797,6 +859,12 @@ public:
                     continue;
                 }
 
+                // Filter: LPF for brightness control.
+                // P19: use setCoefficients_fast() — avoids std::tan per-sample in audio loop.
+                float envMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
+                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 4000.0f, 200.0f, 20000.0f);
+                // Mode was hoisted to prepare(); no setMode() call needed here.
+                voice.svf.setCoefficients_fast(cutoff, 0.3f, srf);
                 // Filter: LPF for brightness control (env ticked per-sample, SVF decimated)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
                 if (updateFilter)
@@ -821,9 +889,8 @@ public:
             couplingCacheR = mixR;
         }
 
-        // couplingPitchMod was consumed inside the sample loop (per-voice pitch bend, line ~659).
-        // Reset here after the loop so it doesn't accumulate across blocks. (#947)
-        couplingPitchMod = 0.0f;
+        // couplingPitchMod was captured into capturedPitchMod and zeroed at block start (P25).
+        // No post-loop reset needed.
 
         int count = 0;
         for (const auto& v : voices)
@@ -842,7 +909,9 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        // Use fastPow2 instead of std::pow — same accuracy for MIDI-to-freq conversion
+        // and avoids a transcendental call on every noteOn event. (Perf)
+        float freq = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
 
         int instrument = paramInstrument ? static_cast<int>(paramInstrument->load()) : 0;
         instrument = std::clamp(instrument, 0, 3);
@@ -859,6 +928,10 @@ public:
         v.glide.snapTo(freq);
         v.ampLevel = 1.0f;
         v.hfEnvLevel = 1.0f;
+        // Cancel any in-progress noteOff ramp from a stolen voice — otherwise the
+        // per-sample noteOffDecay multiplier keeps suppressing ampLevel on the new note.
+        v.noteOffRampSamples = 0;
+        v.noteOffDecay = 1.0f;
 
         // Trigger exciter with fragility mechanic (Pillar 3)
         v.exciter.trigger(vel, hardness, freq, fragility, instrument, srf);
@@ -881,14 +954,25 @@ public:
         }
 
         // Filter envelope: Pillar 5 (crystalline envelope)
-        // Short attack, very fast decay to pure ring
-        v.filterEnv.prepare(srf);
+        // Short attack, very fast decay to pure ring.
+        // P18: filterEnv.prepare() is called once in prepare() — no need to repeat
+        // per-noteOn; doing so wastes a recalcCoeffs() call and redundant exp compute.
         float filterDecay = 0.05f + (1.0f - vel) * 0.15f; // 50-200ms, velocity-scaled
         v.filterEnv.setADSR(0.001f, filterDecay, 0.0f, 0.3f);
         v.filterEnv.triggerHard();
 
         // Shimmer LFO: per-voice phase offset for ensemble
         v.shimmerLFO.reset(static_cast<float>(idx) / static_cast<float>(kMaxVoices));
+
+        // Reset SVF filter states to avoid click artifacts on voice steal.
+        // v.svf and v.hfNoiseSVF retain stale state when the voice is reused —
+        // resetting here prevents a transient burst from the old note's filter memory.
+        // Stability: critical on voice-steal paths where a decayed note is reassigned. (Stability)
+        v.svf.reset();
+        v.hfNoiseSVF.reset();
+        // Re-apply static SVF mode (was set in prepare(), cleared by reset() above)
+        v.svf.setMode(CytomicSVF::Mode::LowPass);
+        v.hfNoiseSVF.setMode(CytomicSVF::Mode::BandPass);
 
         // Reset modes
         for (auto& m : v.modes)
@@ -909,8 +993,8 @@ public:
             {
                 // Glass release: smooth 5ms ramp to 40% (avoids the amplitude cliff click).
                 // noteOffRampSamples counts down sample-by-sample; ramp terminates when it hits 0.
-                // exp(log(0.4) / (0.005 * srf)) gives the per-sample multiplier for a 5ms ramp.
-                v.noteOffRampSamples = static_cast<int>(0.005f * srf);
+                // Stability: guard against division-by-zero if srf is not yet set or rounds to 0.
+                v.noteOffRampSamples = std::max(static_cast<int>(0.005f * srf), 1);
                 v.noteOffDecay = std::exp(std::log(0.4f) / static_cast<float>(v.noteOffRampSamples));
                 v.filterEnv.release();
             }
@@ -1066,6 +1150,7 @@ private:
 
     // HF noise PRNG (shared, not per-voice)
     uint32_t hfNoiseState = 98765u;
+    float hfEnvDecay = 0.999f; // precomputed in prepare() from sample rate (Sound/P-new)
 
     // Coupling accumulators
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f, couplingInstrumentMod = 0.0f;

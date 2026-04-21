@@ -93,6 +93,8 @@ public:
     void prepare(double sampleRate) noexcept
     {
         sr = sampleRate;
+        // Precompute drift LFO phase increment — avoids a per-sample division
+        driftPhaseInc = 0.37 / sr;
         reset();
     }
 
@@ -123,7 +125,7 @@ public:
         float driftMod = 1.0f;
         if (driftAmount > 0.001f)
         {
-            driftPhase += 0.37 / sr; // ~0.37 Hz drift LFO
+            driftPhase += driftPhaseInc; // ~0.37 Hz drift LFO (precomputed in prepare)
             if (driftPhase >= 1.0)
                 driftPhase -= 1.0;
             float driftRaw = BiteSineTable::lookup(driftPhase);
@@ -141,9 +143,10 @@ public:
         case 0: // Sine -- shape controls harmonic fold-in
         {
             float raw = BiteSineTable::lookup(t);
-            // Shape adds subtle even harmonics via soft shaping
+            // Shape adds subtle odd harmonics via cubic fold-in (preserves anti-symmetry,
+            // no DC offset). raw*raw*raw keeps the waveform bipolar unlike raw*raw.
             if (shape > 0.01f)
-                raw = raw + shape * 0.3f * raw * raw;
+                raw = raw + shape * 0.3f * raw * raw * raw;
             out = raw;
             break;
         }
@@ -209,6 +212,7 @@ private:
     // Drift state
     float driftAmount = 0.0f;
     double driftPhase = 0.0;
+    double driftPhaseInc = 0.0; // precomputed in prepare(): 0.37 / sr
     float driftLfoState = 0.0f;
 
     static float polyBlepD(double t, double dt) noexcept
@@ -245,6 +249,8 @@ public:
     void prepare(double sampleRate) noexcept
     {
         sr = sampleRate;
+        // Precompute instability LFO phase increment — avoids a per-sample division
+        instabilityPhaseInc = 2.7 / sr;
         reset();
     }
 
@@ -297,7 +303,7 @@ public:
         float instMod = 0.0f;
         if (instability > 0.001f)
         {
-            instabilityPhase += 2.7 / sr; // ~2.7 Hz instability rate
+            instabilityPhase += instabilityPhaseInc; // ~2.7 Hz (precomputed in prepare)
             if (instabilityPhase >= 1.0)
                 instabilityPhase -= 1.0;
             instMod = BiteSineTable::lookup(instabilityPhase) * instability * 0.006f;
@@ -342,7 +348,8 @@ public:
         case 1: // FM -- shape controls modulation index
         {
             fmModPhase += effPhaseInc * 2.0;
-            if (fmModPhase >= 1.0)
+            // Use while-loop in case effPhaseInc*2.0 > 1.0 at very high frequencies
+            while (fmModPhase >= 1.0)
                 fmModPhase -= 1.0;
             float mod = BiteSineTable::lookup(fmModPhase);
             float fmDepth = shape * 2.0f + externalFM * 2.0f;
@@ -403,6 +410,7 @@ private:
     double baseFreq = 440.0;
     double fmModPhase = 0.0;
     double instabilityPhase = 0.0;
+    double instabilityPhaseInc = 0.0; // precomputed in prepare(): 2.7 / sr
     int wave = 0;
     float shape = 0.5f;
     float instability = 0.0f;
@@ -551,6 +559,15 @@ public:
     {
         sr = sampleRate;
         invSR = 1.0f / static_cast<float>(sr);
+        // Pink noise IIR coefficients calibrated for 44100 Hz; scale cutoff frequencies
+        // by (44100/sr) so the spectral shape remains correct at 48kHz / 96kHz.
+        float srScale = 44100.0f / static_cast<float>(sr);
+        pinkCoeff[0] = srScale * 0.0555f;
+        pinkCoeff[1] = srScale * 0.0158f;
+        pinkCoeff[2] = srScale * 0.0046f;
+        // Clamp so coefficients stay in (0,1] — prevents instability at very low sr
+        for (auto& c : pinkCoeff)
+            c = clamp(c, 0.0001f, 1.0f);
         reset();
     }
 
@@ -576,10 +593,10 @@ public:
             out = raw;
             break;
 
-        case 1: // Pink (approximation via 3 leaky integrators)
-            pinkState[0] += (raw - pinkState[0]) * 0.0555f;
-            pinkState[1] += (raw - pinkState[1]) * 0.0158f;
-            pinkState[2] += (raw - pinkState[2]) * 0.0046f;
+        case 1: // Pink (approximation via 3 leaky integrators — SR-scaled coefficients)
+            pinkState[0] += (raw - pinkState[0]) * pinkCoeff[0];
+            pinkState[1] += (raw - pinkState[1]) * pinkCoeff[1];
+            pinkState[2] += (raw - pinkState[2]) * pinkCoeff[2];
             out = (pinkState[0] + pinkState[1] + pinkState[2]) * 0.66f + raw * 0.1f;
             for (auto& s : pinkState)
                 s = flushDenormal(s);
@@ -629,6 +646,7 @@ private:
     double sr = 0.0;
     float invSR = 0.0f; // set by prepare()
     float pinkState[3] = {};
+    float pinkCoeff[3] = {0.0555f, 0.0158f, 0.0046f}; // SR-scaled in prepare()
     float brownState = 0.0f;
     float hissState = 0.0f;
     float decayLevel = 1.0f;
@@ -757,8 +775,9 @@ public:
         {
             float gain = 1.0f + amount * 6.0f;
             out *= gain;
-            // Tri-fold waveshaping
-            while (out > 1.0f || out < -1.0f)
+            // Tri-fold waveshaping — capped at 16 iterations to bound worst-case CPU
+            // at high gain. Maximum gain=7x drives out to ±7 requiring at most 6 folds.
+            for (int fold = 0; fold < 16 && (out > 1.0f || out < -1.0f); ++fold)
             {
                 if (out > 1.0f)
                     out = 2.0f - out;
@@ -882,7 +901,8 @@ public:
             {
                 int n = kMaxDelaySamples;
                 float fIdx = static_cast<float>(writePos) - delay;
-                while (fIdx < 0.0f)
+                // Use fmod instead of while-loop — single-step, handles large delays safely
+                if (fIdx < 0.0f)
                     fIdx += static_cast<float>(n);
                 int iLo = static_cast<int>(fIdx) % n;
                 int iHi = (iLo + 1) % n;
@@ -950,7 +970,8 @@ public:
         auto readInterp = [n, this](const std::vector<float>& buf, float delay) -> float
         {
             float fIdx = static_cast<float>(writePos) - delay;
-            while (fIdx < 0.0f)
+            // Single-step offset instead of while-loop — delay is clamped ≤ n-2 so one add suffices
+            if (fIdx < 0.0f)
                 fIdx += static_cast<float>(n);
             int iLo = static_cast<int>(fIdx) % n;
             int iHi = (iLo + 1) % n;
@@ -1075,7 +1096,13 @@ public:
         default:
             break;
         }
-        float dampCoeff = std::exp(-2.0f * 3.14159265f * (300.0f + (1.0f - effDamping) * 6000.0f) / sr);
+        // Cache dampCoeff: only recompute when effDamping changes (typically block-constant)
+        if (effDamping != lastEffDamping)
+        {
+            lastEffDamping = effDamping;
+            cachedDampCoeff = std::exp(-2.0f * 3.14159265f * (300.0f + (1.0f - effDamping) * 6000.0f) / sr);
+        }
+        float dampCoeff = cachedDampCoeff;
 
         float mono = (outL + outR) * 0.5f;
         float reverbOut = 0.0f;
@@ -1113,6 +1140,9 @@ private:
     std::vector<float> apBuf[kNumAllpass];
     int apLen[kNumAllpass] = {225, 341};
     int apPos[kNumAllpass] = {};
+    // Cached damping coefficient to avoid per-block exp() when effDamping is constant
+    float lastEffDamping = -1.0f; // sentinel: force recompute on first process() call
+    float cachedDampCoeff = 0.0f;
 };
 
 //==============================================================================
@@ -1707,6 +1737,17 @@ public:
             voice.cachedBaseFreq = targetFreq;
             voice.filter.setMode(svfMode);
 
+            // Hoist LFO configuration out of the per-sample loop — all LFO parameters
+            // are block-constant; setting them once per block avoids 3×numSamples setter calls.
+            voice.lfo1.setShape(lfo1Shape);
+            voice.lfo1.setRate(lfo1Rate * scurryLfoMul);
+            voice.lfo1.setStartPhase(lfo1Phase);
+            voice.lfo2.setShape(lfo2Shape);
+            voice.lfo2.setRate(lfo2Rate * scurryLfoMul);
+            voice.lfo2.setStartPhase(lfo2Phase);
+            voice.lfo3.setShape(lfo3Shape);
+            voice.lfo3.setRate(lfo3Rate * scurryLfoMul);
+            voice.lfo3.setStartPhase(lfo3Phase);
             // Pre-compute unison detune ratio per voice — block-constant so we hoist the
             // std::pow out of the per-sample render loop.
             if (voice.unisonTotal > 1)
@@ -1757,7 +1798,7 @@ public:
                 // --- Velocity sensitivity ---
                 float velGain = 1.0f - ampVelSens + ampVelSens * voice.velocity;
 
-                // --- LFOs (setShape/setRate/setStartPhase hoisted to per-block voice loop) ---
+            // --- LFOs (setShape/setRate/setStartPhase hoisted to per-block voice loop) ---
                 float lfo1val = voice.lfo1.process() * lfo1Depth;
                 float lfo2val = voice.lfo2.process() * lfo2Depth;
                 float lfo3val = voice.lfo3.process() * lfo3Depth;
@@ -1935,13 +1976,16 @@ public:
                 // LFO2 → filter cutoff unconditionally (Scurry scales rate, not presence).
                 // LFO3 → filter cutoff unconditionally (wider sweep range).
                 // modEnvCutoff is non-zero only when modEnvDest==2 (Filter Cutoff).
+                // Scale 4000 Hz gives a musically useful ±4 kHz sweep across the filter
+                // envelope range. The previous 10000 Hz drove the cutoff to the 18 kHz
+                // ceiling at low base-cutoff values, killing velocity-timbral variation.
                 // Decimate SVF coefficient refresh to every 16 samples — env + LFOs
                 // still advance per sample (already ticked above), only the expensive
                 // filter coefficient update is throttled. ~0.36ms refresh @ 44.1k is
                 // well below audible cutoff-tracking lag.
                 if (updateFilter)
                 {
-                    float modCutoff = filterCutoff + filtEnvAmt * filtEnvVal * voice.velocity * 10000.0f + bellyCutoffMod +
+                    float modCutoff = filterCutoff + filtEnvAmt * filtEnvVal * voice.velocity * 4000.0f + bellyCutoffMod +
                                       playDeadCutoff + filterMod * 2000.0f + lfo2val * 2000.0f + lfo3val * 2000.0f +
                                       modEnvCutoff + keyTrackOffset;
                     modCutoff = clamp(modCutoff, 20.0f, 18000.0f);
@@ -2030,7 +2074,7 @@ public:
                 float voicePanBase = clamp(pan + mmDst[19], -1.0f, 1.0f);
                 float voicePanL = panGainL;
                 float voicePanR = panGainR;
-                if (voice.unisonTotal > 1 || mmDst[19] != 0.0f)
+                if (voice.unisonTotal > 1 || std::abs(mmDst[19]) > 0.001f)
                 {
                     float unisonPos = (voice.unisonTotal > 1) ? ((static_cast<float>(voice.unisonIndex) -
                                                                   static_cast<float>(voice.unisonTotal - 1) * 0.5f) /

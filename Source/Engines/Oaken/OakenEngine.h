@@ -209,8 +209,8 @@ struct OakenKarplusString
 
     float process(float excitation) noexcept
     {
-        // Write excitation + feedback into delay line
-        delayLine[writePos] = excitation + readFromDelay() * feedbackGain;
+        // Write excitation + feedback into delay line; softClip prevents runaway with high feedbackGain
+        delayLine[writePos] = softClip(excitation + readFromDelay() * feedbackGain);
 
         // Advance write position
         writePos = (writePos + 1) % kMaxDelay;
@@ -329,7 +329,9 @@ struct CuringModel
         float cutoff = 12000.0f - curingProgress * 11000.0f;
         cutoff = std::max(cutoff, 500.0f);
 
-        curingLP.setCoefficients(cutoff, 0.3f, sr);
+        // P19: use fast-path coefficient update (fastTan vs std::tan); curing cutoff
+        // changes very slowly so fastTan accuracy (~0.03%) is more than sufficient.
+        curingLP.setCoefficients_fast(cutoff, 0.3f, sr);
         return curingLP.processSample(input);
     }
 
@@ -436,6 +438,17 @@ public:
         pitchBendNorm = 0.0f;
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
+        couplingFilterMod = 0.0f;
+        couplingPitchMod = 0.0f;
+        couplingCacheL = 0.0f;
+        couplingCacheR = 0.0f;
+        // P14: snap all smoothers so stale values don't bleed into next session
+        smoothBowPressure.snapTo(0.5f);
+        smoothStringTension.snapTo(0.5f);
+        smoothBodyDepth.snapTo(0.5f);
+        smoothBrightness.snapTo(6000.0f);
+        smoothWoodAge.snapTo(0.5f);
+        smoothCuringRate.snapTo(0.3f);
     }
 
     float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
@@ -561,14 +574,20 @@ public:
             voice.lfo2.setShape(lfo2Shape);
             voice.glide.setTime(pGlide, srf);
             voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
-
-            // Pre-compute pan gains per voice — depends on currentNote (note-constant) and
-            // roomSpread (block-constant). Hoists per-sample std::cos + std::sin out of
-            // inner render loop (was up to 64×N pairs of trig calls per block).
-            const float panOffset = (static_cast<float>((voice.currentNote * 7) % 13) / 13.0f - 0.5f) * roomSpread;
-            const float panPos    = 0.5f + panOffset;
-            voice.panL = fastCos(panPos * 1.5707963f);
-            voice.panR = fastSin(panPos * 1.5707963f);
+// P19: move block-constant updates here — saves per-sample SVF coeff + exp calls.
+            voice.body.updateModes(smoothWoodAge.get());
+            voice.outputFilter.setMode(CytomicSVF::Mode::LowPass); // mode is constant; set once per block
+            // setStringType contains std::exp — block-constant, pull out of per-sample loop
+            voice.string.setStringType(smoothStringTension.get());
+            voice.string.setDamping(effectiveDamping); // block-constant
+            // Perf: precompute constant pan gains (std::cos/sin) once per block, not per sample
+            {
+                float roomSpread = pRoom * 0.15f;
+                float panOffset = (static_cast<float>((voice.currentNote * 7) % 13) / 13.0f - 0.5f) * roomSpread;
+                float panPos = 0.5f + panOffset;
+                voice.panL = std::cos(panPos * 1.5707963f);
+                voice.panR = std::sin(panPos * 1.5707963f);
+            }
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -585,7 +604,12 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
+float bowPNow    = smoothBowPressure.process();
+            (void)smoothStringTension.process(); // advance smoother; value is block-constant (moved to pre-sample loop)
+            float bodyDNow   = smoothBodyDepth.process();
+            float brightNow  = smoothBrightness.process();
+            (void)smoothWoodAge.process();        // advance smoother; value is block-constant (moved to pre-sample loop)
+const bool updateFilter = ((s & 15) == 0);
             float bowPNow = smoothBowPressure.process();
             float strTNow = smoothStringTension.process();
             float bodyDNow = smoothBodyDepth.process();
@@ -603,13 +627,15 @@ public:
                 float freq = voice.glide.process();
                 freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
-                float lfo1Val = voice.lfo1.process() * lfo1Depth;
-                float lfo2Val = voice.lfo2.process() * lfo2Depth;
+                // Advance LFO phase always (phase consistency), but skip multiply when depth is zero
+                float lfo1Raw = voice.lfo1.process();
+                float lfo2Raw = voice.lfo2.process();
+                float lfo1Val = (lfo1Depth != 0.0f) ? lfo1Raw * lfo1Depth : 0.0f;
+                float lfo2Val = (lfo2Depth != 0.0f) ? lfo2Raw * lfo2Depth : 0.0f;
 
-                // Set string frequency and damping
+                // Set string frequency — per-sample since glide changes freq every sample.
+                // setDamping and setStringType are block-constant, moved to pre-sample block loop.
                 voice.string.setFrequency(freq, srf);
-                voice.string.setDamping(effectiveDamping);
-                voice.string.setStringType(strTNow);
 
                 // Get excitation signal
                 float excitation = voice.exciter.process(bowPNow);
@@ -617,23 +643,19 @@ public:
                 // Karplus-Strong string synthesis
                 float stringSample = voice.string.process(excitation);
 
-                // Wood body resonator
-                voice.body.updateModes(woodANow);
+                // Wood body resonator (updateModes moved to pre-sample block loop above)
                 float bodied = voice.body.process(stringSample, bodyDNow);
 
                 // Curing model: HF removal over sustain time
                 float cured = voice.curing.process(bodied, curingRNow, dtSec);
 
-                // Output brightness filter (env ticked per-sample, SVF decimated)
+// Output brightness filter (setMode moved to pre-sample block loop above)
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 4000.0f;
-                if (updateFilter)
-                {
-                    float cutoff =
-                        std::clamp(brightNow + envMod + lfo1Val * 2000.0f + lfo2Val * 2000.0f + voice.velocity * 2000.0f,
-                                   200.0f, 20000.0f);
-                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.outputFilter.setCoefficients(cutoff, 0.3f, srf);
-                }
+                float cutoff =
+                    std::clamp(brightNow + envMod + lfo1Val * 2000.0f + lfo2Val * 2000.0f + voice.velocity * 2000.0f,
+                               200.0f, 20000.0f);
+                // P19: use fast-path setCoefficients_fast for per-sample modulated cutoff
+                voice.outputFilter.setCoefficients_fast(cutoff, 0.3f, srf);
                 float filtered = voice.outputFilter.processSample(cured);
 
                 // Room: simple one-pole reverb-like diffusion
@@ -653,18 +675,21 @@ public:
 
                 float output = filtered * ampLevel * voice.velocity;
 
-                // Room bleed: pan gains cached per voice in per-block setup loop above.
+// Pan gains precomputed per block (panL/panR) — avoids std::cos/sin per sample
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
             }
 
-            outL[s] = mixL;
+            outL[s] = softClip(mixL); // P8: softClip on final mix — prevents multi-voice overflow
             if (outR)
-                outR[s] = mixR;
-            // macroCoup scales coupling output: higher coupling macro = stronger cross-engine signal
+                outR[s] = softClip(mixR);
+        }
+        // Coupling cache: capture final sample only — getSampleForCoupling uses last sample per block
+        if (numSamples > 0)
+        {
             const float coupGain = 1.0f + macroCoup * 1.5f;
-            couplingCacheL = mixL * coupGain;
-            couplingCacheR = mixR * coupGain;
+            couplingCacheL = outL[numSamples - 1] * coupGain;
+            couplingCacheR = (outR ? outR[numSamples - 1] : outL[numSamples - 1]) * coupGain;
         }
 
         int count = 0;
@@ -684,7 +709,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = midiToFreq(note); // P4: fastPow2 path via midiToFreq — was std::pow
 
         int exciterType = paramExciter ? static_cast<int>(paramExciter->load()) : 0;
 
@@ -699,9 +724,8 @@ public:
 
         v.string.reset();
         v.exciter.trigger(vel, exciterType, freq, srf);
-        // RT-fix: body/curing/ampEnv/filterEnv.prepare() already called at engine
-        // prepare()-time for all voice slots.  On noteOn, only reset/trigger state.
-        // body.prepare() sets sr + resets mode filters — not needed again here.
+// P18: body/curing/env prepare() removed from noteOn — belongs in OakenEngine::prepare() only.
+        // Calling prepare() per-noteOn is wasteful and can reset filter state mid-note.
         v.curing.trigger();
 
         float attack = paramAttack ? paramAttack->load() : 0.005f;
@@ -845,7 +869,7 @@ public:
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
-    float inverseSr_ = 1.0f / 48000.0f;
+    float inverseSr_ = 0.0f; // Sentinel: set in prepare() — was hardcoded 1/48000 which would give wrong dtSec before prepare()
 
     std::array<OakenVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Void Punch",
+  "mood": "Foundation",
+  "engines": ["Outflow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum undertow pull with instant vacuum attack creates a hard gating punch — the exciter hit disappears into a void before the optical tail recovers. Percussive spatial weapon.",
+  "tags": ["percussive", "gating", "punch", "vacuum", "dramatic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.3,
+    "movement": 0.1,
+    "density": 0.2,
+    "space": 0.5,
+    "aggression": 1.0
+  },
+  "parameters": {
+    "Outflow": {
+      "out_anchor": 0.6,
+      "out_windChaos": 0.1,
+      "out_undertowPull": 1.0,
+      "out_splashSize": 0.3,
+      "out_decay": 2.0,
+      "out_damping": 8000.0,
+      "out_dryWet": 0.6,
+      "out_exciterDecay": 0.01,
+      "out_vacuumAttack": 0.0,
+      "out_opticalWarmth": 0.4,
+      "out_macroCharacter": 0.0,
+      "out_macroMovement": 0.0,
+      "out_macroCoupling": 0.0,
+      "out_macroSpace": 0.0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "starterFor": "Outflow"
+}

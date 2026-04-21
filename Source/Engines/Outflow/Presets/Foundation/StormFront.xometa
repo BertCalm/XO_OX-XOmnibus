@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Storm Front",
+  "mood": "Foundation",
+  "engines": ["Outflow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "High undertow pull creates aggressive vacuum snaps on each exciter burst. Long decay lets the warm optical tail pool beneath the silence. The storm that eats itself.",
+  "tags": ["aggressive", "vacuum", "reverb", "transient", "dramatic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Low",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.7,
+    "movement": 0.4,
+    "density": 0.6,
+    "space": 0.8,
+    "aggression": 0.8
+  },
+  "parameters": {
+    "Outflow": {
+      "out_anchor": 0.4,
+      "out_windChaos": 0.6,
+      "out_undertowPull": 0.9,
+      "out_splashSize": 0.7,
+      "out_decay": 8.0,
+      "out_damping": 3500.0,
+      "out_dryWet": 0.75,
+      "out_exciterDecay": 0.035,
+      "out_vacuumAttack": 0.1,
+      "out_opticalWarmth": 0.8,
+      "out_macroCharacter": 0.0,
+      "out_macroMovement": 0.0,
+      "out_macroCoupling": 0.0,
+      "out_macroSpace": 0.0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "starterFor": "Outflow"
+}

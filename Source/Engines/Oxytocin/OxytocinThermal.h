@@ -63,8 +63,10 @@ public:
     }
 
     /// Call once per block with the current intimacy level and warmth rate.
-    /// Returns the current warmth value (used by the voice for cross-modulation).
-    float updateWarmth(float intimacy, float warmthRate, float /*blockTime*/) noexcept
+    /// blockTime must be the true seconds-per-block so the wobble oscillator advances
+    /// by the correct amount at block rate. (F13 fix: wobble phase and sin() moved here
+    /// from processSample() so std::sin is called once per block, not per sample.)
+    float updateWarmth(float intimacy, float warmthRate, float blockTime) noexcept
     {
         // Cache block-rate per-sample IIR coefficients.
         if (warmthRate != lastWarmthRate)
@@ -78,6 +80,15 @@ public:
             coeff3 = std::exp(-1.0f / (static_cast<float>(sr) * tau3));
             lastWarmthRate = warmthRate;
         }
+
+        // F13 fix: advance the wobble oscillator once per block and cache the sin result.
+        // The 0.3 Hz capstan motor drift is far below audio rate — block-rate resolution
+        // is more than sufficient (0.3 Hz at 128-sample blocks ≈ 344 samples/cycle,
+        // so ≈2.7 blocks/cycle — the sine is re-evaluated multiple times per cycle).
+        wobblePhase += static_cast<float>(juce::MathConstants<double>::twoPi * 0.3 * blockTime);
+        if (wobblePhase > juce::MathConstants<float>::twoPi)
+            wobblePhase -= juce::MathConstants<float>::twoPi;
+        cachedWobbleSin = std::sin(wobblePhase); // cached; processSample() uses this value
 
         // PERF: Precompute signal-load-adjusted coefficients at block rate.
         //
@@ -152,8 +163,12 @@ public:
         float output = clean * (1.0f - warmth * 0.4f) + saturated * (warmth * 0.4f);
 
         // Circuit-age pitch wobble: ±3 cents * age * sin(0.3 Hz)
+        // F13 fix: wobblePhase advanced and sin() computed once per block in
+        // updateWarmth(); use the cached cachedWobbleSin here — no per-sample sin().
         if (circuitAge > 0.0f)
         {
+            // AM approximation of motor flutter (delay-line-free; see updateWarmth()).
+            float wobble = 1.0f + circuitAge * 0.0017f * cachedWobbleSin;
             wobblePhase += static_cast<float>(juce::MathConstants<double>::twoPi * 0.3 / sr);
             if (wobblePhase > juce::MathConstants<float>::twoPi)
                 wobblePhase -= juce::MathConstants<float>::twoPi;
@@ -187,6 +202,7 @@ private:
     float cachedC2f = 0.0f;
     float cachedC3f = 0.0f;
     float wobblePhase = 0.0f;
+    float cachedWobbleSin = 0.0f; // F13: block-rate cached sin(wobblePhase); avoids per-sample sin()
 
     // Fix 4 (FATHOM): signal-level envelope follower for NTC thermal acceleration
     float signalEnvLevel = 0.0f;        // current signal envelope estimate [0..1]

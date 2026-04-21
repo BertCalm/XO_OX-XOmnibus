@@ -216,6 +216,9 @@ struct OxalisVoice
     float cachedPitchRatio = 1.0f;
     float lastBendInput = 0.0f;
 
+    // F16: filter coefficient delta guard — only recompute when cutoff shifts > kFilterDeltaHz
+    float lastFilterCut = -1.0f; // sentinel: force first-sample update
+
     void reset() noexcept
     {
         active = false;
@@ -226,12 +229,15 @@ struct OxalisVoice
         dormancyPitchCents = 0.0f;
         cachedPitchRatio = 1.0f;
         lastBendInput = 0.0f;
+        lastFilterCut = -1.0f; // F16: force coefficient recalc on first sample
         glide.reset();
         oscBank.reset();
         filter.reset();
         ampEnv.kill();
         filterEnv.kill();
         vibratoLFO.reset();
+        lfo1.reset();   // F03: lfo1/lfo2 missing from reset — stale phase on voice steal
+        lfo2.reset();
     }
 };
 
@@ -260,6 +266,8 @@ public:
             voices[i].filterEnv.prepare(srf);
             voices[i].vibratoLFO.setShape(StandardLFO::Sine);
             voices[i].vibratoLFO.reseed(static_cast<uint32_t>(i * 6271 + 313));
+            // F07: setMode is constant (always LowPass) — hoist to prepare() instead of per-sample
+            voices[i].filter.setMode(CytomicSVF::Mode::LowPass);
             // Pre-initialize phyllotaxis ratio cache so per-sample updatePartials
             // never hits the std::pow path (D004 / CPU fix).
             voices[i].oscBank.initPhyllotaxisCache();
@@ -374,7 +382,7 @@ public:
         const float macroSpace = loadP(paramMacroSpace, 0.0f);
 
         const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
-        const float lfo1Depth = loadP(paramLfo1Depth, 0.0f);
+        const float lfo1Depth = loadP(paramLfo1Depth, 0.1f); // F17: fallback matched to param default 0.1f
         const int lfo1Shape = static_cast<int>(loadP(paramLfo1Shape, 0.0f));
         const float lfo2Rate = loadP(paramLfo2Rate, 1.0f);
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
@@ -408,8 +416,9 @@ public:
         smoothPhi.set(effectivePhi);
         smoothSpread.set(pSpread);
 
-        // Snapshot pitch coupling before reset (#1118).
-        const float blockCouplingPitchMod = couplingPitchMod;
+        // F01: Capture couplingPitchMod into a local BEFORE zeroing — otherwise the
+        // per-sample loop reads the already-zeroed member and pitch coupling is always 0.
+        const float capturedPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingPhiMod = 0.0f;
@@ -432,6 +441,8 @@ public:
 
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
+        // F14: hoist 1/srf outside both loops — avoids division per-voice per-sample in Growth Mode
+        const float sampleDt = 1.0f / srf;
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -456,6 +467,9 @@ public:
                 // Threshold of 0.005 semitones keeps tuning error < 0.01 cents inaudible.
                 static constexpr float kPitchCacheThreshold = 0.005f;
                 float bendInput =
+                    bendSemitones + capturedPitchMod + vibrato * 0.3f + voice.dormancyPitchCents / 100.0f;
+                    // F01: use capturedPitchMod (local), not couplingPitchMod (already 0)
+                    // F12: vibrato scalar 0.08f → 0.3f for ±0.3st range at full depth (strings standard)
                     bendSemitones + blockCouplingPitchMod + vibrato * 0.08f + voice.dormancyPitchCents / 100.0f;
                 if (std::fabs(bendInput - voice.lastBendInput) > kPitchCacheThreshold)
                 {
@@ -475,7 +489,7 @@ public:
                 float growthGain = 1.0f;
                 if (voice.growthMode)
                 {
-                    voice.growthTimer += 1.0f / srf;
+                    voice.growthTimer += sampleDt; // F14: pre-hoisted reciprocal (see below outer loop)
                     voice.growthPhase = std::min(voice.growthTimer / voice.growthDuration, 1.0f);
 
                     // Partials emerge sequentially at golden angle intervals
@@ -499,6 +513,14 @@ public:
 
                 // Filter (env ticked per-sample, SVF decimated)
                 float envLevel = voice.filterEnv.process();
+                float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 4000.0f, 200.0f, 20000.0f);
+                // F16: delta-guard setCoefficients — only recompute when fCut shifts > 2Hz
+                // F07: setMode hoisted to prepare() — not repeated here
+                static constexpr float kFilterDeltaHz = 2.0f;
+                if (std::fabs(fCut - voice.lastFilterCut) > kFilterDeltaHz)
+                {
+                    voice.filter.setCoefficients(fCut, pResonance, srf);
+                    voice.lastFilterCut = fCut;
                 if (updateFilter)
                 {
                     float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 4000.0f, 200.0f, 20000.0f);
@@ -519,6 +541,16 @@ public:
                 float velBright = 0.4f + voice.velocity * 0.6f;
                 float output = filtered * ampLevel * velBright;
 
+                // F02: Mycorrhizal network send — pioneer species sends stress proportional
+                // to activity level (accumulators.A = aggression [0..1]). Receive path
+                // modulates dormancy pitch variance for subtle inter-voice detune coupling.
+                int voiceIdx = static_cast<int>(&voice - voices.data());
+                if (voice.velocity > accumulators.aThreshold)
+                    network.sendStress(voiceIdx, voice.velocity * accumulators.A * 0.1f,
+                                       accumulators.sessionTime);
+                float receivedStress = network.receiveStress(voiceIdx, accumulators.sessionTime);
+                voice.dormancyPitchCents += receivedStress * 0.8f; // subtle geometric detune spread
+
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
             }
@@ -527,11 +559,13 @@ public:
             // sprNow (smoothed pSpread) scales the side signal independently of macroSpace.
             const float mid = (mixL + mixR) * 0.5f;
             const float side = (mixL - mixR) * 0.5f * effectiveWidth * (0.5f + sprNow);
-            outL[s] = mid + side;
+            // F13: soft-clip output bus — 4-voice + asymmetry waveshaping can drive summed
+            // signal to ~3+; fastTanh provides transparent limiting without hard clipping.
+            outL[s] = fastTanh(mid + side);
             if (outR)
-                outR[s] = mid - side;
+                outR[s] = fastTanh(mid - side);
             couplingCacheL = outL[s];
-            couplingCacheR = outR ? outR[s] : mixR;
+            couplingCacheR = outR ? outR[s] : fastTanh(mid - side);
         }
 
         int count = 0;
@@ -551,7 +585,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = midiToFreq(note); // F05: use fastPow2 path (was std::pow)
         bool isGrowthMode = paramGrowthMode && paramGrowthMode->load() > 0.5f;
 
         v.active = true;
@@ -564,12 +598,12 @@ public:
         float attackTime = paramAttack ? paramAttack->load() : 0.01f;
         attackTime *= (1.1f - vel * 0.2f);
 
-        v.ampEnv.prepare(srf);
+        // F04: prepare() was called per-noteOn — costs 4 extra std::exp calls.
+        // prepare() is now called once in OxalisEngine::prepare(); only setADSR needed here.
         v.ampEnv.setADSR(attackTime, paramDecay ? paramDecay->load() : 0.3f,
                          paramSustain ? paramSustain->load() : 0.85f, paramRelease ? paramRelease->load() : 0.6f);
         v.ampEnv.triggerHard();
 
-        v.filterEnv.prepare(srf);
         v.filterEnv.setADSR(attackTime * 0.5f, 0.4f, 0.1f, 0.5f);
         v.filterEnv.triggerHard();
 
@@ -603,7 +637,10 @@ public:
     {
         for (auto& v : voices)
             if (v.active && v.currentNote == note)
+            {
                 v.ampEnv.release();
+                v.filterEnv.release(); // F09: filterEnv never released — filter stayed at sustain after note-off
+            }
     }
 
     //==========================================================================

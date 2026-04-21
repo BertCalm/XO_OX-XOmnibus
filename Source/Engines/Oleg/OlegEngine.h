@@ -220,7 +220,6 @@ struct OlegBuzzBridge
 {
     void prepare(float sampleRate) noexcept
     {
-        sr = sampleRate;
         buzzBPF.setMode(CytomicSVF::Mode::BandPass);
         buzzBPF.setCoefficients(350.0f, 0.8f, sampleRate);
         buzzBPF.reset();
@@ -270,7 +269,7 @@ struct OlegBuzzBridge
         rattleBPF.reset();
     }
 
-    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
+    // sr field removed — prepare() wires coefficients directly; no per-sample sr needed
     CytomicSVF buzzBPF;
     CytomicSVF rattleBPF;
 };
@@ -298,6 +297,32 @@ struct OlegReedOscillator
     // Drone strings remain as naive phase accumulators (sub-Nyquist at their pitch).
     PolyBLEP saw1, saw2, saw3, sq1, sq2;
 
+    // P19 fix: set waveform and pulse-width once per block (or noteOn) for the
+    // active model, so process() never calls setWaveform/setPulseWidth per-sample.
+    void prepareForModel(int model) noexcept
+    {
+        switch (model)
+        {
+        case OlegOrganModel::Bayan:
+            saw1.setWaveform(PolyBLEP::Waveform::Saw);
+            saw2.setWaveform(PolyBLEP::Waveform::Saw);
+            saw3.setWaveform(PolyBLEP::Waveform::Saw);
+            break;
+        case OlegOrganModel::HurdyGurdy:
+            saw1.setWaveform(PolyBLEP::Waveform::Saw);
+            break;
+        case OlegOrganModel::Garmon:
+            sq1.setWaveform(PolyBLEP::Waveform::Pulse);
+            sq1.setPulseWidth(0.35f);
+            sq2.setWaveform(PolyBLEP::Waveform::Pulse);
+            sq2.setPulseWidth(0.35f);
+            saw1.setWaveform(PolyBLEP::Waveform::Saw);
+            break;
+        default: // Bandoneon: naive triangles — no PolyBLEP waveform needed
+            break;
+        }
+    }
+
     void reset() noexcept
     {
         phase1 = 0.0f;
@@ -305,6 +330,7 @@ struct OlegReedOscillator
         phase3 = 0.0f;
         drone1Phase = 0.0f;
         drone2Phase = 0.0f;
+        vibratoPhase = 0.0f; // P29: free-running vibrato phase now resets with voice
         saw1.reset();
         saw2.reset();
         saw3.reset();
@@ -337,10 +363,7 @@ struct OlegReedOscillator
             // Rich saw + asymmetric pulse mix, 3-oscillator unison:
             //   saw1 = fundamental, saw2 = detuned up (+detune cents),
             //   saw3 = detuned down (−detune cents, i.e. freq / detuneFactor).
-            // PolyBLEP anti-aliased sawtooth fixes aliasing above A4-A5.
-            saw1.setWaveform(PolyBLEP::Waveform::Saw);
-            saw2.setWaveform(PolyBLEP::Waveform::Saw);
-            saw3.setWaveform(PolyBLEP::Waveform::Saw);
+            // Waveform type set once per block via prepareForModel() — not repeated here.
             saw1.setFrequency(freq, sampleRate);
             saw2.setFrequency(freq * detuneFactor, sampleRate);
             saw3.setFrequency(freq / detuneFactor, sampleRate);
@@ -369,6 +392,7 @@ struct OlegReedOscillator
         {
             // Melody string: wheel-bowed sawtooth with vibrato.
             // PolyBLEP saw for the melody (main aliasing offender above A4).
+            // Waveform type set once per block via prepareForModel() — not repeated here.
             // Drone strings remain as naive saws — they pitch-track well below Nyquist.
             float vibRate = 3.0f + wheelSpeed * 8.0f;      // 3-11 Hz vibrato
             float vibDepth = 0.002f + wheelSpeed * 0.008f; // subtle to moderate
@@ -378,7 +402,6 @@ struct OlegReedOscillator
                 vibratoPhase -= 1.0f;
 
             float melodyFreq = freq * (1.0f + vibMod);
-            saw1.setWaveform(PolyBLEP::Waveform::Saw);
             saw1.setFrequency(melodyFreq, sampleRate);
             float melodySaw = saw1.processSample();
 
@@ -444,17 +467,9 @@ struct OlegReedOscillator
         case OlegOrganModel::Garmon:
         {
             // Buzzy reed: PolyBLEP asymmetric pulse + saw for grittiness.
-            // Asymmetric duty (0.35) gives garmon's distinctive buzzy character
-            // without aliasing edge artifacts above A4-A5.
-            sq1.setWaveform(PolyBLEP::Waveform::Pulse);
-            sq1.setPulseWidth(0.35f); // asymmetric duty for garmon character
+            // Waveform type and pulse width set once per block via prepareForModel().
             sq1.setFrequency(freq, sampleRate);
-
-            sq2.setWaveform(PolyBLEP::Waveform::Pulse);
-            sq2.setPulseWidth(0.35f);
             sq2.setFrequency(freq * detuneFactor, sampleRate);
-
-            saw1.setWaveform(PolyBLEP::Waveform::Saw);
             saw1.setFrequency(freq, sampleRate);
 
             float sqOut1 = sq1.processSample();
@@ -541,8 +556,10 @@ struct OlegBellowsEnvelope
             return level;
 
         case Stage::Sustain:
-            // Bellows sustain: maintain pressure with slight breathing
-            level += (susLevel - level) * 0.0001f;
+            // Bellows sustain: maintain pressure with slight breathing.
+            // sustainCoeff is sr-derived in recalc() so this converges in ~30ms
+            // regardless of sample rate (not the old hardcoded 0.0001f).
+            level += (susLevel - level) * sustainCoeff;
             level = flushDenormal(level);
             return level;
 
@@ -572,6 +589,7 @@ private:
     float susLevel = 0.85f;
     float attackRate = 0.0f;
     float releaseCoeff = 0.999f;
+    float sustainCoeff = 0.0001f; // sr-derived: settles to susLevel in ~30ms
 
     void recalc() noexcept
     {
@@ -579,6 +597,8 @@ private:
             return;
         attackRate = 1.0f / (sr * atkTime);
         releaseCoeff = std::exp(-4.6f / (sr * relTime));
+        // ~30ms settling time for sustain breathing catch-up, sr-independent
+        sustainCoeff = 1.0f - std::exp(-1.0f / (0.030f * sr));
     }
 };
 
@@ -649,7 +669,7 @@ public:
     static constexpr int kMaxVoices = 8;
 
     juce::String getEngineId() const override { return "Oleg"; }
-    juce::Colour getAccentColour() const override { return juce::Colour(0xFFC0392B); }
+    juce::Colour getAccentColour() const override { return juce::Colour(0xFFC5A036); } // Orthodox Gold (Baltic amber)
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
 
@@ -680,6 +700,8 @@ public:
         smoothBellows.prepare(srf);
         smoothDetune.prepare(srf);
         smoothFormant.prepare(srf);
+        smoothCasDepth.prepare(srf);
+        smoothWheelSpd.prepare(srf);
 
         prepareSilenceGate(sr, maxBlockSize, 300.0f); // moderate hold — sustained organ sounds
     }
@@ -814,6 +836,8 @@ public:
         smoothBellows.set(effectiveBellows);
         smoothDetune.set(effectiveDetune);
         smoothFormant.set(effectiveFormant);
+        smoothCasDepth.set(effectiveCasDepth);
+        smoothWheelSpd.set(effectiveWheelSpd);
 
         // Snapshot pitch coupling before reset (#1118).
         const float blockCouplingPitchMod = couplingPitchMod;
@@ -847,9 +871,8 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
-        // Hoist LFO rate/shape configuration out of the per-sample loop.
-        // These are block-rate parameters; calling setRate/setShape once per block
-        // per voice is correct and avoids redundant coefficient updates each sample.
+        // Block-rate per-voice configuration: LFO rates/shapes, glide time,
+        // oscillator waveform type, and filter modes — all constant within a block.
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -858,6 +881,27 @@ public:
             voice.lfo1.setShape(lfo1Shape);
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
+            // P19/F03: waveform type is model-constant; set once per block not per-sample
+            voice.osc.prepareForModel(pOrgan);
+            // P15-style: glide coefficient is block-constant; hoist from per-sample
+            voice.glide.setTime(pGlideTime, srf);
+            // F01/F02: filter modes are constant within a block — set once here
+            voice.voiceFilter.setMode(CytomicSVF::Mode::LowPass);
+            // formantFilter mode varies by model but is block-constant — set once
+            switch (pOrgan)
+            {
+            case OlegOrganModel::Bayan:
+            case OlegOrganModel::HurdyGurdy:
+            case OlegOrganModel::Bandoneon:
+                voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
+                break;
+            case OlegOrganModel::Garmon:
+                voice.formantFilter.setMode(CytomicSVF::Mode::BandPass);
+                break;
+            default:
+                voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
+                break;
+            }
         }
 
         for (int s = 0; s < numSamples; ++s)
@@ -869,6 +913,8 @@ public:
             float bellowsNow = smoothBellows.process();
             float detuneNow = smoothDetune.process();
             float formantNow = smoothFormant.process();
+            float casDepthNow = smoothCasDepth.process(); // F22: zipper-free cassotto depth
+            float wheelSpdNow = smoothWheelSpd.process(); // F23: zipper-free wheel speed
 
             float mixL = 0.0f, mixR = 0.0f;
 
@@ -900,12 +946,9 @@ public:
                 voice.pressureSmoothed = flushDenormal(voice.pressureSmoothed);
                 voice.pressure = voice.pressureSmoothed;
 
-                // Glide time update
-                voice.glide.setTime(pGlideTime, srf);
-
                 // Generate raw oscillator output
                 float raw = voice.osc.process(freq, pOrgan, detuneNow, droneNow, pDroneInt1, pDroneInt2, voice.isPush,
-                                              effectiveWheelSpd, srf);
+                                              wheelSpdNow, srf); // F23: per-sample smoothed wheel speed
 
                 // D001: velocity shapes timbre — harder velocity = brighter initial filter sweep
                 float velBright = voice.velocity * voice.velocity * 3000.0f;
@@ -917,10 +960,13 @@ public:
                 {
                 case OlegOrganModel::Bayan:
                 {
-                    // Cassotto resonance chamber
-                    processed = voice.cassotto.process(raw, effectiveCasDepth);
+                    // Cassotto resonance chamber (uses per-sample smoothed depth — F22)
+                    processed = voice.cassotto.process(raw, casDepthNow);
 
                     // Formant filter: Bayan has a warm, rounded resonance.
+                    // Mode set once per block (block pre-pass); coefficients update per-sample
+                    // so the smoothed formantNow drives zipper-free cutoff changes.
+                    voice.formantFilter.setCoefficients(600.0f + formantNow * 2400.0f, formantQ, srf);
                     // Decimate coefficient refresh to every 16 samples — formantNow
                     // smoother is slow relative to audio rate.
                     if (updateFilter)
@@ -938,6 +984,9 @@ public:
                     // Buzz activates above pressure threshold
                     processed = voice.buzzBridge.process(raw, buzzNow, voice.pressure, pBuzzThreshold);
 
+                    // Wooden body resonance (formant).
+                    // Mode set once per block (block pre-pass).
+                    voice.formantFilter.setCoefficients(400.0f + formantNow * 1600.0f, formantQ, srf);
                     // Wooden body resonance (formant). Decimate coeff refresh.
                     if (updateFilter)
                     {
@@ -954,6 +1003,9 @@ public:
                     float warmSat = fastTanh(processed * (1.0f + buzzNow * 2.0f));
                     processed = processed * (1.0f - buzzNow * 0.5f) + warmSat * buzzNow * 0.5f;
 
+                    // Reed chamber resonance.
+                    // Mode set once per block (block pre-pass).
+                    voice.formantFilter.setCoefficients(500.0f + formantNow * 2500.0f, formantQ, srf);
                     // Reed chamber resonance. Decimate coeff refresh.
                     if (updateFilter)
                     {
@@ -970,6 +1022,9 @@ public:
                     float rawBuzz = softClip(processed * (1.5f + buzzNow * 4.0f));
                     processed = processed * (1.0f - buzzNow * 0.6f) + rawBuzz * buzzNow * 0.6f;
 
+                    // Open box resonance (narrower, more colored).
+                    // Mode set once per block (block pre-pass).
+                    voice.formantFilter.setCoefficients(350.0f + formantNow * 1650.0f, formantQ, srf);
                     // Open box resonance (narrower, more colored). Decimate coeff refresh.
                     if (updateFilter)
                     {
@@ -1010,6 +1065,8 @@ public:
                 static constexpr float kModelFilterQ[4] = {0.4f, 0.5f, 0.3f, 0.6f};
                 float voiceFilterQ = kModelFilterQ[std::clamp(pOrgan, 0, 3)];
 
+                // Mode set once per block (block pre-pass above); only update coefficients per-sample.
+                voice.voiceFilter.setCoefficients(cutoff, voiceFilterQ, srf);
                 if (updateFilter)
                 {
                     voice.voiceFilter.setMode(CytomicSVF::Mode::LowPass);
@@ -1096,6 +1153,11 @@ public:
 
         v.osc.reset();
 
+        // P27: reset per-voice LFOs on noteOn so modulation restarts from phase 0
+        // rather than accumulating across note steals and re-triggers.
+        v.lfo1.reset();
+        v.lfo2.reset();
+
         // Bellows envelope — model-specific attack/release
         float atkTime = paramAttack ? paramAttack->load() : 0.02f;
         float relTime = paramRelease ? paramRelease->load() : 0.15f;
@@ -1118,14 +1180,15 @@ public:
         v.bellowsEnv.trigger();
 
         // Filter envelope — D001: velocity shapes filter decay
-        v.filterEnv.prepare(srf);
+        // prepare() called in engine prepare() — do not repeat per-noteOn (P18)
         float filterDecay = 0.1f + (1.0f - vel) * 0.4f; // fast at high velocity
         v.filterEnv.setADSR(0.005f, filterDecay, 0.2f, 0.3f);
         v.filterEnv.triggerHard();
 
-        // Cassotto preparation (Bayan-specific, but kept warm for other models)
-        v.cassotto.prepare(srf);
-        v.buzzBridge.prepare(srf);
+        // cassotto and buzzBridge already prepared in engine prepare() — P18 fix.
+        // Reset their state (not re-prepare) so delay buffers clear on note steal.
+        v.cassotto.reset();
+        v.buzzBridge.reset();
         v.voiceFilter.reset();
         v.formantFilter.reset();
 
@@ -1156,11 +1219,6 @@ public:
     //==========================================================================
 
     static void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
-    {
-        addParametersImpl(params);
-    }
-
-    static void addParametersImpl(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
     {
         using PF = juce::AudioParameterFloat;
         using PI = juce::AudioParameterInt;
@@ -1278,6 +1336,7 @@ private:
 
     ParameterSmoother smoothBuzz, smoothBrightness, smoothDrone;
     ParameterSmoother smoothBellows, smoothDetune, smoothFormant;
+    ParameterSmoother smoothCasDepth, smoothWheelSpd; // F22/F23: zipper-free cassotto depth + wheel speed
 
     float pitchBendNorm = 0.0f;
     float modWheelAmount = 0.0f;

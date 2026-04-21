@@ -73,9 +73,13 @@ struct OleAdapterVoice
     {
         note = n;
         vel = v;
-        freq = 440 * std::pow(2.f, (n - 69.f) / 12.f);
+        // F05: use midiToFreq (fastPow2-based) instead of std::pow — real-time safe, fleet consistent
+        freq = midiToFreq(n);
         dl.reset();
         df.reset();
+        // F27: reset drift and sympathetic bank on new note to avoid smear from outgoing voice
+        drift.reset();
+        symp.reset();
         body.setParams(freq * 1.1f, 3);
         symp.tune(freq);
         strum.trigger(3, strumRateMs, 1);
@@ -109,6 +113,8 @@ public:
         for (auto& v : voices)
             v.reset();
         lastL = lastR = 0;
+        // F25: clear DC blocker state on reset
+        dcBlockXL = dcBlockYL = dcBlockXR = dcBlockYR = 0.0f;
     }
 
     void renderBlock(juce::AudioBuffer<float>& buf, juce::MidiBuffer& midi, int ns) override
@@ -143,7 +149,9 @@ public:
                 {
                     // Voice steal: queue new note behind a 5ms crossfade
                     voices[t].isBeingStolen = true;
-                    voices[t].stealFadeStep = 1.0f / (0.005f * voices[t].sr);
+                    // F19: guard against sr==0 (voice not yet prepared)
+                    float safeStep = (voices[t].sr > 0.0f) ? 1.0f / (0.005f * voices[t].sr) : 1.0f;
+                    voices[t].stealFadeStep = safeStep;
                     voices[t].stealFadeGain = 1.0f;
                     voices[t].pendingNote = nn;
                     voices[t].pendingVel = vel;
@@ -151,6 +159,7 @@ public:
                 }
                 else if (!voices[t].isBeingStolen)
                 {
+                    // F06: also handles case when voice is not active (clean start)
                     voices[t].noteOn(nn, vel, strumRateMs);
                 }
 
@@ -172,7 +181,9 @@ public:
                 if (voices[h].active && !voices[h].isBeingStolen)
                 {
                     voices[h].isBeingStolen = true;
-                    voices[h].stealFadeStep = 1.0f / (0.005f * voices[h].sr);
+                    // F19: guard against sr==0
+                    float safeHStep = (voices[h].sr > 0.0f) ? 1.0f / (0.005f * voices[h].sr) : 1.0f;
+                    voices[h].stealFadeStep = safeHStep;
                     voices[h].stealFadeGain = 1.0f;
                     voices[h].pendingNote = nn;
                     voices[h].pendingVel = vel;
@@ -250,12 +261,14 @@ public:
         // allianceConfig: 0 = Aunt1 isolated, 1 = Aunt2 isolated, 2 = Aunt3 isolated
         // allianceBlend: smooth crossfade within pair vs isolated
         // SIDES macro rotates the alliance configuration continuously
-        float alliancePos = pAlCfg + pSi * 2.99f; // SIDES sweeps through all 3 configs
+        // F17: AudioParameterChoice stores float 0.0/1.0/2.0 — round explicitly before cast
+        float alliancePos = std::round(pAlCfg) + pSi * 2.99f; // SIDES sweeps through all 3 configs
         alliancePos = std::fmod(alliancePos, 3.0f);
         int alCfgInt = (int)alliancePos;
         float alFrac = alliancePos - (float)alCfgInt;
 
-        // Base gains: isolated aunt gets (1-blend), paired aunts get blend
+        // F11: alliance gains are additively composed — clamp final values to [0,1] to
+        //      prevent overshoot when applyAlliance() is called twice for the same index.
         float auntGains[3] = {1.0f, 1.0f, 1.0f};
         auto applyAlliance = [&](int isolated, float strength)
         {
@@ -268,6 +281,9 @@ public:
         applyAlliance(alCfgInt % 3, 1.0f - alFrac);
         if (alFrac > 0.001f)
             applyAlliance((alCfgInt + 1) % 3, alFrac);
+        // Clamp gains after double-application to prevent values above 1.0
+        for (int ai = 0; ai < 3; ++ai)
+            auntGains[ai] = juce::jlimit(0.0f, 1.0f, auntGains[ai]);
 
         // Scale aunt gains by their individual level params
         auntGains[0] *= pA1Lv;
@@ -277,6 +293,10 @@ public:
         // ---- Husband level lookup ----
         float husbandLvl[3] = {pHOud, pHBouz, pHPin};
 
+        // Update tremolo LFO rate once per block for all active Aunt 3 voices
+        // F20: only update non-stolen voices to avoid LFO phase discontinuity during crossfade
+        for (auto& v : voices)
+            if (v.active && !v.isHusband && v.auntIdx == 2 && !v.isBeingStolen)
         // Update tremolo LFO rate once per block for all active Aunt 3 voices,
         // and pre-compute Aunt-2 gourd body-resonance coefficients (note-constant
         // since v.freq and pA2Gs are both stable across the block).
@@ -295,6 +315,27 @@ public:
 
         // Block pitch-bend ratio (channel pitch wheel is block-rate).
         const float blockPitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+
+        // F01: precompute release coefficient once per block (sr is constant per block)
+        // Use first active voice sr, or engine-level sr as fallback
+        float releaseCoeff = 1.0f;
+        {
+            float refSr = (float)sr;
+            for (auto& v : voices)
+                if (v.active && v.sr > 0.0f) { refSr = v.sr; break; }
+            releaseCoeff = 1.0f - (1.0f / (refSr * 0.4f));
+        }
+
+        // F03: update Berimbau body resonance params once per block — coefficients depend only
+        //      on per-voice freq and block-level pA2Gs, both constant within one block.
+        for (auto& v : voices)
+        {
+            if (v.active && !v.isHusband && v.auntIdx == 1)
+            {
+                float gourdFreq = v.freq * (1.5f - pA2Gs * 0.5f);
+                v.body.setParams(gourdFreq, 2.0f + pA2Gs * 4.0f);
+            }
+        }
 
         auto* oL = buf.getWritePointer(0);
         auto* oR = buf.getNumChannels() > 1 ? buf.getWritePointer(1) : buf.getWritePointer(0);
@@ -324,14 +365,21 @@ public:
                 }
 
                 // Husbands only active when DRAMA > 0.7
+                // F15: a husband voice that just completed a steal crossfade (noteOn fired) but
+                //      DRAMA < 0.7 will be active but permanently silent — release it now so it
+                //      doesn't accumulate as a zombie voice burning CPU.
                 if (v.isHusband && pDr < 0.7f)
+                {
+                    if (!v.releasing)
+                        v.noteOff(); // begin release so it eventually deactivates
                     continue;
+                }
 
                 // Exponential release: avoids the "soft note releases in fraction
                 // of stated time" bug caused by linear subtraction on small ampEnv values.
+                // F01: releaseCoeff is precomputed once per block above (not per sample)
                 if (v.releasing)
                 {
-                    float releaseCoeff = 1.0f - (1.0f / (v.sr * 0.4f));
                     v.ampEnv *= releaseCoeff;
                 } // (no action during sustain — natural waveguide decay governs)
                 v.ampEnv = flushDenormal(v.ampEnv);
@@ -373,7 +421,9 @@ public:
                     df *= fastPow2(pA2Cp * 4.0f / 12.0f);
                 }
 
-                float dlen = v.sr / std::max(df, 20.f);
+                // F04: clamp dlen to [1, maxDelaySamples-8] to prevent OOB in FamilyDelayLine
+                float maxDlen = (float)((int)(v.sr / 20) + 8 - 8); // matches prepare() buffer size
+                float dlen = juce::jlimit(1.0f, maxDlen, v.sr / std::max(df, 20.f));
                 float out = v.dl.read(dlen);
 
                 // ---- Excitation: per-aunt strum rate + FUEGO intensity ----
@@ -390,7 +440,7 @@ public:
                     // produces tighter, brighter pluck energy. Boost is zero at default rate (8 Hz)
                     // and ramps to 1.0 at max (30 Hz), preserving existing preset compatibility.
                     // (Audit P0-6: original used min(pA1Sr/30, 1) which was non-zero at default)
-                    float strumBrightBoost = std::min(std::max(pA1Sr - 8.0f, 0.0f) / 22.0f, 1.0f);
+                    float strumBrightBoost = juce::jlimit(0.0f, 1.0f, (pA1Sr - 8.0f) / 22.0f);
                     exc = v.strum.tick(voiceBright * pFu * (1.0f + strumBrightBoost * 0.3f)) * effIntens;
                 }
                 else
@@ -398,13 +448,24 @@ public:
                     exc = v.strum.tick(voiceBright * pFu) * effIntens;
                 }
 
+                // ---- Aunt 2: Gourd body resonance (Aunt 2 only) ----
+                // F18: body resonance only applied to Berimbau (auntIdx==1); other aunts/husbands
+                //      skip the biquad computation entirely to avoid unwanted colouration + waste
+                float bodyOut = 0.0f;
+                if (!v.isHusband && v.auntIdx == 1)
+                {
+                    // F03: body.setParams() called once per block (not per sample) in the
+                    //      pre-sample-loop section below. Here we just process.
+                    float bodyGain = 0.2f + pA2Gs * 0.3f; // bigger gourd = more resonance
+                    bodyOut = v.body.process(out) * bodyGain;
+                }
                 // ---- Aunt 2: Gourd body resonance ----
                 // body.setParams() hoisted to per-block voice setup (note-constant).
                 float bodyGain = 0.2f;
                 if (!v.isHusband && v.auntIdx == 1)
                     bodyGain = 0.2f + pA2Gs * 0.3f; // bigger gourd = more resonance
 
-                float damped = v.df.process(out + exc * 0.3f, std::clamp(pDa + extDampMod, 0.f, 1.f));
+                float damped = v.df.process(out + exc * 0.3f, juce::jlimit(0.0f, 1.0f, pDa + extDampMod));
                 v.dl.write(flushDenormal(damped));
 
                 // ---- Aunt 3: Charango tremolo ----
@@ -415,16 +476,18 @@ public:
                     tremoloMod = 0.7f + 0.3f * v.tremoloLFO.process();
                 }
 
-                float bo = out + v.body.process(out) * bodyGain;
-                float so = v.symp.process(bo, pSy);
+                float bo = out + bodyOut;
+                // F16: sympathetic bank input is `out` (raw waveguide), not `bo` (out+body)
+                //      to avoid body resonance being double-counted in the final sum.
+                float so = v.symp.process(out, pSy);
 
                 // ---- Per-voice level from alliance or husband level ----
                 float voiceLevel;
                 if (v.isHusband)
                 {
                     // Individual husband level scaled by DRAMA intensity above threshold
-                    float dramaScale = (pDr - 0.7f) / 0.3f; // 0-1 over DRAMA 0.7-1.0
-                    dramaScale = std::min(std::max(dramaScale, 0.0f), 1.0f);
+                    // F21: use juce::jlimit for clamping (fleet standard)
+                    float dramaScale = juce::jlimit(0.0f, 1.0f, (pDr - 0.7f) / 0.3f); // 0-1 over DRAMA 0.7-1.0
                     voiceLevel = husbandLvl[v.husbandType] * dramaScale;
                 }
                 else
@@ -442,15 +505,21 @@ public:
                 // ISLA widens: push panned voices further from center
                 float islaSpread = pIs * 0.3f;
                 pan = 0.5f + (pan - 0.5f) * (1.0f + islaSpread);
-                pan = std::min(std::max(pan, 0.0f), 1.0f);
+                // F21: use juce::jlimit for clamping (fleet standard)
+                pan = juce::jlimit(0.0f, 1.0f, pan);
 
-                sL += sig * (1 - pan);
+                sL += sig * (1.0f - pan);
                 sR += sig * pan;
             }
-            oL[i] += sL;
-            oR[i] += sR;
-            lastL = sL;
-            lastR = sR;
+            // F25: one-pole DC block on stereo output — waveguide + extDampMod can accumulate DC
+            float dcBlockedL = sL - dcBlockXL + 0.9995f * dcBlockYL;
+            float dcBlockedR = sR - dcBlockXR + 0.9995f * dcBlockYR;
+            dcBlockXL = sL; dcBlockYL = dcBlockedL;
+            dcBlockXR = sR; dcBlockYR = dcBlockedR;
+            oL[i] += dcBlockedL;
+            oR[i] += dcBlockedR;
+            lastL = dcBlockedL;
+            lastR = dcBlockedR;
         }
         {
             int c = 0;
@@ -472,10 +541,11 @@ public:
             extPitchMod = (buf ? buf[0] : 0.f) * amount * 2.f;
             break;
         case CouplingType::AmpToFilter:
-            extDampMod = amount * 0.08f;
+            // F22: use buf[0] for per-block modulation signal (not just amount scalar)
+            extDampMod = (buf ? buf[0] : 1.0f) * amount * 0.08f;
             break;
         case CouplingType::EnvToMorph:
-            extIntens = 1.f + amount * 0.5f;
+            extIntens = 1.f + (buf ? buf[0] : 1.0f) * amount * 0.5f;
             break;
         default:
             break;
@@ -567,6 +637,10 @@ private:
     std::array<OleAdapterVoice, kV> voices;
 
     float pitchBendNorm = 0.0f; // MIDI pitch wheel [-1, +1]; ±2 semitone range
+
+    // F25: DC blocking filter state (one-pole HP per channel)
+    float dcBlockXL = 0.0f, dcBlockYL = 0.0f;
+    float dcBlockXR = 0.0f, dcBlockYR = 0.0f;
 
     // Family coupling ext mods (SP7.3)
     float extPitchMod = 0.f; // semitones from LFOToPitch

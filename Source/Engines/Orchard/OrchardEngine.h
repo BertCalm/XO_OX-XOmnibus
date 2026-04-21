@@ -154,6 +154,8 @@ struct OrchardVoice
         ampEnv.kill();
         filterEnv.kill();
         vibratoLFO.reset();
+        lfo1.reset();  // FIX-16: reset auxiliary LFOs on voice steal to prevent phase click
+        lfo2.reset();
     }
 };
 
@@ -190,7 +192,8 @@ public:
         smoothCutoff.prepare(srf);
         smoothDetune.prepare(srf);
         smoothFormant.prepare(srf);
-        smoothAttack.prepare(srf, 0.02f); // slower smoothing for attack
+        // FIX-27: smoothAttack was allocated and prepared but never read; removed.
+        invSrf = 1.0f / srf;  // FIX-9: precompute per-sample time step
 
         accumulators.reset();
         network.configure(0.5f, 4.0f);
@@ -327,9 +330,11 @@ public:
         float seasonBrightness = accumulators.getSeasonBrightness();
 
         //-- Effective parameters with macros + accumulators --
+        // FIX-17(block): clamp to sr-derived Nyquist rather than hardcoded 20kHz
+        const float blockNyquist = srf * 0.49f;
         float effectiveCutoff = std::clamp(pCutoff + macroChar * 4000.0f - warmthRolloff * 4000.0f +
                                                seasonBrightness * 2000.0f + pBrightness * 6000.0f + couplingFilterMod,
-                                           200.0f, 20000.0f);
+                                           200.0f, blockNyquist);
         float effectiveDetune = pDetune + macroMove * 10.0f + aggrHarsh * 5.0f;
         float effectiveFormant = std::clamp(pFormant + macroChar * 0.3f + couplingFormantMod + macroCoupl * 0.25f, 0.0f,
                                             1.0f);                     // M3 COUPLING: deeper formant resonance
@@ -339,8 +344,8 @@ public:
         smoothDetune.set(effectiveDetune);
         smoothFormant.set(effectiveFormant);
 
-        // Snapshot pitch coupling before reset (#1118).
-        const float blockCouplingPitchMod = couplingPitchMod;
+        // FIX-20: capture coupling mods before zeroing — they are consumed per-sample below
+        const float capturedPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingFormantMod = 0.0f;
@@ -405,6 +410,8 @@ public:
 
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
+        // FIX-17: hoist Nyquist limit — sr-derived, valid for 44.1/48/96 kHz
+        const float nyquistLimit = srf * 0.49f;
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -423,6 +430,7 @@ public:
                 float baseFreq = voice.glide.process();
                 float vibrato = voice.vibratoLFO.process() * effectiveVibratoDepth;
                 float freq =
+                    baseFreq * PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod + vibrato * 0.1f +
                     baseFreq * PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod + vibrato * 0.1f +
                                                                    voice.dormancyPitchCents / 100.0f);
 
@@ -431,9 +439,10 @@ public:
 
                 // Growth Mode: scale harmonic content by growth phase
                 float growthGain = 1.0f;
-                if (voice.growthMode)
+                if (voice.growthMode && voice.growthPhase < 1.0f)
                 {
-                    voice.growthTimer += 1.0f / srf;
+                    // FIX-9: use precomputed invSrf; FIX-21: skip update once fully bloomed
+                    voice.growthTimer += invSrf;
                     voice.growthPhase = std::min(voice.growthTimer / voice.growthDuration, 1.0f);
                     // Phase 1 (0-0.1): near silence. Phase 2 (0.1-0.4): fundamental emerges.
                     // Phase 3 (0.4-0.7): harmonics fill. Phase 4 (0.7-1.0): full bloom.
@@ -444,9 +453,9 @@ public:
                 float oscMix = 0.0f;
                 for (int o = 0; o < OrchardVoice::kNumOscs; ++o)
                 {
-                    float detuneHz = freq * (voice.detuneOffsets[o] + detNow * (o < 2 ? -1.0f : 1.0f)) /
-                                     1200.0f; // cents to ratio approximation
-                    float oscFreq = freq + detuneHz;
+                    // FIX-8: proper cents-to-ratio via fastPow2 (was linear Hz approximation)
+                    float detuneCents = voice.detuneOffsets[o] + detNow * (o < 2 ? -1.0f : 1.0f);
+                    float oscFreq = freq * fastPow2(detuneCents * (1.0f / 1200.0f));
                     voice.oscs[o].setFrequency(oscFreq, srf);
 
                     // In growth mode, fade in oscillators sequentially
@@ -471,6 +480,12 @@ public:
                                 accumulators.getDormancyAttackNoise() * 0.1f;
                 }
 
+                // Formant-shaped filter (orchestral body resonance)
+                // FIX-19(P19): setCoefficients calls tan(pi*fc/sr) — update every 4 samples
+                float formFreq = 300.0f + formNow * 2500.0f; // formant center
+                voice.formantFilter.setMode(CytomicSVF::Mode::BandPass);
+                if ((s & 3) == 0)
+                    voice.formantFilter.setCoefficients(formFreq, 0.3f + formNow * 0.4f, srf);
                 // Formant-shaped filter (orchestral body resonance; coeff refresh decimated)
                 if (updateFilter)
                 {
@@ -483,6 +498,13 @@ public:
 
                 // Main filter (env ticked per-sample, SVF decimated)
                 float envLevel = voice.filterEnv.process();
+                float fCut =
+                    std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 3000.0f + aftertouchAmount * 3000.0f,
+                               200.0f, nyquistLimit); // FIX-17: Nyquist-safe upper bound
+                voice.filter.setMode(CytomicSVF::Mode::LowPass);
+                if ((s & 3) == 0)
+                    voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
+                                                 srf); // l2 → resonance shimmer; FIX-19: throttled to every 4 samples
                 if (updateFilter)
                 {
                     float fCut =
@@ -516,8 +538,9 @@ public:
             }
 
             // M4 SPACE: mid/side width expansion
-            const float mid = (mixL + mixR) * 0.5f;
-            const float side = (mixL - mixR) * 0.5f * effectiveWidth;
+            // FIX-6: softClip before output to handle 4-osc + formant overdrive
+            const float mid = softClip((mixL + mixR) * 0.5f);
+            const float side = softClip((mixL - mixR) * 0.5f) * effectiveWidth;
             outL[s] = mid + side;
             if (outR)
                 outR[s] = mid - side;
@@ -542,7 +565,15 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        // FIX-13: kill stolen voice envelopes to prevent click on voice steal
+        if (v.active)
+        {
+            v.ampEnv.kill();
+            v.filterEnv.kill();
+        }
+
+        // FIX-4: use midiToFreq (fastPow2) instead of std::pow
+        float freq = midiToFreq(note);
         bool isGrowthMode = paramGrowthMode && paramGrowthMode->load() > 0.5f;
         float growthTime = paramGrowthTime ? paramGrowthTime->load() : 20.0f;
 
@@ -559,11 +590,11 @@ public:
         float sustainLvl = paramSustain ? paramSustain->load() : 0.8f;
         float releaseTime = paramRelease ? paramRelease->load() : 1.0f;
 
-        v.ampEnv.prepare(srf);
+        // FIX-18: prepare() must not be called per-noteOn — envelopes are already
+        // prepared in prepare(). Only setADSR + trigger are needed here.
         v.ampEnv.setADSR(attackTime, decayTime, sustainLvl, releaseTime);
         v.ampEnv.triggerHard();
 
-        v.filterEnv.prepare(srf);
         v.filterEnv.setADSR(attackTime * 0.5f, decayTime * 1.5f, 0.2f, releaseTime * 0.8f);
         v.filterEnv.triggerHard();
 
@@ -599,8 +630,13 @@ public:
     void noteOff(int note) noexcept
     {
         for (auto& v : voices)
+        {
             if (v.active && v.currentNote == note)
+            {
                 v.ampEnv.release();
+                v.filterEnv.release();  // FIX-12: filterEnv was never released — stuck at sustain forever
+            }
+        }
     }
 
     //==========================================================================
@@ -632,7 +668,7 @@ public:
         params.push_back(std::make_unique<PF>(juce::ParameterID{"orch_resonance", 1}, "Orchard Resonance",
                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"orch_filterEnvAmt", 1}, "Orchard Filter Env Amount",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.4f));
+                                              juce::NormalisableRange<float>(-1.0f, 1.0f), 0.4f));  // FIX-3(P3): bipolar — negative amounts sweep filter downward
 
         // Ensemble
         params.push_back(std::make_unique<PF>(juce::ParameterID{"orch_detune", 1}, "Orchard Ensemble Detune",
@@ -679,7 +715,7 @@ public:
         params.push_back(std::make_unique<PF>(juce::ParameterID{"orch_lfo1Rate", 1}, "Orchard LFO1 Rate",
                                               juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 0.5f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"orch_lfo1Depth", 1}, "Orchard LFO1 Depth",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.1f));
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));  // FIX-19param: default 0.1→0.0 (LFO1→filter wires ±300Hz wobble at init)
         params.push_back(std::make_unique<PI>(juce::ParameterID{"orch_lfo1Shape", 1}, "Orchard LFO1 Shape", 0, 4, 0));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"orch_lfo2Rate", 1}, "Orchard LFO2 Rate",
                                               juce::NormalisableRange<float>(0.005f, 20.0f, 0.0f, 0.3f), 1.0f));
@@ -721,8 +757,9 @@ public:
     }
 
 private:
-    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    double sr = 0.0;   // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
+    float invSrf = 0.0f; // FIX-9: precomputed 1/srf for per-sample growth timer
 
     std::array<OrchardVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
@@ -731,7 +768,8 @@ private:
     GardenAccumulators accumulators;
     GardenMycorrhizalNetwork network;
 
-    ParameterSmoother smoothCutoff, smoothDetune, smoothFormant, smoothAttack;
+    ParameterSmoother smoothCutoff, smoothDetune, smoothFormant;
+    // FIX-27: smoothAttack removed — was prepared but never used (dead allocation)
 
     float pitchBendNorm = 0.0f;
     float modWheelAmount = 0.0f;

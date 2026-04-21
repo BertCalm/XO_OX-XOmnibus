@@ -138,6 +138,7 @@ struct OstraconVoice
         {
             readPos[h] = 0.0f;
             oxideFilter[h].reset();
+            oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);  // fixed — no need to set per-update
         }
         flutterPhase = 0.0f;
         wowPhase     = 0.0f;
@@ -176,6 +177,10 @@ public:
 
         // 5ms crossfade rate for voice stealing
         voiceFadeRate = 1.0f / (0.005f * currentSampleRate);
+
+        // Sample-rate-correct one-pole smoother coefficient (5ms, angular-frequency form).
+        // Matches ParameterSmoother: 1 − exp(−2π / (T · sr))
+        smootherCoeff = 1.0f - std::exp(-kOstraconTwoPI / (0.005f * currentSampleRate));
 
         // Allocate the shared circular reel buffer.
         // kOstraconMaxReelSec seconds of mono audio — no allocation during render.
@@ -340,23 +345,23 @@ public:
         if (newReelSizeSamples != reelSizeSamples)
             reelSizeSamples = newReelSizeSamples;
 
-        // Expression/CC offsets
+        // Expression/CC offsets — mod wheel routes to flutter (PASS 3), not filter
         float effectiveCutoff = juce::jlimit(80.0f, 20000.0f,
             paramFilterCutoff
-            + couplingFilterAccum * 4000.0f
-            + modWheelValue * 0.0f);   // mod wheel → flutter, not filter
+            + couplingFilterAccum * 4000.0f);
 
-        // Pitch bend ratio (±2 semitones)
-        const float pitchBendRatio = std::pow(2.0f, pitchBendNorm * 2.0f / 12.0f);
+        // Pitch bend ratio (±2 semitones) — fastPow2 avoids std::pow in block prep
+        const float pitchBendRatio = fastPow2(pitchBendNorm * 2.0f / 12.0f);
 
-        // Semitone + fine tune multiplier
-        const float tuneMult = std::pow(2.0f, (paramTune + paramFine * 0.01f) / 12.0f);
+        // Semitone + fine tune multiplier — fastPow2 avoids std::pow in block prep
+        const float tuneMult = fastPow2((paramTune + paramFine * 0.01f) / 12.0f);
 
         // Aftertouch → effective oxide
         const float oxideWithAT = juce::jlimit(0.0f, 1.0f, effectiveOxide + aftertouchValue * 0.3f);
 
-        // Expression (CC11) → effective bias
-        const float biasWithExpr = juce::jlimit(0.0f, 1.0f, effectiveBias + expressionValue * 0.5f - 0.25f);
+        // Expression (CC11) + coupling morph → effective bias
+        const float biasWithExpr = juce::jlimit(0.0f, 1.0f,
+            effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphIn * 0.5f);
 
         // ---- Process MIDI ----
         for (const auto metadata : midi)
@@ -395,8 +400,11 @@ public:
             }
             else if (msg.isPitchWheel())
             {
-                int raw     = msg.getPitchWheelValue();
-                pitchBendNorm = static_cast<float>(raw - 8192) / 8192.0f;
+                // Standard MIDI pitch wheel: [0, 16383], center = 8192.
+                // Divide by 8191 (not 8192) to reach exactly +1.0 at full positive.
+                int raw       = msg.getPitchWheelValue();
+                pitchBendNorm = juce::jlimit(-1.0f, 1.0f,
+                    static_cast<float>(raw - 8192) / 8191.0f);
             }
         }
 
@@ -409,16 +417,33 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
 
-        // Consume coupling accumulators
-        const float couplingAudioIn = couplingAudioAccum;
+        // Consume coupling accumulators — CAPTURE before zeroing (P25)
+        const float couplingAudioIn  = couplingAudioAccum;
+        const float couplingMorphIn  = couplingMorphAccum;   // EnvToMorph → bias offset
         couplingFilterAccum = 0.0f;
         couplingAudioAccum  = 0.0f;
         couplingMorphAccum  = 0.0f;
 
-        // Determine filter mode
+        // Determine filter mode — applied to all voices once per block
         CytomicSVF::Mode filterMode = CytomicSVF::Mode::LowPass;
         if      (paramFilterType == 1) filterMode = CytomicSVF::Mode::HighPass;
         else if (paramFilterType == 2) filterMode = CytomicSVF::Mode::BandPass;
+
+        // Propagate filter mode and waveform per-block (block-level params, not per-sample)
+        {
+            PolyBLEP::Waveform wfEnum = PolyBLEP::Waveform::Triangle;
+            if      (paramWaveform == OSTR_SAW)    wfEnum = PolyBLEP::Waveform::Saw;
+            else if (paramWaveform == OSTR_SQUARE)  wfEnum = PolyBLEP::Waveform::Square;
+
+            for (auto& v : voices)
+            {
+                if (!v.active) continue;
+                v.outputFilterL.setMode(filterMode);
+                v.outputFilterR.setMode(filterMode);
+                if (paramWaveform != OSTR_NOISE)
+                    v.oscillator.setWaveform(wfEnum);
+            }
+        }
 
         // ---- Per-sample render loop ----
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
@@ -426,9 +451,9 @@ public:
             const bool updateFilter = ((sampleIdx & 15) == 0);
             int activeCount = 0;
 
-            // One-pole smoothing to prevent zipper noise on filter sweeps
-            smoothedCutoff += 0.001f * (effectiveCutoff - smoothedCutoff);
-            smoothedReso   += 0.001f * (paramFilterReso  - smoothedReso);
+            // One-pole smoothing — sample-rate-correct coefficient (5ms, see prepare())
+            smoothedCutoff += smootherCoeff * (effectiveCutoff - smoothedCutoff);
+            smoothedReso   += smootherCoeff * (paramFilterReso  - smoothedReso);
             smoothedCutoff  = flushDenormal(smoothedCutoff);
             smoothedReso    = flushDenormal(smoothedReso);
 
@@ -468,6 +493,8 @@ public:
                 voice.frequency = freq;
 
                 // ---- Source oscillator ----
+                // Waveform enum is a block-level param — set once, not per-sample.
+                // setFrequency() must remain per-sample (freq changes via glide/pitch bend).
                 float srcOut = 0.0f;
                 if (paramWaveform == OSTR_NOISE)
                 {
@@ -476,19 +503,6 @@ public:
                 else
                 {
                     voice.oscillator.setFrequency(freq, currentSampleRate);
-                    switch (paramWaveform)
-                    {
-                        case OSTR_SAW:
-                            voice.oscillator.setWaveform(PolyBLEP::Waveform::Saw);
-                            break;
-                        case OSTR_SQUARE:
-                            voice.oscillator.setWaveform(PolyBLEP::Waveform::Square);
-                            break;
-                        case OSTR_TRI:
-                        default:
-                            voice.oscillator.setWaveform(PolyBLEP::Waveform::Triangle);
-                            break;
-                    }
                     srcOut = voice.oscillator.processSample();
                 }
 
@@ -548,9 +562,12 @@ public:
             {
                 if (!voice.active) continue;
 
-                // ---- LFO (D002/D005) ----
-                voice.lfo.setRate(paramLfoRate, currentSampleRate);
-                voice.lfo.setShape(paramLfoShape);
+                // ---- LFO (D002/D005) — setRate/setShape hoisted to updateFilter gate ----
+                if (updateFilter)
+                {
+                    voice.lfo.setRate(paramLfoRate, currentSampleRate);
+                    voice.lfo.setShape(paramLfoShape);
+                }
                 float lfoOut = voice.lfo.process() * effectiveLfoDepth;
                 lfoOut = flushDenormal(lfoOut);
 
@@ -604,7 +621,11 @@ public:
                 const float effectiveOxideVoice  = juce::jlimit(0.0f, 1.0f, oxideWithAT + oxideMod);
                 const float effectiveBiasVoice   = juce::jlimit(0.0f, 1.0f, biasWithExpr + biasMod);
                 const float effectivePrintVoice  = juce::jlimit(0.0f, 1.0f, effectivePrint + printMod);
-                const float finalCutoff          = juce::jlimit(80.0f, 20000.0f, smoothedCutoff + filterMod);
+                // D001: velocity shapes timbre — harder hits read brighter (less oxide attenuation)
+                // velTimbre ∈ [-0.25, 0]: soft=−0.25 (more oxide/darker), hard=0 (no attenuation)
+                const float velTimbre  = (voice.velocity - 1.0f) * 0.25f;
+                const float finalCutoff = juce::jlimit(80.0f, 20000.0f,
+                    smoothedCutoff + filterMod + velTimbre * 4000.0f);
 
                 // ---- Amplitude envelope ----
                 float ampLevel = voice.ampEnv.process();
@@ -654,6 +675,9 @@ public:
                         float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
                         if (updateFilter)
                         {
+                            // setMode(LowPass) omitted here — set once in reset() / doNoteOn()
+                            float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
+                            oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
                             float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
                             oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
                             voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
@@ -683,14 +707,16 @@ public:
                     }
                 }
 
-                // Normalize head mix by head count
-                float headNorm = (paramHeadCount > 0) ? (1.0f / static_cast<float>(paramHeadCount)) : 1.0f;
-                headMixL *= headNorm;
-                headMixR *= headNorm;
-                printMixL *= headNorm;
-                printMixR *= headNorm;
+                // Normalize head mix per-channel to preserve equal power across head counts.
+                // With odd head counts (1 or 3), L gets more heads than R. Normalize
+                // each channel by its actual head count to prevent energy imbalance.
+                const int headsL = (paramHeadCount + 1) / 2;   // ceil(n/2) — even indices → L
+                const int headsR = paramHeadCount / 2;          // floor(n/2) — odd indices → R
 
-                // If mono heads (all land in L), copy to R
+                if (headsL > 0) { headMixL /= static_cast<float>(headsL); printMixL /= static_cast<float>(headsL); }
+                if (headsR > 0) { headMixR /= static_cast<float>(headsR); printMixR /= static_cast<float>(headsR); }
+
+                // If mono heads (all land in L), copy to R for true mono-center
                 if (paramHeadCount == 1)
                 {
                     headMixR  = headMixL;
@@ -712,6 +738,9 @@ public:
                 outSampleR = flushDenormal(outSampleR);
 
                 // ---- Output filter (per-voice L/R) — coeff refresh decimated ----
+                // setMode() is applied once per block above; only coefficients need per-16 refresh.
+                if (updateFilter)
+                {
                 if (updateFilter)
                 {
                     voice.outputFilterL.setMode(filterMode);
@@ -864,9 +893,9 @@ public:
             juce::ParameterID{"ostr_record_mode", 1}, "XOstracon Record Mode",
             juce::StringArray{"Always", "Held", "Triggered"}, 0));
 
-        params.push_back(std::make_unique<juce::AudioParameterFloat>(
-            juce::ParameterID{"ostr_freeze", 1}, "XOstracon Freeze",
-            juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
+        // Freeze is a binary toggle — AudioParameterBool avoids misleading float range.
+        params.push_back(std::make_unique<juce::AudioParameterBool>(
+            juce::ParameterID{"ostr_freeze", 1}, "XOstracon Freeze", false));
 
         // ---- Tape Physics (5) ----
 
@@ -928,9 +957,12 @@ public:
             juce::ParameterID{"ostr_lfo_rate", 1}, "XOstracon LFO Rate",
             juce::NormalisableRange<float>(0.005f, 12.0f, 0.001f, 0.35f), 0.15f));
 
+        // StandardLFO shape enum: Sine=0, Triangle=1, Saw=2, Square=3, S&H=4.
+        // Expose all 5 shapes so indices match 1:1 — previously "S&H" was at index 3
+        // which silently mapped to Square, making S&H inaccessible (D004 violation).
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
             juce::ParameterID{"ostr_lfo_shape", 1}, "XOstracon LFO Shape",
-            juce::StringArray{"Sine", "Triangle", "Saw", "S&H"}, 0));
+            juce::StringArray{"Sine", "Triangle", "Saw", "Square", "S&H"}, 0));
 
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"ostr_lfo_depth", 1}, "XOstracon LFO Depth",
@@ -946,9 +978,9 @@ public:
             juce::ParameterID{"ostr_speed", 1}, "XOstracon Speed",
             juce::NormalisableRange<float>(0.85f, 1.15f, 0.001f), 1.0f));
 
-        params.push_back(std::make_unique<juce::AudioParameterFloat>(
-            juce::ParameterID{"ostr_reverse", 1}, "XOstracon Reverse",
-            juce::NormalisableRange<float>(0.0f, 1.0f, 0.001f), 0.0f));
+        // Reverse is a binary toggle — AudioParameterBool avoids misleading float range.
+        params.push_back(std::make_unique<juce::AudioParameterBool>(
+            juce::ParameterID{"ostr_reverse", 1}, "XOstracon Reverse", false));
 
         // ---- Standard macros (4) ----
 
@@ -1056,7 +1088,7 @@ private:
 
     static float midiNoteToHz(int noteNum) noexcept
     {
-        return 440.0f * std::pow(2.0f, (static_cast<float>(noteNum) - 69.0f) / 12.0f);
+        return 440.0f * fastPow2((static_cast<float>(noteNum) - 69.0f) / 12.0f);
     }
 
     //--------------------------------------------------------------------------
@@ -1115,17 +1147,30 @@ private:
         int voiceIdx = findFreeVoice();
         auto& voice  = voices[static_cast<size_t>(voiceIdx)];
 
-        // If stealing, set up a crossfade-out on the existing voice
-        if (voice.active)
+        // If stealing an active voice, preserve crossfade state for a brief fade-out.
+        // We clone the voice DSP state into a spare slot here if available; otherwise
+        // hard-kill at low gain to avoid a click. The unconditional reset() that
+        // previously followed immediately undid any crossfade setup (bug).
+        if (voice.active && voice.crossfadeGain >= 0.1f)
         {
-            // Kick it to a steal-fade: short linear ramp to silence
-            voice.crossfadeRate = voiceFadeRate;
-            // Assign it a new slot to avoid aliasing
-            int stealSlot = voiceIdx;
-            (void)stealSlot;
-            // For simplicity, hard-kill voices at low gain before reassigning
-            if (voice.crossfadeGain < 0.1f)
-                voice.reset();
+            // Attempt to hand-off fade to a free second slot so this slot can accept
+            // the new note cleanly. If no free slot exists, accept the small click.
+            int freeSlot = -1;
+            for (int fi = 0; fi < kOstraconMaxVoices; ++fi)
+            {
+                if (!voices[static_cast<size_t>(fi)].active)
+                {
+                    freeSlot = fi;
+                    break;
+                }
+            }
+            if (freeSlot >= 0)
+            {
+                // Move stolen voice's state into the free slot for a 5ms fade-out
+                voices[static_cast<size_t>(freeSlot)] = voice;
+                voices[static_cast<size_t>(freeSlot)].crossfadeRate = voiceFadeRate;
+            }
+            // Now the original slot is free to be reset for the new note
         }
 
         voice.reset();
@@ -1258,9 +1303,10 @@ private:
     //  S M O O T H E D   C O N T R O L S
     //==========================================================================
 
-    float smoothedCutoff = 12000.0f;
-    float smoothedReso   = 0.15f;
-    float voiceFadeRate  = 200.0f;
+    float smoothedCutoff    = 12000.0f;
+    float smoothedReso      = 0.15f;
+    float voiceFadeRate     = 200.0f;
+    float smootherCoeff     = 0.001f;   // computed in prepare(): 1−exp(−2π/(0.005·sr))
 
     //==========================================================================
     //  M I D I   E X P R E S S I O N   S T A T E

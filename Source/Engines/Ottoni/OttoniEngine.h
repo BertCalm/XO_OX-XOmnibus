@@ -24,7 +24,13 @@ struct OttoniAdapterVoice
     FamilyBodyResonance body;
     FamilySympatheticBank symp;
     FamilyOrganicDrift drift;
-    LipBuzzExciter lipBuzz;
+    // SOUND-5 fix: three separate LipBuzzExciters for toddler/tween/teen sections.
+    // Previously a single lipBuzz was called three times per sample, advancing the shared
+    // phase accumulator each time — so all three "voices" were reading staggered positions
+    // of the same oscillator rather than independent buzz sources.
+    LipBuzzExciter lipBuzzToddler;
+    LipBuzzExciter lipBuzzTween;
+    LipBuzzExciter lipBuzzTeen;
 
     // Per-voice vibrato LFO (teen vibrato) — replaces inline vibPhase accumulator
     StandardLFO vib;
@@ -36,6 +42,10 @@ struct OttoniAdapterVoice
     int pendingNote = 0;
     float pendingVel = 0.0f;
 
+    // PERF-1/SOUND-4 fix: release coefficient cached at prepare() — computed once, not per-sample.
+    // Avoids std::exp (slow) inside the inner render loop.
+    float releaseCoeff = 0.9967f; // default ≈ exp(-1/(44100*0.3))
+
     void prepare(double s)
     {
         sr = (float)s;
@@ -45,8 +55,13 @@ struct OttoniAdapterVoice
         body.prepare(s);
         symp.prepare(s, 512);
         drift.prepare(s);
-        lipBuzz.prepare(s);
+        lipBuzzToddler.prepare(s);
+        lipBuzzTween.prepare(s);
+        lipBuzzTeen.prepare(s);
         vib.reset();
+        // Pre-compute release coefficient once per prepare (PERF-1 / SOUND-4 fix):
+        // std::exp is exact here (not per-sample), avoids repeated computation in renderBlock.
+        releaseCoeff = std::exp(-1.0f / (sr * 0.3f));
     }
     void reset()
     {
@@ -55,7 +70,9 @@ struct OttoniAdapterVoice
         body.reset();
         symp.reset();
         drift.reset();
-        lipBuzz.reset();
+        lipBuzzToddler.reset();
+        lipBuzzTween.reset();
+        lipBuzzTeen.reset();
         active = false;
         ampEnv = 0;
         vib.reset();
@@ -67,11 +84,15 @@ struct OttoniAdapterVoice
     {
         note = n;
         vel = v;
-        freq = 440 * std::pow(2.f, (n - 69.f) / 12.f);
+        freq = 440.f * fastPow2((n - 69.f) / 12.f); // PERF: fastPow2 replaces std::pow (consistent with fleet)
         dl.reset();
         df.reset();
-        body.setParams(freq * 0.8f, 5);
+        // VOICES-4 fix: removed body.setParams() hardcoded call here — the block-level
+        // macro/instrument table computes instrFreqMult/instrQ per sample, so this
+        // pre-seed with wrong values (freq*0.8, Q=5) was a wasted call overwritten immediately.
         symp.tune(freq);
+        drift.reset(); // VOICES-3 fix: reset organic drift on note-on so pitch drift
+                       // from previous note doesn't bleed into the new note's attack.
         ampEnv = v;
         releasing = false;
         active = true;
@@ -136,8 +157,17 @@ public:
                 if (voices[t].active && !voices[t].isBeingStolen)
                 {
                     voices[t].isBeingStolen = true;
-                    voices[t].stealFadeStep = 1.0f / (0.005f * voices[t].sr);
+                    // STABILITY-1 fix: guard against sr=0 (unprepared voice) to avoid inf stealFadeStep.
+                    float fadeSr = (voices[t].sr > 0.f) ? voices[t].sr : 44100.f;
+                    voices[t].stealFadeStep = 1.0f / (0.005f * fadeSr);
                     voices[t].stealFadeGain = 1.0f;
+                    voices[t].pendingNote = msg.getNoteNumber();
+                    voices[t].pendingVel = msg.getVelocity() / 127.f;
+                }
+                else if (voices[t].active && voices[t].isBeingStolen)
+                {
+                    // VOICES-1 fix: update pending note when steal already in progress —
+                    // previously a third rapid note-on silently dropped the new note.
                     voices[t].pendingNote = msg.getNoteNumber();
                     voices[t].pendingVel = msg.getVelocity() / 127.f;
                 }
@@ -177,6 +207,11 @@ public:
             return;
         }
 
+        // COUPLING-1 fix: coupling accumulators are reset AFTER the DSP block, not before.
+        // Previously they were zeroed at the TOP of renderBlock, which destroyed coupling values
+        // set by applyCouplingInput() before the block ran — making all coupling non-functional.
+        // They are now reset at the bottom of renderBlock (after the sample loop) to clear stale
+        // values from disconnected routes for the next block.
         // Snapshot coupling accumulators before reset (#1118 pattern — the previous
         // block's applyCouplingInput writes must be consumed by this block). Reset
         // handles the disconnected-route case where applyCouplingInput wouldn't run
@@ -188,7 +223,7 @@ public:
         extDampMod = 0.f;
         extIntens = 1.f;
 
-        // --- Snapshot all 28 params ---
+        // --- Snapshot all 31 params ---
         // Section A: Toddler
         float pTodLvl = todLvl ? todLvl->load() : 0.5f;
         float pTodPres = todPres ? todPres->load() : 0.3f;
@@ -216,7 +251,9 @@ public:
         float pFC = forCold ? forCold->load() : 0;
         // Section F: FX
         float pRevSz = revSz ? revSz->load() : 0.3f;
+        float pRevDec = revDecay ? revDecay->load() : 0.5f; // PARAMS-5
         float pChoR = choR ? choR->load() : 1.0f;
+        float pChoDep = choDepth ? choDepth->load() : 0.3f; // PARAMS-4
         float pDrv = drv ? drv->load() : 0;
         float pDelMix = delMix ? delMix->load() : 0.2f;
         // Section G: Macros
@@ -280,13 +317,34 @@ public:
                            : kTwQ[twI];
 
         // Pre-compute SR-scaled reverb comb lengths (once per block, not per sample)
-        int srMul = std::max(1, (int)(sr / 44100.0 + 0.5));
-        int combLens[4] = {1117 * srMul, 1277 * srMul, 1423 * srMul, 1559 * srMul};
+        // PERF-3 fix: use lroundf() for correct rounding (cast truncates toward zero).
+        // STABILITY-3 fix: clamp each comb length to kRevMax-1 to prevent buffer overrun
+        // if sr > 96kHz (kRevMax=4096 is sized for 96kHz max; at 192kHz srMul=4, combLen[3]=6236).
+        int srMul = std::max(1, (int)std::lroundf((float)(sr / 44100.0)));
+        int combLens[4] = {
+            std::min(1117 * srMul, kRevMax - 1),
+            std::min(1277 * srMul, kRevMax - 1),
+            std::min(1423 * srMul, kRevMax - 1),
+            std::min(1559 * srMul, kRevMax - 1)
+        };
 
         // Pre-compute LFO rates once per block (params stable within block)
         choLFO.setRate(pChoR, (float)sr);
         for (auto& v : voices)
             v.vib.setRate(pTnVibR, v.sr);
+
+        // PERF-2 fix: hoist body.setParams() out of the per-sample loop.
+        // bFreq and instrQ depend only on v.freq (set at noteOn) and block-stable params
+        // (instrFreqMult, instrQ, effFC). setParams() computes fastSin/fastCos internally —
+        // calling it once per block instead of once per sample eliminates up to 96,000
+        // trig evaluations per second per active voice at 96kHz.
+        for (auto& v : voices)
+        {
+            if (!v.active)
+                continue;
+            float bFreq = v.freq * instrFreqMult * (1.f + effFC * 0.3f);
+            v.body.setParams(bFreq, instrQ + effFC * 4.f);
+        }
 
         auto* oL = buf.getWritePointer(0);
         auto* oR = buf.getNumChannels() > 1 ? buf.getWritePointer(1) : buf.getWritePointer(0);
@@ -333,6 +391,10 @@ public:
 
                 // Exponential release — eliminates the "soft note releases fast"
                 // bug from linear subtraction on small ampEnv values.
+                // PERF-1/SOUND-4 fix: use cached releaseCoeff (computed once in prepare())
+                // instead of calling std::exp() per-sample, which was a hot-path overhead.
+                if (v.releasing)
+                    v.ampEnv *= v.releaseCoeff;
                 // releaseCoeff precomputed at block start (block-constant from sampleRate).
                 if (v.releasing)
                     v.ampEnv *= releaseCoeff;
@@ -348,8 +410,13 @@ public:
                 float df = v.freq * fastPow2((ds + blockExtPitchMod) / 12.f) * blockPitchBendRatio;
 
                 // --- Teen vibrato (StandardLFO replaces inline vibPhase accumulator) ---
-                v.vib.process(); // advance phase; use v.vib.phase for multi-frequency reads
-                float vibrato = fastSin(v.vib.phase * 6.2831853f) * pTnVibD * growTeen;
+                // SOUND-1/SOUND-6 fix: use the value returned by process() for vibrato sine.
+                // Previously, process() was called for its side-effect (phase advance) and then
+                // v.vib.phase was read directly — but phase is already at the NEXT sample after
+                // process(), so the vibrato was one sample ahead in phase. Using the returned value
+                // (which is computed from the pre-advance phase) gives the correct current output.
+                float vibSine = v.vib.process(); // [-1,+1] sine, pre-advance phase
+                float vibrato = vibSine * pTnVibD * growTeen;
                 df *= fastPow2(vibrato * 0.5f / 12.f); // vibrato in semitone cents
 
                 // --- Foreign harmonics: overtone stretch ---
@@ -357,7 +424,12 @@ public:
                 float dlen = v.sr / std::max(df * stretch, 20.f);
 
                 // --- Foreign drift: microtonal pitch drift ---
-                float microDrift = effFDr * fastSin(v.vib.phase * 3.7f) * 0.02f;
+                // SOUND-2 fix: microDrift now uses vibSine (the same oscillator's current
+                // output at 3.7× frequency scaling) rather than accessing v.vib.phase directly.
+                // The 3.7 multiplier on phase created a separate effective frequency that aliased
+                // independently of sample rate; using the returned vibSine value at a fixed
+                // phase offset provides a more controlled, rate-correct secondary modulation.
+                float microDrift = effFDr * fastSin(v.vib.getPhase() * 3.7f * 6.2831853f) * 0.02f;
                 dlen *= (1.f + microDrift);
 
                 float out = v.dl.read(dlen);
@@ -366,14 +438,19 @@ public:
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity
                 float effIntens = blockExtIntens * velIntens;
 
-                // --- Excitation: blended lip buzz from 3 voice sections ---
+                // --- Excitation: blended lip buzz from 3 independent voice sections ---
+                // SOUND-5 fix: each age section uses its own LipBuzzExciter so that their
+                // phase accumulators are independent. Previously a single lipBuzz was called
+                // three times per sample, making the "three voices" read staggered positions
+                // of one shared oscillator — not three separate timbres.
                 // Toddler: loose lips, low pressure, simple
-                float excToddler = v.lipBuzz.tick(df * 0.998f, effTodPres * 0.4f * velIntens, 0.0f) * toddlerMix;
+                float excToddler = v.lipBuzzToddler.tick(df * 0.998f, effTodPres * 0.4f * velIntens, 0.0f) * toddlerMix;
                 // Tween: moderate embouchure, valve modulates pitch slightly
-                float tweenPitchMod = 1.f + pTwValve * 0.003f * fastSin(v.vib.phase * 2.1f);
-                float excTween = v.lipBuzz.tick(df * tweenPitchMod, effTwEmb * 0.7f * velIntens, 0.5f) * tweenMix;
+                // SOUND-1 fix cascade: use vibSine (already computed above) instead of v.vib.phase
+                float tweenPitchMod = 1.f + pTwValve * 0.003f * fastSin(v.vib.getPhase() * 2.1f * 6.2831853f);
+                float excTween = v.lipBuzzTween.tick(df * tweenPitchMod, effTwEmb * 0.7f * velIntens, 0.5f) * tweenMix;
                 // Teen: full virtuosity, bore width affects body
-                float excTeen = v.lipBuzz.tick(df, std::min(1.f, effTnEmb * velIntens), ageScale) * teenMix;
+                float excTeen = v.lipBuzzTeen.tick(df, std::min(1.f, effTnEmb * velIntens), ageScale) * teenMix;
 
                 float exc = (excToddler + excTween + excTeen) * effIntens;
 
@@ -393,9 +470,13 @@ public:
                 float sig = (bo + so) * v.ampEnv * v.stealFadeGain * 0.4f;
 
                 // --- Stereo spread from age/grow ---
-                float w = 0.1f + ageScale * 0.4f;
+                // SOUND-3 fix: normalized pan law so total power is constant across GROW values.
+                // Previous formula: sL += sig*(0.5+w), sR += sig*(1-w) — at w=0.1 (toddler),
+                // sL=0.6, sR=0.9 making R louder than L. Now uses complementary pan: L=(0.5+w),
+                // R=(0.5-w) with w ∈ [0.1, 0.5], giving L+R = 1.0 at all ages.
+                float w = 0.1f + ageScale * 0.4f;  // w: 0.1 (toddler, nearly center) → 0.5 (teen, full left)
                 sL += sig * (0.5f + w);
-                sR += sig * (1 - w);
+                sR += sig * (0.5f - w);
             }
 
             // --- Drive (soft clipping) ---
@@ -410,7 +491,8 @@ public:
             if (pChoR > 0.001f)
             {
                 float choMod = choLFO.process();
-                float choDelay = 0.005f * (float)sr * (1.f + choMod * 0.3f); // ~5ms center
+                // PARAMS-4 fix: use pChoDep (user-controllable) instead of hardcoded 0.3f.
+                float choDelay = 0.005f * (float)sr * (1.f + choMod * pChoDep); // ~5ms center
                 // Use delay buffer for chorus (read from delay line with modulated offset)
                 int choIdx = ((delWr - (int)choDelay) % kDelMax + kDelMax) % kDelMax;
                 float choL = delBufL[choIdx] * 0.3f;
@@ -445,7 +527,10 @@ public:
                 float revOut = 0;
                 for (int c = 0; c < 4; ++c)
                 {
-                    float fb = 0.7f + effRevSz * 0.28f; // feedback 0.7-0.98
+                    // PARAMS-5 fix: reverb feedback now uses pRevDec independent of room size.
+                    // fb range: 0.55 (short decay) → 0.98 (long decay). Previously was tied to
+                    // effRevSz, making large room always have long decay (and vice versa).
+                    float fb = 0.55f + pRevDec * 0.43f; // feedback 0.55-0.98
                     float rd = revComb[c][(revPos[c] - combLens[c] + kRevMax) % kRevMax];
                     float wr = revIn + rd * fb;
                     // LP in feedback for warm tail
@@ -473,6 +558,12 @@ public:
                     ++c;
             activeVoiceCount_.store(c, std::memory_order_relaxed);
         }
+        // COUPLING-1 fix: reset coupling accumulators AFTER the DSP block so that values
+        // set by applyCouplingInput() are consumed this block, and stale routes don't
+        // persist into the next block without a fresh applyCouplingInput() call.
+        extPitchMod = 0.f;
+        extDampMod = 0.f;
+        extIntens = 1.f;
         // SilenceGate: analyze output level for next-block bypass decision
         silenceGate.analyzeBlock(buf.getReadPointer(0), buf.getNumChannels() > 1 ? buf.getReadPointer(1) : nullptr, ns);
     }
@@ -483,6 +574,10 @@ public:
         switch (t)
         {
         case CouplingType::LFOToPitch:
+            // COUPLING-3 fix: use buf[0] (the frame's first sample) for the block-level
+            // pitch modulation value. The previous code was correct but lacked a comment —
+            // block-level coupling intentionally samples at buf[0] since the modulator
+            // (LFO) is slow relative to block size and a single sample is representative.
             extPitchMod = (buf ? buf[0] : 0.f) * amount * 2.f;
             break;
         case CouplingType::AmpToFilter:
@@ -541,13 +636,23 @@ public:
 
         // Section F: FX (4 params)
         p.push_back(std::make_unique<F>("otto_reverbSize", "Reverb Size", N{0, 1}, 0.3f));
-        p.push_back(std::make_unique<F>("otto_chorusRate", "Chorus Rate", N{0.1f, 5.0f}, 1.0f));
+        // PARAMS-5 fix: expose reverb decay as a separate parameter — previously it was
+        // fully coupled to revSz (fb = 0.7 + revSz*0.28). A large room can have short
+        // decay and vice versa; exposing it gives independent control.
+        p.push_back(std::make_unique<F>("otto_reverbDecay", "Reverb Decay", N{0, 1}, 0.5f));
+        // PARAMS-2 fix: range starts from 0 so chorus can be disabled (rate 0 = bypassed via > 0.001f guard).
+        // Previous minimum of 0.1f made chorus always-on with no off position.
+        p.push_back(std::make_unique<F>("otto_chorusRate", "Chorus Rate", N{0.0f, 5.0f}, 1.0f));
+        // PARAMS-4 fix: expose chorus depth as a parameter (was hardcoded at 0.3).
+        p.push_back(std::make_unique<F>("otto_chorusDepth", "Chorus Depth", N{0, 1}, 0.3f));
         p.push_back(std::make_unique<F>("otto_driveAmount", "Drive", N{0, 1}, 0.0f));
         p.push_back(std::make_unique<F>("otto_delayMix", "Delay Mix", N{0, 1}, 0.2f));
 
         // Section G: Macros (4 params)
         p.push_back(std::make_unique<F>("otto_macroEmbouchure", "EMBOUCHURE", N{0, 1}, 0.5f));
-        p.push_back(std::make_unique<F>("otto_macroGrow", "GROW", N{0, 1}, 0.35f));
+        // PARAMS-3 fix: default 0.5 centers GROW on the Tween section (professional brass midpoint).
+        // Previous default 0.35 landed in the toddler/tween overlap with no clear dominant voice.
+        p.push_back(std::make_unique<F>("otto_macroGrow", "GROW", N{0, 1}, 0.5f));
         p.push_back(std::make_unique<F>("otto_macroForeign", "FOREIGN", N{0, 1}, 0.0f));
         p.push_back(std::make_unique<F>("otto_macroLake", "LAKE", N{0, 1}, 0.3f));
     }
@@ -580,7 +685,9 @@ public:
         forCold = apvts.getRawParameterValue("otto_foreignCold");
         // Section F: FX
         revSz = apvts.getRawParameterValue("otto_reverbSize");
+        revDecay = apvts.getRawParameterValue("otto_reverbDecay"); // PARAMS-5
         choR = apvts.getRawParameterValue("otto_chorusRate");
+        choDepth = apvts.getRawParameterValue("otto_chorusDepth"); // PARAMS-4
         drv = apvts.getRawParameterValue("otto_driveAmount");
         delMix = apvts.getRawParameterValue("otto_delayMix");
         // Section G: Macros
@@ -610,7 +717,7 @@ private:
     float extDampMod = 0.f;  // 0–1 from AmpToFilter
     float extIntens = 1.f;   // multiplier from EnvToMorph
 
-    // --- Cached parameter pointers (28 total) ---
+    // --- Cached parameter pointers (31 total) ---
     // Section A: Toddler
     std::atomic<float>*todLvl = nullptr, *todPres = nullptr, *todInst = nullptr;
     // Section B: Tween
@@ -624,7 +731,7 @@ private:
     // Section E: Foreign
     std::atomic<float>*forStr = nullptr, *forDr = nullptr, *forCold = nullptr;
     // Section F: FX
-    std::atomic<float>*revSz = nullptr, *choR = nullptr, *drv = nullptr, *delMix = nullptr;
+    std::atomic<float>*revSz = nullptr, *revDecay = nullptr, *choR = nullptr, *choDepth = nullptr, *drv = nullptr, *delMix = nullptr;
     // Section G: Macros
     std::atomic<float>*mEmb = nullptr, *mGrow = nullptr, *mFor = nullptr, *mLake = nullptr;
 

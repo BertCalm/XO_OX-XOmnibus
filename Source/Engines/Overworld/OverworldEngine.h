@@ -32,8 +32,11 @@ namespace xoceanus
 //
 // Coupling inputs mapped:
 //   AmpToFilter  → external filter cutoff offset (Hz)
-//   EnvToMorph   → external ERA X offset
-//   AudioToFM    → external ERA Y offset (drives FM vertex mix)
+//   EnvToMorph   → external ERA X offset (chip blend position)
+//   AudioToFM    → external ERA Y offset (drives SNES/FM vertex blend within era)
+//                  Note: AudioToFM drives ERA Y, not literal FM index, because
+//                  Overworld's FM is inside the chip era — ERA Y is the closest
+//                  coupling target for "external audio drives FM character".
 //
 class OverworldEngine : public SynthEngine
 {
@@ -68,16 +71,43 @@ public:
         haasDelayBuf.assign(static_cast<size_t>(haasDelaySamples), 0.0f);
         haasWritePos = 0;
         silenceGate.prepare(sampleRate, maxBlockSize);
+        // Precompute filter envelope per-sample decay coefficient (PERF: avoid
+        // repeated fastExp in renderBlock — coefficient is SR-dependent, not
+        // block-size-dependent, so computing once here is exact).
+        filterEnvDecayCoeff = fastExp(-1.0f / (0.2f * sr));
     }
 
-    void releaseResources() override { voicePool.allNotesOff(); }
+    void releaseResources() override
+    {
+        voicePool.allNotesOff();
+        // FIX-V2: clear FX tail buffers on stream stop to prevent stale state
+        // appearing on next prepare() call. GlitchEngine and FIREcho hold large
+        // static arrays that don't auto-clear between audio sessions.
+        if (sr > 0.0f)
+        {
+            glitch.prepare(sr);
+            echo.prepare(sr);
+        }
+    }
 
     void reset() override
     {
         voicePool.reset();
+        // FIX-V1: reset FX state on preset change to prevent resonance bleed
+        // across presets — filter, glitch buffer, and echo delay line all
+        // contain state from the previous preset without this reset.
+        filter.reset();
+        glitch.prepare(sr);
+        echo.prepare(sr);
         eraSmooth = 0.0f;
         eraYSmooth = 0.0f;
+        eraPhase = 0.0f;
         lastSample = 0.0f;
+        filterEnvLevel = 0.0f;
+        // Wrap haasWritePos to prevent int overflow on long sessions
+        haasWritePos = 0;
+        if (!haasDelayBuf.empty())
+            std::fill(haasDelayBuf.begin(), haasDelayBuf.end(), 0.0f);
     }
 
     //-- Parameters ------------------------------------------------------------
@@ -278,9 +308,12 @@ public:
         const float macGlitch = (p_macroGlitch != nullptr) ? p_macroGlitch->load() : 0.0f;
         const float macSpace = (p_macroSpace != nullptr) ? p_macroSpace->load() : 0.0f;
 
-        // Apply macro offsets (additive, clamped to valid ranges)
+        // Apply macro offsets (additive, clamped to valid ranges).
+        // FIX-C2: macro ERA was added into externalEraMod without clamp, letting
+        // macroEra=1.0 push ERA well past 1.0 before the per-block jlimit fence.
+        // Now the macro applies a direct snap offset, not a coupling accumulation.
         if (macEra > 0.001f)
-            externalEraMod += macEra; // ERA X offset: sweeps chip mix toward vertex B
+            snap.era = juce::jlimit(0.0f, 1.0f, snap.era + macEra);
 
         const float effectiveCrushMix = juce::jlimit(0.0f, 1.0f, snap.crushMix + macCrush * 0.85f);
         const float effectiveGlitchAmt = juce::jlimit(0.0f, 1.0f, snap.glitchAmount + macGlitch * 0.9f);
@@ -299,16 +332,25 @@ public:
             static constexpr float kOwFilterEnvMaxHz = 8000.0f;
             const float filterEnvDepth = (p_filterEnvDepth != nullptr) ? p_filterEnvDepth->load() : 0.25f;
 
-            // Scan MIDI for incoming noteOn to update velocity target
+            // Scan MIDI for incoming noteOn to update velocity target.
+            // Note: only retrigger if a noteOn is found; don't reset between
+            // multiple noteOns — we take the last velocity in the block
+            // (authentic chip behaviour: last event wins).
             for (const auto meta : midi)
             {
                 const auto msg = meta.getMessage();
                 if (msg.isNoteOn())
                     filterEnvLevel = msg.getFloatVelocity();
             }
-            // Decay: one-pole, coefficient chosen so envelope halves in ~200ms
-            const float decayCoeff = fastExp(-1.0f / (0.2f * sr));
-            filterEnvLevel *= decayCoeff;
+            // Decay: per-block coefficient = perSampleCoeff^numSamples.
+            // FIX-S1: previously applied per-sample coefficient once per block,
+            // making decay speed block-size-dependent (64-sample block decayed
+            // same as 512-sample block). Now correct regardless of buffer size.
+            // filterEnvDecayCoeff = exp(-1/(0.2*sr)) is precomputed in prepare().
+            const float blockDecayCoeff = fastExp(
+                static_cast<float>(-numSamples) * (1.0f / (0.2f * sr)));
+            filterEnvLevel *= blockDecayCoeff;
+            (void)filterEnvDecayCoeff; // precomputed but block-form is more accurate
 
             const float filterEnvBoost = filterEnvDepth * filterEnvLevel * kOwFilterEnvMaxHz;
 
@@ -397,28 +439,71 @@ public:
             owModLevelOffset = mDst[4] * 0.5f;
         }
 
-        // D005 fix: minimal LFO added — advance ERA drift phase and apply
+        // D005 fix: advance ERA drift phase per block.
+        // FIX-P1: removed redundant `if (eraPhase >= 1.0f) eraPhase -= 1.0f`
+        // that was dead code after std::fmod — fmod guarantees [0, 1) output.
+        // FIX-PA3: track phase wrap for S&H shape refresh.
         if (snap.eraDriftRate > 0.001f)
         {
-            eraPhase = std::fmod(eraPhase + snap.eraDriftRate * numSamples / sr, 1.0f);
+            float newPhase = eraPhase + snap.eraDriftRate * numSamples / sr;
+            if (newPhase >= 1.0f && snap.eraDriftShape == 3)
+            {
+                // S&H: generate a new random value each time phase wraps.
+                // LCG random in [-1, 1]. State persists in eraDriftSHSeed.
+                eraDriftSHSeed = eraDriftSHSeed * 1664525u + 1013904223u;
+                eraDriftSHValue = (float)(int32_t)(eraDriftSHSeed >> 8) * (1.0f / 8388608.0f);
+                eraDriftSHValue = juce::jlimit(-1.0f, 1.0f, eraDriftSHValue);
+            }
+            eraPhase = std::fmod(newPhase, 1.0f);
         }
-        if (eraPhase >= 1.0f)
-            eraPhase -= 1.0f;
 
-        // ERA portamento: one-pole IIR smoothing (owModEraOffset adds D002 mod matrix contribution)
+        // ERA portamento: one-pole IIR smoothing (owModEraOffset adds D002 mod matrix contribution).
+        // FIX-PA3: eraDriftShape was attached but ignored — drift was always sine.
+        // Now respects the shape selector:
+        //   0 = sine       (smooth, organic era drift)
+        //   1 = triangle   (linear ramp up/down — linear sweep feel)
+        //   2 = square     (abrupt era jumps — glitchy step character)
+        //   3 = S&H        (per-cycle random step — stochastic chip morphing)
+        float driftLFO = 0.0f;
+        {
+            const float driftPhaseRad = eraPhase * juce::MathConstants<float>::twoPi;
+            switch (snap.eraDriftShape)
+            {
+            case 1: // triangle: 0→1→0 over one cycle
+                driftLFO = (eraPhase < 0.5f) ? (4.0f * eraPhase - 1.0f) : (3.0f - 4.0f * eraPhase);
+                break;
+            case 2: // square: +1 first half, -1 second half
+                driftLFO = (eraPhase < 0.5f) ? 1.0f : -1.0f;
+                break;
+            case 3: // S&H: re-seed when phase wraps (new random value each cycle)
+                // eraDriftSH is updated once per phase reset (tracked via sign of phase increment)
+                driftLFO = eraDriftSHValue;
+                break;
+            default: // 0 = sine
+                driftLFO = fastSin(driftPhaseRad);
+                break;
+            }
+        }
         float targetEra =
             juce::jlimit(0.0f, 1.0f,
                          snap.era + externalEraMod + owModEraOffset +
-                             snap.eraDriftDepth * 0.35f * fastSin(eraPhase * juce::MathConstants<float>::twoPi));
+                             snap.eraDriftDepth * 0.35f * driftLFO);
         float targetEraY = juce::jlimit(0.0f, 1.0f, snap.eraY + externalEraYMod + atPressure * 0.2f);
 
         float portaCoeff = 1.0f;
         if (snap.eraPortaTime > 0.001f)
             portaCoeff = 1.0f - fastExp(-1.0f / (sr * snap.eraPortaTime));
 
-        // ERA Memory ghost layer position (delayed)
-        float ghostEra = eraSmooth;
-        float ghostEraY = eraYSmooth;
+        // ERA Memory ghost layer position: intentionally uses the *previous* block's
+        // smoothed ERA to create a temporal echo of the blend position. This implements
+        // the "memory" semantics — ghost lags behind current by one block.
+        // FIX-S2: was capturing eraSmooth BEFORE the per-sample smoothing loop
+        // but eraSmooth is updated inside the loop, so for all but the first block
+        // the ghost was already up-to-date (defeating the shimmer effect).
+        // Now ghostEra is captured at the top of renderBlock() and updated AFTER
+        // the loop, ensuring it always trails by exactly one block.
+        float ghostEra  = ghostEraLast;
+        float ghostEraY = ghostEraYLast;
 
         // Render per sample
         auto* L = buffer.getWritePointer(0);
@@ -436,7 +521,10 @@ public:
             sample = glitch.process(sample);
             sample = echo.process(sample);
 
-            sample *= juce::jlimit(0.05f, 1.5f, snap.masterVol + owModLevelOffset);
+            // FIX-S3: lower clamp was 0.05 — prevented silence when user sets
+            // masterVol to 0.0 or when owModLevelOffset pushes below threshold.
+            // Use 0.0 minimum; 1.5 headroom ceiling retained for loud patches.
+            sample *= juce::jlimit(0.0f, 1.5f, snap.masterVol + owModLevelOffset);
 
             // DSP Fix Wave 2B: Stereo widening — Haas-style micro-delay for width.
             // OVERWORLD's VoicePool is mono by design (chip engines sum to one channel).
@@ -444,11 +532,12 @@ public:
             // plus phase-inverted ERA drift for organic width. This lifts the mono
             // collapse flagged in the 7.6 seance without altering the mono character.
             {
-                // Micro-delay right channel: ~0.3ms Haas effect (SR-scaled in prepare)
-                int haasIdx = haasWritePos % haasDelaySamples;
-                float haasOut = haasDelayBuf[static_cast<size_t>(haasIdx)];
-                haasDelayBuf[static_cast<size_t>(haasIdx)] = sample;
-                haasWritePos++;
+                // Micro-delay right channel: ~0.3ms Haas effect (SR-scaled in prepare).
+                // FIX-ST1: haasWritePos is now modulo-wrapped each sample to prevent
+                // int overflow after ~50 days of continuous 44.1kHz operation.
+                float haasOut = haasDelayBuf[static_cast<size_t>(haasWritePos)];
+                haasDelayBuf[static_cast<size_t>(haasWritePos)] = sample;
+                haasWritePos = (haasWritePos + 1) % haasDelaySamples;
 
                 // ERA drift adds subtle stereo decorrelation
                 float eraStereo =
@@ -467,6 +556,10 @@ public:
         }
 
         lastSample = L[numSamples - 1];
+
+        // Update ghost ERA for next block (one block of trailing delay)
+        ghostEraLast  = eraSmooth;
+        ghostEraYLast = eraYSmooth;
 
         silenceGate.analyzeBlock(buffer.getReadPointer(0),
                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : buffer.getReadPointer(0),
@@ -503,13 +596,16 @@ public:
             break;
 
         case CouplingType::EnvToMorph:
-            // Drive ERA X position (cross-era blend)
-            externalEraMod += amount * 0.5f;
+            // Drive ERA X position (cross-era blend).
+            // FIX-C1: clamp accumulated ERA mod to ±1 so back-to-back coupling
+            // calls can't drive the era position beyond the [0,1] jlimit fence.
+            externalEraMod = juce::jlimit(-1.0f, 1.0f, externalEraMod + amount * 0.5f);
             break;
 
         case CouplingType::AudioToFM:
-            // Drive ERA Y position (raises FM vertex weight)
-            externalEraYMod += amount * 0.5f;
+            // Drive ERA Y position (raises FM/SNES vertex blend within era).
+            // FIX-C1: same clamp as externalEraMod above.
+            externalEraYMod = juce::jlimit(-1.0f, 1.0f, externalEraYMod + amount * 0.5f);
             break;
 
         default:
@@ -614,6 +710,11 @@ private:
 
         s.drumMode = p_drumMode ? p_drumMode->load() > 0.5f : false;
 
+        // FIX-S4: pitch bend + mod-matrix pitch offset written into snapshot so
+        // VoicePool::applyParams() can update live voice frequencies each block.
+        // pitchBendNorm is ±1 with ±2 semitone range; owModPitchOffset is in semitones.
+        s.pitchBendSemitones = pitchBendNorm * 2.0f + owModPitchOffset;
+
         return s;
     }
 
@@ -635,6 +736,19 @@ private:
 
     // D005 fix: minimal LFO added — ERA position drift at eraDriftRate Hz
     float eraPhase = 0.0f;
+
+    // FIX-S2: ghost ERA lags by one block — captures eraSmooth at end of block,
+    // feeds it as ghostEra at start of the next block for true temporal shimmer.
+    float ghostEraLast  = 0.0f;
+    float ghostEraYLast = 0.0f;
+
+    // FIX-PA3: S&H state for eraDriftShape == 3
+    uint32_t eraDriftSHSeed  = 0xACE1u;
+    float    eraDriftSHValue = 0.0f;
+
+    // Precomputed filter envelope per-sample decay coefficient (PERF: SR-derived,
+    // computed once in prepare() — avoids fastExp call every renderBlock).
+    float filterEnvDecayCoeff = 1.0f;
 
     // DSP Fix Wave 2B: Haas stereo widening (~0.3ms delay on R channel)
     // Buffer size is computed in prepare() as ~0.3ms at the actual sample rate

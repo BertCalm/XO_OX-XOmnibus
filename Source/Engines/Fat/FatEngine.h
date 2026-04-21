@@ -71,7 +71,12 @@ public:
 
     void reset() noexcept { phase = 0.0; }
 
-    void setFrequency(double freq) noexcept { phaseInc = clamp(static_cast<float>(freq), 20.0f, 20000.0f) / sr; }
+    void setFrequency(double freq) noexcept
+    {
+        // Clamp to [20 Hz, Nyquist-1Hz] rather than hard 20kHz — correct at 48/96kHz SR.
+        const float nyq = static_cast<float>(sr) * 0.4995f;
+        phaseInc = clamp(static_cast<float>(freq), 20.0f, nyq) / static_cast<float>(sr);
+    }
 
     float process(float morph, FatNoiseGen& noise) noexcept
     {
@@ -162,7 +167,13 @@ private:
 class FatMojoDrift
 {
 public:
-    void prepare(double sampleRate) noexcept { sr = sampleRate; }
+    void prepare(double sampleRate) noexcept
+    {
+        sr = sampleRate;
+        // Smoother time constant: ~50ms at any SR (matched-Z: 1 - exp(-1/(0.05*sr))).
+        // Hardcoded 0.0001f was tuned for 44.1kHz; at 96kHz it would smooth 2.2× faster.
+        smoothCoeff = 1.0f - std::exp(-1.0f / static_cast<float>(sampleRate * 0.05));
+    }
 
     void seed(uint32_t s) noexcept { rng.seed(s); }
 
@@ -186,9 +197,8 @@ public:
             target = rng.next() * 6.0f - 3.0f; // ±3 cents
         }
 
-        // Smooth toward target
-        float coeff = 0.0001f;
-        smoothed += coeff * (target - smoothed);
+        // Smooth toward target — SR-dependent coefficient (50ms time constant)
+        smoothed += smoothCoeff * (target - smoothed);
         smoothed = flushDenormal(smoothed);
 
         return smoothed * mojoAmount;
@@ -196,6 +206,7 @@ public:
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    float smoothCoeff = 0.0001f; // set by prepare() — 1-exp(-1/(0.05*sr))
     FatNoiseGen rng;
     float smoothed = 0.0f;
     float target = 0.0f;
@@ -298,7 +309,7 @@ public:
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
+    float invSR = 0.0f; // set by prepare() — do NOT init from sr here (sr=0.0 sentinel)
     float cutoffHz = 2000.0f;
     float resonance = 0.2f;
     float drive = 0.0f;
@@ -335,15 +346,17 @@ private:
 class FatSaturation
 {
 public:
-    void prepare(double /*sampleRate*/) noexcept
+    void prepare(double sampleRate) noexcept
     {
-        dcPrev = 0.0f;
-        dcOut = 0.0f;
+        // DC blocker pole: R = 1 - 2π*fc/sr, fc ≈ 5 Hz. SR-dependent for correctness at 48/96kHz.
+        dcCoeff = 1.0f - (6.2831853f * 5.0f / static_cast<float>(sampleRate));
+        dcPrevL = dcOutL = 0.0f;
+        dcPrevR = dcOutR = 0.0f;
     }
     void reset() noexcept
     {
-        dcPrev = 0.0f;
-        dcOut = 0.0f;
+        dcPrevL = dcOutL = 0.0f;
+        dcPrevR = dcOutR = 0.0f;
     }
 
     void setDrive(float driveAmount) noexcept
@@ -357,7 +370,15 @@ public:
         }
     }
 
-    float process(float input) noexcept
+    // processL / processR use separate DC blocker state to prevent stereo channel cross-contamination.
+    float processL(float input) noexcept { return processChannel(input, dcPrevL, dcOutL); }
+    float processR(float input) noexcept { return processChannel(input, dcPrevR, dcOutR); }
+
+    // Legacy mono path (unused in FatEngine but retained for interface compatibility)
+    float process(float input) noexcept { return processL(input); }
+
+private:
+    float processChannel(float input, float& dcPrev, float& dcOut) noexcept
     {
         if (lastDrive < 0.001f)
             return input;
@@ -368,18 +389,18 @@ public:
         float wet = fastTanh(driven) * 0.7f + fastTanh(driven * 0.5f + 0.3f) * 0.3f;
         wet *= cachedOutputGain;
 
-        // DC blocker (~5 Hz highpass)
+        // DC blocker — pole coefficient computed SR-dependently in prepare()
         float dcIn = wet;
-        dcOut = dcIn - dcPrev + 0.9995f * dcOut;
+        dcOut = dcIn - dcPrev + dcCoeff * dcOut;
         dcPrev = dcIn;
         dcOut = flushDenormal(dcOut);
 
         return lerp(input, dcOut, lastDrive);
     }
 
-private:
-    float dcPrev = 0.0f;
-    float dcOut = 0.0f;
+    float dcCoeff = 0.9995f; // set by prepare() — 1 - 2π*5/sr
+    float dcPrevL = 0.0f, dcOutL = 0.0f; // left channel DC blocker state
+    float dcPrevR = 0.0f, dcOutR = 0.0f; // right channel DC blocker state
     float lastDrive = -1.0f;
     float cachedGain = 1.0f;
     float cachedOutputGain = 1.0f;
@@ -395,55 +416,60 @@ public:
     {
         hostSR = sampleRate;
         phaseAcc = 0.0f;
-        held = 0.0f;
+        heldL = heldR = 0.0f;
     }
     void reset() noexcept
     {
         phaseAcc = 0.0f;
-        held = 0.0f;
+        heldL = heldR = 0.0f;
         rng = 0x1234abcdu;
     }
 
-    // Process with precomputed levels/invLevels to avoid per-sample std::pow.
-    // levels = std::pow(2.0f, std::floor(bitDepth)) - 1.0f (block-constant)
-    // invLevels = 1.0f / levels
+    // Process stereo pair in lock-step: both channels sample-hold at the same phase tick,
+    // but each channel maintains its own held value (prevents L from reading R's held sample).
+    // levels = std::pow(2.0f, std::floor(bitDepth)) - 1.0f (block-constant, precomputed)
     // TPDF dither is added before quantization to break up quantization harmonics.
-    float process(float input, float crushRate, float levels, float invLevels) noexcept
+    void processStereo(float& inL, float& inR, float crushRate, float levels, float invLevels) noexcept
     {
         // Bypass if at full quality (levels == 65535 → bitDepth == 16)
         if (levels >= 65535.0f && crushRate >= static_cast<float>(hostSR) - 1.0f)
-            return input;
+            return;
 
-        // Sample-and-hold
+        // Advance single shared phase accumulator (both channels sample in lock-step)
         phaseAcc += crushRate / static_cast<float>(hostSR);
         if (phaseAcc >= 1.0f)
         {
             phaseAcc -= 1.0f;
 
             // TPDF dither: two uniform noise samples subtracted → triangular distribution
-            // amplitude = ±1 LSB, spectrally flat, decorrelates quantization error
-            rng ^= rng << 13;
-            rng ^= rng >> 17;
-            rng ^= rng << 5; // xorshift32
+            rng ^= rng << 13; rng ^= rng >> 17; rng ^= rng << 5;
             const uint32_t r1 = rng;
-            rng ^= rng << 13;
-            rng ^= rng >> 17;
-            rng ^= rng << 5;
+            rng ^= rng << 13; rng ^= rng >> 17; rng ^= rng << 5;
             const uint32_t r2 = rng;
-            // Map [0, 2^31) to [-0.5, 0.5) for each, difference gives [-1, 1)
-            const float dither = (static_cast<float>(r1 >> 1) - static_cast<float>(r2 >> 1)) *
-                                 (invLevels / static_cast<float>(0x40000000u));
+            const float ditherL = (static_cast<float>(r1 >> 1) - static_cast<float>(r2 >> 1)) *
+                                  (invLevels / static_cast<float>(0x40000000u));
 
-            held = std::round((input + dither) * levels) * invLevels;
+            // Independent dither for R channel
+            rng ^= rng << 13; rng ^= rng >> 17; rng ^= rng << 5;
+            const uint32_t r3 = rng;
+            rng ^= rng << 13; rng ^= rng >> 17; rng ^= rng << 5;
+            const uint32_t r4 = rng;
+            const float ditherR = (static_cast<float>(r3 >> 1) - static_cast<float>(r4 >> 1)) *
+                                  (invLevels / static_cast<float>(0x40000000u));
+
+            heldL = std::round((inL + ditherL) * levels) * invLevels;
+            heldR = std::round((inR + ditherR) * levels) * invLevels;
         }
 
-        return held;
+        inL = heldL;
+        inR = heldR;
     }
 
 private:
     double hostSR = 0.0;  // Sentinel: must be set by prepare() before use
     float phaseAcc = 0.0f;
-    float held = 0.0f;
+    float heldL = 0.0f; // separate L/R held values — channels sample in lock-step but hold independently
+    float heldR = 0.0f;
     uint32_t rng = 0x1234abcdu;
 };
 
@@ -621,12 +647,15 @@ private:
         ++stepIndex;
         if (pattern == 2 && total > 1) // UpDown
         {
-            if (ascending && stepIndex >= total)
+            // Use (total - 1) steps per direction so boundary notes play once, not twice.
+            // Example with 4 notes: up → [0,1,2,3] then down → [2,1,0] (not 3,2,1,0).
+            const int halfCycle = total - 1;
+            if (ascending && stepIndex >= halfCycle)
             {
                 ascending = false;
                 stepIndex = 0;
             }
-            else if (!ascending && stepIndex >= total)
+            else if (!ascending && stepIndex >= halfCycle)
             {
                 ascending = true;
                 stepIndex = 0;
@@ -808,6 +837,7 @@ public:
         const float fltEnvAmt = (pFltEnvAmt != nullptr) ? pFltEnvAmt->load() : 0.5f;
         const float fltEnvA = (pFltEnvAttack != nullptr) ? pFltEnvAttack->load() : 0.001f;
         const float fltEnvD = (pFltEnvDecay != nullptr) ? pFltEnvDecay->load() : 0.3f;
+        const float fltEnvS = (pFltEnvSustain != nullptr) ? pFltEnvSustain->load() : 0.0f;
 
         // M2 GRIT macro: increases saturation drive (+0.6) and filter drive (+0.3)
         const float satDrive =
@@ -956,6 +986,7 @@ public:
                             if (v.sustainHeld)
                             {
                                 v.ampEnv.noteOff();
+                                v.filterEnv.noteOff(); // release filter alongside amp
                                 v.sustainHeld = false;
                             }
                         }
@@ -985,13 +1016,20 @@ public:
 
         // D002 mod matrix — apply per-block.
         // Destinations: 0=Off, 1=FilterCutoff, 2=LFO1Rate, 3=Pitch, 4=AmpLevel, 5=Mojo
+        // Use first active voice's velocity; use previous block's peakEnv/lfo1Cache (one-block delay — inaudible at mod rates).
         {
+            float modSrcVelocity = 0.0f;
+            for (const auto& v : voices)
+            {
+                if (v.active) { modSrcVelocity = v.velocity; break; }
+            }
+
             ModMatrix<4>::Sources mSrc;
-            mSrc.lfo1       = 0.0f;
-            mSrc.lfo2       = 0.0f;
-            mSrc.env        = 0.0f;
-            mSrc.velocity   = 0.0f;
-            mSrc.keyTrack   = 0.0f;
+            mSrc.lfo1       = lfo1OutputCache; // block-rate snapshot from previous block (lfo1 is per-sample; cache updated below)
+            mSrc.lfo2       = lfo2Output;      // block-rate saw LFO
+            mSrc.env        = envelopeOutput;  // peakEnv from previous block
+            mSrc.velocity   = modSrcVelocity;
+            mSrc.keyTrack   = 0.0f;            // key track not applicable at block rate
             mSrc.modWheel   = modWheelValue;
             mSrc.aftertouch = atPressure;
             float mDst[6]   = {};
@@ -1024,7 +1062,7 @@ public:
             if (!voice.active)
                 continue;
             voice.ampEnv.setADSR(ampA, ampD, ampS, ampR);
-            voice.filterEnv.setADSR(fltEnvA, fltEnvD, 0.0f, 0.5f);
+            voice.filterEnv.setADSR(fltEnvA, fltEnvD, fltEnvS, 0.5f);
             voice.cachedBaseFreq = midiToFreq(voice.noteNumber);
         }
 
@@ -1195,15 +1233,14 @@ public:
                 voiceL *= envVal * voice.velocity;
                 voiceR *= envVal * voice.velocity;
 
-                // Post-voice saturation — LFO1 Saturation target adds dynamic drive (B015 side-effect).
-                // lfo1SatMod is non-negative when lfo1Target==2, otherwise 0.
+                // Post-voice saturation — processL/processR use independent DC blocker state per channel.
+                // LFO1 Saturation target adds dynamic drive (B015 side-effect).
                 voice.saturation.setDrive(clamp(satDrive + lfo1SatMod, 0.0f, 1.0f));
-                voiceL = voice.saturation.process(voiceL);
-                voiceR = voice.saturation.process(voiceR);
+                voiceL = voice.saturation.processL(voiceL);
+                voiceR = voice.saturation.processR(voiceR);
 
-                // Bitcrusher — uses precomputed levels/invLevels (avoids per-sample std::pow).
-                voiceL = voice.crusher.process(voiceL, crushRate, crushLevels, invCrushLevels);
-                voiceR = voice.crusher.process(voiceR, crushRate, crushLevels, invCrushLevels);
+                // Bitcrusher — stereo pair processed in lock-step with independent held values per channel.
+                voice.crusher.processStereo(voiceL, voiceR, crushRate, crushLevels, invCrushLevels);
 
                 if (!voice.ampEnv.isActive())
                 {
@@ -1245,6 +1282,18 @@ public:
 
         envelopeOutput = peakEnv;
 
+        // Cache LFO1 output from the first active voice for use in next-block mod matrix sources.
+        for (const auto& v : voices)
+        {
+            if (v.active)
+            {
+                // BreathingLFO uses sine; derive from current phase without advancing it.
+                // Use the sin of the current phase after the last process() call (approximated from phase).
+                lfo1OutputCache = fastSin(v.breathingLFO.phase * 6.2831853f);
+                break;
+            }
+        }
+
         // SilenceGate: analyze output level for next-block bypass decision
         silenceGate.analyzeBlock(buffer.getReadPointer(0),
                                  buffer.getNumChannels() > 1 ? buffer.getReadPointer(1) : nullptr, numSamples);
@@ -1271,12 +1320,14 @@ public:
         switch (type)
         {
         case CouplingType::AmpToFilter:
-            externalFilterMod += amount;
+        case CouplingType::FilterToFilter: // accepted: filter output from external engine sweeps cutoff
+            externalFilterMod = clamp(externalFilterMod + amount, -24.0f, 24.0f); // ±24 semitone guard
             break;
         case CouplingType::AmpToPitch:
         case CouplingType::LFOToPitch:
         case CouplingType::PitchToPitch:
-            externalPitchMod += amount * 0.5f;
+        case CouplingType::EnvToMorph: // treat as pitch for Fat — morphs pitch character
+            externalPitchMod = clamp(externalPitchMod + amount * 0.5f, -24.0f, 24.0f); // ±24 semitone guard
             break;
         default:
             break;
@@ -1347,6 +1398,9 @@ public:
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"fat_fltEnvDecay", 1}, "Fat Filter Env Decay",
             juce::NormalisableRange<float>(0.001f, 5.0f, 0.001f, 0.3f), 0.3f));
+        params.push_back(
+            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"fat_fltEnvSustain", 1}, "Fat Filter Env Sustain",
+                                                        juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
 
         // --- Character ---
         params.push_back(
@@ -1357,7 +1411,7 @@ public:
                                                         juce::NormalisableRange<float>(2.0f, 16.0f, 0.1f), 16.0f));
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"fat_crushRate", 1}, "Fat Crush Rate",
-            juce::NormalisableRange<float>(500.0f, 44100.0f, 1.0f, 0.3f), 44100.0f));
+            juce::NormalisableRange<float>(500.0f, 96000.0f, 1.0f, 0.3f), 96000.0f)); // max covers 96kHz SR
 
         // --- Arpeggiator ---
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
@@ -1466,6 +1520,7 @@ public:
         pFltEnvAmt = apvts.getRawParameterValue("fat_fltEnvAmt");
         pFltEnvAttack = apvts.getRawParameterValue("fat_fltEnvAttack");
         pFltEnvDecay = apvts.getRawParameterValue("fat_fltEnvDecay");
+        pFltEnvSustain = apvts.getRawParameterValue("fat_fltEnvSustain");
 
         pSatDrive = apvts.getRawParameterValue("fat_satDrive");
         pCrushDepth = apvts.getRawParameterValue("fat_crushDepth");
@@ -1653,6 +1708,7 @@ private:
     std::atomic<float>* pFltEnvAmt = nullptr;
     std::atomic<float>* pFltEnvAttack = nullptr;
     std::atomic<float>* pFltEnvDecay = nullptr;
+    std::atomic<float>* pFltEnvSustain = nullptr;
 
     std::atomic<float>* pSatDrive = nullptr;
     std::atomic<float>* pCrushDepth = nullptr;
@@ -1685,8 +1741,9 @@ private:
     // D002: 2nd LFO — user-routable filter modulator.
     // Saw LFO sweeps ZDF ladder cutoff for autonomous harmonic evolution.
     // Rate floor 0.005 Hz satisfies D005 (≤ 0.01 Hz).
-    double lfo2Phase = 0.0;  // [0, 1) normalized phase
-    float lfo2Output = 0.0f; // cached saw output [-1, +1]
+    double lfo2Phase = 0.0;   // [0, 1) normalized phase
+    float lfo2Output = 0.0f;  // cached saw output [-1, +1]
+    float lfo1OutputCache = 0.0f; // previous-block LFO1 snapshot for mod matrix source feed
 
     // D002 mod matrix — 4-slot configurable modulation routing
     ModMatrix<4> modMatrix;

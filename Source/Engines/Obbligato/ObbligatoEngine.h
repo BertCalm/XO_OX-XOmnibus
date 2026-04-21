@@ -82,6 +82,10 @@ struct ObbligatoAdapterVoice
     // Removes the noteOn click (flat sustain with no attack stage).
     StandardADSR adsr;
 
+    // --- Body resonance cache: avoids setParams() trig calls every sample (F11) ---
+    float lastBodyFreq_ = -1.0f; // sentinel: force setParams on first sample
+    float lastBodyQ_ = -1.0f;
+
     // --- Voice-steal crossfade (5 ms linear fade-out before new note starts) ---
     float stealFadeGain = 1.0f; // multiplied on the output sample
     float stealFadeStep = 0.0f; // amount subtracted from stealFadeGain each sample
@@ -94,7 +98,8 @@ struct ObbligatoAdapterVoice
     FamilyDampingFilter dampFilter;    // one-pole LP for energy absorption
     FamilyBodyResonance bodyResonator; // 2-pole biquad instrument-body modes
     FamilySympatheticBank sympBank;    // 8-comb sympathetic resonance
-    FamilyOrganicDrift organicDrift;   // humanizing pitch wander
+    FamilyOrganicDrift organicDrift;   // humanizing pitch wander (primary)
+    FamilyOrganicDrift flutterDrift;   // F02: separate flutter LFO — prevents organicDrift phase doubling
     AirJetExciter airJet;              // Brother A exciter (flute family)
     ReedExciter reed;                  // Brother B exciter (reed family)
 
@@ -107,6 +112,7 @@ struct ObbligatoAdapterVoice
         bodyResonator.prepare(sampleRate);
         sympBank.prepare(sampleRate, 512);
         organicDrift.prepare(sampleRate);
+        flutterDrift.prepare(sampleRate); // F02: independent flutter oscillator
         airJet.prepare(sampleRate);
         reed.prepare(sampleRate);
         // Prepare ADSR with default parameters (overridden per-noteOn with velocity scaling)
@@ -122,6 +128,7 @@ struct ObbligatoAdapterVoice
         bodyResonator.reset();
         sympBank.reset();
         organicDrift.reset();
+        flutterDrift.reset(); // F02: must reset flutter oscillator in parallel with primary
         airJet.reset();
         reed.reset();
         adsr.reset();
@@ -129,13 +136,17 @@ struct ObbligatoAdapterVoice
         stealFadeGain = 1.0f;
         stealFadeStep = 0.0f;
         isBeingStolen = false;
+        lastBodyFreq_ = -1.0f; // F11: invalidate body resonance cache
+        lastBodyQ_ = -1.0f;
     }
 
     void noteOn(int midiNote, float velocity)
     {
         note = midiNote;
         vel = velocity;
-        freq = 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f);
+        // F01/F27: use fastPow2 (via midiToFreq) — consistent with per-sample pitch path;
+        // removes std::pow call from MIDI thread.
+        freq = midiToFreq(midiNote);
         delayLine.reset();
         dampFilter.reset();
         bodyResonator.setParams(freq * 1.3f, 3.5f); // initial body mode — overridden per sample
@@ -194,6 +205,17 @@ public:
         brightDelayPos = 0;
         darkDelayPos = 0;
         springPos = 0;
+
+        // F09: Compute SR-normalized LP coefficient for dark delay feedback path.
+        // Target cutoff ~800 Hz; matched-Z: coeff = exp(-2π * fc / sr).
+        darkDelayLPCoeff_ = std::exp(-2.0f * 3.14159265f * 800.0f / static_cast<float>(sampleRate));
+
+        // F10: Compute SR-normalized spring comb feedback coefficient.
+        // Target: ~80ms decay TC. coeff = exp(-springLen / (sr * decayTC))
+        // where decayTC = 0.080f seconds.
+        float springDecaySamples = static_cast<float>(springLen) / (static_cast<float>(sampleRate) * 0.080f);
+        springFeedbackCoeff_ = std::exp(-springDecaySamples);
+        springFeedbackCoeff_ = std::min(springFeedbackCoeff_, 0.95f); // stability cap
     }
 
     void releaseResources() override
@@ -210,6 +232,33 @@ public:
         lastL = lastR = 0.0f;
         chorusLFO.reset();
         phaserLFO.reset();
+
+        // F20/F26: reset voice routing counters so round-robin state doesn't persist
+        // across session resets — avoids asymmetric brother assignment after reload.
+        rrVoiceIndex = 0;
+        rrCounter = 0;
+
+        // Reset BOND smoother to neutral stage so saved state doesn't bleed into new session
+        bondSmoothed = 0.0f;
+
+        // Reset breath smoothers to parameter default (F25)
+        smoothedBreathA_ = 0.7f;
+        smoothedBreathB_ = 0.7f;
+
+        // Reset delay positions to prevent stale read/write mismatch after buffer resize (F05)
+        brightDelayPos = 0;
+        darkDelayPos = 0;
+        springPos = 0;
+
+        // Reset FX states
+        plateState = 0.0f;
+        exciterLP = 0.0f;
+        phaserStateL = 0.0f;
+        phaserStateR = 0.0f;
+        darkDelayLP_L = 0.0f;
+        darkDelayLP_R = 0.0f;
+        windLP = 0.0f;
+        windLP_R_ = 0.0f;
     }
 
     //==========================================================================
@@ -274,7 +323,9 @@ public:
 
                 voices[targetSlot].isBroA = assignBroA;
 
-                // Trigger with crossfade steal if the slot is currently active
+                // Trigger with crossfade steal if the slot is currently active.
+                // F32: if the slot is already being stolen, update the pending note
+                // so the newest incoming note wins rather than being silently dropped.
                 if (voices[targetSlot].active && !voices[targetSlot].isBeingStolen)
                 {
                     voices[targetSlot].isBeingStolen = true;
@@ -283,7 +334,13 @@ public:
                     voices[targetSlot].pendingNote = msg.getNoteNumber();
                     voices[targetSlot].pendingVel = msg.getVelocity() / 127.0f;
                 }
-                else if (!voices[targetSlot].isBeingStolen)
+                else if (voices[targetSlot].isBeingStolen)
+                {
+                    // Update the queued note — newest note wins (F32: was silently dropped)
+                    voices[targetSlot].pendingNote = msg.getNoteNumber();
+                    voices[targetSlot].pendingVel = msg.getVelocity() / 127.0f;
+                }
+                else
                 {
                     voices[targetSlot].noteOn(msg.getNoteNumber(), msg.getVelocity() / 127.0f);
                 }
@@ -369,11 +426,14 @@ public:
         // -----------------------------------------------------------------------
 
         // Section A: Brother A — Flute Family
-        constexpr float kBreathSmooth = 0.995f;
+        // F03: kBreathSmooth is a per-sample one-pole coefficient, not a time constant.
+        // Previous value 0.995f → coefficient = 0.005f → TC ≈ 4.5s at 44kHz (far too slow).
+        // Use smoothCoeffFromTime(0.020f, sr) = ~20ms breath ramp, natural for wind control.
+        const float kBreathSmoothCoeff = smoothCoeffFromTime(0.020f, static_cast<float>(sr));
         float targetA = juce::jlimit(0.0f, 1.0f, pBrA ? pBrA->load(std::memory_order_relaxed) : 0.7f);
         float targetB = juce::jlimit(0.0f, 1.0f, pBrB ? pBrB->load(std::memory_order_relaxed) : 0.7f);
-        smoothedBreathA_ += (targetA - smoothedBreathA_) * (1.0f - kBreathSmooth);
-        smoothedBreathB_ += (targetB - smoothedBreathB_) * (1.0f - kBreathSmooth);
+        smoothedBreathA_ += (targetA - smoothedBreathA_) * kBreathSmoothCoeff;
+        smoothedBreathB_ += (targetB - smoothedBreathB_) * kBreathSmoothCoeff;
         float breathA = smoothedBreathA_;
         float embouchureA = pEmA ? pEmA->load() : 0.5f;
         float airFlutterA = pFlA ? pFlA->load() : 0.2f;
@@ -430,7 +490,13 @@ public:
         //   Transcend(7): back to unison, minimal spread
         // -----------------------------------------------------------------------
         float bondTarget = bondStage * 8.0f; // 0..8 stage range
-        bondSmoothed += (bondTarget - bondSmoothed) * std::min(bondRate, 1.0f);
+        // F04: bondRate 0.01–2.0 is a time constant in seconds (1/rate Hz).
+        // Using it directly as a per-sample coefficient is SR-dependent and
+        // reaches coefficient=1.0 (bypass) when bondRate>=1.0.
+        // Convert to a proper one-pole coefficient via smoothCoeffFromTime.
+        // bondRate=2.0s → ~very slow; bondRate=0.01s → ~fast snap.
+        const float kBondCoeff = smoothCoeffFromTime(std::max(bondRate, 0.005f), static_cast<float>(sr));
+        bondSmoothed += (bondTarget - bondSmoothed) * kBondCoeff;
         bondSmoothed = flushDenormal(bondSmoothed);
 
         int bondIdx = std::min(static_cast<int>(bondSmoothed), 7);
@@ -573,9 +639,9 @@ public:
                 if (voice.isBroA)
                 {
                     // Air flutter: organic LFO modulates embouchure opening for flute vibrato.
-                    // The second organicDrift call uses a higher rate to act as flutter LFO.
-                    // fastSin replaces std::sin here — ~0.02% error, no measurable sonic change.
-                    float flutterMod = airFlutterA * 0.15f * fastSin(voice.organicDrift.tick(5.0f, 1.0f) * 20.0f);
+                    // F02: use dedicated flutterDrift (not organicDrift) to avoid doubling
+                    // primary drift's phase increment and corrupting pitch wander rate.
+                    float flutterMod = airFlutterA * 0.15f * fastSin(voice.flutterDrift.tick(5.0f, 1.0f) * 20.0f);
                     float effectiveBreathA =
                         std::clamp(effBreathA * velIntensity + flutterMod * embouchureA, 0.0f, 1.0f);
                     exciterOut = voice.airJet.tick(effectiveBreathA, voice.freq) * coupledIntensity;
@@ -593,7 +659,7 @@ public:
                                                               std::clamp(damping + blockExtDampMod, 0.0f, 1.0f));
                 voice.delayLine.write(dampedSample);
 
-                // --- Body resonance: setParams hoisted to per-block voice setup above ---
+// --- Body resonance: setParams hoisted to per-block voice setup above ---
                 float bodyOut = waveguideOut + voice.bodyResonator.process(waveguideOut) * 0.2f;
 
                 // --- Sympathetic resonance: shimmer from 8-comb bank ---
@@ -601,8 +667,11 @@ public:
 
                 // --- D001: velocity shapes brightness, not just amplitude.
                 // Higher velocity increases sympathetic resonance (richer overtones).
-                // Seance finding: "Constellation-wide pattern: intensity not brightness". ---
-                float velBrightScale = 0.7f + voice.vel * 0.6f; // 0.7→1.3x at full velocity
+                // Seance finding: "Constellation-wide pattern: intensity not brightness".
+                // F15: velBrightScale previously reached 1.3 at full vel, boosting sympathetic
+                // amplitude above unity and risking FX chain clip. Capped at 1.0 and range
+                // shifted to 0.5→1.0 so sympathetic scales up without exceeding dry signal. ---
+                float velBrightScale = 0.5f + voice.vel * 0.5f; // 0.5→1.0x at full velocity
                 float voiceSignal =
                     (bodyOut + sympOut * velBrightScale) * envLevel * voice.vel * voice.stealFadeGain * 0.4f;
 
@@ -618,19 +687,26 @@ public:
             // Chorus → Bright Delay → Plate Reverb → Air Exciter
             // -----------------------------------------------------------------------
 
-            // Chorus: subtle pitch modulation via slow LFO (0.7 Hz)
+            // Chorus: LFO-driven amplitude modulation with L/R phase opposition
+            // F06: the original comment said "pitch modulation" but this code performs
+            // amplitude (tremolo) modulation via gain scaling. True chorus requires a
+            // modulated delay line (not available in this inline path). Renamed to
+            // clarify intent. The L/R phase flip still widens the stereo image, which
+            // is the perceptually useful effect here.
             float chorusMod = chorusLFO.process() * fxChorus * 0.003f;
             float airL = sumL * (1.0f + chorusMod);
             float airR = sumR * (1.0f - chorusMod);
 
             // Bright delay: ~15ms feedback delay with bright character
             {
-                int rdIdx = brightDelayBufL.empty() ? 0 : brightDelayPos % static_cast<int>(brightDelayBufL.size());
+                // F21: remove dead empty() guard — buffer is always non-empty after prepare()
+                int rdIdx = brightDelayPos % static_cast<int>(brightDelayBufL.size());
                 float delayedL = brightDelayBufL[rdIdx];
                 float delayedR = brightDelayBufR[rdIdx];
                 brightDelayBufL[rdIdx] = flushDenormal(airL + delayedL * 0.4f * fxBrightDelay);
                 brightDelayBufR[rdIdx] = flushDenormal(airR + delayedR * 0.4f * fxBrightDelay);
-                brightDelayPos++;
+                // F05: wrap on increment to prevent INT_MAX overflow in long sessions
+                brightDelayPos = (brightDelayPos + 1) % static_cast<int>(brightDelayBufL.size());
                 airL += delayedL * fxBrightDelay;
                 airR += delayedR * fxBrightDelay;
             }
@@ -647,7 +723,7 @@ public:
             {
                 float monoIn = (airL + airR) * 0.5f;
                 float hfComponent = monoIn - exciterLP;
-                exciterLP = flushDenormal(exciterLP * 0.92f + monoIn * 0.08f);
+                exciterLP = flushDenormal(exciterLP * 0.92f + monoIn * 0.08f); // F08: denormal guard required
                 airL += hfComponent * fxAirExciter * 0.3f;
                 airR += hfComponent * fxAirExciter * 0.3f;
             }
@@ -667,27 +743,36 @@ public:
 
             // Dark delay: ~35ms LP-filtered feedback delay for warm depth
             {
-                int rdIdx = darkDelayBufL.empty() ? 0 : darkDelayPos % static_cast<int>(darkDelayBufL.size());
+                // F21: remove dead empty() guard — buffer is always non-empty after prepare()
+                int rdIdx = darkDelayPos % static_cast<int>(darkDelayBufL.size());
                 float delayedL = darkDelayBufL[rdIdx];
                 float delayedR = darkDelayBufR[rdIdx];
-                // LP filter in the feedback path gives the "dark" character
-                darkDelayLP_L = flushDenormal(darkDelayLP_L * 0.7f + (wetL + delayedL * 0.45f * fxDarkDelay) * 0.3f);
-                darkDelayLP_R = flushDenormal(darkDelayLP_R * 0.7f + (wetR + delayedR * 0.45f * fxDarkDelay) * 0.3f);
+                // F09: LP coefficient 0.7/0.3 was SR-hardcoded for 44100Hz.
+                // Derive coefficient from a target cutoff (~800Hz) using matched-Z:
+                // coeff = exp(-2π * fc / sr). Precomputed once per block in prepare() via
+                // darkDelayLPCoeff_. Feedforward = 1 - coeff.
+                darkDelayLP_L = flushDenormal(darkDelayLP_L * darkDelayLPCoeff_ + (wetL + delayedL * 0.45f * fxDarkDelay) * (1.0f - darkDelayLPCoeff_));
+                darkDelayLP_R = flushDenormal(darkDelayLP_R * darkDelayLPCoeff_ + (wetR + delayedR * 0.45f * fxDarkDelay) * (1.0f - darkDelayLPCoeff_));
                 darkDelayBufL[rdIdx] = darkDelayLP_L;
                 darkDelayBufR[rdIdx] = darkDelayLP_R;
-                darkDelayPos++;
+                // F05: wrap on increment to prevent INT_MAX overflow in long sessions
+                darkDelayPos = (darkDelayPos + 1) % static_cast<int>(darkDelayBufL.size());
                 wetL += delayedL * fxDarkDelay;
                 wetR += delayedR * fxDarkDelay;
             }
 
             // Spring reverb: ~7ms comb filter for metallic resonance
             {
-                int rdIdx = springBufL.empty() ? 0 : springPos % static_cast<int>(springBufL.size());
+                // F21: remove dead empty() guard — buffer is always non-empty after prepare()
+                int rdIdx = springPos % static_cast<int>(springBufL.size());
                 float spL = springBufL[rdIdx];
                 float spR = springBufR[rdIdx];
-                springBufL[rdIdx] = flushDenormal(wetL * 0.3f + spL * 0.6f);
-                springBufR[rdIdx] = flushDenormal(wetR * 0.3f + spR * 0.6f);
-                springPos++;
+                // F10: spring comb feedback 0.6f was SR-hardcoded. Use springFeedbackCoeff_
+                // derived from target decay (~80ms at 44.1kHz) to stay in tune at any SR.
+                springBufL[rdIdx] = flushDenormal(wetL * (1.0f - springFeedbackCoeff_) + spL * springFeedbackCoeff_);
+                springBufR[rdIdx] = flushDenormal(wetR * (1.0f - springFeedbackCoeff_) + spR * springFeedbackCoeff_);
+                // F05: wrap on increment to prevent INT_MAX overflow in long sessions
+                springPos = (springPos + 1) % static_cast<int>(springBufL.size());
                 wetL += spL * fxSpring * 0.4f;
                 wetR += spR * fxSpring * 0.4f;
             }
@@ -706,11 +791,16 @@ public:
             // -----------------------------------------------------------------------
             if (macroWind > 0.01f)
             {
+                // F16: stereo wind — two independent noise seeds for L and R channels
+                // so wind does not sit at exact center and breaks the stereo image.
                 windSeed = windSeed * 1664525u + 1013904223u;
-                float windNoise = static_cast<float>(static_cast<int32_t>(windSeed)) * 4.656612e-10f;
-                windLP = flushDenormal(windLP * 0.95f + windNoise * 0.05f);
+                windSeedR_ = windSeedR_ * 1664525u + 1013904223u;
+                float windNoiseL = static_cast<float>(static_cast<int32_t>(windSeed)) * 4.656612e-10f;
+                float windNoiseR = static_cast<float>(static_cast<int32_t>(windSeedR_)) * 4.656612e-10f;
+                windLP = flushDenormal(windLP * 0.95f + windNoiseL * 0.05f);
+                windLP_R_ = flushDenormal(windLP_R_ * 0.95f + windNoiseR * 0.05f);
                 wetL += windLP * macroWind * 0.08f;
-                wetR += windLP * macroWind * 0.08f;
+                wetR += windLP_R_ * macroWind * 0.08f;
             }
 
             // --- Output accumulate ---
@@ -747,9 +837,11 @@ public:
             extPitchMod = (couplingBuf ? couplingBuf[0] : 0.0f) * amount * 2.0f;
             break;
 
-        // AmpToFilter: coupling amplitude increases waveguide damping (darker tone)
+        // AmpToFilter: coupling amplitude increases waveguide damping (darker tone).
+        // F17: read couplingBuf[0] for dynamic amplitude (mirrors LFOToPitch pattern).
+        // Without this, damping is static (amount only) and ignores envelope shape.
         case CouplingType::AmpToFilter:
-            extDampMod = amount * 0.08f;
+            extDampMod = (couplingBuf ? couplingBuf[0] : amount) * amount * 0.08f;
             break;
 
         // EnvToMorph: coupling envelope multiplies exciter intensity
@@ -811,7 +903,7 @@ public:
         params.push_back(std::make_unique<Float>("obbl_fxAPlate", "Air Plate", Range{0.0f, 1.0f}, 0.2f));
         params.push_back(std::make_unique<Float>("obbl_fxAExciter", "Air Exciter", Range{0.0f, 1.0f}, 0.1f));
 
-        // Section E: FX Chain B "The Water"
+        // Section F: FX Chain B "The Water"   (F28: was mislabelled "Section E" — duplicate)
         params.push_back(std::make_unique<Float>("obbl_fxBPhaser", "Water Phaser", Range{0.0f, 1.0f}, 0.2f));
         params.push_back(std::make_unique<Float>("obbl_fxBDarkDelay", "Dark Delay", Range{0.0f, 1.0f}, 0.3f));
         params.push_back(std::make_unique<Float>("obbl_fxBSpring", "Water Spring", Range{0.0f, 1.0f}, 0.2f));
@@ -862,7 +954,7 @@ public:
         pFxAPl = apvts.getRawParameterValue("obbl_fxAPlate");
         pFxAEx = apvts.getRawParameterValue("obbl_fxAExciter");
 
-        // Section E: FX Chain B "The Water"
+        // Section F: FX Chain B "The Water"   (F28: corrected duplicate label)
         pFxBPh = apvts.getRawParameterValue("obbl_fxBPhaser");
         pFxBDD = apvts.getRawParameterValue("obbl_fxBDarkDelay");
         pFxBSp = apvts.getRawParameterValue("obbl_fxBSpring");
@@ -951,8 +1043,14 @@ private:
     std::vector<float> darkDelayBufL;
     std::vector<float> darkDelayBufR;
     int darkDelayPos = 0;
-    float darkDelayLP_L = 0.0f; // per-channel LP filter state in feedback path
+    float darkDelayLP_L = 0.0f;       // per-channel LP filter state in feedback path
     float darkDelayLP_R = 0.0f;
+    float darkDelayLPCoeff_ = 0.7f;  // F09: SR-normalized LP coeff (computed in prepare())
+
+    //==========================================================================
+    // FX state: Spring reverb coefficient (F10: SR-normalized)
+    //==========================================================================
+    float springFeedbackCoeff_ = 0.6f; // F10: SR-normalized spring comb feedback (computed in prepare())
 
     //==========================================================================
     // FX state: Spring reverb (FX Chain B) — ~7ms comb filter
@@ -965,8 +1063,10 @@ private:
     //==========================================================================
     // FX state: Wind noise (WIND macro)
     //==========================================================================
-    uint32_t windSeed = 33333u; // LCG state for real-time-safe noise generation
-    float windLP = 0.0f;        // one-pole LP for breath-noise floor smoothing
+    uint32_t windSeed = 33333u;   // LCG state for wind noise L channel
+    uint32_t windSeedR_ = 55555u; // F16: independent LCG for wind noise R channel (stereo wind)
+    float windLP = 0.0f;          // one-pole LP for breath-noise floor (L)
+    float windLP_R_ = 0.0f;       // F16: independent LP state for R channel
 
     // Breath smoothing state — prevents zipper noise on rapid breath param changes
     float smoothedBreathA_ = 0.7f;

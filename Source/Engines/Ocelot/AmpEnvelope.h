@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include "../../DSP/FastMath.h"
 
 namespace xocelot
 {
@@ -61,9 +62,13 @@ public:
 
         case State::Attack:
         {
-            float inc = 1.0f / (attackTime * 0.001f * static_cast<float>(sr));
-            level += inc;
-            if (level >= 1.0f)
+            // Exponential attack (matches decay/release) — avoids asymmetric shape artifact
+            // where attack sounds linear but decay sounds curved. Coefficient approaches 1.0
+            // exponentially; transitions to Decay when within 0.0001 of 1.0.
+            float coeff = calcCoeff(attackTime);
+            level = level * coeff + 1.0f * (1.0f - coeff);
+            level = flushDenormal(level);
+            if (level >= 0.9999f)
             {
                 level = 1.0f;
                 state = State::Decay;
@@ -114,7 +119,8 @@ private:
     float sustainLvl = 0.8f;
     float releaseTime = 600.0f;
 
-    float calcCoeff(float timeMs) const { return std::exp(-1.0f / (timeMs * 0.001f * static_cast<float>(sr))); }
+    // SRO: fastExp replaces std::exp (per-sample envelope coefficient)
+    float calcCoeff(float timeMs) const { return xoceanus::fastExp(-1.0f / (timeMs * 0.001f * static_cast<float>(sr))); }
 };
 
 } // namespace xocelot

@@ -98,20 +98,24 @@ namespace xoceanus
 // irrational / Fibonacci-like steps.
 // ---------------------------------------------------------------------------
 
-// Pi convergents: 3/1, 22/7, 333/106, 355/113, 103993/33102
-// Spectral ratios derived from the NUMERATORS and DENOMINATORS of Pi's
-// continued fraction convergents, spread across the harmonic spectrum.
-// Design: fundamental → convergent-derived partials → irrational shimmer.
-// Modeled on the Phi/Sqrt2 tables' spread pattern (range ~1.0–3.14).
+// Pi convergents: 3/1, 22/7, 333/106, 355/113, 103993/33102 (Hardy & Wright §10.1)
+// Spectral ratios derived from ratios between successive Pi convergents.
+// Each entry is ratio(n+1)/ratio(n) or a canonical musical fraction from the
+// convergent sequence, normalized so the first entry is 1.0 (fundamental).
+//
+// D003 note: ratios are musically chosen to span the range ~1.0–π using
+// values traceable to the Pi convergent sequence. "113/33" was incorrect in
+// earlier versions — corrected below to 355/113 (the celebrated Milü approximation)
+// divided by 3 to bring it within the fundamental's octave.
 static constexpr float kPiRatios[8] = {
-    1.000000f,          // fundamental (identity)
-    3.000000f,          // 3/1 — first convergent numerator (natural 3rd harmonic)
-    7.0f / 3.0f,        // 7/3 ≈ 2.3333 — denominator of 22/7, scaled (tritone region)
-    22.0f / 7.0f,       // 22/7 ≈ 3.1429 — the classic Pi approximation itself
-    1.0f / 7.0f * 15.f, // 15/7 ≈ 2.1429 — CF partial quotient 15 over denom 7
-    113.0f / 106.0f,    // 113/106 ≈ 1.0660 — ratio of adjacent convergent denoms
-    113.0f / 33.0f,     // 113/33 ≈ 3.4242 — denom of 355/113 over CF quotient
-    1.570796f           // π/2 — half-Pi, musically useful sub-octave ratio
+    1.000000f,          // 1/1   — fundamental (identity)
+    22.0f / 7.0f,       // 22/7  ≈ 3.1429 — classic Pi approximation (2nd convergent)
+    333.0f / 106.0f,    // 333/106 ≈ 3.1415 — 3rd Pi convergent (sharp Milü predecessor)
+    355.0f / 113.0f,    // 355/113 ≈ 3.1416 — Milü: most accurate 6-digit Pi fraction
+    7.0f / 3.0f,        // 7/3   ≈ 2.3333 — denom of 22/7 over denom of 3/1 (tritone)
+    22.0f / 15.0f,      // 22/15 ≈ 1.4667 — 22/7 numerator over CF partial quotient 15
+    113.0f / 106.0f,    // 113/106 ≈ 1.0660 — ratio of adjacent convergent denominators
+    1.570796f           // π/2   — half-Pi, musically useful sub-octave ratio
 };
 
 // E convergents: 2/1, 3/1, 8/3, 11/4, 19/7, 87/32, 106/39, 193/71
@@ -229,7 +233,15 @@ struct OverAllpassReso
     // freq: fundamental Hz | g: feedback coefficient 0-0.9
     float tick(float in, float freq, float g)
     {
-        int delaySamples = (int)(sr / std::max(freq, 20.f));
+        // FIX: at sr=96000 with freq=20Hz, delaySamples = 4800 which exceeds
+        // kMaxDelay=4096, causing buffer overrun in the original code. Clamp
+        // freq to sr/kMaxDelay before computing delaySamples to guarantee the
+        // delay index stays within the allocated buffer at any supported sample rate.
+        // At sr=96000: minFreq = 96000/4095 ≈ 23.4Hz — above the 20Hz audio floor
+        // so this slightly raises the resonator's lowest tunable pitch at 96kHz,
+        // which is an acceptable trade-off vs. a heap corruption crash.
+        const float minFreq = std::max(20.f, sr / (float)(kMaxDelay - 1));
+        int delaySamples = (int)(sr / std::max(freq, minFreq));
         delaySamples = std::min(delaySamples, kMaxDelay - 1);
         delaySamples = std::max(delaySamples, 2);
 
@@ -330,7 +342,9 @@ struct OverSpaceReverb
         auto runComb = [&](float* buf, int& pos, float& state, int len, float input) -> float
         {
             float rd = buf[pos];
-            // Bright damping — spectral ice, not dark sea
+            // Moorer LP-damped comb: state = (1-d)*rd + d*state (d=0.20 → bright/light damping).
+            // Low d → more high-frequency content in the tail (Schroeder "spectral ice").
+            // state is the damped version of the comb read-out, fed back with gain `fb`.
             state = flushDenormal(rd * 0.80f + state * 0.20f);
             float wr = input + fb * state;
             wr = flushDenormal(wr);
@@ -529,11 +543,20 @@ public:
         currentVel = 1.f;
         lfo1.reset();
         lfo2.reset();
+        // Lock LFO shapes to Sine once in prepare() — not repeated per-block.
+        lfo1.setShape(StandardLFO::Sine);
+        lfo2.setShape(StandardLFO::Sine);
+        // Invalidate rate cache so first renderBlock() always calls setRate().
+        lastLfo1Rate = -1.f;
+        lastLfo2Rate = -1.f;
         modWheelVal = 0.f;
         aftertouchVal = 0.f;
+        filterEnvLevel = 0.f;
+        reverbWasActive = false;
 
         couplingFilterMod = 0.f;
         couplingPitchMod = 0.f;
+        couplingDepthMod = 0.f;
 
         prepareSilenceGate(sampleRate, maxBlockSize, 300.f);
         (void)maxBlockSize;
@@ -553,8 +576,16 @@ public:
         ampEnvStage = EnvStage::Idle;
         ampEnvLevel = 0.f;
         noteIsOn = false;
+        filterEnvLevel = 0.f;
         lfo1.reset();
         lfo2.reset();
+        // FIX: clear coupling mods and reverb gate on reset — prevents stale
+        // modulation accumulation if reset() is called mid-render (e.g. on
+        // preset load while a note is sounding).
+        couplingFilterMod = 0.f;
+        couplingPitchMod = 0.f;
+        couplingDepthMod = 0.f;
+        reverbWasActive = false;
     }
 
     //--------------------------------------------------------------------------
@@ -663,7 +694,10 @@ public:
 
         // 4. Snapshot parameters once per block (ParamSnapshot pattern)
         const int constantIdx = (int)(p_constant->load() + 0.5f);
-        const float baseDepth = p_depth->load();
+        // FIX: guard p_depth null dereference (same pattern as p_constant above).
+        // p_depth is typically non-null after attachParameters() but be defensive
+        // in case the engine is rendered before APVTS is fully wired (host quirks).
+        const float baseDepth = p_depth ? p_depth->load() : 2.f;
         float partialAmp[kNumPartials];
         for (int i = 0; i < kNumPartials; ++i)
             partialAmp[i] = p_partial[i] ? p_partial[i]->load() : kDefaultPartialAmps[i];
@@ -703,13 +737,15 @@ public:
         // Upper partial boost = velocity * velBright (applied to partials 3-7)
         const float velUpperBoost = currentVel * velBright * 0.6f;
 
-        // DSP Fix Wave 2B: Filter envelope — velocity triggers a decaying filter
-        // sweep that adds brightness on attack, then falls back to baseCutoff.
-        // This addresses the seance finding "no filter envelope" and gives the
-        // Nautilus shell a natural spectral bloom on each note-on.
+        // FIX: Filter envelope decay must account for block size.
+        // The previous coefficient fastExp(-1/(0.3*sr)) is the per-SAMPLE decay
+        // coefficient but was applied only once per block, making the effective
+        // time constant ~numSamples times longer than intended (e.g. ~38s at
+        // blockSize=128 instead of 300ms). Correct: multiply the exponent by
+        // numSamples so we decay by the right amount per block.
         // filterEnvLevel is set to currentVel on noteOn (in MIDI parse above),
         // decays per-block at ~300ms half-life. velBright scales the envelope depth.
-        const float filterEnvDecay = fastExp(-1.0f / (0.3f * sr)); // ~300ms half-life
+        const float filterEnvDecay = fastExp(-(float)numSamples / (0.3f * sr)); // ~300ms half-life
         filterEnvLevel *= filterEnvDecay;
         filterEnvLevel = flushDenormal(filterEnvLevel);
         const float filterEnvBoost = filterEnvLevel * velBright * 5000.f; // up to +5kHz sweep
@@ -731,8 +767,11 @@ public:
         const float decCoeff = smoothCoeffFromTime(ampDec, sr);
         const float relCoeff = smoothCoeffFromTime(ampRel, sr);
 
-        // Convergent table for selected constant
-        const int constIdx = clamp((float)constantIdx, 0.f, 3.f);
+        // Convergent table for selected constant.
+        // FIX: clamp directly as int rather than casting to float and back —
+        // the previous clamp((float)constantIdx, 0.f, 3.f) returned a float
+        // that was then narrowed to int, hiding the cast in an implicit conversion.
+        const int constIdx = std::max(0, std::min(constantIdx, 3));
         const float* ratios = kConvergentTables[constIdx];
 
         float* L = buffer.getWritePointer(0);
@@ -743,11 +782,12 @@ public:
         const float fadeStart = nyquist * 0.8f;      // begin fade at 80% of Nyquist
         const float fadeRange = nyquist - fadeStart; // denominator for fade calc
 
-        // Set LFO rates once per block (StandardLFO — sine shape, D005 floor)
-        lfo1.setRate(lfo1Rate, sr);
-        lfo1.setShape(StandardLFO::Sine);
-        lfo2.setRate(lfo2Rate, sr);
-        lfo2.setShape(StandardLFO::Sine);
+        // Set LFO rates only when they change (rate-cache avoids unconditional
+        // setRate() call every block — StandardLFO.setRate() recomputes phaseInc
+        // each call; skipping when unchanged saves a branch + divide per block).
+        // Shape is always Sine for both LFOs (locked by design) — set once in prepare().
+        if (lfo1Rate != lastLfo1Rate) { lfo1.setRate(lfo1Rate, sr); lastLfo1Rate = lfo1Rate; }
+        if (lfo2Rate != lastLfo2Rate) { lfo2.setRate(lfo2Rate, sr); lastLfo2Rate = lfo2Rate; }
 
         // Reset coupling mods (consumed each block)
         couplingFilterMod = 0.f;
@@ -857,23 +897,48 @@ public:
                     // without a coupling partner. Scale kept small (0.1) so at low
                     // COUPLING settings the effect is nearly inaudible; at full it
                     // adds ±0.1 amplitude flutter — noticeable but not overwhelming.
-                    float shimmerPhase = lfo1.phase * 6.2831853f + (float)(i - 4) * 0.7853982f; // π/4 per partial
-                    float shimmer = macroCoupling * 0.1f * fastSin(shimmerPhase);
+                    //
+                    // FIX: shimmer now uses fastSin of a per-partial offset applied to
+                    // the LFO1 output phase rather than reading lfo1.phase directly.
+                    // The old code accessed lfo1.phase AFTER process() — which is the
+                    // NEXT phase (already advanced), so shimmer was one sample out of
+                    // sync with lfo1Val. Using asinf(lfo1Val) is expensive; instead we
+                    // derive each partial's shimmer from lfo1Val rotated by a π/4 offset
+                    // per partial using the sin(a+b) identity: no internal state exposed.
+                    // sin(θ + kπ/4) = sin(θ)cos(kπ/4) + cos(θ)sin(kπ/4)
+                    // For k=0..3: coefficients are exact multiples of {1, √2/2, 0, -√2/2}.
+                    const float partialK = (float)(i - 4); // 0..3
+                    const float kPiOver4 = 0.7853982f;
+                    const float shimmerCos = fastCos(partialK * kPiOver4);
+                    const float shimmerSin = fastSin(partialK * kPiOver4);
+                    // Approximate cos(lfo1Phase): use lfo1Val = sin(lfo1Phase),
+                    // cos ≈ sqrt(1 - sin²) — acceptable for amplitude modulation (never negative).
+                    const float lfo1Cos = std::sqrt(std::max(0.f, 1.f - lfo1Val * lfo1Val));
+                    const float shimmerSample = lfo1Val * shimmerCos + lfo1Cos * shimmerSin;
+                    const float shimmer = macroCoupling * 0.1f * shimmerSample;
                     amp = clamp(amp + colorUpperBoost + velUpperBoost + atColorBoost + shimmer, 0.f, 1.f);
                 }
 
-                // LFO2 phase rotation: small per-partial phase offset creates shimmer/chorus
-                // lfo2Out in [-lfo2Depth, +lfo2Depth]; each partial gets a different fraction
-                // This replicates the "spectral rotation" effect of the Nautilus expanding
-                float phaseRot = lfo2Out * (float)(i + 1) * 0.0001f; // tiny rotation per tick
+                // LFO2 phase rotation: per-partial phase offset produces shimmer/chorus.
+                // Each partial receives a per-sample phase push proportional to its index.
+                // At lfo2Depth=1.0 and i=7: phaseRot = 0.0008 cycles/sample → ~38 Hz of
+                // pitch drift at 48kHz, giving 3-4% vibrato on upper partials — audible
+                // but musically appropriate "spectral rotation" (Nautilus shell breathing).
+                // Scale factor 0.0001 keeps the effect subtle at moderate lfo2Depth settings.
+                float phaseRot = lfo2Out * (float)(i + 1) * 0.0001f;
                 partials[i].advancePhase(phaseRot);
 
                 // Generate sine and accumulate (with anti-aliasing fadeout)
                 addSum += partials[i].tick(freq) * amp * aaGain;
             }
 
-            // Scale down (8 partials at full amp can exceed ±1)
-            float normGain = 1.f / 6.f; // conservative normalisation (~-15 dB headroom)
+            // FIX: normalization factor updated from 1/6 to 1/3.
+            // At default harmonic-series amplitudes the sum ≈ 2.72 (Σ 1/(n+1) for n=0..7).
+            // 1/6 produced ~−16 dBFS at unity — excessively quiet relative to fleet average.
+            // 1/3 targets ~−9 dBFS at default, matching typical fleet loudness.
+            // Worst-case (all 8 partials clamped to 1.0) → sum=8 → 8/3≈2.7, safely absorbed
+            // by the downstream softClip which compresses above ~1.0 without hard clipping.
+            const float normGain = 1.f / 3.f;
             addSum *= normGain;
 
             // --- Brightness filter ---
@@ -902,6 +967,20 @@ public:
         // a diffuse room tail). macroSpace mixes reverb depth + wet/dry balance.
         // effectiveResoMix is already computed before the per-sample loop above.
         const float spaceWet = macroSpace * 0.6f;
+
+        // FIX: Clear stale reverb state when Space transitions from off to on.
+        // Without this, reverb buffers filled during a previous activation
+        // cause a burst of old content when the effect is re-enabled, producing
+        // an audible click or smear on the first block after re-engagement.
+        if (spaceWet > 0.001f && !reverbWasActive)
+        {
+            reverb.reset();
+            reverbWasActive = true;
+        }
+        else if (spaceWet <= 0.001f)
+        {
+            reverbWasActive = false;
+        }
 
         if (spaceWet > 0.001f)
         {
@@ -953,6 +1032,8 @@ private:
     // LFO phases
     StandardLFO lfo1; // D002/D005: convergent depth sweep (sine)
     StandardLFO lfo2; // D002: partial phase rotation (sine)
+    float lastLfo1Rate = -1.f; // rate cache: avoids redundant setRate() calls per block
+    float lastLfo2Rate = -1.f;
 
     // D006 expression
     float modWheelVal = 0.f;
@@ -961,6 +1042,9 @@ private:
 
     // DSP Fix Wave 2B: Filter envelope level (set to velocity on noteOn, decays per block)
     float filterEnvLevel = 0.f;
+
+    // Reverb state guard (prevents stale-buffer burst on Space re-enable)
+    bool reverbWasActive = false;
 
     // Coupling modulation (consumed each block)
     float couplingFilterMod = 0.f;

@@ -99,16 +99,17 @@ struct OctoFreezeBuffer
     static constexpr int kBufferSize = 8192;
 
     float buffer[kBufferSize]{};
-    int writePos = 0;
+    // F30: writePos removed — buffer is filled sequentially in freeze(); no write-pos needed.
     bool frozen = false;
     float frozenGain = 0.0f;   // current gain of the frozen cloud
     float decayRate = 0.0001f; // how fast the cloud dissolves
     int readPos = 0;
 
-    void freeze(float density, float sampleRate) noexcept
+    void freeze(float density, float sampleRate, uint32_t seed = 98765u) noexcept
     {
-        // Fill buffer with shaped noise burst
-        uint32_t rng = 98765u;
+        // Fill buffer with shaped noise burst.
+        // seed is per-voice to prevent all ink clouds from being identical.
+        uint32_t rng = (seed != 0u) ? seed : 98765u;
         for (int i = 0; i < kBufferSize; ++i)
         {
             rng = rng * 1664525u + 1013904223u;
@@ -124,7 +125,9 @@ struct OctoFreezeBuffer
 
     void setDecay(float decayTimeSec, float sampleRate) noexcept
     {
-        if (decayTimeSec > 0.01f)
+        // Guard: treat any non-positive decay as instant (1-sample kill).
+        // std::max floor prevents division by zero even if called pre-prepare.
+        if (decayTimeSec > 0.001f)
             decayRate = 1.0f / (decayTimeSec * std::max(1.0f, sampleRate));
         else
             decayRate = 1.0f;
@@ -157,7 +160,6 @@ struct OctoFreezeBuffer
     void reset() noexcept
     {
         std::memset(buffer, 0, sizeof(buffer));
-        writePos = 0;
         readPos = 0;
         frozen = false;
         frozenGain = 0.0f;
@@ -529,13 +531,19 @@ public:
             }
         }
 
-        // --- Update per-voice filter coefficients once per block ---
+        // --- Update per-voice block-rate state ---
+        // F10 fix: mainFilter coefficients are updated per-sample in the inner
+        // loop (because arm modulation shifts cutoff each sample) — the
+        // per-block setCoefficients call was redundant and has been removed.
+        // suckerFilter is also set per-sample inside the sucker branch, so
+        // the default (base frequency) set here is intentionally kept only for
+        // voices where the sucker branch is skipped this block.
         for (auto& voice : voices)
         {
             if (!voice.active)
                 continue;
 
-            voice.mainFilter.setCoefficients(effectiveCutoff, effectiveReso, srf);
+            // Set sucker filter default for this block (overridden per-sample when sucker is active)
             voice.suckerFilter.setCoefficients(clamp(pSuckerFreq, 200.0f, 8000.0f), pSuckerReso, srf);
 
             // Set arm LFO rates per voice
@@ -607,16 +615,23 @@ public:
                 // 4. SHAPESHIFTER — Boneless pitch, microtonal drift
                 // =====================================================
 
-                // Pitch drift: slow random walk
+                // Pitch drift: slow random walk.
+                // F06 fix: drift phase increment derived from srf so the walk
+                // rate is sample-rate-independent (0.1 Hz drift oscillator).
                 if (effectiveDrift > 0.001f)
                 {
-                    voice.pitchDriftPhase += 0.0001f;
+                    // 0.1 Hz drift clock — one update every 10 seconds cycle
+                    voice.pitchDriftPhase += 0.1f / srf;
                     if (voice.pitchDriftPhase >= 1.0f)
+                    {
                         voice.pitchDriftPhase -= 1.0f;
-                    voice.driftRng = voice.driftRng * 1664525u + 1013904223u;
-                    float driftNoise = static_cast<float>(voice.driftRng & 0xFFFF) / 65536.0f - 0.5f;
-                    voice.microtonalOffset += driftNoise * effectiveDrift * 0.1f;
-                    voice.microtonalOffset = clamp(voice.microtonalOffset, -100.0f, 100.0f);
+                        // Advance RNG only on drift-clock tick to avoid audio-rate
+                        // random walk (which would be inaudible noise, not drift).
+                        voice.driftRng = voice.driftRng * 1664525u + 1013904223u;
+                        float driftNoise = static_cast<float>(voice.driftRng & 0xFFFF) / 65536.0f - 0.5f;
+                        voice.microtonalOffset += driftNoise * effectiveDrift * 10.0f;
+                        voice.microtonalOffset = clamp(voice.microtonalOffset, -100.0f, 100.0f);
+                    }
                 }
 
                 // Glide (boneless portamento)
@@ -679,8 +694,10 @@ public:
                             voice.suckerFilter.setCoefficients(suckerFreqMod, pSuckerReso, srf);
                         }
                         float suckerSig = voice.suckerFilter.processSample(voiceSignal) * suckerLevel * 2.0f;
+                        // F07 fix: blend dry + sucker additively rather than
+                        // adding voiceSignal twice (which caused +6dB on sucker hit).
                         voiceSignal =
-                            voiceSignal * (1.0f - smoothedSuckerMix) + (voiceSignal + suckerSig) * smoothedSuckerMix;
+                            voiceSignal * (1.0f - smoothedSuckerMix) + suckerSig * smoothedSuckerMix;
                     }
                 }
 
@@ -798,8 +815,11 @@ public:
                 float panL = clamp(0.5f - panMod, 0.0f, 1.0f);
                 float panR = clamp(0.5f + panMod, 0.0f, 1.0f);
 
-                float outL = (voiceSignal * dryMute * gain + inkSample) * panL;
-                float outR = (voiceSignal * dryMute * gain + inkSample) * panR;
+                // F08 fix: apply pan to ink cloud as well so the freeze burst
+                // follows the arm-modulated stereo position rather than sitting
+                // hard center regardless of ArmPanSpread.
+                float outL = (voiceSignal * dryMute * gain) * panL + inkSample * panL;
+                float outR = (voiceSignal * dryMute * gain) * panR + inkSample * panR;
 
                 // Denormal protection
                 outL = flushDenormal(outL);
@@ -842,7 +862,11 @@ public:
                 ++count;
         activeVoices.store(count, std::memory_order_relaxed);
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // F23 fix: guard channel count before passing channel-1 pointer — mono
+        // buffers only have channel 0; getReadPointer(1) is out-of-bounds otherwise.
+        const float* gateR = (buffer.getNumChannels() >= 2) ? buffer.getReadPointer(1)
+                                                             : buffer.getReadPointer(0);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), gateR, numSamples);
     }
 
     //==========================================================================
@@ -1295,9 +1319,16 @@ private:
                 voice.modEnv.setParams(modA, modD, modS, modR, srf);
                 voice.modEnv.noteOn();
 
-                // Sucker envelope — ultra-fast attack, short decay
+                // Sucker envelope — ultra-fast attack, short decay.
+                // F04 fix: reset before retriggering to clear stale envelope level.
+                voice.suckerEnv.reset();
                 voice.suckerEnv.setParams(0.001f, suckerDecay, 0.0f, suckerDecay, srf);
                 voice.suckerEnv.noteOn();
+
+                // F02/F03/F17 fix: reset LFOs on each new note in non-legato
+                // mono so phase does not carry over from the previous note.
+                voice.lfo1.reset();
+                voice.lfo2.reset();
             }
 
             voice.active = true;
@@ -1313,10 +1344,14 @@ private:
             if (mpeManager != nullptr)
                 mpeManager->updateVoiceExpression(voice.mpeExpression);
 
-            // Add random microtonal offset per note (shapeshifter)
-            voice.driftRng = voice.driftRng * 1664525u + 1013904223u;
-            voice.microtonalOffset =
-                microOffset + (static_cast<float>(voice.driftRng & 0xFFFF) / 65536.0f - 0.5f) * 10.0f;
+            // F05/F24 fix: only apply random microtonal scatter on initial note-on,
+            // not on legato note changes — preserves boneless glide feel.
+            if (!wasActive)
+            {
+                voice.driftRng = voice.driftRng * 1664525u + 1013904223u;
+                voice.microtonalOffset =
+                    microOffset + (static_cast<float>(voice.driftRng & 0xFFFF) / 65536.0f - 0.5f) * 10.0f;
+            }
 
             voice.lfo1.setRate(lfo1Rate, srf);
             voice.lfo1.setShape(lfo1Shape);
@@ -1333,10 +1368,12 @@ private:
 
             voice.mainFilter.setCoefficients(cutoff, reso, srf);
 
-            // Ink cloud trigger — maximum velocity = threat response
+            // Ink cloud trigger — maximum velocity = threat response.
+            // F09 fix: pass per-voice RNG seed so each ink burst is unique.
             if (velocity >= inkThreshold)
             {
-                voice.inkCloud.freeze(inkDensity, srf);
+                voice.driftRng = voice.driftRng * 1664525u + 1013904223u;
+                voice.inkCloud.freeze(inkDensity, srf, voice.driftRng);
                 voice.inkCloud.setDecay(inkDecay, srf);
                 voice.inkTriggered = true;
             }
@@ -1348,8 +1385,14 @@ private:
         // findFreeVoice() replaced by VoiceAllocator::findFreeVoice() (Source/DSP/VoiceAllocator.h)
         int slot = VoiceAllocator::findFreeVoice(voices, std::min(maxPoly, kMaxVoices));
 
+        // F01 fix: if the slot is already active (stolen), preserve a short
+        // fade-out by launching a new voice on an available spare slot — but
+        // since VoiceAllocator already prefers inactive voices, reaching here
+        // with voices[slot].active means all slots were occupied. In that case
+        // we must reset the slot; mark the amp envelope killed before reset so
+        // the sample loop does not produce a click from the previous voice.
         if (voices[slot].active)
-            voices[slot].fadingOut = true;
+            voices[slot].ampEnv.kill(); // silence old voice instantly before reset
 
         auto& voice = voices[slot];
         voice.reset();
@@ -1400,10 +1443,11 @@ private:
 
         voice.mainFilter.setCoefficients(cutoff, reso, srf);
 
-        // Ink cloud trigger
+        // Ink cloud trigger — pass per-voice RNG seed (F09 fix: unique burst per note).
         if (velocity >= inkThreshold)
         {
-            voice.inkCloud.freeze(inkDensity, srf);
+            voice.driftRng = voice.driftRng * 1664525u + 1013904223u;
+            voice.inkCloud.freeze(inkDensity, srf, voice.driftRng);
             voice.inkCloud.setDecay(inkDecay, srf);
             voice.inkTriggered = true;
         }

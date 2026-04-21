@@ -25,15 +25,21 @@ namespace xoceanus
 //==============================================================================
 struct OrphicaMicrosound
 {
-    static constexpr int kBufSize =
-        131072; // ~2.7 seconds @ 48kHz — supports long slow-attack granular pads and freeze sustains without clipping
-    static constexpr int kGrains = 4;
+    static constexpr int   kBufSize    = 131072; // ~2.7 s @ 48kHz — supports long slow-attack pads + freeze
+    static constexpr int   kGrains     = 4;
+    // PERF-3: precompute grain reciprocal so the per-sample wet *= (1/kGrains) is a multiply not a divide.
+    static constexpr float kGrainsRcpf = 1.0f / static_cast<float>(kGrains);
+    static constexpr float kTwoPi      = 6.28318530717958647692f; // SOUND-3: consistent pi constant
 
     float buffer[kBufSize]{};
     int writePos = 0;
     uint32_t seed = 12345u;
 
     int freezePos = 0; // captured write position when Freeze mode triggers
+
+    // PERF-2: cache retrigInterval so it is not recomputed every sample inside the grain loop.
+    // Updated by the engine once per block before calling process().
+    int cachedRetrigInterval = 4800; // default ~100ms at 48kHz
 
     struct Grain
     {
@@ -64,7 +70,9 @@ struct OrphicaMicrosound
     // density: overlap amount 0-1 (controls stagger)
     // scatter: position randomization 0-1
     // mix: dry/wet 0-1
-    float process(float input, int mode, float sr, float rate, int sizeSamples, int density, float scatter, float mix)
+    // PERF-2: retrigInterval is pre-computed by the engine once per block via
+    // cachedRetrigInterval; the sr/rate division is not repeated every sample.
+    float process(float input, int mode, float /*sr*/, float /*rate*/, int sizeSamples, int density, float scatter, float mix)
     {
         if (mix < 0.001f)
         {
@@ -90,7 +98,7 @@ struct OrphicaMicrosound
 
         float wet = 0.0f;
         int grainSize = std::max(16, std::min(sizeSamples, kBufSize / 2));
-        int retrigInterval = std::max(1, static_cast<int>(sr / std::max(rate, 0.5f)));
+        int retrigInterval = cachedRetrigInterval; // PERF-2: use pre-computed value
 
         for (int g = 0; g < kGrains; ++g)
         {
@@ -146,14 +154,14 @@ struct OrphicaMicrosound
 
             if (gr.remaining > 0 && gr.remaining <= gr.length)
             {
-                // Hann window
+                // Hann window — SOUND-3: use shared kTwoPi constant for precision consistency
                 float phase = static_cast<float>(gr.length - gr.remaining) / static_cast<float>(gr.length);
-                float window = 0.5f * (1.0f - fastCos(2.0f * 3.14159265f * phase));
+                float window = 0.5f * (1.0f - fastCos(kTwoPi * phase));
 
-                int rp = gr.readPos % kBufSize;
-                if (rp < 0)
-                    rp += kBufSize;
-                wet += buffer[rp] * window;
+                // STABILITY-1: gr.readPos is always kept in [0, kBufSize) by the modular
+                // arithmetic in the retrigger branches above, so the negative-guard
+                // and second % are redundant — use readPos directly.
+                wet += buffer[gr.readPos] * window;
 
                 // Advance read position (reverse mode goes backwards)
                 if (mode == 3)
@@ -165,7 +173,7 @@ struct OrphicaMicrosound
             gr.remaining--;
         }
 
-        wet *= (1.0f / kGrains);
+        wet *= kGrainsRcpf; // PERF-3: multiply by precomputed reciprocal
         return input * (1.0f - mix) + wet * mix;
     }
 };
@@ -228,7 +236,11 @@ struct OrphicaAdapterVoice
         df.reset();
         body.setParams(freq * 1.2f, 4);
         symp.tune(freq);
-        pluck.trigger(2.5f);
+        // SOUND-7: scale pluck burst to one string period so the excitation doesn't
+        // outlast the fundamental and corrupt the pitch on high notes.
+        // Clamp to [0.5, 2.5] ms: short enough for high notes, long enough for bass.
+        float burstMs = std::clamp(1000.0f / std::max(freq, 1.0f), 0.5f, 2.5f);
+        pluck.trigger(burstMs);
         ampEnv = v;
         releasing = false;
         active = true;
@@ -272,7 +284,7 @@ public:
         crystalChorus.prepare(sampleRate, maxBlockSize);
         crystalChorus.setMode(MasterModulation::Mode::Chorus);
         // Sub oscillator state
-        subPhaseL = subPhaseR = 0.0f;
+        subPhaseL = 0.0f;
     }
 
     void releaseResources() override
@@ -293,8 +305,12 @@ public:
         microDelay.reset();
         spectralSmear.reset();
         crystalChorus.reset();
-        subPhaseL = subPhaseR = 0;
+        subPhaseL = 0;
         atTarget = atSmoothed = modWheelTarget = modWheelSmoothed = 0.0f;
+        // COUPLING-3: reset coupling ext mods so stale values don't persist after a hard reset
+        extPitchMod = 0.0f;
+        extDampMod  = 0.0f;
+        extIntens   = 1.0f;
     }
 
     void renderBlock(juce::AudioBuffer<float>& buf, juce::MidiBuffer& midi, int ns) override
@@ -324,7 +340,14 @@ public:
                     voices[t].pendingNote = msg.getNoteNumber();
                     voices[t].pendingVel = msg.getVelocity() / 127.f;
                 }
-                else if (!voices[t].isBeingStolen)
+                else if (voices[t].isBeingStolen)
+                {
+                    // VOICES-1: third note while a steal is in-progress — overwrite
+                    // the pending note so the incoming note is not silently dropped.
+                    voices[t].pendingNote = msg.getNoteNumber();
+                    voices[t].pendingVel  = msg.getVelocity() / 127.f;
+                }
+                else
                 {
                     voices[t].noteOn(msg.getNoteNumber(), msg.getVelocity() / 127.f);
                 }
@@ -448,8 +471,12 @@ public:
 
         // ---- Microsound params (pre-compute in samples) -------------------------
         int miSizeSamples = std::max(1, static_cast<int>(pMiSz * 0.001f * static_cast<float>(sr)));
-        int microModeInt = static_cast<int>(pMiMo);
-        int miDensInt = static_cast<int>(pMiDn);
+        int microModeInt  = static_cast<int>(pMiMo);
+        int miDensInt     = static_cast<int>(pMiDn);
+        // PERF-2: compute retrigInterval once per block and push into per-voice micro structs.
+        int miRetrigInterval = std::max(1, static_cast<int>(static_cast<float>(sr) / std::max(pMiRa, 0.5f)));
+        for (auto& v : voices)
+            v.micro.cachedRetrigInterval = miRetrigInterval;
 
         // ---- Configure FX LOW ---------------------------------------------------
         tapeSatFx.setDrive(pTpS);
@@ -462,7 +489,9 @@ public:
         // ---- Configure FX HIGH --------------------------------------------------
         shimmerVerb.setMix(divShimmer);
         microDelay.setDelayTime(pMDT); // already in ms
-        microDelay.setMix(pMDT > 0.6f ? 0.3f : 0.0f);
+        // PARAMS-2: gate threshold aligned with param minimum (0.5ms) so the entire
+        // usable range activates the delay; was >0.6f which created a dead zone.
+        microDelay.setMix(pMDT > 0.5f ? 0.3f : 0.0f);
         spectralSmear.setSmear(divSmear);
         spectralSmear.setMix(divSmear);
         crystalChorus.setRate(pCCR);
@@ -588,21 +617,24 @@ public:
 
         // ---- FX Path LOW: sub → tape sat → dark delay → deep plate --------------
 
-        // Sub harmonic: add octave-below sine to LOW path
+        // Sub harmonic: add octave-below sine to LOW path.
+        // SOUND-1: average all active voice sub-frequencies rather than snapping
+        // to the first active voice — avoids abrupt sub pitch jumps in polyphony.
+        // PERF-4: replace std::fmod with conditional subtract (avoids libm call per sample).
         if (pSub > 0.001f)
         {
-            // Estimate fundamental from most recent active voice
-            float subFreq = 55.0f;
+            float subFreq = 0.0f;
+            int subCount  = 0;
             for (auto& v : voices)
-                if (v.active)
-                {
-                    subFreq = v.freq * 0.5f;
-                    break;
-                }
+                if (v.active) { subFreq += v.freq * 0.5f; ++subCount; }
+            if (subCount == 0) subFreq = 55.0f;
+            else               subFreq /= static_cast<float>(subCount);
+
             float subInc = subFreq / static_cast<float>(sr);
             for (int i = 0; i < ns; ++i)
             {
-                subPhaseL = std::fmod(subPhaseL + subInc, 1.0f);
+                subPhaseL += subInc;
+                if (subPhaseL >= 1.0f) subPhaseL -= 1.0f;
                 float sub = fastSin(subPhaseL * 6.2831853f) * pSub * 0.3f;
                 lowBufL[i] += sub;
                 lowBufR[i] += sub;
@@ -668,7 +700,9 @@ public:
             extPitchMod = (buf ? buf[0] : 0.f) * amount * 2.f;
             break;
         case CouplingType::AmpToFilter:
-            extDampMod = amount * 0.08f;
+            // COUPLING-1: use buf[0] so the actual source amplitude drives damping,
+            // not just the static coupling amount (which is a scalar gain/depth control).
+            extDampMod = (buf ? buf[0] : 0.f) * amount * 0.08f;
             break;
         case CouplingType::EnvToMorph:
             extIntens = 1.f + amount * 0.5f;
@@ -811,7 +845,8 @@ private:
     Saturator tapeSatFx;
     MasterDelay darkDelay;
     LushReverb deepPlate;
-    float subPhaseL = 0, subPhaseR = 0;
+    // PERF-1: subPhaseR removed — sub oscillator is mono (identical L+R signal).
+    float subPhaseL = 0;
 
     // FX HIGH processors
     LushReverb shimmerVerb;

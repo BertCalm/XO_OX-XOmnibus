@@ -56,13 +56,15 @@ public:
         subWaveBlend = subWave;
         bodyFreqHz = bodyFreq;
         bodyLevelAmt = bodyLevel;
+        // PERF FIX: cache invSr in setParams (called once per block) rather than
+        // recomputing it every sample inside processSample (double division is slow).
+        invSr = static_cast<float>(1.0 / sr);
     }
 
     /// Process one sample. freq = current MIDI frequency after portamento.
     float processSample(float freq)
     {
         constexpr float twoPi = 6.28318530717958647692f;
-        float invSr = static_cast<float>(1.0 / sr);
 
         // -- Fundamental oscillator --
         float fundInc = freq * invSr;
@@ -100,7 +102,13 @@ public:
         // -- Mixtur waveshaping --
         // Low mixtur: clean subharmonic layering
         // High mixtur: soft-clip inter-modulation growl
-        float clean = subSum;
+        // FIX: normalize subSum before shaping. With all 4 subs active at default
+        // levels (0.8+0.6+0.4+0.3 = 2.1), the clean path exceeds unity amplitude and
+        // the lerp into the shaped path produces inconsistent loudness depending on
+        // mixtur setting. Normalize to peak sum to keep clean path in [-1, 1].
+        constexpr float kMaxSubSum = 2.1f; // sum of all 4 default sub levels
+        float normalizedSum = subSum / kMaxSubSum;
+        float clean = normalizedSum;
         float shaped = fastTanh(clean * 2.0f);
         float subFinal = lerp(clean, shaped, mixturAmt);
 
@@ -138,6 +146,7 @@ private:
     float subWaveBlend = 0.0f;
     float bodyFreqHz = 40.0f;
     float bodyLevelAmt = 0.3f;
+    float invSr = 1.0f / 44100.0f; // cached 1/sampleRate — updated in setParams()
 
     /// Map division choice index to actual divisor.
     /// 0 = Off, 1 = divide by 2, 2 = divide by 3, ... 7 = divide by 8.

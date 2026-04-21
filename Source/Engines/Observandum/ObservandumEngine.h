@@ -165,7 +165,8 @@ public:
         sampleRateFloat  = static_cast<float>(sampleRate);
 
         // 5 ms smoothing coefficient (zipper noise prevention)
-        paramSmoothCoeff = 1.0f - std::exp(-kObservTwoPi * (1.0f / 0.005f) / sampleRateFloat);
+        // Standard one-pole time-constant form: 1 - exp(-1/(T*sr))
+        paramSmoothCoeff = 1.0f - fastExp(-1.0f / (0.005f * sampleRateFloat));
 
         // 5 ms voice crossfade rate (linear ramp)
         voiceFadeRate = 1.0f / (0.005f * sampleRateFloat);
@@ -217,13 +218,26 @@ public:
         smoothedMorph              = 0.0f;
         smoothedDetune             = 0.0f;
         smoothedSpread             = 0.0f;
-        smoothedDistortion         = 0.0f;
+        smoothedDistortion         = 0.5f;   // match param default to avoid transient
         smoothedCutoff             = 8000.0f;
         modWheelValue              = 0.0f;
+        aftertouchValue            = 0.0f;
         pitchBendNorm              = 0.0f;
+        couplingCurveModAccum      = 0.0f;
+
+        // Parametric model state
+        parametricModelPhase       = 0.0;
+        turbulenceSmoothed         = 0.0f;
+        driftAccum                 = 0.0f;
+        driftSmooth                = 0.0f;
+
+        // Block-rate LFOs
+        blockLfo1.reset();
+        blockLfo2.reset();
 
         std::fill(outputCacheLeft.begin(),  outputCacheLeft.end(),  0.0f);
         std::fill(outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
+        std::fill(envSignalBuffer.begin(),  envSignalBuffer.end(),  0.0f);
     }
 
     //==========================================================================
@@ -317,7 +331,7 @@ public:
         // ---- Glide coefficient ----
         float glideCoeff = 1.0f;
         if (paramGlideTime > 0.001f)
-            glideCoeff = 1.0f - std::exp(-1.0f / (paramGlideTime * sampleRateFloat));
+            glideCoeff = 1.0f - fastExp(-1.0f / (paramGlideTime * sampleRateFloat));
 
         // ---- Macro offsets ----
         // CHARACTER: +distortion, +curveMorph toward high values
@@ -392,6 +406,7 @@ public:
                 float sig = 0.0f;
                 switch (paramEnvModel)
                 {
+                    case 0: // Wave: sin
                     case 0: // Wave: sin (fastSin: ~0.01% err, per-sample)
                         sig = fastSin(kObservTwoPi * static_cast<float>(t));
                         break;
@@ -404,6 +419,10 @@ public:
                         sig = flushDenormal(turbulenceSmoothed);
                         break;
                     }
+                    case 2: // Tidal: superposition of 3 sines
+                        sig = fastSin(kObservTwoPi * static_cast<float>(t))
+                            + 0.5f * fastSin(1.7f * kObservTwoPi * static_cast<float>(t))
+                            + 0.3f * fastSin(2.9f * kObservTwoPi * static_cast<float>(t));
                     case 2: // Tidal: superposition of 3 sines (fastSin per-sample)
                     {
                         const float ph = kObservTwoPi * static_cast<float>(t);
@@ -488,6 +507,7 @@ public:
                 float t = (numFacets > 1) ? static_cast<float>(f) / static_cast<float>(numFacets - 1) : 0.5f;
                 // t in [0,1] → detune offset in [-half, +half] cents
                 float centOffset = (t - 0.5f) * 2.0f * detuneHalfRangeCents;
+                detuneRatio[f] = fastPow2(centOffset / 1200.0f);
                 detuneRatio[f] = fastPow2(centOffset * (1.0f / 1200.0f));
                 // Phase offset in [0, spreadDeg/360] cycle fraction
                 float spreadFrac = spreadDeg / 360.0f;
@@ -558,6 +578,7 @@ public:
         }
 
         // Pitch bend ratio (±2 semitones + mod matrix pitch offset in semitones)
+        float pitchBendRatio = fastPow2((pitchBendNorm * 2.0f + modPitchOffset) / 12.0f);
         float pitchBendRatio = fastPow2((pitchBendNorm * 2.0f + modPitchOffset) * (1.0f / 12.0f));
 
         // D006: aftertouch → distortion boost
@@ -762,9 +783,9 @@ public:
                 peakEnvLevel = std::max(peakEnvLevel, ampLevel);
             }
 
-            // Apply master level
-            float finalL = mixLeft  * paramMasterLevel;
-            float finalR = mixRight * paramMasterLevel;
+            // Apply master level + soft clip (polyphony sum can exceed 0 dBFS)
+            float finalL = softClip(mixLeft  * paramMasterLevel);
+            float finalR = softClip(mixRight * paramMasterLevel);
 
             // Write to output buffer
             if (buffer.getNumChannels() >= 2)
@@ -829,6 +850,7 @@ public:
                 float modSignal = (sourceBuffer != nullptr ? sourceBuffer[i] : 0.0f) * amount;
                 couplingPhaseDeflectionMod += (modSignal - couplingPhaseDeflectionMod) * 0.01f;
             }
+            couplingPhaseDeflectionMod = flushDenormal(couplingPhaseDeflectionMod);
         }
 
         if (type == CouplingType::AmpToFilter)
@@ -839,6 +861,7 @@ public:
                 float s = (sourceBuffer != nullptr ? sourceBuffer[i] : 0.0f) * amount;
                 couplingFilterMod += (s - couplingFilterMod) * 0.01f;
             }
+            couplingFilterMod = flushDenormal(couplingFilterMod);
         }
 
         if (type == CouplingType::EnvToMorph)
@@ -849,6 +872,7 @@ public:
                 float s = (sourceBuffer != nullptr ? sourceBuffer[i] : 0.0f) * amount * 0.3f;
                 couplingMorphMod += (s - couplingMorphMod) * 0.01f;
             }
+            couplingMorphMod = flushDenormal(couplingMorphMod);
         }
 
         if (type == CouplingType::RhythmToBlend)
@@ -859,6 +883,7 @@ public:
                 float s = (sourceBuffer != nullptr ? sourceBuffer[i] : 0.0f) * amount * 0.3f;
                 couplingCurveModAccum += (s - couplingCurveModAccum) * 0.01f;
             }
+            couplingCurveModAccum = flushDenormal(couplingCurveModAccum);
         }
     }
 
@@ -1322,7 +1347,7 @@ private:
 
     static float midiNoteToHz(float midiNote) noexcept
     {
-        return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f);
+        return 440.0f * fastPow2((midiNote - 69.0f) / 12.0f);
     }
 
     void noteOn(int noteNum, float velocity,
@@ -1384,13 +1409,11 @@ private:
         int voiceIdx = findVoiceForNoteOn(maxPolyphony);
         auto& voice  = voices[static_cast<size_t>(voiceIdx)];
 
-        // If stealing an active voice, crossfade to prevent click
-        if (voice.active)
-        {
-            voice.isFadingOut  = true;
-            voice.crossfadeGain = std::min(voice.crossfadeGain, 0.5f);
-        }
-
+        // Stolen voice: ADSR attack provides the natural fade-in.
+        // (Previous code set isFadingOut=true + capped crossfadeGain=0.5f then
+        // immediately overwrote both fields — the fade-out was never executed,
+        // causing a click. Now the new note simply starts from crossfadeGain=1.0f
+        // and the ADSR attack ramps from 0, which is the correct click-free path.)
         voice.active            = true;
         voice.midiNote          = noteNum;
         voice.velocity          = velocity;

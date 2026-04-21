@@ -374,6 +374,13 @@ public:
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
         sustainPedalDown = false;
+        // Clear coupling accumulators so AllNotesOff doesn't leave stale mod
+        // values that bleed into the next block (fix: reset() missing coupling clear).
+        couplingFilterMod = 0.0f;
+        couplingPitchMod = 0.0f;
+        couplingOrganMod = 0.0f;
+        couplingCacheL = 0.0f;
+        couplingCacheR = 0.0f;
     }
 
     float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
@@ -549,6 +556,16 @@ public:
         for (int i = 0; i < kMaxVoices; ++i)
             prevVoiceOut[i] = lastVoiceOutputs[i];
 
+        // ---- Hoist block-constant voiceCount for competition (P-VOICECOUNT fix) ----
+        // Counting 8 voices 512x per block is O(N*blockSize) waste; voice.active
+        // can only become false AFTER the env check — it cannot increase mid-block.
+        int blockVoiceCount = 0;
+        for (const auto& v : voices)
+            if (v.active)
+                ++blockVoiceCount;
+
+        // Hoist block-constant ADSR update out of per-sample loop (P15 fix).
+        // Model-specific clamping is also block-constant — compute once here.
         // Hoist ampEnv.setADSR out of per-sample loop — ADSR knobs are block-rate
         // and setADSR internally does 2× std::exp. Voice's model-specific clamping
         // duplicated from the inner per-sample block so values match.
@@ -586,6 +603,30 @@ public:
                 break;
             }
             for (int vi = 0; vi < kMaxVoices; ++vi)
+                if (voices[vi].active)
+                    voices[vi].ampEnv.setADSR(attack, decay, sustain, release);
+        }
+
+        // ---- Hoist LFO1 setRate/setShape out of per-sample loop (P15 fix) ----
+        // pLFO1Rate is block-constant; Sine shape never changes — updating per-sample
+        // per-voice was O(voices * blockSize) exp() calls with no effect.
+        {
+            float lfoRate = std::max(0.01f, pLFO1Rate);
+            for (int vi = 0; vi < kMaxVoices; ++vi)
+                if (voices[vi].active)
+                {
+                    voices[vi].lfo1.setRate(lfoRate, srf);
+                    voices[vi].lfo1.setShape(StandardLFO::Sine);
+                }
+        }
+
+        // ---- Hoist SVF mode — always LowPass, never changes (P31 fix) ----
+        // setMode() was called per-sample per-voice; move to noteOn + here as a
+        // one-time guard in case voices were reset mid-session.
+        for (int vi = 0; vi < kMaxVoices; ++vi)
+            if (voices[vi].active)
+                voices[vi].svf.setMode(CytomicSVF::Mode::LowPass);
+
             {
                 auto& voice = voices[vi];
                 if (voice.active)
@@ -624,12 +665,6 @@ public:
 
             float mixL = 0.0f, mixR = 0.0f;
 
-            // Count active voices for competition (adversarial coupling)
-            int voiceCount = 0;
-            for (const auto& v : voices)
-                if (v.active)
-                    ++voiceCount;
-
             for (int vi = 0; vi < kMaxVoices; ++vi)
             {
                 auto& voice = voices[vi];
@@ -647,17 +682,19 @@ public:
                 voice.breath.process(pressureNow, pitchDriftCents, ampMod);
                 freq *= fastPow2(pitchDriftCents / 1200.0f);
 
-                // ---- LFO1 -> pitch vibrato (setRate/setShape hoisted to per-block loop) ----
+                // ---- LFO1 -> pitch vibrato ----
+                // setRate/setShape hoisted to block-rate above (P15 fix).
                 float lfo1Val = voice.lfo1.process() * effLFODepth;
                 freq *= fastPow2(lfo1Val * 0.5f / 12.0f); // max +/-0.5 semitone vibrato
 
                 // ---- Competition: adversarial coupling ----
-                // More voices = less amplitude per voice (shared breath)
+                // More voices = less amplitude per voice (shared breath).
+                // Uses blockVoiceCount hoisted before the per-sample loop (P-VOICECOUNT fix).
                 float competitionScale = 1.0f;
-                if (effCompetition > 0.001f && voiceCount > 1)
+                if (effCompetition > 0.001f && blockVoiceCount > 1)
                 {
                     float reduction =
-                        effCompetition * (static_cast<float>(voiceCount - 1) / static_cast<float>(kMaxVoices));
+                        effCompetition * (static_cast<float>(blockVoiceCount - 1) / static_cast<float>(kMaxVoices));
                     competitionScale = 1.0f - reduction * 0.6f;
                     competitionScale = std::max(competitionScale, 0.2f);
                 }
@@ -725,9 +762,14 @@ public:
                         float partialFreq = freq * ratio;
                         if (p > 0 && detuneNow > 0.001f)
                         {
-                            float detuneOffset =
-                                (static_cast<float>(p) - 0.5f * static_cast<float>(nP)) * detuneNow * 0.5f;
-                            partialFreq += detuneOffset;
+                            // P25 fix: use ratio-based (cents) detune, not additive Hz.
+                            // Additive Hz detuning is disproportionately large at bass
+                            // frequencies (e.g. 55 Hz fundamental: 2.25 Hz offset ≈ 69 cents).
+                            // Multiplicative detune gives a consistent interval regardless of pitch.
+                            // Range: up to ±12 cents per partial at detuneNow=1.0.
+                            float detuneCents =
+                                (static_cast<float>(p) - 0.5f * static_cast<float>(nP)) * detuneNow * 2.4f;
+                            partialFreq *= fastPow2(detuneCents / 1200.0f);
                         }
 
                         float phaseInc = partialFreq / srf;
@@ -743,8 +785,8 @@ public:
                             //  the brief crossfade window to avoid PolyBLEP state issues)
                             if (!usePrev)
                             {
+                                // setWaveform(Saw) is constant — set once at noteOn (P31 fix).
                                 voice.melodicaOsc.setFrequency(partialFreq, srf);
-                                voice.melodicaOsc.setWaveform(PolyBLEP::Waveform::Saw);
                                 partialSample = voice.melodicaOsc.processSample();
                             }
                             else
@@ -767,8 +809,10 @@ public:
                         }
                         sig += partialSample * ampScale;
                     }
-                    if (nP > 1)
-                        sig /= std::sqrt(static_cast<float>(nP));
+                    // Always normalize by sqrt(nP) — skipping nP=1 caused a 2x amplitude
+                    // jump when cluster crossed the 1→2 partial boundary (nP=1 was unscaled
+                    // while nP=2 was divided by √2 ≈ 0.707, a 3 dB discontinuity).
+                    sig /= std::sqrt(static_cast<float>(nP));
                     return sig;
                 };
 
@@ -858,6 +902,8 @@ public:
                 // LFO1 -> filter modulation (secondary target)
                 voiceCutoff = std::clamp(voiceCutoff + lfo1Val * 2000.0f, 20.0f, 20000.0f);
 
+                // setMode hoisted to block-rate above (P31 fix — always LowPass).
+                voice.svf.setCoefficients_fast(voiceCutoff, resNow, srf);
                 // Decimate SVF coefficient refresh to every 16 samples (~0.36ms @
                 // 44.1k — below audible lag). Filter env is still ticked per-sample
                 // above so envelope state advances at audio rate.
@@ -971,12 +1017,13 @@ public:
             break;
         }
 
-        v.ampEnv.prepare(srf);
+        // P18 fix: remove prepare() calls per-noteOn — sampleRate cannot change between
+        // noteOn() calls; prepare() was already called in OtoEngine::prepare() and runs
+        // exp() coefficient recalculations unnecessarily on every voice trigger.
         v.ampEnv.setADSR(attack, decay, sustain, release);
         v.ampEnv.triggerHard();
 
         // Filter envelope
-        v.filterEnv.prepare(srf);
         v.filterEnv.setADSR(0.001f, 0.3f + (1.0f - vel) * 0.5f, 0.0f, 0.3f);
         v.filterEnv.triggerHard();
 
@@ -984,8 +1031,8 @@ public:
         float chiffAmt = paramChiff ? paramChiff->load() : 0.3f;
         v.chiff.trigger(vel, chiffAmt, organModel, srf);
 
-        // Breath source reset
-        v.breath.prepare(srf);
+        // Breath source: LFO rates set in OtoBreathSource::prepare() (already done in
+        // OtoEngine::prepare()); no need to call prepare() again here (P18 fix).
 
         // LFO reset with voice-stagger
         v.lfo1.reset(static_cast<float>(idx) / static_cast<float>(kMaxVoices));
@@ -996,6 +1043,10 @@ public:
         v.panR = std::sin((panAngle + 0.5f) * 1.5707963f);
 
         v.svf.reset();
+        v.svf.setMode(CytomicSVF::Mode::LowPass); // P31 fix: set once at voice init, not per-sample
+        // Also hoist LFO1 setRate/setShape to block-rate (done in renderBlock above);
+        // set Melodica waveform once here so per-sample hot path only calls process().
+        v.lfo1.setShape(StandardLFO::Sine);
     }
 
     void noteOff(int note) noexcept
