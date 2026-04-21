@@ -68,6 +68,7 @@ public:
         // Init CA tape to a single active cell in the centre
         tape.fill(false);
         tape[0] = true;
+        cachedDensity = 1.0f / static_cast<float>(std::max(1, tapeLen));
     }
 
     //==========================================================================
@@ -125,6 +126,7 @@ public:
         // Re-seed CA tape on note-on — starts from a single live cell
         tape.fill(false);
         tape[0] = true;
+        cachedDensity = 1.0f / static_cast<float>(std::max(1, tapeLen));
         stepPhase = 0.0f;
     }
 
@@ -236,16 +238,10 @@ public:
 
     //==========================================================================
     // getDensity — fraction of live cells in tape [0,1]
+    // Cached at each CA step in advanceCA(); no per-call iteration needed.
     //==========================================================================
 
-    float getDensity() const noexcept
-    {
-        int live = 0;
-        for (int i = 0; i < tapeLen; ++i)
-            if (tape[static_cast<size_t>(i)])
-                ++live;
-        return static_cast<float>(live) / static_cast<float>(std::max(1, tapeLen));
-    }
+    float getDensity() const noexcept { return cachedDensity; }
 
     //==========================================================================
     // Public state (accessed by adapter)
@@ -265,9 +261,11 @@ private:
 
     int tapeLen = 16;
     uint8_t caRule = 110;
+    float cachedDensity = 0.0f; // updated once per CA step in advanceCA()
 
     void advanceCA() noexcept
     {
+        int live = 0;
         for (int i = 0; i < tapeLen; ++i)
         {
             int left = (i - 1 + tapeLen) % tapeLen;
@@ -277,9 +275,14 @@ private:
             uint8_t pattern = (tape[static_cast<size_t>(left)] ? 4u : 0u) | (tape[static_cast<size_t>(i)] ? 2u : 0u) |
                               (tape[static_cast<size_t>(right)] ? 1u : 0u);
 
-            tapeTmp[static_cast<size_t>(i)] = (caRule >> pattern) & 1u;
+            bool cell = (caRule >> pattern) & 1u;
+            tapeTmp[static_cast<size_t>(i)] = cell;
+            if (cell)
+                ++live;
         }
         tape = tapeTmp;
+        // Cache density so getDensity() requires no iteration
+        cachedDensity = static_cast<float>(live) / static_cast<float>(std::max(1, tapeLen));
     }
 
     //==========================================================================

@@ -54,11 +54,17 @@ public:
     // size [0,1]: scales delay line lengths (room size)
     // decay [0,1]: feedback gain (reverb time)
     // Pass current sampleRate to recompute delay lengths if rate changed.
+    // computeCoefficients() is skipped when params are unchanged.
     void setParams(float size, float decay, double currentSampleRate) noexcept
     {
-        sr = static_cast<float>(currentSampleRate);
-        roomSize = std::clamp(size, 0.0f, 1.0f);
-        decayAmt = std::clamp(decay, 0.0f, 1.0f);
+        float newSr = static_cast<float>(currentSampleRate);
+        float newSize = std::clamp(size, 0.0f, 1.0f);
+        float newDecay = std::clamp(decay, 0.0f, 1.0f);
+        if (newSr == sr && newSize == roomSize && newDecay == decayAmt)
+            return; // no change — skip recompute
+        sr = newSr;
+        roomSize = newSize;
+        decayAmt = newDecay;
         computeCoefficients();
     }
 
@@ -80,8 +86,12 @@ public:
             float y = delayBuffers[i][rpos];
             y = xoutwit::flushDenormal(y);
 
-            float filtered = y + lpfCoeff * (y - lpfStates[i]); // per-comb shelf LPF
-            lpfStates[i] = xoutwit::flushDenormal(filtered);
+            // One-pole low-pass: damps highs in feedback path for dark den character.
+            // Formula: state += coeff * (in - state)  →  state converges toward in.
+            // Previous formula added the difference rather than converging (high-shelf, not LPF).
+            lpfStates[i] += lpfCoeff * (y - lpfStates[i]);
+            lpfStates[i] = xoutwit::flushDenormal(lpfStates[i]);
+            float filtered = lpfStates[i];
 
             delayBuffers[i][delayWritePos[i]] = x + filtered * feedbackGain;
             delayWritePos[i] = (delayWritePos[i] + 1) & kDelayMask;
