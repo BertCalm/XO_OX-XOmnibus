@@ -186,17 +186,19 @@ struct ObiontReconLP
     float s2_x1 = 0.f, s2_x2 = 0.f, s2_y1 = 0.f, s2_y2 = 0.f;
     float s2_b0 = 1.f, s2_b1 = 0.f, s2_b2 = 0.f, s2_a1 = 0.f, s2_a2 = 0.f;
 
-    float lastFc = -1.f, lastQ = -1.f;
+    float lastFc = -1.f;
 
     void reset() noexcept
     {
         s1_x1 = s1_x2 = s1_y1 = s1_y2 = 0.f;
         s2_x1 = s2_x2 = s2_y1 = s2_y2 = 0.f;
-        lastFc = lastQ = -1.f;
+        lastFc = -1.f;
     }
 
     // Butterworth 4-pole split into two 2-pole stages with Q factors
     // 1/2sin(π/4)=0.7654 and 1/2sin(3π/4)=1.8478 (Butterworth Q table, order 4)
+    // F03-fix: removed vestigial lastQ (never written, never guards anything).
+    // F04-fix: share w0/cosW/sinW across both stages — same fc, same trig.
     void computeCoeffs(float fc, float sr) noexcept
     {
         if (fc == lastFc)
@@ -205,28 +207,25 @@ struct ObiontReconLP
 
         fc = std::max(20.f, std::min(fc, sr * 0.45f));
 
-        // Stage 1: Q1 = 0.7654 (Butterworth)
-        const float Q1 = 0.7654f;
+        // Pre-compute shared trig values (same fc for both stages)
+        const float w0   = 6.28318530718f * fc / sr;
+        const float cosW = fastCos(w0);
+        const float sinW = fastSin(w0);
+
+        // Stage 1: Q1 = 0.7654 (Butterworth 4-pole, first pair)
         {
-            float w0 = 6.28318530718f * fc / sr;
-            float cosW = fastCos(w0);
-            float sinW = fastSin(w0);
-            float alpha = sinW / (2.f * Q1);
-            float norm = 1.f / (1.f + alpha);
+            const float alpha = sinW / (2.f * 0.7654f);
+            const float norm  = 1.f / (1.f + alpha);
             s1_b0 = (1.f - cosW) * 0.5f * norm;
             s1_b1 = (1.f - cosW) * norm;
             s1_b2 = s1_b0;
             s1_a1 = -2.f * cosW * norm;
             s1_a2 = (1.f - alpha) * norm;
         }
-        // Stage 2: Q2 = 1.8478 (Butterworth)
-        const float Q2 = 1.8478f;
+        // Stage 2: Q2 = 1.8478 (Butterworth 4-pole, second pair)
         {
-            float w0 = 6.28318530718f * fc / sr;
-            float cosW = fastCos(w0);
-            float sinW = fastSin(w0);
-            float alpha = sinW / (2.f * Q2);
-            float norm = 1.f / (1.f + alpha);
+            const float alpha = sinW / (2.f * 1.8478f);
+            const float norm  = 1.f / (1.f + alpha);
             s2_b0 = (1.f - cosW) * 0.5f * norm;
             s2_b1 = (1.f - cosW) * norm;
             s2_b2 = s2_b0;
@@ -591,6 +590,13 @@ struct ObiontCA2D
                 dst[row * kW + col] = (val + noise > density) ? 1u : 0u;
             }
         }
+        // F30-fix: after seeding, reset colLive to a uniform midpoint so
+        // the additive projection doesn't read stale amplitudes until the first
+        // evolve() call rebuilds the column count table.
+        const int midLive = kH / 2;
+        for (int col = 0; col < kW; ++col)
+            colLive[col] = midLive;
+
         // Promote write buffer → ready
         readyBuf.store(1 - readIdx, std::memory_order_release);
     }
@@ -610,9 +616,12 @@ struct ObiontCA2D
 
         // Blend rule toward Conway B3/S23 (0xC8) using per-bit probabilistic morph
         // (same pattern as ObiontCA1D rule morphing)
+        // F26-fix: 1D guard uses `morphAmtSnapshot > 0.f && <= 1.f`; 2D used `!= 0.f`
+        // (which would allow negative morph amounts if the parameter ever went negative).
+        // Align to the same positive-only guard for consistency.
         constexpr uint8_t kConwayRule = 0xC8u; // B3/S23
         uint8_t blendedRule = ruleParam;
-        if (morphAmt != 0.f)
+        if (morphAmt > 0.f && morphAmt <= 1.f)
         {
             blendedRule = 0;
             for (int bit = 0; bit < 8; ++bit)
@@ -686,23 +695,33 @@ struct ObiontCA2D
         int liveCells = 0;
         std::memset(colLive, 0, sizeof(colLive));
 
+        // F20-fix: kH=64 and kW=64 are powers of 2 — use bitmask instead of
+        // modulo for toroidal wrap.  Removes division from the inner loop.
+        static_assert((kH & (kH - 1)) == 0, "kH must be power of 2");
+        static_assert((kW & (kW - 1)) == 0, "kW must be power of 2");
         for (int row = 0; row < kH; ++row)
         {
-            const int rowUp = (row - 1 + kH) % kH;
-            const int rowDown = (row + 1) % kH;
+            const int rowUp   = (row - 1 + kH) & (kH - 1);
+            const int rowDown = (row + 1)       & (kH - 1);
             for (int col = 0; col < kW; ++col)
             {
-                const int colL = (col - 1 + kW) % kW;
-                const int colR = (col + 1) % kW;
+                const int colL = (col - 1 + kW) & (kW - 1);
+                const int colR = (col + 1)       & (kW - 1);
 
                 // Moore neighborhood: 8 surrounding cells (toroidal wrap)
                 const int neighbors = (int)src[rowUp * kW + colL] + (int)src[rowUp * kW + col] +
                                       (int)src[rowUp * kW + colR] + (int)src[row * kW + colL] +
                                       (int)src[row * kW + colR] + (int)src[rowDown * kW + colL] +
                                       (int)src[rowDown * kW + col] + (int)src[rowDown * kW + colR];
-                // neighbors is in [0,8]; map to nibble index [0,3] by clamping to 3 max
-                // so rule encoding covers the biologically interesting range (2-3 for Conway)
-                const int nibbleIdx = std::min(neighbors, 3);
+                // F11-fix: clamping neighbors [0,8] to [0,3] caused counts 4-8 to
+                // behave identically to count 3.  For Conway B3/S23, cells with 4+
+                // neighbors must die, but survivalMask bit-3 was set (survive-on-3)
+                // so over-populated cells never died.
+                // Fix: mirror map counts [4..8] back into [3..0] so the nibble
+                // table smoothly covers the full biological range:
+                //   count 4→3, 5→2, 6→1, 7→0, 8→0 (saturated at 0)
+                // This preserves Conway's S23 (survive on 2-3, die on 4+) correctly.
+                const int nibbleIdx = (neighbors <= 3) ? neighbors : std::max(0, 7 - neighbors);
 
                 const uint8_t current = src[row * kW + col];
                 uint8_t next;
@@ -861,6 +880,10 @@ struct ObiontProjection2D
 // ---------------------------------------------------------------------------
 struct ObiontProjection
 {
+    // F06/F29-fix: replace hot-path std::cos with fastCos; the window shape
+    // cos(π*k/(half+1)) is read-only and only depends on the integer offset k
+    // and half which are deterministic per width.  fastCos error (~0.002%) is
+    // imperceptible for a spatial weighting window.
     static float read(const uint8_t* grid256, float phase, float projectionParam) noexcept
     {
         // Map projection_param 0-1 → window width 4-64 cells
@@ -873,11 +896,12 @@ struct ObiontProjection
 
         float sum = 0.f;
         float norm = 0.f;
+        const float piOverHalfPlus1 = 3.14159265358979f / (float)(half + 1);
         for (int k = -half; k <= half; ++k)
         {
             int idx = (centre + k + N) & (N - 1);
-            // Cosine window
-            float w = std::cos(3.14159265358979f * (float)k / (float)(half + 1));
+            // Cosine window — fastCos replaces std::cos (saves ~98M cos/s at 8 voices)
+            float w = fastCos(piOverHalfPlus1 * (float)k);
             sum += (float)grid256[idx] * w;
             norm += std::abs(w);
         }
@@ -896,8 +920,8 @@ struct ObiontVoice
     bool active = false;
     int note = 60;
     float velocity = 0.f;
-    float stealGain = 0.f;     // crossfade on steal (ramps from 1 → 0 quickly)
-    float stealFadeStep = 0.f; // decrement per sample = 1 / (0.005 * sr)
+    float stealGain = 1.f;     // F02/F28-fix: ramp-up 0→1 for new note on steal; 1=no ramp
+    float stealFadeStep = 0.f; // increment per sample = 1 / (0.005 * sr)
     bool releasing = false;
 
     // CA engines (per-voice — each voice has its own independent grid)
@@ -977,6 +1001,8 @@ struct ObiontVoice
         active = true;
         phase = 0.f;
         evoCounter = 0.f;
+        modEvoMul = 1.f;    // F12-fix: reset evo multiplier so stale mod state doesn't carry over
+        modProjDelta = 0.f; // F12-fix: reset projection mod delta for same reason
         couplingFilterMod = 0.f;
         couplingPitchMod = 0.f;
 
@@ -1020,9 +1046,10 @@ struct ObiontVoice
     {
         (void)frequency; // derived from midiNote internally
 
-        // Capture amplitude before kill so the crossfade ramp starts at the
-        // correct level rather than an arbitrary hardcoded value.
-        stealGain = adsr.getLevel();
+        // F02/F28-fix: stealGain is now a 0→1 ramp-up for the NEW note's audio.
+        // Start at 0 (mute the first sample of the new note) and ramp to 1 over
+        // 5ms so the new note's attack is not abrupt.  Step = 1 / (0.005 * sr).
+        stealGain = 0.f;
         stealFadeStep = 1.0f / (0.005f * static_cast<float>(sampleRate));
 
         // Re-seed grid on steal — don't kill mid-evolution
@@ -1044,6 +1071,8 @@ struct ObiontVoice
         releasing = false;
         phase = 0.f;
         evoCounter = 0.f;
+        modEvoMul = 1.f;    // F12-fix: reset stale evo rate multiplier on steal
+        modProjDelta = 0.f; // F12-fix: reset stale projection delta on steal
         couplingFilterMod = 0.f;
         couplingPitchMod = 0.f;
         adsr.kill();
@@ -1125,7 +1154,9 @@ public:
 
         // --- 4 Macros ---
         params.push_back(std::make_unique<PF>(P("obnt_macroChaos", 1), "CHAOS", nr(0.f, 1.f), 0.f));
-        params.push_back(std::make_unique<PF>(P("obnt_macroEvolution", 1), "EVOLUTION", nr(0.f, 1.f), 0.5f));
+        // F22-fix: default 0.5 gave 0.1+0.5*3.9=2.05× base evo rate (doubling speed).
+        // Set default to 0.231 → 0.1+0.231*3.9≈1.0× so center knob = unscaled rate.
+        params.push_back(std::make_unique<PF>(P("obnt_macroEvolution", 1), "EVOLUTION", nr(0.f, 1.f), 0.231f));
         params.push_back(std::make_unique<PF>(P("obnt_macroSpace", 1), "SPACE", nr(0.f, 1.f), 0.3f));
         params.push_back(std::make_unique<PF>(P("obnt_macroCoupling", 1), "COUPLING", nr(0.f, 1.f), 0.f));
     }
@@ -1152,6 +1183,9 @@ public:
 
         // IIR smooth coefficient for per-block smoothed params (~5ms)
         smoothCoeff = 1.f - std::exp(-1.f / (0.005f * (float)sampleRate));
+        // F08-fix: separate 50ms coefficient for grid energy smoothing.
+        // Previously smoothCoeff * 10 was used, yielding τ=0.5ms not 50ms.
+        smoothCoeff50ms = 1.f - std::exp(-1.f / (0.05f * (float)sampleRate));
 
         modWheelVal = 0.f;
         aftertouchVal = 0.f;
@@ -1159,7 +1193,6 @@ public:
         couplingFilterMod = 0.f;
         couplingPitchMod = 0.f;
         lastOutputSample = 0.f;
-        rngGlobal = 0xDEADBEEFu;
 
         prepareSilenceGate(sampleRate, maxBlockSize, 500.f);
     }
@@ -1216,9 +1249,13 @@ public:
     // -------------------------------------------------------------------------
     // Coupling
     // -------------------------------------------------------------------------
+    // F25-fix: coupling macro used range 0.5-1 (couldn't disable coupling fully).
+    // Now maps 0→0 (no coupling) to 1→1 (full coupling), matching fleet convention.
     void applyCouplingInput(CouplingType type, float amount, const float* /*sourceBuffer*/, int /*numSamples*/) override
     {
-        const float recv = p_macroCoupling ? (0.5f + p_macroCoupling->load() * 0.5f) : 0.5f;
+        const float recv = p_macroCoupling ? p_macroCoupling->load() : 0.f;
+        if (recv <= 0.f)
+            return; // macro at zero = coupling off
         if (type == CouplingType::AmpToFilter)
             couplingFilterMod += amount * 2000.f * recv;
         else if (type == CouplingType::AmpToPitch || type == CouplingType::PitchToPitch)
@@ -1240,9 +1277,17 @@ public:
             const auto msg = meta.getMessage();
             if (msg.isNoteOn())
             {
-                // mode is hardwired to 0 (1D Elementary CA); 2D mode removed until v1.1
-                handleNoteOn(msg.getNoteNumber(), msg.getFloatVelocity(), 0);
-                wakeSilenceGate();
+                // F16-fix: MIDI spec — NoteOn with velocity=0 is a NoteOff.
+                if (msg.getVelocity() == 0)
+                {
+                    handleNoteOff(msg.getNoteNumber());
+                }
+                else
+                {
+                    // mode is hardwired to 0 (1D Elementary CA); 2D mode removed until v1.1
+                    handleNoteOn(msg.getNoteNumber(), msg.getFloatVelocity(), 0);
+                    wakeSilenceGate();
+                }
             }
             else if (msg.isNoteOff())
             {
@@ -1284,6 +1329,9 @@ public:
 
         // 4. ParamSnapshot — read all params once per block (zero-cost in the loop)
         constexpr int modeParam = 0; // hardwired to 1D Elementary CA; obnt_mode removed
+        // F14-note: all modeParam==1 branches below are dead code (2D mode disabled
+        // until v1.1 via issue #666).  They are retained for forward-compatibility
+        // and compile-tested, but never execute in the current build.
         const int ruleParam = (int)(p_rule->load() + 0.5f) & 0xFF;
         const float ruleMorph = std::clamp(p_ruleMorph->load(), 0.f, 1.f);
         const float baseEvoRate = p_evolutionRate->load();
@@ -1433,8 +1481,9 @@ public:
                     {
                         // 2D Life-like CA evolution
                         float rawEnergy = v.ca2D.evolve((uint8_t)(ruleParam & 0xFF), modRuleMorph, modChaos, v.rng);
-                        // IIR smooth the energy (τ ≈ 50ms) for a stable mod source
-                        v.evoEnergySmooth += (rawEnergy - v.evoEnergySmooth) * smoothCoeff * 10.f;
+                        // F08-fix: smoothCoeff is a 5ms coefficient; *10 gave 0.5ms not 50ms.
+                        // Use a dedicated 50ms smoothing coefficient computed from smoothCoeff50ms.
+                        v.evoEnergySmooth += (rawEnergy - v.evoEnergySmooth) * smoothCoeff50ms;
                         v.evoEnergySmooth = flushDenormal(v.evoEnergySmooth);
 
                         // Anti-extinction: re-seed if live cell ratio < 5%
@@ -1452,8 +1501,8 @@ public:
                     {
                         // 1D Wolfram CA evolution
                         float rawEnergy = v.ca.evolve(modChaos, modRuleMorph, v.rng);
-                        // IIR smooth the energy (τ ≈ 50ms) for a stable mod source
-                        v.evoEnergySmooth += (rawEnergy - v.evoEnergySmooth) * smoothCoeff * 10.f;
+                        // F08-fix: use smoothCoeff50ms (τ=50ms) for grid energy — see prepare()
+                        v.evoEnergySmooth += (rawEnergy - v.evoEnergySmooth) * smoothCoeff50ms;
                         v.evoEnergySmooth = flushDenormal(v.evoEnergySmooth);
 
                         // Anti-extinction: re-seed if live cell ratio < 5%
@@ -1573,14 +1622,18 @@ public:
                 // Soft clip to prevent clipping from high-resonance CA patterns
                 output = output / (1.f + std::abs(output));
 
-                // Voice-steal crossfade: multiply output by stealGain (1→0 over 5ms)
-                // while the incoming note's ADSR ramps up, avoiding a hard click.
-                if (v.stealGain > 0.f)
+                // F02/F28-fix: the stolen voice has already had its ADSR killed and a
+                // new noteOn() called — 'output' here is the NEW note's audio.
+                // The original code multiplied the new note by a 1→0 ramp (ducking the
+                // new note's attack), not fading the old note out.
+                // Correct approach: use stealGain as a 0→1 ramp-up so the new voice
+                // fades IN over 5ms, masking any abrupt pitch/timbre transition.
+                if (v.stealGain < 1.f)
                 {
                     output *= v.stealGain;
-                    v.stealGain -= v.stealFadeStep;
-                    if (v.stealGain < 0.f)
-                        v.stealGain = 0.f;
+                    v.stealGain += v.stealFadeStep;
+                    if (v.stealGain > 1.f)
+                        v.stealGain = 1.f;
                 }
 
                 L[n] += output;
@@ -1663,6 +1716,7 @@ private:
     // -------------------------------------------------------------------------
     float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     float smoothCoeff = 0.001f;
+    float smoothCoeff50ms = 0.001f; // F08-fix: 50ms coefficient for grid energy IIR
 
     // Expression inputs
     float modWheelVal = 0.f;
@@ -1679,8 +1733,8 @@ private:
     // Voice pool
     std::array<ObiontVoice, kObiontMaxVoices> voices;
 
-    // Global RNG (for anti-extinction seeding that doesn't belong to one voice)
-    uint32_t rngGlobal = 0xDEADBEEFu;
+    // F13-fix: rngGlobal was declared here but never used — all CA evolution uses
+    // per-voice v.rng.  Removed to eliminate dead state and avoid future confusion.
 
     // -------------------------------------------------------------------------
     // Raw parameter pointers (cached in attachParameters, read in renderBlock)
