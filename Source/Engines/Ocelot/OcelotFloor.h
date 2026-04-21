@@ -174,8 +174,10 @@ public:
 
         lastAmplitude = std::sqrt(sumSq / std::max(1.0f, static_cast<float>(numSamples)));
 
-        // Track amplitude decay for auto-silence
-        amplitude *= std::pow(1.0f - damp * 0.002f, static_cast<float>(numSamples));
+        // Track amplitude decay for auto-silence.
+        // SRO: per-block exp replaces std::pow (equivalent: (1-x)^n = exp(n*ln(1-x))).
+        // fastExp(n * log(1-x)) where log(1-damp*0.002) ≈ -damp*0.002 for small damp*0.002.
+        amplitude *= xoceanus::fastExp(static_cast<float>(numSamples) * std::log(std::max(1e-6f, 1.0f - damp * 0.002f)));
         if (amplitude < 0.0001f && lastAmplitude < 0.0001f)
             active = false;
 

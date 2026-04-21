@@ -125,6 +125,7 @@ public:
 
         // Apply coupling input mods (accumulated by applyCouplingInput since last block).
         // Each mod is added to the snapshot field and clamped, then reset to zero.
+        // Happens BEFORE voicePool.renderBlock() so voices see updated values this block.
         if (couplingFilterMod != 0.0f)
         {
             snapshot.canopySpectralFilter = std::clamp(snapshot.canopySpectralFilter + couplingFilterMod, 0.0f, 1.0f);
@@ -193,9 +194,9 @@ public:
         case xoceanus::CouplingType::LFOToPitch:
         case xoceanus::CouplingType::AmpToPitch:
         case xoceanus::CouplingType::PitchToPitch:
-            // Partner pitch/LFO modulates ecosystem depth — more signal flow between strata.
-            // Cross-stratum coupling deepens when another engine's melodic content arrives.
-            couplingEcosystemMod = std::clamp(couplingEcosystemMod + amount * 0.3f, 0.0f, 0.5f);
+            // Partner pitch/LFO modulates ecosystem depth — bipolar: positive deepens coupling,
+            // negative (e.g. negative LFO phase) can reduce it. Clamp ±0.5 to bound impact.
+            couplingEcosystemMod = std::clamp(couplingEcosystemMod + amount * 0.3f, -0.5f, 0.5f);
             break;
 
         case xoceanus::CouplingType::EnvToMorph:

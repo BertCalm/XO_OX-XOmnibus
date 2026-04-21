@@ -61,10 +61,11 @@ public:
         }
 
         // Base frequency from MIDI note + pitch bend.
+        // canopyPitch 0–1 maps to ±24 semitones (two octave range).
         // fastPow2 is ~50× faster than std::pow and accurate to ~0.02%.
-        float pitchOffset = (snap.canopyPitch - 0.5f) * 48.0f; // ±24 cents
+        float pitchOffsetSemitones = (snap.canopyPitch - 0.5f) * 48.0f; // ±24 semitones
         float baseFreq =
-            440.0f * xoceanus::fastPow2((baseNote - 69 + pitchOffset * 0.01f + snap.pitchBendSemitones) * (1.0f / 12.0f));
+            440.0f * xoceanus::fastPow2((baseNote - 69 + pitchOffsetSemitones + snap.pitchBendSemitones) * (1.0f / 12.0f));
 
         // Active partials (biome can tilt balance)
         int numPartials = std::clamp(snap.canopyPartials, 1, kMaxPartials);
@@ -125,14 +126,19 @@ public:
             // Normalize by partial count
             sample /= static_cast<float>(numPartials);
 
-            // Wavefold (soft Buchla-style — fold back above threshold)
-            if (wavefold > 0.01f)
+            // Wavefold (soft Buchla-style — fold back above threshold).
+            // NaN guard: flush before folding to prevent infinite loop if partials produce NaN.
+            if (wavefold > 0.01f && std::isfinite(sample))
             {
                 float threshold = 1.0f - wavefold * 0.85f;
                 while (sample > threshold)
                     sample = threshold * 2.0f - sample;
                 while (sample < -threshold)
                     sample = -threshold * 2.0f - sample;
+            }
+            else if (!std::isfinite(sample))
+            {
+                sample = 0.0f; // flush NaN/inf before it propagates to shimmer buffer
             }
 
             // Shimmer feedback (pitch-shifted +1 octave, read from delay buffer)
