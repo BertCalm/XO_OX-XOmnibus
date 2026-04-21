@@ -122,7 +122,7 @@ struct OfferingVoice
 };
 
 //==============================================================================
-// ParamSnapshot — cache all 83 parameters once per processBlock.
+// ParamSnapshot — cache all 84 parameters once per processBlock.
 //==============================================================================
 struct OfferingParamSnapshot
 {
@@ -135,8 +135,8 @@ struct OfferingParamSnapshot
     float dustVinyl = 0.2f;
     float dustTape = 0.1f;
     int dustBits = 16;
-    float dustSampleRate = 0.0f;  // Sentinel: must be set by prepare() before use
-    float dustWobble = 0.05f;
+    float dustSampleRate = 48000.0f; // Loaded from param; default matches param default
+    float dustWobble  = 0.05f;
 
     // Collage / FLIP (4)
     int flipLayers = 1;
@@ -215,7 +215,13 @@ public:
         blockSize_ = maxBlockSize;
 
         for (int i = 0; i < 8; ++i)
+        {
             voices_[i].prepare(sr_);
+            // Seed each voice's texture noise differently so crackle/hiss patterns
+            // are decorrelated across pads. All voices previously used seed 54321,
+            // producing identical vinyl/tape textures on every drum hit.
+            voices_[i].texture.reseedNoise(static_cast<uint32_t>(54321 + i * 7919));
+        }
 
         cityProcessor_.prepare(sr_);
         curiosity_.reset();
@@ -242,6 +248,10 @@ public:
         pitchBendNorm_ = 0.0f;
         aftertouchValue_ = 0.0f;
         modWheelValue_ = 0.0f;
+        // Re-seed drunk timing PRNG so playback is repeatable on reset.
+        static constexpr uint32_t kDrunkSeeds[8] = { 7919, 15839, 23759, 31679, 39599, 47519, 55439, 63359 };
+        for (int i = 0; i < 8; ++i)
+            drunkRngState_[i] = kDrunkSeeds[i];
     }
 
     //-- Audio -------------------------------------------------------------------
@@ -356,6 +366,8 @@ public:
 
         // Per-sample mono mix buffer for city processing.
         // 4096 samples handles 96kHz at large buffer sizes (~42ms); guarded by safeSamples.
+        // NOTE: OfferingCityProcessor::process() allocates a shadow[2048] for blend mode,
+        // so the effective city-blend limit is 2048 samples. safeSamples is capped there too.
         float monoMix[4096];
         jassert(numSamples <= 4096); // warn in debug if host sends unexpectedly large blocks
         int safeSamples = std::min(numSamples, 4096);
@@ -403,12 +415,19 @@ public:
                 auto& vs = snap.voice[v];
 
                 // envToPitch: modulate transient frequency by the running amp-envelope level.
-                // Uses ±2-octave range: envToPitch=1.0 at envelope peak raises pitch by one octave.
+                // Bipolar: positive = pitch-up sweep (rising drums), negative = pitch-down
+                // sweep (natural drum behaviour — kick starts high, falls to baseFreq).
+                // At |envToPitch|=1.0 and env=1.0 the ratio is 2.0 (one octave shift).
                 // Applied before process() so the frequency change is sampled this cycle.
                 // Always set (even to 1.0) so stale ratios never persist across blocks.
                 {
                     float envLevel = voices_[v].transient.getAmpEnvLevel();
-                    float freqRatio = 1.0f + envLevel * snap.envToPitch * 2.0f;
+                    // Use != 0 check (CLAUDE.md: bipolar modulation must use != 0)
+                    float freqRatio = snap.envToPitch != 0.0f
+                                          ? (1.0f + envLevel * snap.envToPitch * 2.0f)
+                                          : 1.0f;
+                    // Clamp to valid multiplier range (avoid negative/zero frequency)
+                    freqRatio = std::max(0.1f, freqRatio);
                     voices_[v].transient.setFreqMod(freqRatio);
                 }
 
@@ -457,20 +476,35 @@ public:
         }
 
         // ── 7. City processing (mono → applied to both channels) ──────
+        // City chain processes a mono mix. To preserve stereo width at full
+        // intensity, we apply the city's GAIN CHARACTER (ratio of processed/dry)
+        // to each stereo channel independently rather than replacing with mono.
         if (snap.cityIntensity > 0.001f)
         {
+            // Save pre-city mono levels for gain-ratio computation
+            float preCityMono[4096];
+            for (int s = 0; s < safeSamples; ++s)
+                preCityMono[s] = monoMix[s];
+
             cityProcessor_.process(monoMix, safeSamples, snap.cityMode, snap.cityBlend, snap.cityIntensity);
 
-            // Blend city-processed signal back into stereo
+            // Apply city processing as stereo-preserving gain multiplier.
+            // The ratio cityMono/preCity captures compression, saturation, and
+            // filtering character; multiplying each stereo channel by the same
+            // ratio retains the original stereo image at all intensities.
             for (int s = 0; s < safeSamples; ++s)
             {
                 float cityMono = monoMix[s];
-                float dry = outL[s];
-                float dryR = outR[s];
                 float wet = snap.cityIntensity;
 
-                outL[s] = dry * (1.0f - wet) + cityMono * wet;
-                outR[s] = dryR * (1.0f - wet) + cityMono * wet;
+                // Compute city gain ratio safely (avoid divide-by-zero on silence).
+                float denom = preCityMono[s];
+                float cityGain = (std::abs(denom) > 1e-9f) ? (cityMono / denom) : 1.0f;
+                cityGain = std::clamp(cityGain, -4.0f, 4.0f); // guard against extreme ratios
+
+                // Blend: dry (1-wet) + city-processed-at-original-stereo-ratio * wet
+                outL[s] = outL[s] * (1.0f - wet) + outL[s] * cityGain * wet;
+                outR[s] = outR[s] * (1.0f - wet) + outR[s] * cityGain * wet;
             }
         }
 
@@ -656,7 +690,7 @@ public:
         params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_velToAttack", 1}, "Offering Vel→Attack",
                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_envToPitch", 1}, "Offering Env→Pitch",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+                                              juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
 
         // ── Master (2) ────────────────────────────────────────────────
         params.push_back(std::make_unique<PF>(juce::ParameterID{"ofr_masterLevel", 1}, "Offering Master Level",
@@ -813,12 +847,13 @@ private:
 
         if (cityMode == 1 && cityIntensity > 0.01f) // Detroit
         {
-            // Per-voice deterministic random offset via xorshift on voice index + note
-            uint32_t seed = static_cast<uint32_t>(voiceIdx * 7919 + 31337);
-            seed ^= seed << 13;
-            seed ^= seed >> 17;
-            seed ^= seed << 5;
-            float rng = static_cast<float>(seed) / 4294967296.0f;         // [0, 1)
+            // Per-voice xorshift PRNG for drunk timing. Seed advances each trigger
+            // so consecutive hits on the same voice get different offsets (was: fixed
+            // seed from voiceIdx alone, giving identical delay every hit).
+            drunkRngState_[voiceIdx] ^= drunkRngState_[voiceIdx] << 13;
+            drunkRngState_[voiceIdx] ^= drunkRngState_[voiceIdx] >> 17;
+            drunkRngState_[voiceIdx] ^= drunkRngState_[voiceIdx] << 5;
+            float rng = static_cast<float>(drunkRngState_[voiceIdx]) / 4294967296.0f; // [0, 1)
             float offsetMs = (rng * 2.0f - 1.0f) * 15.0f * cityIntensity; // ±15ms
             int delaySamples = static_cast<int>(std::abs(offsetMs) * 0.001f * sr_);
             delaySamples = std::min(delaySamples, static_cast<int>(sr_ * 0.02f)); // cap at 20ms
@@ -938,6 +973,10 @@ private:
     float couplingFlipMod_ = 0.0f;
     float couplingDecayMod_ = 0.0f;
     float couplingFMMod_ = 0.0f;
+
+    // Per-voice drunk-timing PRNG state (Detroit city mode).
+    // Evolves each trigger so consecutive hits get different delays.
+    uint32_t drunkRngState_[8] = { 7919, 15839, 23759, 31679, 39599, 47519, 55439, 63359 };
 
     //--------------------------------------------------------------------------
     // Cached parameter pointers (83 + 4 macros = 87 total)

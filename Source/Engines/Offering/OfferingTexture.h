@@ -42,6 +42,10 @@ public:
         wobblePhase_ = 0.0f;
     }
 
+    // Allow per-voice seed injection so crackle/hiss patterns are decorrelated.
+    // Call after prepare() if you want a seed other than the default 54321.
+    void reseedNoise(uint32_t seed) noexcept { noise_.seed(seed); }
+
     //--------------------------------------------------------------------------
     // Process one sample through the texture chain.
     //
@@ -140,7 +144,9 @@ private:
     //--------------------------------------------------------------------------
     float processBitCrush(float input, int bits) noexcept
     {
-        float levels = std::pow(2.0f, static_cast<float>(bits));
+        // Use integer shift instead of std::pow — bits is always [4,16] so
+        // 1 << bits is exact and avoids per-sample floating-point exponentiation.
+        float levels = static_cast<float>(1 << bits);
         float quantized = std::round(input * levels) / levels;
         return quantized;
     }

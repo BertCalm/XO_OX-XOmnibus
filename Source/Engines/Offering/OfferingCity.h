@@ -98,7 +98,13 @@ struct OfferingAllpass
         return output;
     }
 
-    void addFeedback(float amount) noexcept { buffer_[writePos_] += amount; }
+    // Inject additional feedback into the most recently written slot.
+    // Must use (writePos_ - 1) because process() already advanced writePos_.
+    void addFeedback(float amount) noexcept
+    {
+        int lastWritten = (writePos_ - 1 + kMaxDelay) % kMaxDelay;
+        buffer_[lastWritten] += amount;
+    }
 
     void setFeedback(float fb) noexcept { feedback_ = fb; }
 
@@ -257,8 +263,17 @@ private:
         out = comp_.process(out);
 
         // Stage 6 (UNIQUE): Feedback noise gate
-        // Signal feeds back into a gate that opens/closes based on transient energy
-        envFollower_ = envFollower_ * 0.999f + std::abs(out) * 0.001f;
+        // Signal feeds back into a gate that opens/closes based on transient energy.
+        // FIX: Attack coeff was 0.001 (τ ≈ 1000ms at 44.1kHz) — gate never opened
+        // on short drum transients. Fast attack (~1ms = coeff 0.978) + slow release
+        // (~100ms = coeff 0.99978) so the gate follows drum hits correctly.
+        float envAttack = 1.0f - std::exp(-1.0f / (sr_ * 0.001f));  // ~1ms attack
+        float envRelease = 1.0f - std::exp(-1.0f / (sr_ * 0.1f));   // ~100ms release
+        float absOut = std::abs(out);
+        if (absOut > envFollower_)
+            envFollower_ += envAttack * (absOut - envFollower_);
+        else
+            envFollower_ += envRelease * (absOut - envFollower_);
         envFollower_ = flushDenormal(envFollower_);
         float gateThreshold = 0.3f * intensity;
         bool gateOpen = (envFollower_ > gateThreshold);
@@ -281,8 +296,14 @@ private:
 
         // Stage 2: Drunk timing — handled at engine level (trigger timing offset)
 
-        // Stage 3: Transient softener — 2ms attack smoothing
-        lpState_ = lpState_ + 0.05f * (out - lpState_); // ~2ms at 44.1kHz
+        // Stage 3: Transient softener — 2ms attack smoothing.
+        // FIX: Coefficient 0.05 is hardcoded (≈2ms at 44.1kHz but ≈1ms at 96kHz).
+        // Use lpCoeff_ which is computed from sr_ in prepare() for 12kHz LP; here
+        // we compute the 2ms one-pole coeff from sr_ directly.
+        {
+            float softCoeff = 1.0f - std::exp(-1.0f / (sr_ * 0.002f)); // 2ms, SR-correct
+            lpState_ = lpState_ + softCoeff * (out - lpState_);
+        }
         lpState_ = flushDenormal(lpState_);
         out = lpState_;
 
@@ -499,9 +520,11 @@ public:
             int cityA = cityMode;
             int cityB = (cityMode + 1) % 5;
 
-            // Copy input for second chain
-            float shadow[2048]; // max block size
-            int safeSamples = std::min(numSamples, 2048);
+            // Shadow buffer must match the engine's monoMix capacity (4096 samples
+            // at 96kHz). The previous 2048-sample cap silently discarded the second
+            // half of large blocks when city blend was active.
+            float shadow[4096];
+            int safeSamples = std::min(numSamples, 4096);
             std::memcpy(shadow, buffer, static_cast<size_t>(safeSamples) * sizeof(float));
 
             chains_[cityA].process(buffer, safeSamples, cityIntensity);

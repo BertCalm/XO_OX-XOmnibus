@@ -257,6 +257,10 @@ public:
         sat_ = sat;
         phase_ = 0.0f;
         active_ = true;
+        // Clear any in-progress choke so a new CHat trigger after an OHat choke
+        // does not inherit a partially drained chokeGain_ from the previous voice.
+        choking_ = false;
+        chokeGain_ = 1.0f;
 
         // Semitone to frequency ratio
         float tuneRatio = std::pow(2.0f, tune / 12.0f);
@@ -618,7 +622,10 @@ private:
     //--------------------------------------------------------------------------
     float processPerc(float env) noexcept
     {
-        // White noise excitation
+        // White noise excitation — env applied once here only.
+        // Do NOT multiply by env again at return: comb feedback causes the
+        // sound to naturally sustain and decay; a second env multiply creates
+        // env² scaling (amplitude collapses much faster than the decay param).
         float excitation = noise_.process() * env;
 
         // Comb filter: delay line with feedback
@@ -634,7 +641,7 @@ private:
         // Highpass to remove sub-bass rumble
         float filtered = hp_.process(combOut);
 
-        return filtered * env;
+        return filtered; // env already applied to excitation above
     }
 
     //--------------------------------------------------------------------------

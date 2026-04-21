@@ -112,7 +112,7 @@ public:
         bufferFilled_ = false;
         chopPhase_ = 0.0f;
         stretchReadPos_ = 0.0f;
-        sampleCount_ = 0;
+        sampleCount_ = 0u;
         std::fill(buffer_, buffer_ + kBufferSize, 0.0f);
     }
 
@@ -123,8 +123,13 @@ private:
     //--------------------------------------------------------------------------
     float processStretch(float input) noexcept
     {
-        // Read position advances at 1/stretch rate
+        // Read position advances at 1/stretch rate.
+        // Periodically fold back to prevent float precision loss and int overflow
+        // when cast to int after many thousands of samples.
         stretchReadPos_ += 1.0f / stretch_;
+        if (stretchReadPos_ >= static_cast<float>(kBufferSize))
+            stretchReadPos_ -= static_cast<float>(kBufferSize);
+
         int readIdx = static_cast<int>(stretchReadPos_) % kBufferSize;
         float frac = stretchReadPos_ - std::floor(stretchReadPos_);
 
@@ -179,11 +184,10 @@ private:
 
         for (int i = 1; i < layers_; ++i)
         {
-            // Read from buffer at offset position (creates temporal displacement)
-            int offset = static_cast<int>(layerPhaseOffsets_[i] * sr_ * 0.005f); // 0-5ms offsets
-            int readIdx = (sampleCount_ - offset) % kBufferSize;
-            if (readIdx < 0)
-                readIdx += kBufferSize;
+            // Read from buffer at offset position (creates temporal displacement).
+            // sampleCount_ is uint32_t so subtraction wraps correctly without UB.
+            uint32_t offset = static_cast<uint32_t>(layerPhaseOffsets_[i] * sr_ * 0.005f); // 0-5ms offsets
+            int readIdx = static_cast<int>((sampleCount_ - offset) % static_cast<uint32_t>(kBufferSize));
             float layerSample = buffer_[readIdx];
 
             // Apply ring modulation between layers if enabled
@@ -213,7 +217,9 @@ private:
     float buffer_[kBufferSize] = {};
     int writePos_ = 0;
     bool bufferFilled_ = false;
-    int sampleCount_ = 0;
+    // uint32_t avoids signed-overflow UB: wraps predictably every ~12h at 96kHz,
+    // and modulo with kBufferSize (power-of-2) remains correct across the wrap.
+    uint32_t sampleCount_ = 0;
 
     // Chop state
     float chopPhase_ = 0.0f;
