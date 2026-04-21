@@ -192,7 +192,6 @@ struct OllotronVoice
         lfo2.setPhaseOffset(static_cast<float>((voiceIdx * 5) % kOllotronMaxVoices)
                             / static_cast<float>(kOllotronMaxVoices));
 
-        ampEnv.prepare(sr);  // FIX: sr must be set before setADSR() (sr=0 default → inf/NaN rate)
         ampEnv.reset();
         tapeAgeLPF.reset();
 
@@ -472,11 +471,9 @@ public:
         hissFilter_.setMode(CytomicSVF::Mode::BandPass);
         hissFilter_.setCoefficients(3000.0f, 0.3f, sr_);
 
-        // Cabinet color filters — separate L/R to preserve stereo independence
-        cabinetFilterL_.setMode(CytomicSVF::Mode::LowShelf);
-        cabinetFilterL_.setCoefficients(800.0f, 0.0f, sr_);
-        cabinetFilterR_.setMode(CytomicSVF::Mode::LowShelf);
-        cabinetFilterR_.setCoefficients(800.0f, 0.0f, sr_);
+        // Cabinet color filter
+        cabinetFilter_.setMode(CytomicSVF::Mode::LowShelf);
+        cabinetFilter_.setCoefficients(800.0f, 0.0f, sr_);
 
         // Chamber reverb allpass chain (4 stages, primes at ~44.1kHz scaled)
         // Lengths chosen as small primes to break up periodic flutter artifacts.
@@ -529,15 +526,13 @@ public:
             chamberBufPos_[i] = 0;
         }
         hissFilter_.reset();
-        cabinetFilterL_.reset();
-        cabinetFilterR_.reset();
+        cabinetFilter_.reset();
 
         modWheelValue_   = 0.0f;
         aftertouchValue_ = 0.0f;
         lastSampleL_     = 0.0f;
         lastSampleR_     = 0.0f;
         voiceTime_       = 0;
-        airNoiseRng_     = 0xBEEF1234u;  // FIX: reset PRNG to deterministic seed
         activeVoiceCount_.store(0, std::memory_order_relaxed);
     }
 
@@ -569,13 +564,12 @@ public:
         }
         case CouplingType::AmpToFilter:
         {
-            // Raise effective tapeAge filter cutoff proportional to source amplitude.
-            // Compute true RMS (not MAV) for perceptually accurate amplitude tracking.
-            float sumSq = 0.0f;
+            // Raise effective tapeAge filter cutoff proportional to source RMS
+            float rms = 0.0f;
             for (int i = 0; i < numSamples; ++i)
-                sumSq += sourceBuffer[i] * sourceBuffer[i];
-            const float rms = std::sqrt(sumSq / static_cast<float>(numSamples));
-            couplingAmpFilter_ = std::clamp(rms * amount, 0.0f, 1.0f);
+                rms += std::fabs(sourceBuffer[i]);
+            rms /= static_cast<float>(numSamples);
+            couplingAmpFilter_ = rms * amount;
             break;
         }
         case CouplingType::EnvToMorph:
@@ -595,9 +589,15 @@ public:
             break;
         }
         default:
-            // Unknown coupling type: silently discard rather than accumulating into
-            // couplingAmpFilter_ unboundedly (was: += rms*amount*0.5 per call — no clamp).
+        {
+            // Fallback: treat unrecognised coupling as AmpToFilter
+            float rms = 0.0f;
+            for (int i = 0; i < numSamples; ++i)
+                rms += std::fabs(sourceBuffer[i]);
+            rms /= static_cast<float>(numSamples);
+            couplingAmpFilter_ += rms * amount * 0.5f;
             break;
+        }
         }
     }
 
@@ -874,23 +874,19 @@ public:
         // ---- Update hiss filter if tone changed ----
         hissFilter_.setCoefficients(std::clamp(hissTone, 200.0f, sr_ * 0.45f), 0.3f, sr_);
 
-        // ---- Cabinet color filter (L and R share coefficients; separate state) ----
+        // ---- Cabinet color filter ----
         {
-            // cabinetColor [0,1]: 0=dark(low shelf -6dB), 0.5=neutral, 1=bright(high shelf +6dB)
+            // cabinetColor: 0=dark(800Hz shelf -6dB), 1=neutral, >1=bright(8kHz shelf +6dB)
             const float shelfGain = (cabinetColor - 0.5f) * 12.0f;
             if (cabinetColor < 0.5f)
             {
-                cabinetFilterL_.setMode(CytomicSVF::Mode::LowShelf);
-                cabinetFilterL_.setCoefficients(800.0f, 0.0f, sr_, shelfGain);
-                cabinetFilterR_.setMode(CytomicSVF::Mode::LowShelf);
-                cabinetFilterR_.setCoefficients(800.0f, 0.0f, sr_, shelfGain);
+                cabinetFilter_.setMode(CytomicSVF::Mode::LowShelf);
+                cabinetFilter_.setCoefficients(800.0f, 0.0f, sr_, shelfGain);
             }
             else
             {
-                cabinetFilterL_.setMode(CytomicSVF::Mode::HighShelf);
-                cabinetFilterL_.setCoefficients(4000.0f, 0.0f, sr_, shelfGain);
-                cabinetFilterR_.setMode(CytomicSVF::Mode::HighShelf);
-                cabinetFilterR_.setCoefficients(4000.0f, 0.0f, sr_, shelfGain);
+                cabinetFilter_.setMode(CytomicSVF::Mode::HighShelf);
+                cabinetFilter_.setCoefficients(4000.0f, 0.0f, sr_, shelfGain);
             }
         }
 
@@ -985,11 +981,10 @@ public:
         }
 
         // ---- Cabinet color + air noise ----
-        // FIX: Use separate L/R cabinet filters — single mono state collapses stereo.
         for (int s = 0; s < numSamples; ++s)
         {
-            float outL = cabinetFilterL_.processSample(writeL[s]);
-            float outR = cabinetFilterR_.processSample(writeR[s]);
+            float outL = cabinetFilter_.processSample(writeL[s]);
+            float outR = cabinetFilter_.processSample(writeR[s]);
 
             // Air noise floor — broadband room noise scaled by airNoise
             // This is a constant low-level noise that gives the "room" feel
@@ -1117,7 +1112,7 @@ private:
     // Formants of /ɑ/ (open throat): F1=700Hz, F2=1220Hz, F3=2600Hz
     // (Fant 1960 table A; Risset 1969 choir analysis)
     // Wear adds hiss; tapeAge rolls off high formants via phase injection.
-    static float getBankSampleChoir(float phase,
+    static float getBankSampleChoir(float phase, float freq,
                                     float wearNorm, float tapeAgeNorm,
                                     float choirFormantParam) noexcept
     {
@@ -1249,30 +1244,23 @@ private:
     {
         if (startSample >= endSample) return;
 
-        // FIX: Hoist per-voice LFO/ADSR setup out of the hot per-sample path.
-        // setADSR calls std::exp × 3 per voice; setRate divides per voice.
-        // These are block-rate params — update once, not 16× per block.
-        // LFO rates are clamped here to avoid repeated clamping inside the voice loop.
-        const float clampedFlutterRate = std::clamp(flutterRate, 2.0f, 8.0f);
-        const float clampedWowRate     = std::clamp(wowRate, 0.1f, 1.0f);
-        for (int i = 0; i < kOllotronMaxVoices; ++i)
-        {
-            if (!voices_[i].active) continue;
-            voices_[i].ampEnv.setADSR(ampAtk, ampDec, ampSus, ampRel);
-            voices_[i].flutterLFO.setRate(clampedFlutterRate, sr_);
-            voices_[i].flutterLFO.setShape(StandardLFO::Sine);
-            voices_[i].wowLFO.setRate(clampedWowRate, sr_);
-            voices_[i].wowLFO.setShape(StandardLFO::Triangle);
-            voices_[i].lfo1.setRate(lfo1Rate, sr_);
-            voices_[i].lfo1.setShape(lfo1Shape);
-            voices_[i].lfo2.setRate(lfo2Rate, sr_);
-            voices_[i].lfo2.setShape(lfo2Shape);
-        }
-
         for (int i = 0; i < kOllotronMaxVoices; ++i)
         {
             auto& v = voices_[i];
             if (!v.active) continue;
+
+            // ---- Update ADSR params ----
+            v.ampEnv.setADSR(ampAtk, ampDec, ampSus, ampRel);
+
+            // ---- Update per-voice LFOs ----
+            v.flutterLFO.setRate(std::clamp(flutterRate, 2.0f, 8.0f), sr_);
+            v.flutterLFO.setShape(StandardLFO::Sine);
+            v.wowLFO.setRate(std::clamp(wowRate, 0.1f, 1.0f), sr_);
+            v.wowLFO.setShape(StandardLFO::Triangle);
+            v.lfo1.setRate(lfo1Rate, sr_);
+            v.lfo1.setShape(lfo1Shape);
+            v.lfo2.setRate(lfo2Rate, sr_);
+            v.lfo2.setShape(lfo2Shape);
 
             // ---- Per-voice wear (normalised) ----
             const float wearNorm = (wearCeiling > 0.001f)
@@ -1284,8 +1272,7 @@ private:
             const float velBrightBoost = v.velocity * velToBright;
             const float effectiveTapeAge = std::max(0.0f, tapeAge - velBrightBoost * 0.5f);
 
-            // Wear additionally darkens tape age filter (use wearNorm at block entry;
-            // effWearNorm with LFO is computed per-sample below and applied to bank synth).
+            // Wear additionally darkens tape age filter
             const float voiceTapeAge = std::clamp(effectiveTapeAge + wearNorm * 0.3f, 0.0f, 1.0f);
 
             // Tape-age LP cutoff: 20kHz at age=0, 800Hz at age=1 (exponential feel)
@@ -1335,36 +1322,20 @@ private:
                 v.lastLfo2Val = lfo2Val;
 
                 // ---- LFO target application ----
-                // FIX: Wear (4), Hiss (5), ChamberMix (6) targets were silently dropped.
-                // All seven targets now applied. Wear/Hiss are per-voice; ChamberMix is
-                // post-voice but stored as an additive offset applied below.
+                // We track offsets directly here (no per-sample heap access)
                 float lfo1FlutterAdd = 0.0f, lfo1TapeAgeAdd = 0.0f, lfo1PitchAdd = 0.0f;
-                float lfo1WearAdd = 0.0f, lfo1HissAdd = 0.0f;
-                if      (lfo1Tgt == kOlloLFOFlutterDep) lfo1FlutterAdd  = lfo1Val * lfo1Depth;
-                else if (lfo1Tgt == kOlloLFOTapeAge)    lfo1TapeAgeAdd  = lfo1Val * lfo1Depth;
-                else if (lfo1Tgt == kOlloLFOPitch)      lfo1PitchAdd    = lfo1Val * lfo1Depth;
-                else if (lfo1Tgt == kOlloLFOWear)       lfo1WearAdd     = lfo1Val * lfo1Depth * 0.3f;
-                else if (lfo1Tgt == kOlloLFOHiss)       lfo1HissAdd     = lfo1Val * lfo1Depth;
-                // kOlloLFOChamberMix applied at block level (post-voice)
+                if (lfo1Tgt == kOlloLFOFlutterDep) lfo1FlutterAdd = lfo1Val * lfo1Depth;
+                else if (lfo1Tgt == kOlloLFOTapeAge) lfo1TapeAgeAdd = lfo1Val * lfo1Depth;
+                else if (lfo1Tgt == kOlloLFOPitch) lfo1PitchAdd = lfo1Val * lfo1Depth;
 
                 float lfo2FlutterAdd = 0.0f, lfo2TapeAgeAdd = 0.0f, lfo2PitchAdd = 0.0f;
-                float lfo2WearAdd = 0.0f, lfo2HissAdd = 0.0f;
-                if      (lfo2Tgt == kOlloLFOFlutterDep) lfo2FlutterAdd  = lfo2Val * lfo2Depth;
-                else if (lfo2Tgt == kOlloLFOTapeAge)    lfo2TapeAgeAdd  = lfo2Val * lfo2Depth;
-                else if (lfo2Tgt == kOlloLFOPitch)      lfo2PitchAdd    = lfo2Val * lfo2Depth;
-                else if (lfo2Tgt == kOlloLFOWear)       lfo2WearAdd     = lfo2Val * lfo2Depth * 0.3f;
-                else if (lfo2Tgt == kOlloLFOHiss)       lfo2HissAdd     = lfo2Val * lfo2Depth;
-                // kOlloLFOChamberMix applied at block level (post-voice)
-
-                // ---- Effective wear (LFO Wear target adds dynamic aging) ----
-                const float effWearNorm = std::clamp(wearNorm + lfo1WearAdd + lfo2WearAdd, 0.0f, 1.0f);
-
-                // ---- Effective hiss (LFO Hiss target raises hiss level per-voice) ----
-                const float effHiss = std::clamp(hissLevel + lfo1HissAdd + lfo2HissAdd, 0.0f, 1.0f);
+                if (lfo2Tgt == kOlloLFOFlutterDep) lfo2FlutterAdd = lfo2Val * lfo2Depth;
+                else if (lfo2Tgt == kOlloLFOTapeAge) lfo2TapeAgeAdd = lfo2Val * lfo2Depth;
+                else if (lfo2Tgt == kOlloLFOPitch) lfo2PitchAdd = lfo2Val * lfo2Depth;
 
                 // ---- Effective flutter depth (wear adds warble) ----
                 const float effFlutter = std::clamp(
-                    flutterDepth + lfo1FlutterAdd + lfo2FlutterAdd + effWearNorm * 0.15f,
+                    flutterDepth + lfo1FlutterAdd + lfo2FlutterAdd + wearNorm * 0.15f,
                     0.0f, 1.0f);
 
                 // ---- Pitch modulation: flutter (2–8 Hz ±cents), wow (0.1–1 Hz) ----
@@ -1396,7 +1367,7 @@ private:
                 case 0:  // Choir
                 {
                     float choirSample = getBankSampleChoir(
-                        v.phase, effWearNorm, voiceTapeAge + lfo1TapeAgeAdd + lfo2TapeAgeAdd, choirFormant);
+                        v.phase, instFreq, wearNorm, voiceTapeAge + lfo1TapeAgeAdd + lfo2TapeAgeAdd, choirFormant);
                     // EnvToMorph: blend toward user waveform
                     if (morphToUser > 0.001f)
                     {
@@ -1410,7 +1381,7 @@ private:
                 case 1:  // Strings
                 {
                     float strSample = getBankSampleStrings(
-                        v.phase, effWearNorm, voiceTapeAge + lfo1TapeAgeAdd + lfo2TapeAgeAdd, stringsBow, v);
+                        v.phase, wearNorm, voiceTapeAge + lfo1TapeAgeAdd + lfo2TapeAgeAdd, stringsBow, v);
                     if (morphToUser > 0.001f)
                     {
                         const float userSample = getWaveform(userAType, v.phase);
@@ -1423,7 +1394,7 @@ private:
                 case 2:  // Flute
                 {
                     float fltSample = getBankSampleFlute(
-                        v.phase, effWearNorm, voiceTapeAge + lfo1TapeAgeAdd + lfo2TapeAgeAdd, flutesBreath, v);
+                        v.phase, wearNorm, voiceTapeAge + lfo1TapeAgeAdd + lfo2TapeAgeAdd, flutesBreath, v);
                     if (morphToUser > 0.001f)
                     {
                         const float userSample = getWaveform(userAType, v.phase);
@@ -1444,14 +1415,12 @@ private:
                 bankSample = v.tapeAgeLPF.processSample(bankSample);
 
                 // ---- Per-voice tape hiss injection ----
-                // Wear (effWearNorm, incl. LFO Wear target) scales hiss: more worn = noisier.
-                // hissFilter_ (bandpass ~2-8kHz) colours the white noise to
-                // authentic oxide-friction hiss spectrum.
-                const float voiceHiss = effHiss * (1.0f + effWearNorm * 1.5f);
+                // Wear scales hiss: more worn = noisier tape
+                const float voiceHiss = hissLevel * (1.0f + wearNorm * 1.5f);
                 if (voiceHiss > 0.001f)
                 {
                     const float rawHiss = v.nextRandBipolar() * voiceHiss * 0.04f;
-                    bankSample += hissFilter_.processSample(rawHiss);  // FIX: apply tone shaping
+                    bankSample += rawHiss;
                 }
 
                 // ---- Amplitude ADSR ----
@@ -1471,15 +1440,8 @@ private:
                 // ---- Final voice output ----
                 float sample = (bankSample * envLevel + clickOut) * v.fadeoutGain;
 
-                // Equal-power stereo pan: spread voices by note across keyboard range.
-                // MIDI note 60 (C4) = centre; ±30 semitones = ±30° pan law.
-                // Authentic Mellotron has slight stereo spread per key position.
-                const float panAngle = (static_cast<float>(v.note) - 60.0f) / 80.0f
-                                       * (kOllotronPi * 0.25f);  // max ±45°
-                const float panL = std::cos(panAngle + kOllotronPi * 0.25f); // P-PAN-LINEAR: equal-power
-                const float panR = std::sin(panAngle + kOllotronPi * 0.25f);
-                writeL[s] += sample * panL;
-                writeR[s] += sample * panR;
+                writeL[s] += sample;
+                writeR[s] += sample;
 
                 // ---- Advance playback position ----
                 v.playbackPosSamples += 1.0f;
@@ -1500,17 +1462,11 @@ private:
                       float wearMemory, float wearCeiling,
                       float atToWear) noexcept
     {
-        // P-STEAL-DIR: prefer stealing release-stage voices (less audible click)
-        const int idx = VoiceAllocator::findFreeVoicePreferRelease(
-            voices_, kOllotronMaxVoices,
-            [](const OllotronVoice& v) { return v.releasing; });
+        const int idx = VoiceAllocator::findFreeVoice(voices_, kOllotronMaxVoices);
         auto& v = voices_[idx];
 
         // ---- Reset voice state ----
-        // FIX: On voice steal, preserve glideFreq so portamento starts from stolen
-        // voice's current pitch rather than jumping to exact target frequency.
-        const float prevGlideFreq = v.active ? v.glideFreq : 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
-
+        // Preserve per-voice coupling read pos offset (aligns with current ring write pos)
         v.active              = true;
         v.releasing           = false;
         v.note                = std::clamp(note, 0, 127);
@@ -1519,7 +1475,7 @@ private:
         v.playbackPosSamples  = 0.0f;
         v.fadeoutGain         = 1.0f;
         v.phase               = 0.0f;
-        v.glideFreq           = prevGlideFreq;
+        v.glideFreq           = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
         v.clickActive         = false;
         v.clickEnv            = 0.0f;
 
@@ -1583,12 +1539,11 @@ private:
         const float dL = buf[static_cast<size_t>(pos)];
         const float dR = buf[static_cast<size_t>(pos + len)];
 
-        // Schroeder allpass: y[n] = d[n-M] - coeff*x[n] + (1-coeff^2)*x[n]*coeff
-        // Canonical form: y = d + coeff*(x - y); store-back: buf = x - coeff*y
-        const float yL = dL - chamberAllpassCoeff_ * xL;
-        const float yR = dR - chamberAllpassCoeff_ * xR;
+        // Schroeder allpass: y[n] = d[n-M] + x[n] - coeff*y[n-M]
+        const float yL = dL + xL - chamberAllpassCoeff_ * (dL + xL * chamberAllpassCoeff_);
+        const float yR = dR + xR - chamberAllpassCoeff_ * (dR + xR * chamberAllpassCoeff_);
 
-        // Store input feedback: xL + coeff*yL (Schroeder standard)
+        // Store input feedback
         buf[static_cast<size_t>(pos)]       = flushDenormal(xL + chamberAllpassCoeff_ * yL);
         buf[static_cast<size_t>(pos + len)] = flushDenormal(xR + chamberAllpassCoeff_ * yR);
 
@@ -1667,10 +1622,6 @@ private:
     //      ramp starting earlier.
     //    - ollo_wowRate: always modulates voice pitch (wowCents injected every sample)
     //    - ollo_bank==User with no coupling: plays procedural triangle/square blend
-    //    - ollo_hissTone: applied via hissFilter_ to colour hiss noise spectrum
-    //      (was missing; fixed — hissFilter_.processSample(rawHiss) now called).
-    //    - ollo_lfo1/2Target Wear+Hiss+ChamberMix: previously silently dropped;
-    //      now all 7 targets applied per-sample (fixed).
     //    - ollo_couplingDubDepth: only effective when AudioToWavetable coupling
     //      is present AND bank==User. Otherwise it is consumed but produces no sound
     //      change — this is intentional (the coupling itself is absent).
@@ -1716,8 +1667,7 @@ private:
 
     // ---- Post-FX ----
     CytomicSVF hissFilter_;
-    CytomicSVF cabinetFilterL_;   // FIX: separate L/R cabinet filters for stereo independence
-    CytomicSVF cabinetFilterR_;
+    CytomicSVF cabinetFilter_;
 
     // Chamber reverb allpass stages (4 stages, stereo interleaved in each buf)
     std::array<int, 4>           chamberAllpassLengths_ {};
