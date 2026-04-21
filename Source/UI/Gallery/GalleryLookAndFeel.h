@@ -154,7 +154,8 @@ public:
             if (std::abs(modAmt) > 0.001f)
             {
                 // Reconstruct the coupling-type colour from the stored ARGB value.
-                const auto   argb    = static_cast<int64_t>(slider.getProperties()["modColour"]);
+                // juce::int64 (not int64_t) — see GalleryKnob.h note.
+                const juce::int64 argb = static_cast<juce::int64>(slider.getProperties()["modColour"]);
                 juce::Colour modCol  = (argb != 0)
                                            ? juce::Colour(static_cast<juce::uint32>(argb))
                                            : juce::Colour(0xFF4488FF); // fallback blue

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Obsidian Ridge",
+  "mood": "Shadow",
+  "engines": [
+    "Outcrop"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sharp ridge terrain at a steep angle. Probe cuts across jagged topography — dark, ridged, harmonically bright at the crests. Each key-press reveals a new slope.",
+  "tags": [
+    "shadow",
+    "lead",
+    "terrain",
+    "ridges",
+    "sharp",
+    "angular"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.70,
+    "warmth": 0.25,
+    "movement": 0.55,
+    "density": 0.48,
+    "space": 0.35,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Outcrop": {
+      "outc_terrainType": 1,
+      "outc_peakHeight": 0.30,
+      "outc_peakSpread": 0.25,
+      "outc_ridgeFreq": 3.8,
+      "outc_ridgeDepth": 0.75,
+      "outc_ridgeAngle": 1.20,
+      "outc_roughness": 0.40,
+      "outc_orbitShape": 1,
+      "outc_orbitRadius": 0.60,
+      "outc_orbitRatio": 1.25,
+      "outc_orbitPhase": 0.00,
+      "outc_orbitJitter": 0.15,
+      "outc_fltCutoff": 3800.0,
+      "outc_fltReso": 0.55,
+      "outc_fltType": 0,
+      "outc_fltEnvAmt": 0.60,
+      "outc_fltKeyTrack": 0.70,
+      "outc_fltVelTrack": 0.85,
+      "outc_ampAtk": 0.005,
+      "outc_ampDec": 0.35,
+      "outc_ampSus": 0.75,
+      "outc_ampRel": 0.45,
+      "outc_fenvAtk": 0.01,
+      "outc_fenvDec": 0.45,
+      "outc_fenvSus": 0.30,
+      "outc_fenvRel": 0.40,
+      "outc_lfo1Rate": 1.40,
+      "outc_lfo1Depth": 0.35,
+      "outc_lfo1Shape": 2,
+      "outc_lfo1Target": 3,
+      "outc_lfo2Rate": 0.18,
+      "outc_lfo2Depth": 0.25,
+      "outc_lfo2Shape": 0,
+      "outc_lfo2Target": 1,
+      "outc_macro1": 0.68,
+      "outc_macro2": 0.55,
+      "outc_macro3": 0.15,
+      "outc_macro4": 0.30,
+      "outc_voiceMode": 0,
+      "outc_glide": 0.15,
+      "outc_level": 0.75
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.15,
+    "SPACE": 0.30
+  }
+}

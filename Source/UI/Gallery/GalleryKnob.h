@@ -37,11 +37,14 @@ public:
     void setModulation(float amount, juce::Colour colour = juce::Colour(0xFF4488FF))
     {
         const float  clamped = juce::jlimit(-1.0f, 1.0f, amount);
-        const auto   argb    = static_cast<int64_t>(colour.getARGB());
-        auto&        props   = getProperties();
+        // Use juce::int64 (long long) rather than int64_t so the static_cast
+        // from juce::var is unambiguous on libstdc++ (where int64_t = long
+        // and juce::var has both operator int() and operator int64()).
+        const juce::int64 argb    = static_cast<juce::int64>(colour.getARGB());
+        auto&             props   = getProperties();
 
         const bool changed = (static_cast<float>(props["modAmount"]) != clamped)
-                          || (static_cast<int64_t>(props["modColour"]) != argb);
+                          || (static_cast<juce::int64>(props["modColour"]) != argb);
 
         if (changed)
         {

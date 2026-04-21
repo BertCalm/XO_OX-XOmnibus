@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Alpine Mirror",
+  "mood": "Luminous",
+  "engines": [
+    "Outcrop"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sharp peaks, low roughness, quick circular orbit. Probe glides across reflective summits — bright, clear, alpine. High-pass keeps the glint without the sunstroke.",
+  "tags": [
+    "luminous",
+    "bright",
+    "terrain",
+    "peaks",
+    "mirror",
+    "alpine"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.32,
+    "movement": 0.55,
+    "density": 0.40,
+    "space": 0.72,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Outcrop": {
+      "outc_terrainType": 0,
+      "outc_peakHeight": 0.65,
+      "outc_peakSpread": 0.30,
+      "outc_ridgeFreq": 2.8,
+      "outc_ridgeDepth": 0.25,
+      "outc_ridgeAngle": 0.45,
+      "outc_roughness": 0.08,
+      "outc_orbitShape": 0,
+      "outc_orbitRadius": 0.55,
+      "outc_orbitRatio": 1.00,
+      "outc_orbitPhase": 0.0,
+      "outc_orbitJitter": 0.05,
+      "outc_fltCutoff": 5200.0,
+      "outc_fltReso": 0.22,
+      "outc_fltType": 1,
+      "outc_fltEnvAmt": 0.30,
+      "outc_fltKeyTrack": 0.60,
+      "outc_fltVelTrack": 0.55,
+      "outc_ampAtk": 0.120,
+      "outc_ampDec": 0.65,
+      "outc_ampSus": 0.82,
+      "outc_ampRel": 1.60,
+      "outc_fenvAtk": 0.08,
+      "outc_fenvDec": 0.70,
+      "outc_fenvSus": 0.55,
+      "outc_fenvRel": 1.30,
+      "outc_lfo1Rate": 0.85,
+      "outc_lfo1Depth": 0.32,
+      "outc_lfo1Shape": 0,
+      "outc_lfo1Target": 2,
+      "outc_lfo2Rate": 0.12,
+      "outc_lfo2Depth": 0.22,
+      "outc_lfo2Shape": 1,
+      "outc_lfo2Target": 3,
+      "outc_macro1": 0.38,
+      "outc_macro2": 0.45,
+      "outc_macro3": 0.12,
+      "outc_macro4": 0.70,
+      "outc_voiceMode": 2,
+      "outc_glide": 0.10,
+      "outc_level": 0.70
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.12,
+    "SPACE": 0.70
+  }
+}

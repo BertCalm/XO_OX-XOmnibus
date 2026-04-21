@@ -116,6 +116,8 @@
 | OORT | XOort | Oort Cloud Violet `#9B7FD4` |
 | OOBL | XOobleck | Oobleck Slime `#B4FF39` |
 | OOZE | XOoze | Hydrothermal Teal `#2D5F5D` |
+| OUTCROP | XOutcrop | Mountain Moss `#5B6F57` |
+| ONEIRIC | XOneiric | Phosphene Lavender `#B8A0FF` |
 
 ## The 43 Blessings
 

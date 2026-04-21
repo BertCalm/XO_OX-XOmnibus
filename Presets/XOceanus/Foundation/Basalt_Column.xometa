@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Basalt Column",
+  "mood": "Foundation",
+  "engines": [
+    "Outcrop"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Deep peaks with tight spread and slow orbit. A monolithic low-register tone whose harmonic content rises only slightly as the probe sweeps. Bass foundation carved from stone.",
+  "tags": [
+    "foundation",
+    "bass",
+    "terrain",
+    "peaks",
+    "deep",
+    "mono"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.78,
+    "movement": 0.22,
+    "density": 0.75,
+    "space": 0.30,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Outcrop": {
+      "outc_terrainType": 0,
+      "outc_peakHeight": 0.80,
+      "outc_peakSpread": 0.22,
+      "outc_ridgeFreq": 1.2,
+      "outc_ridgeDepth": 0.10,
+      "outc_ridgeAngle": 0.10,
+      "outc_roughness": 0.05,
+      "outc_orbitShape": 0,
+      "outc_orbitRadius": 0.30,
+      "outc_orbitRatio": 0.25,
+      "outc_orbitPhase": 0.0,
+      "outc_orbitJitter": 0.02,
+      "outc_fltCutoff": 900.0,
+      "outc_fltReso": 0.28,
+      "outc_fltType": 0,
+      "outc_fltEnvAmt": 0.22,
+      "outc_fltKeyTrack": 0.38,
+      "outc_fltVelTrack": 0.55,
+      "outc_ampAtk": 0.010,
+      "outc_ampDec": 0.60,
+      "outc_ampSus": 0.85,
+      "outc_ampRel": 0.80,
+      "outc_fenvAtk": 0.008,
+      "outc_fenvDec": 0.70,
+      "outc_fenvSus": 0.45,
+      "outc_fenvRel": 0.90,
+      "outc_lfo1Rate": 0.18,
+      "outc_lfo1Depth": 0.15,
+      "outc_lfo1Shape": 0,
+      "outc_lfo1Target": 0,
+      "outc_lfo2Rate": 0.04,
+      "outc_lfo2Depth": 0.10,
+      "outc_lfo2Shape": 1,
+      "outc_lfo2Target": 3,
+      "outc_macro1": 0.78,
+      "outc_macro2": 0.18,
+      "outc_macro3": 0.10,
+      "outc_macro4": 0.25,
+      "outc_voiceMode": 0,
+      "outc_glide": 0.12,
+      "outc_level": 0.85
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.10,
+    "SPACE": 0.25
+  }
+}

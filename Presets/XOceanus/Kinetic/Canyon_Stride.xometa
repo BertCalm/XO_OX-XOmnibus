@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Canyon Stride",
+  "mood": "Kinetic",
+  "engines": [
+    "Outcrop"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Fast elliptical orbit over hybrid terrain. The probe strides across peaks and ridges at irrational ratio — rhythmic without ever repeating, a pulse that lives inside the landscape.",
+  "tags": [
+    "kinetic",
+    "pulse",
+    "orbital",
+    "elliptic",
+    "fast",
+    "hybrid"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.48,
+    "movement": 0.88,
+    "density": 0.60,
+    "space": 0.45,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Outcrop": {
+      "outc_terrainType": 2,
+      "outc_peakHeight": 0.48,
+      "outc_peakSpread": 0.55,
+      "outc_ridgeFreq": 2.4,
+      "outc_ridgeDepth": 0.45,
+      "outc_ridgeAngle": 0.62,
+      "outc_roughness": 0.28,
+      "outc_orbitShape": 1,
+      "outc_orbitRadius": 0.70,
+      "outc_orbitRatio": 1.618,
+      "outc_orbitPhase": 0.25,
+      "outc_orbitJitter": 0.05,
+      "outc_fltCutoff": 2600.0,
+      "outc_fltReso": 0.30,
+      "outc_fltType": 0,
+      "outc_fltEnvAmt": 0.38,
+      "outc_fltKeyTrack": 0.55,
+      "outc_fltVelTrack": 0.65,
+      "outc_ampAtk": 0.008,
+      "outc_ampDec": 0.25,
+      "outc_ampSus": 0.70,
+      "outc_ampRel": 0.60,
+      "outc_fenvAtk": 0.02,
+      "outc_fenvDec": 0.30,
+      "outc_fenvSus": 0.45,
+      "outc_fenvRel": 0.80,
+      "outc_lfo1Rate": 3.20,
+      "outc_lfo1Depth": 0.55,
+      "outc_lfo1Shape": 0,
+      "outc_lfo1Target": 0,
+      "outc_lfo2Rate": 0.28,
+      "outc_lfo2Depth": 0.30,
+      "outc_lfo2Shape": 3,
+      "outc_lfo2Target": 2,
+      "outc_macro1": 0.50,
+      "outc_macro2": 0.72,
+      "outc_macro3": 0.20,
+      "outc_macro4": 0.48,
+      "outc_voiceMode": 2,
+      "outc_glide": 0.02,
+      "outc_level": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.50,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.20,
+    "SPACE": 0.48
+  }
+}

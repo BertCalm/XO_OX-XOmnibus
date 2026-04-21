@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "name": "Phase Entangled",
+  "mood": "Entangled",
+  "engines": [
+    "Oneiric"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Two-soliton bound state at 1:3 amplitude ratio. The composite breathes at a keytracked period nobody wrote — physics gives you AM for free. Signature Oneiric preset.",
+  "tags": [
+    "entangled",
+    "bound-state",
+    "breather",
+    "soliton",
+    "am",
+    "physics"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.55,
+    "movement": 0.72,
+    "density": 0.60,
+    "space": 0.58,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oneiric": {
+      "oner_solitonCount": 2,
+      "oner_amplitude": 1.10,
+      "oner_width": 1.00,
+      "oner_velocity": 0.0,
+      "oner_velocitySpread": 0.0,
+      "oner_chirp": 0.0,
+      "oner_dissipation": 0.020,
+      "oner_boundState": 1,
+      "oner_polarity": 0,
+      "oner_dispersion": 1.20,
+      "oner_nonlinearity": 1.40,
+      "oner_observeMode": 0,
+      "oner_observePoint": 0.0,
+      "oner_probeSpeed": 0.12,
+      "oner_rogueSensitivity": 0.30,
+      "oner_rogueThreshold": 0.75,
+      "oner_instability": 0.0,
+      "oner_instabilityHold": 3.0,
+      "oner_potentialShape": 0,
+      "oner_potentialDepth": 0.0,
+      "oner_potentialPeriod": 1.0,
+      "oner_attackShock": 0.25,
+      "oner_fltCutoff": 2800.0,
+      "oner_fltReso": 0.28,
+      "oner_fltType": 0,
+      "oner_fltEnvAmt": 0.35,
+      "oner_fltKeyTrack": 0.60,
+      "oner_fltVelTrack": 0.65,
+      "oner_ampAtk": 0.15,
+      "oner_ampDec": 0.70,
+      "oner_ampSus": 0.85,
+      "oner_ampRel": 1.80,
+      "oner_fenvAtk": 0.12,
+      "oner_fenvDec": 0.90,
+      "oner_fenvSus": 0.50,
+      "oner_fenvRel": 1.60,
+      "oner_lfo1Rate": 0.45,
+      "oner_lfo1Depth": 0.40,
+      "oner_lfo1Shape": 0,
+      "oner_lfo1Target": 1,
+      "oner_lfo2Rate": 0.08,
+      "oner_lfo2Depth": 0.25,
+      "oner_lfo2Shape": 1,
+      "oner_lfo2Target": 2,
+      "oner_macro1": 0.52,
+      "oner_macro2": 0.48,
+      "oner_macro3": 0.20,
+      "oner_macro4": 0.52,
+      "oner_voiceMode": 2,
+      "oner_glide": 0.06,
+      "oner_level": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.20,
+    "SPACE": 0.52
+  }
+}
