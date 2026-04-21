@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include <algorithm>
+#include "../../DSP/FastMath.h"
 
 namespace xocelot
 {
@@ -126,9 +127,10 @@ private:
         // Map amount [0,1] to threshold position: amount=1 -> threshold=0.1 (fires easily)
         float thresh = 1.0f - sensitivity * 0.9f;
 
-        // Soft-knee sigmoid with k=8
+        // Soft-knee sigmoid with k=8.
+        // SRO: fastExp replaces std::exp (per-block threshold route).
         float x = (s - thresh) * 8.0f;
-        return 1.0f / (1.0f + std::exp(-x));
+        return 1.0f / (1.0f + xoceanus::fastExp(-x));
     }
 
     // Rhythmic: stepped. amount controls intensity of shift.

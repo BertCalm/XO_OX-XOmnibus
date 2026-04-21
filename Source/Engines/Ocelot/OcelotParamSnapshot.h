@@ -50,7 +50,7 @@ struct OcelotParamSnapshot
     int chopRate = 8;
     float chopSwing = 0.1f;
     float bitDepth = 16.0f;
-    float sampleRateRed = 44100.0f;
+    float sampleRateRed = 44100.0f; // NOTE: parameter-domain value (Hz), not engine SR. Default matches param default.
     float tapeWobble = 0.0f;
     float tapeAge = 0.1f;
     float dustLevel = 0.1f;

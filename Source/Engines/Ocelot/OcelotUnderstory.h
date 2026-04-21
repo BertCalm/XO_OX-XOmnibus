@@ -106,8 +106,9 @@ public:
         // Read position offset from canopy grain mod
         float grainPosMod = mod.understoryGrainPosMod;
 
-        // Internal oscillator frequency: sine/saw blend at chopDiv-derived pitch
-        float oscFreq = 110.0f * std::pow(2.0f, static_cast<float>(chopDiv) * 0.1f);
+        // Internal oscillator frequency: sine/saw blend at chopDiv-derived pitch.
+        // SRO: fastPow2 replaces std::pow (per-block pitch computation).
+        float oscFreq = 110.0f * xoceanus::fastPow2(static_cast<float>(chopDiv) * 0.1f);
 
         float sumSq = 0.0f;
 
@@ -206,7 +207,9 @@ public:
         }
 
         lastEnergy = std::sqrt(sumSq / static_cast<float>(std::max(numSamples, 1)));
-        lastPitch = oscFreq;
+        // Normalize oscFreq to [0,1] for EcosystemMatrix (StrataSignals.understoryPitch is 0-1).
+        // Reference range: 110 Hz (chopDiv=1) → ~580 Hz (chopDiv=32). Log-normalize vs Nyquist.
+        lastPitch = std::clamp(oscFreq / (static_cast<float>(sr) * 0.5f), 0.0f, 1.0f);
         return lastEnergy;
     }
 

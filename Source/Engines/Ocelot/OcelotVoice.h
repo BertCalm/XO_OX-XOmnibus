@@ -62,11 +62,10 @@ public:
 
     void noteOn(int note, float vel, const OcelotParamSnapshot& snap)
     {
-        // Voice-stealing crossfade: if this voice was active when stolen by the
-        // VoicePool, preserve the outgoing amplitude and ramp it to 0 over 5ms
-        // in renderBlock. The new note's attack ramps up independently, so the
-        // two signals blend briefly rather than producing a hard click.
-        stealFadeGain = active ? lastAmplitude : 0.0f;
+        // Voice-stealing anti-click: if this voice was active when stolen, start a
+        // 5ms fade-in (0→1) so the new note attacks smoothly from silence rather
+        // than jumping straight to full amplitude. stealFadeProgress tracks 0→1.
+        stealFadeGain = active ? 0.0f : 1.0f; // 0=fully suppressed; ramps to 1 over 5ms
 
         noteNumber = note;
         velocity = vel; // D001: cache for filter env computation
@@ -97,6 +96,10 @@ public:
     // Returns this block's RMS energy (used for coupling).
     float renderBlock(float* outL, float* outR, int numSamples, const OcelotParamSnapshot& snap)
     {
+        // Guard against host block sizes exceeding pre-allocated temp buffer capacity.
+        jassert(numSamples <= kMaxBlockSize);
+        numSamples = std::min(numSamples, kMaxBlockSize);
+
         if (numSamples <= 0) return 0.0f;
         if (!active && !ampEnv.isActive())
             return 0.0f;
@@ -192,22 +195,20 @@ public:
             // Amp envelope (per-sample)
             float envGain = ampEnv.process();
 
-            // Voice-stealing crossfade: ramp the outgoing signal to 0 over 5ms.
-            // stealFadeGain > 0 only during the first ~220 samples after a steal.
-            // We subtract from 1.0 so that as stealFadeGain falls from its initial
-            // value toward 0, the effective multiplier rises from (1 - initial) to 1.0,
-            // smoothly blending out the outgoing voice level.
-            if (stealFadeGain > 0.0f)
+            // Voice-stealing anti-click: ramp new voice from 0→1 over 5ms after steal.
+            // stealFadeGain < 1.0 only during the first ~220 samples after a steal.
+            if (stealFadeGain < 1.0f)
             {
-                stealFadeGain -= stealFadeRate_;
-                if (stealFadeGain < 0.0f)
-                    stealFadeGain = 0.0f;
-                envGain *= (1.0f - stealFadeGain);
+                stealFadeGain += stealFadeRate_;
+                if (stealFadeGain > 1.0f)
+                    stealFadeGain = 1.0f;
+                envGain *= stealFadeGain;
             }
 
             outL[i] += l * envGain;
             outR[i] += r * envGain;
-            sumSq += l * l;
+            // Track both channels for accurate RMS (used for voice-steal quietest selection)
+            sumSq += 0.5f * (l * l + r * r);
         }
 
         // SRO: fast sqrt via fastPow2/fastLog2 (per-block RMS)
@@ -256,11 +257,11 @@ private:
     float velocity = 0.0f; // D001: stored at noteOn for filter env computation
     float lastAmplitude = 0.0f;
 
-    // Voice-stealing crossfade state. Set to lastAmplitude in noteOn() when the
-    // voice is being reused (stolen). Decremented per-sample in renderBlock over
-    // a 5ms ramp, then stays at 0. Prevents hard-cut clicks on voice-full polyphony.
-    float stealFadeGain = 0.0f;
-    float stealFadeRate_ = 1.0f / (0.005f * static_cast<float>(sr)); // overwritten by prepare()
+    // Voice-stealing anti-click state. Starts at 0 (silent) after a steal and ramps
+    // to 1.0 over 5ms. stealFadeRate_ is set in prepare(); default 1.0 (no ramp)
+    // prevents division-by-zero if renderBlock is accidentally called before prepare().
+    float stealFadeGain = 1.0f;   // 1.0 = no suppression (non-stolen voices)
+    float stealFadeRate_ = 1.0f;  // overwritten by prepare() using actual sample rate
 
     // D005 fix: autonomous ecosystem drift LFO — predator-prey population cycle
     // Modulates ecosystemDepth at 0.07 Hz (~14 sec cycle). Requires no parameter.
