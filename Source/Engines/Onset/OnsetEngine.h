@@ -226,7 +226,11 @@ public:
 
     void release() noexcept
     {
-        if (stage == Stage::Sustain || stage == Stage::Hold || stage == Stage::Decay)
+        // Include Attack so a fast note-off during the attack ramp still triggers release.
+        // Without this guard, ADSR voices receiving rapid note-off during 0.001s attack
+        // would sustain indefinitely rather than decaying.
+        if (stage == Stage::Attack || stage == Stage::Sustain ||
+            stage == Stage::Hold  || stage == Stage::Decay)
             stage = Stage::Release;
     }
 
@@ -279,7 +283,9 @@ public:
 
         // Pitch spike: 4x-16x the base frequency (higher snap = higher pitch click).
         // This emulates the initial membrane impact burst heard in real drum recordings.
-        spikeFrequency = baseFreqHz * (4.0f + snapAmount * 12.0f);
+        // Nyquist guard: clamp to 0.45*sr so metallic voices (baseFreq=8kHz) don't alias.
+        // Without the clamp: 8000 * 16 = 128kHz >> Nyquist at any standard sample rate.
+        spikeFrequency = std::min(baseFreqHz * (4.0f + snapAmount * 12.0f), sr * 0.45f);
 
         // Fix 3: Extend spike window from 1-6ms to 2-14ms so the transient sits above
         // the psychoacoustic integration threshold (~2ms) for all snap values.
@@ -631,8 +637,9 @@ public:
         toneBalance = toneAmt;
 
         float sampleRateFloat = static_cast<float>(sr);
-        // 3440Hz: the 808's "low metallic" bandpass center frequency
-        lowBandpass.setCoefficients(3440.0f * pitchRatio, 0.7f, sampleRateFloat);
+        // 3440Hz: the 808's "low metallic" bandpass center frequency.
+        // Nyquist guard: mirror the sibling filters so all three are consistently clamped.
+        lowBandpass.setCoefficients(std::min(3440.0f * pitchRatio, sampleRateFloat * 0.45f), 0.7f, sampleRateFloat);
         // 7100Hz: the 808's "high metallic" bandpass center frequency
         // Clamped to 0.45 * sr to prevent filter instability near Nyquist
         highBandpass.setCoefficients(std::min(7100.0f * pitchRatio, sampleRateFloat * 0.45f), 0.7f, sampleRateFloat);
@@ -974,9 +981,11 @@ public:
 
         // Initial excitation: fill first N samples with noise (the "pluck" impulse).
         // Burst length: 1-11ms. Higher snap = longer noise burst (brighter attack).
+        // Perf: split into noise fill + memset to avoid 4096 branch evaluations per trigger.
         int burstLength = std::min(delayLength, std::max(1, static_cast<int>(sr * (0.001f + snapAmt * 0.01f))));
-        for (int i = 0; i < kMaxDelaySamples; ++i)
-            delayBuffer[i] = (i < burstLength) ? noise.process() : 0.0f;
+        for (int i = 0; i < burstLength; ++i)
+            delayBuffer[i] = noise.process();
+        std::memset(delayBuffer + burstLength, 0, static_cast<size_t>(kMaxDelaySamples - burstLength) * sizeof(float));
         writePosition = 0;
 
         // Averaging filter coefficient: controls brightness decay rate.
@@ -1611,8 +1620,10 @@ struct OnsetVoice
         phaseDist.prepare(sampleRate);
         ampEnv.prepare(sampleRate);
         transient.prepare(sampleRate);
-        breathingLFO.setRate(0.08f,
-                             static_cast<float>(sampleRate)); // default; overridden per block from perc_breathRate
+        // Block-rate LFO: process() is called every 32 samples, so multiply rate by 32
+        // so the BreathingLFO phase advances correctly at block-rate (P-LFO-BLOCK fix).
+        breathingLFO.setRate(0.08f * 32.0f,
+                             static_cast<float>(sampleRate), 8.0f * 32.0f); // maxRate raised to match param range [0.001..8Hz]
         voiceFilter.setMode(CytomicSVF::Mode::LowPass);
     }
 
@@ -2000,9 +2011,10 @@ public:
             float snareToHatDecayAmount = xvcSnareHatDecay ? xvcSnareHatDecay->load() : 0.10f;
             vDecay[2] = clamp(vDecay[2] - snarePeakScaled * snareToHatDecayAmount * 0.5f, 0.001f, 8.0f);
 
-            // Kick -> Tom pitch: kick ducks tom pitch (6 semitones max range)
+            // Kick -> Tom pitch: kick ducks tom pitch (6 semitones max range).
+            // Clamp to [-24, +24] so accumulated XVC doesn't cause extreme aliasing.
             float kickToTomPitchAmount = xvcKickTomPitch ? xvcKickTomPitch->load() : 0.0f;
-            vPitch[5] = vPitch[5] - kickPeakScaled * kickToTomPitchAmount * 6.0f;
+            vPitch[5] = clamp(vPitch[5] - kickPeakScaled * kickToTomPitchAmount * 6.0f, -24.0f, 24.0f);
 
             // Snare -> Perc A blend: snare shifts percussion toward algorithmic layer
             float snareToPercBlendAmount = xvcSnarePercBlend ? xvcSnarePercBlend->load() : 0.0f;
@@ -2014,10 +2026,12 @@ public:
         float masterTone = percTone ? percTone->load() : 0.5f;
 
         // D005: update breathing LFO rate on all voices once per block.
-        // Using perc_breathRate gives user + coupling system control over filter drift speed.
+        // Block-rate correction (P-LFO-BLOCK): process() fires every 32 samples, so scale
+        // the target Hz by 32 so the BreathingLFO phase advances at the correct musical rate.
+        // maxRate is also scaled so the [0.001..8] Hz param range is fully usable.
         const float breathRateHz = percBreathRate ? percBreathRate->load() : 0.08f;
         for (int v = 0; v < kNumVoices; ++v)
-            voices[v].breathingLFO.setRate(breathRateHz, static_cast<float>(sr));
+            voices[v].breathingLFO.setRate(breathRateHz * 32.0f, static_cast<float>(sr), 8.0f * 32.0f);
 
         // FX + Character stage snapshots
         float pCharGrit = charGrit ? charGrit->load() : 0.0f;
@@ -2039,10 +2053,15 @@ public:
         pRevMix = clamp(pRevMix + mSpace * 0.6f, 0.0f, 1.0f);
         pDelFb = clamp(pDelFb + mSpace * 0.3f, 0.0f, 0.95f);
 
-        // QA I1: Apply master tone as LP filter on output
+        // QA I1: Apply master tone as LP filter on output.
+        // Perf: only recompute coefficients when cutoff changes (trig in setCoefficients).
         float masterCutoff = 200.0f + masterTone * 18000.0f;
-        masterFilter.setCoefficients(masterCutoff, 0.1f, static_cast<float>(sr));
-        masterFilterR.setCoefficients(masterCutoff, 0.1f, static_cast<float>(sr));
+        if (masterCutoff != lastMasterCutoff)
+        {
+            lastMasterCutoff = masterCutoff;
+            masterFilter.setCoefficients(masterCutoff, 0.1f, static_cast<float>(sr));
+            masterFilterR.setCoefficients(masterCutoff, 0.1f, static_cast<float>(sr));
+        }
 
         // Update character stage warmth filter coefficients once per block
         // (was previously recomputed inside every per-sample process() call).
@@ -2140,12 +2159,14 @@ public:
                 sumR += sample * vLevel[v] * panGainR[v];
             }
 
-            // Master drive (soft clip)
+            // Master drive: tanh soft-clip with volume compensation so perceived loudness
+            // stays consistent. Mirrors the character stage pattern: drive in, compensate out.
+            // Without the /dg correction a drive of 5x would cause a loud level jump.
             if (masterDrive > 0.01f)
             {
                 float dg = 1.0f + masterDrive * 4.0f;
-                sumL = fastTanh(sumL * dg);
-                sumR = fastTanh(sumR * dg);
+                sumL = fastTanh(sumL * dg) / dg * (1.0f + masterDrive * 2.0f);
+                sumR = fastTanh(sumR * dg) / dg * (1.0f + masterDrive * 2.0f);
             }
 
             // QA I1: master tone LP filter
@@ -2160,7 +2181,8 @@ public:
             fxReverb.process(sumL, sumR, pRevSize, pRevDecay, pRevMix);
             fxLoFi.process(sumL, sumR, lofiSteps, lofiInvSteps, pLofiMix);
 
-            const float effectiveMasterLevel = clamp(masterLevel + percModLevelOffset, 0.05f, 1.5f);
+            // Min 0.0f: allow true mute from master level param (was 0.05f, preventing full silence).
+            const float effectiveMasterLevel = clamp(masterLevel + percModLevelOffset, 0.0f, 1.5f);
             sumL *= effectiveMasterLevel;
             sumR *= effectiveMasterLevel;
 
@@ -2290,6 +2312,7 @@ private:
     juce::AudioBuffer<float> couplingBuffer;
     CytomicSVF masterFilter;  // QA I1: master tone LP filter (L channel)
     CytomicSVF masterFilterR; // R channel
+    float lastMasterCutoff = -1.0f; // Perf: skip setCoefficients when master tone unchanged
     OnsetCharacterStage characterStage;
     OnsetDelay fxDelay;
     OnsetReverb fxReverb;
