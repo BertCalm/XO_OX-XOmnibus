@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Lichen Bloom",
+  "mood": "Organic",
+  "engines": [
+    "Outcrop"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Peaks terrain at low velocity with a slow circular orbit. The probe grazes gentle summits — a moss-covered sustained pad that breathes on its own contour.",
+  "tags": [
+    "organic",
+    "pad",
+    "terrain",
+    "peaks",
+    "slow",
+    "orbital"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.72,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.68,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Outcrop": {
+      "outc_terrainType": 0,
+      "outc_peakHeight": 0.55,
+      "outc_peakSpread": 0.42,
+      "outc_ridgeFreq": 1.6,
+      "outc_ridgeDepth": 0.20,
+      "outc_ridgeAngle": 0.25,
+      "outc_roughness": 0.18,
+      "outc_orbitShape": 0,
+      "outc_orbitRadius": 0.45,
+      "outc_orbitRatio": 0.50,
+      "outc_orbitPhase": 0.12,
+      "outc_orbitJitter": 0.08,
+      "outc_fltCutoff": 1900.0,
+      "outc_fltReso": 0.18,
+      "outc_fltType": 0,
+      "outc_fltEnvAmt": 0.15,
+      "outc_fltKeyTrack": 0.45,
+      "outc_fltVelTrack": 0.42,
+      "outc_ampAtk": 0.30,
+      "outc_ampDec": 0.80,
+      "outc_ampSus": 0.90,
+      "outc_ampRel": 2.20,
+      "outc_fenvAtk": 0.20,
+      "outc_fenvDec": 1.00,
+      "outc_fenvSus": 0.55,
+      "outc_fenvRel": 2.00,
+      "outc_lfo1Rate": 0.22,
+      "outc_lfo1Depth": 0.28,
+      "outc_lfo1Shape": 0,
+      "outc_lfo1Target": 0,
+      "outc_lfo2Rate": 0.05,
+      "outc_lfo2Depth": 0.18,
+      "outc_lfo2Shape": 1,
+      "outc_lfo2Target": 2,
+      "outc_macro1": 0.42,
+      "outc_macro2": 0.30,
+      "outc_macro3": 0.10,
+      "outc_macro4": 0.62,
+      "outc_voiceMode": 2,
+      "outc_glide": 0.08,
+      "outc_level": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.30,
+    "COUPLING": 0.10,
+    "SPACE": 0.62
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "name": "Dark Aquifer",
+  "mood": "Shadow",
+  "engines": [
+    "Oneiric"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Defocusing NLS — dark solitons on a bright CW carrier. Voices are dips in the field, not peaks. Intensity readout. Negative-space synthesis.",
+  "tags": [
+    "shadow",
+    "dark-soliton",
+    "defocusing",
+    "dip",
+    "drone",
+    "negative-space"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.30,
+    "warmth": 0.35,
+    "movement": 0.45,
+    "density": 0.68,
+    "space": 0.42,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Oneiric": {
+      "oner_solitonCount": 2,
+      "oner_amplitude": 0.85,
+      "oner_width": 1.40,
+      "oner_velocity": 0.10,
+      "oner_velocitySpread": 0.25,
+      "oner_chirp": 0.0,
+      "oner_dissipation": 0.025,
+      "oner_boundState": 1,
+      "oner_polarity": 1,
+      "oner_dispersion": 1.10,
+      "oner_nonlinearity": 0.85,
+      "oner_observeMode": 1,
+      "oner_observePoint": 0.0,
+      "oner_probeSpeed": -0.15,
+      "oner_rogueSensitivity": 0.15,
+      "oner_rogueThreshold": 0.85,
+      "oner_instability": 0.0,
+      "oner_instabilityHold": 4.0,
+      "oner_potentialShape": 1,
+      "oner_potentialDepth": 0.22,
+      "oner_potentialPeriod": 1.50,
+      "oner_attackShock": 0.10,
+      "oner_fltCutoff": 1600.0,
+      "oner_fltReso": 0.42,
+      "oner_fltType": 0,
+      "oner_fltEnvAmt": -0.15,
+      "oner_fltKeyTrack": 0.45,
+      "oner_fltVelTrack": 0.35,
+      "oner_ampAtk": 0.25,
+      "oner_ampDec": 1.00,
+      "oner_ampSus": 0.88,
+      "oner_ampRel": 2.20,
+      "oner_fenvAtk": 0.18,
+      "oner_fenvDec": 1.50,
+      "oner_fenvSus": 0.65,
+      "oner_fenvRel": 1.80,
+      "oner_lfo1Rate": 0.22,
+      "oner_lfo1Depth": 0.28,
+      "oner_lfo1Shape": 0,
+      "oner_lfo1Target": 1,
+      "oner_lfo2Rate": 0.06,
+      "oner_lfo2Depth": 0.18,
+      "oner_lfo2Shape": 1,
+      "oner_lfo2Target": 3,
+      "oner_macro1": 0.62,
+      "oner_macro2": 0.38,
+      "oner_macro3": 0.15,
+      "oner_macro4": 0.40,
+      "oner_voiceMode": 2,
+      "oner_glide": 0.12,
+      "oner_level": 0.70
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.15,
+    "SPACE": 0.40
+  }
+}

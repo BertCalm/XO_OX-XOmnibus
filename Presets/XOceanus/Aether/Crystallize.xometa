@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "name": "Crystallize",
+  "mood": "Aether",
+  "engines": [
+    "Oneiric"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Held notes start as a featureless CW drone. After ~2 seconds of sustain the modulational instability kicks in and the field breaks up into a soliton train. Drone-to-pulse without a sequencer.",
+  "tags": [
+    "aether",
+    "modulational-instability",
+    "emergence",
+    "drone",
+    "crystallization",
+    "time-evolving"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.58,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.68,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Oneiric": {
+      "oner_solitonCount": 1,
+      "oner_amplitude": 0.80,
+      "oner_width": 1.30,
+      "oner_velocity": 0.0,
+      "oner_velocitySpread": 0.20,
+      "oner_chirp": 0.0,
+      "oner_dissipation": 0.010,
+      "oner_boundState": 0,
+      "oner_polarity": 0,
+      "oner_dispersion": 0.90,
+      "oner_nonlinearity": 1.10,
+      "oner_observeMode": 0,
+      "oner_observePoint": 0.0,
+      "oner_probeSpeed": 0.08,
+      "oner_rogueSensitivity": 0.20,
+      "oner_rogueThreshold": 0.80,
+      "oner_instability": 0.65,
+      "oner_instabilityHold": 2.0,
+      "oner_potentialShape": 0,
+      "oner_potentialDepth": 0.0,
+      "oner_potentialPeriod": 1.0,
+      "oner_attackShock": 0.12,
+      "oner_fltCutoff": 2200.0,
+      "oner_fltReso": 0.25,
+      "oner_fltType": 0,
+      "oner_fltEnvAmt": 0.22,
+      "oner_fltKeyTrack": 0.55,
+      "oner_fltVelTrack": 0.55,
+      "oner_ampAtk": 0.30,
+      "oner_ampDec": 1.00,
+      "oner_ampSus": 0.90,
+      "oner_ampRel": 2.60,
+      "oner_fenvAtk": 0.20,
+      "oner_fenvDec": 1.40,
+      "oner_fenvSus": 0.55,
+      "oner_fenvRel": 2.20,
+      "oner_lfo1Rate": 0.30,
+      "oner_lfo1Depth": 0.28,
+      "oner_lfo1Shape": 0,
+      "oner_lfo1Target": 0,
+      "oner_lfo2Rate": 0.04,
+      "oner_lfo2Depth": 0.18,
+      "oner_lfo2Shape": 1,
+      "oner_lfo2Target": 3,
+      "oner_macro1": 0.42,
+      "oner_macro2": 0.48,
+      "oner_macro3": 0.15,
+      "oner_macro4": 0.62,
+      "oner_voiceMode": 2,
+      "oner_glide": 0.08,
+      "oner_level": 0.70
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.48,
+    "COUPLING": 0.15,
+    "SPACE": 0.62
+  }
+}

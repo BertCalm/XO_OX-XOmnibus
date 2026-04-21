@@ -179,7 +179,7 @@ The 6 Doctrines are the quality contract every XOceanus engine must satisfy. The
 
 ## 3. Engine Modules
 
-### 3.1 The 81 Engines
+### 3.1 The 90 Engines
 
 | Short Name | Source Instrument | Accent Color | Parameter Prefix |
 |-----------|------------------|-------------|-----------------|
@@ -264,6 +264,8 @@ The 6 Doctrines are the quality contract every XOceanus engine must satisfy. The
 | **OBSERVANDUM** | XObservandum | Cuttlefish Teal `#4ECDC4` | `observ_` |
 | **OPSIN** | XOpsin | Bioluminescent Cyan `#00FFCC` | `ops_` |
 | **OORT** | XOort | Oort Cloud Violet `#9B7FD4` | `oort_` |
+| **OUTCROP** | XOutcrop | Mountain Moss `#5B6F57` | `outc_` |
+| **ONEIRIC** | XOneiric | Phosphene Lavender `#B8A0FF` | `oner_` |
 
 ### 3.2 Engine Visual Identity
 

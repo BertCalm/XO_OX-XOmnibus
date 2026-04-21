@@ -25,6 +25,7 @@ if(CMAKE_CXX_COMPILER_ID MATCHES "Clang|GNU")
         -Wno-error=unused-but-set-variable  # JUCE 8 internals set-but-don't-read in lambda conditions
         -Wno-error=macro-redefined          # _FORTIFY_SOURCE conflicts with sanitizer built-ins
         -Wno-error=shorten-64-to-32         # Xcode default; safe size_t→int in bounded loops
+        -Wno-error=c++20-designator         # Ocelot BiomeMorph.h uses C++20 designated initializers in gnu++17
         -fstack-protector-strong
         -D_FORTIFY_SOURCE=2
     )
@@ -295,6 +296,10 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Opsin/OpsinEngine.cpp
     Source/Engines/Oort/OortEngine.h
     Source/Engines/Oort/OortEngine.cpp
+    Source/Engines/Outcrop/OutcropEngine.h
+    Source/Engines/Outcrop/OutcropEngine.cpp
+    Source/Engines/Oneiric/OneiricEngine.h
+    Source/Engines/Oneiric/OneiricEngine.cpp
     Source/Engines/Ondine/OndineEngine.h
     Source/Engines/Ondine/OndineEngine.cpp
     Source/Engines/Ortolan/OrtolanEngine.h
@@ -402,8 +407,8 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Ostinato/OstinatoEngine.cpp
     Source/Engines/OpenSky/OpenSkyEngine.h
     Source/Engines/OpenSky/OpenSkyEngine.cpp
-    Source/Engines/OceanDeep/OceandeepEngine.h
-    Source/Engines/OceanDeep/OceandeepEngine.cpp
+    Source/Engines/OceanDeep/OceanDeepEngine.h
+    Source/Engines/OceanDeep/OceanDeepEngine.cpp
     Source/Engines/Ouie/OuieEngine.h
     Source/Engines/Ouie/OuieEngine.cpp
 
