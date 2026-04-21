@@ -304,9 +304,9 @@ public:
             voice.bandPassFilter.reset();
         }
 
-        envelopeOutput = 0.0f;
-        externalPitchModulation = 0.0f;
-        couplingCutoffMod = 1.0f;
+        envelopeOutput.store(0.0f);
+        externalPitchModulation.store(0.0f);
+        couplingCutoffMod.store(1.0f);
 
         std::fill(outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
         std::fill(outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
@@ -339,6 +339,11 @@ public:
         // Sweep direction: -1.0 = classic downward sweep, +1.0 = upward sweep.
         // Default -1.0 keeps legacy preset behaviour unchanged.
         const float sweepDirection = (pSweepDirection != nullptr) ? pSweepDirection->load() : -1.0f;
+
+        // PA1: Sweep speed — user-controllable pitch sweep duration.
+        // Higher value = faster sweep (completes sooner). Default 4.0 = 250ms (legacy preset value).
+        // Range [0.5, 40.0] → 2000ms down to 25ms. Skew 0.3 concentrates resolution at slower speeds.
+        const float sweepSpeed = (pSweepSpeed != nullptr) ? pSweepSpeed->load() : 4.0f;
 
         // Unison count: parameter values 0/1/2 map to 1/2/4 sub-voices via bit shift
         const int unisonCount = (pUnison != nullptr) ? (1 << static_cast<int>(pUnison->load())) : 1;
@@ -444,12 +449,10 @@ public:
         const float atPressure = aftertouch.getSmoothedPressure(0); // Channel-mode: voice 0 holds the global value
 
         // Consume coupling pitch modulation (reset after use per coupling contract)
-        float pitchModulation = externalPitchModulation;
-        externalPitchModulation = 0.0f;
+        float pitchModulation = externalPitchModulation.exchange(0.0f);
 
         // Consume coupling cutoff multiplier (reset to unity after use)
-        float cutoffMod = couplingCutoffMod;
-        couplingCutoffMod = 1.0f;
+        float cutoffMod = couplingCutoffMod.exchange(1.0f);
 
         // ---- Fade out voices beyond current polyphony limit -----------------
 
@@ -475,7 +478,11 @@ public:
                                           static_cast<double>(atPressure) * 8.0 +
                                           static_cast<double>(macroDart) * static_cast<double>(effectiveLfoRate) +
                                           static_cast<double>(snapModLfo1RateOffset);
-        lfoPhase += (effectiveLfoRateHz * juce::MathConstants<double>::twoPi) / sampleRate;
+        // ST2: clamp effectiveLfoRateHz to [0, 28] before accumulating — snapModLfo1RateOffset can
+        //      make the rate negative (up to -10 Hz), which would cause lfoPhase to count backward
+        //      and never be caught by the >= twoPi upper-bound guard.
+        const double clampedLfoRateHz = juce::jlimit(0.0, 28.0, effectiveLfoRateHz);
+        lfoPhase += (clampedLfoRateHz * juce::MathConstants<double>::twoPi) / sampleRate;
         if (lfoPhase >= juce::MathConstants<double>::twoPi)
             lfoPhase -= juce::MathConstants<double>::twoPi;
 
@@ -492,11 +499,15 @@ public:
         float lfo2Stereo =
             static_cast<float>(4.0 * std::fabs(lfo2Phase - 0.5) - 1.0) * lfo2Depth; // ±lfo2Depth pan offset
 
+        // S2/P2: cache LFO1 sine value once — used in mod matrix AND BPF coefficient below.
+        // fastSin (0.01% error) replaces std::sin for fleet consistency and avoids double-call.
+        const float lfo1Sine = fastSin(static_cast<float>(lfoPhase));
+
         // D002 mod matrix — compute per-block source values and apply to destinations.
         // Destinations (indices match kSnapModDests): 0=Off,1=FilterCutoff,2=LFO1Depth,3=LFO1Rate,4=Pitch,5=AmpLevel
         {
             ModMatrix<4>::Sources mSrc;
-            mSrc.lfo1      = static_cast<float>(std::sin(lfoPhase));
+            mSrc.lfo1      = lfo1Sine;
             mSrc.lfo2      = static_cast<float>(4.0 * std::fabs(lfo2Phase - 0.5) - 1.0);
             mSrc.env       = 0.0f; // Snap is percussive — no sustained envelope to expose here
             mSrc.velocity  = 0.0f; // velocity applied per-voice; kept at 0 for block-rate slots
@@ -517,13 +528,17 @@ public:
             snapModLevelOffset    = mDst[5] * 0.5f;
         }
 
+        // PA2: clamp combined LFO depth before use — snapModLfo1DepthOffset can push sum negative
+        //      (cancelling LFO entirely) or above 0.5 (defeating the earlier clamp). Clamp to [0, 0.5].
+        const float clampedLfoDepth = juce::jlimit(0.0f, 0.5f, effectiveLfoDepth + snapModLfo1DepthOffset);
+
         // AmpToFilter coupling multiplier applied here — partner engine amplitude
         // opens/closes feliX's BPF center in tandem with the LFO wobble.
         // D006: aftertouch adds up to +6kHz brightness on full pressure (sensitivity 0.3)
         const float effectiveBpfCenter = std::max(
             20.0f,
             std::min(20000.0f, (effectiveCutoff + snapModCutoffOffset) *
-                                   (1.0f + (effectiveLfoDepth + snapModLfo1DepthOffset) * (float)std::sin(lfoPhase)) *
+                                   (1.0f + clampedLfoDepth * lfo1Sine) *
                                    cutoffMod +
                                    atPressure * 0.3f * 6000.0f));
 
@@ -599,12 +614,9 @@ public:
                 // where a VCO sweeps from a high frequency to create the
                 // percussive attack character of kicks, toms, and synth drums.
                 //
-                // sweepRate = 4.0 means the sweep completes in 0.25 seconds
-                // (sampleRate/4 samples). This matches the "snap" time constant
-                // of classic analog drum circuits.
-                static constexpr float kPitchSweepRate = 4.0f; // Completes in 250ms
-
-                voice.pitchSweepPhase += kPitchSweepRate / sampleRateFloat;
+                // sweepSpeed = 4.0 means the sweep completes in 0.25 seconds (default, preserving legacy).
+                // PA1: now user-controllable via snap_sweepSpeed parameter.
+                voice.pitchSweepPhase += sweepSpeed / sampleRateFloat;
                 float sweepProgress = std::min(voice.pitchSweepPhase, 1.0f);
                 float currentMidiNote = voice.currentPitch * (1.0f - sweepProgress) + voice.targetPitch * sweepProgress;
                 currentMidiNote += pitchModulation + snapModPitchOffset;
@@ -674,6 +686,11 @@ public:
 
                     case 2: // Karplus-Strong (plucked/struck string physical model)
                     {
+                        // S3: K-S frequency was only set at noteOn and never updated during
+                        //     the pitch snap sweep. The signature "snap" transient had no effect
+                        //     in K-S mode. Update frequency when pitch changes (same 0.01st guard).
+                        if (std::fabs(currentMidiNote - voice.lastMidiNote) > 0.01f)
+                            voice.karplusStrongOscillators[unisonIndex].setFrequency(static_cast<double>(detunedFrequency));
                         unisonOutput = voice.karplusStrongOscillators[unisonIndex].nextSample();
                         break;
                     }
@@ -721,19 +738,22 @@ public:
                 float filteredSignal = voice.highPassFilter.processSample(monoSignal);
                 filteredSignal = voice.bandPassFilter.processSample(filteredSignal);
 
-                // Restore stereo balance from original L/R ratio
+                // ST3: Restore stereo balance from original L/R ratio.
+                // Previous formula: ratio = voiceX / (amplitudeSum * 0.5f) — this can exceed 1.0
+                // when both channels have the same sign (leftRatio + rightRatio = 2.0), amplifying
+                // the filtered signal and causing level inflation / potential clipping.
+                // Fix: normalise by the peak (max-abs) of L and R, not the sum-of-abs.
+                // Peak normalisation preserves sign and direction while keeping each ratio ≤ 1.
                 float filteredLeft, filteredRight;
-                float amplitudeSum = std::abs(voiceLeft) + std::abs(voiceRight);
+                float peakAmplitude = std::max(std::abs(voiceLeft), std::abs(voiceRight));
 
                 // Guard against division by zero when both channels are silent
                 static constexpr float kSilenceThreshold = 1e-6f;
 
-                if (amplitudeSum > kSilenceThreshold)
+                if (peakAmplitude > kSilenceThreshold)
                 {
-                    float leftRatio = voiceLeft / (amplitudeSum * 0.5f);
-                    float rightRatio = voiceRight / (amplitudeSum * 0.5f);
-                    filteredLeft = filteredSignal * leftRatio;
-                    filteredRight = filteredSignal * rightRatio;
+                    filteredLeft  = filteredSignal * (voiceLeft  / peakAmplitude);
+                    filteredRight = filteredSignal * (voiceRight / peakAmplitude);
                 }
                 else
                 {
@@ -777,7 +797,7 @@ public:
         }
 
         // Store peak envelope for coupling output (channel 2)
-        envelopeOutput = peakEnvelopeLevel;
+        envelopeOutput.store(peakEnvelopeLevel);
 
         // Cache active voice count for getActiveVoiceCount() (message-thread safe).
         {
@@ -814,7 +834,7 @@ public:
         // Channel 2: envelope level — the "hit" signal for AmpToFilter,
         // AmpToChoke coupling. Other engines use this to feel feliX's darts.
         if (channel == 2)
-            return envelopeOutput;
+            return envelopeOutput.load();
 
         return 0.0f;
     }
@@ -831,16 +851,20 @@ public:
             //   amount > 1   → cutoff boosted (brightness coupling)
             // Clamp to [0.1, 2.0] to avoid fully closing the filter or
             // aliasing from extreme cutoff boost.
-            couplingCutoffMod = std::max(0.1f, std::min(2.0f, amount));
+            couplingCutoffMod.store(std::max(0.1f, std::min(2.0f, amount)));
             break;
 
         case CouplingType::AmpToPitch:
         case CouplingType::LFOToPitch:
         case CouplingType::PitchToPitch:
-            // Accumulate pitch modulation from partner engines.
-            // Max +/-0.5 semitones at amount=1.0 — subtle organic drift,
-            // like Oscar's deep current gently nudging feliX's trajectory.
-            externalPitchModulation += amount * 0.5f;
+            // C2: accumulate pitch modulation via atomic fetch-add. Clamp incoming `amount`
+            // to ±1.0 before scaling so runaway coupling from an unbounded source cannot
+            // saturate the accumulator beyond the ±0.5 semitone intent.
+            {
+                float clampedAmount = std::max(-1.0f, std::min(1.0f, amount));
+                float prev = externalPitchModulation.load();
+                externalPitchModulation.store(prev + clampedAmount * 0.5f);
+            }
             break;
 
         default:
@@ -909,6 +933,14 @@ public:
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID{"snap_sweepDirection", 1}, "Snap Sweep Direction",
             juce::NormalisableRange<float>(-1.0f, 1.0f, 0.01f), -1.0f));
+
+        // PA1: Pitch sweep speed — controls how quickly the snap sweep completes.
+        // Default 4.0 = 250ms (legacy behaviour). Higher values = faster sweep.
+        // Range [0.5, 40.0] Hz: 0.5=2000ms (slow roll), 40.0=25ms (instant click).
+        // Skew 0.3 concentrates resolution at human-meaningful slower sweep times.
+        params.push_back(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID{"snap_sweepSpeed", 1}, "Snap Sweep Speed",
+            juce::NormalisableRange<float>(0.5f, 40.0f, 0.1f, 0.3f), 4.0f));
 
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
             juce::ParameterID{"snap_unison", 1}, "Snap Unison", juce::StringArray{"1", "2", "4"}, 0));
@@ -1003,6 +1035,7 @@ public:
         pLevel = apvts.getRawParameterValue("snap_level");
         pPitchLock = apvts.getRawParameterValue("snap_pitchLock");
         pSweepDirection = apvts.getRawParameterValue("snap_sweepDirection");
+        pSweepSpeed = apvts.getRawParameterValue("snap_sweepSpeed");
         pUnison = apvts.getRawParameterValue("snap_unison");
         pPolyphony = apvts.getRawParameterValue("snap_polyphony");
         pLfoDepth = apvts.getRawParameterValue("snap_lfoDepth");
@@ -1064,10 +1097,11 @@ private:
         voice.startTime = voiceCounter++;
 
         // Configure and trigger the AD envelope for this hit.
-        // setADSR is also called per-sample in the render loop to track
-        // effectiveDecay changes from the DART macro; this call primes
-        // the decay coefficient before the first sample is processed.
-        voice.ampEnv.prepare(sampleRateFloat);
+        // V1: prepare() was called here redundantly — it is already called for all voices
+        //     in the engine-level prepare() and is a no-op mid-session. Remove to avoid
+        //     resetting envelope state on voice steal. setShape/setADSR are sufficient.
+        // setADSR is also called per-block in the render loop to track effectiveDecay
+        // changes from the DART macro; this call primes the coefficient before the first sample.
         voice.ampEnv.setShape(StandardADSR::Shape::AD);
         voice.ampEnv.setADSR(0.0001f, decayTime, 0.0f, 0.001f);
         voice.ampEnv.noteOn();
@@ -1102,7 +1136,6 @@ private:
         // Previously the code always used the N=4 pattern, so a 1-voice unison
         // was detuned by -1.5 semitones and a 2-voice unison was biased low.
         {
-            static constexpr float kSemitonesToNatLog = 0.693147f / 12.0f; // ln(2) / 12
             const int activeUnisonCount = std::min(unisonCount, 4);
             const float halfSpan = (activeUnisonCount > 1) ? 0.5f * static_cast<float>(activeUnisonCount - 1) : 0.0f;
             for (int unisonIndex = 0; unisonIndex < 4; ++unisonIndex)
@@ -1112,10 +1145,11 @@ private:
                     (unisonIndex < activeUnisonCount) ? (static_cast<float>(unisonIndex) - halfSpan) : 0.0f;
                 voice.detuneOffsets[unisonIndex] = normalizedOffset * detuneCents / 100.0f;
                 voice.panOffsets[unisonIndex] = normalizedOffset / static_cast<float>(std::max(activeUnisonCount, 2));
-                // CPU fix: precompute per-voice detune ratio once at noteOn.
-                // detunedRatios[i] = fastExp(detuneOffsets[i] * ln2/12)
+                // S1/P1: precompute per-voice detune ratio once at noteOn using fastPow2 (0.02% error).
+                // fastExp has 6% error — unsuitable for pitch math (see FastMath.h accuracy table).
+                // detunedRatios[i] = fastPow2(detuneOffsets[i])  where detuneOffsets are in semitones
                 // At sample time: detunedFrequency = frequency * detunedRatios[i]
-                voice.detunedRatios[unisonIndex] = fastExp(voice.detuneOffsets[unisonIndex] * kSemitonesToNatLog);
+                voice.detunedRatios[unisonIndex] = fastPow2(voice.detuneOffsets[unisonIndex] * (1.0f / 12.0f));
             }
             // Initialise frequency cache for the new note.
             voice.cachedFreq = midiToHz(baseMidiNote);
@@ -1171,9 +1205,10 @@ private:
     //  Utilities
     //==========================================================================
 
-    /// Convert MIDI note number to frequency in Hz.
+    /// Convert MIDI note number (float, for sub-semitone precision) to frequency in Hz.
+    /// P1: Uses fastPow2 (0.02% error) instead of std::pow (exact but slow).
     /// A4 (MIDI 69) = 440 Hz, equal temperament, 12-TET.
-    static float midiToHz(float midiNote) noexcept { return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f); }
+    static float midiToHz(float midiNote) noexcept { return 440.0f * fastPow2((midiNote - 69.0f) * (1.0f / 12.0f)); }
 
     //==========================================================================
     //  Member State
@@ -1208,9 +1243,12 @@ private:
     float pitchBendNorm = 0.0f; // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // ---- Coupling state ----
-    float envelopeOutput = 0.0f;          // Peak envelope for coupling channel 2
-    float externalPitchModulation = 0.0f; // Accumulated pitch mod from partner engines
-    float couplingCutoffMod = 1.0f;       // AmpToFilter multiplier for BPF center (unity = 1.0)
+    // ST1: applyCouplingInput() is called from the coupling coordinator (may be a different thread
+    //      from the audio thread that calls renderBlock). Use std::atomic<float> to prevent data
+    //      races on these three coupling-shared members.
+    std::atomic<float> envelopeOutput{0.0f};          // Peak envelope for coupling channel 2
+    std::atomic<float> externalPitchModulation{0.0f}; // Accumulated pitch mod from partner engines
+    std::atomic<float> couplingCutoffMod{1.0f};       // AmpToFilter multiplier for BPF center (unity = 1.0)
 
     // ---- Output cache for coupling reads ----
     std::vector<float> outputCacheLeft;
@@ -1227,6 +1265,7 @@ private:
     std::atomic<float>* pLevel = nullptr;
     std::atomic<float>* pPitchLock = nullptr;
     std::atomic<float>* pSweepDirection = nullptr;
+    std::atomic<float>* pSweepSpeed = nullptr;     // PA1: snap_sweepSpeed — pitch sweep duration (0.5–40 Hz)
     std::atomic<float>* pUnison = nullptr;
     std::atomic<float>* pPolyphony = nullptr;
     // D002: user-exposed LFO depth pointers

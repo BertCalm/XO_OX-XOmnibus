@@ -725,7 +725,7 @@ public:
     static constexpr int kMaxVoices = 6;
 
     //-- Identity ---------------------------------------------------------------
-    juce::String getEngineId() const override { return "Fat"; }
+    juce::String getEngineId() const override { return "Obese"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFFF1493); }
     int getMaxVoices() const override { return kMaxVoices; }
     int getActiveVoiceCount() const override { return activeVoiceCount.load(std::memory_order_relaxed); }
