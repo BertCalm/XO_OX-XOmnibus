@@ -13,6 +13,8 @@
 // Issue #899: embedded Init preset compiled into binary data by XOceanusInitPreset target.
 // HEADER_NAME "InitPresetData.h" avoids collision with XOceanusFont's BinaryData.h.
 #include "InitPresetData.h"
+#include <optional>
+#include "PresetTaxonomy.h"
 
 namespace xoceanus
 {
@@ -93,10 +95,6 @@ inline const juce::StringArray validEngineNames{
     "Obiont",
     // Age-based corrosion synthesis
     "Oxidize",
-    // Wave-Terrain Synthesis (engine #89)
-    "Outcrop",
-    // NLS Soliton Synthesis (engine #90)
-    "Oneiric",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob", "XObese", "XOnset", "XOrbital", "XOrganon",
     "XOuroboros", "XOpal", "XOpossum", "XOverbite", "XObsidian", "XOrigami", "XOracle", "XObscura", "XOceanic",
@@ -275,10 +273,6 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Oobleck", "oobl_"},
         // Fluid Dynamics Synthesis
         {"Ooze", "ooze_"},
-        // Wave-Terrain Synthesis (engine #89)
-        {"Outcrop", "outc_"},
-        // NLS Soliton Synthesis (engine #90)
-        {"Oneiric", "oner_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();
@@ -460,10 +454,25 @@ struct PresetMacroTarget
 // Complete preset data as loaded from a .xometa file.
 struct PresetData
 {
-    int schemaVersion = 1;
+    // Schema version — default 2 for newly-created presets.
+    // Reader tolerates 1 by treating category/timbre as nullopt.
+    int schemaVersion = 2;
+
     juce::String name;
     juce::String
         mood; // 16 moods: Foundation|Atmosphere|Entangled|Prism|Flux|Aether|Family|Submerged|Coupling|Crystalline|Deep|Ethereal|Kinetic|Luminous|Organic|Shadow|User
+
+    // Schema v2 additions:
+    // Required functional taxonomy (one of xoceanus::kPresetCategories).
+    // std::nullopt for v1-origin presets until backfilled.
+    std::optional<juce::String> category;
+    // Optional timbre/sonic-family taxonomy (one of xoceanus::kPresetTimbres).
+    // nullopt for electronic presets with no acoustic reference.
+    std::optional<juce::String> timbre;
+    // Descriptive provenance — "awakening" | "transcendental" | empty.
+    // No access-control role (see spec §2 decision #9).
+    juce::String tier;
+
     juce::StringArray engines; // 1-5 engine names (MaxSlots = 5)
     juce::String author;
     juce::String version;
@@ -640,6 +649,22 @@ public:
         root->setProperty("schema_version", preset.schemaVersion);
         root->setProperty("name", preset.name);
         root->setProperty("mood", preset.mood);
+
+        // category — always emitted; null for presets that haven't been
+        // backfilled yet. The reader tolerates either presence or null.
+        if (preset.category.has_value())
+            root->setProperty ("category", *preset.category);
+        else
+            root->setProperty ("category", juce::var{}); // emits JSON null
+
+        // timbre — omitted entirely when null, keeping JSON clean for
+        // the ~85% of presets with no acoustic emulation reference.
+        if (preset.timbre.has_value())
+            root->setProperty ("timbre", *preset.timbre);
+        // (when absent, no property is set; the JSON will not contain a `timbre` key)
+
+        // tier — descriptive provenance only; always emitted (can be empty).
+        root->setProperty ("tier", preset.tier);
 
         // engines array
         juce::var enginesArray;
@@ -1089,10 +1114,10 @@ public:
         listeners.erase(std::remove(listeners.begin(), listeners.end(), l), listeners.end());
     }
 
-private:
     //==========================================================================
     // JSON parsing — extract a PresetData from a JSON string.
     // Returns false on any fatal parse error; tolerates missing optional fields.
+    // public for tests + programmatic loading
     //==========================================================================
     bool parseJSON(const juce::String& jsonString, PresetData& out)
     {
@@ -1107,12 +1132,15 @@ private:
         // --- Required fields ---
 
         // schema_version
-        if (!obj->hasProperty("schema_version"))
-            return false;
-        out.schemaVersion = static_cast<int>(obj->getProperty("schema_version"));
+        // Default 1 when absent = legacy v1 preset file.
+        // The reader tolerates v1 presets indefinitely; category/timbre
+        // will be std::nullopt for v1, which filters handle gracefully.
+        out.schemaVersion = obj->hasProperty("schema_version")
+                                ? static_cast<int>(obj->getProperty("schema_version"))
+                                : 1;
         if (out.schemaVersion < 1)
             return false;
-        static constexpr int kCurrentSchemaVersion = 1;
+        static constexpr int kCurrentSchemaVersion = 2;
         if (out.schemaVersion > kCurrentSchemaVersion)
         {
             DBG("Preset schema version " + juce::String(out.schemaVersion) + " is newer than supported version " + juce::String(kCurrentSchemaVersion));
@@ -1132,6 +1160,46 @@ private:
         out.mood = obj->getProperty("mood").toString();
         if (!validMoods.contains(out.mood))
             out.mood = "User"; // fallback for unknown moods
+
+        // category — schema v2 required field. For v1 presets (or any preset
+        // missing the field) we leave std::nullopt; the chip filter will skip
+        // these until backfill runs.
+        {
+            auto catVar = obj->getProperty("category");
+            if (catVar.isString())
+            {
+                auto s = catVar.toString();
+                if (! s.isEmpty())
+                {
+                    if (xoceanus::isValidPresetCategory (s))
+                        out.category = s;
+                    else
+                        DBG ("PresetManager: invalid category '" + s + "' in " + out.name
+                             + " — ignored.");
+                }
+            }
+        }
+
+        // timbre — schema v2 optional field. null for electronic presets.
+        {
+            auto timVar = obj->getProperty("timbre");
+            if (timVar.isString())
+            {
+                auto s = timVar.toString();
+                if (! s.isEmpty())
+                {
+                    if (xoceanus::isValidPresetTimbre (s))
+                        out.timbre = s;
+                    else
+                        DBG ("PresetManager: invalid timbre '" + s + "' in " + out.name
+                             + " — ignored.");
+                }
+            }
+        }
+
+        // tier — descriptive provenance only. No access-control role.
+        // Known values: "awakening", "transcendental", "" (empty).
+        out.tier = obj->getProperty("tier").toString();
 
         // engines
         if (!obj->hasProperty("engines"))
@@ -1353,6 +1421,7 @@ private:
         return true;
     }
 
+private:
     //==========================================================================
     // DNA helpers
     //==========================================================================
