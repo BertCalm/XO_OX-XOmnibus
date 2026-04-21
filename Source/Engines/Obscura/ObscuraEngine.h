@@ -140,9 +140,11 @@ struct ObscuraDCBlocker
         constexpr float kDCBlockerCutoffHz = 5.0f;
         constexpr float kTwoPi = 6.28318530718f;
 
-        // R = 1 - (2*pi*fc / sr): places the pole just inside the unit circle.
+        // R = exp(-2*pi*fc / sr): matched-Z transform pole placement.
         // At 44.1 kHz: R ~ 0.99929, giving a -3dB point near 5 Hz.
-        feedbackCoefficient = 1.0f - (kTwoPi * kDCBlockerCutoffHz / std::max(1.0f, sampleRate));
+        // Uses exp() not the Euler approximation (1 - 2pi*fc/sr) so the cutoff
+        // frequency is sample-rate-accurate at 192 kHz and above.
+        feedbackCoefficient = std::exp(-kTwoPi * kDCBlockerCutoffHz / std::max(1.0f, sampleRate));
 
         // Clamp to safe range to prevent instability at extreme sample rates
         if (feedbackCoefficient < 0.9f)
@@ -437,10 +439,8 @@ public:
         if (controlStepSamples < 1.0f)
             controlStepSamples = 1.0f;
 
-        // Normalized dt^2 for Verlet integration. Set to 1.0 because
-        // the spring constant already encodes the effective k*dt^2 product.
-        // This simplifies the Verlet update to: x_new = 2x - x_old + F.
-        normalizedDtSquared = 1.0f;
+        // Normalized dt^2 is baked into the spring constant (k already encodes
+        // effective k*dt^2). No separate member needed — normalizedDtSquared removed.
 
         // Parameter smoothing: 5ms time constant — prevents zipper noise.
         smoothedStiffness.prepare(sampleRateFloat);
@@ -479,6 +479,14 @@ public:
         couplingForceModulation = 0.0f;
         couplingStiffnessModulation = 0.0f;
         couplingImpulseTrigger = 0.0f;
+
+        // Reset mod matrix outputs so stale offsets don't linger
+        // after allNotesOff/allSoundOff until the next block's matrix pass.
+        obscuraModPitchOffset = 0.0f;
+        obscuraModLevelOffset = 0.0f;
+        pitchBendNorm = 0.0f;
+        // modWheelAmount intentionally NOT reset (MIDI convention: mod wheel is
+        // a persistent controller, not reset by allNotesOff).
 
         smoothedStiffness.snapTo(0.5f);
         smoothedDamping.snapTo(0.3f);
@@ -695,12 +703,17 @@ public:
 
         // D002 mod matrix — apply per-block.
         // Destinations: 0=Off, 1=Stiffness, 2=Damping, 3=Pitch, 4=AmpLevel, 5=Nonlinearity
+        // LFO sources are 0: Obscura routes its LFOs directly to physics params
+        // (scan width, excite position) per-voice inside the render loop; feeding
+        // them here as block-mono values would lose per-voice phase independence.
+        // env uses the block's peak envelope level from the previous block; this
+        // is one-block latent but acceptable for slow modulation destinations.
         {
             ModMatrix<4>::Sources mSrc;
-            mSrc.lfo1       = 0.0f;  // Obscura LFO values are per-voice
-            mSrc.lfo2       = 0.0f;
-            mSrc.env        = 0.0f;
-            mSrc.velocity   = 0.0f;
+            mSrc.lfo1       = 0.0f;  // per-voice — routed directly in render loop
+            mSrc.lfo2       = 0.0f;  // per-voice — routed directly in render loop
+            mSrc.env        = envelopeOutput; // amplitude envelope follower (1-block latent)
+            mSrc.velocity   = 0.0f;  // velocity is per-voice; block-level n/a
             mSrc.keyTrack   = 0.0f;
             mSrc.modWheel   = modWheelAmount;
             mSrc.aftertouch = atPressure;
@@ -741,6 +754,21 @@ public:
         smoothedScanWidth.set(scanWidthInMasses);
         smoothedSustainForce.set(effectiveSustain);
 
+        // Update LFO rate/shape on all active voices once per block.
+        // LFO rates are only set at noteOn, so rate/shape knob changes during
+        // held notes are stale until the next noteOn. This per-block update
+        // propagates live parameter values to all voices without resetting phase.
+        for (auto& voice : voices)
+        {
+            if (voice.active)
+            {
+                voice.lfo1.setRate(paramLfo1Rate, sampleRateFloat);
+                voice.lfo1.setShape(paramLfo1Shape);
+                voice.lfo2.setRate(paramLfo2Rate, sampleRateFloat);
+                voice.lfo2.setShape(paramLfo2Shape);
+            }
+        }
+
         float peakEnvelopeLevel = 0.0f;
 
         //----------------------------------------------------------------------
@@ -777,6 +805,10 @@ public:
                     continue;
 
                 //-- Voice-stealing crossfade (5ms linear ramp) ----------------
+                // Fade-out: ramp down to 0 then deactivate (old note being stolen).
+                // Fade-in: ramp up from 0 to 1 on stolen-voice new note start.
+                // Without the ramp-up, voices stolen in poly mode start at
+                // crossfadeGain=0 and remain permanently silent (critical bug fix).
                 if (voice.fadingOut)
                 {
                     voice.crossfadeGain -= voiceCrossfadeRate;
@@ -786,6 +818,12 @@ public:
                         voice.active = false;
                         continue;
                     }
+                }
+                else if (voice.crossfadeGain < 1.0f)
+                {
+                    voice.crossfadeGain += voiceCrossfadeRate;
+                    if (voice.crossfadeGain > 1.0f)
+                        voice.crossfadeGain = 1.0f;
                 }
 
                 //-- Glide (portamento) ----------------------------------------
@@ -890,8 +928,12 @@ public:
                         constexpr float kDenormalThreshold = 1e-15f;
                         if (std::fabs(displacement) < kDenormalThreshold)
                         {
+                            // Zero both current and previous so the implicit Verlet velocity
+                            // (v = chain[i] - chainPrevious[i]) is also zeroed. Leaving
+                            // chainPrevious[i] non-zero would create a phantom restoring
+                            // kick that re-excites the mass on the next physics step.
                             voice.chain[i] = 0.0f;
-                            voice.chainPrevious[i] = flushDenormal(voice.chainPrevious[i]);
+                            voice.chainPrevious[i] = 0.0f;
                             continue;
                         }
 
@@ -1397,54 +1439,70 @@ private:
         // Map normalized position [0,1) to chain index [0, N-1]
         float chainPosition = scanPosition * static_cast<float>(kChainSize - 1);
 
-        // Narrow width: single-point cubic interpolation (brightest timbre)
+        // Narrow width: single-point cubic interpolation (brightest timbre).
+        // Transition band [2.0, 3.0]: crossfade between narrow and wide paths to
+        // eliminate the audible timbral click that occurred when LFO modulation
+        // swept scanWidth across the hard 2.0 threshold.
         if (scanWidth < 2.0f)
         {
             return cubicHermiteInterpolateChain(snapshotA, snapshotB, interpolationFraction, chainPosition);
         }
 
-        // Wide width: Hann-windowed average (darker timbre)
+        // Compute single-point result for crossfade in transition band [2, 3]
+        float narrowResult = 0.0f;
+        float transitionAlpha = 1.0f; // 0 = fully narrow, 1 = fully wide
+        if (scanWidth < 3.0f)
+        {
+            narrowResult = cubicHermiteInterpolateChain(snapshotA, snapshotB, interpolationFraction, chainPosition);
+            transitionAlpha = scanWidth - 2.0f; // [0, 1) linear blend
+        }
+
+        // Wide width: Hann-windowed average (darker timbre).
+        // Window spans ±halfWidth around chainPosition, sampling at integer mass
+        // indices. Since sampleStep ≈ 1.0 mass, positions are integer-aligned:
+        // use linear snapshot interpolation (snapshotA→B) instead of cubic
+        // Hermite to halve the per-sample arithmetic in this hot path.
         float halfWidth = scanWidth * 0.5f;
-        float windowStart = chainPosition - halfWidth;
-        float windowEnd = chainPosition + halfWidth;
+        int indexStart = static_cast<int>(chainPosition - halfWidth);
+        int indexEnd   = static_cast<int>(chainPosition + halfWidth);
+        // Clamp to valid chain range
+        if (indexStart < 0)           indexStart = 0;
+        if (indexEnd >= kChainSize)   indexEnd   = kChainSize - 1;
+        int windowSamples = indexEnd - indexStart + 1;
+        if (windowSamples < 2)        windowSamples = 2;
 
-        // Number of sample points in the averaging window
-        int windowSamples = static_cast<int>(scanWidth) + 1;
-        if (windowSamples < 2)
-            windowSamples = 2;
-        if (windowSamples > kChainSize)
-            windowSamples = kChainSize;
-
-        float sampleStep = (windowEnd - windowStart) / static_cast<float>(windowSamples - 1);
         float weightedSum = 0.0f;
         float totalWeight = 0.0f;
 
         for (int s = 0; s < windowSamples; ++s)
         {
-            float samplePosition = windowStart + static_cast<float>(s) * sampleStep;
-
-            // Wrap position to valid chain range [0, N-1]
-            float chainEnd = static_cast<float>(kChainSize - 1);
-            float wrappedPosition = samplePosition;
-            while (wrappedPosition < 0.0f)
-                wrappedPosition += chainEnd;
-            while (wrappedPosition >= chainEnd)
-                wrappedPosition -= chainEnd;
+            int massIdx = indexStart + s;
+            if (massIdx < 0 || massIdx >= kChainSize)
+                continue;
 
             // Hann window weight: w = 0.5 - 0.5*cos(2*pi*t)
             // This gives smooth rolloff at the edges of the averaging window,
             // preventing spectral leakage artifacts in the output.
+            // fastCos replaces std::cos — this loop runs in the per-sample
+            // per-voice path and std::cos was measurably expensive at wide scan widths.
             float normalizedWindowPos = static_cast<float>(s) / static_cast<float>(windowSamples - 1);
-            float hannWeight = 0.5f - 0.5f * std::cos(kTwoPi * normalizedWindowPos);
+            float hannWeight = 0.5f - 0.5f * fastCos(kTwoPi * normalizedWindowPos);
 
-            float sampleValue =
-                cubicHermiteInterpolateChain(snapshotA, snapshotB, interpolationFraction, wrappedPosition);
+            // Linear interpolation between snapshots (positions are integer-aligned
+            // so sub-sample cubic interpolation gives negligible quality benefit here
+            // while costing 4× more flops than this lerp).
+            float sampleValue = snapshotA[massIdx] + interpolationFraction * (snapshotB[massIdx] - snapshotA[massIdx]);
             weightedSum += sampleValue * hannWeight;
             totalWeight += hannWeight;
         }
 
         constexpr float kMinWeightThreshold = 0.0001f;
-        return (totalWeight > kMinWeightThreshold) ? (weightedSum / totalWeight) : 0.0f;
+        float wideResult = (totalWeight > kMinWeightThreshold) ? (weightedSum / totalWeight) : 0.0f;
+
+        // Apply crossfade blend in transition band
+        if (transitionAlpha < 1.0f)
+            return narrowResult + transitionAlpha * (wideResult - narrowResult);
+        return wideResult;
     }
 
     //==========================================================================
@@ -1547,23 +1605,29 @@ private:
 
                 voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
                 voice.lfo1.setShape(lfo1Shape);
+                voice.lfo1.reset(); // reset phase on full mono noteOn (matches poly path)
                 voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
                 voice.lfo2.setShape(lfo2Shape);
+                voice.lfo2.reset(); // reset phase on full mono noteOn (matches poly path)
 
                 voice.dcBlockerLeft.setCoefficient(sampleRateFloat);
                 voice.dcBlockerRight.setCoefficient(sampleRateFloat);
                 voice.dcBlockerLeft.reset();
                 voice.dcBlockerRight.reset();
 
-                // Seed RNG with note number for deterministic chain initialization.
-                // 7919 is an arbitrary prime to spread seeds across the state space.
-                voice.randomGeneratorState = static_cast<uint32_t>(noteNumber * 7919 + 42);
+                // Seed RNG with note number + voiceCounter for unique chain initialization
+                // per note event. Using voiceCounter (not constant 42) prevents identical
+                // chain states when the same note is re-triggered (P-NOISESEED-SHARED).
+                voice.randomGeneratorState = static_cast<uint32_t>(noteNumber * 7919 + voiceCounter);
                 voice.initChainShape(initialShapeIndex, excitePosition, exciteWidth);
             }
             return;
         }
 
         //-- Polyphonic mode ---------------------------------------------------
+        // Use basic LRU — Obscura provides coupling output via outputCacheLeft/Right
+        // which is mixed across all voices, so no single voice is the sole coupling
+        // source. findFreeVoice is appropriate here.
         int voiceIndex = VoiceAllocator::findFreeVoice(voices, std::min(maxPolyphony, kMaxVoices));
         auto& voice = voices[static_cast<size_t>(voiceIndex)];
 
@@ -1641,7 +1705,6 @@ private:
     //-- Timing coefficients ---------------------------------------------------
     float voiceCrossfadeRate = 0.01f;
     float controlStepSamples = 0.0f; // set in prepare() from actual sampleRate
-    float normalizedDtSquared = 1.0f;
 
     //-- Voice pool ------------------------------------------------------------
     std::array<ObscuraVoice, kMaxVoices> voices;
