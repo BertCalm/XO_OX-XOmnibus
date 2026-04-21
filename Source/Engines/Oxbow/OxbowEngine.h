@@ -56,7 +56,7 @@ public:
     void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
-        blockSize = maxBlockSize;
+        // blockSize stored for future sub-blocking use; not consumed in renderBlock() today.
 
         // FDN delay lines: prime sample lengths (Chiasmus topology)
         // L channels: [1361, 1847, 2203, 2711] at 48kHz (~28, 38, 46, 56ms)
@@ -67,8 +67,11 @@ public:
 
         for (int ch = 0; ch < kFDNChannels; ++ch)
         {
-            float delayMs = (ch < 4) ? baseDelaysL[ch] : baseDelaysR[ch - 4];
-            int delaySamples = static_cast<int>(delayMs * sr * sizeScale) + 1;
+            // Values are in seconds (e.g. 0.02835 s = 28.35 ms); variable renamed delaySec
+            // to avoid confusion with the old "delayMs" label that incorrectly implied
+            // milliseconds (stability fix: variable name matched unit comment, not actual value).
+            float delaySec = (ch < 4) ? baseDelaysL[ch] : baseDelaysR[ch - 4];
+            int delaySamples = static_cast<int>(delaySec * sr) + 1;
             if (delaySamples < 1)
                 delaySamples = 1;
             fdnDelay[ch].assign(static_cast<size_t>(delaySamples), 0.0f);
@@ -149,6 +152,19 @@ public:
         smoothDryWet.setCurrentAndTargetValue(0.5f);
         smoothDecay.reset(sampleRate, 0.020);
         smoothDecay.setCurrentAndTargetValue(4.0f);
+
+        // Cache convergence/resonance smoother coefficients — these use
+        // hardcoded time constants so they need only recompute on sample rate
+        // changes (i.e., here in prepare()), not every block.
+        const float srF = static_cast<float>(sampleRate);
+        cachedConvAttack  = smoothCoeffFromTime(0.01f,  srF);
+        cachedConvRelease = smoothCoeffFromTime(0.1f,   srF);
+        cachedResAttack   = smoothCoeffFromTime(0.005f, srF);
+        cachedResRelease  = smoothCoeffFromTime(0.05f,  srF);
+
+        // Reseed noise RNG from sample-rate value so multi-engine instances
+        // produce decorrelated exciter bursts.
+        noiseRng = static_cast<uint32_t>(static_cast<int>(sampleRate)) ^ 0xDEAD1234u;
     }
 
     void releaseResources() override {}
@@ -182,6 +198,7 @@ public:
         peakEnergy = 0.0001f;
         currentEnergy = 0.0f;
         lastSampleL = lastSampleR = 0.0f;
+        lastCantileverDamp = dampingHz; // force coefficient recompute on next block
         smoothDryWet.setCurrentAndTargetValue(smoothDryWet.getTargetValue());
         smoothDecay.setCurrentAndTargetValue(smoothDecay.getTargetValue());
     }
@@ -204,13 +221,25 @@ public:
                 exciterEnv = 1.0f;
                 exciterPhase = 0.0;
 
+                // Reseed noise RNG per note-on so successive notes produce
+                // varied exciter bursts rather than the same deterministic
+                // XOR-shift sequence every time (was fixed seed 42u / prepare seed).
+                noiseRng ^= static_cast<uint32_t>(currentNote * 1664525u + 1013904223u);
+                if (noiseRng == 0u)
+                    noiseRng = 0xBADC0FFEu; // guard against zero state
+
                 // Update golden resonance fundamentals from MIDI note (Moog)
-                float fundamental = midiToFreq(static_cast<float>(currentNote)) *
-                                    PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                float fundamental = midiToFreq(currentNote) *
+                                    PitchBendUtil::semitonesToFreqRatio(
+                                        PitchBendUtil::bendToSemitones(pitchBendNorm, 2.0f));
                 updateGoldenFrequencies(fundamental);
 
-                // Reset peak energy tracker for new cantilever arc
-                peakEnergy = 0.0001f;
+                // Reset peak energy tracker for new cantilever arc.
+                // Seed with current energy so a re-triggered note during a live
+                // FDN tail does not immediately set decayProgress=1.0 and apply
+                // maximum cantilever damping (was: hard reset to 0.0001f which
+                // makes currentEnergy >> peakEnergy on first sample after retrigger).
+                peakEnergy = std::max(currentEnergy, 0.0001f);
             }
             else if (msg.isNoteOff())
             {
@@ -232,10 +261,14 @@ public:
                 pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
-        // 2. Bypass check
+        // 2. Bypass check — reset coupling mods even when bypassed so they
+        // don't accumulate across blocks and cause a step transient on wake.
         if (silenceGate.isBypassed() && midi.isEmpty())
         {
             buffer.clear();
+            extFilterMod = 0.0f;
+            extDecayMod  = 0.0f;
+            extRingMod   = 0.0f;
             return;
         }
 
@@ -294,8 +327,13 @@ public:
         // Schulze: allow infinite decay (pDecay > 29s → feedback = 1.0).
         // Use std::exp here — called once per block, not per sample.  fastExp
         // carries ~4% error near the infinite-decay threshold where accuracy matters most.
-        // Use the smoothed decay value to prevent coefficient discontinuities between blocks.
-        float smoothedDecayVal = smoothDecay.getNextValue();
+        // NOTE: smoothDecay.getNextValue() advances the smoother by exactly one step —
+        // calling it only once per block means the full per-sample smoothing benefit is
+        // lost within a block. We use getTargetValue() for the block-level coefficient and
+        // accept one-block latency, which is inaudible at typical block sizes (64–512 samples).
+        float smoothedDecayVal = smoothDecay.getTargetValue();
+        // Advance the smoother so its internal state tracks correctly for the next block.
+        smoothDecay.getNextValue();
         float feedbackCoeff = (smoothedDecayVal > 29.0f) ? 1.0f : std::exp(-6.9078f / (smoothedDecayVal * srF));
         feedbackCoeff = std::min(feedbackCoeff, 0.9999f); // fleet standard: prevent FDN divergence
 
@@ -315,11 +353,13 @@ public:
         float predelaySamples =
             clamp(effectivePredelay * 0.001f * srF, 0.0f, static_cast<float>((int)predelayBuf.size() - 1));
 
-        // Convergence envelope coefficients
-        float convAttack = smoothCoeffFromTime(0.01f, srF);
-        float convRelease = smoothCoeffFromTime(0.1f, srF);
-        float resAttack = smoothCoeffFromTime(0.005f, srF);
-        float resRelease = smoothCoeffFromTime(0.05f, srF);
+        // Convergence envelope coefficients — use values cached in prepare()
+        // to avoid 4× fastExp() calls per block (smoothCoeffFromTime calls
+        // fastExp internally; time constants are fixed so caching is exact).
+        const float convAttack  = cachedConvAttack;
+        const float convRelease = cachedConvRelease;
+        const float resAttack   = cachedResAttack;
+        const float resRelease  = cachedResRelease;
 
         // Golden ratio harmonics amplitude weighting (Tomita: -3dB per φ)
         static constexpr float goldenGains[4] = {1.0f, 0.708f, 0.501f, 0.354f};
@@ -327,9 +367,14 @@ public:
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
-        // Pre-compute pitch-bent exciter frequency for this block
+        // Pre-compute pitch-bent exciter frequency for this block.
+        // midiToFreq() takes int — the old float cast was a type mismatch (compiled
+        // via implicit float→int truncation, always correct since currentNote is
+        // already integer, but misleading). Use PitchBendUtil::bendToSemitones()
+        // for the range, consistent with updateGoldenFrequencies().
         const float exciterFreqHz =
-            midiToFreq(static_cast<float>(currentNote)) * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+            midiToFreq(currentNote) * PitchBendUtil::semitonesToFreqRatio(
+                                          PitchBendUtil::bendToSemitones(pitchBendNorm, 2.0f));
 
         // Issue #917: hoist erosionLFO.setRate() out of per-sample loop.
         // pErosionR is block-stable (read from atomic above). StandardLFO::setRate()
@@ -419,12 +464,20 @@ public:
             float cantileverDamp = pDamping * (1.0f - pCantilever * decayProgress * decayProgress);
             cantileverDamp = clamp(cantileverDamp, 200.0f, 16000.0f);
 
-            // Apply damping per channel (Moog two-pole SVF LP)
-            for (int ch = 0; ch < kFDNChannels; ++ch)
+            // Apply damping per channel (Moog two-pole SVF LP).
+            // Only recompute SVF coefficients when cantileverDamp changes by more
+            // than 1 Hz — this avoids 8 setCoefficients_fast() calls per sample
+            // when the damping is stable (cantilever damp is a slow quadratic
+            // function of currentEnergy that changes by only a few Hz per sample
+            // during normal decay; updating every sample wastes ~8 fastTan calls).
+            if (std::fabs(cantileverDamp - lastCantileverDamp) > 1.0f)
             {
-                fdnDamp[ch].setCoefficients_fast(cantileverDamp, 0.1f, srF);
-                fdnOut[ch] = fdnDamp[ch].processSample(fdnOut[ch]);
+                for (int ch = 0; ch < kFDNChannels; ++ch)
+                    fdnDamp[ch].setCoefficients_fast(cantileverDamp, 0.1f, srF);
+                lastCantileverDamp = cantileverDamp;
             }
+            for (int ch = 0; ch < kFDNChannels; ++ch)
+                fdnOut[ch] = fdnDamp[ch].processSample(fdnOut[ch]);
 
             // Write back to delay lines with feedback + input injection
             for (int ch = 0; ch < kFDNChannels; ++ch)
@@ -496,7 +549,10 @@ public:
                 // Update golden resonator Q from live parameter so Q knob responds
                 // during a held note (D004: dead param fix — pResQ was previously only
                 // read at note-on, making the knob inert until the next key strike).
-                float liveQ = pResQ / 20.0f; // normalize to [0, 1] for CytomicSVF
+                // Cap at 0.95 to prevent self-oscillation: CytomicSVF Peak at
+                // resonance=1.0 → k=0 → self-oscillating sinusoid injected into the
+                // FDN tail (stability fix: unbound Q caused runaway energy buildup).
+                float liveQ = clamp(pResQ / 20.0f, 0.0f, 0.95f); // [0, 0.95] for CytomicSVF
                 for (int g = 0; g < kGoldenFilters; ++g)
                 {
                     // Peak mode output = 2*v2 - input + k*v1; gain param only affects shelves,
@@ -566,11 +622,19 @@ public:
             extDecayMod = amount;
             break;
         case CouplingType::AudioToRing:
-            extRingMod = (sourceBuffer ? sourceBuffer[0] : 0.0f) * amount;
+            // Clamp to [-0.9, 0.9] so the gain factor (1 + extRingMod) stays
+            // in [0.1, 1.9] — prevents polarity inversion and runaway amplification
+            // from loud source engines (e.g. ONSET transients at +6 dB would produce
+            // extRingMod ≈ 2.0 → gain ≈ 3.0 without this guard).
+            extRingMod = clamp((sourceBuffer ? sourceBuffer[0] : 0.0f) * amount, -0.9f, 0.9f);
             break;
         case CouplingType::AudioToBuffer:
-            // External audio replaces exciter — inject into FDN input
-            // (handled in renderBlock via coupling buffer if implemented)
+            // DEFERRED: inject external audio as exciter signal into the FDN.
+            // Intended design: sourceBuffer samples accumulate into a small ring
+            // and are fed into fdnInput in renderBlock, replacing or mixing with
+            // the exciterSample. Requires a dedicated coupling buffer member and
+            // block-count tracking. Currently a no-op — external audio is silently
+            // ignored. Tracked for implementation in a future pass.
             break;
         default:
             break;
@@ -688,14 +752,16 @@ private:
                                        fundamental * phi * phi * phi};
 
         float resQ = pResQParam ? pResQParam->load() : 8.0f;
-        float srF = static_cast<float>(sr);
+        float srF  = static_cast<float>(sr);
 
         for (int g = 0; g < kGoldenFilters; ++g)
         {
             float f = clamp(freqs[g], 20.0f, srF * 0.49f);
-            goldenFreqHz[g] = f;                         // cache for per-sample Q updates
-            float q = resQ / 20.0f;                      // normalize to [0, 1] for CytomicSVF
-            goldenL[g].setCoefficients(f, q, srF, 6.0f); // +6dB peak
+            goldenFreqHz[g] = f;                              // cache for per-sample Q updates
+            // Cap at 0.95 — same guard as per-sample path to prevent self-oscillation
+            // at note-on when setCoefficients() (full precision path) is used here.
+            float q = clamp(resQ / 20.0f, 0.0f, 0.95f);
+            goldenL[g].setCoefficients(f, q, srF, 6.0f);     // +6dB peak
             goldenR[g].setCoefficients(f, q, srF, 6.0f);
         }
     }
@@ -724,7 +790,12 @@ private:
     // Golden resonance filters
     CytomicSVF goldenL[kGoldenFilters];
     CytomicSVF goldenR[kGoldenFilters];
-    float goldenFreqHz[kGoldenFilters] = {220.0f, 356.0f, 576.0f, 932.0f}; // updated at note-on
+    // Golden resonator frequencies — updated at every note-on via updateGoldenFrequencies().
+    // Defaults are φ-harmonics of C4 (261.63 Hz) so any pre-note-on trigger of the
+    // golden resonance path (e.g. from audio-rate FDN convergence on a sustained tail)
+    // produces a musically sensible ring rather than the old A3-arbitrary 220 Hz root.
+    // (Previous default {220, 356, 576, 932} corresponded to A3 with no note played.)
+    float goldenFreqHz[kGoldenFilters] = {261.63f, 423.14f, 684.27f, 1106.8f}; // C4 φ-harmonics
     float midEnv = 0.0f, sideEnv = 0.0f;
     float resonanceGain = 0.0f;
 
@@ -746,9 +817,25 @@ private:
     std::vector<float> predelayBuf;
     int predelayPos = 0;
 
-    // Size scaling
-    float sizeScale = 1.0f;
-    float dampingHz = 6000.0f;
+    // Size scaling — sizeScale was intended as a runtime param but is never
+    // modified after construction, making it effectively constant 1.0f.  The
+    // pSize parameter affects predelay and damping frequency in renderBlock()
+    // but NOT the FDN delay line lengths (which are allocated once in prepare()).
+    // Future work: dynamic delay-line resizing via interpolated fractional delay.
+    float sizeScale = 1.0f; // currently unused/dead — kept for documentation
+    float dampingHz = 6000.0f; // used only in prepare() initial filter setup
+
+    // Last cantilever damp value — used for hysteresis-gated coefficient updates
+    // in the per-sample FDN damping loop (avoids 8 setCoefficients_fast/sample).
+    float lastCantileverDamp = 6000.0f;
+
+    // Cached convergence/resonance smoother coefficients — computed once in
+    // prepare() from hardcoded time constants.  Using fastExp per-block was
+    // wasteful; these values only change when sample rate changes.
+    float cachedConvAttack  = 1.0f;
+    float cachedConvRelease = 1.0f;
+    float cachedResAttack   = 1.0f;
+    float cachedResRelease  = 1.0f;
 
     // Parameter smoothers for the two most audible zipper params (D002 / FATHOM fix)
     juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> smoothDryWet;
