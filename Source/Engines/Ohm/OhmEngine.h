@@ -21,7 +21,7 @@ namespace xoceanus
 // Uses FamilyWaveguide primitives: PickExciter, BowExciter, DelayLine,
 // DampingFilter, BodyResonance, SympatheticBank, OrganicDrift.
 //
-// 32 canonical ohm_ parameters — matches standalone Parameters.h exactly.
+// 32 canonical ohm_ parameters (10+8+5+2+7) — matches standalone Parameters.h exactly.
 //==============================================================================
 
 // 2-op FM for Obed
@@ -29,19 +29,27 @@ struct OhmObedFM
 {
     static constexpr float kRatios[8][2] = {{1, 1}, {3, 2}, {5, 4}, {2, 1}, {5, 3}, {7, 4}, {9, 5}, {11, 6}};
     float phase = 0, modPhase = 0, envLevel = 0, sr = 0;
+    bool attacking = false; // DSP FIX F01: track attack vs. decay phase explicitly
     void prepare(double s) { sr = (float)s; }
-    void reset() { phase = modPhase = envLevel = 0; }
-    void trigger() { envLevel = 1.0f; }
+    void reset() { phase = modPhase = envLevel = 0; attacking = false; }
+    void trigger() { envLevel = 0.0f; attacking = true; } // DSP FIX F01: start from 0, enter attack
     float tick(float freq, int ratio, float index, float attack, float decay)
     {
         int r = std::clamp(ratio, 0, 7);
         float mf = freq * kRatios[r][0] / kRatios[r][1];
-        // Attack/decay envelope: rise during attack phase, then decay
-        float rate = (envLevel < 1.0f && attack > 0.001f) ? (1.0f / (sr * attack))                  // attack phase
-                                                          : (1.0f / (sr * std::max(decay, 0.01f))); // decay phase
-        if (envLevel >= 0.999f)
-            envLevel = 1.0f; // snap to peak
-        envLevel *= (1.0f - rate);
+        // DSP FIX F01/F02: two-state machine — attack rises linearly to 1, decay falls exponentially.
+        // Previous code set envLevel=1 on trigger() then immediately decayed, making attack dead code.
+        if (attacking)
+        {
+            float atkRate = (attack > 0.001f) ? (1.0f / (sr * attack)) : 1.0f;
+            envLevel += atkRate;
+            if (envLevel >= 1.0f) { envLevel = 1.0f; attacking = false; }
+        }
+        else
+        {
+            float decRate = 1.0f / (sr * std::max(decay, 0.01f));
+            envLevel *= (1.0f - decRate);
+        }
         modPhase += mf / sr;
         if (modPhase >= 1)
             modPhase -= 1;
@@ -76,17 +84,32 @@ struct OhmInLaw
 // Glass harmonica partial generator
 struct OhmGlassPartial
 {
-    float phase = 0, sr = 0;
+    // DSP FIX F15: three phases for three partials; glass harmonica has rich overtone structure.
+    // A single sliding partial (old code) produced a thin whistle with no glass character.
+    float phase[3] = {}, sr = 0;
     void prepare(double s) { sr = (float)s; }
-    void reset() { phase = 0; }
+    void reset() { phase[0] = phase[1] = phase[2] = 0; }
     float tick(float freq, float brightness)
     {
-        // Higher brightness = higher partials emphasized
-        float partialFreq = freq * (2.0f + brightness * 6.0f);
-        phase += partialFreq / sr;
-        if (phase >= 1.0f)
-            phase -= 1.0f;
-        return fastSin(phase * 6.2831853f);
+        // Three partials: fundamental rim frequency, 2nd, 3rd harmonic.
+        // Brightness shifts emphasis to upper partials (more glass = more shimmer).
+        float baseFreq  = freq * (2.0f + brightness * 4.0f);
+        float partial2  = baseFreq * 2.0f;
+        float partial3  = baseFreq * 3.0f;
+
+        for (int p = 0; p < 3; ++p)
+        {
+            float f = (p == 0) ? baseFreq : (p == 1 ? partial2 : partial3);
+            phase[p] += f / sr;
+            if (phase[p] >= 1.0f) phase[p] -= 1.0f;
+        }
+
+        // Amplitude weighting: fundamental loudest, harmonics attenuated by brightness
+        float g2 = brightness * 0.4f;
+        float g3 = brightness * 0.2f;
+        return fastSin(phase[0] * 6.2831853f)
+             + fastSin(phase[1] * 6.2831853f) * g2
+             + fastSin(phase[2] * 6.2831853f) * g3;
     }
 };
 
@@ -94,6 +117,14 @@ struct OhmGlassPartial
 struct OhmSpectralFreeze
 {
     float held = 0.0f;
+    float leakCoeff = 0.9999f; // DSP FIX F16: SR-aware leak; set in prepare()
+    void prepare(double sampleRate)
+    {
+        // DSP FIX F16: SR-independent leak time constant (~1.4 s at any sample rate).
+        // Old code used literal 0.9999f which made the update 2× faster at 96 kHz.
+        float tc = 1.4f; // seconds for held → input crossfade time constant
+        leakCoeff = std::exp(-1.0f / (static_cast<float>(sampleRate) * tc));
+    }
     void reset() { held = 0.0f; }
     float process(float input, float freezeAmt)
     {
@@ -102,7 +133,8 @@ struct OhmSpectralFreeze
             held = input;
             return input;
         }
-        held = held * 0.9999f + input * 0.0001f; // very slow update when frozen
+        float leakAmt = 1.0f - leakCoeff;
+        held = held * leakCoeff + input * leakAmt; // SR-aware slow update when frozen
         return input * (1.0f - freezeAmt) + held * freezeAmt;
     }
 };
@@ -113,6 +145,8 @@ struct OhmGrainEngine
     float grainPhase = 0, grainEnv = 0, grainFreq = 440, sr = 0;
     float scatterPhase = 0;
     int grainCounter = 0, grainLen = 0;
+    // DSP FIX F14: seed initialized to 33333u but differentiated per voice in prepare().
+    // All 12 voices sharing the same seed produce identical scatter patterns — P-NOISESEED-SHARED.
     uint32_t seed = 33333u;
 
     void prepare(double s) { sr = (float)s; }
@@ -190,15 +224,17 @@ struct OhmDelay
     }
 };
 
-// Simple reverb (Schroeder-style allpass + comb)
-struct OhmReverb
+// Stereo Schroeder reverb: two independent mono reverb units (L and R)
+// DSP FIX F06/F27: old code used a single OhmReverb instance called twice —
+// the second call (R) read state written by the first (L), producing a dependent
+// mono-into-itself signal rather than true stereo.  Two instances with slightly
+// offset delay lengths give uncorrelated L/R tails at minimal memory cost.
+struct OhmReverbMono
 {
     // 4 comb filters + 2 allpass
     // Reference delay lengths tuned at 44100 Hz — scaled at runtime for any sample rate.
     static constexpr double kRefSampleRate = 44100.0;
     static constexpr int kNumCombs = 4;
-    static constexpr int kCombLensRef[4] = {1116, 1188, 1277, 1356};
-    static constexpr int kAP1LenRef = 225, kAP2LenRef = 556;
 
     // Runtime-scaled lengths (set in prepare())
     int combLens[kNumCombs] = {1116, 1188, 1277, 1356};
@@ -208,17 +244,17 @@ struct OhmReverb
     int combPos[kNumCombs] = {}, ap1Pos = 0, ap2Pos = 0;
     float combState[kNumCombs] = {};
 
-    void prepare(double sampleRate)
+    void prepare(double sampleRate, const int combLensRef[4], int ap1LenRef, int ap2LenRef)
     {
         for (int i = 0; i < kNumCombs; ++i)
         {
-            combLens[i] = static_cast<int>(kCombLensRef[i] * sampleRate / kRefSampleRate + 0.5);
+            combLens[i] = static_cast<int>(combLensRef[i] * sampleRate / kRefSampleRate + 0.5);
             combBuf[i].assign(combLens[i], 0.0f);
             combPos[i] = 0;
             combState[i] = 0.0f;
         }
-        ap1Len = static_cast<int>(kAP1LenRef * sampleRate / kRefSampleRate + 0.5);
-        ap2Len = static_cast<int>(kAP2LenRef * sampleRate / kRefSampleRate + 0.5);
+        ap1Len = static_cast<int>(ap1LenRef * sampleRate / kRefSampleRate + 0.5);
+        ap2Len = static_cast<int>(ap2LenRef * sampleRate / kRefSampleRate + 0.5);
         ap1Buf.assign(ap1Len, 0.0f);
         ap1Pos = 0;
         ap2Buf.assign(ap2Len, 0.0f);
@@ -237,14 +273,20 @@ struct OhmReverb
         std::fill(ap2Buf.begin(), ap2Buf.end(), 0.0f);
         ap2Pos = 0;
     }
+    // DSP FIX F20: comb feedback now uses `rd` (the delayed sample) as the
+    // feedback source, not `combState` (post-LP value).  Old code wrote
+    // `in + combState * 0.75` which fed the LP-filtered value back — correct
+    // Schroeder combs feed back the *delayed* (pre-LP) signal; the LP just
+    // shapes the HF decay in the buffer, not the feedback coefficient.
     float process(float in, float mix)
     {
+        if (mix < 0.001f) return in; // DSP FIX F24: skip when reverb is off
         float comb = 0.0f;
         for (int i = 0; i < kNumCombs; ++i)
         {
             float rd = combBuf[i][combPos[i]];
-            combState[i] = flushDenormal(rd * 0.84f + combState[i] * 0.16f);
-            combBuf[i][combPos[i]] = flushDenormal(in + combState[i] * 0.75f);
+            combState[i] = flushDenormal(rd * 0.84f + combState[i] * 0.16f); // LP shapes HF decay
+            combBuf[i][combPos[i]] = flushDenormal(in + rd * 0.75f); // feed back delayed, not LP'd
             combPos[i] = (combPos[i] + 1) % combLens[i];
             comb += rd;
         }
@@ -264,7 +306,37 @@ struct OhmReverb
     }
 };
 
-constexpr int OhmReverb::kCombLensRef[4];
+// DSP FIX F06/F27: stereo wrapper — two independent mono reverbs with slightly
+// offset delay lengths (R channel primes shift by +23 samples at 44100) for
+// decorrelated L/R tails. Replace the old single OhmReverb with this.
+struct OhmReverb
+{
+    static constexpr int kNumCombs = 4;
+    // L delays: standard Schroeder lengths
+    static constexpr int kCombLensL[4] = {1116, 1188, 1277, 1356};
+    static constexpr int kAP1LenL = 225, kAP2LenL = 556;
+    // R delays: prime-offset versions for decorrelation
+    static constexpr int kCombLensR[4] = {1139, 1211, 1300, 1379};
+    static constexpr int kAP1LenR = 248, kAP2LenR = 579;
+
+    OhmReverbMono reverbL, reverbR;
+
+    void prepare(double sampleRate)
+    {
+        reverbL.prepare(sampleRate, kCombLensL, kAP1LenL, kAP2LenL);
+        reverbR.prepare(sampleRate, kCombLensR, kAP1LenR, kAP2LenR);
+    }
+    void reset() { reverbL.reset(); reverbR.reset(); }
+
+    void process(float& outL, float& outR, float mix)
+    {
+        outL = reverbL.process(outL, mix);
+        outR = reverbR.process(outR, mix);
+    }
+};
+
+constexpr int OhmReverb::kCombLensL[4];
+constexpr int OhmReverb::kCombLensR[4];
 
 // Single OHM voice
 struct OhmAdapterVoice
@@ -295,7 +367,7 @@ struct OhmAdapterVoice
     float pendingVel = 0.0f;
     bool pendingBowed = false;
 
-    void prepare(double s)
+    void prepare(double s, int voiceIndex = 0)
     {
         sr = (float)s;
         int md = (int)(sr / 20) + 8;
@@ -309,7 +381,10 @@ struct OhmAdapterVoice
         obed.prepare(s);
         inlaw.prepare(s);
         glass.prepare(s);
+        specFreeze.prepare(s); // DSP FIX F16: SR-aware leak coefficient
         grain.prepare(s);
+        // DSP FIX F14: differentiate grain seed per voice to avoid correlated scatter (P-NOISESEED-SHARED)
+        grain.seed = 33333u + static_cast<uint32_t>(voiceIndex) * 1234567u;
     }
     void reset()
     {
@@ -356,8 +431,8 @@ public:
     void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
-        for (auto& v : voices)
-            v.prepare(sampleRate);
+        for (int vi = 0; vi < kVoices; ++vi)
+            voices[vi].prepare(sampleRate, vi); // DSP FIX F14: pass voice index for seed differentiation
         couplingBuf.resize(maxBlockSize * 2, 0);
         silenceGate.prepare(sampleRate, maxBlockSize);
         // Prepare master FX
@@ -495,8 +570,16 @@ public:
         float pCommune = mCommune ? mCommune->load() : 0.0f;
         float pMeadow = mMeadow ? mMeadow->load() : 0.3f;
 
-        // Combine commune macro with commune absorb + aftertouch (V010)
-        float communeTotal = std::min(1.0f, pCommune + pCommAbsorb * 0.5f + atCommune * 0.4f);
+        // DSP FIX F09: COMMUNE macro is the primary control; absorb and aftertouch modulate
+        // it multiplicatively so pCommune=0 stays silent even with absorb at 0.5.
+        // Old formula added them directly, giving communeTotal=0.25 when COMMUNE=0.
+        // New formula: communeTotal = pCommune, scaled up by absorb and aftertouch riders.
+        float communeTotal = std::min(1.0f, pCommune * (1.0f + pCommAbsorb * 0.5f + atCommune * 0.4f));
+
+        // DSP FIX F10: aftertouch commune decays toward 0 so it doesn't stick indefinitely.
+        // Halves every ~0.5 s at any sample rate.  Decay happens once per block (block-rate is fine for AT).
+        float atDecayRate = 1.0f - std::exp(-static_cast<float>(ns) / (static_cast<float>(sr) * 0.5f));
+        atCommune *= (1.0f - atDecayRate);
 
         // Body material shapes body resonance Q and frequency scaling
         // 0=Wood(warm,low Q), 1=Metal(bright,high Q), 2=Gourd(mid bloom), 3=Air(airy,diffuse)
@@ -526,6 +609,18 @@ public:
         // Meadow macro scales reverb mix and delay feedback
         float meadowRev = pRevMix * (0.5f + pMeadow * 0.5f);  // meadow boosts reverb
         float meadowDelFb = pDelFb * (0.7f + pMeadow * 0.3f); // meadow extends echo tail
+
+        // DSP FIX F04: body resonance params (material, frequency) are block-constant;
+        // calling setParams() per-sample is wasted trig computation.  Compute once per block
+        // and update the resonator for each voice at block start.
+        for (auto& v : voices)
+            if (v.active)
+                v.body.setParams(v.freq * bodyFreqMul, bodyQ);
+
+        // DSP FIX F12/F13: release coefficient is a function of sr (constant) and kRelTime
+        // (constant) — precompute once per block instead of once per voice per sample.
+        static constexpr float kRelTime = 0.3f;
+        const float relCoeff = 1.0f - 1.0f / (static_cast<float>(sr) * kRelTime);
 
         auto* outL = buf.getWritePointer(0);
         auto* outR = buf.getNumChannels() > 1 ? buf.getWritePointer(1) : buf.getWritePointer(0);
@@ -557,28 +652,24 @@ public:
                         v.stealFadeStep = 0.0f;
                         v.bowed = v.pendingBowed;
                         v.noteOn(v.pendingNote, v.pendingVel);
-                        ++voiceIdx;
-                        continue;
+                        // DSP FIX F22: do NOT continue — let the new note render this sample.
+                        // Old code skipped the first sample of every stolen voice, causing
+                        // a one-sample gap (a tiny click) at each voice-steal transition.
+                        // Fall through to render the new note's first sample immediately.
                     }
                 }
 
                 // Exponential release: coefficient gives -60 dB in 0.3 s at any sample rate.
-                // Linear subtraction caused soft notes (low ampEnv) to release far too quickly.
+                // DSP FIX F12/F13: relCoeff now precomputed once per block (above).
                 if (v.releasing)
-                {
-                    static constexpr float kRelTime = 0.3f;
-                    float relCoeff = 1.0f - 1.0f / (v.sr * kRelTime);
                     v.ampEnv *= relCoeff;
-                }
                 if (v.ampEnv < 0.0001f && v.releasing)
                 {
                     v.active = false;
                     ++voiceIdx;
                     continue;
                 }
-
-                // Update body resonance based on material
-                v.body.setParams(v.freq * bodyFreqMul, bodyQ);
+                // body resonance params already set once above per active voice (F04)
 
                 float ds = v.drift.tick(pDriftR, pDriftD);
                 float df = v.freq * fastPow2((ds + extPitchMod) / 12.f) *
@@ -632,9 +723,13 @@ public:
                 float jammed = dad + dad * communeTotal * (inlawSig + obedSig) * 0.2f;
                 float sig = (jammed + interference) * v.ampEnv * v.stealFadeGain * 0.35f;
                 // V009: per-instrument spatial pan (Tomita — Dad's instruments have positions)
-                // Pan table: 0=banjo(L) 1=guitar(C) 2=mandolin(R) 3=dobro(L) 4=fiddle(R)
-                //            5=harmonica(C) 6=djembe(L) 7=kalimba(R) 8=sitar(C) 9=ukulele(R)
-                static constexpr float kDadPan[] = {0.25f, 0.5f, 0.75f, 0.3f, 0.7f, 0.5f, 0.28f, 0.72f, 0.5f, 0.68f};
+                // DSP FIX F08/F26: removed phantom "ukulele" entry (index 9) — the parameter
+                // only declares 9 choices (0=Banjo…8=Sitar), so the table must have exactly 9 entries.
+                // Old table had 10 entries with index 9 unreachable; old clamp was already correct
+                // at [0,8] but the comment was wrong.  Table now matches declared parameter choices.
+                // Pan: 0=banjo(L) 1=guitar(C) 2=mandolin(R) 3=dobro(L) 4=fiddle(R)
+                //      5=harmonica(C) 6=djembe(L) 7=kalimba(R) 8=sitar(C)
+                static constexpr float kDadPan[] = {0.25f, 0.5f, 0.75f, 0.3f, 0.7f, 0.5f, 0.28f, 0.72f, 0.5f};
                 int instIdx = std::clamp((int)pDadInst, 0, 8);
                 float pan = kDadPan[instIdx];
 
@@ -650,8 +745,8 @@ public:
             }
 
             // Master FX: reverb then delay (meadow macro scales both)
-            sL = reverb.process(sL, meadowRev);
-            sR = reverb.process(sR, meadowRev);
+            // DSP FIX F06/F27: use stereo reverb — independent L/R instances
+            reverb.process(sL, sR, meadowRev);
             delay.process(sL, sR, pDelTime, meadowDelFb, pDelTime > 0.051f ? 0.5f : 0.0f);
 
             outL[i] += sL;
@@ -785,7 +880,7 @@ public:
         medTh = apvts.getRawParameterValue("ohm_meddlingThresh");
         commAbs = apvts.getRawParameterValue("ohm_communeAbsorb");
 
-        // Section E: FX + Macros (8)
+        // Section E: FX + Macros (7)  // DSP FIX F17: was "8", actual count is 7
         revMix = apvts.getRawParameterValue("ohm_reverbMix");
         delTime = apvts.getRawParameterValue("ohm_delayTime");
         delFb = apvts.getRawParameterValue("ohm_delayFeedback");
@@ -826,7 +921,7 @@ private:
     OhmDelay delay;
     OhmReverb reverb;
 
-    // Param pointers — all 33 ohm_ params
+    // Param pointers — all 32 ohm_ params  // DSP FIX F17: corrected from 33
     // Section A: The Dad (10)
     std::atomic<float>*dadInst = nullptr, *dadLvl = nullptr, *bright = nullptr;
     std::atomic<float>*bowP = nullptr, *bowS = nullptr, *bodyMat = nullptr;
