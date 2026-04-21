@@ -81,8 +81,8 @@ namespace xoceanus
 //   - Loris/Smith (2003), "Spectral analysis of Rhodes tones"
 //   - Paspaliaris (2015), "Physical modeling of the Rhodes piano"
 //==============================================================================
-#ifndef XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
-#define XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
+#ifndef XOCEANUS_RHODES_TONE_GENERATOR_DEFINED
+#define XOCEANUS_RHODES_TONE_GENERATOR_DEFINED
 struct RhodesToneGenerator
 {
     static constexpr int kNumPartials = 6;
@@ -100,10 +100,19 @@ struct RhodesToneGenerator
     void prepare(float sampleRate) noexcept
     {
         sr = sampleRate;
+        // Precompute per-partial decay coefficients — std::exp is expensive;
+        // these only depend on SR and partial index, not on per-note parameters.
+        // Previously recomputed every sample (6× per voice), now computed once.
         for (int i = 0; i < kNumPartials; ++i)
         {
             phases[i] = 0.0f;
             partialLevels[i] = 0.0f;
+            // Matched-Z one-pole: coeff = 1 - exp(-1/(sr * timeSec))
+            // Higher partials decay faster: time constants 2.0, 1.75, 1.5, 1.25, 1.0, 0.75 s
+            float timeSec = 2.0f - static_cast<float>(i) * 0.25f;
+            partialDecayCoeffs[i] = (sr > 0.0f)
+                ? (1.0f - std::exp(-1.0f / (sr * timeSec))) * 0.1f
+                : 0.0f;
         }
         tineEnvLevel = 0.0f;
         bellEnvLevel = 0.0f;
@@ -113,6 +122,9 @@ struct RhodesToneGenerator
     {
         // The hammer-tine contact creates a bright burst that decays quickly.
         // Higher velocity = more upper partials excited = more "bell."
+        // tineEnvLevel / bellEnvLevel are reserved for future use (e.g. a
+        // separate tine transient oscillator); tineVelocity is read by nothing
+        // currently — kept as state for preset/snapshot compatibility.
         tineEnvLevel = velocity;
         bellEnvLevel = velocity * velocity * bellAmount; // quadratic: bell is nonlinear
         tineVelocity = velocity;
@@ -147,9 +159,8 @@ struct RhodesToneGenerator
 
             out += fastSin(phases[i] * 6.28318530718f) * partialLevels[i];
 
-            // Per-partial decay: higher partials decay faster (tine physics)
-            float decayRate = 1.0f - std::exp(-1.0f / (sr * (2.0f - static_cast<float>(i) * 0.25f)));
-            partialLevels[i] -= partialLevels[i] * decayRate * 0.1f;
+            // Per-partial decay using precomputed coefficient (computed once in prepare()).
+            partialLevels[i] -= partialLevels[i] * partialDecayCoeffs[i];
             partialLevels[i] = flushDenormal(partialLevels[i]);
         }
 
@@ -170,6 +181,7 @@ struct RhodesToneGenerator
     float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float phases[kNumPartials] = {};
     float partialLevels[kNumPartials] = {};
+    float partialDecayCoeffs[kNumPartials] = {}; // precomputed per-partial decay; updated in prepare()
     float tineEnvLevel = 0.0f;
     float bellEnvLevel = 0.0f;
     float tineVelocity = 0.0f;
@@ -188,18 +200,25 @@ struct RhodesToneGenerator
 //==============================================================================
 struct RhodesPickupModel
 {
+    /// Call when sample rate is known. Converts the nominal cutoff frequencies
+    /// to proper one-pole coefficients — previously the raw coefficients were
+    /// SR-independent, causing the pickup warmth to vary at 96kHz vs 44.1kHz.
+    void prepare(float sampleRate) noexcept
+    {
+        sr = sampleRate;
+        // Warm (base) pickup: ~400 Hz LP. Bright (tip) pickup: ~8 kHz LP.
+        // coeff = 1 - exp(-2π*fc/sr), matched-Z one-pole LP.
+        constexpr float pi2 = 6.28318530718f;
+        warmCoeff  = 1.0f - std::exp(-pi2 * 400.0f  / std::max(sampleRate, 1.0f));
+        brightCoeff = 1.0f - std::exp(-pi2 * 8000.0f / std::max(sampleRate, 1.0f));
+    }
+
     float process(float tineSignal, float pickupPosition) noexcept
     {
-        // Pickup position acts as a comb filter — models the physical
-        // relationship between tine vibration node and pickup placement.
-        // This is simplified: full model would use per-partial gain based
-        // on mode shape at pickup position.
-        float brightness = 0.3f + pickupPosition * 0.7f;
-
-        // One-pole LP to simulate pickup proximity effect
-        // More warmth when pickup is near base (low position value)
-        float cutoffCoeff = 0.1f + brightness * 0.85f;
-        pickupState += cutoffCoeff * (tineSignal - pickupState);
+        // Pickup position selects between warm (base) and bright (tip) one-pole LP.
+        // Interpolate coefficients so the pole tracks the physical proximity effect.
+        float coeff = warmCoeff + pickupPosition * (brightCoeff - warmCoeff);
+        pickupState += coeff * (tineSignal - pickupState);
         pickupState = flushDenormal(pickupState);
 
         return pickupState;
@@ -208,6 +227,9 @@ struct RhodesPickupModel
     void reset() noexcept { pickupState = 0.0f; }
 
     float pickupState = 0.0f;
+    float sr = 44100.0f;
+    float warmCoeff   = 0.057f; // default for 44.1kHz, 400 Hz LP — updated in prepare()
+    float brightCoeff = 0.701f; // default for 44.1kHz, 8 kHz LP — updated in prepare()
 };
 
 //==============================================================================
@@ -260,7 +282,7 @@ struct RhodesAmpStage
     float dcBlock = 0.0f;
     float dcCoeff = 0.000713f; // default for 44100 Hz (2*pi*5/44100); updated in prepare()
 };
-#endif // XOLOKUN_RHODES_TONE_GENERATOR_DEFINED
+#endif // XOCEANUS_RHODES_TONE_GENERATOR_DEFINED
 
 //==============================================================================
 // OkeanosVoice
@@ -325,6 +347,7 @@ public:
         {
             voices[i].reset();
             voices[i].tine.prepare(srf);
+            voices[i].pickup.prepare(srf); // SR-derived one-pole LP coefficients
             voices[i].amp.prepare(srf); // DC blocker coefficient derived from sampleRate
             voices[i].ampEnv.prepare(srf);
             voices[i].filterEnv.prepare(srf);
@@ -463,6 +486,8 @@ public:
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
         const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
+        // Hoist LFO + tremolo rate configuration out of per-sample loop.
+        // setRate/setShape calls compute phaseInc once per block — not per sample.
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -471,10 +496,22 @@ public:
             voice.lfo1.setShape(lfo1Shape);
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
+            voice.tremoloLFO.setRate(smoothTremRate.get(), srf); // set once per block; was per-sample
         }
 
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
+        // If truly stereo, both channels are written below. If mono (outR==null),
+        // channel 0 is written; any additional channels must be cleared to avoid
+        // stale data leaking. The host normally provides a matching channel count,
+        // so this guard handles any mismatch defensively.
+        for (int ch = (outR ? 2 : 1); ch < buffer.getNumChannels(); ++ch)
+            buffer.clear(ch, 0, numSamples);
+
+        // setMode is constant (always LowPass) — set once per block, not per sample.
+        for (auto& voice : voices)
+            if (voice.active)
+                voice.svf.setMode(CytomicSVF::Mode::LowPass);
 
         // Hoist block-constant ADSR update out of per-sample loop (P15 fix).
         // setADSR calls std::exp — running once per block is correct and faster.
@@ -493,7 +530,7 @@ public:
             float warmthNow = smoothWarmth.process();
             float bellNow = smoothBell.process();
             float brightNow = smoothBrightness.process();
-            float tremRateNow = smoothTremRate.process();
+            smoothTremRate.process(); // must drain per-sample for correct tracking; rate applied per-block above
             float tremDepthNow = smoothTremDepth.process();
             float migrationNow = smoothMigration.process();
 
@@ -507,11 +544,13 @@ public:
 
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
 
                 // LFO1 -> pitch vibrato (subtle, +-50 cents at full depth)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
-                freq *= PitchBendUtil::semitonesToFreqRatio(lfo1Val * 0.5f);
+
+                // Merge bend + coupling pitch mod + LFO vibrato into a single
+                // fastPow2 call — avoids two semitonesToFreqRatio() per voice per sample.
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod + lfo1Val * 0.5f);
 
                 // LFO2 -> tremolo depth modulation
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
@@ -525,18 +564,20 @@ public:
                 // Amp stage — warmth and velocity-dependent bark
                 float ampOut = voice.amp.process(pickupOut, warmthNow, voice.velocity);
 
-                // Tremolo (Rhodes' optional built-in stereo vibrato)
-                voice.tremoloLFO.setRate(tremRateNow, srf);
+                // Tremolo (Rhodes' optional built-in stereo vibrato).
+                // setRate is called once per block in the LFO config section above.
                 float tremVal = voice.tremoloLFO.process();
                 float tremGain = 1.0f - tremDepthNow * 0.5f * (1.0f + tremVal);
 
                 // Migration modulation: when coupled, absorb spectral characteristics
-                // from other engines. This blends the tine character subtly.
+                // from other engines. Adds 2nd harmonic (even harmonic) texture.
+                // Previous formula: fastSin(freq*2/sr * 2π * phases[0]) was dimensionally
+                // broken — the argument collapsed to a scaled phase offset, not a new partial.
+                // Fixed: use the already-accumulated 2nd partial phase for correct tracking.
                 if (migrationNow > 0.01f)
                 {
-                    // Migration adds subtle harmonic complexity (even harmonics)
                     float migrationHarmonics =
-                        fastSin(freq * 2.0f / srf * 6.28318530718f * voice.tine.phases[0]) * migrationNow * 0.15f;
+                        fastSin(voice.tine.phases[1] * 6.28318530718f) * migrationNow * 0.15f;
                     ampOut += migrationHarmonics;
                 }
 
@@ -553,8 +594,7 @@ public:
                 // D001: velocity shapes filter brightness
                 float velBright = voice.velocity * 4000.0f;
                 float cutoff = std::clamp(brightNow + fEnvMod + velBright + lfo2Val * 2000.0f, 200.0f, 20000.0f);
-                voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                voice.svf.setCoefficients(cutoff, 0.15f, srf);
+                voice.svf.setCoefficients(cutoff, 0.15f, srf); // mode set once per block above
                 float filtered = voice.svf.processSample(ampOut);
 
                 float output = filtered * ampLevel * tremGain;
@@ -588,7 +628,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = midiToFreq(note); // uses fastPow2 — consistent with fleet pattern
 
         v.active = true;
         v.currentNote = note;
@@ -596,25 +636,23 @@ public:
         v.startTime = ++voiceCounter;
         v.glide.snapTo(freq);
 
-        // Tine trigger with velocity-dependent bell
+        // Tine trigger with velocity-dependent bell.
+        // prepare() is NOT called here — SR is set once in OkeanosEngine::prepare().
+        // Calling prepare() on every noteOn re-runs 6× std::exp needlessly.
         float bell = paramBell ? paramBell->load() : 0.5f;
-        v.tine.prepare(srf);
         v.tine.trigger(vel, bell);
         v.pickup.reset();
-        v.amp.prepare(srf); // ensure DC blocker coefficient is current for this sample rate
-        v.amp.reset();
+        v.amp.reset(); // prepare() already ran in OkeanosEngine::prepare(); just reset state
 
         // Amp envelope — Rhodes has fast attack, velocity-sensitive decay
         float attack = paramAttack ? paramAttack->load() : 0.005f;
         float decay = paramDecay ? paramDecay->load() : 0.8f;
         float sustain = paramSustain ? paramSustain->load() : 0.6f;
         float release = paramRelease ? paramRelease->load() : 0.5f;
-        v.ampEnv.prepare(srf);
-        v.ampEnv.setADSR(attack, decay, sustain, release);
+        v.ampEnv.setADSR(attack, decay, sustain, release); // prepare() already ran in engine prepare()
         v.ampEnv.triggerHard();
 
-        // Filter envelope — velocity-scaled
-        v.filterEnv.prepare(srf);
+        // Filter envelope — velocity-scaled (hardcoded shape; sustain=0 → plucked)
         v.filterEnv.setADSR(0.001f, 0.3f + (1.0f - vel) * 0.5f, 0.0f, 0.3f);
         v.filterEnv.triggerHard();
 
