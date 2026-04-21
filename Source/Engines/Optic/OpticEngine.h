@@ -131,15 +131,19 @@ public:
             float centerFrequencyHz = std::sqrt(lowEdgeHz * highEdgeHz);
 
             // Q = center / bandwidth. Guard against division by zero for
-            // extremely narrow bands. The 0.5x scaling and [0.1, 0.9] clamp
-            // keep Q moderate: too high would ring, too low would bleed between bands.
+            // extremely narrow bands. Clamp to [0.5, 4.0] — values below 0.5
+            // cause severe inter-band bleed (the sub-bass band at Q=0.33 previously
+            // behaved as a lowpass, not a bandpass). Values above 4.0 cause ringing
+            // artifacts on transients. The prior [0.1, 0.9] clamp was too narrow:
+            // Q=0.9 still bleeds significantly into adjacent bands, degrading centroid
+            // accuracy and making the bass/mid/high groupings unreliable.
             float bandwidth = highEdgeHz - lowEdgeHz;
             if (bandwidth < 1.0f)
                 bandwidth = 1.0f;
             float qualityFactor = centerFrequencyHz / bandwidth;
 
             bandpassFilters[bandIndex].setMode(CytomicSVF::Mode::BandPass);
-            bandpassFilters[bandIndex].setCoefficients(centerFrequencyHz, clamp(qualityFactor * 0.5f, 0.1f, 0.9f),
+            bandpassFilters[bandIndex].setCoefficients(centerFrequencyHz, clamp(qualityFactor, 0.5f, 4.0f),
                                                        static_cast<float>(cachedSampleRate));
 
             // Envelope follower: a lowpass filter at 30 Hz smooths the rectified
@@ -210,8 +214,12 @@ public:
         // ---- Spectral flux ----
         // The frame-to-frame change in total energy. Positive spikes indicate
         // transient onsets (attacks). Negative values indicate decay.
+        // Clamp to [-1, 1] to prevent unbounded values from reaching the mod bus:
+        // totalEnergy can jump discontinuously on loud transients, producing flux
+        // spikes that would alias downstream coupling consumers (e.g. a loud
+        // sustained signal after silence can produce flux >> 1.0).
         // Flush denormals for the same CPU protection reason as above.
-        spectralFlux = flushDenormal(totalEnergy - previousTotalEnergy);
+        spectralFlux = flushDenormal(clamp(totalEnergy - previousTotalEnergy, -1.0f, 1.0f));
     }
 
     //--------------------------------------------------------------------------
@@ -275,6 +283,10 @@ public:
         swingAccumulator = 0.0f;
         driftOscillatorPhase = 0.0;
         subdivisionAccumulator = 0.0;
+        // Re-seed for reproducible patterns after reset (preset change / transport reset).
+        // Without this, the PRNG continues mid-sequence and accent patterns differ
+        // between two identical patches depending on history — breaking reproducibility.
+        noiseGen.seed(42);
     }
 
     struct Params
@@ -324,7 +336,7 @@ public:
                                 * params.evolve;
         effectiveRate *= (1.0f + driftModulation);
 
-        effectiveRate = clamp(effectiveRate, 0.1f, 30.0f); // Safety bounds
+        effectiveRate = clamp(effectiveRate, 0.1f, 30.0f); // Safety bounds (30 Hz = well above 20 Hz MIDI max)
 
         //----------------------------------------------------------------------
         // Phase accumulation — the pulse clock
@@ -334,15 +346,17 @@ public:
         phase += phaseIncrement;
 
         // Map subdivision parameter to discrete rate multipliers.
-        // The thresholds (0.15, 0.35, 0.6) divide the [0, 1] knob range
-        // into four zones: whole note, quarter, 8th, 16th.
+        // Equal-zone thresholds (0.25, 0.5, 0.75) divide the [0, 1] knob range
+        // into four equal zones of 25% each: whole, quarter, 8th, 16th.
+        // Prior thresholds (0.15, 0.35, 0.6) gave 16th-notes 40% of knob travel
+        // and whole-notes only 15% — counter-intuitive for performance use.
         float subdivisionMultiplier = 1.0f;
-        if (params.subdivision > 0.6f)
-            subdivisionMultiplier = 4.0f; // 16th notes
-        else if (params.subdivision > 0.35f)
-            subdivisionMultiplier = 2.0f; // 8th notes
-        else if (params.subdivision > 0.15f)
-            subdivisionMultiplier = 1.0f; // Quarter notes
+        if (params.subdivision > 0.75f)
+            subdivisionMultiplier = 4.0f; // 16th notes  (75-100%)
+        else if (params.subdivision > 0.5f)
+            subdivisionMultiplier = 2.0f; // 8th notes   (50-75%)
+        else if (params.subdivision > 0.25f)
+            subdivisionMultiplier = 1.0f; // Quarter notes (25-50%)
 
         subdivisionAccumulator += phaseIncrement * subdivisionMultiplier;
 
@@ -404,7 +418,7 @@ private:
     double driftOscillatorPhase = 0.0;   // Slow organic drift LFO phase [0, 1)
     double subdivisionAccumulator = 0.0; // Subdivision phase accumulator
     float pulseLevel = 0.0f;             // Current pulse amplitude [0, 1]
-    float swingAccumulator = 0.0f;       // Unused — kept for binary compat
+    float swingAccumulator = 0.0f; // Vestigial — never read. Retained for ABI stability.
     int swingBeatCounter = 0;            // Counts subdivisions for swing alternation
     OpticNoiseGen noiseGen;              // PRNG for stochastic accent variation
 
@@ -572,13 +586,12 @@ public:
                                                           static_cast<float>(cachedSampleRate));
         }
 
-        // Input smoother: 10 Hz lowpass on the coupling input.
-        // Even lower than the mod smoothing because the coupling input is
-        // an averaged RMS-like signal that shouldn't have fast transients.
-        inputSmoothingFilter.setMode(CytomicSVF::Mode::LowPass);
-        inputSmoothingFilter.setCoefficients(10.0f, // 10 Hz input smoothing cutoff
-                                             0.0f,  // No resonance
-                                             static_cast<float>(cachedSampleRate));
+        // Note: the inputSmoothingFilter (10 Hz LP on coupling input) has been removed.
+        // couplingInputLevel is a block-averaged scalar — applying a 10 Hz SVF to it
+        // per sample only smooths a DC value that already changes at block rate, with
+        // no audible or spectral benefit. The per-sample sidechain path (buffer reads)
+        // feeds real audio into the band analyzer directly, which does its own
+        // envelope-following at 30 Hz via envelopeFollowers[].
     }
 
     void releaseResources() override
@@ -593,10 +606,10 @@ public:
         autoPulse.reset();
         for (int i = 0; i < OpticModOutputs::kNumModChannels; ++i)
             modulationSmoothingFilters[i].reset();
-        inputSmoothingFilter.reset();
 
         couplingInputLevel = 0.0f;
         compositeEnvelopeOutput = 0.0f;
+        transientGateOpen = false;
         std::fill(outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
         std::fill(outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
     }
@@ -644,10 +657,35 @@ public:
         // ---- D006: Apply MIDI expression to effective parameter values ----
         // Aftertouch: boosts mod depth by up to +0.3 and pulse rate by up to +4 Hz
         // (pressing harder makes the comb jelly pulse brighter and faster).
+        // The pulse rate clamp is [0.5, 20.0] here (not the param's 16.0 max) to
+        // allow aftertouch to push the rate above the knob ceiling — a performance
+        // feature intentionally exceeding the static range.
         // Mod wheel: boosts reactivity by up to +0.3 (wheel up = more sensitive analysis).
         const float effectiveModDepth = clamp(modulationDepth + midiAftertouchAmount * 0.3f, 0.0f, 1.0f);
-        const float effectivePulseRate = clamp(pulseRate + midiAftertouchAmount * 4.0f, 0.5f, 16.0f);
+        const float effectivePulseRate = clamp(pulseRate + midiAftertouchAmount * 4.0f, 0.5f, 20.0f);
         const float effectiveReactivity = clamp(reactivity + midiModWheelAmount * 0.3f, 0.0f, 1.0f);
+
+        // ---- Pre-loop: build AutoPulse parameter struct once per block ----
+        // The spectral feedback fields (visualCentroid, visualEnergy, visualFlux)
+        // are driven by 30 Hz envelope followers — they change at most ~33ms per
+        // step, far slower than the block rate. Re-reading them per-sample provides
+        // no meaningful accuracy benefit and rebuilds the Params struct N times.
+        // The struct is populated from the analyzer's state from the previous block;
+        // this is one block of latency (typically 5-12ms) which is perceptually
+        // inaudible for spectral modulation at these time scales.
+        OpticAutoPulse::Params pulseParams;
+        pulseParams.rate        = effectivePulseRate;
+        pulseParams.shape       = pulseShape;
+        pulseParams.swing       = pulseSwing;
+        pulseParams.evolve      = pulseEvolve;
+        pulseParams.subdivision = pulseSubdivision;
+        pulseParams.accent      = pulseAccent;
+        pulseParams.visualCentroid = analyzer.getCentroid();
+        // Scale total energy into [0, 1] range. The 5x multiplier was
+        // tuned empirically: typical program material produces totalEnergy
+        // around 0.05-0.2, so 5x maps this to usable 0.25-1.0 modulation range.
+        pulseParams.visualEnergy = clamp(analyzer.getTotalEnergy() * 5.0f, 0.0f, 1.0f);
+        pulseParams.visualFlux   = analyzer.getFlux();
 
         // ---- Per-sample processing loop ----
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
@@ -667,7 +705,6 @@ public:
             }
 
             inputSample *= inputGain * effectiveReactivity;
-            inputSample = inputSmoothingFilter.processSample(inputSample);
 
             //------------------------------------------------------------------
             // Spectrum analysis — the comb jelly senses the water
@@ -681,24 +718,7 @@ public:
 
             float pulseOutput = 0.0f;
             if (autoPulseEnabled)
-            {
-                OpticAutoPulse::Params pulseParams;
-                pulseParams.rate = effectivePulseRate;
-                pulseParams.shape = pulseShape;
-                pulseParams.swing = pulseSwing;
-                pulseParams.evolve = pulseEvolve;
-                pulseParams.subdivision = pulseSubdivision;
-                pulseParams.accent = pulseAccent;
-                pulseParams.visualCentroid = analyzer.getCentroid();
-
-                // Scale total energy into [0, 1] range. The 5x multiplier was
-                // tuned empirically: typical program material produces totalEnergy
-                // around 0.05-0.2, so 5x maps this to usable 0.25-1.0 modulation range.
-                pulseParams.visualEnergy = clamp(analyzer.getTotalEnergy() * 5.0f, 0.0f, 1.0f);
-                pulseParams.visualFlux = analyzer.getFlux();
-
                 pulseOutput = autoPulse.process(pulseParams);
-            }
 
             //------------------------------------------------------------------
             // Compute modulation outputs — 8 channels of spectral light
@@ -720,10 +740,13 @@ public:
             float flux = analyzer.getFlux();
             float energy = clamp(analyzer.getTotalEnergy() * 5.0f, 0.0f, 1.0f);
 
-            // Transient detection: binary flag, fires when spectral flux exceeds
-            // threshold. 0.05 was tuned to catch kick/snare onsets without
-            // false-triggering on sustained pad movement.
-            float transientDetect = (flux > 0.05f) ? 1.0f : 0.0f;
+            // Transient detection: Schmitt trigger with hysteresis prevents chattering
+            // when flux hovers near threshold. Signals near 0.05 previously toggled
+            // 0→1→0 every sample, producing false triggers on sustained sounds.
+            // Two-threshold design: turn ON above 0.07 (onset), stay ON until
+            // below 0.025 (silence), prevents single-sample false triggers.
+            transientGateOpen = transientGateOpen ? (flux > 0.025f) : (flux > 0.07f);
+            float transientDetect = transientGateOpen ? 1.0f : 0.0f;
 
             // ---- Smooth modulation signals ----
             // Each mod channel gets its own lowpass to prevent zipper noise.
@@ -741,21 +764,6 @@ public:
             highEnergy = clamp(highEnergy, 0.0f, 1.0f);
             centroid = clamp(centroid, 0.0f, 1.0f);
             energy = clamp(energy, 0.0f, 1.0f);
-
-            //------------------------------------------------------------------
-            // Store to atomic mod bus — the light pulses outward
-            //------------------------------------------------------------------
-            // The UI thread reads these for the CRT visualizer.
-            // The coupling matrix reads these for cross-engine modulation.
-
-            modOutputs.setPulse(pulseOutput);
-            modOutputs.setBass(bassEnergy);
-            modOutputs.setMid(midEnergy);
-            modOutputs.setHigh(highEnergy);
-            modOutputs.setCentroid(centroid);
-            modOutputs.setFlux(flux);
-            modOutputs.setEnergy(energy);
-            modOutputs.setTransient(transientDetect);
 
             //------------------------------------------------------------------
             // Composite coupling output — blended modulation for simple routing
@@ -776,7 +784,34 @@ public:
                 outputCacheRight[bufferIndex] = couplingOutput;
             }
             compositeEnvelopeOutput = couplingOutput;
+
+            // Track last-sample values for end-of-block atomic bus write (see below).
+            lastPulseOutput   = pulseOutput;
+            lastBassEnergy    = bassEnergy;
+            lastMidEnergy     = midEnergy;
+            lastHighEnergy    = highEnergy;
+            lastCentroid      = centroid;
+            lastFlux          = flux;
+            lastEnergy        = energy;
+            lastTransient     = transientDetect;
         }
+
+        //----------------------------------------------------------------------
+        // Store to atomic mod bus — once per block, not per sample.
+        // The UI visualizer reads at ~60 fps; the coupling matrix reads at block
+        // rate. Writing 8 relaxed atomics 44,100 times/sec (352 K atomic ops/sec)
+        // provides no accuracy benefit over once-per-block (typically 344 ops/sec
+        // at 512 samples). Moving this outside the loop saves ~352 K atomic
+        // store operations per second of audio.
+        //----------------------------------------------------------------------
+        modOutputs.setPulse(lastPulseOutput);
+        modOutputs.setBass(lastBassEnergy);
+        modOutputs.setMid(lastMidEnergy);
+        modOutputs.setHigh(lastHighEnergy);
+        modOutputs.setCentroid(lastCentroid);
+        modOutputs.setFlux(lastFlux);
+        modOutputs.setEnergy(lastEnergy);
+        modOutputs.setTransient(lastTransient);
 
         // OPTIC is a modulation engine — it outputs no audio.
         // Clear the buffer so downstream processing sees silence.
@@ -793,7 +828,7 @@ public:
 
     float getSampleForCoupling(int channel, int sampleIndex) const override
     {
-        if (sampleIndex < 0)
+        if (channel < 0 || sampleIndex < 0)
             return 0.0f;
         auto bufferIndex = static_cast<size_t>(sampleIndex);
 
@@ -805,9 +840,13 @@ public:
         if (channel == 1 && bufferIndex < outputCacheRight.size())
             return outputCacheRight[bufferIndex];
 
-        // Channel 2: Composite envelope — for AmpToFilter, AmpToPitch on other engines
-        if (channel == 2)
-            return compositeEnvelopeOutput;
+        // Channel 2: Composite envelope — sample-accurate alias of channel 0.
+        // Previously returned compositeEnvelopeOutput (last block's final sample),
+        // which was one block stale and not sample-indexed. Now mirrors outputCacheLeft
+        // so AmpToFilter/AmpToPitch consumers get the same sample-accurate value
+        // as channel 0, consistent with the coupling contract.
+        if (channel == 2 && bufferIndex < outputCacheLeft.size())
+            return outputCacheLeft[bufferIndex];
 
         // Channels 3-10: Individual mod outputs for extended coupling.
         // Maps to the 8 OpticModOutputs channels (pulse, bass, mid, high,
@@ -858,9 +897,22 @@ public:
             couplingInputLevel += amount * 0.3f;
             break;
 
+        case CouplingType::KnotTopology:
+            // KnotTopology (bidirectional) — treat as audio analysis input so
+            // OPTIC participates in KNOT entanglement by sensing the partner's energy.
+            // Amount encodes linking number (1-5 range); scale down to [0, 1].
+            couplingInputLevel += clamp(amount * 0.2f, 0.0f, 1.0f);
+            break;
+
         default:
             break;
         }
+
+        // Cap accumulated input to prevent numerical edge cases when many coupling
+        // sources feed OPTIC simultaneously (e.g. 4 engines × full level = 4.0+).
+        // The inputGain and reactivity parameters provide user control over sensitivity;
+        // clamping the accumulator here prevents extreme values from reaching the SVF.
+        couplingInputLevel = clamp(couplingInputLevel, 0.0f, 4.0f);
     }
 
     //==========================================================================
@@ -991,6 +1043,11 @@ public:
     // no audio output. Zero voices reflects its pure-analysis identity.
     int getMaxVoices() const override { return 0; }
 
+    // OPTIC is an analysis engine: it receives audio but generates no audio output.
+    // Returning true allows the framework to apply analysis-engine optimizations
+    // (e.g., skip voice allocation, skip the silence-gate bypass check).
+    bool isAnalysisEngine() const override { return true; }
+
     //==========================================================================
     //  P U B L I C   A C C E S S  —  U I   V I S U A L I Z E R
     //==========================================================================
@@ -1018,11 +1075,29 @@ private:
     OpticAutoPulse autoPulse;                                                // Self-evolving rhythm generator
     OpticModOutputs modOutputs;                                              // Lock-free mod signal bus (8 channels)
     CytomicSVF modulationSmoothingFilters[OpticModOutputs::kNumModChannels]; // Anti-zipper lowpass per mod channel
-    CytomicSVF inputSmoothingFilter;                                         // Coupling input smoother
+    // inputSmoothingFilter removed: smoothing a block-averaged DC coupling scalar
+    // per-sample provides no audible or spectral benefit. Band analyzer's own
+    // 30 Hz envelope followers handle the energy-smoothing responsibility.
 
     // ---- Coupling state ----
     float couplingInputLevel = 0.0f;      // Accumulated input from other engines (reset per block)
     float compositeEnvelopeOutput = 0.0f; // Last composite mod value (for envelope coupling reads)
+
+    // ---- Transient detector Schmitt trigger state ----
+    // Two-threshold hysteresis prevents chattering when flux hovers near threshold.
+    bool transientGateOpen = false;
+
+    // ---- Last-sample mod values for end-of-block atomic bus write ----
+    // Mod bus stores happen once per block (not per sample) for performance.
+    // These hold the final sample's computed values until the write happens.
+    float lastPulseOutput = 0.0f;
+    float lastBassEnergy  = 0.0f;
+    float lastMidEnergy   = 0.0f;
+    float lastHighEnergy  = 0.0f;
+    float lastCentroid    = 0.0f;
+    float lastFlux        = 0.0f;
+    float lastEnergy      = 0.0f;
+    float lastTransient   = 0.0f;
 
     // ---- D006: MIDI expression state ----
     // Aftertouch boosts pulse intensity/rate; mod wheel boosts analysis reactivity.
