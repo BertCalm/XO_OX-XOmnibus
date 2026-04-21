@@ -296,26 +296,26 @@ struct AttractorState
     {
         float dx1, dy1, dz1, dx2, dy2, dz2, dx3, dy3, dz3, dx4, dy4, dz4;
 
-        // k1: derivatives at current state
+        // k1: derivatives at current state.
+        // External injection models a position-independent body force, so it
+        // is applied only to k1. Propagating the same constant to k2/k3/k4
+        // would be equivalent — for a truly constant force RK4 reduces to
+        // Euler for the forced component — but for a perturbation that should
+        // decay rapidly, k1-only is the correct minimal-disturbance model and
+        // avoids over-driving the trajectory on each sub-step.
         derivatives(x, y, z, chaosIndex, dx1, dy1, dz1);
         dx1 += injectionDx;
         dy1 += injectionDy;
 
-        // k2: derivatives at midpoint using k1
+        // k2: derivatives at midpoint using k1 (no repeated injection)
         float halfStep = stepSize * 0.5f;
         derivatives(x + halfStep * dx1, y + halfStep * dy1, z + halfStep * dz1, chaosIndex, dx2, dy2, dz2);
-        dx2 += injectionDx;
-        dy2 += injectionDy;
 
         // k3: derivatives at midpoint using k2
         derivatives(x + halfStep * dx2, y + halfStep * dy2, z + halfStep * dz2, chaosIndex, dx3, dy3, dz3);
-        dx3 += injectionDx;
-        dy3 += injectionDy;
 
         // k4: derivatives at endpoint using k3
         derivatives(x + stepSize * dx3, y + stepSize * dy3, z + stepSize * dz3, chaosIndex, dx4, dy4, dz4);
-        dx4 += injectionDx;
-        dy4 += injectionDy;
 
         // Weighted combination: (k1 + 2*k2 + 2*k3 + k4) / 6
         float weightedStep = stepSize / 6.0f;
@@ -323,9 +323,12 @@ struct AttractorState
         y += weightedStep * (dy1 + 2.0f * dy2 + 2.0f * dy3 + dy4);
         z += weightedStep * (dz1 + 2.0f * dz2 + 2.0f * dz3 + dz4);
 
-        // Store velocities for coupling output (other engines can read dx/dt, dy/dt)
-        lastDxDt = dx1;
-        lastDyDt = dy1;
+        // Store RK4-weighted average velocity for coupling output.
+        // Using the weighted average gives a more accurate representation of
+        // the trajectory velocity than k1 alone (which is only the start-of-step
+        // derivative and omits the curvature correction from k2/k3/k4).
+        lastDxDt = (dx1 + 2.0f * dx2 + 2.0f * dx3 + dx4) / 6.0f;
+        lastDyDt = (dy1 + 2.0f * dy2 + 2.0f * dy3 + dy4) / 6.0f;
 
         // Flush denormals: chaotic systems can produce extremely small values
         // near fixed points or during transient decay. Without flushing, these
@@ -475,6 +478,10 @@ struct HalfBandFilter
         output += (delayLine[0] + delayLine[10]) * coefficients[0]; // Outer pair
         output += (delayLine[2] + delayLine[8]) * coefficients[2];  // Middle pair
         output += (delayLine[4] + delayLine[6]) * coefficients[4];  // Inner pair
+
+        // Flush denormals: during silence the delay line can accumulate
+        // subnormal values in the feedback path, spiking CPU 10-100x.
+        output = flushDenormal(output);
         return output;
     }
 };
@@ -487,17 +494,17 @@ struct HalfBandFilter
 // sustained DC component that wastes headroom and can damage monitors.
 //
 // Transfer function: H(z) = (1 - z^-1) / (1 - R * z^-1)
-// where R = 1 - 2*pi*fc/fs determines the -3dB cutoff frequency.
+// where R = exp(-2*pi*fc/fs) — matched-Z coefficient (fleet standard).
 //==============================================================================
 struct OuroborosDCBlocker
 {
     float previousInput = 0.0f;
     float previousOutput = 0.0f;
-    float feedbackCoefficient = 0.9993f; // Default for 44100 Hz, fc ~= 5 Hz
+    float feedbackCoefficient = 0.9993f; // exp(-2π*5/44100) ≈ 0.99929; overwritten by prepare()
 
     void prepare(double sampleRate) noexcept
     {
-        // R = 1 - (2 * pi * cutoffHz / sampleRate)
+        // R = exp(-2*pi*fc/sr)  — matched-Z (bilinear) coefficient, fleet standard.
         // At 5 Hz cutoff: passes all audible content, blocks DC and sub-infrasonic drift.
         // Floor at 0.9 prevents instability if sampleRate is unexpectedly low.
         // Guard: fall back to 44100 Hz if sampleRate is zero or negative (fixes #613).
@@ -505,7 +512,7 @@ struct OuroborosDCBlocker
             sampleRate = 44100.0;
         constexpr double twoPi = 6.283185307179586;
         constexpr double cutoffHz = 5.0;
-        feedbackCoefficient = static_cast<float>(1.0 - twoPi * cutoffHz / sampleRate);
+        feedbackCoefficient = static_cast<float>(std::exp(-twoPi * cutoffHz / sampleRate));
         if (feedbackCoefficient < 0.9f)
             feedbackCoefficient = 0.9f;
     }
@@ -738,6 +745,12 @@ struct OuroborosVoice
         float frequency = midiToFreq(note);
         leashPhasorIncrement = static_cast<double>(frequency) / sampleRate;
 
+        // Re-arm velocity injection boost — legato notes still deserve a percussive
+        // onset proportional to the new velocity. Attractor state is preserved so
+        // the timbre continues unbroken, but the kick energy is refreshed.
+        injectionBoost = vel * 0.5f;
+        injectionBoostDecayRate = injectionBoost / (0.050f * static_cast<float>(sampleRate));
+
         // Envelope continues from current level (no retrigger)
         if (envelopeStage == EnvelopeStage::Release || envelopeStage == EnvelopeStage::Off)
             envelopeStage = EnvelopeStage::Attack;
@@ -902,8 +915,11 @@ public:
         EngineProfiler::ScopedMeasurement measurement(profiler);
 
         //----------------------------------------------------------------------
-        // ParamSnapshot: read all parameters once per block (zero per-sample cost)
+        // ParamSnapshot: read all parameters once per block (zero per-sample cost).
+        // Cache currentSampleRate as a local double to avoid repeated atomic
+        // loads inside the per-sample and per-voice inner loops.
         //----------------------------------------------------------------------
+        const double sr = currentSampleRate.load(std::memory_order_acquire);
         const int topologySelection = paramTopology ? static_cast<int>(paramTopology->load()) : 0;
         const float orbitRate = paramRate ? paramRate->load() : 130.0f;
         const float chaosIndex = paramChaosIndex ? paramChaosIndex->load() : 0.3f;
@@ -932,7 +948,7 @@ public:
         // D005: update breathing LFO rate from ouro_breathRate parameter (once per block),
         // then tick it to get the current modulation value.
         const float breathRateHz = paramBreathRate ? paramBreathRate->load() : 0.08f;
-        breathingLFO.setRate(breathRateHz, static_cast<float>(currentSampleRate.load(std::memory_order_acquire)));
+        breathingLFO.setRate(breathRateHz, static_cast<float>(sr));
         const float breathLFO = breathingLFO.process(); // [-1, +1] sine at user-controlled rate
 
         // Apply macros as additive offsets to core params before use:
@@ -1069,6 +1085,13 @@ public:
         baseDampAlpha = clamp(baseDampAlpha, 0.05f, 1.0f);
 
         //----------------------------------------------------------------------
+        // Cache write pointers once per block (avoids JUCE assertion overhead
+        // and repeated pointer computation inside the hot per-sample loop).
+        //----------------------------------------------------------------------
+        float* outL = (buffer.getNumChannels() > 0) ? buffer.getWritePointer(0) : nullptr;
+        float* outR = (buffer.getNumChannels() > 1) ? buffer.getWritePointer(1) : nullptr;
+
+        //----------------------------------------------------------------------
         // Per-sample rendering loop
         //----------------------------------------------------------------------
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
@@ -1101,7 +1124,7 @@ public:
                     // Begin 50ms crossfade (smooth topology transition)
                     voice.crossfading = true;
                     voice.crossfadeGain = 0.0f;
-                    int crossfadeSamples = std::max(1, static_cast<int>(currentSampleRate.load(std::memory_order_acquire) * 0.050f));
+                    int crossfadeSamples = std::max(1, static_cast<int>(sr * 0.050));
                     voice.crossfadeStep = 1.0f / static_cast<float>(crossfadeSamples);
                 }
 
@@ -1120,22 +1143,23 @@ public:
                 //--------------------------------------------------------------
                 // Coupling injection (external audio perturbs the attractor)
                 //--------------------------------------------------------------
-                // effectiveInjectionRaw includes MOVEMENT (+0.15) and COUPLING (+0.2) macro offsets
+                // effectiveInjectionRaw includes MOVEMENT (+0.15) and COUPLING (+0.2) macro offsets.
+                //
+                // Velocity injection boost always drains, even when coupling audio is
+                // disconnected. Without this the boost freezes at a non-zero value:
+                // if coupling disconnects mid-decay, the stale boost fires unexpectedly
+                // on reconnect (zombie-boost bug).
                 float injectionForceX = 0.0f, injectionForceY = 0.0f;
-                if (couplingAudioActive && effectiveInjectionRaw > 0.001f)
+                float injectionScale = effectiveInjectionRaw;
+                if (voice.injectionBoost > 0.0f)
                 {
-                    float injectionScale = effectiveInjectionRaw;
-
-                    // Velocity injection boost: 50ms transient that decays
-                    // from note-on, adding percussive onset energy
-                    if (voice.injectionBoost > 0.0f)
-                    {
-                        injectionScale += voice.injectionBoost;
-                        voice.injectionBoost -= voice.injectionBoostDecayRate;
-                        if (voice.injectionBoost < 0.0f)
-                            voice.injectionBoost = 0.0f;
-                    }
-
+                    injectionScale += voice.injectionBoost;
+                    voice.injectionBoost -= voice.injectionBoostDecayRate;
+                    if (voice.injectionBoost < 0.0f)
+                        voice.injectionBoost = 0.0f;
+                }
+                if (couplingAudioActive && injectionScale > 0.001f)
+                {
                     if (sampleIndex < couplingBufferSize)
                     {
                         injectionForceX = couplingAudioBufferLeft[sampleIndex] * injectionScale;
@@ -1265,16 +1289,22 @@ public:
                     //----------------------------------------------------------
                     // TOPOLOGY CROSSFADE: blend between old (A) and new (B)
                     // topology states during a 50ms transition.
+                    // Applied regardless of leash amount: even in full hard-synced
+                    // mode (leash=1) the topology switch must be a smooth 50ms
+                    // crossfade rather than a hard cut. Previously guarded by
+                    // effectiveLeash < 0.99 which caused an instantaneous topology
+                    // jump in fully-pitched mode.
                     //----------------------------------------------------------
-                    if (voice.crossfading && effectiveLeash < 0.99f)
+                    if (voice.crossfading)
                     {
-                        float oldX = voice.attractorA.x;
-                        float oldY = voice.attractorA.y;
-                        float oldZ = voice.attractorA.z;
+                        // Blend old topology (attractorA) with new topology output
+                        // regardless of leash amount. Previously, a leash >= 0.99 guard
+                        // skipped this block causing an instantaneous hard cut on topology
+                        // switch in fully-pitched mode.
                         float crossfadePosition = voice.crossfadeGain;
-                        blendedX = (1.0f - crossfadePosition) * oldX + crossfadePosition * blendedX;
-                        blendedY = (1.0f - crossfadePosition) * oldY + crossfadePosition * blendedY;
-                        blendedZ = (1.0f - crossfadePosition) * oldZ + crossfadePosition * blendedZ;
+                        blendedX = (1.0f - crossfadePosition) * voice.attractorA.x + crossfadePosition * blendedX;
+                        blendedY = (1.0f - crossfadePosition) * voice.attractorA.y + crossfadePosition * blendedY;
+                        blendedZ = (1.0f - crossfadePosition) * voice.attractorA.z + crossfadePosition * blendedZ;
                     }
 
                     //----------------------------------------------------------
@@ -1446,10 +1476,10 @@ public:
             //------------------------------------------------------------------
             // Write to output buffer (additive — other engines may be summing)
             //------------------------------------------------------------------
-            if (buffer.getNumChannels() > 0)
-                buffer.getWritePointer(0)[sampleIndex] += voiceSumLeft;
-            if (buffer.getNumChannels() > 1)
-                buffer.getWritePointer(1)[sampleIndex] += voiceSumRight;
+            if (outL != nullptr)
+                outL[sampleIndex] += voiceSumLeft;
+            if (outR != nullptr)
+                outR[sampleIndex] += voiceSumRight;
         }
 
         //----------------------------------------------------------------------
@@ -1470,7 +1500,9 @@ public:
                 ++count;
         activeVoiceCount.store(count, std::memory_order_relaxed);
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // Guard: pass nullptr for right channel on mono buffers — SilenceGate accepts nullptr.
+        const float* rightPtr = (buffer.getNumChannels() > 1) ? buffer.getReadPointer(1) : nullptr;
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), rightPtr, numSamples);
     }
 
     //==========================================================================
@@ -1685,8 +1717,21 @@ private:
 
     void handleNoteOn(int note, float velocity) noexcept
     {
-        if (currentSampleRate.load(std::memory_order_acquire) <= 0.0) return;
+        const double sr = currentSampleRate.load(std::memory_order_acquire);
+        if (sr <= 0.0) return;
         ++noteCounter;
+
+        // Legato: if this note is already playing on an active voice, retrigger
+        // it in legato mode — preserving the attractor state and timbral evolution
+        // while updating pitch and refreshing the injection transient.
+        for (auto& voice : voices)
+        {
+            if (voice.active && !voice.released && voice.noteNumber == note)
+            {
+                voice.legatoRetrigger(note, velocity, noteCounter, sr);
+                return;
+            }
+        }
 
         // Find a free voice slot
         int freeSlot = -1;
@@ -1712,14 +1757,14 @@ private:
                     freeSlot = i;
                 }
             }
-            voices[freeSlot].beginStealFade(currentSampleRate.load(std::memory_order_acquire));
+            voices[freeSlot].beginStealFade(sr);
         }
 
         // Set topology on new voice
         voices[freeSlot].attractorA.topology = currentTopology;
         voices[freeSlot].syncedAttractor.topology = currentTopology;
 
-        voices[freeSlot].noteOn(note, velocity, noteCounter, currentSampleRate.load(std::memory_order_acquire));
+        voices[freeSlot].noteOn(note, velocity, noteCounter, sr);
     }
 
     void handleNoteOff(int note) noexcept
