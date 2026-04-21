@@ -97,16 +97,23 @@ public:
             // Pure noise region (morph >= 3.0)
             out = noiseGenerator.nextFloat() * 2.0f - 1.0f;
         }
-        else if (tableIndex == 2 && crossfadeFraction > 0.0f)
+        else if (tableIndex == 2)
         {
-            // Square-to-noise crossfade (morph 2.0 - 3.0)
+            // Square-to-noise crossfade (morph 2.0 - 3.0).
+            // NOTE: condition was previously `tableIndex == 2 && crossfadeFraction > 0.0f`,
+            // which fell through to the table-to-table else branch when morph == 2.0 exactly,
+            // causing readTable(3) — an out-of-bounds index that silently returned sineTable
+            // data (the jassert fallback). The fix: handle all of tableIndex==2 here. When
+            // crossfadeFraction is 0.0 the noiseValue term is multiplied by 0 so it has no
+            // audible effect and avoids the spurious noise generator tick.
             float tableValue = readTable(tableIndex);
             float noiseValue = noiseGenerator.nextFloat() * 2.0f - 1.0f;
             out = tableValue * (1.0f - crossfadeFraction) + noiseValue * crossfadeFraction;
         }
         else
         {
-            // Standard table-to-table crossfade (sine<->saw or saw<->square)
+            // Standard table-to-table crossfade (sine<->saw or saw<->square).
+            // tableIndex is 0 or 1 here, so tableIndex + 1 is always a valid index (1 or 2).
             float a = readTable(tableIndex);
             float b = readTable(tableIndex + 1);
             out = a * (1.0f - crossfadeFraction) + b * crossfadeFraction;
@@ -400,6 +407,8 @@ public:
             voice.currentFrequency = 440.0f;
             voice.targetFrequency = 440.0f;
             voice.glideCoefficient = 1.0f;
+            voice.driftPhase = 0.0f;  // was missing: leaked randomized phase from noteOn
+            voice.driftValue = 0.0f;
             for (auto& osc : voice.oscillators)
                 osc.reset();
             voice.subOscillator.reset();
@@ -413,6 +422,17 @@ public:
         lfo2Output = 0.0f;
         filterCutoffModulation = 0.0f;
         morphModulation = 0.0f;
+        morphModCutoffOffset = 0.0f;
+        morphModMorphOffset  = 0.0f;
+        morphModPitchOffset  = 0.0f;
+        morphModLevelOffset  = 0.0f;
+        // Reset MIDI performance state — these were not cleared on reset(), causing
+        // sustain-pedal lock, stuck mod-wheel morph offset, and pitch drift after
+        // DAW stop/restart or plug-in instantiation without a fresh prepare().
+        sustainPedalDown = false;
+        modWheelMorphOffset = 0.0f;
+        modWheelLfoDepthBoost = 0.0f;
+        pitchBendNorm = 0.0f;
         std::fill(outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
         std::fill(outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
     }
@@ -489,7 +509,10 @@ public:
         constexpr double kTwoPiD = 6.28318530717958647692;
         const double lfo1PhaseIncrement = static_cast<double>(lfo1Rate) / cachedSampleRate;
         lfo1Phase += lfo1PhaseIncrement * static_cast<double>(numSamples); // block-advance
-        if (lfo1Phase >= 1.0)
+        // Use while (not if): at 15 Hz with a 512-sample block at 44.1 kHz, lfo1Phase advances
+        // ~0.174 per block; at 96 kHz the advance can exceed 1.0 in one shot. A single
+        // subtraction would leave the phase in [1, 2) producing a negative sin output.
+        while (lfo1Phase >= 1.0)
             lfo1Phase -= 1.0;
         // Sine wave: bipolar [-1, +1]
         lfo1Output = static_cast<float>(std::sin(kTwoPiD * lfo1Phase));
@@ -498,7 +521,7 @@ public:
         // Rate floor 0.005 Hz satisfies D005. Triangle = |frac - 0.5| * 4 - 1 → bipolar [-1, +1].
         const double lfo2PhaseIncrement = static_cast<double>(lfo2Rate) / cachedSampleRate;
         lfo2Phase += lfo2PhaseIncrement * static_cast<double>(numSamples); // block-advance
-        if (lfo2Phase >= 1.0)
+        while (lfo2Phase >= 1.0)
             lfo2Phase -= 1.0;
         // Triangle wave: bipolar [-1, +1]
         lfo2Output = static_cast<float>(4.0 * std::fabs(lfo2Phase - 0.5) - 1.0);
@@ -514,8 +537,13 @@ public:
         // LFO2 (triangle, slow) provides the secondary long-arc cutoff evolution.
         const float lfo1CutoffMod = lfo1Output * lfo1Depth * 3000.0f;
         const float lfo2CutoffMod = lfo2Output * lfo2Depth * 4000.0f;
+        // Clamp both ends: LFO depth ×3000/4000 Hz + mod matrix ±5000 Hz can push the
+        // combined sum well below 20 Hz or above 20 kHz. Without the lower bound,
+        // a negative effectiveCutoff is passed to noteOn() and into the MoogLadder,
+        // where it hits the clamp inside setCutoff() but only AFTER a negative g
+        // coefficient is computed by fastTan, producing an unstable filter state.
         const float effectiveCutoff =
-            std::min(20000.0f, filterCutoff + macroDepth * 6000.0f + lfo1CutoffMod + lfo2CutoffMod + morphModCutoffOffset);
+            std::max(20.0f, std::min(20000.0f, filterCutoff + macroDepth * 6000.0f + lfo1CutoffMod + lfo2CutoffMod + morphModCutoffOffset));
         const float effectiveAttack = attackTime * (1.0f + macroSpace * 3.0f);
 
         // Effective morph position includes macroBloom + coupling modulation + CC1 (mod wheel) + mod matrix
@@ -592,6 +620,12 @@ public:
             buffer.clear();
             return;
         }
+
+        // Clear the output buffer before accumulating voice output.
+        // Hosts are not required to zero the buffer before calling processBlock —
+        // failing to clear here causes stale residuals from previous plugin blocks
+        // to add onto Oscar's output, producing phantom audio artifacts.
+        buffer.clear();
 
         //----------------------------------------------------------------------
         // D006: smooth aftertouch pressure and compute modulation value
@@ -708,10 +742,12 @@ public:
 
                 for (int i = 0; i < 3; ++i)
                 {
-                    // Convert cents to frequency ratio: 2^(cents/1200)
-                    // ln(2) = 0.693147... used with fastExp for efficient cent-to-ratio conversion
-                    constexpr float kLn2Over1200 = 0.693147f / 1200.0f; // ln(2) / 1200 cents per octave
-                    float detunedFrequency = baseFrequency * fastExp(detuneSpread[i] * kLn2Over1200);
+                    // Convert cents to frequency ratio: 2^(cents/1200) = fastPow2(cents/1200).
+                    // Previously used fastExp(cents * ln2/1200) which is mathematically equivalent
+                    // but fastExp has 6% error (Schraudolph bit-trick) — the FastMath header
+                    // explicitly notes "use fastPow2 for pitch". fastPow2 gives 0.02% accuracy,
+                    // eliminating the ~6-cent tuning error at 50 cents detune (audible shimmer drift).
+                    float detunedFrequency = baseFrequency * fastPow2(detuneSpread[i] / 1200.0f);
 
                     // Apply drift as subtle FM (0.2% max pitch deviation)
                     constexpr float kDriftFmDepth = 0.002f; // 0.2% max pitch modulation
@@ -724,7 +760,9 @@ public:
 
                 //-- Sub oscillator (sine, one octave below for bass weight) ---
                 voice.subOscillator.setFrequency(baseFrequency * 0.5f, cachedSampleRateFloat);
-                voice.subOscillator.setWaveform(PolyBLEP::Waveform::Sine);
+                // setWaveform() is a constant (always Sine) — calling it every sample
+                // is a no-op branch that touches cache unnecessarily; removed.
+                // It is set once in noteOn() and never needs updating mid-voice.
                 float subOscOutput = voice.subOscillator.processSample() * subLevel;
 
                 float rawSignal = oscillatorMix + subOscOutput;
@@ -1104,7 +1142,9 @@ private:
             float detuneSpread[3] = {-detuneCents, 0.0f, detuneCents};
             for (int i = 0; i < 3; ++i)
             {
-                float detunedFrequency = frequency * std::pow(2.0f, detuneSpread[i] / 1200.0f);
+                // fastPow2 replaces std::pow: 2^(cents/1200). 0.02% accuracy is sufficient
+                // for a one-time init; std::pow is 10-50× slower on the audio thread.
+                float detunedFrequency = frequency * fastPow2(detuneSpread[i] / 1200.0f);
                 voice.oscillators[i].setFrequency(detunedFrequency, cachedSampleRateFloat);
                 voice.oscillators[i].setMorph(morphPosition);
                 voice.oscillators[i].reset();
@@ -1143,7 +1183,9 @@ private:
         float detuneSpread[3] = {-detuneCents, 0.0f, detuneCents};
         for (int i = 0; i < 3; ++i)
         {
-            float detunedFrequency = frequency * std::pow(2.0f, detuneSpread[i] / 1200.0f);
+            // fastPow2 replaces std::pow: 2^(cents/1200). 0.02% accuracy is sufficient
+            // for a one-time init; std::pow is 10-50× slower on the audio thread.
+            float detunedFrequency = frequency * fastPow2(detuneSpread[i] / 1200.0f);
             voice.oscillators[i].setFrequency(detunedFrequency, cachedSampleRateFloat);
             voice.oscillators[i].setMorph(morphPosition);
             voice.oscillators[i].reset();
@@ -1190,10 +1232,11 @@ private:
     //==========================================================================
 
     /** Convert MIDI note number to frequency in Hz.
-        Reference: A4 (MIDI note 69) = 440 Hz, equal temperament. */
+        Reference: A4 (MIDI note 69) = 440 Hz, equal temperament.
+        Uses fastPow2 (0.02% accuracy) — std::pow is too slow for the audio thread. */
     static float midiNoteToFrequency(float midiNote) noexcept
     {
-        return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f);
+        return 440.0f * fastPow2((midiNote - 69.0f) * (1.0f / 12.0f));
     }
 
     /** Simplified Perlin noise for smooth random drift modulation.
