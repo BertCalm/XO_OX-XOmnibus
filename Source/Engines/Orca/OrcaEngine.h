@@ -42,9 +42,9 @@ namespace xoceanus
 //      ringing metallic tones that map the acoustic space.
 //
 //   3. APEX HUNT — Extreme macro modulation. A single HUNT macro controls
-//      filter cutoff, FM amount, wave-folding, comb resonance, and bitcrush
-//      depth simultaneously. Push it up and the entire patch moves as a
-//      coordinated, aggressive, devastating unit.
+//      filter cutoff, formant intensity, echolocation resonance, bitcrush depth,
+//      and sub-bass level simultaneously. Push it up and the entire patch moves
+//      as a coordinated, aggressive, devastating unit.
 //
 //   4. BREACH — Sidechain displacement. A massive sine/triangle sub-bass
 //      layer with an internal sidechain compressor. When triggered by
@@ -223,6 +223,8 @@ public:
     static constexpr int kMaxVoices = 16;
     static constexpr float kPI = 3.14159265358979323846f;
     static constexpr float kTwoPi = 6.28318530717958647692f;
+    // D005: shared velocity→brightness offset (Hz) — used in per-block and per-sample paths.
+    static constexpr float kVelCutoffMaxHz = 3000.0f;
 
     //==========================================================================
     // Lifecycle
@@ -280,6 +282,7 @@ public:
             v.reset();
 
         envelopeOutput = 0.0f;
+        breachSubPhase = 0.0f; // D002: was missing — stale sub-bass phase on DAW restart
         couplingWTPosMod = 0.0f;
         couplingFormantMod = 0.0f;
         couplingBreachTrigger = 0.0f;
@@ -384,9 +387,10 @@ public:
         }
 
         // Glide coefficient — heavy portamento for whale song
+        // D001 (Perf): use fastExp — glide coeff is computed once per block per MIDI event.
         float glideCoeff = 1.0f;
         if (pGlideVal > 0.001f)
-            glideCoeff = 1.0f - std::exp(-1.0f / (pGlideVal * srf));
+            glideCoeff = 1.0f - fastExp(-1.0f / (pGlideVal * srf));
 
         // === APEX HUNT MACRO ===
         // Single control drives filter cutoff, echolocation resonance,
@@ -441,8 +445,10 @@ public:
         float splitFreq = clamp(pCrushSplit, 100.0f, 4000.0f);
 
         // Bitcrusher resolution: map [1..16] bits, with HUNT pushing it lower
+        // D001 (Perf): replace std::pow with fastPow2 — same accuracy for integer-ish
+        // bit depths, avoids the slow general-purpose pow path.
         float crushBits = clamp(pCrushBits - huntAmount * 12.0f, 1.0f, 16.0f);
-        float crushStep = std::pow(2.0f, crushBits);
+        float crushStep = fastPow2(crushBits);
         // Downsample factor
         float crushDownsample = clamp(pCrushRate + huntAmount * 0.8f, 1.0f, 64.0f);
 
@@ -495,9 +501,9 @@ public:
             // D001/D006 velocity → timbre: high velocity opens the filter (brighter
             // attack), giving each note a distinct timbral character proportional to
             // how hard it was struck.  maxCutoffOffset = 3000 Hz at full depth.
-            static constexpr float kMaxCutoffOffset = 3000.0f;
+            // D005: shared constant with per-sample LFO2 path — both use kVelCutoffMaxHz.
             float velCutoff =
-                clamp(effectiveCutoff + pVelCutoffAmt * voice.velocity * kMaxCutoffOffset, 20.0f, 20000.0f);
+                clamp(effectiveCutoff + pVelCutoffAmt * voice.velocity * kVelCutoffMaxHz, 20.0f, 20000.0f);
 
             voice.mainFilter.setCoefficients(velCutoff, effectiveReso, srf);
 
@@ -530,6 +536,19 @@ public:
         smoothFormant.set(effectiveFormant);
         smoothEchoMix.set(effectiveEchoMix);
         smoothCrushMix.set(effectiveCrush);
+
+        // D001 (Perf): Hoist breach lowest-voice frequency scan out of the sample
+        // loop — scanning all voices every sample is O(voices×samples). One scan
+        // per block is sufficient since voice allocation doesn't change mid-block.
+        float breachLowestFreq = 20000.0f;
+        if (effectiveBreachSub > 0.001f)
+        {
+            for (const auto& v : voices)
+                if (v.active && v.glide.getFreq() < breachLowestFreq)
+                    breachLowestFreq = v.glide.getFreq();
+        }
+        const float breachSubFreq = (breachLowestFreq < 20000.0f) ? breachLowestFreq * 0.5f : 0.0f;
+        const float breachSubPhaseInc = (breachSubFreq > 0.0f) ? (breachSubFreq / srf) : 0.0f;
 
         float peakEnv = 0.0f;
 
@@ -608,31 +627,37 @@ public:
                 // 2. ECHOLOCATION — Comb filter pinged by clicks
                 // =====================================================
 
-                float echoOut = 0.0f;
+                // D003: preserve echoL/echoR separately so the 1.003× R-channel
+                // detune (set in setDelay) actually produces stereo comb imaging.
+                // Previously both were averaged to mono before mixing.
+                float echoSigL = 0.0f;
+                float echoSigR = 0.0f;
 
                 if (smoothedEchoMix > 0.001f)
                 {
                     // Generate impulse click (microscopic noise burst)
                     float click = 0.0f;
                     voice.clickPhase += voice.clickPhaseInc;
+                    // D002: at high rates + large block size clickPhaseInc can exceed 1.0;
+                    // use while-loop so phase stays in [0,1) and fires at most once per sample.
                     if (voice.clickPhase >= 1.0f)
                     {
-                        voice.clickPhase -= 1.0f;
+                        while (voice.clickPhase >= 1.0f)
+                            voice.clickPhase -= 1.0f;
                         // White noise burst — 1 sample impulse
                         voice.clickRng = voice.clickRng * 1664525u + 1013904223u;
                         click = (static_cast<float>(voice.clickRng & 0xFFFF) / 32768.0f - 1.0f);
                     }
 
-                    // Feed click through resonant comb filters
-                    float echoL = voice.echoL.processSample(click);
-                    float echoR = voice.echoR.processSample(click);
-
-                    // Stereo echolocation signal
-                    echoOut = (echoL + echoR) * 0.5f;
+                    // Feed click through resonant comb filters (stereo pair)
+                    echoSigL = voice.echoL.processSample(click);
+                    echoSigR = voice.echoR.processSample(click);
                 }
 
-                // Mix wavetable and echolocation
-                float voiceSignal = wtSample * (1.0f - smoothedEchoMix * 0.5f) + echoOut * smoothedEchoMix;
+                // Mix wavetable with mono echolocation for downstream processing;
+                // stereo difference is added back at the final gain stage below.
+                float echoMono = (echoSigL + echoSigR) * 0.5f;
+                float voiceSignal = wtSample * (1.0f - smoothedEchoMix * 0.5f) + echoMono * smoothedEchoMix;
 
                 // =====================================================
                 // 5. COUNTERSHADING — Band-split bitcrushing
@@ -665,24 +690,32 @@ public:
                 }
 
                 // --- Main filter (LFO2 modulates cutoff per sample) ---
+                // D001 (Perf): setCoefficients is expensive (trig inside SVF). Skip
+                // per-sample update when LFO2 depth is zero — coefficients were already
+                // set correctly in the per-block update above.
+                if (pLfo2Depth > 0.001f)
                 {
-                    static constexpr float kMaxCutoffOffsetInner = 3000.0f;
-                    float baseCutoff = clamp(effectiveCutoff + pVelCutoffAmt * voice.velocity * kMaxCutoffOffsetInner,
+                    float baseCutoff = clamp(effectiveCutoff + pVelCutoffAmt * voice.velocity * kVelCutoffMaxHz,
                                              20.0f, 20000.0f);
                     float lfo2Cutoff = clamp(baseCutoff + lfo2Val * 2000.0f, 20.0f, 20000.0f);
                     voice.mainFilter.setCoefficients(lfo2Cutoff, effectiveReso, srf);
                 }
                 voiceSignal = voice.mainFilter.processSample(voiceSignal);
 
-                // --- AudioToRing coupling: ring-modulate voice signal ---
+                // --- AudioToRing coupling: amplitude modulation by coupling source ---
                 // couplingRingModSrc is accumulated in applyCouplingInput() and
                 // zeroed each block before the sample loop (line ~487).
-                voiceSignal *= (1.0f + couplingRingModSrc);
+                // D006: clamp to [0, 2] — unclamped negative values invert & amplify signal;
+                // this is AM (signal × (1+mod)), not true ring mod (signal × mod).
+                voiceSignal *= clamp(1.0f + couplingRingModSrc, 0.0f, 2.0f);
 
                 // --- Apply amplitude envelope, velocity, crossfade ---
                 float gain = ampLevel * voice.velocity * voice.fadeGain;
-                float outL = voiceSignal * gain;
-                float outR = voiceSignal * gain;
+                // D003: restore stereo echo separation — add per-channel echo offset
+                // on top of the processed mono signal so filter/crush stay mono-tracked.
+                float echoStereoOffset = (echoSigL - echoSigR) * smoothedEchoMix * 0.5f;
+                float outL = (voiceSignal + echoStereoOffset) * gain;
+                float outR = (voiceSignal - echoStereoOffset) * gain;
 
                 // Denormal protection
                 outL = flushDenormal(outL);
@@ -699,46 +732,30 @@ public:
             //    (rendered globally, not per-voice, for massive weight)
             // =====================================================
 
-            if (effectiveBreachSub > 0.001f && peakEnv > 0.001f)
+            // D001 (Perf): use block-rate breach frequency (hoisted above sample loop)
+            if (effectiveBreachSub > 0.001f && peakEnv > 0.001f && breachSubPhaseInc > 0.0f)
             {
                 // Generate sub-bass: pure sine or triangle based on shape
-                float subPhaseInc = 0.0f;
+                breachSubPhase += breachSubPhaseInc;
+                if (breachSubPhase >= 1.0f)
+                    breachSubPhase -= 1.0f;
 
-                // Use lowest active voice frequency for sub
-                float lowestFreq = 20000.0f;
-                for (const auto& v : voices)
+                float subSample;
+                if (pBreachShape < 0.5f)
                 {
-                    if (v.active && v.glide.getFreq() < lowestFreq)
-                        lowestFreq = v.glide.getFreq();
+                    // Pure sine — massive, round sub
+                    subSample = fastSin(breachSubPhase * kTwoPi);
+                }
+                else
+                {
+                    // Triangle — slightly more presence
+                    subSample = 4.0f * std::fabs(breachSubPhase - 0.5f) - 1.0f;
                 }
 
-                if (lowestFreq < 20000.0f)
-                {
-                    // Sub one octave below the lowest voice
-                    float subFreq = lowestFreq * 0.5f;
-                    subPhaseInc = subFreq / srf;
+                subSample *= effectiveBreachSub * peakEnv;
 
-                    breachSubPhase += subPhaseInc;
-                    if (breachSubPhase >= 1.0f)
-                        breachSubPhase -= 1.0f;
-
-                    float subSample;
-                    if (pBreachShape < 0.5f)
-                    {
-                        // Pure sine — massive, round sub
-                        subSample = fastSin(breachSubPhase * kTwoPi);
-                    }
-                    else
-                    {
-                        // Triangle — slightly more presence
-                        subSample = 4.0f * std::fabs(breachSubPhase - 0.5f) - 1.0f;
-                    }
-
-                    subSample *= effectiveBreachSub * peakEnv;
-
-                    mixL += subSample;
-                    mixR += subSample;
-                }
+                mixL += subSample;
+                mixR += subSample;
             }
 
             // Apply master level + AmpToChoke gain reduction (chokeGain from couplingBreachTrigger)
@@ -821,6 +838,8 @@ public:
             couplingEchoRateMod += amount * 0.3f;
             break;
         case CouplingType::AudioToRing:
+            // D006: this is AM (voiceSignal × (1+mod)), not true ring mod. The mod
+            // source drives amplitude variation rather than multiplicative carrier mixing.
             couplingRingModSrc += amount;
             break;
         case CouplingType::LFOToPitch:
@@ -1123,7 +1142,8 @@ private:
                 float sample = 0.0f;
 
                 // Frame 0: Pure sine (whale call fundamental)
-                float sine = std::sin(kTwoPi * phase);
+                // D001 (Perf): fastSin at ~0.01% accuracy — acceptable for a fixed wavetable.
+                float sine = fastSin(kTwoPi * phase);
 
                 // Frame progression: add increasingly inharmonic partials
                 // These create the metallic, eerie quality of orca calls
@@ -1146,7 +1166,7 @@ private:
                     // Alternate phase offsets for complexity
                     float phaseOffset = (p % 3 == 0) ? 0.25f : 0.0f;
 
-                    sample += amp * std::sin(kTwoPi * (stretchedRatio * phase + phaseOffset));
+                    sample += amp * fastSin(kTwoPi * (stretchedRatio * phase + phaseOffset));
                     totalAmp += amp;
                 }
 
@@ -1230,12 +1250,9 @@ private:
         // Polyphonic — find free voice or steal oldest (LRU)
         int slot = VoiceAllocator::findFreeVoice(voices, std::min(maxPoly, kMaxVoices));
 
-        if (voices[slot].active)
-        {
-            // Voice stealing: crossfade out the oldest
-            voices[slot].fadingOut = true;
-        }
-
+        // D004: original code set fadingOut=true before voice.reset(), which immediately
+        // cleared fadingOut inside reset(). The crossfade never fired. Removed the dead
+        // pre-set; voice.reset() initialises fadeGain=1.0f / fadingOut=false correctly.
         auto& voice = voices[slot];
         voice.reset();
         voice.active = true;
