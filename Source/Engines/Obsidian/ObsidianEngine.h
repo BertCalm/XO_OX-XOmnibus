@@ -139,12 +139,9 @@ struct ObsidianVoice
     float crossfadeGain = 1.0f; // Ramps from 1.0 to 0.0 during steal
     bool isFadingOut = false;
 
-    // ---- Stiffness Partial Ratios ----
-    // Cached Euler-Bernoulli stretched partial frequencies (first 16 partials).
-    // In a real stiff string/bar, partial N has frequency f_n = N * f0 * sqrt(1 + B*N^2),
-    // where B is the stiffness coefficient. This stretches upper partials sharp,
-    // creating the characteristic bell/piano/metallic inharmonicity.
-    float partialRatios[16] = {};
+    // D-OBSIDIAN-10: partialRatios[16] removed — was initialized in reset() but never read.
+    // Block-rate precomputed cachedStretchedRatios (4 entries, in renderBlock) replaced it.
+    // Removing saves 64 bytes per voice (16 voices * 64 B = 1 KB from the voice pool).
 
     void reset() noexcept
     {
@@ -164,8 +161,7 @@ struct ObsidianVoice
         for (auto& filter : formantFilters)
             filter.reset();
         mainFilter.reset();
-        for (int i = 0; i < 16; ++i)
-            partialRatios[i] = static_cast<float>(i + 1);
+        // D-OBSIDIAN-10: partialRatios init removed (member deleted — see above).
     }
 };
 
@@ -253,12 +249,30 @@ public:
         couplingDensityMod = 0.0f;
         couplingTiltMod = 0.0f;
 
-        smoothedDensity = 0.0f;
-        smoothedTilt = 0.0f;
-        smoothedDepth = 0.0f;
+        // D-OBSIDIAN-05: reset smoothed params to their declared defaults (0.5), not to 0.0.
+        // reset() previously wrote 0.0f here while the member defaults are 0.5f, causing a
+        // zipper transient on the next block as smoothers snap from 0.0 toward whatever the
+        // current parameter value is (typically 0.5).  Using the same defaults as the member
+        // declarations avoids the one-block timbral glitch on allNotesOff/reset.
+        smoothedDensity = 0.5f;
+        smoothedTilt    = 0.5f;
+        smoothedDepth   = 0.5f;
 
         // D005: reset the engine-level formant LFO phase
         obsidianLfoPhase = 0.0;
+
+        // D-OBSIDIAN-06: clear MIDI controller state on reset so stale modWheel / pitchBend
+        // values from a previous performance do not persist into a new session.  allNotesOff
+        // and allSoundOff both call reset(), so this is the correct place to zero these.
+        modWheelValue  = 0.0f;
+        pitchBendNorm  = 0.0f;
+        aftertouch.prepare(sampleRateDouble); // re-initialise smoother state to zero
+
+        // D-OBSIDIAN-07: also reset mod-matrix accumulated offsets
+        obsidianModCutoffOffset  = 0.0f;
+        obsidianModPitchOffset   = 0.0f;
+        obsidianModLevelOffset   = 0.0f;
+        obsidianModPDDepthOffset = 0.0f;
 
         std::fill(outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
         std::fill(outputCacheRight.begin(), outputCacheRight.end(), 0.0f);
@@ -456,7 +470,9 @@ public:
         // creating a unified organic movement rather than individual voice chaos.
         // Phase increments by (0.1 Hz / sampleRate) per sample; we advance by block center.
         const double obsidianLfoHz = 0.1;
-        const double obsidianLfoIncrement = obsidianLfoHz / static_cast<double>(sampleRateFloat);
+        // D-OBSIDIAN-09: use sampleRateDouble (double precision) directly instead of
+        // casting sampleRateFloat back to double — preserves the precision already stored.
+        const double obsidianLfoIncrement = obsidianLfoHz / sampleRateDouble;
         // Advance LFO phase by the block center position (mid-block approximation)
         obsidianLfoPhase += obsidianLfoIncrement * static_cast<double>(numSamples);
         if (obsidianLfoPhase >= 1.0)
@@ -482,11 +498,19 @@ public:
             //   Band 2: 3250 Hz — third formant (F3), voice timbre
             //   Band 3: 5000 Hz — fourth formant (F4), brilliance/air
             // Q values decrease with frequency (0.6 -> 0.4) for natural bandwidth spread.
-            static constexpr float kFormantCenterFrequencies[4] = {550.0f, 1650.0f, 3250.0f, 5000.0f};
-            static constexpr float kFormantQValues[4] = {0.6f, 0.5f, 0.45f, 0.4f};
-            for (int band = 0; band < 4; ++band)
-                voice.formantFilters[band].setCoefficients(kFormantCenterFrequencies[band], kFormantQValues[band],
-                                                           sampleRateFloat);
+            // D-OBSIDIAN-12 (PERF): skip formant setCoefficients when effectiveFormant is zero.
+            // The center frequencies are fixed constants (not user-parameterized), so the
+            // coefficients never change mid-session — computing them per-block for every active
+            // voice when the formant path is bypassed wastes ~4 * kMaxVoices trig calls.
+            // initializeVoiceFilters() already sets them correctly on noteOn.
+            if (effectiveFormant > 0.001f)
+            {
+                static constexpr float kFormantCenterFrequencies[4] = {550.0f, 1650.0f, 3250.0f, 5000.0f};
+                static constexpr float kFormantQValues[4] = {0.6f, 0.5f, 0.45f, 0.4f};
+                for (int band = 0; band < 4; ++band)
+                    voice.formantFilters[band].setCoefficients(kFormantCenterFrequencies[band], kFormantQValues[band],
+                                                               sampleRateFloat);
+            }
         }
 
         float peakEnvelopeLevel = 0.0f;
@@ -563,11 +587,14 @@ public:
                 float lfo2Output = voice.lfo2.process() * paramLfo2Depth;
 
                 // LFO routing: LFO1 modulates PD depth (+/- 30%), LFO2 modulates density (+/- 20%)
-                float modulatedDepth = clamp(smoothedDepth + lfo1Output * 0.3f, 0.0f, 1.0f);
+                // D-OBSIDIAN-01: also apply mod-matrix PD depth offset here (was computed but never consumed).
+                float modulatedDepth = clamp(smoothedDepth + lfo1Output * 0.3f + obsidianModPDDepthOffset, 0.0f, 1.0f);
                 float modulatedDensity = clamp(smoothedDensity + lfo2Output * 0.2f, 0.0f, 1.0f);
 
                 // ---- Phase increment ----
-                float frequency = voice.currentFrequency * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                // D-OBSIDIAN-02: apply mod-matrix pitch offset (was computed but never consumed).
+                float frequency = voice.currentFrequency *
+                    PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + obsidianModPitchOffset);
                 float phaseIncrement = frequency / sampleRateFloat;
 
                 // ======== PD STAGE 1 — Primary Phase Distortion ========
@@ -724,7 +751,9 @@ public:
                 outputRight = voice.mainFilter.processSample(outputRight);
 
                 // ======== AMPLITUDE SHAPING ========
-                float voiceGain = amplitudeLevel * voice.velocity * voice.crossfadeGain;
+                // D-OBSIDIAN-03: apply mod-matrix amplitude offset (was computed but never consumed).
+                float voiceGain = clamp(amplitudeLevel + obsidianModLevelOffset, 0.0f, 1.0f) *
+                                  voice.velocity * voice.crossfadeGain;
                 outputLeft *= voiceGain;
                 outputRight *= voiceGain;
 
@@ -773,7 +802,12 @@ public:
                 ++count;
         activeVoices.store(count, std::memory_order_relaxed);
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // D-OBSIDIAN-08: guard analyzeBlock against mono buffers.
+        // getReadPointer(1) on a 1-channel buffer is an out-of-bounds access.
+        const float* rightAnalyze = (buffer.getNumChannels() >= 2)
+                                        ? buffer.getReadPointer(1)
+                                        : buffer.getReadPointer(0);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), rightAnalyze, numSamples);
     }
 
     //==========================================================================
@@ -1286,8 +1320,13 @@ private:
 
                 voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
                 voice.lfo1.setShape(lfo1Shape);
+                // D-OBSIDIAN-04: reset LFO phase on mono noteOn (poly path always resets; mono path was missing).
+                // Without reset, retriggering in mono mode carries forward LFO phase from the previous note,
+                // causing inconsistent modulation behaviour vs. poly mode.
+                voice.lfo1.reset();
                 voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
                 voice.lfo2.setShape(lfo2Shape);
+                voice.lfo2.reset();
 
                 initializeVoiceFilters(voice, cutoff, resonance, stiffnessB);
             }
@@ -1298,12 +1337,15 @@ private:
         int voiceIndex = VoiceAllocator::findFreeVoice(voices, maxPolyphony);
         auto& voice = voices[static_cast<size_t>(voiceIndex)];
 
-        // If stealing an active voice, initiate crossfade to prevent click
-        if (voice.active)
-        {
-            voice.isFadingOut = true;
-            voice.crossfadeGain = std::min(voice.crossfadeGain, 0.5f); // Quick steal: cap at 50% to shorten fade
-        }
+        // D-OBSIDIAN-11 (P-STEAL-DIR): the previous code set isFadingOut=true on the stolen
+        // slot, then immediately overwrote it with isFadingOut=false when initialising the new
+        // note — the crossfade never ran.  Because VoiceAllocator reuses the stolen slot for
+        // the incoming note, a true crossfade requires a separate "zombie" slot (future work,
+        // tracked as a deferred issue).  For now: apply the amplitude envelope's built-in
+        // attack ramp (which already prevents clicks on retriggered voices) and skip the dead
+        // isFadingOut bookkeeping to keep the code honest.
+        // If the voice was already active its envelope was in sustain/release — retrigger
+        // resets it via noteOn() below, which provides a clean zero-crossing start.
 
         voice.active = true;
         voice.noteNumber = noteNumber;
