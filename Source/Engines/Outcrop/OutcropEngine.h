@@ -111,8 +111,9 @@ struct OutcropVoice
         uint32_t x = jitterState;
         x ^= x << 13; x ^= x >> 17; x ^= x << 5;
         jitterState = x;
-        // Convert to bipolar [-1, 1]
-        return (static_cast<float>(x) / 2147483648.0f) - 1.0f;
+        // Convert to bipolar [-1, 1]: reinterpret as signed so the MSB is the
+        // sign bit, giving a symmetric distribution.
+        return static_cast<float>(static_cast<int32_t>(x)) * (1.0f / 2147483648.0f);
     }
 };
 
@@ -317,38 +318,39 @@ inline OutcropEngine::OrbitPos OutcropEngine::computeOrbit(int shape, float phas
     const float p  = phase;
     const float p2 = phase * ratio + phaseOffset;
     OrbitPos o{0.0f, 0.0f};
+    // All trig uses fastCos/fastSin (0.002%/0.01% error — inaudible for orbit shapes).
     switch (shape)
     {
         case 0: // Circle
-            o.x = std::cos(p);
-            o.y = std::sin(p);
+            o.x = fastCos(p);
+            o.y = fastSin(p);
             break;
         case 1: // Lissajous
-            o.x = std::cos(p);
-            o.y = std::sin(p2);
+            o.x = fastCos(p);
+            o.y = fastSin(p2);
             break;
         case 2: // Rose r = cos(k*θ)
         {
-            const float r = std::cos(p2);
-            o.x = r * std::cos(p);
-            o.y = r * std::sin(p);
+            const float r = fastCos(p2);
+            o.x = r * fastCos(p);
+            o.y = r * fastSin(p);
             break;
         }
         case 3: // Spirograph (simplified hypotrochoid)
-            o.x = 0.7f * std::cos(p) + 0.3f * std::cos(p2);
-            o.y = 0.7f * std::sin(p) - 0.3f * std::sin(p2);
+            o.x = 0.7f * fastCos(p) + 0.3f * fastCos(p2);
+            o.y = 0.7f * fastSin(p) - 0.3f * fastSin(p2);
             break;
         case 4: // Figure-8
-            o.x = std::cos(p);
-            o.y = std::sin(2.0f * p);
+            o.x = fastCos(p);
+            o.y = fastSin(2.0f * p);
             break;
         case 5: // Folded chaos (phase-modulated)
-            o.x = std::cos(p + 0.5f * std::sin(p2));
-            o.y = std::sin(p + 0.5f * std::cos(p2));
+            o.x = fastCos(p + 0.5f * fastSin(p2));
+            o.y = fastSin(p + 0.5f * fastCos(p2));
             break;
         default:
-            o.x = std::cos(p);
-            o.y = std::sin(p);
+            o.x = fastCos(p);
+            o.y = fastSin(p);
             break;
     }
     return o;
@@ -387,26 +389,33 @@ inline float OutcropEngine::evaluateTerrain(int mode, float x, float y,
 
     auto ridges = [&]() noexcept
     {
-        const float ca = std::cos(ridgeA);
-        const float sa = std::sin(ridgeA);
+        // Use fastCos/fastSin — ridgeA trig called every sample, fast approx
+        // has ~0.002% / ~0.01% error, inaudible for terrain modulation.
+        const float ca = fastCos(ridgeA);
+        const float sa = fastSin(ridgeA);
         const float u  = x * ca + y * sa;
-        return ridgeD * std::sin(ridgeF * u);
+        return ridgeD * fastSin(ridgeF * u);
     };
 
     auto lattice = [&]() noexcept
     {
-        return std::cos(ridgeF * x) * std::cos(ridgeF * y) * 0.7f;
+        // Scale by ridgeD so Ridge Depth has audible effect in Lattice mode.
+        const float depth = std::max(0.1f, ridgeD);
+        return fastCos(ridgeF * x) * fastCos(ridgeF * y) * depth;
     };
 
     auto saddle = [&]() noexcept
     {
-        // Smooth hyperbolic saddle — clamp to avoid blow-up at corners.
-        return std::tanh(1.8f * x * y);
+        // Smooth hyperbolic saddle.  Scale coefficient by 1/R² to preserve
+        // the saddle shape at all orbit radii (at large radius x*y → big,
+        // making tanh saturate to ±1 and losing the saddle geometry).
+        const float rSq = std::max(0.01f, peakS * peakS); // reuse peakS as proxy for radius
+        return fastTanh((1.8f / rSq) * x * y);
     };
 
     auto folded = [&]() noexcept
     {
-        return std::cos(ridgeF * x + std::sin(ridgeF * y));
+        return fastCos(ridgeF * x + fastSin(ridgeF * y));
     };
 
     float h = 0.0f;
@@ -423,12 +432,11 @@ inline float OutcropEngine::evaluateTerrain(int mode, float x, float y,
 
     // Roughness — cheap high-freq perturbation (periodic, deterministic).
     if (rough > 0.0f)
-        h += rough * std::sin(11.0f * x + 7.0f * y) * 0.5f;
+        h += rough * fastSin(11.0f * x + 7.0f * y) * 0.5f;
 
-    // Soft clip to [-1, 1].
-    if (h >  1.0f) h =  1.0f;
-    if (h < -1.0f) h = -1.0f;
-    return h;
+    // Soft saturation via fastTanh — avoids discontinuous hard-clip artifacts
+    // when roughness pushes the terrain past ±1 on steep ridges.
+    return fastTanh(h);
 }
 
 // -----------------------------------------------------------------------------
@@ -443,7 +451,7 @@ inline int OutcropEngine::findFreeVoice() noexcept
 
 inline int OutcropEngine::stealVoice() noexcept
 {
-    // Steal the quietest releasing voice, or the oldest active if none releasing.
+    // Steal the quietest releasing voice, or the quietest active if none releasing.
     int  stealIdx = 0;
     float minLevel = 1e9f;
     for (int i = 0; i < kOutcropMaxVoices; ++i)
@@ -458,6 +466,8 @@ inline int OutcropEngine::stealVoice() noexcept
     if (minLevel > 1e8f)
     {
         // No releasing voice — steal the quietest overall.
+        // Reset minLevel so we find the true minimum across all voices.
+        minLevel = 1e9f;
         for (int i = 0; i < kOutcropMaxVoices; ++i)
         {
             const float lv = voices[i].ampEnv.getLevel();
@@ -478,7 +488,7 @@ inline void OutcropEngine::startVoice(int noteNum, float vel, bool legato)
     vx.note     = noteNum;
     vx.velocity = vel;
 
-    const float f = 440.0f * std::pow(2.0f, (noteNum - 69) / 12.0f);
+    const float f = 440.0f * fastPow2((noteNum - 69) * (1.0f / 12.0f));
     vx.orbitFreq = f;
     if (!legato) vx.glideFreq = f;
     vx.orbitPhase = 0.0f;
@@ -898,11 +908,22 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                 vx.releasing = false;
                 vx.note = newNote;
                 vx.velocity = vel;
-                const float f = 440.0f * std::pow(2.0f, (newNote - 69) / 12.0f);
+                const float f = 440.0f * fastPow2((newNote - 69) * (1.0f / 12.0f));
                 vx.orbitFreq = f;
-                if (!legato) { vx.glideFreq = f; vx.orbitPhase = 0.0f; vx.ampEnv.noteOn(); vx.fltEnv.noteOn(); }
-                else         { /* legato: keep phase, keep env level */ }
-                vx.jitterState = 0x9E3779B1u ^ (uint32_t)(newNote * 2654435761u);
+                if (!legato)
+                {
+                    vx.glideFreq = f;
+                    vx.orbitPhase = 0.0f;
+                    vx.filter.reset(); // clear filter state on fresh attack (was missing)
+                    vx.ampEnv.noteOn();
+                    vx.fltEnv.noteOn();
+                    // Re-seed jitter only on fresh note-on, not on legato slides.
+                    vx.jitterState = 0x9E3779B1u ^ (uint32_t)(newNote * 2654435761u);
+                }
+                else
+                {
+                    // Legato: keep phase, keep env level, keep jitter continuity.
+                }
                 lastHeldNote = newNote;
                 wakeSilenceGate();
             }
@@ -942,10 +963,13 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         return;
     }
 
-    // ---- LFOs (block-rate: one sample per block, applied as DC mod) ----
-    lfo1.setRate(lfo1Hz, sampleRateF);
+    // ---- LFOs (block-rate: one step per block, compensate phaseInc for block size) ----
+    // P-LFO-BLOCK fix: StandardLFO.setRate stores phaseInc = hz/sampleRate (per-sample).
+    // Calling process() once per block advances the phase only 1 sample worth. Multiply hz
+    // by numSamples so the accumulator advances the correct number of samples per call.
+    lfo1.setRate(lfo1Hz * (float) numSamples, sampleRateF);
     lfo1.setShape(lfo1Shape);
-    lfo2.setRate(lfo2Hz, sampleRateF);
+    lfo2.setRate(lfo2Hz * (float) numSamples, sampleRateF);
     lfo2.setShape(lfo2Shape);
     const float lfo1Val = lfo1.process() * mLfo1Depth;
     const float lfo2Val = lfo2.process() * lfo2Depth;
@@ -963,14 +987,28 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
     const float effOrbitRadius = std::clamp(orbitRadiusP * (1.0f + lfoMod[0] * 0.5f), 0.1f, 2.5f);
     const float effOrbitRatio  = std::clamp(mOrbitRatio * (1.0f + lfoMod[1] * 0.4f),  0.25f, 12.0f);
     const float effRidgeAngle  = ridgeAngleP + lfoMod[2] * 1.0f;
-    const float lfoCutoffScale = std::pow(2.0f, lfoMod[3] * 2.0f); // ±2 octaves
+    const float lfoCutoffScale = fastPow2(lfoMod[3] * 2.0f); // ±2 octaves
 
     // Mod matrix — feed per-block source snapshot.
     ModMatrix<4>::Sources modSrc;
     modSrc.lfo1 = lfo1Val;
     modSrc.lfo2 = lfo2Val;
-    modSrc.env  = 0.0f; // computed per-voice below; pass 0 at block level
-    modSrc.velocity   = (lastHeldNote >= 0 && voices[0].active) ? voices[0].velocity : 0.0f;
+    // Use amp envelope level of the first active voice as the Envelope source.
+    // In poly mode this favours voice 0; a per-voice mod matrix would be more
+    // correct but adds per-sample cost — this is the block-rate approximation.
+    {
+        float envLevel = 0.0f;
+        for (const auto& v : voices)
+            if (v.active) { envLevel = v.ampEnv.getLevel(); break; }
+        modSrc.env = envLevel;
+    }
+    // Use the highest-velocity active voice for velocity-based mod sources.
+    {
+        float bestVel = 0.0f;
+        for (const auto& v : voices)
+            if (v.active && v.velocity > bestVel) bestVel = v.velocity;
+        modSrc.velocity = bestVel;
+    }
     modSrc.keyTrack   = (lastHeldNote >= 0) ? (lastHeldNote - 60.0f) / 60.0f : 0.0f;
     modSrc.modWheel   = modWheel;
     modSrc.aftertouch = aftertouch;
@@ -999,6 +1037,10 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
 
     // Phase increment per sample for a unit frequency — we multiply by orbitFreq.
     const float invSR = 1.0f / sampleRateF;
+
+    // Pre-compute pitch-bend multiplier once per block (same for all voices).
+    // Range is ±2 semitones (hardcoded); a future pBendRange parameter could widen this.
+    const float pitchBendMul = fastPow2(pitchBendNorm * 2.0f * (1.0f / 12.0f));
 
     // Shared coupling accumulator values frozen for the block.
     const float couplingFilterAdd = couplingFilterMod * mCouplingGain * 4000.0f; // up to +4 kHz
@@ -1033,13 +1075,15 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         // Per-voice cutoff (includes velocity track → D001, key track, env, couplings, mod matrix).
         const float keyOffsetSemi = (v.note - 60) * fltKeyTrack;
         const float velBoost      = 1.0f + v.velocity * fltVelTrack * 3.0f; // up to 4× cutoff
-        const float baseCutoff    = mCutoff * velBoost * std::pow(2.0f, keyOffsetSemi / 12.0f);
+        const float baseCutoff    = mCutoff * velBoost * fastPow2(keyOffsetSemi * (1.0f / 12.0f));
 
-        const float pitchBendHz   = v.glideFreq * std::pow(2.0f, pitchBendNorm * 2.0f / 12.0f);
+        const float pitchBendHz   = v.glideFreq * pitchBendMul; // pitchBendMul pre-computed per block
         const float phaseIncBase  = pitchBendHz * invSR * rateMod;
 
-        // Deterministic per-voice jitter value (updated each block).
-        const float jitterAmt = v.nextJitter() * mOrbitJitter;
+        // Deterministic per-voice jitter — two independent values for x and y
+        // so jitter creates true 2D orbit perturbation, not a correlated DC offset.
+        const float jitterX = v.nextJitter() * mOrbitJitter;
+        const float jitterY = v.nextJitter() * mOrbitJitter;
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -1058,8 +1102,8 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                                               v.orbitPhase + couplingPhaseAdd,
                                               effOrbitRatio,
                                               orbitPhaseP);
-            const float ox = (op.x + jitterAmt) * finalOrbitRadius;
-            const float oy = (op.y + jitterAmt) * finalOrbitRadius;
+            const float ox = (op.x + jitterX) * finalOrbitRadius;
+            const float oy = (op.y + jitterY) * finalOrbitRadius;
 
             // Terrain height → raw sample.
             const float h = evaluateTerrain(terrainType, ox, oy,
@@ -1071,16 +1115,20 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             const float voiceCutoff = std::clamp(
                 (baseCutoff + fe * fltEnvAmt * 8000.0f + couplingFilterAdd + matrixCutoff * 6000.0f) * lfoCutoffScale,
                 20.0f, sampleRateF * 0.49f);
-            v.filter.setCoefficients(voiceCutoff, fltReso, sampleRateF);
+            // Fast path: no shelf modes used here — skip shelf-gain branch.
+            v.filter.setCoefficients_fast(voiceCutoff, fltReso, sampleRateF);
 
             const float filtered = v.filter.processSample(h);
             const float ampBoost = std::clamp(1.0f + matrixAmp * 0.5f, 0.0f, 2.0f);
             const float voiceOut = filtered * a * ampBoost;
 
             // Pan based on orbit x — geometric stereo from the orbit itself.
-            const float pan = std::clamp(op.x * 0.5f, -0.5f, 0.5f);
-            const float gL = 0.7071f * (1.0f - pan);
-            const float gR = 0.7071f * (1.0f + pan);
+            // Equal-power constant-power law: gL = cos(angle), gR = sin(angle)
+            // where angle sweeps [0, π/2] as pan sweeps [-0.5, +0.5].
+            const float pan   = std::clamp(op.x * 0.5f, -0.5f, 0.5f);
+            const float angle = (pan + 0.5f) * (kOutcropTwoPi * 0.25f); // [0, π/2]
+            const float gL = fastCos(angle);
+            const float gR = fastSin(angle);
 
             L[i] += voiceOut * gL;
             R[i] += voiceOut * gR;

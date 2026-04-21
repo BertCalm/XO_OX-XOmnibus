@@ -615,8 +615,12 @@ public:
         currentSampleRate_ = sampleRate;
         maxBlockSize_      = maxBlockSize;
 
-        for (auto& v : voices_)
-            v.reset(sampleRate);
+        for (int vi = 0; vi < kMaxVoices; ++vi)
+        {
+            voices_[vi].reset(sampleRate);
+            // Seed per-voice noise with unique value so all voices start decorrelated.
+            voices_[vi].noiseState = 12345u + static_cast<uint32_t>(vi) * 1234567u;
+        }
 
         fdn_.prepare(sampleRate, maxBlockSize);
         engineDCBlockerL_.prepare(sampleRate);
@@ -941,14 +945,12 @@ public:
                 voice.delayLength += 0.01f * (voice.targetDelayLength - voice.delayLength);
                 voice.delayLength  = flushDenormal(voice.delayLength);
 
-                // Write excitation into delay
-                voice.delayLine[voice.delayWritePos] = flushDenormal(excitation);
-
                 // ── Read with allpass fractional interpolation ────────────────
+                // (Read BEFORE writing excitation so the delay is one full period)
                 const int   intDelay = static_cast<int>(voice.delayLength);
                 const float frac     = voice.delayLength - static_cast<float>(intDelay);
 
-                // Primary read position
+                // Primary read position (one delay period back from write head)
                 const int readPos1 = (voice.delayWritePos - intDelay + OozeVoice::kMaxDelay) % OozeVoice::kMaxDelay;
                 const float delaySample = voice.delayLine[readPos1];
 
@@ -990,10 +992,11 @@ public:
                 reflectedA = fastTanh(reflectedA);
                 reflectedA = flushDenormal(reflectedA);
 
-                // Write reflected-A back into delay line
-                const int writeBackPos = (voice.delayWritePos + 1) % OozeVoice::kMaxDelay;
-                voice.delayLine[writeBackPos] = flushDenormal(
-                    voice.delayLine[writeBackPos] + reflectedA);
+                // Write excitation + reflected-A into delay at current write position.
+                // FIX: previously wrote reflectedA to writePos+1 (one-ahead) which was
+                // immediately overwritten by excitation on the next sample — reflection
+                // never fed back into the loop. Now combined into a single write.
+                voice.delayLine[voice.delayWritePos] = flushDenormal(excitation + reflectedA);
 
                 // ── Read from second half of delay for end B ──────────────────
                 const int   halfDelay = std::max(1, intDelay / 2);
@@ -1019,6 +1022,9 @@ public:
                 // QDD mandate: soft limiter on end-B reflection too
                 reflectedB = fastTanh(reflectedB);
                 reflectedB = flushDenormal(reflectedB);
+
+                // Write reflected-B back into delay line at end-B's position (closes the loop)
+                voice.delayLine[readPos2] = flushDenormal(voice.delayLine[readPos2] + reflectedB);
 
                 // ── Advance write position ────────────────────────────────────
                 voice.delayWritePos = (voice.delayWritePos + 1) % OozeVoice::kMaxDelay;
@@ -1116,10 +1122,12 @@ public:
         // Feed silence gate
         analyzeForSilenceGate(buffer, numSamples);
 
-        // Reset per-block coupling accumulators
-        couplingAudioAccum_  = 0.0f;
-        couplingMorphAccum_  = 0.0f;
-        couplingFilterAccum_ = 0.0f;
+        // Decay per-block coupling accumulators toward zero (do NOT hard-reset to 0 —
+        // IIR smoother state must persist between blocks or coupling is silenced each block).
+        // Exponential leak: ~63dB attenuation per 1000 blocks at a 0.999 factor.
+        couplingAudioAccum_  *= 0.999f;
+        couplingMorphAccum_  *= 0.999f;
+        couplingFilterAccum_ *= 0.999f;
     }
 
     // =========================================================================
