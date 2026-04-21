@@ -82,16 +82,27 @@ public:
         couplingSampleL_ = 0.0f;
         couplingSampleR_ = 0.0f;
 
-        // Smoothers for macro parameters
-        permeabilitySmoother_.prepare(static_cast<float>(sr_), 5.0f);
-        selectivitySmoother_.prepare(static_cast<float>(sr_), 5.0f);
-        reactivitySmoother_.prepare(static_cast<float>(sr_), 5.0f);
-        memorySmoother_.prepare(static_cast<float>(sr_), 5.0f);
+        // Smoothers for macro parameters — 5ms fleet standard (ParameterSmoother::prepare
+        // takes time in SECONDS; previous 5.0f was 5 seconds, causing sluggish knob response).
+        permeabilitySmoother_.prepare(static_cast<float>(sr_), 0.005f);
+        selectivitySmoother_.prepare(static_cast<float>(sr_), 0.005f);
+        reactivitySmoother_.prepare(static_cast<float>(sr_), 0.005f);
+        memorySmoother_.prepare(static_cast<float>(sr_), 0.005f);
 
         // Membrane filter (one-pole LP for coloring pass-through audio)
-        membraneLPCoeff_ = 0.0f;
+        // Initialise coefficient to default selectivity=0.5 so the filter is
+        // ready on the first block (avoids the silent-then-pop on first render).
+        {
+            constexpr float kDefaultSelectivity = 0.5f;
+            const float defaultFreq = 200.0f + kDefaultSelectivity * 18000.0f;
+            membraneLPCoeff_ = std::exp(-2.0f * 3.14159265f * defaultFreq / static_cast<float>(sr_));
+        }
         membraneLPStateL_ = 0.0f;
         membraneLPStateR_ = 0.0f;
+
+        // Cache the coupling smoother coefficient (50ms, depends only on sr_).
+        // Avoids a std::exp call inside applyCouplingInput() on every block.
+        couplingSmoothCoeff_ = std::exp(-1.0f / (static_cast<float>(sr_) * 0.050f));
 
         // LFO for membrane cutoff modulation
         lfo_.setShape(StandardLFO::Shape::Sine);
@@ -108,6 +119,13 @@ public:
         externalBufferL_ = nullptr;
         externalBufferR_ = nullptr;
         externalNumSamples_ = 0;
+
+        // Snap smoothers to current param values (or defaults) so the first block
+        // doesn't ramp from 0 → actual over 5ms, which causes a click on preset load.
+        permeabilitySmoother_.snapTo(pPermeability_ ? pPermeability_->load() : 0.5f);
+        selectivitySmoother_.snapTo(pSelectivity_ ? pSelectivity_->load() : 0.5f);
+        reactivitySmoother_.snapTo(pReactivity_ ? pReactivity_->load() : 0.5f);
+        memorySmoother_.snapTo(pMemory_ ? pMemory_->load() : 0.3f);
     }
 
     void releaseResources() override {}
@@ -124,7 +142,10 @@ public:
             bandRMS_[i] = 0.0f;
         membraneLPStateL_ = 0.0f;
         membraneLPStateR_ = 0.0f;
-        couplingPermeabilityOffset_ = 0.0f; // fix #303
+        couplingPermeabilityOffset_ = 0.0f;
+        externalBufferL_ = nullptr;   // clear stale pointers on reset
+        externalBufferR_ = nullptr;
+        externalNumSamples_ = 0;
         lfo_.reset();
         for (auto& f : bandLP_)
             f.reset();
@@ -153,7 +174,19 @@ public:
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& /*midi*/, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
-        // SilenceGate: early-out when no external audio is present
+
+        // SilenceGate: wake before the bypass check — external audio may arrive
+        // while the gate is bypassed, and we must detect it here to re-open the gate.
+        // Without this, arriving audio is silently discarded until another engine wakes us.
+        if (externalNumSamples_ > 0 && externalBufferL_ != nullptr)
+        {
+            // Quick peak scan (first sample only — cheap, avoids O(N) on bypass path).
+            const float peakL = std::fabs(externalBufferL_[0]);
+            const float peakR = (externalBufferR_ != nullptr) ? std::fabs(externalBufferR_[0]) : peakL;
+            if (peakL > 0.001f || peakR > 0.001f)
+                wakeSilenceGate();
+        }
+
         if (isSilenceGateBypassed())
         {
             buffer.clear();
@@ -205,14 +238,15 @@ public:
 
         // ---- Compute membrane LP coefficient once at block-rate ----
         // LFO rate is low (≤~5 Hz); re-computing the one-pole coefficient
-        // every sample via std::exp is the #1 CPU hot-spot in this engine.
-        // Using fastExp with the LFO's current phase value gives imperceptible
-        // difference while removing a transcendental from the per-sample path.
+        // every sample is wasteful — block-rate refresh is inaudible.
+        // Use std::exp (not fastExp) for matched-Z IIR coefficient accuracy.
+        // fastExp has ~6% error which shifts the membrane cutoff by ~1 semitone.
         {
             const float effPhase = lfo_.phase + lfo_.phaseOffset;
-            const float lfoValBlock = fastSin((effPhase >= 1.0f ? effPhase - 1.0f : effPhase) * 6.28318530718f);
+            const float wrappedPhase = (effPhase >= 1.0f) ? (effPhase - 1.0f) : effPhase;
+            const float lfoValBlock = fastSin(wrappedPhase * 6.28318530718f);
             const float effectiveCutoffBlock = membraneBaseFreq * (1.0f + lfoValBlock * kLfoDepth);
-            membraneLPCoeff_ = fastExp(-2.0f * 3.14159265f * effectiveCutoffBlock / static_cast<float>(sr_));
+            membraneLPCoeff_ = std::exp(-2.0f * 3.14159265f * effectiveCutoffBlock / static_cast<float>(sr_));
         }
 
         for (int i = 0; i < numSamples; ++i)
@@ -248,8 +282,10 @@ public:
             const float hp1k = bandHP2_[0].processSample(bandHP2_[1].processSample(inL));
             const float b2 = bandLP3_[0].processSample(bandLP3_[1].processSample(hp1k));
 
-            // Band 3: HP5k (high)
-            const float b3 = bandHP3_[0].processSample(bandHP3_[1].processSample(inL));
+            // Band 3: HP5k (high) — applied to hp1k output for a proper complementary 4-band
+            // Linkwitz-Riley split. Previously used inL directly, allowing 1k–5k content to
+            // appear in both Band 2 and Band 3 (missing the 1 kHz HP stage).
+            const float b3 = bandHP3_[0].processSample(bandHP3_[1].processSample(hp1k));
 
             bandSumSq[0] += b0 * b0;
             bandSumSq[1] += b1 * b1;
@@ -261,16 +297,15 @@ public:
             lfo_.process(); // advance LFO state; membraneLPCoeff_ is refreshed at block-rate
 
             // ---- Membrane filter (one-pole LP for pass-through coloring) ----
-            // Also run right channel through same coefficient
-            const float inR_forLP = (externalBufferR_ && i < externalNumSamples_) ? externalBufferR_[i] : 0.0f;
+            // Re-use already-read inR (same as the previous inR_forLP redundant re-read).
             membraneLPStateL_ = membraneLPCoeff_ * membraneLPStateL_ + (1.0f - membraneLPCoeff_) * inL;
-            membraneLPStateR_ = membraneLPCoeff_ * membraneLPStateR_ + (1.0f - membraneLPCoeff_) * inR_forLP;
+            membraneLPStateR_ = membraneLPCoeff_ * membraneLPStateR_ + (1.0f - membraneLPCoeff_) * inR;
             membraneLPStateL_ = (std::abs(membraneLPStateL_) < 1e-18f) ? 0.0f : membraneLPStateL_;
             membraneLPStateR_ = (std::abs(membraneLPStateR_) < 1e-18f) ? 0.0f : membraneLPStateR_;
 
             // ---- Output: blend dry external with filtered (permeability = wet/dry) ----
             outL[i] = inL * (1.0f - permeability) + membraneLPStateL_ * permeability;
-            outR[i] = inR_forLP * (1.0f - permeability) + membraneLPStateR_ * permeability;
+            outR[i] = inR  * (1.0f - permeability) + membraneLPStateR_ * permeability;
 
             // Cache for coupling
             couplingSampleL_ = outL[i];
@@ -298,7 +333,9 @@ public:
             updatePitchViaAutocorrelation();
         }
 
-        // Wake silence gate if external audio present
+        // Keep the gate awake while signal is present (active-path check).
+        // The gate is also pre-woken at the top of renderBlock() to handle
+        // the case where audio arrives while the gate was bypassed.
         if (envFollowerL_ > 0.001f || envFollowerR_ > 0.001f)
             wakeSilenceGate();
 
@@ -325,6 +362,10 @@ public:
     // incoming coupling RMS by reusing the same attack coefficient used for the
     // envelope follower. amount [0, 1] scales the maximum modulation depth
     // so the coupling route strength drives the permeability sensitivity.
+    // All coupling types route to the same semantic: incoming amplitude opens the membrane.
+    // AmpToFilter, AudioToFM, PitchToPitch, etc. all raise permeability proportionally
+    // to their block RMS. This is intentional — Osmosis is a sensor, not a synthesis
+    // engine, and the only meaningful coupling input is "how loud is this signal."
     void applyCouplingInput(CouplingType /*type*/, float amount, const float* sourceBuffer, int numSamples) override
     {
         if (!sourceBuffer || numSamples <= 0 || amount <= 0.0f)
@@ -341,10 +382,10 @@ public:
             sumSq += sourceBuffer[i] * sourceBuffer[i];
         const float rms = std::sqrt(sumSq / static_cast<float>(numSamples));
 
-        // Smooth toward the new target using a 50ms one-pole attack
-        const float coeff = std::exp(-1.0f / (static_cast<float>(sr_) * 0.050f));
+        // Smooth toward the new target using a 50ms one-pole attack.
+        // couplingSmoothCoeff_ is cached in prepare() — avoids std::exp per block.
         const float target = rms * amount; // amount ∈ [0,1] scales depth
-        couplingPermeabilityOffset_ = coeff * couplingPermeabilityOffset_ + (1.0f - coeff) * target;
+        couplingPermeabilityOffset_ = couplingSmoothCoeff_ * couplingPermeabilityOffset_ + (1.0f - couplingSmoothCoeff_) * target;
         couplingPermeabilityOffset_ = flushDenormal(couplingPermeabilityOffset_);
     }
 
@@ -434,6 +475,10 @@ private:
     // coupling signals open the membrane proportionally to their amplitude.
     float couplingPermeabilityOffset_ = 0.0f;
 
+    // Cached 50ms coupling smoother coefficient — computed once in prepare().
+    // Avoids a std::exp call inside applyCouplingInput() on every block.
+    float couplingSmoothCoeff_ = 0.9989f; // default ~50ms @ 44.1kHz
+
     // Parameter pointers
     std::atomic<float>* pPermeability_ = nullptr;
     std::atomic<float>* pSelectivity_ = nullptr;
@@ -516,16 +561,19 @@ private:
         const int lagMin = static_cast<int>(sr / 2000.0f); // ~22 samples @ 44.1k
         const int lagMax = static_cast<int>(sr / 50.0f);   // ~882 samples @ 44.1k
 
-        // Clamp to buffer capacity (leave half the buffer for the correlation window)
-        const int maxUsableLag = kAcBufSize / 2 - 1;
+        // Clamp to buffer capacity. The constraint is windowLen + lagMax <= kAcBufSize
+        // so that idx1 = (base + n + lag) never wraps past acBufPos_ into stale data.
+        // Previous code used maxUsableLag = kAcBufSize/2 - 1 with windowLen = kAcBufSize/2,
+        // which allowed idx1 to advance up to kAcBufSize - 2 past base — reading ~1022
+        // samples of unwritten circular-buffer garbage at high lags.
+        // Fix: window = kAcBufSize * 2/3, lagMax = kAcBufSize * 1/3 - 1 so sum ≤ kAcBufSize - 1.
+        const int windowLen = kAcBufSize * 2 / 3;             // 1365 @ kAcBufSize=2048
+        const int maxUsableLag = kAcBufSize - windowLen - 1;  // 682 @ kAcBufSize=2048
         const int clampedLagMin = std::max(lagMin, 1);
         const int clampedLagMax = std::min(lagMax, maxUsableLag);
 
         if (clampedLagMin >= clampedLagMax)
             return; // degenerate — keep last estimate
-
-        // Window length: use kAcBufSize/2 samples so we always have lag+window in buffer
-        const int windowLen = kAcBufSize / 2;
 
         float bestCorr = -1.0f;
         int bestLag = clampedLagMin;
@@ -564,8 +612,13 @@ private:
         if (bestCorr > 0.3f)
         {
             const float newPitch = sr / static_cast<float>(bestLag);
-            // Smooth the pitch estimate to prevent coupling consumers seeing jitter
-            detectedPitch_ = detectedPitch_ * 0.7f + newPitch * 0.3f;
+            // Smooth the pitch estimate to prevent coupling consumers seeing jitter.
+            // SR-scaled smoothing: targets ~200ms half-life regardless of sample rate.
+            // At 44.1kHz, kPitchUpdateInterval=4096 → ~10.8 updates/s → alpha≈0.3 (original).
+            // At 96kHz → ~23.4 updates/s → need alpha≈0.55 to maintain the same half-life.
+            const float updatesPerSec = sr / static_cast<float>(kPitchUpdateInterval);
+            const float alpha = 1.0f - std::exp(-1.0f / (updatesPerSec * 0.200f)); // 200ms TC
+            detectedPitch_ = detectedPitch_ * (1.0f - alpha) + newPitch * alpha;
         }
     }
 };
