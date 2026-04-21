@@ -121,6 +121,9 @@ public:
 
     void trigger(float attackSec, float decaySec) noexcept
     {
+        // FIX(stability): guard against sr=0 sentinel (engine called before prepare()).
+        if (sr <= 0.0f) return;
+
         stage = Stage::Attack;
         level = 0.0f;
 
@@ -506,11 +509,16 @@ public:
     void trigger(float baseFreqHz, const OstiInstrumentData& inst, int articulation, float brightness,
                  float tuningOffset, float velocityScale, float userExciterMix = 0.5f) noexcept
     {
-        articulation = std::min(articulation, inst.numArticulations - 1);
+        // FIX(stability): guard against sr=0 sentinel.
+        if (sr <= 0.0f) return;
+
+        // FIX(stability): also clamp below 0 — a negative articulation would be UB.
+        articulation = std::min(std::max(articulation, 0), inst.numArticulations - 1);
         const auto& art = inst.articulations[articulation];
 
         // D004: blend instrument's characteristic exciter mix with user control.
         // userExciterMix 0.5 = instrument default, 0 = force noise, 1 = force pitched.
+        // blendedExciterMix is a pure mix fraction [0,1]; velocity is carried separately.
         const float blendedExciterMix =
             lerp(art.exciterMix, userExciterMix < 0.5f ? 0.0f : 1.0f, std::abs(userExciterMix - 0.5f) * 2.0f);
 
@@ -544,6 +552,8 @@ public:
             spikePhase = 0.0f;
             spikeFreq = baseFreqHz * art.pitchSpikeRatio * tuneMultiplier;
             spikeSamplesLeft = static_cast<int>(sr * art.pitchSpikeDurationMs * 0.001f);
+            // FIX(sound): spikeLevel is a velocity-scaled amplitude; excitationLevel is NOT
+            // involved in the spike path, so velocity is applied here directly.
             spikeLevel = velocityScale * (1.0f - blendedExciterMix);
         }
         else
@@ -551,7 +561,13 @@ public:
             spikeActive = false;
         }
 
-        noiseLevel = velocityScale * blendedExciterMix + velocityScale * (1.0f - blendedExciterMix) * 0.5f;
+        // FIX(sound): noiseLevel is a pure mix fraction [0,1]. excitationLevel already
+        // carries velocityScale; multiplying noiseLevel by velocityScale again would
+        // square the velocity in the hot path (noise * excitationLevel * noiseLevel).
+        // Keep noiseLevel as the noise/pitched split fraction only:
+        //   blendedExciterMix → 1 = pure pitched (spike), 0 = pure noise.
+        //   Residual 0.5*(1-mix) preserves some noise colour even at high mix.
+        noiseLevel = blendedExciterMix + (1.0f - blendedExciterMix) * 0.5f;
         active = true;
     }
 
@@ -575,8 +591,10 @@ public:
             spikePhase += spikeFreq / sr;
             while (spikePhase >= 1.0f)
                 spikePhase -= 1.0f;
-            excitation += fastSin(spikePhase * 6.28318530718f) * spikeLevel *
-                          (static_cast<float>(spikeSamplesLeft) / std::max(1.0f, sr * 0.003f));
+            // FIX(sound): clamp ramp to [0,1] so spikes longer than 3ms don't
+            // produce initial amplitudes >1 and clip the excitation bus.
+            float spikeRamp = std::min(1.0f, static_cast<float>(spikeSamplesLeft) / std::max(1.0f, sr * 0.003f));
+            excitation += fastSin(spikePhase * 6.28318530718f) * spikeLevel * spikeRamp;
             --spikeSamplesLeft;
             if (spikeSamplesLeft <= 0)
                 spikeActive = false;
@@ -720,8 +738,11 @@ public:
             multiTap = (delayBuffer[tap2Pos] + delayBuffer[tap3Pos]) * 0.15f;
         }
 
-        // Write input + feedback into delay line
-        delayBuffer[writePos] = input + (reflected + multiTap) * feedbackGain;
+        // Write input + feedback into delay line.
+        // FIX(stability): exclude multiTap from the feedback write — feeding taps
+        // back into the delay creates a secondary feedback loop that can cause
+        // instability at high reflection settings on the Box body type.
+        delayBuffer[writePos] = input + reflected * feedbackGain;
         writePos = (writePos + 1) & (kMaxDelay - 1);
 
         // Blend dry input with body resonance
@@ -2441,11 +2462,17 @@ public:
         liveOverrideFadeCounter = 0;
     }
 
-    // Set pattern from library
+    // Set pattern from library — no-op if unchanged (called every block).
     void setPattern(int instrumentIdx, int patternIdx) noexcept
     {
         instrumentIdx = std::min(std::max(instrumentIdx, 0), 11);
-        patternIdx = std::min(std::max(patternIdx, 0), 7);
+        patternIdx    = std::min(std::max(patternIdx, 0), 7);
+        // FIX(perf): cache last indices so re-setting the same pattern each block
+        // is a fast compare rather than a pointer write that aliases the cache line.
+        if (instrumentIdx == lastInstrumentIdx && patternIdx == lastPatternIdx)
+            return;
+        lastInstrumentIdx = instrumentIdx;
+        lastPatternIdx    = patternIdx;
         pattern = &kPatternLibrary[instrumentIdx][patternIdx];
     }
 
@@ -2544,6 +2571,8 @@ private:
     int pendingArticulation = 0;
     bool liveOverrideActive = false;
     int liveOverrideFadeCounter = 0;
+    int lastInstrumentIdx = -1; // cached for setPattern change-guard
+    int lastPatternIdx    = -1;
 };
 
 //==============================================================================
@@ -2683,7 +2712,10 @@ public:
         if (envLevel > threshold && threshold > 0.0f)
         {
             float overshoot = envLevel / threshold;
-            float compressedOvershoot = fastExp(std::log(overshoot) * invRatio);
+            // FIX(sound): use std::pow instead of fastExp(std::log(x)*r) — the
+            // latter mixes an approximate exp with an exact log producing asymmetric
+            // error. std::pow is equivalent and avoids the log→fastExp mismatch.
+            float compressedOvershoot = std::pow(overshoot, invRatio);
             gain = compressedOvershoot / overshoot;
         }
 
@@ -2759,9 +2791,13 @@ struct OstiSubVoice
         velocity = effectiveVel;
         active = true;
 
-        // Compute base frequency with tuning offset and pitch envelope
+        // Compute base frequency with tuning offset and pitch envelope.
+        // NOTE(design): pitchEnvAmount shifts the resonator tuning at strike time
+        // by ±12 semitones. The shift is static for the voice's duration — it acts
+        // as a per-hit detune rather than a decaying pitch envelope. A true decaying
+        // pitch envelope would require per-sample resonator retuning (expensive).
+        // This static-shift approach matches the fast "thwack" pitch of real drums.
         float freq = inst.defaultFreqHz * fastExp(tuning * (0.693147f / 12.0f));
-        // Pitch envelope: offset the initial pitch
         float initialTuning = tuning + pitchEnvAmount * 12.0f;
 
         // D004: user exciterMix blends with the articulation's characteristic noise/pitched balance.
@@ -2956,6 +2992,10 @@ public:
         for (int s = 0; s < kNumSeats; ++s)
             seats[s].prepare(sampleRate);
 
+        // FIX(sound): derive envelope follower coefficient from SR (~10ms time constant).
+        // 1 - exp(-1/(sr * 0.010)) ≈ the correct one-pole coefficient.
+        envFollowerCoeff = 1.0f - std::exp(-1.0f / (static_cast<float>(sampleRate) * 0.010f));
+
         // SRO SilenceGate: drum synthesis with reverb tail — 500ms hold.
         // Note: OSTINATO also fires via its autonomous pattern sequencer,
         // so the gate is woken on sequencer triggers (see renderBlock step 3).
@@ -3105,8 +3145,11 @@ public:
                 // Sympathetic brightness boost
                 sBright[s] = clamp(sBright[s] + neighborPeak * gCircleAmt * 0.2f, 0.0f, 1.0f);
 
-                // Ghost trigger: if neighbor was loud enough, trigger a quiet ghost note
-                if (neighborPeak * gCircleAmt > 0.4f && !seats[s].isActive())
+                // Ghost trigger: if neighbor was loud enough, trigger a quiet ghost note.
+                // FIX(sound): removed the !isActive() guard — at high CIRCLE with dense
+                // patterns every seat is always active, so ghosts never fired. Use the
+                // seat's two-subvoice round-robin instead; the voice-steal fade prevents clicks.
+                if (neighborPeak * gCircleAmt > 0.4f)
                 {
                     int inst = static_cast<int>(sInstr[s]);
                     int art = static_cast<int>(sArtic[s]);
@@ -3120,14 +3163,29 @@ public:
             }
         }
 
-        // --- Master filter ---
-        masterFilterL.setCoefficients(clamp(gMasterFilt, 200.0f, static_cast<float>(sr) * 0.45f), gMasterReso,
-                                      static_cast<float>(sr));
-        masterFilterR.setCoefficients(clamp(gMasterFilt, 200.0f, static_cast<float>(sr) * 0.45f), gMasterReso,
-                                      static_cast<float>(sr));
+        // --- Master filter (recompute coefficients only when values change) ---
+        // FIX(perf): cache last-used filter params to avoid redundant setCoefficients()
+        // calls every block — CytomicSVF coeff computation touches trig functions.
+        float filtCutoff = clamp(gMasterFilt, 200.0f, static_cast<float>(sr) * 0.45f);
+        if (filtCutoff != lastMasterFiltCutoff || gMasterReso != lastMasterFiltReso)
+        {
+            masterFilterL.setCoefficients(filtCutoff, gMasterReso, static_cast<float>(sr));
+            masterFilterR.setCoefficients(filtCutoff, gMasterReso, static_cast<float>(sr));
+            lastMasterFiltCutoff = filtCutoff;
+            lastMasterFiltReso   = gMasterReso;
+        }
 
-        // --- Compressor ---
-        compressor.setParams(gCompThresh, gCompRatio, gCompAttack, gCompRelease);
+        // --- Compressor (recompute only when params change) ---
+        // FIX(perf): setParams calls fastExp twice per block; gate on change.
+        if (gCompThresh != lastCompThresh || gCompRatio != lastCompRatio ||
+            gCompAttack != lastCompAttack || gCompRelease != lastCompRelease)
+        {
+            compressor.setParams(gCompThresh, gCompRatio, gCompAttack, gCompRelease);
+            lastCompThresh  = gCompThresh;
+            lastCompRatio   = gCompRatio;
+            lastCompAttack  = gCompAttack;
+            lastCompRelease = gCompRelease;
+        }
 
         // --- Clear coupling buffer ---
         couplingBuffer.clear();
@@ -3158,7 +3216,13 @@ public:
                 else if (note >= kAltMidiNote && note < kAltMidiNote + kNumSeats)
                 {
                     seatIdx = note - kAltMidiNote;
-                    artOverride = (static_cast<int>(sArtic[seatIdx]) + 1) % 4;
+                    // FIX(stability): clamp to instrument's actual numArticulations, not
+                    // the hardcoded 4 — Bongos/Surdo/TongueDrum have only 3 articulations
+                    // and index 3 points to the all-zero unused slot in the table.
+                    int inst = static_cast<int>(sInstr[seatIdx]);
+                    inst = std::min(std::max(inst, 0), static_cast<int>(OstiInstrument::Count) - 1);
+                    int numArt = kInstrumentTable[inst].numArticulations;
+                    artOverride = (static_cast<int>(sArtic[seatIdx]) + 1) % numArt;
                 }
 
                 if (seatIdx >= 0 && seatIdx < kNumSeats)
@@ -3260,8 +3324,10 @@ public:
             sumR *= gMasterLevel;
 
             // Envelope follower for coupling output (one-pole, ~10ms)
+            // FIX(sound): derive coefficient from SR so the ~10ms time constant is
+            // correct at 48kHz/96kHz — hardcoded 0.002f was 3-5x too slow at those rates.
             float monoAbs = std::abs(sumL + sumR) * 0.5f;
-            envFollowerLevel += 0.002f * (monoAbs - envFollowerLevel);
+            envFollowerLevel += envFollowerCoeff * (monoAbs - envFollowerLevel);
             envFollowerLevel = flushDenormal(envFollowerLevel);
 
             outL[i] += sumL;
@@ -3323,8 +3389,10 @@ public:
             {
                 // Don't choke — instead trigger ghost notes on random seats
                 int ghostSeat = static_cast<int>(avgMod * 7.99f) % kNumSeats;
-                // Ghost trigger happens next block via seatPeaks mechanism
-                seatPeaks[ghostSeat] = std::max(seatPeaks[ghostSeat], avgMod * 0.5f);
+                // FIX(stability): clamp injected peak to 1.0 to prevent the
+                // coupling accumulator from stacking across multiple calls and
+                // overdriving the CIRCLE ghost threshold.
+                seatPeaks[ghostSeat] = std::min(1.0f, std::max(seatPeaks[ghostSeat], avgMod * 0.5f));
             }
             break;
         case CouplingType::AudioToFM:
@@ -3409,9 +3477,18 @@ private:
 
     // Envelope follower for coupling output
     float envFollowerLevel = 0.0f;
+    float envFollowerCoeff = 0.002f; // recomputed in prepare() from SR (target ~10ms)
 
     // Inter-seat coupling: previous-block peak levels
     float seatPeaks[kNumSeats] = {};
+
+    // FIX(perf): cached params for change-gated recompute (master filter + compressor)
+    float lastMasterFiltCutoff = -1.0f;
+    float lastMasterFiltReso   = -1.0f;
+    float lastCompThresh  = -999.0f;
+    float lastCompRatio   = -1.0f;
+    float lastCompAttack  = -1.0f;
+    float lastCompRelease = -1.0f;
 
     // D006: mod wheel (CC#1) -> CIRCLE macro depth
     float modWheelAmount = 0.0f;
@@ -3482,7 +3559,8 @@ private:
                                                        "Cajon",      "Taiko",  "Tabla",       "Doumbek",
                                                        "Frame Drum", "Surdo",  "Tongue Drum", "Beatbox"};
 
-        static const juce::StringArray bodyModelNames{"Cylindrical", "Conical", "Box", "Open"};
+        // bodyModelNames intentionally removed — the bodyModel Choice uses a 5-entry
+        // inline StringArray {"Auto","Cylindrical","Conical","Box","Open"} below.
 
         static const juce::StringArray patternNames{"Basic",   "Variation", "Fill",    "Sparse",
                                                     "Style A", "Style B",   "Style C", "Double"};
