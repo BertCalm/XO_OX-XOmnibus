@@ -273,9 +273,10 @@ private:
 
         // --- Output label ---
         {
-            g.setFont(juce::Font(juce::FontOptions{}
+            static const juce::Font outputLabelFont(juce::FontOptions{}
                           .withName(juce::Font::getDefaultSansSerifFontName())
-                          .withHeight(9.0f)));
+                          .withHeight(9.0f));
+            g.setFont(outputLabelFont);
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.25f));
             g.drawText("OUTPUT", outputLabelBounds_.toNearestInt(),
                        juce::Justification::centredRight, false);
@@ -348,7 +349,7 @@ private:
         g.setColour(c.border);
         g.drawRoundedRectangle(bounds, 8.0f, 1.0f);
 
-        const juce::Font pillFont(juce::FontOptions{}
+        static const juce::Font pillFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withStyle("Bold")
             .withHeight(11.0f));
@@ -433,7 +434,7 @@ private:
         }
 
         // Label text
-        const juce::Font pillFont(juce::FontOptions{}
+        static const juce::Font pillFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withStyle("Bold")
             .withHeight(11.0f));

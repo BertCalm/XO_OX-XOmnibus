@@ -321,13 +321,18 @@ private:
             float motorHum = fastSin(motorPhase * 6.28318f * 60.0f / flutterHz) * flutterAmt * 0.015f;
 
             // Filtered tape hiss
-            float hiss = nextNoise() * noiseAmt * 0.03f;
-            float hissFilterFreq = 4000.0f + hissLFO.process() * 2000.0f * filtAmt;
-            hissFilterFreq = std::max(1000.0f, std::min(hissFilterFreq, srF * 0.45f));
-            hissFilt.setCoefficients(hissFilterFreq, 0.5f, srF);
-            hissFiltR.setCoefficients(hissFilterFreq + 200.0f, 0.5f, srF); // slight channel difference
-            float hissL = hissFilt.processSample(hiss);
-            float hissR = hissFiltR.processSample(nextNoise() * noiseAmt * 0.03f);
+            float hissL = 0.0f;
+            float hissR = 0.0f;
+            if (noiseAmt > 0.001f)
+            {
+                float hiss = nextNoise() * noiseAmt * 0.03f;
+                float hissFilterFreq = 4000.0f + hissLFO.process() * 2000.0f * filtAmt;
+                hissFilterFreq = std::max(1000.0f, std::min(hissFilterFreq, srF * 0.45f));
+                hissFilt.setCoefficients(hissFilterFreq, 0.5f, srF);
+                hissFiltR.setCoefficients(hissFilterFreq + 200.0f, 0.5f, srF); // slight channel difference
+                hissL = hissFilt.processSample(hiss);
+                hissR = hissFiltR.processSample(nextNoise() * noiseAmt * 0.03f);
+            }
 
             outL = flushDenormal(delayed + motorHum + hissL);
             outR = flushDenormal(delayed * 0.97f + motorHum * 0.96f + hissR);
@@ -447,7 +452,7 @@ inline void OsmiumChain::addParameters(
     registerFloat(layout, p + "vhsFlutter", p + "VHS Flutter",
                   0.0f, 1.0f, 0.2f, 0.001f);
     registerFloat(layout, p + "vhsNoise",   p + "VHS Noise",
-                  0.0f, 1.0f, 0.2f, 0.001f);
+                  0.0f, 1.0f, 0.0f, 0.001f);
     registerFloat(layout, p + "vhsFilter",  p + "VHS Filter",
                   0.0f, 1.0f, 0.4f, 0.001f);
 }

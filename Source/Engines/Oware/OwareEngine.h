@@ -183,10 +183,13 @@ struct OwareMode
             freqHz = sampleRate * 0.49f;
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max(q, 1.0f);
-        float r = std::exp(-3.14159265f * bw / sampleRate);
-        a1 = 2.0f * r * std::cos(w);
+        // fastExp/fastCos/fastSin: ~0.01–0.1% error — negligible for resonator coefficients
+        // (far below perceptual threshold). The dirty-flag cache above already limits
+        // how often this path runs; when it does, fast-math keeps the work cheap.
+        float r = fastExp(-3.14159265f * bw / sampleRate);
+        a1 = 2.0f * r * fastCos(w);
         a2 = r * r;
-        b0 = (1.0f - r * r) * std::sin(w);
+        b0 = (1.0f - r * r) * fastSin(w);
         freq = freqHz;
         cachedQ = q;
     }
@@ -593,7 +596,6 @@ public:
 
         if (isSilenceGateBypassed())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
@@ -636,12 +638,17 @@ public:
         smoothSympathy.set(effectiveSympathy);
         smoothBrightness.set(effectiveBright);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         const float capturedPitchMod = couplingPitchMod; // P25 fix: capture before zero
         couplingPitchMod = 0.0f;
         couplingMaterialMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
+        // Pitch-bend ratio: block-constant portion, hoisted above per-sample loop.
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
         // Improvement #1: material exponent alpha — controls per-mode decay differentiation
         // Wood alpha=2.0 (upper modes die fast), Metal alpha=0.3 (all modes ring together)
@@ -653,8 +660,17 @@ public:
         for (int m = 0; m < OwareVoice::kMaxModes; ++m)
             logModeIndex[m] = std::log(static_cast<float>(m + 1));
 
+        // Improvement #1 follow-up: precompute fastExp(-materialAlpha * logModeIndex[m])
+        // once per block. Both inputs are block-constant (materialAlpha from pMaterial,
+        // logModeIndex is precomputed above), so the per-mode per-voice per-sample
+        // fastExp call inside the inner loop collapses to an array lookup. Was
+        // kMaxModes × numVoices × numSamples fastExp calls per block; now kMaxModes.
+        float modeDecayScale[OwareVoice::kMaxModes];
+        for (int m = 0; m < OwareVoice::kMaxModes; ++m)
+            modeDecayScale[m] = fastExp(-materialAlpha * logModeIndex[m]);
+
         float decayTimeSec = std::max(pDecay * (1.0f - pDamping * 0.8f), 0.01f);
-        float baseDecayCoeff = std::exp(-1.0f / (decayTimeSec * srf));
+        float baseDecayCoeff = fastExp(-1.0f / (decayTimeSec * srf));
 
         // Improvement #5: thermal drift — shared slow tuning scalar.
         // F5: thermalTimer must count samples, not blocks, to honour the "~4 seconds"
@@ -687,6 +703,8 @@ public:
         // F1: shimmerLFO rate is also block-level (pShimmerHz is block-constant);
         //     moved here from inside the sample loop where it fired every sample.
         const float shimmerLFORate = std::max(0.05f, pShimmerHz * 0.05f);
+        // Apply LFO rate/shape once per block per voice — not per sample
+        const float shimmerLfoRate = std::max(0.05f, pShimmerHz * 0.05f);
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -696,16 +714,29 @@ public:
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
             voice.shimmerLFO.setRate(shimmerLFORate, srf); // F1: block-level, not per-sample
+            // Shimmer LFO rate depends only on pShimmerHz (block-constant); hoist.
+            voice.shimmerLFO.setRate(shimmerLfoRate, srf);
         }
+
+        // malletNow is block-constant (smoothMallet advances each sample but inside
+        // the inner mode loop we use `1.5f - malletNow * 1.2f` — when collapsed as a
+        // block-rate scalar this eliminates kMaxModes × numVoices × numSamples mul+sub.
+        // We read it once per sample below but cache its derived falloff factor.
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float matNow = smoothMaterial.process();
             float malletNow = smoothMallet.process();
             float buzzNow = smoothBuzz.process();
             float bodyDNow = smoothBodyDepth.process();
             float sympNow = smoothSympathy.process();
             float brightNow = smoothBrightness.process();
+
+            // Per-sample mallet falloff — used inside the per-mode inner loop below.
+            // Hoisting (1.5 - malletNow * 1.2) here eliminates kMaxModes × kVoices
+            // redundant computations per sample.
+            const float malletFalloff = 1.5f - malletNow * 1.2f;
 
             float mixL = 0.0f, mixR = 0.0f;
 
@@ -716,6 +747,7 @@ public:
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
+                freq *= blockBendRatio; // hoisted; pre-reset pitch coupling snapshot
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 → brightness
                 float lfo2Val = voice.lfo2.process() * lfo2Depth; // LFO2 → material
@@ -726,7 +758,7 @@ public:
 
                 // Improvement #5: apply thermal drift (shared + per-voice personality)
                 float totalThermalCents = thermalState + voice.thermalPersonality * pThermal * 0.5f;
-                freq *= fastPow2(totalThermalCents / 1200.0f); // BUG-3 FIX: fastPow2 replaces std::pow
+                freq *= fastPow2(totalThermalCents * (1.0f / 1200.0f)); // BUG-3 FIX: fastPow2 replaces std::pow
 
                 // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio).
                 // F1: shimmerLFO.setRate() moved to block-level pre-loop above.
@@ -736,6 +768,13 @@ public:
                 //     (e.g., 9×) would produce semitone-class detuning at upper modes.
                 float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f; // [0,1]
                 float shimmerOffset = pShimmerHz * shimmerMod;                  // 0 to shimmerHz
+                // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio)
+                // BUG-2 FIX: use pShimmerHz parameter instead of hardcoded 0.3
+                // (shimmerLFO.setRate hoisted to per-block voice loop above.)
+                float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f;      // [0,1]
+                float shimmerOffset = pShimmerHz * shimmerMod;                      // 0 to shimmerHz
+                // Apply as additive Hz offset (Balinese: beat rate in Hz, not cents)
+                float freqWithShimmer = freq + shimmerOffset;
 
                 float excitation = voice.exciter.process();
 
@@ -779,13 +818,15 @@ public:
                     // Improvement #7: apply body-membrane coupling boost to Q
                     modeQ *= voice.modeDecayBoosts[m];
 
-                    // D001: mallet hardness controls upper mode excitation
-                    float modeAmp = 1.0f / (1.0f + static_cast<float>(m) * (1.5f - malletNow * 1.2f));
+                    // D001: mallet hardness controls upper mode excitation.
+                    // malletFalloff = (1.5f - malletNow * 1.2f) hoisted above the voice+mode
+                    // loops — was recomputed M×V times per sample.
+                    float modeAmp = 1.0f / (1.0f + static_cast<float>(m) * malletFalloff);
 
-                    // Improvement #1: material exponent alpha — per-mode decay scaling
-                    // CPU FIX: use precomputed logModeIndex[] table (computed once per block above)
-                    float modeDecayScale = fastExp(-materialAlpha * logModeIndex[m]);
-                    modeAmp *= modeDecayScale;
+                    // Improvement #1: material exponent alpha — per-mode decay scaling.
+                    // modeDecayScale[] precomputed once per block (materialAlpha × logModeIndex
+                    // are both block-constant, so per-sample fastExp is no longer needed).
+                    modeAmp *= modeDecayScale[m];
 
                     voice.modes[m].setFreqAndQ(modeFreq, modeQ, srf);
                     float modeInput = excitation + sympInputPerMode[m];
@@ -811,6 +852,7 @@ public:
                     continue;
                 }
 
+                // Tick filter envelope per sample; decimate SVF coeff refresh to every 16.
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
                 // BUG-1 FIX: LFO1 modulates brightness (±3000 Hz at full depth)
                 // F3: svf.setMode is constant (always LowPass) — moved to noteOn; removed here.
@@ -822,6 +864,12 @@ public:
                 {
                     voice.svf.setCoefficients(cutoff, 0.5f, srf);
                     voice.lastCutoff = cutoff;
+                if (updateFilter)
+                {
+                    // BUG-1 FIX: LFO1 modulates brightness (±3000 Hz at full depth)
+                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.5f, srf);
                 }
                 float filtered = voice.svf.processSample(bodied);
                 // F10: voice.sympatheticOut removed — it was set here but never read

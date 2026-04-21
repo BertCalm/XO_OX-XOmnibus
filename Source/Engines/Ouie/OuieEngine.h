@@ -837,7 +837,6 @@ public:
             }
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
@@ -1031,6 +1030,7 @@ public:
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
+            const bool updateFilter = ((sample & 15) == 0);
             // Smooth HAMMER parameter
             smoothedHammer += (effectiveHammer - smoothedHammer) * smoothCoeff;
             smoothedHammer = flushDenormal(smoothedHammer);
@@ -1244,8 +1244,10 @@ public:
                     (vi == 0 ? effectiveCutoff1 : effectiveCutoff2) + velFilterBoost + breathMod * 1000.0f;
                 voiceCutoff = clamp(voiceCutoff, 20.0f, 20000.0f);
 
-                // Update filter cutoff per sample for modulation (use fast path)
-                voice.filter.setCoefficients_fast(voiceCutoff, vi == 0 ? effectiveReso1 : effectiveReso2, srf);
+                // Update filter coefficients every 16 samples (modulation still tracks;
+                // the refresh rate stays well above audible lag).
+                if (updateFilter)
+                    voice.filter.setCoefficients_fast(voiceCutoff, vi == 0 ? effectiveReso1 : effectiveReso2, srf);
 
                 voiceGains[vi] = ampLevel * voice.velocity * voice.fadeGain;
             }

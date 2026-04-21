@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Init Chemistry",
+  "mood": "Foundation",
+  "engines": [
+    "Oobleck"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Neutral feed/kill with stable waveform — the honest starting point for reaction-diffusion synthesis.",
+  "tags": [
+    "oobleck",
+    "init",
+    "foundation",
+    "neutral",
+    "clean",
+    "starting-point"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.3,
+    "density": 0.4,
+    "space": 0.3,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oobleck": {
+      "oobl_feed": 0.035,
+      "oobl_kill": 0.060,
+      "oobl_diffusion": 0.5,
+      "oobl_evolution": 120.0,
+      "oobl_persistence": 0.3,
+      "oobl_substrate": 0.5,
+      "oobl_temperature": 0.05,
+      "oobl_seed": 1,
+      "oobl_readout_mode": 0,
+      "oobl_field_bias": 0.0,
+      "oobl_fold": 0.0,
+      "oobl_filter_cutoff": 8000.0,
+      "oobl_filter_reso": 0.15,
+      "oobl_filter_type": 0,
+      "oobl_drive": 0.15,
+      "oobl_attack": 0.01,
+      "oobl_decay": 0.4,
+      "oobl_sustain": 0.7,
+      "oobl_release": 1.618,
+      "oobl_lfo_rate": 0.2,
+      "oobl_lfo_shape": 0,
+      "oobl_lfo_depth": 0.2,
+      "oobl_lfo_target": 3,
+      "oobl_reverb": 0.2,
+      "oobl_space_decay": 2.0,
+      "oobl_tune": 0,
+      "oobl_fine": 0.0,
+      "oobl_glide": 0.0,
+      "oobl_freeze": 0.0,
+      "oobl_macro1": 0.0,
+      "oobl_macro2": 0.0,
+      "oobl_macro3": 0.0,
+      "oobl_macro4": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

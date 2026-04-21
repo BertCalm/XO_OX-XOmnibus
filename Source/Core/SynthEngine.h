@@ -182,6 +182,11 @@ public:
     // Override in analysis engines (Osmosis) to receive external audio without RTTI.
     virtual bool isAnalysisEngine() const { return false; }
 
+    // External audio injection hook for analysis / vocoder / sidechain engines.
+    // Base-class no-op; engines that consume external audio (Osmosis, Obstruent)
+    // override. Called from the audio thread when an external buffer is present.
+    virtual void setExternalInput(const float* /*left*/, const float* /*right*/, int /*numSamples*/) {}
+
     //-- MPE Expression --------------------------------------------------------
 
     // Set the MPE manager reference for per-note expression queries.
@@ -204,7 +209,7 @@ public:
     // CRITICAL INTEGRATION ORDER in renderBlock():
     //   1. Parse MIDI → call wakeSilenceGate() on note-on
     //   2. Check isSilenceGateBypassed()
-    //   3. If bypassed: clear buffer, return early (zero CPU)
+    //   3. If bypassed: return early (zero CPU) — do NOT clear buffer (additive-mix semantics)
     //   4. If active: run DSP, then call analyzeForSilenceGate()
     //
 

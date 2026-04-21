@@ -355,7 +355,6 @@ public:
 
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
@@ -419,6 +418,8 @@ public:
         smoothCutoff.set(effectiveCutoff);
         smoothCompanion.set(effectiveCompanion);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
 
@@ -479,6 +480,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float cutNow = smoothCutoff.process();
             float compNow = smoothCompanion.process();
 
@@ -496,7 +498,7 @@ public:
                 float vibrato = voice.vibratoLFO.process() * effectiveVibratoDepth * cfg.vibratoDepthMult;
 
                 float freq = baseFreq * PitchBendUtil::semitonesToFreqRatio(
-                                            bendSemitones + couplingPitchMod + vibrato * 0.12f +
+                                            bendSemitones + blockCouplingPitchMod + vibrato * 0.12f +
                                             voice.dormancyPitchCents / 100.0f + voice.companionPitchCents / 100.0f +
                                             cfg.detuneCents / 100.0f);
 
@@ -538,10 +540,17 @@ public:
                     voice.toneShaper.setMode(CytomicSVF::Mode::LowPass);
                     voice.toneShaper.setCoefficients(roleCutoff, 0.2f, srf);
                     voice.lastToneShaperCutoff = roleCutoff;
+                // (coeff refresh decimated; cutNow + cfg constants change slowly).
+                if (updateFilter)
+                {
+                    float roleCutoff =
+                        std::clamp(cutNow + cfg.filterBiasCents + cfg.brightnessOffset * 2000.0f, 200.0f, 20000.0f);
+                    voice.toneShaper.setMode(CytomicSVF::Mode::LowPass);
+                    voice.toneShaper.setCoefficients(roleCutoff, 0.2f, srf);
                 }
                 float shaped = voice.toneShaper.processSample(oscMix);
 
-                // Main filter with envelope
+                // Main filter with envelope (env ticked per-sample, SVF decimated)
                 float envLevel = voice.filterEnv.process();
                 float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 2500.0f, 200.0f, 20000.0f);
                 // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
@@ -551,6 +560,12 @@ public:
                     voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
                                                  srf); // l2 → resonance shimmer
                     voice.lastFilterCutoff = fCut;
+                if (updateFilter)
+                {
+                    float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 2500.0f, 200.0f, 20000.0f);
+                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
+                                                 srf); // l2 → resonance shimmer
                 }
                 float filtered = voice.filter.processSample(shaped);
 

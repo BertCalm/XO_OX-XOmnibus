@@ -625,6 +625,19 @@ public:
         auto* outL = buf.getWritePointer(0);
         auto* outR = buf.getNumChannels() > 1 ? buf.getWritePointer(1) : buf.getWritePointer(0);
 
+        // Block-constant values hoisted out of per-sample per-voice loop:
+        //   Release-curve coefficient is constant for a given sample rate + kRelTime.
+        //   Pitch-bend ratio is constant (pitchBendNorm is block-rate from MIDI).
+        //   Body resonance frequency per voice is note-constant — set once per voice.
+        static constexpr float kRelTime = 0.3f;
+        const float relCoeff = 1.0f - 1.0f / (static_cast<float>(sr) * kRelTime);
+        const float blockPitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+        for (auto& v : voices)
+        {
+            if (v.active)
+                v.body.setParams(v.freq * bodyFreqMul, bodyQ);
+        }
+
         for (int i = 0; i < ns; ++i)
         {
             // DSP FIX: Autonomous LFO for in-law modulation (SIDES breathing).
@@ -663,17 +676,18 @@ public:
                 // DSP FIX F12/F13: relCoeff now precomputed once per block (above).
                 if (v.releasing)
                     v.ampEnv *= relCoeff;
+                    v.ampEnv *= relCoeff; // hoisted — block-constant from sr
                 if (v.ampEnv < 0.0001f && v.releasing)
                 {
                     v.active = false;
                     ++voiceIdx;
                     continue;
                 }
-                // body resonance params already set once above per active voice (F04)
+
+                // Body resonance hoisted to per-block voice setup above (note-constant).
 
                 float ds = v.drift.tick(pDriftR, pDriftD);
-                float df = v.freq * fastPow2((ds + extPitchMod) / 12.f) *
-                           PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                float df = v.freq * fastPow2((ds + extPitchMod) / 12.f) * blockPitchBendRatio;
                 float dlen = v.sr / std::max(df, 20.f);
                 float out = v.dl.read(dlen);
                 float velIntens = 0.5f + v.vel * 0.5f; // velocity 0→1 maps to 0.5→1.0x intensity

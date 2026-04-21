@@ -698,13 +698,14 @@ public:
             float panPosition = 0.5f;
             if (kMaxVoices > 1)
                 panPosition = 0.3f + 0.4f * static_cast<float>(vi) / static_cast<float>(kMaxVoices - 1);
-            voicePanGains[vi].left = std::cos(panPosition * kPI * 0.5f);
-            voicePanGains[vi].right = std::sin(panPosition * kPI * 0.5f);
+            voicePanGains[vi].left = fastCos(panPosition * kPI * 0.5f);
+            voicePanGains[vi].right = fastSin(panPosition * kPI * 0.5f);
         }
 
         // ---- Per-Sample Render Loop ----
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
+            const bool updateFilter = ((sampleIndex & 15) == 0);
             // Smooth control-rate parameters toward their targets (shared ParameterSmoother, 5ms)
             float smoothedFoldPoint = smoothFoldPoint.process();
             float smoothedFoldDepth = smoothFoldDepth.process();
@@ -832,6 +833,14 @@ public:
                 // of 18kHz is pulled down by (1 - velocity) to create a 4kHz-18kHz range.
                 // P4: setCoefficients() is block-constant (velocity doesn't change mid-block);
                 // it was moved to handleNoteOn so it runs once per note rather than once per sample.
+                // velBrightness is note-constant (voice.velocity latched at noteOn),
+                // so the SVF coefficient refresh only needs to happen once per decimated
+                // interval rather than per sample.
+                if (updateFilter)
+                {
+                    float velBrightness = 4000.0f + voice.velocity * 14000.0f;
+                    voice.postFilter.setCoefficients(velBrightness, 0.3f, sampleRateFloat);
+                }
                 outputSample = voice.postFilter.processSample(outputSample);
 
                 // ---- Apply amplitude envelope, velocity, and crossfade gain ----

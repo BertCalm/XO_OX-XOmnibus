@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Pearson Portrait",
+  "mood": "Luminous",
+  "engines": [
+    "Oobleck"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "D003 showcase — f=0.025, k=0.060 locks into a specific Pearson regime producing stable, luminous spot patterns with glowing harmonic clarity.",
+  "tags": [
+    "oobleck",
+    "luminous",
+    "pearson",
+    "stable",
+    "bright",
+    "harmonic",
+    "D003"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.5,
+    "movement": 0.4,
+    "density": 0.45,
+    "space": 0.4,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oobleck": {
+      "oobl_feed": 0.025,
+      "oobl_kill": 0.060,
+      "oobl_diffusion": 0.5,
+      "oobl_evolution": 150.0,
+      "oobl_persistence": 0.6,
+      "oobl_substrate": 0.55,
+      "oobl_temperature": 0.035,
+      "oobl_seed": 1,
+      "oobl_readout_mode": 0,
+      "oobl_field_bias": 0.0,
+      "oobl_fold": 0.15,
+      "oobl_filter_cutoff": 9000.0,
+      "oobl_filter_reso": 0.28,
+      "oobl_filter_type": 0,
+      "oobl_drive": 0.25,
+      "oobl_attack": 0.03,
+      "oobl_decay": 0.5,
+      "oobl_sustain": 0.72,
+      "oobl_release": 2.0,
+      "oobl_lfo_rate": 0.06,
+      "oobl_lfo_shape": 0,
+      "oobl_lfo_depth": 0.18,
+      "oobl_lfo_target": 0,
+      "oobl_reverb": 0.25,
+      "oobl_space_decay": 2.5,
+      "oobl_tune": 0,
+      "oobl_fine": 0.0,
+      "oobl_glide": 0.15,
+      "oobl_freeze": 0.0,
+      "oobl_macro1": 0.0,
+      "oobl_macro2": 0.0,
+      "oobl_macro3": 0.0,
+      "oobl_macro4": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

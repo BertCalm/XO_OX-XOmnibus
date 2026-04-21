@@ -154,22 +154,30 @@ private:
     /// Tape: asymmetric soft-clip with positive bias.
     /// Adds even harmonics and gentle compression on positive peaks,
     /// harder clipping on negative peaks (like magnetic tape saturation).
+    ///
+    /// DC compensation: kTapeDCComp is the exact output of the positive-branch
+    /// soft-clip at zero input (bias / (1 + bias)).  Subtracting it from both
+    /// branches guarantees processTape(0.0f) == 0.0f exactly, preventing DC
+    /// injection into the downstream DC-blocker on silence / note-on.
+    static constexpr float kTapeBias   = 0.1f;
+    static constexpr float kTapeDCComp = kTapeBias / (1.0f + kTapeBias); // ≈ 0.090909f
+
     float processTape(float x) const
     {
         // Add slight positive bias for asymmetry
-        float biased = x + 0.1f;
+        float biased = x + kTapeBias;
 
         // Asymmetric soft-clip: positive side compresses gently,
         // negative side clips harder
         if (biased >= 0.0f)
         {
             // Gentle positive compression: x / (1 + |x|)
-            return biased / (1.0f + biased) - 0.05f;
+            return biased / (1.0f + biased) - kTapeDCComp;
         }
         else
         {
             // Harder negative clip with tanh
-            return fastTanh(biased * 1.5f) - 0.05f;
+            return fastTanh(biased * 1.5f) - kTapeDCComp;
         }
     }
 

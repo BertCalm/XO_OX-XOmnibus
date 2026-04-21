@@ -598,7 +598,7 @@ public:
         // 0.001s minimum prevents instant glide from bypassing the smoothing.
         float glideCoefficient = 1.0f;
         if (glideTime > 0.001f)
-            glideCoefficient = 1.0f - std::exp(-1.0f / (glideTime * sampleRateFloat));
+            glideCoefficient = 1.0f - fastExp(-1.0f / (glideTime * sampleRateFloat));
 
         // ----- Apply macro and coupling offsets to effective parameters -----
         // Macros and coupling modulation are additive — they push parameters
@@ -628,6 +628,12 @@ public:
         // the per-sample loop via evolveBreakpoints(). The other two mods are already
         // captured into effectiveDistribution/effectiveElasticity above.
         const float capturedBreakpointMod = couplingBreakpointMod;
+        // Snapshot breakpoint coupling before reset (#1118 — the comment said
+        // "for next block" but the reset actually runs before the accumulator
+        // is read later in this block; snapshot preserves the value).
+        // couplingBarrierMod + couplingDistributionMod are consumed above
+        // (lines 604, 607) so their resets are in the right order already.
+        const float blockCouplingBreakpointMod = couplingBreakpointMod;
         couplingBreakpointMod = 0.0f;
         couplingBarrierMod = 0.0f;
         couplingDistributionMod = 0.0f;
@@ -791,6 +797,7 @@ public:
                     // Evolve breakpoints via stochastic random walk
                     evolveBreakpoints(voice, modulatedTimeStep * stochasticDepth, modulatedAmpStep * stochasticDepth,
                                       smoothedDistribution, effectiveElasticity, capturedBreakpointMod);
+                                      smoothedDistribution, effectiveElasticity, blockCouplingBreakpointMod);
                 }
 
                 // --- Cubic Hermite interpolation across breakpoints ---
@@ -1584,9 +1591,10 @@ private:
                 voice.lfo2.setShape(lfo2Shape);
                 voice.lfo2.reset(); // Reset LFO phase on retriggered mono note
 
-                voice.dcBlockerL.prepare(sampleRateFloat);
+                // RT-fix: dcBlocker.prepare() is a lifecycle call (sets sr, no alloc).
+                // Already called once at engine prepare()-time (lines 476-477).
+                // Replace with reset()-only to clear filter state without wrong-phase lifecycle call.
                 voice.dcBlockerL.reset();
-                voice.dcBlockerR.prepare(sampleRateFloat);
                 voice.dcBlockerR.reset();
             }
             return;
@@ -1641,9 +1649,9 @@ private:
         voice.lfo2.setShape(lfo2Shape);
         voice.lfo2.reset();
 
-        voice.dcBlockerL.prepare(sampleRateFloat);
+        // RT-fix: dcBlocker.prepare() already called at engine prepare()-time.
+        // reset()-only clears filter state without the wrong-phase lifecycle call.
         voice.dcBlockerL.reset();
-        voice.dcBlockerR.prepare(sampleRateFloat);
         voice.dcBlockerR.reset();
     }
 

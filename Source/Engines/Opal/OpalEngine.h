@@ -635,7 +635,9 @@ public:
 private:
     struct CombFilter
     {
-        static constexpr int kMaxDelay = 8192;
+        // kMaxDelay sized for 50ms at 192kHz (worst case: 96kHz × size=1.0 needs ~8390 samples).
+        // 9601 = ceil(0.05 * 192000) + 1, covers all consumer sample rates without overflow.
+        static constexpr int kMaxDelay = 9601;
         float buffer[kMaxDelay] = {};
         int writePos = 0;
         int delaySamples = 1000;
@@ -1455,10 +1457,17 @@ public:
             return;
 
         juce::ScopedNoDenormals noDenormals;
-        buffer.clear();
+        // ADDITIVE: do not clear — engine adds to existing buffer (slot chain convention)
 
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
+        // scrL/scrR: scratch pointers for Opal's render + FX chain.
+        // workBufL/R are reused here after grain accumulation is done (they hold
+        // grain data until the per-sample post-processing loop consumes them).
+        // Writing the processed result back into workBufL/R avoids touching the
+        // output buffer until the final additive mix step below.
+        float* scrL = workBufL.data();
+        float* scrR = workBufR.data();
 
         // D006: smooth aftertouch pressure and compute modulation value
         aftertouch.updateBlock(numSamples);
@@ -1942,11 +1951,11 @@ public:
                     R = std::copysign(ceiling, R);
             }
 
-            outL[n] = L;
-            outR[n] = R;
+            scrL[n] = L;
+            scrR[n] = R;
         }
 
-        // ---- FX Chain (post-voice mix, stereo) ----
+        // ---- FX Chain (post-voice mix, stereo — operates on scrL/scrR scratch) ----
 
         // Smear: time-stretch effect (simplified: secondary granular-style diffusion)
         // F6: derive smear coefficient from sample rate so behaviour is SR-invariant.
@@ -1962,6 +1971,13 @@ public:
                 smearStateR = flushDenormal(smearStateR + (outR[n] - smearStateR) * smearCoeff);
                 outL[n] = outL[n] * (1.0f - fxSmearMix) + smearStateL * fxSmearMix;
                 outR[n] = outR[n] * (1.0f - fxSmearMix) + smearStateR * fxSmearMix;
+                // Smear approximation: feedback low-pass smoothing
+                smearStateL =
+                    flushDenormal(smearStateL + (scrL[n] - smearStateL) * (0.01f + 0.1f * (1.0f - fxSmearAmt)));
+                smearStateR =
+                    flushDenormal(smearStateR + (scrR[n] - smearStateR) * (0.01f + 0.1f * (1.0f - fxSmearAmt)));
+                scrL[n] = scrL[n] * (1.0f - fxSmearMix) + smearStateL * fxSmearMix;
+                scrR[n] = scrR[n] * (1.0f - fxSmearMix) + smearStateR * fxSmearMix;
             }
         }
 
@@ -1977,10 +1993,10 @@ public:
             }
             for (int n = 0; n < numSamples; ++n)
             {
-                float wetL = outL[n], wetR = outR[n];
+                float wetL = scrL[n], wetR = scrR[n];
                 scatterReverb.process(wetL, wetR);
-                outL[n] = outL[n] * (1.0f - fxReverbMix) + wetL * fxReverbMix;
-                outR[n] = outR[n] * (1.0f - fxReverbMix) + wetR * fxReverbMix;
+                scrL[n] = scrL[n] * (1.0f - fxReverbMix) + wetL * fxReverbMix;
+                scrR[n] = scrR[n] * (1.0f - fxReverbMix) + wetR * fxReverbMix;
             }
         }
 
@@ -1989,17 +2005,17 @@ public:
         {
             for (int n = 0; n < numSamples; ++n)
             {
-                float dL = outL[n], dR = outR[n];
+                float dL = scrL[n], dR = scrR[n];
                 stereoDelay.process(dL, dR, fxDelayTime, fxDelayFB, fxDelaySpread);
-                outL[n] = outL[n] * (1.0f - fxDelayMix) + dL * fxDelayMix;
-                outR[n] = outR[n] * (1.0f - fxDelayMix) + dR * fxDelayMix;
+                scrL[n] = scrL[n] * (1.0f - fxDelayMix) + dL * fxDelayMix;
+                scrR[n] = scrR[n] * (1.0f - fxDelayMix) + dR * fxDelayMix;
             }
         }
 
         // Finish: glue + width + level
         for (int n = 0; n < numSamples; ++n)
         {
-            finish.process(outL[n], outR[n], fxFinishGlue, fxFinishWidth);
+            finish.process(scrL[n], scrR[n], fxFinishGlue, fxFinishWidth);
 
             // Master pan — F20: equal-power law (cos/sin quarter-circle)
             // Old linear law (1±pan) drops 6 dB in centre at extremes.
@@ -2009,11 +2025,22 @@ public:
                 float angle = (masterPan + 1.0f) * pi4; // map [-1,+1] to [0, pi/2]
                 outL[n] *= fastCos(angle);
                 outR[n] *= fastSin(angle);
+                float pL = clamp(1.0f - masterPan, 0.0f, 1.0f);
+                float pR = clamp(1.0f + masterPan, 0.0f, 1.0f);
+                scrL[n] *= pL;
+                scrR[n] *= pR;
             }
 
             // Master level + finish level
-            outL[n] *= masterLevel * fxFinishLevel;
-            outR[n] *= masterLevel * fxFinishLevel;
+            scrL[n] *= masterLevel * fxFinishLevel;
+            scrR[n] *= masterLevel * fxFinishLevel;
+        }
+
+        // ---- Additive mix: combine Opal's processed signal into the output buffer ----
+        for (int n = 0; n < numSamples; ++n)
+        {
+            outL[n] += scrL[n];
+            outR[n] += scrR[n];
         }
 
         // ---- Cache per-sample output for coupling reads ----
@@ -2025,14 +2052,14 @@ public:
             auto idx = static_cast<size_t>(n);
             if (idx < outputCacheLeft.size())
             {
-                outputCacheLeft[idx] = outL[n];
-                outputCacheRight[idx] = outR[n];
+                outputCacheLeft[idx] = scrL[n];
+                outputCacheRight[idx] = scrR[n];
             }
         }
         if (numSamples > 0)
         {
-            lastSampleL = outL[numSamples - 1];
-            lastSampleR = outR[numSamples - 1];
+            lastSampleL = scrL[numSamples - 1];
+            lastSampleR = scrR[numSamples - 1];
         }
 
         silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);

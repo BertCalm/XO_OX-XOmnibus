@@ -1054,6 +1054,10 @@ public:
         //  Per-sample render loop
         // =================================================================
 
+        // Block-constant pitch-bend ratio used inside the control-rate resonator
+        // refresh path. pitchBendNorm is block-rate from MIDI.
+        const float blockPitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
             // --- Global fluid energy (one instance shared by all voices) ---
@@ -1115,8 +1119,9 @@ public:
                 {
                     voice.controlCounter = 0;
 
-                    float baseFrequency =
-                        voice.currentGlideFrequency * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                    // blockPitchBendRatio hoisted to per-block scope below —
+                    // pitchBendNorm is block-rate from MIDI pitch wheel.
+                    float baseFrequency = voice.currentGlideFrequency * blockPitchBendRatio;
 
                     // Apply pitch coupling modulation (+/- half octave range)
                     if (std::fabs(pitchMod) > 0.001f)

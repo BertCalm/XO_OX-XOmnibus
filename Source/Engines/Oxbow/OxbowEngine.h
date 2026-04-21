@@ -375,6 +375,20 @@ public:
         const float exciterFreqHz =
             midiToFreq(currentNote) * PitchBendUtil::semitonesToFreqRatio(
                                           PitchBendUtil::bendToSemitones(pitchBendNorm, 2.0f));
+        // Nyquist guard: clamp to 0.45 × sample rate so very high notes + pitch
+        // bend can't push fastSin past the sample rate (would alias even though
+        // phase wraps). 0.45 leaves headroom for any coupling-driven pitch wobble.
+        const float exciterFreqHz = std::min(
+            midiToFreq(static_cast<float>(currentNote)) * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f),
+            srF * 0.45f);
+
+        // Block-constant cross-channel entanglement mix (was recomputed per sample
+        // inside the FDN channel loop, even though pEntangle is block-rate).
+        const float entangleMix = pEntangle * 0.3f;
+
+        // Pre-scaled FDN input divisor — kFDNChannels is a compile-time constant (8),
+        // so this is just `0.125f`. Named for clarity; any sane compiler folds it.
+        constexpr float fdnInputScale = 1.0f / static_cast<float>(kFDNChannels);
 
         // Issue #917: hoist erosionLFO.setRate() out of per-sample loop.
         // pErosionR is block-stable (read from atomic above). StandardLFO::setRate()
@@ -382,6 +396,21 @@ public:
         // is behaviorally identical and saves ~4 * numSamples calls per block.
         for (int a = 0; a < kErosionAPFs; ++a)
             erosionLFO[a].setRate(pErosionR + 0.01f * a, srF);
+
+        // Hoist golden resonator coefficients out of the per-sample loop.
+        // Both inputs are block-constant:
+        //   goldenFreqHz[g] is cached at note-on (line ~696) and stable until next noteOn
+        //   liveQ = pResQ / 20.0f comes from a block-rate atomic load
+        // Previously these setCoefficients_fast calls ran kGoldenFilters × numSamples
+        // times per block when resonance gate was open. Now they run kGoldenFilters.
+        {
+            const float liveQ = pResQ / 20.0f;
+            for (int g = 0; g < kGoldenFilters; ++g)
+            {
+                goldenL[g].setCoefficients_fast(goldenFreqHz[g], liveQ, srF);
+                goldenR[g].setCoefficients_fast(goldenFreqHz[g], liveQ, srF);
+            }
+        }
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -445,7 +474,7 @@ public:
 
             // Cross-coupling: entanglement blends L↔R channels
             // At entangle=0: channels are independent. At 1: fully blended.
-            float entangleMix = pEntangle * 0.3f; // subtle coupling
+            // entangleMix precomputed above per block.
             for (int ch = 0; ch < 4; ++ch)
             {
                 float lCh = fdnOut[ch];
@@ -479,13 +508,14 @@ public:
             for (int ch = 0; ch < kFDNChannels; ++ch)
                 fdnOut[ch] = fdnDamp[ch].processSample(fdnOut[ch]);
 
-            // Write back to delay lines with feedback + input injection
+            // Write back to delay lines with feedback + input injection.
+            // fdnInputScaled is block-constant-per-sample — hoist the divide out
+            // of the channel loop.
+            const float fdnInputScaled = fdnInput * fdnInputScale;
             for (int ch = 0; ch < kFDNChannels; ++ch)
             {
                 float fb = flushDenormal(fdnOut[ch] * feedbackCoeff);
-                // Inject input into all channels
-                float inp = fdnInput * (1.0f / static_cast<float>(kFDNChannels));
-                fdnDelay[ch][static_cast<size_t>(fdnWritePos[ch])] = inp + fb;
+                fdnDelay[ch][static_cast<size_t>(fdnWritePos[ch])] = fdnInputScaled + fb;
                 fdnWritePos[ch] = (fdnWritePos[ch] + 1) % fdnDelaySize[ch];
             }
 
@@ -553,12 +583,12 @@ public:
                 // resonance=1.0 → k=0 → self-oscillating sinusoid injected into the
                 // FDN tail (stability fix: unbound Q caused runaway energy buildup).
                 float liveQ = clamp(pResQ / 20.0f, 0.0f, 0.95f); // [0, 0.95] for CytomicSVF
+                // Golden resonator coefficients are set once per block above (hoisted
+                // out of this per-sample loop — goldenFreqHz + liveQ are both block-
+                // constant). Per-sample processing still runs; only the expensive
+                // coefficient refresh moved.
                 for (int g = 0; g < kGoldenFilters; ++g)
                 {
-                    // Peak mode output = 2*v2 - input + k*v1; gain param only affects shelves,
-                    // so setCoefficients_fast (3-arg) is correct here.
-                    goldenL[g].setCoefficients_fast(goldenFreqHz[g], liveQ, srF);
-                    goldenR[g].setCoefficients_fast(goldenFreqHz[g], liveQ, srF);
                     goldenOutL += goldenL[g].processSample(erosionL) * goldenGains[g];
                     goldenOutR += goldenR[g].processSample(erosionR) * goldenGains[g];
                 }

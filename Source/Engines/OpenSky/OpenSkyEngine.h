@@ -509,6 +509,7 @@ struct SkyVoice
     static constexpr int kMaxUnison = 7;
     std::array<SkySupersaw, kMaxUnison> unisonSaws;
     int activeUnison = 1;
+    float unisonNormGain = 1.0f; // cached = 1/sqrt(activeUnison) — set at noteOn, avoids per-sample sqrt
 
     // Separate L and R filter instances — running both channels through the same
     // CytomicSVF state sequentially contaminates the integrators (bug found 2026-04-20).
@@ -632,7 +633,6 @@ public:
             }
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
@@ -802,6 +802,40 @@ public:
         };
         applyModSlot(modSlot1Src, modSlot1Dst, modSlot1Amt);
         applyModSlot(modSlot2Src, modSlot2Dst, modSlot2Amt);
+        // D002: Mod matrix — 2 slots. Src: 0=LFO1, 1=LFO2, 2=ModWheel, 3=Aftertouch.
+        // Dst: 0=FilterCutoff, 1=PitchOffset (semitones), 2=ShimmerMix, 3=Amp.
+        // LFO snapshot: calling process() once here for a block-rate mod sample is intentional;
+        // the per-sample loop calls process() again each sample for audio-rate LFO output.
+        // The one-sample offset is inaudible at block-rate mod routing.
+        float modSrcValues[4] = {
+            lfo1.process() * lfo1Depth,  // 0: LFO1 (block-rate snapshot)
+            lfo2.process() * lfo2Depth,  // 1: LFO2 (block-rate snapshot)
+            modWheelAmount_,             // 2: ModWheel [0,1]
+            aftertouch_                  // 3: Aftertouch [0,1]
+        };
+        // Slot 1
+        float modMatrixAmpMod = 0.0f;
+        {
+            const int src1   = static_cast<int>(clamp(pLoad(pModSlot1Src, 0.0f), 0.0f, 3.0f));
+            const int dst1   = static_cast<int>(clamp(pLoad(pModSlot1Dst, 0.0f), 0.0f, 3.0f));
+            const float amt1 = pLoad(pModSlot1Amt, 0.0f);
+            const float mod1 = modSrcValues[src1] * amt1;
+            if (dst1 == 0)      effectiveFilterCutoff = clamp(effectiveFilterCutoff + mod1 * 8000.0f, 20.0f, 20000.0f);
+            else if (dst1 == 1) pitchMod              = pitchMod + mod1 * 12.0f; // ±12 semitones at full amt
+            else if (dst1 == 2) effectiveShimmerMix   = clamp(effectiveShimmerMix + mod1 * 0.5f, 0.0f, 1.0f);
+            else if (dst1 == 3) modMatrixAmpMod       += mod1;  // applied to gain in per-sample loop
+        }
+        // Slot 2
+        {
+            const int src2   = static_cast<int>(clamp(pLoad(pModSlot2Src, 0.0f), 0.0f, 3.0f));
+            const int dst2   = static_cast<int>(clamp(pLoad(pModSlot2Dst, 0.0f), 0.0f, 3.0f));
+            const float amt2 = pLoad(pModSlot2Amt, 0.0f);
+            const float mod2 = modSrcValues[src2] * amt2;
+            if (dst2 == 0)      effectiveFilterCutoff = clamp(effectiveFilterCutoff + mod2 * 8000.0f, 20.0f, 20000.0f);
+            else if (dst2 == 1) pitchMod              = pitchMod + mod2 * 12.0f;
+            else if (dst2 == 2) effectiveShimmerMix   = clamp(effectiveShimmerMix + mod2 * 0.5f, 0.0f, 1.0f);
+            else if (dst2 == 3) modMatrixAmpMod       += mod2;  // accumulated from both slots
+        }
 
         // Set up envelopes for all active voices
         for (auto& voice : voices)
@@ -831,6 +865,7 @@ public:
         // --- Render audio per sample ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
+            const bool updateFilter = ((sample & 15) == 0);
             float mixL = 0.0f, mixR = 0.0f;
 
             // Advance LFOs
@@ -967,6 +1002,19 @@ public:
 
                 voice.lpfL.setCoefficients_fast(voiceCutoff, filterReso, srf);
                 voice.lpfR.setCoefficients_fast(voiceCutoff, filterReso, srf);
+                // Normalize by unison count (cached at noteOn — was per-sample std::sqrt).
+                voiceL *= voice.unisonNormGain;
+                voiceR *= voice.unisonNormGain;
+
+                // --- Filter ---
+                // D001: velocity drives filter brightness (coeff refresh decimated to every 16 samples)
+                if (updateFilter)
+                {
+                    float velCutoffMod = voice.velocity * velFilterEnv * 8000.0f;
+                    float filterEnvMod = voice.filterEnvLevel * filterEnvAmt * 6000.0f;
+                    float voiceCutoff = clamp(effectiveFilterCutoff + velCutoffMod + filterEnvMod, 20.0f, 20000.0f);
+                    voice.lpf.setCoefficients_fast(voiceCutoff, filterReso, srf);
+                }
                 // HPF coefficients are set once per block (block-rate setup above)
 
                 // Apply filters (series: HP -> LP). Separate L/R instances maintain
@@ -976,8 +1024,8 @@ public:
                 float filteredR = voice.hpfR.processSample(voiceR);
                 filteredR = voice.lpfR.processSample(filteredR);
 
-                // Apply envelope and velocity
-                float gain = envVal * voice.velocity * stealFade;
+                // Apply envelope and velocity (+ mod matrix amp destination)
+                float gain = envVal * voice.velocity * stealFade * clamp(1.0f + modMatrixAmpMod, 0.0f, 2.0f);
                 mixL += filteredL * gain;
                 mixR += filteredR * gain;
 
@@ -1399,6 +1447,7 @@ private:
         voice.velocity = velocity;
         voice.startTime = voiceCounter++;
         voice.activeUnison = unisonCount;
+        voice.unisonNormGain = 1.0f / std::sqrt(static_cast<float>(std::max(1, unisonCount)));
 
         // Reset amp envelope
         voice.ampEnv.reset();

@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Vent Ecology",
+  "mood": "Deep",
+  "engines": [
+    "Ooze"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hadal hydrothermal ambience — large slow bubbles tracking seven semitones below fundamental, imperceptible LFO drift, cavernous reverb tail.",
+  "tags": [
+    "ooze",
+    "deep",
+    "hadal",
+    "vent",
+    "ambient",
+    "bubbles",
+    "cinematic",
+    "cavernous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.5,
+    "movement": 0.3,
+    "density": 0.6,
+    "space": 0.9,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Ooze": {
+      "ooze_end_type": 1,
+      "ooze_geometry": 0.15,
+      "ooze_damping": 0.6,
+      "ooze_reynolds": 0.3,
+      "ooze_pressure": 0.4,
+      "ooze_viscosity": 0.6,
+      "ooze_jet_offset": 0.5,
+      "ooze_bubble_rate": 0.35,
+      "ooze_bubble_size": 0.8,
+      "ooze_bubble_decay": 0.7,
+      "ooze_bubble_track": -7,
+      "ooze_burst_rate": 3.0,
+      "ooze_cascade": 0.4,
+      "ooze_filter_cutoff": 3000.0,
+      "ooze_filter_reso": 0.15,
+      "ooze_filter_type": 0,
+      "ooze_drive": 0.1,
+      "ooze_attack": 0.4,
+      "ooze_decay": 0.5,
+      "ooze_sustain": 0.8,
+      "ooze_release": 3.2,
+      "ooze_lfo_rate": 0.04,
+      "ooze_lfo_shape": 0,
+      "ooze_lfo_depth": 0.15,
+      "ooze_lfo_target": 0,
+      "ooze_reverb": 0.7,
+      "ooze_space_decay": 6.0,
+      "ooze_tune": 0,
+      "ooze_fine": 0.0,
+      "ooze_glide": 0.0,
+      "ooze_macro1": 0.0,
+      "ooze_macro2": 0.0,
+      "ooze_macro3": 0.0,
+      "ooze_macro4": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

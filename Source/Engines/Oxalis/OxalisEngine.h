@@ -359,7 +359,6 @@ public:
 
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
@@ -447,6 +446,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float cutNow = smoothCutoff.process();
             float phiNow = smoothPhi.process();
             float sprNow = smoothSpread.process();
@@ -470,6 +470,7 @@ public:
                     bendSemitones + capturedPitchMod + vibrato * 0.3f + voice.dormancyPitchCents / 100.0f;
                     // F01: use capturedPitchMod (local), not couplingPitchMod (already 0)
                     // F12: vibrato scalar 0.08f → 0.3f for ±0.3st range at full depth (strings standard)
+                    bendSemitones + blockCouplingPitchMod + vibrato * 0.08f + voice.dormancyPitchCents / 100.0f;
                 if (std::fabs(bendInput - voice.lastBendInput) > kPitchCacheThreshold)
                 {
                     voice.cachedPitchRatio = PitchBendUtil::semitonesToFreqRatio(bendInput);
@@ -510,7 +511,7 @@ public:
                     oscOut = oscOut + asymmetry * 0.3f * fastTanh(oscOut * 2.0f);
                 }
 
-                // Filter
+                // Filter (env ticked per-sample, SVF decimated)
                 float envLevel = voice.filterEnv.process();
                 float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 4000.0f, 200.0f, 20000.0f);
                 // F16: delta-guard setCoefficients — only recompute when fCut shifts > 2Hz
@@ -520,6 +521,11 @@ public:
                 {
                     voice.filter.setCoefficients(fCut, pResonance, srf);
                     voice.lastFilterCut = fCut;
+                if (updateFilter)
+                {
+                    float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 4000.0f, 200.0f, 20000.0f);
+                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.filter.setCoefficients(fCut, pResonance, srf);
                 }
                 float filtered = voice.filter.processSample(oscOut);
 

@@ -481,7 +481,6 @@ public:
         // ---- SRO: silence gate bypass ----
         if (isSilenceGateBypassed())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
@@ -567,6 +566,9 @@ public:
 
         // Hoist block-constant ADSR update out of per-sample loop (P15 fix).
         // Model-specific clamping is also block-constant — compute once here.
+        // Hoist ampEnv.setADSR out of per-sample loop — ADSR knobs are block-rate
+        // and setADSR internally does 2× std::exp. Voice's model-specific clamping
+        // duplicated from the inner per-sample block so values match.
         {
             float atkParam = paramAttack  ? paramAttack->load()  : 0.08f;
             float decParam = paramDecay   ? paramDecay->load()   : 0.5f;
@@ -625,11 +627,33 @@ public:
             if (voices[vi].active)
                 voices[vi].svf.setMode(CytomicSVF::Mode::LowPass);
 
+            {
+                auto& voice = voices[vi];
+                if (voice.active)
+                    voice.ampEnv.setADSR(attack, decay, sustain, release);
+            }
+        }
+
+        // Hoist per-voice LFO config. pLFO1Rate is block-rate; D005 floor enforced.
+        {
+            const float lfo1RateClamped = std::max(0.01f, pLFO1Rate);
+            for (int vi = 0; vi < kMaxVoices; ++vi)
+            {
+                auto& voice = voices[vi];
+                if (voice.active)
+                {
+                    voice.lfo1.setRate(lfo1RateClamped, srf);
+                    voice.lfo1.setShape(StandardLFO::Sine);
+                }
+            }
+        }
+
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float clusterNow = smoothCluster.process();
             float chiffNow = smoothChiff.process();
             float detuneNow = smoothDetune.process();
@@ -647,7 +671,8 @@ public:
                 if (!voice.active)
                     continue;
 
-                // ampEnv.setADSR hoisted to block-rate above (P15 fix)
+                // Amp envelope setADSR hoisted to per-block voice loop above
+                // (model-specific ADSR clamping happens once per block, not per sample).
 
                 float freq = voice.glide.process();
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
@@ -879,6 +904,14 @@ public:
 
                 // setMode hoisted to block-rate above (P31 fix — always LowPass).
                 voice.svf.setCoefficients_fast(voiceCutoff, resNow, srf);
+                // Decimate SVF coefficient refresh to every 16 samples (~0.36ms @
+                // 44.1k — below audible lag). Filter env is still ticked per-sample
+                // above so envelope state advances at audio rate.
+                if (updateFilter)
+                {
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients_fast(voiceCutoff, resNow, srf);
+                }
                 float filtered = voice.svf.processSample(signal);
 
                 float output = filtered * envLevel;

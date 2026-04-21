@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Machine-readable engine roster for XOceanus. CI/build scripts reference this file to scope QA sweeps, builds, and preset validation.",
-    "last_updated": "2026-04-16",
+    "last_updated": "2026-04-20",
     "status_values": [
       "implemented",
       "designed",
@@ -9,8 +9,8 @@
       "pending_directory"
     ],
     "notes": "This file is the single source of truth for engine roster and count. Parameter prefixes are FROZEN \u2014 never change after first registration. XOceanus has no fixed release cutoff. `status` reflects build state: 'implemented' means the engine has both a Source/Engines/ directory AND a frozen prefix in PresetManager.h; 'pending_*' flags work-in-progress. Run Tools/sync_engine_sources.py to regenerate dependent files.",
-    "last_sync": "2026-04-16",
-    "engine_count": 88,
+    "last_sync": "2026-04-20",
+    "engine_count": 90,
     "engine_count_total": 111,
     "legacy_dir_aliases": {
       "Bite": "Overbite",
@@ -412,6 +412,15 @@
       "status": "implemented",
       "accent_color": "#2E8B8B",
       "category": "water"
+    },
+    {
+      "id": "Oneiric",
+      "param_prefix": "oner_",
+      "header": "Source/Engines/Oneiric/OneiricEngine.h",
+      "status": "implemented",
+      "accent_color": "#B8A0FF",
+      "accent_name": "Phosphene Lavender",
+      "category": "soliton"
     },
     {
       "id": "Onkolo",
@@ -878,6 +887,15 @@
       "status": "implemented",
       "accent_color": "#4169E1",
       "category": "visionary"
+    },
+    {
+      "id": "Outcrop",
+      "param_prefix": "outc_",
+      "header": "Source/Engines/Outcrop/OutcropEngine.h",
+      "status": "implemented",
+      "accent_color": "#5B6F57",
+      "accent_name": "Mountain Moss",
+      "category": "terrain"
     },
     {
       "id": "Outwit",

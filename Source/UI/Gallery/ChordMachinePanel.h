@@ -229,7 +229,7 @@ public:
             // Beat marker (steps 0, 4, 8, 12)
             if ((s & 3) == 0)
             {
-                g.setColour(get(textMid()).withAlpha(0.4f));
+                g.setColour(get(textMid()).withAlpha(0.75f));
                 g.fillRect(stepR.getX(), stepR.getY() - 3, stepW, 2);
             }
 

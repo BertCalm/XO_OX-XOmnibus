@@ -680,7 +680,6 @@ public:
         }
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
@@ -881,7 +880,7 @@ public:
         // ---- Output buffers ----
         auto* writeL = buffer.getWritePointer(0);
         auto* writeR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : writeL;
-        buffer.clear();
+        // ADDITIVE: do not clear — engine adds to existing buffer (slot chain convention)
 
         // ---- MIDI + render interleaved ----
         int midiSamplePos = 0;
@@ -1361,7 +1360,9 @@ private:
     //  M E M B E R S
     //==========================================================================
 
-    float sampleRateFloat = 44100.0f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float sampleRateFloat = 0.0f;
     int   maxBlock        = 512;
 
     std::array<OctantVoice, kOctantMaxVoices> voices;

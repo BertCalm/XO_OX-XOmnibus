@@ -169,6 +169,7 @@ public:
             {
                 silenceGate.wake();
                 currentNote_ = msg.getNoteNumber();
+                noteFreqRatio_ = std::pow(2.0f, (currentNote_ - 69) / 12.0f); // cache once per note
                 currentVelocity_ = msg.getFloatVelocity();
                 exciterActive_ = true;
                 exciterEnv_ = 1.0f;
@@ -263,8 +264,8 @@ public:
         // making exciter decay time shrink by 2× per doubling of sample rate.
         float excDecayCoeff = fastExp(-6.9078f / (pExcDecay * static_cast<float>(sr_)));
 
-        // Pitch-bent exciter frequency — use fastPow2 (D001 perf; std::pow unnecessary here)
-        float exciterFreq = 440.0f * fastPow2((static_cast<float>(currentNote_) - 69.0f) / 12.0f) *
+        // Pitch-bent exciter frequency — noteFreqRatio_ is cached in noteOn; bend applied per-block
+        float exciterFreq = 440.0f * noteFreqRatio_ *
                             PitchBendUtil::semitonesToFreqRatio(pitchBendNorm_ * 2.0f);
 
         // Update wind LFO rate based on chaos
@@ -645,6 +646,7 @@ private:
     float exciterEnv_ = 0.0f;
     bool exciterActive_ = false;
     int currentNote_ = 60;
+    float noteFreqRatio_ = 1.0f; // cached: 2^((note-69)/12) — updated in noteOn, read per-block
     float currentVelocity_ = 0.0f;
     uint32_t noiseRng_ = 77u;
 

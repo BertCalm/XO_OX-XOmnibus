@@ -330,6 +330,21 @@ public:
         const float effectiveCurrent   = juce::jlimit(-1.0f, 1.0f, paramCurrent  + (macroCoup * 2.0f - 1.0f) * 0.5f);
         const float effectiveFlotsam   = juce::jlimit(0.0f, 1.0f, paramFlotsam   + macroCoup * 0.4f);
 
+        // Pre-compute per-band decay/emergence scales — depend only on bi (constant)
+        // and effectiveDepth (block-constant). Hoists 3× std::pow out of per-sample
+        // per-voice per-band loop (was up to 6×64×N std::pow per block).
+        float decayScalePow[kOlvidoNumBands];
+        float emergenceScalePow[kOlvidoNumBands];
+        {
+            const float exponent = 2.0f * effectiveDepth;
+            for (int bi = 0; bi < kOlvidoNumBands; ++bi)
+            {
+                decayScalePow[bi] = std::pow(static_cast<float>(bi + 1), exponent);
+                const float invertIdx = static_cast<float>((kOlvidoNumBands - 1) - bi);
+                emergenceScalePow[bi] = std::pow(invertIdx + 1.0f, exponent);
+            }
+        }
+
         // M4 SPACE: reverb_mix ↑, patina ↑, abyss_hold ↑
         const float effectiveReverbMix = juce::jlimit(0.0f, 1.0f, paramReverbMix + macroSpace * 0.5f);
         const float effectivePatina    = juce::jlimit(0.0f, 1.0f, paramPatina    + macroSpace * 0.4f);
@@ -361,15 +376,32 @@ public:
         couplingFilterAccum   = 0.0f;
 
         // ---- Crossover frequencies shifted by shoreline ----
-        // shoreline = 0.5 → no shift; ±1 octave at extremes
-        const float shorelineShift = std::pow(2.0f, (paramShoreline - 0.5f) * 2.0f);
+        // shoreline = 0.5 → no shift; ±1 octave at extremes (fastPow2: ~0.1% err, per-block)
+        const float shorelineShift = fastPow2((paramShoreline - 0.5f) * 2.0f);
         float actualCrossover[5];
         for (int i = 0; i < 5; ++i)
             actualCrossover[i] = juce::jlimit(20.0f, 20000.0f,
                 kOlvidoCrossoverBase[i] * shorelineShift);
 
+        // ---- Hoist crossover filter coefficients (block-constant) ----
+        // actualCrossover[] depends only on paramShoreline (block-constant).
+        // Q=0.7071 and sampleRateFloat are also block-constant.
+        // Computing setCoefficients_fast once per block per voice saves
+        // ~10 trig calls per active voice per sample (5 LP + 5 HP).
+        for (auto& v : voices)
+        {
+            if (!v.active) continue;
+            for (int ci = 0; ci < 5; ++ci)
+            {
+                v.crossoverLP[ci].setMode(CytomicSVF::Mode::LowPass);
+                v.crossoverLP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+                v.crossoverHP[ci].setMode(CytomicSVF::Mode::HighPass);
+                v.crossoverHP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+            }
+        }
+
         // ---- Pitch bend ratio (±2 semitones) ----
-        const float pitchBendRatio = std::pow(2.0f, pitchBendNorm * 2.0f / 12.0f);
+        const float pitchBendRatio = fastPow2(pitchBendNorm * 2.0f * (1.0f / 12.0f));
 
         // ---- Process MIDI ----
         for (const auto metadata : midi)
@@ -424,7 +456,6 @@ public:
         // Silence gate bypass: if idle and no MIDI, clear and return
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
@@ -442,24 +473,25 @@ public:
             bandEmergenceScale[bi] = std::pow(invertIdx + 1.0f, 2.0f * effectiveDepth);
         }
 
-        // ---- Hoist block-constant per-voice crossover and LFO settings ----
-        // actualCrossover[] only changes when shoreline param changes.
-        // Updating coefficients here (once per block) vs per-sample saves
-        // 10 setCoefficients_fast calls × numVoices × numSamples.
-        for (auto& v : voices)
+        // ---- Per-block per-voice crossover filter setup ----
+        // Crossover frequencies are block-constant (depend on shorelineShift only),
+        // so set mode + coefficients once per block per voice instead of per sample
+        // (was 5 LP + 5 HP × N samples × maxVoices = up to ~32k redundant SVF
+        // coefficient calculations per block).
+        // Also set LFO parameters once per block (block-constant).
+        for (auto& voice : voices)
         {
-            if (v.active)
+            if (!voice.active)
+                continue;
+            for (int ci = 0; ci < 5; ++ci)
             {
-                for (int ci = 0; ci < 5; ++ci)
-                {
-                    v.crossoverLP[ci].setMode(CytomicSVF::Mode::LowPass);
-                    v.crossoverLP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
-                    v.crossoverHP[ci].setMode(CytomicSVF::Mode::HighPass);
-                    v.crossoverHP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
-                }
-                v.lfo1.setRate(paramLfoRate, sampleRateFloat);
-                v.lfo1.setShape(paramLfoShape);
+                voice.crossoverLP[ci].setMode(CytomicSVF::Mode::LowPass);
+                voice.crossoverLP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
+                voice.crossoverHP[ci].setMode(CytomicSVF::Mode::HighPass);
+                voice.crossoverHP[ci].setCoefficients_fast(actualCrossover[ci], 0.7071f, sampleRateFloat);
             }
+            voice.lfo1.setRate(paramLfoRate, sampleRateFloat);
+            voice.lfo1.setShape(paramLfoShape);
         }
 
         // ---- Per-sample render loop ----
@@ -604,6 +636,8 @@ public:
 
                 for (int ci = 0; ci < 5; ++ci)
                 {
+                    // Crossover mode + coefficients set once per block above — only
+                    // the per-sample state update happens here.
                     bandSignal[ci] = voice.crossoverLP[ci].processSample(residual);
                     residual       = voice.crossoverHP[ci].processSample(residual);
 
@@ -637,6 +671,7 @@ public:
                     {
                         // STANDARD DECAY (forgetting): bands erode over time
                         // decay_rate[band] = base_rate * bandDecayScale[bi] (hoisted per-block)
+                        // decayScalePow = pow(band_index+1, 2.0 * depth) — precomputed above renderloop
                         float perSampleDecay = baseRate * bandDecayScale[bi] * effectiveCurrentNow;
 
                         // Flotsam: stochastic decay skip (per-band, per-sample)
@@ -658,6 +693,7 @@ public:
                     {
                         // EMERGENCE: bands sharpen TOWARD full amplitude
                         // Higher bands emerge SLOWER — emergenceScale hoisted per-block
+                        // Band 5 (highest) emerges slowest (inverse of decay order)
                         float emergenceRate = baseRate * bandEmergenceScale[bi] * std::fabs(effectiveCurrentNow);
 
                         voice.bandAmplitude[bi] += emergenceRate;
@@ -1465,6 +1501,11 @@ private:
     // sampleRateDouble retained for base-class / future use; all DSP uses sampleRateFloat.
     double sampleRateDouble = 44100.0;
     float  sampleRateFloat  = 44100.0f;
+    // ---- Audio configuration (set in prepare()) ----
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    double sampleRateDouble = 0.0;
+    float  sampleRateFloat  = 0.0f;
     float  voiceFadeRate    = 0.01f;
 
     // ---- Voice pool ----

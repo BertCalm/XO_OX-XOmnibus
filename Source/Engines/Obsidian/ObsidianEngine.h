@@ -370,7 +370,7 @@ public:
         // At coeff=1.0, frequency snaps instantly (no portamento).
         float glideCoefficient = 1.0f;
         if (glideTimeSeconds > 0.001f)
-            glideCoefficient = 1.0f - std::exp(-1.0f / (glideTimeSeconds * sampleRateFloat));
+            glideCoefficient = 1.0f - fastExp(-1.0f / (glideTimeSeconds * sampleRateFloat));
 
         // ---- Apply macro offsets to base PD parameters ----
         // CHARACTER macro: increases density (+0.5) and depth (+0.3) — more harmonics, more edge
@@ -477,7 +477,7 @@ public:
         obsidianLfoPhase += obsidianLfoIncrement * static_cast<double>(numSamples);
         if (obsidianLfoPhase >= 1.0)
             obsidianLfoPhase -= 1.0;
-        const float obsidianLfoValue = std::sin(static_cast<float>(obsidianLfoPhase) * kTwoPi);
+        const float obsidianLfoValue = fastSin(static_cast<float>(obsidianLfoPhase) * kTwoPi);
         // ±15% formant blend depth: full modulation = ±0.15 on the [0,1] formant range
         effectiveFormant = clamp(effectiveFormant + obsidianLfoValue * 0.15f, 0.0f, 1.0f);
 

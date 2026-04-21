@@ -130,6 +130,14 @@ public:
         }
 
         arcPathDirty = true;
+
+        // Pre-build the route count summary string — avoids String alloc in paint().
+        int numActive = (int)std::count_if(cachedRoutes.begin(), cachedRoutes.end(),
+                                           [](const auto& r) { return r.active && r.amount >= 0.005f; });
+        cachedSummaryText_ = (numActive > 0)
+            ? (juce::String(numActive) + " active route" + (numActive > 1 ? "s" : ""))
+            : "No active coupling routes";
+
         chainView.refresh();
         repaint();
     }
@@ -257,10 +265,6 @@ public:
             float routeY = chainY + pillH * 0.5f + 12.0f;
             float padding = 16.0f;
 
-            // Count active routes for the summary text below the diagram
-            int numActive = (int)std::count_if(routes.begin(), routes.end(),
-                                               [](const auto& r) { return r.active && r.amount >= 0.005f; });
-
             // Engine nodes: 4 primary at corners + 1 Ghost Slot at bottom-centre
             auto nodeArea = juce::Rectangle<float>(padding, routeY, w - 2.0f * padding, 60.0f);
             juce::Point<float> nodePos[MegaCouplingMatrix::MaxSlots] = {
@@ -375,14 +379,11 @@ public:
                            juce::Justification::centred);
             }
 
-            // Route count summary line below the diagram
+            // Route count summary line below the diagram — use pre-built string (no alloc).
             float summaryY = nodeArea.getBottom() + 6.0f;
             g.setColour(get(textMid()).withAlpha(0.70f));
             g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
-            juce::String summaryText = numActive > 0
-                                           ? juce::String(numActive) + " active route" + (numActive > 1 ? "s" : "")
-                                           : "No active coupling routes";
-            g.drawText(summaryText, b.withY(summaryY).withHeight(14.0f).toNearestInt(), juce::Justification::centred);
+            g.drawText(cachedSummaryText_, b.withY(summaryY).withHeight(14.0f).toNearestInt(), juce::Justification::centred);
         }
     }
 
@@ -406,6 +407,9 @@ private:
     mutable std::vector<juce::Colour> cachedArcColors;
     mutable std::vector<float> cachedArcAlphas;
     mutable bool arcPathDirty = true;
+
+    // Pre-built summary text — rebuilt in refresh() to avoid String alloc in paint.
+    juce::String cachedSummaryText_ = "No active coupling routes";
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OverviewPanel)
 };

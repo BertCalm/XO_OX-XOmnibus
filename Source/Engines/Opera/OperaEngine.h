@@ -919,6 +919,13 @@ public:
             ? 1.0f - FastMath::fastExp(-kTwoPi / (sr_ * snap_.portamento * 0.5f))
             : 0.0f;
 
+        // Block-constant unison scalars — snap_.unison + snap_.detune are block-rate,
+        // so hoisting these out of the per-sample per-voice inner loop eliminates
+        // N × V per-sample std::sqrt calls plus redundant clamps/mults.
+        const int   blockUnisonCount  = std::clamp(snap_.unison, 1, 4);
+        const float blockUnisonGain   = 1.0f / std::sqrt(static_cast<float>(blockUnisonCount));
+        const float blockUnisonSpread = snap_.detune * 0.02f;
+
         for (int s = 0; s < numSamples; ++s)
         {
             // 6a. Accumulate modulation offsets for this sample
@@ -1054,10 +1061,10 @@ public:
                 float pL = 0.0f, pR = 0.0f;
                 float monoSample = 0.0f;
 
-                int unisonCount = std::clamp(snap_.unison, 1, 4);
-                float unisonGain = 1.0f / std::sqrt(static_cast<float>(unisonCount));
-                // spread: detune * 2% max total spread
-                float unisonSpread = snap_.detune * 0.02f;
+                // Unison scalars hoisted to per-block scope above — block-constant.
+                const int   unisonCount  = blockUnisonCount;
+                const float unisonGain   = blockUnisonGain;
+                const float unisonSpread = blockUnisonSpread;
 
                 // Unison pan positions: 1={C}, 2={L,R}, 3={L,C,R}, 4={L,LC,RC,R}
                 // FIX F7: 4-voice layout was {-1,0,0,1} — two coincident center voices

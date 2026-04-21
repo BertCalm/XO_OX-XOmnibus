@@ -25,6 +25,8 @@
 #include "Engines/Ortolan/OrtolanEngine.h"
 #include "Engines/Octant/OctantEngine.h"
 #include "Engines/Overtide/OvertideEngine.h"
+#include "Engines/Oobleck/OobleckEngine.h"
+#include "Engines/Ooze/OozeEngine.h"
 #include "Engines/Origami/OrigamiEngine.h"
 #include "Engines/Oracle/OracleEngine.h"
 #include "Engines/Obscura/ObscuraEngine.h"
@@ -102,6 +104,10 @@
 #include "Engines/Olvido/OlvidoEngine.h"
 // OSTRACON — corpus-buffer synthesis (engine #88)
 #include "Engines/Ostracon/OstraconEngine.h"
+// OUTCROP — wave-terrain synthesis (engine #89)
+#include "Engines/Outcrop/OutcropEngine.h"
+// ONEIRIC — NLS soliton synthesis (engine #90)
+#include "Engines/Oneiric/OneiricEngine.h"
 #include "DSP/Effects/MathFXChain.h"
 #include "DSP/Effects/BoutiqueFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
@@ -166,6 +172,12 @@ static bool registered_Octant =
 static bool registered_Overtide =
     xoceanus::EngineRegistry::instance().registerEngine("Overtide", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OvertideEngine>(); });
+static bool registered_Oobleck =
+    xoceanus::EngineRegistry::instance().registerEngine("Oobleck", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OobleckEngine>(); });
+static bool registered_Ooze =
+    xoceanus::EngineRegistry::instance().registerEngine("Ooze", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OozeEngine>(); });
 static bool registered_Origami = xoceanus::EngineRegistry::instance().registerEngine(
     "Origami", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrigamiEngine>(); });
 static bool registered_Oracle = xoceanus::EngineRegistry::instance().registerEngine(
@@ -362,6 +374,16 @@ static bool registered_Olvido =
 static bool registered_Ostracon =
     xoceanus::EngineRegistry::instance().registerEngine("Ostracon", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OstraconEngine>(); });
+
+// OUTCROP — wave-terrain synthesis (engine #89)
+static bool registered_Outcrop =
+    xoceanus::EngineRegistry::instance().registerEngine("Outcrop", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OutcropEngine>(); });
+
+// ONEIRIC — NLS soliton synthesis (engine #90)
+static bool registered_Oneiric =
+    xoceanus::EngineRegistry::instance().registerEngine("Oneiric", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OneiricEngine>(); });
 
 namespace xoceanus
 {
@@ -563,6 +585,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     // FUSION Quad Collection — OASIS + OUTFLOW (ecosystem engines, missing from APVTS)
     OasisEngine::addParameters(params);
     OutflowEngine::addParameters(params);
+    // OUTCROP — wave-terrain synthesis (engine #89)
+    OutcropEngine::addParameters(params);
+    // ONEIRIC — NLS soliton synthesis (engine #90)
+    OneiricEngine::addParameters(params);
 
     // ── Three FX suites wired as optional stages in MasterFXChain (issue #153) ──
     // MathFXChain and BoutiqueFXChain use the shared params vector.
@@ -1341,6 +1367,9 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         }
     }
 
+    // Drain PlaySurface MIDI before early return to prevent unbounded queue growth
+    playSurfaceMidiCollector.removeNextBlockOfMessages(midi, numSamples);
+
     if (activeCount == 0)
         return;
 
@@ -1349,8 +1378,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     // Merge PlaySurface note-on/off events queued from the message thread.
     // removeNextBlockOfMessages() is thread-safe; it drains the lock-free queue
     // and appends the messages into `midi` so the rest of the pipeline sees them
-    // exactly like host-generated MIDI events.
-    playSurfaceMidiCollector.removeNextBlockOfMessages(midi, numSamples);
+    // exactly like host-generated MIDI events. (Drained above, before early return.)
 
     // Process MIDI learn CC → parameter routing (audio thread safe)
     midiLearnManager.processMidi(midi);
@@ -2058,15 +2086,6 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         juce::MessageManager::callAsync([this] { drainGraveyard(); });
     }
 
-    // NaN/inf guard — engine bugs should not crash the host
-    for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
-    {
-        auto* data = buffer.getWritePointer(ch);
-        for (int i = 0; i < numSamples; ++i)
-            if (!std::isfinite(data[i]))
-                data[i] = 0.0f;
-    }
-
     // Master FX chain: sat → delay → reverb → mod → comp + sequencer (post all engines)
     double ppqPos = -1.0;
     double bpm = 0.0;
@@ -2086,6 +2105,15 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     // bpm, ppqPos) — differs from masterFX's (buffer, numSamples, ppqPos, bpm).
     epicSlots.processBlock(buffer, numSamples, bpm, ppqPos);
     masterOutputFifo.push(buffer.getReadPointer(0), static_cast<size_t>(numSamples));
+
+    // NaN/inf guard — engine bugs should not crash the host
+    for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+    {
+        auto* data = buffer.getWritePointer(ch);
+        for (int i = 0; i < numSamples; ++i)
+            if (!std::isfinite(data[i]))
+                data[i] = 0.0f;
+    }
 
     // CPU load measurement: elapsed / buffer_duration, smoothed with a leaky integrator.
     // Uses high-resolution ticks so measurements are host-independent.

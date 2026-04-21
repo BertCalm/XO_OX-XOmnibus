@@ -518,7 +518,7 @@ public:
         // floats through the FPU's microcode fallback path, causing audio dropouts.
         juce::ScopedNoDenormals noDenormals;
 
-        buffer.clear();
+        // ADDITIVE: do not clear — engine adds to existing buffer (slot chain convention)
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
 
@@ -993,8 +993,8 @@ public:
             outputSampleL *= volumeRaw;
             outputSampleR *= volumeRaw;
 
-            outL[sampleIdx] = outputSampleL;
-            outR[sampleIdx] = outputSampleR;
+            outL[sampleIdx] += outputSampleL;
+            outR[sampleIdx] += outputSampleR;
 
             //-- Cache output for coupling reads from other engines -------------
             if (sampleIdx < static_cast<int>(outputCacheL.size()))

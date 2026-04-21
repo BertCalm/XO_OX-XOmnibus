@@ -504,7 +504,6 @@ public:
 
         if (isSilenceGateBypassed())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
@@ -548,9 +547,12 @@ public:
         smoothWoodAge.set(pWoodAge);
         smoothCuringRate.set(pCuringRate);
 
+        // Snapshot coupling accumulators (Approach A from #1118) — consume into
+        // block-local values before the reset, so applyCouplingInput values
+        // accumulated during the prior frame actually influence this block.
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
-
         const float bendSemitones = pitchBendNorm * pBendRange;
 
         // LFO params — macroMove speeds both LFOs for more organic bowing movement
@@ -561,6 +563,7 @@ public:
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
         const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
+        const float roomSpread = pRoom * 0.15f;
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -571,7 +574,7 @@ public:
             voice.lfo2.setShape(lfo2Shape);
             voice.glide.setTime(pGlide, srf);
             voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
-            // P19: move block-constant updates here — saves per-sample SVF coeff + exp calls.
+// P19: move block-constant updates here — saves per-sample SVF coeff + exp calls.
             voice.body.updateModes(smoothWoodAge.get());
             voice.outputFilter.setMode(CytomicSVF::Mode::LowPass); // mode is constant; set once per block
             // setStringType contains std::exp — block-constant, pull out of per-sample loop
@@ -592,13 +595,26 @@ public:
 
         const float dtSec = inverseSr_;
 
+        // bendSemitones + coupling pitch mod are both block-constant here. Hoist the
+        // semitonesToFreqRatio call (fastPow2 inside) out of the per-sample loop.
+        // Uses the pre-reset snapshot so applyCouplingInput pitch accumulators are
+        // honoured (#1118).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+
         for (int s = 0; s < numSamples; ++s)
         {
-            float bowPNow    = smoothBowPressure.process();
+float bowPNow    = smoothBowPressure.process();
             (void)smoothStringTension.process(); // advance smoother; value is block-constant (moved to pre-sample loop)
             float bodyDNow   = smoothBodyDepth.process();
             float brightNow  = smoothBrightness.process();
             (void)smoothWoodAge.process();        // advance smoother; value is block-constant (moved to pre-sample loop)
+const bool updateFilter = ((s & 15) == 0);
+            float bowPNow = smoothBowPressure.process();
+            float strTNow = smoothStringTension.process();
+            float bodyDNow = smoothBodyDepth.process();
+            float brightNow = smoothBrightness.process();
+            float woodANow = smoothWoodAge.process();
             float curingRNow = smoothCuringRate.process();
 
             float mixL = 0.0f, mixR = 0.0f;
@@ -609,7 +625,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 // Advance LFO phase always (phase consistency), but skip multiply when depth is zero
                 float lfo1Raw = voice.lfo1.process();
@@ -633,7 +649,7 @@ public:
                 // Curing model: HF removal over sustain time
                 float cured = voice.curing.process(bodied, curingRNow, dtSec);
 
-                // Output brightness filter (setMode moved to pre-sample block loop above)
+// Output brightness filter (setMode moved to pre-sample block loop above)
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 4000.0f;
                 float cutoff =
                     std::clamp(brightNow + envMod + lfo1Val * 2000.0f + lfo2Val * 2000.0f + voice.velocity * 2000.0f,
@@ -659,7 +675,7 @@ public:
 
                 float output = filtered * ampLevel * voice.velocity;
 
-                // Pan gains precomputed per block (panL/panR) — avoids std::cos/sin per sample
+// Pan gains precomputed per block (panL/panR) — avoids std::cos/sin per sample
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
             }
@@ -708,7 +724,7 @@ public:
 
         v.string.reset();
         v.exciter.trigger(vel, exciterType, freq, srf);
-        // P18: body/curing/env prepare() removed from noteOn — belongs in OakenEngine::prepare() only.
+// P18: body/curing/env prepare() removed from noteOn — belongs in OakenEngine::prepare() only.
         // Calling prepare() per-noteOn is wasteful and can reset filter state mid-note.
         v.curing.trigger();
 

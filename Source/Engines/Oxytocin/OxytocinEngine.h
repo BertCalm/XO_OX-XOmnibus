@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <cstdint>
 
+#include "../../DSP/FastMath.h"
 #include "OxytocinVoice.h"
 #include "OxytocinMemory.h"
 #include "OxytocinTriangle.h"
@@ -99,6 +100,11 @@ public:
         // P0-1: use HeapBlock sized to maxBlockSize to prevent stack overrun
         monoBuffer.realloc(maxBlockSize);
         juce::FloatVectorOperations::clear(monoBuffer.getData(), maxBlockSize);
+        // ADDITIVE: stereo scratch for additive mixing
+        scratchL.realloc(maxBlockSize);
+        scratchR.realloc(maxBlockSize);
+        juce::FloatVectorOperations::clear(scratchL.getData(), maxBlockSize);
+        juce::FloatVectorOperations::clear(scratchR.getData(), maxBlockSize);
 
         for (auto& v : voices)
             v.prepare(sampleRate);
@@ -173,13 +179,16 @@ public:
     // D006: aftertouch → passion boost
     void aftertouch(int value) noexcept { aftertouchValue = static_cast<float>(value) / 127.0f; }
 
-    /// Main process block.  Clears and fills the stereo output buffer.
+    /// Main process block.  Adds this engine's contribution to the stereo output buffer.
+    /// ADDITIVE: does not clear the buffer — uses scratchL/scratchR for isolation.
     void processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages, ParamSnapshot& snap) noexcept
     {
         juce::ScopedNoDenormals noDenormals;
         const int numSamples = buffer.getNumSamples();
         jassert(numSamples <= allocatedBlockSize); // P0-1: guard
-        buffer.clear();
+        // ADDITIVE: render into scratch, then add to output buffer at end
+        juce::FloatVectorOperations::clear(scratchL.getData(), numSamples);
+        juce::FloatVectorOperations::clear(scratchR.getData(), numSamples);
 
         // Process MIDI events (sample-accurate position ignored for simplicity — block-level)
         for (const auto meta : midiMessages)
@@ -232,6 +241,12 @@ public:
         // F05/F06 fix: pre-compute LFO1 cutoff multiplier and detune ratio at block rate
         // using fastPow2 instead of std::pow (called per active voice in the old code).
         const float lfo1CutoffMult = xoceanus::fastPow2(lfo1Val * snap.lfoDepth * 2.0f / 12.0f);
+        // Pan gains are block-constant (snap.pan is stable per block) and identical
+        // for every voice — compute once here instead of inside the per-voice loop.
+        // TODO(#): intended refactor to use these in the voice loop; currently the
+        // loop recomputes per-voice. Kept as [[maybe_unused]] until the refactor lands.
+        [[maybe_unused]] const float blockPanL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
+        [[maybe_unused]] const float blockPanR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
 
         for (int vi = 0; vi < maxV; ++vi)
         {
@@ -244,8 +259,10 @@ public:
 
             // Apply LFO1 to cutoff (depth → frequency modulation in semitones)
             // We modify a local copy of snap for this voice
+            // (fastPow2: ~0.1% error — per-voice per-block)
             ParamSnapshot voiceSnap = snap;
             voiceSnap.cutoff *= lfo1CutoffMult; // F05/F06: fastPow2 pre-computed above
+            voiceSnap.cutoff *= xoceanus::fastPow2(lfo1Val * snap.lfoDepth * 2.0f * (1.0f / 12.0f));
 
             // LFO2 → triangle position modulates I/P/C balance
             // Blend snap params toward triangle coords by lfo2 depth
@@ -266,10 +283,16 @@ public:
 
             auto* outL = buffer.getWritePointer(0);
             auto* outR = buffer.getWritePointer(1);
+            // Mix to stereo with pan — accumulate into scratch
+            float panL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
+            float panR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
+
+            auto* sL = scratchL.getData();
+            auto* sR = scratchR.getData();
             for (int s = 0; s < numSamples; ++s)
             {
-                outL[s] += monoBuffer[s] * panL;
-                outR[s] += monoBuffer[s] * panR;
+                sL[s] += monoBuffer[s] * panL;
+                sR[s] += monoBuffer[s] * panR;
             }
         }
 
@@ -288,14 +311,30 @@ public:
         if (activeCount > 1)
             gainLinear /= std::sqrt(static_cast<float>(activeCount));
 
-        buffer.applyGain(gainLinear);
-
-        // Clip guard
-        for (int ch = 0; ch < buffer.getNumChannels(); ++ch)
+        auto* sL = scratchL.getData();
+        auto* sR = scratchR.getData();
+        for (int s = 0; s < numSamples; ++s)
         {
-            auto* data = buffer.getWritePointer(ch);
+            sL[s] *= gainLinear;
+            sR[s] *= gainLinear;
+        }
+
+        // Clip guard on scratch (only Oxytocin's signal — not earlier engines)
+        for (int s = 0; s < numSamples; ++s)
+        {
+            sL[s] = std::clamp(sL[s], -1.0f, 1.0f);
+            sR[s] = std::clamp(sR[s], -1.0f, 1.0f);
+        }
+
+        // ADDITIVE: mix processed scratch into the output buffer
+        auto* outL = buffer.getWritePointer(0);
+        for (int s = 0; s < numSamples; ++s)
+            outL[s] += sL[s];
+        if (buffer.getNumChannels() > 1)
+        {
+            auto* outR = buffer.getWritePointer(1);
             for (int s = 0; s < numSamples; ++s)
-                data[s] = std::clamp(data[s], -1.0f, 1.0f);
+                outR[s] += sR[s];
         }
     }
 
@@ -356,6 +395,9 @@ private:
 
     // P0-1: HeapBlock replaces fixed std::array<float, 4096>
     juce::HeapBlock<float> monoBuffer;
+    // ADDITIVE: stereo scratch buffers — Oxytocin renders here, then adds to output buffer
+    juce::HeapBlock<float> scratchL;
+    juce::HeapBlock<float> scratchR;
 
     std::array<OxytocinVoice, MaxVoices> voices;
     OxytocinMemory memory;

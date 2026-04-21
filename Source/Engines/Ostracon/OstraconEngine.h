@@ -678,6 +678,9 @@ public:
                             // setMode(LowPass) omitted here — set once in reset() / doNoteOn()
                             float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
                             oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
+                            float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
+                            oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
+                            voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
                             voice.oxideFilter[h].setCoefficients_fast(oxideCutoff, 0.3f, currentSampleRate);
                         }
                         rawSample = voice.oxideFilter[h].processSample(rawSample);
@@ -738,6 +741,10 @@ public:
                 // setMode() is applied once per block above; only coefficients need per-16 refresh.
                 if (updateFilter)
                 {
+                if (updateFilter)
+                {
+                    voice.outputFilterL.setMode(filterMode);
+                    voice.outputFilterR.setMode(filterMode);
                     voice.outputFilterL.setCoefficients_fast(finalCutoff, smoothedReso, currentSampleRate);
                     voice.outputFilterR.setCoefficients_fast(finalCutoff, smoothedReso, currentSampleRate);
                 }

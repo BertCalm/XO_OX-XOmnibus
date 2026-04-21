@@ -1302,6 +1302,7 @@ public:
         // ---- Per-sample rendering loop ----
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
+            const bool updateFilter = ((sampleIndex & 15) == 0);
             float mixL = 0.0f;
             float mixR = 0.0f;
 
@@ -1343,9 +1344,12 @@ public:
                     // noiseColor 0.5 = white (moderate Q)
                     // noiseColor 1.0 = bright (high Q, resonant HP character)
                     // Range [0.3, 0.7] maps noiseColor [0, 1]
-                    voice.ingestionFilter.setCoefficients(enzymeSelectivity + externalFilterModulation * 2000.0f,
-                                                          0.3f + effectiveNoiseColor * 0.4f,
-                                                          static_cast<float>(cachedSampleRate));
+                    // Coeff refresh decimated to every 16 samples — enzyme selectivity
+                    // changes slowly relative to audio rate.
+                    if (updateFilter)
+                        voice.ingestionFilter.setCoefficients(enzymeSelectivity + externalFilterModulation * 2000.0f,
+                                                              0.3f + effectiveNoiseColor * 0.4f,
+                                                              static_cast<float>(cachedSampleRate));
                     ingestedSample = voice.ingestionFilter.processSample(noise) * effectiveSignalFlux;
                 }
 

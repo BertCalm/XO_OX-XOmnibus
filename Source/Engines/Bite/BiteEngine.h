@@ -1284,6 +1284,7 @@ struct BiteVoice
 
     // Cached per-block
     float cachedBaseFreq = 261.63f;
+    float cachedUnisonDetuneRatio = 1.0f; // hoist std::pow out of per-sample/per-voice loop
 
     // MPE per-voice expression state
     MPEVoiceExpression mpeExpression;
@@ -1712,9 +1713,22 @@ public:
                                     filtR * scurryEnvMul * playDeadRelMul);
             voice.modEnv.setADSR(modA, modD, modS, modR);
 
+            // LFO config: shape/rate/startPhase are all block-constant per voice.
+            // Hoisted here from the per-sample loop — was setRate × 3 LFOs ×
+            // N samples × V voices per block.
+            voice.lfo1.setShape(lfo1Shape);
+            voice.lfo1.setRate(lfo1Rate * scurryLfoMul);
+            voice.lfo1.setStartPhase(lfo1Phase);
+            voice.lfo2.setShape(lfo2Shape);
+            voice.lfo2.setRate(lfo2Rate * scurryLfoMul);
+            voice.lfo2.setStartPhase(lfo2Phase);
+            voice.lfo3.setShape(lfo3Shape);
+            voice.lfo3.setRate(lfo3Rate * scurryLfoMul);
+            voice.lfo3.setStartPhase(lfo3Phase);
+
             float targetFreq = midiToFreq(voice.noteNumber);
-            // MPE pitch bend
-            targetFreq *= std::pow(2.0f, voice.mpeExpression.pitchBendSemitones / 12.0f);
+            // MPE pitch bend (fastPow2: ~0.1% error, per-block per-voice)
+            targetFreq *= fastPow2(voice.mpeExpression.pitchBendSemitones * (1.0f / 12.0f));
             // Glide
             if (glideMode > 0 && glideTime > 0.001f && voice.hasPlayedBefore)
                 voice.glide.setTarget(targetFreq);
@@ -1734,13 +1748,34 @@ public:
             voice.lfo3.setShape(lfo3Shape);
             voice.lfo3.setRate(lfo3Rate * scurryLfoMul);
             voice.lfo3.setStartPhase(lfo3Phase);
+            // Pre-compute unison detune ratio per voice — block-constant so we hoist the
+            // std::pow out of the per-sample render loop.
+            if (voice.unisonTotal > 1)
+            {
+                const float detuneRange = unisonDetune * 50.0f; // cents
+                const float unisonPos = (static_cast<float>(voice.unisonIndex) -
+                                          static_cast<float>(voice.unisonTotal - 1) * 0.5f) /
+                                         static_cast<float>(voice.unisonTotal - 1);
+                const float detuneSemitones = unisonPos * detuneRange / 100.0f;
+                voice.cachedUnisonDetuneRatio = fastPow2(detuneSemitones * (1.0f / 12.0f));
+            }
+            else
+            {
+                voice.cachedUnisonDetuneRatio = 1.0f;
+            }
         }
+
+        // Block-constant pitch-bend ratio (channel pitch wheel) — hoist the
+        // fastPow2 call out of the per-sample loop; LFO1 pitch vibrato stays
+        // per-sample as a separate linear scale.
+        const float blockChannelBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         // =====================================================================
         // Render voices (per-sample loop)
         // =====================================================================
         for (int sample = 0; sample < numSamples; ++sample)
         {
+            const bool updateFilter = ((sample & 15) == 0);
             float mixL = 0.0f, mixR = 0.0f;
 
             float externalFM = 0.0f;
@@ -1756,21 +1791,14 @@ public:
                 float freq = voice.glide.process();
 
                 // --- Unison detune ---
+                // (cached in per-block voice setup loop — block-constant)
                 if (voice.unisonTotal > 1)
-                {
-                    float detuneRange = unisonDetune * 50.0f; // 0-1 maps to 0-50 cents max spread
-                    float unisonPos = (voice.unisonTotal > 1) ? (static_cast<float>(voice.unisonIndex) -
-                                                                 static_cast<float>(voice.unisonTotal - 1) * 0.5f) /
-                                                                    static_cast<float>(voice.unisonTotal - 1)
-                                                              : 0.0f;
-                    float detuneSemitones = unisonPos * detuneRange / 100.0f;
-                    freq *= std::pow(2.0f, detuneSemitones / 12.0f);
-                }
+                    freq *= voice.cachedUnisonDetuneRatio;
 
                 // --- Velocity sensitivity ---
                 float velGain = 1.0f - ampVelSens + ampVelSens * voice.velocity;
 
-                // --- LFOs --- (shape/rate/startPhase set once per block in pre-compute loop)
+            // --- LFOs (setShape/setRate/setStartPhase hoisted to per-block voice loop) ---
                 float lfo1val = voice.lfo1.process() * lfo1Depth;
                 float lfo2val = voice.lfo2.process() * lfo2Depth;
                 float lfo3val = voice.lfo3.process() * lfo3Depth;
@@ -1834,7 +1862,7 @@ public:
                 // LFO1 -> pitch (subtle vibrato), scaled by Scurry
                 float pitchMod = lfo1val * 0.005f * (1.0f + macroScurry);
                 freq *= (1.0f + pitchMod);
-                freq *= PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                freq *= blockChannelBendRatio; // hoisted above — block-const pitch bend
 
                 // --- OscA (Belly) ---
                 voice.oscA.setFrequency(freq);
@@ -1951,13 +1979,20 @@ public:
                 // Scale 4000 Hz gives a musically useful ±4 kHz sweep across the filter
                 // envelope range. The previous 10000 Hz drove the cutoff to the 18 kHz
                 // ceiling at low base-cutoff values, killing velocity-timbral variation.
-                float modCutoff = filterCutoff + filtEnvAmt * filtEnvVal * voice.velocity * 4000.0f + bellyCutoffMod +
-                                  playDeadCutoff + filterMod * 2000.0f + lfo2val * 2000.0f + lfo3val * 2000.0f +
-                                  modEnvCutoff + keyTrackOffset;
-                modCutoff = clamp(modCutoff, 20.0f, 18000.0f);
+                // Decimate SVF coefficient refresh to every 16 samples — env + LFOs
+                // still advance per sample (already ticked above), only the expensive
+                // filter coefficient update is throttled. ~0.36ms refresh @ 44.1k is
+                // well below audible cutoff-tracking lag.
+                if (updateFilter)
+                {
+                    float modCutoff = filterCutoff + filtEnvAmt * filtEnvVal * voice.velocity * 4000.0f + bellyCutoffMod +
+                                      playDeadCutoff + filterMod * 2000.0f + lfo2val * 2000.0f + lfo3val * 2000.0f +
+                                      modEnvCutoff + keyTrackOffset;
+                    modCutoff = clamp(modCutoff, 20.0f, 18000.0f);
 
-                float voiceFilterReso = clamp(effFilterReso + mmDst[11], 0.0f, 0.95f); // mmDst[11]=FilterReso
-                voice.filter.setCoefficients_fast(modCutoff, voiceFilterReso, srf);
+                    float voiceFilterReso = clamp(effFilterReso + mmDst[11], 0.0f, 0.95f); // mmDst[11]=FilterReso
+                    voice.filter.setCoefficients_fast(modCutoff, voiceFilterReso, srf);
+                }
                 float filtered = voice.filter.processSample(oscOut);
 
                 // Add post-filter noise
@@ -1968,8 +2003,13 @@ public:
                 float effChewAmtMod = clamp(chewAmount + mmDst[14], 0.0f, 1.0f); // mmDst[14]=Chew
                 if (effChewAmtMod > 0.001f)
                 {
-                    voice.chewFilter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.chewFilter.setCoefficients_fast(chewFreq, 0.5f, srf);
+                    // chewFreq is block-constant (loaded from pChewFreq at block start);
+                    // refresh coefficients only when the filter tick fires.
+                    if (updateFilter)
+                    {
+                        voice.chewFilter.setMode(CytomicSVF::Mode::LowPass);
+                        voice.chewFilter.setCoefficients_fast(chewFreq, 0.5f, srf);
+                    }
                     float chewBand = voice.chewFilter.processSample(filtered);
                     float chewOut = voice.chew.process(chewBand, effChewAmtMod) + (filtered - chewBand);
                     filtered = lerp(filtered, chewOut, chewMix);

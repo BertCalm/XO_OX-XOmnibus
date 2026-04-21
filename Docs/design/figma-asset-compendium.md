@@ -625,7 +625,7 @@ All in `~/` (home directory root). These document the visual evolution of XO-OX.
 #### Outshine & Originate
 | File | Path | Content |
 |------|------|---------|
-| Outshine Format Spec | `Docs/xoutshine-forge-spec.md` | 1,530-line format specification |
+| Outshine Format Spec | `Docs/design/xoutshine-forge-spec.md` | 1,530-line format specification |
 | Outshine Seance | `Docs/seance-outshine-2026-03-22.md` | Ghost council verdict (8.4/10) |
 | UIX Design Spec | `~/Documents/GitHub/audio-xpm-creator/DESIGN_SPECIFICATION_OUTSHINE_ORIGINATE.md` | 1,200+ line wireframes, fonts, colors, components, animations |
 

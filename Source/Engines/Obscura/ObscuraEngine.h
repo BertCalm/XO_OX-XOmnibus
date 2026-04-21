@@ -774,6 +774,15 @@ public:
         //----------------------------------------------------------------------
         // Per-sample render loop
         //----------------------------------------------------------------------
+        // Block-constant scalars hoisted out of the per-sample loop below.
+        // pitchBendNorm and obscuraModPitchOffset are both static across the block,
+        // so the PitchBendUtil::semitonesToFreqRatio call (which contains std::pow)
+        // was being run V × N times per block instead of once.
+        const float blockScannerPitchRatio =
+            PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + obscuraModPitchOffset);
+        // Master level with mod-matrix offset — both inputs block-constant.
+        const float blockMasterLevel = juce::jlimit(0.05f, 1.5f, paramMasterLevel + obscuraModLevelOffset);
+
         for (int sample = 0; sample < numSamples; ++sample)
         {
             // Advance smoothers one sample to avoid zipper noise.
@@ -955,7 +964,8 @@ public:
                 // The scanner reads the chain's shape at audio rate, producing
                 // the output waveform. Scanner frequency = MIDI note frequency,
                 // so the chain's displacement pattern becomes the waveform.
-                float scannerFreq = voice.currentFrequency * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + obscuraModPitchOffset);
+                // blockScannerPitchRatio hoisted above — no per-sample std::pow now.
+                float scannerFreq = voice.currentFrequency * blockScannerPitchRatio;
                 float scannerIncrement = scannerFreq / sampleRateFloat;
 
                 // Left channel: forward scan
@@ -1007,10 +1017,9 @@ public:
                 peakEnvelopeLevel = std::max(peakEnvelopeLevel, amplitudeLevel);
             }
 
-            // Apply master level (with mod matrix level offset)
-            const float effectiveMasterLevel = juce::jlimit(0.05f, 1.5f, paramMasterLevel + obscuraModLevelOffset);
-            float finalLeft = mixLeft * effectiveMasterLevel;
-            float finalRight = mixRight * effectiveMasterLevel;
+            // Apply master level (blockMasterLevel hoisted above — block-constant)
+            float finalLeft = mixLeft * blockMasterLevel;
+            float finalRight = mixRight * blockMasterLevel;
 
             // Write to output buffer
             if (buffer.getNumChannels() >= 2)

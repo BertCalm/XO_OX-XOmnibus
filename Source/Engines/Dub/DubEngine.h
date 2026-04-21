@@ -741,6 +741,15 @@ public:
         }
 
         // --- Render voices ---
+        // Hoist envelope setADSR/setParams out of per-sample loop — both are
+        // block-rate from ADSR knob values; setADSR does 2× std::exp.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(attack, decay, sustain, release);
+            voice.pitchEnv.setParams(pitchDepth, pitchDecay);
+        }
+
         for (int sample = 0; sample < numSamples; ++sample)
         {
             // Per-sample LFO
@@ -792,8 +801,7 @@ public:
                 if (!voice.active)
                     continue;
 
-                // ampEnv.setADSR and pitchEnv.setParams hoisted to block-rate above.
-
+// Envelope setADSR/setParams hoisted to per-block voice loop above.
                 // Glide: exponential frequency slew
                 float baseFreq = midiToFreqOct(voice.noteNumber, oscOctaveIdx, oscTune);
 

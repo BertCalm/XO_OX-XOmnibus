@@ -181,11 +181,11 @@ private:
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // ── Fonts ──
-        const juce::Font pillFont(juce::FontOptions{}
+        static const juce::Font pillFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withStyle("Bold")
             .withHeight(9.0f));
-        const juce::Font labelFont(juce::FontOptions{}
+        static const juce::Font labelFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withHeight(8.0f));
 

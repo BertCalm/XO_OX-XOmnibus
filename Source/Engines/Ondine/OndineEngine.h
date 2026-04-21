@@ -603,7 +603,6 @@ public:
         }
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
@@ -750,7 +749,7 @@ public:
         // ---- Output buffers ----
         auto* writeL = buffer.getWritePointer(0);
         auto* writeR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : writeL;
-        buffer.clear();
+        // ADDITIVE: do not clear — engine adds to existing buffer (slot chain convention)
 
         // ---- MIDI processing interleaved with rendering ----
         int midiSamplePos = 0;
@@ -817,11 +816,13 @@ public:
             lastSampleR = writeR[numSamples - 1];
         }
 
-        // ---- Coupling accumulator decay (0.999× per block) ----
-        couplingAmpFilter    *= 0.999f;
-        couplingEnvVowelX    *= 0.999f;
-        couplingRhythmVowelY *= 0.999f;
-        couplingExcLevel     *= 0.999f;
+        // ---- Coupling accumulator decay — block-size-invariant (~1s tau) ----
+        // Old `*= 0.999f` was block-rate so feel varied with DAW buffer size.
+        const float couplingDecayCoeff = fastExp(-static_cast<float>(numSamples) / sampleRateFloat);
+        couplingAmpFilter    *= couplingDecayCoeff;
+        couplingEnvVowelX    *= couplingDecayCoeff;
+        couplingRhythmVowelY *= couplingDecayCoeff;
+        couplingExcLevel     *= couplingDecayCoeff;
 
         // ---- Update active voice count (atomic) ----
         int av = 0;
@@ -1039,6 +1040,11 @@ private:
             const float effectExcBright = std::clamp(excBright + velBrightBoost, 0.0f, 1.0f);
             const float effectSpread    = std::clamp(formantSpread + velSpreadBoost, 0.5f, 2.5f);
 
+            // formantQ is block-constant; pre-compute the bandwidth-scale factor once
+            // per voice rather than repeating the multiply-subtract inside the 5-iteration
+            // formant loop on every sample.
+            const float formantBwScale  = 2.0f - formantQ * 1.5f;
+
             // ---- Vowel morph auto-oscillator ----
             // vowelMorphRate [0..1] → Hz [0..2] morph cycle
             const float morphHz   = vowelMorphRate * 2.0f;
@@ -1155,9 +1161,10 @@ private:
                     fBWs[f]  = std::max(20.0f, fBWs[f] * effectSpread);
                 }
 
-                // formantQ scales bandwidth (lower Q = wider = more overlap)
+                // formantQ scales bandwidth (lower Q = wider = more overlap).
+                // formantBwScale precomputed per voice above — block-constant.
                 for (int f = 0; f < 5; ++f)
-                    fBWs[f] = fBWs[f] * (2.0f - formantQ * 1.5f);
+                    fBWs[f] = fBWs[f] * formantBwScale;
 
                 // formantTilt: spectral tilt on formant amplitudes
                 // Negative = darker (boost low formants), Positive = brighter (boost high)
@@ -1448,7 +1455,9 @@ private:
 
     std::array<OndineVoice, kOndineMaxVoices> voices;
 
-    float sampleRateFloat = 44100.0f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float sampleRateFloat = 0.0f;
     int   maxBlock        = 512;
 
     // Coupling accumulators

@@ -750,7 +750,6 @@ public:
         }
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
@@ -908,7 +907,7 @@ public:
         // ---- Output buffers ----
         auto* writeL = buffer.getWritePointer(0);
         auto* writeR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : writeL;
-        buffer.clear();
+        // ADDITIVE: do not clear — engine adds to existing buffer (slot chain convention)
 
         // ---- MIDI + render interleaved ----
         int midiSamplePos = 0;
@@ -977,11 +976,13 @@ public:
             lastSampleR = writeR[numSamples - 1];
         }
 
-        // ---- Coupling accumulator decay 0.999x per block (Lesson 10) ----
-        couplingAmpFilter *= 0.999f;
-        couplingEnvVowel  *= 0.999f;
-        couplingRhythm    *= 0.999f;
-        couplingFmLevel   *= 0.999f;
+        // ---- Coupling accumulator decay — block-size-invariant (~1s tau) ----
+        // Old `*= 0.999f` was block-rate so feel varied with DAW buffer size.
+        const float couplingDecayCoeff = fastExp(-static_cast<float>(numSamples) / sampleRateFloat);
+        couplingAmpFilter *= couplingDecayCoeff;
+        couplingEnvVowel  *= couplingDecayCoeff;
+        couplingRhythm    *= couplingDecayCoeff;
+        couplingFmLevel   *= couplingDecayCoeff;
 
         // ---- Active voice count (atomic) ----
         int av = 0;
@@ -1511,8 +1512,10 @@ private:
     //  M E M B E R S
     //==========================================================================
 
-    // Runtime state
-    float sampleRateFloat = 44100.0f;
+    // Runtime state (set in prepare())
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float sampleRateFloat = 0.0f;
     int   maxBlock        = 512;
 
     // Polyphonic voices

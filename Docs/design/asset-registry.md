@@ -65,8 +65,8 @@
 
 | Name | Weights | Format | License | Use | Location |
 |------|---------|--------|---------|-----|----------|
-| **Nebulica** | Light, Regular, Medium, SemiBold, Bold, ExtraBold (6 weights) | WOFF2 | Commercial (Ui8 purchase) | XO-OX.org large display headings (aquarium section, hero overlays) | `~/Documents/GitHub/XO_OX-XOceanus/Site/fonts/` + source pack at `~/Downloads/nebulica_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0/OTF/` |
-| **Chrys** | Light, Regular, Distorted (3 weights) | WOFF + OTF | Commercial (Ui8 purchase) | XO-OX.org specialty headings; Distorted variant for avant-garde contexts | `~/Documents/GitHub/XO_OX-XOceanus/Site/fonts/` + source at `~/Downloads/chrys_sans_serif_font_family_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0/OTF/` |
+| **Nebulica** | Light, Regular, Medium, SemiBold, Bold, ExtraBold (6 weights) | WOFF2 | Commercial (Ui8 purchase) | XO-OX.org large display headings (aquarium section, hero overlays) | `~/Documents/GitHub/XO_OX-XOmnibus/Site/fonts/` + source pack at `~/Downloads/nebulica_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0/OTF/` |
+| **Chrys** | Light, Regular, Distorted (3 weights) | WOFF + OTF | Commercial (Ui8 purchase) | XO-OX.org specialty headings; Distorted variant for avant-garde contexts | `~/Documents/GitHub/XO_OX-XOmnibus/Site/fonts/` + source at `~/Downloads/chrys_sans_serif_font_family_NjliZmQ4YWYzNzVhNWYwMDk1NzM2MDE0/OTF/` |
 
 ---
 
@@ -74,9 +74,9 @@
 
 | Name | Style | Format | License | Use | Location |
 |------|-------|--------|---------|-----|----------|
-| **HINO Aloraglyphs** | Symbolic glyphs | OTF | Commercial (Ui8 purchase) | Decorative glyph accents in site panels and engine cards | `~/Documents/GitHub/XO_OX-XOceanus/Site/fonts/HINOAloraglyphs.otf` |
-| **HINO Cryptaglyphs** | Runic/cipher symbols | OTF | Commercial (Ui8 purchase) | Cipher/rune accents in mythology-themed UI elements | `~/Documents/GitHub/XO_OX-XOceanus/Site/fonts/HINOCryptaglyphs-Regular.otf` |
-| **HINO Cyberglyphs** | Cyber/tech symbols | OTF | Commercial (Ui8 purchase) | Cyber/tech accent glyphs for plugin chrome details | `~/Documents/GitHub/XO_OX-XOceanus/Site/fonts/HINOCyberglyphs.otf` |
+| **HINO Aloraglyphs** | Symbolic glyphs | OTF | Commercial (Ui8 purchase) | Decorative glyph accents in site panels and engine cards | `~/Documents/GitHub/XO_OX-XOmnibus/Site/fonts/HINOAloraglyphs.otf` |
+| **HINO Cryptaglyphs** | Runic/cipher symbols | OTF | Commercial (Ui8 purchase) | Cipher/rune accents in mythology-themed UI elements | `~/Documents/GitHub/XO_OX-XOmnibus/Site/fonts/HINOCryptaglyphs-Regular.otf` |
+| **HINO Cyberglyphs** | Cyber/tech symbols | OTF | Commercial (Ui8 purchase) | Cyber/tech accent glyphs for plugin chrome details | `~/Documents/GitHub/XO_OX-XOmnibus/Site/fonts/HINOCyberglyphs.otf` |
 
 ---
 
@@ -298,7 +298,7 @@ Each subdirectory contains: `[name]-Filmstrip.png` or `final-[n].png` + an `asse
 | 73 | Tall narrow | 1 | `KNOBS/knob-73/` |
 | 74 | Retro pointer | 1 | `KNOBS/knob-74/` |
 | 75 | Wide ridged | 1 | `KNOBS/Knob-75/` |
-| 76 | Low-profile flat | 1 | `KNOBS/knob-76/` |
+| 88 | Low-profile flat | 1 | `KNOBS/knob-76/` |
 | 77 | Asymmetric tip | 1 | `KNOBS/knob-77/` |
 | 78 | Classic black round | 1 | `KNOBS/knob-78/` |
 | 79 | Smooth dome | 1 | `KNOBS/knob-79/` |
@@ -541,8 +541,8 @@ Each kit contains a coordinated set of: background panel, knobs (big + small or 
 
 | File | Path | Status | Notes |
 |------|------|--------|-------|
-| **design-tokens.css** | `~/Documents/GitHub/XO_OX-XOceanus/Site/design-tokens.css` | CANONICAL | 10 sections: Global Brand, Depth Zones, 76 Engine Colors, Anatomy, Glass Formula, PlaySurface, Typography, Type Scale (10 tokens), Spacing, Animation |
-| **engine-creature-map.json** | `~/Documents/GitHub/XO_OX-XOceanus/Site/engine-creature-map.json` | CANONICAL | Engine name → mythology mapping → accent color |
+| **design-tokens.css** | `~/Documents/GitHub/XO_OX-XOmnibus/Site/design-tokens.css` | CANONICAL | 10 sections: Global Brand, Depth Zones, 88 Engine Colors, Anatomy, Glass Formula, PlaySurface, Typography, Type Scale (10 tokens), Spacing, Animation |
+| **engine-creature-map.json** | `~/Documents/GitHub/XO_OX-XOmnibus/Site/engine-creature-map.json` | CANONICAL | Engine name → mythology mapping → accent color |
 
 ### 12.2 Design Documentation (all in `Docs/design/`)
 
@@ -590,7 +590,7 @@ Each kit contains a coordinated set of: background panel, knobs (big + small or 
 
 | File | Path | Description | Status |
 |------|------|-------------|--------|
-| **XOceanus Main UI Mockup v3** | `~/Documents/GitHub/XO_OX-XOceanus/Docs/mockups/xoceanus-main-ui.html` | Interactive HTML prototype, Rounds 51–120. Full engine data model, knob drag, oscilloscope canvas, coupling matrix, ADSR paths, preset navigation, dark/light mode toggle. Uses Space Grotesk + Inter + JetBrains Mono via Google Fonts CDN. | ADOPTED — primary interactive reference |
+| **XOceanus Main UI Mockup v3** | `~/Documents/GitHub/XO_OX-XOmnibus/Docs/mockups/xoceanus-main-ui.html` | Interactive HTML prototype, Rounds 51–120. Full engine data model, knob drag, oscilloscope canvas, coupling matrix, ADSR paths, preset navigation, dark/light mode toggle. Uses Space Grotesk + Inter + JetBrains Mono via Google Fonts CDN. | ADOPTED — primary interactive reference |
 | **Outshine Prototype** | `~/Documents/GitHub/audio-xpm-creator/Docs/mockups/outshine-prototype.html` | OUTSHINE window wireframe | REVIEW |
 
 ---
@@ -639,7 +639,7 @@ All files follow naming convention: `[section]-[descriptor].png` at `~/[filename
 | Name | Contents | Relevance | Location |
 |------|----------|-----------|----------|
 | **LED Board** | Full character set (A-Z, 0-9, symbols) — each as on/off PNG pair | 7-segment displays, BPM counter, XOverworld chip interface | `~/Downloads/LEDboard/` |
-| **Site LED characters** | Pre-rendered LED sprites | Already deployed in XO-OX.org panels | `~/Documents/GitHub/XO_OX-XOceanus/Site/img/led/` |
+| **Site LED characters** | Pre-rendered LED sprites | Already deployed in XO-OX.org panels | `~/Documents/GitHub/XO_OX-XOmnibus/Site/img/led/` |
 
 ### 15.3 Light Set
 
@@ -676,7 +676,7 @@ All files follow naming convention: `[section]-[descriptor].png` at `~/[filename
 | **Numeric readout font** | JetBrains Mono Regular (Google Fonts) | Google Fonts CDN |
 | **Display/nameplate font** | Nebulica Bold/ExtraBold | `~/Downloads/nebulica_.../OTF/` |
 | **Brand accent color** | `--xo-gold: #E9C46A` | `Site/design-tokens.css` |
-| **Engine accent colors** | 76 engine colors table | `Site/design-tokens.css` Section 3 |
+| **Engine accent colors** | 88 engine colors table | `Site/design-tokens.css` Section 3 |
 | **Button state matrix** | Game UX Kit node `47:211` | Figma: `xo643maNsuCFslvd9DaZ7k` |
 | **Form input states (7)** | Lean Mantine Library `3050:2818` | Figma: `3jtGAzg3jCdmcgAIhJblYc` |
 | **Toast notifications** | FLOW V.4.0 `7008:42828` | Figma: `yzqQkVf2alXAsF4jweZ3Rl` |
@@ -850,7 +850,7 @@ juce::Font getJetBrainsMono(float size)
 - Inter TTF: Google Fonts download → add to BinaryData
 - JetBrains Mono TTF: Google Fonts download → add to BinaryData
 - Nebulica OTF: `~/Downloads/nebulica_.../OTF/Nebulica-Bold.otf` → convert to TTF for JUCE
-- Chrys TTF: `~/Downloads/Audio UI/KNOBS/` — wait, check: `~/Documents/GitHub/XO_OX-XOceanus/Site/fonts/Chrys-Regular.woff` — need source OTF from `~/Downloads/chrys_.../OTF/`
+- Chrys TTF: `~/Downloads/Audio UI/KNOBS/` — wait, check: `~/Documents/GitHub/XO_OX-XOmnibus/Site/fonts/Chrys-Regular.woff` — need source OTF from `~/Downloads/chrys_.../OTF/`
 
 ---
 

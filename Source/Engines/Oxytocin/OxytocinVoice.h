@@ -262,6 +262,7 @@ public:
         // per block on the audio thread.
         float semitones = static_cast<float>(note - 69) + snap.pitch;
         float baseHz = 440.0f * xoceanus::fastPow2(semitones / 12.0f) * pitchBendRatio;
+        float baseHz = 440.0f * xoceanus::fastPow2(semitones * (1.0f / 12.0f)) * pitchBendRatio;
 
         // D004: per-voice detune spread
         // Voice 0 is lowest, voice (totalVoices-1) is highest.
@@ -275,6 +276,7 @@ public:
         }
         // F06 fix: fastPow2 for detune ratio — same rationale as F03.
         float noteHz = baseHz * xoceanus::fastPow2(detuneOffset / 1200.0f);
+        float noteHz = baseHz * xoceanus::fastPow2(detuneOffset * (1.0f / 1200.0f));
 
         osc.setFrequency(noteHz);
 
@@ -309,6 +311,16 @@ public:
 
         // P1-6: accumulators for block-average I/P/C
         float accI = 0.0f, accP = 0.0f, accC = 0.0f;
+
+        // Block-constant cross-modulation scalars — snap.entanglement is static
+        // for the block, so pre-multiply the topology scales once instead of doing
+        // 4 float multiplies per sample inside the SERIES branch (the hot path).
+        const float entAmt_     = snap.entanglement;
+        const float entSeriesDM = entAmt_ * 0.5f;  // thermalOut → drive
+        const float entSeriesPC = entAmt_ * 0.15f; // drive → reactive (P→C leg)
+        const float entSeriesCI = entAmt_ * 0.2f;  // reactive → thermal carry (C→I leg)
+        const float entParallel = entAmt_ * 0.3f;  // PARALLEL: thermal → drive cross-scale
+        const float entParCross = entAmt_ * 0.1f;  // PARALLEL: reactive/thermal bleed
 
         for (int i = 0; i < numSamples; ++i)
         {
@@ -376,9 +388,6 @@ public:
             // --- DSP topology routing ---
             float thermalOut = 0.0f, driveOut = 0.0f, reactiveOut = 0.0f;
 
-            // Cross-modulation amounts
-            float entAmt = snap.entanglement;
-
             switch (snap.topology)
             {
             case 0: // SERIES: Osc → Thermal(I) → Drive(P) → Reactive(C)
@@ -392,13 +401,13 @@ public:
                 // into the intimacy (thermal) input at sample N+1, not after thermalOut
                 // has already been consumed (which was the dead-code bug).
                 thermalOut = thermal.processSample(oscSample + cToICarry, snap.circuitAge) * boostedI;
-                float dmExtraDrive = thermalOut * entAmt * 0.5f;
+                float dmExtraDrive = thermalOut * entSeriesDM;
                 driveOut = drive.processSample(thermalOut + dmExtraDrive, boostedP, snap.cutoff, snap.circuitAge);
                 reactiveOut =
                     reactive.processSample(driveOut, boostedC, boostedI, boostedP, snap.commitRate, snap.release);
 
                 // Serge circular routing — complete the I→P→C→I ring.
-                if (entAmt > 0.0f)
+                if (entAmt_ > 0.0f)
                 {
                     // P→C leg: drive output (passion saturation) injects a small
                     // signal into the reactive output.  Simulates the Serge P→C
@@ -408,7 +417,8 @@ public:
                     // NOTE: we ADD to reactiveOut — do NOT call processSample() again,
                     // as that would advance the ladder integrator states twice and
                     // produce sample-doubled distortion.
-                    float pToCBleed = std::clamp(driveOut * entAmt * 0.15f, -0.25f, 0.25f);
+                    // (entSeriesPC = entAmt * 0.15f precomputed above.)
+                    float pToCBleed = std::clamp(driveOut * entSeriesPC, -0.25f, 0.25f);
                     reactiveOut += pToCBleed * boostedP * 0.1f;
 
                     // FIX 2: C→I leg — store bleed into cToICarry for the NEXT sample.
@@ -421,6 +431,8 @@ public:
                     cToICarry = std::clamp(reactiveOut * entAmt * 0.2f, -0.25f, 0.25f) * boostedC * 0.1f;
                     // F20: flush denormal — cToICarry can become tiny after long silence
                     cToICarry = xoceanus::flushDenormal(cToICarry);
+                    // (entSeriesCI = entAmt * 0.2f precomputed above.)
+                    cToICarry = std::clamp(reactiveOut * entSeriesCI, -0.25f, 0.25f) * boostedC * 0.1f;
                 }
                 else
                 {
@@ -442,11 +454,12 @@ public:
                     boostedC;
 
                 // Cross-mod in parallel: thermal modulates drive gain
-                float crossScale = 1.0f + thermalOut * entAmt * 0.3f;
+                // (entParallel = entAmt * 0.3f, entParCross = entAmt * 0.1f precomputed above.)
+                float crossScale = 1.0f + thermalOut * entParallel;
                 driveOut *= crossScale;
 
-                reactiveOut = reactiveOut + driveOut * entAmt * 0.1f;
-                thermalOut = thermalOut + reactiveOut * entAmt * 0.1f;
+                reactiveOut = reactiveOut + driveOut * entParCross;
+                thermalOut = thermalOut + reactiveOut * entParCross;
 
                 // Sum and normalise
                 float sumAmt = boostedI + boostedP + boostedC;
@@ -465,7 +478,7 @@ public:
                 fbSample = reactiveOut;
 
                 // Cross-mod in feedback mode: reactive→thermal feedback depth modulated by C
-                float entFB = snap.feedback * (1.0f + boostedC * entAmt);
+                float entFB = snap.feedback * (1.0f + boostedC * entAmt_);
                 entFB = std::clamp(entFB, 0.0f, 0.95f);
                 fbSample *= entFB;
                 fbSample = xoceanus::flushDenormal(fbSample);

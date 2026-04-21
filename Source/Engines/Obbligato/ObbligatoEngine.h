@@ -408,12 +408,15 @@ public:
         // SilenceGate: skip all DSP when the engine has been silent long enough
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buf.clear();
             return;
         }
 
-        // Reset coupling accumulators each block — stale values from disconnected
-        // routes must not persist into the next block.
+        // Snapshot coupling accumulators before reset (#1118 pattern — reset wipes
+        // last frame's applyCouplingInput values unless we consume them first). The
+        // reset below still handles the disconnected-route case.
+        const float blockExtPitchMod = extPitchMod;
+        const float blockExtDampMod  = extDampMod;
+        const float blockExtIntens   = extIntens;
         extPitchMod = 0.0f;
         extDampMod = 0.0f;
         extIntens = 1.0f;
@@ -566,6 +569,17 @@ public:
         auto* outL = buf.getWritePointer(0);
         auto* outR = buf.getWritePointer(1);
 
+        // Body-resonator coefficients are note-constant (voice.freq × block-rate
+        // bodyFreqRatio/bodyQVal pair, selected by voice.isBroA). Hoist setParams
+        // to a per-voice block-setup pass.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            const float bodyFreqRatio = voice.isBroA ? bodyFreqRatioA : bodyFreqRatioB;
+            const float bodyQVal      = voice.isBroA ? bodyQValA      : bodyQValB;
+            voice.bodyResonator.setParams(voice.freq * bodyFreqRatio, bodyQVal);
+        }
+
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
         {
             float sumL = 0.0f;
@@ -607,7 +621,7 @@ public:
                 float mischiefOffset = voice.isBroA ? mischiefDetune : -mischiefDetune;
                 float driftSemitones = voice.organicDrift.tick(driftRate, driftDepth) + bondDetuneMod + mischiefOffset;
 
-                float pitchedFreq = voice.freq * fastPow2((driftSemitones + extPitchMod) / 12.0f) *
+                float pitchedFreq = voice.freq * fastPow2((driftSemitones + blockExtPitchMod) / 12.0f) *
                                     PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
                 float delayLengthSamples = voice.sr / std::max(pitchedFreq, 20.0f);
@@ -618,7 +632,7 @@ public:
                 // --- Exciter: Brother A (AirJet) or Brother B (Reed) ---
                 // Velocity maps 0→1 to 0.5→1.0 intensity (D001: velocity shapes timbre)
                 float velIntensity = 0.5f + voice.vel * 0.5f;
-                float coupledIntensity = extIntens * velIntensity;
+                float coupledIntensity = blockExtIntens * velIntensity;
 
                 float exciterOut;
 
@@ -642,24 +656,10 @@ public:
                 // --- Waveguide feedback: exciter + delay output → damping filter → write ---
                 // The 0.3f mix weight on the exciter keeps energy injection stable.
                 float dampedSample = voice.dampFilter.process(waveguideOut + exciterOut * 0.3f,
-                                                              std::clamp(damping + extDampMod, 0.0f, 1.0f));
+                                                              std::clamp(damping + blockExtDampMod, 0.0f, 1.0f));
                 voice.delayLine.write(dampedSample);
 
-                // --- Body resonance: adds instrument-body coloration per instrument type ---
-                // F11: bodyResonator.setParams() triggers fastSin/fastCos every sample even
-                // though freq and bodyFreqRatio are constant within a block. Compute once
-                // outside the sample loop (params set in noteOn; only recompute on pitch change).
-                // setParams is now called block-rate only — see pre-sample-loop section above.
-                float bodyFreqRatio = voice.isBroA ? bodyFreqRatioA : bodyFreqRatioB;
-                float bodyQVal = voice.isBroA ? bodyQValA : bodyQValB;
-                // Recompute body params only if the block-rate values have changed vs cached.
-                float targetBodyFreq = voice.freq * bodyFreqRatio;
-                if (targetBodyFreq != voice.lastBodyFreq_ || bodyQVal != voice.lastBodyQ_)
-                {
-                    voice.bodyResonator.setParams(targetBodyFreq, bodyQVal);
-                    voice.lastBodyFreq_ = targetBodyFreq;
-                    voice.lastBodyQ_ = bodyQVal;
-                }
+// --- Body resonance: setParams hoisted to per-block voice setup above ---
                 float bodyOut = waveguideOut + voice.bodyResonator.process(waveguideOut) * 0.2f;
 
                 // --- Sympathetic resonance: shimmer from 8-comb bank ---

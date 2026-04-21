@@ -29,7 +29,7 @@
 ### Hard Constraints (non-negotiable)
 - **Window:** 1100×700pt default, min 960×600, max 1920×1080
 - **4 engine slots** simultaneously active
-- **76 swappable engines** with 24-111 parameters each
+- **88 swappable engines** with 24-111 parameters each
 - **15 coupling types** between any pair of loaded engines
 - **FX chain** per engine (6 FX slots: SAT/DELAY/REVERB/MOD/COMP/SEQ)
 - **PlaySurface** with 3 modes (XOuija fretless, MPC 16-pad, Seaboard keyboard)
@@ -55,18 +55,18 @@ At 1100×700pt, our total area is **770,000 px²**. After chrome (header 52pt + 
 
 ### The Problem No Synth Has Solved
 
-Most synths have 2-3 sound sources (oscillators). XOceanus has **4 simultaneous engine slots** drawn from a pool of **76 engines**, each with different parameter structures. This is closer to a **DAW mixer** than a traditional synth. No existing synth UI paradigm handles this cleanly.
+Most synths have 2-3 sound sources (oscillators). XOceanus has **4 simultaneous engine slots** drawn from a pool of **88 engines**, each with different parameter structures. This is closer to a **DAW mixer** than a traditional synth. No existing synth UI paradigm handles this cleanly.
 
 ### What We Can Learn from Competitors
 
 | Synth | Layout Pattern | Engines/Oscs | What Works | What Doesn't (for us) |
 |-------|---------------|-------------|------------|----------------------|
-| **Vital** | 3-column (OSC1 / FILTER+ENV / OSC2+3), mod matrix bottom | 3 osc + sampler | Everything visible, logical flow L→R, wavetable editor dominates | Fixed 3-osc layout, doesn't scale to 76 swappable engines |
+| **Vital** | 3-column (OSC1 / FILTER+ENV / OSC2+3), mod matrix bottom | 3 osc + sampler | Everything visible, logical flow L→R, wavetable editor dominates | Fixed 3-osc layout, doesn't scale to 88 swappable engines |
 | **Serum** | 2 oscs top, filter mid, FX tabs bottom, matrix sidebar | 2 osc | Clean wavetable view, tab system for FX depth | Only 2 sources, tabs feel hidden |
 | **Pigments** | Top tabs (ENGINE / SEQ / FX / MATRIX), full-width content per tab | 2 engines + seq | Full width per view, generous knob spacing | You see ONE thing at a time — lose context of the whole patch |
 | **Phase Plant** | Vertical generator stack (add/remove/reorder), FX chain right | N generators | Scalable to any number of sources | Very tall, lots of scrolling, no overview |
 | **Omnisphere** | Layer A/B tabs, massive browser, FX page | 2 layers | Deep browser, rich FX | Tabbed = you forget what the other layer is doing |
-| **OP-1 (TE)** | Single screen, mode-switching, same 4 knobs control different params | 1 engine | Radical simplicity, same physical gestures for everything | Too constrained for 76 engines with different structures |
+| **OP-1 (TE)** | Single screen, mode-switching, same 4 knobs control different params | 1 engine | Radical simplicity, same physical gestures for everything | Too constrained for 88 engines with different structures |
 
 ### The XOceanus Answer: Hybrid Stack + Context Strip
 
@@ -383,7 +383,7 @@ Tabs at top: [PRESET] [COUPLE] [FX] [PLAY] [⚙]
 
 ## 5. Component Taxonomy (Reusable Library)
 
-### Engine Classification (76 engines audited)
+### Engine Classification (88 engines audited)
 
 | Tier | Count | Description |
 |------|-------|-------------|
@@ -479,7 +479,7 @@ The SPECIAL section is where engine personality lives. Standard engines: just mo
 
 ## 6. Engine-Specific UI Requirements
 
-### Full Audit Complete (76 engines read)
+### Full Audit Complete (88 engines read)
 
 **17 CUSTOM engines** — each needs at least one bespoke panel in the SPECIAL section:
 

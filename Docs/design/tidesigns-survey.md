@@ -2,7 +2,7 @@
 **Author:** Marina, Creative Director, TIDEsigns
 **Date:** 2026-03-27
 **Subject:** XOceanus JUCE Plugin UI — Phase 1 Survey
-**Repo:** `~/Documents/GitHub/XO_OX-XOceanus/`
+**Repo:** `~/Documents/GitHub/XO_OX-XOmnibus/`
 **Reference mockup:** `Docs/mockups/xoceanus-v05-accurate.html`
 
 ---
@@ -200,7 +200,7 @@ The mockup intends OSC → ENV → FILTER → FX → COUPLING as clickable navig
 **R05 — Dead component weight accumulating**
 Multiple widgets are parked off-screen (`y = -100`) rather than conditionally created. `CreatureState` struct retained. Hidden trigger pad buttons in StatusBar. This is manageable now but will slow build times and increase cognitive load as the file grows.
 
-**R06 — 76 engine accent colors, but only one accent shown in mockup**
+**R06 — 88 engine accent colors, but only one accent shown in mockup**
 The v05 mockup uses OBRIX teal (`#1E8B7E`) as the demo accent throughout. The real plugin must dynamically set the accent based on which engine is selected. The "active tab underline uses accent color" in v05 means the tab bar underline should change color with engine selection. Whether this is desirable UX (potentially jarring when switching engines) or should be fixed to XO Gold needs a design decision.
 
 **R07 — ObrixDetailPanel at 55KB is an anomaly**

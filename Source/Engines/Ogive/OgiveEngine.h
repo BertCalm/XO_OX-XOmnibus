@@ -414,7 +414,6 @@ public:
         // Silence gate bypass: if idle and no MIDI, clear and return
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
@@ -428,6 +427,7 @@ public:
         // ---- Per-sample render loop ----
         for (int sampleIdx = 0; sampleIdx < numSamples; ++sampleIdx)
         {
+            const bool updateFilter = ((sampleIdx & 15) == 0);
             int activeCount = 0;
             // One-pole smoothing for control parameters (coeff from prepare — 5ms at current SR)
             smoothedCutoff    += paramSmoothCoeff * (effectiveCutoff    - smoothedCutoff);
@@ -598,11 +598,14 @@ public:
                 float modEnvCutoff = smoothedCutoff * (1.0f + modLevel);
                 modEnvCutoff = juce::jlimit(80.0f, 20000.0f, modEnvCutoff);
 
-                // ---- Per-voice neon filter (L + R independent) ----
-                voice.neonFilterL.setMode(CytomicSVF::Mode::LowPass);
-                voice.neonFilterL.setCoefficients_fast(modEnvCutoff, smoothedReso, sampleRateFloat);
-                voice.neonFilterR.setMode(CytomicSVF::Mode::LowPass);
-                voice.neonFilterR.setCoefficients_fast(modEnvCutoff, smoothedReso, sampleRateFloat);
+                // ---- Per-voice neon filter (L + R independent; coeff refresh decimated) ----
+                if (updateFilter)
+                {
+                    voice.neonFilterL.setMode(CytomicSVF::Mode::LowPass);
+                    voice.neonFilterL.setCoefficients_fast(modEnvCutoff, smoothedReso, sampleRateFloat);
+                    voice.neonFilterR.setMode(CytomicSVF::Mode::LowPass);
+                    voice.neonFilterR.setCoefficients_fast(modEnvCutoff, smoothedReso, sampleRateFloat);
+                }
 
                 float filtL = voice.neonFilterL.processSample(saturated);
                 float filtR = voice.neonFilterR.processSample(saturated);
@@ -1494,9 +1497,11 @@ private:
     //  M E M B E R   D A T A
     //==========================================================================
 
-    // ---- Audio configuration ----
-    double sampleRateDouble = 44100.0;
-    float  sampleRateFloat  = 44100.0f;
+    // ---- Audio configuration (set in prepare()) ----
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    double sampleRateDouble = 0.0;
+    float  sampleRateFloat  = 0.0f;
     float  paramSmoothCoeff = 0.1f;
     float  voiceFadeRate    = 0.01f;
 

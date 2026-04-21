@@ -48,7 +48,7 @@ public:
     {
         using namespace GalleryColors;
         g.fillAll(get(shellWhite()));
-        g.setColour(get(textMid()).withAlpha(0.40f));
+        g.setColour(get(textMid()));
         g.setFont(GalleryFonts::heading(10.0f)); // (#885: 8pt→10pt legibility floor)
         g.drawText(titleText, getLocalBounds().removeFromTop(14).reduced(8, 0), juce::Justification::centredLeft);
     }

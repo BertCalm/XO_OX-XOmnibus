@@ -237,7 +237,6 @@ public:
         lastSampleL = lastSampleR = 0.0f;
         extFilterMod = extRingMod = 0.0f;
         // NOTE: ReductionState is NOT reset here — only explicit stateReset does that
-        breathLfo.reset();  // F03: reset breath LFO on engine reset
     }
 
     //--------------------------------------------------------------------------
@@ -366,20 +365,6 @@ public:
 
         const float inverseSr = inverseSr_;
         const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
-        constexpr float kTwoPi = 6.28318530718f;  // F09: named constant, replaces two inline literals
-
-        // F01: Hoist ADSR setADSR() outside the per-sample loop (was per-sample per-voice).
-        // These recompute exp() coefficients — once per block is sufficient since
-        // parameters don't change within a block. Saves ~2×numVoices std::exp calls/sample.
-        for (int v = 0; v < kMaxVoices; ++v)
-        {
-            if (!voices[v].active) continue;
-            voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
-            voices[v].filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
-        }
-
-        // F07: Hoist numPartials outside sample loop — pRichness is block-constant.
-        const int numPartials = static_cast<int>(pRichness * 15.0f) + 1;
 
         // Count active non-infusion voices for reduction acceleration.
         // Infusion voices (soft long tones, velocity < 0.3 && held > 8s) do NOT accelerate
@@ -396,47 +381,72 @@ public:
                 ++activeVoiceCount;
         }
 
-        // F04: Hoist ReductionState update from per-sample to per-block.
-        // Per-session rates are ~5e-10 per sample — audibly identical at block granularity.
-        // Saves 8 band-rate multiplies × numSamples per block (64–512 iterations eliminated).
-        if (sessionStarted)
+        // Hoist envelope setADSR out of per-sample loop — setADSR does 2× std::exp,
+        // ADSR knobs are block-rate.
+        for (auto& voice : voices)
         {
-            // Scale base rate by block size (we're accumulating once per block, not per sample)
-            float baseRate = pReductionRate / (sessionTargetSec * srF);
-            float blockScale = static_cast<float>(numSamples);
-
-            float heatMultiplier = 1.0f + pHeat * static_cast<float>(activeVoiceCount) * 0.5f;
-
-            float deltaAge = baseRate * heatMultiplier * blockScale;
-            reduction.sessionAge = clamp(reduction.sessionAge + deltaAge, 0.0f, 1.0f);
-
-            for (int b = 0; b < 8; ++b)
-            {
-                float bandRate = baseRate * heatMultiplier *
-                                 (0.05f + static_cast<float>(b) * 0.3f) * blockScale;
-                float remaining = reduction.spectralMass[b];
-                bandRate *= remaining;
-                reduction.spectralMass[b] = clamp(remaining - bandRate, 0.0f, 1.0f);
-            }
-
-            reduction.concentrateDark = clamp(reduction.sessionAge * pMaillard * 1.5f, 0.0f, 1.0f);
-            reduction.umamiBed = clamp((1.0f - reduction.totalSpectralMass()) * pUmamiDepth, 0.0f, 1.0f);
-            reduction.volatileAromatics = (reduction.spectralMass[6] + reduction.spectralMass[7]) * 0.5f;
-
-            if (infusionVoiceCount > 0)
-            {
-                float infuseRate = baseRate * static_cast<float>(infusionVoiceCount) * 0.3f * blockScale;
-                reduction.spectralMass[6] = clamp(reduction.spectralMass[6] + infuseRate, 0.0f, 1.0f);
-                reduction.spectralMass[7] = clamp(reduction.spectralMass[7] + infuseRate * 0.5f, 0.0f, 1.0f);
-                reduction.volatileAromatics = (reduction.spectralMass[6] + reduction.spectralMass[7]) * 0.5f;
-            }
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+            voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
         }
 
         for (int i = 0; i < numSamples; ++i)
         {
+            const bool updateFilter = ((i & 15) == 0);
             float lfo1Val = lfo1.process();
             float lfo2Val = lfo2.process();
             float breathVal = breathLfo.process();
+
+            // === UPDATE REDUCTION STATE ===
+            if (sessionStarted)
+            {
+                // Base reduction rate: governed by pReductionRate and session target
+                float baseRate = pReductionRate / (sessionTargetSec * srF);
+
+                // Heat from playing intensity accelerates reduction
+                float heatMultiplier = 1.0f + pHeat * static_cast<float>(activeVoiceCount) * 0.5f;
+
+                float deltaAge = baseRate * heatMultiplier;
+                reduction.sessionAge = clamp(reduction.sessionAge + deltaAge, 0.0f, 1.0f);
+
+                // Frequency-dependent evaporation: high bands reduce first
+                // Logarithmic decay curve (early reduction is fast, late is slow)
+                for (int b = 0; b < 8; ++b)
+                {
+                    // Band 0 (sub) barely reduces. Band 7 (highs) reduces fastest.
+                    float bandRate = baseRate * heatMultiplier *
+                                     (0.05f + static_cast<float>(b) * 0.3f); // band 0: 0.05x, band 7: 2.15x
+
+                    // Logarithmic slowdown as band approaches empty
+                    float remaining = reduction.spectralMass[b];
+                    bandRate *= remaining; // reduces slower as it empties
+
+                    reduction.spectralMass[b] = clamp(remaining - bandRate, 0.0f, 1.0f);
+                }
+
+                // Caramelization (Maillard reaction) increases with reduction.
+                // pConcentrate scales the export strength: higher concentrate = darker, denser timbre.
+                reduction.concentrateDark = clamp(reduction.sessionAge * pMaillard * pConcentrate * 1.5f, 0.0f, 1.0f);
+
+                // Umami bed: fundamentals concentrate as everything else reduces
+                reduction.umamiBed = clamp((1.0f - reduction.totalSpectralMass()) * pUmamiDepth, 0.0f, 1.0f);
+
+                // Volatile aromatics (high-freq shimmer) track band 6+7
+                reduction.volatileAromatics = (reduction.spectralMass[6] + reduction.spectralMass[7]) * 0.5f;
+
+                // Infusion: soft long tones add back spectral character to the top bands.
+                // When infusion voices are active, gently re-energize bands 6 and 7
+                // (high-frequency shimmer) — like adding a splash of water at low heat.
+                // This consumes the isInfusion flag (D004 / concept fix).
+                if (infusionVoiceCount > 0)
+                {
+                    float infuseRate = baseRate * static_cast<float>(infusionVoiceCount) * 0.3f;
+                    reduction.spectralMass[6] = clamp(reduction.spectralMass[6] + infuseRate, 0.0f, 1.0f);
+                    reduction.spectralMass[7] = clamp(reduction.spectralMass[7] + infuseRate * 0.5f, 0.0f, 1.0f);
+                    // Also refresh volatile aromatics from the infusion
+                    reduction.volatileAromatics = (reduction.spectralMass[6] + reduction.spectralMass[7]) * 0.5f;
+                }
+            }
 
             // === SYNTHESIZE VOICES ===
             float sampleL = 0.0f;
@@ -450,11 +460,10 @@ public:
 
                 // Track hold duration for infusion detection
                 voice.holdDuration += inverseSr;
-                // F11: guard with !isInfusion — once latched, skip redundant re-eval every sample
-                if (!voice.isInfusion && voice.velocity < 0.3f && voice.holdDuration > 8.0f)
+                if (voice.velocity < 0.3f && voice.holdDuration > 8.0f)
                     voice.isInfusion = true;
 
-                // setADSR() moved to per-block above (F01)
+                // Envelope setADSR hoisted to per-block voice loop above.
                 float ampLevel = voice.ampEnv.process();
                 float filtLevel = voice.filterEnv.process();
 
@@ -469,8 +478,9 @@ public:
 
                 float fundamental = voice.fundamental * pitchBendRatio;
 
-                // Synthesize partials, shaped by ReductionState (numPartials hoisted to block, F07)
+                // Synthesize partials, shaped by ReductionState
                 float voiceSample = 0.0f;
+                int numPartials = static_cast<int>(pRichness * 15.0f) + 1;
 
                 for (int p = 0; p < numPartials; ++p)
                 {
@@ -505,7 +515,7 @@ public:
                         voice.partialPhase[p] -= 1.0f;
 
                     // Sine oscillator with 1/n harmonic weighting
-                    float sine = fastSin(voice.partialPhase[p] * kTwoPi);
+                    float sine = fastSin(voice.partialPhase[p] * 6.28318530718f);
                     float partialAmp = (1.0f / harmonic) * bandGain * velBright;
 
                     // Add LFO modulation (D005: breathing)
@@ -528,17 +538,18 @@ public:
                 // Umami bed: boost fundamental when reduction is deep
                 if (reduction.umamiBed > 0.1f)
                 {
-                    float umamiBass = fastSin(voice.partialPhase[0] * kTwoPi) * reduction.umamiBed * 0.3f;
+                    float umamiBass = fastSin(voice.partialPhase[0] * 6.28318530718f) * reduction.umamiBed * 0.3f;
                     voiceSample += umamiBass;
                 }
 
-                // Per-voice filter — cutoff reduces with session age.
-                // F05: bipolar env amount (use != 0 guard to skip multiply when env is off).
-                float voiceCutoff = pFilterCut * (1.0f - reduction.sessionAge * 0.7f);
-                if (pFiltEnvAmt != 0.0f)
-                    voiceCutoff += pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity;
-                voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
-                voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                // Per-voice filter — cutoff reduces with session age (coeff refresh decimated)
+                if (updateFilter)
+                {
+                    float voiceCutoff = pFilterCut * (1.0f - reduction.sessionAge * 0.7f) +
+                                        pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity;
+                    voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
+                    voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                }
                 voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 // Apply amp envelope
@@ -680,7 +691,7 @@ public:
                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
 
         params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_filtEnvAmount", 1}, "Filter Env Amount",
-                                              juce::NormalisableRange<float>(-1.0f, 1.0f), 0.3f));  // F05: bipolar [-1,1] — negative = downward sweep
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
 
         // Amp ADSR
         params.push_back(std::make_unique<PF>(juce::ParameterID{"worn_ampAttack", 1}, "Amp Attack",
@@ -788,7 +799,7 @@ public:
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srF = 0.0f;  // Sentinel: must be set by prepare() before use
-    float inverseSr_ = 0.0f;  // F02: sentinel — set by prepare(), never hardcode 44100
+    float inverseSr_ = 1.0f / 44100.0f;
     int blockSize = 512;
 
     OverwornVoice voices[kMaxVoices];

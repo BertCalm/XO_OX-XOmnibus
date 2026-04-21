@@ -421,7 +421,6 @@ public:
 
         if (isSilenceGateBypassed())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
@@ -458,6 +457,7 @@ public:
         couplingFunkMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
+        const float blockBendRatio = PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
 
         // LFO params
         const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
@@ -482,6 +482,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float funkNow = smoothFunk.process();
             float pickupNow = smoothPickup.process();
             float brightNow = smoothBrightness.process();
@@ -495,7 +496,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + pitchCouplingVal);
+                freq *= blockBendRatio; // hoisted above — block-const bend + pitch coupling snapshot
 
                 // LFO1 -> pitch
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
@@ -526,7 +527,9 @@ public:
                     continue;
                 }
 
-                // Filter with velocity-driven brightness (D001)
+                // Filter with velocity-driven brightness (D001).
+                // Tick filter env per sample; refresh SVF coeffs every 16 samples
+                // (~0.36ms @ 44.1k — below audible lag).
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
                 float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
                 float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
@@ -537,6 +540,12 @@ public:
                     voice.svf.setMode(CytomicSVF::Mode::LowPass);
                     voice.svf.setCoefficients(cutoff, 0.15f, srf);
                     voice.svfCachedCutoff = cutoff;
+                if (updateFilter)
+                {
+                    float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
+                    float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.15f, srf);
                 }
                 float filtered = voice.svf.processSample(wahOut);
 
@@ -587,6 +596,10 @@ public:
         // Calling prepare() per noteOn wastes 8 std::exp calls (cachedDecayRates + fastDamp).
         v.string.reset();
         v.string.trigger(vel);
+        // RT-fix: string.prepare() / wah.prepare() already called at engine prepare()-time.
+        // On noteOn, trigger string excitation and reset wah state only — no lifecycle re-init.
+        v.string.trigger(vel);
+        v.wah.reset();
 
         // wah.prepare() already done in engine prepare() — reset state only (no std::exp).
         v.wah.reset();
@@ -599,6 +612,8 @@ public:
         const float fDecay = loadP(paramDecay, 0.3f);
         const float fSustain = loadP(paramSustain, 0.4f);
         const float fRelease = loadP(paramRelease, 0.15f);
+
+        // RT-fix: filterEnv.prepare() already called at engine prepare()-time.
         v.filterEnv.setADSR(fAttack, fDecay, fSustain, fRelease);
         v.filterEnv.triggerHard();
 

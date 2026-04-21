@@ -171,7 +171,7 @@ public:
         const float centreAngle = juce::MathConstants<float>::pi; // straight down in JUCE rotary coords
         float tickX = knobCx + (knobR + 2.0f) * std::sin(centreAngle);
         float tickY = knobCy - (knobR + 2.0f) * std::cos(centreAngle);
-        g.setColour(get(textMid()).withAlpha(0.45f));
+        g.setColour(get(textMid()));
         g.fillEllipse(tickX - 2.0f, tickY - 2.0f, 4.0f, 4.0f);
 
         // Amount label above the knob

@@ -297,7 +297,24 @@ public:
         // F20: only update non-stolen voices to avoid LFO phase discontinuity during crossfade
         for (auto& v : voices)
             if (v.active && !v.isHusband && v.auntIdx == 2 && !v.isBeingStolen)
+        // Update tremolo LFO rate once per block for all active Aunt 3 voices,
+        // and pre-compute Aunt-2 gourd body-resonance coefficients (note-constant
+        // since v.freq and pA2Gs are both stable across the block).
+        const float gourdBodyQ = 2.0f + pA2Gs * 4.0f;
+        for (auto& v : voices)
+        {
+            if (!v.active) continue;
+            if (!v.isHusband && v.auntIdx == 2)
                 v.tremoloLFO.setRate(pA3Tr, v.sr);
+            if (!v.isHusband && v.auntIdx == 1)
+            {
+                float gourdFreq = v.freq * (1.5f - pA2Gs * 0.5f);
+                v.body.setParams(gourdFreq, gourdBodyQ);
+            }
+        }
+
+        // Block pitch-bend ratio (channel pitch wheel is block-rate).
+        const float blockPitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         // F01: precompute release coefficient once per block (sr is constant per block)
         // Use first active voice sr, or engine-level sr as fallback
@@ -395,8 +412,7 @@ public:
 
                 // ---- Drift ----
                 float ds = v.drift.tick(pDR, pDD);
-                float df = v.freq * fastPow2((ds + extPitchMod) / 12.f) *
-                           PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                float df = v.freq * fastPow2((ds + extPitchMod) / 12.f) * blockPitchBendRatio;
 
                 // ---- Aunt 2: Coin press pitch bend ----
                 if (!v.isHusband && v.auntIdx == 1)
@@ -443,6 +459,11 @@ public:
                     float bodyGain = 0.2f + pA2Gs * 0.3f; // bigger gourd = more resonance
                     bodyOut = v.body.process(out) * bodyGain;
                 }
+                // ---- Aunt 2: Gourd body resonance ----
+                // body.setParams() hoisted to per-block voice setup (note-constant).
+                float bodyGain = 0.2f;
+                if (!v.isHusband && v.auntIdx == 1)
+                    bodyGain = 0.2f + pA2Gs * 0.3f; // bigger gourd = more resonance
 
                 float damped = v.df.process(out + exc * 0.3f, juce::jlimit(0.0f, 1.0f, pDa + extDampMod));
                 v.dl.write(flushDenormal(damped));

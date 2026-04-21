@@ -170,7 +170,6 @@ public:
         // ---- Silence gate bypass ----
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
@@ -236,12 +235,32 @@ public:
         const int delayOffL = static_cast<int>(0.375 * sr);
         const int delayOffR = static_cast<int>(0.25 * sr);
 
+        // Hoisted per-block (was incorrectly per-sample — fix 2026-04-19): setADSR fires once per block, not per sample.
+        for (auto& v : voices)
+        {
+            if (v.active || v.ampEnv.isActive())
+            {
+                v.ampEnv.setADSR(pAtt, pDec, pSus, pRel);
+                v.filterEnv.setADSR(pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f);
+            }
+        }
+
         // ---- Render per-sample ----
         auto* outL = buffer.getWritePointer(0);
         auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
 
+        // Hoist envelope setADSR out of per-sample loop — 2× std::exp per call,
+        // ADSR inputs are block-rate.
+        for (auto& v : voices)
+        {
+            if (!v.active && !v.ampEnv.isActive()) continue;
+            v.ampEnv.setADSR(pAtt, pDec, pSus, pRel);
+            v.filterEnv.setADSR(pAtt * 0.5f, pDec * 0.8f, 0.0f, pRel * 0.5f);
+        }
+
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             const float lfo1Val = lfo1.process();
             const float lfo2Val = lfo2.process();
 
@@ -336,6 +355,17 @@ public:
                 // hpCutoff precomputed at block-rate above (P6 fix)
                 // S7: resonance 0.0f (Butterworth) — nonzero was adding tonal artifact at HP corner
                 v.filterHP.setCoefficients_fast(hpCutoff, 0.0f, srf);
+                if (updateFilter)
+                    v.filterLP.setCoefficients_fast(finalCutoff, pFilterRes, static_cast<float>(sr));
+                const float filtered = v.filterLP.processSample(oscMix);
+
+                // HP for clearing low mud based on horizon (block-constant: pVistaOpen is smoothed
+                // per-block-ish; decimate SVF coefficient refresh).
+                if (updateFilter)
+                {
+                    const float hpCutoff = 20.0f + (1.0f - pVistaOpen) * 300.0f;
+                    v.filterHP.setCoefficients_fast(hpCutoff, 0.5f, static_cast<float>(sr));
+                }
                 const float cleaned = v.filterHP.processSample(filtered);
 
                 // Aurora luminosity modulates amplitude

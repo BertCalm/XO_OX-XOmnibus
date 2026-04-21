@@ -57,16 +57,8 @@
 #include <CoreFoundation/CoreFoundation.h> // CFPreferencesGetAppBooleanValue
 #endif
 
-#if JUCE_IOS
-// Forward declaration of the Objective-C++ bridge for UIAccessibility.isReduceMotionEnabled.
-// Implemented in HapticEngine_iOS.mm; also forward-declared in GalleryColors.h.
-// Duplicated here so XOuijaPanel.h can call syncReducedMotionFromSystem() without
-// requiring a full GalleryColors.h include.
-namespace xoceanus::a11y_platform
-{
-bool isReduceMotionEnabled();
-}
-#endif
+// iOS port archived 2026-03-26 (issue #1107) — xoceanus::a11y_platform::isReduceMotionEnabled()
+// forward-declaration removed. Source/UI/Mobile/ recoverable from git history.
 
 namespace xoceanus
 {
@@ -589,7 +581,7 @@ private:
     // WCAG Fix 3 (RESOLVED): reduced motion path — when true, skip Lissajous drift animation.
     // Initialised via XOuijaPanel::syncReducedMotionFromSystem() on construction.
     // macOS: reads CFPreferences "reduceMotion" / "com.apple.universalaccess" (pure C).
-    // iOS:   reads UIAccessibilityIsReduceMotionEnabled() via HapticEngine_iOS.mm bridge.
+    // iOS port archived 2026-03-26 (#1107); bridge removed from Source/UI/Mobile/.
     bool reducedMotion_ = false;
 
     // Cached font — initialized in constructor, avoids per-paint construction
@@ -1201,9 +1193,8 @@ public:
     /** Query the OS and update the planchette's reduced-motion flag accordingly.
         Delegates to A11y::prefersReducedMotion() — the unified platform helper in
         GalleryColors.h — rather than reading CFPreferences directly (#223).
-        Covers macOS ("reduceMotion" / com.apple.universalaccess), iOS
-        (UIAccessibility.isReduceMotionEnabled via HapticEngine_iOS.mm bridge),
-        and the in-app SettingsPanel override. */
+        Covers macOS ("reduceMotion" / com.apple.universalaccess) and the in-app
+        SettingsPanel override. iOS port archived 2026-03-26 (#1107). */
     void syncReducedMotionFromSystem() { planchette_.setReducedMotion(A11y::prefersReducedMotion()); }
 
     /** Drive circleX from an external source (e.g. incoming CC 85). */

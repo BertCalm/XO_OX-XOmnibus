@@ -25,23 +25,17 @@
 #include "Gallery/ParameterGrid.h"
 #include "Gallery/MacroHeroStrip.h"
 #include "Gallery/EngineDetailPanel.h"
-#include "Gallery/FieldMapPanel.h"
 #include "Gallery/OverviewPanel.h"
 #include "Gallery/CompactEngineTile.h"
 #include "Gallery/MacroSection.h"
 #include "Gallery/AdvancedFXPanel.h"
-#include "Gallery/MasterFXSection.h"
 #include "Gallery/PresetBrowserPanel.h"
-#include "Gallery/PresetBrowserStrip.h"
-#include "Gallery/ChordMachinePanel.h"
 #include "Gallery/PerformanceViewPanel.h"
-#include "Gallery/CouplingArcOverlay.h"
 #include "Gallery/ColumnLayoutManager.h"
 #include "Gallery/SidebarPanel.h"
 #include "Gallery/StatusBar.h"
 #include "Gallery/WaveformDisplay.h"
 #include "Gallery/EnginePickerPopup.h"
-#include "Gallery/CouplingPopover.h"
 #include "Gallery/DepthZoneDial.h"
 #include "Gallery/ABCompare.h"
 #include "Gallery/HeaderIndicators.h"
@@ -84,8 +78,8 @@ class XOceanusEditor : public juce::AudioProcessorEditor,
 {
 public:
     explicit XOceanusEditor(XOceanusProcessor& proc)
-        : AudioProcessorEditor(proc), processor(proc), overview(proc), detail(proc), chordPanel(proc),
-          performancePanel(proc), macros(proc.getAPVTS()), masterFXStrip(proc.getAPVTS()), presetBrowser(proc),
+        : AudioProcessorEditor(proc), processor(proc), overview(proc), detail(proc),
+          performancePanel(proc), macros(proc.getAPVTS()),
           ghostTile(proc, 4) // Ghost Slot — 5th tile, slot index 4
     {
         // #893: Constructor extracted into named helpers to reduce monolithic body.
@@ -95,10 +89,9 @@ public:
         initPlaySurfaceAndPresets(proc);
         initSidebarAndWiring(proc);
         initOceanView(proc);
-        startTimerHz(10); // #1008 FIX 6: raised from 1Hz — OceanView voice counts,
-                          // coupling routes, and NexusDisplay live readouts need
-                          // 10Hz minimum for responsive feel.  MIDI-learn boost to
-                          // 30Hz is applied separately in the MIDI listener callback.
+        startTimerHz(10); // #1008 FIX 6: raised from 1Hz — OceanView voice counts
+                          // and coupling routes need 10Hz minimum for responsive feel.
+                          // MIDI-learn boost to 30Hz applied separately in MIDI callback.
     }
 
     //==========================================================================
@@ -152,23 +145,13 @@ public:
         ghostTile.onSelect = [this](int slot) { selectSlot(slot); };
         addChildComponent(ghostTile); // #1007 FIX 6
 
-        addChildComponent(fieldMap);         // #1007 FIX 6
         addChildComponent(overview);         // #1007 FIX 6
         addChildComponent(detail);           // #1007 FIX 6
-        addChildComponent(chordPanel);       // #1007 FIX 6
         addChildComponent(performancePanel); // #1007 FIX 6
         addChildComponent(macros);           // #1007 FIX 6
-        addChildComponent(masterFXStrip);    // #1007 FIX 6
-        addChildComponent(presetBrowser);    // #1007 FIX 6
-
-        // Coupling arc overlay: must be added AFTER tiles so it paints on top.
-        // setInterceptsMouseClicks(false,false) means tiles still receive clicks.
-        addChildComponent(couplingArcs);      // #1007 FIX 6
-        addChildComponent(couplingHitTester); // #1007 FIX 6
 
         // Preserve alpha=0.0f so the fade-in animation still works when toggled on.
         detail.setAlpha(0.0f);
-        chordPanel.setAlpha(0.0f);
         performancePanel.setAlpha(0.0f);
     }
 
@@ -300,11 +283,8 @@ public:
             ghostTile.repaint();
             overview.repaint();
             detail.repaint();
-            chordPanel.repaint();
             performancePanel.repaint();
             macros.repaint();
-            masterFXStrip.repaint();
-            presetBrowser.repaint();
             sidebar.repaint();
             // Also repaint the embedded PlaySurface if visible.
             if (playSurface_.isVisible())
@@ -432,10 +412,8 @@ public:
         // callback fires on the message thread once the library is ready.
         auto presetDir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
                              .getChildFile("Application Support/XO_OX/XOceanus/Presets");
-        presetBrowser.setMacroSection(&macros); // wire preset macroLabels → macro knob labels
         if (presetDir.isDirectory())
         {
-            presetBrowser.setScanning(true);
             // #923: Also start the spinner in the sidebar's full PresetBrowser.
             sidebar.setPresetBrowserScanning(true);
             // SafePointer guards against the editor being destroyed before the
@@ -447,7 +425,6 @@ public:
                 {
                     if (safeThis == nullptr)
                         return;
-                    safeThis->presetBrowser.setScanning(false); // clears loading state + refreshes strip
                     // #923: Stop the spinner and rebuild the sidebar's full PresetBrowser.
                     safeThis->sidebar.setPresetBrowserScanning(false);
                     // Fix S2: also refresh the sidebar's PresetBrowser panel so it re-reads the
@@ -478,7 +455,6 @@ public:
                                 safeThis->processor.applyPreset(initPreset);
                             }
                             pm.addPreset(initPreset);
-                            safeThis->presetBrowser.updateDisplay();
                             safeThis->sidebar.refreshPresetBrowser();
                         }
                     }
@@ -509,7 +485,6 @@ public:
                     pm.addPreset(initPreset);
                 }
             }
-            presetBrowser.updateDisplay();
         }
     }
 
@@ -585,7 +560,6 @@ public:
             auto& mlm = proc.getMIDILearnManager();
             detail.setMidiLearnManager(&mlm);
             macros.setupMidiLearn(mlm);
-            masterFXStrip.setupMidiLearn(mlm);
         }
 
         // ── MIDI Learn learn-complete notification ──────────────────────────
@@ -613,18 +587,6 @@ public:
         };
 
         // ── ABCompare wiring ─────────────────────────────────────────────────
-        // W04: Fire onPresetLoaded() and also refresh tiles + detail panel.
-        presetBrowser.onPresetLoaded = [this]()
-        {
-            abCompare.onPresetLoaded();
-            // Refresh all primary tiles so engine names/accents update immediately.
-            for (int i = 0; i < kNumPrimarySlots; ++i)
-                if (tiles[i])
-                    tiles[i]->refresh();
-            // Refresh detail panel if it is currently visible.
-            if (detail.isVisible())
-                detail.loadSlot(selectedSlot);
-        };
 
         // Event-driven tile refresh: only repaint the affected tile and overview on engine change.
         // CQ02: callback fires from the audio thread — marshal all UI calls to the message thread.
@@ -716,9 +678,6 @@ public:
                     overview.setVisible(false);
                     detail.setAlpha(1.0f);
                     detail.setVisible(true);
-                    couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
-                    if (auto* eng = processor.getEngine(effectiveSlot))
-                        masterFXStrip.setAccentColour(eng->getAccentColour());
                 }
             }
         }
@@ -772,10 +731,9 @@ public:
                     p->endChangeGesture();
                 }
             };
-            tb->onCoupleClicked = []()
-            {
-                // TODO: open coupling inspector panel
-            };
+            // #1097: Coupling tab removed (CPL-tab-removed). Coupling configuration
+            // lives in CouplingConfigPopup triggered by knot double-click on OceanView.
+            tb->onCoupleClicked = nullptr;
         }
         oceanView_.initStatusBar();
 
@@ -791,11 +749,13 @@ public:
         oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); };
         oceanView_.onEngineSelectedFromDrawer = [this](const juce::String& engineId)
         {
-            // Prefer the selected slot. If it's already occupied, find the first empty slot.
-            // If all slots are full, replace the selected slot.
-            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots) ? selectedSlot : 0;
-            if (processor.getEngine(slot) != nullptr)
+            // If a slot is explicitly selected, always replace it directly.
+            // Only search for an empty slot when nothing is selected.
+            int slot = (selectedSlot >= 0 && selectedSlot < kNumPrimarySlots) ? selectedSlot : -1;
+            if (slot < 0)
             {
+                // No slot selected — find first empty, or use slot 0
+                slot = 0;
                 for (int i = 0; i < kNumPrimarySlots; ++i)
                 {
                     if (processor.getEngine(i) == nullptr)
@@ -817,6 +777,27 @@ public:
             route.isNormalled = false;
             route.active      = true;
             processor.getCouplingMatrix().addRoute(route);
+        };
+        oceanView_.onCouplingConfigChanged = [this](int routeIndex, int newType, float newDepth, int /*direction*/)
+        {
+            processor.getCouplingMatrix().updateRoute(routeIndex,
+                                                      static_cast<CouplingType>(newType),
+                                                      newDepth);
+        };
+
+        oceanView_.onCouplingDeleteRequested = [this](int routeIndex)
+        {
+            auto& matrix = processor.getCouplingMatrix();
+            auto routes = matrix.getRoutes();
+            if (routeIndex < 0 || routeIndex >= static_cast<int>(routes.size()))
+                return;
+            const auto& r = routes[static_cast<size_t>(routeIndex)];
+            if (r.isNormalled)
+            {
+                ToastOverlay::show("Cannot remove default coupling route", Toast::Level::Info);
+                return;
+            }
+            matrix.removeUserRoute(r.sourceSlot, r.destSlot, r.type);
         };
         oceanView_.onPresetSelected = [this](int idx)
         {
@@ -847,6 +828,32 @@ public:
             ps.setProcessor(&processor);
             if (laf)
                 ps.setLookAndFeel(laf.get());
+        }
+
+        // Wire SubmarinePlaySurface MIDI callbacks to the processor's MidiMessageCollector.
+        // Without this wiring the keyboard/pad/drum surface was completely silent — clicks
+        // fired the onNoteOn/onNoteOff lambdas but they were null (never assigned).
+        {
+            auto& subPS = oceanView_.getSubmarinePlaySurface();
+            subPS.onNoteOn = [this](int note, float velocity)
+            {
+                auto msg = juce::MidiMessage::noteOn(1, note, velocity);
+                msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                processor.getMidiCollector().addMessageToQueue(msg);
+            };
+            subPS.onNoteOff = [this](int note)
+            {
+                auto msg = juce::MidiMessage::noteOff(1, note);
+                msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                processor.getMidiCollector().addMessageToQueue(msg);
+            };
+            subPS.onAftertouch = [this](int note, float pressure)
+            {
+                auto msg = juce::MidiMessage::aftertouchChange(1, note,
+                               juce::jlimit(0, 127, juce::roundToInt(pressure * 127.0f)));
+                msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                processor.getMidiCollector().addMessageToQueue(msg);
+            };
         }
 
         // #897: On first launch (no persisted state) show the OceanView PlaySurface
@@ -930,12 +937,12 @@ public:
         };
 
         // favToggleButton — toggle current preset favourite in shared settings.
+        // #1114: PresetBrowserStrip (Gallery-era strip) removed. Favourite toggling is
+        // now the responsibility of the OceanView sidebar's full PresetBrowser.
         oceanView_.favToggleButton().onClick = [this]
         {
-            auto& pm = processor.getPresetManager();
-            if (pm.getLibrarySize() == 0)
-                return;
-            presetBrowser.toggleFavoriteForCurrentPreset();
+            if (auto* sb = oceanView_.getSidebar())
+                sb->selectTab(SidebarPanel::Preset);
         };
 
         // settingsTogButton — open the Settings tab in the OceanView sidebar.
@@ -986,16 +993,10 @@ public:
         for (int i = 0; i < kNumPrimarySlots; ++i)
             tiles[i]->setVisible(false);
         ghostTile.setVisible(false);
-        fieldMap.setVisible(false);
         overview.setVisible(false);
         detail.setVisible(false);
-        chordPanel.setVisible(false);
         performancePanel.setVisible(false);
         macros.setVisible(false);
-        masterFXStrip.setVisible(false);
-        presetBrowser.setVisible(false);
-        couplingArcs.setVisible(false);
-        couplingHitTester.setVisible(false);
         sidebar.setVisible(false);
         statusBar.setVisible(false);
         depthDial.setVisible(false);
@@ -1018,6 +1019,7 @@ public:
         presetNextBtn.setVisible(false);
         // Hide the old standalone PlaySurface — OceanView owns its own PlaySurfaceOverlay.
         playSurface_.setVisible(false);
+        playSurface_.setMidiCollector(nullptr);  // Detach — OceanView owns MIDI now
 
         // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.
@@ -1036,6 +1038,7 @@ public:
         // Detach the embedded PlaySurface from the processor before the processor
         // goes away, so the MidiMessageCollector pointer is not accessed after dealloc.
         playSurface_.setProcessor(nullptr);
+        oceanView_.getPlaySurface().setProcessor(nullptr);
         // Clear the ToastOverlay singleton before child components are destroyed
         // so any in-flight callAsync lambdas find instance_ == nullptr and are no-ops.
         ToastOverlay::setInstance(nullptr);
@@ -1255,53 +1258,6 @@ public:
             g.fillAll();
         }
 
-        // ── Legacy Gallery paint code (kept for reference, disabled) ──────────
-        if (false) // NOLINT
-        {
-            using namespace GalleryColors;
-
-            // ── Body background — deepest layer (body bg #080809) ────────────────
-            g.fillAll(juce::Colour(0xFF080809));
-
-            // ── Plugin shell — rounded rect with depth shadow ────────────────────
-            auto shellBounds = getLocalBounds().toFloat().reduced(4.0f);
-            g.setColour(juce::Colour(0x66000000));
-            g.fillRoundedRectangle(shellBounds.expanded(3.0f), 14.0f);
-            g.setColour(juce::Colour(0x33000000));
-            g.fillRoundedRectangle(shellBounds.expanded(1.5f), 13.0f);
-            g.setColour(juce::Colour(Dark::bg));
-            g.fillRoundedRectangle(shellBounds, 12.0f);
-            g.setColour(juce::Colour(0x0EFFFFFF));
-            g.drawRoundedRectangle(shellBounds, 12.0f, 1.0f);
-
-            const int headerH = ColumnLayoutManager::kHeaderH;
-            auto header = getLocalBounds().removeFromTop(headerH).toFloat();
-            g.setColour(get(surface()));
-            g.fillRect(header);
-            g.setColour(border());
-            g.fillRect(header.getX(), header.getBottom() - 1.0f, header.getWidth(), 1.0f);
-
-            // Logo mark
-            {
-                const float circR = 7.0f, dotR = 2.5f, strokeW = 1.5f;
-                const float cx1 = 14.0f + circR, cx2 = cx1 + 8.0f;
-                const float cy = (float)(headerH / 2);
-                g.setColour(juce::Colour(0xFF1E8B7E).withAlpha(0.85f));
-                g.drawEllipse(cx1 - circR, cy - circR, circR * 2.0f, circR * 2.0f, strokeW);
-                g.fillEllipse(cx1 - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
-                g.setColour(juce::Colour(0xFFE9C46A).withAlpha(0.85f));
-                g.drawEllipse(cx2 - circR, cy - circR, circR * 2.0f, circR * 2.0f, strokeW);
-                g.fillEllipse(cx2 - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
-            }
-
-            // Column separator
-            const int sepX = layout.getColumnAWidth();
-            if (sepX > 0)
-            {
-                g.setColour(border());
-                g.drawVerticalLine(sepX, (float)headerH, (float)getHeight());
-            }
-        }
     }
 
     void resized() override
@@ -1326,222 +1282,6 @@ public:
             toastOverlay_.setBounds(getLocalBounds());
             return;
         }
-
-        // ── Sync layout state (Gallery components hidden but state tracking kept) ────────────────────────────
-        // spec §2.2: PlaySurface is an embedded 264pt bottom zone, not a popup.
-        // When visible, ColumnLayoutManager reserves kPlaySurfaceH (264pt) for it.
-        layout.playSurfaceVisible = playSurface_.isVisible();
-        // cinematicMode is toggled by cinematicToggleBtn (CI button in header).
-        // columnCCollapsed is reserved for a future Column C collapse button.
-        layout.compute(getWidth(), getHeight());
-
-        // ── Header (52px): Logo | DepthDial | < | > | DNA | A/B | CI | CM | P | DK | KEYS | EXPORT | gear
-        // Macros moved to top of Column B (60pt strip, #901: 48pt knobs). CPU meter + MIDI dot moved to StatusBar area.
-        // KEYS button toggles the embedded 264pt PlaySurface zone (spec §2.2)
-        auto header = layout.getHeader();
-
-        // Park legacy widgets that are no longer shown in the header.
-        // D1: enginesBtn replaced by depthDial — park it off-screen.
-        enginesBtn.setBounds(0, -100, 0, 0);
-        enginesBtn.setVisible(false);
-        presetBrowser.setBounds(0, -200, 0, 0);
-        presetBrowser.setVisible(false);
-
-        // ── Left: Logo (painted) + DepthZoneDial + preset nav ──────────────
-        // D1: 48×48pt circular dial replaces the ENGINES text button.
-        // The dial is a direct child of XOceanusEditor (not part of overview/detail),
-        // so it is architecturally isolated from all register transition animations
-        // (satisfies Foreseer StaticHeaderComponent constraint).
-        header.removeFromLeft(150); // logo rings + "XOceanus" / "XO_OX Designs" text
-        {
-            auto dialSlice = header.removeFromLeft(56); // 56px slice, dial is 48 wide
-            depthDial.setVisible(true);
-            // #914: Dial component is now 48×58pt (48pt dial + 10pt slot label).
-            // Anchor top of the component to the header top; the 10pt label
-            // extends below the header row into the body margin.
-            depthDial.setBounds(dialSlice.getX() + (dialSlice.getWidth() - 48) / 2,
-                                dialSlice.getY(),
-                                48, 58);
-        }
-
-        // Preset nav arrows — just after ENGINES button
-        presetPrevBtn.setBounds(header.removeFromLeft(28).reduced(2));
-        presetNextBtn.setBounds(header.removeFromLeft(28).reduced(2));
-
-        // Header DNA hexagon — 24×24, immediately right of the next-preset button.
-        // Provides at-a-glance fingerprint of the active preset without label clutter.
-        {
-            auto hexSlice = header.removeFromLeft(30); // 30px slice, hex is 24×24 centered
-            headerHex_.setBounds(hexSlice.withSizeKeepingCentre(24, 24));
-        }
-
-        // ── Right (from edge inward): gear | EXPORT | KEYS | utility strip ──
-        // CPU meter and MIDI dot have moved to the StatusBar area (issue #906).
-        {
-            auto gearSlice = header.removeFromRight(36); // 8px margin included
-            settingsBtn.setBounds(gearSlice.withSizeKeepingCentre(28, 28));
-        }
-        exportBtn.setBounds(header.removeFromRight(56).reduced(4, 10));
-        // KEYS button — shows/hides the embedded PlaySurface zone (renamed from PLAY to avoid
-        // confusion with the sidebar PLAY/PERFORM performance-controls tab, issue #921)
-        surfaceToggleBtn.setButtonText("KEYS");
-        surfaceToggleBtn.setBounds(header.removeFromRight(52).withSizeKeepingCentre(48, 26));
-
-        // Utility strip — right side (inward from KEYS)
-        themeToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
-        // D4: Register lock button — 24px wide, visually paired with theme toggle
-        registerLockBtn.setBounds(header.removeFromRight(24).reduced(2));
-        perfToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
-        cmToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
-        cinematicToggleBtn.setBounds(header.removeFromRight(28).reduced(2));
-
-        // ── A/B Compare toggle — small button in header, left side of remaining space ──
-        // Restored (issue #918): was parked off-screen, now lives in header centre-right.
-        abCompare.setVisible(true);
-        abCompare.setBounds(header.removeFromRight(28).reduced(2));
-
-        // ── Column A — Engine Rack (full height) ──
-        auto colA = layout.getColumnA();
-
-        // Reserve bottom 80px for MiniCouplingGraph before dividing tile space.
-        static constexpr int kMiniGraphH = 80;
-        miniCouplingGraph.setBounds(colA.removeFromBottom(kMiniGraphH));
-
-        // Divide Column A among the 4 primary tiles.
-        // The ghost tile sits below tile[3] at the same height, but only takes
-        // space when visible — when hidden it receives zero-height bounds so it
-        // doesn't steal hit-test area from anything beneath it.
-        // CQ11: last tile absorbs the remainder to prevent a pixel gap from integer division.
-        int tileH = colA.getHeight() / kNumPrimarySlots;
-        for (int i = 0; i < kNumPrimarySlots; ++i)
-        {
-            int h = (i == kNumPrimarySlots - 1) ? colA.getBottom() - (colA.getY() + i * tileH) : tileH;
-            tiles[i]->setBounds(colA.getX(), colA.getY() + i * tileH, colA.getWidth(), h);
-        }
-
-        // Ghost tile — positioned below tile[3] when visible, zero-height when hidden.
-        if (ghostTile.isVisible())
-        {
-            ghostTile.setBounds(colA.getX(), colA.getY() + kNumPrimarySlots * tileH, colA.getWidth(), tileH);
-        }
-        else
-        {
-            // Park off-screen (zero height) — no layout impact when hidden.
-            ghostTile.setBounds(colA.getX(), colA.getY() + kNumPrimarySlots * tileH, colA.getWidth(), 0);
-        }
-
-        // ── Column B — Panel stack + MasterFX strip + FieldMap ───────────────
-        // getColumnBPanel() already excludes the FieldMap strip at the bottom.
-        auto colBPanel = layout.getColumnBPanel();
-
-        // MasterFX strip at bottom of Column B panel area
-        auto masterFXBounds = colBPanel.removeFromBottom(kMasterFXH).reduced(14, 6);
-        masterFXStrip.setBounds(masterFXBounds);
-
-        // ── Macro strip — top of Column B (issue #906: macros moved out of header) ──
-        // 60pt strip accommodates 48px knobs (#901: 44→48pt) + padding.
-        {
-            auto macroStrip = colBPanel.removeFromTop(60);
-            macros.setBounds(macroStrip.reduced(4, 2));
-        }
-
-        // Signal flow strip (28px) at top of Column B — painted in paint().
-        signalFlowStripBounds = colBPanel.removeFromTop(kSignalFlowStripH);
-
-        // Pre-compute signal flow hit rects here (not in paint()) so mouse handlers
-        // always have valid geometry — even before the first paint() call or after
-        // a resize that hasn't triggered a repaint yet.
-        {
-            static const juce::String kSFSections[] = {"SRC1", "SRC2", "FILTER", "SHAPER", "FX", "OUT"};
-            static const int kNumSFSections = 6;
-
-            auto font = GalleryFonts::value(8.5f);
-            const float hPad = 12.0f;
-            const float usableW = (float)signalFlowStripBounds.getWidth() - hPad * 2.0f;
-            const float cy = (float)signalFlowStripBounds.getCentreY();
-
-            // Mirror the centering logic from paint(): total text + arrow widths
-            juce::String arrow(juce::CharPointer_UTF8(" \xe2\x86\x92 "));
-            float totalTextW = 0.0f;
-            for (int i = 0; i < kNumSFSections; ++i)
-                totalTextW += font.getStringWidthFloat(kSFSections[i]);
-            const float arrowW = font.getStringWidthFloat(arrow);
-            const float totalW = totalTextW + arrowW * (kNumSFSections - 1);
-            float startX = (float)signalFlowStripBounds.getX() + hPad + (usableW - totalW) * 0.5f;
-
-            for (int i = 0; i < kNumSFSections; ++i)
-            {
-                float secW = font.getStringWidthFloat(kSFSections[i]);
-                sfHitRects[static_cast<size_t>(i)] =
-                    juce::Rectangle<float>(startX, cy - 8.0f, secW + 6.0f, 16.0f).expanded(4.0f, 4.0f);
-
-                // #911: Align accessibility node bounds to the hit rect so
-                // screen readers can find each section in the JUCE a11y tree.
-                // Minimum 44pt height so they meet WCAG 2.5.5 even if the
-                // visual strip is only 28pt tall.
-                auto a11yRect = sfHitRects[static_cast<size_t>(i)].toNearestInt();
-                if (a11yRect.getHeight() < 44)
-                    a11yRect = a11yRect.withSizeKeepingCentre(a11yRect.getWidth(), 44);
-                sfAccessNodes[static_cast<size_t>(i)].setBounds(a11yRect);
-
-                startX += secW;
-                if (i < kNumSFSections - 1)
-                    startX += arrowW;
-            }
-        }
-
-        // Remaining Column B panel area for the view stack (stacked, one visible at a time)
-        overview.setBounds(colBPanel);
-        detail.setBounds(colBPanel);
-        chordPanel.setBounds(colBPanel);
-        performancePanel.setBounds(colBPanel);
-
-        // FieldMap hidden — 80px reclaimed for parameter sections
-        fieldMap.setBounds(0, -200, 0, 0);
-        fieldMap.setVisible(false);
-
-        // ── Column C — Tabbed Sidebar (SidebarPanel) ─────────────────────────
-        sidebar.setBounds(layout.getColumnC());
-
-        // ── Embedded PlaySurface — spec §2.2: fixed 264pt bottom zone ────────
-        // ColumnLayoutManager reserves kPlaySurfaceH (264pt) when playSurfaceVisible.
-        // When collapsed, getPlaySurface() returns a rect parked below the window.
-        playSurface_.setBounds(layout.getPlaySurface());
-
-        // ── Status Bar ───────────────────────────────────────────────────────
-        statusBar.setBounds(layout.getStatusBar());
-
-        // ── CPU meter + MIDI indicator — right side of StatusBar area (issue #906) ──
-        // These are direct children of XOceanusEditor (not StatusBar), positioned
-        // inside the status bar row. StatusBar reserves ~104px on the far right for
-        // its lock button (28px) and slot dots (66px) + padding — so we sit left of that.
-        // The StatusBar's cpuLabel text remains; the CPUMeter graphical pill supplements it.
-        {
-            auto statusArea = layout.getStatusBar();
-            // Leave 104px for StatusBar's internal lock + dots on the far right.
-            statusArea.removeFromRight(104);
-            // Place MIDI dot then CPU pill, right-to-left from that boundary.
-            midiIndicator.setBounds(statusArea.removeFromRight(16).withSizeKeepingCentre(8, 8));
-            cpuMeter.setBounds(statusArea.removeFromRight(68).withSizeKeepingCentre(64, 20));
-        }
-
-        // ── Coupling arc overlay — full editor bounds ─────────────────────────
-        couplingArcs.setBounds(getLocalBounds());
-        for (int i = 0; i < kNumPrimarySlots; ++i)
-        {
-            if (tiles[i])
-                couplingArcs.setTileCenter(i, tiles[i]->getBounds().getCentre().toFloat());
-        }
-        // Ghost tile (slot 4): only register its center when visible so arcs draw correctly.
-        if (ghostTile.isVisible())
-            couplingArcs.setTileCenter(4, ghostTile.getBounds().getCentre().toFloat());
-
-        // ── Coupling arc hit-tester — covers the OverviewPanel bounds ─────────
-        couplingHitTester.setBounds(overview.getBounds());
-
-        // ── ToastOverlay — always covers the full editor, paints on top ───────
-        // Must be sized last (mirrors addAndMakeVisible order in constructor).
-        toastOverlay_.setBounds(getLocalBounds());
     }
 
 private:
@@ -1566,9 +1306,7 @@ private:
         cmToggleBtn.setToggleState(false, juce::dontSendNotification);
         perfToggleBtn.setToggleState(false, juce::dontSendNotification);
 
-        // Hide chord/performance panels if visible
-        if (chordPanel.isVisible())
-            chordPanel.setVisible(false);
+        // Hide performance panel if visible
         if (performancePanel.isVisible())
             performancePanel.setVisible(false);
 
@@ -1587,11 +1325,8 @@ private:
                 if (detail.loadSlot(slot))
                 {
                     overview.setVisible(false);
-                    couplingHitTester.setVisible(false);
                     detail.setAlpha(1.0f);
                     detail.setVisible(true);
-                    if (auto* eng = processor.getEngine(slot))
-                        masterFXStrip.setAccentColour(eng->getAccentColour());
                 }
                 else
                 {
@@ -1613,12 +1348,9 @@ private:
                         if (self.detail.loadSlot(slot))
                         {
                             self.overview.setVisible(false);
-                            self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
                             self.detail.setAlpha(0.0f);
                             self.detail.setVisible(true);
                             juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
-                            if (auto* eng = self.processor.getEngine(slot))
-                                self.masterFXStrip.setAccentColour(eng->getAccentColour());
                         }
                         else
                         {
@@ -1634,19 +1366,15 @@ private:
             if (A11y::prefersReducedMotion())
             {
                 overview.setVisible(false);
-                couplingHitTester.setVisible(false);
                 if (detail.loadSlot(slot))
                 {
                     detail.setAlpha(1.0f);
                     detail.setVisible(true);
-                    if (auto* eng = processor.getEngine(slot))
-                        masterFXStrip.setAccentColour(eng->getAccentColour());
                 }
                 else
                 {
                     overview.setAlpha(1.0f);
                     overview.setVisible(true);
-                    couplingHitTester.setVisible(true);
                 }
             }
             else
@@ -1664,12 +1392,9 @@ private:
                         if (self.detail.loadSlot(slot))
                         {
                             self.overview.setVisible(false);
-                            self.couplingHitTester.setVisible(false); // hide — overlaps detail panel bounds
                             self.detail.setAlpha(0.0f);
                             self.detail.setVisible(true);
                             juce::Desktop::getInstance().getAnimator().fadeIn(&self.detail, kFadeMs);
-                            if (auto* eng = self.processor.getEngine(slot))
-                                self.masterFXStrip.setAccentColour(eng->getAccentColour());
                         }
                         else
                         {
@@ -1693,7 +1418,6 @@ private:
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
         juce::Component* outgoing = detail.isVisible()             ? static_cast<juce::Component*>(&detail)
-                                    : chordPanel.isVisible()       ? static_cast<juce::Component*>(&chordPanel)
                                     : performancePanel.isVisible() ? static_cast<juce::Component*>(&performancePanel)
                                                                    : nullptr;
         if (outgoing)
@@ -1704,7 +1428,6 @@ private:
                 outgoing->setVisible(false);
                 overview.setAlpha(1.0f);
                 overview.setVisible(true);
-                couplingHitTester.setVisible(true);
             }
             else
             {
@@ -1721,7 +1444,6 @@ private:
                             safeOutgoing->setVisible(false);
                         safeThis->overview.setAlpha(0.0f);
                         safeThis->overview.setVisible(true);
-                        safeThis->couplingHitTester.setVisible(true); // restore — overview needs arc hit-testing
                         juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->overview, kFadeMs);
                     });
             }
@@ -1730,64 +1452,11 @@ private:
 
     void showChordMachine()
     {
-        selectedSlot = -1;
-        processor.setPersistedSelectedSlot(-1); // persist for session restore (#357)
-        for (int i = 0; i < kNumPrimarySlots; ++i)
-            tiles[i]->setSelected(false);
-        ghostTile.setSelected(false);
-
-        auto& anim = juce::Desktop::getInstance().getAnimator();
-        juce::Component* outgoing = detail.isVisible()             ? static_cast<juce::Component*>(&detail)
-                                    : performancePanel.isVisible() ? static_cast<juce::Component*>(&performancePanel)
-                                    : overview.isVisible()         ? static_cast<juce::Component*>(&overview)
-                                                                   : nullptr;
-        if (outgoing)
-        {
-            // #926: skip cross-fade when reduced-motion preference is active
-            if (A11y::prefersReducedMotion())
-            {
-                outgoing->setVisible(false);
-                chordPanel.setAlpha(1.0f);
-                chordPanel.setVisible(true);
-                chordPanel.grabKeyboardFocus();
-            }
-            else
-            {
-                juce::Component::SafePointer<XOceanusEditor> safeThis(this);
-                juce::Component::SafePointer<juce::Component> safeOutgoing(outgoing);
-                anim.fadeOut(outgoing, kFadeMs);
-                juce::Timer::callAfterDelay(kFadeMs,
-                                            [safeThis, safeOutgoing]
-                                            {
-                                                if (safeThis == nullptr)
-                                                    return;
-                                                if (safeOutgoing != nullptr)
-                                                    safeOutgoing->setVisible(false);
-                                                safeThis->chordPanel.setAlpha(0.0f);
-                                                safeThis->chordPanel.setVisible(true);
-                                                juce::Desktop::getInstance().getAnimator().fadeIn(&safeThis->chordPanel,
-                                                                                                  kFadeMs);
-                                                safeThis->chordPanel.grabKeyboardFocus();
-                                            });
-            }
-        }
-        else
-        {
-            // #926: skip fade-in when reduced-motion preference is active
-            if (A11y::prefersReducedMotion())
-            {
-                chordPanel.setAlpha(1.0f);
-                chordPanel.setVisible(true);
-                chordPanel.grabKeyboardFocus();
-            }
-            else
-            {
-                chordPanel.setAlpha(0.0f);
-                chordPanel.setVisible(true);
-                anim.fadeIn(&chordPanel, kFadeMs);
-                chordPanel.grabKeyboardFocus();
-            }
-        }
+        // #1114: Gallery-era ChordMachinePanel removed. In OceanView mode the chord
+        // machine is exposed via the OceanView's TideWaterline/ChordBar. The cmToggleBtn
+        // is hidden under OceanView so this path is unreachable at runtime; kept as a
+        // stub to avoid orphaned caller references.
+        juce::ignoreUnused(this);
     }
 
     void showPerformanceView()
@@ -1801,10 +1470,9 @@ private:
         performancePanel.refresh();
 
         auto& anim = juce::Desktop::getInstance().getAnimator();
-        juce::Component* outgoing = detail.isVisible()       ? static_cast<juce::Component*>(&detail)
-                                    : chordPanel.isVisible() ? static_cast<juce::Component*>(&chordPanel)
-                                    : overview.isVisible()   ? static_cast<juce::Component*>(&overview)
-                                                             : nullptr;
+        juce::Component* outgoing = detail.isVisible()     ? static_cast<juce::Component*>(&detail)
+                                    : overview.isVisible() ? static_cast<juce::Component*>(&overview)
+                                                           : nullptr;
         if (outgoing)
         {
             // #926: skip cross-fade when reduced-motion preference is active
@@ -1972,31 +1640,8 @@ private:
         checkCollectionUnlock();
 
         // ── Refresh Export tab panel with current preset/kit info ────────────
-        sidebar.refreshExportPanel();
-
-        // ── Update coupling hit tester with current arc data ─────────────────
-        {
-            auto routes = processor.getCouplingMatrix().getRoutes();
-            std::array<juce::Point<float>, EngineRegistry::MaxSlots> nodeCenters;
-            // Compute node centers matching OverviewPanel's diamond layout
-            float w = (float)overview.getWidth();
-            float h = (float)overview.getHeight();
-            float portraitH = h * 0.38f;
-            float chainY = portraitH + (h - portraitH) * 0.28f;
-            float routeY = chainY + 12.0f + 12.0f;
-            float padding = 16.0f;
-            auto nodeArea = juce::Rectangle<float>(padding, routeY, w - 2.0f * padding, 60.0f);
-            nodeCenters[0] = nodeArea.getTopLeft().translated(8.0f, 8.0f);
-            nodeCenters[1] = nodeArea.getTopRight().translated(-8.0f, 8.0f);
-            nodeCenters[2] = nodeArea.getBottomLeft().translated(8.0f, -8.0f);
-            nodeCenters[3] = nodeArea.getBottomRight().translated(-8.0f, -8.0f);
-            // Ghost Slot position — below the 4 primary nodes if visible
-            if (ghostTile.isVisible())
-                nodeCenters[4] = ghostTile.getBounds().getCentre().toFloat() - overview.getPosition().toFloat();
-            else
-                nodeCenters[4] = nodeCenters[3].translated(0.0f, 20.0f); // fallback
-            couplingHitTester.updateArcs(routes, nodeCenters);
-        }
+        if (!oceanView_.isVisible())
+            sidebar.refreshExportPanel();
 
         // ── MIDI Learn: finalise pending learn captures ───────────────────────
         // checkPendingLearn() is safe to call from the message thread at any rate.
@@ -2035,21 +1680,14 @@ private:
                     if (auto* eng = processor.getEngine(ev.slot))
                         colour = eng->getAccentColour();
                 }
-                if (fieldMap.isVisible())
-                    fieldMap.addNote(ev.midiNote, ev.velocity, colour);
                 midiIndicator.flash(colour); // flash on every incoming note event
                 // velocity > 0 = note-on; velocity == 0 = note-off.
                 if (ev.velocity > 0.0f)
                 {
                     hadNoteOn = true;
 
-                    // Live DNA drift — feed this note into the session accumulator.
-                    // interval = semitone distance from last note (0 for first note).
-                    const float interval = (lastNote_ >= 0)
-                                               ? std::abs((float)(ev.midiNote - lastNote_))
-                                               : 0.0f;
-                    oceanView_.getNexus().updateSessionDna(
-                        (float)ev.midiNote, ev.velocity, interval);
+                    // D6 (#1096): NexusDisplay removed. Session DNA drift was fed here;
+                    // TODO(#1096-followup): route session DNA to preset browser overlay.
                     lastNote_ = ev.midiNote;
                 }
             });
@@ -2215,7 +1853,11 @@ private:
 
             const float activity        = processor.getNoteActivity();
             const bool  hasNoteActivity = activity > 0.01f;
-            const bool  couplingVisible = (sidebar.getActiveTab() == SidebarPanel::Couple);
+            // #1097: SidebarPanel::Couple tab removed (CPL-tab-removed). Coupling
+            // configuration now lives in CouplingConfigPopup (knot double-click).
+            // couplingVisible is permanently false; RegisterManager::Coupling register
+            // can no longer be triggered from the sidebar.
+            constexpr bool couplingVisible = false;
 
             registerMgr_.update(hasNoteActivity, couplingVisible, dtMs);
 
@@ -2353,7 +1995,7 @@ private:
             const auto& currentPreset = pm.getCurrentPreset();
             oceanView_.setPresetName(currentPreset.name);
 
-            // Fix #1005: push mood name + colour to NexusDisplay so badge updates.
+            // Fix #1005: push mood name + colour (no-op since D6 — NexusDisplay removed).
             oceanView_.setMoodName(currentPreset.mood);
             // Map mood string to colour — same table used by DnaMapBrowser.
             auto moodColourFor = [](const juce::String& mood) -> juce::Colour
@@ -2419,8 +2061,8 @@ private:
         }
 
         // ── #909: Live parameter feedback — voice count + macro values ─────────
-        // Push total voice count and current macro knob positions to NexusDisplay
-        // so the Overview (Orbital) state always shows live activity readouts.
+        // D6 (#1096): NexusDisplay removed. setLiveReadouts / tickSustainedDna are
+        // now no-ops; calls retained so call sites compile without change.
         {
             int totalVoices = 0;
             for (int i = 0; i < XOceanusProcessor::MaxSlots; ++i)
@@ -2572,15 +2214,11 @@ private:
     std::unique_ptr<GalleryLookAndFeel> laf;
 
     std::array<std::unique_ptr<CompactEngineTile>, kNumPrimarySlots> tiles;
-    FieldMapPanel fieldMap;
     OverviewPanel overview;
     EngineDetailPanel detail;
-    ChordMachinePanel chordPanel;
     PerformanceViewPanel performancePanel;
     MacroSection macros;
-    MasterFXSection masterFXStrip;
-    PresetBrowserStrip presetBrowser;
-    // Ghost Slot tile — declared after presetBrowser to match constructor MIL order.
+    // Ghost Slot tile — declared after macros to maintain constructor MIL order.
     // Hidden until EngineRegistry::detectCollection() returns a non-empty collection.
     CompactEngineTile ghostTile;
     juce::TextButton enginesBtn;
@@ -2605,8 +2243,6 @@ private:
     // JUCE requires exactly one TooltipWindow child per top-level component; without it
     // every setTooltip() call is dead code. 400ms delay matches standard plugin UX.
     juce::TooltipWindow tooltipWindow{this, 400};
-    CouplingArcOverlay couplingArcs{processor};
-    CouplingArcHitTester couplingHitTester{processor};
     SidebarPanel sidebar;
     StatusBar statusBar;
 

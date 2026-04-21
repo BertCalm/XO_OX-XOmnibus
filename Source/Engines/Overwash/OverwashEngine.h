@@ -382,10 +382,19 @@ public:
                 voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
                 voices[v].filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
             }
+        // Hoist envelope setADSR out of the per-sample loop — setADSR internally
+        // calls two std::exp()s for decay/release coefficients; ADSR knob values
+        // are block-rate so per-sample recomputation was pure waste.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
+            voice.filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
         }
 
         for (int i = 0; i < numSamples; ++i)
         {
+            const bool updateFilter = ((i & 15) == 0);
             float lfo1Val = lfo1.process();
             float lfo2Val = lfo2.process();
             float breathVal = breathLfo.process();
@@ -406,6 +415,9 @@ public:
                 // every sample to avoid pointless FP adds.
 
                 // Process envelopes (setADSR hoisted to block rate above — no exp() here)
+                voice.noteAge += inverseSr;
+
+                // Envelope setADSR hoisted to per-block voice loop above.
                 float ampLevel = voice.ampEnv.process();
                 float filtLevel = voice.filterEnv.process();
 
@@ -434,6 +446,13 @@ public:
                 {
                     voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
                     voice.lastCutoff = voiceCutoff;
+                // SVF coeff refresh decimated to every 16 samples.
+                if (updateFilter)
+                {
+                    float voiceCutoff = pFilterCut * velBright + pFiltEnvAmt * filtLevel * 8000.0f * voice.velocity +
+                                        pBrightness * 4000.0f; // brightness independently brightens the tone
+                    voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
+                    voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
                 }
 
                 // LFOToPitch coupling: extPitchMod is accumulated in applyCouplingInput()
@@ -790,7 +809,9 @@ public:
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srF = 0.0f;  // Sentinel: must be set by prepare() before use
-    float inverseSr_ = 1.0f / 44100.0f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float inverseSr_ = 0.0f;
     int blockSize = 512;
 
     OverwashVoice voices[kMaxVoices];

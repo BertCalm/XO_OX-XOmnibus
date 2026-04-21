@@ -8,7 +8,10 @@
 
 // SidebarPanel.h — Column C tabbed sidebar (320pt).
 //
-// Six tabs: PRESET | COUPLE | FX | PERFORM | EXPORT | SETTINGS
+// Four tabs: PRESET | PERFORM | EXPORT | SETTINGS
+// (FX lives in EpicSlotsPanel on the Ocean dashboard — D7.
+//  Coupling configuration lives in CouplingConfigPopup triggered by knot
+//  double-click on OceanView — CPL-tab-removed.)
 //
 // Tab bar spec:
 //   Height:    32pt
@@ -22,7 +25,7 @@
 //   Enter/Space — activate focused tab
 //   Tab         — exit tab bar to content area
 //
-// All six tabs are live: wire setPresetManager() then setProcessor() from the editor.
+// All four tabs are live: wire setPresetManager() then setProcessor() from the editor.
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
@@ -33,8 +36,6 @@
 #define XOLOKUN_PRESET_BROWSER_INCLUDED
 #include "../PresetBrowser/PresetBrowser.h"
 #endif
-#include "CouplingInspectorPanel.h"
-#include "FXInspectorPanel.h"
 #include "PlayControlPanel.h"
 #include "SettingsPanel.h"
 #include "ExportTabPanel.h"
@@ -56,8 +57,6 @@ public:
     enum Tab
     {
         Preset = 0,
-        Couple,
-        FX,
         Play,
         Export,
         Settings,
@@ -69,7 +68,7 @@ public:
     {
         // #913: Panel-level accessibility label for collapsed state.
         setTitle("Sidebar Panel");
-        setDescription("Tab panel with Preset, Couple, FX, Perform, Export and Settings sections. "
+        setDescription("Tab panel with Preset, Perform, Export and Settings sections. "
                        "Double-click the icon rail to expand.");
 
         // ── Tab buttons ───────────────────────────────────────────────────────
@@ -128,8 +127,8 @@ public:
     }
 
     //==========================================================================
-    // Wire the ExportTabPanel for the C5 Export tab, and lazily construct the
-    // C2–C4, C6 panels (CouplingInspector, FXInspector, PlayControl, Settings).
+    // Wire the ExportTabPanel for the Export tab, and lazily construct the
+    // PlayControl and Settings panels.
     // Call once from the editor after setPresetManager(), passing the processor.
     // Safe to call repeatedly — construction is guarded.
     void setProcessor(XOceanusProcessor& proc)
@@ -145,21 +144,7 @@ public:
         {
             outshineSidebar = std::make_unique<OutshineSidebarPanel>(proc);
             contentArea.addChildComponent(*outshineSidebar);
-            outshineSidebar->setVisible(false); // hidden — ExportTabPanel owns the full Export tab area
-        }
-
-        if (couplingPanel == nullptr)
-        {
-            couplingPanel = std::make_unique<CouplingInspectorPanel>(proc);
-            contentArea.addChildComponent(*couplingPanel);
-            couplingPanel->setVisible(activeTab == Couple);
-        }
-
-        if (fxPanel == nullptr)
-        {
-            fxPanel = std::make_unique<FXInspectorPanel>(proc.getAPVTS());
-            contentArea.addChildComponent(*fxPanel);
-            fxPanel->setVisible(activeTab == FX);
+            outshineSidebar->setVisible(activeTab == Export);
         }
 
         if (playPanel == nullptr)
@@ -264,22 +249,14 @@ public:
             presetBrowser->setVisible(t == Preset);
         presetPlaceholder.setVisible(!havePresetBrowser && t == Preset);
 
-        if (couplingPanel)
-            couplingPanel->setVisible(t == Couple);
-        if (fxPanel)
-            fxPanel->setVisible(t == FX);
         if (playPanel)
             playPanel->setVisible(t == Play);
         if (exportPanel)
             exportPanel->setVisible(t == Export);
         if (outshineSidebar)
-            outshineSidebar->setVisible(false); // always hidden — off-screen
+            outshineSidebar->setVisible(t == Export);
         if (settingsPanel)
             settingsPanel->setVisible(t == Settings);
-
-        // Refresh coupling data whenever the Couple tab becomes active
-        if (t == Couple && couplingPanel)
-            couplingPanel->refresh();
 
         repaint();
 
@@ -368,7 +345,7 @@ public:
                 g.setColour(juce::Colour(active ? GalleryColors::t1() : GalleryColors::t2()));
                 g.setFont(GalleryFonts::display(11.0f));
                 // Use 4th character for PERFORM ('F') to avoid collision with PRESET ('P') and EXPORT ('E').
-                // PERFORM[3]='F' is unique across all six tab labels in collapsed mode.
+                // PERFORM[3]='F' is unique across all four tab labels in collapsed mode.
                 juce::String icon(i == Play ? juce::String(tabLabels[i][3]) : juce::String(tabLabels[i][0]));
                 g.drawText(icon, 0, y, getWidth(), tabH, juce::Justification::centred);
                 if (active)
@@ -471,22 +448,23 @@ public:
         if (presetBrowser != nullptr)
             presetBrowser->setBounds(inner);
 
-        // ExportTabPanel owns the full Export tab content area.
-        // OutshineSidebarPanel is hidden and parked off-screen so it doesn't intercept input.
+        // ExportTabPanel takes the top of the Export content area;
+        // OutshineSidebarPanel sits below it with a fixed height.
         if (exportPanel != nullptr)
-            exportPanel->setBounds(contentArea.getLocalBounds());
-
-        if (outshineSidebar != nullptr)
         {
-            outshineSidebar->setBounds(0, 0, 0, 0);
-            outshineSidebar->setVisible(false);
+            auto exportArea = contentArea.getLocalBounds();
+            if (outshineSidebar != nullptr)
+            {
+                auto outshineArea = exportArea.removeFromBottom(kOutshineSidebarH);
+                outshineSidebar->setBounds(outshineArea);
+            }
+            exportPanel->setBounds(exportArea);
         }
-
-        if (couplingPanel != nullptr)
-            couplingPanel->setBounds(inner);
-
-        if (fxPanel != nullptr)
-            fxPanel->setBounds(inner);
+        else if (outshineSidebar != nullptr)
+        {
+            // Defensive fallback — both panels are created together in setProcessor()
+            outshineSidebar->setBounds(contentArea.getLocalBounds());
+        }
 
         if (playPanel != nullptr)
             playPanel->setBounds(inner);
@@ -516,8 +494,9 @@ private:
     // Prototype: 32px tab bar, 2px accent underline
     static constexpr int kTabBarH = 32;
     static constexpr int kUnderlineH = 2;
+    static constexpr int kOutshineSidebarH = 180;
 
-    static constexpr const char* tabLabels[NumTabs] = {"PRESET", "COUPLE", "FX", "PERFORM", "EXPORT", "SETTINGS"};
+    static constexpr const char* tabLabels[NumTabs] = {"PRESET", "PERFORM", "EXPORT", "SETTINGS"};
 
     //==========================================================================
     // Inactive tab text colour — WCAG AA on shellWhite (audit fix A-01)
@@ -557,19 +536,13 @@ private:
     // C1 — Preset Browser (constructed lazily when setPresetManager() is called)
     std::unique_ptr<PresetBrowser> presetBrowser;
 
-    // C2 — Coupling Inspector (constructed lazily when setProcessor() is called)
-    std::unique_ptr<CouplingInspectorPanel> couplingPanel;
-
-    // C3 — FX Inspector (constructed lazily when setProcessor() is called)
-    std::unique_ptr<FXInspectorPanel> fxPanel;
-
-    // C4 — Play Control (constructed lazily when setProcessor() is called)
+    // C2 — Play Control (constructed lazily when setProcessor() is called)
     std::unique_ptr<PlayControlPanel> playPanel;
 
-    // C5 — Export Tab Panel (constructed lazily when setProcessor() is called)
+    // C3 — Export Tab Panel (constructed lazily when setProcessor() is called)
     std::unique_ptr<ExportTabPanel> exportPanel;
 
-    // Outshine sidebar — attached to Export tab below ExportTabPanel
+    // Outshine sidebar — shown in the Export tab below ExportTabPanel
     std::unique_ptr<OutshineSidebarPanel> outshineSidebar;
 
     // C6 — Settings (constructed lazily when setProcessor() is called)

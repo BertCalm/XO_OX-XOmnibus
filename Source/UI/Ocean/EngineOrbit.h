@@ -1002,8 +1002,7 @@ private:
 
     // Freeform drag
     bool isDragging_ = false;
-    bool pendingClickActive_ = false;   ///< true while waiting to fire single-click
-    int  pendingClickSlot_   = -1;      ///< slot index for pending click
+    // pendingClickActive_ / pendingClickSlot_ reserved for future single-click disambiguation
     juce::Point<float> dragStartPos_ {};
     juce::Point<float> normalizedPosition_ { 0.5f, 0.5f };
     juce::Rectangle<float> oceanAreaBounds_ {}; // parent ocean area for drag normalization

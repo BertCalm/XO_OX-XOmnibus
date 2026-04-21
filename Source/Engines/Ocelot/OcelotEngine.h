@@ -147,18 +147,24 @@ public:
             couplingDensityMod = 0.0f;
         }
 
-        // 3. Clear buffer and render
-        buffer.clear();
+        // 3. ADDITIVE: render into outputCacheL/R (scratch), then add to buffer.
+        // outputCacheL/R serve dual purpose: scratch for this render pass + coupling cache.
+        // VoicePool applies fastTanh inside renderBlock — must run on isolated scratch only.
+        auto cacheSize = static_cast<int>(outputCacheL.size());
+        if (numSamples > cacheSize)
+            return; // guard: should not happen if prepare() was called with correct maxBlockSize
+        std::fill(outputCacheL.begin(), outputCacheL.begin() + numSamples, 0.0f);
+        std::fill(outputCacheR.begin(), outputCacheR.begin() + numSamples, 0.0f);
+
+        voicePool.renderBlock(outputCacheL.data(), outputCacheR.data(), numSamples, snapshot);
+
+        // 4. Add rendered scratch into the output buffer (additive slot-chain mix)
         auto* outL = buffer.getWritePointer(0);
         auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
-
-        voicePool.renderBlock(outL, outR, numSamples, snapshot);
-
-        // 4. Fill output cache for coupling (post-render, pre-FX)
-        for (int i = 0; i < numSamples && i < static_cast<int>(outputCacheL.size()); ++i)
+        for (int i = 0; i < numSamples; ++i)
         {
-            outputCacheL[static_cast<size_t>(i)] = outL[i];
-            outputCacheR[static_cast<size_t>(i)] = outR[i];
+            outL[i] += outputCacheL[static_cast<size_t>(i)];
+            outR[i] += outputCacheR[static_cast<size_t>(i)];
         }
 
         silenceGate.analyzeBlock(buffer.getReadPointer(0),

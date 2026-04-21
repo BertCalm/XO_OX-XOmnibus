@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "name": "Rogue Swell",
+  "mood": "Flux",
+  "engines": [
+    "Oneiric"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sensitive Peregrine trigger with low threshold. Base tone is unremarkable — aftertouch past 50% summons a rational breather that rises to ~3x amplitude then decays. Reward expression, not programming.",
+  "tags": [
+    "flux",
+    "peregrine",
+    "rogue-wave",
+    "aftertouch",
+    "performance",
+    "expression"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.52,
+    "movement": 0.65,
+    "density": 0.58,
+    "space": 0.55,
+    "aggression": 0.48
+  },
+  "parameters": {
+    "Oneiric": {
+      "oner_solitonCount": 2,
+      "oner_amplitude": 0.90,
+      "oner_width": 0.90,
+      "oner_velocity": 0.0,
+      "oner_velocitySpread": 0.40,
+      "oner_chirp": 0.10,
+      "oner_dissipation": 0.015,
+      "oner_boundState": 1,
+      "oner_polarity": 0,
+      "oner_dispersion": 1.00,
+      "oner_nonlinearity": 1.20,
+      "oner_observeMode": 0,
+      "oner_observePoint": 0.0,
+      "oner_probeSpeed": 0.10,
+      "oner_rogueSensitivity": 0.85,
+      "oner_rogueThreshold": 0.45,
+      "oner_instability": 0.0,
+      "oner_instabilityHold": 4.0,
+      "oner_potentialShape": 0,
+      "oner_potentialDepth": 0.0,
+      "oner_potentialPeriod": 1.0,
+      "oner_attackShock": 0.30,
+      "oner_fltCutoff": 3200.0,
+      "oner_fltReso": 0.35,
+      "oner_fltType": 0,
+      "oner_fltEnvAmt": 0.42,
+      "oner_fltKeyTrack": 0.60,
+      "oner_fltVelTrack": 0.72,
+      "oner_ampAtk": 0.04,
+      "oner_ampDec": 0.50,
+      "oner_ampSus": 0.78,
+      "oner_ampRel": 1.40,
+      "oner_fenvAtk": 0.03,
+      "oner_fenvDec": 0.60,
+      "oner_fenvSus": 0.45,
+      "oner_fenvRel": 1.20,
+      "oner_lfo1Rate": 0.65,
+      "oner_lfo1Depth": 0.32,
+      "oner_lfo1Shape": 0,
+      "oner_lfo1Target": 0,
+      "oner_lfo2Rate": 0.10,
+      "oner_lfo2Depth": 0.20,
+      "oner_lfo2Shape": 1,
+      "oner_lfo2Target": 1,
+      "oner_macro1": 0.55,
+      "oner_macro2": 0.52,
+      "oner_macro3": 0.18,
+      "oner_macro4": 0.48,
+      "oner_voiceMode": 1,
+      "oner_glide": 0.15,
+      "oner_level": 0.72
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.18,
+    "SPACE": 0.48
+  }
+}

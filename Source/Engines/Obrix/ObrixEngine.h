@@ -544,7 +544,6 @@ public:
             }
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             couplingPitchMod.store(0.0f);
             couplingCutoffMod.store(0.0f);
             couplingWtPosMod.store(0.0f);

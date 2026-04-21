@@ -1084,6 +1084,13 @@ public:
         float baseDampAlpha = 1.0f - (effectiveDampingRaw + couplingDampingModulation) * 0.95f;
         baseDampAlpha = clamp(baseDampAlpha, 0.05f, 1.0f);
 
+        // Block-constant pitch-bend frequency ratio. pitchBendNorm and ouroModPitchOffset
+        // are both static across the block, so PitchBendUtil::semitonesToFreqRatio (which
+        // contains std::pow internally) was being called V × N times per block inside
+        // the inner voice loop. Hoist to one call per block.
+        const float blockPitchBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + ouroModPitchOffset);
+
         //----------------------------------------------------------------------
         // Cache write pointers once per block (avoids JUCE assertion overhead
         // and repeated pointer computation inside the hot per-sample loop).
@@ -1136,7 +1143,7 @@ public:
                 // effectiveRate includes MOVEMENT and SPACE macro scaling
                 float targetFrequency = (voice.noteNumber >= 0) ? midiToFreq(voice.noteNumber) : effectiveRate;
                 targetFrequency += couplingPitchModulation * 20.0f; // +/- 20 Hz pitch mod range
-                targetFrequency *= PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + ouroModPitchOffset);
+                targetFrequency *= blockPitchBendRatio; // hoisted above — was per-sample per-voice std::pow
                 if (targetFrequency < 20.0f)
                     targetFrequency = 20.0f; // Sub-audible floor
 

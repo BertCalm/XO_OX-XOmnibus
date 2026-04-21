@@ -407,6 +407,7 @@ public:
                 switch (paramEnvModel)
                 {
                     case 0: // Wave: sin
+                    case 0: // Wave: sin (fastSin: ~0.01% err, per-sample)
                         sig = fastSin(kObservTwoPi * static_cast<float>(t));
                         break;
                     case 1: // Turbulence: smoothed noise
@@ -422,8 +423,15 @@ public:
                         sig = fastSin(kObservTwoPi * static_cast<float>(t))
                             + 0.5f * fastSin(1.7f * kObservTwoPi * static_cast<float>(t))
                             + 0.3f * fastSin(2.9f * kObservTwoPi * static_cast<float>(t));
+                    case 2: // Tidal: superposition of 3 sines (fastSin per-sample)
+                    {
+                        const float ph = kObservTwoPi * static_cast<float>(t);
+                        sig = fastSin(ph)
+                            + 0.5f * fastSin(1.7f * ph)
+                            + 0.3f * fastSin(2.9f * ph);
                         sig *= (1.0f / 1.8f); // normalise
                         break;
+                    }
                     case 3: // Drift: Brownian motion
                     {
                         turbulenceSeed = turbulenceSeed * 6364136223846793005ULL + 1442695040888963407ULL;
@@ -500,6 +508,7 @@ public:
                 // t in [0,1] → detune offset in [-half, +half] cents
                 float centOffset = (t - 0.5f) * 2.0f * detuneHalfRangeCents;
                 detuneRatio[f] = fastPow2(centOffset / 1200.0f);
+                detuneRatio[f] = fastPow2(centOffset * (1.0f / 1200.0f));
                 // Phase offset in [0, spreadDeg/360] cycle fraction
                 float spreadFrac = spreadDeg / 360.0f;
                 phaseOffset[f] = (numFacets > 1) ? t * spreadFrac : 0.0f;
@@ -565,15 +574,29 @@ public:
 
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear();
             return;
         }
 
         // Pitch bend ratio (±2 semitones + mod matrix pitch offset in semitones)
         float pitchBendRatio = fastPow2((pitchBendNorm * 2.0f + modPitchOffset) / 12.0f);
+        float pitchBendRatio = fastPow2((pitchBendNorm * 2.0f + modPitchOffset) * (1.0f / 12.0f));
 
         // D006: aftertouch → distortion boost
         float atDistBoost = aftertouchValue * 0.2f;
+
+        // Block-constant values hoisted out of per-sample loop:
+        //   numFacets is set per-block; numFacetsInv = 1/numFacets used in normalisation.
+        //   modAmpClamp is block-constant from modAmpOffset (mod matrix output).
+        //   Filter mode is block-constant from paramFilterType.
+        const float numFacetsInv = 1.0f / static_cast<float>(numFacets);
+        const float modAmpClamp  = clamp(1.0f + modAmpOffset, 0.0f, 2.0f);
+        CytomicSVF::Mode blockFilterMode = CytomicSVF::Mode::LowPass;
+        switch (paramFilterType)
+        {
+            case 1: blockFilterMode = CytomicSVF::Mode::HighPass; break;
+            case 2: blockFilterMode = CytomicSVF::Mode::BandPass; break;
+            default: blockFilterMode = CytomicSVF::Mode::LowPass; break;
+        }
 
         // ---- Per-sample render loop ----
         float peakEnvLevel = 0.0f;
@@ -666,17 +689,11 @@ public:
                 // Update per-voice filter coefficients every 16 samples (sub-block rate).
                 // This gives 16x better filter cutoff tracking than block-rate at a fraction
                 // of the cost of per-sample coefficient computation.
+                // Filter mode hoisted out — block-constant from paramFilterType.
                 if ((sampleIdx & 15) == 0)
                 {
-                    CytomicSVF::Mode fMode = CytomicSVF::Mode::LowPass;
-                    switch (paramFilterType)
-                    {
-                        case 1: fMode = CytomicSVF::Mode::HighPass; break;
-                        case 2: fMode = CytomicSVF::Mode::BandPass; break;
-                        default: fMode = CytomicSVF::Mode::LowPass; break;
-                    }
-                    voice.filterL.setMode(fMode);
-                    voice.filterR.setMode(fMode);
+                    voice.filterL.setMode(blockFilterMode);
+                    voice.filterR.setMode(blockFilterMode);
                     voice.filterL.setCoefficients(voiceCutoff, paramFilterReso, sampleRateFloat);
                     voice.filterR.setCoefficients(voiceCutoff, paramFilterReso, sampleRateFloat);
                 }
@@ -686,7 +703,11 @@ public:
 
                 for (int f = 0; f < numFacets; ++f)
                 {
-                    float facetFreq = freq * detuneRatio[f];
+                    // Nyquist guard: detuneRatio at extreme values + high notes can push
+                    // facetFreq past sr/2. Clamp to 95% Nyquist to avoid aliasing artefacts
+                    // even at 2x oversampling (effective Nyquist = sr).
+                    float facetFreq = std::min(freq * detuneRatio[f],
+                                               sampleRateFloat * 0.95f);
                     // Phase increment at 2x sample rate
                     double phaseInc = static_cast<double>(facetFreq)
                                     / (sampleRateDouble * static_cast<double>(kObservOversample));
@@ -740,17 +761,16 @@ public:
                     facetOutR += facetSample * facetPanR[f];
                 }
 
-                // 1/N normalization
-                float normFactor = 1.0f / static_cast<float>(numFacets);
-                facetOutL *= normFactor;
-                facetOutR *= normFactor;
+                // 1/N normalization (numFacetsInv hoisted as block-constant)
+                facetOutL *= numFacetsInv;
+                facetOutR *= numFacetsInv;
 
                 // ---- Per-voice filters (L and R independent — fixes XObsidian bug) ----
                 facetOutL = voice.filterL.processSample(facetOutL);
                 facetOutR = voice.filterR.processSample(facetOutR);
 
-                // ---- Amplitude shaping ----
-                float voiceGain = ampLevel * voice.velocity * voice.crossfadeGain * clamp(1.0f + modAmpOffset, 0.0f, 2.0f);
+                // ---- Amplitude shaping (modAmpClamp hoisted as block-constant) ----
+                float voiceGain = ampLevel * voice.velocity * voice.crossfadeGain * modAmpClamp;
                 facetOutL *= voiceGain;
                 facetOutR *= voiceGain;
 
@@ -1494,8 +1514,10 @@ private:
     //==========================================================================
 
     // ---- Audio configuration (set in prepare()) ----
-    double sampleRateDouble   = 44100.0;
-    float  sampleRateFloat    = 44100.0f;
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    double sampleRateDouble   = 0.0;
+    float  sampleRateFloat    = 0.0f;
     float  paramSmoothCoeff   = 0.1f;
     float  voiceFadeRate      = 0.01f;
 

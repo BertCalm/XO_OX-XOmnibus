@@ -294,7 +294,6 @@ public:
         // ── 2. SilenceGate bypass ──────────────────────────────────────
         if (isSilenceGateBypassed() && midi.isEmpty())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL_ = couplingCacheR_ = 0.0f;
             // Reset coupling accumulators on bypass path too — coupling inputs
             // may still arrive even when engine is silent; discard them cleanly.
@@ -360,18 +359,27 @@ public:
         lfo2_.setShape(StandardLFO::Sine); // LFO2 is always sine for groove pump
 
         // ── 6. Render voices ─────────────────────────────────────────
-        float* outL = buffer.getWritePointer(0);
-        float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
-        buffer.clear(0, numSamples);
+        // ADDITIVE: do not clear — engine adds to existing buffer (slot chain convention).
+        // Render Offering into scratch arrays first, then mix into the output buffer.
+        float* bufL = buffer.getWritePointer(0);
+        float* bufR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : bufL;
 
-        // Per-sample mono mix buffer for city processing.
+        // Per-sample scratch buffers for this engine's render + FX chain.
         // 4096 samples handles 96kHz at large buffer sizes (~42ms); guarded by safeSamples.
         // NOTE: OfferingCityProcessor::process() allocates a shadow[2048] for blend mode,
         // so the effective city-blend limit is 2048 samples. safeSamples is capped there too.
+        float scrL[4096];
+        float scrR[4096];
+        // Per-sample mono mix buffer for city processing.
         float monoMix[4096];
         jassert(numSamples <= 4096); // warn in debug if host sends unexpectedly large blocks
         int safeSamples = std::min(numSamples, 4096);
+        std::fill(scrL, scrL + safeSamples, 0.0f);
+        std::fill(scrR, scrR + safeSamples, 0.0f);
         std::fill(monoMix, monoMix + safeSamples, 0.0f);
+        // Alias for readability — rest of code uses outL/outR unchanged
+        float* outL = scrL;
+        float* outR = scrR;
 
         // SRO (2026-03-21): Precompute per-voice pan gains once per block.
         // vs.pan comes from param snapshot — block-constant. Moving cos/sin
@@ -527,10 +535,17 @@ public:
             couplingCacheR_ = outR[s];
         }
 
-        // ── 9. SilenceGate analysis ──────────────────────────────────
+        // ── 9. Additive mix: combine Offering's processed signal into the output buffer ──
+        for (int s = 0; s < safeSamples; ++s)
+        {
+            bufL[s] += outL[s];
+            bufR[s] += outR[s];
+        }
+
+        // ── 10. SilenceGate analysis ──────────────────────────────────
         analyzeForSilenceGate(buffer, safeSamples);
 
-        // ── 10. Reset coupling accumulators ──────────────────────────
+        // ── 11. Reset coupling accumulators ──────────────────────────
         // Reset AFTER consuming so next block starts clean.
         // applyCouplingInput() is called BEFORE renderBlock() each cycle;
         // resetting here ensures stale values never persist across missed blocks.

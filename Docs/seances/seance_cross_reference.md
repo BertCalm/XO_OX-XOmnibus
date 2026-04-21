@@ -1,7 +1,7 @@
 # Seance Cross-Reference
 
 **Generated:** 2026-03-14 by Documentation Health Agent (Round 2 — Prism Sweep)
-**Updated:** 2026-04-15 — 80 seanced / 81 fleet (4 new engines seanced: OBSERVANDUM 8.6, ORRERY 8.7, OPSIN 8.7, OORT 8.7. OBIONT not yet seanced). Previous: OPENSKY 8.5 formal pass 2026-04-11; OVERBITE 9.1/10 formal pass 2026-04-12; ORPHICA 8.4/10 re-seance 2026-04-12
+**Updated:** 2026-04-21 — 82 seanced / 90 fleet (2 new engines initial-doctrine-audited 2026-04-21: OUTCROP 7.0 provisional, ONEIRIC 7.5 provisional; full post-audition re-seance pending). Prior: 2026-04-15 4 new engines seanced (OBSERVANDUM 8.6, ORRERY 8.7, OPSIN 8.7, OORT 8.7). OBIONT, OOBLECK, OOZE, and 5 other recent adds not yet seanced.
 **Sources:** Grand Survey (`xoceanus_landscape_2026.md`), Knowledge Tree (`~/.claude/skills/synth-seance/knowledge/index.md`), all seance records in `Docs/seances/`, `scripture/seances/`, and batch verdicts for Kitchen Collection quads
 **Purpose:** Quick-reference table mapping each engine to its seance findings
 
@@ -106,6 +106,8 @@
 | XOpsin | OPSIN | **8.4/10** (first seance 2026-04-12) | B045 "The Rewiring Instrument" — only fleet engine whose synthesis structure is physically different after performance than at the start (Hebbian synapse rewiring) | None | D001 PARTIAL: velocity scales filter env only, not PCO network energy. Fix: add `velocity * 0.2f` to excitation. | "This is the architecture I was reaching for. The engine teaches itself." — Buchla |
 | XOort | OORT | **8.5/10** V1-READY (≥50 presets before ship) (first seance 2026-04-12) | B046 "The Composer Axis" — INTENT (0=Cage, 1=Xenakis) is the only synthesis parameter that names its philosophical positions after composers | None | None (all D001–D006 PASS; D001 exemplary: `velScatter = scatter*(1-velTimbre*velocity)`) | "The INTENT axis — Cage at zero, Xenakis at one — is exactly the question I was always trying to pose." — Buchla |
 | XOrrery | ORRERY | **8.2/10** (first seance 2026-04-12) | B047 "The Captured Orbit" — Custom Ephemeris records performer X/Y trajectory at 30Hz → cubic Catmull-Rom playback as a repeating autobiographical orbit; first fleet engine to capture performance gesture as a synthesis trajectory | None | None (all D001–D006 PASS; gravity wells respond to coupling energy) | "An elliptical orbit at 0.125 Hz, 3.5-second amp release — that is Irrlicht in synthesis form." — Schulze |
+| XOutcrop | OUTCROP | **7.0/10** provisional (first doctrine audit 2026-04-21) | Deferred pending audition | None known | None (all D001–D006 PASS; D003 baseline Roads/Mitsuhashi; D004 verified by inspection) | *Wave-terrain synthesis — probe orbits over peaks/ridges/hybrid landscapes. Five presets at launch. Post-audition re-seance appropriate.* |
+| XOneiric | ONEIRIC | **7.5/10** provisional (first doctrine audit 2026-04-21) | Deferred pending audition | None known | None (all D001–D006 PASS; D003 exemplary with 4 citations Zakharov-Shabat/Agrawal/Peregrine/Akhmediev; dark-polarity envelope is a flip-sign approximation not a true tanh profile — flagged as upgrade path) | *NLS soliton synthesis with bound states, Peregrine rogue waves, modulational instability, V(x) lattice potential. Six presets at launch. Coupling route to Outcrop (EnvToMorph → V(x)) designed but not yet wired in MegaCouplingMatrix.* |
 
 ---
 

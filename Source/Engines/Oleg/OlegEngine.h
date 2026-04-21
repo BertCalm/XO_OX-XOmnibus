@@ -779,7 +779,6 @@ public:
         // Step 2: bypass check
         if (isSilenceGateBypassed())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
@@ -840,6 +839,8 @@ public:
         smoothCasDepth.set(effectiveCasDepth);
         smoothWheelSpd.set(effectiveWheelSpd);
 
+        // Snapshot pitch coupling before reset (#1118).
+        const float blockCouplingPitchMod = couplingPitchMod;
         // Reset coupling accumulators
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -905,6 +906,7 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float buzzNow = smoothBuzz.process();
             float brightNow = smoothBrightness.process();
             float droneNow = smoothDrone.process();
@@ -922,7 +924,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
                 // LFO processing (rate/shape already set once per block above)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
@@ -965,6 +967,13 @@ public:
                     // Mode set once per block (block pre-pass); coefficients update per-sample
                     // so the smoothed formantNow drives zipper-free cutoff changes.
                     voice.formantFilter.setCoefficients(600.0f + formantNow * 2400.0f, formantQ, srf);
+                    // Decimate coefficient refresh to every 16 samples — formantNow
+                    // smoother is slow relative to audio rate.
+                    if (updateFilter)
+                    {
+                        voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
+                        voice.formantFilter.setCoefficients(600.0f + formantNow * 2400.0f, formantQ, srf);
+                    }
                     processed = raw * 0.6f + voice.formantFilter.processSample(processed) * 0.4f;
                     break;
                 }
@@ -978,6 +987,12 @@ public:
                     // Wooden body resonance (formant).
                     // Mode set once per block (block pre-pass).
                     voice.formantFilter.setCoefficients(400.0f + formantNow * 1600.0f, formantQ, srf);
+                    // Wooden body resonance (formant). Decimate coeff refresh.
+                    if (updateFilter)
+                    {
+                        voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
+                        voice.formantFilter.setCoefficients(400.0f + formantNow * 1600.0f, formantQ, srf);
+                    }
                     processed = processed * 0.7f + voice.formantFilter.processSample(processed) * 0.3f;
                     break;
                 }
@@ -991,6 +1006,12 @@ public:
                     // Reed chamber resonance.
                     // Mode set once per block (block pre-pass).
                     voice.formantFilter.setCoefficients(500.0f + formantNow * 2500.0f, formantQ, srf);
+                    // Reed chamber resonance. Decimate coeff refresh.
+                    if (updateFilter)
+                    {
+                        voice.formantFilter.setMode(CytomicSVF::Mode::Peak);
+                        voice.formantFilter.setCoefficients(500.0f + formantNow * 2500.0f, formantQ, srf);
+                    }
                     processed = processed * 0.65f + voice.formantFilter.processSample(processed) * 0.35f;
                     break;
                 }
@@ -1004,6 +1025,12 @@ public:
                     // Open box resonance (narrower, more colored).
                     // Mode set once per block (block pre-pass).
                     voice.formantFilter.setCoefficients(350.0f + formantNow * 1650.0f, formantQ, srf);
+                    // Open box resonance (narrower, more colored). Decimate coeff refresh.
+                    if (updateFilter)
+                    {
+                        voice.formantFilter.setMode(CytomicSVF::Mode::BandPass);
+                        voice.formantFilter.setCoefficients(350.0f + formantNow * 1650.0f, formantQ, srf);
+                    }
                     processed = processed * 0.5f + voice.formantFilter.processSample(processed) * 0.5f;
                     break;
                 }
@@ -1040,6 +1067,11 @@ public:
 
                 // Mode set once per block (block pre-pass above); only update coefficients per-sample.
                 voice.voiceFilter.setCoefficients(cutoff, voiceFilterQ, srf);
+                if (updateFilter)
+                {
+                    voice.voiceFilter.setMode(CytomicSVF::Mode::LowPass);
+                    voice.voiceFilter.setCoefficients(cutoff, voiceFilterQ, srf);
+                }
                 float filtered = voice.voiceFilter.processSample(processed);
 
                 float output = filtered * ampLevel * bellowsAmp * voice.velocity;

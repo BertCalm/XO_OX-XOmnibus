@@ -63,6 +63,8 @@ public:
             return; // no visible change at 10pt text resolution
 
         cpuPct = clamped;
+        // Pre-build the display string so paint() never allocates.
+        cachedText_ = "CPU: " + juce::String(cpuPct, 1) + "%";
         repaint();
     }
 
@@ -82,16 +84,15 @@ public:
             textCol = juce::Colour(0xFFEF4444); // red
 
         // ── Text: "CPU: 4.2%" ────────────────────────────────────────────────
-        // One decimal place for readability at 10pt; no flicker at ~1Hz update rate.
-        juce::String text = "CPU: " + juce::String(cpuPct, 1) + "%";
-
+        // String is pre-built in setCpuPercent() — no allocation in paint.
         g.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
         g.setColour(textCol);
-        g.drawText(text, bounds.reduced(4.0f, 0.0f), juce::Justification::centred, false);
+        g.drawText(cachedText_, bounds.reduced(4.0f, 0.0f), juce::Justification::centred, false);
     }
 
 private:
-    float cpuPct = 0.0f;
+    float        cpuPct      = 0.0f;
+    juce::String cachedText_ = "CPU: 0.0%";
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CPUMeter)
 };

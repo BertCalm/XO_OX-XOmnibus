@@ -649,7 +649,6 @@ public:
         // Check silence gate
         if (isSilenceGateBypassed())
         {
-            buffer.clear();
             return;
         }
 
@@ -823,6 +822,22 @@ public:
         // rather than running on the previous block's (or prepare()'s) stale values.
         int sampleIdx = 15;
 
+        // Pre-multiply synapseWeights × smoothFeedback once per block. smoothFeedback
+        // is a block-rate one-pole smoother output (updated above, line ~719), and
+        // synapseWeights change only at block boundaries (Hebbian learning + decay
+        // both happen post-block). The product was previously computed per-sample
+        // per-node-pair (~kOpsinNodes² × numSamples = 36×N multiplies per block) —
+        // caching it here eliminates all of those.
+        float effectiveWeights[kOpsinNodes][kOpsinNodes];
+        for (int i = 0; i < kOpsinNodes; ++i)
+            for (int j = 0; j < kOpsinNodes; ++j)
+                effectiveWeights[i][j] = synapseWeights[i][j] * smoothFeedback;
+
+        // Pre-compute 1/govCeiling — used per-sample per-node in the soft limiter.
+        // govCeiling is block-constant (clamp(rawGovCeiling, 0.05, 1.0) — minimum
+        // 0.05 so 1/x is bounded).
+        const float invGovCeiling = 1.0f / govCeiling;
+
         for (int s = 0; s < numSamples; ++s, ++sampleIdx)
         {
             // Update filter coefficients every 16 samples
@@ -848,14 +863,14 @@ public:
             {
                 PhotophoreNode& node = nodes[n];
 
-                // 1. Sum all incoming signals (other nodes via synapse matrix + coupling)
+                // 1. Sum all incoming signals (other nodes via synapse matrix + coupling).
+                // effectiveWeights = synapseWeights × smoothFeedback, cached per block above.
                 float sumInput = 0.0f;
                 for (int src = 0; src < kOpsinNodes; ++src)
                 {
                     if (src == n) continue;
-                    const float w = synapseWeights[n][src] * smoothFeedback;
                     const float readOut = readDelay(nodes[src], 0); // current output of src node
-                    sumInput += w * readOut;
+                    sumInput += effectiveWeights[n][src] * readOut;
                 }
                 sumInput = flushDenormal(sumInput);
 
@@ -920,9 +935,10 @@ public:
             }
 
             // ---- Per-node: soft limiter (Energy Governor, per-node) ----
+            // invGovCeiling precomputed above — replaces per-sample per-node divide.
             for (int n = 0; n < kOpsinNodes; ++n)
             {
-                nodeOutputs[n] = fastTanh(nodeOutputs[n] * govCeiling) / govCeiling;
+                nodeOutputs[n] = fastTanh(nodeOutputs[n] * govCeiling) * invGovCeiling;
                 nodeOutputs[n] = flushDenormal(nodeOutputs[n]);
             }
 
@@ -1007,10 +1023,15 @@ public:
         // Enforce spectral radius safety
         enforceSpectralRadius(0.95f);
 
-        // Decay coupling accumulators (prevent sticky values — lesson 10)
-        couplingFilterMod   *= 0.999f;
-        couplingFeedbackMod *= 0.999f;
-        couplingExciteMod   *= 0.999f;
+        // Decay coupling accumulators (prevent sticky values — lesson 10).
+        // Block-size-invariant: 0.999^blocksPerSecond gave wildly different
+        // time constants across DAW buffer sizes (11.6s @ 512/44.1k vs 0.33s
+        // @ 32/96k). Use fastExp on a fixed ~1-second time constant instead.
+        const float couplingDecayCoeff = fastExp(
+            -static_cast<float>(numSamples) / sampleRateFloat);
+        couplingFilterMod   *= couplingDecayCoeff;
+        couplingFeedbackMod *= couplingDecayCoeff;
+        couplingExciteMod   *= couplingDecayCoeff;
         couplingFilterMod    = flushDenormal(couplingFilterMod);
         couplingFeedbackMod  = flushDenormal(couplingFeedbackMod);
         couplingExciteMod    = flushDenormal(couplingExciteMod);
@@ -1461,8 +1482,10 @@ private:
     std::vector<float> outCacheL;
     std::vector<float> outCacheR;
 
-    // ---- Sample rate ----
-    float sampleRateFloat = 44100.0f;
+    // ---- Sample rate (set in prepare()) ----
+    // Do not default-init — must be set by prepare() on the live sample rate.
+    // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
+    float sampleRateFloat = 0.0f;
 
     //==========================================================================
     //  P A R A M E T E R   P O I N T E R S

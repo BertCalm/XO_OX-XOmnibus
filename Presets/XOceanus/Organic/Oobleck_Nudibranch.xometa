@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "name": "Nudibranch",
+  "mood": "Organic",
+  "engines": [
+    "Oobleck"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Alien beauty from dual-dot reaction patterns — slow Evolution LFO traces organic, morphing timbres with bandpass warmth.",
+  "tags": [
+    "oobleck",
+    "organic",
+    "alien",
+    "morphing",
+    "creature",
+    "bioluminescent"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.7,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Oobleck": {
+      "oobl_feed": 0.028,
+      "oobl_kill": 0.052,
+      "oobl_diffusion": 0.42,
+      "oobl_evolution": 55.0,
+      "oobl_persistence": 0.7,
+      "oobl_substrate": 0.6,
+      "oobl_temperature": 0.08,
+      "oobl_seed": 2,
+      "oobl_readout_mode": 1,
+      "oobl_field_bias": 0.25,
+      "oobl_fold": 0.35,
+      "oobl_filter_cutoff": 6500.0,
+      "oobl_filter_reso": 0.3,
+      "oobl_filter_type": 2,
+      "oobl_drive": 0.3,
+      "oobl_attack": 0.04,
+      "oobl_decay": 0.8,
+      "oobl_sustain": 0.65,
+      "oobl_release": 2.5,
+      "oobl_lfo_rate": 0.04,
+      "oobl_lfo_shape": 0,
+      "oobl_lfo_depth": 0.35,
+      "oobl_lfo_target": 2,
+      "oobl_reverb": 0.35,
+      "oobl_space_decay": 3.0,
+      "oobl_tune": 0,
+      "oobl_fine": 0.0,
+      "oobl_glide": 0.2,
+      "oobl_freeze": 0.0,
+      "oobl_macro1": 0.0,
+      "oobl_macro2": 0.0,
+      "oobl_macro3": 0.0,
+      "oobl_macro4": 0.0
+    }
+  },
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  }
+}

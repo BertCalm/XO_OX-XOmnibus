@@ -450,7 +450,6 @@ public:
 
         if (isSilenceGateBypassed())
         {
-            buffer.clear(0, numSamples);
             couplingCacheL = couplingCacheR = 0.0f;
             return;
         }
@@ -547,6 +546,9 @@ public:
         // P25: CAPTURE-THEN-ZERO — couplingFilterMod and couplingOrganMod consumed above;
         // couplingPitchMod is consumed inside the voice loop (added to bendSemitones per-voice).
         const float capturedPitchMod = couplingPitchMod;
+        // Snapshot pitch coupling before reset (#1118) — applyCouplingInput
+        // accumulators are consumed by the next block's renderBlock.
+        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingOrganMod = 0.0f;
@@ -589,9 +591,27 @@ public:
         // and avoids VLA semantics (kMaxVoices is constexpr, so this is fine either way).
         float voiceContribL[kMaxVoices];
         float voiceContribR[kMaxVoices];
+        // Hoist envelope setADSR + LFO config out of per-sample loop. Both are
+        // block-rate from knob values; setADSR does 2× std::exp per call and
+        // setRate does a divide — neither should run inside the sample loop.
+        for (auto& voice : voices)
+        {
+            if (!voice.active) continue;
+            voice.ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
+            voice.lfo1.setRate(lfo1Rate, srf);
+            voice.lfo1.setShape(lfo1Shape);
+            voice.lfo2.setRate(lfo2Rate, srf);
+            voice.lfo2.setShape(lfo2Shape);
+        }
+
+        // Hoist block-constant pitch-bend ratio out of per-sample loop; uses
+        // pre-reset pitch coupling snapshot (#1118).
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             float clusterNow = smoothCluster.process();
             float chiffNow = smoothChiff.process();
             float detuneNow = smoothDetune.process();
@@ -618,6 +638,9 @@ public:
                 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
 
                 // LFO processing — rate/shape hoisted to block-rate pre-loop (F03-fix)
+                freq *= blockBendRatio; // hoisted above (block-const bend + coupling snapshot)
+
+                // LFO setRate/setShape hoisted to per-block voice loop above.
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
@@ -841,12 +864,20 @@ public:
                 }
 
                 //--- Filter envelope (D001: velocity shapes timbre) ---
+                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f * voice.velocity;
                 // LFO1 modulates brightness (±3000 Hz at full depth)
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
                 // F01-fix: setMode is constant (LowPass) — hoisted to noteOn; use
                 // setCoefficients_fast() for modulated cutoff (avoids std::tan per-sample).
                 voice.svf.setCoefficients_fast(cutoff, 0.3f, srf);
+                if (updateFilter)
+                {
+                    // LFO1 modulates brightness (±3000 Hz at full depth)
+                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients(cutoff, 0.3f, srf);
+                }
                 float filtered = voice.svf.processSample(sample);
 
                 float output = filtered * ampLevel;
@@ -944,6 +975,11 @@ public:
         v.glide.snapTo(freq);
 
         // Amp envelope — F07-fix: prepare() already called in engine prepare(); skip here
+        // Amp envelope
+        // RT-fix: ampEnv.prepare() already called at engine prepare()-time for all
+        // voice slots (sets sr, computes coeffs).  srf does not change between notes,
+        // so calling prepare() here was a P3 lifecycle violation with zero benefit.
+        // setADSR() reconfigures in-place (no allocation); noteOn() triggers.
         float attackMultipliers[4] = {3.0f, 1.5f, 1.0f, 0.1f};
         float attackFloors[4] = {0.05f, 0.005f, 0.003f, 0.001f};
         float atkBase = paramAttack ? paramAttack->load() : 0.1f;
@@ -955,7 +991,8 @@ public:
         v.ampEnv.setADSR(effectiveAttack, decVal, susVal, relVal);
         v.ampEnv.noteOn();
 
-        // Filter envelope — F07-fix: prepare() already called in engine prepare(); skip here
+        // Filter envelope
+        // RT-fix: filterEnv.prepare() already called at engine prepare()-time.
         // Filter attack matches organ model character
         float filterAtk = (organModel == 0) ? 0.05f : 0.005f;
         float filterDec = (organModel == 0) ? 0.8f : 0.3f;
