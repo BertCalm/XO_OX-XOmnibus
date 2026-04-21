@@ -274,12 +274,16 @@ public:
     // targetGlideFreq is public — written by the adapter for Ocean Current drift (D004)
     float targetGlideFreq = 440.0f;
 
+    // velocity is read by the legato retrigger path in the adapter
+    float velocity = 0.0f;
+
 private:
     //==========================================================================
     float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
-    float invSr = 1.0f / sr; // overwritten by prepare()
+    // F04: invSr must NOT be initialised as 1/sr at declaration time (sr=0 → 1/0 = Inf/UB).
+    // Initialise to a safe value; prepare() will overwrite with the correct reciprocal.
+    float invSr = 1.0f / 44100.0f; // overwritten by prepare()
     float glideFreq = 0.0f;
-    float velocity = 0.0f;
     int voiceIdx = 0;
 };
 
