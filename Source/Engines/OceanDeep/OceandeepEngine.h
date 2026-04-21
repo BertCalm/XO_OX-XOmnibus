@@ -44,7 +44,7 @@ namespace xoceanus {
 //
 //  ~45 deep_ parameters — doctrine compliant D001–D006.
 //
-//  Parameter prefix: deep_   Engine ID: "Oceandeep"
+//  Parameter prefix: deep_   Engine ID: "OceanDeep"
 //
 //  SilenceGate: 500 ms hold (long bass tails).
 //
@@ -150,12 +150,16 @@ struct DeepWaveguideBody {
         float out = in + feedback * delayed;
         out = flushDenormal(out);
 
-        // For wreck mode: light allpass diffusion inside the comb
+        // For wreck mode: light allpass diffusion inside the comb.
+        // Standard Schroeder allpass: y[n] = -g*x[n] + x[n-D] + g*y[n-D]
+        // Equivalent one-delay form with in=out (already mixed): (SOUND-04 fix —
+        // previous nonlinear denom=1-g*out could clip when out≈1/g=3.33;
+        // correct linear allpass uses feedforward/feedback, never divides by signal)
         if (bodyChar == 2) {
             float g = 0.3f;
-            float denom = 1.f - g * out;
-            if (std::abs(denom) < 1e-6f) denom = 1e-6f;
-            out = (out - g * delayed) / denom;
+            // Allpass: forward = in + g*delayed, out = delayed - g*forward
+            float forward = in + g * delayed;
+            out = delayed - g * forward;
             out = flushDenormal(out);
         }
 
@@ -182,8 +186,22 @@ struct DeepBioExciter {
     float noiseState   = 0.f;   // pink-ish noise filter state
     bool  lfoWasHigh   = false; // edge detect for trigger
 
+    // Cached per-sample coefficients (PERF-01, PERF-02: computed in prepare(), not per-tick)
+    float burstDecay   = 0.f;   // fastExp(-8/sr) — 125 ms decay, SR-dependent
+    float bpCoeff      = 0.f;   // fastExp(-2π*fc/sr) — cached when bioBrightness or sr changes
+    float lastFc       = -1.f;  // tracks last bioBrightness for bpCoeff invalidation
+    float cachedSr     = 0.f;   // tracks last sample rate for coefficient invalidation
+
     // Reproducible noise — lcg updated per tick
     uint32_t rng = 0x1234ABCD;
+
+    // Called when sample rate changes (prepare). Recomputes SR-dependent coefficients.
+    void prepare(float sr) {
+        burstDecay = fastExp(-8.0f / sr); // ~125 ms decay at any sample rate
+        cachedSr   = sr;
+        lastFc     = -1.f; // invalidate bpCoeff so it recomputes on next tick
+        reset();
+    }
 
     void reset() {
         lfoPhase = burstEnv = bpState1 = bpState2 = noiseState = 0.f;
@@ -214,8 +232,7 @@ struct DeepBioExciter {
         }
         lfoWasHigh = lfoHigh;
 
-        // Burst envelope — fast attack (already triggered), exponential decay
-        float burstDecay = fastExp(-8.0f / sr); // ~125 ms decay at 44100
+        // Burst envelope — use SR-cached decay coefficient (PERF-01)
         burstEnv *= burstDecay;
         burstEnv = flushDenormal(burstEnv);
 
@@ -227,13 +244,16 @@ struct DeepBioExciter {
         noiseState = flushDenormal(noiseState);
         noise = noise - noiseState; // high-shelf tilt
 
-        // 2-pole bandpass filter (State Variable Filter, topology: HP → LP)
-        // Using simple matched-Z 2-pole BPF via sequential one-poles
-        float fc    = clamp(bioBrightness, 50.f, sr * 0.45f);
-        float coeff = fastExp(-6.2831853f * fc / sr);
+        // 2-pole bandpass filter — recompute coefficient only when bioBrightness changes
+        // (PERF-02: avoids fastExp() every sample when bioBrightness is static)
+        float fc = clamp(bioBrightness, 50.f, sr * 0.45f);
+        if (fc != lastFc) {
+            bpCoeff = fastExp(-6.2831853f * fc / sr);
+            lastFc  = fc;
+        }
 
-        bpState1 = bpState1 * coeff + noise * (1.f - coeff);
-        bpState2 = bpState2 * coeff + bpState1 * (1.f - coeff);
+        bpState1 = bpState1 * bpCoeff + noise * (1.f - bpCoeff);
+        bpState2 = bpState2 * bpCoeff + bpState1 * (1.f - bpCoeff);
         bpState1 = flushDenormal(bpState1);
         bpState2 = flushDenormal(bpState2);
         float bp  = bpState1 - bpState2; // approximate bandpass
@@ -465,9 +485,9 @@ public:
 
         // --- Amp envelope ---
         params.push_back(std::make_unique<PF>(P("deep_ampAtk",1),      "Amp Attack",
-            nr(0.001f, 0.5f), 0.01f));
+            nr(0.001f, 2.0f), 0.01f));  // PARAMS-03: extended to 2s for swell basses
         params.push_back(std::make_unique<PF>(P("deep_ampDec",1),      "Amp Decay",
-            nr(0.1f,  5.0f),  0.5f));
+            nr(0.01f, 5.0f),  0.5f));  // PARAMS-04: min lowered to 0.01s for percussive hits
         params.push_back(std::make_unique<PF>(P("deep_ampSus",1),      "Amp Sustain",
             nr(0.f, 1.f), 0.8f));
         params.push_back(std::make_unique<PF>(P("deep_ampRel",1),      "Amp Release",
@@ -475,7 +495,7 @@ public:
 
         // --- LFO 1: creature modulation ---
         params.push_back(std::make_unique<PF>(P("deep_lfo1Rate",1),    "LFO1 Rate",
-            nr(0.01f, 2.0f), 0.15f));
+            nr(0.01f, 8.0f), 0.15f));  // PARAMS-05: extended to 8 Hz for tremolo-rate creature mod
         params.push_back(std::make_unique<PF>(P("deep_lfo1Depth",1),   "LFO1 Depth",
             nr(0.f, 1.f), 0.3f));
 
@@ -519,8 +539,10 @@ public:
     juce::Colour   getAccentColour() const override { return juce::Colour(0xff2D0A4E); }
     int            getMaxVoices()    const override { return 1; } // monophonic bass engine
 
+    // VOICES-01: read from activeVoiceCount_ atomic (written on audio thread in renderBlock)
+    // to avoid racing with non-atomic noteIsOn / ampEnvStage reads from the UI thread.
     int getActiveVoiceCount() const override {
-        return (noteIsOn || ampEnvStage != EnvStage::Idle) ? 1 : 0;
+        return activeVoiceCount_.load(std::memory_order_relaxed);
     }
 
     //--------------------------------------------------------------------------
@@ -533,12 +555,17 @@ public:
         oscSub2.prepare(sampleRate);
         compressor.reset();
         body.prepare(sampleRate);
-        bioExciter.reset();
+        bioExciter.prepare((float)sampleRate); // PERF-01/PERF-02: caches burstDecay + invalidates bpCoeff
         darknessFilter.reset();
         reverb.prepare(sampleRate);
 
-        ampEnvStage = EnvStage::Idle;
-        ampEnvLevel = 0.f;
+        ampEnvStage    = EnvStage::Idle;
+        ampEnvLevel    = 0.f;
+        // STABILITY-01: reset filter envelope state on SR change / plugin reload
+        filterEnvStage = EnvStage::Idle;
+        filterEnvLevel = 0.f;
+        // STABILITY-02: reset pitch bend on SR change / plugin reload
+        pitchBendVal   = 0.f;
         noteIsOn    = false;
         currentNote = 60;
         currentVel  = 1.f;
@@ -546,6 +573,10 @@ public:
         lfo2.reset();
         modWheelVal = 0.f;
         aftertouchVal= 0.f;
+
+        // PERF-04: precompute hardcoded compressor time constants once here
+        compAtkCoeff = smoothCoeffFromTime(0.005f, sr); // 5ms attack
+        compRelCoeff = smoothCoeffFromTime(0.100f, sr); // 100ms release
 
         prepareSilenceGate(sampleRate, maxBlockSize, 500.f);
         (void)maxBlockSize;
@@ -564,8 +595,11 @@ public:
         darknessFilter.reset();
         reverb.reset();
 
-        ampEnvStage = EnvStage::Idle;
-        ampEnvLevel = 0.f;
+        ampEnvStage    = EnvStage::Idle;
+        ampEnvLevel    = 0.f;
+        filterEnvStage = EnvStage::Idle; // STABILITY-01: reset filter envelope in reset()
+        filterEnvLevel = 0.f;
+        pitchBendVal   = 0.f;            // STABILITY-02: reset pitch bend in reset()
         noteIsOn    = false;
         lfo1.reset();
         lfo2.reset();
@@ -667,6 +701,10 @@ public:
             }
         }
 
+        // Update activeVoiceCount_ via atomic for safe UI-thread reads (VOICES-01)
+        activeVoiceCount_.store((noteIsOn || ampEnvStage != EnvStage::Idle) ? 1 : 0,
+                                std::memory_order_relaxed);
+
         // 2. Check SilenceGate bypass
         if (isSilenceGateBypassed()) {
             buffer.clear();
@@ -764,9 +802,9 @@ public:
         const float fDecCoeff = smoothCoeffFromTime(filterD, sr);
         const float fRelCoeff = smoothCoeffFromTime(filterR, sr);
 
-        // Compressor one-pole coefficients
-        const float compAtk  = smoothCoeffFromTime(0.005f, sr); // 5ms attack
-        const float compRel  = smoothCoeffFromTime(0.100f, sr); // 100ms release
+        // Compressor one-pole coefficients — use cached values (PERF-04)
+        const float compAtk  = compAtkCoeff;
+        const float compRel  = compRelCoeff;
 
         float* L = buffer.getWritePointer(0);
         float* R = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : L;
@@ -854,8 +892,9 @@ public:
             float withBody   = mixedSignal * (1.f - effectiveBodyMix) + bodySample * effectiveBodyMix;
 
             // --- Hydrostatic compressor ---
-            // LFO2 creates subtle pressure variation (underwater breathing)
-            float dynamicPressure = clamp(totalPressure + lfo2Out * lfo2Depth * 0.15f, 0.f, 1.f);
+            // LFO2 creates subtle pressure variation (underwater breathing).
+            // lfo2Out = lfo2Val * lfo2Depth — do not multiply lfo2Depth again (SOUND-01 fix).
+            float dynamicPressure = clamp(totalPressure + lfo2Out * 0.15f, 0.f, 1.f);
             float compressed      = compressor.process(withBody, dynamicPressure, compAtk, compRel);
 
             // --- Independent filter ADSR (Week 12 — parametric) ---
@@ -915,8 +954,6 @@ public:
             // Write stereo (mono source spread to both channels)
             L[n] = output;
             R[n] = output;
-
-            lastOutputSample = output;
         }
 
         // --- Block-level reverb processing ---
@@ -924,12 +961,18 @@ public:
         // for this type of dense-room tail; no per-sample aliasing concern).
         for (int n = 0; n < numSamples; ++n) {
             float l = L[n], r = R[n];
-            // Slight stereo spread: invert a fraction of R for width
-            float lIn = l, rIn = r * 0.97f + l * 0.03f;
+            // Slight stereo spread: add a small L→R bleed for width (SOUND-06:
+            // L and R are identical mono; 0.03 bleed is vestigial but harmless)
+            float lIn = l, rIn = l * 0.97f + r * 0.03f;
             reverb.process(lIn, rIn, macroAbyss, effectiveReverb);
             L[n] = lIn;
             R[n] = rIn;
         }
+
+        // COUPLING-02: update lastOutputSample from post-reverb output so coupled
+        // engines receive the fully processed signal (was set before reverb pass)
+        if (numSamples > 0)
+            lastOutputSample = L[numSamples - 1];
 
         // 4. Feed SilenceGate analyzer
         analyzeForSilenceGate(buffer, numSamples);
@@ -972,6 +1015,11 @@ private:
     // Expression
     float modWheelVal   = 0.f;
     float aftertouchVal = 0.f;
+
+    // Cached compressor coefficients — hardcoded 5ms/100ms, computed once in prepare()
+    // (PERF-04: avoids recomputing smoothCoeffFromTime with constant args each block)
+    float compAtkCoeff = 1.f;
+    float compRelCoeff = 1.f;
 
     // Coupling modulation (consumed each block)
     float couplingFilterMod = 0.f;
