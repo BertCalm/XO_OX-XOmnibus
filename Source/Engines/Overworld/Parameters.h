@@ -216,6 +216,11 @@ struct ParamSnapshot
 
     // Drum mode
     bool drumMode = false;
+
+    // Pitch expression (populated by OverworldEngine from pitchBendNorm + mod matrix)
+    // Units: semitones, applied as a freq multiplier in VoicePool::applyParams().
+    // FIX-S4: was missing — pitch wheel only affected filter cutoff, not chip oscillators.
+    float pitchBendSemitones = 0.0f;
 };
 
 //------------------------------------------------------------------------------
@@ -334,11 +339,15 @@ inline void addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter
     params.push_back(std::make_unique<P>(PI{ParamID::CRUSH_MIX, 1}, "Crush Mix", NR(0.f, 1.f, 0.001f), 0.0f));
 
     // Game Boy
-    params.push_back(std::make_unique<P>(PI{ParamID::GB_WAVE_SLOT, 1}, "GB Wave Slot", NR(0.f, 31.f, 1.f), 0.0f));
+    // FIX-PA1: range was 0-31 but ChipWavetables::gb has only 8 slots (0-7).
+    // Corrected upper bound to 7 to match the wavetable array bounds.
+    params.push_back(std::make_unique<P>(PI{ParamID::GB_WAVE_SLOT, 1}, "GB Wave Slot", NR(0.f, 7.f, 1.f), 0.0f));
     params.push_back(std::make_unique<P>(PI{ParamID::GB_PULSE_DUTY, 1}, "GB Pulse Duty", NR(0.f, 3.f, 1.f), 2.0f));
 
     // PC Engine
-    params.push_back(std::make_unique<P>(PI{ParamID::PCE_WAVE_SLOT, 1}, "PCE Wave Slot", NR(0.f, 31.f, 1.f), 0.0f));
+    // FIX-PA2: range was 0-31 but ChipWavetables::pce has only 8 slots (0-7).
+    // Corrected upper bound to 7 to match the wavetable array bounds.
+    params.push_back(std::make_unique<P>(PI{ParamID::PCE_WAVE_SLOT, 1}, "PCE Wave Slot", NR(0.f, 7.f, 1.f), 0.0f));
 }
 
 // createParameterLayout() removed — dead wrapper. Use addParameters() directly.
