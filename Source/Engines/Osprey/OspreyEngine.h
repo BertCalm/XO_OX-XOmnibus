@@ -381,12 +381,8 @@ struct FluidEnergyModel
         randomState = randomState * 1664525u + 1013904223u;
         return static_cast<float>(randomState & 0xFFFF) / 32768.0f - 1.0f; // [-1, +1]
     }
-
-    float nextRandomUnipolar() noexcept
-    {
-        randomState = randomState * 1664525u + 1013904223u;
-        return static_cast<float>(randomState & 0xFFFF) / 65536.0f; // [0, 1)
-    }
+    // nextRandomUnipolar removed: FluidEnergyModel only uses bipolar noise.
+    // Dead code risked confusion about which PRNG calls advance randomState.
 
     float process(float seaState, float swellPeriod, const FluidCharacter& fluid, float sampleRate) noexcept
     {
@@ -435,9 +431,13 @@ struct FluidEnergyModel
 
             for (int octave = 0; octave < kTurbulenceOctaves; ++octave)
             {
-                // Smooth random walk: one-pole lowpass on white noise
+                // Smooth random walk: one-pole lowpass on white noise.
+                // Matched-Z coefficient: 1 - exp(-2π·fc/sr). The previous
+                // Euler approximation (fc/sr) severely under-estimated the
+                // response at these sub-Hz frequencies, making the cascade
+                // nearly inaudible. Matched-Z gives correct time-constants.
                 float target = nextRandomBipolar();
-                float smoothingRate = kOctaveFrequencies[octave] / sampleRate;
+                float smoothingRate = 1.0f - fastExp(-6.28318f * kOctaveFrequencies[octave] / sampleRate);
                 turbulenceState[octave] += (target - turbulenceState[octave]) * smoothingRate;
                 // Flush denormals in the random walk state to prevent CPU
                 // spikes from subnormal arithmetic in this feedback path.
@@ -803,7 +803,8 @@ public:
         const float pDepth = loadParam(paramDepth, 0.3f);
 
         // --- Resonator parameters ---
-        float pResonatorBright = loadParam(paramResonatorBright, 0.5f);
+        // Note: effectiveResonatorBright (non-const) — LFO2 modulation applied below.
+        float effectiveResonatorBright = loadParam(paramResonatorBright, 0.5f);
         const float pResonatorDecay = loadParam(paramResonatorDecay, 1.0f);
         const float pSympathyAmount = loadParam(paramSympathyAmount, 0.3f);
 
@@ -884,7 +885,7 @@ public:
         // D002: Apply LFO2 brightness modulation to resonator brightness parameter.
         // This creates timbral shimmer — the resonant body's brightness slowly morphs
         // as if light is moving across the instrument's surface.
-        pResonatorBright = clamp(pResonatorBright + brightnessLfoMod, 0.0f, 1.0f);
+        effectiveResonatorBright = clamp(effectiveResonatorBright + brightnessLfoMod, 0.0f, 1.0f);
 
         // =================================================================
         //  Shore morphing: decompose continuous shore position into
@@ -909,8 +910,11 @@ public:
         //  and reset for next block.
         // =================================================================
 
-        float excitationMod = couplingExcitationMod;
-        float pitchMod = couplingPitchMod;
+        // Clamp accumulators before consuming: multiple AudioToFM / LFOToPitch
+        // sources can accumulate additively per block. Clamping here prevents
+        // runaway excitation that would drive the resonators into instability.
+        float excitationMod = clamp(couplingExcitationMod, -2.0f, 2.0f);
+        float pitchMod = clamp(couplingPitchMod, -1.0f, 1.0f);
         bool audioReplace = couplingAudioReplaceActive;
         float audioReplaceVal = couplingAudioReplaceLevel;
 
@@ -1000,7 +1004,7 @@ public:
                 silenceGate.wake();
                 handleNoteOn(msg.getNoteNumber(), msg.getFloatVelocity(), pAmpAttack, pAmpDecay, pAmpSustain,
                              pAmpRelease, morphedResonators, morphedCreatures, morphedFluid, effectiveSeaState,
-                             pResonatorBright, pResonatorDecay, pCreatureRate, pVoiceMode, pGlideTime);
+                             effectiveResonatorBright, pResonatorDecay, pCreatureRate, pVoiceMode, pGlideTime);
             }
             else if (msg.isNoteOff())
             {
@@ -1072,6 +1076,8 @@ public:
                     continue;
 
                 // --- Voice-stealing crossfade (5ms linear ramp) ---
+                // Fade-out: existing stolen voice decrements to silence then dies.
+                // Fade-in: new note on a stolen slot starts at 0, increments to 1.
                 if (voice.fadingOut)
                 {
                     voice.fadeGain -= crossfadeRate;
@@ -1081,6 +1087,10 @@ public:
                         voice.active = false;
                         continue;
                     }
+                }
+                else if (voice.fadeGain < 1.0f)
+                {
+                    voice.fadeGain = std::min(voice.fadeGain + crossfadeRate, 1.0f);
                 }
 
                 // --- Glide (portamento) ---
@@ -1132,9 +1142,9 @@ public:
                             // slightly attenuate lower formants (indices 0,1)
                             float formantGain = profile.formantGains[formantIndex];
                             if (formantIndex >= 2)
-                                formantGain *= (0.5f + pResonatorBright * 1.0f);
+                                formantGain *= (0.5f + effectiveResonatorBright * 1.0f);
                             else
-                                formantGain *= (1.0f - pResonatorBright * 0.3f);
+                                formantGain *= (1.0f - effectiveResonatorBright * 0.3f);
 
                             // Wind direction shifts spectral energy distribution.
                             // windShift [-1,+1]: negative = energy toward low formants,
@@ -1260,9 +1270,11 @@ public:
                     }
                 }
 
-                // Normalize resonator output. 1/6 approximates 1/sqrt(16)
-                // which is the theoretical normalization for summing 16
-                // uncorrelated signals to maintain consistent output level.
+                // Normalize resonator output. 1/sqrt(16) = 0.25 is the
+                // theoretical RMS normalization for summing 16 uncorrelated
+                // signals to maintain consistent output level. 1/6 ≈ 0.167
+                // is empirically tuned (lower to avoid overdrive into the
+                // soft limiter, since the resonators are correlated in practice).
                 static constexpr float kResonatorNormalization = 1.0f / 6.0f;
                 voiceOutput = resonatorSum * kResonatorNormalization;
 
@@ -1279,9 +1291,10 @@ public:
                 // --- DC Blocker (1-pole highpass at ~5Hz) ---
                 // Removes DC offset that can accumulate from asymmetric
                 // excitation patterns and creature formant filtering.
-                // The coefficient 0.9975 places the -3dB point at ~5Hz
-                // at 44.1kHz: f = (1-R) * sr / (2*pi) where R=0.9975.
-                static constexpr float kDcBlockerCoefficient = 0.9975f;
+                // Coefficient derived as R = 1 - 2π·fc/sr so the -3dB
+                // point stays at 5 Hz regardless of sample rate (96kHz
+                // hardcoded 0.9975 would bleed to ~11Hz — audible artefact).
+                const float kDcBlockerCoefficient = 1.0f - (6.28318f * 5.0f / sampleRateFloat);
                 float dcInput = voiceOutput;
                 float dcOutput = dcInput - voice.dcPreviousInputL + kDcBlockerCoefficient * voice.dcPreviousOutputL;
                 voice.dcPreviousInputL = dcInput;
@@ -1655,10 +1668,10 @@ public:
 
         // --- D002: LFO Shape + Second LFO ---
         // LFO1 shape: selects waveform for the existing sea state LFO (was sine-only).
-        // 0=Sine, 1=Triangle, 2=Saw, 3=Square, 4=S&H
-        params.push_back(
-            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osprey_lfo1Shape", 1}, "Osprey LFO1 Shape",
-                                                        juce::NormalisableRange<float>(0.0f, 4.0f, 1.0f), 0.0f));
+        // AudioParameterChoice (not Float) so DAWs render it as a discrete selector.
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID{"osprey_lfo1Shape", 1}, "Osprey LFO1 Shape",
+            juce::StringArray{"Sine", "Triangle", "Saw", "Square", "S&H"}, 0));
 
         // LFO2: secondary modulator targeting resonator brightness.
         // Rate: 0.01-8 Hz (slow shimmer to fast tremolo). Depth: 0-1.
@@ -1668,9 +1681,10 @@ public:
         params.push_back(
             std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osprey_lfo2Depth", 1}, "Osprey LFO2 Depth",
                                                         juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.0f));
-        params.push_back(
-            std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"osprey_lfo2Shape", 1}, "Osprey LFO2 Shape",
-                                                        juce::NormalisableRange<float>(0.0f, 4.0f, 1.0f), 1.0f));
+        // AudioParameterChoice (not Float) so DAWs render it as a discrete selector.
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID{"osprey_lfo2Shape", 1}, "Osprey LFO2 Shape",
+            juce::StringArray{"Sine", "Triangle", "Saw", "Square", "S&H"}, 1));
     }
 
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
@@ -1776,7 +1790,11 @@ private:
                     v.amplitudeEnvelope.stage != StandardADSR::Stage::Idle)
                 {
                     v.noteNumber = noteNumber;
-                    v.velocity = velocity;
+                    // Do not update velocity in legato mode — changing it mid-note
+                    // causes an abrupt volume jump since voiceGain = env * velocity.
+                    // True legato slides pitch only; the playing voice's amplitude
+                    // context (velocity, envelope level) continues uninterrupted.
+                    // v.velocity = velocity;  // intentionally omitted for legato
                     v.targetFrequency = frequency;
 
                     // Compute glide coefficient from user glide time.
@@ -1797,6 +1815,23 @@ private:
         }
 
         // -----------------------------------------------------------------------
+        // Mono voice mode (voiceMode == 1): release all other active voices
+        // before allocating the new note. This ensures only one voice plays at
+        // a time, with the amplitude envelope retriggerring on each new note.
+        // (Previously Mono fell through to the same path as Poly — it was silent
+        // missing feature: up to 8 voices played simultaneously in "Mono" mode.)
+        // -----------------------------------------------------------------------
+        if (voiceMode == 1)
+        {
+            for (int i = 0; i < kMaxVoices; ++i)
+            {
+                auto& v = voices[static_cast<size_t>(i)];
+                if (v.active && !v.fadingOut)
+                    v.amplitudeEnvelope.noteOff();
+            }
+        }
+
+        // -----------------------------------------------------------------------
         // Normal (Poly / Mono) voice allocation
         // -----------------------------------------------------------------------
 
@@ -1804,18 +1839,22 @@ private:
         int voiceIndex = findFreeVoice();
         auto& voice = voices[static_cast<size_t>(voiceIndex)];
 
-        // If stealing an active voice, initiate 5ms crossfade and reset
-        // glide state so the new note doesn't portamento from a stale pitch.
-        if (voice.active)
-        {
-            voice.fadingOut = true;
-            voice.fadeGain = std::min(voice.fadeGain, 0.5f);
-            voice.currentGlideFrequency = frequency; // snap: no portamento from stolen voice's last pitch
-        }
+        // If stealing an active voice, record whether a steal is happening so
+        // initializeVoice can start the new note at fadeGain=0 (fade-in).
+        // Previously, fadingOut=true was set here but immediately overwritten to
+        // false by initializeVoice(), so the crossfade never ran — stealing a busy
+        // voice caused an abrupt cut. Starting the new note at 0 and ramping to 1
+        // over 5ms prevents the click on the incoming note instead.
+        bool stealing = voice.active;
 
         initializeVoice(voice, noteNumber, velocity, frequency, ampAttack, ampDecay, ampSustain, ampRelease,
                         morphedResonators, morphedCreatures, morphedFluid, seaState, resonatorBrightness,
                         resonatorDecay, creatureRate, glideTimeSec);
+
+        // Apply fade-in after initializeVoice sets fadeGain=1.0 — ramp from 0
+        // to prevent click on the stolen voice slot.
+        if (stealing)
+            voice.fadeGain = 0.0f;
     }
 
     void initializeVoice(OspreyVoice& voice, int noteNumber, float velocity, float frequency, float ampAttack,
