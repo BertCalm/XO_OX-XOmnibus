@@ -61,6 +61,10 @@ public:
         extStepRateMod = extChromMod = extSynapseMod = extFilterMod = extPitchMod = 0.0f;
         extAmpMod = 1.0f;
         lastSampleL = lastSampleR = 0.0f;
+        denStereoState = 0.0f;
+        // Den stereo decorrelation: one-pole LP at ~30 Hz, sample-rate compensated.
+        // 0.93f was a 44.1 kHz magic number; derive it properly here.
+        denStereoCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * 30.0f / static_cast<float>(sampleRate));
         activeVoiceCount_.store(0, std::memory_order_relaxed);
     }
 
@@ -83,6 +87,8 @@ public:
         extStepRateMod = extChromMod = extSynapseMod = extFilterMod = extPitchMod = 0.0f;
         extAmpMod = 1.0f;
         lastSampleL = lastSampleR = 0.0f;
+        denStereoState = 0.0f;
+        denStereoCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * 30.0f / static_cast<float>(sr));
         activeVoiceCount_.store(0, std::memory_order_relaxed);
     }
 
@@ -99,6 +105,16 @@ public:
 
         // 1. Cache parameters once per block
         snap.update();
+
+        // Reset per-block coupling state so stale values don't persist when
+        // coupling is disconnected. applyCouplingInput() will re-populate these
+        // before audio runs if a connection is active this block.
+        extStepRateMod = 0.0f;
+        extChromMod = 0.0f;
+        extSynapseMod = 0.0f;
+        extFilterMod = 0.0f;
+        extPitchMod = 0.0f;
+        extAmpMod = 1.0f; // multiplicative identity
 
         // 2. LFO computation (once per block at block midpoint)
         float invSr = 1.0f / static_cast<float>(sr);
@@ -266,7 +282,8 @@ public:
 
         if (silenceGate.isBypassed() && midi.isEmpty())
         {
-            buf.clear();
+            // Engine accumulates into buf (+=); do NOT clear — other engines may have
+            // already written their contributions. Just skip our render.
             return;
         }
 
@@ -329,7 +346,7 @@ public:
             extChromMod = amount * 0.7f;
             break;
         case CouplingType::LFOToPitch:
-            extPitchMod = (buf ? buf[0] : 0.f) * amount * 12.0f; // ±12 semitones
+            extPitchMod += (buf ? buf[0] : 0.f) * amount * 12.0f; // ±12 semitones (accumulate)
             break;
         case CouplingType::RhythmToBlend:
             // Engine A rhythm pattern → synapse coupling
@@ -401,6 +418,9 @@ public:
         // Global: Step/Clock
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             "owit_stepRate", "Step Rate", juce::NormalisableRange<float>(0.01f, 40.0f, 0.0f, 0.4f), 4.0f));
+        // TODO(stepSync): owit_stepSync and owit_stepDiv are registered but not yet wired into
+        // the DSP path. Implementing host-sync requires PlayHead BPM from the processor context.
+        // Until then these params are visible in the UI but have no audio effect.
         params.push_back(std::make_unique<juce::AudioParameterBool>("owit_stepSync", "Step Sync", false));
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
             "owit_stepDiv", "Step Division",
@@ -550,8 +570,9 @@ private:
     float aftertouchValue = 0.0f;
 
     float lastSampleL = 0.0f, lastSampleR = 0.0f;
-    // DSP Fix Wave 2B: Den reverb stereo decorrelation state
+    // Den reverb stereo decorrelation state + sample-rate-derived coefficient
     float denStereoState = 0.0f;
+    float denStereoCoeff = 0.004f; // 1-exp(-2π·30/44100); overwritten in prepare()
 
     // Coupling ext mods
     float extStepRateMod = 0.0f; // AudioToFM → step rate
@@ -736,8 +757,9 @@ private:
         float dry = 1.0f - modDenMix;
         float wetGain = modDenMix * 0.7f;
         float wetMono = denReverb.process((mixL + mixR) * 0.5f);
-        // Pseudo-stereo: allpass decorrelation using a tiny delay difference
-        denStereoState = flushDenormal(denStereoState * 0.93f + wetMono * 0.07f);
+        // Pseudo-stereo: one-pole LP decorrelation — coefficient computed in prepare()
+        // so the decorrelation time is consistent across sample rates.
+        denStereoState = flushDenormal(denStereoState + denStereoCoeff * (wetMono - denStereoState));
         float wetL = wetMono;
         float wetR = denStereoState; // slightly decorrelated from left
         outL = mixL * dry + wetL * wetGain;

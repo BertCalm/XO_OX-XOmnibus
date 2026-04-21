@@ -29,13 +29,21 @@ class InkCloud
 public:
     //--------------------------------------------------------------------------
     // Called once per block (renderBlock) with current sampleRate + inkDecay param.
-    // inkDecay [0.01, 0.5]: shorter = snappier burst
+    // inkDecay [0.01, 0.5]: shorter = snappier burst.
+    // Recomputes coefficients only when parameters change to avoid per-block fastExp().
     void prepare(double sampleRate, float inkDecay) noexcept
     {
-        sr = static_cast<float>(sampleRate);
-        decayTime = std::clamp(inkDecay, 0.001f, 1.0f);
+        float newSr = static_cast<float>(sampleRate);
+        float newDecay = std::clamp(inkDecay, 0.001f, 1.0f);
+        if (newSr == sr && newDecay == decayTime)
+            return; // no change — skip recompute
+        sr = newSr;
+        decayTime = newDecay;
         // Recompute decay coeff: exp(-1 / (decayTime * sr))
         decayCoeff = xoutwit::fastExp(-1.0f / (decayTime * sr));
+        // LP coeff for dark ink character: 500 Hz one-pole, sample-rate compensated.
+        // Replaces hardcoded 0.15f which was only valid at 44.1 kHz.
+        lpCoeff = 1.0f - xoutwit::fastExp(-2.0f * 3.14159265f * 500.0f / sr);
     }
 
     //--------------------------------------------------------------------------
@@ -64,8 +72,8 @@ public:
         lfsr ^= lfsr << 5;
         float noise = static_cast<float>((int32_t)lfsr) * 4.656612e-10f;
 
-        // One-pole LP (dark ink character — muffled burst)
-        lpState = lpState + 0.15f * (noise - lpState);
+        // One-pole LP (dark ink character — muffled burst, ~500 Hz cutoff)
+        lpState = lpState + lpCoeff * (noise - lpState);
         lpState = xoutwit::flushDenormal(lpState);
 
         float out = lpState * envelope;
@@ -84,6 +92,7 @@ private:
     float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float decayTime = 0.08f;
     float decayCoeff = 0.99f;
+    float lpCoeff = 0.0709f; // 1-exp(-2π·500/44100); overwritten in prepare()
     float envelope = 0.0f;
     float lpState = 0.0f;
 

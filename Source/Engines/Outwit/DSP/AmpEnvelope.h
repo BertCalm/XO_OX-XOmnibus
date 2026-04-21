@@ -38,13 +38,21 @@ public:
     }
 
     //--------------------------------------------------------------------------
-    // Call once per block (after snap.update())
+    // Call once per block (after snap.update()).
+    // computeCoefficients() is skipped when params are unchanged to avoid
+    // unnecessary fastExp() calls on every block.
     void setParams(float attackSec, float decaySec, float sustainLevel, float releaseSec) noexcept
     {
-        attack = std::max(0.001f, attackSec);
-        decay = std::max(0.001f, decaySec);
-        sustain = std::clamp(sustainLevel, 0.0f, 1.0f);
-        release = std::max(0.001f, releaseSec);
+        float a = std::max(0.001f, attackSec);
+        float d = std::max(0.001f, decaySec);
+        float s = std::clamp(sustainLevel, 0.0f, 1.0f);
+        float r = std::max(0.001f, releaseSec);
+        if (a == attack && d == decay && s == sustain && r == release)
+            return; // no change — skip recompute
+        attack = a;
+        decay = d;
+        sustain = s;
+        release = r;
         computeCoefficients();
     }
 
@@ -133,14 +141,13 @@ private:
 
     void computeCoefficients() noexcept
     {
-        // Matched-Z: coeff = exp(-1 / (time * sr))
-        // Using fastExp for consistency with the rest of the fleet
-        attackCoeff = xoutwit::fastExp(-1.0f / (attack * sr));
-        attackCoeff = 1.0f - attackCoeff; // one-pole ramp-up coeff
-        decayCoeff = xoutwit::fastExp(-1.0f / (decay * sr));
-        decayCoeff = decayCoeff - 1.0f; // negative: ramps down to sustain
-        releaseCoeff = xoutwit::fastExp(-1.0f / (release * sr));
-        releaseCoeff = releaseCoeff - 1.0f; // negative: ramps down to zero
+        // Matched-Z: coeff = 1 - exp(-1 / (time * sr))
+        // One-pole convergence: level += coeff * (target - level)
+        // All coefficients must be positive (0, 1) for correct convergence.
+        // Using fastExp for consistency with the rest of the fleet.
+        attackCoeff = 1.0f - xoutwit::fastExp(-1.0f / (attack * sr));
+        decayCoeff = 1.0f - xoutwit::fastExp(-1.0f / (decay * sr));
+        releaseCoeff = 1.0f - xoutwit::fastExp(-1.0f / (release * sr));
     }
 };
 
