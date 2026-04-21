@@ -101,18 +101,13 @@ struct OozeVoice
     xoceanus::GlideProcessor glide;
 
     // ── Coupling & voice management ──────────────────────────────────────────
-    float    lastCouplingOut = 0.0f;
+    float lastCouplingOut = 0.0f;
 
     // Voice stealing crossfade
     float crossfadeGain = 1.0f;
     float crossfadeRate = 0.0f;
 
-    // Monotonic steal-age counter — higher means older, should be stolen first.
-    uint32_t stealAge = 0;
-
     // ── Per-voice LCG noise generator ───────────────────────────────────────
-    // Seed is set per-voice by index in reset() to prevent all voices producing
-    // the same noise pattern on their first note (P-NOISESEED-SHARED).
     uint32_t noiseState = 12345u;
 
     float nextNoise() noexcept
@@ -122,9 +117,7 @@ struct OozeVoice
     }
 
     // ── reset ────────────────────────────────────────────────────────────────
-    // voiceIndex used to diverge noise seeds so all 8 voices don't produce
-    // identical noise patterns on their first note (P-NOISESEED-SHARED).
-    void reset(double sampleRate, int voiceIndex = 0) noexcept
+    void reset(double sampleRate) noexcept
     {
         active = false; releasing = false; midiNote = -1;
         velocity = 0.0f; frequency = 440.0f; targetFrequency = 440.0f;
@@ -139,9 +132,6 @@ struct OozeVoice
         bubblePhase = 0.0f; bubbleAmplitude = 0.0f; bubbleTimer = 0.0f;
         crossfadeGain = 1.0f; crossfadeRate = 0.0f;
         lastCouplingOut = 0.0f;
-        stealAge = 0;
-        // Per-voice seed to ensure decorrelated noise across voices.
-        noiseState = 12345u ^ static_cast<uint32_t>(voiceIndex * 2654435761u);
         ampEnv.reset(); lfo.reset();
         outputFilterL.reset(); outputFilterR.reset();
         dcBlockerL.prepare(sampleRate);
@@ -625,8 +615,8 @@ public:
         currentSampleRate_ = sampleRate;
         maxBlockSize_      = maxBlockSize;
 
-        for (int i = 0; i < kMaxVoices; ++i)
-            voices_[i].reset(sampleRate, i);
+        for (auto& v : voices_)
+            v.reset(sampleRate);
 
         fdn_.prepare(sampleRate, maxBlockSize);
         engineDCBlockerL_.prepare(sampleRate);
@@ -657,8 +647,8 @@ public:
     // -------------------------------------------------------------------------
     void reset() override
     {
-        for (int i = 0; i < kMaxVoices; ++i)
-            voices_[i].reset(currentSampleRate_, i);
+        for (auto& v : voices_)
+            v.reset(currentSampleRate_);
         fdn_.reset();
         engineDCBlockerL_.prepare(currentSampleRate_);
         engineDCBlockerR_.prepare(currentSampleRate_);
@@ -770,9 +760,6 @@ public:
             std::fill(outR, outR + numSamples, 0.0f);
 
         // ── Step 9: Render each active voice ──────────────────────────────────
-        // Hoist sample-rate cast once per block — avoids repeated double→float
-        // conversion inside per-voice setup and per-sample inner loops.
-        const float sampleRateF = static_cast<float>(currentSampleRate_);
         int activeCount = 0;
 
         for (auto& voice : voices_)
@@ -786,7 +773,7 @@ public:
             std::fill(voiceBufR_.begin(), voiceBufR_.begin() + numSamples, 0.0f);
 
             // Glide time
-            voice.glide.setTime(glideTimeSec, sampleRateF);
+            voice.glide.setTime(glideTimeSec, static_cast<float>(currentSampleRate_));
 
             // Base frequency with tune/fine/pitch bend
             const float baseFreq = midiToFreqTune(voice.midiNote, tuneSemitones);
@@ -795,10 +782,10 @@ public:
 
             // Envelope parameters
             voice.ampEnv.setParams(snap_.attack, snap_.decay, snap_.sustain, snap_.release,
-                                   sampleRateF);
+                                   static_cast<float>(currentSampleRate_));
 
             // LFO
-            voice.lfo.setRate(snap_.lfoRate, sampleRateF);
+            voice.lfo.setRate(snap_.lfoRate, static_cast<float>(currentSampleRate_));
             voice.lfo.setShape(snap_.lfoShape);
 
             // Velocity-scaled effects (D001)
@@ -811,9 +798,7 @@ public:
                 effReynoldsFinal + velReynoldsMod + couplingMorphAccum_);
             const float voicePressure  = juce::jlimit(0.0f, 1.0f,
                 effPressureWithExpr + couplingAudioAccum_);
-            // Nyquist ceiling: sampleRate*0.45 to remain below folding at 96/192kHz.
-            const float nyquistCeil = sampleRateF * 0.45f;
-            const float voiceFilterCutoff = juce::jlimit(80.0f, nyquistCeil,
+            const float voiceFilterCutoff = juce::jlimit(80.0f, 20000.0f,
                 snap_.filterCutoff + velFilterMod + couplingFilterAccum_ * 4000.0f);
 
             // Block-constant bubble pitch ratio: hoist std::pow out of per-sample loop.
@@ -841,7 +826,7 @@ public:
                     case 0: lfoReynolds   = juce::jlimit(0.0f, 1.0f, lfoReynolds   + lmod * 0.4f); break;
                     case 1: lfoPressure   = juce::jlimit(0.0f, 1.0f, lfoPressure   + lmod * 0.4f); break;
                     case 2: lfoBubbleRate = juce::jlimit(0.0f, 1.0f, lfoBubbleRate + lmod * 0.4f); break;
-                    case 3: lfoFilterCut  = juce::jlimit(80.0f, nyquistCeil, lfoFilterCut + lmod * 8000.0f); break;
+                    case 3: lfoFilterCut  = juce::jlimit(80.0f, 20000.0f, lfoFilterCut + lmod * 8000.0f); break;
                     case 4: lfoViscosity  = juce::jlimit(0.0f, 1.0f, lfoViscosity  + lmod * 0.4f); break;
                     case 5: lfoJetOffset  = juce::jlimit(0.0f, 1.0f, lfoJetOffset  + lmod * 0.4f); break;
                     case 6: lfoCascade    = juce::jlimit(0.0f, 1.0f, lfoCascade    + lmod * 0.4f); break;
@@ -871,7 +856,7 @@ public:
                     noiseAmount = t * 0.6f;
 
                     // Burst duty: burstPhase advances at burstRate Hz
-                    voice.burstPhase += snap_.burstRate / sampleRateF;
+                    voice.burstPhase += snap_.burstRate / static_cast<float>(currentSampleRate_);
                     if (voice.burstPhase >= 1.0f) voice.burstPhase -= 1.0f;
                     const float burstDuty = 0.4f; // 40% duty cycle
                     if (voice.burstPhase < burstDuty)
@@ -889,7 +874,7 @@ public:
                 const float edgeFreq = currentFreq * (1.0f + lfoJetOffset * 3.0f);
                 constexpr float kTwoPi = 6.28318530718f;
                 const float jetSine = fastSin(voice.jetPhase) * toneAmount;
-                voice.jetPhase += edgeFreq / sampleRateF * kTwoPi;
+                voice.jetPhase += edgeFreq / static_cast<float>(currentSampleRate_) * kTwoPi;
                 if (voice.jetPhase >= kTwoPi) voice.jetPhase -= kTwoPi;
 
                 // Kolmogorov-tinted noise (1-pole LP for -5/3 spectral tilt)
@@ -899,22 +884,16 @@ public:
                 voice.kolmogorovState = flushDenormal(voice.kolmogorovState);
                 const float jetNoise  = voice.kolmogorovState * noiseAmount;
 
-                // Cascade: temporal AM on noise using a slower oscillator.
-                // Advances cascadePhase and applies cosine AM to the noise portion
-                // of excitation, creating rhythmic turbulent energy bursting.
-                float cascadeAM = 1.0f;
+                // Cascade: temporal AM on noise using a slower oscillator
                 if (lfoCascade > 0.001f)
                 {
-                    voice.cascadePhase += (2.0f + lfoCascade * 8.0f) / sampleRateF;
+                    voice.cascadePhase += (2.0f + lfoCascade * 8.0f) / static_cast<float>(currentSampleRate_);
                     if (voice.cascadePhase >= 1.0f) voice.cascadePhase -= 1.0f;
-                    // Map [0,1] phase to [0, 2π] and compute a half-rectified cosine AM
-                    // so amplitude stays ≥ 0 (no sign flips on the noise signal).
-                    const float cascCos = fastCos(voice.cascadePhase * kTwoPi);
-                    cascadeAM = 0.5f + 0.5f * cascCos; // [0, 1] half-cosine envelope
+                    // cosine AM — cascade modulates turbulent energy envelope
                 }
 
-                // Combined excitation scaled by pressure, vel², and cascade AM.
-                float excitation = (jetSine + jetNoise * cascadeAM) * lfoPressure * velGain;
+                // Combined excitation scaled by pressure and vel²
+                float excitation = (jetSine + jetNoise) * lfoPressure * velGain;
 
                 // ── Minnaert bubble excitation ────────────────────────────────
                 // Bubble frequency: offset from note by bubble_track semitones
@@ -923,39 +902,31 @@ public:
                     * bubbleTrackRatio
                     * (0.3f + snap_.bubbleSize * 1.7f); // size shifts pitch
 
-                // Bubble trigger at effectiveBubbleRate Hz.
-                // lfoBubbleRate [0,1] → rate [0.1, 20] Hz.
-                // Always retrigger on interval expiry — the previous amplitude
-                // guard (bubbleAmplitude < 0.001) caused silent skips at high
-                // rates, producing a hard ceiling well below parameter maximum.
+                // Bubble trigger at effectiveBubbleRate Hz
+                // lfoBubbleRate [0,1] → rate [0.1, 20] Hz
                 const float effectiveBubbleRate = 0.1f + lfoBubbleRate * 19.9f;
-                const float bubbleInterval = 1.0f / effectiveBubbleRate;
-                voice.bubbleTimer += 1.0f / sampleRateF;
+                voice.bubbleTimer += 1.0f / static_cast<float>(currentSampleRate_);
                 if (effectiveBubbleRate > 0.05f &&
-                    voice.bubbleTimer >= bubbleInterval)
+                    voice.bubbleTimer >= (1.0f / effectiveBubbleRate))
                 {
-                    voice.bubbleTimer -= bubbleInterval; // keep phase coherence
-                    // Reset phase to zero-crossing to avoid clicks on retrigger.
-                    voice.bubblePhase     = 0.0f;
-                    voice.bubbleAmplitude = lfoPressure * 0.3f;
+                    voice.bubbleTimer = 0.0f;
+                    // Start at zero-crossing (avoid clicks!)
+                    if (voice.bubbleAmplitude < 0.001f)
+                    {
+                        voice.bubblePhase = 0.0f;
+                        voice.bubbleAmplitude = lfoPressure * 0.3f;
+                    }
                 }
 
                 // Damped cosine bubble oscillator (fastCos: ~0.002% error per-sample)
                 const float bubbleSample = voice.bubbleAmplitude
                     * fastCos(voice.bubblePhase * kTwoPi);
-                voice.bubblePhase += bubbleFreq / sampleRateF;
+                voice.bubblePhase += bubbleFreq / static_cast<float>(currentSampleRate_);
                 if (voice.bubblePhase >= 1.0f) voice.bubblePhase -= 1.0f;
 
-                // True exponential decay — bubbleDecay [0,1] → fast (2ms) .. slow (500ms).
-                // Multiplicative coefficient is sample-rate-independent (unlike previous
-                // linear subtraction which was proportional to block size).
-                // bubbleDecay=0 → τ≈2ms, bubbleDecay=1 → τ≈500ms.
-                {
-                    const float tauSec = 0.002f + snap_.bubbleDecay * 0.498f;
-                    const float bubbleDecayFactor = fastExp(-1.0f / (tauSec * sampleRateF));
-                    voice.bubbleAmplitude *= bubbleDecayFactor;
-                }
-                voice.bubbleAmplitude = std::max(0.0f, voice.bubbleAmplitude);
+                // Exponential decay — bubbleDecay [0,1] → fast..slow
+                const float bubbleDecayRate = 0.001f + (1.0f - snap_.bubbleDecay) * 0.05f;
+                voice.bubbleAmplitude = std::max(0.0f, voice.bubbleAmplitude - bubbleDecayRate);
                 voice.bubbleAmplitude = flushDenormal(voice.bubbleAmplitude);
 
                 // Bubble injects INTO pipe (disturbs the waveguide)
@@ -963,7 +934,7 @@ public:
 
                 // ── Waveguide delay line ──────────────────────────────────────
                 // Target delay length = sampleRate / (2 * effectiveFreq) for open pipe
-                const float rawDelay = sampleRateF / (2.0f * currentFreq);
+                const float rawDelay = static_cast<float>(currentSampleRate_) / (2.0f * currentFreq);
                 voice.targetDelayLength = juce::jlimit(2.0f, static_cast<float>(OozeVoice::kMaxDelay - 2), rawDelay);
 
                 // Smooth delay length (avoid pitch glitches)
@@ -1019,13 +990,10 @@ public:
                 reflectedA = fastTanh(reflectedA);
                 reflectedA = flushDenormal(reflectedA);
 
-                // Write reflected-A back into delay line at the CURRENT write
-                // position (not +1). Writing to writePos+1 would be overwritten
-                // on the very next sample when excitation is injected there.
-                // The current position is where the next read will eventually
-                // arrive after intDelay samples of travel through the line.
-                voice.delayLine[voice.delayWritePos] = flushDenormal(
-                    voice.delayLine[voice.delayWritePos] + reflectedA);
+                // Write reflected-A back into delay line
+                const int writeBackPos = (voice.delayWritePos + 1) % OozeVoice::kMaxDelay;
+                voice.delayLine[writeBackPos] = flushDenormal(
+                    voice.delayLine[writeBackPos] + reflectedA);
 
                 // ── Read from second half of delay for end B ──────────────────
                 const int   halfDelay = std::max(1, intDelay / 2);
@@ -1052,6 +1020,9 @@ public:
                 reflectedB = fastTanh(reflectedB);
                 reflectedB = flushDenormal(reflectedB);
 
+                // Write reflected-B back into delay line at end-B's position (closes the loop)
+                voice.delayLine[readPos2] = flushDenormal(voice.delayLine[readPos2] + reflectedB);
+
                 // ── Advance write position ────────────────────────────────────
                 voice.delayWritePos = (voice.delayWritePos + 1) % OozeVoice::kMaxDelay;
 
@@ -1064,9 +1035,9 @@ public:
                     voice.outputFilterL.setMode(filterMode);
                     voice.outputFilterR.setMode(filterMode);
                     voice.outputFilterL.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
-                                                             sampleRateF);
+                                                             static_cast<float>(currentSampleRate_));
                     voice.outputFilterR.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
-                                                             sampleRateF);
+                                                             static_cast<float>(currentSampleRate_));
                 }
                 float sampleL = voice.outputFilterL.processSample(sample);
                 float sampleR = voice.outputFilterR.processSample(sample);
@@ -1159,10 +1130,6 @@ public:
     // =========================================================================
     float getSampleForCoupling(int channel, int sampleIndex) const override
     {
-        // Guard against empty cache before prepare() is called — size()-1 on
-        // an empty vector wraps to SIZE_MAX and would crash on the clamp.
-        if (outputCacheL_.empty())
-            return 0.0f;
         const int idx = std::clamp(sampleIndex, 0,
             static_cast<int>(outputCacheL_.size()) - 1);
         return (channel == 0) ? outputCacheL_[static_cast<size_t>(idx)]
@@ -1294,8 +1261,7 @@ private:
             if (!v.active) { target = &v; break; }
         }
 
-        // Steal: prefer releasing voices, then steal the oldest active voice
-        // (highest stealAge) rather than always voices_[0] (P-STEAL-DIR).
+        // Steal: prefer releasing voices, then steal the first
         if (target == nullptr)
         {
             for (auto& v : voices_)
@@ -1304,25 +1270,14 @@ private:
             }
         }
         if (target == nullptr)
-        {
-            // Find oldest non-releasing voice by stealAge.
-            uint32_t oldest = 0;
-            for (auto& v : voices_)
-            {
-                if (v.stealAge >= oldest)
-                {
-                    oldest = v.stealAge;
-                    target = &v;
-                }
-            }
-        }
+            target = &voices_[0];
 
         const bool wasActive = target->active;
 
-        // Determine voice index for per-voice seed (decorrelated noise).
-        const int voiceIdx = static_cast<int>(target - voices_.data());
-        // Reset voice state — preserves per-voice noise seed via voiceIdx.
-        target->reset(currentSampleRate_, voiceIdx);
+        // Reset voice state (preserve noise seed for continuity)
+        const uint32_t savedNoise = target->noiseState;
+        target->reset(currentSampleRate_);
+        target->noiseState = savedNoise;
 
         // Crossfade on steal to prevent clicks
         target->crossfadeGain = wasActive ? 0.0f : 1.0f;
@@ -1355,10 +1310,8 @@ private:
         // Seed waveguide with a small impulse (gentle excitation at startup)
         target->delayLine[0] = 0.05f;
 
-        // Trigger amplitude envelope.
-        // prepare() is intentionally omitted here — voice.reset() above calls
-        // dcBlockerL/R.prepare() and renderBlock calls setParams() (which includes
-        // prepare) on every block, so no per-noteOn prepare() needed. (P18)
+        // Trigger amplitude envelope
+        target->ampEnv.prepare(static_cast<float>(currentSampleRate_));
         target->ampEnv.setADSR(snap_.attack, snap_.decay, snap_.sustain, snap_.release);
         target->ampEnv.noteOn();
 
@@ -1366,7 +1319,6 @@ private:
         target->lfo.setRate(snap_.lfoRate, static_cast<float>(currentSampleRate_));
         target->lfo.setShape(snap_.lfoShape);
 
-        target->stealAge = ++stealCounter_; // oldest voice has highest age (P-STEAL-DIR)
         target->active = true;
         wakeSilenceGate();
     }
@@ -1402,9 +1354,6 @@ private:
     // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
     double currentSampleRate_ = 0.0;
     int    maxBlockSize_      = 512;
-
-    // Monotonic counter for voice-steal age tracking (P-STEAL-DIR).
-    uint32_t stealCounter_ = 0;
 
     // MIDI expression state
     float pitchBend_        = 1.0f; // frequency ratio (1.0 = no bend)
