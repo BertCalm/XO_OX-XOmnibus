@@ -392,8 +392,8 @@ public:
         params.push_back(std::make_unique<AP>(PID{"ollo_masterTune",1}, "Ollotron Master Tune",
             NR{-100.0f, 100.0f, 0.1f}, 0.0f));  // cents
 
-        params.push_back(std::make_unique<AP>(PID{"ollo_coarseTune",1}, "Ollotron Coarse Tune",
-            NR{-24.0f, 24.0f, 1.0f}, 0.0f));    // semitones
+        params.push_back(std::make_unique<juce::AudioParameterInt>(PID{"ollo_coarseTune",1}, "Ollotron Coarse Tune",
+            -24, 24, 0));    // semitones — INT to prevent non-integer semitone drift
 
         {
             NR r{0.0f, 2.0f, 0.001f};
@@ -1002,8 +1002,8 @@ public:
         // ---- tapeBalance: L/R level trim ----
         if (std::fabs(tapeBalance) > 0.001f)
         {
-            const float gainL = (tapeBalance < 0.0f) ? 1.0f : (1.0f - tapeBalance * 0.5f);
-            const float gainR = (tapeBalance > 0.0f) ? 1.0f : (1.0f + tapeBalance * 0.5f);
+            const float gainL = std::clamp((tapeBalance < 0.0f) ? 1.0f : (1.0f - tapeBalance * 0.5f), 0.0f, 1.0f);
+            const float gainR = std::clamp((tapeBalance > 0.0f) ? 1.0f : (1.0f + tapeBalance * 0.5f), 0.0f, 1.0f);
             for (int s = 0; s < numSamples; ++s)
             {
                 writeL[s] *= gainL;
@@ -1323,15 +1323,17 @@ private:
 
                 // ---- LFO target application ----
                 // We track offsets directly here (no per-sample heap access)
+                // kOlloLFOWear (4), kOlloLFOHiss (5), kOlloLFOChamberMix (6) are block-rate
+                // targets handled by the mod matrix path; they are NOT applied per-sample here.
                 float lfo1FlutterAdd = 0.0f, lfo1TapeAgeAdd = 0.0f, lfo1PitchAdd = 0.0f;
-                if (lfo1Tgt == kOlloLFOFlutterDep) lfo1FlutterAdd = lfo1Val * lfo1Depth;
-                else if (lfo1Tgt == kOlloLFOTapeAge) lfo1TapeAgeAdd = lfo1Val * lfo1Depth;
-                else if (lfo1Tgt == kOlloLFOPitch) lfo1PitchAdd = lfo1Val * lfo1Depth;
+                if      (lfo1Tgt == kOlloLFOFlutterDep) lfo1FlutterAdd = lfo1Val * lfo1Depth;
+                else if (lfo1Tgt == kOlloLFOTapeAge)    lfo1TapeAgeAdd = lfo1Val * lfo1Depth;
+                else if (lfo1Tgt == kOlloLFOPitch)      lfo1PitchAdd   = lfo1Val * lfo1Depth;
 
                 float lfo2FlutterAdd = 0.0f, lfo2TapeAgeAdd = 0.0f, lfo2PitchAdd = 0.0f;
-                if (lfo2Tgt == kOlloLFOFlutterDep) lfo2FlutterAdd = lfo2Val * lfo2Depth;
-                else if (lfo2Tgt == kOlloLFOTapeAge) lfo2TapeAgeAdd = lfo2Val * lfo2Depth;
-                else if (lfo2Tgt == kOlloLFOPitch) lfo2PitchAdd = lfo2Val * lfo2Depth;
+                if      (lfo2Tgt == kOlloLFOFlutterDep) lfo2FlutterAdd = lfo2Val * lfo2Depth;
+                else if (lfo2Tgt == kOlloLFOTapeAge)    lfo2TapeAgeAdd = lfo2Val * lfo2Depth;
+                else if (lfo2Tgt == kOlloLFOPitch)      lfo2PitchAdd   = lfo2Val * lfo2Depth;
 
                 // ---- Effective flutter depth (wear adds warble) ----
                 const float effFlutter = std::clamp(
