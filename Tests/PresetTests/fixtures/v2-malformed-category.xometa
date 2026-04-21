@@ -1,0 +1,19 @@
+{
+    "schema_version": 2,
+    "name": "Bad Category",
+    "mood": "Atmosphere",
+    "category": "xylophones",
+    "engines": ["Organon"],
+    "author": "XO_OX",
+    "version": "1.0",
+    "description": "Invalid category — should be rejected by validator.",
+    "tags": ["test","malformed"],
+    "macroLabels": ["CHARACTER","MOVEMENT","COUPLING","SPACE"],
+    "couplingIntensity": "None",
+    "tempo": 0.0,
+    "dna": { "brightness": 0.5, "warmth": 0.5, "movement": 0.5, "density": 0.5, "space": 0.5, "aggression": 0.5 },
+    "parameters": {},
+    "coupling": { "pairs": [] },
+    "macroTargets": [[],[],[],[]],
+    "macros": {}
+}

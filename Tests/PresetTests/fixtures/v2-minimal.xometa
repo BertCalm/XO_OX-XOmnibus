@@ -1,0 +1,19 @@
+{
+    "schema_version": 2,
+    "name": "Minimal Pad",
+    "mood": "Atmosphere",
+    "category": "pads",
+    "engines": ["Organon"],
+    "author": "XO_OX",
+    "version": "1.0",
+    "description": "Minimal preset with category only.",
+    "tags": ["atmosphere","simple"],
+    "macroLabels": ["CHARACTER","MOVEMENT","COUPLING","SPACE"],
+    "couplingIntensity": "None",
+    "tempo": 0.0,
+    "dna": { "brightness": 0.5, "warmth": 0.5, "movement": 0.5, "density": 0.5, "space": 0.5, "aggression": 0.5 },
+    "parameters": {},
+    "coupling": { "pairs": [] },
+    "macroTargets": [[],[],[],[]],
+    "macros": {}
+}
