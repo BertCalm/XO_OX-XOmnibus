@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "name": "Tidal Breath",
+  "mood": "Foundation",
+  "engines": ["Outflow"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Slow vacuum attack and high optical warmth let the reverb tail bloom gradually before the silence arrives. Movement macro controls wind chaos for live performance.",
+  "tags": ["gentle", "ambient", "reverb", "warm", "slow"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.8,
+    "movement": 0.3,
+    "density": 0.4,
+    "space": 0.9,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Outflow": {
+      "out_anchor": 0.9,
+      "out_windChaos": 0.2,
+      "out_undertowPull": 0.3,
+      "out_splashSize": 0.8,
+      "out_decay": 12.0,
+      "out_damping": 4000.0,
+      "out_dryWet": 0.8,
+      "out_exciterDecay": 0.05,
+      "out_vacuumAttack": 0.9,
+      "out_opticalWarmth": 0.85,
+      "out_macroCharacter": 0.0,
+      "out_macroMovement": 0.0,
+      "out_macroCoupling": 0.0,
+      "out_macroSpace": 0.0
+    }
+  },
+  "coupling": {"pairs": []},
+  "sequencer": null,
+  "starterFor": "Outflow"
+}
