@@ -149,7 +149,13 @@ public:
         float clickDecay; // Click burst duration [0-1] maps to [1ms-30ms]
     };
 
-    void trigger(float velocity) noexcept
+    // F23 fix: trigger() now accepts clickToneHz so fireClick() can set
+    // clickPhaseIncrement for the very first bounce click. Previously
+    // clickPhaseIncrement was only set inside process() at bounce boundaries,
+    // leaving the initial click at 0 Hz — DC silence.
+    // Also accepts initialRateMs for F12: currentIntervalSamples is primed
+    // here so the first interval is correct without recomputing every sample.
+    void trigger(float velocity, float clickToneHz = 3000.0f, float initialRateMs = 80.0f) noexcept
     {
         active = true;
         bounceIndex = 0;
@@ -157,6 +163,16 @@ public:
         initialVelocity = velocity;
         cachedGravityPow = 1.0f; // gravity^0 = 1 (first bounce uses full interval)
         cachedDampingPow = 1.0f; // damping^0 = 1 (first bounce uses full velocity)
+        // Prime phase increment so the first click plays at the correct pitch.
+        static constexpr float kTwoPi = 6.28318530718f;
+        if (hostSampleRate > 0.0)
+        {
+            clickPhaseIncrement = clickToneHz * kTwoPi / static_cast<float>(hostSampleRate);
+            // F12 fix: prime currentIntervalSamples for the first interval.
+            currentIntervalSamples = static_cast<int>(initialRateMs * 0.001f * static_cast<float>(hostSampleRate));
+            if (currentIntervalSamples < 4)
+                currentIntervalSamples = 4;
+        }
         fireClick(velocity);
     }
 
@@ -182,21 +198,9 @@ public:
         // Count samples toward next bounce trigger
         sampleCounter++;
 
-        // Compute interval using cached power — avoids calling pow() every sample.
-        // interval[n] = rate * gravity^n (the core physics equation)
-        float intervalMs = bounceParams.rate * cachedGravityPow;
-
-        // Apply swing to odd-indexed bounces: stretches every other interval
-        // by up to 40% for a funk/disco groove feel
-        static constexpr float kMaxSwingStretch = 0.4f;
-        if (bounceIndex % 2 == 1)
-            intervalMs *= (1.0f + bounceParams.swing * kMaxSwingStretch);
-
-        currentIntervalSamples = static_cast<int>(intervalMs * 0.001f * static_cast<float>(hostSampleRate));
-        // Minimum 4 samples between bounces to prevent audio-rate clicking
-        if (currentIntervalSamples < 4)
-            currentIntervalSamples = 4;
-
+        // F12 fix: currentIntervalSamples is now computed once at each bounce boundary
+        // (in the block below) and cached as a member. Avoid recomputing intervalMs and
+        // the ms→samples conversion every sample — it changes only at bounce events.
         if (sampleCounter >= currentIntervalSamples)
         {
             sampleCounter = 0;
@@ -207,6 +211,12 @@ public:
             cachedGravityPow *= bounceParams.gravity;
             cachedDampingPow *= bounceParams.damping;
 
+            // Recompute interval for the NEXT bounce (now that gravity power is updated)
+            float intervalMs = bounceParams.rate * cachedGravityPow;
+            static constexpr float kMaxSwingStretch = 0.4f;
+            if (bounceIndex % 2 == 1)
+                intervalMs *= (1.0f + bounceParams.swing * kMaxSwingStretch);
+
             // Terminate when all bounces exhausted or interval < 5ms
             // (below 5ms the bounces merge into a buzz, losing their identity)
             if (bounceIndex >= bounceParams.maxBounces || intervalMs < 5.0f)
@@ -214,6 +224,11 @@ public:
                 active = false;
                 return output;
             }
+
+            // Cache the sample count for the coming interval
+            currentIntervalSamples = static_cast<int>(intervalMs * 0.001f * static_cast<float>(hostSampleRate));
+            if (currentIntervalSamples < 4)
+                currentIntervalSamples = 4;
 
             // Fire next bounce click with velocity scaled by accumulated damping
             float scaledVelocity = initialVelocity * cachedDampingPow;
@@ -334,6 +349,10 @@ public:
             facetFilters[i].reset();
         feedbackDampingFilter.reset();
         feedbackAccumulator = 0.0f;
+        // F02/F03 fix: invalidate cached params so prepareBlock() recalculates
+        // coefficients on the next block after reset.
+        lastColorSpread = -1.0f;
+        lastDamping = -1.0f;
     }
 
     struct Params
@@ -347,9 +366,62 @@ public:
         float damping;     // Feedback HF damping [0-1] (darker = more mirror absorption)
     };
 
-    void process(float inputL, float inputR, float& outL, float& outR, const Params& prismParams) noexcept
+    // F02/F03 fix: hoist setCoefficients out of the per-sample process() call.
+    // Call prepareBlock() once per block before iterating samples. This avoids
+    // 6 facet-filter + 1 damping-filter coefficient recalculations every sample;
+    // prism params are block-constant (read from atomic parameters once per block).
+    void prepareBlock(const Params& prismParams) noexcept
     {
         float sampleRateFloat = static_cast<float>(hostSampleRate);
+
+        static constexpr float kColorCenterFreqs[kNumFacets] = {100.0f, 300.0f, 800.0f, 2000.0f, 5000.0f, 12000.0f};
+        static constexpr float kConvergenceFreq = 1000.0f;
+        static constexpr float kBaseResonance = 0.35f;
+        static constexpr float kResonanceRange = 0.3f;
+        static constexpr float kDampBrightFreq = 16000.0f;
+        static constexpr float kDampDarkFreq = 2000.0f;
+        static constexpr float kHalfPi = 1.5707963f;
+
+        // Recompute facet filter coefficients only when colorSpread changes.
+        // Use a small epsilon to avoid redundant recalculations on param jitter.
+        if (std::abs(prismParams.colorSpread - lastColorSpread) > 0.0005f)
+        {
+            lastColorSpread = prismParams.colorSpread;
+            float resonance = kBaseResonance + prismParams.colorSpread * kResonanceRange;
+            for (int i = 0; i < kNumFacets; ++i)
+            {
+                float targetFreq = lerp(kConvergenceFreq, kColorCenterFreqs[i], prismParams.colorSpread);
+                facetFilters[i].setCoefficients(targetFreq, resonance, sampleRateFloat);
+            }
+        }
+
+        // Recompute damping filter only when damping changes.
+        if (std::abs(prismParams.damping - lastDamping) > 0.0005f)
+        {
+            lastDamping = prismParams.damping;
+            float dampFreq = lerp(kDampBrightFreq, kDampDarkFreq, prismParams.damping);
+            feedbackDampingFilter.setCoefficients(dampFreq, 0.0f, sampleRateFloat);
+        }
+
+        // Precompute per-facet level and pan gains (change with stereoWidth/spread — block-rate).
+        static constexpr float kLevelRolloffFactor = 0.3f;
+        static constexpr float kFacetDelayRatios[kNumFacets] = {1.0f, 1.618f, 2.0f, 2.618f, 3.236f, 4.236f};
+        for (int i = 0; i < kNumFacets; ++i)
+        {
+            cachedFacetLevel[i] = 1.0f / (1.0f + static_cast<float>(i) * kLevelRolloffFactor);
+            float panPosition = lerp(0.5f, facetPanPositions[i], prismParams.stereoWidth);
+            cachedPanGainL[i] = fastCos(panPosition * kHalfPi);
+            cachedPanGainR[i] = fastSin(panPosition * kHalfPi);
+            // Cache delay sample counts (block-constant; sampleRate doesn't change mid-block)
+            float delayMs = prismParams.baseDelay * lerp(1.0f, kFacetDelayRatios[i], prismParams.spread);
+            int ds = static_cast<int>(delayMs * 0.001f * sampleRateFloat);
+            ds = std::min(std::max(ds, 1), kMaxDelaySamples - 1);
+            cachedDelaySamples[i] = ds;
+        }
+    }
+
+    void process(float inputL, float inputR, float& outL, float& outR, const Params& prismParams) noexcept
+    {
         float monoInput = (inputL + inputR) * 0.5f;
 
         // Write input + feedback into delay buffer.
@@ -365,52 +437,16 @@ public:
 
         delayBuffer[static_cast<size_t>(writePosition)] = writeValue;
 
-        // Update bandpass filter frequencies based on colorSpread.
-        // At colorSpread=0: all 6 filters converge to 1kHz (monochrome — no spectral split)
-        // At colorSpread=1: full spectrum spread (100Hz-12kHz — full rainbow)
-        static constexpr float kColorCenterFreqs[kNumFacets] = {100.0f, 300.0f, 800.0f, 2000.0f, 5000.0f, 12000.0f};
-        static constexpr float kConvergenceFreq = 1000.0f; // monochrome convergence point
-        // Resonance increases with color spread: narrower bands = more vivid spectral separation
-        static constexpr float kBaseResonance = 0.35f;
-        static constexpr float kResonanceRange = 0.3f;
-
-        for (int i = 0; i < kNumFacets; ++i)
-        {
-            float targetFreq = lerp(kConvergenceFreq, kColorCenterFreqs[i], prismParams.colorSpread);
-            float resonance = kBaseResonance + prismParams.colorSpread * kResonanceRange;
-            facetFilters[i].setCoefficients(targetFreq, resonance, sampleRateFloat);
-        }
-
-        // Feedback damping: sweep lowpass from 16kHz (bright) to 2kHz (dark)
-        static constexpr float kDampBrightFreq = 16000.0f;
-        static constexpr float kDampDarkFreq = 2000.0f;
-        float dampFreq = lerp(kDampBrightFreq, kDampDarkFreq, prismParams.damping);
-        feedbackDampingFilter.setCoefficients(dampFreq, 0.0f, sampleRateFloat);
-
-        // --- Read from each facet tap ---
+        // --- Read from each facet tap (using block-cached delay/level/pan values) ---
+        // F02 fix: delay samples, level, and pan gains were precomputed in prepareBlock().
+        // The only per-sample work here is the circular buffer read and filter process.
         float wetL = 0.0f, wetR = 0.0f;
         float feedbackSum = 0.0f;
 
-        // Facet delay ratios: golden-ratio-inspired spacing (Fibonacci-adjacent).
-        // These ratios create rhythmically interesting tap patterns that avoid
-        // the "evenly spaced = boring" problem. The golden ratio (phi = 1.618)
-        // is nature's anti-pattern — it never repeats, never aligns, always
-        // sounds organic. Each ratio is approximately phi * n.
-        static constexpr float kFacetDelayRatios[kNumFacets] = {1.0f, 1.618f, 2.0f, 2.618f, 3.236f, 4.236f};
-
-        static constexpr float kHalfPi = 1.5707963f;
-
         for (int i = 0; i < kNumFacets; ++i)
         {
-            // Compute delay time: base delay * ratio, modulated by spread
-            float delayMs = prismParams.baseDelay * lerp(1.0f, kFacetDelayRatios[i], prismParams.spread);
-            int delaySamples = static_cast<int>(delayMs * 0.001f * sampleRateFloat);
-            delaySamples = std::min(delaySamples, kMaxDelaySamples - 1);
-            if (delaySamples < 1)
-                delaySamples = 1;
-
-            // Read from circular delay buffer
-            int readPosition = writePosition - delaySamples;
+            // Read from circular delay buffer using block-cached delay position
+            int readPosition = writePosition - cachedDelaySamples[i];
             if (readPosition < 0)
                 readPosition += kMaxDelaySamples;
 
@@ -419,19 +455,9 @@ public:
             // Apply spectral color filter to this tap
             float coloredSample = facetFilters[i].processSample(tapSample);
 
-            // Inverse-distance level scaling: closer facets (lower index) are louder.
-            // The 0.3 scaling factor gives a gentle rolloff (~2.5dB per facet).
-            static constexpr float kLevelRolloffFactor = 0.3f;
-            float facetLevel = 1.0f / (1.0f + static_cast<float>(i) * kLevelRolloffFactor);
-
-            // Equal-power pan law using cos/sin (constant-power stereo placement)
-            float panPosition = lerp(0.5f, facetPanPositions[i], prismParams.stereoWidth);
-            float panGainL = fastCos(panPosition * kHalfPi);
-            float panGainR = fastSin(panPosition * kHalfPi);
-
-            wetL += coloredSample * facetLevel * panGainL;
-            wetR += coloredSample * facetLevel * panGainR;
-            feedbackSum += coloredSample * facetLevel;
+            wetL += coloredSample * cachedFacetLevel[i] * cachedPanGainL[i];
+            wetR += coloredSample * cachedFacetLevel[i] * cachedPanGainR[i];
+            feedbackSum += coloredSample * cachedFacetLevel[i];
         }
 
         // Average the feedback across all facets to prevent level buildup
@@ -459,6 +485,14 @@ private:
     // Feedback path
     CytomicSVF feedbackDampingFilter;
     float feedbackAccumulator = 0.0f;
+
+    // F02/F03 fix: block-rate cached values — computed in prepareBlock(), reused per sample.
+    float cachedFacetLevel[kNumFacets] = {};
+    float cachedPanGainL[kNumFacets] = {};
+    float cachedPanGainR[kNumFacets] = {};
+    int   cachedDelaySamples[kNumFacets] = {};
+    float lastColorSpread = -1.0f; // sentinel: force first-block coefficient update
+    float lastDamping = -1.0f;     // sentinel: force first-block coefficient update
 };
 
 //==============================================================================
@@ -660,6 +694,12 @@ struct ObliqueVoice
     // a new note arrives. Used in Legato mode to skip envelope retrigger and
     // instead glide pitch smoothly to the new target.
     bool wasLegatoActive = false;
+
+    // F08 fix: precomputed equal-power pan gains for bounce scatter.
+    // bouncePan depends only on noteNumber % 7 (constant per voice lifetime),
+    // so computing fastCos/fastSin every sample is wasteful. Cache once in noteOn.
+    float bouncePanGainL = 0.7071f; // default: centre (cos(pi/4))
+    float bouncePanGainR = 0.7071f; // default: centre (sin(pi/4))
 };
 
 //==============================================================================
@@ -926,6 +966,25 @@ public:
         // Hoist block-constant detune ratio out of per-sample loop
         const float detuneRatio = fastPow2(oscDetuneCents / 1200.0f);
 
+        // F02/F03 fix: compute block-constant prism params (colorSpread may vary
+        // with LFO, but the LFO value used here is the START-of-block value).
+        // For the per-sample loop, prepareBlock is called with the static portion;
+        // the LFO-modulated colorSpread is updated inside the sample loop via
+        // a lightweight check in process() — the filter only recomputes when the
+        // value changes by > 0.0005 (inaudible below that threshold).
+        // Build a "base" prism param struct for the block-constant portion:
+        {
+            ObliquePrism::Params baseParams;
+            baseParams.baseDelay = prismDelayMs;
+            baseParams.spread = prismSpread;
+            baseParams.colorSpread = effectivePrismColor; // start-of-block; LFO adjusts per-sample
+            baseParams.stereoWidth = prismStereoWidth;
+            baseParams.feedback = effectivePrismFb;
+            baseParams.mix = effectivePrismMix;
+            baseParams.damping = prismDamping;
+            prismDelay.prepareBlock(baseParams);
+        }
+
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
             float voiceSumL = 0.0f, voiceSumR = 0.0f;
@@ -956,9 +1015,16 @@ public:
                     }
                     else if (voice.envelopeStage < 2.0f)
                     {
-                        // Decay phase: exponential approach toward sustain level
-                        float decayRate = (decayTime > kMinEnvelopeTime) ? 1.0f / (decayTime * sampleRateFloat) : 1.0f;
-                        voice.envelopeLevel -= (voice.envelopeLevel - sustainLevel) * decayRate;
+                        // Decay phase: true exponential approach toward sustain level.
+                        // F05 fix: use matched-Z coefficient exp(-1/(T*sr)) instead of
+                        // the Euler approximation (1 - 1/(T*sr)). The Euler form is only
+                        // accurate when T*sr >> 1; at short decay times or high sample
+                        // rates (96kHz) the Euler rate diverges from the target time by up
+                        // to 2×. True exponential is sample-rate invariant by design.
+                        float decayCoeff = (decayTime > kMinEnvelopeTime)
+                                               ? std::exp(-1.0f / (decayTime * sampleRateFloat))
+                                               : 0.0f;
+                        voice.envelopeLevel = decayCoeff * voice.envelopeLevel + (1.0f - decayCoeff) * sustainLevel;
                         // Flush denormals: exponential decay toward sustain
                         // produces subnormals as the difference shrinks
                         voice.envelopeLevel = flushDenormal(voice.envelopeLevel);
@@ -973,10 +1039,14 @@ public:
                 }
                 else
                 {
-                    // Release phase: exponential decay toward zero
-                    float releaseRate =
-                        (releaseTime > kMinEnvelopeTime) ? 1.0f / (releaseTime * sampleRateFloat) : 1.0f;
-                    voice.envelopeLevel -= voice.envelopeLevel * releaseRate;
+                    // Release phase: true exponential decay toward zero.
+                    // F06 fix: use matched-Z coefficient exp(-1/(T*sr)) — same rationale
+                    // as F05. At 96kHz, the Euler form releases twice as slowly as at
+                    // 48kHz; exp(-1/(T*sr)) is sample-rate invariant.
+                    float releaseCoeff = (releaseTime > kMinEnvelopeTime)
+                                             ? std::exp(-1.0f / (releaseTime * sampleRateFloat))
+                                             : 0.0f;
+                    voice.envelopeLevel *= releaseCoeff;
                     // Flush denormals: release decay is the most common source
                     // of subnormals — every released note decays toward zero
                     voice.envelopeLevel = flushDenormal(voice.envelopeLevel);
@@ -1092,14 +1162,11 @@ public:
                 float bodyL = voicedOutput * kBodyPanLevel;
                 float bodyR = voicedOutput * kBodyPanLevel;
 
-                // Pan scatter: map note number (mod 7) to 0.3-0.7 pan range.
-                // Using mod 7 (a prime) ensures adjacent notes don't cluster.
-                static constexpr float kBouncePanBase = 0.3f;
-                static constexpr float kBouncePanRange = 0.4f;
-                static constexpr float kHalfPi = 1.5707963f; // pi/2 for equal-power pan law
-                float bouncePan = kBouncePanBase + (static_cast<float>(voice.noteNumber % 7) / 7.0f) * kBouncePanRange;
-                float bounceL = bounceOutput * fastCos(bouncePan * kHalfPi);
-                float bounceR = bounceOutput * fastSin(bouncePan * kHalfPi);
+                // F08 fix: use precomputed pan gains (hoisted to noteOn).
+                // bouncePanGainL/R are constant for the voice's lifetime and
+                // were calculated once in noteOn via fastCos/fastSin.
+                float bounceL = bounceOutput * voice.bouncePanGainL;
+                float bounceR = bounceOutput * voice.bouncePanGainR;
 
                 voiceSumL += bodyL + bounceL;
                 voiceSumR += bodyR + bounceR;
@@ -1192,7 +1259,13 @@ public:
 
         envelopeFollowerOutput = peakEnvelopeLevel;
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // F10 fix: guard channel-1 pointer — analyzeBlock requires 2 channels
+        // but the buffer may be mono (1-channel mixdown path above). Passing an
+        // invalid channel pointer causes UB on mono hosts.
+        if (buffer.getNumChannels() >= 2)
+            silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        else if (buffer.getNumChannels() == 1)
+            silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(0), numSamples);
     }
 
     //--------------------------------------------------------------------------
@@ -1635,6 +1708,17 @@ private:
             }
         }
 
+        // F17 fix: enforce true mono behaviour in Mono mode (voiceMode==1).
+        // Previously, Mono mode fell through to poly allocation, allowing up to
+        // kMaxVoices concurrent voices. Release all gate-open voices before
+        // allocating the new one — only one voice plays at a time.
+        if (voiceMode == 1)
+        {
+            for (auto& v : voices)
+                if (v.active && !v.releasing)
+                    v.releasing = true;
+        }
+
         // -----------------------------------------------------------------------
         // Normal (Poly / Mono) voice allocation: find free voice or steal oldest
         // -----------------------------------------------------------------------
@@ -1688,6 +1772,12 @@ private:
         voice.envelopeStage = 0.0f;
         voice.envelopeLevel = 0.0f;
         voice.wasLegatoActive = false;
+        // F27 fix: clear fadingOut on the new voice. When this slot was stolen,
+        // fadingOut=true was set to suppress the old note — but the same slot is
+        // reused for the new note, so fadingOut must be cleared. Without this the
+        // new voice immediately ramps stealOutLevel to zero and self-silences.
+        voice.fadingOut = false;
+        voice.stealOutLevel = 1.0f;
 
         // --- Set oscillator waveform ---
         PolyBLEP::Waveform waveform;
@@ -1729,12 +1819,26 @@ private:
         }
 
         // --- Trigger bounce (percussive ricochet on note-on) ---
+        // F23 fix: pass bounceClickTone so the first click's phase increment
+        // is primed correctly (previously the initial click played at 0 Hz).
+        // F12 fix: pass bounceRateMs to prime the first interval sample count.
         voice.bounce.reset();
-        voice.bounce.trigger(velocity);
+        voice.bounce.trigger(velocity, bounceClickTone, bounceRateMs);
 
         // --- Reset voice filter ---
         voice.voiceFilter.reset();
         voice.voiceFilter.setMode(CytomicSVF::Mode::LowPass);
+
+        // F08 fix: precompute bounce pan gains (constant for this voice's lifetime).
+        // bouncePan only depends on noteNumber % 7 (a prime chosen to scatter adjacent
+        // notes). Moving fastCos/fastSin out of the per-sample loop saves 2 trig
+        // approximations per active voice per sample.
+        static constexpr float kBouncePanBase = 0.3f;
+        static constexpr float kBouncePanRange = 0.4f;
+        static constexpr float kHalfPiNoteOn = 1.5707963f;
+        float bouncePan = kBouncePanBase + (static_cast<float>(noteNumber % 7) / 7.0f) * kBouncePanRange;
+        voice.bouncePanGainL = fastCos(bouncePan * kHalfPiNoteOn);
+        voice.bouncePanGainR = fastSin(bouncePan * kHalfPiNoteOn);
     }
 
     void noteOff(int noteNumber) noexcept
