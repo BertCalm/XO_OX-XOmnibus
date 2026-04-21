@@ -94,12 +94,28 @@ public:
     void noteOff()
     {
         ampEnv.noteOff();
-        // currentNote stays set so isActive() works until envelope finishes
+        // currentNote stays set so isActive() works until envelope finishes.
+        // It is cleared to -1 when the envelope reaches Idle (via isIdle() in process).
     }
 
     //--------------------------------------------------------------------------
     /// Is the voice still producing output?
     bool isActive() const { return ampEnv.isActive(); }
+
+    //--------------------------------------------------------------------------
+    /// Clear voice state when idle — prevents ghost-note portamento glide.
+    /// FIX: after a note fully releases and the envelope reaches Idle, currentNote
+    /// must be reset to -1. Without this, the next noteOn in legato mode sees a
+    /// "live" currentNote and starts a portamento glide from the dead note's pitch
+    /// even though no sound is actually playing.
+    void clearIfIdle()
+    {
+        if (!ampEnv.isActive() && currentNote >= 0)
+        {
+            currentNote = -1;
+            currentFreq = targetFreq; // also sync freq so no stale porta source
+        }
+    }
 
     //--------------------------------------------------------------------------
     /// Process a block of samples through the full organism signal chain.
@@ -141,8 +157,13 @@ public:
         // -- Owl Optics (compressor) params --
         optics.setParams(snap.compRatio, snap.compThreshold, snap.compAttack, snap.compRelease);
 
-        // D005 fix: minimal LFO added — advance grain size LFO (0.05 Hz, ±12%)
-        grainLfoPhase += (0.05f * juce::MathConstants<float>::twoPi) / static_cast<float>(sampleRate);
+        // D005 fix: grain size breathing LFO at 0.05 Hz (±12%).
+        // FIX: advance by numSamples/sr per block — the LFO runs once per process()
+        // call (block rate), so the per-block phase increment must include numSamples
+        // to match the intended 0.05 Hz frequency. Previous code divided by sr alone,
+        // making the effective rate ~blockSize× too slow (multi-second frozen breath).
+        grainLfoPhase += (0.05f * juce::MathConstants<float>::twoPi)
+                         * (static_cast<float>(numSamples) / static_cast<float>(sampleRate));
         if (grainLfoPhase >= juce::MathConstants<float>::twoPi)
             grainLfoPhase -= juce::MathConstants<float>::twoPi;
         const float lfoGrainSize = snap.grainSize * (1.0f + 0.12f * std::sin(grainLfoPhase));

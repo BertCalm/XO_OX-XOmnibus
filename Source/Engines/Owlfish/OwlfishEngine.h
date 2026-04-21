@@ -61,7 +61,10 @@ public:
     /// Reset the organism to silence. Re-prepare the voice and clear caches.
     void reset() override
     {
-        voice.prepare(sr);
+        // Guard: sr may be 0.0 if reset() is called before prepare(). In that
+        // case, skip voice prepare to avoid divides by zero in coefficient math.
+        if (sr > 0.0)
+            voice.prepare(sr);
         std::fill(outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill(outputCacheR.begin(), outputCacheR.end(), 0.0f);
         lastNoteOn = -1;
@@ -76,6 +79,10 @@ public:
         juce::ScopedNoDenormals noDenormals;
         // Read parameters once per block (snapshot reads from cached atomics)
         snapshot.updateFrom();
+
+        // FIX: clear dead voice state before MIDI processing to avoid ghost-note
+        // portamento glide on the next noteOn after a fully-released voice.
+        voice.clearIfIdle();
 
         // Process MIDI -- monophonic with lastNoteOn tracking
         for (const auto metadata : midi)
@@ -147,30 +154,40 @@ public:
             float combinedSemitones = pitchBendNorm * 2.0f + couplingPitchMod;
             float freqRatio = xoceanus::PitchBendUtil::semitonesToFreqRatio(combinedSemitones);
             // AudioToRing: scale frequency ratio by (1 + couplingFMMod) for FM-style excitation.
-            // couplingFMMod is bounded [0, 2.0] so this creates a ×1 to ×3 frequency sweep —
-            // partner loudness drives the owlfish deeper into subharmonic abyss.
+            // couplingFMMod is clamped [0, 2.0] in applyCouplingInput, so this creates a
+            // ×1 to ×3 frequency sweep — partner loudness drives the owlfish deeper.
             freqRatio *= (1.0f + couplingFMMod);
             voice.applyPitchBend(freqRatio);
         }
         couplingPitchMod = 0.0f;
         couplingFMMod = 0.0f;
 
-        // Render the organism
-        buffer.clear();
-        auto* outL = buffer.getWritePointer(0);
-        auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
+        // ADDITIVE: render into outputCacheL/R (scratch), then add to buffer.
+        // OwlfishVoice::process uses outL[i]=value (overwrite semantics), so we must
+        // isolate it from the output buffer and add the result at the end.
+        const int cacheSize = static_cast<int>(outputCacheL.size());
+        if (numSamples > cacheSize)
+            return; // guard: should not happen if prepare() was called correctly
+        std::fill(outputCacheL.begin(), outputCacheL.begin() + numSamples, 0.0f);
+        std::fill(outputCacheR.begin(), outputCacheR.begin() + numSamples, 0.0f);
 
         if (voice.isActive())
-            voice.process(outL, outR, numSamples, snapshot);
+            voice.process(outputCacheL.data(), outputCacheR.data(), numSamples, snapshot);
 
-        // Cache output for per-sample coupling reads
-        for (int i = 0; i < numSamples && i < static_cast<int>(outputCacheL.size()); ++i)
+        // Add rendered signal into the output buffer (additive slot-chain mix)
+        auto* outL = buffer.getWritePointer(0);
+        // FIX: guard channel count before reading channel 1 to avoid OOB access.
+        auto* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : outL;
+        for (int i = 0; i < numSamples; ++i)
         {
-            outputCacheL[static_cast<size_t>(i)] = outL[i];
-            outputCacheR[static_cast<size_t>(i)] = outR[i];
+            outL[i] += outputCacheL[static_cast<size_t>(i)];
+            outR[i] += outputCacheR[static_cast<size_t>(i)];
         }
 
-        silenceGate.analyzeBlock(buffer.getReadPointer(0), buffer.getReadPointer(1), numSamples);
+        // FIX: guard channel count before passing channel 1 to analyzeBlock.
+        const float* analyzeR = buffer.getNumChannels() > 1 ? buffer.getReadPointer(1)
+                                                             : buffer.getReadPointer(0);
+        silenceGate.analyzeBlock(buffer.getReadPointer(0), analyzeR, numSamples);
     }
 
     //--------------------------------------------------------------------------
@@ -198,13 +215,17 @@ public:
             // AudioToRing: compute RMS of source buffer and apply as FM modulation
             // to the Mixtur-Trautonium oscillator frequency. Partner loudness drives
             // couplingFMMod which scales the voice frequency ratio in renderBlock.
+            // FIX: clamp couplingFMMod to [0, 2.0] — without this, a loud partner
+            // (RMS > 1.0) multiplied by amount=1.0 causes ×5+ pitch sweep, making
+            // the owlfish scream to inaudible frequencies. ×3 max (1 + 2.0) is enough
+            // for dramatic FM-style excitation.
             if (sourceBuffer != nullptr && numSamples > 0)
             {
                 float sumSq = 0.0f;
                 for (int n = 0; n < numSamples; ++n)
                     sumSq += sourceBuffer[n] * sourceBuffer[n];
                 const float rms = std::sqrt(sumSq / static_cast<float>(numSamples));
-                couplingFMMod = amount * rms * 2.0f;
+                couplingFMMod = std::clamp(amount * rms * 2.0f, 0.0f, 2.0f);
             }
             break;
 
