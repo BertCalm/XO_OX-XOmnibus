@@ -207,6 +207,11 @@ public:
     {
         sr = static_cast<float>(sampleRate);
 
+        // SR-scaled grain size: 2048 samples at 44.1kHz ≈ 46ms grain duration.
+        // Clamped so two half-size grains always fit within kShimmerBufSize.
+        grainSize_ = std::min(static_cast<float>(kShimmerBufSize / 2 - 1),
+                              std::max(512.0f, 2048.0f * static_cast<float>(sampleRate) / 44100.0f));
+
         // Runtime buffer size: 1 second worth of samples at the actual sample rate,
         // clamped to the absolute safety cap. Allocated here (never in renderBlock).
         maxDelay_ = std::min(kAbsoluteMaxDelay, static_cast<int>(sampleRate) + 1);
@@ -326,8 +331,10 @@ private:
     // Read from shimmer buffer at a given pitch ratio using crossfading grains
     float readShimmerGrain(float& grainPhase, float pitchRatio) noexcept
     {
-        // Grain-based pitch shifting with two overlapping grains
-        static constexpr float kGrainSize = 2048.0f;
+        // Grain-based pitch shifting with two overlapping grains.
+        // NOTE: grain size scales with sr to keep grain duration constant (~46ms at 44.1kHz).
+        // Using sr-scaled grainSize computed in prepare() avoids SR-dependent artifact frequency.
+        const float kGrainSize = grainSize_;
 
         // Advance the grain phase at (pitchRatio - 1) speed
         grainPhase += (pitchRatio - 1.0f);
@@ -346,19 +353,26 @@ private:
         float fade1 = 0.5f - 0.5f * fastCos(pos1 / kGrainSize * 6.28318530718f);
         float fade2 = 0.5f - 0.5f * fastCos(pos2 / kGrainSize * 6.28318530718f);
 
-        // Read from shimmer buffer with interpolation
+        // Read from shimmer buffer with linear interpolation.
+        // idx = floor(pos) samples back; idxPrev = floor(pos)+1 samples back (older).
+        // frac=0 → exactly idx; frac=1 → exactly idxPrev. Correct delay-line fractional read.
         auto readBuf = [&](float pos) -> float
         {
-            int idx = (shimmerWritePos - static_cast<int>(pos) + kShimmerBufSize) % kShimmerBufSize;
-            int idxNext = (idx + 1) % kShimmerBufSize;
-            float frac = pos - std::floor(pos);
-            return shimmerBuf[idx] * (1.0f - frac) + shimmerBuf[idxNext] * frac;
+            int ipos = static_cast<int>(pos);
+            int idx     = (shimmerWritePos - ipos     + kShimmerBufSize) % kShimmerBufSize;
+            int idxPrev = (shimmerWritePos - ipos - 1 + kShimmerBufSize) % kShimmerBufSize;
+            float frac = pos - static_cast<float>(ipos);
+            return shimmerBuf[idx] * (1.0f - frac) + shimmerBuf[idxPrev] * frac;
         };
 
         return readBuf(pos1) * fade1 + readBuf(pos2) * fade2;
     }
 
     float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
+
+    // SR-scaled grain size — maintains ~46ms grain duration independent of sample rate.
+    // Clamped to [512, kShimmerBufSize/2] to keep two non-overlapping grains in the buffer.
+    float grainSize_ = 2048.0f;
 
     // Comb filter state — vectors sized to maxDelay_ in prepare(), never in renderBlock
     std::vector<float> combBuf[kNumCombs];
@@ -496,9 +510,12 @@ struct SkyVoice
     std::array<SkySupersaw, kMaxUnison> unisonSaws;
     int activeUnison = 1;
 
-    // Filters
-    CytomicSVF lpf;
-    CytomicSVF hpf;
+    // Separate L and R filter instances — running both channels through the same
+    // CytomicSVF state sequentially contaminates the integrators (bug found 2026-04-20).
+    CytomicSVF lpfL;
+    CytomicSVF lpfR;
+    CytomicSVF hpfL;
+    CytomicSVF hpfR;
 
     // Pitch envelope (for RISE macro)
     float pitchEnvLevel = 0.0f;
@@ -512,6 +529,11 @@ struct SkyVoice
 
     // Voice stealing crossfade
     float fadeOutLevel = 0.0f;
+
+    // Cached per-unison frequencies from the previous sample — avoids calling
+    // setFrequency (which iterates all 7 internal saws) when pitch hasn't changed.
+    std::array<float, kMaxUnison> lastUniFreq{};
+    float lastSawSpread = -1.0f; // sentinel: force update on first render
 };
 
 //==============================================================================
@@ -535,9 +557,11 @@ public:
         outputCacheR.resize(static_cast<size_t>(maxBlockSize), 0.0f);
 
         shimmerL.prepare(sr);
-        shimmerR.prepare(sr);
+        // shimmerR is intentionally not used — shimmerL processes stereo in-place
         chorus.prepare(sr);
         breathLfo.prepare(sr);
+        lfo1.setRate(0.08f, srf); // initialize phase increment before first block
+        lfo2.setRate(2.0f, srf);
         lfo1.reset();
         lfo2.reset();
 
@@ -548,10 +572,10 @@ public:
             voice.ampEnv.reset();
             for (auto& saw : voice.unisonSaws)
                 saw.reset();
-            voice.lpf.reset();
-            voice.lpf.setMode(CytomicSVF::Mode::LowPass);
-            voice.hpf.reset();
-            voice.hpf.setMode(CytomicSVF::Mode::HighPass);
+            voice.lpfL.reset(); voice.lpfL.setMode(CytomicSVF::Mode::LowPass);
+            voice.lpfR.reset(); voice.lpfR.setMode(CytomicSVF::Mode::LowPass);
+            voice.hpfL.reset(); voice.hpfL.setMode(CytomicSVF::Mode::HighPass);
+            voice.hpfR.reset(); voice.hpfR.setMode(CytomicSVF::Mode::HighPass);
         }
 
         // SRO SilenceGate: shimmer reverb tails need a generous hold — 500ms
@@ -569,13 +593,14 @@ public:
             voice.fadeOutLevel = 0.0f;
             voice.pitchEnvLevel = 0.0f;
             voice.filterEnvLevel = 0.0f;
+            voice.lastSawSpread = -1.0f;
+            voice.lastUniFreq.fill(0.0f);
             for (auto& saw : voice.unisonSaws)
                 saw.reset();
-            voice.lpf.reset();
-            voice.hpf.reset();
+            voice.lpfL.reset(); voice.lpfR.reset();
+            voice.hpfL.reset(); voice.hpfR.reset();
         }
         shimmerL.reset();
-        shimmerR.reset();
         chorus.reset();
         breathLfo.reset();
         lfo1.reset();
@@ -659,6 +684,14 @@ public:
 
         const float stereoWidth = pLoad(pStereoWidth, 0.5f);
 
+        // D002: Mod matrix — read slot values (routing applied below after LFOs are computed)
+        const int   modSlot1Src = static_cast<int>(pLoad(pModSlot1Src, 0.0f));
+        const int   modSlot1Dst = static_cast<int>(pLoad(pModSlot1Dst, 0.0f));
+        const float modSlot1Amt = pLoad(pModSlot1Amt, 0.0f);
+        const int   modSlot2Src = static_cast<int>(pLoad(pModSlot2Src, 0.0f));
+        const int   modSlot2Dst = static_cast<int>(pLoad(pModSlot2Dst, 0.0f));
+        const float modSlot2Amt = pLoad(pModSlot2Amt, 0.0f);
+
         // D002: Macro reads
         const float macroRise = pLoad(pMacroRise, 0.5f);
         const float macroWidth = pLoad(pMacroWidth, 0.5f);
@@ -697,7 +730,18 @@ public:
             else if (msg.isNoteOff())
                 noteOff(msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
-                reset();
+            {
+                // Kill all voices but preserve coupling state, pitch bend, and
+                // output cache — full reset() would glitch coupling consumers.
+                for (auto& v : voices)
+                {
+                    v.active = false;
+                    v.ampEnv.kill();
+                    v.fadeOutLevel = 0.0f;
+                }
+                shimmerL.reset();
+                chorus.reset();
+            }
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount_ = msg.getControllerValue() / 127.0f; // D006: mod wheel -> filter
             else if (msg.isChannelPressure())
@@ -731,6 +775,34 @@ public:
         float breathLfoVal = breathLfo.process(lfo1Rate) * lfo1Depth;
         effectiveFilterCutoff = clamp(effectiveFilterCutoff + breathLfoVal * 2000.0f, 20.0f, 20000.0f);
 
+        // D002: Mod matrix — block-rate routing for both slots.
+        // Sources: 0=off, 1=LFO1, 2=LFO2, 3=Breath, 4=ModWheel, 5=Aftertouch, 6=Velocity(avg)
+        // Destinations: 0=off, 1=FilterCutoff, 2=ShimmerMix, 3=ChorusDepth, 4=PitchEnv, 5=Level
+        // Amounts are bipolar [-1, +1].
+        auto applyModSlot = [&](int src, int dst, float amt) {
+            if (src == 0 || dst == 0 || amt == 0.0f) return;
+            float modVal = 0.0f;
+            switch (src)
+            {
+            case 1: modVal = breathLfoVal;              break; // LFO1 (breath tracks lfo1)
+            case 2: modVal = 0.0f;                      break; // LFO2 — per-sample, skip block-rate
+            case 3: modVal = breathLfoVal;              break; // Breath
+            case 4: modVal = modWheelAmount_;           break; // ModWheel [0,1] → bipolar via amt sign
+            case 5: modVal = aftertouch_;               break; // Aftertouch
+            default: break;
+            }
+            switch (dst)
+            {
+            case 1: effectiveFilterCutoff  = clamp(effectiveFilterCutoff  + modVal * amt * 8000.0f, 20.0f, 20000.0f); break;
+            case 2: effectiveShimmerMix    = clamp(effectiveShimmerMix    + modVal * amt * 0.5f,    0.0f, 1.0f);       break;
+            case 3: effectiveChorusDepth   = clamp(effectiveChorusDepth   + modVal * amt * 0.5f,    0.0f, 1.0f);       break;
+            case 4: effectivePitchEnvAmt   = clamp(effectivePitchEnvAmt   + modVal * amt * 12.0f, -24.0f, 24.0f);      break;
+            default: break;
+            }
+        };
+        applyModSlot(modSlot1Src, modSlot1Dst, modSlot1Amt);
+        applyModSlot(modSlot2Src, modSlot2Dst, modSlot2Amt);
+
         // Set up envelopes for all active voices
         for (auto& voice : voices)
         {
@@ -738,17 +810,21 @@ public:
                 continue;
             voice.ampEnv.setParams(attack, decay, sustain, release, srf);
 
-            // Filter mode
-            if (filterType == 1)
-                voice.lpf.setMode(CytomicSVF::Mode::BandPass);
-            else
-                voice.lpf.setMode(CytomicSVF::Mode::LowPass);
-            voice.hpf.setMode(CytomicSVF::Mode::HighPass);
+            // Filter mode (applied to both L and R instances)
+            CytomicSVF::Mode lpMode = (filterType == 1) ? CytomicSVF::Mode::BandPass : CytomicSVF::Mode::LowPass;
+            voice.lpfL.setMode(lpMode);
+            voice.lpfR.setMode(lpMode);
+            voice.hpfL.setMode(CytomicSVF::Mode::HighPass);
+            voice.hpfR.setMode(CytomicSVF::Mode::HighPass);
 
             // #620: HPF cutoff is constant within the block — set coefficients
             // once here rather than per-sample to avoid redundant trig inside the loop.
-            voice.hpf.setCoefficients_fast(filterHPCutoff, 0.0f, srf);
+            voice.hpfL.setCoefficients_fast(filterHPCutoff, 0.0f, srf);
+            voice.hpfR.setCoefficients_fast(filterHPCutoff, 0.0f, srf);
         }
+
+        // Filter-envelope decay coefficient — block-rate constant avoids std::max in per-sample loop
+        const float filterEnvDecayCoeff = 1.0f / (std::max(0.01f, decay) * srf);
 
         float peakEnv = 0.0f;
 
@@ -785,15 +861,16 @@ public:
                 }
 
                 // --- Pitch ---
-                // D001: Velocity scales filter envelope
-                float velFilterEnv = voice.velocity * filterEnvAmt;
+                // D001: Velocity scales filter envelope (filterEnvAmt alone — velocity
+                // is applied once at velCutoffMod below, not here, to avoid squaring it)
+                float velFilterEnv = filterEnvAmt;
 
                 // Pitch envelope decays toward zero (RISE effect)
                 voice.pitchEnvLevel *= (1.0f - voice.pitchEnvRate);
                 voice.pitchEnvLevel = flushDenormal(voice.pitchEnvLevel);
 
-                // Filter envelope decays
-                voice.filterEnvLevel *= (1.0f - 1.0f / (std::max(0.01f, decay) * srf));
+                // Filter envelope decays (rate hoisted to block-rate constant)
+                voice.filterEnvLevel *= (1.0f - filterEnvDecayCoeff);
                 voice.filterEnvLevel = flushDenormal(voice.filterEnvLevel);
 
                 float midiNote = static_cast<float>(voice.noteNumber) + coarseTune + fineTune * 0.01f +
@@ -826,8 +903,14 @@ public:
                     }
 
                     float uniFreq = baseFreq * fastPow2(unisonOffset / 12.0f);
-                    voice.unisonSaws[u].spread = sawSpread;
-                    voice.unisonSaws[u].setFrequency(uniFreq, srf);
+                    // Only call setFrequency when pitch or spread actually changed —
+                    // avoids iterating all 7 internal saws on every sample (perf).
+                    if (uniFreq != voice.lastUniFreq[u] || sawSpread != voice.lastSawSpread)
+                    {
+                        voice.unisonSaws[u].spread = sawSpread;
+                        voice.unisonSaws[u].setFrequency(uniFreq, srf);
+                        voice.lastUniFreq[u] = uniFreq;
+                    }
 
                     float sawOut = voice.unisonSaws[u].processSample() * sawMix;
 
@@ -868,6 +951,9 @@ public:
                     voiceR += voiceSample * unisonPan;
                 }
 
+                // Update cached spread after iterating all unison voices
+                voice.lastSawSpread = sawSpread;
+
                 // Normalize by unison count
                 float unisonNorm = 1.0f / std::sqrt(static_cast<float>(std::max(1, numUnison)));
                 voiceL *= unisonNorm;
@@ -879,14 +965,16 @@ public:
                 float filterEnvMod = voice.filterEnvLevel * filterEnvAmt * 6000.0f;
                 float voiceCutoff = clamp(effectiveFilterCutoff + velCutoffMod + filterEnvMod, 20.0f, 20000.0f);
 
-                voice.lpf.setCoefficients_fast(voiceCutoff, filterReso, srf);
+                voice.lpfL.setCoefficients_fast(voiceCutoff, filterReso, srf);
+                voice.lpfR.setCoefficients_fast(voiceCutoff, filterReso, srf);
                 // HPF coefficients are set once per block (block-rate setup above)
 
-                // Apply filters (series: HP -> LP for bright tonal shaping)
-                float filteredL = voice.hpf.processSample(voiceL);
-                filteredL = voice.lpf.processSample(filteredL);
-                float filteredR = voice.hpf.processSample(voiceR);
-                filteredR = voice.lpf.processSample(filteredR);
+                // Apply filters (series: HP -> LP). Separate L/R instances maintain
+                // independent integrator state to avoid inter-channel contamination.
+                float filteredL = voice.hpfL.processSample(voiceL);
+                filteredL = voice.lpfL.processSample(filteredL);
+                float filteredR = voice.hpfR.processSample(voiceR);
+                filteredR = voice.lpfR.processSample(filteredR);
 
                 // Apply envelope and velocity
                 float gain = envVal * voice.velocity * stealFade;
@@ -1029,7 +1117,9 @@ public:
                                                         juce::NormalisableRange<float>(0.0f, 1.0f, 0.01f), 0.2f));
 
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
-            juce::ParameterID{"sky_subWave", 1}, "Sky Sub Wave", juce::StringArray{"Sine", "Square", "Triangle"}, 0));
+            juce::ParameterID{"sky_subWave", 1}, "Sky Sub Wave",
+            // Order matches the switch: 0=Sine, 1=Triangle, 2=Square (was "Sine,Square,Triangle" — wrong)
+            juce::StringArray{"Sine", "Triangle", "Square"}, 0));
 
         params.push_back(
             std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"sky_coarseTune", 1}, "Sky Coarse Tune",
@@ -1321,8 +1411,12 @@ private:
         // D001: Filter envelope — velocity triggers brightness burst
         voice.filterEnvLevel = velocity;
 
-        // Reset oscillators
-        for (int u = 0; u < SkyVoice::kMaxUnison; ++u)
+        // Reset frequency cache so setFrequency is forced on first render
+        voice.lastSawSpread = -1.0f;
+        voice.lastUniFreq.fill(0.0f);
+
+        // Reset only active unison voices — idle slots need no work
+        for (int u = 0; u < unisonCount; ++u)
         {
             voice.unisonSaws[u].reset();
             // Randomize initial phases for rich supersaw texture
@@ -1336,11 +1430,11 @@ private:
             }
         }
 
-        // Reset filters
-        voice.lpf.reset();
-        voice.hpf.reset();
-        voice.lpf.setMode(CytomicSVF::Mode::LowPass);
-        voice.hpf.setMode(CytomicSVF::Mode::HighPass);
+        // Reset filters (both L and R instances)
+        voice.lpfL.reset(); voice.lpfL.setMode(CytomicSVF::Mode::LowPass);
+        voice.lpfR.reset(); voice.lpfR.setMode(CytomicSVF::Mode::LowPass);
+        voice.hpfL.reset(); voice.hpfL.setMode(CytomicSVF::Mode::HighPass);
+        voice.hpfR.reset(); voice.hpfR.setMode(CytomicSVF::Mode::HighPass);
     }
 
     void noteOff(int noteNumber)
@@ -1367,8 +1461,10 @@ private:
     uint64_t voiceCounter = 0;
 
     // Shared FX (post-voice, applied to summed output)
+    // shimmerR removed: SkyShimmerReverb.processSample() already emits stereo L+R in a
+    // single call. The second instance was allocated (38 KB) but never referenced in
+    // renderBlock — dead weight discovered in DSP review 2026-04-20.
     SkyShimmerReverb shimmerL;
-    SkyShimmerReverb shimmerR;
     SkyChorus chorus;
 
     // D005: breathing LFO
