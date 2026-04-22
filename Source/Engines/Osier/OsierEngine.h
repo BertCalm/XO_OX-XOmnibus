@@ -540,6 +540,7 @@ public:
                     voice.toneShaper.setMode(CytomicSVF::Mode::LowPass);
                     voice.toneShaper.setCoefficients(roleCutoff, 0.2f, srf);
                     voice.lastToneShaperCutoff = roleCutoff;
+                }
                 // (coeff refresh decimated; cutNow + cfg constants change slowly).
                 if (updateFilter)
                 {
@@ -560,6 +561,7 @@ public:
                     voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
                                                  srf); // l2 → resonance shimmer
                     voice.lastFilterCutoff = fCut;
+                }
                 if (updateFilter)
                 {
                     float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 2500.0f, 200.0f, 20000.0f);
