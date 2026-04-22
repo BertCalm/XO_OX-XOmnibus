@@ -273,6 +273,10 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Oobleck", "oobl_"},
         // Fluid Dynamics Synthesis
         {"Ooze", "ooze_"},
+        // Soliton Synthesis
+        {"Oneiric", "oner_"},
+        // Wave-Terrain Synthesis
+        {"Outcrop", "outc_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();
