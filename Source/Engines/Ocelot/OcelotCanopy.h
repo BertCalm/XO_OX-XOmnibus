@@ -66,10 +66,6 @@ public:
         float pitchOffsetSemitones = (snap.canopyPitch - 0.5f) * 48.0f; // ±24 semitones
         float baseFreq =
             440.0f * xoceanus::fastPow2((baseNote - 69 + pitchOffsetSemitones + snap.pitchBendSemitones) * (1.0f / 12.0f));
-        // fastPow2 is ~50× faster than std::pow and accurate to ~0.02%.
-        float pitchOffset = (snap.canopyPitch - 0.5f) * 48.0f; // ±24 cents
-        float baseFreq =
-            440.0f * xoceanus::fastPow2((baseNote - 69 + pitchOffset * 0.01f + snap.pitchBendSemitones) * (1.0f / 12.0f));
 
         // Active partials (biome can tilt balance)
         int numPartials = std::clamp(snap.canopyPartials, 1, kMaxPartials);

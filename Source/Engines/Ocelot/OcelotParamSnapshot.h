@@ -50,7 +50,6 @@ struct OcelotParamSnapshot
     int chopRate = 8;
     float chopSwing = 0.1f;
     float bitDepth = 16.0f;
-    float sampleRateRed = 44100.0f; // NOTE: parameter-domain value (Hz), not engine SR. Default matches param default.
     // Do not default-init — must be set by prepare() on the live sample rate.
     // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
     float sampleRateRed = 0.0f;

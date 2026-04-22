@@ -623,16 +623,9 @@ public:
         float effectiveDrift = clamp(driftAmount + macroDrift * 0.3f, 0.0f, 1.0f);
         int effectiveMaqam = std::max(0, std::min(kNumMaqamat, maqamIndex));
 
-        // Reset coupling accumulators for next block
-        // P25 fix: capture couplingBreakpointMod before zeroing — it is read inside
-        // the per-sample loop via evolveBreakpoints(). The other two mods are already
-        // captured into effectiveDistribution/effectiveElasticity above.
-        const float capturedBreakpointMod = couplingBreakpointMod;
-        // Snapshot breakpoint coupling before reset (#1118 — the comment said
-        // "for next block" but the reset actually runs before the accumulator
-        // is read later in this block; snapshot preserves the value).
-        // couplingBarrierMod + couplingDistributionMod are consumed above
-        // (lines 604, 607) so their resets are in the right order already.
+        // Reset coupling accumulators for next block.
+        // Snapshot breakpoint coupling before reset — the reset runs before
+        // the accumulator is read in the per-sample loop via evolveBreakpoints().
         const float blockCouplingBreakpointMod = couplingBreakpointMod;
         couplingBreakpointMod = 0.0f;
         couplingBarrierMod = 0.0f;
@@ -796,7 +789,6 @@ public:
 
                     // Evolve breakpoints via stochastic random walk
                     evolveBreakpoints(voice, modulatedTimeStep * stochasticDepth, modulatedAmpStep * stochasticDepth,
-                                      smoothedDistribution, effectiveElasticity, capturedBreakpointMod);
                                       smoothedDistribution, effectiveElasticity, blockCouplingBreakpointMod);
                 }
 

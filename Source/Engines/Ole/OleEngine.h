@@ -293,10 +293,6 @@ public:
         // ---- Husband level lookup ----
         float husbandLvl[3] = {pHOud, pHBouz, pHPin};
 
-        // Update tremolo LFO rate once per block for all active Aunt 3 voices
-        // F20: only update non-stolen voices to avoid LFO phase discontinuity during crossfade
-        for (auto& v : voices)
-            if (v.active && !v.isHusband && v.auntIdx == 2 && !v.isBeingStolen)
         // Update tremolo LFO rate once per block for all active Aunt 3 voices,
         // and pre-compute Aunt-2 gourd body-resonance coefficients (note-constant
         // since v.freq and pA2Gs are both stable across the block).

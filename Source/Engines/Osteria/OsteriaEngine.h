@@ -418,7 +418,7 @@ struct MurmurGenerator
         modPhaseInc = 0.5f / std::max(1.0f, sampleRate);
     }
 
-    float process(float brightness, float /*sampleRate*/) noexcept
+    float process(float brightness, float sampleRate) noexcept
     {
         // Generate white noise via LCG
         rng = rng * 1664525u + 1013904223u;
