@@ -716,9 +716,6 @@ public:
         // P25 fix: snapshot coupling mods BEFORE zeroing so the sample loop
         // sees the values that arrived this block, not 0.
         const float blockCouplingPitchMod = couplingPitchMod;
-
-        // Snapshot pitch coupling before reset (#1118).
-        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingBodyMod = 0.0f;
@@ -889,7 +886,6 @@ public:
                 }
 
                 // Filter envelope: D001 velocity-scaled filter sweep.
-                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float filterEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 6000.0f * voice.velocity;
                 float cutoff = std::clamp(brightNow + filterEnvMod + lfo1Val * 3000.0f, 200.0f, 16000.0f);
                 // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
@@ -898,11 +894,6 @@ public:
                     voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
                     voice.outputFilter.setCoefficients(cutoff, 0.15f, srf); // low resonance — piano filters are gentle
                     voice.lastFilterCutoff = cutoff;
-                if (updateFilter)
-                {
-                    float cutoff = std::clamp(brightNow + filterEnvMod + lfo1Val * 3000.0f, 200.0f, 16000.0f);
-                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.outputFilter.setCoefficients(cutoff, 0.15f, srf); // low resonance — piano filters are gentle
                 }
                 float filtered = voice.outputFilter.processSample(voiceOut);
 

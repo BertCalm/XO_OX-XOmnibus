@@ -830,7 +830,7 @@ public:
                     continue;
                 }
 
-                // Filter envelope + LFO1 → brightness (env ticked per-sample, SVF decimated)
+                // Filter envelope + LFO1 → brightness (env ticked per-sample)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
                 // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
@@ -839,11 +839,6 @@ public:
                     voice.lpf.setMode(CytomicSVF::Mode::LowPass);
                     voice.lpf.setCoefficients(cutoff, 0.4f, srf);
                     voice.lastFilterCutoff = cutoff;
-                if (updateFilter)
-                {
-                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                    voice.lpf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.lpf.setCoefficients(cutoff, 0.4f, srf);
                 }
                 float filtered = voice.lpf.processSample(bodied);
 

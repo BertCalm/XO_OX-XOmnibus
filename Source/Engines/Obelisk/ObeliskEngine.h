@@ -1019,21 +1019,13 @@ freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
                 // ampEnv scales the overall voice amplitude (D004: envelope must shape output).
                 float ampEnvVal = voice.ampEnv.process();
 
-                // Filter envelope + LFO1 → brightness (env ticked per-sample, SVF decimated)
+                // Filter envelope + LFO1 → brightness (env ticked per-sample)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
-float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
+                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
                 // setMode hoisted to pre-block loop (P19 fix).
                 // FIX(D1/perf): use setCoefficients_fast (fastTan approximation) for per-sample
                 // cutoff modulation — avoids the more expensive setCoefficients path.
-                // Accurate to 0.03% for cutoff < 0.25×sr; adequate for a smoothed filter sweep.
                 voice.svf.setCoefficients_fast(cutoff, 0.3f, srf); // low resonance — stone is not resonant in the filter sense
-if (updateFilter)
-                {
-                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.3f,
-                                              srf); // low resonance — stone is not resonant in the filter sense
-                }
                 float filtered = voice.svf.processSample(resonanceSum);
 
                 float output = filtered * voice.ampLevel * ampEnvVal;

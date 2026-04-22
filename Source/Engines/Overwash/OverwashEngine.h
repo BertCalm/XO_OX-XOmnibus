@@ -446,13 +446,6 @@ public:
                 {
                     voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
                     voice.lastCutoff = voiceCutoff;
-                // SVF coeff refresh decimated to every 16 samples.
-                if (updateFilter)
-                {
-                    float voiceCutoff = pFilterCut * velBright + pFiltEnvAmt * filtLevel * 8000.0f * voice.velocity +
-                                        pBrightness * 4000.0f; // brightness independently brightens the tone
-                    voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
-                    voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
                 }
 
                 // LFOToPitch coupling: extPitchMod is accumulated in applyCouplingInput()

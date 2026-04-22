@@ -564,8 +564,6 @@ public:
 
 
                 float freq = voice.glide.process();
-
-                float freq = voice.glide.process();
                 freq *= blockBendRatio; // hoisted; uses pre-reset pitch coupling snapshot
 
                 // LFO1 -> pitch vibrato (subtle, +-50 cents at full depth)
@@ -616,21 +614,12 @@ public:
                     continue;
                 }
 
-                // Filter envelope + brightness — env ticked per sample, SVF coeff
-                // refresh decimated to every 16 samples.
+                // Filter envelope + brightness — env ticked per sample, SVF mode set once per block.
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
                 // D001: velocity shapes filter brightness
                 float velBright = voice.velocity * 4000.0f;
                 float cutoff = std::clamp(brightNow + fEnvMod + velBright + lfo2Val * 2000.0f, 200.0f, 20000.0f);
                 voice.svf.setCoefficients(cutoff, 0.15f, srf); // mode set once per block above
-                if (updateFilter)
-                {
-                    // D001: velocity shapes filter brightness
-                    float velBright = voice.velocity * 4000.0f;
-                    float cutoff = std::clamp(brightNow + fEnvMod + velBright + lfo2Val * 2000.0f, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.15f, srf);
-                }
                 float filtered = voice.svf.processSample(ampOut);
 
                 float output = filtered * ampLevel * tremGain;

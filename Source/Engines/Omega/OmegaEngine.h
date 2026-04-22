@@ -507,20 +507,12 @@ public:
                 float carrierOut = voice.carrier.process(modSignal);
 
                 // D001: velocity shapes FM brightness (more velocity = brighter attack)
-                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 5000.0f;
                 float cutoff = std::clamp(velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
 
                 // F2/P19: use fast path — mode is set block-rate; setCoefficients_fast
                 // uses fastTan (~0.03% error) vs std::tan, avoiding trig per-sample-per-voice.
                 voice.outputFilter.setCoefficients_fast(cutoff, 0.2f, srf);
-                if (updateFilter)
-                {
-                    float velBright = brightNow + voice.velocity * 4000.0f;
-                    float cutoff = std::clamp(velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
-                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.outputFilter.setCoefficients(cutoff, 0.2f, srf);
-                }
                 float filtered = voice.outputFilter.processSample(carrierOut);
 
                 // Amplitude envelope

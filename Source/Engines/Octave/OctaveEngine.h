@@ -864,20 +864,12 @@ public:
                 }
 
                 //--- Filter envelope (D001: velocity shapes timbre) ---
-                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f * voice.velocity;
                 // LFO1 modulates brightness (±3000 Hz at full depth)
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
                 // F01-fix: setMode is constant (LowPass) — hoisted to noteOn; use
                 // setCoefficients_fast() for modulated cutoff (avoids std::tan per-sample).
                 voice.svf.setCoefficients_fast(cutoff, 0.3f, srf);
-                if (updateFilter)
-                {
-                    // LFO1 modulates brightness (±3000 Hz at full depth)
-                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.3f, srf);
-                }
                 float filtered = voice.svf.processSample(sample);
 
                 float output = filtered * ampLevel;

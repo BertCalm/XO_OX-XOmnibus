@@ -542,29 +542,6 @@ public:
                 float effCut = clamp(filterCutoff + cutoffMod + velTimbre, 20.0f, 20000.0f);
                 float effRes = clamp(filterReso + resoMod, 0.0f, 1.0f);
                 voice.filter.setCoefficients(effCut, effRes, sr);
-                // === Filter — coeff refresh decimated to every 16 samples ===
-                if (updateFilter)
-                {
-                    float effCut = clamp(filterCutoff + cutoffMod + velTimbre, 20.0f, 20000.0f);
-                    float effRes = clamp(filterReso + resoMod, 0.0f, 1.0f);
-
-                    switch (filterType)
-                    {
-                    case 0:
-                        voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                        break;
-                    case 1:
-                        voice.filter.setMode(CytomicSVF::Mode::HighPass);
-                        break;
-                    case 2:
-                        voice.filter.setMode(CytomicSVF::Mode::BandPass);
-                        break;
-                    default:
-                        voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                        break;
-                    }
-                    voice.filter.setCoefficients(effCut, effRes, sr);
-                }
                 signal = voice.filter.processSample(signal);
 
                 // === Amp envelope ===
