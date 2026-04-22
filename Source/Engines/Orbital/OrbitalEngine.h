@@ -1355,24 +1355,27 @@ private:
     }
 
     // -------------------------------------------------------------------------
-    // NOTE: Alternative drawbar registrations considered — current values are final.
-    // Rock Hammond registration (8' heavy, 4' strong) defines ORBITAL's organ character.
-    // Each element corresponds to one drawbar partial; all un-set partials remain silent.
+    // DECIDED (2026-03-19): Psychedelic Charismatic Church in Jamaica
+    // Warm foundation (church) + shimmering upper harmonics (psychedelic) +
+    // soulful character. A reverent, expressive instrument with reggae spirit.
+    //
+    // Drawbar target: 5-4-5-7-4-6-3-5-8 (16' through 1')
+    // Mapped to available harmonics:
+    //   Warm bass foundation: moderate fundamental (0.625)
+    //   Psychedelic shimmer: strong 4' (0.875), boosted 2' (0.75)
+    //   Expressive character: full 1' sparkle (1.0), rich mid-range
     // -------------------------------------------------------------------------
     static std::array<float, kNumPartials> buildOrgan()
     {
-        // Hammond B3 drawbar registration (rock preset).
-        // Drawbar footages map to harmonic numbers:
-        //   16'=sub, 8'=fundamental, 5-1/3'=3rd, 4'=2nd, 2-2/3'=3rd,
-        //   2'=4th, 1-3/5'=5th, 1-1/3'=6th, 1'=8th
+        // Psychedelic Charismatic Church in Jamaica registration.
         std::array<float, kNumPartials> amplitudes{};
-        amplitudes[0] = 1.0f;  // 8'    -- fundamental
-        amplitudes[1] = 0.8f;  // 4'    -- 2nd harmonic (one octave up)
-        amplitudes[2] = 0.4f;  // 2-2/3' -- 3rd harmonic (octave + fifth)
-        amplitudes[3] = 0.7f;  // 2'    -- 4th harmonic (two octaves up)
-        amplitudes[4] = 0.3f;  // 1-3/5' -- 5th harmonic (two octaves + major third)
-        amplitudes[5] = 0.2f;  // 1-1/3' -- 6th harmonic (two octaves + fifth)
-        amplitudes[7] = 0.15f; // 1'    -- 8th harmonic (three octaves up)
+        amplitudes[0]  = 0.625f;   // 8'    -- warm fundamental (not dominant)
+        amplitudes[1]  = 0.875f;   // 4'    -- strong psychedelic shimmer
+        amplitudes[2]  = 0.5f;     // 2-2/3' -- mid-range warmth
+        amplitudes[3]  = 0.75f;    // 2'    -- psychedelic edge
+        amplitudes[4]  = 0.375f;   // 1-3/5' -- harmonic character touch
+        amplitudes[5]  = 0.625f;   // 1-1/3' -- extended shimmer (boosted from 0.2)
+        amplitudes[7]  = 1.0f;     // 1'    -- full sparkle cap (boosted from 0.15)
         return amplitudes;
     }
 
