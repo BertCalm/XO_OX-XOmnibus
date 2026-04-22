@@ -406,7 +406,6 @@ public:
                 float sig = 0.0f;
                 switch (paramEnvModel)
                 {
-                    case 0: // Wave: sin
                     case 0: // Wave: sin (fastSin: ~0.01% err, per-sample)
                         sig = fastSin(kObservTwoPi * static_cast<float>(t));
                         break;
@@ -419,11 +418,7 @@ public:
                         sig = flushDenormal(turbulenceSmoothed);
                         break;
                     }
-                    case 2: // Tidal: superposition of 3 sines
-                        sig = fastSin(kObservTwoPi * static_cast<float>(t))
-                            + 0.5f * fastSin(1.7f * kObservTwoPi * static_cast<float>(t))
-                            + 0.3f * fastSin(2.9f * kObservTwoPi * static_cast<float>(t));
-                    case 2: // Tidal: superposition of 3 sines (fastSin per-sample)
+                    case 2: // Tidal: superposition of 3 sines (fastSin per-sample, normalised)
                     {
                         const float ph = kObservTwoPi * static_cast<float>(t);
                         sig = fastSin(ph)
@@ -578,7 +573,6 @@ public:
         }
 
         // Pitch bend ratio (±2 semitones + mod matrix pitch offset in semitones)
-        float pitchBendRatio = fastPow2((pitchBendNorm * 2.0f + modPitchOffset) / 12.0f);
         float pitchBendRatio = fastPow2((pitchBendNorm * 2.0f + modPitchOffset) * (1.0f / 12.0f));
 
         // D006: aftertouch → distortion boost

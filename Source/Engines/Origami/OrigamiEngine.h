@@ -1791,6 +1791,11 @@ private:
                 // Legato: glide to new pitch without retriggering envelopes
                 voice.noteNumber = noteNumber;
                 voice.velocity = velocity;
+                // V1: update LFO params even in legato mode so param changes take effect
+                voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
+                voice.lfo1.setShape(lfo1Shape);
+                voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
+                voice.lfo2.setShape(lfo2Shape);
             }
             else
             {
@@ -1811,7 +1816,7 @@ private:
                 voice.foldEnvelope.setParams(foldAttack, foldDecay, foldSustain, foldRelease, sampleRateFloat);
                 voice.foldEnvelope.noteOn();
 
-                // V1 fix: update LFO state on full retrigger (legato only updates pitch/velocity)
+                // V1 fix: update LFO state on full retrigger
                 voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
                 voice.lfo1.setShape(lfo1Shape);
                 voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
@@ -1824,14 +1829,6 @@ private:
                     voice.postFilter.setMode(CytomicSVF::Mode::LowPass);
                     voice.postFilter.setCoefficients(velBrightness, 0.3f, sampleRateFloat);
                 }
-            }
-            else
-            {
-                // V1: even in legato mode, update LFO params so param changes take effect
-                voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
-                voice.lfo1.setShape(lfo1Shape);
-                voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
-                voice.lfo2.setShape(lfo2Shape);
             }
             return;
         }

@@ -617,26 +617,16 @@ public:
             if (v.active)
                 v.body.setParams(v.freq * bodyFreqMul, bodyQ);
 
-        // DSP FIX F12/F13: release coefficient is a function of sr (constant) and kRelTime
-        // (constant) — precompute once per block instead of once per voice per sample.
-        static constexpr float kRelTime = 0.3f;
-        const float relCoeff = 1.0f - 1.0f / (static_cast<float>(sr) * kRelTime);
-
-        auto* outL = buf.getWritePointer(0);
-        auto* outR = buf.getNumChannels() > 1 ? buf.getWritePointer(1) : buf.getWritePointer(0);
-
         // Block-constant values hoisted out of per-sample per-voice loop:
         //   Release-curve coefficient is constant for a given sample rate + kRelTime.
         //   Pitch-bend ratio is constant (pitchBendNorm is block-rate from MIDI).
-        //   Body resonance frequency per voice is note-constant — set once per voice.
+        //   Body resonance frequency per voice is note-constant — set once per voice above.
         static constexpr float kRelTime = 0.3f;
         const float relCoeff = 1.0f - 1.0f / (static_cast<float>(sr) * kRelTime);
         const float blockPitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
-        for (auto& v : voices)
-        {
-            if (v.active)
-                v.body.setParams(v.freq * bodyFreqMul, bodyQ);
-        }
+
+        auto* outL = buf.getWritePointer(0);
+        auto* outR = buf.getNumChannels() > 1 ? buf.getWritePointer(1) : buf.getWritePointer(0);
 
         for (int i = 0; i < ns; ++i)
         {

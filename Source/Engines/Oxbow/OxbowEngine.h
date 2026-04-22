@@ -372,9 +372,6 @@ public:
         // via implicit float→int truncation, always correct since currentNote is
         // already integer, but misleading). Use PitchBendUtil::bendToSemitones()
         // for the range, consistent with updateGoldenFrequencies().
-        const float exciterFreqHz =
-            midiToFreq(currentNote) * PitchBendUtil::semitonesToFreqRatio(
-                                          PitchBendUtil::bendToSemitones(pitchBendNorm, 2.0f));
         // Nyquist guard: clamp to 0.45 × sample rate so very high notes + pitch
         // bend can't push fastSin past the sample rate (would alias even though
         // phase wraps). 0.45 leaves headroom for any coupling-driven pitch wobble.
@@ -582,7 +579,6 @@ public:
                 // Cap at 0.95 to prevent self-oscillation: CytomicSVF Peak at
                 // resonance=1.0 → k=0 → self-oscillating sinusoid injected into the
                 // FDN tail (stability fix: unbound Q caused runaway energy buildup).
-                float liveQ = clamp(pResQ / 20.0f, 0.0f, 0.95f); // [0, 0.95] for CytomicSVF
                 // Golden resonator coefficients are set once per block above (hoisted
                 // out of this per-sample loop — goldenFreqHz + liveQ are both block-
                 // constant). Per-sample processing still runs; only the expensive
@@ -802,7 +798,7 @@ private:
     static constexpr int kGoldenFilters = 4;
 
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    int blockSize = 512;
+    // blockSize removed — was set in prepare() but never read in renderBlock().
 
     // FDN delay lines (8 channels)
     std::vector<float> fdnDelay[kFDNChannels];
@@ -847,12 +843,8 @@ private:
     std::vector<float> predelayBuf;
     int predelayPos = 0;
 
-    // Size scaling — sizeScale was intended as a runtime param but is never
-    // modified after construction, making it effectively constant 1.0f.  The
-    // pSize parameter affects predelay and damping frequency in renderBlock()
-    // but NOT the FDN delay line lengths (which are allocated once in prepare()).
-    // Future work: dynamic delay-line resizing via interpolated fractional delay.
-    float sizeScale = 1.0f; // currently unused/dead — kept for documentation
+    // sizeScale omitted — was constant 1.0f, never referenced in renderBlock().
+    // pSize affects predelay and damping directly; FDN lengths fixed at prepare().
     float dampingHz = 6000.0f; // used only in prepare() initial filter setup
 
     // Last cantilever damp value — used for hysteresis-gated coefficient updates

@@ -1013,7 +1013,8 @@ public:
                     float velCutoffMod = voice.velocity * velFilterEnv * 8000.0f;
                     float filterEnvMod = voice.filterEnvLevel * filterEnvAmt * 6000.0f;
                     float voiceCutoff = clamp(effectiveFilterCutoff + velCutoffMod + filterEnvMod, 20.0f, 20000.0f);
-                    voice.lpf.setCoefficients_fast(voiceCutoff, filterReso, srf);
+                    voice.lpfL.setCoefficients_fast(voiceCutoff, filterReso, srf);
+                    voice.lpfR.setCoefficients_fast(voiceCutoff, filterReso, srf);
                 }
                 // HPF coefficients are set once per block (block-rate setup above)
 
