@@ -431,7 +431,6 @@ public:
                 float vibrato = voice.vibratoLFO.process() * effectiveVibratoDepth;
                 float freq =
                     baseFreq * PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod + vibrato * 0.1f +
-                    baseFreq * PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod + vibrato * 0.1f +
                                                                    voice.dormancyPitchCents / 100.0f);
 
                 float l1 = voice.lfo1.process() * lfo1Depth;

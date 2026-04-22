@@ -480,7 +480,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float cutNow = smoothCutoff.process();
             float compNow = smoothCompanion.process();
 
@@ -540,13 +539,6 @@ public:
                     voice.toneShaper.setMode(CytomicSVF::Mode::LowPass);
                     voice.toneShaper.setCoefficients(roleCutoff, 0.2f, srf);
                     voice.lastToneShaperCutoff = roleCutoff;
-                // (coeff refresh decimated; cutNow + cfg constants change slowly).
-                if (updateFilter)
-                {
-                    float roleCutoff =
-                        std::clamp(cutNow + cfg.filterBiasCents + cfg.brightnessOffset * 2000.0f, 200.0f, 20000.0f);
-                    voice.toneShaper.setMode(CytomicSVF::Mode::LowPass);
-                    voice.toneShaper.setCoefficients(roleCutoff, 0.2f, srf);
                 }
                 float shaped = voice.toneShaper.processSample(oscMix);
 
@@ -560,12 +552,6 @@ public:
                     voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
                                                  srf); // l2 → resonance shimmer
                     voice.lastFilterCutoff = fCut;
-                if (updateFilter)
-                {
-                    float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 2500.0f, 200.0f, 20000.0f);
-                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.filter.setCoefficients(fCut, std::clamp(pResonance + l2 * 0.15f, 0.0f, 1.0f),
-                                                 srf); // l2 → resonance shimmer
                 }
                 float filtered = voice.filter.processSample(shaped);
 
