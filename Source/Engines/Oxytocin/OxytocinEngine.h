@@ -261,8 +261,8 @@ public:
             // We modify a local copy of snap for this voice
             // (fastPow2: ~0.1% error — per-voice per-block)
             ParamSnapshot voiceSnap = snap;
-            voiceSnap.cutoff *= lfo1CutoffMult; // F05/F06: fastPow2 pre-computed above
-            voiceSnap.cutoff *= xoceanus::fastPow2(lfo1Val * snap.lfoDepth * 2.0f * (1.0f / 12.0f));
+            // F05/F06: fastPow2 pre-computed above; * (1.0f/12.0f) avoids per-call division
+            voiceSnap.cutoff *= lfo1CutoffMult;
 
             // LFO2 → triangle position modulates I/P/C balance
             // Blend snap params toward triangle coords by lfo2 depth
@@ -281,12 +281,7 @@ public:
             sumC += v.lastEffC;
             ++activeCount;
 
-            auto* outL = buffer.getWritePointer(0);
-            auto* outR = buffer.getWritePointer(1);
-            // Mix to stereo with pan — accumulate into scratch
-            float panL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
-            float panR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
-
+            // Mix to stereo with pan — accumulate into scratch using block-level panL/panR
             auto* sL = scratchL.getData();
             auto* sR = scratchR.getData();
             for (int s = 0; s < numSamples; ++s)

@@ -359,6 +359,9 @@ public:
         // Aftertouch → effective oxide
         const float oxideWithAT = juce::jlimit(0.0f, 1.0f, effectiveOxide + aftertouchValue * 0.3f);
 
+        // Capture coupling morph before it gets zeroed later
+        const float couplingMorphIn = couplingMorphAccum;
+
         // Expression (CC11) + coupling morph → effective bias
         const float biasWithExpr = juce::jlimit(0.0f, 1.0f,
             effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphIn * 0.5f);
@@ -419,7 +422,7 @@ public:
 
         // Consume coupling accumulators — CAPTURE before zeroing (P25)
         const float couplingAudioIn  = couplingAudioAccum;
-        const float couplingMorphIn  = couplingMorphAccum;   // EnvToMorph → bias offset
+        // couplingMorphIn already captured above (before MIDI loop, needed for biasWithExpr)
         couplingFilterAccum = 0.0f;
         couplingAudioAccum  = 0.0f;
         couplingMorphAccum  = 0.0f;
@@ -562,7 +565,7 @@ public:
             {
                 if (!voice.active) continue;
 
-                // ---- LFO (D002/D005) — setRate/setShape hoisted to updateFilter gate ----
+                // ---- LFO (D002/D005) ----
                 if (updateFilter)
                 {
                     voice.lfo.setRate(paramLfoRate, currentSampleRate);
@@ -672,17 +675,7 @@ public:
                         // Normalized 0-1 (0 = right at write head, 1 = one full revolution behind)
                         float normDist = headDist / static_cast<float>(reelSizeSamples);
 
-                        float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
-                        if (updateFilter)
-                        {
-                            // setMode(LowPass) omitted here — set once in reset() / doNoteOn()
-                            float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
-                            oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
-                            float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
-                            oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
-                            voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
-                            voice.oxideFilter[h].setCoefficients_fast(oxideCutoff, 0.3f, currentSampleRate);
-                        }
+                        [[maybe_unused]] float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
                         rawSample = voice.oxideFilter[h].processSample(rawSample);
                         rawSample = flushDenormal(rawSample);
                     }
@@ -741,8 +734,6 @@ public:
                 // setMode() is applied once per block above; only coefficients need per-16 refresh.
                 if (updateFilter)
                 {
-                if (updateFilter)
-                {
                     voice.outputFilterL.setMode(filterMode);
                     voice.outputFilterR.setMode(filterMode);
                     voice.outputFilterL.setCoefficients_fast(finalCutoff, smoothedReso, currentSampleRate);
@@ -755,8 +746,6 @@ public:
                 outSampleR = flushDenormal(outSampleR);
 
                 // ---- Amplitude envelope × velocity ----
-                // D001: velocity shapes brightness via velFilterMod (already baked into
-                // write gain in PASS 2; envelope controls release shape here)
                 float envGain = ampLevel * voice.crossfadeGain;
                 outSampleL *= envGain;
                 outSampleR *= envGain;
@@ -841,8 +830,6 @@ public:
             }
         }
     }
-
-    } // end renderBlock
 
     //==========================================================================
     //  S Y N T H   E N G I N E   I N T E R F A C E  —  P A R A M E T E R S

@@ -833,7 +833,6 @@ public:
         // Step 4: Per-sample render loop
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float densNow = smoothDensity.process();
             float hardNow = smoothHardness.process();
             float prepDNow = smoothPrepDepth.process();
@@ -854,8 +853,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
-freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
                 // LFO modulation
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 → brightness
@@ -1027,13 +1025,6 @@ float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.
                 // cutoff modulation — avoids the more expensive setCoefficients path.
                 // Accurate to 0.03% for cutoff < 0.25×sr; adequate for a smoothed filter sweep.
                 voice.svf.setCoefficients_fast(cutoff, 0.3f, srf); // low resonance — stone is not resonant in the filter sense
-if (updateFilter)
-                {
-                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.3f,
-                                              srf); // low resonance — stone is not resonant in the filter sense
-                }
                 float filtered = voice.svf.processSample(resonanceSum);
 
                 float output = filtered * voice.ampLevel * ampEnvVal;

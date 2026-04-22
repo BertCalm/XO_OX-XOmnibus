@@ -716,9 +716,6 @@ public:
         // P25 fix: snapshot coupling mods BEFORE zeroing so the sample loop
         // sees the values that arrived this block, not 0.
         const float blockCouplingPitchMod = couplingPitchMod;
-
-        // Snapshot pitch coupling before reset (#1118).
-        const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingBodyMod = 0.0f;
@@ -790,7 +787,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float brightNow = smoothBrightness.process();
             float hardNow = smoothHardness.process();
             float densNow = smoothDensity.process();
@@ -809,7 +805,6 @@ public:
 
                 float freq = voice.glide.process();
                 freq *= blockBendRatio; // hoisted; includes pre-zeroed pitch coupling (P25 fix)
-                freq *= blockBendRatio; // hoisted; pre-reset pitch coupling snapshot
 
                 // D002: LFO modulation
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 -> brightness
@@ -898,11 +893,6 @@ public:
                     voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
                     voice.outputFilter.setCoefficients(cutoff, 0.15f, srf); // low resonance — piano filters are gentle
                     voice.lastFilterCutoff = cutoff;
-                if (updateFilter)
-                {
-                    float cutoff = std::clamp(brightNow + filterEnvMod + lfo1Val * 3000.0f, 200.0f, 16000.0f);
-                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.outputFilter.setCoefficients(cutoff, 0.15f, srf); // low resonance — piano filters are gentle
                 }
                 float filtered = voice.outputFilter.processSample(voiceOut);
 
@@ -1212,8 +1202,6 @@ public:
         paramCompetition = apvts.getRawParameterValue("oven_competition");
         paramCouplingRes = apvts.getRawParameterValue("oven_couplingResonance");
     }
-
-    } // end renderBlock
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use

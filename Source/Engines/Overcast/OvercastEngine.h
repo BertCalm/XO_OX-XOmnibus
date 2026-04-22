@@ -337,7 +337,7 @@ public:
         float pShatterGap = pShatterGapParam ? pShatterGapParam->load() : 0.1f;
         float pStereoWidth = pStereoWidthParam ? pStereoWidthParam->load() : 0.5f;
         float pFilterCut = pFilterCutParam ? pFilterCutParam->load() : 8000.0f;
-        float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.15f;
+        [[maybe_unused]] float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.15f;
         float pAmpA = pAmpAParam ? pAmpAParam->load() : 0.005f;
         float pAmpD = pAmpDParam ? pAmpDParam->load() : 0.3f;
         float pAmpS = pAmpSParam ? pAmpSParam->load() : 1.0f;
@@ -404,7 +404,6 @@ public:
 
         for (int i = 0; i < numSamples; ++i)
         {
-            const bool updateFilter = ((i & 15) == 0);
             // Gate LFOs: advance state but output 0 when fully frozen.
             // Always advance to maintain phase continuity for the next crystallization event.
             // Frozen state output = 0 (no evolution = no modulation = CPU-equivalent to zero).
@@ -570,14 +569,6 @@ public:
                     voiceSample *= (2.0f / static_cast<float>(crystal.numPeaks));
 
                 // Per-voice filter (coeff refresh decimated)
-                if (updateFilter)
-                {
-                    float voiceCutoff = pFilterCut;
-                    // Frozen state: filter stays put. Crystallizing: filter sweeps
-                    if (!crystal.isFrozen)
-                        voiceCutoff = clamp(voiceCutoff * crystal.freezeTimer / crystal.freezeDuration, 50.0f, srF * 0.49f);
-                    voice.voiceFilter.setCoefficients_fast(clamp(voiceCutoff, 50.0f, srF * 0.49f), pFilterRes, srF);
-                }
                 voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 voiceSample *= ampLevel;

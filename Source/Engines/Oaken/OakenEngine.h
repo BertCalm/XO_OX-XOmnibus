@@ -563,7 +563,6 @@ public:
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
         const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
-        const float roomSpread = pRoom * 0.15f;
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -604,17 +603,11 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-float bowPNow    = smoothBowPressure.process();
-            (void)smoothStringTension.process(); // advance smoother; value is block-constant (moved to pre-sample loop)
-            float bodyDNow   = smoothBodyDepth.process();
-            float brightNow  = smoothBrightness.process();
-            (void)smoothWoodAge.process();        // advance smoother; value is block-constant (moved to pre-sample loop)
-const bool updateFilter = ((s & 15) == 0);
             float bowPNow = smoothBowPressure.process();
-            float strTNow = smoothStringTension.process();
+            (void)smoothStringTension.process(); // advance smoother; value used at block level
             float bodyDNow = smoothBodyDepth.process();
             float brightNow = smoothBrightness.process();
-            float woodANow = smoothWoodAge.process();
+            (void)smoothWoodAge.process(); // advance smoother; value used at block level
             float curingRNow = smoothCuringRate.process();
 
             float mixL = 0.0f, mixR = 0.0f;

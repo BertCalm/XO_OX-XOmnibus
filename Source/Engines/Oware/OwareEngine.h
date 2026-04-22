@@ -725,7 +725,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float matNow = smoothMaterial.process();
             float malletNow = smoothMallet.process();
             float buzzNow = smoothBuzz.process();
@@ -766,8 +765,6 @@ public:
                 //     through modal ratios. Balinese ombak is a fixed-Hz beat between
                 //     paired bars tuned ~3-7 Hz apart; scaling it by high modal ratios
                 //     (e.g., 9×) would produce semitone-class detuning at upper modes.
-                float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f; // [0,1]
-                float shimmerOffset = pShimmerHz * shimmerMod;                  // 0 to shimmerHz
                 // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio)
                 // BUG-2 FIX: use pShimmerHz parameter instead of hardcoded 0.3
                 // (shimmerLFO.setRate hoisted to per-block voice loop above.)
@@ -809,7 +806,7 @@ public:
                     // F4: shimmer applied only to mode 0 (fundamental pair detuning).
                     //     Upper modes use clean `freq` × ratio — Balinese ombak is a
                     //     fixed Hz offset between two bars, not a per-mode detuning.
-                    float modeFreq = (m == 0 ? freq + shimmerOffset : freq) * ratio;
+                    float modeFreq = (m == 0 ? freqWithShimmer : freq) * ratio;
 
                     // Q: material-dependent base + mode-dependent falloff
                     float baseQ = 80.0f + voiceMatNow * 1420.0f;
@@ -864,13 +861,6 @@ public:
                 {
                     voice.svf.setCoefficients(cutoff, 0.5f, srf);
                     voice.lastCutoff = cutoff;
-                if (updateFilter)
-                {
-                    // BUG-1 FIX: LFO1 modulates brightness (±3000 Hz at full depth)
-                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.5f, srf);
-                }
                 float filtered = voice.svf.processSample(bodied);
                 // F10: voice.sympatheticOut removed — it was set here but never read
                 //      (getSampleForCoupling exports couplingCacheL/R, not sympatheticOut).

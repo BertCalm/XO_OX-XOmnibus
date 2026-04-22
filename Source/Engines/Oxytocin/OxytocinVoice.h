@@ -261,7 +261,6 @@ public:
         // which is included by this file) instead of std::pow — called per active voice
         // per block on the audio thread.
         float semitones = static_cast<float>(note - 69) + snap.pitch;
-        float baseHz = 440.0f * xoceanus::fastPow2(semitones / 12.0f) * pitchBendRatio;
         float baseHz = 440.0f * xoceanus::fastPow2(semitones * (1.0f / 12.0f)) * pitchBendRatio;
 
         // D004: per-voice detune spread
@@ -275,7 +274,6 @@ public:
             detuneOffset = spread * snap.detune; // detune is in cents (0–100)
         }
         // F06 fix: fastPow2 for detune ratio — same rationale as F03.
-        float noteHz = baseHz * xoceanus::fastPow2(detuneOffset / 1200.0f);
         float noteHz = baseHz * xoceanus::fastPow2(detuneOffset * (1.0f / 1200.0f));
 
         osc.setFrequency(noteHz);
@@ -428,11 +426,10 @@ public:
                     // meaning it enters the thermal stage input — correctly simulating
                     // the Serge C→I patch where commitment's output influences intimacy
                     // warming on the following sample.
-                    cToICarry = std::clamp(reactiveOut * entAmt * 0.2f, -0.25f, 0.25f) * boostedC * 0.1f;
+                    // (entSeriesCI = entAmt_ * 0.2f precomputed above.)
+                    cToICarry = std::clamp(reactiveOut * entSeriesCI, -0.25f, 0.25f) * boostedC * 0.1f;
                     // F20: flush denormal — cToICarry can become tiny after long silence
                     cToICarry = xoceanus::flushDenormal(cToICarry);
-                    // (entSeriesCI = entAmt * 0.2f precomputed above.)
-                    cToICarry = std::clamp(reactiveOut * entSeriesCI, -0.25f, 0.25f) * boostedC * 0.1f;
                 }
                 else
                 {

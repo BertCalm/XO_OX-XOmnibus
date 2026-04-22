@@ -627,12 +627,6 @@ public:
             if (voices[vi].active)
                 voices[vi].svf.setMode(CytomicSVF::Mode::LowPass);
 
-            {
-                auto& voice = voices[vi];
-                if (voice.active)
-                    voice.ampEnv.setADSR(attack, decay, sustain, release);
-            }
-
         // Hoist per-voice LFO config. pLFO1Rate is block-rate; D005 floor enforced.
         {
             const float lfo1RateClamped = std::max(0.01f, pLFO1Rate);
@@ -652,7 +646,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float clusterNow = smoothCluster.process();
             float chiffNow = smoothChiff.process();
             float detuneNow = smoothDetune.process();
@@ -906,11 +899,6 @@ public:
                 // Decimate SVF coefficient refresh to every 16 samples (~0.36ms @
                 // 44.1k — below audible lag). Filter env is still ticked per-sample
                 // above so envelope state advances at audio rate.
-                if (updateFilter)
-                {
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients_fast(voiceCutoff, resNow, srf);
-                }
                 float filtered = voice.svf.processSample(signal);
 
                 float output = filtered * envLevel;

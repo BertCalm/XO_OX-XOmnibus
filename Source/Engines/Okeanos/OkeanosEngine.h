@@ -546,7 +546,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float warmthNow = smoothWarmth.process();
             float bellNow = smoothBell.process();
             float brightNow = smoothBrightness.process();
@@ -562,8 +561,6 @@ public:
                     continue;
 
 
-
-                float freq = voice.glide.process();
 
                 float freq = voice.glide.process();
                 freq *= blockBendRatio; // hoisted; uses pre-reset pitch coupling snapshot
@@ -589,10 +586,7 @@ public:
 
                 // Tremolo (Rhodes' optional built-in stereo vibrato).
                 // setRate is called once per block in the LFO config section above.
-                // Tremolo (Rhodes' optional built-in stereo vibrato) — setRate decimated
-                // to every 16 samples (smoother output differences inaudible at that grain).
-                if (updateFilter)
-                    voice.tremoloLFO.setRate(tremRateNow, srf);
+                // Tremolo (Rhodes' optional built-in stereo vibrato) — rate set per-block above.
                 float tremVal = voice.tremoloLFO.process();
                 float tremGain = 1.0f - tremDepthNow * 0.5f * (1.0f + tremVal);
 
@@ -623,14 +617,6 @@ public:
                 float velBright = voice.velocity * 4000.0f;
                 float cutoff = std::clamp(brightNow + fEnvMod + velBright + lfo2Val * 2000.0f, 200.0f, 20000.0f);
                 voice.svf.setCoefficients(cutoff, 0.15f, srf); // mode set once per block above
-                if (updateFilter)
-                {
-                    // D001: velocity shapes filter brightness
-                    float velBright = voice.velocity * 4000.0f;
-                    float cutoff = std::clamp(brightNow + fEnvMod + velBright + lfo2Val * 2000.0f, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.15f, srf);
-                }
                 float filtered = voice.svf.processSample(ampOut);
 
                 float output = filtered * ampLevel * tremGain;
