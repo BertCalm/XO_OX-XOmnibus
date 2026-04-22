@@ -820,6 +820,8 @@ public:
         paramLfo2Shape = apvts.getRawParameterValue("grow_lfo2Shape");
     }
 
+    } // end renderBlock
+
 private:
     double sr = 0.0;        // Sentinel: must be set by prepare() before use
     float srf = 0.0f;       // Sentinel: must be set by prepare() before use

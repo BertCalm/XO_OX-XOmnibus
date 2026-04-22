@@ -787,6 +787,7 @@ public:
                     {
                         voice.hfNoiseShaper.setCoefficients(hfCutoff, 0.3f, srf);
                         voice.lastHFCutoff = hfCutoff;
+                    }
                     // Shape noise through body-tuned SVF (coeff refresh decimated)
                     if (updateFilter)
                     {
@@ -839,6 +840,7 @@ public:
                     voice.lpf.setMode(CytomicSVF::Mode::LowPass);
                     voice.lpf.setCoefficients(cutoff, 0.4f, srf);
                     voice.lastFilterCutoff = cutoff;
+                }
                 if (updateFilter)
                 {
                     float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
