@@ -632,7 +632,6 @@ public:
                 if (voice.active)
                     voice.ampEnv.setADSR(attack, decay, sustain, release);
             }
-        }
 
         // Hoist per-voice LFO config. pLFO1Rate is block-rate; D005 floor enforced.
         {
