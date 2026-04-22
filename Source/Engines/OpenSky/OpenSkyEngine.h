@@ -865,7 +865,6 @@ public:
         // --- Render audio per sample ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
-            const bool updateFilter = ((sample & 15) == 0);
             float mixL = 0.0f, mixR = 0.0f;
 
             // Advance LFOs

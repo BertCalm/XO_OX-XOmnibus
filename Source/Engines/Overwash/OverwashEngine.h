@@ -394,7 +394,6 @@ public:
 
         for (int i = 0; i < numSamples; ++i)
         {
-            const bool updateFilter = ((i & 15) == 0);
             float lfo1Val = lfo1.process();
             float lfo2Val = lfo2.process();
             float breathVal = breathLfo.process();

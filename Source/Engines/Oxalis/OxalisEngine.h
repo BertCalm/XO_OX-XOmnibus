@@ -446,7 +446,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float cutNow = smoothCutoff.process();
             float phiNow = smoothPhi.process();
             float sprNow = smoothSpread.process();

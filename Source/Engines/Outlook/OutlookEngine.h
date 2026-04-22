@@ -260,7 +260,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             const float lfo1Val = lfo1.process();
             const float lfo2Val = lfo2.process();
 

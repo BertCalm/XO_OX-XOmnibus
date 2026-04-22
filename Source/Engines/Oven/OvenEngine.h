@@ -787,7 +787,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float brightNow = smoothBrightness.process();
             float hardNow = smoothHardness.process();
             float densNow = smoothDensity.process();

@@ -611,7 +611,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float clusterNow = smoothCluster.process();
             float chiffNow = smoothChiff.process();
             float detuneNow = smoothDetune.process();

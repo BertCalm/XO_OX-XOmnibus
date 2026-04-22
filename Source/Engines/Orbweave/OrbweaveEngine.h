@@ -429,7 +429,6 @@ public:
         // === Sample Loop ===
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float mixL = 0.0f, mixR = 0.0f;
 
             for (int vi = 0; vi < kMaxVoices; ++vi)
