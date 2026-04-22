@@ -894,7 +894,9 @@ public:
                 ++count;
         activeVoiceCount.store(count);
         analyzeForSilenceGate(buffer, numSamples);
-    }
+    } // end for (int s...) sample loop
+
+    } // end renderBlock
 
     //==========================================================================
     // Note management
