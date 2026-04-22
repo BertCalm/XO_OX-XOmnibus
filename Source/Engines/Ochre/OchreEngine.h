@@ -715,7 +715,6 @@ public:
         // Per-sample rendering
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float condNow = smoothConductivity.process();
             float hardNow = smoothHardness.process();
             float bodyDNow = smoothBodyDepth.process();
@@ -787,11 +786,6 @@ public:
                     {
                         voice.hfNoiseShaper.setCoefficients(hfCutoff, 0.3f, srf);
                         voice.lastHFCutoff = hfCutoff;
-                    // Shape noise through body-tuned SVF (coeff refresh decimated)
-                    if (updateFilter)
-                    {
-                        voice.hfNoiseShaper.setMode(CytomicSVF::Mode::BandPass);
-                        voice.hfNoiseShaper.setCoefficients(std::clamp(freq * 8.0f, 500.0f, srf * 0.45f), 0.3f, srf);
                     }
                     float shapedNoise = voice.hfNoiseShaper.processSample(noise);
 
