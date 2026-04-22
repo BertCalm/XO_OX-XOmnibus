@@ -1,0 +1,17 @@
+{
+    "name": "Legacy Hymn",
+    "mood": "Deep",
+    "engines": ["Organon"],
+    "author": "XO_OX",
+    "version": "1.0",
+    "description": "Legacy preset from schema v1 days.",
+    "tags": ["deep","organ","drone"],
+    "macroLabels": ["CHARACTER","MOVEMENT","COUPLING","SPACE"],
+    "couplingIntensity": "None",
+    "tempo": 0.0,
+    "dna": { "brightness": 0.2, "warmth": 0.8, "movement": 0.3, "density": 0.7, "space": 0.9, "aggression": 0.1 },
+    "parameters": {},
+    "coupling": { "pairs": [] },
+    "macroTargets": [[],[],[],[]],
+    "macros": {}
+}
