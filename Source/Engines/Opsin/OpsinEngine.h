@@ -487,7 +487,7 @@ public:
     {
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0) return;
-        if (sampleRateFloat <= 0.0f) { sampleRateFloat = 44100.0f; }
+        if (sampleRateFloat <= 0.0f) { buffer.clear(); return; }
 
         // ---- ParamSnapshot ----
         const float rawMaterial    = loadParam(pMaterial,    2.0f);
