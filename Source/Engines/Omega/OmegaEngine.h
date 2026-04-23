@@ -242,8 +242,6 @@ public:
         smoothRatio.prepare(srf);
         smoothFeedback.prepare(srf);
         smoothPurity.prepare(srf);
-        smoothBrightness.prepare(srf);
-        smoothDistillRate.prepare(srf);
 
         prepareSilenceGate(sr, maxBlockSize, 300.0f);
     }
@@ -365,8 +363,6 @@ public:
         smoothRatio.set(effectiveRatio);
         smoothFeedback.set(effectiveFeedback);
         smoothPurity.set(pPurity);
-        smoothBrightness.set(effectiveBright);
-        smoothDistillRate.set(pDistill);
 
         // Snapshot pitch coupling before reset (#1118).
         const float blockCouplingPitchMod = couplingPitchMod;
@@ -409,8 +405,6 @@ public:
 
         // CPU fix 1 (OMEGA): precompute distillation decayCoeff once per block.
         // pDistill and dtSec are both block-rate constants; std::exp is expensive.
-        // smoothDistillRate has just been set from pDistill — use pDistill directly
-        // for the block-rate coefficient.
         const float blockDecayCoeff = DistillationModel::computeDecayCoeff(pDistill, dtSec);
 
         // CPU fix 2 (OMEGA): precompute per-voice pan gains once per block.
@@ -436,11 +430,6 @@ public:
             float ratioNow = smoothRatio.process();
             float fbNow = smoothFeedback.process();
             float purityNow = smoothPurity.process();
-            float brightNow = smoothBrightness.process();
-            (void)brightNow; // smoother tick required; brightness folded into filter cutoff block-rate
-            float distRNow = smoothDistillRate.process();
-            (void)distRNow; // block-rate decayCoeff used instead (CPU fix 1)
-
             float mixL = 0.0f, mixR = 0.0f;
 
             for (int vi = 0; vi < kMaxVoices; ++vi)
@@ -732,7 +721,7 @@ private:
     std::atomic<int> activeVoiceCount{0};
 
     ParameterSmoother smoothModIndex, smoothRatio, smoothFeedback;
-    ParameterSmoother smoothPurity, smoothBrightness, smoothDistillRate;
+    ParameterSmoother smoothPurity;
 
     float pitchBendNorm = 0.0f;
     float modWheelAmount = 0.0f;
