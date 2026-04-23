@@ -64,6 +64,7 @@ struct OrreryVoice
     // ---- filter (stereo, one per voice) ----
     CytomicSVF filterL;
     CytomicSVF filterR;
+    int prevFltType = -1; // sentinel: -1 forces IC reset on first block
 
     // ---- envelopes ----
     StandardADSR ampEnv;
@@ -119,6 +120,7 @@ struct OrreryVoice
         }
         filterL.reset();
         filterR.reset();
+        prevFltType = -1;
         ampEnv.reset();
         filterEnv.reset();
         lfo1.reset();
@@ -1174,6 +1176,12 @@ private:
                     case 2: fMode = CytomicSVF::Mode::BandPass; break;
                     case 3: fMode = CytomicSVF::Mode::Notch;    break;
                     default: break;
+                    }
+                    if (fltType != v.prevFltType)
+                    {
+                        v.filterL.reset();
+                        v.filterR.reset();
+                        v.prevFltType = fltType;
                     }
                     v.filterL.setMode(fMode);
                     v.filterR.setMode(fMode);
