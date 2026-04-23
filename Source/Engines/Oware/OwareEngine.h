@@ -768,11 +768,6 @@ public:
                 //     (e.g., 9×) would produce semitone-class detuning at upper modes.
                 float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f; // [0,1]
                 float shimmerOffset = pShimmerHz * shimmerMod;                  // 0 to shimmerHz
-                // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio)
-                // BUG-2 FIX: use pShimmerHz parameter instead of hardcoded 0.3
-                // (shimmerLFO.setRate hoisted to per-block voice loop above.)
-                float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f;      // [0,1]
-                float shimmerOffset = pShimmerHz * shimmerMod;                      // 0 to shimmerHz
                 // Apply as additive Hz offset (Balinese: beat rate in Hz, not cents)
                 float freqWithShimmer = freq + shimmerOffset;
 
