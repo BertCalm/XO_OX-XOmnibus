@@ -143,6 +143,7 @@ struct OctaveChiffGenerator
 
         // Shape noise to pipe resonance
         filterState += filterCoeff * (out - filterState);
+        filterState = flushDenormal(filterState);
         ++sampleCounter;
         return filterState;
     }
