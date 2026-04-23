@@ -1081,13 +1081,11 @@ struct ObiontVoice
 
     // Note-on: seed the active CA (mode selects 1D or 2D) and trigger the ADSR.
     // mode: 0 = 1D, 1 = 2D.
-    // frequency: legacy parameter kept for call-site symmetry; seedFreq is derived
-    //            from midiNote internally to produce per-note timbral variation.
+    // seedFreq is derived from midiNote internally to produce per-note timbral variation.
     // sampleRate: ADSR was already prepared in reset(); not re-prepared here to
     //             avoid discontinuities on legato note-on.
-    void noteOn(int midiNote, float vel, int frequency, float density, double sampleRate, int mode = 0) noexcept
+    void noteOn(int midiNote, float vel, float density, double sampleRate, int mode = 0) noexcept
     {
-        (void)frequency;  // derived from midiNote internally
         (void)sampleRate; // ADSR prepared in reset(); no need to re-prepare here
         note = midiNote;
         velocity = vel;
@@ -1135,10 +1133,9 @@ struct ObiontVoice
     // decremented per sample in the render loop; the CA grid is re-seeded
     // immediately so the new note's timbral evolution starts right away.
     // mode: 0 = 1D, 1 = 2D (seed appropriate grid).
-    // frequency: legacy parameter (unused — seedFreq derived from midiNote).
-    void steal(int midiNote, float vel, int frequency, float density, double sampleRate, int mode = 0) noexcept
+    // seedFreq is derived from midiNote internally.
+    void steal(int midiNote, float vel, float density, double sampleRate, int mode = 0) noexcept
     {
-        (void)frequency; // derived from midiNote internally
 
         // F02/F28-fix: stealGain is now a 0→1 ramp-up for the NEW note's audio.
         // Start at 0 (mute the first sample of the new note) and ramp to 1 over
@@ -1769,7 +1766,7 @@ private:
         {
             if (!v.active)
             {
-                v.noteOn(note, vel, note % 12 + 1, density, (double)sr, mode);
+                v.noteOn(note, vel, density, (double)sr, mode);
                 return;
             }
         }
@@ -1791,7 +1788,7 @@ private:
             }
         }
         if (victim)
-            victim->steal(note, vel, note % 12 + 1, density, (double)sr, mode);
+            victim->steal(note, vel, density, (double)sr, mode);
     }
 
     void handleNoteOff(int note) noexcept

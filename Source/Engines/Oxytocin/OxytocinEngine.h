@@ -241,12 +241,6 @@ public:
         // F05/F06 fix: pre-compute LFO1 cutoff multiplier and detune ratio at block rate
         // using fastPow2 instead of std::pow (called per active voice in the old code).
         const float lfo1CutoffMult = xoceanus::fastPow2(lfo1Val * snap.lfoDepth * 2.0f / 12.0f);
-        // Pan gains are block-constant (snap.pan is stable per block) and identical
-        // for every voice — compute once here instead of inside the per-voice loop.
-        // TODO(#): intended refactor to use these in the voice loop; currently the
-        // loop recomputes per-voice. Kept as [[maybe_unused]] until the refactor lands.
-        [[maybe_unused]] const float blockPanL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
-        [[maybe_unused]] const float blockPanR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
 
         for (int vi = 0; vi < maxV; ++vi)
         {
