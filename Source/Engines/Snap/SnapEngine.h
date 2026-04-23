@@ -377,7 +377,7 @@ public:
 
         // Coupling send offset from M3 COUPLING — used downstream by the coupling bus
         const float effCouplingLevel = std::max(0.0f, std::min(1.0f, macroCoupling * 0.5f));
-        (void)effCouplingLevel; // suppress warning until coupling bus routing is wired
+        (void)effCouplingLevel; // coupling bus routing not yet wired — tracked with Bob in #1143
 
         // M1 DART: sharper transient (+40% snap), shorter decay (-30% time)
         // The neon tetra's fastest dart — maximum attack, minimum hang time
