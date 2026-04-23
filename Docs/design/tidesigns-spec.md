@@ -365,13 +365,13 @@ Keep the pills. 10 pills at 28px is the right call for this use case — the pop
 
 The search field is already auto-focused and 11px body font. Increase its visual weight:
 - Border color on focus: change `focusedOutlineColourId` from `border()` to `engineAccent` (or `xoGold` if no engine is loaded). This ties the search field to the current engine and makes the focused state obvious.
-- Placeholder text: change "Search engines..." to "Search 88 engines..." — the count gives users confidence in the scope.
+- Placeholder text: change "Search engines..." to "Search 90 engines..." — the count gives users confidence in the scope.
 - Height: increase from the current reduced(0,2) within a 32px row to 26px (remove the 2px vertical reduction).
 
 **File: `Source/UI/Gallery/EnginePickerPopup.h` lines 64–78**
 
 ```cpp
-searchField.setTextToShowWhenEmpty("Search 88 engines...",
+searchField.setTextToShowWhenEmpty("Search 90 engines...",
                                     GalleryColors::get(GalleryColors::t4()));
 // Focused outline: accent
 searchField.setColour(juce::TextEditor::focusedOutlineColourId,
@@ -646,7 +646,7 @@ Priority: NICE
 | A3-03 | MasterFX — chip pills | SHOULD | `MasterFXSection.h` | Per-section pill backgrounds replacing single fill |
 | A3-04 | MasterFX — indicator dots | SHOULD | `MasterFXSection.h` | 6px accent dot per section (active/bypassed states) |
 | A3-05 | MasterFX — SEQ toggle | SHOULD | `MasterFXSection.h` | Shrink SEQ toggle to 18px; dim chip when off |
-| A4-01 | Picker — search prominence | SHOULD | `EnginePickerPopup.h` | Focused border = accent; placeholder = "Search 88 engines..." |
+| A4-01 | Picker — search prominence | SHOULD | `EnginePickerPopup.h` | Focused border = accent; placeholder = "Search 90 engines..." |
 | A4-02 | Picker — pill active color | SHOULD | `EnginePickerPopup.h` | Active pill: gold text + gold-dim bg; hover: T2 |
 | A4-03 | Picker — row refinements | NICE | `EnginePickerPopup.h` | Row 28px; left border on selected; category badge T4 |
 | P5-01 | Polish — LnF comment | MUST | `GalleryLookAndFeel.h:9` | Update v04 → v05 reference |
@@ -673,7 +673,7 @@ After each batch of changes:
 3. Manual check: click each signal flow label → ParameterGrid scrolls to correct section
 4. Manual check: COUPLE tab → collapsed route cards show real engine names in accent colors
 5. Manual check: MasterFX strip fits within 68px with no overlapping knob labels
-6. Manual check: Engine picker search field shows "Search 88 engines..." placeholder and focused accent border
+6. Manual check: Engine picker search field shows "Search 90 engines..." placeholder and focused accent border
 
 ---
 

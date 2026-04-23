@@ -1,7 +1,7 @@
 # TIDEsigns QDD Full-Fleet UI/UX Audit — 2026-03-29
 
 ## Overview
-- **Target:** XOceanus Desktop Plugin — 86 UI files, 88 engines, ~1.5MB source
+- **Target:** XOceanus Desktop Plugin — 86 UI files, 90 engines, ~1.5MB source
 - **Method:** RAC (Ringleader + Architect + Consultant) × TIDEsigns × QDD
 - **Phases:** 5 (Foundation → Core Components → Subsystems → Engine-Specific → Cross-Cutting)
 - **Subagent dispatches:** 34 parallel audits
@@ -153,7 +153,7 @@
 
 ## Phase 4: EngineVocabulary Coverage
 
-- 7/88 engines have override tables (9.5%)
+- 7/90 engines have override tables (9.5%)
 - 50% of fallback-derived labels are poor or broken
 - Root causes: multi-underscore IDs, LFO identity erasure, parallel envelope collision, multi-layer LEVEL/RATE/DEPTH saturation
 - Priority engines needing overrides: Oxytocin, Ocelot, Owlfish, Obscura, Fat
