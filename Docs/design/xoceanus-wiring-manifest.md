@@ -1059,4 +1059,4 @@ Visual signal-flow representation showing active coupling routes as a readable c
 ---
 
 *End of XOceanus UI Wiring Manifest — Phase 1*
-*Built from: `Source/UI/XOceanusEditor.h` (4,323 lines), `Docs/design/xoceanus-spatial-architecture-v1.md`, `Docs/design/xoceanus-definitive-ui-spec.md`, CLAUDE.md, and all 88 engine APVTS parameter specifications.*
+*Built from: `Source/UI/XOceanusEditor.h` (4,323 lines), `Docs/design/xoceanus-spatial-architecture-v1.md`, `Docs/design/xoceanus-definitive-ui-spec.md`, CLAUDE.md, and all 90 engine APVTS parameter specifications.*
