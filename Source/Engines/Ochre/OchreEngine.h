@@ -923,7 +923,7 @@ public:
         v.body.setBodyType(bodyType);
         // RT-fix: body.prepare() already called at engine prepare()-time (sets sr, resets
         // filter states).  On noteOn, reconfigure modes only — no lifecycle re-init needed.
-        v.body.setFundamental(freq, bodyType);
+        // (setFundamental removed — body resonances are type-only constants per F03)
 
         // Reset modes
         for (auto& m : v.modes)

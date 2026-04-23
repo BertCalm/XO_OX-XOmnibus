@@ -854,7 +854,6 @@ public:
 
                 float freq = voice.glide.process();
 freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
-freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
                 // LFO modulation
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 → brightness

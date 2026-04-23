@@ -361,7 +361,7 @@ public:
 
         // Expression (CC11) + coupling morph → effective bias
         const float biasWithExpr = juce::jlimit(0.0f, 1.0f,
-            effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphIn * 0.5f);
+            effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphAccum * 0.5f);
 
         // ---- Process MIDI ----
         for (const auto metadata : midi)
@@ -793,6 +793,8 @@ public:
         analyzeForSilenceGate(buffer, numSamples);
     }
 
+    } // end renderBlock
+
     //==========================================================================
     //  S Y N T H   E N G I N E   I N T E R F A C E  —  C O U P L I N G
     //==========================================================================
@@ -838,8 +840,6 @@ public:
             }
         }
     }
-
-    } // end renderBlock
 
     //==========================================================================
     //  S Y N T H   E N G I N E   I N T E R F A C E  —  P A R A M E T E R S
