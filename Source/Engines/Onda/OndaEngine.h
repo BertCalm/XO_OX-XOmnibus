@@ -20,10 +20,10 @@ namespace xoceanus
 
 //==============================================================================
 //
-//  O N E I R I C   E N G I N E
+//  O N D A   E N G I N E
 //  Nonlinear-Schrödinger Soliton Synthesis
 //
-//  Gallery code:  ONEIRIC   |  Accent: Phosphene Lavender #B8A0FF  |  Prefix: oner_
+//  Gallery code:  ONDA   |  Accent: Phosphene Lavender #B8A0FF  |  Prefix: oner_ (unchanged — param compat)
 //
 //  Synthesis model: up to N solitons per voice co-propagate along a virtual 1D
 //  medium governed by the focusing (or defocusing) NLS:
@@ -72,15 +72,15 @@ namespace xoceanus
 //
 //==============================================================================
 
-static constexpr int   kOneiricMaxVoices  = 8;
-static constexpr int   kOneiricMaxSolPerVoice = 4;
-static constexpr float kOneiricTwoPi      = 6.28318530717958647692f;
-static constexpr float kOneiricPi         = 3.14159265358979323846f;
+static constexpr int   kOndaMaxVoices  = 8;
+static constexpr int   kOndaMaxSolPerVoice = 4;
+static constexpr float kOndaTwoPi      = 6.28318530717958647692f;
+static constexpr float kOndaPi         = 3.14159265358979323846f;
 
 //==============================================================================
 //  Soliton — one NLS sech-envelope wave packet inside a voice.
 //==============================================================================
-struct OneiricSoliton
+struct OndaSoliton
 {
     bool  active    = false;
     float amplitude = 1.0f;   // A in ψ = A sech(A·(x−v·t−x₀)) · exp(i·(…))
@@ -104,9 +104,9 @@ struct OneiricSoliton
 };
 
 //==============================================================================
-//  OneiricVoice — one keyboard note, up to N solitons, own envelope + filter.
+//  OndaVoice — one keyboard note, up to N solitons, own envelope + filter.
 //==============================================================================
-struct OneiricVoice
+struct OndaVoice
 {
     bool  active    = false;
     bool  releasing = false;
@@ -118,7 +118,7 @@ struct OneiricVoice
     float glideFreq = 110.0f;
 
     // Up to 4 co-propagating solitons in this voice.
-    std::array<OneiricSoliton, kOneiricMaxSolPerVoice> solitons;
+    std::array<OndaSoliton, kOndaMaxSolPerVoice> solitons;
 
     // Per-voice envelopes.
     StandardADSR ampEnv;
@@ -129,6 +129,10 @@ struct OneiricVoice
 
     // Hold-time tracker for modulational instability emergence (seconds held).
     float holdTime = 0.0f;
+
+    // Independent time accumulator for the Dark-mode CW background carrier
+    // (avoids referencing solitons[0].timeAlive which may be inactive).
+    float voiceTime = 0.0f;
 
     // CW background state for Dark-polarity and MI modes (|ψ_bg| amplitude).
     float cwAmplitude = 0.0f;
@@ -142,7 +146,7 @@ struct OneiricVoice
         noteFreq = glideFreq = 110.0f;
         for (auto& s : solitons) s.reset();
         ampEnv.kill(); fltEnv.kill(); filter.reset();
-        holdTime = 0.0f; cwAmplitude = 0.0f;
+        holdTime = 0.0f; voiceTime = 0.0f; cwAmplitude = 0.0f;
         prng = 0xDEAFBEEFu;
     }
 
@@ -155,10 +159,10 @@ struct OneiricVoice
 
 //==============================================================================
 //
-//  OneiricEngine — NLS Soliton Synthesis
+//  OndaEngine — NLS Soliton Synthesis
 //
 //==============================================================================
-class OneiricEngine : public SynthEngine
+class OndaEngine : public SynthEngine
 {
 public:
     //==========================================================================
@@ -178,9 +182,9 @@ public:
     //==========================================================================
     //  I D E N T I T Y
     //==========================================================================
-    juce::String getEngineId()     const override { return "Oneiric"; }
+    juce::String getEngineId()     const override { return "Onda"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFB8A0FF); }
-    int          getMaxVoices()    const override { return kOneiricMaxVoices; }
+    int          getMaxVoices()    const override { return kOndaMaxVoices; }
 
     //==========================================================================
     //  L I F E C Y C L E
@@ -222,12 +226,12 @@ private:
 
     // Evaluate Re(ψ) and |ψ|² at observation point xObs for a single soliton,
     // given current timeAlive t.  Writes to outReal and outIntSquared.
-    static void evaluateSoliton(const OneiricSoliton& s, float xObs, float t,
+    static void evaluateSoliton(const OndaSoliton& s, float xObs, float t,
                                 float polaritySign, float& outReal, float& outIntSq) noexcept;
 
     // Peregrine breather: ψ = [1 − 4(1 + 2iτ) / (1 + 4ξ² + 4τ²)] e^{iτ} where
     // ξ, τ are normalized x, t.  Returns real part and intensity.
-    static void evaluatePeregrine(const OneiricSoliton& s, float xObs, float t,
+    static void evaluatePeregrine(const OndaSoliton& s, float xObs, float t,
                                   float& outReal, float& outIntSq) noexcept;
 
     // Lattice potential V(x):  0=Flat, 1=Periodic, 2=Barrier.
@@ -238,8 +242,8 @@ private:
     //==========================================================================
     int  findFreeVoice() noexcept;
     int  stealVoice()    noexcept;
-    void spawnBoundState(OneiricVoice& v, int boundMode, float vel);
-    void spawnPeregrine (OneiricVoice& v);
+    void spawnBoundState(OndaVoice& v, int boundMode, float vel);
+    void spawnPeregrine (OndaVoice& v);
     void releaseVoicesForNote(int noteNum);
 
     //==========================================================================
@@ -332,7 +336,7 @@ private:
     float sampleRateF = 44100.0f;
     int   blockCap    = 512;
 
-    std::array<OneiricVoice, kOneiricMaxVoices> voices;
+    std::array<OndaVoice, kOndaMaxVoices> voices;
 
     StandardLFO lfo1;
     StandardLFO lfo2;
@@ -363,7 +367,7 @@ private:
 // -----------------------------------------------------------------------------
 //  D S P   H E L P E R S
 // -----------------------------------------------------------------------------
-inline float OneiricEngine::sechSafe(float x) noexcept
+inline float OndaEngine::sechSafe(float x) noexcept
 {
     // sech(x) = 2 / (e^x + e^{-x}).  Clamp |x| so we don't overflow in float.
     const float ax = std::min(std::fabs(x), 18.0f);
@@ -371,7 +375,7 @@ inline float OneiricEngine::sechSafe(float x) noexcept
     return 2.0f / (ex + 1.0f / ex);
 }
 
-inline void OneiricEngine::evaluateSoliton(const OneiricSoliton& s, float xObs, float t,
+inline void OndaEngine::evaluateSoliton(const OndaSoliton& s, float xObs, float t,
                                             float polaritySign, float& outReal, float& outIntSq) noexcept
 {
     // Fundamental NLS soliton:
@@ -396,7 +400,7 @@ inline void OneiricEngine::evaluateSoliton(const OneiricSoliton& s, float xObs, 
     outIntSq = env * env;
 }
 
-inline void OneiricEngine::evaluatePeregrine(const OneiricSoliton& s, float xObs, float t,
+inline void OndaEngine::evaluatePeregrine(const OndaSoliton& s, float xObs, float t,
                                               float& outReal, float& outIntSq) noexcept
 {
     // Peregrine rational breather of the focusing NLS:
@@ -421,11 +425,14 @@ inline void OneiricEngine::evaluatePeregrine(const OneiricSoliton& s, float xObs
 
     // The Peregrine breather naturally rides a CW=1 background — scale by
     // amplitude so the peak sits around 3A on top of a 1A carpet.
-    outReal  = A * psiRe;
+    // Clamp to ±3.5A: numerical error near ξ=τ=0 can produce values slightly
+    // above the theoretical 3× maximum; hard-clip prevents downstream blow-up.
+    const float peakLimit = 3.5f * A;
+    outReal  = std::clamp(A * psiRe, -peakLimit, peakLimit);
     outIntSq = A * A * (psiRe * psiRe + psiIm * psiIm);
 }
 
-inline float OneiricEngine::evaluatePotential(int shape, float x, float period, float depth) noexcept
+inline float OndaEngine::evaluatePotential(int shape, float x, float period, float depth) noexcept
 {
     // V(x) shapes.  Returns a dimensionless potential; the soliton velocity is
     // nudged by its gradient (computed at call sites via finite difference, or
@@ -433,7 +440,7 @@ inline float OneiricEngine::evaluatePotential(int shape, float x, float period, 
     switch (shape)
     {
         case 0: default: return 0.0f;                                 // Flat
-        case 1: return depth * std::cos(kOneiricTwoPi * x / std::max(0.01f, period)); // Periodic
+        case 1: return depth * std::cos(kOndaTwoPi * x / std::max(0.01f, period)); // Periodic
         case 2:
         {
             // Gaussian barrier centred at 0, width ~period.
@@ -447,25 +454,25 @@ inline float OneiricEngine::evaluatePotential(int shape, float x, float period, 
 // -----------------------------------------------------------------------------
 //  V O I C E   A L L O C A T I O N
 // -----------------------------------------------------------------------------
-inline int OneiricEngine::findFreeVoice() noexcept
+inline int OndaEngine::findFreeVoice() noexcept
 {
-    for (int i = 0; i < kOneiricMaxVoices; ++i)
+    for (int i = 0; i < kOndaMaxVoices; ++i)
         if (!voices[i].active) return i;
     return -1;
 }
 
-inline int OneiricEngine::stealVoice() noexcept
+inline int OndaEngine::stealVoice() noexcept
 {
     int idx = 0;
     float minLevel = 1e9f;
-    for (int i = 0; i < kOneiricMaxVoices; ++i)
+    for (int i = 0; i < kOndaMaxVoices; ++i)
     {
         const float lv = voices[i].ampEnv.getLevel();
         if (voices[i].releasing && lv < minLevel) { minLevel = lv; idx = i; }
     }
     if (minLevel > 1e8f)
     {
-        for (int i = 0; i < kOneiricMaxVoices; ++i)
+        for (int i = 0; i < kOndaMaxVoices; ++i)
         {
             const float lv = voices[i].ampEnv.getLevel();
             if (lv < minLevel) { minLevel = lv; idx = i; }
@@ -474,7 +481,7 @@ inline int OneiricEngine::stealVoice() noexcept
     return idx;
 }
 
-inline void OneiricEngine::spawnBoundState(OneiricVoice& v, int boundMode, float vel)
+inline void OndaEngine::spawnBoundState(OndaVoice& v, int boundMode, float vel)
 {
     // Bound-state seed amplitude ratios:
     //   0 = Single            → [1]
@@ -492,7 +499,7 @@ inline void OneiricEngine::spawnBoundState(OneiricVoice& v, int boundMode, float
 
     auto fill = [&] (const float* r, int n)
     {
-        for (int i = 0; i < n && i < kOneiricMaxSolPerVoice; ++i)
+        for (int i = 0; i < n && i < kOndaMaxSolPerVoice; ++i)
         {
             auto& s = v.solitons[i];
             s.active    = true;
@@ -525,11 +532,11 @@ inline void OneiricEngine::spawnBoundState(OneiricVoice& v, int boundMode, float
     }
 }
 
-inline void OneiricEngine::spawnPeregrine(OneiricVoice& v)
+inline void OndaEngine::spawnPeregrine(OndaVoice& v)
 {
     // Find a free soliton slot (or reuse slot 3 as the dedicated rogue-wave slot).
-    int slot = kOneiricMaxSolPerVoice - 1;
-    for (int i = 0; i < kOneiricMaxSolPerVoice; ++i)
+    int slot = kOndaMaxSolPerVoice - 1;
+    for (int i = 0; i < kOndaMaxSolPerVoice; ++i)
     {
         if (!v.solitons[i].active || v.solitons[i].isPeregrine) { slot = i; break; }
     }
@@ -543,7 +550,7 @@ inline void OneiricEngine::spawnPeregrine(OneiricVoice& v)
     s.timeAlive = -0.5f; // start before the peak so we ride up to it
 }
 
-inline void OneiricEngine::releaseVoicesForNote(int noteNum)
+inline void OndaEngine::releaseVoicesForNote(int noteNum)
 {
     for (auto& v : voices)
     {
@@ -559,7 +566,7 @@ inline void OneiricEngine::releaseVoicesForNote(int noteNum)
 // -----------------------------------------------------------------------------
 //  L I F E C Y C L E
 // -----------------------------------------------------------------------------
-inline void OneiricEngine::prepare(double sampleRate, int maxBlockSize)
+inline void OndaEngine::prepare(double sampleRate, int maxBlockSize)
 {
     sampleRateF = (sampleRate > 0.0) ? (float) sampleRate : 44100.0f;
     blockCap    = std::max(1, maxBlockSize);
@@ -586,7 +593,7 @@ inline void OneiricEngine::prepare(double sampleRate, int maxBlockSize)
     lastHeldNote = -1;
 }
 
-inline void OneiricEngine::reset()
+inline void OndaEngine::reset()
 {
     for (auto& v : voices) v.reset();
     lfo1.reset();
@@ -602,7 +609,7 @@ inline void OneiricEngine::reset()
 // -----------------------------------------------------------------------------
 //  A D D   P A R A M E T E R S   —   A   (soliton core)  +  B  (bound + polarity)
 // -----------------------------------------------------------------------------
-inline void OneiricEngine::addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
+inline void OndaEngine::addParameters(std::vector<std::unique_ptr<juce::RangedAudioParameter>>& params)
 {
     using AP  = juce::AudioParameterFloat;
     using APC = juce::AudioParameterChoice;
@@ -610,164 +617,164 @@ inline void OneiricEngine::addParameters(std::vector<std::unique_ptr<juce::Range
     using NR  = juce::NormalisableRange<float>;
 
     // ---- A: Soliton core ----
-    params.push_back(std::make_unique<AP>(PID{"oner_solitonCount",1}, "Oneiric Soliton Count",
+    params.push_back(std::make_unique<AP>(PID{"oner_solitonCount",1}, "Onda Soliton Count",
         NR{1.0f, 4.0f, 1.0f}, 2.0f));
-    params.push_back(std::make_unique<AP>(PID{"oner_amplitude",1}, "Oneiric Amplitude A",
+    params.push_back(std::make_unique<AP>(PID{"oner_amplitude",1}, "Onda Amplitude A",
         NR{0.2f, 2.5f, 0.001f}, 1.0f));
-    params.push_back(std::make_unique<AP>(PID{"oner_width",1}, "Oneiric Width Bias",
+    params.push_back(std::make_unique<AP>(PID{"oner_width",1}, "Onda Width Bias",
         NR{0.25f, 4.0f, 0.001f}, 1.0f));
-    params.push_back(std::make_unique<AP>(PID{"oner_velocity",1}, "Oneiric Velocity v",
+    params.push_back(std::make_unique<AP>(PID{"oner_velocity",1}, "Onda Velocity v",
         NR{-2.0f, 2.0f, 0.001f}, 0.0f));
-    params.push_back(std::make_unique<AP>(PID{"oner_velocitySpread",1}, "Oneiric Velocity Spread",
+    params.push_back(std::make_unique<AP>(PID{"oner_velocitySpread",1}, "Onda Velocity Spread",
         NR{0.0f, 2.0f, 0.001f}, 0.35f));
-    params.push_back(std::make_unique<AP>(PID{"oner_chirp",1}, "Oneiric Chirp",
+    params.push_back(std::make_unique<AP>(PID{"oner_chirp",1}, "Onda Chirp",
         NR{-3.0f, 3.0f, 0.001f}, 0.0f));
-    params.push_back(std::make_unique<AP>(PID{"oner_dissipation",1}, "Oneiric Dissipation α",
+    params.push_back(std::make_unique<AP>(PID{"oner_dissipation",1}, "Onda Dissipation α",
         NR{0.0f, 0.5f, 0.001f}, 0.02f));
 
     // ---- B: Bound state + polarity ----
-    params.push_back(std::make_unique<APC>(PID{"oner_boundState",1}, "Oneiric Bound State",
+    params.push_back(std::make_unique<APC>(PID{"oner_boundState",1}, "Onda Bound State",
         juce::StringArray{"Single","2-Soliton","3-Soliton","Mixed"}, 1));
-    params.push_back(std::make_unique<APC>(PID{"oner_polarity",1}, "Oneiric Polarity",
+    params.push_back(std::make_unique<APC>(PID{"oner_polarity",1}, "Onda Polarity",
         juce::StringArray{"Bright","Dark"}, 0));
 
     // ---- C: NLS medium coefficients ----
-    params.push_back(std::make_unique<AP>(PID{"oner_dispersion",1}, "Oneiric Dispersion |β₂|",
+    params.push_back(std::make_unique<AP>(PID{"oner_dispersion",1}, "Onda Dispersion |β₂|",
         NR{0.1f, 4.0f, 0.001f}, 1.0f));
-    params.push_back(std::make_unique<AP>(PID{"oner_nonlinearity",1}, "Oneiric Nonlinearity γ",
+    params.push_back(std::make_unique<AP>(PID{"oner_nonlinearity",1}, "Onda Nonlinearity γ",
         NR{0.1f, 4.0f, 0.001f}, 1.0f));
 
     // ---- D: Observation probe ----
-    params.push_back(std::make_unique<APC>(PID{"oner_observeMode",1}, "Oneiric Observe Mode",
+    params.push_back(std::make_unique<APC>(PID{"oner_observeMode",1}, "Onda Observe Mode",
         juce::StringArray{"Re(ψ)","|ψ|²"}, 0));
-    params.push_back(std::make_unique<AP>(PID{"oner_observePoint",1}, "Oneiric Probe x₀",
+    params.push_back(std::make_unique<AP>(PID{"oner_observePoint",1}, "Onda Probe x₀",
         NR{-4.0f, 4.0f, 0.001f}, 0.0f));
-    params.push_back(std::make_unique<AP>(PID{"oner_probeSpeed",1}, "Oneiric Probe Speed v_p",
+    params.push_back(std::make_unique<AP>(PID{"oner_probeSpeed",1}, "Onda Probe Speed v_p",
         NR{-2.0f, 2.0f, 0.001f}, 0.0f));
 
     // ---- E: Peregrine rogue-wave event ----
-    params.push_back(std::make_unique<AP>(PID{"oner_rogueSensitivity",1}, "Oneiric Rogue Sensitivity",
+    params.push_back(std::make_unique<AP>(PID{"oner_rogueSensitivity",1}, "Onda Rogue Sensitivity",
         NR{0.0f, 1.0f, 0.001f}, 0.35f));
-    params.push_back(std::make_unique<AP>(PID{"oner_rogueThreshold",1}, "Oneiric Rogue Threshold",
+    params.push_back(std::make_unique<AP>(PID{"oner_rogueThreshold",1}, "Onda Rogue Threshold",
         NR{0.0f, 1.0f, 0.001f}, 0.70f));
 
     // ---- F: Modulational instability ----
-    params.push_back(std::make_unique<AP>(PID{"oner_instability",1}, "Oneiric MI Gain",
+    params.push_back(std::make_unique<AP>(PID{"oner_instability",1}, "Onda MI Gain",
         NR{0.0f, 1.0f, 0.001f}, 0.0f));
     {
         NR r{0.2f, 8.0f, 0.001f};
         r.setSkewForCentre(2.0f);
-        params.push_back(std::make_unique<AP>(PID{"oner_instabilityHold",1}, "Oneiric MI Hold Time",
+        params.push_back(std::make_unique<AP>(PID{"oner_instabilityHold",1}, "Onda MI Hold Time",
             r, 1.5f));
     }
 
     // ---- G: Lattice potential V(x) ----
-    params.push_back(std::make_unique<APC>(PID{"oner_potentialShape",1}, "Oneiric Potential V(x)",
+    params.push_back(std::make_unique<APC>(PID{"oner_potentialShape",1}, "Onda Potential V(x)",
         juce::StringArray{"Flat","Periodic","Barrier"}, 0));
-    params.push_back(std::make_unique<AP>(PID{"oner_potentialDepth",1}, "Oneiric Potential Depth",
+    params.push_back(std::make_unique<AP>(PID{"oner_potentialDepth",1}, "Onda Potential Depth",
         NR{0.0f, 2.0f, 0.001f}, 0.30f));
     {
         NR r{0.1f, 4.0f, 0.001f};
         r.setSkewForCentre(1.0f);
-        params.push_back(std::make_unique<AP>(PID{"oner_potentialPeriod",1}, "Oneiric Potential Period",
+        params.push_back(std::make_unique<AP>(PID{"oner_potentialPeriod",1}, "Onda Potential Period",
             r, 1.0f));
     }
 
     // ---- H: Dispersive-shock attack ----
-    params.push_back(std::make_unique<AP>(PID{"oner_attackShock",1}, "Oneiric Attack Shock",
+    params.push_back(std::make_unique<AP>(PID{"oner_attackShock",1}, "Onda Attack Shock",
         NR{0.0f, 1.0f, 0.001f}, 0.40f));
 
     // ---- I: Filter (D001) ----
     {
         NR r{20.0f, 20000.0f, 0.1f};
         r.setSkewForCentre(1000.0f);
-        params.push_back(std::make_unique<AP>(PID{"oner_fltCutoff",1}, "Oneiric Filter Cutoff", r, 1800.0f));
+        params.push_back(std::make_unique<AP>(PID{"oner_fltCutoff",1}, "Onda Filter Cutoff", r, 1800.0f));
     }
-    params.push_back(std::make_unique<AP>(PID{"oner_fltReso",1}, "Oneiric Filter Reso",
+    params.push_back(std::make_unique<AP>(PID{"oner_fltReso",1}, "Onda Filter Reso",
         NR{0.0f, 1.0f, 0.001f}, 0.20f));
-    params.push_back(std::make_unique<APC>(PID{"oner_fltType",1}, "Oneiric Filter Type",
+    params.push_back(std::make_unique<APC>(PID{"oner_fltType",1}, "Onda Filter Type",
         juce::StringArray{"LP","HP","BP","Notch"}, 0));
-    params.push_back(std::make_unique<AP>(PID{"oner_fltEnvAmt",1}, "Oneiric Filter Env Amt",
+    params.push_back(std::make_unique<AP>(PID{"oner_fltEnvAmt",1}, "Onda Filter Env Amt",
         NR{-1.0f, 1.0f, 0.001f}, 0.25f));
-    params.push_back(std::make_unique<AP>(PID{"oner_fltKeyTrack",1}, "Oneiric Filter Key Track",
+    params.push_back(std::make_unique<AP>(PID{"oner_fltKeyTrack",1}, "Onda Filter Key Track",
         NR{0.0f, 1.0f, 0.001f}, 0.50f));
-    params.push_back(std::make_unique<AP>(PID{"oner_fltVelTrack",1}, "Oneiric Filter Vel Track",
+    params.push_back(std::make_unique<AP>(PID{"oner_fltVelTrack",1}, "Onda Filter Vel Track",
         NR{0.0f, 1.0f, 0.001f}, 0.55f));
 
     // ---- J: Amp envelope ----
     {
         NR r{0.0f, 10.0f, 0.001f};
         r.setSkewForCentre(0.5f);
-        params.push_back(std::make_unique<AP>(PID{"oner_ampAtk",1}, "Oneiric Amp Attack",  r, 0.030f));
-        params.push_back(std::make_unique<AP>(PID{"oner_ampDec",1}, "Oneiric Amp Decay",   r, 0.600f));
-        params.push_back(std::make_unique<AP>(PID{"oner_ampRel",1}, "Oneiric Amp Release", r, 1.200f));
+        params.push_back(std::make_unique<AP>(PID{"oner_ampAtk",1}, "Onda Amp Attack",  r, 0.030f));
+        params.push_back(std::make_unique<AP>(PID{"oner_ampDec",1}, "Onda Amp Decay",   r, 0.600f));
+        params.push_back(std::make_unique<AP>(PID{"oner_ampRel",1}, "Onda Amp Release", r, 1.200f));
     }
-    params.push_back(std::make_unique<AP>(PID{"oner_ampSus",1}, "Oneiric Amp Sustain",
+    params.push_back(std::make_unique<AP>(PID{"oner_ampSus",1}, "Onda Amp Sustain",
         NR{0.0f, 1.0f, 0.001f}, 0.85f));
 
     // ---- K: Filter envelope ----
     {
         NR r{0.0f, 10.0f, 0.001f};
         r.setSkewForCentre(0.5f);
-        params.push_back(std::make_unique<AP>(PID{"oner_fenvAtk",1}, "Oneiric FEnv Attack",  r, 0.050f));
-        params.push_back(std::make_unique<AP>(PID{"oner_fenvDec",1}, "Oneiric FEnv Decay",   r, 0.800f));
-        params.push_back(std::make_unique<AP>(PID{"oner_fenvRel",1}, "Oneiric FEnv Release", r, 1.500f));
+        params.push_back(std::make_unique<AP>(PID{"oner_fenvAtk",1}, "Onda FEnv Attack",  r, 0.050f));
+        params.push_back(std::make_unique<AP>(PID{"oner_fenvDec",1}, "Onda FEnv Decay",   r, 0.800f));
+        params.push_back(std::make_unique<AP>(PID{"oner_fenvRel",1}, "Onda FEnv Release", r, 1.500f));
     }
-    params.push_back(std::make_unique<AP>(PID{"oner_fenvSus",1}, "Oneiric FEnv Sustain",
+    params.push_back(std::make_unique<AP>(PID{"oner_fenvSus",1}, "Onda FEnv Sustain",
         NR{0.0f, 1.0f, 0.001f}, 0.40f));
 
     // ---- L: LFOs (D002 / D005) ----
     {
         NR r{0.005f, 20.0f, 0.001f};
         r.setSkewForCentre(1.0f);
-        params.push_back(std::make_unique<AP>(PID{"oner_lfo1Rate",1}, "Oneiric LFO1 Rate", r, 0.30f));
-        params.push_back(std::make_unique<AP>(PID{"oner_lfo2Rate",1}, "Oneiric LFO2 Rate", r, 0.07f));
+        params.push_back(std::make_unique<AP>(PID{"oner_lfo1Rate",1}, "Onda LFO1 Rate", r, 0.30f));
+        params.push_back(std::make_unique<AP>(PID{"oner_lfo2Rate",1}, "Onda LFO2 Rate", r, 0.07f));
     }
-    params.push_back(std::make_unique<AP>(PID{"oner_lfo1Depth",1}, "Oneiric LFO1 Depth",
+    params.push_back(std::make_unique<AP>(PID{"oner_lfo1Depth",1}, "Onda LFO1 Depth",
         NR{0.0f, 1.0f, 0.001f}, 0.30f));
-    params.push_back(std::make_unique<AP>(PID{"oner_lfo2Depth",1}, "Oneiric LFO2 Depth",
+    params.push_back(std::make_unique<AP>(PID{"oner_lfo2Depth",1}, "Onda LFO2 Depth",
         NR{0.0f, 1.0f, 0.001f}, 0.20f));
-    params.push_back(std::make_unique<APC>(PID{"oner_lfo1Shape",1}, "Oneiric LFO1 Shape",
+    params.push_back(std::make_unique<APC>(PID{"oner_lfo1Shape",1}, "Onda LFO1 Shape",
         juce::StringArray{"Sine","Triangle","Saw","Square","S&H"}, 0));
-    params.push_back(std::make_unique<APC>(PID{"oner_lfo2Shape",1}, "Oneiric LFO2 Shape",
+    params.push_back(std::make_unique<APC>(PID{"oner_lfo2Shape",1}, "Onda LFO2 Shape",
         juce::StringArray{"Sine","Triangle","Saw","Square","S&H"}, 1));
-    params.push_back(std::make_unique<APC>(PID{"oner_lfo1Target",1}, "Oneiric LFO1 Target",
+    params.push_back(std::make_unique<APC>(PID{"oner_lfo1Target",1}, "Onda LFO1 Target",
         juce::StringArray{"SolitonVelocity","Dispersion","ProbeSpeed","FilterCutoff"}, 0));
-    params.push_back(std::make_unique<APC>(PID{"oner_lfo2Target",1}, "Oneiric LFO2 Target",
+    params.push_back(std::make_unique<APC>(PID{"oner_lfo2Target",1}, "Onda LFO2 Target",
         juce::StringArray{"SolitonVelocity","Dispersion","ProbeSpeed","FilterCutoff"}, 2));
 
     // ---- Mod Matrix (4 slots) ----
-    static const juce::StringArray kOneiricModDests {
+    static const juce::StringArray kOndaModDests {
         "Off", "Filter Cutoff", "Soliton Velocity", "Dispersion", "Potential Depth", "MI Gain", "Amp Level"
     };
-    ModMatrix<4>::addParameters(params, "oner_", "Oneiric", kOneiricModDests);
+    ModMatrix<4>::addParameters(params, "oner_", "Onda", kOndaModDests);
 
     // ---- M: Macros ----
-    params.push_back(std::make_unique<AP>(PID{"oner_macro1",1}, "Oneiric Macro CHARACTER",
+    params.push_back(std::make_unique<AP>(PID{"oner_macro1",1}, "Onda Macro CHARACTER",
         NR{0.0f, 1.0f, 0.001f}, 0.50f));
-    params.push_back(std::make_unique<AP>(PID{"oner_macro2",1}, "Oneiric Macro MOVEMENT",
+    params.push_back(std::make_unique<AP>(PID{"oner_macro2",1}, "Onda Macro MOVEMENT",
         NR{0.0f, 1.0f, 0.001f}, 0.35f));
-    params.push_back(std::make_unique<AP>(PID{"oner_macro3",1}, "Oneiric Macro COUPLING",
+    params.push_back(std::make_unique<AP>(PID{"oner_macro3",1}, "Onda Macro COUPLING",
         NR{0.0f, 1.0f, 0.001f}, 0.30f));
-    params.push_back(std::make_unique<AP>(PID{"oner_macro4",1}, "Oneiric Macro SPACE",
+    params.push_back(std::make_unique<AP>(PID{"oner_macro4",1}, "Onda Macro SPACE",
         NR{0.0f, 1.0f, 0.001f}, 0.45f));
 
     // ---- N: Voice + output ----
-    params.push_back(std::make_unique<APC>(PID{"oner_voiceMode",1}, "Oneiric Voice Mode",
+    params.push_back(std::make_unique<APC>(PID{"oner_voiceMode",1}, "Onda Voice Mode",
         juce::StringArray{"Mono","Legato","Poly8"}, 2));
     {
         NR r{0.0f, 2.0f, 0.001f};
         r.setSkewForCentre(0.2f);
-        params.push_back(std::make_unique<AP>(PID{"oner_glide",1}, "Oneiric Glide", r, 0.0f));
+        params.push_back(std::make_unique<AP>(PID{"oner_glide",1}, "Onda Glide", r, 0.0f));
     }
-    params.push_back(std::make_unique<AP>(PID{"oner_level",1}, "Oneiric Level",
+    params.push_back(std::make_unique<AP>(PID{"oner_level",1}, "Onda Level",
         NR{0.0f, 1.25f, 0.001f}, 0.70f));
 } // addParameters
 
 // -----------------------------------------------------------------------------
 //  A T T A C H   P A R A M E T E R S
 // -----------------------------------------------------------------------------
-inline void OneiricEngine::attachParameters(juce::AudioProcessorValueTreeState& apvts)
+inline void OndaEngine::attachParameters(juce::AudioProcessorValueTreeState& apvts)
 {
     auto get = [&](const juce::String& id) -> std::atomic<float>*
     {
@@ -847,7 +854,7 @@ inline void OneiricEngine::attachParameters(juce::AudioProcessorValueTreeState& 
 // -----------------------------------------------------------------------------
 //  A P P L Y   C O U P L I N G   I N P U T
 // -----------------------------------------------------------------------------
-inline void OneiricEngine::applyCouplingInput(CouplingType type, float amount,
+inline void OndaEngine::applyCouplingInput(CouplingType type, float amount,
                                                const float* sourceBuffer, int numSamples)
 {
     if (sourceBuffer == nullptr || numSamples <= 0) return;
@@ -888,7 +895,7 @@ inline void OneiricEngine::applyCouplingInput(CouplingType type, float amount,
 // -----------------------------------------------------------------------------
 //  R E N D E R   B L O C K   —   prologue
 // -----------------------------------------------------------------------------
-inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
+inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                                         juce::MidiBuffer& midi, int numSamples)
 {
     juce::ScopedNoDenormals noDenormals;
@@ -901,6 +908,13 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
     {
         return p ? p->load() : dflt;
     };
+
+    // P25: Capture-then-zero coupling accumulators so concurrent applyCouplingInput
+    // calls on the audio thread cannot race with mid-block reads.
+    const float snapFilterMod    = couplingFilterMod;    couplingFilterMod    = 0.0f;
+    const float snapVelocityMod  = couplingVelocityMod;  couplingVelocityMod  = 0.0f;
+    const float snapPotentialMod = couplingPotentialMod; couplingPotentialMod = 0.0f;
+    const float snapRateMod      = couplingRateMod;      couplingRateMod      = 0.0f;
 
     // ---- Param snapshot ----
     const int   solitonCount   = (int) loadP(pSolitonCount, 2.0f);
@@ -1003,6 +1017,10 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             if (voiceMode == 0 || voiceMode == 1)
             {
                 vIdx = 0;
+                // Mono/Legato: always reuse voice 0.  In non-legato mono, release
+                // the previous note first to avoid envelope click on overwrite.
+                if (!legato && voices[0].active)
+                    releaseVoicesForNote(voices[0].note);
             }
             else
             {
@@ -1017,6 +1035,7 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             vx.noteFreq = f;
             if (!legato) { vx.glideFreq = f; vx.ampEnv.noteOn(); vx.fltEnv.noteOn(); vx.filter.reset(); }
             vx.holdTime = 0.0f;
+            vx.voiceTime = 0.0f; // reset CW carrier phase accumulator on new note
             vx.cwAmplitude = 0.0f;
             vx.prng = 0x9E3779B1u ^ (uint32_t)(newNote * 2654435761u);
 
@@ -1026,7 +1045,7 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             // Apply velocity bias to amplitude scale (done at voice level via velocity store).
             // Velocity spread + base velocity across solitons for pass-through collisions.
             float vSum = 0.0f;
-            for (int i = 0; i < kOneiricMaxSolPerVoice; ++i)
+            for (int i = 0; i < kOndaMaxSolPerVoice; ++i)
             {
                 auto& s = vx.solitons[i];
                 if (!s.active) continue;
@@ -1035,7 +1054,7 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                 const float sign = (i & 1) ? -1.0f : 1.0f;
                 const float dv   = sign * mVelSpread * (0.5f + 0.5f * vx.nextRand01());
                 s.velocity = velBase + dv + chirp * (float)(i - 1);
-                s.phase    = vx.nextRand01() * kOneiricTwoPi;
+                s.phase    = vx.nextRand01() * kOndaTwoPi;
                 s.position = (vx.nextRand01() - 0.5f) * 0.5f;
                 s.timeAlive = 0.0f;
                 vSum += std::fabs(s.velocity);
@@ -1046,16 +1065,23 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             // narrow width produces a chirped transient that decays quickly.
             if (attackShock > 0.01f)
             {
-                // Reuse the last slot if free; otherwise replace it so the shock
-                // never allocates — staying within kOneiricMaxSolPerVoice.
-                auto& shk = vx.solitons[kOneiricMaxSolPerVoice - 1];
-                shk.active    = true;
-                shk.amplitude = mAmplitude * (2.0f + 2.0f * attackShock); // narrow, bright
-                shk.velocity  = 1.2f * (vx.nextRand01() - 0.5f);
-                shk.position  = 0.0f;
-                shk.phase     = 0.0f;
-                shk.timeAlive = 0.0f;
-                shk.isPeregrine = false;
+                // Find a free slot (prefer last slot); skip slots marked isPeregrine
+                // so a rogue-wave event is not silently clobbered by the attack shock.
+                int shkSlot = kOndaMaxSolPerVoice - 1;
+                for (int i = kOndaMaxSolPerVoice - 1; i >= 0; --i)
+                    if (!vx.solitons[i].active || (!vx.solitons[i].isPeregrine && i == kOndaMaxSolPerVoice - 1))
+                        { shkSlot = i; break; }
+                auto& shk = vx.solitons[shkSlot];
+                if (!shk.isPeregrine)
+                {
+                    shk.active    = true;
+                    shk.amplitude = mAmplitude * (2.0f + 2.0f * attackShock); // narrow, bright
+                    shk.velocity  = 1.2f * (vx.nextRand01() - 0.5f);
+                    shk.position  = 0.0f;
+                    shk.phase     = 0.0f;
+                    shk.timeAlive = 0.0f;
+                    shk.isPeregrine = false;
+                }
             }
 
             lastHeldNote = newNote;
@@ -1106,13 +1132,16 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         return;
     }
 
-    // ---- LFOs (block-rate, routed as DC mod) ----
+    // ---- LFOs — advance by numSamples so tempo is correct regardless of block size.
+    // P-LFO-BLOCK: a single process() call advances one sample; we must consume
+    // (numSamples − 1) extra steps and then read the final value.
     lfo1.setRate(lfo1Hz, sampleRateF);
     lfo1.setShape(lfo1Shape);
     lfo2.setRate(lfo2Hz, sampleRateF);
     lfo2.setShape(lfo2Shape);
     const float lfo1Val = lfo1.process() * mLfo1Depth;
     const float lfo2Val = lfo2.process() * lfo2Depth;
+    for (int s = 1; s < numSamples; ++s) { lfo1.process(); lfo2.process(); }
 
     // LFO target routing: 0=SolitonVelocity, 1=Dispersion, 2=ProbeSpeed, 3=FilterCutoff.
     float lfoMod[4] = {0.0f, 0.0f, 0.0f, 0.0f};
@@ -1135,7 +1164,7 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
     modSrc.modWheel   = modWheel;
     modSrc.aftertouch = aftertouch;
 
-    // Mod matrix destinations (indexed per kOneiricModDests):
+    // Mod matrix destinations (indexed per kOndaModDests):
     //   0=Off, 1=Filter Cutoff, 2=Soliton Velocity, 3=Dispersion,
     //   4=Potential Depth, 5=MI Gain, 6=Amp Level
     float modOut[7] = {0,0,0,0,0,0,0};
@@ -1155,7 +1184,7 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                                               0.05f, 12.0f);
     const float effPotentialDepth= std::clamp(potentialDepth
                                               + matrixPotDep * 0.5f
-                                              + couplingPotentialMod * mCouplingGain * 0.5f,
+                                              + snapPotentialMod * mCouplingGain * 0.5f,
                                               0.0f, 4.0f);
     const float effMiGain        = std::clamp(miGain + matrixMI * 0.5f, 0.0f, 2.0f);
     const float effProbeSpeed    = mProbeSpeed + lfoProbeMod * 1.0f;
@@ -1218,10 +1247,10 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         const float widthScale = 1.0f / std::max(0.25f, widthBias);
 
         // Effective soliton count (cap by configured max).
-        const int nSol = std::min(mSolitonCount, kOneiricMaxSolPerVoice);
+        const int nSol = std::min(mSolitonCount, kOndaMaxSolPerVoice);
 
         // Rate mod from coupling (scales time advance).
-        const float rateScale = 1.0f + couplingRateMod * mCouplingGain * 0.5f;
+        const float rateScale = 1.0f + snapRateMod * mCouplingGain * 0.5f;
 
         // Dark-mode CW background amplitude (bright field the dips live on).
         const float cwBg = (polarity == 1) ? 0.8f : 0.0f;
@@ -1231,7 +1260,7 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         // spawned from the CW field with velocity tied to instability gain.
         if (effMiGain > 0.01f && v.holdTime > miHoldTime)
         {
-            for (int i = 0; i < kOneiricMaxSolPerVoice; ++i)
+            for (int i = 0; i < kOndaMaxSolPerVoice; ++i)
             {
                 if (!v.solitons[i].active)
                 {
@@ -1240,7 +1269,7 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                     s.amplitude = 0.4f * mAmplitude * effMiGain;
                     s.velocity  = (v.nextRand01() - 0.5f) * effMiGain * 2.0f;
                     s.position  = (v.nextRand01() - 0.5f) * 2.0f;
-                    s.phase     = v.nextRand01() * kOneiricTwoPi;
+                    s.phase     = v.nextRand01() * kOndaTwoPi;
                     s.timeAlive = 0.0f;
                     v.holdTime -= miHoldTime; // reset hold so next emergence requires another dwell
                     break;
@@ -1258,7 +1287,7 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             const float xProbe = observePoint + probePos + effProbeSpeed * 0.0f; // probePos already advanced
 
             // Coupling-driven velocity perturbation (AudioToFM).
-            const float velKick = couplingVelocityMod * mCouplingGain;
+            const float velKick = snapVelocityMod * mCouplingGain;
 
             // Sum contributions from all active solitons.
             float sumRe   = 0.0f;
@@ -1297,7 +1326,7 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                 const float tDisp = s.timeAlive * effDispersion;
 
                 // Pack temporary soliton with effective velocity for evaluation.
-                OneiricSoliton sEff = s;
+                OndaSoliton sEff = s;
                 sEff.velocity  = vEff;
                 // γ rescales amplitude: ψ' = √γ ψ is the equivalent NLS with γ=1.
                 // Exposes nonlinearity as an audible timbral knob (D004).
@@ -1310,10 +1339,11 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                 sumRe    += sr;
                 sumIntSq += si;
             }
-            v.holdTime += dt * tScale;
+            v.holdTime  += dt * tScale;
+            v.voiceTime += dt * tScale; // independent CW carrier accumulator
 
             // Auto-deactivate solitons whose amplitude has decayed below audible.
-            for (int k = 0; k < kOneiricMaxSolPerVoice; ++k)
+            for (int k = 0; k < kOndaMaxSolPerVoice; ++k)
                 if (v.solitons[k].active && v.solitons[k].amplitude < 0.005f)
                     v.solitons[k].active = false;
 
@@ -1322,7 +1352,9 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             if (observeMode == 0)
             {
                 // Add CW background for Dark mode so dips have substrate.
-                raw = sumRe + cwBg * std::cos(kOneiricTwoPi * voiceFreq * v.solitons[0].timeAlive);
+                // voiceTime is the independent per-voice carrier accumulator —
+                // avoids reading solitons[0].timeAlive which may be inactive.
+                raw = sumRe + cwBg * std::cos(kOndaTwoPi * voiceFreq * v.voiceTime);
             }
             else
             {
@@ -1338,7 +1370,7 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             // Per-sample cutoff.
             const float voiceCutoff = std::clamp(
                 (baseCutoff + fe * fltEnvAmt * 6000.0f
-                            + couplingFilterMod * mCouplingGain * 4000.0f
+                            + snapFilterMod * mCouplingGain * 4000.0f
                             + matrixCutoff * 5000.0f) * lfoCutoffScale,
                 20.0f, sampleRateF * 0.49f);
             v.filter.setCoefficients(voiceCutoff, fltReso, sampleRateF);
@@ -1370,11 +1402,8 @@ inline void OneiricEngine::renderBlock(juce::AudioBuffer<float>& buffer,
 
     analyzeForSilenceGate(buffer, numSamples);
 
-    // ---- Decay coupling accumulators ----
-    couplingFilterMod    *= 0.95f;
-    couplingVelocityMod  *= 0.95f;
-    couplingPotentialMod *= 0.95f;
-    couplingRateMod      *= 0.95f;
+    // Coupling accumulators are zeroed at block start (P25 capture-then-zero).
+    // No end-of-block decay needed; applyCouplingInput accumulates additively.
 } // renderBlock
 
 } // namespace xoceanus

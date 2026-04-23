@@ -414,13 +414,16 @@
       "category": "water"
     },
     {
-      "id": "Oneiric",
+      "id": "Onda",
       "param_prefix": "oner_",
-      "header": "Source/Engines/Oneiric/OneiricEngine.h",
+      "header": "Source/Engines/Onda/OndaEngine.h",
       "status": "implemented",
       "accent_color": "#B8A0FF",
       "accent_name": "Phosphene Lavender",
-      "category": "soliton"
+      "category": "soliton",
+      "formerly": "Oneiric",
+      "rename_date": "2026-04-22",
+      "rename_reason": "Resolved naming clash with fXOneiric Master FX"
     },
     {
       "id": "Onkolo",
