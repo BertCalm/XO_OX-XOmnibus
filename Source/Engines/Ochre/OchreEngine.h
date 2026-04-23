@@ -715,7 +715,6 @@ public:
         // Per-sample rendering
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float condNow = smoothConductivity.process();
             float hardNow = smoothHardness.process();
             float bodyDNow = smoothBodyDepth.process();
@@ -788,12 +787,6 @@ public:
                         voice.hfNoiseShaper.setCoefficients(hfCutoff, 0.3f, srf);
                         voice.lastHFCutoff = hfCutoff;
                     }
-                    // Shape noise through body-tuned SVF (coeff refresh decimated)
-                    if (updateFilter)
-                    {
-                        voice.hfNoiseShaper.setMode(CytomicSVF::Mode::BandPass);
-                        voice.hfNoiseShaper.setCoefficients(std::clamp(freq * 8.0f, 500.0f, srf * 0.45f), 0.3f, srf);
-                    }
                     float shapedNoise = voice.hfNoiseShaper.processSample(noise);
 
                     resonanceSum += shapedNoise * voice.hfNoiseEnv * pHFCharacter * 0.3f;
@@ -831,7 +824,7 @@ public:
                     continue;
                 }
 
-                // Filter envelope + LFO1 → brightness (env ticked per-sample, SVF decimated)
+                // Filter envelope + LFO1 → brightness (env ticked per-sample)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
                 // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
@@ -840,12 +833,6 @@ public:
                     voice.lpf.setMode(CytomicSVF::Mode::LowPass);
                     voice.lpf.setCoefficients(cutoff, 0.4f, srf);
                     voice.lastFilterCutoff = cutoff;
-                }
-                if (updateFilter)
-                {
-                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                    voice.lpf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.lpf.setCoefficients(cutoff, 0.4f, srf);
                 }
                 float filtered = voice.lpf.processSample(bodied);
 
@@ -936,7 +923,7 @@ public:
         v.body.setBodyType(bodyType);
         // RT-fix: body.prepare() already called at engine prepare()-time (sets sr, resets
         // filter states).  On noteOn, reconfigure modes only — no lifecycle re-init needed.
-        v.body.setFundamental(freq, bodyType);
+        // (setFundamental removed — body resonances are type-only constants per F03)
 
         // Reset modes
         for (auto& m : v.modes)

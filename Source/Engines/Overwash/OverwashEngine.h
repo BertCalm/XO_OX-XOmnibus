@@ -382,7 +382,7 @@ public:
                 voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
                 voices[v].filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
             }
-        }
+        } // end for (int v = 0; v < kMaxVoices; ++v)
         // Hoist envelope setADSR out of the per-sample loop — setADSR internally
         // calls two std::exp()s for decay/release coefficients; ADSR knob values
         // are block-rate so per-sample recomputation was pure waste.
@@ -395,7 +395,6 @@ public:
 
         for (int i = 0; i < numSamples; ++i)
         {
-            const bool updateFilter = ((i & 15) == 0);
             float lfo1Val = lfo1.process();
             float lfo2Val = lfo2.process();
             float breathVal = breathLfo.process();
@@ -447,14 +446,6 @@ public:
                 {
                     voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
                     voice.lastCutoff = voiceCutoff;
-                }
-                // SVF coeff refresh decimated to every 16 samples.
-                if (updateFilter)
-                {
-                    float voiceCutoff = pFilterCut * velBright + pFiltEnvAmt * filtLevel * 8000.0f * voice.velocity +
-                                        pBrightness * 4000.0f; // brightness independently brightens the tone
-                    voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
-                    voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
                 }
 
                 // LFOToPitch coupling: extPitchMod is accumulated in applyCouplingInput()

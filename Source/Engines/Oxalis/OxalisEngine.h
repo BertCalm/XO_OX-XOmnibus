@@ -446,7 +446,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float cutNow = smoothCutoff.process();
             float phiNow = smoothPhi.process();
             float sprNow = smoothSpread.process();
@@ -466,11 +465,10 @@ public:
                 // Vibrato contributes up to ~0.08 semitones — included in cache invalidation.
                 // Threshold of 0.005 semitones keeps tuning error < 0.01 cents inaudible.
                 static constexpr float kPitchCacheThreshold = 0.005f;
+                // F01: use capturedPitchMod (local), not couplingPitchMod (already 0)
+                // F12: vibrato scalar 0.08f → 0.3f for ±0.3st range at full depth (strings standard)
                 float bendInput =
                     bendSemitones + capturedPitchMod + vibrato * 0.3f + voice.dormancyPitchCents / 100.0f;
-                    // F01: use capturedPitchMod (local), not couplingPitchMod (already 0)
-                    // F12: vibrato scalar 0.08f → 0.3f for ±0.3st range at full depth (strings standard)
-                    bendSemitones + blockCouplingPitchMod + vibrato * 0.08f + voice.dormancyPitchCents / 100.0f;
                 if (std::fabs(bendInput - voice.lastBendInput) > kPitchCacheThreshold)
                 {
                     voice.cachedPitchRatio = PitchBendUtil::semitonesToFreqRatio(bendInput);
@@ -511,7 +509,7 @@ public:
                     oscOut = oscOut + asymmetry * 0.3f * fastTanh(oscOut * 2.0f);
                 }
 
-                // Filter (env ticked per-sample, SVF decimated)
+                // Filter (env ticked per-sample)
                 float envLevel = voice.filterEnv.process();
                 float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 4000.0f, 200.0f, 20000.0f);
                 // F16: delta-guard setCoefficients — only recompute when fCut shifts > 2Hz
@@ -521,11 +519,6 @@ public:
                 {
                     voice.filter.setCoefficients(fCut, pResonance, srf);
                     voice.lastFilterCut = fCut;
-                if (updateFilter)
-                {
-                    float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 4000.0f, 200.0f, 20000.0f);
-                    voice.filter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.filter.setCoefficients(fCut, pResonance, srf);
                 }
                 float filtered = voice.filter.processSample(oscOut);
 
@@ -752,8 +745,6 @@ public:
         paramLfo2Depth = apvts.getRawParameterValue("oxal_lfo2Depth");
         paramLfo2Shape = apvts.getRawParameterValue("oxal_lfo2Shape");
     }
-
-    } // end renderBlock
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
