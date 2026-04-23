@@ -419,7 +419,6 @@ public:
 
         // Consume coupling accumulators — CAPTURE before zeroing (P25)
         const float couplingAudioIn  = couplingAudioAccum;
-        const float couplingMorphIn  = couplingMorphAccum;   // EnvToMorph → bias offset
         couplingFilterAccum = 0.0f;
         couplingAudioAccum  = 0.0f;
         couplingMorphAccum  = 0.0f;

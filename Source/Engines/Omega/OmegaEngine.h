@@ -437,6 +437,7 @@ public:
             float fbNow = smoothFeedback.process();
             float purityNow = smoothPurity.process();
             float brightNow = smoothBrightness.process();
+            (void)brightNow; // smoother tick required; brightness folded into filter cutoff block-rate
             float distRNow = smoothDistillRate.process();
             (void)distRNow; // block-rate decayCoeff used instead (CPU fix 1)
 
