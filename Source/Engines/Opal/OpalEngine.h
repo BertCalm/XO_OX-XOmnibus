@@ -1830,6 +1830,12 @@ public:
             fMode = CytomicSVF::Mode::LowPass;
             break;
         }
+        if (static_cast<int>(fMode) != lastFilterMode_)
+        {
+            globalFilterL.reset();
+            globalFilterR.reset();
+            lastFilterMode_ = static_cast<int>(fMode);
+        }
         globalFilterL.setMode(fMode);
         globalFilterR.setMode(fMode);
 
@@ -2304,6 +2310,7 @@ private:
     // Global filter (post-grain-mix)
     CytomicSVF globalFilterL;
     CytomicSVF globalFilterR;
+    int lastFilterMode_ = -1; // sentinel: -1 forces IC reset on first block
 
     // Smear state (simplified)
     float smearStateL = 0.0f;
