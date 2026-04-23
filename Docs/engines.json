@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Machine-readable engine roster for XOceanus. CI/build scripts reference this file to scope QA sweeps, builds, and preset validation.",
-    "last_updated": "2026-04-20",
+    "last_updated": "2026-04-22",
     "status_values": [
       "implemented",
       "designed",
@@ -9,8 +9,8 @@
       "pending_directory"
     ],
     "notes": "This file is the single source of truth for engine roster and count. Parameter prefixes are FROZEN \u2014 never change after first registration. XOceanus has no fixed release cutoff. `status` reflects build state: 'implemented' means the engine has both a Source/Engines/ directory AND a frozen prefix in PresetManager.h; 'pending_*' flags work-in-progress. Run Tools/sync_engine_sources.py to regenerate dependent files.",
-    "last_sync": "2026-04-20",
-    "engine_count": 90,
+    "last_sync": "2026-04-22",
+    "engine_count": 92,
     "engine_count_total": 111,
     "legacy_dir_aliases": {
       "Bite": "Overbite",
@@ -456,12 +456,30 @@
       "category": "original"
     },
     {
+      "id": "Oobleck",
+      "param_prefix": "oobl_",
+      "header": "Source/Engines/Oobleck/OobleckEngine.h",
+      "status": "implemented",
+      "accent_color": "#B4FF39",
+      "accent_name": "Oobleck Slime",
+      "category": "reaction-diffusion"
+    },
+    {
       "id": "Oort",
       "param_prefix": "oort_",
       "header": "Source/Engines/Oort/OortEngine.h",
       "status": "implemented",
       "accent_color": "#A9A9A9",
       "category": "stochastic"
+    },
+    {
+      "id": "Ooze",
+      "param_prefix": "ooze_",
+      "header": "Source/Engines/Ooze/OozeEngine.h",
+      "status": "implemented",
+      "accent_color": "#2D5F5D",
+      "accent_name": "Hydrothermal Teal",
+      "category": "fluid-dynamics"
     },
     {
       "id": "Opal",

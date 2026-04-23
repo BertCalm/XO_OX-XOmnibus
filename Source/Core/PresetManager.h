@@ -281,6 +281,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         // NLS Soliton Synthesis (engine #90; renamed from Oneiric 2026-04-22)
         // Prefix stays oner_ — frozen for preset compatibility.
         {"Onda", "oner_"},
+        // Wave-Terrain Synthesis
+        {"Outcrop", "outc_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();
