@@ -675,7 +675,15 @@ public:
                         // Normalized 0-1 (0 = right at write head, 1 = one full revolution behind)
                         float normDist = headDist / static_cast<float>(reelSizeSamples);
 
-                        [[maybe_unused]] float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
+                        float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
+                        if (updateFilter)
+                        {
+                            // setMode(LowPass) omitted here — set once in reset() / doNoteOn()
+                            float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
+                            oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
+                            voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
+                            voice.oxideFilter[h].setCoefficients_fast(oxideCutoff, 0.3f, currentSampleRate);
+                        }
                         rawSample = voice.oxideFilter[h].processSample(rawSample);
                         rawSample = flushDenormal(rawSample);
                     }

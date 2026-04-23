@@ -296,8 +296,8 @@ public:
         float pConcentrate = pConcentrateParam ? pConcentrateParam->load() : 0.5f;
         float pStereoWidth = pStereoWidthParam ? pStereoWidthParam->load() : 0.5f;
         float pFilterCut = pFilterCutParam ? pFilterCutParam->load() : 8000.0f;
-        [[maybe_unused]] float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.15f;
-        [[maybe_unused]] float pFiltEnvAmt = pFiltEnvAmtParam ? pFiltEnvAmtParam->load() : 0.3f;
+        float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.15f;
+        float pFiltEnvAmt = pFiltEnvAmtParam ? pFiltEnvAmtParam->load() : 0.3f;
         float pAmpA = pAmpAParam ? pAmpAParam->load() : 0.5f;
         float pAmpD = pAmpDParam ? pAmpDParam->load() : 1.0f;
         float pAmpS = pAmpSParam ? pAmpSParam->load() : 0.9f;
@@ -392,6 +392,7 @@ public:
 
         for (int i = 0; i < numSamples; ++i)
         {
+            const bool updateFilter = ((i & 15) == 0);
             float lfo1Val = lfo1.process();
             float lfo2Val = lfo2.process();
             float breathVal = breathLfo.process();
@@ -464,7 +465,7 @@ public:
 
                 // Envelope setADSR hoisted to per-block voice loop above.
                 float ampLevel = voice.ampEnv.process();
-                [[maybe_unused]] float filtLevel = voice.filterEnv.process();
+                float filtLevel = voice.filterEnv.process();
 
                 if (!voice.ampEnv.isActive())
                 {
@@ -542,6 +543,13 @@ public:
                 }
 
                 // Per-voice filter — cutoff reduces with session age (coeff refresh decimated)
+                if (updateFilter)
+                {
+                    float voiceCutoff = pFilterCut * (1.0f - reduction.sessionAge * 0.7f) +
+                                        pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity;
+                    voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
+                    voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
+                }
                 voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 // Apply amp envelope
