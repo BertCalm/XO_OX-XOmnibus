@@ -50,10 +50,6 @@ public:
     static Matrix trefoil() noexcept
     {
         // Hadamard-inspired 6×6 with 3-fold symmetry and unit-norm rows
-        const float s6 = 1.0f / std::sqrt(6.0f);
-        const float half = 0.5f;
-        const float q = 0.5f; // quaternion-like weight
-
         Matrix m{};
         // Circulant matrix with coupling kernel [1, r, r, -r, r, r] / ||
         // r chosen so rows are unit-norm with 3-fold symmetry.
@@ -63,9 +59,6 @@ public:
         const float d = 1.0f / std::sqrt(3.0f);
         const float w = 1.0f / std::sqrt(3.0f);
         const float x = 1.0f / std::sqrt(3.0f);
-        (void)s6;
-        (void)half;
-        (void)q;
 
         // Full Hadamard-normalized 6×6 trefoil circulant:
         //   diag = d, +1 hop = +w, -1 hop = -w, all others 0
