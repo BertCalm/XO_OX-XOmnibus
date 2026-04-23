@@ -885,8 +885,6 @@ public:
                 ++count;
         activeVoiceCount_.store(count, std::memory_order_relaxed);
         analyzeForSilenceGate(buffer, numSamples);
-    } // end for (int s...) sample loop
-
     } // end renderBlock
 
     //==========================================================================
