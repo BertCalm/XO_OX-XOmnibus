@@ -6,7 +6,7 @@ Generated: 2026-03-19 | Updated: 2026-04-03 | Total: 300+ files across 30 subdir
 ## Architecture & Specs
 
 - [xoceanus_master_specification.md](specs/xoceanus_master_specification.md) — Master spec for XOceanus platform
-- [XOceanus_Master_Architecture- Volume 2.md.txt](specs/XOmnibus_Master_Architecture-%20Volume%202.md.txt) — Volume 2 architecture (historical: filename predates 2026-03-24 rename)
+- [XOceanus_Master_Architecture-Volume-2.md.txt](specs/XOceanus_Master_Architecture-Volume-2.md.txt) — Volume 2 architecture (historical: filename predates 2026-03-24 rename)
 - [xoceanus_repo_structure.md](specs/xoceanus_repo_structure.md) — Directory and file organization
 - [xoceanus_technical_design_system.md](specs/xoceanus_technical_design_system.md) — Technical design patterns
 - [xoceanus_new_engine_process.md](specs/xoceanus_new_engine_process.md) — How to add a new engine
@@ -146,9 +146,6 @@ Generated: 2026-03-19 | Updated: 2026-04-03 | Total: 300+ files across 30 subdir
 
 > **Note**: These are point-in-time snapshots. Current build status: run `cmake --build build`.
 
-- [build_verification_8h.md](build-logs/build_verification_8h.md) — Build verification round 8h
-- [build_verification_11j.md](build-logs/build_verification_11j.md) — Build verification round 11j
-- [build_verification_12j.md](build-logs/build_verification_12j.md) — Build verification round 12j
 - [v007_journey_demo_report.md](sessions/v007_journey_demo_report.md) — v0.0.7 journey demo report
 - [xoceanus_volume2_review.md](plans/xoceanus_volume2_review.md) — Volume 2 review
 
@@ -345,8 +342,8 @@ Formal definition files for D001–D006 — requirements, failure patterns, test
 - [design/asset-registry.md](design/asset-registry.md) — Figma component + font asset registry
 - [design/kai-akai-tool-ui-review.md](design/kai-akai-tool-ui-review.md) — Kai/AKAI tool UI review (Outshine/Originate/Oxport)
 - [design/xoceanus-ui-blessing-session.md](design/xoceanus-ui-blessing-session.md) — UI blessing session verdict (B041–B043)
-- [design/xomnibus_design_guidelines.md](design/xomnibus_design_guidelines.md) — Designer brief & visual design system (compiled 2026-03-17; canonical sources listed in §18 take precedence)
-- [design/xomnibus_ui_master_spec_v2.md](design/xomnibus_ui_master_spec_v2.md) — UI master spec v2 (XOceanus Rebirth design language)
+- [design/xoceanus_design_guidelines.md](design/xoceanus_design_guidelines.md) — Designer brief & visual design system (compiled 2026-03-17; canonical sources listed in §18 take precedence)
+- [design/xoceanus_ui_master_spec_v2.md](design/xoceanus_ui_master_spec_v2.md) — UI master spec v2 (XOceanus Rebirth design language)
 
 ---
 
