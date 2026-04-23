@@ -507,9 +507,10 @@ struct OuroborosDCBlocker
         // R = exp(-2*pi*fc/sr)  — matched-Z (bilinear) coefficient, fleet standard.
         // At 5 Hz cutoff: passes all audible content, blocks DC and sub-infrasonic drift.
         // Floor at 0.9 prevents instability if sampleRate is unexpectedly low.
-        // Guard: fall back to 44100 Hz if sampleRate is zero or negative (fixes #613).
+        // Guard: sentinel — outer engine guards the main path
         if (sampleRate <= 0.0)
-            sampleRate = 44100.0;
+            return;
+        jassert(sampleRate > 0.0);
         constexpr double twoPi = 6.283185307179586;
         constexpr double cutoffHz = 5.0;
         feedbackCoefficient = static_cast<float>(std::exp(-twoPi * cutoffHz / sampleRate));
@@ -671,9 +672,10 @@ struct OuroborosVoice
         stealFadeGain = 1.0f;
         stealFadeStep = 0.0f;
 
-        // Guard: fall back to 44100 Hz if sampleRate is zero or negative (fixes #613).
+        // Guard: sentinel — outer engine guards the main path
         if (sampleRate <= 0.0)
-            sampleRate = 44100.0;
+            return;
+        jassert(sampleRate > 0.0);
 
         // Leash phasor resets to 0 on note-on (new pitch cycle)
         float frequency = midiToFreq(note);
@@ -737,9 +739,10 @@ struct OuroborosVoice
         startTime = time;
         released = false;
 
-        // Guard: fall back to 44100 Hz if sampleRate is zero or negative (fixes #613).
+        // Guard: sentinel — outer engine guards the main path
         if (sampleRate <= 0.0)
-            sampleRate = 44100.0;
+            return;
+        jassert(sampleRate > 0.0);
 
         // Update phasor to new frequency (attractor state preserved)
         float frequency = midiToFreq(note);
