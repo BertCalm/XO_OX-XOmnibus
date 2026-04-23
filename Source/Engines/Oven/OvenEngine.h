@@ -1203,8 +1203,6 @@ public:
         paramCouplingRes = apvts.getRawParameterValue("oven_couplingResonance");
     }
 
-    } // end renderBlock
-
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use

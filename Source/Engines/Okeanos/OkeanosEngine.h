@@ -546,7 +546,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float warmthNow = smoothWarmth.process();
             float bellNow = smoothBell.process();
             float brightNow = smoothBrightness.process();
@@ -587,10 +586,6 @@ public:
 
                 // Tremolo (Rhodes' optional built-in stereo vibrato).
                 // setRate is called once per block in the LFO config section above.
-                // Tremolo (Rhodes' optional built-in stereo vibrato) — setRate decimated
-                // to every 16 samples (smoother output differences inaudible at that grain).
-                if (updateFilter)
-                    voice.tremoloLFO.setRate(tremRateNow, srf);
                 float tremVal = voice.tremoloLFO.process();
                 float tremGain = 1.0f - tremDepthNow * 0.5f * (1.0f + tremVal);
 

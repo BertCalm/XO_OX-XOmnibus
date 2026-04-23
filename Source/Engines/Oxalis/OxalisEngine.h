@@ -465,11 +465,10 @@ public:
                 // Vibrato contributes up to ~0.08 semitones — included in cache invalidation.
                 // Threshold of 0.005 semitones keeps tuning error < 0.01 cents inaudible.
                 static constexpr float kPitchCacheThreshold = 0.005f;
+                // F01: use capturedPitchMod (local), not couplingPitchMod (already 0)
+                // F12: vibrato scalar 0.08f → 0.3f for ±0.3st range at full depth (strings standard)
                 float bendInput =
                     bendSemitones + capturedPitchMod + vibrato * 0.3f + voice.dormancyPitchCents / 100.0f;
-                    // F01: use capturedPitchMod (local), not couplingPitchMod (already 0)
-                    // F12: vibrato scalar 0.08f → 0.3f for ±0.3st range at full depth (strings standard)
-                    bendSemitones + blockCouplingPitchMod + vibrato * 0.08f + voice.dormancyPitchCents / 100.0f;
                 if (std::fabs(bendInput - voice.lastBendInput) > kPitchCacheThreshold)
                 {
                     voice.cachedPitchRatio = PitchBendUtil::semitonesToFreqRatio(bendInput);
@@ -746,8 +745,6 @@ public:
         paramLfo2Depth = apvts.getRawParameterValue("oxal_lfo2Depth");
         paramLfo2Shape = apvts.getRawParameterValue("oxal_lfo2Shape");
     }
-
-    } // end renderBlock
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use

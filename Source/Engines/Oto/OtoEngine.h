@@ -627,12 +627,6 @@ public:
             if (voices[vi].active)
                 voices[vi].svf.setMode(CytomicSVF::Mode::LowPass);
 
-            {
-                auto& voice = voices[vi];
-                if (voice.active)
-                    voice.ampEnv.setADSR(attack, decay, sustain, release);
-            }
-
         // Hoist per-voice LFO config. pLFO1Rate is block-rate; D005 floor enforced.
         {
             const float lfo1RateClamped = std::max(0.01f, pLFO1Rate);
