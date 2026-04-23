@@ -167,7 +167,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Oobleck | `oobl_` | `oobl_feed` |
 | Ooze | `ooze_` | `ooze_reynolds` |
 | Outcrop | `outc_` | `outc_terrainType` |
-| Oneiric | `oner_` | `oner_boundState` |
+| Onda | `oner_` | `oner_boundState` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
