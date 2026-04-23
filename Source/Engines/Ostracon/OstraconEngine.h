@@ -361,7 +361,7 @@ public:
 
         // Expression (CC11) + coupling morph → effective bias
         const float biasWithExpr = juce::jlimit(0.0f, 1.0f,
-            effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphIn * 0.5f);
+            effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphAccum * 0.5f);
 
         // ---- Process MIDI ----
         for (const auto metadata : midi)
@@ -419,7 +419,6 @@ public:
 
         // Consume coupling accumulators — CAPTURE before zeroing (P25)
         const float couplingAudioIn  = couplingAudioAccum;
-        const float couplingMorphIn  = couplingMorphAccum;   // EnvToMorph → bias offset
         couplingFilterAccum = 0.0f;
         couplingAudioAccum  = 0.0f;
         couplingMorphAccum  = 0.0f;
@@ -675,9 +674,6 @@ public:
                         float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
                         if (updateFilter)
                         {
-                            // setMode(LowPass) omitted here — set once in reset() / doNoteOn()
-                            float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
-                            oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
                             float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
                             oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
                             voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
@@ -796,6 +792,8 @@ public:
         analyzeForSilenceGate(buffer, numSamples);
     }
 
+    } // end renderBlock
+
     //==========================================================================
     //  S Y N T H   E N G I N E   I N T E R F A C E  —  C O U P L I N G
     //==========================================================================
@@ -841,8 +839,6 @@ public:
             }
         }
     }
-
-    } // end renderBlock
 
     //==========================================================================
     //  S Y N T H   E N G I N E   I N T E R F A C E  —  P A R A M E T E R S

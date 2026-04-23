@@ -168,16 +168,11 @@ public:
         if (circuitAge > 0.0f)
         {
             // AM approximation of motor flutter (delay-line-free; see updateWarmth()).
+            // F13: uses block-rate cached cachedWobbleSin to avoid per-sample sin().
             float wobble = 1.0f + circuitAge * 0.0017f * cachedWobbleSin;
             wobblePhase += static_cast<float>(juce::MathConstants<double>::twoPi * 0.3 / sr);
             if (wobblePhase > juce::MathConstants<float>::twoPi)
                 wobblePhase -= juce::MathConstants<float>::twoPi;
-
-            // Pitch wobble is applied at the signal level as a subtle AM
-            // (a true pitch wobble would require a delay line; this is an
-            //  affordable approximation for the "motor flutter" aesthetic).
-            // fastSin: ~0.01% err — indistinguishable for this AM application.
-            float wobble = 1.0f + circuitAge * 0.0017f * xoceanus::fastSin(wobblePhase);
             output *= wobble;
         }
 

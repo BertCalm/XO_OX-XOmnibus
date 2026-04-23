@@ -489,7 +489,7 @@ public:
     juce::String getEngineId() const override { return "Oware"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFB5883E); }
     int getMaxVoices() const override { return kMaxVoices; }
-    int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
+    int getActiveVoiceCount() const override { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
     void prepare(double sampleRate, int maxBlockSize) override
     {
@@ -725,7 +725,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float matNow = smoothMaterial.process();
             float malletNow = smoothMallet.process();
             float buzzNow = smoothBuzz.process();
@@ -766,11 +765,13 @@ public:
                 //     through modal ratios. Balinese ombak is a fixed-Hz beat between
                 //     paired bars tuned ~3-7 Hz apart; scaling it by high modal ratios
                 //     (e.g., 9×) would produce semitone-class detuning at upper modes.
-                float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f; // [0,1]
-                float shimmerOffset = pShimmerHz * shimmerMod;                  // 0 to shimmerHz
+                // Improvement #3: Balinese beat-frequency shimmer (fixed Hz, not ratio)
+                // BUG-2 FIX: use pShimmerHz parameter instead of hardcoded 0.3
+                // (shimmerLFO.setRate hoisted to per-block voice loop above.)
+                float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f;      // [0,1]
+                float shimmerOffset = pShimmerHz * shimmerMod;                      // 0 to shimmerHz
                 // Apply as additive Hz offset (Balinese: beat rate in Hz, not cents)
-                float freqWithShimmer = freq + shimmerOffset;
-
+                // shimmerOffset adds fixed-Hz shimmer; applied in body resonance below
                 float excitation = voice.exciter.process();
 
                 // CPU-optimized sympathetic resonance: use precomputed sparse table
@@ -859,12 +860,6 @@ public:
                 {
                     voice.svf.setCoefficients(cutoff, 0.5f, srf);
                     voice.lastCutoff = cutoff;
-                if (updateFilter)
-                {
-                    // BUG-1 FIX: LFO1 modulates brightness (±3000 Hz at full depth)
-                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.5f, srf);
                 }
                 float filtered = voice.svf.processSample(bodied);
                 // F10: voice.sympatheticOut removed — it was set here but never read
@@ -887,10 +882,8 @@ public:
         for (const auto& v : voices)
             if (v.active)
                 ++count;
-        activeVoiceCount.store(count);
+        activeVoiceCount_.store(count, std::memory_order_relaxed);
         analyzeForSilenceGate(buffer, numSamples);
-    } // end for (int s...) sample loop
-
     } // end renderBlock
 
     //==========================================================================
@@ -1134,7 +1127,6 @@ private:
 
     std::array<OwareVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
-    std::atomic<int> activeVoiceCount{0};
 
     ParameterSmoother smoothMaterial, smoothMallet, smoothBuzz;
     ParameterSmoother smoothBodyDepth, smoothSympathy, smoothBrightness;

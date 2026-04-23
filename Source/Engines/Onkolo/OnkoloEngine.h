@@ -482,7 +482,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float funkNow = smoothFunk.process();
             float pickupNow = smoothPickup.process();
             float brightNow = smoothBrightness.process();
@@ -540,12 +539,6 @@ public:
                     voice.svf.setMode(CytomicSVF::Mode::LowPass);
                     voice.svf.setCoefficients(cutoff, 0.15f, srf);
                     voice.svfCachedCutoff = cutoff;
-                if (updateFilter)
-                {
-                    float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
-                    float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.15f, srf);
                 }
                 float filtered = voice.svf.processSample(wahOut);
 
@@ -734,8 +727,6 @@ public:
         paramLfo2Depth = apvts.getRawParameterValue("onko_lfo2Depth");
         paramLfo2Shape = apvts.getRawParameterValue("onko_lfo2Shape");
     }
-
-    } // end renderBlock
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use

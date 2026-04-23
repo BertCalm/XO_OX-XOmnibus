@@ -563,7 +563,6 @@ public:
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
         const int lfo2Shape = static_cast<int>(loadP(paramLfo2Shape, 0.0f));
 
-        const float roomSpread = pRoom * 0.15f;
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -574,7 +573,7 @@ public:
             voice.lfo2.setShape(lfo2Shape);
             voice.glide.setTime(pGlide, srf);
             voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
-// P19: move block-constant updates here — saves per-sample SVF coeff + exp calls.
+            // P19: move block-constant updates here — saves per-sample SVF coeff + exp calls.
             voice.body.updateModes(smoothWoodAge.get());
             voice.outputFilter.setMode(CytomicSVF::Mode::LowPass); // mode is constant; set once per block
             // setStringType contains std::exp — block-constant, pull out of per-sample loop
@@ -604,17 +603,11 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-float bowPNow    = smoothBowPressure.process();
-            (void)smoothStringTension.process(); // advance smoother; value is block-constant (moved to pre-sample loop)
+            float bowPNow    = smoothBowPressure.process();
+            (void)smoothStringTension.process(); // advance smoother; value is block-constant (used via .get() above)
             float bodyDNow   = smoothBodyDepth.process();
             float brightNow  = smoothBrightness.process();
-            (void)smoothWoodAge.process();        // advance smoother; value is block-constant (moved to pre-sample loop)
-const bool updateFilter = ((s & 15) == 0);
-            float bowPNow = smoothBowPressure.process();
-            float strTNow = smoothStringTension.process();
-            float bodyDNow = smoothBodyDepth.process();
-            float brightNow = smoothBrightness.process();
-            float woodANow = smoothWoodAge.process();
+            (void)smoothWoodAge.process();       // advance smoother; value is block-constant (used via .get() above)
             float curingRNow = smoothCuringRate.process();
 
             float mixL = 0.0f, mixR = 0.0f;
