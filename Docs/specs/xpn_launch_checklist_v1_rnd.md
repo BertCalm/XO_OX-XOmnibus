@@ -74,8 +74,8 @@ XO-OX.org going down during peak traffic would kill momentum. Mitigation: Gumroa
 **Risk 3 — Pack format incompatible with some MPC firmware versions**
 `.xpn` format behavior can vary between firmware 2.14 and 2.16. Mitigation: test both versions before launch. If 2.14 breaks, document the minimum supported firmware prominently in the README and on the download page.
 
-**Risk 4 — Patreon URL still a placeholder at launch**
-This is an embarrassing but real risk given it is currently unresolved. Mitigation: it is BLOCKER #1. Assign it today, not the day before launch.
+**Risk 4 — Patreon status**
+Patreon URL resolved — patreon.com/cw/XO_OX live as of 2026-03-22 (see BLOCKER #1).
 
 **Risk 5 — Audio demos recorded from DAW instead of hardware**
 Demos that do not come from the actual hardware MPC miss the point of the product. Mitigation: the audio demo BLOCKER (#4) explicitly requires hardware capture. Gate all demo uploads against this requirement before scheduling social posts.
