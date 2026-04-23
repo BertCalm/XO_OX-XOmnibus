@@ -812,7 +812,7 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
 {
     juce::ScopedNoDenormals noDenormals;
     if (numSamples <= 0) return;
-    if (sampleRateF <= 0.0f) sampleRateF = 44100.0f;
+    if (sampleRateF <= 0.0f) { buffer.clear(); return; }
     const int nCh = buffer.getNumChannels();
     if (nCh <= 0) return;
 
