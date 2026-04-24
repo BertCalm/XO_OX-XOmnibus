@@ -737,8 +737,6 @@ public:
                 // setMode() is applied once per block above; only coefficients need per-16 refresh.
                 if (updateFilter)
                 {
-                if (updateFilter)
-                {
                     voice.outputFilterL.setMode(filterMode);
                     voice.outputFilterR.setMode(filterMode);
                     voice.outputFilterL.setCoefficients_fast(finalCutoff, smoothedReso, currentSampleRate);

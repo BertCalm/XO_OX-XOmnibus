@@ -1126,7 +1126,7 @@ private:
                     else
                     {
                         rawSig = generateOscSample(wave, v.oscPhase[c], phaseInc, ch,
-                                                   v.noiseRng[c], sampleRateFloat);
+                                                   v.noiseRng[c]);
                         v.oscPhase[c] += phaseInc;
                         if (v.oscPhase[c] >= 1.0f) v.oscPhase[c] -= 1.0f;
                     }
@@ -1231,10 +1231,8 @@ private:
     //==========================================================================
 
     static float generateOscSample(int wave, float phase, float phaseInc,
-                                   float character, uint32_t& rng,
-                                   float sampleRate) noexcept
+                                   float character, uint32_t& rng) noexcept
     {
-        (void)sampleRate;
         switch (wave)
         {
         case 0: // Sine — character folds (wavefold for warmth)
