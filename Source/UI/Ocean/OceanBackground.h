@@ -40,10 +40,10 @@ namespace xoceanus
         Ocean::deep      (#0A0E18)  →  60 % radius
         Ocean::abyss     (#04040A)  →  edge
 
-    Depth-zone rings (faint ellipse strokes overlaid on the gradient):
-        Sunlit zone    — 30 % of half-min-dimension, sunlitTint   @ 4 % alpha
-        Twilight zone  — 45 % of half-min-dimension, twilightTint @ 3 % alpha
-        Midnight zone  — 60 % of half-min-dimension, midnightTint @ 4 % alpha
+    Depth-zone rings (faint ellipse fills overlaid on the gradient):
+        Sunlit zone    — 30 % of half-min-dimension, sunlitTint   @ 14 % alpha
+        Twilight zone  — 45 % of half-min-dimension, twilightTint @ 10 % alpha
+        Midnight zone  — 60 % of half-min-dimension, midnightTint @ 14 % alpha
 
     When hasCouplingRoutes_ is false the component additionally draws faint
     concentric ring outlines (1 px, 5 % white) as a background texture so the
@@ -395,27 +395,25 @@ private:
                              float cx, float cy,
                              float halfMin) const
     {
-        // Sunlit zone — warm cyan tint.
-        // Alpha raised to 0.12 (was 0.07) for stronger zone differentiation.
+        // Depth zones are the spatial organizing principle of the instrument —
+        // they need to be visible, not implied. The middle zone is held
+        // slightly lower than the bookends so the boundary transitions read
+        // as gradients rather than three hard bands.
         {
             const float r = kSunlitRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.12f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.14f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
-        // Twilight zone — blue tint.
-        // Alpha raised to 0.09 (was 0.05) for stronger zone differentiation.
         {
             const float r = kTwilightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.09f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.10f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
-        // Midnight zone — violet tint.
-        // Alpha raised to 0.10 (was 0.06) for stronger zone differentiation.
         {
             const float r = kMidnightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.10f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.14f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
     }
