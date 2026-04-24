@@ -565,8 +565,7 @@ public:
         macros_ = std::make_unique<MacroSection>(apvts);
         addAndMakeVisible(*macros_);
 
-        // Re-stack above the orbits and nexus, but below ambientEdge.
-        macros_->toFront(false);
+        // Re-stack: full reorderZStack() covers macros_ positioning.
         reorderZStack();
         resized();
     }
@@ -839,10 +838,12 @@ public:
             .withLeft(fullBounds.getRight() - SettingsDrawer::kDrawerWidth)
             .withWidth(SettingsDrawer::kDrawerWidth));
 
-        // ── Canonical Z-order ────────────────────────────────────────────────
-        // Called at end of every resized() to ensure drawers/overlays stay above
-        // all dashboard components regardless of init order or visibility changes.
-        reorderZStack();
+        // ── Z-order note ─────────────────────────────────────────────────────
+        // reorderZStack() is NOT called here. Z-order is established once:
+        //   • Static components: constructor add order + each initXxx() call
+        //   • Detail panel: onDoubleClicked uses remove/addAndMakeVisible (nuclear)
+        // Calling reorderZStack() every resized() caused O(n²) toFront() calls
+        // per animation frame — refs #1163.
 
         // Nuclear safeguard: ensure detail panel is hidden when not actively showing.
         // Something in the layout chain is re-showing it; this is the absolute last word.
@@ -2364,15 +2365,26 @@ private:
     /**
         Restore the canonical Z-order of all overlay and floating components.
 
-        Called after each deferred init (initMacros, initDetailPanel, initSidebar,
-        initStatusBar) because addAndMakeVisible() pushes the new component to the
-        front and disturbs the Z-stack.
+        Called ONCE after each deferred-init method (initMacros, initDetailPanel,
+        initSidebar, initStatusBar, initWaterline, initChordBar, initMasterFxStrip,
+        initEpicSlotsPanel, initTransportBar) because addAndMakeVisible() pushes the
+        newly constructed component to the front and disturbs the Z-stack.
+
+        NOT called from resized() — z-order does not change when bounds change.
+        (Doing so caused O(n²) toFront() calls per animation frame — refs #1163.)
+        For the EngineDetailPanel, the onDoubleClicked handler uses the nuclear
+        remove/addAndMakeVisible approach to force it to the absolute front.
 
         Order (bottom → top):
-          ambientEdge_ | detail_ | sidebar_ | browser_ |
+          ambientEdge_ | orbits_ | macros_ | detail_ | sidebar_ | browser_ |
+          detailOverlay_ | couplingPopup_ |
           presetPrev_ | presetNext_ | favButton_ | settingsButton_ | keysButton_ |
           dimOverlay_  ← #1008 FIX 7: above buttons, so buttons are dimmed |
-          playSurfaceOverlay_ | statusBar_
+          emptyStateLabel_ | lifesaver_ | hudBar_ | surfaceRight_ | exprStrips_ |
+          subPlaySurface_ | playSurfaceOverlay_ | ouijaPanel_ |
+          waterline_ | masterFxStrip_ | epicSlots_ | tabBar_ | chordBar_ |
+          transportBar_ | statusBar_ |
+          engineDrawer_ | settingsDrawer_ | detailOverlay_ | detail_ | couplingPopup_
     */
     void reorderZStack()
     {

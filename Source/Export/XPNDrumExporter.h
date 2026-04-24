@@ -695,15 +695,24 @@ private:
 
     static void writeManifest(const juce::File& bundleDir, const DrumExportConfig& config, int presetCount)
     {
-        juce::XmlElement manifest("Expansion");
-        manifest.setAttribute("Name", config.name);
-        manifest.setAttribute("Manufacturer", config.manufacturer);
-        manifest.setAttribute("Version", config.version);
-        manifest.setAttribute("ID", config.bundleId);
-        manifest.setAttribute("Type", "Drums");
-        manifest.setAttribute("PresetCount", presetCount);
+        // XPN bible §1: manifest must live at Expansions/manifest (no extension),
+        // plain-text Key=Value format — NOT XML at bundle root.
+        auto expansionsDir = bundleDir.getChildFile("Expansions");
+        expansionsDir.createDirectory();
 
-        manifest.writeTo(bundleDir.getChildFile("Manifest.xml"));
+        auto manifestFile = expansionsDir.getChildFile("manifest");
+
+        juce::String content;
+        content << "Name=" << config.name << "\n";
+        content << "Version=" << config.version << "\n";
+        content << "Author=" << config.manufacturer << "\n";
+        content << "Description=Drum expansion featuring ONSET engine presets\n";
+        content << "Category=Drums\n";
+        content << "Tags=drums,percussion,xo_ox\n";
+        content << "ID=" << config.bundleId << "\n";
+        content << "PresetCount=" << presetCount << "\n";
+
+        manifestFile.replaceWithText(content);
     }
 
     //==========================================================================
