@@ -1126,7 +1126,7 @@ private:
                     else
                     {
                         rawSig = generateOscSample(wave, v.oscPhase[c], phaseInc, ch,
-                                                   v.noiseRng[c], sampleRateFloat);
+                                                   v.noiseRng[c]);
                         v.oscPhase[c] += phaseInc;
                         if (v.oscPhase[c] >= 1.0f) v.oscPhase[c] -= 1.0f;
                     }
@@ -1177,6 +1177,12 @@ private:
                     case 3: fMode = CytomicSVF::Mode::Notch;    break;
                     default: break;
                     }
+                    if (fltType != v.prevFltType)
+                    {
+                        v.filterL.reset();
+                        v.filterR.reset();
+                        v.prevFltType = fltType;
+                    }
                     v.filterL.setMode(fMode);
                     v.filterR.setMode(fMode);
                     v.filterL.setCoefficients_fast(effectiveCutoff, effectiveReso, sampleRateFloat);
@@ -1225,10 +1231,8 @@ private:
     //==========================================================================
 
     static float generateOscSample(int wave, float phase, float phaseInc,
-                                   float character, uint32_t& rng,
-                                   float sampleRate) noexcept
+                                   float character, uint32_t& rng) noexcept
     {
-        (void)sampleRate;
         switch (wave)
         {
         case 0: // Sine — character folds (wavefold for warmth)
