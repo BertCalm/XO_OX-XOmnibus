@@ -73,16 +73,21 @@ public:
     void focusGained(FocusChangeType) override { repaint(); }
     void focusLost(FocusChangeType) override { repaint(); }
 
-    // Hover ring — repaint on enter/exit so drawRotarySlider sees the updated
-    // isMouseOver() state and can draw/remove the passive hover highlight.
+    // Hover ring — track state in a NamedValueSet property so the
+    // LookAndFeel can read it without calling Slider::isMouseOver() inside
+    // paint (which on D2D-backed JUCE can return last frame's value, causing
+    // a one-frame hover-flicker on fast mouse moves; #1185). Same property
+    // mechanism already used for "modAmount" / "modColour".
     void mouseEnter(const juce::MouseEvent& e) override
     {
         juce::Slider::mouseEnter(e);
+        getProperties().set("hovered", true);
         repaint();
     }
     void mouseExit(const juce::MouseEvent& e) override
     {
         juce::Slider::mouseExit(e);
+        getProperties().set("hovered", false);
         repaint();
     }
 

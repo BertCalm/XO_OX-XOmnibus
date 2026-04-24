@@ -114,8 +114,18 @@ public:
         float fillEnd = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
 
         // Passive hover: subtle brightness lift when hovering but not dragging.
-        // isMouseOver() is true for hover-only; isMouseButtonDown() is false.
-        const bool isPassiveHover = enabled && slider.isMouseOver() && !slider.isMouseButtonDown();
+        // Read the cached "hovered" property set by GalleryKnob::mouseEnter /
+        // mouseExit instead of calling Slider::isMouseOver() inside paint —
+        // on D2D-backed JUCE, isMouseOver() can return the previous frame's
+        // value during fast mouse moves and produce a one-frame flicker
+        // (#1185). Falls back to isMouseOver() for sliders that aren't
+        // GalleryKnobs (no property set).
+        bool hoveredProp = false;
+        if (auto* v = slider.getProperties().getVarPointer("hovered"))
+            hoveredProp = static_cast<bool>(*v);
+        const bool isPassiveHover = enabled
+            && (hoveredProp || slider.isMouseOver())
+            && !slider.isMouseButtonDown();
 
         if (enabled && sliderPos > 0.001f)
         {
@@ -210,10 +220,16 @@ public:
             g.drawEllipse(cx - radius - 2.0f, cy - radius - 2.0f, diameter + 4.0f, diameter + 4.0f, 2.0f);
         }
 
-        // ── 8. Live value readout (during interaction) ─────────────────────
-        // 32px knobs (diameter < 40) suppress in-knob readout — disc would be
-        // only 14px wide with ~9.8px text, which clips. Tooltip handles it instead.
-        if (diameter >= 28.0f && (slider.isMouseButtonDown() || slider.isMouseOverOrDragging()))
+        // ── 8. Live value readout (during hover or interaction) ────────────
+        // 28px knobs and below suppress in-knob readout — disc would be
+        // only 14px wide with ~9.8px text, which clips. Tooltip handles it.
+        // Hover, not just drag (#1165) — producers should be able to read a
+        // parameter value without disturbing the control. Reuse the same
+        // cached "hovered" property used by the passive-hover fill above so
+        // the readout doesn't flicker on fast mouse moves (#1185).
+        if (diameter >= 28.0f
+            && (hoveredProp || slider.isMouseOver()
+                || slider.isMouseButtonDown() || slider.isMouseOverOrDragging()))
         {
             float discR = radius * 0.44f;
             juce::String valStr;
