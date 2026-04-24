@@ -114,7 +114,7 @@ struct TonewheelCrosstalk
 {
     // Generate crosstalk for a given drawbar's harmonic
     // Returns the additional signal from adjacent tonewheels
-    float process(float fundamentalFreq, int drawbarIndex, float phase, float amount, float sampleRate) noexcept
+    float process(float fundamentalFreq, int drawbarIndex, float phase, float amount) noexcept
     {
         if (amount < 0.001f)
             return 0.0f;
@@ -144,8 +144,6 @@ struct TonewheelCrosstalk
         float farUpperRatio = baseHarmonic * 1.0112f;
         float farUpperPhase = phase * farUpperRatio / baseHarmonic;
         crosstalkSum += fastSin(farUpperPhase * kTwoPi) * 0.004f;
-
-        (void)sampleRate;
 
         return crosstalkSum * amount;
     }
@@ -969,7 +967,7 @@ public:
         const float pInstability = loadP(paramInstability, 0.5f); // calliope chaos
         const float pMusette = loadP(paramMusette, 0.5f);         // accordion reed detune
 
-        [[maybe_unused]] const float pFilterEnvAmt = loadP(paramFilterEnvAmount, 0.3f);
+        const float pFilterEnvAmt = loadP(paramFilterEnvAmount, 0.3f);
 
         // Macros
         const float macroCharacter = loadP(paramMacroCharacter, 0.0f);
@@ -1055,12 +1053,13 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
+            const bool updateFilter = ((s & 15) == 0);
             // Per-sample smoothed values
             float smoothedDrawbars[9];
             for (int d = 0; d < 9; ++d)
                 smoothedDrawbars[d] = smoothDrawbar[d].process();
 
-            [[maybe_unused]] float brightNow = smoothBrightness.process();
+            float brightNow = smoothBrightness.process();
             float driveNow = smoothDrive.process();
 
             float mixL = 0.0f, mixR = 0.0f;
@@ -1085,7 +1084,7 @@ public:
 
                 // Per-voice LFO setRate/setShape hoisted to per-block voice loop above.
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
-                [[maybe_unused]] float lfo2Val = voice.lfo2.process() * lfo2Depth;
+                float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
                 // LFO1 → pitch modulation (vibrato)
                 // Gate when harmonica (model 2): BluesHarpVoice has its own
@@ -1128,7 +1127,7 @@ public:
                         float tonewheel = fastSin(harmonicPhase * 6.28318530f);
 
                         // Tonewheel crosstalk
-                        float xtalk = voice.crosstalk.process(freq, d, voice.phase, effectiveCrosstalk, srf);
+                        float xtalk = voice.crosstalk.process(freq, d, voice.phase, effectiveCrosstalk);
 
                         tonewheelSum += (tonewheel + xtalk) * drawbarLevel;
                     }
@@ -1199,7 +1198,18 @@ public:
 
                 // Filter envelope
                 // Tick env per sample; decimate SVF coeff refresh to every 16.
-                [[maybe_unused]] float filterEnvLevel = voice.filterEnv.process();
+                float filterEnvLevel = voice.filterEnv.process();
+                if (updateFilter)
+                {
+                    float envMod = filterEnvLevel * pFilterEnvAmt * 4000.0f;
+                    // LFO2 → filter cutoff
+                    float cutoff = std::clamp(brightNow + envMod + lfo2Val * 3000.0f, 200.0f, 20000.0f);
+                    // D001: velocity → filter brightness
+                    cutoff = std::clamp(cutoff * (0.5f + voice.velocity * 0.5f), 200.0f, 20000.0f);
+
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
+                    voice.svf.setCoefficients_fast(cutoff, 0.15f, srf);
+                }
                 float filtered = voice.svf.processSample(voiceOut);
 
                 float output = filtered * ampEnvLevel;

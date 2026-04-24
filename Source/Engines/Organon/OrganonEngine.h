@@ -983,7 +983,7 @@ public:
 
     // Called by the processor to give Organon access to SharedTransport.
     // Must be called before the first renderBlock().
-    void setSharedTransport(const SharedTransport* transport) noexcept { sharedTransport = transport; }
+    void setSharedTransport(const SharedTransport* transport) noexcept override { sharedTransport = transport; }
 
     // Reverb send level — read by the processor to route to shared reverb bus.
     // Updated once per block in renderBlock(), driven by the membrane parameter
@@ -1168,7 +1168,7 @@ public:
 
         // M2 SPECTRUM: shifts isotope balance toward bright (+0.4) and noise color (+0.3)
         float effectiveIsotope = std::clamp(isotopeBalance + macroSpectrum * 0.4f, 0.0f, 1.0f);
-        [[maybe_unused]] float effectiveNoiseColor = std::clamp(noiseColor + macroSpectrum * 0.3f, 0.0f, 1.0f);
+        float effectiveNoiseColor = std::clamp(noiseColor + macroSpectrum * 0.3f, 0.0f, 1.0f);
 
         // M3 COUPLING: boosts signal flux (+0.3) and membrane porosity (+0.3)
         float effectiveSignalFlux = std::clamp(signalFlux + macroCoupling * 0.3f, 0.0f, 1.0f);
@@ -1303,6 +1303,7 @@ public:
         // ---- Per-sample rendering loop ----
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
+            const bool updateFilter = ((sampleIndex & 15) == 0);
             float mixL = 0.0f;
             float mixR = 0.0f;
 
@@ -1344,6 +1345,12 @@ public:
                     // noiseColor 0.5 = white (moderate Q)
                     // noiseColor 1.0 = bright (high Q, resonant HP character)
                     // Range [0.3, 0.7] maps noiseColor [0, 1]
+                    // Coeff refresh decimated to every 16 samples — enzyme selectivity
+                    // changes slowly relative to audio rate.
+                    if (updateFilter)
+                        voice.ingestionFilter.setCoefficients(enzymeSelectivity + externalFilterModulation * 2000.0f,
+                                                              0.3f + effectiveNoiseColor * 0.4f,
+                                                              static_cast<float>(cachedSampleRate));
                     ingestedSample = voice.ingestionFilter.processSample(noise) * effectiveSignalFlux;
                 }
 

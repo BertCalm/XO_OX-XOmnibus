@@ -763,7 +763,7 @@ public:
         const float glideTimeSec = snap_.glide * snap_.glide * 2.0f; // quadratic mapping
 
         // ── Step 8: Filter mode
-        [[maybe_unused]] const CytomicSVF::Mode filterMode = filterModeFromInt(snap_.filterType);
+        const CytomicSVF::Mode filterMode = filterModeFromInt(snap_.filterType);
 
         // ── Step 9: Freeze
         const bool frozen = (snap_.freeze > 0.5f);
@@ -841,6 +841,7 @@ public:
             // Per-sample loop
             for (int s = 0; s < numSamples; ++s)
             {
+                const bool updateFilter = ((s & 15) == 0);
                 // ── RD evolution scheduling ──────────────────────────────────
                 voice.rdAccumulator += effEvolutionWithAT / static_cast<float>(currentSampleRate_);
 
@@ -871,10 +872,15 @@ public:
                             case 6: lfoPersistMod = juce::jlimit(0.0f, 1.0f, lfoPersistMod + lmod * 0.4f); break;
                             default: break;
                         }
-                        // lfoFilterMod and lfoPersistMod feed into the next sample's
-                        // effective parameters via block-rate smoothers (not per-RD-step)
-                        // lfoEvoMod, lfoFilterMod, lfoPersistMod affect audible output:
-                        (void)lfoPersistMod; // persistence affects grid carry (block-rate only)
+                        // LFO target 6: wire lfoPersistMod into RD feed parameter.
+                        // Persistence [0,1] maps to F in [0.01,0.08] — high persistence sustains
+                        // grid patterns by biasing feed toward growth. Only applied when target==6
+                        // so feed modulation (target 0) and persistence modulation don't interfere.
+                        if (snap_.lfoTarget == 6)
+                        {
+                            const float persistenceFeed = 0.01f + lfoPersistMod * 0.07f;
+                            lfoFeed = juce::jlimit(0.01f, 0.08f, persistenceFeed);
+                        }
 
                         // Coupling audio injection
                         if (std::abs(couplingAudioAccum_) > 0.001f)
@@ -930,8 +936,17 @@ public:
 
                 // ── Output filter ─────────────────────────────────────────────
                 // If LFO target is filter (case 3), lastCouplingOut holds LFO-modulated cutoff
-                [[maybe_unused]] const float activeCutoff = (snap_.lfoTarget == 3 && voice.lastCouplingOut > 0.0f)
+                const float activeCutoff = (snap_.lfoTarget == 3 && voice.lastCouplingOut > 0.0f)
                     ? voice.lastCouplingOut : voiceFilterCutoff;
+                if (updateFilter)
+                {
+                    voice.outputFilterL.setMode(filterMode);
+                    voice.outputFilterR.setMode(filterMode);
+                    voice.outputFilterL.setCoefficients_fast(activeCutoff, snap_.filterReso,
+                                                             static_cast<float>(currentSampleRate_));
+                    voice.outputFilterR.setCoefficients_fast(activeCutoff, snap_.filterReso,
+                                                             static_cast<float>(currentSampleRate_));
+                }
                 float sampleL = voice.outputFilterL.processSample(sample);
                 float sampleR = voice.outputFilterR.processSample(sample);
                 sampleL = flushDenormal(sampleL);

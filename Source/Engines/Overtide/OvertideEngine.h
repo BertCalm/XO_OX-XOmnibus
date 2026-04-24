@@ -216,6 +216,7 @@ struct OvertideVoice
 
     // Filter coefficient update counter (update every 16 samples)
     int filterUpdateCounter = 0;
+    int prevFltType = -1; // sentinel: -1 forces IC reset on first mode change
 
     // RhythmToBlend Sync retrigger request flag
     std::atomic<bool> syncRetrigRequest{false};
@@ -1142,6 +1143,12 @@ private:
                     default: break;
                     }
 
+                    if (fltType != v.prevFltType)
+                    {
+                        v.filterL.reset();
+                        v.filterR.reset();
+                        v.prevFltType = fltType;
+                    }
                     v.filterL.setMode(mode);
                     v.filterR.setMode(mode);
                     v.filterL.setCoefficients_fast(effectiveCutoff, fltReso, sampleRateFloat);

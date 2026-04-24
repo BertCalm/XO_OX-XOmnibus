@@ -160,7 +160,7 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 2.6 Design Doctrines
 
-The 6 Doctrines are the quality contract every XOceanus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 90 engines.
+The 6 Doctrines are the quality contract every XOceanus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 92 engines.
 
 | ID | Doctrine | Requirement |
 |----|----------|------------|
@@ -1102,38 +1102,49 @@ cmake --build build-ios --config Release
 
 ---
 
-## 12. Development Roadmap
+## 12. Development Horizon
 
-### 12.1 MVP Definition (Week 14)
+*Historical note: this section previously described an MVP gate and a v1.0 feature cutoff. That
+framing has been retired per the Release Philosophy in CLAUDE.md ("The Deep Opens") — XOceanus
+ships when it's ready, not against a version gate. The content below reflects the current
+Current / Next / Long-arc framing.*
 
-The MVP ships with:
-- 2 engines: ODDFELIX + ODDOSCAR (OddfeliX/OddOscar) + OVERDUB (XOverdub)
-- MegaCouplingMatrix with 3 coupling types
-- PlaySurface (Pad mode only)
-- Preset browser with mood tabs
-- 154 migrated presets (114 OddfeliX/OddOscar + 40 XOverdub)
-- macOS AU + Standalone
-- Light mode UI with Gallery Model
+### 12.1 Current shippable surface
 
-### 12.2 v1.0 Target
+What is implemented and shippable today:
 
-- All 81 engines wrapped and integrated
-- Full coupling matrix (15 types)
-- PlaySurface (all 3 modes)
-- 19,500+ factory presets with DNA fingerprints
-- Preset morphing and breeding
-- XPN export
-- macOS + iOS (AUv3)
-- Light + dark mode
+- 92 engines wrapped and integrated (single source of truth: `Docs/engines.json`)
+- MegaCouplingMatrix with 15 coupling types (incl. KnotTopology + TriangularCoupling)
+- PlaySurface (Pad, Fretless, Drum modes)
+- Preset browser with 16 mood tabs and 6D Sonic DNA
+- 19,859 factory presets in `.xometa` format
+- **Desktop**: macOS + Windows, AU + VST3 + Standalone (current). Linux deferred.
+- **iOS**: OBRIX Pocket (iPhone, brick-based collectible synth) + OBRIX Academy (iPad, learning
+  environment). Full XOceanus iOS AUv3 port is **cancelled** — replaced by platform-specific
+  identities per CLAUDE.md platform architecture decision (2026-03-26).
+- Dark mode default; light mode toggle
 - MIDI Learn + MPE support
+- XPN export pipeline
 
-### 12.3 Post-v1.0
+### 12.2 Next milestone
 
-- VST3 format
+Near-term capabilities actively in progress:
+
+- Remaining fleet engines (111-engine fleet design; 92 implemented)
+- PlaySurface embedded in coupling inspector view
+- Sound-on-first-launch (requires RAC integration)
+- Oxport pipeline: velocity zones, multi-layer builder, SURFACE/DEEP/TRENCH naming
+- Preset morphing and breeding UI
+
+### 12.3 Long-arc horizon
+
+Platform and community capabilities building toward:
+
 - Community preset sharing
 - Wavetable file loading for ODYSSEY engine
-- Windows port
-- Additional engine modules
+- OBRIX Pocket: Reef Link ceremony, full coupling Crucible gameplay loop
+- OBRIX Academy: iPad learning environment
+- Patreon Kitchen Collection quad unlocks at patron thresholds (10/25/50/100/250/500)
 
 ---
 

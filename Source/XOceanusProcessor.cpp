@@ -1190,6 +1190,7 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
         {
             eng->prepare(sampleRate, samplesPerBlock);
             eng->prepareSilenceGate(sampleRate, samplesPerBlock, silenceGateHoldMs(eng->getEngineId()));
+            eng->setSharedTransport(&hostTransport);
         }
     }
 
@@ -1480,19 +1481,30 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         midiClockBlockOffset_ += numSamples;
     }
 
-    // DAW host transport sync
-    if (auto* playHead = getPlayHead())
+    // DAW host transport sync — read PlayHead once, feed both hostTransport
+    // (consumed by tempo-synced engines via SharedTransport) and ChordMachine.
     {
-        if (auto pos = playHead->getPosition())
+        juce::AudioPlayHead::PositionInfo posSnapshot;
+        const juce::AudioPlayHead::PositionInfo* posPtr = nullptr;
+        if (auto* playHead = getPlayHead())
         {
-            if (auto ppq = pos->getPpqPosition())
+            if (auto pos = playHead->getPosition())
             {
-                double hostBPM = 122.0;
-                if (auto bpmOpt = pos->getBpm())
-                    hostBPM = *bpmOpt;
-                bool hostPlaying = pos->getIsPlaying();
-                chordMachine.syncToHost(*ppq, hostBPM, hostPlaying);
+                posSnapshot = *pos;
+                posPtr = &posSnapshot;
             }
+        }
+        hostTransport.processBlock(numSamples,
+                                   currentSampleRate.load(std::memory_order_relaxed),
+                                   posPtr);
+        if (posPtr != nullptr && posPtr->getPpqPosition().hasValue())
+        {
+            const double ppq = *posPtr->getPpqPosition();
+            double hostBPM = 122.0;
+            if (posPtr->getBpm().hasValue())
+                hostBPM = *posPtr->getBpm();
+            const bool hostPlaying = posPtr->getIsPlaying();
+            chordMachine.syncToHost(ppq, hostBPM, hostPlaying);
         }
     }
 
@@ -2339,6 +2351,10 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
             newEngine->prepareSilenceGate(sr, currentBlockSize.load(std::memory_order_relaxed),
                                           silenceGateHoldMs(newEngine->getEngineId()));
         }
+        // Give the new engine access to the shared host transport regardless
+        // of whether prepare() has run yet — the engine caches the pointer and
+        // reads from it in renderBlock(), which only runs after prepareToPlay().
+        newEngine->setSharedTransport(&hostTransport);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
