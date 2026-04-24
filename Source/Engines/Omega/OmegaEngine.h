@@ -509,7 +509,7 @@ public:
                 // D001: velocity shapes FM brightness (more velocity = brighter attack)
                 float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 5000.0f;
-                float cutoff = std::clamp(velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
+                float cutoff = std::clamp(brightNow + voice.velocity * 3000.0f + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
 
                 // F2/P19: use fast path — mode is set block-rate; setCoefficients_fast
                 // uses fastTan (~0.03% error) vs std::tan, avoiding trig per-sample-per-voice.

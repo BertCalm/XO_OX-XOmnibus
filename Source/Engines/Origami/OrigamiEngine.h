@@ -705,7 +705,6 @@ public:
         // ---- Per-Sample Render Loop ----
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
-            const bool updateFilter = ((sampleIndex & 15) == 0);
             // Smooth control-rate parameters toward their targets (shared ParameterSmoother, 5ms)
             float smoothedFoldPoint = smoothFoldPoint.process();
             float smoothedFoldDepth = smoothFoldDepth.process();
@@ -836,11 +835,6 @@ public:
                 // velBrightness is note-constant (voice.velocity latched at noteOn),
                 // so the SVF coefficient refresh only needs to happen once per decimated
                 // interval rather than per sample.
-                if (updateFilter)
-                {
-                    float velBrightness = 4000.0f + voice.velocity * 14000.0f;
-                    voice.postFilter.setCoefficients(velBrightness, 0.3f, sampleRateFloat);
-                }
                 outputSample = voice.postFilter.processSample(outputSample);
 
                 // ---- Apply amplitude envelope, velocity, and crossfade gain ----

@@ -797,7 +797,6 @@ public:
         // ----- Per-sample DSP loop -----
         for (int n = 0; n < numSamples; ++n)
         {
-            const bool updateFilter = ((n & 15) == 0);
 
             // --- Advance cellular automaton ---
             if (!freeze)
@@ -922,7 +921,7 @@ public:
             float cellCutoffOffset = (cellFilterOut - 0.5f) * (baseCutoff * 0.8f);
             float lfo2CutoffMod = lfo2Val * lfo2Depth * 1000.f;
             float lfo1CutoffMod = lfo1Val * lfo1Depth * 600.f;
-            float finalCutoff = clamp(baseCutoff + cellCutoffOffset + velCutoffBoost + lfo1CutoffMod + lfo2CutoffMod +
+            [[maybe_unused]] float finalCutoff = clamp(baseCutoff + cellCutoffOffset + velCutoffBoost + lfo1CutoffMod + lfo2CutoffMod +
                                           savedCouplingFilter,
                                       200.f, 8000.f);
 
@@ -935,8 +934,6 @@ public:
             // prepare(). Coefficient refresh decimated to every 16 samples —
             // cellular-automaton modulation is cell-rate (much slower than audio),
             // and LFO modulation is smooth enough to tolerate 16-sample tracking lag.
-            if (updateFilter)
-                filter.setCoefficients_fast(finalCutoff, filterRes, sr);
             float filtered = filter.processSample(mixed * gainComp);
 
             // --- Amp envelope + gain ---

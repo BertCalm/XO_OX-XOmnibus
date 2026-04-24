@@ -287,8 +287,8 @@ public:
         float pWhistlePitch = pWhistlePitchParam ? pWhistlePitchParam->load() : 2000.0f;
         float pStereoWidth = pStereoWidthParam ? pStereoWidthParam->load() : 0.5f;
         float pFilterCut = pFilterCutParam ? pFilterCutParam->load() : 6000.0f;
-        float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.2f;
-        float pFiltEnvAmt = pFiltEnvAmtParam ? pFiltEnvAmtParam->load() : 0.3f;
+        [[maybe_unused]] float pFilterRes = pFilterResParam ? pFilterResParam->load() : 0.2f;
+        [[maybe_unused]] float pFiltEnvAmt = pFiltEnvAmtParam ? pFiltEnvAmtParam->load() : 0.3f;
         float pAmpA = pAmpAParam ? pAmpAParam->load() : 0.2f;
         float pAmpD = pAmpDParam ? pAmpDParam->load() : 0.5f;
         float pAmpS = pAmpSParam ? pAmpSParam->load() : 0.8f;
@@ -368,7 +368,6 @@ public:
 
         for (int i = 0; i < numSamples; ++i)
         {
-            const bool updateFilter = ((i & 15) == 0);
             float lfo1Val = lfo1.process();
             float lfo2Val = lfo2.process();
             float breathVal = breathLfo.process();
@@ -466,7 +465,7 @@ public:
 
                 // Envelope setADSR hoisted to per-block voice loop above.
                 float ampLevel = voice.ampEnv.process();
-                float filtLevel = voice.filterEnv.process();
+                [[maybe_unused]] float filtLevel = voice.filterEnv.process();
 
                 if (!voice.ampEnv.isActive())
                 {
@@ -544,13 +543,6 @@ public:
                 }
 
                 // Per-voice filter (coeff refresh decimated)
-                if (updateFilter)
-                {
-                    float voiceCutoff = pFilterCut + pFiltEnvAmt * filtLevel * 4000.0f * voice.velocity -
-                                        pressureState.strainLevel * 2000.0f * pStrainColor;
-                    voiceCutoff = clamp(voiceCutoff, 50.0f, srF * 0.49f);
-                    voice.voiceFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
-                }
                 voiceSample = voice.voiceFilter.processSample(voiceSample);
 
                 voiceSample *= ampLevel;

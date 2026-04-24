@@ -691,7 +691,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float fragilityNow = smoothFragility.process();
             float brightNow = smoothBrightness.process();
             float dampNow = smoothDamping.process();
@@ -819,8 +818,6 @@ public:
                     // in the per-sample inner loop; accuracy is sufficient for noise shaping.
                     voice.hfNoiseSVF.setCoefficients_fast(std::clamp(baseFreq * 6.0f, 2000.0f, 16000.0f), 0.4f, srf);
                     // Shape noise through the HF bandpass (coeff refresh decimated)
-                    if (updateFilter)
-                        voice.hfNoiseSVF.setCoefficients(std::clamp(baseFreq * 6.0f, 2000.0f, 16000.0f), 0.4f, srf);
                     float hfShaped = voice.hfNoiseSVF.processSample(noise);
                     voice.hfEnvLevel *= hfEnvDecay; // sample-rate-correct HF envelope decay
                     resonanceSum += hfShaped * hfNoiseNow * voice.hfEnvLevel * voice.velocity;

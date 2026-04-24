@@ -1433,7 +1433,7 @@ public:
         const float noiseLevel = safeLoadF(pNoiseLevel, 0.0f);
         const float noiseDecay = safeLoadF(pNoiseDecay, 0.1f);
         // Filter
-        const float filterCutoff = safeLoadF(pFilterCutoff, 2000.0f);
+        [[maybe_unused]] const float filterCutoff = safeLoadF(pFilterCutoff, 2000.0f);
         const float filterReso = safeLoadF(pFilterReso, 0.3f);
         const int filterMode = safeLoad(pFilterMode, 0);
         const float filterKeyTrack = safeLoadF(pFilterKeyTrack, 0.0f);
@@ -1441,7 +1441,7 @@ public:
         // Character
         const float furAmount = safeLoadF(pFurAmount, 0.0f);
         const float chewAmount = safeLoadF(pChewAmount, 0.0f);
-        const float chewFreq = safeLoadF(pChewFreq, 1000.0f);
+        [[maybe_unused]] const float chewFreq = safeLoadF(pChewFreq, 1000.0f);
         const float chewMix = safeLoadF(pChewMix, 0.5f);
         const float driveAmount = safeLoadF(pDriveAmount, 0.0f);
         const int driveType = safeLoad(pDriveType, 0);
@@ -1455,7 +1455,7 @@ public:
         const float ampR = safeLoadF(pAmpRelease, 0.3f);
         const float ampVelSens = safeLoadF(pAmpVelSens, 0.7f);
         // Filter Envelope
-        const float filtEnvAmt = safeLoadF(pFilterEnvAmount, 0.3f);
+        [[maybe_unused]] const float filtEnvAmt = safeLoadF(pFilterEnvAmount, 0.3f);
         const float filtA = safeLoadF(pFilterAttack, 0.005f);
         const float filtD = safeLoadF(pFilterDecay, 0.3f);
         const float filtS = safeLoadF(pFilterSustain, 0.0f);
@@ -1587,7 +1587,7 @@ public:
         const float effSubLevel = clamp(subLevel + macroBelly * 0.5f, 0.0f, 1.0f);
         const float effFurAmount = clamp(furAmount + macroBelly * 0.4f, 0.0f, 1.0f);
         const float effWeightLvl = clamp(weightLevel + macroBelly * 0.3f, 0.0f, 1.0f);
-        const float bellyCutoffMod = -macroBelly * 3000.0f;
+        [[maybe_unused]] const float bellyCutoffMod = -macroBelly * 3000.0f;
 
         // D006: smooth aftertouch pressure and compute modulation value
         aftertouch.updateBlock(numSamples);
@@ -1612,10 +1612,10 @@ public:
         // M5 PLAY DEAD: decay to silence
         const float playDeadRelMul = 1.0f + macroPlayDead * 4.0f; // extends release
         const float playDeadLevel = 1.0f - macroPlayDead * 0.8f;  // ducks level
-        const float playDeadCutoff = -macroPlayDead * 4000.0f;    // closes filter
+        [[maybe_unused]] const float playDeadCutoff = -macroPlayDead * 4000.0f;    // closes filter
 
         // Combined effective resonance
-        const float effFilterReso = clamp(filterReso + biteResoMod + trashResoMod, 0.0f, 0.95f);
+        [[maybe_unused]] const float effFilterReso = clamp(filterReso + biteResoMod + trashResoMod, 0.0f, 0.95f);
 
         // Cache LFO retrigger flags so noteOn() can act on them
         lfo1RetriggerFlag = lfo1Retrigger;
@@ -1672,7 +1672,7 @@ public:
         }
 
         // Consume coupling accumulators
-        float filterMod = externalFilterMod;
+        [[maybe_unused]] float filterMod = externalFilterMod;
         externalFilterMod = 0.0f;
 
         float peakEnv = 0.0f;
@@ -1775,7 +1775,6 @@ public:
         // =====================================================================
         for (int sample = 0; sample < numSamples; ++sample)
         {
-            const bool updateFilter = ((sample & 15) == 0);
             float mixL = 0.0f, mixR = 0.0f;
 
             float externalFM = 0.0f;
@@ -1969,9 +1968,9 @@ public:
                     oscOut = fastTanh(oscOut * (1.0f + effFilterDriveMod * 4.0f));
 
                 // --- Filter ---
-                float filtEnvVal = voice.filterEnv.process();
+                [[maybe_unused]] float filtEnvVal = voice.filterEnv.process();
                 // Key tracking: offset cutoff based on note distance from middle C
-                float keyTrackOffset = filterKeyTrack * (static_cast<float>(voice.noteNumber) - 60.0f) * 50.0f;
+                [[maybe_unused]] float keyTrackOffset = filterKeyTrack * (static_cast<float>(voice.noteNumber) - 60.0f) * 50.0f;
                 // D001: velocity scales filter envelope depth for timbral expression
                 // LFO2 → filter cutoff unconditionally (Scurry scales rate, not presence).
                 // LFO3 → filter cutoff unconditionally (wider sweep range).
@@ -1983,16 +1982,6 @@ public:
                 // still advance per sample (already ticked above), only the expensive
                 // filter coefficient update is throttled. ~0.36ms refresh @ 44.1k is
                 // well below audible cutoff-tracking lag.
-                if (updateFilter)
-                {
-                    float modCutoff = filterCutoff + filtEnvAmt * filtEnvVal * voice.velocity * 4000.0f + bellyCutoffMod +
-                                      playDeadCutoff + filterMod * 2000.0f + lfo2val * 2000.0f + lfo3val * 2000.0f +
-                                      modEnvCutoff + keyTrackOffset;
-                    modCutoff = clamp(modCutoff, 20.0f, 18000.0f);
-
-                    float voiceFilterReso = clamp(effFilterReso + mmDst[11], 0.0f, 0.95f); // mmDst[11]=FilterReso
-                    voice.filter.setCoefficients_fast(modCutoff, voiceFilterReso, srf);
-                }
                 float filtered = voice.filter.processSample(oscOut);
 
                 // Add post-filter noise
@@ -2005,11 +1994,6 @@ public:
                 {
                     // chewFreq is block-constant (loaded from pChewFreq at block start);
                     // refresh coefficients only when the filter tick fires.
-                    if (updateFilter)
-                    {
-                        voice.chewFilter.setMode(CytomicSVF::Mode::LowPass);
-                        voice.chewFilter.setCoefficients_fast(chewFreq, 0.5f, srf);
-                    }
                     float chewBand = voice.chewFilter.processSample(filtered);
                     float chewOut = voice.chew.process(chewBand, effChewAmtMod) + (filtered - chewBand);
                     filtered = lerp(filtered, chewOut, chewMix);
