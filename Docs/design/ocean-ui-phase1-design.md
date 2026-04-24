@@ -603,7 +603,7 @@ Every interactive element in the prototype must connect to a real parameter or a
 | # | Finding | Resolution |
 |---|---------|------------|
 | F1 | `WaveformRingBuffer` duplicates existing `WaveformFifo` in `XOceanusProcessor.h` (lines 39-93) | **CANCELLED.** Do not create `WaveformRingBuffer.h`. Wire `EngineOrbit` to read from `processor.getWaveformFifo(slot).readLatest()`. |
-| F2 | `SynthEngine` base class modification puts UI concerns in DSP interface, changes memory layout for 90 engines | **CANCELLED.** Do not touch `SynthEngine.h`. All visualization buffers live in the processor. |
+| F2 | `SynthEngine` base class modification puts UI concerns in DSP interface, changes memory layout for 92 engines | **CANCELLED.** Do not touch `SynthEngine.h`. All visualization buffers live in the processor. |
 | F3 | Proposed `write()` emits `memory_order_release` per sample — ARM performance bug (48K fences/sec) | **CANCELLED.** Using existing `WaveformFifo` which has correct fence pattern. |
 
 ### WARNINGS (addressed)
