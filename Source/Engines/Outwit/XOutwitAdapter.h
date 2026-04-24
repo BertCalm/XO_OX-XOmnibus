@@ -418,9 +418,11 @@ public:
         // Global: Step/Clock
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             "owit_stepRate", "Step Rate", juce::NormalisableRange<float>(0.01f, 40.0f, 0.0f, 0.4f), 4.0f));
-        // TODO(stepSync): owit_stepSync and owit_stepDiv are registered but not yet wired into
-        // the DSP path. Implementing host-sync requires PlayHead BPM from the processor context.
-        // Until then these params are visible in the UI but have no audio effect.
+        // TODO(#1154): owit_stepSync + owit_stepDiv are registered for preset-load compatibility
+        // but NOT wired to DSP. PlayHead BPM read + stepDiv → samples-per-step conversion is
+        // pending. These controls have no audio effect until #1154 is implemented.
+        // Kept in parameter layout to avoid breaking existing preset files; hidden from UI
+        // until wired (refs #1144 → #1154).
         params.push_back(std::make_unique<juce::AudioParameterBool>("owit_stepSync", "Step Sync", false));
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
             "owit_stepDiv", "Step Division",
