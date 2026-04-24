@@ -409,8 +409,8 @@ private:
     // Engine state
     //==========================================================================
 
-    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
-    float invSr = 1.0f / 44100.0f;
+    float sr = 0.0f;    // Sentinel: must be set by prepare() before use
+    float invSr = 0.0f; // Sentinel: 0 until prepare() sets it
     float stepEnvRelCoeff = 0.9986f; // cached: fastExp(-1/(0.02*48000)), updated in prepare()
 };
 

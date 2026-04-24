@@ -102,6 +102,7 @@ public:
 
         if (buf.getNumChannels() < 2)
             return;
+        if (sr == 0.0) { buf.clear(); return; }
 
         // 1. Cache parameters once per block
         snap.update();

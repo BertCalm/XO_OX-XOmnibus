@@ -220,6 +220,7 @@ public:
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
+        if (inverseSr_ == 0.0f) { buffer.clear(); return; }
 
         // 1. Parse MIDI — accumulate pressure from input events
         float midiPressureInput = 0.0f;
@@ -773,7 +774,7 @@ public:
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srF = 0.0f;  // Sentinel: must be set by prepare() before use
-    float inverseSr_ = 1.0f / 44100.0f;
+    float inverseSr_ = 0.0f; // Sentinel: 0 until prepare() sets it
     int blockSize = 512;
     // Pressure decay coefficient per sample — precomputed from sampleRate in prepare().
     // Target time constant: ~2.27 seconds (same as 0.00001 per sample at 44100 Hz).

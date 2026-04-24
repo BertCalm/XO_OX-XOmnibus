@@ -64,6 +64,7 @@ struct OrreryVoice
     // ---- filter (stereo, one per voice) ----
     CytomicSVF filterL;
     CytomicSVF filterR;
+    int prevFltType = -1; // sentinel: -1 forces IC reset on first block
 
     // ---- envelopes ----
     StandardADSR ampEnv;
@@ -119,6 +120,7 @@ struct OrreryVoice
         }
         filterL.reset();
         filterR.reset();
+        prevFltType = -1;
         ampEnv.reset();
         filterEnv.reset();
         lfo1.reset();
