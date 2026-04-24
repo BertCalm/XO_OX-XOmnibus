@@ -748,7 +748,7 @@ public:
         const float tuneSemitones = static_cast<float>(snap_.tune)
                                   + snap_.fine / 100.0f;
         const float glideTimeSec  = snap_.glide * snap_.glide * 2.0f;
-        const CytomicSVF::Mode filterMode = filterModeFromInt(snap_.filterType);
+        [[maybe_unused]] const CytomicSVF::Mode filterMode = filterModeFromInt(snap_.filterType);
 
         // ── Step 7: FDN feedback from space_decay ─────────────────────────────
         // Map spaceDecay [0.1, 8] → feedback [0.2, 0.88]
@@ -811,7 +811,6 @@ public:
             // ── Per-sample loop ────────────────────────────────────────────────
             for (int s = 0; s < numSamples; ++s)
             {
-                const bool updateFilter = ((s & 15) == 0);
                 // ── LFO tick ─────────────────────────────────────────────────
                 const float lfoVal  = voice.lfo.process();
                 const float lmod    = lfoVal * effLfoDepth;
@@ -1033,15 +1032,6 @@ public:
                 float sample = apOut + reflectedB + excitation * 0.05f;
 
                 // ── Output filter — decimate coefficient refresh to every 16 samples ────
-                if (updateFilter)
-                {
-                    voice.outputFilterL.setMode(filterMode);
-                    voice.outputFilterR.setMode(filterMode);
-                    voice.outputFilterL.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
-                                                             static_cast<float>(currentSampleRate_));
-                    voice.outputFilterR.setCoefficients_fast(lfoFilterCut, snap_.filterReso,
-                                                             static_cast<float>(currentSampleRate_));
-                }
                 float sampleL = voice.outputFilterL.processSample(sample);
                 float sampleR = voice.outputFilterR.processSample(sample);
                 sampleL = flushDenormal(sampleL);

@@ -360,7 +360,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float driveNow = smoothDrive.process();
             float mixNow = smoothOscMix.process();
             float rootDNow = smoothRootDepth.process();
@@ -438,7 +437,6 @@ public:
 
                 // Body resonance filter — soil type determines base character
                 float filtered;
-                if (updateFilter)
                 {
                     if (pSoil < 0.5f)
                     {

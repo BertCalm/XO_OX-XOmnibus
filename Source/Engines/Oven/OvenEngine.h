@@ -805,7 +805,6 @@ public:
 
                 float freq = voice.glide.process();
                 freq *= blockBendRatio; // hoisted; includes pre-zeroed pitch coupling (P25 fix)
-                freq *= blockBendRatio; // hoisted; pre-reset pitch coupling snapshot
 
                 // D002: LFO modulation
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 -> brightness

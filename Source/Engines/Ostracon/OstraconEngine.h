@@ -359,6 +359,9 @@ public:
         // Aftertouch → effective oxide
         const float oxideWithAT = juce::jlimit(0.0f, 1.0f, effectiveOxide + aftertouchValue * 0.3f);
 
+        // Capture coupling morph before it gets zeroed later
+        const float couplingMorphIn = couplingMorphAccum;
+
         // Expression (CC11) + coupling morph → effective bias
         const float biasWithExpr = juce::jlimit(0.0f, 1.0f,
             effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphAccum * 0.5f);
@@ -561,7 +564,7 @@ public:
             {
                 if (!voice.active) continue;
 
-                // ---- LFO (D002/D005) — setRate/setShape hoisted to updateFilter gate ----
+                // ---- LFO (D002/D005) ----
                 if (updateFilter)
                 {
                     voice.lfo.setRate(paramLfoRate, currentSampleRate);
@@ -737,8 +740,6 @@ public:
                 // setMode() is applied once per block above; only coefficients need per-16 refresh.
                 if (updateFilter)
                 {
-                if (updateFilter)
-                {
                     voice.outputFilterL.setMode(filterMode);
                     voice.outputFilterR.setMode(filterMode);
                     voice.outputFilterL.setCoefficients_fast(finalCutoff, smoothedReso, currentSampleRate);
@@ -751,8 +752,6 @@ public:
                 outSampleR = flushDenormal(outSampleR);
 
                 // ---- Amplitude envelope × velocity ----
-                // D001: velocity shapes brightness via velFilterMod (already baked into
-                // write gain in PASS 2; envelope controls release shape here)
                 float envGain = ampLevel * voice.crossfadeGain;
                 outSampleL *= envGain;
                 outSampleR *= envGain;
