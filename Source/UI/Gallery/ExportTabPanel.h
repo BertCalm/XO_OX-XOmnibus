@@ -62,6 +62,7 @@ public:
         // ── Export CTA button ────────────────────────────────────────────────
         exportBtn.setButtonText("EXPORT");
         exportBtn.setWantsKeyboardFocus(true);
+        GalleryLookAndFeel::setExportButtonStyle(exportBtn);
         A11y::setup(exportBtn, "Export", "Open export dialog to build the selected format pack");
         exportBtn.onClick = [this] { launchExportDialog(); };
         addAndMakeVisible(exportBtn);

@@ -393,6 +393,7 @@ public:
         // Export button — launches ExportDialog as a CallOutBox
         addAndMakeVisible(exportBtn);
         exportBtn.setButtonText("XPN");
+        GalleryLookAndFeel::setExportButtonStyle(exportBtn);
         exportBtn.setTooltip("Export presets as MPC-compatible XPN expansion pack");
         A11y::setup(exportBtn, "Export", "Open export dialog to build XPN expansion packs");
         exportBtn.onClick = [this]
