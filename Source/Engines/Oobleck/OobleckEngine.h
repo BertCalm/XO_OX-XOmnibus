@@ -872,10 +872,15 @@ public:
                             case 6: lfoPersistMod = juce::jlimit(0.0f, 1.0f, lfoPersistMod + lmod * 0.4f); break;
                             default: break;
                         }
-                        // lfoFilterMod and lfoPersistMod feed into the next sample's
-                        // effective parameters via block-rate smoothers (not per-RD-step)
-                        // lfoEvoMod, lfoFilterMod, lfoPersistMod affect audible output:
-                        (void)lfoPersistMod; // persistence affects grid carry (block-rate only)
+                        // LFO target 6: wire lfoPersistMod into RD feed parameter.
+                        // Persistence [0,1] maps to F in [0.01,0.08] — high persistence sustains
+                        // grid patterns by biasing feed toward growth. Only applied when target==6
+                        // so feed modulation (target 0) and persistence modulation don't interfere.
+                        if (snap_.lfoTarget == 6)
+                        {
+                            const float persistenceFeed = 0.01f + lfoPersistMod * 0.07f;
+                            lfoFeed = juce::jlimit(0.01f, 0.08f, persistenceFeed);
+                        }
 
                         // Coupling audio injection
                         if (std::abs(couplingAudioAccum_) > 0.001f)
