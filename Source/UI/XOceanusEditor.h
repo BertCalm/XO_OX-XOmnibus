@@ -617,6 +617,15 @@ public:
         const int initialHeight = playSurface_.isVisible()
                                       ? 700 + ColumnLayoutManager::kPlaySurfaceH
                                       : 700;
+
+        // Resize limits must be declared BEFORE setSize() — JUCE's constrainer
+        // only runs on user-initiated drags, not programmatic setSize(), so any
+        // host (e.g. Logic Pro) that re-sizes the editor immediately after
+        // construction could otherwise land outside the declared bounds.
+        setResizable(true, true);
+        // PlaySurface adds 264pt when expanded; max height allows for both states.
+        setResizeLimits(960, 600, 1600, 1000 + ColumnLayoutManager::kPlaySurfaceH);
+
         setSize(1100, initialHeight);
 
         // ── Column C Sidebar: wire PresetManager AFTER setSize() so sidebar
@@ -682,9 +691,6 @@ public:
             }
         }
 
-        setResizable(true, true);
-        // PlaySurface adds 264pt when expanded; max height allows for both states.
-        setResizeLimits(960, 600, 1600, 1000 + ColumnLayoutManager::kPlaySurfaceH);
         setWantsKeyboardFocus(true);
         setTitle("XOceanus Synthesizer");
         setDescription("Multi-engine synthesizer with cross-engine coupling. "
