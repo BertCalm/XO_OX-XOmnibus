@@ -52,9 +52,15 @@ class TideWaterline : public juce::Component,
 public:
     //==========================================================================
     // Label tables — static constexpr so they live in the header with no ODR issue.
+    // Pattern names tag each option with its functional category (#1178):
+    // Vel = velocity-shape preset (which steps fire is unchanged)
+    // Rhy = rhythm generator (which steps fire)
+    // Gate = probabilistic gate generator
+    // Without this tag, users assume "Ramp ▲" produces ascending RHYTHMS
+    // (it only changes velocity over already-firing steps).
     static constexpr const char* kPatternNames[] = {
-        "Pulse", "Ramp \xe2\x96\xb2", "Ramp \xe2\x96\xbc", "Triangle",
-        "Eucl 3", "Eucl 5", "Random", "Scatter"
+        "Vel: Pulse",   "Vel: Ramp \xe2\x96\xb2", "Vel: Ramp \xe2\x96\xbc", "Vel: Triangle",
+        "Rhy: Eucl 3",  "Rhy: Eucl 5",            "Gate: Random",           "Gate: Scatter"
     };
     static constexpr const char* kClockLabels[] = {
         "1/1", "1/2", "1/4", "1/8", "1/16", "1/32",
