@@ -479,13 +479,50 @@ private:
     {
         if (!keyIsDown_)
             return;
-        int note = hitTestKey(static_cast<float>(e.x), static_cast<float>(e.y));
+
+        const float px = static_cast<float>(e.x);
+        const float py = static_cast<float>(e.y);
+
+        int note = hitTestKey(px, py);
+
+        // ── Aftertouch emission (#1182) ─────────────────────────────────────
+        // While a key is held, Y-position within the current key's rect drives
+        // aftertouch pressure (0..1). The callback was previously declared but
+        // never invoked — XOceanus could not deliver MPE-style expression from
+        // the on-screen keyboard.
+        if (activeNote_ >= 0 && onAftertouch)
+        {
+            juce::Rectangle<float> rect;
+            int bi = hitBlackKey(px, py);
+            if (bi >= 0)
+                rect = blackKeys_[bi].rect;
+            else
+            {
+                int wi = hitWhiteKey(px, py);
+                if (wi >= 0)
+                    rect = whiteRects_[wi];
+            }
+            if (rect.getHeight() > 0.0f)
+            {
+                const float norm = juce::jlimit(0.0f, 1.0f,
+                                                (py - rect.getY()) / rect.getHeight());
+                // Top of key = max pressure; bottom = 0. Matches velFromY
+                // convention so press-deeper reads as harder.
+                onAftertouch(activeNote_, 1.0f - norm);
+            }
+        }
+
         if (note < 0 || note == activeNote_)
             return;
-        // Slide to new key — release old, start new
-        fireNoteOff(activeNote_);
-        activeNote_ = note;
+
+        // ── Legato key-slide (#1182) ─────────────────────────────────────────
+        // Fire the new note-on BEFORE the old note-off so the voice allocator
+        // has the chance to tie/steal the voice rather than opening an audible
+        // gap between the two notes.
+        const int  oldNote = activeNote_;
+        activeNote_        = note;
         fireNoteOn(activeNote_, 0.75f);
+        fireNoteOff(oldNote);
     }
 
     void handleKeysUp(const juce::MouseEvent& /*e*/)
