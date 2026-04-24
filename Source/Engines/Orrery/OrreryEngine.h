@@ -145,7 +145,7 @@ public:
 
     void prepare(double sampleRate, int maxBlockSize) override
     {
-        sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 44100.0f;
+        sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 0.0f;
         maxBlock = maxBlockSize;
 
         // Pre-compute 50ms xfade step

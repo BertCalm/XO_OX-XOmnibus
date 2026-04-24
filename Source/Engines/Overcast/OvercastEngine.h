@@ -766,7 +766,7 @@ public:
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srF = 0.0f;  // Sentinel: must be set by prepare() before use
-    float inverseSr_ = 1.0f / 44100.0f;
+    float inverseSr_ = 0.0f;  // Set by prepare() — zero until prepared (sentinel)
     int blockSize = 512;
 
     OvercastVoice voices[kMaxVoices];

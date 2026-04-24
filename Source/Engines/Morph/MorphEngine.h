@@ -422,10 +422,11 @@ public:
         lfo2Output = 0.0f;
         filterCutoffModulation = 0.0f;
         morphModulation = 0.0f;
-        morphModCutoffOffset = 0.0f;
-        morphModMorphOffset  = 0.0f;
-        morphModPitchOffset  = 0.0f;
-        morphModLevelOffset  = 0.0f;
+        morphModCutoffOffset   = 0.0f;
+        morphModMorphOffset    = 0.0f;
+        morphModLfo1RateOffset = 0.0f;
+        morphModPitchOffset    = 0.0f;
+        morphModLevelOffset    = 0.0f;
         // Reset MIDI performance state — these were not cleared on reset(), causing
         // sustain-pedal lock, stuck mod-wheel morph offset, and pitch drift after
         // DAW stop/restart or plug-in instantiation without a fresh prepare().
@@ -507,7 +508,8 @@ public:
         // Sine chosen over triangle for LFO1: sine has softer peak transitions — the axolotl's
         // gills don't snap; they sway. LFO2 (triangle) provides the contrasting linear sweep.
         constexpr double kTwoPiD = 6.28318530717958647692;
-        const double lfo1PhaseIncrement = static_cast<double>(lfo1Rate) / cachedSampleRate;
+        const float lfo1RateEffective = juce::jlimit(0.01f, 15.0f, lfo1Rate + morphModLfo1RateOffset);
+        const double lfo1PhaseIncrement = static_cast<double>(lfo1RateEffective) / cachedSampleRate;
         lfo1Phase += lfo1PhaseIncrement * static_cast<double>(numSamples); // block-advance
         // Use while (not if): at 15 Hz with a 512-sample block at 44.1 kHz, lfo1Phase advances
         // ~0.174 per block; at 96 kHz the advance can exceed 1.0 in one shot. A single
@@ -634,7 +636,7 @@ public:
         const float atPressure = aftertouch.getSmoothedPressure(0); // channel-mode: voice 0 holds global value
 
         // D002 mod matrix — apply per-block after all sources are known.
-        // Destinations: 0=Off, 1=FilterCutoff, 2=MorphPosition, 3=LFO1Rate(unused here), 4=Pitch, 5=AmpLevel
+        // Destinations: 0=Off, 1=FilterCutoff, 2=MorphPosition, 3=LFO1Rate, 4=Pitch, 5=AmpLevel
         {
             ModMatrix<4>::Sources mSrc;
             mSrc.lfo1       = lfo1Output;
@@ -646,10 +648,11 @@ public:
             mSrc.aftertouch = atPressure;
             float mDst[6]   = {};
             modMatrix.apply(mSrc, mDst);
-            morphModCutoffOffset = mDst[1] * 5000.0f;
-            morphModMorphOffset  = mDst[2] * 1.0f;
-            morphModPitchOffset  = mDst[4] * 12.0f;
-            morphModLevelOffset  = mDst[5] * 0.5f;
+            morphModCutoffOffset  = mDst[1] * 5000.0f;
+            morphModMorphOffset   = mDst[2] * 1.0f;
+            morphModLfo1RateOffset = mDst[3] * 7.5f; // ±7.5 Hz additive (half of 0.01–15 range)
+            morphModPitchOffset   = mDst[4] * 12.0f;
+            morphModLevelOffset   = mDst[5] * 0.5f;
         }
 
         //----------------------------------------------------------------------
@@ -1344,10 +1347,11 @@ private:
 
     // D002 mod matrix — 4-slot configurable modulation routing
     ModMatrix<4> modMatrix;
-    float morphModCutoffOffset = 0.0f;
-    float morphModMorphOffset  = 0.0f;
-    float morphModPitchOffset  = 0.0f;
-    float morphModLevelOffset  = 0.0f;
+    float morphModCutoffOffset   = 0.0f;
+    float morphModMorphOffset    = 0.0f;
+    float morphModLfo1RateOffset = 0.0f; // mod matrix dst 3: additive offset in Hz, clamped [0.01, 15]
+    float morphModPitchOffset    = 0.0f;
+    float morphModLevelOffset    = 0.0f;
 };
 
 } // namespace xoceanus

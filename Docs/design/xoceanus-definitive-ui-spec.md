@@ -32,7 +32,7 @@ Every synthesizer interface ever made has treated the UI as a **control surface*
 
 XOceanus is not a dashboard.
 
-XOceanus is an **aquarium**. A living, breathing, responsive environment that you inhabit rather than operate. The 88 engines are not modules in a rack — they are creatures in a water column. The coupling connections between them are not patch cables — they are ecological relationships. The performer does not "use" XOceanus. The performer enters it.
+XOceanus is an **aquarium**. A living, breathing, responsive environment that you inhabit rather than operate. The 90 engines are not modules in a rack — they are creatures in a water column. The coupling connections between them are not patch cables — they are ecological relationships. The performer does not "use" XOceanus. The performer enters it.
 
 This is the fundamental inversion that no synthesizer has attempted: **the mythology IS the interface**.
 
@@ -865,7 +865,7 @@ On all subsequent launches, XOceanus loads silently with the last-used preset an
 
 **Left drawer (Engine + Presets)**:
 - Width: 320pt
-- Top half: Engine selector (grid of 88 engine icons, each 44x44pt, colored by accent)
+- Top half: Engine selector (grid of 90 engine icons, each 44x44pt, colored by accent)
 - Bottom half: Preset browser (same as desktop sidebar PRESET tab, touch-optimized)
 - Dismiss: swipe right or tap outside
 
@@ -969,7 +969,7 @@ Several engine accent colors on dark backgrounds:
 
 ### 4.1.3 Color-Blind Safe Engine Differentiation
 
-88 engines cannot be differentiated by color alone. The system provides multiple redundant channels:
+90 engines cannot be differentiated by color alone. The system provides multiple redundant channels:
 
 **Channel 1 (Color)**: Engine accent color — unique per engine but NOT relied upon as sole identifier
 
@@ -1243,9 +1243,9 @@ This is embodied cognition applied to software design. It has never been attempt
 
 ### 5.2.4 The Constellation View — Seeing All 88 at Once
 
-Every synth forces you to look at one engine at a time. XOceanus has 88 engines. What if you could see ALL of them?
+Every synth forces you to look at one engine at a time. XOceanus has 90 engines. What if you could see ALL of them?
 
-The Constellation View is a full-window overlay (triggered by a button in the header or Cmd+Shift+A) that shows all 88 engines as stars in a constellation map. The map layout follows the water column (surface engines at top, abyss engines at bottom). Each star:
+The Constellation View is a full-window overlay (triggered by a button in the header or Cmd+Shift+A) that shows all 90 engines as stars in a constellation map. The map layout follows the water column (surface engines at top, abyss engines at bottom). Each star:
 - Size: proportional to preset count (popular engines are larger stars)
 - Color: engine accent color
 - Brightness: proportional to current activity (if the engine is making sound, its star is bright)
@@ -1370,7 +1370,7 @@ No synthesizer has ever shown its entire capability space in a single, beautiful
 
 ## A.8 All 88 Engine Accent Colors
 
-(Full table — see CLAUDE.md Engine Modules table for complete listing. All 88 engines with hex values are defined there and are the canonical reference.)
+(Full table — see CLAUDE.md Engine Modules table for complete listing. All 90 engines with hex values are defined there and are the canonical reference.)
 
 ---
 

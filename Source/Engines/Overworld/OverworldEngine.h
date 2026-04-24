@@ -71,10 +71,6 @@ public:
         haasDelayBuf.assign(static_cast<size_t>(haasDelaySamples), 0.0f);
         haasWritePos = 0;
         silenceGate.prepare(sampleRate, maxBlockSize);
-        // Precompute filter envelope per-sample decay coefficient (PERF: avoid
-        // repeated fastExp in renderBlock — coefficient is SR-dependent, not
-        // block-size-dependent, so computing once here is exact).
-        filterEnvDecayCoeff = fastExp(-1.0f / (0.2f * sr));
     }
 
     void releaseResources() override
@@ -346,11 +342,10 @@ public:
             // FIX-S1: previously applied per-sample coefficient once per block,
             // making decay speed block-size-dependent (64-sample block decayed
             // same as 512-sample block). Now correct regardless of buffer size.
-            // filterEnvDecayCoeff = exp(-1/(0.2*sr)) is precomputed in prepare().
+            // Block-form decay: exp(-numSamples / (0.2*sr)) is exact for any block size.
             const float blockDecayCoeff = fastExp(
                 static_cast<float>(-numSamples) * (1.0f / (0.2f * sr)));
             filterEnvLevel *= blockDecayCoeff;
-            (void)filterEnvDecayCoeff; // precomputed but block-form is more accurate
 
             const float filterEnvBoost = filterEnvDepth * filterEnvLevel * kOwFilterEnvMaxHz;
 
@@ -745,10 +740,6 @@ private:
     // FIX-PA3: S&H state for eraDriftShape == 3
     uint32_t eraDriftSHSeed  = 0xACE1u;
     float    eraDriftSHValue = 0.0f;
-
-    // Precomputed filter envelope per-sample decay coefficient (PERF: SR-derived,
-    // computed once in prepare() — avoids fastExp call every renderBlock).
-    float filterEnvDecayCoeff = 1.0f;
 
     // DSP Fix Wave 2B: Haas stereo widening (~0.3ms delay on R channel)
     // Buffer size is computed in prepare() as ~0.3ms at the actual sample rate

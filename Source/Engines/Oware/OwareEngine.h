@@ -772,6 +772,7 @@ public:
                 float shimmerOffset = pShimmerHz * shimmerMod;                      // 0 to shimmerHz
                 // Apply as additive Hz offset (Balinese: beat rate in Hz, not cents)
                 // shimmerOffset adds fixed-Hz shimmer; applied in body resonance below
+                float freqWithShimmer = freq + shimmerOffset;    // fundamental only — see F4 below
                 float excitation = voice.exciter.process();
 
                 // CPU-optimized sympathetic resonance: use precomputed sparse table

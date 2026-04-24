@@ -52,9 +52,11 @@ jobs:
     steps:
       - name: Delete stale branches
         uses: actions/github-script@v8
+        env:
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
         with:
           script: |
-            const dryRun = '${{ github.event.inputs.dry_run }}' === 'true';
+            const dryRun = process.env.DRY_RUN === 'true';
             // Branches that are never deleted regardless of age
             const protectedBranches = ['main', 'develop', 'staging', 'release'];
             const cutoffDays = 30;

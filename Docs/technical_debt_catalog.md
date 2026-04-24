@@ -21,7 +21,7 @@
 | `Source/Engines/Ocelot/OcelotEmergent.h` | 23 | TODO | Voiced source (LF pitch oscillator), full Klatt-style vocal tract | Phase 2 |
 | `Source/Engines/Ocelot/OcelotVoice.h` | 142 | TODO | Real spectral proxy (currently 0.5f placeholder) | Phase 2 |
 | `Source/Engines/Ocelot/OcelotCanopy.h` | 19 | TODO | Full additive partial bank + wavefolder | Phase 2 |
-| `Source/Engines/Orbital/OrbitalEngine.h` | 1277 | TODO | Organ drawbar tuning decision — defines ORBITAL's character (currently undecided) | Phase 2 |
+| ~~`Source/Engines/Orbital/OrbitalEngine.h`~~ | ~~1277~~ | ~~TODO~~ | ~~Organ drawbar tuning decision~~ | **RESOLVED** 2026-03-19 (see `Docs/orbital-drawbar-decision-2026-03-19.md`) |
 
 ### Debug Markers
 
