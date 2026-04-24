@@ -789,8 +789,6 @@ public:
 
         // Feed silence gate
         analyzeForSilenceGate(buffer, numSamples);
-    }
-
     } // end renderBlock
 
     //==========================================================================
