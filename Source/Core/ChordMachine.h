@@ -561,7 +561,7 @@ public:
 
     static const char* paletteName(PaletteType p)
     {
-        static const char* names[] = {"WARM", "BRIGHT", "TENSION", "OPEN", "DARK", "SWEET", "COMPLEX", "RAW"};
+        static const char* names[] = {"WARM", "BRIGHT", "TENSION", "OPEN", "LUSH", "BREEZY", "COMPLEX", "RAW"};
         int i = static_cast<int>(p);
         return (i >= 0 && i < 8) ? names[i] : "?";
     }

@@ -49,7 +49,8 @@ class ChordBarComponent : public juce::Component,
 public:
     //==========================================================================
     // Label tables — static constexpr so they live in the header with no ODR issue.
-    static constexpr const char* kPaletteNames[]  = { "WARM","BRIGHT","TENSION","OPEN","DARK","SWEET","COMPLEX","RAW" };
+    // Palette names (#1177): DARK→LUSH (minor 9 is jazz-lush), SWEET→BREEZY (major 9).
+    static constexpr const char* kPaletteNames[]  = { "WARM","BRIGHT","TENSION","OPEN","LUSH","BREEZY","COMPLEX","RAW" };
     static constexpr const char* kVoicingNames[]  = { "ROOT-SPREAD","DROP-2","QUARTAL","UPPER-STRUCT","UNISON" };
     static constexpr const char* kRhythmNames[]   = { "Four","Off","Synco","Stab","Gate","Pulse","Broken","Rest" };
     static constexpr const char* kVelCurveNames[] = { "Equal","RootHvy","TopBrt","V-Shape" };
