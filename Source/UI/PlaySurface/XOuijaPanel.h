@@ -948,7 +948,9 @@ private:
 /** GoodbyeButton (Task 7 — Spec Section 7)
     Warm Terracotta full-width button that resets the XOuija session.
     Color: #E07A5F at 80% opacity normally, 100% on press.
-    Text: "GOODBYE" in body italic 11px (GalleryFonts::body), white at 90% opacity.
+    Text: "RELEASE" in body italic 11px (GalleryFonts::body), white at 90 %
+    opacity. Class name keeps "Goodbye" for the gesture-bank wiring; the
+    visible label is RELEASE per #1171 (atmospheric → functional).
 */
 class GoodbyeButton : public juce::Component
 {
@@ -960,8 +962,8 @@ public:
     {
         // WCAG Fix 1: accessibility API
         setAccessible(true);
-        setTitle("Goodbye - All Notes Off");
-        setDescription("Resets harmonic position and silences all voices");
+        setTitle("Release - All Notes Off");
+        setDescription("Releases the planchette from the locked note and silences all voices");
     }
     ~GoodbyeButton() override = default;
 
@@ -982,7 +984,7 @@ public:
         // Label — uses cached labelFont_ (not rebuilt each paint)
         g.setColour(juce::Colours::white.withAlpha(0.90f));
         g.setFont(labelFont_);
-        g.drawText("GOODBYE", b, juce::Justification::centred, false);
+        g.drawText("RELEASE", b, juce::Justification::centred, false);
     }
 
     void mouseDown(const juce::MouseEvent&) override
