@@ -674,6 +674,7 @@ public:
                         float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
                         if (updateFilter)
                         {
+                            // setMode(LowPass) omitted here — set once in reset() / doNoteOn()
                             float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
                             oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
                             voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
