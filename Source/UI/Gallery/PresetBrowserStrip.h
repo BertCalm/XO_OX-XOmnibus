@@ -143,6 +143,7 @@ public:
         // so the two views stay in sync.
         favBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::shellWhite()));
         favBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
+        favBtn.setTooltip("Toggle favorite");
         A11y::setup(favBtn, "Toggle Favorite", "Mark or unmark the current preset as a favorite");
         favBtn.onClick = [this]
         {
@@ -235,7 +236,7 @@ public:
         prevBtn.setBounds(b.removeFromLeft(30));   // UX11: widened from 22px for easier targeting
         browseBtn.setBounds(b.removeFromRight(30));
         nextBtn.setBounds(b.removeFromRight(30));  // UX11: widened from 22px for easier targeting
-        favBtn.setBounds(b.removeFromRight(24));   // #916: star toggle, 24px, right of next arrow
+        favBtn.setBounds(b.removeFromRight(30));   // #916/#1108: star toggle widened to 30px tap floor
         nameLabel.setBounds(b);
     }
 
