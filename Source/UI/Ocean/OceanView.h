@@ -442,10 +442,10 @@ public:
                 subPlaySurface_.setVisible(false);
                 ouijaPanel_.setVisible(false);
 
-                if (tab == "PAD")        surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
-                else if (tab == "DRUM")  surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
-                else if (tab == "XY")    surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
-                else if (tab == "OUIJA") surfaceRight_.setMode(SurfaceRightPanel::Mode::Ouija);
+                if (tab == "PAD")           surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
+                else if (tab == "DRUM")     surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
+                else if (tab == "XY")       surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
+                else if (tab == "HARMONIC") surfaceRight_.setMode(SurfaceRightPanel::Mode::Ouija);
 
                 surfaceRight_.setOpen(true);
                 surfaceRight_.setVisible(true);
@@ -823,10 +823,15 @@ public:
             .withLeft(fullBounds.getRight() - SettingsDrawer::kDrawerWidth)
             .withWidth(SettingsDrawer::kDrawerWidth));
 
-        // ── Canonical Z-order ────────────────────────────────────────────────
-        // Called at end of every resized() to ensure drawers/overlays stay above
-        // all dashboard components regardless of init order or visibility changes.
-        reorderZStack();
+        // ── Z-order ──────────────────────────────────────────────────────────
+        // Z-order is static: it never changes during normal operation, so we
+        // do NOT call reorderZStack() from resized() (#1163). Each toFront()
+        // is O(n) and 36 of them in a row run during JUCE's
+        // ComponentAnimator (~60 fps) — that's ~14,700 array splices for a
+        // single 200ms panel-open animation. reorderZStack() is now invoked
+        // exactly once per setup phase (search for "reorderZStack();" call
+        // sites in this header) plus on each visibility toggle that needs
+        // a re-stack.
 
         // Nuclear safeguard: ensure detail panel is hidden when not actively showing.
         // Something in the layout chain is re-showing it; this is the absolute last word.
@@ -1471,7 +1476,12 @@ private:
 
     private:
         static constexpr int kNumTabs = 5;
-        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY", "OUIJA"};
+        // Tab labels are surface-type names — "OUIJA" was the brand name and
+        // broke the convention (#1173). Renamed to "HARMONIC" so a producer
+        // scanning the tab bar can find the circle-of-fifths planchette by
+        // its function rather than its codename. Internal Mode enum keeps
+        // its existing values; only the visible label changes.
+        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY", "HARMONIC"};
 
         int  activeIdx_ = 0;
         bool seqOn_     = false;
