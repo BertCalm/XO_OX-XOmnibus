@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
-// DnaMapBrowser.h — Full-window 2D scatter map of all presets by Sonic DNA.
+// DnaMapBrowser.h — Full-window preset explorer organised by Sonic DNA mood axes.
 //
 // Replaces the radial ocean view with a flat map where each preset is a
-// coloured dot positioned by two selectable DNA axes (default: Brightness × Warmth).
+// coloured dot. X/Y position is derived from two selectable DNA axis values
+// (default: Brightness × Warmth) so similar-feeling presets cluster together.
 // Click a dot to load that preset; Escape / P dismisses back to ocean view.
 //
 // Spec §5 reference:
@@ -84,8 +85,8 @@ public:
         setWantsKeyboardFocus(true);
 
         A11y::setup(*this,
-                    "DNA Map Browser",
-                    "2D scatter map of all presets positioned by Sonic DNA values. "
+                    "Preset Explorer",
+                    "2D map for exploring presets by Sonic DNA mood. "
                     "Click a dot to load the preset. Escape or P returns to ocean view.",
                     /*wantsKeyFocus=*/ true);
 

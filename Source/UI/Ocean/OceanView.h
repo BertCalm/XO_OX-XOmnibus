@@ -382,11 +382,23 @@ public:
         // ── CouplingSubstrate knot interaction ────────────────────────────────
         substrate_.onKnotDoubleClicked = [this](int routeIndex)
         {
-            // Get route info to populate popup.
-            // For now, show with placeholder names — will wire to real engine names.
-            couplingPopup_.show(routeIndex, "Engine A", juce::Colour(60, 180, 170),
-                               "Engine B", juce::Colour(140, 100, 220),
-                               0, 0.5f);
+            const auto route = substrate_.getRouteAt(routeIndex);
+            const auto nameFor = [this](int slot) -> juce::String
+            {
+                if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
+                    return orbits_[slot].getEngineId().substring(0, 24);
+                return "Slot " + juce::String(slot + 1);
+            };
+            const auto colourFor = [this](int slot) -> juce::Colour
+            {
+                if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
+                    return orbits_[slot].getAccentColour();
+                return juce::Colour(60, 180, 170);
+            };
+            couplingPopup_.show(routeIndex,
+                                nameFor(route.sourceSlot), colourFor(route.sourceSlot),
+                                nameFor(route.destSlot),   colourFor(route.destSlot),
+                                route.type, route.amount);
         };
 
         couplingPopup_.onConfigChanged = [this](int routeIndex, int newType, float newDepth, int direction)
@@ -1678,11 +1690,26 @@ private:
                         // Flip coupling direction — future: reverse source/target.
                         break;
                     case 2:
+                    {
+                        const auto route = substrate_.getRouteAt(chainIndex);
+                        const auto nameFor = [this](int slot) -> juce::String
+                        {
+                            if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
+                                return orbits_[slot].getEngineId().substring(0, 24);
+                            return "Slot " + juce::String(slot + 1);
+                        };
+                        const auto colourFor = [this](int slot) -> juce::Colour
+                        {
+                            if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
+                                return orbits_[slot].getAccentColour();
+                            return juce::Colour(60, 180, 170);
+                        };
                         couplingPopup_.show(chainIndex,
-                                            "Engine A", juce::Colour(60, 180, 170),
-                                            "Engine B", juce::Colour(140, 100, 220),
-                                            0, 0.5f);
+                                            nameFor(route.sourceSlot), colourFor(route.sourceSlot),
+                                            nameFor(route.destSlot),   colourFor(route.destSlot),
+                                            route.type, route.amount);
                         break;
+                    }
                     case 3:
                         // Copy coupling settings to clipboard — future.
                         break;
