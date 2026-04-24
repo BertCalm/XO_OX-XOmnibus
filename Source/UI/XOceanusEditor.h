@@ -393,6 +393,7 @@ public:
         exportBtn.setButtonText("XPN");
         exportBtn.setTooltip("Export presets as MPC-compatible XPN expansion pack");
         A11y::setup(exportBtn, "Export", "Open export dialog to build XPN expansion packs");
+        GalleryLookAndFeel::setButtonStyle(exportBtn, GalleryLookAndFeel::kBtnStyleExport);
         exportBtn.onClick = [this]
         {
             juce::CallOutBox::launchAsynchronously(std::make_unique<ExportDialog>(processor.getPresetManager(),

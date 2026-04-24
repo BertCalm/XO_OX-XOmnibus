@@ -239,6 +239,22 @@ public:
     static bool isMoodPill(const juce::Button& btn) { return btn.getProperties()["moodPill"]; }
 
     //==========================================================================
+    // Button style tagging — O(1) integer lookup instead of per-repaint
+    // String::containsIgnoreCase() on every button's name (#1161).
+    static constexpr int kBtnStyleDefault = 0;
+    static constexpr int kBtnStyleExport  = 1;
+    static constexpr int kBtnStylePanic   = 2;
+
+    static void setButtonStyle(juce::Button& btn, int style) { btn.getProperties().set("btnStyle", style); }
+
+    static int getButtonStyle(const juce::Button& btn) noexcept
+    {
+        const auto& p = btn.getProperties();
+        const auto* v = p.getVarPointer("btnStyle");
+        return v != nullptr ? static_cast<int>(*v) : kBtnStyleDefault;
+    }
+
+    //==========================================================================
     // drawButtonBackground — matches prototype button styles
     void drawButtonBackground(juce::Graphics& g, juce::Button& btn, const juce::Colour& /*bgColour*/, bool isOver,
                               bool isDown) override
@@ -290,19 +306,30 @@ public:
         }
 
         // ── Standard button rendering ────────────────────────────────────────
-        const juce::String name = btn.getName();
+        // Dispatch by integer property tag — set at button setup via
+        // setButtonStyle(). Avoids String::containsIgnoreCase() allocation
+        // on every repaint of every button (#1161).
+        const int style = getButtonStyle(btn);
 
-        bool isExport = name.containsIgnoreCase("export");
-        bool isPanic = name.containsIgnoreCase("panic");
+       #if JUCE_DEBUG
+        // Catch accidental regression: buttons whose name matches export/panic
+        // but which were never tagged with setButtonStyle().
+        if (style == kBtnStyleDefault)
+        {
+            const juce::String n = btn.getName();
+            jassert(! n.containsIgnoreCase("export"));
+            jassert(! n.containsIgnoreCase("panic"));
+        }
+       #endif
 
         juce::Colour bg, borderCol;
 
-        if (isExport)
+        if (style == kBtnStyleExport)
         {
             bg = isDown ? get(xoGold).darker(0.15f) : (isOver ? get(xoGold).brighter(0.05f) : get(xoGold));
             borderCol = get(xoGold).darker(0.2f);
         }
-        else if (isPanic)
+        else if (style == kBtnStylePanic)
         {
             bg = isDown ? juce::Colour(0xFFFF6B6B) : juce::Colour(elevated());
             borderCol = juce::Colour(0xFFFF6B6B).withAlpha(isDown ? 0.60f : 0.25f);
@@ -450,7 +477,8 @@ public:
     }
 
     //==========================================================================
-    // drawTooltip — JetBrains Mono 9px, raised background, 2-layer shadow
+    // drawTooltip — Satoshi body 10pt prose (was JetBrains Mono — #1169),
+    // raised background, 2-layer shadow
     void drawTooltip(juce::Graphics& g, const juce::String& text, int width, int height) override
     {
         using namespace GalleryColors;
@@ -468,15 +496,18 @@ public:
         g.setColour(borderMd());
         g.drawRoundedRectangle(bounds, 4.0f, 1.0f);
 
-        // Text — JetBrains Mono 10pt (#885: 9pt→10pt legibility floor)
+        // Text — Satoshi body 10pt. Tooltips are prose ("desert spring electric
+        // piano"), not values — reserve the mono GalleryFonts::value() for
+        // numeric readouts (BPM, Hz, dB). 10pt holds the #885 legibility floor.
         g.setColour(juce::Colour(t1()));
-        g.setFont(GalleryFonts::value(10.0f));
+        g.setFont(GalleryFonts::body(10.0f));
         {
             auto tooltipBounds = bounds.reduced(8, 4);
             auto displayText = GalleryUtils::ellipsizeText(g.getCurrentFont(), text, (float)tooltipBounds.getWidth());
             g.drawText(displayText, tooltipBounds, juce::Justification::centredLeft, false);
         }
     }
+
 
     //==========================================================================
     // getDefaultScrollbarWidth — 4px slim scrollbar matching prototype

@@ -12,6 +12,7 @@
 #include "../../Core/EngineRegistry.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h" // GalleryColors, prefixForEngine (no editor circular dep)
+#include "../Gallery/GalleryLookAndFeel.h"
 #include "../SharedPreviewDevice.h"
 
 namespace xoceanus
@@ -786,6 +787,7 @@ private:
         styleBtn(exportBtn, "Export Button", "Start exporting the selected presets", true);
         styleBtn(cancelBtn, "Cancel Button", "Cancel the current export or close the dialog", false);
         styleBtn(validateBtn, "Validate Button", "Check presets for issues before export", false);
+        GalleryLookAndFeel::setButtonStyle(exportBtn, GalleryLookAndFeel::kBtnStyleExport);
 
         exportBtn.onClick = [this] { startExport(); };
         cancelBtn.onClick = [this]
