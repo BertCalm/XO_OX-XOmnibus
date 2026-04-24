@@ -233,12 +233,15 @@ public:
             g.fillRoundedRectangle(b, 4.0f);
         }
 
-        // ── Idle breathing glow — #932 ───────────────────────────────────────
-        // When this engine slot has active voices, pulse a subtle accent glow
-        // at 0.5 Hz (opacity 0.0→0.07) so the tile visually "breathes" with sound.
+        // ── Idle breathing glow — #932 / #1159 ───────────────────────────────
+        // When this engine slot has active voices, pulse the accent glow at
+        // ~0.5 Hz so the tile visually "breathes" with sound. Range is
+        // 0.15→0.35 — a sounding engine needs to be unambiguously
+        // distinguishable from a silent one at a glance, not a 1 % delta on
+        // top of the background tint.
         if (hasEngine && voiceCount > 0)
         {
-            const float breathAlpha = 0.035f + 0.035f * std::sin(breathPhase_);
+            const float breathAlpha = 0.15f + 0.20f * std::sin(breathPhase_);
             g.setColour(accent.withAlpha(breathAlpha));
             g.fillRoundedRectangle(b, 4.0f);
         }
