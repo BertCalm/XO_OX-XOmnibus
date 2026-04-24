@@ -158,8 +158,10 @@ public:
                 {
                     voices[t].isBeingStolen = true;
                     // STABILITY-1 fix: guard against sr=0 (unprepared voice) to avoid inf stealFadeStep.
-                    float fadeSr = (voices[t].sr > 0.f) ? voices[t].sr : 44100.f;
-                    voices[t].stealFadeStep = 1.0f / (0.005f * fadeSr);
+                    // sr=0 sentinel means prepare() was never called; use zero-step (no fade).
+                    voices[t].stealFadeStep = (voices[t].sr > 0.f)
+                        ? 1.0f / (0.005f * voices[t].sr)
+                        : 0.0f;
                     voices[t].stealFadeGain = 1.0f;
                     voices[t].pendingNote = msg.getNoteNumber();
                     voices[t].pendingVel = msg.getVelocity() / 127.f;

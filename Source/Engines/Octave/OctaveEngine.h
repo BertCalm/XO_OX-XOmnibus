@@ -172,10 +172,10 @@ struct OctaveWindNoise
 {
     // F13-fix: brightness in Hz → normalised [0,1] coefficient so the one-pole
     // filter stays stable.  At 200 Hz → coeff≈0.01 (very dark); 20 kHz → ≈0.29.
-    // Uses exp(-2π·fc/sr) matched-Z pole; sr defaults to 44100 until prepare() sets it.
+    // Uses exp(-2π·fc/sr) matched-Z pole; sr must be set by prepare() before use.
     void prepare(float sampleRate) noexcept
     {
-        sr = (sampleRate > 0.0f) ? sampleRate : 44100.0f;
+        sr = sampleRate; // caller is engine prepare(), always valid
     }
 
     float process(float amount, float brightnessHz) noexcept
@@ -198,7 +198,7 @@ struct OctaveWindNoise
 
     void reset() noexcept { filterState = 0.0f; }
 
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use
     uint32_t noiseState = 98765u;
     float filterState = 0.0f;
 };

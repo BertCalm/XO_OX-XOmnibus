@@ -281,8 +281,8 @@ private:
     //==========================================================================
     float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
     // F04: invSr must NOT be initialised as 1/sr at declaration time (sr=0 → 1/0 = Inf/UB).
-    // Initialise to a safe value; prepare() will overwrite with the correct reciprocal.
-    float invSr = 1.0f / 44100.0f; // overwritten by prepare()
+    // Initialise to 0.0f sentinel; prepare() will overwrite with the correct reciprocal.
+    float invSr = 0.0f; // sentinel: 0.0 until prepare() sets it (was 1/44100, which hardcoded SR)
     float glideFreq = 0.0f;
     int voiceIdx = 0;
 };
