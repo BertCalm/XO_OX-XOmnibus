@@ -573,7 +573,7 @@ public:
             voice.lfo2.setShape(lfo2Shape);
             voice.glide.setTime(pGlide, srf);
             voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
-// P19: move block-constant updates here — saves per-sample SVF coeff + exp calls.
+            // P19: move block-constant updates here — saves per-sample SVF coeff + exp calls.
             voice.body.updateModes(smoothWoodAge.get());
             voice.outputFilter.setMode(CytomicSVF::Mode::LowPass); // mode is constant; set once per block
             // setStringType contains std::exp — block-constant, pull out of per-sample loop
@@ -603,11 +603,11 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            float bowPNow = smoothBowPressure.process();
-            (void)smoothStringTension.process(); // advance smoother; value used at block level
-            float bodyDNow = smoothBodyDepth.process();
-            float brightNow = smoothBrightness.process();
-            (void)smoothWoodAge.process(); // advance smoother; value used at block level
+            float bowPNow    = smoothBowPressure.process();
+            (void)smoothStringTension.process(); // advance smoother; value is block-constant (used via .get() above)
+            float bodyDNow   = smoothBodyDepth.process();
+            float brightNow  = smoothBrightness.process();
+            (void)smoothWoodAge.process();       // advance smoother; value is block-constant (used via .get() above)
             float curingRNow = smoothCuringRate.process();
 
             float mixL = 0.0f, mixR = 0.0f;

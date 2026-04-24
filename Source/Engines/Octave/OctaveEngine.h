@@ -863,7 +863,6 @@ public:
                 }
 
                 //--- Filter envelope (D001: velocity shapes timbre) ---
-                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f * voice.velocity;
                 // LFO1 modulates brightness (±3000 Hz at full depth)
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);

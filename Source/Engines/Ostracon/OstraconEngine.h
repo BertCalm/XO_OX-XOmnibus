@@ -364,7 +364,7 @@ public:
 
         // Expression (CC11) + coupling morph → effective bias
         const float biasWithExpr = juce::jlimit(0.0f, 1.0f,
-            effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphIn * 0.5f);
+            effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphAccum * 0.5f);
 
         // ---- Process MIDI ----
         for (const auto metadata : midi)
@@ -422,7 +422,6 @@ public:
 
         // Consume coupling accumulators — CAPTURE before zeroing (P25)
         const float couplingAudioIn  = couplingAudioAccum;
-        // couplingMorphIn already captured above (before MIDI loop, needed for biasWithExpr)
         couplingFilterAccum = 0.0f;
         couplingAudioAccum  = 0.0f;
         couplingMorphAccum  = 0.0f;
@@ -675,7 +674,14 @@ public:
                         // Normalized 0-1 (0 = right at write head, 1 = one full revolution behind)
                         float normDist = headDist / static_cast<float>(reelSizeSamples);
 
-                        [[maybe_unused]] float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
+                        float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
+                        if (updateFilter)
+                        {
+                            float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
+                            oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
+                            voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
+                            voice.oxideFilter[h].setCoefficients_fast(oxideCutoff, 0.3f, currentSampleRate);
+                        }
                         rawSample = voice.oxideFilter[h].processSample(rawSample);
                         rawSample = flushDenormal(rawSample);
                     }
@@ -784,6 +790,8 @@ public:
         // Feed silence gate
         analyzeForSilenceGate(buffer, numSamples);
     }
+
+    } // end renderBlock
 
     //==========================================================================
     //  S Y N T H   E N G I N E   I N T E R F A C E  —  C O U P L I N G

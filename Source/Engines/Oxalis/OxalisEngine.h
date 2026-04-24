@@ -509,7 +509,7 @@ public:
                     oscOut = oscOut + asymmetry * 0.3f * fastTanh(oscOut * 2.0f);
                 }
 
-                // Filter (env ticked per-sample, SVF decimated)
+                // Filter (env ticked per-sample)
                 float envLevel = voice.filterEnv.process();
                 float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 4000.0f, 200.0f, 20000.0f);
                 // F16: delta-guard setCoefficients — only recompute when fCut shifts > 2Hz

@@ -7,6 +7,7 @@
 #include "../../DSP/StandardLFO.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/ModMatrix.h"
+#include "../../DSP/PitchBendUtil.h"
 #include <array>
 #include <atomic>
 #include <cmath>
@@ -577,6 +578,7 @@ public:
         couplingFmLevel   = 0.0f;
         modWheelValue     = 0.0f;
         aftertouchValue   = 0.0f;
+        pitchBendNorm     = 0.0f;
         lastSampleL       = 0.0f;
         lastSampleR       = 0.0f;
         lastSongPhase     = 0.0f;
@@ -910,6 +912,8 @@ public:
         // ADDITIVE: do not clear — engine adds to existing buffer (slot chain convention)
 
         // ---- MIDI + render interleaved ----
+        // Hoist pitch-bend ratio: block-rate, one fastPow2 instead of per-voice.
+        const float pitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
         int midiSamplePos = 0;
 
         for (const auto& midiEvent : midi)
@@ -928,7 +932,7 @@ public:
                               fltAtk, fltDec, fltSus, fltRel,
                               lfo1Rate, lfo1Depth, lfo1Shape, lfo1Tgt,
                               lfo2Rate, lfo2Depth, lfo2Shape, lfo2Tgt,
-                              velTimbre, glideCoeff, modAmpLevel);
+                              velTimbre, glideCoeff, modAmpLevel, pitchBendRatio);
             midiSamplePos = msgPos;
 
             if (msg.isNoteOn())
@@ -954,6 +958,10 @@ public:
             {
                 aftertouchValue = msg.getAfterTouchValue() / 127.0f;
             }
+            else if (msg.isPitchWheel())
+            {
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
+            }
         }
 
         // Render remaining samples after last MIDI event
@@ -967,7 +975,7 @@ public:
                           fltAtk, fltDec, fltSus, fltRel,
                           lfo1Rate, lfo1Depth, lfo1Shape, lfo1Tgt,
                           lfo2Rate, lfo2Depth, lfo2Shape, lfo2Tgt,
-                          velTimbre, glideCoeff, modAmpLevel);
+                          velTimbre, glideCoeff, modAmpLevel, pitchBendRatio);
 
         // ---- Cache last output samples for coupling ----
         if (numSamples > 0)
@@ -1306,7 +1314,7 @@ private:
                            float lfo1Rate, float lfo1Depth, int lfo1Shape, int lfo1Tgt,
                            float lfo2Rate, float lfo2Depth, int lfo2Shape, int lfo2Tgt,
                            float velTimbre, float glideCoeff,
-                           float modAmpLevel) noexcept
+                           float modAmpLevel, float pitchBendRatio) noexcept
     {
         if (startSample >= endSample) return;
 
@@ -1366,8 +1374,9 @@ private:
                 else
                     v.glideFreq = targetFreq;
 
-                // Note frequency (blending MIDI pitch with fixed base frequency)
-                const float noteFreq        = lerp(baseFreq, v.glideFreq, pitchTrack);
+                // Note frequency (blending MIDI pitch with fixed base frequency).
+                // pitchBendRatio is pre-computed at block rate (one fastPow2 per block).
+                const float noteFreq        = lerp(baseFreq, v.glideFreq * pitchBendRatio, pitchTrack);
                 const float pitchPeriodSamp = sampleRateFloat / std::max(noteFreq, 1.0f);
 
                 // ---- LFOs (per-sample -- actual output values, not proxy) ----
@@ -1528,9 +1537,10 @@ private:
     float couplingRhythm    = 0.0f;     // block-rate RhythmToBlend accumulator
     float couplingFmLevel   = 0.0f;     // scalar scale for FM coupling
 
-    // Expression state (CC1 mod wheel + aftertouch)
+    // Expression state (CC1 mod wheel + aftertouch + pitch wheel)
     float modWheelValue   = 0.0f;
     float aftertouchValue = 0.0f;
+    float pitchBendNorm   = 0.0f;  // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // Coupling output cache (O(1) getSampleForCoupling reads)
     float lastSampleL   = 0.0f;

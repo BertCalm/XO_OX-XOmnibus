@@ -586,7 +586,6 @@ public:
 
                 // Tremolo (Rhodes' optional built-in stereo vibrato).
                 // setRate is called once per block in the LFO config section above.
-                // Tremolo (Rhodes' optional built-in stereo vibrato) — rate set per-block above.
                 float tremVal = voice.tremoloLFO.process();
                 float tremGain = 1.0f - tremDepthNow * 0.5f * (1.0f + tremVal);
 
@@ -610,8 +609,7 @@ public:
                     continue;
                 }
 
-                // Filter envelope + brightness — env ticked per sample, SVF coeff
-                // refresh decimated to every 16 samples.
+                // Filter envelope + brightness — env ticked per sample, SVF mode set once per block.
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
                 // D001: velocity shapes filter brightness
                 float velBright = voice.velocity * 4000.0f;

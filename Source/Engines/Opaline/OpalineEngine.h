@@ -856,11 +856,11 @@ public:
                     continue;
                 }
 
-                // Filter: LPF for brightness control.
+                // Filter: LPF for brightness control (env ticked per-sample).
                 // P19: use setCoefficients_fast() — avoids std::tan per-sample in audio loop.
+                // Mode was hoisted to prepare(); no setMode() call needed here.
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 4000.0f, 200.0f, 20000.0f);
-                // Mode was hoisted to prepare(); no setMode() call needed here.
                 voice.svf.setCoefficients_fast(cutoff, 0.3f, srf);
                 float filtered = voice.svf.processSample(resonanceSum);
 

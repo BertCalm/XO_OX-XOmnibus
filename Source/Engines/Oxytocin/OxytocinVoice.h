@@ -428,8 +428,6 @@ public:
                     // warming on the following sample.
                     // (entSeriesCI = entAmt_ * 0.2f precomputed above.)
                     cToICarry = std::clamp(reactiveOut * entSeriesCI, -0.25f, 0.25f) * boostedC * 0.1f;
-                    // F20: flush denormal — cToICarry can become tiny after long silence
-                    cToICarry = xoceanus::flushDenormal(cToICarry);
                 }
                 else
                 {

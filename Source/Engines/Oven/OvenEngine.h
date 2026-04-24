@@ -884,7 +884,6 @@ public:
                 }
 
                 // Filter envelope: D001 velocity-scaled filter sweep.
-                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float filterEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 6000.0f * voice.velocity;
                 float cutoff = std::clamp(brightNow + filterEnvMod + lfo1Val * 3000.0f, 200.0f, 16000.0f);
                 // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz

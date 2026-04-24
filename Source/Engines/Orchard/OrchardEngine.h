@@ -484,11 +484,10 @@ public:
                 voice.formantFilter.setMode(CytomicSVF::Mode::BandPass);
                 if ((s & 3) == 0)
                     voice.formantFilter.setCoefficients(formFreq, 0.3f + formNow * 0.4f, srf);
-                // Formant-shaped filter (orchestral body resonance; coeff refresh decimated)
                 float formantSig = voice.formantFilter.processSample(oscMix);
                 float blended = oscMix * (1.0f - formNow * 0.5f) + formantSig * formNow * 0.5f;
 
-                // Main filter (env ticked per-sample, SVF decimated)
+                // Main filter (env ticked per-sample, coeff refresh every 4 samples)
                 float envLevel = voice.filterEnv.process();
                 float fCut =
                     std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 3000.0f + aftertouchAmount * 3000.0f,

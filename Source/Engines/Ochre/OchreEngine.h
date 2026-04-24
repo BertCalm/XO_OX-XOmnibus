@@ -787,7 +787,6 @@ public:
                         voice.hfNoiseShaper.setCoefficients(hfCutoff, 0.3f, srf);
                         voice.lastHFCutoff = hfCutoff;
                     }
-                    // Shape noise through body-tuned SVF (coeff refresh decimated)
                     float shapedNoise = voice.hfNoiseShaper.processSample(noise);
 
                     resonanceSum += shapedNoise * voice.hfNoiseEnv * pHFCharacter * 0.3f;
@@ -825,7 +824,7 @@ public:
                     continue;
                 }
 
-                // Filter envelope + LFO1 → brightness (env ticked per-sample, SVF decimated)
+                // Filter envelope + LFO1 → brightness (env ticked per-sample)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
                 // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
@@ -924,6 +923,7 @@ public:
         v.body.setBodyType(bodyType);
         // RT-fix: body.prepare() already called at engine prepare()-time (sets sr, resets
         // filter states).  On noteOn, reconfigure modes only — no lifecycle re-init needed.
+        // (setFundamental removed — body resonances are type-only constants per F03)
 
         // Reset modes
         for (auto& m : v.modes)

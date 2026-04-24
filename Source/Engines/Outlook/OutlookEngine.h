@@ -346,14 +346,10 @@ public:
                 const float modCutoff = envCutoff * (1.0f + lfo1Val * pLfo1Dep * std::max(movementAmt, 0.0f));
                 const float finalCutoff = std::clamp(modCutoff + aftertouch * pAfterDep * 4000.0f, 20.0f, 20000.0f);
 
-                // P2: use cached srf
+                // P2: use cached srf for LP; hpCutoff is block-constant (precomputed above, P6 fix)
                 v.filterLP.setCoefficients_fast(finalCutoff, pFilterRes, srf);
-                const float filtered = v.filterLP.processSample(oscMix);
-
-                // HP for clearing low mud based on horizon
-                // hpCutoff precomputed at block-rate above (P6 fix)
-                // S7: resonance 0.0f (Butterworth) — nonzero was adding tonal artifact at HP corner
                 v.filterHP.setCoefficients_fast(hpCutoff, 0.0f, srf);
+                const float filtered = v.filterLP.processSample(oscMix);
                 const float cleaned = v.filterHP.processSample(filtered);
 
                 // Aurora luminosity modulates amplitude

@@ -382,7 +382,7 @@ public:
                 voices[v].ampEnv.setADSR(pAmpA, pAmpD, pAmpS, pAmpR);
                 voices[v].filterEnv.setADSR(pFiltA, pFiltD, pFiltS, pFiltR);
             }
-        }
+        } // end for (int v = 0; v < kMaxVoices; ++v)
         // Hoist envelope setADSR out of the per-sample loop — setADSR internally
         // calls two std::exp()s for decay/release coefficients; ADSR knob values
         // are block-rate so per-sample recomputation was pure waste.
@@ -447,7 +447,6 @@ public:
                     voice.viscosityFilter.setCoefficients_fast(voiceCutoff, pFilterRes, srF);
                     voice.lastCutoff = voiceCutoff;
                 }
-                // SVF coeff refresh decimated to every 16 samples.
 
                 // LFOToPitch coupling: extPitchMod is accumulated in applyCouplingInput()
                 // and reset at end of block. Convert semitone offset to a frequency ratio

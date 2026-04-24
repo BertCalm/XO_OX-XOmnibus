@@ -437,6 +437,7 @@ public:
             float fbNow = smoothFeedback.process();
             float purityNow = smoothPurity.process();
             float brightNow = smoothBrightness.process();
+            (void)brightNow; // smoother tick required; brightness folded into filter cutoff block-rate
             float distRNow = smoothDistillRate.process();
             (void)distRNow; // block-rate decayCoeff used instead (CPU fix 1)
 
@@ -506,7 +507,7 @@ public:
                 float carrierOut = voice.carrier.process(modSignal);
 
                 // D001: velocity shapes FM brightness (more velocity = brighter attack)
-                // Tick env per sample; decimate SVF coeff refresh to every 16.
+                float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 5000.0f;
                 float cutoff = std::clamp(brightNow + voice.velocity * 3000.0f + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
 

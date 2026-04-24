@@ -489,7 +489,7 @@ public:
     juce::String getEngineId() const override { return "Oware"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFFB5883E); }
     int getMaxVoices() const override { return kMaxVoices; }
-    int getActiveVoiceCount() const override { return activeVoiceCount.load(); }
+    int getActiveVoiceCount() const override { return activeVoiceCount_.load(std::memory_order_relaxed); }
 
     void prepare(double sampleRate, int maxBlockSize) override
     {
@@ -771,8 +771,7 @@ public:
                 float shimmerMod = (voice.shimmerLFO.process() + 1.0f) * 0.5f;      // [0,1]
                 float shimmerOffset = pShimmerHz * shimmerMod;                      // 0 to shimmerHz
                 // Apply as additive Hz offset (Balinese: beat rate in Hz, not cents)
-                float freqWithShimmer = freq + shimmerOffset;
-
+                // shimmerOffset adds fixed-Hz shimmer; applied in body resonance below
                 float excitation = voice.exciter.process();
 
                 // CPU-optimized sympathetic resonance: use precomputed sparse table
@@ -861,6 +860,7 @@ public:
                 {
                     voice.svf.setCoefficients(cutoff, 0.5f, srf);
                     voice.lastCutoff = cutoff;
+                }
                 float filtered = voice.svf.processSample(bodied);
                 // F10: voice.sympatheticOut removed — it was set here but never read
                 //      (getSampleForCoupling exports couplingCacheL/R, not sympatheticOut).
@@ -882,10 +882,8 @@ public:
         for (const auto& v : voices)
             if (v.active)
                 ++count;
-        activeVoiceCount.store(count);
+        activeVoiceCount_.store(count, std::memory_order_relaxed);
         analyzeForSilenceGate(buffer, numSamples);
-    } // end for (int s...) sample loop
-
     } // end renderBlock
 
     //==========================================================================
@@ -1129,7 +1127,6 @@ private:
 
     std::array<OwareVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
-    std::atomic<int> activeVoiceCount{0};
 
     ParameterSmoother smoothMaterial, smoothMallet, smoothBuzz;
     ParameterSmoother smoothBodyDepth, smoothSympathy, smoothBrightness;

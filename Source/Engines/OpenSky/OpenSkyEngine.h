@@ -988,25 +988,17 @@ public:
                 // Update cached spread after iterating all unison voices
                 voice.lastSawSpread = sawSpread;
 
-                // Normalize by unison count
-                float unisonNorm = 1.0f / std::sqrt(static_cast<float>(std::max(1, numUnison)));
-                voiceL *= unisonNorm;
-                voiceR *= unisonNorm;
+                // Normalize by unison count (cached at noteOn — was per-sample std::sqrt).
+                voiceL *= voice.unisonNormGain;
+                voiceR *= voice.unisonNormGain;
 
                 // --- Filter ---
                 // D001: velocity drives filter brightness
                 float velCutoffMod = voice.velocity * velFilterEnv * 8000.0f;
                 float filterEnvMod = voice.filterEnvLevel * filterEnvAmt * 6000.0f;
                 float voiceCutoff = clamp(effectiveFilterCutoff + velCutoffMod + filterEnvMod, 20.0f, 20000.0f);
-
                 voice.lpfL.setCoefficients_fast(voiceCutoff, filterReso, srf);
                 voice.lpfR.setCoefficients_fast(voiceCutoff, filterReso, srf);
-                // Normalize by unison count (cached at noteOn — was per-sample std::sqrt).
-                voiceL *= voice.unisonNormGain;
-                voiceR *= voice.unisonNormGain;
-
-                // --- Filter ---
-                // D001: velocity drives filter brightness (coeff refresh decimated to every 16 samples)
                 // HPF coefficients are set once per block (block-rate setup above)
 
                 // Apply filters (series: HP -> LP). Separate L/R instances maintain

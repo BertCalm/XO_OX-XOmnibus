@@ -541,7 +541,6 @@ public:
                 float effCut = clamp(filterCutoff + cutoffMod + velTimbre, 20.0f, 20000.0f);
                 float effRes = clamp(filterReso + resoMod, 0.0f, 1.0f);
                 voice.filter.setCoefficients(effCut, effRes, sr);
-                // === Filter — coeff refresh decimated to every 16 samples ===
                 signal = voice.filter.processSample(signal);
 
                 // === Amp envelope ===

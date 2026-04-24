@@ -298,8 +298,8 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Oort/OortEngine.cpp
     Source/Engines/Outcrop/OutcropEngine.h
     Source/Engines/Outcrop/OutcropEngine.cpp
-    Source/Engines/Oneiric/OneiricEngine.h
-    Source/Engines/Oneiric/OneiricEngine.cpp
+    Source/Engines/Onda/OndaEngine.h
+    Source/Engines/Onda/OndaEngine.cpp
     Source/Engines/Ondine/OndineEngine.h
     Source/Engines/Ondine/OndineEngine.cpp
     Source/Engines/Ortolan/OrtolanEngine.h
