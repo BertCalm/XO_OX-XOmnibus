@@ -983,7 +983,7 @@ public:
 
     // Called by the processor to give Organon access to SharedTransport.
     // Must be called before the first renderBlock().
-    void setSharedTransport(const SharedTransport* transport) noexcept { sharedTransport = transport; }
+    void setSharedTransport(const SharedTransport* transport) noexcept override { sharedTransport = transport; }
 
     // Reverb send level — read by the processor to route to shared reverb bus.
     // Updated once per block in renderBlock(), driven by the membrane parameter

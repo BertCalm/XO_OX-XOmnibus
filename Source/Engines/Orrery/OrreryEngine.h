@@ -555,7 +555,7 @@ public:
 
     // Called by the processor to give Orrery access to SharedTransport.
     // Must be called before the first renderBlock().
-    void setSharedTransport(const SharedTransport* transport) noexcept { sharedTransport = transport; }
+    void setSharedTransport(const SharedTransport* transport) noexcept override { sharedTransport = transport; }
 
     //==========================================================================
     // renderBlock
