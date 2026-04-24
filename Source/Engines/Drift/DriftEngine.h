@@ -869,7 +869,7 @@ public:
 
         // Filter A
         const float filterCut = (pFilterCutoff != nullptr) ? pFilterCutoff->load() : 8000.0f;
-        [[maybe_unused]] const float filterRes = (pFilterReso != nullptr) ? pFilterReso->load() : 0.0f;
+        const float filterRes = (pFilterReso != nullptr) ? pFilterReso->load() : 0.0f;
         const int filterSlope = (pFilterSlope != nullptr) ? static_cast<int>(pFilterSlope->load()) : 0;
         const float filterEnv = (pFilterEnvAmt != nullptr) ? pFilterEnvAmt->load() : 0.0f;
 
@@ -1041,6 +1041,7 @@ public:
         // --- Render voices sample by sample ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
+            const bool updateFilter = ((sample & 15) == 0);
             // Per-sample LFO
             float lfoVal = 0.0f;
             float lfoPitchMod = 0.0f;
@@ -1210,18 +1211,30 @@ public:
                 cutoffMod += modWheelAmount * 4000.0f;
                 cutoffMod = clamp(cutoffMod, 20.0f, 20000.0f);
 
+                if (updateFilter)
+                {
+                    voice.filterA1.setMode(CytomicSVF::Mode::LowPass);
+                    voice.filterA1.setCoefficients_fast(cutoffMod, filterRes, srf);
+                }
                 float filtered = voice.filterA1.processSample(raw);
 
                 // 24dB cascade: run through second SVF
                 if (filterSlope == 1)
                 {
+                    if (updateFilter)
+                    {
+                        voice.filterA2.setMode(CytomicSVF::Mode::LowPass);
+                        voice.filterA2.setCoefficients_fast(cutoffMod, filterRes, srf);
+                    }
                     filtered = voice.filterA2.processSample(filtered);
                 }
 
                 // --- Filter B (Formant) ---
                 // updateCoefficients has internal 0.001f threshold guard; gate the call to
                 // every 16 samples to match FilterA's update cadence and cut SVF overhead.
-                [[maybe_unused]] float effectiveMorph = clamp(formantMorph + morphMod, 0.0f, 1.0f);
+                float effectiveMorph = clamp(formantMorph + morphMod, 0.0f, 1.0f);
+                if (updateFilter)
+                    voice.filterB.updateCoefficients(effectiveMorph, 0.5f, srf);
                 filtered = voice.filterB.process(filtered, formantMix);
 
                 // --- Fracture glitch (post-filter, pre-envelope — FRACTURE macro) ---

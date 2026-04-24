@@ -901,6 +901,7 @@ private:
         for (int s = startSample; s < endSample; ++s)
         {
             // Update filter coefficients every 16 samples (sub-block rate)
+            const bool updateFilter = ((s & 15) == 0);
 
             float outL = 0.0f, outR = 0.0f;
 
@@ -919,7 +920,7 @@ private:
                 }
 
                 // ---- Filter envelope (setParams hoisted to per-block voice loop) ----
-                [[maybe_unused]] const float fltEnvLevel = v.filterEnv.process();
+                const float fltEnvLevel = v.filterEnv.process();
 
                 // ---- LFO values (per-sample) ----
                 const float lfo1Val = v.lfo1.process();  // bipolar [-1, +1]
@@ -1154,6 +1155,33 @@ private:
                 blended = flushDenormal(blended);
 
                 // ---- Filter ----
+                if (updateFilter)
+                {
+                    // Exponential keytracking: cutoff · 2^((note-60)·keyTrack/12).
+                    // Was linear (keyTrack01 × 5 kHz), which was non-musical at extremes.
+                    const float keyTrackMul = fastPow2(
+                        static_cast<float>(v.note - 60) * fltKeyTrack * (1.0f / 12.0f));
+                    // Filter envelope modulates cutoff (bipolar — |x| > 1e-6).
+                    float envOffset = std::fabs(fltEnvAmt) > 1e-6f
+                        ? fltEnvLevel * fltEnvAmt * 10000.0f * v.velocity
+                        : 0.0f;
+                    // Coupling + mod matrix offsets
+                    float effectiveCutoff = clamp(baseCutoff * keyTrackMul + envOffset + modCutoffOffset, 20.0f, 20000.0f);
+                    float effectiveReso   = clamp(fltReso + aftertouchValue * 0.3f, 0.0f, 0.99f);
+
+                    CytomicSVF::Mode fMode = CytomicSVF::Mode::LowPass;
+                    switch (fltType)
+                    {
+                    case 1: fMode = CytomicSVF::Mode::HighPass; break;
+                    case 2: fMode = CytomicSVF::Mode::BandPass; break;
+                    case 3: fMode = CytomicSVF::Mode::Notch;    break;
+                    default: break;
+                    }
+                    v.filterL.setMode(fMode);
+                    v.filterR.setMode(fMode);
+                    v.filterL.setCoefficients_fast(effectiveCutoff, effectiveReso, sampleRateFloat);
+                    v.filterR.setCoefficients_fast(effectiveCutoff, effectiveReso, sampleRateFloat);
+                }
 
                 float filteredL = v.filterL.processSample(blended);
                 float filteredR = v.filterR.processSample(blended);
