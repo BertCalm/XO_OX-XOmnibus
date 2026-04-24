@@ -763,7 +763,7 @@ public:
         const float glideTimeSec = snap_.glide * snap_.glide * 2.0f; // quadratic mapping
 
         // ── Step 8: Filter mode
-        [[maybe_unused]] const CytomicSVF::Mode filterMode = filterModeFromInt(snap_.filterType);
+        const CytomicSVF::Mode filterMode = filterModeFromInt(snap_.filterType);
 
         // ── Step 9: Freeze
         const bool frozen = (snap_.freeze > 0.5f);
@@ -841,6 +841,7 @@ public:
             // Per-sample loop
             for (int s = 0; s < numSamples; ++s)
             {
+                const bool updateFilter = ((s & 15) == 0);
                 // ── RD evolution scheduling ──────────────────────────────────
                 voice.rdAccumulator += effEvolutionWithAT / static_cast<float>(currentSampleRate_);
 
@@ -930,8 +931,17 @@ public:
 
                 // ── Output filter ─────────────────────────────────────────────
                 // If LFO target is filter (case 3), lastCouplingOut holds LFO-modulated cutoff
-                [[maybe_unused]] const float activeCutoff = (snap_.lfoTarget == 3 && voice.lastCouplingOut > 0.0f)
+                const float activeCutoff = (snap_.lfoTarget == 3 && voice.lastCouplingOut > 0.0f)
                     ? voice.lastCouplingOut : voiceFilterCutoff;
+                if (updateFilter)
+                {
+                    voice.outputFilterL.setMode(filterMode);
+                    voice.outputFilterR.setMode(filterMode);
+                    voice.outputFilterL.setCoefficients_fast(activeCutoff, snap_.filterReso,
+                                                             static_cast<float>(currentSampleRate_));
+                    voice.outputFilterR.setCoefficients_fast(activeCutoff, snap_.filterReso,
+                                                             static_cast<float>(currentSampleRate_));
+                }
                 float sampleL = voice.outputFilterL.processSample(sample);
                 float sampleR = voice.outputFilterR.processSample(sample);
                 sampleL = flushDenormal(sampleL);
