@@ -107,16 +107,21 @@ public:
         laf = std::make_unique<GalleryLookAndFeel>();
         setLookAndFeel(laf.get());
 
+        // Open the shared settings file once — reused for all subsequent reads/writes
+        // so message-thread callbacks never perform blocking file I/O inline.
+        {
+            juce::PropertiesFile::Options opts;
+            opts.applicationName      = "XOceanus";
+            opts.filenameSuffix       = "settings";
+            opts.osxLibrarySubFolder  = "Application Support";
+            settingsFile_ = std::make_unique<juce::PropertiesFile>(opts);
+        }
+
         // Read persisted theme preference before any component styling.
         // SettingsPanel will also read this later, but we need it now so
         // setColour() calls use the correct theme from the start.
         {
-            juce::PropertiesFile::Options opts;
-            opts.applicationName = "XOceanus";
-            opts.filenameSuffix = "settings";
-            opts.osxLibrarySubFolder = "Application Support";
-            juce::PropertiesFile earlySettings(opts);
-            const bool savedDark = earlySettings.getBoolValue("darkMode", true);
+            const bool savedDark = settingsFile_->getBoolValue("darkMode", true);
             // Register this instance in the per-instance dark mode registry (fix #329).
             // unregisterInstance() is called in the destructor.
             GalleryColors::setInstanceDarkMode(this, savedDark);
@@ -290,12 +295,9 @@ public:
             if (playSurface_.isVisible())
                 playSurface_.repaint();
             // Persist preference so the theme survives plugin reload (#215).
-            juce::PropertiesFile::Options opts;
-            opts.applicationName = "XOceanus";
-            opts.filenameSuffix = "settings";
-            opts.osxLibrarySubFolder = "Application Support";
-            juce::PropertiesFile settings(opts);
-            settings.setValue("darkMode", newState);
+            // Use the shared settingsFile_ member — avoids blocking file open on the message thread.
+            if (settingsFile_ != nullptr)
+                settingsFile_->setValue("darkMode", newState);
         };
         // Sync toggle visual state to the preference we read early in the constructor.
         themeToggleBtn.setToggleState(GalleryColors::darkMode(), juce::dontSendNotification);
@@ -567,8 +569,16 @@ public:
         // timer to 30Hz so the pulse animation runs smoothly.  Reverts to 1Hz
         // after the first poll cycle that finds nothing pending.
         // CQ16: setLearnCompleteCallback fires from a non-message thread — marshal to message thread.
+        // Use SafePointer in the inner lambda: if the editor is destroyed between callback
+        // registration and async dispatch, the raw `this` would be dangling.
         proc.getMIDILearnManager().setLearnCompleteCallback(
-            [this](const juce::String&, int) { juce::MessageManager::callAsync([this] { startTimerHz(30); }); });
+            [this](const juce::String&, int) {
+                juce::Component::SafePointer<XOceanusEditor> safeThis(this);
+                juce::MessageManager::callAsync([safeThis] {
+                    if (safeThis != nullptr)
+                        safeThis->startTimerHz(30);
+                });
+            });
 
         // ── DepthZoneDial wiring ──────────────────────────────────────────────
         // Default to slot 0 — updated in selectSlot() when the user picks a tile.
@@ -877,7 +887,7 @@ public:
 
         // Wire OceanView PlaySurface visibility-change callback so state is
         // persisted whenever the user toggles it via the KEYS button or K key.
-        oceanView_.onPlaySurfaceVisibilityChanged = [](bool visible)
+        oceanView_.onPlaySurfaceVisibilityChanged = [this](bool visible)
         {
             persistPlaySurfaceVisible(visible);
         };
@@ -1018,8 +1028,11 @@ public:
         presetPrevBtn.setVisible(false);
         presetNextBtn.setVisible(false);
         // Hide the old standalone PlaySurface — OceanView owns its own PlaySurfaceOverlay.
+        // Remove from the component tree entirely so it does not double-render alongside
+        // SubmarinePlaySurface inside OceanView (Fix 4: dual PlaySurface crash vector).
         playSurface_.setVisible(false);
         playSurface_.setMidiCollector(nullptr);  // Detach — OceanView owns MIDI now
+        removeChildComponent(&playSurface_);
 
         // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.
@@ -1534,14 +1547,12 @@ private:
 
     // Persist the playSurface visibility state so V2 first-launch default is honoured
     // on subsequent sessions and explicit user toggles are remembered.
-    static void persistPlaySurfaceVisible(bool visible)
+    // Non-static: uses shared settingsFile_ member to avoid blocking file I/O on the
+    // message thread each time the KEYS button is toggled (Fix 3).
+    void persistPlaySurfaceVisible(bool visible)
     {
-        juce::PropertiesFile::Options opts;
-        opts.applicationName = "XOceanus";
-        opts.filenameSuffix = "settings";
-        opts.osxLibrarySubFolder = "Application Support";
-        juce::PropertiesFile settings(opts);
-        settings.setValue("playSurfaceVisible", visible);
+        if (settingsFile_ != nullptr)
+            settingsFile_->setValue("playSurfaceVisible", visible);
     }
 
     void showPlaySurface()
@@ -2212,6 +2223,11 @@ private:
 
     XOceanusProcessor& processor;
     std::unique_ptr<GalleryLookAndFeel> laf;
+
+    // Shared persistent settings file — opened once at construction, reused for all
+    // read/write operations to avoid blocking message-thread callbacks with repeated
+    // file open/close overhead (Fix 3: PropertiesFile inline-construction crash vector).
+    std::unique_ptr<juce::PropertiesFile> settingsFile_;
 
     std::array<std::unique_ptr<CompactEngineTile>, kNumPrimarySlots> tiles;
     OverviewPanel overview;
