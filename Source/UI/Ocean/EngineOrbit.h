@@ -112,13 +112,15 @@ public:
                        juce::Rectangle<float>(cx - 15.0f, cy - 12.0f, 30.0f, 24.0f).toNearestInt(),
                        juce::Justification::centred, false);
 
-            // Slot number below the circle
+            // Invitation label below the circle (#1168). "Slot N" told the
+            // user nothing about what the circle was for — this at least
+            // communicates that something goes in it.
             if (slotIndex_ >= 0)
             {
                 g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
                 g.setColour(ghostCol.withAlpha(0.25f));
-                g.drawText("Slot " + juce::String(slotIndex_ + 1),
-                           juce::Rectangle<float>(cx - 20.0f, cy + r + 4.0f, 40.0f, 10.0f).toNearestInt(),
+                g.drawText("Drop an engine",
+                           juce::Rectangle<float>(cx - 60.0f, cy + r + 4.0f, 120.0f, 10.0f).toNearestInt(),
                            juce::Justification::centred, false);
             }
             return;

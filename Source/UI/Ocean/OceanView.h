@@ -211,7 +211,7 @@ public:
 
         // 9b. BLOCKER 1: Empty-state label — shown when no engines are loaded.
         // Appears centred below the nexus with a subtle call-to-action.
-        emptyStateLabel_.setText("Load an engine to begin",
+        emptyStateLabel_.setText("Dive in — double-click a ghost slot to load an engine",
                                  juce::dontSendNotification);
         emptyStateLabel_.setFont(GalleryFonts::label(13.0f));
         emptyStateLabel_.setColour(juce::Label::textColourId,
