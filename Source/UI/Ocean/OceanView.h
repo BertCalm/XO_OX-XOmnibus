@@ -382,11 +382,23 @@ public:
         // ── CouplingSubstrate knot interaction ────────────────────────────────
         substrate_.onKnotDoubleClicked = [this](int routeIndex)
         {
-            // Get route info to populate popup.
-            // For now, show with placeholder names — will wire to real engine names.
-            couplingPopup_.show(routeIndex, "Engine A", juce::Colour(60, 180, 170),
-                               "Engine B", juce::Colour(140, 100, 220),
-                               0, 0.5f);
+            const auto route = substrate_.getRouteAt(routeIndex);
+            const auto nameFor = [this](int slot) -> juce::String
+            {
+                if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
+                    return orbits_[slot].getEngineId().substring(0, 24);
+                return "Slot " + juce::String(slot + 1);
+            };
+            const auto colourFor = [this](int slot) -> juce::Colour
+            {
+                if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
+                    return orbits_[slot].getAccentColour();
+                return juce::Colour(60, 180, 170);
+            };
+            couplingPopup_.show(routeIndex,
+                                nameFor(route.sourceSlot), colourFor(route.sourceSlot),
+                                nameFor(route.destSlot),   colourFor(route.destSlot),
+                                route.type, route.amount);
         };
 
         couplingPopup_.onConfigChanged = [this](int routeIndex, int newType, float newDepth, int direction)
@@ -553,8 +565,7 @@ public:
         macros_ = std::make_unique<MacroSection>(apvts);
         addAndMakeVisible(*macros_);
 
-        // Re-stack above the orbits and nexus, but below ambientEdge.
-        macros_->toFront(false);
+        // Re-stack: full reorderZStack() covers macros_ positioning.
         reorderZStack();
         resized();
     }
@@ -827,10 +838,12 @@ public:
             .withLeft(fullBounds.getRight() - SettingsDrawer::kDrawerWidth)
             .withWidth(SettingsDrawer::kDrawerWidth));
 
-        // ── Canonical Z-order ────────────────────────────────────────────────
-        // Called at end of every resized() to ensure drawers/overlays stay above
-        // all dashboard components regardless of init order or visibility changes.
-        reorderZStack();
+        // ── Z-order note ─────────────────────────────────────────────────────
+        // reorderZStack() is NOT called here. Z-order is established once:
+        //   • Static components: constructor add order + each initXxx() call
+        //   • Detail panel: onDoubleClicked uses remove/addAndMakeVisible (nuclear)
+        // Calling reorderZStack() every resized() caused O(n²) toFront() calls
+        // per animation frame — refs #1163.
 
         // Nuclear safeguard: ensure detail panel is hidden when not actively showing.
         // Something in the layout chain is re-showing it; this is the absolute last word.
@@ -1678,11 +1691,26 @@ private:
                         // Flip coupling direction — future: reverse source/target.
                         break;
                     case 2:
+                    {
+                        const auto route = substrate_.getRouteAt(chainIndex);
+                        const auto nameFor = [this](int slot) -> juce::String
+                        {
+                            if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
+                                return orbits_[slot].getEngineId().substring(0, 24);
+                            return "Slot " + juce::String(slot + 1);
+                        };
+                        const auto colourFor = [this](int slot) -> juce::Colour
+                        {
+                            if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
+                                return orbits_[slot].getAccentColour();
+                            return juce::Colour(60, 180, 170);
+                        };
                         couplingPopup_.show(chainIndex,
-                                            "Engine A", juce::Colour(60, 180, 170),
-                                            "Engine B", juce::Colour(140, 100, 220),
-                                            0, 0.5f);
+                                            nameFor(route.sourceSlot), colourFor(route.sourceSlot),
+                                            nameFor(route.destSlot),   colourFor(route.destSlot),
+                                            route.type, route.amount);
                         break;
+                    }
                     case 3:
                         // Copy coupling settings to clipboard — future.
                         break;
@@ -2337,15 +2365,26 @@ private:
     /**
         Restore the canonical Z-order of all overlay and floating components.
 
-        Called after each deferred init (initMacros, initDetailPanel, initSidebar,
-        initStatusBar) because addAndMakeVisible() pushes the new component to the
-        front and disturbs the Z-stack.
+        Called ONCE after each deferred-init method (initMacros, initDetailPanel,
+        initSidebar, initStatusBar, initWaterline, initChordBar, initMasterFxStrip,
+        initEpicSlotsPanel, initTransportBar) because addAndMakeVisible() pushes the
+        newly constructed component to the front and disturbs the Z-stack.
+
+        NOT called from resized() — z-order does not change when bounds change.
+        (Doing so caused O(n²) toFront() calls per animation frame — refs #1163.)
+        For the EngineDetailPanel, the onDoubleClicked handler uses the nuclear
+        remove/addAndMakeVisible approach to force it to the absolute front.
 
         Order (bottom → top):
-          ambientEdge_ | detail_ | sidebar_ | browser_ |
+          ambientEdge_ | orbits_ | macros_ | detail_ | sidebar_ | browser_ |
+          detailOverlay_ | couplingPopup_ |
           presetPrev_ | presetNext_ | favButton_ | settingsButton_ | keysButton_ |
           dimOverlay_  ← #1008 FIX 7: above buttons, so buttons are dimmed |
-          playSurfaceOverlay_ | statusBar_
+          emptyStateLabel_ | lifesaver_ | hudBar_ | surfaceRight_ | exprStrips_ |
+          subPlaySurface_ | playSurfaceOverlay_ | ouijaPanel_ |
+          waterline_ | masterFxStrip_ | epicSlots_ | tabBar_ | chordBar_ |
+          transportBar_ | statusBar_ |
+          engineDrawer_ | settingsDrawer_ | detailOverlay_ | detail_ | couplingPopup_
     */
     void reorderZStack()
     {
