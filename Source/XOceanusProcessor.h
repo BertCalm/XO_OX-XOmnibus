@@ -16,6 +16,7 @@
 #include "Core/CouplingPresetManager.h"
 #include "Core/MacroSystem.h"
 #include "Core/BrothCoordinator.h"
+#include "Core/SharedTransport.h"
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
 #include <atomic>
@@ -363,6 +364,11 @@ private:
     MasterFXChain masterFX;
     xoceanus::EpicChainSlotController epicSlots;  // 3-slot Epic Chains FX router
     ChordMachine chordMachine;
+
+    // Unified host transport — the processor updates this from the PlayHead
+    // once per audio block, then engines that tempo-sync (Outwit, Organon,
+    // Orrery) read bpm/beat/isPlaying here during their renderBlock().
+    xoceanus::SharedTransport hostTransport;
     MPEManager mpeManager;
     MIDILearnManager midiLearnManager;
     PresetManager presetManager;
