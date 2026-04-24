@@ -155,6 +155,14 @@ private:
     // juce::Timer
     void timerCallback() override
     {
+        // Panel is hidden (parent tab not OUIJA): skip the whole frame —
+        // planchette physics, trail decay, CC emission, and repaint all
+        // depend on the panel being on-screen. Parent tab visibility changes
+        // do not fire visibilityChanged() here, so the cheap per-tick guard
+        // is the right tool. (isShowing() walks ancestors.)
+        if (! isShowing())
+            return;
+
         time_ += 1.0f;
         advancePlanchette();
         ageTrail();

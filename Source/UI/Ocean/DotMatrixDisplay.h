@@ -444,6 +444,11 @@ private:
         if (breathPhase_ > 1.0f)
             breathPhase_ -= 1.0f;
 
+        // Skip the repaint when hidden (status bar collapsed etc.) — decay
+        // above still runs so the display is not stale when re-shown.
+        if (! isShowing())
+            return;
+
         repaint();
     }
 
