@@ -123,7 +123,7 @@ Pick a track or group of tracks. Each entry has enough context for a fresh Claud
 **Instructions:** 76 engines as interactive star chart. Engine position determined by sonic DNA centroid. Proximity = coupling compatibility. Click to load. Zoom/pan navigation. 25% push feature — may defer to V1.1.
 
 #### O21 — Design Spatial Preset Navigation ⚪ P3
-**Instructions:** ~17K presets as continuous 2D map. Position = 6D DNA projected to 2D (t-SNE or UMAP). Browse by dragging. Cluster visualization shows mood regions. 25% push — may defer.
+**Instructions:** ~17K presets as continuous 2D map. V0: position = two user-selected DNA axes (honest "explore by mood" — no learned projection). Browse by dragging; mood territory labels show regions. Future (V1.1+): evaluate an actual learned projection (UMAP, versioned schema) — not what ships. 25% push — may defer.
 
 #### O22 — Design Emotion-Responsive UI ⚪ P3
 **Instructions:** Color temperature adapts to audio output. Aggressive sounds warm the palette, ambient sounds cool it. Define the mapping from audio features (RMS, spectral centroid, crest factor) to color shift. 25% push — may defer.

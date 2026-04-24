@@ -105,7 +105,7 @@ XOceanus/
 │   │   ├── PresetBrowser.h/.cpp       # Card grid, mood tabs, search
 │   │   ├── PresetCard.h/.cpp          # Single preset card with DNA sparkline
 │   │   ├── DNARadarChart.h/.cpp       # Hexagonal radar for DNA detail
-│   │   ├── MoodMap.h/.cpp             # 2D PCA scatter plot of all presets
+│   │   ├── MoodMap.h/.cpp             # 2D DNA-axis scatter of all presets (mood-tinted)
 │   │   └── KnobComponents.h/.cpp      # Standard, Macro, Mini knob variants
 │   │
 │   ├── Export/

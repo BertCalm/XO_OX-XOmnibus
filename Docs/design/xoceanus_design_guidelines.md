@@ -382,7 +382,7 @@ Zone 4 (pads):   100 px wide (4 vertical performance pads)
 
 **Radar Chart** (detail view): Hexagonal radar, 6 axes. Filled area = preset DNA. Second overlay for comparison (morphing/breeding).
 
-**Mood Map** (full browser): 2D scatter plot of all presets. X/Y = PCA components 1/2. Each dot colored by mood. Click to load. Zoom and pan. Auto cluster labels.
+**Mood Map** (full browser): 2D scatter plot of all presets. X/Y = two user-selected DNA axes (default Brightness × Warmth; any pair of Brightness / Warmth / Movement / Density / Space / Aggression). Each dot colored by mood. Click to load. Zoom and pan. Mood territory labels overlayed. This is an "explore by mood" map, not a PCA/t-SNE projection.
 
 ### 6.5 Coupling Strip
 
