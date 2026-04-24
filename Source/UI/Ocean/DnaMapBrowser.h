@@ -71,7 +71,7 @@ struct PresetDot
         screenX = viewOffset_.x + mapX * getWidth()  * viewScale_
         screenY = viewOffset_.y + (1 - mapY) * getHeight() * viewScale_   (Y flipped)
 */
-class DnaMapBrowser : public juce::Component
+class DnaMapBrowser : public juce::Component, private juce::AsyncUpdater
 {
 public:
     //==========================================================================
@@ -101,6 +101,14 @@ public:
         diveButton_.setTooltip("Load a random visible preset");
     }
 
+    ~DnaMapBrowser() override
+    {
+        // AsyncUpdater contract: cancel any pending callback before
+        // destruction so handleAsyncUpdate() can't fire on a half-torn-down
+        // instance.
+        cancelPendingUpdate();
+    }
+
     //==========================================================================
     // juce::Component overrides
     //==========================================================================
@@ -114,20 +122,20 @@ public:
         // ── 1. Abyss background ───────────────────────────────────────────────
         g.fillAll(juce::Colour(GalleryColors::Ocean::abyss));
 
-        // ── 2. Rebuild the dot back-buffer if stale ───────────────────────────
-        // Throttle rebuilds to at most 30fps (one every 33ms) to avoid blocking
-        // the paint callback on large preset lists.
+        // ── 2. Schedule a dot-buffer rebuild if stale (#1162) ─────────────────
+        // The 19,574-dot rebuild is O(n) and used to run inside paint(),
+        // blocking the message thread on every repaint. Now it runs on the
+        // next AsyncUpdater callback; paint() just blits whatever buffer is
+        // currently valid. The first frame after construction / resize will
+        // briefly show only the abyss background, which is acceptable.
         const bool sizeChanged = (dotBuffer_.isNull()
                                   || dotBuffer_.getWidth()  != bounds.getWidth()
                                   || dotBuffer_.getHeight() != bounds.getHeight());
-        if (sizeChanged || (dotBufferDirty_
-            && juce::Time::getMillisecondCounterHiRes() - lastDotRebuildMs_ > 33.0))
-        {
-            rebuildDotBuffer();
-            lastDotRebuildMs_ = juce::Time::getMillisecondCounterHiRes();
-        }
+        if (sizeChanged || dotBufferDirty_)
+            triggerAsyncUpdate();
 
-        g.drawImageAt(dotBuffer_, 0, 0);
+        if (! dotBuffer_.isNull())
+            g.drawImageAt(dotBuffer_, 0, 0);
 
         // ── 3. Hovered-preset tooltip ─────────────────────────────────────────
         if (hoveredIndex_ >= 0 && hoveredIndex_ < static_cast<int>(presets_.size()))
@@ -615,7 +623,17 @@ private:
         return 1.0f - (d - 0.15f) / 0.30f;
     }
 
-    /** Full dot-buffer rebuild.  Called when view state changes (zoom/pan/filter). */
+    //==========================================================================
+    /** AsyncUpdater hook — runs the dot-buffer rebuild off the paint() path
+        and triggers a follow-up repaint() to blit the fresh buffer (#1162). */
+    void handleAsyncUpdate() override
+    {
+        rebuildDotBuffer();
+        repaint();
+    }
+
+    /** Full dot-buffer rebuild.  Called from handleAsyncUpdate() when view
+        state changes (zoom/pan/filter); never from paint(). */
     void rebuildDotBuffer()
     {
         const int w = getWidth();
@@ -1140,10 +1158,9 @@ private:
     static constexpr int kGridCells = 32;
     std::array<std::vector<int>, kGridCells * kGridCells> spatialGrid_;
 
-    // Back-buffer
+    // Back-buffer (rebuilt off the paint thread via AsyncUpdater — #1162).
     juce::Image dotBuffer_;
     bool        dotBufferDirty_   = true;
-    double      lastDotRebuildMs_ = 0.0;  ///< Hi-res timestamp of last rebuildDotBuffer() call
 
     // Mood pills
     struct MoodPill
