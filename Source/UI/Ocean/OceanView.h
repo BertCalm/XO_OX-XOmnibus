@@ -382,11 +382,7 @@ public:
         // ── CouplingSubstrate knot interaction ────────────────────────────────
         substrate_.onKnotDoubleClicked = [this](int routeIndex)
         {
-            // Get route info to populate popup.
-            // For now, show with placeholder names — will wire to real engine names.
-            couplingPopup_.show(routeIndex, "Engine A", juce::Colour(60, 180, 170),
-                               "Engine B", juce::Colour(140, 100, 220),
-                               0, 0.5f);
+            showCouplingPopupForRoute(routeIndex);
         };
 
         couplingPopup_.onConfigChanged = [this](int routeIndex, int newType, float newDepth, int direction)
@@ -1651,6 +1647,39 @@ private:
             });
     }
 
+    /** Populate the CouplingConfigPopup for the given routeIndex with real
+        engine names, accent colours, and the live coupling type / depth. */
+    void showCouplingPopupForRoute(int routeIndex)
+    {
+        const auto* route = substrate_.getRoute(routeIndex);
+        if (route == nullptr)
+            return;
+
+        auto nameForSlot = [this](int slot) -> juce::String
+        {
+            if (slot < 0 || slot >= static_cast<int>(orbits_.size()))
+                return "—";
+            if (! orbits_[slot].hasEngine())
+                return "Empty";
+            juce::String id = orbits_[slot].getEngineId();
+            if (id.length() > 24)
+                id = id.substring(0, 23) + juce::CharPointer_UTF8("\xe2\x80\xa6"); // …
+            return id;
+        };
+
+        auto accentForSlot = [this](int slot) -> juce::Colour
+        {
+            if (slot < 0 || slot >= static_cast<int>(orbits_.size()))
+                return juce::Colour(GalleryColors::xoGold);
+            return orbits_[slot].getAccentColour();
+        };
+
+        couplingPopup_.show(routeIndex,
+                            nameForSlot(route->sourceSlot), accentForSlot(route->sourceSlot),
+                            nameForSlot(route->destSlot),   accentForSlot(route->destSlot),
+                            route->type, route->amount);
+    }
+
     /** Show a submarine-styled PopupMenu for a right-click on a coupling knot. */
     void showKnotContextMenu(int chainIndex)
     {
@@ -1678,10 +1707,7 @@ private:
                         // Flip coupling direction — future: reverse source/target.
                         break;
                     case 2:
-                        couplingPopup_.show(chainIndex,
-                                            "Engine A", juce::Colour(60, 180, 170),
-                                            "Engine B", juce::Colour(140, 100, 220),
-                                            0, 0.5f);
+                        showCouplingPopupForRoute(chainIndex);
                         break;
                     case 3:
                         // Copy coupling settings to clipboard — future.
