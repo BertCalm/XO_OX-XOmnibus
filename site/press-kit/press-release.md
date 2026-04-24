@@ -6,11 +6,11 @@
 
 ## XOceanus: Free Multi-Engine Synth with Revolutionary Coupling System
 
-**Solo developer ships the largest free synthesizer in the AU ecosystem — <!-- ENGINE_COUNT -->90<!-- /ENGINE_COUNT --> engines, 19,500+ presets, 15 cross-engine coupling types, MIT license**
+**Solo developer ships the largest free synthesizer in the AU ecosystem — <!-- ENGINE_COUNT -->92<!-- /ENGINE_COUNT --> engines, 19,500+ presets, 15 cross-engine coupling types, MIT license**
 
 ---
 
-**[City, Date]** — XO_OX Designs today announced XOceanus, a free and open-source multi-engine synthesizer for macOS. XOceanus ships with <!-- ENGINE_COUNT -->90<!-- /ENGINE_COUNT --> distinct synthesis engines, more than 19,500 factory presets, and a cross-engine coupling system that produces sounds impossible on any single synthesizer.
+**[City, Date]** — XO_OX Designs today announced XOceanus, a free and open-source multi-engine synthesizer for macOS. XOceanus ships with <!-- ENGINE_COUNT -->92<!-- /ENGINE_COUNT --> distinct synthesis engines, more than 19,500 factory presets, and a cross-engine coupling system that produces sounds impossible on any single synthesizer.
 
 The instrument is available at no cost, permanently, under the MIT open-source license. No subscription, no trial period, no upgrade gate.
 
@@ -28,7 +28,7 @@ The factory preset library ships with more than 19,500 presets organized across 
 
 ### Why It Matters
 
-Professional-grade synthesizer plugins routinely cost $100–$500. Coupling and modular routing systems are typically sold as separate products or locked behind subscription tiers. XOceanus ships everything — all <!-- ENGINE_COUNT -->90<!-- /ENGINE_COUNT --> engines, the complete coupling system, the full preset library, and the source code — for free.
+Professional-grade synthesizer plugins routinely cost $100–$500. Coupling and modular routing systems are typically sold as separate products or locked behind subscription tiers. XOceanus ships everything — all <!-- ENGINE_COUNT -->92<!-- /ENGINE_COUNT --> engines, the complete coupling system, the full preset library, and the source code — for free.
 
 The instrument was built by a single developer over the course of several months. The source code is available on GitHub under the MIT license, meaning the entire DSP architecture, preset format, and coupling protocol are available for inspection, modification, and extension.
 
@@ -40,7 +40,7 @@ The preset format — `.xometa` JSON — is documented and stable. The parameter
 
 | | |
 |---|---|
-| **Engines** | <!-- ENGINE_COUNT -->90<!-- /ENGINE_COUNT --> distinct synthesis engines |
+| **Engines** | <!-- ENGINE_COUNT -->92<!-- /ENGINE_COUNT --> distinct synthesis engines |
 | **Coupling types** | 15 cross-engine modulation types |
 | **Factory presets** | 19,500+ across 15 mood categories |
 | **Expression** | Velocity-to-timbre in every engine; aftertouch and mod wheel on most |
@@ -100,4 +100,4 @@ https://xo-ox.org/press-kit/
 
 ---
 
-*XOceanus is free and open-source software released under the MIT license. All <!-- ENGINE_COUNT -->90<!-- /ENGINE_COUNT --> engines, all presets, and all coupling system code are included in the public release.*
+*XOceanus is free and open-source software released under the MIT license. All <!-- ENGINE_COUNT -->92<!-- /ENGINE_COUNT --> engines, all presets, and all coupling system code are included in the public release.*

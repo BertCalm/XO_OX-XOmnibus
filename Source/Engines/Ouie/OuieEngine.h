@@ -1042,7 +1042,6 @@ public:
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
-            const bool updateFilter = ((sample & 15) == 0);
             // Smooth HAMMER parameter
             smoothedHammer += (effectiveHammer - smoothedHammer) * smoothCoeff;
             smoothedHammer = flushDenormal(smoothedHammer);
@@ -1258,8 +1257,6 @@ public:
 
                 // Update filter coefficients every 16 samples (modulation still tracks;
                 // the refresh rate stays well above audible lag).
-                if (updateFilter)
-                    voice.filter.setCoefficients_fast(voiceCutoff, vi == 0 ? effectiveReso1 : effectiveReso2, srf);
 
                 voiceGains[vi] = ampLevel * voice.velocity * voice.fadeGain;
             }

@@ -4,7 +4,7 @@
 #include <cmath>
 #include <algorithm>
 #include <array>
-#include "../../DSP/Utility/FastMath.h"
+#include "../../DSP/FastMath.h"
 
 namespace xocelot
 {

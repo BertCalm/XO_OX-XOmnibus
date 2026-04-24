@@ -557,7 +557,6 @@ public:
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
-            const bool updateFilter = ((sample & 15) == 0);
             // Advance smoothed control-rate parameters (shared ParameterSmoother)
             float smoothedWTPos = smoothWTPos.process();
             float smoothedFormant = smoothFormant.process();
@@ -599,7 +598,7 @@ public:
 
                 // --- LFO modulation ---
                 float lfo1Val = voice.lfo1.process() * pLfo1Depth;
-                float lfo2Val = voice.lfo2.process() * pLfo2Depth;
+                [[maybe_unused]] float lfo2Val = voice.lfo2.process() * pLfo2Depth;
 
                 // =====================================================
                 // 1. POD DIALECT — Wavetable + Formant
@@ -697,13 +696,6 @@ public:
                 // per-sample update when LFO2 depth is zero — coefficients were already
                 // set correctly in the per-block update above.
                 if (pLfo2Depth > 0.001f)
-                if (updateFilter)
-                {
-                    float baseCutoff = clamp(effectiveCutoff + pVelCutoffAmt * voice.velocity * kVelCutoffMaxHz,
-                                             20.0f, 20000.0f);
-                    float lfo2Cutoff = clamp(baseCutoff + lfo2Val * 2000.0f, 20.0f, 20000.0f);
-                    voice.mainFilter.setCoefficients(lfo2Cutoff, effectiveReso, srf);
-                }
                 voiceSignal = voice.mainFilter.processSample(voiceSignal);
 
                 // --- AudioToRing coupling: amplitude modulation by coupling source ---

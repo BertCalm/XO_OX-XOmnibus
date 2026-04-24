@@ -561,7 +561,7 @@ public:
             {
                 if (!voice.active) continue;
 
-                // ---- LFO (D002/D005) — setRate/setShape hoisted to updateFilter gate ----
+                // ---- LFO (D002/D005) ----
                 if (updateFilter)
                 {
                     voice.lfo.setRate(paramLfoRate, currentSampleRate);
@@ -674,6 +674,7 @@ public:
                         float oxideDepth = effectiveOxideVoice * (1.0f + normDist * 0.5f);
                         if (updateFilter)
                         {
+                            // setMode(LowPass) omitted here — set once in reset() / doNoteOn()
                             float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
                             oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
                             voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
@@ -749,8 +750,6 @@ public:
                 outSampleR = flushDenormal(outSampleR);
 
                 // ---- Amplitude envelope × velocity ----
-                // D001: velocity shapes brightness via velFilterMod (already baked into
-                // write gain in PASS 2; envelope controls release shape here)
                 float envGain = ampLevel * voice.crossfadeGain;
                 outSampleL *= envGain;
                 outSampleR *= envGain;
@@ -788,8 +787,6 @@ public:
 
         // Feed silence gate
         analyzeForSilenceGate(buffer, numSamples);
-    }
-
     } // end renderBlock
 
     //==========================================================================

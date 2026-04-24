@@ -1051,7 +1051,7 @@ public:
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
-        if (inverseSampleRate == 0.0) return;
+        if (cachedSampleRate == 0.0) return;
         juce::ScopedNoDenormals noDenormals;
         EngineProfiler::ScopedMeasurement measurement(profiler);
 

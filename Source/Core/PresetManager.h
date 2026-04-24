@@ -95,6 +95,8 @@ inline const juce::StringArray validEngineNames{
     "Obiont",
     // Age-based corrosion synthesis
     "Oxidize",
+    // NLS Soliton Synthesis (formerly Oneiric; renamed 2026-04-22)
+    "Onda",
     // Legacy aliases (kept for backward preset compatibility)
     "XOddCouple", "XOverdub", "XOdyssey", "XOblong", "XOblongBob", "XObese", "XOnset", "XOrbital", "XOrganon",
     "XOuroboros", "XOpal", "XOpossum", "XOverbite", "XObsidian", "XOrigami", "XOracle", "XObscura", "XOceanic",
@@ -143,6 +145,9 @@ inline juce::String resolveEngineAlias(const juce::String& name)
         // Phase 4 engine aliases
         {"XOverlap", "Overlap"},
         {"XOutwit", "Outwit"},
+        // Engine rename alias (2026-04-22): Oneiric → Onda
+        // fXOneiric Master FX retains its name; only the engine ID changed.
+        {"Oneiric", "Onda"},
     };
     auto it = aliases.find(name);
     return (it != aliases.end()) ? it->second : name;
@@ -273,6 +278,11 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Oobleck", "oobl_"},
         // Fluid Dynamics Synthesis
         {"Ooze", "ooze_"},
+        // NLS Soliton Synthesis (engine #90; renamed from Oneiric 2026-04-22)
+        // Prefix stays oner_ — frozen for preset compatibility.
+        {"Onda", "oner_"},
+        // Wave-Terrain Synthesis
+        {"Outcrop", "outc_"},
     };
     auto it = prefixes.find(engineId);
     return (it != prefixes.end()) ? it->second : juce::String();

@@ -772,6 +772,7 @@ public:
                 float shimmerOffset = pShimmerHz * shimmerMod;                      // 0 to shimmerHz
                 // Apply as additive Hz offset (Balinese: beat rate in Hz, not cents)
                 // shimmerOffset adds fixed-Hz shimmer; applied in body resonance below
+                float freqWithShimmer = freq + shimmerOffset;    // fundamental only — see F4 below
                 float excitation = voice.exciter.process();
 
                 // CPU-optimized sympathetic resonance: use precomputed sparse table
@@ -805,7 +806,7 @@ public:
                     // F4: shimmer applied only to mode 0 (fundamental pair detuning).
                     //     Upper modes use clean `freq` × ratio — Balinese ombak is a
                     //     fixed Hz offset between two bars, not a per-mode detuning.
-                    float modeFreq = (m == 0 ? freq + shimmerOffset : freq) * ratio;
+                    float modeFreq = (m == 0 ? freqWithShimmer : freq) * ratio;
 
                     // Q: material-dependent base + mode-dependent falloff
                     float baseQ = 80.0f + voiceMatNow * 1420.0f;
