@@ -375,9 +375,8 @@ public:
         const float macroCoupling = (pMacroCoupling != nullptr) ? pMacroCoupling->load() : 0.0f;
         const float macroSpace = (pMacroSpace != nullptr) ? pMacroSpace->load() : 0.0f;
 
-        // Coupling send offset from M3 COUPLING — used downstream by the coupling bus
-        const float effCouplingLevel = std::max(0.0f, std::min(1.0f, macroCoupling * 0.5f));
-        (void)effCouplingLevel; // suppress warning until coupling bus routing is wired
+        // COUPLING scales the outgoing send level (unity at default 0.5 via ×2; 0→mute, 1→double)
+        const float effCouplingLevel = std::max(0.0f, std::min(1.0f, macroCoupling * 2.0f));
 
         // M1 DART: sharper transient (+40% snap), shorter decay (-30% time)
         // The neon tetra's fastest dart — maximum attack, minimum hang time
@@ -788,11 +787,11 @@ public:
                 buffer.addSample(0, sampleIndex, (finalLeft + finalRight) * 0.5f);
             }
 
-            // ---- Cache output for coupling reads ----------------------------
+            // ---- Cache output for coupling reads (scaled by M3 COUPLING macro) -----
             if (sampleIndex < static_cast<int>(outputCacheLeft.size()))
             {
-                outputCacheLeft[static_cast<size_t>(sampleIndex)] = finalLeft;
-                outputCacheRight[static_cast<size_t>(sampleIndex)] = finalRight;
+                outputCacheLeft[static_cast<size_t>(sampleIndex)] = finalLeft * effCouplingLevel;
+                outputCacheRight[static_cast<size_t>(sampleIndex)] = finalRight * effCouplingLevel;
             }
         }
 
