@@ -22,9 +22,11 @@ public:
             const char* id;
             const char* label;
         };
-        // Short display labels (fit compact header); tooltips/a11y retain full names.
+        // Display labels — spelled out (#1175). "COUP" was genuinely
+        // ambiguous; "CHAR" read as CHARM as often as CHARACTER. Tooltips
+        // and a11y descriptions retain the long names below.
         static constexpr Def defs[4] = {
-            {"macro1", "CHAR"}, {"macro2", "MOVE"}, {"macro3", "COUP"}, {"macro4", "SPACE"}};
+            {"macro1", "CHARACTER"}, {"macro2", "MOVE"}, {"macro3", "COUPLE"}, {"macro4", "SPACE"}};
         static constexpr const char* tooltipLabels[4] = {"CHARACTER", "MOVEMENT", "COUPLING", "SPACE"};
         for (int i = 0; i < 4; ++i)
         {
@@ -127,7 +129,7 @@ public:
     // Short display names are used to fit the compact header layout.
     void setLabels(const juce::StringArray& labels)
     {
-        static const char* defaults[4] = {"CHAR", "MOVE", "COUP", "SPACE"};
+        static const char* defaults[4] = {"CHARACTER", "MOVE", "COUPLE", "SPACE"};
         for (int i = 0; i < 4; ++i)
         {
             auto text = (i < labels.size() && labels[i].isNotEmpty()) ? labels[i] : juce::String(defaults[i]);

@@ -436,7 +436,10 @@ public:
                 // Left-align knobs (matches mockup)
                 float kx = content.getX();
 
-                static const char* kLabels[4] = {"CHAR", "MOVE", "COUP", "SPC"};
+                // Spelled-out macro labels (#1175). The 40px arc holds the
+                // longer words at 10pt Inter; the previous "COUP" / "SPC"
+                // abbreviations were genuinely ambiguous.
+                static const char* kLabels[4] = {"CHARACTER", "MOVE", "COUPLE", "SPACE"};
 
                 for (int k = 0; k < 4; ++k)
                 {
