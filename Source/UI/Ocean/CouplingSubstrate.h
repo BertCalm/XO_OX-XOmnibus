@@ -519,12 +519,41 @@ public:
     }
 
     //==========================================================================
+    void resized() override
+    {
+        const int w = getWidth();
+        const int h = getHeight();
+        if (w > 0 && h > 0)
+        {
+            chainGeoCache_ = juce::Image(juce::Image::ARGB, w, h, true);
+            rebuildPaths();  // re-render geometry into the new image
+        }
+        else
+        {
+            chainGeoCache_ = juce::Image();
+        }
+    }
+
+    //==========================================================================
     void paint(juce::Graphics& g) override
     {
         if (routeStates_.empty() && !chainInProgress_)
             return;
 
         const juce::Colour xoGold = juce::Colour(GalleryColors::xoGold);
+
+        // ── Blit the pre-rendered static geometry cache ───────────────────
+        // chainGeoCache_ holds Bézier paths + link dots rendered at full
+        // opacity in rebuildPaths().  We composite it here at a normalised
+        // alpha so the 30 Hz tick does not re-stroke unchanged geometry.
+        // Animated overlays (outer glow, particles, knots) are drawn live
+        // on top in the per-route loop below.
+        const bool useCachedGeo = chainGeoCache_.isValid()
+                                  && chainGeoCache_.getWidth()  == getWidth()
+                                  && chainGeoCache_.getHeight() == getHeight()
+                                  && !routeStates_.empty();
+        if (useCachedGeo)
+            g.drawImageAt(chainGeoCache_, 0, 0);
 
         for (int routeIdx = 0; routeIdx < static_cast<int>(routeStates_.size()); ++routeIdx)
         {
@@ -549,6 +578,7 @@ public:
             // 2. Compute pulse alpha — sinusoidal pulse in [kGlowAlphaMin, kGlowAlphaBase],
             //    then scaled up by age (glow intensifies for mature connections).
             //    For fading routes, multiply by fadeAlpha_ so they dissolve smoothly.
+            //    Active routes get a minimum floor of 0.25 so chains are always visible.
             const float agePeakAlpha  = kGlowAlphaBase
                 + age * (kGlowAlphaBase * kMaxAgeGlowScale - kGlowAlphaBase);
             const float ageMinAlpha   = kGlowAlphaMin
@@ -559,8 +589,11 @@ public:
 
             if (rs.isFading_)
                 alpha *= rs.fadeAlpha_;
+            else
+                alpha = juce::jmax(0.25f, alpha);   // ← always-visible floor for active routes
 
-            // 3. Outer glow pass — 2× stroke width, very low alpha.
+            // 3. Outer glow pass (animated) — 2× stroke width, very low alpha.
+            //    Always drawn live because it pulses with pulsePhase.
             {
                 juce::PathStrokeType glowStroke(strokeWidth * 2.0f,
                                                 juce::PathStrokeType::curved,
@@ -569,29 +602,30 @@ public:
                 g.strokePath(rs.path, glowStroke);
             }
 
-            // 4. Core line pass — computed stroke width, full pulse alpha.
+            // 4. Core line + link dots — only when the geometry cache is not
+            //    available (normal case: these are pre-baked into chainGeoCache_).
+            if (!useCachedGeo)
             {
                 juce::PathStrokeType coreStroke(strokeWidth,
                                                 juce::PathStrokeType::curved,
                                                 juce::PathStrokeType::rounded);
                 g.setColour(baseColour.withAlpha(alpha));
                 g.strokePath(rs.path, coreStroke);
-            }
 
-            // 4b. Static chain-link dots (FIX 19) — decorative dots along the chain.
-            //     Skipped for fading routes to avoid visual noise during fade-out.
-            if (!rs.isFading_ && !rs.path.isEmpty())
-            {
-                static constexpr float kLinkDotTs[] = { 0.12f, 0.26f, 0.40f, 0.54f, 0.68f, 0.82f };
-                const float pathLen = rs.path.getLength();
-                if (pathLen > 0.0f)
+                // 4b. Static chain-link dots (FIX 19).
+                if (!rs.isFading_ && !rs.path.isEmpty())
                 {
-                    for (float lt : kLinkDotTs)
+                    static constexpr float kLinkDotTs[] = { 0.12f, 0.26f, 0.40f, 0.54f, 0.68f, 0.82f };
+                    const float pathLen = rs.path.getLength();
+                    if (pathLen > 0.0f)
                     {
-                        if (std::abs(lt - 0.5f) < 0.1f) continue; // skip knot zone
-                        const auto dotPt = rs.path.getPointAlongPath(lt * pathLen);
-                        g.setColour(baseColour.withAlpha(alpha * 0.45f));
-                        g.fillEllipse(dotPt.x - 2.5f, dotPt.y - 2.5f, 5.0f, 5.0f);
+                        for (float lt : kLinkDotTs)
+                        {
+                            if (std::abs(lt - 0.5f) < 0.1f) continue; // skip knot zone
+                            const auto dotPt = rs.path.getPointAlongPath(lt * pathLen);
+                            g.setColour(baseColour.withAlpha(alpha * 0.45f));
+                            g.fillEllipse(dotPt.x - 2.5f, dotPt.y - 2.5f, 5.0f, 5.0f);
+                        }
                     }
                 }
             }
@@ -921,6 +955,62 @@ private:
             const float wobble = std::sin(wobbleTime_ * 0.4f) * 1.5f;
             rs.path    = buildBezierPath(from, to, rs.bowSign, rs.control, wobble);
         }
+
+        // ── Bake static geometry into chainGeoCache_ ──────────────────────
+        // Render the Bézier core lines and chain-link dots for all active
+        // (non-fading) routes into the off-screen image so paint() can blit
+        // rather than re-stroke the paths on every 30 Hz tick.  The image is
+        // cleared to transparent before each bake so stale routes are removed.
+        const int w = chainGeoCache_.isValid() ? chainGeoCache_.getWidth()  : 0;
+        const int h = chainGeoCache_.isValid() ? chainGeoCache_.getHeight() : 0;
+        if (w > 0 && h > 0)
+        {
+            chainGeoCache_.clear(chainGeoCache_.getBounds(), juce::Colour(0x00000000));
+            juce::Graphics cg(chainGeoCache_);
+            const juce::Colour xoGoldCache = juce::Colour(GalleryColors::xoGold);
+
+            for (const auto& rs : routeStates_)
+            {
+                if (rs.path.isEmpty()) continue;
+
+                const float age = rs.couplingAge_;
+                const juce::Colour baseColour =
+                    colourForType(rs.route.type).interpolatedWith(xoGoldCache, age);
+
+                const float amount      = juce::jlimit(0.0f, 1.0f, rs.route.amount);
+                const float baseStroke  = kMinStroke + amount * (kMaxStroke - kMinStroke);
+                const float ageScale    = 1.0f + age * (kMaxAgeStrokeScale - 1.0f);
+                const float strokeWidth = baseStroke * ageScale;
+
+                // Core line at the guaranteed visibility floor alpha.
+                // The pulse overlay (outer glow) is drawn live in paint() on top.
+                constexpr float kCacheAlpha = 0.35f;  // slightly below kGlowAlphaMin so pulse adds to it
+                {
+                    juce::PathStrokeType coreStroke(strokeWidth,
+                                                    juce::PathStrokeType::curved,
+                                                    juce::PathStrokeType::rounded);
+                    cg.setColour(baseColour.withAlpha(kCacheAlpha));
+                    cg.strokePath(rs.path, coreStroke);
+                }
+
+                // Chain-link dots — skipped for fading routes.
+                if (!rs.isFading_)
+                {
+                    static constexpr float kLinkDotTs[] = { 0.12f, 0.26f, 0.40f, 0.54f, 0.68f, 0.82f };
+                    const float pathLen = rs.path.getLength();
+                    if (pathLen > 0.0f)
+                    {
+                        for (float lt : kLinkDotTs)
+                        {
+                            if (std::abs(lt - 0.5f) < 0.1f) continue; // skip knot zone
+                            const auto dotPt = rs.path.getPointAlongPath(lt * pathLen);
+                            cg.setColour(baseColour.withAlpha(kCacheAlpha * 0.45f));
+                            cg.fillEllipse(dotPt.x - 2.5f, dotPt.y - 2.5f, 5.0f, 5.0f);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     //==========================================================================
@@ -1012,6 +1102,14 @@ private:
 
     // Wobble time for animated chain bow (FIX 18)
     float wobbleTime_ = 0.0f;
+
+    /** Cached image of static chain geometry (Bézier paths + chain-link dots).
+        Pre-rendered once in rebuildPaths() and blitted in paint() so the
+        30 Hz timer tick does not re-stroke unchanged paths.  Animated overlays
+        (outer glow pulse, particles, knots) are still drawn live on top.
+        Rebuilt whenever setRoutes() triggers rebuildPaths(), and resized to
+        match the component bounds in resized(). */
+    juce::Image chainGeoCache_;
 
     //==========================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(CouplingSubstrate)
