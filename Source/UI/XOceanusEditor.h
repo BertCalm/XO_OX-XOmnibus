@@ -628,6 +628,11 @@ public:
         const int initialHeight = playSurface_.isVisible()
                                       ? 700 + ColumnLayoutManager::kPlaySurfaceH
                                       : 700;
+        // #1167: setResizeLimits() must precede setSize() so JUCE clamps the
+        // initial size against the limits on construction.
+        setResizable(true, true);
+        // PlaySurface adds 264pt when expanded; max height allows for both states.
+        setResizeLimits(960, 600, 1600, 1000 + ColumnLayoutManager::kPlaySurfaceH);
         setSize(1100, initialHeight);
 
         // ── Column C Sidebar: wire PresetManager AFTER setSize() so sidebar
@@ -693,9 +698,6 @@ public:
             }
         }
 
-        setResizable(true, true);
-        // PlaySurface adds 264pt when expanded; max height allows for both states.
-        setResizeLimits(960, 600, 1600, 1000 + ColumnLayoutManager::kPlaySurfaceH);
         setWantsKeyboardFocus(true);
         setTitle("XOceanus Synthesizer");
         setDescription("Multi-engine synthesizer with cross-engine coupling. "

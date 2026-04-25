@@ -470,7 +470,7 @@ public:
     }
 
     //==========================================================================
-    // drawTooltip — JetBrains Mono 9px, raised background, 2-layer shadow
+    // drawTooltip — Inter/label 10pt, raised background, 2-layer shadow (#1169)
     void drawTooltip(juce::Graphics& g, const juce::String& text, int width, int height) override
     {
         using namespace GalleryColors;
@@ -488,9 +488,9 @@ public:
         g.setColour(borderMd());
         g.drawRoundedRectangle(bounds, 4.0f, 1.0f);
 
-        // Text — JetBrains Mono 10pt (#885: 9pt→10pt legibility floor)
+        // Text — Inter/label 10pt (#1169: tooltip prose uses label font, not JetBrains Mono)
         g.setColour(juce::Colour(t1()));
-        g.setFont(GalleryFonts::value(10.0f));
+        g.setFont(GalleryFonts::label(10.0f));
         {
             auto tooltipBounds = bounds.reduced(8, 4);
             auto displayText = GalleryUtils::ellipsizeText(g.getCurrentFont(), text, (float)tooltipBounds.getWidth());
