@@ -146,7 +146,8 @@ struct ObeliskHammer
         // Stone alpha 3.5-4.0 means even soft hits are brighter than felt piano
         float malletCutoff = baseFreq * (3.0f + hardness * 17.0f); // 3x to 20x fundamental
         float fc = std::min(malletCutoff, sampleRate * 0.49f);
-        malletLPCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * fc / sampleRate);
+        // FIX(perf): std::exp → fastExp for mallet LP coefficient on audio thread
+        malletLPCoeff = 1.0f - fastExp(-2.0f * 3.14159265f * fc / sampleRate);
         malletFilterState = 0.0f;
     }
 
@@ -211,10 +212,11 @@ struct ObeliskMode
             freqHz = 10.0f;
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max(q, 1.0f);
-        float r = std::exp(-3.14159265f * bw / sampleRate);
-        a1 = 2.0f * r * std::cos(w);
+        // FIX(perf): std::exp/cos/sin → fast variants (matched-Z resonator coefficients)
+        float r = fastExp(-3.14159265f * bw / sampleRate);
+        a1 = 2.0f * r * fastCos(w);
         a2 = r * r;
-        b0 = (1.0f - r * r) * std::sin(w);
+        b0 = (1.0f - r * r) * fastSin(w);
         freq = freqHz;
     }
 
@@ -292,7 +294,8 @@ struct ObeliskPreparation
         // A preparation at position P on a string affects mode N proportionally to
         // sin^2(N * pi * P) — the mode shape amplitude at the contact point.
         float modeNum = static_cast<float>(modeIndex + 1);
-        float positionSensitivity = std::sin(modeNum * 3.14159265f * position);
+        // FIX(perf): std::sin → fastSin for position sensitivity (called during coeff recompute)
+        float positionSensitivity = fastSin(modeNum * 3.14159265f * position);
         positionSensitivity *= positionSensitivity; // square for amplitude (not displacement)
 
         float effectiveDepth = depth * positionSensitivity;
@@ -436,7 +439,8 @@ struct ObeliskBoltRattle
 {
     float process(float input, float amount, float modeFreq) noexcept
     {
-        if (amount < 0.001f)
+        // FIX(stability): guard against sr=0 sentinel (div-by-zero before prepare() is called)
+        if (amount < 0.001f || sr <= 0.0f)
             return input;
 
         // Rattle frequency: related to mode frequency but offset
@@ -506,7 +510,6 @@ struct ObeliskVoice
         velocity = 0.0f;
         ampLevel = 0.0f;
         isReleasing = false;
-        releaseCoeff = 0.0f;
         glide.reset();
         hammer.reset();
         chainBuzz.reset();
@@ -540,9 +543,8 @@ struct ObeliskVoice
     std::array<float, kNumModes> cachedModeQs{};
     bool modeCoeffsDirty = true;
 
-    // Release state for smooth noteOff ramp
+    // Release state for smooth noteOff ramp (kReleaseCoeff is computed per-block in renderBlock)
     bool isReleasing = false;
-    float releaseCoeff = 0.0f;
 };
 
 //==============================================================================
@@ -565,7 +567,7 @@ class ObeliskEngine : public SynthEngine
 {
 public:
     static constexpr int kMaxVoices = 8;
-    static constexpr float kPruneThreshold = 1e-6f; // -120 dB dynamic mode pruning
+    static constexpr float kPruneThreshold = 1e-6f; // -120 dB dynamic mode pruning (comment fix: was labelled -60 dB)
 
     juce::String getEngineId() const override { return "Obelisk"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFF4A4A4A); } // FIX(D3/params): Obsidian Slate #4A4A4A — was 0xFFFFFFF0 (near-white, wrong)
@@ -590,6 +592,10 @@ public:
             voices[i].ampEnv.prepare(srf);
             voices[i].hfNoiseSVF.setMode(CytomicSVF::Mode::BandPass);
             voices[i].hfNoiseSVF.setCoefficients(6000.0f, 0.3f, srf);
+            // FIX(stability): initialize voice SVF mode at prepare time so first-block render
+            // does not call processSample() with an uninitialized filter state
+            voices[i].svf.setMode(CytomicSVF::Mode::LowPass);
+            voices[i].svf.setCoefficients(6000.0f, 0.3f, srf);
 
             // Per-voice thermal personality from seeded PRNG
             uint32_t seed = static_cast<uint32_t>(i * 7919 + 73);
@@ -607,7 +613,8 @@ public:
         smoothDamping.prepare(srf);
 
         // Thermal drift time constant: 0.5 seconds, sample-rate scaled
-        thermalCoeff = 1.0f - std::exp(-1.0f / (0.5f * srf));
+        // FIX(perf): std::exp → fastExp (consistent with fleet pattern)
+        thermalCoeff = 1.0f - fastExp(-1.0f / (0.5f * srf));
 
         prepareSilenceGate(sr, maxBlockSize, 500.0f); // piano sustain tail
     }
@@ -623,6 +630,16 @@ public:
         aftertouchAmount = 0.0f;
         thermalState = 0.0f;
         thermalTarget = 0.0f;
+        // FIX(P14/stability): reset thermal timer + PRNG so re-prepare starts from a known state
+        thermalTimer = 0;
+        thermalNoiseState = 71711u;
+        // FIX(P14/stability): zero coupling accumulators — stale values persist across plugin resets
+        couplingFilterMod = 0.0f;
+        couplingPitchMod = 0.0f;
+        couplingPrepMod = 0.0f;
+        // FIX(P14/stability): zero coupling cache — getSampleForCoupling() returns stale values otherwise
+        couplingCacheL = 0.0f;
+        couplingCacheR = 0.0f;
     }
 
     float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
@@ -717,8 +734,9 @@ public:
         // D004: macroCoupling now modulates effectivePrepDepth.
         float effectivePrepDepth =
             std::clamp(pPrepDepth + macroPrep * 0.6f + macroCoupling * 0.4f + couplingPrepMod, 0.0f, 1.0f);
+        // FIX(P17/sound): hardcoded 20000Hz Nyquist → srf * 0.49f (correct at 48/96 kHz)
         float effectiveBright = std::clamp(
-            pBrightness + macroStone * 3000.0f + aftertouchAmount * 2000.0f + couplingFilterMod, 200.0f, 20000.0f);
+            pBrightness + macroStone * 3000.0f + aftertouchAmount * 2000.0f + couplingFilterMod, 200.0f, srf * 0.49f);
         // D006: mod wheel → stone tone (cold ↔ warm axis)
         float effectiveStoneTone = std::clamp(pStoneTone + modWheelAmount * 0.5f, 0.0f, 1.0f);
         // SPACE macro → HF noise amount (more space = more air and transient dust in the attack).
@@ -757,7 +775,8 @@ public:
         // Falls back to pDecay*0.25 if param not yet attached (belt-and-suspenders).
         const float pRelease = loadP(paramRelease, -1.0f);
         const float kReleaseSec = (pRelease >= 0.0f) ? pRelease : std::clamp(pDecay * 0.25f, 0.01f, 3.0f);
-        const float kReleaseCoeff = std::exp(-1.0f / (std::max(kReleaseSec, 0.001f) * srf));
+        // FIX(perf): std::exp → fastExp for per-block release coefficient computation
+        const float kReleaseCoeff = fastExp(-1.0f / (std::max(kReleaseSec, 0.001f) * srf));
 
         // Thermal drift — slow tuning drift (stone is temperature-sensitive for Q, not pitch)
         thermalTimer++;
@@ -841,7 +860,7 @@ public:
 
             // Per-sample decay coefficient: damping smoothly modulates decay time so the
             // Damping knob produces click-free, sample-accurate amplitude shortening.
-            // Cost: one std::exp per sample (not per voice) — acceptable vs. 8×kNumModes resonators.
+            // Cost: one fastExp per sample (not per voice) — acceptable vs. 8×kNumModes resonators.
             float decayTimeNow = std::max(pDecay * (1.0f - dampNow * 0.8f), 0.01f);
             float decayCoeffNow = fastExp(-1.0f / (decayTimeNow * srf));
 
@@ -1019,13 +1038,18 @@ public:
 
                 // Filter envelope + LFO1 → brightness (env ticked per-sample)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
-                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, 20000.0f);
+                // FIX(P17/sound): hardcoded 20000Hz Nyquist → srf * 0.49f
+                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 2000.0f, 200.0f, srf * 0.49f);
                 // setMode hoisted to pre-block loop (P19 fix).
                 // FIX(D1/perf): use setCoefficients_fast (fastTan approximation) for per-sample
                 // cutoff modulation — avoids the more expensive setCoefficients path.
                 voice.svf.setCoefficients_fast(cutoff, 0.3f, srf); // low resonance — stone is not resonant in the filter sense
                 float filtered = voice.svf.processSample(resonanceSum);
 
+                // FIX(P8/sound): softClip before final gain — 16 resonators + chain buzz + HF noise
+                // can constructively sum above ±1.0 before ampLevel scaling; clip early to prevent
+                // inter-voice accumulation from spiking the bus.
+                filtered = softClip(filtered);
                 float output = filtered * voice.ampLevel * ampEnvVal;
 
                 mixL += output * voice.panL;
@@ -1061,7 +1085,8 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        // FIX(P4/perf): std::pow → fastPow2 for MIDI→Hz on audio thread
+        float freq = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
 
         // FIX(P27): capture idle state BEFORE setting active — used for LFO reset guard below.
         const bool wasIdle = !v.active;
@@ -1120,8 +1145,9 @@ public:
         float pan = (static_cast<float>(note) - 60.0f) / 48.0f; // center C = center, spread by pitch
         pan = std::clamp(pan * 0.6f, -0.8f, 0.8f);              // limit spread
         float panAngle = (pan + 1.0f) * 0.5f * 1.5707963f;      // [0, pi/2]
-        v.panL = std::cos(panAngle);
-        v.panR = std::sin(panAngle);
+        // FIX(perf): std::cos/sin → fastCos/fastSin for pan computation on audio thread
+        v.panL = fastCos(panAngle);
+        v.panR = fastSin(panAngle);
 
         // FIX(P27/sound): Only reset LFOs if voice slot was idle before this noteOn.
         // Previously LFOs reset on every noteOn — a chord replay caused all modulations to jump
@@ -1140,11 +1166,14 @@ public:
         {
             if (v.active && v.currentNote == note)
             {
-                // Stone release: smooth 5ms exponential ramp — no abrupt cut.
-                // The per-sample render loop uses kReleaseCoeff (= exp(-1/(0.005*sr)))
-                // to decay ampLevel smoothly, preventing the click from a hard amplitude cut.
+                // Stone release: ampLevel decays via kReleaseCoeff (obel_release param, default 500ms).
+                // FIX(F31/sound): do NOT call ampEnv.release() — ampEnv is a static 0.001/0/1.0/0.1
+                // envelope used only for attack shaping (sustain = 1.0 from the sustain phase).
+                // Calling release() caused a double-release: ampLevel decays by kReleaseCoeff AND
+                // ampEnv decays by its hardcoded 100ms release, making the obel_release param
+                // ineffective for long tails (ampEnv fades first, killing the voice at 100ms).
+                // filterEnv.release() is still correct — filter should close during noteOff.
                 v.isReleasing = true;
-                v.ampEnv.release();
                 v.filterEnv.release();
             }
         }
