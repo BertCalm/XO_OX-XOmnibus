@@ -96,6 +96,30 @@ def _get_voice_taxonomy():
         return mod.compute_slot_budget, mod.display_label, mod.rr_count
 
 # ---------------------------------------------------------------------------
+# Ghost layer Volume boost (fix D-U2, issue #1187)
+#
+# Ghost layer renders at vel=10/127 ≈ 0.079; Light layer renders at vel=38/127
+# ≈ 0.299. The perceptual gap between them is ~11.6 dB — the Ghost layer is
+# inaudible on hardware without a compensating boost.
+#
+# Decision D-U2=a: keep D1 render midpoints locked; apply a +6 dB linear gain
+# boost on the XPM <Volume> element of layer 0 (Ghost) so producers hear an
+# audible ghost note that is still softer than the Light layer in a mix.
+#
+# XPM <Volume> semantics (verified from xpn_xpm_batch_builder.py existing usage):
+#   1.0 = unity gain (all other layers use this value throughout this file)
+#   2.0 = +6 dB    (linear scale: 10^(6/20) = 1.995..., rounded to 2.0)
+#
+# The boost is intentionally rounded to 2.0 (exactly +6.02 dB) for readability
+# in the XPM file and producer-friendly round-number semantics.
+#
+# To tune: adjust GHOST_LAYER_VOLUME_BOOST_DB and regenerate.
+GHOST_LAYER_VOLUME_BOOST_DB = 6.0
+GHOST_LAYER_VOLUME_LINEAR = 10 ** (GHOST_LAYER_VOLUME_BOOST_DB / 20)  # ≈ 1.9953
+# Rounded to 2 decimal places for XPM readability (2.00 = +6.02 dB, negligible error)
+GHOST_LAYER_VOLUME_ROUNDED = round(GHOST_LAYER_VOLUME_LINEAR, 2)  # 2.0
+
+# ---------------------------------------------------------------------------
 # Constants
 # ---------------------------------------------------------------------------
 
@@ -493,6 +517,7 @@ def _active_drum_layer_xml(
     vel_end: int,
     rr_index: int = 0,
     cycle_group: int = 0,
+    volume: float = 1.0,
 ) -> str:
     """Single active sample layer for a drum program (OneShot=True, KeyTrack=False).
 
@@ -503,6 +528,8 @@ def _active_drum_layer_xml(
         vel_end: VelEnd value.
         rr_index: Round-robin variant index (0 = base, no RR tags added).
         cycle_group: CycleGroup value for round-robin grouping (velocity zone index).
+        volume: Linear gain for this layer (1.0 = unity). Pass
+            GHOST_LAYER_VOLUME_ROUNDED for the Ghost layer (+6 dB boost, fix D-U2).
     """
     sample_file = Path(sample_path).name
     sample_name = Path(sample_path).stem
@@ -517,7 +544,7 @@ def _active_drum_layer_xml(
     return (
         f'            <Layer number="{layer_num}">\n'
         f'              <Active>True</Active>\n'
-        f'              <Volume>{_fmt(1.0)}</Volume>\n'
+        f'              <Volume>{_fmt(volume)}</Volume>\n'
         f'              <Pan>{_fmt(0.5)}</Pan>\n'
         f'              <Pitch>{_fmt(0.0)}</Pitch>\n'
         f'              <TuneCoarse>0</TuneCoarse>\n'
@@ -628,6 +655,13 @@ def _instrument_block_drum_layered(
         ve = vel_end_fn(vl_idx)
         variants = layers_by_vel.get(vl_idx, [])
 
+        # D-U2 Ghost layer Volume boost (fix #1187):
+        # The Ghost zone renders at vel=10/127 ≈ 0.079, which is perceptually
+        # inaudible on hardware. A +6 dB boost (GHOST_LAYER_VOLUME_ROUNDED = 2.0)
+        # keeps ghost notes soft but reachable in a mix without changing D1
+        # render midpoints. All other layers remain at unity (1.0).
+        layer_volume = GHOST_LAYER_VOLUME_ROUNDED if vl_idx == 0 else 1.0
+
         if not variants:
             # Missing sample for this velocity zone — emit inactive placeholder
             layers_xml += (
@@ -652,6 +686,7 @@ def _instrument_block_drum_layered(
                     vel_end=ve,
                     rr_index=ri if emit_rr else 0,
                     cycle_group=vl_idx if emit_rr else 0,
+                    volume=layer_volume,
                 )
                 layer_num += 1
 
