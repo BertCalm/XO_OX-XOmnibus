@@ -158,7 +158,7 @@ public:
             lastDecay = dSec;
             // -4.6 = ln(0.01): the envelope reaches 1% of its initial value
             // after exactly dSec seconds, giving a natural exponential decay.
-            decayCoeff = 1.0f - std::exp(-4.6f / (sr * dSec));
+            decayCoeff = 1.0f - fastExp(-4.6f / (sr * dSec));
         }
     }
 
@@ -567,7 +567,9 @@ public:
         noiseEnvelopeLevel = 0.0f;
         bodyPitchSemitones = 0.0f;
         active = false;
+        clapMode = false;          // ON-03: was missing — stale clapMode could re-enter multi-burst on retrigger
         clapBurstsRemaining = 0;
+        clapSampleCounter = 0;     // ON-03: was missing — counter could skip first burst on retrigger
         noiseHPF.reset();
     }
     bool isActive() const noexcept { return active; }
@@ -777,7 +779,7 @@ public:
         // so the envelope decays to 1/e² in modulatorDecaySec, producing a faster perceived decay.
         float modulatorDecaySec = 0.005f + (1.0f - snapAmt) * 0.1f;
         modulatorEnvelopeDecayRate =
-            static_cast<float>(1.0 - std::exp(-1.0 / (sr * static_cast<double>(modulatorDecaySec) * 0.368)));
+            1.0f - fastExp(-1.0f / (static_cast<float>(sr) * modulatorDecaySec * 0.368f));
 
         // Self-feedback: 0-30% of carrier output fed back into its own phase.
         // 0.3 max prevents runaway but adds enough grit for metallic character.
@@ -1103,7 +1105,7 @@ public:
         // so the envelope decays to 1/e² in dcwDecaySec, producing a faster perceived snap.
         float dcwDecaySec = 0.01f + (1.0f - snapAmt) * 0.1f;
         dcwEnvelopeDecayRate =
-            static_cast<float>(1.0 - std::exp(-1.0 / (sr * static_cast<double>(dcwDecaySec) * 0.368)));
+            1.0f - fastExp(-1.0f / (static_cast<float>(sr) * dcwDecaySec * 0.368f));
 
         // Wave shape selector (continuous): sine / rectified / clipped zones
         waveShapePosition = toneAmt;
@@ -1166,6 +1168,8 @@ public:
     {
         phase = 0.0;
         dcwEnvelopeLevel = 0.0f;
+        dcwAmount = 0.0f;          // ON-14: was missing — stale base DCW persisted across voice reuse
+        waveShapePosition = 0.0f;  // ON-14: was missing — stale waveshape zone persisted across voice reuse
         active = false;
     }
     bool isActive() const noexcept { return active; }
@@ -1681,7 +1685,8 @@ struct OnsetVoice
         // QA I3: Reset filter state on retrigger to prevent artifacts
         voiceFilter.reset();
         // D001: velocity opens filter — harder hits are brighter
-        baseCutoff = 200.0f + tone * vel * 18000.0f;
+        // ON-07/P17: clamp to sr*0.49 so filter remains stable at 96kHz
+        baseCutoff = 200.0f + tone * vel * std::min(18000.0f, sr * 0.49f);
         // Force immediate coefficient update on trigger so the first sample is correct.
         // Reset the counter so the block-rate guard fires on the very next processSample call.
         breathBlockCounter = 0;
@@ -1747,7 +1752,7 @@ struct OnsetVoice
         if ((breathBlockCounter & 31) == 0)
         {
             float breathMod = breathingLFO.process();
-            lastBreathCutoff = clamp(baseCutoff * (1.0f + breathMod * 0.15f), 20.0f, 18000.0f);
+            lastBreathCutoff = clamp(baseCutoff * (1.0f + breathMod * 0.15f), 20.0f, sr * 0.49f); // ON-07/P17: Nyquist-relative ceiling
             // Fix 2: use per-voice Q from table (consistent with triggerVoice)
             voiceFilter.setCoefficients(lastBreathCutoff, kVoiceFilterQ[voiceIndex & 7], sr);
         }
@@ -1782,6 +1787,11 @@ struct OnsetVoice
         phaseDist.reset();
         transient.reset();
         voiceFilter.reset();
+        breathingLFO.reset();      // ON-10/P27: LFO phase not reset on choke/reset
+        breathBlockCounter = 0;    // ON-15: stale counter could delay or prematurely fire LFO update
+        baseCutoff = 1000.0f;      // ON-02: stale cutoff cached across voice reuse
+        lastBreathCutoff = 1000.0f; // ON-02: stale cached modulated cutoff across voice reuse
+        velocity = 1.0f;           // ON-02: stale velocity from previous trigger
         lastOutput = 0.0f;
     }
 
@@ -1899,6 +1909,16 @@ public:
         characterStage.reset();
         fxDelay.reset();
         fxReverb.reset();
+        masterFilter.reset();      // ON-01/ON-13: master filter state not cleared on reset
+        masterFilterR.reset();     // ON-01/ON-13: R-channel master filter state not cleared on reset
+        lastMasterCutoff = -1.0f; // ON-01: force coefficient recompute on next block after reset
+        pitchBendNorm = 0.0f;        // ON-01/P14: stale pitch bend survives plugin reset
+        modWheelAmount = 0.0f;       // ON-01/P14: stale mod wheel survives plugin reset
+        lastTriggerVelocity = 0.0f;  // ON-01/ON-11: stale velocity survives plugin reset
+        percModLevelOffset  = 0.0f; // ON-01/P14: stale mod matrix outputs survive plugin reset
+        percModPunchOffset  = 0.0f;
+        percModMutateOffset = 0.0f;
+        percModSpaceOffset  = 0.0f;
     }
 
     //-- Render ------------------------------------------------------------------
@@ -1943,7 +1963,7 @@ public:
         // M3 SPACE: wired in Phase 4 (FX rack)
 
         // M1 MACHINE: bias all blends toward circuit (0) or algorithm (1)
-        float machineBias = (mMachine - 0.5f) * 1.0f;
+        float machineBias = mMachine - 0.5f; // ON-06: removed dead * 1.0f multiply
         for (int v = 0; v < kNumVoices; ++v)
             vBlend[v] = clamp(vBlend[v] + machineBias, 0.0f, 1.0f);
 
@@ -1958,7 +1978,7 @@ public:
             mSrc.lfo1       = 0.0f;
             mSrc.lfo2       = 0.0f;
             mSrc.env        = 0.0f;
-            mSrc.velocity   = 0.0f;
+            mSrc.velocity   = lastTriggerVelocity; // ON-11: was 0.0f — velocity source now carries last hit velocity (D001/D002)
             mSrc.keyTrack   = 0.0f;
             mSrc.modWheel   = modWheelAmount;
             mSrc.aftertouch = atPressure;
@@ -2045,7 +2065,8 @@ public:
         float pLofiBits = fxLofiBits ? fxLofiBits->load() : 16.0f;
         float pLofiMix = fxLofiMix ? fxLofiMix->load() : 0.0f;
         // Precompute block-constant LoFi quantisation steps (avoids per-sample std::pow).
-        const float lofiSteps = std::pow(2.0f, pLofiBits);
+        // ON-05: use fastPow2 for consistency with fleet pattern (std::pow is slower on audio thread)
+        const float lofiSteps = fastPow2(pLofiBits);
         const float lofiInvSteps = 1.0f / lofiSteps;
 
         // M3 SPACE macro: drives reverb mix + delay feedback (percModSpaceOffset adds D002 contribution)
@@ -2055,7 +2076,9 @@ public:
 
         // QA I1: Apply master tone as LP filter on output.
         // Perf: only recompute coefficients when cutoff changes (trig in setCoefficients).
-        float masterCutoff = 200.0f + masterTone * 18000.0f;
+        // ON-07/P17: ceiling is sr*0.49 so the full-open position reaches near-Nyquist at 96kHz.
+        const float nyquistCeiling = static_cast<float>(sr) * 0.49f;
+        float masterCutoff = 200.0f + masterTone * (nyquistCeiling - 200.0f);
         if (masterCutoff != lastMasterCutoff)
         {
             lastMasterCutoff = masterCutoff;
@@ -2089,6 +2112,7 @@ public:
                     voices[3].choke();
 
                 float vel = msg.getFloatVelocity();
+                lastTriggerVelocity = vel; // ON-11: capture for D001/D002 velocity mod source
                 voices[voiceIdx].triggerVoice(
                     vel, vBlend[voiceIdx], vAlgo[voiceIdx], vPitch[voiceIdx] + pitchBendNorm * 2.0f, vDecay[voiceIdx],
                     vTone[voiceIdx], vSnap[voiceIdx], vBody[voiceIdx], vChar[voiceIdx], vEnvShape[voiceIdx]);
@@ -2392,6 +2416,7 @@ private:
     // D006: mod wheel (CC#1) — scales MUTATE macro depth
     float modWheelAmount = 0.0f;
     float pitchBendNorm = 0.0f;
+    float lastTriggerVelocity = 0.0f; // ON-11: D001/D002 — velocity source for mod matrix (was always 0.0)
 
     // D002 mod matrix — 4-slot configurable modulation routing
     ModMatrix<4> modMatrix;
