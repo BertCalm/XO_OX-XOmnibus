@@ -361,10 +361,12 @@ def _empty_layer_xml(layer_num: int = 1) -> str:
 
 
 def _active_layer_xml(sample_path: str, layer_num: int = 1,
-                      vel_start: int = 0, vel_end: int = 127) -> str:
+                      vel_start: int = 0, vel_end: int = 127,
+                      keytrack: bool = True) -> str:
     """Single active sample layer."""
     sample_file = Path(sample_path).name
     sample_name = Path(sample_path).stem
+    keytrack_str = "True" if keytrack else "False"
     return (
         f'            <Layer number="{layer_num}">\n'
         f'              <Active>True</Active>\n'
@@ -377,7 +379,7 @@ def _active_layer_xml(sample_path: str, layer_num: int = 1,
         f'              <SampleFile>{xml_escape(sample_file)}</SampleFile>\n'
         f'              <File>{xml_escape(sample_path)}</File>\n'
         f'              <RootNote>0</RootNote>\n'
-        f'              <KeyTrack>True</KeyTrack>\n'
+        f'              <KeyTrack>{keytrack_str}</KeyTrack>\n'
         f'              <OneShot>False</OneShot>\n'
         f'              <Loop>False</Loop>\n'
         f'              <LoopStart>0</LoopStart>\n'
@@ -394,8 +396,17 @@ def _active_layer_xml(sample_path: str, layer_num: int = 1,
 
 
 def _instrument_block_drum(instrument_num: int, pad_cfg: Optional[dict],
-                            choke_group: int = 0) -> str:
-    """One <Instrument> for a drum program slot."""
+                            choke_group: int = 0,
+                            keytrack: bool = False) -> str:
+    """One <Instrument> for a drum program slot.
+
+    Args:
+        instrument_num: XPM instrument slot index (0-indexed).
+        pad_cfg: Pad configuration dict, or None for empty/inactive slot.
+        choke_group: MuteGroup value (0 = no choke).
+        keytrack: KeyTrack value for active sample layers. Must be False for
+            drum programs (Bible Rule #1: drums do not transpose across keys).
+    """
     if pad_cfg is None:
         # Empty slot
         active = "False"
@@ -407,7 +418,8 @@ def _instrument_block_drum(instrument_num: int, pad_cfg: Optional[dict],
         low = high = instrument_num
         sample = pad_cfg.get("sample", "")
         layers = (
-            _active_layer_xml(sample, layer_num=1, vel_start=0, vel_end=127)
+            _active_layer_xml(sample, layer_num=1, vel_start=0, vel_end=127,
+                              keytrack=keytrack)
             if sample
             else _empty_layer_xml(1)
         )
@@ -420,6 +432,7 @@ def _instrument_block_drum(instrument_num: int, pad_cfg: Optional[dict],
     )
     note_label = f"  <!-- {xml_escape(note_name).replace('--', '- -')} -->" if note_name else ""
 
+    keytrack_str = "True" if keytrack else "False"
     return (
         f'      <Instrument number="{instrument_num}">{note_label}\n'
         f'        <Active>{active}</Active>\n'
@@ -439,7 +452,7 @@ def _instrument_block_drum(instrument_num: int, pad_cfg: Optional[dict],
         f'        <LowNote>{low}</LowNote>\n'
         f'        <HighNote>{high}</HighNote>\n'
         f'        <RootNote>0</RootNote>\n'
-        f'        <KeyTrack>True</KeyTrack>\n'
+        f'        <KeyTrack>{keytrack_str}</KeyTrack>\n'
         f'        <OneShot>True</OneShot>\n'
         f'{choke_xml}'
         f'        <Layers>\n'
@@ -493,6 +506,7 @@ def _active_drum_layer_xml(
     vel_end: int,
     rr_index: int = 0,
     cycle_group: int = 0,
+    emit_rr: bool = False,
 ) -> str:
     """Single active sample layer for a drum program (OneShot=True, KeyTrack=False).
 
@@ -501,14 +515,19 @@ def _active_drum_layer_xml(
         layer_num: XPM layer number (1-indexed).
         vel_start: VelStart value.
         vel_end: VelEnd value.
-        rr_index: Round-robin variant index (0 = base, no RR tags added).
+        rr_index: Round-robin variant index (0 = base, 1+ = RR variants).
         cycle_group: CycleGroup value for round-robin grouping (velocity zone index).
+        emit_rr: When True, emit <CycleType> and <CycleGroup> tags. Must be
+            True for ALL variants within an RR group — including rr_index=0 —
+            so MPC knows to cycle through them. Fix U5: the old guard
+            ``if rr_index > 0`` silently dropped the CycleType tag for the
+            first variant, breaking round-robin playback entirely.
     """
     sample_file = Path(sample_path).name
     sample_name = Path(sample_path).stem
 
     rr_xml = ""
-    if rr_index > 0:
+    if emit_rr:
         rr_xml = (
             f'              <CycleType>RoundRobin</CycleType>\n'
             f'              <CycleGroup>{cycle_group}</CycleGroup>\n'
@@ -643,15 +662,19 @@ def _instrument_block_drum_layered(
             layer_num += 1
         else:
             for rr_idx, (ri, file_path) in enumerate(variants):
-                # cycle_group = velocity layer index (so MPC groups RR within zone)
-                emit_rr = use_rr and ri > 0
+                # Fix U5: emit_rr must be True for ALL variants (including rr_index=0)
+                # so MPC emits <CycleType>RoundRobin</CycleType> on every layer in the
+                # group. The old guard `ri > 0` silently dropped the tag for the first
+                # variant, breaking round-robin playback entirely.
+                emit_rr = use_rr
                 layers_xml += _active_drum_layer_xml(
                     sample_path=file_path,
                     layer_num=layer_num,
                     vel_start=vs,
                     vel_end=ve,
-                    rr_index=ri if emit_rr else 0,
+                    rr_index=ri,
                     cycle_group=vl_idx if emit_rr else 0,
+                    emit_rr=emit_rr,
                 )
                 layer_num += 1
 
@@ -692,12 +715,23 @@ def _instrument_block_drum_layered(
 
 
 def _xpm_header(prog_name: str, prog_type_str: str) -> str:
+    """Emit the XPM file header up to and including the program name element.
+
+    Drum programs use <ProgramName> (canonical MPC bible skeleton).
+    Keygroup programs use <Name> (MPC convention for keygroup type).
+
+    Fix R5: Python was emitting <Name> for drums; C++ correctly uses <ProgramName>.
+    """
+    if prog_type_str == "Drum":
+        name_tag = "ProgramName"
+    else:
+        name_tag = "Name"
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n\n'
         '<MPCVObject>\n'
         f'{MPC_VERSION_BLOCK}'
         f'  <Program type="{prog_type_str}">\n'
-        f'    <Name>{xml_escape(prog_name)}</Name>\n'
+        f'    <{name_tag}>{xml_escape(prog_name)}</{name_tag}>\n'
     )
 
 
@@ -723,9 +757,11 @@ def build_drum_program(prog: dict) -> str:
         if pad_num in pad_map:
             cfg = pad_map[pad_num]
             choke = cfg.get("choke", 0)
-            instruments_xml += _instrument_block_drum(slot, cfg, choke_group=choke)
+            # Fix U6: drums must have KeyTrack=False (Bible Rule #1)
+            instruments_xml += _instrument_block_drum(slot, cfg, choke_group=choke,
+                                                       keytrack=False)
         else:
-            instruments_xml += _instrument_block_drum(slot, None)
+            instruments_xml += _instrument_block_drum(slot, None, keytrack=False)
 
     # PadNoteMap: map physical pads 1-16 to instrument indices 0-15
     pad_note_entries = "\n".join(
