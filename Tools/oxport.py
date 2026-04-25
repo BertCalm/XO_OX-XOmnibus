@@ -12,9 +12,9 @@ Pipeline stages:
   6. export            — Generate .xpm programs (drum or keygroup, per engine)
   7. cover_art         — Generate branded procedural cover art
   8. complement_chain  — Generate primary+complement XPM variant pairs (Artwork collection)
-  9. preview           — Generate 15-second preview audio for each program
+  9. preview           — Generate 30s 192kbps MP3 preview per program (bible §11; ffmpeg required)
  10. listen            — [GATE] Generate preview playlist; require human approval before packaging
- 11. package           — Package everything into a .xpn archive
+ 11. package           — Package into .xpn archive (gate: every .xpm must have valid .mp3)
 
 Human listen gate (build pipeline):
     # After render completes, build pauses at LISTEN and prints:
@@ -216,8 +216,8 @@ STAGE_DESCRIPTIONS = {
     "export":           "Generate .xpm programs (drum or keygroup)",
     "cover_art":        "Generate branded procedural cover art",
     "complement_chain": "Generate primary+complement variant XPM pairs (Artwork/Color collection)",
-    "preview":          "Generate 15-second preview audio for each program",
-    "package":          "Package into .xpn archive",
+    "preview":          "Generate 30s 192kbps MP3 preview audio for each program (bible §11)",
+    "package":          "Package into .xpn archive (validates all .xpm have matching .mp3)",
 }
 
 # Artwork/Color collection engine keys — complement_chain stage is active only for these.
@@ -941,8 +941,18 @@ def _stage_cover_art(ctx: PipelineContext) -> None:
 
 
 def _stage_package(ctx: PipelineContext) -> None:
-    """Stage 6: Package everything into a .xpn archive."""
+    """Stage 11: Package everything into a .xpn archive.
+
+    Mandatory gate (bible §11 / issue #1188): every .xpm in the bundle MUST
+    have a matching .mp3 of valid format before the ZIP is sealed.  This check
+    is performed even when --skip preview was passed so that broken preview
+    generation cannot be silently bypassed by skipping the preview stage.
+
+    Missing or invalid previews cause an immediate abort with a clear error
+    listing every offending program — the .xpn is NOT written.
+    """
     from xpn_packager import package_xpn, XPNMetadata
+    from xpn_preview_generator import validate_mp3
 
     if not ctx.xpm_paths and not ctx.dry_run:
         # Check if programs dir has any .xpm files from previous runs
@@ -950,6 +960,46 @@ def _stage_package(ctx: PipelineContext) -> None:
         if not existing:
             print("    [SKIP] No .xpm programs to package")
             return
+
+    # --- Mandatory MP3 preview gate ---
+    # Collect the XPM list that will be packaged (same logic as xpm_paths fallback above)
+    if ctx.xpm_paths:
+        xpm_list_for_gate = ctx.xpm_paths
+    elif ctx.programs_dir.exists():
+        xpm_list_for_gate = list(ctx.programs_dir.glob("*.xpm"))
+    else:
+        xpm_list_for_gate = []
+
+    if xpm_list_for_gate and not ctx.dry_run:
+        missing_mp3: list[str] = []
+        invalid_mp3: list[str] = []
+        for xpm_path in xpm_list_for_gate:
+            mp3_path = xpm_path.with_suffix(".mp3")
+            if not mp3_path.exists():
+                missing_mp3.append(xpm_path.stem)
+            elif not validate_mp3(mp3_path):
+                invalid_mp3.append(
+                    f"{xpm_path.stem} ({mp3_path.name} failed ffprobe codec check — "
+                    f"may be WAV-with-mp3-extension)"
+                )
+        errors = []
+        if missing_mp3:
+            errors.append(
+                f"Missing .mp3 previews for: {', '.join(missing_mp3)}"
+            )
+        if invalid_mp3:
+            errors.append(
+                f"Invalid .mp3 files (ffprobe codec != 'mp3'): "
+                + "; ".join(invalid_mp3)
+            )
+        if errors:
+            raise RuntimeError(
+                "Pack assembly ABORTED — bible §11 requires every .xpm to have a "
+                "matching valid .mp3 preview in the same directory.\n  "
+                + "\n  ".join(errors)
+                + "\n  Run the preview stage or fix the MP3 files before packaging."
+            )
+        print(f"    MP3 gate: all {len(xpm_list_for_gate)} program(s) have valid .mp3 previews")
 
     pack_slug = ctx.pack_name.replace(" ", "_")
     xpn_path = ctx.output_dir / f"{pack_slug}.xpn"
@@ -1215,7 +1265,24 @@ def _generate_preview_wav(wav_paths: list[Path], output_path: Path,
 
 
 def _stage_preview(ctx: PipelineContext) -> None:
-    """Stage: Generate 15-second preview audio for each XPM program."""
+    """Stage 9: Generate 30-second MP3 preview for each XPM program (bible §11).
+
+    Decision D-U6=a: Python CLI post-processor invoking system ffmpeg.
+    Each .xpm gets a matching .mp3 in the same directory (Rex's Rule #4).
+    The stage ABORTS if any preview fails — pack assembly must not run
+    without valid MP3 previews for every program.
+
+    Replaces the old WAV-concatenation approach which produced per-sample
+    snippets and wrote the wrong extension. The new path:
+      1. Pre-flight: verify ffmpeg + ffprobe are on PATH (loud failure if not)
+      2. For each XPM: call xpn_preview_generator.generate_preview_for_xpm()
+         which synthesises a musical sequence from per-pad WAVs, renders to
+         a temporary WAV, encodes to 192kbps CBR MP3 via ffmpeg, validates
+         with ffprobe, then removes the intermediate WAV.
+      3. Any failure in encode or validation raises RuntimeError → stage aborts.
+    """
+    from xpn_preview_generator import preflight_check, generate_preview_for_xpm
+
     if not ctx.xpm_paths:
         # Check for existing XPMs from a prior run
         existing = list(ctx.programs_dir.glob("*.xpm")) if ctx.programs_dir.exists() else []
@@ -1237,44 +1304,68 @@ def _stage_preview(ctx: PipelineContext) -> None:
         print("    [SKIP] No WAV directories available for preview generation")
         return
 
-    # Collect all WAV files, grouped by subdirectory slug if possible
-    all_wavs: list[Path] = []
-    for d in search_dirs:
-        all_wavs.extend(sorted(d.rglob("*.wav")))
-        all_wavs.extend(sorted(d.rglob("*.WAV")))
-
-    if not all_wavs:
-        print("    [SKIP] No WAV files found for preview generation")
-        return
-
     if ctx.dry_run:
-        print(f"    [DRY] Would generate preview WAV for {len(xpm_list)} program(s)")
+        print(f"    [DRY] Would generate MP3 previews for {len(xpm_list)} program(s)")
+        print(f"    [DRY] ffmpeg + ffprobe pre-flight would run here")
         return
+
+    # Pre-flight: fail loudly if ffmpeg/ffprobe are missing.
+    # This surfaces the error before any work is done so the user sees a
+    # clear install hint rather than a cryptic per-file failure.
+    print("    Pre-flight: checking ffmpeg + ffprobe availability...")
+    preflight_check()  # raises RuntimeError if not available
+    print("    Pre-flight: OK")
 
     n_generated = 0
+    failures: list[str] = []
+
     for xpm_path in xpm_list:
         slug = xpm_path.stem
-        preview_path = ctx.programs_dir / f"{slug}.wav"
 
-        # Try to find WAVs specific to this program slug first
-        slug_wavs = [w for w in all_wavs if slug.lower() in str(w.parent).lower()
-                     or slug.lower() in w.stem.lower()]
+        # Determine the best WAV source directory for this program.
+        # Prefer a per-program subdirectory named after the slug, then
+        # fall back to the first available search directory.
+        wavs_dir_for_xpm: Optional[Path] = None
+        for d in search_dirs:
+            slug_sub = d / slug
+            if slug_sub.is_dir() and any(slug_sub.glob("*.wav")):
+                wavs_dir_for_xpm = slug_sub
+                break
+        if wavs_dir_for_xpm is None:
+            # Use the first search dir that has any WAVs
+            for d in search_dirs:
+                wavs = list(d.rglob("*.wav")) + list(d.rglob("*.WAV"))
+                if wavs:
+                    wavs_dir_for_xpm = d
+                    break
 
-        if ctx.is_drum_engine:
-            # For drums: use first velocity layer of pads 1-4
-            candidates = slug_wavs[:4] if slug_wavs else all_wavs[:4]
-        else:
-            # For keygroups: use first 4 notes
-            candidates = slug_wavs[:4] if slug_wavs else all_wavs[:4]
+        if wavs_dir_for_xpm is None:
+            failures.append(f"{slug}: no WAV files found in {search_dirs}")
+            continue
 
-        if _generate_preview_wav(candidates, preview_path, max_duration_s=15.0, gap_s=0.5):
-            size_kb = preview_path.stat().st_size / 1024
-            print(f"      {preview_path.name}  ({size_kb:.1f} KB, {len(candidates)} clips)")
+        print(f"      {slug}.xpm → generating {slug}.mp3  (wavs: {wavs_dir_for_xpm})")
+        try:
+            mp3_path = generate_preview_for_xpm(
+                xpm_path=xpm_path,
+                wavs_dir=wavs_dir_for_xpm,
+                engine=ctx.engine,
+            )
+            size_kb = mp3_path.stat().st_size / 1024
+            print(f"      {mp3_path.name}  ({size_kb:.1f} KB)  [MP3 validated OK]")
             n_generated += 1
-        else:
-            print(f"      [WARN] Could not generate preview for {slug}")
+        except Exception as e:
+            # Do NOT silently continue — every XPM must have a valid MP3.
+            failures.append(f"{slug}: {e}")
 
-    print(f"    Generated {n_generated} preview(s)")
+    print(f"    Generated {n_generated} MP3 preview(s)")
+
+    if failures:
+        failure_list = "\n      ".join(failures)
+        raise RuntimeError(
+            f"MP3 preview generation failed for {len(failures)} program(s). "
+            f"Pack assembly aborted — bible §11 requires every .xpm to have a "
+            f"matching .mp3.\n      {failure_list}"
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -1744,9 +1835,15 @@ def _stage_failure_hint(stage: str, exc: Exception) -> str:
     if stage == "export":
         return ("XPM export failed. Ensure xpn_drum_export / xpn_keygroup_export modules "
                 "are present in Tools/ and that WAV files were produced by the expand stage.")
+    if stage == "preview":
+        return ("MP3 preview generation failed. Ensure ffmpeg and ffprobe are on PATH "
+                "(brew install ffmpeg on macOS). The preview stage requires ffmpeg with "
+                "libmp3lame support — check 'ffmpeg -codecs | grep mp3'.")
     if stage == "package":
-        return ("Packaging failed. Check that xpn_packager.py exists in Tools/ and that "
-                "at least one .xpm program was produced by the export stage.")
+        return ("Packaging failed. If the error mentions missing .mp3 previews, run the "
+                "preview stage first (bible §11 requires every .xpm to have a valid .mp3). "
+                "Otherwise check that xpn_packager.py exists in Tools/ and that at least "
+                "one .xpm program was produced by the export stage.")
     if stage == "qa":
         return ("QA check failed. Verify that WAV files exist and are valid PCM audio. "
                 "Re-run with --skip qa to bypass QA if this is a known-good render.")

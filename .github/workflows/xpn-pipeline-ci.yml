@@ -28,6 +28,10 @@ jobs:
         run: |
           pip install numpy==1.26.4
 
+      - name: Velocity parity gate (Python↔C++ zone/midpoint sync)
+        working-directory: Tools
+        run: python3 ci_check_velocity_parity.py
+
       - name: Run core tests
         working-directory: Tools
         run: python3 test_oxport_core.py
@@ -64,6 +68,7 @@ jobs:
         if: always()
         run: |
           echo "=== XPN Pipeline CI Complete ==="
+          echo "1 velocity parity gate (Python<->C++ zone sync)"
           echo "5 test suites executed"
           echo "2 dry-run pipelines validated"
           echo "Preset validation completed"
