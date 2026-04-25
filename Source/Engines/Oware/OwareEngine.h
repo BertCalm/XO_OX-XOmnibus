@@ -745,8 +745,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
-                freq *= blockBendRatio; // hoisted; pre-reset pitch coupling snapshot
+                freq *= blockBendRatio; // P29 fix: bend + coupling pitch mod, hoisted per-block; removed redundant semitonesToFreqRatio that re-applied bendSemitones
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 → brightness
                 float lfo2Val = voice.lfo2.process() * lfo2Depth; // LFO2 → material
