@@ -148,7 +148,8 @@ struct OvenModalResonator
         float bw = freqHz / std::max(q, 1.0f);
         // Clamp pole radius strictly inside the unit circle — defends against
         // marginal stability if bw ever approaches 0 due to extreme Q values.
-        float r = std::min(std::exp(-3.14159265f * bw / sampleRate), 0.9999f);
+        // Perf: fastExp replaces std::exp in the delta-guarded hot path.
+        float r = std::min(fastExp(-3.14159265f * bw / sampleRate), 0.9999f);
         cosW = fastCos(w);
         a1 = 2.0f * r * cosW;
         a2 = r * r;
@@ -215,9 +216,10 @@ struct OvenHammerModel
 
         // Spectral shaping: mallet contact lowpass
         // Soft hammer only excites fundamentals, hard hammer excites all modes
+        // Perf: fastExp replaces std::exp — called per noteOn, avoids libm call.
         float cutoffHz = baseFreq * (2.0f + effectiveHardness * 30.0f); // 2x to 32x fundamental
         cutoffHz = std::min(cutoffHz, sampleRate * 0.49f);
-        lpCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * cutoffHz / sampleRate);
+        lpCoeff = 1.0f - fastExp(-2.0f * 3.14159265f * cutoffHz / sampleRate);
         lpState = 0.0f;
 
         // Secondary micro-rebound for cast iron (slow body = gentle bounce at 20-30ms)
@@ -256,8 +258,12 @@ struct OvenHammerModel
             out += fastSin(phase * 3.14159265f) * reboundAmp;
         }
 
-        // End condition
-        if (sampleCounter >= reboundSample + contactSamples)
+        // End condition: if no rebound, deactivate after primary pulse; otherwise
+        // wait for the rebound window to close. Using reboundSample when !reboundActive
+        // would stall deactivation until an arbitrary (possibly stale) counter value.
+        if (!reboundActive && sampleCounter >= contactSamples)
+            active = false;
+        else if (reboundActive && sampleCounter >= reboundSample + contactSamples)
             active = false;
 
         ++sampleCounter;
@@ -271,7 +277,15 @@ struct OvenHammerModel
     {
         active = false;
         sampleCounter = 0;
+        contactSamples = 48;
+        peakAmplitude = 0.0f;
+        noiseMix = 0.0f;
+        noiseState = 54321u;
+        lpCoeff = 0.5f;
         lpState = 0.0f;
+        reboundActive = false;
+        reboundSample = 0; // zeroed so the end-condition can't fire prematurely on stale value
+        reboundAmp = 0.0f;
     }
 
     bool active = false;
@@ -298,7 +312,8 @@ struct OvenHFNoiseFill
     void prepare(float sampleRate) noexcept
     {
         // P21 fix: SR-derived decay coefficient (~10s half-life)
-        decayCoeff = std::exp(-1.0f / (10.0f * sampleRate));
+        // Perf: fastExp is sufficient precision for a one-time coefficient.
+        decayCoeff = fastExp(-1.0f / (10.0f * sampleRate));
         // NP-B fix: set BandPass mode once here; process() never calls setMode()
         svf.setMode(CytomicSVF::Mode::BandPass);
         lastCutoff = -1.0f;
@@ -398,6 +413,10 @@ struct OvenVoice
         velocity = 0.0f;
         ampLevel = 0.0f;
         bloomLevel = 0.0f;
+        bloomTarget = 1.0f; // safe default — avoids zero-bloom if reset() called mid-note
+        bloomCoeff = 0.0f;  // no bloom rate; noteOn() sets the real value
+        panL = 0.707f;
+        panR = 0.707f;
         sustained = false;
         noteHeld = false;
         lastFilterCutoff = -1.0f; // P19: force coeff refresh on next note
@@ -434,9 +453,8 @@ struct OvenSympatheticNetwork
     std::array<SymString, kMaxStrings> strings;
     float outputLevel = 0.0f;
 
-    void prepare(float sampleRate) noexcept
+    void prepare(float /*sampleRate*/) noexcept
     {
-        sr = sampleRate;
         for (auto& s : strings)
         {
             s.resonator.reset();
@@ -504,7 +522,6 @@ struct OvenSympatheticNetwork
         outputLevel = 0.0f;
     }
 
-    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
 };
 
 //==============================================================================
@@ -557,7 +574,8 @@ public:
         smoothBloom.prepare(srf);
 
         // Thermal drift: ~4 second time constant for cast iron's massive thermal mass
-        thermalCoeff = 1.0f - std::exp(-1.0f / (4.0f * srf));
+        // Perf: fastExp replaces std::exp — called once per prepare().
+        thermalCoeff = 1.0f - fastExp(-1.0f / (4.0f * srf));
 
         // SilenceGate: 500ms hold for piano sustain tails
         prepareSilenceGate(sr, maxBlockSize, 500.0f);
@@ -576,6 +594,17 @@ public:
         damperPedal = false;
         thermalState = 0.0f;
         thermalTarget = 0.0f;
+        thermalTimer = 0;
+        thermalNoiseState = 54321u;
+        couplingFilterMod = 0.0f;
+        couplingPitchMod = 0.0f;
+        couplingBodyMod = 0.0f;
+        couplingAmpChoke = 0.0f;
+        couplingCacheL = 0.0f;
+        couplingCacheR = 0.0f;
+        // NOTE: ParameterSmoother has no reset() — smoothers retain their last target value.
+        // This is intentional; snapTo() would require knowing current param defaults here.
+        // Smoothers will converge to correct values within ~10ms on first block after reset.
     }
 
     float getSampleForCoupling(int channel, int sampleIndex) const override
@@ -866,8 +895,10 @@ public:
                     resonanceSum += voice.modes[m].process(excitation) * modeAmp;
                 }
 
-                // Scale modal output
+                // Scale modal output; softClip before filter to prevent overflow on
+                // dense chords (8 voices * high-Q resonators can sum beyond ±1.0).
                 resonanceSum *= 0.15f;
+                resonanceSum = softClip(resonanceSum);
 
                 // HF noise fill above modal ceiling
                 float hfNoise =
@@ -886,10 +917,11 @@ public:
                 // Filter envelope: D001 velocity-scaled filter sweep.
                 float filterEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 6000.0f * voice.velocity;
                 float cutoff = std::clamp(brightNow + filterEnvMod + lfo1Val * 3000.0f, 200.0f, 16000.0f);
-                // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
+                // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz.
+                // setMode() is NOT called here — it is set once in noteOn() so this
+                // hot path only pays for setCoefficients when the cutoff actually changes.
                 if (std::fabs(cutoff - voice.lastFilterCutoff) > 1.0f)
                 {
-                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
                     voice.outputFilter.setCoefficients(cutoff, 0.15f, srf); // low resonance — piano filters are gentle
                     voice.lastFilterCutoff = cutoff;
                 }
@@ -995,11 +1027,12 @@ public:
         v.ampEnv.triggerHard();
 
         // Bloom: slow attack ramp for cast iron thermal mass metaphor
+        // Perf: fastExp replaces std::exp for bloom coefficient computation.
         if (bloomTime > 0.01f)
         {
             v.bloomLevel = 0.0f;
             v.bloomTarget = 1.0f;
-            v.bloomCoeff = 1.0f - std::exp(-1.0f / (bloomTime * 0.2f * srf));
+            v.bloomCoeff = 1.0f - fastExp(-1.0f / (bloomTime * 0.2f * srf));
         }
         else
         {
@@ -1012,6 +1045,8 @@ public:
         for (auto& m : v.modes)
             m.reset();
         v.outputFilter.reset();
+        // Hoist setMode out of the per-sample P19 guard — mode is always LowPass for this voice.
+        v.outputFilter.setMode(CytomicSVF::Mode::LowPass);
 
         // Stereo spread: distribute voices across the stereo field
         // Concert grand: lower notes left, higher notes right (player perspective)
