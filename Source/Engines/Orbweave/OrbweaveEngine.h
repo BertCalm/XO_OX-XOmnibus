@@ -93,10 +93,12 @@ struct OrbweaveFXState
         std::fill(chorusBufL.begin(), chorusBufL.end(), 0.0f);
         std::fill(chorusBufR.begin(), chorusBufR.end(), 0.0f);
         chorusWritePos = 0;
+        chorusLFOPhase = 0.0f; // OW-02: restore chorus LFO continuity on reset
         for (int i = 0; i < 4; ++i)
         {
             std::fill(reverbBuf[i].begin(), reverbBuf[i].end(), 0.0f);
             reverbFilt[i] = 0.0f;
+            reverbPos[i] = 0; // OW-01: reset reverb read/write positions on FX reset
         }
     }
 };
@@ -220,6 +222,7 @@ struct OrbweaveVoice
         pan = 0.0f;
         stealFadeGain = 0.0f;
         stealFadeStep = 0.0f;
+        startTime = 0; // OW-04: reset startTime so voice-steal ordering is correct after full reset
     }
 };
 
@@ -260,6 +263,9 @@ public:
         matrixDirty = true; // invalidate cached matrix on reset
         couplingPitchMod = 0.0f;
         couplingCutoffMod = 0.0f;
+        modWheel_ = 0.0f;    // OW-03: clear stale expression state on engine reset
+        pitchBend_ = 0.0f;   // OW-03
+        voiceCounter = 0;    // OW-09: reset voice counter to avoid uint64 wrap and ordering artifacts
     }
 
     //==========================================================================
@@ -536,11 +542,13 @@ public:
 
                 // === Filter ===
                 // Filter mode was set once per block above (blockFilterMode).
-                // setCoefficients() is called per-sample because cutoffMod varies
-                // with LFO output; mode is param-rate only.
-                float effCut = clamp(filterCutoff + cutoffMod + velTimbre, 20.0f, 20000.0f);
+                // setCoefficients_fast() is used per-sample (OW-05): all 3 filter modes
+                // (LP/HP/BP) are non-shelf, so the fast path is safe and avoids the
+                // full coefficient path's extra work.  Mode never changes mid-block.
+                // OW-06: clamp ceiling is sr*0.49f (not hardcoded 20000) for 48/96kHz users.
+                float effCut = clamp(filterCutoff + cutoffMod + velTimbre, 20.0f, sr * 0.49f);
                 float effRes = clamp(filterReso + resoMod, 0.0f, 1.0f);
-                voice.filter.setCoefficients(effCut, effRes, sr);
+                voice.filter.setCoefficients_fast(effCut, effRes, sr);
                 signal = voice.filter.processSample(signal);
 
                 // === Amp envelope ===
@@ -1073,6 +1081,11 @@ private:
         int slot = -1;
         uint64_t oldest = UINT64_MAX;
         int oldestSlot = 0;
+        // OW-07: prefer stealing a releasing voice to minimise audible clicks.
+        // Scan for a release-stage voice with the oldest startTime first; only
+        // fall back to oldest-overall if none are in release.
+        int relSlot = -1;
+        uint64_t relOldest = UINT64_MAX;
 
         if (isLegato)
         {
@@ -1093,6 +1106,13 @@ private:
                     slot = i;
                     break;
                 }
+                // OW-07: track oldest releasing voice separately
+                if (voices[i].ampEnv.getStage() == StandardADSR::Stage::Release
+                    && voices[i].startTime < relOldest)
+                {
+                    relOldest = voices[i].startTime;
+                    relSlot   = i;
+                }
                 if (voices[i].startTime < oldest)
                 {
                     oldest = voices[i].startTime;
@@ -1100,7 +1120,7 @@ private:
                 }
             }
             if (slot < 0)
-                slot = oldestSlot;
+                slot = (relSlot >= 0) ? relSlot : oldestSlot; // OW-07: releasing preferred
         }
 
         auto& v = voices[slot];

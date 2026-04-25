@@ -230,6 +230,13 @@ struct OctoVoice
     // Per-voice RNG for drift
     uint32_t driftRng = 0u;
 
+    // OCT-04 P19: delta-guards for block-rate filter coefficient updates
+    float lastSuckerFreq = -1.0f;
+    float lastSuckerReso = -1.0f;
+
+    // OCT-14: delta-guard for per-block ink cloud decay updates
+    float lastInkDecay = -1.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -237,12 +244,17 @@ struct OctoVoice
         velocity = 0.0f;
         currentFreq = 440.0f;
         targetFreq = 440.0f;
+        glideCoeff = 1.0f;          // OCT-06 P14: glideCoeff was not reset
+        driftRng = 0u;              // OCT-06 P14: driftRng was not reset
         fadeGain = 1.0f;
         fadingOut = false;
         microtonalOffset = 0.0f;
         pitchDriftPhase = 0.0f;
         envFollower = 0.0f;
         inkTriggered = false;
+        lastSuckerFreq = -1.0f;     // OCT-04: force coefficient refresh on next block
+        lastSuckerReso = -1.0f;
+        lastInkDecay = -1.0f;       // OCT-14: force ink decay refresh on next block
         ampEnv.reset();
         modEnv.reset();
         suckerEnv.reset();
@@ -345,6 +357,11 @@ public:
         couplingArmRateMod = 0.0f;
         couplingRingModSrc = 0.0f;
         couplingPitchMod = 0.0f;
+
+        // OCT-07 P14: mod wheel and pitch bend state were not cleared on reset,
+        // causing stale expression values to persist across stop/start cycles.
+        modWheelAmount_ = 0.0f;
+        pitchBendNorm = 0.0f;
 
         smoothedWTPos = 0.0f;
         smoothedChromaDepth = 0.0f;
@@ -471,7 +488,7 @@ public:
         float effectiveChromaDepth =
             clamp(pChromaDepth + macroCoup * 0.4f + couplingChromaMod + modWheelAmount_ * 0.4f, 0.0f, 1.0f);
         float effectiveWTPos = clamp(pWTPos + couplingWTPosMod + macroMove * 0.2f, 0.0f, 1.0f);
-        float effectiveCutoff = clamp(pCutoff + macroChar * 4000.0f, 20.0f, 20000.0f);
+        float effectiveCutoff = clamp(pCutoff + macroChar * 4000.0f, 20.0f, srf * 0.49f); // OCT-01 P17: Nyquist ceiling now srf*0.49
         float effectiveReso = clamp(pReso + macroChar * 0.2f, 0.0f, 1.0f);
         float effectiveInkMix = clamp(pInkMix + macroCoup * 0.3f, 0.0f, 1.0f);
         float effectiveSuckerMix = clamp(pSuckerMix + macroChar * 0.3f, 0.0f, 1.0f);
@@ -543,8 +560,17 @@ public:
             if (!voice.active)
                 continue;
 
-            // Set sucker filter default for this block (overridden per-sample when sucker is active)
-            voice.suckerFilter.setCoefficients(clamp(pSuckerFreq, 200.0f, 8000.0f), pSuckerReso, srf);
+            // Set sucker filter default for this block — OCT-04 P19: delta-guard so
+            // setCoefficients (fastTan inside) is only called when freq/reso actually changed.
+            {
+                const float sf = clamp(pSuckerFreq, 200.0f, 8000.0f);
+                if (sf != voice.lastSuckerFreq || pSuckerReso != voice.lastSuckerReso)
+                {
+                    voice.suckerFilter.setCoefficients(sf, pSuckerReso, srf);
+                    voice.lastSuckerFreq = sf;
+                    voice.lastSuckerReso = pSuckerReso;
+                }
+            }
 
             // Set arm LFO rates per voice
             for (int a = 0; a < 8; ++a)
@@ -557,8 +583,13 @@ public:
                 voice.arms[a].setShape(a % 5);
             }
 
-            // Ink cloud decay
-            voice.inkCloud.setDecay(effectiveInkDecay, srf);
+            // Ink cloud decay — OCT-14: delta-guard so setDecay (division + std::max inside)
+            // is only recomputed when the decay time actually changes.
+            if (effectiveInkDecay != voice.lastInkDecay)
+            {
+                voice.inkCloud.setDecay(effectiveInkDecay, srf);
+                voice.lastInkDecay = effectiveInkDecay;
+            }
         }
 
         float peakEnv = 0.0f;
@@ -708,9 +739,14 @@ public:
                     voice.envFollower = flushDenormal(voice.envFollower);
 
                     // Map envelope to filter frequency modulation
-                    [[maybe_unused]] float chromaFreqMod = clamp(pChromaFreq + voice.envFollower * pChromaSens * 4000.0f +
+                    // OCT-02 P17: ceiling was hardcoded 16000Hz; now srf*0.49 for 96kHz safety
+                    // OCT-03/OCT-11 D004: was [[maybe_unused]] — chromaFilter coefficients were never
+                    // updated during render, so the envelope follower had zero audible effect.
+                    float chromaFreqMod = clamp(pChromaFreq + voice.envFollower * pChromaSens * 4000.0f +
                                                     armMods[ArmChromaFreq] * 2000.0f,
-                                                100.0f, 16000.0f);
+                                                100.0f, srf * 0.49f);
+                    // Apply computed frequency to the chroma filter (uses neutral Q = 0.5)
+                    voice.chromaFilter.setCoefficients(chromaFreqMod, 0.5f, srf);
 
                     // Morph filter type: LP → BP → HP → Notch
                     // We process through LP and HP, then blend
@@ -747,6 +783,14 @@ public:
 
                 // --- Main filter with arm modulation ---
                 // D001: continuous velocity→timbre — higher velocity opens the filter further
+                // OCT-15 D004: ArmFilterCutoff (arm 0) was computed but never applied —
+                // the arm's modulation had zero effect on the main filter frequency.
+                // F10 comment described per-sample update but code was absent; restored here.
+                {
+                    float armCutoff = clamp(effectiveCutoff * fastPow2(armMods[ArmFilterCutoff] * 0.5f),
+                                            20.0f, srf * 0.49f);
+                    voice.mainFilter.setCoefficients_fast(armCutoff, effectiveReso, srf);
+                }
                 voiceSignal = voice.mainFilter.processSample(voiceSignal);
 
                 // =====================================================
@@ -757,8 +801,15 @@ public:
                 {
                     // arm mod spans -1..+1 → shift F1 down/up by up to 250 Hz, F2 up/down by up to 850 Hz
                     float fShift = armMods[ArmFormantShift]; // -1..+1, already depth-scaled
-                    [[maybe_unused]] float f1Freq = clamp(550.0f + fShift * 250.0f, 200.0f, 900.0f);
-                    [[maybe_unused]] float f2Freq = clamp(1650.0f - fShift * 850.0f, 600.0f, 3000.0f);
+                    // OCT-10 D004: f1Freq/f2Freq were [[maybe_unused]] — formant filters ran at default
+                    // coefficients regardless of ArmFormantShift, making the vowel-shift inaudible.
+                    float f1Freq = clamp(550.0f + fShift * 250.0f, 200.0f, 900.0f);
+                    float f2Freq = clamp(1650.0f - fShift * 850.0f, 600.0f, 3000.0f);
+                    // Q≈3 gives a focused formant band without excessive ringing.
+                    // Resonance [0,1] maps to k=2-2*res; Q≈3 → k=1/3 → res≈0.833.
+                    // Use fast path since arm mods update these every sample.
+                    voice.formant1.setCoefficients_fast(f1Freq, 0.833f, srf);
+                    voice.formant2.setCoefficients_fast(f2Freq, 0.833f, srf);
                     float formantSig = voice.formant1.processSample(voiceSignal) * 0.6f +
                                        voice.formant2.processSample(voiceSignal) * 0.4f;
                     // Blend at a modest level — more pronounced when arm depth is high
@@ -1398,6 +1449,9 @@ private:
         voice.modEnv.noteOn();
 
         // Sucker — ultra-fast transient
+        // OCT-08: explicit reset before retrigger (voice.reset() clears it, but
+        // being explicit matches the mono path and guards against future refactors).
+        voice.suckerEnv.reset();
         voice.suckerEnv.setParams(0.001f, suckerDecay, 0.0f, suckerDecay, srf);
         voice.suckerEnv.noteOn();
 
