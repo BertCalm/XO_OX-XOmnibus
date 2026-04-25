@@ -122,11 +122,12 @@ struct DistillationModel
 
     // CPU fix: precompute decayCoeff once per block (distillRate and dtSec are
     // block-rate constants). Call computeDecayCoeff() before the sample loop,
-    // then call processWithCoeff() inside it to avoid std::exp per sample per voice.
+    // then call processWithCoeff() inside it to avoid exp per sample per voice.
+    // perf: fastExp (~6% error) is accurate enough for a slow envelope decay coeff.
     static float computeDecayCoeff(float distillRate, float dtSec) noexcept
     {
         float halfLife = 2.0f + (1.0f - distillRate) * 18.0f; // 2s to 20s half-life
-        return std::exp(-0.693f * dtSec / halfLife);          // ln(2)
+        return fastExp(-0.693f * dtSec / halfLife);            // ln(2), fast path
     }
 
     float processWithCoeff(float decayCoeff, float dtSec) noexcept
@@ -236,6 +237,8 @@ public:
             voices[i].ampEnv.prepare(srf);
             voices[i].filterEnv.prepare(srf);
             voices[i].noiseState = static_cast<uint32_t>(i * 7919 + 42);
+            // F19: filter mode is engine-invariant; set once here rather than per-block.
+            voices[i].outputFilter.setMode(CytomicSVF::Mode::LowPass);
         }
 
         smoothModIndex.prepare(srf);
@@ -357,18 +360,24 @@ public:
         // D006: mod wheel → mod index, aftertouch → feedback
         float effectiveModIndex = std::clamp(pModIndex + macroChar * 3.0f + modWheelAmount * 4.0f, 0.0f, 20.0f);
         float effectiveFeedback = std::clamp(pFeedback + aftertouchAmount * 0.3f + macroMove * 0.2f, 0.0f, 1.0f);
-        float effectiveBright = std::clamp(pBrightness + macroChar * 4000.0f + couplingFilterMod, 200.0f, 20000.0f);
+        // P17: Nyquist ceiling uses live sample rate, not hardcoded 20 kHz.
+        const float nyquistCeiling = srf * 0.49f;
+        float effectiveBright = std::clamp(pBrightness + macroChar * 4000.0f + couplingFilterMod, 200.0f, nyquistCeiling);
 
         smoothModIndex.set(effectiveModIndex);
         smoothRatio.set(effectiveRatio);
         smoothFeedback.set(effectiveFeedback);
         smoothPurity.set(pPurity);
 
-        // Snapshot pitch coupling before reset (#1118).
-        const float blockCouplingPitchMod = couplingPitchMod;
+        // Snapshot both coupling mods before zeroing. couplingFilterMod was already
+        // consumed above (in effectiveBright), so zero it first. Pitch mod is consumed
+        // below in blockBendRatio; zero it second. Both locals are used only in this
+        // block — class members are now clean for the next applyCouplingInput cycle.
         couplingFilterMod = 0.0f;
-        // P25: capture pitch coupling before zeroing — sample loop reads the local,
-        // not the class member (which is now 0 for the next applyCouplingInput cycle).
+        // BUG FIX: use a single captured pitch-mod local (was: blockCouplingPitchMod +
+        // capturedPitchMod both captured from couplingPitchMod before zeroing, then
+        // BOTH fed into semitonesToFreqRatio calls that were multiplied together,
+        // doubling the pitch bend AND coupling pitch mod on every sample).
         const float capturedPitchMod = couplingPitchMod;
         couplingPitchMod = 0.0f;
 
@@ -394,8 +403,8 @@ public:
             voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
             // F17: mirror filterEnv ADSR update (sustain=0 → one-shot transient, by design)
             voice.filterEnv.setADSR(pFiltAttack, pFiltDecay, 0.0f, pRelease);
-            // F19: hoist mode set — LowPass is block-constant, no need to call per sample.
-            voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
+            // F19: setMode(LowPass) is engine-invariant — moved to prepare() and noteOn().
+            // Calling it per-block was harmless but wasteful; removed here.
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -404,7 +413,7 @@ public:
         const float dtSec = inverseSr_;
 
         // CPU fix 1 (OMEGA): precompute distillation decayCoeff once per block.
-        // pDistill and dtSec are both block-rate constants; std::exp is expensive.
+        // pDistill and dtSec are both block-rate constants; fastExp is used inside.
         const float blockDecayCoeff = DistillationModel::computeDecayCoeff(pDistill, dtSec);
 
         // CPU fix 2 (OMEGA): precompute per-voice pan gains once per block.
@@ -420,9 +429,11 @@ public:
             voices[vi].panR = std::sin(pan * 1.5707963f);
         }
 
-        // Hoist pitch-bend ratio; uses the pre-reset snapshot (#1118).
+        // Hoist combined pitch-bend + coupling ratio once per block (block-constant).
+        // BUG FIX: was computing semitonesToFreqRatio(bend+coupling) twice and
+        // multiplying the results together, effectively squaring both contributions.
         const float blockBendRatio =
-            PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -431,6 +442,10 @@ public:
             float fbNow = smoothFeedback.process();
             float purityNow = smoothPurity.process();
             float mixL = 0.0f, mixR = 0.0f;
+
+            // perf: nearestInt depends only on ratioNow, not on voice state — compute
+            // once per sample rather than once per voice per sample (was kMaxVoices×).
+            float nearestInt = std::max(std::round(ratioNow), 1.0f);
 
             for (int vi = 0; vi < kMaxVoices; ++vi)
             {
@@ -441,8 +456,11 @@ public:
                 // panL/panR precomputed before sample loop (CPU fix 2 — block-constant).
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
-                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
+                // blockBendRatio already encodes bendSemitones + capturedPitchMod (hoisted
+                // above the sample loop). A single multiply is correct; a second
+                // semitonesToFreqRatio call here would double-apply both pitch bend and
+                // coupling pitch mod, sending every note sharp by twice the intended amount.
+                freq *= blockBendRatio;
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
@@ -459,8 +477,7 @@ public:
                 // integer ratio (harmonic lock). High gravity = mathematical precision,
                 // low gravity = free inharmonic drift. This gives the "distillation"
                 // metaphor a second dimension: not just time-based but gravity-based.
-                float nearestInt = std::round(ratioNow);
-                nearestInt = std::max(nearestInt, 1.0f); // clamp to 1 minimum
+                // (nearestInt precomputed above the voice loop — it only depends on ratioNow)
                 float gravitatedRatio = ratioNow + (nearestInt - ratioNow) * voice.gravityMass;
 
                 // omega_macroCoupling: coupling adds ratio detune, pulling the modulator
@@ -495,24 +512,30 @@ public:
 
                 float carrierOut = voice.carrier.process(modSignal);
 
-                // D001: velocity shapes FM brightness (more velocity = brighter attack)
-                float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
-                float envMod = voice.filterEnv.process() * pFiltEnvAmt * 5000.0f;
-                // effectiveBright is the block-rate base cutoff (omega_brightness param + macro + coupling).
-                float cutoff = std::clamp(effectiveBright + velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
-
-                // F2/P19: use fast path — mode is set block-rate; setCoefficients_fast
-                // uses fastTan (~0.03% error) vs std::tan, avoiding trig per-sample-per-voice.
-                voice.outputFilter.setCoefficients_fast(cutoff, 0.2f, srf);
-                float filtered = voice.outputFilter.processSample(carrierOut);
-
-                // Amplitude envelope
+                // Amplitude envelope — check liveness BEFORE ticking filter env + SVF,
+                // so a finishing voice doesn't burn a filterEnv.process() for a sample
+                // that will be discarded (was: filterEnv ticked before ampEnv check).
                 float ampLevel = voice.ampEnv.process();
                 if (!voice.ampEnv.isActive())
                 {
                     voice.active = false;
                     continue;
                 }
+
+                // D001: velocity shapes FM brightness (more velocity = brighter attack).
+                // velBright is voice-constant (velocity never changes mid-note); it is
+                // computed here rather than cached on the struct to keep OmegaVoice lean.
+                // If profiling shows pressure, add velBright as a cached field on noteOn.
+                const float velBright = voice.velocity * voice.velocity * 5000.0f;
+                float envMod = voice.filterEnv.process() * pFiltEnvAmt * 5000.0f;
+                // effectiveBright is the block-rate base cutoff (omega_brightness param + macro + coupling).
+                // P17: nyquistCeiling derived from srf (computed once per block above).
+                float cutoff = std::clamp(effectiveBright + velBright + envMod + lfo2Val * 2000.0f, 200.0f, nyquistCeiling);
+
+                // F2/P19: use fast path — mode is set block-rate; setCoefficients_fast
+                // uses fastTan (~0.03% error) vs std::tan, avoiding trig per-sample-per-voice.
+                voice.outputFilter.setCoefficients_fast(cutoff, 0.2f, srf);
+                float filtered = voice.outputFilter.processSample(carrierOut);
 
                 // Gravity mass
                 voice.noteHeldTime += dtSec;
@@ -561,6 +584,8 @@ public:
         v.glide.snapTo(freq);
         v.gravityMass = 0.0f;
         v.noteHeldTime = 0.0f;
+        // F19: restore filter mode after reset() clears the SVF state.
+        v.outputFilter.setMode(CytomicSVF::Mode::LowPass);
 
         float initModIndex = paramModIndex ? paramModIndex->load() : 3.0f;
         v.distill.trigger(initModIndex);
@@ -578,7 +603,10 @@ public:
 
         float fAttack = paramFilterAttack ? paramFilterAttack->load() : 0.001f;
         float fDecay = paramFilterDecay ? paramFilterDecay->load() : 0.3f;
-        v.filterEnv.setADSR(fAttack, fDecay, 0.0f, 0.2f);
+        // BUG FIX: was hardcoding 0.2f for filterEnv release, disagreeing with the
+        // block-rate setADSR (which uses pRelease). First-block behaviour now matches
+        // steady-state. Filter env sustain stays 0 (one-shot transient design).
+        v.filterEnv.setADSR(fAttack, fDecay, 0.0f, release); // release = amp release param
         v.filterEnv.triggerHard();
 
         // Subtle stereo spread
