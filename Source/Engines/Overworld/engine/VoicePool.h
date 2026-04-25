@@ -873,10 +873,29 @@ public:
         {
             v.sqPhase = 0.0f;
             v.triPhase = 0.0f;
+            v.triStep = 0;
             v.wtPhase = 0.0f;
             v.modPhase = 0.0f;
             v.carPhase = 0.0f;
+            v.modFeedbk = 0.0f;
+            // OVW-11 fix: reset all envelope coefficients and FM envelope state.
+            // allNotesOff() zeroes envLevel/fmEnvLevel and sets stages to Idle, but
+            // the per-voice rate/coeff members retain stale values from the previous
+            // preset, which could cause an incorrect attack rate to fire immediately
+            // on the first noteOn after a preset change.
+            v.attackRate = 0.0f;
+            v.decayCoeff = 0.0f;
+            v.sustainLvl = 0.0f;
+            v.releaseCoeff = 0.0f;
+            v.fmAttackRate = 0.0f;
+            v.fmDecayCoeff = 0.0f;
+            v.fmSustainLvl = 0.0f;
+            v.fmReleaseCoeff = 0.0f;
+            v.noisePhase = 0.0f;
+            v.noiseOut = 0.0f;
+            v.lfsr.reset();
         }
+        stealIdx = 0;
     }
 
     void noteOn(int midiNote, float velocity)

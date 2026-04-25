@@ -100,6 +100,22 @@ public:
         eraPhase = 0.0f;
         lastSample = 0.0f;
         filterEnvLevel = 0.0f;
+        // OVW-02/OVW-03/OVW-06/OVW-08/OVW-09/OVW-10 fix: reset all expression, mod matrix,
+        // ghost ERA, filter delta-guard sentinel, and coupling accumulator state on
+        // preset change to prevent bleed across presets.
+        pitchBendNorm       = 0.0f;
+        lastFilterCutoffHz  = -1.0f; // force coefficient recompute on first block
+        modWheelAmount    = 0.0f;
+        owModEraOffset    = 0.0f;
+        owModGlitchOffset = 0.0f;
+        owModPitchOffset  = 0.0f;
+        owModLevelOffset  = 0.0f;
+        ghostEraLast      = 0.0f;
+        ghostEraYLast     = 0.0f;
+        eraDriftSHValue   = 0.0f;
+        externalFilterMod = 0.0f;
+        externalEraMod    = 0.0f;
+        externalEraYMod   = 0.0f;
         // Wrap haasWritePos to prevent int overflow on long sessions
         haasWritePos = 0;
         if (!haasDelayBuf.empty())
@@ -313,11 +329,54 @@ public:
 
         const float effectiveCrushMix = juce::jlimit(0.0f, 1.0f, snap.crushMix + macCrush * 0.85f);
         const float effectiveGlitchAmt = juce::jlimit(0.0f, 1.0f, snap.glitchAmount + macGlitch * 0.9f);
+        const float effectiveEchoMix = juce::jlimit(0.0f, 1.0f, snap.echoMix + macSpace * 0.7f);
+
+        // OVW-07 fix: apply mod matrix HERE — before filter/glitch setters — so that
+        // owModPitchOffset and owModGlitchOffset reflect the current block's aftertouch
+        // and mod wheel, not last block's stale values. Previously the mod matrix ran
+        // ~130 lines later (after the silence-gate return path) causing one-block lag
+        // on all mod destinations including filter pitch and glitch mix.
+        //
+        // Pre-scan MIDI for expression messages (mod wheel, aftertouch, pitch bend)
+        // so these take effect in the current block's mod matrix. Note-on/off are
+        // processed in the second MIDI pass below (after silence-gate check).
+        for (const auto meta : midi)
+        {
+            const auto msg = meta.getMessage();
+            if (msg.isChannelPressure())
+                aftertouch.setChannelPressure(msg.getChannelPressureValue() / 127.0f);
+            else if (msg.isController() && msg.getControllerNumber() == 1)
+                modWheelAmount = msg.getControllerValue() / 127.0f;
+            else if (msg.isPitchWheel())
+                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
+        }
+        {
+            // Aftertouch must be updated before mod matrix (needs smoothed pressure).
+            aftertouch.updateBlock(numSamples);
+            const float atPressureForMod = aftertouch.getSmoothedPressure(0);
+
+            // D002 mod matrix — apply per-block.
+            // Destinations: 0=Off, 1=ERA_X, 2=GlitchMix, 3=Pitch, 4=AmpLevel
+            ModMatrix<4>::Sources mSrc;
+            mSrc.lfo1       = 0.0f;
+            mSrc.lfo2       = 0.0f;
+            mSrc.env        = 0.0f;
+            mSrc.velocity   = 0.0f;
+            mSrc.keyTrack   = 0.0f;
+            mSrc.modWheel   = modWheelAmount;
+            mSrc.aftertouch = atPressureForMod;
+            float mDst[5]   = {};
+            modMatrix.apply(mSrc, mDst);
+            owModEraOffset    = mDst[1] * 0.5f;
+            owModGlitchOffset = mDst[2] * 0.4f;
+            owModPitchOffset  = mDst[3] * 12.0f;
+            owModLevelOffset  = mDst[4] * 0.5f;
+        }
+
         // D006: mod wheel adds up to +0.4 to glitch mix (CC#1 introduces chip artifacts progressively)
-        // D002: owModGlitchOffset adds mod matrix contribution
+        // D002: owModGlitchOffset adds mod matrix contribution (now current-block values)
         const float effectiveGlitchMix =
             juce::jlimit(0.0f, 1.0f, snap.glitchMix + macGlitch * 0.8f + modWheelAmount * 0.4f + owModGlitchOffset);
-        const float effectiveEchoMix = juce::jlimit(0.0f, 1.0f, snap.echoMix + macSpace * 0.7f);
 
         // D001: filter envelope — simple one-pole decay tracks note-on velocity.
         // filterEnvLevel is set to lastNoteOnVelocity on noteOn (detected below),
@@ -351,10 +410,22 @@ public:
 
             // Update FX units from snapshot (cheap, param-only, no alloc)
             filter.setMode(snap.filterType);
-            filter.setCutoff(
-                juce::jlimit(20.0f, 20000.0f,
-                             snap.filterCutoff * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + owModPitchOffset) +
-                                 externalFilterMod + filterEnvBoost));
+            // OVW-01 fix: clamp to sr*0.49 not 20000Hz — at 96kHz the old ceiling
+            // let the cutoff sit well below Nyquist; at 44.1kHz it was fine but users
+            // with 48kHz/96kHz interfaces got a 20kHz hard clip instead of Nyquist-safe.
+            {
+                const float newCutoff =
+                    juce::jlimit(20.0f, sr * 0.49f,
+                                 snap.filterCutoff * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f + owModPitchOffset) +
+                                     externalFilterMod + filterEnvBoost);
+                // OVW-03 fix: delta-guard — skip recomputing TPT coefficients (fastTan)
+                // when the cutoff has not changed by more than 0.5 Hz since last block.
+                if (std::abs(newCutoff - lastFilterCutoffHz) > 0.5f)
+                {
+                    filter.setCutoff(newCutoff);
+                    lastFilterCutoffHz = newCutoff;
+                }
+            }
             filter.setResonance(snap.filterReso);
         }
 
@@ -376,6 +447,9 @@ public:
         voicePool.applyParams(snap);
 
         // Process MIDI
+        // Second MIDI pass: note-on / note-off only.
+        // Expression messages (aftertouch, mod wheel, pitch bend) were already
+        // consumed by the pre-scan above so all mod destinations use current values.
         for (const auto meta : midi)
         {
             const auto msg = meta.getMessage();
@@ -388,13 +462,6 @@ public:
                 voicePool.noteOff(msg.getNoteNumber());
             else if (msg.isAllNotesOff() || msg.isAllSoundOff())
                 voicePool.allNotesOff();
-            else if (msg.isChannelPressure())
-                aftertouch.setChannelPressure(msg.getChannelPressureValue() / 127.0f);
-            // D006: CC#1 mod wheel → glitch mix boost (+0–0.4, introduces chip artifacts progressively)
-            else if (msg.isController() && msg.getControllerNumber() == 1)
-                modWheelAmount = msg.getControllerValue() / 127.0f;
-            else if (msg.isPitchWheel())
-                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
         }
 
         if (silenceGate.isBypassed() && midi.isEmpty())
@@ -403,36 +470,15 @@ public:
             return;
         }
 
-        aftertouch.updateBlock(numSamples);
+        // OVW-07 fix: aftertouch.updateBlock() and mod matrix are now applied earlier
+        // (before the filter/glitch setup section) so all mod destinations use
+        // current-block values. Read the smoothed pressure computed there for ERA Y.
         const float atPressure = aftertouch.getSmoothedPressure(0);
 
         // D006: aftertouch raises ERA Y — more SNES chip character under pressure (sensitivity 0.2).
         // ERA Y drives the SNES vertex weight in the 3-chip barycentric blend.
         // Full pressure adds up to +0.2 to targetEraY, nudging the triangle toward SNES.
         // Clamped to [0.0, 1.0] so it never exceeds valid ERA range.
-
-        // D002 mod matrix — apply per-block.
-        // Destinations: 0=Off, 1=ERA_X, 2=GlitchMix, 3=Pitch, 4=AmpLevel
-        {
-            ModMatrix<4>::Sources mSrc;
-            mSrc.lfo1       = 0.0f;
-            mSrc.lfo2       = 0.0f;
-            mSrc.env        = 0.0f;
-            mSrc.velocity   = 0.0f;
-            mSrc.keyTrack   = 0.0f;
-            mSrc.modWheel   = modWheelAmount;
-            mSrc.aftertouch = atPressure;
-            float mDst[5]   = {};
-            modMatrix.apply(mSrc, mDst);
-            // dst 1: ERA X offset (chip blend position)
-            owModEraOffset   = mDst[1] * 0.5f;
-            // dst 2: glitch mix offset
-            owModGlitchOffset = mDst[2] * 0.4f;
-            // dst 3: pitch offset in semitones (applied via snap.pitchBend in voicePool)
-            owModPitchOffset = mDst[3] * 12.0f;
-            // dst 4: amplitude level offset
-            owModLevelOffset = mDst[4] * 0.5f;
-        }
 
         // D005 fix: advance ERA drift phase per block.
         // FIX-P1: removed redundant `if (eraPhase >= 1.0f) eraPhase -= 1.0f`
@@ -753,6 +799,11 @@ private:
     std::vector<float> outputCacheRight;
 
     float pitchBendNorm = 0.0f; // MIDI pitch wheel [-1, +1]; ±2 semitone range
+
+    // OVW-03 fix: last computed filter cutoff for delta-guard.
+    // setCutoff() calls computeCoefficients() which calls fastTan() — skipping this
+    // when the cutoff hasn't moved by >0.5 Hz saves a non-trivial fastTan per block.
+    float lastFilterCutoffHz = -1.0f; // sentinel: force first compute
 
     // Per-block coupling accumulators (reset each renderBlock)
     float externalFilterMod = 0.0f;
