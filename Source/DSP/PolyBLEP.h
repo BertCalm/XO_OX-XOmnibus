@@ -59,6 +59,10 @@ public:
         phaseIncrement = freqHz / sampleRate;
 
         // Pre-compute triangle amplitude correction for the leaky integrator.
+        // FIX (perf): guard on Triangle waveform only — std::pow(0.999, halfPeriod) is
+        // expensive and triLeakCorrection is only read by the Triangle branch in
+        // processSample(). Skipping it for Saw/Square/Pulse/Sine saves one std::pow
+        // per setFrequency call, which happens every sample in modulated voices.
         //
         // The integrator (triIntegrator *= 0.999f) introduces frequency-dependent
         // gain error: at 20 Hz the output is ~3.6 dB too quiet; at 1 kHz it is
@@ -75,44 +79,47 @@ public:
         //
         // The correction factor = 1/P restores unity amplitude at all frequencies.
         // Guard against divide-by-zero at freqHz == 0.
-        static constexpr float kLeak = 0.999f;
-        if (phaseIncrement > 0.0f)
+        if (waveform == Waveform::Triangle)
         {
-            // halfPeriod = 0.5 / phaseIncrement  (samples in one half-cycle)
-            float halfPeriod = 0.5f / phaseIncrement;
-            // Clamp halfPeriod so std::pow stays finite (very low freq or DC)
-            halfPeriod = std::min(halfPeriod, 50000.0f);
-            float kN = std::pow(kLeak, halfPeriod);
+            static constexpr float kLeak = 0.999f;
+            if (phaseIncrement > 0.0f)
+            {
+                // halfPeriod = 0.5 / phaseIncrement  (samples in one half-cycle)
+                float halfPeriod = 0.5f / phaseIncrement;
+                // Clamp halfPeriod so std::pow stays finite (very low freq or DC)
+                halfPeriod = std::min(halfPeriod, 50000.0f);
+                float kN = std::pow(kLeak, halfPeriod);
 
-            // Steady-state peak amplitude of the leaky integrator driven by a
-            // symmetric square wave of ±(4*dt) with leak coefficient k=0.999:
-            //
-            //   P = 4*dt * (1 - k^N) / ((1 - k) * (1 + k^N))
-            //
-            // Derivation: at steady state the integrator swings ±P. During the
-            // positive half-cycle (N samples), starting at -P with input +4*dt:
-            //   +P = k^N * (-P) + 4*dt * (1 - k^N) / (1 - k)
-            //   P * (1 + k^N) = 4*dt * (1 - k^N) / (1 - k)
-            //   P = 4*dt * (1 - k^N) / ((1 - k) * (1 + k^N))
-            //
-            // The correction multiplier to restore unity amplitude is 1/P:
-            //   correction = (1 - k) * (1 + k^N) / (4*dt * (1 - k^N))
-            float oneMinusKN = 1.0f - kN;
-            float onePlusKN = 1.0f + kN;
-            if (oneMinusKN > 1e-6f)
-                triLeakCorrection = (1.0f - kLeak) * onePlusKN / (4.0f * phaseIncrement * oneMinusKN);
+                // Steady-state peak amplitude of the leaky integrator driven by a
+                // symmetric square wave of ±(4*dt) with leak coefficient k=0.999:
+                //
+                //   P = 4*dt * (1 - k^N) / ((1 - k) * (1 + k^N))
+                //
+                // Derivation: at steady state the integrator swings ±P. During the
+                // positive half-cycle (N samples), starting at -P with input +4*dt:
+                //   +P = k^N * (-P) + 4*dt * (1 - k^N) / (1 - k)
+                //   P * (1 + k^N) = 4*dt * (1 - k^N) / (1 - k)
+                //   P = 4*dt * (1 - k^N) / ((1 - k) * (1 + k^N))
+                //
+                // The correction multiplier to restore unity amplitude is 1/P:
+                //   correction = (1 - k) * (1 + k^N) / (4*dt * (1 - k^N))
+                float oneMinusKN = 1.0f - kN;
+                float onePlusKN = 1.0f + kN;
+                if (oneMinusKN > 1e-6f)
+                    triLeakCorrection = (1.0f - kLeak) * onePlusKN / (4.0f * phaseIncrement * oneMinusKN);
+                else
+                    triLeakCorrection = 1.0f; // numerically degenerate — shouldn't occur
+
+                // No amplitude cap: the correction is exact at all frequencies.
+                // For very low LFO rates the correction factor grows large; the output
+                // is clamped to [-1, 1] in processSample() after applying the correction,
+                // keeping amplitude at unity even at sub-Hz rates.
+                // (Previously capped at 4.0 → +12 dB overshoot at sub-Hz — issue #177)
+            }
             else
-                triLeakCorrection = 1.0f; // numerically degenerate — shouldn't occur
-
-            // No amplitude cap: the correction is exact at all frequencies.
-            // For very low LFO rates the correction factor grows large; the output
-            // is clamped to [-1, 1] in processSample() after applying the correction,
-            // keeping amplitude at unity even at sub-Hz rates.
-            // (Previously capped at 4.0 → +12 dB overshoot at sub-Hz — issue #177)
-        }
-        else
-        {
-            triLeakCorrection = 1.0f;
+            {
+                triLeakCorrection = 1.0f;
+            }
         }
     }
 
