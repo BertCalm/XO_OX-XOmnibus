@@ -88,7 +88,7 @@ struct OakenExciter
             bowFilterState = 0.0f;
             // Bow LP cutoff depends on bow pressure (mapped from velocity)
             float fc = 400.0f + velocity * 1200.0f;
-            bowLPCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * fc / sampleRate);
+            bowLPCoeff = 1.0f - fastExp(-2.0f * 3.14159265f * fc / sampleRate); // P5: fastExp for matched-Z LP coeff
         }
         else // Slap
         {
@@ -203,7 +203,7 @@ struct OakenKarplusString
         // Previously used Euler approx 1/(1+1/(fc*0.00005)) which gave near-zero coefficients
         // for gut string tension (fc=1000 Hz), causing unrealistically fast decay.
         float safeSr = (sr > 0.0f) ? sr : 48000.0f;
-        stringLPCoeff = std::exp(-2.0f * 3.14159265f * fc / safeSr);
+        stringLPCoeff = fastExp(-2.0f * 3.14159265f * fc / safeSr); // P5: fastExp for matched-Z LP coeff
         stringLPCoeff = std::clamp(stringLPCoeff, 0.01f, 0.99f);
     }
 
@@ -279,9 +279,11 @@ struct OakenBodyResonator
 
         float q = 0.4f + woodAge * 0.3f; // old wood = more resonant
 
-        mode1.setCoefficients(m1f, q, sr);
-        mode2.setCoefficients(m2f, q + 0.1f, sr);
-        mode3.setCoefficients(m3f, q - 0.1f, sr);
+        // Perf: use _fast path (fastTan ~0.03%) — body BPFs are all below 1.2 kHz,
+        // well within the fastTan accuracy range (|π*fc/sr| < π/4 up to sr/4).
+        mode1.setCoefficients_fast(m1f, q, sr);
+        mode2.setCoefficients_fast(m2f, q + 0.1f, sr);
+        mode3.setCoefficients_fast(m3f, q - 0.1f, sr);
     }
 
     float process(float input, float bodyDepth) noexcept
@@ -318,7 +320,11 @@ struct CuringModel
         sr = sampleRate;
     }
 
-    void trigger() noexcept { curingAge = 0.0f; }
+    void trigger() noexcept
+    {
+        curingAge = 0.0f;
+        lastCuringCutoff = -1.0f; // force coeff recompute on next process() — new note starts at 12 kHz
+    }
 
     float process(float input, float curingRate, float dtSec) noexcept
     {
@@ -329,9 +335,14 @@ struct CuringModel
         float cutoff = 12000.0f - curingProgress * 11000.0f;
         cutoff = std::max(cutoff, 500.0f);
 
-        // P19: use fast-path coefficient update (fastTan vs std::tan); curing cutoff
-        // changes very slowly so fastTan accuracy (~0.03%) is more than sufficient.
-        curingLP.setCoefficients_fast(cutoff, 0.3f, sr);
+        // P19: delta-guard — curing cutoff moves very slowly (order of Hz/sample);
+        // skip setCoefficients_fast (3× fastTan + divides) when the cutoff hasn't
+        // moved more than 1 Hz since the last update. Cuts ~3 fastTan calls/sample/voice.
+        if (std::fabs(cutoff - lastCuringCutoff) > 1.0f)
+        {
+            curingLP.setCoefficients_fast(cutoff, 0.3f, sr);
+            lastCuringCutoff = cutoff;
+        }
         return curingLP.processSample(input);
     }
 
@@ -339,10 +350,12 @@ struct CuringModel
     {
         curingLP.reset();
         curingAge = 0.0f;
+        lastCuringCutoff = -1.0f; // force coeff update on first process() call after reset
     }
 
     float sr = 0.0f;  // Sentinel: must be set by prepare() before use
     float curingAge = 0.0f;
+    float lastCuringCutoff = -1.0f; // P19: delta-guard — tracks last cutoff to skip redundant coeff updates
     CytomicSVF curingLP;
 };
 
@@ -378,6 +391,8 @@ struct OakenVoice
         velocity = 0.0f;
         gravityMass = 0.0f;
         noteHeldTime = 0.0f;
+        currentNote = 36; // P14: reset note number on voice reset — prevents stale note-off matching
+        startTime = 0;    // P14: reset voice age so VoiceAllocator sees correct LRU ordering
         glide.reset();
         exciter.reset();
         string.reset();
@@ -538,7 +553,8 @@ public:
         effectiveDamping -= aftertouchAmount * 0.03f;                // aftertouch slightly damps
         effectiveDamping = std::clamp(effectiveDamping, 0.9f, 0.999f);
 
-        float effectiveBright = std::clamp(pBrightness + macroChar * 3000.0f + couplingFilterMod, 200.0f, 20000.0f);
+        const float nyquistCeil = srf * 0.49f; // P17: SR-derived Nyquist ceiling (was hardcoded 20000 Hz — aliasing risk at 48k+)
+        float effectiveBright = std::clamp(pBrightness + macroChar * 3000.0f + couplingFilterMod, 200.0f, nyquistCeil);
 
         smoothBowPressure.set(effectiveBowPressure);
         smoothStringTension.set(pStringTension);
@@ -584,8 +600,8 @@ public:
                 float roomSpread = pRoom * 0.15f;
                 float panOffset = (static_cast<float>((voice.currentNote * 7) % 13) / 13.0f - 0.5f) * roomSpread;
                 float panPos = 0.5f + panOffset;
-                voice.panL = std::cos(panPos * 1.5707963f);
-                voice.panR = std::sin(panPos * 1.5707963f);
+                voice.panL = fastCos(panPos * 1.5707963f); // P4: fastCos/fastSin in block-level pan (no per-sample cost, but avoids libm call)
+                voice.panR = fastSin(panPos * 1.5707963f);
             }
         }
 
@@ -646,7 +662,7 @@ public:
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 4000.0f;
                 float cutoff =
                     std::clamp(brightNow + envMod + lfo1Val * 2000.0f + lfo2Val * 2000.0f + voice.velocity * 2000.0f,
-                               200.0f, 20000.0f);
+                               200.0f, nyquistCeil); // P17: SR-derived Nyquist ceiling (reuses block-constant nyquistCeil)
                 // P19: use fast-path setCoefficients_fast for per-sample modulated cutoff
                 voice.outputFilter.setCoefficients_fast(cutoff, 0.3f, srf);
                 float filtered = voice.outputFilter.processSample(cured);
@@ -715,7 +731,7 @@ public:
         v.gravityMass = 0.0f;
         v.noteHeldTime = 0.0f;
 
-        v.string.reset();
+        // v.string.reset() already called inside v.reset() above — no redundant second reset
         v.exciter.trigger(vel, exciterType, freq, srf);
 // P18: body/curing/env prepare() removed from noteOn — belongs in OakenEngine::prepare() only.
         // Calling prepare() per-noteOn is wasteful and can reset filter state mid-note.
