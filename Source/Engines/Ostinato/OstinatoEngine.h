@@ -2796,7 +2796,7 @@ struct OstiSubVoice
         breathLFO.setRate(0.06f, static_cast<float>(sampleRate));
         // OST-04: stagger LFO phase across voices to avoid synchronised AM modulation.
         // 16 sub-voices (8 seats × 2) distributed evenly around [0, 1).
-        breathLFO.setPhaseOffset(static_cast<float>(voiceIndex) / 16.0f);
+        breathLFO.phase = static_cast<float>(voiceIndex) / 16.0f;
         // Cache steal-fade increment so per-sample hot path avoids a division.
         stealFadeIncrement = 1.0f / (static_cast<float>(sampleRate) * 0.002f); // OST-05
     }
