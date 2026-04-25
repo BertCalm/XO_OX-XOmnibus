@@ -641,7 +641,6 @@ public:
         // Snapshot pitch coupling before reset (#1118).
         const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
-        const float capturedPitchMod = couplingPitchMod; // P25 fix: capture before zero
         couplingPitchMod = 0.0f;
         couplingMaterialMod = 0.0f;
 
