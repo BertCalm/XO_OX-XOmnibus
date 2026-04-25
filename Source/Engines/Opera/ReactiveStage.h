@@ -64,6 +64,11 @@ public:
 
         invSr = 1.0f / sr;
 
+        // FIX OP-06 (P19): pre-compute block-rate-constant smoothCoeff once here.
+        // This is 1.0 - exp(-2*pi*50*invSr) — a pure function of sample rate.
+        // Previously computed inside every processBlock call, wasting one std::exp per block.
+        smoothCoeffCached_ = 1.0f - std::exp(-kTwoPi * 50.0f * invSr);
+
         // Compute prime delay lengths scaled to actual sample rate.
         // Base lengths chosen at 48kHz: 1423, 1637, 1879, 2089 samples.
         // These are primes, giving maximal diffusion and minimal comb artifacts.
@@ -138,13 +143,22 @@ public:
         // ----------------------------------------------------------------
         float rTarget = clamp(orderParam, 0.0f, 1.0f);
 
-        // One-pole smoothing coefficient (~20ms time constant)
-        float smoothCoeff = 1.0f - std::exp(-kTwoPi * 50.0f * invSr);
+        // FIX OP-06 (P19): use pre-computed smoothCoeff from prepare() — constant for a given sr
+        float smoothCoeff = smoothCoeffCached_;
 
         // Compute start-of-block and end-of-block order parameter
         float rStart = smoothedOrderParam;
-        // Advance smoother by numSamples steps (geometric series closed form)
-        float rEnd = rTarget + (rStart - rTarget) * std::pow(1.0f - smoothCoeff, static_cast<float>(numSamples));
+        // Advance smoother by numSamples steps (geometric series closed form).
+        // FIX OP-12 (P18): replace std::pow with fastPow2 via log2 identity:
+        //   (1 - c)^N = 2^(N * log2(1-c))
+        // log2(1 - smoothCoeff) is computed once per block and is safe because
+        // smoothCoeff is in (0, 1) so (1 - smoothCoeff) is in (0, 1) (always negative log2).
+        // fastPow2 error is ~0.02%, well within perceptual smoothing tolerance.
+        float decayFactor = (numSamples > 0 && smoothCoeff < 1.0f)
+            ? xoceanus::fastPow2(static_cast<float>(numSamples) *
+                                 (std::log2(1.0f - smoothCoeff)))
+            : 0.0f;
+        float rEnd = rTarget + (rStart - rTarget) * decayFactor;
         smoothedOrderParam = rEnd;
 
         // Use midpoint for block-rate coefficient computation
@@ -161,11 +175,15 @@ public:
 
         // Convert RT60 to per-line feedback gain:
         // gain_i = 10^(-3 * delayTime_i / RT60)
+        //        = 2^(-3 * log2(10) * delayTime_i / RT60)
+        //        = 2^(-9.9657 * delayTime_i / RT60)   [log2(10) ~= 3.3219]
+        // FIX OP-10 (P18): replace std::pow(10, x) with fastPow2 — block-rate call
+        // with 4 lines/block. fastPow2 error is ~0.02%, well within reverb perception.
         float feedbackGain[kNumLines];
         for (int i = 0; i < kNumLines; ++i)
         {
             float delayTimeSec = static_cast<float>(delayLengths[i]) * invSr;
-            feedbackGain[i] = std::pow(10.0f, -3.0f * delayTimeSec / effectiveRT60);
+            feedbackGain[i] = xoceanus::fastPow2(-9.9657f * delayTimeSec / effectiveRT60);
             // Safety clamp: prevent runaway feedback
             feedbackGain[i] = std::min(feedbackGain[i], 0.9995f);
         }
@@ -176,7 +194,10 @@ public:
         //   At high sync (r~1): 4000 Hz cutoff (dark, cathedral)
         // ----------------------------------------------------------------
         float dampingCutoff = 12000.0f - rSmooth * 8000.0f;
-        float dampCoeff = std::exp(-kTwoPi * dampingCutoff * invSr);
+        // FIX OP-11 (P18): replace std::exp with fastExp for block-rate damp coefficient.
+        // exp(-2*pi*fc/sr) for fc in [4000, 12000] Hz — fastExp error ~6%, acceptable
+        // for a perceptual air-absorption damping curve (not precision-critical).
+        float dampCoeff = xoceanus::fastExp(-kTwoPi * dampingCutoff * invSr);
 
         // ----------------------------------------------------------------
         // Pre-delay: contracts at high sync (hall wraps around)
@@ -289,6 +310,7 @@ private:
     //==========================================================================
     float sr = 0.0f;  // Sentinel: must be set by prepare() before use (guarded with fallback)
     float invSr = 0.0f;  // Sentinel: computed from sr in prepare()
+    float smoothCoeffCached_ = 0.0f; // FIX OP-06 (P19): pre-computed from sr in prepare()
 
     // Delay line lengths (in samples, scaled to actual sample rate)
     int delayLengths[kNumLines] = {};
