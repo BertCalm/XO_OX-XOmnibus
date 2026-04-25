@@ -58,11 +58,17 @@ inline std::vector<VelocitySplit> getVelocitySplits(XPNVelocityCurve curve, int 
         break;
     case XPNVelocityCurve::Musical:
     default:
-        // Ghost Council Modified zones (adopted 2026-04-04).
-        // Old zone 2 end was 50, old zone 3 start was 51 (replaced).
-        // normVel = zone midpoint / 127: Ghost=10/127≈0.08, Light=38/127≈0.30,
-        //           Medium=73/127≈0.57, Hard=109/127≈0.86.
-        full = {{1, 20, 0.30f, 0.08f}, {21, 55, 0.55f, 0.30f}, {56, 90, 0.75f, 0.57f}, {91, 127, 0.95f, 0.86f}};
+        // Ghost Council Modified zones (adopted 2026-04-04, QDD Level 2).
+        // Zone boundaries: D1 canonical from Tools/xpn_velocity_standard.py ZONES.
+        // normVel = render midpoint / 127, 6 decimal places (RENDER_MIDPOINTS / 127):
+        //   Ghost  vel 10/127 = 0.078740
+        //   Light  vel 38/127 = 0.299213
+        //   Medium vel 73/127 = 0.574803
+        //   Hard  vel 109/127 = 0.858268
+        // CI gate: Tools/ci_check_velocity_parity.py enforces Python↔C++ agreement.
+        // DO NOT edit normVel values here without updating xpn_velocity_standard.py
+        // RENDER_MIDPOINTS and running ci_check_velocity_parity.py to confirm.
+        full = {{1, 20, 0.30f, 0.078740f}, {21, 55, 0.55f, 0.299213f}, {56, 90, 0.75f, 0.574803f}, {91, 127, 0.95f, 0.858268f}};
         break;
     }
 
