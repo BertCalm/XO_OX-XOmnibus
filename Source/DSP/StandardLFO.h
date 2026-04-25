@@ -214,6 +214,13 @@ struct BreathingLFO
 
     void reset() noexcept { phase = 0.0f; }
 
+    /// Set a phase offset in [0, 1) — used for voice staggering so each voice
+    /// breathes on a slightly different part of the cycle.
+    void setPhaseOffset(float offset) noexcept
+    {
+        phase = offset - std::floor(offset); // wrap to [0, 1)
+    }
+
     float phase = 0.0f;
     float phaseInc = 0.0f;
 

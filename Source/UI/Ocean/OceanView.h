@@ -1463,7 +1463,7 @@ private:
             }
         }
 
-        const juce::String& activeTab() const noexcept
+        juce::String activeTab() const noexcept
         {
             return kTabNames[activeIdx_];
         }
@@ -1671,7 +1671,7 @@ private:
                 return "Empty";
             juce::String id = orbits_[slot].getEngineId();
             if (id.length() > 24)
-                id = id.substring(0, 23) + juce::CharPointer_UTF8("\xe2\x80\xa6"); // …
+                id = id.substring(0, 23) + juce::String(juce::CharPointer_UTF8("\xe2\x80\xa6")); // …
             return id;
         };
 
