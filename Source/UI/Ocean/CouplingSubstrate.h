@@ -269,6 +269,16 @@ public:
 
         @param routes  New set of active routes.  The vector is copied.
     */
+    /** Returns the CouplingRoute for the given routeStates_ index, or a default
+        struct if idx is out of range.  Used by OceanView to read source/dest
+        slot indices when opening the coupling config popup. */
+    CouplingRoute getRouteAt(int idx) const noexcept
+    {
+        if (idx >= 0 && idx < static_cast<int>(routeStates_.size()))
+            return routeStates_[idx].route;
+        return {};
+    }
+
     void setRoutes(const std::vector<CouplingRoute>& routes)
     {
         // ── Step 1: mark currently-active (non-fading) routes for removal ──

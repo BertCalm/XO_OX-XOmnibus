@@ -939,6 +939,128 @@ def test_dna_velocity_extreme_values_never_produce_invalid_bands():
 
 
 # ---------------------------------------------------------------------------
+# C1: Ghost layer Volume boost (fix D-U2, issue #1187)
+# ---------------------------------------------------------------------------
+
+def test_ghost_layer_volume_boost_constant_is_approx_6db():
+    """GHOST_LAYER_VOLUME_ROUNDED must be ~2.0 (+6 dB linear boost)."""
+    from xpn_xpm_batch_builder import GHOST_LAYER_VOLUME_ROUNDED, GHOST_LAYER_VOLUME_BOOST_DB
+    import math
+    # 10^(6/20) ≈ 1.9953 — rounded to 2.0
+    expected = round(10 ** (6.0 / 20), 2)
+    assert abs(GHOST_LAYER_VOLUME_ROUNDED - expected) < 1e-6, (
+        f"GHOST_LAYER_VOLUME_ROUNDED={GHOST_LAYER_VOLUME_ROUNDED}, "
+        f"expected ~{expected} (+6 dB linear)"
+    )
+    assert abs(GHOST_LAYER_VOLUME_BOOST_DB - 6.0) < 1e-9, (
+        f"GHOST_LAYER_VOLUME_BOOST_DB={GHOST_LAYER_VOLUME_BOOST_DB}, expected 6.0"
+    )
+
+
+def test_ghost_layer_gets_volume_boost_in_drum_program_layered():
+    """Layer 0 (Ghost) in build_drum_program_layered must have Volume=2.0.
+    All other layers must have Volume=1.0 (unity).
+
+    This is the D-U2 fix: Ghost layer (vel=10/127 ≈ 0.079) renders perceptually
+    faint on hardware; a +6 dB boost compensates without changing D1 midpoints.
+    """
+    import xml.etree.ElementTree as ET
+    from xpn_xpm_batch_builder import build_drum_program_layered, GHOST_LAYER_VOLUME_ROUNDED
+
+    # Build a minimal DEEP program with one pad (kick), one sample per vel layer
+    pads = [
+        {
+            "voice": "kick",
+            "pad": 1,
+            "choke": 0,
+            "samples": [
+                {"file": "Samples/kick/kick_ghost.wav", "vel_layer": 0, "rr_index": 0},
+                {"file": "Samples/kick/kick_light.wav", "vel_layer": 1, "rr_index": 0},
+                {"file": "Samples/kick/kick_medium.wav", "vel_layer": 2, "rr_index": 0},
+                {"file": "Samples/kick/kick_hard.wav",  "vel_layer": 3, "rr_index": 0},
+            ],
+        }
+    ]
+
+    xpm = build_drum_program_layered("Test Ghost Boost", pads, tier="DEEP")
+    root = ET.fromstring(xpm)
+
+    # Locate the kick instrument (slot 0, pad 1)
+    instr = root.find(".//Instrument[@number='0']")
+    assert instr is not None, "Instrument slot 0 not found in XPM"
+
+    active_layers = [
+        layer for layer in instr.findall(".//Layer")
+        if (layer.find("Active") is not None and layer.find("Active").text == "True")
+    ]
+    assert len(active_layers) == 4, (
+        f"Expected 4 active layers for kick, got {len(active_layers)}"
+    )
+
+    for i, layer in enumerate(active_layers):
+        vol_el = layer.find("Volume")
+        assert vol_el is not None, f"Layer {i} missing <Volume> element"
+        vol = float(vol_el.text)
+
+        if i == 0:
+            # Ghost layer — must have the boost
+            assert abs(vol - GHOST_LAYER_VOLUME_ROUNDED) < 1e-4, (
+                f"Ghost layer (layer 0) Volume={vol}, expected {GHOST_LAYER_VOLUME_ROUNDED} "
+                f"(+6 dB boost, fix D-U2 #1187)"
+            )
+        else:
+            # All other layers — must be unity
+            assert abs(vol - 1.0) < 1e-4, (
+                f"Layer {i} Volume={vol}, expected 1.0 (unity). "
+                f"Only Ghost layer (layer 0) should receive the boost."
+            )
+
+
+def test_ghost_volume_boost_is_unity_for_inactive_ghost_layer():
+    """If the Ghost layer has no sample (missing), the inactive placeholder
+    must NOT carry the Volume boost — inactive layers have no Volume tag."""
+    import xml.etree.ElementTree as ET
+    from xpn_xpm_batch_builder import build_drum_program_layered
+
+    pads = [
+        {
+            "voice": "kick",
+            "pad": 1,
+            "choke": 0,
+            "samples": [
+                # Ghost layer missing intentionally
+                {"file": "Samples/kick/kick_light.wav",  "vel_layer": 1, "rr_index": 0},
+                {"file": "Samples/kick/kick_medium.wav", "vel_layer": 2, "rr_index": 0},
+                {"file": "Samples/kick/kick_hard.wav",   "vel_layer": 3, "rr_index": 0},
+            ],
+        }
+    ]
+
+    xpm = build_drum_program_layered("Test Missing Ghost", pads, tier="DEEP")
+    root = ET.fromstring(xpm)
+
+    instr = root.find(".//Instrument[@number='0']")
+    assert instr is not None
+
+    # The first layer (Ghost placeholder) must be inactive — no Volume boost applied
+    all_layers = instr.findall(".//Layer")
+    ghost_layer = all_layers[0] if all_layers else None
+    assert ghost_layer is not None, "No layers found in instrument"
+
+    active_el = ghost_layer.find("Active")
+    assert active_el is not None and active_el.text == "False", (
+        f"Ghost placeholder layer expected Active=False, "
+        f"got Active={active_el.text if active_el is not None else 'missing'}"
+    )
+    # Inactive placeholder must NOT have a Volume element
+    vol_el = ghost_layer.find("Volume")
+    assert vol_el is None, (
+        f"Inactive Ghost placeholder must not carry a <Volume> element, "
+        f"but found Volume={vol_el.text}"
+    )
+
+
+# ---------------------------------------------------------------------------
 # Test runner (same pattern as test_oxport_core.py)
 # ---------------------------------------------------------------------------
 
@@ -982,6 +1104,9 @@ if __name__ == "__main__":
         test_ledger_parameter_renamed,
         test_artwork_engine_set_not_empty,
         test_dna_velocity_extreme_values_never_produce_invalid_bands,
+        test_ghost_layer_volume_boost_constant_is_approx_6db,
+        test_ghost_layer_gets_volume_boost_in_drum_program_layered,
+        test_ghost_volume_boost_is_unity_for_inactive_ghost_layer,
     ]
     passed = 0
     failed = 0

@@ -118,13 +118,19 @@ public:
         // mouseExit instead of calling Slider::isMouseOver() inside paint —
         // on D2D-backed JUCE, isMouseOver() can return the previous frame's
         // value during fast mouse moves and produce a one-frame flicker
-        // (#1185). Falls back to isMouseOver() for sliders that aren't
-        // GalleryKnobs (no property set).
+        // (#1185). When the property exists, use it exclusively so that a
+        // false value on mouse-exit isn't overridden by isMouseOver() returning
+        // the previous frame's true. Only fall back to isMouseOver() for
+        // sliders that aren't GalleryKnobs (no property set).
+        bool hasHoveredProp = false;
         bool hoveredProp = false;
         if (auto* v = slider.getProperties().getVarPointer("hovered"))
+        {
+            hasHoveredProp = true;
             hoveredProp = static_cast<bool>(*v);
+        }
         const bool isPassiveHover = enabled
-            && (hoveredProp || slider.isMouseOver())
+            && (hasHoveredProp ? hoveredProp : slider.isMouseOver())
             && !slider.isMouseButtonDown();
 
         if (enabled && sliderPos > 0.001f)
@@ -227,8 +233,9 @@ public:
         // parameter value without disturbing the control. Reuse the same
         // cached "hovered" property used by the passive-hover fill above so
         // the readout doesn't flicker on fast mouse moves (#1185).
+        const bool isReadoutHovered = hasHoveredProp ? hoveredProp : slider.isMouseOver();
         if (diameter >= 28.0f
-            && (hoveredProp || slider.isMouseOver()
+            && (isReadoutHovered
                 || slider.isMouseButtonDown() || slider.isMouseOverOrDragging()))
         {
             float discR = radius * 0.44f;
@@ -248,11 +255,28 @@ public:
     }
 
     //==========================================================================
-    // Mood pill style helpers
-    // Call this on any TextButton to opt it in to pill rendering.
+    // Button style helpers — set once at construction, read zero-alloc in paint.
+    // Call these on any TextButton to opt it in to the corresponding style.
     static void setMoodPillStyle(juce::TextButton& btn) { btn.getProperties().set("moodPill", true); }
-
     static bool isMoodPill(const juce::Button& btn) { return btn.getProperties()["moodPill"]; }
+
+    // Export button (gold fill) and Panic button (red accent) use property tags
+    // instead of btn.getName() string comparison — avoids allocation per paint frame.
+    static void setExportButtonStyle(juce::TextButton& btn) { btn.getProperties().set("buttonType", juce::String("export")); }
+    static void setPanicButtonStyle(juce::TextButton& btn)  { btn.getProperties().set("buttonType", juce::String("panic")); }
+
+private:
+    static bool isExportButton(const juce::Button& btn)
+    {
+        const juce::var& t = btn.getProperties()["buttonType"];
+        return t.isString() && t.toString() == "export";
+    }
+    static bool isPanicButton(const juce::Button& btn)
+    {
+        const juce::var& t = btn.getProperties()["buttonType"];
+        return t.isString() && t.toString() == "panic";
+    }
+public:
 
     //==========================================================================
     // Button style tagging — O(1) integer lookup instead of per-repaint

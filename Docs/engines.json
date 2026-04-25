@@ -1,15 +1,16 @@
 {
   "_meta": {
     "description": "Machine-readable engine roster for XOceanus. CI/build scripts reference this file to scope QA sweeps, builds, and preset validation.",
-    "last_updated": "2026-04-22",
+    "last_updated": "2026-04-24",
     "status_values": [
       "implemented",
+      "standalone",
       "designed",
       "pending_prefix",
       "pending_directory"
     ],
     "notes": "This file is the single source of truth for engine roster and count. Parameter prefixes are FROZEN \u2014 never change after first registration. XOceanus has no fixed release cutoff. `status` reflects build state: 'implemented' means the engine has both a Source/Engines/ directory AND a frozen prefix in PresetManager.h; 'pending_*' flags work-in-progress. Run Tools/sync_engine_sources.py to regenerate dependent files.",
-    "last_sync": "2026-04-22",
+    "last_sync": "2026-04-24",
     "engine_count": 92,
     "engine_count_total": 111,
     "legacy_dir_aliases": {
@@ -74,7 +75,7 @@
       ],
       "param_prefix": "fat_",
       "header": "Source/Engines/Obese/ObeseEngine.h",
-      "status": "implemented",
+      "status": "standalone",
       "category": "original"
     },
     {
@@ -108,7 +109,7 @@
       "accent_name": "Amber",
       "param_prefix": "bob_",
       "header": "Source/Engines/Oblong/OblongEngine.h",
-      "status": "implemented",
+      "status": "standalone",
       "category": "original"
     },
     {
@@ -258,7 +259,7 @@
       "accent_name": "Neon Tetra Blue",
       "param_prefix": "snap_",
       "header": "Source/Engines/OddfeliX/OddfeliXEngine.h",
-      "status": "implemented",
+      "status": "standalone",
       "category": "mascot"
     },
     {
@@ -278,14 +279,14 @@
       "accent_name": "Axolotl Gill Pink",
       "param_prefix": "morph_",
       "header": "Source/Engines/OddOscar/OddOscarEngine.h",
-      "status": "implemented",
+      "status": "standalone",
       "category": "mascot"
     },
     {
       "id": "Odyssey",
       "param_prefix": "drift_",
       "header": "Source/Engines/Odyssey/OdysseyEngine.h",
-      "status": "implemented",
+      "status": "standalone",
       "accent_color": "#7B2D8B",
       "category": "original"
     },
@@ -367,6 +368,17 @@
       "status": "implemented",
       "accent_color": "#C0392B",
       "category": "chef"
+    },
+    {
+      "id": "Ollotron",
+      "param_prefix": "ollo_",
+      "header": "Source/Engines/Ollotron/OllotronEngine.h",
+      "status": "implemented",
+      "accent_color": "#B07050",
+      "category": "kitchen",
+      "accent_name": "Tape Rust",
+      "polyphony": 16,
+      "description": "Tape-chamber keyboard — Mellotron/Chamberlin/Optigan spiritual descendant. Per-key tape wear, flutter, 8-second authentic cutoff. Partner audio dubs over the tape via AudioToWavetable coupling."
     },
     {
       "id": "Olvido",
@@ -950,7 +962,7 @@
       ],
       "param_prefix": "poss_",
       "header": "Source/Engines/Overbite/OverbiteEngine.h",
-      "status": "implemented",
+      "status": "standalone",
       "category": "original"
     },
     {
@@ -965,7 +977,7 @@
       "id": "Overdub",
       "param_prefix": "dub_",
       "header": "Source/Engines/Overdub/OverdubEngine.h",
-      "status": "implemented",
+      "status": "standalone",
       "accent_color": "#6B7B3A",
       "category": "original"
     },
@@ -1123,6 +1135,62 @@
       "header": "Source/Engines/Oxytocin/OxytocinEngine.h",
       "status": "implemented",
       "category": "circuit"
+    },
+    {
+      "id": "Bite",
+      "param_prefix": "bite_",
+      "header": "Source/Engines/Bite/BiteEngine.h",
+      "status": "implemented",
+      "accent_color": "#888888",
+      "category": "utility"
+    },
+    {
+      "id": "Bob",
+      "param_prefix": "bob_",
+      "header": "Source/Engines/Bob/BobEngine.h",
+      "status": "implemented",
+      "accent_color": "#888888",
+      "category": "utility"
+    },
+    {
+      "id": "Drift",
+      "param_prefix": "drift_",
+      "header": "Source/Engines/Drift/DriftEngine.h",
+      "status": "implemented",
+      "accent_color": "#888888",
+      "category": "utility"
+    },
+    {
+      "id": "Dub",
+      "param_prefix": "dub_",
+      "header": "Source/Engines/Dub/DubEngine.h",
+      "status": "implemented",
+      "accent_color": "#888888",
+      "category": "utility"
+    },
+    {
+      "id": "Fat",
+      "param_prefix": "fat_",
+      "header": "Source/Engines/Fat/FatEngine.h",
+      "status": "implemented",
+      "accent_color": "#888888",
+      "category": "utility"
+    },
+    {
+      "id": "Morph",
+      "param_prefix": "morph_",
+      "header": "Source/Engines/Morph/MorphEngine.h",
+      "status": "implemented",
+      "accent_color": "#888888",
+      "category": "utility"
+    },
+    {
+      "id": "Snap",
+      "param_prefix": "snap_",
+      "header": "Source/Engines/Snap/SnapEngine.h",
+      "status": "implemented",
+      "accent_color": "#888888",
+      "category": "utility"
     }
   ]
 }

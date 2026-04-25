@@ -112,14 +112,19 @@ public:
                        juce::Rectangle<float>(cx - 15.0f, cy - 12.0f, 30.0f, 24.0f).toNearestInt(),
                        juce::Justification::centred, false);
 
-            // Invitation label below the circle (#1168). "Slot N" told the
-            // user nothing about what the circle was for — this at least
-            // communicates that something goes in it.
-            if (slotIndex_ >= 0)
+            // #1168: Invitation text below the circle — depth-zone-aware, no slot numbers.
             {
+                juce::String inviteText;
+                switch (depthZone_)
+                {
+                    case DepthZone::Sunlit:   inviteText = "Drop here to begin"; break;
+                    case DepthZone::Twilight: inviteText = juce::CharPointer_UTF8("Twilight \xc2\xb7 Drop an engine"); break;
+                    case DepthZone::Midnight: inviteText = juce::CharPointer_UTF8("Midnight \xc2\xb7 Drop an engine"); break;
+                    default:                  inviteText = "Drop an engine here"; break;
+                }
                 g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.0f)));
                 g.setColour(ghostCol.withAlpha(0.25f));
-                g.drawText("Drop an engine",
+                g.drawText(inviteText,
                            juce::Rectangle<float>(cx - 60.0f, cy + r + 4.0f, 120.0f, 10.0f).toNearestInt(),
                            juce::Justification::centred, false);
             }

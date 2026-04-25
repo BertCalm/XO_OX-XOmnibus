@@ -117,7 +117,9 @@
 | OOBL | XOobleck | Oobleck Slime `#B4FF39` |
 | OOZE | XOoze | Hydrothermal Teal `#2D5F5D` |
 | OUTCROP | XOutcrop | Mountain Moss `#5B6F57` |
-| ONDA | XOnda | Phosphene Lavender `#B8A0FF` |
+| ONEIRIC | XOneiric | Phosphene Lavender `#B8A0FF` |
+| OLLO | XOllotron | Tape Rust `#B07050` |
+| ONDA | XOnda | Wave Cyan `#00B4D8` |
 
 ## The 43 Blessings
 

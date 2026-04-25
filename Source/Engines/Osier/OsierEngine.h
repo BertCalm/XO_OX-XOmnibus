@@ -90,6 +90,11 @@ struct OsierSaw
 {
     void setFrequency(float freqHz, float sampleRate) noexcept
     {
+        if (freqHz <= 0.0f || sampleRate <= 0.0f) // F25: guard non-positive frequency/SR
+        {
+            phaseInc = 0.0f;
+            return;
+        }
         phaseInc = freqHz / sampleRate;
         if (phaseInc > 0.49f)
             phaseInc = 0.49f;
@@ -216,12 +221,15 @@ struct OsierVoice
     void reset() noexcept
     {
         active = false;
+        currentNote = 60;   // F24: reset stale note number to prevent ghost noteOff matches
         velocity = 0.0f;
         growthMode = false;
         growthPhase = 0.0f;
         growthTimer = 0.0f;
         dormancyPitchCents = 0.0f;
         companionPitchCents = 0.0f;
+        panL = 0.707f;      // F15: reset pan to neutral so a stolen voice has no stale panning
+        panR = 0.707f;
         // Reset cached cutoffs so P19 delta-guards don't suppress the first
         // coefficient update on a freshly stolen or initialised voice.
         lastToneShaperCutoff = -1.0f;
@@ -273,7 +281,9 @@ public:
         }
 
         smoothCutoff.prepare(srf);
+        smoothCutoff.snapTo(5000.0f);        // F14: snap to default so first block has no cutoff ramp
         smoothCompanion.prepare(srf, 0.05f); // slower smoothing
+        smoothCompanion.snapTo(0.4f);        // F14: snap to companion default
 
         accumulators.reset();
         // Chamber: warmth threshold lower (intimate setting warms faster)
@@ -295,6 +305,10 @@ public:
         pitchBendNorm = 0.0f;
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
+        couplingFilterMod = 0.0f; // P14: coupling accumulators must clear on reset
+        couplingPitchMod = 0.0f;
+        couplingCacheL = 0.0f;
+        couplingCacheR = 0.0f;
         accumulators.reset();
         companion.reset();
         network.reset();
@@ -378,7 +392,7 @@ public:
         const float macroSpace = loadP(paramMacroSpace, 0.0f);
 
         const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
-        const float lfo1Depth = loadP(paramLfo1Depth, 0.0f);
+        const float lfo1Depth = loadP(paramLfo1Depth, 0.1f); // F23: fallback matches param default (was 0.0f)
         const int lfo1Shape = static_cast<int>(loadP(paramLfo1Shape, 0.0f));
         const float lfo2Rate = loadP(paramLfo2Rate, 1.0f);
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
@@ -404,10 +418,14 @@ public:
         accumulators.update(blockSizeSec, activeCount, avgVel, noteOnCount);
 
         //-- Effective parameters --
+        // F04/F22: pBrightness was [0,1] multiplied by 6000 — at default 0.5 that
+        // silently added +3000 Hz to every preset, making the cutoff knob's bottom
+        // half inaudible. Map to bipolar [-1,+1] so 0.5 = neutral (no offset).
+        const float brightnessOffset = (pBrightness - 0.5f) * 2.0f; // [-1,+1], neutral at default
         float effectiveCutoff =
             std::clamp(pCutoff + macroChar * 4000.0f + accumulators.getSeasonBrightness() * 1500.0f +
-                           pBrightness * 6000.0f + couplingFilterMod + aftertouchAmount * 2500.0f,
-                       200.0f, 20000.0f);
+                           brightnessOffset * 3000.0f + couplingFilterMod + aftertouchAmount * 2500.0f,
+                       200.0f, srf * 0.49f); // P17: Nyquist ceiling is SR-dependent
         const float effectiveCompanion =
             std::clamp(pCompanion + macroCoupl * 0.4f, 0.0f, 1.0f); // M3 COUPLING: deeper companion affinity
         const float effectiveWidth = 1.0f + macroSpace * 0.6f;      // M4 SPACE: stereo expansion
@@ -475,6 +493,8 @@ public:
             voices[i].lfo2.setShape(lfo2Shape);
         }
 
+        const float invSrf = 1.0f / srf; // F06: precompute reciprocal — avoids per-sample division in growthTimer
+
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
 
@@ -496,6 +516,8 @@ public:
                 float baseFreq = voice.glide.process();
                 float vibrato = voice.vibratoLFO.process() * effectiveVibratoDepth * cfg.vibratoDepthMult;
 
+                // vibrato is LFO output scaled by depth [0,1] and role mult — already in [-1,+1] units.
+                // Multiply by 0.12 semitones/unit → peak ±12 cents chamber-appropriate vibrato depth.
                 float freq = baseFreq * PitchBendUtil::semitonesToFreqRatio(
                                             bendSemitones + blockCouplingPitchMod + vibrato * 0.12f +
                                             voice.dormancyPitchCents / 100.0f + voice.companionPitchCents / 100.0f +
@@ -508,7 +530,7 @@ public:
                 float growthGain = 1.0f;
                 if (voice.growthMode)
                 {
-                    voice.growthTimer += 1.0f / srf;
+                    voice.growthTimer += invSrf; // F06: use precomputed reciprocal
                     voice.growthPhase = std::min(voice.growthTimer / voice.growthDuration, 1.0f);
                     // Chamber voices enter sequentially based on role
                     float roleDelay = static_cast<float>(vi) * 0.15f;
@@ -520,19 +542,22 @@ public:
                     growthGain = effectivePhase * effectivePhase;
                 }
 
-                // 2 detuned saws per voice (thinner than orchestral)
+                // 2 detuned saws per voice (thinner than orchestral).
+                // P25: use fastPow2(±cents/1200) ratio instead of linear freq*cents/1200
+                // offset — the linear form under-detunes by ~0.7 cents at max setting.
                 float oscMix = 0.0f;
                 for (int o = 0; o < OsierVoice::kNumOscs; ++o)
                 {
-                    float detHz = freq * pDetune * (o == 0 ? -1.0f : 1.0f) / 1200.0f;
-                    voice.oscs[o].setFrequency(freq + detHz, srf);
+                    float detCents = pDetune * (o == 0 ? -1.0f : 1.0f);
+                    voice.oscs[o].setFrequency(freq * fastPow2(detCents * (1.0f / 1200.0f)), srf);
                     oscMix += voice.oscs[o].process();
                 }
                 oscMix *= 0.5f;
+                oscMix = flushDenormal(oscMix); // F11: prevent denormal accumulation through filter chain
 
                 // Per-role tonal shaping — each instrument has distinct character
                 float roleCutoff =
-                    std::clamp(cutNow + cfg.filterBiasHz + cfg.brightnessOffset * 2000.0f, 200.0f, 20000.0f);
+                    std::clamp(cutNow + cfg.filterBiasHz + cfg.brightnessOffset * 2000.0f, 200.0f, srf * 0.49f); // P17
                 // P19 guard: roleCutoff changes per voice/block but not every sample
                 if (std::fabs(roleCutoff - voice.lastToneShaperCutoff) > 1.0f)
                 {
@@ -544,7 +569,7 @@ public:
 
                 // Main filter with envelope (env ticked per-sample, SVF decimated)
                 float envLevel = voice.filterEnv.process();
-                float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 2500.0f, 200.0f, 20000.0f);
+                float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 5000.0f + l1 * 2500.0f, 200.0f, srf * 0.49f); // P17
                 // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
                 if (std::fabs(fCut - voice.lastFilterCutoff) > 1.0f)
                 {
@@ -641,6 +666,8 @@ public:
         v.filterEnv.triggerHard();
 
         v.vibratoLFO.reset();
+        v.lfo1.reset(); // F10: reset LFO1/LFO2 phase on retrigger for consistent behaviour
+        v.lfo2.reset();
 
         v.growthMode = isGrowthMode;
         v.growthTimer = 0.0f;
@@ -658,7 +685,9 @@ public:
         // Using idx (allocator slot) was wrong — role is pitch-driven, slot is
         // arbitrary; a Bass note could land in slot 0 and get Soprano's pan.
         static constexpr float kRolePan[4] = {-0.6f, -0.2f, 0.2f, 0.6f};
-        float angle = (kRolePan[static_cast<int>(v.role)] + 1.0f) * 0.25f * 3.14159265f;
+        // F09: use precise pi constant; panning angle maps [-1,+1] to [0, π/2]
+        constexpr float kHalfPi = 1.5707963267948966f;
+        float angle = (kRolePan[static_cast<int>(v.role)] + 1.0f) * 0.5f * kHalfPi;
         v.panL = std::cos(angle);
         v.panR = std::sin(angle);
     }

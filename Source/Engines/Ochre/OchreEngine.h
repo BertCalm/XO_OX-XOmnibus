@@ -165,10 +165,13 @@ struct OchreHammerModel
 
             // Caramel saturation: gentle waveshaping that sweetens under pressure
             // Copper saucepan → caramelization mapping. Not distortion — transformation.
+            // P30 fix: normalise tanh denominator so small-signal gain stays ≤ 1×.
             if (caramelAmount > 0.01f)
             {
-                float driven = out * (1.0f + caramelAmount * 4.0f);
-                out = out * (1.0f - caramelAmount * 0.5f) + xoceanus::fastTanh(driven) * caramelAmount * 0.5f;
+                float hammerDriveAmt = 1.0f + caramelAmount * 4.0f;
+                float driven = out * hammerDriveAmt;
+                float hammerNorm = std::max(xoceanus::fastTanh(hammerDriveAmt), 1.0f);
+                out = out * (1.0f - caramelAmount * 0.5f) + xoceanus::fastTanh(driven) / hammerNorm * caramelAmount * 0.5f;
             }
         }
         else
@@ -220,7 +223,7 @@ struct OchreMode
             return;
         float w = 2.0f * 3.14159265f * freqHz / sampleRate;
         float bw = freqHz / std::max(q, 1.0f);
-        float r = std::exp(-3.14159265f * bw / sampleRate);
+        float r = fastExp(-3.14159265f * bw / sampleRate);
         a1 = 2.0f * r * fastCos(w);
         a2 = r * r;
         b0 = (1.0f - r * r) * fastSin(w);
@@ -514,6 +517,8 @@ public:
 
             // F01/F11: hfNoiseShaper mode is block-constant — set once here.
             voices[i].hfNoiseShaper.setMode(CytomicSVF::Mode::BandPass);
+            // lpf mode is always LowPass — set once in prepare() and again on noteOn.
+            voices[i].lpf.setMode(CytomicSVF::Mode::LowPass);
 
             // F08: derive HF noise burst decay from sample rate (~45ms at any sr).
             // Was hardcoded 0.9995f → decay time halved at 96kHz vs 44.1kHz.
@@ -556,6 +561,24 @@ public:
         aftertouchAmount = 0.0f;
         thermalState = 0.0f;
         thermalTarget = 0.0f;
+        thermalTimer = 0; // F31: prevent thermal target firing immediately after reset
+
+        // F30: snap parameter smoothers to current param values so a reset() mid-song
+        // doesn't leave stale smoothed state (e.g. old brightness filter coasting in).
+        auto snapP = [](std::atomic<float>* p, float def) { return p ? p->load(std::memory_order_relaxed) : def; };
+        smoothConductivity.snapTo(snapP(paramConductivity, 0.5f));
+        smoothHardness.snapTo(snapP(paramHardness, 0.4f));
+        smoothBodyDepth.snapTo(snapP(paramBodyDepth, 0.4f));
+        smoothBrightness.snapTo(snapP(paramBrightness, 10000.0f));
+        smoothSympathy.snapTo(snapP(paramSympathy, 0.2f));
+        smoothCaramel.snapTo(snapP(paramCaramel, 0.3f));
+
+        // Zero coupling accumulators on full reset
+        couplingFilterMod = 0.0f;
+        couplingPitchMod = 0.0f;
+        couplingConductivityMod = 0.0f;
+        couplingCacheL = 0.0f;
+        couplingCacheR = 0.0f;
     }
 
     float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
@@ -647,7 +670,7 @@ public:
         float effectiveHardness = std::clamp(pHardness + macroCharacter * 0.3f + aftertouchAmount * 0.4f, 0.0f, 1.0f);
         float effectiveBodyDepth = std::clamp(pBodyDepth + macroSpace * 0.4f, 0.0f, 1.0f);
         float effectiveBrightness = std::clamp(
-            pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, 20000.0f);
+            pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, srf * 0.49f);
         float effectiveSympathy = std::clamp(pSympathy + macroCoupling * 0.4f, 0.0f, 1.0f);
         float effectiveCaramel = std::clamp(pCaramel + macroMovement * 0.3f, 0.0f, 1.0f);
 
@@ -706,6 +729,9 @@ public:
             voice.lfo1.setShape(lfo1Shape);
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
+            // Hoist body type — constant within a block; delta-guarded inside setBodyType().
+            // Calling per-sample adds 8 function calls/sample with no audio benefit.
+            voice.body.setBodyType(pBodyType);
         }
 
         // Hoist pitch-bend ratio; uses the pre-reset snapshot (#1118).
@@ -796,17 +822,21 @@ public:
                 }
 
                 // Caramel saturation — post-resonator (Pillar 4)
+                // P30 fix: normalise tanh denominator so small-signal gain stays ≤ 1×.
+                // Without the denominator fastTanh(drive*x)≈drive*x at low levels, giving
+                // a gain of (1-0.4c) + (1+6c)*0.4c = 1 + 2c²·... >> 1. Dividing by
+                // max(fastTanh(driveAmt), 1.0f) maps the linear region back to unity.
                 if (caramelNow > 0.01f)
                 {
-                    float driven = resonanceSum * (1.0f + caramelNow * 6.0f);
-                    resonanceSum = resonanceSum * (1.0f - caramelNow * 0.4f) + fastTanh(driven) * caramelNow * 0.4f;
+                    float driveAmt = 1.0f + caramelNow * 6.0f;
+                    float driven = resonanceSum * driveAmt;
+                    float norm = std::max(fastTanh(driveAmt), 1.0f);
+                    resonanceSum = resonanceSum * (1.0f - caramelNow * 0.4f) + fastTanh(driven) / norm * caramelNow * 0.4f;
                 }
 
                 // Body resonance (Pillar 5)
-                // F03: setFundamental(freq, type) removed — body frequencies are
-                // type-only constants (do not depend on played note). Delta-guarded
-                // setBodyType() skips the 3 setFreqAndQ calls when type is unchanged.
-                voice.body.setBodyType(pBodyType);
+                // setBodyType() hoisted to per-block voice loop above; body type is
+                // block-constant, so calling it per-sample is redundant overhead.
                 float bodied = voice.body.process(resonanceSum, bodyDNow);
 
                 // Amplitude envelope — copper decays faster than iron.
@@ -826,11 +856,11 @@ public:
 
                 // Filter envelope + LFO1 → brightness (env ticked per-sample)
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
-                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
+                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, srf * 0.49f);
                 // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz
+                // lpf mode is LowPass (set once on noteOn) — no per-sample setMode needed.
                 if (std::fabs(cutoff - voice.lastFilterCutoff) > 1.0f)
                 {
-                    voice.lpf.setMode(CytomicSVF::Mode::LowPass);
                     voice.lpf.setCoefficients(cutoff, 0.4f, srf);
                     voice.lastFilterCutoff = cutoff;
                 }
@@ -843,11 +873,14 @@ public:
                 // in and out — like heat fluctuating in the saucepan, the saturation
                 // character breathes. lfo2Val range +-lfo2Depth, mapped to +-0.35 caramel.
                 // D004: this wire makes LFO2 audible at any non-zero depth setting.
+                // P30 fix: normalise tanh denominator (same pattern as post-resonator caramel).
                 if (lfo2Val != 0.0f && caramelNow > 0.001f)
                 {
                     float animatedCaramel = std::clamp(caramelNow + lfo2Val * 0.35f, 0.0f, 1.0f);
-                    float driven2 = output * (1.0f + animatedCaramel * 6.0f);
-                    output = output * (1.0f - animatedCaramel * 0.4f) + fastTanh(driven2) * animatedCaramel * 0.4f;
+                    float driveAmt2 = 1.0f + animatedCaramel * 6.0f;
+                    float driven2 = output * driveAmt2;
+                    float norm2 = std::max(fastTanh(driveAmt2), 1.0f);
+                    output = output * (1.0f - animatedCaramel * 0.4f) + fastTanh(driven2) / norm2 * animatedCaramel * 0.4f;
                 }
 
                 mixL += output * voice.panL;
@@ -916,6 +949,10 @@ public:
         // Reset the SVF state here so stale history doesn't colour the burst.
         v.hfNoiseShaper.reset();
         v.lastHFCutoff = -1.0f; // force coefficient update on first HF sample
+
+        // Hoist lpf mode — LowPass is the only mode used; set once on noteOn rather
+        // than redundantly per-sample inside the render loop.
+        v.lpf.setMode(CytomicSVF::Mode::LowPass);
 
         // F05: removed redundant v.body.prepare(srf) — already called in engine prepare().
         // F03: setFundamental(freq, type) replaced with setBodyType(type) — body

@@ -265,7 +265,9 @@ The 6 Doctrines are the quality contract every XOceanus engine must satisfy. The
 | **OPSIN** | XOpsin | Bioluminescent Cyan `#00FFCC` | `ops_` |
 | **OORT** | XOort | Oort Cloud Violet `#9B7FD4` | `oort_` |
 | **OUTCROP** | XOutcrop | Mountain Moss `#5B6F57` | `outc_` |
-| **ONDA** | XOnda | Phosphene Lavender `#B8A0FF` | `oner_` |
+| **ONEIRIC** | XOneiric | Phosphene Lavender `#B8A0FF` | `oner_` |
+| **OLLOTRON** | XOllotron | Tape Rust `#B07050` | `ollo_` |
+| **ONDA** | XOnda | Wave Cyan `#00B4D8` | `ond_` |
 
 ### 3.2 Engine Visual Identity
 

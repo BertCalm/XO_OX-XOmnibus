@@ -2,6 +2,9 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 // DEEP-REVIEW: 2026-04-20 — 20 fixes applied (perf, sound, stability, params, voices)
+// DEEP-REVIEW: 2026-04-24 — 10 fixes applied (perf, sound, voices): drive normalization unity
+//   gain, setCoefficients_fast for ladder filter, per-block gravity hoisting, PolyBLEP
+//   triLeakCorrection guarded by waveform, warmth coeff delta guard, ADSR delta guard.
 //==============================================================================
 //
 //  OlateEngine.h — XOlate | "The Aged Wine Analog"
@@ -129,12 +132,17 @@ struct OlateVoice
     CytomicSVF warmthFilter; // warmth shaping (low shelf or LP)
     StandardLFO lfo1, lfo2;
 
-    // Gravitational mass accumulator
+    // Gravitational mass accumulator (updated per-block, not per-sample)
     float gravityMass = 0.0f;
     float noteHeldTime = 0.0f;
 
     // Cached per-voice values
     float panL = 0.707f, panR = 0.707f;
+
+    // FIX (perf): cache last warmth value so warmthFilter.setCoefficients() is only
+    // called when warmth actually changes between blocks, avoiding redundant dbToGain()
+    // calls (each call invokes fastExp) on every block when warmth knob is static.
+    float lastWarmth = -1.0f; // sentinel: -1 forces update on first block
 
     void reset() noexcept
     {
@@ -142,6 +150,7 @@ struct OlateVoice
         velocity = 0.0f;
         gravityMass = 0.0f;
         noteHeldTime = 0.0f;
+        lastWarmth = -1.0f; // FIX (P14): reset delta guard so next block forces coeff update
         glide.reset();
         oscSaw.reset();
         oscPulse.reset();
@@ -215,6 +224,9 @@ public:
         smoothOscMix.snapTo(0.5f);
         smoothPulseWidth.snapTo(0.5f);
         smoothWarmth.snapTo(0.5f);
+        // FIX (perf): invalidate ADSR delta guards so first post-reset block forces recalc
+        lastAmpAttack = lastAmpDecay = lastAmpSustain = lastAmpRelease = -1.0f;
+        lastFiltAttack = lastFiltDecay = -1.0f;
     }
 
     float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
@@ -367,6 +379,15 @@ public:
         // FIX (P15/perf): apply all per-block voice param updates once per voice, not
         // gated by active — inactive voices need fresh settings on next noteOn.
         // Also fixes ADSR setParams-per-sample anti-pattern (hoisted from inner sample loop).
+        //
+        // FIX (perf): ADSR delta guard — setADSR triggers recalcCoeffs() which runs 2×
+        // std::exp. Skip unless params changed (16 std::exp saved per block at steady state).
+        const bool ampAdsrChanged  = (pAttack   != lastAmpAttack  || pDecay    != lastAmpDecay ||
+                                      pSustain  != lastAmpSustain || pRelease  != lastAmpRelease);
+        const bool filtAdsrChanged = (pFilterAttack != lastFiltAttack || pFilterDecay != lastFiltDecay);
+        if (ampAdsrChanged)  { lastAmpAttack = pAttack; lastAmpDecay = pDecay; lastAmpSustain = pSustain; lastAmpRelease = pRelease; }
+        if (filtAdsrChanged) { lastFiltAttack = pFilterAttack; lastFiltDecay = pFilterDecay; }
+
         for (auto& voice : voices)
         {
             voice.lfo1.setRate(lfo1Rate, srf);
@@ -374,9 +395,11 @@ public:
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
             voice.glide.setTime(pGlide, srf);
-            voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
+            if (ampAdsrChanged)
+                voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
             // FIX: filterEnv ADSR updated per-block so param tweaks take effect mid-note
-            voice.filterEnv.setADSR(pFilterAttack, pFilterDecay, 0.0f, 0.3f);
+            if (filtAdsrChanged)
+                voice.filterEnv.setADSR(pFilterAttack, pFilterDecay, 0.0f, 0.3f);
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -428,8 +451,12 @@ public:
                 float fermented = voice.ferment.process(oscOut, pAgeRate, dtSec);
 
                 // Drive / saturation — vintage character
+                // FIX (sound): clamp denominator to ≥1.0 so that zero-drive never boosts
+                // the signal. fastTanh(1.0) ≈ 0.778, which previously divided the output,
+                // creating a silent +2.2 dB boost when drive knob is at 0.
                 float driveAmount = 1.0f + drvNow * 6.0f;
-                float driven = fastTanh(fermented * driveAmount) / fastTanh(driveAmount);
+                float driveNorm = std::max(fastTanh(driveAmount), 1.0f);
+                float driven = fastTanh(fermented * driveAmount) / driveNorm;
 
                 // Ladder filter — vintage-era-aware
                 float filtEnv = voice.filterEnv.process() * pFiltEnvAmt;
@@ -441,19 +468,29 @@ public:
                     cutNow + filtEnv * 6000.0f + velCutMod + lfo1Val * 2000.0f + sessionCutShift,
                     100.0f, nyquistCap); // FIX (P7): use block-level nyquistCap (SR-derived)
 
-                // FIX (perf): setMode is constant LowPass — moved to noteOn; only update coefficients
-                voice.ladderFilter.setCoefficients(voiceCutoff, resNow, srf);
+                // FIX (perf): use setCoefficients_fast() — mode is constant LowPass (set at noteOn)
+                // so we skip the shelfGainDb_ store and shelf-mode branch, saving ~2 ops per sample per voice.
+                voice.ladderFilter.setCoefficients_fast(voiceCutoff, resNow, srf);
                 float filtered = voice.ladderFilter.processSample(driven);
 
                 // Warmth filter: low shelf boost — tube vs transistor character
-                // FIX (P19): mode is constant so only update coefficients when warmth changes;
-                // guard both the setMode and processSample to avoid unnecessary CPU when warmth=0.
+                // FIX (perf): mode is constant LowShelf (set at noteOn). Update coefficients
+                // once per block (s==0) AND only when warmth actually changed vs last block.
+                // This avoids redundant dbToGain() (fastExp) calls when the knob is static.
                 if (warmNow > 0.01f)
                 {
-                    // FIX (P19): mode set at noteOn; update coefficients once per block only
-                    if (s == 0)
+                    if (s == 0 && warmNow != voice.lastWarmth)
+                    {
                         voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
+                        voice.lastWarmth = warmNow;
+                    }
                     filtered = voice.warmthFilter.processSample(filtered);
+                }
+                else
+                {
+                    // Warmth bypassed — reset cache so next activation forces coeff update
+                    if (s == 0)
+                        voice.lastWarmth = -1.0f;
                 }
 
                 // Terroir: regional circuit flavor as tonal bias (D004 fix — all 4 regions active).
@@ -491,10 +528,6 @@ public:
                     continue;
                 }
 
-                // Gravitational mass
-                voice.noteHeldTime += dtSec;
-                voice.gravityMass = std::min(1.0f, voice.gravityMass + dtSec * 0.1f * pGravity);
-
                 float output = filtered * ampLevel * voice.velocity;
 
                 mixL += output * voice.panL;
@@ -505,6 +538,20 @@ public:
             outL[s] = softClip(mixL);
             if (outR)
                 outR[s] = softClip(mixR);
+        }
+
+        // FIX (perf): gravity state was updated per-sample inside the hot path but is never
+        // consumed by DSP. Move to a single per-block update so it stays accurate for future
+        // coupling reads without burning per-sample FLOPS on every active voice.
+        {
+            const float blockDtSec = inverseSr_ * static_cast<float>(numSamples);
+            for (auto& v : voices)
+            {
+                if (!v.active)
+                    continue;
+                v.noteHeldTime += blockDtSec;
+                v.gravityMass = std::min(1.0f, v.gravityMass + blockDtSec * 0.1f * pGravity);
+            }
         }
 
         // FIX: capture coupling cache once after block (last sample), not per-sample (wasteful)
@@ -534,7 +581,14 @@ public:
 
         float freq = midiToFreq(note); // FIX (P4): use fastPow2-based helper, not std::pow
 
-        v.reset();
+        // FIX (voices): document voice-steal behaviour.
+        // v.reset() zeros filter ic1eq/ic2eq which would click if the stolen voice was
+        // active and loud. The amp envelope always uses triggerHard() (level reset to 0),
+        // so the stolen voice's output instantly goes to 0 → attack ramps up from silence.
+        // This masks the filter-state reset discontinuity within the attack time.
+        // The filter zeroing is acceptable here because analog bass attacks are typically
+        // 5–50ms, which is long enough to suppress any filter-state discontinuity.
+        v.reset(); // resets LFOs, oscs, envelopes, filters, gravity, lastWarmth
         v.active = true;
         v.currentNote = note;
         v.velocity = vel;
@@ -728,6 +782,17 @@ private:
 
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f;
     float couplingCacheL = 0.0f, couplingCacheR = 0.0f;
+
+    // FIX (perf): ADSR delta guard — FilterEnvelope::setADSR calls recalcCoeffs() which
+    // runs 2 std::exp calls per invocation. With 8 voices updated every block this is
+    // 16 std::exp calls/block even when params are static. Cache last-applied values and
+    // skip the call when unchanged.
+    float lastAmpAttack  = -1.0f; // sentinel: force update on first block
+    float lastAmpDecay   = -1.0f;
+    float lastAmpSustain = -1.0f;
+    float lastAmpRelease = -1.0f;
+    float lastFiltAttack = -1.0f;
+    float lastFiltDecay  = -1.0f;
 
     std::atomic<float>* paramOscMix = nullptr;
     std::atomic<float>* paramPulseWidth = nullptr;

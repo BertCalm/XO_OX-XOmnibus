@@ -181,6 +181,15 @@ struct OmegaVoice
 
     float panL = 0.707f, panR = 0.707f;
 
+    // DC blocker (one-pole high-pass). FM synthesis with asymmetric mod index
+    // can produce a DC-offset carrier output, particularly at high feedback
+    // and non-integer ratios. Sub-bass engines are especially vulnerable since
+    // even a small DC offset adds to every rendered sample and can saturate
+    // downstream limiters. Coefficient: 1 - 2π*10Hz/SR (matched-Z, ~10 Hz corner).
+    // Updated per block in prepare() / renderBlock() via dcBlockCoeff.
+    float dcX1 = 0.0f; // one-sample delay (input)
+    float dcY1 = 0.0f; // one-sample delay (output)
+
     void reset() noexcept
     {
         active = false;
@@ -197,6 +206,8 @@ struct OmegaVoice
         lfo1.reset();
         lfo2.reset();
         noiseState = 12345u;
+        dcX1 = 0.0f;
+        dcY1 = 0.0f;
     }
 };
 
@@ -242,6 +253,10 @@ public:
         smoothRatio.prepare(srf);
         smoothFeedback.prepare(srf);
         smoothPurity.prepare(srf);
+
+        // DC blocker coefficient: matched-Z design, 10 Hz corner frequency.
+        // 1 - 2π * fcHz / SR (never hardcode 0.9997f — that is SR-specific).
+        dcBlockCoeff = 1.0f - (6.28318530718f * 10.0f / srf);
 
         prepareSilenceGate(sr, maxBlockSize, 300.0f);
     }
@@ -356,20 +371,19 @@ public:
 
         // D006: mod wheel → mod index, aftertouch → feedback
         float effectiveModIndex = std::clamp(pModIndex + macroChar * 3.0f + modWheelAmount * 4.0f, 0.0f, 20.0f);
-        float effectiveFeedback = std::clamp(pFeedback + aftertouchAmount * 0.3f + macroMove * 0.2f, 0.0f, 1.0f);
-        float effectiveBright = std::clamp(pBrightness + macroChar * 4000.0f + couplingFilterMod, 200.0f, 20000.0f);
+        float effectiveFeedback = std::clamp(pFeedback + aftertouchAmount * 0.3f + macroMove * 0.5f, 0.0f, 1.0f);
+        const float nyquistMax = srf * 0.49f; // P17: SR-aware ceiling (works at 44.1/48/96 kHz)
+        float effectiveBright = std::clamp(pBrightness + macroChar * 4000.0f + couplingFilterMod, 200.0f, nyquistMax);
 
         smoothModIndex.set(effectiveModIndex);
         smoothRatio.set(effectiveRatio);
         smoothFeedback.set(effectiveFeedback);
         smoothPurity.set(pPurity);
 
-        // Snapshot pitch coupling before reset (#1118).
+        // Snapshot coupling mods before zeroing — sample loop reads locals,
+        // not the class members (which are cleared for the next applyCouplingInput cycle).
         const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
-        // P25: capture pitch coupling before zeroing — sample loop reads the local,
-        // not the class member (which is now 0 for the next applyCouplingInput cycle).
-        const float capturedPitchMod = couplingPitchMod;
         couplingPitchMod = 0.0f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
@@ -441,8 +455,7 @@ public:
                 // panL/panR precomputed before sample loop (CPU fix 2 — block-constant).
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
-                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
+                freq *= blockBendRatio; // bend + coupling pitch mod, hoisted per-block
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
@@ -498,12 +511,20 @@ public:
                 // D001: velocity shapes FM brightness (more velocity = brighter attack)
                 float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 5000.0f;
-                float cutoff = std::clamp(effectiveBright + velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
+                float cutoff = std::clamp(effectiveBright + velBright + envMod + lfo2Val * 2000.0f, 200.0f, nyquistMax);
 
                 // F2/P19: use fast path — mode is set block-rate; setCoefficients_fast
                 // uses fastTan (~0.03% error) vs std::tan, avoiding trig per-sample-per-voice.
                 voice.outputFilter.setCoefficients_fast(cutoff, 0.2f, srf);
                 float filtered = voice.outputFilter.processSample(carrierOut);
+
+                // DC blocker: one-pole highpass at ~10 Hz. FM synthesis can produce
+                // a DC-biased output at high mod index / non-integer ratios.
+                // y[n] = x[n] - x[n-1] + R * y[n-1]   (matched-Z highpass)
+                float dcIn = filtered;
+                filtered = dcIn - voice.dcX1 + dcBlockCoeff * voice.dcY1;
+                voice.dcX1 = dcIn;
+                voice.dcY1 = filtered;
 
                 // Amplitude envelope
                 float ampLevel = voice.ampEnv.process();
@@ -547,7 +568,9 @@ public:
 
     void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
+        // Prefer stealing releasing voices to avoid cutting off sustaining bass notes.
+        int idx = VoiceAllocator::findFreeVoicePreferRelease(voices, kMaxVoices,
+            [](const OmegaVoice& v) { return v.active && !v.ampEnv.isActive(); });
         auto& v = voices[idx];
 
         float freq = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f); // P4: fastPow2 vs std::pow
@@ -715,6 +738,7 @@ private:
     double sr = 0.0;   // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
     float inverseSr_ = 0.0f; // Sentinel: initialised in prepare(). 0.0 means dtSec=0 until then (safe — render won't run before prepare()).
+    float dcBlockCoeff = 0.9986f; // Computed in prepare() via 1 - 2π*10Hz/SR. Default approximates 44.1 kHz.
 
     std::array<OmegaVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

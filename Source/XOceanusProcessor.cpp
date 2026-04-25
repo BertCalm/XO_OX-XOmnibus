@@ -106,7 +106,9 @@
 #include "Engines/Ostracon/OstraconEngine.h"
 // OUTCROP — wave-terrain synthesis (engine #89)
 #include "Engines/Outcrop/OutcropEngine.h"
-// ONDA — NLS soliton synthesis (engine #90; formerly Oneiric)
+// OLLOTRON — tape-chamber keyboard synthesis (engine #91)
+#include "Engines/Ollotron/OllotronEngine.h"
+// ONDA — NLS soliton synthesis (engine #92; formerly Oneiric)
 #include "Engines/Onda/OndaEngine.h"
 #include "DSP/Effects/MathFXChain.h"
 #include "DSP/Effects/BoutiqueFXChain.h"
@@ -385,6 +387,11 @@ static bool registered_Onda =
     xoceanus::EngineRegistry::instance().registerEngine("Onda", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OndaEngine>(); });
 
+// OLLOTRON — tape-chamber keyboard synthesis (engine #91)
+static bool registered_Ollotron =
+    xoceanus::EngineRegistry::instance().registerEngine("Ollotron", []() -> std::unique_ptr<xoceanus::SynthEngine>
+                                                        { return std::make_unique<xoceanus::OllotronEngine>(); });
+
 namespace xoceanus
 {
 
@@ -587,7 +594,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     OutflowEngine::addParameters(params);
     // OUTCROP — wave-terrain synthesis (engine #89)
     OutcropEngine::addParameters(params);
-    // ONDA — NLS soliton synthesis (engine #90; formerly Oneiric)
+    // OLLOTRON — tape-chamber keyboard synthesis (engine #91)
+    xoceanus::OllotronEngine::addParameters(params);
+    // ONDA — NLS soliton synthesis (engine #92; formerly Oneiric)
     OndaEngine::addParameters(params);
 
     // ── Three FX suites wired as optional stages in MasterFXChain (issue #153) ──

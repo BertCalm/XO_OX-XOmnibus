@@ -116,10 +116,10 @@ public:
             const float bw = static_cast<float>(bounds.getWidth());
             const float bh = static_cast<float>(bounds.getHeight());
             const float breatheX = (std::sin(waveTime_ * 1.2f) * 0.5f + 0.5f) * bw;
-            // Alpha raised from 0.032 → 0.06 so the teal warmth reads prominently
-            // on the brighter baseline gradient even before any audio is playing.
+            // Alpha raised from 0.06 → 0.28: radial gradient fades to transparent,
+            // so peak at 0.28 reads as a visible ambient warmth without flooding the scene.
             juce::ColourGradient breatheGrad(
-                juce::Colour(60, 180, 170).withAlpha(0.06f),
+                juce::Colour(60, 180, 170).withAlpha(0.28f),
                 breatheX, bh * 0.5f,
                 juce::Colours::transparentBlack,
                 breatheX + bw * 0.4f, bh * 0.5f, true);
@@ -395,25 +395,24 @@ private:
                              float cx, float cy,
                              float halfMin) const
     {
-        // Depth zones are the spatial organizing principle of the instrument —
-        // they need to be visible, not implied. The middle zone is held
-        // slightly lower than the bookends so the boundary transitions read
-        // as gradients rather than three hard bands.
+        // Sunlit zone — warm cyan tint.
         {
             const float r = kSunlitRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.14f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.16f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
+        // Twilight zone — blue tint.
         {
             const float r = kTwilightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.10f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.13f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
+        // Midnight zone — violet tint.
         {
             const float r = kMidnightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.14f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.15f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
     }

@@ -5,6 +5,7 @@
 #include "../Core/PresetManager.h"
 #include "../Engines/Onset/OnsetEngine.h"
 #include "XPNCoverArt.h"
+#include "XPNVelocityCurves.h"
 
 namespace xoceanus
 {
@@ -26,11 +27,13 @@ namespace xoceanus
 //   V7 Percussion   → Note 43 (G2)
 //   V8 FX/Cymbal    → Note 49 (C#3)
 //
-// Velocity layers per pad:
-//   Layer 1: vel 1–31   (ghost)
-//   Layer 2: vel 32–63  (soft)
-//   Layer 3: vel 64–95  (medium)
-//   Layer 4: vel 96–127 (hard)
+// Velocity layers per pad (D1 Ghost Council Modified zones, QDD 2026-04-04):
+//   Layer 1: vel 1–20   (ghost)   — render midpoint vel 10  (~0.079 normalised)
+//   Layer 2: vel 21–55  (light)   — render midpoint vel 38  (~0.299 normalised)
+//   Layer 3: vel 56–90  (medium)  — render midpoint vel 73  (~0.575 normalised)
+//   Layer 4: vel 91–127 (hard)    — render midpoint vel 109 (~0.858 normalised)
+// Zone boundaries and render midpoints are the canonical values from
+// Tools/xpn_velocity_standard.py and Tools/xpn-spec.json.
 //
 class XPNDrumExporter
 {
@@ -305,17 +308,33 @@ private:
 
     //==========================================================================
     // Velocity mapping for drum layers
+    //
+    // Delegates to XPNVelocityCurves::getVelocitySplits(Musical) so that all
+    // C++ exporters stay in sync with a single definition.
+    //
+    // D1 Ghost Council Modified render midpoints (midpoint / 127, 6 d.p.):
+    //   Ghost  vel 10/127 = 0.078740
+    //   Light  vel 38/127 = 0.299213
+    //   Medium vel 73/127 = 0.574803
+    //   Hard  vel 109/127 = 0.858268
+    //
+    // Source of truth: Tools/xpn_velocity_standard.py + Tools/xpn-spec.json
+    // CI gate: Tools/ci_check_velocity_parity.py enforces Python↔C++ agreement.
     //==========================================================================
 
     static float velocityForDrumLayer(int layer)
     {
-        // ghost, soft, medium, hard
-        static constexpr float vels[] = {0.2f, 0.5f, 0.75f, 1.0f};
-        return vels[juce::jlimit(0, 3, layer)];
+        // Delegate to XPNVelocityCurves Musical table — single source of truth in C++.
+        return renderVelocityForLayer(juce::jlimit(0, 3, layer), kVelLayers,
+                                      XPNVelocityCurve::Musical);
     }
 
     //==========================================================================
     // Velocity ranges per layer
+    //
+    // D1 Ghost Council Modified zones (QDD 2026-04-04) — canonical in
+    // Tools/xpn_velocity_standard.py.  Delegates to XPNVelocityCurves so the
+    // boundary table is not duplicated.
     //==========================================================================
 
     struct VelRange
@@ -326,8 +345,11 @@ private:
 
     static VelRange velRangeForLayer(int layer)
     {
-        static constexpr VelRange ranges[kVelLayers] = {{1, 31}, {32, 63}, {64, 95}, {96, 127}};
-        return ranges[juce::jlimit(0, 3, layer)];
+        // D1 zones: Ghost [1,20], Light [21,55], Medium [56,90], Hard [91,127]
+        // Sourced from XPNVelocityCurves::Musical — do not hardcode here.
+        auto splits = getVelocitySplits(XPNVelocityCurve::Musical, kVelLayers);
+        int idx = juce::jlimit(0, (int)splits.size() - 1, layer);
+        return {splits[(size_t)idx].start, splits[(size_t)idx].end};
     }
 
     //==========================================================================
@@ -695,15 +717,24 @@ private:
 
     static void writeManifest(const juce::File& bundleDir, const DrumExportConfig& config, int presetCount)
     {
-        juce::XmlElement manifest("Expansion");
-        manifest.setAttribute("Name", config.name);
-        manifest.setAttribute("Manufacturer", config.manufacturer);
-        manifest.setAttribute("Version", config.version);
-        manifest.setAttribute("ID", config.bundleId);
-        manifest.setAttribute("Type", "Drums");
-        manifest.setAttribute("PresetCount", presetCount);
+        // XPN bible §1: manifest must live at Expansions/manifest (no extension),
+        // plain-text Key=Value format — NOT XML at bundle root.
+        auto expansionsDir = bundleDir.getChildFile("Expansions");
+        expansionsDir.createDirectory();
 
-        manifest.writeTo(bundleDir.getChildFile("Manifest.xml"));
+        auto manifestFile = expansionsDir.getChildFile("manifest");
+
+        juce::String content;
+        content << "Name=" << config.name << "\n";
+        content << "Version=" << config.version << "\n";
+        content << "Author=" << config.manufacturer << "\n";
+        content << "Description=Drum expansion featuring ONSET engine presets\n";
+        content << "Category=Drums\n";
+        content << "Tags=drums,percussion,xo_ox\n";
+        content << "ID=" << config.bundleId << "\n";
+        content << "PresetCount=" << presetCount << "\n";
+
+        manifestFile.replaceWithText(content);
     }
 
     //==========================================================================

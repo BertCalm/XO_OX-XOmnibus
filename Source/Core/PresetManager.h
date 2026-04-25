@@ -95,6 +95,8 @@ inline const juce::StringArray validEngineNames{
     "Obiont",
     // Age-based corrosion synthesis
     "Oxidize",
+    // Tape-chamber keyboard synthesis
+    "Ollotron",
     // NLS Soliton Synthesis (formerly Oneiric; renamed 2026-04-22)
     "Onda",
     // Legacy aliases (kept for backward preset compatibility)
@@ -278,6 +280,8 @@ inline juce::String frozenPrefixForEngine(const juce::String& engineId)
         {"Oobleck", "oobl_"},
         // Fluid Dynamics Synthesis
         {"Ooze", "ooze_"},
+        // Tape-chamber keyboard synthesis
+        {"Ollotron", "ollo_"},
         // NLS Soliton Synthesis (engine #90; renamed from Oneiric 2026-04-22)
         // Prefix stays oner_ — frozen for preset compatibility.
         {"Onda", "oner_"},

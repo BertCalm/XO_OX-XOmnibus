@@ -86,9 +86,9 @@ public:
         waveBufferR_[head] = r;
 
         // Advance head with release semantics so paint() sees buffered writes before new index.
+        // Use store(release) directly — fence+relaxed is NOT a release sequence on ARM (Apple Silicon).
         int next = (head + 1) % kWaveLen;
-        std::atomic_thread_fence(std::memory_order_release);
-        waveHead_.store(next, std::memory_order_relaxed);
+        waveHead_.store(next, std::memory_order_release);
 
         lastPushMs_ = juce::Time::getMillisecondCounterHiRes();
     }

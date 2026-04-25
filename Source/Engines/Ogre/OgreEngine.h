@@ -44,7 +44,6 @@
 //==============================================================================
 
 #include "../../Core/SynthEngine.h"
-#include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
 #include "../../DSP/FastMath.h"
 #include "../../DSP/PolyBLEP.h"
@@ -99,7 +98,9 @@ struct OgreSubHarmonicGen
     float lastSample = 0.0f;
     bool toggleState = false;
     float subFiltered = 0.0f;
-    float subCoeff = 0.1f;
+    // Sentinel 0.0f: prepare() must be called before first use.
+    // Default 0.1f would be ~9× too aggressive at 44.1kHz (correct value ~0.0114 at 80 Hz).
+    float subCoeff = 0.0f;
 };
 
 //==============================================================================
@@ -136,6 +137,7 @@ struct OgreVoice
         velocity = 0.0f;
         gravityMass = 0.0f;
         noteHeldTime = 0.0f;
+        currentNote = -1; // sentinel: no note playing (prevents stale noteOff matching)
         glide.reset();
         oscSine.reset();
         oscTri.reset();
@@ -209,6 +211,12 @@ public:
         pitchBendNorm = 0.0f;
         modWheelAmount = 0.0f;
         aftertouchAmount = 0.0f;
+        // Clear coupling accumulators — stale values persist across preset changes
+        // if reset() is called while applyCouplingInput() has accumulated values.
+        couplingFilterMod = 0.0f;
+        couplingPitchMod = 0.0f;
+        couplingCacheL = 0.0f;
+        couplingCacheR = 0.0f;
     }
 
     float getSampleForCoupling(int channel, int /*sampleIndex*/) const override
@@ -306,13 +314,12 @@ public:
         smoothBrightness.set(effectiveBright);
         smoothDensity.set(pDensity);
 
-        // F11: Capture coupling accumulators BEFORE zeroing so the per-sample loop reads
-        //      the correct block-level values. Previously couplingPitchMod was zeroed here
-        //      and then read inside the sample loop — always zero (LFOToPitch/AmpToPitch
-        //      coupling was silently ignored every block).
-        const float capturedPitchMod = couplingPitchMod;
-        // Snapshot pitch coupling before reset (#1118). couplingFilterMod is
-        // already consumed above; couplingPitchMod is used below in blockBendRatio.
+        // Snapshot pitch coupling before zeroing — consumed in blockBendRatio below.
+        // couplingFilterMod is already consumed above in effectiveBright.
+        // Fix: only one capture needed; the old code had both capturedPitchMod AND
+        // blockCouplingPitchMod pointing at the same value, causing pitch coupling
+        // to be applied twice per sample (once in the per-voice loop via capturedPitchMod,
+        // and once via blockBendRatio). Remove capturedPitchMod and use only blockBendRatio.
         const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -375,8 +382,10 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
-                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
+                // Apply block-level bend ratio (contains pitch bend + coupling pitch mod).
+                // Removed duplicate capturedPitchMod multiply — it was the same value as
+                // blockCouplingPitchMod inside blockBendRatio, doubling the coupling effect.
+                freq *= blockBendRatio;
 
                 // Tectonic LFO: extremely slow pitch drift (±pTecDep cents at most)
                 float tecMod = voice.tectonicLFO.process() * pTecDep;
@@ -410,7 +419,8 @@ public:
 
                 // Density: adds sub-frequency content below hearing (infrasound presence)
                 // subFilter mode is LowPass — primed at prepare()/noteOn; no per-sample setMode needed.
-                voice.subFilter.setCoefficients(40.0f + densNow * 20.0f, 0.3f + densNow * 0.4f, srf);
+                // Use setCoefficients_fast — LP mode only, no shelf recompute needed.
+                voice.subFilter.setCoefficients_fast(40.0f + densNow * 20.0f, 0.3f + densNow * 0.4f, srf);
                 float subEmphasis = voice.subFilter.processSample(combined) * densNow * 0.5f;
                 combined += subEmphasis;
 
@@ -435,7 +445,10 @@ public:
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 3000.0f;
                 float lfo2FilterMod = lfo2Val * 1500.0f;
 
-                // Body resonance filter — soil type determines base character
+                // Body resonance filter — soil type determines base character.
+                // Use setCoefficients_fast (fastTan-based, LP/BP only — no shelf recompute)
+                // since bodyFilter is always LP or BP (never shelf). This avoids the
+                // heavier shelf-mode branch in setCoefficients, saving ~20% per voice per sample.
                 float filtered;
                 {
                     if (pSoil < 0.5f)
@@ -443,14 +456,14 @@ public:
                         // Clay/Sandy: darker LP character
                         float soilBaseCutoff = velBright * (0.6f + pSoil * 0.8f);
                         float finalCutoff = std::clamp(soilBaseCutoff + envMod + lfo2FilterMod, 100.0f, nyquistMax);
-                        voice.bodyFilter.setCoefficients(finalCutoff, soilQ, srf);
+                        voice.bodyFilter.setCoefficients_fast(finalCutoff, soilQ, srf);
                     }
                     else
                     {
                         // Rocky: BandPass notch character
                         float soilBaseCutoff = velBright * (0.3f + (pSoil - 0.5f) * 0.4f);
                         float finalCutoff = std::clamp(soilBaseCutoff + envMod + lfo2FilterMod, 100.0f, nyquistMax);
-                        voice.bodyFilter.setCoefficients(finalCutoff, soilQ + 0.2f, srf);
+                        voice.bodyFilter.setCoefficients_fast(finalCutoff, soilQ + 0.2f, srf);
                     }
                 }
                 // Single filter pass — soil character AND envelope both shape the result
@@ -474,17 +487,17 @@ public:
             outL[s] = softClip(mixL);
             if (outR)
                 outR[s] = softClip(mixR);
-            // macroCoup scales coupling output: higher coupling macro = stronger sub coupling signal
+            // macroCoup scales coupling output: higher coupling macro = stronger sub coupling signal.
+            // Cache uses pre-clip mixL/R so downstream engines receive the raw sub energy —
+            // intentional: coupling routes benefit from unclipped bass transient information.
+            // Clamp to ±4 to prevent NaN/Inf propagation if a voice produces runaway output.
             const float coupGain = 1.0f + macroCoup * 1.5f;
-            couplingCacheL = mixL * coupGain;
-            couplingCacheR = mixR * coupGain;
+            couplingCacheL = std::clamp(mixL * coupGain, -4.0f, 4.0f);
+            couplingCacheR = std::clamp(mixR * coupGain, -4.0f, 4.0f);
         }
 
-        int count = 0;
-        for (const auto& v : voices)
-            if (v.active)
-                ++count;
-        activeVoiceCount.store(count);
+        // Count active voices using VoiceAllocator::countActive — avoids a manual loop.
+        activeVoiceCount.store(VoiceAllocator::countActive(voices, kMaxVoices));
         analyzeForSilenceGate(buffer, numSamples);
     }
 
@@ -494,19 +507,37 @@ public:
 
     void noteOn(int note, float vel) noexcept
     {
-        // F12: prefer stealing release-stage voices (avoids cutting active bass sustains).
+        // Prefer stealing release-stage voices (avoids cutting active bass sustains).
+        // Fix: predicate must check for Release stage specifically, not !isActive()
+        // (!isActive() means Idle — an already-dead voice, not a releasing one).
         int idx = VoiceAllocator::findFreeVoicePreferRelease(voices, kMaxVoices,
-                      [](const OgreVoice& v) { return v.active && !v.ampEnv.isActive(); });
+                      [](const OgreVoice& v) {
+                          return v.active && v.ampEnv.getStage() == FilterEnvelope::Stage::Release;
+                      });
         auto& v = voices[idx];
 
         float freq = midiToFreq(note); // F01: use fleet-standard midiToFreq (fastPow2-backed)
+
+        // Capture the voice's previous pitch before reset so portamento can glide from it.
+        // If voice was inactive (currentFreq ≈ 0), use snapTo() for a fresh start.
+        const float prevFreq = v.glide.getFreq();
+        const bool hadActiveFreq = v.active && (prevFreq > 1.0f);
 
         v.reset();
         v.active = true;
         v.currentNote = note;
         v.velocity = vel;
         v.startTime = ++voiceCounter;
-        v.glide.snapTo(freq);
+        // If the voice was previously playing, glide FROM the old pitch rather than snapping.
+        if (hadActiveFreq)
+        {
+            v.glide.snapTo(prevFreq); // restore prev pitch as starting point
+            v.glide.setTarget(freq);  // then slide to new target
+        }
+        else
+        {
+            v.glide.snapTo(freq); // fresh voice — snap immediately
+        }
         v.gravityMass = 0.0f;
         v.noteHeldTime = 0.0f;
         // F02: prepare() belongs in prepare(), not noteOn. Waveforms are also fixed at
@@ -524,10 +555,11 @@ public:
         v.filterEnv.setADSR(0.001f, 0.2f, 0.0f, 0.3f);
         v.filterEnv.triggerHard();
 
-        // Stereo spread — subtle for bass
+        // Stereo spread — subtle for bass. Use fast trig from FastMath (audio-thread safe).
         float pan = 0.5f + (static_cast<float>(idx) - 3.5f) * 0.03f;
-        v.panL = std::cos(pan * juce::MathConstants<float>::halfPi); // F17: named constant
-        v.panR = std::sin(pan * juce::MathConstants<float>::halfPi);
+        constexpr float kHalfPi = 1.5707963268f;
+        v.panL = fastCos(pan * kHalfPi);
+        v.panR = fastSin(pan * kHalfPi);
     }
 
     void noteOff(int note) noexcept

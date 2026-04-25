@@ -1598,9 +1598,10 @@ public:
         for (int i = 0; i < 3; ++i)
             modeButtons[i].setBounds(header.removeFromLeft(btnW).reduced(2));
         // Octave + bank buttons widened to 30/32 px to clear the 30-px
-        // performance-tap-target floor (#1108). Inner reduced(2) keeps the
-        // visual size unchanged from the user's perspective; the gain is on
-        // hit-rect size, not paint size.
+        // performance-tap-target floor (#1108). Because reduced(2) trims a
+        // fixed 2 px per side, the larger source widths also produce larger
+        // final component bounds, so both the hit target and rendered bounds
+        // increase here.
         header.removeFromLeft(4);
         octDownBtn.setBounds(header.removeFromLeft(32).reduced(2));
         octLabel.setBounds(header.removeFromLeft(36).reduced(2));

@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
-// DnaMapBrowser.h — Full-window 2D scatter map of all presets by Sonic DNA.
+// DnaMapBrowser.h — Full-window preset explorer organised by Sonic DNA mood axes.
 //
 // Replaces the radial ocean view with a flat map where each preset is a
-// coloured dot positioned by two selectable DNA axes (default: Brightness × Warmth).
+// coloured dot. X/Y position is derived from two selectable DNA axis values
+// (default: Brightness × Warmth) so similar-feeling presets cluster together.
 // Click a dot to load that preset; Escape / P dismisses back to ocean view.
 //
 // Spec §5 reference:
@@ -84,8 +85,8 @@ public:
         setWantsKeyboardFocus(true);
 
         A11y::setup(*this,
-                    "DNA Map Browser",
-                    "2D scatter map of all presets positioned by Sonic DNA values. "
+                    "Preset Explorer",
+                    "2D map for exploring presets by Sonic DNA mood. "
                     "Click a dot to load the preset. Escape or P returns to ocean view.",
                     /*wantsKeyFocus=*/ true);
 
@@ -122,20 +123,11 @@ public:
         // ── 1. Abyss background ───────────────────────────────────────────────
         g.fillAll(juce::Colour(GalleryColors::Ocean::abyss));
 
-        // ── 2. Schedule a dot-buffer rebuild if stale (#1162) ─────────────────
-        // The 19,574-dot rebuild is O(n) and used to run inside paint(),
-        // blocking the message thread on every repaint. Now it runs on the
-        // next AsyncUpdater callback; paint() just blits whatever buffer is
-        // currently valid. The first frame after construction / resize will
-        // briefly show only the abyss background, which is acceptable.
-        const bool sizeChanged = (dotBuffer_.isNull()
-                                  || dotBuffer_.getWidth()  != bounds.getWidth()
-                                  || dotBuffer_.getHeight() != bounds.getHeight());
-        if (sizeChanged || dotBufferDirty_)
-            triggerAsyncUpdate();
-
-        if (! dotBuffer_.isNull())
-            g.drawImageAt(dotBuffer_, 0, 0);
+        // ── 2. Blit the pre-built dot cache ───────────────────────────────────
+        // The cache is rebuilt asynchronously in handleAsyncUpdate() whenever
+        // dotBufferDirty_ is set.  paint() never does layout work.
+        if (! dotCache_.isNull())
+            g.drawImageAt(dotCache_, 0, 0);
 
         // ── 3. Hovered-preset tooltip ─────────────────────────────────────────
         if (hoveredIndex_ >= 0 && hoveredIndex_ < static_cast<int>(presets_.size()))
@@ -167,7 +159,7 @@ public:
         layoutMoodPills();
 
         dotBufferDirty_ = true;
-        rebuildSpatialGrid();
+        triggerAsyncUpdate();   // handleAsyncUpdate() will rebuild grid + cache
 
         // ── Dive button — upper-right corner, aligned with search bar ────────
         constexpr int kDiveBtnW  = 80;
@@ -237,13 +229,18 @@ public:
         dotBufferDirty_ = true;
         // Spatial grid rebuild is deferred to mouseUp — no need to rebuild every
         // drag event since findPresetAt() uses the grid only on hover/click.
-        repaint();
+        // triggerAsyncUpdate() coalesces rapid drag events into a single rebuild.
+        triggerAsyncUpdate();
     }
 
     void mouseUp(const juce::MouseEvent& /*e*/) override
     {
         if (panning_)
-            rebuildSpatialGrid();  // Rebuild once pan is committed.
+        {
+            // Eagerly rebuild the grid so the next hover/click is hit-tested correctly.
+            // handleAsyncUpdate() will also rebuild it, but may fire after mouseMove.
+            rebuildSpatialGrid();
+        }
         panning_     = false;
         maybePanning_ = false;
     }
@@ -285,8 +282,7 @@ public:
         viewScale_    = newScale;
 
         dotBufferDirty_ = true;
-        rebuildSpatialGrid();
-        repaint();
+        triggerAsyncUpdate();   // handleAsyncUpdate() rebuilds grid + cache + calls repaint()
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -307,7 +303,7 @@ public:
             {
                 searchQuery_ = searchQuery_.dropLastCharacters(1);
                 dotBufferDirty_ = true;
-                repaint();
+                triggerAsyncUpdate();
             }
             return true;
         }
@@ -318,7 +314,7 @@ public:
         {
             searchQuery_ += ch;
             dotBufferDirty_ = true;
-            repaint();
+            triggerAsyncUpdate();
             return true;
         }
 
@@ -334,8 +330,7 @@ public:
     {
         presets_ = std::move(presets);
         dotBufferDirty_ = true;
-        rebuildSpatialGrid();
-        repaint();
+        triggerAsyncUpdate();   // handleAsyncUpdate() rebuilds spatial grid + cache + repaints
     }
 
     /** Mark which preset is currently loaded (shown with gold glow). */
@@ -345,7 +340,7 @@ public:
             return;
         activeIndex_    = index;
         dotBufferDirty_ = true;
-        repaint();
+        triggerAsyncUpdate();
     }
 
     /** Change the two projection axes. Triggers a full buffer rebuild. */
@@ -356,8 +351,7 @@ public:
         xAxis_ = x;
         yAxis_ = y;
         dotBufferDirty_ = true;
-        rebuildSpatialGrid();
-        repaint();
+        triggerAsyncUpdate();   // handleAsyncUpdate() rebuilds grid + cache + repaints
     }
 
     /** Filter by text — case-insensitive substring match on name and engine tags. */
@@ -367,7 +361,7 @@ public:
             return;
         searchQuery_    = query;
         dotBufferDirty_ = true;
-        repaint();
+        triggerAsyncUpdate();
     }
 
     /** Filter by mood — empty string = show all moods. */
@@ -377,7 +371,7 @@ public:
             return;
         moodFilter_     = mood;
         dotBufferDirty_ = true;
-        repaint();
+        triggerAsyncUpdate();
     }
 
     /** Toggle showing only favourites. */
@@ -385,7 +379,7 @@ public:
     {
         favoritesOnly_  = !favoritesOnly_;
         dotBufferDirty_ = true;
-        repaint();
+        triggerAsyncUpdate();
     }
 
     //==========================================================================
@@ -624,16 +618,32 @@ private:
     }
 
     //==========================================================================
-    /** AsyncUpdater hook — runs the dot-buffer rebuild off the paint() path
-        and triggers a follow-up repaint() to blit the fresh buffer (#1162). */
+    // AsyncUpdater — runs on the message thread, never blocks paint()
+    //==========================================================================
+
+    /** Called by the JUCE message thread after triggerAsyncUpdate().
+        Multiple rapid triggers are coalesced into one call.
+        Rebuilds the spatial grid and dot-cache image, then repaints. */
     void handleAsyncUpdate() override
     {
+        if (!dotBufferDirty_)
+            return;
+
+        // Rebuild hit-test grid first (positions depend on current view transform).
+        rebuildSpatialGrid();
+
+        // Rebuild the cached dot image.
         rebuildDotBuffer();
+
+        // Schedule a repaint now that the cache is fresh.
         repaint();
     }
 
-    /** Full dot-buffer rebuild.  Called from handleAsyncUpdate() when view
-        state changes (zoom/pan/filter); never from paint(). */
+    //==========================================================================
+    // Back-buffer rendering
+    //==========================================================================
+
+    /** Full dot-cache rebuild.  Called from handleAsyncUpdate() — never from paint(). */
     void rebuildDotBuffer()
     {
         const int w = getWidth();
@@ -641,19 +651,19 @@ private:
 
         if (w <= 0 || h <= 0)
         {
-            dotBuffer_      = juce::Image();
+            dotCache_      = juce::Image();
             dotBufferDirty_ = false;
             return;
         }
 
-        if (dotBuffer_.isNull()
-            || dotBuffer_.getWidth()  != w
-            || dotBuffer_.getHeight() != h)
+        if (dotCache_.isNull()
+            || dotCache_.getWidth()  != w
+            || dotCache_.getHeight() != h)
         {
-            dotBuffer_ = juce::Image(juce::Image::ARGB, w, h, /*clearImage=*/ true);
+            dotCache_ = juce::Image(juce::Image::ARGB, w, h, /*clearImage=*/ true);
         }
 
-        juce::Graphics ig(dotBuffer_);
+        juce::Graphics ig(dotCache_);
         ig.fillAll(juce::Colour(0));  // transparent — painted over abyss background
 
         const bool densityMode = (viewScale_ < kDensityThreshold);
@@ -1125,7 +1135,7 @@ private:
     {
         moodFilter_     = (moodFilter_ == mood) ? juce::String() : mood;
         dotBufferDirty_ = true;
-        repaint();
+        triggerAsyncUpdate();
     }
 
     //==========================================================================
@@ -1158,8 +1168,8 @@ private:
     static constexpr int kGridCells = 32;
     std::array<std::vector<int>, kGridCells * kGridCells> spatialGrid_;
 
-    // Back-buffer (rebuilt off the paint thread via AsyncUpdater — #1162).
-    juce::Image dotBuffer_;
+    // Dot-cache image — rebuilt in handleAsyncUpdate(), blitted in paint()
+    juce::Image dotCache_;
     bool        dotBufferDirty_   = true;
 
     // Mood pills
