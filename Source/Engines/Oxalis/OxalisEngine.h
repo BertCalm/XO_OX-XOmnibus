@@ -219,6 +219,11 @@ struct OxalisVoice
     // F16: filter coefficient delta guard — only recompute when cutoff shifts > kFilterDeltaHz
     float lastFilterCut = -1.0f; // sentinel: force first-sample update
 
+    // Per-sample updatePartials delta guard: only recompute when freq or phi changes meaningfully.
+    // Threshold of 0.5 Hz keeps timbral error inaudible while avoiding per-sample rebuilds.
+    float lastOscFreq = -1.0f;
+    float lastOscPhi  = -1.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -230,6 +235,8 @@ struct OxalisVoice
         cachedPitchRatio = 1.0f;
         lastBendInput = 0.0f;
         lastFilterCut = -1.0f; // F16: force coefficient recalc on first sample
+        lastOscFreq = -1.0f;   // force updatePartials on first sample of new note
+        lastOscPhi  = -1.0f;
         glide.reset();
         oscBank.reset();
         filter.reset();
@@ -406,10 +413,15 @@ public:
         float effectivePhi =
             std::clamp(pPhi + macroChar * 0.4f + couplingPhiMod + modWheelAmount * 0.3f + macroCoupl * 0.25f, 0.0f,
                        1.0f); // M3 COUPLING: phi opens toward more irrational harmonics
+        // P17: use sampleRate-relative Nyquist ceiling instead of hardcoded 20000.0f.
+        // pBrightness scales in [0,1]; using * 6000.0f (not 8000.0f) so factory default 0.6
+        // contributes +3600 Hz — consistent with the 8000 Hz base cutoff default rather than
+        // silently pushing effective cutoff to 12800 Hz at idle. (P10 macro neutrality fix.)
+        const float nyCeiling = srf * 0.49f;
         float effectiveCutoff =
             std::clamp(pCutoff + macroChar * 4000.0f + accumulators.getSeasonBrightness() * 1500.0f +
-                           pBrightness * 8000.0f + couplingFilterMod + aftertouchAmount * 4000.0f,
-                       200.0f, 20000.0f);
+                           pBrightness * 6000.0f + couplingFilterMod + aftertouchAmount * 4000.0f,
+                       200.0f, nyCeiling);
         const float effectiveWidth = 1.0f + macroSpace * 0.6f; // M4 SPACE: stereo expansion
 
         smoothCutoff.set(effectiveCutoff);
@@ -439,10 +451,35 @@ public:
             voice.lfo2.setShape(lfo2Shape);
         }
 
+        // Mycorrhizal network update — block-rate (not per-sample): the delivery delay is 6s,
+        // so per-sample granularity adds zero fidelity while burning ~kMaxVoices * 12 calls/block.
+        for (int vi = 0; vi < kMaxVoices; ++vi)
+        {
+            auto& voice = voices[vi];
+            if (!voice.active)
+                continue;
+            if (voice.velocity > accumulators.aThreshold)
+                network.sendStress(vi, voice.velocity * accumulators.A * 0.1f,
+                                   accumulators.sessionTime);
+            float receivedStress = network.receiveStress(vi, accumulators.sessionTime);
+            voice.dormancyPitchCents += receivedStress * 0.8f;
+            // Block-rate decay: keep dormancyPitchCents bounded.
+            // Per-block coefficient = per-sample^numSamples ≈ 0.999977^numSamples.
+            // For a typical 256-sample block at 44.1 kHz this is ≈ 0.9994 — imperceptible.
+            voice.dormancyPitchCents *= std::pow(0.999977f, static_cast<float>(numSamples));
+            voice.dormancyPitchCents = std::clamp(voice.dormancyPitchCents, -50.0f, 50.0f);
+        }
+
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
         // F14: hoist 1/srf outside both loops — avoids division per-voice per-sample in Growth Mode
         const float sampleDt = 1.0f / srf;
+
+        // Hoist loop-invariant constants out of the inner loops (C++ `static constexpr`
+        // inside nested loops technically has static storage duration but is misleading;
+        // plain `constexpr` local at function scope is clearer and equally efficient).
+        constexpr float kPitchCacheThreshold = 0.005f;
+        constexpr float kFilterDeltaHz = 2.0f;
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -461,10 +498,8 @@ public:
                 float vibrato = voice.vibratoLFO.process() * effectiveVibratoDepth;
 
                 // CPU fix (OXALIS): cache pitch ratio and only recompute semitonesToFreqRatio
-                // (which contains std::pow) when the slow-moving inputs change significantly.
-                // Vibrato contributes up to ~0.08 semitones — included in cache invalidation.
-                // Threshold of 0.005 semitones keeps tuning error < 0.01 cents inaudible.
-                static constexpr float kPitchCacheThreshold = 0.005f;
+                // (which contains fastPow2) when the slow-moving inputs change significantly.
+                // Threshold defined above the sample loop (kPitchCacheThreshold = 0.005f).
                 // F01: use capturedPitchMod (local), not couplingPitchMod (already 0)
                 // F12: vibrato scalar 0.08f → 0.3f for ±0.3st range at full depth (strings standard)
                 float bendInput =
@@ -480,8 +515,17 @@ public:
                 float l2 = voice.lfo2.process() * lfo2Depth;
 
                 // Update phyllotaxis spacing — phi modulates harmonic ratios.
-                // Use updatePartials() (no std::pow — cache already initialized in noteOn).
-                voice.oscBank.updatePartials(freq, srf, phiNow + l2 * 0.2f);
+                // Delta guard: only rebuild partials when freq or phi changes by a meaningful
+                // amount. 0.5 Hz / 0.005 phi thresholds keep timbral error inaudible while
+                // cutting updatePartials() calls from SR/block (e.g. 44100) to a handful per note.
+                float oscPhi = phiNow + l2 * 0.2f;
+                if (std::fabs(freq - voice.lastOscFreq) > 0.5f ||
+                    std::fabs(oscPhi - voice.lastOscPhi) > 0.005f)
+                {
+                    voice.oscBank.updatePartials(freq, srf, oscPhi);
+                    voice.lastOscFreq = freq;
+                    voice.lastOscPhi  = oscPhi;
+                }
 
                 // Growth Mode: partials emerge at golden angle intervals
                 float growthGain = 1.0f;
@@ -511,10 +555,11 @@ public:
 
                 // Filter (env ticked per-sample)
                 float envLevel = voice.filterEnv.process();
-                float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 4000.0f, 200.0f, 20000.0f);
+                // P17: use sampleRate-relative Nyquist ceiling (nyCeiling) not hardcoded 20000 Hz.
+                float fCut = std::clamp(cutNow + envLevel * pFilterEnvAmt * 6000.0f + l1 * 4000.0f, 200.0f, nyCeiling);
                 // F16: delta-guard setCoefficients — only recompute when fCut shifts > 2Hz
                 // F07: setMode hoisted to prepare() — not repeated here
-                static constexpr float kFilterDeltaHz = 2.0f;
+                // kFilterDeltaHz defined above the sample loop.
                 if (std::fabs(fCut - voice.lastFilterCut) > kFilterDeltaHz)
                 {
                     voice.filter.setCoefficients(fCut, pResonance, srf);
@@ -534,15 +579,7 @@ public:
                 float velBright = 0.4f + voice.velocity * 0.6f;
                 float output = filtered * ampLevel * velBright;
 
-                // F02: Mycorrhizal network send — pioneer species sends stress proportional
-                // to activity level (accumulators.A = aggression [0..1]). Receive path
-                // modulates dormancy pitch variance for subtle inter-voice detune coupling.
-                int voiceIdx = static_cast<int>(&voice - voices.data());
-                if (voice.velocity > accumulators.aThreshold)
-                    network.sendStress(voiceIdx, voice.velocity * accumulators.A * 0.1f,
-                                       accumulators.sessionTime);
-                float receivedStress = network.receiveStress(voiceIdx, accumulators.sessionTime);
-                voice.dormancyPitchCents += receivedStress * 0.8f; // subtle geometric detune spread
+                // Mycorrhizal network update moved to block-rate section above the sample loop.
 
                 mixL += output * voice.panL;
                 mixR += output * voice.panR;
@@ -554,11 +591,15 @@ public:
             const float side = (mixL - mixR) * 0.5f * effectiveWidth * (0.5f + sprNow);
             // F13: soft-clip output bus — 4-voice + asymmetry waveshaping can drive summed
             // signal to ~3+; fastTanh provides transparent limiting without hard clipping.
-            outL[s] = fastTanh(mid + side);
+            const float outSampleL = fastTanh(mid + side);
+            const float outSampleR = fastTanh(mid - side);
+            outL[s] = outSampleL;
             if (outR)
-                outR[s] = fastTanh(mid - side);
-            couplingCacheL = outL[s];
-            couplingCacheR = outR ? outR[s] : fastTanh(mid - side);
+                outR[s] = outSampleR;
+            // Always update coupling cache from both channels, even in mono.
+            // Avoids a second fastTanh() call when outR is null.
+            couplingCacheL = outSampleL;
+            couplingCacheR = outSampleR;
         }
 
         int count = 0;
@@ -601,7 +642,16 @@ public:
         v.filterEnv.triggerHard();
 
         v.vibratoLFO.reset();
+        v.lfo1.reset();  // reset LFOs on new note — prevents stale phase from voice-steal
+        v.lfo2.reset();
         v.oscBank.reset();
+        // Reset delta-guard sentinels so the first sample of the new note
+        // always rebuilds filter coefficients and partial frequencies.
+        v.lastFilterCut = -1.0f;
+        v.lastOscFreq   = -1.0f;
+        v.lastOscPhi    = -1.0f;
+        v.cachedPitchRatio = 1.0f;
+        v.lastBendInput    = 0.0f;
 
         float phi = paramPhi ? paramPhi->load() : 0.5f;
         v.oscBank.setFundamental(freq, srf, phi);
