@@ -498,11 +498,14 @@ class OstiModalMembrane
 public:
     static constexpr int kMaxModes = 8;
 
-    void prepare(double sampleRate) noexcept
+    void prepare(double sampleRate, uint32_t noiseSeed = 1) noexcept
     {
         sr = static_cast<float>(sampleRate);
         for (auto& r : resonators)
             r.setMode(CytomicSVF::Mode::BandPass);
+        // OST-11: seed the noise generator uniquely per voice so simultaneous triggers
+        // don't produce identical excitation bursts (would cause comb-filter artefacts).
+        noise.seed(noiseSeed);
         reset();
     }
 
@@ -613,8 +616,13 @@ public:
         for (auto& r : resonators)
             r.reset();
         excitationLevel = 0.0f;
+        // OST-08: reset all spike state so a fresh trigger starts clean.
         spikeActive = false;
+        spikePhase = 0.0f;
+        spikeLevel = 0.5f;
         spikeSamplesLeft = 0;
+        // OST-08: reset noiseLevel to default so process() can't output stale values.
+        noiseLevel = 0.5f;
         active = false;
     }
 
@@ -2460,6 +2468,10 @@ public:
         pendingArticulation = 0;
         liveOverrideActive = false;
         liveOverrideFadeCounter = 0;
+        // OST-06: reset cached indices so the next setPattern() call re-primes the
+        // pointer even if the instrument/pattern haven't changed since last prepare().
+        lastInstrumentIdx = -1;
+        lastPatternIdx    = -1;
     }
 
     // Set pattern from library — no-op if unchanged (called every block).
@@ -2504,7 +2516,8 @@ public:
 
         sampleCounter += static_cast<double>(numSamples);
 
-        // Swing: even steps are delayed by swing amount (0-50% of step duration)
+        // Swing: ODD steps (1, 3, 5...) are delayed by swing amount (0-50% of step duration).
+        // OST-09: corrected comment — code delays odd steps, not even ones.
         double swingDelay = 0.0;
         if (currentStep % 2 == 1)
             swingDelay = samplesPerStep * static_cast<double>(swing) * 0.005;
@@ -2631,7 +2644,9 @@ public:
             combLP[c] = combLP[c] + damp * (del - combLP[c]);
             combLP[c] = flushDenormal(combLP[c]);
             combBuf[c][static_cast<size_t>(combPos[c])] = input + combLP[c] * fb;
-            combPos[c] = (combPos[c] + 1) % combBufLen[c];
+            // OST-13: replace % modulo (integer divide) with branchless conditional
+            // increment — saves a hardware division per comb filter per sample.
+            if (++combPos[c] >= combBufLen[c]) combPos[c] = 0;
             sum += del;
         }
         sum *= 0.25f;
@@ -2645,7 +2660,8 @@ public:
             float apIn = sum + del * 0.5f;
             apBuf[a][static_cast<size_t>(apPos[a])] = apIn;
             sum = del - apIn * 0.5f;
-            apPos[a] = (apPos[a] + 1) % apBufLen[a];
+            // OST-13: same conditional-increment optimisation for allpass filters.
+            if (++apPos[a] >= apBufLen[a]) apPos[a] = 0;
         }
 
         left += sum * mix;
@@ -2712,10 +2728,9 @@ public:
         if (envLevel > threshold && threshold > 0.0f)
         {
             float overshoot = envLevel / threshold;
-            // FIX(sound): use std::pow instead of fastExp(std::log(x)*r) — the
-            // latter mixes an approximate exp with an exact log producing asymmetric
-            // error. std::pow is equivalent and avoids the log→fastExp mismatch.
-            float compressedOvershoot = std::pow(overshoot, invRatio);
+            // OST-07: replace std::pow (per-sample expensive) with fastPow2/fastLog2
+            // combination (~0.02% error, suitable for gain computation).
+            float compressedOvershoot = fastPow2(fastLog2(overshoot) * invRatio);
             gain = compressedOvershoot / overshoot;
         }
 
@@ -2765,17 +2780,25 @@ struct OstiSubVoice
     float baseCutoff = 4000.0f;
     float userExciterMix = 0.5f;
     float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
-    float stealFade = 1.0f; // voice-steal fade-in: 0→1 over ~2ms to prevent click on steal
+    float stealFade = 1.0f;          // voice-steal fade-in: 0→1 over ~2ms to prevent click on steal
+    float stealFadeIncrement = 1.0f; // OST-05: cached 1/(sr*0.002), avoids per-sample division
 
-    void prepare(double sampleRate)
+    void prepare(double sampleRate, int voiceIndex = 0)
     {
         sr = static_cast<float>(sampleRate);
-        membrane.prepare(sampleRate);
+        // OST-11: each voice gets a unique noise seed (Knuth multiplicative hash of index).
+        uint32_t seed = static_cast<uint32_t>(voiceIndex + 1) * 2654435761u;
+        membrane.prepare(sampleRate, seed);
         body.prepare(sampleRate);
         radiation.prepare(sampleRate);
         ampEnv.prepare(sampleRate);
         voiceFilter.setMode(CytomicSVF::Mode::LowPass);
         breathLFO.setRate(0.06f, static_cast<float>(sampleRate));
+        // OST-04: stagger LFO phase across voices to avoid synchronised AM modulation.
+        // 16 sub-voices (8 seats × 2) distributed evenly around [0, 1).
+        breathLFO.setPhaseOffset(static_cast<float>(voiceIndex) / 16.0f);
+        // Cache steal-fade increment so per-sample hot path avoids a division.
+        stealFadeIncrement = 1.0f / (static_cast<float>(sampleRate) * 0.002f); // OST-05
     }
 
     void trigger(float vel, int instrument, int articulation, float tuning, float decay, float brightness,
@@ -2798,14 +2821,17 @@ struct OstiSubVoice
         // pitch envelope would require per-sample resonator retuning (expensive).
         // This static-shift approach matches the fast "thwack" pitch of real drums.
         float freq = inst.defaultFreqHz * fastExp(tuning * (0.693147f / 12.0f));
-        float initialTuning = tuning + pitchEnvAmount * 12.0f;
+        // OST-16: pass only pitchEnvAmount (semitone offset) as tuningOffset to membrane.
+        // 'freq' already has the seat tuning baked in — passing 'tuning + pitchEnvAmount*12'
+        // would cause 'tuning' to be applied twice (once in freq, again inside membrane.trigger).
+        float pitchEnvSemitones = pitchEnvAmount * 12.0f;
 
         // D004: user exciterMix blends with the articulation's characteristic noise/pitched balance.
         // At exciterMix=0.5 (default), pure instrument character. At 0 = all noise, at 1 = all pitched.
         userExciterMix = exciterMix;
 
         // Configure modal membrane
-        membrane.trigger(freq, inst, articulation, brightness, initialTuning, effectiveVel, exciterMix);
+        membrane.trigger(freq, inst, articulation, brightness, pitchEnvSemitones, effectiveVel, exciterMix);
 
         // Configure body resonance
         BodyModelType bType = (bodyModelOverride >= 0 && bodyModelOverride <= 3)
@@ -2856,8 +2882,8 @@ struct OstiSubVoice
         if (stealFade < 1.0f)
         {
             sample *= stealFade;
-            // Rate: reach 1.0 in ~2ms. Use per-sample increment derived from sr.
-            stealFade = std::min(1.0f, stealFade + (1.0f / (sr * 0.002f)));
+            // OST-05: use cached increment (precomputed in prepare()) — avoids per-sample division.
+            stealFade = std::min(1.0f, stealFade + stealFadeIncrement);
         }
 
         lastOutput = sample;
@@ -2873,6 +2899,9 @@ struct OstiSubVoice
         radiation.reset();
         voiceFilter.reset();
         lastOutput = 0.0f;
+        // OST-15: reset stealFade so a non-steal re-trigger after choke() starts at full
+        // volume (stealFade=1), not silenced at 0.
+        stealFade = 1.0f;
     }
 
     void reset() noexcept
@@ -2893,10 +2922,11 @@ struct OstiSeat
     int nextSubVoice = 0;
     float peakLevel = 0.0f; // for inter-seat coupling
 
-    void prepare(double sampleRate)
+    void prepare(double sampleRate, int seatIndex = 0)
     {
-        for (auto& sv : subVoices)
-            sv.prepare(sampleRate);
+        // OST-04: pass a unique voice index per sub-voice for LFO phase staggering.
+        for (int v = 0; v < kSubVoices; ++v)
+            subVoices[v].prepare(sampleRate, seatIndex * kSubVoices + v);
         sequencer.prepare(sampleRate);
         nextSubVoice = 0;
         peakLevel = 0.0f;
@@ -2990,7 +3020,7 @@ public:
         aftertouch.prepare(sampleRate);
 
         for (int s = 0; s < kNumSeats; ++s)
-            seats[s].prepare(sampleRate);
+            seats[s].prepare(sampleRate, s); // OST-04: pass seat index for LFO stagger
 
         // FIX(sound): derive envelope follower coefficient from SR (~10ms time constant).
         // 1 - exp(-1/(sr * 0.010)) ≈ the correct one-pole coefficient.
@@ -3015,10 +3045,25 @@ public:
         couplingBuffer.clear();
         couplingFilterMod = 0.0f;
         couplingDecayMod = 0.0f;
+        couplingGatherMod = 0.0f;
         reverb.reset();
         compressor.reset();
         envFollowerLevel = 0.0f;
         std::memset(seatPeaks, 0, sizeof(seatPeaks));
+        // OST-01: reset master filter SVF state to prevent stale state glitch on restart.
+        masterFilterL.reset();
+        masterFilterR.reset();
+        // OST-02: clear MIDI transient state so pitch/CC carry-over can't affect next session.
+        modWheelAmount = 0.0f;
+        pitchBendNorm  = 0.0f;
+        // OST-03: invalidate cached filter/compressor sentinels so change-guard forces
+        // a recompute on the first block after reset (filter state was cleared above).
+        lastMasterFiltCutoff = -1.0f;
+        lastMasterFiltReso   = -1.0f;
+        lastCompThresh  = -999.0f;
+        lastCompRatio   = -1.0f;
+        lastCompAttack  = -1.0f;
+        lastCompRelease = -1.0f;
     }
 
     //-- Render ------------------------------------------------------------------
@@ -3096,6 +3141,10 @@ public:
         // --- Apply macros ---
 
         // GATHER: tightness — controls humanization and pattern density
+        // OST-10: snapshot and zero couplingGatherMod before use (P26-style guard).
+        const float blockGatherMod = couplingGatherMod;
+        couplingGatherMod = 0.0f;
+        mGather = clamp(mGather + blockGatherMod, 0.0f, 1.0f);
         gHumanize *= (1.0f - mGather); // tight gather = less humanize
 
         // FIRE: intensity — drives exciter energy, filter resonance, compression
@@ -3380,7 +3429,10 @@ public:
         case CouplingType::EnvToDecay:
             couplingDecayMod += avgMod;
             break;
-        case CouplingType::RhythmToBlend: /* modulates pattern density externally */
+        case CouplingType::RhythmToBlend:
+            // OST-10: was a documented stub. Wire to GATHER boost so an external
+            // rhythm source (e.g. Onset) can tighten/densify the drum circle.
+            couplingGatherMod += avgMod * 0.4f;
             break;
         case CouplingType::AmpToChoke:
             // ONSET x OSTINATO "Machine Meets Human":
@@ -3474,6 +3526,9 @@ private:
     // Coupling modulation accumulators
     float couplingFilterMod = 0.0f;
     float couplingDecayMod = 0.0f;
+    // OST-10: RhythmToBlend coupling accumulator — boosts GATHER for one block,
+    // increasing pattern density when an external rhythm engine is coupled.
+    float couplingGatherMod = 0.0f;
 
     // Envelope follower for coupling output
     float envFollowerLevel = 0.0f;
