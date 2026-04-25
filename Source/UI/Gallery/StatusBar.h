@@ -54,6 +54,7 @@ public:
         makePad(xoSendBtn, "XOSEND", "Trigger coupling burst (X)");
         makePad(echoCutBtn, "ECHO CUT", "Kill delay tails (C)");
         makePad(panicBtn, "PANIC", "All notes off / reset engines (V)");
+        GalleryLookAndFeel::setPanicButtonStyle(panicBtn);
 
         fireBtn.setVisible(false);
         xoSendBtn.setVisible(false);

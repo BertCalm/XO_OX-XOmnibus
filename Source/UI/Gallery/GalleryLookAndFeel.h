@@ -210,10 +210,12 @@ public:
             g.drawEllipse(cx - radius - 2.0f, cy - radius - 2.0f, diameter + 4.0f, diameter + 4.0f, 2.0f);
         }
 
-        // ── 8. Live value readout (during interaction) ─────────────────────
+        // ── 8. Live value readout (hover + drag + mousedown) ───────────────
         // 32px knobs (diameter < 40) suppress in-knob readout — disc would be
         // only 14px wide with ~9.8px text, which clips. Tooltip handles it instead.
-        if (diameter >= 28.0f && (slider.isMouseButtonDown() || slider.isMouseOverOrDragging()))
+        // isMouseOver() covers plain hover; isMouseOverOrDragging() covers
+        // dragging outside bounds; isMouseButtonDown() covers click-hold.
+        if (diameter >= 28.0f && (slider.isMouseOver() || slider.isMouseButtonDown() || slider.isMouseOverOrDragging()))
         {
             float discR = radius * 0.44f;
             juce::String valStr;
@@ -232,11 +234,28 @@ public:
     }
 
     //==========================================================================
-    // Mood pill style helpers
-    // Call this on any TextButton to opt it in to pill rendering.
+    // Button style helpers — set once at construction, read zero-alloc in paint.
+    // Call these on any TextButton to opt it in to the corresponding style.
     static void setMoodPillStyle(juce::TextButton& btn) { btn.getProperties().set("moodPill", true); }
-
     static bool isMoodPill(const juce::Button& btn) { return btn.getProperties()["moodPill"]; }
+
+    // Export button (gold fill) and Panic button (red accent) use property tags
+    // instead of btn.getName() string comparison — avoids allocation per paint frame.
+    static void setExportButtonStyle(juce::TextButton& btn) { btn.getProperties().set("buttonType", juce::String("export")); }
+    static void setPanicButtonStyle(juce::TextButton& btn)  { btn.getProperties().set("buttonType", juce::String("panic")); }
+
+private:
+    static bool isExportButton(const juce::Button& btn)
+    {
+        const juce::var& t = btn.getProperties()["buttonType"];
+        return t.isString() && t.toString() == "export";
+    }
+    static bool isPanicButton(const juce::Button& btn)
+    {
+        const juce::var& t = btn.getProperties()["buttonType"];
+        return t.isString() && t.toString() == "panic";
+    }
+public:
 
     //==========================================================================
     // drawButtonBackground — matches prototype button styles
@@ -290,10 +309,11 @@ public:
         }
 
         // ── Standard button rendering ────────────────────────────────────────
-        const juce::String name = btn.getName();
-
-        bool isExport = name.containsIgnoreCase("export");
-        bool isPanic = name.containsIgnoreCase("panic");
+        // Use pre-set property tags — no string allocation per paint frame.
+        // Call setExportButtonStyle() / setPanicButtonStyle() at construction.
+        // Falls back gracefully to the standard elevated style for untagged buttons.
+        const bool isExport = isExportButton(btn);
+        const bool isPanic  = isPanicButton(btn);
 
         juce::Colour bg, borderCol;
 
