@@ -158,7 +158,12 @@ struct OperaEnvelope
         case Stage::Decay:
             level -= (level - susLvl) * decayCoeff;
             level = flushDen(level);
-            if (level <= susLvl + 0.001f)
+            // FIX OP-08 (P17): use a proportional convergence threshold rather than a
+            // fixed +0.001 additive offset. At high sustain (e.g. susLvl=0.8) the old
+            // check fired at 0.801, which is well above target and caused a visible
+            // level snap when transitioning to Sustain. The relative threshold (1% of
+            // the remaining gap or 1e-4 floor) converges cleanly across all sustain levels.
+            if ((level - susLvl) < std::max(0.001f * (1.0f - susLvl), 1e-4f))
             {
                 level = susLvl;
                 stage = Stage::Sustain;
@@ -539,6 +544,22 @@ public:
         modWheelValue_ = 0.0f;
         aftertouchValue_ = 0.0f;
         pitchBendSemitones_ = 0.0f;
+
+        // FIX OP-02 (P25): clear coupling caches in reset() — prepare() does this
+        // but reset() is called mid-session (e.g. DAW stop/start) and stale coupling
+        // output from a previous session could leak into the first block of the next.
+        std::memset(couplingCacheL_, 0, sizeof(couplingCacheL_));
+        std::memset(couplingCacheR_, 0, sizeof(couplingCacheR_));
+        std::memset(couplingFMBuffer_, 0, sizeof(couplingFMBuffer_));
+        std::memset(couplingRingBuffer_, 0, sizeof(couplingRingBuffer_));
+        std::memset(couplingFilterBuffer_, 0, sizeof(couplingFilterBuffer_));
+        std::memset(couplingMorphBuffer_, 0, sizeof(couplingMorphBuffer_));
+        std::memset(couplingKBuffer_, 0, sizeof(couplingKBuffer_));
+        std::memset(couplingPhaseBuffer_, 0, sizeof(couplingPhaseBuffer_));
+
+        // FIX OP-01 (P14): invalidate delta-guard state so setADSR fires on first post-reset block
+        lastAmpAtkSec_ = lastAmpDecSec_ = lastAmpS_ = lastAmpRelSec_ = -1.0f;
+        lastFltAtkSec_ = lastFltDecSec_ = lastFltS_ = lastFltRelSec_ = -1.0f;
     }
 
     //==========================================================================
@@ -874,13 +895,30 @@ public:
         float fltDecSec = 0.001f + snap_.filterD * snap_.filterD * snap_.filterD * 10.0f;
         float fltRelSec = 0.001f + snap_.filterR * snap_.filterR * snap_.filterR * 10.0f;
 
-        for (auto& v : voices_)
+        // FIX OP-01 (P14): delta-guard setADSR — recalcCoeffs calls std::exp twice per envelope;
+        // unconditional per-block calls waste CPU when params are stable.
+        // Compare serialized 32-bit bits to avoid float equality pitfalls from NaN.
+        if (ampAtkSec != lastAmpAtkSec_ || ampDecSec != lastAmpDecSec_ ||
+            snap_.ampS != lastAmpS_ || ampRelSec != lastAmpRelSec_)
         {
-            if (v.state != OperaVoice::State::Idle)
-            {
-                v.ampEnv.setADSR(ampAtkSec, ampDecSec, snap_.ampS, ampRelSec);
-                v.filterEnv.setADSR(fltAtkSec, fltDecSec, snap_.filterS, fltRelSec);
-            }
+            lastAmpAtkSec_ = ampAtkSec;
+            lastAmpDecSec_ = ampDecSec;
+            lastAmpS_ = snap_.ampS;
+            lastAmpRelSec_ = ampRelSec;
+            for (auto& v : voices_)
+                if (v.state != OperaVoice::State::Idle)
+                    v.ampEnv.setADSR(ampAtkSec, ampDecSec, snap_.ampS, ampRelSec);
+        }
+        if (fltAtkSec != lastFltAtkSec_ || fltDecSec != lastFltDecSec_ ||
+            snap_.filterS != lastFltS_ || fltRelSec != lastFltRelSec_)
+        {
+            lastFltAtkSec_ = fltAtkSec;
+            lastFltDecSec_ = fltDecSec;
+            lastFltS_ = snap_.filterS;
+            lastFltRelSec_ = fltRelSec;
+            for (auto& v : voices_)
+                if (v.state != OperaVoice::State::Idle)
+                    v.filterEnv.setADSR(fltAtkSec, fltDecSec, snap_.filterS, fltRelSec);
         }
 
         // ------------------------------------------------------------------
@@ -1333,11 +1371,16 @@ public:
     //==========================================================================
 
     /// Return cached coupling sample. O(1). Post-Kuramoto, pre-reverb.
+    /// FIX OP-03 (P26): scale output by macroCoupling (M3) so the coupling send level
+    /// knob actually controls the coupling output amplitude. M3 default = 0.5 is neutral
+    /// (full output). At 0.0 the engine is decoupled; at 1.0 it sends at double amplitude.
     float getSampleForCoupling(int channel, int sampleIndex) const
     {
         if (sampleIndex < 0 || sampleIndex >= kMaxBlockSize)
             return 0.0f;
-        return (channel == 0) ? couplingCacheL_[sampleIndex] : couplingCacheR_[sampleIndex];
+        float sample = (channel == 0) ? couplingCacheL_[sampleIndex] : couplingCacheR_[sampleIndex];
+        // macroCoupling [0,1]: 0 = no send, 0.5 = unity, 1.0 = 2x send
+        return sample * (snap_.macroCoupling * 2.0f);
     }
 
     /// Receive modulation from another engine via the coupling matrix.
@@ -1492,6 +1535,11 @@ private:
         // Reset filter state for voice
         voice.filterL.reset();
         voice.filterR.reset();
+
+        // FIX OP-09 (P25): clear couplingTap on retrigger — stale audio from the
+        // previous note could leak into the coupling tap for up to kMaxBlockSize samples
+        // if the voice is reassigned while the old block is still partially written.
+        std::memset(voice.couplingTap, 0, sizeof(voice.couplingTap));
 
         // Invalidate pan cache — note frequency / theta have changed.
         // The cache will be rebuilt at the next Kuramoto update or immediately
@@ -1742,6 +1790,16 @@ private:
 
     // Per-block parameter snapshot
     ParamSnapshot snap_;
+
+    // FIX OP-01 (P14): delta-guard state for setADSR — avoid std::exp calls when params are stable
+    float lastAmpAtkSec_ = -1.0f;
+    float lastAmpDecSec_ = -1.0f;
+    float lastAmpS_      = -1.0f;
+    float lastAmpRelSec_ = -1.0f;
+    float lastFltAtkSec_ = -1.0f;
+    float lastFltDecSec_ = -1.0f;
+    float lastFltS_      = -1.0f;
+    float lastFltRelSec_ = -1.0f;
 
     // Expression state (updated by MIDI CC)
     float modWheelValue_ = 0.0f;
