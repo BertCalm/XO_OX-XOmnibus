@@ -47,6 +47,8 @@
     "cover_art_badge": "MPCe Exclusive"
   },
 
+  "skip": ["fallback"],
+
   "experiment": {
     "embed_id": true,
     "tags": ["first-mpce-pack", "competitive-window", "vq-003", "vq-004", "vq-005"]
