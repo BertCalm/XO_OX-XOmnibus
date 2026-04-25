@@ -294,7 +294,10 @@ struct OpalineMode
     {
         // Dirty-flag cache: skip expensive trig if freq/Q haven't changed meaningfully.
         // Reduces ~18M transcendental calls/sec to ~thousands/sec (only when params change).
-        if (std::abs(freqHz - cachedFreq) < 0.5f && std::abs(q - cachedQ) < 0.001f)
+        // F30: previous absolute 0.5 Hz guard was too coarse at low pitches (2.5% at 20 Hz)
+        // and too fine at high pitches. Use 0.1% relative guard + absolute 0.5 Hz minimum.
+        const float freqDelta = std::abs(freqHz - cachedFreq);
+        if (freqDelta < std::max(cachedFreq * 0.001f, 0.5f) && std::abs(q - cachedQ) < 0.001f)
             return;
         cachedFreq = freqHz;
         cachedQ = q;
@@ -371,6 +374,10 @@ struct OpalineVoice
     // Thermal personality (per-voice random offset for thermal detuning)
     float thermalPersonality = 0.0f;
 
+    // Per-voice PRNG for HF noise shaping (F07: avoids cross-voice correlation from shared state).
+    // Seeded per-voice in noteOn() for per-note noise variation.
+    uint32_t hfNoiseState = 0u;
+
     // Crack state — persists for the note lifetime
     bool cracked = false;
     float crackDetuning = 0.0f; // cents of modal frequency shift from crack
@@ -390,6 +397,9 @@ struct OpalineVoice
     // Cached pan gains (avoid per-sample trig)
     float panL = 0.707f, panR = 0.707f;
 
+    // Cached HF noise SVF cutoff (updated once per block to avoid per-sample setCoefficients_fast)
+    float hfSvfCutoffHz = 4000.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -401,6 +411,7 @@ struct OpalineVoice
         crackDetuning = 0.0f;
         crackIntensity = 0.0f;
         hfEnvLevel = 0.0f;
+        hfNoiseState = 0u;
         glide.reset();
         exciter.reset();
         filterEnv.kill();
@@ -474,9 +485,6 @@ public:
         // Was hardcoded 0.999f per sample — at 96kHz that decays 2× faster than 48kHz.
         // tau = 0.022s → coeff = exp(-1/(tau * sr)). (Sound/P-new)
         hfEnvDecay = std::exp(-1.0f / (0.022f * srf));
-
-        // Noise PRNG state
-        hfNoiseState = 98765u;
 
         prepareSilenceGate(sr, maxBlockSize, 400.0f);
     }
@@ -604,7 +612,7 @@ public:
         // couplingInstrumentMod: same pattern applied below where it is read.
         const float capturedPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
-        couplingPitchMod = 0.0f; // zeroed here; capturedPitchMod used in sample loop
+        couplingPitchMod = 0.0f; // zeroed here; capturedPitchMod folded into blockBendRatio below
 
         const float bendSemitones = pitchBendNorm * pBendRange;
 
@@ -670,7 +678,18 @@ public:
         // slowly-varying parameter. Block-rate update is perceptually identical. (Perf)
         const float shimmerBlockRate = std::max(0.05f, effectiveShimmer * 8.0f);
 
-        // Set LFO rate/shape per voice (once per block, not per sample)
+        // Hoist combined bend + coupling pitch ratio once per block.
+        // capturedPitchMod is already block-constant (captured and zeroed above).
+        // FIX F01: previous code computed blockBendRatio from (bendSemitones + couplingPitchMod)
+        // where couplingPitchMod had already been zeroed, then ALSO multiplied per-voice by
+        // semitonesToFreqRatio(bendSemitones + capturedPitchMod) — doubling bendSemitones.
+        // Correct: one combined ratio covers both bend and coupling; no per-voice re-application.
+        const float blockBendRatio =
+            PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
+
+        // Set LFO rate/shape per voice and update HF noise SVF coefficient (once per block,
+        // not per sample). HF cutoff = baseFreq * 6 clamped to [2kHz, 16kHz]; using glide's
+        // currentFreq as the block-representative pitch is accurate within the glide rate. (Perf/F02)
         for (auto& voice : voices)
         {
             if (!voice.active)
@@ -680,14 +699,22 @@ public:
             voice.lfo2.setRate(lfo2Rate, srf);
             voice.lfo2.setShape(lfo2Shape);
             voice.shimmerLFO.setRate(shimmerBlockRate, srf);
+
+            // F02: HF noise SVF was recomputed per-sample (expensive even with _fast variant).
+            // Hoist to per-block using the glide's current frequency as pitch representative.
+            const float glideFreq = voice.glide.currentFreq > 1.0f ? voice.glide.currentFreq : 440.0f;
+            const float sizeScaleBlock = 0.5f + smoothBodySize.get();
+            const float blockBaseFreq = glideFreq * sizeScaleBlock * blockBendRatio;
+            const float newHfCutoff = std::clamp(blockBaseFreq * 6.0f, 2000.0f, 16000.0f);
+            if (std::fabs(newHfCutoff - voice.hfSvfCutoffHz) > 20.0f) // ~0.1%-ish guard
+            {
+                voice.hfSvfCutoffHz = newHfCutoff;
+                voice.hfNoiseSVF.setCoefficients_fast(newHfCutoff, 0.4f, srf);
+            }
         }
 
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
-
-        // bendSemitones + couplingPitchMod are block-constant; hoist pitch-bend ratio.
-        const float blockBendRatio =
-            PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -706,9 +733,9 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                // capturedPitchMod: block-captured coupling value (P25 — zeroed at block start)
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
-                freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
+                // blockBendRatio already encodes bend + coupling (computed once above).
+                // No per-voice re-application of bend — that was the double-bend bug (F01).
+                freq *= blockBendRatio;
 
                 // LFO modulation
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 -> brightness
@@ -808,16 +835,14 @@ public:
                 if (activeModes > 0)
                     resonanceSum *= 4.0f / static_cast<float>(kNumModes);
 
-                // HF noise character (CPU optimization: stochastic HF instead of 64 modes)
+                // HF noise character (CPU optimization: stochastic HF instead of 64 modes).
+                // SVF coefficient is updated once per block in the pre-block loop (F02).
+                // F07: use per-voice PRNG (hfNoiseState) instead of shared engine PRNG to
+                // eliminate cross-voice noise correlation.
                 if (hfNoiseNow > 0.001f && voice.exciter.active)
                 {
-                    hfNoiseState = hfNoiseState * 1664525u + 1013904223u;
-                    float noise = (static_cast<float>(hfNoiseState & 0xFFFF) / 32768.0f - 1.0f);
-                    // Shape noise through the HF bandpass.
-                    // P19: use setCoefficients_fast() — avoids full std::tan recompute
-                    // in the per-sample inner loop; accuracy is sufficient for noise shaping.
-                    voice.hfNoiseSVF.setCoefficients_fast(std::clamp(baseFreq * 6.0f, 2000.0f, 16000.0f), 0.4f, srf);
-                    // Shape noise through the HF bandpass (coeff refresh decimated)
+                    voice.hfNoiseState = voice.hfNoiseState * 1664525u + 1013904223u;
+                    float noise = (static_cast<float>(voice.hfNoiseState & 0xFFFF) / 32768.0f - 1.0f);
                     float hfShaped = voice.hfNoiseSVF.processSample(noise);
                     voice.hfEnvLevel *= hfEnvDecay; // sample-rate-correct HF envelope decay
                     resonanceSum += hfShaped * hfNoiseNow * voice.hfEnvLevel * voice.velocity;
@@ -917,6 +942,9 @@ public:
         v.glide.snapTo(freq);
         v.ampLevel = 1.0f;
         v.hfEnvLevel = 1.0f;
+        // F07: seed per-voice PRNG from note + velocity + voiceCounter (unique per noteOn).
+        v.hfNoiseState = static_cast<uint32_t>(note * 127 + static_cast<int>(vel * 1000.0f))
+                         ^ static_cast<uint32_t>(voiceCounter * 6364136223846793005ULL);
         // Cancel any in-progress noteOff ramp from a stolen voice — otherwise the
         // per-sample noteOffDecay multiplier keeps suppressing ampLevel on the new note.
         v.noteOffRampSamples = 0;
@@ -984,7 +1012,9 @@ public:
                 // noteOffRampSamples counts down sample-by-sample; ramp terminates when it hits 0.
                 // Stability: guard against division-by-zero if srf is not yet set or rounds to 0.
                 v.noteOffRampSamples = std::max(static_cast<int>(0.005f * srf), 1);
-                v.noteOffDecay = std::exp(std::log(0.4f) / static_cast<float>(v.noteOffRampSamples));
+                // F14: std::log(0.4f) is constant — avoid recomputing a transcendental per noteOff.
+                constexpr float kLog04 = -0.916290731874f; // std::log(0.4f) precomputed
+                v.noteOffDecay = std::exp(kLog04 / static_cast<float>(v.noteOffRampSamples));
                 v.filterEnv.release();
             }
         }
@@ -1137,8 +1167,7 @@ private:
     int thermalTimer = 0;
     uint32_t thermalNoiseState = 54321u;
 
-    // HF noise PRNG (shared, not per-voice)
-    uint32_t hfNoiseState = 98765u;
+    // HF noise envelope decay (SR-correct; precomputed in prepare())
     float hfEnvDecay = 0.999f; // precomputed in prepare() from sample rate (Sound/P-new)
 
     // Coupling accumulators
