@@ -295,6 +295,22 @@ public:
     }
 
     //==========================================================================
+    // Button style tagging — O(1) integer lookup instead of per-repaint
+    // String::containsIgnoreCase() on every button's name (#1161).
+    static constexpr int kBtnStyleDefault = 0;
+    static constexpr int kBtnStyleExport  = 1;
+    static constexpr int kBtnStylePanic   = 2;
+
+    static void setButtonStyle(juce::Button& btn, int style) { btn.getProperties().set("btnStyle", style); }
+
+    static int getButtonStyle(const juce::Button& btn) noexcept
+    {
+        const auto& p = btn.getProperties();
+        const auto* v = p.getVarPointer("btnStyle");
+        return v != nullptr ? static_cast<int>(*v) : kBtnStyleDefault;
+    }
+
+    //==========================================================================
     // drawButtonBackground — matches prototype button styles
     void drawButtonBackground(juce::Graphics& g, juce::Button& btn, const juce::Colour& /*bgColour*/, bool isOver,
                               bool isDown) override
