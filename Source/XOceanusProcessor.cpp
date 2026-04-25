@@ -106,8 +106,6 @@
 #include "Engines/Ostracon/OstraconEngine.h"
 // OUTCROP — wave-terrain synthesis (engine #89)
 #include "Engines/Outcrop/OutcropEngine.h"
-// ONEIRIC — NLS soliton synthesis (engine #90)
-#include "Engines/Oneiric/OneiricEngine.h"
 // OLLOTRON — tape-chamber keyboard synthesis (engine #91)
 #include "Engines/Ollotron/OllotronEngine.h"
 // ONDA — NLS soliton synthesis (engine #92; formerly Oneiric)
@@ -596,8 +594,6 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     OutflowEngine::addParameters(params);
     // OUTCROP — wave-terrain synthesis (engine #89)
     OutcropEngine::addParameters(params);
-    // ONEIRIC — NLS soliton synthesis (engine #90)
-    OneiricEngine::addParameters(params);
     // OLLOTRON — tape-chamber keyboard synthesis (engine #91)
     xoceanus::OllotronEngine::addParameters(params);
     // ONDA — NLS soliton synthesis (engine #92; formerly Oneiric)

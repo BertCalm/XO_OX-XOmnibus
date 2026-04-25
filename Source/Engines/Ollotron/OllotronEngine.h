@@ -1531,9 +1531,8 @@ private:
 
     void processAllpassStereo(float& inL, float& inR, int stage) noexcept
     {
-        const int len     = chamberAllpassLengths_[stage];
-        const int bufSize = len * 2;
-        auto&     buf     = chamberBuf_[stage];
+        const int len = chamberAllpassLengths_[stage];
+        auto&     buf = chamberBuf_[stage];
         int&      pos     = chamberBufPos_[stage];
 
         const float xL = inL;
