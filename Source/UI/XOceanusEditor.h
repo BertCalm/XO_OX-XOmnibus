@@ -396,6 +396,7 @@ public:
         GalleryLookAndFeel::setExportButtonStyle(exportBtn);
         exportBtn.setTooltip("Export presets as MPC-compatible XPN expansion pack");
         A11y::setup(exportBtn, "Export", "Open export dialog to build XPN expansion packs");
+        GalleryLookAndFeel::setButtonStyle(exportBtn, GalleryLookAndFeel::kBtnStyleExport);
         exportBtn.onClick = [this]
         {
             juce::CallOutBox::launchAsynchronously(std::make_unique<ExportDialog>(processor.getPresetManager(),
@@ -628,11 +629,15 @@ public:
         const int initialHeight = playSurface_.isVisible()
                                       ? 700 + ColumnLayoutManager::kPlaySurfaceH
                                       : 700;
-        // #1167: setResizeLimits() must precede setSize() so JUCE clamps the
-        // initial size against the limits on construction.
+
+        // Resize limits must be declared BEFORE setSize() — JUCE's constrainer
+        // only runs on user-initiated drags, not programmatic setSize(), so any
+        // host (e.g. Logic Pro) that re-sizes the editor immediately after
+        // construction could otherwise land outside the declared bounds.
         setResizable(true, true);
         // PlaySurface adds 264pt when expanded; max height allows for both states.
         setResizeLimits(960, 600, 1600, 1000 + ColumnLayoutManager::kPlaySurfaceH);
+
         setSize(1100, initialHeight);
 
         // ── Column C Sidebar: wire PresetManager AFTER setSize() so sidebar

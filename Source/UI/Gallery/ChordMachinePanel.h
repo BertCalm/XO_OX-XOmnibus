@@ -56,7 +56,9 @@ public:
 
         // Palette selector
         addAndMakeVisible(paletteBox);
-        paletteBox.addItemList({"WARM", "BRIGHT", "TENSION", "OPEN", "DARK", "SWEET", "COMPLEX", "RAW"}, 1);
+        // Palette names (#1177): renamed DARK→LUSH (minor 9 reads as lush
+        // jazz, not dark) and SWEET→BREEZY (major 9 reads as breezy/romantic).
+        paletteBox.addItemList({"WARM", "BRIGHT", "TENSION", "OPEN", "LUSH", "BREEZY", "COMPLEX", "RAW"}, 1);
         paletteBox.setSelectedId(1, juce::dontSendNotification);
         paletteBox.onChange = [this]
         {

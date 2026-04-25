@@ -258,7 +258,7 @@ Knob indicators: 50% (circular)
 
 **Radar Chart** (in detail view): Hexagonal radar with 6 axes. Filled area = preset DNA. Overlaid second preset for comparison during morphing/breeding.
 
-**Mood Map** (full browser view): 2D scatter plot of all presets. X = PCA component 1, Y = PCA component 2. Each dot colored by mood. Click a dot to load the preset. Zoom and pan. Cluster labels auto-generated.
+**Mood Map** (full browser view): 2D scatter plot of all presets. X/Y = two user-selected DNA axes (default Brightness × Warmth; any pair of Brightness / Warmth / Movement / Density / Space / Aggression). Each dot colored by mood. Click a dot to load the preset. Zoom and pan. Mood territory labels overlaid. Honest "explore by mood" — not a PCA/t-SNE projection.
 
 ### 5.5 Coupling Visualization
 

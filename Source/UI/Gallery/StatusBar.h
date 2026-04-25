@@ -20,6 +20,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
 #include "ColumnLayoutManager.h"
+#include "GalleryLookAndFeel.h"
 
 namespace xoceanus
 {
@@ -54,7 +55,7 @@ public:
         makePad(xoSendBtn, "XOSEND", "Trigger coupling burst (X)");
         makePad(echoCutBtn, "ECHO CUT", "Kill delay tails (C)");
         makePad(panicBtn, "PANIC", "All notes off / reset engines (V)");
-        GalleryLookAndFeel::setPanicButtonStyle(panicBtn);
+        GalleryLookAndFeel::setButtonStyle(panicBtn, GalleryLookAndFeel::kBtnStylePanic);
 
         fireBtn.setVisible(false);
         xoSendBtn.setVisible(false);

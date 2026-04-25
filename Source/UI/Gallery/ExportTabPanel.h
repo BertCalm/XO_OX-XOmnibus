@@ -23,6 +23,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "GalleryLookAndFeel.h"
 #include "../../Core/PresetManager.h"
 #include "../../XOceanusProcessor.h"
 #include "../ExportDialog/ExportDialog.h"
@@ -64,6 +65,7 @@ public:
         exportBtn.setWantsKeyboardFocus(true);
         GalleryLookAndFeel::setExportButtonStyle(exportBtn);
         A11y::setup(exportBtn, "Export", "Open export dialog to build the selected format pack");
+        GalleryLookAndFeel::setButtonStyle(exportBtn, GalleryLookAndFeel::kBtnStyleExport);
         exportBtn.onClick = [this] { launchExportDialog(); };
         addAndMakeVisible(exportBtn);
 

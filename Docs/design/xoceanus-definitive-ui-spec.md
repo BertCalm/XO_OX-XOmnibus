@@ -1184,7 +1184,7 @@ Current state of the art: presets are loaded discretely. You click "Velvet Morni
 
 XOceanus does something no software has attempted: **Spatial Preset Navigation**.
 
-The preset browser is not a list — it is a territory. All 19,500+ presets exist as points in 6D Sonic DNA space, projected onto a 2D map (PCA or t-SNE dimensionality reduction). The map fills the sidebar's PRESET tab.
+The preset browser is not a list — it is a territory. Presets are plotted on a 2D map whose axes are two of the six Sonic DNA dimensions (default Brightness × Warmth, user-selectable). The map fills the sidebar's PRESET tab. This is honest spatial organization by DNA + mood — not dimensionality reduction. An actual learned projection (PCA/UMAP) is a future enhancement and requires a versioned schema; it is not what ships today.
 
 The performer does not SELECT a preset. They NAVIGATE to a location on the map. As they move, XOceanus continuously interpolates between the nearest presets. Every point on the map produces a unique sound — not just the points where presets live, but the SPACES BETWEEN presets.
 
@@ -1192,7 +1192,7 @@ This means XOceanus has not 19,500 presets but INFINITE sounds. The preset map i
 
 **Implementation**:
 - Presets embedded as 6D vectors (already computed — Sonic DNA)
-- PCA projection to 2D for map rendering (offline, stored in preset metadata)
+- 2D map coordinates are two user-selected DNA axes (Brightness, Warmth, Movement, Density, Space, Aggression) — no projection, no learned embedding
 - Real-time: find K-nearest presets to cursor position (k=4, using spatial index)
 - Interpolate all parameters using inverse-distance weighting
 - Result: smooth, continuous parameter space traversal
@@ -1270,7 +1270,7 @@ No synthesizer has ever shown its entire capability space in a single, beautiful
 | Parameter sensitivity maps | Interface teaches you | None in synths | 2 days (precompute + render) |
 | Gesture trail as mod source | Performance → modulation | None in any software | 1 day (data already exists) |
 | Spectral silhouettes | Visual engine identity | None | 1 day (offline computation) |
-| Spatial preset navigation | Continuous sound space | None (discrete A/B morph exists) | 3 days (PCA + interpolation + map render) |
+| Spatial preset navigation | Continuous sound space | None (discrete A/B morph exists) | 3 days (DNA-axis map + interpolation + map render) |
 | Living manual tooltips | Embedded documentation | None this beautiful | 2 days (tooltip renderer + content) |
 | Emotion-responsive UI | Embodied cognition | None in any application | 1 day (audio analysis exists, UI tint trivial) |
 | Constellation view | God's-eye navigation | None in synths | 2 days (overlay + star layout) |

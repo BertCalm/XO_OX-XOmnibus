@@ -155,6 +155,14 @@ private:
     // juce::Timer
     void timerCallback() override
     {
+        // Panel is hidden (parent tab not OUIJA): skip the whole frame —
+        // planchette physics, trail decay, CC emission, and repaint all
+        // depend on the panel being on-screen. Parent tab visibility changes
+        // do not fire visibilityChanged() here, so the cheap per-tick guard
+        // is the right tool. (isShowing() walks ancestors.)
+        if (! isShowing())
+            return;
+
         time_ += 1.0f;
         advancePlanchette();
         ageTrail();
@@ -460,11 +468,16 @@ private:
     void buildAndPaintButtons(juce::Graphics& g, float w, float h)
     {
         struct ButtonDef { const char* label; GestureMode mode; };
+        // RELEASE was previously labelled "GOODBYE" — atmospheric, but
+        // functionally opaque (#1171). It's a momentary action (releases the
+        // planchette from a locked note) — not a peer mode to FREEZE / HOME /
+        // DRIFT. The new label says what it does. The GestureMode enum value
+        // keeps its old name to avoid touching the gesture-bank state machine.
         static constexpr ButtonDef kButtons[4] = {
             { "FREEZE",  GestureMode::Freeze  },
             { "HOME",    GestureMode::Home    },
             { "DRIFT",   GestureMode::Drift   },
-            { "GOODBYE", GestureMode::Goodbye },
+            { "RELEASE", GestureMode::Goodbye },
         };
 
         constexpr float kPadH    = 10.0f;  // horizontal padding

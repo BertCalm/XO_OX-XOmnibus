@@ -245,11 +245,13 @@ private:
         typeSelector_.addItem("Env -> Morph", 4);
         typeSelector_.addItem("Env -> Decay", 5);
         typeSelector_.addSectionHeading("STANDARD");
-        typeSelector_.addItem("Filter -> Filter", 6);
         typeSelector_.addItem("Pitch -> Pitch", 7);
         typeSelector_.addItem("Rhythm -> Blend", 8);
         typeSelector_.addItem("Amp -> Choke", 9);
         typeSelector_.addSectionHeading("CAUTION");
+        // Filter->Filter routes audio at audio rate (filter output → filter
+        // input) — same risk class as the AudioTo* couplings (#1183).
+        typeSelector_.addItem("Filter -> Filter", 6);
         typeSelector_.addItem("Audio -> FM", 10);
         typeSelector_.addItem("Audio -> Ring", 11);
         typeSelector_.addItem("Audio -> Wavetable", 12);

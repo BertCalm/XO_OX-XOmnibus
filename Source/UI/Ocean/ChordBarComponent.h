@@ -49,7 +49,8 @@ class ChordBarComponent : public juce::Component,
 public:
     //==========================================================================
     // Label tables — static constexpr so they live in the header with no ODR issue.
-    static constexpr const char* kPaletteNames[]  = { "WARM","BRIGHT","TENSION","OPEN","DARK","SWEET","COMPLEX","RAW" };
+    // Palette names (#1177): DARK→LUSH (minor 9 is jazz-lush), SWEET→BREEZY (major 9).
+    static constexpr const char* kPaletteNames[]  = { "WARM","BRIGHT","TENSION","OPEN","LUSH","BREEZY","COMPLEX","RAW" };
     static constexpr const char* kVoicingNames[]  = { "ROOT-SPREAD","DROP-2","QUARTAL","UPPER-STRUCT","UNISON" };
     static constexpr const char* kRhythmNames[]   = { "Four","Off","Synco","Stab","Gate","Pulse","Broken","Rest" };
     static constexpr const char* kVelCurveNames[] = { "Equal","RootHvy","TopBrt","V-Shape" };
@@ -915,17 +916,21 @@ private:
     void timerCallback() override
     {
         // Sync state that changes on the audio thread (chord assignment, sequencer running).
+        // This must run even when hidden so mode state stays correct when the
+        // bar is re-shown.
         const bool seqNowRunning = cm_.isSequencerRunning();
         if (seqNowRunning != lastSeqRunning_)
         {
             lastSeqRunning_ = seqNowRunning;
-            // Update mode display if sequencer started/stopped externally.
             if (!seqNowRunning && currentMode_ == ChordMode::Seq)
                 currentMode_ = ChordMode::Live;
-            repaint();
         }
 
-        // Repaint to keep mini-piano assignment visualization current.
+        // Skip the per-tick repaint when hidden — the mini-piano animation
+        // is not visible, and the state sync above already covers correctness.
+        if (! isShowing())
+            return;
+
         repaint();
     }
 

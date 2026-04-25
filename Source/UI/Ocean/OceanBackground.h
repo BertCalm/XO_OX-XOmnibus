@@ -40,10 +40,10 @@ namespace xoceanus
         Ocean::deep      (#0A0E18)  →  60 % radius
         Ocean::abyss     (#04040A)  →  edge
 
-    Depth-zone rings (faint ellipse strokes overlaid on the gradient):
-        Sunlit zone    — 30 % of half-min-dimension, sunlitTint   @ 4 % alpha
-        Twilight zone  — 45 % of half-min-dimension, twilightTint @ 3 % alpha
-        Midnight zone  — 60 % of half-min-dimension, midnightTint @ 4 % alpha
+    Depth-zone rings (faint ellipse fills overlaid on the gradient):
+        Sunlit zone    — 30 % of half-min-dimension, sunlitTint   @ 14 % alpha
+        Twilight zone  — 45 % of half-min-dimension, twilightTint @ 10 % alpha
+        Midnight zone  — 60 % of half-min-dimension, midnightTint @ 14 % alpha
 
     When hasCouplingRoutes_ is false the component additionally draws faint
     concentric ring outlines (1 px, 5 % white) as a background texture so the

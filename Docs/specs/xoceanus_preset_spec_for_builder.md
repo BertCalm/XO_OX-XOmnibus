@@ -140,7 +140,7 @@ Every preset carries a 6D fingerprint for similarity search, morphing, and breed
 **Features to implement in UI:**
 - **Find Similar** — 5 nearest neighbors by Euclidean distance in DNA space
 - **Find Opposite** — invert DNA vector, find closest match
-- **Mood Map** — 2D PCA/t-SNE visualization of all presets
+- **Mood Map** — 2D scatter of all presets on two user-selected DNA axes (default Brightness × Warmth), mood-tinted; honest "explore by mood", not a PCA/t-SNE projection
 - **Preset Morphing** — parameter interpolation between two presets via single fader
 - **Preset Breeding** — genetic crossover + DNA-aware mutation producing offspring
 

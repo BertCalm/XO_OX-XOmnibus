@@ -442,6 +442,18 @@ public:
     }
 
     //==========================================================================
+    /** Returns the route data at the given routeStates_ index, or nullptr if
+        the index is out of range.  Matches the indexing used by
+        `onKnotDoubleClicked` / `onKnotRightClicked` so callers can wire the
+        popup to real engine metadata. */
+    const CouplingRoute* getRoute(int routeIndex) const noexcept
+    {
+        if (routeIndex < 0 || routeIndex >= static_cast<int>(routeStates_.size()))
+            return nullptr;
+        return &routeStates_[static_cast<size_t>(routeIndex)].route;
+    }
+
+    //==========================================================================
     /** Returns the index of the route whose knot is within 14 px of pos, or -1. */
     int getKnotAtPosition(juce::Point<float> pos) const
     {

@@ -765,7 +765,7 @@ Every preset carries a 6-dimensional vector for similarity search, morphing, and
 **DNA-powered features:**
 - **Find Similar** — 5 nearest neighbors by Euclidean distance
 - **Find Opposite** — invert vector, find closest match
-- **Mood Map** — 2D PCA/t-SNE visualization of all presets
+- **Mood Map** — 2D scatter of all presets on two user-selected DNA axes (default Brightness × Warmth), mood-tinted; honest "explore by mood", not a learned projection
 - **Preset Morphing** — parameter interpolation via single fader
 - **Preset Breeding** — genetic crossover + DNA-aware mutation
 

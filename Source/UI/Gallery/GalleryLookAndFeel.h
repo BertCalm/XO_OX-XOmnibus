@@ -114,8 +114,24 @@ public:
         float fillEnd = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
 
         // Passive hover: subtle brightness lift when hovering but not dragging.
-        // isMouseOver() is true for hover-only; isMouseButtonDown() is false.
-        const bool isPassiveHover = enabled && slider.isMouseOver() && !slider.isMouseButtonDown();
+        // Read the cached "hovered" property set by GalleryKnob::mouseEnter /
+        // mouseExit instead of calling Slider::isMouseOver() inside paint —
+        // on D2D-backed JUCE, isMouseOver() can return the previous frame's
+        // value during fast mouse moves and produce a one-frame flicker
+        // (#1185). When the property exists, use it exclusively so that a
+        // false value on mouse-exit isn't overridden by isMouseOver() returning
+        // the previous frame's true. Only fall back to isMouseOver() for
+        // sliders that aren't GalleryKnobs (no property set).
+        bool hasHoveredProp = false;
+        bool hoveredProp = false;
+        if (auto* v = slider.getProperties().getVarPointer("hovered"))
+        {
+            hasHoveredProp = true;
+            hoveredProp = static_cast<bool>(*v);
+        }
+        const bool isPassiveHover = enabled
+            && (hasHoveredProp ? hoveredProp : slider.isMouseOver())
+            && !slider.isMouseButtonDown();
 
         if (enabled && sliderPos > 0.001f)
         {
@@ -210,12 +226,17 @@ public:
             g.drawEllipse(cx - radius - 2.0f, cy - radius - 2.0f, diameter + 4.0f, diameter + 4.0f, 2.0f);
         }
 
-        // ── 8. Live value readout (hover + drag + mousedown) ───────────────
-        // 32px knobs (diameter < 40) suppress in-knob readout — disc would be
-        // only 14px wide with ~9.8px text, which clips. Tooltip handles it instead.
-        // isMouseOver() covers plain hover; isMouseOverOrDragging() covers
-        // dragging outside bounds; isMouseButtonDown() covers click-hold.
-        if (diameter >= 28.0f && (slider.isMouseOver() || slider.isMouseButtonDown() || slider.isMouseOverOrDragging()))
+        // ── 8. Live value readout (during hover or interaction) ────────────
+        // 28px knobs and below suppress in-knob readout — disc would be
+        // only 14px wide with ~9.8px text, which clips. Tooltip handles it.
+        // Hover, not just drag (#1165) — producers should be able to read a
+        // parameter value without disturbing the control. Reuse the same
+        // cached "hovered" property used by the passive-hover fill above so
+        // the readout doesn't flicker on fast mouse moves (#1185).
+        const bool isReadoutHovered = hasHoveredProp ? hoveredProp : slider.isMouseOver();
+        if (diameter >= 28.0f
+            && (isReadoutHovered
+                || slider.isMouseButtonDown() || slider.isMouseOverOrDragging()))
         {
             float discR = radius * 0.44f;
             juce::String valStr;
@@ -256,6 +277,22 @@ private:
         return t.isString() && t.toString() == "panic";
     }
 public:
+
+    //==========================================================================
+    // Button style tagging — O(1) integer lookup instead of per-repaint
+    // String::containsIgnoreCase() on every button's name (#1161).
+    static constexpr int kBtnStyleDefault = 0;
+    static constexpr int kBtnStyleExport  = 1;
+    static constexpr int kBtnStylePanic   = 2;
+
+    static void setButtonStyle(juce::Button& btn, int style) { btn.getProperties().set("btnStyle", style); }
+
+    static int getButtonStyle(const juce::Button& btn) noexcept
+    {
+        const auto& p = btn.getProperties();
+        const auto* v = p.getVarPointer("btnStyle");
+        return v != nullptr ? static_cast<int>(*v) : kBtnStyleDefault;
+    }
 
     //==========================================================================
     // drawButtonBackground — matches prototype button styles
@@ -309,20 +346,30 @@ public:
         }
 
         // ── Standard button rendering ────────────────────────────────────────
-        // Use pre-set property tags — no string allocation per paint frame.
-        // Call setExportButtonStyle() / setPanicButtonStyle() at construction.
-        // Falls back gracefully to the standard elevated style for untagged buttons.
-        const bool isExport = isExportButton(btn);
-        const bool isPanic  = isPanicButton(btn);
+        // Dispatch by integer property tag — set at button setup via
+        // setButtonStyle(). Avoids String::containsIgnoreCase() allocation
+        // on every repaint of every button (#1161).
+        const int style = getButtonStyle(btn);
+
+       #if JUCE_DEBUG
+        // Catch accidental regression: buttons whose name matches export/panic
+        // but which were never tagged with setButtonStyle().
+        if (style == kBtnStyleDefault)
+        {
+            const juce::String n = btn.getName();
+            jassert(! n.containsIgnoreCase("export"));
+            jassert(! n.containsIgnoreCase("panic"));
+        }
+       #endif
 
         juce::Colour bg, borderCol;
 
-        if (isExport)
+        if (style == kBtnStyleExport)
         {
             bg = isDown ? get(xoGold).darker(0.15f) : (isOver ? get(xoGold).brighter(0.05f) : get(xoGold));
             borderCol = get(xoGold).darker(0.2f);
         }
-        else if (isPanic)
+        else if (style == kBtnStylePanic)
         {
             bg = isDown ? juce::Colour(0xFFFF6B6B) : juce::Colour(elevated());
             borderCol = juce::Colour(0xFFFF6B6B).withAlpha(isDown ? 0.60f : 0.25f);
@@ -470,7 +517,8 @@ public:
     }
 
     //==========================================================================
-    // drawTooltip — Inter/label 10pt, raised background, 2-layer shadow (#1169)
+    // drawTooltip — Satoshi body 10pt prose (was JetBrains Mono — #1169),
+    // raised background, 2-layer shadow
     void drawTooltip(juce::Graphics& g, const juce::String& text, int width, int height) override
     {
         using namespace GalleryColors;
@@ -488,15 +536,18 @@ public:
         g.setColour(borderMd());
         g.drawRoundedRectangle(bounds, 4.0f, 1.0f);
 
-        // Text — Inter/label 10pt (#1169: tooltip prose uses label font, not JetBrains Mono)
+        // Text — Satoshi body 10pt. Tooltips are prose ("desert spring electric
+        // piano"), not values — reserve the mono GalleryFonts::value() for
+        // numeric readouts (BPM, Hz, dB). 10pt holds the #885 legibility floor.
         g.setColour(juce::Colour(t1()));
-        g.setFont(GalleryFonts::label(10.0f));
+        g.setFont(GalleryFonts::body(10.0f));
         {
             auto tooltipBounds = bounds.reduced(8, 4);
             auto displayText = GalleryUtils::ellipsizeText(g.getCurrentFont(), text, (float)tooltipBounds.getWidth());
             g.drawText(displayText, tooltipBounds, juce::Justification::centredLeft, false);
         }
     }
+
 
     //==========================================================================
     // getDefaultScrollbarWidth — 4px slim scrollbar matching prototype

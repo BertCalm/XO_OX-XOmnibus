@@ -72,8 +72,7 @@ struct PresetDot
         screenX = viewOffset_.x + mapX * getWidth()  * viewScale_
         screenY = viewOffset_.y + (1 - mapY) * getHeight() * viewScale_   (Y flipped)
 */
-class DnaMapBrowser : public juce::Component,
-                      public juce::AsyncUpdater
+class DnaMapBrowser : public juce::Component, private juce::AsyncUpdater
 {
 public:
     //==========================================================================
@@ -103,6 +102,14 @@ public:
         diveButton_.setTooltip("Load a random visible preset");
     }
 
+    ~DnaMapBrowser() override
+    {
+        // AsyncUpdater contract: cancel any pending callback before
+        // destruction so handleAsyncUpdate() can't fire on a half-torn-down
+        // instance.
+        cancelPendingUpdate();
+    }
+
     //==========================================================================
     // juce::Component overrides
     //==========================================================================
@@ -119,7 +126,7 @@ public:
         // ── 2. Blit the pre-built dot cache ───────────────────────────────────
         // The cache is rebuilt asynchronously in handleAsyncUpdate() whenever
         // dotBufferDirty_ is set.  paint() never does layout work.
-        if (!dotCache_.isNull())
+        if (! dotCache_.isNull())
             g.drawImageAt(dotCache_, 0, 0);
 
         // ── 3. Hovered-preset tooltip ─────────────────────────────────────────

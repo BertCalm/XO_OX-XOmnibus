@@ -211,7 +211,7 @@ public:
 
         // 9b. BLOCKER 1: Empty-state label — shown when no engines are loaded.
         // Appears centred below the nexus with a subtle call-to-action.
-        emptyStateLabel_.setText("Load an engine to begin",
+        emptyStateLabel_.setText("Dive in — double-click a ghost slot to load an engine",
                                  juce::dontSendNotification);
         emptyStateLabel_.setFont(GalleryFonts::label(13.0f));
         emptyStateLabel_.setColour(juce::Label::textColourId,
@@ -382,23 +382,7 @@ public:
         // ── CouplingSubstrate knot interaction ────────────────────────────────
         substrate_.onKnotDoubleClicked = [this](int routeIndex)
         {
-            const auto route = substrate_.getRouteAt(routeIndex);
-            const auto nameFor = [this](int slot) -> juce::String
-            {
-                if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
-                    return orbits_[slot].getEngineId().substring(0, 24);
-                return "Slot " + juce::String(slot + 1);
-            };
-            const auto colourFor = [this](int slot) -> juce::Colour
-            {
-                if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
-                    return orbits_[slot].getAccentColour();
-                return juce::Colour(60, 180, 170);
-            };
-            couplingPopup_.show(routeIndex,
-                                nameFor(route.sourceSlot), colourFor(route.sourceSlot),
-                                nameFor(route.destSlot),   colourFor(route.destSlot),
-                                route.type, route.amount);
+            showCouplingPopupForRoute(routeIndex);
         };
 
         couplingPopup_.onConfigChanged = [this](int routeIndex, int newType, float newDepth, int direction)
@@ -458,10 +442,10 @@ public:
                 subPlaySurface_.setVisible(false);
                 ouijaPanel_.setVisible(false);
 
-                if (tab == "PAD")        surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
-                else if (tab == "DRUM")  surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
-                else if (tab == "XY")    surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
-                else if (tab == "OUIJA") surfaceRight_.setMode(SurfaceRightPanel::Mode::Ouija);
+                if (tab == "PAD")           surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
+                else if (tab == "DRUM")     surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
+                else if (tab == "XY")       surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
+                else if (tab == "HARMONIC") surfaceRight_.setMode(SurfaceRightPanel::Mode::Ouija);
 
                 surfaceRight_.setOpen(true);
                 surfaceRight_.setVisible(true);
@@ -838,12 +822,15 @@ public:
             .withLeft(fullBounds.getRight() - SettingsDrawer::kDrawerWidth)
             .withWidth(SettingsDrawer::kDrawerWidth));
 
-        // ── Z-order note ─────────────────────────────────────────────────────
-        // reorderZStack() is NOT called here. Z-order is established once:
-        //   • Static components: constructor add order + each initXxx() call
-        //   • Detail panel: onDoubleClicked uses remove/addAndMakeVisible (nuclear)
-        // Calling reorderZStack() every resized() caused O(n²) toFront() calls
-        // per animation frame — refs #1163.
+        // ── Z-order ──────────────────────────────────────────────────────────
+        // Z-order is static: it never changes during normal operation, so we
+        // do NOT call reorderZStack() from resized() (#1163). Each toFront()
+        // is O(n) and 36 of them in a row run during JUCE's
+        // ComponentAnimator (~60 fps) — that's ~14,700 array splices for a
+        // single 200ms panel-open animation. reorderZStack() is now invoked
+        // exactly once per setup phase (search for "reorderZStack();" call
+        // sites in this header) plus on each visibility toggle that needs
+        // a re-stack.
 
         // Nuclear safeguard: ensure detail panel is hidden when not actively showing.
         // Something in the layout chain is re-showing it; this is the absolute last word.
@@ -1478,8 +1465,7 @@ private:
 
         const juce::String& activeTab() const noexcept
         {
-            static const juce::String names[] = {"KEYS","PAD","DRUM","XY","OUIJA"};
-            return names[juce::jlimit(0, kNumTabs - 1, activeIdx_)];
+            return kTabNames[activeIdx_];
         }
 
         std::function<void(const juce::String&)> onTabChanged;
@@ -1488,7 +1474,12 @@ private:
 
     private:
         static constexpr int kNumTabs = 5;
-        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY", "OUIJA"};
+        // Tab labels are surface-type names — "OUIJA" was the brand name and
+        // broke the convention (#1173). Renamed to "HARMONIC" so a producer
+        // scanning the tab bar can find the circle-of-fifths planchette by
+        // its function rather than its codename. Internal Mode enum keeps
+        // its existing values; only the visible label changes.
+        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY", "HARMONIC"};
 
         int  activeIdx_ = 0;
         bool seqOn_     = false;
@@ -1664,6 +1655,39 @@ private:
             });
     }
 
+    /** Populate the CouplingConfigPopup for the given routeIndex with real
+        engine names, accent colours, and the live coupling type / depth. */
+    void showCouplingPopupForRoute(int routeIndex)
+    {
+        const auto* route = substrate_.getRoute(routeIndex);
+        if (route == nullptr)
+            return;
+
+        auto nameForSlot = [this](int slot) -> juce::String
+        {
+            if (slot < 0 || slot >= static_cast<int>(orbits_.size()))
+                return "—";
+            if (! orbits_[slot].hasEngine())
+                return "Empty";
+            juce::String id = orbits_[slot].getEngineId();
+            if (id.length() > 24)
+                id = id.substring(0, 23) + juce::CharPointer_UTF8("\xe2\x80\xa6"); // …
+            return id;
+        };
+
+        auto accentForSlot = [this](int slot) -> juce::Colour
+        {
+            if (slot < 0 || slot >= static_cast<int>(orbits_.size()))
+                return juce::Colour(GalleryColors::xoGold);
+            return orbits_[slot].getAccentColour();
+        };
+
+        couplingPopup_.show(routeIndex,
+                            nameForSlot(route->sourceSlot), accentForSlot(route->sourceSlot),
+                            nameForSlot(route->destSlot),   accentForSlot(route->destSlot),
+                            route->type, route->amount);
+    }
+
     /** Show a submarine-styled PopupMenu for a right-click on a coupling knot. */
     void showKnotContextMenu(int chainIndex)
     {
@@ -1691,26 +1715,8 @@ private:
                         // Flip coupling direction — future: reverse source/target.
                         break;
                     case 2:
-                    {
-                        const auto route = substrate_.getRouteAt(chainIndex);
-                        const auto nameFor = [this](int slot) -> juce::String
-                        {
-                            if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
-                                return orbits_[slot].getEngineId().substring(0, 24);
-                            return "Slot " + juce::String(slot + 1);
-                        };
-                        const auto colourFor = [this](int slot) -> juce::Colour
-                        {
-                            if (slot >= 0 && slot < static_cast<int>(orbits_.size()) && orbits_[slot].hasEngine())
-                                return orbits_[slot].getAccentColour();
-                            return juce::Colour(60, 180, 170);
-                        };
-                        couplingPopup_.show(chainIndex,
-                                            nameFor(route.sourceSlot), colourFor(route.sourceSlot),
-                                            nameFor(route.destSlot),   colourFor(route.destSlot),
-                                            route.type, route.amount);
+                        showCouplingPopupForRoute(chainIndex);
                         break;
-                    }
                     case 3:
                         // Copy coupling settings to clipboard — future.
                         break;

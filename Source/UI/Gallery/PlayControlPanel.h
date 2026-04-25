@@ -329,8 +329,8 @@ private:
     // Macro parameter IDs — must match MacroSection and XOceanusProcessor layout
     static constexpr const char* macroParamIds[4] = {"macro1", "macro2", "macro3", "macro4"};
 
-    // Macro display labels — short form matches MacroSection
-    static constexpr const char* macroLabels[4] = {"CHAR", "MOVE", "COUP", "SPACE"};
+    // Macro display labels — match MacroSection (#1175 spelled-out form).
+    static constexpr const char* macroLabels[4] = {"CHARACTER", "MOVE", "COUPLE", "SPACE"};
 
     // Macro bar colors per spec
     const juce::Colour macroColors[4] = {
