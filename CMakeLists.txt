@@ -308,6 +308,8 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Octant/OctantEngine.cpp
     Source/Engines/Overtide/OvertideEngine.h
     Source/Engines/Overtide/OvertideEngine.cpp
+    Source/Engines/Ollotron/OllotronEngine.h
+    Source/Engines/Ollotron/OllotronEngine.cpp
     Source/Engines/Bite/BiteEngine.h
     Source/Engines/Bite/BiteEngine.cpp
     Source/Engines/Origami/OrigamiEngine.h

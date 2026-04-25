@@ -369,6 +369,17 @@
       "category": "chef"
     },
     {
+      "id": "Ollotron",
+      "param_prefix": "ollo_",
+      "header": "Source/Engines/Ollotron/OllotronEngine.h",
+      "status": "implemented",
+      "accent_color": "#B07050",
+      "category": "kitchen",
+      "accent_name": "Tape Rust",
+      "polyphony": 16,
+      "description": "Tape-chamber keyboard — Mellotron/Chamberlin/Optigan spiritual descendant. Per-key tape wear, flutter, 8-second authentic cutoff. Partner audio dubs over the tape via AudioToWavetable coupling."
+    },
+    {
       "id": "Olvido",
       "param_prefix": "olv_",
       "header": "Source/Engines/Olvido/OlvidoEngine.h",
