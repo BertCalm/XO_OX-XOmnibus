@@ -832,6 +832,7 @@ public:
         // MOVEMENT → LFO depth + bellows breathing + wheel speed
         // COUPLING → coupling sensitivity
         // SPACE → cassotto depth + release time + detune
+        const float nyCeiling = srf * 0.49f; // P17: SR-aware Nyquist ceiling
         float effectiveBuzz = std::clamp(pBuzz + macroCharacter * 0.4f + couplingBuzzMod, 0.0f, 1.0f);
         float effectiveBright = std::clamp(
             pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, nyCeiling);
@@ -858,8 +859,7 @@ public:
         couplingPitchMod = 0.0f;
         couplingBuzzMod = 0.0f;
 
-        // F04/F05: P17 — SR-relative Nyquist ceiling replaces hardcoded 20000 Hz
-        const float nyCeiling = srf * 0.49f;
+
 
         const float bendSemitones = pitchBendNorm * pBendRange;
 
