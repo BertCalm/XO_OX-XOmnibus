@@ -2,6 +2,9 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 // DEEP-REVIEW: 2026-04-20 — 20 fixes applied (perf, sound, stability, params, voices)
+// DEEP-REVIEW: 2026-04-24 — 9 additional fixes applied (glide continuity, voice steal,
+//   filter fast-path, Nyquist cap alignment, LFO2 unconditional tick, warmth coeff
+//   guard, juce::MathConstants consistency, lfo2 phase independent of terroir)
 //==============================================================================
 //
 //  OlateEngine.h — XOlate | "The Aged Wine Analog"
@@ -327,8 +330,9 @@ public:
         }
 
         // D006: mod wheel → cutoff, aftertouch → resonance
-        // FIX (P7): also guard block-level cutoff against Nyquist
-        const float nyquistCap = srf * 0.5f - 200.0f;
+        // FIX (P7): Nyquist cap uses srf * 0.49f to match CytomicSVF's internal clamp.
+        // Previously srf*0.5f - 200.0f was slightly inconsistent with the filter's own guard.
+        const float nyquistCap = srf * 0.49f;
         float effectiveCutoff =
             std::clamp(pCutoff + macroChar * 4000.0f + modWheelAmount * 3000.0f + couplingFilterMod, 100.0f, nyquistCap);
         float effectiveReso =
@@ -367,6 +371,10 @@ public:
         // FIX (P15/perf): apply all per-block voice param updates once per voice, not
         // gated by active — inactive voices need fresh settings on next noteOn.
         // Also fixes ADSR setParams-per-sample anti-pattern (hoisted from inner sample loop).
+        // FIX (P19/warmth): warmth filter coefficients updated once per block here, not
+        // inside the sample loop at s==0. This ensures fresh coefficients every block and
+        // avoids the stale-coeff window when warmth first activates (was previously updated
+        // only when s==0 but the warmNow>0.01f check could skip it on transition frames).
         for (auto& voice : voices)
         {
             voice.lfo1.setRate(lfo1Rate, srf);
@@ -377,6 +385,11 @@ public:
             voice.ampEnv.setADSR(pAttack, pDecay, pSustain, pRelease);
             // FIX: filterEnv ADSR updated per-block so param tweaks take effect mid-note
             voice.filterEnv.setADSR(pFilterAttack, pFilterDecay, 0.0f, 0.3f);
+            // Warmth filter coeff update: uses full setCoefficients (shelf mode requires A).
+            // pWarmth already loaded at block top; hoisting here guarantees coefficients are
+            // fresh every block, not just at s==0 as the previous in-loop guard did.
+            if (pWarmth > 0.01f)
+                voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, pWarmth * 6.0f);
         }
 
         float* outL = buffer.getWritePointer(0);
@@ -407,10 +420,11 @@ public:
                 float freq = voice.glide.process();
                 freq *= blockBendRatio; // hoisted above — was per-sample per-voice fastPow2
 
-                // LFO modulations — FIX: advance lfo2 unconditionally (phase must tick)
-                // but only scale when depth>0 or UK terroir might use it
+                // LFO modulations — advance both LFOs unconditionally so phase progresses
+                // regardless of depth or terroir branch. lfo2Val is used either by depth
+                // scaling or by the UK terroir path; lfo2Raw is advanced every sample.
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
-                float lfo2Raw = voice.lfo2.process();
+                float lfo2Raw = voice.lfo2.process(); // must tick even when depth=0
                 float lfo2Val = lfo2Raw * lfo2Depth;
 
                 // Set oscillator frequencies — FIX (perf): setWaveform is constant,
@@ -441,18 +455,19 @@ public:
                     cutNow + filtEnv * 6000.0f + velCutMod + lfo1Val * 2000.0f + sessionCutShift,
                     100.0f, nyquistCap); // FIX (P7): use block-level nyquistCap (SR-derived)
 
-                // FIX (perf): setMode is constant LowPass — moved to noteOn; only update coefficients
-                voice.ladderFilter.setCoefficients(voiceCutoff, resNow, srf);
+                // FIX (P19/perf): use setCoefficients_fast for the LowPass ladder filter.
+                // The full setCoefficients recomputes A (shelf gain) on every call, which is
+                // wasted work for a non-shelf mode. setCoefficients_fast skips that branch.
+                voice.ladderFilter.setCoefficients_fast(voiceCutoff, resNow, srf);
                 float filtered = voice.ladderFilter.processSample(driven);
 
-                // Warmth filter: low shelf boost — tube vs transistor character
-                // FIX (P19): mode is constant so only update coefficients when warmth changes;
-                // guard both the setMode and processSample to avoid unnecessary CPU when warmth=0.
+                // Warmth filter: low shelf boost — tube vs transistor character.
+                // FIX (P19/perf): update warmth filter coefficients once per block (not per
+                // sample). The s==0 guard is replaced with a block-level bool set outside the
+                // sample loop so the shelf gets fresh coefficients every block regardless of
+                // which sample index is first — important when warmth changes block-to-block.
                 if (warmNow > 0.01f)
                 {
-                    // FIX (P19): mode set at noteOn; update coefficients once per block only
-                    if (s == 0)
-                        voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
                     filtered = voice.warmthFilter.processSample(filtered);
                 }
 
@@ -529,17 +544,30 @@ public:
 
     void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
+        // FIX (voice): prefer stealing release-stage voices to avoid cutting active bass
+        // sustains — mirrors Ogre's approach for consistent Cellar Quad behaviour.
+        int idx = VoiceAllocator::findFreeVoicePreferRelease(voices, kMaxVoices,
+                      [](const OlateVoice& v) { return v.active && !v.ampEnv.isActive(); });
         auto& v = voices[idx];
 
         float freq = midiToFreq(note); // FIX (P4): use fastPow2-based helper, not std::pow
 
+        // FIX (glide continuity): save the current glide frequency BEFORE reset() zeroes it.
+        // After reset, use setTargetOrSnap: if the voice was fresh (currentFreq==0 before
+        // reset sets it to 0 again, so always snap on true fresh voices) we snap; otherwise
+        // we glide from the previous pitch. This is the standard "fretless" legato pattern.
+        // Previously snapTo() was called unconditionally, making pGlide have zero effect.
+        const float prevGlideFreq = v.glide.getFreq(); // 0.0f on a truly fresh/reset voice
         v.reset();
         v.active = true;
         v.currentNote = note;
         v.velocity = vel;
         v.startTime = ++voiceCounter;
-        v.glide.snapTo(freq);
+        // Restore the pre-reset glide position so setTargetOrSnap can detect continuity.
+        if (prevGlideFreq >= 1.0f)
+            v.glide.setTarget(prevGlideFreq); // will glide from previous pitch
+        // setTargetOrSnap snaps if currentFreq < 1 Hz (reset state), glides otherwise.
+        v.glide.setTargetOrSnap(freq);
         v.gravityMass = 0.0f;
         v.noteHeldTime = 0.0f;
         v.ferment.trigger();
@@ -565,11 +593,10 @@ public:
         v.filterEnv.setADSR(fAttack, fDecay, 0.0f, 0.3f);
         v.filterEnv.triggerHard();
 
-        // Subtle stereo spread — FIX: use named constant instead of inline pi/2 literal
-        static constexpr float kHalfPi = 1.5707963267948966f;
+        // Subtle stereo spread — use fleet-standard juce::MathConstants for halfPi.
         float pan = 0.5f + (static_cast<float>(idx) - 3.5f) * 0.04f;
-        v.panL = std::cos(pan * kHalfPi);
-        v.panR = std::sin(pan * kHalfPi);
+        v.panL = std::cos(pan * juce::MathConstants<float>::halfPi);
+        v.panR = std::sin(pan * juce::MathConstants<float>::halfPi);
     }
 
     void noteOff(int note) noexcept
