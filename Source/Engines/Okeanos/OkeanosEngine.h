@@ -476,7 +476,6 @@ public:
         smoothMigration.set(effectiveMigration);
 
         couplingFilterMod = 0.0f;
-        const float capturedPitchMod = couplingPitchMod; // P25 fix: capture before zero
         // Snapshot pitch coupling before reset (#1118).
         const float blockCouplingPitchMod = couplingPitchMod;
         couplingPitchMod = 0.0f;
