@@ -640,12 +640,15 @@ struct OlegVoice
     void reset() noexcept
     {
         active = false;
+        currentNote = -1; // F15: reset sentinel so stale noteOff cannot match
         velocity = 0.0f;
         isPush = true;
         pressure = 0.0f;
         pressureSmoothed = 0.0f;
         stealFadeGain = 0.0f;
         stealFadeStep = 0.0f;
+        lastFormantCut = -1.0f; // F01: invalidate delta-guard sentinel
+        lastVoiceFilterCut = -1.0f; // F02: invalidate delta-guard sentinel
         glide.reset();
         osc.reset();
         bellowsEnv.kill();
@@ -658,6 +661,11 @@ struct OlegVoice
         lfo2.reset();
         breathingLFO.reset();
     }
+
+    // Delta-guard sentinels for per-sample filter coefficient updates (F01/F02).
+    // Initialised to -1 so the first sample always updates.
+    float lastFormantCut = -1.0f;
+    float lastVoiceFilterCut = -1.0f;
 };
 
 //==============================================================================
@@ -702,6 +710,9 @@ public:
         smoothFormant.prepare(srf);
         smoothCasDepth.prepare(srf);
         smoothWheelSpd.prepare(srf);
+
+        // F06: ~44ms settling time for pressure smoothing, SR-independent
+        pressureSmoothCoeff = 1.0f - std::exp(-1.0f / (0.044f * srf));
 
         prepareSilenceGate(sr, maxBlockSize, 300.0f); // moderate hold — sustained organ sounds
     }
@@ -809,7 +820,8 @@ public:
 
         // LFO params
         const float lfo1Rate = loadP(paramLfo1Rate, 0.5f);
-        const float lfo1Depth = loadP(paramLfo1Depth, 0.0f);
+        // F12: default matches param declaration (0.1f) — was 0.0f (mismatch)
+        const float lfo1Depth = loadP(paramLfo1Depth, 0.1f);
         const int lfo1Shape = static_cast<int>(loadP(paramLfo1Shape, 0.0f));
         const float lfo2Rate = loadP(paramLfo2Rate, 1.0f);
         const float lfo2Depth = loadP(paramLfo2Depth, 0.0f);
@@ -822,7 +834,7 @@ public:
         // SPACE → cassotto depth + release time + detune
         float effectiveBuzz = std::clamp(pBuzz + macroCharacter * 0.4f + couplingBuzzMod, 0.0f, 1.0f);
         float effectiveBright = std::clamp(
-            pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, 20000.0f);
+            pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, nyCeiling);
         float effectiveDrone = std::clamp(pDrone + macroCoupling * 0.3f, 0.0f, 1.0f);
         float effectiveBellows = std::clamp(pBellows + macroMovement * 0.3f, 0.0f, 1.0f);
         float effectiveDetune = std::clamp(pDetune + macroSpace * 20.0f, 0.0f, 50.0f);
@@ -845,6 +857,9 @@ public:
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingBuzzMod = 0.0f;
+
+        // F04/F05: P17 — SR-relative Nyquist ceiling replaces hardcoded 20000 Hz
+        const float nyCeiling = srf * 0.49f;
 
         const float bendSemitones = pitchBendNorm * pBendRange;
 
@@ -938,10 +953,12 @@ public:
                 // D005: breathing → subtle pitch drift
                 freq *= 1.0f + breathMod * 0.001f;
 
-                // Update pressure tracking (smooth for continuous control)
+                // Update pressure tracking (smooth for continuous control).
+                // F06: use SR-derived coefficient so 44ms settling time is consistent
+                // across 44.1 / 48 / 96 kHz interfaces (was hardcoded 0.001f).
                 float targetPressure = std::clamp(
                     voice.velocity * bellowsNow + aftertouchAmount * 0.4f + modWheelAmount * 0.3f, 0.0f, 1.0f);
-                voice.pressureSmoothed += (targetPressure - voice.pressureSmoothed) * 0.001f;
+                voice.pressureSmoothed += (targetPressure - voice.pressureSmoothed) * pressureSmoothCoeff;
                 voice.pressureSmoothed = flushDenormal(voice.pressureSmoothed);
                 voice.pressure = voice.pressureSmoothed;
 
@@ -963,11 +980,16 @@ public:
                     processed = voice.cassotto.process(raw, casDepthNow);
 
                     // Formant filter: Bayan has a warm, rounded resonance.
-                    // Mode set once per block (block pre-pass); coefficients update per-sample
-                    // so the smoothed formantNow drives zipper-free cutoff changes.
-                    voice.formantFilter.setCoefficients(600.0f + formantNow * 2400.0f, formantQ, srf);
-                    // Decimate coefficient refresh to every 16 samples — formantNow
-                    // smoother is slow relative to audio rate.
+                    // F01/F22: delta-guard + setCoefficients_fast — mode is block-constant
+                    // (set once per block in the pre-pass above), so the fast path is safe.
+                    {
+                        float fCut = 600.0f + formantNow * 2400.0f;
+                        if (std::fabs(fCut - voice.lastFormantCut) > 1.0f)
+                        {
+                            voice.formantFilter.setCoefficients_fast(fCut, formantQ, srf);
+                            voice.lastFormantCut = fCut;
+                        }
+                    }
                     processed = raw * 0.6f + voice.formantFilter.processSample(processed) * 0.4f;
                     break;
                 }
@@ -979,9 +1001,15 @@ public:
                     processed = voice.buzzBridge.process(raw, buzzNow, voice.pressure, pBuzzThreshold);
 
                     // Wooden body resonance (formant).
-                    // Mode set once per block (block pre-pass).
-                    voice.formantFilter.setCoefficients(400.0f + formantNow * 1600.0f, formantQ, srf);
-                    // Wooden body resonance (formant). Decimate coeff refresh.
+                    // F01/F22: delta-guard + setCoefficients_fast
+                    {
+                        float fCut = 400.0f + formantNow * 1600.0f;
+                        if (std::fabs(fCut - voice.lastFormantCut) > 1.0f)
+                        {
+                            voice.formantFilter.setCoefficients_fast(fCut, formantQ, srf);
+                            voice.lastFormantCut = fCut;
+                        }
+                    }
                     processed = processed * 0.7f + voice.formantFilter.processSample(processed) * 0.3f;
                     break;
                 }
@@ -993,9 +1021,15 @@ public:
                     processed = processed * (1.0f - buzzNow * 0.5f) + warmSat * buzzNow * 0.5f;
 
                     // Reed chamber resonance.
-                    // Mode set once per block (block pre-pass).
-                    voice.formantFilter.setCoefficients(500.0f + formantNow * 2500.0f, formantQ, srf);
-                    // Reed chamber resonance. Decimate coeff refresh.
+                    // F01/F22: delta-guard + setCoefficients_fast
+                    {
+                        float fCut = 500.0f + formantNow * 2500.0f;
+                        if (std::fabs(fCut - voice.lastFormantCut) > 1.0f)
+                        {
+                            voice.formantFilter.setCoefficients_fast(fCut, formantQ, srf);
+                            voice.lastFormantCut = fCut;
+                        }
+                    }
                     processed = processed * 0.65f + voice.formantFilter.processSample(processed) * 0.35f;
                     break;
                 }
@@ -1007,9 +1041,15 @@ public:
                     processed = processed * (1.0f - buzzNow * 0.6f) + rawBuzz * buzzNow * 0.6f;
 
                     // Open box resonance (narrower, more colored).
-                    // Mode set once per block (block pre-pass).
-                    voice.formantFilter.setCoefficients(350.0f + formantNow * 1650.0f, formantQ, srf);
-                    // Open box resonance (narrower, more colored). Decimate coeff refresh.
+                    // F01/F22: delta-guard + setCoefficients_fast
+                    {
+                        float fCut = 350.0f + formantNow * 1650.0f;
+                        if (std::fabs(fCut - voice.lastFormantCut) > 1.0f)
+                        {
+                            voice.formantFilter.setCoefficients_fast(fCut, formantQ, srf);
+                            voice.lastFormantCut = fCut;
+                        }
+                    }
                     processed = processed * 0.5f + voice.formantFilter.processSample(processed) * 0.5f;
                     break;
                 }
@@ -1033,8 +1073,9 @@ public:
                 float filterMod = filterEnvLevel * pFilterEnvAmt * velBright;
 
                 // LFO2 → filter cutoff modulation
+                // F05: P17 — clamp to SR-relative Nyquist ceiling (nyCeiling), not hardcoded 20000 Hz
                 float cutoff =
-                    std::clamp(brightNow + filterMod + lfo2Val * 2000.0f + voice.pressure * 1500.0f, 200.0f, 20000.0f);
+                    std::clamp(brightNow + filterMod + lfo2Val * 2000.0f + voice.pressure * 1500.0f, 200.0f, nyCeiling);
 
                 // Per-model voice filter Q — each instrument has a distinct resonance character:
                 //   Bayan Q=0.4  (concert cassotto chamber, warmly resonant)
@@ -1044,8 +1085,13 @@ public:
                 static constexpr float kModelFilterQ[4] = {0.4f, 0.5f, 0.3f, 0.6f};
                 float voiceFilterQ = kModelFilterQ[std::clamp(pOrgan, 0, 3)];
 
-                // Mode set once per block (block pre-pass above); only update coefficients per-sample.
-                voice.voiceFilter.setCoefficients(cutoff, voiceFilterQ, srf);
+                // F02: delta-guard + setCoefficients_fast — mode block-constant (LowPass set in pre-pass).
+                // Only recompute when cutoff shifts > 1 Hz to avoid redundant fastTan per sample.
+                if (std::fabs(cutoff - voice.lastVoiceFilterCut) > 1.0f)
+                {
+                    voice.voiceFilter.setCoefficients_fast(cutoff, voiceFilterQ, srf);
+                    voice.lastVoiceFilterCut = cutoff;
+                }
                 float filtered = voice.voiceFilter.processSample(processed);
 
                 float output = filtered * ampLevel * bellowsAmp * voice.velocity;
@@ -1085,10 +1131,14 @@ public:
 
     void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
+        // F14: prefer stealing releasing voices before sustaining ones to reduce clicks
+        int idx = VoiceAllocator::findFreeVoicePreferRelease(
+            voices, kMaxVoices,
+            [](const OlegVoice& v) { return v.bellowsEnv.stage == OlegBellowsEnvelope::Stage::Release; });
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        // F03: midiToFreq() uses fastPow2 — eliminates std::pow in noteOn path
+        float freq = midiToFreq(note);
         int organ = paramOrgan ? static_cast<int>(paramOrgan->load()) : 0;
 
         // Voice steal: if this slot was already active, begin a 5ms crossfade from its
@@ -1097,7 +1147,8 @@ public:
         {
             v.stealFadeGain = v.bellowsEnv.getLevel() * 0.5f + v.pressure * 0.5f;
             v.stealFadeGain = std::clamp(v.stealFadeGain, 0.0f, 1.0f);
-            v.stealFadeStep = 1.0f / (0.005f * srf);
+            // F10: guard against division-by-zero if noteOn arrives before prepare()
+            v.stealFadeStep = (srf > 0.0f) ? 1.0f / (0.005f * srf) : 200.0f;
         }
         else
         {
@@ -1165,6 +1216,10 @@ public:
         v.buzzBridge.reset();
         v.voiceFilter.reset();
         v.formantFilter.reset();
+        // F01/F02: invalidate delta-guard sentinels after filter reset so the
+        // first sample of the new note always updates coefficients.
+        v.lastFormantCut = -1.0f;
+        v.lastVoiceFilterCut = -1.0f;
 
         // Breathing LFO phase stagger
         v.breathingLFO.reset(static_cast<float>(idx) / static_cast<float>(kMaxVoices));
@@ -1172,8 +1227,9 @@ public:
         // Pan: slight stereo spread across voices
         float panAngle = (static_cast<float>(idx) / static_cast<float>(kMaxVoices) - 0.5f) * 0.6f;
         float panRad = (panAngle + 0.5f) * 1.5707963f;
-        v.panL = std::cos(panRad);
-        v.panR = std::sin(panRad);
+        // F27: fastCos/fastSin replace std::cos/std::sin in noteOn pan computation
+        v.panL = fastCos(panRad);
+        v.panR = fastSin(panRad);
     }
 
     void noteOff(int note) noexcept
@@ -1315,6 +1371,9 @@ private:
     float pitchBendNorm = 0.0f;
     float modWheelAmount = 0.0f;
     float aftertouchAmount = 0.0f;
+
+    // F06: SR-derived pressure smoother coefficient (~44ms settling, sr-independent).
+    float pressureSmoothCoeff = 0.001f;
 
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f, couplingBuzzMod = 0.0f;
     float couplingCacheL = 0.0f, couplingCacheR = 0.0f;
