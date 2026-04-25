@@ -641,7 +641,6 @@ public:
         // Snapshot pitch coupling before reset (#1118).
         const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
-        const float capturedPitchMod = couplingPitchMod; // P25 fix: capture before zero
         couplingPitchMod = 0.0f;
         couplingMaterialMod = 0.0f;
 
@@ -745,8 +744,7 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
-                freq *= blockBendRatio; // hoisted; pre-reset pitch coupling snapshot
+                freq *= blockBendRatio; // P29 fix: bend + coupling pitch mod, hoisted per-block; removed redundant semitonesToFreqRatio that re-applied bendSemitones
 
                 float lfo1Val = voice.lfo1.process() * lfo1Depth; // LFO1 → brightness
                 float lfo2Val = voice.lfo2.process() * lfo2Depth; // LFO2 → material
