@@ -464,14 +464,21 @@ struct OchreVoice
     // F08: sr-derived HF noise envelope decay coefficient (set in prepare())
     float hfNoiseDecayCoeff = 0.9995f;
 
+    // Perf: block-constant thermal pitch ratio (fastPow2 hoisted from per-sample loop)
+    float blockThermalRatio = 1.0f;
+
     void reset() noexcept
     {
         active = false;
+        currentNote = 60;          // F-OCH-01: prevent ghost noteOff on stolen voice
         velocity = 0.0f;
         ampLevel = 0.0f;
         isReleasing = false;
         releaseCoeff = 1.0f;
         hfNoiseEnv = 0.0f;
+        blockThermalRatio = 1.0f;
+        panL = 0.707f;             // F-OCH-06: restore neutral pan on voice reuse
+        panR = 0.707f;
         lastFilterCutoff = -1.0f; // F07: force coefficient recompute on voice reuse
         lastHFCutoff = -1.0f;     // F07: same for HF shaper
         glide.reset();
@@ -692,8 +699,10 @@ public:
         const float bendSemitones = pitchBendNorm * pBendRange;
 
         // Copper decay: shorter than cast iron. Conductivity increases decay rate.
+        // F-OCH-03: fastExp replaces std::exp (consistent fleet pattern; ~6% error
+        // is inaudible for a per-block decay multiplier applied across ~1 sec decay).
         float decayTimeSec = std::max(pDecay * (1.0f - pDamping * 0.85f), 0.005f);
-        float baseDecayCoeff = std::exp(-1.0f / (decayTimeSec * srf));
+        float baseDecayCoeff = fastExp(-1.0f / (decayTimeSec * srf));
 
         // Copper modal Q: lower than iron (more internal damping)
         // Range: 40 (high conductivity, open) to 400 (low conductivity, contained)
@@ -732,6 +741,12 @@ public:
             // Hoist body type — constant within a block; delta-guarded inside setBodyType().
             // Calling per-sample adds 8 function calls/sample with no audio benefit.
             voice.body.setBodyType(pBodyType);
+            // F-OCH-05: hoist per-voice thermal pitch ratio — thermalState is updated
+            // once before the sample loop and thermalPersonality+pThermal are
+            // block-constants, so fastPow2 is identical every sample for this voice.
+            // Was: 1 fastPow2 call × numSamples × numVoices per block.
+            float totalThermalCents = thermalState + voice.thermalPersonality * pThermal * 0.6f;
+            voice.blockThermalRatio = fastPow2(totalThermalCents / 1200.0f);
         }
 
         // Hoist pitch-bend ratio; uses the pre-reset snapshot (#1118).
@@ -761,9 +776,8 @@ public:
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
 
-                // Pillar 7: thermal drift (shared + per-voice personality)
-                float totalThermalCents = thermalState + voice.thermalPersonality * pThermal * 0.6f;
-                freq *= fastPow2(totalThermalCents / 1200.0f);
+                // Pillar 7: thermal drift — use block-hoisted ratio (F-OCH-05)
+                freq *= voice.blockThermalRatio;
 
                 // Hammer excitation
                 float excitation = voice.hammer.process();
@@ -810,7 +824,9 @@ public:
                     float hfCutoff = std::clamp(freq * 8.0f, 500.0f, srf * 0.45f);
                     if (std::fabs(hfCutoff - voice.lastHFCutoff) > 1.0f)
                     {
-                        voice.hfNoiseShaper.setCoefficients(hfCutoff, 0.3f, srf);
+                        // F-OCH-04a: setCoefficients_fast skips shelfGainDb_ store and
+                        // mode check (BandPass mode set once in prepare() — constant).
+                        voice.hfNoiseShaper.setCoefficients_fast(hfCutoff, 0.3f, srf);
                         voice.lastHFCutoff = hfCutoff;
                     }
                     float shapedNoise = voice.hfNoiseShaper.processSample(noise);
@@ -861,7 +877,9 @@ public:
                 // lpf mode is LowPass (set once on noteOn) — no per-sample setMode needed.
                 if (std::fabs(cutoff - voice.lastFilterCutoff) > 1.0f)
                 {
-                    voice.lpf.setCoefficients(cutoff, 0.4f, srf);
+                    // F-OCH-04b: setCoefficients_fast skips shelfGainDb_ store and
+                    // mode check (LowPass mode set once on noteOn — constant).
+                    voice.lpf.setCoefficients_fast(cutoff, 0.4f, srf);
                     voice.lastFilterCutoff = cutoff;
                 }
                 float filtered = voice.lpf.processSample(bodied);
@@ -912,7 +930,10 @@ public:
     //==========================================================================
     void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
+        // F-OCH-02: prefer stealing voices already in release stage — LRU-only steal
+        // can grab an attacking voice over a quiet tail, causing audible cutoffs.
+        int idx = VoiceAllocator::findFreeVoicePreferRelease(voices, kMaxVoices,
+            [](const OchreVoice& v) { return v.isReleasing; });
         auto& v = voices[idx];
 
         // F17: replaced std::pow with fastPow2 (avoids double-precision libm call)
@@ -985,7 +1006,7 @@ public:
         float dampNow   = paramDamping ? paramDamping->load() : 0.4f;
         // Copper release: 5–50ms scaled by decay and inversely by damping
         float relMs = std::max(5.0f + decayNow * 20.0f * (1.0f - dampNow * 0.8f), 5.0f);
-        float relCoeff = std::exp(-1.0f / (relMs * 0.001f * srf));
+        float relCoeff = fastExp(-1.0f / (relMs * 0.001f * srf));
 
         for (auto& v : voices)
         {
