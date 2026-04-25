@@ -139,8 +139,8 @@ struct DeepWaveguideBody {
     float tick(float in, float freq, float feedback, int bodyChar) {
         // Choose comb tuning factor based on character
         float tuneOffset = 0.f;
-        if (bodyChar == 1) tuneOffset =  0.012f; // cave — slightly flat resonance
-        if (bodyChar == 2) tuneOffset = -0.025f; // wreck — hull harmonic shift
+        if (bodyChar == 1) tuneOffset =  0.012f; // cave — slightly sharp resonance (tighter cavity)
+        if (bodyChar == 2) tuneOffset = -0.025f; // wreck — hull harmonic shift (detuned downward)
 
         float f = clamp(freq * (1.f + tuneOffset), 20.f, sr * 0.48f);
         int delaySamples = (int)(sr / f + 0.5f);
@@ -190,10 +190,33 @@ struct DeepBioExciter {
     // Reproducible noise — lcg updated per tick
     uint32_t rng = 0x1234ABCD;
 
+    // P17 fix: cache per-block constants so fastExp is not called per-sample.
+    // Updated by prepare() and refreshCoeffs().
+    float cachedBurstDecay = 0.f;   // fastExp(-8/sr) — SR-only, set in prepare()
+    float cachedBpCoeff    = 0.f;   // fastExp(-2*pi*fc/sr) — set by refreshCoeffs()
+    float lastBrightness   = -1.f;  // delta-guard for bpCoeff
+
+    // Call once when sample rate changes (e.g., from engine prepare()).
+    void prepare(double sampleRate) {
+        jassert(sampleRate > 0.0);
+        float sr = (float)sampleRate;
+        cachedBurstDecay = fastExp(-8.0f / sr);  // ~125 ms decay at 44100
+        lastBrightness = -1.f; // force bpCoeff recompute on first block
+    }
+
+    // Call once per block when bioBrightness or sr may have changed.
+    void refreshCoeffs(float bioBrightness, float sr) {
+        if (bioBrightness == lastBrightness) return;
+        lastBrightness = bioBrightness;
+        float fc = clamp(bioBrightness, 50.f, sr * 0.45f);
+        cachedBpCoeff = fastExp(-6.2831853f * fc / sr);
+    }
+
     void reset() {
         lfoPhase = burstEnv = bpState1 = bpState2 = noiseState = 0.f;
         lfoWasHigh = false;
         rng = 0x1234ABCD;
+        lastBrightness = -1.f; // force coeff recompute after reset
     }
 
     // Advance the noise source — white noise via LCG
@@ -202,9 +225,10 @@ struct DeepBioExciter {
         return (float)(int32_t)rng * (1.f / 2147483648.f); // [-1, 1]
     }
 
-    // lfoRate: 0.01-0.5 Hz | bioBrightness: 200-4000 Hz | sr: sample rate
+    // lfoRate: 0.01-0.5 Hz | sr: sample rate
+    // refreshCoeffs() must be called once per block before tick().
     // Returns one sample of bio excitation.
-    float tick(float lfoRate, float bioBrightness, float sr) {
+    float tick(float lfoRate, float sr) {
         // Advance LFO (triangle shape for smooth creature breathing)
         lfoPhase += lfoRate / sr;
         if (lfoPhase >= 1.f) lfoPhase -= 1.f;
@@ -220,8 +244,8 @@ struct DeepBioExciter {
         lfoWasHigh = lfoHigh;
 
         // Burst envelope — fast attack (already triggered), exponential decay
-        float burstDecay = fastExp(-8.0f / sr); // ~125 ms decay at 44100
-        burstEnv *= burstDecay;
+        // cachedBurstDecay precomputed in prepare() — no fastExp per sample.
+        burstEnv *= cachedBurstDecay;
         burstEnv = flushDenormal(burstEnv);
 
         // Generate noise sample
@@ -232,13 +256,12 @@ struct DeepBioExciter {
         noiseState = flushDenormal(noiseState);
         noise = noise - noiseState; // high-shelf tilt
 
-        // 2-pole bandpass filter (State Variable Filter, topology: HP → LP)
-        // Using simple matched-Z 2-pole BPF via sequential one-poles
-        float fc    = clamp(bioBrightness, 50.f, sr * 0.45f);
-        float coeff = fastExp(-6.2831853f * fc / sr);
-
-        bpState1 = bpState1 * coeff + noise * (1.f - coeff);
-        bpState2 = bpState2 * coeff + bpState1 * (1.f - coeff);
+        // 2-pole bandpass filter (State Variable Filter, topology: LP - LP²)
+        // cachedBpCoeff precomputed in refreshCoeffs() — no fastExp per sample.
+        const float coeff = cachedBpCoeff;
+        const float coeff1 = 1.f - coeff;
+        bpState1 = bpState1 * coeff + noise   * coeff1;
+        bpState2 = bpState2 * coeff + bpState1 * coeff1;
         bpState1 = flushDenormal(bpState1);
         bpState2 = flushDenormal(bpState2);
         float bp  = bpState1 - bpState2; // approximate bandpass
@@ -539,7 +562,7 @@ public:
         oscSub2.prepare(sampleRate);
         compressor.reset();
         body.prepare(sampleRate);
-        bioExciter.reset();
+        bioExciter.prepare(sampleRate); // P17 fix: caches burstDecay and resets bpCoeff guard
         darknessFilter.reset();
         reverb.prepare(sampleRate);
 
@@ -570,11 +593,21 @@ public:
         darknessFilter.reset();
         reverb.reset();
 
-        ampEnvStage = EnvStage::Idle;
-        ampEnvLevel = 0.f;
-        noteIsOn    = false;
+        ampEnvStage   = EnvStage::Idle;
+        ampEnvLevel   = 0.f;
+        noteIsOn      = false;
         lfo1.reset();
         lfo2.reset();
+
+        // P25 fix: fields added after initial build that were missing from reset().
+        filterEnvStage   = EnvStage::Idle;
+        filterEnvLevel   = 0.f;
+        pitchBendVal     = 0.f;
+        modWheelVal      = 0.f;
+        aftertouchVal    = 0.f;
+        couplingFilterMod = 0.f;
+        couplingPitchMod  = 0.f;
+        lastOutputSample  = 0.f;
     }
 
     //--------------------------------------------------------------------------
@@ -673,8 +706,11 @@ public:
             }
         }
 
-        // 2. Check SilenceGate bypass
+        // 2. Check SilenceGate bypass — zero coupling mods before early-return so they
+        //    don't accumulate across silent blocks and burst when the engine wakes.
         if (isSilenceGateBypassed()) {
+            couplingFilterMod = 0.f;
+            couplingPitchMod  = 0.f;
             return;
         }
 
@@ -782,6 +818,10 @@ public:
         lfo2.setRate (lfo2Rate, sr);
         lfo2.setShape (StandardLFO::Sine);
 
+        // P17 fix: refresh bio exciter bandpass coeff once per block (bioBrightness is
+        // block-constant), rather than calling fastExp per-sample inside tick().
+        bioExciter.refreshCoeffs(bioBrightness, sr);
+
         // Reset coupling modulation (consumed each block)
         couplingFilterMod = 0.f;
         couplingPitchMod  = 0.f;
@@ -848,7 +888,7 @@ public:
             // --- Bioluminescent exciter ---
             // LFO1 modulates the bio rate for organic creature-like variation
             float modBioRate = clamp(effectiveBioRate + lfo1Out * 0.1f, 0.01f, 0.5f);
-            float bioSample  = bioExciter.tick(modBioRate, bioBrightness, sr);
+            float bioSample  = bioExciter.tick(modBioRate, sr); // bioBrightness handled by refreshCoeffs()
 
             // --- Mix osc + bio ---
             float mixedSignal = oscOut * (1.f - effectiveBioMix * 0.5f)
@@ -859,8 +899,10 @@ public:
             float withBody   = mixedSignal * (1.f - effectiveBodyMix) + bodySample * effectiveBodyMix;
 
             // --- Hydrostatic compressor ---
-            // LFO2 creates subtle pressure variation (underwater breathing)
-            float dynamicPressure = clamp(totalPressure + lfo2Out * lfo2Depth * 0.15f, 0.f, 1.f);
+            // LFO2 creates subtle pressure variation (underwater breathing).
+            // P12 fix: use lfo2Out directly (already scaled by lfo2Depth); previously
+            // lfo2Depth was applied a second time here, causing quadratic depth scaling.
+            float dynamicPressure = clamp(totalPressure + lfo2Out * 0.15f, 0.f, 1.f);
             float compressed      = compressor.process(withBody, dynamicPressure, compAtk, compRel);
 
             // --- Independent filter ADSR (Week 12 — parametric) ---
@@ -907,8 +949,10 @@ public:
             float filterEnvBoost = filterEnvLevel * filterEnvAmt * 750.f;
 
             // --- Darkness filter ---
-            // LFO1 slightly modulates cutoff for alien life feel
-            float dynCutoff = clamp(finalCutoff + filterEnvBoost + lfo1Out * lfo1Depth * 50.f, 50.f, 1200.f);
+            // LFO1 slightly modulates cutoff for alien life feel.
+            // P12 fix: use lfo1Out directly (already scaled by lfo1Depth); previously
+            // lfo1Depth was applied a second time here, causing quadratic depth scaling.
+            float dynCutoff = clamp(finalCutoff + filterEnvBoost + lfo1Out * 50.f, 50.f, 1200.f);
             float filtered  = darknessFilter.process(compressed, dynCutoff, Q, sr);
 
             // --- Amp envelope ---

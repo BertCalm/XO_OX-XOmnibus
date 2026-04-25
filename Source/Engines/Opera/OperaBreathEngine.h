@@ -121,6 +121,8 @@ public:
         noiseState = 48271u;
         effortFilterState = 0.0f;
         capturePhase = 0.0f;
+        cachedBreathCutoff_ = -1.0f; // FIX OP-05: invalidate cached breathCoeff on reset
+        cachedBreathCoeff_  = 0.0f;
 
         for (int i = 0; i < kMaxFormants; ++i)
         {
@@ -160,8 +162,15 @@ public:
         float effortClamped = clamp(effort, 0.0f, 1.0f);
         float breathCutoff = 200.0f + effortClamped * effortClamped * 12000.0f;
 
-        // matched-Z one-pole coefficient: exp(-2*pi*fc/sr)
-        float breathCoeff = std::exp(-kTwoPi * breathCutoff * invSr);
+        // FIX OP-05 (P18): delta-guard breathCoeff — std::exp was called every sample
+        // even when effort (and therefore breathCutoff) hadn't changed. effort is a
+        // block-rate snapshot param, so this guard eliminates the exp call on ~95% of samples.
+        if (breathCutoff != cachedBreathCutoff_)
+        {
+            cachedBreathCoeff_ = std::exp(-kTwoPi * breathCutoff * invSr);
+            cachedBreathCutoff_ = breathCutoff;
+        }
+        float breathCoeff = cachedBreathCoeff_;
 
         effortFilterState = noise + (effortFilterState - noise) * breathCoeff;
         effortFilterState = flushDenormal(effortFilterState);
@@ -270,6 +279,10 @@ private:
 
     // Effort-shaping one-pole lowpass state
     float effortFilterState = 0.0f;
+
+    // FIX OP-05 (P18): cached breathCoeff delta-guard
+    float cachedBreathCutoff_ = -1.0f;
+    float cachedBreathCoeff_  = 0.0f;
 
     // Synchronization capture oscillator phase (radians)
     float capturePhase = 0.0f;

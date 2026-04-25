@@ -134,6 +134,13 @@ public:
             partialLocked_[i] = false;
             clusterBoost_[i] = 1.0f;
         }
+
+        // FIX OP-04 (P25): invalidate cachedSmootherTime_ and cachedResponseSpeed_ so the
+        // first updateField() call after a voice steal always reconfigures kSmoother_.
+        // Without this, a recycled voice inherits the previous note's smoother state and
+        // the K ramp may use a mismatched time constant for several Kuramoto blocks.
+        cachedSmootherTime_ = -1.0f;
+        cachedResponseSpeed_ = -1.0f; // FIX OP-07: also invalidate response speed cache
     }
 
     //==========================================================================
@@ -159,15 +166,27 @@ public:
         // Response speed: logarithmic mapping from 5ms (1.0) to 60s (0.0)
         //   t = 60.0 * 10^(-speed * 4.08)
         //   speed=0.0 -> 60s, speed=0.5 -> ~0.55s, speed=1.0 -> ~5ms
+        //
+        // FIX OP-07 (P18): delta-guard on responseSpeed before std::pow.
+        // updateField() runs every kKuraBlock=8 samples per active voice.
+        // responseSpeed is a block-rate snapshot param that rarely changes mid-note;
+        // the std::pow was the most expensive call in this function. Caching the
+        // last value and skipping both the pow and the smoother prepare() when
+        // nothing changed eliminates the compute on ~100% of Kuramoto blocks.
+        // (The existing cachedSmootherTime_ guard only skips prepare(), not std::pow.)
         //----------------------------------------------------------------------
-        float smootherTime = 60.0f * std::pow(10.0f, -responseSpeed * 4.08f);
-
-        // FIX P0: only call prepare() when smootherTime changes; recalculating
-        // the coefficient every 8 samples was resetting the ramp mid-glide.
-        if (std::abs(smootherTime - cachedSmootherTime_) > 0.0001f)
+        if (responseSpeed != cachedResponseSpeed_)
         {
-            kSmoother_.prepare(sampleRate_, smootherTime);
-            cachedSmootherTime_ = smootherTime;
+            float smootherTime = 60.0f * std::pow(10.0f, -responseSpeed * 4.08f);
+            cachedResponseSpeed_ = responseSpeed;
+
+            // FIX P0: only call prepare() when smootherTime changes; recalculating
+            // the coefficient every 8 samples was resetting the ramp mid-glide.
+            if (std::abs(smootherTime - cachedSmootherTime_) > 0.0001f)
+            {
+                kSmoother_.prepare(sampleRate_, smootherTime);
+                cachedSmootherTime_ = smootherTime;
+            }
         }
 
         //----------------------------------------------------------------------
@@ -609,6 +628,10 @@ private:
     // Cached smoother time — used to skip redundant prepare() calls inside
     // updateField(). Initialised to -1 so the first call always runs prepare().
     float cachedSmootherTime_ = -1.0f;
+
+    // FIX OP-07 (P18): cached responseSpeed for std::pow delta-guard.
+    // Initialised to -1 so the first updateField() call always runs std::pow.
+    float cachedResponseSpeed_ = -1.0f;
 
     // Acausal resonance clusters
     Cluster detectedClusters_[kMaxClusters] = {};
