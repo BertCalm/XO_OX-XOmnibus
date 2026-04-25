@@ -708,10 +708,79 @@ def normalize_to_db(left: list[float], right: list[float],
 # MP3 ENCODING
 # =============================================================================
 
+def preflight_check() -> None:
+    """Verify that ffmpeg and ffprobe are on PATH.
+
+    Raises RuntimeError with a clear install hint if either tool is missing.
+    This must be called before any pipeline stage that produces MP3 previews.
+    Decision D-U6=a: Python CLI post-processor invoking system ffmpeg.
+    """
+    for tool in ("ffmpeg", "ffprobe"):
+        result = subprocess.run(
+            [tool, "-version"],
+            capture_output=True, text=True,
+        )
+        if result.returncode != 0:
+            raise RuntimeError(
+                f"'{tool}' is required for MP3 preview generation but returned "
+                f"non-zero exit code {result.returncode}.\n"
+                f"Install it with: brew install ffmpeg  (macOS) or "
+                f"apt install ffmpeg  (Debian/Ubuntu)"
+            )
+    # Verify libmp3lame is compiled in (ffmpeg may be present but without MP3 support)
+    probe = subprocess.run(
+        ["ffmpeg", "-codecs"],
+        capture_output=True, text=True,
+    )
+    if "libmp3lame" not in probe.stdout and "mp3" not in probe.stdout.lower():
+        raise RuntimeError(
+            "ffmpeg is installed but does not have libmp3lame/MP3 encoding support.\n"
+            "Reinstall ffmpeg with MP3 support: brew install ffmpeg  or use a "
+            "distribution package that includes libmp3lame."
+        )
+
+
+def validate_mp3(mp3_path: Path) -> bool:
+    """Verify that mp3_path is a real MP3 file using ffprobe.
+
+    Runs:
+        ffprobe -v error -select_streams a:0
+                -show_entries stream=codec_name
+                -of default=noprint_wrappers=1:nokey=1 <file>
+
+    Returns True when ffprobe reports the codec as 'mp3', False otherwise.
+    A WAV file with an .mp3 extension will return False here.
+    """
+    if not mp3_path.exists():
+        return False
+    try:
+        result = subprocess.run(
+            [
+                "ffprobe", "-v", "error",
+                "-select_streams", "a:0",
+                "-show_entries", "stream=codec_name",
+                "-of", "default=noprint_wrappers=1:nokey=1",
+                str(mp3_path),
+            ],
+            capture_output=True, text=True, timeout=15,
+        )
+    except (FileNotFoundError, subprocess.TimeoutExpired) as exc:
+        print(f"[WARN] ffprobe validation failed for {mp3_path.name}: {exc}",
+              file=sys.stderr)
+        return False
+    codec = result.stdout.strip().lower()
+    return codec == "mp3"
+
+
 def encode_mp3(wav_path: Path, mp3_path: Path, bitrate: int = 192) -> bool:
     """
-    Convert WAV to MP3 using ffmpeg or lame.
-    Returns True on success, False if no encoder found.
+    Convert WAV to MP3 using ffmpeg (192kbps CBR per bible §11).
+
+    Command form:
+        ffmpeg -y -i input.wav -codec:a libmp3lame -b:a 192k output.mp3
+
+    Returns True on success.
+    Raises RuntimeError on non-zero ffmpeg exit (so callers see stderr).
     """
     # Validate bitrate before use in subprocess args (issue #430).
     # Allowlist of standard MP3 bitrates prevents injection via crafted config.
@@ -719,30 +788,114 @@ def encode_mp3(wav_path: Path, mp3_path: Path, bitrate: int = 192) -> bool:
     if bitrate not in VALID_BITRATES:
         raise ValueError(f"Invalid MP3 bitrate {bitrate!r} — must be one of {sorted(VALID_BITRATES)}")
 
-    # Try ffmpeg first
     try:
         result = subprocess.run(
-            ["ffmpeg", "-y", "-i", str(wav_path),
-             "-b:a", f"{bitrate}k", "-q:a", "2", str(mp3_path)],
-            capture_output=True, text=True, timeout=30,
+            [
+                "ffmpeg", "-y", "-i", str(wav_path),
+                "-codec:a", "libmp3lame", "-b:a", f"{bitrate}k",
+                str(mp3_path),
+            ],
+            capture_output=True, text=True, timeout=60,
         )
-        if result.returncode == 0:
-            return True
-    except (FileNotFoundError, subprocess.TimeoutExpired) as exc:
-        print(f"[WARN] ffmpeg MP3 conversion for {wav_path.name}: {exc}", file=sys.stderr)
-
-    # Try lame
-    try:
-        result = subprocess.run(
-            ["lame", "-b", str(bitrate), str(wav_path), str(mp3_path)],
-            capture_output=True, text=True, timeout=30,
+    except FileNotFoundError:
+        raise RuntimeError(
+            "ffmpeg not found on PATH — run preflight_check() before encoding.\n"
+            "Install: brew install ffmpeg"
         )
-        if result.returncode == 0:
-            return True
-    except (FileNotFoundError, subprocess.TimeoutExpired) as exc:
-        print(f"[WARN] lame MP3 conversion for {wav_path.name}: {exc}", file=sys.stderr)
+    except subprocess.TimeoutExpired:
+        raise RuntimeError(
+            f"ffmpeg timed out encoding {wav_path.name} (limit: 60s). "
+            "The WAV may be corrupted or unusually large."
+        )
 
-    return False
+    if result.returncode != 0:
+        raise RuntimeError(
+            f"ffmpeg returned exit code {result.returncode} while encoding "
+            f"{wav_path.name} → {mp3_path.name}.\n"
+            f"ffmpeg stderr:\n{result.stderr.strip()}"
+        )
+
+    return True
+
+
+def generate_preview_for_xpm(
+    xpm_path: Path,
+    wavs_dir: Path,
+    engine: str,
+    bitrate: int = 192,
+    duration: float = 30.0,
+    tempo: float = 120.0,
+    dna_arg: Optional[str] = None,
+) -> Path:
+    """Generate an MP3 preview for a single .xpm program.
+
+    This is the pipeline-callable entry point used by the Oxport preview stage.
+    The output MP3 is written adjacent to the .xpm file (same directory,
+    same base name) as required by bible §11 / Rex's Rule #4.
+
+    Args:
+        xpm_path:   Path to the .xpm file (output .mp3 is placed alongside it)
+        wavs_dir:   Directory containing rendered per-pad WAV files for this program
+        engine:     Engine name (e.g. "ONSET"), used to detect drum vs. melodic pattern
+        bitrate:    MP3 bitrate in kbps (default: 192 per bible §11)
+        duration:   Target preview duration in seconds (30-45 per bible §11)
+        tempo:      BPM for pattern sequencing (default: 120; overridden by DNA)
+        dna_arg:    Optional Sonic DNA (JSON file path or inline JSON string)
+
+    Returns:
+        Path to the generated .mp3 file.
+
+    Raises:
+        RuntimeError if ffmpeg encoding fails or if the output fails MP3 validation.
+        FileNotFoundError if wavs_dir does not exist.
+    """
+    if not wavs_dir.is_dir():
+        raise FileNotFoundError(
+            f"WAV source directory not found: {wavs_dir}\n"
+            f"The render stage must complete before preview generation."
+        )
+
+    output_dir = xpm_path.parent
+    pack_slug = xpm_path.stem
+
+    # Render to intermediate WAV, then encode to MP3
+    # generate_preview() returns the final path (mp3 or wav)
+    result_path = generate_preview(
+        samples_dir=wavs_dir,
+        engine=engine,
+        pack_name=pack_slug,
+        output_dir=output_dir,
+        tempo=tempo,
+        duration=duration,
+        output_format="mp3",
+        pattern_type="auto",
+        dry_run=False,
+        dna_arg=dna_arg,
+    )
+
+    if result_path is None:
+        raise RuntimeError(
+            f"Preview generation returned no output for {xpm_path.name}. "
+            f"Check that WAV files exist in {wavs_dir}."
+        )
+
+    # generate_preview() may fall back to WAV if encoding fails; we must not
+    # allow WAV-with-mp3-extension to pass.  Validate the output is real MP3.
+    if result_path.suffix.lower() != ".mp3":
+        raise RuntimeError(
+            f"Preview generator produced {result_path.suffix!r} output instead of "
+            f".mp3 for {xpm_path.name}. ffmpeg may not be available — run "
+            f"preflight_check() before the pipeline."
+        )
+
+    if not validate_mp3(result_path):
+        raise RuntimeError(
+            f"ffprobe validation failed: {result_path.name} is not a valid MP3 "
+            f"(ffprobe did not report codec 'mp3'). The file may be a WAV with a "
+            f"renamed extension. Check ffmpeg output above."
+        )
+
+    return result_path
 
 
 # =============================================================================
@@ -971,15 +1124,14 @@ def generate_preview(
     if output_format == "mp3":
         mp3_path = output_dir / f"{pack_slug}.mp3"
         print(f"  Encoding MP3: {mp3_path.name}")
-        if encode_mp3(wav_path, mp3_path):
-            final_path = mp3_path
-            # Remove intermediate WAV
-            wav_path.unlink()
-            print("  MP3 encoding successful")
-        else:
-            print("  [WARN] No MP3 encoder found (ffmpeg/lame) — keeping WAV")
-            print("         Install ffmpeg: brew install ffmpeg")
-            final_path = wav_path
+        # encode_mp3() raises RuntimeError on failure — propagate to caller.
+        # The pipeline (generate_preview_for_xpm) treats any exception as fatal.
+        # The CLI catches it at main() level and prints a clean error.
+        encode_mp3(wav_path, mp3_path)
+        final_path = mp3_path
+        # Remove intermediate WAV
+        wav_path.unlink()
+        print("  MP3 encoding successful")
 
     size_kb = final_path.stat().st_size / 1024
     unit = "KB" if size_kb < 1024 else "MB"
@@ -1045,18 +1197,22 @@ def main():
         print(f"  [ERROR] Samples directory not found: {samples_dir}")
         return 1
 
-    result = generate_preview(
-        samples_dir=samples_dir,
-        engine=args.engine,
-        pack_name=args.pack,
-        output_dir=Path(args.output),
-        tempo=args.tempo,
-        duration=args.duration,
-        output_format=args.output_format,
-        pattern_type=args.pattern,
-        dry_run=args.dry_run,
-        dna_arg=args.dna,
-    )
+    try:
+        result = generate_preview(
+            samples_dir=samples_dir,
+            engine=args.engine,
+            pack_name=args.pack,
+            output_dir=Path(args.output),
+            tempo=args.tempo,
+            duration=args.duration,
+            output_format=args.output_format,
+            pattern_type=args.pattern,
+            dry_run=args.dry_run,
+            dna_arg=args.dna,
+        )
+    except RuntimeError as e:
+        print(f"\n  [ERROR] {e}", file=sys.stderr)
+        return 1
 
     if result is None and not args.dry_run:
         return 1
