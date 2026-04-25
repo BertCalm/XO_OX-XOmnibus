@@ -510,6 +510,13 @@ struct ObeliskVoice
         velocity = 0.0f;
         ampLevel = 0.0f;
         isReleasing = false;
+        // FIX(D5/V2 reset gap): currentNote must be reset so a stolen voice cannot
+        // ghost-match a subsequent noteOff for the previous owner's pitch.
+        currentNote = 60;
+        // FIX(D5/V3 reset gap): pan must be reset to neutral so voice steal doesn't
+        // carry the previous note's stereo position into the new note.
+        panL = 0.707f;
+        panR = 0.707f;
         glide.reset();
         hammer.reset();
         chainBuzz.reset();
