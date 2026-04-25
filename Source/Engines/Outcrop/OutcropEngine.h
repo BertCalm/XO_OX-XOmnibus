@@ -812,7 +812,7 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
 {
     juce::ScopedNoDenormals noDenormals;
     if (numSamples <= 0) return;
-    if (sampleRateF <= 0.0f) sampleRateF = 44100.0f;
+    if (sampleRateF <= 0.0f) { buffer.clear(); return; }
     const int nCh = buffer.getNumChannels();
     if (nCh <= 0) return;
 
@@ -890,7 +890,6 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         : 1.0f;
 
     // ---- Parse MIDI ----
-    bool anyNoteOn = false;
     for (const auto& meta : midi)
     {
         const auto msg = meta.getMessage();
@@ -931,7 +930,6 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             {
                 startVoice(newNote, vel, false);
             }
-            anyNoteOn = true;
         }
         else if (msg.isNoteOff() || (msg.isNoteOn() && msg.getVelocity() == 0))
         {
@@ -951,7 +949,6 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             pitchBendNorm = (msg.getPitchWheelValue() - 8192) / 8192.0f;
         }
     }
-    (void) anyNoteOn;
 
     // ---- Silence gate early exit ----
     if (isSilenceGateBypassed() && midi.isEmpty())

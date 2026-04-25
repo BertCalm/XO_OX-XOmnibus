@@ -64,6 +64,7 @@ struct OrreryVoice
     // ---- filter (stereo, one per voice) ----
     CytomicSVF filterL;
     CytomicSVF filterR;
+    int prevFltType = -1; // sentinel: -1 forces IC reset on first block
 
     // ---- envelopes ----
     StandardADSR ampEnv;
@@ -119,6 +120,7 @@ struct OrreryVoice
         }
         filterL.reset();
         filterR.reset();
+        prevFltType = -1;
         ampEnv.reset();
         filterEnv.reset();
         lfo1.reset();
@@ -145,7 +147,7 @@ public:
 
     void prepare(double sampleRate, int maxBlockSize) override
     {
-        sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 44100.0f;
+        sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 0.0f;
         maxBlock = maxBlockSize;
 
         // Pre-compute 50ms xfade step
@@ -553,7 +555,7 @@ public:
 
     // Called by the processor to give Orrery access to SharedTransport.
     // Must be called before the first renderBlock().
-    void setSharedTransport(const SharedTransport* transport) noexcept { sharedTransport = transport; }
+    void setSharedTransport(const SharedTransport* transport) noexcept override { sharedTransport = transport; }
 
     //==========================================================================
     // renderBlock
@@ -1124,7 +1126,7 @@ private:
                     else
                     {
                         rawSig = generateOscSample(wave, v.oscPhase[c], phaseInc, ch,
-                                                   v.noiseRng[c], sampleRateFloat);
+                                                   v.noiseRng[c]);
                         v.oscPhase[c] += phaseInc;
                         if (v.oscPhase[c] >= 1.0f) v.oscPhase[c] -= 1.0f;
                     }
@@ -1175,6 +1177,12 @@ private:
                     case 3: fMode = CytomicSVF::Mode::Notch;    break;
                     default: break;
                     }
+                    if (fltType != v.prevFltType)
+                    {
+                        v.filterL.reset();
+                        v.filterR.reset();
+                        v.prevFltType = fltType;
+                    }
                     v.filterL.setMode(fMode);
                     v.filterR.setMode(fMode);
                     v.filterL.setCoefficients_fast(effectiveCutoff, effectiveReso, sampleRateFloat);
@@ -1223,10 +1231,8 @@ private:
     //==========================================================================
 
     static float generateOscSample(int wave, float phase, float phaseInc,
-                                   float character, uint32_t& rng,
-                                   float sampleRate) noexcept
+                                   float character, uint32_t& rng) noexcept
     {
-        (void)sampleRate;
         switch (wave)
         {
         case 0: // Sine — character folds (wavefold for warmth)

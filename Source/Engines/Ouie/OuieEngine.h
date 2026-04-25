@@ -688,6 +688,7 @@ struct OuieVoice
 
     // Per-voice filter
     CytomicSVF filter;
+    int prevFilterMode = -1; // sentinel: -1 forces IC reset on first mode change
 
     // Per-voice envelopes
     StandardADSR ampEnv;
@@ -1016,12 +1017,23 @@ public:
         // --- Update voice filter coefficients once per block ---
         if (voices[0].active)
         {
+            if (pFilterMode1 != voices[0].prevFilterMode)
+            {
+                voices[0].filter.reset();
+                voices[0].prevFilterMode = pFilterMode1;
+            }
             voices[0].filter.setMode(toFilterMode(pFilterMode1));
             voices[0].filter.setCoefficients(effectiveCutoff1, effectiveReso1, srf);
         }
         if (voices[1].active)
         {
-            voices[1].filter.setMode(toFilterMode(pFilterLink ? pFilterMode1 : pFilterMode2));
+            const int mode2 = pFilterLink ? pFilterMode1 : pFilterMode2;
+            if (mode2 != voices[1].prevFilterMode)
+            {
+                voices[1].filter.reset();
+                voices[1].prevFilterMode = mode2;
+            }
+            voices[1].filter.setMode(toFilterMode(mode2));
             voices[1].filter.setCoefficients(effectiveCutoff2, effectiveReso2, srf);
         }
 
@@ -1030,7 +1042,6 @@ public:
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
         {
-            const bool updateFilter = ((sample & 15) == 0);
             // Smooth HAMMER parameter
             smoothedHammer += (effectiveHammer - smoothedHammer) * smoothCoeff;
             smoothedHammer = flushDenormal(smoothedHammer);
@@ -1246,8 +1257,6 @@ public:
 
                 // Update filter coefficients every 16 samples (modulation still tracks;
                 // the refresh rate stays well above audible lag).
-                if (updateFilter)
-                    voice.filter.setCoefficients_fast(voiceCutoff, vi == 0 ? effectiveReso1 : effectiveReso2, srf);
 
                 voiceGains[vi] = ampLevel * voice.velocity * voice.fadeGain;
             }

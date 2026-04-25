@@ -390,7 +390,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float cutNow = smoothCutoff.process();
             float resNow = smoothResonance.process();
             float drvNow = smoothDrive.process();
@@ -444,11 +443,6 @@ public:
 
                 // FIX (perf): setMode is constant LowPass — moved to noteOn; only update coefficients
                 voice.ladderFilter.setCoefficients(voiceCutoff, resNow, srf);
-                if (updateFilter)
-                {
-                    voice.ladderFilter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.ladderFilter.setCoefficients(voiceCutoff, resNow, srf);
-                }
                 float filtered = voice.ladderFilter.processSample(driven);
 
                 // Warmth filter: low shelf boost — tube vs transistor character
@@ -459,11 +453,6 @@ public:
                     // FIX (P19): mode set at noteOn; update coefficients once per block only
                     if (s == 0)
                         voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
-                    if (updateFilter)
-                    {
-                        voice.warmthFilter.setMode(CytomicSVF::Mode::LowShelf);
-                        voice.warmthFilter.setCoefficients(200.0f, 0.5f, srf, warmNow * 6.0f);
-                    }
                     filtered = voice.warmthFilter.processSample(filtered);
                 }
 

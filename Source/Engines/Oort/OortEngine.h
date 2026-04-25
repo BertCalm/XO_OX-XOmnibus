@@ -127,6 +127,7 @@ struct OortVoice
     CytomicSVF filterL;
     CytomicSVF filterR;
     int   filterCoeffCounter = 0;
+    int   prevFltType = -1; // sentinel: -1 forces IC reset on first mode change
 
     // ---- Envelopes ----
     StandardADSR ampEnv;
@@ -448,7 +449,7 @@ public:
 
     void prepare(double sampleRate, int maxBlockSize) override
     {
-        sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 44100.0f;
+        sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 0.0f;
         maxBlock = maxBlockSize;
 
         for (int i = 0; i < kOortMaxVoices; ++i)
@@ -1415,6 +1416,12 @@ private:
                         : 0.0f;
                     const float fCutoff = std::clamp(effCutoff * keyTrackMul + envOffset, 20.0f, 20000.0f);
 
+                    if (fltType != v.prevFltType)
+                    {
+                        v.filterL.reset();
+                        v.filterR.reset();
+                        v.prevFltType = fltType;
+                    }
                     v.filterL.setMode(blockFltMode);
                     v.filterR.setMode(blockFltMode);
                     v.filterL.setCoefficients_fast(fCutoff, fltReso, sampleRateFloat);

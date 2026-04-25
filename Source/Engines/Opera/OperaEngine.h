@@ -980,7 +980,6 @@ public:
             // 6g. Render each active voice
             float sampleL = 0.0f;
             float sampleR = 0.0f;
-            [[maybe_unused]] float monoTap = 0.0f;
 
             for (int v = 0; v < kMaxVoices; ++v)
             {
@@ -1226,7 +1225,6 @@ public:
 
                 // --- Coupling tap: post-Kuramoto, pre-FX ---
                 voice.couplingTap[s] = monoSample;
-                monoTap += monoSample;
 
                 // --- Amp envelope ---
                 float ampGain = voice.ampEnv.process();

@@ -528,7 +528,7 @@ public:
     void prepare(double sampleRate) noexcept
     {
         cachedSampleRate = sampleRate;
-        inverseSampleRate = (sampleRate > 0.0) ? (1.0 / sampleRate) : (1.0 / 48000.0);
+        inverseSampleRate = (sampleRate > 0.0) ? (1.0 / sampleRate) : 0.0;
         // Scale weight update divisor to actual sample rate
         weightControlDivisor = std::max(1, static_cast<int>(sampleRate / 2000.0));
         reset();
@@ -983,7 +983,7 @@ public:
 
     // Called by the processor to give Organon access to SharedTransport.
     // Must be called before the first renderBlock().
-    void setSharedTransport(const SharedTransport* transport) noexcept { sharedTransport = transport; }
+    void setSharedTransport(const SharedTransport* transport) noexcept override { sharedTransport = transport; }
 
     // Reverb send level — read by the processor to route to shared reverb bus.
     // Updated once per block in renderBlock(), driven by the membrane parameter
@@ -1051,6 +1051,7 @@ public:
 
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
+        if (cachedSampleRate == 0.0) return;
         juce::ScopedNoDenormals noDenormals;
         EngineProfiler::ScopedMeasurement measurement(profiler);
 

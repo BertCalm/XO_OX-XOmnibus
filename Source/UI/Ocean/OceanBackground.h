@@ -116,10 +116,10 @@ public:
             const float bw = static_cast<float>(bounds.getWidth());
             const float bh = static_cast<float>(bounds.getHeight());
             const float breatheX = (std::sin(waveTime_ * 1.2f) * 0.5f + 0.5f) * bw;
-            // Alpha raised from 0.032 → 0.06 so the teal warmth reads prominently
-            // on the brighter baseline gradient even before any audio is playing.
+            // Alpha raised from 0.06 → 0.28: radial gradient fades to transparent,
+            // so peak at 0.28 reads as a visible ambient warmth without flooding the scene.
             juce::ColourGradient breatheGrad(
-                juce::Colour(60, 180, 170).withAlpha(0.06f),
+                juce::Colour(60, 180, 170).withAlpha(0.28f),
                 breatheX, bh * 0.5f,
                 juce::Colours::transparentBlack,
                 breatheX + bw * 0.4f, bh * 0.5f, true);
@@ -396,26 +396,23 @@ private:
                              float halfMin) const
     {
         // Sunlit zone — warm cyan tint.
-        // Alpha raised to 0.12 (was 0.07) for stronger zone differentiation.
         {
             const float r = kSunlitRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.12f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.16f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
         // Twilight zone — blue tint.
-        // Alpha raised to 0.09 (was 0.05) for stronger zone differentiation.
         {
             const float r = kTwilightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.09f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.13f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
         // Midnight zone — violet tint.
-        // Alpha raised to 0.10 (was 0.06) for stronger zone differentiation.
         {
             const float r = kMidnightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.10f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.15f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
     }

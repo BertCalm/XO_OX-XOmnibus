@@ -538,6 +538,8 @@ footer {
 </style>
 <meta property="og:title" content="How to Build an XOceanus Engine in 200 Lines | XO_OX Field Guide">
 <meta property="og:description" content="Developer Guide: build a minimal working XOceanus engine from scratch — one oscillator, one filter, four parameters — and walk through the full integration path.">
+<meta name="twitter:title" content="How to Build an XOceanus Engine in 200 Lines | XO_OX Field Guide">
+<meta property="og:url" content="https://xo-ox.org/guide-sdk-engine.html">
 <meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -1207,13 +1209,13 @@ The <code>Source/DSP/</code> directory contains six shared utilities extracted f
 <ul class="reveal">
   <li><strong>Coupling deep dive</strong> &mdash; <a href="guide-coupling.html" style="color: var(--teal); text-decoration: none;">The Space Between the Engines</a> covers all 15 coupling types with audio examples and signal flow diagrams.</li>
   <li><strong>Architecture overview</strong> &mdash; <a href="guide-coupling-obrix-pairs.html" style="color: var(--teal); text-decoration: none;">OBRIX Pairs</a> shows how a complex engine connects to three other engines through the coupling matrix, with full preset recipes.</li>
-  <li><strong>Engine table</strong> &mdash; <code>CLAUDE.md</code> in the repository root contains the full table of all 77 engines, parameter prefixes, and accent colours. Use it as a reference when choosing a prefix for your engine.</li>
+  <li><strong>Engine table</strong> &mdash; <code>CLAUDE.md</code> in the repository root contains the full table of all 92 engines, parameter prefixes, and accent colours. Use it as a reference when choosing a prefix for your engine.</li>
   <li><strong>Full integration process</strong> &mdash; <code>Docs/xoceanus_new_engine_process.md</code> walks through the complete post-build pipeline: Doc Lock, Guru Bin, Presets, and Seance.</li>
 </ul>
 
 <div class="callout reveal" style="margin-top: 3rem;">
   <span class="callout-label">The goal of the interface</span>
-  <p>XOceanus has 77 engines because each one started as an independent instrument. The interface is short by design. The constraint that matters is not the API surface &mdash; it is the doctrines. An engine that passes D001&ndash;D006 can be trusted to sound like it has a point of view. That is what makes a character instrument rather than a feature matrix.</p>
+  <p>XOceanus has 92 engines because each one started as an independent instrument. The interface is short by design. The constraint that matters is not the API surface &mdash; it is the doctrines. An engine that passes D001&ndash;D006 can be trusted to sound like it has a point of view. That is what makes a character instrument rather than a feature matrix.</p>
 </div>
 
 <!-- ═══════════ CONTINUE THE DIVE ═══════════ -->

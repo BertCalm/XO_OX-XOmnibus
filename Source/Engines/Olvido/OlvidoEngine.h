@@ -1497,11 +1497,8 @@ private:
     //  M E M B E R   D A T A
     //==========================================================================
 
-    // ---- Audio configuration ----
-    // sampleRateDouble retained for base-class / future use; all DSP uses sampleRateFloat.
-    double sampleRateDouble = 44100.0;
-    float  sampleRateFloat  = 44100.0f;
     // ---- Audio configuration (set in prepare()) ----
+    // sampleRateDouble retained for base-class / future use; all DSP uses sampleRateFloat.
     // Do not default-init — must be set by prepare() on the live sample rate.
     // Sentinel 0.0 makes misuse before prepare() a crash instead of silent wrong-rate DSP.
     double sampleRateDouble = 0.0;

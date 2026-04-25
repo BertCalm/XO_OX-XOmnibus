@@ -691,7 +691,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float fragilityNow = smoothFragility.process();
             float brightNow = smoothBrightness.process();
             float dampNow = smoothDamping.process();
@@ -819,8 +818,6 @@ public:
                     // in the per-sample inner loop; accuracy is sufficient for noise shaping.
                     voice.hfNoiseSVF.setCoefficients_fast(std::clamp(baseFreq * 6.0f, 2000.0f, 16000.0f), 0.4f, srf);
                     // Shape noise through the HF bandpass (coeff refresh decimated)
-                    if (updateFilter)
-                        voice.hfNoiseSVF.setCoefficients(std::clamp(baseFreq * 6.0f, 2000.0f, 16000.0f), 0.4f, srf);
                     float hfShaped = voice.hfNoiseSVF.processSample(noise);
                     voice.hfEnvLevel *= hfEnvDecay; // sample-rate-correct HF envelope decay
                     resonanceSum += hfShaped * hfNoiseNow * voice.hfEnvLevel * voice.velocity;
@@ -859,20 +856,12 @@ public:
                     continue;
                 }
 
-                // Filter: LPF for brightness control.
+                // Filter: LPF for brightness control (env ticked per-sample).
                 // P19: use setCoefficients_fast() — avoids std::tan per-sample in audio loop.
+                // Mode was hoisted to prepare(); no setMode() call needed here.
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 4000.0f, 200.0f, 20000.0f);
-                // Mode was hoisted to prepare(); no setMode() call needed here.
                 voice.svf.setCoefficients_fast(cutoff, 0.3f, srf);
-                // Filter: LPF for brightness control (env ticked per-sample, SVF decimated)
-                float envMod = voice.filterEnv.process() * pFilterEnvAmt * 5000.0f;
-                if (updateFilter)
-                {
-                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 4000.0f, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.3f, srf);
-                }
                 float filtered = voice.svf.processSample(resonanceSum);
 
                 float output = filtered * voice.ampLevel;

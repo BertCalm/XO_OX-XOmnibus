@@ -9,6 +9,8 @@
 namespace xoceanus
 {
 
+class SharedTransport;
+
 //==============================================================================
 // Coupling types supported by the MegaCouplingMatrix.
 // Each defines how one engine's output modulates another engine's parameter.
@@ -193,6 +195,16 @@ public:
     // Called once during engine setup. Engines use this to look up per-channel
     // pitch bend, pressure, and slide values in their renderBlock().
     virtual void setMPEManager(MPEManager* manager) { mpeManager = manager; }
+
+    //-- Host Transport --------------------------------------------------------
+
+    // Shared transport pointer for tempo-synced engines. The processor owns
+    // a single SharedTransport instance that it updates from the host PlayHead
+    // once per block, then exposes here. Engines that do not tempo-sync may
+    // leave this as the base-class no-op; engines that do (Outwit, Organon,
+    // Orrery) override to cache the pointer for later audio-thread reads.
+    // Called once per engine after prepare() and before the first renderBlock().
+    virtual void setSharedTransport(const SharedTransport* /*transport*/) noexcept {}
 
     //-- SRO: SilenceGate — Zero-Idle Bypass -----------------------------------
     //

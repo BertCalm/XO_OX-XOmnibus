@@ -143,6 +143,7 @@ struct OctaveChiffGenerator
 
         // Shape noise to pipe resonance
         filterState += filterCoeff * (out - filterState);
+        filterState = flushDenormal(filterState);
         ++sampleCounter;
         return filterState;
     }
@@ -171,10 +172,10 @@ struct OctaveWindNoise
 {
     // F13-fix: brightness in Hz → normalised [0,1] coefficient so the one-pole
     // filter stays stable.  At 200 Hz → coeff≈0.01 (very dark); 20 kHz → ≈0.29.
-    // Uses exp(-2π·fc/sr) matched-Z pole; sr defaults to 44100 until prepare() sets it.
+    // Uses exp(-2π·fc/sr) matched-Z pole; sr must be set by prepare() before use.
     void prepare(float sampleRate) noexcept
     {
-        sr = (sampleRate > 0.0f) ? sampleRate : 44100.0f;
+        sr = sampleRate; // caller is engine prepare(), always valid
     }
 
     float process(float amount, float brightnessHz) noexcept
@@ -197,7 +198,7 @@ struct OctaveWindNoise
 
     void reset() noexcept { filterState = 0.0f; }
 
-    float sr = 44100.0f;
+    float sr = 0.0f; // sentinel: must be set by prepare() before use
     uint32_t noiseState = 98765u;
     float filterState = 0.0f;
 };
@@ -611,7 +612,6 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float clusterNow = smoothCluster.process();
             float chiffNow = smoothChiff.process();
             float detuneNow = smoothDetune.process();
@@ -864,20 +864,12 @@ public:
                 }
 
                 //--- Filter envelope (D001: velocity shapes timbre) ---
-                // Tick env per sample; decimate SVF coeff refresh to every 16.
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f * voice.velocity;
                 // LFO1 modulates brightness (±3000 Hz at full depth)
                 float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
                 // F01-fix: setMode is constant (LowPass) — hoisted to noteOn; use
                 // setCoefficients_fast() for modulated cutoff (avoids std::tan per-sample).
                 voice.svf.setCoefficients_fast(cutoff, 0.3f, srf);
-                if (updateFilter)
-                {
-                    // LFO1 modulates brightness (±3000 Hz at full depth)
-                    float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.3f, srf);
-                }
                 float filtered = voice.svf.processSample(sample);
 
                 float output = filtered * ampLevel;

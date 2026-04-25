@@ -114,7 +114,7 @@ struct TonewheelCrosstalk
 {
     // Generate crosstalk for a given drawbar's harmonic
     // Returns the additional signal from adjacent tonewheels
-    float process(float fundamentalFreq, int drawbarIndex, float phase, float amount, float sampleRate) noexcept
+    float process(float fundamentalFreq, int drawbarIndex, float phase, float amount) noexcept
     {
         if (amount < 0.001f)
             return 0.0f;
@@ -144,8 +144,6 @@ struct TonewheelCrosstalk
         float farUpperRatio = baseHarmonic * 1.0112f;
         float farUpperPhase = phase * farUpperRatio / baseHarmonic;
         crosstalkSum += fastSin(farUpperPhase * kTwoPi) * 0.004f;
-
-        (void)sampleRate;
 
         return crosstalkSum * amount;
     }
@@ -1129,7 +1127,7 @@ public:
                         float tonewheel = fastSin(harmonicPhase * 6.28318530f);
 
                         // Tonewheel crosstalk
-                        float xtalk = voice.crosstalk.process(freq, d, voice.phase, effectiveCrosstalk, srf);
+                        float xtalk = voice.crosstalk.process(freq, d, voice.phase, effectiveCrosstalk);
 
                         tonewheelSum += (tonewheel + xtalk) * drawbarLevel;
                     }

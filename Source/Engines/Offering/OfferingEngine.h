@@ -822,10 +822,6 @@ private:
         if (std::abs(couplingFMMod_) > 0.001f)
             pitchEnv = std::clamp(pitchEnv + couplingFMMod_ * 0.5f, 0.0f, 1.0f);
 
-        // envToPitch is stored for per-sample use in renderBlock (dynamic freq modulation).
-        // Cache it into the voice so renderBlock can read it without a param lookup per sample.
-        (void)loadParam(paramEnvToPitch_, 0.0f); // consumed in renderBlock via snap.envToPitch
-
         // Curiosity variation
         float curiosity = loadParam(paramDigCuriosity_, 0.5f);
         float complexity = loadParam(paramDigComplexity_, 0.4f);

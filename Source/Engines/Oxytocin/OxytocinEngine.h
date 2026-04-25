@@ -241,12 +241,6 @@ public:
         // F05/F06 fix: pre-compute LFO1 cutoff multiplier and detune ratio at block rate
         // using fastPow2 instead of std::pow (called per active voice in the old code).
         const float lfo1CutoffMult = xoceanus::fastPow2(lfo1Val * snap.lfoDepth * 2.0f / 12.0f);
-        // Pan gains are block-constant (snap.pan is stable per block) and identical
-        // for every voice — compute once here instead of inside the per-voice loop.
-        // TODO(#): intended refactor to use these in the voice loop; currently the
-        // loop recomputes per-voice. Kept as [[maybe_unused]] until the refactor lands.
-        [[maybe_unused]] const float blockPanL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
-        [[maybe_unused]] const float blockPanR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
 
         for (int vi = 0; vi < maxV; ++vi)
         {
@@ -261,8 +255,8 @@ public:
             // We modify a local copy of snap for this voice
             // (fastPow2: ~0.1% error — per-voice per-block)
             ParamSnapshot voiceSnap = snap;
-            voiceSnap.cutoff *= lfo1CutoffMult; // F05/F06: fastPow2 pre-computed above
-            voiceSnap.cutoff *= xoceanus::fastPow2(lfo1Val * snap.lfoDepth * 2.0f * (1.0f / 12.0f));
+            // F05/F06: fastPow2 pre-computed above; * (1.0f/12.0f) avoids per-call division
+            voiceSnap.cutoff *= lfo1CutoffMult;
 
             // LFO2 → triangle position modulates I/P/C balance
             // Blend snap params toward triangle coords by lfo2 depth
@@ -281,12 +275,7 @@ public:
             sumC += v.lastEffC;
             ++activeCount;
 
-            auto* outL = buffer.getWritePointer(0);
-            auto* outR = buffer.getWritePointer(1);
-            // Mix to stereo with pan — accumulate into scratch
-            float panL = std::sqrt(std::max(0.0f, 0.5f - snap.pan * 0.5f));
-            float panR = std::sqrt(std::max(0.0f, 0.5f + snap.pan * 0.5f));
-
+            // Mix to stereo with pan — accumulate into scratch using block-level panL/panR
             auto* sL = scratchL.getData();
             auto* sR = scratchR.getData();
             for (int s = 0; s < numSamples; ++s)

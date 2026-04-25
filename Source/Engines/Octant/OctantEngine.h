@@ -262,6 +262,7 @@ struct OctantVoice
 
     // Filter coefficient update counter (updates every 16 samples)
     int filterUpdateCounter = 0;
+    int prevFltType = -1; // sentinel: -1 forces IC reset on first mode change
 
     void reset() noexcept
     {
@@ -478,7 +479,7 @@ public:
 
     void prepare(double sampleRate, int maxBlockSize) override
     {
-        sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 44100.0f;
+        sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 0.0f;
         maxBlock        = maxBlockSize;
 
         for (int i = 0; i < kOctantMaxVoices; ++i)
@@ -1111,6 +1112,12 @@ private:
                 {
                     const auto mode = static_cast<CytomicSVF::Mode>(
                         std::clamp(fltType, 0, 3));
+                    if (fltType != v.prevFltType)
+                    {
+                        v.outputFilterL.reset();
+                        v.outputFilterR.reset();
+                        v.prevFltType = fltType;
+                    }
                     v.outputFilterL.setMode(mode);
                     v.outputFilterR.setMode(mode);
                     // Both filters share identical coefficients — compute once, copy the

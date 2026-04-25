@@ -1224,8 +1224,8 @@ public:
         const float effFltCutoff = clamp(fltCutoff + macroCharacter * 6000.0f + bobModCutoffOffset, 20.0f, 20000.0f);
         // MOVEMENT boosts LFO1 rate (×1 at 0, ×4 at full); D002 mod matrix adds further offset
         const float effLfo1Rate = clamp(lfo1Rate * (1.0f + macroMovement * 3.0f) + bobModLfo1RateOffset, 0.01f, 20.0f);
-        // COUPLING offsets the outgoing send level (+0 to +0.5) — used downstream by coupling bus
-        const float effCouplingLevel = clamp(macroCoupling * 0.5f, 0.0f, 1.0f);
+        // COUPLING scales the outgoing send level (0→1 at macro 0→1, unity at default 0.5 via ×2)
+        const float effCouplingLevel = clamp(macroCoupling * 2.0f, 0.0f, 1.0f);
         // SPACE adds texture level for room/space character
         const float effMacroSpaceTex = macroSpace * 0.5f;
 
@@ -1235,9 +1235,6 @@ public:
         float effTexLevel = clamp(texLevel + bob.texLevel + effMacroSpaceTex, 0.0f, 1.0f);
         float effLfoDepth = clamp(lfo1Depth + bob.modDepth * 0.3f, 0.0f, 1.0f);
         float effDustAmt = clamp(dustAmount + bob.fxDepth * 0.3f, 0.0f, 1.0f);
-
-        // Suppress unused-variable warning when coupling bus routing is not yet wired
-        (void)effCouplingLevel;
 
         // --- Process MIDI ---
         for (const auto metadata : midi)
@@ -1470,8 +1467,8 @@ public:
             float outL = fastTanh(mixL * effectiveLevel);
             float outR = fastTanh(mixR * effectiveLevel);
 
-            outputCacheL[static_cast<size_t>(sample)] = outL;
-            outputCacheR[static_cast<size_t>(sample)] = outR;
+            outputCacheL[static_cast<size_t>(sample)] = outL * effCouplingLevel;
+            outputCacheR[static_cast<size_t>(sample)] = outR * effCouplingLevel;
 
             if (buffer.getNumChannels() >= 2)
             {

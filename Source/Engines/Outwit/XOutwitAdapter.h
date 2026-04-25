@@ -18,6 +18,7 @@
 //==============================================================================
 
 #include "../../Core/SynthEngine.h"
+#include "../../Core/SharedTransport.h"
 
 // XOutwit DSP — included via target_include_directories in CMakeLists.txt
 // (path: XOutwit/Source/DSP/)
@@ -28,6 +29,7 @@
 #include "DSP/ParamSnapshot.h"
 #include "DSP/FastMath.h"
 #include "../../DSP/SRO/SilenceGate.h"
+#include <algorithm>
 #include <array>
 #include <cmath>
 
@@ -70,6 +72,13 @@ public:
 
     void releaseResources() override {}
 
+    // #1154: Cache the processor's SharedTransport so renderBlock() can read
+    // host BPM + playing state when stepSync is enabled.
+    void setSharedTransport(const SharedTransport* transport) noexcept override
+    {
+        sharedTransport = transport;
+    }
+
     void reset() override
     {
         for (auto& arm : arms)
@@ -102,6 +111,7 @@ public:
 
         if (buf.getNumChannels() < 2)
             return;
+        if (sr == 0.0) { buf.clear(); return; }
 
         // 1. Cache parameters once per block
         snap.update();
@@ -136,7 +146,41 @@ public:
         }
 
         // 3. Working copies — LFO + macro + expression modulation
-        float modStepRate = snap.stepRate * (1.0f + snap.huntRate); // huntRate scales CA search speed
+        //
+        // #1154: Tempo-sync base rate. When snap.stepSync is on AND the host
+        // transport provides a valid BPM (> 0), the base rate is locked to
+        // bpm / (60 * div_beats). Coupling, LFO, and huntRate modulation still
+        // layer on top, so the tempo-locked rate can still wobble musically.
+        // When stepSync is off, BPM is unavailable, or the host is not yet
+        // attached, the engine free-runs from snap.stepRate (preserves
+        // back-compat for every existing preset).
+        float baseStepRate = snap.stepRate;
+        if (snap.stepSync && sharedTransport != nullptr)
+        {
+            const double hostBpm = sharedTransport->getBPM();
+            if (hostBpm > 0.0)
+            {
+                // Division table matches the AudioParameterChoice enum order:
+                // "1/32", "1/16T", "1/16", "1/8T", "1/8", "1/4T", "1/4", "1/2", "1/1", "2/1"
+                // values are in beats (quarter note = 1.0 beat).
+                static constexpr std::array<float, 10> kDivBeats{
+                    0.125f,         // 1/32
+                    1.0f / 6.0f,    // 1/16T  (triplet)
+                    0.25f,          // 1/16
+                    1.0f / 3.0f,    // 1/8T   (triplet)
+                    0.5f,           // 1/8
+                    2.0f / 3.0f,    // 1/4T   (triplet)
+                    1.0f,           // 1/4
+                    2.0f,           // 1/2
+                    4.0f,           // 1/1
+                    8.0f            // 2/1
+                };
+                const int idx = std::clamp(snap.stepDiv, 0, static_cast<int>(kDivBeats.size()) - 1);
+                const float divBeats = kDivBeats[static_cast<size_t>(idx)];
+                baseStepRate = static_cast<float>(hostBpm) / (60.0f * divBeats);
+            }
+        }
+        float modStepRate = baseStepRate * (1.0f + snap.huntRate); // huntRate scales CA search speed
         float modChromAmount = snap.chromAmount;
         float modSynapse = snap.synapse;
         float modDenSize = snap.denSize;
@@ -418,9 +462,13 @@ public:
         // Global: Step/Clock
         params.push_back(std::make_unique<juce::AudioParameterFloat>(
             "owit_stepRate", "Step Rate", juce::NormalisableRange<float>(0.01f, 40.0f, 0.0f, 0.4f), 4.0f));
-        // TODO(stepSync): owit_stepSync and owit_stepDiv are registered but not yet wired into
-        // the DSP path. Implementing host-sync requires PlayHead BPM from the processor context.
-        // Until then these params are visible in the UI but have no audio effect.
+        // Tempo-sync (#1154): when owit_stepSync is on, the base step rate is
+        // driven by host BPM via SharedTransport and owit_stepDiv chooses the
+        // division. owit_stepRate is ignored while synced. All modulation
+        // (huntRate, LFO→StepRate, coupling) still applies on top of the
+        // tempo-locked base. When the host provides no BPM, renderBlock falls
+        // back to the free-running owit_stepRate. Default stepSync=false keeps
+        // every existing preset sounding identical.
         params.push_back(std::make_unique<juce::AudioParameterBool>("owit_stepSync", "Step Sync", false));
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
             "owit_stepDiv", "Step Division",
@@ -555,6 +603,12 @@ private:
     xoutwit::ParamSnapshot snap;
 
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
+
+    // #1154: Host transport pointer — nullptr when no processor has attached
+    // one (e.g., tests, engine sandbox). renderBlock() falls back to free-run
+    // when null or when BPM is unavailable.
+    const SharedTransport* sharedTransport = nullptr;
+
     bool noteHeld = false;
     int currentNote = -1;
     int targetNote = -1;     // Seance P1: glide target note

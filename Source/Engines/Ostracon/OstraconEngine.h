@@ -361,7 +361,7 @@ public:
 
         // Expression (CC11) + coupling morph → effective bias
         const float biasWithExpr = juce::jlimit(0.0f, 1.0f,
-            effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphIn * 0.5f);
+            effectiveBias + expressionValue * 0.5f - 0.25f + couplingMorphAccum * 0.5f);
 
         // ---- Process MIDI ----
         for (const auto metadata : midi)
@@ -419,7 +419,6 @@ public:
 
         // Consume coupling accumulators — CAPTURE before zeroing (P25)
         const float couplingAudioIn  = couplingAudioAccum;
-        const float couplingMorphIn  = couplingMorphAccum;   // EnvToMorph → bias offset
         couplingFilterAccum = 0.0f;
         couplingAudioAccum  = 0.0f;
         couplingMorphAccum  = 0.0f;
@@ -562,7 +561,7 @@ public:
             {
                 if (!voice.active) continue;
 
-                // ---- LFO (D002/D005) — setRate/setShape hoisted to updateFilter gate ----
+                // ---- LFO (D002/D005) ----
                 if (updateFilter)
                 {
                     voice.lfo.setRate(paramLfoRate, currentSampleRate);
@@ -678,8 +677,6 @@ public:
                             // setMode(LowPass) omitted here — set once in reset() / doNoteOn()
                             float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
                             oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
-                            float oxideCutoff = 20000.0f * fastExp(-oxideDepth * 4.0f);
-                            oxideCutoff = juce::jlimit(80.0f, 20000.0f, oxideCutoff);
                             voice.oxideFilter[h].setMode(CytomicSVF::Mode::LowPass);
                             voice.oxideFilter[h].setCoefficients_fast(oxideCutoff, 0.3f, currentSampleRate);
                         }
@@ -741,8 +738,6 @@ public:
                 // setMode() is applied once per block above; only coefficients need per-16 refresh.
                 if (updateFilter)
                 {
-                if (updateFilter)
-                {
                     voice.outputFilterL.setMode(filterMode);
                     voice.outputFilterR.setMode(filterMode);
                     voice.outputFilterL.setCoefficients_fast(finalCutoff, smoothedReso, currentSampleRate);
@@ -755,8 +750,6 @@ public:
                 outSampleR = flushDenormal(outSampleR);
 
                 // ---- Amplitude envelope × velocity ----
-                // D001: velocity shapes brightness via velFilterMod (already baked into
-                // write gain in PASS 2; envelope controls release shape here)
                 float envGain = ampLevel * voice.crossfadeGain;
                 outSampleL *= envGain;
                 outSampleR *= envGain;
@@ -794,7 +787,7 @@ public:
 
         // Feed silence gate
         analyzeForSilenceGate(buffer, numSamples);
-    }
+    } // end renderBlock
 
     //==========================================================================
     //  S Y N T H   E N G I N E   I N T E R F A C E  —  C O U P L I N G

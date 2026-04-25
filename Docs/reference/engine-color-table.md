@@ -119,6 +119,7 @@
 | OUTCROP | XOutcrop | Mountain Moss `#5B6F57` |
 | ONEIRIC | XOneiric | Phosphene Lavender `#B8A0FF` |
 | OLLO | XOllotron | Tape Rust `#B07050` |
+| ONDA | XOnda | Wave Cyan `#00B4D8` |
 
 ## The 43 Blessings
 

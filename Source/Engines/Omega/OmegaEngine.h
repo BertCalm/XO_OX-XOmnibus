@@ -242,8 +242,6 @@ public:
         smoothRatio.prepare(srf);
         smoothFeedback.prepare(srf);
         smoothPurity.prepare(srf);
-        smoothBrightness.prepare(srf);
-        smoothDistillRate.prepare(srf);
 
         prepareSilenceGate(sr, maxBlockSize, 300.0f);
     }
@@ -365,8 +363,6 @@ public:
         smoothRatio.set(effectiveRatio);
         smoothFeedback.set(effectiveFeedback);
         smoothPurity.set(pPurity);
-        smoothBrightness.set(effectiveBright);
-        smoothDistillRate.set(pDistill);
 
         // Snapshot pitch coupling before reset (#1118).
         const float blockCouplingPitchMod = couplingPitchMod;
@@ -409,8 +405,6 @@ public:
 
         // CPU fix 1 (OMEGA): precompute distillation decayCoeff once per block.
         // pDistill and dtSec are both block-rate constants; std::exp is expensive.
-        // smoothDistillRate has just been set from pDistill — use pDistill directly
-        // for the block-rate coefficient.
         const float blockDecayCoeff = DistillationModel::computeDecayCoeff(pDistill, dtSec);
 
         // CPU fix 2 (OMEGA): precompute per-voice pan gains once per block.
@@ -432,15 +426,10 @@ public:
 
         for (int s = 0; s < numSamples; ++s)
         {
-            const bool updateFilter = ((s & 15) == 0);
             float modIdxNow = smoothModIndex.process();
             float ratioNow = smoothRatio.process();
             float fbNow = smoothFeedback.process();
             float purityNow = smoothPurity.process();
-            float brightNow = smoothBrightness.process();
-            float distRNow = smoothDistillRate.process();
-            (void)distRNow; // block-rate decayCoeff used instead (CPU fix 1)
-
             float mixL = 0.0f, mixR = 0.0f;
 
             for (int vi = 0; vi < kMaxVoices; ++vi)
@@ -507,20 +496,14 @@ public:
                 float carrierOut = voice.carrier.process(modSignal);
 
                 // D001: velocity shapes FM brightness (more velocity = brighter attack)
-                // Tick env per sample; decimate SVF coeff refresh to every 16.
+                float velBright = voice.velocity * voice.velocity * 5000.0f; // quadratic for aggressive response
                 float envMod = voice.filterEnv.process() * pFiltEnvAmt * 5000.0f;
-                float cutoff = std::clamp(velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
+                // effectiveBright is the block-rate base cutoff (omega_brightness param + macro + coupling).
+                float cutoff = std::clamp(effectiveBright + velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
 
                 // F2/P19: use fast path — mode is set block-rate; setCoefficients_fast
                 // uses fastTan (~0.03% error) vs std::tan, avoiding trig per-sample-per-voice.
                 voice.outputFilter.setCoefficients_fast(cutoff, 0.2f, srf);
-                if (updateFilter)
-                {
-                    float velBright = brightNow + voice.velocity * 4000.0f;
-                    float cutoff = std::clamp(velBright + envMod + lfo2Val * 2000.0f, 200.0f, 20000.0f);
-                    voice.outputFilter.setMode(CytomicSVF::Mode::LowPass);
-                    voice.outputFilter.setCoefficients(cutoff, 0.2f, srf);
-                }
                 float filtered = voice.outputFilter.processSample(carrierOut);
 
                 // Amplitude envelope
@@ -739,7 +722,7 @@ private:
     std::atomic<int> activeVoiceCount{0};
 
     ParameterSmoother smoothModIndex, smoothRatio, smoothFeedback;
-    ParameterSmoother smoothPurity, smoothBrightness, smoothDistillRate;
+    ParameterSmoother smoothPurity;
 
     float pitchBendNorm = 0.0f;
     float modWheelAmount = 0.0f;

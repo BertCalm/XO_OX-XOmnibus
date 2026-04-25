@@ -316,7 +316,7 @@ COUPLING_COMPLIANCE: Full-v0.1
 
 **XOceanus** (https://github.com/BertCalm/XO_OX-XOceanus) is the reference implementation of this protocol.
 
-XOceanus implements 76 engines across the original fleet, Kitchen Collection, and Singularity Collection. The three v0.1 public types are supported across the fleet; individual engine compliance declarations are available in engine metadata. The `SynthEngine` interface in `Source/Core/SynthEngine.h` defines the C++ contract:
+XOceanus implements 92 engines across the original fleet, Kitchen Collection, and Singularity Collection. The three v0.1 public types are supported across the fleet; individual engine compliance declarations are available in engine metadata. The `SynthEngine` interface in `Source/Core/SynthEngine.h` defines the C++ contract:
 
 ```cpp
 // Speaker interface — emit coupling signal
