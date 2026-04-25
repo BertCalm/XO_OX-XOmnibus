@@ -299,6 +299,11 @@ struct ObrixVoice
     float procLastCut[3]{-1.0f, -1.0f, -1.0f}; // -1 forces update on first sample
     float procLastRes[3]{-1.0f, -1.0f, -1.0f};
 
+    // Cached PolyBLEP effective frequency per source — setFrequency() calls std::pow
+    // for triangle amplitude correction, making it expensive per-sample.  Skip the
+    // call when the new effective frequency differs by less than 0.5 Hz (inaudible).
+    float oscLastFreq[2]{-1.0f, -1.0f}; // -1 forces update on first sample
+
     // Cached filter mode per slot — setFilterMode() (a virtual dispatch) is skipped
     // when procType hasn't changed since the last block.  -1 forces update on first sample.
     int procLastMode[3]{-1, -1, -1};
@@ -355,6 +360,7 @@ struct ObrixVoice
         procLastCut[0] = procLastCut[1] = procLastCut[2] = -1.0f;
         procLastRes[0] = procLastRes[1] = procLastRes[2] = -1.0f;
         procLastMode[0] = procLastMode[1] = procLastMode[2] = -1;
+        oscLastFreq[0] = oscLastFreq[1] = -1.0f;
         noiseRng[0] = 54321u;
         noiseRng[1] = 98765u;
         pan = 0.0f;
@@ -404,6 +410,10 @@ public:
         buildWavetables();
         // Cache reef HP coefficient at 2kHz (used in parasite mode; sample-rate dependent)
         reefHpCoeff_ = std::exp(-kTwoPi * 2000.0f / sr);
+        // Cache AIR filter coefficient (1kHz LP/HP split; SR-only, never changes after prepare)
+        cachedAirCoeff_ = 1.0f - std::exp(-kTwoPi * 1000.0f / sr);
+        // Invalidate distance cache so distCoeff is recomputed on the first block
+        cachedDistance_ = -1.0f;
         // Bleach recovery per-sample exponent — used as fastPow2(numSamples * bleachRecoveryLog2_).
         // Value is -1/(τ*sr) in log2 domain: log2(e^(-1/(τ*sr))) = -1/(τ*sr*ln2).
         // Using the exact formula avoids fastLog2 inaccuracy for arguments extremely close to 1.0
@@ -435,6 +445,9 @@ public:
         journeyMode_ = false;
         distFiltL_ = distFiltR_ = 0.0f;
         airFiltL_ = airFiltR_ = 0.0f;
+        // Invalidate coefficient caches so they are recomputed on the next block
+        cachedDistance_  = -1.0f;
+        cachedGlideTime_ = -1.0f;
 
         // Wave 4 — Biophonic Synthesis state
         stressLevel_ = 0.0f;
@@ -444,6 +457,7 @@ public:
         // Wave 5 — Reef Residency state
         reefCouplingRms_ = 0.0f;
         reefCouplingHpFilt_ = 0.0f;
+        reefCouplingBufPrev_ = 0.0f; // HP filter memory — must be zeroed to avoid click on re-entry
         reefCouplingHfRms_ = 0.0f;
         reefCouplingBufLen_.store(0, std::memory_order_relaxed);
 
@@ -784,16 +798,24 @@ public:
 
         // Pre-compute spatial filter coefficients once per block (not per sample)
         // DISTANCE: fc sweeps 20kHz (close) → ~1kHz (far) via matched-Z 1-pole LP
-        const float distFc = 20000.0f * (1.0f - distance * 0.95f);
-        const float distCoeff = 1.0f - std::exp(-kTwoPi * distFc / sr);
-        // AIR: fixed 1kHz LP/HP split for spectral tilt
-        const float airCoeff = 1.0f - std::exp(-kTwoPi * 1000.0f / sr);
+        // #620-style: cache distCoeff; recompute only when distance moves >0.001
+        if (std::fabs(distance - cachedDistance_) > 0.001f)
+        {
+            const float distFc = 20000.0f * (1.0f - distance * 0.95f);
+            cachedDistCoeff_ = 1.0f - std::exp(-kTwoPi * distFc / sr);
+            cachedDistance_  = distance;
+        }
+        const float distCoeff = cachedDistCoeff_;
+        // AIR: fixed 1kHz LP/HP split — coefficient is SR-only, computed once in prepare()
+        const float airCoeff = cachedAirCoeff_;
         // air=0 → lpGain=1.3, hpGain=0.7; air=0.5 → both 1.0; air=1 → lpGain=0.7, hpGain=1.3
         const float airLpGain = 1.0f + (0.5f - air) * 0.6f;
         const float airHpGain = 1.0f + (air - 0.5f) * 0.6f;
 
         const int voiceModeIdx = static_cast<int>(loadP(pVoiceMode, 3.0f));
         const int polyLimit = (voiceModeIdx <= 1) ? 1 : (voiceModeIdx == 2) ? 4 : 8;
+        // P17: Nyquist ceiling — safe at any supported sample rate (22050–192000 Hz)
+        const float nyCeiling = sr * 0.49f;
         // OBRIX-001: Release orphaned voices when polyLimit shrinks (e.g. poly→mono).
         // Without this, voices in slots beyond the new limit continue sounding
         // indefinitely because noteOn() only allocates within the new limit.
@@ -806,7 +828,13 @@ public:
         polyLimit_ = polyLimit;
 
         // Glide coefficient: 0 = instant, approaching 1 = very slow
-        const float glideCoeff = (glideTime > 0.001f) ? 1.0f - std::exp(-1.0f / (glideTime * sr)) : 1.0f;
+        // #620-style cache: std::exp is only recomputed when glideTime changes by >0.001s
+        if (std::fabs(glideTime - cachedGlideTime_) > 0.001f)
+        {
+            cachedGlideCoeff_ = (glideTime > 0.001f) ? 1.0f - std::exp(-1.0f / (glideTime * sr)) : 1.0f;
+            cachedGlideTime_  = glideTime;
+        }
+        const float glideCoeff = cachedGlideCoeff_;
 
         // === FLASH gesture trigger (detect rising edge) ===
         if (flashTrig > 0.5f && prevFlashTrig <= 0.5f)
@@ -1225,7 +1253,7 @@ public:
                         setFilterMode(voice.procFilters[0], proc1Type);
                         voice.procLastMode[0] = proc1Type;
                     }
-                    float cut = clamp(proc1Cut + cutoffMod + velTimbre, 20.0f, 20000.0f);
+                    float cut = clamp(proc1Cut + cutoffMod + velTimbre, 20.0f, nyCeiling);
                     float res = clamp(proc1Res + resoMod, 0.0f, 1.0f);
                     // Delta-threshold: skip expensive trig if cutoff/res haven't changed
                     // enough to be audible (kFilterDeltaHz = 1 Hz, kFilterDeltaRes = 0.001).
@@ -1265,7 +1293,7 @@ public:
                         setFilterMode(voice.procFilters[1], proc2Type);
                         voice.procLastMode[1] = proc2Type;
                     }
-                    float cut = clamp(proc2Cut + cutoffMod * 0.5f + velTimbre, 20.0f, 20000.0f);
+                    float cut = clamp(proc2Cut + cutoffMod * 0.5f + velTimbre, 20.0f, nyCeiling);
                     float res = clamp(proc2Res + resoMod, 0.0f, 1.0f);
                     if (std::fabs(cut - voice.procLastCut[1]) > kFilterDeltaHz ||
                         std::fabs(res - voice.procLastRes[1]) > kFilterDeltaRes)
@@ -1330,7 +1358,7 @@ public:
                         setFilterMode(voice.procFilters[2], proc3Type);
                         voice.procLastMode[2] = proc3Type;
                     }
-                    float cut = clamp(proc3Cut + cutoffMod * 0.3f, 20.0f, 20000.0f);
+                    float cut = clamp(proc3Cut + cutoffMod * 0.3f, 20.0f, nyCeiling);
                     float res = clamp(proc3Res + resoMod, 0.0f, 1.0f);
                     if (std::fabs(cut - voice.procLastCut[2]) > kFilterDeltaHz ||
                         std::fabs(res - voice.procLastRes[2]) > kFilterDeltaRes)
@@ -1961,6 +1989,14 @@ private:
         effFreq = std::max(0.0f, std::min(effFreq, sr * 0.49f));
         float dt = effFreq / sr;
 
+        // P14: PolyBLEP::setFrequency calls std::pow for triangle leak correction —
+        // skip when effFreq hasn't changed by more than 0.5 Hz (perceptually transparent).
+        // oscLastFreq[idx] is reset to -1 in voice reset() to force update on first sample.
+        static constexpr float kFreqDeltaHz = 0.5f;
+        bool freqChanged = std::fabs(effFreq - voice.oscLastFreq[idx]) > kFreqDeltaHz;
+        if (freqChanged)
+            voice.oscLastFreq[idx] = effFreq;
+
         switch (type)
         {
         case 1: // Sine — manual phase
@@ -1973,19 +2009,19 @@ private:
         }
         case 2: // Saw — PolyBLEP anti-aliased
         {
-            voice.srcOsc[idx].setFrequency(effFreq, sr);
+            if (freqChanged) voice.srcOsc[idx].setFrequency(effFreq, sr);
             voice.srcOsc[idx].setWaveform(PolyBLEP::Waveform::Saw);
             return voice.srcOsc[idx].processSample();
         }
         case 3: // Square — PolyBLEP
         {
-            voice.srcOsc[idx].setFrequency(effFreq, sr);
+            if (freqChanged) voice.srcOsc[idx].setFrequency(effFreq, sr);
             voice.srcOsc[idx].setWaveform(PolyBLEP::Waveform::Square);
             return voice.srcOsc[idx].processSample();
         }
         case 4: // Triangle — PolyBLEP (integrated square with BLAMP)
         {
-            voice.srcOsc[idx].setFrequency(effFreq, sr);
+            if (freqChanged) voice.srcOsc[idx].setFrequency(effFreq, sr);
             voice.srcOsc[idx].setWaveform(PolyBLEP::Waveform::Triangle);
             return voice.srcOsc[idx].processSample();
         }
@@ -2014,7 +2050,7 @@ private:
         }
         case 7: // Pulse — PolyBLEP with variable width
         {
-            voice.srcOsc[idx].setFrequency(effFreq, sr);
+            if (freqChanged) voice.srcOsc[idx].setFrequency(effFreq, sr);
             voice.srcOsc[idx].setWaveform(PolyBLEP::Waveform::Pulse);
             voice.srcOsc[idx].setPulseWidth(pw);
             return voice.srcOsc[idx].processSample();
@@ -2347,6 +2383,10 @@ private:
 
         if (slot < 0)
         {
+            // P25: prefer stealing voices in release stage over actively-sustaining ones.
+            // First pass: find a free slot or the oldest releasing voice.
+            uint64_t oldestReleasing = UINT64_MAX;
+            int oldestReleasingSlot = -1;
             for (int i = 0; i < maxVoicesNow; ++i)
             {
                 if (!voices[i].active)
@@ -2354,16 +2394,25 @@ private:
                     slot = i;
                     break;
                 }
+                bool releasing = (voices[i].ampEnv.getStage() == StandardADSR::Stage::Release);
+                if (releasing && voices[i].startTime < oldestReleasing)
+                {
+                    oldestReleasing    = voices[i].startTime;
+                    oldestReleasingSlot = i;
+                }
                 if (voices[i].startTime < oldest)
                 {
                     oldest = voices[i].startTime;
                     oldestSlot = i;
                 }
             }
+            // Prefer the oldest releasing voice; fall back to oldest active
+            if (slot < 0 && oldestReleasingSlot >= 0)
+                oldestSlot = oldestReleasingSlot;
 
             if (slot < 0)
             {
-                // All voices active — steal the oldest one.
+                // All voices active — steal the oldest (preferably releasing) one.
                 // If it isn't already mid-fade, start a 5ms linear ramp-down
                 // and defer the incoming note to the render loop.
                 auto& sv = voices[oldestSlot];
@@ -2465,6 +2514,15 @@ private:
     float distFiltR_ = 0.0f;   // DISTANCE 1-pole LP filter state (R)
     float airFiltL_ = 0.0f;    // AIR LP/HP split filter state (L)
     float airFiltR_ = 0.0f;    // AIR LP/HP split filter state (R)
+
+    // Cached spatial filter coefficients (#620-style block-rate caching)
+    float cachedDistance_  = -1.0f;   // sentinel: forces distCoeff recompute on first block
+    float cachedDistCoeff_ = 1.0f;    // 1-pole LP coefficient for DISTANCE
+    float cachedAirCoeff_  = 0.0f;    // 1-pole LP/HP split coefficient for AIR (computed in prepare())
+
+    // Cached glide coefficient (#620-style)
+    float cachedGlideTime_  = -1.0f;  // sentinel: forces recompute on first block
+    float cachedGlideCoeff_ = 1.0f;   // 1 = instant (no glide)
 
     // Wave 4 — Biophonic Synthesis
     float stressLevel_ = 0.0f;   // velocity leaky integrator τ=30–60s (Stress Memory)
