@@ -252,7 +252,9 @@ struct OtoBreathSource
         tremLFO.reset();
     }
 
-    float sr = 0.0f;  // Sentinel: must be set by prepare() before use
+    float sr = 0.0f;  // F15: Dead field — stored in prepare() but unused at process time.
+                       // LFO rates are set once in prepare() via setRate(rate, sampleRate).
+                       // Retained for potential future per-sample rate modulation.
     StandardLFO driftLFO;
     StandardLFO tremLFO;
 };
@@ -267,7 +269,7 @@ struct OtoVoice
 
     bool active = false;
     uint64_t startTime = 0;
-    int currentNote = 60;
+    int currentNote = -1; // F18: -1 sentinel — avoids false noteOff match on MIDI note 60
     float velocity = 0.0f;
 
     // Partial oscillator phases (additive synthesis)
@@ -297,15 +299,22 @@ struct OtoVoice
     // Per-voice cached pan gains
     float panL = 0.707f, panR = 0.707f;
 
+    // F7: Filter coefficient decimation counter — refresh coefficients every 16 samples.
+    // voiceCutoff changes slowly enough (filter env + LFO) that 16-sample decimation
+    // introduces no audible lag (~0.36ms @44.1kHz) but halves setCoefficients_fast calls.
+    int filterRefreshCounter = 0;
+
     void reset() noexcept
     {
         active = false;
         velocity = 0.0f;
+        currentNote = -1; // F18: reset to -1 sentinel; default 60 caused false noteOff matches on stolen voices
         prevOrganGain = 0.0f;
         prevOrganModel = -1;
         crossfadeCounter = 0;
         crossfadeSamples = 0;
         sustainHeld = false;
+        filterRefreshCounter = 0;
         partialPhases.fill(0.0f);
         prevPartialPhases.fill(0.0f);
         melodicaOsc.reset();
@@ -520,16 +529,20 @@ public:
         float effCompetition = std::clamp(pCompetition + macroC * 0.5f, 0.0f, 1.0f);
         float effCrosstalk = std::clamp(pCrosstalk + macroC * 0.4f, 0.0f, 1.0f);
 
+        // F17 (P17): Use SR-derived Nyquist ceiling instead of hardcoded 20000 Hz.
+        // At 96kHz, 20000 Hz is only ~42% of Nyquist; filter should open to ~47kHz.
+        const float kNyquistCeil = srf * 0.49f;
+
         // Macro D (SPACE) -> reverb/delay send (passed to coupling matrix)
         // (macroD is available for host-level FX routing; here it subtly opens filter)
-        float effCutoff = std::clamp(pCutoff + macroD * 4000.0f + couplingFilterMod, 20.0f, 20000.0f);
+        float effCutoff = std::clamp(pCutoff + macroD * 4000.0f + couplingFilterMod, 20.0f, kNyquistCeil);
 
         // D006: mod wheel -> filter cutoff modulation (breath pressure expression)
-        effCutoff = std::clamp(effCutoff + modWheelAmount * 5000.0f, 20.0f, 20000.0f);
+        effCutoff = std::clamp(effCutoff + modWheelAmount * 5000.0f, 20.0f, kNyquistCeil);
 
         // D006: aftertouch -> pressure instability + filter brightness
         effPressure = std::clamp(effPressure + aftertouchAmount * 0.3f, 0.0f, 1.0f);
-        effCutoff = std::clamp(effCutoff + aftertouchAmount * 3000.0f, 20.0f, 20000.0f);
+        effCutoff = std::clamp(effCutoff + aftertouchAmount * 3000.0f, 20.0f, kNyquistCeil);
 
         float effRes = std::clamp(pRes + couplingOrganMod * 0.2f, 0.0f, 1.0f);
 
@@ -543,6 +556,11 @@ public:
         smoothResonance.set(effRes);
 
         const float bendSemitones = pitchBendNorm * 2.0f; // +-2 semitone range
+
+        // F21: Snapshot coupling pitch mod at block start to prevent mid-block race.
+        // applyCouplingInput() can be called from the matrix thread between blocks;
+        // reading couplingPitchMod directly in the per-sample loop risks partial updates.
+        const float blockCouplingPitchMod = couplingPitchMod;
 
         // ---- Determine current organ model (clamped) ----
         int organModel = std::clamp(pOrgan, 0, 3);
@@ -607,27 +625,9 @@ public:
                     voices[vi].ampEnv.setADSR(attack, decay, sustain, release);
         }
 
-        // ---- Hoist LFO1 setRate/setShape out of per-sample loop (P15 fix) ----
-        // pLFO1Rate is block-constant; Sine shape never changes — updating per-sample
-        // per-voice was O(voices * blockSize) exp() calls with no effect.
-        {
-            float lfoRate = std::max(0.01f, pLFO1Rate);
-            for (int vi = 0; vi < kMaxVoices; ++vi)
-                if (voices[vi].active)
-                {
-                    voices[vi].lfo1.setRate(lfoRate, srf);
-                    voices[vi].lfo1.setShape(StandardLFO::Sine);
-                }
-        }
-
-        // ---- Hoist SVF mode — always LowPass, never changes (P31 fix) ----
-        // setMode() was called per-sample per-voice; move to noteOn + here as a
-        // one-time guard in case voices were reset mid-session.
-        for (int vi = 0; vi < kMaxVoices; ++vi)
-            if (voices[vi].active)
-                voices[vi].svf.setMode(CytomicSVF::Mode::LowPass);
-
-        // Hoist per-voice LFO config. pLFO1Rate is block-rate; D005 floor enforced.
+        // ---- Hoist LFO1 setRate/setShape + SVF mode out of per-sample loop ----
+        // pLFO1Rate is block-constant; Sine shape and LowPass mode never change.
+        // F2/F9: Removed duplicate LFO hoist block that ran the same setRate/setShape twice.
         {
             const float lfo1RateClamped = std::max(0.01f, pLFO1Rate);
             for (int vi = 0; vi < kMaxVoices; ++vi)
@@ -637,6 +637,8 @@ public:
                 {
                     voice.lfo1.setRate(lfo1RateClamped, srf);
                     voice.lfo1.setShape(StandardLFO::Sine);
+                    // F3 (P31): SVF mode is always LowPass — set once per block as guard.
+                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
                 }
             }
         }
@@ -667,7 +669,8 @@ public:
                 // (model-specific ADSR clamping happens once per block, not per sample).
 
                 float freq = voice.glide.process();
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + couplingPitchMod);
+                // F21: Use block-start snapshot of couplingPitchMod, not live value.
+                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + blockCouplingPitchMod);
 
                 // ---- Breath pressure instability ----
                 float pitchDriftCents = 0.0f, ampMod = 0.0f;
@@ -752,6 +755,9 @@ public:
                             continue;
 
                         float partialFreq = freq * ratio;
+                        // F4 (P7): Skip partials above Nyquist — aliased partials add noise, not tone.
+                        if (partialFreq >= srf * 0.5f)
+                            continue;
                         if (p > 0 && detuneNow > 0.001f)
                         {
                             // P25 fix: use ratio-based (cents) detune, not additive Hz.
@@ -766,8 +772,12 @@ public:
 
                         float phaseInc = partialFreq / srf;
                         phases[p] += phaseInc;
+                        // F10: Full-range phase wrap — handles both overflow and underflow.
+                        // Underflow is possible when couplingPitchMod drives freq negative.
                         if (phases[p] >= 1.0f)
                             phases[p] -= 1.0f;
+                        else if (phases[p] < 0.0f)
+                            phases[p] += 1.0f;
 
                         float partialSample;
                         if (model == 3 && p == 0)
@@ -810,14 +820,20 @@ public:
 
                 // ---- Synthesise current model ----
                 float signal = synthesiseModel(organModel, false);
+                // F5 (P8): softClip pre-filter to prevent filter coefficient instability
+                // when 11 partials sum beyond ±1. sqrt(nP) normalization helps but
+                // Sho at full cluster can still reach ~1.4 peak before filter.
+                signal = softClip(signal);
 
                 if (voice.crossfadeCounter > 0)
                 {
                     // Linear crossfade: new model fades in, old model fades out.
                     // Apply buzz per-branch before blending so timbral character
                     // of each model is preserved throughout the transition.
+                    // F8: Guard crossfadeSamples against zero to prevent NaN/Inf.
+                    const int safeCFSamples = std::max(voice.crossfadeSamples, 1);
                     float fadeIn =
-                        1.0f - static_cast<float>(voice.crossfadeCounter) / static_cast<float>(voice.crossfadeSamples);
+                        1.0f - static_cast<float>(voice.crossfadeCounter) / static_cast<float>(safeCFSamples);
                     float fadeOut = 1.0f - fadeIn;
 
                     // Buzz the new-model signal
@@ -827,7 +843,7 @@ public:
                         signal = fastTanh(signal * (1.0f + newBuzzGain));
                     }
 
-                    float oldSignal = synthesiseModel(voice.prevOrganModel, true);
+                    float oldSignal = softClip(synthesiseModel(voice.prevOrganModel, true)); // F5: softClip on old model too
 
                     // Buzz the old-model signal with its own scale
                     if (buzzNow > 0.001f)
@@ -858,7 +874,9 @@ public:
                 }
 
                 // ---- Chiff transient ----
-                signal += voice.chiff.process(chiffNow);
+                // F5b: Chiff adds on top of already-softClipped additive signal —
+                // a second softClip after chiff prevents pre-filter overshoot.
+                signal = softClip(signal + voice.chiff.process(chiffNow));
 
                 // ---- Crosstalk: adjacent voice leakage ----
                 if (crosstalkNow > 0.001f)
@@ -884,21 +902,23 @@ public:
                 envLevel *= competitionScale;
 
                 // ---- D001: velocity -> filter brightness ----
+                // F17 (P17): clamp to kNyquistCeil (SR-derived), not hardcoded 20000 Hz.
                 float velCutoffBoost = voice.velocity * 4000.0f;
-                float voiceCutoff = std::clamp(cutoffNow + velCutoffBoost, 20.0f, 20000.0f);
+                float voiceCutoff = std::clamp(cutoffNow + velCutoffBoost, 20.0f, kNyquistCeil);
 
                 // Filter envelope -> cutoff
                 float filterEnvLevel = voice.filterEnv.process();
-                voiceCutoff = std::clamp(voiceCutoff + filterEnvLevel * voice.velocity * 3000.0f, 20.0f, 20000.0f);
+                voiceCutoff = std::clamp(voiceCutoff + filterEnvLevel * voice.velocity * 3000.0f, 20.0f, kNyquistCeil);
 
                 // LFO1 -> filter modulation (secondary target)
-                voiceCutoff = std::clamp(voiceCutoff + lfo1Val * 2000.0f, 20.0f, 20000.0f);
+                voiceCutoff = std::clamp(voiceCutoff + lfo1Val * 2000.0f, 20.0f, kNyquistCeil);
 
                 // setMode hoisted to block-rate above (P31 fix — always LowPass).
-                voice.svf.setCoefficients_fast(voiceCutoff, resNow, srf);
-                // Decimate SVF coefficient refresh to every 16 samples (~0.36ms @
-                // 44.1k — below audible lag). Filter env is still ticked per-sample
-                // above so envelope state advances at audio rate.
+                // F7: Decimate coefficient refresh to every 16 samples (~0.36ms @44.1kHz).
+                // Filter env is ticked per-sample above so envelope state advances at audio rate.
+                if (voice.filterRefreshCounter == 0)
+                    voice.svf.setCoefficients_fast(voiceCutoff, resNow, srf);
+                voice.filterRefreshCounter = (voice.filterRefreshCounter + 1) & 15;
                 float filtered = voice.svf.processSample(signal);
 
                 float output = filtered * envLevel;
@@ -943,7 +963,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f); // F1: P4 — fastPow2 replaces std::pow in noteOn hot path
         int organModel = paramOrgan ? static_cast<int>(paramOrgan->load()) : 0;
         organModel = std::clamp(organModel, 0, 3);
 
@@ -1025,7 +1045,8 @@ public:
         v.lfo1.reset(static_cast<float>(idx) / static_cast<float>(kMaxVoices));
 
         // Pan: stereo spread based on voice index
-        float panAngle = (static_cast<float>(idx) / static_cast<float>(kMaxVoices - 1) - 0.5f) * 0.6f;
+        // F25: Guard divisor against zero when kMaxVoices == 1 (theoretical but safe).
+        float panAngle = (static_cast<float>(idx) / static_cast<float>(std::max(kMaxVoices - 1, 1)) - 0.5f) * 0.6f;
         v.panL = std::cos((panAngle + 0.5f) * 1.5707963f);
         v.panR = std::sin((panAngle + 0.5f) * 1.5707963f);
 

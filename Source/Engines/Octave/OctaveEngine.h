@@ -176,6 +176,8 @@ struct OctaveWindNoise
     void prepare(float sampleRate) noexcept
     {
         sr = sampleRate; // caller is engine prepare(), always valid
+        lastBrightnessHz = -1.0f; // force coefficient recompute after prepare()
+        cachedCoeff = 0.0f;
     }
 
     float process(float amount, float brightnessHz) noexcept
@@ -187,20 +189,32 @@ struct OctaveWindNoise
         float noise = (static_cast<float>(noiseState & 0xFFFF) / 32768.0f - 1.0f);
 
         // Shape wind noise — darker for pipe organs, brighter for accordion bellows.
-        // Coefficient derived from cutoff frequency (matched-Z): stable for any sr.
+        // P19-fix: recompute one-pole coefficient only when brightness changes by >1 Hz —
+        // std::exp per sample in the voice loop is expensive and unnecessary for slow sweeps.
         constexpr float kTwoPi = 6.28318530717958647692f;
         float fc = std::min(brightnessHz, sr * 0.49f);
-        float coeff = 1.0f - std::exp(-kTwoPi * fc / sr);
-        filterState += coeff * (noise - filterState);
+        if (std::abs(fc - lastBrightnessHz) > 1.0f)
+        {
+            lastBrightnessHz = fc;
+            cachedCoeff = 1.0f - std::exp(-kTwoPi * fc / sr);
+        }
+        filterState += cachedCoeff * (noise - filterState);
         filterState = flushDenormal(filterState);
         return filterState * amount * 0.15f;
     }
 
-    void reset() noexcept { filterState = 0.0f; }
+    void reset() noexcept
+    {
+        filterState = 0.0f;
+        lastBrightnessHz = -1.0f; // force coefficient recompute on next process() call
+        cachedCoeff = 0.0f;
+    }
 
     float sr = 0.0f; // sentinel: must be set by prepare() before use
     uint32_t noiseState = 98765u;
     float filterState = 0.0f;
+    float lastBrightnessHz = -1.0f; // P19-fix: delta guard state
+    float cachedCoeff = 0.0f;       // P19-fix: cached one-pole coefficient
 };
 
 //==============================================================================
@@ -301,6 +315,9 @@ struct OctaveVoice
     // Pan position (stereo)
     float panL = 0.707f, panR = 0.707f;
 
+    // P19-fix: last SVF cutoff for delta guard (avoids fastTan per sample when cutoff is stable)
+    float lastSvfCutoff = -1.0f;
+
     void reset() noexcept
     {
         active = false;
@@ -322,6 +339,12 @@ struct OctaveVoice
         musettePhaseIncs.fill(0.0f);
         farfisaOsc.reset();
         farfisaVibratoPhase = 0.0f;
+        // F30-fix: reset per-voice cached values — stale ratio/pan from prior voice
+        // would persist for one block on steal until the block-rate prep loop runs.
+        clusterFreqRatio = 1.0f;
+        panL = 0.707f;
+        panR = 0.707f;
+        lastSvfCutoff = -1.0f; // force SVF coefficient update on first sample
     }
 };
 
@@ -504,8 +527,10 @@ public:
         // D006: mod wheel → registration blend (organist's swell pedal)
         float effectiveRegistration =
             std::clamp(pRegistration + modWheelAmount * 0.5f + macroMovement * 0.3f, 0.0f, 1.0f);
+        // P17-fix: upper clamp uses SR-derived Nyquist limit instead of hardcoded 20 kHz.
         float effectiveBrightness = std::clamp(
-            pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 2000.0f + couplingFilterMod, 200.0f, 20000.0f);
+            pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 2000.0f + couplingFilterMod,
+            200.0f, srf * 0.49f);
         float effectiveRoomDepth = std::clamp(pRoomDepth + macroSpace * 0.4f, 0.0f, 1.0f);
 
         // D004-1: COUPLING macro → effective crosstalk amount.
@@ -543,12 +568,10 @@ public:
         // When couplingOrganMod < 0, morph direction reverses (CC→Baroque vs Baroque→CC)
         const bool morphToBright = (couplingOrganMod >= 0.0f);
 
-        // F06-fix: capture pitch mod before zero so per-sample loop gets the live value.
-        // P25: CAPTURE-THEN-ZERO — couplingFilterMod and couplingOrganMod consumed above;
-        // couplingPitchMod is consumed inside the voice loop (added to bendSemitones per-voice).
-        const float capturedPitchMod = couplingPitchMod;
-        // Snapshot pitch coupling before reset (#1118) — applyCouplingInput
-        // accumulators are consumed by the next block's renderBlock.
+        // Snapshot pitch coupling before reset — applyCouplingInput accumulators
+        // are consumed once per block then zeroed (#1118).
+        // F29-fix: single snapshot; blockBendRatio bakes in both bend + coupling so
+        // the per-sample multiply does not apply them a second time.
         const float blockCouplingPitchMod = couplingPitchMod;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
@@ -592,18 +615,7 @@ public:
         // and avoids VLA semantics (kMaxVoices is constexpr, so this is fine either way).
         float voiceContribL[kMaxVoices];
         float voiceContribR[kMaxVoices];
-        // Hoist envelope setADSR + LFO config out of per-sample loop. Both are
-        // block-rate from knob values; setADSR does 2× std::exp per call and
-        // setRate does a divide — neither should run inside the sample loop.
-        for (auto& voice : voices)
-        {
-            if (!voice.active) continue;
-            voice.ampEnv.setADSR(effectiveAttack, pDecay, pSustain, pRelease);
-            voice.lfo1.setRate(lfo1Rate, srf);
-            voice.lfo1.setShape(lfo1Shape);
-            voice.lfo2.setRate(lfo2Rate, srf);
-            voice.lfo2.setShape(lfo2Shape);
-        }
+        // (setADSR + LFO config already hoisted in the vi-indexed loop above — no duplicate loop needed.)
 
         // Hoist block-constant pitch-bend ratio out of per-sample loop; uses
         // pre-reset pitch coupling snapshot (#1118).
@@ -634,11 +646,10 @@ public:
                     continue;
 
                 float freq = voice.glide.process();
-                // F06-fix: use capturedPitchMod (zeroed coupling, but captured before zero)
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod);
-
-                // LFO processing — rate/shape hoisted to block-rate pre-loop (F03-fix)
-                freq *= blockBendRatio; // hoisted above (block-const bend + coupling snapshot)
+                // F29-fix: apply pitch bend + coupling ONCE via the pre-computed
+                // blockBendRatio (bakes bendSemitones + blockCouplingPitchMod).
+                // Previous code applied semitonesToFreqRatio twice (P29 double-squaring).
+                freq *= blockBendRatio;
 
                 // LFO setRate/setShape hoisted to per-block voice loop above.
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
@@ -698,7 +709,9 @@ public:
 
                         addSum += fastSin(voice.partialPhases[p] * 6.28318530717958647692f) * regAmp;
                     }
-                    sample = addSum * 0.2f; // scale to prevent clipping
+                    // P8-fix: softClip additive sum before scaling — prevents hard clipping when
+                    // multiple partials reinforce (morph blend + high pressure can push past 1.0).
+                    sample = softClip(addSum) * 0.2f;
 
                     // Wind noise — always present in pipe organs
                     sample += voice.wind.process(0.02f + pressureNow * 0.03f, brightNow);
@@ -747,7 +760,9 @@ public:
 
                         addSum += fastSin(voice.partialPhases[p] * 6.28318530717958647692f) * regAmp;
                     }
-                    sample = addSum * 0.2f;
+                    // P8-fix: softClip Baroque additive sum — kBaroquePartialAmps sum to ~3.88
+                    // before scaling; with velocity and registration boosts, hard clip is possible.
+                    sample = softClip(addSum) * 0.2f;
 
                     // Prominent chiff — the defining character of Baroque organs
                     sample += voice.chiff.process() * chiffNow * 1.5f;
@@ -821,7 +836,9 @@ public:
                     // Low registration = more fundamental, high = more upper harmonics
                     // Simulate by mixing in an octave-up square
                     float octaveUp = 0.0f;
-                    if (regNow > 0.3f)
+                    // P7-fix: Nyquist guard — suppress octave-up alias above sr/4 (where
+                    // the fundamental already places its 2nd harmonic above Nyquist).
+                    if (regNow > 0.3f && farfisaFreq * 2.0f < srf * 0.49f)
                     {
                         // Use phase-offset for octave-up without extra oscillator
                         voice.partialPhases[0] += (farfisaFreq * 2.0f) / srf;
@@ -832,10 +849,15 @@ public:
                     sample = sample * (1.0f - regNow * 0.3f) + octaveUp * regNow * 0.3f;
 
                     // Buzz: transistor saturation / overdrive
+                    // P30-fix: normalise drive output so output amplitude is consistent
+                    // regardless of drive level. fastTanh(x*drive)/max(fastTanh(drive),1.0f)
+                    // ensures unity gain at zero-signal (tanh is linear near 0) and
+                    // controlled saturation ceiling at high drive.
                     if (buzzNow > 0.001f)
                     {
                         float drive = 1.0f + buzzNow * 6.0f;
-                        sample = fastTanh(sample * drive) * 0.8f;
+                        float norm = std::max(fastTanh(drive), 1.0f);
+                        sample = fastTanh(sample * drive) / norm;
                     }
 
                     // Farfisa is dry — no room resonance
@@ -866,10 +888,16 @@ public:
                 //--- Filter envelope (D001: velocity shapes timbre) ---
                 float envMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f * voice.velocity;
                 // LFO1 modulates brightness (±3000 Hz at full depth)
-                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, 20000.0f);
+                // P17-fix: upper clamp uses Nyquist-safe limit (mirrors effectiveBrightness clamp above).
+                float cutoff = std::clamp(brightNow + envMod + lfo1Val * 3000.0f, 200.0f, srf * 0.49f);
                 // F01-fix: setMode is constant (LowPass) — hoisted to noteOn; use
                 // setCoefficients_fast() for modulated cutoff (avoids std::tan per-sample).
-                voice.svf.setCoefficients_fast(cutoff, 0.3f, srf);
+                // P19-fix: delta guard — skip coefficient update when cutoff hasn't moved by >1 Hz.
+                if (std::abs(cutoff - voice.lastSvfCutoff) > 1.0f)
+                {
+                    voice.lastSvfCutoff = cutoff;
+                    voice.svf.setCoefficients_fast(cutoff, 0.3f, srf);
+                }
                 float filtered = voice.svf.processSample(sample);
 
                 float output = filtered * ampLevel;

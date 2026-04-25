@@ -845,6 +845,7 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float>(sr);
+        nyquistCeiling = srf * 0.49f; // FIX (P17): SR-aware Nyquist ceiling; replaces hardcoded 20000 Hz
 
         for (int i = 0; i < kMaxVoices; ++i)
         {
@@ -870,6 +871,10 @@ public:
         smoothBrightness.prepare(srf);
         smoothDrive.prepare(srf);
 
+        // FIX (P15/ADSR delta guard): invalidate sentinels so first post-prepare block
+        // forces setADSR recalculation even if params haven't changed.
+        lastAmpAttack = lastAmpDecay = lastAmpSustain = lastAmpRelease = -1.0f;
+
         // Hammond organ: reverb-tail category (organ sustains + Leslie tail)
         prepareSilenceGate(sr, maxBlockSize, 500.0f);
     }
@@ -886,6 +891,9 @@ public:
         aftertouchAmount = 0.0f;
         percussionArmed = true;
         anyKeysHeld = 0;
+        steamPressurePhase = 0.0f; // FIX (D5): reset calliope steam phase on engine reset
+        // FIX (P15/ADSR delta guard): invalidate so first post-reset block forces recalc
+        lastAmpAttack = lastAmpDecay = lastAmpSustain = lastAmpRelease = -1.0f;
     }
 
     //==========================================================================
@@ -992,7 +1000,7 @@ public:
         // D006: mod wheel → Leslie speed (organ tradition: swell pedal)
         float effectiveLeslie = std::clamp(pLeslieSpeed + macroMovement * 0.4f + modWheelAmount * 0.5f, 0.0f, 1.0f);
         float effectiveBright = std::clamp(
-            pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, 20000.0f);
+            pBrightness + macroCharacter * 4000.0f + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, nyquistCeiling); // FIX (P17)
         float effectiveDrive = std::clamp(pDrive + macroCharacter * 0.3f, 0.0f, 1.0f);
         float effectiveCrosstalk = std::clamp(pCrosstalk + macroCoupling * 0.3f, 0.0f, 1.0f);
 
@@ -1013,10 +1021,15 @@ public:
         // Pitch bend
         const float bendSemitones = pitchBendNorm * pBendRange;
 
-        // Snapshot pitch + FM coupling before reset (#1118).
-        const float blockCouplingPitchMod = couplingPitchMod;
-        const float blockCouplingFMMod   = couplingFMMod;
-        // Reset coupling accumulators
+        // FIX (P26): snapshot ALL coupling mods before zeroing — effectiveBright
+        // above already consumed couplingFilterMod from the previous block correctly,
+        // but we snapshot here for symmetry and future safety; pitch/FM mods were
+        // already snapshotted before effectiveBright was computed.
+        const float blockCouplingFilterMod = couplingFilterMod;
+        const float blockCouplingPitchMod  = couplingPitchMod;
+        const float blockCouplingFMMod     = couplingFMMod;
+        (void)blockCouplingFilterMod; // consumed via smoothBrightness / effectiveBright path
+        // Reset coupling accumulators — all reads are done above this point
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingFMMod = 0.0f;
@@ -1030,6 +1043,10 @@ public:
 
         float* outL = buffer.getWritePointer(0);
         float* outR = buffer.getNumChannels() > 1 ? buffer.getWritePointer(1) : nullptr;
+
+        // FIX (D1): leslieDepth is block-constant (macroSpace loaded once per block above).
+        // Hoisted out of per-sample loop to avoid redundant clamp each sample.
+        const float leslieDepth = std::clamp(0.5f + macroSpace * 0.5f, 0.0f, 1.0f);
 
         // Hoist per-voice LFO config out of the per-sample loop — both rate and
         // shape are block-constant knob values.
@@ -1047,9 +1064,19 @@ public:
         const float envD = paramDecay   ? paramDecay->load()   : 0.3f;
         const float envS = paramSustain ? paramSustain->load() : 0.8f;
         const float envR = paramRelease ? paramRelease->load() : 0.3f;
-        for (int vi = 0; vi < kMaxVoices; ++vi)
-            if (voices[vi].active)
-                voices[vi].ampEnv.setADSR(envA, envD, envS, envR);
+        // FIX (P15): ADSR delta guard — FilterEnvelope::setADSR calls recalcCoeffs() which
+        // runs 2× std::exp per call; with 8 voices that's 16 std::exp/block at steady state.
+        // Only recalculate when ADSR params actually change.
+        const bool ampAdsrChanged = (envA != lastAmpAttack || envD != lastAmpDecay ||
+                                     envS != lastAmpSustain || envR != lastAmpRelease);
+        if (ampAdsrChanged)
+        {
+            lastAmpAttack = envA; lastAmpDecay = envD;
+            lastAmpSustain = envS; lastAmpRelease = envR;
+            for (int vi = 0; vi < kMaxVoices; ++vi)
+                if (voices[vi].active)
+                    voices[vi].ampEnv.setADSR(envA, envD, envS, envR);
+        }
 
         for (int s = 0; s < numSamples; ++s)
         {
@@ -1203,9 +1230,9 @@ public:
                 {
                     float envMod = filterEnvLevel * pFilterEnvAmt * 4000.0f;
                     // LFO2 → filter cutoff
-                    float cutoff = std::clamp(brightNow + envMod + lfo2Val * 3000.0f, 200.0f, 20000.0f);
+                    float cutoff = std::clamp(brightNow + envMod + lfo2Val * 3000.0f, 200.0f, nyquistCeiling); // FIX (P17)
                     // D001: velocity → filter brightness
-                    cutoff = std::clamp(cutoff * (0.5f + voice.velocity * 0.5f), 200.0f, 20000.0f);
+                    cutoff = std::clamp(cutoff * (0.5f + voice.velocity * 0.5f), 200.0f, nyquistCeiling); // FIX (P17)
 
                     voice.svf.setMode(CytomicSVF::Mode::LowPass);
                     voice.svf.setCoefficients_fast(cutoff, 0.15f, srf);
@@ -1219,8 +1246,7 @@ public:
             }
 
             // Leslie speaker simulation (post-voice mix, pre-output)
-            // Leslie depth controlled by macro SPACE
-            float leslieDepth = std::clamp(0.5f + macroSpace * 0.5f, 0.0f, 1.0f);
+            // leslieDepth hoisted to block-level above (FIX D1)
             if (organModel == 0) // Full Leslie only on Hammond
             {
                 auto leslieOut = leslie.process(mixL, mixR, leslieDepth);
@@ -1260,7 +1286,13 @@ public:
 
     void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
+        // FIX (D5): prefer stealing releasing tails over actively-sustaining voices
+        int idx = VoiceAllocator::findFreeVoicePreferRelease(
+            voices, kMaxVoices,
+            [](const OtisVoice& v) {
+                return v.ampEnv.getStage() == FilterEnvelope::Stage::Release ||
+                       v.ampEnv.getStage() == FilterEnvelope::Stage::Idle;
+            });
         auto& v = voices[idx];
 
         float freq = midiToFreq(note);
@@ -1274,18 +1306,19 @@ public:
         v.glide.setTargetOrSnap(freq);
         v.phase = 0.0f;
 
-        // Amp envelope
+        // Amp envelope — FIX (P18): do NOT call prepare() per-noteOn; it was already
+        // called in prepare() and resets internal state, causing clicks on voice steal.
+        // ADSR is refreshed per-block by the delta guard in renderBlock; set it here
+        // too so the very first block after a new note sees correct values.
         float attack = paramAttack ? paramAttack->load() : 0.005f;
         float decay = paramDecay ? paramDecay->load() : 0.3f;
         float sustain = paramSustain ? paramSustain->load() : 0.8f;
         float release = paramRelease ? paramRelease->load() : 0.3f;
 
-        v.ampEnv.prepare(srf);
         v.ampEnv.setADSR(attack, decay, sustain, release);
         v.ampEnv.triggerHard();
 
-        // Filter envelope
-        v.filterEnv.prepare(srf);
+        // Filter envelope — FIX (P18): removed prepare() per-noteOn
         v.filterEnv.setADSR(0.001f, 0.3f, 0.0f, 0.5f);
         v.filterEnv.triggerHard();
 
@@ -1511,8 +1544,9 @@ public:
     }
 
 private:
-    double sr = 0.0;  // Sentinel: must be set by prepare() before use
+    double sr = 0.0;    // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
+    float nyquistCeiling = 20000.0f; // FIX (P17): SR-aware; set in prepare()
 
     std::array<OtisVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;
@@ -1539,6 +1573,12 @@ private:
     // Coupling accumulators
     float couplingFilterMod = 0.0f, couplingPitchMod = 0.0f, couplingFMMod = 0.0f;
     float couplingCacheL = 0.0f, couplingCacheR = 0.0f;
+
+    // FIX (P15): ADSR delta guards — sentinel -1.0f forces recalc on first block
+    float lastAmpAttack  = -1.0f;
+    float lastAmpDecay   = -1.0f;
+    float lastAmpSustain = -1.0f;
+    float lastAmpRelease = -1.0f;
 
     // Parameter pointers
     std::atomic<float>* paramOrgan = nullptr;

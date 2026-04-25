@@ -401,8 +401,8 @@ struct OvenVoice
     // Cached stereo pan
     float panL = 0.707f, panR = 0.707f;
 
-    // Amp level (exponential decay for cast iron sustain)
-    float ampLevel = 0.0f;
+    // D004 fix: removed dead `ampLevel` field. Amplitude comes from voice.ampEnv.process()
+    // in the render loop — the cached field was never read, violating D004 (Dead Parameters).
 
     // Cached filter cutoff for P19 coefficient-update guard (skip if |delta| < 1 Hz)
     float lastFilterCutoff = -1.0f;
@@ -411,7 +411,6 @@ struct OvenVoice
     {
         active = false;
         velocity = 0.0f;
-        ampLevel = 0.0f;
         bloomLevel = 0.0f;
         bloomTarget = 1.0f; // safe default — avoids zero-bloom if reset() called mid-note
         bloomCoeff = 0.0f;  // no bloom rate; noteOn() sets the real value
@@ -480,7 +479,10 @@ struct OvenSympatheticNetwork
             {
                 if (stringIdx >= kMaxStrings)
                     break;
-                if (hFreq < 20.0f || hFreq > 8000.0f)
+                // P17 fix: use SR-aware Nyquist ceiling instead of hardcoded 8000 Hz.
+                // At 96 kHz, strings up to ~47 kHz are physically valid; 8000 Hz cut was
+                // discarding valid resonators on high-SR sessions.
+                if (hFreq < 20.0f || hFreq > sampleRate * 0.49f)
                     continue;
 
                 strings[stringIdx].resonator.setFreqAndDecay(hFreq, 200.0f, sampleRate);
@@ -547,6 +549,10 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float>(sr);
+        storedMaxBlockSize = std::max(maxBlockSize, 1);
+        // Thermal drift period in blocks: ~6 seconds at current block size.
+        // thermalTimer increments once per renderBlock(), so compare against block count, not samples.
+        thermalPeriodBlocks = static_cast<int>(6.0f * srf / static_cast<float>(storedMaxBlockSize));
 
         for (int i = 0; i < kMaxVoices; ++i)
         {
@@ -724,8 +730,10 @@ public:
 
         // Apply macros and expression
         // D006: mod wheel -> brightness (open up the spectral content)
+        // P17 fix: cap at srf*0.49f so this ceiling is safe at 22050 Hz SR sessions.
+        const float nyquistCeiling = srf * 0.49f;
         float effectiveBrightness = std::clamp(
-            pBrightness + macroCharacter * 6000.0f + modWheelAmount * 4000.0f + couplingFilterMod, 200.0f, 16000.0f);
+            pBrightness + macroCharacter * 6000.0f + modWheelAmount * 4000.0f + couplingFilterMod, 200.0f, std::min(16000.0f, nyquistCeiling));
         // D006: aftertouch -> body resonance and sustain
         float effectiveBodyRes =
             std::clamp(pBodyResonance + macroSpace * 0.3f + aftertouchAmount * 0.3f + couplingBodyMod, 0.0f, 1.0f);
@@ -742,9 +750,12 @@ public:
         smoothBodyResonance.set(effectiveBodyRes);
         smoothBloom.set(pBloomTime);
 
-        // P25 fix: snapshot coupling mods BEFORE zeroing so the sample loop
+        // P26 fix: snapshot ALL coupling mods BEFORE zeroing so the sample loop
         // sees the values that arrived this block, not 0.
+        // couplingAmpChoke was previously zeroed before being read by chokeScale (P26 bug:
+        // AmpToChoke coupling never fired). Snapshot it here alongside pitchMod.
         const float blockCouplingPitchMod = couplingPitchMod;
+        const float blockCouplingAmpChoke = couplingAmpChoke;
         couplingFilterMod = 0.0f;
         couplingPitchMod = 0.0f;
         couplingBodyMod = 0.0f;
@@ -755,7 +766,7 @@ public:
         // Thermal drift: cast iron's temperature slowly shifts tuning
         // ~0.8 cents per 10 degrees C of temperature offset
         thermalTimer++;
-        if (thermalTimer > static_cast<int>(srf * 6.0f)) // new target every ~6 seconds (slow thermal mass)
+        if (thermalTimer > thermalPeriodBlocks) // new target every ~6 seconds (slow thermal mass); compare in blocks not samples
         {
             thermalNoiseState = thermalNoiseState * 1664525u + 1013904223u;
             thermalTarget = (static_cast<float>(thermalNoiseState & 0xFFFF) / 32768.0f - 1.0f) * pTemperature *
@@ -786,9 +797,10 @@ public:
         float couplingResLevel = loadP(paramCouplingRes, 0.0f);
 
         // Compute amplitude suppression from adversarial coupling this block.
-        // couplingAmpChoke is the RMS-scaled signal accumulated in applyCouplingInput().
+        // Uses blockCouplingAmpChoke (snapshotted above) — couplingAmpChoke was already
+        // zeroed for the next block by this point.
         // suppression = 1.0 - competition * clamp(choke, 0, 1), floored at 0.1.
-        const float chokeScale = competitionLevel * std::min(couplingAmpChoke, 1.0f);
+        const float chokeScale = competitionLevel * std::min(blockCouplingAmpChoke, 1.0f);
         const float ampSuppression = 1.0f - 0.9f * chokeScale; // floor at 0.1 when choke=1 & comp=1
 
         // Apply LFO rate/shape once per block
@@ -901,8 +913,10 @@ public:
                 resonanceSum = softClip(resonanceSum);
 
                 // HF noise fill above modal ceiling
+                // P17 fix: cap hfFill cutoff at nyquistCeiling instead of 14000 Hz so it
+                // remains safe at low SR sessions (e.g. 22050 Hz where 14000 > Nyquist).
                 float hfNoise =
-                    voice.hfFill.process(std::min(brightNow + lfo1Val * 2000.0f, 14000.0f), srf) * pHFAmount;
+                    voice.hfFill.process(std::min(brightNow + lfo1Val * 2000.0f, nyquistCeiling), srf) * pHFAmount;
 
                 float voiceOut = (resonanceSum + hfNoise) * voice.bloomLevel;
 
@@ -916,7 +930,8 @@ public:
 
                 // Filter envelope: D001 velocity-scaled filter sweep.
                 float filterEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 6000.0f * voice.velocity;
-                float cutoff = std::clamp(brightNow + filterEnvMod + lfo1Val * 3000.0f, 200.0f, 16000.0f);
+                // P17 fix: clamp against nyquistCeiling (hoisted above) not hardcoded 16000.
+                float cutoff = std::clamp(brightNow + filterEnvMod + lfo1Val * 3000.0f, 200.0f, nyquistCeiling);
                 // P19 guard: skip coefficient update when cutoff hasn't moved > 1 Hz.
                 // setMode() is NOT called here — it is set once in noteOn() so this
                 // hot path only pays for setCoefficients when the cutoff actually changes.
@@ -980,7 +995,12 @@ public:
 
     void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
+        // D5 fix: prefer stealing voices in release stage over actively-sustaining ones.
+        // For a piano with long sustained notes this prevents cutting a held note mid-sustain
+        // when a releasing tail is available. Uses FilterEnvelope::getStage() as predicate.
+        int idx = VoiceAllocator::findFreeVoicePreferRelease(
+            voices, kMaxVoices,
+            [](const OvenVoice& v) { return v.ampEnv.getStage() == FilterEnvelope::Stage::Release; });
         auto& v = voices[idx];
 
         // P4 fix: std::pow → fastPow2 for MIDI→Hz conversion
@@ -997,6 +1017,10 @@ public:
         v.startTime = ++voiceCounter;
         v.noteHeld = true;
         v.sustained = false;
+        // P19 fix: force filter coefficient recompute on the first sample of any new note.
+        // Without this, a stolen voice retains its old lastFilterCutoff and the P19 guard
+        // may skip the coefficient update if the new note's cutoff is close to the old one.
+        v.lastFilterCutoff = -1.0f;
         v.glide.snapTo(freq);
 
         // D001: velocity controls hammer hardness
@@ -1240,6 +1264,8 @@ public:
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
+    int storedMaxBlockSize = 512;  // Set in prepare(); used for thermalPeriodBlocks
+    int thermalPeriodBlocks = 500; // ~6s in blocks at 44.1kHz / 512 samples
 
     std::array<OvenVoice, kMaxVoices> voices;
     uint64_t voiceCounter = 0;

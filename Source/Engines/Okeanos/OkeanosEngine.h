@@ -476,7 +476,6 @@ public:
         smoothMigration.set(effectiveMigration);
 
         couplingFilterMod = 0.0f;
-        const float capturedPitchMod = couplingPitchMod; // P25 fix: capture before zero
         // Snapshot pitch coupling before reset (#1118).
         const float blockCouplingPitchMod = couplingPitchMod;
         couplingPitchMod = 0.0f;
@@ -563,14 +562,15 @@ public:
 
 
                 float freq = voice.glide.process();
-                freq *= blockBendRatio; // hoisted; uses pre-reset pitch coupling snapshot
+                freq *= blockBendRatio; // bend + coupling pitch mod, hoisted per-block
 
                 // LFO1 -> pitch vibrato (subtle, +-50 cents at full depth)
                 float lfo1Val = voice.lfo1.process() * lfo1Depth;
 
-                // Merge bend + coupling pitch mod + LFO vibrato into a single
-                // fastPow2 call — avoids two semitonesToFreqRatio() per voice per sample.
-                freq *= PitchBendUtil::semitonesToFreqRatio(bendSemitones + capturedPitchMod + lfo1Val * 0.5f);
+                // P29 fix: blockBendRatio already encodes bendSemitones + capturedPitchMod.
+                // Apply only the LFO vibrato delta here to avoid double-applying bend.
+                if (lfo1Val != 0.0f)
+                    freq *= fastPow2((lfo1Val * 0.5f) / 12.0f);
 
                 // LFO2 -> tremolo depth modulation
                 float lfo2Val = voice.lfo2.process() * lfo2Depth;
