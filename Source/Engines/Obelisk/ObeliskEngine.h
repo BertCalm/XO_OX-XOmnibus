@@ -510,6 +510,13 @@ struct ObeliskVoice
         velocity = 0.0f;
         ampLevel = 0.0f;
         isReleasing = false;
+        // FIX(D5/V2 reset gap): currentNote must be reset so a stolen voice cannot
+        // ghost-match a subsequent noteOff for the previous owner's pitch.
+        currentNote = 60;
+        // FIX(D5/V3 reset gap): pan must be reset to neutral so voice steal doesn't
+        // carry the previous note's stereo position into the new note.
+        panL = 0.707f;
+        panR = 0.707f;
         glide.reset();
         hammer.reset();
         chainBuzz.reset();
@@ -611,6 +618,13 @@ public:
         smoothPrepDepth.prepare(srf);
         smoothBrightness.prepare(srf);
         smoothDamping.prepare(srf);
+        // FIX(P14/stability): snap smoothers to default values so the first rendered block
+        // does not ramp up from 0 (causing a timbral transient on cold start / preset load).
+        smoothDensity.snapTo(0.5f);
+        smoothHardness.snapTo(0.5f);
+        smoothPrepDepth.snapTo(0.5f);
+        smoothBrightness.snapTo(6000.0f);
+        smoothDamping.snapTo(0.2f);
 
         // Thermal drift time constant: 0.5 seconds, sample-rate scaled
         // FIX(perf): std::exp → fastExp (consistent with fleet pattern)
@@ -1082,7 +1096,11 @@ public:
 
     void noteOn(int note, float vel) noexcept
     {
-        int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
+        // FIX(D5/V4): prefer stealing voices already in release over live sustaining voices.
+        // findFreeVoice stole any oldest voice; findFreeVoicePreferRelease preserves active
+        // sustain and recycles tails first — audibly safer for dense polyphonic playing.
+        int idx = VoiceAllocator::findFreeVoicePreferRelease(
+            voices, kMaxVoices, [](const ObeliskVoice& v) { return v.isReleasing; });
         auto& v = voices[idx];
 
         // FIX(P4/perf): std::pow → fastPow2 for MIDI→Hz on audio thread
