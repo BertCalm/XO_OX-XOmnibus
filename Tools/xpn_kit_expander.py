@@ -52,7 +52,6 @@ Flat kit input naming (auto-detected):
 """
 
 import argparse
-import math
 import os
 import sys
 import time
@@ -78,7 +77,7 @@ try:
 except ImportError:
     SCIPY_AVAILABLE = False
 
-from xpn_drum_export import PAD_MAP, VEL_SUFFIXES, CYCLE_SUFFIXES, SMART_MODE, _resolve_mode
+from xpn_drum_export import PAD_MAP, VEL_SUFFIXES, CYCLE_SUFFIXES, _resolve_mode
 
 VOICE_NAMES = [v for _, v, _, _ in PAD_MAP]
 

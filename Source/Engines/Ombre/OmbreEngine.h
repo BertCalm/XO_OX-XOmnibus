@@ -35,7 +35,7 @@ namespace xoceanus
 class OmbreMemoryBuffer
 {
 public:
-    static constexpr int kMaxBufferSamples = 96000; // ~2 seconds at 48kHz
+    static constexpr int kMaxBufferSamples = 96000; // ~2s @ 48kHz; ~1s @ 96kHz (indices always modulo-wrapped — no overflow)
 
     void prepare(double sampleRate) noexcept
     {

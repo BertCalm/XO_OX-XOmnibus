@@ -35,7 +35,7 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-from engine_registry import get_all_engines, is_valid_engine
+from engine_registry import get_all_engines
 from xpn_voice_taxonomy import ONSET_VOICE_MAP  # canonical voice name map (QDD L4 fix)
 
 REPO_ROOT   = Path(__file__).parent.parent

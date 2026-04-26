@@ -92,6 +92,10 @@ private:
             history.prepare(maxSamples);
             bufferSize = maxSamples;
             scanSmooth = fastExp(-1.0f / (static_cast<float>(sampleRate) * 0.05f)); // 50ms smooth
+            // FIX P36: mix pointer-hash into LCG seed so different OublietteChain instances
+            // produce independent scanner-position noise (prevents identical reverb tails).
+            lcgState ^= static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+            if (lcgState == 0u) lcgState = 0xDEADBEEFu; // LCG must be non-zero
             reset();
         }
 

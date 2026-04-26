@@ -931,11 +931,15 @@ def build_collection(
         version=spec.version,
     ) if DRUM_EXPORT_AVAILABLE else f"<!-- {spec.name} -->"
 
+    def _smv(s: str) -> str:
+        """Strip CR/LF to prevent newline injection in plain-text k=v manifests."""
+        return s.replace('\r', '').replace('\n', '').strip()
+
     plain_manifest = (
-        f"Name={spec.name}\n"
-        f"Version={spec.version}\n"
-        f"Author={spec.author}\n"
-        f"Description={pack_description}\n"
+        f"Name={_smv(spec.name)}\n"
+        f"Version={_smv(spec.version)}\n"
+        f"Author={_smv(spec.author)}\n"
+        f"Description={_smv(pack_description)}\n"
     )
 
     if not dry_run:

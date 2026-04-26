@@ -11,7 +11,6 @@ Usage:
 
 import argparse
 import json
-import os
 import struct
 import sys
 from pathlib import Path
