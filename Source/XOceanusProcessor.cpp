@@ -671,7 +671,18 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
         juce::StringArray{"WARM", "BRIGHT", "TENSION", "OPEN", "DARK", "SWEET", "COMPLEX", "RAW"}, 0));
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("cm_voicing", 1), "CM Voicing",
-        juce::StringArray{"ROOT-SPREAD", "DROP-2", "QUARTAL", "UPPER STRUCT", "UNISON"}, 0));
+        juce::StringArray{
+            // Tertian (0-4) — indices fixed for preset backward compat
+            "ROOT-SPREAD", "DROP-2", "QUARTAL", "UPPER STRUCT", "UNISON",
+            // Quartal family (5-6)
+            "QUARTAL-3", "QUARTAL-4",
+            // Quintal family (7-8)
+            "QUINTAL-3", "QUINTAL-4",
+            // Modal-world family (9-13)
+            "HIJAZ", "BHAIRAVI", "YO", "IN", "PHRYG-DOM",
+            // Drone family (14-19)
+            "DRONE-P5", "DRONE-P4", "DRONE-M3", "DRONE-m3", "DRONE-M2", "DRONE-m2"
+        }, 0));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("cm_spread", 1), "CM Spread",
                                                                  juce::NormalisableRange<float>(0.0f, 1.0f), 0.75f));
     params.push_back(

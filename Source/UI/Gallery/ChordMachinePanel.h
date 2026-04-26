@@ -70,16 +70,30 @@ public:
             }
         };
 
-        // Voicing selector
+        // Voicing selector — items must match VoicingMode enum order exactly.
+        // NOTE: XOceanusProcessor.cpp cm_voicing StringArray must also be kept in sync.
         addAndMakeVisible(voicingBox);
-        voicingBox.addItemList({"ROOT-SPREAD", "DROP-2", "QUARTAL", "UPPER STRUCT", "UNISON"}, 1);
+        voicingBox.addItemList({
+            // Tertian (0-4)
+            "ROOT-SPREAD", "DROP-2", "QUARTAL", "UPPER STRUCT", "UNISON",
+            // Quartal family (5-6)
+            "QUARTAL-3", "QUARTAL-4",
+            // Quintal family (7-8)
+            "QUINTAL-3", "QUINTAL-4",
+            // Modal-world family (9-13)
+            "HIJAZ", "BHAIRAVI", "YO", "IN", "PHRYG-DOM",
+            // Drone family (14-19)
+            "DRONE-P5", "DRONE-P4", "DRONE-M3", "DRONE-m3", "DRONE-M2", "DRONE-m2"
+        }, 1);
         voicingBox.setSelectedId(1, juce::dontSendNotification);
         voicingBox.onChange = [this]
         {
             if (auto* p = processor.getAPVTS().getParameter("cm_voicing"))
             {
+                const int idx = voicingBox.getSelectedItemIndex();
+                const int numChoices = static_cast<int>(VoicingMode::NumModes);
                 p->beginChangeGesture();
-                p->setValueNotifyingHost(static_cast<float>(voicingBox.getSelectedItemIndex()) / 4.0f);
+                p->setValueNotifyingHost(numChoices > 1 ? static_cast<float>(idx) / static_cast<float>(numChoices - 1) : 0.0f);
                 p->endChangeGesture();
             }
         };
