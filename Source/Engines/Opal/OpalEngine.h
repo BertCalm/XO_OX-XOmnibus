@@ -345,31 +345,42 @@ public:
 
     void processAll(const OpalGrainBuffer& buf, float* outL, float* outR, int numSamples) noexcept
     {
+        // OPL-07: pre-count active grains once before the sample loop; grain
+        // activation state changes only at spawn/expire boundaries, not per-sample.
+        // Avoids kOpalMaxGrains × numSamples sqrt calls per block.
+        int activeCount = countActive();
+        float normFactor = (activeCount > 0) ? (1.0f / std::sqrt(static_cast<float>(activeCount))) : 0.0f;
+
         for (int n = 0; n < numSamples; ++n)
         {
             float sumL = 0.0f, sumR = 0.0f;
-            int count = 0;
+            bool anyExpired = false;
 
             for (auto& g : grains)
             {
                 if (!g.active)
                     continue;
+                bool wasActive = g.active;
                 float s = g.process(buf);
                 sumL += s * g.panL;
                 sumR += s * g.panR;
-                ++count;
+                if (wasActive && !g.active)
+                    anyExpired = true;
             }
 
-            // Energy-preserving normalization
-            if (count > 0)
-            {
-                float norm = 1.0f / std::sqrt(static_cast<float>(count));
-                sumL *= norm;
-                sumR *= norm;
-            }
+            // Energy-preserving normalization (pre-computed for this block)
+            sumL *= normFactor;
+            sumR *= normFactor;
 
             outL[n] += sumL;
             outR[n] += sumR;
+
+            // Recompute normFactor only when a grain expires this sample
+            if (anyExpired)
+            {
+                activeCount = countActive();
+                normFactor = (activeCount > 0) ? (1.0f / std::sqrt(static_cast<float>(activeCount))) : 0.0f;
+            }
         }
     }
 
@@ -509,8 +520,6 @@ struct OpalCloudVoice
             glideRate = 0.0f;
         }
 
-        const float fsr = static_cast<float>(sr);
-
         if (legatoActive)
         {
             // Legato: don't retrigger amp, retrigger filter from current level
@@ -518,11 +527,10 @@ struct OpalCloudVoice
         }
         else
         {
-            ampEnv.prepare(fsr);
+            // OPL-01 (P18): prepare() moved to engine prepare(); only set ADSR here
             ampEnv.setADSR(attack, decay, sustain, release);
             ampEnv.noteOn();
 
-            filterEnv.prepare(fsr);
             filterEnv.setADSR(filterA, filterD, filterS, filterR_);
             filterEnv.noteOn();
 
@@ -552,6 +560,13 @@ struct OpalCloudVoice
     void kill() noexcept
     {
         active = false;
+        noteNumber = -1;  // OPL-10: clear note so avgNote/noteOff matching sees no stale note
+        glideFreq = 261.63f;
+        glideTarget = 261.63f;
+        glideRate = 0.0f;
+        triggerAccum = 0.0f;
+        lfo1.reset(0.0f);  // OPL-13: clear LFO phase so next voice isn't contaminated
+        lfo2.reset(0.0f);
         ampEnv.reset();
         filterEnv.reset();
     }
@@ -877,6 +892,9 @@ public:
         for (int i = 0; i < kOpalMaxClouds; ++i)
         {
             voices[i].voiceIndex = i;
+            // OPL-01 (P18): prepare envelopes here, not in noteOn(), so SR is always correct
+            voices[i].ampEnv.prepare(static_cast<float>(sampleRate));
+            voices[i].filterEnv.prepare(static_cast<float>(sampleRate));
             // StandardLFO has no prepare() — rate is set per-sample via setRate().
         }
 
@@ -930,6 +948,14 @@ public:
         scatterReverb.reset();
         stereoDelay.reset();
         finish.reset();
+        globalFilterL.reset();  // OPL-02/17/18 (P14): reset filter and character state
+        globalFilterR.reset();
+        lastFilterMode_ = -1;   // force re-apply mode on next block
+        smearStateL = 0.0f;     // OPL-17: smear IIR state
+        smearStateR = 0.0f;
+        lastReverbSize  = -1.0f; // OPL-18: force reverb setParams on next block
+        lastReverbDecay = -1.0f;
+        lastReverbDamp  = -1.0f;
         for (auto& s : couplingBufL)
             s = 0.0f;
         for (auto& s : couplingBufR)
@@ -1496,7 +1522,10 @@ public:
         float panScatter = safeLoadF(pPanScatter, 0.3f);
         int windowShape = safeLoad(pWindow, 0);
         float freezeAmt = safeLoadF(pFreeze, 0.0f) + extFreezeMod;
-        float filterCutoff = clamp(safeLoadF(pFilterCutoff, 8000.0f) + extFilterMod, 20.0f, 20000.0f);
+        // OPL-03 (P17): use srf * 0.49f instead of hardcoded 20000 — correct for 48/96 kHz interfaces
+        const float srf = static_cast<float>(sr);
+        const float nyquistCeil = srf * 0.49f;
+        float filterCutoff = clamp(safeLoadF(pFilterCutoff, 8000.0f) + extFilterMod, 20.0f, nyquistCeil);
         float filterReso = safeLoadF(pFilterReso, 0.15f);
         int filterMode = safeLoad(pFilterMode, 0);
         float filterKeyTrack = safeLoadF(pFilterKeyTrack, 0.3f);
@@ -1711,7 +1740,7 @@ public:
             {
                 // Use a simple oscillator for grain source material
                 // All active voices contribute to the buffer from the lowest note
-                srcSample = generateOscSample(sourceMode, oscShape, osc2Shape, osc2Mix, osc2Detune);
+                srcSample = generateOscSample(sourceMode, oscShape, osc2Shape, osc2Mix, osc2Detune, srf);
             }
 
             // Blend in external AudioToBuffer content.
@@ -1752,12 +1781,12 @@ public:
                 // Set oscillator frequencies for this voice (with MPE + channel pitch bend)
                 float voiceFreq = v.glideFreq * fastPow2(v.mpeExpression.pitchBendSemitones / 12.0f) *
                                   PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
-                v.osc1.setFrequency(voiceFreq, static_cast<float>(sr));
-                v.osc2.setFrequency(voiceFreq * fastPow2(osc2Detune / 12.0f), static_cast<float>(sr));
+                v.osc1.setFrequency(voiceFreq, srf);    // OPL-15: use hoisted srf
+                v.osc2.setFrequency(voiceFreq * fastPow2(osc2Detune / 12.0f), srf);
 
                 // Grain scheduling
                 v.triggerAccum += 1.0f;
-                float triggerInterval = static_cast<float>(sr) / density;
+                float triggerInterval = srf / density;
 
                 while (v.triggerAccum >= triggerInterval)
                 {
@@ -1863,8 +1892,8 @@ public:
                 float filterLevel = v.filterEnv.process();
 
                 // Process LFOs via shared StandardLFO; shape 5 (Stepped) post-processed.
-                float l1 = processLFO(v.lfo1, lfo1Rate, lfo1Shape, static_cast<float>(sr)) * lfo1Depth;
-                float l2 = processLFO(v.lfo2, lfo2Rate, lfo2Shape, static_cast<float>(sr)) * lfo2Depth;
+                float l1 = processLFO(v.lfo1, lfo1Rate, lfo1Shape, srf) * lfo1Depth;  // OPL-15
+                float l2 = processLFO(v.lfo2, lfo2Rate, lfo2Shape, srf) * lfo2Depth;
 
                 // Velocity scaling
                 float velScale = (1.0f - ampVelSens) + ampVelSens * v.velocity;
@@ -1900,14 +1929,16 @@ public:
             R *= envSum;
 
             // Apply mod matrix modulation (accumulated)
+            // OPL-08: pass pre-hoisted avgNote/avgVelocity to avoid per-sample voice rescan
             float modOffsets[12] = {}; // indexed by mod dest
-            applyModMatrix(modOffsets, lfo1Val, lfo2Val, filterEnvSum, envSum, activeCount);
+            applyModMatrix(modOffsets, lfo1Val, lfo2Val, filterEnvSum, envSum, activeCount,
+                           preAvgVelForFilter, preAvgNote);
 
             // F10: use pre-hoisted key tracking and velocity values
             float effCutoff = filterCutoff + preKeyTrackOffset
                               + filterEnvAmt * filterEnvSum * 10000.0f * preVelFilterScale
                               + modOffsets[6] * 5000.0f; // mod dest 6 = FilterCutoff
-            effCutoff = clamp(effCutoff, 20.0f, 20000.0f);
+            effCutoff = clamp(effCutoff, 20.0f, nyquistCeil);
 
             // F5/F23: Only call setCoefficients when cutoff changes meaningfully.
             // std::tan() inside setCoefficients is expensive; skipping redundant
@@ -1915,8 +1946,8 @@ public:
             // per-sample filter lag (inaudible for block sizes >= 32).
             if (std::fabs(effCutoff - prevEffCutoff) > 0.5f)
             {
-                globalFilterL.setCoefficients(effCutoff, filterReso, static_cast<float>(sr));
-                globalFilterR.setCoefficients(effCutoff, filterReso, static_cast<float>(sr));
+                globalFilterL.setCoefficients(effCutoff, filterReso, srf);  // OPL-15
+                globalFilterR.setCoefficients(effCutoff, filterReso, srf);
                 prevEffCutoff = effCutoff;
             }
 
@@ -1969,15 +2000,14 @@ public:
         if (fxSmearMix > 0.001f)
         {
             float smearTc = 0.01f + fxSmearAmt * 0.19f; // 10ms..200ms
-            float smearCoeff = 1.0f - std::exp(-1.0f / (smearTc * static_cast<float>(sr)));
+            float smearCoeff = 1.0f - std::exp(-1.0f / (smearTc * srf));  // OPL-15
             smearCoeff = clamp(smearCoeff, 0.0001f, 1.0f);
+            // OPL-04: smear must operate on scrL/R (Opal's own audio), not outL/R
+            // (the shared slot buffer which contains other engines' audio).
+            // The stale outL/R reads caused the smear to chase other engines' signal
+            // instead of Opal's processed grains.
             for (int n = 0; n < numSamples; ++n)
             {
-                smearStateL = flushDenormal(smearStateL + (outL[n] - smearStateL) * smearCoeff);
-                smearStateR = flushDenormal(smearStateR + (outR[n] - smearStateR) * smearCoeff);
-                outL[n] = outL[n] * (1.0f - fxSmearMix) + smearStateL * fxSmearMix;
-                outR[n] = outR[n] * (1.0f - fxSmearMix) + smearStateR * fxSmearMix;
-                // Smear approximation: feedback low-pass smoothing
                 smearStateL =
                     flushDenormal(smearStateL + (scrL[n] - smearStateL) * (0.01f + 0.1f * (1.0f - fxSmearAmt)));
                 smearStateR =
@@ -2018,24 +2048,28 @@ public:
             }
         }
 
+        // OPL-05: hoist equal-power pan coefficients outside per-sample loop
+        // (cos/sin only need computing once per block since masterPan is block-rate)
+        float panGainL = 1.0f, panGainR = 1.0f;
+        if (masterPan != 0.0f)
+        {
+            constexpr float pi4 = 0.7853981633974483f; // pi/4
+            float angle = (masterPan + 1.0f) * pi4; // map [-1,+1] to [0, pi/2]
+            panGainL = fastCos(angle);
+            panGainR = fastSin(angle);
+        }
+
         // Finish: glue + width + level
         for (int n = 0; n < numSamples; ++n)
         {
             finish.process(scrL[n], scrR[n], fxFinishGlue, fxFinishWidth);
 
-            // Master pan — F20: equal-power law (cos/sin quarter-circle)
-            // Old linear law (1±pan) drops 6 dB in centre at extremes.
-            if (masterPan != 0.0f)
-            {
-                constexpr float pi4 = 0.7853981633974483f; // pi/4
-                float angle = (masterPan + 1.0f) * pi4; // map [-1,+1] to [0, pi/2]
-                outL[n] *= fastCos(angle);
-                outR[n] *= fastSin(angle);
-                float pL = clamp(1.0f - masterPan, 0.0f, 1.0f);
-                float pR = clamp(1.0f + masterPan, 0.0f, 1.0f);
-                scrL[n] *= pL;
-                scrR[n] *= pR;
-            }
+            // Master pan — OPL-05: apply equal-power pan ONLY to scrL/R (Opal's
+            // own output). The old code also multiplied outL/R[n] which are the
+            // shared slot buffer and contain other engines' audio — a serious
+            // corruption bug. Pan scrL/R only; additive mix follows below.
+            scrL[n] *= panGainL;
+            scrR[n] *= panGainR;
 
             // Master level + finish level
             scrL[n] *= masterLevel * fxFinishLevel;
@@ -2127,7 +2161,9 @@ private:
     }
 
     // Built-in oscillator for grain source material
-    float generateOscSample(int sourceMode, float shape, float shape2, float osc2MixVal, float osc2Det) noexcept
+    // OPL-09/15: srf (float cast of sr) passed in to avoid repeated cast in the per-sample loop
+    float generateOscSample(int sourceMode, float shape, float shape2, float osc2MixVal, float osc2Det,
+                            float srf_) noexcept
     {
         // Use the first active voice's oscillator, or a default frequency
         float freq = 261.63f; // Middle C default
@@ -2145,18 +2181,18 @@ private:
         {
         case 0: // Sine
             srcOsc1.setWaveform(PolyBLEP::Waveform::Sine);
-            srcOsc1.setFrequency(freq, static_cast<float>(sr));
+            srcOsc1.setFrequency(freq, srf_);
             return srcOsc1.processSample() * 0.5f;
 
         case 1: // Saw
             srcOsc1.setWaveform(PolyBLEP::Waveform::Saw);
-            srcOsc1.setFrequency(freq, static_cast<float>(sr));
+            srcOsc1.setFrequency(freq, srf_);
             return srcOsc1.processSample() * 0.5f;
 
         case 2: // Pulse
             srcOsc1.setWaveform(PolyBLEP::Waveform::Pulse);
             srcOsc1.setPulseWidth(0.1f + shape * 0.8f);
-            srcOsc1.setFrequency(freq, static_cast<float>(sr));
+            srcOsc1.setFrequency(freq, srf_);
             return srcOsc1.processSample() * 0.5f;
 
         case 3: // Noise
@@ -2165,14 +2201,14 @@ private:
         case 4: // Two-Osc — F26: apply osc2Shape param (was always Saw regardless)
         {
             srcOsc1.setWaveform(PolyBLEP::Waveform::Saw);
-            srcOsc1.setFrequency(freq, static_cast<float>(sr));
+            srcOsc1.setFrequency(freq, srf_);
             // osc2Shape: 0=Sine, 0.33=Triangle, 0.67=Saw, 1=Pulse (continuous blend via threshold)
             PolyBLEP::Waveform w2 = (shape2 < 0.25f)  ? PolyBLEP::Waveform::Sine
                                   : (shape2 < 0.5f)   ? PolyBLEP::Waveform::Triangle
                                   : (shape2 < 0.75f)  ? PolyBLEP::Waveform::Saw
                                                        : PolyBLEP::Waveform::Pulse;
             srcOsc2.setWaveform(w2);
-            srcOsc2.setFrequency(freq * fastPow2(osc2Det / 12.0f), static_cast<float>(sr));
+            srcOsc2.setFrequency(freq * fastPow2(osc2Det / 12.0f), srf_);
             float s1 = srcOsc1.processSample();
             float s2 = srcOsc2.processSample();
             return (s1 * (1.0f - osc2MixVal) + s2 * osc2MixVal) * 0.5f;
@@ -2225,25 +2261,14 @@ private:
         }
     }
 
+    // OPL-08: avgVelocity and avgNote passed in (pre-computed once per block at the
+    // call site) to avoid rescanning 12 voices kOpalModSlots times per sample.
     void applyModMatrix(float* offsets, float lfo1Val, float lfo2Val, float filterEnvVal, float ampEnvVal,
-                        int activeCount) noexcept
+                        int activeCount, float avgVelocity, float avgNote) noexcept
     {
         if (activeCount == 0)
             return;
 
-        // Compute averaged velocity and note across active voices (used by cases 5 & 6)
-        float avgVelocity = 0.0f;
-        float avgNote = 0.0f;
-        for (const auto& v : voices)
-        {
-            if (!v.active)
-                continue;
-            avgVelocity += v.velocity;
-            avgNote += static_cast<float>(v.noteNumber);
-        }
-        float norm = 1.0f / static_cast<float>(activeCount);
-        avgVelocity *= norm; // 0..1
-        avgNote *= norm;
         // KeyTrack: bipolar -1..+1, centred on middle C (60); range ±1 = ±60 semitones
         float keyTrackValue = (avgNote - 60.0f) / 60.0f;
 
