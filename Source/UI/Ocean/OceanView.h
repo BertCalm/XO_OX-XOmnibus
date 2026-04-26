@@ -511,16 +511,12 @@ public:
         hudBar_.onEnginesClicked = [this]() { engineDrawer_.toggle(); };
         hudBar_.onSettingsClicked = [this]() { settingsDrawer_.toggle(); };
 
+        hudBar_.onUndo = [this]() { if (onUndoRequested) onUndoRequested(); };
+        hudBar_.onRedo = [this]() { if (onRedoRequested) onRedoRequested(); };
+
         // FIX 11: Chain mode toggles crosshair cursor over the ocean viewport
         // and clears any in-progress chain drawing on the substrate.
-        hudBar_.onChainToggled = [this]()
-        {
-            const bool chainOn = hudBar_.isChainModeActive();
-            setMouseCursor(chainOn ? juce::MouseCursor::CrosshairCursor
-                                   : juce::MouseCursor::NormalCursor);
-            chainStartSlot_ = -1;
-            substrate_.setChainInProgress(false);
-        };
+        hudBar_.onChainToggled = [this]() { applyChainModeVisuals(); };
 
         // ── Keyboard focus ────────────────────────────────────────────────────
         setWantsKeyboardFocus(true);
@@ -985,7 +981,7 @@ public:
             //  its onKnotRightClicked callback, so we only deal with buoys and
             //  the empty-ocean fallback here.)
 
-            // 1. Check each visible orbit's bounds.
+            // 1. Check each visible orbit's bounds — populated slots first.
             for (int i = 0; i < 5; ++i)
             {
                 if (!orbits_[i].isVisible() || !orbits_[i].hasEngine())
@@ -1000,7 +996,22 @@ public:
                 }
             }
 
-            // 2. Empty ocean — no buoy or knot hit.
+            // 2. Check empty slot circles — pass the slot index so "Add Engine..."
+            //    can pre-select the correct target slot.
+            for (int i = 0; i < 5; ++i)
+            {
+                if (!orbits_[i].isVisible() || orbits_[i].hasEngine())
+                    continue;
+
+                const auto orbitLocal = e.getEventRelativeTo(&orbits_[i]).position;
+                if (orbits_[i].getLocalBounds().toFloat().contains(orbitLocal))
+                {
+                    showEmptyOceanContextMenu(i);
+                    return;
+                }
+            }
+
+            // 3. Empty ocean — no orbit hit at all.
             showEmptyOceanContextMenu();
             return;
         }
@@ -1266,6 +1277,12 @@ public:
     //==========================================================================
     // Navigation callbacks — fired to XOceanusEditor
     //==========================================================================
+
+    /** Fired when the HUD undo button is clicked. Parent should call UndoManager::undo(). */
+    std::function<void()> onUndoRequested;
+
+    /** Fired when the HUD redo button is clicked. Parent should call UndoManager::redo(). */
+    std::function<void()> onRedoRequested;
 
     /** Fired when an engine slot is selected (zoom-in). -1 means deselected. */
     std::function<void(int slot)> onEngineSelected;
@@ -1641,7 +1658,14 @@ private:
                         // Set as Master — future: promote this slot's engine to primary.
                         break;
                     case 6:
-                        // Add Coupling — enter chain-drawing mode from this slot.
+                        // Add Coupling — enter chain-drawing mode anchored to this slot.
+                        // Enable chain mode (same as pressing the HUD CHAIN button) and
+                        // pre-arm this slot as the chain start so the next click completes
+                        // the coupling route.
+                        if (!hudBar_.isChainModeActive())
+                            toggleChainMode();
+                        chainStartSlot_ = slot;
+                        substrate_.setChainInProgress(true, slot, orbits_[slot].getCenter());
                         if (onChainModeRequested)
                             onChainModeRequested(slot);
                         break;
@@ -1730,8 +1754,33 @@ private:
             });
     }
 
-    /** Show a submarine-styled PopupMenu for a right-click on empty ocean. */
-    void showEmptyOceanContextMenu()
+    // ─────────────────────────────────────────────────────────────────────────
+    // Chain-mode helpers
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /** Apply cursor + substrate state that corresponds to the current
+        hudBar_ chain-mode flag.  Call after flipping the flag. */
+    void applyChainModeVisuals()
+    {
+        const bool chainOn = hudBar_.isChainModeActive();
+        setMouseCursor(chainOn ? juce::MouseCursor::CrosshairCursor
+                               : juce::MouseCursor::NormalCursor);
+        chainStartSlot_ = -1;
+        substrate_.setChainInProgress(false);
+    }
+
+    /** Toggle chain mode exactly as the HUD CHAIN button does. */
+    void toggleChainMode()
+    {
+        hudBar_.setChainModeActive(!hudBar_.isChainModeActive());
+        applyChainModeVisuals();
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+
+    /** Show a submarine-styled PopupMenu for a right-click on an empty slot.
+        @param slot  0–4 if a specific empty orbit was hit; -1 for open ocean. */
+    void showEmptyOceanContextMenu(int slot = -1)
     {
         juce::PopupMenu menu;
         menu.setLookAndFeel(&menuLnF_);
@@ -1742,23 +1791,36 @@ private:
         juce::PopupMenu::Item pasteItem;
         pasteItem.itemID    = 3;
         pasteItem.text      = juce::String::fromUTF8("\xf0\x9f\x93\x8b  Paste Engine");      // 📋
-        pasteItem.isEnabled = false;  // disabled until clipboard has engine data
+        pasteItem.isEnabled = false;  // TODO: enable once a JSON engine-clipboard is implemented
         menu.addItem(pasteItem);
 
         SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
             juce::PopupMenu::Options{},
-            [this](int result)
+            [this, slot](int result)
             {
                 switch (result)
                 {
                     case 1:
+                        // If the user right-clicked a specific empty orbit, pre-select
+                        // that slot so the drawer's engine-selected callback lands there.
+                        if (slot >= 0 && slot < 5)
+                        {
+                            selectedSlot_ = slot;
+                            for (int i = 0; i < 5; ++i)
+                                orbits_[i].setSelected(i == slot);
+                            if (onEngineSelected)
+                                onEngineSelected(slot);
+                        }
                         engineDrawer_.open();
                         break;
                     case 2:
-                        // Toggle chain-drawing mode — future.
+                        // Mirror the HUD CHAIN button — toggle chain-drawing mode.
+                        toggleChainMode();
                         break;
                     case 3:
-                        // Paste engine from clipboard — future.
+                        // TODO: Paste engine from clipboard.
+                        // Requires a JSON engine-clipboard mechanism (copyEngine /
+                        // pasteEngine) — not yet implemented fleet-wide.
                         break;
                     default:
                         break;
