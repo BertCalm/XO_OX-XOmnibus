@@ -195,7 +195,6 @@ private:
 
         // Padding / gap constants matching prototype spec.
         const float padX = 12.0f;
-        const float gap  =  6.0f;
         const float gap5 =  5.0f;
 
         // ---- Left side: transport strip ----
