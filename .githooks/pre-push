@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Pre-push hook: incremental build sanity check.
+# Bypass once with `git push --no-verify` if you absolutely must.
+#
+# Why this exists: PRs opened without a clean local build accumulate
+# trunk-breaking compile errors that block CI for everyone. Catching
+# them here before push is faster than catching in CI 8 minutes later.
+
+set -e
+
+if [ ! -d build ]; then
+  echo "[pre-push] No build/ directory found."
+  echo "[pre-push] Run 'cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug' first to enable hook checks."
+  echo "[pre-push] Skipping check (initial setup); push will proceed."
+  exit 0
+fi
+
+echo "[pre-push] Running incremental build (Ninja)..."
+START=$(date +%s)
+if cmake --build build 2>&1 | tail -50; then
+  ELAPSED=$(($(date +%s) - START))
+  echo "[pre-push] ✓ Build clean (${ELAPSED}s). Proceeding with push."
+  exit 0
+else
+  ELAPSED=$(($(date +%s) - START))
+  echo ""
+  echo "[pre-push] ✗ Build FAILED in ${ELAPSED}s — push refused."
+  echo "[pre-push] Fix the errors above before pushing."
+  echo "[pre-push] Bypass once with: git push --no-verify"
+  exit 1
+fi
