@@ -67,6 +67,13 @@ namespace xoceanus
 static constexpr int   kOutcropMaxVoices = 8;
 static constexpr float kOutcropTwoPi     = 6.28318530717958647692f;
 static constexpr float kOutcropInvTwoPi  = 1.0f / kOutcropTwoPi;
+static constexpr float kOutcropPiOver4   = 0.7853981633974483f; // π/4 rad
+static constexpr float kOutcropDenormalThreshold = 1e-20f;
+
+static inline void outcropFlushDenormal(float& x) noexcept
+{
+    if (std::fabs(x) < kOutcropDenormalThreshold) x = 0.0f;
+}
 
 //==============================================================================
 //  Voice — one note, one orbit
@@ -1073,7 +1080,7 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
     // Shared coupling accumulator values frozen for the block.
     const float couplingFilterAdd = couplingFilterMod * mCouplingGain * 4000.0f; // up to +4 kHz
     // P1-2 (#1126): clamp to ±π/4 rad to prevent terrain phase aliasing under extreme coupling
-    const float couplingPhaseAdd  = std::clamp(couplingFmMod * mCouplingGain, -0.7854f, 0.7854f);
+    const float couplingPhaseAdd  = std::clamp(couplingFmMod * mCouplingGain, -kOutcropPiOver4, kOutcropPiOver4);
     const float rateMod           = 1.0f + couplingRateMod * mCouplingGain;
 
     // ---- Per-voice render ----
@@ -1184,11 +1191,10 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
 
     // Decay coupling accumulators so stale mod doesn't persist if sender stops.
     // P2-8 (#1126): denormal flush on coupling accumulator decay
-    auto flushDenormal = [](float& x) noexcept { if (std::fabs(x) < 1e-20f) x = 0.0f; };
-    couplingFilterMod *= 0.95f; flushDenormal(couplingFilterMod);
-    couplingFmMod     *= 0.95f; flushDenormal(couplingFmMod);
-    couplingRateMod   *= 0.95f; flushDenormal(couplingRateMod);
-    couplingBlendMod  *= 0.95f; flushDenormal(couplingBlendMod);
+    couplingFilterMod *= 0.95f; outcropFlushDenormal(couplingFilterMod);
+    couplingFmMod     *= 0.95f; outcropFlushDenormal(couplingFmMod);
+    couplingRateMod   *= 0.95f; outcropFlushDenormal(couplingRateMod);
+    couplingBlendMod  *= 0.95f; outcropFlushDenormal(couplingBlendMod);
 } // renderBlock
 
 } // namespace xoceanus

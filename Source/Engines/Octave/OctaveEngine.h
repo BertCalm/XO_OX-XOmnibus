@@ -287,8 +287,8 @@ struct OctaveVoice
     // Wind noise (per-voice for decorrelation)
     OctaveWindNoise wind;
 
-    // Room resonance (per-voice for stereo spreading)
-    OctaveRoomResonance room;
+    // D-C (#1124): per-voice room removed; post-mix room handles all rendering.
+    // OctaveRoomResonance room; — deleted
 
     // D002: LFOs — LFO1 for brightness, LFO2 for pitch/vibrato
     StandardLFO lfo1, lfo2;
@@ -329,7 +329,7 @@ struct OctaveVoice
         svf.reset();
         chiff.reset();
         wind.reset();
-        room.reset();
+        // D-C (#1124): room.reset() removed — per-voice room field deleted
         // F28-fix: restore stored phase offsets so ensemble stagger survives voice steals
         lfo1.reset(lfo1PhaseOffset);
         lfo2.reset(lfo2PhaseOffset);
@@ -371,7 +371,7 @@ public:
             voices[i].reset();
             voices[i].ampEnv.prepare(srf);
             voices[i].filterEnv.prepare(srf);
-            voices[i].room.prepare(srf);
+            // D-C (#1124): voices[i].room.prepare() removed — per-voice room deleted
             // F13-fix: propagate sample rate into wind noise filter
             voices[i].wind.prepare(srf);
             voices[i].lfo1.setShape(StandardLFO::Sine);
@@ -779,7 +779,8 @@ public:
 
                     voice.musettePhaseIncs[0] = freq / srf;
                     voice.musettePhaseIncs[1] = (freq + detuneHz) / srf;
-                    voice.musettePhaseIncs[2] = (freq - detuneHz) / srf;
+                    // D-D (#1124): clamp to prevent negative phase inc at very low pitches
+                    voice.musettePhaseIncs[2] = std::max(0.0f, freq - detuneHz) / srf;
 
                     float reedSum = 0.0f;
                     for (int r = 0; r < OctaveVoice::kMusetteOscs; ++r)
@@ -833,18 +834,24 @@ public:
                     sample = voice.farfisaOsc.processSample();
 
                     // Registration: tab/stop simulation via harmonic content
-                    // Low registration = more fundamental, high = more upper harmonics
                     // Simulate by mixing in an octave-up square
                     float octaveUp = 0.0f;
                     // P7-fix: Nyquist guard — suppress octave-up alias above sr/4 (where
                     // the fundamental already places its 2nd harmonic above Nyquist).
                     if (regNow > 0.3f && farfisaFreq * 2.0f < srf * 0.49f)
                     {
-                        // Use phase-offset for octave-up without extra oscillator
-                        voice.partialPhases[0] += (farfisaFreq * 2.0f) / srf;
+                        // D-A (#1124): apply PolyBLEP bandlimiting to the octave-up square.
+                        // Uses partialPhases[0] as a dedicated octave phase accumulator
+                        // (additive partial array is unused in Farfisa case 3).
+                        const float octaveDt = (farfisaFreq * 2.0f) / srf;
+                        voice.partialPhases[0] += octaveDt;
                         if (voice.partialPhases[0] >= 1.0f)
                             voice.partialPhases[0] -= 1.0f;
-                        octaveUp = (voice.partialPhases[0] < 0.5f ? 1.0f : -1.0f);
+                        const float octPhase = voice.partialPhases[0];
+                        float sq = (octPhase < 0.5f ? 1.0f : -1.0f);
+                        sq += PolyBLEP::polyBLEP(octPhase, octaveDt);
+                        sq -= PolyBLEP::polyBLEP(PolyBLEP::wrapPhase(octPhase + 0.5f), octaveDt);
+                        octaveUp = sq;
                     }
                     sample = sample * (1.0f - regNow * 0.3f) + octaveUp * regNow * 0.3f;
 
@@ -1026,9 +1033,6 @@ public:
         float chiffAmt = paramChiff ? paramChiff->load() : 0.3f;
         float chiffWeights[4] = {0.3f, 1.0f, 0.0f, 0.0f}; // Baroque gets full chiff
         v.chiff.trigger(vel, chiffAmt * chiffWeights[std::clamp(organModel, 0, 3)], freq, srf);
-
-        // F04-fix: room.prepare() already called in engine prepare(); not needed per-noteOn
-        // (coefficients are fixed; per-voice room objects are dead weight — postMixRoom handles rendering)
 
         // Reset oscillator state
         v.partialPhases.fill(0.0f);
