@@ -5,8 +5,8 @@
     "updated": "2026-04-25",
     "totalEngines": 93,
     "statusCounts": {
-      "matched": 56,
-      "adaptable": 32,
+      "matched": 55,
+      "adaptable": 33,
       "needs_custom": 5,
       "hero_3d": 0
     },
@@ -880,13 +880,13 @@
     {
       "id": "OKEANOS",
       "creature": "Horseshoe Crab",
-      "sprite": "saltwater/Horseshoe Crab.png",
+      "sprite": null,
       "spriteOutline": null,
       "fallback": "beowulf-32/spr_fish_47_x.png",
       "zone": "Twilight",
       "accentColor": "#C49B3F",
-      "status": "matched",
-      "notes": "Rhodes Spice Route FUSION engine — horseshoe crab: ancient living fossil traversing cultural trade routes; cardamom gold; Horseshoe Crab from saltwater pack"
+      "status": "adaptable",
+      "notes": "Rhodes Spice Route FUSION engine — horseshoe crab: ancient living fossil traversing cultural trade routes; cardamom gold; beowulf-47 tinted cardamom gold until custom Horseshoe Crab sprite lands"
     },
     {
       "id": "OLLOTRON",
