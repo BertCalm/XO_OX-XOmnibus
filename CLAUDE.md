@@ -223,6 +223,8 @@ See `Docs/specs/xoceanus_name_migration_reference.md` for the full mapping and g
 
 ## Build
 
+> **First-time setup:** run `./Tools/enable-git-hooks.sh` once to enable the pre-push build sanity check.
+
 ```bash
 # macOS (Release)
 cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release

@@ -47,11 +47,36 @@ enum class PaletteType : int
 
 enum class VoicingMode : int
 {
+    // ── Tertian family (original 5 — indices MUST remain 0-4 for preset compat) ──
     RootSpread = 0, // Root anchored low, others spread upward
     Drop2,          // 2nd-from-top dropped down an octave (jazz, neo-soul)
-    Quartal,        // Stacked perfect 4ths (modern house, techno)
+    Quartal,        // Stacked perfect 4ths (modern house, techno) [legacy 4-note]
     UpperStructure, // Root low + upper voices an octave up
     Unison,         // All slots play the same note
+
+    // ── Quartal family ──
+    Quartal3,       // root, +P4, +P4+P4               (0, 5, 10)       — 3-note stack, slot 4 doubles P4
+    Quartal4,       // root, +P4, +P4+P4, +P4+P4+P4   (0, 5, 10, 15)   — 4-note stack
+
+    // ── Quintal family ──
+    Quintal3,       // root, +P5, +P5+P5               (0, 7, 14)       — 3-note stack, slot 4 doubles P5
+    Quintal4,       // root, +P5, +P5+P5, +P5+P5+P5   (0, 7, 14, 21)   — 4-note stack
+
+    // ── Modal-world family ──
+    Hijaz,           // Hijaz scale tones: root, b2, M3, P5      (0, 1, 4, 7)
+    Bhairavi,        // Bhairavi scale tones: root, m3, P5, m7   (0, 3, 7, 10)
+    Yo,              // Japanese Yo pentatonic: root, P4, P5, m7 (0, 5, 7, 10)
+    In,              // Japanese In pentatonic: root, b2, P4, m6 (0, 1, 5, 8)
+    PhrygianDominant, // Phrygian Dominant tones: root, M3, P5, m7 (0, 4, 7, 10)
+
+    // ── Drone family ──
+    DroneP5,   // root + P5   (0, 7)  — slots 0/2=root, slots 1/3=P5
+    DroneP4,   // root + P4   (0, 5)  — slots 0/2=root, slots 1/3=P4
+    DroneM3,   // root + M3   (0, 4)  — slots 0/2=root, slots 1/3=M3
+    DroneMin3, // root + m3   (0, 3)  — slots 0/2=root, slots 1/3=m3
+    DroneM2,   // root + M2   (0, 2)  — slots 0/2=root, slots 1/3=M2
+    DroneMin2, // root + m2   (0, 1)  — slots 0/2=root, slots 1/3=m2
+
     NumModes
 };
 
@@ -289,6 +314,114 @@ private:
         case VoicingMode::Unison:
         {
             notes[0] = notes[1] = notes[2] = notes[3] = root;
+            break;
+        }
+
+        // ── Quartal family ─────────────────────────────────────────────────────
+        // Interval tables are static constexpr — no heap allocation on audio thread.
+
+        case VoicingMode::Quartal3:
+        {
+            // 3 unique tones: root, root+P4, root+2xP4. Slot 3 doubles slot 1.
+            static constexpr int kQ3[4] = { 0, 5, 10, 5 };
+            for (int i = 0; i < 4; ++i) notes[i] = root + kQ3[i];
+            break;
+        }
+        case VoicingMode::Quartal4:
+        {
+            static constexpr int kQ4[4] = { 0, 5, 10, 15 };
+            for (int i = 0; i < 4; ++i) notes[i] = root + kQ4[i];
+            break;
+        }
+
+        // ── Quintal family ─────────────────────────────────────────────────────
+
+        case VoicingMode::Quintal3:
+        {
+            // 3 unique tones: root, root+P5, root+2xP5. Slot 3 doubles slot 1.
+            static constexpr int kU3[4] = { 0, 7, 14, 7 };
+            for (int i = 0; i < 4; ++i) notes[i] = root + kU3[i];
+            break;
+        }
+        case VoicingMode::Quintal4:
+        {
+            static constexpr int kU4[4] = { 0, 7, 14, 21 };
+            for (int i = 0; i < 4; ++i) notes[i] = root + kU4[i];
+            break;
+        }
+
+        // ── Modal-world family ─────────────────────────────────────────────────
+        // All 4-note sets — directly replaces palette intervals with modal tones.
+
+        case VoicingMode::Hijaz:
+        {
+            static constexpr int kHijaz[4] = { 0, 1, 4, 7 };
+            for (int i = 0; i < 4; ++i) notes[i] = root + kHijaz[i];
+            break;
+        }
+        case VoicingMode::Bhairavi:
+        {
+            static constexpr int kBhairavi[4] = { 0, 3, 7, 10 };
+            for (int i = 0; i < 4; ++i) notes[i] = root + kBhairavi[i];
+            break;
+        }
+        case VoicingMode::Yo:
+        {
+            static constexpr int kYo[4] = { 0, 5, 7, 10 };
+            for (int i = 0; i < 4; ++i) notes[i] = root + kYo[i];
+            break;
+        }
+        case VoicingMode::In:
+        {
+            static constexpr int kIn[4] = { 0, 1, 5, 8 };
+            for (int i = 0; i < 4; ++i) notes[i] = root + kIn[i];
+            break;
+        }
+        case VoicingMode::PhrygianDominant:
+        {
+            static constexpr int kPhryDom[4] = { 0, 4, 7, 10 };
+            for (int i = 0; i < 4; ++i) notes[i] = root + kPhryDom[i];
+            break;
+        }
+
+        // ── Drone family ───────────────────────────────────────────────────────
+        // 2-note drones: slots 0+2 = root, slots 1+3 = interval.
+        // This spreads the pair across the 4 engine slots naturally.
+
+        case VoicingMode::DroneP5:
+        {
+            notes[0] = root;     notes[1] = root + 7;
+            notes[2] = root;     notes[3] = root + 7;
+            break;
+        }
+        case VoicingMode::DroneP4:
+        {
+            notes[0] = root;     notes[1] = root + 5;
+            notes[2] = root;     notes[3] = root + 5;
+            break;
+        }
+        case VoicingMode::DroneM3:
+        {
+            notes[0] = root;     notes[1] = root + 4;
+            notes[2] = root;     notes[3] = root + 4;
+            break;
+        }
+        case VoicingMode::DroneMin3:
+        {
+            notes[0] = root;     notes[1] = root + 3;
+            notes[2] = root;     notes[3] = root + 3;
+            break;
+        }
+        case VoicingMode::DroneM2:
+        {
+            notes[0] = root;     notes[1] = root + 2;
+            notes[2] = root;     notes[3] = root + 2;
+            break;
+        }
+        case VoicingMode::DroneMin2:
+        {
+            notes[0] = root;     notes[1] = root + 1;
+            notes[2] = root;     notes[3] = root + 1;
             break;
         }
 
@@ -568,9 +701,21 @@ public:
 
     static const char* voicingName(VoicingMode v)
     {
-        static const char* names[] = {"ROOT-SPREAD", "DROP-2", "QUARTAL", "UPPER STRUCT", "UNISON"};
+        static const char* names[] = {
+            // Tertian (0-4)
+            "ROOT-SPREAD", "DROP-2", "QUARTAL", "UPPER STRUCT", "UNISON",
+            // Quartal family (5-6)
+            "QUARTAL-3", "QUARTAL-4",
+            // Quintal family (7-8)
+            "QUINTAL-3", "QUINTAL-4",
+            // Modal-world family (9-13)
+            "HIJAZ", "BHAIRAVI", "YO", "IN", "PHRYG-DOM",
+            // Drone family (14-19)
+            "DRONE-P5", "DRONE-P4", "DRONE-M3", "DRONE-m3", "DRONE-M2", "DRONE-m2"
+        };
+        static constexpr int kCount = static_cast<int>(VoicingMode::NumModes);
         int i = static_cast<int>(v);
-        return (i >= 0 && i < 5) ? names[i] : "?";
+        return (i >= 0 && i < kCount) ? names[i] : "?";
     }
 
     static const char* patternName(RhythmPattern p)
