@@ -11,6 +11,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../AccentColors.h" // D10 coupling/chain accent families
 
 namespace xoceanus
 {
@@ -48,13 +49,13 @@ public:
         };
         addAndMakeVisible(typeSelector_);
 
-        // Depth slider
+        // Depth slider — copper thumb (D10: coupling = warm copper/amber family)
         depthSlider_.setRange(0.0, 1.0, 0.01);
         depthSlider_.setValue(0.5);
         depthSlider_.setSliderStyle(juce::Slider::LinearHorizontal);
         depthSlider_.setTextBoxStyle(juce::Slider::TextBoxRight, false, 40, 20);
-        depthSlider_.setColour(juce::Slider::thumbColourId, juce::Colour(60, 180, 170));
-        depthSlider_.setColour(juce::Slider::trackColourId, juce::Colour(200, 204, 216).withAlpha(0.1f));
+        depthSlider_.setColour(juce::Slider::thumbColourId, XOceanus::AccentColors::couplingAccent);
+        depthSlider_.setColour(juce::Slider::trackColourId, XOceanus::AccentColors::couplingDim.withAlpha(0.4f));
         addAndMakeVisible(depthSlider_);
 
         // Direction buttons
@@ -76,10 +77,10 @@ public:
         activeDir_ = 0;
         updateDirectionButtons();
 
-        // Done button
+        // Done button — copper (D10: coupling = warm copper/amber family)
         doneBtn_.setButtonText("Done");
-        doneBtn_.setColour(juce::TextButton::buttonColourId, juce::Colour(60, 180, 170).withAlpha(0.1f));
-        doneBtn_.setColour(juce::TextButton::textColourOffId, juce::Colour(60, 180, 170).withAlpha(0.9f));
+        doneBtn_.setColour(juce::TextButton::buttonColourId, XOceanus::AccentColors::couplingPrimary.withAlpha(0.15f));
+        doneBtn_.setColour(juce::TextButton::textColourOffId, XOceanus::AccentColors::couplingBright);
         doneBtn_.onClick = [this]() { hide(); };
         addAndMakeVisible(doneBtn_);
 
@@ -138,12 +139,13 @@ public:
             .drawForRectangle(g, panel.toNearestInt());
         g.setColour(juce::Colour(30, 33, 40).withAlpha(0.97f));
         g.fillRoundedRectangle(panel, 14.0f);
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.18f));
+        // D10: coupling popup border uses copper/amber (coupling = DSP audio layer)
+        g.setColour(XOceanus::AccentColors::couplingAccent.withAlpha(0.28f));
         g.drawRoundedRectangle(panel, 14.0f, 1.0f);
 
-        // Direction bar background
+        // Direction bar background — copper tint
         auto dirBar = panel.removeFromTop(48.0f);
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
+        g.setColour(XOceanus::AccentColors::couplingPrimary.withAlpha(0.07f));
         g.fillRoundedRectangle(dirBar, 14.0f);
 
         // Source name (left side of direction bar)
@@ -302,15 +304,16 @@ private:
 
     void updateDirectionButtons()
     {
+        // D10: direction arrows use copper/amber (coupling = DSP audio layer, not chain sequencer)
         for (int i = 0; i < 3; ++i)
         {
             bool active = (i == activeDir_);
             dirButtons_[i]->setColour(juce::TextButton::buttonColourId,
-                active ? juce::Colour(60, 180, 170).withAlpha(0.15f)
+                active ? XOceanus::AccentColors::couplingPrimary.withAlpha(0.18f)
                        : juce::Colour(200, 204, 216).withAlpha(0.04f));
             dirButtons_[i]->setColour(juce::TextButton::textColourOffId,
-                active ? juce::Colour(60, 180, 170).withAlpha(0.9f)
-                       : juce::Colour(200, 204, 216).withAlpha(0.5f));
+                active ? XOceanus::AccentColors::couplingBright   // AAA contrast for active label
+                       : juce::Colour(200, 204, 216).withAlpha(0.55f));
         }
     }
 
