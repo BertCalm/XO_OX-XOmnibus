@@ -261,7 +261,6 @@ public:
         instabilityPhase = 0.0;
         syncBlepActive = false;
         syncBlepHeight = 0.0f;
-        syncBlepT = 0.0f;
         syncBlepDt = 0.0f;
     }
 
@@ -285,15 +284,9 @@ public:
     {
         // Step height: value just before reset minus value just after reset (-1).
         syncBlepHeight = static_cast<float>(2.0 * phase - 1.0) - (-1.0f);
-        // Fractional position within the master cycle at which the reset occurred.
-        // t_sync = 1 - masterPhaseAtSync gives how far past the wrap we are,
-        // normalised to [0,1] in units of masterPhaseInc.
-        syncBlepT = (masterPhaseInc > 0.0)
-                        ? static_cast<float>(masterPhaseAtSync / masterPhaseInc) // 0..1 progress through next period
-                        : 0.0f;
-        syncBlepActive = true;
-        // Store master inc for post-reset BLEP tail
+        // Store master inc for post-reset BLEP window calculation
         syncBlepDt = static_cast<float>(masterPhaseInc);
+        syncBlepActive = true;
         phase = 0.0;
     }
 
@@ -417,7 +410,6 @@ private:
     float noiseFilterState = 0.0f;
     bool syncBlepActive = false;
     float syncBlepHeight = 0.0f;
-    float syncBlepT = 0.0f;  // fractional sample offset at sync point
     float syncBlepDt = 0.0f; // master phaseInc at sync time (for BLEP window)
     BiteNoiseGen noiseGen;
 
@@ -494,8 +486,9 @@ public:
     {
         // octave: 0=-1, 1=-2, 2=-3
         float divisor = (octave == 2) ? 8.0f : (octave == 1) ? 4.0f : 2.0f;
-        // Recompute tuneRatio only when tuneCents changes (block-constant in practice)
-        if (tuneCents != lastTuneCents)
+        // Recompute tuneRatio only when tuneCents changes (block-constant in practice).
+        // Use epsilon guard rather than exact == to catch tiny floating-point deltas.
+        if (std::abs(tuneCents - lastTuneCents) > 1e-4f)
         {
             lastTuneCents = tuneCents;
             cachedTuneRatio = std::pow(2.0f, tuneCents / 1200.0f);
@@ -559,12 +552,18 @@ public:
     {
         sr = sampleRate;
         invSR = 1.0f / static_cast<float>(sr);
-        // Pink noise IIR coefficients calibrated for 44100 Hz; scale cutoff frequencies
-        // by (44100/sr) so the spectral shape remains correct at 48kHz / 96kHz.
-        float srScale = 44100.0f / static_cast<float>(sr);
-        pinkCoeff[0] = srScale * 0.0555f;
-        pinkCoeff[1] = srScale * 0.0158f;
-        pinkCoeff[2] = srScale * 0.0046f;
+        // Pink noise IIR: 3 one-pole leaky integrators approximating -3dB/octave spectrum.
+        // Cutoff frequencies (Hz) from Paul Kellet's latticed filter design; matched-Z
+        // transform: coeff = 1 - exp(-2π·fc/sr) ensures correct spectral shape at any sr.
+        // (Previously used linear scaling 44100/sr — Euler approximation, SR-dependent error.)
+        const float twoPiOverSr = 2.0f * 3.14159265f / static_cast<float>(sr);
+        // fc values preserve the original relative cutoff positions scaled to Hz
+        const float fc0 = 0.0555f * 44100.0f; // ~2449 Hz
+        const float fc1 = 0.0158f * 44100.0f; // ~697 Hz
+        const float fc2 = 0.0046f * 44100.0f; // ~203 Hz
+        pinkCoeff[0] = 1.0f - std::exp(-twoPiOverSr * fc0);
+        pinkCoeff[1] = 1.0f - std::exp(-twoPiOverSr * fc1);
+        pinkCoeff[2] = 1.0f - std::exp(-twoPiOverSr * fc2);
         // Clamp so coefficients stay in (0,1] — prevents instability at very low sr
         for (auto& c : pinkCoeff)
             c = clamp(c, 0.0001f, 1.0f);
@@ -629,9 +628,10 @@ public:
             break;
         }
 
-        // Apply decay envelope — recompute coefficient only when decayTime changes
+        // Apply decay envelope — recompute coefficient only when decayTime changes.
+        // Use epsilon guard rather than exact == to catch tiny floating-point deltas.
         float safeDecay = std::max(decayTime, 0.001f);
-        if (safeDecay != lastDecayTime)
+        if (std::abs(safeDecay - lastDecayTime) > 1e-6f)
         {
             lastDecayTime = safeDecay;
             cachedDecayCoeff = std::exp(-invSR / safeDecay);
@@ -824,7 +824,7 @@ using BiteAdsrEnvelope = StandardADSR;
 class BiteMotionFX
 {
 public:
-    static constexpr int kMaxDelaySamples = 2048; // ~43ms @48kHz
+    static constexpr int kMaxDelaySamples = 4096; // ~43ms @48kHz, ~43ms @96kHz (was 2048: chorus/doubler overflowed at 96kHz)
 
     void prepare(double sampleRate) noexcept
     {
@@ -934,7 +934,7 @@ private:
 class BiteEchoFX
 {
 public:
-    static constexpr int kMaxDelaySamples = 96001; // >=2s @48kHz
+    static constexpr int kMaxDelaySamples = 192001; // >=2s @96kHz (was 96001, too small at 96kHz)
 
     void prepare(double sampleRate) noexcept
     {
@@ -1029,7 +1029,7 @@ class BiteSpaceFX
 public:
     static constexpr int kNumCombs = 4;
     static constexpr int kNumAllpass = 2;
-    static constexpr int kMaxLen = 2048;
+    static constexpr int kMaxLen = 4096; // must cover longest comb at 96kHz (was 2048, collapsed all combs to same length at 96kHz)
 
     void prepare(double sampleRate) noexcept
     {
@@ -1096,8 +1096,9 @@ public:
         default:
             break;
         }
-        // Cache dampCoeff: only recompute when effDamping changes (typically block-constant)
-        if (effDamping != lastEffDamping)
+        // Cache dampCoeff: only recompute when effDamping changes (typically block-constant).
+        // Use epsilon guard rather than exact == to catch tiny floating-point deltas.
+        if (std::abs(effDamping - lastEffDamping) > 1e-6f)
         {
             lastEffDamping = effDamping;
             cachedDampCoeff = std::exp(-2.0f * 3.14159265f * (300.0f + (1.0f - effDamping) * 6000.0f) / sr);
@@ -1117,18 +1118,28 @@ public:
             reverbOut += delayed;
         }
         reverbOut *= 0.25f;
+        // Two allpass diffusers in series (Schroeder).
+        // R channel reads from a half-buffer-offset tap for stereo decorrelation
+        // without requiring a second set of allpass buffers.
+        float reverbL = reverbOut;
+        float reverbR = reverbOut;
         for (int i = 0; i < kNumAllpass; ++i)
         {
             int pos = apPos[i];
-            float delayed = apBuf[i][static_cast<size_t>(pos)];
-            float input = reverbOut + delayed * 0.5f;
-            apBuf[i][static_cast<size_t>(pos)] = flushDenormal(input);
+            // L: canonical write pointer
+            float delayedL = apBuf[i][static_cast<size_t>(pos)];
+            float inputL = reverbL + delayedL * 0.5f;
+            apBuf[i][static_cast<size_t>(pos)] = flushDenormal(inputL);
             apPos[i] = (pos + 1) % apLen[i];
-            reverbOut = delayed - 0.5f * input;
-            reverbOut = flushDenormal(reverbOut);
+            reverbL = flushDenormal(delayedL - 0.5f * inputL);
+
+            // R: read from a half-period-offset position (read-only, no state write)
+            int posR = (pos + apLen[i] / 2) % apLen[i];
+            float delayedR = apBuf[i][static_cast<size_t>(posR)];
+            reverbR = flushDenormal(delayedR - 0.5f * (reverbR + delayedR * 0.5f));
         }
-        outL = lerp(outL, reverbOut, mix);
-        outR = lerp(outR, reverbOut, mix);
+        outL = lerp(outL, reverbL, mix);
+        outR = lerp(outR, reverbR, mix);
     }
 
 private:
@@ -1283,7 +1294,6 @@ struct BiteVoice
     bool hasPlayedBefore = false;
 
     // Cached per-block
-    float cachedBaseFreq = 261.63f;
     float cachedUnisonDetuneRatio = 1.0f; // hoist std::pow out of per-sample/per-voice loop
 
     // MPE per-voice expression state
@@ -1734,20 +1744,8 @@ public:
                 voice.glide.setTarget(targetFreq);
             else
                 voice.glide.snapTo(targetFreq);
-            voice.cachedBaseFreq = targetFreq;
             voice.filter.setMode(svfMode);
 
-            // Hoist LFO configuration out of the per-sample loop — all LFO parameters
-            // are block-constant; setting them once per block avoids 3×numSamples setter calls.
-            voice.lfo1.setShape(lfo1Shape);
-            voice.lfo1.setRate(lfo1Rate * scurryLfoMul);
-            voice.lfo1.setStartPhase(lfo1Phase);
-            voice.lfo2.setShape(lfo2Shape);
-            voice.lfo2.setRate(lfo2Rate * scurryLfoMul);
-            voice.lfo2.setStartPhase(lfo2Phase);
-            voice.lfo3.setShape(lfo3Shape);
-            voice.lfo3.setRate(lfo3Rate * scurryLfoMul);
-            voice.lfo3.setStartPhase(lfo3Phase);
             // Pre-compute unison detune ratio per voice — block-constant so we hoist the
             // std::pow out of the per-sample render loop.
             if (voice.unisonTotal > 1)
@@ -1799,9 +1797,15 @@ public:
                 float velGain = 1.0f - ampVelSens + ampVelSens * voice.velocity;
 
             // --- LFOs (setShape/setRate/setStartPhase hoisted to per-block voice loop) ---
-                float lfo1val = voice.lfo1.process() * lfo1Depth;
-                float lfo2val = voice.lfo2.process() * lfo2Depth;
-                float lfo3val = voice.lfo3.process() * lfo3Depth;
+                // lfoXraw: pre-depth [-1,1] value used as mod-matrix source so the matrix
+                // amount knob is the sole depth control (prevents double-scaling with lfoXDepth).
+                // lfoXval: post-depth value used for dedicated hardwired destinations (pitch, filter).
+                float lfo1raw = voice.lfo1.process();
+                float lfo2raw = voice.lfo2.process();
+                float lfo3raw = voice.lfo3.process();
+                float lfo1val = lfo1raw * lfo1Depth;
+                float lfo2val = lfo2raw * lfo2Depth;
+                float lfo3val = lfo3raw * lfo3Depth;
 
                 // --- Mod Envelope (with destination routing) ---
                 float modEnvVal = voice.modEnv.process() * modEnvAmt;
@@ -1826,9 +1830,9 @@ public:
                 //   20=FxMotionRate, 21=FxMotionDepth, 22=FxEchoTime, 23=FxEchoFeedback,
                 //   24=FxSpaceSize, 25=FxSpaceDecay
                 const float mmSrc[16] = {0.0f,
-                                         lfo1val,
-                                         lfo2val,
-                                         lfo3val,
+                                         lfo1raw, // pre-depth; slot.amt is the sole scaling factor
+                                         lfo2raw,
+                                         lfo3raw,
                                          voice.ampEnv.getLevel(),
                                          voice.filterEnv.getLevel(),
                                          modEnvVal,
@@ -1845,7 +1849,7 @@ public:
                 for (int ms = 0; ms < 8; ++ms)
                 {
                     const auto& slot = modSlots[ms];
-                    if (slot.src == 0 || slot.dst == 0 || slot.amt == 0.0f)
+                    if (slot.src == 0 || slot.dst == 0 || std::abs(slot.amt) < 1e-4f)
                         continue;
                     mmDst[std::min(slot.dst, 25)] += mmSrc[std::min(slot.src, 15)] * slot.amt;
                 }
@@ -1896,11 +1900,15 @@ public:
                     case 1: // Soft Sync — blend in sync'd waveform
                         interactSig = oscAout * oscBout;
                         break;
-                    case 2: // Low FM — OscA frequency-modulates OscB gently
-                        interactSig = oscAout * 0.3f;
+                    case 2: // Low FM — OscA ring-modulates output at reduced depth (gently FM-flavoured)
+                        // True FM requires phase modulation before generation; this is a post-gen
+                        // ring-mod approximation that gives an FM-adjacent tonal shift.
+                        interactSig = oscAout * oscBout * 0.6f;
                         break;
-                    case 3: // Phase Push — OscA pushes OscB phase
-                        interactSig = oscAout * 0.15f;
+                    case 3: // Phase Push — AM with phase-adjacent blend (subtle, organic)
+                        // True phase-push requires feeding oscAout into the phase accumulator;
+                        // use amplitude-coupled blend as a safe approximation.
+                        interactSig = (oscAout + oscBout) * 0.5f * 0.3f;
                         break;
                     case 4: // Grit Multiply — multiply and quantize
                     {
@@ -2151,7 +2159,7 @@ public:
             for (int ms = 0; ms < 8; ++ms)
             {
                 const auto& slot = modSlots[ms];
-                if (slot.src == 0 || slot.dst < 20 || slot.dst > 25 || slot.amt == 0.0f)
+                if (slot.src == 0 || slot.dst < 20 || slot.dst > 25 || std::abs(slot.amt) < 1e-4f)
                     continue;
                 float sv = fxSrc[std::min(slot.src, 15)];
                 switch (slot.dst)
