@@ -22,7 +22,7 @@
 // The static registrations below wire OddfeliX into the EngineRegistry so that
 // XOriginate::buildOfflineContext() can create real engine instances without a
 // live AudioProcessor or shared APVTS.
-#include "Engines/Snap/SnapEngine.h"
+#include "Engines/OddfeliX/OddfeliXEngine.h"
 
 #include <juce_core/juce_core.h>
 #include <juce_audio_formats/juce_audio_formats.h>
