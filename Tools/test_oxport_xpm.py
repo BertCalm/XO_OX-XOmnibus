@@ -1061,6 +1061,99 @@ def test_ghost_volume_boost_is_unity_for_inactive_ghost_layer():
 
 
 # ---------------------------------------------------------------------------
+# C2: Round-robin — rr_index=0 must receive CycleType tag (issue #fix-rr)
+# ---------------------------------------------------------------------------
+
+def test_trench_rr_index_zero_emits_cycle_type():
+    """TRENCH tier: ALL RR variants — including rr_index=0 — must carry
+    <CycleType>RoundRobin</CycleType> and <CycleGroup>.
+
+    Regression for the dual-site bug where ``emit_rr = use_rr and ri > 0``
+    (caller) and ``if rr_index > 0:`` (_active_drum_layer_xml) both suppressed
+    the CycleType tag for the base variant, so the MPC never entered cycle mode
+    and the base sample played statically on every hit.
+    """
+    import xml.etree.ElementTree as ET
+    from xpn_xpm_batch_builder import build_drum_program_layered
+
+    # One pad, one velocity layer, three RR variants (indices 0, 1, 2)
+    pads = [
+        {
+            "voice": "hihat_closed",
+            "pad": 1,
+            "choke": 0,
+            "samples": [
+                {"file": "Samples/hh/hh_rr0.wav", "vel_layer": 1, "rr_index": 0},
+                {"file": "Samples/hh/hh_rr1.wav", "vel_layer": 1, "rr_index": 1},
+                {"file": "Samples/hh/hh_rr2.wav", "vel_layer": 1, "rr_index": 2},
+            ],
+        }
+    ]
+
+    xpm = build_drum_program_layered("Test RR Zero", pads, tier="TRENCH")
+    root = ET.fromstring(xpm)
+
+    instr = root.find(".//Instrument[@number='0']")
+    assert instr is not None, "Instrument slot 0 not found"
+
+    active_layers = [
+        layer for layer in instr.findall(".//Layer")
+        if (layer.find("Active") is not None and layer.find("Active").text == "True")
+    ]
+    assert len(active_layers) == 3, (
+        f"Expected 3 active RR layers, got {len(active_layers)}"
+    )
+
+    for i, layer in enumerate(active_layers):
+        ct = layer.find("CycleType")
+        cg = layer.find("CycleGroup")
+        assert ct is not None, (
+            f"Layer {i} (rr_index={i}) is missing <CycleType> — "
+            f"rr_index=0 must NOT be excluded from CycleType emission (issue fix-rr)"
+        )
+        assert ct.text == "RoundRobin", (
+            f"Layer {i} CycleType='{ct.text}', expected 'RoundRobin'"
+        )
+        assert cg is not None, (
+            f"Layer {i} is missing <CycleGroup>"
+        )
+
+
+def test_non_trench_tier_does_not_emit_cycle_type():
+    """DEEP tier must NOT emit <CycleType> even when rr_index variants are present.
+
+    Round-robin tag emission is gated on tier=TRENCH only.
+    """
+    import xml.etree.ElementTree as ET
+    from xpn_xpm_batch_builder import build_drum_program_layered
+
+    pads = [
+        {
+            "voice": "kick",
+            "pad": 1,
+            "choke": 0,
+            "samples": [
+                {"file": "Samples/kick/kick_rr0.wav", "vel_layer": 1, "rr_index": 0},
+                {"file": "Samples/kick/kick_rr1.wav", "vel_layer": 1, "rr_index": 1},
+            ],
+        }
+    ]
+
+    xpm = build_drum_program_layered("Test DEEP No RR", pads, tier="DEEP")
+    root = ET.fromstring(xpm)
+
+    instr = root.find(".//Instrument[@number='0']")
+    assert instr is not None, "Instrument slot 0 not found"
+
+    for layer in instr.findall(".//Layer"):
+        if layer.find("Active") is not None and layer.find("Active").text == "True":
+            ct = layer.find("CycleType")
+            assert ct is None, (
+                f"DEEP tier must not emit <CycleType>, but found CycleType='{ct.text}'"
+            )
+
+
+# ---------------------------------------------------------------------------
 # Test runner (same pattern as test_oxport_core.py)
 # ---------------------------------------------------------------------------
 
@@ -1107,6 +1200,8 @@ if __name__ == "__main__":
         test_ghost_layer_volume_boost_constant_is_approx_6db,
         test_ghost_layer_gets_volume_boost_in_drum_program_layered,
         test_ghost_volume_boost_is_unity_for_inactive_ghost_layer,
+        test_trench_rr_index_zero_emits_cycle_type,
+        test_non_trench_tier_does_not_emit_cycle_type,
     ]
     passed = 0
     failed = 0
