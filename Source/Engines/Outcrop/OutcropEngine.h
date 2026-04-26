@@ -191,7 +191,7 @@ private:
     // peakH, peakS, ridgeD, ridgeF, ridgeA, rough all in their parameter ranges.
     static float evaluateTerrain(int mode, float x, float y,
                                  float peakH, float peakS,
-                                 float ridgeD, float ridgeF, float ridgeA,
+                                 float ridgeD, float ridgeF, float cosRidgeA, float sinRidgeA,
                                  float rough) noexcept;
 
     //==========================================================================
@@ -297,6 +297,8 @@ private:
     // Glide coefficient (per block).
     float glideCoeff = 1.0f;
 
+    bool  sustainPedal  = false;   // CC64 hold
+
     // Mono/legato tracking.
     int lastHeldNote = -1;
 };
@@ -361,7 +363,7 @@ inline OutcropEngine::OrbitPos OutcropEngine::computeOrbit(int shape, float phas
 // -----------------------------------------------------------------------------
 inline float OutcropEngine::evaluateTerrain(int mode, float x, float y,
                                              float peakH, float peakS,
-                                             float ridgeD, float ridgeF, float ridgeA,
+                                             float ridgeD, float ridgeF, float cosRidgeA, float sinRidgeA,
                                              float rough) noexcept
 {
     auto peaks = [&]() noexcept
@@ -389,11 +391,8 @@ inline float OutcropEngine::evaluateTerrain(int mode, float x, float y,
 
     auto ridges = [&]() noexcept
     {
-        // Use fastCos/fastSin — ridgeA trig called every sample, fast approx
-        // has ~0.002% / ~0.01% error, inaudible for terrain modulation.
-        const float ca = fastCos(ridgeA);
-        const float sa = fastSin(ridgeA);
-        const float u  = x * ca + y * sa;
+        // P1-3 (#1126): ca/sa precomputed per-block — no per-sample trig
+        const float u  = x * cosRidgeA + y * sinRidgeA;
         return ridgeD * fastSin(ridgeF * u);
     };
 
@@ -508,9 +507,13 @@ inline void OutcropEngine::releaseVoicesForNote(int noteNum)
     {
         if (v.active && v.note == noteNum && !v.releasing)
         {
-            v.ampEnv.noteOff();
-            v.fltEnv.noteOff();
-            v.releasing = true;
+            if (!sustainPedal)
+            {
+                v.ampEnv.noteOff();
+                v.fltEnv.noteOff();
+                v.releasing = true;
+            }
+            // If sustain pedal is down, defer release until pedal lifts (CC64=0 handler above).
         }
     }
 }
@@ -540,6 +543,7 @@ inline void OutcropEngine::prepare(double sampleRate, int maxBlockSize)
 
     couplingFilterMod = couplingFmMod = couplingRateMod = couplingBlendMod = 0.0f;
     modWheel = aftertouch = pitchBendNorm = 0.0f;
+    sustainPedal = false;
     lastHeldNote = -1;
 }
 
@@ -552,6 +556,7 @@ inline void OutcropEngine::reset()
     std::fill(couplingCacheR.begin(), couplingCacheR.end(), 0.0f);
     couplingFilterMod = couplingFmMod = couplingRateMod = couplingBlendMod = 0.0f;
     modWheel = aftertouch = pitchBendNorm = 0.0f;
+    sustainPedal = false;
     lastHeldNote = -1;
 }
 
@@ -921,7 +926,10 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                 }
                 else
                 {
-                    // Legato: keep phase, keep env level, keep jitter continuity.
+                    // Legato: keep phase, keep env level.
+                    // P2-5 (#1126): reseed jitter on legato too — old note's
+                    // pattern under a new pitch is audible as a timing artefact.
+                    vx.jitterState = 0x9E3779B1u ^ (uint32_t)(newNote * 2654435761u);
                 }
                 lastHeldNote = newNote;
                 wakeSilenceGate();
@@ -940,6 +948,18 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         {
             modWheel = (float) msg.getControllerValue() / 127.0f;
         }
+        else if (msg.isController() && msg.getControllerNumber() == 64)
+        {
+            // P2-7 (#1126): CC64 sustain pedal
+            sustainPedal = (msg.getControllerValue() >= 64);
+            if (!sustainPedal)
+            {
+                // Pedal lifted — release any voices that are held but not actively pressed.
+                for (auto& v : voices)
+                    if (v.active && v.releasing == false && v.note != lastHeldNote)
+                    { v.ampEnv.noteOff(); v.fltEnv.noteOff(); v.releasing = true; }
+            }
+        }
         else if (msg.isChannelPressure())
         {
             aftertouch = (float) msg.getChannelPressureValue() / 127.0f;
@@ -948,11 +968,20 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         {
             pitchBendNorm = (msg.getPitchWheelValue() - 8192) / 8192.0f;
         }
+        else if (msg.isAllNotesOff() || msg.isAllSoundOff())
+        {
+            // P2-6 (#1126): MIDI panic — reset all voices
+            for (auto& v : voices) v.reset();
+            lastHeldNote = -1;
+        }
     }
 
     // ---- Silence gate early exit ----
     if (isSilenceGateBypassed() && midi.isEmpty())
     {
+        // P2-2 (#1126): zero coupling accumulators so stale mod doesn't bleed
+        // into the next active block when the sender resumes.
+        couplingFilterMod = couplingFmMod = couplingRateMod = couplingBlendMod = 0.0f;
         // Zero coupling cache so downstream engines see silence.
         const int n = std::min(numSamples, (int) couplingCacheL.size());
         std::fill_n(couplingCacheL.begin(), n, 0.0f);
@@ -984,6 +1013,8 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
     const float effOrbitRadius = std::clamp(orbitRadiusP * (1.0f + lfoMod[0] * 0.5f), 0.1f, 2.5f);
     const float effOrbitRatio  = std::clamp(mOrbitRatio * (1.0f + lfoMod[1] * 0.4f),  0.25f, 12.0f);
     const float effRidgeAngle  = ridgeAngleP + lfoMod[2] * 1.0f;
+    const float cosEffRidge = fastCos(effRidgeAngle);
+    const float sinEffRidge = fastSin(effRidgeAngle);
     const float lfoCutoffScale = fastPow2(lfoMod[3] * 2.0f); // ±2 octaves
 
     // Mod matrix — feed per-block source snapshot.
@@ -1041,7 +1072,8 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
 
     // Shared coupling accumulator values frozen for the block.
     const float couplingFilterAdd = couplingFilterMod * mCouplingGain * 4000.0f; // up to +4 kHz
-    const float couplingPhaseAdd  = couplingFmMod    * mCouplingGain;           // radians
+    // P1-2 (#1126): clamp to ±π/4 rad to prevent terrain phase aliasing under extreme coupling
+    const float couplingPhaseAdd  = std::clamp(couplingFmMod * mCouplingGain, -0.7854f, 0.7854f);
     const float rateMod           = 1.0f + couplingRateMod * mCouplingGain;
 
     // ---- Per-voice render ----
@@ -1088,7 +1120,7 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             const float a = v.ampEnv.process();
             const float fe = v.fltEnv.process();
 
-            if (!v.ampEnv.isActive()) { v.active = false; break; }
+            if (!v.ampEnv.isActive()) { v.active = false; v.filter.reset(); break; }
 
             // Orbit phase advance (radians).
             v.orbitPhase += phaseIncBase * kOutcropTwoPi;
@@ -1102,10 +1134,14 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             const float ox = (op.x + jitterX) * finalOrbitRadius;
             const float oy = (op.y + jitterY) * finalOrbitRadius;
 
+            // P2-3 (#1126): clamp terrain coords to ±4 to prevent trig precision loss
+            const float oxc = std::clamp(ox, -4.0f, 4.0f);
+            const float oyc = std::clamp(oy, -4.0f, 4.0f);
+
             // Terrain height → raw sample.
-            const float h = evaluateTerrain(terrainType, ox, oy,
+            const float h = evaluateTerrain(terrainType, oxc, oyc,
                                             finalPeakHeight, peakSpread,
-                                            finalRidgeDepth, ridgeFreq, effRidgeAngle,
+                                            finalRidgeDepth, ridgeFreq, cosEffRidge, sinEffRidge,
                                             finalRoughness);
 
             // Per-sample filter cutoff with env offset.
@@ -1147,10 +1183,12 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
     analyzeForSilenceGate(buffer, numSamples);
 
     // Decay coupling accumulators so stale mod doesn't persist if sender stops.
-    couplingFilterMod *= 0.95f;
-    couplingFmMod     *= 0.95f;
-    couplingRateMod   *= 0.95f;
-    couplingBlendMod  *= 0.95f;
+    // P2-8 (#1126): denormal flush on coupling accumulator decay
+    auto flushDenormal = [](float& x) noexcept { if (std::fabs(x) < 1e-20f) x = 0.0f; };
+    couplingFilterMod *= 0.95f; flushDenormal(couplingFilterMod);
+    couplingFmMod     *= 0.95f; flushDenormal(couplingFmMod);
+    couplingRateMod   *= 0.95f; flushDenormal(couplingRateMod);
+    couplingBlendMod  *= 0.95f; flushDenormal(couplingBlendMod);
 } // renderBlock
 
 } // namespace xoceanus
