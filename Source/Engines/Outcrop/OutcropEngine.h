@@ -100,6 +100,12 @@ struct OutcropVoice
     // Per-voice filter (state-variable, post-sum would lose polyphonic character).
     CytomicSVF filter;
 
+    // P1-1 (#1126): voice-steal fade — when a voice is stolen, rampSamples counts down
+    // from a short fade length, multiplying output by (rampSamples / rampTotal) to
+    // prevent clicks. A new note is started once the ramp expires.
+    int   stealRampSamples = 0; // samples remaining in fade-out (0 = not fading)
+    float stealRampTotal   = 1.0f; // total fade length (set from SR at steal time)
+
     void reset() noexcept
     {
         active = false;
@@ -107,6 +113,8 @@ struct OutcropVoice
         note = -1;
         velocity = 0.0f;
         orbitPhase = 0.0f;
+        stealRampSamples = 0;
+        stealRampTotal   = 1.0f;
         ampEnv.kill();
         fltEnv.kill();
         filter.reset();
@@ -486,7 +494,16 @@ inline int OutcropEngine::stealVoice() noexcept
 inline void OutcropEngine::startVoice(int noteNum, float vel, bool legato)
 {
     int v = findFreeVoice();
-    if (v < 0) v = stealVoice();
+    if (v < 0)
+    {
+        // P1-1 (#1126): apply a short steal fade to avoid hard cut.
+        v = stealVoice();
+        // Start a 5ms fade-out on the stolen voice slot before reinitialising it.
+        // The new note content is written immediately (amplitude is silenced by ramp).
+        const float fadeMs = 5.0f;
+        voices[v].stealRampSamples = static_cast<int>(sampleRateF * fadeMs / 1000.0f);
+        voices[v].stealRampTotal   = static_cast<float>(voices[v].stealRampSamples);
+    }
 
     auto& vx = voices[v];
     vx.active   = true;
@@ -1160,7 +1177,16 @@ inline void OutcropEngine::renderBlock(juce::AudioBuffer<float>& buffer,
 
             const float filtered = v.filter.processSample(h);
             const float ampBoost = std::clamp(1.0f + matrixAmp * 0.5f, 0.0f, 2.0f);
-            const float voiceOut = filtered * a * ampBoost;
+            float voiceOut = filtered * a * ampBoost;
+
+            // P1-1 (#1126): apply steal fade-in ramp to avoid click on voice steal.
+            // The new note starts immediately but its amplitude ramps from 0 over ~5ms.
+            if (v.stealRampSamples > 0)
+            {
+                const float rampGain = 1.0f - static_cast<float>(v.stealRampSamples) / v.stealRampTotal;
+                voiceOut *= rampGain;
+                --v.stealRampSamples;
+            }
 
             // Pan based on orbit x — geometric stereo from the orbit itself.
             // Equal-power constant-power law: gL = cos(angle), gR = sin(angle)
