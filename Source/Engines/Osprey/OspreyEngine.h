@@ -711,6 +711,14 @@ public:
         seaStateLFO.setShape(0); // Sine shape for smooth wave-like modulation
         seaStateLFO.setRate(0.1f, sampleRateFloat);
 
+        // P22: initialize the brightness LFO so its internal state is valid before
+        // the first renderBlock() call. Without this, the LFO may start with random
+        // phase or stale coefficients, producing incorrect timbral shimmer on
+        // the very first note.
+        brightnessLFO.reset();
+        brightnessLFO.setShape(1); // Triangle shape default (matches osprey_lfo2Shape default=1)
+        brightnessLFO.setRate(0.2f, sampleRateFloat); // matches osprey_lfo2Rate default
+
         // Harbor verb: allpass delays with prime-number lengths.
         // Primes {1087, 1283, 1511, 1777} chosen to avoid harmonic
         // relationships between delay taps — this prevents comb filtering
@@ -757,10 +765,21 @@ public:
         couplingAudioReplaceLevel = 0.0f;
         couplingAudioReplaceActive = false;
 
+        // P14: reset MIDI expression state — stale modWheel/pitchBend survive
+        // across DAW transport-reset otherwise, causing incorrect initial sea state
+        // and resonator tuning on the next note.
+        modWheelAmount = 0.0f;
+        pitchBendNorm = 0.0f;
+        filterEnvBoost = 0.0f;
+
         // D005/D004 fix: reset the sea state LFO to prevent stale phase state.
         seaStateLFO.reset();
         seaStateLFO.setShape(0);
         seaStateLFO.setRate(0.1f, sampleRateFloat);
+
+        // P22: reset brightnessLFO — it was absent from reset(), causing the
+        // LFO2 phase to persist across transport resets and preset changes.
+        brightnessLFO.reset();
 
         // Reset harbor verb
         for (int i = 0; i < 4; ++i)
@@ -952,7 +971,10 @@ public:
         if (pFilterTilt < 0.5f)
         {
             float cutoff = 200.0f + (pFilterTilt * 2.0f) * 8000.0f + filterEnvBoost;
-            cutoff = juce::jlimit(200.0f, 20000.0f, cutoff);
+            // P17: clamp to sample-rate-relative Nyquist, not hardcoded 20 kHz.
+            // At 96kHz/192kHz, CytomicSVF can handle frequencies above 20 kHz;
+            // using sampleRateFloat*0.49f keeps the ceiling correct at all rates.
+            cutoff = juce::jlimit(200.0f, sampleRateFloat * 0.49f, cutoff);
             tiltFilterL.setMode(CytomicSVF::Mode::LowPass);
             tiltFilterR.setMode(CytomicSVF::Mode::LowPass);
             tiltFilterL.setCoefficients(cutoff, 0.3f, sampleRateFloat);
@@ -968,8 +990,11 @@ public:
         }
 
         // Fog filter: gentle lowpass HF rolloff (simulates sound in fog/mist).
-        // At pFog=0: 20kHz (transparent). At pFog=1: 4kHz (muffled).
-        float fogCutoff = 20000.0f - pFog * 16000.0f;
+        // At pFog=0: near-Nyquist (transparent). At pFog=1: 4kHz (muffled).
+        // P17: top of range is sampleRateFloat*0.45f so the filter is truly
+        // transparent at high sample rates (96/192kHz) rather than capping at 20 kHz.
+        const float kFogMaxCutoff = sampleRateFloat * 0.45f;
+        float fogCutoff = kFogMaxCutoff - pFog * (kFogMaxCutoff - 4000.0f);
         fogFilterL.setMode(CytomicSVF::Mode::LowPass);
         fogFilterR.setMode(CytomicSVF::Mode::LowPass);
         fogFilterL.setCoefficients(fogCutoff, 0.1f, sampleRateFloat);
@@ -1057,6 +1082,12 @@ public:
         // Block-constant pitch-bend ratio used inside the control-rate resonator
         // refresh path. pitchBendNorm is block-rate from MIDI.
         const float blockPitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+
+        // Perf: DC blocker coefficient is sample-rate-derived and constant
+        // for the entire block. Hoisted from the per-voice inner loop to avoid
+        // one float division per voice per sample (sampleRateFloat never changes
+        // mid-block; declaring const inside the loop defeats the intent).
+        const float kDcBlockerCoefficient = 1.0f - (6.28318f * 5.0f / sampleRateFloat);
 
         for (int sampleIndex = 0; sampleIndex < numSamples; ++sampleIndex)
         {
@@ -1296,10 +1327,12 @@ public:
                 // --- DC Blocker (1-pole highpass at ~5Hz) ---
                 // Removes DC offset that can accumulate from asymmetric
                 // excitation patterns and creature formant filtering.
-                // Coefficient derived as R = 1 - 2π·fc/sr so the -3dB
-                // point stays at 5 Hz regardless of sample rate (96kHz
-                // hardcoded 0.9975 would bleed to ~11Hz — audible artefact).
-                const float kDcBlockerCoefficient = 1.0f - (6.28318f * 5.0f / sampleRateFloat);
+                // Coefficient R = 1 - 2π·fc/sr (first-order Euler approximation).
+                // At 5 Hz this is negligibly different from matched-Z
+                // (exp(-2π·fc/sr)) — the two converge for fc << sr.
+                // Using the sample-rate-derived coefficient ensures the 5 Hz
+                // cutoff is correct at 44.1 / 48 / 96 / 192 kHz.
+                // kDcBlockerCoefficient is hoisted to pre-sample-loop scope above.
                 float dcInput = voiceOutput;
                 float dcOutput = dcInput - voice.dcPreviousInputL + kDcBlockerCoefficient * voice.dcPreviousOutputL;
                 voice.dcPreviousInputL = dcInput;
@@ -1810,7 +1843,7 @@ private:
                         // SR-invariant IIR coefficient: coeff = 1 - exp(-1/(T*sr)).
                         // Wall-clock convergence is always T seconds at any sample rate —
                         // higher SR produces a smaller coeff but more samples/sec, cancelling out.
-                        v.glideCoefficient = 1.0f - std::exp(-1.0f / (glideTimeSec * sampleRateFloat));
+                        v.glideCoefficient = 1.0f - fastExp(-1.0f / (glideTimeSec * sampleRateFloat));
                     else
                         v.currentGlideFrequency = frequency; // snap
 
@@ -1889,7 +1922,7 @@ private:
         if (glideTimeSec > kMinGlideSec && voice.currentGlideFrequency > 10.0f)
         {
             // Glide from previous position to new target
-            voice.glideCoefficient = 1.0f - std::exp(-1.0f / (glideTimeSec * sampleRateFloat));
+            voice.glideCoefficient = 1.0f - fastExp(-1.0f / (glideTimeSec * sampleRateFloat));
         }
         else
         {
@@ -1997,7 +2030,7 @@ private:
 
     int findFreeVoice() { return VoiceAllocator::findFreeVoice(voices, kMaxVoices); }
 
-    static float midiNoteToHz(float midiNote) noexcept { return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f); }
+    static float midiNoteToHz(float midiNote) noexcept { return 440.0f * fastPow2((midiNote - 69.0f) / 12.0f); }
 
     //==========================================================================
     //  Member data
