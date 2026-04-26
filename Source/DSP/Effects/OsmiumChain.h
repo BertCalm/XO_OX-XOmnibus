@@ -273,6 +273,10 @@ private:
         void prepare(double sampleRate)
         {
             sr = sampleRate;
+            // FIX P36: mix pointer-hash into LCG seed so different OsmiumChain instances
+            // produce independent tape-hiss noise (prevents stereo and voice-slot collapse).
+            lcgState ^= static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+            if (lcgState == 0u) lcgState = 0xDEADBEEFu; // LCG must be non-zero
             int maxDelay = static_cast<int>(sampleRate * 0.1); // 100ms max flutter
             wowDelay.prepare(maxDelay);
 

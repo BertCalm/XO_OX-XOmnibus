@@ -1,5 +1,14 @@
 ================================================================================
-XOCEANUS iOS PORT DIRECTORY STRUCTURE MAP
+DEPRECATED 2026-03-26 — FULL iOS AUv3 PORT CANCELLED
+================================================================================
+The full XOceanus iOS AUv3 port was cancelled 2026-03-26. It has been replaced
+by OBRIX Pocket (iPhone standalone) and OBRIX Academy (iPad). See ObrixPocket/
+in the repo for context. This file is retained for historical reference only —
+do not reference it as a current plan.
+================================================================================
+
+================================================================================
+XOCEANUS iOS PORT DIRECTORY STRUCTURE MAP (HISTORICAL — SEE DEPRECATION ABOVE)
 ================================================================================
 Repository: ~/Documents/GitHub/XO_OX-XOmnibus
 Rename Status: XOmnibus → XOceanus (2026-03-24)

@@ -108,6 +108,9 @@ public:
     {
         juce::ScopedNoDenormals noDenormals;
 
+        // P37: guard against pre-prepare() call — sr=0 would make invSr=+Inf → NaN
+        if (sr == 0.0) { buffer.clear(); return; }
+
         // Reset coupling accumulators — prevents sticky modulation after route disconnect
         extPitchMod = 0.0f;
         extFilterMod = 0.0f;

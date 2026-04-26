@@ -254,6 +254,10 @@ private:
             capture.prepare(captureSize);
             spawnAccum = 0.0f;
             for (auto& g : grains) g.active = false;
+            // FIX P36: mix pointer-hash into LCG seed so different OrogenChain instances
+            // (e.g. multiple voices or FX slots) produce independent grain-position noise.
+            lcgState ^= static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+            if (lcgState == 0u) lcgState = 0xDEADBEEFu; // LCG must be non-zero
         }
 
         void reset()

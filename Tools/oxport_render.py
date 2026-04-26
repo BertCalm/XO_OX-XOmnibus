@@ -31,7 +31,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 
-from engine_registry import get_all_engines, is_valid_engine
+from engine_registry import get_all_engines
 
 
 # ---------------------------------------------------------------------------
