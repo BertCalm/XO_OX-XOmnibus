@@ -879,14 +879,14 @@
     },
     {
       "id": "OKEANOS",
-      "creature": "Horseshoe Crab",
-      "sprite": "saltwater/Horseshoe Crab.png",
-      "spriteOutline": null,
+      "creature": "King Crab",
+      "sprite": "saltwater/Crab - King.png",
+      "spriteOutline": "saltwater/Crab - King Outline.png",
       "fallback": "beowulf-32/spr_fish_47_x.png",
       "zone": "Twilight",
       "accentColor": "#C49B3F",
       "status": "matched",
-      "notes": "Rhodes Spice Route FUSION engine — horseshoe crab: ancient living fossil traversing cultural trade routes; cardamom gold; Horseshoe Crab from saltwater pack"
+      "notes": "Rhodes Spice Route FUSION engine — King Crab: ancient sea-god monarch, crustacean royalty presiding over Aegean trade lanes; cardamom gold; King Crab from saltwater pack"
     },
     {
       "id": "OLLOTRON",
