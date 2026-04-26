@@ -116,7 +116,7 @@ public:
     using juce::Component::keyPressed;
 
     // juce::KeyListener — D12: Escape closes the modal.
-    bool keyPressed(const juce::KeyPress& key, juce::Component*) override
+    bool keyPressed(const juce::KeyPress& key) override
     {
         if (isVisible() && key == juce::KeyPress::escapeKey)
         {
