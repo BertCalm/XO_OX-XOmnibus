@@ -38,7 +38,9 @@ public:
     float nextFloat() noexcept { return (process() + 1.0f) * 0.5f; }
 
 private:
-    uint32_t state = 1;
+    // FIX P36: default to pointer-hash seed so each BobNoiseGen instance (per voice slot)
+    // starts with a unique state. Overridden by explicit seed() calls on note-on.
+    uint32_t state = 0xC2B2AE3Du ^ static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4);
 };
 
 //==============================================================================
@@ -724,7 +726,7 @@ public:
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
+    float invSR = 0.0f; // assigned in prepare() — do NOT init as 1/sr (sr=0 → +Inf)
     int mode = 0;
     float cutoffHz = 8000.0f;
     float resonance = 0.3f;
@@ -799,6 +801,11 @@ public:
         curSmooth = curTarget = curTimer = twitchCool = 0.0f;
         curThreshold = 0.5f;
         snh1 = smooth1 = 0.0f;
+        // FIX P36: re-seed curiosity RNG on each note-on so simultaneous polyphonic
+        // voices diverge immediately instead of tracking identically until natural
+        // divergence. voiceOffset is unique per slot (0/kMaxVoices … (kMaxVoices-1)/kMaxVoices).
+        uint32_t voiceSeed = static_cast<uint32_t>(voiceOffset * 8.0f + 1.0f) * 0x9E3779B9u;
+        rng.seed(0xC2B2AE3Du ^ voiceSeed ^ static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4));
     }
 
     void setVoiceOffset(float offset) noexcept { voiceOffset = offset; }
@@ -887,7 +894,7 @@ public:
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
+    float invSR = 0.0f; // assigned in prepare() — do NOT init as 1/sr (sr=0 → +Inf)
     float voiceOffset = 0.0f;
 
     // StandardLFO handles phase accumulation and waveform generation for

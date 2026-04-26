@@ -66,7 +66,6 @@ Dependencies: numpy, scipy (standard scientific Python — no external audio lib
 
 import argparse
 import json
-import math
 import os
 import sys
 import wave
