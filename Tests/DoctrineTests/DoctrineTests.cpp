@@ -23,7 +23,7 @@
 // Include all engine headers so static registrations execute in the test binary.
 // (These may already be registered by DSPStabilityTests.cpp in the same binary;
 // registerEngine() silently returns false for duplicates.)
-#include "Engines/Snap/SnapEngine.h"
+#include "Engines/OddfeliX/OddfeliXEngine.h"
 #include "Engines/Morph/MorphEngine.h"
 #include "Engines/Dub/DubEngine.h"
 #include "Engines/Drift/DriftEngine.h"

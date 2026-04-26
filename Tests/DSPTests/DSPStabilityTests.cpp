@@ -16,7 +16,7 @@
 #include "Core/SynthEngine.h"
 
 // Include all engine headers so their static registrations execute in test binary
-#include "Engines/Snap/SnapEngine.h"
+#include "Engines/OddfeliX/OddfeliXEngine.h"
 #include "Engines/Morph/MorphEngine.h"
 #include "Engines/Dub/DubEngine.h"
 #include "Engines/Drift/DriftEngine.h"

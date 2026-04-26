@@ -19,7 +19,7 @@
 
 // Engine headers — same list as DoctrineTests.cpp.
 // registerEngine() is idempotent (returns false for duplicates), so this is safe.
-#include "Engines/Snap/SnapEngine.h"
+#include "Engines/OddfeliX/OddfeliXEngine.h"
 #include "Engines/Morph/MorphEngine.h"
 #include "Engines/Dub/DubEngine.h"
 #include "Engines/Drift/DriftEngine.h"

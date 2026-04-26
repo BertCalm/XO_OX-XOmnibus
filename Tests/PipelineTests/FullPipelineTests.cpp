@@ -12,7 +12,7 @@
 
 #include "Core/SynthEngine.h"
 #include "Core/MegaCouplingMatrix.h"
-#include "Engines/Snap/SnapEngine.h"
+#include "Engines/OddfeliX/OddfeliXEngine.h"
 #include "Engines/Bob/BobEngine.h"
 
 #include <juce_audio_basics/juce_audio_basics.h>
