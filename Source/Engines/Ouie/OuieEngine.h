@@ -476,8 +476,12 @@ struct OuieKS
     bool needsExcite = false;
     int exciteCounter = 0;
 
+    // P23: excite() clears the buffer before injecting noise so retriggering a
+    // ringing KS voice doesn't superimpose new noise on the decaying tail (click).
     void excite() noexcept
     {
+        std::memset(buffer, 0, sizeof(buffer));
+        prevSample = 0.0f;
         needsExcite = true;
         exciteCounter = 0;
     }
@@ -539,6 +543,8 @@ struct OuieFilteredNoise
 {
     OuieNoiseGen gen;
     CytomicSVF trackFilter;
+    float prevFilterFreq = -1.0f; // P19: delta-guard cache
+    float prevReso = -1.0f;
 
     // color: 0..1 (0=deep bass rumble, 1=bright hiss)
     float process(float freq, float sr, float color) noexcept
@@ -553,8 +559,15 @@ struct OuieFilteredNoise
         // Resonance rises with color for more tonal character
         float reso = 0.2f + color * 0.5f;
 
-        trackFilter.setMode(CytomicSVF::Mode::BandPass);
-        trackFilter.setCoefficients_fast(filterFreq, reso, sr);
+        // P19: delta-guard — skip coefficient update when filter freq hasn't moved
+        // more than 1 Hz (avoids redundant trig per-sample when pitch is steady).
+        if (std::fabs(filterFreq - prevFilterFreq) > 1.0f || reso != prevReso)
+        {
+            trackFilter.setMode(CytomicSVF::Mode::BandPass);
+            trackFilter.setCoefficients_fast(filterFreq, reso, sr);
+            prevFilterFreq = filterFreq;
+            prevReso = reso;
+        }
 
         return trackFilter.processSample(noise);
     }
@@ -563,6 +576,8 @@ struct OuieFilteredNoise
     {
         gen.seed(1);
         trackFilter.reset();
+        prevFilterFreq = -1.0f;
+        prevReso = -1.0f;
     }
 };
 
@@ -798,6 +813,7 @@ public:
         couplingRingMod = 0.0f;
         modWheelAmount_ = 0.0f;
         aftertouch_ = 0.0f;
+        voiceCounter = 0;
 
         smoothedHammer = 0.0f;
         // FIX P001: smoothedCutoff1/2 were dead fields — cutoff is smoothed
@@ -921,9 +937,13 @@ public:
         // AMPULLAE: sensitivity — scales velocity and aftertouch response
         float velScale = 0.3f + pAmpullae * 0.7f;
 
-        // CARTILAGE: flexibility — increases resonance, decreases envelope times
-        float resoBoost = pCartilage * 0.4f;
-        float envSpeedMul = 1.0f + (1.0f - pCartilage) * 2.0f; // faster at low cartilage
+        // CARTILAGE: flexibility — increases resonance, decreases envelope times.
+        // Neutral at 0.5: resoBoost=0, envSpeedMul=1. Above 0.5 → more reso + faster
+        // envelopes; below 0.5 → less reso + slower envelopes.
+        float resoBoost = (pCartilage - 0.5f) * 0.8f;
+        // envSpeedMul: 1.0 at default 0.5, 3.0 at 0.0 (slow), 0.5 at 1.0 (fast).
+        // Clamped ≥ 0.5 so division (pAmpX / envSpeedMul) never blows up.
+        float envSpeedMul = std::max(0.5f, 1.0f + (0.5f - pCartilage) * 2.0f);
 
         // Mod wheel (D006): morph both voices' algo parameter
         float modWheelMod = modWheelAmount_ * 0.5f;
@@ -931,16 +951,18 @@ public:
         // Aftertouch (D006): drive the HAMMER interaction
         float effectiveHammer = clamp(pHammer + aftertouch_ * 0.3f, -1.0f, 1.0f);
 
-        // Glide coefficient
+        // Glide coefficient — fastExp replaces std::exp for per-block perf
         float glideCoeff = 1.0f;
         if (pGlide > 0.001f)
-            glideCoeff = 1.0f - std::exp(-1.0f / (pGlide * srf));
+            glideCoeff = 1.0f - fastExp(-1.0f / (pGlide * srf));
 
         // Filter link: if enabled, Voice 2 mirrors Voice 1's filter
-        float effectiveCutoff1 = clamp(pCutoff1 + couplingFilterMod * 4000.0f, 20.0f, 20000.0f);
+        // P17: use srf * 0.49f as Nyquist ceiling — 20000 Hz hardcode breaks at 96/192 kHz
+        const float kNyquistCeil = srf * 0.49f;
+        float effectiveCutoff1 = clamp(pCutoff1 + couplingFilterMod * 4000.0f, 20.0f, kNyquistCeil);
         float effectiveReso1 = clamp(pReso1 + resoBoost, 0.0f, 1.0f);
         float effectiveCutoff2 =
-            pFilterLink ? effectiveCutoff1 : clamp(pCutoff2 + couplingFilterMod * 4000.0f, 20.0f, 20000.0f);
+            pFilterLink ? effectiveCutoff1 : clamp(pCutoff2 + couplingFilterMod * 4000.0f, 20.0f, kNyquistCeil);
         float effectiveReso2 = pFilterLink ? effectiveReso1 : clamp(pReso2 + resoBoost, 0.0f, 1.0f);
 
         // Set filter modes
@@ -970,8 +992,10 @@ public:
         couplingFMMod = 0.0f;
         couplingRingMod = 0.0f;
 
-        // Unison detune spread
-        float uniDetuneSpread = pUnisonDetune * 0.02f; // semitones -> ratio
+        // Unison detune spread in semitones (applied via fastPow2 in the voice loop).
+        // P25: linear ratio approximation `1 + cents/1200` is accurate only for small
+        // intervals; use fastPow2(semitones/12) for exact equal-temperament scaling.
+        float uniDetuneSemitones = pUnisonDetune * 1.0f; // 0..1 → 0..1 semitone max spread
 
         // --- Process MIDI events ---
         for (const auto metadata : midi)
@@ -1038,6 +1062,13 @@ public:
         }
 
         float peakEnv = 0.0f;
+
+        // Hoist constant-power voice mix coefficients out of the sample loop.
+        // std::cos/sin of pVoiceMix does not change per-sample — computing them inside
+        // the loop was wasted work (P30 / per-sample trig in hot path).
+        const float mixAngle = pVoiceMix * (kPI * 0.5f);
+        const float voiceMixGain0 = std::cos(mixAngle);
+        const float voiceMixGain1 = std::sin(mixAngle);
 
         // --- Render sample loop ---
         for (int sample = 0; sample < numSamples; ++sample)
@@ -1128,9 +1159,9 @@ public:
 
                 for (int u = 0; u < uniCount; ++u)
                 {
-                    // FIX S004 (cont): detune spread directly from table; no extra *u factor.
-                    float detuneRatio = 1.0f + voice.unisonDetune[u] * uniDetuneSpread;
-                    float uniFreq = freq * detuneRatio;
+                    // FIX S004 + P25: use fastPow2 for exact semitone-based detune instead
+                    // of linear approximation (1 + offset) which drifts at wider spreads.
+                    float uniFreq = freq * fastPow2(voice.unisonDetune[u] * uniDetuneSemitones / 12.0f);
 
                     float uniSample = 0.0f;
 
@@ -1246,17 +1277,25 @@ public:
 
                 voiceSamples[vi] = oscOut;
 
-                // D001: velocity shapes filter cutoff
+                // D001: velocity + breath modulation on filter cutoff.
+                // voiceCutoff is applied to the filter every 16 samples inside the loop.
+                // FIX (was dead): voiceCutoff was computed but never used — filter was
+                // only updated at block-level ignoring velocity and breath modulation.
                 float velFilterBoost = voice.velocity * velScale * 4000.0f;
                 // FIX S006: breath modulation of filter was 500Hz fixed-scale regardless of
                 // pBreathDepth. breathMod already carries pBreathDepth (set above), so
                 // multiply by 1000Hz to give a ±1000Hz max sweep controlled by Breath Depth.
                 float voiceCutoff =
                     (vi == 0 ? effectiveCutoff1 : effectiveCutoff2) + velFilterBoost + breathMod * 1000.0f;
-                voiceCutoff = clamp(voiceCutoff, 20.0f, 20000.0f);
+                voiceCutoff = clamp(voiceCutoff, 20.0f, kNyquistCeil);
 
-                // Update filter coefficients every 16 samples (modulation still tracks;
-                // the refresh rate stays well above audible lag).
+                // Update filter coefficients every 16 samples so velocity/breath
+                // modulation is audible without paying per-sample coefficient overhead.
+                if ((sample & 15) == 0)
+                {
+                    float reso = (vi == 0) ? effectiveReso1 : effectiveReso2;
+                    voice.filter.setCoefficients(voiceCutoff, reso, srf);
+                }
 
                 voiceGains[vi] = ampLevel * voice.velocity * voice.fadeGain;
             }
@@ -1289,12 +1328,8 @@ public:
 
                 float gain = voiceGains[vi];
 
-                // FIX P002: old voice mix law clipped at 1.0 asymmetrically — turning
-                // down one voice didn't boost the other. Use constant-power crossfade
-                // (sin/cos) so total energy is preserved across the full mix range.
-                float mixAngle = pVoiceMix * (kPI * 0.5f); // 0..π/2
-                float vmix = (vi == 0) ? std::cos(mixAngle) : std::sin(mixAngle);
-                gain *= vmix;
+                // FIX P002: constant-power crossfade hoisted to block-rate (see above).
+                gain *= (vi == 0) ? voiceMixGain0 : voiceMixGain1;
 
                 // CURRENT macro: simple stereo spread by voice index
                 float panL, panR;
@@ -1862,6 +1897,21 @@ private:
                 voices[1].ampEnv.noteOn();
                 voices[1].modEnv.setParams(modA, modD, modS, modR, srf);
                 voices[1].modEnv.noteOn();
+                // FIX Duo/KS: voices[1]=voices[0] copies the KS ring buffer verbatim —
+                // in KS mode both voices would produce identical correlated pluck tones.
+                // Reset oscillator state on the copy so voice 2 starts fresh.
+                voices[1].ks.reset();
+                if (algo2 == 6)
+                    voices[1].ks.excite();
+                // Reset other oscillator phases to avoid click from copied mid-cycle state.
+                voices[1].va.reset();
+                voices[1].wt.reset();
+                voices[1].fm.reset();
+                voices[1].additive.reset();
+                voices[1].phaseDist.reset();
+                voices[1].wavefolder.reset();
+                voices[1].filteredNoise.reset();
+                std::memset(voices[1].unisonPhases, 0, sizeof(voices[1].unisonPhases));
             }
 
             // Voice 1 gets the new note
