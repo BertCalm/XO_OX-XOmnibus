@@ -514,6 +514,16 @@ public:
         hudBar_.onUndo = [this]() { if (onUndoRequested) onUndoRequested(); };
         hudBar_.onRedo = [this]() { if (onRedoRequested) onRedoRequested(); };
 
+        // REACT dial → OceanBackground visual reactivity (Piece 1, Wave 1B).
+        // D1 (locked): REACT value scales waveform amplitude, ring pulse magnitude,
+        // gradient brightness.  Default 0.6 applied during construction; dial
+        // broadcasts every drag tick.  NOT master volume — that lives on the
+        // VOLUME macro knob (D11).
+        hudBar_.onReactChanged = [this](float value01)
+        {
+            background_.setReactivity(value01);
+        };
+
         // FIX 11: Chain mode toggles crosshair cursor over the ocean viewport
         // and clears any in-progress chain drawing on the substrate.
         hudBar_.onChainToggled = [this]() { applyChainModeVisuals(); };
@@ -1165,6 +1175,19 @@ public:
     {
         if (slot >= 0 && slot < 5)
             orbits_[slot].triggerRipple();
+    }
+
+    /**
+        Set the visual reactivity of the ocean background (REACT dial, 0–1).
+        Propagates directly to OceanBackground so the change is applied on the
+        next repaint without going through the audio-update path.
+
+        Called internally from the HUD REACT dial callback; exposed publicly so
+        the editor can also restore a saved value on preset load.
+    */
+    void setReactivity(float value01)
+    {
+        background_.setReactivity(value01);
     }
 
     /**

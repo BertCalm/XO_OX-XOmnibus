@@ -92,21 +92,25 @@ public:
 
         // 1b. Intensity-responsive gradient overlay — brightens center when audio plays.
         //     Prototype: center rgb(26+i*12, 36+i*6, 56+i*18) → edge stays dark.
-        if (intensity_ > 0.01f)
+        //     REACT dial scales this via scaledIntensity().
         {
-            const float cxf = static_cast<float>(bounds.getCentreX());
-            const float cyf = static_cast<float>(bounds.getCentreY());
-            const float maxDim = static_cast<float>(std::max(bounds.getWidth(),
-                                                              bounds.getHeight())) * 0.65f;
-            juce::ColourGradient intensityGrad(
-                juce::Colour(static_cast<juce::uint8>(26 + intensity_ * 12),
-                             static_cast<juce::uint8>(36 + intensity_ * 6),
-                             static_cast<juce::uint8>(56 + intensity_ * 18)).withAlpha(intensity_ * 0.3f),
-                cxf, cyf,
-                juce::Colours::transparentBlack,
-                cxf + maxDim, cyf, true);
-            g.setGradientFill(intensityGrad);
-            g.fillRect(bounds);
+            const float si = scaledIntensity();
+            if (si > 0.01f)
+            {
+                const float cxf = static_cast<float>(bounds.getCentreX());
+                const float cyf = static_cast<float>(bounds.getCentreY());
+                const float maxDim = static_cast<float>(std::max(bounds.getWidth(),
+                                                                  bounds.getHeight())) * 0.65f;
+                juce::ColourGradient intensityGrad(
+                    juce::Colour(static_cast<juce::uint8>(26 + si * 12),
+                                 static_cast<juce::uint8>(36 + si * 6),
+                                 static_cast<juce::uint8>(56 + si * 18)).withAlpha(si * 0.3f),
+                    cxf, cyf,
+                    juce::Colours::transparentBlack,
+                    cxf + maxDim, cyf, true);
+                g.setGradientFill(intensityGrad);
+                g.fillRect(bounds);
+            }
         }
 
         // 1c. Ambient breathing sweep — slow teal radial gradient drifts horizontally.
@@ -267,6 +271,29 @@ public:
     }
 
     //==========================================================================
+    /**
+        Set the visual reactivity multiplier driven by the REACT HUD dial.
+
+        @param value01  Normalised value in [0, 1].  Default 0.6 provides
+                        visible reactivity at startup.  0 = completely flat
+                        (no audio-reactive visuals); 1 = full intensity scaling.
+
+        This value scales audio-driven visuals only (gradient brightness, ring
+        wobble, wave amplitude).  The audio-side intensity_ is not modified.
+    */
+    void setReactivity(float value01)
+    {
+        const float clamped = juce::jlimit(0.0f, 1.0f, value01);
+        if (std::abs(reactivity_ - clamped) > 0.001f)
+        {
+            reactivity_ = clamped;
+            // No repaint here — the next wave-data push will trigger one.
+        }
+    }
+
+    float getReactivity() const noexcept { return reactivity_; }
+
+    //==========================================================================
     // Accessors
 
     bool hasCouplingRoutes() const noexcept { return hasCouplingRoutes_; }
@@ -285,11 +312,27 @@ private:
     // Wave surface state (pushed from OceanView timer, not audio thread)
     std::array<float, kWavePoints> waveData_ {};
     float waveTime_   = 0.0f;
-    float intensity_  = 0.0f;
+    float intensity_  = 0.0f;  ///< raw RMS from audio — NOT modified by REACT dial
+    float reactivity_ = 0.6f;  ///< REACT dial multiplier [0,1], default 0.6
 
     // Preset transition ripple (FIX 23)
     float presetRippleProgress_ = 0.0f;
     bool  presetRippleFromLeft_ = true;
+
+    //==========================================================================
+    /**
+        Returns the visual-effect intensity scaled by the REACT dial multiplier.
+
+        Use this everywhere intensity_ is used in visual computations (gradients,
+        ring wobble, wave amplitude).  The raw intensity_ is preserved for audio
+        logic; only the visual amplification respects the user's REACT setting.
+
+        scaledIntensity() = intensity_ * reactivity_
+    */
+    float scaledIntensity() const noexcept
+    {
+        return intensity_ * reactivity_;
+    }
 
     //==========================================================================
     /**
@@ -430,15 +473,19 @@ private:
         const juce::Colour teal(60, 180, 170);
         static constexpr float kRingRadii[] = { 80.0f, 190.0f, 300.0f, 410.0f };
 
+        // REACT dial scales wobble magnitude and alpha boost (audio-responsive visuals).
+        const float si = scaledIntensity();
+
         for (int i = 0; i < 4; ++i)
         {
             const float baseR = kRingRadii[i];
-            // Wobble: subtle radius oscillation driven by wave time + ring index
+            // Wobble: subtle radius oscillation driven by wave time + ring index.
+            // Scaled by REACT dial so user can dim or intensify ring pulse.
             const float wobble = std::sin(waveTime_ * 0.3f + baseR * 0.005f)
-                               * intensity_ * 4.0f;
+                               * si * 4.0f;
             const float r = baseR + wobble;
             // Raised floor from 0.025 → 0.045 so rings read on brighter baseline gradient.
-            const float alpha = 0.045f + intensity_ * 0.018f;
+            const float alpha = 0.045f + si * 0.018f;
 
             g.setColour(teal.withAlpha(alpha));
             g.drawEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f, 1.0f);
@@ -494,11 +541,14 @@ private:
     */
     void paintWaveSurface(juce::Graphics& g, float w, float h) const
     {
-        // Build wave displacement array from master output data + sine modulation
-        // When no audio is playing (intensity_ ≈ 0), subtle ambient sine waves
+        // REACT dial scales all audio-reactive visual amplitudes.
+        const float si = scaledIntensity();
+
+        // Build wave displacement array from master output data + sine modulation.
+        // When no audio is playing (si ≈ 0), subtle ambient sine waves
         // keep the ocean alive.  When audio plays, real waveform data dominates.
-        const float baseAmp = 1.5f + intensity_ * 14.0f;
-        const float chop    = intensity_ * 7.0f;
+        const float baseAmp = 1.5f + si * 14.0f;
+        const float chop    = si * 7.0f;
 
         std::array<float, kWavePoints> waveY {};
         for (int i = 0; i < kWavePoints; ++i)
@@ -508,8 +558,8 @@ private:
             float ambient = std::sin(waveTime_ * 0.8f + fi * 0.08f) * baseAmp
                           + std::sin(waveTime_ * 1.3f + fi * 0.15f) * baseAmp * 0.6f
                           + std::sin(waveTime_ * 2.1f + fi * 0.22f) * chop;
-            // Blend in real waveform data when audio is active
-            float real = waveData_[static_cast<size_t>(i)] * 40.0f * intensity_;
+            // Blend in real waveform data when audio is active (scaled by REACT)
+            float real = waveData_[static_cast<size_t>(i)] * 40.0f * si;
             waveY[static_cast<size_t>(i)] = ambient + real;
         }
 
@@ -519,7 +569,7 @@ private:
         for (int layer = 0; layer < 3; ++layer)
         {
             const float yBase = h * (0.22f + static_cast<float>(layer) * 0.18f);
-            const float alpha = 0.025f + intensity_ * 0.03f - static_cast<float>(layer) * 0.006f;
+            const float alpha = 0.025f + si * 0.03f - static_cast<float>(layer) * 0.006f;
             const float scale = 0.5f - static_cast<float>(layer) * 0.1f;
             const float phaseOff = static_cast<float>(layer) * 0.6f;
 
@@ -530,7 +580,7 @@ private:
                 const float wave = waveY[static_cast<size_t>(i)] * scale;
                 const float drift = std::sin(waveTime_ * (0.7f - static_cast<float>(layer) * 0.15f)
                                            + static_cast<float>(i) * 0.05f + phaseOff)
-                                  * (2.0f + intensity_ * 3.0f);
+                                  * (2.0f + si * 3.0f);
                 const float y = yBase + wave + drift;
                 if (i == 0) depthPath.startNewSubPath(x, y);
                 else        depthPath.lineTo(x, y);
@@ -557,7 +607,7 @@ private:
         fillPath.lineTo(0.0f, primaryY + 40.0f);
         fillPath.closeSubPath();
         juce::ColourGradient glowFill(
-            teal.withAlpha(0.04f + intensity_ * 0.06f),
+            teal.withAlpha(0.04f + si * 0.06f),
             0.0f, primaryY,
             juce::Colours::transparentBlack,
             0.0f, primaryY + 40.0f, false);
@@ -565,11 +615,11 @@ private:
         g.fillPath(fillPath);
 
         // Thick primary line
-        g.setColour(teal.withAlpha(0.15f + intensity_ * 0.35f));
-        g.strokePath(primaryPath, juce::PathStrokeType(2.0f + intensity_ * 1.5f));
+        g.setColour(teal.withAlpha(0.15f + si * 0.35f));
+        g.strokePath(primaryPath, juce::PathStrokeType(2.0f + si * 1.5f));
 
         // Bright core on top
-        g.setColour(juce::Colour(120, 220, 210).withAlpha(0.08f + intensity_ * 0.25f));
+        g.setColour(juce::Colour(120, 220, 210).withAlpha(0.08f + si * 0.25f));
         g.strokePath(primaryPath, juce::PathStrokeType(1.0f));
     }
 
