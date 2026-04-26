@@ -133,7 +133,7 @@ auval -v aumu Xocn XoOx
 
 - **AU** — macOS (available)
 - **Standalone** — macOS (available)
-- **AUv3** — iOS (on the roadmap)
+- **OBRIX Pocket** — iPhone standalone (replaces AUv3 iOS port; see `ObrixPocket/`)
 - **VST3** — on the roadmap
 
 ## Documentation

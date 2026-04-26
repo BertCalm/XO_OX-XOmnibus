@@ -81,7 +81,7 @@ XOceanus is available now at:
 - **GitHub:** https://github.com/BertCalm/XO_OX-XOmnibus
 - **Patreon:** https://www.patreon.com/cw/XO_OX
 
-The instrument runs on macOS as an AU plugin and standalone application. iOS (AUv3 + standalone) and VST3 (Windows/Linux) are in active development.
+The instrument runs on macOS as an AU plugin and standalone application. VST3 (Windows/Linux) is in development. iOS is served by OBRIX Pocket — a separate iPhone-native standalone instrument, not an AUv3 port of XOceanus.
 
 ---
 
