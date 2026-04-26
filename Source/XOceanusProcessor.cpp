@@ -1120,6 +1120,14 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     // Singularity FX params (master_onsl*/master_obs*/master_ora*) which were previously
     // unregistered, and the 4 new Epic chain param sets (onr_/omni_/oblt_/obsc_).
     xoceanus::EpicChainSlotController::addParameters(layout);
+
+    // Wave 5 C1: Per-slot pattern sequencer parameters (primary slots 0–3 only).
+    for (int s = 0; s < kNumPrimarySlots; ++s)
+        XOceanus::PerEnginePatternSequencer::addParameters(
+            layout,
+            "slot" + juce::String(s) + "_seq_",
+            "Slot " + juce::String(s + 1) + " Seq ");
+
     return layout;
 }
 
@@ -1307,6 +1315,10 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     // Pre-allocate familySlots so processFamilyBleed never heap-allocates
     // on the audio thread when capacity is zero on first block.
     familySlots_.ensureStorageAllocated(MaxSlots);
+
+    // Wave 5 C1: prepare per-slot pattern sequencers
+    for (auto& seq : slotSequencers_)
+        seq.prepareToPlay(sampleRate);
 }
 
 void XOceanusProcessor::releaseResources()
@@ -1804,6 +1816,22 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         }
     }
     // ── end Sound on First Launch ─────────────────────────────────────────────
+
+    // ── Wave 5 C1: Per-slot pattern sequencers ────────────────────────────────
+    // Run AFTER all slotMidi[] population (ChordMachine, sustain, firstBreath)
+    // and BEFORE engine renderBlock so sequencer events are processed this block.
+    // Reuse the transport values already read into hostTransport this block.
+    {
+        const double seqBpm      = hostTransport.getBPM();
+        const double seqPpq      = hostTransport.getBeatPosition();
+        const bool   seqPlaying  = hostTransport.isPlaying();
+        for (int s = 0; s < kNumPrimarySlots; ++s)
+        {
+            slotSequencers_[s].syncFromApvts(apvts, "slot" + juce::String(s) + "_seq_");
+            slotSequencers_[s].processBlock(slotMidi[s], seqBpm, seqPpq, seqPlaying, numSamples);
+        }
+    }
+    // ── end Wave 5 C1 ────────────────────────────────────────────────────────
 
     // Feed external audio to Osmosis if loaded in any slot.
     // Uses virtual isAnalysisEngine() instead of dynamic_cast to avoid RTTI on audio thread.

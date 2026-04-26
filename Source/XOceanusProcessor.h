@@ -19,6 +19,7 @@
 #include "Core/SharedTransport.h"
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
+#include "DSP/PerEnginePatternSequencer.h"
 // Wave 5 A1: Global drag-drop mod routing model (message-thread side).
 // The header lives in Future/ but we reference it in-place per spec.
 #include "Future/UI/ModRouting/DragDropModRouter.h"
@@ -160,6 +161,9 @@ public:
     // Engine slot management (message thread only)
     // Slot 4 (0-indexed) is the Ghost Slot — see EngineRegistry::detectCollection().
     static constexpr int MaxSlots = 5;
+    // Primary engine slots (0–3): eligible for per-slot pattern sequencer.
+    // The Ghost Slot (index 4) is excluded from sequencer instances.
+    static constexpr int kNumPrimarySlots = 4;
     static constexpr float CrossfadeMs = 50.0f;
     void loadEngine(int slot, const std::string& engineId);
     void unloadEngine(int slot);
@@ -456,6 +460,10 @@ private:
     std::array<juce::AudioBuffer<float>, MaxSlots> engineBuffers;
     juce::AudioBuffer<float> crossfadeBuffer;
     std::array<juce::MidiBuffer, MaxSlots> slotMidi; // per-slot MIDI from ChordMachine
+
+    // Wave 5 C1: per-slot pattern sequencer (primary slots 0–3 only; Ghost Slot excluded).
+    // Each instance is engine-agnostic — events appear in slotMidi[] transparently.
+    std::array<XOceanus::PerEnginePatternSequencer, kNumPrimarySlots> slotSequencers_;
 
     // External audio input capture — sized once in prepareToPlay, NEVER resized in processBlock.
     // OsmosisEngine reads raw pointers into this buffer within the same processBlock call.

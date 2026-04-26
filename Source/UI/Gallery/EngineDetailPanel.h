@@ -20,6 +20,197 @@ namespace xoceanus
 {
 
 //==============================================================================
+// SeqSection — inline Wave 5 C1 sequencer controls for one engine slot.
+// Shown at the bottom of EngineDetailPanel when a primary slot (0–3) is focused.
+// ~50 LOC; uses existing widget styles (SubmarineSliderLnF applied externally).
+class SeqSection : public juce::Component
+{
+public:
+    // Returns the fixed height required for the SEQ section.
+    static constexpr int kHeight = 90;
+
+    explicit SeqSection(juce::AudioProcessorValueTreeState& apvts)
+        : apvts_(apvts)
+    {
+        // Enable toggle
+        enableToggle_.setButtonText("SEQ");
+        enableToggle_.setColour(juce::ToggleButton::textColourId, juce::Colour(127, 219, 202));
+        enableToggle_.setColour(juce::ToggleButton::tickColourId, juce::Colour(127, 219, 202));
+        addAndMakeVisible(enableToggle_);
+
+        // Family dropdown (scopes pattern choices; state is UI-only, not APVTS)
+        familyBox_.addItem("Crests",  1);
+        familyBox_.addItem("Waves",   2);
+        familyBox_.addItem("Reefs",   3);
+        familyBox_.addItem("Grooves", 4);
+        familyBox_.addItem("Drifts",  5);
+        familyBox_.addItem("Storms",  6);
+        familyBox_.setSelectedItemIndex(0, juce::dontSendNotification);
+        familyBox_.onChange = [this] { rebuildPatternBox(); };
+        addAndMakeVisible(familyBox_);
+
+        addAndMakeVisible(patternBox_);
+
+        // Clock division dropdown
+        clockBox_.addItem("1/4",  1);
+        clockBox_.addItem("1/8",  2);
+        clockBox_.addItem("1/16", 3);
+        clockBox_.addItem("1/32", 4);
+        clockBox_.setSelectedItemIndex(2, juce::dontSendNotification);
+        addAndMakeVisible(clockBox_);
+
+        // Sliders
+        for (auto* s : {&stepsSlider_, &humanizeSlider_, &baseVelSlider_, &rootNoteSlider_})
+        {
+            s->setSliderStyle(juce::Slider::LinearHorizontal);
+            s->setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
+            s->setColour(juce::Slider::thumbColourId,      juce::Colour(127, 219, 202));
+            s->setColour(juce::Slider::trackColourId,      juce::Colour(60, 180, 170));
+            s->setColour(juce::Slider::backgroundColourId, juce::Colour(60, 70, 85));
+            addAndMakeVisible(s);
+        }
+        stepsSlider_.setRange(1.0, 16.0, 1.0);   stepsSlider_.setValue(16.0);
+        humanizeSlider_.setRange(0.0, 1.0, 0.01); humanizeSlider_.setValue(0.0);
+        baseVelSlider_.setRange(0.0, 1.0, 0.01);  baseVelSlider_.setValue(0.75);
+        rootNoteSlider_.setRange(0.0, 127.0, 1.0); rootNoteSlider_.setValue(60.0);
+
+        rebuildPatternBox();
+    }
+
+    // Wire all controls to APVTS for the given slot prefix.
+    // Call once when the active slot changes.
+    void loadSlot(int slot)
+    {
+        // Drop old attachments first
+        enableAttach_.reset();
+        patternAttach_.reset();
+        stepsAttach_.reset();
+        clockAttach_.reset();
+        humanizeAttach_.reset();
+        baseVelAttach_.reset();
+        rootNoteAttach_.reset();
+
+        if (slot < 0 || slot >= 4)
+            return; // Ghost Slot or invalid — no sequencer
+
+        prefix_ = "slot" + juce::String(slot) + "_seq_";
+
+        enableAttach_   = std::make_unique<juce::AudioProcessorValueTreeState::ButtonAttachment>(
+            apvts_, prefix_ + "enabled",   enableToggle_);
+        patternAttach_  = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
+            apvts_, prefix_ + "pattern",   patternBox_);
+        stepsAttach_    = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+            apvts_, prefix_ + "stepCount", stepsSlider_);
+        clockAttach_    = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
+            apvts_, prefix_ + "clockDiv",  clockBox_);
+        humanizeAttach_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+            apvts_, prefix_ + "humanize",  humanizeSlider_);
+        baseVelAttach_  = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+            apvts_, prefix_ + "baseVel",   baseVelSlider_);
+        rootNoteAttach_ = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
+            apvts_, prefix_ + "rootNote",  rootNoteSlider_);
+    }
+
+    void paint(juce::Graphics& g) override
+    {
+        // Section header stripe
+        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+        g.fillRect(0, 0, getWidth(), 16);
+        g.setFont(GalleryFonts::value(10.0f));
+        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.65f));
+        g.drawText("SEQUENCER", 6, 2, 100, 12, juce::Justification::centredLeft);
+
+        // Row labels
+        auto drawLabel = [&](const char* txt, int x, int y, int w)
+        {
+            g.setFont(GalleryFonts::value(9.0f));
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.50f));
+            g.drawText(txt, x, y, w, 10, juce::Justification::centredLeft);
+        };
+        drawLabel("FAMILY",   6,  18, 60);
+        drawLabel("PATTERN",  6,  40, 60);
+        drawLabel("STEPS",    6,  62, 60);
+        drawLabel("CLOCK",   160,  18, 60);
+        drawLabel("HUMAN",   160,  40, 60);
+        drawLabel("VEL",     160,  62, 60);
+        drawLabel("ROOT",    310,  18, 60);
+    }
+
+    void resized() override
+    {
+        const int col1x = 60, col2x = 215, col3x = 360;
+        const int bw = 140, bw2 = 90, row = 18;
+
+        enableToggle_.setBounds(getWidth() - 52, 0, 50, 16);
+
+        // Row 1: family | clock | root note
+        familyBox_.setBounds(col1x, row,     bw,  18);
+        clockBox_ .setBounds(col2x, row,     bw2, 18);
+        rootNoteSlider_.setBounds(col3x, row, getWidth() - col3x - 4, 18);
+
+        // Row 2: pattern | humanize
+        patternBox_    .setBounds(col1x, row * 2 + 2, bw,  18);
+        humanizeSlider_.setBounds(col2x, row * 2 + 2, bw2, 18);
+
+        // Row 3: steps | base velocity
+        stepsSlider_  .setBounds(col1x, row * 3 + 4, bw,  18);
+        baseVelSlider_.setBounds(col2x, row * 3 + 4, bw2, 18);
+    }
+
+private:
+    // Rebuild the pattern ComboBox to show only the 4 patterns of the selected family.
+    // Pattern APVTS param is the raw 0–23 index; we populate with subset for display
+    // but the attachment maps directly to the combined choice parameter.
+    void rebuildPatternBox()
+    {
+        // Map family index to first pattern index in the 24-pattern enum
+        static const juce::String kFamilyPatterns[6][4] = {
+            {"Pulse",     "Surge",   "Ebb",      "Arc"},
+            {"Sine",      "Square",  "Saw",       "Half"},
+            {"Eucl3",     "Eucl5",   "Eucl7",     "Eucl9"},
+            {"Tresillo",  "Clave",   "Backbeat",  "Boombap"},
+            {"Drift",     "Sparkle", "Foam",      "Riptide"},
+            {"Fibonacci", "Prime",   "Golden",    "Eddy"},
+        };
+        int family = familyBox_.getSelectedItemIndex();
+        if (family < 0) family = 0;
+
+        // ComboBox IDs must be 1-based. We reuse the absolute 0–23 pattern index + 1.
+        int baseIdx = family * 4;
+        patternBox_.clear(juce::dontSendNotification);
+        for (int i = 0; i < 4; ++i)
+            patternBox_.addItem(kFamilyPatterns[family][i], baseIdx + i + 1);
+        patternBox_.setSelectedItemIndex(0, juce::dontSendNotification);
+    }
+
+    juce::AudioProcessorValueTreeState& apvts_;
+    juce::String prefix_;
+
+    juce::ToggleButton enableToggle_;
+    juce::ComboBox     familyBox_;
+    juce::ComboBox     patternBox_;
+    juce::ComboBox     clockBox_;
+    juce::Slider       stepsSlider_;
+    juce::Slider       humanizeSlider_;
+    juce::Slider       baseVelSlider_;
+    juce::Slider       rootNoteSlider_;
+
+    using BtnAttach = juce::AudioProcessorValueTreeState::ButtonAttachment;
+    using BoxAttach = juce::AudioProcessorValueTreeState::ComboBoxAttachment;
+    using SldAttach = juce::AudioProcessorValueTreeState::SliderAttachment;
+
+    std::unique_ptr<BtnAttach> enableAttach_;
+    std::unique_ptr<BoxAttach> patternAttach_;
+    std::unique_ptr<SldAttach> stepsAttach_;
+    std::unique_ptr<BoxAttach> clockAttach_;
+    std::unique_ptr<SldAttach> humanizeAttach_;
+    std::unique_ptr<SldAttach> baseVelAttach_;
+    std::unique_ptr<SldAttach> rootNoteAttach_;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SeqSection)
+};
+
+//==============================================================================
 // ADSRDisplay — paint-only component that draws an ADSR envelope curve.
 // Lives inside EngineDetailPanel, displayed next to the oscilloscope.
 class ADSRDisplay : public juce::Component
@@ -158,7 +349,7 @@ class EngineDetailPanel : public juce::Component,
                           private juce::Timer
 {
 public:
-    explicit EngineDetailPanel(XOceanusProcessor& proc) : processor(proc), macroHero(proc), waveformDisplay(proc), modMatrix_(proc.getAPVTS())
+    explicit EngineDetailPanel(XOceanusProcessor& proc) : processor(proc), macroHero(proc), waveformDisplay(proc), modMatrix_(proc.getAPVTS()), seqSection_(proc.getAPVTS())
     {
         macroHero.setCompactMode(true); // Zone 2: no header, sliders fill height
         addAndMakeVisible(macroHero);
@@ -168,6 +359,9 @@ public:
         viewport.setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::never);
         addAndMakeVisible(waveformDisplay);
         addAndMakeVisible(adsrDisplay);
+
+        // Wave 5 C1: SEQ section — shown for primary slots (0–3) only.
+        addChildComponent(seqSection_);
 
         // ModMatrixDrawer — starts hidden; shown when the MOD tab is clicked.
         addChildComponent(modMatrix_);
@@ -257,6 +451,10 @@ public:
             return false;
 
         activeSlot_ = slot; // #903: persist slot for coupling route polling
+
+        // Wave 5 C1: wire SEQ section to this slot (primary slots 0–3 only)
+        seqSection_.loadSlot(slot);
+        seqSection_.setVisible(slot >= 0 && slot < XOceanusProcessor::kNumPrimarySlots);
 
         // W11: Track whether the engine actually changed so we only reset scroll
         // position on a genuine engine switch (not on parameter-only refreshes).
@@ -829,6 +1027,17 @@ public:
             modTabBounds_ = body.removeFromRight(24);
         }
 
+        // Wave 5 C1: SEQ section — bottom strip (primary slots only)
+        if (seqSection_.isVisible())
+        {
+            seqSection_.setBounds(body.removeFromBottom(SeqSection::kHeight).reduced(2, 1));
+            body.removeFromBottom(2); // gap
+        }
+        else
+        {
+            seqSection_.setBounds(0, 0, 0, 0);
+        }
+
         // ZONE 3 (CENTER): Parameter grid viewport — fills remaining space
         viewport.setBounds(body);
 
@@ -993,6 +1202,9 @@ private:
     juce::Rectangle<int> modTabBounds_;
     ModMatrixDrawer modMatrix_;        // collapsible mod matrix panel (Zone 4)
     SubmarineSliderLnF adsrSliderLnF; // thick-track rendering for ADSR sliders
+
+    // Wave 5 C1: inline SEQ section — per-slot pattern sequencer controls
+    SeqSection seqSection_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineDetailPanel)
 };
