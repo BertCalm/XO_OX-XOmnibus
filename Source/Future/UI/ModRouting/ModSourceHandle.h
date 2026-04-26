@@ -5,7 +5,9 @@
 // To activate: parent component must create ModSourceHandle instances per mod source.
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
-#include "../GalleryColors.h"
+// GalleryColors.h lives at Source/UI/GalleryColors.h; use the Source/ root include
+// path so this header is includable from any translation unit regardless of depth.
+#include "UI/GalleryColors.h"
 
 namespace xoceanus
 {

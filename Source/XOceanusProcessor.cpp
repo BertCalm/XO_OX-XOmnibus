@@ -115,6 +115,7 @@
 #include "DSP/Effects/AquaticFXSuite.h"
 #include "Core/EpicChainSlotController.h"
 #include "DSP/ThreadInit.h"
+#include <cstring> // std::strncmp — used in Wave 5 A1 global mod route evaluation
 
 // Register engines with their canonical IDs (matching getEngineId() return values).
 // These MUST match the string returned by each engine's getEngineId().
@@ -1212,6 +1213,12 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
             eng->prepareSilenceGate(sampleRate, samplesPerBlock, silenceGateHoldMs(eng->getEngineId()));
             eng->setSharedTransport(&hostTransport);
             eng->setMPEManager(&mpeManager); // issue #1237 — was never called; engines saw nullptr
+            // Wave 5 A1: Wire global mod routing pointers for any already-loaded Orrery engine.
+            if (auto* orrery = dynamic_cast<OrreryEngine*>(eng.get()))
+            {
+                orrery->setGlobalCutoffModPtr(&globalCutoffModOffset_);
+                orrery->setGlobalLFO1OutPtr(&globalLFO1_);
+            }
         }
     }
 
@@ -1861,6 +1868,86 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         waveformFifos[i].push(engineBuffers[i].getReadPointer(0), static_cast<size_t>(numSamples));
     }
 
+    // ── Wave 5 A1: Evaluate global mod routes ────────────────────────────────
+    // Read the snapshot version.  If it changed since our last consume, the
+    // snapshot array is up to date (message thread wrote it with release semantics).
+    // We then iterate the fixed-size array and apply each route.
+    //
+    // RT-safe:
+    //   • No allocation.  All data lives in pre-allocated members.
+    //   • Route iteration uses routesSnapshotCount_ written on the message thread
+    //     before the version increment; the acquire fence ensures we see the count.
+    //   • Destination parameter writes use atomic store (relaxed) on the APVTS
+    //     parameter's raw float.  APVTS's own parameter system does the same on
+    //     host automation.
+    //
+    // For each route we:
+    //   1. Identify the source value (LFO1 only in A1; expanded in A2).
+    //   2. Compute modulated offset = sourceValue * depth.
+    //   3. Add offset to the current parameter value (read + write via atomic).
+    //
+    // Bipolar check: use != 0 per CLAUDE.md (negative depth sweeps downward).
+    {
+        const int curVer = snapshotVersion_.load(std::memory_order_relaxed);
+        if (curVer != audioSnapshotVersion_)
+        {
+            // Acquire fence: synchronizes with the release fence in flushModRoutesSnapshot().
+            // Guarantees all snapshot array writes are visible before we iterate.
+            std::atomic_thread_fence(std::memory_order_acquire);
+            audioSnapshotVersion_ = curVer;
+        }
+
+        const int nRoutes = routesSnapshotCount_.load(std::memory_order_relaxed);
+        if (nRoutes > 0)
+        {
+            // Gather source values (audio-thread sources).
+            // In A1 we have LFO1 only; A2 will add LFO2, Envelope, etc.
+            const float lfo1Val = globalLFO1_.load(std::memory_order_relaxed);
+
+            // Accumulate global cutoff mod offset (same units as OrreryEngine::modCutoffOffset).
+            float globalCutoffMod = 0.0f;
+
+            for (int ri = 0; ri < nRoutes; ++ri)
+            {
+                const auto& snap = routesSnapshot_[static_cast<size_t>(ri)];
+                if (!snap.valid)
+                    continue;
+
+                // Source value — only LFO1 (id=0) wired in A1.
+                float srcVal = 0.0f;
+                if (snap.sourceId == static_cast<int>(ModSourceId::LFO1))
+                    srcVal = lfo1Val;
+                else
+                    continue; // A2 will add remaining sources
+
+                // Bipolar: use != 0 check so negative depths sweep downward.
+                if (snap.depth == 0.0f)
+                    continue;
+
+                float modOffset = srcVal * snap.depth;
+
+                // Destination: orry_fltCutoff only in A1.
+                // strncmp on the fixed char array — no heap, no std::string.
+                if (std::strncmp(snap.destParamId, "orry_fltCutoff", sizeof(snap.destParamId) - 1) == 0)
+                {
+                    // Accumulate — scale by 8000 Hz to match OrreryEngine's mod matrix
+                    // convention (dest[1] * 8000 = cutoff offset in Hz).
+                    globalCutoffMod += modOffset * 8000.0f;
+                }
+            }
+
+            // Write accumulated cutoff offset for OrreryEngine to read.
+            // Audio thread: relaxed ordering — engine reads this in the same processBlock
+            // call (always on the audio thread, so no cross-thread ordering required).
+            globalCutoffModOffset_.store(globalCutoffMod, std::memory_order_relaxed);
+        }
+        else
+        {
+            // No routes — ensure offset is zero so filter settles to base value.
+            globalCutoffModOffset_.store(0.0f, std::memory_order_relaxed);
+        }
+    }
+
     // Apply coupling matrix between engines.
     // Routes are loaded once here to avoid repeated atomic ref-count operations
     // inside processBlock (each atomic_load on a shared_ptr costs a LOCK prefix).
@@ -2398,6 +2485,13 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // (pitch bend, pressure, slide) is live from the first rendered block.
         // issue #1237 — was never called; engines loaded at runtime saw nullptr.
         newEngine->setMPEManager(&mpeManager);
+
+        // Wave 5 A1: Wire the global mod routing pointers into OrreryEngine.
+        if (auto* orrery = dynamic_cast<OrreryEngine*>(newEngine.get()))
+        {
+            orrery->setGlobalCutoffModPtr(&globalCutoffModOffset_);
+            orrery->setGlobalLFO1OutPtr(&globalLFO1_);
+        }
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -2511,6 +2605,45 @@ SynthEngine* XOceanusProcessor::getEngine(int slot) const
 
 // createEditor() is implemented in Source/UI/XOceanusEditor.cpp
 
+// ── Wave 5 A1: Global mod route snapshot flush ──────────────────────────────
+// Called on the message thread whenever the route table changes.
+// Copies all active routes into a fixed-size array, then increments the
+// atomic generation counter so the audio thread picks up the new snapshot on
+// its next block.  No heap allocation, no mutex.
+void XOceanusProcessor::flushModRoutesSnapshot() noexcept
+{
+    auto routes = modRoutingModel_.getRoutesCopy(); // message-thread allocation OK
+    int count = 0;
+    for (const auto& r : routes)
+    {
+        if (count >= kMaxGlobalRoutes)
+            break;
+        auto& snap = routesSnapshot_[static_cast<size_t>(count)];
+        snap.sourceId = r.sourceId;
+        snap.depth    = r.depth;
+        snap.bipolar  = r.bipolar;
+        snap.valid    = true;
+        // Copy dest param ID into fixed-length char array — no std::string on audio thread.
+        // juce::String::copyToUTF8 writes at most maxBytes chars (inc. null terminator).
+        r.destParamId.copyToUTF8(snap.destParamId, sizeof(snap.destParamId));
+        ++count;
+    }
+    // Zero out trailing slots so stale entries are not evaluated.
+    for (int i = count; i < kMaxGlobalRoutes; ++i)
+        routesSnapshot_[static_cast<size_t>(i)].valid = false;
+
+    routesSnapshotCount_.store(count, std::memory_order_relaxed);
+
+    // (No per-destination pointer caching needed — global routes write globalCutoffModOffset_
+    // which OrreryEngine reads; no raw parameter pointer is accessed on the audio thread.)
+
+    // Release fence: ensures all prior writes (routesSnapshot_[], routesSnapshotCount_,
+    // cachedOrryFltCutoff_) are visible to the audio thread before it reads the
+    // incremented version counter.  ARM-safe idiom (matching WaveformFifo pattern).
+    std::atomic_thread_fence(std::memory_order_release);
+    snapshotVersion_.fetch_add(1, std::memory_order_relaxed);
+}
+
 void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
 {
     // Append supplementary state to the APVTS ValueTree *before* converting
@@ -2543,6 +2676,12 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
             state.appendChild(uiState, nullptr);
         }
     }
+
+    // Wave 5 A1 — Persist global mod routes as a ValueTree child ("modRoutes").
+    // Existing child from a previous save is replaced first (guard against double-save).
+    if (auto existing = state.getChildWithName("modRoutes"); existing.isValid())
+        state.removeChild(existing, nullptr);
+    state.appendChild(modRoutingModel_.toValueTree(), nullptr);
 
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
     if (xml)
@@ -2761,6 +2900,19 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
             auto uiStateTree = apvts.state.getChildWithName("XOuijaPanel");
             if (uiStateTree.isValid() && onSetXOuijaState)
                 onSetXOuijaState(uiStateTree);
+        }
+
+        // Wave 5 A1 — Restore global mod routes.
+        // fromValueTree() is safe when the "modRoutes" child is absent (old sessions):
+        // it returns without modifying the model.  After restoring, flush the snapshot
+        // so processBlock evaluates the restored routes immediately.
+        {
+            auto modRoutesTree = apvts.state.getChildWithName("modRoutes");
+            if (modRoutesTree.isValid())
+            {
+                modRoutingModel_.fromValueTree(modRoutesTree);
+                flushModRoutesSnapshot();
+            }
         }
 
         // FIX 8 — Restore PlaySurface scale selector index (closes #314).
