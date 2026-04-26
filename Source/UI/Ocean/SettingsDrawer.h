@@ -408,6 +408,10 @@ inline void SettingsDrawer::buildControls()
         s.setRange(min, max);
         s.setValue(init, juce::dontSendNotification);
         s.setTextValueSuffix(suffix);
+        // Show 0 decimal places — all settings sliders use integer-sensible units
+        // (cents, ms, %). Without this, JUCE renders continuous-range values as
+        // "0.00000..." which truncates to "0.00..." in the 44 px textbox.
+        s.setNumDecimalPlacesToDisplay(0);
         s.setLookAndFeel(&sliderLnF_);
         s.setColour(juce::Slider::textBoxTextColourId,       colValue());
         s.setColour(juce::Slider::textBoxBackgroundColourId, juce::Colour(0x00000000));
