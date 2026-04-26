@@ -2783,7 +2783,7 @@ struct OstiSubVoice
     float stealFade = 1.0f;          // voice-steal fade-in: 0→1 over ~2ms to prevent click on steal
     float stealFadeIncrement = 1.0f; // OST-05: cached 1/(sr*0.002), avoids per-sample division
 
-    void prepare(double sampleRate, int voiceIndex = 0)
+    void prepare(double sampleRate, int voiceIndex = 0, int totalVoices = 16)
     {
         sr = static_cast<float>(sampleRate);
         // OST-11: each voice gets a unique noise seed (Knuth multiplicative hash of index).
@@ -2795,8 +2795,10 @@ struct OstiSubVoice
         voiceFilter.setMode(CytomicSVF::Mode::LowPass);
         breathLFO.setRate(0.06f, static_cast<float>(sampleRate));
         // OST-04: stagger LFO phase across voices to avoid synchronised AM modulation.
-        // 16 sub-voices (8 seats × 2) distributed evenly around [0, 1).
-        breathLFO.phase = static_cast<float>(voiceIndex) / 16.0f;
+        // Divide evenly around [0, 1) using the configured total so this stays
+        // correct if kNumSeats or kSubVoices ever changes.
+        const int n = std::max(1, totalVoices);
+        breathLFO.setPhaseOffset(static_cast<float>(voiceIndex) / static_cast<float>(n));
         // Cache steal-fade increment so per-sample hot path avoids a division.
         stealFadeIncrement = 1.0f / (static_cast<float>(sampleRate) * 0.002f); // OST-05
     }
@@ -2922,11 +2924,11 @@ struct OstiSeat
     int nextSubVoice = 0;
     float peakLevel = 0.0f; // for inter-seat coupling
 
-    void prepare(double sampleRate, int seatIndex = 0)
+    void prepare(double sampleRate, int seatIndex = 0, int totalVoices = 16)
     {
         // OST-04: pass a unique voice index per sub-voice for LFO phase staggering.
         for (int v = 0; v < kSubVoices; ++v)
-            subVoices[v].prepare(sampleRate, seatIndex * kSubVoices + v);
+            subVoices[v].prepare(sampleRate, seatIndex * kSubVoices + v, totalVoices);
         sequencer.prepare(sampleRate);
         nextSubVoice = 0;
         peakLevel = 0.0f;
@@ -3020,7 +3022,7 @@ public:
         aftertouch.prepare(sampleRate);
 
         for (int s = 0; s < kNumSeats; ++s)
-            seats[s].prepare(sampleRate, s); // OST-04: pass seat index for LFO stagger
+            seats[s].prepare(sampleRate, s, kNumSeats * OstiSeat::kSubVoices); // OST-04: pass total for LFO stagger
 
         // FIX(sound): derive envelope follower coefficient from SR (~10ms time constant).
         // 1 - exp(-1/(sr * 0.010)) ≈ the correct one-pole coefficient.

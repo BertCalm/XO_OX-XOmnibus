@@ -395,24 +395,25 @@ private:
                              float cx, float cy,
                              float halfMin) const
     {
-        // Sunlit zone — warm cyan tint.
+        // Depth zones are the spatial organizing principle of the instrument —
+        // they need to be visible, not implied. The middle zone is held
+        // slightly lower than the bookends so the boundary transitions read
+        // as gradients rather than three hard bands.
         {
             const float r = kSunlitRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.16f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::sunlitTint).withAlpha(0.14f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
-        // Twilight zone — blue tint.
         {
             const float r = kTwilightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.13f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::twilightTint).withAlpha(0.10f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
 
-        // Midnight zone — violet tint.
         {
             const float r = kMidnightRadius * halfMin;
-            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.15f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::midnightTint).withAlpha(0.14f));
             g.fillEllipse(cx - r, cy - r, r * 2.0f, r * 2.0f);
         }
     }
