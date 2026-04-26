@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OPENSKY",
+  "engine_prefix": "sky_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "additive",
+    "polyphony": 6,
+    "architecture": "7-voice supersaw (kNumSaws=7) with precise detuning offsets for the fundamental plus 6 detuned copies (kDetuneOffsets: 0.0, ±0.12, ±0.24, ±0.42 cents); Shepard-tone shimmer built on top — an eternally rising harmonic spiral that never actually ascends; pitch envelope for the RISE macro; sub oscillator layer"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "linear_attack_exp_decay"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.75,
+    "velocity_targets": ["amplitude", "brightness", "attack"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "vibrato",
+    "dynamic_range_db": 65
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "RISE",
+      "behavior": "Activates the Shepard-tone pitch envelope — applies a slow rising pitch sweep that creates the illusion of eternal ascent; high RISE = the sound climbs forever, the Shepard paradox made tactile."
+    },
+    "macro2": {
+      "name": "WIDTH",
+      "behavior": "Controls stereo spread of the 7-voice supersaw — at minimum the saws are mono-center; at maximum they fan out across the full stereo field with each detuned voice occupying its own spatial position."
+    },
+    "macro3": {
+      "name": "GLOW",
+      "behavior": "Controls harmonic shimmer feedback gain — the feedback path creates a slowly decaying harmonic tail above the fundamental; more glow = longer, more harmonic ring that illuminates the air above the water."
+    },
+    "macro4": {
+      "name": "DRIFT",
+      "behavior": "Modulates the LFO rate that drives the Shepard spiral speed and supersaw detuning drift — slow drift creates oceanic sway, fast creates electric shimmer."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "pad",
+    "brightness": 0.82,
+    "warmth": 0.38,
+    "movement": 0.55,
+    "density": 0.7,
+    "transient_character": "soft"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "LFOToPitch", "AudioToWavetable"],
+    "best_as_target": ["LFOToPitch", "EnvToMorph", "AudioToFM"],
+    "recommended_partners": ["OCEANDEEP", "ORIGAMI", "OVERDUB", "OPAL"],
+    "coupling_personality": "The brightest engine in the fleet; its Shepard shimmer and wide stereo pad make it the ideal high-frequency counterpart to any deep engine; OPENSKY × OCEANDEEP is the full water column in two engines."
+  },
+
+  "mythology": {
+    "creature": "feliX ascends above the water entirely — pure light, pure air, pure euphoria; the flying fish breaking the surface into open sky",
+    "depth_zone": "surface",
+    "felix_oscar_polarity": 0.05,
+    "accent_color": "#FF8C00"
+  },
+
+  "metadata": {
+    "param_count": 47,
+    "preset_count": 428,
+    "seance_score": 8.1,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

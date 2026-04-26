@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OBSCURA",
+  "engine_prefix": "obscura_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "physical_model",
+    "polyphony": 8,
+    "architecture": "Modal synthesis of a giant squid body: high-stiffness resonant strings with nonlinear contact interaction; kMaxVoices=8 voices each modelling a resonating elastic body; stiffness, damping, nonlinearity, and scan width control the physical behaviour of the 'stiff tentacle' body resonance"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.8,
+    "velocity_targets": ["amplitude", "brightness", "body_resonance"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 60
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "CHARACTER",
+      "behavior": "Simultaneously raises stiffness and nonlinearity — pulling the resonant body from a soft bowed string toward a glassy metallic rod; the core timbral identity macro of OBSCURA."
+    },
+    "macro2": {
+      "name": "MOVEMENT",
+      "behavior": "Controls scan width — how broadly the excitation probe sweeps across the body; low = focused point-source resonance, high = broad scanning with complex interference patterns across the entire length."
+    },
+    "macro3": {
+      "name": "COUPLING",
+      "behavior": "Scales incoming inter-engine coupling signal depth, making OBSCURA more or less receptive to modulation from other engines; also controls sympathetic resonance from paired engines."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Increases body damping in a space-is-time sense — higher SPACE pushes resonance toward longer room-like sustain and adds the reverberant body of the underwater cavity."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "pad",
+    "brightness": 0.52,
+    "warmth": 0.47,
+    "movement": 0.43,
+    "density": 0.53,
+    "transient_character": "bowed"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AudioToRing", "FilterToFilter"],
+    "best_as_target": ["AudioToFM", "EnvToMorph", "AmpToFilter", "KnotTopology"],
+    "recommended_partners": ["OUROBOROS", "OXBOW", "ORGANON", "ORCA"],
+    "coupling_personality": "The giant squid's stiff body creates slow resonant sweep that works powerfully as a filter source; its physical model is deeply receptive to AudioToFM coupling that warps its body in alien ways."
+  },
+
+  "mythology": {
+    "creature": "The giant squid — stiff resonant body reaching from the twilight zone into the abyss; the creature that changed what we thought was possible at depth",
+    "depth_zone": "abyss",
+    "felix_oscar_polarity": 0.75,
+    "accent_color": "#8A9BA8"
+  },
+
+  "metadata": {
+    "param_count": 30,
+    "preset_count": 475,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

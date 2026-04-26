@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OVERTONE",
+  "engine_prefix": "over_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "spectral_stft",
+    "polyphony": 4,
+    "architecture": "Continued-fraction convergent additive synthesis; partial frequencies derived from Pi/e/φ continued fraction expansions creating natural-but-non-integer overtone series; Pi table with 64 convergent entries; Nyquist fadeout applied (patch 2026-03-20) to prevent aliasing above SR/2; anti-aliased spectral spread; patched spectral collapse at low depth"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.7,
+    "velocity_targets": ["amplitude", "brightness", "morph"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 60
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "DEPTH",
+      "behavior": "Controls the number of active continued-fraction partial entries; low DEPTH = only fundamental and first few convergents (pure and simple); high DEPTH = all 64 convergents active creating dense irrational-ratio clusters."
+    },
+    "macro2": {
+      "name": "COLOR",
+      "behavior": "Tints the spectral balance — pushes energy toward higher or lower convergents; combined with DEPTH this shapes whether the sound is a pure fundamental with a shimmer or a full complex overtone cloud."
+    },
+    "macro3": {
+      "name": "DRIFT",
+      "behavior": "Applies slow LFO-driven drift to individual partial amplitudes — makes the continued-fraction spectrum slowly breathe as each partial evolves independently."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls reverb tail and the acoustic space of the nautilus shell chamber — high SPACE makes the spectral partials resonate in an infinite spiral cavity."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "spectral",
+    "brightness": 0.7,
+    "warmth": 0.35,
+    "movement": 0.4,
+    "density": 0.55,
+    "transient_character": "soft"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AudioToFM", "LFOToPitch"],
+    "best_as_target": ["AudioToFM", "EnvToMorph", "LFOToPitch"],
+    "recommended_partners": ["ORIGAMI", "OPENSKY", "ORBITAL", "OBSCURA"],
+    "coupling_personality": "A mathematical spectral engine; its continued-fraction partials create unique beating patterns when coupled with pure-interval engines; pairs beautifully with ORIGAMI for layered spectral complexity."
+  },
+
+  "mythology": {
+    "creature": "The nautilus — perfect mathematical spiral shell; the continued-fraction of nature's geometry made audible",
+    "depth_zone": "open_water",
+    "felix_oscar_polarity": 0.3,
+    "accent_color": "#A8D8EA"
+  },
+
+  "metadata": {
+    "param_count": 1,
+    "preset_count": 437,
+    "seance_score": 7.6,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}
