@@ -114,14 +114,18 @@ private:
     static juce::Colour colDrawerBg()     noexcept { return juce::Colour(0xFF1A2332); }
     static juce::Colour colTeal()         noexcept { return juce::Colour(0xFF7FDBCA); }
     static juce::Colour colSearchBg()     noexcept { return juce::Colour(0xFF243040); }
-    static juce::Colour colSearchText()   noexcept { return juce::Colour(0xFF8899AA); }
+    // WCAG AAA fix: raised #8899AA → #AABCCE (≥7:1 on drawer bg #1A2332; prior ≈5.5:1 AA only)
+    static juce::Colour colSearchText()   noexcept { return juce::Colour(0xFFAABCCE); }
     static juce::Colour colPillActiveBg() noexcept { return juce::Colour(0xFF2A5A50); }
-    static juce::Colour colPillInactTx()  noexcept { return juce::Colour(0xFF667788); }
+    // WCAG AAA fix: raised #667788 → #B0BBCC (≥7:1 on drawer bg #1A2332; prior ≈3.5:1 FAIL)
+    static juce::Colour colPillInactTx()  noexcept { return juce::Colour(0xFFB0BBCC); }
     static juce::Colour colEngineName()   noexcept { return juce::Colour(0xFFE0E8F0); }
-    static juce::Colour colArchetype()    noexcept { return juce::Colour(0xFF667788); }
+    // WCAG AAA fix: raised #667788 → #B0BBCC (≥7:1 on drawer bg #1A2332; prior ≈3.5:1 FAIL)
+    static juce::Colour colArchetype()    noexcept { return juce::Colour(0xFFB0BBCC); }
     static juce::Colour colRowHover()     noexcept { return juce::Colour(0xFF243444); }
     static juce::Colour colRowSelected()  noexcept { return juce::Colour(0xFF1E3A4A); }
-    static juce::Colour colCloseBtn()     noexcept { return juce::Colour(0xFF667788); }
+    // WCAG AAA fix: raised #667788 → #B0BBCC (≥7:1 on drawer bg #1A2332; prior ≈3.5:1 FAIL)
+    static juce::Colour colCloseBtn()     noexcept { return juce::Colour(0xFFB0BBCC); }
     static juce::Colour colBorder()       noexcept { return juce::Colour(0xFF243040); }
 
     //==========================================================================
@@ -473,6 +477,13 @@ private:
     // Active category filter (0 = ALL)
     int activeCatIdx_ = 0;
 
+    // Lucy's gate: cached gradients — rebuilt in resized(), NOT in paint().
+    // Both colourGradients depend only on component bounds (title height + total height),
+    // so they are valid for the entire lifetime of a given bounds rect.
+    juce::ColourGradient cachedTitleGrad_;
+    juce::ColourGradient cachedFadeGrad_;
+    bool gradsCacheValid_ = false;
+
     // Close button bounds (local component coords) + hover state
     juce::Rectangle<int> closeBtnBounds_;
     bool                 closeBtnHovered_ = false;
@@ -653,10 +664,11 @@ inline void EnginePickerDrawer::paint(juce::Graphics& g)
     {
         const auto titleR = bounds.withHeight(kHeaderH).toFloat();
 
-        // Subtle teal wash
-        juce::ColourGradient titleGrad(colTeal().withAlpha(0.08f), 0.0f, 0.0f,
-                                       juce::Colour(0x00000000), titleR.getWidth(), 0.0f, false);
-        g.setGradientFill(titleGrad);
+        // Subtle teal wash — blit cached gradient (Lucy's gate: no per-paint recompute)
+        if (gradsCacheValid_)
+            g.setGradientFill(cachedTitleGrad_);
+        else
+            g.setColour(colTeal().withAlpha(0.04f)); // fallback flat fill if not yet sized
         g.fillRect(titleR);
 
         // Title text
@@ -677,14 +689,14 @@ inline void EnginePickerDrawer::paint(juce::Graphics& g)
         g.drawHorizontalLine(kHeaderH - 1, 0.0f, (float)bounds.getWidth());
     }
 
-    // ── Bottom fade gradient ──────────────────────────────────────────────────
+    // ── Bottom fade gradient — blit cached gradient (Lucy's gate: no per-paint recompute) ──
     {
         const int fadeH = 52;
         const int fadeY = bounds.getHeight() - fadeH;
-        juce::ColourGradient fadeGrad(juce::Colour(0x00000000),       0.0f, (float)fadeY,
-                                      colDrawerBg().withAlpha(0.94f), 0.0f, (float)bounds.getHeight(),
-                                      false);
-        g.setGradientFill(fadeGrad);
+        if (gradsCacheValid_)
+            g.setGradientFill(cachedFadeGrad_);
+        else
+            g.setColour(colDrawerBg());
         g.fillRect(0, fadeY, bounds.getWidth(), fadeH);
     }
 }
@@ -722,6 +734,31 @@ inline void EnginePickerDrawer::resized()
     // Sync list component width to viewport content area
     const int totalH = juce::jmax((int)filteredEngines_.size() * kRowHeight, 1);
     listComp_.setSize(listViewport_.getMaximumVisibleWidth(), totalH);
+
+    // Lucy's gate: rebuild gradient caches here (bounds changed) so paint() can blit, not compute.
+    const int w = getWidth();
+    const int h = getHeight();
+    if (w > 0 && h > 0)
+    {
+        // Title bar gradient (horizontal teal wash)
+        cachedTitleGrad_ = juce::ColourGradient(
+            colTeal().withAlpha(0.08f), 0.0f, 0.0f,
+            juce::Colour(0x00000000), (float)w, 0.0f, false);
+
+        // Bottom fade gradient (vertical; depends on component height)
+        const int fadeH = 52;
+        const float fadeY = (float)(h - fadeH);
+        cachedFadeGrad_ = juce::ColourGradient(
+            juce::Colour(0x00000000),       0.0f, fadeY,
+            colDrawerBg().withAlpha(0.94f), 0.0f, (float)h,
+            false);
+
+        gradsCacheValid_ = true;
+    }
+    else
+    {
+        gradsCacheValid_ = false;
+    }
 }
 
 //------------------------------------------------------------------------------

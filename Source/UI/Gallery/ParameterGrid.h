@@ -466,7 +466,8 @@ public:
                            juce::Justification::centredLeft);
 
                 // ── Collapse arrow ─
-                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.3f));
+                // WCAG AAA fix: raised from 0.3f → 0.62f (≥7:1 on dark bg for 10pt icon).
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.62f));
                 g.setFont(GalleryFonts::value(10.0f));
                 g.drawText(collapsed ? kArrowCollapsed : kArrowExpanded, 0, y, getWidth() - 10, kHeaderRowH,
                            juce::Justification::centredRight);
@@ -493,7 +494,8 @@ public:
                 static const juce::Font kSectionFont =
                     juce::Font(juce::FontOptions{}.withTypeface(GalleryFonts::spaceGroteskBold()).withHeight(11.0f));
 
-                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.5f));
+                // WCAG AAA fix: raised from 0.5f → 0.70f (≥7:1 at 11pt on dark bg).
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.70f));
                 g.setFont(kSectionFont);
                 g.drawText(secText, 8, y, getWidth() - 16, kFlatHeaderH,
                            juce::Justification::centredLeft);

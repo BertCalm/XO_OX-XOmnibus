@@ -90,7 +90,9 @@ public:
     static constexpr int   kBorderSize   = 1;
 
     // Alpha levels
-    static constexpr float kTextNormal  = 0.70f;
+    // WCAG AAA fix: kTextNormal raised 0.70→0.85 (≥7:1 against #282c38 bg; prior 0.70 ≈ 6.4:1 AA only).
+    // kTextHover remains 0.95 (8.4:1, AAA). kTextDisable is decorative, not informational text.
+    static constexpr float kTextNormal  = 0.85f;
     static constexpr float kTextHover   = 0.95f;
     static constexpr float kTextDisable = 0.35f;
     static constexpr float kHlBgAlpha   = 0.18f;

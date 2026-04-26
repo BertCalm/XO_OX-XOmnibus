@@ -5,7 +5,8 @@
 #include "../../XOceanusProcessor.h"
 #include "../../Core/MegaCouplingMatrix.h"
 #include "../GalleryColors.h"
-#include "../CouplingColors.h" // CouplingTypeColors — canonical coupling colour source
+#include "../CouplingColors.h"  // CouplingTypeColors — canonical per-type coupling colour source
+#include "../AccentColors.h"    // D10 coupling/chain accent families (system-level chrome)
 namespace xoceanus
 {
 
