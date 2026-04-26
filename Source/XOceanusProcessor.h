@@ -502,6 +502,21 @@ private:
         std::atomic<float>* cmHumanize = nullptr;
         std::atomic<float>* cmSidechainDuck = nullptr;
         std::atomic<float>* cmEnoMode = nullptr;
+
+        // B2: input mode + global key/scale
+        std::atomic<float>* cmInputMode   = nullptr; // chord_input_mode (0=AUTO, 1=PAD, 2=DEG)
+        std::atomic<float>* cmGlobalRoot  = nullptr; // cm_global_root (0-11)
+        std::atomic<float>* cmGlobalScale = nullptr; // cm_global_scale (0-8)
+
+        // B2: pad chord slots (16 × 3 params)
+        struct PadChordParams
+        {
+            std::atomic<float>* root    = nullptr; // chord_pad_N_root   [0,127]
+            std::atomic<float>* voicing = nullptr; // chord_pad_N_voicing [0,NumModes-1]
+            std::atomic<float>* inv     = nullptr; // chord_pad_N_inv    [0,3]
+        };
+        std::array<PadChordParams, 16> padChords;
+
         // Family bleed params — cached to avoid string lookups on audio thread
         std::atomic<float>* ohmCommune = nullptr;
         std::atomic<float>* obblBond = nullptr;
