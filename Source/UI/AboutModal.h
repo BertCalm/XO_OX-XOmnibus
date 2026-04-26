@@ -113,10 +113,15 @@ public:
     bool isShowing() const noexcept { return isVisible(); }
 
     //==========================================================================
+    // Bring juce::Component::keyPressed(key) into scope so the 1-arg Component
+    // virtual is not hidden by our 2-arg KeyListener override below.
     using juce::Component::keyPressed;
 
     // juce::KeyListener — D12: Escape closes the modal.
-    bool keyPressed(const juce::KeyPress& key) override
+    // Must match KeyListener::keyPressed (2-arg pure virtual); the 1-arg
+    // Component::keyPressed is re-exposed via the using declaration above.
+    bool keyPressed(const juce::KeyPress& key,
+                    juce::Component* /*originatingComponent*/) override
     {
         if (isVisible() && key == juce::KeyPress::escapeKey)
         {
