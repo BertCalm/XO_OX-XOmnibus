@@ -1,8 +1,13 @@
-name: Sanitizer Builds
+name: Sanitizer Builds (nightly)
 
 on:
-  pull_request:
-    branches: [main]
+  schedule:
+    - cron: '0 6 * * *'   # daily 06:00 UTC
+  workflow_dispatch:       # keep manual trigger for ad-hoc runs
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   MACOSX_DEPLOYMENT_TARGET: '12.0'

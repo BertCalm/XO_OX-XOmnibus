@@ -3,8 +3,24 @@ name: Build XOceanus
 on:
   push:
     branches: [main]
+    paths:
+      - 'Source/**'
+      - 'Tests/**'
+      - 'CMakeLists.txt'
+      - '.github/workflows/build.yml'
+      - 'Libs/**'
   pull_request:
     branches: [main]
+    paths:
+      - 'Source/**'
+      - 'Tests/**'
+      - 'CMakeLists.txt'
+      - '.github/workflows/build.yml'
+      - 'Libs/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 env:
   MACOSX_DEPLOYMENT_TARGET: '12.0'
@@ -23,6 +39,16 @@ jobs:
         with:
           path: Libs/JUCE
           key: juce-8.0.4
+
+      - name: Cache build artifacts
+        uses: actions/cache@v5
+        with:
+          path: |
+            build/CMakeFiles
+            build/CMakeCache.txt
+          key: ${{ runner.os }}-${{ github.workflow }}-build-${{ hashFiles('Source/**', 'CMakeLists.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ github.workflow }}-build-
 
       - name: Clone JUCE 8.0.4
         if: steps.cache-juce.outputs.cache-hit != 'true'
