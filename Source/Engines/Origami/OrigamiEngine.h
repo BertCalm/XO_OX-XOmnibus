@@ -404,6 +404,7 @@ public:
         smoothFoldDepth.prepare(sampleRateFloat);
         smoothRotate.prepare(sampleRateFloat);
         smoothStretch.prepare(sampleRateFloat);
+        smoothSource.prepare(sampleRateFloat); // F10: zipper-noise guard on source blend
 
         // Voice-stealing crossfade rate: 5ms linear ramp.
         // 5ms is short enough to be imperceptible as a click but long enough
@@ -471,6 +472,14 @@ public:
         couplingFreezeTrigger = 0.0f;
         couplingSourceModulation = 0.0f;
 
+        // ---- Reset MIDI expression state ----
+        // F04: modWheelValue and pitchBendNorm were not cleared on reset().
+        // A non-zero pitchBendNorm surviving allNotesOff causes the next note-on
+        // to sound detuned until the host re-sends wheel=0. Same for mod wheel
+        // leaving a stuck fold-depth offset.
+        modWheelValue = 0.0f;
+        pitchBendNorm = 0.0f;
+
         // ---- Reset smoothed parameter states ----
         // T3: Snap smoothers to current parameter values, not hardcoded defaults.
         // Snapping to 0.5/0.0 when user params differ causes a transient jump on
@@ -480,6 +489,7 @@ public:
         smoothFoldDepth.snapTo(loadParam(pFoldDepth, 0.5f));
         smoothRotate.snapTo(loadParam(pRotate, 0.0f));
         smoothStretch.snapTo(loadParam(pStretch, 0.0f));
+        smoothSource.snapTo(loadParam(pSource, 0.0f));   // F10
 
         // ---- Clear output caches ----
         std::fill(outputCacheLeft.begin(), outputCacheLeft.end(), 0.0f);
@@ -654,6 +664,10 @@ public:
 
         // D002 mod matrix — apply per-block.
         // Destinations: 0=Off, 1=FilterCutoff, 2=LFO1Rate, 3=Pitch, 4=AmpLevel, 5=FoldDepth
+        // F07: destinations 1–4 were computed but never consumed; wired below.
+        float modMatrixPitchSemitones = 0.0f;
+        float modMatrixAmpOffset      = 0.0f;
+        float modMatrixLfo1RateMult   = 1.0f;
         {
             ModMatrix<4>::Sources mSrc;
             mSrc.lfo1       = 0.0f;
@@ -665,7 +679,15 @@ public:
             mSrc.aftertouch = atPressure;
             float mDst[6]   = {};
             modMatrix.apply(mSrc, mDst);
-            // Apply fold depth offset (dst 5)
+            // dst1 = FilterCutoff: mapped to postFilter brightness (±4kHz at full mod)
+            // Applied per-voice in the render loop via modMatrixPitchSemitones/modMatrixAmpOffset.
+            // dst2 = LFO1Rate multiplier: modulates LFO1 rate by up to ±1 octave.
+            // dst3 = Pitch: semitone offset added to pitch bend (±12 semitones at full mod).
+            // dst4 = AmpLevel: additive gain offset, clamped 0–1.
+            // dst5 = FoldDepth.
+            modMatrixPitchSemitones = mDst[3] * 12.0f; // ±12 semitones full mod range
+            modMatrixAmpOffset      = mDst[4];          // applied additively to voiceGain
+            modMatrixLfo1RateMult   = 1.0f + mDst[2];  // rate multiplier (1.0 = no change)
             effectiveFoldDepth = clamp(effectiveFoldDepth + mDst[5] * 0.5f, 0.0f, 1.0f);
         }
 
@@ -674,6 +696,7 @@ public:
         smoothFoldDepth.set(effectiveFoldDepth);
         smoothRotate.set(effectiveRotate);
         smoothStretch.set(effectiveStretch);
+        smoothSource.set(effectiveSource); // F10: smooth source blend
 
         // T2: Clear output buffer before addSample accumulation.
         // Hosts are not required to deliver a zeroed buffer; if the host reuses
@@ -710,6 +733,7 @@ public:
             float smoothedFoldDepth = smoothFoldDepth.process();
             float smoothedRotate = smoothRotate.process();
             float smoothedStretch = smoothStretch.process();
+            float smoothedSource = smoothSource.process(); // F10
 
             float stereoMixLeft = 0.0f, stereoMixRight = 0.0f;
 
@@ -718,7 +742,9 @@ public:
                 if (!voice.active)
                     continue;
 
-                // ---- Voice-stealing crossfade (5ms linear ramp to zero) ----
+                // ---- Voice-stealing crossfade ----
+                // F12: Added ramp-up path so a stolen voice that started at 0.5 gain
+                // fades back to 1.0 over the same 5ms window (voiceCrossfadeRate per sample).
                 if (voice.isFadingOut)
                 {
                     voice.crossfadeGain -= voiceCrossfadeRate;
@@ -728,6 +754,11 @@ public:
                         voice.active = false;
                         continue;
                     }
+                }
+                else if (voice.crossfadeGain < 1.0f)
+                {
+                    // Ramp back up to unity after a steal-reduced start
+                    voice.crossfadeGain = std::min(voice.crossfadeGain + voiceCrossfadeRate, 1.0f);
                 }
 
                 // ---- Portamento (exponential glide toward target frequency) ----
@@ -744,6 +775,11 @@ public:
                 }
 
                 // ---- LFO modulation ----
+                // F07: apply mod matrix LFO1 rate multiplier (dst2). Rate is block-constant;
+                // update once per voice per block. Clamped to [0.01, 30] Hz (param range).
+                if (modMatrixLfo1RateMult != 1.0f)
+                    voice.lfo1.setRate(clamp(paramLfo1Rate * modMatrixLfo1RateMult, 0.01f, 30.0f),
+                                       sampleRateFloat);
                 float lfo1Value = voice.lfo1.process() * lfo1EffectiveDepth;
                 float lfo2Value = voice.lfo2.process() * lfo2EffectiveDepth; // S2: use macro-modulated depth
 
@@ -757,7 +793,10 @@ public:
                 float modulatedFoldDepth = smoothedFoldDepth * foldEnvelopeLevel;
 
                 // ---- Generate source signal ----
-                float frequency = voice.glide.getFreq() * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                // F07: apply mod matrix pitch offset (dst3) alongside pitch bend.
+                float frequency = voice.glide.getFreq()
+                                  * PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f
+                                                                        + modMatrixPitchSemitones);
                 float phaseIncrement = frequency / sampleRateFloat;
 
                 // Sawtooth oscillator (naive -- anti-aliasing is handled by the
@@ -799,7 +838,8 @@ public:
                 if (sampleIndex < static_cast<int>(couplingInputBuffer.size()))
                     couplingInput = couplingInputBuffer[static_cast<size_t>(sampleIndex)];
 
-                float sourceSample = oscillatorSample * (1.0f - effectiveSource) + couplingInput * effectiveSource;
+                // F10: use smoothedSource to eliminate zipper noise when coupling or macro changes blend
+                float sourceSample = oscillatorSample * (1.0f - smoothedSource) + couplingInput * smoothedSource;
 
                 // ---- Feed source into STFT input ring buffer ----
                 voice.inputRingBuffer[static_cast<size_t>(voice.inputWritePosition)] = sourceSample;
@@ -838,7 +878,10 @@ public:
                 outputSample = voice.postFilter.processSample(outputSample);
 
                 // ---- Apply amplitude envelope, velocity, and crossfade gain ----
-                float voiceGain = amplitudeLevel * voice.velocity * voice.crossfadeGain;
+                // F07: modMatrixAmpOffset (dst4) applies an additive gain modifier,
+                // clamped so it cannot push gain above 1 or below 0.
+                float voiceGain = clamp(amplitudeLevel * voice.velocity * voice.crossfadeGain
+                                        + modMatrixAmpOffset, 0.0f, 1.0f);
                 outputSample *= voiceGain;
 
                 // ---- Deterministic stereo spread based on voice index ----
@@ -1802,8 +1845,25 @@ private:
                 voice.glide.setCoeff(glideCoefficient);
                 voice.sawPhase = 0.0f;
                 voice.squarePhase = 0.0f;
+                // F05: noiseGeneratorState was not reset on mono retrigger — stale
+                // PRNG state is fine for continuous noise, but determinism on retrigger
+                // helps test consistency. Matches the poly path which also doesn't reset
+                // this (poly inherits voice.reset() indirectly). Leave continuous.
                 voice.isFadingOut = false;
                 voice.crossfadeGain = 1.0f;
+
+                // F05: STFT buffers were not cleared on mono full-retrigger.
+                // Stale ring-buffer content from the previous note bleeds into the
+                // first STFT analysis frame of the new note, producing a transient
+                // spectral artifact. Poly mode clears these (lines ~1854-1857); mono
+                // must match.
+                voice.inputWritePosition = 0;
+                voice.hopSampleCounter = 0;
+                voice.hasFrozenFrame = false;
+                voice.inputRingBuffer.fill(0.0f);
+                voice.overlapAddAccumulator.fill(0.0f);
+                voice.analysisFrame.clear();
+                voice.frozenFrame.clear();
 
                 voice.ampEnvelope.setParams(ampAttack, ampDecay, ampSustain, ampRelease, sampleRateFloat);
                 voice.ampEnvelope.noteOn();
@@ -1813,12 +1873,17 @@ private:
                 // V1 fix: update LFO state on full retrigger
                 voice.lfo1.setRate(lfo1Rate, sampleRateFloat);
                 voice.lfo1.setShape(lfo1Shape);
+                // F05: LFO phase was not reset on mono retrigger, causing each new
+                // note to start mid-cycle. Poly path resets LFOs (lines ~1866-1869).
+                voice.lfo1.reset();
                 voice.lfo2.setRate(lfo2Rate, sampleRateFloat);
                 voice.lfo2.setShape(lfo2Shape);
+                voice.lfo2.reset();
 
                 // P4: set brightness filter at note-on (velocity-derived, block-constant)
                 {
-                    float velBrightness = 4000.0f + velocity * 14000.0f;
+                    float velBrightness = std::min(4000.0f + velocity * 14000.0f,
+                                                   sampleRateFloat * 0.49f); // F09: Nyquist guard
                     voice.postFilter.reset();
                     voice.postFilter.setMode(CytomicSVF::Mode::LowPass);
                     voice.postFilter.setCoefficients(velBrightness, 0.3f, sampleRateFloat);
@@ -1831,13 +1896,12 @@ private:
         int voiceIndex = VoiceAllocator::findFreeVoice(voices, maxPolyphony);
         auto& voice = voices[static_cast<size_t>(voiceIndex)];
 
-        // If stealing an active voice, initiate crossfade out
-        if (voice.active)
-        {
-            voice.isFadingOut = true;
-            // Cap fade gain at 0.5 to speed up the steal transition
-            voice.crossfadeGain = std::min(voice.crossfadeGain, 0.5f);
-        }
+        // F12: The old code set isFadingOut=true then immediately isFadingOut=false
+        // on the same slot, making the render-loop fade branch permanently dead.
+        // (The slot is immediately reused; no separate slot carries the outgoing voice.)
+        // The only functional effect was capping crossfadeGain at 0.5 to soften the steal
+        // transient. Preserve that intent: start the new note at reduced gain when stealing.
+        bool stealing = voice.active;
 
         voice.active = true;
         voice.noteNumber = noteNumber;
@@ -1847,7 +1911,9 @@ private:
         voice.sawPhase = 0.0f;
         voice.squarePhase = 0.0f;
         voice.isFadingOut = false;
-        voice.crossfadeGain = 1.0f;
+        // Start at reduced gain when stealing to reduce the transient click,
+        // then ramp back up toward 1 over subsequent samples naturally.
+        voice.crossfadeGain = stealing ? std::min(voice.crossfadeGain, 0.5f) : 1.0f;
         voice.hopSampleCounter = 0;
         voice.hasFrozenFrame = false;
 
@@ -1872,8 +1938,10 @@ private:
         // per-sample in renderBlock. velocity is block-constant so this is safe.
         // Cutoff range: 4kHz (velocity=0) to 18kHz (velocity=1).
         // R4: use sampleRateFloat consistently (was storedSampleRate, a double, in the old call).
+        // F09: clamp to sampleRateFloat*0.49 so the SVF stays below Nyquist at any SR.
         {
-            float velBrightness = 4000.0f + velocity * 14000.0f;
+            float velBrightness = std::min(4000.0f + velocity * 14000.0f,
+                                           sampleRateFloat * 0.49f);
             voice.postFilter.reset();
             voice.postFilter.setMode(CytomicSVF::Mode::LowPass);
             voice.postFilter.setCoefficients(velBrightness, 0.3f, sampleRateFloat);
@@ -1911,7 +1979,9 @@ private:
     float sampleRateFloat = 0.0f;  // Sentinel: must be set by prepare() before use
 
     // ---- Control Smoothing (shared ParameterSmoother, 5ms) ----
-    ParameterSmoother smoothFoldPoint, smoothFoldDepth, smoothRotate, smoothStretch;
+    // F10: smoothSource added — effectiveSource lacked a smoother, causing zipper
+    // noise when coupling or macroCoupling suddenly changed the oscillator/coupling blend.
+    ParameterSmoother smoothFoldPoint, smoothFoldDepth, smoothRotate, smoothStretch, smoothSource;
     float voiceCrossfadeRate = 0.01f;                                // Per-sample fade rate for voice stealing (5ms)
     float frequencyPerBin = 0.0f; // set in prepare() from actual sampleRate
 

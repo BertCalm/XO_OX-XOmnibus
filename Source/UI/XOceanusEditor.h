@@ -1328,6 +1328,7 @@ public:
             aboutModal_.setBounds(getLocalBounds());
 
             toastOverlay_.setBounds(getLocalBounds());
+
             return;
         }
     }
@@ -2304,7 +2305,7 @@ private:
     // V1 fix: TooltipWindow activates all setTooltip() calls across the entire UI.
     // JUCE requires exactly one TooltipWindow child per top-level component; without it
     // every setTooltip() call is dead code. 400ms delay matches standard plugin UX.
-    juce::TooltipWindow tooltipWindow{this, 400};
+    juce::TooltipWindow tooltipWindow(this, 400);
     SidebarPanel sidebar;
     StatusBar statusBar;
 

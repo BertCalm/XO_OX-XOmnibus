@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "ORGANON",
+  "engine_prefix": "organon_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "generative",
+    "polyphony": 4,
+    "architecture": "Variational Free Energy (VFE) metabolic synthesis — biological Bayesian inference applied to audio generation; the engine models a living organism's metabolic state through prediction-error minimisation; Signal Flux represents metabolic output; the organism 'believes' in a pitch and updates that belief sample-by-sample against incoming evidence; kMaxVoices=4 independent organisms"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "custom",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 1,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 4,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.6,
+    "velocity_targets": ["amplitude", "morph"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 55
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "METABOLISM",
+      "behavior": "Controls the metabolic rate — the speed of the VFE update cycle; low = slow chemical reactions, alien patience; high = frantic metabolism, rapid timbral oscillation as the organism fights thermodynamic equilibrium."
+    },
+    "macro2": {
+      "name": "SPECTRUM",
+      "behavior": "Shapes the spectral output of the signal flux — the metabolic byproduct's harmonic content; adjusts the balance between fundamental and overtone energy in the biological 'exhaust' signal."
+    },
+    "macro3": {
+      "name": "COUPLING",
+      "behavior": "Scales the depth of incoming inter-engine coupling; ORGANON can receive other engines' outputs as metabolic input — coupling becomes symbiotic feeding, changing the organism's belief updating."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls the environmental FX depth — reverb and delay representing the dark cave the deep-sea organism inhabits; high SPACE = infinite dark water with slow fading metabolic trails."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "generative",
+    "brightness": 0.47,
+    "warmth": 0.5,
+    "movement": 0.39,
+    "density": 0.46,
+    "transient_character": "none"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AudioToFM", "EnvToDecay"],
+    "best_as_target": ["AudioToFM", "AudioToBuffer", "EnvToMorph", "AmpToFilter"],
+    "recommended_partners": ["OUROBOROS", "ORGANISM", "ORACLE", "OXBOW"],
+    "coupling_personality": "The biological anchor of the fleet; its VFE metabolism is unlike any other synthesis method — a living engine that is fundamentally changed by what other engines feed it; the 8/8 PASS ghost council verdict was unanimous."
+  },
+
+  "mythology": {
+    "creature": "Deep-sea biology — the slow chemical alien metabolism of organisms in the permanent dark; a creature whose entire life is a Bayesian inference about whether it should exist",
+    "depth_zone": "deep",
+    "felix_oscar_polarity": 0.75,
+    "accent_color": "#00CED1"
+  },
+
+  "metadata": {
+    "param_count": 14,
+    "preset_count": 778,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

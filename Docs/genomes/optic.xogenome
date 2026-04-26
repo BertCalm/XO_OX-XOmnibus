@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OPTIC",
+  "engine_prefix": "optic_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 8,
+    "architecture": "Zero-audio visual synthesis paradigm (Blessing B005) — OPTIC generates light parameters (phosphorescent flicker, pulse timing, spectral color) rather than audio samples; the 'audio' output is a secondary bioluminescent excitation signal derived from the light computation; a paradigm invention 10 years ahead of industry as noted in ghost council verdict; comb jelly inspiration — refractive light through transparent body"
+  },
+
+  "filter": {
+    "topology": "comb",
+    "modes": ["bandpass", "allpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "custom",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.5,
+    "velocity_targets": ["amplitude", "brightness"],
+    "pitch_bend_range": 0,
+    "aftertouch_response": "none",
+    "dynamic_range_db": 50
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "FLASH",
+      "behavior": "Controls the bioluminescent pulse rate and intensity — how often and how brightly the plankton fires; low FLASH = rare individual flashes, high = continuous phosphorescent bloom."
+    },
+    "macro2": {
+      "name": "SPECTRUM",
+      "behavior": "Tunes the spectral color of the light emission — from blue-green (deep bioluminescence) to near-UV phosphorescence; maps to the comb frequency of the comb filter."
+    },
+    "macro3": {
+      "name": "DRIFT",
+      "behavior": "Controls the visual drift speed — how the light moves through space; creates temporal patterns in the light emission that translate to rhythmic audio pulses."
+    },
+    "macro4": {
+      "name": "DEPTH",
+      "behavior": "Moves the creature deeper — changes from near-surface scattered light to focused deep-water point sources; alters the character of the audio translation."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "fx",
+    "brightness": 0.9,
+    "warmth": 0.15,
+    "movement": 0.75,
+    "density": 0.3,
+    "transient_character": "electronic"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "LFOToPitch", "AudioToFM"],
+    "best_as_target": ["AudioToFM", "AudioToRing"],
+    "recommended_partners": ["OPENSKY", "ORIGAMI", "OVERDUB", "OBRIX"],
+    "coupling_personality": "A light-to-sound translator; OPTIC's bioluminescent pulse outputs are unique in the fleet — genuinely percussive with a light-physics cadence that no other oscillator type produces; the 'Revolutionary' ghost verdict is accurate."
+  },
+
+  "mythology": {
+    "creature": "The comb jelly — bioluminescent organism in the sunlit shallows; light as the primary output medium, sound as secondary consequence",
+    "depth_zone": "surface",
+    "felix_oscar_polarity": 0.05,
+    "accent_color": "#00FF41"
+  },
+
+  "metadata": {
+    "param_count": 16,
+    "preset_count": 581,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "ORACLE",
+  "engine_prefix": "oracle_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 8,
+    "architecture": "GENDY stochastic synthesis combined with Maqam tuning system; GENDY generates waveforms by Brownian motion between breakpoints — each period is statistically derived from the previous; 9 tuning systems including 12-TET, Rast, Bayati, Saba, Hijaz, Sikah, Nahawand, Kurd, and Ajam map to ancient and contemporary tonal systems; PROPHECY and EVOLUTION macros steer the stochastic process"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.75,
+    "velocity_targets": ["amplitude", "brightness", "morph"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 65
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "PROPHECY",
+      "behavior": "Drives the GENDY waveform mutation rate — at low PROPHECY the oracle speaks slowly and clearly; at high it produces rapid stochastic pronouncements that fragment into complex spectral constellations."
+    },
+    "macro2": {
+      "name": "EVOLUTION",
+      "behavior": "Controls the Brownian motion step size for GENDY breakpoints — small steps = subtle timbral drift, large steps = dramatic spectral evolution over held notes."
+    },
+    "macro3": {
+      "name": "TUNING",
+      "behavior": "Morphs between tuning systems — from 12-TET through the Maqam scales; intermediate positions blend between two adjacent tuning systems creating micro-tonal textures."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls reverb tail length and the coral formation density of the ancient reef formation — high SPACE places the oracle in a vast cave resonating with geological time."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "lead",
+    "brightness": 0.49,
+    "warmth": 0.52,
+    "movement": 0.5,
+    "density": 0.55,
+    "transient_character": "electronic"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "LFOToPitch", "AudioToFM"],
+    "best_as_target": ["AudioToFM", "EnvToMorph", "AmpToFilter"],
+    "recommended_partners": ["ORGANON", "OUROBOROS", "ORCA", "ORGANISM"],
+    "coupling_personality": "A stochastic unpredictability source; its GENDY waveform outputs are biologically complex audio that transforms other engines in exciting ways via AudioToFM; Buchla gave 10/10 for its architectural courage."
+  },
+
+  "mythology": {
+    "creature": "Ancient reef formations that remember every current that ever passed — geological time made audible, prophetic calcification",
+    "depth_zone": "reef",
+    "felix_oscar_polarity": 0.5,
+    "accent_color": "#4B0082"
+  },
+
+  "metadata": {
+    "param_count": 30,
+    "preset_count": 638,
+    "seance_score": 8.6,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

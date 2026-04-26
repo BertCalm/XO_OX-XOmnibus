@@ -108,7 +108,8 @@ public:
 
     void setFrequency(float hz) noexcept
     {
-        double freq = clamp(static_cast<float>(hz), 20.0f, 20000.0f);
+        // Nyquist ceiling derived from sample rate — avoids aliasing at 96k/192k
+        double freq = clamp(static_cast<float>(hz), 20.0f, static_cast<float>(sr * 0.49));
         basePhaseInc = freq / sr;
     }
 
@@ -263,11 +264,13 @@ public:
         syncBlepHeight = 0.0f;
         syncBlepT = 0.0f;
         syncBlepDt = 0.0f;
+        noiseFilterState = 0.0f; // P14: noise IIR state must be cleared on reset
     }
 
     void setFrequency(float hz) noexcept
     {
-        baseFreq = static_cast<double>(clamp(hz, 20.0f, 20000.0f));
+        // Nyquist ceiling derived from sample rate — avoids aliasing at 96k/192k
+        baseFreq = static_cast<double>(clamp(hz, 20.0f, static_cast<float>(sr * 0.49)));
         phaseInc = baseFreq / sr;
     }
 
@@ -488,7 +491,12 @@ public:
         sr = sampleRate;
         reset();
     }
-    void reset() noexcept { phase = 0.0; }
+    void reset() noexcept
+    {
+        phase = 0.0;
+        lastTuneCents = -99999.0f; // force recompute of cachedTuneRatio on next use
+        cachedTuneRatio = 1.0f;
+    }
 
     void setFrequency(float hz, int octave, float tuneCents) noexcept
     {
@@ -498,7 +506,8 @@ public:
         if (tuneCents != lastTuneCents)
         {
             lastTuneCents = tuneCents;
-            cachedTuneRatio = std::pow(2.0f, tuneCents / 1200.0f);
+            // fastPow2: ~0.1% error vs std::pow — negligible for pitch tuning
+            cachedTuneRatio = fastPow2(tuneCents * (1.0f / 1200.0f));
         }
         double freq = static_cast<double>(clamp(hz / divisor * cachedTuneRatio, 5.0f, 2000.0f));
         phaseInc = freq / sr;
@@ -559,12 +568,13 @@ public:
     {
         sr = sampleRate;
         invSR = 1.0f / static_cast<float>(sr);
-        // Pink noise IIR coefficients calibrated for 44100 Hz; scale cutoff frequencies
-        // by (44100/sr) so the spectral shape remains correct at 48kHz / 96kHz.
-        float srScale = 44100.0f / static_cast<float>(sr);
-        pinkCoeff[0] = srScale * 0.0555f;
-        pinkCoeff[1] = srScale * 0.0158f;
-        pinkCoeff[2] = srScale * 0.0046f;
+        // Pink noise IIR: three leaky integrators at pole frequencies 399 Hz, 112 Hz, 32 Hz.
+        // Use matched-Z transform (1 - exp(-2π*fc/sr)) so spectral shape is SR-invariant —
+        // the previous linear (44100/sr) scaling drifted at 96k/192k (P31a pattern).
+        constexpr float twoPi = 6.28318530f;
+        constexpr float kPinkPoles[3] = {399.0f, 112.0f, 32.0f};
+        for (int i = 0; i < 3; ++i)
+            pinkCoeff[i] = 1.0f - fastExp(-twoPi * kPinkPoles[i] / static_cast<float>(sr));
         // Clamp so coefficients stay in (0,1] — prevents instability at very low sr
         for (auto& c : pinkCoeff)
             c = clamp(c, 0.0001f, 1.0f);
@@ -575,6 +585,7 @@ public:
     {
         pinkState[0] = pinkState[1] = pinkState[2] = 0.0f;
         brownState = 0.0f;
+        hissState = 0.0f; // P14: hiss IIR state must be cleared on reset
         decayLevel = 1.0f;
         lastDecayTime = -1.0f; // force recompute on first process() call
         cachedDecayCoeff = 0.0f;
@@ -634,7 +645,7 @@ public:
         if (safeDecay != lastDecayTime)
         {
             lastDecayTime = safeDecay;
-            cachedDecayCoeff = std::exp(-invSR / safeDecay);
+            cachedDecayCoeff = fastExp(-invSR / safeDecay);
         }
         decayLevel *= cachedDecayCoeff;
         decayLevel = flushDenormal(decayLevel);
@@ -757,7 +768,7 @@ public:
         {
             // Reduce bit depth
             float bits = 16.0f - amount * 12.0f; // 16-bit down to 4-bit
-            float steps = std::pow(2.0f, bits);
+            float steps = fastPow2(bits); // was std::pow(2.0f, bits) — hot path fix
             out = std::floor(out * steps) / steps;
             // Sample rate reduction
             float srReduce = 1.0f + amount * 15.0f;
@@ -944,7 +955,7 @@ public:
         writePos = 0;
         filterStateL = filterStateR = 0.0f;
         // Cache session-constant 1-pole LP coefficients
-        darkTapeCoeff = std::exp(-2.0f * 3.14159265f * 3000.0f / sr);
+        darkTapeCoeff = fastExp(-2.0f * 3.14159265f * 3000.0f / sr);
     }
 
     void reset() noexcept
@@ -1077,8 +1088,9 @@ public:
         if (mix < 0.001f || combBuf[0].empty())
             return;
 
-        // RT60 feedback from first comb length
-        float baseFB = clamp(std::pow(10.0f, -3.0f * static_cast<float>(combLen[0]) / (decaySec * sr)), 0.0f, 0.97f);
+        // RT60 feedback from first comb length — use fastExp (log10 identity:
+        // 10^x = exp(x * ln10); ln10 ≈ 2.302585). Avoids std::pow per block.
+        float baseFB = clamp(fastExp(-3.0f * 2.302585f * static_cast<float>(combLen[0]) / (decaySec * sr)), 0.0f, 0.97f);
         float effDamping = clamp(damping - size * 0.15f, 0.0f, 1.0f);
         switch (type)
         {
@@ -1100,7 +1112,7 @@ public:
         if (effDamping != lastEffDamping)
         {
             lastEffDamping = effDamping;
-            cachedDampCoeff = std::exp(-2.0f * 3.14159265f * (300.0f + (1.0f - effDamping) * 6000.0f) / sr);
+            cachedDampCoeff = fastExp(-2.0f * 3.14159265f * (300.0f + (1.0f - effDamping) * 6000.0f) / sr);
         }
         float dampCoeff = cachedDampCoeff;
 
@@ -1323,8 +1335,8 @@ public:
     {
         sr = sampleRate;
         srf = static_cast<float>(sr);
-        // Cache session-constant FxFinish LowMono 1-pole LP coefficient
-        lowMonoCoeff = std::exp(-2.0f * 3.14159265f * 200.0f / srf);
+        // Cache session-constant FxFinish LowMono 1-pole LP coefficient (matched-Z)
+        lowMonoCoeff = fastExp(-2.0f * 3.14159265f * 200.0f / srf);
         silenceGate.prepare(sampleRate, maxBlockSize);
         silenceGate.setHoldTime(100.0f); // Percussive — short hold
 
@@ -1368,6 +1380,12 @@ public:
         {
             v.active = false;
             v.releasing = false;
+            // P14: reset all voice identity fields to prevent stale-state ghost noteOffs
+            v.noteNumber = 60;
+            v.velocity = 0.0f;
+            v.unisonIndex = 0;
+            v.unisonTotal = 1;
+            v.mpeExpression.reset(); // P14: MPE per-voice state must be cleared
             v.oscA.reset();
             v.oscB.reset();
             v.sub.reset();
@@ -1389,6 +1407,10 @@ public:
         externalFilterMod = 0.0f;
         externalFMBuffer = nullptr;
         externalFMSamples = 0;
+        externalFMAmount = 0.0f;
+        // P14: MIDI expression state must be zeroed on reset
+        pitchBendNorm = 0.0f;
+        modWheelAmount = 0.0f;
         motionFX.reset();
         echoFX.reset();
         spaceFX.reset();
@@ -1737,17 +1759,6 @@ public:
             voice.cachedBaseFreq = targetFreq;
             voice.filter.setMode(svfMode);
 
-            // Hoist LFO configuration out of the per-sample loop — all LFO parameters
-            // are block-constant; setting them once per block avoids 3×numSamples setter calls.
-            voice.lfo1.setShape(lfo1Shape);
-            voice.lfo1.setRate(lfo1Rate * scurryLfoMul);
-            voice.lfo1.setStartPhase(lfo1Phase);
-            voice.lfo2.setShape(lfo2Shape);
-            voice.lfo2.setRate(lfo2Rate * scurryLfoMul);
-            voice.lfo2.setStartPhase(lfo2Phase);
-            voice.lfo3.setShape(lfo3Shape);
-            voice.lfo3.setRate(lfo3Rate * scurryLfoMul);
-            voice.lfo3.setStartPhase(lfo3Phase);
             // Pre-compute unison detune ratio per voice — block-constant so we hoist the
             // std::pow out of the per-sample render loop.
             if (voice.unisonTotal > 1)
@@ -1845,7 +1856,7 @@ public:
                 for (int ms = 0; ms < 8; ++ms)
                 {
                     const auto& slot = modSlots[ms];
-                    if (slot.src == 0 || slot.dst == 0 || slot.amt == 0.0f)
+                    if (slot.src == 0 || slot.dst == 0 || std::fabs(slot.amt) < 1e-6f)
                         continue;
                     mmDst[std::min(slot.dst, 25)] += mmSrc[std::min(slot.src, 15)] * slot.amt;
                 }
@@ -1970,8 +1981,11 @@ public:
 
                 // --- Filter ---
                 float filtEnvVal = voice.filterEnv.process();
-                // Key tracking: offset cutoff based on note distance from middle C
-                float keyTrackOffset = filterKeyTrack * (static_cast<float>(voice.noteNumber) - 60.0f) * 50.0f;
+                // Key tracking: exponential semitone offset from middle C so the
+                // ratio scales correctly (linear Hz tracking drifts at extreme pitches).
+                // At keyTrack=1.0 the cutoff follows pitch exactly (1:1 semitone tracking).
+                float keyTrackSemitones = filterKeyTrack * (static_cast<float>(voice.noteNumber) - 60.0f);
+                float keyTrackOffset = filterCutoff * (fastPow2(keyTrackSemitones * (1.0f / 12.0f)) - 1.0f);
                 // D001: velocity scales filter envelope depth for timbral expression
                 // LFO2 → filter cutoff unconditionally (Scurry scales rate, not presence).
                 // LFO3 → filter cutoff unconditionally (wider sweep range).
@@ -1988,7 +2002,8 @@ public:
                     float modCutoff = filterCutoff + filtEnvAmt * filtEnvVal * voice.velocity * 4000.0f + bellyCutoffMod +
                                       playDeadCutoff + filterMod * 2000.0f + lfo2val * 2000.0f + lfo3val * 2000.0f +
                                       modEnvCutoff + keyTrackOffset;
-                    modCutoff = clamp(modCutoff, 20.0f, 18000.0f);
+                    // Nyquist ceiling derived from SR — was hardcoded 18000 Hz (wrong at 96k/192k)
+                    modCutoff = clamp(modCutoff, 20.0f, srf * 0.49f);
 
                     float voiceFilterReso = clamp(effFilterReso + mmDst[11], 0.0f, 0.95f); // mmDst[11]=FilterReso
                     voice.filter.setCoefficients_fast(modCutoff, voiceFilterReso, srf);
@@ -2151,7 +2166,7 @@ public:
             for (int ms = 0; ms < 8; ++ms)
             {
                 const auto& slot = modSlots[ms];
-                if (slot.src == 0 || slot.dst < 20 || slot.dst > 25 || slot.amt == 0.0f)
+                if (slot.src == 0 || slot.dst < 20 || slot.dst > 25 || std::fabs(slot.amt) < 1e-6f)
                     continue;
                 float sv = fxSrc[std::min(slot.src, 15)];
                 switch (slot.dst)
@@ -2329,8 +2344,9 @@ public:
         switch (type)
         {
         case CouplingType::AmpToFilter:
-            // Drum hits pump filter cutoff
-            externalFilterMod += amount;
+            // Drum hits pump filter cutoff — use = not +=; accumulation would
+            // amplify with multiple callers and drift between blocks (P1 pattern)
+            externalFilterMod = amount;
             break;
 
         case CouplingType::AudioToFM:
