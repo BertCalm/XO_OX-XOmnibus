@@ -221,8 +221,8 @@ public:
             mpePressureBox->addItem("Volume", 2);
             mpePressureBox->addItem("Wavetable", 3);
             mpePressureBox->addItem("FX Send", 4);
-            mpePressureBox->addItem("Macro 1 (CHARACTER)", 5);
-            mpePressureBox->addItem("Macro 2 (MOVEMENT)", 6);
+            mpePressureBox->addItem("Macro 1 (TONE)", 5);    // D11
+            mpePressureBox->addItem("Macro 2 (TIDE)", 6);    // D11
             styleComboBox(*mpePressureBox);
             mpePressureAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
                 apvts, "mpe_pressureTarget", *mpePressureBox);
@@ -238,8 +238,8 @@ public:
             mpeSlideBox->addItem("Volume", 2);
             mpeSlideBox->addItem("Wavetable", 3);
             mpeSlideBox->addItem("FX Send", 4);
-            mpeSlideBox->addItem("Macro 1 (CHARACTER)", 5);
-            mpeSlideBox->addItem("Macro 2 (MOVEMENT)", 6);
+            mpeSlideBox->addItem("Macro 1 (TONE)", 5);       // D11
+            mpeSlideBox->addItem("Macro 2 (TIDE)", 6);       // D11
             styleComboBox(*mpeSlideBox);
             mpeSlideAttach = std::make_unique<juce::AudioProcessorValueTreeState::ComboBoxAttachment>(
                 apvts, "mpe_slideTarget", *mpeSlideBox);

@@ -436,10 +436,9 @@ public:
                 // Left-align knobs (matches mockup)
                 float kx = content.getX();
 
-                // Spelled-out macro labels (#1175). The 40px arc holds the
-                // longer words at 10pt Inter; the previous "COUP" / "SPC"
-                // abbreviations were genuinely ambiguous.
-                static const char* kLabels[4] = {"CHARACTER", "MOVE", "COUPLE", "SPACE"};
+                // D11 locked macro labels (2026-04-25): TONE / TIDE / COUPLE / DEPTH.
+                // The 40px arc holds these at 10pt Inter with room to spare.
+                static const char* kLabels[4] = {"TONE", "TIDE", "COUPLE", "DEPTH"};
 
                 for (int k = 0; k < 4; ++k)
                 {

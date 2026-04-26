@@ -73,14 +73,14 @@ The editor currently has a 50pt header (`kHeaderH = 50`) painted directly in `XO
 
 | UI Element | APVTS Param / Data Source | Current Implementation | Status | Thread Safety | Notes |
 |-----------|--------------------------|----------------------|--------|---------------|-------|
-| M1 knob (CHARACTER) | `macro1` (0-1, default 0.5) | EXISTS — `MacroSection::knobs[0]` with `SliderAttachment("macro1")`. Currently in BOTTOM STRIP (105px), not header. | REWIRE | [UI] — SliderAttachment | **Q2 RESOLVED (A):** Full move of MacroSection to header. Restructure MacroSection so knobs live in header right side (44x44pt each, 8pt spacing). MIDI Learn remains wired via `MacroSection::setupMidiLearn()`. Bottom strip MacroSection is removed. **Audit fix:** Knobs enlarged to 44pt for iPad AUv3 touch compliance. |
-| M1 label "CHAR" | Static — "CHARACTER" | EXISTS — `MacroSection::lbls[0]` with text "CHARACTER" | REWIRE | [UI] | V1: "CHAR" in XO Gold. 8pt Space Grotesk SemiBold ALL CAPS, letter-spacing +0.08em. |
-| M2 knob (MOVEMENT) | `macro2` (0-1, default 0.5) | EXISTS — `MacroSection::knobs[1]` with `SliderAttachment("macro2")` | REWIRE | [UI] | Same as M1 — needs header relocation. |
-| M2 label "MOVE" | Static | EXISTS | REWIRE | [UI] | V1: "MOVE" in `#00FF41` (Phosphor Green). |
-| M3 knob (COUPLING) | `macro3` (0-1, default 0.5) | EXISTS — `MacroSection::knobs[2]` with `SliderAttachment("macro3")` | REWIRE | [UI] | Same. |
-| M3 label "COUP" | Static | EXISTS | REWIRE | [UI] | V1: "COUP" in `#BF40FF` (Prism Violet). |
-| M4 knob (SPACE) | `macro4` (0-1, default 0.5) | EXISTS — `MacroSection::knobs[3]` with `SliderAttachment("macro4")` | REWIRE | [UI] | Same. |
-| M4 label "SPACE" | Static | EXISTS | REWIRE | [UI] | V1: "SPACE" in `#00B4A0` (Phosphorescent Teal). |
+| M1 knob (TONE) | `macro1` (0-1, default 0.5) | EXISTS — `MacroSection::knobs[0]` with `SliderAttachment("macro1")`. Currently in BOTTOM STRIP (105px), not header. | REWIRE | [UI] — SliderAttachment | **Q2 RESOLVED (A):** Full move of MacroSection to header. Restructure MacroSection so knobs live in header right side (44x44pt each, 8pt spacing). MIDI Learn remains wired via `MacroSection::setupMidiLearn()`. Bottom strip MacroSection is removed. **Audit fix:** Knobs enlarged to 44pt for iPad AUv3 touch compliance. |
+| M1 label "TONE" | Static — "TONE" | EXISTS — `MacroSection::lbls[0]` with text "TONE" | REWIRE | [UI] | D11: CHAR/CHARACTER → TONE. XO Gold, 10pt Space Grotesk SemiBold ALL CAPS. |
+| M2 knob (TIDE) | `macro2` (0-1, default 0.5) | EXISTS — `MacroSection::knobs[1]` with `SliderAttachment("macro2")` | REWIRE | [UI] | Same as M1 — needs header relocation. |
+| M2 label "TIDE" | Static | EXISTS | REWIRE | [UI] | D11: MOVE/MOVEMENT → TIDE. `#00FF41` (Phosphor Green). |
+| M3 knob (COUPLE) | `macro3` (0-1, default 0.5) | EXISTS — `MacroSection::knobs[2]` with `SliderAttachment("macro3")` | REWIRE | [UI] | Same. |
+| M3 label "COUPLE" | Static | EXISTS | REWIRE | [UI] | D11: kept. `#BF40FF` (Prism Violet). |
+| M4 knob (DEPTH) | `macro4` (0-1, default 0.5) | EXISTS — `MacroSection::knobs[3]` with `SliderAttachment("macro4")` | REWIRE | [UI] | Same. |
+| M4 label "DEPTH" | Static | EXISTS | REWIRE | [UI] | D11: SPACE → DEPTH. `#00B4A0` (Phosphorescent Teal). |
 | Macro coupling-modulation pulse ring | `cp_r1_amount` through `cp_r4_amount` — live coupling energy | Not implemented | BUILD | [FIFO] | When coupling modulates a macro target, outer ring pulses at coupling LFO rate. `alpha = 0.6 + 0.4 * sin(t * couplingRate)`. Read coupling energy from lock-free FIFO (never poll audio thread). |
 | M1-M4 value readout (0-100) | Same APVTS params | EXISTS — tooltip shows value; `GalleryLookAndFeel::drawRotarySlider` shows value in center disc on drag | REWIRE | [UI] | V1: JetBrains Mono Regular 9pt permanent display below label (not tooltip-only). |
 | Master volume knob | `masterVolume` (0-1, default 0.8) | EXISTS — `MacroSection::master` with `SliderAttachment("masterVolume")`. In current bottom strip. | REWIRE | [UI] | **Q10 RESOLVED (A):** Master volume knob moves to header right edge, positioned after the M4 macro knob. Remains part of the header utility cluster alongside the macro knobs. |

@@ -194,7 +194,7 @@ public:
 
         makeLabel(macroMachineLbl, "MACHINE");
         makeLabel(macroPunchLbl,   "PUNCH");
-        makeLabel(macroSpaceLbl,   "SPACE");
+        makeLabel(macroSpaceLbl,   "DEPTH"); // D11: SPACE → DEPTH
         makeLabel(macroMutateLbl,  "MUTATE");
 
         // ── XVC section ───────────────────────────────────────────────────────

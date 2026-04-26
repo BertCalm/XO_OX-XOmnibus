@@ -399,10 +399,10 @@ public:
         makeLabel(driftDepthLbl,  "DRIFT DEPTH");
         makeLabel(distanceLbl,    "DISTANCE");
         makeLabel(airLbl,         "AIR");
-        makeLabel(macroCharLbl,   "CHARACTER");
-        makeLabel(macroMoveLbl,   "MOVEMENT");
-        makeLabel(macroCoupLbl,   "COUPLING");
-        makeLabel(macroSpaceLbl,  "SPACE");
+        makeLabel(macroCharLbl,   "TONE");    // D11: CHARACTER → TONE
+        makeLabel(macroMoveLbl,   "TIDE");    // D11: MOVEMENT → TIDE
+        makeLabel(macroCoupLbl,   "COUPLE");  // D11: kept
+        makeLabel(macroSpaceLbl,  "DEPTH");   // D11: SPACE → DEPTH
 
         // Data-driven: expand SRC 2 if the loaded preset uses it
         if (auto* p = apvts.getRawParameterValue("obrix_src2Type"))
