@@ -47,6 +47,9 @@
 #include "Ocean/OceanView.h"
 // D12: About/Lore modal + "O" brand badge button.
 #include "AboutModal.h"
+// Wave 5 A1: DragDropModRouter is transitively included via XOceanusProcessor.h
+// (which now includes Future/UI/ModRouting/DragDropModRouter.h).
+// No explicit re-include needed here — pragma once guards prevent duplication.
 
 namespace xoceanus
 {
@@ -75,6 +78,7 @@ namespace xoceanus
 // when switching between overview and engine detail, or between engines.
 //
 class XOceanusEditor : public juce::AudioProcessorEditor,
+                       public juce::DragAndDropContainer, // Wave 5 A1: required for ModSourceHandle drag-drop
                        public CockpitHost, // B041: Dark Cockpit opacity interface
                        private juce::Timer
 {
@@ -1061,6 +1065,48 @@ public:
         addChildComponent(aboutModal_);
         aboutModal_.setAlwaysOnTop(true);
 
+        // ── Wave 5 A1: DragDropModRouter overlay ─────────────────────────────
+        // Instantiated here (after processor is fully constructed) so the
+        // ModRoutingModel reference in the processor is stable.
+        //
+        // The overlay is added BEFORE toastOverlay_ so toasts still paint above it.
+        // It is transparent + pass-through (setInterceptsMouseClicks(false,false))
+        // while idle; it activates mouse interception only during an active drag.
+        //
+        // A1 test route: LFO1 → orry_fltCutoff, depth=+0.5, bipolar=true.
+        // Added unconditionally on first launch so the user can verify the route
+        // fires (filter cutoff sweeps when Orrery is loaded and LFO1 is running).
+        // The route is serialised in the preset state — remove via the route list
+        // panel (right-click or double-click to open depth editor).
+        // Wire the flush listener to the processor before creating the router.
+        modRouteFlushListener_.proc = &proc;
+
+        modRouter_ = std::make_unique<DragDropModRouter>(proc.getAPVTS(), proc.getModRoutingModel());
+        addAndMakeVisible(*modRouter_);
+        modRouter_->toFront(false);
+        // Route list panel visible by default in A1 as the dev affordance (#670).
+        // Users confirm activation by seeing the route strip and verifying LFO1 sweeps the filter.
+        modRouter_->setRouteListVisible(true);
+
+        // Install the first end-to-end test route: LFO1 → Orrery filter cutoff, depth=+0.5.
+        // Only add it if the model is empty (first launch or fresh preset state) so
+        // repeated editor constructions don't accumulate duplicate routes.
+        if (proc.getModRoutingModel().getRouteCount() == 0)
+        {
+            proc.getModRoutingModel().addRoute(
+                static_cast<int>(ModSourceId::LFO1),
+                "orry_fltCutoff",
+                0.5f,
+                /* bipolar = */ true);
+            proc.flushModRoutesSnapshot();
+        }
+
+        // Register a change listener so the processor snapshot is flushed
+        // whenever the route table is modified through the drag-drop UI.
+        // modRouteFlushListener_ is a member (lifetime tied to the editor) so
+        // the processor never receives a dangling listener pointer.
+        proc.getModRoutingModel().addListener(&modRouteFlushListener_);
+
         // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.
         // setInterceptsMouseClicks(false, false) is set inside ToastOverlay's
@@ -1075,6 +1121,9 @@ public:
         stopTimer();
         removeKeyListener(statusBar.getKeyListener());
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
+        // Wave 5 A1: Remove the mod route flush listener before the editor members
+        // are destroyed so the processor never calls back into a freed listener.
+        processor.getModRoutingModel().removeListener(&modRouteFlushListener_);
         // Detach the embedded PlaySurface from the processor before the processor
         // goes away, so the MidiMessageCollector pointer is not accessed after dealloc.
         playSurface_.setProcessor(nullptr);
@@ -1305,6 +1354,10 @@ public:
         // ── Ocean View takes full editor bounds ───────────────────────────────
         auto fullBounds = getLocalBounds();
         oceanView_.setBounds(fullBounds);
+
+        // ── Wave 5 A1: DragDropModRouter overlay — always full editor bounds ──
+        if (modRouter_ != nullptr)
+            modRouter_->setBounds(fullBounds);
 
         // ── OceanView mode: skip the entire legacy Gallery layout ─────────────
         // All legacy tiles, overview, detail, chord panel, sidebar, etc. are
@@ -2382,6 +2435,28 @@ private:
     // centered-card overlay (click outside card → dismiss).
     OBadgeButton obadge_;
     AboutModal   aboutModal_;
+
+    // ── Wave 5 A1: DragDropModRouter overlay ──────────────────────────────────
+
+    // ChangeListener that flushes the processor's mod route snapshot whenever
+    // the route table changes on the message thread.
+    // Stored as a member so the listener pointer never outlives the editor.
+    struct ModRouteFlushListener : public juce::ChangeListener
+    {
+        XOceanusProcessor* proc{nullptr};
+        void changeListenerCallback(juce::ChangeBroadcaster*) override
+        {
+            if (proc != nullptr)
+                proc->flushModRoutesSnapshot();
+        }
+    } modRouteFlushListener_;
+
+    // Transparent full-editor overlay — activates only while a drag is in flight
+    // or when the route list panel is shown.  Declared before toastOverlay_ so
+    // the overlay still paints above the router.
+    // unique_ptr: constructed in initOceanView() after the processor is ready
+    // (ModRoutingModel lives in the processor, pointer stable for plugin lifetime).
+    std::unique_ptr<DragDropModRouter> modRouter_;
 
     // ── ToastOverlay — non-blocking notification layer ────────────────────────
     // Declared last so it is destroyed first (child components destroyed in

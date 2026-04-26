@@ -19,6 +19,9 @@
 #include "Core/SharedTransport.h"
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
+// Wave 5 A1: Global drag-drop mod routing model (message-thread side).
+// The header lives in Future/ but we reference it in-place per spec.
+#include "Future/UI/ModRouting/DragDropModRouter.h"
 #include <atomic>
 #include <array>
 #include <memory>
@@ -124,6 +127,31 @@ public:
 
     juce::AudioProcessorValueTreeState& getAPVTS() { return apvts; }
     juce::UndoManager& getUndoManager() { return undoManager; }
+
+    // Wave 5 A1: Global mod routing model — owned by the processor so both the
+    // editor and the audio-thread snapshot path share the same instance.
+    // Message-thread only: all ModRoutingModel mutations must happen on the UI thread.
+    ModRoutingModel& getModRoutingModel() { return modRoutingModel_; }
+    const ModRoutingModel& getModRoutingModel() const { return modRoutingModel_; }
+
+    // Called by the editor (message thread) whenever the route table changes.
+    // Copies the route list into a lock-free snapshot array so processBlock can
+    // read it without allocating or holding a lock.
+    // Max routes: ModRoutingModel::MaxRoutes (32).
+    void flushModRoutesSnapshot() noexcept;
+
+    // Wave 5 A1: Write the current LFO1 output so the global router can use it
+    // as a mod source.  Called from OrreryEngine::renderBlock (audio thread).
+    // Use relaxed ordering — a single-sample jitter is acceptable for mod routing.
+    void setGlobalLFO1(float v) noexcept { globalLFO1_.store(v, std::memory_order_relaxed); }
+
+    // Read the global cutoff mod offset computed from global mod routes.
+    // Called by OrreryEngine::renderBlock on the audio thread.
+    // Zero when no global route targets orry_fltCutoff.
+    float getGlobalCutoffModOffset() const noexcept
+    {
+        return globalCutoffModOffset_.load(std::memory_order_relaxed);
+    }
 
     // Preset management (UI thread only)
     PresetManager& getPresetManager() { return presetManager; }
@@ -707,6 +735,43 @@ private:
     double midiClockBlockOffset_ = 0.0;   // total samples elapsed (audio thread only)
     double midiClockLastStepTime_ = -1.0; // sample time of last step boundary, or -1
     float midiClockDerivedBPM_ = 122.0f;  // current BPM derived from external clock
+
+    // ── Wave 5 A1: Global mod routing ────────────────────────────────────────
+    // ModRoutingModel — message-thread source of truth for all global routes.
+    // Owned here so both the editor overlay and the processor share one instance.
+    ModRoutingModel modRoutingModel_;
+
+    // RT-safe snapshot of mod routes for the audio thread.
+    // flushModRoutesSnapshot() (message thread) writes; processBlock reads.
+    // Protocol: snapshotVersion_ acts as a generation counter.
+    //   message thread: fill routesSnapshot_[], increment snapshotVersion_ (release)
+    //   audio   thread: load snapshotVersion_ (acquire) to decide whether to re-read
+    //
+    // Max 32 routes; fixed-size array avoids any audio-thread allocation.
+    struct GlobalModRouteSnapshot
+    {
+        int     sourceId{0};
+        float   depth{0.0f};
+        bool    bipolar{false};
+        bool    valid{false};
+        char    destParamId[64]{};  // fixed-length to avoid std::string on audio thread
+    };
+    static constexpr int kMaxGlobalRoutes = ModRoutingModel::MaxRoutes;
+    std::array<GlobalModRouteSnapshot, kMaxGlobalRoutes> routesSnapshot_{};
+    std::atomic<int> routesSnapshotCount_{0};   // written by message thread, read by audio thread
+    std::atomic<int> snapshotVersion_{0};        // generation counter
+    int audioSnapshotVersion_{-1};               // audio thread: last consumed version (audio-thread-only)
+    // (cachedOrryFltCutoff_ removed — global routes now write globalCutoffModOffset_
+    // which OrreryEngine reads; no direct APVTS parameter pointer needed on audio thread.)
+
+    // LFO1 value written by OrreryEngine on the audio thread.
+    // Global router reads this as the LFO1 source value.
+    std::atomic<float> globalLFO1_{0.0f};
+
+    // Global cutoff mod offset — computed in processBlock by evaluating global
+    // mod routes, read by OrreryEngine::renderBlock via getGlobalCutoffModOffset().
+    // Units: same as modCutoffOffset (pre-multiplied by 8000 Hz).
+    std::atomic<float> globalCutoffModOffset_{0.0f};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusProcessor)
 };

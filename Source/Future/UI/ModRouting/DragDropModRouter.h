@@ -8,7 +8,9 @@
 #include <array>
 #include <vector>
 #include <algorithm>
-#include "../GalleryColors.h"
+// GalleryColors.h lives at Source/UI/GalleryColors.h; use the Source/ root include
+// path so this header is includable from any translation unit regardless of depth.
+#include "UI/GalleryColors.h"
 #include "ModSourceHandle.h"
 
 namespace xoceanus
