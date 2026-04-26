@@ -1648,7 +1648,7 @@ private:
     // ---- Audio state ----
     float    sr_       = 44100.0f;
     int      maxBlock_ = 512;
-    float    tapeCutoffSamples_ = 8.0f * 44100.0f;
+    float    tapeCutoffSamples_ = 0.0f; // set in prepare() as kOlloTapeDurationSec * sr_
     float    clickDecayCoeff_   = 0.0f;
 
     std::array<OllotronVoice, kOllotronMaxVoices> voices_;

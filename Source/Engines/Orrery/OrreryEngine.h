@@ -557,6 +557,17 @@ public:
     // Must be called before the first renderBlock().
     void setSharedTransport(const SharedTransport* transport) noexcept override { sharedTransport = transport; }
 
+    // Wave 5 A1: Global mod routing — the processor writes a pre-computed cutoff
+    // offset (in Hz, same units as modCutoffOffset) into an atomic float that
+    // this engine reads during renderBlock.  Setting pGlobalCutoffMod = nullptr
+    // (the default) means no global routing is active — offset is treated as zero.
+    void setGlobalCutoffModPtr(const std::atomic<float>* ptr) noexcept { pGlobalCutoffMod_ = ptr; }
+
+    // Wave 5 A1: Set the output pointer for LFO1 export.  OrreryEngine writes
+    // blockModSrc.lfo1 (averaged across active voices) into this atomic each block.
+    // The processor reads it when evaluating global mod routes.
+    void setGlobalLFO1OutPtr(std::atomic<float>* ptr) noexcept { pGlobalLFO1Out_ = ptr; }
+
     //==========================================================================
     // renderBlock
     //==========================================================================
@@ -800,6 +811,12 @@ public:
             blockModSrc.aftertouch = aftertouchValue;
         }
 
+        // Wave 5 A1: Export LFO1 block value to the processor's global router.
+        // Written after all active voices have contributed — one block of latency
+        // is acceptable for mod routing (same as the per-engine mod matrix).
+        if (pGlobalLFO1Out_ != nullptr)
+            pGlobalLFO1Out_->store(blockModSrc.lfo1, std::memory_order_relaxed);
+
         // Mod matrix destinations (offsets applied per-block)
         float modDestOffsets[7] = {};
         modMatrix.apply(blockModSrc, modDestOffsets);
@@ -817,6 +834,12 @@ public:
         modOrbitSpeedOffset= modDestOffsets[4];
         modOrbitDepthOffset= modDestOffsets[5];
         modAmpLevelOffset  = modDestOffsets[6];
+
+        // Wave 5 A1: Add global mod routing offset (from DragDropModRouter).
+        // pGlobalCutoffMod_ is nullptr when no global route targets orry_fltCutoff.
+        // Bipolar: negative values sweep downward — no abs() or > 0 guard here.
+        if (pGlobalCutoffMod_ != nullptr)
+            modCutoffOffset += pGlobalCutoffMod_->load(std::memory_order_relaxed);
 
         // ---- Coupling audio for output ----
         if (numSamples > 0)
@@ -1557,6 +1580,16 @@ private:
 
     // SharedTransport — host BPM for TempoSync orbit speed
     const SharedTransport* sharedTransport = nullptr;
+
+    // Wave 5 A1: pointer to processor-owned global cutoff mod offset atomic.
+    // nullptr = no global routing active (offset treated as zero).
+    const std::atomic<float>* pGlobalCutoffMod_ = nullptr;
+
+    // Wave 5 A1: pointer to processor-owned global LFO1 output atomic.
+    // OrreryEngine writes blockModSrc.lfo1 here each block so the processor's
+    // global mod evaluator can use it as a LFO1 source value.
+    // nullptr = no write (no global mod router wired).
+    std::atomic<float>* pGlobalLFO1Out_ = nullptr;
 };
 
 } // namespace xoceanus

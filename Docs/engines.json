@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Machine-readable engine roster for XOceanus. CI/build scripts reference this file to scope QA sweeps, builds, and preset validation.",
-    "last_updated": "2026-04-24",
+    "last_updated": "2026-04-26",
     "status_values": [
       "implemented",
       "standalone",
@@ -10,9 +10,9 @@
       "pending_directory"
     ],
     "notes": "This file is the single source of truth for engine roster and count. Parameter prefixes are FROZEN \u2014 never change after first registration. XOceanus has no fixed release cutoff. `status` reflects build state: 'implemented' means the engine has both a Source/Engines/ directory AND a frozen prefix in PresetManager.h; 'pending_*' flags work-in-progress. Run Tools/sync_engine_sources.py to regenerate dependent files.",
-    "last_sync": "2026-04-24",
-    "engine_count": 92,
-    "engine_count_total": 111,
+    "last_sync": "2026-04-26",
+    "engine_count": 86,
+    "engine_count_total": 116,
     "legacy_dir_aliases": {
       "Bite": "Overbite",
       "Bob": "Oblong",
@@ -378,7 +378,7 @@
       "category": "kitchen",
       "accent_name": "Tape Rust",
       "polyphony": 16,
-      "description": "Tape-chamber keyboard — Mellotron/Chamberlin/Optigan spiritual descendant. Per-key tape wear, flutter, 8-second authentic cutoff. Partner audio dubs over the tape via AudioToWavetable coupling."
+      "description": "Tape-chamber keyboard \u2014 Mellotron/Chamberlin/Optigan spiritual descendant. Per-key tape wear, flutter, 8-second authentic cutoff. Partner audio dubs over the tape via AudioToWavetable coupling."
     },
     {
       "id": "Olvido",
@@ -1135,62 +1135,6 @@
       "header": "Source/Engines/Oxytocin/OxytocinEngine.h",
       "status": "implemented",
       "category": "circuit"
-    },
-    {
-      "id": "Bite",
-      "param_prefix": "bite_",
-      "header": "Source/Engines/Overbite/OverbiteEngine.h",
-      "status": "implemented",
-      "accent_color": "#888888",
-      "category": "utility"
-    },
-    {
-      "id": "Bob",
-      "param_prefix": "bob_",
-      "header": "Source/Engines/Oblong/OblongEngine.h",
-      "status": "implemented",
-      "accent_color": "#888888",
-      "category": "utility"
-    },
-    {
-      "id": "Drift",
-      "param_prefix": "drift_",
-      "header": "Source/Engines/Odyssey/OdysseyEngine.h",
-      "status": "implemented",
-      "accent_color": "#888888",
-      "category": "utility"
-    },
-    {
-      "id": "Dub",
-      "param_prefix": "dub_",
-      "header": "Source/Engines/Overdub/OverdubEngine.h",
-      "status": "implemented",
-      "accent_color": "#888888",
-      "category": "utility"
-    },
-    {
-      "id": "Fat",
-      "param_prefix": "fat_",
-      "header": "Source/Engines/Obese/ObeseEngine.h",
-      "status": "implemented",
-      "accent_color": "#888888",
-      "category": "utility"
-    },
-    {
-      "id": "Morph",
-      "param_prefix": "morph_",
-      "header": "Source/Engines/OddOscar/OddOscarEngine.h",
-      "status": "implemented",
-      "accent_color": "#888888",
-      "category": "utility"
-    },
-    {
-      "id": "Snap",
-      "param_prefix": "snap_",
-      "header": "Source/Engines/OddfeliX/OddfeliXEngine.h",
-      "status": "implemented",
-      "accent_color": "#888888",
-      "category": "utility"
     }
   ]
 }

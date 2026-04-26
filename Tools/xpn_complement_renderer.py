@@ -39,13 +39,13 @@ Dependencies: Pillow, numpy (only required for cover-art generation)
 
 import argparse
 import json
-import math
 import os
 import random
 import sys
 import time
 from pathlib import Path
 from typing import Optional
+from xml.sax.saxutils import escape as xml_escape
 
 # ---------------------------------------------------------------------------
 # Resolve Tools/ directory so sibling imports work from any cwd
@@ -552,10 +552,10 @@ def _make_xpm(program_name: str, description: str,
               sample_name: str = "", sample_file: str = "") -> str:
     """Return XPM XML string for a single-layer keygroup program."""
     return XPM_TEMPLATE.format(
-        program_name=program_name,
-        description=description,
-        sample_name=sample_name or program_name,
-        sample_file=sample_file or "",
+        program_name=xml_escape(program_name),
+        description=xml_escape(description),
+        sample_name=xml_escape(sample_name or program_name),
+        sample_file=xml_escape(sample_file or ""),
     )
 
 

@@ -38,7 +38,9 @@ public:
     float nextFloat() noexcept { return (process() + 1.0f) * 0.5f; }
 
 private:
-    uint32_t state = 1;
+    // FIX P36: default to pointer-hash seed so each BobNoiseGen instance (per voice slot)
+    // starts with a unique state. Overridden by explicit seed() calls on note-on.
+    uint32_t state = 0xC2B2AE3Du ^ static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4);
 };
 
 //==============================================================================
@@ -724,7 +726,7 @@ public:
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
+    float invSR = 0.0f; // assigned in prepare() — do NOT init as 1/sr (sr=0 → +Inf)
     int mode = 0;
     float cutoffHz = 8000.0f;
     float resonance = 0.3f;
@@ -799,6 +801,11 @@ public:
         curSmooth = curTarget = curTimer = twitchCool = 0.0f;
         curThreshold = 0.5f;
         snh1 = smooth1 = 0.0f;
+        // FIX P36: re-seed curiosity RNG on each note-on so simultaneous polyphonic
+        // voices diverge immediately instead of tracking identically until natural
+        // divergence. voiceOffset is unique per slot (0/kMaxVoices … (kMaxVoices-1)/kMaxVoices).
+        uint32_t voiceSeed = static_cast<uint32_t>(voiceOffset * 8.0f + 1.0f) * 0x9E3779B9u;
+        rng.seed(0xC2B2AE3Du ^ voiceSeed ^ static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4));
     }
 
     void setVoiceOffset(float offset) noexcept { voiceOffset = offset; }
@@ -887,7 +894,7 @@ public:
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
+    float invSR = 0.0f; // assigned in prepare() — do NOT init as 1/sr (sr=0 → +Inf)
     float voiceOffset = 0.0f;
 
     // StandardLFO handles phase accumulation and waveform generation for
@@ -1424,8 +1431,14 @@ public:
                 lfoCutoffMod += curOut.curiosity * 0.5f;
 
                 // Apply pitch modulation (fastExp avoids std::pow per sample) + MPE + pitch bend + mod matrix
+                // P29 fix: pick ONE pitch-bend source — MPE expression OR raw MIDI wheel, never both.
+                // Before #1255, mpeExpression.pitchBendSemitones was always 0.0f so the sum was safe;
+                // once MPE is wired, summing both sources produces 2× pitch on MPE controllers.
+                const float pitchBendContrib = (mpeManager != nullptr && mpeManager->isMPEEnabled())
+                    ? voice.mpeExpression.pitchBendSemitones  // MPE mode: use per-voice MPE pitch bend
+                    : pitchBendNorm * 2.0f;                   // non-MPE: use channel pitch wheel (±2 st)
                 float totalPitch =
-                    lfoPitchMod * 2.0f + pitchMod + voice.mpeExpression.pitchBendSemitones + pitchBendNorm * 2.0f + bobModPitchOffset;
+                    lfoPitchMod * 2.0f + pitchMod + pitchBendContrib + bobModPitchOffset;
                 float freq = baseFreq * fastExp(totalPitch * (0.693147f / 12.0f));
 
                 // OscA — wave/tune/drift hoisted; only frequency and shape (LFO-modulated) per-sample

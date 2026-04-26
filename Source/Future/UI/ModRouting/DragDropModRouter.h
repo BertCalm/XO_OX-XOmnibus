@@ -8,7 +8,9 @@
 #include <array>
 #include <vector>
 #include <algorithm>
-#include "../GalleryColors.h"
+// GalleryColors.h lives at Source/UI/GalleryColors.h; use the Source/ root include
+// path so this header is includable from any translation unit regardless of depth.
+#include "UI/GalleryColors.h"
 #include "ModSourceHandle.h"
 
 namespace xoceanus
@@ -532,6 +534,12 @@ private:
 //   // In XOceanusEditor::resized():
 //   modRouter->setBounds(getLocalBounds());
 //
+// A3 TODO: when source palette / draggable handles are added, give them a
+// DragAndDropContainer ancestor — most likely by replacing this `public juce::Component`
+// with `public juce::DragAndDropContainer` (which IS-A Component in this JUCE version),
+// so findParentDragContainerFor(handle) resolves. Editor cannot host the container
+// itself: AudioProcessorEditor + DragAndDropContainer both reach Component, creating
+// a diamond that breaks every addChildComponent/addAndMakeVisible call (Wave 5 A1 CI).
 class DragDropModRouter : public juce::Component, public juce::DragAndDropTarget, public juce::ChangeListener
 {
 public:

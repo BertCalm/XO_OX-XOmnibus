@@ -13,7 +13,6 @@ Usage:
 
 import argparse
 import json
-import math
 from pathlib import Path
 from collections import defaultdict
 

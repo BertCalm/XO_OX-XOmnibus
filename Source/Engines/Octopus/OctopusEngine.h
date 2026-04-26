@@ -669,11 +669,14 @@ public:
                 voice.currentFreq = flushDenormal(voice.currentFreq);
 
                 // Apply microtonal offset + arm pitch modulation + coupling pitch + MPE + pitch bend
+                // P29 fix: single pitch-bend source — MPE expression OR raw MIDI wheel, not both.
+                const float octoPitchBendCents = (mpeManager != nullptr && mpeManager->isMPEEnabled())
+                    ? voice.mpeExpression.pitchBendSemitones * 100.0f  // MPE: per-voice pitch bend in cents
+                    : pitchBendNorm * 200.0f;                           // non-MPE: channel wheel (±2 st = ±200 cents)
                 float pitchCents = pShiftMicro + voice.microtonalOffset +
                                    armMods[ArmPitch] * 50.0f // arm 3 modulates pitch +/-50 cents
                                    + blockCouplingPitchMod * 100.0f +
-                                   voice.mpeExpression.pitchBendSemitones * 100.0f // MPE pitch bend in cents
-                                   + pitchBendNorm * 200.0f; // channel pitch bend in cents (±2 semitones)
+                                   octoPitchBendCents;
                 float freqMod = voice.currentFreq * fastPow2(pitchCents / 1200.0f);
 
                 // --- Envelopes ---
