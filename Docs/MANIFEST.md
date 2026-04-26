@@ -1,5 +1,5 @@
 # XOceanus Documentation Manifest
-**Last Updated:** 2026-03-31
+**Last Updated:** 2026-04-26
 **Purpose:** Canonical inventory of all major documentation — purpose, audience, authority level, and currency status.
 
 For governance rules (when to update what), see `GOVERNANCE.md`.
