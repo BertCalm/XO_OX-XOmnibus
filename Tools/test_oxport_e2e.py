@@ -7,7 +7,6 @@ and subcommand behavior.
 No pytest dependency — run directly:
     python3 Tools/test_oxport_e2e.py
 """
-from __future__ import annotations
 
 import argparse
 import json

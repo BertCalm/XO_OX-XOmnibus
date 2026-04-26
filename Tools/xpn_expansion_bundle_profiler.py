@@ -16,7 +16,7 @@ import json
 import struct
 import sys
 import zipfile
-from collections import Counter, defaultdict
+from collections import Counter
 from pathlib import Path
 
 

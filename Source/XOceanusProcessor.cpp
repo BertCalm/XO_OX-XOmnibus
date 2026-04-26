@@ -1201,6 +1201,7 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
             eng->prepare(sampleRate, samplesPerBlock);
             eng->prepareSilenceGate(sampleRate, samplesPerBlock, silenceGateHoldMs(eng->getEngineId()));
             eng->setSharedTransport(&hostTransport);
+            eng->setMPEManager(&mpeManager); // issue #1237 — was never called; engines saw nullptr
             // Wave 5 A1: Wire global mod routing pointers for any already-loaded Orrery engine.
             if (auto* orrery = dynamic_cast<OrreryEngine*>(eng.get()))
             {
@@ -1436,6 +1437,18 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             static_cast<MPEManager::ExpressionTarget>(static_cast<int>(cachedParams.mpeSlideTarget->load())));
     }
 
+    // ── MPE expression extraction (#1237 — was dead; now wired) ──────────────
+    // Parse pitch-bend, channel-pressure, aftertouch, and CC74 from the raw
+    // MIDI stream into per-channel expression state so MPE-aware engines can
+    // call mpeManager->updateVoiceExpression() in their renderBlock().
+    // mpeMidiBuffer receives the expression-stripped MIDI (pitch wheel removed,
+    // note-on/off and all other messages pass through).
+    // Raw `midi` is still forwarded to ChordMachine below so the ~85 non-MPE-aware
+    // engines that parse pitch wheel directly from their MIDI stream continue to
+    // function — per-channel expression is available via mpeExpression for the
+    // engines that have been upgraded to use it (#1237).
+    mpeManager.processBlock(midi, mpeMidiBuffer); // issue #1237 — was never called
+
     // ── External MIDI Clock sync (#359) ──────────────────────────────────────
     // Scan incoming MIDI for system real-time messages (0xF8 Clock, 0xFA Start,
     // 0xFB Continue, 0xFC Stop).  These are single-byte messages that arrive
@@ -1527,6 +1540,12 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     // Route MIDI through ChordMachine → 4 per-slot MidiBuffers.
     // When disabled, each slot gets a copy of the input MIDI (previous behavior).
     // When enabled, each slot gets its own chord-distributed note.
+    // NOTE (#1237): We pass raw `midi` (not mpeMidiBuffer) here so that the ~85
+    // non-MPE-aware engines that parse pitch-wheel from their MIDI stream continue
+    // to function correctly. MPE-aware engines (Opal, Oblong, Overbite, Orca,
+    // Octopus, Ouie) use mpeExpression.pitchBendSemitones populated above.
+    // Double-apply risk for MPE-aware engines in non-MPE mode (P29 / Bob) is a
+    // pre-existing issue flagged for separate fix — do not conflate with #1237.
     chordMachine.processBlock(midi, slotMidi, numSamples);
 
     // ── CC64 sustain pedal — fleet-wide pre-filter ────────────────────────────
@@ -2451,6 +2470,10 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // of whether prepare() has run yet — the engine caches the pointer and
         // reads from it in renderBlock(), which only runs after prepareToPlay().
         newEngine->setSharedTransport(&hostTransport);
+        // Give the new engine a pointer to MPEManager so per-note expression
+        // (pitch bend, pressure, slide) is live from the first rendered block.
+        // issue #1237 — was never called; engines loaded at runtime saw nullptr.
+        newEngine->setMPEManager(&mpeManager);
 
         // Wave 5 A1: Wire the global mod routing pointers into OrreryEngine.
         if (auto* orrery = dynamic_cast<OrreryEngine*>(newEngine.get()))

@@ -308,7 +308,7 @@ class ObliquePrism
 {
 public:
     static constexpr int kNumFacets = 6;
-    static constexpr int kMaxDelaySamples = 96000; // ~2 seconds at 48kHz — enough for long ambient tails
+    static constexpr int kMaxDelaySamples = 96000; // ~2s @ 48kHz; ~1s @ 96kHz — delay indices clamped to kMaxDelaySamples-1 (no overflow, but long ambient tails are shorter at 96kHz)
 
     void prepare(double sampleRate) noexcept
     {

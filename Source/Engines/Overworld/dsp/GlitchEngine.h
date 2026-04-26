@@ -18,7 +18,8 @@
 // glitchDepth (0-1): freeze buffer length, scaled 512 samples – kBufLen.
 // glitchMix (0-1): wet/dry blend.
 //
-// Buffer size: 2 seconds at 48kHz = 96000 samples (statically allocated).
+// Buffer size: 96000 samples — ~2s @ 48kHz, ~1s @ 96kHz.
+// Freeze depth is clamped to sr*0.25 (250ms max), so no overflow at any SR.
 // No heap allocation on the audio thread.
 
 #include "../../../DSP/FastMath.h"
@@ -32,7 +33,7 @@ using namespace xoceanus;
 class GlitchEngine
 {
 public:
-    static constexpr int kBufLen = 96000; // 2s @ 48kHz; ample for any SR
+    static constexpr int kBufLen = 96000; // ~2s @ 48kHz; ~1s @ 96kHz (freeze depth clamped to 250ms — no overflow)
 
     GlitchEngine() { std::memset(buf, 0, sizeof(buf)); }
 

@@ -61,6 +61,11 @@ class XPNMetadata:
     pack_type: str = "instrument"
 
 
+def _sanitize_manifest_value(s: str) -> str:
+    """Strip CR/LF to prevent newline injection in plain-text k=v manifests."""
+    return s.replace('\r', '').replace('\n', '').strip()
+
+
 def generate_manifest(meta: XPNMetadata) -> str:
     """
     Generate the XPN manifest file content.
@@ -71,10 +76,10 @@ def generate_manifest(meta: XPNMetadata) -> str:
     like artwork references).
     """
     return (
-        f"Name={meta.name}\n"
-        f"Version={meta.version}\n"
-        f"Author={meta.author}\n"
-        f"Description={meta.description}\n"
+        f"Name={_sanitize_manifest_value(meta.name)}\n"
+        f"Version={_sanitize_manifest_value(meta.version)}\n"
+        f"Author={_sanitize_manifest_value(meta.author)}\n"
+        f"Description={_sanitize_manifest_value(meta.description)}\n"
     )
 
 

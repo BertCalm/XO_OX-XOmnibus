@@ -287,8 +287,11 @@ class PipelineContext:
         # Stage timing
         self.stage_times: dict[str, float] = {}
 
-        # Derived paths
-        self.build_dir = output_dir / engine.replace(" ", "_")
+        # Derived paths — sanitize engine name to prevent path traversal
+        safe_engine = re.sub(r'[^a-zA-Z0-9_-]', '_', engine)
+        self.build_dir = output_dir / safe_engine
+        assert self.build_dir.resolve().is_relative_to(output_dir.resolve()), \
+            f"build_dir escapes output_dir: {self.build_dir}"
         self.specs_dir = self.build_dir / "specs"
         self.samples_dir = self.build_dir / "Samples"
         self.programs_dir = self.build_dir / "Programs"
@@ -1001,7 +1004,7 @@ def _stage_package(ctx: PipelineContext) -> None:
             )
         print(f"    MP3 gate: all {len(xpm_list_for_gate)} program(s) have valid .mp3 previews")
 
-    pack_slug = ctx.pack_name.replace(" ", "_")
+    pack_slug = re.sub(r'[^a-zA-Z0-9_-]', '_', ctx.pack_name).strip('_')
     xpn_path = ctx.output_dir / f"{pack_slug}.xpn"
 
     tuning_suffix = f" | Tuning: {ctx.tuning}" if ctx.tuning else ""
