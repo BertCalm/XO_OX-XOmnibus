@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "ORGANISM",
+  "engine_prefix": "org_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "cellular_automata",
+    "polyphony": 4,
+    "architecture": "Cellular automata pitch and timbre generator; each cell state maps to a frequency and amplitude contribution; rules engine evolves the CA state forward each block; the CA grid creates emergent polyphonic patterns from simple local rules; parameter-smoothed filter cutoff (patched 2026-03-20 to prevent ClickArtifacts from 3200 Hz jumps); LCG-seeded initial conditions"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "custom",
+    "stages": 4,
+    "curve": "mixed"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.55,
+    "velocity_targets": ["amplitude", "morph"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 55
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "RULE",
+      "behavior": "Selects the cellular automata rule set — from simple periodic rules that create steady drone patterns to chaotic rules that fracture the grid into unpredictable growth patterns."
+    },
+    "macro2": {
+      "name": "DENSITY",
+      "behavior": "Sets the initial cell population density — sparse populations evolve into isolated patterns, dense populations create complex emergent behaviour and higher harmonic density."
+    },
+    "macro3": {
+      "name": "COUPLING",
+      "behavior": "Scales depth of incoming inter-engine coupling; ORGANISM is uniquely receptive to having its CA grid seeded by other engines' audio, creating symbiotic generative patterns."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls reverb and delay tail — the ecosystem's spatial environment; high SPACE places the coral colony in a vast underwater cave where each cellular generation echoes."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "generative",
+    "brightness": 0.55,
+    "warmth": 0.45,
+    "movement": 0.9,
+    "density": 0.6,
+    "transient_character": "complex"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AudioToFM", "RhythmToBlend"],
+    "best_as_target": ["AudioToFM", "AudioToBuffer", "EnvToMorph"],
+    "recommended_partners": ["ORGANON", "ORACLE", "OSTINATO", "OBRIX"],
+    "coupling_personality": "The most intrinsically evolving engine in the fleet; ORGANISM never repeats; its emergent rhythmic outputs from CA state transitions create unique RhythmToBlend coupling that no other engine can replicate."
+  },
+
+  "mythology": {
+    "creature": "The coral colony — fractal growth pattern, life as algorithm, emergence from simple rules creating complex living structures",
+    "depth_zone": "abyss",
+    "felix_oscar_polarity": 0.7,
+    "accent_color": "#C6E377"
+  },
+
+  "metadata": {
+    "param_count": 1,
+    "preset_count": 480,
+    "seance_score": 8.1,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

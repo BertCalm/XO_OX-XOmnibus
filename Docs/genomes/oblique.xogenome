@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OBLIQUE",
+  "engine_prefix": "oblq_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "wavetable",
+    "polyphony": 6,
+    "architecture": "Prism bounce synthesis — a waveform that refracts through a spectral prism at oblique angles, creating non-standard overtone sideband patterns; FOLD macro drives wavefolder with prism-color LFO animation; BOUNCE macro controls the angle of spectral refraction; 2 LFOs including an animated prism color LFO at variable rate; param prefix oblq_"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "linear_attack_exp_decay"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.75,
+    "velocity_targets": ["amplitude", "brightness", "filter"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 62
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "FOLD",
+      "behavior": "Drives the primary wavefolder depth — at zero a clean wave; at maximum the wave folds back on itself creating prism-like spectral complexity with violet-light refraction character."
+    },
+    "macro2": {
+      "name": "BOUNCE",
+      "behavior": "Controls the angle of the prism bounce — different angles create different refraction patterns; low angles create gentle bends, high angles create sharp spectral deflections."
+    },
+    "macro3": {
+      "name": "COLOR",
+      "behavior": "Drives the prism color LFO speed and range — the animated shimmer of spectral light through the prism; slow COLOR = gentle rainbow transition, fast = rapid color cycling."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls reverb depth and the underwater sunlit space — the light playing through shallow water where oblique light makes the most vivid refractions."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "lead",
+    "brightness": 0.62,
+    "warmth": 0.5,
+    "movement": 0.63,
+    "density": 0.54,
+    "transient_character": "electronic"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AudioToFM", "LFOToPitch"],
+    "best_as_target": ["AudioToFM", "EnvToMorph", "LFOToPitch"],
+    "recommended_partners": ["OPENSKY", "ORIGAMI", "ORBITAL", "OVERDUB"],
+    "coupling_personality": "A bright refraction engine; OBLIQUE's prism bounce creates animated spectral movement that is an excellent LFOToPitch source for harmonically-rich partners; ORIGAMI × OBLIQUE creates layered spectral refraction."
+  },
+
+  "mythology": {
+    "creature": "Prismatic light refracting through shallow water — the purple tang darting at oblique angles through the sunlit reef",
+    "depth_zone": "shallows",
+    "felix_oscar_polarity": 0.25,
+    "accent_color": "#BF40FF"
+  },
+
+  "metadata": {
+    "param_count": 40,
+    "preset_count": 623,
+    "seance_score": 7.2,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

@@ -133,7 +133,9 @@ public:
         if (semitones != lastTune)
         {
             lastTune = semitones;
-            tuneMul = std::pow(2.0, static_cast<double>(semitones) / 12.0);
+            // FIX-Perf (P4/P25): replace std::pow(2.0,…) with fastPow2 — same accuracy
+            // for pitch math (~0.02%), avoids libm call on every tune change.
+            tuneMul = static_cast<double>(fastPow2(semitones * (1.0f / 12.0f)));
         }
     }
 
@@ -206,7 +208,10 @@ private:
     void updatePhaseInc() noexcept
     {
         float driftMul = (std::abs(driftSmooth) > 0.0001f) ? fastExp(driftSmooth * (0.693147f / 12.0f)) : 1.0f;
-        double freq = clamp(static_cast<float>(baseFreq * tuneMul * static_cast<double>(driftMul)), 20.0f, 20000.0f);
+        // FIX-Sound (P17): use sr*0.49f as Nyquist guard instead of hardcoded 20000.0f —
+        // at 96 kHz users can play up to ~47 kHz before aliasing, so cap should scale with SR.
+        const float nyquist = static_cast<float>(sr) * 0.49f;
+        double freq = clamp(static_cast<float>(baseFreq * tuneMul * static_cast<double>(driftMul)), 20.0f, nyquist);
         phaseInc = freq / sr;
     }
 
@@ -319,7 +324,9 @@ public:
         if (cents != lastDetune)
         {
             lastDetune = cents;
-            detuneMul = std::pow(2.0, static_cast<double>(cents) / 1200.0);
+            // FIX-Perf (P25): replace std::pow(2.0,…/1200) with fastPow2 — cent-accurate
+            // for detune math (~0.02%), avoids libm call on every detune change.
+            detuneMul = static_cast<double>(fastPow2(cents * (1.0f / 1200.0f)));
             updatePhaseInc();
         }
     }
@@ -357,7 +364,9 @@ public:
         case 2: // Triangle
         {
             float tri = (t < 0.5) ? static_cast<float>(4.0 * t - 1.0) : static_cast<float>(3.0 - 4.0 * t);
-            float coeff = 0.1f;
+            // FIX-Sound (P31a): use SR-normalised coefficient so triangle rounding character
+            // is consistent at 44.1/48/88.2/96 kHz. 0.1f was tuned for 44.1kHz; scale inversely.
+            float coeff = clamp(static_cast<float>(44100.0 / sr) * 0.1f, 0.005f, 0.5f);
             triState += (tri - triState) * coeff;
             triState = flushDenormal(triState);
             out = triState;
@@ -397,7 +406,9 @@ private:
     void updatePhaseInc() noexcept
     {
         double freq = baseFreq * detuneMul;
-        freq = clamp(static_cast<float>(freq), 20.0f, 20000.0f);
+        // FIX-Sound (P17): SR-relative Nyquist guard instead of hardcoded 20000.0f.
+        const float nyquist = static_cast<float>(sr) * 0.49f;
+        freq = clamp(static_cast<float>(freq), 20.0f, nyquist);
         phaseInc = freq / sr;
     }
 
@@ -435,6 +446,12 @@ public:
         // Hardcoded 0.001f was tuned for 44.1kHz; at 96kHz it becomes 2.2× too slow.
         // Use matched-Z: coeff = 1 - exp(-2π·fc/sr), fc≈22Hz for a very slow HP corner.
         breathHPCoeff = 1.0f - fastExp(-6.2832f * 22.0f * invSR);
+        // FIX-Sound (P31a): recompute Blanket lpCoeff on prepare() so the warm-noise
+        // filter cutoff stays SR-consistent (0.3f was tuned for 44.1kHz; at 96kHz it is
+        // ~2× too bright). updateFilters() will recompute from tone param, but we must
+        // initialise a SR-correct value for the brief window before tone is first set.
+        lpCoeff = 1.0f - fastExp(-6.2832f * (400.0f + tone * 8000.0f) * invSR);
+        lpCoeff = clamp(lpCoeff, 0.01f, 0.99f);
         reset();
     }
 
@@ -544,7 +561,14 @@ private:
 
     BobNoiseGen rndL, rndR;
 
-    void updateFilters() noexcept { lpCoeff = clamp(0.01f + tone * 0.5f, 0.01f, 0.5f); }
+    void updateFilters() noexcept
+    {
+        // FIX-Sound (P31a): use matched-Z formula instead of linear Euler approximation.
+        // 0.01f + tone*0.5f mapped ~400 Hz–8400 Hz at 44.1kHz but drifted at higher SR.
+        // 1 - exp(-2π·fc/sr) keeps the corner frequency SR-invariant.
+        float fc = 400.0f + tone * 8000.0f;
+        lpCoeff = clamp(1.0f - fastExp(-6.2832f * fc * invSR), 0.01f, 0.99f);
+    }
 };
 
 //==============================================================================
@@ -833,7 +857,9 @@ public:
             {
                 if (prevPhase1 > lfo1ManualPhase)
                     snh1 = rng.process();
-                smooth1 += (snh1 - smooth1) * 0.0005f;
+                // FIX-Sound (P31a): SR-normalised smoother — 0.0005f at 44.1kHz scales
+                // inversely so the smoothing time constant is SR-invariant.
+                smooth1 += (snh1 - smooth1) * (0.0005f * 44100.0f * invSR);
                 smooth1 = flushDenormal(smooth1);
                 l1 = smooth1 * lfo1Depth;
             }
@@ -847,7 +873,9 @@ public:
         float l2 = 0.0f;
         if (prevPhase2 > lfo2Phase)
             snh2 = rng.process();
-        smooth2 += (snh2 - smooth2) * 0.0005f;
+        // FIX-Sound (P31a): SR-normalised smoother — 0.0005f at 44.1kHz scales
+        // inversely so LFO2 micro-motion smoothing time is SR-invariant.
+        smooth2 += (snh2 - smooth2) * (0.0005f * 44100.0f * invSR);
         smooth2 = flushDenormal(smooth2);
         l2 = smooth2 * 0.3f;
 
@@ -1122,6 +1150,15 @@ public:
         envelopeOutput = 0.0f;
         externalPitchMod = 0.0f;
         externalFilterMod = 0.0f;
+        // FIX-Stability (P14): clear all engine-level expression and modulation state
+        // so that host-driven reset() (e.g. transport rewind) cannot leave stale
+        // pitch-bend, mod-wheel or cached mod-matrix offsets audible on the next note.
+        modWheelAmount    = 0.0f;
+        pitchBendNorm     = 0.0f;
+        bobModCutoffOffset   = 0.0f;
+        bobModLfo1RateOffset = 0.0f;
+        bobModPitchOffset    = 0.0f;
+        bobModLevelOffset    = 0.0f;
         std::fill(outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill(outputCacheR.begin(), outputCacheR.end(), 0.0f);
     }
@@ -1363,6 +1400,7 @@ public:
                 float lfoPitchMod = 0.0f;
                 float lfoCutoffMod = 0.0f;
                 float lfoShapeMod = 0.0f;
+                float lfoFxMod    = 0.0f;
                 switch (lfo1Target)
                 {
                 case 0:
@@ -1375,7 +1413,11 @@ public:
                     lfoShapeMod = curOut.lfo1;
                     break;
                 case 3:
-                    break; // FX depth — applied globally
+                    // FIX-ParamDesign: was a dead wire ("applied globally" comment but
+                    // never consumed). Now drives dust-tape amount per-sample so Target=FX
+                    // visibly modulates tape saturation as documented.
+                    lfoFxMod = curOut.lfo1;
+                    break;
                 }
 
                 // Curiosity modulates filter cutoff
@@ -1442,8 +1484,9 @@ public:
 
                 float out = filtered * envVal * voice.velocity;
 
-                // Dust tape — tone hoisted; only per-sample saturation
-                out = voice.dustTape.process(out, effDustAmt);
+                // Dust tape — tone hoisted; LFO FX modulation added when Target=FX (case 3)
+                float dustAmt = clamp(effDustAmt + lfoFxMod * 0.3f, 0.0f, 1.0f);
+                out = voice.dustTape.process(out, dustAmt);
 
                 if (!voice.ampEnv.isActive())
                 {
@@ -1509,12 +1552,15 @@ public:
         switch (type)
         {
         case CouplingType::AmpToFilter:
-            externalFilterMod += amount;
+            // FIX-Coupling (P1): use = not += — the fleet convention is that each
+            // applyCouplingInput call represents the whole block's coupling contribution.
+            // += would compound multiple coupling sources, defeating the per-block consume.
+            externalFilterMod = amount;
             break;
         case CouplingType::AmpToPitch:
         case CouplingType::LFOToPitch:
         case CouplingType::PitchToPitch:
-            externalPitchMod += amount * 0.5f;
+            externalPitchMod = amount * 0.5f;
             break;
         default:
             break;
@@ -1672,19 +1718,22 @@ public:
             juce::ParameterID{"bob_polyphony", 1}, "Bob Polyphony", juce::StringArray{"1", "2", "4", "8"}, 3));
 
         // --- Macros (M1–M4: CHARACTER / MOVEMENT / COUPLING / SPACE) ---
-        // CHARACTER → filter cutoff sweep (+0 to +6000 Hz over the user value)
-        // MOVEMENT  → LFO1 rate multiplier (×1 to ×4 boost)
-        // COUPLING  → coupling send amount offset (+0 to +0.5)
-        // SPACE     → texture level offset (+0 to +0.5 adds room character)
+        // CHARACTER → filter cutoff sweep (+0 to +6000 Hz over the user value); neutral at 0.0
+        // MOVEMENT  → LFO1 rate multiplier (×1 to ×4 boost); neutral at 0.0
+        // COUPLING  → coupling send level (0.0=mute, 0.5=unity via ×2, 1.0=+6dB); default 0.5
+        // SPACE     → texture level offset (+0 to +0.5 adds room character); neutral at 0.0
         params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"bob_macroCharacter", 1},
                                                                      "Bob Macro CHARACTER",
                                                                      juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
         params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"bob_macroMovement", 1},
                                                                      "Bob Macro MOVEMENT",
                                                                      juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+        // FIX-ParamDesign: COUPLING default corrected from 0.0 (silent/mute) to 0.5 (unity).
+        // effCouplingLevel = macroCoupling * 2.0f, so 0.5 → 1.0 = unity send level.
+        // Default 0.0 caused coupling outputs to be permanently zero until user touched the macro.
         params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"bob_macroCoupling", 1},
                                                                      "Bob Macro COUPLING",
-                                                                     juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+                                                                     juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
         params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"bob_macroSpace", 1},
                                                                      "Bob Macro SPACE",
                                                                      juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
