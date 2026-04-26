@@ -37,6 +37,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "HudIcons.h"
 #include <functional>
 #include <cmath>
 #include <vector>
@@ -251,9 +252,8 @@ private:
         // --- Chain button (active state if chainModeActive_) ---
         paintChainButton(g);
 
-        // --- Export button ---
-        paintTextButton(g, exportBounds_, "EXPORT", kRegExport,
-                        false, /*withMenuIcon=*/false);
+        // --- Export button (text pill with export glyph icon) ---
+        paintExportButton(g);
 
         // --- REACT label ---
         {
@@ -432,7 +432,7 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    // Undo / Redo icon — curved arc with arrowhead tip
+    // Undo / Redo icon — via HudIcons factory (standard juce::Path glyphs)
 
     void paintUndoIcon(juce::Graphics& g,
                        const juce::Rectangle<float>& bounds,
@@ -443,86 +443,15 @@ private:
             ? juce::Colour(200, 204, 216).withAlpha(0.85f)
             : juce::Colour(200, 204, 216).withAlpha(0.55f);
 
-        g.setColour(col);
+        // Inset bounds slightly so the icon sits inside the 32×32 hit region.
+        const auto iconBounds = bounds.reduced(7.0f, 7.0f);
+        const auto icon = isRedo ? HudIcons::makeRedoIcon() : HudIcons::makeUndoIcon();
 
-        const float cx = bounds.getCentreX();
-        const float cy = bounds.getCentreY();
-        const float r  = 6.5f;   // arc radius
-        const float arrowLen = 4.0f;
-
-        // Arc: for undo (counterclockwise arrow), arc sweeps from ~210° to ~30°.
-        // For redo (clockwise), mirror horizontally.
-        // Angles in JUCE are clockwise from 12 o'clock (radians).
-        // We draw a 240° arc leaving a gap at the top where the arrowhead sits.
-
-        juce::Path arc;
-
-        if (!isRedo)
-        {
-            // Undo: arc goes counterclockwise → draw from ~(7 o'clock) to ~(11 o'clock).
-            // In JUCE angles (clockwise from 12 o'clock):
-            //   start = 210° (7 o'clock) = 7π/6 rad
-            //   end   =  30° (1 o'clock) = π/6  rad  (sweeping back through 0)
-            const float startA = static_cast<float>(7.0 * M_PI / 6.0);
-            const float endA   = static_cast<float>(M_PI / 6.0);
-
-            arc.addArc(cx - r, cy - r, r * 2.0f, r * 2.0f,
-                       startA, endA, /*startAsNewSubPath=*/true);
-
-            // Arrowhead at the end of the arc (at ~30°, pointing left/down).
-            // Tip point on arc at endA:
-            const float tipX = cx + r * std::sin(endA);
-            const float tipY = cy - r * std::cos(endA);
-
-            // Tangent direction at endA (clockwise tangent): rotate endA by +90°.
-            const float tanA = endA + static_cast<float>(M_PI * 0.5);
-
-            // Arrowhead: two short lines fanning from tip.
-            const float armA1 = tanA + static_cast<float>(M_PI * 0.6);
-            const float armA2 = tanA - static_cast<float>(M_PI * 0.6);
-
-            arc.startNewSubPath(tipX, tipY);
-            arc.lineTo(tipX + arrowLen * std::sin(armA1),
-                       tipY - arrowLen * std::cos(armA1));
-            arc.startNewSubPath(tipX, tipY);
-            arc.lineTo(tipX + arrowLen * std::sin(armA2),
-                       tipY - arrowLen * std::cos(armA2));
-        }
-        else
-        {
-            // Redo: mirror of undo — arc goes clockwise.
-            const float startA = static_cast<float>(5.0 * M_PI / 6.0); // ~150° (5 o'clock mirror)
-            const float endA   = static_cast<float>(11.0 * M_PI / 6.0); // ~330°
-
-            arc.addArc(cx - r, cy - r, r * 2.0f, r * 2.0f,
-                       startA, endA, /*startAsNewSubPath=*/true);
-
-            // Arrowhead at endA.
-            const float tipX = cx + r * std::sin(endA);
-            const float tipY = cy - r * std::cos(endA);
-
-            // Counter-clockwise tangent at endA: rotate endA by -90°.
-            const float tanA = endA - static_cast<float>(M_PI * 0.5);
-
-            const float armA1 = tanA + static_cast<float>(M_PI * 0.6);
-            const float armA2 = tanA - static_cast<float>(M_PI * 0.6);
-
-            arc.startNewSubPath(tipX, tipY);
-            arc.lineTo(tipX + arrowLen * std::sin(armA1),
-                       tipY - arrowLen * std::cos(armA1));
-            arc.startNewSubPath(tipX, tipY);
-            arc.lineTo(tipX + arrowLen * std::sin(armA2),
-                       tipY - arrowLen * std::cos(armA2));
-        }
-
-        g.strokePath(arc, juce::PathStrokeType(1.5f,
-                                               juce::PathStrokeType::curved,
-                                               juce::PathStrokeType::rounded));
+        HudIcons::drawIconInBounds(g, icon, iconBounds, col, 1.5f);
     }
 
     //--------------------------------------------------------------------------
-    // Gear icon — standard gear: 8 evenly-spaced trapezoidal teeth around a
-    // filled centre circle with a concentric hole (recognizable at small sizes).
+    // Gear icon — via HudIcons factory (standard 8-tooth gear with centre hole)
 
     void paintGearIcon(juce::Graphics& g,
                        const juce::Rectangle<float>& bounds)
@@ -532,59 +461,50 @@ private:
             ? juce::Colour(200, 204, 216).withAlpha(0.85f)
             : juce::Colour(200, 204, 216).withAlpha(0.55f);
 
-        g.setColour(col);
+        // Inset so the gear sits neatly inside the 32×32 hit region.
+        const auto iconBounds = bounds.reduced(6.0f, 6.0f);
 
-        const float cx      = bounds.getCentreX();
-        const float cy      = bounds.getCentreY();
-        const int   nTeeth  = 8;
-        const float outerR  = 8.0f;   // tip of teeth
-        const float innerR  = 5.5f;   // root of teeth (body radius)
-        const float holeR   = 2.8f;   // centre hole radius
-        const float halfTooth = static_cast<float>(M_PI) / static_cast<float>(nTeeth) * 0.55f; // half-angular width of each tooth tip
+        // Fill gear body.
+        HudIcons::drawIconInBounds(g, HudIcons::makeGearIcon(), iconBounds, col,
+                                   /*strokeW=*/0.0f); // filled
 
-        juce::Path gear;
+        // Punch centre hole with button background colour (tracks hover/active state).
+        const auto holeBg = resolveColors(kRegSettings, false).bg;
+        HudIcons::drawIconInBounds(g, HudIcons::makeGearHole(), iconBounds,
+                                   holeBg,
+                                   /*strokeW=*/0.0f);
+    }
 
-        // Build gear outline by alternating between tooth tips and body valleys.
-        for (int i = 0; i < nTeeth * 2; ++i)
-        {
-            const float baseAngle = static_cast<float>(i) * static_cast<float>(M_PI) / static_cast<float>(nTeeth);
-            const bool  isTip     = (i % 2 == 0);
-            const float r         = isTip ? outerR : innerR;
+    //--------------------------------------------------------------------------
+    // Export button — text pill with export glyph icon (down-arrow into tray)
 
-            if (isTip)
-            {
-                // Tooth: two points at (baseAngle ± halfTooth) at outerR
-                const float a1 = baseAngle - halfTooth;
-                const float a2 = baseAngle + halfTooth;
+    void paintExportButton(juce::Graphics& g)
+    {
+        const auto c = resolveColors(kRegExport, false);
 
-                const float x1 = cx + outerR * std::sin(a1);
-                const float y1 = cy - outerR * std::cos(a1);
-                const float x2 = cx + outerR * std::sin(a2);
-                const float y2 = cy - outerR * std::cos(a2);
+        g.setColour(c.bg);
+        g.fillRoundedRectangle(exportBounds_, 8.0f);
+        g.setColour(c.border);
+        g.drawRoundedRectangle(exportBounds_, 8.0f, 1.0f);
 
-                if (i == 0)
-                    gear.startNewSubPath(x1, y1);
-                else
-                    gear.lineTo(x1, y1);
+        // Export glyph on the left of the pill.
+        const float iconSz = 10.0f;
+        const float iconX  = exportBounds_.getX() + 7.0f;
+        const float iconY  = exportBounds_.getCentreY() - iconSz * 0.5f;
+        HudIcons::drawIconInBounds(g, HudIcons::makeExportIcon(),
+                                   juce::Rectangle<float>(iconX, iconY, iconSz, iconSz),
+                                   c.text, 1.3f);
 
-                gear.lineTo(x2, y2);
-            }
-            else
-            {
-                // Valley: single point at innerR
-                const float x = cx + r * std::sin(baseAngle);
-                const float y = cy - r * std::cos(baseAngle);
-                gear.lineTo(x, y);
-            }
-        }
-        gear.closeSubPath();
-
-        g.fillPath(gear);
-
-        // Punch centre hole (overdraw with background colour).
-        // Use the component's background colour — frosted dark.
-        g.setColour(juce::Colour(14, 16, 22));
-        g.fillEllipse(cx - holeR, cy - holeR, holeR * 2.0f, holeR * 2.0f);
+        // Label text to the right of the icon.
+        static const juce::Font pillFont(juce::FontOptions{}
+            .withName(juce::Font::getDefaultSansSerifFontName())
+            .withStyle("Bold")
+            .withHeight(11.0f));
+        g.setFont(pillFont);
+        g.setColour(c.text);
+        juce::Rectangle<float> textArea(exportBounds_.getX() + 22.0f, exportBounds_.getY(),
+                                        exportBounds_.getWidth() - 26.0f, exportBounds_.getHeight());
+        g.drawText("EXPORT", textArea.toNearestInt(), juce::Justification::centredLeft, false);
     }
 
     //--------------------------------------------------------------------------
