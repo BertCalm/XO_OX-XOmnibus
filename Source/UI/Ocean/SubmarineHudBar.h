@@ -11,7 +11,7 @@
 //
 // Layout (left → right):
 //
-//   [ ☰ Engines ]  [ ↶ ]  [ ↷ ]  ————————spacer————————  [ Chain ]  [ Export ]  Output  [slider]  [ ⚙ ]
+//   [ ☰ Engines ]  [ ↶ ]  [ ↷ ]  ————————spacer————————  [ Chain ]  [ Export ]  REACT [dial]  [ ⚙ ]
 //
 // Button styles follow the submarine frosted-glass pill aesthetic:
 //   • Default : bg rgba(14,16,22,0.70), border rgba(200,204,216,0.10), text rgba(200,204,216,0.55)
@@ -21,13 +21,13 @@
 // Icon buttons (Undo, Redo, Settings) are 32×32 px squares with custom Path geometry:
 //   • Undo    — counterclockwise arc with left-pointing arrowhead
 //   • Redo    — clockwise arc with right-pointing arrowhead
-//   • Settings — small circle surrounded by 6 equally-spaced circular bumps (gear)
+//   • Settings — standard gear: 8 evenly-spaced trapezoidal teeth around a centre hole
 //
 // The Chain button prepends a small chain-link icon (two interlocking ovals).
 //
-// The Output slider is 70 px wide, 3 px track, teal fill, 10 px thumb.
-// Horizontal drag changes the normalised value (0–1). Re-reads start position
-// on mouseDown so there are no jumps.
+// The REACT dial is a 28×28 px rotary knob (same style as the SAT/DELAY/REVERB dials
+// in MasterFXStripCompact): value arc from 135° to 405°, teal fill, indicator line.
+// Vertical drag changes the normalised value (0–1). Drag up = increase.
 //
 // All interactions fire std::function callbacks — parent wires them without any
 // upward include dependency on this component.
@@ -62,7 +62,7 @@ public:
     static constexpr int kBarHeight    = 40;
     static constexpr int kBtnHeight    = 28;
     static constexpr int kIconBtnSize  = 32;
-    static constexpr int kSliderWidth  = 70;
+    static constexpr int kDialSize     = 28;   // REACT rotary dial diameter
 
     //==========================================================================
     // Callbacks — parent wires these in the editor constructor.
@@ -73,7 +73,7 @@ public:
     std::function<void()>      onChainToggled;   // toggles chain mode; check chainModeActive_ to read new state
     std::function<void()>      onExportClicked;
     std::function<void()>      onSettingsClicked;
-    std::function<void(float)> onOutputChanged;  // 0–1 normalised
+    std::function<void(float)> onReactChanged;   // 0–1 normalised — ocean visual reactivity
 
     //==========================================================================
     SubmarineHudBar()
@@ -99,12 +99,12 @@ public:
     /** Returns true when the Chain mode toggle is currently active. */
     bool isChainModeActive() const noexcept { return chainModeActive_; }
 
-    void setOutputLevel(float level01)
+    void setReactLevel(float level01)
     {
         const float clamped = juce::jlimit(0.0f, 1.0f, level01);
-        if (outputLevel_ != clamped)
+        if (reactLevel_ != clamped)
         {
-            outputLevel_ = clamped;
+            reactLevel_ = clamped;
             repaint();
         }
     }
@@ -120,7 +120,7 @@ private:
         kRegRedo     = 2,
         kRegChain    = 3,
         kRegExport   = 4,
-        kRegSlider   = 5,
+        kRegDial     = 5,   // REACT rotary dial
         kRegSettings = 6,
     };
 
@@ -189,35 +189,19 @@ private:
             rx -= static_cast<float>(kIconBtnSize) + gap;
         }
 
-        // --- Output slider (70 px wide) ---
+        // --- REACT dial (28×28 rotary knob) ---
         {
-            const float sliderH  = 3.0f;
-            const float thumbD   = 10.0f;
-            // Reserve a touch region that is kBtnHeight tall for easier dragging.
-            juce::Rectangle<float> sliderTouch(rx - static_cast<float>(kSliderWidth),
-                                               (h - static_cast<float>(kBtnHeight)) * 0.5f,
-                                               static_cast<float>(kSliderWidth),
-                                               static_cast<float>(kBtnHeight));
-            regions_.push_back({ sliderTouch, kRegSlider });
-            sliderBounds_ = sliderTouch;
-
-            // Visual track centred vertically in the touch region.
-            sliderTrackBounds_ = juce::Rectangle<float>(
-                sliderTouch.getX(),
-                sliderTouch.getCentreY() - sliderH * 0.5f,
-                sliderTouch.getWidth(),
-                sliderH);
-
-            // Thumb (rendered during paint; stored as convenience reference).
-            (void)thumbD;
-
-            rx -= static_cast<float>(kSliderWidth) + gap;
+            const float d = static_cast<float>(kDialSize);
+            juce::Rectangle<float> dialRect(rx - d, (h - d) * 0.5f, d, d);
+            regions_.push_back({ dialRect.expanded(4.0f), kRegDial });
+            reactDialBounds_ = dialRect;
+            rx -= d + gap;
         }
 
-        // --- "OUTPUT" label (9 px, uppercase) ---
+        // --- "REACT" label (9 px, uppercase) ---
         {
-            const float labelW = 42.0f;
-            outputLabelBounds_ = juce::Rectangle<float>(
+            const float labelW = 36.0f;
+            reactLabelBounds_ = juce::Rectangle<float>(
                 rx - labelW,
                 (h - 9.0f) * 0.5f,
                 labelW, 9.0f);
@@ -271,19 +255,19 @@ private:
         paintTextButton(g, exportBounds_, "EXPORT", kRegExport,
                         false, /*withMenuIcon=*/false);
 
-        // --- Output label ---
+        // --- REACT label ---
         {
-            static const juce::Font outputLabelFont(juce::FontOptions{}
+            static const juce::Font reactLabelFont(juce::FontOptions{}
                           .withName(juce::Font::getDefaultSansSerifFontName())
                           .withHeight(9.0f));
-            g.setFont(outputLabelFont);
+            g.setFont(reactLabelFont);
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.25f));
-            g.drawText("OUTPUT", outputLabelBounds_.toNearestInt(),
+            g.drawText("REACT", reactLabelBounds_.toNearestInt(),
                        juce::Justification::centredRight, false);
         }
 
-        // --- Output slider ---
-        paintOutputSlider(g);
+        // --- REACT dial ---
+        paintReactDial(g);
 
         // --- Settings icon button ---
         paintIconButton(g, settingsBounds_, kRegSettings, false);
@@ -537,7 +521,8 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    // Gear icon — small circle + 6 outer circular bumps
+    // Gear icon — standard gear: 8 evenly-spaced trapezoidal teeth around a
+    // filled centre circle with a concentric hole (recognizable at small sizes).
 
     void paintGearIcon(juce::Graphics& g,
                        const juce::Rectangle<float>& bounds)
@@ -549,62 +534,116 @@ private:
 
         g.setColour(col);
 
-        const float cx    = bounds.getCentreX();
-        const float cy    = bounds.getCentreY();
-        const float innerR = 3.5f;  // centre circle radius
-        const float bumpR  = 2.0f;  // radius of each outer bump
-        const float bumpOrbit = 7.5f; // distance from centre to bump centre
+        const float cx      = bounds.getCentreX();
+        const float cy      = bounds.getCentreY();
+        const int   nTeeth  = 8;
+        const float outerR  = 8.0f;   // tip of teeth
+        const float innerR  = 5.5f;   // root of teeth (body radius)
+        const float holeR   = 2.8f;   // centre hole radius
+        const float halfTooth = static_cast<float>(M_PI) / static_cast<float>(nTeeth) * 0.55f; // half-angular width of each tooth tip
 
-        // Centre circle
-        g.drawEllipse(cx - innerR, cy - innerR,
-                      innerR * 2.0f, innerR * 2.0f, 1.5f);
+        juce::Path gear;
 
-        // 6 outer bumps equally spaced
-        for (int i = 0; i < 6; ++i)
+        // Build gear outline by alternating between tooth tips and body valleys.
+        for (int i = 0; i < nTeeth * 2; ++i)
         {
-            const float angle = static_cast<float>(i) * static_cast<float>(M_PI / 3.0);
-            const float bx    = cx + bumpOrbit * std::cos(angle);
-            const float by    = cy + bumpOrbit * std::sin(angle);
-            g.fillEllipse(bx - bumpR, by - bumpR, bumpR * 2.0f, bumpR * 2.0f);
+            const float baseAngle = static_cast<float>(i) * static_cast<float>(M_PI) / static_cast<float>(nTeeth);
+            const bool  isTip     = (i % 2 == 0);
+            const float r         = isTip ? outerR : innerR;
+
+            if (isTip)
+            {
+                // Tooth: two points at (baseAngle ± halfTooth) at outerR
+                const float a1 = baseAngle - halfTooth;
+                const float a2 = baseAngle + halfTooth;
+
+                const float x1 = cx + outerR * std::sin(a1);
+                const float y1 = cy - outerR * std::cos(a1);
+                const float x2 = cx + outerR * std::sin(a2);
+                const float y2 = cy - outerR * std::cos(a2);
+
+                if (i == 0)
+                    gear.startNewSubPath(x1, y1);
+                else
+                    gear.lineTo(x1, y1);
+
+                gear.lineTo(x2, y2);
+            }
+            else
+            {
+                // Valley: single point at innerR
+                const float x = cx + r * std::sin(baseAngle);
+                const float y = cy - r * std::cos(baseAngle);
+                gear.lineTo(x, y);
+            }
         }
+        gear.closeSubPath();
+
+        g.fillPath(gear);
+
+        // Punch centre hole (overdraw with background colour).
+        // Use the component's background colour — frosted dark.
+        g.setColour(juce::Colour(14, 16, 22));
+        g.fillEllipse(cx - holeR, cy - holeR, holeR * 2.0f, holeR * 2.0f);
     }
 
     //--------------------------------------------------------------------------
-    // Output slider
+    // REACT rotary dial — same style as SAT/DELAY/REVERB dials in MasterFXStripCompact
 
-    void paintOutputSlider(juce::Graphics& g)
+    void paintReactDial(juce::Graphics& g)
     {
-        const float trackH = 3.0f;
-        const float thumbD = 10.0f;
+        using juce::MathConstants;
+        using juce::Colour;
+        using juce::Path;
+        using juce::PathStrokeType;
 
-        const float trackX = sliderTrackBounds_.getX();
-        const float trackY = sliderTrackBounds_.getY();
-        const float trackW = sliderTrackBounds_.getWidth();
+        const bool isHov = (hoveredRegion_ == kRegDial);
 
-        // Thumb X position
-        const float thumbX = trackX + outputLevel_ * trackW;
+        const float cx = reactDialBounds_.getCentreX();
+        const float cy = reactDialBounds_.getCentreY();
+        const float r  = (reactDialBounds_.getWidth() * 0.5f) - 2.0f;
 
-        // Track background
-        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.10f));
-        g.fillRoundedRectangle(trackX, trackY, trackW, trackH, trackH * 0.5f);
+        const float startAngle = 0.75f * MathConstants<float>::pi;  // 135°
+        const float endAngle   = 2.25f * MathConstants<float>::pi;  // 405°
+        const float totalSweep = endAngle - startAngle;             // 270°
+        const float valueAngle = startAngle + reactLevel_ * totalSweep;
 
-        // Filled portion (left of thumb)
-        if (outputLevel_ > 0.0f)
+        // Background arc (full sweep).
         {
-            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.50f));
-            g.fillRoundedRectangle(trackX, trackY,
-                                   thumbX - trackX, trackH,
-                                   trackH * 0.5f);
+            Path bgArc;
+            bgArc.addCentredArc(cx, cy, r, r, 0.0f, startAngle, endAngle, true);
+            g.setColour(Colour(200, 204, 216).withAlpha(0.08f));
+            g.strokePath(bgArc, PathStrokeType(3.0f,
+                PathStrokeType::curved, PathStrokeType::rounded));
         }
 
-        // Thumb circle — centre on thumbX, vertically centred on track
-        const float thumbY = trackY + trackH * 0.5f;
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.80f));
-        g.fillEllipse(thumbX - thumbD * 0.5f, thumbY - thumbD * 0.5f,
-                      thumbD, thumbD);
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.50f));
-        g.drawEllipse(thumbX - thumbD * 0.5f, thumbY - thumbD * 0.5f,
-                      thumbD, thumbD, 1.0f);
+        // Value arc (partial sweep).
+        if (reactLevel_ > 0.01f)
+        {
+            Path valArc;
+            valArc.addCentredArc(cx, cy, r, r, 0.0f, startAngle, valueAngle, true);
+            g.setColour(Colour(127, 219, 202).withAlpha(0.60f));
+            g.strokePath(valArc, PathStrokeType(3.0f,
+                PathStrokeType::curved, PathStrokeType::rounded));
+        }
+
+        // Centre dot.
+        const float dotR = r * 0.35f;
+        g.setColour(Colour(200, 204, 216).withAlpha(0.06f));
+        g.fillEllipse(cx - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
+        g.setColour(Colour(200, 204, 216).withAlpha(0.10f));
+        g.drawEllipse(cx - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f, 1.0f);
+
+        // Indicator line — brighter on hover.
+        const float indStart = r * 0.25f;
+        const float indEnd   = r * 0.75f;
+        const float indAlpha = isHov ? 1.0f : 0.80f;
+        const float cosA     = std::cos(valueAngle);
+        const float sinA     = std::sin(valueAngle);
+        g.setColour(Colour(127, 219, 202).withAlpha(indAlpha));
+        g.drawLine(cx + indStart * cosA, cy + indStart * sinA,
+                   cx + indEnd   * cosA, cy + indEnd   * sinA,
+                   1.5f);
     }
 
     //==========================================================================
@@ -656,10 +695,10 @@ private:
                     onExportClicked();
                 break;
 
-            case kRegSlider:
-                sliderDragging_   = true;
-                sliderDragStartX_ = e.x;
-                sliderDragStartV_ = outputLevel_;
+            case kRegDial:
+                dialDragging_   = true;
+                dialDragStartY_ = e.y;
+                dialDragStartV_ = reactLevel_;
                 break;
 
             case kRegSettings:
@@ -674,24 +713,24 @@ private:
 
     void mouseDrag(const juce::MouseEvent& e) override
     {
-        if (!sliderDragging_)
+        if (!dialDragging_)
             return;
 
-        // Map horizontal delta to 0–1. Full slider width = full range.
-        const float dx    = static_cast<float>(e.x - sliderDragStartX_);
-        const float range = static_cast<float>(kSliderWidth);
+        // Map vertical delta to 0–1. Drag up = increase. 100 px = full sweep.
+        const float dy    = static_cast<float>(dialDragStartY_ - e.y);
+        const float range = 100.0f;
         const float newV  = juce::jlimit(0.0f, 1.0f,
-                                         sliderDragStartV_ + dx / range);
-        outputLevel_ = newV;
+                                         dialDragStartV_ + dy / range);
+        reactLevel_ = newV;
         repaint();
 
-        if (onOutputChanged)
-            onOutputChanged(outputLevel_);
+        if (onReactChanged)
+            onReactChanged(reactLevel_);
     }
 
     void mouseUp(const juce::MouseEvent& /*e*/) override
     {
-        sliderDragging_ = false;
+        dialDragging_ = false;
         repaint();
     }
 
@@ -719,12 +758,12 @@ private:
     // State
 
     bool  chainModeActive_ = false;
-    float outputLevel_     = 0.80f; // default 80% output
+    float reactLevel_      = 0.80f; // default 80% reactivity
 
-    // Slider drag state
-    bool  sliderDragging_   = false;
-    int   sliderDragStartX_ = 0;
-    float sliderDragStartV_ = 0.0f;
+    // Dial drag state (REACT rotary)
+    bool  dialDragging_   = false;
+    int   dialDragStartY_ = 0;
+    float dialDragStartV_ = 0.0f;
 
     // Hover tracking
     int hoveredRegion_ = -1;
@@ -735,9 +774,8 @@ private:
     juce::Rectangle<float> redoBounds_;
     juce::Rectangle<float> chainBounds_;
     juce::Rectangle<float> exportBounds_;
-    juce::Rectangle<float> outputLabelBounds_;
-    juce::Rectangle<float> sliderBounds_;
-    juce::Rectangle<float> sliderTrackBounds_;
+    juce::Rectangle<float> reactLabelBounds_;
+    juce::Rectangle<float> reactDialBounds_;
     juce::Rectangle<float> settingsBounds_;
 
     // Hit-test regions
