@@ -3,8 +3,24 @@ name: iOS Build
 on:
   push:
     branches: [main]
+    paths:
+      - 'Source/**'
+      - 'Tests/**'
+      - 'CMakeLists.txt'
+      - '.github/workflows/ios-build.yml'
+      - 'Libs/**'
   pull_request:
     branches: [main]
+    paths:
+      - 'Source/**'
+      - 'Tests/**'
+      - 'CMakeLists.txt'
+      - '.github/workflows/ios-build.yml'
+      - 'Libs/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   ios-build:
@@ -20,6 +36,16 @@ jobs:
         with:
           path: Libs/JUCE
           key: juce-8.0.4
+
+      - name: Cache build artifacts
+        uses: actions/cache@v5
+        with:
+          path: |
+            build-ios/CMakeFiles
+            build-ios/CMakeCache.txt
+          key: ${{ runner.os }}-${{ github.workflow }}-build-${{ hashFiles('Source/**', 'CMakeLists.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-${{ github.workflow }}-build-
 
       - name: Clone JUCE 8.0.4
         if: steps.cache-juce.outputs.cache-hit != 'true'
