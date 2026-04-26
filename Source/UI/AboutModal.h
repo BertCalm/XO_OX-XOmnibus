@@ -177,7 +177,6 @@ public:
         const float nameW = nameFont.getStringWidthFloat("XOceanus") + 8.0f;
         g.setFont(verFont);
         g.setColour(Colour(127, 219, 202).withAlpha(0.70f));
-        auto verRect = titleR.reduced(16.0f + nameW + 6.0f, 0.0f);
         g.drawText(versionStr_, juce::Rectangle<float>(
                        titleR.getX() + 16.0f + nameW + 6.0f,
                        titleR.getY(),
