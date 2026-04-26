@@ -724,7 +724,7 @@ public:
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
+    float invSR = 0.0f; // assigned in prepare() — do NOT init as 1/sr (sr=0 → +Inf)
     int mode = 0;
     float cutoffHz = 8000.0f;
     float resonance = 0.3f;
@@ -887,7 +887,7 @@ public:
 
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
+    float invSR = 0.0f; // assigned in prepare() — do NOT init as 1/sr (sr=0 → +Inf)
     float voiceOffset = 0.0f;
 
     // StandardLFO handles phase accumulation and waveform generation for
