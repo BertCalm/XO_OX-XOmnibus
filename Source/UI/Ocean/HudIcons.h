@@ -154,24 +154,24 @@ struct HudIcons
     {
         juce::Path p;
 
-        // ── Arrow stem runs into tip, then wings spread from there ──
+        // ── Arrow: one continuous subpath — stem top → tip → left wing ──
         const float stemX  = 0.5f;
         const float stemT  = 0.12f;  // top of stem
         const float stemB  = 0.60f;  // shoulder Y where arrowhead begins
 
-        // ── Arrowhead (equilateral triangle pointing down) ──
-        const float ahW  = 0.30f;  // half-width of arrowhead
-        const float ahT  = stemB;   // top of arrowhead
+        // ── Arrowhead dimensions ──
+        const float ahW  = 0.30f;  // half-width at shoulder
+        const float ahT  = stemB;   // shoulder Y
         const float ahB  = 0.76f;  // tip Y
 
-        // Stem runs straight into the tip so the glyph is visually connected
-        // when stroked at small sizes (single continuous subpath).
-        p.startNewSubPath(stemX, stemT);
-        p.lineTo(stemX, ahB);
-        p.lineTo(stemX - ahW, ahT);
+        // Stem enters the tip and continues up the left wing in a single subpath.
+        // The right wing re-starts from the tip (unavoidable for a Y-shape).
+        p.startNewSubPath(stemX - ahW, ahT);  // left wing end
+        p.lineTo(stemX, ahB);                 // down to tip
+        p.lineTo(stemX, stemT);               // up the stem to top
 
-        p.startNewSubPath(stemX, ahB);
-        p.lineTo(stemX + ahW, ahT);
+        p.startNewSubPath(stemX, ahB);        // back to tip
+        p.lineTo(stemX + ahW, ahT);           // right wing
 
         // ── Tray / shelf line ──
         const float trayY  = 0.86f;

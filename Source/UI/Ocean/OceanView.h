@@ -1,11 +1,87 @@
-// OceanView.h
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
+#pragma once
+// OceanView.h — Main radial container component for the XOceanus Ocean View.
+//
+// OceanView is the top-level UI component that replaces the 3-column
+// ColumnLayoutManager-based Gallery layout.  It owns and orchestrates all
+// Ocean sub-components in a radial composition: engine creatures orbit a
+// central area, coupling threads connect them via CouplingSubstrate,
+// and ambient layers wrap the whole scene.
+//
+// D6 (locked): NexusDisplay removed — preset identity lives in the HUD/DotMatrix
+// strip (MasterFXStripCompact::setPresetName). DNA hexagons live in the preset
+// browser overlay. See issue #1096.
+//
+// Architecture overview
+// ─────────────────────
+//   Z-order (bottom → top):
+//     OceanBackground   — depth-gradient field
+//     CouplingSubstrate — luminescent Bézier threads
+//     EngineOrbit[0-4]  — creature orbital sprites
+//     MacroSection      — 4 macro knobs (unique_ptr, needs APVTS)
+//     EngineDetailPanel — detail panel (unique_ptr, needs Processor)
+//     SidebarPanel      — settings/export/FX sidebar (unique_ptr)
+//     AmbientEdge       — vignette + edge glow overlay
+//     DnaMapBrowser     — full-window scatter map (BrowserOpen state)
+//     DetailOverlay     — floating detail panel with backdrop (Step 4)
+//     PlaySurfaceOverlay— slide-up keyboard/pads (on-demand)
+//     Floating controls — presetPrev/Next, fav, settings, KEYS
+//     StatusBar         — bottom strip (unique_ptr)
+//
+// State machine
+// ─────────────
+//   Orbital       — all creatures orbit the centre (default)
+//   ZoomIn        — one creature enlarged at centre, others minimised at edges
+//   SplitTransform— 20% mini-orbital strip left, 80% EngineDetailPanel right
+//   BrowserOpen   — full-window DnaMapBrowser
+//
+// Deferred init
+// ─────────────
+//   MacroSection, EngineDetailPanel, SidebarPanel, and StatusBar all require
+//   references to the processor or APVTS at construction time.  OceanView
+//   holds them as unique_ptrs and exposes initMacros(), initDetailPanel(),
+//   initSidebar(), and initStatusBar() for the editor to call immediately
+//   after construction before the component is made visible.
 
-#ifndef OCEANVIEW_H
-#define OCEANVIEW_H
+#include <juce_gui_basics/juce_gui_basics.h>
+#include "../GalleryColors.h"
+#include "OceanBackground.h"
+#include "AmbientEdge.h"
+#include "EngineOrbit.h"
+#include "CouplingSubstrate.h"
+#include "CouplingConfigPopup.h"
+#include "DnaMapBrowser.h"
+#include "DetailOverlay.h"
+#include "PlaySurfaceOverlay.h"
+#include "EnginePickerDrawer.h"
+#include "SettingsDrawer.h"
+#include "TideWaterline.h"
+#include "ChordBarComponent.h"
+#include "MasterFXStripCompact.h"
+#include "EpicSlotsPanel.h"
+#include "TransportBar.h"
+#include "SubmarineOuijaPanel.h"
+#include "ExpressionStrips.h"
+#include "SubmarinePlaySurface.h"
+#include "DotMatrixDisplay.h"
+#include "SubmarineHudBar.h"
+#include "SurfaceRightPanel.h"
+#include "SubmarineMenuStyle.h"
+#include "../Gallery/MacroSection.h"
+#include "../Gallery/EngineDetailPanel.h"
+#include "../Gallery/SidebarPanel.h"
+#include "../Gallery/StatusBar.h"
 
-// Function declarations
-void renderOcean();
-void updateWaves();
+#ifndef _USE_MATH_DEFINES
+#define _USE_MATH_DEFINES
+#endif
+#include <array>
+#include <cmath>
+#include <functional>
+#include <memory>
+#include <vector>
+
 
 namespace xoceanus
 {
@@ -1113,9 +1189,8 @@ public:
     */
     void setReactivity(float value01)
     {
-        background_.setReactivity(value01);
+        background_.setReactivity(value01);  // triggers repaint internally
         hudBar_.setReactLevel(value01);
-        background_.repaint();
     }
 
     /**
@@ -2588,4 +2663,3 @@ private:
 };
 
 } // namespace xoceanus
-#endif // OCEANVIEW_H
