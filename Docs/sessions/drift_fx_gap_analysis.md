@@ -21,7 +21,7 @@ were authored natively against the XOceanus schema.
 
 ## Step 1: What the Adapter Currently Exposes
 
-The DriftEngine adapter (`Source/Engines/Drift/DriftEngine.h`) defines 38 canonical parameters,
+The DriftEngine adapter (`Source/Engines/Odyssey/OdysseyEngine.h`) defines 38 canonical parameters,
 all `drift_` prefixed:
 
 **Voice / Oscillators (14 params):**
@@ -373,7 +373,7 @@ half of that gap in a single afternoon's work.
 
 ## Files Referenced
 
-- `Source/Engines/Drift/DriftEngine.h` — current adapter (38 params, lines 1022–1190)
+- `Source/Engines/Odyssey/OdysseyEngine.h` — current adapter (38 params, lines 1022–1190)
 - `~/Documents/GitHub/XOdyssey/src/Parameters.h` — standalone canonical param list (~130 params)
 - `~/Documents/GitHub/XOdyssey/src/engine/TidalPulse.h` — Tidal implementation (ready to port)
 - `~/Documents/GitHub/XOdyssey/src/engine/Fracture.h` — Fracture implementation (ready to port)

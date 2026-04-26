@@ -11,7 +11,7 @@
 **Gallery Code:** OVERDUB
 **Accent Color:** Olive `#6B7B3A`
 **Parameter Prefix:** `dub_`
-**Engine Dir:** `Source/Engines/Dub/`
+**Engine Dir:** `Source/Engines/Overdub/`
 
 **Thesis:** Dub synthesis with tape delay, spring reverb, and drive -- sound echoing through temperature layers where warm meets cold.
 

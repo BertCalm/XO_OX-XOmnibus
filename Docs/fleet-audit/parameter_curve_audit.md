@@ -90,7 +90,7 @@ This is wrong for most audio parameters:
 ### FIXED — 3 Egregious Cases Corrected
 
 #### Fix 1: Snap Decay — `snap_decay`
-**File:** `Source/Engines/Snap/SnapEngine.h` line 765
+**File:** `Source/Engines/OddfeliX/OddfeliXEngine.h` line 765
 
 **Problem:** Snap is a percussive engine whose identity is built on transient precision — the difference between a 20ms and 80ms decay is the entire character difference between a tight click and a loose thud. With a linear range of 0–8s, the bottom ~10% of knob travel (0–800ms) had to cover ALL percussive use cases while 90% of the range controlled musically unimportant long tails.
 
@@ -107,7 +107,7 @@ juce::NormalisableRange<float> (0.0f, 8.0f, 0.001f, 0.3f), 0.5f
 ---
 
 #### Fix 2: Morph Decay — `morph_decay`
-**File:** `Source/Engines/Morph/MorphEngine.h` line 752
+**File:** `Source/Engines/OddOscar/OddOscarEngine.h` line 752
 
 **Problem:** Morph is a pad engine. Its Bloom (attack) and Release parameters already had correct `skewFactor = 0.4`. The Decay parameter was missing the skew, creating an inconsistency where the attack was musically precise but the decay was linear — meaning a pad creator would get confusingly different feel from near-identical knob positions on attack vs. decay.
 

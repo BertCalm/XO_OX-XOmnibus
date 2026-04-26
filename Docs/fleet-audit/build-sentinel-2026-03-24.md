@@ -191,8 +191,8 @@ These warnings exist in the current build but do not prevent compilation of non-
 | `Source/Engines/Opcode/OpcodeEngine.h:382–386` | 5 unused variables: `pSustain`, `pRelease`, `pModAttack`, `pModDecay`, `pModSustain` (D004 risk) | Wire these params to DSP output or mark `[[maybe_unused]]` |
 | `Source/Engines/Onset/OnsetEngine.h:1952` | `lastRenderedSamples` private field unused | Remove field or wire it |
 | `Tests/DoctrineTests/DoctrineTests.cpp:446` | `validRangeParams` set but not used | Fix test logic or remove |
-| `Source/Engines/Drift/DriftEngine.h:1540` | `oscB_tune` unused parameter | Mark `[[maybe_unused]]` or wire it |
-| `Source/Engines/Fat/FatEngine.h:78` | `dt` unused variable | Remove or use it |
+| `Source/Engines/Odyssey/OdysseyEngine.h:1540` | `oscB_tune` unused parameter | Mark `[[maybe_unused]]` or wire it |
+| `Source/Engines/Obese/ObeseEngine.h:78` | `dt` unused variable | Remove or use it |
 | JUCE splash screen flag | `JUCE_DISPLAY_SPLASH_SCREEN` is ignored in JUCE 8 | Remove from `target_compile_definitions` — cosmetic only |
 
 **D004 concern:** The 5 unused parameter variables in `OpcodeEngine.h` warrant a doctrine check — if `pSustain`, `pRelease`, `pModAttack`, `pModDecay`, `pModSustain` are being loaded but not applied to DSP, this is a D004 violation ("Dead Parameters Are Broken Promises").

@@ -409,12 +409,12 @@ unified preset system.
 
 | Engine | Module Dir | Origin | Identity |
 |--------|-----------|--------|----------|
-| Fat | Source/Engines/Fat/ | XObese | Bold, industrial, high-contrast |
-| Bite | Source/Engines/Bite/ | XOverbite | Bass-forward, plush weight + feral bite |
-| Snap | Source/Engines/Snap/ | OddfeliX | Percussive (PolyBLEP, FM, Karplus-Strong) |
-| Morph | Source/Engines/Morph/ | OddOscar | Pad/lush (wavetable morph, ladder filter) |
-| Dub | Source/Engines/Dub/ | XOverdub | Dub-focused synth + performance FX |
-| Drift | Source/Engines/Drift/ | XOdyssey | Psychedelic pads, Climax system, journey |
+| Fat | Source/Engines/Obese/ | XObese | Bold, industrial, high-contrast |
+| Bite | Source/Engines/Overbite/ | XOverbite | Bass-forward, plush weight + feral bite |
+| Snap | Source/Engines/OddfeliX/ | OddfeliX | Percussive (PolyBLEP, FM, Karplus-Strong) |
+| Morph | Source/Engines/OddOscar/ | OddOscar | Pad/lush (wavetable morph, ladder filter) |
+| Dub | Source/Engines/Overdub/ | XOverdub | Dub-focused synth + performance FX |
+| Drift | Source/Engines/Odyssey/ | XOdyssey | Psychedelic pads, Climax system, journey |
 | Onset | Source/Engines/Onset/ | New build | Percussive synthesis, transient design |
 
 ## Architecture Rules

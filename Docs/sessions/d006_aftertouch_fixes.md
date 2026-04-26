@@ -42,7 +42,7 @@ per-voice `setVoicePressure()`.
 
 ## Engine 1: Snap (ODDFELIX)
 
-**File**: `Source/Engines/Snap/SnapEngine.h`
+**File**: `Source/Engines/OddfeliX/OddfeliXEngine.h`
 
 **Target parameter**: `snap_filterCutoff` (BPF center frequency)
 
@@ -244,7 +244,7 @@ using the same pattern, targeting engines with strong expressive modulation targ
 
 ## Engine 6: Morph (ODDOSCAR)
 
-**File**: `Source/Engines/Morph/MorphEngine.h`
+**File**: `Source/Engines/OddOscar/OddOscarEngine.h`
 
 **Target**: Filter cutoff (Moog ladder LP)
 
@@ -277,7 +277,7 @@ voice.filter.setCutoff (modulatedCutoff);
 
 ## Engine 7: Dub (OVERDUB)
 
-**File**: `Source/Engines/Dub/DubEngine.h`
+**File**: `Source/Engines/Overdub/OverdubEngine.h`
 
 **Target**: Send VCA level (`dub_sendLevel`)
 
@@ -338,7 +338,7 @@ effect without destabilising the swarm at high values)
 
 ## Engine 9: Fat (OBESE)
 
-**File**: `Source/Engines/Fat/FatEngine.h`
+**File**: `Source/Engines/Obese/ObeseEngine.h`
 
 **Target**: Mojo control (`fat_mojo`) — the analog/digital axis
 
@@ -643,7 +643,7 @@ Bob, Drift, Bite, Onset, Opal, Organon, Ouroboros, Obscura
 
 ## Engine 16: Bob (OBLONG)
 
-**File**: `Source/Engines/Bob/BobEngine.h`
+**File**: `Source/Engines/Oblong/OblongEngine.h`
 
 **Target**: `bob_filterChar` (Snout filter character — warm/bright axis)
 
@@ -657,7 +657,7 @@ amber glow deepens under touch.
 
 ## Engine 17: Bite (OVERBITE)
 
-**File**: `Source/Engines/Bite/BiteEngine.h`
+**File**: `Source/Engines/Overbite/OverbiteEngine.h`
 
 **Target**: BITE macro (`macro_bite`) — feral aggression intensity
 
@@ -671,7 +671,7 @@ gnash, more GnashStage edge. The possum bites harder under pressure.
 
 ## Engine 18: Drift (ODYSSEY)
 
-**File**: `Source/Engines/Drift/DriftEngine.h`
+**File**: `Source/Engines/Odyssey/OdysseyEngine.h`
 
 **Target**: `odyssey_shimmer` (Prism Shimmer depth — post-filter spectral shimmer)
 

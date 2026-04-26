@@ -23,7 +23,7 @@ meaning no ghost params remain in any of the three engines.
 ## Engine 1: Odyssey / Drift
 
 ### Source of truth
-**`Source/Engines/Drift/DriftEngine.h`** — `addParametersImpl()` method, lines 1022–1190.
+**`Source/Engines/Odyssey/OdysseyEngine.h`** — `addParametersImpl()` method, lines 1022–1190.
 
 ### Canonical parameter IDs (38 params, all `drift_` prefixed)
 `drift_oscA_mode`, `drift_oscA_shape`, `drift_oscA_tune`, `drift_oscA_level`,
@@ -106,7 +106,7 @@ Three presets had old params with `drift_` prepended (partial prior migration):
 ## Engine 2: Oblong / Bob
 
 ### Source of truth
-**`Source/Engines/Bob/BobEngine.h`** — `addParametersImpl()` method, lines 1371–1522.
+**`Source/Engines/Oblong/OblongEngine.h`** — `addParametersImpl()` method, lines 1371–1522.
 
 ### Canonical parameter IDs (41 params, all `bob_` prefixed)
 `bob_oscA_wave`, `bob_oscA_shape`, `bob_oscA_tune`, `bob_oscA_drift`,
@@ -167,7 +167,7 @@ Keys dropped (no canonical equivalent in current BobEngine):
 ## Engine 3: Overdub / Dub
 
 ### Source of truth
-**`Source/Engines/Dub/DubEngine.h`** — `addParametersImpl()` method, lines 922–1080.
+**`Source/Engines/Overdub/OverdubEngine.h`** — `addParametersImpl()` method, lines 922–1080.
 
 ### Canonical parameter IDs (37 params, all `dub_` prefixed)
 `dub_oscWave`, `dub_oscOctave`, `dub_oscTune`, `dub_oscPwm`,
@@ -234,9 +234,9 @@ Keys dropped (no canonical equivalent in current DubEngine):
 
 For each engine, the actual registered parameter IDs were read directly from the
 C++ `addParametersImpl()` method in the engine header:
-- Drift: `Source/Engines/Drift/DriftEngine.h` lines 1022–1190
-- Bob: `Source/Engines/Bob/BobEngine.h` lines 1371–1522
-- Dub: `Source/Engines/Dub/DubEngine.h` lines 922–1080
+- Drift: `Source/Engines/Odyssey/OdysseyEngine.h` lines 1022–1190
+- Bob: `Source/Engines/Oblong/OblongEngine.h` lines 1371–1522
+- Dub: `Source/Engines/Overdub/OverdubEngine.h` lines 922–1080
 
 ### Preset discovery
 

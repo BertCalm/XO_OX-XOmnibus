@@ -11,7 +11,14 @@
 //
 // Layout (left → right):
 //
-//   [ ☰ Engines ]  [ ↶ ]  [ ↷ ]  ————————spacer————————  [ Chain ]  [ Export ]  REACT [dial]  [ ⚙ ]
+//   [ ☰ Engines ]  [ ↶ ]  [ ↷ ]  ─── [ ◀ ] [ Preset Name ] [ ▶ ] [ ♥ ] [ SAVE ] [ A/B ] ───  [ Chain ]  [ Export ]  REACT [dial]  [ ⚙ ]
+//
+// Preset navigation controls live in the flex-spacer region:
+//   ◀ / ▶  — step through the preset list
+//   Preset Name — read-only label, centred; click opens preset browser
+//   ♥  — favourite toggle
+//   SAVE — save current state to preset
+//   A/B  — toggle A/B compare (latches a snapshot of current params)
 //
 // Button styles follow the submarine frosted-glass pill aesthetic:
 //   • Default : bg rgba(14,16,22,0.70), border rgba(200,204,216,0.10), text rgba(200,204,216,0.55)
@@ -71,6 +78,12 @@ public:
     std::function<void()>      onEnginesClicked;
     std::function<void()>      onUndo;
     std::function<void()>      onRedo;
+    std::function<void()>      onPresetPrev;     // step to previous preset
+    std::function<void()>      onPresetNext;     // step to next preset
+    std::function<void()>      onPresetNameClicked; // open preset browser
+    std::function<void(bool)>  onFavChanged;     // toggled; bool = new fav state
+    std::function<void()>      onSave;           // save preset
+    std::function<void(bool)>  onABCompareChanged; // toggled; bool = new A/B state
     std::function<void()>      onChainToggled;   // toggles chain mode; check chainModeActive_ to read new state
     std::function<void()>      onExportClicked;
     std::function<void()>      onSettingsClicked;
@@ -100,6 +113,23 @@ public:
     /** Returns true when the Chain mode toggle is currently active. */
     bool isChainModeActive() const noexcept { return chainModeActive_; }
 
+    void setPresetName(const juce::String& name)
+    {
+        if (presetName_ != name) { presetName_ = name; repaint(); }
+    }
+
+    void setFavourite(bool isFav)
+    {
+        if (isFav_ != isFav) { isFav_ = isFav; repaint(); }
+    }
+
+    void setABCompareActive(bool active)
+    {
+        if (abCompareActive_ != active) { abCompareActive_ = active; repaint(); }
+    }
+
+    bool isABCompareActive() const noexcept { return abCompareActive_; }
+
     void setReactLevel(float level01)
     {
         const float clamped = juce::jlimit(0.0f, 1.0f, level01);
@@ -116,13 +146,19 @@ private:
 
     enum RegionId
     {
-        kRegEngines  = 0,
-        kRegUndo     = 1,
-        kRegRedo     = 2,
-        kRegChain    = 3,
-        kRegExport   = 4,
-        kRegDial     = 5,   // REACT rotary dial
-        kRegSettings = 6,
+        kRegEngines      = 0,
+        kRegUndo         = 1,
+        kRegRedo         = 2,
+        kRegPresetPrev   = 3,   // ◀ previous preset
+        kRegPresetName   = 4,   // preset name label (click → browser)
+        kRegPresetNext   = 5,   // ▶ next preset
+        kRegFav          = 6,   // ♥ favourite toggle
+        kRegSave         = 7,   // SAVE
+        kRegABCompare    = 8,   // A/B compare toggle
+        kRegChain        = 9,
+        kRegExport       = 10,
+        kRegDial         = 11,  // REACT rotary dial
+        kRegSettings     = 12,
     };
 
     struct HudRegion
@@ -175,8 +211,6 @@ private:
             x += static_cast<float>(kIconBtnSize) + gap;
         }
 
-        // Spacer — flex:1 — we'll fill it implicitly by working right-to-left next.
-
         // ---- Right side: work right-to-left ----
         float rx = w;
 
@@ -226,7 +260,64 @@ private:
                                      static_cast<float>(kBtnHeight));
             regions_.push_back({ r, kRegChain });
             chainBounds_ = r;
-            // rx -= btnW + gap;  // spacer fills remaining space
+            rx -= btnW + gap;
+        }
+
+        // ---- Centre: preset navigation (between redo and chain) ----
+        // Lay out from the right edge of the left group: x is the left cursor after Redo.
+        // Lay out: A/B | SAVE | ♥ | ▶ | [ PresetName ] | ◀
+        // We place them working left from rx (right of Chain).
+
+        // A/B Compare pill (right of SAVE)
+        {
+            const float btnW = 38.0f;
+            juce::Rectangle<float> r(rx - btnW, btnY, btnW, static_cast<float>(kBtnHeight));
+            regions_.push_back({ r, kRegABCompare });
+            abCompareBounds_ = r;
+            rx -= btnW + gap;
+        }
+
+        // SAVE pill
+        {
+            const float btnW = 48.0f;
+            juce::Rectangle<float> r(rx - btnW, btnY, btnW, static_cast<float>(kBtnHeight));
+            regions_.push_back({ r, kRegSave });
+            saveBounds_ = r;
+            rx -= btnW + gap;
+        }
+
+        // Favourite ♥ icon button (24×28)
+        {
+            const float btnW = 24.0f;
+            juce::Rectangle<float> r(rx - btnW, btnY, btnW, static_cast<float>(kBtnHeight));
+            regions_.push_back({ r, kRegFav });
+            favBounds_ = r;
+            rx -= btnW + gap;
+        }
+
+        // ▶ next preset
+        {
+            const float btnW = 20.0f;
+            juce::Rectangle<float> r(rx - btnW, btnY, btnW, static_cast<float>(kBtnHeight));
+            regions_.push_back({ r, kRegPresetNext });
+            presetNextBounds_ = r;
+            rx -= btnW + 2.0f;
+        }
+
+        // Preset name (fills remaining centre space)
+        {
+            const float nameW = std::max(60.0f, rx - x - 24.0f); // leave 24px for prev arrow
+            const float nameX = x + 24.0f; // after ◀ arrow
+            presetNameBounds_ = juce::Rectangle<float>(nameX, btnY, nameW, static_cast<float>(kBtnHeight));
+            regions_.push_back({ presetNameBounds_, kRegPresetName });
+        }
+
+        // ◀ prev preset (immediately right of left cursor x)
+        {
+            const float btnW = 20.0f;
+            juce::Rectangle<float> r(x, btnY, btnW, static_cast<float>(kBtnHeight));
+            regions_.push_back({ r, kRegPresetPrev });
+            presetPrevBounds_ = r;
         }
     }
 
@@ -248,6 +339,9 @@ private:
         // --- Redo icon button ---
         paintIconButton(g, redoBounds_, kRegRedo, false);
         paintUndoIcon(g, redoBounds_, /*isRedo=*/true);
+
+        // --- Preset navigation (centre) ---
+        paintPresetNav(g);
 
         // --- Chain button (active state if chainModeActive_) ---
         paintChainButton(g);
@@ -378,6 +472,74 @@ private:
         g.fillRoundedRectangle(bounds, 8.0f);
         g.setColour(c.border);
         g.drawRoundedRectangle(bounds, 8.0f, 1.0f);
+    }
+
+    //--------------------------------------------------------------------------
+    // Preset navigation — ◀ [name] ▶ ♥ SAVE A/B (#1104)
+
+    void paintPresetNav(juce::Graphics& g)
+    {
+        static const juce::Font navFont(juce::FontOptions{}
+            .withName(juce::Font::getDefaultSansSerifFontName())
+            .withStyle("Bold")
+            .withHeight(11.0f));
+
+        // ◀ prev arrow
+        {
+            const auto c = resolveColors(kRegPresetPrev, false);
+            g.setColour(c.bg);
+            g.fillRoundedRectangle(presetPrevBounds_, 5.0f);
+            g.setColour(c.text);
+            g.setFont(navFont);
+            g.drawText(juce::CharPointer_UTF8("\xe2\x97\x80"), presetPrevBounds_.toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
+        // Preset name label (frosted pill)
+        {
+            const auto c = resolveColors(kRegPresetName, false);
+            g.setColour(c.bg);
+            g.fillRoundedRectangle(presetNameBounds_, 5.0f);
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.10f));
+            g.drawRoundedRectangle(presetNameBounds_, 5.0f, 1.0f);
+            g.setFont(navFont);
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(
+                hoveredRegion_ == kRegPresetName ? 0.85f : 0.65f));
+            g.drawText(presetName_.isEmpty() ? "—" : presetName_,
+                       presetNameBounds_.toNearestInt(),
+                       juce::Justification::centred, true);
+        }
+
+        // ▶ next arrow
+        {
+            const auto c = resolveColors(kRegPresetNext, false);
+            g.setColour(c.bg);
+            g.fillRoundedRectangle(presetNextBounds_, 5.0f);
+            g.setColour(c.text);
+            g.setFont(navFont);
+            g.drawText(juce::CharPointer_UTF8("\xe2\x96\xb6"), presetNextBounds_.toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
+        // ♥ favourite — teal when active, dim otherwise
+        {
+            const bool isHov = (hoveredRegion_ == kRegFav);
+            const juce::Colour heartCol = isFav_
+                ? juce::Colour(60, 180, 170).withAlpha(0.90f)
+                : juce::Colour(200, 204, 216).withAlpha(isHov ? 0.75f : 0.40f);
+            g.setColour(juce::Colour(14, 16, 22).withAlpha(0.70f));
+            g.fillRoundedRectangle(favBounds_, 5.0f);
+            g.setFont(navFont);
+            g.setColour(heartCol);
+            g.drawText(juce::CharPointer_UTF8("\xe2\x99\xa5"), favBounds_.toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
+        // SAVE pill
+        paintTextButton(g, saveBounds_, "SAVE", kRegSave, false, false);
+
+        // A/B compare pill
+        paintTextButton(g, abCompareBounds_, "A/B", kRegABCompare, abCompareActive_, false);
     }
 
     //--------------------------------------------------------------------------
@@ -603,6 +765,34 @@ private:
                     onRedo();
                 break;
 
+            case kRegPresetPrev:
+                if (onPresetPrev) onPresetPrev();
+                break;
+
+            case kRegPresetName:
+                if (onPresetNameClicked) onPresetNameClicked();
+                break;
+
+            case kRegPresetNext:
+                if (onPresetNext) onPresetNext();
+                break;
+
+            case kRegFav:
+                isFav_ = !isFav_;
+                repaint();
+                if (onFavChanged) onFavChanged(isFav_);
+                break;
+
+            case kRegSave:
+                if (onSave) onSave();
+                break;
+
+            case kRegABCompare:
+                abCompareActive_ = !abCompareActive_;
+                repaint();
+                if (onABCompareChanged) onABCompareChanged(abCompareActive_);
+                break;
+
             case kRegChain:
                 chainModeActive_ = !chainModeActive_;
                 repaint();
@@ -677,8 +867,13 @@ private:
     //==========================================================================
     // State
 
-    bool  chainModeActive_ = false;
-    float reactLevel_      = 0.80f; // default 80% reactivity
+    bool  chainModeActive_  = false;
+    float reactLevel_       = 0.80f; // default 80% reactivity
+
+    // Preset navigation state (#1104)
+    juce::String presetName_;
+    bool         isFav_           = false;
+    bool         abCompareActive_ = false;
 
     // Dial drag state (REACT rotary)
     bool  dialDragging_   = false;
@@ -692,6 +887,12 @@ private:
     juce::Rectangle<float> enginesBounds_;
     juce::Rectangle<float> undoBounds_;
     juce::Rectangle<float> redoBounds_;
+    juce::Rectangle<float> presetPrevBounds_;
+    juce::Rectangle<float> presetNameBounds_;
+    juce::Rectangle<float> presetNextBounds_;
+    juce::Rectangle<float> favBounds_;
+    juce::Rectangle<float> saveBounds_;
+    juce::Rectangle<float> abCompareBounds_;
     juce::Rectangle<float> chainBounds_;
     juce::Rectangle<float> exportBounds_;
     juce::Rectangle<float> reactLabelBounds_;

@@ -11,7 +11,7 @@
 **Gallery Code:** ODDOSCAR
 **Accent Color:** Axolotl Gill Pink `#E8839B`
 **Parameter Prefix:** `morph_`
-**Engine Dir:** `Source/Engines/Morph/`
+**Engine Dir:** `Source/Engines/OddOscar/`
 
 **Thesis:** Lush pad synthesis with continuous wavetable morphing -- the patient, breathing warmth of the reef.
 

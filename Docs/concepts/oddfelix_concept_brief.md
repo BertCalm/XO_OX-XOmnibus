@@ -11,7 +11,7 @@
 **Gallery Code:** ODDFELIX
 **Accent Color:** Neon Tetra Blue `#00A6D6`
 **Parameter Prefix:** `snap_`
-**Engine Dir:** `Source/Engines/Snap/`
+**Engine Dir:** `Source/Engines/OddfeliX/`
 
 **Thesis:** Percussive transient synthesis -- the snap, the click, the dart of neon through water.
 

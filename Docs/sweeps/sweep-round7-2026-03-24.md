@@ -183,7 +183,7 @@ Estimated saving: ~(blockSize × numActiveVoices) `std::exp()` calls → 0 per b
 
 ---
 
-## 6. FAT (OBESE) — `Source/Engines/Fat/FatEngine.h`
+## 6. FAT (OBESE) — `Source/Engines/Obese/ObeseEngine.h`
 
 | # | Check | Result |
 |---|-------|--------|
@@ -217,7 +217,7 @@ The ZDF Moog ladder requires `std::tan(π × fc / sr)` for the prewarping coeffi
 
 ---
 
-## 7. DRIFT — `Source/Engines/Drift/DriftEngine.h`
+## 7. DRIFT — `Source/Engines/Odyssey/OdysseyEngine.h`
 
 | # | Check | Result |
 |---|-------|--------|

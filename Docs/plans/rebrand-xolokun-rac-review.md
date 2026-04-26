@@ -106,8 +106,8 @@ This is the authoritative source of the plugin's machine-visible identity. Every
 - `Source/Engines/Owlfish/OwlfishEngine.h` (14 refs)
 - `Source/Engines/Ocelot/OcelotEngine.h` (11 refs), `OcelotFloor.h` (9), `OcelotEmergent.h` (6)
 - `Source/Engines/Obsidian/ObsidianEngine.h` (10 refs)
-- `Source/Engines/Morph/MorphEngine.h` (7 refs)
-- `Source/Engines/Fat/FatEngine.h` (7 refs)
+- `Source/Engines/OddOscar/OddOscarEngine.h` (7 refs)
+- `Source/Engines/Obese/ObeseEngine.h` (7 refs)
 - `Source/Engines/Overworld/OverworldEngine.h` (7 refs)
 - `Source/Engines/Overlap/XOverlapAdapter.h` (7 refs)
 - `Source/Engines/Opal/OpalEngine.h`, and many others with 5-6 refs each

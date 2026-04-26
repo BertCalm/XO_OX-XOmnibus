@@ -11,7 +11,7 @@
 **Gallery Code:** OVERBITE
 **Accent Color:** Fang White `#F0EDE8`
 **Parameter Prefix:** `poss_`
-**Engine Dir:** `Source/Engines/Bite/`
+**Engine Dir:** `Source/Engines/Overbite/`
 
 **Thesis:** Bass-forward character synth -- plush weight meets feral bite. The anglerfish: a soft lure hiding fangs.
 

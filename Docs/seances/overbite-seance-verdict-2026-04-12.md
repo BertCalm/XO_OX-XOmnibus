@@ -2,7 +2,7 @@
 **Date:** 2026-04-12
 **Convened by:** Claude (Ringleader session)
 **Status:** FORMAL NUMERIC RE-SEANCE — supersedes "full approval (~9.2 est.)" on record
-**Engine file:** `Source/Engines/Bite/BiteEngine.h`
+**Engine file:** `Source/Engines/Overbite/OverbiteEngine.h`
 **Parameter prefix:** `poss_` (frozen)
 **Presets:** 478 total across 8 moods
 

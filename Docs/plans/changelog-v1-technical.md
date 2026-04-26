@@ -47,7 +47,7 @@
 | OSPREY | `Source/Engines/Osprey/` | `76e410ab3` | ShoreSystem turbulence-modulated resonator; 5-coastline cultural data; `osprey_` prefix |
 | OSTERIA | `Source/Engines/Osteria/` | `09d5d9827` | Ensemble synthesis with elastic coupling; ShoreSystem shared; `osteria_` prefix |
 | OPAL | `Source/Engines/Opal/` | `2887bfba0` | Granular synthesis engine; AudioToBuffer receiver; `opal_` prefix |
-| OVERBITE | `Source/Engines/Bite/` | `2364f8538` | Bass-forward character synth (XOpossum port); Five-Macro BELLY/BITE/SCURRY/TRASH/PLAY DEAD system; `poss_` prefix (frozen) |
+| OVERBITE | `Source/Engines/Overbite/` | `2364f8538` | Bass-forward character synth (XOpossum port); Five-Macro BELLY/BITE/SCURRY/TRASH/PLAY DEAD system; `poss_` prefix (frozen) |
 
 ### Family Engine Stubs (Constellation Group)
 

@@ -11,7 +11,7 @@
 **Gallery Code:** OBESE
 **Accent Color:** Hot Pink `#FF1493`
 **Parameter Prefix:** `fat_`
-**Engine Dir:** `Source/Engines/Fat/`
+**Engine Dir:** `Source/Engines/Obese/`
 
 **Thesis:** Massive width synthesis -- 13 oscillators stacked into a wall of sound. The whale. Low-frequency authority that commands the ocean.
 

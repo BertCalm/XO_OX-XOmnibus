@@ -99,7 +99,7 @@ Add `ocelot_floorLevel`, `ocelot_understoryLevel`, `ocelot_canopyLevel`, `ocelot
 ---
 
 ### 3. OBESE (6.6)
-**Source:** `Source/Engines/Fat/FatEngine.h` (1200+ lines)
+**Source:** `Source/Engines/Obese/ObeseEngine.h` (1200+ lines)
 
 **Current state:** 13-oscillator-per-voice multi-osc synth with ZDF ladder filters, arpeggiator, saturation, and bitcrusher. Mojo drift system for analog character. Has only a single `BreathingLFO` (line 692-705) -- a sine-only 0.07 Hz filter wobble with no user controls. The Mojo axis (analog drift amount) is static -- nothing modulates it over time.
 
@@ -161,7 +161,7 @@ Currently 16 partials are computed. Add `obsidian_partialCount` (1-16) so produc
 ---
 
 ### 5. ODDOSCAR (6.9)
-**Source:** `Source/Engines/Morph/MorphEngine.h` (1200+ lines)
+**Source:** `Source/Engines/OddOscar/OddOscarEngine.h` (1200+ lines)
 
 **Current state:** Wavetable morphing pad engine with Moog ladder filter -- the "Oscar" half of the XO_OX duality. Excellent filter warmth (4-pole nonlinear ladder) but the only LFO is a hardcoded 0.3 Hz coupling sine (line 568-577). No user-accessible modulation. The morph oscillator (sine->saw->square->noise) is beautiful but static without modulation.
 
@@ -224,7 +224,7 @@ Aunt 3 (Charango) has per-voice tremolo phase (line 18) but it appears to be tie
 ---
 
 ### 7. ODDFELIX (~7.0 est.)
-**Source:** `Source/Engines/Snap/SnapEngine.h` (1066 lines)
+**Source:** `Source/Engines/OddfeliX/OddfeliXEngine.h` (1066 lines)
 
 **Current state:** Percussive transient engine with 3 osc modes (Sine+Noise, FM, Karplus-Strong), pitch-snap sweep, waveshaper, and HPF->BPF cascade. Has only a single hardcoded 0.15 Hz breathing LFO (line 432-434) on BPF center (+/-8%). The `snap_macroDepth` void-cast was fixed but the engine still feels one-dimensional.
 
@@ -364,7 +364,7 @@ The default Sine source gives the filter nothing to sculpt. Change default `obri
 ---
 
 ### 12. OVERDUB (7.4)
-**Source:** `Source/Engines/Dub/DubEngine.h` (1357 lines)
+**Source:** `Source/Engines/Overdub/OverdubEngine.h` (1357 lines)
 
 **Current state:** Dub synth with voice->send VCA->drive->tape delay->spring reverb->master. Has analog drift, pitch envelope, and a single `DubLFO` (sine-only, line 198) with 3-way routing (pitch/filter/amp). Spring reverb earned Blessing B004. The single sine-only LFO is the weakest modulation in the fleet.
 
@@ -426,7 +426,7 @@ Wire the COMMUNE macro to also modulate grain density and scatter in `OhmGrainEn
 ---
 
 ### 14. ODYSSEY (7.6)
-**Source:** `Source/Engines/Drift/DriftEngine.h` (1841 lines)
+**Source:** `Source/Engines/Odyssey/OdysseyEngine.h` (1841 lines)
 
 **Current state:** Drift/journey synth (from XOdyssey) with VoyagerDrift per-voice random walk, PolyBLEP oscillators, Cytomic SVF filter, and Climax system. Dead `crossFmDepth` was fixed. Aftertouch and ModWheel were wired. The Climax system (a crescendo/evolution destination) was never demonstrated in presets.
 

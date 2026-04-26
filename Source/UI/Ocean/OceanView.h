@@ -225,7 +225,7 @@ public:
         // waterline_ is deferred (needs APVTS + sequencer) — see initWaterline().
         addAndMakeVisible(tabBar_);
 
-        // 9e. Submarine XOuija panel (hidden by default, shown when OUIJA tab selected).
+        // 9e. Submarine XOuija panel (hidden; HARMONIC tab removed per D4 #1174).
         ouijaPanel_.setVisible(false);
         addAndMakeVisible(ouijaPanel_);
 
@@ -241,7 +241,7 @@ public:
         // 9g. Submarine play surface (replaces Gallery PlaySurface).
         addAndMakeVisible(subPlaySurface_);
 
-        // 9h. Right-side panel for PAD/DRUM/XY/OUIJA modes.
+        // 9h. Right-side panel for PAD/DRUM/XY modes.
         surfaceRight_.setVisible(false);
         surfaceRight_.onCloseClicked = [this]()
         {
@@ -439,14 +439,15 @@ public:
             }
             else
             {
-                // PAD/DRUM/XY/OUIJA: right panel opens, keyboard HIDES.
+                // PAD/DRUM/XY: right panel opens, keyboard HIDES.
+                // HARMONIC tab removed per D4 decision (#1174) until XOuija CC
+                // wiring is complete (tracked in #1172).
                 subPlaySurface_.setVisible(false);
                 ouijaPanel_.setVisible(false);
 
-                if (tab == "PAD")           surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
-                else if (tab == "DRUM")     surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
-                else if (tab == "XY")       surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
-                else if (tab == "HARMONIC") surfaceRight_.setMode(SurfaceRightPanel::Mode::Ouija);
+                if (tab == "PAD")       surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
+                else if (tab == "DRUM") surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
+                else if (tab == "XY")   surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
 
                 surfaceRight_.setOpen(true);
                 surfaceRight_.setVisible(true);
@@ -714,7 +715,7 @@ public:
         const auto  fullBounds = getLocalBounds();
         const auto  oceanArea  = getOceanArea();  // already excludes waterline + dashboard + status + right panel
 
-        // Right-side panel (PAD/DRUM/XY/OUIJA) — sits beside the ocean.
+        // Right-side panel (PAD/DRUM/XY) — sits beside the ocean.
         if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
         {
             const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
@@ -783,7 +784,7 @@ public:
         ouijaPanel_.setVisible(false); // ouija now lives inside SurfaceRightPanel
         subPlaySurface_.setBounds(dashArea);
         // Only show keyboard when right panel is closed (KEYS mode).
-        // When right panel is open (PAD/DRUM/XY/OUIJA), keyboard hides.
+        // When right panel is open (PAD/DRUM/XY), keyboard hides.
         if (!surfaceRight_.isOpen() || !surfaceRight_.isVisible())
             subPlaySurface_.setVisible(true);
         else
@@ -1516,13 +1517,11 @@ private:
         std::function<void(bool)> onChordToggled;
 
     private:
-        static constexpr int kNumTabs = 5;
-        // Tab labels are surface-type names — "OUIJA" was the brand name and
-        // broke the convention (#1173). Renamed to "HARMONIC" so a producer
-        // scanning the tab bar can find the circle-of-fifths planchette by
-        // its function rather than its codename. Internal Mode enum keeps
-        // its existing values; only the visible label changes.
-        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY", "HARMONIC"};
+        // D4 decision (#1174): HARMONIC/OUIJA tab removed until XOuija CC
+        // wiring is complete (#1172). Tab bar ships with 4 modes: KEYS, PAD,
+        // DRUM, XY. PAD+DRUM merge deferred (#1174 follow-up).
+        static constexpr int kNumTabs = 4;
+        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY"};
 
         int  activeIdx_ = 0;
         bool seqOn_     = false;

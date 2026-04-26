@@ -36,7 +36,7 @@ Each engine follows the same pattern:
 ### Per-Engine Details
 
 #### Snap — BPF Resonance
-- File: `Source/Engines/Snap/SnapEngine.h`
+- File: `Source/Engines/OddfeliX/OddfeliXEngine.h`
 - Application: `const float modWheelResonance = std::min(1.0f, effectiveResonance + modWheelValue * 0.4f);`
 - Passed to both `highPassFilter` and `bandPassFilter` `setCoefficients()` calls.
 - Effect: More ring and peak character in feliX's signature BPF stack. Extreme wheel = near self-oscillation on the BPF.
@@ -71,14 +71,14 @@ Each engine follows the same pattern:
 - Effect: More spectral color and shimmer in Oblique's prismatic delay core. Full wheel spreads the 6 delay facets further across the frequency spectrum.
 
 #### Fat (XObese) — Mojo Analog Axis
-- File: `Source/Engines/Fat/FatEngine.h`
+- File: `Source/Engines/Obese/ObeseEngine.h`
 - Application: `const float effectiveMojo = clamp(mojo + atPressure * 0.3f + modWheelValue * 0.5f, 0.0f, 1.0f);`
 - Combined with existing aftertouch Mojo modulation (aftertouch=0.3, wheel=0.5, can sum to +0.8).
 - CC1 capture added to both the arpeggiator MIDI path and the direct MIDI path.
 - Effect: Classic Moog-style expression — wheel increases analog drift and soft-clip saturation on all 12 oscillators simultaneously. This is Blessing B015 (Mojo Control) made fully expressive.
 
 #### Morph (OddOscar) — Already Wired
-- File: `Source/Engines/Morph/MorphEngine.h`
+- File: `Source/Engines/OddOscar/OddOscarEngine.h`
 - Pre-existing: `modWheelMorphOffset = static_cast<float>(controllerValue) / 127.0f * 3.0f;`
 - Maps wheel to morph position sweep (0–3.0 range), which sweeps through the scan buffer.
 - No changes made. Documented here for completeness.
@@ -86,13 +86,13 @@ Each engine follows the same pattern:
 ## Files Modified
 
 ```
-Source/Engines/Snap/SnapEngine.h      — CC1 → BPF resonance (+0.4)
+Source/Engines/OddfeliX/OddfeliXEngine.h      — CC1 → BPF resonance (+0.4)
 Source/Engines/Orbital/OrbitalEngine.h — CC1 → spectral drift rate (0.03→0.33 Hz)
 Source/Engines/Obsidian/ObsidianEngine.h — CC1 → filter cutoff (+5kHz at full)
 Source/Engines/Origami/OrigamiEngine.h — CC1 → fold depth (+0.3)
 Source/Engines/Oracle/OracleEngine.h   — CC1 → maqam gravity (+0.4)
 Source/Engines/Oblique/ObliqueEngine.h — CC1 → prism color spread (+0.3)
-Source/Engines/Fat/FatEngine.h         — CC1 → mojo analog boost (+0.5)
+Source/Engines/Obese/ObeseEngine.h         — CC1 → mojo analog boost (+0.5)
 ```
 
 ## D006 Expression Coverage After This Round
