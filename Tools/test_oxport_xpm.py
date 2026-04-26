@@ -205,7 +205,6 @@ def test_resolve_engine_unknown_passthrough():
 def test_check_dependencies_raises_on_missing_required():
     """_check_dependencies must raise ImportError when a required module is absent."""
     from oxport import _check_dependencies, PipelineContext
-    import types
 
     ctx = PipelineContext(engine="Onset", output_dir=__import__("pathlib").Path(tempfile.gettempdir()) / "test_oxport_deps")
     ctx.dry_run = True
@@ -268,7 +267,7 @@ def test_drum_xpm_has_xml_declaration():
 
 def test_drum_xpm_keytrack_is_false():
     """Drum layers must have KeyTrack=False (drums don't transpose across keys)."""
-    from xpn_drum_export import generate_xpm, PAD_MAP, build_wav_map
+    from xpn_drum_export import generate_xpm, PAD_MAP
     from pathlib import Path
 
     # Build a minimal wav_map with one real layer (kick v1)

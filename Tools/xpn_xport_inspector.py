@@ -35,10 +35,8 @@ XO_OX Designs — Inspect before you ship.
 
 import argparse
 import json
-import math
 import os
 import sys
-import tempfile
 import zipfile
 from dataclasses import dataclass, field
 from pathlib import Path
