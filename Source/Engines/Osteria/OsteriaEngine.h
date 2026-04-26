@@ -297,10 +297,12 @@ struct TavernRoom
         delayLengths[3] = std::max(1, std::min(kMaxDelay - 1, static_cast<int>(883.0f * roomScale)));
 
         // Derive feedback gain from RT60 (time for reverb tail to decay by 60dB).
-        // Uses the relation: feedback = 10^(-3 * delayLength / (RT60 * sampleRate))
-        // which ensures the tail decays to -60dB in the specified time.
+        // Uses the relation: feedback = exp(-ln(1000) * delayLength / (RT60 * SR))
+        // P5: use fastExp instead of std::pow(0.001f, x) — equivalent via exp(-x*ln(1000)).
         float rt60Samples = tavernCharacter.decayMs * 0.001f * sampleRate;
-        feedback = (rt60Samples > 0.0f) ? std::pow(0.001f, static_cast<float>(delayLengths[0]) / rt60Samples) : 0.0f;
+        feedback = (rt60Samples > 0.0f)
+                       ? fastExp(-6.907755f * static_cast<float>(delayLengths[0]) / rt60Samples)
+                       : 0.0f;
         feedback = clamp(feedback, 0.0f, 0.85f); // Cap at 0.85 for stability
 
         // Absorption filter: lowpass that models HF energy loss per reflection.
@@ -588,6 +590,14 @@ public:
         // voice is stolen. The rate is samples-to-silence in that window.
         crossfadeRate = 1.0f / (0.005f * srf);
 
+        // DC blocker pole: R = 1 - 2π*fc/sr at fc=17 Hz.
+        // SR-aware: 0.9975 is correct at 44.1kHz but drifts to ~38Hz at 96kHz.
+        dcBlockerR = 1.0f - (kOsteriaTwoPi * 17.0f / srf);
+
+        // Tape one-pole alpha at fc≈2.1 kHz.
+        // matched-Z: alpha = 1 - exp(-2π*fc/sr). Keeps the tape "feel" SR-invariant.
+        tapeAlpha = 1.0f - fastExp(-kOsteriaTwoPi * 2100.0f / srf);
+
         outputCacheL.resize(static_cast<size_t>(maxBlockSize), 0.0f);
         outputCacheR.resize(static_cast<size_t>(maxBlockSize), 0.0f);
 
@@ -656,6 +666,17 @@ public:
         murmur.reset();
         smokeFilter.reset();
         warmthFilter.reset();
+
+        // P14: reset all engine-level state members so that allNotesOff/plugin reload
+        // does not leave stale MIDI, filter envelope, or LFO data in place.
+        tapeState[0] = 0.0f;
+        tapeState[1] = 0.0f;
+        modWheelAmount_ = 0.0f;
+        pitchBendNorm = 0.0f;
+        filterEnvBoost = 0.0f;
+        cachedWarmthDb = -999.0f;    // Re-sentinel: forces first-block warmth recompute
+        cachedSmokeCutoff = -999.0f; // Re-sentinel: forces first-block smoke recompute
+        userLFO.reset();
 
         std::fill(outputCacheL.begin(), outputCacheL.end(), 0.0f);
         std::fill(outputCacheR.begin(), outputCacheR.end(), 0.0f);
@@ -808,13 +829,13 @@ public:
         userLFO.setRate(userLfoRate, srf);
         float lfoOut = userLFO.process();
         static constexpr float kUserLfoShoreDepth = 0.4f;
+        // PERF+CORRECTNESS: replace per-block std::cos/sin with precomputed quadrature weights.
+        // cos(i * π/2) for i=0..3 gives [1, 0, -1, 0] — Bass/Melody move opposite, Harmony/Rhythm
+        // are at midpoints. The previous formula mixed quadrature incorrectly (sin × lfoOut×0.5f
+        // used lfoOut instead of an independent quadrature signal, creating a mal-scaled mix).
+        static constexpr float kLfoStagger[4] = {1.0f, 0.5f, -1.0f, -0.5f};
         for (int i = 0; i < 4; ++i)
-        {
-            // Stagger channels by 0.25 of the LFO output using simple phase rotation
-            float channelLfo = lfoOut * std::cos(kOsteriaPI * 0.5f * static_cast<float>(i)) +
-                               std::sin(kOsteriaPI * 0.5f * static_cast<float>(i)) * lfoOut * 0.5f;
-            shoreTargets[i] = clamp(shoreTargets[i] + channelLfo * kUserLfoShoreDepth, 0.0f, 4.0f);
-        }
+            shoreTargets[i] = clamp(shoreTargets[i] + lfoOut * kLfoStagger[i] * kUserLfoShoreDepth, 0.0f, 4.0f);
 
         // Setup tavern room character — tc is computed here and used after the
         // aftertouch update below. setCharacter() is called only once, after
@@ -846,9 +867,18 @@ public:
         // D006: mod wheel thickens the woodfire smoke — full wheel adds up to
         // 4 kHz of additional LPF roll-off, drawing the ensemble deeper into
         // the hazy warmth of the tavern interior.
+        // P17: clamp to srf*0.49f instead of 20000 Hz — at 96/192kHz the hardcoded
+        // ceiling would limit the filter's transparent range unnecessarily.
         float smokeCutoff = lerp(18000.0f, 3000.0f, pSmoke) + filterEnvBoost - modWheelAmount_ * 4000.0f;
-        smokeCutoff = std::max(200.0f, std::min(20000.0f, smokeCutoff));
-        smokeFilter.setCoefficients(smokeCutoff, 0.0f, srf);
+        smokeCutoff = clamp(smokeCutoff, 200.0f, srf * 0.49f);
+        // P19: only call setCoefficients when cutoff has moved more than 1 Hz —
+        // at 44.1 kHz the filterEnvBoost changes ~0.5 Hz/sample when the env
+        // is stable; recomputing every block wastes one tan() call per block.
+        if (std::fabs(smokeCutoff - cachedSmokeCutoff) > 1.0f)
+        {
+            smokeFilter.setCoefficients(smokeCutoff, 0.0f, srf);
+            cachedSmokeCutoff = smokeCutoff;
+        }
 
         // Setup warmth filter — only recompute shelf coefficients when the gain
         // has changed by more than 0.05 dB (saves a tan()+log() per block when
@@ -927,12 +957,13 @@ public:
         // SRO (2026-03-21): Precompute per-channel pan gains once per block.
         // channelPans[c] is block-constant — computing cos/sin inside the sample
         // loop was calling 32 std::cos + 32 std::sin per sample at 8-voice polyphony.
+        // PERF: use fastSin/fastCos (polynomial approximations) instead of std::cos/sin.
         float precomputedPanL[4], precomputedPanR[4];
         for (int c = 0; c < 4; ++c)
         {
             float panAngle = (channelPans[c] + 1.0f) * 0.25f * kOsteriaPI;
-            precomputedPanL[c] = std::cos(panAngle);
-            precomputedPanR[c] = std::sin(panAngle);
+            precomputedPanL[c] = fastCos(panAngle);
+            precomputedPanR[c] = fastSin(panAngle);
         }
 
         // Precompute session-delay read offset once per block — 150ms at current
@@ -1060,11 +1091,14 @@ public:
                         ResonatorProfile prof = morphResonator(morph, slot);
 
                         // Scale formant frequencies relative to the note
+                        // P17: use srf*0.49f instead of 18000.0f — at 96/192kHz the
+                        // hardcoded ceiling clips high-frequency formants unnecessarily.
                         float noteRatio = voice.currentTargetFreq / 440.0f;
+                        float nyquistCeil = srf * 0.49f;
                         for (int f = 0; f < 4; ++f)
                         {
                             ch.formantFreqs[f] = prof.formantFreqs[f] * noteRatio;
-                            ch.formantFreqs[f] = clamp(ch.formantFreqs[f], 20.0f, 18000.0f);
+                            ch.formantFreqs[f] = clamp(ch.formantFreqs[f], 20.0f, nyquistCeil);
                             ch.formantGains[f] = prof.formantGains[f];
                             ch.formantBandwidths[f] = prof.formantBandwidths[f];
                         }
@@ -1268,10 +1302,10 @@ public:
 
                 // --- DC Blocker ---
                 // First-order high-pass: y[n] = x[n] - x[n-1] + R * y[n-1]
-                // R = 0.9975 gives a -3dB point at ~17 Hz (inaudible), which
-                // removes DC offset from formant resonance and asymmetric
-                // saturation without affecting musical content.
-                constexpr float dcBlockerCoeff = 0.9975f;
+                // R = 1 - 2π*fc/sr at fc=17 Hz. Hardcoding 0.9975 (correct at 44.1kHz)
+                // gives ~38 Hz at 96kHz and ~75 Hz at 192kHz — audible colouration.
+                // dcBlockerCoeff is precomputed per prepare() from srf; see member below.
+                const float dcBlockerCoeff = dcBlockerR;
                 float dcOutL = voiceL - voice.dcPrevInL + dcBlockerCoeff * voice.dcPrevOutL;
                 float dcOutR = voiceR - voice.dcPrevInR + dcBlockerCoeff * voice.dcPrevOutR;
                 voice.dcPrevInL = voiceL;
@@ -1370,11 +1404,13 @@ public:
             mixR -= excBleed;
 
             // --- Murmur (crowd texture) ---
+            // PERF: reuse tc (TavernCharacter already computed pre-loop from pTavernShore).
+            // The previous per-sample decomposeShore()+morphTavern() was ~40 ops/sample
+            // × every sample when murmur was active — completely redundant since pTavernShore
+            // is block-constant.
             if (pMurmur > 0.001f)
             {
-                ShoreMorphState murmurMorph = decomposeShore(pTavernShore);
-                TavernCharacter murmurTavern = morphTavern(murmurMorph);
-                float murmurSample = murmur.process(murmurTavern.murmurBrightness, srf);
+                float murmurSample = murmur.process(tc.murmurBrightness, srf);
                 mixL += murmurSample * pMurmur;
                 mixR += murmurSample * pMurmur * 0.9f; // 10% L/R difference for subtle stereo width
             }
@@ -1443,17 +1479,18 @@ public:
             }
 
             // --- Tape (lo-fi warmth) ---
-            // Models field recording character: a one-pole lowpass (coeff 0.3
-            // = ~2.1 kHz cutoff at 44.1 kHz) plus subtle noise floor (0.003
-            // amplitude = ~-50 dB, typical of portable cassette recorders).
-            // Gives the impression the session was captured on tape in the
-            // tavern, not produced in a studio.
+            // Models field recording character: a one-pole lowpass at ~2.1 kHz
+            // plus subtle noise floor (0.003 amplitude = ~-50 dB, typical of
+            // portable cassette recorders). Gives the impression the session was
+            // captured on tape in the tavern, not produced in a studio.
             if (pTape > 0.001f)
             {
                 // One-pole lowpass: y[n] += (x[n] - y[n]) * alpha
-                // alpha = 0.3 gives gentle HF rolloff without resonance
-                tapeState[0] += (mixL - tapeState[0]) * 0.3f;
-                tapeState[1] += (mixR - tapeState[1]) * 0.3f;
+                // alpha = 1 - exp(-2π*fc/sr) at fc≈2.1 kHz.
+                // SR-aware: tapeAlpha precomputed from srf in prepare() so the
+                // 2.1 kHz cutoff remains constant regardless of sample rate.
+                tapeState[0] += (mixL - tapeState[0]) * tapeAlpha;
+                tapeState[1] += (mixR - tapeState[1]) * tapeAlpha;
                 // Flush denormals in the filter feedback path
                 tapeState[0] = flushDenormal(tapeState[0]);
                 tapeState[1] = flushDenormal(tapeState[1]);
@@ -1762,7 +1799,8 @@ private:
         return (p != nullptr) ? p->load() : fallback;
     }
 
-    static float midiToHz(float midiNote) noexcept { return 440.0f * std::pow(2.0f, (midiNote - 69.0f) / 12.0f); }
+    // P4: use fastPow2 instead of std::pow(2.0f, ...) — called per noteOn in the hot path.
+    static float midiToHz(float midiNote) noexcept { return 440.0f * fastPow2((midiNote - 69.0f) / 12.0f); }
 
     //==========================================================================
     // Hall — Allpass diffusion chain.
@@ -1882,11 +1920,13 @@ private:
             // Scale formant frequencies relative to the played note.
             // Reference is A4 (440 Hz) — formant profiles are defined at
             // this reference and scaled proportionally for other pitches.
+            // P17: derive Nyquist ceiling from srf (not hardcoded 18000 Hz).
             float noteRatio = freq / 440.0f;
+            float nyquistCeil = srf * 0.49f;
 
             for (int f = 0; f < 4; ++f)
             {
-                ch.formantFreqs[f] = clamp(prof.formantFreqs[f] * noteRatio, 20.0f, 18000.0f);
+                ch.formantFreqs[f] = clamp(prof.formantFreqs[f] * noteRatio, 20.0f, nyquistCeil);
                 ch.formantGains[f] = prof.formantGains[f];
                 ch.formantBandwidths[f] = prof.formantBandwidths[f];
                 ch.formants[f].reset();
@@ -1926,6 +1966,12 @@ private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use         // Sample rate (double precision for accuracy)
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use        // Sample rate (float, for DSP calculations)
     float crossfadeRate = 0.01f; // Voice-stealing crossfade: samples to silence in 5ms
+    // DC blocker pole: R = 1 - 2π*17/sr. Precomputed in prepare() so the hot path
+    // never recomputes — also makes it SR-aware (0.9975 only correct at 44.1 kHz).
+    float dcBlockerR = 0.9975f;
+    // Tape one-pole alpha: 1 - exp(-2π*fc/sr) at fc≈2.1 kHz.
+    // Precomputed so the 2.1 kHz cutoff is SR-invariant (0.3 is only correct at 44.1 kHz).
+    float tapeAlpha = 0.3f;
 
     // --- Control rate ---
     int controlRateDiv = 22;   // Audio samples per control update (~2 kHz)
@@ -1965,7 +2011,8 @@ private:
     // --- Character stage filters ---
     CytomicSVF smokeFilter;  // Smoke: HF haze lowpass
     CytomicSVF warmthFilter; // Warmth: low shelf proximity EQ
-    float cachedWarmthDb = -999.0f; // Sentinel: forces first-block recompute
+    float cachedWarmthDb = -999.0f;    // Sentinel: forces first-block recompute
+    float cachedSmokeCutoff = -999.0f; // P19: sentinel for smoke-filter delta-guard
 
     // --- Session Delay ---
     // 22050 samples = 500ms at 44.1 kHz (enough headroom for the 150ms delay)
