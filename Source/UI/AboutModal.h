@@ -113,10 +113,9 @@ public:
     bool isShowing() const noexcept { return isVisible(); }
 
     //==========================================================================
-    using juce::Component::keyPressed;
-
     // juce::KeyListener — D12: Escape closes the modal.
-    bool keyPressed(const juce::KeyPress& key) override
+    // Signature matches KeyListener::keyPressed (2-arg pure virtual).
+    bool keyPressed(const juce::KeyPress& key, juce::Component* /*originatingComponent*/) override
     {
         if (isVisible() && key == juce::KeyPress::escapeKey)
         {
