@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OSTINATO",
+  "engine_prefix": "osti_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "physical_model",
+    "polyphony": 8,
+    "architecture": "Membrane modal synthesis drum machine with 8 kMaxModes per voice and 4 articulations per drum slot; 96 world rhythm patterns from 18 cultural traditions form a pattern bank (B017-B020); 8 independent drum voices using modal resonator + noise exciter combinations; pattern sequencer with humanization and MIDI override"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "ahd",
+    "stages": 3,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 1,
+    "lfo_shapes": ["sine"],
+    "mod_matrix_depth": 0,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.75,
+    "velocity_targets": ["amplitude", "transient", "brightness"],
+    "pitch_bend_range": 0,
+    "aftertouch_response": "custom",
+    "dynamic_range_db": 68
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "GATHER",
+      "behavior": "Controls pattern density and timing humanization — at low GATHER patterns become sparse with many rests; at high they cluster into dense poly-rhythmic weaving; also scales timing drift for organic feel."
+    },
+    "macro2": {
+      "name": "FIRE",
+      "behavior": "Drives transient sharpness and velocity of all drum hits simultaneously — low FIRE is the quiet ceremony, high FIRE is the full-force ensemble playing fortissimo."
+    },
+    "macro3": {
+      "name": "CIRCLE",
+      "behavior": "Cycles through the 96 world rhythm pattern library — rotating through cultural traditions from West African djembe to Carnatic tabla to Brazilian samba; at zero plays the current pattern, sweeping rotates through traditions."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls reverb tail size and the resonant body mix of the membrane drums — low SPACE is dry close-mic, high SPACE places the drum circle in a vast cave or outdoor amphitheatre."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "drums",
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.3,
+    "density": 0.6,
+    "transient_character": "struck"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "RhythmToBlend", "AmpToChoke", "EnvToDecay"],
+    "best_as_target": ["RhythmToBlend", "AmpToFilter", "EnvToDecay"],
+    "recommended_partners": ["ONSET", "OWARE", "ORGANON", "OVERDUB"],
+    "coupling_personality": "A rhythmic anchor with deep cultural pattern memory; its AmpToFilter outputs are the most polyrhythmically complex in the fleet; RhythmToBlend coupling allows melodic engines to phase-lock to world percussion traditions."
+  },
+
+  "mythology": {
+    "creature": "The tidal rhythm — the repeating pulse that connects all depths; the drum circle at the edge of the sea playing since before language",
+    "depth_zone": "open_water",
+    "felix_oscar_polarity": 0.35,
+    "accent_color": "#E8701A"
+  },
+
+  "metadata": {
+    "param_count": 34,
+    "preset_count": 241,
+    "seance_score": 8.7,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

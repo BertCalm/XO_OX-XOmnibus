@@ -1,11 +1,12 @@
 {
   "_meta": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "generated": "2026-03-24",
-    "totalEngines": 73,
+    "updated": "2026-04-25",
+    "totalEngines": 93,
     "statusCounts": {
-      "matched": 53,
-      "adaptable": 15,
+      "matched": 56,
+      "adaptable": 32,
       "needs_custom": 5,
       "hero_3d": 0
     },
@@ -820,6 +821,226 @@
       "accentColor": "#4169E1",
       "status": "matched",
       "notes": "Panoramic horizon scan + parallax stereo = rainbow trout seeing the full spectrum horizon; OPENSKY also Rainbow Trout — Outlook at horizon indigo vs Opensky at sunburst orange"
+    },
+    {
+      "id": "OGIVE",
+      "creature": "Glass Sponge",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_42_x.png",
+      "zone": "Twilight",
+      "accentColor": "#9B1B30",
+      "status": "adaptable",
+      "notes": "Scanned glass synthesis (#86) — hexactinellid glass sponge; selenium ruby + silica lattice structure; beowulf-42 tinted ruby red"
+    },
+    {
+      "id": "OLVIDO",
+      "creature": "Coelacanth",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_43_x.png",
+      "zone": "Midnight",
+      "accentColor": "#3B6E8F",
+      "status": "adaptable",
+      "notes": "Spectral erosion synthesis (#87) — coelacanth: ancient deep fish, thought extinct, spectral relic; coelacanth blue fading into dark; beowulf-43 tinted coelacanth blue"
+    },
+    {
+      "id": "OSTRACON",
+      "creature": "Hermit Crab",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_44_x.png",
+      "zone": "Sunlit",
+      "accentColor": "#C0785A",
+      "status": "adaptable",
+      "notes": "Corpus-buffer synthesis (#88) — hermit crab carrying its tape-reel shell; Mellotron physics, shared reel buffer; shard terracotta + borrowed body; beowulf-44 tinted terracotta"
+    },
+    {
+      "id": "OBSERVANDUM",
+      "creature": "Cuttlefish",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_45_x.png",
+      "zone": "Sunlit",
+      "accentColor": "#4ECDC4",
+      "status": "adaptable",
+      "notes": "Polychromatic phase synthesis — cuttlefish: master of chromatophore color-phase shifts, epipelagic zone; teal chromatophore skin; beowulf-45 tinted teal"
+    },
+    {
+      "id": "OCTANT",
+      "creature": "Deep-Sea Octant Navigator",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_46_x.png",
+      "zone": "Deep",
+      "accentColor": "#1A6B7C",
+      "status": "adaptable",
+      "notes": "Tensor spectral synthesis — navigating depth × latitude × longitude; deep ocean teal; no direct creature match, beowulf-46 tinted deep ocean teal"
+    },
+    {
+      "id": "OKEANOS",
+      "creature": "Horseshoe Crab",
+      "sprite": "saltwater/Horseshoe Crab.png",
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_47_x.png",
+      "zone": "Twilight",
+      "accentColor": "#C49B3F",
+      "status": "matched",
+      "notes": "Rhodes Spice Route FUSION engine — horseshoe crab: ancient living fossil traversing cultural trade routes; cardamom gold; Horseshoe Crab from saltwater pack"
+    },
+    {
+      "id": "OLLOTRON",
+      "creature": "Tape Worm Eel",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_48_x.png",
+      "zone": "Twilight",
+      "accentColor": "#B07050",
+      "status": "adaptable",
+      "notes": "Tape-chamber keyboard synthesis — the tape pressure plate and key strip form an eel-like mechanism; tape rust + worn strip texture; beowulf-48 tinted rust"
+    },
+    {
+      "id": "ONDA",
+      "creature": "Soliton Wave Squid",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_49_x.png",
+      "zone": "Open Water",
+      "accentColor": "#B8A0FF",
+      "status": "adaptable",
+      "notes": "Nonlinear-Schrödinger soliton synthesis — squid propels itself via soliton pulses, non-dispersive waves in the body; phosphene lavender; beowulf-49 tinted lavender"
+    },
+    {
+      "id": "ONDINE",
+      "creature": "Vocal Tract Nudibranch",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_50_x.png",
+      "zone": "Sunlit",
+      "accentColor": "#00C4CC",
+      "status": "adaptable",
+      "notes": "Formant vocal tract synthesis — Ondine the water spirit; resonant aqua; delicate frilled nudibranch whose form mimics a vocal tract; beowulf-50 tinted resonant aqua"
+    },
+    {
+      "id": "OOBLECK",
+      "creature": "Non-Newtonian Nudibranch",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_51_x.png",
+      "zone": "Midnight",
+      "accentColor": "#B4FF39",
+      "status": "adaptable",
+      "notes": "Reaction-diffusion wavetable synthesis (#89) — oobleck nudibranch morphing between fluid and solid states; slime green bioluminescence; beowulf-51 tinted oobleck green"
+    },
+    {
+      "id": "OORT",
+      "creature": "Oort Cloud Drifter",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_52_x.png",
+      "zone": "Abyss",
+      "accentColor": "#9B7FD4",
+      "status": "adaptable",
+      "notes": "Agent-based flocking synthesis (Boids) — primordial bodies in the outer cloud flocking like deep-sea fish schools; oort cloud violet; beowulf-52 tinted violet"
+    },
+    {
+      "id": "OOZE",
+      "creature": "Giant Tube Worm",
+      "sprite": "abyss/worm_pompeii.png",
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_53_x.png",
+      "zone": "Hadal",
+      "accentColor": "#2D5F5D",
+      "status": "matched",
+      "notes": "Fluid dynamics synthesis (#90) — giant tube worm at hydrothermal vent; hydrothermal teal ooze chemistry; Pompeii worm sprite from abyss pack; ORGANISM also uses worm_pompeii at different zone/color"
+    },
+    {
+      "id": "OPSIN",
+      "creature": "Bioluminescent Anglerfish",
+      "sprite": "saltwater/Anglerfish.png",
+      "spriteOutline": "saltwater/Anglerfish Outline.png",
+      "fallback": "beowulf-32/spr_fish_54_x.png",
+      "zone": "Midnight",
+      "accentColor": "#00FFCC",
+      "status": "matched",
+      "notes": "Bioluminescent neural feedback synthesis — deep-sea anglerfish lure as neural network; bioluminescent cyan glow; OPERA uses Anglerfish at gold/Midnight, OPSIN uses cyan — distinct tint; OPTIC is zero-audio at green"
+    },
+    {
+      "id": "ORRERY",
+      "creature": "Stargazer Fish",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_55_x.png",
+      "zone": "Open Water",
+      "accentColor": "#C8A84B",
+      "status": "adaptable",
+      "notes": "Vector synthesis orbital paths — stargazer fish pointing upward toward the sky like an orrery tracking planetary motion; orrery brass; beowulf-55 tinted brass gold"
+    },
+    {
+      "id": "ORTOLAN",
+      "creature": "Flying Fish",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_56_x.png",
+      "zone": "Sunlit",
+      "accentColor": "#D4A017",
+      "status": "adaptable",
+      "notes": "VOSIM pulse synthesis — ortolan songbird analog as flying fish briefly breaching into air; birdsong amber; OPENSKY owns the surface-breach space so beowulf-56 tinted amber distinguishes"
+    },
+    {
+      "id": "OUTCROP",
+      "creature": "Mountain Goby",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_57_x.png",
+      "zone": "Sunlit",
+      "accentColor": "#5B6F57",
+      "status": "adaptable",
+      "notes": "Wave-terrain synthesis — a ridge surfacing above tideline; goby perching on exposed rock outcrop; mountain moss green; OHM also uses Goby — Outcrop at different beowulf tinted moss green"
+    },
+    {
+      "id": "OVERTIDE",
+      "creature": "Tide Pool Chiton",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_58_x.png",
+      "zone": "Sunlit",
+      "accentColor": "#2A6BB5",
+      "status": "adaptable",
+      "notes": "Wavelet multi-resolution synthesis — overtides are harmonics of M2 tidal frequency; chiton clings to rocks through every tidal cycle; tidal cobalt; beowulf-58 tinted cobalt"
+    },
+    {
+      "id": "OXIDIZE",
+      "creature": "Rust Barnacle",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_59_x.png",
+      "zone": "Sunlit",
+      "accentColor": "#8B4513",
+      "status": "adaptable",
+      "notes": "Degradation as synthesis (#77) — Second Law of Thermodynamics; barnacle accumulating oxidized sediment; rust and entropy; beowulf-59 tinted saddle brown rust"
+    },
+    {
+      "id": "OBIONT",
+      "creature": "Siphonophore Chain",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_60_x.png",
+      "zone": "Twilight",
+      "accentColor": "#E8A030",
+      "status": "adaptable",
+      "notes": "Cellular automata oscillator — colonial siphonophore organism; OXYTOCIN owns Upside Down Jellyfish; Obiont uses bioluminescent amber colonial chain; beowulf-60 tinted amber"
+    },
+    {
+      "id": "OUTFLOW",
+      "creature": "Vampire Squid",
+      "sprite": null,
+      "spriteOutline": null,
+      "fallback": "beowulf-32/spr_fish_61_x.png",
+      "zone": "Midnight",
+      "accentColor": "#1A1A40",
+      "status": "adaptable",
+      "notes": "Generative fluid-dynamics spatial engine — predicts transients, creates acoustic vacuums; vampire squid in deep storm indigo, expelling dark ink clouds; beowulf-61 tinted deep indigo"
     }
   ]
 }

@@ -81,7 +81,9 @@ public:
         if (rate != lastRate)
         {
             lastRate = rate;
-            smoothCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * rate / static_cast<float>(sr));
+            // DSP FIX: use fastExp (RT-safe) instead of std::exp; ~6% error acceptable
+            // for an organic drift smoother — this is not pitch-critical math.
+            smoothCoeff = 1.0f - fastExp(-2.0f * 3.14159265f * rate / static_cast<float>(sr));
         }
 
         currentValue += smoothCoeff * (targetValue - currentValue);
@@ -142,7 +144,9 @@ public:
                 float sign = (v % 2 == 1) ? 1.0f : -1.0f;
                 offset = sign * maxCents * static_cast<float>(pair) / 3.0f;
             }
-            float voiceHz = hz * fastExp(offset * (0.693147f / 1200.0f));
+            // DSP FIX: fastPow2 (0.02% error) instead of fastExp (6% error) for cents→ratio.
+            // fastExp(x * ln2/1200) ≡ fastPow2(x/1200); fastPow2 is calibrated for pitch math.
+            float voiceHz = hz * fastPow2(offset / 1200.0f);
             phaseIncs[v] = static_cast<double>(voiceHz) / sr;
         }
     }
@@ -821,6 +825,11 @@ public:
             v.ampEnv.reset();
             v.drift.reset();
             v.glideActive = false;
+            // DSP FIX: clear steal-fade state on full reset to prevent a stale fade
+            // from silencing the first note played after a reset().
+            v.stealFadeGain   = 0.0f;
+            v.stealFadeDelta  = 0.0f;
+            v.stealFadeSamples = 0;
         }
         lfo.reset();
         lfo2.reset();
@@ -980,15 +989,52 @@ public:
         aftertouch.updateBlock(numSamples);
         const float atPressure = aftertouch.getSmoothedPressure(0);
 
+        // Setup LFO rate/shape BEFORE mod matrix so LFO1/LFO2 source values are live.
+        // DSP FIX: Previously LFOs were configured after modMatrix.apply(), so lfo1/lfo2
+        // sources were permanently 0.0 — any mod slot targeting LFO1/LFO2 had no effect
+        // (D004 dead-parameter violation). Now snapshot a block-representative LFO value
+        // for the mod matrix, then the per-sample loop ticks the LFO normally.
+        // Note: driftModLfoRateOffset is from last block — one-block lag is inaudible.
+        lfo.setRate(clamp(effLfoRate + driftModLfoRateOffset, 0.01f, 30.0f), srf);
+        static constexpr int kLfoShapeByDest[] = {0, 1, 2}; // Sine, Triangle, Saw
+        lfo.setShape(lfoDest < 3 ? kLfoShapeByDest[lfoDest] : 0);
+        bool hasLfo = lfoDepth > 0.001f;
+
+        // DSP FIX: LFO2 — complementary modulation on non-targeted axis.
+        lfo2.setRate(std::max(0.05f, effLfoRate * 0.25f), srf);
+        lfo2.setShape(1); // Triangle
+        bool hasLfo2 = lfoDepth > 0.05f;
+
+        // Snapshot block-representative LFO values for mod matrix.
+        // Advance one sample here; the per-sample loop continues from this state.
+        // One-sample offset between mod-matrix application and per-sample LFO is inaudible.
+        const float lfo1Snap = hasLfo  ? lfo.process()  : 0.0f;
+        const float lfo2Snap = hasLfo2 ? lfo2.process() : 0.0f;
+
+        // Snapshot block-representative envelope and velocity for mod matrix.
+        // Use the highest-level active voice as representative (max across voices).
+        float blockEnvSnap = 0.0f;
+        float blockVelSnap = 0.0f;
+        float blockKeySnap = 0.0f;
+        for (const auto& v : voices)
+        {
+            if (!v.active) continue;
+            float e = v.ampEnv.getLevel();
+            if (e > blockEnvSnap) { blockEnvSnap = e; blockVelSnap = v.velocity; }
+            // Key tracking: (note - 60) / 60 → bipolar [-1, +1] at ±60 semitones
+            float kt = (static_cast<float>(v.noteNumber) - 60.0f) / 60.0f;
+            blockKeySnap = clamp(kt, -1.0f, 1.0f);
+        }
+
         // D002 mod matrix — apply per-block.
         // Destinations: 0=Off, 1=FilterCutoff, 2=LFORate, 3=Pitch, 4=AmpLevel, 5=Shimmer
         {
             ModMatrix<4>::Sources mSrc;
-            mSrc.lfo1       = 0.0f; // LFO not yet ticked this block
-            mSrc.lfo2       = 0.0f;
-            mSrc.env        = 0.0f;
-            mSrc.velocity   = 0.0f;
-            mSrc.keyTrack   = 0.0f;
+            mSrc.lfo1       = lfo1Snap;
+            mSrc.lfo2       = lfo2Snap;
+            mSrc.env        = blockEnvSnap;
+            mSrc.velocity   = blockVelSnap;
+            mSrc.keyTrack   = blockKeySnap;
             mSrc.modWheel   = modWheelAmount;
             mSrc.aftertouch = atPressure;
             float mDst[6]   = {};
@@ -1011,20 +1057,6 @@ public:
         // D006: aftertouch pushes Prism Shimmer deeper — sensitivity 0.35
         // Full pressure adds up to +0.35 shimmer (the JOURNEY macro analog: more shimmer = more Alien)
         shimmerAmt = clamp(shimmerAmt + atPressure * 0.35f + driftModShimmerOffset, 0.0f, 1.0f);
-
-        // Setup LFO
-        lfo.setRate(clamp(effLfoRate + driftModLfoRateOffset, 0.01f, 30.0f), srf);
-        // DSP FIX: Shape varies by destination for timbral variety (was sine-only).
-        // Pitch→Sine (smooth pitch wobble), Filter→Triangle (organic sweep), Amp→Saw (rhythmic pulse).
-        static constexpr int kLfoShapeByDest[] = {0, 1, 2}; // Sine, Triangle, Saw
-        lfo.setShape(lfoDest < 3 ? kLfoShapeByDest[lfoDest] : 0);
-        bool hasLfo = lfoDepth > 0.001f;
-
-        // DSP FIX: LFO2 — complementary modulation on non-targeted axis.
-        // Rate = 1/4 of main (slow organic movement), Triangle shape.
-        lfo2.setRate(std::max(0.05f, effLfoRate * 0.25f), srf);
-        lfo2.setShape(1); // Triangle
-        bool hasLfo2 = lfoDepth > 0.05f;
 
         // Cache per-voice block-start base frequencies — midiToFreqTune calls std::pow,
         // but note number + tune offsets are block-constant, so compute once.
@@ -1120,7 +1152,10 @@ public:
 
                 // Total pitch modulation: drift + LFO + coupling + pitch bend
                 float totalPitchSemi = driftSemitones + lfoPitchMod * 2.0f + pitchMod + pitchBendNorm * 2.0f + driftModPitchOffset;
-                float pitchMul = fastExp(totalPitchSemi * (0.693147f / 12.0f));
+                // DSP FIX: fastPow2 (0.02% error) instead of fastExp (6% error) for pitch math.
+                // fastExp(x * ln2/12) ≡ fastPow2(x/12) but fastPow2 is explicitly calibrated
+                // for pitch accuracy in FastMath.h.
+                float pitchMul = fastPow2(totalPitchSemi * (1.0f / 12.0f));
 
                 float freqA = baseFreqA * pitchMul;
                 float freqB = baseFreqB * pitchMul;
@@ -1173,7 +1208,8 @@ public:
                 // --- Sub + Noise ---
                 // Sub tracks final freqA (post-glide, post-pitch-mod) so it stays in octave
                 voice.subOsc.setFrequency(freqA * 0.5f, srf); // freqA already has glide applied above
-                voice.subOsc.setWaveform(PolyBLEP::Waveform::Sine);
+                // DSP FIX: removed per-sample setWaveform(Sine) — sub oscillator is always
+                // sine (PolyBLEP defaults to Sine; enforced in resetOscillators). Hot-loop safe.
                 float subOut = voice.subOsc.processSample() * subLevel;
 
                 float noiseOut = voice.noise.process() * noiseLevel;
@@ -1199,11 +1235,15 @@ public:
                 // LFO to filter
                 if (std::abs(lfoCutoffMod) > 0.001f)
                 {
-                    cutoffMod *= fastExp(lfoCutoffMod * 2.0f * 0.693147f);
+                    // DSP FIX: fastPow2 for exponential filter modulation — same accuracy
+                    // argument as pitch (fastPow2 0.02% vs fastExp 6%). Bipolar LFO output
+                    // of ±1 maps to ±2 octaves of cutoff sweep, so accuracy matters here.
+                    cutoffMod *= fastPow2(lfoCutoffMod * 2.0f);
                     cutoffMod = clamp(cutoffMod, 20.0f, 20000.0f);
                 }
                 // Voyager Drift to filter (subtle)
-                cutoffMod *= fastExp(driftVal * 0.1f * 0.693147f);
+                // DSP FIX: fastPow2 instead of fastExp for consistency with pitch math.
+                cutoffMod *= fastPow2(driftVal * 0.1f);
                 cutoffMod = clamp(cutoffMod, 20.0f, 20000.0f);
                 // External coupling filter modulation
                 cutoffMod += filterMod * 2000.0f;
@@ -1723,12 +1763,25 @@ private:
         // Voice-steal fade: instead of kill() (which zeros immediately and clicks),
         // capture the current envelope level and ramp it to zero over ~2ms (88 samples
         // at 44.1kHz; computed proportionally for any sample rate).
+        // DSP FIX: Guard stealFadeSamples on stealFadeGain > 0. If the stolen voice
+        // was already at level 0 (idle or fully released), setting stealFadeSamples=88
+        // with stealFadeGain=0 would multiply the NEW note's output by 0 for 88 samples,
+        // silencing the attack. Skip the fade entirely when there is nothing to fade out.
         if (v.active)
         {
-            int fadeSamples = std::max(1, static_cast<int>(sr * 0.002)); // ~2ms
             v.stealFadeGain = v.ampEnv.getLevel();
-            v.stealFadeDelta = v.stealFadeGain / static_cast<float>(fadeSamples);
-            v.stealFadeSamples = fadeSamples;
+            if (v.stealFadeGain > 0.001f)
+            {
+                int fadeSamples = std::max(1, static_cast<int>(sr * 0.002)); // ~2ms
+                v.stealFadeDelta = v.stealFadeGain / static_cast<float>(fadeSamples);
+                v.stealFadeSamples = fadeSamples;
+            }
+            else
+            {
+                v.stealFadeGain = 0.0f;
+                v.stealFadeDelta = 0.0f;
+                v.stealFadeSamples = 0;
+            }
             v.ampEnv.kill();
         }
 
@@ -1771,6 +1824,10 @@ private:
             v.active = false;
             v.ampEnv.reset();
             v.glideActive = false;
+            // DSP FIX: clear steal-fade state so it doesn't carry over to the next note.
+            v.stealFadeGain   = 0.0f;
+            v.stealFadeDelta  = 0.0f;
+            v.stealFadeSamples = 0;
         }
         envelopeOutput = 0.0f;
         externalPitchMod = 0.0f;
@@ -1787,6 +1844,9 @@ private:
         v.oscB_supersaw.reset();
         v.oscB_fm.reset();
         v.subOsc.reset();
+        // Sub oscillator is always sine — enforce here so the per-sample loop
+        // doesn't need to call setWaveform every sample.
+        v.subOsc.setWaveform(PolyBLEP::Waveform::Sine);
     }
 
     // findFreeVoice replaced by VoiceAllocator::findFreeVoice (Source/DSP/VoiceAllocator.h).

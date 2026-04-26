@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "ORCA",
+  "engine_prefix": "orca_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 4,
+    "architecture": "Apex predator synthesis combining a powerful subtractive core with echolocation-inspired LFO resonance modulation; HUNT macro drives a bipolar predator axis; character/movement/coupling/space macros plus a dedicated HUNT macro for 5-dimensional control; echolocation LFO2 creates sonar-like ping modulation; aftertouch wired to HUNT intensity (fixed commit 2035aa0)"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass", "highpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.8,
+    "velocity_targets": ["amplitude", "brightness", "attack"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "custom",
+    "dynamic_range_db": 70
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "HUNT",
+      "behavior": "The apex predator drive — increases filter sweep speed, brightens the attack transient, and sharpens envelope characteristics; aftertouch applies additional HUNT intensity for pressure-sensitive hunting behavior."
+    },
+    "macro2": {
+      "name": "CHARACTER",
+      "behavior": "Shapes the orca's timbral identity — from smooth gliding patrol to sharp clicking echolocation character; drives oscillator waveform complexity."
+    },
+    "macro3": {
+      "name": "MOVEMENT",
+      "behavior": "Controls patrol speed via LFO rate and depth — slow MOVEMENT is a patient patrol, fast MOVEMENT is pursuit mode with rapid harmonic oscillation."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls the oceanic environment depth — reverb tail length and the underwater acoustic space; high SPACE = deep ocean patrol with long echo."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "lead",
+    "brightness": 0.52,
+    "warmth": 0.49,
+    "movement": 0.6,
+    "density": 0.53,
+    "transient_character": "sharp"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AmpToPitch", "AmpToChoke"],
+    "best_as_target": ["AmpToFilter", "AudioToRing", "EnvToMorph"],
+    "recommended_partners": ["OCEANDEEP", "ONSET", "OUROBOROS", "OBSCURA"],
+    "coupling_personality": "The apex predator of the fleet — ORCA's AmpToChoke coupling is the most aggressive silence-enforcing coupling in the ecosystem; its sonar-like LFO2 is an exceptional AmpToFilter trigger."
+  },
+
+  "mythology": {
+    "creature": "The orca — apex predator silhouette, deep ocean dark; the creature that hunts in pods with coordinated intelligence",
+    "depth_zone": "abyss",
+    "felix_oscar_polarity": 0.7,
+    "accent_color": "#1B2838"
+  },
+
+  "metadata": {
+    "param_count": 41,
+    "preset_count": 426,
+    "seance_score": 8.6,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

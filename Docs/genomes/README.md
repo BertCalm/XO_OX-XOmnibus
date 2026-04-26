@@ -1,9 +1,9 @@
 # XOceanus Engine Genomes
 
-**Status:** 5 of 70 genomes complete
+**Status:** 25 of 93 genomes complete (Wave 10 added 20 genomes — 2026-04-25)
 **Schema:** v0.1 — see `Docs/specs/xogenome-schema-v0.1.md`
 **Project:** VQ 009 — Engine Genome Project
-**Updated:** 2026-03-22
+**Updated:** 2026-04-25
 
 ---
 
@@ -23,7 +23,7 @@ Genomes enable:
 
 ---
 
-## Completed Genomes (5)
+## Completed Genomes (25)
 
 | File | Engine | Category | Seance | Presets |
 |------|--------|----------|--------|---------|
@@ -32,6 +32,26 @@ Genomes enable:
 | `opera.xogenome` | OPERA | vocal | 8.85 | 156 |
 | `onset.xogenome` | ONSET | drums | unscored | 636 |
 | `origami.xogenome` | ORIGAMI | spectral | 8.0 | 598 |
+| `oblique.xogenome` | OBLIQUE | lead / prism | 7.2 | 623 |
+| `obscura.xogenome` | OBSCURA | pad / physical | unscored | 475 |
+| `oceandeep.xogenome` | OCEANDEEP | bass | 7.8 | 365 |
+| `octopus.xogenome` | OCTOPUS | lead | 8.3 | 362 |
+| `odyssey.xogenome` | ODYSSEY | pad / wavetable | 7.6 | 397 |
+| `opensky.xogenome` | OPENSKY | pad | 8.1 | 428 |
+| `optic.xogenome` | OPTIC | fx / visual | unscored | 581 |
+| `oracle.xogenome` | ORACLE | lead / stochastic | 8.6 | 638 |
+| `orbital.xogenome` | ORBITAL | pad / additive | unscored | 537 |
+| `orbweave.xogenome` | ORBWEAVE | pad | 8.4 | 496 |
+| `orca.xogenome` | ORCA | lead | 8.6 | 426 |
+| `organism.xogenome` | ORGANISM | generative | 8.1 | 480 |
+| `organon.xogenome` | ORGANON | generative | unscored | 778 |
+| `ostinato.xogenome` | OSTINATO | drums | 8.7 | 241 |
+| `ouie.xogenome` | OUIE | lead | 8.5 | 407 |
+| `ouroboros.xogenome` | OUROBOROS | lead / chaotic | unscored | 692 |
+| `overbite.xogenome` | OVERBITE | bass | unscored | 480 |
+| `overtone.xogenome` | OVERTONE | spectral | 7.6 | 437 |
+| `overworld.xogenome` | OVERWORLD | lead / chip | 7.6 | 531 |
+| `oxbow.xogenome` | OXBOW | pad | 9.0 | 241 |
 
 ---
 
