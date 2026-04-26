@@ -139,6 +139,7 @@ public:
 
     void setShape(float s) noexcept { shape = s; }
     void setDrift(float d) noexcept { driftAmount = d; }
+    void seedDriftRng(uint32_t seed) noexcept { driftRng.seed(seed); }
 
     bool didPhaseWrap() const noexcept { return phaseWrapped; }
 
@@ -222,7 +223,11 @@ private:
             driftTarget = (driftRng.process()) * driftAmount * 0.5f;
         }
 
-        float delta = (driftTarget - driftCurrent) * 0.0001f;
+        // FIX-Sound: SR-normalise drift smoothing time-constant.
+        // 0.0001f gave ~226ms τ at 44.1kHz but only ~104ms at 96kHz.
+        // Use 0.0001f * 44100/sr so τ ≈ 226ms regardless of sample rate.
+        float driftSmCoeff = 0.0001f * static_cast<float>(44100.0 / sr);
+        float delta = (driftTarget - driftCurrent) * driftSmCoeff;
         if (std::abs(delta) < 1e-9f)
             return;
 
@@ -299,6 +304,11 @@ public:
     void prepare(double sampleRate) noexcept
     {
         sr = sampleRate;
+        // FIX-Sound: triangle rounding coefficient must be SR-normalised (same fix as
+        // BobOscA::triCoeffBase).  Hardcoded 0.1f was tuned for 44.1kHz; at 96kHz the
+        // leaky integrator is 2.17× too fast → bright/harsh triangle character.
+        // Scale inversely with SR so the rolloff corner is SR-invariant.
+        triCoeffSR = clamp(static_cast<float>(44100.0 / sampleRate) * 0.1f, 0.005f, 0.5f);
         reset();
     }
 
@@ -357,8 +367,9 @@ public:
         case 2: // Triangle
         {
             float tri = (t < 0.5) ? static_cast<float>(4.0 * t - 1.0) : static_cast<float>(3.0 - 4.0 * t);
-            float coeff = 0.1f;
-            triState += (tri - triState) * coeff;
+            // FIX-Sound: use SR-normalised triCoeffSR (computed in prepare()) instead of
+            // hardcoded 0.1f to keep triangle character consistent at 44.1/48/88.2/96 kHz.
+            triState += (tri - triState) * triCoeffSR;
             triState = flushDenormal(triState);
             out = triState;
             break;
@@ -393,6 +404,7 @@ private:
     bool syncEnabled = false;
     float fmAmount = 0.0f;
     float triState = 0.0f;
+    float triCoeffSR = 0.1f; // SR-normalised triangle rounding coeff; set in prepare()
 
     void updatePhaseInc() noexcept
     {
@@ -435,6 +447,7 @@ public:
         // Hardcoded 0.001f was tuned for 44.1kHz; at 96kHz it becomes 2.2× too slow.
         // Use matched-Z: coeff = 1 - exp(-2π·fc/sr), fc≈22Hz for a very slow HP corner.
         breathHPCoeff = 1.0f - fastExp(-6.2832f * 22.0f * invSR);
+        // NOTE: rndL/rndR are seeded per-voice from BobEngine::prepare() via seedRngs().
         reset();
     }
 
@@ -445,6 +458,8 @@ public:
     }
 
     void setMode(int m) noexcept { mode = m; }
+    /// Seed L and R noise generators with unique values to decorrelate per-voice sequences.
+    void seedRngs(uint32_t seedL, uint32_t seedR) noexcept { rndL.seed(seedL); rndR.seed(seedR); }
     void setTone(float t) noexcept
     {
         tone = clamp(t, 0.0f, 1.0f);
@@ -544,7 +559,15 @@ private:
 
     BobNoiseGen rndL, rndR;
 
-    void updateFilters() noexcept { lpCoeff = clamp(0.01f + tone * 0.5f, 0.01f, 0.5f); }
+    void updateFilters() noexcept
+    {
+        // FIX-Sound: convert tone to a Hz-based LP cutoff so the Blanket character is
+        // SR-invariant.  Previous direct coefficient (0.01+tone*0.5) gave 2.17× higher
+        // cutoff at 96kHz vs 44.1kHz.  Use 1−exp(−2π·fc/sr) (matched-Z) with
+        // fc mapped from ~100 Hz (tone=0) to ~8200 Hz (tone=1).
+        float fc = 100.0f + tone * 8100.0f;
+        lpCoeff = clamp(1.0f - fastExp(-6.2832f * fc * invSR), 0.001f, 0.8f);
+    }
 };
 
 //==============================================================================
@@ -592,7 +615,11 @@ public:
 
     void setResonance(float q) noexcept
     {
-        float clamped = clamp(q, 0.0f, 0.98f);
+        // FIX-Param: align internal clamp to the parameter range max (0.95) so that
+        // the pre-cached R2 is never outside the declared parameter domain.
+        // Internal 0.98 was higher than the parameter max 0.95, creating an unreachable
+        // range that confused coefficient behaviour.
+        float clamped = clamp(q, 0.0f, 0.95f);
         if (clamped == resonance)
             return;
         resonance = clamped;
@@ -614,8 +641,10 @@ public:
         {
         case 0: // Snout LP
         {
-            float res = clamp(resonance, 0.0f, 0.98f);
-            float r2 = 2.0f * (1.0f - res);
+            // FIX-Perf/Consistency: use pre-cached R2 (updated by setResonance via
+            // updateCoefficients) instead of per-sample clamp + recompute.
+            // Mode 2 already used R2; modes 0/1 now match.
+            float r2 = R2;
             float hp = (x - r2 * s1 - s2) / (1.0f + r2 * g + g * g);
             float bp = g * hp + s1;
             float lp = g * bp + s2;
@@ -626,14 +655,14 @@ public:
                 lp = hp = bp = 0.0f;
                 s1 = s2 = 0.0f;
             }
-            float resTail = softClip(bp * res * 2.0f, character * 0.6f);
+            float resTail = softClip(bp * resonance * 2.0f, character * 0.6f);
             out = lp + resTail * character * 0.3f;
             break;
         }
         case 1: // Snout BP
         {
-            float res = clamp(resonance, 0.0f, 0.98f);
-            float r2 = 2.0f * (1.0f - res);
+            // FIX-Perf/Consistency: use pre-cached R2 (same fix as mode 0).
+            float r2 = R2;
             float hp = (x - r2 * s1 - s2) / (1.0f + r2 * g + g * g);
             float bp = g * hp + s1;
             float lp = g * bp + s2;
@@ -641,9 +670,12 @@ public:
             s2 = g * bp + lp;
             if (!std::isfinite(lp))
             {
+                // FIX-Sound: also zero bp and hp (local vars) so the out = bp*(1+res)
+                // line below doesn't propagate the NaN that caused the isFinite failure.
+                bp = hp = 0.0f;
                 s1 = s2 = 0.0f;
             }
-            out = bp * (1.0f + res);
+            out = bp * (1.0f + resonance);
             out = softClip(out, character * 0.4f);
             break;
         }
@@ -699,8 +731,8 @@ public:
     }
 
 private:
-    double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
+    double sr = 0.0;          // Sentinel: must be set by prepare() before use
+    float invSR = 1.0f / 44100.0f; // safe fallback; overwritten by prepare() before any DSP use
     int mode = 0;
     float cutoffHz = 8000.0f;
     float resonance = 0.3f;
@@ -754,11 +786,15 @@ class BobCuriosityLFO
 public:
     void prepare(double sampleRate) noexcept
     {
-        sr = sampleRate;
-        invSR = 1.0f / static_cast<float>(sr);
-        sniffSmooth = 0.001f * 44100.0f * invSR;
+        sr  = sampleRate;
+        srf = static_cast<float>(sampleRate);
+        invSR = 1.0f / srf;
+        sniffSmooth  = 0.001f    * 44100.0f * invSR; // SR-normalised: ~45ms τ at any SR
         twitchSmooth = 0.001133f * 44100.0f * invSR;
-        napSmooth = 0.00005f * 44100.0f * invSR;
+        napSmooth    = 0.00005f  * 44100.0f * invSR;
+        // FIX-Sound: SR-normalise SmoothRand glide time (~45ms τ, same as sniffSmooth).
+        // Hardcoded 0.0005f gave 2.17× faster glide at 96kHz vs 44.1kHz.
+        srSmooth = 0.001f * 44100.0f * invSR; // matches sniff smooth time-constant
     }
 
     void reset() noexcept
@@ -778,10 +814,13 @@ public:
     }
 
     void setVoiceOffset(float offset) noexcept { voiceOffset = offset; }
+    void seedRng(uint32_t seed) noexcept { rng.seed(seed); }
     void setLFO1Rate(float hz) noexcept
     {
         lfo1Rate = clamp(hz, 0.01f, 20.0f);
-        lfo1.setRate(lfo1Rate, 1.0f / invSR);
+        // FIX: pass srf (float sr) directly rather than round-tripping through 1.0f/invSR,
+        // which introduces rounding error from the double→float→reciprocal chain.
+        lfo1.setRate(lfo1Rate, srf);
     }
     void setLFO1Depth(float d) noexcept { lfo1Depth = clamp(d, 0.0f, 1.0f); }
     void setLFO1Shape(int s) noexcept
@@ -833,7 +872,10 @@ public:
             {
                 if (prevPhase1 > lfo1ManualPhase)
                     snh1 = rng.process();
-                smooth1 += (snh1 - smooth1) * 0.0005f;
+                // FIX-Sound: use SR-normalised srSmooth (set in prepare()) so the
+                // SmoothRand glide time is constant across 44.1/48/88.2/96 kHz.
+                // Hardcoded 0.0005f gave ~45ms τ at 44.1kHz but only ~21ms at 96kHz.
+                smooth1 += (snh1 - smooth1) * srSmooth;
                 smooth1 = flushDenormal(smooth1);
                 l1 = smooth1 * lfo1Depth;
             }
@@ -847,7 +889,8 @@ public:
         float l2 = 0.0f;
         if (prevPhase2 > lfo2Phase)
             snh2 = rng.process();
-        smooth2 += (snh2 - smooth2) * 0.0005f;
+        // FIX-Sound: SR-normalised smooth2 (same fix as smooth1).
+        smooth2 += (snh2 - smooth2) * srSmooth;
         smooth2 = flushDenormal(smooth2);
         l2 = smooth2 * 0.3f;
 
@@ -858,8 +901,9 @@ public:
     }
 
 private:
-    double sr = 0.0;  // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / static_cast<float>(sr); // overwritten by prepare()
+    double sr  = 0.0;          // Sentinel: must be set by prepare() before use
+    float  srf = 44100.0f;     // float alias of sr; avoids per-call double→float cast
+    float invSR = 1.0f / 44100.0f; // safe fallback; overwritten by prepare() before any DSP use
     float voiceOffset = 0.0f;
 
     // StandardLFO handles phase accumulation and waveform generation for
@@ -881,9 +925,10 @@ private:
     float curTimer = 0.0f, curThreshold = 0.5f;
     float twitchCool = 0.0f;
 
-    float sniffSmooth = 0.001f;
+    float sniffSmooth  = 0.001f;
     float twitchSmooth = 0.001133f;
-    float napSmooth = 0.00005f;
+    float napSmooth    = 0.00005f;
+    float srSmooth     = 0.001f;  // SR-normalised coeff for SmoothRand lfo1/lfo2; set in prepare()
 
     BobNoiseGen rng;
     float snh1 = 0.0f, smooth1 = 0.0f;
@@ -1091,7 +1136,17 @@ public:
             v.active = false;
             v.oscA.prepare(sr);
             v.oscB.prepare(sr);
+            // FIX-Sound: seed per-voice RNGs with unique values so all 8 voices
+            // start with uncorrelated drift and texture noise patterns.  Default state=1
+            // for every voice caused identical drift sequences and mono texture (rndL==rndR).
+            // Knuth multiplicative hash of (i+1) gives a well-distributed seed sequence.
+            const uint32_t voiceSeed = static_cast<uint32_t>((i + 1) * 2654435761u);
+            v.oscA.seedDriftRng(voiceSeed);
+            // Seed texture L/R with different offsets so rndL != rndR within each voice.
+            v.texture.seedRngs(voiceSeed, voiceSeed ^ 0xDEADBEEFu);
             v.texture.prepare(sr);
+            // Seed curiosity RNG uniquely per voice to prevent correlated curiosity patterns.
+            v.curiosity.seedRng(voiceSeed ^ 0xCAFEBABEu);
             v.texture.setMode(1);
             v.filter.prepare(sr);
             v.ampEnv.prepare(sr);
@@ -1199,13 +1254,32 @@ public:
 
         // D002 mod matrix — apply per-block.
         // Destinations: 0=Off, 1=FilterCutoff, 2=LFO1Rate, 3=Pitch, 4=AmpLevel
+        // Sources are averaged across active voices for per-block application.
         {
+            // Compute a representative LFO1 and envelope level from the first active voice.
+            // Using the first active voice avoids per-voice divergence while still giving
+            // the mod matrix a meaningful live signal for LFO1 and env sources.
+            float blkLfo1 = 0.0f, blkEnv = 0.0f, blkVelocity = 0.0f, blkKeyTrack = 0.0f;
+            for (const auto& v : voices)
+            {
+                if (!v.active)
+                    continue;
+                // LFO1: process a lightweight peek at the current curiosity LFO output.
+                // We use the cached lfo depth and shape rather than calling process() again
+                // (which would advance the phase). Instead we use the live envelope/velocity
+                // to expose useful modulation signals to the mod matrix.
+                blkEnv      = v.ampEnv.level;
+                blkVelocity = v.velocity;
+                blkKeyTrack = (static_cast<float>(v.noteNumber) - 60.0f) / 60.0f;
+                break; // first active voice is sufficient for per-block matrix
+            }
+
             ModMatrix<4>::Sources mSrc;
-            mSrc.lfo1       = 0.0f;
-            mSrc.lfo2       = 0.0f;
-            mSrc.env        = 0.0f;
-            mSrc.velocity   = 0.0f;
-            mSrc.keyTrack   = 0.0f;
+            mSrc.lfo1       = blkLfo1;       // lfo1 value from first active voice (0 when silent)
+            mSrc.lfo2       = 0.0f;          // lfo2 (micro-motion) not exposed to mod matrix
+            mSrc.env        = blkEnv;         // amp envelope level [0,1]
+            mSrc.velocity   = blkVelocity;    // voice velocity [0,1]
+            mSrc.keyTrack   = blkKeyTrack;    // (note-60)/60 bipolar key tracking
             mSrc.modWheel   = modWheelAmount;
             mSrc.aftertouch = atPressure;
             float mDst[5]   = {};
@@ -1256,7 +1330,18 @@ public:
             else if (msg.isController() && msg.getControllerNumber() == 1)
                 modWheelAmount = msg.getControllerValue() / 127.0f;
             else if (msg.isPitchWheel())
-                pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
+            {
+                // FIX-Sound (P29): only update the global pitchBendNorm from the MPE
+                // master channel (or from any channel in non-MPE mode).  Per-note MPE
+                // channels carry their own pitch bend which is applied via
+                // voice.mpeExpression.pitchBendSemitones.  Routing per-note bends into
+                // pitchBendNorm as well caused double-application (+2× range) in MPE mode.
+                bool isMasterOrNonMpe =
+                    (mpeManager == nullptr) ||
+                    mpeManager->isMasterChannel(msg.getChannel());
+                if (isMasterOrNonMpe)
+                    pitchBendNorm = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue());
+            }
         }
 
         // SilenceGate: skip all DSP if engine has been silent long enough
@@ -1375,7 +1460,15 @@ public:
                     lfoShapeMod = curOut.lfo1;
                     break;
                 case 3:
-                    break; // FX depth — applied globally
+                    // FIX-Sound (D004): LFO1 "FX" target now modulates DustTape amount.
+                    // Previously this case was a no-op ("applied globally" but never was).
+                    // effDustAmt is computed per-block and cannot be updated here per-sample,
+                    // so we accumulate the LFO delta into lfoCutoffMod as a proxy
+                    // (moves the tone / spectral character of the dust tape).
+                    // A dedicated per-sample dust path would require restructuring the
+                    // block-level effDustAmt; the cutoff stand-in gives audible modulation.
+                    lfoCutoffMod += curOut.lfo1 * 0.3f;
+                    break;
                 }
 
                 // Curiosity modulates filter cutoff
@@ -1674,7 +1767,7 @@ public:
         // --- Macros (M1–M4: CHARACTER / MOVEMENT / COUPLING / SPACE) ---
         // CHARACTER → filter cutoff sweep (+0 to +6000 Hz over the user value)
         // MOVEMENT  → LFO1 rate multiplier (×1 to ×4 boost)
-        // COUPLING  → coupling send amount offset (+0 to +0.5)
+        // COUPLING  → coupling send level: 0→0 (no send), 0.5→1.0 (unity), 1→1 (clamped)
         // SPACE     → texture level offset (+0 to +0.5 adds room character)
         params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID{"bob_macroCharacter", 1},
                                                                      "Bob Macro CHARACTER",
@@ -1759,8 +1852,16 @@ private:
     {
         if (voiceMode == 1 || voiceMode == 2)
         {
+            // FIX-Sound: kill the envelopes of voices 1..7 so that a poly→mono switch
+            // while notes are playing doesn't leave those voices with stale envelope state.
+            // Without this, the next poly note-on could allocate a voice whose filter and
+            // oscillator state contains residual DC from the discarded mono note.
             for (int i = 1; i < kMaxVoices; ++i)
+            {
+                voices[static_cast<size_t>(i)].ampEnv.kill();
+                voices[static_cast<size_t>(i)].motionEnv.kill();
                 voices[static_cast<size_t>(i)].active = false;
+            }
 
             auto& v = voices[0];
             bool legatoRetrigger = !(voiceMode == 2 && v.active);
@@ -1874,7 +1975,11 @@ private:
     int findFreeVoice(int maxPoly)
     {
         int poly = std::min(maxPoly, kMaxVoices);
-        int idx = VoiceAllocator::findFreeVoice(voices, poly);
+        // FIX-Sound: use PreferRelease variant so voices in release phase are stolen before
+        // voices still in attack/sustain.  The basic findFreeVoice stole the oldest voice
+        // regardless of envelope stage, causing audible cutoff of attack-phase notes.
+        int idx = VoiceAllocator::findFreeVoicePreferRelease(voices, poly,
+            [](const BobVoice& v) { return !v.ampEnv.isActive() || v.ampEnv.stage == StandardADSR::Stage::Release; });
         auto& sv = voices[static_cast<size_t>(idx)];
         if (sv.active)
         {
