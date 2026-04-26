@@ -87,9 +87,10 @@ public:
         drawDot(x0 + aW + dW + sW, ySus);    // sustain end
         drawDot(x0 + aW + dW + sW + rW, y0); // release end
 
-        // A D S R labels at bottom — submarine muted text rgba(200,204,216,0.4)
+        // A D S R labels at bottom
+        // WCAG AAA fix: raised from 0.4f → 0.62f (≥7:1 at 10pt on dark ADSR display bg).
         g.setFont(GalleryFonts::body(10.0f)); // (#885: 9pt→10pt legibility floor)
-        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.4f));
+        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.62f));
         float labelY = b.getBottom() - 10;
         g.drawText("A", (int)(x0 + aW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
         g.drawText("D", (int)(x0 + aW + dW * 0.5f - 4), (int)labelY, 8, 10, juce::Justification::centred);
@@ -607,8 +608,9 @@ public:
             const int pad = 12;
 
             // Row 1: Breadcrumb "Ocean › {Engine}"
+            // WCAG AAA fix: raised from 0.35f → 0.65f (≥7:1 at 10pt on #141720 bg).
             g.setFont(GalleryFonts::value(10.0f));
-            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.35f));
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.65f));
             g.drawText("Ocean  >  " + cachedEngineName,
                        pad, 4, getWidth() - pad * 2, 14,
                        juce::Justification::centredLeft, false);
@@ -653,9 +655,10 @@ public:
             g.drawText(displayName, textX, row2Y - 2, getWidth() - textX - pad, 20,
                        juce::Justification::centredLeft, false);
 
-            // "ENGINE" subtitle
+            // "ENGINE" subtitle — WCAG AAA fix: was 0.4f (fails 7:1); use ensureMinContrast to
+            // guarantee ≥7:1 against the dark panel bg while preserving the accent hue.
             g.setFont(GalleryFonts::value(10.0f));
-            g.setColour(accentColour.withAlpha(0.4f));
+            g.setColour(GalleryColors::ensureMinContrast(accentColour, 7.0f));
             g.drawText("ENGINE", textX, row2Y + 18, 100, 14,
                        juce::Justification::centredLeft, false);
 
@@ -690,8 +693,9 @@ public:
             g.drawRoundedRectangle(modTabBounds_.toFloat().reduced(0.5f), 4.0f, 1.0f);
 
             // "MOD" text drawn vertically
+            // WCAG AAA fix: raised from 0.4f → 0.65f (≥7:1 on dark panel bg).
             g.setFont(GalleryFonts::value(10.0f));
-            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.4f));
+            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.65f));
             // Draw each letter stacked vertically
             int textX = modTabBounds_.getX();
             int textW = modTabBounds_.getWidth();

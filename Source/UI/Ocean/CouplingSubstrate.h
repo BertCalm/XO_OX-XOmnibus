@@ -33,6 +33,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../CouplingColors.h"   // CouplingTypeColors::forType()
 #include "../GalleryColors.h"    // A11y::prefersReducedMotion()
+#include "../AccentColors.h"     // D10 coupling/chain accent families (system-level chrome)
 
 #include <array>
 #include <cmath>
@@ -726,8 +727,8 @@ public:
                     g.setColour(baseColour.withAlpha(0.5f * knotPulse));
                     g.drawEllipse(kx - 7.0f, ky - 7.0f, 14.0f, 14.0f, 1.5f);
 
-                    // Inner dot
-                    g.setColour(juce::Colour(120, 220, 210).withAlpha(0.6f * knotPulse));
+                    // Inner dot — D10: coupling knot uses warm copper highlight (not teal/chain)
+                    g.setColour(XOceanus::AccentColors::couplingBright.withAlpha(0.70f * knotPulse));
                     g.fillEllipse(kx - 2.5f, ky - 2.5f, 5.0f, 5.0f);
                 }
                 } // if knotSrcValid && knotDstValid
@@ -797,7 +798,8 @@ public:
                 const float dashLengths[] = { 8.0f, 5.0f };
                 juce::PathStrokeType(2.0f).createDashedStroke(dashedPath, dashPath,
                     dashLengths, 2);
-                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.55f));
+                // D10: in-progress coupling thread uses copper/amber (DSP audio layer = warm family)
+                g.setColour(XOceanus::AccentColors::couplingAccent.withAlpha(0.65f));
                 g.fillPath(dashedPath);
             }
         }

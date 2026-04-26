@@ -104,6 +104,7 @@ public:
     void close()
     {
         setVisible(false);
+
     }
 
     bool isShowing() const noexcept { return isVisible(); }
@@ -578,4 +579,3 @@ public:
 };
 
 } // namespace xoceanus
-___BEGIN___COMMAND_DONE_MARKER___0

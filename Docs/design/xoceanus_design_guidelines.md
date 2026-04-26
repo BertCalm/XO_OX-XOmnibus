@@ -75,7 +75,7 @@ XO Gold Text:  #7A5C1E   (WCAG AA on shell white — 5.0:1 on #F8F6F3 — used f
 
 XO Gold is **the only color constant** across both modes. It never adapts. It appears on:
 - The coupling strip background header
-- Macro knob fills (M1–M4: CHARACTER, MOVEMENT, COUPLING, SPACE)
+- Macro knob fills (M1–M4: TONE, TIDE, COUPLE, DEPTH) [D11]
 - Primary action buttons (Save, Export)
 - Active/selected states in the preset browser
 - The coupling bridge in the logo
@@ -243,7 +243,7 @@ Micro:      9px / 12px              — mood badges, engine tags (uppercase)
 ### 4.3 Case Rules
 
 - Parameter labels: sentence case → `Filter cutoff`, not `FILTER CUTOFF`
-- Macro knobs: UPPERCASE → `CHARACTER`, `MOVEMENT`, `COUPLING`, `SPACE` (physical controls)
+- Macro knobs: UPPERCASE → `TONE`, `TIDE`, `COUPLE`, `DEPTH` (physical controls) [D11 locked 2026-04-25]
 - Preset names: title case → `Velvet Morning`, `Tape Chaos`
 - Engine names: exact brand spelling → `XOblong`, `XOverdub`, `OddfeliX`
 - Mood badges: UPPERCASE with 1.5px letter-spacing → `FOUNDATION`, `FLUX`

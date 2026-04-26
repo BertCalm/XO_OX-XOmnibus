@@ -3,11 +3,15 @@
 #pragma once
 // TransportBar.h — Submarine-style 28 px transport + status bar for the XOceanus Ocean View.
 //
+// D13 layout (Wave 2B):  [ 4/4 ] [ INT · HOST · AUTO ] [ CHAIN ]
+// Three spatial groups separated by ~14 px gaps.  Voice count, CPU meter, MIDI dot,
+// and status dot removed at v1 per D13 D1 (lean layout).
+//
 // The bar sits at the very bottom of the plugin window. It renders two zones in a single
 // horizontal row:
 //
 //   LEFT  — Transport strip: Play, BPM (drag-editable), TAP, Time Sig, Sync pills (INT/HOST/AUTO)
-//   RIGHT — Status info: Voices count, COUPLE button, CPU meter, MIDI flash dot, status dot
+//   RIGHT — Status info: CHAIN button
 //
 // All values are pushed from the editor's timerCallback via the public setter API:
 //   setBpm(), setVoiceCount(), setCpuPercent(), setMidiFlash(), setPlaying()
@@ -19,10 +23,9 @@
 //   - Play button: click toggles → fires onPlayToggled
 //   - BPM region: vertical drag (up = +BPM, down = -BPM, 0.5 BPM per pixel)
 //   - TAP button: records last 5 timestamps; gap > 2000 ms resets; avg interval → BPM → fires onBpmChanged
-//   - Time sig numerator: click cycles [2,3,4,5,6,7]
-//   - Time sig denominator: click cycles [2,4,8]
+//   - Time sig (numerator OR denominator): click cycles 4/4→3/4→6/8→7/8→5/4→4/4 (D13 C2)
 //   - Sync pills: click a pill to activate → fires (no separate callback; parent reads back via poll)
-//   - COUPLE button: click fires onCoupleClicked
+//   - CHAIN button: click fires onCoupleClicked (variable name kept for wiring stability, D13)
 //
 // Timer runs at 10 Hz — drives MIDI flash decay and any future animation.
 //
@@ -50,6 +53,7 @@ namespace xoceanus
     See file header for full documentation.
 */
 class TransportBar : public juce::Component,
+                     public juce::TooltipClient,
                      private juce::Timer
 {
 public:
@@ -125,6 +129,21 @@ public:
     std::function<void(double)>   onBpmChanged;
     std::function<void(int, int)> onTimeSigChanged;
 
+    //==========================================================================
+    // juce::TooltipClient — D13 B2: AUTO pill tooltip.
+    // Returns a tooltip string based on which region is currently hovered.
+    juce::String getTooltip() override
+    {
+        switch (hoveredRegion_)
+        {
+            case kRegSyncAuto:
+                // D13 B2: AUTO pill tooltip spec.
+                return "Follow host transport when playing, free-run when stopped";
+            default:
+                return {};
+        }
+    }
+
 private:
     //==========================================================================
     // Sync mode enum
@@ -180,11 +199,15 @@ private:
         const float gap5 =  5.0f;
 
         // ---- Left side: transport strip ----
-        // Elements: Play | BPM-value "BPM" label | TAP | "|" | TimeSigN "/" TimeSigD | "|" | INT HOST AUTO
-        const float btnH  = 18.0f;
-        const float btnY  = (h - btnH) * 0.5f;
+        // D13 D1: three spatial groups — [ Play BPM TAP ] [ 4/4 ] [ INT HOST AUTO ]
+        // Groups separated by ~14 px inter-group gaps.
+        const float btnH     = 18.0f;
+        const float btnY     = (h - btnH) * 0.5f;
+        const float groupGap = 14.0f;  // D13 D1: inter-group gap
 
         float x = padX;
+
+        // ── Group 1: Play | BPM | TAP ──────────────────────────────────────────
 
         // Play button (22 × 18 px)
         {
@@ -211,12 +234,13 @@ private:
             juce::Rectangle<float> r(x, btnY, 22.0f, btnH);
             regions_.push_back({ r, kRegTap });
             tapBtnBounds_ = r;
-            x += 22.0f + gap5;
+            x += 22.0f + groupGap;  // D13 D1: group gap after Group 1
         }
 
-        // Separator "|"
-        sepX_[0] = x + 3.0f;
-        x += 8.0f + gap5;
+        // Separator "|" between Group 1 and Group 2
+        sepX_[0] = x - groupGap * 0.5f;
+
+        // ── Group 2: Time sig [ 4/4 ] ──────────────────────────────────────────
 
         // Time sig numerator (monospace 10px, weight 600)
         {
@@ -235,14 +259,13 @@ private:
             juce::Rectangle<float> r(x, (h - 14.0f) * 0.5f, 14.0f, 14.0f);
             regions_.push_back({ r, kRegTimeSigD });
             timeSigDBounds_ = r;
-            x += 14.0f + gap5;
+            x += 14.0f + groupGap;  // D13 D1: group gap after Group 2
         }
 
-        // Separator "|"
-        sepX_[1] = x + 3.0f;
-        x += 8.0f + gap5;
+        // Separator "|" between Group 2 and Group 3
+        sepX_[1] = x - groupGap * 0.5f;
 
-        // Sync pills: INT HOST AUTO
+        // ── Group 3: Sync pills [ INT HOST AUTO ] ──────────────────────────────
         static constexpr const char* kSyncLabels[3] = { "INT", "HOST", "AUTO" };
         for (int i = 0; i < 3; ++i)
         {
@@ -254,38 +277,30 @@ private:
         }
         (void)kSyncLabels;
 
-        // ---- Right side: status info ----
+        // ---- Right side: D13 D1 lean layout — CHAIN button only ----
+        // Voice count, CPU meter, MIDI dot, status dot removed at v1 per D13 D1.
         // Work right-to-left from right edge.
 
         float rx = w - padX;
 
-        // Status dot (5 × 5 px, always on)
-        const float dotSz = 5.0f;
-        statusDotBounds_ = juce::Rectangle<float>(rx - dotSz, (h - dotSz) * 0.5f, dotSz, dotSz);
-        rx -= dotSz + gap;
+        // D13 D1: removed at v1 — status dot
+        // D13 D1: removed at v1 — MIDI indicator
+        // D13 D1: removed at v1 — CPU meter
+        // D13 D1: removed at v1 — Voices label
 
-        // MIDI indicator "●" — approx 10px wide
-        midiDotBounds_ = juce::Rectangle<float>(rx - 10.0f, (h - 12.0f) * 0.5f, 10.0f, 12.0f);
-        rx -= 10.0f + gap;
-
-        // CPU: "CPU: N%"  — reserve ~60px
-        cpuBounds_ = juce::Rectangle<float>(rx - 60.0f, (h - 12.0f) * 0.5f, 60.0f, 12.0f);
-        rx -= 60.0f + gap;
-
-        // COUPLE button — ~46px wide, 16px tall
+        // CHAIN button — ~46px wide, 16px tall
+        // Renders as "CHAIN" per D13 — variable name kept for wiring stability.
         {
             const float pillW = 46.0f;
             const float pillH = 16.0f;
             juce::Rectangle<float> r(rx - pillW, (h - pillH) * 0.5f, pillW, pillH);
             regions_.push_back({ r, kRegCouple });
             coupleBounds_ = r;
-            rx -= pillW + gap;
+            // rx -= pillW + gap;  // nothing further right
         }
 
-        // Voices: "Voices: N" — reserve ~55px, flush right of spacer
-        // (Spacer is implicit — voices label simply sits after x and before COUPLE)
-        // Place it just to the right of the left-side content.
-        voicesBounds_ = juce::Rectangle<float>(x + gap, (h - 12.0f) * 0.5f, 55.0f, 12.0f);
+        // voicesBounds_ kept as member to avoid cascading removal; set off-screen.
+        voicesBounds_ = juce::Rectangle<float>(-200.0f, 0.0f, 0.0f, 0.0f);
     }
 
     //--------------------------------------------------------------------------
@@ -500,20 +515,11 @@ private:
         }
 
         // ================================================================
-        // RIGHT SIDE — Status info
+        // RIGHT SIDE — D13 D1: lean layout — CHAIN button only.
+        // Voices, CPU meter, MIDI dot, status dot removed at v1 per D13 D1.
 
-        // --- Voices ---
-        {
-            g.setFont(bodyFont);
-            g.setColour(Colour(200, 204, 216).withAlpha(0.35f));
-
-            char buf[24];
-            std::snprintf(buf, sizeof(buf), "Voices: %d", voiceCount_);
-            g.drawText(buf, voicesBounds_.toNearestInt(),
-                       juce::Justification::centredLeft, false);
-        }
-
-        // --- COUPLE button ---
+        // --- CHAIN button ---
+        // Renders as "CHAIN" per D13 — variable name (coupleBounds_) kept for wiring stability.
         {
             const bool isHov = (hoveredRegion_ == kRegCouple);
             const juce::Colour textCol = isHov
@@ -528,64 +534,9 @@ private:
 
             g.setFont(pillFont);
             g.setColour(textCol);
-            g.drawText("COUPLE", coupleBounds_.toNearestInt(),
+            // Renders as "CHAIN" per D13 — variable name kept for wiring stability.
+            g.drawText("CHAIN", coupleBounds_.toNearestInt(),
                        juce::Justification::centred, false);
-        }
-
-        // --- CPU meter ---
-        {
-            // "CPU: " prefix in dim color, value in dynamic color based on load.
-            const float cpu = cpuPercent_;
-            const juce::Colour valCol =
-                (cpu > 85.0f) ? Colour(239, 68, 68).withAlpha(0.80f)
-                : (cpu > 60.0f) ? Colour(233, 196, 106).withAlpha(0.80f)
-                               : Colour(127, 219, 202).withAlpha(0.70f);
-
-            // Draw in two parts: "CPU: " dim + "N%" colored.
-            // Measure "CPU: " width at the body font.
-            g.setFont(bodyFont);
-
-            const juce::String prefix("CPU: ");
-            const int prefixW = static_cast<int>(
-                std::ceil(bodyFont.getStringWidthFloat(prefix)));
-
-            const juce::Rectangle<float> prefixRect(
-                cpuBounds_.getX(), cpuBounds_.getY(),
-                static_cast<float>(prefixW), cpuBounds_.getHeight());
-            const juce::Rectangle<float> valRect(
-                cpuBounds_.getX() + static_cast<float>(prefixW), cpuBounds_.getY(),
-                cpuBounds_.getWidth() - static_cast<float>(prefixW), cpuBounds_.getHeight());
-
-            g.setColour(Colour(200, 204, 216).withAlpha(0.35f));
-            g.drawText(prefix, prefixRect.toNearestInt(),
-                       juce::Justification::centredLeft, false);
-
-            char valBuf[8];
-            std::snprintf(valBuf, sizeof(valBuf), "%.0f%%", cpu);
-
-            g.setColour(valCol);
-            g.drawText(valBuf, valRect.toNearestInt(),
-                       juce::Justification::centredLeft, false);
-        }
-
-        // --- MIDI flash dot ---
-        {
-            const float alpha = 0.15f + midiFlashAlpha_ * 0.75f; // 0.15 base, up to 0.90
-            const juce::Colour col = (midiFlashAlpha_ > 0.05f)
-                ? Colour(127, 219, 202).withAlpha(juce::jlimit(0.0f, 1.0f, alpha))
-                : Colour(200, 204, 216).withAlpha(0.15f);
-
-            g.setFont(bodyFont);
-            g.setColour(col);
-            // UTF-8: "●" = \xe2\x97\x8f
-            g.drawText("\xe2\x97\x8f", midiDotBounds_.toNearestInt(),
-                       juce::Justification::centred, false);
-        }
-
-        // --- Status dot (always on, 5 × 5 px circle) ---
-        {
-            g.setColour(Colour(60, 180, 170).withAlpha(0.55f));
-            g.fillEllipse(statusDotBounds_);
         }
     }
 
@@ -622,14 +573,17 @@ private:
                     break;
 
                 case kRegTimeSigN:
-                    cycleTimeSigNumerator();
+                    // D13 C2: both numerator and denominator regions fire the same
+                    // combined cycle: 4/4→3/4→6/8→7/8→5/4→4/4.
+                    cycleTimeSig();
                     if (onTimeSigChanged)
                         onTimeSigChanged(timeSigNumerator_, timeSigDenominator_);
                     repaint();
                     break;
 
                 case kRegTimeSigD:
-                    cycleTimeSigDenominator();
+                    // D13 C2: denominator click fires the same combined cycle as numerator.
+                    cycleTimeSig();
                     if (onTimeSigChanged)
                         onTimeSigChanged(timeSigNumerator_, timeSigDenominator_);
                     repaint();
@@ -789,39 +743,42 @@ private:
     //==========================================================================
     // Time sig helpers
 
-    void cycleTimeSigNumerator()
+    /** D13 C2 — Combined time-signature cycle.
+        Clicking either the numerator or denominator region walks a fixed table of
+        musically meaningful combinations: 4/4 → 3/4 → 6/8 → 7/8 → 5/4 → 4/4.
+        Both `timeSigNumerator_` and `timeSigDenominator_` are updated atomically
+        so the display always shows a valid combination.
+        The `onTimeSigChanged(num, den)` callback fires after this returns. */
+    void cycleTimeSig()
     {
-        static constexpr int kNumerators[] = { 2, 3, 4, 5, 6, 7 };
-        static constexpr int kCount = static_cast<int>(sizeof(kNumerators) / sizeof(kNumerators[0]));
+        struct TimeSig { int num; int den; };
+        static constexpr TimeSig kTable[] = {
+            { 4, 4 },
+            { 3, 4 },
+            { 6, 8 },
+            { 7, 8 },
+            { 5, 4 },
+        };
+        static constexpr int kCount = static_cast<int>(sizeof(kTable) / sizeof(kTable[0]));
 
-        int idx = 0;
+        // Find the current entry and advance to the next.
+        int nextIdx = 0;
         for (int i = 0; i < kCount; ++i)
         {
-            if (kNumerators[i] == timeSigNumerator_)
+            if (kTable[i].num == timeSigNumerator_ && kTable[i].den == timeSigDenominator_)
             {
-                idx = (i + 1) % kCount;
+                nextIdx = (i + 1) % kCount;
                 break;
             }
         }
-        timeSigNumerator_ = kNumerators[idx];
+        timeSigNumerator_   = kTable[nextIdx].num;
+        timeSigDenominator_ = kTable[nextIdx].den;
     }
 
-    void cycleTimeSigDenominator()
-    {
-        static constexpr int kDenominators[] = { 2, 4, 8 };
-        static constexpr int kCount = static_cast<int>(sizeof(kDenominators) / sizeof(kDenominators[0]));
-
-        int idx = 0;
-        for (int i = 0; i < kCount; ++i)
-        {
-            if (kDenominators[i] == timeSigDenominator_)
-            {
-                idx = (i + 1) % kCount;
-                break;
-            }
-        }
-        timeSigDenominator_ = kDenominators[idx];
-    }
+    // Legacy individual-axis helpers kept so existing external call sites compile;
+    // they are no longer called from the mouseDown handler (D13 C2).
+    void cycleTimeSigNumerator()   { cycleTimeSig(); }
+    void cycleTimeSigDenominator() { cycleTimeSig(); }
 
     //==========================================================================
     // State

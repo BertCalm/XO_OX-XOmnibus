@@ -1742,18 +1742,18 @@ private:
     // When a real preset hint is available (presetHint_.hasRealData == true),
     // the map is derived from actual macro parameter ranges and 6D Sonic DNA:
     //
-    //   X axis drives CHARACTER (macro[0]) + MOVEMENT (macro[1]).
-    //   Y axis drives COUPLING  (macro[2]) + SPACE    (macro[3]).
+    //   X axis drives TONE   (macro[0]) + TIDE   (macro[1]).  [D11]
+    //   Y axis drives COUPLE (macro[2]) + DEPTH  (macro[3]).  [D11]
     //
     // For each pixel at normalised position (nx, ny):
     //
-    //   xSens(nx)  — how much CHARACTER + MOVEMENT change at this X position.
+    //   xSens(nx)  — how much TONE + TIDE change at this X position.
     //                Peaks near the centre of the circle of fifths where harmonic
     //                tension is highest; the peak shifts with circleX_ (the current
     //                key), matching the HarmonicField marker layout.
     //                Scaled by macroRange[0] + macroRange[1] and dnaMovement.
     //
-    //   ySens(ny)  — how much COUPLING + SPACE change at this Y position.
+    //   ySens(ny)  — how much COUPLE + DEPTH change at this Y position.
     //                Peaks at both extremes (NO=0, YES=1) because influence depth
     //                has maximum effect at the poles.
     //                Scaled by macroRange[2] + macroRange[3] and dnaSpace.
@@ -1790,14 +1790,14 @@ private:
             // REAL ANALYSIS PATH
             // ----------------------------------------------------------------
 
-            // X-axis contribution weights: CHARACTER + MOVEMENT macro range widths,
+            // X-axis contribution weights: TONE + TIDE macro range widths, [D11]
             // further scaled by the movement DNA dimension.
             // A dead macro (range=0) contributes nothing; a full-sweep macro (range=1)
             // contributes maximally.
             const float xMacroStrength = (presetHint_.macroRange[0] + presetHint_.macroRange[1])
                                          * (0.5f + presetHint_.dnaMovement * 0.5f); // [0, 2] * [0.5, 1]
 
-            // Y-axis contribution weights: COUPLING + SPACE macro range widths,
+            // Y-axis contribution weights: COUPLE + DEPTH macro range widths, [D11]
             // further scaled by the space DNA dimension.
             const float yMacroStrength = (presetHint_.macroRange[2] + presetHint_.macroRange[3])
                                          * (0.5f + presetHint_.dnaSpace * 0.5f);
@@ -1820,7 +1820,7 @@ private:
             const float hotX = 0.3f + circleX_ * 0.4f;
 
             // Y hot-zones sit at both poles (influenceY_ = 0 and 1) because
-            // the COUPLING / SPACE macros respond most at full-on and full-off
+            // the COUPLE / DEPTH macros respond most at full-on and full-off [D11]
             // influence depth.  We model this as two Gaussian peaks at y=0 and y=1.
             // Their relative weights follow influenceY_ so the current position
             // pulls the glow toward whichever pole is active.

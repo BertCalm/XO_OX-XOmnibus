@@ -249,7 +249,7 @@ public:
         // Wire MIDI and processor immediately (no lazy creation needed).
         playSurface_.setMidiCollector(&processor.getMidiCollector(), 1);
         playSurface_.setProcessor(&processor);
-        // Wire TideController default target: CHARACTER macro (macro1).
+        // Wire TideController default target: TONE macro (macro1). [D11]
         if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(proc.getAPVTS().getParameter("macro1")))
             playSurface_.setTideTargetParameter(p);
         // Wire LookAndFeel so embedded surface matches the plugin theme.
@@ -1054,6 +1054,7 @@ public:
         obadge_.onClick = [this]
         {
             // D12: single click → About tab.
+            // TODO D12: long-press → Lore tab (deferred; see OBadgeButton::mouseUp comment).
             aboutModal_.openTab(AboutModal::Tab::About);
         };
 
@@ -1318,7 +1319,6 @@ public:
                 midiIndicator.setBounds(statusArea.removeFromRight(16).withSizeKeepingCentre(8, 8));
                 cpuMeter.setBounds(statusArea.removeFromRight(68).withSizeKeepingCentre(64, 20));
             }
-            toastOverlay_.setBounds(getLocalBounds());
 
             // D12: O badge — top-left corner, 8px inset from the SubmarineHudBar
             // left edge (SubmarineHudBar is positioned at x=16, so badge at x=8).
@@ -1326,6 +1326,8 @@ public:
 
             // D12: About modal — full editor bounds; card is centered inside it.
             aboutModal_.setBounds(getLocalBounds());
+
+            toastOverlay_.setBounds(getLocalBounds());
 
             return;
         }

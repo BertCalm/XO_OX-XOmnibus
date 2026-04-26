@@ -23,7 +23,7 @@ namespace xoceanus
 //   │  (diamond graph viz)  │  Type: [dropdown]  Depth: ═  │
 //   │                       │  Route 2 / 3 / 4 ...         │
 //   ├───────────────────────┴──────────────────────────────┤
-//   │  ◉ CHARACTER  ◉ MOVEMENT  ◉ COUPLING  ◉ SPACE       │
+//   │  ◉ TONE       ◉ TIDE      ◉ COUPLE    ◉ DEPTH        │
 //   └──────────────────────────────────────────────────────┘
 //
 // Fills the same bounds as OverviewPanel / EngineDetailPanel / ChordMachinePanel.
@@ -164,7 +164,7 @@ public:
             const char* label;
         };
         static constexpr MacroDef macroDefs[4] = {
-            {"macro1", "CHARACTER"}, {"macro2", "MOVEMENT"}, {"macro3", "COUPLING"}, {"macro4", "SPACE"}};
+            {"macro1", "TONE"}, {"macro2", "TIDE"}, {"macro3", "COUPLE"}, {"macro4", "DEPTH"}}; // D11
         for (int i = 0; i < 4; ++i)
         {
             macroKnobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);

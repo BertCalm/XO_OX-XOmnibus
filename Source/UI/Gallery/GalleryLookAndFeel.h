@@ -3,6 +3,7 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
+#include <map>
 
 namespace xoceanus
 {
@@ -14,6 +15,71 @@ class GalleryLookAndFeel : public juce::LookAndFeel_V4
 {
 public:
     GalleryLookAndFeel() { applyTheme(); }
+
+    //==========================================================================
+    // paintXOceanusKnob — shared static helper used by both drawRotarySlider
+    // (GalleryKnob / juce::Slider) and MasterFXStripCompact::paintKnob (custom
+    // Component that draws knobs directly without JUCE Slider children).
+    //
+    // Renders the arc track, value-fill arc, and indicator line.  The caller is
+    // responsible for the knob body (drawn via the cached image in
+    // drawRotarySlider, or skipped in the compact strip where the body is
+    // omitted for density).
+    //
+    // Parameters
+    //   cx, cy       — centre of the knob in component coordinates
+    //   r            — arc radius (typically knob_radius - 3 px)
+    //   value01      — normalised value [0, 1]
+    //   isHover      — true when the pointer is over the knob
+    //   fillColour   — colour for the value arc and indicator line
+    //   startAngle   — arc start in radians (7-o'clock = 0.75π)
+    //   endAngle     — arc end   in radians (5-o'clock = 2.25π)
+    static void paintXOceanusKnob (juce::Graphics& g,
+                                   float cx, float cy, float r,
+                                   float value01, bool isHover,
+                                   juce::Colour fillColour,
+                                   float startAngle = 0.75f * juce::MathConstants<float>::pi,
+                                   float endAngle   = 2.25f * juce::MathConstants<float>::pi)
+    {
+        using juce::Path;
+        using juce::PathStrokeType;
+        using juce::MathConstants;
+
+        const float totalSweep = endAngle - startAngle;
+        const float valueAngle = startAngle + value01 * totalSweep;
+
+        // ── Track arc (full sweep, dimmed) ────────────────────────────────
+        {
+            Path bgArc;
+            bgArc.addCentredArc (cx, cy, r, r, 0.0f, startAngle, endAngle, true);
+            g.setColour (juce::Colour (GalleryColors::t3()));
+            g.strokePath (bgArc, PathStrokeType (2.2f,
+                PathStrokeType::curved, PathStrokeType::rounded));
+        }
+
+        // ── Value arc (partial sweep) ─────────────────────────────────────
+        if (value01 > 0.001f)
+        {
+            // 12 % brightness boost on passive hover — consistent with
+            // drawRotarySlider behaviour (see #1185 note in that method).
+            const juce::Colour arcCol = isHover ? fillColour.brighter (0.12f) : fillColour;
+
+            Path valArc;
+            valArc.addCentredArc (cx, cy, r, r, 0.0f, startAngle, valueAngle, true);
+            g.setColour (arcCol);
+            g.strokePath (valArc, PathStrokeType (2.8f,
+                PathStrokeType::curved, PathStrokeType::rounded));
+
+            // ── Indicator dot at arc endpoint ─────────────────────────────
+            // screen coords: x = cx + r·cos(angle − π/2)
+            //                y = cy + r·sin(angle − π/2)
+            const float dotX = cx + r * std::cos (valueAngle - MathConstants<float>::halfPi);
+            const float dotY = cy + r * std::sin (valueAngle - MathConstants<float>::halfPi);
+            constexpr float dotR = 1.8f;
+            g.setColour (arcCol.withAlpha (0.9f));
+            g.fillEllipse (dotX - dotR, dotY - dotR, dotR * 2.0f, dotR * 2.0f);
+        }
+    }
 
     // Re-apply all theme colors — call after toggling GalleryColors::darkMode().
     void applyTheme()
@@ -63,9 +129,11 @@ public:
     //==========================================================================
     // drawRotarySlider — matches prototype knob exactly
     // Body: radial gradient (circle at 38% 32%, #4A4A4E 0%, #3A3A3E 25%, #282830 55%, #141418 100%)
-    // Arc track: 1.4px, T3 (#5E5C5A)
-    // Arc fill: 1.8px, engine accent
-    // Indicator dot: r=1.8 at arc endpoint
+    //       Body is rendered from a cached juce::Image (keyed by integer diameter)
+    //       so the ColourGradient is only constructed once per distinct knob size —
+    //       Lucy's gate: no per-frame gradient recomputation.
+    // Arc track + fill + indicator dot: delegated to paintXOceanusKnob() so that
+    //       MasterFXStripCompact and any other custom components share one path.
     void drawRotarySlider(juce::Graphics& g, int x, int y, int width, int height, float sliderPos,
                           float rotaryStartAngle, float rotaryEndAngle, juce::Slider& slider) override
     {
@@ -81,83 +149,84 @@ public:
         float cx = bounds.getCentreX();
         float cy = bounds.getCentreY();
 
-        // ── 1. Knob body — radial gradient matching prototype ──────────────
+        // ── 1. Knob body — radial gradient, cached as juce::Image per diameter ──
+        // Lucy's gate: ColourGradient is only constructed when a new knob size
+        // appears (typically 3-5 distinct sizes per session).  The image is drawn
+        // at component coordinates via drawImageAt with clipping, so each size
+        // shares one cached texture. Cache is keyed by integer pixel diameter;
+        // a mutable member is safe because LookAndFeel paint calls run on the
+        // message thread exclusively.
         {
-            juce::ColourGradient grad;
-            grad = juce::ColourGradient(juce::Colour(0xFF4A4A4E), cx - radius * 0.24f, cy - radius * 0.36f,
-                                        juce::Colour(0xFF141418), cx + radius, cy + radius, true /* radial */);
-            grad.addColour(0.25, juce::Colour(0xFF3A3A3E));
-            grad.addColour(0.55, juce::Colour(0xFF282830));
-            g.setGradientFill(grad);
-            g.fillEllipse(cx - radius, cy - radius, diameter, diameter);
+            const int iDiam = juce::roundToInt (diameter);
+            auto it = bodyImageCache_.find (iDiam);
+            if (it == bodyImageCache_.end())
+            {
+                // Build the body image at the exact integer size.
+                juce::Image img (juce::Image::ARGB, iDiam, iDiam, true);
+                juce::Graphics ig (img);
+
+                const float r2 = iDiam * 0.5f;
+                const float icx = r2, icy = r2;
+
+                juce::ColourGradient grad (
+                    juce::Colour (0xFF4A4A4E),
+                    icx - r2 * 0.24f, icy - r2 * 0.36f,
+                    juce::Colour (0xFF141418),
+                    icx + r2, icy + r2,
+                    true /* radial */);
+                grad.addColour (0.25, juce::Colour (0xFF3A3A3E));
+                grad.addColour (0.55, juce::Colour (0xFF282830));
+                ig.setGradientFill (grad);
+                ig.fillEllipse (0.0f, 0.0f, (float)iDiam, (float)iDiam);
+
+                // Border ring
+                ig.setColour (GalleryColors::border());
+                ig.drawEllipse (0.0f, 0.0f, (float)iDiam, (float)iDiam, 1.0f);
+
+                // Inner highlight — top-left specular
+                ig.setColour (juce::Colour (0xFFFFFFFF).withAlpha (0.09f));
+                ig.drawEllipse (1.0f, 1.0f, (float)(iDiam - 2), (float)(iDiam - 2), 0.5f);
+
+                bodyImageCache_.emplace (iDiam, std::move (img));
+                it = bodyImageCache_.find (iDiam);
+            }
+
+            // Draw the cached body image centred on the knob.
+            const float imgX = cx - diameter * 0.5f;
+            const float imgY = cy - diameter * 0.5f;
+            g.drawImageAt (it->second, juce::roundToInt (imgX), juce::roundToInt (imgY));
         }
 
-        // ── 2. Outer border ring — prototype: 1px rgba(255,255,255,0.07) ───
-        g.setColour(GalleryColors::border());
-        g.drawEllipse(cx - radius, cy - radius, diameter, diameter, 1.0f);
-
-        // ── 3. Inner highlight — top-left specular ──────────────────────────
-        g.setColour(juce::Colour(0xFFFFFFFF).withAlpha(0.09f));
-        g.drawEllipse(cx - radius + 1.0f, cy - radius + 1.0f, diameter - 2.0f, diameter - 2.0f, 0.5f);
-
-        // ── 4. Arc track — 1.4px, T3 (#5E5C5A) ────────────────────────────
+        // ── 2–6. Arc track + fill + indicator dot ──────────────────────────
+        // Resolved via the shared static helper so all rotary controls
+        // (GalleryKnob sliders, MasterFXStripCompact custom knobs, etc.)
+        // use an identical paint path.
         float arcRadius = radius - 3.0f;
-        {
-            juce::Path trackArc;
-            trackArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f, rotaryStartAngle, rotaryEndAngle, true);
-            g.setColour(juce::Colour(GalleryColors::t3()));
-            g.strokePath(trackArc,
-                         juce::PathStrokeType(2.2f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
-        }
 
-        // ── 5. Arc fill — 1.8px, engine accent ────────────────────────────
-        float fillEnd = rotaryStartAngle + sliderPos * (rotaryEndAngle - rotaryStartAngle);
-
-        // Passive hover: subtle brightness lift when hovering but not dragging.
-        // Read the cached "hovered" property set by GalleryKnob::mouseEnter /
-        // mouseExit instead of calling Slider::isMouseOver() inside paint —
-        // on D2D-backed JUCE, isMouseOver() can return the previous frame's
-        // value during fast mouse moves and produce a one-frame flicker
-        // (#1185). When the property exists, use it exclusively so that a
-        // false value on mouse-exit isn't overridden by isMouseOver() returning
-        // the previous frame's true. Only fall back to isMouseOver() for
-        // sliders that aren't GalleryKnobs (no property set).
+        // Passive hover: read the cached "hovered" property set by
+        // GalleryKnob::mouseEnter / mouseExit instead of calling
+        // Slider::isMouseOver() inside paint — on D2D-backed JUCE,
+        // isMouseOver() can return the previous frame's value during fast
+        // mouse moves and produce a one-frame flicker (#1185).
         bool hasHoveredProp = false;
-        bool hoveredProp = false;
-        if (auto* v = slider.getProperties().getVarPointer("hovered"))
+        bool hoveredProp    = false;
+        if (auto* v = slider.getProperties().getVarPointer ("hovered"))
         {
             hasHoveredProp = true;
-            hoveredProp = static_cast<bool>(*v);
+            hoveredProp    = static_cast<bool> (*v);
         }
         const bool isPassiveHover = enabled
             && (hasHoveredProp ? hoveredProp : slider.isMouseOver())
             && !slider.isMouseButtonDown();
 
-        if (enabled && sliderPos > 0.001f)
-        {
-            juce::Path fillArc;
-            fillArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f, rotaryStartAngle, fillEnd, true);
+        auto fillColour = slider.findColour (juce::Slider::rotarySliderFillColourId);
+        if (fillColour.isTransparent())
+            fillColour = get (xoGold);
 
-            auto fillColour = slider.findColour(juce::Slider::rotarySliderFillColourId);
-            if (fillColour.isTransparent())
-                fillColour = get(xoGold);
-
-            // 12% brightness boost on passive hover — keeps it professional, not game-like.
-            if (isPassiveHover)
-                fillColour = fillColour.brighter(0.12f);
-
-            g.setColour(fillColour);
-            g.strokePath(fillArc,
-                         juce::PathStrokeType(2.8f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
-
-            // ── 6. Indicator dot at arc endpoint ────────────────────────────
-            // Screen coords: x = cx + r*cos(angle - pi/2), y = cy + r*sin(angle - pi/2)
-            float dotX = cx + arcRadius * std::cos(fillEnd - juce::MathConstants<float>::halfPi);
-            float dotY = cy + arcRadius * std::sin(fillEnd - juce::MathConstants<float>::halfPi);
-            float dotR = 1.8f;
-            g.setColour(fillColour.withAlpha(0.9f));
-            g.fillEllipse(dotX - dotR, dotY - dotR, dotR * 2.0f, dotR * 2.0f);
-        }
+        paintXOceanusKnob (g, cx, cy, arcRadius,
+                           enabled ? sliderPos : 0.0f,
+                           isPassiveHover, fillColour,
+                           rotaryStartAngle, rotaryEndAngle);
 
         // ── 6b. Modulation arc — colored arc from current value, depth = modAmount ──
         // Only drawn on knobs >= 28px (skip tiny knobs where the track is too thin
@@ -179,18 +248,18 @@ public:
                 // The mod arc extends from the current fill-end angle by modAmt
                 // fraction of the full arc sweep, clamped to the track bounds.
                 const float arcSweep = rotaryEndAngle - rotaryStartAngle;
-                const float startAngle = rotaryStartAngle + sliderPos * arcSweep;
-                float endAngle = startAngle + modAmt * arcSweep;
-                endAngle = juce::jlimit(rotaryStartAngle, rotaryEndAngle, endAngle);
+                const float modStart = rotaryStartAngle + sliderPos * arcSweep;
+                float modEnd   = modStart + modAmt * arcSweep;
+                modEnd = juce::jlimit(rotaryStartAngle, rotaryEndAngle, modEnd);
 
-                if (std::abs(endAngle - startAngle) > 0.001f)
+                if (std::abs(modEnd - modStart) > 0.001f)
                 {
                     // Arc body — 2.4px, 45% alpha (thinner + more transparent
                     // than the 2.8px fill arc so layers remain readable).
                     juce::Path modArc;
                     modArc.addCentredArc(cx, cy, arcRadius, arcRadius, 0.0f,
-                                         juce::jmin(startAngle, endAngle),
-                                         juce::jmax(startAngle, endAngle), true);
+                                         juce::jmin(modStart, modEnd),
+                                         juce::jmax(modStart, modEnd), true);
                     g.setColour(modCol.withAlpha(0.45f));
                     g.strokePath(modArc,
                                  juce::PathStrokeType(2.4f,
@@ -202,8 +271,8 @@ public:
                     //   screen_x = cx + r * cos(angle - pi/2)
                     //   screen_y = cy + r * sin(angle - pi/2)
                     constexpr float modDotR = 2.0f;
-                    const float dotX = cx + arcRadius * std::cos(endAngle - juce::MathConstants<float>::halfPi);
-                    const float dotY = cy + arcRadius * std::sin(endAngle - juce::MathConstants<float>::halfPi);
+                    const float dotX = cx + arcRadius * std::cos(modEnd - juce::MathConstants<float>::halfPi);
+                    const float dotY = cy + arcRadius * std::sin(modEnd - juce::MathConstants<float>::halfPi);
                     g.setColour(modCol.withAlpha(0.70f));
                     g.fillEllipse(dotX - modDotR, dotY - modDotR, modDotR * 2.0f, modDotR * 2.0f);
                 }
@@ -266,6 +335,12 @@ public:
     static void setPanicButtonStyle(juce::TextButton& btn)  { btn.getProperties().set("buttonType", juce::String("panic")); }
 
 private:
+    // bodyImageCache_ — Lucy's gate: one juce::Image per integer knob diameter.
+    // The radial gradient for the knob body is computed once per distinct size and
+    // stored here. LookAndFeel paint methods run on the message thread, so a
+    // mutable std::map is safe without additional locking.
+    mutable std::map<int, juce::Image> bodyImageCache_;
+
     static bool isExportButton(const juce::Button& btn)
     {
         const juce::var& t = btn.getProperties()["buttonType"];
