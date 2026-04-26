@@ -51,7 +51,19 @@ public:
     // Label tables — static constexpr so they live in the header with no ODR issue.
     // Palette names (#1177): DARK→LUSH (minor 9 is jazz-lush), SWEET→BREEZY (major 9).
     static constexpr const char* kPaletteNames[]  = { "WARM","BRIGHT","TENSION","OPEN","LUSH","BREEZY","COMPLEX","RAW" };
-    static constexpr const char* kVoicingNames[]  = { "ROOT-SPREAD","DROP-2","QUARTAL","UPPER-STRUCT","UNISON" };
+    static constexpr const char* kVoicingNames[]  = {
+        // Tertian (0-4) — indices MUST remain fixed for preset backward compat
+        "ROOT-SPREAD", "DROP-2", "QUARTAL", "UPPER-STRUCT", "UNISON",
+        // Quartal family (5-6)
+        "QUARTAL-3", "QUARTAL-4",
+        // Quintal family (7-8)
+        "QUINTAL-3", "QUINTAL-4",
+        // Modal-world family (9-13)
+        "HIJAZ", "BHAIRAVI", "YO", "IN", "PHRYG-DOM",
+        // Drone family (14-19)
+        "DRONE-P5", "DRONE-P4", "DRONE-M3", "DRONE-m3", "DRONE-M2", "DRONE-m2"
+    };
+    static constexpr int kNumVoicings = static_cast<int>(VoicingMode::NumModes);
     static constexpr const char* kRhythmNames[]   = { "Four","Off","Synco","Stab","Gate","Pulse","Broken","Rest" };
     static constexpr const char* kVelCurveNames[] = { "Equal","RootHvy","TopBrt","V-Shape" };
 
@@ -743,7 +755,7 @@ private:
         }
         case RegionType::Voicing:
         {
-            currentVoicing_ = (currentVoicing_ + 1) % 5;
+            currentVoicing_ = (currentVoicing_ + 1) % kNumVoicings;
             if (auto* p = apvts_.getParameter("cm_voicing"))
             {
                 p->beginChangeGesture();
@@ -884,7 +896,7 @@ private:
         };
 
         currentPalette_ = juce::jlimit(0, 7, readInt("cm_palette"));
-        currentVoicing_ = juce::jlimit(0, 4, readInt("cm_voicing"));
+        currentVoicing_ = juce::jlimit(0, kNumVoicings - 1, readInt("cm_voicing"));
         currentRhythm_  = juce::jlimit(0, 7, readInt("cm_seq_pattern"));
         currentSwing_   = readFloat("cm_seq_swing");
         currentGate_    = readFloat("cm_seq_gate");
