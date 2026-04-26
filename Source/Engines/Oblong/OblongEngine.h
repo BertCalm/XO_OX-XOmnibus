@@ -1424,8 +1424,14 @@ public:
                 lfoCutoffMod += curOut.curiosity * 0.5f;
 
                 // Apply pitch modulation (fastExp avoids std::pow per sample) + MPE + pitch bend + mod matrix
+                // P29 fix: pick ONE pitch-bend source — MPE expression OR raw MIDI wheel, never both.
+                // Before #1255, mpeExpression.pitchBendSemitones was always 0.0f so the sum was safe;
+                // once MPE is wired, summing both sources produces 2× pitch on MPE controllers.
+                const float pitchBendContrib = (mpeManager != nullptr && mpeManager->isMPEEnabled())
+                    ? voice.mpeExpression.pitchBendSemitones  // MPE mode: use per-voice MPE pitch bend
+                    : pitchBendNorm * 2.0f;                   // non-MPE: use channel pitch wheel (±2 st)
                 float totalPitch =
-                    lfoPitchMod * 2.0f + pitchMod + voice.mpeExpression.pitchBendSemitones + pitchBendNorm * 2.0f + bobModPitchOffset;
+                    lfoPitchMod * 2.0f + pitchMod + pitchBendContrib + bobModPitchOffset;
                 float freq = baseFreq * fastExp(totalPitch * (0.693147f / 12.0f));
 
                 // OscA — wave/tune/drift hoisted; only frequency and shape (LFO-modulated) per-sample
