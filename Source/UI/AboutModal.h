@@ -113,6 +113,8 @@ public:
     bool isShowing() const noexcept { return isVisible(); }
 
     //==========================================================================
+    using juce::Component::keyPressed;
+
     // juce::KeyListener — D12: Escape closes the modal.
     bool keyPressed(const juce::KeyPress& key) override
     {
@@ -133,7 +135,7 @@ public:
         using juce::Colour;
 
         const auto bounds  = getLocalBounds().toFloat();
-        auto cardR   = getCardBounds();
+        auto       cardR   = getCardBounds();
 
         // ── Dim overlay behind the card ──────────────────────────────────────
         g.setColour(Colour(0, 0, 0).withAlpha(0.60f));
@@ -149,7 +151,7 @@ public:
 
         // ── Title bar ("XOceanus" + version) ────────────────────────────────
         const float titleH = 48.0f;
-        const auto  titleR = cardR.removeFromTop(titleH);
+        auto        titleR = cardR.removeFromTop(titleH);
 
         // Title bar teal accent line at top of card
         g.setColour(Colour(60, 180, 170).withAlpha(0.70f));
@@ -464,7 +466,7 @@ private:
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.45f),
                      "Each engine has a mythology entry in the XO-OX Field Guide.", 12.0f);
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.45f),
-                     "Visit xo-ox.org for the full Field Guide (\xe2\x89\x8852K words,", 12.0f);  // ≈
+                     "Visit xo-ox.org for the full Field Guide (~52K words,", 12.0f);  // ~
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.45f),
                      "15 posts) and engine mythology for every creature.", 12.0f);
 
@@ -505,7 +507,8 @@ private:
     The button is placed as a direct child of XOceanusEditor (sits above OceanView)
     so it overlays the OceanView without modifying Wave 1B files.
 */
-class OBadgeButton : public juce::Component, public juce::TooltipClient
+class OBadgeButton : public juce::Component,
+                     public juce::SettableTooltipClient
 {
 public:
     //==========================================================================
@@ -518,13 +521,10 @@ public:
         setOpaque(false);
         setInterceptsMouseClicks(true, false);
         setSize(kBadgeSize, kBadgeSize);
+        setTooltip("About XOceanus");
     }
 
     static constexpr int kBadgeSize = 28;
-
-    //==========================================================================
-    // juce::TooltipClient
-    juce::String getTooltip() override { return "About XOceanus"; }
 
     //==========================================================================
     void paint(juce::Graphics& g) override
