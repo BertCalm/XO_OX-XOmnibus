@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OCEANDEEP",
+  "engine_prefix": "deep_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 4,
+    "architecture": "Abyssal 808-style sub bass with bioluminescent exciter layered on top; PRESSURE macro applies hydrostatic compression DSP simulating sub-ocean pressure; CREATURE macro drives a bioluminescent exciter oscillator with pulse rate; WRECK macro blends a waveguide body (sunken vessel resonance); Darkness Filter with variable ceiling keeps everything deep and sub"
+  },
+
+  "filter": {
+    "topology": "ladder",
+    "modes": ["lowpass"],
+    "resonance_range": [0.0, 0.9],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 1,
+    "lfo_shapes": ["sine", "triangle"],
+    "mod_matrix_depth": 1,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.6,
+    "velocity_targets": ["amplitude", "brightness"],
+    "pitch_bend_range": 0,
+    "aftertouch_response": "amplitude",
+    "dynamic_range_db": 55
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "PRESSURE",
+      "behavior": "Increases hydrostatic compression depth — pushes sub levels up and applies compressive warmth that makes the low end massive; the deeper the pressure, the more the bass inhabits physical space."
+    },
+    "macro2": {
+      "name": "CREATURE",
+      "behavior": "Amplifies the bioluminescent exciter mix and rate — lonely lights pulsing in the dark; low CREATURE = one distant glow, high = bioluminescent chorus flickering across the trench."
+    },
+    "macro3": {
+      "name": "WRECK",
+      "behavior": "Increases body mix and chooses body character — the waveguide resonance of a sunken vessel hull; above 0.7 pushes toward full wreck character with metallic cavity resonance."
+    },
+    "macro4": {
+      "name": "ABYSS",
+      "behavior": "Sweeps the Darkness Filter ceiling lower, closing the frequency window and pushing all energy below 800 Hz; also controls reverb tail length — the sound of Oscar at absolute depth."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "bass",
+    "brightness": 0.1,
+    "warmth": 0.85,
+    "movement": 0.2,
+    "density": 0.75,
+    "transient_character": "soft"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AmpToPitch", "AudioToFM"],
+    "best_as_target": ["AmpToFilter", "AudioToFM", "EnvToDecay"],
+    "recommended_partners": ["OPENSKY", "OUROBOROS", "ORGANON", "ONSET"],
+    "coupling_personality": "Pure Oscar — the absolute floor of the water column; OCEANDEEP × OPENSKY is the canonical full-column coupling; its sub amplitude movements are seismic AmpToFilter triggers that shake even delicate melodic engines."
+  },
+
+  "mythology": {
+    "creature": "Oscar descends to the absolute floor — pure pressure, pure dark, pure bass; the bioluminescent creatures of the hadal zone living where no light reaches",
+    "depth_zone": "hadal",
+    "felix_oscar_polarity": 0.98,
+    "accent_color": "#2D0A4E"
+  },
+
+  "metadata": {
+    "param_count": 1,
+    "preset_count": 365,
+    "seance_score": 7.8,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

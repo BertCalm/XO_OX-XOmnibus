@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OUIE",
+  "engine_prefix": "ouie_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "wavetable",
+    "polyphony": 4,
+    "architecture": "Duophonic wavetable synthesizer with HAMMER (aggression) / LOVE (harmony) bipolar axis; two independently pitched voices represent the two sensory platforms of the hammerhead shark; each voice scans across kNumTables=16 wavetable frames; when LOVE is active voices harmonize and lock; when HAMMER is active they detune and fight"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass", "bandpass", "notch"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "linear_attack_exp_decay"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.8,
+    "velocity_targets": ["amplitude", "brightness", "attack", "morph"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 65
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "HAMMER",
+      "behavior": "Drives the aggressive bipolar axis — adds detuning between the two voices, increases harmonic complexity, sharpens attack; at maximum the two sensory platforms fight each other across the thermocline."
+    },
+    "macro2": {
+      "name": "AMPULLAE",
+      "behavior": "Controls the electroreception sensitivity filter — a resonant bandpass tracking the input pitch; the hammerhead's Ampullae of Lorenzini mapped to filter bandwidth and sensitivity to incoming signals."
+    },
+    "macro3": {
+      "name": "CARTILAGE",
+      "behavior": "Adjusts the body stiffness metaphor — flexible cartilage lets the two voices bend toward each other; rigid cartilage locks them apart; this is the duo's physical coupling parameter."
+    },
+    "macro4": {
+      "name": "CURRENT",
+      "behavior": "Controls the environment FX (chorus and delay) wet mix — the ocean current the two voices swim through together; a chorus of stereo widening and subtle delay representing the thermocline environment."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "lead",
+    "brightness": 0.58,
+    "warmth": 0.42,
+    "movement": 0.5,
+    "density": 0.45,
+    "transient_character": "electronic"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "LFOToPitch", "PitchToPitch"],
+    "best_as_target": ["AmpToFilter", "EnvToMorph", "PitchToPitch"],
+    "recommended_partners": ["ONSET", "ORBITAL", "OCEANIC", "ODYSSEY"],
+    "coupling_personality": "A dual-voice predator; its two independent voices make it a natural PitchToPitch source for creating harmonic intervals across the thermocline; the HAMMER/LOVE axis creates dramatically different coupling behaviours."
+  },
+
+  "mythology": {
+    "creature": "The hammerhead shark — two sensory platforms fused into one predator patrolling the thermocline; the T-shaped head that sees both above and below the divide",
+    "depth_zone": "open_water",
+    "felix_oscar_polarity": 0.45,
+    "accent_color": "#708090"
+  },
+
+  "metadata": {
+    "param_count": 53,
+    "preset_count": 407,
+    "seance_score": 8.5,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}
