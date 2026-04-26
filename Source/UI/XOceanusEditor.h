@@ -765,6 +765,8 @@ public:
         removeChildComponent(&overview);
 
         // Wire OceanView callbacks
+        oceanView_.onUndoRequested = [this]() { processor.getUndoManager().undo(); };
+        oceanView_.onRedoRequested = [this]() { processor.getUndoManager().redo(); };
         oceanView_.onEngineSelected = [this](int slot) { if (slot >= 0) selectSlot(slot); };
         oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); };
         oceanView_.onEngineSelectedFromDrawer = [this](const juce::String& engineId)
@@ -1792,7 +1794,18 @@ private:
             if (auto* tb = oceanView_.getTransportBar())
             {
                 tb->setVoiceCount(totalVoices);
-                tb->setBpm(bpm > 0.0 ? bpm : 120.0);
+                // When host transport is unavailable (bpm == 0), read the persisted
+                // cm_seq_bpm APVTS value so the TransportBar reflects the user's last
+                // setting rather than always snapping back to 120.
+                double displayBpm = bpm;
+                if (displayBpm <= 0.0)
+                {
+                    if (auto* raw = processor.getAPVTS().getRawParameterValue("cm_seq_bpm"))
+                        displayBpm = static_cast<double>(raw->load());
+                    if (displayBpm <= 0.0)
+                        displayBpm = 120.0;
+                }
+                tb->setBpm(displayBpm);
                 tb->setCpuPercent(cpuPct);
             }
 
