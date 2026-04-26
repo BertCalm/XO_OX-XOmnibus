@@ -32,6 +32,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Gallery/GalleryLookAndFeel.h"
 #include <functional>
 #include <cmath>
 #include <array>
@@ -386,56 +387,24 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    void paintKnob(juce::Graphics& g,
-                   float cx, float cy, float r,
-                   float value01, bool isHover) const
+    // paintKnob — delegates to GalleryLookAndFeel::paintXOceanusKnob so that the
+    // compact strip and all GalleryKnob (juce::Slider) rotary controls share one
+    // paint implementation.
+    //
+    // The compact strip omits the radial gradient body (too expensive and visually
+    // over-heavy at 32 px in a 48 px dense strip) but uses identical arc geometry,
+    // stroke weights, and indicator-dot positions.  The fill colour matches the
+    // Ocean teal accent used across the strip chrome.
+    static void paintKnob (juce::Graphics& g,
+                           float cx, float cy, float r,
+                           float value01, bool isHover)
     {
-        using juce::MathConstants;
-        using juce::Colour;
-        using juce::Path;
-        using juce::PathStrokeType;
+        // Ocean teal fill colour — matches strip accent (127, 219, 202) at 60% alpha.
+        // GalleryLookAndFeel::paintXOceanusKnob will further apply a 12% brighter
+        // lift on isHover, matching GalleryKnob hover behaviour.
+        const juce::Colour fillColour = juce::Colour (127, 219, 202).withAlpha (0.60f);
 
-        const float startAngle = 0.75f * MathConstants<float>::pi;   // 135°
-        const float endAngle   = 2.25f * MathConstants<float>::pi;   // 405°
-        const float totalSweep = endAngle - startAngle;              // 270°
-        const float valueAngle = startAngle + value01 * totalSweep;
-
-        // Background arc (full sweep).
-        {
-            Path bgArc;
-            bgArc.addCentredArc(cx, cy, r, r, 0.0f, startAngle, endAngle, true);
-            g.setColour(Colour(200, 204, 216).withAlpha(0.08f));
-            g.strokePath(bgArc, PathStrokeType(3.0f,
-                PathStrokeType::curved, PathStrokeType::rounded));
-        }
-
-        // Value arc (partial sweep).
-        if (value01 > 0.01f)
-        {
-            Path valArc;
-            valArc.addCentredArc(cx, cy, r, r, 0.0f, startAngle, valueAngle, true);
-            g.setColour(Colour(127, 219, 202).withAlpha(0.60f));
-            g.strokePath(valArc, PathStrokeType(3.0f,
-                PathStrokeType::curved, PathStrokeType::rounded));
-        }
-
-        // Center dot.
-        const float dotR = r * 0.35f;
-        g.setColour(Colour(200, 204, 216).withAlpha(0.06f));
-        g.fillEllipse(cx - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
-        g.setColour(Colour(200, 204, 216).withAlpha(0.10f));
-        g.drawEllipse(cx - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f, 1.0f);
-
-        // Indicator line — slightly brighter on hover.
-        const float indStart  = r * 0.25f;
-        const float indEnd    = r * 0.75f;
-        const float indAlpha  = isHover ? 1.0f : 0.80f;
-        const float cosA      = std::cos(valueAngle);
-        const float sinA      = std::sin(valueAngle);
-        g.setColour(Colour(127, 219, 202).withAlpha(indAlpha));
-        g.drawLine(cx + indStart * cosA, cy + indStart * sinA,
-                   cx + indEnd   * cosA, cy + indEnd   * sinA,
-                   1.5f);
+        GalleryLookAndFeel::paintXOceanusKnob (g, cx, cy, r, value01, isHover, fillColour);
     }
 
     //==========================================================================
