@@ -104,7 +104,6 @@ public:
     void close()
     {
         setVisible(false);
-
     }
 
     bool isShowing() const noexcept { return isVisible(); }
