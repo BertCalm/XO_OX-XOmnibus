@@ -534,6 +534,12 @@ private:
 //   // In XOceanusEditor::resized():
 //   modRouter->setBounds(getLocalBounds());
 //
+// A3 TODO: when source palette / draggable handles are added, give them a
+// DragAndDropContainer ancestor — most likely by replacing this `public juce::Component`
+// with `public juce::DragAndDropContainer` (which IS-A Component in this JUCE version),
+// so findParentDragContainerFor(handle) resolves. Editor cannot host the container
+// itself: AudioProcessorEditor + DragAndDropContainer both reach Component, creating
+// a diamond that breaks every addChildComponent/addAndMakeVisible call (Wave 5 A1 CI).
 class DragDropModRouter : public juce::Component, public juce::DragAndDropTarget, public juce::ChangeListener
 {
 public:

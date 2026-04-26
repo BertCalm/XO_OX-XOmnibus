@@ -77,8 +77,13 @@ namespace xoceanus
 // Transition: 150ms opacity cross-fade via juce::ComponentAnimator
 // when switching between overview and engine detail, or between engines.
 //
+// Wave 5 A1 note: DragAndDropContainer was initially added here for
+// ModSourceHandle drag-drop, but caused a diamond inheritance to juce::Component
+// (via both AudioProcessorEditor and DragAndDropContainer), making `this`->Component*
+// ambiguous and breaking every addChildComponent/addAndMakeVisible call. The
+// container is now on DragDropModRouter (the overlay), which any future source
+// handle reaches via findParentDragContainerFor(this).
 class XOceanusEditor : public juce::AudioProcessorEditor,
-                       public juce::DragAndDropContainer, // Wave 5 A1: required for ModSourceHandle drag-drop
                        public CockpitHost, // B041: Dark Cockpit opacity interface
                        private juce::Timer
 {
