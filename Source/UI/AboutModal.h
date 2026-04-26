@@ -124,6 +124,11 @@ public:
         return false;
     }
 
+    bool keyPressed(const juce::KeyPress& key) override
+    {
+        return keyPressed(key, nullptr);
+    }
+
     //==========================================================================
     void paint(juce::Graphics& g) override
     {
@@ -133,7 +138,7 @@ public:
         using juce::Colour;
 
         const auto bounds  = getLocalBounds().toFloat();
-        const auto cardR   = getCardBounds();
+        auto cardR         = getCardBounds();
 
         // ── Dim overlay behind the card ──────────────────────────────────────
         g.setColour(Colour(0, 0, 0).withAlpha(0.60f));
@@ -464,7 +469,7 @@ private:
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.45f),
                      "Each engine has a mythology entry in the XO-OX Field Guide.", 12.0f);
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.45f),
-                     "Visit xo-ox.org for the full Field Guide (\xe2\x88\xbc52K words,", 12.0f);  // ~
+                     "Visit xo-ox.org for the full Field Guide (~52K words,", 12.0f);  // ~
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.45f),
                      "15 posts) and engine mythology for every creature.", 12.0f);
 
@@ -505,7 +510,7 @@ private:
     The button is placed as a direct child of XOceanusEditor (sits above OceanView)
     so it overlays the OceanView without modifying Wave 1B files.
 */
-class OBadgeButton : public juce::Component
+class OBadgeButton : public juce::Component, public juce::TooltipClient
 {
 public:
     //==========================================================================
