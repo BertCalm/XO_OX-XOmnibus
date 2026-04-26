@@ -45,6 +45,8 @@
 #include "RegisterManager.h"
 #include "ToastOverlay.h"
 #include "Ocean/OceanView.h"
+// D12: About/Lore modal + "O" brand badge button.
+#include "AboutModal.h"
 
 namespace xoceanus
 {
@@ -1044,6 +1046,20 @@ public:
         playSurface_.setMidiCollector(nullptr);  // Detach — OceanView owns MIDI now
         removeChildComponent(&playSurface_);
 
+        // ── D12: O badge + About modal ───────────────────────────────────────
+        // Added before ToastOverlay so the toast sits on top of the modal.
+        // OBadgeButton is always visible; AboutModal starts hidden.
+        addAndMakeVisible(obadge_);
+        obadge_.setAlwaysOnTop(true);
+        obadge_.onClick = [this]
+        {
+            // D12: single click → About tab.
+            aboutModal_.openTab(AboutModal::Tab::About);
+        };
+
+        addChildComponent(aboutModal_);
+        aboutModal_.setAlwaysOnTop(true);
+
         // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.
         // setInterceptsMouseClicks(false, false) is set inside ToastOverlay's
@@ -1303,6 +1319,14 @@ public:
                 cpuMeter.setBounds(statusArea.removeFromRight(68).withSizeKeepingCentre(64, 20));
             }
             toastOverlay_.setBounds(getLocalBounds());
+
+            // D12: O badge — top-left corner, 8px inset from the SubmarineHudBar
+            // left edge (SubmarineHudBar is positioned at x=16, so badge at x=8).
+            obadge_.setBounds(8, 8, OBadgeButton::kBadgeSize, OBadgeButton::kBadgeSize);
+
+            // D12: About modal — full editor bounds; card is centered inside it.
+            aboutModal_.setBounds(getLocalBounds());
+
             return;
         }
     }
@@ -2279,7 +2303,7 @@ private:
     // V1 fix: TooltipWindow activates all setTooltip() calls across the entire UI.
     // JUCE requires exactly one TooltipWindow child per top-level component; without it
     // every setTooltip() call is dead code. 400ms delay matches standard plugin UX.
-    juce::TooltipWindow tooltipWindow{this, 400};
+    juce::TooltipWindow tooltipWindow(this, 400);
     SidebarPanel sidebar;
     StatusBar statusBar;
 
@@ -2349,6 +2373,13 @@ private:
     // Step 8b: Previous voice counts per slot — used to detect note-on events
     // (voice count increase) and trigger buoy ripple animations.
     std::array<int, 5> prevVoiceCounts_ {};
+
+    // ── D12: About/Lore modal + O badge brand button ──────────────────────────
+    // Both are overlaid on top of OceanView as direct editor children.
+    // obadge_ sits in the top-left corner; aboutModal_ is a full-editor-bounds
+    // centered-card overlay (click outside card → dismiss).
+    OBadgeButton obadge_;
+    AboutModal   aboutModal_;
 
     // ── ToastOverlay — non-blocking notification layer ────────────────────────
     // Declared last so it is destroyed first (child components destroyed in
