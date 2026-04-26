@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
+#include <juce_gui_basics/juce_gui_basics.h>          // explicit iOS guard — juce_gui_extra transitive pull unreliable on iOS
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../XOceanusProcessor.h"
 #include "../Core/EngineRegistry.h"
@@ -106,6 +107,7 @@ public:
         // Dark mode is primary; SettingsPanel restores user's saved preference.
         laf = std::make_unique<GalleryLookAndFeel>();
         setLookAndFeel(laf.get());
+        tooltipWindow.setMillisecondsBeforeTipAppears(400);  // JUCE 8: constructor no longer accepts delay arg
 
         // Open the shared settings file once — reused for all subsequent reads/writes
         // so message-thread callbacks never perform blocking file I/O inline.
@@ -2279,7 +2281,7 @@ private:
     // V1 fix: TooltipWindow activates all setTooltip() calls across the entire UI.
     // JUCE requires exactly one TooltipWindow child per top-level component; without it
     // every setTooltip() call is dead code. 400ms delay matches standard plugin UX.
-    juce::TooltipWindow tooltipWindow{this, 400};
+    juce::TooltipWindow tooltipWindow;
     SidebarPanel sidebar;
     StatusBar statusBar;
 

@@ -655,6 +655,7 @@ target_link_libraries(XOceanus PRIVATE
     juce::juce_audio_utils
     juce::juce_audio_processors
     juce::juce_dsp
+    juce::juce_gui_basics
     juce::juce_gui_extra
     XOceanusFont
     XOceanusInitPreset
