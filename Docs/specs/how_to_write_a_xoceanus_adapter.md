@@ -7,7 +7,7 @@ A XOceanus engine adapter is a thin C++ class that wraps a standalone XO_OX synt
 In practice, an adapter does three things: it re-exposes the standalone engine's parameters under a namespaced prefix (e.g., `poss_filterCutoff` instead of `filter_cutoff`), it routes `renderBlock()` calls to the underlying DSP, and it wires up the two coupling hooks (`getSampleForCoupling` and `applyCouplingInput`) so other engines can modulate it.
 
 The canonical example of a complete adapter is `BiteEngine` (wrapping XOppossum), located at:
-`Source/Engines/Bite/BiteEngine.h`
+`Source/Engines/Overbite/OverbiteEngine.h`
 
 ---
 

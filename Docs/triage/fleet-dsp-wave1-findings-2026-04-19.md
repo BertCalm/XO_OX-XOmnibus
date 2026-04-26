@@ -16,8 +16,8 @@ Novel findings only — issues already in baseline are not repeated here.
 | Ohm | `Source/Engines/Ohm/OhmEngine.h` | Full (849 lines) | 1 P1, 1 P2 |
 | Opal | `Source/Engines/Opal/OpalEngine.h` | Partial (first ~700 lines; render loop + param attachment not reached) | 1 P1 |
 | Oxytocin | `Source/Engines/Oxytocin/OxytocinEngine.h` | Full (350 lines — adapter only; OxytocinVoice.h not read) | 1 P1 |
-| Odyssey (Drift) | `Source/Engines/Drift/DriftEngine.h` | Partial (first ~200 lines; formant render loop not reached) | 0 confirmed novel |
-| Overbite (Bite) | `Source/Engines/Bite/BiteEngine.h` | Partial (first ~200 lines; main render loop not reached) | 0 confirmed novel |
+| Odyssey (Drift) | `Source/Engines/Odyssey/OdysseyEngine.h` | Partial (first ~200 lines; formant render loop not reached) | 0 confirmed novel |
+| Overbite (Bite) | `Source/Engines/Overbite/OverbiteEngine.h` | Partial (first ~200 lines; main render loop not reached) | 0 confirmed novel |
 | Obbligato | `Source/Engines/Obbligato/ObbligatoEngine.h` | Full (1015 lines) | 1 P2 |
 | Onkolo | `Source/Engines/Onkolo/OnkoloEngine.h` | Full (732 lines) | 2 P2, 1 note on prepare() lifecycle, 1 P3 (baseline stale) |
 
@@ -156,13 +156,13 @@ This is a data-destruction bug in any multi-engine configuration where Oxytocin 
 
 ---
 
-### ODYSSEY (DRIFT) — `Source/Engines/Drift/DriftEngine.h`
+### ODYSSEY (DRIFT) — `Source/Engines/Odyssey/OdysseyEngine.h`
 
 *Note: Only first ~200 lines read. File is ~33,100 tokens. Formant render loop (existing P1: 24× CytomicSVF coeff/sample) not reached. No novel findings confirmed from partial read.*
 
 ---
 
-### OVERBITE (BITE) — `Source/Engines/Bite/BiteEngine.h`
+### OVERBITE (BITE) — `Source/Engines/Overbite/OverbiteEngine.h`
 
 *Note: Only first ~200 lines read. File is ~60,958 tokens. Main render loop (existing P2: 32× std::exp+pow/sample) not reached. Oscillator types `BiteOscA` use `BiteSineTable::lookup()` (table-based, no transcendentals) and drift LFO uses table lookup — both correct in the read section. No novel findings confirmed from partial read.*
 

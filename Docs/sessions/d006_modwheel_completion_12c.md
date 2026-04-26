@@ -17,7 +17,7 @@ across the entire fleet.
 
 ## Engines Wired
 
-### 1. Bob (Oblong) — `Source/Engines/Bob/BobEngine.h`
+### 1. Bob (Oblong) — `Source/Engines/Oblong/OblongEngine.h`
 
 - **Target:** `bob_fltCutoff` — filter cutoff boost
 - **Sensitivity:** `+0–4000 Hz` (full wheel opens filter from base cutoff to +4000 Hz)
@@ -25,7 +25,7 @@ across the entire fleet.
 - **Member:** `float modWheelAmount = 0.0f;` added next to `PolyAftertouch aftertouch`
 - **Musical rationale:** Mod wheel as a real-time filter swell — the classic synth wah/opens-up gesture. Fully complementary to aftertouch (which adds warmth/character, while mod wheel opens the cutoff frequency).
 
-### 2. Bite (Overbite) — `Source/Engines/Bite/BiteEngine.h`
+### 2. Bite (Overbite) — `Source/Engines/Overbite/OverbiteEngine.h`
 
 - **Target:** `poss_macroBite` (BITE macro depth boost)
 - **Sensitivity:** `+0–0.4` (full wheel adds 0.4 to BITE macro, clamped at 1.0)
@@ -33,7 +33,7 @@ across the entire fleet.
 - **Member:** `float modWheelAmount = 0.0f;` added next to `PolyAftertouch aftertouch`
 - **Musical rationale:** Mod wheel gradually dials in the feral, aggressive bite edge. Combined with aftertouch (which also adds 0.3 to BITE), a performer can layer both for maximum aggression, or use wheel alone for a deliberate build.
 
-### 3. Dub (Overdub) — `Source/Engines/Dub/DubEngine.h`
+### 3. Dub (Overdub) — `Source/Engines/Overdub/OverdubEngine.h`
 
 - **Target:** `dub_sendLevel` — send VCA amount (signal into tape delay / spring reverb chain)
 - **Sensitivity:** `+0–0.35` (full wheel adds 0.35 to send level, capped at 1.0)

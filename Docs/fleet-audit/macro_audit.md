@@ -85,7 +85,7 @@ A macro that modulates a parameter by less than 5% (scaling < 0.05) is effective
 
 ### Fix 2: MORPH — 4 Macros Added
 
-**File:** `Source/Engines/Morph/MorphEngine.h`
+**File:** `Source/Engines/OddOscar/OddOscarEngine.h`
 
 **Problem:** The MORPH (OddOscar axolotl) engine had zero macro parameters. A rich, characterful engine with a ladder filter, 3-oscillator chorus, and wavetable morph — but no live performance control. All 4 macro knob positions were inert from an audio perspective.
 
@@ -180,6 +180,6 @@ All new parameters default to `0.0f` — existing presets are completely unaffec
 | File | Engine | Change |
 |------|--------|--------|
 | `Source/Engines/Overworld/OverworldEngine.h` | OVERWORLD | Add 4 macros: ERA, CRUSH, GLITCH, SPACE |
-| `Source/Engines/Morph/MorphEngine.h` | MORPH | Add 4 macros: BLOOM, DRIFT, DEPTH, SPACE |
+| `Source/Engines/OddOscar/OddOscarEngine.h` | MORPH | Add 4 macros: BLOOM, DRIFT, DEPTH, SPACE |
 | `Source/Engines/Oblique/ObliqueEngine.h` | OBLIQUE | Add 4 macros: FOLD, BOUNCE, COLOR, SPACE |
 | `Docs/macro_audit.md` | — | This document |

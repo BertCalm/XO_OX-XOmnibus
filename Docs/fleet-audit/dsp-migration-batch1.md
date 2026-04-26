@@ -129,7 +129,7 @@
 
 | File | Change | Lines Removed |
 |------|--------|--------------|
-| `Source/Engines/Dub/DubEngine.h` | DubLFO → StandardLFO | ~59 |
+| `Source/Engines/Overdub/OverdubEngine.h` | DubLFO → StandardLFO | ~59 |
 
 ---
 

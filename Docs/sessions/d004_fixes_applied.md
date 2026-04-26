@@ -15,7 +15,7 @@ dormant behaviour that was always intended.
 
 ## Fix 1: SNAP — `snap_macroDepth` → Stereo Pan Spread
 
-**File:** `Source/Engines/Snap/SnapEngine.h`
+**File:** `Source/Engines/OddfeliX/OddfeliXEngine.h`
 **Line ~353:** Replaced `(void) macroDepth;`
 
 **Before:** M4 DEPTH macro was loaded and immediately discarded.
@@ -108,7 +108,7 @@ This simultaneously resolves the D004 violation (LFO code was declared but unuse
 
 | File | Engine | Fix |
 |------|--------|-----|
-| `Source/Engines/Snap/SnapEngine.h` | SNAP | macroDepth → stereo spread |
+| `Source/Engines/OddfeliX/OddfeliXEngine.h` | SNAP | macroDepth → stereo spread |
 | `Source/Engines/Owlfish/OwlfishVoice.h` | OWLFISH | morphGlide → mixtur during portamento |
 | `Source/Engines/Oblique/ObliqueEngine.h` | OBLIQUE | percDecay → click burst duration |
 | `Source/Engines/Ocelot/OcelotParamSnapshot.h` | OCELOT | 4 macros → strata DSP |

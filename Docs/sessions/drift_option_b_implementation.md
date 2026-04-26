@@ -156,7 +156,7 @@ All three new DSP classes satisfy the XOceanus architecture constraints:
 
 ## Files Modified
 
-- `Source/Engines/Drift/DriftEngine.h` — primary change file
+- `Source/Engines/Odyssey/OdysseyEngine.h` — primary change file
 
 ## Files Referenced (read-only)
 

@@ -11,7 +11,7 @@
 **Gallery Code:** ODYSSEY
 **Accent Color:** Violet `#7B2D8B`
 **Parameter Prefix:** `odyssey_`
-**Engine Dir:** `Source/Engines/Drift/`
+**Engine Dir:** `Source/Engines/Odyssey/`
 
 **Thesis:** Evolving pad synthesis with Voyager drift and psychedelic character processing -- the open ocean journey from familiar shores to alien depths.
 

@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-21  
 **Engine:** OVERBITE (`poss_` prefix)  
-**Source:** `Source/Engines/Bite/BiteEngine.h` (122 parameters, frozen IDs)  
+**Source:** `Source/Engines/Overbite/OverbiteEngine.h` (122 parameters, frozen IDs)  
 **Presets audited:** 240 (all non-quarantine `.xometa` files with `"Overbite"` in `engines` array)
 
 ---

@@ -115,7 +115,7 @@
 2. No portamento/glide parameter.
 
 **Fixed:** Added `morph_voiceMode` (Poly/Mono/Legato choice) and `morph_glide` (0–2s float) parameters. Added `currentFrequency`, `targetFrequency`, `glideCoefficient` to `MorphVoice`. Updated `noteOn()` to handle all three modes. Updated render loop to glide via `voice.currentFrequency` instead of computing from `noteNumber` per-sample (poly mode is semantically identical since `currentFrequency == targetFrequency` with `glideCoefficient=1.0`). Files changed:
-- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Source/Engines/Morph/MorphEngine.h`
+- `/Users/joshuacramblet/Documents/GitHub/XO_OX-XOceanus/Source/Engines/OddOscar/OddOscarEngine.h`
 
 ---
 

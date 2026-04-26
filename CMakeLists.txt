@@ -255,18 +255,18 @@ target_sources(XOceanus PRIVATE
     Source/DSP/Effects/SubmersionEngine.h
 
     # Engine adapters (DSP in .h, registration stubs in .cpp)
-    Source/Engines/Snap/SnapEngine.h
-    Source/Engines/Snap/SnapEngine.cpp
-    Source/Engines/Morph/MorphEngine.h
-    Source/Engines/Morph/MorphEngine.cpp
-    Source/Engines/Dub/DubEngine.h
-    Source/Engines/Dub/DubEngine.cpp
-    Source/Engines/Drift/DriftEngine.h
-    Source/Engines/Drift/DriftEngine.cpp
-    Source/Engines/Bob/BobEngine.h
-    Source/Engines/Bob/BobEngine.cpp
-    Source/Engines/Fat/FatEngine.h
-    Source/Engines/Fat/FatEngine.cpp
+    Source/Engines/OddfeliX/OddfeliXEngine.h
+    Source/Engines/OddfeliX/OddfeliXEngine.cpp
+    Source/Engines/OddOscar/OddOscarEngine.h
+    Source/Engines/OddOscar/OddOscarEngine.cpp
+    Source/Engines/Overdub/OverdubEngine.h
+    Source/Engines/Overdub/OverdubEngine.cpp
+    Source/Engines/Odyssey/OdysseyEngine.h
+    Source/Engines/Odyssey/OdysseyEngine.cpp
+    Source/Engines/Oblong/OblongEngine.h
+    Source/Engines/Oblong/OblongEngine.cpp
+    Source/Engines/Obese/ObeseEngine.h
+    Source/Engines/Obese/ObeseEngine.cpp
     Source/Engines/Onset/OnsetEngine.h
     Source/Engines/Onset/OnsetEngine.cpp
     Source/Engines/Overworld/OverworldEngine.h
@@ -310,8 +310,8 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Overtide/OvertideEngine.cpp
     Source/Engines/Ollotron/OllotronEngine.h
     Source/Engines/Ollotron/OllotronEngine.cpp
-    Source/Engines/Bite/BiteEngine.h
-    Source/Engines/Bite/BiteEngine.cpp
+    Source/Engines/Overbite/OverbiteEngine.h
+    Source/Engines/Overbite/OverbiteEngine.cpp
     Source/Engines/Origami/OrigamiEngine.h
     Source/Engines/Origami/OrigamiEngine.cpp
     Source/Engines/Oracle/OracleEngine.h

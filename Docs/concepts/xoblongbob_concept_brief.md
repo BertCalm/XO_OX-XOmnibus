@@ -11,7 +11,7 @@
 **Gallery Code:** OBLONG
 **Accent Color:** Amber `#E9A84A`
 **Parameter Prefix:** `bob_`
-**Engine Dir:** `Source/Engines/Bob/`
+**Engine Dir:** `Source/Engines/Oblong/`
 
 **Thesis:** Warm, character-driven synthesis -- evolving textures, fuzzy atmospheres, playful analog movement. Soft coral that breathes.
 

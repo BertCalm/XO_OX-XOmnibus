@@ -16,7 +16,7 @@ No surrounding code was refactored. All additions are marked `// D005 fix: minim
 
 ## Fix 1: Snap (OddfeliX) — BPF Center Drift
 
-**File:** `Source/Engines/Snap/SnapEngine.h`
+**File:** `Source/Engines/OddfeliX/OddfeliXEngine.h`
 
 **What was added:**
 - Member: `double lfoPhase = 0.0;`
