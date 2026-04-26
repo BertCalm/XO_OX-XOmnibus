@@ -84,7 +84,7 @@ public:
     {
         setOpaque(false);
 
-        headerLabel_.setText("EPIC SLOTS", juce::dontSendNotification);
+        headerLabel_.setText("STARBOARD", juce::dontSendNotification);
         headerLabel_.setFont(GalleryFonts::heading(10.0f));
         headerLabel_.setColour(juce::Label::textColourId,
                                GalleryColors::get(GalleryColors::textMid()));
@@ -178,7 +178,7 @@ private:
             if (nextGroup < static_cast<int>(kChainGroups.size())
                 && cid == kChainGroups[nextGroup].first)
             {
-                box.addSectionHeading(kChainGroups[nextGroup].second);
+                box.addSectionHeading(juce::String(juce::CharPointer_UTF8(kChainGroups[nextGroup].second)));
                 ++nextGroup;
             }
             box.addItem(kChainNames[cid], cid + 1); // JUCE item IDs are 1-based

@@ -287,7 +287,7 @@ public:
         if (std::abs(reactivity_ - clamped) > 0.001f)
         {
             reactivity_ = clamped;
-            // No repaint here — the next wave-data push will trigger one.
+            repaint();
         }
     }
 

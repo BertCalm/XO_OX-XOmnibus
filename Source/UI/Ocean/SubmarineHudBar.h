@@ -468,9 +468,10 @@ private:
         HudIcons::drawIconInBounds(g, HudIcons::makeGearIcon(), iconBounds, col,
                                    /*strokeW=*/0.0f); // filled
 
-        // Punch centre hole with button background colour.
+        // Punch centre hole with button background colour (tracks hover/active state).
+        const auto holeBg = resolveColors(kRegSettings, false).bg;
         HudIcons::drawIconInBounds(g, HudIcons::makeGearHole(), iconBounds,
-                                   juce::Colour(14, 16, 22),
+                                   holeBg,
                                    /*strokeW=*/0.0f);
     }
 
