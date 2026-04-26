@@ -15,19 +15,19 @@ class MacroSection : public juce::Component
 public:
     explicit MacroSection(juce::AudioProcessorValueTreeState& apvts)
     {
-        A11y::setup(*this, "Macro Controls", "Four macro knobs: Character, Movement, Coupling, Space");
+        A11y::setup(*this, "Macro Controls", "Four macro knobs: Tone, Tide, Couple, Depth");
 
         struct Def
         {
             const char* id;
             const char* label;
         };
-        // Display labels — spelled out (#1175). "COUP" was genuinely
-        // ambiguous; "CHAR" read as CHARM as often as CHARACTER. Tooltips
-        // and a11y descriptions retain the long names below.
+        // Display labels — D11 locked names (2026-04-25): TONE / TIDE / COUPLE / DEPTH.
+        // "CHAR"/"CHARACTER" and "MOVE"/"MOVEMENT" were ambiguous; new names are
+        // musically evocative and unambiguous. Tooltips mirror the display names.
         static constexpr Def defs[4] = {
-            {"macro1", "CHARACTER"}, {"macro2", "MOVE"}, {"macro3", "COUPLE"}, {"macro4", "SPACE"}};
-        static constexpr const char* tooltipLabels[4] = {"CHARACTER", "MOVEMENT", "COUPLING", "SPACE"};
+            {"macro1", "TONE"}, {"macro2", "TIDE"}, {"macro3", "COUPLE"}, {"macro4", "DEPTH"}};
+        static constexpr const char* tooltipLabels[4] = {"TONE", "TIDE", "COUPLE", "DEPTH"};
         for (int i = 0; i < 4; ++i)
         {
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
@@ -50,14 +50,14 @@ public:
         master.setSliderStyle(juce::Slider::RotaryVerticalDrag);
         master.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
         master.setColour(juce::Slider::rotarySliderFillColourId, GalleryColors::get(GalleryColors::textMid()));
-        master.setTooltip("Master output volume");
+        master.setTooltip("VOLUME — Master output volume");
         A11y::setup(master, "Master Volume");
         addAndMakeVisible(master);
         masterAttach =
             std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(apvts, "masterVolume", master);
         enableKnobReset(master, apvts, "masterVolume");
 
-        masterLbl.setText("VOL", juce::dontSendNotification);
+        masterLbl.setText("VOL", juce::dontSendNotification); // D11: "VOLUME" exceeds 30px at 9pt mono — display stays "VOL"
         masterLbl.setFont(GalleryFonts::value(10.0f)); // (#885: 9pt→10pt legibility floor)
         masterLbl.setColour(juce::Label::textColourId, GalleryColors::get(GalleryColors::xoGold).withAlpha(0.75f));
         masterLbl.setJustificationType(juce::Justification::centredRight);
@@ -106,7 +106,7 @@ public:
         // Layout: LABEL [KNOB] › LABEL [KNOB] › ... — label left of knob, tightly grouped
         auto b = getLocalBounds().reduced(4, 2);
         constexpr int kh = 48;             // knob diameter (#901: bumped 44→48pt for better discoverability)
-        constexpr int lblW = 30;           // label width (CHAR/MOVE/COUP/SPACE/VOL fit at 9pt mono)
+        constexpr int lblW = 30;           // label width (TONE/TIDE/COUPLE/DEPTH fit; VOL displayed (VOLUME > 30px at 9pt mono))
         constexpr int gap = 2;             // between label and knob
         constexpr int groupGap = 4;        // between knob→next label
         int ky = (b.getHeight() - kh) / 2; // vertically center knobs
@@ -129,7 +129,7 @@ public:
     // Short display names are used to fit the compact header layout.
     void setLabels(const juce::StringArray& labels)
     {
-        static const char* defaults[4] = {"CHARACTER", "MOVE", "COUPLE", "SPACE"};
+        static const char* defaults[4] = {"TONE", "TIDE", "COUPLE", "DEPTH"}; // D11 locked names
         for (int i = 0; i < 4; ++i)
         {
             auto text = (i < labels.size() && labels[i].isNotEmpty()) ? labels[i] : juce::String(defaults[i]);

@@ -247,7 +247,7 @@ public:
         // Wire MIDI and processor immediately (no lazy creation needed).
         playSurface_.setMidiCollector(&processor.getMidiCollector(), 1);
         playSurface_.setProcessor(&processor);
-        // Wire TideController default target: CHARACTER macro (macro1).
+        // Wire TideController default target: TONE macro (macro1). [D11]
         if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(proc.getAPVTS().getParameter("macro1")))
             playSurface_.setTideTargetParameter(p);
         // Wire LookAndFeel so embedded surface matches the plugin theme.

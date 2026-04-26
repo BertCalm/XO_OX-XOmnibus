@@ -281,10 +281,10 @@ This is the section that makes or breaks XPM compatibility.
 
 **MPCe quad-corner integration:**
 On MPC Live III / MPC Key 61, each pad has four corners. XOceanus maps this to:
-- **Top-left corner**: CHARACTER macro (M1)
-- **Top-right corner**: MOVEMENT macro (M2)
-- **Bottom-left corner**: COUPLING macro (M3)
-- **Bottom-right corner**: SPACE macro (M4)
+- **Top-left corner**: TONE macro (M1)
+- **Top-right corner**: TIDE macro (M2)
+- **Bottom-left corner**: COUPLE macro (M3)
+- **Bottom-right corner**: DEPTH macro (M4)
 
 Pressing a pad corner on MPCe sends the note at full velocity PLUS a CC value for the corresponding macro. XOceanus receives both and routes accordingly. The visual pad in XOceanus shows the quad-corner zones as subtle diagonal lines when in "MPCe mode":
 
@@ -477,16 +477,16 @@ When an external MIDI keyboard sends notes to XOceanus:
 
 **Visual feedback**: Color follows the CC value: low = cool blue, mid = warm amber, high = hot red. This creates an instant visual read of controller intensity.
 
-### 5.5 Macro Strips (CHARACTER / MOVEMENT / COUPLING / SPACE)
+### 5.5 Macro Strips (TONE / TIDE / COUPLE / DEPTH) [D11 locked 2026-04-25]
 
 **Visual**: Four vertical strips, each 20pt wide, grouped together (total ~96pt with 4pt spacing). Each strip labeled at top:
 
 | Strip | Label | Color | Default Engine Mapping |
 |-------|-------|-------|----------------------|
-| M1 | CHAR | XO Gold `#E9C46A` | CHARACTER macro |
-| M2 | MOVE | Phosphor Green `#00FF41` | MOVEMENT macro |
-| M3 | COUP | Prism Violet `#BF40FF` | COUPLING macro |
-| M4 | SPACE | Phosphorescent Teal `#00B4A0` | SPACE macro |
+| M1 | TONE | XO Gold `#E9C46A` | TONE macro |
+| M2 | TIDE | Phosphor Green `#00FF41` | TIDE macro |
+| M3 | COUPLE | Prism Violet `#BF40FF` | COUPLE macro |
+| M4 | DEPTH | Phosphorescent Teal `#00B4A0` | DEPTH macro |
 
 **Behavior**:
 - Each strip is a vertical slider (0.0-1.0).
@@ -619,7 +619,7 @@ This is not strictly an expression controller — it is a performance tool for l
 
 XOceanus running as a plugin on MPC hardware:
 - The 4x4 physical pads map directly to the MPC 16-Pad Grid surface
-- The Q-Link knobs map to: Knob 1 = M1 (CHARACTER), Knob 2 = M2 (MOVEMENT), Knob 3 = M3 (COUPLING), Knob 4 = M4 (SPACE)
+- The Q-Link knobs map to: Knob 1 = M1 (TONE), Knob 2 = M2 (TIDE), Knob 3 = M3 (COUPLE), Knob 4 = M4 (DEPTH)
 - The touch strip on MPC Live III maps to the Pitch Bend strip
 - The MPC's XY pad (if present on MPC Key 61) maps to the XOceanus XY Pad
 - The 7" touchscreen shows a simplified version of the play surface (no trails, no ripples — performance first)
@@ -753,7 +753,7 @@ modWheelAttachment = std::make_unique<juce::AudioProcessorValueTreeState::Slider
     apvts, "globalModWheel", modWheelStrip.getInternalSlider());
 ```
 
-The macro strips attach to the engine's 4 macro parameters (CHARACTER, MOVEMENT, COUPLING, SPACE). When the active engine changes, the attachments are rebuilt to point to the new engine's macro parameter IDs.
+The macro strips attach to the engine's 4 macro parameters (TONE, TIDE, COUPLE, DEPTH). When the active engine changes, the attachments are rebuilt to point to the new engine's macro parameter IDs.
 
 ### 8.5 Performance Budget
 
@@ -931,10 +931,10 @@ For each surface, there is one test that determines if the implementation is cor
 | XY Pad X | CC | 16 | Configurable |
 | XY Pad Y | CC | 17 | Configurable |
 | Breath Display | CC | 2 | Read-only display by default |
-| Macro 1 (CHAR) | CC | 20 | Mapped to engine macro 1 |
-| Macro 2 (MOVE) | CC | 21 | Mapped to engine macro 2 |
-| Macro 3 (COUP) | CC | 22 | Mapped to engine macro 3 |
-| Macro 4 (SPACE) | CC | 23 | Mapped to engine macro 4 |
+| Macro 1 (TONE) | CC | 20 | Mapped to engine macro 1 |
+| Macro 2 (TIDE) | CC | 21 | Mapped to engine macro 2 |
+| Macro 3 (COUPLE) | CC | 22 | Mapped to engine macro 3 |
+| Macro 4 (DEPTH) | CC | 23 | Mapped to engine macro 4 |
 | Seaboard Slide | CC | 74 | MPE standard (Brightness) |
 | Seaboard Pressure | Channel Pressure | — | Per-note in MPE mode |
 
