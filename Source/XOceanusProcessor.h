@@ -510,6 +510,8 @@ private:
         std::atomic<float>* cmHumanize = nullptr;
         std::atomic<float>* cmSidechainDuck = nullptr;
         std::atomic<float>* cmEnoMode = nullptr;
+        // Per-slot chord/seq routing (Wave 5 B3)
+        std::array<std::atomic<float>*, 4> cmSlotRoute = {nullptr, nullptr, nullptr, nullptr};
 
         // B2: input mode + global key/scale
         std::atomic<float>* cmInputMode   = nullptr; // chord_input_mode (0=AUTO, 1=PAD, 2=DEG)
