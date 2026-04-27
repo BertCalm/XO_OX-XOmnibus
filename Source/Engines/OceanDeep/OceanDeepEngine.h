@@ -680,8 +680,9 @@ public:
         for (const auto meta : midi) {
             const auto msg = meta.getMessage();
             if (msg.isNoteOn()) {
-                currentNote   = msg.getNoteNumber();
-                currentVel    = msg.getFloatVelocity();
+                currentNote       = msg.getNoteNumber();
+                currentVel        = msg.getFloatVelocity();
+                currentMidiChannel = msg.getChannel(); // #1257: track channel for MPE
                 noteIsOn      = true;
                 ampEnvStage   = EnvStage::Attack;
                 // DSP Fix Wave 2B: trigger independent filter envelope
@@ -701,8 +702,10 @@ public:
             } else if (msg.isAftertouch()) {
                 aftertouchVal = msg.getAfterTouchValue() / 127.f;      // D006
             // DSP Fix Wave 2B: Wire pitch bend to pitch (was missing entirely)
+            // #1257: In non-MPE mode, parse raw wheel; in MPE mode mpeManager handles it.
             } else if (msg.isPitchWheel()) {
-                pitchBendVal = PitchBendUtil::parsePitchWheel (msg.getPitchWheelValue()); // -1..+1
+                if (mpeManager == nullptr || !mpeManager->isMPEEnabled())
+                    pitchBendVal = PitchBendUtil::parsePitchWheel(msg.getPitchWheelValue()); // -1..+1
             }
         }
 
@@ -790,7 +793,12 @@ public:
         const float Q = 0.5f + filterRes * 11.5f;
 
         // DSP Fix Wave 2B: pitch bend wired (±2 semitones default range)
-        const float pitchBendSemitones = pitchBendVal * 2.0f;
+        // #1257 MPE: in MPE mode use per-channel pitch bend from mpeManager (full bend range);
+        // in non-MPE mode fall back to raw MIDI wheel (±2 semitones). This also prevents
+        // a P29-style double-apply if both sources were active simultaneously.
+        const float pitchBendSemitones = (mpeManager != nullptr && mpeManager->isMPEEnabled())
+            ? mpeManager->getChannelExpression(currentMidiChannel).pitchBendSemitones
+            : pitchBendVal * 2.0f;
         // Derived frequencies
         const float fundamentalFreq = midiToFreq(currentNote) * fastPow2((couplingPitchMod + pitchBendSemitones) / 12.f);
         const float sub1Freq        = fundamentalFreq * 0.5f;  // -1 octave
@@ -1012,9 +1020,10 @@ private:
     float pitchBendVal = 0.f;
 
     // Voice state
-    bool  noteIsOn    = false;
-    int   currentNote = 60;
-    float currentVel  = 1.f;
+    bool  noteIsOn        = false;
+    int   currentNote     = 60;
+    float currentVel      = 1.f;
+    int   currentMidiChannel = 1; // #1257: MIDI channel of the active note (for MPE per-voice bend)
 
     // LFOs — shared StandardLFO (sine-only, D005-compliant floor)
     StandardLFO lfo1;

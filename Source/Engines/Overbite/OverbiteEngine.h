@@ -1873,7 +1873,12 @@ public:
                 // LFO1 -> pitch (subtle vibrato), scaled by Scurry
                 float pitchMod = lfo1val * 0.005f * (1.0f + macroScurry);
                 freq *= (1.0f + pitchMod);
-                freq *= blockChannelBendRatio; // hoisted above — block-const pitch bend
+                // P29 fix: apply channel bend only in non-MPE mode. In MPE mode the
+                // per-voice targetFreq already incorporates mpeExpression.pitchBendSemitones
+                // (set in the per-block voice-setup loop above). Multiplying both would
+                // produce 2× pitch deviation on MPE controllers.
+                if (mpeManager == nullptr || !mpeManager->isMPEEnabled())
+                    freq *= blockChannelBendRatio; // non-MPE: block-const channel pitch bend
 
                 // --- OscA (Belly) ---
                 voice.oscA.setFrequency(freq);
