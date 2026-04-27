@@ -671,24 +671,30 @@ private:
     // or as soon as any MIDI input or engine change arrives.
     //
     // Thread model:
-    //   hasLaunchedBefore_     — written by message thread (setStateInformation /
-    //                            prepareToPlay), read by audio thread.  Atomic.
-    //   firstBreathPending_    — set by prepareToPlay (any thread), consumed once
-    //                            by the first processBlock call.  Atomic.
-    //   firstBreathActive_     — audio-thread-only after consumption.  No atomic.
-    //   firstBreathCountdown_  — audio-thread-only countdown in samples.  No atomic.
-    //   kFirstBreathNote       — MIDI C3 (48). Gentle, low, non-intrusive.
-    //   kFirstBreathVelocity   — soft (60/127 ≈ 0.47).
-    //   kFirstBreathTimeoutMs  — 30 000 ms failsafe auto-stop.
+    //   hasLaunchedBefore_         — written by message thread (setStateInformation /
+    //                                prepareToPlay), read by audio thread.  Atomic.
+    //   firstBreathPending_        — set by prepareToPlay (any thread), consumed once
+    //                                by the first processBlock call.  Atomic.
+    //   firstBreathActive_         — audio-thread-only after consumption.  No atomic.
+    //   firstBreathCountdown_      — audio-thread-only 30-second failsafe in samples.  No atomic.
+    //   firstBreathFading_         — true once user interaction triggers the 200 ms fade.
+    //   firstBreathFadeCountdown_  — samples remaining in the fade window before note-off fires.
+    //   kFirstBreathNote           — MIDI C3 (48). Gentle, low, non-intrusive.
+    //   kFirstBreathVelocity       — soft (60/127 ≈ 0.47).
+    //   kFirstBreathTimeoutMs      — 30 000 ms failsafe auto-stop.
+    //   kFirstBreathFadeMs         — 200 ms fade on user interaction (spec §1300).
     std::atomic<bool> hasLaunchedBefore_{false};
     std::atomic<bool> firstBreathPending_{false};
     // Audio-thread-only state (no atomics needed):
     bool         firstBreathActive_{false};
     int          firstBreathCountdown_{0};
+    bool         firstBreathFading_{false};     // true during the 200 ms interaction fade
+    int          firstBreathFadeCountdown_{0};  // samples remaining in fade window
     uint64_t     firstBreathGeneration_{0}; // engineGeneration_ value at arm time; if it changes, breath is cancelled
     static constexpr int  kFirstBreathNote       = 48;     // C3
     static constexpr float kFirstBreathVelocity  = 60.0f / 127.0f;
     static constexpr int  kFirstBreathTimeoutMs  = 30000;  // 30-second failsafe
+    static constexpr int  kFirstBreathFadeMs     = 200;    // §1300: fade window before note-off on user interaction
 
     // ── Per-slot mute state ───────────────────────────────────────────────────
     // Written by message thread (setSlotMuted), read by audio thread per block.
