@@ -89,7 +89,7 @@ public:
         g.drawRoundedRectangle(bounds.reduced(0.5f), 10.0f, 1.5f);
 
         // Title
-        g.setFont(GalleryFonts::label(13.0f).boldened());
+        g.setFont(xoceanus::GalleryFonts::label(13.0f).boldened());
         g.setColour(AccentColors::chainBright);
         g.drawText("Chain Matrix",
                    juce::Rectangle<float>(kPad, kTitleY, bounds.getWidth() - 2 * kPad, kTitleH),
@@ -104,7 +104,7 @@ public:
         const float gridY0 = kTitleY + kTitleH + kSpacing;
 
         // Column header labels (destination slots)
-        g.setFont(GalleryFonts::label(9.0f));
+        g.setFont(xoceanus::GalleryFonts::label(9.0f));
         g.setColour(AccentColors::chainAccent.withAlpha(0.8f));
         for (int dst = 0; dst < kSlots; ++dst)
         {
@@ -115,7 +115,7 @@ public:
         }
 
         // Row header labels (source slots)
-        g.setFont(GalleryFonts::label(9.0f));
+        g.setFont(xoceanus::GalleryFonts::label(9.0f));
         g.setColour(AccentColors::chainAccent.withAlpha(0.8f));
         for (int src = 0; src < kSlots; ++src)
         {
@@ -178,7 +178,7 @@ public:
                     {
                         g.setColour(pillColour(type).withAlpha(0.88f));
                         g.fillRoundedRectangle(pill, 3.0f);
-                        g.setFont(GalleryFonts::label(7.5f).boldened());
+                        g.setFont(xoceanus::GalleryFonts::label(7.5f).boldened());
                         g.setColour(juce::Colour(0xFF050810));
                         g.drawText(chainTypeLabel(type), pill.toNearestInt(),
                                    juce::Justification::centred, false);
@@ -187,7 +187,7 @@ public:
                     {
                         g.setColour(AccentColors::chainDim.withAlpha(0.30f));
                         g.drawRoundedRectangle(pill.reduced(0.25f), 3.0f, 0.75f);
-                        g.setFont(GalleryFonts::label(7.0f));
+                        g.setFont(xoceanus::GalleryFonts::label(7.0f));
                         g.setColour(AccentColors::chainDim.withAlpha(0.55f));
                         g.drawText(chainTypeLabel(type), pill.toNearestInt(),
                                    juce::Justification::centred, false);
@@ -198,7 +198,7 @@ public:
 
         // Legend row (below grid)
         const float legendY = gridY0 + kSlots * cellH + kSpacing;
-        g.setFont(GalleryFonts::label(8.5f));
+        g.setFont(xoceanus::GalleryFonts::label(8.5f));
         const char* legends[] = { "T=Trigger", "M=Mod", "P=Pattern", "C=Clock" };
         const float lw = (bounds.getWidth() - 2.0f * kPad) / 4.0f;
         for (int i = 0; i < 4; ++i)
