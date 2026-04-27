@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OMBRE",
+  "engine_prefix": "ombre_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 8,
+    "architecture": "Dual-narrative synthesis — each voice contains two simultaneous sound sources: Oubli (a circular memory buffer recording and fading over time, reconstructed by multiple staggered read-heads with age-based exponential decay via O(1) lazy attenuation) and Opsis (a direct PolyBLEP oscillator reacting immediately to notes); Blend parameter crossfades between them; Interference parameter feeds one narrative into the other; two LFOs — one modulates blend (CHARACTER shimmer/darkness axis), one modulates oscillator pitch (MOVEMENT) — creating a four-dimensional timbral space of memory vs. presence."
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "linear_attack_exp_decay"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.72,
+    "velocity_targets": ["amplitude", "brightness", "decay"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 66
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "CHARACTER",
+      "behavior": "Drives LFO1 modulation of the Oubli/Opsis blend — at zero the blend is fixed (SPACE sets the static position); increasing CHARACTER adds shimmer and shadow cycling between the memory and presence poles, creating the gradient-fading quality that defines OMBRE's identity."
+    },
+    "macro2": {
+      "name": "MOVEMENT",
+      "behavior": "Scales both LFO depths simultaneously — zero is completely frozen (no modulation from either LFO); one gives full motion to both blend LFO and pitch LFO. MOVEMENT controls how much OMBRE breathes versus how much it holds a still, gradient-painted tone."
+    },
+    "macro3": {
+      "name": "COUPLING",
+      "behavior": "Controls inter-engine coupling input depth — incoming audio can be fed into the Oubli memory buffer directly, allowing another engine's voices to write into OMBRE's fading memory and become part of the dual narrative. High COUPLING creates deep cross-engine entanglement."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Sets the static Oubli/Opsis blend position and the memory buffer decay rate — low SPACE sits near Opsis (direct, immediate, bright); high SPACE shifts toward Oubli (delayed, fading, deep) and extends memory decay so past notes linger as ghost echoes behind present ones."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "pad",
+    "brightness": 0.35,
+    "warmth": 0.62,
+    "movement": 0.55,
+    "density": 0.68,
+    "transient_character": "soft"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AudioToBuffer", "AmpToFilter", "EnvToDecay"],
+    "best_as_target": ["AudioToBuffer", "AmpToFilter", "FilterToFilter"],
+    "recommended_partners": ["OSTRACON", "OLVIDO", "OBSCURA", "OXBOW"],
+    "coupling_personality": "A dual-narrative dreamer — OMBRE's Oubli/Opsis architecture naturally receives external voices into its memory. AudioToBuffer coupling feeds external audio into the fading buffer; OMBRE then reconstructs it through its blend narrative. Best paired with OSTRACON (shared memory philosophies) and OLVIDO (both engines process forgetting through different mechanisms)."
+  },
+
+  "mythology": {
+    "creature": "Shadow Mauve Wrasse — gradient-fading fish of the Twilight Zone; two simultaneous narratives: what the creature remembers and what it is now, both present, neither dominant",
+    "depth_zone": "twilight",
+    "felix_oscar_polarity": 0.68,
+    "accent_color": "#7B6B8A"
+  },
+
+  "metadata": {
+    "param_count": 24,
+    "preset_count": 420,
+    "seance_score": 8.0,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

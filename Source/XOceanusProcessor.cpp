@@ -1259,8 +1259,16 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
             0 /* default = PlaySurface */));
     }
 
-    // Wave 8 (#1302): XY Surface parameters (8 params × 4 slots = 32 params).
-    // See Source/UI/PlaySurface/XYSurface.h "APVTS Parameter Registration" section.
+    // ── Wave 8: XY Surface parameters (8 params × 4 slots = 32 params) ─────────
+    // See Source/UI/PlaySurface/XYSurface.h for full documentation.
+    //
+    // Per-slot:  xy_pattern, xy_speed, xy_depth, xy_sync,
+    //            xy_assignX, xy_assignY, xy_pos_x, xy_pos_y
+    //
+    // xy_assignX/Y index into the canonical param list:
+    //   0=None, 1=FilterCutoff, 2=FilterRes, 3=LFORate, 4=LFODepth,
+    //   5=EnvAttack, 6=EnvRelease, 7=Drive, 8=Macro1, 9=Macro2, 10=Macro3,
+    //   11=Macro4, 12=FX1WetDry, 13=FX2WetDry, 14=FX3WetDry
     {
         const juce::StringArray kXYPatterns {"None","PULSE","DRIFT","TIDE","RIPPLE","CHAOS"};
         const juce::StringArray kXYSync     {"Free","1bar/4","1bar/2","1bar","2bar","4bar"};
@@ -1270,22 +1278,22 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
             "Macro1","Macro2","Macro3","Macro4",
             "FX1 Wet","FX2 Wet","FX3 Wet"
         };
-        for (int s = 0; s < 4; ++s)
+        for (int s = 0; s < kNumPrimarySlots; ++s)
         {
             const juce::String sfx = "_slot" + juce::String(s);
             layout.add(std::make_unique<juce::AudioParameterChoice>(
                 juce::ParameterID("xy_pattern" + sfx, 1),
                 "XY Pattern Slot " + juce::String(s + 1), kXYPatterns, 0));
             layout.add(std::make_unique<juce::AudioParameterFloat>(
-                juce::ParameterID("xy_speed"   + sfx, 1),
+                juce::ParameterID("xy_speed" + sfx, 1),
                 "XY Speed Slot "   + juce::String(s + 1),
                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
             layout.add(std::make_unique<juce::AudioParameterFloat>(
-                juce::ParameterID("xy_depth"   + sfx, 1),
+                juce::ParameterID("xy_depth" + sfx, 1),
                 "XY Depth Slot "   + juce::String(s + 1),
                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
             layout.add(std::make_unique<juce::AudioParameterChoice>(
-                juce::ParameterID("xy_sync"    + sfx, 1),
+                juce::ParameterID("xy_sync" + sfx, 1),
                 "XY Sync Slot "    + juce::String(s + 1), kXYSync, 3)); // default: 1bar
             layout.add(std::make_unique<juce::AudioParameterChoice>(
                 juce::ParameterID("xy_assignX" + sfx, 1),
@@ -1294,11 +1302,11 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
                 juce::ParameterID("xy_assignY" + sfx, 1),
                 "XY Assign Y Slot "+ juce::String(s + 1), kXYAssign, 0));
             layout.add(std::make_unique<juce::AudioParameterFloat>(
-                juce::ParameterID("xy_pos_x"   + sfx, 1),
+                juce::ParameterID("xy_pos_x" + sfx, 1),
                 "XY Pos X Slot "   + juce::String(s + 1),
                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
             layout.add(std::make_unique<juce::AudioParameterFloat>(
-                juce::ParameterID("xy_pos_y"   + sfx, 1),
+                juce::ParameterID("xy_pos_y" + sfx, 1),
                 "XY Pos Y Slot "   + juce::String(s + 1),
                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
         }

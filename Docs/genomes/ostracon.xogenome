@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OSTRACON",
+  "engine_prefix": "ostr_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 8,
+    "architecture": "Corpus-buffer synthesis — a shared circular buffer acts as communal tape; all active voices write their PolyBLEP oscillator output (saw/square/tri/noise) into one tape reel simultaneously; each voice then reads back via 1-4 independent per-voice read heads with Mellotron-style physical degradation: oxide filtering (distance-scaled bandwidth loss via Jorgensen frequency response), flutter pitch instability (Pressnitzer & McAdams threshold), and print-through ghost bleed from previous revolutions (Camras 1988 oxide shedding); the longer the reel, the deeper the communal memory."
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 1,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h", "random"],
+    "mod_matrix_depth": 6,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.65,
+    "velocity_targets": ["amplitude", "brightness", "transient"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 64
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "CHARACTER",
+      "behavior": "Controls oxide level and source oscillator mix — low CHARACTER plays the waveform cleanly with minimal tape degradation; high CHARACTER increases oxide shedding (bandwidth loss proportional to read-head distance from write-head), blending in worn-tape tonality and smearing transient edges."
+    },
+    "macro2": {
+      "name": "MOVEMENT",
+      "behavior": "Drives flutter depth and read-head spread simultaneously — at zero the tape runs perfectly steady; increasing MOVEMENT adds Pressnitzer pitch instability (wow and flutter) and spreads the read heads further apart in time, creating the sensation of multiple parallel tape machines reading the same reel from different positions."
+    },
+    "macro3": {
+      "name": "COUPLING",
+      "behavior": "Scales coupling input depth — external audio via AudioToBuffer can be written into the shared tape reel, entangling another engine's voice with OSTRACON's communal memory. High COUPLING allows deep external contamination of the tape record."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls print-through (ghost bleed from previous revolution) and LFO depth — low SPACE is clean; high SPACE increases oxide print-through until ghost voices emerge from past revolutions, adding a soft ambiguity between what is playing now and what was played before."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "pad",
+    "brightness": 0.38,
+    "warmth": 0.72,
+    "movement": 0.55,
+    "density": 0.65,
+    "transient_character": "soft"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AudioToBuffer", "AmpToFilter", "EnvToDecay"],
+    "best_as_target": ["AudioToBuffer", "AmpToFilter", "KnotTopology"],
+    "recommended_partners": ["OLVIDO", "OMBRE", "OBSCURA", "OXBOW"],
+    "coupling_personality": "The communal memory hub — OSTRACON's shared tape architecture makes it the best AudioToBuffer target and source in the fleet; two OSTRACON instances coupled via AudioToBuffer create interlocking tape histories. Pairs beautifully with OLVIDO (OSTRACON records; OLVIDO erodes the playback), and with OMBRE (dual-narrative forgetting deepened by OSTRACON's physical tape artifacts)."
+  },
+
+  "mythology": {
+    "creature": "The Hermit Crab — carries its tape-reel shell on its back in the Surface Zone; Mellotron physics, the shell contains all previous sounds, and when the crab moves to a new shell it takes its recorded history with it",
+    "depth_zone": "surface",
+    "felix_oscar_polarity": 0.58,
+    "accent_color": "#C0785A"
+  },
+
+  "metadata": {
+    "param_count": 32,
+    "preset_count": 8,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

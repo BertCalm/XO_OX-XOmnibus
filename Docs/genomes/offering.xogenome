@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OFFERING",
+  "engine_prefix": "ofr_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "drum_circuit",
+    "polyphony": 8,
+    "architecture": "Psychology-driven boom bap drum synthesis — 8 fixed GM-mapped voices (kick/snare/hat/tom/clap/rim/tom/perc), each running through a 4-stage pipeline: TransientGenerator (per-type circuit topology: bridged-T for kick, noise burst for snare) → TextureLayer (vinyl/tape/bit/wobble via DUST macro) → CollageEngine (layers/chop/stretch/ring-mod via FLIP macro) → CityProcessingChain (5 cities × distinct spectral character via CITY macro); Curiosity Engine (Berlyne/Wundt/Csikszentmihalyi aesthetic judgment) rides the master output via DIG macro."
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "ahd",
+    "stages": 3,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.85,
+    "velocity_targets": ["amplitude", "transient", "brightness", "body_resonance"],
+    "pitch_bend_range": 0,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 78
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "DIG",
+      "behavior": "Controls the Curiosity Engine — at zero, the drums sit steady; as DIG increases, aesthetic complexity rises through Berlyne's inverted-U (novelty peak then boredom plateau), Wundt's arousal curve, and Csikszentmihalyi's flow channel. High DIG morphs the city processing toward the ragged edge of recognition, where patterns almost repeat but never quite do."
+    },
+    "macro2": {
+      "name": "CITY",
+      "behavior": "Morphs the active city processing chain through 5 cities (each with its own spectral character, compression philosophy, and saturation topology). At low values the drums are dry and deconstructed; at high values the city bleeds in its own color — a fully-saturated urban processing identity applied to each voice."
+    },
+    "macro3": {
+      "name": "FLIP",
+      "behavior": "Drives the Collage Engine — adds layers (1-4), introduces chop (slice-and-gate), applies stretch artifacts, and bleeds in ring modulation at high values. Low FLIP is a clean 4-bar loop; high FLIP disassembles the loop into flickering fragments of itself."
+    },
+    "macro4": {
+      "name": "DUST",
+      "behavior": "Applies the Texture Layer — at low values the drums are clean and studio-neutral; increasing DUST simultaneously fades in vinyl crackle, tape wobble, bit-depth reduction, and sample-rate decimation. Maximum DUST crushes the drums to lo-fi soil: 4-bit, warped, scratchy, and sacred."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "drums",
+    "brightness": 0.62,
+    "warmth": 0.55,
+    "movement": 0.35,
+    "density": 0.72,
+    "transient_character": "sharp"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["RhythmToBlend", "AmpToFilter", "EnvToDecay"],
+    "best_as_target": ["AudioToBuffer", "AmpToFilter", "FilterToFilter"],
+    "recommended_partners": ["OSTINATO", "OMBRE", "ONSET", "ONKOLO"],
+    "coupling_personality": "Natural rhythm-source: OSTINATO's RhythmToBlend coupling is fleet-optimized for OFFERING's transient architecture. OFFERING sends its envelope follower into the network; other engines ride its groove. Best in an ensemble slot where it sets the tempo and character of the whole coupling chain."
+  },
+
+  "mythology": {
+    "creature": "The Mantis Shrimp — 16 photoreceptor types perceiving colors no other creature can see, living in the Rubble Zone (5-15m); OFFERING processes drum sounds through psychoacoustic dimensions that simpler engines cannot perceive",
+    "depth_zone": "rubble",
+    "felix_oscar_polarity": 0.65,
+    "accent_color": "#E5B80B"
+  },
+
+  "metadata": {
+    "param_count": 42,
+    "preset_count": 174,
+    "seance_score": 8.8,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

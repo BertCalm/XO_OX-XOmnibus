@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OBSERVANDUM",
+  "engine_prefix": "obs_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 8,
+    "architecture": "Polychromatic Phase Distortion synthesis — variable 2-8 phase distortion oscillators (facets) per voice, each at unique detune and phase offset; 8 mathematically-derived transfer-function distortion curves stored in 1024-point LUTs; the active curve is a lerp blend between any two basis curves controlled in real time; an environmental coupling bus warps the active curve position continuously; 2x oversampling with averaging downsample for anti-aliasing; 3 independent ADSRs per voice (amplitude, filter, distortion amount) allowing time-variant blend between pure and distorted signal."
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "multi_stage",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 1,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 3,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.80,
+    "velocity_targets": ["amplitude", "brightness", "morph"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "multi",
+    "dynamic_range_db": 72
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "CHARACTER",
+      "behavior": "Simultaneously controls transfer-function curve morph position and distortion depth blend — at low CHARACTER the oscillators play near-pure phase, at high CHARACTER the morph position sweeps toward extreme curves (exponential, triangular, hyperbolic) while distortion depth increases, transforming tone into aggressive phase-warped timbre."
+    },
+    "macro2": {
+      "name": "MOVEMENT",
+      "behavior": "Drives the distortion ADSR envelope depth and LFO rate — controls how aggressively the distortion envelope breathes over time. High MOVEMENT means each note's distortion character evolves dramatically from attack to release; low MOVEMENT holds a steady timbral state."
+    },
+    "macro3": {
+      "name": "COUPLING",
+      "behavior": "Scales the phase spread between facets via coupling input — AudioToFM modulates facet phase spread directly, creating different inter-facet interference patterns. High COUPLING opens the engine to external harmonic influence, allowing another engine's audio to reorganize OBSERVANDUM's chromatophore display."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls the filter envelope depth and overall spectral spread of the facets — high SPACE widens the detune spread between all N facets and deepens filter modulation, creating the wide chromatophore field effect; low SPACE focuses all facets to near-unison for a dense monolithic tone."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "lead",
+    "brightness": 0.62,
+    "warmth": 0.42,
+    "movement": 0.68,
+    "density": 0.55,
+    "transient_character": "electronic"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AudioToFM", "SpectralShaping"],
+    "best_as_target": ["AudioToFM", "EnvToMorph", "AmpToFilter"],
+    "recommended_partners": ["OBSCURA", "OGIVE", "OBLIQUE", "ORBWEAVE"],
+    "coupling_personality": "The chromatophore network — OBSERVANDUM changes its timbral color in response to incoming coupling signals the way a cuttlefish changes skin pattern; EnvToMorph coupling from another engine's envelope drives curve morph in real time, creating responsive spectral transformation. Best as a target for slow evolving sources."
+  },
+
+  "mythology": {
+    "creature": "The Cuttlefish — master of chromatophore color-phase shifts in the Epipelagic zone; every frequency is a different color, every passing shadow triggers an instantaneous timbral repainting",
+    "depth_zone": "epipelagic",
+    "felix_oscar_polarity": 0.42,
+    "accent_color": "#4ECDC4"
+  },
+
+  "metadata": {
+    "param_count": 41,
+    "preset_count": 21,
+    "seance_score": 8.1,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

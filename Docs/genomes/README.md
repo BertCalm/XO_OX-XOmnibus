@@ -1,9 +1,9 @@
 # XOceanus Engine Genomes
 
-**Status:** 25 of 93 genomes complete (Wave 10 added 20 genomes — 2026-04-25)
+**Status:** 35 of 93 genomes complete (Wave 10 batch 2 added 10 genomes — 2026-04-26)
 **Schema:** v0.1 — see `Docs/specs/xogenome-schema-v0.1.md`
 **Project:** VQ 009 — Engine Genome Project
-**Updated:** 2026-04-25
+**Updated:** 2026-04-26
 
 ---
 
@@ -23,7 +23,7 @@ Genomes enable:
 
 ---
 
-## Completed Genomes (25)
+## Completed Genomes (35)
 
 | File | Engine | Category | Seance | Presets |
 |------|--------|----------|--------|---------|
@@ -52,10 +52,20 @@ Genomes enable:
 | `overtone.xogenome` | OVERTONE | spectral | 7.6 | 437 |
 | `overworld.xogenome` | OVERWORLD | lead / chip | 7.6 | 531 |
 | `oxbow.xogenome` | OXBOW | pad | 9.0 | 241 |
+| `offering.xogenome` | OFFERING | drums | 8.8 | 174 |
+| `observandum.xogenome` | OBSERVANDUM | lead | 8.1 | 21 |
+| `ombre.xogenome` | OMBRE | pad | 8.0 | 420 |
+| `ogive.xogenome` | OGIVE | spectral | unscored | 8 |
+| `olvido.xogenome` | OLVIDO | pad | unscored | 8 |
+| `ostracon.xogenome` | OSTRACON | pad | unscored | 8 |
+| `oobleck.xogenome` | OOBLECK | texture | unscored | 8 |
+| `opaline.xogenome` | OPALINE | keys | unscored | 52 |
+| `onkolo.xogenome` | ONKOLO | keys | unscored | 129 |
+| `outflow.xogenome` | OUTFLOW | fx | unscored | 27 |
 
 ---
 
-## Remaining Engines (65)
+## Remaining Engines (58)
 
 The following engines need genomes generated. Source headers are in
 `Source/Engines/{Name}/{Name}Engine.h`. Read each header for real param counts,
@@ -70,22 +80,13 @@ and check `Docs/fleet-seance-scores-2026-03-20.md` for `seance_score`.
 | OddfeliX | `snap_` | lead / pluck |
 | OddOscar | `morph_` | pad / morphing |
 | Overdub | `dub_` | pad / tape |
-| Odyssey | `drift_` | lead / wavetable |
 | Oblong | `bob_` | bass / analog |
 | Obese | `fat_` | lead / saturation |
-| Overworld | `ow_` | lead / chip |
 | Opal | `opal_` | pad / granular |
-| Orbital | `orb_` | pad / spectral |
-| Organon | `organon_` | generative / metabolism |
-| Ouroboros | `ouro_` | lead / chaotic |
 | Obsidian | `obsidian_` | pad / crystal |
 | Overbite | `poss_` | bass / physical |
-| Oracle | `oracle_` | lead / stochastic |
-| Obscura | `obscura_` | pad / physical |
 | Oceanic | `ocean_` | pad / chromatophore |
 | Ocelot | `ocelot_` | lead / biome |
-| Optic | `optic_` | fx / visual |
-| Oblique | `oblq_` | lead / prismatic |
 | Osprey | `osprey_` | pad / coastal |
 | Osteria | `osteria_` | bass / wine |
 | Owlfish | `owl_` | lead / trautonium |
@@ -96,18 +97,6 @@ and check `Docs/fleet-seance-scores-2026-03-20.md` for `seance_score`.
 | Ole | `ole_` | lead / flamenco |
 | Overlap | `olap_` | pad / knot |
 | Outwit | `owit_` | lead / chromatophore |
-| Ombre | `ombre_` | pad / dual-narrative |
-| Orca | `orca_` | lead / apex |
-| Octopus | `octo_` | lead / decentralized |
-| Ostinato | `osti_` | drum-machine / membrane |
-| OpenSky | `sky_` | pad / shimmer |
-| OceanDeep | `deep_` | bass / abyssal |
-| Ouie | `ouie_` | lead / duophonic |
-| Orbweave | `weave_` | pad / topological |
-| Overtone | `over_` | spectral / continued-fraction |
-| Organism | `org_` | generative / cellular-automata |
-| Oxbow | `oxb_` | pad / entangled-reverb |
-| Offering | `ofr_` | drum-machine / psychology |
 | Osmosis | `osmo_` | fx / membrane |
 | Kitchen Collection — XOto | (Kitchen) | organ |
 | Kitchen Collection — XOctave | (Kitchen) | organ |
@@ -116,7 +105,6 @@ and check `Docs/fleet-seance-scores-2026-03-20.md` for `seance_score`.
 | Kitchen Collection — XOven | (Kitchen) | piano |
 | Kitchen Collection — XOchre | (Kitchen) | piano |
 | Kitchen Collection — XObelisk | (Kitchen) | piano |
-| Kitchen Collection — XOpaline | (Kitchen) | piano |
 | Kitchen Collection — XOgre | (Kitchen) | bass |
 | Kitchen Collection — XOlate | (Kitchen) | bass |
 | Kitchen Collection — XOaken | (Kitchen) | bass |
@@ -131,7 +119,6 @@ and check `Docs/fleet-seance-scores-2026-03-20.md` for `seance_score`.
 | Kitchen Collection — XOvercast | (Kitchen) | pad |
 | Kitchen Collection — XOasis | (Kitchen) | ep |
 | Kitchen Collection — XOddfellow | (Kitchen) | ep |
-| Kitchen Collection — XOnkolo | (Kitchen) | ep |
 | Kitchen Collection — XOpcode | (Kitchen) | ep |
 
 ---
