@@ -36,6 +36,10 @@ struct ModRoute
     juce::String destParamId; // APVTS parameter ID of the destination
     float depth;              // -1.0 to +1.0
     bool bipolar;             // true = source range is ±1
+    // Wave 5 C5: per-route slot index for sequencer-scoped sources.
+    // -1 = not slot-scoped (all non-sequencer sources, backward-compat default).
+    // 0–3 = which slotSequencer to read from (SeqStepValue, BeatPhase, ChordToneIdx).
+    int slotIndex{-1};
 };
 
 //==============================================================================
@@ -88,7 +92,11 @@ public:
     // Add a route.  Returns the index of the new route, or -1 if the model is
     // full.  If a route from the same source to the same dest already exists,
     // the existing route's depth is updated and its index is returned.
-    int addRoute(int sourceId, const juce::String& destParamId, float depth, bool bipolar = false)
+    //
+    // slotIndex: -1 = not slot-scoped (default, backward-compat).
+    //            0–3 = which PerEnginePatternSequencer slot to read (C5: SeqStepValue etc.)
+    int addRoute(int sourceId, const juce::String& destParamId, float depth, bool bipolar = false,
+                 int slotIndex = -1)
     {
         // Update existing route with the same (source, dest) pair.
         for (int i = 0; i < static_cast<int>(routes.size()); ++i)
@@ -98,6 +106,7 @@ public:
             {
                 routes[static_cast<size_t>(i)].depth = juce::jlimit(-1.0f, 1.0f, depth);
                 routes[static_cast<size_t>(i)].bipolar = bipolar;
+                routes[static_cast<size_t>(i)].slotIndex = slotIndex;
                 notifyListeners();
                 return i;
             }
@@ -112,6 +121,7 @@ public:
         r.destParamId = destParamId;
         r.depth = juce::jlimit(-1.0f, 1.0f, depth);
         r.bipolar = bipolar;
+        r.slotIndex = slotIndex;
         routes.push_back(r);
 
         notifyListeners();
@@ -169,6 +179,8 @@ public:
             child.setProperty("destParamId", r.destParamId, nullptr);
             child.setProperty("depth", r.depth, nullptr);
             child.setProperty("bipolar", r.bipolar, nullptr);
+            // C5: persist slotIndex (-1 for non-slot-scoped routes).
+            child.setProperty("slotIndex", r.slotIndex, nullptr);
             vt.addChild(child, -1, nullptr);
         }
         return vt;
@@ -200,11 +212,18 @@ public:
 
             bool bipolar = static_cast<bool>(int(child.getProperty("bipolar", 0)));
 
+            // C5: restore slotIndex; default -1 for backward-compat with older presets.
+            int slotIdx = static_cast<int>(child.getProperty("slotIndex", -1));
+            // Validate: must be -1 (N/A) or 0–3.
+            if (slotIdx < -1 || slotIdx > 3)
+                slotIdx = -1;
+
             ModRoute r;
             r.sourceId = srcInt;
             r.destParamId = destId;
             r.depth = depth;
             r.bipolar = bipolar;
+            r.slotIndex = slotIdx;
             routes.push_back(r);
         }
         notifyListeners();
@@ -395,8 +414,10 @@ public:
         g.setColour(srcColour);
         g.fillRect(0, 2, 3, height - 4);
 
-        // Source name
+        // Source name — append "S1"–"S4" suffix for slot-scoped sources (C5).
         auto srcName = modSourceName(static_cast<ModSourceId>(r.sourceId));
+        if (r.slotIndex >= 0 && r.slotIndex <= 3)
+            srcName += " S" + juce::String(r.slotIndex + 1);
         g.setFont(GalleryFonts::label(9.5f));
         g.setColour(juce::Colour(GalleryColors::t1()));
         g.drawText(srcName, 8, 0, 70, height, juce::Justification::centredLeft);
@@ -453,9 +474,12 @@ private:
             return;
 
         const auto& r = cachedRoutes[static_cast<size_t>(row)];
+        // C5: include slot suffix if this is a slot-scoped route.
+        juce::String srcLabel = modSourceName(static_cast<ModSourceId>(r.sourceId));
+        if (r.slotIndex >= 0 && r.slotIndex <= 3)
+            srcLabel += " (Slot " + juce::String(r.slotIndex + 1) + ")";
         auto* alert = new juce::AlertWindow("Set Modulation Depth",
-                                            "Enter depth for " + modSourceName(static_cast<ModSourceId>(r.sourceId)) +
-                                                " -> " + r.destParamId,
+                                            "Enter depth for " + srcLabel + " -> " + r.destParamId,
                                             juce::MessageBoxIconType::NoIcon);
         alert->addTextEditor("depth", juce::String(r.depth, 3), "Depth (-1.0 to +1.0):");
         alert->addButton("OK", 1, juce::KeyPress(juce::KeyPress::returnKey));
@@ -667,6 +691,15 @@ public:
             bool bipolar = (payload.sourceId == ModSourceId::LFO1 || payload.sourceId == ModSourceId::LFO2 ||
                             payload.sourceId == ModSourceId::Envelope);
 
+            // C5: slot-scoped sources require a slot picker before committing the route.
+            if (isSlotScopedSource(payload.sourceId))
+            {
+                showSlotPickerForDrop(payload.sourceId, targetParamId, bipolar);
+                // resetDragState is called inside showSlotPickerForDrop's async callback.
+                resetDragState();
+                return;
+            }
+
             model.addRoute(static_cast<int>(payload.sourceId), targetParamId,
                            /* depth = */ 0.5f, bipolar);
         }
@@ -780,7 +813,10 @@ public:
         for (int i = 0; i < static_cast<int>(routes.size()); ++i)
         {
             const auto& r = routes[static_cast<size_t>(i)];
+            // C5: append slot suffix for slot-scoped sources
             auto srcName = modSourceName(static_cast<ModSourceId>(r.sourceId));
+            if (r.slotIndex >= 0 && r.slotIndex <= 3)
+                srcName += " S" + juce::String(r.slotIndex + 1);
             juce::String label = srcName + "   depth: " + juce::String(r.depth, 2);
             menu.addItem(100 + i, label);
         }
@@ -928,8 +964,12 @@ private:
             return;
 
         const auto& r = routes[static_cast<size_t>(routeIndex)];
+        // C5: include slot suffix if this is a slot-scoped route.
+        juce::String srcLabel = modSourceName(static_cast<ModSourceId>(r.sourceId));
+        if (r.slotIndex >= 0 && r.slotIndex <= 3)
+            srcLabel += " (Slot " + juce::String(r.slotIndex + 1) + ")";
         auto* alert = new juce::AlertWindow(
-            "Set Modulation Depth", modSourceName(static_cast<ModSourceId>(r.sourceId)) + " -> " + r.destParamId,
+            "Set Modulation Depth", srcLabel + " -> " + r.destParamId,
             juce::MessageBoxIconType::NoIcon);
 
         alert->addTextEditor("depth", juce::String(r.depth, 3), "Depth (-1.0 to +1.0):");
@@ -948,6 +988,40 @@ private:
                                        delete alert;
                                    }),
                                false);
+    }
+
+    //==========================================================================
+    // C5: Returns true for the three slot-scoped ModSourceIds.
+    static bool isSlotScopedSource(ModSourceId id) noexcept
+    {
+        return id == ModSourceId::SeqStepValue ||
+               id == ModSourceId::BeatPhase    ||
+               id == ModSourceId::ChordToneIdx;
+    }
+
+    // C5: Show a popup menu to choose which sequencer slot (1–4) this route reads from.
+    // On selection, adds the route with the chosen slotIndex.
+    // Called from itemDropped when the dragged source is slot-scoped.
+    void showSlotPickerForDrop(ModSourceId sourceId, const juce::String& destParamId, bool bipolar)
+    {
+        juce::PopupMenu menu;
+        menu.addSectionHeader("Which sequencer slot?");
+        menu.addItem(1, "Slot 1");
+        menu.addItem(2, "Slot 2");
+        menu.addItem(3, "Slot 3");
+        menu.addItem(4, "Slot 4");
+
+        menu.showMenuAsync(juce::PopupMenu::Options{},
+                           [this, sourceId, destParamId, bipolar](int result)
+                           {
+                               if (result >= 1 && result <= 4)
+                               {
+                                   const int slotIndex = result - 1; // 0-based
+                                   model.addRoute(static_cast<int>(sourceId), destParamId,
+                                                  /* depth = */ 0.5f, bipolar, slotIndex);
+                               }
+                               // result == 0 means cancelled — no route added.
+                           });
     }
 
     //==========================================================================
