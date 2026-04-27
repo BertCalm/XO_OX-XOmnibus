@@ -67,6 +67,16 @@ public:
 
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override { engine_.attachParameters(apvts); }
 
+    // #1257: Forward MPE manager to the inner OperaEngine so it can do per-voice
+    // pitch-bend lookups. The base SynthEngine::mpeManager is also set by the
+    // default impl (which OperaAdapter inherits), but OperaEngine is a plain class
+    // that doesn't have access to it — hence the explicit delegation here.
+    void setMPEManager(MPEManager* m) override
+    {
+        SynthEngine::setMPEManager(m); // keep base-class pointer in sync
+        engine_.setMPEManager(m);
+    }
+
 private:
     opera::OperaEngine engine_;
 };

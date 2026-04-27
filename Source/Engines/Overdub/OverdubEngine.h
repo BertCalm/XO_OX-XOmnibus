@@ -138,7 +138,13 @@ public:
         fbFilterR.setMode(CytomicSVF::Mode::BandPass);
 
         wowPhase = 0.0;
-        flutterNoise.seed(77777);
+        // FIX P36: mix pointer-hash so each DubTapeDelay instance (per engine slot)
+        // produces independent flutter noise — multiple Overdub instances were
+        // generating identical tape-flutter modulation.
+        {
+            uint32_t ptrSeed = static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+            flutterNoise.seed((ptrSeed != 0u) ? ptrSeed : 0xDEADBEEFu);
+        }
         flutterSmoothed = 0.0f;
         constexpr float twoPi = 6.28318530717958647692f;
         flutterCoeff = 1.0f - std::exp(-twoPi * 45.0f / static_cast<float>(sampleRate));

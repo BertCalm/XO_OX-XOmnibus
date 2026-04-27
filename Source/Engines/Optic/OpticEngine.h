@@ -273,7 +273,10 @@ public:
         cachedSampleRate = sampleRate;
         phase = 0.0;
         pulseLevel = 0.0f;
-        noiseGen.seed(42); // Deterministic seed for reproducible patterns
+        // FIX P36: mix pointer-hash so each OpticAutoPulse instance produces
+        // independent accent-pattern noise across simultaneous engine instances.
+        uint32_t ptrSeed = static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+        noiseGen.seed((ptrSeed != 0u) ? ptrSeed : 0xDEADBEEFu);
     }
 
     void reset() noexcept
