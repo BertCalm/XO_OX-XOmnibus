@@ -172,11 +172,14 @@ struct OpalineExciter
         float instrumentNoise[4] = {0.05f, 0.20f, 0.02f, 0.10f};
         noiseMix = instrumentNoise[std::clamp(instrument, 0, 3)] + hardness * 0.15f;
 
-        // Include baseFreq bits so identical-velocity notes on different pitches
-        // produce distinct noise patterns (avoids audible repetition on repeated notes).
-        noiseState = static_cast<uint32_t>(velocity * 65535.0f)
+        // Include baseFreq + pointer-hash so identical-velocity notes on different pitches
+        // and simultaneous chord voices produce distinct noise patterns.
+        // FIX P36: ^pointer-hash ensures two voices at the same note+velocity diverge immediately.
+        noiseState = (static_cast<uint32_t>(velocity * 65535.0f)
                      ^ static_cast<uint32_t>(baseFreq * 31.0f)
-                     ^ 12345u;
+                     ^ 12345u)
+                     ^ (static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u);
+        if (noiseState == 0u) noiseState = 0xDEADBEEFu; // LCG must be non-zero
 
         // Mallet contact lowpass (Hunt-Crossley model)
         malletCutoff = baseFreq * (2.0f + hardness * 16.0f);

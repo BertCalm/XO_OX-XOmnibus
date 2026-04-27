@@ -140,7 +140,11 @@ struct OchreHammerModel
         malletCutoff = std::min(baseFreq * cutoffMult, sampleRate * 0.49f);
         malletLPCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * malletCutoff / sampleRate);
 
-        noiseState = static_cast<uint32_t>(velocity * 65535.0f) + 54321u;
+        // FIX P36: XOR with pointer-hash so simultaneous voices at the same velocity
+        // (e.g. same-velocity chord) produce distinct hammer-contact noise patterns.
+        noiseState = (static_cast<uint32_t>(velocity * 65535.0f) + 54321u)
+                     ^ (static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u);
+        if (noiseState == 0u) noiseState = 0xDEADBEEFu; // LCG must be non-zero
         malletFilterState = 0.0f;
     }
 
