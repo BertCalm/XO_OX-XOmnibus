@@ -4,6 +4,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
 #include "MidiLearnMouseListener.h"
+#include <vector>
 
 namespace xoceanus
 {
@@ -56,6 +57,38 @@ public:
 
     // Convenience overload — clear any active modulation arc.
     void clearModulation() { setModulation(0.0f); }
+
+    // D9 F4: Badge ring — per-route amounts for the segmented arc overlay.
+    //
+    // Call from any timer or update path that knows the current mod matrix state
+    // for this knob's parameter.  Pass an empty vector to clear.
+    //
+    // Data is packed into "badgeRouteAmounts" as a juce::Array<juce::var> so it
+    // survives the NamedValueSet round-trip without heap allocation in paint().
+    // The badge ring is only drawn when at least one route is active (amount ≠ 0).
+    //
+    // Colour is fixed to XOceanus::AccentColors::chainAccent (chain cool teal),
+    // per the D9/D10 design contract: routing layer = chain palette.
+    void setBadgeRoutes(const std::vector<float>& routeAmounts)
+    {
+        auto& props = getProperties();
+        juce::Array<juce::var> arr;
+        for (float a : routeAmounts)
+            arr.add(juce::jlimit(-1.0f, 1.0f, a));
+
+        const juce::var newVal (arr);
+        if (props["badgeRouteAmounts"].toString() != newVal.toString())
+        {
+            props.set("badgeRouteAmounts", newVal);
+            repaint();
+        }
+    }
+
+    // Convenience: clear the badge ring.
+    void clearBadgeRoutes()
+    {
+        setBadgeRoutes({});
+    }
 
     // Wire up MIDI Learn for this knob.  Call after SliderAttachment is created.
     // The caller must store the returned listener pointer in a unique_ptr vector.
