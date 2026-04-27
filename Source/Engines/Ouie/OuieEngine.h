@@ -574,7 +574,13 @@ struct OuieFilteredNoise
 
     void reset() noexcept
     {
-        gen.seed(1);
+        // FIX P36: was gen.seed(1) — all OuieFilteredNoise instances (one per voice)
+        // reset to the same seed, making duophonic filtered-noise voices produce
+        // identical character until they diverge via traversal. Mix pointer-hash so
+        // each instance produces independent noise on reset.
+        uint32_t h = static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+        if (h == 0u) h = 1u;
+        gen.seed(h);
         trackFilter.reset();
         prevFilterFreq = -1.0f;
         prevReso = -1.0f;
