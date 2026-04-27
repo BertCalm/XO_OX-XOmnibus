@@ -64,6 +64,44 @@ public:
         // Embedded ouija panel — shown only in Ouija mode.
         ouijaPanel_.setVisible(false);
         addAndMakeVisible(ouijaPanel_);
+
+        // ── Wire SubmarineOuijaPanel callbacks (#1172) ─────────────────────
+        // Forward planchette-lock events to onNoteOn so the ouija panel drives
+        // the same MIDI output path as the PAD / DRUM surfaces.
+        //
+        // The locked MIDI note is cached in ouijaLockedNote_ so the matching
+        // note-off on release targets the exact note that was fired.
+        ouijaPanel_.onNoteLocked = [this](int /*noteIndex*/, int midiNote)
+        {
+            // Release any previous note before firing the new one.
+            if (ouijaLockedNote_ >= 0 && onNoteOff)
+                onNoteOff(ouijaLockedNote_);
+            ouijaLockedNote_ = midiNote;
+            if (onNoteOn)
+                onNoteOn(midiNote, 0.75f); // fixed velocity — locks to a harmonic node
+        };
+
+        // Planchette release (GOODBYE / unlock click) → note-off for the
+        // currently locked note.
+        ouijaPanel_.onNoteReleased = [this]()
+        {
+            if (ouijaLockedNote_ >= 0 && onNoteOff)
+                onNoteOff(ouijaLockedNote_);
+            ouijaLockedNote_ = -1;
+        };
+
+        // Planchette position → CC output.
+        // emitCCOutput() fires at 30 Hz with (cc=0, circleX) then (cc=1, influenceY).
+        // Map to the canonical CC numbers and forward via onOuijaCCOutput.
+        ouijaPanel_.onCCOutput = [this](int cc, float value)
+        {
+            if (!onOuijaCCOutput)
+                return;
+            const uint8_t ccNum = (cc == 0) ? kOuijaCCCircleX : kOuijaCCInfluenceY;
+            const uint8_t val   = static_cast<uint8_t>(
+                juce::jlimit(0, 127, juce::roundToInt(value * 127.0f)));
+            onOuijaCCOutput(ccNum, val);
+        };
     }
 
     ~SurfaceRightPanel() override = default;
@@ -104,6 +142,25 @@ public:
     std::function<void(int note, float velocity)> onNoteOn;
     std::function<void(int note)>                 onNoteOff;
     std::function<void(float x, float y)>         onXYChanged;
+
+    // CC output from the embedded SubmarineOuijaPanel (Ouija mode only).
+    // Fires at ~30 Hz while the ouija panel is visible.
+    //   cc 0 = circleX   (horizontal planchette position, 0-1 normalised)
+    //   cc 1 = influenceY (radius / depth, 0-1 normalised)
+    // Wire this to processor_->pushCCOutput() in the host (editor / OceanView)
+    // using the CC numbers defined below.
+    //
+    //   circleX   → CC 85 (Undefined controller — XOceanus convention for ouija X)
+    //   influenceY → CC 86 (Undefined controller — XOceanus convention for ouija Y)
+    //
+    // These constants are exposed so the host can label them in any MIDI learn UI.
+    static constexpr uint8_t kOuijaCCCircleX    = 85;
+    static constexpr uint8_t kOuijaCCInfluenceY = 86;
+    static constexpr uint8_t kOuijaMidiChannel  = 1; // 1-indexed, MIDI channel 1
+
+    // Fired each time the ouija panel emits a position CC.
+    // signature: (uint8_t cc, uint8_t value)
+    std::function<void(uint8_t cc, uint8_t value)> onOuijaCCOutput;
 
     // Close button callback
     std::function<void()> onCloseClicked;
@@ -349,6 +406,11 @@ private:
     Mode  mode_            = Mode::Pad;
     bool  open_            = false;
 
+    // Ouija mode: tracks the MIDI note number currently sounding from the
+    // ouija planchette lock, so we can send the correct note-off on release.
+    // -1 = no note currently locked.
+    int   ouijaLockedNote_ = -1;
+
     // Active pad / close button state
     int   pressedPad_      = -1; // -1 = none
     int   hoverPad_        = -1;
@@ -492,6 +554,14 @@ private:
             pressedPad_ = -1;
         }
         xyDragging_ = false;
+
+        // Release any ouija-locked note when switching away from Ouija mode.
+        if (ouijaLockedNote_ >= 0)
+        {
+            if (onNoteOff)
+                onNoteOff(ouijaLockedNote_);
+            ouijaLockedNote_ = -1;
+        }
     }
 
     //==========================================================================
