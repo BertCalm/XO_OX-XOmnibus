@@ -152,7 +152,7 @@ struct OceanicVoice
     int controlCounter = 0;
 
     // Per-voice PRNG state for scatter/noise
-    uint32_t rng = 12345u;
+    uint32_t rng = 0u; // Sentinel; must be seeded by initVoice() before use
 
     // DC blocker state (per-voice)
     float dcPrevInL = 0.0f;
