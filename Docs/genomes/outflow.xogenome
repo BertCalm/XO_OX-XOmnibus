@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OUTFLOW",
+  "engine_prefix": "out_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 1,
+    "architecture": "Predictive spatial synthesis — monophonic; a 20ms lookahead delay line enables pre-transient detection; Bayesian envelope predictor anticipates upcoming transients before they arrive; when a transient is predicted, the VCA drops to zero just before impact (Pre-Wake Vacuum) creating an acoustic void that the Undertow reverb then fills with optically-saturated tail; the harder the gate clamps, the warmer the reverb tail; Tidal Drift ages the room geometry over minutes via sub-audible LFO; the engine processes its own exciter signal or coupling input audio."
+  },
+
+  "filter": {
+    "topology": "none",
+    "modes": [],
+    "resonance_range": [0.0, 0.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "custom",
+    "stages": 2,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 1,
+    "lfo_shapes": ["sine"],
+    "mod_matrix_depth": 1,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.55,
+    "velocity_targets": ["amplitude", "transient"],
+    "pitch_bend_range": 0,
+    "aftertouch_response": "none",
+    "dynamic_range_db": 60
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "CHARACTER",
+      "behavior": "Controls predictor sensitivity and optical saturation character — low CHARACTER is a gentle predictor that occasionally misses transients; high CHARACTER is highly sensitive, detecting and gating more frequently with more pronounced optical saturation shaping the reverb tail color."
+    },
+    "macro2": {
+      "name": "MOVEMENT",
+      "behavior": "Drives Tidal Drift LFO depth — controls how much the room geometry ages over time; low MOVEMENT holds a static room; increasing MOVEMENT slowly morphs reverb size and decay over minutes, creating the impression of being carried on a tide through changing acoustic spaces."
+    },
+    "macro3": {
+      "name": "COUPLING",
+      "behavior": "Controls undertow pull — vacuum aggressiveness; high COUPLING makes the pre-transient vacuum deeper and more abrupt, maximizing the prediction-reality gap that becomes the instrument. Also scales coupling input audio depth for processing external signals."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Sets Undertow reverb size and pre-delay — at zero OUTFLOW is tight and present; increasing SPACE opens the room from a small chamber to a vast ocean cavern, extending the saturated tail that fills the pre-transient vacuums."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "fx",
+    "brightness": 0.28,
+    "warmth": 0.62,
+    "movement": 0.72,
+    "density": 0.45,
+    "transient_character": "complex"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "EnvToDecay", "AudioToBuffer"],
+    "best_as_target": ["AudioToBuffer", "AudioToFM", "AmpToFilter"],
+    "recommended_partners": ["ONSET", "OFFERING", "OBSCURA", "OXBOW"],
+    "coupling_personality": "The vacuum architect — OUTFLOW is most powerful in sidechain positions where it processes audio from a transient-rich source (ONSET, OFFERING) via AudioToBuffer coupling; it predicts those transients and creates vacuums around them. A unique FX-role engine that fundamentally changes the rhythmic feel of whatever it processes."
+  },
+
+  "mythology": {
+    "creature": "The Vampire Squid (Vampyroteuthis infernalis) — the Midnight Zone predator that inverts its tentacled web to trap marine snow; OUTFLOW creates acoustic vacuums the way the vampire squid creates physical ones, filling the void with something stranger than the absence",
+    "depth_zone": "midnight",
+    "felix_oscar_polarity": 0.78,
+    "accent_color": "#1A1A40"
+  },
+
+  "metadata": {
+    "param_count": 14,
+    "preset_count": 27,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}
