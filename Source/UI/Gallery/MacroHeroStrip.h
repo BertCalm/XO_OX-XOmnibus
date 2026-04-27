@@ -122,8 +122,12 @@ public:
                     pillars[i].setColour(juce::Slider::backgroundColourId,
                                          GalleryColors::get(GalleryColors::borderGray()));
                 }
-                pillars[i].setTooltip(foundNames[i]);
-                A11y::setup(pillars[i], foundNames[i]);
+                // §1301: extend macro pillar tooltip beyond bare name to include
+                // engine context and sweep hint (≤ 60 chars per voice/tone spec).
+                juce::String macroTip = engineName + " " + foundNames[i]
+                    + " macro (drag to sweep)";
+                pillars[i].setTooltip(macroTip);
+                A11y::setup(pillars[i], foundNames[i], macroTip);
 
                 pillarLabels[i].setText(foundNames[i], juce::dontSendNotification);
                 pillarLabels[i].setFont(GalleryFonts::value(10.0f)); // (#885: 8pt→10pt legibility floor)
