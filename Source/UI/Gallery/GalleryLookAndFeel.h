@@ -3,7 +3,9 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
+#include "../AccentColors.h"
 #include <map>
+#include <vector>
 
 namespace xoceanus
 {
@@ -78,6 +80,104 @@ public:
             constexpr float dotR = 1.8f;
             g.setColour (arcCol.withAlpha (0.9f));
             g.fillEllipse (dotX - dotR, dotY - dotR, dotR * 2.0f, dotR * 2.0f);
+        }
+    }
+
+    //==========================================================================
+    // paintModulationBadgeRing — D9 F4 knob discoverability overlay.
+    //
+    // Renders a thin (1.5px) segmented arc just outside the knob body, one
+    // segment per active modulation route targeting this knob.  Each segment
+    // arc length is proportional to abs(amount).  Positive amounts use the
+    // supplied color at full alpha; negative amounts use 60% alpha (inversion
+    // cue).  The ring starts at 12 o'clock and sweeps clockwise.
+    //
+    // knobBounds — the rectangle that encloses the knob (same as Slider bounds).
+    // color       — chain-cool accent color (XOceanus::AccentColors::chainAccent).
+    // routeAmounts — bipolar amounts [-1..+1], one per active route.  Empty →
+    //               no-op.  Called from the knob paint site (message thread only).
+    //
+    // Lucy's gate: no gradient allocation here. Pure path/stroke only.
+    // Constraint: segments smaller than 2° are skipped to avoid hair-thin arcs.
+    //
+    // Usage (from knob paint call-site):
+    //   auto routes = modMatrix.getRoutesTargeting(destIdx);
+    //   if (!routes.empty()) {
+    //       std::vector<float> amounts;
+    //       for (auto& r : routes) amounts.push_back(r.amount);
+    //       GalleryLookAndFeel::paintModulationBadgeRing(g, knobBounds,
+    //           XOceanus::AccentColors::chainAccent, amounts);
+    //   }
+    //==========================================================================
+    static void paintModulationBadgeRing(juce::Graphics& g,
+                                          juce::Rectangle<float> knobBounds,
+                                          juce::Colour color,
+                                          const std::vector<float>& routeAmounts)
+    {
+        if (routeAmounts.empty())
+            return;
+
+        using juce::MathConstants;
+        using juce::Path;
+        using juce::PathStrokeType;
+
+        // Ring radius: just outside the knob body (knob body fills diameter,
+        // subtract 1.5px for the stroke half-width).
+        const float diameter = juce::jmin(knobBounds.getWidth(), knobBounds.getHeight());
+        const float ringR    = diameter * 0.5f - 1.5f;
+        if (ringR <= 1.0f)
+            return; // knob too small to show ring
+
+        const float cx = knobBounds.getCentreX();
+        const float cy = knobBounds.getCentreY();
+
+        // Distribute the full 2π circle proportionally among routes, weighted
+        // by abs(amount).  Routes with amount=0 are filtered by getRoutesTargeting
+        // before this function is called, but clamp anyway.
+        float totalWeight = 0.0f;
+        for (float a : routeAmounts)
+            totalWeight += std::abs(a);
+
+        if (totalWeight < 1e-5f)
+            return;
+
+        constexpr float kMinSegmentRad = 2.0f * juce::MathConstants<float>::pi / 180.0f; // 2°
+        const float kFullSweep = juce::MathConstants<float>::twoPi;
+
+        // Start at 12 o'clock (−π/2), sweep clockwise.
+        float angleStart = -MathConstants<float>::halfPi;
+
+        for (float amt : routeAmounts)
+        {
+            const float weight   = std::abs(amt);
+            const float segSweep = (weight / totalWeight) * kFullSweep;
+
+            if (segSweep < kMinSegmentRad)
+            {
+                angleStart += segSweep;
+                continue;
+            }
+
+            const float angleEnd = angleStart + segSweep;
+
+            // Positive amounts → full alpha; negative → 60% (inversion cue).
+            const float alpha = (amt >= 0.0f) ? 1.0f : 0.60f;
+            g.setColour(color.withAlpha(alpha));
+
+            // JUCE addCentredArc uses its own angle convention:
+            //   0 = 12 o'clock, clockwise positive (same as our convention here).
+            // We built our angles in standard math (counter-clockwise from 3 o'clock),
+            // so convert: juceAngle = ourAngle + π/2.
+            Path seg;
+            seg.addCentredArc(cx, cy, ringR, ringR, 0.0f,
+                               angleStart + MathConstants<float>::halfPi,
+                               angleEnd   + MathConstants<float>::halfPi,
+                               true);
+            g.strokePath(seg, PathStrokeType(1.5f,
+                                              PathStrokeType::curved,
+                                              PathStrokeType::rounded));
+
+            angleStart = angleEnd;
         }
     }
 
@@ -279,7 +379,36 @@ public:
             }
         }
 
-        // ── 6c. Passive hover ring — 1px translucent ring, only when hovering ─
+        // ── 6c. Badge ring (D9 F4) — per-route segmented arc, chain-cool teal ─
+        // The knob stores route amounts in a juce::Array<juce::var> property
+        // "badgeRouteAmounts" via GalleryKnob::setBadgeRoutes().  An empty array
+        // (or missing property) is a no-op.  Lucy's gate: no gradient; pure path.
+        if (diameter >= 28.0f)
+        {
+            if (const auto* v = slider.getProperties().getVarPointer("badgeRouteAmounts"))
+            {
+                if (const auto* arr = v->getArray())
+                {
+                    if (arr->size() > 0)
+                    {
+                        std::vector<float> amounts;
+                        amounts.reserve(static_cast<size_t>(arr->size()));
+                        for (int ri = 0; ri < arr->size(); ++ri)
+                            amounts.push_back(static_cast<float>((*arr)[ri]));
+
+                        // Badge ring sits just outside the normal arc at radius+2px.
+                        const auto knobBounds = juce::Rectangle<float>(
+                            cx - radius - 2.0f, cy - radius - 2.0f,
+                            (radius + 2.0f) * 2.0f, (radius + 2.0f) * 2.0f);
+                        paintModulationBadgeRing(g, knobBounds,
+                                                  XOceanus::AccentColors::chainAccent,
+                                                  amounts);
+                    }
+                }
+            }
+        }
+
+        // ── 6d. Passive hover ring — 1px translucent ring, only when hovering ─
         // Shown at all slider positions (including zero) so the user always gets
         // visual confirmation that the knob is interactive when they hover over it.
         if (isPassiveHover)

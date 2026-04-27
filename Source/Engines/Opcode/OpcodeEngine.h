@@ -565,7 +565,7 @@ public:
         int idx = VoiceAllocator::findFreeVoice(voices, kMaxVoices);
         auto& v = voices[idx];
 
-        float freq = 440.0f * std::pow(2.0f, (static_cast<float>(note) - 69.0f) / 12.0f);
+        float freq = 440.0f * fastPow2((static_cast<float>(note) - 69.0f) / 12.0f);
 
         v.active = true;
         v.currentNote = note;
