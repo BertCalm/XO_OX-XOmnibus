@@ -43,11 +43,7 @@
 //   - Per-step on/off toggle override parameters
 //   - Scroll-wheel velocity nudge
 //
-// TODO Wave5-C2 mount (in OceanView.h / resized):
-//   addAndMakeVisible(seqBreakout_);                                     // Z-above all non-modal content
-//   seqBreakout_.setBounds(getLocalBounds().withTop(getHeight() * 2 / 5));
-//   seqBreakout_.setVisible(false); // hidden until strip click
-//   seqStrip_.setBreakout(&seqBreakout_);
+// Wave 5 C2 mount APPLIED — see OceanView.h initSeqStrip() and resized().
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
