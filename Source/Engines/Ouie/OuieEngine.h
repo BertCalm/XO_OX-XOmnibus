@@ -1114,8 +1114,12 @@ public:
 
                 // MPE pitch bend + global channel pitch bend
                 // CPU fix: fastPow2 replaces std::pow — same 2^x formula, no stdlib call per sample.
-                float freq = voice.currentFreq * fastPow2(voice.mpeExpression.pitchBendSemitones / 12.0f) *
-                             PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                // P29 fix: single pitch-bend source — MPE per-note bend OR raw MIDI wheel, not both.
+                // See OblongEngine.h for full rationale.
+                const float ouiePitchBendRatio = (mpeManager != nullptr && mpeManager->isMPEEnabled())
+                    ? fastPow2(voice.mpeExpression.pitchBendSemitones / 12.0f)          // MPE: per-voice bend
+                    : PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);        // non-MPE: channel wheel
+                float freq = voice.currentFreq * ouiePitchBendRatio;
 
                 // Coupling pitch mod
                 freq *= (1.0f + localCouplingPitch * 0.1f);
