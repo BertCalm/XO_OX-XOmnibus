@@ -169,10 +169,13 @@ public:
         {
             // AM approximation of motor flutter (delay-line-free; see updateWarmth()).
             // F13: uses block-rate cached cachedWobbleSin to avoid per-sample sin().
+            // CF-2 fix: the per-sample wobblePhase advance that was here (wobblePhase +=
+            // twoPi * 0.3 / sr) was a half-completed refactor left over after F13 moved
+            // phase advancement to updateWarmth().  Having BOTH advances caused the wobble
+            // oscillator to run ~129x too fast (39 Hz instead of 0.3 Hz), producing an
+            // audible AM distortion artifact rather than capstan flutter on all circuit-aged
+            // patches.  Removed: updateWarmth() is the sole phase owner.
             float wobble = 1.0f + circuitAge * 0.0017f * cachedWobbleSin;
-            wobblePhase += static_cast<float>(juce::MathConstants<double>::twoPi * 0.3 / sr);
-            if (wobblePhase > juce::MathConstants<float>::twoPi)
-                wobblePhase -= juce::MathConstants<float>::twoPi;
             output *= wobble;
         }
 
