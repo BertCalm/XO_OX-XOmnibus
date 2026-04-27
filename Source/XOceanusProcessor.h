@@ -502,6 +502,8 @@ private:
         std::atomic<float>* cmHumanize = nullptr;
         std::atomic<float>* cmSidechainDuck = nullptr;
         std::atomic<float>* cmEnoMode = nullptr;
+        // Per-slot chord/seq routing (Wave 5 B3)
+        std::array<std::atomic<float>*, 4> cmSlotRoute = {nullptr, nullptr, nullptr, nullptr};
         // Family bleed params — cached to avoid string lookups on audio thread
         std::atomic<float>* ohmCommune = nullptr;
         std::atomic<float>* obblBond = nullptr;

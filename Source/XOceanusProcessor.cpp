@@ -446,6 +446,9 @@ void XOceanusProcessor::cacheParameterPointers()
     cachedParams.cmHumanize = apvts.getRawParameterValue("cm_humanize");
     cachedParams.cmSidechainDuck = apvts.getRawParameterValue("cm_sidechain_duck");
     cachedParams.cmEnoMode = apvts.getRawParameterValue("cm_eno_mode");
+    // Per-slot chord/seq routing (Wave 5 B3)
+    for (int slot = 0; slot < 4; ++slot)
+        cachedParams.cmSlotRoute[slot] = apvts.getRawParameterValue("cm_slot_route_" + juce::String(slot));
     cachedParams.ohmCommune = apvts.getRawParameterValue("ohm_macroCommune");
     cachedParams.obblBond = apvts.getRawParameterValue("obbl_macroBond");
     cachedParams.oleDrama = apvts.getRawParameterValue("ole_macroDrama");
@@ -707,6 +710,18 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
                                                                  juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     params.push_back(
         std::make_unique<juce::AudioParameterBool>(juce::ParameterID("cm_eno_mode", 1), "CM Eno Mode", false));
+
+    // Per-slot chord/seq routing mode (Wave 5 B3).
+    // One Choice parameter per primary engine slot (slots 0–3).
+    // Values: 0=CHORD→SEQ, 1=SEQ→CHORD, 2=PARALLEL. Default: CHORD→SEQ.
+    for (int slot = 0; slot < 4; ++slot)
+    {
+        const juce::String paramId  = "cm_slot_route_" + juce::String(slot);
+        const juce::String paramName = "CM Slot " + juce::String(slot + 1) + " Routing";
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID(paramId, 1), paramName,
+            juce::StringArray{"CHORD\xe2\x86\x92SEQ", "SEQ\xe2\x86\x92CHORD", "PARALLEL"}, 0));
+    }
 
     // Master FX parameters
     // Stage 1: Saturation
@@ -1425,6 +1440,16 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     chordMachine.setHumanize(cachedParams.cmHumanize->load());
     chordMachine.setSidechainDuck(cachedParams.cmSidechainDuck->load());
     chordMachine.setEnoMode(cachedParams.cmEnoMode->load() >= 0.5f);
+    // Wave 5 B3: sync per-slot chord/seq routing modes from cached APVTS params.
+    for (int slot = 0; slot < 4; ++slot)
+    {
+        if (cachedParams.cmSlotRoute[slot] != nullptr)
+        {
+            const int modeIdx = static_cast<int>(cachedParams.cmSlotRoute[slot]->load(std::memory_order_relaxed));
+            chordMachine.setSlotRoutingMode(slot, static_cast<ChordSeqRoutingMode>(
+                std::max(0, std::min(modeIdx, static_cast<int>(ChordSeqRoutingMode::NumModes) - 1))));
+        }
+    }
     // W12 fix: sync pattern from APVTS on every block.  applyPattern() is safe to
     // call from the audio thread — it writes to steps[].active (benign race as
     // documented in ChordMachine.h) and updates activePattern atomic.

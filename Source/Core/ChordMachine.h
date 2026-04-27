@@ -93,6 +93,47 @@ enum class RhythmPattern : int
     NumPatterns
 };
 
+// ChordSeqRoutingMode — per engine-slot routing of chord vs sequencer.
+// Stored per-slot as an atomic int; read once per processBlock.
+//
+//   ChordUpstream: chord generates notes → sequencer sequences them.
+//                  The slot receives chord-distributed MIDI from the ChordMachine
+//                  sequencer as normal (this is the pre-B3 default).
+//
+//   SeqUpstream:   sequencer triggers first; each trigger is treated as a root
+//                  note that the chord harmonises.  Concretely: the slot receives
+//                  the raw (un-expanded) sequencer trigger so the engine's own
+//                  arpeggiator / step-seq can drive the timing, while the chord
+//                  palette/voicing still shapes the pitches the engine plays.
+//                  Implemented by injecting the chord-distributed note of ONLY
+//                  the slot's own index (i.e. the per-slot chord tone) into the
+//                  raw-MIDI stream — the engine sees a single note-on/off whose
+//                  pitch is the chord tone for that slot at the trigger moment.
+//
+//   Parallel:      chord and sequencer run independently; the slot receives
+//                  chord-distributed MIDI unchanged AND the raw input MIDI merged.
+//                  Both systems fire simultaneously without interaction.
+//
+// Default for all slots: ChordUpstream (preserves pre-B3 behaviour).
+enum class ChordSeqRoutingMode : int
+{
+    ChordUpstream = 0, // chord → seq   (default, pre-B3 behaviour)
+    SeqUpstream   = 1, // seq → chord   (seq drives timing, chord shapes pitch)
+    Parallel      = 2, // both fire independently, merged into slot buffer
+    NumModes
+};
+
+static inline const char* chordSeqRoutingName(ChordSeqRoutingMode m) noexcept
+{
+    switch (m)
+    {
+    case ChordSeqRoutingMode::ChordUpstream: return "CHORD→SEQ";
+    case ChordSeqRoutingMode::SeqUpstream:   return "SEQ→CHORD";
+    case ChordSeqRoutingMode::Parallel:      return "PARALLEL";
+    default:                                 return "?";
+    }
+}
+
 enum class VelocityCurve : int
 {
     Equal = 0, // 100/100/100/100 — flat
@@ -509,6 +550,46 @@ public:
             processSequencerMode(inputMidi, outputMidi, numSamples, pal, voic, spr);
         else
             processLiveMode(inputMidi, outputMidi, pal, voic, spr);
+
+        // Apply per-slot chord/seq routing (Wave 5 B3).
+        //
+        // After the core chord/seq processing has written chord-distributed MIDI
+        // into each outputMidi[slot], rewrite slots whose routing mode is not the
+        // default (ChordUpstream):
+        //
+        //   SeqUpstream  — replace chord-distributed output with raw inputMidi,
+        //                  so the engine's own step-seq / arpeggiator drives timing
+        //                  and pitch without chord expansion.  The engine treats
+        //                  incoming notes as its sequencer triggers (C1 integration
+        //                  point: when PerEnginePatternSequencer lands, it will read
+        //                  from this slot buffer).
+        //
+        //   Parallel     — merge raw inputMidi on top of the chord output so both
+        //                  the chord-distributed notes AND the raw input reach the
+        //                  engine simultaneously.
+        //
+        // ChordUpstream (index 0) is the default — no rewrite needed.
+        // We only process the 4 primary chord slots (kChordSlots); the ghost slot
+        // (index 4) is left unchanged.
+        for (int slot = 0; slot < kChordSlots; ++slot)
+        {
+            const auto mode = static_cast<ChordSeqRoutingMode>(
+                slotRouting_[slot].load(std::memory_order_relaxed));
+
+            if (mode == ChordSeqRoutingMode::SeqUpstream)
+            {
+                // Replace chord output with raw input for this slot.
+                outputMidi[slot].clear();
+                outputMidi[slot] = inputMidi;
+            }
+            else if (mode == ChordSeqRoutingMode::Parallel)
+            {
+                // Merge raw input on top of chord output (add without clearing).
+                for (const auto metadata : inputMidi)
+                    outputMidi[slot].addEvent(metadata.getMessage(), metadata.samplePosition);
+            }
+            // ChordUpstream: no action — outputMidi[slot] already contains chord output.
+        }
     }
 
     //-- State setters (message thread, read by audio thread via atomics) ------
@@ -552,6 +633,32 @@ public:
 
     void setHumanize(float h) { humanize.store(std::max(0.0f, std::min(1.0f, h)), std::memory_order_relaxed); }
     float getHumanize() const { return humanize.load(std::memory_order_relaxed); }
+
+    // Per-slot chord/seq routing (Wave 5 B3) ─────────────────────────────────
+    //
+    // Each of the 4 primary engine slots can independently configure how the
+    // chord machine and sequencer interact for that slot.  Default is
+    // ChordUpstream (pre-B3 behaviour).
+    //
+    // The routing is applied inside processBlock after the core chord/seq
+    // processing: slotMidi[i] is rewritten according to slotRoutingMode_[i]
+    // before the caller (XOceanusProcessor) dispatches it to each engine.
+    //
+    // Thread safety: written by message thread via these setters; read once per
+    // block by the audio thread with relaxed load (same model as all other atomics).
+
+    void setSlotRoutingMode(int slot, ChordSeqRoutingMode mode)
+    {
+        if (slot >= 0 && slot < kChordSlots)
+            slotRouting_[slot].store(static_cast<int>(mode), std::memory_order_relaxed);
+    }
+
+    ChordSeqRoutingMode getSlotRoutingMode(int slot) const noexcept
+    {
+        if (slot < 0 || slot >= kChordSlots)
+            return ChordSeqRoutingMode::ChordUpstream;
+        return static_cast<ChordSeqRoutingMode>(slotRouting_[slot].load(std::memory_order_relaxed));
+    }
 
     void setSidechainDuck(float d)
     {
@@ -1295,6 +1402,12 @@ private:
     std::atomic<float> humanize{0.0f};
     std::atomic<float> sidechainDuck{0.0f};
     std::atomic<bool> enoMode{false};
+
+    // Per-slot chord/seq routing mode (Wave 5 B3).
+    // Default: ChordUpstream (0) — preserves pre-B3 behaviour for all slots.
+    // Indexed 0..kChordSlots-1.  Non-copyable atomics are default-initialised
+    // via the aggregate default initialiser.
+    std::array<std::atomic<int>, kChordSlots> slotRouting_ {}; // all default to 0 = ChordUpstream
 
     // Eno mode state (audio thread only)
     int enoCycleCount = 0;     // counts full 16-step cycles
