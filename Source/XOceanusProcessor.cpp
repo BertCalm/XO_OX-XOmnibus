@@ -736,7 +736,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
         const juce::String paramName = "CM Slot " + juce::String(slot + 1) + " Routing";
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
             juce::ParameterID(paramId, 1), paramName,
-            juce::StringArray{"CHORD\xe2\x86\x92SEQ", "SEQ\xe2\x86\x92CHORD", "PARALLEL"}, 0));
+            juce::StringArray{"CHORD→SEQ", "SEQ→CHORD", "PARALLEL"}, 0));
     }
 
     // ── B2: Chord input mode + global key/scale ───────────────────────────────
