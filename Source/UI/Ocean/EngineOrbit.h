@@ -21,6 +21,7 @@
 //   - Wreath reads from WaveformFifo, not WaveformRingBuffer (F1-F3)
 
 #include <array>
+#include <unordered_map>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 #include "../Gallery/CreatureRenderer.h"
@@ -570,6 +571,43 @@ public:
     // Engine data
     //==========================================================================
 
+    /** Returns a one-line evocative tagline for the tooltip of each engine buoy.
+        Format: "{EngineName} — {identity}". Falls back to engineId if not catalogued.
+        Source: seance verdicts + CLAUDE.md engine identity cards.
+        Wave 9b: first-pass 20 engines; file #1301 followup for remainder. */
+    static juce::String getEngineTagline(const juce::String& engineId)
+    {
+        static const std::unordered_map<std::string, std::string> kTaglines {
+            { "Odyssey",    "Odyssey — warm VA polysynth. The drifter." },
+            { "OddfeliX",  "OddfeliX — feliX the neon tetra. Glitch-phase character synth." },
+            { "OddOscar",  "OddOscar — Oscar the axolotl. Morph-spectrum oscillator." },
+            { "Oxbow",     "Oxbow — Oscar-pole resonator. The spine of deep water." },
+            { "Opaline",   "Opaline — prepared piano. Bloom over long time." },
+            { "Overwash",  "Overwash — tide breath layer. Felt, not heard." },
+            { "Onset",     "Onset — percussive transient sculptor. Attack IS the sound." },
+            { "Oxytocin",  "Oxytocin — circuit-love synthesis. Fleet leader." },
+            { "Ouroboros", "Ouroboros — strange-attractor feedback. Eats itself." },
+            { "Organism",  "Organism — cellular automata synthesis. Life as DSP." },
+            { "Origami",   "Origami — spectral fold synthesis. Each crease adds a harmonic." },
+            { "Obscura",   "Obscura — physical string model. Daguerreotype resonance." },
+            { "Oware",     "Oware — Akan tuned percussion. Goldweight rhythms." },
+            { "Opera",     "Opera — additive-vocal Kuramoto. Aria through coupling." },
+            { "Offering",  "Offering — boom bap drums. The ritual of the loop." },
+            { "Optic",     "Optic — pulse-code synthesis. Light as waveform." },
+            { "Ostinato",  "Ostinato — firelight repetition engine. Rhythm builds heat." },
+            { "Oceanic",   "Oceanic — phosphorescent tidal pad. The surface itself." },
+            { "Oblique",   "Oblique — prism spectrum. Color bent through angle." },
+            { "Orca",      "Orca — ring-mod hunt engine. Predator frequency." },
+        };
+
+        auto it = kTaglines.find(engineId.toStdString());
+        if (it != kTaglines.end())
+            return juce::String(it->second);
+
+        // Fallback: engine name only (remaining engines — see issue #1301)
+        return engineId;
+    }
+
     void setEngine(const juce::String& engineId, juce::Colour accent, DepthZone zone)
     {
         // Guard: the editor calls this every timer tick.  Only run the
@@ -592,7 +630,7 @@ public:
 
         setTitle("Engine: " + engineId);
         setDescription("Depth zone: " + depthZoneName(zone) + ". Double-click to edit.");
-        setTooltip(engineId);
+        setTooltip(getEngineTagline(engineId));  // Wave 9b: evocative buoy tooltips
 
         // Randomize wreath harmonics for per-engine variety
         wreathHarmonics_ = 6 + (juce::Random::getSystemRandom().nextInt(6));
