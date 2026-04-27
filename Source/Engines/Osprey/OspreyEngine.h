@@ -222,7 +222,10 @@ struct CreatureFormant
     bool inGap = true;
 
     // --- PRNG (LCG, Knuth TAOCP constants) ---
-    uint32_t randomState = 54321u;
+    // FIX P36: pointer-hash default so each CreatureFormant instance (3 per voice × N voices)
+    // produces unique probabilistic retrigger timing. Without this all creature formants
+    // across simultaneous voices share the same gap-trigger probability sequence.
+    uint32_t randomState = 0xC2B2AE3Du ^ static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4);
 
     float nextRandom() noexcept
     {
@@ -374,7 +377,10 @@ struct FluidEnergyModel
     float turbulenceState[kTurbulenceOctaves] = {};
 
     // --- PRNG (LCG, Knuth TAOCP constants) ---
-    uint32_t randomState = 98765u;
+    // FIX P36: pointer-hash default so each FluidEnergyModel instance (one per engine)
+    // starts with a unique turbulence seed, preventing correlated fluid-energy noise
+    // when multiple Osprey instances play simultaneously.
+    uint32_t randomState = 0xC2B2AE3Du ^ static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4);
 
     float nextRandomBipolar() noexcept
     {
