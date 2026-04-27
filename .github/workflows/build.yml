@@ -46,23 +46,9 @@ jobs:
           path: |
             build/CMakeFiles
             build/CMakeCache.txt
-            build/**/*.o
-            build/**/*.a
           key: ${{ runner.os }}-${{ github.workflow }}-build-${{ hashFiles('Source/**', 'CMakeLists.txt') }}
           restore-keys: |
-            ${{ runner.os }}-${{ github.workflow }}-build-main-
             ${{ runner.os }}-${{ github.workflow }}-build-
-
-      - name: Install ccache
-        run: brew install ccache
-
-      - name: Cache ccache
-        uses: actions/cache@v5
-        with:
-          path: ~/Library/Caches/ccache
-          key: ccache-${{ runner.os }}-${{ github.workflow }}-${{ github.sha }}
-          restore-keys: |
-            ccache-${{ runner.os }}-${{ github.workflow }}-
 
       - name: Clone JUCE 8.0.4
         if: steps.cache-juce.outputs.cache-hit != 'true'
@@ -77,9 +63,6 @@ jobs:
         run: brew install ninja
 
       - name: Configure CMake
-        env:
-          CC: ccache /usr/bin/clang
-          CXX: ccache /usr/bin/clang++
         run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 
       - name: Build
