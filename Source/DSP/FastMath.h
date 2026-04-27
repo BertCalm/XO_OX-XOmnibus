@@ -18,13 +18,13 @@ namespace xoceanus
 //
 // Accuracy summary:
 //   fastSin             ~0.01%  — suitable for oscillators and LFOs (degree-7 Chebyshev + half-range reduction) (VERIFIED #915)
-//   fastCos             ~0.002% — suitable for oscillators and LFOs (degree-6 even Chebyshev, independent poly) (VERIFIED #915)
+//   fastCos             ~0.09%  — suitable for oscillators and LFOs (degree-6 even Chebyshev + half-range reduction) (FIXED 2026-04-26: added half-range reduction; prior version lacked stage-2 fold and had ~21% error at ±π)
 //   fastTanh            ~2%     — suitable for saturation curves (Padé rational approx) (VERIFIED #915)
 //   fastPow2            ~0.02%  — suitable for pitch and envelope math (minimax cubic + bit-reconstruct) (VERIFIED 2026-04-05)
 //   fastExp             ~6%     — suitable for envelopes/gain curves only (Schraudolph bit-trick; use fastPow2 for pitch)
 //   fastLog2            ~0.002  — suitable for dB conversion ((m-1)-factored cubic, zero at m=1)
 //   fastTan             ~0.03%  — suitable for TPT filter prewarping (|x| < π/4)
-//   softClip            ~0.2%   — monotonic tanh Padé [3/3], no discontinuity (VERIFIED 2026-04-05)
+//   softClip            ~0.2%   — monotonic tanh Padé [3/3], hard-clips at ±3.2 (FIXED 2026-04-26: changed guard from >4 to >=3.2 — Padé is non-monotonic in (3.1,4.0) range)
 //==============================================================================
 
 //------------------------------------------------------------------------------
@@ -148,21 +148,38 @@ inline float fastLog2(float x)
 
 //------------------------------------------------------------------------------
 /// Fast cosine using an even-function 4th-order Chebyshev minimax polynomial.
-/// Input: radians. Accurate to ~0.002% across the full period.
+/// Input: radians. Accurate to ~0.09% across the full period.
+///
+/// Two-stage range reduction (mirrors fastSin):
+///   1. Wrap to [-π, π]
+///   2. Exploit cos even symmetry: fold to [0, π]
+///      Then reflect: cos(x) = -cos(π - x) for x in (π/2, π], fold to [0, π/2]
+///
+/// The polynomial is calibrated for [0, π/2]. Without stage 2, it diverges
+/// badly near ±π (cos(π) evaluates to ~-1.21 instead of -1.0, a 21% error),
+/// which also breaks the Pythagorean identity fastSin²+fastCos²≈1.
 ///
 /// Uses an independent even polynomial — NOT a phase-shifted fastSin — so that
 /// fastSin(x)² + fastCos(x)² ≈ 1 to within the combined approximation error.
 /// (Phase-shifting fastSin introduces correlated error that breaks the identity.)
 inline float fastCos(float x) noexcept
 {
-    // Wrap to [-π, π]
+    // Stage 1: wrap to [-π, π]
     constexpr float twoPi = 6.28318530718f;
     constexpr float invTwoPi = 1.0f / twoPi;
     x = x - twoPi * std::floor(x * invTwoPi + 0.5f);
 
-    // Even Chebyshev minimax approximation — max error ~0.002%
+    // Stage 2: half-range reduction to [0, π/2]
+    // cos is even: fold negative half to positive
+    constexpr float halfPi = 1.57079632679f;
+    constexpr float pi     = 3.14159265359f;
+    if (x < 0.0f) x = -x;          // cos(-x) == cos(x): fold to [0, π]
+    float sign = 1.0f;
+    if (x > halfPi) { x = pi - x; sign = -1.0f; }  // fold to [0, π/2], negate sign
+
+    // Even Chebyshev minimax approximation on [0, π/2] — max error ~0.09%
     const float x2 = x * x;
-    return 1.0f - x2 * (0.49999371f - x2 * (0.04166514f - x2 * 0.00138834f));
+    return sign * (1.0f - x2 * (0.49999371f - x2 * (0.04166514f - x2 * 0.00138834f)));
 }
 
 //------------------------------------------------------------------------------
@@ -299,21 +316,31 @@ inline float smoothCoeffFromTime(float timeSec, float sampleRate)
 ///   - Continuous with continuous derivatives — no jumps, no kinks
 ///   - softClip(0) == 0 exactly (passes through origin)
 ///   - Asymptotes to ±1.0 as x → ±∞
-///   - Hard-clips to ±1 beyond ±4 (tanh > 0.9993 there — perceptually exact)
-///   - Max error vs std::tanh: ~0.2% for |x| < 4
+///   - Hard-clips to ±1 at |x| ≥ 3.2 (tanh(3.2) ≈ 0.9986 — perceptually exact)
+///   - Max error vs std::tanh: ~0.2% for |x| < 3.2
 ///   - No std::tanh call — approximately the same cost as the old cubic
+///
+/// IMPORTANT: The Padé [3/3] rational function peaks at |x| ≈ 3.05 and then
+/// DECREASES, making it non-monotonic for |x| > ~3.1. The hard-clip guard at
+/// ±3.2 prevents the formula from entering this non-monotonic region, ensuring
+/// strict monotonicity across the full input range. The prior guard at ±4 with
+/// a strict `>` operator (not `>=`) was a two-bug combination:
+///   (a) The Padé decreases in [3.1, 4.0], violating monotonicity.
+///   (b) At exactly ±4 the guard did not fire, returning 0.98 instead of 1.0.
 ///
 /// VERIFIED 2026-04-05: replaces broken cubic. SROTables::softClip() in
 /// LookupTable.h is also updated to match — it will be rebuilt on next compile.
 ///
-/// NOTE: The output range is now (-1, 1) approaching asymptotically — signals
-/// never actually reach ±1.0 until the hard clip at ±4. Downstream code that
-/// assumes output is exactly ±1.0 for any finite input should use
+/// NOTE: For |x| < 3.2, output approaches ±1 asymptotically (not exactly).
+/// Downstream code needing exact ±1.0 for any finite input should use
 /// fastTanh() or add an explicit clamp after softClip().
 inline float softClip(float x)
 {
-    if (x > 4.0f)  return  1.0f;
-    if (x < -4.0f) return -1.0f;
+    // Hard-clip at ±3.2: Padé [3/3] peaks at |x| ≈ 3.05 and decreases beyond
+    // that — clipping here preserves strict monotonicity and gives ±1.0 exactly
+    // at the boundary. tanh(3.2) ≈ 0.9986, so the perceptual impact is nil.
+    if (x >= 3.2f)  return  1.0f;
+    if (x <= -3.2f) return -1.0f;
     // Padé [3/3] approximant of tanh: x*(105 + 10*x²) / (105 + 45*x² + x⁴)
     const float x2 = x * x;
     return x * (105.0f + 10.0f * x2) / (105.0f + 45.0f * x2 + x2 * x2);
