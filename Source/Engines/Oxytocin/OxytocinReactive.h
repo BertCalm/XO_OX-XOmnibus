@@ -4,6 +4,8 @@
 #include <cmath>
 #include <algorithm>
 
+#include "../../DSP/FastMath.h"
+
 namespace xoxytocin
 {
 
@@ -72,8 +74,16 @@ public:
         {
             float fc = std::max(20.0f, std::min(quantizedCutoff, static_cast<float>(sr) * 0.49f));
 
-            // Matched-Z: g = tan(pi * fc / sr)
-            g = std::tan(juce::MathConstants<float>::pi * fc / static_cast<float>(sr));
+            // Matched-Z: g = tan(pi * fc / sr).
+            // fastTan Padé [3/2] is accurate to ~0.03% for |x| < π/4 (fc < 0.25·sr).
+            // Above that, accuracy degrades to ~10% near Nyquist — audible cutoff
+            // shift at extreme settings. Region-split: fastTan in the safe band,
+            // std::tan above. Branch lives inside the cutoff-changed block, so
+            // steady-state hot path is unaffected.
+            const float arg = juce::MathConstants<float>::pi * fc / static_cast<float>(sr);
+            g = (arg < juce::MathConstants<float>::pi * 0.25f)
+                ? xoceanus::fastTan(arg)
+                : std::tan(arg);
 
             // FIX 1: Correct TPT Moog normalisation factor.
             // The feedback path must use the normalised one-pole gain G = g/(1+g)

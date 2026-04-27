@@ -331,13 +331,6 @@ public:
             sR[s] *= gainLinear;
         }
 
-        // Clip guard on scratch (only Oxytocin's signal — not earlier engines)
-        for (int s = 0; s < numSamples; ++s)
-        {
-            sL[s] = std::clamp(sL[s], -1.0f, 1.0f);
-            sR[s] = std::clamp(sR[s], -1.0f, 1.0f);
-        }
-
         // ADDITIVE: mix processed scratch into the output buffer
         auto* outL = buffer.getWritePointer(0);
         for (int s = 0; s < numSamples; ++s)
