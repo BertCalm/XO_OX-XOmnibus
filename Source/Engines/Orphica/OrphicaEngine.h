@@ -33,7 +33,10 @@ struct OrphicaMicrosound
 
     float buffer[kBufSize]{};
     int writePos = 0;
-    uint32_t seed = 12345u;
+    // FIX P36: pointer-hash default so each OrphicaMicrosound instance (per voice)
+    // starts with a unique grain-scatter seed. Without this all simultaneous chord voices
+    // produce identical scatter patterns until natural divergence.
+    uint32_t seed = 0xC2B2AE3Du ^ static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4);
 
     int freezePos = 0; // captured write position when Freeze mode triggers
 
@@ -231,7 +234,7 @@ struct OrphicaAdapterVoice
     {
         note = n;
         vel = v;
-        freq = 440 * std::pow(2.f, (n - 69.f) / 12.f);
+        freq = 440.0f * fastPow2((n - 69.f) / 12.f);
         dl.reset();
         df.reset();
         body.setParams(freq * 1.2f, 4);

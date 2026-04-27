@@ -701,16 +701,10 @@ public:
                 if (pLfo2Depth > 0.001f)
                 voiceSignal = voice.mainFilter.processSample(voiceSignal);
 
-                // --- AudioToRing coupling: amplitude modulation by coupling source ---
-                // couplingRingModSrc is accumulated in applyCouplingInput() and
-                // zeroed each block before the sample loop (line ~487).
-                // D006: clamp to [0, 2] — unclamped negative values invert & amplify signal;
-                // this is AM (signal × (1+mod)), not true ring mod (signal × mod).
-                voiceSignal *= clamp(1.0f + couplingRingModSrc, 0.0f, 2.0f);
                 // --- AudioToRing coupling: ring-modulate voice signal ---
-                // couplingRingModSrc accumulated in applyCouplingInput(); snapshot
-                // preserves the pre-reset value for use here (#1118).
-                voiceSignal *= (1.0f + blockCouplingRingModSrc);
+                // Ring-mod: use block-start snapshot to avoid mid-block race with
+                // applyCouplingInput() accumulator. Clamped to [0, 2] for stability.
+                voiceSignal *= clamp(1.0f + blockCouplingRingModSrc, 0.0f, 2.0f);
 
                 // --- Apply amplitude envelope, velocity, crossfade ---
                 float gain = ampLevel * voice.velocity * voice.fadeGain;

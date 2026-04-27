@@ -41,6 +41,16 @@ public:
         bufferL.resize(static_cast<size_t>(bufferSize), 0.0f);
         bufferR.resize(static_cast<size_t>(bufferSize), 0.0f);
         reset();
+        // FIX P36: mix pointer-hash into each grain seed so different GranularSmear
+        // instances (e.g. multiple voices or FX slots) produce independent grain-position
+        // noise. reset() seeds with g*1337+42 which is identical across all instances;
+        // XOR with pointer-hash makes them unique. Non-zero guard: xorshift32 sticks at 0.
+        uint32_t instanceHash = static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+        for (int g = 0; g < kNumGrains; ++g)
+        {
+            grains[g].seed ^= instanceHash ^ static_cast<uint32_t>(g * 0x45D9F3Bu);
+            if (grains[g].seed == 0u) grains[g].seed = 0xDEADBEEFu;
+        }
     }
 
     void setSmear(float s) { smear = std::clamp(s, 0.0f, 1.0f); }
