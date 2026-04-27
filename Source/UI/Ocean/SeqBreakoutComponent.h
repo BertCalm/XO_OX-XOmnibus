@@ -29,18 +29,16 @@
 //   _baseVel    float 0..1
 //   _rootNote   int 0..127
 //
-// NOTE — Step on/off for C2:
-//   PerEnginePatternSequencer does not expose individual per-step on/off
-//   as separate APVTS parameters in C1 — gates are computed algorithmically
-//   per pattern.  In C2 we display the algorithmically-derived step state
-//   (read from a mirror array updated by the 15 Hz timer) as read-only LEDs.
-//   Clicking a pattern pill changes the whole pattern (the primary interaction).
-//   Individual step overrides (C3) require new APVTS bool array params that
-//   will be added in the C3 PR.
+// NOTE — Step interaction (C3):
+//   Tap a step LED to toggle its gate override (on/off).  When any gate override
+//   exists the bitmap is non-zero; the DSP engine respects the full bitmap mask.
+//   Vertical drag on a step LED adjusts its pitch offset in ±12 semitone range
+//   (Maschine-style): drag up = raise, drag down = lower.  First ~5px of drag
+//   determines direction lock (horizontal = gate toggle intent, vertical = pitch).
+//   A small arrow glyph is painted on any step whose pitch offset != 0.
 //
-// Deferred to C3:
-//   - Vertical-drag pitch editing per step (Maschine-style)
-//   - Per-step on/off toggle override parameters
+// Deferred to follow-up issue (long-press detail panel):
+//   - Long-press per-step detail panel (velocity, note length, slide)
 //   - Scroll-wheel velocity nudge
 //
 // Wave 5 C2 mount APPLIED — see OceanView.h initSeqStrip() and resized().
@@ -211,16 +209,29 @@ public:
             return;
         }
 
-        // ── Step toggle hit test ──
-        // C2 shows read-only step LEDs derived from the algorithm.
-        // Clicking a step pill selects the closest pattern that accentuates it
-        // (deferred full override to C3 — for C2 just repaint).
-        if (stepRowBounds_.contains(pos))
+        // ── Step LED gate toggle (C3) ──
+        // If the mouseDown was on a step LED and drag did not resolve as a pitch edit,
+        // interpret the mouseUp as a gate toggle.
+        if (dragStepIdx_ >= 0)
         {
-            // No-op for C2 (step on/off overrides are a C3 feature).
-            // C3 TODO: set per-step bool parameter slot0_seq_stepOverride_i.
+            if (!stepDragConsumed_ && stepDragMode_ != StepDragMode::Pitch)
+            {
+                // Tap: toggle gate override for this step.
+                const bool newGate = !stepGateOverrides_[static_cast<size_t>(dragStepIdx_)];
+                stepGateOverrides_[static_cast<size_t>(dragStepIdx_)] = newGate;
+                setApvtsBool("gate_" + juce::String(dragStepIdx_), newGate);
+                repaint();
+            }
+            // Reset drag state
+            dragStepIdx_      = -1;
+            stepDragMode_     = StepDragMode::Pending;
+            stepDragConsumed_ = false;
             return;
         }
+
+        // ── Step row area fallthrough guard ──
+        if (stepRowBounds_.contains(pos))
+            return;
 
         // ── Controls row hit test ──
         handleControlsClick(pos, w, h);
@@ -228,6 +239,44 @@ public:
 
     void mouseDrag(const juce::MouseEvent& e) override
     {
+        // C3: handle step LED pitch drag (Maschine-style vertical edit)
+        if (dragStepIdx_ >= 0)
+        {
+            const float dy = e.position.y - dragStepStartY_;
+            const float dx = e.position.x - dragStartX_;
+
+            // Direction lock: first ~5px movement resolves the mode
+            if (stepDragMode_ == StepDragMode::Pending)
+            {
+                const float dist = std::sqrt(dx * dx + dy * dy);
+                if (dist > 5.0f)
+                {
+                    if (std::abs(dy) >= std::abs(dx))
+                        stepDragMode_ = StepDragMode::Pitch;
+                    else
+                        stepDragMode_ = StepDragMode::GateToggle;
+                }
+            }
+
+            if (stepDragMode_ == StepDragMode::Pitch)
+            {
+                // Vertical drag: each ~8px = 1 semitone. Drag up = positive offset.
+                // Using negative dy because screen Y increases downward.
+                const float kPxPerSemitone = 8.0f;
+                const int delta = static_cast<int>(std::round(-dy / kPxPerSemitone));
+                const int newPitch = juce::jlimit(-12, 12, dragStepStartPitch_ + delta);
+
+                if (newPitch != static_cast<int>(stepPitchOffsets_[static_cast<size_t>(dragStepIdx_)]))
+                {
+                    stepPitchOffsets_[static_cast<size_t>(dragStepIdx_)] = static_cast<int8_t>(newPitch);
+                    setApvtsParamValue("pitch_" + juce::String(dragStepIdx_), static_cast<float>(newPitch));
+                    stepDragConsumed_ = true;
+                    repaint();
+                }
+            }
+            return;
+        }
+
         // Drag on slider controls (horizontal)
         const juce::Point<float> pos = e.position;
         if (activeSlider_ != SliderTarget::None)
@@ -239,8 +288,21 @@ public:
 
     void mouseDown(const juce::MouseEvent& e) override
     {
-        activeSlider_ = SliderTarget::None;
-        dragStartX_   = e.position.x;
+        activeSlider_     = SliderTarget::None;
+        dragStartX_       = e.position.x;
+        dragStepIdx_      = -1;
+        stepDragMode_     = StepDragMode::Pending;
+        stepDragConsumed_ = false;
+
+        // C3: check if we hit a step LED first
+        const int stepHit = hitTestStepRow(e.position);
+        if (stepHit >= 0)
+        {
+            dragStepIdx_       = stepHit;
+            dragStepStartY_    = e.position.y;
+            dragStepStartPitch_ = static_cast<int>(stepPitchOffsets_[static_cast<size_t>(stepHit)]);
+            return; // control tracks handled only if step not hit
+        }
 
         // Identify which control track was pressed
         if (swingTrack_.contains(e.position))
@@ -268,13 +330,16 @@ public:
     void mouseExit(const juce::MouseEvent& /*e*/) override
     {
         hoveredPattern_ = -1;
+        hoveredStep_    = -1;
         repaint();
     }
 
     void mouseMove(const juce::MouseEvent& e) override
     {
-        const int prev = hoveredPattern_;
+        const int prevPat  = hoveredPattern_;
+        const int prevStep = hoveredStep_;
         hoveredPattern_ = -1;
+        hoveredStep_    = -1;
 
         if (patternGridBounds_.contains(e.position))
         {
@@ -283,7 +348,11 @@ public:
                 hoveredPattern_ = hit;
         }
 
-        if (hoveredPattern_ != prev)
+        // C3: step LED hover
+        if (stepRowBounds_.contains(e.position))
+            hoveredStep_ = hitTestStepRow(e.position);
+
+        if (hoveredPattern_ != prevPat || hoveredStep_ != prevStep)
             repaint();
     }
 
@@ -291,6 +360,9 @@ private:
     //==========================================================================
     // Slider targets
     enum class SliderTarget { None, Swing, Gate, Humanize, Velocity };
+
+    // C3: direction lock for step LED drag (resolved after first ~5px movement)
+    enum class StepDragMode { Pending, Pitch, GateToggle };
 
     //==========================================================================
     // ── Layout constants ──
@@ -423,15 +495,20 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    /** Paint the 16-step LED row.  Returns height consumed. */
+    /** Paint the 16-step LED row with C3 gate overrides, pitch arrows, and hover.
+        Returns height consumed. */
     float paintStepRow(juce::Graphics& g, float x, float y, float areaW)
     {
         static const juce::Font labelFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withStyle("Bold")
             .withHeight(8.0f));
+        static const juce::Font arrowFont(juce::FontOptions{}
+            .withName(juce::Font::getDefaultSansSerifFontName())
+            .withStyle("Bold")
+            .withHeight(8.5f));
 
-        const float ledH      = 28.0f;
+        const float ledH      = 36.0f;  // C3: taller to accommodate pitch arrow glyph
         const float gap       = 3.0f;
         const float ledW      = (areaW - 15.0f * gap) / 16.0f;
         const int   stepCount = currentStepCount_;
@@ -442,18 +519,39 @@ private:
         const int   famIdx    = juce::jlimit(0, kNumFamilies - 1, patIdx / kPatternsPerFamily);
         const juce::Colour famCol = juce::Colour(kFamilyColors[famIdx]);
 
+        // Determine whether any gate override is active (any bit set in the override array).
+        // If so, the overrides act as an explicit mask for all steps.
+        bool anyGateOverride = false;
+        for (int i = 0; i < 16; ++i)
+            if (stepGateOverrides_[i]) { anyGateOverride = true; break; }
+
         // Row header
         g.setFont(labelFont);
         g.setColour(juce::Colour(0xFF9E9B97).withAlpha(0.40f));
         g.drawText("STEPS", juce::Rectangle<float>(x, y - 14.0f, 40.0f, 12.0f).toNearestInt(),
                    juce::Justification::centredLeft, false);
 
+        // C3: hint label (right-aligned) — replaces old "pitch edit in C3" deferred note
+        g.setColour(juce::Colour(0xFF5E6878));
+        g.drawText("drag = pitch  tap = gate", juce::Rectangle<float>(x, y - 14.0f, areaW, 12.0f).toNearestInt(),
+                   juce::Justification::centredRight, false);
+
         for (int i = 0; i < 16; ++i)
         {
             const float lx       = x + static_cast<float>(i) * (ledW + gap);
             const bool  inRange  = (i < stepCount);
             const bool  isCursor = (playing && enabled && i == curStep && inRange);
-            const bool  hasGate  = inRange && (stepGates_[static_cast<size_t>(i)] > 0.0f);
+            const bool  isHovered = (i == hoveredStep_ && inRange);
+
+            // C3: gate state resolves as follows:
+            //   - If any gate override active: use stepGateOverrides_[i] as the gate state.
+            //   - Otherwise: use the algorithmic stepGates_ mirror (C1/C2 behaviour).
+            const bool hasGate = inRange && (
+                anyGateOverride ? stepGateOverrides_[i]
+                                : (stepGates_[static_cast<size_t>(i)] > 0.0f));
+
+            // C3: pitch offset for this step
+            const int pitchOffset = static_cast<int>(stepPitchOffsets_[static_cast<size_t>(i)]);
 
             // LED rectangle
             juce::Rectangle<float> ledRect(lx, y, ledW, ledH);
@@ -465,18 +563,32 @@ private:
                 ledBg     = famCol.withAlpha(0.90f);
                 ledBorder = famCol;
             }
+            else if (isHovered)
+            {
+                // Hover: slightly brightened version of gate state
+                ledBg     = hasGate ? famCol.withAlpha(0.35f)
+                                    : juce::Colour(0xFF252A3A);
+                ledBorder = famCol.withAlpha(0.55f);
+            }
             else if (hasGate && inRange)
             {
-                // Active step with gate: coloured
-                const float gateFactor = juce::jlimit(0.2f, 1.0f, stepGates_[static_cast<size_t>(i)]);
+                // Active step with gate: coloured.
+                // C3: if step has a gate override, use a slightly different alpha to
+                // distinguish override-on from algorithmic-on (slightly brighter border).
+                const float gateFactor = anyGateOverride ? 1.0f
+                    : juce::jlimit(0.2f, 1.0f, stepGates_[static_cast<size_t>(i)]);
                 ledBg     = famCol.withAlpha(0.20f + gateFactor * 0.25f);
-                ledBorder = famCol.withAlpha(0.35f + gateFactor * 0.30f);
+                ledBorder = anyGateOverride ? famCol.withAlpha(0.75f)
+                                            : famCol.withAlpha(0.35f + gateFactor * 0.30f);
             }
             else if (inRange)
             {
-                // In range but rest (gate == 0)
-                ledBg     = juce::Colour(0xFF1A1F2E);
-                ledBorder = juce::Colour(0xFF9E9B97).withAlpha(0.12f);
+                // In range but rest (gate == 0).
+                // C3: if this step is explicitly muted via override, use a darker background.
+                ledBg     = anyGateOverride ? juce::Colour(0xFF0D1018)
+                                           : juce::Colour(0xFF1A1F2E);
+                ledBorder = anyGateOverride ? juce::Colour(0xFF9E9B97).withAlpha(0.06f)
+                                           : juce::Colour(0xFF9E9B97).withAlpha(0.12f);
             }
             else
             {
@@ -490,6 +602,36 @@ private:
             g.setColour(ledBorder);
             g.drawRoundedRectangle(ledRect, 3.0f, 1.0f);
 
+            // C3: pitch arrow glyph — drawn at centre-top of the LED when pitch != 0.
+            // Arrow points up for positive offset, down for negative.
+            // Intensity scales with |offset| / 12.
+            if (inRange && pitchOffset != 0)
+            {
+                const float arrowAlpha = 0.45f + 0.55f * (std::abs(pitchOffset) / 12.0f);
+                const juce::Colour arrowCol = isCursor
+                    ? juce::Colour(0xFF0E111A)
+                    : famCol.withAlpha(arrowAlpha);
+                g.setFont(arrowFont);
+                g.setColour(arrowCol);
+                // Unicode arrows: up = 0x25B2 (▲), down = 0x25BC (▼)
+                const juce::String arrow = (pitchOffset > 0) ? juce::String::charToString(0x25B2)
+                                                              : juce::String::charToString(0x25BC);
+                g.drawText(arrow,
+                           juce::Rectangle<float>(lx, y + 3.0f, ledW, 10.0f).toNearestInt(),
+                           juce::Justification::centred, false);
+
+                // Small semitone number below the arrow (only if |offset| > 0)
+                static const juce::Font pitchNumFont(juce::FontOptions{}
+                    .withName(juce::Font::getDefaultSansSerifFontName())
+                    .withHeight(7.0f));
+                g.setFont(pitchNumFont);
+                g.setColour(arrowCol.withAlpha(arrowAlpha * 0.80f));
+                const juce::String pitchStr = (pitchOffset > 0 ? "+" : "") + juce::String(pitchOffset);
+                g.drawText(pitchStr,
+                           juce::Rectangle<float>(lx, y + 13.0f, ledW, 9.0f).toNearestInt(),
+                           juce::Justification::centred, false);
+            }
+
             // Step number (1-indexed, small, bottom-aligned)
             if (inRange)
             {
@@ -502,16 +644,8 @@ private:
             }
         }
 
-        // C3 deferred annotation
-        static const juce::Font deferredFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(7.5f));
-        g.setFont(deferredFont);
-        g.setColour(juce::Colour(0xFF5E6878));
-        g.drawText("pitch edit in C3", juce::Rectangle<float>(x, y + ledH + 2.0f, areaW, 10.0f).toNearestInt(),
-                   juce::Justification::centredRight, false);
-
-        return ledH + 14.0f; // +14 for the header label + deferred annotation text
+        // C3: section height increased to ledH + 14 (header 14px above + no deferred annotation)
+        return ledH + 14.0f;
     }
 
     //--------------------------------------------------------------------------
@@ -708,6 +842,28 @@ private:
         return -1;
     }
 
+    // C3: returns step index (0-15) if pos is inside the step row area, else -1.
+    // Uses the stepRowBounds_ rect + per-step LED geometry to do per-cell hit testing.
+    int hitTestStepRow(const juce::Point<float>& pos) const
+    {
+        if (!stepRowBounds_.contains(pos))
+            return -1;
+
+        const float areaW  = stepRowBounds_.getWidth();
+        const float gap    = 3.0f;
+        const float ledW   = (areaW - 15.0f * gap) / 16.0f;
+        const float rowX   = stepRowBounds_.getX();
+
+        for (int i = 0; i < 16; ++i)
+        {
+            const float lx = rowX + static_cast<float>(i) * (ledW + gap);
+            const juce::Rectangle<float> cell(lx, stepRowBounds_.getY(), ledW, stepRowBounds_.getHeight());
+            if (cell.contains(pos))
+                return i;
+        }
+        return -1;
+    }
+
     void handlePatternGridClick(const juce::Point<float>& pos)
     {
         const int hit = hitTestPatternGrid(pos);
@@ -881,6 +1037,14 @@ private:
         currentHumanize_  = juce::jlimit(0.0f, 1.0f, readParamFloat("humanize", 0.0f));
         currentVelocity_  = juce::jlimit(0.0f, 1.0f, readParamFloat("baseVel", 0.75f));
         currentEnabled_   = readParamBool("enabled");
+
+        // C3: sync per-step gate overrides and pitch offsets
+        for (int i = 0; i < 16; ++i)
+        {
+            stepGateOverrides_[i] = readParamBool("gate_" + juce::String(i));
+            const int pitch = juce::jlimit(-12, 12, readParamInt("pitch_" + juce::String(i), 0));
+            stepPitchOffsets_[i] = static_cast<int8_t>(pitch);
+        }
     }
 
     //==========================================================================
@@ -929,13 +1093,27 @@ private:
     juce::Rectangle<float> clockDivPill_;
     juce::Rectangle<float> enabledPill_;
 
-    // Drag state
+    // Drag state (controls row sliders)
     SliderTarget activeSlider_ = SliderTarget::None;
     float        dragStartX_   = 0.0f;
     float        dragStartVal_ = 0.0f;
 
+    // C3: Per-step gate override + pitch offset mirrors (message-thread cache; synced from APVTS)
+    // stepGateOverrides_[i] == true means the step has an explicit gate override.
+    // The displayed gate state = stepGateOverrides_[i] OR (algorithmic gate && no override bitmap active).
+    std::array<bool, 16>  stepGateOverrides_ {};
+    std::array<int8_t, 16> stepPitchOffsets_  {};  // ±12 semitones
+
+    // C3: Step LED drag state for Maschine-style vertical pitch editing
+    int          dragStepIdx_      = -1;        // which step is being dragged (-1 = none)
+    float        dragStepStartY_   = 0.0f;      // mouseDown Y position in component coords
+    int          dragStepStartPitch_ = 0;        // pitch offset at drag start
+    StepDragMode stepDragMode_     = StepDragMode::Pending;
+    bool         stepDragConsumed_ = false;     // true once direction locked; suppresses tap action
+
     // Hover state
     int hoveredPattern_ = -1;
+    int hoveredStep_    = -1;   // C3: step LED hover for visual feedback
 
     //==========================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(SeqBreakoutComponent)

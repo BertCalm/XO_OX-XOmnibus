@@ -736,6 +736,20 @@ public:
         oceanView_.initDetailPanel(proc);
         oceanView_.initSidebar();
         oceanView_.initWaterline(proc.getAPVTS(), proc.getMasterFXChain().getSequencer());
+        // #1309 wiring: register TideWaterline persistence callbacks so per-step data
+        // survives DAW session recall.  waterline_ is guaranteed non-null after initWaterline().
+        if (auto* wl = oceanView_.getWaterline())
+        {
+            proc.onGetTideWaterlineState = [wl]() { return wl->toValueTree(); };
+            proc.onSetTideWaterlineState = [wl](const juce::ValueTree& t) { wl->fromValueTree(t); };
+            // Consume any state that arrived while the editor was closed.
+            auto deferred = proc.getPersistedTideWaterlineState();
+            if (deferred.isValid())
+            {
+                wl->fromValueTree(deferred);
+                proc.clearPersistedTideWaterlineState();
+            }
+        }
         oceanView_.initChordBar(proc.getAPVTS(), proc.getChordMachine());
         // Wave 5 B3 mount: chord breakout panel (must follow initChordBar).
         oceanView_.initChordBreakout(proc.getAPVTS(), proc.getChordMachine());
@@ -900,6 +914,14 @@ public:
                 processor.getMidiCollector().addMessageToQueue(msg);
             };
         }
+
+        // #1304 wiring: surfaceRight_.onOuijaCCOutput → processor.pushCCOutput().
+        // Fires at ~30 Hz while HARMONIC tab is active; cc 85 = planchette X,
+        // cc 86 = planchette radius/depth (SurfaceRightPanel::kOuijaCCCircleX/Y).
+        oceanView_.getSurfaceRight().onOuijaCCOutput = [this](uint8_t cc, uint8_t value)
+        {
+            processor.pushCCOutput(SurfaceRightPanel::kOuijaMidiChannel - 1, cc, value);
+        };
 
         // #897: On first launch (no persisted state) show the OceanView PlaySurface
         // so users see a playable interface immediately.  On subsequent launches,

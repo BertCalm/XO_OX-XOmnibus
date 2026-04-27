@@ -96,14 +96,16 @@ public:
 
         if (!enabled || !isPlaying || bpm <= 0.0)
         {
-            // Ensure any pending noteOff still fires even when disabled mid-phrase
+            // Ensure any pending noteOff still fires even when disabled mid-phrase.
+            // C3: use lastSoundingNote_ so pitch-offset notes are released correctly.
             if (noteOffCountdown_ > 0)
             {
                 noteOffCountdown_ -= numSamples;
                 if (noteOffCountdown_ <= 0)
                 {
                     noteOffCountdown_ = 0;
-                    out.addEvent(juce::MidiMessage::noteOff(channel, rootNote), 0);
+                    // C3: use lastSoundingNote_ to release the pitch-shifted note correctly
+                    out.addEvent(juce::MidiMessage::noteOff(channel, lastSoundingNote_), 0);
                     // C5: gate closed
                     liveGate_.store(0.0f, std::memory_order_relaxed);
                 }
@@ -135,13 +137,15 @@ public:
         if (stepIdx == prevStepIdx_)
         {
             // Same step — count down pending noteOff
+            // C3: use lastSoundingNote_ for correct pitch-offset release
             if (noteOffCountdown_ > 0)
             {
                 noteOffCountdown_ -= numSamples;
                 if (noteOffCountdown_ <= 0)
                 {
                     noteOffCountdown_ = 0;
-                    out.addEvent(juce::MidiMessage::noteOff(channel, rootNote), 0);
+                    // C3: use lastSoundingNote_ to release the pitch-shifted note correctly
+                    out.addEvent(juce::MidiMessage::noteOff(channel, lastSoundingNote_), 0);
                     // C5: gate closed
                     liveGate_.store(0.0f, std::memory_order_relaxed);
                 }
@@ -151,10 +155,11 @@ public:
 
         // New step has arrived
         // First, flush any pending noteOff from the previous step
+        // C3: use lastSoundingNote_ so pitch-offset notes are released correctly
         if (noteOffCountdown_ > 0)
         {
             noteOffCountdown_ = 0;
-            out.addEvent(juce::MidiMessage::noteOff(channel, rootNote), 0);
+            out.addEvent(juce::MidiMessage::noteOff(channel, lastSoundingNote_), 0);
         }
 
         prevStepIdx_ = stepIdx;
@@ -162,6 +167,36 @@ public:
         // Evaluate whether this step gates (fires a note)
         const Pattern pat = static_cast<Pattern>(juce::jlimit(0, static_cast<int>(Pattern::Count) - 1, patternInt));
         float velocity = computeVelocity(pat, stepIdx, stepCount, baseVel);
+
+        // C3: per-step gate override — if the gate bitmap has ANY bit set, treat it as an
+        // explicit on/off mask for this step (overrides the algorithmic velocity).
+        // Rationale: bitmap==0 means "no overrides active" (default C1/C2 behaviour preserved).
+        // When any override exists, bit i==1 means "force gate on" (keep algorithmic velocity
+        // if > 0, else use baseVel), bit i==0 means "force gate off" (mute this step).
+        {
+            const uint32_t bitmap = stepGateBitmap_.load(std::memory_order_relaxed);
+            if (bitmap != 0u)
+            {
+                const bool gateOverrideOn = (bitmap & (1u << static_cast<unsigned>(stepIdx))) != 0u;
+                if (gateOverrideOn)
+                {
+                    // Step is explicitly forced ON — if algorithmic velocity was zero, use baseVel.
+                    if (velocity <= 0.0f)
+                        velocity = baseVel;
+                }
+                else
+                {
+                    // Step is explicitly forced OFF (muted).
+                    velocity = 0.0f;
+                }
+            }
+        }
+
+        // C3: per-step pitch offset — read the stored semitone delta (±12).
+        // Applied only when the step gates, so we compute the sounding note here.
+        const int pitchOffset = static_cast<int>(stepPitch_[static_cast<size_t>(stepIdx)]
+                                                    .load(std::memory_order_relaxed));
+        const int soundingNote = juce::jlimit(0, 127, rootNote + pitchOffset);
 
         if (velocity > 0.0f)
         {
@@ -173,8 +208,11 @@ public:
                 velocity = juce::jlimit(0.01f, 1.0f, velocity + velocity * jitter);
             }
 
-            // Fire noteOn at sample position 0 (block-aligned, v1 simplification)
-            out.addEvent(juce::MidiMessage::noteOn(channel, rootNote, velocity), 0);
+            // Fire noteOn at sample position 0 (block-aligned, v1 simplification).
+            // Use soundingNote (rootNote + pitchOffset) so pitch edits are reflected.
+            out.addEvent(juce::MidiMessage::noteOn(channel, soundingNote, velocity), 0);
+            // Track the sounding note so the correct noteOff fires even if rootNote changes mid-step.
+            lastSoundingNote_ = soundingNote;
 
             // Schedule noteOff at half a step duration (~gate 50%)
             // halfStepSamples = (60 / bpm) * (1 / stepsPerQuarter) * 0.5 * sampleRate
@@ -205,6 +243,63 @@ public:
     void setEnabled(bool e)        { enabled_.store(e, std::memory_order_relaxed); }
     void setRootNote(int n)        { rootNote_.store(juce::jlimit(0, 127, n), std::memory_order_relaxed); }
     void setBaseVelocity(float v)  { baseVelocity_.store(juce::jlimit(0.0f, 1.0f, v), std::memory_order_relaxed); }
+
+    //==========================================================================
+    // C3: Per-step overrides — gate and pitch offset
+    // RT-safe: packed into atomic ints (16-bit gate bitmap + 8 int8 pitch values per 64-bit word).
+    // UI thread writes via setStepGate / setStepPitch; audio thread reads in processBlock.
+
+    /** Toggle gate override for step `i` (0-based). `value` true = step fires, false = muted.
+        Has no effect when i >= 16. */
+    void setStepGate(int i, bool value) noexcept
+    {
+        if (i < 0 || i >= 16) return;
+        uint32_t mask = 1u << static_cast<unsigned>(i);
+        // CAS loop — gate bitmap is a 32-bit atomic where bit i = 1 means gate-override-on.
+        uint32_t prev = stepGateBitmap_.load(std::memory_order_relaxed);
+        uint32_t next;
+        do {
+            next = value ? (prev | mask) : (prev & ~mask);
+        } while (!stepGateBitmap_.compare_exchange_weak(prev, next,
+                                                         std::memory_order_relaxed,
+                                                         std::memory_order_relaxed));
+    }
+
+    /** Set pitch offset (semitones) for step `i`. Clamped to ±12 semitones.
+        Has no effect when i >= 16. */
+    void setStepPitch(int i, int semitones) noexcept
+    {
+        if (i < 0 || i >= 16) return;
+        stepPitch_[static_cast<size_t>(i)].store(
+            static_cast<int8_t>(juce::jlimit(-12, 12, semitones)),
+            std::memory_order_relaxed);
+    }
+
+    /** Read back gate override state for UI refresh. */
+    bool getStepGate(int i) const noexcept
+    {
+        if (i < 0 || i >= 16) return false;
+        uint32_t bitmap = stepGateBitmap_.load(std::memory_order_relaxed);
+        return (bitmap & (1u << static_cast<unsigned>(i))) != 0u;
+    }
+
+    /** Read back pitch offset for UI refresh. */
+    int getStepPitch(int i) const noexcept
+    {
+        if (i < 0 || i >= 16) return 0;
+        return static_cast<int>(stepPitch_[static_cast<size_t>(i)].load(std::memory_order_relaxed));
+    }
+
+    /** True if any step has a non-zero gate override or pitch offset (for dirty-state display). */
+    bool hasAnyStepOverride() const noexcept
+    {
+        if (stepGateBitmap_.load(std::memory_order_relaxed) != 0u)
+            return true;
+        for (int i = 0; i < 16; ++i)
+            if (stepPitch_[static_cast<size_t>(i)].load(std::memory_order_relaxed) != 0)
+                return true;
+        return false;
+    }
 
     //==========================================================================
     // Wave 5 C5: Live ModSource read-outs (safe to call from any thread).
@@ -282,6 +377,19 @@ public:
         layout.add(std::make_unique<juce::AudioParameterInt>(
             juce::ParameterID(prefix + "rootNote", 1),
             displayPrefix + "Root Note", 0, 127, 60)); // default = middle C
+
+        // C3: per-step gate overrides (16 bool params) + pitch offsets (16 int params, ±12 st)
+        // Naming: slot[N]_seq_gate_<step> and slot[N]_seq_pitch_<step>  (step = 0..15)
+        for (int i = 0; i < 16; ++i)
+        {
+            layout.add(std::make_unique<juce::AudioParameterBool>(
+                juce::ParameterID(prefix + "gate_" + juce::String(i), 1),
+                displayPrefix + "Gate " + juce::String(i + 1), false));
+
+            layout.add(std::make_unique<juce::AudioParameterInt>(
+                juce::ParameterID(prefix + "pitch_" + juce::String(i), 1),
+                displayPrefix + "Pitch " + juce::String(i + 1), -12, 12, 0));
+        }
     }
 
     // Sync atomic state from APVTS. Safe to call from the audio thread.
@@ -339,12 +447,51 @@ public:
                             std::memory_order_relaxed);
     }
 
+    // C3: Sync per-step overrides from APVTS. Called from the 15 Hz UI timer or
+    // processBlock param-sync path. Safe on the message thread (reads APVTS directly).
+    // `prefix` must match the one used in addParameters().
+    void syncStepOverridesFromApvts(juce::AudioProcessorValueTreeState& apvts,
+                                    const juce::String& prefix)
+    {
+        // Cache parameter pointers on first call per slot.
+        if (cachedStepGateParams_[0] == nullptr)
+        {
+            for (int i = 0; i < 16; ++i)
+            {
+                cachedStepGateParams_[i]  = apvts.getRawParameterValue(prefix + "gate_"  + juce::String(i));
+                cachedStepPitchParams_[i] = apvts.getRawParameterValue(prefix + "pitch_" + juce::String(i));
+            }
+        }
+
+        uint32_t bitmap = 0u;
+        for (int i = 0; i < 16; ++i)
+        {
+            if (cachedStepGateParams_[i] != nullptr)
+            {
+                const bool gateOn = cachedStepGateParams_[i]->load(std::memory_order_relaxed) > 0.5f;
+                if (gateOn)
+                    bitmap |= (1u << static_cast<unsigned>(i));
+            }
+
+            if (cachedStepPitchParams_[i] != nullptr)
+            {
+                const int semitones = juce::jlimit(-12, 12,
+                    static_cast<int>(cachedStepPitchParams_[i]->load(std::memory_order_relaxed) + 0.5f));
+                stepPitch_[static_cast<size_t>(i)].store(
+                    static_cast<int8_t>(semitones), std::memory_order_relaxed);
+            }
+        }
+        stepGateBitmap_.store(bitmap, std::memory_order_relaxed);
+    }
+
     // Reset internal sequencer state (NOT parameter values).
     // Resets RNG to fixed seed for DRIFTS determinism; resets CA state for Eddy.
+    // C3: does NOT reset step gate/pitch overrides — those are parameter state.
     void reset()
     {
         prevStepIdx_      = -1;
         noteOffCountdown_ = 0;
+        lastSoundingNote_ = 60; // C3: reset to middle C (matches rootNote default)
         cachedStepCount_  = -1;
         cachedPatternInt_ = -1;
         riptideCycleCount_ = 0;
@@ -386,12 +533,30 @@ private:
     std::atomic<float>* cachedPBaseVel_   = nullptr;
     std::atomic<float>* cachedPRootNote_  = nullptr;
 
+    // C3: Cached APVTS pointers for per-step gate overrides and pitch offsets.
+    // Resolved once on first syncStepOverridesFromApvts() call.
+    std::array<std::atomic<float>*, 16> cachedStepGateParams_  {};  // default-inits all to nullptr
+    std::array<std::atomic<float>*, 16> cachedStepPitchParams_ {};
+
+    //==========================================================================
+    // C3: Per-step gate + pitch override state (written from UI thread, read from audio thread).
+    //
+    // Gate bitmap: bit i == 1 means step i is explicitly forced ON; bit i == 0 means OFF.
+    // Bitmap == 0 (all bits clear) is the default "no overrides" state (C1/C2 behaviour).
+    // When any bit is set, ALL 16 steps are interpreted via the bitmap (explicit mask mode).
+    //
+    // Pitch offsets: one int8 per step, ±12 semitones relative to rootNote_.
+    // Default 0 = no pitch shift (C1/C2 behaviour preserved).
+    std::atomic<uint32_t>                   stepGateBitmap_{0};
+    std::array<std::atomic<int8_t>, 16>     stepPitch_ {};  // zero-initialised
+
     //==========================================================================
     // Audio-thread-only state (no atomics needed — never touched from UI thread)
 
     double sampleRate_{44100.0};
     int    prevStepIdx_{-1};
     int    noteOffCountdown_{0};
+    int    lastSoundingNote_{60};  // C3: tracks the most recent noteOn pitch for correct noteOff
 
     // Pattern cache invalidation keys
     int cachedStepCount_{-1};
