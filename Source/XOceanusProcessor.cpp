@@ -2096,9 +2096,38 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     continue;
 
                 // Source value — only LFO1 (id=0) wired in A1.
+                // C5: SeqStepValue / BeatPhase / ChordToneIdx read from slotSequencers_.
                 float srcVal = 0.0f;
                 if (snap.sourceId == static_cast<int>(ModSourceId::LFO1))
+                {
                     srcVal = lfo1Val;
+                }
+                else if (snap.sourceId == static_cast<int>(ModSourceId::SeqStepValue) ||
+                         snap.sourceId == static_cast<int>(ModSourceId::BeatPhase)    ||
+                         snap.sourceId == static_cast<int>(ModSourceId::ChordToneIdx))
+                {
+                    // Validate slot index — guard against stale or bad snapshots.
+                    const int slot = snap.slotIndex;
+                    if (slot < 0 || slot >= kNumPrimarySlots)
+                        continue; // no slot assigned — skip route
+
+                    if (snap.sourceId == static_cast<int>(ModSourceId::SeqStepValue))
+                    {
+                        // Velocity 0.0–1.0 (unipolar from the sequencer's gate).
+                        // Already 0 when the step is silent, so bipolar flag maps to ±.
+                        srcVal = slotSequencers_[static_cast<size_t>(slot)].getLiveVelocity();
+                    }
+                    else if (snap.sourceId == static_cast<int>(ModSourceId::BeatPhase))
+                    {
+                        // Step phase 0.0–1.0 — expose as bipolar -1..+1 by mapping 0..1 → -1..+1.
+                        const float phase = slotSequencers_[static_cast<size_t>(slot)].getLiveStepPhase();
+                        srcVal = phase * 2.0f - 1.0f; // bipolar ramp
+                    }
+                    else // ChordToneIdx — repurposed here as gate state (0 or 1, unipolar)
+                    {
+                        srcVal = slotSequencers_[static_cast<size_t>(slot)].getLiveGate();
+                    }
+                }
                 else
                     continue; // A2 will add remaining sources
 
@@ -2801,10 +2830,11 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
         if (count >= kMaxGlobalRoutes)
             break;
         auto& snap = routesSnapshot_[static_cast<size_t>(count)];
-        snap.sourceId = r.sourceId;
-        snap.depth    = r.depth;
-        snap.bipolar  = r.bipolar;
-        snap.valid    = true;
+        snap.sourceId  = r.sourceId;
+        snap.depth     = r.depth;
+        snap.bipolar   = r.bipolar;
+        snap.valid     = true;
+        snap.slotIndex = r.slotIndex; // C5: per-route slot index (-1 = N/A)
         // Copy dest param ID into fixed-length char array — no std::string on audio thread.
         // juce::String::copyToUTF8 writes at most maxBytes chars (inc. null terminator).
         r.destParamId.copyToUTF8(snap.destParamId, sizeof(snap.destParamId));
