@@ -50,6 +50,8 @@
 // Wave 5 A1: DragDropModRouter is transitively included via XOceanusProcessor.h
 // (which now includes Future/UI/ModRouting/DragDropModRouter.h).
 // No explicit re-include needed here — pragma once guards prevent duplication.
+// Wave 5 A3: ModMatrixBreakout (strip + slide-up panel).
+#include "Future/UI/ModRouting/ModMatrixBreakout.h"
 
 namespace xoceanus
 {
@@ -627,6 +629,14 @@ public:
                         performancePanel.refresh();
                     // Re-evaluate ghost tile visibility whenever any slot changes.
                     checkCollectionUnlock();
+                    // Wave 5 A3: feed the new engine's param prefix to the mod matrix strip
+                    // so the per-engine APVTS slot drawer loads the correct params.
+                    if (modMatrixStrip_ != nullptr && slot == selectedSlot)
+                    {
+                        if (auto* eng = processor.getEngine(slot))
+                            modMatrixStrip_->loadEngine(
+                                GalleryColors::prefixForEngine(eng->getEngineId()));
+                    }
                 });
         };
     }
@@ -727,6 +737,10 @@ public:
         oceanView_.initSidebar();
         oceanView_.initWaterline(proc.getAPVTS(), proc.getMasterFXChain().getSequencer());
         oceanView_.initChordBar(proc.getAPVTS(), proc.getChordMachine());
+        // Wave 5 B3 mount: chord breakout panel (must follow initChordBar).
+        oceanView_.initChordBreakout(proc.getAPVTS(), proc.getChordMachine());
+        // Wave 5 C2 mount: seq strip + breakout (needs APVTS; slot0_seq_ params from C1).
+        oceanView_.initSeqStrip(proc.getAPVTS());
         oceanView_.initMasterFxStrip(proc.getAPVTS());
         oceanView_.initEpicSlotsPanel(proc.getAPVTS());
         oceanView_.initTransportBar();
@@ -1112,6 +1126,15 @@ public:
         // the processor never receives a dangling listener pointer.
         proc.getModRoutingModel().addListener(&modRouteFlushListener_);
 
+        // ── Wave 5 A3: ModMatrixStrip mount ──────────────────────────────────
+        // Built after modRouter_ so modModel_ + router references are stable.
+        // addPanelToParent() adds the slide-up panel as a direct child of the
+        // editor root so the panel can float above all other UI at ~60% height.
+        modMatrixStrip_ = std::make_unique<ModMatrixStrip>(
+            proc.getAPVTS(), proc.getModRoutingModel(), *modRouter_);
+        addAndMakeVisible(*modMatrixStrip_);
+        modMatrixStrip_->addPanelToParent(*this);
+
         // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.
         // setInterceptsMouseClicks(false, false) is set inside ToastOverlay's
@@ -1363,6 +1386,14 @@ public:
         // ── Wave 5 A1: DragDropModRouter overlay — always full editor bounds ──
         if (modRouter_ != nullptr)
             modRouter_->setBounds(fullBounds);
+
+        // ── Wave 5 A3: ModMatrixStrip — 28px strip at the bottom of the editor ──
+        if (modMatrixStrip_ != nullptr)
+        {
+            constexpr int kStripH = ModMatrixStrip::kStripHeight;
+            modMatrixStrip_->setBounds(0, getHeight() - kStripH, getWidth(), kStripH);
+            modMatrixStrip_->setEditorBounds(fullBounds);
+        }
 
         // ── OceanView mode: skip the entire legacy Gallery layout ─────────────
         // All legacy tiles, overview, detail, chord panel, sidebar, etc. are
@@ -2455,6 +2486,11 @@ private:
                 proc->flushModRoutesSnapshot();
         }
     } modRouteFlushListener_;
+
+    // Wave 5 A3: ModMatrixStrip — 28px footer strip + slide-up panel.
+    // Constructed in initOceanView() after modRouter_ is built so that
+    // modModel_ and modRouter_ pointers are already stable.
+    std::unique_ptr<ModMatrixStrip> modMatrixStrip_;
 
     // Transparent full-editor overlay — activates only while a drag is in flight
     // or when the route list panel is shown.  Declared before toastOverlay_ so
