@@ -1284,6 +1284,12 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     epicSlots.prepare(sampleRate, samplesPerBlock);
     epicSlots.cacheParameterPointers(apvts);
 
+    // #1257: Reset MPE channel expression state to match the new sample rate / block size.
+    // MPEManager::prepare() calls resetAllChannels() — clears stale per-channel pitch bend
+    // and pressure from any previous session so MPE expression starts clean on each
+    // prepareToPlay() (host restart, sample rate change, AU validation cycle).
+    mpeManager.prepare(sampleRate, samplesPerBlock);
+
     // SRO: Prepare profilers and auditor
     for (auto& prof : engineProfilers)
         prof.prepare(sampleRate, samplesPerBlock);
