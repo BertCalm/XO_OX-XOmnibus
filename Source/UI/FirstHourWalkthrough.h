@@ -640,50 +640,15 @@ private:
 
 
 //==============================================================================
-// TODO W9c mount — XOceanusEditor.h
-// (After Wave 7: move steps 4-6 into OceanStateMachine::onGreetingComplete.)
+// Wave 9c mount COMPLETE — XOceanusEditor.h (applied 2026-04-26, PR #mount-final)
 //
-// 1. Declare as member (after tooltipWindow):
-//      xoceanus::FirstHourWalkthrough walkthrough_;
-//
-// 2. Wire bound accessors (in constructor or initOceanView, BEFORE addChildComponent):
-//      walkthrough_.getPlaySurfaceBounds = [this]() { return playSurface_.getBounds(); };
-//      walkthrough_.getEngineSlotBounds  = [this]() {
-//          return tiles[0] != nullptr ? tiles[0]->getBounds() : juce::Rectangle<int>{};
-//      };
-//      walkthrough_.getMacroBounds       = [this]() { return macros.getBounds(); };
-//      walkthrough_.getDnaBrowserBounds  = [this]() {
-//          // TODO W9c: expose DnaMapBrowser or PresetBrowserStrip bounds
-//          return juce::Rectangle<int>{};
-//      };
-//      walkthrough_.getCoupleOrbitBounds = [this]() {
-//          // TODO W9c: expose EngineOrbit buoy 1 bounds from OceanView
-//          return juce::Rectangle<int>{};
-//      };
-//      walkthrough_.getCmToggleBounds    = [this]() { return cmToggleBtn.getBounds(); };
-//      walkthrough_.getFavBtnBounds      = [this]() {
-//          // TODO W9c: expose PresetBrowserStrip favBtn bounds
-//          return juce::Rectangle<int>{};
-//      };
-//      walkthrough_.getXouijaBounds      = [this]() {
-//          // TODO W9c: expose SubmarineOuijaPanel or XOuija button bounds
-//          return juce::Rectangle<int>{};
-//      };
-//
-// 3. Add as topmost child (must paint over all other children):
-//      addAndMakeVisible(walkthrough_);
-//
-// 4. In resized():
-//      walkthrough_.setBounds(getLocalBounds());
-//
-// 5. Trigger after greeting — interim pre-Wave7 path (timerCallback or greeting callback):
-//      if (!greetingIsActive && !walkthroughTriggeredThisSession_) {
-//          walkthroughTriggeredThisSession_ = true;
-//          walkthrough_.promptIfEligible(settingsFile_.get());
-//      }
-//
-// 6. Wire Settings > Experience "Restart Walkthrough" in SettingsPanel::Experience section:
-//      restartWalkthroughBtn.onClick = [this] {
-//          // editor must expose a restartWalkthrough() method or direct access
-//          walkthrough_.restartWalkthrough(settingsFile_.get());
-//      };
+// All 6 mount points wired:
+//   1. Member: walkthrough_  (before toastOverlay_ in declaration order)
+//   2. Bound accessors wired in initOceanView() — steps 0/2/5 fully resolved;
+//      steps 3/4/6/7 return {} until DnaMapBrowser/EngineOrbit/favBtn/XOuija
+//      are accessible directly from the editor (post-Wave 7 decomp).
+//   3. addAndMakeVisible(walkthrough_) in initOceanView() before toastOverlay_.
+//   4. setBounds in resized() OceanView branch.
+//   5. promptIfEligible() fired on first timerCallback tick via walkthroughTriggeredThisSession_ guard.
+//   6. Settings "Restart Walkthrough" — TODO: wire restartWalkthrough() in SettingsPanel
+//      when Settings > Experience section is built (issue #1303 follow-up).
