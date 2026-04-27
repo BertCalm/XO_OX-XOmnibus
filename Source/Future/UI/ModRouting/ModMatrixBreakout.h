@@ -234,7 +234,6 @@ public:
         {
             const int hW = ModSourceHandle::kDiameter;
             const int gap = 8;
-            const int totalW = n * hW + (n - 1) * gap;
             int xOff = handleArea.getX() + 110; // offset past the label
 
             for (int i = 0; i < n; ++i)
@@ -333,7 +332,7 @@ private:
     }
 
     //==========================================================================
-    juce::AudioProcessorValueTreeState& apvts_;
+    [[maybe_unused]] juce::AudioProcessorValueTreeState& apvts_;
     ModRoutingModel&                    modModel_;
     [[maybe_unused]] DragDropModRouter& router_;
 
