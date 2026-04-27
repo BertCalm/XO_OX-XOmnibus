@@ -130,6 +130,10 @@ struct OndaVoice
     // Hold-time tracker for modulational instability emergence (seconds held).
     float holdTime = 0.0f;
 
+    // Age counter (samples since noteOn).  Used by stealVoice() to prefer
+    // stealing the oldest voice first (least disruptive to recent notes).
+    uint32_t ageInSamples = 0;
+
     // Independent time accumulator for the Dark-mode CW background carrier
     // (avoids referencing solitons[0].timeAlive which may be inactive).
     float voiceTime = 0.0f;
@@ -146,7 +150,7 @@ struct OndaVoice
         noteFreq = glideFreq = 110.0f;
         for (auto& s : solitons) s.reset();
         ampEnv.kill(); fltEnv.kill(); filter.reset();
-        holdTime = 0.0f; voiceTime = 0.0f; cwAmplitude = 0.0f;
+        holdTime = 0.0f; ageInSamples = 0; voiceTime = 0.0f; cwAmplitude = 0.0f;
         prng = 0xDEAFBEEFu;
     }
 
@@ -463,19 +467,29 @@ inline int OndaEngine::findFreeVoice() noexcept
 
 inline int OndaEngine::stealVoice() noexcept
 {
-    int idx = 0;
-    float minLevel = 1e9f;
+    // Prefer the oldest *releasing* voice first (least perceptible dropout).
+    // Fall back to oldest active voice if none are releasing.
+    // "Oldest" = largest ageInSamples (reset to 0 on each noteOn).
+    int  idx        = 0;
+    uint32_t maxAge = 0;
+
     for (int i = 0; i < kOndaMaxVoices; ++i)
     {
-        const float lv = voices[i].ampEnv.getLevel();
-        if (voices[i].releasing && lv < minLevel) { minLevel = lv; idx = i; }
+        if (voices[i].releasing && voices[i].ageInSamples >= maxAge)
+        {
+            maxAge = voices[i].ageInSamples;
+            idx    = i;
+        }
     }
-    if (minLevel > 1e8f)
+    if (maxAge == 0) // no releasing voices — steal oldest active voice
     {
         for (int i = 0; i < kOndaMaxVoices; ++i)
         {
-            const float lv = voices[i].ampEnv.getLevel();
-            if (lv < minLevel) { minLevel = lv; idx = i; }
+            if (voices[i].ageInSamples >= maxAge)
+            {
+                maxAge = voices[i].ageInSamples;
+                idx    = i;
+            }
         }
     }
     return idx;
@@ -1035,6 +1049,7 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             vx.noteFreq = f;
             if (!legato) { vx.glideFreq = f; vx.ampEnv.noteOn(); vx.fltEnv.noteOn(); vx.filter.reset(); }
             vx.holdTime = 0.0f;
+            vx.ageInSamples = 0; // reset age so stealVoice() sees this as youngest
             vx.voiceTime = 0.0f; // reset CW carrier phase accumulator on new note
             vx.cwAmplitude = 0.0f;
             vx.prng = 0x9E3779B1u ^ (uint32_t)(newNote * 2654435761u);
@@ -1065,15 +1080,33 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             // narrow width produces a chirped transient that decays quickly.
             if (attackShock > 0.01f)
             {
-                // Find a free slot (prefer last slot); skip slots marked isPeregrine
-                // so a rogue-wave event is not silently clobbered by the attack shock.
-                int shkSlot = kOndaMaxSolPerVoice - 1;
-                for (int i = kOndaMaxSolPerVoice - 1; i >= 0; --i)
-                    if (!vx.solitons[i].active || (!vx.solitons[i].isPeregrine && i == kOndaMaxSolPerVoice - 1))
-                        { shkSlot = i; break; }
-                auto& shk = vx.solitons[shkSlot];
-                if (!shk.isPeregrine)
+                // P0-1 fix: find a genuinely free slot first.  If none is free,
+                // evict the lowest-amplitude non-Peregrine active soliton rather
+                // than unconditionally clobbering the last slot (which may hold
+                // an active bound-state member set by spawnBoundState just above).
+                int shkSlot = -1;
+                for (int i = 0; i < kOndaMaxSolPerVoice; ++i)
                 {
+                    if (!vx.solitons[i].active) { shkSlot = i; break; }
+                }
+                if (shkSlot < 0)
+                {
+                    // No free slot — evict lowest-amplitude non-Peregrine soliton.
+                    float minAmp = 1e9f;
+                    for (int i = 0; i < kOndaMaxSolPerVoice; ++i)
+                    {
+                        if (!vx.solitons[i].isPeregrine && vx.solitons[i].amplitude < minAmp)
+                        {
+                            minAmp  = vx.solitons[i].amplitude;
+                            shkSlot = i;
+                        }
+                    }
+                }
+                // shkSlot is still -1 only if every slot is an active Peregrine —
+                // skip the shock write rather than clobber rogue-wave physics.
+                if (shkSlot >= 0)
+                {
+                    auto& shk     = vx.solitons[shkSlot];
                     shk.active    = true;
                     shk.amplitude = mAmplitude * (2.0f + 2.0f * attackShock); // narrow, bright
                     shk.velocity  = 1.2f * (vx.nextRand01() - 0.5f);
@@ -1102,18 +1135,23 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
 
             // Peregrine rogue-wave trigger: rising aftertouch past threshold
             // (with sensitivity hysteresis) launches a rogue breather on the
-            // most recent active voice.  Physically this is analogous to a
-            // phase-coherent modulation that destabilises the background.
+            // NEWEST voice holding the current MIDI note (smallest ageInSamples).
+            // P0-2d fix: searching by note avoids triggering on a stolen-voice's
+            // stale MIDI context when lastHeldNote no longer matches any live voice.
             if (aftertouch > rogueThresh && lastAftertouch <= rogueThresh && rogueSens > 0.01f)
             {
+                OndaVoice* target    = nullptr;
+                uint32_t   minAge    = UINT32_MAX;
                 for (auto& v : voices)
                 {
-                    if (v.active && !v.releasing && v.note == lastHeldNote)
+                    if (v.active && !v.releasing && v.note == lastHeldNote
+                        && v.ageInSamples < minAge)
                     {
-                        spawnPeregrine(v);
-                        break;
+                        minAge = v.ageInSamples;
+                        target = &v;
                     }
                 }
+                if (target != nullptr) spawnPeregrine(*target);
             }
             lastAftertouch = aftertouch;
         }
@@ -1208,6 +1246,9 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
     {
         if (!v.active) continue;
 
+        // Age counter — incremented each block so stealVoice() can prefer oldest.
+        v.ageInSamples += (uint32_t) numSamples;
+
         // Glide.
         if (rawGlide > 0.001f) v.glideFreq += (v.noteFreq - v.glideFreq) * glideCoeff;
         else                   v.glideFreq  =  v.noteFreq;
@@ -1260,6 +1301,7 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         // spawned from the CW field with velocity tied to instability gain.
         if (effMiGain > 0.01f && v.holdTime > miHoldTime)
         {
+            bool miSpawned = false;
             for (int i = 0; i < kOndaMaxSolPerVoice; ++i)
             {
                 if (!v.solitons[i].active)
@@ -1271,10 +1313,15 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                     s.position  = (v.nextRand01() - 0.5f) * 2.0f;
                     s.phase     = v.nextRand01() * kOndaTwoPi;
                     s.timeAlive = 0.0f;
-                    v.holdTime -= miHoldTime; // reset hold so next emergence requires another dwell
+                    miSpawned   = true;
                     break;
                 }
             }
+            // P1-1 fix: always decrement so the timer resets regardless of whether
+            // a free slot was found.  Without this, a full soliton pool re-fires
+            // every block, burning CPU and never making progress.
+            v.holdTime -= miHoldTime;
+            (void) miSpawned;
         }
 
         for (int i = 0; i < numSamples; ++i)
