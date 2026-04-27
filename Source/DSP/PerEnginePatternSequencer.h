@@ -104,7 +104,10 @@ public:
                 if (noteOffCountdown_ <= 0)
                 {
                     noteOffCountdown_ = 0;
+                    // C3: use lastSoundingNote_ to release the pitch-shifted note correctly
                     out.addEvent(juce::MidiMessage::noteOff(channel, lastSoundingNote_), 0);
+                    // C5: gate closed
+                    liveGate_.store(0.0f, std::memory_order_relaxed);
                 }
             }
             return;
@@ -126,6 +129,10 @@ public:
         const int stepIdx = static_cast<int>(std::floor(ppqPosition * stepsPerQuarter))
                             % stepCount;
 
+        // C5: update step-phase every block (even on same step) so mod sources track position.
+        liveStepPhase_.store(static_cast<float>(stepIdx) / static_cast<float>(stepCount),
+                             std::memory_order_relaxed);
+
         // Edge detection: only act when the step index advances
         if (stepIdx == prevStepIdx_)
         {
@@ -137,7 +144,10 @@ public:
                 if (noteOffCountdown_ <= 0)
                 {
                     noteOffCountdown_ = 0;
+                    // C3: use lastSoundingNote_ to release the pitch-shifted note correctly
                     out.addEvent(juce::MidiMessage::noteOff(channel, lastSoundingNote_), 0);
+                    // C5: gate closed
+                    liveGate_.store(0.0f, std::memory_order_relaxed);
                 }
             }
             return;
@@ -210,6 +220,16 @@ public:
             noteOffCountdown_ = static_cast<int>(halfStepSecs * sampleRate_);
             // Clamp so noteOff always fires within a reasonable time
             noteOffCountdown_ = juce::jmax(1, noteOffCountdown_);
+
+            // C5: update live state for ModSource consumers
+            liveVelocity_.store(velocity, std::memory_order_relaxed);
+            liveGate_.store(1.0f, std::memory_order_relaxed);
+        }
+        else
+        {
+            // Silent step — gate stays closed, velocity resets to 0
+            liveVelocity_.store(0.0f, std::memory_order_relaxed);
+            liveGate_.store(0.0f, std::memory_order_relaxed);
         }
     }
 
@@ -280,6 +300,23 @@ public:
                 return true;
         return false;
     }
+
+    //==========================================================================
+    // Wave 5 C5: Live ModSource read-outs (safe to call from any thread).
+    //
+    // These atomics are written by the audio thread at each step boundary inside
+    // processBlock() and are read by the mod-source evaluation loop (also audio
+    // thread, same processBlock, after sequencer processBlock).  They may also
+    // be read from the message thread for UI meters — a one-block stale value is
+    // acceptable.
+    //
+    // liveVelocity:  current step velocity 0.0–1.0 (0 when gate is off/silent)
+    // liveGate:      1.0 while the gate countdown is active, 0.0 otherwise
+    // liveStepPhase: current step index as a 0.0–1.0 ramp (stepIdx / stepCount)
+
+    float getLiveVelocity()  const noexcept { return liveVelocity_.load(std::memory_order_relaxed); }
+    float getLiveGate()      const noexcept { return liveGate_.load(std::memory_order_relaxed); }
+    float getLiveStepPhase() const noexcept { return liveStepPhase_.load(std::memory_order_relaxed); }
 
     //==========================================================================
     // APVTS integration
@@ -478,6 +515,12 @@ private:
     std::atomic<float> humanization_{0.0f};
     std::atomic<float> baseVelocity_{0.75f};
     std::atomic<int>   rootNote_{60};     // middle C
+
+    // Wave 5 C5: Live ModSource state — written by audio thread, read by mod evaluator.
+    // Atomics allow message-thread reads for UI meters (one-block stale is fine).
+    std::atomic<float> liveVelocity_{0.0f};   // 0.0–1.0; 0 when step is silent
+    std::atomic<float> liveGate_{0.0f};       // 1.0 while noteOffCountdown_ > 0
+    std::atomic<float> liveStepPhase_{0.0f};  // stepIdx / stepCount, 0.0–1.0
 
     //==========================================================================
     // Cached APVTS parameter pointers — resolved once on first syncFromApvts() call.
