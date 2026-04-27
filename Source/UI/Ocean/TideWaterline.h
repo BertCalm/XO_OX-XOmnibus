@@ -90,6 +90,69 @@ public:
     };
 
     //==========================================================================
+    // ── Sequence layer serialization (#1179) ──────────────────────────────────
+    //
+    // steps_ is NOT stored in APVTS.  To preserve user-edited patterns across
+    // DAW sessions independently of preset loads, we expose a ValueTree round-
+    // trip.  The processor includes this tree in getStateInformation() /
+    // setStateInformation() via the onGetTideWaterlineState callback.
+    //
+    // Invariant: fromValueTree() does NOT call syncFromApvts() or applyPattern().
+    // This guarantees session restore never re-applies an algorithmic template
+    // on top of user edits — a preset load and a session restore are cleanly
+    // separated code paths.
+
+    /// Serialize current per-step data to a juce::ValueTree ("TideWaterlineSteps").
+    juce::ValueTree toValueTree() const
+    {
+        juce::ValueTree tree("TideWaterlineSteps");
+        tree.setProperty("stepCount", currentSteps_, nullptr);
+        for (int i = 0; i < kMaxSteps; ++i)
+        {
+            juce::ValueTree step("Step");
+            step.setProperty("active",   steps_[i].active ? 1 : 0, nullptr);
+            step.setProperty("velocity", static_cast<double>(steps_[i].velocity), nullptr);
+            step.setProperty("gate",     static_cast<double>(steps_[i].gate),     nullptr);
+            step.setProperty("rootNote", steps_[i].rootNote,                      nullptr);
+            tree.addChild(step, -1, nullptr);
+        }
+        return tree;
+    }
+
+    /// Restore per-step data from a ValueTree produced by toValueTree().
+    /// Does NOT call syncFromApvts() or applyPattern() — pattern is verbatim.
+    /// Returns false without modifying state if the tree type does not match.
+    bool fromValueTree(const juce::ValueTree& tree)
+    {
+        if (!tree.isValid() || tree.getType().toString() != "TideWaterlineSteps")
+            return false;
+
+        if (tree.hasProperty("stepCount"))
+            currentSteps_ = juce::jlimit(1, kMaxSteps, static_cast<int>(tree.getProperty("stepCount")));
+
+        int childIdx = 0;
+        for (auto child : tree)
+        {
+            if (childIdx >= kMaxSteps)
+                break;
+            if (child.getType().toString() == "Step")
+            {
+                steps_[childIdx].active   = (static_cast<int>(child.getProperty("active",   0)) != 0);
+                steps_[childIdx].velocity = juce::jlimit(0.0f, 1.0f,
+                    static_cast<float>(static_cast<double>(child.getProperty("velocity", 0.75))));
+                steps_[childIdx].gate     = juce::jlimit(0.05f, 1.0f,
+                    static_cast<float>(static_cast<double>(child.getProperty("gate",     0.75))));
+                steps_[childIdx].rootNote = static_cast<int>(child.getProperty("rootNote", -1));
+                ++childIdx;
+            }
+        }
+
+        rebuildRootNoteLabels();
+        repaint();
+        return true;
+    }
+
+    //==========================================================================
     explicit TideWaterline(juce::AudioProcessorValueTreeState& apvts,
                            const MasterFXSequencer&            sequencer)
         : apvts_    (apvts)
