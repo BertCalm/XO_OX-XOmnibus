@@ -629,7 +629,7 @@ public:
         dragSourceId = payload.sourceId;
 
         // Source handle center in this component's coordinate space
-        if (auto* srcComp = details.sourceComponent.getComponent())
+        if (auto* srcComp = details.sourceComponent.get())
             dragSourcePos = getLocalPoint(srcComp, srcComp->getLocalBounds().getCentre().toFloat());
 
         dragCursorPos = details.localPosition.toFloat();
@@ -691,7 +691,6 @@ public:
 
         // Connector line: Bézier from source handle to cursor
         {
-            const float dx = dragCursorPos.x - dragSourcePos.x;
             const float dy = dragCursorPos.y - dragSourcePos.y;
             const float controlStrength = std::min(std::abs(dy) * 0.6f + 30.0f, 120.0f);
 
@@ -962,7 +961,7 @@ private:
     }
 
     //==========================================================================
-    juce::AudioProcessorValueTreeState& apvts;
+    [[maybe_unused]] juce::AudioProcessorValueTreeState& apvts;
     ModRoutingModel& model;
 
     // Source handle strip
