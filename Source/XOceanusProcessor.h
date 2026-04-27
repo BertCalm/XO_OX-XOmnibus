@@ -193,6 +193,29 @@ public:
     std::function<juce::ValueTree()> onGetXOuijaState;
     std::function<void(const juce::ValueTree& /*state*/)> onSetXOuijaState;
 
+    // ── TideWaterline sequence layer persistence bridge (#1179) ───────────────
+    // OceanView registers these callbacks so the processor can include per-step
+    // data (active, velocity, gate, rootNote for all 16 steps) in DAW state.
+    // This is the D1 architectural foundation: step patterns survive DAW session
+    // recall independently of any preset load.
+    //
+    // Usage (in OceanView::initWaterline(), after waterline_ construction):
+    //   processor_.onGetTideWaterlineState = [this]() {
+    //       return waterline_ ? waterline_->toValueTree() : juce::ValueTree{};
+    //   };
+    //   processor_.onSetTideWaterlineState = [this](const juce::ValueTree& t) {
+    //       if (waterline_) waterline_->fromValueTree(t);
+    //   };
+    //   // Consume state that arrived before the editor was open:
+    //   auto deferred = processor_.getPersistedTideWaterlineState();
+    //   if (deferred.isValid() && waterline_)
+    //   {
+    //       waterline_->fromValueTree(deferred);
+    //       processor_.clearPersistedTideWaterlineState();
+    //   }
+    std::function<juce::ValueTree()> onGetTideWaterlineState;
+    std::function<void(const juce::ValueTree& /*state*/)> onSetTideWaterlineState;
+
     // ── Field Map note event queue ─────────────────────────────────────────────
     // Lock-free SPSC ring: audio thread writes (pushNoteEvent), UI thread drains
     // (drainNoteEvents). Both ends use only std::atomic<size_t> indices — no mutex,
@@ -379,6 +402,18 @@ public:
     bool getPersistedRegisterLocked() const noexcept { return persistedRegisterLocked; }
     void setPersistedRegisterCurrent(int r) noexcept { persistedRegisterCurrent = r; }
     int  getPersistedRegisterCurrent() const noexcept { return persistedRegisterCurrent; }
+
+    // #1179 — TideWaterline deferred state pickup.
+    // OceanView calls this in initWaterline() to apply state that arrived via
+    // setStateInformation() before the editor window was first opened.
+    juce::ValueTree getPersistedTideWaterlineState() const noexcept
+    {
+        return persistedTideWaterlineState_;
+    }
+    void clearPersistedTideWaterlineState() noexcept
+    {
+        persistedTideWaterlineState_ = juce::ValueTree{};
+    }
 
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
@@ -757,6 +792,13 @@ private:
     bool persistedCockpitBypass = false; // #357: Dark Cockpit bypass state
     bool persistedRegisterLocked = false; // D4: register lock toggle
     int  persistedRegisterCurrent = 0;   // D4: current register index (0=Gallery, 1=Performance, 2=Coupling)
+
+    // ── #1179: TideWaterline deferred step-sequence state ────────────────────
+    // Holds the "TideWaterlineSteps" tree from setStateInformation() when the
+    // editor was not yet open at restore time.  OceanView picks it up in
+    // initWaterline() via getPersistedTideWaterlineState().
+    // Message-thread only — no atomic needed.
+    juce::ValueTree persistedTideWaterlineState_;
 
     // ── External MIDI Clock state — audio thread only (closes #359) ──────────
     // Used to derive BPM from incoming 0xF8 pulses.
