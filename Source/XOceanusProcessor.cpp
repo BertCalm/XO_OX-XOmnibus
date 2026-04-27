@@ -1996,6 +1996,8 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         for (int s = 0; s < kNumPrimarySlots; ++s)
         {
             slotSequencers_[s].syncFromApvts(apvts, "slot" + juce::String(s) + "_seq_");
+            // C3: sync per-step gate override + pitch offset from APVTS params.
+            slotSequencers_[s].syncStepOverridesFromApvts(apvts, "slot" + juce::String(s) + "_seq_");
             slotSequencers_[s].processBlock(slotMidi[s], seqBpm, seqPpq, seqPlaying, numSamples);
         }
     }
