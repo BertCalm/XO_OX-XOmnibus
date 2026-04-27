@@ -446,6 +446,22 @@ void XOceanusProcessor::cacheParameterPointers()
     cachedParams.cmHumanize = apvts.getRawParameterValue("cm_humanize");
     cachedParams.cmSidechainDuck = apvts.getRawParameterValue("cm_sidechain_duck");
     cachedParams.cmEnoMode = apvts.getRawParameterValue("cm_eno_mode");
+
+    // B2: input mode + global key/scale + 48 pad chord params
+    cachedParams.cmInputMode   = apvts.getRawParameterValue("chord_input_mode");
+    cachedParams.cmGlobalRoot  = apvts.getRawParameterValue("cm_global_root");
+    cachedParams.cmGlobalScale = apvts.getRawParameterValue("cm_global_scale");
+    for (int i = 0; i < 16; ++i)
+    {
+        const juce::String prefix = "chord_pad_" + juce::String(i) + "_";
+        cachedParams.padChords[i].root    = apvts.getRawParameterValue(prefix + "root");
+        cachedParams.padChords[i].voicing = apvts.getRawParameterValue(prefix + "voicing");
+        cachedParams.padChords[i].inv     = apvts.getRawParameterValue(prefix + "inv");
+        jassert(cachedParams.padChords[i].root    != nullptr);
+        jassert(cachedParams.padChords[i].voicing != nullptr);
+        jassert(cachedParams.padChords[i].inv     != nullptr);
+    }
+
     cachedParams.ohmCommune = apvts.getRawParameterValue("ohm_macroCommune");
     cachedParams.obblBond = apvts.getRawParameterValue("obbl_macroBond");
     cachedParams.oleDrama = apvts.getRawParameterValue("ole_macroDrama");
@@ -707,6 +723,58 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
                                                                  juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
     params.push_back(
         std::make_unique<juce::AudioParameterBool>(juce::ParameterID("cm_eno_mode", 1), "CM Eno Mode", false));
+
+    // ── B2: Chord input mode + global key/scale ───────────────────────────────
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("chord_input_mode", 1), "Chord Input Mode",
+        juce::StringArray{"AUTO", "PAD", "DEG"}, 0)); // default = AutoHarmonize
+
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("cm_global_root", 1), "CM Global Root",
+        juce::StringArray{"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"}, 0)); // C
+
+    params.push_back(std::make_unique<juce::AudioParameterChoice>(
+        juce::ParameterID("cm_global_scale", 1), "CM Global Scale",
+        juce::StringArray{"Chromatic","Major","Minor","Dorian","Mixolydian",
+                          "Pent Min","Pent Maj","Blues","Harm Min"}, 1)); // Major
+
+    // ── B2: Pad chord slots — 16 pads × 3 params = 48 params ─────────────────
+    // Build the voicing string array once (reused for all 16 pads)
+    {
+        juce::StringArray voicingChoices{
+            "ROOT-SPREAD","DROP-2","QUARTAL","UPPER-STRUCT","UNISON",
+            "QUARTAL-3","QUARTAL-4","QUINTAL-3","QUINTAL-4",
+            "HIJAZ","BHAIRAVI","YO","IN","PHRYG-DOM",
+            "DRONE-P5","DRONE-P4","DRONE-M3","DRONE-m3","DRONE-M2","DRONE-m2"
+        };
+
+        // Default roots follow the C major scale degrees for pads 0-7:
+        // C D E F G A B C (pads 0-7), then repeat for pads 8-15
+        static constexpr int kDefaultRoots[16] = {
+            60, 62, 64, 65, 67, 69, 71, 72,  // C4 D4 E4 F4 G4 A4 B4 C5
+            60, 62, 64, 65, 67, 69, 71, 72   // repeat (pads 8-15)
+        };
+
+        for (int i = 0; i < 16; ++i)
+        {
+            const juce::String prefix = "chord_pad_" + juce::String(i) + "_";
+
+            params.push_back(std::make_unique<juce::AudioParameterInt>(
+                juce::ParameterID(prefix + "root", 1),
+                "Chord Pad " + juce::String(i + 1) + " Root",
+                0, 127, kDefaultRoots[i]));
+
+            params.push_back(std::make_unique<juce::AudioParameterChoice>(
+                juce::ParameterID(prefix + "voicing", 1),
+                "Chord Pad " + juce::String(i + 1) + " Voicing",
+                voicingChoices, 0)); // default = RootSpread
+
+            params.push_back(std::make_unique<juce::AudioParameterInt>(
+                juce::ParameterID(prefix + "inv", 1),
+                "Chord Pad " + juce::String(i + 1) + " Inversion",
+                0, 3, 0)); // default = root position
+        }
+    }
 
     // Master FX parameters
     // Stage 1: Saturation
@@ -1120,6 +1188,14 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     // Singularity FX params (master_onsl*/master_obs*/master_ora*) which were previously
     // unregistered, and the 4 new Epic chain param sets (onr_/omni_/oblt_/obsc_).
     xoceanus::EpicChainSlotController::addParameters(layout);
+
+    // Wave 5 C1: Per-slot pattern sequencer parameters (primary slots 0–3 only).
+    for (int s = 0; s < kNumPrimarySlots; ++s)
+        XOceanus::PerEnginePatternSequencer::addParameters(
+            layout,
+            "slot" + juce::String(s) + "_seq_",
+            "Slot " + juce::String(s + 1) + " Seq ");
+
     return layout;
 }
 
@@ -1313,6 +1389,10 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     // Pre-allocate familySlots so processFamilyBleed never heap-allocates
     // on the audio thread when capacity is zero on first block.
     familySlots_.ensureStorageAllocated(MaxSlots);
+
+    // Wave 5 C1: prepare per-slot pattern sequencers
+    for (auto& seq : slotSequencers_)
+        seq.prepareToPlay(sampleRate);
 }
 
 void XOceanusProcessor::releaseResources()
@@ -1440,6 +1520,27 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         const auto newPat = static_cast<RhythmPattern>(static_cast<int>(cachedParams.cmSeqPattern->load()));
         if (newPat != chordMachine.getPattern())
             chordMachine.applyPattern(newPat);
+    }
+
+    // ── B2: Sync chord input mode + global key/scale + pad chord slots ─────────
+    if (cachedParams.cmInputMode)
+        chordMachine.setInputMode(static_cast<ChordInputMode>(
+            static_cast<int>(cachedParams.cmInputMode->load())));
+    if (cachedParams.cmGlobalRoot)
+        chordMachine.setGlobalRootKey(static_cast<int>(cachedParams.cmGlobalRoot->load()));
+    if (cachedParams.cmGlobalScale)
+        chordMachine.setGlobalScaleIndex(static_cast<int>(cachedParams.cmGlobalScale->load()));
+    // Sync 16 pad chord slots from APVTS (block-constant snapshot, no allocation)
+    for (int i = 0; i < 16; ++i)
+    {
+        if (cachedParams.padChords[i].root != nullptr)
+        {
+            chordMachine.setPadChord(
+                i,
+                static_cast<int>(cachedParams.padChords[i].root->load()),
+                static_cast<VoicingMode>(static_cast<int>(cachedParams.padChords[i].voicing->load())),
+                static_cast<int>(cachedParams.padChords[i].inv->load()));
+        }
     }
 
     // Sync MPE manager from cached APVTS parameters (no hash lookups)
@@ -1810,6 +1911,22 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         }
     }
     // ── end Sound on First Launch ─────────────────────────────────────────────
+
+    // ── Wave 5 C1: Per-slot pattern sequencers ────────────────────────────────
+    // Run AFTER all slotMidi[] population (ChordMachine, sustain, firstBreath)
+    // and BEFORE engine renderBlock so sequencer events are processed this block.
+    // Reuse the transport values already read into hostTransport this block.
+    {
+        const double seqBpm      = hostTransport.getBPM();
+        const double seqPpq      = hostTransport.getBeatPosition();
+        const bool   seqPlaying  = hostTransport.isPlaying();
+        for (int s = 0; s < kNumPrimarySlots; ++s)
+        {
+            slotSequencers_[s].syncFromApvts(apvts, "slot" + juce::String(s) + "_seq_");
+            slotSequencers_[s].processBlock(slotMidi[s], seqBpm, seqPpq, seqPlaying, numSamples);
+        }
+    }
+    // ── end Wave 5 C1 ────────────────────────────────────────────────────────
 
     // Feed external audio to Osmosis if loaded in any slot.
     // Uses virtual isAnalysisEngine() instead of dynamic_cast to avoid RTTI on audio thread.

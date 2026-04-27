@@ -502,7 +502,6 @@ public:
                 float t = (numFacets > 1) ? static_cast<float>(f) / static_cast<float>(numFacets - 1) : 0.5f;
                 // t in [0,1] → detune offset in [-half, +half] cents
                 float centOffset = (t - 0.5f) * 2.0f * detuneHalfRangeCents;
-                detuneRatio[f] = fastPow2(centOffset / 1200.0f);
                 detuneRatio[f] = fastPow2(centOffset * (1.0f / 1200.0f));
                 // Phase offset in [0, spreadDeg/360] cycle fraction
                 float spreadFrac = spreadDeg / 360.0f;

@@ -4,18 +4,22 @@
 // ModMatrixDrawer.h — Collapsible mod matrix panel for EngineDetailPanel.
 //
 // Displays up to 8 routing slots, each with:
-//   Source ComboBox → Destination ComboBox → Depth Slider → Enable Toggle
+//   Source ComboBox → Destination ComboBox → Depth Slider → Curve Picker → Q Toggle → Enable Toggle
 //
 // APVTS parameter discovery pattern:
-//   {prefix}modSlot{i}Src  — Choice parameter (source)
-//   {prefix}modSlot{i}Dst  — Choice parameter (destination)
-//   {prefix}modSlot{i}Amt  — Float parameter, bipolar -1 to +1
+//   {prefix}modSlot{i}Src   — Choice parameter (source)
+//   {prefix}modSlot{i}Dst   — Choice parameter (destination)
+//   {prefix}modSlot{i}Amt   — Float parameter, bipolar -1 to +1
+//   {prefix}modSlot{i}Curve — Choice parameter (CurveShape: Linear/Exp/Log/S)
+//   {prefix}modSlot{i}Quant — Bool parameter (quantize-to-scale)
 //
-// Expanded width: 220px. Collapsed: 0px (only MOD tab in parent is visible).
+// Expanded width: 260px (increased from 220px to accommodate curve+Q controls).
+// Collapsed: 0px (only MOD tab in parent is visible).
 // Call loadEngine(prefix) after engine changes; clear() before loading new engine.
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
+#include "../AccentColors.h"
 
 namespace xoceanus
 {
@@ -142,7 +146,7 @@ public:
 class ModMatrixDrawer : public juce::Component
 {
 public:
-    static constexpr int kExpandedWidth = 220;
+    static constexpr int kExpandedWidth = 260; // expanded from 220px to fit curve picker + Q toggle
     static constexpr int kHeaderHeight  = 26;
     static constexpr int kSlotHeight    = 26;
     static constexpr int kMaxSlots      = 8;
@@ -183,13 +187,17 @@ public:
         for (int i = 0; i < kMaxSlots; ++i)
         {
             const int slotNum = i + 1; // 1-indexed
-            const juce::String srcId = pfx + "modSlot" + juce::String(slotNum) + "Src";
-            const juce::String dstId = pfx + "modSlot" + juce::String(slotNum) + "Dst";
-            const juce::String amtId = pfx + "modSlot" + juce::String(slotNum) + "Amt";
+            const juce::String srcId   = pfx + "modSlot" + juce::String(slotNum) + "Src";
+            const juce::String dstId   = pfx + "modSlot" + juce::String(slotNum) + "Dst";
+            const juce::String amtId   = pfx + "modSlot" + juce::String(slotNum) + "Amt";
+            const juce::String curveId = pfx + "modSlot" + juce::String(slotNum) + "Curve";
+            const juce::String quantId = pfx + "modSlot" + juce::String(slotNum) + "Quant";
 
-            auto* srcParam = apvts_.getParameter(srcId);
-            auto* dstParam = apvts_.getParameter(dstId);
-            auto* amtParam = apvts_.getParameter(amtId);
+            auto* srcParam   = apvts_.getParameter(srcId);
+            auto* dstParam   = apvts_.getParameter(dstId);
+            auto* amtParam   = apvts_.getParameter(amtId);
+            auto* curveParam = apvts_.getParameter(curveId);
+            auto* quantParam = apvts_.getParameter(quantId);
 
             const bool slotExists = (srcParam != nullptr);
 
@@ -237,6 +245,40 @@ public:
                     amtAttachments_[i] = std::make_unique<juce::AudioProcessorValueTreeState::SliderAttachment>(
                         apvts_, amtId, *slots_[i].depthSlider);
 
+                // D9 E3: wire curve picker → APVTS (read initial value; updates via callback)
+                if (curveParam)
+                {
+                    const int curveVal = juce::roundToInt(curveParam->getValue()
+                                            * (float)(curveParam->getNumSteps() - 1));
+                    slots_[i].curvePicker->setSelectedIndex(curveVal, /*notify=*/false);
+                    slots_[i].curvePicker->onCurveSelected = [this, curveId](int idx) {
+                        if (auto* p = apvts_.getParameter(curveId))
+                            p->setValueNotifyingHost(p->convertTo0to1((float)idx));
+                    };
+                    slots_[i].curvePicker->setEnabled(true);
+                }
+                else
+                {
+                    slots_[i].curvePicker->setSelectedIndex(0, false);
+                    slots_[i].curvePicker->setEnabled(false);
+                }
+
+                // D9 E3: wire quantize toggle → APVTS (read initial value; updates via callback)
+                if (quantParam)
+                {
+                    slots_[i].quantToggle->setQuantized(quantParam->getValue() >= 0.5f, /*notify=*/false);
+                    slots_[i].quantToggle->onToggled = [this, quantId](bool on) {
+                        if (auto* p = apvts_.getParameter(quantId))
+                            p->setValueNotifyingHost(on ? 1.0f : 0.0f);
+                    };
+                    slots_[i].quantToggle->setEnabled(true);
+                }
+                else
+                {
+                    slots_[i].quantToggle->setQuantized(false, false);
+                    slots_[i].quantToggle->setEnabled(false);
+                }
+
                 slots_[i].enableToggle->setActive(true);
                 slots_[i].enableToggle->setEnabled(true);
                 slots_[i].slotLabel->setAlpha(1.0f);
@@ -250,6 +292,10 @@ public:
                 slots_[i].dstCombo->clear(juce::dontSendNotification);
                 slots_[i].dstCombo->addItem("—", 1);
                 slots_[i].dstCombo->setEnabled(false);
+                slots_[i].curvePicker->setSelectedIndex(0, false);
+                slots_[i].curvePicker->setEnabled(false);
+                slots_[i].quantToggle->setQuantized(false, false);
+                slots_[i].quantToggle->setEnabled(false);
                 slots_[i].enableToggle->setActive(false);
                 slots_[i].enableToggle->setEnabled(false);
                 slots_[i].slotLabel->setAlpha(0.3f);
@@ -273,6 +319,10 @@ public:
             slots_[i].dstCombo->clear(juce::dontSendNotification);
             slots_[i].srcCombo->setEnabled(false);
             slots_[i].dstCombo->setEnabled(false);
+            slots_[i].curvePicker->setSelectedIndex(0, false);
+            slots_[i].curvePicker->setEnabled(false);
+            slots_[i].quantToggle->setQuantized(false, false);
+            slots_[i].quantToggle->setEnabled(false);
             slots_[i].enableToggle->setActive(false);
             slots_[i].enableToggle->setEnabled(false);
         }
@@ -438,6 +488,223 @@ private:
     };
 
     //==========================================================================
+    // CurvePicker — 4-button segmented control for CurveShape selection.
+    // Renders tiny glyph thumbnails (16×12 px each) for Linear/Exp/Log/S.
+    // WCAG AAA: active segment uses chainAccent (≥7:1 against dark bg).
+    class CurvePicker : public juce::Component
+    {
+    public:
+        static constexpr int kNumShapes = 4; // Linear, Exp, Log, S
+        static constexpr int kSegW      = 16;
+        static constexpr int kSegH      = 12;
+
+        std::function<void(int)> onCurveSelected; // callback with shape index 0–3
+
+        CurvePicker()
+        {
+            setWantsKeyboardFocus(true);
+            setTitle("Curve shape");
+            setDescription("Select modulation curve shape: Linear, Exponential, Logarithmic, or S-curve.");
+        }
+
+        int getSelectedIndex() const noexcept { return selectedIdx_; }
+
+        void setSelectedIndex(int idx, bool notify = true)
+        {
+            idx = juce::jlimit(0, kNumShapes - 1, idx);
+            if (selectedIdx_ == idx)
+                return;
+            selectedIdx_ = idx;
+            repaint();
+            if (notify && onCurveSelected)
+                onCurveSelected(selectedIdx_);
+        }
+
+        void paint(juce::Graphics& g) override
+        {
+            const int w = kSegW;
+            const int h = kSegH;
+
+            for (int i = 0; i < kNumShapes; ++i)
+            {
+                const int x = i * w;
+                const bool active = (i == selectedIdx_);
+
+                // Background: dim when inactive, chain-cool tint when active
+                if (active)
+                    g.setColour(XOceanus::AccentColors::chainAccent.withAlpha(0.18f));
+                else
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
+                g.fillRect(x, 0, w, h);
+
+                // Border
+                g.setColour(active ? XOceanus::AccentColors::chainAccent.withAlpha(0.5f)
+                                   : juce::Colour(200, 204, 216).withAlpha(0.10f));
+                g.drawRect(x, 0, w, h, 1);
+
+                // Glyph — tiny waveform thumbnail
+                paintCurveGlyph(g, i, x, 0, w, h, active);
+            }
+
+            // Keyboard focus ring
+            if (hasKeyboardFocus(false))
+                A11y::drawFocusRing(g, getLocalBounds().toFloat(), 3.0f);
+        }
+
+        void mouseDown(const juce::MouseEvent& e) override
+        {
+            const int idx = e.x / kSegW;
+            if (idx >= 0 && idx < kNumShapes)
+                setSelectedIndex(idx, true);
+        }
+
+        bool keyPressed(const juce::KeyPress& key) override
+        {
+            if (key == juce::KeyPress::leftKey)  { setSelectedIndex(selectedIdx_ - 1, true); return true; }
+            if (key == juce::KeyPress::rightKey) { setSelectedIndex(selectedIdx_ + 1, true); return true; }
+            return false;
+        }
+
+    private:
+        // Paint a tiny glyph representing the curve shape.
+        // Each glyph is a 3-point polyline drawn in the centre 12×8 px of the segment.
+        static void paintCurveGlyph(juce::Graphics& g, int shape,
+                                    int bx, int by, int bw, int bh,
+                                    bool active)
+        {
+            const juce::Colour col = active ? XOceanus::AccentColors::chainAccent
+                                            : juce::Colour(200, 204, 216).withAlpha(0.40f);
+            g.setColour(col);
+
+            // Glyph area — leave 2px border each side
+            const float gx = (float)bx + 2.0f;
+            const float gy = (float)by + 2.0f;
+            const float gw = (float)bw - 4.0f;
+            const float gh = (float)bh - 4.0f;
+
+            juce::Path p;
+            // Each curve is described as points in normalised [0,1]×[0,1] space
+            // (x=phase, y=output, y=0 at bottom, y=1 at top)
+            switch (shape)
+            {
+                case 0: // Linear: diagonal from bottom-left to top-right
+                {
+                    p.startNewSubPath(gx, gy + gh);
+                    p.lineTo(gx + gw, gy);
+                    break;
+                }
+                case 1: // Exp: concave-up (starts slow, ends fast)
+                {
+                    p.startNewSubPath(gx, gy + gh);
+                    p.quadraticTo(gx + gw * 0.8f, gy + gh, gx + gw, gy);
+                    break;
+                }
+                case 2: // Log: concave-down (starts fast, ends slow)
+                {
+                    p.startNewSubPath(gx, gy + gh);
+                    p.quadraticTo(gx, gy, gx + gw, gy);
+                    break;
+                }
+                case 3: // S-curve: smoothstep
+                {
+                    p.startNewSubPath(gx, gy + gh);
+                    p.cubicTo(gx + gw * 0.2f, gy + gh,
+                              gx + gw * 0.8f, gy,
+                              gx + gw, gy);
+                    break;
+                }
+                default:
+                    p.startNewSubPath(gx, gy + gh);
+                    p.lineTo(gx + gw, gy);
+                    break;
+            }
+
+            g.strokePath(p, juce::PathStrokeType(1.2f, juce::PathStrokeType::curved,
+                                                  juce::PathStrokeType::rounded));
+        }
+
+        int selectedIdx_ = 0; // 0 = Linear (default)
+    };
+
+    //==========================================================================
+    // QuantizeToggle — small "Q" pill button.
+    // Lit state uses chainAccent (chain cool palette, WCAG AAA).
+    // Unlit is dimmed.
+    class QuantizeToggle : public juce::Component
+    {
+    public:
+        std::function<void(bool)> onToggled;
+
+        QuantizeToggle()
+        {
+            setWantsKeyboardFocus(true);
+            setTitle("Quantize to scale");
+            setDescription("Toggle quantize-to-scale: routes pitch modulation to the nearest scale degree.");
+        }
+
+        bool isQuantized() const noexcept { return quantized_; }
+
+        void setQuantized(bool q, bool notify = true)
+        {
+            if (quantized_ == q)
+                return;
+            quantized_ = q;
+            repaint();
+            if (notify && onToggled)
+                onToggled(quantized_);
+        }
+
+        void paint(juce::Graphics& g) override
+        {
+            auto b = getLocalBounds().toFloat();
+
+            // Background
+            if (quantized_ && isEnabled())
+                g.setColour(XOceanus::AccentColors::chainAccent.withAlpha(0.20f));
+            else
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
+            g.fillRoundedRectangle(b, 3.0f);
+
+            // Border
+            if (quantized_ && isEnabled())
+                g.setColour(XOceanus::AccentColors::chainAccent.withAlpha(0.60f));
+            else
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(0.12f));
+            g.drawRoundedRectangle(b.reduced(0.5f), 3.0f, 1.0f);
+
+            // "Q" label — chainAccent when lit, dimmed when off
+            g.setFont(GalleryFonts::value(7.0f));
+            if (quantized_ && isEnabled())
+                g.setColour(XOceanus::AccentColors::chainAccent); // AAA contrast
+            else
+                g.setColour(juce::Colour(200, 204, 216).withAlpha(isEnabled() ? 0.30f : 0.12f));
+            g.drawText("Q", b.toNearestInt(), juce::Justification::centred, false);
+
+            if (hasKeyboardFocus(false))
+                A11y::drawFocusRing(g, b, 3.0f);
+        }
+
+        void mouseDown(const juce::MouseEvent&) override
+        {
+            if (isEnabled())
+                setQuantized(!quantized_, true);
+        }
+
+        bool keyPressed(const juce::KeyPress& key) override
+        {
+            if (key == juce::KeyPress::spaceKey || key == juce::KeyPress::returnKey)
+            {
+                if (isEnabled()) setQuantized(!quantized_, true);
+                return true;
+            }
+            return false;
+        }
+
+    private:
+        bool quantized_ = false;
+    };
+
+    //==========================================================================
     struct SlotRow
     {
         std::unique_ptr<juce::Label>        slotLabel;     // "1"–"8"
@@ -445,6 +712,8 @@ private:
         std::unique_ptr<juce::Label>        arrowLabel;    // "→"
         std::unique_ptr<juce::ComboBox>     dstCombo;
         std::unique_ptr<juce::Slider>       depthSlider;
+        std::unique_ptr<CurvePicker>        curvePicker;   // D9 E3: Linear/Exp/Log/S
+        std::unique_ptr<QuantizeToggle>     quantToggle;   // D9 E3: quantize-to-scale
         std::unique_ptr<EnableToggle>       enableToggle;
 
         // LookAndFeel instances owned per-slot to avoid cross-contamination
@@ -494,6 +763,14 @@ private:
         row.depthSlider->setValue(0.0, juce::dontSendNotification);
         addAndMakeVisible(*row.depthSlider);
 
+        // D9 E3: Curve picker — 4-segment Linear/Exp/Log/S
+        row.curvePicker = std::make_unique<CurvePicker>();
+        addAndMakeVisible(*row.curvePicker);
+
+        // D9 E3: Quantize toggle — "Q" pill, chain-cool accent
+        row.quantToggle = std::make_unique<QuantizeToggle>();
+        addAndMakeVisible(*row.quantToggle);
+
         // Enable toggle
         row.enableToggle = std::make_unique<EnableToggle>();
         addAndMakeVisible(*row.enableToggle);
@@ -501,32 +778,36 @@ private:
 
     // Layout a single slot row within its bounding rect.
     // Layout (left→right, 4px padding top+bottom):
-    //   [4px gap] [slotLabel 10px] [2px] [srcCombo ~54px] [arrowLabel 10px]
-    //   [dstCombo ~54px] [2px] [depthSlider 40px] [2px] [toggle 12px] [4px]
+    //   [4px gap] [slotLabel 10px] [2px] [srcCombo ~40px] [arrowLabel 10px]
+    //   [dstCombo ~40px] [2px] [depthSlider 32px] [2px] [curvePicker 64px] [2px] [Q 14px] [2px] [toggle 12px] [4px]
     void layoutSlotRow(int i, int rx, int ry, int rw, int rh)
     {
-        const int padV  = 4;
-        const int padH  = 4;
-        const int inner = rh - padV * 2;
-        int x           = rx + padH;
+        const int padV    = 4;
+        const int padH    = 4;
+        const int inner   = rh - padV * 2;
+        int x             = rx + padH;
 
-        // Slot number label — narrow column
-        const int labelW = 10;
+        // Fixed-width columns
+        const int labelW  = 10;
+        const int arrowW  = 10;
+        const int depthW  = 32;
+        const int curveW  = CurvePicker::kSegW * CurvePicker::kNumShapes; // 4 × 16 = 64px
+        const int quantW  = 14;
+        const int toggleW = 12;
+
+        // Budget: rw - padH*2 - labelW - arrowW - depthW - curveW - quantW - toggleW - gaps
+        // gaps: 2 (after label) + 0 (before arrow, arrow follows srcCombo) + 2 (after dst) + 2 (after depth) + 2 (after curve) + 2 (after quant) + 4 (right pad)
+        const int fixedUsed = padH + labelW + 2 + arrowW + depthW + curveW + quantW + toggleW + (2 + 2 + 2 + 2 + padH);
+        const int comboTotal = rw - fixedUsed;
+        const int comboW     = juce::jmax(24, comboTotal / 2);
+
+        // Slot number label
         slots_[i].slotLabel->setBounds(x, ry + padV, labelW, inner);
         x += labelW + 2;
 
-        // Remaining width budget: rw - padH*2 - labelW - 2 - 10 (arrow) - 40 (depth) - 12 (toggle) - 2 - 2 - 2
-        // Two combo boxes share the remaining space equally
-        const int arrowW  = 10;
-        const int depthW  = 40;
-        const int toggleW = 12;
-        const int gaps    = 2 + 2 + 2 + 2 + padH; // arrow gaps + depth gap + toggle gap + right pad
-        const int comboTotal = rw - padH - labelW - 2 - arrowW - depthW - toggleW - gaps;
-        const int comboW     = juce::jmax(30, comboTotal / 2);
-
         // Source ComboBox
         slots_[i].srcCombo->setBounds(x, ry + padV, comboW, inner);
-        x += comboW + 2;
+        x += comboW;
 
         // Arrow
         slots_[i].arrowLabel->setBounds(x, ry + padV, arrowW, inner);
@@ -540,7 +821,18 @@ private:
         slots_[i].depthSlider->setBounds(x, ry + padV, depthW, inner);
         x += depthW + 2;
 
-        // Enable toggle — centered vertically, 12x12
+        // Curve picker — 4 × 16px = 64px wide, full inner height
+        const int curveY = ry + (rh - CurvePicker::kSegH) / 2;
+        slots_[i].curvePicker->setBounds(x, curveY, curveW, CurvePicker::kSegH);
+        x += curveW + 2;
+
+        // Quantize toggle — "Q" pill, 14×12px centred vertically
+        const int quantH = 12;
+        const int quantY = ry + (rh - quantH) / 2;
+        slots_[i].quantToggle->setBounds(x, quantY, quantW, quantH);
+        x += quantW + 2;
+
+        // Enable toggle — 12×12px centred vertically
         const int toggleY = ry + (rh - toggleW) / 2;
         slots_[i].enableToggle->setBounds(x, toggleY, toggleW, toggleW);
     }
@@ -552,6 +844,10 @@ private:
             srcAttachments_[i].reset();
             dstAttachments_[i].reset();
             amtAttachments_[i].reset();
+            // Curve and quant are wired via callbacks — clear them to prevent
+            // dangling captures to old APVTS parameter IDs after engine change.
+            slots_[i].curvePicker->onCurveSelected = nullptr;
+            slots_[i].quantToggle->onToggled = nullptr;
         }
     }
 

@@ -19,6 +19,7 @@
 #include "Core/SharedTransport.h"
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
+#include "DSP/PerEnginePatternSequencer.h"
 // Wave 5 A1: Global drag-drop mod routing model (message-thread side).
 // The header lives in Future/ but we reference it in-place per spec.
 #include "Future/UI/ModRouting/DragDropModRouter.h"
@@ -160,6 +161,9 @@ public:
     // Engine slot management (message thread only)
     // Slot 4 (0-indexed) is the Ghost Slot — see EngineRegistry::detectCollection().
     static constexpr int MaxSlots = 5;
+    // Primary engine slots (0–3): eligible for per-slot pattern sequencer.
+    // The Ghost Slot (index 4) is excluded from sequencer instances.
+    static constexpr int kNumPrimarySlots = 4;
     static constexpr float CrossfadeMs = 50.0f;
     void loadEngine(int slot, const std::string& engineId);
     void unloadEngine(int slot);
@@ -457,6 +461,10 @@ private:
     juce::AudioBuffer<float> crossfadeBuffer;
     std::array<juce::MidiBuffer, MaxSlots> slotMidi; // per-slot MIDI from ChordMachine
 
+    // Wave 5 C1: per-slot pattern sequencer (primary slots 0–3 only; Ghost Slot excluded).
+    // Each instance is engine-agnostic — events appear in slotMidi[] transparently.
+    std::array<XOceanus::PerEnginePatternSequencer, kNumPrimarySlots> slotSequencers_;
+
     // External audio input capture — sized once in prepareToPlay, NEVER resized in processBlock.
     // OsmosisEngine reads raw pointers into this buffer within the same processBlock call.
     juce::AudioBuffer<float> externalInputBuffer;
@@ -502,6 +510,21 @@ private:
         std::atomic<float>* cmHumanize = nullptr;
         std::atomic<float>* cmSidechainDuck = nullptr;
         std::atomic<float>* cmEnoMode = nullptr;
+
+        // B2: input mode + global key/scale
+        std::atomic<float>* cmInputMode   = nullptr; // chord_input_mode (0=AUTO, 1=PAD, 2=DEG)
+        std::atomic<float>* cmGlobalRoot  = nullptr; // cm_global_root (0-11)
+        std::atomic<float>* cmGlobalScale = nullptr; // cm_global_scale (0-8)
+
+        // B2: pad chord slots (16 × 3 params)
+        struct PadChordParams
+        {
+            std::atomic<float>* root    = nullptr; // chord_pad_N_root   [0,127]
+            std::atomic<float>* voicing = nullptr; // chord_pad_N_voicing [0,NumModes-1]
+            std::atomic<float>* inv     = nullptr; // chord_pad_N_inv    [0,3]
+        };
+        std::array<PadChordParams, 16> padChords;
+
         // Family bleed params — cached to avoid string lookups on audio thread
         std::atomic<float>* ohmCommune = nullptr;
         std::atomic<float>* obblBond = nullptr;
