@@ -256,6 +256,13 @@ public:
         if (!isActive())
             return;
 
+        // P37 guard: sr = 0.0 before prepare() (sentinel at line 524).
+        // If the engine receives a probe block before prepareToPlay() sets sr, the
+        // division blockTimeSec = numSamples / sr = +Inf at line 282 propagates into
+        // thermal.updateWarmth(), corrupting the NTC stage state with NaN values.
+        // Canonical guard from OxytocinDrive.h line 53.
+        if (sr <= 0.0) return;
+
         // --- Base frequency ---
         // F03 fix: use fastPow2 (available via FastMath.h, included in OxytocinDrive.h
         // which is included by this file) instead of std::pow — called per active voice
