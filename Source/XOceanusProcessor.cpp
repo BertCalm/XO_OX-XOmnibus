@@ -2831,6 +2831,22 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         state.removeChild(existing, nullptr);
     state.appendChild(modRoutingModel_.toValueTree(), nullptr);
 
+    // #1179 — Persist TideWaterline per-step sequence data as a ValueTree child.
+    // D1 foundation: step patterns survive DAW session recall independently of
+    // preset loads.  onGetTideWaterlineState is registered by OceanView after
+    // waterline_ is initialised.  If the callback is null (editor not open), the
+    // child is simply omitted — setStateInformation stores it for deferred pickup.
+    if (onGetTideWaterlineState)
+    {
+        auto tideState = onGetTideWaterlineState();
+        if (tideState.isValid())
+        {
+            if (auto existing = state.getChildWithName("TideWaterlineSteps"); existing.isValid())
+                state.removeChild(existing, nullptr);
+            state.appendChild(tideState, nullptr);
+        }
+    }
+
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
     if (xml)
     {
@@ -3060,6 +3076,22 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
             {
                 modRoutingModel_.fromValueTree(modRoutesTree);
                 flushModRoutesSnapshot();
+            }
+        }
+
+        // #1179 — Restore TideWaterline per-step sequence data (D1 foundation).
+        // "TideWaterlineSteps" child is absent in sessions predating this feature
+        // — no-op in that case (algorithmic default pattern is kept on construction).
+        // Case A: editor already open → callback registered, dispatch immediately.
+        // Case B: editor not yet open → store for deferred pickup in initWaterline().
+        {
+            auto tideTree = apvts.state.getChildWithName("TideWaterlineSteps");
+            if (tideTree.isValid())
+            {
+                if (onSetTideWaterlineState)
+                    onSetTideWaterlineState(tideTree);
+                else
+                    persistedTideWaterlineState_ = tideTree;
             }
         }
 
