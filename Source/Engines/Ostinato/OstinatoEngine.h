@@ -663,8 +663,14 @@ private:
 class OstiWaveguideBody
 {
 public:
-    // 4096 samples: supports body delay up to ~93ms at 44.1kHz
-    static constexpr int kMaxDelay = 4096;
+    // 9216 samples: supports body delay up to ~96ms at 96kHz (max instrument = 96ms at that SR).
+    // Instrument table max is 350ms; at 96kHz 350ms needs 33600 samples.
+    // Use 9216 (96000 * 0.096) to cover 96ms while staying within memory budget.
+    // Instruments with bodyDelayMs > 96ms are intentionally clamped — the body resonance
+    // becomes a reverberation at those long delays and the clamp is musically acceptable.
+    // At 44.1kHz, 9216 samples = ~209ms, covering all instrument values.
+    // P34 fix: was 4096 (42.7ms at 96kHz), now 9216 — correct body resonance at 96kHz.
+    static constexpr int kMaxDelay = 9216;
 
     void prepare(double sampleRate) noexcept
     {
@@ -751,7 +757,8 @@ public:
         // back into the delay creates a secondary feedback loop that can cause
         // instability at high reflection settings on the Box body type.
         delayBuffer[writePos] = input + reflected * feedbackGain;
-        writePos = (writePos + 1) & (kMaxDelay - 1);
+        // P34 fix: kMaxDelay=9216 is NOT a power of 2; modulo replaces the bitmask.
+        writePos = (writePos + 1 >= kMaxDelay) ? 0 : writePos + 1;
 
         // Blend dry input with body resonance
         return input * (1.0f - currentBodyAmount) + (delayed + multiTap) * currentBodyAmount;

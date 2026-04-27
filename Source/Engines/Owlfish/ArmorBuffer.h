@@ -189,7 +189,12 @@ public:
     bool isActive() const { return armed; }
 
 private:
-    static constexpr int kHistorySize = 2048;
+    // 4096 samples: covers ~42.7ms at 96kHz (was 2048 → 21ms at 96kHz, halving
+    // the effective capture window at higher sample rates). At 44.1kHz, 4096
+    // samples = ~92.9ms of capture history. Using power-of-2 keeps bitmask
+    // arithmetic at lines 83, 98-99, 142-143, 150-151 intact (4096-1=0xFFF valid).
+    // P34 fix: was 2048, doubled to 4096 for correct 96kHz granulator coverage.
+    static constexpr int kHistorySize = 4096;
     static constexpr int kMaxDelay = 22050;
     static constexpr int kNumGrains = 8;
 

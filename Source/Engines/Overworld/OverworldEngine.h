@@ -296,6 +296,9 @@ public:
         juce::ScopedNoDenormals noDenormals;
         if (numSamples <= 0)
             return;
+        // P37 guard: sr=0.0 before prepare() → eraPhase = +Inf at line 489.
+        // Return silence until prepare() sets sr correctly.
+        if (sr <= 0.0f) { buffer.clear(); return; }
 
         // Build ParamSnapshot from cached atomics
         auto snap = buildSnapshot();

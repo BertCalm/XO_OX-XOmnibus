@@ -377,6 +377,10 @@ public:
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
+        // P37 guard: srf=0.0 before prepare() → blockSec=+Inf → engineSilenceTimer=+Inf
+        // which permanently silences the engine even after prepare() fires. Return clear
+        // buffer until prepare() sets srf correctly.
+        if (srf <= 0.0f) { buffer.clear(); return; }
         int noteOnCount = 0;
 
         for (const auto metadata : midi)

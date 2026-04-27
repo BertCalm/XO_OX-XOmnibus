@@ -474,6 +474,10 @@ public:
 
     void processSample(float level, float& outL, float& outR) noexcept
     {
+        // P37 guard: invSR=0 before prepare() — return silence rather than using
+        // an uninitialised filter coefficient (wrong-SR at 96kHz, not a crash but
+        // semantically wrong for the brief pre-prepare window).
+        if (invSR <= 0.0f) { outL = outR = 0.0f; return; }
         if (level < 0.001f)
         {
             outL = outR = 0.0f;
@@ -549,7 +553,7 @@ public:
 
 private:
     double sr = 0.0;   // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / 44100.0f;  // overwritten by prepare() — avoids per-sample division
+    float invSR = 0.0f; // Sentinel: set by prepare(). Do NOT init from literal SR (wrong at 96kHz). P37 fix.
     float breathHPCoeff = 0.001f;   // overwritten by prepare() — SR-correct DC-block coefficient
     int mode = 1;
     float tone = 0.5f;
@@ -1035,6 +1039,9 @@ public:
 
     float process(float input, float amount) noexcept
     {
+        // P37 guard: invSR=0 before prepare() — return dry input rather than using
+        // an uninitialised filter coefficient (wrong-SR at 96kHz, no crash but wrong).
+        if (invSR <= 0.0f) return input;
         if (amount < 0.001f)
             return input;
 
@@ -1051,7 +1058,7 @@ public:
 
 private:
     double sr = 0.0;   // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / 44100.0f;  // overwritten by prepare()
+    float invSR = 0.0f; // Sentinel: set by prepare(). Do NOT init from literal SR (wrong at 96kHz). P37 fix.
     float lpState = 0.0f;
     float lastTone = -1.0f;
     float cachedCoeff = 0.5f;

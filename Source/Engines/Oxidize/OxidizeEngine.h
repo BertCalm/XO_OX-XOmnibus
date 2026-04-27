@@ -62,8 +62,14 @@ public:
         luts_.initialize();
 
         // Initialise all voices
-        for (auto& v : voices_)
-            v.prepare(sampleRate, maxBlockSize);
+        for (int i = 0; i < static_cast<int>(voices_.size()); ++i)
+        {
+            voices_[i].prepare(sampleRate, maxBlockSize);
+            // P36 fix: differentiate per-voice noise seeds so polyphonic crackle
+            // is independent rather than correlated. Uncorrelated voices produce a
+            // natural "each string ages differently" character.
+            voices_[i].noiseState = static_cast<uint32_t>(i * 31337u) ^ 0xDEAD1234u;
+        }
 
         // Initialise shared sediment reverb
         sediment_.prepare(sampleRate, maxBlockSize);
