@@ -23,15 +23,7 @@
 //
 // Timer at 15 Hz keeps the step-LED playhead current.
 //
-// TODO Wave5-C2 mount (in OceanView.h initChordBar or resized):
-//   addAndMakeVisible(seqStrip_);
-//   addAndMakeVisible(seqBreakout_);
-//   seqStrip_.setBreakout(&seqBreakout_);
-//   // in resized(), after the chord bar:
-//   if (seqStrip_.isVisible())
-//       seqStrip_.setBounds(dashArea.removeFromTop(SeqStripComponent::kStripHeight));
-//   // overlay the breakout over the bottom 60% of the editor:
-//   seqBreakout_.setBounds(fullBounds.withTop(fullBounds.getHeight() * 2 / 5));
+// Wave 5 C2 mount APPLIED — see OceanView.h initSeqStrip() and resized().
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>

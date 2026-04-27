@@ -18,10 +18,8 @@
 // (or 0.3 for unipolar sources). Existing routes for the same (source, dest)
 // pair surface a depth-adjust dialog instead of creating a duplicate.
 //
-// TODO Wave5-A3 mount: Callers that want the right-click menu need to:
-//   1. Hold a reference to a ModRoutingModel (passed from the editor).
-//   2. Call ModulateFromMenu::show(model, paramId, this) from their mouseDown
-//      when e.mods.isRightButtonDown(). No component subclass is required.
+// Wave 5 A3 mount APPLIED — callers use ModulateFromMenu::show(model, paramId, this)
+// from mouseDown when e.mods.isRightButtonDown(). See XOceanusEditor.h.
 //
 // ────────────────────────────────────────────────────────────────────────────
 // Extended source list (D9 F4 + G3 spec)
