@@ -1976,9 +1976,11 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             firstBreathPending_.store(false, std::memory_order_release);
             if (enginePtrs[0] != nullptr) // engine must be ready
             {
-                firstBreathActive_      = true;
-                firstBreathGeneration_ = engineGeneration_.load(std::memory_order_acquire); // snapshot generation at arm time
-                firstBreathCountdown_  = static_cast<int>(
+                firstBreathActive_         = true;
+                firstBreathFading_         = false; // reset any in-progress fade from a prior replay
+                firstBreathFadeCountdown_  = 0;
+                firstBreathGeneration_     = engineGeneration_.load(std::memory_order_acquire); // snapshot generation at arm time
+                firstBreathCountdown_      = static_cast<int>(
                     currentSampleRate.load(std::memory_order_relaxed) * kFirstBreathTimeoutMs / 1000.0);
                 slotMidi[0].addEvent(
                     juce::MidiMessage::noteOn(1, kFirstBreathNote, kFirstBreathVelocity), 0);
@@ -1995,8 +1997,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             // mechanism, so we simply disarm without an extra note-off here.
             if (engineGeneration_.load(std::memory_order_relaxed) != firstBreathGeneration_)
             {
-                firstBreathActive_    = false;
-                firstBreathCountdown_ = 0;
+                firstBreathActive_        = false;
+                firstBreathFading_        = false;
+                firstBreathFadeCountdown_ = 0;
+                firstBreathCountdown_     = 0;
             }
             else
             {
@@ -2015,12 +2019,28 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     }
                 }
 
-                if (userPlayed)
+                if (userPlayed && !firstBreathFading_)
                 {
-                    // User started playing — kill First Breath note immediately.
-                    slotMidi[0].addEvent(juce::MidiMessage::noteOff(1, kFirstBreathNote, (uint8_t)0), 0);
-                    firstBreathActive_    = false;
-                    firstBreathCountdown_ = 0;
+                    // §1300: user interaction — start the 200 ms fade window instead of
+                    // killing the note immediately.  The note-off fires after the fade
+                    // expires so there is no abrupt cut when the user first plays.
+                    firstBreathFading_         = true;
+                    firstBreathFadeCountdown_  = static_cast<int>(
+                        currentSampleRate.load(std::memory_order_relaxed) * kFirstBreathFadeMs / 1000.0);
+                }
+
+                if (firstBreathFading_)
+                {
+                    firstBreathFadeCountdown_ -= numSamples;
+                    if (firstBreathFadeCountdown_ <= 0)
+                    {
+                        // Fade complete — send note-off and disarm.
+                        slotMidi[0].addEvent(juce::MidiMessage::noteOff(1, kFirstBreathNote, (uint8_t)0), 0);
+                        firstBreathActive_         = false;
+                        firstBreathFading_         = false;
+                        firstBreathCountdown_      = 0;
+                        firstBreathFadeCountdown_  = 0;
+                    }
                 }
                 else
                 {
