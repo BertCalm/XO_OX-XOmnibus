@@ -664,25 +664,22 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          # Write release notes to a temp file.
+          # A heredoc embedded directly in a `run:` block confuses the GitHub
+          # Actions YAML parser when the heredoc body contains lines that start
+          # with '#' characters (e.g. markdown headers '##' / '###').  The YAML
+          # scanner sees them as mapping-key candidates and raises a
+          # "could not find expected ':'" ScannerError, which causes every push
+          # — including non-tag pushes — to report "This run likely failed
+          # because of a workflow file issue".  Writing via printf sidesteps
+          # the parser entirely.
+          NOTES_FILE="$RUNNER_TEMP/release_notes.md"
+          printf "## XOceanus %s\n\nSigned, notarized, and ready to install on macOS 12 Monterey and later.\n\n### Installation\n\n**AU Plugin (Logic Pro, GarageBand, Ableton Live, Bitwig, etc.)**\n1. Open the DMG and copy \`XOceanus.component\` to \`~/Library/Audio/Plug-Ins/Components/\`\n2. Restart your DAW and scan for new plugins.\n\n**Standalone App**\n1. Open the DMG and drag \`XOceanus.app\` to your \`/Applications/\` folder.\n\n---\n" \
+            "$VERSION" > "$NOTES_FILE"
+
           gh release create "$TAG" \
             --title "XOceanus $TAG" \
-            --notes "$(cat <<'NOTES'
-## XOceanus ${VERSION}
-
-Signed, notarized, and ready to install on macOS 12 Monterey and later.
-
-### Installation
-
-**AU Plugin (Logic Pro, GarageBand, Ableton Live, Bitwig, etc.)**
-1. Open the DMG and copy `XOceanus.component` to `~/Library/Audio/Plug-Ins/Components/`
-2. Restart your DAW and scan for new plugins.
-
-**Standalone App**
-1. Open the DMG and drag `XOceanus.app` to your `/Applications/` folder.
-
----
-NOTES
-)" \
+            --notes-file "$NOTES_FILE" \
             --generate-notes \
             "${DMG_PATH}#XOceanus-${TAG}.dmg (macOS, signed + notarized)"
 
