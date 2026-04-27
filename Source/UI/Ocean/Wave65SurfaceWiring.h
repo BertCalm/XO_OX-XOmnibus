@@ -92,7 +92,7 @@ inline bool isPercussionEngine (const juce::String& engineId)
 */
 inline void pollLayoutModeParams (juce::AudioProcessorValueTreeState& apvts,
                                   std::array<int, 4>& cache,
-                                  PlaySurface& playSurface)
+                                  xoceanus::PlaySurface& playSurface)
 {
     for (int s = 0; s < 4; ++s)
     {
