@@ -700,6 +700,119 @@ public:
         repaint();
     }
 
+    /** Returns a one-line evocative tagline for the tooltip of each engine buoy.
+        Format: "{EngineName} — {identity}". Falls back to engineId if not catalogued.
+        Source: seance verdicts + CLAUDE.md engine identity cards.
+        Wave 9b: all 93 engines complete. */
+    static juce::String getEngineTagline(const juce::String& engineId)
+    {
+        static const std::unordered_map<std::string, std::string> kTaglines {
+            { "Odyssey",    "Odyssey — warm VA polysynth. The drifter." },
+            { "OddfeliX",   "OddfeliX — feliX the neon tetra. Glitch-phase character synth." },
+            { "OddOscar",   "OddOscar — Oscar the axolotl. Morph-spectrum oscillator." },
+            { "Oxbow",      "Oxbow — Oscar-pole resonator. The spine of deep water." },
+            { "Opaline",    "Opaline — prepared piano. Bloom over long time." },
+            { "Overwash",   "Overwash — tide breath layer. Felt, not heard." },
+            { "Onset",      "Onset — percussive transient sculptor. Attack IS the sound." },
+            { "Oxytocin",   "Oxytocin — circuit-love synthesis. Fleet leader." },
+            { "Ouroboros",  "Ouroboros — strange-attractor feedback. Eats itself." },
+            { "Organism",   "Organism — cellular automata synthesis. Life as DSP." },
+            { "Origami",    "Origami — spectral fold synthesis. Each crease adds a harmonic." },
+            { "Obscura",    "Obscura — physical string model. Daguerreotype resonance." },
+            { "Oware",      "Oware — Akan tuned percussion. Goldweight rhythms." },
+            { "Opera",      "Opera — additive-vocal Kuramoto. Aria through coupling." },
+            { "Offering",   "Offering — boom bap drums. The ritual of the loop." },
+            { "Optic",      "Optic — pulse-code synthesis. Light as waveform." },
+            { "Ostinato",   "Ostinato — firelight repetition engine. Rhythm builds heat." },
+            { "Oceanic",    "Oceanic — phosphorescent tidal pad. The surface itself." },
+            { "Oblique",    "Oblique — prism spectrum. Color bent through angle." },
+            { "Orca",       "Orca — ring-mod hunt engine. Predator frequency." },
+            { "Organon",    "Organon — variational metabolism engine. Life finds its shape." },
+            { "Obsidian",   "Obsidian — crystal-shard granulator. Dark geometric light." },
+            { "Oracle",     "Oracle — GENDY stochastic oracle. Shapes from chaos." },
+            { "Orbital",    "Orbital — grouped harmonic envelope. The constellation rises." },
+            { "Obese",      "Obese — mojo-control aliasing machine. Fat by design." },
+            { "Overbite",   "Overbite — five-fang percussion beast. Bite everything." },
+            { "Overworld",  "Overworld — ERA timbral crossfade. Three dimensions of tone." },
+            { "Opal",       "Opal — grain-shift cloudscape. Opalescence through chaos." },
+            { "Obrix",      "Obrix — reef jade modulation grid. Coupling knots unbound." },
+            { "Orbweave",   "Orbweave — knot-phase topography. Trefoil tangles sound." },
+            { "Osprey",     "Osprey — shore-resonance bird call. Coastline memory." },
+            { "Osteria",    "Osteria — wine-dark modal resonator. Cellar harmonics." },
+            { "Owlfish",    "Owlfish — Mixtur-Trautonium hybrid. Deep-water alien tones." },
+            { "Ohm",        "Ohm — sage modulation source. Resistance IS intention." },
+            { "Orphica",    "Orphica — siren seafoam pluck. Lyre from the abyss." },
+            { "Obbligato",  "Obbligato — breath-stacked voices. Counterpoint lives." },
+            { "Ottoni",     "Ottoni — patina brass synth. Time melts the metal." },
+            { "Ole",        "Ole — hibiscus rhythm cascade. Dance through the spectrum." },
+            { "Overlap",    "Overlap — knotted cross-coupling engine. Tangle breeds tone." },
+            { "Outwit",     "Outwit — chromatophore amber morph. Camouflage through timbre." },
+            { "Ombre",      "Ombre — shadow-mauve drift machine. Darkness has texture." },
+            { "Octopus",    "Octopus — eight-armed chromatophore synth. Each arm a voice." },
+            { "Opensky",    "Opensky — Shepard shimmer tower. Forever ascending light." },
+            { "Oceandeep",  "Oceandeep — trench hydrostatic press. Pressure as tone." },
+            { "Ouie",       "Ouie — hammerhead interval axis. Love and strife collide." },
+            { "Overdub",    "Overdub — spring-reverb echo chamber. Metallic splash memory." },
+            { "Oblong",     "Oblong — amber-warm vowel filter. Burnished formant breath." },
+            { "Overtone",   "Overtone — continued-fraction converger. π sings itself." },
+            { "Oort",       "Oort — Markov cloud wanderer. Random with amnesia." },
+            { "Opsin",      "Opsin — photon-flux Hebbian learner. Light teaches itself." },
+            // Wave 9b batch 3 — final 43 engines
+            { "Oaken",      "Oaken — age-deepened wood resonance. Ancient fiber sings." },
+            { "Oasis",      "Oasis — spring well harmonic bloom. Water finds itself." },
+            { "Obelisk",    "Obelisk — monolithic modal mass. Stone sustains forever." },
+            { "Obiont",     "Obiont — evolutionary gene engine. Mutation breeds tone." },
+            { "Observandum","Observandum — spectral witness bank. Each overtone observed." },
+            { "OceanDeep",  "OceanDeep — trench pressure-synthesis. The deep IS alive." },
+            { "Ocelot",     "Ocelot — spotted jungle oscillator. Wildcat frequency." },
+            { "Ochre",      "Ochre — earth pigment synthesis. Clay resonance model." },
+            { "Octant",     "Octant — navigational bearing engine. Course through space." },
+            { "Octave",     "Octave — tonewheel organ circuit. Draw-bar warmth lives." },
+            { "Oddfellow",  "Oddfellow — spectral-shift stranger. Odd harmony seeker." },
+            { "Ogive",      "Ogive — scanned glass synthesis. Needle through crystal." },
+            { "Ogre",       "Ogre — sub-bass monster engine. Rumble and resonance." },
+            { "Okeanos",    "Okeanos — warm Titan ocean myth. Ancient water memory." },
+            { "Olate",      "Olate — fretless glass slide. Portamento through water." },
+            { "Oleg",       "Oleg — harmonic soul drive. Blues through tonewheel." },
+            { "Ollotron",   "Ollotron — bank-switched oscillator. Each voice a drawer." },
+            { "Olvido",     "Olvido — spectral erosion engine. The forgetting deepens." },
+            { "Omega",      "Omega — synth bass apex engine. Where all currents meet." },
+            { "Onda",       "Onda — bound-state wave engine. Trapped vibration sings." },
+            { "Ondine",     "Ondine — water sprite drift engine. Liquid phase wander." },
+            { "Onkolo",     "Onkolo — drum core resonance. Stick strikes soul." },
+            { "Oobleck",    "Oobleck — non-Newtonian feedback. Stiff when disturbed." },
+            { "Ooze",       "Ooze — Reynolds viscosity synth. Flow through drag." },
+            { "Opcode",     "Opcode — algorithmic depth engine. Code becomes tone." },
+            { "OpenSky",    "OpenSky — Shepard sky tower. Rise without ceiling." },
+            { "Orchard",    "Orchard — bow-pressure string synth. Fruit ripens music." },
+            { "Orrery",     "Orrery — planetary motion engine. Orbit through sound." },
+            { "Ortolan",    "Ortolan — song-phase bird memory. Melody from plumage." },
+            { "Osier",      "Osier — wind through willow. Reed-weave resonance." },
+            { "Osmosis",    "Osmosis — permeability diffusion. Through membrane tone flows." },
+            { "Ostracon",   "Ostracon — tape buffer memory. Mellotron-spirit recall." },
+            { "Otis",       "Otis — soul drive tonewheel. Righteous overdrive." },
+            { "Oto",        "Oto — drawbar organ classic. Rotary speaker dance." },
+            { "Outcrop",    "Outcrop — terrain-type stone. Ridge synthesis model." },
+            { "Outflow",    "Outflow — current-speed river. Flow becomes frequency." },
+            { "Outlook",    "Outlook — horizon-scan engine. See beyond the wave." },
+            { "Oven",       "Oven — hammer-bright piano. Heat in every strike." },
+            { "Overcast",   "Overcast — cloud-dense pad. Gray diffusion synthesis." },
+            { "Overflow",   "Overflow — current-surge torrent. Spillover tone." },
+            { "Overgrow",   "Overgrow — growth-rate garden. Vines devour octaves." },
+            { "Overtide",   "Overtide — tidal depth surge. Rising water frequency." },
+            { "Overworn",   "Overworn — felt-age decay engine. Warmth from wear." },
+            { "Oxalis",     "Oxalis — leaf-tension spring. Wood sorrel resonance." },
+            { "Oxidize",    "Oxidize — age-rate rust engine. Patina builds timbre." },
+        };
+
+        auto it = kTaglines.find(engineId.toStdString());
+        if (it != kTaglines.end())
+            return juce::String(it->second);
+
+        // Fallback: engine name only (all 93 engines catalogued)
+        return engineId;
+    }
+
     bool          hasEngine()       const noexcept { return hasEngine_; }
     juce::String  getEngineId()     const noexcept { return engineId_; }
     juce::Colour  getAccentColour() const noexcept { return accentColour_; }
