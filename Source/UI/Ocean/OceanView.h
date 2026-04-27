@@ -168,6 +168,34 @@ public:
     };
 
     //==========================================================================
+    // Wave 3 — Panel type registry (D4 locked)
+    //==========================================================================
+
+    /**
+        PanelType — identifies each "heavy" panel that can be open at a time.
+
+        Rule: only ONE heavy panel (anything that changes ocean layout or is
+        full-window) may be open simultaneously.  PanelCoordinator enforces this.
+
+        C4 note: ChainMatrix must call coordinator.requestOpen(PanelType::ChainMatrix)
+        on open and coordinator.release(PanelType::ChainMatrix) on close.
+        Use OceanView::getOrbitCenter(slotIndex) for chain-line anchor points.
+
+        XOuija note: XOuijaRouting (future standalone routing overlay) must call
+        coordinator.requestOpen(PanelType::XOuijaRouting) on open.  It MAY coexist
+        with SurfaceRightPanel but NOT with DetailOverlay or ChainMatrix.
+    */
+    enum class PanelType
+    {
+        None,             ///< No heavy panel open
+        EnginePicker,     ///< EnginePickerDrawer — slides from left, dims ocean
+        Settings,         ///< SettingsDrawer — slides from right, dims ocean
+        Detail,           ///< EngineDetailPanel (EngineDetailPanel*) — full-window
+        ChainMatrix,      ///< (Wave 5 C4) chain matrix slide-up — stub, no-op open/close
+        XOuijaRouting     ///< (Future) XOuija routing overlay — stub, no-op open/close
+    };
+
+    //==========================================================================
     // Construction / destruction
     //==========================================================================
 
@@ -347,6 +375,11 @@ public:
             {
                 if (!detail_) return;
 
+                // Wave 3 3b / D7: register Detail as the active heavy panel.
+                // coordinatorRequestOpen hides SurfaceRightPanel if it was open,
+                // and closes any competing heavy panel (EnginePicker/Settings).
+                coordinatorRequestOpen(PanelType::Detail);
+
                 // Position as compact band centered in the ocean area
                 {
                     auto ocean = getOceanArea().reduced(40, 0);
@@ -481,6 +514,9 @@ public:
         {
             if (detail_)
                 detail_->setVisible(false);
+            // Wave 3 3b / D7: release Detail from coordinator so SurfaceRightPanel
+            // is restored to its prior open state (surfaceRightWasOpenForDetail_).
+            coordinatorRelease(PanelType::Detail);
         };
 
         // ── Buoy positions — load saved positions (or defaults) ──────────────
@@ -492,29 +528,54 @@ public:
         {
             firstLaunch_ = false;
             lifesaver_.setVisible(false);
-            // Open engine picker drawer instead of external callback
-            engineDrawer_.open();
+            // Open engine picker drawer via coordinator (Wave 3 3b).
+            coordinatorRequestOpen(PanelType::EnginePicker);
         };
 
-        // ── Phase 3: Engine picker drawer ────────────────────────────────────
+        // ── Phase 3: Engine picker drawer — routed through PanelCoordinator ──
         addChildComponent(engineDrawer_); // starts hidden; toggle via enginesButton_
         engineDrawer_.onEngineSelected = [this](const juce::String& engineId)
         {
-            engineDrawer_.close();
+            coordinatorRelease(PanelType::EnginePicker);
             if (onEnginePickerRequested)
                 onEnginePickerRequested();
             if (onEngineSelectedFromDrawer)
                 onEngineSelectedFromDrawer(engineId);
         };
-        enginesButton_.onClick = [this]() { engineDrawer_.toggle(); };
+        enginesButton_.onClick = [this]()
+        {
+            // Toggle: close if already the active panel, otherwise request open.
+            if (currentPanel_ == PanelType::EnginePicker)
+                coordinatorRelease(PanelType::EnginePicker);
+            else
+                coordinatorRequestOpen(PanelType::EnginePicker);
+        };
 
-        // ── Settings drawer (slide from right) ────────────────────────────────
+        // ── Settings drawer — routed through PanelCoordinator ────────────────
         addChildComponent(settingsDrawer_); // starts hidden; toggle via settingsButton_
-        settingsButton_.onClick = [this]() { settingsDrawer_.toggle(); };
+        settingsButton_.onClick = [this]()
+        {
+            if (currentPanel_ == PanelType::Settings)
+                coordinatorRelease(PanelType::Settings);
+            else
+                coordinatorRequestOpen(PanelType::Settings);
+        };
 
-        // ── HUD bar callbacks ─────────────────────────────────────────────────
-        hudBar_.onEnginesClicked = [this]() { engineDrawer_.toggle(); };
-        hudBar_.onSettingsClicked = [this]() { settingsDrawer_.toggle(); };
+        // ── HUD bar callbacks — routed through PanelCoordinator ──────────────
+        hudBar_.onEnginesClicked = [this]()
+        {
+            if (currentPanel_ == PanelType::EnginePicker)
+                coordinatorRelease(PanelType::EnginePicker);
+            else
+                coordinatorRequestOpen(PanelType::EnginePicker);
+        };
+        hudBar_.onSettingsClicked = [this]()
+        {
+            if (currentPanel_ == PanelType::Settings)
+                coordinatorRelease(PanelType::Settings);
+            else
+                coordinatorRequestOpen(PanelType::Settings);
+        };
 
         hudBar_.onUndo = [this]() { if (onUndoRequested) onUndoRequested(); };
         hudBar_.onRedo = [this]() { if (onRedoRequested) onRedoRequested(); };
@@ -730,6 +791,10 @@ public:
         // called before the component becomes interactive.
         if (!fullyInitialised_)
             return;
+
+        // Wave 3 3b: Minimum-width guard — if window narrows enough to collide
+        // a drawer with SurfaceRightPanel, close the drawer via coordinator.
+        coordinatorApplyWidthGuard();
 
         switch (viewState_)
         {
@@ -1219,6 +1284,25 @@ public:
     {
         if (slot >= 0 && slot < 5)
             orbits_[slot].setWreathData(samples, count, rms);
+    }
+
+    /**
+        Wave 3 — 3a: Returns the current on-screen visual centre of the buoy for
+        the given engine slot (0-4), accounting for spring offsets.
+
+        C4 chain matrix should call this to get reliable anchor points for routing
+        lines.  As long as positions are persisted (Wave 3 Gap 1 fix), these
+        coordinates are stable and consistent between sessions.
+
+        @param slot  Engine slot index 0-4.
+        @returns     Visual centre in OceanView local coordinates.  Returns {0,0}
+                     for out-of-range slot indices.
+    */
+    juce::Point<float> getOrbitCenter(int slot) const noexcept
+    {
+        if (slot >= 0 && slot < 5)
+            return orbits_[slot].getVisualCenter();
+        return {};
     }
 
     /** Step 8c: Trigger a ripple animation on the buoy wreath for the given slot.
@@ -1926,6 +2010,19 @@ private:
         for (auto& orbit : orbits_)
             if (orbit.hasEngine() && orbit.isAnimating())
                 orbit.requestRepaint();
+
+        // Wave 3 — 3a: Position-save debounce countdown (500 ms / ~15 ticks at 30 Hz).
+        // positionSaveCountdown_ is armed by schedulePositionSave() on each drag frame;
+        // when it reaches zero we flush all 5 positions in one PropertiesFile write.
+        if (positionSaveCountdown_ > 0)
+        {
+            positionSaveCountdown_ -= 1000 / 30; // subtract one tick worth of ms
+            if (positionSaveCountdown_ <= 0)
+            {
+                positionSaveCountdown_ = 0;
+                flushSlotPositions();
+            }
+        }
     }
 
     //==========================================================================
@@ -1995,6 +2092,9 @@ private:
             detail_->setVisible(false);
         dimOverlay_.setVisible(false);
         detailShowing_ = false;
+        // Wave 3 3b / D7: release Detail panel from coordinator; restores
+        // SurfaceRightPanel if it was hidden for the detail overlay.
+        coordinatorRelease(PanelType::Detail);
     }
 
     void transitionToOrbital()
@@ -2455,51 +2555,254 @@ private:
     }
 
     //==========================================================================
-    // Buoy position persistence (PropertiesFile, keyed by slot index)
-    // Design decision D1: Global positions, NOT per-preset. Never APVTS.
+    // Wave 3 — 3b: PanelCoordinator
+    //
+    // Rule: ONE "heavy" panel open at a time.  A heavy panel is anything that
+    // changes ocean layout or is full-window (EnginePicker, Settings, Detail).
+    //
+    // Behaviour table:
+    //   Opening EnginePicker  → closes Settings (and vice versa).
+    //   Opening Detail        → hides SurfaceRightPanel (D7, restored on close).
+    //   Opening ChainMatrix   → (Wave 5 C4) stub — currently a no-op.
+    //   Opening XOuijaRouting → (future) stub — currently a no-op.
+    //   Minimum width guard   → if width < 700 and drawer + SurfaceRightPanel
+    //                           are both open, close the drawer.
+    //
+    // Usage from C4 chain matrix:
+    //   coordinator_.requestOpen(PanelType::ChainMatrix);   // on open
+    //   coordinator_.release(PanelType::ChainMatrix);        // on close
+    //   oceanView.getOrbitCenter(slotIndex);                  // chain anchor points
     //==========================================================================
 
-    /** Save a single slot's normalised position to the XOceanus settings file. */
-    void saveSlotPosition(int slot)
+    /**
+        Request that a panel become the active heavy panel.
+
+        If a different heavy panel is already open, it is closed first.
+        For ChainMatrix and XOuijaRouting stubs, records the current panel type
+        and does nothing else — Wave 5 C4 will fill the open/close logic.
+    */
+    void coordinatorRequestOpen(PanelType requested)
+    {
+        if (currentPanel_ == requested)
+            return; // already open — no-op
+
+        // Close the current heavy panel before opening the new one.
+        coordinatorCloseCurrentPanel();
+
+        currentPanel_ = requested;
+
+        switch (requested)
+        {
+            case PanelType::EnginePicker:
+                engineDrawer_.open();
+                // Close the settings drawer if somehow still open.
+                if (settingsDrawer_.isOpen()) settingsDrawer_.close();
+                break;
+
+            case PanelType::Settings:
+                settingsDrawer_.open();
+                // Close the engine picker if somehow still open.
+                if (engineDrawer_.isOpen()) engineDrawer_.close();
+                break;
+
+            case PanelType::Detail:
+                // D7: hide SurfaceRightPanel while Detail is shown; remember state.
+                surfaceRightWasOpenForDetail_ = surfaceRight_.isOpen() && surfaceRight_.isVisible();
+                if (surfaceRightWasOpenForDetail_)
+                {
+                    surfaceRight_.setOpen(false);
+                    surfaceRight_.setVisible(false);
+                    resized();
+                }
+                // Actual Detail panel show is handled by the double-click callback;
+                // this call only records the panel type for coordinator awareness.
+                break;
+
+            case PanelType::ChainMatrix:
+                // Wave 5 C4 stub — no-op open.  C4 author: fill this branch with
+                // chain matrix show logic and call coordinator_.requestOpen(
+                // PanelType::ChainMatrix) from the chain matrix open action.
+                break;
+
+            case PanelType::XOuijaRouting:
+                // Future XOuija routing overlay stub — no-op open.
+                // MAY coexist with SurfaceRightPanel but NOT with Detail or ChainMatrix.
+                break;
+
+            case PanelType::None:
+                break;
+        }
+    }
+
+    /**
+        Release a panel type from the coordinator.
+
+        If @p released matches the current panel, closes it and resets to None.
+        Must be called when the panel is dismissed by any means (close button, ESC, etc.).
+    */
+    void coordinatorRelease(PanelType released)
+    {
+        if (currentPanel_ != released)
+            return; // not the active panel — nothing to do
+
+        coordinatorCloseCurrentPanel();
+        currentPanel_ = PanelType::None;
+    }
+
+    /** Close whatever panel is currently tracked as the active heavy panel. */
+    void coordinatorCloseCurrentPanel()
+    {
+        switch (currentPanel_)
+        {
+            case PanelType::EnginePicker:
+                if (engineDrawer_.isOpen())   engineDrawer_.close();
+                break;
+
+            case PanelType::Settings:
+                if (settingsDrawer_.isOpen()) settingsDrawer_.close();
+                break;
+
+            case PanelType::Detail:
+                // D7: restore SurfaceRightPanel if it was hidden for the detail panel.
+                if (surfaceRightWasOpenForDetail_)
+                {
+                    surfaceRightWasOpenForDetail_ = false;
+                    surfaceRight_.setOpen(true);
+                    surfaceRight_.setVisible(true);
+                    resized();
+                }
+                break;
+
+            case PanelType::ChainMatrix:
+                // Wave 5 C4 stub — no-op close.
+                break;
+
+            case PanelType::XOuijaRouting:
+                // Future stub — no-op close.
+                break;
+
+            case PanelType::None:
+                break;
+        }
+    }
+
+    /** Minimum-width guard: if window < 700 px wide and both a drawer and
+     *  SurfaceRightPanel are open, close the drawer to prevent visual collision. */
+    void coordinatorApplyWidthGuard()
+    {
+        const bool surfaceRightOpen = surfaceRight_.isOpen() && surfaceRight_.isVisible();
+        const bool drawerOpen = engineDrawer_.isOpen() || settingsDrawer_.isOpen();
+        if (getWidth() < 700 && surfaceRightOpen && drawerOpen)
+        {
+            if (engineDrawer_.isOpen())
+            {
+                engineDrawer_.close();
+                if (currentPanel_ == PanelType::EnginePicker)
+                    currentPanel_ = PanelType::None;
+            }
+            if (settingsDrawer_.isOpen())
+            {
+                settingsDrawer_.close();
+                if (currentPanel_ == PanelType::Settings)
+                    currentPanel_ = PanelType::None;
+            }
+        }
+    }
+
+    //==========================================================================
+    // Buoy position persistence (PropertiesFile, keyed by slot index)
+    // Wave 3 — 3a: Global positions, NOT per-preset. Never APVTS. (D2, D3 locked)
+    //
+    // Key format:  buoy_slot_<N>_x  /  buoy_slot_<N>_y   (N = 0-4)
+    // Written:     debounced 500 ms after last drag frame (avoid I/O on every frame)
+    // Read:        once on OceanView construction via loadSlotPositions()
+    // Defaults:    cross pattern — slot0 top-left, 1 top-right, 2 bottom-left,
+    //              3 bottom-right, 4 ghost centre-bottom
+    //==========================================================================
+
+    /** Build the PropertiesFile options shared by save and load. */
+    static juce::PropertiesFile::Options makePropertiesOptions() noexcept
     {
         juce::PropertiesFile::Options opts;
         opts.applicationName     = "XOceanus";
         opts.filenameSuffix      = "settings";
         opts.osxLibrarySubFolder = "Application Support";
-        juce::PropertiesFile settings(opts);
+        return opts;
+    }
 
-        auto pos = orbits_[slot].getNormalizedPosition();
-        settings.setValue("buoyPosX_" + juce::String(slot), static_cast<double>(pos.x));
-        settings.setValue("buoyPosY_" + juce::String(slot), static_cast<double>(pos.y));
+    /**
+        Arm the 500 ms debounce timer so all dirty slot positions are written
+        together on the next timer fire.  Call after any drag-position change.
+        Avoids one PropertiesFile open/close per drag frame.
+    */
+    void schedulePositionSave()
+    {
+        positionSaveCountdown_ = kPositionSaveDelayMs;
+    }
+
+    /**
+        Flush all 5 slot positions to the XOceanus settings file immediately.
+        Called from timerCallback() once the debounce countdown reaches zero.
+    */
+    void flushSlotPositions()
+    {
+        juce::PropertiesFile settings(makePropertiesOptions());
+        for (int i = 0; i < 5; ++i)
+        {
+            auto pos = orbits_[i].getNormalizedPosition();
+            settings.setValue("buoy_slot_" + juce::String(i) + "_x", static_cast<double>(pos.x));
+            settings.setValue("buoy_slot_" + juce::String(i) + "_y", static_cast<double>(pos.y));
+        }
         settings.saveIfNeeded();
     }
 
-    /** Load all 5 slot positions from settings; fall back to default arc positions. */
+    /**
+        Legacy: kept so any remaining call sites that persist a single slot
+        still compile.  Routes through the debounced batch writer — the actual
+        I/O happens 500 ms later via flushSlotPositions().
+
+        @deprecated  Call schedulePositionSave() directly; single-slot writes
+                     are batched automatically.
+    */
+    void saveSlotPosition(int /*slot*/)
+    {
+        schedulePositionSave();
+    }
+
+    /** Load all 5 slot positions from settings; fall back to default cross pattern. */
     void loadSlotPositions()
     {
-        // Default positions: five buoys spread across the ocean in an arc.
+        // Default cross pattern (spec D8 / Wave 3 3a):
+        //   slot 0 top-left, 1 top-right, 2 bottom-left, 3 bottom-right, 4 ghost centre-bottom.
         const float defaultPositions[5][2] = {
-            { 0.30f, 0.40f }, // slot 0
-            { 0.55f, 0.30f }, // slot 1
-            { 0.70f, 0.50f }, // slot 2
-            { 0.45f, 0.60f }, // slot 3
-            { 0.20f, 0.55f }, // slot 4 (ghost)
+            { 0.25f, 0.30f }, // slot 0 — top-left
+            { 0.75f, 0.30f }, // slot 1 — top-right
+            { 0.25f, 0.70f }, // slot 2 — bottom-left
+            { 0.75f, 0.70f }, // slot 3 — bottom-right
+            { 0.50f, 0.80f }, // slot 4 — ghost centre-bottom
         };
 
-        juce::PropertiesFile::Options opts;
-        opts.applicationName     = "XOceanus";
-        opts.filenameSuffix      = "settings";
-        opts.osxLibrarySubFolder = "Application Support";
-        juce::PropertiesFile settings(opts);
+        juce::PropertiesFile settings(makePropertiesOptions());
 
         for (int i = 0; i < 5; ++i)
         {
+            // Try canonical Wave 3 key names first; fall back to pre-Wave3 legacy
+            // names so existing installations keep their saved positions.
+            const juce::String keyX = "buoy_slot_" + juce::String(i) + "_x";
+            const juce::String keyY = "buoy_slot_" + juce::String(i) + "_y";
+            const juce::String legX = "buoyPosX_" + juce::String(i);
+            const juce::String legY = "buoyPosY_" + juce::String(i);
+
+            const float defX = defaultPositions[i][0];
+            const float defY = defaultPositions[i][1];
+
             const float x = static_cast<float>(
-                settings.getDoubleValue("buoyPosX_" + juce::String(i),
-                                        static_cast<double>(defaultPositions[i][0])));
+                settings.containsKey(keyX) ? settings.getDoubleValue(keyX, static_cast<double>(defX))
+                                           : settings.getDoubleValue(legX, static_cast<double>(defX)));
             const float y = static_cast<float>(
-                settings.getDoubleValue("buoyPosY_" + juce::String(i),
-                                        static_cast<double>(defaultPositions[i][1])));
+                settings.containsKey(keyY) ? settings.getDoubleValue(keyY, static_cast<double>(defY))
+                                           : settings.getDoubleValue(legY, static_cast<double>(defY)));
+
             orbits_[i].setNormalizedPosition({ x, y });
         }
     }
@@ -2615,6 +2918,18 @@ private:
     ViewState preBrowserState_ = ViewState::Orbital;
     int       preBrowserSlot_  = -1;
 
+    // Wave 3 — 3a: Position-save debounce.
+    // Counts down in ms from kPositionSaveDelayMs to 0 in timerCallback().
+    // Armed by schedulePositionSave(); flushed to disk in flushSlotPositions().
+    int positionSaveCountdown_ = 0;
+
+    // Wave 3 — 3b: PanelCoordinator state.
+    // Tracks which heavy panel is currently open. Initialises to None on load.
+    PanelType currentPanel_           = PanelType::None;
+    // D7: whether SurfaceRightPanel was open before DetailOverlay was shown.
+    // Restored on DetailOverlay close.
+    bool surfaceRightWasOpenForDetail_ = false;
+
     //==========================================================================
     // Child components — Z-ordered (bottom → top) as declared
     //==========================================================================
@@ -2714,6 +3029,10 @@ private:
 
     // Orbit size alias: reference EngineOrbit constant directly.
     static constexpr float kOrbitSize_Orbital = EngineOrbit::kOrbitalSize;
+
+    // Wave 3 — 3a: debounce delay for position saves (ms).
+    // schedulePositionSave() arms this; timerCallback() decrements at 30 Hz.
+    static constexpr int kPositionSaveDelayMs = 500;
 
     //==========================================================================
 
