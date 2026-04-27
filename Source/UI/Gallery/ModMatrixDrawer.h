@@ -251,7 +251,7 @@ public:
                     const int curveVal = juce::roundToInt(curveParam->getValue()
                                             * (float)(curveParam->getNumSteps() - 1));
                     slots_[i].curvePicker->setSelectedIndex(curveVal, /*notify=*/false);
-                    slots_[i].curvePicker->onCurveSelected = [this, i, curveId](int idx) {
+                    slots_[i].curvePicker->onCurveSelected = [this, curveId](int idx) {
                         if (auto* p = apvts_.getParameter(curveId))
                             p->setValueNotifyingHost(p->convertTo0to1((float)idx));
                     };
@@ -267,7 +267,7 @@ public:
                 if (quantParam)
                 {
                     slots_[i].quantToggle->setQuantized(quantParam->getValue() >= 0.5f, /*notify=*/false);
-                    slots_[i].quantToggle->onToggled = [this, i, quantId](bool on) {
+                    slots_[i].quantToggle->onToggled = [this, quantId](bool on) {
                         if (auto* p = apvts_.getParameter(quantId))
                             p->setValueNotifyingHost(on ? 1.0f : 0.0f);
                     };
