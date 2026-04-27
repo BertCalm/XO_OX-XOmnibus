@@ -715,6 +715,11 @@ private:
     // Manifest
     //==========================================================================
 
+    static juce::String sanitizeManifestField(const juce::String& s)
+    {
+        return s.replaceCharacters("\r\n", "  ").replace("=", "_");
+    }
+
     static void writeManifest(const juce::File& bundleDir, const DrumExportConfig& config, int presetCount)
     {
         // XPN bible §1: manifest must live at Expansions/manifest (no extension),
