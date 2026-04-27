@@ -10,7 +10,7 @@
 
 ---
 
-**[City, Date]** — XO_OX Designs today announced XOceanus, a free and open-source multi-engine synthesizer for macOS. XOceanus ships with <!-- ENGINE_COUNT -->86<!-- /ENGINE_COUNT --> distinct synthesis engines, more than 19,859 factory presets, and a cross-engine coupling system that produces sounds impossible on any single synthesizer.
+**[City, Date]** — XO_OX Designs today announced XOceanus, a free and open-source multi-engine synthesizer for macOS. XOceanus ships with <!-- ENGINE_COUNT -->86<!-- /ENGINE_COUNT --> distinct synthesis engines, 19,859 factory presets, and a cross-engine coupling system that produces sounds impossible on any single synthesizer.
 
 The instrument is available at no cost, permanently, under the MIT open-source license. No subscription, no trial period, no upgrade gate.
 
@@ -22,7 +22,7 @@ XOceanus is a multi-engine synthesizer that loads up to four engines simultaneou
 
 The engines span the full range of synthesis architecture: additive, subtractive, FM, granular, physical modeling, wavetable, cellular automata, and hybrid approaches. Each engine has its own parameter set, preset library, expression mapping, and identity within the instrument's aquatic mythology. Every engine responds to velocity, aftertouch, and mod wheel. Every engine has four macro controls and autonomous modulation.
 
-The factory preset library ships with more than 19,859 presets organized across 16 mood categories and indexed by a six-dimensional Sonic DNA system covering brightness, warmth, movement, density, space, and aggression. Users can navigate by character rather than by preset number.
+The factory preset library ships with 19,859 presets organized across 16 mood categories and indexed by a six-dimensional Sonic DNA system covering brightness, warmth, movement, density, space, and aggression. Users can navigate by character rather than by preset number.
 
 ---
 

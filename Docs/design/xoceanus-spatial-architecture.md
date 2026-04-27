@@ -29,7 +29,7 @@
 ### Hard Constraints (non-negotiable)
 - **Window:** 1100×700pt default, min 960×600, max 1920×1080
 - **4 engine slots** simultaneously active
-- **88 swappable engines** with 24-111 parameters each
+- **86 swappable engines** with 24-111 parameters each
 - **15 coupling types** between any pair of loaded engines
 - **FX chain** per engine (6 FX slots: SAT/DELAY/REVERB/MOD/COMP/SEQ)
 - **PlaySurface** with 3 modes (XOuija fretless, MPC 16-pad, Seaboard keyboard)
@@ -61,7 +61,7 @@ Most synths have 2-3 sound sources (oscillators). XOceanus has **4 simultaneous 
 
 | Synth | Layout Pattern | Engines/Oscs | What Works | What Doesn't (for us) |
 |-------|---------------|-------------|------------|----------------------|
-| **Vital** | 3-column (OSC1 / FILTER+ENV / OSC2+3), mod matrix bottom | 3 osc + sampler | Everything visible, logical flow L→R, wavetable editor dominates | Fixed 3-osc layout, doesn't scale to 88 swappable engines |
+| **Vital** | 3-column (OSC1 / FILTER+ENV / OSC2+3), mod matrix bottom | 3 osc + sampler | Everything visible, logical flow L→R, wavetable editor dominates | Fixed 3-osc layout, doesn't scale to 86 swappable engines |
 | **Serum** | 2 oscs top, filter mid, FX tabs bottom, matrix sidebar | 2 osc | Clean wavetable view, tab system for FX depth | Only 2 sources, tabs feel hidden |
 | **Pigments** | Top tabs (ENGINE / SEQ / FX / MATRIX), full-width content per tab | 2 engines + seq | Full width per view, generous knob spacing | You see ONE thing at a time — lose context of the whole patch |
 | **Phase Plant** | Vertical generator stack (add/remove/reorder), FX chain right | N generators | Scalable to any number of sources | Very tall, lots of scrolling, no overview |

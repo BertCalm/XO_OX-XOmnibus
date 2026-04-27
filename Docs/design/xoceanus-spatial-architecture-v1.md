@@ -12,7 +12,7 @@
 ### Hard Constraints
 - **Plugin window:** 1100×700pt default | min 960×600 | max 1920×1080
 - **MPC Hardware Plugin:** min 800×480pt (new — Kai's team flagged MPC One/Live II viewport)
-- **4 engine slots** simultaneously, drawn from 88 swappable engines
+- **4 engine slots** simultaneously, drawn from 86 swappable engines
 - **15 coupling types** between any engine pair
 - **6 FX slots per engine** (SAT/DELAY/REVERB/MOD/COMP/SEQ) — corrected from draft's "4"
 - **3 PlaySurface modes** (XOuija fretless, MPC 16-pad, Seaboard keyboard)
@@ -304,7 +304,7 @@ Persistent. Shows 4 nodes corresponding to the 4 tiles. Arcs between coupled nod
 | │ 81 params│ │ drum     │ │ vocal    │ │ love     │    |
 | │ Flagship │ │ Flagship │ │ Flagship│ │ ★Pick  │    |
 | └──────────┘ └──────────┘ └──────────┘ └──────────┘    |
-| [... 88 cards, filterable, scrollable ...]              |
+| [... 86 cards, filterable, scrollable ...]              |
 +══════════════════════════════════════════════════════════+
 ```
 Each card: creature icon, engine name, accent color, category, brief description, quality tier badge (Flagship / Editor's Pick / Standard — NOT raw seance scores, which are internal). Click to load into the slot that triggered the browser.
@@ -509,8 +509,8 @@ Performance Lock toggle prevents accidental parameter changes.
 
 | # | Component | Used By | Customization |
 |---|-----------|---------|--------------|
-| 1 | **RotaryKnob** | All 88 | Size (24/32/40/56pt), accent, filmstrip set, mod ring (V1.1) |
-| 2 | **CollapsibleSection** | All 88 | Name, color, hero params, expanded/collapsed |
+| 1 | **RotaryKnob** | All 86 | Size (24/32/40/56pt), accent, filmstrip set, mod ring (V1.1) |
+| 2 | **CollapsibleSection** | All 86 | Name, color, hero params, expanded/collapsed |
 | 3 | **NamedModeSelector** | ~20 engines | Options, icons, searchable, grid vs pills |
 | 4 | **AccumulationMeter** | 5+ engines | Direction, threshold, reset button, time scale |
 | 5 | **TopologySelector** | 3 engines | Topology names, visual preview, morph position |
