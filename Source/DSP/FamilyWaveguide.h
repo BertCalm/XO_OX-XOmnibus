@@ -388,7 +388,10 @@ public:
         sr = static_cast<float>(sampleRate);
         filterState = 0.0f;
         remaining = 0;
-        seed = 12345u;
+        // FIX P36: mix pointer-hash so each PluckExciter instance (per voice/string)
+        // produces independent pluck-noise character on simultaneous chord triggers.
+        seed ^= static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+        if (seed == 0u) seed = 0xDEADBEEFu; // LCG must be non-zero
     }
 
     void reset()
@@ -512,7 +515,10 @@ public:
         sr = static_cast<float>(sampleRate);
         body.prepare(sampleRate);
         remaining = 0;
-        seed = 98765u;
+        // FIX P36: mix pointer-hash so each PickExciter instance produces
+        // independent pick-noise character on simultaneous chord triggers.
+        seed ^= static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+        if (seed == 0u) seed = 0xDEADBEEFu; // LCG must be non-zero
     }
 
     void reset()
@@ -567,7 +573,10 @@ public:
     {
         sr = static_cast<float>(sampleRate);
         jetr.prepare(sampleRate);
-        seed = 54321u;
+        // FIX P36: mix pointer-hash so each AirJetExciter instance produces
+        // independent breath-noise character across simultaneous voices.
+        seed ^= static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+        if (seed == 0u) seed = 0xDEADBEEFu; // LCG must be non-zero
         hpState = 0.0f;
     }
 
@@ -626,7 +635,10 @@ public:
     {
         sr = static_cast<float>(sampleRate);
         filter.prepare();
-        seed = 77777u;
+        // FIX P36: mix pointer-hash so each ReedExciter instance produces
+        // independent reed-noise character across simultaneous chord voices.
+        seed ^= static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u;
+        if (seed == 0u) seed = 0xDEADBEEFu; // LCG must be non-zero
     }
 
     void reset() { filter.reset(); }

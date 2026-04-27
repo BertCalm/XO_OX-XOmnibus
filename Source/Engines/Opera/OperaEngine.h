@@ -36,6 +36,7 @@
 #include "OperaBreathEngine.h"
 #include "ReactiveStage.h"
 #include "../../DSP/FastMath.h"
+#include "../../Core/MPEManager.h"
 
 #include <cmath>
 #include <cstring>
@@ -327,6 +328,10 @@ struct OperaVoice
     float velocity = 0.0f;
     uint64_t startTime = 0;
 
+    // MPE per-voice state (#1257)
+    int midiChannel = 1;                  // channel this voice was triggered on (1-based)
+    float mpePitchBendSemitones = 0.0f;   // per-note pitch offset from MPE (semitones)
+
     // DSP modules
     OperaPartialBank partialBank;
     KuramotoField kuramotoField;
@@ -382,6 +387,8 @@ struct OperaVoice
         velocity = 0.0f;
         targetFreq = 440.0f;
         currentFreq = 440.0f;
+        midiChannel = 1;
+        mpePitchBendSemitones = 0.0f;
         partialBank.reset();
         kuramotoField.reset();
         breathEngine.reset();
@@ -487,6 +494,14 @@ public:
     int getMaxVoices() const { return kMaxVoices; }
 
     int getActiveVoiceCount() const { return activeVoiceCount_.load(std::memory_order_relaxed); }
+
+    //==========================================================================
+    // MPE (#1257)
+    //==========================================================================
+
+    // Called by OperaAdapter::setMPEManager() after prepare(). Engines read from
+    // mpeManager_ in renderBlock() to get per-voice pitch bend / pressure / slide.
+    void setMPEManager(xoceanus::MPEManager* m) noexcept { mpeManager_ = m; }
 
     //==========================================================================
     // Lifecycle
@@ -820,7 +835,8 @@ public:
 
             if (msg.isNoteOn())
             {
-                handleNoteOn(msg.getNoteNumber(), static_cast<float>(msg.getVelocity()) / 127.0f);
+                handleNoteOn(msg.getNoteNumber(), static_cast<float>(msg.getVelocity()) / 127.0f,
+                             msg.getChannel());
             }
             else if (msg.isNoteOff())
             {
@@ -844,8 +860,14 @@ public:
             else if (msg.isPitchWheel())
             {
                 // Pitch bend: +/- 2 semitones (standard)
-                int bendValue = msg.getPitchWheelValue(); // 0..16383, center = 8192
-                pitchBendSemitones_ = (static_cast<float>(bendValue) - 8192.0f) / 8192.0f * 2.0f;
+                // In non-MPE mode, update the global pitchBendSemitones_ used for all voices.
+                // In MPE mode, per-voice bend is read from mpeManager_ below; skip the global update
+                // to prevent the channel master-bend (ch1 in lower-zone) from double-applying.
+                if (mpeManager_ == nullptr || !mpeManager_->isMPEEnabled())
+                {
+                    int bendValue = msg.getPitchWheelValue(); // 0..16383, center = 8192
+                    pitchBendSemitones_ = (static_cast<float>(bendValue) - 8192.0f) / 8192.0f * 2.0f;
+                }
             }
         }
 
@@ -937,6 +959,23 @@ public:
         // only change from MIDI events (processed above), so recomputing per-sample was wasted
         // fastPow2 calls. All per-voice targetFreq values are now block-constant.
         // ------------------------------------------------------------------
+        // #1257 MPE: pull per-channel pitch bend into each active voice once per block.
+        // In MPE mode, each voice occupies its own MIDI channel; mpeManager_ has already
+        // parsed the per-channel pitch bend messages. In non-MPE mode, all voices share
+        // pitchBendSemitones_ (the global channel-1 wheel value).
+        const bool mpeActive = (mpeManager_ != nullptr && mpeManager_->isMPEEnabled());
+        if (mpeActive)
+        {
+            for (int v = 0; v < kMaxVoices; ++v)
+            {
+                auto& voice = voices_[v];
+                if (voice.state == OperaVoice::State::Idle)
+                    continue;
+                voice.mpePitchBendSemitones = mpeManager_->getChannelExpression(voice.midiChannel)
+                                                            .pitchBendSemitones;
+            }
+        }
+
         for (int v = 0; v < kMaxVoices; ++v)
         {
             auto& voice = voices_[v];
@@ -944,7 +983,11 @@ public:
                 continue;
 
             // Block-rate targetFreq (was per-sample; pitchBend only changes on MIDI event)
-            voice.targetFreq = midiNoteToFreq(voice.note + snap_.fundamental, pitchBendSemitones_);
+            // P29 (#1261 scope): use per-voice MPE pitch bend in MPE mode, global wheel otherwise.
+            const float effectivePitchBend = mpeActive
+                ? voice.mpePitchBendSemitones
+                : pitchBendSemitones_;
+            voice.targetFreq = midiNoteToFreq(voice.note + snap_.fundamental, effectivePitchBend);
 
             float f0Block = voice.currentFreq;
             voice.partialBank.updateFormants(f0Block, snap_.vowelA, snap_.vowelB, snap_.voice);
@@ -1463,7 +1506,7 @@ private:
     // MIDI Handling
     //==========================================================================
 
-    void handleNoteOn(int noteNumber, float vel)
+    void handleNoteOn(int noteNumber, float vel, int midiChannel = 1)
     {
         int voiceIdx = allocateVoice(noteNumber);
         if (voiceIdx < 0)
@@ -1486,9 +1529,18 @@ private:
         voice.note = noteNumber;
         voice.velocity = vel;
         voice.startTime = voiceCounter_++;
+        voice.midiChannel = midiChannel; // #1257: track channel for MPE per-voice expression
 
         // Compute fundamental frequency
-        float f0 = midiNoteToFreq(noteNumber + snap_.fundamental, pitchBendSemitones_);
+        // #1257: at note-on, read per-channel MPE expression if active.
+        // The block-rate update loop will keep mpePitchBendSemitones current thereafter.
+        if (mpeManager_ != nullptr && mpeManager_->isMPEEnabled())
+            voice.mpePitchBendSemitones = mpeManager_->getChannelExpression(midiChannel)
+                                                       .pitchBendSemitones;
+        const float initialPitchBend = (mpeManager_ != nullptr && mpeManager_->isMPEEnabled())
+            ? voice.mpePitchBendSemitones
+            : pitchBendSemitones_;
+        float f0 = midiNoteToFreq(noteNumber + snap_.fundamental, initialPitchBend);
 
         // --- Portamento: set target freq; keep currentFreq for glide if legato ---
         voice.targetFreq = f0;
@@ -1805,6 +1857,10 @@ private:
     float modWheelValue_ = 0.0f;
     float aftertouchValue_ = 0.0f;
     float pitchBendSemitones_ = 0.0f;
+
+    // MPE manager (#1257): set by OperaAdapter::setMPEManager() after prepare().
+    // nullptr when MPE is disabled.
+    xoceanus::MPEManager* mpeManager_ = nullptr;
 
     // Coupling output cache (post-Kuramoto, pre-reverb)
     float couplingCacheL_[kMaxBlockSize] = {};
