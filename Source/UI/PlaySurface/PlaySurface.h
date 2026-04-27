@@ -1260,39 +1260,71 @@ public:
         // Wire KeysMode MIDI collector (same as NoteInputZone's)
         keysMode_.midiCollector = noteInput.midiCollector;
 
-        // Header controls: mode buttons (V2: PAD | DRUM | KEYS — FRETLESS collapsed into PAD)
-        for (int i = 0; i < 3; ++i)
+        // ── D4 (Wave 6): Top-level mode tabs — KEYS | PADS | XY | OUIJA ─────────
+        // PAD and DRUM are no longer separate top-level tabs.  They are unified
+        // under PADS; a sub-toggle (♪=scale-aware / ▦=drum-kit) selects the
+        // note-label style inside the pad grid.
+        // XY gives the performance strip the full play area.
+        // OUIJA gives the XOuija panel the full play area.
+        for (int i = 0; i < kNumModeTabs; ++i)
         {
             modeButtons[i].setClickingTogglesState(true);
             modeButtons[i].setRadioGroupId(101);
             addAndMakeVisible(modeButtons[i]);
         }
-        modeButtons[0].setButtonText("PAD");
-        modeButtons[1].setButtonText("DRUM");
-        modeButtons[2].setButtonText("KEYS");
-        modeButtons[0].setToggleState(true, juce::dontSendNotification);
-        A11y::setup(modeButtons[0], "Pad Mode", "Switch note input to velocity-sensitive pad grid");
-        A11y::setup(modeButtons[1], "Drum Mode", "Switch note input to drum grid layout");
-        A11y::setup(modeButtons[2], "Keys Mode", "Switch note input to piano keyboard layout");
+        static const char* kModeTabLabels[kNumModeTabs] = { "KEYS", "PADS", "XY", "OUIJA" };
+        for (int i = 0; i < kNumModeTabs; ++i)
+            modeButtons[i].setButtonText(kModeTabLabels[i]);
+        modeButtons[0].setToggleState(true, juce::dontSendNotification); // default = KEYS
+        A11y::setup(modeButtons[0], "Keys Mode",  "Switch to piano-keyboard play surface");
+        A11y::setup(modeButtons[1], "Pads Mode",  "Switch to velocity-sensitive pad grid (scale-aware or drum-kit sub-mode)");
+        A11y::setup(modeButtons[2], "XY Mode",    "Switch to full-screen XY performance strip");
+        A11y::setup(modeButtons[3], "Ouija Mode", "Switch to full-screen XOuija harmonic navigator");
 
-        // V2 mode wiring: PAD=0, DRUM=2 (maps to NoteInputZone::Mode::Drum), KEYS=3
+        // D4 tab callbacks — each tab updates surfaceTab_ and calls resized()
         modeButtons[0].onClick = [this]()
         {
-            noteInput.setMode(NoteInputZone::Mode::Pad);
-            resized(); // swap NoteInputZone <-> KeysMode visibility
-            xouijaPanel_.grabKeyboardFocus();
+            surfaceTab_ = SurfaceTab::Keys;
+            noteInput.setMode(NoteInputZone::Mode::Keys);
+            resized();
+            keysMode_.grabKeyboardFocus();
         };
         modeButtons[1].onClick = [this]()
         {
-            noteInput.setMode(NoteInputZone::Mode::Drum);
+            surfaceTab_ = SurfaceTab::Pads;
+            // Sub-mode drives NoteInputZone::Mode (Pad or Drum)
+            applyPadsSubMode();
             resized();
-            xouijaPanel_.grabKeyboardFocus();
+            noteInput.grabKeyboardFocus();
         };
         modeButtons[2].onClick = [this]()
         {
-            noteInput.setMode(NoteInputZone::Mode::Keys);
-            resized(); // show KeysMode, hide NoteInputZone
-            keysMode_.grabKeyboardFocus();
+            surfaceTab_ = SurfaceTab::XY;
+            resized();
+        };
+        modeButtons[3].onClick = [this]()
+        {
+            surfaceTab_ = SurfaceTab::Ouija;
+            resized();
+            xouijaPanel_.grabKeyboardFocus();
+        };
+
+        // ── D4: PADS sub-mode toggle ♪ / ▦ ────────────────────────────────────
+        // ♪ = scale-aware pad labels (was "PAD" mode)
+        // ▦ = drum-kit pad labels (was "DRUM" mode)
+        // Visible only when PADS tab is active.
+        padsSubModeBtn_.setClickingTogglesState(true);
+        padsSubModeBtn_.setButtonText(kPadsSubModeLabels[0]); // default = ♪
+        padsSubModeBtn_.setToggleState(false, juce::dontSendNotification);
+        addAndMakeVisible(padsSubModeBtn_);
+        A11y::setup(padsSubModeBtn_,
+                    "Pads Sub-mode Toggle",
+                    "Toggle between scale-aware note pads (musical mode) and drum-kit labelled pads (percussion mode)");
+        padsSubModeBtn_.onClick = [this]()
+        {
+            drumSubMode_ = padsSubModeBtn_.getToggleState();
+            padsSubModeBtn_.setButtonText(kPadsSubModeLabels[drumSubMode_ ? 1 : 0]);
+            applyPadsSubMode();
         };
 
         // Octave controls
@@ -1445,8 +1477,9 @@ public:
                 btn.setColour(juce::TextButton::textColourOffId, juce::Colour(0xFFAAAAAA));
                 btn.setColour(juce::TextButton::textColourOnId, GalleryColors::get(GalleryColors::textDark()));
             };
-            for (int i = 0; i < 3; ++i)
+            for (int i = 0; i < kNumModeTabs; ++i)
                 applyBtnColors(modeButtons[i]);
+            applyBtnColors(padsSubModeBtn_); // D4: sub-mode toggle
             for (int i = 0; i < 4; ++i)
                 applyBtnColors(bankButtons[i]);
             for (int i = 0; i < 4; ++i)
@@ -1557,7 +1590,7 @@ public:
         // P2-1: also update header button "on" colours so mode/bank/strip buttons
         // reflect the current engine accent when toggled.
         auto updateBtnAccent = [&](juce::TextButton& btn) { btn.setColour(juce::TextButton::buttonOnColourId, c); };
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < kNumModeTabs; ++i)
             updateBtnAccent(modeButtons[i]);
         for (int i = 0; i < 4; ++i)
             updateBtnAccent(bankButtons[i]);
@@ -1567,8 +1600,46 @@ public:
         updateBtnAccent(octUpBtn);
         updateBtnAccent(scaleModeBtn);
         updateBtnAccent(tideModeBtn_);
+        updateBtnAccent(padsSubModeBtn_);
 
         repaint();
+    }
+
+    // ── D4 (Wave 6): Surface-default auto-switch ──────────────────────────────
+    // Call this from XOceanusEditor whenever the engine in a slot changes.
+    // isDrumEngine = true  → switch to PADS tab + drum sub-mode (▦) automatically
+    // isDrumEngine = false → no-op (respect whatever the user last set)
+    // The user can always override by clicking a different tab.
+    void setSurfaceDefault(bool isDrumEngine)
+    {
+        if (!isDrumEngine)
+            return;
+
+        // Auto-switch to PADS tab + drum sub-mode
+        surfaceTab_   = SurfaceTab::Pads;
+        drumSubMode_  = true;
+        padsSubModeBtn_.setToggleState(true, juce::dontSendNotification);
+        padsSubModeBtn_.setButtonText(kPadsSubModeLabels[1]); // ▦
+        applyPadsSubMode();
+
+        // Sync the tab button selection
+        for (int i = 0; i < kNumModeTabs; ++i)
+            modeButtons[i].setToggleState(i == 1 /* PADS */, juce::dontSendNotification);
+
+        resized();
+    }
+
+    // ── D4 (Wave 6): APVTS-driven layout mode setter ─────────────────────────
+    // Driven by slot[N]_layout_mode AudioParameterChoice (0=PlaySurface, 1=PadGrid).
+    // Call from XOceanusEditor::timerCallback() or a param listener when the
+    // APVTS value changes. PadGrid mode = shortcut to PADS tab with drum sub-mode.
+    void setLayoutMode(int mode /* 0=PlaySurface, 1=PadGrid */)
+    {
+        if (mode == 1 /* PadGrid */)
+        {
+            setSurfaceDefault(true); // Switches to PADS + drum sub-mode
+        }
+        // mode 0 (PlaySurface) = no auto-switch; respect last user selection
     }
 
     // Public zone accessors for wiring callbacks
@@ -1591,28 +1662,32 @@ public:
     {
         auto bounds = getLocalBounds();
 
-        // ── Header bar (mode tabs + octave + bank + scale) ──────────────────
+        // ── D4 (Wave 6): Header bar — KEYS | PADS | XY | OUIJA tabs ─────────
         auto header = bounds.removeFromTop(PS::kHeaderH);
-        // V2 mode tabs: PAD | DRUM | KEYS
+
+        // Primary mode tabs — 4 tabs × 48px (was 3 tabs)
         int btnW = 48;
-        for (int i = 0; i < 3; ++i)
+        for (int i = 0; i < kNumModeTabs; ++i)
             modeButtons[i].setBounds(header.removeFromLeft(btnW).reduced(2));
-        // Octave + bank buttons widened to 30/32 px to clear the 30-px
-        // performance-tap-target floor (#1108). Inner reduced(2) keeps the
-        // visual size unchanged from the user's perspective; the gain is on
-        // hit-rect size, not paint size.
+
+        // PADS sub-mode toggle ♪/▦ — immediately after the PADS tab; 32px.
+        // Visible only when the PADS tab is active.
+        header.removeFromLeft(2);
+        padsSubModeBtn_.setBounds(header.removeFromLeft(32).reduced(2));
+        padsSubModeBtn_.setVisible(surfaceTab_ == SurfaceTab::Pads);
+
+        // Octave + bank buttons (only relevant for KEYS and PADS tabs)
         header.removeFromLeft(4);
         octDownBtn.setBounds(header.removeFromLeft(32).reduced(2));
         octLabel.setBounds(header.removeFromLeft(36).reduced(2));
         octUpBtn.setBounds(header.removeFromLeft(32).reduced(2));
 
-        // Bank selector buttons — primary performance control, must be at
-        // least 30 px wide for real-time hit accuracy (#1108).
+        // Bank selector buttons (only relevant for PADS tab)
         header.removeFromLeft(4);
         for (int i = 0; i < 4; ++i)
             bankButtons[i].setBounds(header.removeFromLeft(30).reduced(2));
 
-        // Scale mode button
+        // Scale mode button (only relevant for KEYS/PADS tabs)
         header.removeFromLeft(4);
         scaleModeBtn.setBounds(header.removeFromLeft(32).reduced(2));
 
@@ -1620,31 +1695,80 @@ public:
         header.removeFromLeft(4);
         tideModeBtn_.setBounds(header.removeFromLeft(36).reduced(2));
 
-        // Strip mode buttons at right of header
+        // Strip mode buttons at right of header (only relevant for XY tab / strip)
         for (int i = 3; i >= 0; --i)
             stripModeButtons[i].setBounds(header.removeFromRight(36).reduced(2));
 
-        // ── Performance Strip — full width, bottom ───────────────────────────
-        strip.setBounds(bounds.removeFromBottom(PS::kStripH));
+        // ── D4 tab-dependent layout ───────────────────────────────────────────
+        //
+        // KEYS tab — full content area split: left = XOuija/Tide, right = KeysMode
+        // PADS tab — full content area split: left = XOuija/Tide, right = NoteInputZone
+        // XY   tab — full content area = PerformanceStrip (no bottom strip footer)
+        // OUIJA tab — full content area = XOuija panel
+        //
+        // The bottom PerformanceStrip is always shown except in XY/OUIJA full-screen tabs.
 
-        // ── Left column — XOuija panel OR TideController ─────────────────────
-        int ouijaW = std::clamp(PS::kXOuijaW, XOuijaPanel::kMinWidth, XOuijaPanel::kMaxWidth);
-        auto leftColumnBounds = bounds.removeFromLeft(ouijaW);
-        xouijaPanel_.setBounds(leftColumnBounds);
-        // TideController: centred square within the left column (120pt target).
-        // We give it the full column width; it clips itself to a circle.
-        tideController_.setBounds(leftColumnBounds);
+        bool showStrip    = (surfaceTab_ != SurfaceTab::XY && surfaceTab_ != SurfaceTab::Ouija);
+        bool showLeftCol  = (surfaceTab_ == SurfaceTab::Keys || surfaceTab_ == SurfaceTab::Pads);
+        bool showKeys     = (surfaceTab_ == SurfaceTab::Keys);
+        bool showNoteInput = (surfaceTab_ == SurfaceTab::Pads);
+        bool showXY       = (surfaceTab_ == SurfaceTab::XY);
+        bool showOuija    = (surfaceTab_ == SurfaceTab::Ouija);
 
-        // ── Note area — remaining space (NoteInputZone or KeysMode) ─────────
+        // ── Performance Strip — full width, bottom (hidden in XY/OUIJA tabs) ──
+        if (showStrip)
+            strip.setBounds(bounds.removeFromBottom(PS::kStripH));
+        else
+            strip.setBounds({});  // zero bounds — invisible in XY/OUIJA
+        strip.setVisible(showStrip);
+
+        // ── Full-screen XY mode — PerformanceStrip takes all remaining space ──
+        if (showXY)
+        {
+            strip.setBounds(bounds);
+            strip.setVisible(true);
+        }
+
+        // ── Full-screen OUIJA mode — XOuija panel takes all remaining space ───
+        xouijaPanel_.setVisible(!tideActive_); // respect tide toggle in non-ouija modes
+        tideController_.setVisible(tideActive_);
+
+        if (showOuija)
+        {
+            xouijaPanel_.setBounds(bounds);
+            xouijaPanel_.setVisible(true);
+            tideController_.setBounds({});
+            tideController_.setVisible(false);
+        }
+        else if (showLeftCol)
+        {
+            // ── Left column — XOuija panel OR TideController ─────────────────
+            int ouijaW = std::clamp(PS::kXOuijaW, XOuijaPanel::kMinWidth, XOuijaPanel::kMaxWidth);
+            auto leftColumnBounds = bounds.removeFromLeft(ouijaW);
+            xouijaPanel_.setBounds(leftColumnBounds);
+            // TideController: centred square within the left column (120pt target).
+            // We give it the full column width; it clips itself to a circle.
+            tideController_.setBounds(leftColumnBounds);
+            xouijaPanel_.setVisible(!tideActive_);
+            tideController_.setVisible(tideActive_);
+        }
+        else
+        {
+            xouijaPanel_.setBounds({});
+            tideController_.setBounds({});
+            xouijaPanel_.setVisible(false);
+            tideController_.setVisible(false);
+        }
+
+        // ── Note area — remaining space ───────────────────────────────────────
         auto noteArea = bounds;
 
-        bool showKeys = (noteInput.getMode() == NoteInputZone::Mode::Keys);
-        noteInput.setVisible(!showKeys);
+        noteInput.setVisible(showNoteInput);
         keysMode_.setVisible(showKeys);
 
         if (showKeys)
             keysMode_.setBounds(noteArea);
-        else
+        else if (showNoteInput)
             noteInput.setBounds(noteArea);
     }
 
@@ -1720,7 +1844,27 @@ private:
     TideController tideController_;
     bool tideActive_ = false;
 
-    std::array<juce::TextButton, 3> modeButtons;
+    // ── D4 (Wave 6): Top-level surface tab state ──────────────────────────────
+    enum class SurfaceTab { Keys = 0, Pads = 1, XY = 2, Ouija = 3 };
+    SurfaceTab surfaceTab_ = SurfaceTab::Keys; // default = KEYS tab
+
+    // PADS sub-mode: false = scale-aware (♪), true = drum-kit (▦)
+    bool drumSubMode_ = false;
+
+    static constexpr int kNumModeTabs = 4; // KEYS | PADS | XY | OUIJA
+    // Sub-mode toggle labels — ♪ = musical/scale-aware, ▦ = drum-kit
+    static constexpr const char* kPadsSubModeLabels[2] = { "\xe2\x99\xaa", "\xe2\x96\xa6" };
+    //    ♪  = U+266A = \xe2\x99\xaa (UTF-8)
+    //    ▦  = U+25A6 = \xe2\x96\xa6 (UTF-8)
+
+    // ── Helper: apply NoteInputZone mode from pads sub-mode state ────────────
+    void applyPadsSubMode()
+    {
+        noteInput.setMode(drumSubMode_ ? NoteInputZone::Mode::Drum : NoteInputZone::Mode::Pad);
+    }
+
+    std::array<juce::TextButton, kNumModeTabs> modeButtons;
+    juce::TextButton padsSubModeBtn_; // D4: ♪/▦ sub-mode toggle inside PADS tab
     std::array<juce::TextButton, 4> stripModeButtons;
     std::array<juce::TextButton, 4> bankButtons; // A / B / C / D bank selectors
     juce::TextButton octDownBtn, octUpBtn;
