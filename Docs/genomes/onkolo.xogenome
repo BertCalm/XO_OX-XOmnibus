@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "ONKOLO",
+  "engine_prefix": "onko_",
+  "collection": "Kitchen Collection",
+
+  "oscillator": {
+    "type": "physical_model",
+    "polyphony": 8,
+    "architecture": "Clavinet D6 physical model — a rubber pad strikes a tensioned string, which vibrates between two magnetic pickups (bridge: bright and cutting; neck: warm and full); pickup position determines timbre; the defining characteristic is aggressive percussive attack and controlled sustain; key-off produces a mechanical damper-pad clunk; auto-wah (envelope-following CytomicSVF filter) is the iconic Clavinet effect; mod wheel → funk (wah depth); aftertouch → pickup brightness; per-voice glide processor; design lineage traces from West African nkolo ancestor to Hohner D6 to Stevie Wonder's funk."
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "ad",
+    "stages": 2,
+    "curve": "linear_attack_exp_decay"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.88,
+    "velocity_targets": ["amplitude", "transient", "brightness", "attack"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "custom",
+    "dynamic_range_db": 72
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "CHARACTER",
+      "behavior": "Controls rubber pad hardness and string tension — low CHARACTER is loose and warm (West African kalimba timbres); high CHARACTER is tight and bright (Clavinet bridge pickup at full extension), sharpening the percussive attack and reducing sustain."
+    },
+    "macro2": {
+      "name": "MOVEMENT",
+      "behavior": "Drives auto-wah envelope follower sensitivity and LFO rates — at low MOVEMENT the filter holds still after attack; increasing MOVEMENT animates the wah response and LFO modulation, creating the involuntary-movement funk that defines the Clavinet at its most iconic."
+    },
+    "macro3": {
+      "name": "COUPLING",
+      "behavior": "Scales coupling filter modulation depth — incoming AmpToFilter or FilterToFilter coupling drives the auto-wah cutoff, allowing rhythmic signals from another engine (OSTINATO, ONSET) to trigger the wah envelope externally, creating sidechain funk."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls pickup position blend and stereo width — low SPACE is pure bridge pickup (cutting, present); high SPACE blends in neck pickup (warm, full) and widens the stereo image, adding the room and body of a well-recorded studio Clavinet."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "keys",
+    "brightness": 0.72,
+    "warmth": 0.45,
+    "movement": 0.48,
+    "density": 0.38,
+    "transient_character": "struck"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "RhythmToBlend", "EnvToDecay"],
+    "best_as_target": ["AmpToFilter", "FilterToFilter", "AudioToFM"],
+    "recommended_partners": ["OSTINATO", "ONSET", "OFFERING", "OWARE"],
+    "coupling_personality": "The funk anchor — ONKOLO sends its sharp percussive envelope outward via AmpToFilter coupling to drive other engines' filter movement (sidechain wah). Receives rhythmic coupling from OSTINATO/ONSET beautifully, turning external drum patterns into auto-wah triggers. In Kitchen Quad: amber spectral resonance core, Sunlit zone Dungeness Crab."
+  },
+
+  "mythology": {
+    "creature": "The Dungeness Crab — amber-colored, Sunlit Zone (5m depth); nkolo ancestor carries West African diaspora through the thumb piano lineage into the Clavinet's strings, centuries of percussive sophistication arriving in a rubber pad and two magnetic pickups",
+    "depth_zone": "sunlit",
+    "felix_oscar_polarity": 0.38,
+    "accent_color": "#FFBF00"
+  },
+
+  "metadata": {
+    "param_count": 21,
+    "preset_count": 129,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}
