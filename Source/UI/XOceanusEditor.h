@@ -1197,20 +1197,20 @@ public:
             return tiles[0] != nullptr ? tiles[0]->getBounds() : juce::Rectangle<int>{};
         };
         walkthrough_.getMacroBounds        = [this]() { return macros.getBounds(); };
-        walkthrough_.getDnaBrowserBounds   = [this]() {
+        walkthrough_.getDnaBrowserBounds   = []() {
             // TODO: expose DnaMapBrowser bounds when component is accessible from editor
             return juce::Rectangle<int>{};
         };
-        walkthrough_.getCoupleOrbitBounds  = [this]() {
+        walkthrough_.getCoupleOrbitBounds  = []() {
             // TODO: expose EngineOrbit buoy 1 bounds when component is accessible from editor
             return juce::Rectangle<int>{};
         };
         walkthrough_.getCmToggleBounds     = [this]() { return cmToggleBtn.getBounds(); };
-        walkthrough_.getFavBtnBounds       = [this]() {
+        walkthrough_.getFavBtnBounds       = []() {
             // TODO: expose PresetBrowserStrip favBtn bounds when accessible from editor
             return juce::Rectangle<int>{};
         };
-        walkthrough_.getXouijaBounds       = [this]() {
+        walkthrough_.getXouijaBounds       = []() {
             // TODO: expose SubmarineOuijaPanel or XOuija button bounds when accessible from editor
             return juce::Rectangle<int>{};
         };

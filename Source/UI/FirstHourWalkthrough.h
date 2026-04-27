@@ -196,7 +196,7 @@ public:
         g.setColour (juce::Colour (0xFFCCCCCC));
         g.setFont   (juce::Font ("Inter", 11.5f, juce::Font::plain));
         juce::AttributedString bodyAS;
-        bodyAS.append (bodyText_, g.getCurrentFont(), g.getCurrentColour());
+        bodyAS.append (bodyText_, g.getCurrentFont(), juce::Colour (0xFFCCCCCC));
         bodyAS.setWordWrap (juce::AttributedString::byWord);
         juce::TextLayout tl;
         tl.createLayout (bodyAS, static_cast<float> (getWidth() - kPad * 2));
@@ -519,14 +519,14 @@ private:
 
         switch (step)
         {
-            case 0: return (getPlaySurfaceBounds  && getPlaySurfaceBounds())  ? getPlaySurfaceBounds()  : fallback();
-            case 1: return (getEngineSlotBounds   && getEngineSlotBounds())   ? getEngineSlotBounds()   : fallback();
-            case 2: return (getMacroBounds        && getMacroBounds())        ? getMacroBounds()        : fallback();
-            case 3: return (getDnaBrowserBounds   && getDnaBrowserBounds())   ? getDnaBrowserBounds()   : fallback();
-            case 4: return (getCoupleOrbitBounds  && getCoupleOrbitBounds())  ? getCoupleOrbitBounds()  : fallback();
-            case 5: return (getCmToggleBounds     && getCmToggleBounds())     ? getCmToggleBounds()     : fallback();
-            case 6: return (getFavBtnBounds       && getFavBtnBounds())       ? getFavBtnBounds()       : fallback();
-            case 7: return (getXouijaBounds       && getXouijaBounds())       ? getXouijaBounds()       : fallback();
+            case 0: return (getPlaySurfaceBounds  && !getPlaySurfaceBounds().isEmpty())  ? getPlaySurfaceBounds()  : fallback();
+            case 1: return (getEngineSlotBounds   && !getEngineSlotBounds().isEmpty())   ? getEngineSlotBounds()   : fallback();
+            case 2: return (getMacroBounds        && !getMacroBounds().isEmpty())        ? getMacroBounds()        : fallback();
+            case 3: return (getDnaBrowserBounds   && !getDnaBrowserBounds().isEmpty())   ? getDnaBrowserBounds()   : fallback();
+            case 4: return (getCoupleOrbitBounds  && !getCoupleOrbitBounds().isEmpty())  ? getCoupleOrbitBounds()  : fallback();
+            case 5: return (getCmToggleBounds     && !getCmToggleBounds().isEmpty())     ? getCmToggleBounds()     : fallback();
+            case 6: return (getFavBtnBounds       && !getFavBtnBounds().isEmpty())       ? getFavBtnBounds()       : fallback();
+            case 7: return (getXouijaBounds       && !getXouijaBounds().isEmpty())       ? getXouijaBounds()       : fallback();
             default: return fallback();
         }
     }
