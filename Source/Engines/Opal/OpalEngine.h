@@ -163,7 +163,11 @@ public:
     float nextRange(float lo, float hi) noexcept { return lo + (next() + 1.0f) * 0.5f * (hi - lo); }
 
 private:
-    uint32_t state = 1;
+    // FIX P36: pointer-hash default so each OpalPRNG instance (per voice and
+    // shared srcPrng) starts with a unique seed. Per-voice instances are
+    // overridden by explicit seed() calls on note-on; srcPrng is never
+    // re-seeded so this is its permanent seed.
+    uint32_t state = 0xC2B2AE3Du ^ static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4);
 };
 
 //==============================================================================
@@ -1779,8 +1783,13 @@ public:
                 }
 
                 // Set oscillator frequencies for this voice (with MPE + channel pitch bend)
-                float voiceFreq = v.glideFreq * fastPow2(v.mpeExpression.pitchBendSemitones / 12.0f) *
-                                  PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
+                // P29 fix: single pitch-bend source — MPE per-note bend OR raw MIDI wheel, not both.
+                // Before #1255, mpeExpression.pitchBendSemitones was always 0.0f; once MPE is live
+                // both sources were active, producing 2× pitch deviation on MPE controllers.
+                const float opalPitchBendRatio = (mpeManager != nullptr && mpeManager->isMPEEnabled())
+                    ? fastPow2(v.mpeExpression.pitchBendSemitones / 12.0f)          // MPE: per-voice bend
+                    : PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);    // non-MPE: channel wheel
+                float voiceFreq = v.glideFreq * opalPitchBendRatio;
                 v.osc1.setFrequency(voiceFreq, srf);    // OPL-15: use hoisted srf
                 v.osc2.setFrequency(voiceFreq * fastPow2(osc2Detune / 12.0f), srf);
 
