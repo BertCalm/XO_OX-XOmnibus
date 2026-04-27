@@ -50,6 +50,7 @@
 
 #include "HarmonicField.h"
 #include "GestureTrailBuffer.h"
+#include "XouijaPinStore.h"   // Wave5-D3: pin / capture / per-engine routing
 #include "../GalleryColors.h" // A11y::prefersReducedMotion() — unified reduced-motion helper (#223)
 #include <atomic>
 
@@ -1443,6 +1444,20 @@ public:
     const TrailModulator& getTrailModulator() const noexcept { return trailModulator_; }
 
     //==========================================================================
+    // Wave5-D3: XouijaPinStore access
+    //
+    // D1 (cell layers), D2 (mood), and C5 (slot ModSources) all read/write
+    // the pin store via this reference.
+    //
+    // C5 integration example:
+    //   xouijaPanel_.getPinStore().onPinChanged = [&registry](float bx, float by) {
+    //       registry.updateSourceValue(ModSourceId::XouijaCell, bx, by);
+    //   };
+    //==========================================================================
+    XouijaPinStore& getPinStore() noexcept { return pinStore_; }
+    const XouijaPinStore& getPinStore() const noexcept { return pinStore_; }
+
+    //==========================================================================
     // Preset sensitivity hint type — used by setPresetHint() below.
     // Defined here (before first use) so the method signature compiles;
     // the member variable presetHint_ is declared later in the private section.
@@ -1597,6 +1612,9 @@ public:
         // MIDI learn CC mappings
         tree.appendChild(midiLearnMgr_.toValueTree(), nullptr);
 
+        // Wave5-D3: pin / capture / per-engine routing
+        tree.appendChild(pinStore_.toValueTree(), nullptr);
+
         // Wave 5 D2: mood state + heatmap visibility
         tree.setProperty("moodBrightness", static_cast<double>(moodState_.brightness), nullptr);
         tree.setProperty("moodTension",    static_cast<double>(moodState_.tension),    nullptr);
@@ -1644,6 +1662,11 @@ public:
         auto midiTree = tree.getChildWithName("GestureButtonMidiLearn");
         if (midiTree.isValid())
             midiLearnMgr_.fromValueTree(midiTree);
+
+        // Wave5-D3: restore pin / capture / per-engine routing
+        auto pinTree = tree.getChildWithName("XouijaPinStore");
+        if (pinTree.isValid())
+            pinStore_.fromValueTree(pinTree);
 
         updatePlanchetteText();
 
@@ -1758,6 +1781,12 @@ public:
         //    Rendered after static elements, below planchette (child component).
         // ------------------------------------------------------------------
         paintTrail(g);
+
+        // ------------------------------------------------------------------
+        // 7. Wave5-D3: Pin / capture badges.
+        //    Small corner badges show live pin state and capture slot occupancy.
+        // ------------------------------------------------------------------
+        paintPinBadges(g);
     }
 
     //==========================================================================
@@ -1810,10 +1839,29 @@ public:
         fireCallbacks();
     }
 
-    void mouseUp(const juce::MouseEvent& /*e*/) override
+    void mouseUp(const juce::MouseEvent& e) override
     {
         touching_ = false;
         planchette_.release();
+
+        // Wave5-D3: right-click on the harmonic surface opens the pin/capture menu.
+        // Only trigger on the harmonic surface area (not gesture bar or GOODBYE).
+        if (e.mods.isRightButtonDown() && harmonicSurfaceBounds_.contains(e.getPosition()))
+        {
+            auto [nx, ny] = mouseToNormalized(e);
+            XouijaPinContextMenu::show(
+                pinStore_, nx, ny, this,
+                [this](float rx, float ry)
+                {
+                    // Recall: move panel to the captured position.
+                    circleX_     = rx;
+                    influenceY_  = ry;
+                    planchette_.springTo(rx, ry);
+                    updatePlanchetteText();
+                    repaint();
+                    fireCallbacks();
+                });
+        }
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -1884,6 +1932,12 @@ private:
     // Stateful toggle flags for Performance bank buttons
     bool perfLatchActive_ = false;
     bool perfBypassActive_ = false;
+
+    // ── Wave5-D3: XOuija pin / capture / per-engine routing ─────────────────
+    // pinStore_ tracks the live pin and 4 named capture slots.
+    // Right-click on the harmonic surface shows XouijaPinContextMenu.
+    // Badges are painted in paintPinBadges() after the trail.
+    XouijaPinStore pinStore_;
 
     // ── Cached marker fonts (Fix #10: avoid per-paint Font construction) ─────
     // 4 size brackets corresponding to HarmonicField::markerProperties() output:
@@ -2599,6 +2653,65 @@ private:
         const float ny = juce::jlimit(0.0f, 1.0f, 1.0f - (my - b.getY()) / b.getHeight());
 
         return {nx, ny};
+    }
+
+    //==========================================================================
+    // Wave5-D3: Paint pin / capture badges in the top-right corner of the
+    // harmonic surface area.
+    //
+    // Badge layout (top-right, stacked vertically, 4px gap):
+    //   • If pinned: gold "PIN" pill with engine-target label (e.g. "PIN  Slot 2")
+    //   • For each occupied capture slot: teal "Cn" pill (C1–C4) with slot target
+    //
+    // Badges are intentionally small (9px font) to not occlude the surface.
+    //==========================================================================
+    void paintPinBadges(juce::Graphics& g)
+    {
+        const auto& hsb = harmonicSurfaceBounds_.toFloat();
+        const float badgeH = 13.0f;
+        const float badgePad = 4.0f;
+        float top = hsb.getY() + 6.0f;
+        const float right = hsb.getRight() - 6.0f;
+        const float minW = 32.0f;
+
+        auto drawBadge = [&](const juce::String& text, juce::Colour colour)
+        {
+            g.setFont(GalleryFonts::label(7.5f));
+            const float textW = std::max(g.getCurrentFont().getStringWidthFloat(text), minW);
+            const float badgeW = textW + badgePad * 2.0f;
+            const float badgeX = right - badgeW;
+
+            // Pill
+            juce::Rectangle<float> pill(badgeX, top, badgeW, badgeH);
+            g.setColour(colour.withAlpha(0.82f));
+            g.fillRoundedRectangle(pill, badgeH * 0.5f);
+
+            // Text
+            g.setColour(juce::Colour(0xFF1A1A1A).withAlpha(0.90f));
+            g.drawText(text, pill.reduced(2.0f, 0.0f), juce::Justification::centred, false);
+
+            top += badgeH + 3.0f;
+        };
+
+        // Live pin badge
+        if (pinStore_.hasPinnedValue())
+        {
+            juce::String label = "PIN";
+            if (pinStore_.getPinTargetSlot() != XouijaCaptureSlot::EngineTarget::Global)
+                label += "  " + XouijaCaptureSlot::engineTargetName(pinStore_.getPinTargetSlot());
+            drawBadge(label, juce::Colour(GalleryColors::xoGold));
+        }
+
+        // Capture slot badges
+        for (int i = 0; i < XouijaPinStore::kNumCaptureSlots; ++i)
+        {
+            const auto& s = pinStore_.getSlot(i);
+            if (!s.hasCapture) continue;
+            juce::String label = "C" + juce::String(i + 1);
+            if (s.targetSlot != XouijaCaptureSlot::EngineTarget::Global)
+                label += "  " + XouijaCaptureSlot::engineTargetName(s.targetSlot);
+            drawBadge(label, juce::Colour(0xFF4DB6AC)); // muted teal for captures
+        }
     }
 
     //==========================================================================
