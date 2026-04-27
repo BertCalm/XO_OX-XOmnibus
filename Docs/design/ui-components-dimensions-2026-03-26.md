@@ -226,7 +226,7 @@ Selected border:  2px left bar in accent color
 
 Mood pip:         5×5 px circle @ 70% opacity
                   Positioned at (10, centerY - 2.5)
-                  Color varies by mood (15 mood-specific colors defined Lines 108–124)
+                  Color varies by mood (16 mood-specific colors defined Lines 108–124)
 
 Preset name:      left-aligned, Inter 11.5pt, T1/T2 color
                   Bounds: (22, 0, w-36, h)
