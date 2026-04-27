@@ -1194,6 +1194,28 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
                           "Macro 2 (MOVEMENT)"},
         0));
 
+    // ── XOuija Mood Sliders (Wave 5 D2) ─────────────────────────────────────
+    // Three global mood parameters that shape heatmap rendering on the XOuija
+    // surface.  All are UI-only (no audio path); they are persisted via APVTS
+    // so DAW automation and session recall work without extra state machinery.
+    //
+    //   xouija_brightness — dark ↔ bright  (0=dark, 0.5=neutral, 1=bright)
+    //   xouija_tension    — calm ↔ tense   (0=calm, 0.5=neutral, 1=tense)
+    //   xouija_density    — sparse ↔ dense (0=sparse, 0.5=neutral, 1=dense)
+    //
+    // PlaySurface wires onParameterChanged for these three IDs to call
+    // xouijaPanel_.setMoodState() so the heatmap repaint happens on the message
+    // thread without touching the audio thread.
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("xouija_brightness", 1), "XOuija Brightness",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("xouija_tension", 1), "XOuija Tension",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("xouija_density", 1), "XOuija Density",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+
     // AquaticFXSuite::addParameters() uses ParameterLayout::add() (JUCE 7+ API)
     // rather than the shared params vector, so it must be called after constructing
     // the ParameterLayout from the vector.
