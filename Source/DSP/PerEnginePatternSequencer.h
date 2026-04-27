@@ -369,14 +369,14 @@ private:
 
     // RIPTIDE cycle counter — polarity flips each time through all stepCount steps
     int riptideCycleCount_{0};
-    int riptidePrevStep_{-1}; // tracks wrap-around to increment cycle
+    [[maybe_unused]] int riptidePrevStep_{-1}; // tracks wrap-around to increment cycle
 
     // EDDY (Wolfram Rule 30 cellular automaton)
     // Single 16-cell row; evolve one generation per pattern cycle.
     // Seeded with one live cell at centre position.
     std::array<uint8_t, 16> eddyRow_{};
     int eddyRowIdx_{0}; // which generation index we're on
-    int eddyCachedGen_{-1}; // generation number at last cache build
+    [[maybe_unused]] int eddyCachedGen_{-1}; // generation number at last cache build
 
     //==========================================================================
     // Pattern computation
