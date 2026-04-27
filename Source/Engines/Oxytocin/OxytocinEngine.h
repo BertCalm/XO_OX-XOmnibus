@@ -185,6 +185,12 @@ public:
     {
         juce::ScopedNoDenormals noDenormals;
         const int numSamples = buffer.getNumSamples();
+        // P37 guard: sr = 0.0 before prepare() is called (sentinel default at line 368).
+        // If a DAW sends a probe block before prepareToPlay(), blockTime = numSamples / 0.0 = +Inf.
+        // OxytocinMemory::update() receives +Inf as blockTime, computing learnRate = +Inf and
+        // corrupting the persistent memory state (memI/memP/memC all become +Inf → NaN).
+        // Return clear silence; the jassert below still catches un-prepared usage in Debug builds.
+        if (sr <= 0.0) { buffer.clear(); return; }
         jassert(numSamples <= allocatedBlockSize); // P0-1: guard
         // ADDITIVE: render into scratch, then add to output buffer at end
         juce::FloatVectorOperations::clear(scratchL.getData(), numSamples);
@@ -208,9 +214,17 @@ public:
                 aftertouch(msg.getAfterTouchValue());
         }
 
-        // D006: apply mod wheel and aftertouch to this block's snap
-        snap.entanglement = std::clamp(snap.entanglement + modWheelValue * 0.5f, 0.0f, 1.0f);
-        snap.passion = std::clamp(snap.passion + aftertouchValue * 0.3f, 0.0f, 1.0f);
+        // D006: apply mod wheel and aftertouch — compute effective values LOCALLY.
+        // CF-1 fix: snap is a ParamSnapshot that represents the knob/host position for
+        // this block.  If we overwrite snap.passion/entanglement in-place the mutation
+        // accumulates each block (sticky mod wheel → passion climbs to max and stays
+        // there, making the knob feel stuck).  The mutated snap also feeds applyBoost()
+        // through the voice loop, causing memory to record inflated values which then
+        // re-inflate future blocks — a slow-onset compound effect that emerges after
+        // ~30 s of play.  Fix: compute one-shot local scalars; thread them into voiceSnap
+        // after the copy so snap itself is never modified.
+        const float effectiveEntanglement = std::clamp(snap.entanglement + modWheelValue * 0.5f, 0.0f, 1.0f);
+        const float effectivePassion      = std::clamp(snap.passion      + aftertouchValue * 0.3f, 0.0f, 1.0f);
 
         // Honour voice count from param
         int maxV = std::clamp(snap.voices, 1, MaxVoices);
@@ -258,11 +272,20 @@ public:
             // F05/F06: fastPow2 pre-computed above; * (1.0f/12.0f) avoids per-call division
             voiceSnap.cutoff *= lfo1CutoffMult;
 
+            // CF-1 fix: thread effective (mod-wheel/aftertouch boosted) values into voiceSnap
+            // rather than reading snap.passion/entanglement which are now left unmutated.
+            voiceSnap.entanglement = effectiveEntanglement;
+            voiceSnap.passion      = effectivePassion;
+
             // LFO2 → triangle position modulates I/P/C balance
-            // Blend snap params toward triangle coords by lfo2 depth
+            // Blend snap params toward triangle coords by lfo2 depth.
+            // Note: voiceSnap.passion is already set to effectivePassion above; the LFO2
+            // blend below replaces it with the triangle-interpolated value (which is the
+            // correct behaviour — LFO2 triangle modulation takes precedence over the raw
+            // effective passion when lfo2Depth > 0).
             float blend = snap.lfo2Depth;
             voiceSnap.intimacy = snap.intimacy * (1.0f - blend) + triangleCoords.I * blend;
-            voiceSnap.passion = snap.passion * (1.0f - blend) + triangleCoords.P * blend;
+            voiceSnap.passion = effectivePassion * (1.0f - blend) + triangleCoords.P * blend;
             voiceSnap.commitment = snap.commitment * (1.0f - blend) + triangleCoords.C * blend;
 
             // D004: pass voice index so detune can spread voices
@@ -306,13 +329,6 @@ public:
         {
             sL[s] *= gainLinear;
             sR[s] *= gainLinear;
-        }
-
-        // Clip guard on scratch (only Oxytocin's signal — not earlier engines)
-        for (int s = 0; s < numSamples; ++s)
-        {
-            sL[s] = std::clamp(sL[s], -1.0f, 1.0f);
-            sR[s] = std::clamp(sR[s], -1.0f, 1.0f);
         }
 
         // ADDITIVE: mix processed scratch into the output buffer
