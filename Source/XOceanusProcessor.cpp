@@ -1245,6 +1245,20 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
             "slot" + juce::String(s) + "_seq_",
             "Slot " + juce::String(s + 1) + " Seq ");
 
+    // Wave 6: Per-slot play surface layout mode (primary slots 0–3 only).
+    // 0 = PlaySurface (KEYS/PADS/XY/OUIJA full window, default)
+    // 1 = PadGrid (embedded 4×4 pad grid in engine slot header area)
+    // UI-only persistence — no audio-thread reads. Stored in APVTS for
+    // DAW session recall. Default = PlaySurface(0).
+    for (int s = 0; s < kNumPrimarySlots; ++s)
+    {
+        layout.add(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID("slot" + juce::String(s) + "_layout_mode", 1),
+            "Slot " + juce::String(s + 1) + " Layout",
+            juce::StringArray{ "PlaySurface", "PadGrid" },
+            0 /* default = PlaySurface */));
+    }
+
     return layout;
 }
 
