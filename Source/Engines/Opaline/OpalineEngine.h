@@ -467,6 +467,11 @@ public:
             uint32_t seed = static_cast<uint32_t>(i * 7919 + 137);
             seed = seed * 1664525u + 1013904223u;
             voices[i].thermalPersonality = (static_cast<float>(seed & 0xFFFF) / 32768.0f - 1.0f) * 2.0f;
+            // FIX P36: thermalNoiseState was identical across all voices (default 54321u).
+            // Seed per-voice so simultaneous polyphonic glass voices produce independent
+            // thermal-drift character rather than synchronized wobble.
+            voices[i].thermalNoiseState = static_cast<uint32_t>(i * 8191 + 97) * 1664525u + 1013904223u;
+            if (voices[i].thermalNoiseState == 0u) voices[i].thermalNoiseState = 1u;
         }
 
         // Smoothers
