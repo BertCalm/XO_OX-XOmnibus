@@ -1428,8 +1428,11 @@ public:
         const float ruleMorph = std::clamp(p_ruleMorph->load(), 0.f, 1.f);
         const float baseEvoRate = p_evolutionRate->load();
         const float macroEvo = p_macroEvolution ? p_macroEvolution->load() : 0.5f;
-        // EVOLUTION macro scales the evolution rate 0.1x..4x around the base
-        const float evoRate = baseEvoRate * (0.1f + macroEvo * 3.9f);
+        // EVOLUTION macro scales the evolution rate 0.1x..4x around the base.
+        // Hard cap at 50 Hz: above this CA evolution produces no audible timbral
+        // change but burns CPU proportionally. 50 Hz = one evolve() per 882 samples
+        // at 44100 Hz — generous headroom for the mod matrix EvolutionRate destination.
+        const float evoRate = std::min(baseEvoRate * (0.1f + macroEvo * 3.9f), 50.0f);
         // gridDensity is read directly by handleNoteOn() from p_gridDensity;
         // not needed in the render-loop ParamSnapshot.
         const float baseChaos = p_chaos->load();
