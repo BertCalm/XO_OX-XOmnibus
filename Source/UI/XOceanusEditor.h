@@ -637,6 +637,14 @@ public:
                             modMatrixStrip_->loadEngine(
                                 GalleryColors::prefixForEngine(eng->getEngineId()));
                     }
+                    // TODO Wave6.5 mount A (#1306): auto-switch PlaySurface to PADS+drum
+                    // sub-mode when a percussion engine (Onset / Offering) loads.
+                    // Include "Ocean/Wave65SurfaceWiring.h" and add layoutModeCache_ member,
+                    // then replace these comments with the live call:
+                    //   if (slot >= 0 && slot < kNumPrimarySlots)
+                    //       if (auto* eng = processor.getEngine(slot))
+                    //           oceanView_.getPlaySurface().setSurfaceDefault(
+                    //               Wave65::isPercussionEngine(eng->getEngineId()));
                 });
         };
     }
@@ -2010,6 +2018,14 @@ private:
             playSurface_.setAccentColour(accent);
         }
 
+        // TODO Wave6.5 mount B (#1306): poll slot[N]_layout_mode APVTS params and
+        // forward changes to PlaySurface::setLayoutMode() for DAW session recall.
+        // Include "Ocean/Wave65SurfaceWiring.h" and add layoutModeCache_ member
+        // (mount C), then replace these comments with the live call:
+        //   Wave65::pollLayoutModeParams(processor.getAPVTS(),
+        //                                layoutModeCache_,
+        //                                oceanView_.getPlaySurface());
+
         // ── D4: Register Manager update ───────────────────────────────────────
         // Compute elapsed time (ms) since last timer tick for smooth transitions.
         // Uses a fixed-point approximation: timerHz is 1–30, so dt is 33–1000ms.
@@ -2432,6 +2448,10 @@ private:
     DnaHexagon headerHex_;
     // Cache the last preset name to detect changes without polling every frame.
     juce::String lastHeaderHexPreset_;
+
+    // TODO Wave6.5 mount C (#1306): per-slot layout mode cache for APVTS polling.
+    // Include "Ocean/Wave65SurfaceWiring.h" then uncomment this member:
+    //   std::array<int, 4> layoutModeCache_ { -1, -1, -1, -1 };
 
     // Last MIDI note number seen (for interval computation in session DNA drift).
     // -1 = no note played yet this session.

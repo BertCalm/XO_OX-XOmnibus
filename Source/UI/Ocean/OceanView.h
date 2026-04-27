@@ -465,6 +465,14 @@ public:
         keysButton_.onClick = [this]() { togglePlaySurface(); };
 
         // ── Step 6: Dashboard tab bar callback ───────────────────────────────
+        // Wave 6.5 (#1306) collision note:
+        //   PAD/DRUM/XY tabs open SurfaceRightPanel.  All collision rules are already
+        //   enforced by Wave 3 PanelCoordinator:
+        //     (a) coordinatorApplyWidthGuard() — closes drawers when width < 700 px.
+        //     (b) coordinatorRequestOpen(PanelType::Detail) — hides SurfaceRightPanel
+        //         while DetailOverlay is open; restored on coordinatorRelease().
+        //   SurfaceRightPanel is a soft panel and intentionally coexists with
+        //   drawers above 700 px.  No additional coordinator call is required here.
         tabBar_.onTabChanged = [this](const juce::String& tab)
         {
             if (tab == "KEYS")
