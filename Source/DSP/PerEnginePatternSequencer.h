@@ -198,6 +198,15 @@ public:
                                                     .load(std::memory_order_relaxed));
         const int soundingNote = juce::jlimit(0, 127, rootNote + pitchOffset);
 
+        // #1298: per-step velocity override — if non-zero, replaces the pattern velocity.
+        // 0.0 is the sentinel meaning "inherit from base velocity" (pattern-computed value kept).
+        {
+            const float stepVelOverride = stepStepVel_[static_cast<size_t>(stepIdx)]
+                                            .load(std::memory_order_relaxed);
+            if (stepVelOverride > 0.0f && velocity > 0.0f)
+                velocity = juce::jlimit(0.01f, 1.0f, stepVelOverride);
+        }
+
         if (velocity > 0.0f)
         {
             // Apply velocity-jitter humanization (v1: velocity-only, no timing jitter)
@@ -214,22 +223,36 @@ public:
             // Track the sounding note so the correct noteOff fires even if rootNote changes mid-step.
             lastSoundingNote_ = soundingNote;
 
-            // Schedule noteOff at half a step duration (~gate 50%)
-            // halfStepSamples = (60 / bpm) * (1 / stepsPerQuarter) * 0.5 * sampleRate
-            const double halfStepSecs = (60.0 / bpm) / stepsPerQuarter * 0.5;
-            noteOffCountdown_ = static_cast<int>(halfStepSecs * sampleRate_);
+            // #1298: per-step gate-length override — if non-zero, use it instead of 50% default.
+            // Range 0.0..1.5 × step duration. 0.0 = inherit (use default 50%).
+            const float stepGlenOverride = stepGateLen_[static_cast<size_t>(stepIdx)]
+                                            .load(std::memory_order_relaxed);
+            const double fullStepSecs = (60.0 / bpm) / stepsPerQuarter;
+            double gateFraction;
+            if (stepGlenOverride > 0.0f)
+                gateFraction = static_cast<double>(juce::jlimit(0.01f, 1.5f, stepGlenOverride));
+            else
+                gateFraction = 0.5; // default: 50% gate
+
+            const double noteOnSecs = fullStepSecs * gateFraction;
+            noteOffCountdown_ = static_cast<int>(noteOnSecs * sampleRate_);
             // Clamp so noteOff always fires within a reasonable time
             noteOffCountdown_ = juce::jmax(1, noteOffCountdown_);
 
             // C5: update live state for ModSource consumers
             liveVelocity_.store(velocity, std::memory_order_relaxed);
             liveGate_.store(1.0f, std::memory_order_relaxed);
+            // #1289: expose normalised pitch offset (-1..+1 from ±12 semitones)
+            liveStepPitch_.store(static_cast<float>(pitchOffset) / 12.0f,
+                                 std::memory_order_relaxed);
         }
         else
         {
             // Silent step — gate stays closed, velocity resets to 0
             liveVelocity_.store(0.0f, std::memory_order_relaxed);
             liveGate_.store(0.0f, std::memory_order_relaxed);
+            // #1289: clear live pitch on silent step so it does not linger into next gate
+            liveStepPitch_.store(0.0f, std::memory_order_relaxed);
         }
     }
 
@@ -317,6 +340,9 @@ public:
     float getLiveVelocity()  const noexcept { return liveVelocity_.load(std::memory_order_relaxed); }
     float getLiveGate()      const noexcept { return liveGate_.load(std::memory_order_relaxed); }
     float getLiveStepPhase() const noexcept { return liveStepPhase_.load(std::memory_order_relaxed); }
+    // #1289: current step pitch offset normalised to -1..+1 (from ±12 semitones).
+    // Cleared to 0.0 on silent steps so the value does not linger across rests.
+    float getLiveStepPitch() const noexcept { return liveStepPitch_.load(std::memory_order_relaxed); }
 
     //==========================================================================
     // APVTS integration
@@ -390,6 +416,28 @@ public:
                 juce::ParameterID(prefix + "pitch_" + juce::String(i), 1),
                 displayPrefix + "Pitch " + juce::String(i + 1), -12, 12, 0));
         }
+
+        // #1298: per-step velocity override (0..1 float, default -1 = "use base vel")
+        // and gate-length override (0.0..1.5 × step duration, default -1 = "use global gate").
+        // A value of -1 (sentinel) means "not set" — the engine uses the base/global value.
+        // Range stored as 0..1 normalised after adding an offset so -1 sentinel fits in
+        // a float param: actual stored value = (semitone + 1) / 2  →  [-1=0.0, 0=0.5, 1=1.0].
+        // For simplicity we use dedicated ranges with a sentinel float below the normal range:
+        //   vel:  stored as 0..1; 0.0 is the sentinel "inherit from base" → UI maps 0→inherit
+        //   glen: stored as 0..150% (0.0..1.5); 0.0 = sentinel (inherit from global gate)
+        // Naming: slot[N]_seq_svel_<step> and slot[N]_seq_glen_<step>
+        for (int i = 0; i < 16; ++i)
+        {
+            layout.add(std::make_unique<juce::AudioParameterFloat>(
+                juce::ParameterID(prefix + "svel_" + juce::String(i), 1),
+                displayPrefix + "Step Vel " + juce::String(i + 1),
+                juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f)); // 0.0 = inherit
+
+            layout.add(std::make_unique<juce::AudioParameterFloat>(
+                juce::ParameterID(prefix + "glen_" + juce::String(i), 1),
+                displayPrefix + "Gate Len " + juce::String(i + 1),
+                juce::NormalisableRange<float>(0.0f, 1.5f), 0.0f)); // 0.0 = inherit
+        }
     }
 
     // Sync atomic state from APVTS. Safe to call from the audio thread.
@@ -460,6 +508,9 @@ public:
             {
                 cachedStepGateParams_[i]  = apvts.getRawParameterValue(prefix + "gate_"  + juce::String(i));
                 cachedStepPitchParams_[i] = apvts.getRawParameterValue(prefix + "pitch_" + juce::String(i));
+                // #1298: per-step velocity and gate-length overrides
+                cachedStepVelParams_[i]   = apvts.getRawParameterValue(prefix + "svel_"  + juce::String(i));
+                cachedStepGlenParams_[i]  = apvts.getRawParameterValue(prefix + "glen_"  + juce::String(i));
             }
         }
 
@@ -479,6 +530,20 @@ public:
                     static_cast<int>(cachedStepPitchParams_[i]->load(std::memory_order_relaxed) + 0.5f));
                 stepPitch_[static_cast<size_t>(i)].store(
                     static_cast<int8_t>(semitones), std::memory_order_relaxed);
+            }
+
+            // #1298: per-step velocity and gate-length overrides
+            if (cachedStepVelParams_[i] != nullptr)
+            {
+                const float vel = cachedStepVelParams_[i]->load(std::memory_order_relaxed);
+                // 0.0 = inherit from base velocity (sentinel); store as-is — processBlock reads
+                stepStepVel_[static_cast<size_t>(i)].store(vel, std::memory_order_relaxed);
+            }
+            if (cachedStepGlenParams_[i] != nullptr)
+            {
+                const float glen = cachedStepGlenParams_[i]->load(std::memory_order_relaxed);
+                // 0.0 = inherit from global gate; store as-is
+                stepGateLen_[static_cast<size_t>(i)].store(glen, std::memory_order_relaxed);
             }
         }
         stepGateBitmap_.store(bitmap, std::memory_order_relaxed);
@@ -521,6 +586,9 @@ private:
     std::atomic<float> liveVelocity_{0.0f};   // 0.0–1.0; 0 when step is silent
     std::atomic<float> liveGate_{0.0f};       // 1.0 while noteOffCountdown_ > 0
     std::atomic<float> liveStepPhase_{0.0f};  // stepIdx / stepCount, 0.0–1.0
+    // #1289: SeqStepPitch ModSource — current step's pitch offset normalised -1..+1
+    // (raw semitone / 12.0f).  Cleared to 0.0 on silent steps.
+    std::atomic<float> liveStepPitch_{0.0f};
 
     //==========================================================================
     // Cached APVTS parameter pointers — resolved once on first syncFromApvts() call.
@@ -537,6 +605,9 @@ private:
     // Resolved once on first syncStepOverridesFromApvts() call.
     std::array<std::atomic<float>*, 16> cachedStepGateParams_  {};  // default-inits all to nullptr
     std::array<std::atomic<float>*, 16> cachedStepPitchParams_ {};
+    // #1298: Cached APVTS pointers for per-step velocity and gate-length overrides.
+    std::array<std::atomic<float>*, 16> cachedStepVelParams_   {};
+    std::array<std::atomic<float>*, 16> cachedStepGlenParams_  {};
 
     //==========================================================================
     // C3: Per-step gate + pitch override state (written from UI thread, read from audio thread).
@@ -549,6 +620,12 @@ private:
     // Default 0 = no pitch shift (C1/C2 behaviour preserved).
     std::atomic<uint32_t>                   stepGateBitmap_{0};
     std::array<std::atomic<int8_t>, 16>     stepPitch_ {};  // zero-initialised
+
+    // #1298: Per-step velocity overrides (0.0 = inherit from baseVelocity_) and
+    // gate-length overrides (0.0 = inherit from global half-step gate, >0 = explicit).
+    // Both written from UI thread, read from audio thread.
+    std::array<std::atomic<float>, 16>      stepStepVel_  {};  // 0.0 = inherit
+    std::array<std::atomic<float>, 16>      stepGateLen_  {};  // 0.0 = inherit
 
     //==========================================================================
     // Audio-thread-only state (no atomics needed — never touched from UI thread)

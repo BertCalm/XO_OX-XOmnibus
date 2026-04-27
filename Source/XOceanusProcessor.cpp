@@ -2166,6 +2166,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
 
                 // Source value — only LFO1 (id=0) wired in A1.
                 // C5: SeqStepValue / BeatPhase / ChordToneIdx read from slotSequencers_.
+                // #1289: SeqStepPitch added — per-step pitch offset as bipolar -1..+1.
                 float srcVal = 0.0f;
                 if (snap.sourceId == static_cast<int>(ModSourceId::LFO1))
                 {
@@ -2173,7 +2174,8 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                 }
                 else if (snap.sourceId == static_cast<int>(ModSourceId::SeqStepValue) ||
                          snap.sourceId == static_cast<int>(ModSourceId::BeatPhase)    ||
-                         snap.sourceId == static_cast<int>(ModSourceId::ChordToneIdx))
+                         snap.sourceId == static_cast<int>(ModSourceId::ChordToneIdx) ||
+                         snap.sourceId == static_cast<int>(ModSourceId::SeqStepPitch))
                 {
                     // Validate slot index — guard against stale or bad snapshots.
                     const int slot = snap.slotIndex;
@@ -2191,6 +2193,12 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                         // Step phase 0.0–1.0 — expose as bipolar -1..+1 by mapping 0..1 → -1..+1.
                         const float phase = slotSequencers_[static_cast<size_t>(slot)].getLiveStepPhase();
                         srcVal = phase * 2.0f - 1.0f; // bipolar ramp
+                    }
+                    else if (snap.sourceId == static_cast<int>(ModSourceId::SeqStepPitch))
+                    {
+                        // #1289: per-step pitch offset, normalised to -1..+1 from ±12 semitones.
+                        // 0.0 on silent (rest) steps so mod depth does not ghost-ring.
+                        srcVal = slotSequencers_[static_cast<size_t>(slot)].getLiveStepPitch();
                     }
                     else // ChordToneIdx — repurposed here as gate state (0 or 1, unipolar)
                     {
