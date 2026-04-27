@@ -2,7 +2,7 @@
 
 **Date:** 2026-04-27
 **Author:** XO_OX Designs
-**Status:** Design Spec — Ready for Phase 0 implementation
+**Status:** Design Spec — Decisions locked 2026-04-27, ready for Phase 0 implementation
 **Branch:** `claude/fx-engine-gap-analysis-rDtCJ`
 
 ---
@@ -17,7 +17,7 @@
 6. [Phase 3 — Meta-Wildcards](#6-phase-3--meta-wildcards)
 7. [Per-Pack Integration Checklist](#7-per-pack-integration-checklist)
 8. [Timeline](#8-timeline)
-9. [Open Questions](#9-open-questions)
+9. [Resolved Decisions](#9-resolved-decisions)
 
 ---
 
@@ -270,7 +270,7 @@ Run for every new chain (per CLAUDE.md "Adding New Engines"):
 
 1. Strictly additive params only; never rename or remove
 2. Add coupling target to chain's existing wildcard concept
-3. Re-seance after retrofit
+3. **Full `/synth-seance` after retrofit** (per D2 — no tiered shortcut)
 4. Update `engines.json` notes field
 
 ---
@@ -286,15 +286,57 @@ Run for every new chain (per CLAUDE.md "Adding New Engines"):
 
 Per CLAUDE.md "Release Philosophy — The Deep Opens": no fixed cutoff. Quarters are sequencing, not deadlines. Ship when ready.
 
+**Seance budget (per D2):** ~6 hr/chain × 20 Wave 2 retrofits = ~120 hours across Q3 2026 → Q1 2027, averaging ~4 retrofit seances per pack quarter. New-chain seances run in parallel; both block the same release gate, so pack throughput is unchanged.
+
 ---
 
-## 9. Open Questions
+## 9. Resolved Decisions
 
-1. **DNA real-time mutability scope** — does M1 CHARACTER macro warp DNA in-place per voice, or only at preset-load? Per-voice is more powerful but raises CPU concerns. *Decision needed before Phase 0 finalizes.*
-2. **Retrofit gating** — should each retrofit ship with re-seance (slow, thorough) or with a lighter regression check (fast, risk of D004 regressions)? *Recommend: re-seance for any chain that gains a new coupling primitive; regression-only for additive doctrine knobs.*
-3. **Mastering mood-coupling default** — does the master bus default to "mood-aware" or "mood-neutral"? Mood-aware is the wildcard; mood-neutral preserves existing preset behavior. *Recommend: opt-in via single MASTER_MOOD_AWARE toggle, default off, surfaced in mastering pack tutorial.*
-4. **Knot-Topology routing back-compat** — when Phase 3 lands, do existing presets get auto-braided? *Recommend: explicit per-preset opt-in, default serial.*
-5. **AGE coupling default** — what does AGE default to when no coupling input is wired? *Recommend: 0 (factory-fresh) for predictability; users explicitly couple to time/LFO/partner for the wildcard behavior.*
+Locked 2026-04-27 by XO_OX Designs.
+
+### D1 — DNA mutability scope: **per-engine warp at block-rate**
+
+M1 CHARACTER macro warps DNA at the engine level (not per-voice, not preset-load only). Update rate: block (smoothed). CPU cost: 6 floats × N engines × block-rate (trivial).
+
+**Rationale:** per-voice expression already exists via velocity (D001) and aftertouch (D006). DNA is a *character* axis, not a per-note expression axis. Per-engine keeps CPU trivial while making the wildcard meaningful and audible.
+
+**Impact on Phase 0:** `DNAModulationBus` publishes 6 mod sources per engine slot, smoothed at block-rate. M1 macro is a primary input.
+
+### D2 — Retrofit gating: **full `/synth-seance` for every retrofit**
+
+Every Wave 2 retrofit goes through full seance, regardless of whether it's purely additive. No tiered shortcut.
+
+**Rationale:** doctrine compliance is the ship gate; cutting corners on additive retrofits risks D004 violations slipping through and creating a two-tier reputation across the fleet.
+
+**Impact on Phase 2 timeline:** ~6 hr/chain × 20 retrofits = ~120 hours of seance work spread across Q3 2026 → Q1 2027 (~4 retrofits per pack quarter on average). Pack throughput unchanged because seances run alongside new-chain seances; both block the same release.
+
+### D3 — Mastering mood-coupling default: **OFF**
+
+The mood-aware mastering bus defaults OFF. User opts in via single `MASTER_MOOD_AWARE` toggle.
+
+**Rationale:** defaulting ON would silently re-master 19,859 existing presets based on their mood tag — quiet regression at scale. Opt-in preserves preset determinism.
+
+**Impact on Pack 8:** ship a "Mood-Aware Mastering" preset bank where the toggle defaults ON within those presets only, plus a release-notes spotlight on the toggle. Wildcard discoverable, not auto-applied.
+
+### D4 — Knot-Topology routing back-compat: **per-preset opt-in, default serial**
+
+When Phase 3 ships, existing presets keep their current 3-slot serial routing. New presets can set `slotTopology: "knot"` to opt in to parallel braiding.
+
+**Rationale:** same logic as D3 — 19,859 existing presets must keep their current signal path.
+
+**Impact on Phase 3:** preset schema gains optional `slotTopology` field; loader treats absence as `"serial"`.
+
+### D5 — AGE coupling default: **AGE = 0 (factory-fresh)**
+
+AGE defaults to 0 when no coupling input is wired. User explicitly couples AGE to time / partner LFO / partner MOVEMENT macro to unlock the wildcard.
+
+**Rationale:** predictability over default visibility. Auto-coupling re-introduces the non-determinism trap critiqued earlier in the wildcard review.
+
+**Impact on Pack 2 (Analog Warmth) and Pack 6 (Lo-Fi Physical):** ship demo presets that explicitly couple AGE to a slow ≤0.01 Hz LFO so users hear the wildcard immediately when loading those banks.
+
+### Cross-cutting principle
+
+D3 / D4 / D5 share a pattern: **wildcards are opt-in, not opt-out.** Preset determinism beats default visibility. The brand statement is loud where the user invites it, quiet where they haven't.
 
 ---
 
