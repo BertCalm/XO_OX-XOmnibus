@@ -1371,7 +1371,7 @@ private:
                     // tracks correctly at 48 kHz (0.99935) and 96 kHz (0.99967).
                     // Was constexpr 0.9997f which gave ~6.7 Hz at 44.1 kHz but ~13.4 Hz
                     // at 96 kHz due to sample count difference.
-                    const float dcCoeff = 1.0f - (kOortTwoPi * 5.0f / sampleRateFloat);
+                    const float dcCoeff = 1.0f - fastExp(-kOortTwoPi * 5.0f / sampleRateFloat);
                     const float dcOut = sig - v.dcBlockX + dcCoeff * v.dcBlockY;
                     v.dcBlockX = sig;
                     v.dcBlockY = flushDenormal(dcOut);
