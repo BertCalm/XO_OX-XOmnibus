@@ -29,18 +29,9 @@
 //
 // File is header-only (XOceanus UI convention).
 //
-// TODO Wave5-B3 mount: In the engine-slot strip (wherever the per-slot controls live),
-//   for each slot index N (0..3):
-//     auto* strip = new xoceanus::ChordSlotStrip(apvts, chordMachine, N);
-//     addAndMakeVisible(strip);
-//     strip->onOpenBreakout = [this](int slot) { chordBreakout_->openForSlot(slot); };
-//   setBounds: strip->setBounds(x, y, width, ChordSlotStrip::kHeight);
-//
-// TODO Wave5-B3 mount: In XOceanusEditor (or OceanView), also add:
-//     chordBreakout_ = std::make_unique<ChordBreakoutPanel>(apvts, chordMachine);
-//     addAndMakeVisible(chordBreakout_.get());
-//     chordBreakout_->setVisible(false);
-//   See ChordBreakoutPanel.h for full layout notes.
+// Wave 5 B3 mount APPLIED — ChordBreakoutPanel is mounted in OceanView via
+// initChordBreakout(). ChordBreakoutPanel internally owns 4 ChordSlotStrip instances.
+// External ChordSlotStrip instances are not separately mounted at this time.
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
