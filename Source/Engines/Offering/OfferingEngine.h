@@ -366,8 +366,8 @@ public:
 
         // Per-sample scratch buffers for this engine's render + FX chain.
         // 4096 samples handles 96kHz at large buffer sizes (~42ms); guarded by safeSamples.
-        // NOTE: OfferingCityProcessor::process() allocates a shadow[2048] for blend mode,
-        // so the effective city-blend limit is 2048 samples. safeSamples is capped there too.
+        // OfferingCityProcessor::process() allocates shadow[4096] — matches this buffer.
+        // Both are guarded by safeSamples = min(numSamples, 4096).
         float scrL[4096];
         float scrR[4096];
         // Per-sample mono mix buffer for city processing.
