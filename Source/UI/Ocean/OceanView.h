@@ -58,6 +58,9 @@
 #include "SettingsDrawer.h"
 #include "TideWaterline.h"
 #include "ChordBarComponent.h"
+#include "ChordBreakoutPanel.h"
+#include "SeqBreakoutComponent.h"
+#include "SeqStripComponent.h"
 #include "MasterFXStripCompact.h"
 #include "EpicSlotsPanel.h"
 #include "TransportBar.h"
@@ -622,6 +625,34 @@ public:
     }
 
     /**
+        Initialise the ChordBreakoutPanel (Wave 5 B3 mount).
+        Must be called after initChordBar() — needs APVTS + ChordMachine reference.
+    */
+    void initChordBreakout(juce::AudioProcessorValueTreeState& apvts,
+                           const ChordMachine& chordMachine)
+    {
+        chordBreakout_ = std::make_unique<ChordBreakoutPanel>(apvts, chordMachine);
+        addAndMakeVisible(*chordBreakout_);
+        chordBreakout_->setVisible(false); // hidden until opened via ChordSlotStrip callback
+        reorderZStack();
+    }
+
+    /**
+        Initialise the SeqStrip + SeqBreakout (Wave 5 C2 mount).
+        Must be called after the processor is available — needs APVTS.
+    */
+    void initSeqStrip(juce::AudioProcessorValueTreeState& apvts)
+    {
+        seqBreakout_ = std::make_unique<SeqBreakoutComponent>(apvts);
+        seqStrip_    = std::make_unique<SeqStripComponent>(apvts);
+        addAndMakeVisible(*seqBreakout_);
+        addAndMakeVisible(*seqStrip_);
+        seqStrip_->setBreakout(seqBreakout_.get());
+        seqBreakout_->setVisible(false); // hidden until strip click
+        reorderZStack();
+    }
+
+    /**
         Initialise the compact Master FX strip (submarine-style).
     */
     void initMasterFxStrip(juce::AudioProcessorValueTreeState& apvts)
@@ -774,6 +805,24 @@ public:
         // Chord bar (visible when CHORD toggle is on, ~28px).
         if (chordBar_ && chordBar_->isVisible())
             chordBar_->setBounds(dashArea.removeFromTop(42));
+
+        // Seq strip — Wave 5 C2 mount: always-visible 24px strip below chord bar.
+        if (seqStrip_)
+            seqStrip_->setBounds(dashArea.removeFromTop(SeqStripComponent::kStripHeight));
+
+        // ChordBreakoutPanel — Wave 5 B3 mount: bottom 60% overlay (hidden until opened).
+        if (chordBreakout_)
+        {
+            const int panelH = static_cast<int>(getHeight() * 0.60f);
+            chordBreakout_->setSize(getWidth(), panelH);
+            if (!chordBreakout_->isOpen())
+                chordBreakout_->setTopLeftPosition(0, getHeight()); // off-screen when closed
+
+        }
+
+        // SeqBreakoutComponent — Wave 5 C2 mount: bottom ~60% overlay (hidden until opened).
+        if (seqBreakout_)
+            seqBreakout_->setBounds(getLocalBounds().withTop(getHeight() * 2 / 5));
 
         // Expression strips (36px) on the left of the play area.
         exprStrips_.setBounds(dashArea.removeFromLeft(ExpressionStrips::kStripWidth));
@@ -2522,6 +2571,11 @@ private:
         if (epicSlots_) epicSlots_->toFront(false);
         tabBar_.toFront(false);
         if (chordBar_) chordBar_->toFront(false);
+        // Wave 5 C2: seq strip sits just below chord bar in the dashboard.
+        if (seqStrip_) seqStrip_->toFront(false);
+        // Wave 5 B3 + C2: breakout panels float above all dashboard content.
+        if (chordBreakout_) chordBreakout_->toFront(false);
+        if (seqBreakout_) seqBreakout_->toFront(false);
         if (transportBar_) transportBar_->toFront(false);
         if (statusBar_) statusBar_->toFront(false);
 
@@ -2601,6 +2655,11 @@ private:
     // Step 6: Submarine dashboard — waterline separator + tab bar.
     std::unique_ptr<TideWaterline>        waterline_;
     std::unique_ptr<ChordBarComponent>    chordBar_;
+    // Wave 5 B3 mount: chord breakout panel (slide-up ~60% editor height).
+    std::unique_ptr<ChordBreakoutPanel>   chordBreakout_;
+    // Wave 5 C2 mount: seq strip (24px always-visible) + breakout panel.
+    std::unique_ptr<SeqStripComponent>    seqStrip_;
+    std::unique_ptr<SeqBreakoutComponent> seqBreakout_;
     std::unique_ptr<MasterFXStripCompact> masterFxStrip_;
     std::unique_ptr<EpicSlotsPanel>       epicSlots_;
     std::unique_ptr<TransportBar>         transportBar_;

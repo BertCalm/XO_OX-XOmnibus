@@ -739,6 +739,18 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
             juce::StringArray{"CHORD→SEQ", "SEQ→CHORD", "PARALLEL"}, 0));
     }
 
+    // ── B3: Per-slot chord input mode (Wave 5 B3 mount) ──────────────────────
+    // One Choice parameter per primary engine slot (slots 0–3).
+    // Values: 0=AUTO-HARMONIZE, 1=PAD-PER-CHORD, 2=SCALE-DEGREE. Default: AUTO-HARMONIZE.
+    for (int slot = 0; slot < 4; ++slot)
+    {
+        const juce::String paramId  = "cm_slot_input_mode_" + juce::String(slot);
+        const juce::String paramName = "CM Slot " + juce::String(slot + 1) + " Input Mode";
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID(paramId, 1), paramName,
+            juce::StringArray{"AUTO-HARMONIZE", "PAD-PER-CHORD", "SCALE-DEGREE"}, 0));
+    }
+
     // ── B2: Chord input mode + global key/scale ───────────────────────────────
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("chord_input_mode", 1), "Chord Input Mode",
