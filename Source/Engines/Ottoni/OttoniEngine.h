@@ -393,11 +393,7 @@ public:
 
                 // Exponential release — eliminates the "soft note releases fast"
                 // bug from linear subtraction on small ampEnv values.
-                // PERF-1/SOUND-4 fix: use cached releaseCoeff (computed once in prepare())
-                // instead of calling std::exp() per-sample, which was a hot-path overhead.
-                if (v.releasing)
-                    v.ampEnv *= v.releaseCoeff;
-                // releaseCoeff precomputed at block start (block-constant from sampleRate).
+                // Block-constant releaseCoeff precomputed at block start (line ~356).
                 if (v.releasing)
                     v.ampEnv *= releaseCoeff;
                 v.ampEnv = flushDenormal(v.ampEnv);
