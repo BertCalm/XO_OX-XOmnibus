@@ -452,7 +452,12 @@ public:
 
     void prepare(double sampleRate, int maxBlockSize) override
     {
-        sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 44100.0f;
+        if (sampleRate <= 0.0)
+        {
+            jassertfalse; // Host called prepare() with invalid sample rate — skip DSP init
+            return;
+        }
+        sampleRateFloat = static_cast<float>(sampleRate);
         maxBlock = maxBlockSize;
 
         // Cache 5 ms amp smoother coefficient — was recomputed every block via std::exp.
@@ -1295,7 +1300,7 @@ private:
     //  S T A T E
     //==========================================================================
 
-    float sampleRateFloat       = 44100.0f;
+    float sampleRateFloat       = 0.0f; // 0 = not yet prepared; sentinel for render guard
     int   maxBlock              = 512;
     float cachedAmpSmoothCoeff  = 0.005f; // set at prepare()
 
