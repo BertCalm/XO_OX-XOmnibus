@@ -191,8 +191,6 @@ public:
         return output;
     }
 
-    float getLastOutput() const noexcept { return prevS4 * 0.5f; }
-
 private:
     double sr = 0.0; // P1-7: default 0
     float g = 0.1f;
