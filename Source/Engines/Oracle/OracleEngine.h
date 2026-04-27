@@ -457,9 +457,11 @@ public:
 
         // Parameter smoothing coefficient: 5ms time constant.
         // This prevents zipper noise when parameters change mid-block.
-        // Formula: 1 - e^(-2*pi * (1/tau) / sr), where tau = 0.005s
+        // Formula: 1 - exp(-1 / (tau * sr)), where tau = 0.005s
+        // Note: no 2π factor — that belongs in frequency-domain filter formulas,
+        // not direct time-constant exponential smoothers.
         constexpr float kSmoothingTimeConstant = 0.005f; // 5ms — fast enough to track, slow enough to smooth
-        parameterSmoothingCoeff = 1.0f - std::exp(-kTwoPi * (1.0f / kSmoothingTimeConstant) / sampleRateFloat);
+        parameterSmoothingCoeff = 1.0f - std::exp(-1.0f / (kSmoothingTimeConstant * sampleRateFloat));
 
         // Voice-stealing crossfade rate: ramp gain from 1.0 to 0.0 over 5ms.
         // At 44.1kHz: 1.0 / (0.005 * 44100) = ~0.00454 per sample.
@@ -1179,7 +1181,7 @@ private:
     static float computeMaqamFreq(int midiNote, int maqamIdx, float gravity) noexcept
     {
         // 12-TET frequency
-        float tetFreq = 440.0f * std::pow(2.0f, (static_cast<float>(midiNote) - 69.0f) / 12.0f);
+        float tetFreq = 440.0f * fastPow2((static_cast<float>(midiNote) - 69.0f) / 12.0f);
 
         // If maqam is 0 (12-TET) or gravity is zero, use standard tuning
         if (maqamIdx <= 0 || maqamIdx > kNumMaqamat || gravity <= 0.0001f)
@@ -1218,8 +1220,8 @@ private:
 
         // Compute maqam frequency from the C root of the same octave
         int rootMidi = (octave + 1) * 12; // C of this octave
-        float rootFreq = 440.0f * std::pow(2.0f, (static_cast<float>(rootMidi) - 69.0f) / 12.0f);
-        float maqamFreq = rootFreq * std::pow(2.0f, maqamCentOffset / 1200.0f);
+        float rootFreq = 440.0f * fastPow2((static_cast<float>(rootMidi) - 69.0f) / 12.0f);
+        float maqamFreq = rootFreq * fastPow2(maqamCentOffset / 1200.0f);
 
         // Blend between 12-TET and maqam tuning via gravity
         return tetFreq + gravity * (maqamFreq - tetFreq);

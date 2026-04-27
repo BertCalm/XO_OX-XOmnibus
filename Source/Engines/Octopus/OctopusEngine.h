@@ -237,6 +237,10 @@ struct OctoVoice
     // OCT-14: delta-guard for per-block ink cloud decay updates
     float lastInkDecay = -1.0f;
 
+    // OCT-15: delta-guard for arm LFO setRate() — avoids 128 fastExp/block at max polyphony
+    float lastArmRate[8] = {};  // delta-guard for arm setRate()
+    float lastArmSrf = 0.0f;    // SR sentinel for arm rate cache invalidation
+
     void reset() noexcept
     {
         active = false;
@@ -255,6 +259,8 @@ struct OctoVoice
         lastSuckerFreq = -1.0f;     // OCT-04: force coefficient refresh on next block
         lastSuckerReso = -1.0f;
         lastInkDecay = -1.0f;       // OCT-14: force ink decay refresh on next block
+        for (auto& r : lastArmRate) r = -1.0f; // OCT-15: force arm rate refresh on next block
+        lastArmSrf = 0.0f;
         ampEnv.reset();
         modEnv.reset();
         suckerEnv.reset();
@@ -572,16 +578,23 @@ public:
                 }
             }
 
-            // Set arm LFO rates per voice
+            // Set arm LFO rates per voice — delta-guarded to avoid 128 fastExp/block
+            // at max polyphony (8 arms × 16 voices). Only calls setRate() when the
+            // computed rate or SR changes. Steady-state cost: 0 fastExp calls.
             for (int a = 0; a < 8; ++a)
             {
                 float armRate = effectiveArmRate * kArmPrimeRatios[a];
                 // Spread: 0=all same rate, 1=full prime ratio diversity
                 armRate = effectiveArmRate + (armRate - effectiveArmRate) * pArmSpread;
-                voice.arms[a].setRate(armRate, srf);
+                if (armRate != voice.lastArmRate[a] || srf != voice.lastArmSrf)
+                {
+                    voice.arms[a].setRate(armRate, srf);
+                    voice.lastArmRate[a] = armRate;
+                }
                 // Alternate shapes for variety
                 voice.arms[a].setShape(a % 5);
             }
+            voice.lastArmSrf = srf; // update after arm loop
 
             // Ink cloud decay — OCT-14: delta-guard so setDecay (division + std::max inside)
             // is only recomputed when the decay time actually changes.

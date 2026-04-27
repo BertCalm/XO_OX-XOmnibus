@@ -309,7 +309,12 @@ public:
 
     void prepare(double sampleRate, int maxBlockSize) override
     {
-        sampleRateFloat = (sampleRate > 0.0) ? static_cast<float>(sampleRate) : 44100.0f;
+        if (sampleRate <= 0.0)
+        {
+            jassertfalse; // Host called prepare() with invalid sample rate — skip DSP init
+            return;
+        }
+        sampleRateFloat = static_cast<float>(sampleRate);
 
         // Delay buffer: C-2 = 8.18 Hz, but we floor at kOpsinMinHz = 8 Hz
         const int maxDelaySamples = static_cast<int>(std::ceil(sampleRateFloat / kOpsinMinHz)) + 4;
