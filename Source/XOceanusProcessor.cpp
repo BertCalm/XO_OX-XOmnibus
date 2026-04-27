@@ -739,6 +739,18 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
             juce::StringArray{"CHORD→SEQ", "SEQ→CHORD", "PARALLEL"}, 0));
     }
 
+    // ── B3: Per-slot chord input mode (Wave 5 B3 mount) ──────────────────────
+    // One Choice parameter per primary engine slot (slots 0–3).
+    // Values: 0=AUTO-HARMONIZE, 1=PAD-PER-CHORD, 2=SCALE-DEGREE. Default: AUTO-HARMONIZE.
+    for (int slot = 0; slot < 4; ++slot)
+    {
+        const juce::String paramId  = "cm_slot_input_mode_" + juce::String(slot);
+        const juce::String paramName = "CM Slot " + juce::String(slot + 1) + " Input Mode";
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID(paramId, 1), paramName,
+            juce::StringArray{"AUTO-HARMONIZE", "PAD-PER-CHORD", "SCALE-DEGREE"}, 0));
+    }
+
     // ── B2: Chord input mode + global key/scale ───────────────────────────────
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("chord_input_mode", 1), "Chord Input Mode",
@@ -1194,6 +1206,28 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
                           "Macro 2 (MOVEMENT)"},
         0));
 
+    // ── XOuija Mood Sliders (Wave 5 D2) ─────────────────────────────────────
+    // Three global mood parameters that shape heatmap rendering on the XOuija
+    // surface.  All are UI-only (no audio path); they are persisted via APVTS
+    // so DAW automation and session recall work without extra state machinery.
+    //
+    //   xouija_brightness — dark ↔ bright  (0=dark, 0.5=neutral, 1=bright)
+    //   xouija_tension    — calm ↔ tense   (0=calm, 0.5=neutral, 1=tense)
+    //   xouija_density    — sparse ↔ dense (0=sparse, 0.5=neutral, 1=dense)
+    //
+    // PlaySurface wires onParameterChanged for these three IDs to call
+    // xouijaPanel_.setMoodState() so the heatmap repaint happens on the message
+    // thread without touching the audio thread.
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("xouija_brightness", 1), "XOuija Brightness",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("xouija_tension", 1), "XOuija Tension",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("xouija_density", 1), "XOuija Density",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+
     // AquaticFXSuite::addParameters() uses ParameterLayout::add() (JUCE 7+ API)
     // rather than the shared params vector, so it must be called after constructing
     // the ParameterLayout from the vector.
@@ -1210,6 +1244,20 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
             layout,
             "slot" + juce::String(s) + "_seq_",
             "Slot " + juce::String(s + 1) + " Seq ");
+
+    // Wave 6: Per-slot play surface layout mode (primary slots 0–3 only).
+    // 0 = PlaySurface (KEYS/PADS/XY/OUIJA full window, default)
+    // 1 = PadGrid (embedded 4×4 pad grid in engine slot header area)
+    // UI-only persistence — no audio-thread reads. Stored in APVTS for
+    // DAW session recall. Default = PlaySurface(0).
+    for (int s = 0; s < kNumPrimarySlots; ++s)
+    {
+        layout.add(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID("slot" + juce::String(s) + "_layout_mode", 1),
+            "Slot " + juce::String(s + 1) + " Layout",
+            juce::StringArray{ "PlaySurface", "PadGrid" },
+            0 /* default = PlaySurface */));
+    }
 
     return layout;
 }
@@ -2062,9 +2110,38 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     continue;
 
                 // Source value — only LFO1 (id=0) wired in A1.
+                // C5: SeqStepValue / BeatPhase / ChordToneIdx read from slotSequencers_.
                 float srcVal = 0.0f;
                 if (snap.sourceId == static_cast<int>(ModSourceId::LFO1))
+                {
                     srcVal = lfo1Val;
+                }
+                else if (snap.sourceId == static_cast<int>(ModSourceId::SeqStepValue) ||
+                         snap.sourceId == static_cast<int>(ModSourceId::BeatPhase)    ||
+                         snap.sourceId == static_cast<int>(ModSourceId::ChordToneIdx))
+                {
+                    // Validate slot index — guard against stale or bad snapshots.
+                    const int slot = snap.slotIndex;
+                    if (slot < 0 || slot >= kNumPrimarySlots)
+                        continue; // no slot assigned — skip route
+
+                    if (snap.sourceId == static_cast<int>(ModSourceId::SeqStepValue))
+                    {
+                        // Velocity 0.0–1.0 (unipolar from the sequencer's gate).
+                        // Already 0 when the step is silent, so bipolar flag maps to ±.
+                        srcVal = slotSequencers_[static_cast<size_t>(slot)].getLiveVelocity();
+                    }
+                    else if (snap.sourceId == static_cast<int>(ModSourceId::BeatPhase))
+                    {
+                        // Step phase 0.0–1.0 — expose as bipolar -1..+1 by mapping 0..1 → -1..+1.
+                        const float phase = slotSequencers_[static_cast<size_t>(slot)].getLiveStepPhase();
+                        srcVal = phase * 2.0f - 1.0f; // bipolar ramp
+                    }
+                    else // ChordToneIdx — repurposed here as gate state (0 or 1, unipolar)
+                    {
+                        srcVal = slotSequencers_[static_cast<size_t>(slot)].getLiveGate();
+                    }
+                }
                 else
                     continue; // A2 will add remaining sources
 
@@ -2767,10 +2844,11 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
         if (count >= kMaxGlobalRoutes)
             break;
         auto& snap = routesSnapshot_[static_cast<size_t>(count)];
-        snap.sourceId = r.sourceId;
-        snap.depth    = r.depth;
-        snap.bipolar  = r.bipolar;
-        snap.valid    = true;
+        snap.sourceId  = r.sourceId;
+        snap.depth     = r.depth;
+        snap.bipolar   = r.bipolar;
+        snap.valid     = true;
+        snap.slotIndex = r.slotIndex; // C5: per-route slot index (-1 = N/A)
         // Copy dest param ID into fixed-length char array — no std::string on audio thread.
         // juce::String::copyToUTF8 writes at most maxBytes chars (inc. null terminator).
         r.destParamId.copyToUTF8(snap.destParamId, sizeof(snap.destParamId));

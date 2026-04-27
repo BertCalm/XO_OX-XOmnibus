@@ -41,45 +41,10 @@
 //
 // ── APVTS parameters needed ────────────────────────────────────────────────────────────
 //
-// TODO Wave5-B3 processor: Add input-mode parameters to createParameterLayout() in
-// XOceanusProcessor.cpp immediately after the cm_slot_route_N block:
-//
-//     for (int slot = 0; slot < 4; ++slot)
-//     {
-//         const juce::String paramId  = "cm_slot_input_mode_" + juce::String(slot);
-//         const juce::String paramName = "CM Slot " + juce::String(slot + 1) + " Input Mode";
-//         params.push_back(std::make_unique<juce::AudioParameterChoice>(
-//             juce::ParameterID(paramId, 1), paramName,
-//             juce::StringArray{"AUTO-HARMONIZE", "PAD-PER-CHORD", "SCALE-DEGREE"}, 0));
-//     }
-//
-// ── Mount site ─────────────────────────────────────────────────────────────────────────
-//
-// TODO Wave5-B3 mount: In XOceanusEditor.h (or OceanView.h) — do NOT add directly to
-//   XOceanusEditor or PlaySurface.  The wiring PR should add to OceanView or the
-//   parent that already owns ChordBarComponent:
-//
-//   In class member declarations:
-//     std::unique_ptr<xoceanus::ChordBreakoutPanel> chordBreakout_;
-//
-//   In constructor (after apvts + chordMachine are available):
-//     chordBreakout_ = std::make_unique<xoceanus::ChordBreakoutPanel>(apvts, chordMachine);
-//     addAndMakeVisible(chordBreakout_.get());
-//     chordBreakout_->setVisible(false);   // hidden until opened
-//
-//   In resized():
-//     // Panel occupies bottom 60% of editor; positioned off-screen when closed.
-//     const int panelH = static_cast<int>(getHeight() * 0.60f);
-//     chordBreakout_->setSize(getWidth(), panelH);
-//     // The panel manages its own Y position via animation; just ensure correct size.
-//     if (!chordBreakout_->isOpen())
-//         chordBreakout_->setTopLeftPosition(0, getHeight()); // off-screen (closed)
-//
-//   Wire ChordSlotStrip callbacks:
-//     for (int s = 0; s < 4; ++s)
-//         slotStrips_[s]->onOpenBreakout = [this](int slot) {
-//             chordBreakout_->openForSlot(slot);
-//         };
+// Wave 5 B3 mount APPLIED:
+//   - cm_slot_input_mode_N params added to XOceanusProcessor.cpp createParameterLayout()
+//   - ChordBreakoutPanel mounted in OceanView via initChordBreakout(apvts, chordMachine)
+//   - member chordBreakout_ declared in OceanView.h, bounds set in resized()
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
