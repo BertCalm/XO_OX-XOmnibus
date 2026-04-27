@@ -665,8 +665,9 @@ public:
                 // Exponential release: coefficient gives -60 dB in 0.3 s at any sample rate.
                 // DSP FIX F12/F13: relCoeff now precomputed once per block (above).
                 if (v.releasing)
+                {
                     v.ampEnv *= relCoeff;
-                    v.ampEnv *= relCoeff; // hoisted — block-constant from sr
+                }
                 if (v.ampEnv < 0.0001f && v.releasing)
                 {
                     v.active = false;
