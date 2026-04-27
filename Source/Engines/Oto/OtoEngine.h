@@ -167,7 +167,11 @@ struct OtoChiffGenerator
         // so that macro-boosted effective chiff is reflected in real-time.
         amplitude = velocity;
         noiseMix = (organModel == 2) ? 0.7f : 0.3f; // Khene = more noise
-        noiseState = static_cast<uint32_t>(velocity * 65535.0f + organModel * 9973) + 12345u;
+        // FIX P36: XOR with pointer-hash so simultaneous chord voices at the same
+        // velocity produce distinct reed-chiff noise (was identical across voices).
+        noiseState = (static_cast<uint32_t>(velocity * 65535.0f + organModel * 9973) + 12345u)
+                     ^ (static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4) * 0x9E3779B9u);
+        if (noiseState == 0u) noiseState = 0xDEADBEEFu; // LCG must be non-zero
     }
 
     // chiffScale: pass the per-sample smoothed chiff amount (macro-modified).
