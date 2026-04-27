@@ -447,12 +447,16 @@ public:
         // Build bit-reversal table and twiddle factors for the radix-2 FFT
         buildBitReversalTable();
 
-        // Initialize all voices to clean state
-        for (auto& voice : voices)
+        // Initialize all voices to clean state with per-voice noise seeds.
+        // P36 fix: without per-voice seeding, all 8 voices share the same
+        // noiseGeneratorState=12345u and produce identical noise oscillator
+        // output on simultaneous polyphony — chord noise content sounds mono.
+        for (int i = 0; i < kMaxVoices; ++i)
         {
-            voice.reset();
-            voice.postFilter.reset();
-            voice.postFilter.setMode(CytomicSVF::Mode::LowPass);
+            voices[i].reset();
+            voices[i].postFilter.reset();
+            voices[i].postFilter.setMode(CytomicSVF::Mode::LowPass);
+            voices[i].noiseGeneratorState = static_cast<uint32_t>(i * 31337u) ^ 0xDEAD1234u;
         }
     }
 
