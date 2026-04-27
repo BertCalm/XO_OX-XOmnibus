@@ -231,7 +231,7 @@ struct OrphicaAdapterVoice
     {
         note = n;
         vel = v;
-        freq = 440 * std::pow(2.f, (n - 69.f) / 12.f);
+        freq = 440.0f * fastPow2((n - 69.f) / 12.f);
         dl.reset();
         df.reset();
         body.setParams(freq * 1.2f, 4);

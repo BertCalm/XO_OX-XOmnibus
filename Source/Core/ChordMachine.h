@@ -2,6 +2,7 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
+#include "ScaleHelpers.h"
 #include <array>
 #include <algorithm>
 #include <atomic>
@@ -78,6 +79,33 @@ enum class VoicingMode : int
     DroneMin2, // root + m2   (0, 1)  — slots 0/2=root, slots 1/3=m2
 
     NumModes
+};
+
+// ── B2: Chord Input Mode ──────────────────────────────────────────────────────
+// Three ways a note arriving at ChordMachine can produce chord output:
+//   AutoHarmonize — incoming note is the chord root; uses current palette+voicing.
+//   PadPerChord   — incoming note number (mod 16) selects a stored pad slot with
+//                   its own root, voicing, and inversion.
+//   ScaleDegree   — incoming note maps to a scale degree; chord root = that degree's
+//                   note in the global key/scale.
+enum class ChordInputMode : int
+{
+    AutoHarmonize = 0, // default — preserves all existing behavior
+    PadPerChord,
+    ScaleDegree,
+    Count
+};
+
+// ── B2: Pad Chord Slot ────────────────────────────────────────────────────────
+// One entry in the 16-slot pad chord grid.  Read by the audio thread; written by
+// the message thread via setPadChord().  Fields are independent PODs: a torn read
+// produces at worst a brief inconsistency on a single pad trigger, which is inaudible.
+struct PadChordSlot
+{
+    int         rootNote  = 60;                  // MIDI note for this slot's chord root
+    VoicingMode voicing   = VoicingMode::RootSpread; // voicing override for this slot
+    int         inversion = 0;                   // 0=root pos, 1=1st inv, 2=2nd inv, 3=3rd inv
+    bool        active    = true;                // false = this pad slot is silent
 };
 
 enum class RhythmPattern : int
@@ -758,6 +786,65 @@ public:
     void setEnoMode(bool on) { enoMode.store(on, std::memory_order_relaxed); }
     bool isEnoMode() const { return enoMode.load(std::memory_order_relaxed); }
 
+    //-- B2: Input Mode (message thread → audio thread via atomic) ──────────────
+
+    void setInputMode(ChordInputMode m)
+    {
+        inputMode_.store(static_cast<int>(m), std::memory_order_relaxed);
+    }
+    ChordInputMode getInputMode() const
+    {
+        return static_cast<ChordInputMode>(inputMode_.load(std::memory_order_relaxed));
+    }
+
+    //-- B2: Pad chord slot setters (message thread) ────────────────────────────
+
+    static constexpr int kNumPadChords = 16;
+
+    void setPadChord(int padIndex, int rootNote, VoicingMode v, int inversion, bool active = true)
+    {
+        if (padIndex < 0 || padIndex >= kNumPadChords)
+            return;
+        padChords_[padIndex].rootNote  = juce::jlimit(0, 127, rootNote);
+        padChords_[padIndex].voicing   = v;
+        padChords_[padIndex].inversion = juce::jlimit(0, 3, inversion);
+        padChords_[padIndex].active    = active;
+    }
+
+    PadChordSlot getPadChord(int padIndex) const
+    {
+        if (padIndex < 0 || padIndex >= kNumPadChords)
+            return {};
+        return padChords_[padIndex];
+    }
+
+    //-- B2: Global key/scale for ScaleDegree mode (message thread) ─────────────
+    // Mirrors the values stored in APVTS params cm_global_root and cm_global_scale.
+    // Audio thread reads via atomics.
+
+    void setGlobalRootKey(int rootKey)
+    {
+        globalRootKey_.store(((rootKey % 12) + 12) % 12, std::memory_order_relaxed);
+    }
+    int getGlobalRootKey() const
+    {
+        return globalRootKey_.load(std::memory_order_relaxed);
+    }
+
+    void setGlobalScaleIndex(int scaleIdx)
+    {
+        globalScaleIdx_.store(
+            juce::jlimit(0, kNumScaleTypes - 1, scaleIdx),
+            std::memory_order_relaxed);
+    }
+    int getGlobalScaleIndex() const
+    {
+        return globalScaleIdx_.load(std::memory_order_relaxed);
+    }
+
+    // Read-only: last incoming degree (for UI feedback in ScaleDegree mode)
+    int getLastIncomingDegree() const { return lastIncomingDegree_.load(std::memory_order_relaxed); }
+
     //-- Serialization (message thread) ----------------------------------------
 
     // Serialize full Chord Machine state to a juce::var (for .xometa storage).
@@ -1076,7 +1163,67 @@ private:
         if (hasActiveChord)
             releaseCurrentChord(samplePos, outputMidi);
 
-        auto newAssignment = distributor.distribute(noteNumber, pal, voic, spr, velocity);
+        // ── B2: Input mode dispatch ──────────────────────────────────────────
+        // Snapshot input mode once (RT-safe: atomic load at block boundary)
+        const ChordInputMode mode = static_cast<ChordInputMode>(inputMode_.load(std::memory_order_relaxed));
+
+        int    chordRoot = noteNumber; // AutoHarmonize default
+        VoicingMode chordVoicing = voic;
+
+        if (mode == ChordInputMode::PadPerChord)
+        {
+            // Map incoming note → pad slot (mod 16), use that slot's root + voicing
+            const int padIdx = noteNumber % kNumPadChords;
+            const PadChordSlot& slot = padChords_[padIdx];
+            if (!slot.active)
+            {
+                // Silent slot — no chord
+                hasActiveChord = false;
+                activeInputNote = noteNumber;
+                return;
+            }
+            chordRoot    = juce::jlimit(0, 127, slot.rootNote);
+            chordVoicing = slot.voicing;
+            // Apply inversion: rotate notes up by inversion steps after distribute
+        }
+        else if (mode == ChordInputMode::ScaleDegree)
+        {
+            // Map incoming note → scale degree → chord root for that degree
+            const int rootKey  = globalRootKey_.load(std::memory_order_relaxed);
+            const int scaleIdx = globalScaleIdx_.load(std::memory_order_relaxed);
+            const int degree   = scaleDegreeFromNote(noteNumber, rootKey, scaleIdx);
+            lastIncomingDegree_.store(degree, std::memory_order_relaxed);
+            chordRoot = chordRootForDegree(degree, rootKey, scaleIdx, noteNumber);
+            // Voicing stays as the current global voicing (chordVoicing = voic)
+        }
+        // AutoHarmonize: chordRoot = noteNumber, chordVoicing = voic (already set)
+
+        auto newAssignment = distributor.distribute(chordRoot, pal, chordVoicing, spr, velocity);
+
+        // Apply inversion for PadPerChord mode (rotate notes up)
+        if (mode == ChordInputMode::PadPerChord)
+        {
+            const int padIdx = noteNumber % kNumPadChords;
+            const int inv = juce::jlimit(0, 3, padChords_[padIdx].inversion);
+            for (int k = 0; k < inv; ++k)
+            {
+                // Lowest note goes up an octave
+                int lowestIdx = 0;
+                for (int i = 1; i < 4; ++i)
+                    if (newAssignment.midiNotes[i] < newAssignment.midiNotes[lowestIdx])
+                        lowestIdx = i;
+                newAssignment.midiNotes[lowestIdx] += 12;
+                // Re-sort so slot ordering is consistent
+                // (simple bubble for 4 elements — no allocation)
+                for (int a = 0; a < 3; ++a)
+                    for (int b = a + 1; b < 4; ++b)
+                        if (newAssignment.midiNotes[a] > newAssignment.midiNotes[b])
+                        {
+                            std::swap(newAssignment.midiNotes[a], newAssignment.midiNotes[b]);
+                            std::swap(newAssignment.velocities[a], newAssignment.velocities[b]);
+                        }
+            }
+        }
 
         if (hadPreviousChord)
             newAssignment = distributor.voiceLead(previousAssignment, newAssignment);
@@ -1305,6 +1452,20 @@ private:
 
     // External MIDI clock state (#359) — audio thread only
     int externalClockPulseCount = 0; // 0–5; resets to 0 at each 16th-note boundary
+
+    // ── B2: Input mode state ───────────────────────────────────────────────────
+    // Written by message thread; read by audio thread — all atomic.
+
+    std::atomic<int> inputMode_    { 0 }; // ChordInputMode::AutoHarmonize
+    std::atomic<int> globalRootKey_{ 0 }; // C
+    std::atomic<int> globalScaleIdx_{ 1 }; // Major
+
+    // Pad chord slots: written by message thread, read by audio thread.
+    // Benign race per-slot (independent POD fields, no array-level lock needed).
+    std::array<PadChordSlot, kNumPadChords> padChords_;
+
+    // Last scale degree processed (ScaleDegree mode) — for UI readout.
+    std::atomic<int> lastIncomingDegree_{ 0 };
 };
 
 } // namespace xoceanus
