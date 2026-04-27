@@ -26,18 +26,10 @@
 // ────────────────────────────────────────────────────────────────────────────
 // Extended source list (D9 F4 + G3 spec)
 //
-// The ModSourceId enum in ModSourceHandle.h currently defines 6 sources.
-// The spec adds:
-//   LFO3, ENV2, macro TONE/TIDE/COUPLE/DEPTH, MIDI CC, MPE pressure/slide,
-//   sequencer step values, chord tone index, beat phase.
-//
-// These are surfaced in the menu using the ExtModSource enum below.
-// ExtModSource IDs ≥ ModSourceId::Count are "extended" and cannot be round-
-// tripped through the existing ModRoutingModel (which stores int sourceId).
-// They are present in the menu to show the full intended UX; routes created
-// from them set a comment sentinel in the route's destParamId until the core
-// model is expanded. Production wiring of the extended sources is a follow-up
-// task tracked in GitHub issue comments on issue #670.
+// ModSourceId in ModSourceHandle.h now defines all 18 sources (IDs 0–17)
+// matching spec D9 F4 + G3. All entries in kAllModSources below have valid
+// enum values and are routable via ModRoutingModel. The "extended" sentinel
+// logic (id >= Count) no longer applies — Count is now 18.
 //
 #pragma once
 
@@ -62,10 +54,8 @@ struct ExtModSourceInfo
 
 //==============================================================================
 // Full source catalogue — matches spec D9 F4 + G3.
-// Sources with id < ModSourceId::Count are routable via the existing model.
-// Sources with id >= ModSourceId::Count are "extended future" entries shown
-// for discoverability; they create a route flagged with an extended-source
-// comment until ModSourceId is expanded.
+// All 18 sources have valid ModSourceId enum values (Count = 18).
+// All are routable via ModRoutingModel (which stores int sourceId).
 //
 // JUCE PopupMenu item IDs start at 1.  We encode id + 1 as the JUCE item ID
 // so 0 remains the "nothing selected" sentinel.
@@ -74,11 +64,11 @@ static const ExtModSourceInfo kAllModSources[] = {
     // ── Oscillator modulators ─────────────────────────────────────────────
     { 0,  "LFO 1",           "LFOs",      true,  0xFF00CED1 },
     { 1,  "LFO 2",           nullptr,     true,  0xFFA8D8EA },
-    { 6,  "LFO 3",           nullptr,     true,  0xFF7EC8E3 }, // extended
+    { 6,  "LFO 3",           nullptr,     true,  0xFF7EC8E3 },
 
     // ── Envelopes ─────────────────────────────────────────────────────────
     { 2,  "ENV 1 (Amp)",     "Envelopes", true,  0xFFE8701A },
-    { 7,  "ENV 2",           nullptr,     true,  0xFFFFAA55 }, // extended
+    { 7,  "ENV 2",           nullptr,     true,  0xFFFFAA55 },
 
     // ── Macros ────────────────────────────────────────────────────────────
     { 8,  "Macro: TONE",     "Macros",    false, 0xFFE9C46A },
@@ -90,16 +80,16 @@ static const ExtModSourceInfo kAllModSources[] = {
     { 3,  "Velocity",        "MIDI",      false, 0xFFC6E377 },
     { 4,  "Aftertouch",      nullptr,     false, 0xFFFF8A7A },
     { 5,  "Mod Wheel",       nullptr,     false, 0xFF4169E1 },
-    { 12, "MIDI CC",         nullptr,     false, 0xFF9898D0 }, // extended
+    { 12, "MIDI CC",         nullptr,     false, 0xFF9898D0 },
 
     // ── MPE ───────────────────────────────────────────────────────────────
-    { 13, "MPE Pressure",    "MPE",       false, 0xFFFFD54F }, // extended
-    { 14, "MPE Slide",       nullptr,     false, 0xFFFF7043 }, // extended
+    { 13, "MPE Pressure",    "MPE",       false, 0xFFFFD54F },
+    { 14, "MPE Slide",       nullptr,     false, 0xFFFF7043 },
 
     // ── Sequencer / musical ───────────────────────────────────────────────
-    { 15, "Seq Step Value",  "Musical",   true,  0xFF81D4FA }, // extended
-    { 16, "Chord Tone Idx",  nullptr,     false, 0xFFF48FB1 }, // extended
-    { 17, "Beat Phase",      nullptr,     true,  0xFF80CBC4 }, // extended
+    { 15, "Seq Step Value",  "Musical",   true,  0xFF81D4FA },
+    { 16, "Chord Tone Idx",  nullptr,     false, 0xFFF48FB1 },
+    { 17, "Beat Phase",      nullptr,     true,  0xFF80CBC4 },
 };
 
 static constexpr int kNumModSources = static_cast<int>(sizeof(kAllModSources) / sizeof(kAllModSources[0]));

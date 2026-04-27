@@ -23,11 +23,24 @@ enum class ModSourceId
 {
     LFO1 = 0,       // Engine LFO 1 (sine by default)
     LFO2 = 1,       // Engine LFO 2 (triangle / free-run)
-    Envelope = 2,   // Amplitude envelope follower output
+    Envelope = 2,   // Amplitude envelope follower output (ENV 1 / Amp)
     Velocity = 3,   // Note velocity (0–1, set at note-on, held)
     Aftertouch = 4, // Mono/poly aftertouch (0–1, continuous)
     ModWheel = 5,   // MIDI CC 1 mod wheel (0–1, continuous)
-    Count = 6
+    // ── Extended sources added Wave5-A3 to match D9 F4 + G3 spec ──────────
+    LFO3 = 6,           // Engine LFO 3 (free-running, bipolar)
+    Envelope2 = 7,      // ENV 2 (auxiliary envelope, bipolar)
+    MacroTone = 8,      // Macro knob: TONE (unipolar)
+    MacroTide = 9,      // Macro knob: TIDE (unipolar)
+    MacroCouple = 10,   // Macro knob: COUPLE (unipolar)
+    MacroDepth = 11,    // Macro knob: DEPTH (unipolar)
+    MidiCC = 12,        // Assignable MIDI CC (unipolar)
+    MpePressure = 13,   // MPE per-note pressure (unipolar)
+    MpeSlide = 14,      // MPE per-note slide / Y-axis (unipolar)
+    SeqStepValue = 15,  // Sequencer step value output (bipolar)
+    ChordToneIdx = 16,  // Chord tone index (0–N, unipolar)
+    BeatPhase = 17,     // Beat phase ramp 0→1 per bar (bipolar)
+    Count = 18
 };
 
 // Human-readable names used in tooltips and the route list panel.
@@ -40,13 +53,37 @@ inline juce::String modSourceName(ModSourceId id)
     case ModSourceId::LFO2:
         return "LFO 2";
     case ModSourceId::Envelope:
-        return "Envelope";
+        return "ENV 1 (Amp)";
     case ModSourceId::Velocity:
         return "Velocity";
     case ModSourceId::Aftertouch:
         return "Aftertouch";
     case ModSourceId::ModWheel:
         return "Mod Wheel";
+    case ModSourceId::LFO3:
+        return "LFO 3";
+    case ModSourceId::Envelope2:
+        return "ENV 2";
+    case ModSourceId::MacroTone:
+        return "Macro: TONE";
+    case ModSourceId::MacroTide:
+        return "Macro: TIDE";
+    case ModSourceId::MacroCouple:
+        return "Macro: COUPLE";
+    case ModSourceId::MacroDepth:
+        return "Macro: DEPTH";
+    case ModSourceId::MidiCC:
+        return "MIDI CC";
+    case ModSourceId::MpePressure:
+        return "MPE Pressure";
+    case ModSourceId::MpeSlide:
+        return "MPE Slide";
+    case ModSourceId::SeqStepValue:
+        return "Seq Step Value";
+    case ModSourceId::ChordToneIdx:
+        return "Chord Tone Idx";
+    case ModSourceId::BeatPhase:
+        return "Beat Phase";
     default:
         return "?";
     }
@@ -75,6 +112,30 @@ inline juce::Colour modSourceColour(ModSourceId id)
         return juce::Colour(0xFFFF8A7A); // soft coral/pink
     case ModSourceId::ModWheel:
         return juce::Colour(0xFF4169E1); // royal blue
+    case ModSourceId::LFO3:
+        return juce::Colour(0xFF7EC8E3); // lighter cyan (third LFO)
+    case ModSourceId::Envelope2:
+        return juce::Colour(0xFFFFAA55); // warm amber (second envelope)
+    case ModSourceId::MacroTone:
+        return juce::Colour(0xFFE9C46A); // sandy gold
+    case ModSourceId::MacroTide:
+        return juce::Colour(0xFF7FDBCA); // tide teal
+    case ModSourceId::MacroCouple:
+        return juce::Colour(0xFFFF8A65); // coral
+    case ModSourceId::MacroDepth:
+        return juce::Colour(0xFF9B89D4); // violet
+    case ModSourceId::MidiCC:
+        return juce::Colour(0xFF9898D0); // periwinkle
+    case ModSourceId::MpePressure:
+        return juce::Colour(0xFFFFD54F); // amber gold
+    case ModSourceId::MpeSlide:
+        return juce::Colour(0xFFFF7043); // deep orange
+    case ModSourceId::SeqStepValue:
+        return juce::Colour(0xFF81D4FA); // light sky blue
+    case ModSourceId::ChordToneIdx:
+        return juce::Colour(0xFFF48FB1); // pink
+    case ModSourceId::BeatPhase:
+        return juce::Colour(0xFF80CBC4); // muted teal
     default:
         return juce::Colour(GalleryColors::xoGold);
     }
@@ -208,6 +269,42 @@ public:
             break;
         case ModSourceId::ModWheel:
             glyph = "M";
+            break;
+        case ModSourceId::LFO3:
+            glyph = "3";
+            break;
+        case ModSourceId::Envelope2:
+            glyph = "F";  // "F" = second envelope (E already taken by ENV1)
+            break;
+        case ModSourceId::MacroTone:
+            glyph = "T";
+            break;
+        case ModSourceId::MacroTide:
+            glyph = "~";
+            break;
+        case ModSourceId::MacroCouple:
+            glyph = "C";
+            break;
+        case ModSourceId::MacroDepth:
+            glyph = "D";
+            break;
+        case ModSourceId::MidiCC:
+            glyph = "C";
+            break;
+        case ModSourceId::MpePressure:
+            glyph = "P";
+            break;
+        case ModSourceId::MpeSlide:
+            glyph = "S";
+            break;
+        case ModSourceId::SeqStepValue:
+            glyph = "Q";
+            break;
+        case ModSourceId::ChordToneIdx:
+            glyph = "#";
+            break;
+        case ModSourceId::BeatPhase:
+            glyph = "B";
             break;
         default:
             glyph = "?";
