@@ -477,15 +477,15 @@ public:
             }
             else
             {
-                // PAD/DRUM/XY: right panel opens, keyboard HIDES.
-                // HARMONIC tab removed per D4 decision (#1174) until XOuija CC
-                // wiring is complete (tracked in #1172).
+                // PAD/DRUM/XY/HARMONIC: right panel opens, keyboard HIDES.
+                // HARMONIC re-enabled now that XOuija CC wiring is complete (#1304).
                 subPlaySurface_.setVisible(false);
                 ouijaPanel_.setVisible(false);
 
-                if (tab == "PAD")       surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
-                else if (tab == "DRUM") surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
-                else if (tab == "XY")   surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
+                if (tab == "PAD")           surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
+                else if (tab == "DRUM")     surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
+                else if (tab == "XY")       surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
+                else if (tab == "HARMONIC") surfaceRight_.setMode(SurfaceRightPanel::Mode::Ouija);
 
                 surfaceRight_.setOpen(true);
                 surfaceRight_.setVisible(true);
@@ -848,6 +848,8 @@ public:
     TransportBar*      getTransportBar() noexcept { return transportBar_.get(); }
     TideWaterline*     getWaterline()    noexcept { return waterline_.get(); }
     DotMatrixDisplay*  getDotMatrix()    noexcept { return &dotMatrix_; }
+    /// Get the SurfaceRightPanel so the editor can wire onOuijaCCOutput.
+    SurfaceRightPanel& getSurfaceRight() noexcept { return surfaceRight_; }
 
     /**
         Initialise the StatusBar.
@@ -1750,11 +1752,11 @@ private:
         std::function<void(bool)> onChordToggled;
 
     private:
-        // D4 decision (#1174): HARMONIC/OUIJA tab removed until XOuija CC
-        // wiring is complete (#1172). Tab bar ships with 4 modes: KEYS, PAD,
-        // DRUM, XY. PAD+DRUM merge deferred (#1174 follow-up).
-        static constexpr int kNumTabs = 4;
-        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY"};
+        // Five modes: KEYS, PAD, DRUM, XY, HARMONIC.
+        // HARMONIC (XOuija Ouija mode) re-enabled after CC wiring landed in #1304.
+        // PAD+DRUM merge deferred (#1174 follow-up).
+        static constexpr int kNumTabs = 5;
+        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY", "HARMONIC"};
 
         int  activeIdx_ = 0;
         bool seqOn_     = false;
