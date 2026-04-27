@@ -1033,7 +1033,6 @@ public:
     // Constructor / Destructor
     //==========================================================================
     XOuijaPanel() : accentColour_(juce::Colour(0xFFE9C46A)) // XO Gold
-                  , pinStore_{} // Wave5-D3: explicit init — JUCE_DECLARE_NON_COPYABLE suppresses default
     {
         generateNoiseTexture();
         setOpaque(false);

@@ -137,6 +137,10 @@ class XouijaPinStore
 public:
     static constexpr int kNumCaptureSlots = 4;
 
+    // Explicit default constructor required: JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR
+    // deletes copy ctor which can suppress implicit default ctor on strict clang builds.
+    XouijaPinStore() = default;
+
     //==========================================================================
     // Live pin
 
