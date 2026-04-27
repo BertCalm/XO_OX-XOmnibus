@@ -333,6 +333,45 @@ public:
     // Message-thread only: posts an atomic flag consumed by processBlock.
     void killDelayTails() noexcept { killDelayTailsPending.store(true, std::memory_order_release); }
 
+    // ── Sound on First Launch — replay (§1282 Settings > Experience) ─────────
+    // Re-arms the first-breath experience on demand (called from SettingsPanel's
+    // "Hear the Greeting Again" button).  Message-thread safe: re-loads Oxbow in
+    // slot 0 with the Breath Mist parameters, then sets firstBreathPending_ so
+    // processBlock injects the C3 note on the next audio block.
+    // Note: this does NOT reset hasLaunchedBefore_ — it only re-arms one play.
+    // Idempotent: calling while a breath is already pending is a no-op.
+    void replayFirstBreath()
+    {
+        if (firstBreathPending_.load(std::memory_order_relaxed))
+            return; // already armed — don't double-arm
+        // Re-load Oxbow in slot 0 so the engine is ready for the note.
+        loadEngine(0, "Oxbow");
+        // Re-apply the Breath Mist preset parameters inline (same values as first launch).
+        struct BreathMistParam { const char* id; float value; };
+        static const BreathMistParam kBreathMistParams[] = {
+            {"oxb_size",          0.1f},
+            {"oxb_decay",         0.5f},
+            {"oxb_entangle",      0.06f},
+            {"oxb_erosionRate",   0.05f},
+            {"oxb_erosionDepth",  0.08f},
+            {"oxb_convergence",   4.0f},
+            {"oxb_resonanceQ",    3.5f},
+            {"oxb_resonanceMix",  0.15f},
+            {"oxb_cantilever",    0.12f},
+            {"oxb_damping",       7000.0f},
+            {"oxb_predelay",      0.0f},
+            {"oxb_dryWet",        0.15f},
+            {"oxb_exciterDecay",  0.05f},
+            {"oxb_exciterBright", 0.5f},
+        };
+        for (const auto& p : kBreathMistParams)
+        {
+            if (auto* param = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(p.id)))
+                param->setValueNotifyingHost(param->convertTo0to1(p.value));
+        }
+        firstBreathPending_.store(true, std::memory_order_release);
+    }
+
     // CPU processing load as a fraction 0.0–1.0 (or higher during overload).
     // Measured in processBlock() as elapsed wall time / buffer duration.
     // Safe to call from any thread.
