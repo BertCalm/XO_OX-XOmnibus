@@ -1408,10 +1408,13 @@ private:
                 float real = voice.fftReal[static_cast<size_t>(bin)];
                 float imaginary = voice.fftImaginary[static_cast<size_t>(bin)];
 
-                float magnitude = std::sqrt(real * real + imaginary * imaginary);
-                // Clamp magnitude to floor to prevent denormals in subsequent
-                // spectral operations that multiply/divide by magnitude values
-                magnitude = std::max(magnitude, kMagnitudeFloor);
+                // Use power-domain magnitude for analysis frame storage.
+                // Floor test in power domain avoids sqrt on near-zero bins;
+                // eliminates the redundant std::max on the common above-floor path.
+                const float power = real * real + imaginary * imaginary;
+                float magnitude = (power > kMagnitudeFloor * kMagnitudeFloor)
+                    ? std::sqrt(power)
+                    : kMagnitudeFloor;
 
                 float binPhase = std::atan2(imaginary, real);
 

@@ -22,7 +22,9 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Core/ChordMachine.h"
+#include "../../Core/ScaleHelpers.h"
 #include "../GalleryColors.h"
+#include "../AccentColors.h"
 #include <functional>
 #include <cmath>
 #include <array>
@@ -94,6 +96,9 @@ public:
     // Mode enum for LIVE / SEQ / ENO
     enum class ChordMode { Live = 0, Seq, Eno, NumModes };
 
+    // B2: Input mode (AUTO / PAD / DEG) — maps to ChordInputMode enum
+    enum class InputMode { Auto = 0, Pad, Deg, NumModes };
+
     // Height constant — the bar is always 28 px when visible.
     static constexpr int kBarHeight = 28;
 
@@ -131,6 +136,10 @@ public:
     /// Callback fired whenever setVisible() changes the visibility state.
     std::function<void()> onVisibilityChanged;
 
+    /// B2: Callback fired when input mode pill changes (AUTO/PAD/DEG).
+    /// Optional — used for testability and parent-component notification.
+    std::function<void(InputMode)> onInputModeChanged;
+
 private:
     //==========================================================================
     // Sub-component geometry (computed in layoutControls(), used in paint/mouse).
@@ -152,7 +161,11 @@ private:
         Duck        = 10,
         ModeLive    = 11,
         ModeSeq     = 12,
-        ModeEno     = 13
+        ModeEno     = 13,
+        // B2: Input mode pills
+        InputAuto   = 14,
+        InputPad    = 15,
+        InputDeg    = 16,
     };
 
     struct PillRegion
@@ -232,6 +245,14 @@ private:
         paintLabeledSlider(g, labelFont, midY, swingLabelBounds_, swingSlider_,  "SWING");
         paintLabeledSlider(g, labelFont, midY, gateLabelBounds_,  gateSlider_,   "GATE");
         paintLabeledSlider(g, labelFont, midY, humanLabelBounds_, humanSlider_,  "HUMAN");
+
+        // ── B2: Pad grid overlay (PadPerChord mode) ──
+        if (currentInputMode_ == InputMode::Pad && !padGridBounds_.isEmpty())
+            paintPadGrid(g, pillFont);
+
+        // ── B2: Degree readout (ScaleDegree mode) ──
+        if (currentInputMode_ == InputMode::Deg && !degreeReadoutBounds_.isEmpty())
+            paintDegreeReadout(g, pillFont);
     }
 
     //--------------------------------------------------------------------------
@@ -447,6 +468,96 @@ private:
         g.drawRect(pb, 1.0f);
     }
 
+    //--------------------------------------------------------------------------
+    /// B2: Paint the 16-pad chord grid (PadPerChord mode).
+    /// Renders in a compact row — 16 pads × (padCellW × h).
+    /// Cached gradient: none needed (solid fill per pad).
+    void paintPadGrid(juce::Graphics& g, const juce::Font& font) const
+    {
+        const auto& r    = padGridBounds_;
+        const float cellW = r.getWidth() / 16.0f;
+        const float cellH = r.getHeight();
+
+        // Teal chain color from AccentColors (AAA contrast on dark bg)
+        const juce::Colour activeCol  = XOceanus::AccentColors::chainBright;   // #90F2FA AAA
+        const juce::Colour inactiveCol = juce::Colour(200, 204, 216).withAlpha(0.18f);
+        const juce::Colour selectedCol = XOceanus::AccentColors::chainAccent;  // #6CEBF4 AAA
+
+        for (int i = 0; i < 16; ++i)
+        {
+            const float cx = r.getX() + static_cast<float>(i) * cellW;
+            const juce::Rectangle<float> cell(cx + 1.0f, r.getY() + 1.0f, cellW - 2.0f, cellH - 2.0f);
+
+            const PadChordSlot slot = cm_.getPadChord(i);
+            const bool isSelected = (i == selectedPadIndex_);
+
+            // Background tint
+            if (slot.active)
+            {
+                g.setColour((isSelected ? selectedCol : activeCol).withAlpha(0.10f));
+                g.fillRoundedRectangle(cell, 2.0f);
+            }
+
+            // Border
+            const juce::Colour borderCol = isSelected
+                ? selectedCol.withAlpha(0.60f)
+                : (slot.active ? activeCol.withAlpha(0.28f) : inactiveCol);
+            g.setColour(borderCol);
+            g.drawRoundedRectangle(cell, 2.0f, 1.0f);
+
+            // Root letter label (WCAG AAA: chainBright on dark bg = 13.5:1)
+            if (slot.active)
+            {
+                const juce::String rootLetter = ChordMachine::midiNoteToName(slot.rootNote);
+                g.setFont(font);
+                g.setColour(isSelected ? selectedCol : activeCol.withAlpha(0.85f));
+                g.drawText(rootLetter, cell.toNearestInt(), juce::Justification::centred, false);
+            }
+        }
+    }
+
+    //--------------------------------------------------------------------------
+    /// B2: Paint the scale-degree readout (ScaleDegree mode).
+    /// Shows Roman numerals for all scale degrees; highlights the last-triggered degree.
+    void paintDegreeReadout(juce::Graphics& g, const juce::Font& font) const
+    {
+        const auto& r = degreeReadoutBounds_;
+        const int scaleIdx = cm_.getGlobalScaleIndex();
+        const int degreeCount = kScaleIntervalCount[std::max(0, std::min(scaleIdx, kNumScaleTypes - 1))];
+        if (degreeCount <= 0) return;
+
+        const float cellW = r.getWidth() / static_cast<float>(degreeCount);
+        const float cellH = r.getHeight();
+        const int lastDegree = cm_.getLastIncomingDegree();
+
+        // AAA color for active degree: chainBright (#90F2FA, 13.5:1)
+        const juce::Colour activeCol   = XOceanus::AccentColors::chainBright;
+        const juce::Colour inactiveCol = juce::Colour(200, 204, 216).withAlpha(0.35f);
+
+        for (int d = 0; d < degreeCount; ++d)
+        {
+            const float cx = r.getX() + static_cast<float>(d) * cellW;
+            const juce::Rectangle<float> cell(cx + 1.0f, r.getY() + 1.0f, cellW - 2.0f, cellH - 2.0f);
+            const bool isActive = (d == lastDegree);
+
+            if (isActive)
+            {
+                g.setColour(activeCol.withAlpha(0.12f));
+                g.fillRoundedRectangle(cell, 2.0f);
+                g.setColour(activeCol.withAlpha(0.45f));
+                g.drawRoundedRectangle(cell, 2.0f, 1.0f);
+            }
+
+            // Compute Roman numeral for this degree
+            const bool minorQ = isDegreeMinorQuality(d, scaleIdx);
+            const char* roman = degreeRomanNumeral(d, scaleIdx, minorQ);
+
+            g.setFont(font);
+            g.setColour(isActive ? activeCol : inactiveCol);
+            g.drawText(juce::String(roman), cell.toNearestInt(), juce::Justification::centred, false);
+        }
+    }
+
     //==========================================================================
     void resized() override
     {
@@ -552,6 +663,27 @@ private:
         addPill(RegionType::ModeLive, 30.0f);
         addPill(RegionType::ModeSeq,  28.0f);
         addPill(RegionType::ModeEno,  28.0f);
+        addSep();
+
+        // ── B2: Input mode pills: AUTO / PAD / DEG ──
+        addPill(RegionType::InputAuto, 32.0f);
+        addPill(RegionType::InputPad,  28.0f);
+        addPill(RegionType::InputDeg,  28.0f);
+
+        // ── B2: Pad grid / degree readout — use remaining width to right of pills ──
+        // Only occupies space when the respective mode is active.
+        addSep();
+        const float remainW = static_cast<float>(getWidth() > 0 ? getWidth() : 800) - curX - padX;
+        padGridBounds_      = juce::Rectangle<float>{};
+        degreeReadoutBounds_ = juce::Rectangle<float>{};
+        if (currentInputMode_ == InputMode::Pad && remainW > 80.0f)
+        {
+            padGridBounds_ = juce::Rectangle<float>(curX, midY - 8.0f, remainW, 16.0f);
+        }
+        else if (currentInputMode_ == InputMode::Deg && remainW > 40.0f)
+        {
+            degreeReadoutBounds_ = juce::Rectangle<float>(curX, midY - 8.0f, remainW, 16.0f);
+        }
     }
 
     //==========================================================================
@@ -580,6 +712,22 @@ private:
         if (miniPianoBounds_.expanded(4.0f).contains(mx, my))
         {
             handleRootCycle(+1);
+            return;
+        }
+
+        // ── B2: Pad grid click ──
+        if (currentInputMode_ == InputMode::Pad && !padGridBounds_.isEmpty()
+            && padGridBounds_.expanded(4.0f).contains(mx, my))
+        {
+            const float cellW = padGridBounds_.getWidth() / 16.0f;
+            const int padIdx  = juce::jlimit(0, 15,
+                static_cast<int>((mx - padGridBounds_.getX()) / cellW));
+
+            if (e.mods.isRightButtonDown())
+                showPadEditMenu(padIdx);
+            else
+                selectedPadIndex_ = padIdx;
+            repaint();
             return;
         }
     }
@@ -802,11 +950,118 @@ private:
             syncModeToApvts();
             break;
 
+        // ── B2: Input mode pills ──
+        case RegionType::InputAuto:
+            currentInputMode_ = InputMode::Auto;
+            syncInputModeToApvts();
+            break;
+
+        case RegionType::InputPad:
+            currentInputMode_ = InputMode::Pad;
+            syncInputModeToApvts();
+            break;
+
+        case RegionType::InputDeg:
+            currentInputMode_ = InputMode::Deg;
+            syncInputModeToApvts();
+            break;
+
         default:
             break;
         }
 
         repaint();
+    }
+
+    //--------------------------------------------------------------------------
+    /// B2: Show right-click popup menu to edit a pad chord slot.
+    /// Popup is message-thread only — no audio-thread access.
+    void showPadEditMenu(int padIdx)
+    {
+        const PadChordSlot current = cm_.getPadChord(padIdx);
+
+        juce::PopupMenu menu;
+        menu.addSectionHeader("Pad " + juce::String(padIdx + 1) + " — Edit Chord");
+
+        // Root note submenu (C0–B5 range, chromatic)
+        juce::PopupMenu rootMenu;
+        static constexpr const char* kNoteNames[12] = {
+            "C","C#","D","D#","E","F","F#","G","G#","A","A#","B"
+        };
+        // Show 3 octaves: 48-83 (C3-B5) as a reasonable playable range
+        for (int oct = 3; oct <= 5; ++oct)
+        {
+            for (int semi = 0; semi < 12; ++semi)
+            {
+                const int midiNote = oct * 12 + semi;
+                const juce::String name = juce::String(kNoteNames[semi]) + juce::String(oct);
+                const bool isCurrent    = (midiNote == current.rootNote);
+                rootMenu.addItem(1000 + midiNote, name, true, isCurrent);
+            }
+        }
+        menu.addSubMenu("Root Note", rootMenu);
+
+        // Voicing submenu
+        juce::PopupMenu voicingMenu;
+        for (int v = 0; v < kNumVoicings; ++v)
+        {
+            const bool isCurrent = (static_cast<int>(current.voicing) == v);
+            voicingMenu.addItem(2000 + v, juce::String(kVoicingNames[v]), true, isCurrent);
+        }
+        menu.addSubMenu("Voicing", voicingMenu);
+
+        // Inversion
+        juce::PopupMenu invMenu;
+        static constexpr const char* kInvNames[] = { "Root Position", "1st Inversion", "2nd Inversion", "3rd Inversion" };
+        for (int i = 0; i < 4; ++i)
+            invMenu.addItem(3000 + i, kInvNames[i], true, (current.inversion == i));
+        menu.addSubMenu("Inversion", invMenu);
+
+        // Active toggle
+        menu.addSeparator();
+        menu.addItem(4000, current.active ? "Silence this pad" : "Activate this pad");
+
+        // Sync callback: writes APVTS params for the selected pad slot.
+        // We copy padIdx into a lambda — menu runs async on message thread.
+        const int capturedPadIdx = padIdx;
+        menu.showMenuAsync(juce::PopupMenu::Options{}.withTargetComponent(this),
+            [this, capturedPadIdx, current](int result)
+            {
+                if (result <= 0) return; // dismissed
+
+                PadChordSlot updated = current;
+
+                if (result >= 1000 && result < 2000)
+                    updated.rootNote = result - 1000;
+                else if (result >= 2000 && result < 3000)
+                    updated.voicing = static_cast<VoicingMode>(result - 2000);
+                else if (result >= 3000 && result < 4000)
+                    updated.inversion = result - 3000;
+                else if (result == 4000)
+                    updated.active = !current.active;
+
+                // Write through APVTS (3 params per slot: root, voicing, inv)
+                const juce::String prefix = "chord_pad_" + juce::String(capturedPadIdx) + "_";
+                if (auto* p = apvts_.getParameter(prefix + "root"))
+                {
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(updated.rootNote)));
+                    p->endChangeGesture();
+                }
+                if (auto* p = apvts_.getParameter(prefix + "voicing"))
+                {
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(updated.voicing)));
+                    p->endChangeGesture();
+                }
+                if (auto* p = apvts_.getParameter(prefix + "inv"))
+                {
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(updated.inversion)));
+                    p->endChangeGesture();
+                }
+                repaint();
+            });
     }
 
     //--------------------------------------------------------------------------
@@ -833,6 +1088,22 @@ private:
         // ENO mode doesn't have a dedicated param — track locally.
     }
 
+    //--------------------------------------------------------------------------
+    /// B2: Push input mode selection to APVTS.
+    void syncInputModeToApvts()
+    {
+        if (auto* p = apvts_.getParameter("chord_input_mode"))
+        {
+            p->beginChangeGesture();
+            p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(currentInputMode_)));
+            p->endChangeGesture();
+        }
+
+        if (onInputModeChanged)
+            onInputModeChanged(currentInputMode_);
+    }
+
+
     //==========================================================================
     // ── Pill active state & labels ──
 
@@ -849,6 +1120,10 @@ private:
         case RegionType::ModeLive:  return (currentMode_ == ChordMode::Live);
         case RegionType::ModeSeq:   return (currentMode_ == ChordMode::Seq);
         case RegionType::ModeEno:   return (currentMode_ == ChordMode::Eno);
+        // B2: input mode pills
+        case RegionType::InputAuto: return (currentInputMode_ == InputMode::Auto);
+        case RegionType::InputPad:  return (currentInputMode_ == InputMode::Pad);
+        case RegionType::InputDeg:  return (currentInputMode_ == InputMode::Deg);
         default:                    return false;
         }
     }
@@ -863,10 +1138,14 @@ private:
         case RegionType::Rhythm:   return juce::String(kRhythmNames[currentRhythm_]).toUpperCase();
         case RegionType::VelCurve: return juce::String(kVelCurveNames[currentVelCurve_]).toUpperCase();
         case RegionType::Duck:     return "DUCK";
-        case RegionType::ModeLive: return "LIVE";
-        case RegionType::ModeSeq:  return "SEQ";
-        case RegionType::ModeEno:  return "ENO";
-        default:                   return {};
+        case RegionType::ModeLive:  return "LIVE";
+        case RegionType::ModeSeq:   return "SEQ";
+        case RegionType::ModeEno:   return "ENO";
+        // B2: input mode pills
+        case RegionType::InputAuto: return "AUTO";
+        case RegionType::InputPad:  return "PAD";
+        case RegionType::InputDeg:  return "DEG";
+        default:                    return {};
         }
     }
 
@@ -922,6 +1201,11 @@ private:
         // Root: derive from cm_.getLiveRoot() semitone class.
         const int liveRoot  = cm_.getLiveRoot();
         currentRoot_ = ((liveRoot % 12) + 12) % 12;
+
+        // B2: input mode
+        const int modeInt = readInt("chord_input_mode");
+        if (modeInt >= 0 && modeInt < static_cast<int>(InputMode::NumModes))
+            currentInputMode_ = static_cast<InputMode>(modeInt);
     }
 
     //==========================================================================
@@ -967,6 +1251,10 @@ private:
     // Timer state
     bool lastSeqRunning_ = false;
 
+    // B2: Input mode state
+    InputMode  currentInputMode_ = InputMode::Auto;
+    int        selectedPadIndex_ = 0;  // selected pad in PadPerChord mode
+
     // Drag state
     RegionType activeSliderType_ = RegionType::None;
     RegionType hoveredRegion_    = RegionType::None;
@@ -987,6 +1275,10 @@ private:
     SliderRegion               swingSlider_   {};
     SliderRegion               gateSlider_    {};
     SliderRegion               humanSlider_   {};
+
+    // B2: pad grid and degree readout bounds (computed in layoutControls)
+    juce::Rectangle<float>     padGridBounds_        {};
+    juce::Rectangle<float>     degreeReadoutBounds_  {};
 
     //==========================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(ChordBarComponent)
