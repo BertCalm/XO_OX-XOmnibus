@@ -542,11 +542,6 @@ public:
 
             // HF noise state seeded per voice
             voices[i].hfNoiseState = static_cast<uint32_t>(i * 9973 + 111);
-            // FIX P36: thermalNoiseState was identical across all voices (default 87654u).
-            // Seed per-voice so simultaneous polyphonic voices produce independent thermal
-            // drift character rather than synchronized wobble (stereo collapse in thermal).
-            voices[i].thermalNoiseState = static_cast<uint32_t>(i * 7193 + 83) * 1664525u + 1013904223u;
-            if (voices[i].thermalNoiseState == 0u) voices[i].thermalNoiseState = 1u;
         }
 
         sympathetics.prepare(srf);
