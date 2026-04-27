@@ -141,6 +141,14 @@ public:
     // Max routes: ModRoutingModel::MaxRoutes (32).
     void flushModRoutesSnapshot() noexcept;
 
+    // Wave 5 C5: Read-only access to per-slot sequencer live state.
+    // Used by UI components to display live step values; audio thread uses the
+    // atomics directly via slotSequencers_ (private, same translation unit).
+    const XOceanus::PerEnginePatternSequencer& getSlotSequencer(int slot) const noexcept
+    {
+        return slotSequencers_[static_cast<size_t>(juce::jlimit(0, kNumPrimarySlots - 1, slot))];
+    }
+
     // Wave 5 A1: Write the current LFO1 output so the global router can use it
     // as a mod source.  Called from OrreryEngine::renderBlock (audio thread).
     // Use relaxed ordering — a single-sample jitter is acceptable for mod routing.
@@ -780,6 +788,9 @@ private:
         bool    bipolar{false};
         bool    valid{false};
         char    destParamId[64]{};  // fixed-length to avoid std::string on audio thread
+        // Wave 5 C5: per-route slot index for sequencer-scoped sources.
+        // -1 = not slot-scoped (backward-compat default).  0–3 = slot to query.
+        int     slotIndex{-1};
     };
     static constexpr int kMaxGlobalRoutes = ModRoutingModel::MaxRoutes;
     std::array<GlobalModRouteSnapshot, kMaxGlobalRoutes> routesSnapshot_{};
