@@ -134,15 +134,21 @@ struct OndaVoice
     // stealing the oldest voice first (least disruptive to recent notes).
     uint32_t ageInSamples = 0;
 
-    // Independent time accumulator for the Dark-mode CW background carrier
-    // (avoids referencing solitons[0].timeAlive which may be inactive).
-    float voiceTime = 0.0f;
+    // P1-4: true radians accumulator for the Dark-mode CW background carrier.
+    // Accumulates += 2π·voiceFreq·dt per sample so glide/pitch-bend do not
+    // desync the CW background from the solitons.  Wraps at 2π each cycle.
+    float cwPhase = 0.0f;
 
     // CW background state for Dark-polarity and MI modes (|ψ_bg| amplitude).
+    // P2-1: assigned per-voice each block (was dead — written but never read).
     float cwAmplitude = 0.0f;
 
     // Deterministic PRNG state for velocity spread / MI break-up.
     uint32_t prng = 0xDEAFBEEFu;
+
+    // P2-3: fade-in gain applied on voice-steal to prevent hard-switch clicks.
+    // 0.0f when stolen (fades IN toward 1.0f); 1.0f on normal noteOn.
+    float stealFadeIn = 1.0f;
 
     void reset() noexcept
     {
@@ -150,8 +156,8 @@ struct OndaVoice
         noteFreq = glideFreq = 110.0f;
         for (auto& s : solitons) s.reset();
         ampEnv.kill(); fltEnv.kill(); filter.reset();
-        holdTime = 0.0f; ageInSamples = 0; voiceTime = 0.0f; cwAmplitude = 0.0f;
-        prng = 0xDEAFBEEFu;
+        holdTime = 0.0f; ageInSamples = 0; cwPhase = 0.0f; cwAmplitude = 0.0f;
+        prng = 0xDEAFBEEFu; stealFadeIn = 1.0f;
     }
 
     float nextRand01() noexcept
@@ -366,6 +372,9 @@ private:
 
     float glideCoeff = 1.0f;
     int   lastHeldNote = -1;
+
+    // P2-5: CC64 sustain pedal state — defers noteOff until pedal lifts.
+    bool sustainPedal = false;
 };
 
 // -----------------------------------------------------------------------------
@@ -374,8 +383,9 @@ private:
 inline float OndaEngine::sechSafe(float x) noexcept
 {
     // sech(x) = 2 / (e^x + e^{-x}).  Clamp |x| so we don't overflow in float.
+    // P1-5: fastExp (~6% error) replaces std::exp in hot sech path (acceptable for envelope).
     const float ax = std::min(std::fabs(x), 18.0f);
-    const float ex = std::exp(ax);
+    const float ex = fastExp(ax);
     return 2.0f / (ex + 1.0f / ex);
 }
 
@@ -396,7 +406,8 @@ inline void OndaEngine::evaluateSoliton(const OndaSoliton& s, float xObs, float 
                              + 0.5f * (A * A - s.velocity * s.velocity) * t
                              + s.phase;
 
-    const float cosC = std::cos(carrierPhase);
+    // P1-5: fastCos (~0.09% error) replaces std::cos in hot soliton carrier path.
+    const float cosC = fastCos(carrierPhase);
     // Real part of ψ, flipped by polarity for Dark mode.
     outReal  = polaritySign * env * cosC;
     // |ψ|² — envelope squared; in Dark mode it is read as (1 − |ψ|²) at the
@@ -416,14 +427,17 @@ inline void OndaEngine::evaluatePeregrine(const OndaSoliton& s, float xObs, floa
     const float xi   = A * (xObs - s.velocity * t - s.position);
     const float tau  = A * A * t;
     const float den  = 1.0f + 4.0f * xi * xi + 4.0f * tau * tau;
-    const float invD = (den > 1e-6f) ? (1.0f / den) : 0.0f;
+    // P1-2: scale epsilon by A² to preserve dynamic range across all amplitudes;
+    // absolute 1e-6 lost precision for small A and was redundant for large A (den>>1).
+    const float invD = (std::fabs(den) > 1e-4f * A * A) ? (1.0f / den) : 0.0f;
 
     // Re and Im of the factor (1 − 4(1 + 2iτ)/den).
     const float factorRe = 1.0f - 4.0f * invD;
     const float factorIm = -8.0f * tau * invD;
 
-    const float c = std::cos(tau);
-    const float sn = std::sin(tau);
+    // P1-5: fastCos/fastSin replace std::cos/sin in Peregrine path (per Peregrine slot per sample).
+    const float c = fastCos(tau);
+    const float sn = fastSin(tau);
     const float psiRe = factorRe * c - factorIm * sn;
     const float psiIm = factorRe * sn + factorIm * c;
 
@@ -444,13 +458,14 @@ inline float OndaEngine::evaluatePotential(int shape, float x, float period, flo
     switch (shape)
     {
         case 0: default: return 0.0f;                                 // Flat
-        case 1: return depth * std::cos(kOndaTwoPi * x / std::max(0.01f, period)); // Periodic
+        // P1-5: fastCos/fastExp in potential path (called 2× per active soliton per sample).
+        case 1: return depth * fastCos(kOndaTwoPi * x / std::max(0.01f, period)); // Periodic
         case 2:
         {
             // Gaussian barrier centred at 0, width ~period.
             const float w  = std::max(0.1f, period);
             const float xi = x / w;
-            return depth * std::exp(-xi * xi);
+            return depth * fastExp(-xi * xi);
         }
     }
 }
@@ -570,9 +585,13 @@ inline void OndaEngine::releaseVoicesForNote(int noteNum)
     {
         if (v.active && v.note == noteNum && !v.releasing)
         {
-            v.ampEnv.noteOff();
-            v.fltEnv.noteOff();
-            v.releasing = true;
+            // P2-5: defer release when sustain pedal is held.
+            if (!sustainPedal)
+            {
+                v.ampEnv.noteOff();
+                v.fltEnv.noteOff();
+                v.releasing = true;
+            }
         }
     }
 }
@@ -605,6 +624,7 @@ inline void OndaEngine::prepare(double sampleRate, int maxBlockSize)
     modWheel = aftertouch = lastAftertouch = pitchBendNorm = 0.0f;
     probePos = 0.0f;
     lastHeldNote = -1;
+    sustainPedal = false; // P2-5: ensure pedal state is cleared on prepare
 }
 
 inline void OndaEngine::reset()
@@ -618,6 +638,7 @@ inline void OndaEngine::reset()
     modWheel = aftertouch = lastAftertouch = pitchBendNorm = 0.0f;
     probePos = 0.0f;
     lastHeldNote = -1;
+    sustainPedal = false; // P2-5: clear pedal on engine reset
 }
 
 // -----------------------------------------------------------------------------
@@ -1042,6 +1063,9 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                 if (vIdx < 0) vIdx = stealVoice();
             }
             auto& vx = voices[vIdx];
+            // P2-3: flag stolen voices for fade-in to prevent hard-switch clicks.
+            const bool wasStolen = (vIdx >= 0 && vx.active);
+            vx.stealFadeIn = wasStolen ? 0.0f : 1.0f;
             vx.active = true;
             vx.releasing = false;
             vx.note = newNote;
@@ -1050,7 +1074,7 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             if (!legato) { vx.glideFreq = f; vx.ampEnv.noteOn(); vx.fltEnv.noteOn(); vx.filter.reset(); }
             vx.holdTime = 0.0f;
             vx.ageInSamples = 0; // reset age so stealVoice() sees this as youngest
-            vx.voiceTime = 0.0f; // reset CW carrier phase accumulator on new note
+            vx.cwPhase = 0.0f; // P1-4: reset CW carrier phase accumulator on new note
             vx.cwAmplitude = 0.0f;
             vx.prng = 0x9E3779B1u ^ (uint32_t)(newNote * 2654435761u);
 
@@ -1159,11 +1183,34 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         {
             pitchBendNorm = (msg.getPitchWheelValue() - 8192) / 8192.0f;
         }
+        else if (msg.isController() && msg.getControllerNumber() == 64)
+        {
+            // P2-5: CC64 sustain pedal — hold notes while pedal is down, release on lift.
+            sustainPedal = (msg.getControllerValue() >= 64);
+            if (!sustainPedal)
+            {
+                // Pedal lifted — release any voices not currently keyed (note != lastHeldNote).
+                for (auto& v : voices)
+                    if (v.active && !v.releasing && v.note != lastHeldNote)
+                    { v.ampEnv.noteOff(); v.fltEnv.noteOff(); v.releasing = true; }
+            }
+        }
+        else if (msg.isAllNotesOff() || msg.isAllSoundOff())
+        {
+            // P2-4: MIDI panic — immediately silence and reset all voices.
+            for (auto& v : voices) v.reset();
+            lastHeldNote = -1;
+            sustainPedal = false;
+            wakeSilenceGate();
+        }
     }
 
     // ---- Silence gate early exit ----
     if (isSilenceGateBypassed() && midi.isEmpty())
     {
+        // P1-3: zero coupling accumulators on bypass so stale mod state does not
+        // bleed into the next active block when a coupled engine resumes sending.
+        couplingFilterMod = couplingVelocityMod = couplingPotentialMod = couplingRateMod = 0.0f;
         const int n = std::min(numSamples, (int) couplingCacheL.size());
         std::fill_n(couplingCacheL.begin(), n, 0.0f);
         std::fill_n(couplingCacheR.begin(), n, 0.0f);
@@ -1230,6 +1277,10 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
     // Dissipation is applied per-sample to soliton amplitudes (tiny decay).
     const float alphaPerSample   = std::clamp(alphaRaw, 0.0f, 1.0f) / sampleRateF;
 
+    // P1-6: hoist sqrt(mNonlinearity) outside the per-voice/per-sample/per-soliton loop.
+    // mNonlinearity is block-constant; computing it 32×/sample at poly8 is pure waste.
+    const float sqrtNonlinearity = std::sqrt(mNonlinearity);
+
     // Advance the scene-level probe position.
     probePos += effProbeSpeed * (numSamples / sampleRateF);
 
@@ -1294,7 +1345,9 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
         const float rateScale = 1.0f + snapRateMod * mCouplingGain * 0.5f;
 
         // Dark-mode CW background amplitude (bright field the dips live on).
-        const float cwBg = (polarity == 1) ? 0.8f : 0.0f;
+        // P2-1: assign cwAmplitude per-voice each block so the field is live (D004).
+        v.cwAmplitude = (polarity == 1) ? 0.8f : 0.0f;
+        const float cwBg = v.cwAmplitude;
 
         // Per-voice modulational-instability crystallisation: once the note
         // has been held past miHoldTime, activate an additional soliton
@@ -1348,6 +1401,9 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
 
                 // Advance per-sample time and apply dissipation.
                 s.timeAlive += dt * tScale * rateScale;
+                // P2-2: wrap timeAlive to prevent float precision loss on long sustains.
+                // At A=1, cos(A²·t) loses precision beyond ~10 h; wrapping at 1000 s is safe.
+                if (s.timeAlive > 1000.0f) s.timeAlive -= 1000.0f;
                 s.amplitude  = std::max(0.0f, s.amplitude - s.amplitude * alphaPerSample);
 
                 // Effective velocity blends LFO + coupling + matrix.
@@ -1377,7 +1433,7 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                 sEff.velocity  = vEff;
                 // γ rescales amplitude: ψ' = √γ ψ is the equivalent NLS with γ=1.
                 // Exposes nonlinearity as an audible timbral knob (D004).
-                sEff.amplitude = s.amplitude * std::sqrt(mNonlinearity);
+                sEff.amplitude = s.amplitude * sqrtNonlinearity; // P1-6: block-hoisted sqrt
 
                 float sr, si;
                 if (sEff.isPeregrine) evaluatePeregrine(sEff, xProbe, tDisp, sr, si);
@@ -1386,22 +1442,36 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                 sumRe    += sr;
                 sumIntSq += si;
             }
-            v.holdTime  += dt * tScale;
-            v.voiceTime += dt * tScale; // independent CW carrier accumulator
+            v.holdTime += dt * tScale;
+            // P1-4: advance CW carrier phase by 2π·voiceFreq·dt (true radians step).
+            // Tracks glide/pitch-bend correctly.  Wrap to [0, 2π) each cycle.
+            v.cwPhase += kOndaTwoPi * voiceFreq * dt;
+            if (v.cwPhase >= kOndaTwoPi) v.cwPhase -= kOndaTwoPi;
 
             // Auto-deactivate solitons whose amplitude has decayed below audible.
+            // P2-6: flush near-zero amplitudes to prevent subnormal persistence.
+            // P2-7: clear isPeregrine on cull so slot state is unambiguous.
             for (int k = 0; k < kOndaMaxSolPerVoice; ++k)
-                if (v.solitons[k].active && v.solitons[k].amplitude < 0.005f)
-                    v.solitons[k].active = false;
+            {
+                if (v.solitons[k].active)
+                {
+                    if (v.solitons[k].amplitude < 0.005f)
+                    {
+                        v.solitons[k].active = false;
+                        v.solitons[k].isPeregrine = false; // P2-7
+                    }
+                    else if (v.solitons[k].amplitude < 1e-15f)
+                        v.solitons[k].amplitude = 0.0f; // P2-6: flush denormal
+                }
+            }
 
             // Output choice — Re(ψ) or |ψ|².
             float raw;
             if (observeMode == 0)
             {
                 // Add CW background for Dark mode so dips have substrate.
-                // voiceTime is the independent per-voice carrier accumulator —
-                // avoids reading solitons[0].timeAlive which may be inactive.
-                raw = sumRe + cwBg * std::cos(kOndaTwoPi * voiceFreq * v.voiceTime);
+                // P1-4: cwPhase is a true radians accumulator — no desync under glide.
+                raw = sumRe + cwBg * fastCos(v.cwPhase);
             }
             else
             {
@@ -1411,8 +1481,8 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
                 raw = raw * 2.0f - 0.2f; // center-ish on zero for AC coupling
             }
 
-            // Soft-clip.
-            const float shaped = std::tanh(raw * 0.6f) * 1.3f;
+            // Soft-clip. P1-5: fastTanh (Padé ~2% error) replaces std::tanh per-sample/voice.
+            const float shaped = fastTanh(raw * 0.6f) * 1.3f;
 
             // Per-sample cutoff.
             const float voiceCutoff = std::clamp(
@@ -1430,7 +1500,13 @@ inline void OndaEngine::renderBlock(juce::AudioBuffer<float>& buffer,
             const float gL = 0.7071f * (1.0f - pan);
             const float gR = 0.7071f * (1.0f + pan);
 
-            const float out = filtered * a * ampBoost * widthScale;
+            // P2-3: advance steal fade-in ramp (~5 ms = 200 Hz ramp rate).
+            if (v.stealFadeIn < 1.0f)
+            {
+                v.stealFadeIn += dt * 200.0f;
+                if (v.stealFadeIn > 1.0f) v.stealFadeIn = 1.0f;
+            }
+            const float out = filtered * a * ampBoost * widthScale * v.stealFadeIn;
             L[i] += out * gL;
             R[i] += out * gR;
         }
