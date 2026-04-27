@@ -21,35 +21,7 @@
 //   A juce::Timer at 60 Hz drives a simple spring animation
 //   (target_y + (current_y − target_y) * decayFactor).  No per-frame alloc.
 //
-// ─────────────────────────────────────────────────────────────────────────────
-// TODO Wave5-A3 mount — ModMatrixStrip
-//
-//   In XOceanusEditor.h, add member:
-//       std::unique_ptr<xoceanus::ModMatrixStrip> modMatrixStrip_;
-//
-//   In XOceanusEditor constructor (after modModel_ and router_ are built):
-//       modMatrixStrip_ = std::make_unique<xoceanus::ModMatrixStrip>(
-//           apvts, modModel_, *modRouter_);
-//       addAndMakeVisible(*modMatrixStrip_);
-//
-//   In XOceanusEditor::resized():
-//       // Place at bottom, full width, 28 px tall — above any transport bar.
-//       // Adjust yOffset to match your footer layout:
-//       constexpr int kStripH = xoceanus::ModMatrixStrip::kStripHeight;
-//       modMatrixStrip_->setBounds(0, getHeight() - kStripH, getWidth(), kStripH);
-//       // The panel positions itself relative to the editor bounds automatically
-//       // via setEditorBounds() called inside resized().
-//
-//   In XOceanusEditor::resized(), also call:
-//       modMatrixStrip_->setEditorBounds(getLocalBounds());
-//
-// ─────────────────────────────────────────────────────────────────────────────
-// TODO Wave5-A3 mount — current engine prefix feed
-//
-//   Whenever the active engine changes (e.g. in onEngineChanged callback):
-//       modMatrixStrip_->loadEngine(newEnginePrefix);
-//
-// ─────────────────────────────────────────────────────────────────────────────
+// Wave 5 A3 mount APPLIED — see XOceanusEditor.h for wiring details.
 
 #pragma once
 
@@ -262,7 +234,6 @@ public:
         {
             const int hW = ModSourceHandle::kDiameter;
             const int gap = 8;
-            const int totalW = n * hW + (n - 1) * gap;
             int xOff = handleArea.getX() + 110; // offset past the label
 
             for (int i = 0; i < n; ++i)
@@ -361,7 +332,7 @@ private:
     }
 
     //==========================================================================
-    juce::AudioProcessorValueTreeState& apvts_;
+    [[maybe_unused]] juce::AudioProcessorValueTreeState& apvts_;
     ModRoutingModel&                    modModel_;
     [[maybe_unused]] DragDropModRouter& router_;
 
@@ -435,9 +406,6 @@ public:
     // addPanelToParent — add the slide-up panel to the editor root component
     // so it floats above all other UI.  Call once during editor construction
     // after addAndMakeVisible(*modMatrixStrip_).
-    //
-    // TODO Wave5-A3 mount: In XOceanusEditor constructor call:
-    //     modMatrixStrip_->addPanelToParent(*this);
     void addPanelToParent(juce::Component& editorRoot)
     {
         editorRoot.addChildComponent(panel_);
