@@ -23,6 +23,8 @@
 // Wave 5 A1: Global drag-drop mod routing model (message-thread side).
 // The header lives in Future/ but we reference it in-place per spec.
 #include "Future/UI/ModRouting/DragDropModRouter.h"
+// Wave 5 C4: Chain type definitions + inter-slot chain matrix model.
+#include "Core/ChainMatrix.h"
 #include <atomic>
 #include <array>
 #include <memory>
@@ -215,6 +217,13 @@ public:
     //   }
     std::function<juce::ValueTree()> onGetTideWaterlineState;
     std::function<void(const juce::ValueTree& /*state*/)> onSetTideWaterlineState;
+
+    // ── Wave 5 C4: Chain matrix ───────────────────────────────────────────────
+    // Message-thread only.  The editor reads/writes via chainMatrix_ directly
+    // through the reference returned here.  getStateInformation/setStateInformation
+    // persist it as a "chainMatrix" ValueTree child (sparse: only active links stored).
+    XOceanus::ChainMatrix& getChainMatrix() noexcept { return chainMatrix_; }
+    const XOceanus::ChainMatrix& getChainMatrix() const noexcept { return chainMatrix_; }
 
     // ── Field Map note event queue ─────────────────────────────────────────────
     // Lock-free SPSC ring: audio thread writes (pushNoteEvent), UI thread drains
@@ -838,6 +847,11 @@ private:
     // initWaterline() via getPersistedTideWaterlineState().
     // Message-thread only — no atomic needed.
     juce::ValueTree persistedTideWaterlineState_;
+
+    // ── Wave 5 C4: Chain matrix ────────────────────────────────────────────────
+    // 4×4 grid of inter-slot chain links (4 types each).  Message-thread only.
+    // Persisted as a "chainMatrix" ValueTree child (sparse; empty = no chains).
+    XOceanus::ChainMatrix chainMatrix_;
 
     // ── External MIDI Clock state — audio thread only (closes #359) ──────────
     // Used to derive BPM from incoming 0xF8 pulses.

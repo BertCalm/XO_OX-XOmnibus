@@ -85,6 +85,7 @@ public:
     std::function<void()>      onSave;           // save preset
     std::function<void(bool)>  onABCompareChanged; // toggled; bool = new A/B state
     std::function<void()>      onChainToggled;   // toggles chain mode; check chainModeActive_ to read new state
+    std::function<void()>      onChainMatrixClicked;  // Wave 5 C4: open/close chain matrix panel
     std::function<void()>      onExportClicked;
     std::function<void()>      onSettingsClicked;
     std::function<void(float)> onReactChanged;   // 0–1 normalised — ocean visual reactivity
@@ -112,6 +113,13 @@ public:
 
     /** Returns true when the Chain mode toggle is currently active. */
     bool isChainModeActive() const noexcept { return chainModeActive_; }
+
+    // Wave 5 C4: reflect chain matrix panel open state on the MATRIX button.
+    void setChainMatrixActive(bool active)
+    {
+        if (chainMatrixActive_ != active) { chainMatrixActive_ = active; repaint(); }
+    }
+    bool isChainMatrixActive() const noexcept { return chainMatrixActive_; }
 
     void setPresetName(const juce::String& name)
     {
@@ -159,6 +167,7 @@ private:
         kRegExport       = 10,
         kRegDial         = 11,  // REACT rotary dial
         kRegSettings     = 12,
+        kRegChainMatrix  = 13,  // Wave 5 C4: chain matrix panel toggle
     };
 
     struct HudRegion
@@ -250,6 +259,16 @@ private:
                                      static_cast<float>(kBtnHeight));
             regions_.push_back({ r, kRegExport });
             exportBounds_ = r;
+            rx -= btnW + gap;
+        }
+
+        // --- Chain Matrix button (Wave 5 C4: opens slide-up matrix panel) ---
+        {
+            const float btnW = 58.0f;
+            juce::Rectangle<float> r(rx - btnW, btnY, btnW,
+                                     static_cast<float>(kBtnHeight));
+            regions_.push_back({ r, kRegChainMatrix });
+            chainMatrixBounds_ = r;
             rx -= btnW + gap;
         }
 
@@ -345,6 +364,9 @@ private:
 
         // --- Chain button (active state if chainModeActive_) ---
         paintChainButton(g);
+
+        // --- Chain Matrix button (Wave 5 C4) ---
+        paintChainMatrixButton(g);
 
         // --- Export button (text pill with export glyph icon) ---
         paintExportButton(g);
@@ -594,6 +616,29 @@ private:
     }
 
     //--------------------------------------------------------------------------
+    // Chain Matrix button (Wave 5 C4) — pill showing "MATRIX" label in teal
+
+    void paintChainMatrixButton(juce::Graphics& g)
+    {
+        const auto c = resolveColors(kRegChainMatrix, chainMatrixActive_);
+
+        g.setColour(c.bg);
+        g.fillRoundedRectangle(chainMatrixBounds_, 8.0f);
+        g.setColour(c.border);
+        g.drawRoundedRectangle(chainMatrixBounds_, 8.0f, 1.0f);
+
+        static const juce::Font pillFont(juce::FontOptions{}
+            .withName(juce::Font::getDefaultSansSerifFontName())
+            .withStyle("Bold")
+            .withHeight(11.0f));
+
+        g.setFont(pillFont);
+        g.setColour(c.text);
+        g.drawText("MATRIX", chainMatrixBounds_.toNearestInt(),
+                   juce::Justification::centred, false);
+    }
+
+    //--------------------------------------------------------------------------
     // Undo / Redo icon — via HudIcons factory (standard juce::Path glyphs)
 
     void paintUndoIcon(juce::Graphics& g,
@@ -800,6 +845,14 @@ private:
                     onChainToggled();
                 break;
 
+            case kRegChainMatrix:
+                // Wave 5 C4: toggle chain matrix panel open/close.
+                chainMatrixActive_ = !chainMatrixActive_;
+                repaint();
+                if (onChainMatrixClicked)
+                    onChainMatrixClicked();
+                break;
+
             case kRegExport:
                 if (onExportClicked)
                     onExportClicked();
@@ -868,6 +921,7 @@ private:
     // State
 
     bool  chainModeActive_  = false;
+    bool  chainMatrixActive_ = false;  // Wave 5 C4: chain matrix panel open toggle
     float reactLevel_       = 0.80f; // default 80% reactivity
 
     // Preset navigation state (#1104)
@@ -894,6 +948,7 @@ private:
     juce::Rectangle<float> saveBounds_;
     juce::Rectangle<float> abCompareBounds_;
     juce::Rectangle<float> chainBounds_;
+    juce::Rectangle<float> chainMatrixBounds_;  // Wave 5 C4: chain matrix button
     juce::Rectangle<float> exportBounds_;
     juce::Rectangle<float> reactLabelBounds_;
     juce::Rectangle<float> reactDialBounds_;

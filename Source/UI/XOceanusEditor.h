@@ -743,6 +743,8 @@ public:
         oceanView_.initSeqStrip(proc.getAPVTS());
         oceanView_.initMasterFxStrip(proc.getAPVTS());
         oceanView_.initEpicSlotsPanel(proc.getAPVTS());
+        // Wave 5 C4: chain matrix slide-up panel + orbit chain-count badges.
+        oceanView_.initChainMatrix(proc);
         oceanView_.initTransportBar();
         // Wire transport bar callbacks.
         if (auto* tb = oceanView_.getTransportBar())

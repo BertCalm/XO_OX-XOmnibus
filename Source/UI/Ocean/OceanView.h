@@ -75,6 +75,8 @@
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
 #include "../Gallery/StatusBar.h"
+// Wave 5 C4: chain matrix slide-up panel
+#include "ChainMatrixComponent.h"
 
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
@@ -595,6 +597,9 @@ public:
         // and clears any in-progress chain drawing on the substrate.
         hudBar_.onChainToggled = [this]() { applyChainModeVisuals(); };
 
+        // Wave 5 C4: MATRIX button opens/closes the chain matrix panel.
+        hudBar_.onChainMatrixClicked = [this]() { toggleChainMatrix(); };
+
         // ── Keyboard focus ────────────────────────────────────────────────────
         setWantsKeyboardFocus(true);
 
@@ -732,6 +737,101 @@ public:
         epicSlots_ = std::make_unique<EpicSlotsPanel>(apvts);
         addAndMakeVisible(*epicSlots_);
         reorderZStack();
+    }
+
+    /**
+        Initialise the ChainMatrixPanel (Wave 5 C4).
+        Must be called after the processor is available so the ChainMatrix
+        reference is valid.  The panel starts hidden; show/hide is driven by
+        the "Chains" button in SubmarineHudBar via toggleChainMatrix().
+    */
+    void initChainMatrix(XOceanusProcessor& proc)
+    {
+        chainMatrixPanel_ = std::make_unique<XOceanus::ChainMatrixComponent>();
+        chainMatrixPanel_->setMatrix(&proc.getChainMatrix());
+        chainMatrixPanel_->setVisible(false);
+
+        chainMatrixPanel_->onCloseClicked = [this]()
+        {
+            hideChainMatrix();
+        };
+
+        chainMatrixPanel_->onMatrixChanged = [this, &proc]()
+        {
+            // Refresh chain-count badges on all primary orbits.
+            refreshChainBadges(proc.getChainMatrix());
+            // Notify processor to flush state on next getStateInformation().
+            // (No explicit flush needed — processor reads chainMatrix_ directly.)
+        };
+
+        addChildComponent(*chainMatrixPanel_);
+        reorderZStack();
+
+        // Refresh badge counts after connecting the matrix.
+        refreshChainBadges(proc.getChainMatrix());
+    }
+
+    /** Toggle the chain matrix panel (called from SubmarineHudBar "Chains" button). */
+    void toggleChainMatrix()
+    {
+        if (chainMatrixVisible_)
+            hideChainMatrix();
+        else
+            showChainMatrix();
+    }
+
+    /** Show the chain matrix slide-up panel. Closes any conflicting heavy panel. */
+    void showChainMatrix()
+    {
+        if (chainMatrixVisible_ || !chainMatrixPanel_) return;
+        coordinatorRequestOpen(PanelType::ChainMatrix);
+
+        // Position: centred horizontally, slide up from the ocean floor
+        const int panelW = juce::jmin(420, getWidth() - 32);
+        const int panelH = 260;
+        const int panelX = (getWidth() - panelW) / 2;
+        const int panelY = getHeight() - panelH - 60;  // above the dashboard waterline
+
+        chainMatrixPanel_->setBounds(panelX, getHeight(), panelW, panelH);  // start off-screen
+        chainMatrixPanel_->setVisible(true);
+
+        juce::ComponentAnimator& anim = juce::Desktop::getInstance().getAnimator();
+        anim.animateComponent(chainMatrixPanel_.get(),
+                              juce::Rectangle<int>(panelX, panelY, panelW, panelH),
+                              1.0f, 220, false, 0.0, 0.0);
+        chainMatrixVisible_ = true;
+        // Sync the MATRIX button active state.
+        hudBar_.setChainMatrixActive(true);
+    }
+
+    /** Hide the chain matrix panel. */
+    void hideChainMatrix()
+    {
+        if (!chainMatrixVisible_ || !chainMatrixPanel_) return;
+
+        coordinatorRelease(PanelType::ChainMatrix);
+
+        juce::ComponentAnimator& anim = juce::Desktop::getInstance().getAnimator();
+        const auto dest = chainMatrixPanel_->getBounds().withY(getHeight());
+        anim.animateComponent(chainMatrixPanel_.get(), dest, 1.0f, 180, false, 0.0, 0.0);
+
+        // Hide after animation completes — use a short timer as juce::ComponentAnimator
+        // has no completion callback in JUCE 7.
+        juce::Timer::callAfterDelay(200, [this]()
+        {
+            if (chainMatrixPanel_) chainMatrixPanel_->setVisible(false);
+        });
+
+        chainMatrixVisible_ = false;
+        // Sync the MATRIX button state so it reflects "closed".
+        hudBar_.setChainMatrixActive(false);
+    }
+
+    /** Refresh chain-count badges on all 4 primary orbits from the live matrix. */
+    void refreshChainBadges(const XOceanus::ChainMatrix& matrix)
+    {
+        for (int i = 0; i < XOceanus::ChainMatrix::kNumSlots; ++i)
+            orbits_[i].setChainCount(matrix.activeChainCount(i));
     }
 
     /**
@@ -2619,9 +2719,10 @@ private:
                 break;
 
             case PanelType::ChainMatrix:
-                // Wave 5 C4 stub — no-op open.  C4 author: fill this branch with
-                // chain matrix show logic and call coordinator_.requestOpen(
-                // PanelType::ChainMatrix) from the chain matrix open action.
+                // Wave 5 C4: chain matrix is shown/hidden by showChainMatrix() /
+                // hideChainMatrix() which call coordinatorRequestOpen / coordinatorRelease.
+                // The coordinator just tracks the type here — actual animation is handled
+                // by the show/hide methods to avoid circular calls.
                 break;
 
             case PanelType::XOuijaRouting:
@@ -2674,7 +2775,18 @@ private:
                 break;
 
             case PanelType::ChainMatrix:
-                // Wave 5 C4 stub — no-op close.
+                // Wave 5 C4: panel close — animate out and mark invisible.
+                if (chainMatrixPanel_ && chainMatrixPanel_->isVisible())
+                {
+                    chainMatrixVisible_ = false;
+                    auto dest = chainMatrixPanel_->getBounds().withY(getHeight());
+                    juce::Desktop::getInstance().getAnimator()
+                        .animateComponent(chainMatrixPanel_.get(), dest, 1.0f, 180, false, 0.0, 0.0);
+                    juce::Timer::callAfterDelay(200, [this]()
+                    {
+                        if (chainMatrixPanel_) chainMatrixPanel_->setVisible(false);
+                    });
+                }
                 break;
 
             case PanelType::XOuijaRouting:
@@ -2879,6 +2991,8 @@ private:
         // Wave 5 B3 + C2: breakout panels float above all dashboard content.
         if (chordBreakout_) chordBreakout_->toFront(false);
         if (seqBreakout_) seqBreakout_->toFront(false);
+        // Wave 5 C4: chain matrix panel floats above all content but below drawers.
+        if (chainMatrixPanel_) chainMatrixPanel_->toFront(false);
         if (transportBar_) transportBar_->toFront(false);
         if (statusBar_) statusBar_->toFront(false);
 
@@ -2930,6 +3044,10 @@ private:
     // Restored on DetailOverlay close.
     bool surfaceRightWasOpenForDetail_ = false;
 
+    // Wave 5 C4: chain matrix panel visibility state.
+    // Tracks whether the slide-up panel is currently shown.
+    bool chainMatrixVisible_ = false;
+
     //==========================================================================
     // Child components — Z-ordered (bottom → top) as declared
     //==========================================================================
@@ -2975,6 +3093,8 @@ private:
     // Wave 5 C2 mount: seq strip (24px always-visible) + breakout panel.
     std::unique_ptr<SeqStripComponent>    seqStrip_;
     std::unique_ptr<SeqBreakoutComponent> seqBreakout_;
+    // Wave 5 C4 mount: chain matrix slide-up panel.
+    std::unique_ptr<XOceanus::ChainMatrixComponent> chainMatrixPanel_;
     std::unique_ptr<MasterFXStripCompact> masterFxStrip_;
     std::unique_ptr<EpicSlotsPanel>       epicSlots_;
     std::unique_ptr<TransportBar>         transportBar_;

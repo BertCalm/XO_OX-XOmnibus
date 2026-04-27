@@ -2927,6 +2927,16 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         }
     }
 
+    // Wave 5 C4 — Persist chain matrix as a "chainMatrix" ValueTree child.
+    // Sparse: only active links stored.  Absent child = no chains (backward-compat).
+    if (auto existing = state.getChildWithName("chainMatrix"); existing.isValid())
+        state.removeChild(existing, nullptr);
+    {
+        auto cmTree = chainMatrix_.toValueTree();
+        if (cmTree.getNumChildren() > 0)  // only append when there are active links
+            state.appendChild(cmTree, nullptr);
+    }
+
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
     if (xml)
     {
@@ -3173,6 +3183,15 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
                 else
                     persistedTideWaterlineState_ = tideTree;
             }
+        }
+
+        // Wave 5 C4 — Restore chain matrix.
+        // "chainMatrix" child is absent in sessions predating Wave 5 C4 — no-op
+        // in that case (chainMatrix_ defaults to all-links-inactive, which is
+        // backward-compatible with the pre-C4 behaviour of no chains at all).
+        {
+            auto cmTree = apvts.state.getChildWithName("chainMatrix");
+            chainMatrix_.fromValueTree(cmTree);  // safe when cmTree.isValid() == false
         }
 
         // FIX 8 — Restore PlaySurface scale selector index (closes #314).

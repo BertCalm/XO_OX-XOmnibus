@@ -491,10 +491,14 @@ target_sources(XOceanus PRIVATE
 
     # Core (MIDI Learn — shared across platforms)
     Source/Core/MIDILearnManager.h
+    # Wave 5 C4: chain type definitions + inter-slot chain matrix model
+    Source/Core/ChainMatrix.h
 
     # UI (Gallery Model)
     Source/UI/XOceanusEditor.cpp
     Source/UI/XOceanusEditor.h
+    # Wave 5 C4: chain matrix slide-up panel component
+    Source/UI/Ocean/ChainMatrixComponent.h
     Source/UI/PlaySurface/PlaySurface.h
     Source/UI/CouplingColors.h
     Source/UI/SharedPreviewDevice.h

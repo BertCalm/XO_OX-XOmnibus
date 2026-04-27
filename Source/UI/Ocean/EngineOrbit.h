@@ -26,6 +26,7 @@
 #include "../GalleryColors.h"
 #include "../Gallery/CreatureRenderer.h"
 #include "../EngineVocabulary.h"
+#include "../AccentColors.h"  // Wave 5 C4: chain badge teal tokens
 
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
@@ -465,6 +466,31 @@ public:
                        juce::Justification::centred, false);
         }
 
+        // ── Wave 5 C4: chain-count badge (bottom-right) ───────────────────
+        // Shows how many active chain links this slot participates in (as src or
+        // dst). Hidden when chainCount_ == 0 or no engine loaded.
+        if (hasEngine_ && chainCount_ > 0 && !isFx)
+        {
+            const float cbX = cx + radius * 0.55f;
+            const float cbY = cy + radius * 0.55f;
+            constexpr float cbR = 9.0f;
+
+            // Teal filled circle
+            g.setColour(XOceanus::AccentColors::chainPrimary.withAlpha(0.92f));
+            g.fillEllipse(cbX - cbR, cbY - cbR, cbR * 2.0f, cbR * 2.0f);
+
+            // Teal ring
+            g.setColour(XOceanus::AccentColors::chainBright.withAlpha(0.60f));
+            g.drawEllipse(cbX - cbR, cbY - cbR, cbR * 2.0f, cbR * 2.0f, 1.0f);
+
+            // Count label
+            g.setFont(juce::Font(juce::FontOptions{}.withHeight(8.5f).withStyle("Bold")));
+            g.setColour(juce::Colour(0xFF050810));
+            g.drawText(juce::String(chainCount_),
+                       juce::Rectangle<float>(cbX - cbR, cbY - cbR, cbR * 2.0f, cbR * 2.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
         // ── Dim overlay (mute/solo alpha dimming — FIX 9) ─────────────────
         // When a sibling buoy is soloed (dimAlpha_ < 1), darken this buoy by
         // drawing a semi-transparent Ocean::abyss rectangle on top.
@@ -784,6 +810,15 @@ public:
     /// Set the ocean area bounds (in parent coordinates) so drag normalization is correct.
     void setOceanAreaBounds(juce::Rectangle<float> area) { oceanAreaBounds_ = area; }
     void setPlaySurfaceVisible(bool visible) { playSurfaceVisible_ = visible; }
+
+    // Wave 5 C4: chain-count badge — number of active chain links this slot is
+    // involved in (as src or dst).  0 = no badge rendered.
+    void setChainCount(int count)
+    {
+        if (chainCount_ == count) return;
+        chainCount_ = count;
+        repaint();
+    }
 
     //==========================================================================
     // Waveform wreath data (pushed from OceanView timer reading WaveformFifo)
@@ -1161,6 +1196,9 @@ private:
     // Buoy drop splash animation (FIX 22)
     float splashAnim_   = 0.0f;  ///< 1.0 on load, decays to 0
     float bounceOffset_ = 0.0f;  ///< starts at -30px, eases to 0
+
+    // Wave 5 C4: chain count badge (bottom-right of buoy)
+    int chainCount_ = 0;
 
     // Mute / solo (FIX 3)
     bool muted_  = false;
