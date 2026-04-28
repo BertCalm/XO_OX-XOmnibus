@@ -585,12 +585,15 @@ public:
         // into each outputMidi[slot], rewrite slots whose routing mode is not the
         // default (ChordUpstream):
         //
-        //   SeqUpstream  — replace chord-distributed output with raw inputMidi,
-        //                  so the engine's own step-seq / arpeggiator drives timing
-        //                  and pitch without chord expansion.  The engine treats
-        //                  incoming notes as its sequencer triggers (C1 integration
-        //                  point: when PerEnginePatternSequencer lands, it will read
-        //                  from this slot buffer).
+        //   SeqUpstream  — the sequencer drives timing; the chord palette/voicing
+        //                  still shapes the pitch the engine plays.  Each NoteOn in
+        //                  inputMidi is re-pitched to the chord tone assigned to this
+        //                  slot (currentAssignment.midiNotes[slot]).  NoteOff events
+        //                  are likewise re-pitched so the engine receives a matching
+        //                  note-off for the note it was told to play.  All other
+        //                  messages (CC, pitchbend, etc.) are forwarded unchanged.
+        //                  If no chord has been assigned yet (midiNotes[slot] == -1)
+        //                  the slot receives the raw note as a safe fallback.
         //
         //   Parallel     — merge raw inputMidi on top of the chord output so both
         //                  the chord-distributed notes AND the raw input reach the
@@ -606,9 +609,40 @@ public:
 
             if (mode == ChordSeqRoutingMode::SeqUpstream)
             {
-                // Replace chord output with raw input for this slot.
+                // Re-pitch NoteOn/NoteOff to the chord tone for this slot.
+                // All other message types pass through unchanged.
+                const int chordTone = currentAssignment.midiNotes[slot]; // -1 if no chord yet
+
                 outputMidi[slot].clear();
-                outputMidi[slot] = inputMidi;
+                for (const auto metadata : inputMidi)
+                {
+                    const auto msg = metadata.getMessage();
+                    const int samplePos = metadata.samplePosition;
+
+                    if (msg.isNoteOn())
+                    {
+                        // Use the slot's chord tone; fall back to the raw note if no
+                        // chord has been distributed yet (chordTone == -1).
+                        const int targetNote = (chordTone >= 0) ? chordTone : msg.getNoteNumber();
+                        outputMidi[slot].addEvent(
+                            juce::MidiMessage::noteOn(msg.getChannel(), targetNote, msg.getFloatVelocity()),
+                            samplePos);
+                    }
+                    else if (msg.isNoteOff())
+                    {
+                        // Mirror the re-pitch so the engine receives a NoteOff for
+                        // exactly the note it was told to play.
+                        const int targetNote = (chordTone >= 0) ? chordTone : msg.getNoteNumber();
+                        outputMidi[slot].addEvent(
+                            juce::MidiMessage::noteOff(msg.getChannel(), targetNote, msg.getFloatVelocity()),
+                            samplePos);
+                    }
+                    else
+                    {
+                        // CCs, pitchbend, aftertouch, etc. — forward verbatim.
+                        outputMidi[slot].addEvent(msg, samplePos);
+                    }
+                }
             }
             else if (mode == ChordSeqRoutingMode::Parallel)
             {

@@ -11,6 +11,7 @@
 //   5. MIDI Mappings  (variable) — Live CC→param table from MIDILearnManager
 //   6. About          (80pt)   — Version, links
 //   7. Keyboard Shortcuts (36pt) — Z/X/C/V shortcut legend (display-only)
+//   8. Experience     (40pt)   — "Hear the Greeting Again" (Sound on First Launch replay)
 //
 // Architectural notes:
 //   • Header-only (.h), consistent with all Gallery Model components.
@@ -335,6 +336,18 @@ public:
         content.addAndMakeVisible(aboutWebLabel);
         content.addAndMakeVisible(aboutPatreonLabel);
 
+        // ── 8. EXPERIENCE ────────────────────────────────────────────────────
+        // "Hear the Greeting Again" — re-triggers the Sound on First Launch chord.
+        // Wired to processor.replayFirstBreath() (message-thread safe).
+        hearGreetingAgainBtn.setButtonText("Hear the Greeting Again");
+        hearGreetingAgainBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
+        hearGreetingAgainBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
+        hearGreetingAgainBtn.setTooltip("Replay the Sound on First Launch experience (soft Oxbow chord in slot 0)");
+        A11y::setup(hearGreetingAgainBtn, "Hear Greeting Again",
+                    "Replay the Sound on First Launch: a soft Oxbow chord plays in slot 0 for up to 30 seconds");
+        hearGreetingAgainBtn.onClick = [this] { processor.replayFirstBreath(); };
+        content.addAndMakeVisible(hearGreetingAgainBtn);
+
         // ── Accessibility wiring ──────────────────────────────────────────────
         A11y::setup(*this, "Settings", "Plugin settings panel");
     }
@@ -415,6 +428,9 @@ public:
 
         clearAllBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
         clearAllBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
+
+        hearGreetingAgainBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
+        hearGreetingAgainBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
 
         // Refresh URL label color (dark/light link color differs)
         styleUrlLabel(aboutWebLabel, "xo-ox.org", "https://xo-ox.org");
@@ -680,6 +696,14 @@ private:
         aboutPatreonLabel.setBounds(kPad, y, inner, kRowH - 4);
         y += kRowH + kGap;
 
+        y += kSectionGap;
+
+        // ── 8. EXPERIENCE ────────────────────────────────────────────────────
+        sectionY[7] = y;
+        y += kHeaderH + kGap;
+        hearGreetingAgainBtn.setBounds(kPad, y, inner, kRowH + 4); // slightly taller for button
+        y += kRowH + 4 + kGap;
+
         y += kPad; // bottom breathing room
 
         content.setSize(w, y);
@@ -703,8 +727,8 @@ private:
             const int inner = w - SettingsPanel::kPad * 2;
 
             static const char* kTitles[] = {"Theme", "Accessibility",     "MPE", "Performance", "MIDI Mappings",
-                                            "About", "Keyboard Shortcuts"};
-            for (int i = 0; i < 7; ++i)
+                                            "About", "Keyboard Shortcuts", "Experience"};
+            for (int i = 0; i < 8; ++i)
                 owner->drawSectionHeader(g, kTitles[i], SettingsPanel::kPad, owner->sectionY[i], inner);
 
             // MIDI table
@@ -718,7 +742,7 @@ private:
     bool perfLocked = false;
 
     // Layout tracking (set by layoutContent, read by paint callbacks)
-    int sectionY[7] = {};
+    int sectionY[8] = {};
     int midiTableY = 0;
     int midiTableH = 0;
 
@@ -778,6 +802,12 @@ private:
     juce::Label aboutMakerLabel;
     juce::Label aboutWebLabel;
     juce::Label aboutPatreonLabel;
+
+    // ── 8. Experience ─────────────────────────────────────────────────────────
+    // "Hear the Greeting Again" — re-arms the Sound on First Launch experience.
+    // Calls processor.replayFirstBreath() which reloads Oxbow in slot 0 and
+    // injects a soft C3 note.  See spec §8 Option A + §1282.
+    juce::TextButton hearGreetingAgainBtn;
 
     //==========================================================================
     // Factory helper — creates a right-aligned param name label.

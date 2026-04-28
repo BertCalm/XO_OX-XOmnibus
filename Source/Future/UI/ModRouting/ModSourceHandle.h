@@ -40,7 +40,15 @@ enum class ModSourceId
     SeqStepValue = 15,  // Sequencer step value output (bipolar)
     ChordToneIdx = 16,  // Chord tone index (0–N, unipolar)
     BeatPhase = 17,     // Beat phase ramp 0→1 per bar (bipolar)
-    Count = 18
+    // ── Wave5-D3: XOuija pin source ─────────────────────────────────────────
+    // A pinned XOuija position exposes two bipolar values:
+    //   X-axis (circle-of-fifths)  → normalized [-1, +1] mapped from [0, 1]
+    //   Y-axis (influence depth)   → normalized [-1, +1] mapped from [0, 1]
+    // The ModRoutingModel routes these as a single source; the DSP engine reads
+    // the X or Y component depending on the parameter's semantic (see D9 wiring).
+    // Capture slots 0-3 are differentiated by the ModRoute's destParamId suffix.
+    XouijaCell = 18,    // Pinned XOuija position (bipolar X+Y, 4 capture slots)
+    Count = 19
 };
 
 // Human-readable names used in tooltips and the route list panel.
@@ -84,6 +92,8 @@ inline juce::String modSourceName(ModSourceId id)
         return "Chord Tone Idx";
     case ModSourceId::BeatPhase:
         return "Beat Phase";
+    case ModSourceId::XouijaCell:
+        return "XOuija Pin";
     default:
         return "?";
     }
@@ -136,6 +146,8 @@ inline juce::Colour modSourceColour(ModSourceId id)
         return juce::Colour(0xFFF48FB1); // pink
     case ModSourceId::BeatPhase:
         return juce::Colour(0xFF80CBC4); // muted teal
+    case ModSourceId::XouijaCell:
+        return juce::Colour(0xFFE9C46A); // xo-gold — matches planchette accent
     default:
         return juce::Colour(GalleryColors::xoGold);
     }
@@ -305,6 +317,9 @@ public:
             break;
         case ModSourceId::BeatPhase:
             glyph = "B";
+            break;
+        case ModSourceId::XouijaCell:
+            glyph = "Y"; // "Y" for ouiJa — avoids ambiguity with Q=seq, J=none
             break;
         default:
             glyph = "?";

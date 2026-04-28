@@ -58,7 +58,7 @@ This master spec consolidates 15 foundation documents. When conflicts exist betw
 
 | Value | Expression |
 |-------|------------|
-| **Character** | 19,500+ presets with evocative names, not "Init Patch 47" |
+| **Character** | 19,859+ presets with evocative names, not "Init Patch 47" |
 | **Coupling** | Cross-engine modulation is the defining differentiator |
 | **Openness** | Open source, community presets, documented architecture |
 | **Craft** | Each engine was a standalone instrument first |
@@ -160,7 +160,7 @@ Toggle between modes at any time. Preset data is identical — only UI visibilit
 
 ## 2.6 Design Doctrines
 
-The 6 Doctrines are the quality contract every XOceanus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 92 engines.
+The 6 Doctrines are the quality contract every XOceanus engine must satisfy. They emerged empirically from the Prism Sweep (2026-03-14 to 2026-03-20) — specific failure patterns found in real instruments and codified as non-negotiable requirements. All 6 doctrines are now resolved fleet-wide across all 86 engines.
 
 | ID | Doctrine | Requirement |
 |----|----------|------------|
@@ -1115,7 +1115,7 @@ Current / Next / Long-arc framing.*
 
 What is implemented and shippable today:
 
-- 92 engines wrapped and integrated (single source of truth: `Docs/engines.json`)
+- 86 engines wrapped and integrated (single source of truth: `Docs/engines.json`)
 - MegaCouplingMatrix with 15 coupling types (incl. KnotTopology + TriangularCoupling)
 - PlaySurface (Pad, Fretless, Drum modes)
 - Preset browser with 16 mood tabs and 6D Sonic DNA

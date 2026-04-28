@@ -378,7 +378,7 @@ Focused preset packs for specific production genres. Each pack draws from the be
 ### F01. KnotCoupling (Next-Gen Architecture)
 - **Pitch:** Bidirectional topological coupling -- the next coupling paradigm shift
 - **What It Does:** Two engines modulate each other simultaneously with feedback damping, creating stable resonant coupling states
-- **Why It Matters:** Current 13 coupling types are unidirectional. KnotCoupling makes the connection itself a synthesis parameter.
+- **Why It Matters:** Current 15 coupling types are unidirectional. KnotCoupling makes the connection itself a synthesis parameter.
 - **Engines Involved:** ORBWEAVE + OVERLAP (prototype pair), then fleet-wide
 - **Effort:** 1 week+ | **Revenue:** Free (core feature) | **Release:** V2 (September 2026 target)
 

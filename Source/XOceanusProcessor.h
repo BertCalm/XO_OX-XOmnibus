@@ -141,6 +141,14 @@ public:
     // Max routes: ModRoutingModel::MaxRoutes (32).
     void flushModRoutesSnapshot() noexcept;
 
+    // Wave 5 C5: Read-only access to per-slot sequencer live state.
+    // Used by UI components to display live step values; audio thread uses the
+    // atomics directly via slotSequencers_ (private, same translation unit).
+    const XOceanus::PerEnginePatternSequencer& getSlotSequencer(int slot) const noexcept
+    {
+        return slotSequencers_[static_cast<size_t>(juce::jlimit(0, kNumPrimarySlots - 1, slot))];
+    }
+
     // Wave 5 A1: Write the current LFO1 output so the global router can use it
     // as a mod source.  Called from OrreryEngine::renderBlock (audio thread).
     // Use relaxed ordering — a single-sample jitter is acceptable for mod routing.
@@ -184,6 +192,29 @@ public:
     //       xouijaPanel_.fromValueTree(t); };
     std::function<juce::ValueTree()> onGetXOuijaState;
     std::function<void(const juce::ValueTree& /*state*/)> onSetXOuijaState;
+
+    // ── TideWaterline sequence layer persistence bridge (#1179) ───────────────
+    // OceanView registers these callbacks so the processor can include per-step
+    // data (active, velocity, gate, rootNote for all 16 steps) in DAW state.
+    // This is the D1 architectural foundation: step patterns survive DAW session
+    // recall independently of any preset load.
+    //
+    // Usage (in OceanView::initWaterline(), after waterline_ construction):
+    //   processor_.onGetTideWaterlineState = [this]() {
+    //       return waterline_ ? waterline_->toValueTree() : juce::ValueTree{};
+    //   };
+    //   processor_.onSetTideWaterlineState = [this](const juce::ValueTree& t) {
+    //       if (waterline_) waterline_->fromValueTree(t);
+    //   };
+    //   // Consume state that arrived before the editor was open:
+    //   auto deferred = processor_.getPersistedTideWaterlineState();
+    //   if (deferred.isValid() && waterline_)
+    //   {
+    //       waterline_->fromValueTree(deferred);
+    //       processor_.clearPersistedTideWaterlineState();
+    //   }
+    std::function<juce::ValueTree()> onGetTideWaterlineState;
+    std::function<void(const juce::ValueTree& /*state*/)> onSetTideWaterlineState;
 
     // ── Field Map note event queue ─────────────────────────────────────────────
     // Lock-free SPSC ring: audio thread writes (pushNoteEvent), UI thread drains
@@ -333,6 +364,45 @@ public:
     // Message-thread only: posts an atomic flag consumed by processBlock.
     void killDelayTails() noexcept { killDelayTailsPending.store(true, std::memory_order_release); }
 
+    // ── Sound on First Launch — replay (§1282 Settings > Experience) ─────────
+    // Re-arms the first-breath experience on demand (called from SettingsPanel's
+    // "Hear the Greeting Again" button).  Message-thread safe: re-loads Oxbow in
+    // slot 0 with the Breath Mist parameters, then sets firstBreathPending_ so
+    // processBlock injects the C3 note on the next audio block.
+    // Note: this does NOT reset hasLaunchedBefore_ — it only re-arms one play.
+    // Idempotent: calling while a breath is already pending is a no-op.
+    void replayFirstBreath()
+    {
+        if (firstBreathPending_.load(std::memory_order_relaxed))
+            return; // already armed — don't double-arm
+        // Re-load Oxbow in slot 0 so the engine is ready for the note.
+        loadEngine(0, "Oxbow");
+        // Re-apply the Breath Mist preset parameters inline (same values as first launch).
+        struct BreathMistParam { const char* id; float value; };
+        static const BreathMistParam kBreathMistParams[] = {
+            {"oxb_size",          0.1f},
+            {"oxb_decay",         0.5f},
+            {"oxb_entangle",      0.06f},
+            {"oxb_erosionRate",   0.05f},
+            {"oxb_erosionDepth",  0.08f},
+            {"oxb_convergence",   4.0f},
+            {"oxb_resonanceQ",    3.5f},
+            {"oxb_resonanceMix",  0.15f},
+            {"oxb_cantilever",    0.12f},
+            {"oxb_damping",       7000.0f},
+            {"oxb_predelay",      0.0f},
+            {"oxb_dryWet",        0.15f},
+            {"oxb_exciterDecay",  0.05f},
+            {"oxb_exciterBright", 0.5f},
+        };
+        for (const auto& p : kBreathMistParams)
+        {
+            if (auto* param = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(p.id)))
+                param->setValueNotifyingHost(param->convertTo0to1(p.value));
+        }
+        firstBreathPending_.store(true, std::memory_order_release);
+    }
+
     // CPU processing load as a fraction 0.0–1.0 (or higher during overload).
     // Measured in processBlock() as elapsed wall time / buffer duration.
     // Safe to call from any thread.
@@ -371,6 +441,18 @@ public:
     bool getPersistedRegisterLocked() const noexcept { return persistedRegisterLocked; }
     void setPersistedRegisterCurrent(int r) noexcept { persistedRegisterCurrent = r; }
     int  getPersistedRegisterCurrent() const noexcept { return persistedRegisterCurrent; }
+
+    // #1179 — TideWaterline deferred state pickup.
+    // OceanView calls this in initWaterline() to apply state that arrived via
+    // setStateInformation() before the editor window was first opened.
+    juce::ValueTree getPersistedTideWaterlineState() const noexcept
+    {
+        return persistedTideWaterlineState_;
+    }
+    void clearPersistedTideWaterlineState() noexcept
+    {
+        persistedTideWaterlineState_ = juce::ValueTree{};
+    }
 
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
@@ -589,24 +671,30 @@ private:
     // or as soon as any MIDI input or engine change arrives.
     //
     // Thread model:
-    //   hasLaunchedBefore_     — written by message thread (setStateInformation /
-    //                            prepareToPlay), read by audio thread.  Atomic.
-    //   firstBreathPending_    — set by prepareToPlay (any thread), consumed once
-    //                            by the first processBlock call.  Atomic.
-    //   firstBreathActive_     — audio-thread-only after consumption.  No atomic.
-    //   firstBreathCountdown_  — audio-thread-only countdown in samples.  No atomic.
-    //   kFirstBreathNote       — MIDI C3 (48). Gentle, low, non-intrusive.
-    //   kFirstBreathVelocity   — soft (60/127 ≈ 0.47).
-    //   kFirstBreathTimeoutMs  — 30 000 ms failsafe auto-stop.
+    //   hasLaunchedBefore_         — written by message thread (setStateInformation /
+    //                                prepareToPlay), read by audio thread.  Atomic.
+    //   firstBreathPending_        — set by prepareToPlay (any thread), consumed once
+    //                                by the first processBlock call.  Atomic.
+    //   firstBreathActive_         — audio-thread-only after consumption.  No atomic.
+    //   firstBreathCountdown_      — audio-thread-only 30-second failsafe in samples.  No atomic.
+    //   firstBreathFading_         — true once user interaction triggers the 200 ms fade.
+    //   firstBreathFadeCountdown_  — samples remaining in the fade window before note-off fires.
+    //   kFirstBreathNote           — MIDI C3 (48). Gentle, low, non-intrusive.
+    //   kFirstBreathVelocity       — soft (60/127 ≈ 0.47).
+    //   kFirstBreathTimeoutMs      — 30 000 ms failsafe auto-stop.
+    //   kFirstBreathFadeMs         — 200 ms fade on user interaction (spec §1300).
     std::atomic<bool> hasLaunchedBefore_{false};
     std::atomic<bool> firstBreathPending_{false};
     // Audio-thread-only state (no atomics needed):
     bool         firstBreathActive_{false};
     int          firstBreathCountdown_{0};
+    bool         firstBreathFading_{false};     // true during the 200 ms interaction fade
+    int          firstBreathFadeCountdown_{0};  // samples remaining in fade window
     uint64_t     firstBreathGeneration_{0}; // engineGeneration_ value at arm time; if it changes, breath is cancelled
     static constexpr int  kFirstBreathNote       = 48;     // C3
     static constexpr float kFirstBreathVelocity  = 60.0f / 127.0f;
     static constexpr int  kFirstBreathTimeoutMs  = 30000;  // 30-second failsafe
+    static constexpr int  kFirstBreathFadeMs     = 200;    // §1300: fade window before note-off on user interaction
 
     // ── Per-slot mute state ───────────────────────────────────────────────────
     // Written by message thread (setSlotMuted), read by audio thread per block.
@@ -750,6 +838,13 @@ private:
     bool persistedRegisterLocked = false; // D4: register lock toggle
     int  persistedRegisterCurrent = 0;   // D4: current register index (0=Gallery, 1=Performance, 2=Coupling)
 
+    // ── #1179: TideWaterline deferred step-sequence state ────────────────────
+    // Holds the "TideWaterlineSteps" tree from setStateInformation() when the
+    // editor was not yet open at restore time.  OceanView picks it up in
+    // initWaterline() via getPersistedTideWaterlineState().
+    // Message-thread only — no atomic needed.
+    juce::ValueTree persistedTideWaterlineState_;
+
     // ── External MIDI Clock state — audio thread only (closes #359) ──────────
     // Used to derive BPM from incoming 0xF8 pulses.
     // lastClockSampleTime: the processBlock-local sample position of the most
@@ -780,6 +875,9 @@ private:
         bool    bipolar{false};
         bool    valid{false};
         char    destParamId[64]{};  // fixed-length to avoid std::string on audio thread
+        // Wave 5 C5: per-route slot index for sequencer-scoped sources.
+        // -1 = not slot-scoped (backward-compat default).  0–3 = slot to query.
+        int     slotIndex{-1};
     };
     static constexpr int kMaxGlobalRoutes = ModRoutingModel::MaxRoutes;
     std::array<GlobalModRouteSnapshot, kMaxGlobalRoutes> routesSnapshot_{};

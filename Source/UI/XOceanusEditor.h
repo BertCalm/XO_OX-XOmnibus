@@ -50,6 +50,12 @@
 // Wave 5 A1: DragDropModRouter is transitively included via XOceanusProcessor.h
 // (which now includes Future/UI/ModRouting/DragDropModRouter.h).
 // No explicit re-include needed here — pragma once guards prevent duplication.
+// Wave 5 A3: ModMatrixBreakout (strip + slide-up panel).
+#include "Future/UI/ModRouting/ModMatrixBreakout.h"
+// Wave 6.5 (#1306): Pad/Drum collision wiring + layout-mode polling.
+#include "Ocean/Wave65SurfaceWiring.h"
+// Wave 9c (#1303): First-hour onboarding walkthrough overlay.
+#include "FirstHourWalkthrough.h"
 
 namespace xoceanus
 {
@@ -627,6 +633,20 @@ public:
                         performancePanel.refresh();
                     // Re-evaluate ghost tile visibility whenever any slot changes.
                     checkCollectionUnlock();
+                    // Wave 5 A3: feed the new engine's param prefix to the mod matrix strip
+                    // so the per-engine APVTS slot drawer loads the correct params.
+                    if (modMatrixStrip_ != nullptr && slot == selectedSlot)
+                    {
+                        if (auto* eng = processor.getEngine(slot))
+                            modMatrixStrip_->loadEngine(
+                                GalleryColors::prefixForEngine(eng->getEngineId()));
+                    }
+                    // Wave6.5 mount A (#1306): auto-switch PlaySurface to PADS+drum
+                    // sub-mode when a percussion engine (Onset / Offering) loads.
+                    if (slot >= 0 && slot < kNumPrimarySlots)
+                        if (auto* eng = processor.getEngine(slot))
+                            oceanView_.getPlaySurface().setSurfaceDefault(
+                                Wave65::isPercussionEngine(eng->getEngineId()));
                 });
         };
     }
@@ -726,7 +746,25 @@ public:
         oceanView_.initDetailPanel(proc);
         oceanView_.initSidebar();
         oceanView_.initWaterline(proc.getAPVTS(), proc.getMasterFXChain().getSequencer());
+        // #1309 wiring: register TideWaterline persistence callbacks so per-step data
+        // survives DAW session recall.  waterline_ is guaranteed non-null after initWaterline().
+        if (auto* wl = oceanView_.getWaterline())
+        {
+            proc.onGetTideWaterlineState = [wl]() { return wl->toValueTree(); };
+            proc.onSetTideWaterlineState = [wl](const juce::ValueTree& t) { wl->fromValueTree(t); };
+            // Consume any state that arrived while the editor was closed.
+            auto deferred = proc.getPersistedTideWaterlineState();
+            if (deferred.isValid())
+            {
+                wl->fromValueTree(deferred);
+                proc.clearPersistedTideWaterlineState();
+            }
+        }
         oceanView_.initChordBar(proc.getAPVTS(), proc.getChordMachine());
+        // Wave 5 B3 mount: chord breakout panel (must follow initChordBar).
+        oceanView_.initChordBreakout(proc.getAPVTS(), proc.getChordMachine());
+        // Wave 5 C2 mount: seq strip + breakout (needs APVTS; slot0_seq_ params from C1).
+        oceanView_.initSeqStrip(proc.getAPVTS());
         oceanView_.initMasterFxStrip(proc.getAPVTS());
         oceanView_.initEpicSlotsPanel(proc.getAPVTS());
         oceanView_.initTransportBar();
@@ -886,6 +924,34 @@ public:
                 processor.getMidiCollector().addMessageToQueue(msg);
             };
         }
+
+        // F03 fix (#1322): Wire SurfaceRightPanel note callbacks to MidiCollector.
+        // Without this, clicks on PAD/DRUM pads fired onNoteOn/onNoteOff but the
+        // lambdas were null — the pad grid was completely silent.
+        // Wiring pattern mirrors SubmarinePlaySurface (lines above).
+        {
+            auto& srp = oceanView_.getSurfaceRight();
+            srp.onNoteOn = [this](int note, float velocity)
+            {
+                auto msg = juce::MidiMessage::noteOn(1, note, velocity);
+                msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                processor.getMidiCollector().addMessageToQueue(msg);
+            };
+            srp.onNoteOff = [this](int note)
+            {
+                auto msg = juce::MidiMessage::noteOff(1, note);
+                msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+                processor.getMidiCollector().addMessageToQueue(msg);
+            };
+        }
+
+        // #1304 wiring: surfaceRight_.onOuijaCCOutput → processor.pushCCOutput().
+        // Fires at ~30 Hz while HARMONIC tab is active; cc 85 = planchette X,
+        // cc 86 = planchette radius/depth (SurfaceRightPanel::kOuijaCCCircleX/Y).
+        oceanView_.getSurfaceRight().onOuijaCCOutput = [this](uint8_t cc, uint8_t value)
+        {
+            processor.pushCCOutput(SurfaceRightPanel::kOuijaMidiChannel - 1, cc, value);
+        };
 
         // #897: On first launch (no persisted state) show the OceanView PlaySurface
         // so users see a playable interface immediately.  On subsequent launches,
@@ -1111,6 +1177,47 @@ public:
         // modRouteFlushListener_ is a member (lifetime tied to the editor) so
         // the processor never receives a dangling listener pointer.
         proc.getModRoutingModel().addListener(&modRouteFlushListener_);
+
+        // ── Wave 5 A3: ModMatrixStrip mount ──────────────────────────────────
+        // Built after modRouter_ so modModel_ + router references are stable.
+        // addPanelToParent() adds the slide-up panel as a direct child of the
+        // editor root so the panel can float above all other UI at ~60% height.
+        modMatrixStrip_ = std::make_unique<ModMatrixStrip>(
+            proc.getAPVTS(), proc.getModRoutingModel(), *modRouter_);
+        addAndMakeVisible(*modMatrixStrip_);
+        modMatrixStrip_->addPanelToParent(*this);
+
+        // ── Wave 9c (#1303): First-hour walkthrough overlay ──────────────────
+        // Wire bound accessors so the walkthrough bubbles point at the correct
+        // components.  Components that are not yet directly addressable from the
+        // editor return empty rectangles; the bubble falls back to the safe
+        // centred-area position and the tour still functions.
+        walkthrough_.getPlaySurfaceBounds  = [this]() { return oceanView_.getPlaySurface().getBounds(); };
+        walkthrough_.getEngineSlotBounds   = [this]() {
+            return tiles[0] != nullptr ? tiles[0]->getBounds() : juce::Rectangle<int>{};
+        };
+        walkthrough_.getMacroBounds        = [this]() { return macros.getBounds(); };
+        walkthrough_.getDnaBrowserBounds   = []() {
+            // TODO: expose DnaMapBrowser bounds when component is accessible from editor
+            return juce::Rectangle<int>{};
+        };
+        walkthrough_.getCoupleOrbitBounds  = []() {
+            // TODO: expose EngineOrbit buoy 1 bounds when component is accessible from editor
+            return juce::Rectangle<int>{};
+        };
+        walkthrough_.getCmToggleBounds     = [this]() { return cmToggleBtn.getBounds(); };
+        walkthrough_.getFavBtnBounds       = []() {
+            // TODO: expose PresetBrowserStrip favBtn bounds when accessible from editor
+            return juce::Rectangle<int>{};
+        };
+        walkthrough_.getXouijaBounds       = []() {
+            // TODO: expose SubmarineOuijaPanel or XOuija button bounds when accessible from editor
+            return juce::Rectangle<int>{};
+        };
+
+        // Mount as topmost child before toastOverlay_ — paints above all panels
+        // but below toasts so notifications are never obscured.
+        addAndMakeVisible(walkthrough_);
 
         // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.
@@ -1364,6 +1471,14 @@ public:
         if (modRouter_ != nullptr)
             modRouter_->setBounds(fullBounds);
 
+        // ── Wave 5 A3: ModMatrixStrip — 28px strip at the bottom of the editor ──
+        if (modMatrixStrip_ != nullptr)
+        {
+            constexpr int kStripH = ModMatrixStrip::kStripHeight;
+            modMatrixStrip_->setBounds(0, getHeight() - kStripH, getWidth(), kStripH);
+            modMatrixStrip_->setEditorBounds(fullBounds);
+        }
+
         // ── OceanView mode: skip the entire legacy Gallery layout ─────────────
         // All legacy tiles, overview, detail, chord panel, sidebar, etc. are
         // permanently hidden when OceanView is active.  Only statusBar and
@@ -1386,6 +1501,9 @@ public:
             aboutModal_.setBounds(getLocalBounds());
 
             toastOverlay_.setBounds(getLocalBounds());
+
+            // Wave 9c: walkthrough overlay always tracks full editor bounds.
+            walkthrough_.setBounds(getLocalBounds());
 
             return;
         }
@@ -1744,6 +1862,18 @@ private:
         }
         checkCollectionUnlock();
 
+        // ── Wave 9c (#1303): prompt for walkthrough after first timer tick ────
+        // Fires once per session — one tick of latency ensures the editor is
+        // fully constructed and bounds are settled before the overlay appears.
+        // Pre-Wave7 interim path: no explicit greeting flag, so we use the
+        // session-guard bool.  Post-Wave 7: move this into
+        // OceanStateMachine::onGreetingComplete().
+        if (!walkthroughTriggeredThisSession_)
+        {
+            walkthroughTriggeredThisSession_ = true;
+            walkthrough_.promptIfEligible(settingsFile_.get());
+        }
+
         // ── Refresh Export tab panel with current preset/kit info ────────────
         if (!oceanView_.isVisible())
             sidebar.refreshExportPanel();
@@ -1956,6 +2086,12 @@ private:
             }
             playSurface_.setAccentColour(accent);
         }
+
+        // Wave6.5 mount B (#1306): poll slot[N]_layout_mode APVTS params and
+        // forward changes to PlaySurface::setLayoutMode() for DAW session recall.
+        Wave65::pollLayoutModeParams(processor.getAPVTS(),
+                                     layoutModeCache_,
+                                     oceanView_.getPlaySurface());
 
         // ── D4: Register Manager update ───────────────────────────────────────
         // Compute elapsed time (ms) since last timer tick for smooth transitions.
@@ -2380,6 +2516,9 @@ private:
     // Cache the last preset name to detect changes without polling every frame.
     juce::String lastHeaderHexPreset_;
 
+    // Wave6.5 mount C (#1306): per-slot layout mode cache for APVTS polling.
+    std::array<int, 4> layoutModeCache_ { -1, -1, -1, -1 };
+
     // Last MIDI note number seen (for interval computation in session DNA drift).
     // -1 = no note played yet this session.
     int lastNote_ = -1;
@@ -2456,12 +2595,26 @@ private:
         }
     } modRouteFlushListener_;
 
+    // Wave 5 A3: ModMatrixStrip — 28px footer strip + slide-up panel.
+    // Constructed in initOceanView() after modRouter_ is built so that
+    // modModel_ and modRouter_ pointers are already stable.
+    std::unique_ptr<ModMatrixStrip> modMatrixStrip_;
+
     // Transparent full-editor overlay — activates only while a drag is in flight
     // or when the route list panel is shown.  Declared before toastOverlay_ so
     // the overlay still paints above the router.
     // unique_ptr: constructed in initOceanView() after the processor is ready
     // (ModRoutingModel lives in the processor, pointer stable for plugin lifetime).
     std::unique_ptr<DragDropModRouter> modRouter_;
+
+    // ── Wave 9c (#1303): First-hour walkthrough overlay ──────────────────────
+    // Transparent overlay that paints the gold highlight ring and floating bubbles.
+    // Mounted as topmost child (above obadge_/aboutModal_, below toastOverlay_).
+    // setBounds: always getLocalBounds() (set in resized()).
+    FirstHourWalkthrough walkthrough_;
+    // True once promptIfEligible() has been fired this session — prevents re-firing
+    // on every timerCallback tick after the greeting flag clears.
+    bool walkthroughTriggeredThisSession_ = false;
 
     // ── ToastOverlay — non-blocking notification layer ────────────────────────
     // Declared last so it is destroyed first (child components destroyed in

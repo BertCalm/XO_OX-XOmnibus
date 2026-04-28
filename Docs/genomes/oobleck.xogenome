@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OOBLECK",
+  "engine_prefix": "oobl_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "cellular_automata",
+    "polyphony": 8,
+    "architecture": "Reaction-diffusion wavetable synthesis — per-voice 128-cell 1D Gray-Scott ring grid (Gray & Scott 1984, Pearson 1993 adapted for 1D); U and V chemical concentrations are evolved each audio block; V concentration is read directly as the waveform, so chemistry generates timbre in real time; diffusion rates and feed/kill parameters select distinct chemical patterns (spots, stripes, spirals, chaos); the RD grid is initialized on note-on and runs continuously; output passes through CytomicSVF LP filter, amplitude ADSR, and LFO modulation; non-Newtonian aftertouch response jams (freezes) the simulation under sustained pressure."
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 1,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 1,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.70,
+    "velocity_targets": ["amplitude", "brightness", "filter"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "custom",
+    "dynamic_range_db": 64
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "CHARACTER",
+      "behavior": "Blends between clean synthesis output and the raw RD chemistry grid — at low CHARACTER the sound is dominated by the conventional oscillator path; at high CHARACTER the Gray-Scott V concentration drives more of the output, introducing chemical waveform irregularities that have no analog in traditional synthesis. Non-additive blend as per QDD mandate."
+    },
+    "macro2": {
+      "name": "MOVEMENT",
+      "behavior": "Controls the RD evolution rate (how many Gray-Scott steps per audio block) — slow MOVEMENT holds the chemical pattern nearly frozen, reading one timbral snapshot per note; fast MOVEMENT lets the chemistry run at full speed, creating organic evolving waveforms that shift morphology over seconds."
+    },
+    "macro3": {
+      "name": "COUPLING",
+      "behavior": "Scales inter-engine coupling input into the RD feed parameter — incoming audio can perturb the chemical feed rate, causing the spot/stripe pattern to reorganize in response to external stimulation. OOBLECK can receive audio from another engine and convert it into chemistry disturbance."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Controls filter cutoff and resonance simultaneously — at zero the output is narrow and focused; increasing SPACE opens the LP filter and raises Q, allowing the full RD spectral content to emerge. High SPACE on a fast-moving RD grid produces dense, swirling spectral complexity."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "texture",
+    "brightness": 0.48,
+    "warmth": 0.35,
+    "movement": 0.82,
+    "density": 0.62,
+    "transient_character": "complex"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "SpectralShaping", "AudioToFM"],
+    "best_as_target": ["AudioToFM", "AmpToFilter", "EnvToDecay"],
+    "recommended_partners": ["ORGANISM", "OUROBOROS", "OLVIDO", "OBSERVANDUM"],
+    "coupling_personality": "A chemical reactor — OOBLECK generates organic, unpredictable timbral motion that pairs well with engines that thrive on spectral feed (OLVIDO, OBSERVANDUM). The non-Newtonian aftertouch behavior makes OOBLECK uniquely expressive in live-coupling contexts where pressure becomes chemistry jam."
+  },
+
+  "mythology": {
+    "creature": "Non-Newtonian Nudibranch — morphing between fluid and solid states in the Midnight Zone; slime-green, pressure-sensitive, neither liquid nor solid, belonging to no phase in particular",
+    "depth_zone": "midnight",
+    "felix_oscar_polarity": 0.55,
+    "accent_color": "#B4FF39"
+  },
+
+  "metadata": {
+    "param_count": 33,
+    "preset_count": 8,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

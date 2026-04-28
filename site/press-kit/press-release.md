@@ -6,11 +6,11 @@
 
 ## XOceanus: Free Multi-Engine Synth with Revolutionary Coupling System
 
-**Solo developer ships the largest free synthesizer in the AU ecosystem — <!-- ENGINE_COUNT -->86<!-- /ENGINE_COUNT --> engines, 19,500+ presets, 15 cross-engine coupling types, MIT license**
+**Solo developer ships the largest free synthesizer in the AU ecosystem — <!-- ENGINE_COUNT -->86<!-- /ENGINE_COUNT --> engines, 19,859+ presets, 15 cross-engine coupling types, MIT license**
 
 ---
 
-**[City, Date]** — XO_OX Designs today announced XOceanus, a free and open-source multi-engine synthesizer for macOS. XOceanus ships with <!-- ENGINE_COUNT -->86<!-- /ENGINE_COUNT --> distinct synthesis engines, more than 19,500 factory presets, and a cross-engine coupling system that produces sounds impossible on any single synthesizer.
+**[City, Date]** — XO_OX Designs today announced XOceanus, a free and open-source multi-engine synthesizer for macOS. XOceanus ships with <!-- ENGINE_COUNT -->86<!-- /ENGINE_COUNT --> distinct synthesis engines, more than 19,859 factory presets, and a cross-engine coupling system that produces sounds impossible on any single synthesizer.
 
 The instrument is available at no cost, permanently, under the MIT open-source license. No subscription, no trial period, no upgrade gate.
 
@@ -22,7 +22,7 @@ XOceanus is a multi-engine synthesizer that loads up to four engines simultaneou
 
 The engines span the full range of synthesis architecture: additive, subtractive, FM, granular, physical modeling, wavetable, cellular automata, and hybrid approaches. Each engine has its own parameter set, preset library, expression mapping, and identity within the instrument's aquatic mythology. Every engine responds to velocity, aftertouch, and mod wheel. Every engine has four macro controls and autonomous modulation.
 
-The factory preset library ships with more than 19,500 presets organized across 15 mood categories and indexed by a six-dimensional Sonic DNA system covering brightness, warmth, movement, density, space, and aggression. Users can navigate by character rather than by preset number.
+The factory preset library ships with more than 19,859 presets organized across 16 mood categories and indexed by a six-dimensional Sonic DNA system covering brightness, warmth, movement, density, space, and aggression. Users can navigate by character rather than by preset number.
 
 ---
 
@@ -42,7 +42,7 @@ The preset format — `.xometa` JSON — is documented and stable. The parameter
 |---|---|
 | **Engines** | <!-- ENGINE_COUNT -->86<!-- /ENGINE_COUNT --> distinct synthesis engines |
 | **Coupling types** | 15 cross-engine modulation types |
-| **Factory presets** | 19,500+ across 15 mood categories |
+| **Factory presets** | 19,859+ across 16 mood categories |
 | **Expression** | Velocity-to-timbre in every engine; aftertouch and mod wheel on most |
 | **Macros** | 4 per engine (CHARACTER, MOVEMENT, COUPLING, SPACE) |
 | **Platform** | macOS — AU plugin + standalone application |
