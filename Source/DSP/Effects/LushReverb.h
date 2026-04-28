@@ -560,6 +560,7 @@ private:
         float tick(float target)
         {
             current += coeff * (target - current);
+            current = flushDenormal(current);
             return current;
         }
     };

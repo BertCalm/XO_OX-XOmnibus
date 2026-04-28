@@ -24,7 +24,7 @@ There is a lot coming. Some of it is almost here. Some of it is three years out 
 
 Let me start with what already exists, because the scope of it is easy to miss when you are inside it.
 
-XOceanus V1 ships with **34 synthesis engines**. That is not 34 presets. It is not 34 variations on a similar synthesis approach. It is 34 distinct characters — each built as a standalone instrument first, each with its own DSP architecture, its own aquatic mythology, its own accent color in the Gallery, its own factory preset library. The smallest preset library in the fleet is 80 presets; the largest is 200. The total is ~19,500+ factory presets, all in fifteen mood categories, all with 6D Sonic DNA tags, all tested in production context.
+XOceanus V1 ships with **34 synthesis engines**. That is not 34 presets. It is not 34 variations on a similar synthesis approach. It is 34 distinct characters — each built as a standalone instrument first, each with its own DSP architecture, its own aquatic mythology, its own accent color in the Gallery, its own factory preset library. The smallest preset library in the fleet is 80 presets; the largest is 200. The total is 19,859+ factory presets, all in sixteen mood categories, all with 6D Sonic DNA tags, all tested in production context.
 
 Alongside the 34 engines, V1 ships the **Oxport Tool Suite** — eight tools for MPC producers that handle the full export pipeline from XOceanus patch to installed MPC program:
 
@@ -165,7 +165,7 @@ We are just getting started.
 >
 > **Now (V1.0)**
 > — 34 synthesis engines (ODDFELIX through OPAL) — COMPLETE
-> — ~19,500+ factory presets in 15 moods — COMPLETE
+> — 19,859+ factory presets in 16 moods — COMPLETE
 > — Oxport Tool Suite (8 tools) — COMPLETE
 > — MPC XPN integration — COMPLETE
 > — AU, Standalone (macOS) — COMPLETE
