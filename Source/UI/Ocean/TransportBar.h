@@ -130,15 +130,31 @@ public:
     std::function<void(int, int)> onTimeSigChanged;
 
     //==========================================================================
-    // juce::TooltipClient — D13 B2: AUTO pill tooltip.
+    // juce::TooltipClient — §1301 batch 4: full transport bar coverage.
     // Returns a tooltip string based on which region is currently hovered.
     juce::String getTooltip() override
     {
         switch (hoveredRegion_)
         {
+            case kRegPlay:
+                return playing_ ? "Stop transport" : "Start transport";
+            case kRegBpm:
+                return "Tempo — drag up/down to change BPM";
+            case kRegTap:
+                return "Tap tempo — tap repeatedly to set BPM";
+            case kRegTimeSigN:
+                return "Time signature — click to cycle (4/4, 3/4, 6/8, 7/8, 5/4)";
+            case kRegTimeSigD:
+                return "Time signature — click to cycle (4/4, 3/4, 6/8, 7/8, 5/4)";
+            case kRegSyncInt:
+                return "Internal clock — XOceanus drives its own tempo";
+            case kRegSyncHost:
+                return "Host sync — lock tempo and transport to DAW";
             case kRegSyncAuto:
                 // D13 B2: AUTO pill tooltip spec.
                 return "Follow host transport when playing, free-run when stopped";
+            case kRegCouple:
+                return "Open coupling inspector";
             default:
                 return {};
         }
