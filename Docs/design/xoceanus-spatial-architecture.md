@@ -34,7 +34,7 @@
 - **FX chain** per engine (6 FX slots: SAT/DELAY/REVERB/MOD/COMP/SEQ)
 - **PlaySurface** with 3 modes (XOuija fretless, MPC 16-pad, Seaboard keyboard)
 - **Expression controllers** (mod wheel, pitch bend, 4 macro strips, tide controller, XY pad)
-- **Preset browser** with ~19,200+ presets, 15 moods, DNA similarity search
+- **Preset browser** with 19,859+ presets, 16 moods, DNA similarity search
 - **Must run as plugin** inside DAW (host window constraints, no floating windows in AU)
 - **Must work on iPad** (AUv3 constraints, touch-only, safe areas)
 
@@ -55,7 +55,7 @@ At 1100×700pt, our total area is **770,000 px²**. After chrome (header 52pt + 
 
 ### The Problem No Synth Has Solved
 
-Most synths have 2-3 sound sources (oscillators). XOceanus has **4 simultaneous engine slots** drawn from a pool of **92 engines**, each with different parameter structures. This is closer to a **DAW mixer** than a traditional synth. No existing synth UI paradigm handles this cleanly.
+Most synths have 2-3 sound sources (oscillators). XOceanus has **4 simultaneous engine slots** drawn from a pool of **86 engines**, each with different parameter structures. This is closer to a **DAW mixer** than a traditional synth. No existing synth UI paradigm handles this cleanly.
 
 ### What We Can Learn from Competitors
 
@@ -66,7 +66,7 @@ Most synths have 2-3 sound sources (oscillators). XOceanus has **4 simultaneous 
 | **Pigments** | Top tabs (ENGINE / SEQ / FX / MATRIX), full-width content per tab | 2 engines + seq | Full width per view, generous knob spacing | You see ONE thing at a time — lose context of the whole patch |
 | **Phase Plant** | Vertical generator stack (add/remove/reorder), FX chain right | N generators | Scalable to any number of sources | Very tall, lots of scrolling, no overview |
 | **Omnisphere** | Layer A/B tabs, massive browser, FX page | 2 layers | Deep browser, rich FX | Tabbed = you forget what the other layer is doing |
-| **OP-1 (TE)** | Single screen, mode-switching, same 4 knobs control different params | 1 engine | Radical simplicity, same physical gestures for everything | Too constrained for 92 engines with different structures |
+| **OP-1 (TE)** | Single screen, mode-switching, same 4 knobs control different params | 1 engine | Radical simplicity, same physical gestures for everything | Too constrained for 86 engines with different structures |
 
 ### The XOceanus Answer: Hybrid Stack + Context Strip
 

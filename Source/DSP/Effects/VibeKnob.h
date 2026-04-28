@@ -216,6 +216,7 @@ private:
         float peak = std::max(std::abs(satL), std::abs(satR));
         float coeff = (peak > compEnv) ? compAttackCoeff : compReleaseCoeff;
         compEnv += coeff * (peak - compEnv);
+        compEnv = flushDenormal(compEnv);
 
         float compGain = 1.0f;
         if (compEnv > compThresh && compThresh > 0.001f)

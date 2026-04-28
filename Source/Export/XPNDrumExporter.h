@@ -725,13 +725,13 @@ private:
         auto manifestFile = expansionsDir.getChildFile("manifest");
 
         juce::String content;
-        content << "Name=" << config.name << "\n";
-        content << "Version=" << config.version << "\n";
-        content << "Author=" << config.manufacturer << "\n";
+        content << "Name=" << sanitizeManifestField(config.name) << "\n";
+        content << "Version=" << sanitizeManifestField(config.version) << "\n";
+        content << "Author=" << sanitizeManifestField(config.manufacturer) << "\n";
         content << "Description=Drum expansion featuring ONSET engine presets\n";
         content << "Category=Drums\n";
         content << "Tags=drums,percussion,xo_ox\n";
-        content << "ID=" << config.bundleId << "\n";
+        content << "ID=" << sanitizeManifestField(config.bundleId) << "\n";
         content << "PresetCount=" << presetCount << "\n";
 
         manifestFile.replaceWithText(content);
@@ -759,6 +759,16 @@ private:
     static juce::String sanitize(const juce::String& name)
     {
         return name.replaceCharacters(" /\\:*?\"<>|", "__________").substring(0, 50);
+    }
+
+    //==========================================================================
+    // Manifest field sanitizer — strips characters that corrupt the Key=Value
+    // manifest format (newlines would inject extra lines; '=' would split a key).
+    //==========================================================================
+
+    static juce::String sanitizeManifestField(const juce::String& s)
+    {
+        return s.replaceCharacters("\r\n", "  ").replace("=", "_");
     }
 };
 
