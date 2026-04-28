@@ -66,8 +66,11 @@ public:
     //==========================================================================
     // ViewState — canonical definition (Phase 3 unification, issue #1184)
     //
-    // This replaces the duplicate enum in OceanLayout::ViewState and
-    // OceanView::ViewState.  Both of those are removed in Phase 3 step 11.
+    // This replaces OceanLayout::ViewState (removed in Phase 3 step 11).
+    // OceanView::ViewState is retained as a local convenience alias with the
+    // same integer values — it allows many comparison sites in OceanView to
+    // read the enum without qualifying OceanStateMachine::ViewState every time.
+    // Phase 4 cleanup: remove OceanView::ViewState and update comparison sites.
     //==========================================================================
 
     /** Interaction states that control the full layout strategy. */

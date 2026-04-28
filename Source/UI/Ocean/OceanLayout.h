@@ -74,8 +74,15 @@ namespace xoceanus
 */
 struct OceanViewContext
 {
-    // ── State variables (read-only, via getters below) ────────────────────
-    // TODO Phase 3 cleanup: these will migrate to OceanStateMachine.
+    // ── State variables (read-only, via const refs) ──────────────────────
+    // Phase 3 status:
+    //   selectedSlot — OceanView::selectedSlot_ is now a mirror of
+    //     stateMachine_.selectedSlot(), kept in sync via onStateEntered.
+    //     Phase 4 TODO: pass selectedSlot as a parameter to layoutForState()
+    //     and remove from OceanViewContext.
+    //   firstLaunch — UI-level flag (not StateMachine state).  Stays here.
+    //   detailShowing — UI-level flag (tracks EngineDetailPanel visibility).
+    //     Stays here.
     const int&   selectedSlot;      ///< which engine slot is "selected"
     const bool&  firstLaunch;       ///< true until first engine load
     const bool&  detailShowing;     ///< true while EngineDetailPanel is visible

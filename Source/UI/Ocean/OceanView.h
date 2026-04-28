@@ -2408,6 +2408,13 @@ private:
     // State
     //==========================================================================
 
+    // Phase 3 (#1184): viewState_ and selectedSlot_ are mirrors of
+    // stateMachine_.currentState() / selectedSlot(), kept in sync via the
+    // onStateEntered callback.  They exist to:
+    //   (a) satisfy OceanViewContext const-refs that OceanLayout reads, and
+    //   (b) allow the many comparison sites in OceanView to use the local
+    //       ViewState enum without qualifying OceanStateMachine::ViewState.
+    // Phase 4 TODO: remove mirrors; route OceanLayout via parameter or accessor.
     ViewState viewState_       = ViewState::Orbital;
     int       selectedSlot_    = -1;
     float     dimAlpha_        = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
@@ -2442,7 +2449,7 @@ private:
     // Phase 1 decomposition (#1184): OceanChildren owns all deferred-init
     // unique_ptr children.  Constructed before value-type members so it is
     // ready to receive addAndMakeVisible calls from its init methods.
-    // (Phase 2 will add OceanLayout layout_; Phase 3 OceanStateMachine sm_.)
+    // Phase 2: OceanLayout layout_ added.  Phase 3: OceanStateMachine stateMachine_ added.
     //==========================================================================
 
     OceanChildren children_{*this};
@@ -2542,11 +2549,11 @@ private:
 
     //==========================================================================
     // Phase 2 decomposition (#1184): OceanLayout owns all layout logic.
-    // Declared LAST so all referenced members are already constructed.
+    // Phase 3 (#1184): OceanStateMachine owns ViewState + transition logic.
+    // Both declared LAST so all referenced members are already constructed.
     //
     // buildLayoutContext() assembles the non-owning OceanViewContext that
-    // OceanLayout needs.  It is called once during member initialisation
-    // via the delegating initialiser below.
+    // OceanLayout needs.  It is called once during member initialisation.
     //==========================================================================
 
     OceanViewContext buildLayoutContext()
