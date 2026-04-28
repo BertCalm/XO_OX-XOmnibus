@@ -110,9 +110,9 @@ The coupling graph is not a patch bay. It is a living ecology.
 
 ## Presets
 
-19,500+ active factory presets in `.xometa` format, organized by 15 moods:
+19,859+ active factory presets in `.xometa` format, organized by 16 moods:
 
-**Foundation** · **Atmosphere** · **Entangled** · **Prism** · **Flux** · **Aether** · **Family** · **Submerged** · **Coupling** · **Crystalline** · **Deep** · **Ethereal** · **Kinetic** · **Luminous** · **Organic**
+**Foundation** · **Atmosphere** · **Entangled** · **Prism** · **Flux** · **Aether** · **Family** · **Submerged** · **Coupling** · **Crystalline** · **Deep** · **Ethereal** · **Kinetic** · **Luminous** · **Organic** · **Shadow**
 
 Every preset carries a 6D Sonic DNA signature (brightness, warmth, movement, density, space, aggression). **Guru Bin Awakening Presets** — hero presets curated by the Guru Bin — mark the highest expression of each engine.
 

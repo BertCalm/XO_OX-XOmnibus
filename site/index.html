@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="XOceanus — synthesis from the deepest place. 92 engines, each a creature from the aquatic deep. Couple anything. Make sounds nothing else makes. Free & open-source.">
+<meta name="description" content="XOceanus — synthesis from the deepest place. 86 engines, each a creature from the aquatic deep. Couple anything. Make sounds nothing else makes. Free & open-source.">
 <meta property="og:title" content="XOceanus — Synthesis from the Deepest Place">
-<meta property="og:description" content="92 engines. 15 coupling types. Sounds that only exist when creatures are in the same water. Free & open-source.">
+<meta property="og:description" content="86 engines. 15 coupling types. Sounds that only exist when creatures are in the same water. Free & open-source.">
 <meta property="og:image" content="https://xo-ox.org/assets/og-image.png">
 <meta property="og:url" content="https://xo-ox.org/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="XOceanus — Synthesis from the Deepest Place">
-<meta name="twitter:description" content="92 engines. Couple anything. Sounds nothing else makes. Free & open-source. By XO_OX Designs.">
+<meta name="twitter:description" content="86 engines. Couple anything. Sounds nothing else makes. Free & open-source. By XO_OX Designs.">
 <meta name="twitter:image" content="https://xo-ox.org/assets/og-image.png">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text x='4' y='24' font-size='24' fill='%23E9C46A'>X</text></svg>">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -33,7 +33,7 @@
     "name": "XO_OX Designs",
     "url": "https://xo-ox.org"
   },
-  "description": "Multi-engine character synthesizer with 92 engines, thousands of presets, and cross-engine coupling. Free and open-source."
+  "description": "Multi-engine character synthesizer with 86 engines, thousands of presets, and cross-engine coupling. Free and open-source."
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -3502,6 +3502,20 @@ if (stripEl) {
 // ═══════════ INJECT CREATURE SPRITES (progressive enhancement) ═══════════
 // Load engine-creature-map.json and overlay creature sprites on rendered cards.
 // Uses spritesheet (img/creatures.png) or individual fish images depending on map entry.
+
+// Validate sprite paths from engine-creature-map.json before interpolating into CSS.
+// Allowlist: same-origin relative paths under /img/ or /sprites/ only.
+// Rejects external URLs, javascript: URIs, data: URIs, and CSS injection attempts.
+function safeSpritePath(p) {
+  if (typeof p !== 'string' || p.length === 0) return '';
+  try {
+    const u = new URL(p, location.origin);
+    if (u.origin !== location.origin) return '';
+    if (!u.pathname.startsWith('/img/') && !u.pathname.startsWith('/sprites/')) return '';
+    return u.pathname;
+  } catch { return ''; }
+}
+
 fetch('engine-creature-map.json')
   .then(r => r.json())
   .then(data => {
@@ -3530,10 +3544,13 @@ fetch('engine-creature-map.json')
         sprite.style.backgroundPosition = `0px -${c.spritesheetRow * 48}px`;
         sprite.style.backgroundSize = `96px 1488px`;
       } else if (c.path) {
-        // Individual fish image
-        sprite.style.backgroundImage = `url(${c.path})`;
-        sprite.style.backgroundPosition = 'center';
-        sprite.style.backgroundSize = 'contain';
+        // Individual fish image — path validated against same-origin allowlist
+        const safePath = safeSpritePath(c.path);
+        if (safePath) {
+          sprite.style.backgroundImage = `url(${safePath})`;
+          sprite.style.backgroundPosition = 'center';
+          sprite.style.backgroundSize = 'contain';
+        }
       }
       card.appendChild(sprite);
     });
