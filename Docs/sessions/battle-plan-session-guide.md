@@ -62,7 +62,7 @@ Pick a track or group of tracks. Each entry has enough context for a fresh Claud
 **Instructions:** Design ocean cross-section overlay with 5 zones (sunlight/twilight/midnight/abyssal/hadal). 73 creature dots positioned by depth affinity. Hover = tooltip (engine name + accent color + 6-word description). Click = load into selected slot. Output: zone-to-engine assignment table + mockup spec.
 
 #### O5 — Design Preset DNA Browser 🟢 P2
-**Instructions:** Design mood tiles (15 moods as filterable pills) + hexagon cards (6-axis DNA radar per preset) + spatial navigation (drag to browse by DNA similarity). "Find Similar" sorts by Euclidean distance in 6D DNA space. Output: interaction spec + visual mockup.
+**Instructions:** Design mood tiles (16 moods as filterable pills) + hexagon cards (6-axis DNA radar per preset) + spatial navigation (drag to browse by DNA similarity). "Find Similar" sorts by Euclidean distance in 6D DNA space. Output: interaction spec + visual mockup.
 
 #### O6 — Design Dark Cockpit Opacity Behavior 🟢 P2
 **Prereqs:** Blessing B041 ratified 8-0
@@ -258,7 +258,7 @@ Pick a track or group of tracks. Each entry has enough context for a fresh Claud
 **Instructions:** Jump-to-section nav bar, section collapse defaults, hero knob selection per engine. Start with ONSET (111 params) as hardest case. Define the pattern all 17 custom engines follow.
 
 #### O54 — Column C Preset Browser Tab 🟢 P2
-**Instructions:** Instrument-type filter pill row (DRUMS/BASS/PADS/KEYS/LEAD/FX), mood pill row (15 moods), DNA radar mini-card per preset, "Find Similar" DNA proximity sort. Scroll behavior and empty-state defined.
+**Instructions:** Instrument-type filter pill row (DRUMS/BASS/PADS/KEYS/LEAD/FX), mood pill row (16 moods), DNA radar mini-card per preset, "Find Similar" DNA proximity sort. Scroll behavior and empty-state defined.
 
 #### O55 — Column C Coupling Inspector Tab 🟢 P2
 **Instructions:** Source→target arc list, inline type/amount/depth per route, 3 quick-start types with plain-language descriptions (Entangle/Gravitational/Phase), "More..." expansion. Real-time sync with MiniCouplingGraph.
@@ -858,7 +858,7 @@ All Haiku tracks are read-only audits. Run them as verification passes. Most can
 **Command:** `git fetch origin && git log origin/main..HEAD --oneline`
 
 #### H17 — Count Total .xometa Files 🟢 P2
-**Command:** `find Presets/XOceanus/ -name "*.xometa" | wc -l` — should be ~19,500+.
+**Command:** `find Presets/XOceanus/ -name "*.xometa" | wc -l` — should be 19,859+.
 
 #### H18 — Verify Preset Symlink 🟢 P2
 **Command:** `ls -la ~/Library/Application\ Support/XO_OX/XOceanus/Presets`
@@ -959,7 +959,7 @@ See H1.
 #### H65 — Preset Names Exceeding 30 Characters 🟢 P2
 #### H66 — Coupling Preset Validation 🟢 P2
 #### H67 — Duplicate Preset Name Check 🟢 P2
-#### H68 — Total Preset Count Verification (~19,500+) 🟡 P1
+#### H68 — Total Preset Count Verification (19,859+) 🟡 P1
 #### H69 — OXYTOCIN 130 Preset Verification 🟢 P2
 #### H70 — Kitchen Collection Preset Count per Engine 🟢 P2
 
