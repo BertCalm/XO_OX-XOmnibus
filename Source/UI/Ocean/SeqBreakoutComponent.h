@@ -37,9 +37,10 @@
 //   determines direction lock (horizontal = gate toggle intent, vertical = pitch).
 //   A small arrow glyph is painted on any step whose pitch offset != 0.
 //
-// Deferred to follow-up issue (long-press detail panel):
-//   - Long-press per-step detail panel (velocity, note length, slide)
-//   - Scroll-wheel velocity nudge
+// #1298 (long-press detail panel) — IMPLEMENTED:
+//   Long-press (~300ms) on a step LED opens a CallOutBox popover with per-step
+//   velocity, gate length, and pitch offset sliders.
+//   - Scroll-wheel velocity nudge: deferred.
 //
 // Wave 5 C2 mount APPLIED — see OceanView.h initSeqStrip() and resized().
 
@@ -53,6 +54,198 @@
 
 namespace xoceanus
 {
+
+//==============================================================================
+/**
+    StepDetailContent (#1298)
+
+    Contents shown inside the per-step CallOutBox: velocity, gate length, and
+    pitch offset sliders for one step.  The owning SeqBreakoutComponent creates
+    a StepDetailContent, wraps it in a juce::CallOutBox, and disposes it on close.
+*/
+class StepDetailContent : public juce::Component
+{
+public:
+    static constexpr int kWidth  = 200;
+    static constexpr int kHeight = 148;
+
+    // Callback fired whenever a value changes (prefix + param suffix, new value).
+    std::function<void(const juce::String& suffix, float value)> onParamChange;
+
+    StepDetailContent(int stepIdx,
+                      float initVel,    // 0.0 = inherit
+                      float initGlen,   // 0.0 = inherit
+                      int   initPitch,  // semitones ±12
+                      const juce::String& stepLabel)
+        : stepIdx_(stepIdx)
+        , vel_   (juce::jlimit(0.0f, 1.0f,  initVel))
+        , glen_  (juce::jlimit(0.0f, 1.5f,  initGlen))
+        , pitch_ (juce::jlimit(-12, 12, initPitch))
+    {
+        setSize(kWidth, kHeight);
+        ignoreUnused(stepLabel);
+    }
+
+    void paint(juce::Graphics& g) override
+    {
+        // Background
+        g.setColour(juce::Colour(0xFF151820));
+        g.fillRoundedRectangle(getLocalBounds().toFloat(), 6.0f);
+
+        static const juce::Font labelFont(juce::FontOptions{}
+            .withName(juce::Font::getDefaultSansSerifFontName())
+            .withStyle("Bold")
+            .withHeight(8.5f));
+        static const juce::Font valueFont(juce::FontOptions{}
+            .withName(juce::Font::getDefaultSansSerifFontName())
+            .withHeight(9.0f));
+
+        const float w     = static_cast<float>(getWidth());
+        const float rowH  = 36.0f;
+        const float padX  = 12.0f;
+        const float trackX1 = padX + 50.0f;
+        const float trackX2 = w - padX;
+        const float trackW  = trackX2 - trackX1;
+        const float trackH  = 3.0f;
+
+        struct Row { const char* label; float norm; float min; float max; const char* unit; };
+
+        // Normalise pitch -12..+12 → 0..1 for slider display
+        const float pitchNorm = (static_cast<float>(pitch_) + 12.0f) / 24.0f;
+
+        const Row rows[3] = {
+            { "VEL",    vel_ > 0.0f ? vel_ : 0.0f,   0.0f, 1.0f,  "%" },
+            { "GLEN",   glen_ > 0.0f ? glen_ / 1.5f : 0.0f, 0.0f, 1.0f, "%" },
+            { "PITCH",  pitchNorm,   0.0f, 1.0f, "st" }
+        };
+
+        const float trackY0 = 22.0f;
+        const juce::Colour accent(0xFF48CAE4);
+
+        for (int i = 0; i < 3; ++i)
+        {
+            const float ty  = trackY0 + static_cast<float>(i) * rowH;
+            const float mid = ty + rowH * 0.5f;
+
+            // Label
+            g.setFont(labelFont);
+            g.setColour(juce::Colour(0xFF9E9B97).withAlpha(0.55f));
+            g.drawText(juce::String(rows[i].label),
+                       juce::Rectangle<float>(padX, ty + 4.0f, 48.0f, 12.0f).toNearestInt(),
+                       juce::Justification::centredLeft, false);
+
+            // Track
+            const float fill = rows[i].norm * trackW;
+            g.setColour(juce::Colour(0xFF9E9B97).withAlpha(0.10f));
+            g.fillRoundedRectangle(trackX1, mid - trackH * 0.5f, trackW, trackH, 1.5f);
+            g.setColour(accent.withAlpha(0.28f));
+            g.fillRoundedRectangle(trackX1, mid - trackH * 0.5f, fill, trackH, 1.5f);
+
+            // Thumb
+            const float thumbX = trackX1 + fill;
+            g.setColour(accent.withAlpha(0.85f));
+            g.fillEllipse(thumbX - 5.0f, mid - 5.0f, 10.0f, 10.0f);
+
+            // Cache hit-test rect for drag handling
+            trackRects_[i] = juce::Rectangle<float>(trackX1, mid - 8.0f, trackW, 16.0f);
+
+            // Value label
+            juce::String valStr;
+            if (i == 0)
+                valStr = vel_ <= 0.0f ? "inherit" : juce::String(static_cast<int>(vel_ * 127));
+            else if (i == 1)
+                valStr = glen_ <= 0.0f ? "inherit" : juce::String(static_cast<int>(glen_ * 100)) + "%";
+            else
+                valStr = (pitch_ >= 0 ? "+" : "") + juce::String(pitch_) + " st";
+
+            g.setFont(valueFont);
+            g.setColour(juce::Colour(0xFFE8E4DF).withAlpha(0.75f));
+            g.drawText(valStr,
+                       juce::Rectangle<float>(trackX1, mid + 5.0f, trackW, 11.0f).toNearestInt(),
+                       juce::Justification::centred, false);
+        }
+
+        // Step number header
+        g.setFont(labelFont);
+        g.setColour(accent.withAlpha(0.60f));
+        g.drawText("STEP " + juce::String(stepIdx_ + 1),
+                   juce::Rectangle<float>(0.0f, 4.0f, w, 12.0f).toNearestInt(),
+                   juce::Justification::centred, false);
+    }
+
+    void mouseDown(const juce::MouseEvent& e) override
+    {
+        dragRow_      = -1;
+        dragStartX_   = e.position.x;
+        for (int i = 0; i < 3; ++i)
+        {
+            if (trackRects_[i].contains(e.position))
+            {
+                dragRow_ = i;
+                break;
+            }
+        }
+    }
+
+    void mouseDrag(const juce::MouseEvent& e) override
+    {
+        if (dragRow_ < 0) return;
+
+        const float x0     = trackRects_[dragRow_].getX();
+        const float trackW = trackRects_[dragRow_].getWidth();
+        if (trackW <= 0.0f) return;
+
+        const float norm = juce::jlimit(0.0f, 1.0f, (e.position.x - x0) / trackW);
+
+        if (dragRow_ == 0)
+        {
+            vel_ = norm; // 0 = inherit (left edge), >0 = override
+            if (onParamChange)
+                onParamChange("svel_" + juce::String(stepIdx_), vel_);
+        }
+        else if (dragRow_ == 1)
+        {
+            glen_ = norm * 1.5f;
+            if (onParamChange)
+                onParamChange("glen_" + juce::String(stepIdx_), glen_);
+        }
+        else // pitch
+        {
+            pitch_ = juce::jlimit(-12, 12, static_cast<int>(std::round(norm * 24.0f - 12.0f)));
+            if (onParamChange)
+                onParamChange("pitch_" + juce::String(stepIdx_), static_cast<float>(pitch_));
+        }
+        repaint();
+    }
+
+    void mouseDoubleClick(const juce::MouseEvent& e) override
+    {
+        // Double-click on a track resets it to inherit / zero.
+        for (int i = 0; i < 3; ++i)
+        {
+            if (trackRects_[i].contains(e.position))
+            {
+                if (i == 0) { vel_ = 0.0f;  if (onParamChange) onParamChange("svel_"  + juce::String(stepIdx_), 0.0f); }
+                if (i == 1) { glen_ = 0.0f; if (onParamChange) onParamChange("glen_"  + juce::String(stepIdx_), 0.0f); }
+                if (i == 2) { pitch_ = 0;   if (onParamChange) onParamChange("pitch_" + juce::String(stepIdx_), 0.0f); }
+                repaint();
+                return;
+            }
+        }
+    }
+
+private:
+    int   stepIdx_ = 0;
+    float vel_     = 0.0f;
+    float glen_    = 0.0f;
+    int   pitch_   = 0;
+
+    std::array<juce::Rectangle<float>, 3> trackRects_{};
+    int   dragRow_    = -1;
+    float dragStartX_ = 0.0f;
+
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(StepDetailContent)
+};
 
 //==============================================================================
 /**
@@ -211,10 +404,11 @@ public:
 
         // ── Step LED gate toggle (C3) ──
         // If the mouseDown was on a step LED and drag did not resolve as a pitch edit,
-        // interpret the mouseUp as a gate toggle.
+        // interpret the mouseUp as a gate toggle — unless a long-press popup was shown.
         if (dragStepIdx_ >= 0)
         {
-            if (!stepDragConsumed_ && stepDragMode_ != StepDragMode::Pitch)
+            // #1298: if long-press popup already opened, skip the gate toggle.
+            if (!longPressTriggered_ && !stepDragConsumed_ && stepDragMode_ != StepDragMode::Pitch)
             {
                 // Tap: toggle gate override for this step.
                 const bool newGate = !stepGateOverrides_[static_cast<size_t>(dragStepIdx_)];
@@ -223,9 +417,12 @@ public:
                 repaint();
             }
             // Reset drag state
-            dragStepIdx_      = -1;
-            stepDragMode_     = StepDragMode::Pending;
-            stepDragConsumed_ = false;
+            dragStepIdx_        = -1;
+            stepDragMode_       = StepDragMode::Pending;
+            stepDragConsumed_   = false;
+            longPressStep_      = -1;
+            longPressElapsed_   = 0;
+            longPressTriggered_ = false;
             return;
         }
 
@@ -255,6 +452,10 @@ public:
                         stepDragMode_ = StepDragMode::Pitch;
                     else
                         stepDragMode_ = StepDragMode::GateToggle;
+
+                    // #1298: any drag movement cancels the long-press popup countdown.
+                    longPressStep_    = -1;
+                    longPressElapsed_ = 0;
                 }
             }
 
@@ -301,8 +502,18 @@ public:
             dragStepIdx_       = stepHit;
             dragStepStartY_    = e.position.y;
             dragStepStartPitch_ = static_cast<int>(stepPitchOffsets_[static_cast<size_t>(stepHit)]);
+
+            // #1298: start long-press countdown for detail popover.
+            // Uses the existing 15Hz sync timer; kLongPressTicks ticks ≈ 300ms.
+            longPressStep_    = stepHit;
+            longPressTriggered_ = false;
+            longPressElapsed_ = 0;
             return; // control tracks handled only if step not hit
         }
+
+        // No step hit — cancel any pending long-press
+        longPressStep_    = -1;
+        longPressElapsed_ = 0;
 
         // Identify which control track was pressed
         if (swingTrack_.contains(e.position))
@@ -369,6 +580,9 @@ private:
     static constexpr float kHandleH    = 8.0f;
     static constexpr float kSectionGap = 10.0f;
     static constexpr float kPadding    = 12.0f;
+
+    // #1298: long-press ticks at 15Hz ≈ 300ms (5 ticks × 67ms each)
+    static constexpr int kLongPressTicks = 5;
 
     //==========================================================================
     // ── Main layout + paint ──
@@ -531,9 +745,10 @@ private:
         g.drawText("STEPS", juce::Rectangle<float>(x, y - 14.0f, 40.0f, 12.0f).toNearestInt(),
                    juce::Justification::centredLeft, false);
 
-        // C3: hint label (right-aligned) — replaces old "pitch edit in C3" deferred note
+        // C3/C4: hint label (right-aligned)
         g.setColour(juce::Colour(0xFF5E6878));
-        g.drawText("drag = pitch  tap = gate", juce::Rectangle<float>(x, y - 14.0f, areaW, 12.0f).toNearestInt(),
+        g.drawText("drag=pitch  tap=gate  hold=detail",
+                   juce::Rectangle<float>(x, y - 14.0f, areaW, 12.0f).toNearestInt(),
                    juce::Justification::centredRight, false);
 
         for (int i = 0; i < 16; ++i)
@@ -630,6 +845,16 @@ private:
                 g.drawText(pitchStr,
                            juce::Rectangle<float>(lx, y + 13.0f, ledW, 9.0f).toNearestInt(),
                            juce::Justification::centred, false);
+            }
+
+            // #1298: small dot indicator on steps that have vel or glen override set.
+            if (inRange && (stepVelOverrides_[i] > 0.0f || stepGlenOverrides_[i] > 0.0f))
+            {
+                const juce::Colour dotCol = isCursor
+                    ? juce::Colour(0xFF0E111A).withAlpha(0.70f)
+                    : juce::Colour(0xFFE9C46A).withAlpha(0.65f); // XO Gold dot = "detail set"
+                g.setColour(dotCol);
+                g.fillEllipse(lx + ledW * 0.5f - 2.0f, y + ledH - 7.0f, 4.0f, 4.0f);
             }
 
             // Step number (1-indexed, small, bottom-aligned)
@@ -1039,20 +1264,92 @@ private:
         currentEnabled_   = readParamBool("enabled");
 
         // C3: sync per-step gate overrides and pitch offsets
+        // #1298: also sync per-step velocity and gate-length overrides
         for (int i = 0; i < 16; ++i)
         {
             stepGateOverrides_[i] = readParamBool("gate_" + juce::String(i));
             const int pitch = juce::jlimit(-12, 12, readParamInt("pitch_" + juce::String(i), 0));
             stepPitchOffsets_[i] = static_cast<int8_t>(pitch);
+
+            stepVelOverrides_[i]  = juce::jlimit(0.0f, 1.0f,
+                                        readParamFloat("svel_" + juce::String(i), 0.0f));
+            stepGlenOverrides_[i] = juce::jlimit(0.0f, 1.5f,
+                                        readParamFloat("glen_" + juce::String(i), 0.0f));
         }
     }
 
     //==========================================================================
     void timerCallback() override
     {
+        // #1298: long-press detection — if we're in a pending long-press state,
+        // check whether 300ms has elapsed.  longPressElapsed_ counts 15Hz ticks
+        // (each tick = ~67ms; 5 ticks ≈ 333ms).
+        if (longPressStep_ >= 0 && !longPressTriggered_)
+        {
+            ++longPressElapsed_;
+            if (longPressElapsed_ >= kLongPressTicks)
+            {
+                longPressTriggered_ = true;
+                openStepDetailPopup(longPressStep_);
+            }
+        }
+
         syncFromApvts();
         if (isShowing())
             repaint();
+    }
+
+    // #1298: open the per-step detail CallOutBox for the given step index.
+    void openStepDetailPopup(int stepIdx)
+    {
+        if (stepIdx < 0 || stepIdx >= 16) return;
+
+        const float vel   = readParamFloat("svel_"  + juce::String(stepIdx), 0.0f);
+        const float glen  = readParamFloat("glen_"  + juce::String(stepIdx), 0.0f);
+        const int   pitch = juce::jlimit(-12, 12,
+                                readParamInt("pitch_" + juce::String(stepIdx), 0));
+
+        auto* content = new StepDetailContent(
+            stepIdx, vel, glen, pitch,
+            "Step " + juce::String(stepIdx + 1));
+
+        const juce::String pref = prefix_; // capture for lambda
+        juce::AudioProcessorValueTreeState& apvts = apvts_;
+
+        content->onParamChange = [&apvts, pref](const juce::String& suffix, float value)
+        {
+            // Suffix comes from StepDetailContent without the slot prefix, e.g. "svel_3".
+            // We need to call setValueNotifyingHost via the APVTS parameter.
+            if (auto* p = apvts.getParameter(pref + suffix))
+            {
+                p->beginChangeGesture();
+                p->setValueNotifyingHost(p->convertTo0to1(value));
+                p->endChangeGesture();
+            }
+        };
+
+        // Compute the step LED's local rect for CallOutBox anchor.
+        // stepRowBounds_ is in component-local coordinates (rebuilt each paint call).
+        const float areaW = stepRowBounds_.getWidth();
+        const float gap   = 3.0f;
+        const float ledW  = (areaW - 15.0f * gap) / 16.0f;
+        const float lx    = stepRowBounds_.getX() + static_cast<float>(stepIdx) * (ledW + gap);
+        const juce::Rectangle<int> ledLocalRect(
+            static_cast<int>(lx),
+            static_cast<int>(stepRowBounds_.getY()),
+            static_cast<int>(ledW),
+            static_cast<int>(stepRowBounds_.getHeight()));
+
+        // CallOutBox::launchAsynchronously takes the anchor rect in the coordinate
+        // space of the parent component pointer.  Passing 'this' = component-local coords.
+        // TODO Wave5-C4/C5 mount: pass the editor's top-level component so the callout
+        // renders above OceanView overlays.
+        // TODO Wave5-C4/C5 mount: consider mounting via XOceanusEditor.h or OceanView.h
+        // to ensure z-order above all Ocean overlays.
+        juce::CallOutBox::launchAsynchronously(
+            std::unique_ptr<juce::Component>(content),
+            ledLocalRect,
+            this);
     }
 
     //==========================================================================
@@ -1104,12 +1401,24 @@ private:
     std::array<bool, 16>  stepGateOverrides_ {};
     std::array<int8_t, 16> stepPitchOffsets_  {};  // ±12 semitones
 
+    // #1298: Per-step velocity and gate-length override mirrors (message-thread cache).
+    // 0.0 = inherit sentinel for both.
+    std::array<float, 16> stepVelOverrides_  {};   // 0.0 = inherit from baseVel
+    std::array<float, 16> stepGlenOverrides_ {};   // 0.0 = inherit from global gate
+
     // C3: Step LED drag state for Maschine-style vertical pitch editing
     int          dragStepIdx_      = -1;        // which step is being dragged (-1 = none)
     float        dragStepStartY_   = 0.0f;      // mouseDown Y position in component coords
     int          dragStepStartPitch_ = 0;        // pitch offset at drag start
     StepDragMode stepDragMode_     = StepDragMode::Pending;
     bool         stepDragConsumed_ = false;     // true once direction locked; suppresses tap action
+
+    // #1298: Long-press state for per-step detail popover.
+    // longPressStep_ = step index awaiting long-press (-1 = none).
+    // longPressElapsed_ counts 15Hz timer ticks; fires popup at kLongPressTicks.
+    int  longPressStep_      = -1;
+    int  longPressElapsed_   = 0;
+    bool longPressTriggered_ = false;
 
     // Hover state
     int hoveredPattern_ = -1;
