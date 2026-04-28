@@ -48,7 +48,11 @@ enum class ModSourceId
     // the X or Y component depending on the parameter's semantic (see D9 wiring).
     // Capture slots 0-3 are differentiated by the ModRoute's destParamId suffix.
     XouijaCell = 18,    // Pinned XOuija position (bipolar X+Y, 4 capture slots)
-    Count = 19
+    // ── #1289: per-step pitch offset ModSource ───────────────────────────────
+    // Bipolar -1..+1 mapped from ±12 semitones (0.0 on silent / rest steps).
+    // Deferred from C5; depends on C3 per-step pitch data in PerEnginePatternSequencer.
+    SeqStepPitch = 19,  // Per-step pitch offset bipolar -1..+1 (from ±12 semitones)
+    Count = 20
 };
 
 // Human-readable names used in tooltips and the route list panel.
@@ -94,6 +98,8 @@ inline juce::String modSourceName(ModSourceId id)
         return "Beat Phase";
     case ModSourceId::XouijaCell:
         return "XOuija Pin";
+    case ModSourceId::SeqStepPitch:
+        return "Seq Step Pitch";
     default:
         return "?";
     }
@@ -148,6 +154,8 @@ inline juce::Colour modSourceColour(ModSourceId id)
         return juce::Colour(0xFF80CBC4); // muted teal
     case ModSourceId::XouijaCell:
         return juce::Colour(0xFFE9C46A); // xo-gold — matches planchette accent
+    case ModSourceId::SeqStepPitch:
+        return juce::Colour(0xFF56CFB2); // seafoam — matches REEFS family (pitch-oriented)
     default:
         return juce::Colour(GalleryColors::xoGold);
     }

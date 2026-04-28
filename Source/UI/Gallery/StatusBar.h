@@ -100,6 +100,10 @@ public:
         makeLabel(bpmLabel, "120 BPM");
         makeLabel(voiceLabel, "Voices: 0");
         makeLabel(cpuLabel, "CPU: 0%");
+        // §1301: status bar indicator tooltips.
+        bpmLabel.setTooltip("Current tempo in beats per minute");
+        voiceLabel.setTooltip("Active voice count across all engine slots");
+        cpuLabel.setTooltip("Plugin CPU load — spikes indicate processing budget pressure");
         A11y::setup(bpmLabel, "BPM", "Current tempo in beats per minute", false);
         A11y::setup(voiceLabel, "Voice Count", "Number of currently active voices", false);
         A11y::setup(cpuLabel, "CPU Usage", "Current CPU load percentage", false);
