@@ -197,7 +197,7 @@ Border:         border() color @ 1px
 pillH           = 20 px
 hGap            = 4 px (horizontal gap)
 vGap            = 4 px (vertical gap)
-16 pills total  = ALL + 15 moods (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic)
+16 pills total  = ALL + 16 moods (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic)
 
 Pill widths:    measured per-button, min 32px, text-based width + 18px padding
 Text font:      Inter 9pt

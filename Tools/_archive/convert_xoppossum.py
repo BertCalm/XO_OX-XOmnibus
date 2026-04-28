@@ -16,14 +16,22 @@ from pathlib import Path
 
 # ---------------------------------------------------------------------------
 # Paths
+# Accept SOURCE_DIR as argv[1]; default to ~/XOppossum/Presets/Factory.
+# OUTPUT_BASE is derived relative to this script's location.
 # ---------------------------------------------------------------------------
-SOURCE_DIR = Path(
-    "/Users/joshuacramblet/Library/Mobile Documents/"
-    "com~apple~CloudDocs/Documents/GitHub/XOppossum/Presets/Factory"
-)
-OUTPUT_BASE = Path(
-    "/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus"
-)
+_DEFAULT_SOURCE = Path.home() / "XOppossum" / "Presets" / "Factory"
+if len(sys.argv) > 1:
+    SOURCE_DIR = Path(sys.argv[1])
+else:
+    SOURCE_DIR = _DEFAULT_SOURCE
+
+if not SOURCE_DIR.is_dir():
+    sys.exit(
+        f"Error: source directory not found: {SOURCE_DIR}\n"
+        f"Usage: python {sys.argv[0]} [/path/to/XOppossum/Presets/Factory]"
+    )
+
+OUTPUT_BASE = Path(__file__).resolve().parent.parent / "Presets" / "XOceanus"
 
 # ---------------------------------------------------------------------------
 # Curated preset list (filenames without extension)
