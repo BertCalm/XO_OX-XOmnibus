@@ -19,7 +19,7 @@ import sys
 from collections import defaultdict
 from pathlib import Path
 
-PRESETS_ROOT = Path("/Users/joshuacramblet/Documents/GitHub/XO_OX-XOmnibus/Presets/XOceanus")
+PRESETS_ROOT = Path(__file__).resolve().parent / "Presets" / "XOceanus"
 
 
 def engine_label(meta: dict, filepath: Path) -> str:
