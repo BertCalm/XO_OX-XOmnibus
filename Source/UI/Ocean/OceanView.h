@@ -76,6 +76,7 @@
 #include "../Gallery/SidebarPanel.h"
 #include "../Gallery/StatusBar.h"
 #include "OceanChildren.h"
+#include "OceanLayout.h"
 
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
@@ -3011,6 +3012,63 @@ private:
     // Wave 3 — 3a: debounce delay for position saves (ms).
     // schedulePositionSave() arms this; timerCallback() decrements at 30 Hz.
     static constexpr int kPositionSaveDelayMs = 500;
+
+    //==========================================================================
+    // Phase 2 decomposition (#1184): OceanLayout owns all layout logic.
+    // Declared LAST so all referenced members are already constructed.
+    //
+    // buildLayoutContext() assembles the non-owning OceanViewContext that
+    // OceanLayout needs.  It is called once during member initialisation
+    // via the delegating initialiser below.
+    //==========================================================================
+
+    OceanViewContext buildLayoutContext()
+    {
+        return OceanViewContext {
+            /* selectedSlot       */ selectedSlot_,
+            /* firstLaunch        */ firstLaunch_,
+            /* detailShowing      */ detailShowing_,
+            /* background         */ background_,
+            /* substrate          */ substrate_,
+            /* orbits             */ orbits_,
+            /* ambientEdge        */ ambientEdge_,
+            /* browser            */ browser_,
+            /* emptyStateLabel    */ emptyStateLabel_,
+            /* lifesaver          */ lifesaver_,
+            /* detailOverlay      */ detailOverlay_,
+            /* couplingPopup      */ couplingPopup_,
+            /* dimOverlay         */ dimOverlay_,
+            /* playSurfaceOverlay */ playSurfaceOverlay_,
+            /* ouijaPanel         */ ouijaPanel_,
+            /* exprStrips         */ exprStrips_,
+            /* dotMatrix          */ dotMatrix_,
+            /* hudBar             */ hudBar_,
+            /* subPlaySurface     */ subPlaySurface_,
+            /* surfaceRight       */ surfaceRight_,
+            /* tabBar             */ tabBar_,
+            /* enginesButton      */ enginesButton_,
+            /* presetPrev         */ presetPrev_,
+            /* presetNext         */ presetNext_,
+            /* favButton          */ favButton_,
+            /* settingsButton     */ settingsButton_,
+            /* keysButton         */ keysButton_,
+            /* presetNameLabel    */ presetNameLabel_,
+            /* engineDrawer       */ engineDrawer_,
+            /* settingsDrawer     */ settingsDrawer_,
+            /* getOceanArea       */ [this]{ return getOceanArea(); },
+            /* getEffDashH        */ [this]{ return getEffectiveDashboardH(); },
+            /* getWidth           */ [this]{ return getWidth(); },
+            /* getHeight          */ [this]{ return getHeight(); },
+            /* getLocalBounds     */ [this]{ return getLocalBounds(); }
+        };
+    }
+
+    // Phase 2: OceanLayout owns all ViewState-driven layout logic.
+    // Constructed after all members it references (build order enforced by
+    // placement here at the end of the member list).
+    // TODO Phase 3 cleanup: replace currentViewState_ usage with
+    //   stateMachine_.currentState() once OceanStateMachine is extracted.
+    OceanLayout layout_{ children_, buildLayoutContext() };
 
     //==========================================================================
 
