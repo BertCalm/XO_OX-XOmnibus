@@ -110,6 +110,17 @@ public:
     };
 
     //--------------------------------------------------------------------------
+    // Constructors
+    //--------------------------------------------------------------------------
+
+    // Explicit default constructor required: JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR
+    // declares 'XOuijaWalkEngine(const XOuijaWalkEngine&) = delete', which suppresses
+    // the compiler-generated default constructor.  Without it the compiler refuses to
+    // default-construct this class (juce::AbstractFifo has no default constructor and
+    // the in-class initializer 'editFifo_ { 64 }' is only applied by a defaulted ctor).
+    XOuijaWalkEngine() = default;
+
+    //--------------------------------------------------------------------------
     // Audio thread API
     //--------------------------------------------------------------------------
 
