@@ -161,19 +161,10 @@ public:
     // View-state machine
     //==========================================================================
 
-    /** Interaction states that control the full layout strategy. */
-    enum class ViewState
-    {
-        Orbital,          ///< Default: all creatures orbit the nexus
-        ZoomIn,           ///< One creature enlarged at centre, others minimised
-        SplitTransform,   ///< 20% mini-orbital strip left, 80% detail panel right
-        BrowserOpen       ///< Full-window DNA map browser
-    };
-
-    // Phase 2 (#1184): OceanLayout defines a matching ViewState enum so it can
-    // dispatch layout strategies without a back-reference to OceanView.  The two
-    // enums must stay in sync; the static_asserts in resized() enforce this.
-    // Phase 3 will move ViewState to OceanStateMachine and remove the duplicate.
+    // Phase 3 (#1184): ViewState unified.  The single canonical definition lives
+    // in OceanStateMachine.  OceanView and OceanLayout both alias it via `using`
+    // so all three classes share the same type — no static_casts needed.
+    using ViewState = OceanStateMachine::ViewState;
 
     //==========================================================================
     // Wave 3 — Panel type registry (D4 locked)
@@ -669,12 +660,12 @@ public:
         {
             // Sync mirrors — removes the need for each transitionToX to write
             // viewState_ / selectedSlot_ directly.
-            viewState_    = static_cast<ViewState>(s);
+            // Phase 3: ViewState is a unified alias; no cast needed.
+            viewState_    = s;
             selectedSlot_ = stateMachine_.selectedSlot();
 
             jassert(layout_ != nullptr);
-            layout_->layoutForState(
-                static_cast<OceanLayout::ViewState>(s), getLocalBounds(), 1.0f);
+            layout_->layoutForState(s, getLocalBounds(), 1.0f);
             layout_->reorderZStack();
             repaint();
         };
@@ -685,8 +676,7 @@ public:
                                                 float progress01)
         {
             jassert(layout_ != nullptr);
-            layout_->layoutForState(
-                static_cast<OceanLayout::ViewState>(s), getLocalBounds(), progress01);
+            layout_->layoutForState(s, getLocalBounds(), progress01);
             repaint();
         };
     }
@@ -858,25 +848,18 @@ public:
         // a drawer with SurfaceRightPanel, close the drawer via coordinator.
         coordinatorApplyWidthGuard();
 
-        // Phase 2 (#1184): all layout/geometry logic lives in OceanLayout.
+        // Phase 2+3 (#1184): all layout/geometry logic lives in OceanLayout.
         // OceanView passes only the state arguments; OceanLayout owns the
         // setBounds/setVisible calls for every child component.
         //
         // Z-order note: reorderZStack() is NOT called from here (#1163).
         // It is called exactly once per setup phase (after each initX()), and
         // on each visibility toggle that needs a re-stack.
-        // Guard: OceanView::ViewState and OceanLayout::ViewState must have
-        // identical ordinals so the static_cast below is safe.  Phase 3 will
-        // move ViewState to OceanStateMachine and remove this cast entirely.
-        static_assert(static_cast<int>(ViewState::Orbital)        == static_cast<int>(OceanLayout::ViewState::Orbital));
-        static_assert(static_cast<int>(ViewState::ZoomIn)         == static_cast<int>(OceanLayout::ViewState::ZoomIn));
-        static_assert(static_cast<int>(ViewState::SplitTransform) == static_cast<int>(OceanLayout::ViewState::SplitTransform));
-        static_assert(static_cast<int>(ViewState::BrowserOpen)    == static_cast<int>(OceanLayout::ViewState::BrowserOpen));
-
+        //
+        // Phase 3: ViewState is now a unified alias (OceanStateMachine::ViewState)
+        // shared by OceanView, OceanLayout, and OceanStateMachine — no static_cast.
         jassert(layout_ != nullptr);
-        layout_->layoutForState(
-            static_cast<OceanLayout::ViewState>(viewState_),
-            getLocalBounds());
+        layout_->layoutForState(viewState_, getLocalBounds());
     }
 
     bool keyPressed(const juce::KeyPress& key) override
