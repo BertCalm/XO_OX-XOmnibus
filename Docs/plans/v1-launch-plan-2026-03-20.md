@@ -64,7 +64,7 @@ Define this first. Everything else flows from it.
 
 *Key features at launch:*
 *- 42 synthesis engines, each with distinct DSP character and aquatic mythology identity*
-*- MegaCouplingMatrix: 13 coupling types for real-time cross-engine modulation*
+*- MegaCouplingMatrix: 15 coupling types for real-time cross-engine modulation*
 *- ~22,000 factory presets with 6D Sonic DNA fingerprinting*
 *- 8 mood categories: Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged*
 *- 4 macro system: CHARACTER, MOVEMENT, COUPLING, SPACE*
@@ -111,7 +111,7 @@ Define this first. Everything else flows from it.
 >
 > **What it is:** 42 synthesis engines in one plugin, each with distinct DSP character. Not variations of the same oscillator topology — 42 genuinely different paradigms. ORGANISM is a cellular automaton (Wolfram elementary CA rules driving oscillators). ORACLE is GENDY stochastic synthesis with Maqam tuning. OWLFISH is a Mixtur-Trautonium oscillator. OBRIX is a modular brick synthesis system. ORGANON uses Variational Free Energy metabolism as a control signal. Each one is its own thing.
 >
-> **The coupling system (MegaCouplingMatrix):** Load up to 4 engines at once and wire them together with 13 coupling types — amplitude-to-filter, LFO-to-pitch, envelope-to-morph, audio-to-FM, rhythm-to-blend, and more. The Entangled mood in the preset browser has dedicated coupling presets showing what this sounds like in practice.
+> **The coupling system (MegaCouplingMatrix):** Load up to 4 engines at once and wire them together with 15 coupling types — amplitude-to-filter, LFO-to-pitch, envelope-to-morph, audio-to-FM, rhythm-to-blend, and more. The Entangled mood in the preset browser has dedicated coupling presets showing what this sounds like in practice.
 >
 > **The preset library:** ~22,000 factory presets with 6D Sonic DNA (brightness, warmth, movement, density, space, aggression). Browse by mood, filter by DNA vector, find similar presets algorithmically. The Awakening tier marks the 10 hero presets per engine — the ones that show the ceiling.
 >

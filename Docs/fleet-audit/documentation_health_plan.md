@@ -182,7 +182,7 @@ Docs/specs/
 
 ## Success Metrics
 
-- All accuracy counts verified and matching code: ✅ coupling types (15), preset count (~19,500+), blessings (B001-B043)
+- All accuracy counts verified and matching code: ✅ coupling types (15), preset count (19,859+), blessings (B001-B043)
 - GOVERNANCE.md exists with clear update checklist: ✅ (Phase 2)
 - MANIFEST.md exists with full doc inventory: ✅ (Phase 2)
 - Skills have Last Updated metadata: ✅ (Phase 2)
