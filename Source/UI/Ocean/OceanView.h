@@ -653,6 +653,10 @@ public:
                 subPlaySurface_,
                 ouijaPanel_,
                 surfaceRight_,
+                // Phase 2.5 (#1184): layout-input state bindings (const-ref).
+                selectedSlot_,
+                detailShowing_,
+                firstLaunch_,
             });
     }
 
@@ -841,10 +845,7 @@ public:
         jassert(layout_ != nullptr);
         layout_->layoutForState(
             static_cast<OceanLayout::ViewState>(viewState_),
-            getLocalBounds(),
-            selectedSlot_,
-            detailShowing_,
-            firstLaunch_);
+            getLocalBounds());
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -2088,10 +2089,12 @@ private:
     // layoutFloatingControls() have all been moved to OceanLayout.
     //
     // They are no longer declared here.  OceanView::resized() now calls:
-    //   layout_->layoutForState(state, bounds, selectedSlot_, detailShowing_, firstLaunch_)
+    //   layout_->layoutForState(state, bounds)
     //
     // OceanLayout::layoutForState() dispatches to the per-state layout strategies
-    // and also runs the state-independent dashboard layout.
+    // and also runs the state-independent dashboard layout.  The selectedSlot,
+    // detailShowing, and firstLaunch state values are now const-ref bindings in
+    // LayoutTargets (Phase 2.5, #1184) rather than per-call arguments.
     //==========================================================================
 
     //==========================================================================
