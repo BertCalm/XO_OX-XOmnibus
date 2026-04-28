@@ -658,10 +658,8 @@ public:
         // Step 9 removes the mirror fields; until then keep them in sync here.
         stateMachine_.onStateEntered = [this](OceanStateMachine::ViewState s)
         {
-            // Sync mirrors — removes the need for each transitionToX to write
-            // viewState_ / selectedSlot_ directly.
-            // Phase 3: ViewState is a unified alias; no cast needed.
-            viewState_    = s;
+            // Sync selectedSlot_ mirror (removed in step 9 final cleanup).
+            // viewState_ mirror removed in step 9 — read stateMachine_.currentState() instead.
             selectedSlot_ = stateMachine_.selectedSlot();
 
             jassert(layout_ != nullptr);
@@ -859,7 +857,7 @@ public:
         // Phase 3: ViewState is now a unified alias (OceanStateMachine::ViewState)
         // shared by OceanView, OceanLayout, and OceanStateMachine — no static_cast.
         jassert(layout_ != nullptr);
-        layout_->layoutForState(viewState_, getLocalBounds());
+        layout_->layoutForState(stateMachine_.currentState(), getLocalBounds());
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -890,12 +888,12 @@ public:
                 dismissDetailPanel();
                 return true;
             }
-            if (viewState_ == ViewState::BrowserOpen)
+            if (stateMachine_.currentState() == ViewState::BrowserOpen)
             {
                 exitBrowser();
                 return true;
             }
-            if (viewState_ != ViewState::Orbital)
+            if (stateMachine_.currentState() != ViewState::Orbital)
             {
                 transitionToOrbital();
                 return true;
@@ -906,7 +904,7 @@ public:
         // P: toggle DNA map browser.
         if (key == juce::KeyPress('p') || key == juce::KeyPress('P'))
         {
-            if (viewState_ == ViewState::BrowserOpen)
+            if (stateMachine_.currentState() == ViewState::BrowserOpen)
                 exitBrowser();
             else
                 transitionToBrowser();
@@ -957,10 +955,10 @@ public:
         const bool isTab      = (key.getKeyCode() == juce::KeyPress::tabKey &&
                                   !key.getModifiers().isShiftDown());
         const bool isRight    = (key.getKeyCode() == juce::KeyPress::rightKey &&
-                                  viewState_ == ViewState::Orbital);
+                                  stateMachine_.currentState() == ViewState::Orbital);
         if (isTab || isRight)
         {
-            const int from = (selectedSlot_ >= 0) ? selectedSlot_ : -1;
+            const int from = (stateMachine_.selectedSlot() >= 0) ? stateMachine_.selectedSlot() : -1;
             const int next = nextPopulatedSlot(from, +1);
             if (next >= 0)
                 transitionToZoomIn(next);
@@ -971,10 +969,10 @@ public:
         const bool isShiftTab = (key.getKeyCode() == juce::KeyPress::tabKey &&
                                   key.getModifiers().isShiftDown());
         const bool isLeft     = (key.getKeyCode() == juce::KeyPress::leftKey &&
-                                  viewState_ == ViewState::Orbital);
+                                  stateMachine_.currentState() == ViewState::Orbital);
         if (isShiftTab || isLeft)
         {
-            const int from = (selectedSlot_ >= 0) ? selectedSlot_ : 0;
+            const int from = (stateMachine_.selectedSlot() >= 0) ? stateMachine_.selectedSlot() : 0;
             const int prev = nextPopulatedSlot(from, -1);
             if (prev >= 0)
                 transitionToZoomIn(prev);
@@ -983,7 +981,7 @@ public:
 
         // Up arrow: in ZoomIn state, step to the previous preset.
         if (key.getKeyCode() == juce::KeyPress::upKey &&
-            viewState_ == ViewState::ZoomIn)
+            stateMachine_.currentState() == ViewState::ZoomIn)
         {
             presetPrev_.triggerClick();
             return true;
@@ -991,7 +989,7 @@ public:
 
         // Down arrow: in ZoomIn state, step to the next preset.
         if (key.getKeyCode() == juce::KeyPress::downKey &&
-            viewState_ == ViewState::ZoomIn)
+            stateMachine_.currentState() == ViewState::ZoomIn)
         {
             presetNext_.triggerClick();
             return true;
@@ -1048,7 +1046,7 @@ public:
         // returns to Orbital.  We check whether the click landed on a child
         // component via hitTest propagation — if we receive it here, no child
         // caught it.
-        if (viewState_ == ViewState::ZoomIn)
+        if (stateMachine_.currentState() == ViewState::ZoomIn)
         {
             transitionToOrbital();
             juce::ignoreUnused(e);
@@ -1112,9 +1110,9 @@ public:
         // different slot (selectedSlot_ != slot) or returned to Orbital between
         // when the engine removal was queued and when this runs, do not clobber
         // the new state.  Only ZoomIn / SplitTransform warrant a reset.
-        const bool slotIsSelected = (selectedSlot_ == slot);
-        const bool inEngagedState = (viewState_ == ViewState::ZoomIn ||
-                                     viewState_ == ViewState::SplitTransform);
+        const bool slotIsSelected = (stateMachine_.selectedSlot() == slot);
+        const bool inEngagedState = (stateMachine_.currentState() == ViewState::ZoomIn ||
+                                     stateMachine_.currentState() == ViewState::SplitTransform);
         if (slotIsSelected && inEngagedState)
             transitionToOrbital();
         else
@@ -1404,8 +1402,9 @@ public:
     // State queries
     //==========================================================================
 
-    ViewState getViewState()    const noexcept { return viewState_; }
-    int       getSelectedSlot() const noexcept { return selectedSlot_; }
+    // Phase 3 (#1184): viewState_ removed — read from OceanStateMachine.
+    ViewState getViewState()    const noexcept { return stateMachine_.currentState(); }
+    int       getSelectedSlot() const noexcept { return stateMachine_.selectedSlot(); }
 
     bool isSlotMuted  (int slot) const noexcept
     {
@@ -2450,7 +2449,10 @@ private:
     // State
     //==========================================================================
 
-    ViewState viewState_       = ViewState::Orbital;
+    // Phase 3 (#1184): viewState_ removed — canonical state lives in stateMachine_.
+    // selectedSlot_ is kept as a mirror for LayoutTargets (const int& binding);
+    // it is updated in onStateEntered + selectOrbitInPlace.
+    // Step 9 will remove selectedSlot_ once LayoutTargets binds to stateMachine_ directly.
     int       selectedSlot_    = -1;
     float     dimAlpha_        = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
 
