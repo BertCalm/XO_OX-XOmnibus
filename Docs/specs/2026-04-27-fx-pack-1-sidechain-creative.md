@@ -176,10 +176,29 @@ Plus modifications to:
 
 ---
 
-## 10. Open API Decisions Surfaced
+## 10. Resolved API Decisions
 
-- **Per-engine DNA warp scope** — should `applyMacroWarp` also accept a per-axis weight vector (so M1 CHARACTER can warp brightness more than warmth)? *Recommend: yes, default uniform.*
-- **STFT block-size in Oblate** — the largest FFT (2048) vs. typical block (512) introduces latency. *Recommend: latency-compensated path via `juce::dsp::ProcessSpec::maximumBlockSize`; expose latency to the host.*
-- **Triangle topology cycling** — `Cyclical` topology rotates A→B→C→A through preset steps; should it tempo-sync? *Recommend: yes, optional sync, defaults to free-running.*
+Locked 2026-04-27.
 
-These are the next questions to resolve before scaffolding code.
+### A1 — Per-axis DNA warp weights: **support both, default uniform**
+
+`DNAModulationBus::applyMacroWarp` exposes two overloads:
+
+```cpp
+void applyMacroWarp(int engineSlot, float characterMacro) noexcept;                          // uniform
+void applyMacroWarp(int engineSlot, float characterMacro, std::array<float,6> weights);      // per-axis
+```
+
+Uniform default keeps the simple case simple; per-axis enables the expressive design the 6D structure exists for (preset where M1 mostly warps brightness/movement, leaves warmth/aggression alone).
+
+### A2 — Oblate STFT latency: **default FFT 1024, HQ Mode toggle for 2048**
+
+Default `obla_fftSize = 1024` (~23 ms latency, strong spectral resolution). 2048 is exposed via an HQ Mode toggle. Oblate declares PDC for the active FFT size; switching size produces a one-time host compensation event, acceptable.
+
+**Param impact:** add `obla_hqMode` (bool, default false) — when true, allows `obla_fftSize` selector to reach 2048.
+
+### A3 — Otrium Cyclical topology tempo-sync: **both, user-selectable**
+
+New parameter `otrm_syncMode` (Free / Sync). In Sync mode `otrm_pumpRate` becomes a beat division (1/16 → 32 bars). D005 still satisfied via the breath LFO regardless of Sync state.
+
+**Param impact:** Otrium parameter count rises from 12 to 13.
