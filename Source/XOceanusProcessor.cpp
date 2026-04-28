@@ -493,6 +493,12 @@ void XOceanusProcessor::cacheParameterPointers()
     cachedParams.mpePitchBendRange = apvts.getRawParameterValue("mpe_pitchBendRange");
     cachedParams.mpePressureTarget = apvts.getRawParameterValue("mpe_pressureTarget");
     cachedParams.mpeSlideTarget = apvts.getRawParameterValue("mpe_slideTarget");
+
+    // Wave 5 D1: XOuija walk engine mood/tendency — cache once, read per-block
+    cachedParams.ouijaCalmWild           = apvts.getRawParameterValue("ouija_calm_wild");
+    cachedParams.ouijaConsonantDissonant = apvts.getRawParameterValue("ouija_consonant_dissonant");
+    cachedParams.ouijaTendencyCol        = apvts.getRawParameterValue("ouija_tendency_col");
+    cachedParams.ouijaTendencyRow        = apvts.getRawParameterValue("ouija_tendency_row");
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createParameterLayout()
@@ -1228,6 +1234,30 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
         juce::ParameterID("xouija_density", 1), "XOuija Density",
         juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
+    // ── Wave 5 D1: XOuija multi-layer cell parameters ────────────────────────
+    // Mood sliders and tendency are automatable APVTS params (per spec section 6).
+    // Grid contents (64 cells × 3 layers) are stored in ValueTree only — too many
+    // values for APVTS, and editorial state is not automatable.
+    // Output routing (one per primary slot) is an int choice param 0-4 (Off…ModSource).
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("ouija_calm_wild", 1), "XOuija Calm/Wild",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("ouija_consonant_dissonant", 1), "XOuija Consonant/Dissonant",
+        juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("ouija_tendency_col", 1), "XOuija Tendency Col",
+        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("ouija_tendency_row", 1), "XOuija Tendency Row",
+        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+    for (int s = 0; s < kNumPrimarySlots; ++s)
+        params.push_back(std::make_unique<juce::AudioParameterChoice>(
+            juce::ParameterID("ouija_route_" + juce::String(s), 1),
+            "XOuija Route Slot " + juce::String(s + 1),
+            juce::StringArray{ "Off", "Drive Notes", "Drive Sequencer", "Drive Chord", "Mod Source" },
+            0 /* default: Off */));
+
     // AquaticFXSuite::addParameters() uses ParameterLayout::add() (JUCE 7+ API)
     // rather than the shared params vector, so it must be called after constructing
     // the ParameterLayout from the vector.
@@ -1509,6 +1539,9 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     // Wave 5 C1: prepare per-slot pattern sequencers
     for (auto& seq : slotSequencers_)
         seq.prepareToPlay(sampleRate);
+
+    // Wave 5 D1: prepare XOuija walk engine
+    ouijaWalkEngine_.prepareToPlay(sampleRate, samplesPerBlock);
 }
 
 void XOceanusProcessor::releaseResources()
@@ -2075,6 +2108,27 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         }
     }
     // ── end Wave 5 C1 ────────────────────────────────────────────────────────
+
+    // ── Wave 5 D1: XOuija walk engine ─────────────────────────────────────────
+    // Push mood/tendency atomics from APVTS cached pointers (no string lookups),
+    // then advance the planchette.  Phase B output router (DriveNotes/DriveSeq/
+    // DriveChord/ModSource) will be wired here once those downstream systems land.
+    {
+        if (cachedParams.ouijaCalmWild)
+            ouijaWalkEngine_.setCalmWild(cachedParams.ouijaCalmWild->load(std::memory_order_relaxed));
+        if (cachedParams.ouijaConsonantDissonant)
+            ouijaWalkEngine_.setConsonantDissonant(cachedParams.ouijaConsonantDissonant->load(std::memory_order_relaxed));
+        if (cachedParams.ouijaTendencyCol)
+            ouijaWalkEngine_.setTendencyCol(cachedParams.ouijaTendencyCol->load(std::memory_order_relaxed));
+        if (cachedParams.ouijaTendencyRow)
+            ouijaWalkEngine_.setTendencyRow(cachedParams.ouijaTendencyRow->load(std::memory_order_relaxed));
+
+        ouijaWalkEngine_.processBlock(numSamples,
+                                      hostTransport.getBPM(),
+                                      hostTransport.getBeatPosition(),
+                                      hostTransport.isPlaying());
+    }
+    // ── end Wave 5 D1 ─────────────────────────────────────────────────────────
 
     // Feed external audio to Osmosis if loaded in any slot.
     // Uses virtual isAnalysisEngine() instead of dynamic_cast to avoid RTTI on audio thread.
@@ -3008,6 +3062,16 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         }
     }
 
+    // Wave 5 D1 — Persist XOuija grid contents (64 cells, all 3 layers).
+    // Heatmap is intentionally NOT persisted — it is ephemeral session state
+    // and resets on every load (spec section 6).
+    // saveGridToValueTree() is message-thread-safe (called from getStateInformation).
+    {
+        if (auto existing = state.getChildWithName("XOuijaGrid"); existing.isValid())
+            state.removeChild(existing, nullptr);
+        state.appendChild(ouijaWalkEngine_.saveGridToValueTree(), nullptr);
+    }
+
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
     if (xml)
     {
@@ -3254,6 +3318,17 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
                 else
                     persistedTideWaterlineState_ = tideTree;
             }
+        }
+
+        // Wave 5 D1 — Restore XOuija grid contents.
+        // loadGridFromValueTree() enqueues 64 cell edits through the SPSC queue so
+        // the audio thread receives them lock-free without a stall at the next block.
+        // "XOuijaGrid" is absent in sessions predating this feature — no-op safe
+        // (walk engine keeps its default-constructed neutral-cell grid).
+        {
+            auto gridTree = apvts.state.getChildWithName("XOuijaGrid");
+            if (gridTree.isValid())
+                ouijaWalkEngine_.loadGridFromValueTree(gridTree);
         }
 
         // FIX 8 — Restore PlaySurface scale selector index (closes #314).
