@@ -77,6 +77,7 @@
 #include "../Gallery/StatusBar.h"
 #include "OceanChildren.h"
 #include "OceanLayout.h"
+#include "OceanStateMachine.h"
 
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
@@ -613,6 +614,27 @@ public:
         // One 30 Hz timer drives all EngineOrbit animations in lock-step,
         // synchronizing breathe/bob/wreath phases and reducing OS timer allocations.
         startTimerHz(30);
+
+        // ── Phase 3 (#1184): Wire OceanStateMachine callbacks ────────────────
+        // onStateEntered fires after every state transition and triggers a
+        // layout pass + repaint.  No OceanView* is stored in OceanStateMachine;
+        // this lambda is the only coupling point.
+        stateMachine_.onStateEntered = [this](OceanStateMachine::ViewState s)
+        {
+            // Cast to OceanLayout::ViewState (same values, unified in step 11).
+            layout_.layoutForState(
+                static_cast<OceanLayout::ViewState>(static_cast<int>(s)),
+                getLocalBounds(), 1.0f);
+            repaint();
+        };
+        // onAnimationFrame is stubbed for future animated transitions.
+        // Currently unused — transitions are instantaneous.
+        stateMachine_.onAnimationFrame = [](OceanStateMachine::ViewState /*s*/,
+                                            float /*progress01*/)
+        {
+            // Future: layout_.layoutForState(s, getLocalBounds(), progress01);
+            //         repaint();
+        };
     }
 
     ~OceanView() override
@@ -2559,9 +2581,15 @@ private:
     // Phase 2: OceanLayout owns all ViewState-driven layout logic.
     // Constructed after all members it references (build order enforced by
     // placement here at the end of the member list).
-    // TODO Phase 3 cleanup: replace currentViewState_ usage with
-    //   stateMachine_.currentState() once OceanStateMachine is extracted.
     OceanLayout layout_{ children_, buildLayoutContext() };
+
+    //==========================================================================
+    // Phase 3 decomposition (#1184): OceanStateMachine owns ViewState enum and
+    // all transition logic.  Callbacks wired in OceanView ctor body.
+    // Declared AFTER layout_ so layout_ is ready when callbacks are wired.
+    //==========================================================================
+
+    OceanStateMachine stateMachine_;
 
     //==========================================================================
 
