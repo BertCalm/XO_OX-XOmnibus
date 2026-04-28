@@ -77,6 +77,7 @@
 #include "../Gallery/StatusBar.h"
 #include "OceanChildren.h"
 #include "OceanLayout.h"
+#include "OceanStateMachine.h"
 
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
@@ -658,6 +659,28 @@ public:
                 detailShowing_,
                 firstLaunch_,
             });
+
+        // ── Phase 3 (#1184): wire OceanStateMachine callbacks ────────────────
+        // onStateEntered: a completed transition triggers layout + repaint.
+        stateMachine_.onStateEntered = [this](OceanStateMachine::ViewState s)
+        {
+            jassert(layout_ != nullptr);
+            layout_->layoutForState(
+                static_cast<OceanLayout::ViewState>(s), getLocalBounds(), 1.0f);
+            layout_->reorderZStack();
+            repaint();
+        };
+
+        // onAnimationFrame: stubbed for future animated transitions.
+        // Transitions are currently instantaneous so this is never fired.
+        stateMachine_.onAnimationFrame = [this](OceanStateMachine::ViewState s,
+                                                float progress01)
+        {
+            jassert(layout_ != nullptr);
+            layout_->layoutForState(
+                static_cast<OceanLayout::ViewState>(s), getLocalBounds(), progress01);
+            repaint();
+        };
     }
 
     ~OceanView() override
@@ -2479,6 +2502,9 @@ private:
 
     OceanChildren              children_{*this};
     std::unique_ptr<OceanLayout> layout_;
+
+    // Phase 3 (#1184): OceanStateMachine owns ViewState + all transition logic.
+    OceanStateMachine            stateMachine_;
 
     //==========================================================================
     // Child components — Z-ordered (bottom → top) as declared
