@@ -839,7 +839,7 @@ public:
         static_assert(static_cast<int>(ViewState::BrowserOpen)    == static_cast<int>(OceanLayout::ViewState::BrowserOpen));
 
         jassert(layout_ != nullptr);
-        layout_->applyLayout(
+        layout_->layoutForState(
             static_cast<OceanLayout::ViewState>(viewState_),
             getLocalBounds(),
             selectedSlot_,
@@ -2088,9 +2088,9 @@ private:
     // layoutFloatingControls() have all been moved to OceanLayout.
     //
     // They are no longer declared here.  OceanView::resized() now calls:
-    //   layout_->applyLayout(state, bounds, selectedSlot_, detailShowing_, firstLaunch_)
+    //   layout_->layoutForState(state, bounds, selectedSlot_, detailShowing_, firstLaunch_)
     //
-    // OceanLayout::applyLayout() dispatches to the per-state layout strategies
+    // OceanLayout::layoutForState() dispatches to the per-state layout strategies
     // and also runs the state-independent dashboard layout.
     //==========================================================================
 

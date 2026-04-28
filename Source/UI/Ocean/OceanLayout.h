@@ -12,8 +12,8 @@
 //   OceanLayout layout_{children_, /* LayoutTargets */ {  }};
 //
 //   OceanView::resized() becomes:
-//     layout_.applyLayout(viewState_, getLocalBounds(), selectedSlot_,
-//                         detailShowing_, firstLaunch_);
+//     layout_.layoutForState(viewState_, getLocalBounds(), selectedSlot_,
+//                            detailShowing_, firstLaunch_);
 //
 // Constraints (same as OceanChildren):
 //   - No back-reference to OceanView (no OceanView* member).
@@ -119,7 +119,7 @@ struct LayoutTargets
     Encapsulates all geometry/layout strategies extracted from OceanView.
 
     Responsibilities:
-      - `applyLayout()` — called from OceanView::resized(); dispatches to the
+      - `layoutForState()` — called from OceanView::resized(); dispatches to the
         correct per-state layout strategy and also runs the dashboard/overlay
         layout that is state-independent.
       - `reorderZStack()` — static Z-order enforcement; called once per setup
@@ -176,11 +176,11 @@ public:
         BrowserOpen
     };
 
-    void applyLayout(ViewState   viewState,
-                     juce::Rectangle<int> fullBounds,
-                     int         selectedSlot,
-                     bool        detailShowing,
-                     bool        firstLaunch)
+    void layoutForState(ViewState   viewState,
+                        juce::Rectangle<int> fullBounds,
+                        int         selectedSlot,
+                        bool        detailShowing,
+                        bool        firstLaunch)
     {
         // ── Ocean-area strategy (state-dependent) ────────────────────────────
         switch (viewState)
