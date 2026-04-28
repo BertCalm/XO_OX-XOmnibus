@@ -76,6 +76,7 @@
 #include "../Gallery/SidebarPanel.h"
 #include "../Gallery/StatusBar.h"
 #include "OceanChildren.h"
+#include "OceanLayout.h"
 
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
@@ -167,6 +168,11 @@ public:
         SplitTransform,   ///< 20% mini-orbital strip left, 80% detail panel right
         BrowserOpen       ///< Full-window DNA map browser
     };
+
+    // Phase 2 (#1184): OceanLayout defines a matching ViewState enum so it can
+    // dispatch layout strategies without a back-reference to OceanView.  The two
+    // enums must stay in sync; the static_asserts in resized() enforce this.
+    // Phase 3 will move ViewState to OceanStateMachine and remove the duplicate.
 
     //==========================================================================
     // Wave 3 — Panel type registry (D4 locked)
@@ -612,6 +618,42 @@ public:
         // One 30 Hz timer drives all EngineOrbit animations in lock-step,
         // synchronizing breathe/bob/wreath phases and reducing OS timer allocations.
         startTimerHz(30);
+
+        // ── Phase 2 (#1184): construct OceanLayout now that all component members exist ─
+        // LayoutTargets is a struct of component references; it captures the
+        // address of each member so must be built after all members are alive.
+        // layout_ must be constructed last in the constructor body.
+        layout_ = std::make_unique<OceanLayout>(
+            children_,
+            LayoutTargets{
+                background_,
+                substrate_,
+                orbits_,
+                ambientEdge_,
+                browser_,
+                detailOverlay_,
+                couplingPopup_,
+                dimOverlay_,      // typed as juce::Component& in LayoutTargets
+                playSurfaceOverlay_,
+                emptyStateLabel_,
+                lifesaver_,       // typed as juce::Component& in LayoutTargets
+                enginesButton_,
+                presetPrev_,
+                presetNext_,
+                favButton_,
+                settingsButton_,
+                keysButton_,
+                presetNameLabel_,
+                engineDrawer_,
+                settingsDrawer_,
+                hudBar_,
+                dotMatrix_,
+                tabBar_,
+                exprStrips_,
+                subPlaySurface_,
+                ouijaPanel_,
+                surfaceRight_,
+            });
     }
 
     ~OceanView() override
@@ -626,11 +668,10 @@ public:
     //   1. delegates construction + addChild* to children_.initX()
     //   2. wires any callbacks that reference OceanView state (callbacks cannot
     //      live inside OceanChildren — they would create a back-reference)
-    //   3. calls reorderZStack() to restore Z-order after addChild* disturbs it
+    //   3. calls reorderZStack() — delegates to layout_.reorderZStack() (Phase 2)
     //   4. calls resized() where a layout pass is required
     //
-    // Phase 2 will move reorderZStack() into OceanLayout; Phase 3 will move
-    // state-machine callbacks into OceanStateMachine.
+    // Phase 3 will move state-machine callbacks into OceanStateMachine.
     //==========================================================================
 
     /** Wire macro knobs to the AudioProcessorValueTreeState. */
@@ -782,162 +823,28 @@ public:
         // a drawer with SurfaceRightPanel, close the drawer via coordinator.
         coordinatorApplyWidthGuard();
 
-        switch (viewState_)
-        {
-            case ViewState::Orbital:        layoutOrbital();        break;
-            case ViewState::ZoomIn:         layoutZoomIn();         break;
-            case ViewState::SplitTransform: layoutSplitTransform(); break;
-            case ViewState::BrowserOpen:    layoutBrowser();        break;
-        }
+        // Phase 2 (#1184): all layout/geometry logic lives in OceanLayout.
+        // OceanView passes only the state arguments; OceanLayout owns the
+        // setBounds/setVisible calls for every child component.
+        //
+        // Z-order note: reorderZStack() is NOT called from here (#1163).
+        // It is called exactly once per setup phase (after each initX()), and
+        // on each visibility toggle that needs a re-stack.
+        // Guard: OceanView::ViewState and OceanLayout::ViewState must have
+        // identical ordinals so the static_cast below is safe.  Phase 3 will
+        // move ViewState to OceanStateMachine and remove this cast entirely.
+        static_assert(static_cast<int>(ViewState::Orbital)        == static_cast<int>(OceanLayout::ViewState::Orbital));
+        static_assert(static_cast<int>(ViewState::ZoomIn)         == static_cast<int>(OceanLayout::ViewState::ZoomIn));
+        static_assert(static_cast<int>(ViewState::SplitTransform) == static_cast<int>(OceanLayout::ViewState::SplitTransform));
+        static_assert(static_cast<int>(ViewState::BrowserOpen)    == static_cast<int>(OceanLayout::ViewState::BrowserOpen));
 
-        layoutFloatingControls();
-
-        // ── Step 6: Submarine dashboard layout ──────────────────────────────
-        // Slice the window into: ocean viewport | waterline | dashboard | status bar.
-        const auto  fullBounds = getLocalBounds();
-        const auto  oceanArea  = getOceanArea();  // already excludes waterline + dashboard + status + right panel
-
-        // Right-side panel (PAD/DRUM/XY) — sits beside the ocean.
-        if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
-        {
-            const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
-                                     static_cast<int>(fullBounds.getWidth() * 0.40f));
-            const int wlH2 = children_.waterline() ? children_.waterline()->getDesiredHeight() : kWaterlineH;
-            const int bottomH = getEffectiveDashboardH() + wlH2 + kStatusBarH;
-            surfaceRight_.setBounds(oceanArea.getRight(),
-                                    fullBounds.getY(),
-                                    rpW,
-                                    fullBounds.getHeight() - bottomH);
-        }
-
-        // HUD nav bar — floats at top of ocean area (12px from top, 16px from sides).
-        hudBar_.setBounds(oceanArea.getX() + 16,
-                          oceanArea.getY() + 12,
-                          oceanArea.getWidth() - 32,
-                          40);
-
-        // Waterline separator strip — height is dynamic (6px collapsed, 96px expanded).
-        const int wlH = children_.waterline() ? children_.waterline()->getDesiredHeight() : kWaterlineH;
-        if (auto* wl = children_.waterline())
-            wl->setBounds(fullBounds.getX(), oceanArea.getBottom(), fullBounds.getWidth(), wlH);
-
-        // Dashboard area: between the waterline and the status bar.
-        auto dashArea = fullBounds
-                            .withTrimmedTop(oceanArea.getHeight() + wlH)
-                            .withTrimmedBottom(kStatusBarH);
-
-        // Macro strip (top of dashboard) — macros left, dot-matrix right.
-        {
-            auto macroRow = dashArea.removeFromTop(static_cast<int>(kMacroStripH));
-            if (auto* m = children_.macros())
-            {
-                // Macros take ~480px on the left (5 knobs × ~90px each + padding).
-                const int macroW = std::min(480, macroRow.getWidth() / 2);
-                m->setBounds(macroRow.removeFromLeft(macroW));
-            }
-            // Dot-matrix display fills the remaining space.
-            dotMatrix_.setBounds(macroRow.reduced(4, 4));
-        }
-
-        // Master FX compact strip (48px, between macros and tab bar).
-        if (auto* fx = children_.masterFxStrip())
-            fx->setBounds(dashArea.removeFromTop(48));
-
-        // Epic Slots panel (3-slot FX picker — below Master FX strip).
-        if (auto* es = children_.epicSlots())
-            es->setBounds(dashArea.removeFromTop(EpicSlotsPanel::preferredHeight()));
-
-        // Tab bar row.
-        tabBar_.setBounds(dashArea.removeFromTop(kTabBarH));
-
-        // Chord bar (visible when CHORD toggle is on, ~28px).
-        {
-            auto* cb = children_.chordBar();
-            if (cb && cb->isVisible())
-                cb->setBounds(dashArea.removeFromTop(42));
-        }
-
-        // Seq strip — Wave 5 C2 mount: always-visible 24px strip below chord bar.
-        if (auto* ss = children_.seqStrip())
-            ss->setBounds(dashArea.removeFromTop(SeqStripComponent::kStripHeight));
-
-        // ChordBreakoutPanel — Wave 5 B3 mount: bottom 60% overlay (hidden until opened).
-        if (auto* cbp = children_.chordBreakout())
-        {
-            const int panelH = static_cast<int>(getHeight() * 0.60f);
-            cbp->setSize(getWidth(), panelH);
-            if (!cbp->isOpen())
-                cbp->setTopLeftPosition(0, getHeight()); // off-screen when closed
-        }
-
-        // SeqBreakoutComponent — Wave 5 C2 mount: bottom ~60% overlay (hidden until opened).
-        if (auto* sb = children_.seqBreakout())
-            sb->setBounds(getLocalBounds().withTop(getHeight() * 2 / 5));
-
-        // Expression strips (36px) on the left of the play area.
-        exprStrips_.setBounds(dashArea.removeFromLeft(ExpressionStrips::kStripWidth));
-
-        // Remaining dashboard space → Submarine PlaySurface (KEYS keyboard).
-        // The old PlaySurfaceOverlay is hidden. OUIJA is in the right panel now.
-        playSurfaceOverlay_.setVisible(false);
-        ouijaPanel_.setVisible(false); // ouija now lives inside SurfaceRightPanel
-        subPlaySurface_.setBounds(dashArea);
-        // Only show keyboard when right panel is closed (KEYS mode).
-        // When right panel is open (PAD/DRUM/XY), keyboard hides.
-        if (!surfaceRight_.isOpen() || !surfaceRight_.isVisible())
-            subPlaySurface_.setVisible(true);
-        else
-            subPlaySurface_.setVisible(false);
-
-        // Transport bar (submarine) replaces the old status bar at the bottom.
-        if (auto* tb = children_.transportBar())
-            tb->setBounds(0, getHeight() - kStatusBarH, getWidth(), kStatusBarH);
-
-        // Legacy status bar (Gallery) — hidden when transport bar is active.
-        if (auto* sb2 = children_.statusBar())
-        {
-            if (children_.transportBar())
-                sb2->setVisible(false);
-            else
-                sb2->setBounds(0, getHeight() - kStatusBarH, getWidth(), kStatusBarH);
-        }
-
-        // ── Modal overlays and drawers: FULL WINDOW HEIGHT ──────────────────
-        // These sit above everything in Z-order (enforced by reorderZStack) and
-        // must cover the full window including dashboard/keyboard — matching the
-        // HTML prototype which uses `position:fixed; top:0; bottom:0`.
-
-        // DetailOverlay covers the full window (engine parameters on double-click).
-        detailOverlay_.setBounds(fullBounds);
-
-        // CouplingConfigPopup covers the full window (modal coupling config).
-        couplingPopup_.setBounds(fullBounds);
-
-        // DimOverlay covers the full window (dims everything when drawer is open).
-        dimOverlay_.setBounds(fullBounds);
-
-        // Engine picker drawer — full window height, fixed width on left.
-        engineDrawer_.setBounds(fullBounds.withWidth(EnginePickerDrawer::kDrawerWidth));
-
-        // Settings drawer — full window height, slides from right edge.
-        settingsDrawer_.setBounds(fullBounds
-            .withLeft(fullBounds.getRight() - SettingsDrawer::kDrawerWidth)
-            .withWidth(SettingsDrawer::kDrawerWidth));
-
-        // ── Z-order ──────────────────────────────────────────────────────────
-        // Z-order is static: it never changes during normal operation, so we
-        // do NOT call reorderZStack() from resized() (#1163). Each toFront()
-        // is O(n) and 36 of them in a row run during JUCE's
-        // ComponentAnimator (~60 fps) — that's ~14,700 array splices for a
-        // single 200ms panel-open animation. reorderZStack() is now invoked
-        // exactly once per setup phase (search for "reorderZStack();" call
-        // sites in this header) plus on each visibility toggle that needs
-        // a re-stack.
-
-        // Nuclear safeguard: ensure detail panel is hidden when not actively showing.
-        // Something in the layout chain is re-showing it; this is the absolute last word.
-        if (auto* dp = children_.detailPanel(); dp && !detailShowing_)
-            dp->setVisible(false);
+        jassert(layout_ != nullptr);
+        layout_->applyLayout(
+            static_cast<OceanLayout::ViewState>(viewState_),
+            getLocalBounds(),
+            selectedSlot_,
+            detailShowing_,
+            firstLaunch_);
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -2175,345 +2082,48 @@ private:
     }
 
     //==========================================================================
-    // Layout strategies
+    // Layout strategies — Phase 2 (#1184)
+    //
+    // layoutOrbital(), layoutZoomIn(), layoutSplitTransform(), layoutBrowser(),
+    // layoutFloatingControls() have all been moved to OceanLayout.
+    //
+    // They are no longer declared here.  OceanView::resized() now calls:
+    //   layout_->applyLayout(state, bounds, selectedSlot_, detailShowing_, firstLaunch_)
+    //
+    // OceanLayout::applyLayout() dispatches to the per-state layout strategies
+    // and also runs the state-independent dashboard layout.
     //==========================================================================
 
-    void layoutOrbital()
-    {
-        // Step 6: use getOceanArea() so background/substrate/nexus only fill
-        // the ocean viewport above the waterline, not the full window.
-        const auto area    = getOceanArea();
-        const auto centerF = area.getCentre().toFloat();
-
-        // Background, substrate, and ambient edge span the ocean viewport only.
-        background_.setBounds(area);
-        ambientEdge_.setBounds(area);
-        substrate_.setBounds(area);
-        substrate_.setVisible(true);
-
-        // (D6 / #1096): NexusDisplay removed — no bounds to set here.
-
-        // ── Engine creatures (freeform normalized positions) ─────────────────
-        int numLoaded = 0;
-        for (const auto& o : orbits_)
-            if (o.hasEngine()) ++numLoaded;
-
-        // FIX 12: Keep OceanBackground informed so it can show/hide ghost outlines.
-        background_.setEngineCount(numLoaded);
-
-        // ── Macros: now positioned in the dashboard strip via resized() ──────
-        // Fix 4: only show macros when at least one engine is loaded.
-        if (auto* m = children_.macros())
-            m->setVisible(numLoaded > 0);
-
-        // Layout all 4 primary orbits at their normalized positions regardless of
-        // whether an engine is loaded.  Empty slots render as ghost outlines
-        // (dashed circle + "+" sign) via EngineOrbit::paint().  Slot 4 (index 4)
-        // is the ghost overflow slot and stays hidden when no engine occupies it.
-        for (int i = 0; i < 5; ++i)
-        {
-            if (i == 4 && !orbits_[i].hasEngine())
-            {
-                // Ghost overflow slot — only visible when an engine is assigned.
-                orbits_[i].setVisible(false);
-                continue;
-            }
-
-            auto pos = orbits_[i].getNormalizedPosition();
-            int sz = orbits_[i].getBuoySize() + kBreathPadding * 2;
-            int x = static_cast<int>(pos.x * area.getWidth()) - sz / 2;
-            int y = static_cast<int>(pos.y * area.getHeight()) - sz / 2;
-            // Clamp buoy fully inside ocean area (prevent clipping by dashboard)
-            x = juce::jlimit(0, area.getWidth() - sz, x);
-            y = juce::jlimit(0, area.getHeight() - sz, y);
-            orbits_[i].setBounds(x + area.getX(), y + area.getY(), sz, sz);
-            orbits_[i].setOceanAreaBounds(area.toFloat());
-            orbits_[i].setVisible(true);
-
-            if (orbits_[i].hasEngine())
-                substrate_.setCreatureCenter(i, orbits_[i].getCenter());
-        }
-
-        // Empty-state label: centred below the ocean midpoint when no engines loaded.
-        emptyStateLabel_.setVisible(numLoaded == 0);
-        if (numLoaded == 0)
-        {
-            emptyStateLabel_.setBounds(
-                static_cast<int>(centerF.x) - 150,
-                static_cast<int>(centerF.y) + 20,
-                300, 32);
-        }
-
-        // Step 7: Show the pulsing lifesaver ring on first launch when empty.
-        lifesaver_.setVisible(firstLaunch_ && numLoaded == 0);
-        lifesaver_.setBounds(getOceanArea());
-
-        // Hide panels that belong to other states.
-        if (auto* dp = children_.detailPanel(); dp && !detailShowing_)
-            dp->setVisible(false);
-        if (auto* sb = children_.sidebar()) sb->setVisible(false);
-        browser_.setVisible(false);
-    }
-
-    void layoutZoomIn()
-    {
-        jassert(selectedSlot_ >= 0 && selectedSlot_ < 5);
-
-        // Step 6: use getOceanArea() so background/substrate/nexus only fill
-        // the ocean viewport above the waterline.
-        const auto area    = getOceanArea();
-        const auto centerF = area.getCentre().toFloat();
-        const float halfMin = static_cast<float>(std::min(area.getWidth(),
-                                                          area.getHeight())) * 0.5f;
-
-        background_.setBounds(area);
-        ambientEdge_.setBounds(area);
-        substrate_.setBounds(area);
-        substrate_.setVisible(true);
-
-        // (D6 / #1096): NexusDisplay removed — no bounds to set here.
-
-        // Count non-selected loaded engines (for edge positioning).
-        int edgeCount = 0;
-        for (int i = 0; i < 5; ++i)
-            if (orbits_[i].hasEngine() && i != selectedSlot_) ++edgeCount;
-
-        // Distribute minimised creatures evenly along the far edge arc.
-        const float edgeRadius = halfMin * 0.85f;
-        const float arcStart   = juce::MathConstants<float>::halfPi;  // bottom
-        const float arcTotal   = juce::MathConstants<float>::twoPi * 0.75f;  // 3/4 circle
-        const float arcStep    = (edgeCount > 1) ? arcTotal / static_cast<float>(edgeCount - 1)
-                                                 : 0.0f;
-
-        int edgeIdx = 0;
-        for (int i = 0; i < 5; ++i)
-        {
-            if (!orbits_[i].hasEngine())
-            {
-                orbits_[i].setVisible(false);
-                continue;
-            }
-
-            if (i == selectedSlot_)
-            {
-                // Zoomed-in creature at the centre (slightly above geometric centre).
-                const int size = static_cast<int>(kOrbitSize_Orbital);
-                orbits_[i].setBounds(
-                    static_cast<int>(centerF.x) - size / 2,
-                    static_cast<int>(centerF.y) - size / 2 - 40,
-                    size, size);
-                substrate_.setCreatureCenter(i, orbits_[i].getCenter());
-            }
-            else
-            {
-                // Minimised creatures arranged along the outer arc.
-                const float angle = arcStart + static_cast<float>(edgeIdx) * arcStep;
-                const auto  pos   = polarToCartesian(angle, edgeRadius, centerF);
-                const int   size  = static_cast<int>(kOrbitSize_Orbital);
-
-                orbits_[i].setBounds(
-                    static_cast<int>(pos.x) - size / 2,
-                    static_cast<int>(pos.y) - size / 2,
-                    size, size);
-                substrate_.setCreatureCenter(i, pos);
-                ++edgeIdx;
-            }
-
-            orbits_[i].setVisible(true);
-        }
-
-        // Macros: now positioned in the dashboard strip via resized().
-        if (auto* m = children_.macros())
-            m->setVisible(true);
-
-        if (auto* dp = children_.detailPanel(); dp && !detailShowing_)
-            dp->setVisible(false);
-        if (auto* sb = children_.sidebar()) sb->setVisible(false);
-        browser_.setVisible(false);
-        emptyStateLabel_.setVisible(false);  // ZoomIn always has an engine selected
-    }
-
-    void layoutSplitTransform()
-    {
-        jassert(selectedSlot_ >= 0 && selectedSlot_ < 5);
-
-        // Step 6: use getOceanArea() so background/ambient edge stay within the
-        // ocean viewport above the waterline.
-        const auto area    = getOceanArea();
-        const int  orbW    = static_cast<int>(static_cast<float>(area.getWidth())
-                                               * kSplitOrbitalFraction);
-        const int  detailW = area.getWidth() - orbW;
-
-        // Background and ambient edge span the ocean viewport.
-        background_.setBounds(area);
-        ambientEdge_.setBounds(area);
-
-        // Substrate is clipped to the orbital strip in split mode.
-        substrate_.setBounds(0, 0, orbW, area.getHeight());
-        substrate_.setVisible(true);
-
-        // ── Mini orbital strip ────────────────────────────────────────────────
-        // Stack loaded creatures vertically within the left strip.
-        // y starts at 48 (was 40) to clear the 44px header button strip (#1006).
-        int  y        = 48;
-        int  stripCx  = orbW / 2;
-        const int miniSize = static_cast<int>(kOrbitSize_Orbital);
-
-        for (int i = 0; i < 5; ++i)
-        {
-            if (!orbits_[i].hasEngine())
-            {
-                orbits_[i].setVisible(false);
-                continue;
-            }
-
-            const int sz = (i == selectedSlot_)
-                               ? static_cast<int>(kOrbitSize_Orbital * 0.6f)
-                               : miniSize;
-
-            orbits_[i].setBounds(stripCx - sz / 2, y, sz, sz);
-            orbits_[i].setVisible(true);
-
-            substrate_.setCreatureCenter(i, orbits_[i].getCenter());
-            y += sz + 16;
-        }
-
-        // (D6 / #1096) NexusDisplay removed. Macros hidden in SplitTransform —
-        // the detail panel owns the identity display on the right.
-        if (auto* m = children_.macros()) m->setVisible(false);
-
-        // ── Detail panel occupies the right 80% ───────────────────────────────
-        if (auto* dp = children_.detailPanel())
-        {
-            dp->setBounds(orbW, 0, detailW, area.getHeight());
-            dp->setVisible(true);
-            dp->loadSlot(selectedSlot_);
-        }
-
-        if (auto* sb = children_.sidebar()) sb->setVisible(false);
-        browser_.setVisible(false);
-        emptyStateLabel_.setVisible(false);  // SplitTransform always has an engine selected
-    }
-
-    void layoutBrowser()
-    {
-        // Step 6: browser covers the ocean viewport above the waterline only.
-        const auto area = getOceanArea();
-
-        // Browser covers the ocean viewport.
-        browser_.setBounds(area);
-        browser_.setVisible(true);
-
-        // All orbital components are hidden while the browser is open.
-        background_.setBounds(area);  // keep background behind the browser
-        ambientEdge_.setBounds(area);
-        substrate_.setVisible(false);
-
-        for (auto& o : orbits_)
-            o.setVisible(false);
-
-        // (D6 / #1096): NexusDisplay removed — no nexus_.setVisible() needed here.
-        if (auto* m = children_.macros()) m->setVisible(false);
-        if (auto* dp = children_.detailPanel(); dp && !detailShowing_)
-            dp->setVisible(false);
-        if (auto* sb = children_.sidebar()) sb->setVisible(false);
-        emptyStateLabel_.setVisible(false);  // browser has its own empty state
-    }
-
     //==========================================================================
-    // Floating header controls layout
-    //==========================================================================
-
-    void layoutFloatingControls()
-    {
-        // ── Left cluster: engines | prev | presetName | next | fav ───────────
-        // #908: WCAG 2.5.5 requires a minimum 44×44pt touch target.
-        constexpr int kBtnH        = 44;   // #908: WCAG AA minimum (was 28)
-        constexpr int kNavW        = 44;   // #908: square touch target for nav arrows
-        constexpr int kFavW        = 44;   // #908: square touch target for favourite star
-        constexpr int kEnginesW    = 90;   // Phase 3: Engines button width
-        constexpr int kTopMargin   = 0;    // anchored to top edge
-        constexpr int kLeftMargin  = 4;
-        constexpr int kGap         = 0;    // targets are flush
-
-        // Phase 3: Engines button (leftmost)
-        enginesButton_.setBounds(kLeftMargin, kTopMargin, kEnginesW, kBtnH);
-        const int afterEngines = kLeftMargin + kEnginesW + 4;
-
-        presetPrev_.setBounds(afterEngines,
-                              kTopMargin,
-                              kNavW, kBtnH);
-
-        // #1007 FIX 3: Inline preset name label sits between < and > so the
-        // spatial grouping "< Preset Name >" is immediately legible.
-        // Width is capped at 160pt so it doesn't crowd the fav button.
-        constexpr int kNameLabelW = 160;
-        presetNameLabel_.setBounds(afterEngines + kNavW,
-                                   kTopMargin,
-                                   kNameLabelW, kBtnH);
-
-        presetNext_.setBounds(afterEngines + kNavW + kNameLabelW + kGap,
-                              kTopMargin,
-                              kNavW, kBtnH);
-
-        favButton_.setBounds(afterEngines + kNavW + kNameLabelW + kNavW + kGap * 2,
-                             kTopMargin,
-                             kFavW, kBtnH);
-
-        // ── Right cluster: settings | KEYS ────────────────────────────────────
-        constexpr int kSettingsW = 44;   // #908: minimum square tap target
-        constexpr int kKeysW    = 56;    // KEYS label needs slightly more width
-        constexpr int kRightMargin = 4;
-
-        settingsButton_.setBounds(getWidth() - kRightMargin - kSettingsW - kGap - kKeysW,
-                                  kTopMargin,
-                                  kSettingsW, kBtnH);
-
-        keysButton_.setBounds(getWidth() - kRightMargin - kKeysW,
-                              kTopMargin,
-                              kKeysW, kBtnH);
-    }
-
-    //==========================================================================
-    // Geometry helpers
+    // Geometry helpers — Phase 2 (#1184): delegate to OceanLayout
     //==========================================================================
 
     /** Returns the ocean viewport bounds — the area above the waterline separator
         and submarine dashboard.  Previously this was everything minus the status
-        bar; it now also excludes the waterline and dashboard rows. */
-    /// Effective dashboard height — collapses when right panel is open
-    /// (keyboard hidden, only macros + FX + tabs remain).
-    int getEffectiveDashboardH() const
-    {
-        if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
-            return static_cast<int>(kMacroStripH) + 48 + kTabBarH; // macros + FX + tabs, no keyboard
-        return kDashboardH;
-    }
-
+        bar; it now also excludes the waterline and dashboard rows.
+        Phase 2: delegates to OceanLayout::computeOceanArea(). */
     juce::Rectangle<int> getOceanArea() const
     {
-        const int wlH = children_.waterline() ? children_.waterline()->getDesiredHeight() : kWaterlineH;
-        const int bottomH = getEffectiveDashboardH() + wlH + kStatusBarH;
-        auto area = getLocalBounds().withTrimmedBottom(bottomH);
-        // When right panel is open, ocean narrows from the right.
-        if (surfaceRight_.isOpen() && surfaceRight_.isVisible())
-        {
-            const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
-                                     static_cast<int>(area.getWidth() * 0.40f));
-            area = area.withTrimmedRight(rpW);
-        }
-        return area;
+        jassert(layout_ != nullptr);
+        return layout_->computeOceanArea(getLocalBounds());
     }
 
-    /** Convert polar angle + radius to Cartesian in the given coordinate frame. */
-    juce::Point<float> polarToCartesian(float angle,
-                                        float radius,
-                                        juce::Point<float> center) const
+    /** Effective dashboard height — collapses when right panel is open
+        (keyboard hidden, only macros + FX + tabs remain).
+        Phase 2: delegates to OceanLayout::getEffectiveDashboardH(). */
+    int getEffectiveDashboardH() const
     {
-        return {
-            center.x + radius * std::cos(angle),
-            center.y + radius * std::sin(angle)
-        };
+        jassert(layout_ != nullptr);
+        return layout_->getEffectiveDashboardH();
+    }
+
+    /** Convert polar angle + radius to Cartesian in the given coordinate frame.
+        Phase 2: delegates to OceanLayout::polarToCartesian (static). */
+    static juce::Point<float> polarToCartesian(float angle,
+                                               float radius,
+                                               juce::Point<float> center) noexcept
+    {
+        return OceanLayout::polarToCartesian(angle, radius, center);
     }
 
     /** Map a DepthZone to its fractional radius (as a fraction of halfMin).
@@ -2813,67 +2423,9 @@ private:
     */
     void reorderZStack()
     {
-        ambientEdge_.toFront(false);
-        // Engine orbits must sit above the ambient edge and below the HUD / overlays
-        // so they're visible even when near the waterline boundary.
-        for (auto& orbit : orbits_)
-            orbit.toFront(false);
-        // Fix 6: macros must render above the vignette overlay (ambientEdge_).
-        if (auto* m = children_.macros()) m->toFront(false);
-        if (auto* dp = children_.detailPanel()) dp->toFront(false);
-        if (auto* sb = children_.sidebar())     sb->toFront(false);
-        browser_.toFront(false);
-        // DetailOverlay floats above orbits/substrate/browser but below header buttons.
-        detailOverlay_.toFront(false);
-        // Phase 2: CouplingConfigPopup sits above detailOverlay_ but below header buttons.
-        couplingPopup_.toFront(false);
-        presetPrev_.toFront(false);
-        presetNext_.toFront(false);
-        favButton_.toFront(false);
-        settingsButton_.toFront(false);
-        keysButton_.toFront(false);
-        presetNameLabel_.toFront(false);
-        // #1008 FIX 7: dimOverlay_ above buttons but below PlaySurfaceOverlay.
-        dimOverlay_.toFront(false);
-        // Empty-state elements: emptyStateLabel_ and lifesaver_ must float above
-        // the HUD bar (otherwise hudBar_ — added later — buries them).  Place them
-        // here so they appear in the ocean viewport above all other ocean content
-        // but are covered by the engine picker / settings drawers when open.
-        emptyStateLabel_.toFront(false);
-        lifesaver_.toFront(false);
-        // Step 6: waterline and tab bar sit above the dim overlay but below
-        // the PlaySurface so they are always legible.
-        hudBar_.toFront(false);
-        surfaceRight_.toFront(false);
-        exprStrips_.toFront(false);
-        subPlaySurface_.toFront(false);
-        playSurfaceOverlay_.toFront(false);
-        ouijaPanel_.toFront(false);
-        if (auto* wl = children_.waterline())      wl->toFront(false);
-        if (auto* fx = children_.masterFxStrip())  fx->toFront(false);
-        if (auto* es = children_.epicSlots())      es->toFront(false);
-        tabBar_.toFront(false);
-        if (auto* cb = children_.chordBar())       cb->toFront(false);
-        // Wave 5 C2: seq strip sits just below chord bar in the dashboard.
-        if (auto* ss = children_.seqStrip())       ss->toFront(false);
-        // Wave 5 B3 + C2: breakout panels float above all dashboard content.
-        if (auto* cbp = children_.chordBreakout()) cbp->toFront(false);
-        if (auto* sbr = children_.seqBreakout())   sbr->toFront(false);
-        if (auto* tb  = children_.transportBar())  tb->toFront(false);
-        if (auto* sb2 = children_.statusBar())     sb2->toFront(false);
-
-        // Drawers and modal overlays must sit above EVERYTHING — including
-        // the dashboard, keyboard, transport bar, and status bar.
-        engineDrawer_.toFront(false);
-        settingsDrawer_.toFront(false);
-        // DetailOverlay backdrop sits above dashboard.
-        detailOverlay_.toFront(false);
-        // The EngineDetailPanel must sit ABOVE the overlay backdrop so its
-        // knobs, waveform, and labels are visible (not hidden behind the
-        // overlay's dark fill).  Only relevant when detail is showing.
-        if (auto* dp = children_.detailPanel(); dp && dp->isVisible())
-            dp->toFront(false);
-        couplingPopup_.toFront(false);
+        // Phase 2 (#1184): Z-stack logic delegated to OceanLayout.
+        jassert(layout_ != nullptr);
+        layout_->reorderZStack();
     }
 
     //==========================================================================
@@ -2911,13 +2463,19 @@ private:
     bool surfaceRightWasOpenForDetail_ = false;
 
     //==========================================================================
-    // Phase 1 decomposition (#1184): OceanChildren owns all deferred-init
-    // unique_ptr children.  Constructed before value-type members so it is
-    // ready to receive addAndMakeVisible calls from its init methods.
-    // (Phase 2 will add OceanLayout layout_; Phase 3 OceanStateMachine sm_.)
+    // Phase 1+2 decomposition (#1184):
+    //   OceanChildren owns all deferred-init unique_ptr children.
+    //   OceanLayout owns all layout/geometry logic.
+    //   (Phase 3 will add OceanStateMachine sm_.)
+    //
+    // children_ must be declared BEFORE all value-type component members so
+    // it is ready to receive addAndMakeVisible calls from its init methods.
+    // layout_ is a unique_ptr initialized at the end of the constructor body
+    // (after all component members exist) using a LayoutTargets struct.
     //==========================================================================
 
-    OceanChildren children_{*this};
+    OceanChildren              children_{*this};
+    std::unique_ptr<OceanLayout> layout_;
 
     //==========================================================================
     // Child components — Z-ordered (bottom → top) as declared
