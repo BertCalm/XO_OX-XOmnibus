@@ -14,6 +14,8 @@
 //   OceanView::resized() becomes:
 //     layout_.layoutForState(viewState_, getLocalBounds(), selectedSlot_,
 //                            detailShowing_, firstLaunch_);
+//   Phase 3 animation:
+//     layout_.layoutForState(state, bounds, slot, detail, firstLaunch, progress01);
 //
 // Constraints (same as OceanChildren):
 //   - No back-reference to OceanView (no OceanView* member).
@@ -167,6 +169,9 @@ public:
         @param selectedSlot  Which slot is enlarged/active (-1 = none).
         @param detailShowing Whether the detail overlay is currently displayed.
         @param firstLaunch   Whether the user hasn't loaded any engine yet.
+        @param progress01    Normalised animation progress [0, 1] for in-flight
+                             transitions (default 1.0 = fully settled).  Reserved
+                             for Phase 3 — currently unused (juce::ignoreUnused).
     */
     enum class ViewState
     {
@@ -180,8 +185,11 @@ public:
                         juce::Rectangle<int> fullBounds,
                         int         selectedSlot,
                         bool        detailShowing,
-                        bool        firstLaunch)
+                        bool        firstLaunch,
+                        float       progress01 = 1.0f)
     {
+        juce::ignoreUnused(progress01);  // Phase 3 will use this for animation interpolation.
+
         // ── Ocean-area strategy (state-dependent) ────────────────────────────
         switch (viewState)
         {
