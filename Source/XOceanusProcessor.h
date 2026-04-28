@@ -20,6 +20,7 @@
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
 #include "DSP/PerEnginePatternSequencer.h"
+#include "DSP/XOuijaWalkEngine.h"
 // Wave 5 A1: Global drag-drop mod routing model (message-thread side).
 // The header lives in Future/ but we reference it in-place per spec.
 #include "Future/UI/ModRouting/DragDropModRouter.h"
@@ -148,6 +149,10 @@ public:
     {
         return slotSequencers_[static_cast<size_t>(juce::jlimit(0, kNumPrimarySlots - 1, slot))];
     }
+
+    // Wave 5 D1: XOuija walk engine — UI-thread access for enqueueEdit, getSnapshot,
+    // mood/tendency setters.  Audio-thread-safe via atomics + SPSC (see XOuijaWalkEngine.h).
+    xoceanus::XOuijaWalkEngine& getOuijaWalkEngine() noexcept { return ouijaWalkEngine_; }
 
     // Wave 5 A1: Write the current LFO1 output so the global router can use it
     // as a mod source.  Called from OrreryEngine::renderBlock (audio thread).
@@ -547,6 +552,10 @@ private:
     // Each instance is engine-agnostic — events appear in slotMidi[] transparently.
     std::array<XOceanus::PerEnginePatternSequencer, kNumPrimarySlots> slotSequencers_;
 
+    // Wave 5 D1: XOuija walk engine — tempo-synced autonomous planchette.
+    // Audio-thread-owned; UI thread interacts via atomics + SPSC queue (see XOuijaWalkEngine.h).
+    xoceanus::XOuijaWalkEngine ouijaWalkEngine_;
+
     // External audio input capture — sized once in prepareToPlay, NEVER resized in processBlock.
     // OsmosisEngine reads raw pointers into this buffer within the same processBlock call.
     juce::AudioBuffer<float> externalInputBuffer;
@@ -632,6 +641,13 @@ private:
             std::atomic<float>* target = nullptr; // cp_rN_target
         };
         std::array<CouplingRouteParams, CouplingCrossfader::MaxRouteSlots> cpRoutes;
+
+        // Wave 5 D1: XOuija walk engine mood/tendency — cached raw pointers
+        // so processBlock reads them without string lookups.
+        std::atomic<float>* ouijaCalmWild          = nullptr;
+        std::atomic<float>* ouijaConsonantDissonant = nullptr;
+        std::atomic<float>* ouijaTendencyCol        = nullptr;
+        std::atomic<float>* ouijaTendencyRow        = nullptr;
     } cachedParams;
 
     juce::MidiBuffer mpeMidiBuffer; // MPE-processed MIDI (expression stripped)
