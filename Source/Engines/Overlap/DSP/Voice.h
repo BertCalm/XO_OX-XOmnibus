@@ -105,6 +105,7 @@ struct VoiceEnvelope
         {
         case Stage::Attack:
             level += coeff * (1.001f - level);
+            level = flushDenormal(level);
             if (level >= 1.0f)
             {
                 level = 1.0f;
@@ -116,6 +117,7 @@ struct VoiceEnvelope
 
         case Stage::Decay:
             level += coeff * (sustain - level);
+            level = flushDenormal(level);
             if (std::fabs(level - sustain) < 0.0001f)
             {
                 level = sustain;
@@ -129,6 +131,7 @@ struct VoiceEnvelope
 
         case Stage::Release:
             level += coeff * (0.0f - level);
+            level = flushDenormal(level);
             if (level < 0.0001f)
             {
                 level = 0.0f;
