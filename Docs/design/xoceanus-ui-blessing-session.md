@@ -70,9 +70,9 @@ Yes, and it exceeds the concern significantly. The Sonic DNA hexagon is specifie
 Preset navigation is solved three ways:
 1. The standard prev/next arrows in the header (always visible)
 2. The mood-filtered, DNA-rich preset browser in the PRESET sidebar tab
-3. The Spatial Preset Navigation map (Section 5.2.1) — the most ambitious preset system in the history of synthesizers. ~19,500+ presets projected onto a 2D DNA-space map with continuous interpolation between preset positions. The performer navigates sound, not lists.
+3. The Spatial Preset Navigation map (Section 5.2.1) — the most ambitious preset system in the history of synthesizers. 19,859+ presets projected onto a 2D DNA-space map with continuous interpolation between preset positions. The performer navigates sound, not lists.
 
-The search field addressing "~19,500+ presets" is present with mood filter pills.
+The search field addressing "19,859+ presets" is present with mood filter pills.
 
 **What would raise the score?**
 
@@ -225,7 +225,7 @@ Rams speaks: *"This design is disciplined. The Golden Ratio proportions tell me 
 
 Yes. The spec delivers beyond the original request. The PRESET sidebar tab contains:
 - Mood filter row with 15 mood pills (color-coded, horizontally scrollable)
-- Search field addressing "~19,500+ presets"
+- Search field addressing "19,859+ presets"
 - Preset cards with 32x32 DNA hexagon, engine badge, mood dot, and tags
 - DNA detail view at 120x120 in the detail panel
 - Animated DNA hexagons (ripple for Movement, breathing for Space, angular peaks for Aggression)
@@ -242,9 +242,9 @@ The Spatial Preset Navigation (Section 5.2.1) transforms the browser from a list
 
 Yes, in two forms:
 1. The Depth-Zone Dial (Section 1.5) — circular 80pt dial navigating engines by water-column depth order. Clockwise/counterclockwise drag. Depth zone gradient (Sunlit/Twilight/Midnight/Abyss) encodes position. Engine name below. 50ms hot-swap crossfade.
-2. The Constellation View (Section 5.2.4) — full-window overlay showing all 92 engines as a star map, organized by water column depth. Click to load. Drag between stars to create coupling.
+2. The Constellation View (Section 5.2.4) — full-window overlay showing all 86 engines as a star map, organized by water column depth. Click to load. Drag between stars to create coupling.
 
-The 2D aspect is satisfied by the Constellation View, which gives a genuine X/Y navigable space across all 92 engines. The water column depth provides the Y axis; the left-right distribution provides genre/character grouping.
+The 2D aspect is satisfied by the Constellation View, which gives a genuine X/Y navigable space across all 86 engines. The water column depth provides the Y axis; the left-right distribution provides genre/character grouping.
 
 **Verdict**: FULLY SATISFIED by Constellation View (V1 if promoted from "Second 25%"). Depth-Zone Dial satisfies sequential navigation at V1.
 
@@ -327,7 +327,7 @@ Needs warm, imperfect, breathing sounds. OWARE (tuned percussion with material p
 
 **Film Composer**
 
-Needs complex evolving textures, atmospheric pads, tension-building sounds. The ETHEREAL and DEEP mood filters are dedicated to this territory. OXBOW (entangled reverb), OCEANDEEP (Darkness Filter ceiling at 800Hz), OPERA (autonomous dramatic arc) are the engines. The OperaConductor — autonomous narrative arc — actually writes the emotional arc for the composer. The coupling system creates emergent textures between engines. **30-second test: PASS.** Film composers benefit most from the Constellation View (all 92 engines visible at once for pairing).
+Needs complex evolving textures, atmospheric pads, tension-building sounds. The ETHEREAL and DEEP mood filters are dedicated to this territory. OXBOW (entangled reverb), OCEANDEEP (Darkness Filter ceiling at 800Hz), OPERA (autonomous dramatic arc) are the engines. The OperaConductor — autonomous narrative arc — actually writes the emotional arc for the composer. The coupling system creates emergent textures between engines. **30-second test: PASS.** Film composers benefit most from the Constellation View (all 86 engines visible at once for pairing).
 
 ---
 

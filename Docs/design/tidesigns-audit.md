@@ -1,7 +1,7 @@
 # TIDEsigns QDD Full-Fleet UI/UX Audit — 2026-03-29
 
 ## Overview
-- **Target:** XOceanus Desktop Plugin — 86 UI files, 92 engines, ~1.5MB source
+- **Target:** XOceanus Desktop Plugin — 86 UI files, 86 engines, ~1.5MB source
 - **Method:** RAC (Ringleader + Architect + Consultant) × TIDEsigns × QDD
 - **Phases:** 5 (Foundation → Core Components → Subsystems → Engine-Specific → Cross-Cutting)
 - **Subagent dispatches:** 34 parallel audits
