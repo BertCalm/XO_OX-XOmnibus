@@ -621,6 +621,11 @@ public:
         // this lambda is the only coupling point.
         stateMachine_.onStateEntered = [this](OceanStateMachine::ViewState s)
         {
+            // Sync local mirror members so OceanViewContext const-refs stay
+            // valid for OceanLayout (Phase 3 TODO: remove mirrors in step 10).
+            viewState_    = static_cast<ViewState>(static_cast<int>(s));
+            selectedSlot_ = stateMachine_.selectedSlot();
+
             // Cast to OceanLayout::ViewState (same values, unified in step 11).
             layout_.layoutForState(
                 static_cast<OceanLayout::ViewState>(static_cast<int>(s)),
@@ -803,7 +808,8 @@ public:
         coordinatorApplyWidthGuard();
 
         // Phase 2 (#1184): delegate all layout logic to OceanLayout.
-        // layout_ reads viewState_ via a const reference in OceanViewContext.
+        // Phase 3: viewState_ is a mirror of stateMachine_.currentState()
+        //          kept in sync via onStateEntered callback.
         layout_.layoutForState(
             static_cast<OceanLayout::ViewState>(static_cast<int>(viewState_)),
             getLocalBounds(),
@@ -1646,6 +1652,7 @@ private:
                         // replacement lands on the correct slot even if it was
                         // already selected before the right-click.
                         selectedSlot_ = slot;
+                        stateMachine_.setSelectedSlot(slot);  // keep state machine in sync
                         for (int i = 0; i < 5; ++i)
                             orbits_[i].setSelected(i == slot);
                         if (onEngineSelected)
@@ -1814,6 +1821,7 @@ private:
                         if (slot >= 0 && slot < 5)
                         {
                             selectedSlot_ = slot;
+                            stateMachine_.setSelectedSlot(slot);  // keep state machine in sync
                             for (int i = 0; i < 5; ++i)
                                 orbits_[i].setSelected(i == slot);
                             if (onEngineSelected)
@@ -1921,6 +1929,7 @@ private:
         if (selectedSlot_ == slot)
         {
             selectedSlot_ = -1;
+            stateMachine_.setSelectedSlot(-1);  // keep state machine in sync
             for (auto& o : orbits_)
                 o.setSelected(false);
             if (onEngineSelected)
@@ -1929,6 +1938,7 @@ private:
         }
 
         selectedSlot_ = slot;
+        stateMachine_.setSelectedSlot(slot);  // keep state machine in sync
         for (int i = 0; i < 5; ++i)
             orbits_[i].setSelected(i == slot);
 
@@ -1947,6 +1957,12 @@ private:
         coordinatorRelease(PanelType::Detail);
     }
 
+    // ── Phase 3 (#1184): transition wrappers ─────────────────────────────────
+    // Each wrapper performs OceanView-specific pre/post work (spring reset,
+    // dismissDetailPanel, external callbacks) and then delegates state ownership
+    // to stateMachine_.  The stateMachine_ fires onStateEntered which triggers
+    // layout_.layoutForState() + repaint() — replacing the old direct resized() call.
+
     void transitionToOrbital()
     {
         dismissDetailPanel();
@@ -1955,10 +1971,8 @@ private:
         for (auto& orbit : orbits_)
             orbit.resetSpring();
 
-        viewState_    = ViewState::Orbital;
-        selectedSlot_ = -1;
-
-        resized();
+        // Delegate state update; onStateEntered → layout + repaint.
+        stateMachine_.transitionToOrbital();
 
         if (onEngineSelected)
             onEngineSelected(-1);
@@ -1967,7 +1981,8 @@ private:
     void transitionToZoomIn(int slot)
     {
         // Toggling the same slot returns to Orbital.
-        if (viewState_ == ViewState::ZoomIn && selectedSlot_ == slot)
+        if (stateMachine_.currentState() == OceanStateMachine::ViewState::ZoomIn
+            && stateMachine_.selectedSlot() == slot)
         {
             transitionToOrbital();
             return;
@@ -1977,10 +1992,8 @@ private:
         for (auto& orbit : orbits_)
             orbit.resetSpring();
 
-        viewState_    = ViewState::ZoomIn;
-        selectedSlot_ = slot;
-
-        resized();
+        // Delegate state update; onStateEntered → layout + repaint.
+        stateMachine_.transitionToZoomIn(slot);
 
         if (onEngineSelected)
             onEngineSelected(slot);
@@ -1992,10 +2005,8 @@ private:
         for (auto& orbit : orbits_)
             orbit.resetSpring();
 
-        viewState_    = ViewState::SplitTransform;
-        selectedSlot_ = slot;
-
-        resized();
+        // Delegate state update; onStateEntered → layout + repaint.
+        stateMachine_.transitionToSplitTransform(slot);
 
         if (onEngineDiveDeep)
             onEngineDiveDeep(slot);
@@ -2007,41 +2018,38 @@ private:
         for (auto& orbit : orbits_)
             orbit.resetSpring();
 
-        // Snapshot the pre-browser state so exitBrowser() can restore it exactly.
-        preBrowserState_    = viewState_;
-        preBrowserSlot_     = selectedSlot_;
-
-        viewState_ = ViewState::BrowserOpen;
-        resized();
+        // Delegate state update (also snapshots pre-browser state internally).
+        // onStateEntered → layout + repaint.
+        stateMachine_.transitionToBrowser();
     }
 
     void exitBrowser()
     {
+        // Ask stateMachine_ what the pre-browser state was and reset it.
+        const auto savedState = stateMachine_.preBrowserState();
+        const int  savedSlot  = stateMachine_.preBrowserSlot();
+
+        // Clear pre-browser state before dispatching to prevent re-entry.
+        stateMachine_.clearPreBrowserState();
+
         // Restore whatever state was active before the browser was opened.
-        if (preBrowserState_ == ViewState::ZoomIn && preBrowserSlot_ >= 0)
+        if (savedState == OceanStateMachine::ViewState::ZoomIn && savedSlot >= 0)
         {
             // transitionToZoomIn re-enters ZoomIn and fires onEngineSelected.
-            transitionToZoomIn(preBrowserSlot_);
+            transitionToZoomIn(savedSlot);
         }
-        else if (preBrowserState_ == ViewState::SplitTransform && preBrowserSlot_ >= 0)
+        else if (savedState == OceanStateMachine::ViewState::SplitTransform && savedSlot >= 0)
         {
-            transitionToSplitTransform(preBrowserSlot_);
+            transitionToSplitTransform(savedSlot);
         }
         else
         {
             // Default: return to Orbital and clear selection.
-            viewState_    = ViewState::Orbital;
-            selectedSlot_ = -1;
-
-            resized();
+            stateMachine_.transitionToOrbital();
 
             if (onEngineSelected)
                 onEngineSelected(-1);
         }
-
-        // Reset saved pre-browser state so it cannot be accidentally re-used.
-        preBrowserState_ = ViewState::Orbital;
-        preBrowserSlot_  = -1;
     }
 
     //==========================================================================
@@ -2415,9 +2423,9 @@ private:
     bool detailShowing_ = false;
     int  chainStartSlot_ = -1;  // -1 = no chain in progress
 
-    /// State saved on entering BrowserOpen so exitBrowser() can restore it exactly.
-    ViewState preBrowserState_ = ViewState::Orbital;
-    int       preBrowserSlot_  = -1;
+    // Phase 3 (#1184): preBrowserState_ / preBrowserSlot_ moved to
+    // OceanStateMachine.  OceanView::exitBrowser() reads them via
+    // stateMachine_.preBrowserState() / preBrowserSlot().
 
     // Wave 3 — 3a: Position-save debounce.
     // Counts down in ms from kPositionSaveDelayMs to 0 in timerCallback().

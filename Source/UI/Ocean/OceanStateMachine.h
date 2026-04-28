@@ -143,19 +143,15 @@ public:
     }
 
     /** Transition to ZoomIn for the given slot.
-     *  Returns true if the transition occurred; false if it was a no-op
-     *  (same state + same slot, which callers interpret as a toggle-to-Orbital). */
-    bool transitionToZoomIn(int slot)
+     *
+     *  Toggle detection (same state + same slot → Orbital) is handled by
+     *  OceanView::transitionToZoomIn before this method is called.
+     *  This method always transitions unconditionally. */
+    void transitionToZoomIn(int slot)
     {
-        // Toggle semantics: same slot in ZoomIn → return false so caller
-        // can invoke transitionToOrbital().
-        if (state_ == ViewState::ZoomIn && selectedSlot_ == slot)
-            return false;
-
         state_        = ViewState::ZoomIn;
         selectedSlot_ = slot;
         fireStateEntered();
-        return true;
     }
 
     /** Transition to SplitTransform for the given slot. */
@@ -176,40 +172,15 @@ public:
         fireStateEntered();
     }
 
-    /** Restore state from before the browser was opened.
-     *  Returns the pre-browser state so OceanView can fire the correct
-     *  onEngineSelected callback.
+    /** Clear the pre-browser snapshot.
      *
-     *  Note: does NOT call transitionToZoomIn / transitionToSplitTransform
-     *  directly because those would recursively call OceanView methods via
-     *  the callback.  Instead it updates internal state and fires
-     *  onStateEntered once; OceanView then calls the correct nested
-     *  transition in response.
+     *  Called by OceanView::exitBrowser() before dispatching to a transition
+     *  method, to prevent re-entry if that transition calls back into exitBrowser.
      */
-    ViewState exitBrowserState()
+    void clearPreBrowserState() noexcept
     {
-        auto savedState = preBrowserState_;
-        auto savedSlot  = preBrowserSlot_;
-
-        // Reset saved pre-browser state to prevent accidental re-use.
         preBrowserState_ = ViewState::Orbital;
         preBrowserSlot_  = -1;
-
-        // Restore the state.
-        state_        = savedState;
-        selectedSlot_ = savedSlot;
-
-        // For non-Orbital restores, caller (OceanView::exitBrowser) will invoke
-        // the appropriate transitionToX, which fires onStateEntered again.
-        // For Orbital restore, we fire here.
-        if (savedState == ViewState::Orbital || savedSlot < 0)
-        {
-            state_        = ViewState::Orbital;
-            selectedSlot_ = -1;
-            fireStateEntered();
-        }
-
-        return savedState;
     }
 
 private:
