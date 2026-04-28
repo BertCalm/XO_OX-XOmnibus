@@ -622,14 +622,13 @@ public:
         stateMachine_.onStateEntered = [this](OceanStateMachine::ViewState s)
         {
             // Sync local mirror members so OceanViewContext const-refs stay
-            // valid for OceanLayout (Phase 3 TODO: remove mirrors in step 10).
+            // valid for OceanLayout (Phase 3 step 10 TODO: remove mirrors).
             viewState_    = static_cast<ViewState>(static_cast<int>(s));
             selectedSlot_ = stateMachine_.selectedSlot();
 
-            // Cast to OceanLayout::ViewState (same values, unified in step 11).
-            layout_.layoutForState(
-                static_cast<OceanLayout::ViewState>(static_cast<int>(s)),
-                getLocalBounds(), 1.0f);
+            // Phase 3 step 11: OceanLayout now takes OceanStateMachine::ViewState
+            // directly — no cast needed.
+            layout_.layoutForState(s, getLocalBounds(), 1.0f);
             repaint();
         };
         // onAnimationFrame is stubbed for future animated transitions.
@@ -811,7 +810,7 @@ public:
         // Phase 3: viewState_ is a mirror of stateMachine_.currentState()
         //          kept in sync via onStateEntered callback.
         layout_.layoutForState(
-            static_cast<OceanLayout::ViewState>(static_cast<int>(viewState_)),
+            stateMachine_.currentState(),
             getLocalBounds(),
             1.0f);
     }

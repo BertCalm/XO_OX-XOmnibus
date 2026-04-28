@@ -8,9 +8,10 @@
 // accessors, and reads all other OceanView-owned components via the OceanViewContext
 // struct (a bundle of non-owning references).
 //
-// Phase 3 will extract OceanStateMachine.  At that point the temporary
-// OceanViewContext references tagged "TODO Phase 3 cleanup" can be
-// reviewed for removal or migration.
+// Phase 3 (#1184): ViewState enum is now owned by OceanStateMachine.
+// OceanLayout::ViewState alias has been removed; layoutForState() takes
+// OceanStateMachine::ViewState directly.  OceanLayout includes
+// OceanStateMachine.h for this type.
 //
 // Construction order (unchanged from Phase 1)
 // ─────────────────────────────────────────────
@@ -21,6 +22,7 @@
 //   4. reorderZStack() delegates: layout_.reorderZStack()
 
 #include <juce_gui_basics/juce_gui_basics.h>
+#include "OceanStateMachine.h"
 #include "OceanChildren.h"
 #include "OceanBackground.h"
 #include "AmbientEdge.h"
@@ -135,19 +137,8 @@ struct OceanViewContext
 class OceanLayout
 {
 public:
-    //==========================================================================
-    // ViewState (mirrors OceanView::ViewState — Phase 3 will unify ownership)
-    //==========================================================================
-
-    /** ViewState alias — matches OceanView::ViewState values exactly.
-     *  TODO Phase 3 cleanup: replace with OceanStateMachine::ViewState. */
-    enum class ViewState
-    {
-        Orbital,
-        ZoomIn,
-        SplitTransform,
-        BrowserOpen
-    };
+    // Phase 3 (#1184): OceanLayout::ViewState removed.
+    // Use OceanStateMachine::ViewState directly.
 
     //==========================================================================
     // Construction
@@ -180,9 +171,9 @@ public:
         @param state        Which ViewState layout strategy to apply.
         @param bounds       The component's current local bounds.
         @param progress01   Animation progress [0,1].  Currently unused (Phase 3
-                            will pass transition progress from OceanStateMachine).
+                            stubbed for future animated transitions).
     */
-    void layoutForState(ViewState state,
+    void layoutForState(OceanStateMachine::ViewState state,
                         juce::Rectangle<int> bounds,
                         float progress01 = 1.0f)
     {
@@ -191,10 +182,10 @@ public:
 
         switch (state)
         {
-            case ViewState::Orbital:        layoutOrbital();        break;
-            case ViewState::ZoomIn:         layoutZoomIn();         break;
-            case ViewState::SplitTransform: layoutSplitTransform(); break;
-            case ViewState::BrowserOpen:    layoutBrowser();        break;
+            case OceanStateMachine::ViewState::Orbital:        layoutOrbital();        break;
+            case OceanStateMachine::ViewState::ZoomIn:         layoutZoomIn();         break;
+            case OceanStateMachine::ViewState::SplitTransform: layoutSplitTransform(); break;
+            case OceanStateMachine::ViewState::BrowserOpen:    layoutBrowser();        break;
         }
 
         layoutFloatingControls();
