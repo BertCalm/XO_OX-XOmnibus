@@ -98,7 +98,7 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 **Location:** `SDK/include/xoceanus/`
 
 - `SynthEngine.h` — JUCE-free engine interface
-- `CouplingTypes.h` — 13 coupling type definitions
+- `CouplingTypes.h` — 15 coupling type definitions
 - `EngineModule.h` — base module contract
 - Minimal engine template for third-party developers
 - No JUCE dependency in SDK headers
@@ -162,7 +162,7 @@ OBRIX was built across 3 iterative waves in a single session (2026-03-18–19):
 |--------|--------|--------|
 | 13th coupling type: KnotTopology | `58909006b` | Bidirectional topological coupling (ORBWEAVE) |
 | AudioToBuffer Phase 3 spec | `11e1986f3` | Phase 3 architecture document written; IAudioBufferSink interface defined |
-| Round 13 coupling stubs | `11e1986f3` | Coupling input stubs advanced for Drift FX gap |
+| Round 15 coupling stubs | `11e1986f3` | Coupling input stubs advanced for Drift FX gap |
 | OVERLAP adapter pitch wheel | `d9d6d762c` | Pitch wheel handler added |
 | OUTWIT adapter pitch wheel | `85db8676a` | Pitch wheel handler added |
 | Coupling preset library | Prism Sweep R8C | 18 coupling presets (6 pairs × 3 intensities) in Entangled mood |
