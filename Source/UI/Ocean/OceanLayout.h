@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
-// OceanLayout.h  —  Phase 2 of the OceanView decomposition (issue #1184).
+// OceanLayout.h  —  Phase 2 + 2.5 of the OceanView decomposition (issue #1184).
 //
 // OceanLayout owns all geometry/layout logic that previously lived directly in
 // OceanView.  It holds references to every component it must position — no
@@ -9,24 +9,26 @@
 //
 // Construction
 // ────────────
-//   OceanLayout layout_{children_, /* LayoutTargets */ {  }};
+//   OceanLayout layout_{children_, /* LayoutTargets */ { ..., selectedSlot_, detailShowing_, firstLaunch_ }};
 //
 //   OceanView::resized() becomes:
-//     layout_.layoutForState(viewState_, getLocalBounds(), selectedSlot_,
-//                            detailShowing_, firstLaunch_);
-//   Phase 3 animation:
-//     layout_.layoutForState(state, bounds, slot, detail, firstLaunch, progress01);
+//     layout_.layoutForState(viewState_, getLocalBounds());
+//
+//   Phase 3 animation (when OceanStateMachine is wired):
+//     layout_.layoutForState(state, bounds, progress01);
 //
 // Constraints (same as OceanChildren):
 //   - No back-reference to OceanView (no OceanView* member).
 //   - LayoutTargets members are plain Component& / Component* references; they
 //     are never used to call back into OceanView — only setBounds/setVisible/
 //     toFront.
+//   - LayoutTargets also holds const-ref bindings to the three layout-input state
+//     members (selectedSlot, detailShowing, firstLaunch) added in Phase 2.5.
 //   - All geometry constants (kDashboardH, kStatusBarH, etc.) duplicated here
 //     for now; Phase 3 should consolidate them into a shared constants header.
 //
 // Phase 3 will extract OceanStateMachine.  At that point the `viewState_`
-// placeholder in applyLayout() will be replaced by a stateMachine_ query.
+// placeholder in layoutForState() will be replaced by a stateMachine_ query.
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "OceanChildren.h"
