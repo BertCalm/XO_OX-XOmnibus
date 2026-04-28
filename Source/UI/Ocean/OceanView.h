@@ -2552,12 +2552,7 @@ private:
             /* keysButton         */ keysButton_,
             /* presetNameLabel    */ presetNameLabel_,
             /* engineDrawer       */ engineDrawer_,
-            /* settingsDrawer     */ settingsDrawer_,
-            /* getOceanArea       */ [this]{ return getOceanArea(); },
-            /* getEffDashH        */ [this]{ return getEffectiveDashboardH(); },
-            /* getWidth           */ [this]{ return getWidth(); },
-            /* getHeight          */ [this]{ return getHeight(); },
-            /* getLocalBounds     */ [this]{ return getLocalBounds(); }
+            /* settingsDrawer     */ settingsDrawer_
         };
     }
 

@@ -117,13 +117,6 @@ struct OceanViewContext
     EnginePickerDrawer&                         engineDrawer;
     SettingsDrawer&                             settingsDrawer;
 
-    // ── Geometry helper callbacks ─────────────────────────────────────────
-    // TODO Phase 3 cleanup: these will be computed from StateMachine + Layout state.
-    std::function<juce::Rectangle<int>()>       getOceanArea;
-    std::function<int()>                        getEffectiveDashboardH;
-    std::function<int()>                        getWidth;
-    std::function<int()>                        getHeight;
-    std::function<juce::Rectangle<int>()>       getLocalBounds;
 };
 
 //==============================================================================
@@ -193,7 +186,8 @@ public:
                         juce::Rectangle<int> bounds,
                         float progress01 = 1.0f)
     {
-        juce::ignoreUnused(bounds, progress01);  // bounds accessed via ctx_.getLocalBounds()
+        juce::ignoreUnused(progress01);
+        bounds_ = bounds;
 
         switch (state)
         {
@@ -282,8 +276,9 @@ private:
     // References
     //==========================================================================
 
-    const OceanChildren& children_;  ///< deferred-init children
-    OceanViewContext     ctx_;        ///< all other OceanView-owned refs
+    const OceanChildren& children_;        ///< deferred-init children
+    OceanViewContext     ctx_;             ///< all other OceanView-owned refs
+    juce::Rectangle<int> bounds_;         ///< set at start of layoutForState(); read by per-state helpers
 
     //==========================================================================
     // Layout constants (mirrored from OceanView for self-containment)
@@ -305,7 +300,7 @@ private:
 
     void layoutOrbital()
     {
-        const auto area    = ctx_.getOceanArea();
+        const auto area    = oceanArea();
         const auto centerF = area.getCentre().toFloat();
 
         ctx_.background.setBounds(area);
@@ -354,7 +349,7 @@ private:
         }
 
         ctx_.lifesaver.setVisible(ctx_.firstLaunch && numLoaded == 0);
-        ctx_.lifesaver.setBounds(ctx_.getOceanArea());
+        ctx_.lifesaver.setBounds(oceanArea());
 
         if (auto* dp = children_.detailPanel(); dp && !ctx_.detailShowing)
             dp->setVisible(false);
@@ -366,7 +361,7 @@ private:
     {
         jassert(ctx_.selectedSlot >= 0 && ctx_.selectedSlot < 5);
 
-        const auto area    = ctx_.getOceanArea();
+        const auto area    = oceanArea();
         const auto centerF = area.getCentre().toFloat();
         const float halfMin = static_cast<float>(std::min(area.getWidth(),
                                                           area.getHeight())) * 0.5f;
@@ -435,7 +430,7 @@ private:
     {
         jassert(ctx_.selectedSlot >= 0 && ctx_.selectedSlot < 5);
 
-        const auto area    = ctx_.getOceanArea();
+        const auto area    = oceanArea();
         const int  orbW    = static_cast<int>(static_cast<float>(area.getWidth())
                                                * kSplitOrbitalFraction);
         const int  detailW = area.getWidth() - orbW;
@@ -485,7 +480,7 @@ private:
 
     void layoutBrowser()
     {
-        const auto area = ctx_.getOceanArea();
+        const auto area = oceanArea();
 
         ctx_.browser.setBounds(area);
         ctx_.browser.setVisible(true);
@@ -538,19 +533,19 @@ private:
         constexpr int kKeysW       = 56;
         constexpr int kRightMargin = 4;
 
-        ctx_.settingsButton.setBounds(ctx_.getWidth() - kRightMargin - kSettingsW - kGap - kKeysW,
+        ctx_.settingsButton.setBounds(bounds_.getWidth() - kRightMargin - kSettingsW - kGap - kKeysW,
                                       kTopMargin,
                                       kSettingsW, kBtnH);
 
-        ctx_.keysButton.setBounds(ctx_.getWidth() - kRightMargin - kKeysW,
+        ctx_.keysButton.setBounds(bounds_.getWidth() - kRightMargin - kKeysW,
                                   kTopMargin,
                                   kKeysW, kBtnH);
     }
 
     void layoutDashboard()
     {
-        const auto fullBounds = ctx_.getLocalBounds();
-        const auto oceanArea  = ctx_.getOceanArea();
+        const auto fullBounds = bounds_;
+        const auto oa         = oceanArea();
 
         // Right-side panel (PAD/DRUM/XY) — sits beside the ocean.
         if (ctx_.surfaceRight.isOpen() && ctx_.surfaceRight.isVisible())
@@ -560,27 +555,27 @@ private:
             const int wlH2 = children_.waterline()
                                  ? children_.waterline()->getDesiredHeight()
                                  : kWaterlineH;
-            const int bottomH = ctx_.getEffectiveDashboardH() + wlH2 + kStatusBarH;
-            ctx_.surfaceRight.setBounds(oceanArea.getRight(),
+            const int bottomH = effectiveDashboardH() + wlH2 + kStatusBarH;
+            ctx_.surfaceRight.setBounds(oa.getRight(),
                                         fullBounds.getY(),
                                         rpW,
                                         fullBounds.getHeight() - bottomH);
         }
 
-        ctx_.hudBar.setBounds(oceanArea.getX() + 16,
-                              oceanArea.getY() + 12,
-                              oceanArea.getWidth() - 32,
+        ctx_.hudBar.setBounds(oa.getX() + 16,
+                              oa.getY() + 12,
+                              oa.getWidth() - 32,
                               40);
 
         const int wlH = children_.waterline()
                             ? children_.waterline()->getDesiredHeight()
                             : kWaterlineH;
         if (auto* wl = children_.waterline())
-            wl->setBounds(fullBounds.getX(), oceanArea.getBottom(),
+            wl->setBounds(fullBounds.getX(), oa.getBottom(),
                           fullBounds.getWidth(), wlH);
 
         auto dashArea = fullBounds
-                            .withTrimmedTop(oceanArea.getHeight() + wlH)
+                            .withTrimmedTop(oa.getHeight() + wlH)
                             .withTrimmedBottom(kStatusBarH);
 
         // Macro strip (top of dashboard).
@@ -613,14 +608,14 @@ private:
 
         if (auto* cbp = children_.chordBreakout())
         {
-            const int panelH = static_cast<int>(ctx_.getHeight() * 0.60f);
-            cbp->setSize(ctx_.getWidth(), panelH);
+            const int panelH = static_cast<int>(bounds_.getHeight() * 0.60f);
+            cbp->setSize(bounds_.getWidth(), panelH);
             if (!cbp->isOpen())
-                cbp->setTopLeftPosition(0, ctx_.getHeight());
+                cbp->setTopLeftPosition(0, bounds_.getHeight());
         }
 
         if (auto* sb = children_.seqBreakout())
-            sb->setBounds(ctx_.getLocalBounds().withTop(ctx_.getHeight() * 2 / 5));
+            sb->setBounds(bounds_.withTop(bounds_.getHeight() * 2 / 5));
 
         ctx_.exprStrips.setBounds(dashArea.removeFromLeft(ExpressionStrips::kStripWidth));
 
@@ -633,16 +628,16 @@ private:
             ctx_.subPlaySurface.setVisible(false);
 
         if (auto* tb = children_.transportBar())
-            tb->setBounds(0, ctx_.getHeight() - kStatusBarH,
-                          ctx_.getWidth(), kStatusBarH);
+            tb->setBounds(0, bounds_.getHeight() - kStatusBarH,
+                          bounds_.getWidth(), kStatusBarH);
 
         if (auto* sb2 = children_.statusBar())
         {
             if (children_.transportBar())
                 sb2->setVisible(false);
             else
-                sb2->setBounds(0, ctx_.getHeight() - kStatusBarH,
-                               ctx_.getWidth(), kStatusBarH);
+                sb2->setBounds(0, bounds_.getHeight() - kStatusBarH,
+                               bounds_.getWidth(), kStatusBarH);
         }
 
         ctx_.detailOverlay.setBounds(fullBounds);
@@ -663,6 +658,33 @@ private:
     //==========================================================================
     // Geometry helpers
     //==========================================================================
+
+    /** Effective dashboard height — collapses when the right panel is open.
+     *  Inlined from OceanView::getEffectiveDashboardH() — same formula, no OceanView ref. */
+    int effectiveDashboardH() const noexcept
+    {
+        if (ctx_.surfaceRight.isOpen() && ctx_.surfaceRight.isVisible())
+            return static_cast<int>(kMacroStripH) + 48 + kTabBarH; // macros + FX + tabs, no keyboard
+        return kDashboardH;
+    }
+
+    /** Ocean viewport rectangle — area above the dashboard / waterline / status bar.
+     *  Inlined from OceanView::getOceanArea() — same formula, no OceanView ref. */
+    juce::Rectangle<int> oceanArea() const
+    {
+        const int wlH     = children_.waterline()
+                                ? children_.waterline()->getDesiredHeight()
+                                : kWaterlineH;
+        const int bottomH = effectiveDashboardH() + wlH + kStatusBarH;
+        auto area = bounds_.withTrimmedBottom(bottomH);
+        if (ctx_.surfaceRight.isOpen() && ctx_.surfaceRight.isVisible())
+        {
+            const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
+                                     static_cast<int>(area.getWidth() * 0.40f));
+            area = area.withTrimmedRight(rpW);
+        }
+        return area;
+    }
 
     static juce::Point<float> polarToCartesian(float angle,
                                                float radius,
