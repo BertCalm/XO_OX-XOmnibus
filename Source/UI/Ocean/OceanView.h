@@ -2016,10 +2016,9 @@ private:
         for (auto& orbit : orbits_)
             orbit.resetSpring();
 
-        viewState_    = ViewState::Orbital;
-        selectedSlot_ = -1;
-
-        resized();
+        // Phase 3 (#1184): state mutation + layout + repaint delegated to
+        // OceanStateMachine.  onStateEntered fires layoutForState + repaint.
+        stateMachine_.transitionToOrbital();
 
         if (onEngineSelected)
             onEngineSelected(-1);
@@ -2028,7 +2027,8 @@ private:
     void transitionToZoomIn(int slot)
     {
         // Toggling the same slot returns to Orbital.
-        if (viewState_ == ViewState::ZoomIn && selectedSlot_ == slot)
+        if (stateMachine_.currentState() == OceanStateMachine::ViewState::ZoomIn
+            && stateMachine_.selectedSlot() == slot)
         {
             transitionToOrbital();
             return;
@@ -2038,10 +2038,9 @@ private:
         for (auto& orbit : orbits_)
             orbit.resetSpring();
 
-        viewState_    = ViewState::ZoomIn;
-        selectedSlot_ = slot;
-
-        resized();
+        // Phase 3 (#1184): state mutation + layout + repaint delegated to
+        // OceanStateMachine.  onStateEntered fires layoutForState + repaint.
+        stateMachine_.transitionToZoomIn(slot);
 
         if (onEngineSelected)
             onEngineSelected(slot);
