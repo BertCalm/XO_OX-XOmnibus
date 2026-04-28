@@ -111,7 +111,8 @@ public:
         auto pos = getMouseXYRelative();
         int idx = hitZone((float)pos.x);
         if (idx < 0)
-            return {};
+            // §1301: static fallback when not hovering over a specific zone.
+            return "XPN velocity zone map — drag boundaries to reshape dynamics";
         const auto& z = zones[(size_t)idx];
         return midiToNoteName(z.lowMidi) + " - " + midiToNoteName(z.highMidi) + " | Root: " + z.noteName +
                (z.pitchUnverified ? " (unverified)" : "");
