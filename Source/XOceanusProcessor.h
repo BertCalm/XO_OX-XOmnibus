@@ -168,6 +168,24 @@ public:
         return globalCutoffModOffset_.load(std::memory_order_relaxed);
     }
 
+    // B1: Read the accumulated modOffset for a given route slot (audio-thread only).
+    // Returns 0.0f for out-of-range indices.  Engines that opt into generic global
+    // mod routing scan routesSnapshot_ on load, remember matching slot indices, then
+    // call this each renderBlock to retrieve the current offset.
+    // Units: normalised modOffset (depth * srcVal) — multiply by your parameter's
+    // range span to convert to parameter units.
+    float getModRouteAccum(int routeIdx) const noexcept
+    {
+        if (routeIdx < 0 || routeIdx >= kMaxGlobalRoutes) return 0.0f;
+        return routeModAccum_[static_cast<size_t>(routeIdx)];
+    }
+
+    // B1: Read the number of active routes in the snapshot (audio-thread or message-thread).
+    int getModRouteCount() const noexcept
+    {
+        return routesSnapshotCount_.load(std::memory_order_relaxed);
+    }
+
     // Preset management (UI thread only)
     PresetManager& getPresetManager() { return presetManager; }
     void applyPreset(const PresetData& preset);
@@ -912,14 +930,51 @@ private:
         // Wave 5 C5: per-route slot index for sequencer-scoped sources.
         // -1 = not slot-scoped (backward-compat default).  0–3 = slot to query.
         int     slotIndex{-1};
+
+        // B1: Pre-resolved destination parameter pointer (resolved on message thread in
+        // flushModRoutesSnapshot).  Lifetime: as long as the APVTS (i.e., the processor).
+        // nullptr when destParamId is not registered in the current APVTS layout (e.g. the
+        // engine that owns that param is not loaded).
+        // Audio thread reads this pointer; never dereferences it for the range — range
+        // is pre-cached in destParamRangeSpan below.
+        juce::RangedAudioParameter* destParam{nullptr};
+
+        // Pre-computed range span (end - start) for the destination parameter so the
+        // audio thread can scale the normalised modOffset to param units without calling
+        // any juce:: method.  Set to 0.0f when destParam is nullptr (route is generic
+        // and consumed by routeModAccum_ only).
+        float destParamRangeSpan{0.0f};
+
+        // True iff this route targets "orry_fltCutoff" — avoids strncmp on audio thread.
+        // This flag is set in flushModRoutesSnapshot by pointer identity (compare resolved
+        // destParam against the cached orryCutoffParam_ pointer).
+        bool isOrryCutoff{false};
     };
     static constexpr int kMaxGlobalRoutes = ModRoutingModel::MaxRoutes;
     std::array<GlobalModRouteSnapshot, kMaxGlobalRoutes> routesSnapshot_{};
     std::atomic<int> routesSnapshotCount_{0};   // written by message thread, read by audio thread
     std::atomic<int> snapshotVersion_{0};        // generation counter
     int audioSnapshotVersion_{-1};               // audio thread: last consumed version (audio-thread-only)
-    // (cachedOrryFltCutoff_ removed — global routes now write globalCutoffModOffset_
-    // which OrreryEngine reads; no direct APVTS parameter pointer needed on audio thread.)
+
+    // Cached pointer to the orry_fltCutoff parameter — resolved once in cacheParameterPointers()
+    // and used in flushModRoutesSnapshot() to set isOrryCutoff by pointer identity (no strncmp).
+    juce::RangedAudioParameter* orryCutoffParam_{nullptr};
+
+    // B1: Per-route modulation accumulator — audio thread writes modOffset here each block.
+    // Index matches routesSnapshot_ slot.  Engines can call getModRouteAccum(routeIdx) to
+    // read the current offset for their parameter.  Cleared (zeroed) every block before
+    // the route eval loop so stale values don't persist when routes are removed.
+    //
+    // Usage pattern for engines:
+    //   1. On load / parameter-cache pass: scan routesSnapshot_ for routes targeting my params.
+    //      Store matching route indices.
+    //   2. In renderBlock: read getModRouteAccum(routeIdx) and add to the parameter offset.
+    //
+    // NOTE: routeModAccum_ is written by the audio thread only.  It is exposed read-only to
+    // engines via getModRouteAccum() (audio-thread-only accessor — no atomics needed here
+    // because all readers and writers are on the same audio thread during processBlock).
+    // Plain floats are sufficient; no cross-thread access occurs after the write.
+    std::array<float, kMaxGlobalRoutes> routeModAccum_{};
 
     // LFO1 value written by OrreryEngine on the audio thread.
     // Global router reads this as the LFO1 source value.

@@ -499,6 +499,11 @@ void XOceanusProcessor::cacheParameterPointers()
     cachedParams.ouijaConsonantDissonant = apvts.getRawParameterValue("ouija_consonant_dissonant");
     cachedParams.ouijaTendencyCol        = apvts.getRawParameterValue("ouija_tendency_col");
     cachedParams.ouijaTendencyRow        = apvts.getRawParameterValue("ouija_tendency_row");
+
+    // B1: Pre-resolve the Orrery cutoff parameter pointer used for isOrryCutoff detection
+    // in flushModRoutesSnapshot().  If the Orrery engine is not registered, this stays
+    // nullptr and isOrryCutoff is never set (safe — globalCutoffModOffset_ stays 0.0f).
+    orryCutoffParam_ = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("orry_fltCutoff"));
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createParameterLayout()
@@ -2112,14 +2117,21 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     // and BEFORE engine renderBlock so sequencer events are processed this block.
     // Reuse the transport values already read into hostTransport this block.
     {
+        // I4: Pre-computed slot APVTS prefix strings — avoids juce::String allocation
+        // every block.  "slot0_seq_" … "slot3_seq_" match the IDs registered in
+        // createParameterLayout via PerEnginePatternSequencer::addParameters().
+        static const juce::String kSlotSeqPrefix[kNumPrimarySlots] = {
+            "slot0_seq_", "slot1_seq_", "slot2_seq_", "slot3_seq_"
+        };
+
         const double seqBpm      = hostTransport.getBPM();
         const double seqPpq      = hostTransport.getBeatPosition();
         const bool   seqPlaying  = hostTransport.isPlaying();
         for (int s = 0; s < kNumPrimarySlots; ++s)
         {
-            slotSequencers_[s].syncFromApvts(apvts, "slot" + juce::String(s) + "_seq_");
+            slotSequencers_[s].syncFromApvts(apvts, kSlotSeqPrefix[s]);
             // C3: sync per-step gate override + pitch offset from APVTS params.
-            slotSequencers_[s].syncStepOverridesFromApvts(apvts, "slot" + juce::String(s) + "_seq_");
+            slotSequencers_[s].syncStepOverridesFromApvts(apvts, kSlotSeqPrefix[s]);
             slotSequencers_[s].processBlock(slotMidi[s], seqBpm, seqPpq, seqPlaying, numSamples);
         }
     }
@@ -2245,6 +2257,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             // In A1 we have LFO1 only; A2 will add LFO2, Envelope, etc.
             const float lfo1Val = globalLFO1_.load(std::memory_order_relaxed);
 
+            // B1: Zero per-route accumulators before evaluating this block.
+            // Plain floats — all access is on the audio thread, no atomics needed.
+            routeModAccum_.fill(0.0f);
+
             // Accumulate global cutoff mod offset (same units as OrreryEngine::modCutoffOffset).
             float globalCutoffMod = 0.0f;
 
@@ -2255,8 +2271,11 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     continue;
 
                 // Source value — only LFO1 (id=0) wired in A1.
-                // C5: SeqStepValue / BeatPhase / ChordToneIdx read from slotSequencers_.
+                // C5: SeqStepValue / BeatPhase / LiveGate read from slotSequencers_.
                 // #1289: SeqStepPitch added — per-step pitch offset as bipolar -1..+1.
+                // TODO(#mod-source-completion): implement LFO2, LFO3, Envelope, Envelope2,
+                //   Velocity, Aftertouch, ModWheel, MacroTone/Tide/Couple/Depth, MidiCC,
+                //   MpePressure, MpeSlide, XouijaCell (each needs separate scoping work).
                 float srcVal = 0.0f;
                 if (snap.sourceId == static_cast<int>(ModSourceId::LFO1))
                 {
@@ -2264,7 +2283,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                 }
                 else if (snap.sourceId == static_cast<int>(ModSourceId::SeqStepValue) ||
                          snap.sourceId == static_cast<int>(ModSourceId::BeatPhase)    ||
-                         snap.sourceId == static_cast<int>(ModSourceId::ChordToneIdx) ||
+                         snap.sourceId == static_cast<int>(ModSourceId::LiveGate)     ||
                          snap.sourceId == static_cast<int>(ModSourceId::SeqStepPitch))
                 {
                     // Validate slot index — guard against stale or bad snapshots.
@@ -2290,28 +2309,35 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                         // 0.0 on silent (rest) steps so mod depth does not ghost-ring.
                         srcVal = slotSequencers_[static_cast<size_t>(slot)].getLiveStepPitch();
                     }
-                    else // ChordToneIdx — repurposed here as gate state (0 or 1, unipolar)
+                    else // LiveGate — gate state (0 or 1, unipolar)
                     {
                         srcVal = slotSequencers_[static_cast<size_t>(slot)].getLiveGate();
                     }
                 }
                 else
-                    continue; // A2 will add remaining sources
+                    continue; // TODO(#mod-source-completion): add remaining sources
 
                 // Bipolar: use != 0 check so negative depths sweep downward.
                 if (snap.depth == 0.0f)
                     continue;
 
-                float modOffset = srcVal * snap.depth;
+                const float modOffset = srcVal * snap.depth;
 
-                // Destination: orry_fltCutoff only in A1.
-                // strncmp on the fixed char array — no heap, no std::string.
-                if (std::strncmp(snap.destParamId, "orry_fltCutoff", sizeof(snap.destParamId) - 1) == 0)
+                // B1: Write per-route accumulator — available to any engine that opts in
+                // via getModRouteAccum(ri).  Units: normalised modOffset in [-depth, +depth].
+                routeModAccum_[static_cast<size_t>(ri)] = modOffset;
+
+                // B1: Destination dispatch — use pre-resolved pointer flags, no strncmp.
+                if (snap.isOrryCutoff)
                 {
-                    // Accumulate — scale by 8000 Hz to match OrreryEngine's mod matrix
-                    // convention (dest[1] * 8000 = cutoff offset in Hz).
+                    // Orrery filter cutoff: scale by 8000 Hz to match OrreryEngine's mod
+                    // matrix convention (dest[1] * 8000 = cutoff offset in Hz).
                     globalCutoffMod += modOffset * 8000.0f;
                 }
+                // else: destination is available via routeModAccum_[ri] for engines to read.
+                // When an engine opt-in API is added (Phase A2+), it will call
+                // getModRouteAccum(ri) with the route index it cached at load time.
+                // No silent discard — the value is now correctly stored in routeModAccum_.
             }
 
             // Write accumulated cutoff offset for OrreryEngine to read.
@@ -2323,6 +2349,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         {
             // No routes — ensure offset is zero so filter settles to base value.
             globalCutoffModOffset_.store(0.0f, std::memory_order_relaxed);
+            routeModAccum_.fill(0.0f);
         }
     }
 
@@ -3005,16 +3032,42 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
         // Copy dest param ID into fixed-length char array — no std::string on audio thread.
         // juce::String::copyToUTF8 writes at most maxBytes chars (inc. null terminator).
         r.destParamId.copyToUTF8(snap.destParamId, sizeof(snap.destParamId));
+
+        // B1: Pre-resolve destination parameter pointer on the message thread so the
+        // audio thread never calls apvts.getParameter() (a hash-map lookup, not RT-safe).
+        // Lifetime of juce::RangedAudioParameter* == lifetime of apvts == lifetime of
+        // this processor, so the pointer stays valid for the duration of the snapshot.
+        snap.destParam = dynamic_cast<juce::RangedAudioParameter*>(
+            apvts.getParameter(r.destParamId));
+
+        // Pre-cache the range span (end - start) so the audio thread can scale
+        // normalised modOffset to param units without calling any juce:: method.
+        if (snap.destParam != nullptr)
+        {
+            const auto& range = snap.destParam->getNormalisableRange();
+            snap.destParamRangeSpan = range.end - range.start;
+        }
+        else
+        {
+            snap.destParamRangeSpan = 0.0f;
+        }
+
+        // B1: Set isOrryCutoff flag by pointer identity — zero-cost strncmp replacement.
+        // orryCutoffParam_ may be nullptr if Orrery is not loaded; guard accordingly.
+        snap.isOrryCutoff = (orryCutoffParam_ != nullptr && snap.destParam == orryCutoffParam_);
+
         ++count;
     }
     // Zero out trailing slots so stale entries are not evaluated.
     for (int i = count; i < kMaxGlobalRoutes; ++i)
-        routesSnapshot_[static_cast<size_t>(i)].valid = false;
+    {
+        routesSnapshot_[static_cast<size_t>(i)].valid          = false;
+        routesSnapshot_[static_cast<size_t>(i)].destParam       = nullptr;
+        routesSnapshot_[static_cast<size_t>(i)].destParamRangeSpan = 0.0f;
+        routesSnapshot_[static_cast<size_t>(i)].isOrryCutoff    = false;
+    }
 
     routesSnapshotCount_.store(count, std::memory_order_relaxed);
-
-    // (No per-destination pointer caching needed — global routes write globalCutoffModOffset_
-    // which OrreryEngine reads; no raw parameter pointer is accessed on the audio thread.)
 
     // Release fence: ensures all prior writes (routesSnapshot_[], routesSnapshotCount_,
     // cachedOrryFltCutoff_) are visible to the audio thread before it reads the
