@@ -77,6 +77,7 @@
 #include "../Gallery/StatusBar.h"
 #include "OceanChildren.h"
 #include "OceanLayout.h"
+#include "OceanStateMachine.h"
 
 #ifndef _USE_MATH_DEFINES
 #define _USE_MATH_DEFINES
@@ -160,19 +161,10 @@ public:
     // View-state machine
     //==========================================================================
 
-    /** Interaction states that control the full layout strategy. */
-    enum class ViewState
-    {
-        Orbital,          ///< Default: all creatures orbit the nexus
-        ZoomIn,           ///< One creature enlarged at centre, others minimised
-        SplitTransform,   ///< 20% mini-orbital strip left, 80% detail panel right
-        BrowserOpen       ///< Full-window DNA map browser
-    };
-
-    // Phase 2 (#1184): OceanLayout defines a matching ViewState enum so it can
-    // dispatch layout strategies without a back-reference to OceanView.  The two
-    // enums must stay in sync; the static_asserts in resized() enforce this.
-    // Phase 3 will move ViewState to OceanStateMachine and remove the duplicate.
+    // Phase 3 (#1184): ViewState unified.  The single canonical definition lives
+    // in OceanStateMachine.  OceanView and OceanLayout both alias it via `using`
+    // so all three classes share the same type — no static_casts needed.
+    using ViewState = OceanStateMachine::ViewState;
 
     //==========================================================================
     // Wave 3 — Panel type registry (D4 locked)
@@ -658,6 +650,33 @@ public:
                 detailShowing_,
                 firstLaunch_,
             });
+
+        // ── Phase 3 (#1184): wire OceanStateMachine callbacks ────────────────
+        // onStateEntered: a completed transition triggers layout + repaint.
+        // Also syncs OceanView's mirror fields (viewState_, selectedSlot_) so
+        // any remaining OceanView code that still reads them is consistent.
+        // Step 9 removes the mirror fields; until then keep them in sync here.
+        stateMachine_.onStateEntered = [this](OceanStateMachine::ViewState s)
+        {
+            // Sync selectedSlot_ mirror (removed in step 9 final cleanup).
+            // viewState_ mirror removed in step 9 — read stateMachine_.currentState() instead.
+            selectedSlot_ = stateMachine_.selectedSlot();
+
+            jassert(layout_ != nullptr);
+            layout_->layoutForState(s, getLocalBounds(), 1.0f);
+            layout_->reorderZStack();
+            repaint();
+        };
+
+        // onAnimationFrame: stubbed for future animated transitions.
+        // Transitions are currently instantaneous so this is never fired.
+        stateMachine_.onAnimationFrame = [this](OceanStateMachine::ViewState s,
+                                                float progress01)
+        {
+            jassert(layout_ != nullptr);
+            layout_->layoutForState(s, getLocalBounds(), progress01);
+            repaint();
+        };
     }
 
     ~OceanView() override
@@ -827,25 +846,18 @@ public:
         // a drawer with SurfaceRightPanel, close the drawer via coordinator.
         coordinatorApplyWidthGuard();
 
-        // Phase 2 (#1184): all layout/geometry logic lives in OceanLayout.
+        // Phase 2+3 (#1184): all layout/geometry logic lives in OceanLayout.
         // OceanView passes only the state arguments; OceanLayout owns the
         // setBounds/setVisible calls for every child component.
         //
         // Z-order note: reorderZStack() is NOT called from here (#1163).
         // It is called exactly once per setup phase (after each initX()), and
         // on each visibility toggle that needs a re-stack.
-        // Guard: OceanView::ViewState and OceanLayout::ViewState must have
-        // identical ordinals so the static_cast below is safe.  Phase 3 will
-        // move ViewState to OceanStateMachine and remove this cast entirely.
-        static_assert(static_cast<int>(ViewState::Orbital)        == static_cast<int>(OceanLayout::ViewState::Orbital));
-        static_assert(static_cast<int>(ViewState::ZoomIn)         == static_cast<int>(OceanLayout::ViewState::ZoomIn));
-        static_assert(static_cast<int>(ViewState::SplitTransform) == static_cast<int>(OceanLayout::ViewState::SplitTransform));
-        static_assert(static_cast<int>(ViewState::BrowserOpen)    == static_cast<int>(OceanLayout::ViewState::BrowserOpen));
-
+        //
+        // Phase 3: ViewState is now a unified alias (OceanStateMachine::ViewState)
+        // shared by OceanView, OceanLayout, and OceanStateMachine — no static_cast.
         jassert(layout_ != nullptr);
-        layout_->layoutForState(
-            static_cast<OceanLayout::ViewState>(viewState_),
-            getLocalBounds());
+        layout_->layoutForState(stateMachine_.currentState(), getLocalBounds());
     }
 
     bool keyPressed(const juce::KeyPress& key) override
@@ -876,12 +888,12 @@ public:
                 dismissDetailPanel();
                 return true;
             }
-            if (viewState_ == ViewState::BrowserOpen)
+            if (stateMachine_.currentState() == ViewState::BrowserOpen)
             {
                 exitBrowser();
                 return true;
             }
-            if (viewState_ != ViewState::Orbital)
+            if (stateMachine_.currentState() != ViewState::Orbital)
             {
                 transitionToOrbital();
                 return true;
@@ -892,7 +904,7 @@ public:
         // P: toggle DNA map browser.
         if (key == juce::KeyPress('p') || key == juce::KeyPress('P'))
         {
-            if (viewState_ == ViewState::BrowserOpen)
+            if (stateMachine_.currentState() == ViewState::BrowserOpen)
                 exitBrowser();
             else
                 transitionToBrowser();
@@ -943,10 +955,10 @@ public:
         const bool isTab      = (key.getKeyCode() == juce::KeyPress::tabKey &&
                                   !key.getModifiers().isShiftDown());
         const bool isRight    = (key.getKeyCode() == juce::KeyPress::rightKey &&
-                                  viewState_ == ViewState::Orbital);
+                                  stateMachine_.currentState() == ViewState::Orbital);
         if (isTab || isRight)
         {
-            const int from = (selectedSlot_ >= 0) ? selectedSlot_ : -1;
+            const int from = (stateMachine_.selectedSlot() >= 0) ? stateMachine_.selectedSlot() : -1;
             const int next = nextPopulatedSlot(from, +1);
             if (next >= 0)
                 transitionToZoomIn(next);
@@ -957,10 +969,10 @@ public:
         const bool isShiftTab = (key.getKeyCode() == juce::KeyPress::tabKey &&
                                   key.getModifiers().isShiftDown());
         const bool isLeft     = (key.getKeyCode() == juce::KeyPress::leftKey &&
-                                  viewState_ == ViewState::Orbital);
+                                  stateMachine_.currentState() == ViewState::Orbital);
         if (isShiftTab || isLeft)
         {
-            const int from = (selectedSlot_ >= 0) ? selectedSlot_ : 0;
+            const int from = (stateMachine_.selectedSlot() >= 0) ? stateMachine_.selectedSlot() : 0;
             const int prev = nextPopulatedSlot(from, -1);
             if (prev >= 0)
                 transitionToZoomIn(prev);
@@ -969,7 +981,7 @@ public:
 
         // Up arrow: in ZoomIn state, step to the previous preset.
         if (key.getKeyCode() == juce::KeyPress::upKey &&
-            viewState_ == ViewState::ZoomIn)
+            stateMachine_.currentState() == ViewState::ZoomIn)
         {
             presetPrev_.triggerClick();
             return true;
@@ -977,7 +989,7 @@ public:
 
         // Down arrow: in ZoomIn state, step to the next preset.
         if (key.getKeyCode() == juce::KeyPress::downKey &&
-            viewState_ == ViewState::ZoomIn)
+            stateMachine_.currentState() == ViewState::ZoomIn)
         {
             presetNext_.triggerClick();
             return true;
@@ -1034,7 +1046,7 @@ public:
         // returns to Orbital.  We check whether the click landed on a child
         // component via hitTest propagation — if we receive it here, no child
         // caught it.
-        if (viewState_ == ViewState::ZoomIn)
+        if (stateMachine_.currentState() == ViewState::ZoomIn)
         {
             transitionToOrbital();
             juce::ignoreUnused(e);
@@ -1098,9 +1110,9 @@ public:
         // different slot (selectedSlot_ != slot) or returned to Orbital between
         // when the engine removal was queued and when this runs, do not clobber
         // the new state.  Only ZoomIn / SplitTransform warrant a reset.
-        const bool slotIsSelected = (selectedSlot_ == slot);
-        const bool inEngagedState = (viewState_ == ViewState::ZoomIn ||
-                                     viewState_ == ViewState::SplitTransform);
+        const bool slotIsSelected = (stateMachine_.selectedSlot() == slot);
+        const bool inEngagedState = (stateMachine_.currentState() == ViewState::ZoomIn ||
+                                     stateMachine_.currentState() == ViewState::SplitTransform);
         if (slotIsSelected && inEngagedState)
             transitionToOrbital();
         else
@@ -1390,8 +1402,9 @@ public:
     // State queries
     //==========================================================================
 
-    ViewState getViewState()    const noexcept { return viewState_; }
-    int       getSelectedSlot() const noexcept { return selectedSlot_; }
+    // Phase 3 (#1184): viewState_ removed — read from OceanStateMachine.
+    ViewState getViewState()    const noexcept { return stateMachine_.currentState(); }
+    int       getSelectedSlot() const noexcept { return stateMachine_.selectedSlot(); }
 
     bool isSlotMuted  (int slot) const noexcept
     {
@@ -1956,9 +1969,10 @@ private:
     void selectOrbitInPlace(int slot)
     {
         // Toggle: clicking the already-selected orbit deselects it.
-        if (selectedSlot_ == slot)
+        if (stateMachine_.selectedSlot() == slot)
         {
-            selectedSlot_ = -1;
+            selectedSlot_ = -1;                    // mirror (Phase 3; removed in step 9)
+            stateMachine_.setSelectedSlot(-1);
             for (auto& o : orbits_)
                 o.setSelected(false);
             if (onEngineSelected)
@@ -1966,7 +1980,8 @@ private:
             return;
         }
 
-        selectedSlot_ = slot;
+        selectedSlot_ = slot;                      // mirror (Phase 3; removed in step 9)
+        stateMachine_.setSelectedSlot(slot);
         for (int i = 0; i < 5; ++i)
             orbits_[i].setSelected(i == slot);
 
@@ -1993,10 +2008,9 @@ private:
         for (auto& orbit : orbits_)
             orbit.resetSpring();
 
-        viewState_    = ViewState::Orbital;
-        selectedSlot_ = -1;
-
-        resized();
+        // Phase 3 (#1184): state mutation + layout + repaint delegated to
+        // OceanStateMachine.  onStateEntered fires layoutForState + repaint.
+        stateMachine_.transitionToOrbital();
 
         if (onEngineSelected)
             onEngineSelected(-1);
@@ -2005,7 +2019,8 @@ private:
     void transitionToZoomIn(int slot)
     {
         // Toggling the same slot returns to Orbital.
-        if (viewState_ == ViewState::ZoomIn && selectedSlot_ == slot)
+        if (stateMachine_.currentState() == OceanStateMachine::ViewState::ZoomIn
+            && stateMachine_.selectedSlot() == slot)
         {
             transitionToOrbital();
             return;
@@ -2015,10 +2030,9 @@ private:
         for (auto& orbit : orbits_)
             orbit.resetSpring();
 
-        viewState_    = ViewState::ZoomIn;
-        selectedSlot_ = slot;
-
-        resized();
+        // Phase 3 (#1184): state mutation + layout + repaint delegated to
+        // OceanStateMachine.  onStateEntered fires layoutForState + repaint.
+        stateMachine_.transitionToZoomIn(slot);
 
         if (onEngineSelected)
             onEngineSelected(slot);
@@ -2030,10 +2044,9 @@ private:
         for (auto& orbit : orbits_)
             orbit.resetSpring();
 
-        viewState_    = ViewState::SplitTransform;
-        selectedSlot_ = slot;
-
-        resized();
+        // Phase 3 (#1184): state mutation + layout + repaint delegated to
+        // OceanStateMachine.  onStateEntered fires layoutForState + repaint.
+        stateMachine_.transitionToSplitTransform(slot);
 
         if (onEngineDiveDeep)
             onEngineDiveDeep(slot);
@@ -2045,41 +2058,42 @@ private:
         for (auto& orbit : orbits_)
             orbit.resetSpring();
 
-        // Snapshot the pre-browser state so exitBrowser() can restore it exactly.
-        preBrowserState_    = viewState_;
-        preBrowserSlot_     = selectedSlot_;
-
-        viewState_ = ViewState::BrowserOpen;
-        resized();
+        // Phase 3 (#1184): pre-browser state snapshot + state mutation +
+        // layout + repaint all delegated to OceanStateMachine.
+        // transitionToBrowser() saves preBrowserState_/Slot_ before
+        // transitioning to BrowserOpen; onStateEntered fires layout + repaint.
+        stateMachine_.transitionToBrowser();
     }
 
     void exitBrowser()
     {
+        // Read pre-browser state from OceanStateMachine (canonical owner).
+        const auto preState = stateMachine_.preBrowserState();
+        const int  preSlot  = stateMachine_.preBrowserSlot();
+
         // Restore whatever state was active before the browser was opened.
-        if (preBrowserState_ == ViewState::ZoomIn && preBrowserSlot_ >= 0)
+        if (preState == OceanStateMachine::ViewState::ZoomIn && preSlot >= 0)
         {
             // transitionToZoomIn re-enters ZoomIn and fires onEngineSelected.
-            transitionToZoomIn(preBrowserSlot_);
+            transitionToZoomIn(preSlot);
         }
-        else if (preBrowserState_ == ViewState::SplitTransform && preBrowserSlot_ >= 0)
+        else if (preState == OceanStateMachine::ViewState::SplitTransform && preSlot >= 0)
         {
-            transitionToSplitTransform(preBrowserSlot_);
+            transitionToSplitTransform(preSlot);
         }
         else
         {
             // Default: return to Orbital and clear selection.
-            viewState_    = ViewState::Orbital;
-            selectedSlot_ = -1;
-
-            resized();
+            // Phase 3 (#1184): delegate to stateMachine_ instead of writing
+            // viewState_ directly.
+            stateMachine_.transitionToOrbital();
 
             if (onEngineSelected)
                 onEngineSelected(-1);
         }
 
         // Reset saved pre-browser state so it cannot be accidentally re-used.
-        preBrowserState_ = ViewState::Orbital;
-        preBrowserSlot_  = -1;
+        stateMachine_.clearPreBrowserState();
     }
 
     //==========================================================================
@@ -2435,7 +2449,10 @@ private:
     // State
     //==========================================================================
 
-    ViewState viewState_       = ViewState::Orbital;
+    // Phase 3 (#1184): viewState_ removed — canonical state lives in stateMachine_.
+    // selectedSlot_ is kept as a mirror for LayoutTargets (const int& binding);
+    // it is updated in onStateEntered + selectOrbitInPlace.
+    // Step 9 will remove selectedSlot_ once LayoutTargets binds to stateMachine_ directly.
     int       selectedSlot_    = -1;
     float     dimAlpha_        = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
 
@@ -2449,9 +2466,9 @@ private:
     bool detailShowing_ = false;
     int  chainStartSlot_ = -1;  // -1 = no chain in progress
 
-    /// State saved on entering BrowserOpen so exitBrowser() can restore it exactly.
-    ViewState preBrowserState_ = ViewState::Orbital;
-    int       preBrowserSlot_  = -1;
+    // Phase 3 (#1184): preBrowserState_ and preBrowserSlot_ moved to
+    // OceanStateMachine (owned by stateMachine_ member).  exitBrowser() reads
+    // stateMachine_.preBrowserState() / preBrowserSlot() instead.
 
     // Wave 3 — 3a: Position-save debounce.
     // Counts down in ms from kPositionSaveDelayMs to 0 in timerCallback().
@@ -2479,6 +2496,9 @@ private:
 
     OceanChildren              children_{*this};
     std::unique_ptr<OceanLayout> layout_;
+
+    // Phase 3 (#1184): OceanStateMachine owns ViewState + all transition logic.
+    OceanStateMachine            stateMachine_;
 
     //==========================================================================
     // Child components — Z-ordered (bottom → top) as declared
