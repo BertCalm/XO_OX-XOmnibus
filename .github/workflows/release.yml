@@ -136,14 +136,14 @@ jobs:
             XOceanus.app.zip
 
       - name: Upload raw AU component
-        uses: actions/upload-artifact@v8
+        uses: actions/upload-artifact@v7
         with:
           name: raw-au-component
           path: XOceanus.component.zip
           retention-days: 1
 
       - name: Upload raw Standalone app
-        uses: actions/upload-artifact@v8
+        uses: actions/upload-artifact@v7
         with:
           name: raw-standalone-app
           path: XOceanus.app.zip
@@ -173,13 +173,13 @@ jobs:
 
       # ── Retrieve unsigned artefacts ──────────────────────────────────────
       - name: Download raw AU component
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v7
         with:
           name: raw-au-component
           path: unsigned/
 
       - name: Download raw Standalone app
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v7
         with:
           name: raw-standalone-app
           path: unsigned/
@@ -290,14 +290,14 @@ jobs:
             XOceanus.app.signed.zip
 
       - name: Upload signed AU component
-        uses: actions/upload-artifact@v8
+        uses: actions/upload-artifact@v7
         with:
           name: signed-au-component
           path: XOceanus.component.signed.zip
           retention-days: 1
 
       - name: Upload signed Standalone app
-        uses: actions/upload-artifact@v8
+        uses: actions/upload-artifact@v7
         with:
           name: signed-standalone-app
           path: XOceanus.app.signed.zip
@@ -335,13 +335,13 @@ jobs:
     steps:
       # ── Download signed artefacts ────────────────────────────────────────
       - name: Download signed AU component
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v7
         with:
           name: signed-au-component
           path: signed/
 
       - name: Download signed Standalone app
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v7
         with:
           name: signed-standalone-app
           path: signed/
@@ -428,14 +428,14 @@ jobs:
             XOceanus.app.notarized.zip
 
       - name: Upload notarized AU component
-        uses: actions/upload-artifact@v8
+        uses: actions/upload-artifact@v7
         with:
           name: notarized-au-component
           path: XOceanus.component.notarized.zip
           retention-days: 1
 
       - name: Upload notarized Standalone app
-        uses: actions/upload-artifact@v8
+        uses: actions/upload-artifact@v7
         with:
           name: notarized-standalone-app
           path: XOceanus.app.notarized.zip
@@ -471,13 +471,13 @@ jobs:
 
       # ── Download notarized artefacts ─────────────────────────────────────
       - name: Download notarized AU component
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v7
         with:
           name: notarized-au-component
           path: notarized/
 
       - name: Download notarized Standalone app
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v7
         with:
           name: notarized-standalone-app
           path: notarized/
@@ -591,7 +591,7 @@ jobs:
 
       # ── Upload final DMG ──────────────────────────────────────────────────
       - name: Upload signed and notarized DMG
-        uses: actions/upload-artifact@v8
+        uses: actions/upload-artifact@v7
         with:
           name: xoceanus-dmg
           path: ${{ env.DMG_NAME }}
@@ -637,7 +637,7 @@ jobs:
 
       # ── Download DMG ──────────────────────────────────────────────────────
       - name: Download signed and notarized DMG
-        uses: actions/download-artifact@v8
+        uses: actions/download-artifact@v7
         with:
           name: xoceanus-dmg
           path: release_assets/
