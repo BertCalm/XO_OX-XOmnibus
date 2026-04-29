@@ -31,6 +31,7 @@
 // placeholder in layoutForState() will be replaced by a stateMachine_ query.
 
 #include <juce_gui_basics/juce_gui_basics.h>
+#include "OceanStateMachine.h"
 #include "OceanChildren.h"
 #include "OceanBackground.h"
 #include "AmbientEdge.h"
@@ -182,13 +183,12 @@ public:
                            transitions (default 1.0 = fully settled).  Reserved
                            for Phase 3 — currently unused (juce::ignoreUnused).
     */
-    enum class ViewState
-    {
-        Orbital,
-        ZoomIn,
-        SplitTransform,
-        BrowserOpen
-    };
+
+    // Phase 3 (#1184): ViewState unified — OceanLayout no longer defines its
+    // own enum.  It uses OceanStateMachine::ViewState as the single source of
+    // truth.  The static_asserts and static_casts in OceanView::resized() are
+    // removed in step 8 since all three classes share the same type.
+    using ViewState = OceanStateMachine::ViewState;
 
     void layoutForState(ViewState            viewState,
                         juce::Rectangle<int> fullBounds,
