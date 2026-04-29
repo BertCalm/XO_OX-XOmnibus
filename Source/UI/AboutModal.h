@@ -487,8 +487,10 @@ private:
             y += 8.0f;
 
             // Footer note
+            // wire(#orphan-sweep): replaced user-visible stub string with placeholder.
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.30f),
-                     "Lore content is a stub — full engine mythology TBD.", 10.0f);
+                     "Engine mythology and Synth Seance content forthcoming. "
+                     "Use the navigation to explore other tabs.", 10.0f);
         }
     } loreContent_;
 

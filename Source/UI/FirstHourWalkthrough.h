@@ -413,7 +413,8 @@ private:
                   "Each slot holds one engine. Right now it is Odyssey. "
                   "Hover it to see what it is." },
         /* 2 */ { "The four macros",
-                  "CHARACTER sweeps the engine's core colour "
+                  // wire(#orphan-sweep item 2): D11 rename CHARACTER → TONE (2026-04-25 lock).
+                  "TONE sweeps the engine's core colour "
                   "-- brightness, grit, or breath. Try it." },
         /* 3 */ { "Browse the ocean",
                   "Thousands of presets, organised by mood. "

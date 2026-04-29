@@ -240,6 +240,9 @@ public:
     //   pinStore_.onPinChanged = [&registry](float bx, float by) {
     //       registry.updateSourceValue(ModSourceId::XouijaCell, bx, by);
     //   };
+    // TODO(#wiring-sweep): wire(#orphan-sweep item 9) — C5 SlotModSourceRegistry not yet
+    // implemented.  Replace this comment block with the real lambda once the registry
+    // class exists.  See also XOuijaPanel.h::getPinStore() for the matching note.
     //
     // bx / by are bipolar [-1, +1].
     //

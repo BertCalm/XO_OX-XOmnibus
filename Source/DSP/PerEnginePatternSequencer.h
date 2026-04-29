@@ -404,6 +404,25 @@ public:
             juce::ParameterID(prefix + "rootNote", 1),
             displayPrefix + "Root Note", 0, 127, 60)); // default = middle C
 
+        // wire(#orphan-sweep item 8): SeqBreakoutComponent references slot{n}_seq_swing
+        // and slot{n}_seq_gateLen which were missing from the APVTS layout (TODO C3 in
+        // SeqBreakoutComponent.h:1151/1157).  Add them here so attachments don't silently
+        // no-op and so the UI control is wired to a real parameter.
+        //
+        // swing: 0.0 = straight, 1.0 = max swing (50% off-beat push).
+        //   Semantics: even-step onset is delayed by (swing * clockInterval * 0.5).
+        layout.add(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID(prefix + "swing", 1),
+            displayPrefix + "Swing",
+            juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+
+        // gateLen: 0.0 = very short (10% of step), 1.0 = full legato (100%), 1.5 = over-legato.
+        //   0.5 default ≈ 50% duty cycle — punchy but not clipped.
+        layout.add(std::make_unique<juce::AudioParameterFloat>(
+            juce::ParameterID(prefix + "gateLen", 1),
+            displayPrefix + "Gate Length",
+            juce::NormalisableRange<float>(0.0f, 1.5f), 0.5f));
+
         // C3: per-step gate overrides (16 bool params) + pitch offsets (16 int params, ±12 st)
         // Naming: slot[N]_seq_gate_<step> and slot[N]_seq_pitch_<step>  (step = 0..15)
         for (int i = 0; i < 16; ++i)
@@ -459,6 +478,9 @@ public:
             cachedPHumanize_  = apvts.getRawParameterValue(prefix + "humanize");
             cachedPBaseVel_   = apvts.getRawParameterValue(prefix + "baseVel");
             cachedPRootNote_  = apvts.getRawParameterValue(prefix + "rootNote");
+            // wire(#orphan-sweep item 8): cache swing + gateLen pointers.
+            cachedPSwing_    = apvts.getRawParameterValue(prefix + "swing");
+            cachedPGateLen_  = apvts.getRawParameterValue(prefix + "gateLen");
         }
 
         // Read from cached atomic pointers — O(1), no allocation.
@@ -493,6 +515,14 @@ public:
         if (cachedPRootNote_)
             rootNote_.store(juce::jlimit(0, 127, static_cast<int>(cachedPRootNote_->load() + 0.5f)),
                             std::memory_order_relaxed);
+
+        // wire(#orphan-sweep item 8): sync swing + gateLen.
+        if (cachedPSwing_)
+            swing_.store(juce::jlimit(0.0f, 1.0f, cachedPSwing_->load()),
+                         std::memory_order_relaxed);
+        if (cachedPGateLen_)
+            globalGateLen_.store(juce::jlimit(0.0f, 1.5f, cachedPGateLen_->load()),
+                                 std::memory_order_relaxed);
     }
 
     // C3: Sync per-step overrides from APVTS. Called from the 15 Hz UI timer or
@@ -580,6 +610,9 @@ private:
     std::atomic<float> humanization_{0.0f};
     std::atomic<float> baseVelocity_{0.75f};
     std::atomic<int>   rootNote_{60};     // middle C
+    // wire(#orphan-sweep item 8): swing + gateLen atomics — added alongside APVTS params.
+    std::atomic<float> swing_{0.0f};      // 0 = straight, 1 = max swing
+    std::atomic<float> globalGateLen_{0.5f}; // 0–1.5; 0.5 = 50% duty cycle
 
     // Wave 5 C5: Live ModSource state — written by audio thread, read by mod evaluator.
     // Atomics allow message-thread reads for UI meters (one-block stale is fine).
@@ -600,6 +633,9 @@ private:
     std::atomic<float>* cachedPHumanize_  = nullptr;
     std::atomic<float>* cachedPBaseVel_   = nullptr;
     std::atomic<float>* cachedPRootNote_  = nullptr;
+    // wire(#orphan-sweep item 8): cached pointers for swing + gateLen params.
+    std::atomic<float>* cachedPSwing_    = nullptr;
+    std::atomic<float>* cachedPGateLen_  = nullptr;
 
     // C3: Cached APVTS pointers for per-step gate overrides and pitch offsets.
     // Resolved once on first syncStepOverridesFromApvts() call.
