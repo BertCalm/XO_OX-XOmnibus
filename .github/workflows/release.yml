@@ -173,13 +173,13 @@ jobs:
 
       # ── Retrieve unsigned artefacts ──────────────────────────────────────
       - name: Download raw AU component
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: raw-au-component
           path: unsigned/
 
       - name: Download raw Standalone app
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: raw-standalone-app
           path: unsigned/
@@ -335,13 +335,13 @@ jobs:
     steps:
       # ── Download signed artefacts ────────────────────────────────────────
       - name: Download signed AU component
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: signed-au-component
           path: signed/
 
       - name: Download signed Standalone app
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: signed-standalone-app
           path: signed/
@@ -471,13 +471,13 @@ jobs:
 
       # ── Download notarized artefacts ─────────────────────────────────────
       - name: Download notarized AU component
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: notarized-au-component
           path: notarized/
 
       - name: Download notarized Standalone app
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: notarized-standalone-app
           path: notarized/
@@ -637,7 +637,7 @@ jobs:
 
       # ── Download DMG ──────────────────────────────────────────────────────
       - name: Download signed and notarized DMG
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: xoceanus-dmg
           path: release_assets/
