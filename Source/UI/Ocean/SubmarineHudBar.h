@@ -113,6 +113,11 @@ public:
     /** Returns true when the Chain mode toggle is currently active. */
     bool isChainModeActive() const noexcept { return chainModeActive_; }
 
+    /** wire(#orphan-sweep item 2): expose the fav button hit-rect in local coords.
+        Used by FirstHourWalkthrough step 6 to point the bubble at the ♥ button.
+        Returns empty rect before the first paint pass (bounds not yet computed). */
+    juce::Rectangle<int> getFavBounds() const noexcept { return favBounds_.toNearestInt(); }
+
     void setPresetName(const juce::String& name)
     {
         if (presetName_ != name) { presetName_ = name; repaint(); }

@@ -811,6 +811,41 @@ public:
         removeChildComponent(&detail);
         removeChildComponent(&overview);
 
+        // wire(#orphan-sweep items 5/6/7): SettingsDrawer, TransportBar, ChordBar callbacks.
+        // onSettingChanged routes keys to processor/APVTS where receivers exist;
+        // waveSensitivity is handled locally inside OceanView (background reactivity).
+        oceanView_.onSettingChanged = [](const juce::String& key, float value)
+        {
+            // TODO(#wiring-sweep): wire remaining settings keys to processor/APVTS once
+            // the following receiver APIs are implemented:
+            //   "polyphony"      → processor.setPolyphony(int)
+            //   "voiceMode"      → processor.setVoiceMode(int)
+            //   "masterTune"     → APVTS "masterTune" param (not yet registered)
+            //   "pitchBendRange" → APVTS "pitchBendRange" param (not yet registered)
+            //   "mpeMode"        → processor.setMpeEnabled(bool)
+            //   "midiChannel"    → processor.setMidiChannel(int)
+            //   "oversampling"   → processor.setOversamplingFactor(int)
+            // waveSensitivity is already handled inside OceanView → OceanBackground.
+            juce::ignoreUnused(key, value);
+        };
+
+        // onTimeSigChanged: no host time-sig setter exists yet. Stub with TODO.
+        oceanView_.onTimeSigChanged = [](int num, int den)
+        {
+            // TODO(#wiring-sweep): route numerator/denominator to ChordMachine or
+            // processor host-transport override once the API exists.
+            juce::ignoreUnused(num, den);
+        };
+
+        // onChordBarVisibilityChanged: OceanView already calls resized() internally.
+        // No additional action needed from the editor at this time.
+        oceanView_.onChordBarVisibilityChanged = []() {};
+
+        // onChordBarInputModeChanged: ChordBarComponent already writes to APVTS
+        // "chord_input_mode" before firing this callback (see ChordBarComponent.h:1095).
+        // No additional action needed here — the callback is wired so it is not null.
+        oceanView_.onChordBarInputModeChanged = [](ChordBarComponent::InputMode) {};
+
         // Wire OceanView callbacks
         oceanView_.onUndoRequested = [this]() { processor.getUndoManager().undo(); };
         oceanView_.onRedoRequested = [this]() { processor.getUndoManager().redo(); };
@@ -951,6 +986,83 @@ public:
         oceanView_.getSurfaceRight().onOuijaCCOutput = [this](uint8_t cc, uint8_t value)
         {
             processor.pushCCOutput(SurfaceRightPanel::kOuijaMidiChannel - 1, cc, value);
+        };
+
+        // wire(#orphan-sweep item 1): SurfaceRightPanel::onXYChanged was declared but
+        // never assigned.  Wire it so XY pad gestures route to APVTS parameters.
+        //
+        // The XY surface maps two axes to assignable canonical params:
+        //   xy_assignX_slot{n} / xy_assignY_slot{n} — choice index into canonical list.
+        //   Canonical list: None(0), FilterCutoff(1), FilterRes(2), LFORate(3),
+        //     LFODepth(4), EnvAttack(5), EnvRelease(6), Drive(7),
+        //     Macro1(8), Macro2(9), Macro3(10), Macro4(11),
+        //     FX1WetDry(12), FX2WetDry(13), FX3WetDry(14).
+        //
+        // resolveXYParamId translates (slotIdx, canonIdx) → APVTS param ID string.
+        // The active slot is read from OceanView::getSelectedSlot().
+        oceanView_.getSurfaceRight().onXYChanged = [this](float x, float y)
+        {
+            auto& apvts = processor.getAPVTS();
+            const int slot = juce::jlimit(0, 3, oceanView_.getSelectedSlot());
+            const juce::String sfx = "_slot" + juce::String(slot);
+
+            // Resolve canonical index for each axis.
+            auto getCanonIdx = [&](const juce::String& paramId) -> int
+            {
+                auto* p = apvts.getParameter(paramId);
+                if (!p) return 0;
+                return static_cast<int>(p->getValue() * 14.f + 0.5f);
+            };
+
+            // Canonical index → APVTS param ID lookup.
+            // Matches the table in XYSurface.h and XOceanusProcessor.cpp (#1331).
+            auto resolveXYParamId = [&](int canonIdx) -> juce::String
+            {
+                // Per-engine prefixes use the active slot's engine prefix.
+                // For canvas-level params (macros, FX mix), use fixed IDs.
+                switch (canonIdx)
+                {
+                    case 0:  return {}; // None
+                    case 1:  return {}; // FilterCutoff: TODO(#wiring-sweep) need engine-prefix lookup
+                    case 2:  return {}; // FilterRes:    TODO(#wiring-sweep)
+                    case 3:  return {}; // LFORate:      TODO(#wiring-sweep)
+                    case 4:  return {}; // LFODepth:     TODO(#wiring-sweep)
+                    case 5:  return {}; // EnvAttack:    TODO(#wiring-sweep)
+                    case 6:  return {}; // EnvRelease:   TODO(#wiring-sweep)
+                    case 7:  return {}; // Drive:        TODO(#wiring-sweep)
+                    case 8:  return "macro1";
+                    case 9:  return "macro2";
+                    case 10: return "macro3";
+                    case 11: return "macro4";
+                    case 12: return {}; // FX1WetDry: TODO(#wiring-sweep) EpicChainSlot param
+                    case 13: return {}; // FX2WetDry: TODO(#wiring-sweep)
+                    case 14: return {}; // FX3WetDry: TODO(#wiring-sweep)
+                    default: return {};
+                }
+            };
+
+            const int xIdx = getCanonIdx("xy_assignX" + sfx);
+            const int yIdx = getCanonIdx("xy_assignY" + sfx);
+
+            const juce::String xParamId = resolveXYParamId(xIdx);
+            const juce::String yParamId = resolveXYParamId(yIdx);
+
+            if (xParamId.isNotEmpty())
+            {
+                if (auto* px = apvts.getParameter(xParamId))
+                    px->setValueNotifyingHost(px->convertTo0to1(x));
+            }
+            if (yParamId.isNotEmpty())
+            {
+                if (auto* py = apvts.getParameter(yParamId))
+                    py->setValueNotifyingHost(py->convertTo0to1(y));
+            }
+
+            // Also persist XY cursor position to APVTS (preset-recall support).
+            if (auto* px = apvts.getParameter("xy_pos_x" + sfx))
+                px->setValueNotifyingHost(px->convertTo0to1(x));
+            if (auto* py = apvts.getParameter("xy_pos_y" + sfx))
+                py->setValueNotifyingHost(py->convertTo0to1(y));
         };
 
         // #897: On first launch (no persisted state) show the OceanView PlaySurface
@@ -1197,22 +1309,32 @@ public:
             return tiles[0] != nullptr ? tiles[0]->getBounds() : juce::Rectangle<int>{};
         };
         walkthrough_.getMacroBounds        = [this]() { return macros.getBounds(); };
-        walkthrough_.getDnaBrowserBounds   = []() {
-            // TODO: expose DnaMapBrowser bounds when component is accessible from editor
-            return juce::Rectangle<int>{};
+        walkthrough_.getDnaBrowserBounds   = [this]() {
+            // wire(#orphan-sweep item 2): DnaMapBrowser bounds via new OceanView accessor.
+            // Returns full OceanView size area (browser is full-window overlay).
+            auto b = oceanView_.getDnaMapBrowserBounds();
+            // Translate to editor coords.
+            return b.translated(oceanView_.getX(), oceanView_.getY());
         };
-        walkthrough_.getCoupleOrbitBounds  = []() {
-            // TODO: expose EngineOrbit buoy 1 bounds when component is accessible from editor
-            return juce::Rectangle<int>{};
+        walkthrough_.getCoupleOrbitBounds  = [this]() {
+            // wire(#orphan-sweep item 2): orbit slot 1 bounds for the coupling step.
+            // Slot 1 = second engine buoy; falls back to {} if not yet visible.
+            auto b = oceanView_.getOrbitBounds(1);
+            return b.isEmpty() ? juce::Rectangle<int>{}
+                               : b.translated(oceanView_.getX(), oceanView_.getY());
         };
         walkthrough_.getCmToggleBounds     = [this]() { return cmToggleBtn.getBounds(); };
-        walkthrough_.getFavBtnBounds       = []() {
-            // TODO: expose PresetBrowserStrip favBtn bounds when accessible from editor
-            return juce::Rectangle<int>{};
+        walkthrough_.getFavBtnBounds       = [this]() {
+            // wire(#orphan-sweep item 2): HUD fav button bounds via SubmarineHudBar.getFavBounds().
+            auto b = oceanView_.getHudFavBounds();
+            return b.isEmpty() ? juce::Rectangle<int>{}
+                               : b.translated(oceanView_.getX(), oceanView_.getY());
         };
-        walkthrough_.getXouijaBounds       = []() {
-            // TODO: expose SubmarineOuijaPanel or XOuija button bounds when accessible from editor
-            return juce::Rectangle<int>{};
+        walkthrough_.getXouijaBounds       = [this]() {
+            // wire(#orphan-sweep item 2): ouija panel bounds via new OceanView accessor.
+            auto b = oceanView_.getOuijaPanelBounds();
+            return b.isEmpty() ? juce::Rectangle<int>{}
+                               : b.translated(oceanView_.getX(), oceanView_.getY());
         };
 
         // Mount as topmost child before toastOverlay_ — paints above all panels
@@ -1868,7 +1990,13 @@ private:
         // Pre-Wave7 interim path: no explicit greeting flag, so we use the
         // session-guard bool.  Post-Wave 7: move this into
         // OceanStateMachine::onGreetingComplete().
-        if (!walkthroughTriggeredThisSession_)
+        //
+        // wire(#orphan-sweep item 2): race fix — do NOT prompt while firstBreath is
+        // active (the greeting note is playing and the user is in the first-sound
+        // experience).  If firstBreath is still active this tick, hold off; the
+        // walkthroughTriggeredThisSession_ guard is intentionally NOT set so the
+        // next timer tick re-evaluates the condition.
+        if (!walkthroughTriggeredThisSession_ && !processor.isFirstBreathActive())
         {
             walkthroughTriggeredThisSession_ = true;
             walkthrough_.promptIfEligible(settingsFile_.get());

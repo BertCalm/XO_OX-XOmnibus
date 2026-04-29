@@ -2107,6 +2107,9 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             }
         }
     }
+    // wire(#orphan-sweep item 2): mirror firstBreathActive_ to the atomic so the
+    // message thread can read it via isFirstBreathActive() without a data race.
+    firstBreathActiveMirror_.store(firstBreathActive_, std::memory_order_relaxed);
     // ── end Sound on First Launch ─────────────────────────────────────────────
 
     // ── Wave 5 C1: Per-slot pattern sequencers ────────────────────────────────

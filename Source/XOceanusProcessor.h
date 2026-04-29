@@ -432,6 +432,16 @@ public:
     // Safe to call from any thread.
     float getProcessingLoad() const noexcept { return processingLoad.load(std::memory_order_relaxed); }
 
+    // wire(#orphan-sweep item 2): expose first-breath active state to the message thread.
+    // firstBreathActive_ is audio-thread-only (no atomic), so we mirror it via an
+    // atomic updated each processBlock tick.  The message thread uses this to gate
+    // the FirstHourWalkthrough prompt so the tour bubble does not appear while the
+    // greeting note is still playing (race fix per Wave 9c spec §1303).
+    bool isFirstBreathActive() const noexcept
+    {
+        return firstBreathActiveMirror_.load(std::memory_order_relaxed);
+    }
+
     // Dark Cockpit B041: note activity level (0.0 = silent, 1.0 = max activity).
     // Computed from output RMS in processBlock() with ~100ms attack / ~500ms release.
     // Safe to call from any thread.
@@ -724,6 +734,9 @@ private:
     //   kFirstBreathFadeMs         — 200 ms fade on user interaction (spec §1300).
     std::atomic<bool> hasLaunchedBefore_{false};
     std::atomic<bool> firstBreathPending_{false};
+    // wire(#orphan-sweep item 2): atomic mirror of firstBreathActive_ for isFirstBreathActive().
+    // Written by processBlock (audio thread), read by message thread.
+    std::atomic<bool> firstBreathActiveMirror_{false};
     // Audio-thread-only state (no atomics needed):
     bool         firstBreathActive_{false};
     int          firstBreathCountdown_{0};

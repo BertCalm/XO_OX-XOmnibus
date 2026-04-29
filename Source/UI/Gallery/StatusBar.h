@@ -93,7 +93,11 @@ public:
             lbl.setText(text, juce::dontSendNotification);
             lbl.setFont(GalleryFonts::value(10.0f));
             lbl.setJustificationType(juce::Justification::centred);
-            lbl.setInterceptsMouseClicks(false, false);
+            // wire(#orphan-sweep): accept mouse events (true, false) so JUCE's
+            // TooltipWindow can display the tooltip on hover.  Previously
+            // setInterceptsMouseClicks(false, false) blocked the mouse entirely
+            // and the tooltip was never shown (§1301 audit finding).
+            lbl.setInterceptsMouseClicks(true, false);
             addAndMakeVisible(lbl);
         };
 

@@ -1145,16 +1145,16 @@ private:
         case SliderTarget::Swing:
             trackRect  = &swingTrack_;
             valuePtr   = &currentSwing_;
-            paramSuffix = "humanize"; // swing lives in humanize for C2 (no separate APVTS param)
-            // Note: PerEnginePatternSequencer C1 does not have a separate swing param.
-            // Swing is deferred — for C2 we display it as a visual-only control.
-            // TODO C3: add slot0_seq_swing APVTS parameter.
+            // wire(#orphan-sweep item 8): slot{n}_seq_swing now exists in APVTS
+            // (added to PerEnginePatternSequencer::addParameters() in this PR).
+            // Removed the "humanize" workaround — swing is now its own real param.
+            paramSuffix = "swing";
             break;
         case SliderTarget::Gate:
-            // Gate length also not a separate C1 param — visual only for C2.
             trackRect  = &gateTrack_;
             valuePtr   = &currentGate_;
-            paramSuffix = nullptr; // visual only until C3 adds slot0_seq_gateLen
+            // wire(#orphan-sweep item 8): slot{n}_seq_gateLen now exists in APVTS.
+            paramSuffix = "gateLen";
             break;
         case SliderTarget::Humanize:
             trackRect  = &humanizeTrack_;

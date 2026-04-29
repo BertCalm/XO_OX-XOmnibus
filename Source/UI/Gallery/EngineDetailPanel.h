@@ -15,6 +15,11 @@
 #include "SpecializedDisplays.h"
 #include "SpecializedWidgets.h"
 #include "ModMatrixDrawer.h"
+// wire(#orphan-sweep item 3): OceanDetailHeader was never #included anywhere
+// outside its own header.  Mount it here so the submarine header appears atop
+// the existing painted fallback.  Per clean-slate mandate (#1098) this header
+// has NO Gallery dependencies — it uses submarine palette constants directly.
+#include "../Ocean/OceanDetailHeader.h"
 
 namespace xoceanus
 {
@@ -360,6 +365,16 @@ public:
         addAndMakeVisible(waveformDisplay);
         addAndMakeVisible(adsrDisplay);
 
+        // Wire 3 — OceanDetailHeader: mount over the painted fallback header so the
+        // submarine-native breadcrumb + back button are interactive.
+        // onBackClicked is forwarded to EngineDetailPanel::onBackClicked so callers
+        // only need to assign one callback.
+        detailHeader_.onBackClicked = [this]()
+        {
+            if (onBackClicked) onBackClicked();
+        };
+        addAndMakeVisible(detailHeader_);
+
         // Wave 5 C1: SEQ section — shown for primary slots (0–3) only.
         addChildComponent(seqSection_);
 
@@ -465,6 +480,11 @@ public:
 
         // P30: cache toUpperCase() result to avoid String alloc in paint().
         cachedEngineName = engineId.toUpperCase();
+
+        // wire(#orphan-sweep item 3): update OceanDetailHeader whenever the slot changes.
+        // engineType is not exposed by SynthEngine yet; pass empty string so the
+        // header renders without a subtitle until TODO(#wiring-sweep) is resolved.
+        detailHeader_.setEngineInfo(cachedEngineName, {}, accentColour);
         // P29: cache header gradient — rebuilt here and in resized(), not in paint().
         // #895: guard against zero-size bounds — ColourGradient with width=0 or
         // height=0 produces a degenerate gradient and causes rendering artefacts.
@@ -910,7 +930,12 @@ public:
 
         // ── Header: 40px with engine name ─────────────────────
         auto headerArea = area.removeFromTop(kHeaderH);
-        (void)headerArea; // header is painted in paint(), no child components needed
+        // wire(#orphan-sweep item 3): OceanDetailHeader sits in the header strip.
+        // Its opaque background covers the painted fallback header.  Height is
+        // clamped to OceanDetailHeader::kHeaderHeight (56px) rather than kHeaderH
+        // (64px) because the submarine header is slightly shorter; the remaining
+        // 8px is still covered by the painted header gradient underneath.
+        detailHeader_.setBounds(headerArea.withHeight(OceanDetailHeader::kHeaderHeight));
 
         // P29: rebuild header gradient when width changes.
         // #895: guard against zero-size bounds — skip if not yet laid out.
@@ -1205,6 +1230,9 @@ private:
 
     // Wave 5 C1: inline SEQ section — per-slot pattern sequencer controls
     SeqSection seqSection_;
+    // wire(#orphan-sweep item 3): OceanDetailHeader — submarine-native breadcrumb+back button.
+    // Mounted over the existing painted header so the component provides real interactivity.
+    OceanDetailHeader detailHeader_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineDetailPanel)
 };
