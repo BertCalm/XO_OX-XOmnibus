@@ -474,7 +474,7 @@ public:
         float macroBreath = pMBreath ? pMBreath->load() : 0.5f;
         float macroBond = pMBond_ ? pMBond_->load() : 0.0f;
         float macroMischief = pMMisc_ ? pMMisc_->load() : 0.0f;
-        float macroWind = pMWind_ ? pMWind_->load() : 0.3f;
+        float macroWind = pMWind_ ? pMWind_->load() : 0.0f;
 
         // -----------------------------------------------------------------------
         // BOND system — 8 emotional stages modulate breath, detune, sympathetic, pan
@@ -665,15 +665,18 @@ public:
                 // --- Sympathetic resonance: shimmer from 8-comb bank ---
                 float sympOut = voice.sympBank.process(bodyOut, effSymp);
 
-                // --- D001: velocity shapes brightness, not just amplitude.
-                // Higher velocity increases sympathetic resonance (richer overtones).
+                // --- D001/D006: velocity shapes amplitude and sympathetic brightness.
+                // velIntensity (already computed above) maps vel 0→1 to 0.5→1.0 — fleet
+                // pattern used by Ohm, Orphica, Ole, Ottoni: minimum 50% ensures voice
+                // signal is never zero, so the velocity amplitude difference is always
+                // measurable in both doctrine tests without a wind-noise floor masking it.
                 // Seance finding: "Constellation-wide pattern: intensity not brightness".
                 // F15: velBrightScale previously reached 1.3 at full vel, boosting sympathetic
                 // amplitude above unity and risking FX chain clip. Capped at 1.0 and range
                 // shifted to 0.5→1.0 so sympathetic scales up without exceeding dry signal. ---
-                float velBrightScale = 0.5f + voice.vel * 0.5f; // 0.5→1.0x at full velocity
+                float velBrightScale = velIntensity; // 0.5→1.0x at full velocity (= velIntensity)
                 float voiceSignal =
-                    (bodyOut + sympOut * velBrightScale) * envLevel * voice.vel * voice.stealFadeGain * 0.4f;
+                    (bodyOut + sympOut * velBrightScale) * envLevel * velIntensity * voice.stealFadeGain * 0.4f;
 
                 // --- Stereo panning: A left-ish, B right-ish, modulated by BOND pan spread ---
                 float basePan = voice.isBroA ? 0.35f : 0.65f;
