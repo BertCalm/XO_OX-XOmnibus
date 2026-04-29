@@ -1226,6 +1226,37 @@ public:
         hudBar_.setReactLevel(value01);
     }
 
+    // wire(#orphan-sweep item 2): expose HUD fav-button bounds for walkthrough step 6.
+    // Translates from hudBar_ local coords to OceanView local coords.
+    juce::Rectangle<int> getHudFavBounds() const noexcept
+    {
+        auto localFav = hudBar_.getFavBounds();
+        if (localFav.isEmpty()) return {};
+        return localFav.translated(hudBar_.getX(), hudBar_.getY());
+    }
+
+    // wire(#orphan-sweep item 2): expose ouija panel bounds for walkthrough step 7.
+    juce::Rectangle<int> getOuijaPanelBounds() const noexcept
+    {
+        return ouijaPanel_.getBounds();
+    }
+
+    // wire(#orphan-sweep item 2): expose DnaMapBrowser bounds for walkthrough step 3.
+    // Returns browser_ bounds (always positioned at full OceanView size; hidden when closed).
+    juce::Rectangle<int> getDnaMapBrowserBounds() const noexcept
+    {
+        return browser_.getBounds();
+    }
+
+    // wire(#orphan-sweep item 2): expose orbit slot 1 bounds for walkthrough step 4 (couple).
+    // Uses slot 1 (second engine buoy) as the visual target for the coupling step.
+    juce::Rectangle<int> getOrbitBounds(int slot) const noexcept
+    {
+        if (slot >= 0 && slot < 5)
+            return orbits_[slot].getBounds();
+        return {};
+    }
+
     /**
         Push master output waveform data to the ocean background wave surface.
         Call from the editor's 10 Hz timer with the processor's master WaveformFifo.

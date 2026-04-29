@@ -27,13 +27,21 @@ public:
         // musically evocative and unambiguous. Tooltips mirror the display names.
         static constexpr Def defs[4] = {
             {"macro1", "TONE"}, {"macro2", "TIDE"}, {"macro3", "COUPLE"}, {"macro4", "DEPTH"}};
+        // wire(#orphan-sweep): D11 spec descriptions added (issue #1301 audit).
+        // Previously tooltips were bare echoes ("Macro 1: TONE") with no semantic content.
+        static constexpr const char* tooltipDescs[4] = {
+            "TONE — timbral character (waveshaper drive, EQ tilt, filter character)",
+            "TIDE — motion and rhythm (LFO rate, modulation depth, temporal movement)",
+            "COUPLE — engine coupling depth (cross-engine modulation intensity)",
+            "DEPTH — layering and intensity (density, saturation, voice complexity)"
+        };
         static constexpr const char* tooltipLabels[4] = {"TONE", "TIDE", "COUPLE", "DEPTH"};
         for (int i = 0; i < 4; ++i)
         {
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             knobs[i].setColour(juce::Slider::rotarySliderFillColourId, GalleryColors::get(GalleryColors::xoGold));
-            knobs[i].setTooltip(juce::String("Macro ") + juce::String(i + 1) + ": " + tooltipLabels[i]);
+            knobs[i].setTooltip(juce::String("Macro ") + juce::String(i + 1) + ": " + tooltipDescs[i]);
             A11y::setup(knobs[i], juce::String("Macro ") + juce::String(i + 1) + " " + tooltipLabels[i]);
             addAndMakeVisible(knobs[i]);
             attach[i] =

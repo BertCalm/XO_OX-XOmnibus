@@ -1197,22 +1197,32 @@ public:
             return tiles[0] != nullptr ? tiles[0]->getBounds() : juce::Rectangle<int>{};
         };
         walkthrough_.getMacroBounds        = [this]() { return macros.getBounds(); };
-        walkthrough_.getDnaBrowserBounds   = []() {
-            // TODO: expose DnaMapBrowser bounds when component is accessible from editor
-            return juce::Rectangle<int>{};
+        walkthrough_.getDnaBrowserBounds   = [this]() {
+            // wire(#orphan-sweep item 2): DnaMapBrowser bounds via new OceanView accessor.
+            // Returns full OceanView size area (browser is full-window overlay).
+            auto b = oceanView_.getDnaMapBrowserBounds();
+            // Translate to editor coords.
+            return b.translated(oceanView_.getX(), oceanView_.getY());
         };
-        walkthrough_.getCoupleOrbitBounds  = []() {
-            // TODO: expose EngineOrbit buoy 1 bounds when component is accessible from editor
-            return juce::Rectangle<int>{};
+        walkthrough_.getCoupleOrbitBounds  = [this]() {
+            // wire(#orphan-sweep item 2): orbit slot 1 bounds for the coupling step.
+            // Slot 1 = second engine buoy; falls back to {} if not yet visible.
+            auto b = oceanView_.getOrbitBounds(1);
+            return b.isEmpty() ? juce::Rectangle<int>{}
+                               : b.translated(oceanView_.getX(), oceanView_.getY());
         };
         walkthrough_.getCmToggleBounds     = [this]() { return cmToggleBtn.getBounds(); };
-        walkthrough_.getFavBtnBounds       = []() {
-            // TODO: expose PresetBrowserStrip favBtn bounds when accessible from editor
-            return juce::Rectangle<int>{};
+        walkthrough_.getFavBtnBounds       = [this]() {
+            // wire(#orphan-sweep item 2): HUD fav button bounds via SubmarineHudBar.getFavBounds().
+            auto b = oceanView_.getHudFavBounds();
+            return b.isEmpty() ? juce::Rectangle<int>{}
+                               : b.translated(oceanView_.getX(), oceanView_.getY());
         };
-        walkthrough_.getXouijaBounds       = []() {
-            // TODO: expose SubmarineOuijaPanel or XOuija button bounds when accessible from editor
-            return juce::Rectangle<int>{};
+        walkthrough_.getXouijaBounds       = [this]() {
+            // wire(#orphan-sweep item 2): ouija panel bounds via new OceanView accessor.
+            auto b = oceanView_.getOuijaPanelBounds();
+            return b.isEmpty() ? juce::Rectangle<int>{}
+                               : b.translated(oceanView_.getX(), oceanView_.getY());
         };
 
         // Mount as topmost child before toastOverlay_ — paints above all panels
@@ -1868,7 +1878,13 @@ private:
         // Pre-Wave7 interim path: no explicit greeting flag, so we use the
         // session-guard bool.  Post-Wave 7: move this into
         // OceanStateMachine::onGreetingComplete().
-        if (!walkthroughTriggeredThisSession_)
+        //
+        // wire(#orphan-sweep item 2): race fix — do NOT prompt while firstBreath is
+        // active (the greeting note is playing and the user is in the first-sound
+        // experience).  If firstBreath is still active this tick, hold off; the
+        // walkthroughTriggeredThisSession_ guard is intentionally NOT set so the
+        // next timer tick re-evaluates the condition.
+        if (!walkthroughTriggeredThisSession_ && !processor.isFirstBreathActive())
         {
             walkthroughTriggeredThisSession_ = true;
             walkthrough_.promptIfEligible(settingsFile_.get());
