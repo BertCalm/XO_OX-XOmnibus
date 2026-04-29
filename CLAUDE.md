@@ -169,6 +169,7 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Outcrop | `outc_` | `outc_terrainType` |
 | Onda | `oner_` | `oner_boundState` |
 | Ollotron | `ollo_` | `ollo_bank` |
+| Otrium (FX Chain) | `otrm_` | `otrm_pumpDepth` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.
