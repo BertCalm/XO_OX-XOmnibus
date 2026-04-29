@@ -38,7 +38,10 @@ enum class ModSourceId
     MpePressure = 13,   // MPE per-note pressure (unipolar)
     MpeSlide = 14,      // MPE per-note slide / Y-axis (unipolar)
     SeqStepValue = 15,  // Sequencer step value output (bipolar)
-    ChordToneIdx = 16,  // Chord tone index (0–N, unipolar)
+    // Renamed from ChordToneIdx — actual chord tone index is pending C5 phase.
+    // Currently returns getLiveGate() (0 or 1, unipolar) from the slot sequencer.
+    // The integer ID (16) is stable and must not change (preset serialisation).
+    LiveGate = 16,      // Sequencer gate state (0 or 1, unipolar)
     BeatPhase = 17,     // Beat phase ramp 0→1 per bar (bipolar)
     // ── Wave5-D3: XOuija pin source ─────────────────────────────────────────
     // A pinned XOuija position exposes two bipolar values:
@@ -92,8 +95,8 @@ inline juce::String modSourceName(ModSourceId id)
         return "MPE Slide";
     case ModSourceId::SeqStepValue:
         return "Seq Step Value";
-    case ModSourceId::ChordToneIdx:
-        return "Chord Tone Idx";
+    case ModSourceId::LiveGate:
+        return "Live Gate";
     case ModSourceId::BeatPhase:
         return "Beat Phase";
     case ModSourceId::XouijaCell:
@@ -148,7 +151,7 @@ inline juce::Colour modSourceColour(ModSourceId id)
         return juce::Colour(0xFFFF7043); // deep orange
     case ModSourceId::SeqStepValue:
         return juce::Colour(0xFF81D4FA); // light sky blue
-    case ModSourceId::ChordToneIdx:
+    case ModSourceId::LiveGate:
         return juce::Colour(0xFFF48FB1); // pink
     case ModSourceId::BeatPhase:
         return juce::Colour(0xFF80CBC4); // muted teal
@@ -320,8 +323,8 @@ public:
         case ModSourceId::SeqStepValue:
             glyph = "Q";
             break;
-        case ModSourceId::ChordToneIdx:
-            glyph = "#";
+        case ModSourceId::LiveGate:
+            glyph = "G";
             break;
         case ModSourceId::BeatPhase:
             glyph = "B";
