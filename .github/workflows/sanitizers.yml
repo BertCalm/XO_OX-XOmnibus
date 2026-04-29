@@ -77,7 +77,7 @@ jobs:
 
       - name: Upload test output
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v8
         with:
           name: sanitizer-test-output-${{ matrix.sanitizer }}
           path: build/test_output.txt
