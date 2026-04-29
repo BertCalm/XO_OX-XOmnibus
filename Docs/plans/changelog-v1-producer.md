@@ -131,11 +131,11 @@ Volume 1 covers OBRIX, OSTINATO, OPENSKY, OCEANDEEP, and OUIE. The OBRIX Transce
 
 ---
 
-## Coupling — 13 Types
+## Coupling — 15 Types
 
 Cross-engine modulation in XOceanus works through the MegaCouplingMatrix. V1 ships with 15 coupling types, including the new **KnotTopology** — the first bidirectional coupling type, introduced alongside ORBWEAVE.
 
-The other 12 types cover amplitude-to-filter, amplitude-to-pitch, LFO-to-pitch, envelope-to-morph, audio-to-FM, audio-to-ring, filter-to-filter, amplitude-to-choke, rhythm-to-blend, envelope-to-decay, pitch-to-pitch, and audio-to-wavetable.
+The other 14 types cover amplitude-to-filter, amplitude-to-pitch, LFO-to-pitch, envelope-to-morph, audio-to-FM, audio-to-ring, filter-to-filter, amplitude-to-choke, rhythm-to-blend, envelope-to-decay, pitch-to-pitch, and audio-to-wavetable.
 
 Coupling presets live in the Entangled mood. 18 factory coupling presets ship at launch, covering six engine pairs at three interaction intensities (subtle, present, dominant).
 

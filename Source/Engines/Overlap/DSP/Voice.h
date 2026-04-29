@@ -144,6 +144,7 @@ struct VoiceEnvelope
             level = 0.0f;
             break;
         }
+        level = xoceanus::flushDenormal(level);
         return level;
     }
 
