@@ -35,6 +35,8 @@
 #include "../DSP/Effects/OutlawChain.h"
 #include "../DSP/Effects/OutbreakChain.h"
 #include "../DSP/Effects/OrreryChain.h"
+// FX Pack 1 — Sidechain Creative
+#include "../DSP/Effects/OtriumChain.h"
 
 namespace xoceanus
 {
@@ -59,8 +61,8 @@ class EpicChainSlotController
 {
 public:
     static constexpr int kNumSlots   = 3;
-    static constexpr int kNumChains  = 30;
-    static constexpr int kMaxChainID = 30;  // == static_cast<int>(Orrery)
+    static constexpr int kNumChains  = 31;
+    static constexpr int kMaxChainID = 31;  // == static_cast<int>(Otrium)
 
     enum ChainID : int
     {
@@ -99,7 +101,9 @@ public:
         Opus       = 27,
         Outlaw     = 28,
         Outbreak   = 29,
-        Orrery     = 30
+        Orrery     = 30,
+        // FX Pack 1 — Sidechain Creative (scaffold; Pack 1 ships full DSP)
+        Otrium     = 31
     };
 
     EpicChainSlotController() = default;
@@ -183,6 +187,8 @@ private:
         OutlawChain     outlaw;
         OutbreakChain   outbreak;
         OrreryChain     orrery;
+        // FX Pack 1 — Sidechain Creative
+        OtriumChain     otrium;
 
         // Mono scratch buffer for Mono-In chains (19 Wave 2 + Onrush, Obliterate, Obscurity)
         std::vector<float> monoScratch;
@@ -266,6 +272,7 @@ inline void EpicChainSlotController::prepare(double sampleRate, int maxBlockSize
         slot.outlaw.prepare(sampleRate, maxBlockSize);
         slot.outbreak.prepare(sampleRate, maxBlockSize);
         slot.orrery.prepare(sampleRate, maxBlockSize);
+        slot.otrium.prepare(sampleRate, maxBlockSize); // FX Pack 1 scaffold
         // Mono scratch buffer for mono-in epic chains
         slot.monoScratch.assign(maxBlockSize, 0.0f);
     }
@@ -308,6 +315,7 @@ inline void EpicChainSlotController::reset()
         slot.outlaw.reset();
         slot.outbreak.reset();
         slot.orrery.reset();
+        slot.otrium.reset(); // FX Pack 1 scaffold
     }
 }
 
@@ -655,6 +663,13 @@ inline void EpicChainSlotController::dispatchChain(FXSlot& slot, ChainID chain,
             break;
         }
 
+        // FX Pack 1 — Sidechain Creative (stereo-in/stereo-out, no mono fold).
+        case Otrium:
+        {
+            slot.otrium.processBlock(L, R, numSamples, bpm, ppqPosition);
+            break;
+        }
+
         default: break;
     }
 }
@@ -731,6 +746,7 @@ inline void EpicChainSlotController::addParameters(
     OutlawChain::addParameters(layout);
     OutbreakChain::addParameters(layout);
     OrreryChain::addParameters(layout);
+    OtriumChain::addParameters(layout); // FX Pack 1 scaffold
 }
 
 inline void EpicChainSlotController::cacheParameterPointers(
@@ -777,6 +793,7 @@ inline void EpicChainSlotController::cacheParameterPointers(
         slots_[n].outlaw.cacheParameterPointers(apvts);
         slots_[n].outbreak.cacheParameterPointers(apvts);
         slots_[n].orrery.cacheParameterPointers(apvts);
+        slots_[n].otrium.cacheParameterPointers(apvts); // FX Pack 1 scaffold
     }
 }
 

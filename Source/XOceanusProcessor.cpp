@@ -1595,6 +1595,19 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     // per-engine target parameters before any engine renders this block.
     macroSystem_.processBlock(numSamples);
 
+    // Phase 0 wildcard infrastructure: drive the DNAModulationBus from M1 CHARACTER.
+    // M1 is a 0..1 macro; we pass it verbatim so DNA is warped only toward the
+    // "fully characterful" end. Future bipolar mapping (-1..1) would let M1 also
+    // pull DNA toward its inverse, but Phase 0 keeps the convention simple.
+    // applyMacroWarp + advanceSmoothing are both lock-free; safe on the audio thread.
+    if (auto* m1Ptr = apvts.getRawParameterValue("macro1"))
+    {
+        const float m1 = m1Ptr->load(std::memory_order_relaxed);
+        for (int slot = 0; slot < xoceanus::DNAModulationBus::MaxEngineSlots; ++slot)
+            dnaBus_.applyMacroWarp(slot, m1);
+    }
+    dnaBus_.advanceSmoothing(numSamples);
+
     // Build engine pointer array for coupling matrix (atomic reads)
     std::array<SynthEngine*, MaxSlots> enginePtrs = {};
     std::array<std::shared_ptr<SynthEngine>, MaxSlots> engineRefs; // prevent deletion during block
@@ -3763,6 +3776,19 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
         // so this has no effect on uncoupled presets.
         for (int routeSlot = 0; routeSlot < 4; ++routeSlot)
             macroSystem_.addCouplingTarget(MacroSystem::CouplingMacroIndex, routeSlot, 0.0f, 1.0f);
+    }
+
+    // Phase 0 wildcard infrastructure: publish preset DNA into the DNAModulationBus.
+    // Preset DNA is global (one struct per preset); we apply it to all 4 engine slots
+    // as the same baseline. Future enhancement: per-engine DNA in preset schema would
+    // call setBaseDNA per slot with different values.
+    {
+        std::array<float, 6> dnaArr = {
+            preset.dna.brightness, preset.dna.warmth,    preset.dna.movement,
+            preset.dna.density,    preset.dna.space,     preset.dna.aggression
+        };
+        for (int slot = 0; slot < xoceanus::DNAModulationBus::MaxEngineSlots; ++slot)
+            dnaBus_.setBaseDNA(slot, dnaArr);
     }
 }
 

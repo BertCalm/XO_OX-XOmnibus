@@ -203,6 +203,10 @@ target_sources(XOceanus PRIVATE
     Source/Core/MPEManager.h
     Source/Core/EpicChainSlotController.h
     Source/Core/EpicChainSlotController.cpp
+    # Phase 0 wildcard infrastructure (FX gap analysis, 2026-04-27)
+    Source/Core/DNAModulationBus.h
+    Source/Core/MoodModulationBus.h
+    Source/DSP/Effects/Aging.h
     Source/DSP/Effects/OnrushChain.cpp
     Source/DSP/Effects/OmnistereoChain.cpp
     Source/DSP/Effects/ObliterateChain.cpp
@@ -228,6 +232,8 @@ target_sources(XOceanus PRIVATE
     Source/DSP/Effects/OutlawChain.cpp
     Source/DSP/Effects/OutbreakChain.cpp
     Source/DSP/Effects/OrreryChain.cpp
+    # FX Pack 1 — Sidechain Creative (scaffold)
+    Source/DSP/Effects/OtriumChain.cpp
 
     # DSP (shared, pure C++)
     Source/DSP/FastMath.h
