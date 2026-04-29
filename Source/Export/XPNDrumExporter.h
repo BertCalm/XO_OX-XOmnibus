@@ -766,15 +766,6 @@ private:
         return name.replaceCharacters(" /\\:*?\"<>|", "__________").substring(0, 50);
     }
 
-    //==========================================================================
-    // Manifest field sanitizer — strips characters that corrupt the Key=Value
-    // manifest format (newlines would inject extra lines; '=' would split a key).
-    //==========================================================================
-
-    static juce::String sanitizeManifestField(const juce::String& s)
-    {
-        return s.replaceCharacters("\r\n", "  ").replace("=", "_");
-    }
 };
 
 } // namespace xoceanus
