@@ -38,7 +38,7 @@ struct ModRoute
     bool bipolar;             // true = source range is ±1
     // Wave 5 C5: per-route slot index for sequencer-scoped sources.
     // -1 = not slot-scoped (all non-sequencer sources, backward-compat default).
-    // 0–3 = which slotSequencer to read from (SeqStepValue, BeatPhase, ChordToneIdx).
+    // 0–3 = which slotSequencer to read from (SeqStepValue, BeatPhase, LiveGate).
     int slotIndex{-1};
 };
 
@@ -996,7 +996,7 @@ private:
     {
         return id == ModSourceId::SeqStepValue ||
                id == ModSourceId::BeatPhase    ||
-               id == ModSourceId::ChordToneIdx;
+               id == ModSourceId::LiveGate;
     }
 
     // C5: Show a popup menu to choose which sequencer slot (1–4) this route reads from.
