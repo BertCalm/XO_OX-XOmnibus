@@ -715,6 +715,11 @@ private:
     // Manifest
     //==========================================================================
 
+    static juce::String sanitizeManifestField(const juce::String& s)
+    {
+        return s.replaceCharacters("\r\n", "  ").replace("=", "_");
+    }
+
     static void writeManifest(const juce::File& bundleDir, const DrumExportConfig& config, int presetCount)
     {
         // XPN bible §1: manifest must live at Expansions/manifest (no extension),
@@ -761,15 +766,6 @@ private:
         return name.replaceCharacters(" /\\:*?\"<>|", "__________").substring(0, 50);
     }
 
-    //==========================================================================
-    // Manifest field sanitizer — strips characters that corrupt the Key=Value
-    // manifest format (newlines would inject extra lines; '=' would split a key).
-    //==========================================================================
-
-    static juce::String sanitizeManifestField(const juce::String& s)
-    {
-        return s.replaceCharacters("\r\n", "  ").replace("=", "_");
-    }
 };
 
 } // namespace xoceanus
