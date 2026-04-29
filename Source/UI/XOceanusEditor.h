@@ -814,7 +814,7 @@ public:
         // wire(#orphan-sweep items 5/6/7): SettingsDrawer, TransportBar, ChordBar callbacks.
         // onSettingChanged routes keys to processor/APVTS where receivers exist;
         // waveSensitivity is handled locally inside OceanView (background reactivity).
-        oceanView_.onSettingChanged = [this](const juce::String& key, float value)
+        oceanView_.onSettingChanged = [](const juce::String& key, float value)
         {
             // TODO(#wiring-sweep): wire remaining settings keys to processor/APVTS once
             // the following receiver APIs are implemented:
