@@ -136,6 +136,13 @@ public:
     /// Reset all chain states (called from MasterFXChain::reset()).
     void reset();
 
+    //--------------------------------------------------------------------------
+    /// Inject the DNAModulationBus pointer into every Pack 1 chain instance
+    /// (Otrium, Oblate, Oligo across all 3 slots). Call once on the message
+    /// thread after construction, before audio starts. The pointer is read
+    /// lock-free on the audio thread by the chains' DSP.
+    void setDNABus(const DNAModulationBus* bus) noexcept;
+
 private:
     double sr_         = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_  = 512;
@@ -326,6 +333,16 @@ inline void EpicChainSlotController::reset()
         slot.otrium.reset(); // FX Pack 1 scaffold
         slot.oblate.reset(); // FX Pack 1 scaffold
         slot.oligo.reset();  // FX Pack 1 scaffold
+    }
+}
+
+inline void EpicChainSlotController::setDNABus(const DNAModulationBus* bus) noexcept
+{
+    for (auto& slot : slots_)
+    {
+        slot.otrium.setDNABus(bus);
+        slot.oblate.setDNABus(bus);
+        slot.oligo.setDNABus(bus);
     }
 }
 

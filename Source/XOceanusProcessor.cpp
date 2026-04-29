@@ -1414,6 +1414,10 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     // a user selects a chain for a slot.
     epicSlots.prepare(sampleRate, samplesPerBlock);
     epicSlots.cacheParameterPointers(apvts);
+    // Wire the DNA bus into every Pack 1 chain (Otrium / Oblate / Oligo).
+    // Pointer is stable for the lifetime of the processor; chains read it
+    // lock-free on the audio thread.
+    epicSlots.setDNABus(&dnaBus_);
 
     // #1257: Reset MPE channel expression state to match the new sample rate / block size.
     // MPEManager::prepare() calls resetAllChannels() — clears stale per-channel pitch bend
