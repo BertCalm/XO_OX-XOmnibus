@@ -143,6 +143,12 @@ public:
     /// lock-free on the audio thread by the chains' DSP.
     void setDNABus(const DNAModulationBus* bus) noexcept;
 
+    //--------------------------------------------------------------------------
+    /// Inject the PartnerAudioBus pointer into Pack 1 chains that consume
+    /// per-engine-slot mono audio (Otrium triangular ducking). Call once on
+    /// the message thread after construction, before audio starts.
+    void setPartnerAudioBus(const PartnerAudioBus* bus) noexcept;
+
 private:
     double sr_         = 0.0;  // Sentinel: must be set by prepare() before use
     int    blockSize_  = 512;
@@ -344,6 +350,14 @@ inline void EpicChainSlotController::setDNABus(const DNAModulationBus* bus) noex
         slot.oblate.setDNABus(bus);
         slot.oligo.setDNABus(bus);
     }
+}
+
+inline void EpicChainSlotController::setPartnerAudioBus(const PartnerAudioBus* bus) noexcept
+{
+    // Only Otrium consumes partner audio in Pack 1; Oblate/Oligo will
+    // receive their own bus pointers when their real DSP lands.
+    for (auto& slot : slots_)
+        slot.otrium.setPartnerAudioBus(bus);
 }
 
 inline void EpicChainSlotController::processBlock(juce::AudioBuffer<float>& buffer,

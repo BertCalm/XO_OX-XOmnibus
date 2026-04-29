@@ -16,6 +16,7 @@
 #include "Core/CouplingPresetManager.h"
 #include "Core/MacroSystem.h"
 #include "Core/DNAModulationBus.h"
+#include "Core/PartnerAudioBus.h"
 #include "Core/BrothCoordinator.h"
 #include "Core/SharedTransport.h"
 #include "DSP/EngineProfiler.h"
@@ -474,6 +475,10 @@ private:
     // Per-engine DNA bus updated at preset load + each block from M1 CHARACTER macro.
     // Consumed by FX chains via get(slot, axis). See Source/Core/DNAModulationBus.h.
     xoceanus::DNAModulationBus dnaBus_;
+    // Per-engine-slot mono audio bus published after each renderBlock(),
+    // consumed by Pack 1 FX chains (Otrium triangular ducking).
+    // See Source/Core/PartnerAudioBus.h for lifecycle.
+    xoceanus::PartnerAudioBus partnerAudioBus_;
     MegaCouplingMatrix couplingMatrix;
     CouplingCrossfader couplingCrossfader;
 
