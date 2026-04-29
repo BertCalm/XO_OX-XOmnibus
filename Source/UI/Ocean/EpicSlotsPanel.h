@@ -52,8 +52,8 @@ public:
 
     //==========================================================================
     // Chain name table — MUST match EpicChainSlotController::ChainID enum ordering.
-    // Index = ChainID integer value (0 = Off … 30 = Orrery).
-    static constexpr std::array<const char*, 31> kChainNames = {
+    // Index = ChainID integer value (0 = Off … 33 = Oligo).
+    static constexpr std::array<const char*, 34> kChainNames = {
         "Off",
         "Aquatic", "Math", "Boutique",                     // Suites
         "Onslaught", "Obscura", "Oratory",                 // Singularity
@@ -62,12 +62,13 @@ public:
         "Outage", "Override", "Occlusion", "Obdurate",     // Wave 2 — Sunken Treasure
         "Orison", "Overshoot", "Obverse", "Oxymoron",      // Wave 2 — Anomalous
         "Ornate", "Oration", "Offcut", "Omen",             // Wave 2 — AHA
-        "Opus", "Outlaw", "Outbreak", "Orrery"             // Wave 2 — Alt Universe
+        "Opus", "Outlaw", "Outbreak", "Orrery",            // Wave 2 — Alt Universe
+        "Otrium", "Oblate", "Oligo"                        // FX Pack 1 — Sidechain Creative
     };
 
     // Group headers inserted into the ComboBox menu before the chain IDs that
     // start each family. { firstChainId, headerText }.
-    static constexpr std::array<std::pair<int, const char*>, 8> kChainGroups = {{
+    static constexpr std::array<std::pair<int, const char*>, 9> kChainGroups = {{
         { 1,  "— SUITES —" },
         { 4,  "— SINGULARITY —" },
         { 7,  "— EPIC —" },
@@ -76,6 +77,7 @@ public:
         { 19, "— WAVE 2: ANOMALOUS —" },
         { 23, "— WAVE 2: AHA —" },
         { 27, "— WAVE 2: ALT UNIVERSE —" },
+        { 31, "— FX PACK 1: SIDECHAIN CREATIVE —" },
     }};
 
     //==========================================================================

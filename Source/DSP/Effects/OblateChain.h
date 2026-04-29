@@ -99,10 +99,14 @@ public:
             juce::NormalisableRange<float>(5.0f, 500.0f, 0.0f, 0.5f), 100.0f));
         layout.add(std::make_unique<juce::AudioParameterInt>(
             juce::ParameterID(p + "keyEngine", 1), "OBLA Key Engine", 0, 3, 0));
-        // A2 (locked 2026-04-27): default 1024, 2048 only when hqMode is on.
+        // A2 (locked 2026-04-27): default 1024. The 2048 option is gated
+        // behind obla_hqMode and re-introduced together with the gating
+        // logic in the Pack 1 implementation PR. Omitted here to prevent
+        // invalid (fftSize=2048, hqMode=false) combinations from being
+        // saved/automated against the scaffold.
         layout.add(std::make_unique<juce::AudioParameterChoice>(
             juce::ParameterID(p + "fftSize", 1), "OBLA FFT Size",
-            juce::StringArray{"256", "512", "1024", "2048"}, 2));
+            juce::StringArray{"256", "512", "1024"}, 2));
         layout.add(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID(p + "tilt", 1), "OBLA Tilt",
             juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
