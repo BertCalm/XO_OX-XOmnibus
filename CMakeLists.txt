@@ -232,6 +232,8 @@ target_sources(XOceanus PRIVATE
     Source/DSP/Effects/OutlawChain.cpp
     Source/DSP/Effects/OutbreakChain.cpp
     Source/DSP/Effects/OrreryChain.cpp
+    # FX Pack 1 — Sidechain Creative (scaffold)
+    Source/DSP/Effects/OtriumChain.cpp
 
     # DSP (shared, pure C++)
     Source/DSP/FastMath.h
