@@ -170,7 +170,7 @@ These are non-negotiable. OXIDIZE without these is not OXIDIZE.
 
 ### Which Moods Should OXIDIZE Target?
 
-From the 15 mood categories, ranked by fit:
+From the 16 mood categories, ranked by fit:
 
 **Primary moods (core OXIDIZE territory):**
 

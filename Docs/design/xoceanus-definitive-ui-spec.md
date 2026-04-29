@@ -71,7 +71,7 @@ This is the 12-year-old test: a child opens the plugin and hears something beaut
 
 Every engine has a unique accent color. This is not decoration — it is a complete visual language system. When OPERA (Aria Gold `#D4AF37`) is active, the macro knob arcs, the coupling strip, the PlaySurface trails, the preset browser highlights, and the knob indicators ALL shift to Aria Gold. When you switch to OBRIX (Reef Jade `#1E8B7E`), the entire interface shifts. The color IS the engine's voice.
 
-No other synthesizer uses an 88-color system as a functional communication layer. Most use 2-3 accent colors for UI states. XOceanus's color system means a performer can identify the active engine from across the room, from a blurred screenshot, from peripheral vision while looking at a piano keyboard.
+No other synthesizer uses an 86-color system as a functional communication layer. Most use 2-3 accent colors for UI states. XOceanus's color system means a performer can identify the active engine from across the room, from a blurred screenshot, from peripheral vision while looking at a piano keyboard.
 
 ### 1.1.2 The Emotional Arc
 
@@ -998,7 +998,7 @@ Several engine accent colors on dark backgrounds:
 | Component | AccessibilityRole | Label Pattern | Value Pattern |
 |-----------|------------------|---------------|---------------|
 | Macro Knob | `slider` | "Character macro" | "72 percent" |
-| Engine Selector | `comboBox` | "Engine selector, currently OPERA" | "OPERA, engine 45 of 88" |
+| Engine Selector | `comboBox` | "Engine selector, currently OPERA" | "OPERA, engine 45 of 86" |
 | Preset Navigator | `group` | "Preset navigator" | — |
 | Preset Name | `staticText` | "Current preset: Velvet Morning" | — |
 | Prev/Next Preset | `button` | "Previous preset" / "Next preset" | — |
@@ -1241,7 +1241,7 @@ This is embodied cognition applied to software design. It has never been attempt
 
 **Disable**: Settings toggle "Adaptive UI" (default: ON). Reduced motion mode: OFF.
 
-### 5.2.4 The Constellation View — Seeing All 88 at Once
+### 5.2.4 The Constellation View — Seeing All 86 at Once
 
 Every synth forces you to look at one engine at a time. XOceanus has 86 engines. What if you could see ALL of them?
 
@@ -1257,9 +1257,9 @@ This gives the performer a god's-eye view of the entire XOceanus universe. It is
 
 No synthesizer has ever shown its entire capability space in a single, beautiful, interactive view.
 
-**Implementation**: 88 positioned circles with SVG creature icons. Layout: hardcoded positions following the water column arrangement from the design guidelines (Section 10.2). Click: loads engine into active slot. Drag between: creates coupling route. Golden lines: same Bezier rendering as coupling visualizer.
+**Implementation**: 86 positioned circles with SVG creature icons. Layout: hardcoded positions following the water column arrangement from the design guidelines (Section 10.2). Click: loads engine into active slot. Drag between: creates coupling route. Golden lines: same Bezier rendering as coupling visualizer.
 
-**JUCE**: `ConstellationOverlay : public juce::Component`. Full-window overlay, modal. 88 `juce::Component` children (engine stars). Lines painted in parent `paint()`. Fade-in: 300ms.
+**JUCE**: `ConstellationOverlay : public juce::Component`. Full-window overlay, modal. 86 `juce::Component` children (engine stars). Lines painted in parent `paint()`. Fade-in: 300ms.
 
 ---
 
@@ -1368,7 +1368,7 @@ No synthesizer has ever shown its entire capability space in a single, beautiful
 | Sharp key | `#2A2A2A` | Seaboard black keys |
 | Hit flash | `#FFFFFF` at 20% | Pad impact feedback |
 
-## A.8 All 88 Engine Accent Colors
+## A.8 All 86 Engine Accent Colors
 
 (Full table — see CLAUDE.md Engine Modules table for complete listing. All 86 engines with hex values are defined there and are the canonical reference.)
 
@@ -1767,7 +1767,7 @@ All spring physics: `velocity += (target - current) * stiffness; velocity *= dam
 
 ---
 
-*This document supersedes all previous UI specifications for XOceanus. It is the single source of truth for interface implementation. Every pixel described here has been considered in context of the purchased assets, the existing codebase, the aquatic mythology, the 88-engine fleet, and the mandate to surpass every synthesizer interface ever created.*
+*This document supersedes all previous UI specifications for XOceanus. It is the single source of truth for interface implementation. Every pixel described here has been considered in context of the purchased assets, the existing codebase, the aquatic mythology, the 86-engine fleet, and the mandate to surpass every synthesizer interface ever created.*
 
 *The interface is the instrument. The instrument is the interface. The mythology is the medium.*
 
