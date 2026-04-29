@@ -14,7 +14,7 @@ jobs:
       - name: Update open PR branches
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PAT }}
           script: |
             const prs = await github.paginate(github.rest.pulls.list, {
               owner: context.repo.owner,
