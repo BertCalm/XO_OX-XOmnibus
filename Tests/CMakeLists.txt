@@ -35,6 +35,7 @@ add_executable(XOceanusTests
     run_tests.cpp
     DSPTests/DSPStabilityTests.cpp
     DSPTests/DSPComponentTests.cpp
+    DSPTests/DNAModulationBusTests.cpp
     CouplingTests/CouplingMatrixTests.cpp
     PresetTests/PresetRoundTripTests.cpp
     PresetTests/BackwardCompatibilityTests.cpp

@@ -15,6 +15,7 @@
 #include "Core/PresetManager.h"
 #include "Core/CouplingPresetManager.h"
 #include "Core/MacroSystem.h"
+#include "Core/DNAModulationBus.h"
 #include "Core/BrothCoordinator.h"
 #include "Core/SharedTransport.h"
 #include "DSP/EngineProfiler.h"
@@ -487,6 +488,10 @@ private:
 
     juce::AudioProcessorValueTreeState apvts;
     MacroSystem macroSystem_;
+    // Phase 0 wildcard infrastructure (FX gap analysis, 2026-04-27).
+    // Per-engine DNA bus updated at preset load + each block from M1 CHARACTER macro.
+    // Consumed by FX chains via get(slot, axis). See Source/Core/DNAModulationBus.h.
+    xoceanus::DNAModulationBus dnaBus_;
     MegaCouplingMatrix couplingMatrix;
     CouplingCrossfader couplingCrossfader;
 
