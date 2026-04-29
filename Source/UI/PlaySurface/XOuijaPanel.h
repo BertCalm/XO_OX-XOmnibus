@@ -1453,6 +1453,11 @@ public:
     //   xouijaPanel_.getPinStore().onPinChanged = [&registry](float bx, float by) {
     //       registry.updateSourceValue(ModSourceId::XouijaCell, bx, by);
     //   };
+    // TODO(#wiring-sweep): wire(#orphan-sweep item 9) — ModSourceRegistry / C5
+    // SlotModSourceRegistry class does not yet exist.  Uncomment and implement the
+    // lambda above once C5 SlotModSourceRegistry is implemented in
+    // Source/Core/SlotModSourceRegistry.h (or equivalent).
+    // Tracked in issue #wiring-sweep; design spec in wave5-c1-sequencer-design-2026-04-26.md.
     //==========================================================================
     XouijaPinStore& getPinStore() noexcept { return pinStore_; }
     const XouijaPinStore& getPinStore() const noexcept { return pinStore_; }
