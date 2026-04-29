@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
-// OceanLayout.h  —  Phase 2 of the OceanView decomposition (issue #1184).
+// OceanLayout.h  —  Phase 2 + 2.5 of the OceanView decomposition (issue #1184).
 //
 // OceanLayout owns all geometry/layout logic that previously lived directly in
 // OceanView.  It holds references to every component it must position — no
@@ -9,22 +9,26 @@
 //
 // Construction
 // ────────────
-//   OceanLayout layout_{children_, /* LayoutTargets */ {  }};
+//   OceanLayout layout_{children_, /* LayoutTargets */ { ..., selectedSlot_, detailShowing_, firstLaunch_ }};
 //
 //   OceanView::resized() becomes:
-//     layout_.applyLayout(viewState_, getLocalBounds(), selectedSlot_,
-//                         detailShowing_, firstLaunch_);
+//     layout_.layoutForState(viewState_, getLocalBounds());
+//
+//   Phase 3 animation (when OceanStateMachine is wired):
+//     layout_.layoutForState(state, bounds, progress01);
 //
 // Constraints (same as OceanChildren):
 //   - No back-reference to OceanView (no OceanView* member).
 //   - LayoutTargets members are plain Component& / Component* references; they
 //     are never used to call back into OceanView — only setBounds/setVisible/
 //     toFront.
+//   - LayoutTargets also holds const-ref bindings to the three layout-input state
+//     members (selectedSlot, detailShowing, firstLaunch) added in Phase 2.5.
 //   - All geometry constants (kDashboardH, kStatusBarH, etc.) duplicated here
 //     for now; Phase 3 should consolidate them into a shared constants header.
 //
 // Phase 3 will extract OceanStateMachine.  At that point the `viewState_`
-// placeholder in applyLayout() will be replaced by a stateMachine_ query.
+// placeholder in layoutForState() will be replaced by a stateMachine_ query.
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "OceanChildren.h"
@@ -110,6 +114,12 @@ struct LayoutTargets
     SubmarinePlaySurface&           subPlaySurface;
     SubmarineOuijaPanel&            ouijaPanel;
     SurfaceRightPanel&              surfaceRight;
+
+    // Phase 2.5 (#1184): layout-input state — const refs to OceanView members.
+    // Removed from layoutForState() per-call args; now read directly from here.
+    const int&  selectedSlot;    ///< OceanView::selectedSlot_
+    const bool& detailShowing;   ///< OceanView::detailShowing_
+    const bool& firstLaunch;     ///< OceanView::firstLaunch_
 };
 
 //==============================================================================
@@ -119,7 +129,7 @@ struct LayoutTargets
     Encapsulates all geometry/layout strategies extracted from OceanView.
 
     Responsibilities:
-      - `applyLayout()` — called from OceanView::resized(); dispatches to the
+      - `layoutForState()` — called from OceanView::resized(); dispatches to the
         correct per-state layout strategy and also runs the dashboard/overlay
         layout that is state-independent.
       - `reorderZStack()` — static Z-order enforcement; called once per setup
@@ -162,11 +172,15 @@ public:
     /**
         Apply the full window layout.
 
-        @param viewState     Current state machine state (Orbital / ZoomIn / etc.)
-        @param fullBounds    OceanView's local bounds (from getLocalBounds()).
-        @param selectedSlot  Which slot is enlarged/active (-1 = none).
-        @param detailShowing Whether the detail overlay is currently displayed.
-        @param firstLaunch   Whether the user hasn't loaded any engine yet.
+        The `selectedSlot`, `detailShowing`, and `firstLaunch` state values are
+        now read from `targets_` (const refs to OceanView members) rather than
+        passed per-call.
+
+        @param viewState   Current state machine state (Orbital / ZoomIn / etc.)
+        @param fullBounds  OceanView's local bounds (from getLocalBounds()).
+        @param progress01  Normalised animation progress [0, 1] for in-flight
+                           transitions (default 1.0 = fully settled).  Reserved
+                           for Phase 3 — currently unused (juce::ignoreUnused).
     */
     enum class ViewState
     {
@@ -176,26 +190,26 @@ public:
         BrowserOpen
     };
 
-    void applyLayout(ViewState   viewState,
-                     juce::Rectangle<int> fullBounds,
-                     int         selectedSlot,
-                     bool        detailShowing,
-                     bool        firstLaunch)
+    void layoutForState(ViewState            viewState,
+                        juce::Rectangle<int> fullBounds,
+                        float                progress01 = 1.0f)
     {
+        juce::ignoreUnused(progress01);  // Phase 3 will use this for animation interpolation.
+
         // ── Ocean-area strategy (state-dependent) ────────────────────────────
         switch (viewState)
         {
             case ViewState::Orbital:
-                layoutOrbital(fullBounds, detailShowing, firstLaunch);
+                layoutOrbital(fullBounds);
                 break;
             case ViewState::ZoomIn:
-                layoutZoomIn(fullBounds, selectedSlot, detailShowing);
+                layoutZoomIn(fullBounds);
                 break;
             case ViewState::SplitTransform:
-                layoutSplitTransform(fullBounds, selectedSlot);
+                layoutSplitTransform(fullBounds);
                 break;
             case ViewState::BrowserOpen:
-                layoutBrowser(fullBounds, detailShowing);
+                layoutBrowser(fullBounds);
                 break;
         }
 
@@ -329,9 +343,7 @@ private:
     // Layout strategies (state-specific)
     //==========================================================================
 
-    void layoutOrbital(juce::Rectangle<int> fullBounds,
-                       bool detailShowing,
-                       bool firstLaunch)
+    void layoutOrbital(juce::Rectangle<int> fullBounds)
     {
         // Step 6: use computeOceanArea() so background/substrate/nexus only fill
         // the ocean viewport above the waterline, not the full window.
@@ -354,7 +366,7 @@ private:
         // FIX 12: Keep OceanBackground informed so it can show/hide ghost outlines.
         targets_.background.setEngineCount(numLoaded);
 
-        // ── Macros: now positioned in the dashboard strip via applyLayout() ──
+        // ── Macros: now positioned in the dashboard strip via layoutForState() ──
         // Fix 4: only show macros when at least one engine is loaded.
         if (auto* m = children_.macros())
             m->setVisible(numLoaded > 0);
@@ -398,20 +410,20 @@ private:
         }
 
         // Step 7: Show the pulsing lifesaver ring on first launch when empty.
-        targets_.lifesaver.setVisible(firstLaunch && numLoaded == 0);
+        targets_.lifesaver.setVisible(targets_.firstLaunch && numLoaded == 0);
         targets_.lifesaver.setBounds(computeOceanArea(fullBounds));
 
         // Hide panels that belong to other states.
-        if (auto* dp = children_.detailPanel(); dp && !detailShowing)
+        if (auto* dp = children_.detailPanel(); dp && !targets_.detailShowing)
             dp->setVisible(false);
         if (auto* sb = children_.sidebar()) sb->setVisible(false);
         targets_.browser.setVisible(false);
     }
 
-    void layoutZoomIn(juce::Rectangle<int> fullBounds,
-                      int selectedSlot,
-                      bool detailShowing)
+    void layoutZoomIn(juce::Rectangle<int> fullBounds)
     {
+        const int  selectedSlot  = targets_.selectedSlot;
+        const bool detailShowing = targets_.detailShowing;
         jassert(selectedSlot >= 0 && selectedSlot < 5);
 
         // Step 6: use computeOceanArea() so background/substrate only fill the
@@ -488,9 +500,9 @@ private:
         targets_.emptyStateLabel.setVisible(false);  // ZoomIn always has an engine selected
     }
 
-    void layoutSplitTransform(juce::Rectangle<int> fullBounds,
-                              int selectedSlot)
+    void layoutSplitTransform(juce::Rectangle<int> fullBounds)
     {
+        const int selectedSlot = targets_.selectedSlot;
         jassert(selectedSlot >= 0 && selectedSlot < 5);
 
         // Step 6: use computeOceanArea() so background/ambient edge stay within the
@@ -551,9 +563,9 @@ private:
         targets_.emptyStateLabel.setVisible(false);  // SplitTransform always has engine selected
     }
 
-    void layoutBrowser(juce::Rectangle<int> fullBounds,
-                       bool detailShowing)
+    void layoutBrowser(juce::Rectangle<int> fullBounds)
     {
+        const bool detailShowing = targets_.detailShowing;
         // Step 6: browser covers the ocean viewport above the waterline only.
         const auto area = computeOceanArea(fullBounds);
 
