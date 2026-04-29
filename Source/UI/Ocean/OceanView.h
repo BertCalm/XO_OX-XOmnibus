@@ -568,6 +568,22 @@ public:
             else
                 coordinatorRequestOpen(PanelType::Settings);
         };
+        // wire(#orphan-sweep item 5): forward setting changes outward via OceanView's
+        // onSettingChanged callback.  Also handle waveSensitivity locally (routes to
+        // OceanBackground reactivity).  All other keys go straight to the editor.
+        settingsDrawer_.onSettingChanged = [this](const juce::String& key, float value)
+        {
+            if (key == "waveSensitivity")
+            {
+                // waveSensitivity [0,1] → ocean background reactivity.
+                background_.setReactivity(value);
+                hudBar_.setReactLevel(value);
+            }
+            // Forward all settings changes to the editor so it can route remaining
+            // keys to the processor or APVTS where receivers exist.
+            if (onSettingChanged)
+                onSettingChanged(key, value);
+        };
 
         // ── HUD bar callbacks — routed through PanelCoordinator ──────────────
         hudBar_.onEnginesClicked = [this]()
@@ -745,6 +761,24 @@ public:
                       const ChordMachine& chordMachine)
     {
         children_.initChordBar(apvts, chordMachine);
+        // wire(#orphan-sweep item 7): onVisibilityChanged and onInputModeChanged
+        // were never assigned.  Wire them here so state changes propagate to the
+        // editor/processor.  onVisibilityChanged also triggers a layout pass
+        // because showing/hiding the chord bar changes the dashboard height.
+        if (auto* cb = children_.chordBar())
+        {
+            cb->onVisibilityChanged = [this]()
+            {
+                resized(); // dashboard height changes when chord bar is shown/hidden
+                if (onChordBarVisibilityChanged)
+                    onChordBarVisibilityChanged();
+            };
+            cb->onInputModeChanged = [this](ChordBarComponent::InputMode mode)
+            {
+                if (onChordBarInputModeChanged)
+                    onChordBarInputModeChanged(mode);
+            };
+        }
         reorderZStack();
     }
 
@@ -790,6 +824,17 @@ public:
     void initTransportBar()
     {
         children_.initTransportBar();
+        // wire(#orphan-sweep item 6): onTimeSigChanged was never assigned.
+        // Forward time-sig changes outward via OceanView::onTimeSigChanged so
+        // the editor can route them to the processor / APVTS once a receiver exists.
+        if (auto* tb = children_.transportBar())
+        {
+            tb->onTimeSigChanged = [this](int num, int den)
+            {
+                if (onTimeSigChanged)
+                    onTimeSigChanged(num, den);
+            };
+        }
         reorderZStack();
     }
 
@@ -1428,6 +1473,22 @@ public:
 
     /** Fired when the user chooses "Add Coupling..." from a buoy context menu. */
     std::function<void(int slot)> onChainModeRequested;
+
+    // wire(#orphan-sweep item 5): SettingsDrawer fires onSettingChanged but the
+    // callback was never assigned.  OceanView forwards it outward via this public
+    // callback so the editor can route settings to the processor.
+    // key: e.g. "polyphony", "masterTune", "mpeMode", "waveSensitivity", etc.
+    // value: raw/normalised float (semantics depend on key — see SettingsDrawer.h).
+    std::function<void(const juce::String& key, float value)> onSettingChanged;
+
+    // wire(#orphan-sweep item 6): TransportBar fires onTimeSigChanged but the
+    // callback was never assigned.  Forward outward so the editor/processor can act.
+    std::function<void(int numerator, int denominator)> onTimeSigChanged;
+
+    // wire(#orphan-sweep item 7): ChordBarComponent fires these callbacks but they
+    // were never assigned.  Forward outward so state changes are observable.
+    std::function<void()> onChordBarVisibilityChanged;
+    std::function<void(ChordBarComponent::InputMode)> onChordBarInputModeChanged;
 
     //==========================================================================
     // State queries
