@@ -27,13 +27,10 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 #include "SubmarineOuijaPanel.h"
+#include "Starboard.h"
 #include <functional>
 #include <cmath>
 #include <array>
-
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
 
 namespace xoceanus
 {
@@ -54,12 +51,22 @@ public:
     static constexpr int kPanelWidth  = 420;
     static constexpr int kHeaderH     = 36;
 
+    // Starboard strip sits between the header and SubmarineOuijaPanel (Ouija mode only).
+    // Locked at 120 px per Q1 decision (2026-04-29) — no collapse state.
+    static constexpr int kStarboardH  = Starboard::kHeight;
+
     //==========================================================================
     SurfaceRightPanel()
     {
         setOpaque(false);
         setInterceptsMouseClicks(true, true);
         setWantsKeyboardFocus(false);
+
+        // Starboard strip — always-120-px engine-state panel, Ouija mode only (#1358).
+        // Visibility is hidden until setMode(Ouija) is called; startAppearFade() is
+        // invoked there so the fade runs at first show, not at construction.
+        starboard_.setVisible(false);
+        addAndMakeVisible(starboard_);
 
         // Embedded ouija panel — shown only in Ouija mode.
         ouijaPanel_.setVisible(false);
@@ -115,13 +122,36 @@ public:
             return;
         releaseActive();
         mode_ = m;
-        ouijaPanel_.setVisible(m == Mode::Ouija);
-        if (m == Mode::Ouija)
-            resized(); // re-layout to position ouija panel
+        const bool isOuija = (m == Mode::Ouija);
+        starboard_.setVisible(isOuija);
+        if (isOuija)
+            starboard_.startAppearFade(); // 150 ms fade on mode entry
+        ouijaPanel_.setVisible(isOuija);
+        if (isOuija)
+            resized(); // re-layout to position starboard + ouija panel
         repaint();
     }
 
     Mode getMode() const noexcept { return mode_; }
+
+    //==========================================================================
+    // Starboard state injection (#1358).
+    //
+    // Call this from the host (OceanView / XOceanusEditor) on the message thread
+    // whenever XOuija engine, preset, XY position, pin, or FX chain changes.
+    // Starboard repaints at its own 10 Hz tick; setState() is safe to call more
+    // frequently (e.g. from a 30 Hz ouija position callback).
+    //
+    // Typical wiring in OceanView (after Starboard integration):
+    //   auto s = buildStarboardState(processor_, xouijaPanel_, epicSlotsPanel_);
+    //   surfaceRightPanel_->setStarboardState(s);
+    void setStarboardState(const Starboard::State& s)
+    {
+        starboard_.setState(s);
+    }
+
+    // Direct access for hosts that want to build state incrementally.
+    Starboard& getStarboard() noexcept { return starboard_; }
 
     void setOpen(bool open)
     {
@@ -205,9 +235,14 @@ public:
         computeCloseBtnBounds();
         computeXYPadBounds();
 
-        // Position ouija panel in content area when in Ouija mode.
+        // In Ouija mode: Starboard (120 px) sits between the 36 px header and
+        // SubmarineOuijaPanel. Both are hidden when not in Ouija mode.
         if (mode_ == Mode::Ouija)
-            ouijaPanel_.setBounds(0, kHeaderH, getWidth(), getHeight() - kHeaderH);
+        {
+            starboard_.setBounds(0, kHeaderH, getWidth(), kStarboardH);
+            const int ouijaTop = kHeaderH + kStarboardH;
+            ouijaPanel_.setBounds(0, ouijaTop, getWidth(), getHeight() - ouijaTop);
+        }
     }
 
     void mouseDown(const juce::MouseEvent& e) override
@@ -427,6 +462,10 @@ private:
 
     // Embedded ouija panel (shown in Ouija mode)
     SubmarineOuijaPanel  ouijaPanel_;
+
+    // Starboard engine-state strip (#1358) — shown in Ouija mode only,
+    // above SubmarineOuijaPanel, locked at kStarboardH = 120 px.
+    Starboard            starboard_;
 
     // XY assign label state (toggle for hover, not interactive here)
     // assignXHover_ / assignYHover_ reserved for future XY-assign hover highlight
