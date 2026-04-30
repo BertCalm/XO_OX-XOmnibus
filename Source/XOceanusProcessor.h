@@ -575,6 +575,72 @@ public:
         persistedTideWaterlineState_ = juce::ValueTree{};
     }
 
+    // ── Settings-drawer session controls (#1359) ─────────────────────────────
+    // All setters are message-thread-only; atomics are read by the audio thread.
+    // Range-clamping is applied in each setter — callers must not assume unclamped
+    // values are stored.
+
+    // Global polyphony cap: 1..32 voices.  Audio thread reads polyphonyCap_ via
+    // atomic to apply per-engine voice-count limits (engines honour their own cap
+    // if it is lower).  Default 16.
+    void setPolyphony(int voices) noexcept
+    {
+        polyphonyCap_.store(juce::jlimit(1, 32, voices), std::memory_order_relaxed);
+    }
+    int getPolyphony() const noexcept { return polyphonyCap_.load(std::memory_order_relaxed); }
+
+    // Global voice mode: 0=Poly, 1=Mono, 2=Legato, 3=Unison.  Default 0.
+    // Engines that expose their own voiceMode param continue to honour that param;
+    // this is the session-level override applied at the processor layer.
+    void setVoiceMode(int mode) noexcept
+    {
+        voiceMode_.store(juce::jlimit(0, 3, mode), std::memory_order_relaxed);
+    }
+    int getVoiceMode() const noexcept { return voiceMode_.load(std::memory_order_relaxed); }
+
+    // Master tune in Hz.  Range 415.0..466.0 (±1 semitone around A=440).
+    // Written to the APVTS "masterTune" param so it is automatable + DAW-persisted.
+    // Message-thread only; don't call from the audio thread.
+    void setMasterTune(float hz)
+    {
+        if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("masterTune")))
+            p->setValueNotifyingHost(p->convertTo0to1(juce::jlimit(415.0f, 466.0f, hz)));
+    }
+
+    // Pitch bend range in semitones: 1..24.  Written to the APVTS "pitchBendRange"
+    // param so hosts can automate it and session recall works.
+    // Message-thread only.
+    void setPitchBendRange(int semitones)
+    {
+        const int clamped = juce::jlimit(1, 24, semitones);
+        if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("pitchBendRange")))
+            p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(clamped)));
+    }
+
+    // MPE on/off.  Written to the existing APVTS "mpe_enabled" param so the existing
+    // processBlock path picks it up on the next block via cachedParams.mpeEnabled.
+    void setMpeEnabled(bool enabled)
+    {
+        if (auto* p = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("mpe_enabled")))
+            p->setValueNotifyingHost(enabled ? 1.0f : 0.0f);
+    }
+
+    // MIDI channel filter: 0=omni (all channels), 1..16=specific channel.
+    // Audio thread reads midiChannel_ and skips note-on/off events that don't match.
+    void setMidiChannel(int channel) noexcept
+    {
+        midiChannel_.store(juce::jlimit(0, 16, channel), std::memory_order_relaxed);
+    }
+    int getMidiChannel() const noexcept { return midiChannel_.load(std::memory_order_relaxed); }
+
+    // Oversampling factor index: 0=1x, 1=2x, 2=4x, 3=8x.  Default 0 (no oversampling).
+    // Audio thread reads oversamplingFactor_ and applies the factor to processing.
+    void setOversamplingFactor(int factorIdx) noexcept
+    {
+        oversamplingFactor_.store(juce::jlimit(0, 3, factorIdx), std::memory_order_relaxed);
+    }
+    int getOversamplingFactor() const noexcept { return oversamplingFactor_.load(std::memory_order_relaxed); }
+
 private:
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
 
@@ -1005,6 +1071,15 @@ private:
     // Written/read on the message thread only — no atomic needed.
     std::array<PresetData, kNumPrimarySlots> slotPresets_;
     std::vector<SlotPresetListener*> slotPresetListeners_;
+
+    // ── #1359: Settings-drawer session state ─────────────────────────────────
+    // Written on the message thread (set* setters above); read on the audio thread.
+    // Atomics with relaxed ordering — a one-block-late value is acceptable for
+    // session controls that are set interactively, not in tight automation loops.
+    std::atomic<int> polyphonyCap_{16};      // 1..32 global voice cap
+    std::atomic<int> voiceMode_{0};          // 0=Poly,1=Mono,2=Legato,3=Unison
+    std::atomic<int> midiChannel_{0};        // 0=omni, 1..16=specific channel
+    std::atomic<int> oversamplingFactor_{0}; // 0=1x,1=2x,2=4x,3=8x
 
     // ── External MIDI Clock state — audio thread only (closes #359) ──────────
     // Used to derive BPM from incoming 0xF8 pulses.
