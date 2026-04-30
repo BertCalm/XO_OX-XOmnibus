@@ -518,7 +518,7 @@ private:
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
                      "The Mantis Shrimp strikes. Eight drum slots, eight distinct synthesis", 12.0f);
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
-                     "topologies: TR-808 metallic networks, Karplus-Strong comb, Chaigne", 12.0f);
+                     "topologies: TR-808 metallic networks, Karplus-Strong comb, acoustic", 12.0f);
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
                      "contact physics, city-specific compressor chains. Detroit always runs late.", 12.0f);
             y += 4.0f;
@@ -529,9 +529,9 @@ private:
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
                      "Modal ratio tables from Rossing (2000). Material alpha decay exponents", 12.0f);
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
-                     "from beam dispersion theory. Per-voice tuning drift on a 100-second time", 12.0f);
+                     "from beam dispersion theory. Per-voice thermal drift approaches a new", 12.0f);
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
-                     "constant. Each bar of the instrument has its own stable character.", 12.0f);
+                     "tuning target every ~4 seconds. Each bar has its own stable character.", 12.0f);
             y += 4.0f;
 
             // OGIVE
