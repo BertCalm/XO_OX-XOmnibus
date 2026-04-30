@@ -482,9 +482,10 @@ public:
         cachedEngineName = engineId.toUpperCase();
 
         // wire(#orphan-sweep item 3): update OceanDetailHeader whenever the slot changes.
-        // engineType is not exposed by SynthEngine yet; pass empty string so the
-        // header renders without a subtitle until TODO(#wiring-sweep) is resolved.
-        detailHeader_.setEngineInfo(cachedEngineName, {}, accentColour);
+        // engineType subtitle: show the frozen param prefix (e.g. "snap_") so the
+        // header displays the engine's identity token without needing a separate API.
+        // Uses eng->getEngineParamPrefix() via SynthEngine::getEngineParamPrefix() (#1357).
+        detailHeader_.setEngineInfo(cachedEngineName, eng->getEngineParamPrefix(), accentColour);
         // P29: cache header gradient — rebuilt here and in resized(), not in paint().
         // #895: guard against zero-size bounds — ColourGradient with width=0 or
         // height=0 produces a degenerate gradient and causes rendering artefacts.
