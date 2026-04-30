@@ -55,7 +55,20 @@ enum class ModSourceId
     // Bipolar -1..+1 mapped from ±12 semitones (0.0 on silent / rest steps).
     // Deferred from C5; depends on C3 per-step pitch data in PerEnginePatternSequencer.
     SeqStepPitch = 19,  // Per-step pitch offset bipolar -1..+1 (from ±12 semitones)
-    Count = 20
+    // ── #1357: XY Surface position sources (W8B mount) ──────────────────────
+    // XY surface X-axis value for each engine slot, bipolar [-1, +1] (centred on 0.5).
+    // Read from XOceanusProcessor::xyX_[slot] atomics updated by XYSurface::onXYChanged.
+    // Slot is determined by the ModRoute's destParamId suffix convention.
+    XYX0 = 20,   // XY surface X-axis, slot 0 (bipolar)
+    XYX1 = 21,   // XY surface X-axis, slot 1 (bipolar)
+    XYX2 = 22,   // XY surface X-axis, slot 2 (bipolar)
+    XYX3 = 23,   // XY surface X-axis, slot 3 (bipolar)
+    // XY surface Y-axis value for each engine slot, bipolar [-1, +1].
+    XYY0 = 24,   // XY surface Y-axis, slot 0 (bipolar)
+    XYY1 = 25,   // XY surface Y-axis, slot 1 (bipolar)
+    XYY2 = 26,   // XY surface Y-axis, slot 2 (bipolar)
+    XYY3 = 27,   // XY surface Y-axis, slot 3 (bipolar)
+    Count = 28
 };
 
 // Human-readable names used in tooltips and the route list panel.
@@ -103,6 +116,15 @@ inline juce::String modSourceName(ModSourceId id)
         return "XOuija Pin";
     case ModSourceId::SeqStepPitch:
         return "Seq Step Pitch";
+    // ── #1357: XY Surface sources ───────────────────────────────────────────
+    case ModSourceId::XYX0: return "XY X (Slot 1)";
+    case ModSourceId::XYX1: return "XY X (Slot 2)";
+    case ModSourceId::XYX2: return "XY X (Slot 3)";
+    case ModSourceId::XYX3: return "XY X (Slot 4)";
+    case ModSourceId::XYY0: return "XY Y (Slot 1)";
+    case ModSourceId::XYY1: return "XY Y (Slot 2)";
+    case ModSourceId::XYY2: return "XY Y (Slot 3)";
+    case ModSourceId::XYY3: return "XY Y (Slot 4)";
     default:
         return "?";
     }
@@ -159,6 +181,17 @@ inline juce::Colour modSourceColour(ModSourceId id)
         return juce::Colour(0xFFE9C46A); // xo-gold — matches planchette accent
     case ModSourceId::SeqStepPitch:
         return juce::Colour(0xFF56CFB2); // seafoam — matches REEFS family (pitch-oriented)
+    // ── #1357: XY Surface sources — ocean teal/blue gradient ───────────────
+    case ModSourceId::XYX0:
+    case ModSourceId::XYX1:
+    case ModSourceId::XYX2:
+    case ModSourceId::XYX3:
+        return juce::Colour(0xFF3CB4AA); // xoceanus teal — X axis
+    case ModSourceId::XYY0:
+    case ModSourceId::XYY1:
+    case ModSourceId::XYY2:
+    case ModSourceId::XYY3:
+        return juce::Colour(0xFF2A7FA5); // deep ocean blue — Y axis
     default:
         return juce::Colour(GalleryColors::xoGold);
     }

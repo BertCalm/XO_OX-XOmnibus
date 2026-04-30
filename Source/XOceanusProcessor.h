@@ -453,6 +453,33 @@ public:
     // Safe to call from any thread.
     float getNoteActivity() const noexcept { return noteActivity_.load(std::memory_order_relaxed); }
 
+    // ── #1357: XY Surface position atomics (W8B mount) ───────────────────────
+    // Per-slot XY surface position in [0, 1].  Written by XYSurface::onXYChanged
+    // on the message thread; read by the mod routing system (DragDropModRouter /
+    // XouijaPinStore tick) on the audio thread as ModSourceId::XYX0..XYY3.
+    //
+    // Thread-safety: std::atomic<float> with relaxed ordering — a one-block-late
+    // value is acceptable for a continuous modulation source.
+    //
+    // setXYPosition: call from XYSurface::onXYChanged (message thread).
+    // getXYPosition: call from audio thread inside processBlock.
+    void setXYPosition(int slot, float x, float y) noexcept
+    {
+        if (slot < 0 || slot >= kNumPrimarySlots) return;
+        xyX_[static_cast<size_t>(slot)].store(x, std::memory_order_relaxed);
+        xyY_[static_cast<size_t>(slot)].store(y, std::memory_order_relaxed);
+    }
+    float getXYX(int slot) const noexcept
+    {
+        if (slot < 0 || slot >= kNumPrimarySlots) return 0.5f;
+        return xyX_[static_cast<size_t>(slot)].load(std::memory_order_relaxed);
+    }
+    float getXYY(int slot) const noexcept
+    {
+        if (slot < 0 || slot >= kNumPrimarySlots) return 0.5f;
+        return xyY_[static_cast<size_t>(slot)].load(std::memory_order_relaxed);
+    }
+
     // ── Editor UI state persistence (closes #314, #357) ───────────────────────
     // These fields are written on the message thread by the editor/sidebar and
     // read back during setStateInformation to restore UI state.  They are plain
@@ -840,6 +867,15 @@ private:
     // RMS-derived signal (0.0 = silent, 1.0 = maximum) smoothed with one-pole
     // filter (~100ms attack, ~500ms release). Read by getCockpitOpacity() in editor.
     std::atomic<float> noteActivity_{0.0f};
+
+    // ── #1357: XY Surface position atomics (W8B mount) ───────────────────────
+    // Per-slot XY position [0, 1] written by XYSurface::onXYChanged (message thread)
+    // and read by the mod routing system as ModSourceId::XYX0..XYY3 (audio thread).
+    // Initialised to 0.5 (centre) so modulation is neutral before first interaction.
+    // Note: std::atomic is not copy/move-constructible, so initialise via default ctor
+    // and store 0.5f in the XOceanusProcessor constructor body (see XOceanusProcessor.cpp).
+    std::array<std::atomic<float>, kNumPrimarySlots> xyX_;
+    std::array<std::atomic<float>, kNumPrimarySlots> xyY_;
     // Timestamp of the start of the current processBlock call (high-res ticks).
     juce::int64 processBlockStartTick{0};
 
