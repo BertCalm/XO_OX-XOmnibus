@@ -1449,15 +1449,17 @@ public:
     // D1 (cell layers), D2 (mood), and C5 (slot ModSources) all read/write
     // the pin store via this reference.
     //
-    // C5 integration example:
-    //   xouijaPanel_.getPinStore().onPinChanged = [&registry](float bx, float by) {
-    //       registry.updateSourceValue(ModSourceId::XouijaCell, bx, by);
-    //   };
-    // TODO(#wiring-sweep): wire(#orphan-sweep item 9) — ModSourceRegistry / C5
-    // SlotModSourceRegistry class does not yet exist.  Uncomment and implement the
-    // lambda above once C5 SlotModSourceRegistry is implemented in
-    // Source/Core/SlotModSourceRegistry.h (or equivalent).
-    // Tracked in issue #wiring-sweep; design spec in wave5-c1-sequencer-design-2026-04-26.md.
+    // C5 wiring (#1360) — call in PlaySurface::setProcessor() after the
+    // processor pointer is valid:
+    //
+    //   xouijaPanel_.getPinStore().onPinChanged =
+    //       [this](float bx, float by) {
+    //           processor_->getModSourceRegistry()
+    //               .updateSourceValue(ModSourceId::XouijaCell, bx, by);
+    //       };
+    //
+    // SlotModSourceRegistry lives in Source/Core/SlotModSourceRegistry.h.
+    // XOceanusProcessor exposes it via getModSourceRegistry().
     //==========================================================================
     XouijaPinStore& getPinStore() noexcept { return pinStore_; }
     const XouijaPinStore& getPinStore() const noexcept { return pinStore_; }

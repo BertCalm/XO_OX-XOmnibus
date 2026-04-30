@@ -20,6 +20,7 @@
 #include "Core/PartnerAudioBus.h"
 #include "Core/BrothCoordinator.h"
 #include "Core/SharedTransport.h"
+#include "Core/SlotModSourceRegistry.h" // Wave5-C5: XouijaCell + future msg-thread ModSources
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
 #include "DSP/PerEnginePatternSequencer.h"
@@ -493,6 +494,18 @@ public:
     // Computed from output RMS in processBlock() with ~100ms attack / ~500ms release.
     // Safe to call from any thread.
     float getNoteActivity() const noexcept { return noteActivity_.load(std::memory_order_relaxed); }
+
+    // ── Wave5-C5: SlotModSourceRegistry — message-thread-origin ModSources ──────
+    // Exposes live bipolar values for ModSources whose origin is the message thread
+    // (UI gestures, pin callbacks).  Audio thread reads them lock-free from
+    // processBlock().  Currently hosts XouijaCell; extend for future UI-origin sources.
+    //
+    // Wire-up (in PlaySurface::setProcessor or equivalent):
+    //   xouijaPanel_.getPinStore().onPinChanged = [this](float bx, float by) {
+    //       modSourceRegistry_.updateSourceValue(ModSourceId::XouijaCell, bx, by);
+    //   };
+    SlotModSourceRegistry& getModSourceRegistry() noexcept { return modSourceRegistry_; }
+    const SlotModSourceRegistry& getModSourceRegistry() const noexcept { return modSourceRegistry_; }
 
     // ── #1357: XY Surface position atomics (W8B mount) ───────────────────────
     // Per-slot XY surface position in [0, 1].  Written by XYSurface::onXYChanged
@@ -983,6 +996,8 @@ private:
     // and store 0.5f in the XOceanusProcessor constructor body (see XOceanusProcessor.cpp).
     std::array<std::atomic<float>, kNumPrimarySlots> xyX_;
     std::array<std::atomic<float>, kNumPrimarySlots> xyY_;
+    // Wave5-C5: message-thread-origin ModSource live values (XouijaCell, etc.)
+    SlotModSourceRegistry modSourceRegistry_;
     // Timestamp of the start of the current processBlock call (high-res ticks).
     juce::int64 processBlockStartTick{0};
 
