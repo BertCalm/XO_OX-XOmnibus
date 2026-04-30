@@ -18,9 +18,16 @@
 #include <array>
 #include <cmath>
 #include <cstdint>
+#include <cstring>
 
 namespace xoceanus
 {
+
+// T6: Forward-declare the processor so OpalEngine can cache a pointer for the
+// global mod-route consumption path (getModRouteAccum / getModRouteDestParamId).
+// The full definition is never needed in this header — only the pointer is used,
+// and all calls are from .cpp or inline methods called only at audio-thread time.
+class XOceanusProcessor;
 
 //==============================================================================
 // OPAL CONSTANTS
@@ -30,6 +37,10 @@ static constexpr int kOpalMaxClouds = 12;
 static constexpr int kOpalMaxGrains = 32;
 static constexpr float kOpalBufferSeconds = 4.0f;
 static constexpr int kOpalModSlots = 6;
+
+// T6: Number of global mod-route slots Opal caches at load time.
+// Mirrors the 5 target params: GRAIN_SIZE, DENSITY, POSITION, FILTER_CUTOFF, PITCH_SCATTER.
+static constexpr int kOpalGlobalModTargets = 5;
 
 //==============================================================================
 // OPAL PARAMETER IDs — 86 frozen IDs, opal_ prefix
@@ -1356,6 +1367,35 @@ public:
         pLevel = apvts.getRawParameterValue(OpalParam::LEVEL);
     }
 
+    //-- T6: Global mod-route opt-in -------------------------------------------
+    //
+    // setProcessorPtr() — called once from XOceanusProcessor::loadEngine() on the
+    // message thread after attachParameters().  Stores the processor pointer so
+    // cacheGlobalModRoutes() can call the public route accessors.
+    // Audio thread only reads processorPtr_ after this assignment (sequential,
+    // no data race).
+    //
+    // cacheGlobalModRoutes() — scans the current snapshot for routes that target
+    // any of Opal's 5 modulated parameters and stores the matching route indices
+    // in globalModRouteIdx_[].  -1 means no active route for that target.
+    // Called whenever the snapshot changes (on load + on route model flush).
+    //
+    // Target → index mapping (fixed):
+    //   0 = opal_grainSize      (grain cloud size)
+    //   1 = opal_density        (grain spawn rate)
+    //   2 = opal_position       (buffer read position)
+    //   3 = opal_filterCutoff   (D001: filter brightness = timbre)
+    //   4 = opal_pitchScatter   (cloud pitch spread)
+
+    void setProcessorPtr(XOceanusProcessor* proc) noexcept
+    {
+        processorPtr_ = proc;
+        // cacheGlobalModRoutes() (defined in OpalEngine.cpp) sets modAccumPtr_ too.
+        cacheGlobalModRoutes();
+    }
+
+    void cacheGlobalModRoutes() noexcept;  // implemented in OpalEngine.cpp (needs full XOceanusProcessor type)
+
     //-- Coupling --------------------------------------------------------------
 
     float getSampleForCoupling(int channel, int sampleIndex) const override
@@ -1589,6 +1629,29 @@ public:
         pitchScatter = clamp(pitchScatter, 0.0f, 24.0f);
         density = clamp(density, 1.0f, 120.0f);
         freezeAmt = clamp(freezeAmt, 0.0f, 1.0f);
+
+        // ---- T6: Global mod-route consumption ----
+        // Delegate to applyGlobalModRoutes() (implemented in OpalEngine.cpp) so that
+        // the full XOceanusProcessor type is available without a circular include.
+        // avgVelocity is computed here (before the MIDI loop) as a one-block-lag
+        // approximation — identical latency to all other block-rate modulations.
+        {
+            float avgVel = 0.0f;
+            int activeVoiceCountGMR = 0;
+            for (const auto& v : voices)
+            {
+                if (v.active)
+                {
+                    avgVel += v.velocity;
+                    ++activeVoiceCountGMR;
+                }
+            }
+            avgVel = (activeVoiceCountGMR > 0)
+                   ? avgVel / static_cast<float>(activeVoiceCountGMR)
+                   : 1.0f; // no voices → unity (depth fully expressed)
+            applyGlobalModRoutes(grainSizeMs, density, position, filterCutoff, pitchScatter, nyquistCeil, avgVel);
+        }
+        // ---- end T6 global mod routes ----
 
         bool frozen = (freezeAmt > 0.5f);
 
@@ -2228,6 +2291,78 @@ private:
         }
     }
 
+    // T6: Apply accumulated global mod-route offsets to the 5 target params.
+    // Implemented inline here (all data comes from cached arrays — no full processor
+    // type needed, forward declaration is sufficient).
+    void applyGlobalModRoutes(float& grainSizeMs, float& density, float& position,
+                              float& filterCutoff, float& pitchScatter,
+                              float nyquistCeil, float avgVel) noexcept
+    {
+        if (modAccumPtr_ == nullptr)
+            return;
+
+        // Target 0: opal_grainSize (10..800 ms)
+        {
+            int ri = globalModRouteIdx_[0];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[0] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[0]; // 790.0f
+                grainSizeMs = juce::jlimit(10.0f, 800.0f, grainSizeMs + depth * span);
+            }
+        }
+
+        // Target 1: opal_density (1..120 grains/sec)
+        {
+            int ri = globalModRouteIdx_[1];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[1] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[1]; // 119.0f
+                density = juce::jlimit(1.0f, 120.0f, density + depth * span);
+            }
+        }
+
+        // Target 2: opal_position (0..1 normalised buffer position)
+        {
+            int ri = globalModRouteIdx_[2];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[2] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[2]; // 1.0f
+                position = juce::jlimit(0.0f, 1.0f, position + depth * span);
+            }
+        }
+
+        // Target 3: opal_filterCutoff (20..nyquist Hz) — D001 compliance
+        //   Velocity route: high velocity → brighter filter (timbre sculpting).
+        {
+            int ri = globalModRouteIdx_[3];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[3] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[3]; // 19980.0f
+                filterCutoff = juce::jlimit(20.0f, nyquistCeil, filterCutoff + depth * span);
+            }
+        }
+
+        // Target 4: opal_pitchScatter (0..24 semitones)
+        {
+            int ri = globalModRouteIdx_[4];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[4] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[4]; // 24.0f
+                pitchScatter = juce::jlimit(0.0f, 24.0f, pitchScatter + depth * span);
+            }
+        }
+    }
+
     void applyMacros(float& grainSize, float& density, float& posScatter, float& pitchScatter, float& panScatter,
                      float& couplingLevel, float& freeze, float& reverbMix, float& smearMix, float& delayMix) noexcept
     {
@@ -2488,6 +2623,45 @@ private:
     std::atomic<float>* pGlideMode = nullptr;
     std::atomic<float>* pPan = nullptr;
     std::atomic<float>* pLevel = nullptr;
+
+    // T6: Global mod-route opt-in state
+    // processorPtr_: set by setProcessorPtr() on the message thread; read-only
+    //   on the audio thread after that.  Plain pointer — no atomic needed because
+    //   assignment happens before the first renderBlock() call.
+    XOceanusProcessor* processorPtr_ = nullptr;
+
+    // Cached route indices for the 5 target params (kOpalGlobalModTargets).
+    // -1 = no active global route for that target.
+    // Written by cacheGlobalModRoutes() (message thread), read by renderBlock()
+    // (audio thread).  Protected by the snapshot-version protocol: the processor
+    // increments snapshotVersion_ AFTER writing all route data; cacheGlobalModRoutes()
+    // re-scans from scratch each time it is called so indices are always coherent.
+    // A one-block lag (audio thread reads stale index while message thread caches new
+    // ones) is safe: worst case is a missed mod offset for one block.
+    std::array<int, kOpalGlobalModTargets> globalModRouteIdx_{};
+    // velocityScaled flag for each cached route slot (mirrors GlobalModRouteSnapshot).
+    std::array<bool, kOpalGlobalModTargets> globalModVelScaled_{};
+    // Pre-cached range span for each target param so renderBlock() can scale
+    // the normalised accumulator to param units without calling juce:: methods.
+    std::array<float, kOpalGlobalModTargets> globalModRangeSpan_{};
+    // Raw pointer to the processor's routeModAccum_ array.  Set by setProcessorPtr()
+    // alongside processorPtr_.  Stored separately so applyGlobalModRoutes() can read
+    // accumulators without needing the full XOceanusProcessor type (forward-decl safe).
+    const float* modAccumPtr_ = nullptr;
+
+    // Param IDs for the 5 modulated targets (index-matched to globalModRouteIdx_).
+    // Used inside cacheGlobalModRoutes() to find matching routes.
+    static constexpr const char* kGlobalModTargetIds[kOpalGlobalModTargets] = {
+        OpalParam::GRAIN_SIZE,
+        OpalParam::DENSITY,
+        OpalParam::POSITION,
+        OpalParam::FILTER_CUTOFF,
+        OpalParam::PITCH_SCATTER,
+    };
 };
+
+// T6: cacheGlobalModRoutes() is implemented in OpalEngine.cpp where
+// XOceanusProcessor.h can be included for the full type without a circular
+// dependency (OpalEngine.h only forward-declares XOceanusProcessor).
 
 } // namespace xoceanus
