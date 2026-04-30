@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
+// [trigger-build: genome batch 35→53/86]
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_audio_devices/juce_audio_devices.h> // juce::MidiMessageCollector
