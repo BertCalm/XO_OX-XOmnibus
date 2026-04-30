@@ -88,7 +88,7 @@ jobs:
           # Summary for GitHub
           echo "## Test Coverage Summary" >> $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
-          lcov --summary build/coverage-filtered.info 2>&1 | tee -a $GITHUB_STEP_SUMMARY
+          lcov --summary build/coverage-filtered.info --ignore-errors inconsistent 2>&1 | tee -a $GITHUB_STEP_SUMMARY
           echo '```' >> $GITHUB_STEP_SUMMARY
 
       - name: Upload coverage report
