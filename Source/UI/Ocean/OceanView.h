@@ -417,6 +417,12 @@ public:
             {
                 substrate_.setCreatureCenter(slot, orbits_[slot].getVisualCenter());
             };
+            // Q1 (#1356): forward preset pill click outward to editor.
+            orbits_[i].onPresetPillClicked = [this](int slot)
+            {
+                if (onPresetPillClicked)
+                    onPresetPillClicked(slot);
+            };
         }
 
         // ── CouplingSubstrate knot interaction ────────────────────────────────
@@ -1300,6 +1306,14 @@ public:
         return {};
     }
 
+    /** Set the preset name shown on the buoy's preset pill (#1356).
+        Pass an empty string to show "—". Ignored for out-of-range slots. */
+    void setOrbitPresetName(int slot, const juce::String& name)
+    {
+        if (slot >= 0 && slot < 5)
+            orbits_[slot].setPresetName(name);
+    }
+
     /** Step 8c: Trigger a ripple animation on the buoy wreath for the given slot.
         Called from the editor timer when the voice count increases (note-on). */
     void triggerBuoyRipple(int slot)
@@ -1574,6 +1588,11 @@ public:
     /** Fired when the user clicks the preset name label in the HUD bar.
         Editor should open the preset browser (e.g. sidebar Preset tab). */
     std::function<void()> onPresetNameClicked;
+
+    /** Fired when the user clicks the preset pill on an engine buoy (#1356).
+        @param slotIndex  The slot whose pill was clicked (0–3).
+        Editor should open a per-slot CallOutBox(PresetBrowserPanel) filtered to that engine. */
+    std::function<void(int slotIndex)> onPresetPillClicked;
 
     //==========================================================================
     // State queries

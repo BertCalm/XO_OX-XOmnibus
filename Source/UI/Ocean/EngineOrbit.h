@@ -129,6 +129,29 @@ public:
                            juce::Rectangle<float>(cx - 60.0f, cy + r + 4.0f, 120.0f, 10.0f).toNearestInt(),
                            juce::Justification::centred, false);
             }
+
+            // Q1 (#1356): "no engine" dim preset pill for empty slots.
+            // Tooltip wired in EngineOrbit constructor via setTooltip() is not applicable
+            // here (ghost slots use setInterceptsMouseClicks(false)); the pill text itself
+            // serves as the affordance label.
+            {
+                const float labelH = kNameFontSize + 4.0f;
+                const float pillW  = 68.0f;
+                const float pillX  = cx - pillW * 0.5f;
+                const float pillY  = cy + r + 3.0f + labelH + 1.0f;
+                const float pillH  = 13.0f;
+                juce::Path pillPath;
+                pillPath.addRoundedRectangle(pillX, pillY, pillW, pillH, 4.0f);
+                g.setColour(ghostCol.withAlpha(0.07f));
+                g.fillPath(pillPath);
+                g.setColour(ghostCol.withAlpha(0.15f));
+                g.strokePath(pillPath, juce::PathStrokeType(0.75f));
+                g.setFont(GalleryFonts::label(8.0f));
+                g.setColour(ghostCol.withAlpha(0.20f));
+                g.drawText("no engine",
+                           juce::Rectangle<float>(pillX + 3.0f, pillY, pillW - 6.0f, pillH).toNearestInt(),
+                           juce::Justification::centredLeft, false);
+            }
             return;
         }
 
@@ -357,6 +380,35 @@ public:
                            juce::Rectangle<float>(0.0f, labelY + labelH - 2, localBounds.getWidth(), 10.0f).toNearestInt(),
                            juce::Justification::centredTop, false);
             }
+
+            // ── Preset name pill (Q1 — #1356) ────────────────────────────────
+            // Dedicated pill below engine name. Shows current preset name (truncated)
+            // or "—" when none loaded. Empty engine state handled in the !hasEngine_ branch.
+            if (!isFx)
+            {
+                const float pillW = juce::jmin(localBounds.getWidth() - 8.0f, 80.0f);
+                const float pillX = cx - pillW * 0.5f;
+                const float pillY = labelY + labelH + 1.0f;
+                const float pillH = 13.0f;
+                const float pillR = 4.0f;
+
+                // Pill background
+                juce::Path pillPath;
+                pillPath.addRoundedRectangle(pillX, pillY, pillW, pillH, pillR);
+                g.setColour(accentColour_.withAlpha(0.10f));
+                g.fillPath(pillPath);
+                g.setColour(accentColour_.withAlpha(0.22f));
+                g.strokePath(pillPath, juce::PathStrokeType(0.75f));
+
+                // Preset name text
+                const juce::String displayName = presetName_.isEmpty() ? juce::String(juce::CharPointer_UTF8("\xe2\x80\x94"))  // em dash
+                                                                        : presetName_;
+                g.setFont(GalleryFonts::label(8.0f));
+                g.setColour(accentColour_.withAlpha(presetName_.isEmpty() ? 0.30f : 0.65f));
+                g.drawText(displayName,
+                           juce::Rectangle<float>(pillX + 3.0f, pillY, pillW - 6.0f, pillH).toNearestInt(),
+                           juce::Justification::centredLeft, true);
+            }
         }
 
         // ── Depth zone ring (thin colored outer ring) ─────────────────────
@@ -543,6 +595,20 @@ public:
             springOffset_ = {};
             springVelocity_ = {};
             setTransform({});
+
+            // Q1 (#1356): Check whether the click landed on the preset pill.
+            // Pill is only rendered for engine buoys (not FX), and only when an engine is loaded.
+            const bool isEngineBuoy = (buoyType_ == BuoyType::Engine);
+            if (isEngineBuoy && onPresetPillClicked)
+            {
+                const auto pillBounds = getPresetPillBounds();
+                if (pillBounds.contains(e.position.toInt()))
+                {
+                    onPresetPillClicked(slotIndex_);
+                    return;
+                }
+            }
+
             if (onClicked) onClicked(slotIndex_);
         }
         else
@@ -882,6 +948,36 @@ public:
     }
 
     //==========================================================================
+    // Preset pill (Q1 — #1356)
+    //==========================================================================
+
+    /** Set the preset name shown in the pill below the engine name.
+        Pass an empty string to display "—". */
+    void setPresetName(const juce::String& name)
+    {
+        if (presetName_ == name) return;
+        presetName_ = name;
+        repaint();
+    }
+
+    juce::String getPresetName() const noexcept { return presetName_; }
+
+    /** Returns the screen-space bounds of the preset pill, for attaching a CallOutBox. */
+    juce::Rectangle<int> getPresetPillBounds() const
+    {
+        const auto localBounds = getLocalBounds().toFloat();
+        const float cx = localBounds.getCentreX();
+        const float cy = localBounds.getCentreY();
+        const float radius = getBuoyRadius();
+        const float labelH = kNameFontSize + 4.0f;
+        const float pillY = cy + radius + 3.0f + labelH + 1.0f;
+        const float pillH = 13.0f;
+        const float pillW = juce::jmin(localBounds.getWidth() - 8.0f, 80.0f);
+        const float pillX = cx - pillW * 0.5f;
+        return juce::Rectangle<float>(pillX, pillY, pillW, pillH).toNearestInt();
+    }
+
+    //==========================================================================
     // Callbacks
     //==========================================================================
 
@@ -889,6 +985,8 @@ public:
     std::function<void(int slotIndex)> onDoubleClicked;
     std::function<void(int slotIndex)> onPositionChanged;
     std::function<void(int slotIndex)> onDragMoved;  ///< visual pos changed during drag
+    /** Fired when the user clicks the preset pill. Slot has an engine loaded. */
+    std::function<void(int slotIndex)> onPresetPillClicked;
 
     //==========================================================================
     // Animation — called by OceanView's single shared timer at 30 Hz
@@ -1109,6 +1207,7 @@ private:
     //==========================================================================
     // Engine state
     juce::String engineId_;
+    juce::String presetName_;    ///< Current preset name for the pill (Q1 — #1356). Empty = "—".
     juce::Colour accentColour_   = juce::Colour(GalleryColors::xoGold);
     DepthZone    depthZone_      = DepthZone::Sunlit;
     BuoyType     buoyType_       = BuoyType::Engine;
