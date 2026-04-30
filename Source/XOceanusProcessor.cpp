@@ -510,6 +510,13 @@ void XOceanusProcessor::cacheParameterPointers()
     // in flushModRoutesSnapshot().  If the Orrery engine is not registered, this stays
     // nullptr and isOrryCutoff is never set (safe — globalCutoffModOffset_ stays 0.0f).
     orryCutoffParam_ = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("orry_fltCutoff"));
+
+    // T6: Pre-resolve Onset global parameter pointers for isPercXxx flag detection.
+    // nullptr when Onset parameters are not registered (safe — corresponding isPercXxx stays false).
+    percLevelParam_ = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("perc_level"));
+    percPunchParam_ = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("perc_macro_punch"));
+    percToneParam_  = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("perc_masterTone"));
+    percGritParam_  = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("perc_char_grit"));
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createParameterLayout()
@@ -1481,6 +1488,14 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
                 orrery->setGlobalCutoffModPtr(&globalCutoffModOffset_);
                 orrery->setGlobalLFO1OutPtr(&globalLFO1_);
             }
+            // T6: Wire Onset global mod offset pointers for any already-loaded Onset engine.
+            if (auto* onset = dynamic_cast<OnsetEngine*>(eng.get()))
+            {
+                onset->setPercModOffsetPtrs(&globalPercLevelModOffset_,
+                                            &globalPercPunchModOffset_,
+                                            &globalPercToneModOffset_,
+                                            &globalPercGritModOffset_);
+            }
         }
     }
 
@@ -2305,6 +2320,14 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             // Accumulate global cutoff mod offset (same units as OrreryEngine::modCutoffOffset).
             float globalCutoffMod = 0.0f;
 
+            // T6: Onset global-parameter mod accumulators (normalised offsets, [−1, +1] range).
+            // For velocityScaled routes these hold depth (not depth*vel); OnsetEngine multiplies
+            // by lastTriggerVelocity at consumption to satisfy D001 (Strategy 2).
+            float percLevelMod = 0.0f;
+            float percPunchMod = 0.0f;
+            float percToneMod  = 0.0f;
+            float percGritMod  = 0.0f;
+
             for (int ri = 0; ri < nRoutes; ++ri)
             {
                 const auto& snap = routesSnapshot_[static_cast<size_t>(ri)];
@@ -2389,6 +2412,12 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     if (snap.depth == 0.0f)
                         continue;
                     routeModAccum_[static_cast<size_t>(ri)] = snap.depth;
+                    // T6: Onset global params: accumulate depth so OnsetEngine can multiply
+                    // by lastTriggerVelocity at consumption.  Strategy 2 — engine-side multiply.
+                    if (snap.isPercLevel) percLevelMod += snap.depth;
+                    if (snap.isPercPunch) percPunchMod += snap.depth;
+                    if (snap.isPercTone)  percToneMod  += snap.depth;
+                    if (snap.isPercGrit)  percGritMod  += snap.depth;
                     continue; // skip the generic srcVal * depth path below
                 }
                 else
@@ -2411,6 +2440,12 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     // matrix convention (dest[1] * 8000 = cutoff offset in Hz).
                     globalCutoffMod += modOffset * 8000.0f;
                 }
+                // T6: Onset global-parameter dispatch — non-velocity sources (LFO, XOuija, etc).
+                // modOffset = srcVal * depth, already normalised.  OnsetEngine clamps on use.
+                if (snap.isPercLevel) percLevelMod += modOffset;
+                if (snap.isPercPunch) percPunchMod += modOffset;
+                if (snap.isPercTone)  percToneMod  += modOffset;
+                if (snap.isPercGrit)  percGritMod  += modOffset;
                 // else: destination is available via routeModAccum_[ri] for engines to read.
                 // When an engine opt-in API is added (Phase A2+), it will call
                 // getModRouteAccum(ri) with the route index it cached at load time.
@@ -2421,11 +2456,25 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             // Audio thread: relaxed ordering — engine reads this in the same processBlock
             // call (always on the audio thread, so no cross-thread ordering required).
             globalCutoffModOffset_.store(globalCutoffMod, std::memory_order_relaxed);
+
+            // T6: Write Onset global-parameter mod offsets.
+            // OnsetEngine reads these via pointer in its next renderBlock call.
+            // For velocityScaled routes the value is depth (not depth*vel); OnsetEngine
+            // multiplies by lastTriggerVelocity at consumption (D001, Strategy 2).
+            globalPercLevelModOffset_.store(percLevelMod, std::memory_order_relaxed);
+            globalPercPunchModOffset_.store(percPunchMod, std::memory_order_relaxed);
+            globalPercToneModOffset_.store(percToneMod,  std::memory_order_relaxed);
+            globalPercGritModOffset_.store(percGritMod,  std::memory_order_relaxed);
         }
         else
         {
             // No routes — ensure offset is zero so filter settles to base value.
             globalCutoffModOffset_.store(0.0f, std::memory_order_relaxed);
+            // T6: Zero Onset offsets when no routes are active.
+            globalPercLevelModOffset_.store(0.0f, std::memory_order_relaxed);
+            globalPercPunchModOffset_.store(0.0f, std::memory_order_relaxed);
+            globalPercToneModOffset_.store(0.0f, std::memory_order_relaxed);
+            globalPercGritModOffset_.store(0.0f, std::memory_order_relaxed);
             routeModAccum_.fill(0.0f);
         }
     }
@@ -2974,6 +3023,14 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
             orrery->setGlobalCutoffModPtr(&globalCutoffModOffset_);
             orrery->setGlobalLFO1OutPtr(&globalLFO1_);
         }
+        // T6: Wire Onset global mod offset pointers into OnsetEngine at load time.
+        if (auto* onset = dynamic_cast<OnsetEngine*>(newEngine.get()))
+        {
+            onset->setPercModOffsetPtrs(&globalPercLevelModOffset_,
+                                        &globalPercPunchModOffset_,
+                                        &globalPercToneModOffset_,
+                                        &globalPercGritModOffset_);
+        }
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3133,6 +3190,13 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
         // orryCutoffParam_ may be nullptr if Orrery is not loaded; guard accordingly.
         snap.isOrryCutoff = (orryCutoffParam_ != nullptr && snap.destParam == orryCutoffParam_);
 
+        // T6: Set Onset global-parameter destination flags by pointer identity.
+        // percXxxParam_ pointers are nullptr when Onset is not loaded — safe default.
+        snap.isPercLevel = (percLevelParam_ != nullptr && snap.destParam == percLevelParam_);
+        snap.isPercPunch = (percPunchParam_ != nullptr && snap.destParam == percPunchParam_);
+        snap.isPercTone  = (percToneParam_  != nullptr && snap.destParam == percToneParam_);
+        snap.isPercGrit  = (percGritParam_  != nullptr && snap.destParam == percGritParam_);
+
         // T5: Mark routes whose source is Velocity so engines can apply per-voice
         // multiplication (D001).  routeModAccum_[ri] will hold depth, not depth*srcVal.
         snap.velocityScaled = (r.sourceId == static_cast<int>(ModSourceId::Velocity));
@@ -3142,11 +3206,16 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
     // Zero out trailing slots so stale entries are not evaluated.
     for (int i = count; i < kMaxGlobalRoutes; ++i)
     {
-        routesSnapshot_[static_cast<size_t>(i)].valid          = false;
-        routesSnapshot_[static_cast<size_t>(i)].destParam       = nullptr;
+        routesSnapshot_[static_cast<size_t>(i)].valid              = false;
+        routesSnapshot_[static_cast<size_t>(i)].destParam          = nullptr;
         routesSnapshot_[static_cast<size_t>(i)].destParamRangeSpan = 0.0f;
-        routesSnapshot_[static_cast<size_t>(i)].isOrryCutoff    = false;
-        routesSnapshot_[static_cast<size_t>(i)].velocityScaled  = false;
+        routesSnapshot_[static_cast<size_t>(i)].isOrryCutoff       = false;
+        routesSnapshot_[static_cast<size_t>(i)].velocityScaled     = false;
+        // T6: clear Onset flags on trailing (inactive) slots.
+        routesSnapshot_[static_cast<size_t>(i)].isPercLevel        = false;
+        routesSnapshot_[static_cast<size_t>(i)].isPercPunch        = false;
+        routesSnapshot_[static_cast<size_t>(i)].isPercTone         = false;
+        routesSnapshot_[static_cast<size_t>(i)].isPercGrit         = false;
     }
 
     routesSnapshotCount_.store(count, std::memory_order_relaxed);
