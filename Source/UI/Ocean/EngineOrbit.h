@@ -749,7 +749,6 @@ public:
             { "Ombre",      "Ombre — shadow-mauve drift machine. Darkness has texture." },
             { "Octopus",    "Octopus — eight-armed chromatophore synth. Each arm a voice." },
             { "Opensky",    "Opensky — Shepard shimmer tower. Forever ascending light." },
-            { "Oceandeep",  "Oceandeep — trench hydrostatic press. Pressure as tone." },
             { "Ouie",       "Ouie — hammerhead interval axis. Love and strife collide." },
             { "Overdub",    "Overdub — spring-reverb echo chamber. Metallic splash memory." },
             { "Oblong",     "Oblong — amber-warm vowel filter. Burnished formant breath." },
