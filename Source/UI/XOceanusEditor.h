@@ -857,8 +857,32 @@ public:
             {
                 processor.setOversamplingFactor(static_cast<int>(value));
             }
+            else if (key == "uiScale")
+            {
+                // Fix #1432: uiScale combo fires index 0-3 (75% / 100% / 125% / 150%).
+                // Scale the editor width proportionally while keeping the current height.
+                // Base width is 1100 pt (the initial setSize() value from initOceanView).
+                static constexpr int kBaseW = 1100;
+                static constexpr float kScales[] = { 0.75f, 1.0f, 1.25f, 1.5f };
+                const int idx = juce::jlimit(0, 3, static_cast<int>(value));
+                const float scale = kScales[idx];
+                const int newW = juce::roundToInt(kBaseW * scale);
+                // Clamp to declared resize limits so the host's constrainer is respected.
+                const int clampedW = juce::jlimit(960, 1600, newW);
+                setSize(clampedW, getHeight());
+            }
             // "waveSensitivity" is handled inside OceanView → OceanBackground; no-op here.
+
+            // Fix #1419: persist every setting change so values survive plugin reload.
+            if (settingsFile_)
+                oceanView_.settingsDrawer().saveSettings(*settingsFile_);
         };
+
+        // Fix #1419: restore persisted settings on startup.  Callbacks are now wired
+        // (onSettingChanged assigned above), so applySettings() will synchronize the
+        // processor/APVTS for each restored value.
+        if (settingsFile_)
+            oceanView_.settingsDrawer().applySettings(*settingsFile_);
 
         // onTimeSigChanged: propagate numerator/denominator to both SharedTransport
         // (read by all tempo-synced engines) and ChordMachine (sequencer step grid).
