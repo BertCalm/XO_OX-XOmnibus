@@ -185,10 +185,43 @@ public:
         return routeModAccum_[static_cast<size_t>(routeIdx)];
     }
 
+    // T6: Raw pointer to the accumulator array for engines that need a forward-
+    // declaration-safe consumption path (i.e. header-inline renderBlock methods
+    // that cannot include XOceanusProcessor.h without creating a circular dep).
+    // Audio-thread only — the array is written then read within the same block.
+    // Size = kMaxGlobalRoutes (32); OpalEngine uses cached indices to index it.
+    const float* getModRouteAccumPtr() const noexcept { return routeModAccum_.data(); }
+
     // B1: Read the number of active routes in the snapshot (audio-thread or message-thread).
     int getModRouteCount() const noexcept
     {
         return routesSnapshotCount_.load(std::memory_order_relaxed);
+    }
+
+    // T6: Per-route snapshot accessors for engines that opt into generic global
+    // mod routing.  Engines call these in their attachParameters() / onModRoutesChanged()
+    // pass to find route indices that target their parameters.
+    //
+    // destParamId: the raw char* stored in the snapshot (fixed-length, null-terminated).
+    //   Compare against your OpalParam::GRAIN_SIZE etc. with std::strcmp.
+    // velocityScaled: true → routeModAccum_[ri] holds raw depth; engine multiplies by
+    //   voice.velocity (or avgVelocity) at consumption.
+    // destParamRangeSpan: pre-cached (end - start) for the destination parameter.
+    //   Multiply getModRouteAccum(ri) by this to convert normalised offset to param units.
+    const char* getModRouteDestParamId(int ri) const noexcept
+    {
+        if (ri < 0 || ri >= kMaxGlobalRoutes) return "";
+        return routesSnapshot_[static_cast<size_t>(ri)].destParamId;
+    }
+    bool isModRouteVelocityScaled(int ri) const noexcept
+    {
+        if (ri < 0 || ri >= kMaxGlobalRoutes) return false;
+        return routesSnapshot_[static_cast<size_t>(ri)].velocityScaled;
+    }
+    float getModRouteRangeSpan(int ri) const noexcept
+    {
+        if (ri < 0 || ri >= kMaxGlobalRoutes) return 0.0f;
+        return routesSnapshot_[static_cast<size_t>(ri)].destParamRangeSpan;
     }
 
     // Preset management (UI thread only)
