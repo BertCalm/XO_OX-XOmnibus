@@ -1419,6 +1419,15 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     // a user selects a chain for a slot.
     epicSlots.prepare(sampleRate, samplesPerBlock);
     epicSlots.cacheParameterPointers(apvts);
+    // Wire the DNA bus into every Pack 1 chain (Otrium / Oblate / Oligo).
+    // Pointer is stable for the lifetime of the processor; chains read it
+    // lock-free on the audio thread.
+    epicSlots.setDNABus(&dnaBus_);
+    // Allocate per-slot mono buffers once; the partner audio bus is published
+    // after each engine renderBlock() in processBlock() and consumed by Pack 1
+    // FX chains (Otrium triangular ducking) later in the same block.
+    partnerAudioBus_.prepare(samplesPerBlock);
+    epicSlots.setPartnerAudioBus(&partnerAudioBus_);
 
     // #1257: Reset MPE channel expression state to match the new sample rate / block size.
     // MPEManager::prepare() calls resetAllChannels() — clears stale per-channel pitch bend
@@ -2170,6 +2179,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         }
     }
 
+    // Reset partner audio bus for this block — slots that don't render
+    // (silence-gated or empty) will return nullptr to FX chain consumers.
+    partnerAudioBus_.clearForBlock();
+
     // Render each active engine into its own buffer using slot-specific MIDI
     for (int i = 0; i < MaxSlots; ++i)
     {
@@ -2219,6 +2232,14 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         // Waveform FIFO push — capture raw engine output (pre-coupling, pre-master FX)
         // for the UI oscilloscope.  No allocation; O(n) copy is fine at 512 samples.
         waveformFifos[i].push(engineBuffers[i].getReadPointer(0), static_cast<size_t>(numSamples));
+
+        // Publish mono mix to the partner audio bus for Pack 1 FX chains
+        // (Otrium triangular ducking). Done here so consumers see this slot's
+        // most recent renderBlock() output for the current block.
+        partnerAudioBus_.publish(i,
+                                 engineBuffers[i].getReadPointer(0),
+                                 engineBuffers[i].getReadPointer(1),
+                                 numSamples);
     }
 
     // ── Wave 5 A1: Evaluate global mod routes ────────────────────────────────

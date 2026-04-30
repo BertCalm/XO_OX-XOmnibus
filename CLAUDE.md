@@ -170,6 +170,8 @@ were renamed to O-prefix convention. **Parameter prefixes are frozen and never c
 | Onda | `oner_` | `oner_boundState` |
 | Ollotron | `ollo_` | `ollo_bank` |
 | Otrium (FX Chain) | `otrm_` | `otrm_pumpDepth` |
+| Oblate (FX Chain) | `obla_` | `obla_threshold` |
+| Oligo (FX Chain) | `olig_` | `olig_lowDepth` |
 
 Legacy engine names (`Snap`, `Morph`, `Dub`, `Drift`, `Bob`, `Fat`, `Bite`)
 are resolved automatically by `resolveEngineAlias()` in `PresetManager.h`.

@@ -37,6 +37,8 @@
 #include "../DSP/Effects/OrreryChain.h"
 // FX Pack 1 — Sidechain Creative
 #include "../DSP/Effects/OtriumChain.h"
+#include "../DSP/Effects/OblateChain.h"
+#include "../DSP/Effects/OligoChain.h"
 
 namespace xoceanus
 {
@@ -61,8 +63,8 @@ class EpicChainSlotController
 {
 public:
     static constexpr int kNumSlots   = 3;
-    static constexpr int kNumChains  = 31;
-    static constexpr int kMaxChainID = 31;  // == static_cast<int>(Otrium)
+    static constexpr int kNumChains  = 33;
+    static constexpr int kMaxChainID = 33;  // == static_cast<int>(Oligo)
 
     enum ChainID : int
     {
@@ -103,7 +105,9 @@ public:
         Outbreak   = 29,
         Orrery     = 30,
         // FX Pack 1 — Sidechain Creative (scaffold; Pack 1 ships full DSP)
-        Otrium     = 31
+        Otrium     = 31,
+        Oblate     = 32,
+        Oligo      = 33
     };
 
     EpicChainSlotController() = default;
@@ -131,6 +135,19 @@ public:
     //--------------------------------------------------------------------------
     /// Reset all chain states (called from MasterFXChain::reset()).
     void reset();
+
+    //--------------------------------------------------------------------------
+    /// Inject the DNAModulationBus pointer into every Pack 1 chain instance
+    /// (Otrium, Oblate, Oligo across all 3 slots). Call once on the message
+    /// thread after construction, before audio starts. The pointer is read
+    /// lock-free on the audio thread by the chains' DSP.
+    void setDNABus(const DNAModulationBus* bus) noexcept;
+
+    //--------------------------------------------------------------------------
+    /// Inject the PartnerAudioBus pointer into Pack 1 chains that consume
+    /// per-engine-slot mono audio (Otrium triangular ducking). Call once on
+    /// the message thread after construction, before audio starts.
+    void setPartnerAudioBus(const PartnerAudioBus* bus) noexcept;
 
 private:
     double sr_         = 0.0;  // Sentinel: must be set by prepare() before use
@@ -189,6 +206,8 @@ private:
         OrreryChain     orrery;
         // FX Pack 1 — Sidechain Creative
         OtriumChain     otrium;
+        OblateChain     oblate;
+        OligoChain      oligo;
 
         // Mono scratch buffer for Mono-In chains (19 Wave 2 + Onrush, Obliterate, Obscurity)
         std::vector<float> monoScratch;
@@ -273,6 +292,8 @@ inline void EpicChainSlotController::prepare(double sampleRate, int maxBlockSize
         slot.outbreak.prepare(sampleRate, maxBlockSize);
         slot.orrery.prepare(sampleRate, maxBlockSize);
         slot.otrium.prepare(sampleRate, maxBlockSize); // FX Pack 1 scaffold
+        slot.oblate.prepare(sampleRate, maxBlockSize); // FX Pack 1 scaffold
+        slot.oligo.prepare(sampleRate, maxBlockSize);  // FX Pack 1 scaffold
         // Mono scratch buffer for mono-in epic chains
         slot.monoScratch.assign(maxBlockSize, 0.0f);
     }
@@ -316,7 +337,27 @@ inline void EpicChainSlotController::reset()
         slot.outbreak.reset();
         slot.orrery.reset();
         slot.otrium.reset(); // FX Pack 1 scaffold
+        slot.oblate.reset(); // FX Pack 1 scaffold
+        slot.oligo.reset();  // FX Pack 1 scaffold
     }
+}
+
+inline void EpicChainSlotController::setDNABus(const DNAModulationBus* bus) noexcept
+{
+    for (auto& slot : slots_)
+    {
+        slot.otrium.setDNABus(bus);
+        slot.oblate.setDNABus(bus);
+        slot.oligo.setDNABus(bus);
+    }
+}
+
+inline void EpicChainSlotController::setPartnerAudioBus(const PartnerAudioBus* bus) noexcept
+{
+    // Only Otrium consumes partner audio in Pack 1; Oblate/Oligo will
+    // receive their own bus pointers when their real DSP lands.
+    for (auto& slot : slots_)
+        slot.otrium.setPartnerAudioBus(bus);
 }
 
 inline void EpicChainSlotController::processBlock(juce::AudioBuffer<float>& buffer,
@@ -345,7 +386,7 @@ inline void EpicChainSlotController::processBlock(juce::AudioBuffer<float>& buff
         // Detect chain change
         ChainID requestedChain = static_cast<ChainID>(static_cast<int>(chainVal + 0.5f));
         requestedChain = static_cast<ChainID>(
-            juce::jlimit(static_cast<int>(Off), static_cast<int>(Orrery),
+            juce::jlimit(static_cast<int>(Off), kMaxChainID,
                          static_cast<int>(requestedChain)));
 
         if (requestedChain != slot.pendingChain && slot.crossfadeProgress >= 1.0f)
@@ -670,6 +711,18 @@ inline void EpicChainSlotController::dispatchChain(FXSlot& slot, ChainID chain,
             break;
         }
 
+        case Oblate:
+        {
+            slot.oblate.processBlock(L, R, numSamples, bpm, ppqPosition);
+            break;
+        }
+
+        case Oligo:
+        {
+            slot.oligo.processBlock(L, R, numSamples, bpm, ppqPosition);
+            break;
+        }
+
         default: break;
     }
 }
@@ -747,6 +800,8 @@ inline void EpicChainSlotController::addParameters(
     OutbreakChain::addParameters(layout);
     OrreryChain::addParameters(layout);
     OtriumChain::addParameters(layout); // FX Pack 1 scaffold
+    OblateChain::addParameters(layout); // FX Pack 1 scaffold
+    OligoChain::addParameters(layout);  // FX Pack 1 scaffold
 }
 
 inline void EpicChainSlotController::cacheParameterPointers(
@@ -794,6 +849,8 @@ inline void EpicChainSlotController::cacheParameterPointers(
         slots_[n].outbreak.cacheParameterPointers(apvts);
         slots_[n].orrery.cacheParameterPointers(apvts);
         slots_[n].otrium.cacheParameterPointers(apvts); // FX Pack 1 scaffold
+        slots_[n].oblate.cacheParameterPointers(apvts); // FX Pack 1 scaffold
+        slots_[n].oligo.cacheParameterPointers(apvts);  // FX Pack 1 scaffold
     }
 }
 

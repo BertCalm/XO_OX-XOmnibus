@@ -3,11 +3,13 @@
 #pragma once
 
 #include "../../Core/DNAModulationBus.h"
+#include "../../Core/PartnerAudioBus.h"
 #include "../ParameterSmoother.h"
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_audio_basics/juce_audio_basics.h>
 #include <array>
 #include <atomic>
+#include <cmath>
 
 namespace xoceanus
 {
@@ -24,11 +26,18 @@ namespace xoceanus
 // Routing: Stereo In → Stereo Out (no expansion stage)
 // Accent: TBD — Pack 1 color table review
 //
-// Phase 0 status: SCAFFOLD ONLY.
-//   - Class structure, parameters, DNA bus consumption hook are complete.
-//   - DSP is a placeholder pass-through with pumpDepth-modulated gain.
-//   - Real triangular ducking via TriangularCoupling routes lands in Pack 1
-//     implementation (per §9 build sequence).
+// DSP: 3 partner engines duck each other in a phase-staggered loop.
+//   1. Triangular Input Router — partnerX_idx params select 3 engine slots;
+//      partner mono audio is read from PartnerAudioBus per block.
+//   2. Phase-Stagger Envelope Followers — one-pole attack/release per partner,
+//      modulated by sine LFO at pumpRate with phaseSkew° offset between followers.
+//   3. Cross-Triangle Mixer — A-env ducks the B-path, B-env ducks the C-path,
+//      C-env ducks the A-path (the "phase-staggered loop" wildcard).
+//   4. VCA Bank — per-path gain = 1 - depth × cross-routed envelope.
+//   5. Output Mixer — averages the 3 paths, blends to dry via otrm_mix.
+//
+// couplingDepth blends autonomous LFO ducking ↔ partner-driven envelope ducking.
+// dnaTilt scales depth by partner aggression DNA (read via DNAModulationBus).
 //
 // See: Docs/specs/2026-04-27-fx-pack-1-sidechain-creative.md §2
 //==============================================================================
@@ -48,33 +57,102 @@ public:
     {
         pumpDepthSmoothed_.setCurrentAndTargetValue(0.5f);
         mixSmoothed_.setCurrentAndTargetValue(1.0f);
+        envA_ = envB_ = envC_ = 0.0f;
+        lfoPhase_ = 0.0f;
     }
 
     // Inject DNA bus pointer (set once on message thread before audio starts).
-    // Not yet read by the placeholder DSP; Pack 1 implementation wires this
-    // into the dnaTilt parameter (see Pack 1 spec §2 wildcard).
+    // Read lock-free per block to apply dnaTilt scaling to ducking depth.
     void setDNABus(const DNAModulationBus* bus) noexcept { dnaBus_ = bus; }
 
-    // Stereo in, stereo out. Pack 1 will overload to accept partner-engine
-    // envelope state via TriangularCoupling routes; for now, applies a static
-    // pumpDepth-modulated gain to demonstrate parameter wiring.
+    // Inject partner audio bus pointer (set once on message thread before
+    // audio starts). Read lock-free per block to pull partner mono mix for
+    // each of the 3 envelope followers.
+    void setPartnerAudioBus(const PartnerAudioBus* bus) noexcept { partnerBus_ = bus; }
+
+    // Real DSP — 3-partner phase-staggered cross-ducking.
     void processBlock(float* L, float* R, int numSamples,
                       double /*bpm*/ = 0.0, double /*ppqPosition*/ = -1.0)
     {
         if (! pPumpDepth_ || ! pMix_) return;
 
+        // ---- Block-rate parameter loads ----
         pumpDepthSmoothed_.setTargetValue(pPumpDepth_->load(std::memory_order_relaxed));
         mixSmoothed_.setTargetValue(pMix_->load(std::memory_order_relaxed));
 
+        const float pumpRate     = pPumpRate_      ? pPumpRate_->load(std::memory_order_relaxed)      : 1.0f;
+        const float atkMs        = pAttack_        ? pAttack_->load(std::memory_order_relaxed)        : 5.0f;
+        const float relMs        = pRelease_       ? pRelease_->load(std::memory_order_relaxed)       : 200.0f;
+        const float phaseSkewDeg = pPhaseSkew_     ? pPhaseSkew_->load(std::memory_order_relaxed)     : 120.0f;
+        const float couplingAmt  = pCouplingDepth_ ? pCouplingDepth_->load(std::memory_order_relaxed) : 0.5f;
+        const float dnaTilt      = pDnaTilt_       ? pDnaTilt_->load(std::memory_order_relaxed)       : 0.0f;
+        const int   idxA         = pPartnerA_      ? clampSlot(pPartnerA_->load(std::memory_order_relaxed)) : 0;
+        const int   idxB         = pPartnerB_      ? clampSlot(pPartnerB_->load(std::memory_order_relaxed)) : 1;
+        const int   idxC         = pPartnerC_      ? clampSlot(pPartnerC_->load(std::memory_order_relaxed)) : 2;
+
+        // ---- Resolve partner audio (nullptr when slot silent / no bus) ----
+        const float* pA = partnerBus_ ? partnerBus_->getMono(idxA) : nullptr;
+        const float* pB = partnerBus_ ? partnerBus_->getMono(idxB) : nullptr;
+        const float* pC = partnerBus_ ? partnerBus_->getMono(idxC) : nullptr;
+
+        // ---- Envelope-follower coefficients (one-pole, exact ms → coef) ----
+        const float atkCoef = (sr_ > 0.0 && atkMs > 0.0f)
+                                  ? std::exp(-1.0f / (atkMs * 0.001f * static_cast<float>(sr_)))
+                                  : 0.0f;
+        const float relCoef = (sr_ > 0.0 && relMs > 0.0f)
+                                  ? std::exp(-1.0f / (relMs * 0.001f * static_cast<float>(sr_)))
+                                  : 0.0f;
+
+        // ---- LFO step (radians per sample, with D005 0.001 Hz floor) ----
+        const float twoPi   = juce::MathConstants<float>::twoPi;
+        const float lfoInc  = (sr_ > 0.0)
+                                  ? twoPi * pumpRate / static_cast<float>(sr_)
+                                  : 0.0f;
+        const float skewRad = juce::degreesToRadians(phaseSkewDeg);
+
+        // ---- DNA tilt: scale depth by partner aggression on slot 0 ----
+        // Partner DNA (per spec) modulates duck spectrum; scaffold uses depth.
+        // Real implementation may route this into a tilt EQ on the duck path.
+        float aggression = 0.5f;
+        if (dnaBus_)
+            aggression = dnaBus_->get(0, DNAModulationBus::Axis::Aggression);
+        const float dnaScale = 1.0f + dnaTilt * (aggression - 0.5f) * 2.0f;
+
         for (int i = 0; i < numSamples; ++i)
         {
-            const float depth = pumpDepthSmoothed_.getNextValue();
+            const float depth = pumpDepthSmoothed_.getNextValue() * dnaScale;
             const float mix   = mixSmoothed_.getNextValue();
-            const float gain  = 1.0f - depth * 0.5f; // placeholder ducking
-            const float dryL  = L[i];
-            const float dryR  = R[i];
-            L[i] = dryL * (1.0f - mix) + dryL * gain * mix;
-            R[i] = dryR * (1.0f - mix) + dryR * gain * mix;
+
+            // Envelope followers (silent when partner slot null)
+            const float aIn = pA ? std::abs(pA[i]) : 0.0f;
+            const float bIn = pB ? std::abs(pB[i]) : 0.0f;
+            const float cIn = pC ? std::abs(pC[i]) : 0.0f;
+            envA_ = (aIn > envA_) ? atkCoef * envA_ + (1.0f - atkCoef) * aIn : relCoef * envA_;
+            envB_ = (bIn > envB_) ? atkCoef * envB_ + (1.0f - atkCoef) * bIn : relCoef * envB_;
+            envC_ = (cIn > envC_) ? atkCoef * envC_ + (1.0f - atkCoef) * cIn : relCoef * envC_;
+
+            // 3 LFO outputs at 0°, +skew, +2*skew (unipolar 0..1)
+            const float lfoA = 0.5f + 0.5f * std::sin(lfoPhase_);
+            const float lfoB = 0.5f + 0.5f * std::sin(lfoPhase_ + skewRad);
+            const float lfoC = 0.5f + 0.5f * std::sin(lfoPhase_ + 2.0f * skewRad);
+            lfoPhase_ += lfoInc;
+            if (lfoPhase_ > twoPi) lfoPhase_ -= twoPi;
+
+            // Cross-rotate: A-path ducked by env C, B by env A, C by env B.
+            // couplingAmt blends autonomous LFO (0) ↔ partner envelope (1).
+            const float duckA = depth * (couplingAmt * envC_ * lfoC + (1.0f - couplingAmt) * lfoC);
+            const float duckB = depth * (couplingAmt * envA_ * lfoA + (1.0f - couplingAmt) * lfoA);
+            const float duckC = depth * (couplingAmt * envB_ * lfoB + (1.0f - couplingAmt) * lfoB);
+
+            const float gainA = std::max(0.0f, 1.0f - duckA);
+            const float gainB = std::max(0.0f, 1.0f - duckB);
+            const float gainC = std::max(0.0f, 1.0f - duckC);
+            const float avgGain = (gainA + gainB + gainC) * (1.0f / 3.0f);
+
+            const float dryL = L[i];
+            const float dryR = R[i];
+            L[i] = dryL * (1.0f - mix) + dryL * avgGain * mix;
+            R[i] = dryR * (1.0f - mix) + dryR * avgGain * mix;
         }
     }
 
@@ -128,25 +206,54 @@ public:
                                 const juce::String& slotPrefix = "")
     {
         const juce::String p = slotPrefix + "otrm_";
-        pPumpDepth_ = apvts.getRawParameterValue(p + "pumpDepth");
-        pMix_       = apvts.getRawParameterValue(p + "mix");
-        // Remaining param pointers cached during Pack 1 implementation when
-        // their consuming DSP stages are added.
+        pPumpDepth_     = apvts.getRawParameterValue(p + "pumpDepth");
+        pPumpRate_      = apvts.getRawParameterValue(p + "pumpRate");
+        pAttack_        = apvts.getRawParameterValue(p + "attack");
+        pRelease_       = apvts.getRawParameterValue(p + "release");
+        pPhaseSkew_     = apvts.getRawParameterValue(p + "phaseSkew");
+        pPartnerA_      = apvts.getRawParameterValue(p + "partnerA_idx");
+        pPartnerB_      = apvts.getRawParameterValue(p + "partnerB_idx");
+        pPartnerC_      = apvts.getRawParameterValue(p + "partnerC_idx");
+        pCouplingDepth_ = apvts.getRawParameterValue(p + "couplingDepth");
+        pDnaTilt_       = apvts.getRawParameterValue(p + "dnaTilt");
+        pMix_           = apvts.getRawParameterValue(p + "mix");
+        // otrm_topology + otrm_syncMode reserved for follow-up DSP work
+        // (Cyclical/Chaotic topology variants + tempo-sync rate division).
     }
 
 private:
+    static int clampSlot(float v) noexcept
+    {
+        const int n = static_cast<int>(v + 0.5f);
+        return n < 0 ? 0 : (n > 3 ? 3 : n);
+    }
+
     double sr_ = 0.0;
 
     juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> pumpDepthSmoothed_;
     juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> mixSmoothed_;
 
-    std::atomic<float>* pPumpDepth_ = nullptr;
-    std::atomic<float>* pMix_       = nullptr;
+    // Envelope-follower state per partner (one-pole, mono).
+    float envA_ = 0.0f, envB_ = 0.0f, envC_ = 0.0f;
+    // Master LFO phase shared across A/B/C; per-partner phase = phase + k*skew.
+    float lfoPhase_ = 0.0f;
 
-    // Set once via setDNABus() on message thread before audio starts;
-    // read on audio thread without synchronisation (single-writer, single-reader,
-    // before-after pattern). Pack 1 implementation will read DNA per block.
-    const DNAModulationBus* dnaBus_ = nullptr;
+    std::atomic<float>* pPumpDepth_     = nullptr;
+    std::atomic<float>* pPumpRate_      = nullptr;
+    std::atomic<float>* pAttack_        = nullptr;
+    std::atomic<float>* pRelease_       = nullptr;
+    std::atomic<float>* pPhaseSkew_     = nullptr;
+    std::atomic<float>* pPartnerA_      = nullptr;
+    std::atomic<float>* pPartnerB_      = nullptr;
+    std::atomic<float>* pPartnerC_      = nullptr;
+    std::atomic<float>* pCouplingDepth_ = nullptr;
+    std::atomic<float>* pDnaTilt_       = nullptr;
+    std::atomic<float>* pMix_           = nullptr;
+
+    // Set once on message thread before audio starts; read lock-free on the
+    // audio thread (single-writer / single-reader before-after pattern).
+    const DNAModulationBus*  dnaBus_     = nullptr;
+    const PartnerAudioBus*   partnerBus_ = nullptr;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OtriumChain)
 };
