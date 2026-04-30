@@ -160,6 +160,11 @@ public:
     {
         setOpaque(false);
 
+        // Fix #1424: expose mod matrix to screen readers.
+        A11y::setup(*this,
+                    "Modulation Matrix",
+                    "Eight modulation slots: each assigns a source to a destination with depth control");
+
         for (int i = 0; i < kMaxSlots; ++i)
             buildSlotRow(i);
 

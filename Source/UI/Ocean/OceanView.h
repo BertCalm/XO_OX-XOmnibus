@@ -1481,6 +1481,10 @@ public:
     juce::TextButton& favToggleButton()    noexcept { return favButton_; }
     juce::TextButton& settingsTogButton()  noexcept { return settingsButton_; }
 
+    // Fix #1419: expose SettingsDrawer so the editor can call applySettings() on
+    // startup (restore persisted values) and saveSettings() in the onSettingChanged callback.
+    SettingsDrawer& settingsDrawer() noexcept { return settingsDrawer_; }
+
     //==========================================================================
     // Navigation callbacks — fired to XOceanusEditor
     //==========================================================================
@@ -2393,6 +2397,13 @@ private:
         // Close the current heavy panel before opening the new one.
         coordinatorCloseCurrentPanel();
 
+        // Fix #1428: ChainMatrix and XOuijaRouting are unimplemented stubs.
+        // Do NOT record them as the active panel — that would leave currentPanel_
+        // in a state where Escape closes a panel the user cannot see.
+        // Return early before committing currentPanel_.
+        if (requested == PanelType::ChainMatrix || requested == PanelType::XOuijaRouting)
+            return; // stub panels: no-op, no state update
+
         currentPanel_ = requested;
 
         switch (requested)
@@ -2423,14 +2434,11 @@ private:
                 break;
 
             case PanelType::ChainMatrix:
-                // Wave 5 C4 stub — no-op open.  C4 author: fill this branch with
-                // chain matrix show logic and call coordinator_.requestOpen(
-                // PanelType::ChainMatrix) from the chain matrix open action.
+                // Unreachable — guarded by early return above.
                 break;
 
             case PanelType::XOuijaRouting:
-                // Future XOuija routing overlay stub — no-op open.
-                // MAY coexist with SurfaceRightPanel but NOT with Detail or ChainMatrix.
+                // Unreachable — guarded by early return above.
                 break;
 
             case PanelType::None:
