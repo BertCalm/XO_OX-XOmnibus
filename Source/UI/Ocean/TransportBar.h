@@ -66,6 +66,11 @@ public:
         setOpaque(false);
         setInterceptsMouseClicks(true, true);
 
+        // Fix #1424: expose transport controls to screen readers.
+        A11y::setup(*this,
+                    "Transport Bar",
+                    "Play, stop, tempo, time signature, and MIDI activity display");
+
         // 10 Hz timer — drives MIDI flash decay.
         startTimerHz(10);
     }

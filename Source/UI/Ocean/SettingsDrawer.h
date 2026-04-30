@@ -75,12 +75,22 @@ public:
     bool isOpen()  const noexcept { return animState_ != AnimState::Closed; }
     void toggle()        { isOpen() ? close() : open(); }
 
+    // Fix #1419: restore control values from a PropertiesFile, then broadcast
+    // all settings so the processor is aligned on startup.
+    void applySettings(juce::PropertiesFile& props);
+
+    // Fix #1419: write current control values to a PropertiesFile for persistence.
+    // Call whenever onSettingChanged fires to keep the file up-to-date.
+    void saveSettings(juce::PropertiesFile& props) const;
+
     // juce::Component overrides
     void paint  (juce::Graphics& g) override;
     void resized() override;
     void mouseMove(const juce::MouseEvent& e) override;
     void mouseDown(const juce::MouseEvent& e) override;
     void mouseExit(const juce::MouseEvent& e) override;
+    // Fix #1422: Escape key closes the drawer from within it.
+    bool keyPressed(const juce::KeyPress& key) override;
 
     // juce::Timer override
     void timerCallback() override;
@@ -110,7 +120,9 @@ private:
     static juce::Colour colControlBg()    noexcept { return juce::Colour(0xFF243040); }
     static juce::Colour colLabel()        noexcept { return juce::Colour(0xFF8899AA); }
     static juce::Colour colValue()        noexcept { return juce::Colour(0xFFE0E8F0); }
-    static juce::Colour colBorder()       noexcept { return juce::Colour(0xFF243040); }
+    // Fix #1421: colBorder was identical to colControlBg — zero visual row separation.
+    // Raised +12% lightness so separator lines are visually distinct from control fills.
+    static juce::Colour colBorder()       noexcept { return juce::Colour(0xFF2E3E52); }
     static juce::Colour colCloseBtn()     noexcept { return juce::Colour(0xFF667788); }
 
     //==========================================================================
@@ -354,6 +366,10 @@ inline SettingsDrawer::SettingsDrawer()
 {
     buildControls();
 
+    // Fix #1422: register with screen reader and accept keyboard focus so Tab
+    // can navigate the controls inside and Escape can close the drawer.
+    A11y::setup(*this, "Settings", "Plugin settings panel — polyphony, voice mode, MIDI, UI scale");
+
     // Viewport — vertical scroll only; no horizontal scroll bar
     viewport_.setViewedComponent(&contentComp_, false);
     viewport_.setScrollBarsShown(true, false);
@@ -532,6 +548,77 @@ inline void SettingsDrawer::fireToggle(const juce::String& key, juce::ToggleButt
 {
     if (onSettingChanged)
         onSettingChanged(key, btn.getToggleState() ? 1.0f : 0.0f);
+}
+
+// Fix #1419: restore saved settings into controls, then fire each callback so
+// the processor/APVTS matches the restored UI state on plugin reload.
+inline void SettingsDrawer::applySettings(juce::PropertiesFile& props)
+{
+    // Helper: restore a ComboBox index, then fire its onChange to sync processor.
+    auto restoreCombo = [&](const juce::String& key, juce::ComboBox& combo, int defaultIdx)
+    {
+        const int idx = props.getIntValue("drawer_" + key, defaultIdx);
+        combo.setSelectedItemIndex(juce::jlimit(0, combo.getNumItems() - 1, idx),
+                                   juce::dontSendNotification);
+        if (onSettingChanged)
+            onSettingChanged(key, static_cast<float>(combo.getSelectedItemIndex()));
+    };
+
+    auto restoreSlider = [&](const juce::String& key, juce::Slider& slider, double defaultVal)
+    {
+        const double val = props.getDoubleValue("drawer_" + key, defaultVal);
+        slider.setValue(juce::jlimit(slider.getMinimum(), slider.getMaximum(), val),
+                        juce::dontSendNotification);
+        if (onSettingChanged)
+            onSettingChanged(key, static_cast<float>(slider.getValue()));
+    };
+
+    auto restoreToggle = [&](const juce::String& key, juce::ToggleButton& btn, bool defaultVal)
+    {
+        const bool on = props.getBoolValue("drawer_" + key, defaultVal);
+        btn.setToggleState(on, juce::dontSendNotification);
+        if (onSettingChanged)
+            onSettingChanged(key, on ? 1.0f : 0.0f);
+    };
+
+    restoreCombo  ("polyphony",        polyphonyCombo_,        2);
+    restoreCombo  ("voiceMode",        voiceModeCombo_,        0);
+    restoreCombo  ("unisonVoices",     unisonVoicesCombo_,     0);
+    restoreSlider ("unisonDetune",     unisonDetuneSlider_,    0.0);
+    restoreSlider ("masterTune",       masterTuneSlider_,      0.0);
+    restoreCombo  ("pitchBendRange",   pitchBendCombo_,        3);
+    restoreSlider ("glideTime",        glideTimeSlider_,       0.0);
+    restoreCombo  ("midiChannel",      midiChannelCombo_,      0);
+    restoreToggle ("mpeMode",          mpeModeToggle_,         false);
+    restoreCombo  ("velocityCurve",    velocityCurveCombo_,    1);
+    restoreCombo  ("maxEngines",       maxEnginesCombo_,       3);
+    restoreSlider ("crossfadeTime",    crossfadeTimeSlider_,  50.0);
+    restoreCombo  ("oversampling",     oversamplingCombo_,     0);
+    restoreCombo  ("uiScale",          uiScaleCombo_,          1);
+    restoreSlider ("waveSensitivity",  waveSensitivitySlider_, 50.0);
+    restoreToggle ("showLabels",       showLabelsToggle_,      true);
+}
+
+// Fix #1419: persist current control values so they survive plugin reload.
+inline void SettingsDrawer::saveSettings(juce::PropertiesFile& props) const
+{
+    props.setValue("drawer_polyphony",       polyphonyCombo_.getSelectedItemIndex());
+    props.setValue("drawer_voiceMode",       voiceModeCombo_.getSelectedItemIndex());
+    props.setValue("drawer_unisonVoices",    unisonVoicesCombo_.getSelectedItemIndex());
+    props.setValue("drawer_unisonDetune",    unisonDetuneSlider_.getValue());
+    props.setValue("drawer_masterTune",      masterTuneSlider_.getValue());
+    props.setValue("drawer_pitchBendRange",  pitchBendCombo_.getSelectedItemIndex());
+    props.setValue("drawer_glideTime",       glideTimeSlider_.getValue());
+    props.setValue("drawer_midiChannel",     midiChannelCombo_.getSelectedItemIndex());
+    props.setValue("drawer_mpeMode",         mpeModeToggle_.getToggleState());
+    props.setValue("drawer_velocityCurve",   velocityCurveCombo_.getSelectedItemIndex());
+    props.setValue("drawer_maxEngines",      maxEnginesCombo_.getSelectedItemIndex());
+    props.setValue("drawer_crossfadeTime",   crossfadeTimeSlider_.getValue());
+    props.setValue("drawer_oversampling",    oversamplingCombo_.getSelectedItemIndex());
+    props.setValue("drawer_uiScale",         uiScaleCombo_.getSelectedItemIndex());
+    props.setValue("drawer_waveSensitivity", waveSensitivitySlider_.getValue());
+    props.setValue("drawer_showLabels",      showLabelsToggle_.getToggleState());
+    props.saveIfNeeded();
 }
 
 //------------------------------------------------------------------------------
@@ -806,6 +893,17 @@ inline void SettingsDrawer::mouseExit(const juce::MouseEvent& /*e*/)
         closeBtnHovered_ = false;
         repaint(closeBtnBounds_);
     }
+}
+
+// Fix #1422: allow Escape to close the drawer when it has keyboard focus.
+inline bool SettingsDrawer::keyPressed(const juce::KeyPress& key)
+{
+    if (key == juce::KeyPress::escapeKey && isOpen())
+    {
+        close();
+        return true; // consumed
+    }
+    return false;
 }
 
 //------------------------------------------------------------------------------
