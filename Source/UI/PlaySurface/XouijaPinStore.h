@@ -235,14 +235,17 @@ public:
     // Callback for C5 integration (optional — set before using pin as ModSource).
     //
     // Fires whenever the pinned value changes (pin / unpin / position update).
-    // The C5 SlotModSourceRegistry should hook this to refresh its live value:
+    // Wire this in PlaySurface::setProcessor() (or equivalent host site) as:
     //
-    //   pinStore_.onPinChanged = [&registry](float bx, float by) {
-    //       registry.updateSourceValue(ModSourceId::XouijaCell, bx, by);
-    //   };
-    // TODO(#wiring-sweep): wire(#orphan-sweep item 9) — C5 SlotModSourceRegistry not yet
-    // implemented.  Replace this comment block with the real lambda once the registry
-    // class exists.  See also XOuijaPanel.h::getPinStore() for the matching note.
+    //   xouijaPanel_.getPinStore().onPinChanged =
+    //       [this](float bx, float by) {
+    //           processor_->getModSourceRegistry()
+    //               .updateSourceValue(ModSourceId::XouijaCell, bx, by);
+    //       };
+    //
+    // SlotModSourceRegistry is implemented in Source/Core/SlotModSourceRegistry.h.
+    // The registry forwards bx/by to std::atomic<float> pairs read by processBlock
+    // as ModSourceId::XouijaCell (ID 18, frozen for preset serialisation).
     //
     // bx / by are bipolar [-1, +1].
     //
