@@ -316,6 +316,13 @@ public:
     }
 
     //==========================================================================
+    /** F3-011: Open/close API for session-state persistence.
+        isOpen() returns true when the panel is currently visible.
+        setIsOpenFromState() restores visibility from a saved session — call
+        after the component has been laid out (OceanView's post-init phase). */
+    bool isOpen() const noexcept { return isVisible(); }
+    void setIsOpenFromState(bool open) { setVisible(open); }
+
     /** Called by the strip to propagate the current sequencer step position
         (for the step-LED playhead highlight). Safe to call from any thread. */
     void setCurrentStep(int step) noexcept

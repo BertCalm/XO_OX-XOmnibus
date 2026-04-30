@@ -570,6 +570,18 @@ public:
     void setPersistedOceanViewSlot(int slot)  noexcept  { persistedOceanViewSlot_  = slot;  }
     int  getPersistedOceanViewSlot()  const noexcept    { return persistedOceanViewSlot_;  }
 
+    // F3-006: REACT dial level persistence (0.0–1.0; default 0.80).
+    // Written by OceanView HUD dial callback; read back in initHudCallbacks().
+    void  setPersistedReactLevel(float v) noexcept  { persistedReactLevel_ = juce::jlimit(0.0f, 1.0f, v); }
+    float getPersistedReactLevel() const noexcept   { return persistedReactLevel_; }
+
+    // F3-011/F3-017: Sequencer and Chord breakout panel open-state persistence.
+    // Written by OceanView when panels open/close; read back after session restore.
+    void setPersistedSeqBreakoutOpen(bool v)   noexcept { persistedSeqBreakoutOpen_   = v; }
+    bool getPersistedSeqBreakoutOpen()  const noexcept  { return persistedSeqBreakoutOpen_;   }
+    void setPersistedChordBreakoutOpen(bool v) noexcept { persistedChordBreakoutOpen_ = v; }
+    bool getPersistedChordBreakoutOpen() const noexcept { return persistedChordBreakoutOpen_; }
+
     // #1179 — TideWaterline deferred state pickup.
     // OceanView calls this in initWaterline() to apply state that arrived via
     // setStateInformation() before the editor window was first opened.
@@ -1066,6 +1078,9 @@ private:
     int  persistedRegisterCurrent = 0;   // D4: current register index (0=Gallery, 1=Performance, 2=Coupling)
     int  persistedOceanViewState_ = 0;   // F2-006: OceanView ViewState (0=Orbital,1=ZoomIn,2=Split,3=Browser)
     int  persistedOceanViewSlot_  = -1;  // F2-006: slot index when ViewState is ZoomIn/Split
+    float persistedReactLevel_    = 0.80f; // F3-006: REACT dial visual reactivity level
+    bool  persistedSeqBreakoutOpen_   = false; // F3-011: sequencer breakout panel open state
+    bool  persistedChordBreakoutOpen_ = false; // F3-017: chord breakout panel open state
 
     // ── #1178: TideWaterline deferred step-sequence state ────────────────────
     // Holds the "TideWaterlineSteps" tree from setStateInformation() when the

@@ -78,6 +78,7 @@
 #include "../Gallery/EngineDetailPanel.h"
 #include "../Gallery/SidebarPanel.h"
 #include "../Gallery/StatusBar.h"
+#include "../Gallery/AdvancedFXPanel.h" // F3-002: MasterFX ADV button popup
 #include "OceanChildren.h"
 #include "OceanLayout.h"
 #include "OceanStateMachine.h"
@@ -636,6 +637,9 @@ public:
         hudBar_.onReactChanged = [this](float value01)
         {
             background_.setReactivity(value01);
+            // F3-006: Notify editor so it can persist the new value to the processor.
+            if (onReactLevelChanged)
+                onReactLevelChanged(value01);
         };
         background_.setReactivity(kDefaultReactLevel);
 
@@ -863,6 +867,15 @@ public:
                            const ChordMachine& chordMachine)
     {
         children_.initChordBreakout(apvts, chordMachine);
+        // F3-017: Wire chord breakout toggle → outbound callback for persistence.
+        if (auto* panel = children_.chordBreakout())
+        {
+            panel->onBreakoutToggled = [this](bool isOpen)
+            {
+                if (onChordBreakoutToggled)
+                    onChordBreakoutToggled(isOpen);
+            };
+        }
         reorderZStack();
     }
 
@@ -873,6 +886,15 @@ public:
     void initSeqStrip(juce::AudioProcessorValueTreeState& apvts)
     {
         children_.initSeqStrip(apvts);
+        // F3-011: Wire seq breakout toggle → outbound callback for persistence.
+        if (auto* strip = children_.seqStrip())
+        {
+            strip->onBreakoutToggled = [this](bool isOpen)
+            {
+                if (onSeqBreakoutToggled)
+                    onSeqBreakoutToggled(isOpen);
+            };
+        }
         reorderZStack();
     }
 
@@ -880,6 +902,66 @@ public:
     void initMasterFxStrip(juce::AudioProcessorValueTreeState& apvts)
     {
         children_.initMasterFxStrip(apvts);
+
+        // F3-002: Wire ADV buttons to launch AdvancedFXPanel popovers.
+        // Each section maps to a set of "hidden" advanced parameters not exposed
+        // on the main strip knobs.  Parameter sets mirror MasterFXSection.h.
+        if (auto* strip = children_.masterFxStrip())
+        {
+            // Capture apvts by reference — safe because apvts outlives the editor.
+            strip->onAdvClicked = [this, &apvts](int sectionIdx)
+            {
+                using ParamList = std::vector<std::pair<juce::String, juce::String>>;
+                juce::String title;
+                ParamList params;
+
+                switch (sectionIdx)
+                {
+                    case 0: // SAT
+                        title  = "SAT ADVANCED";
+                        params = { {"master_satMode", "MODE"} };
+                        break;
+                    case 1: // DELAY
+                        title  = "DELAY ADVANCED";
+                        params = { {"master_delayTime",      "TIME"},
+                                   {"master_delayPingPong",  "P.PONG"},
+                                   {"master_delayDamping",   "DAMP"},
+                                   {"master_delayDiffusion", "DIFF"},
+                                   {"master_delaySync",      "SYNC"} };
+                        break;
+                    case 2: // REVERB
+                        title  = "REVERB ADVANCED";
+                        params = { {"master_reverbSize", "SIZE"} };
+                        break;
+                    case 3: // MOD
+                        title  = "MOD ADVANCED";
+                        params = { {"master_modRate",     "RATE"},
+                                   {"master_modMix",      "MIX"},
+                                   {"master_modMode",     "MODE"},
+                                   {"master_modFeedback", "FB"} };
+                        break;
+                    case 4: // COMP
+                        title  = "COMP ADVANCED";
+                        params = { {"master_compRatio",   "RATIO"},
+                                   {"master_compAttack",  "ATTACK"},
+                                   {"master_compRelease", "RELEASE"} };
+                        break;
+                    default:
+                        return; // unknown section — no-op
+                }
+
+                // Anchor the CallOutBox to the strip's screen bounds so it appears
+                // adjacent to the ADV button that was clicked.
+                // Re-read the strip pointer at call-time to avoid capturing the local var.
+                juce::Rectangle<int> bounds;
+                if (auto* s = children_.masterFxStrip())
+                    bounds = s->getScreenBounds();
+                juce::CallOutBox::launchAsynchronously(
+                    std::make_unique<AdvancedFXPanel>(apvts, title, params),
+                    bounds, getTopLevelComponent());
+            };
+        }
+
         reorderZStack();
     }
 
@@ -1649,6 +1731,15 @@ public:
         Editor should open a per-slot CallOutBox(PresetBrowserPanel) filtered to that engine. */
     std::function<void(int slotIndex)> onPresetPillClicked;
 
+    /** F3-006: Fired whenever the REACT dial value changes so the editor can
+        persist it to the processor's persisted state.  value01 ∈ [0, 1]. */
+    std::function<void(float value01)> onReactLevelChanged;
+
+    /** F3-011/F3-017: Fired when the Seq or Chord breakout panel opens or closes.
+        The editor wires these to the processor's persisted-state setters. */
+    std::function<void(bool isOpen)> onSeqBreakoutToggled;
+    std::function<void(bool isOpen)> onChordBreakoutToggled;
+
     //==========================================================================
     // State queries
     //==========================================================================
@@ -1656,6 +1747,19 @@ public:
     // Phase 3 (#1184): viewState_ removed — read from OceanStateMachine.
     ViewState getViewState()    const noexcept { return stateMachine_.currentState(); }
     int       getSelectedSlot() const noexcept { return stateMachine_.selectedSlot(); }
+
+    /** F3-011/F3-017: Restore Seq and Chord breakout panel open states from a saved session.
+        Called by the editor in initOceanView() after all panels are laid out.
+        Silently no-ops if either panel has not yet been initialised. */
+    void restoreBreakoutState(bool seqOpen, bool chordOpen)
+    {
+        if (seqOpen)
+            if (auto* s = children_.seqBreakout())
+                s->setIsOpenFromState(true);
+        if (chordOpen)
+            if (auto* p = children_.chordBreakout())
+                p->setIsOpenFromState(true);
+    }
 
     /** F2-006/F2-015: Public entry point for externally triggering a ZoomIn transition.
         Used by the editor to restore persisted navigation state on session reload.

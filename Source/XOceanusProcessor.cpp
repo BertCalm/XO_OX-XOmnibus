@@ -3368,6 +3368,13 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         xml->setAttribute("oceanViewState", persistedOceanViewState_);
         xml->setAttribute("oceanViewSlot",  persistedOceanViewSlot_);
 
+        // F3-006: Persist REACT dial level so it survives DAW session reload.
+        xml->setAttribute("reactLevel", static_cast<double>(persistedReactLevel_));
+
+        // F3-011/F3-017: Persist breakout panel open states.
+        xml->setAttribute("seqBreakoutOpen",   persistedSeqBreakoutOpen_   ? 1 : 0);
+        xml->setAttribute("chordBreakoutOpen", persistedChordBreakoutOpen_ ? 1 : 0);
+
         // D4 — Save register lock + current register (per-instance, per-session).
         xml->setAttribute("registerLocked",  persistedRegisterLocked  ? 1 : 0);
         xml->setAttribute("registerCurrent", persistedRegisterCurrent);
@@ -3603,6 +3610,15 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
         // Default 0 (Orbital) and -1 (no slot) match OceanView's initial state.
         persistedOceanViewState_ = xml->getIntAttribute("oceanViewState", 0);
         persistedOceanViewSlot_  = xml->getIntAttribute("oceanViewSlot",  -1);
+
+        // F3-006: Restore REACT dial level.  Default 0.80 matches kDefaultReactLevel in OceanView.
+        persistedReactLevel_ = juce::jlimit(0.0f, 1.0f,
+            static_cast<float>(xml->getDoubleAttribute("reactLevel", 0.80)));
+
+        // F3-011/F3-017: Restore breakout panel open states.
+        // Defaults to false (closed) for sessions predating this feature.
+        persistedSeqBreakoutOpen_   = xml->getIntAttribute("seqBreakoutOpen",   0) != 0;
+        persistedChordBreakoutOpen_ = xml->getIntAttribute("chordBreakoutOpen", 0) != 0;
 
         // #1378 — Restore per-slot preset names.
         // Only the name field is round-tripped; all other PresetData fields remain

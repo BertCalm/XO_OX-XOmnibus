@@ -46,7 +46,8 @@ namespace xoceanus
     documentation.
 */
 class ChordBarComponent : public juce::Component,
-                          private juce::Timer
+                          private juce::Timer,
+                          private juce::AudioProcessorValueTreeState::Listener  // F3-003: DAW automation
 {
 public:
     //==========================================================================
@@ -119,12 +120,22 @@ public:
         // Sync initial state from APVTS.
         syncFromApvts();
 
+        // F3-003: Register APVTS listener so DAW automation of these parameters
+        // is reflected in the UI without waiting for the 15 Hz poll cycle.
+        apvts_.addParameterListener("cm_palette",    this);
+        apvts_.addParameterListener("cm_voicing",    this);
+        apvts_.addParameterListener("cm_seq_pattern", this);
+
         // 15 Hz timer for chord assignment / sequencer visualization updates.
         startTimerHz(15);
     }
 
     ~ChordBarComponent() override
     {
+        // F3-003: Mirror addParameterListener registrations — must remove before destruction.
+        apvts_.removeParameterListener("cm_palette",    this);
+        apvts_.removeParameterListener("cm_voicing",    this);
+        apvts_.removeParameterListener("cm_seq_pattern", this);
         stopTimer();
     }
 
@@ -1162,6 +1173,34 @@ private:
             "C","C#","D","D#","E","F","F#","G","G#","A","A#","B"
         };
         return juce::String(kNames[((semi % 12) + 12) % 12]);
+    }
+
+    //==========================================================================
+    // F3-003: AudioProcessorValueTreeState::Listener — called on any thread
+    // when cm_palette / cm_voicing / cm_seq_pattern are changed by DAW automation.
+    // newValue is the normalized 0..1 parameter value; convert to actual int range
+    // using the same convertFrom0to1 pattern as syncFromApvts().
+    void parameterChanged(const juce::String& parameterID, float newValue) override
+    {
+        auto toInt = [&](const char* id) -> int {
+            if (auto* p = apvts_.getParameter(id))
+                return static_cast<int>(p->convertFrom0to1(newValue) + 0.5f);
+            return 0;
+        };
+
+        if (parameterID == "cm_palette")
+            currentPalette_ = juce::jlimit(0, 7, toInt("cm_palette"));
+        else if (parameterID == "cm_voicing")
+            currentVoicing_ = juce::jlimit(0, kNumVoicings - 1, toInt("cm_voicing"));
+        else if (parameterID == "cm_seq_pattern")
+            currentRhythm_ = juce::jlimit(0, 7, toInt("cm_seq_pattern"));
+
+        // parameterChanged() can fire on any thread — marshal repaint to message thread.
+        juce::MessageManager::callAsync([safeThis = juce::Component::SafePointer<ChordBarComponent>(this)]()
+        {
+            if (safeThis != nullptr)
+                safeThis->repaint();
+        });
     }
 
     //==========================================================================
