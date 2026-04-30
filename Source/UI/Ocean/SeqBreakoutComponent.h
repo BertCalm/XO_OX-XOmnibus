@@ -1340,16 +1340,18 @@ private:
             static_cast<int>(ledW),
             static_cast<int>(stepRowBounds_.getHeight()));
 
-        // CallOutBox::launchAsynchronously takes the anchor rect in the coordinate
-        // space of the parent component pointer.  Passing 'this' = component-local coords.
-        // TODO Wave5-C4/C5 mount: pass the editor's top-level component so the callout
-        // renders above OceanView overlays.
-        // TODO Wave5-C4/C5 mount: consider mounting via XOceanusEditor.h or OceanView.h
-        // to ensure z-order above all Ocean overlays.
+        // Launch from the top-level editor so the CallOutBox renders above all
+        // OceanView overlays (DrawerOverlay, PlaySurfaceOverlay, DimOverlay).
+        // CallOutBox::launchAsynchronously requires areaToPointTo in the parent's
+        // local coordinate space — convert from SeqBreakout-local via getLocalArea.
+        // F-005 / #1396: fixes step-edit popups occluded by Ocean overlays.
+        auto* topLevel = getTopLevelComponent();
+        const juce::Rectangle<int> areaInTopLevel =
+            topLevel->getLocalArea(this, ledLocalRect);
         juce::CallOutBox::launchAsynchronously(
             std::unique_ptr<juce::Component>(content),
-            ledLocalRect,
-            this);
+            areaInTopLevel,
+            topLevel);
     }
 
     //==========================================================================
