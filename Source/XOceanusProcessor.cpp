@@ -2380,6 +2380,17 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                         srcVal = slotSequencers_[static_cast<size_t>(slot)].getLiveGate();
                     }
                 }
+                else if (snap.sourceId == static_cast<int>(ModSourceId::Velocity))
+                {
+                    // T5: Velocity routes use engine-side multiplication (Strategy 2).
+                    // routeModAccum_[ri] stores depth ONLY — not depth * srcVal.
+                    // Engines multiply by voice.velocity at the consumption site to satisfy
+                    // D001 (per-voice latch, not global scalar).  See velocityScaled tag.
+                    if (snap.depth == 0.0f)
+                        continue;
+                    routeModAccum_[static_cast<size_t>(ri)] = snap.depth;
+                    continue; // skip the generic srcVal * depth path below
+                }
                 else
                     continue; // TODO(#mod-source-completion): add remaining sources
 
@@ -3122,6 +3133,10 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
         // orryCutoffParam_ may be nullptr if Orrery is not loaded; guard accordingly.
         snap.isOrryCutoff = (orryCutoffParam_ != nullptr && snap.destParam == orryCutoffParam_);
 
+        // T5: Mark routes whose source is Velocity so engines can apply per-voice
+        // multiplication (D001).  routeModAccum_[ri] will hold depth, not depth*srcVal.
+        snap.velocityScaled = (r.sourceId == static_cast<int>(ModSourceId::Velocity));
+
         ++count;
     }
     // Zero out trailing slots so stale entries are not evaluated.
@@ -3131,6 +3146,7 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
         routesSnapshot_[static_cast<size_t>(i)].destParam       = nullptr;
         routesSnapshot_[static_cast<size_t>(i)].destParamRangeSpan = 0.0f;
         routesSnapshot_[static_cast<size_t>(i)].isOrryCutoff    = false;
+        routesSnapshot_[static_cast<size_t>(i)].velocityScaled  = false;
     }
 
     routesSnapshotCount_.store(count, std::memory_order_relaxed);

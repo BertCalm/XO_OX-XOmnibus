@@ -1142,6 +1142,13 @@ private:
         // This flag is set in flushModRoutesSnapshot by pointer identity (compare resolved
         // destParam against the cached orryCutoffParam_ pointer).
         bool isOrryCutoff{false};
+
+        // T5: True iff this route's source is ModSourceId::Velocity (id 3).
+        // When set, routeModAccum_[ri] holds the raw depth (not depth*srcVal).
+        // The consuming engine multiplies by voice.velocity at render time to satisfy
+        // D001 (per-voice latch).  This tag makes the contract split typesafe — engines
+        // can assert or branch on velocityScaled rather than re-inspecting sourceId.
+        bool velocityScaled{false};
     };
     static constexpr int kMaxGlobalRoutes = ModRoutingModel::MaxRoutes;
     std::array<GlobalModRouteSnapshot, kMaxGlobalRoutes> routesSnapshot_{};
