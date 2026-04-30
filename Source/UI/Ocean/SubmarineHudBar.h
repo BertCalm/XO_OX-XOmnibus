@@ -63,7 +63,8 @@ namespace xoceanus
     Floating frosted-glass navigation bar pinned to the top of the Ocean View.
     See file header for full documentation.
 */
-class SubmarineHudBar : public juce::Component
+class SubmarineHudBar : public juce::Component,
+                        public juce::SettableTooltipClient
 {
 public:
     //==========================================================================
@@ -148,6 +149,51 @@ public:
             reactLevel_ = clamped;
             repaint();
         }
+    }
+
+    //==========================================================================
+    // SettableTooltipClient override — hit-test position against control regions
+    // and return a context-appropriate tooltip string.
+
+    juce::String getTooltip() override
+    {
+        // regions_ is populated by buildLayout() which is called on every paint()
+        // and resized(). If the component has been sized but not yet painted, call
+        // buildLayout() ourselves so tooltip queries before first paint still work.
+        if (regions_.empty() && getWidth() > 0)
+            buildLayout();
+
+        // Use the mouse position in local coordinates to find the hovered region.
+        const auto mousePos = getMouseXYRelative();
+        const float mx = static_cast<float>(mousePos.x);
+        const float my = static_cast<float>(mousePos.y);
+
+        for (const auto& reg : regions_)
+        {
+            if (reg.bounds.expanded(2.0f).contains(mx, my))
+            {
+                switch (reg.id)
+                {
+                    case kRegEngines:    return "Browse and add engines (E)";
+                    case kRegUndo:       return "Undo last change (\xe2\x8c\x98Z)";
+                    case kRegRedo:       return "Redo (\xe2\x8c\x98\xe2\x87\xa7Z)";
+                    case kRegPresetPrev: return "Previous preset";
+                    case kRegPresetName: return "Open preset browser";
+                    case kRegPresetNext: return "Next preset";
+                    case kRegFav:        return isFav_ ? "Remove from favourites"
+                                                       : "Add to favourites";
+                    case kRegSave:       return "Save preset (\xe2\x8c\x98S)";
+                    case kRegABCompare:  return "Compare preset A vs B";
+                    case kRegChain:      return "Open coupling / FX chain editor";
+                    case kRegExport:     return "Export preset to file (.xometa)";
+                    case kRegDial:       return "Reactivity \xe2\x80\x94 how strongly the visualizer responds to audio";
+                    case kRegSettings:   return "Settings";
+                    default:             break;
+                }
+            }
+        }
+
+        return {};
     }
 
 private:
@@ -296,21 +342,26 @@ private:
             rx -= btnW + gap;
         }
 
-        // Favourite ♥ icon button (24×28)
+        // Favourite ♥ icon button (24×28 visual; 44×44 hit target for WCAG compliance)
         {
             const float btnW = 24.0f;
             juce::Rectangle<float> r(rx - btnW, btnY, btnW, static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegFav });
             favBounds_ = r;
+            // Expand hit rect to ≥44×44; centre on visual glyph.
+            const float hitExpandH = std::max(0.0f, (44.0f - r.getWidth())  / 2.0f);
+            const float hitExpandV = std::max(0.0f, (44.0f - r.getHeight()) / 2.0f);
+            regions_.push_back({ r.expanded(hitExpandH, hitExpandV), kRegFav });
             rx -= btnW + gap;
         }
 
-        // ▶ next preset
+        // ▶ next preset (20×28 visual; 44×44 hit target)
         {
             const float btnW = 20.0f;
             juce::Rectangle<float> r(rx - btnW, btnY, btnW, static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegPresetNext });
             presetNextBounds_ = r;
+            const float hitExpandH = std::max(0.0f, (44.0f - r.getWidth())  / 2.0f);
+            const float hitExpandV = std::max(0.0f, (44.0f - r.getHeight()) / 2.0f);
+            regions_.push_back({ r.expanded(hitExpandH, hitExpandV), kRegPresetNext });
             rx -= btnW + 2.0f;
         }
 
@@ -322,12 +373,14 @@ private:
             regions_.push_back({ presetNameBounds_, kRegPresetName });
         }
 
-        // ◀ prev preset (immediately right of left cursor x)
+        // ◀ prev preset (20×28 visual; 44×44 hit target)
         {
             const float btnW = 20.0f;
             juce::Rectangle<float> r(x, btnY, btnW, static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegPresetPrev });
             presetPrevBounds_ = r;
+            const float hitExpandH = std::max(0.0f, (44.0f - r.getWidth())  / 2.0f);
+            const float hitExpandV = std::max(0.0f, (44.0f - r.getHeight()) / 2.0f);
+            regions_.push_back({ r.expanded(hitExpandH, hitExpandV), kRegPresetPrev });
         }
     }
 

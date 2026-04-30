@@ -72,7 +72,7 @@ public:
         { 1,  "— SUITES —" },
         { 4,  "— SINGULARITY —" },
         { 7,  "— EPIC —" },
-        { 11, "— WAVE 2: MONSTEROUS —" },
+        { 11, "— WAVE 2: MONSTROUS —" },
         { 15, "— WAVE 2: SUNKEN TREASURE —" },
         { 19, "— WAVE 2: ANOMALOUS —" },
         { 23, "— WAVE 2: AHA —" },
