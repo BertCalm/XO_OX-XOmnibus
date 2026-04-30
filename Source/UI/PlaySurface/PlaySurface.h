@@ -1537,6 +1537,16 @@ public:
     // processor's lock-free CC queue.  The processor pointer is NOT owned here.
     void setProcessor(XOceanusProcessor* p)
     {
+        // F2-001 (CRIT): Before updating processor_, null out XOuija bridge callbacks
+        // on the OLD processor so it never calls back into a soon-to-be-invalid lambda.
+        // This handles the case where setProcessor(nullptr) is called from the editor
+        // destructor and the DAW calls getStateInformation() after editor close.
+        if (processor_)
+        {
+            processor_->onGetXOuijaState = nullptr;
+            processor_->onSetXOuijaState = nullptr;
+        }
+
         processor_ = p;
         // Re-wire the onCCOutput callback now that we have the processor.
         wireOnCCOutput();
