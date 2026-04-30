@@ -1202,6 +1202,20 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("master_onMix", 1), "Master Oneiric Mix", juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
 
+    // ── #1359: Settings-drawer global session params ─────────────────────────
+    // masterTune:     concert pitch in Hz (415.0..466.0, default 440.0).
+    //                 Engines that implement master-tune multiply their oscillator
+    //                 frequencies by (masterTune / 440.0).
+    // pitchBendRange: non-MPE pitch-bend range in semitones (1..24, default 2).
+    //                 Engines read this to convert normalised wheel value to cents.
+    // Both IDs are frozen — do not rename or add version suffixes.
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("masterTune", 1), "Master Tune (Hz)",
+        juce::NormalisableRange<float>(415.0f, 466.0f), 440.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(
+        juce::ParameterID("pitchBendRange", 1), "Pitch Bend Range (semitones)",
+        juce::NormalisableRange<float>(1.0f, 24.0f, 1.0f), 2.0f));
+
     // MPE (MIDI Polyphonic Expression) — DAW-automatable per-project settings.
     // Zone layout, pitch-bend range, and expression routing targets are
     // exposed as APVTS parameters so hosts can save/recall them with the project.
