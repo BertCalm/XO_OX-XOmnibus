@@ -14,7 +14,7 @@
 #include <atomic>
 #include <unordered_map>           // per-instance dark mode registry (fix #329)
 #include "BinaryData.h"            // FontData:: namespace (embedded fonts via juce_add_binary_data)
-#include "../Core/PresetManager.h" // frozenPrefixForEngine()
+#include "../Core/PresetManager.h" // frozenPrefixForEngine() via EnginePrefix.h
 
 #if JUCE_MAC
 #include <CoreFoundation/CoreFoundation.h> // CFPreferencesGetAppBooleanValue for A11y::prefersReducedMotion()

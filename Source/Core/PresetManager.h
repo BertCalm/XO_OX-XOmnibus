@@ -10,6 +10,7 @@
 #include <set>
 #include <vector>
 #include "EngineRegistry.h"
+#include "EnginePrefix.h"
 // Issue #899: embedded Init preset compiled into binary data by XOceanusInitPreset target.
 // HEADER_NAME "InitPresetData.h" avoids collision with XOceanusFont's BinaryData.h.
 #include "InitPresetData.h"
@@ -155,142 +156,9 @@ inline juce::String resolveEngineAlias(const juce::String& name)
     return (it != aliases.end()) ? it->second : name;
 }
 
-// Frozen parameter prefix for each canonical engine ID.
-// These NEVER change — parameter IDs are stable across releases.
-// All prefixes include the trailing underscore (e.g. "snap_", "oven_").
-// Callers can concatenate directly: prefix + paramName → "snap_filterCutoff".
-inline juce::String frozenPrefixForEngine(const juce::String& engineId)
-{
-    static const std::map<juce::String, juce::String> prefixes{
-        {"OddfeliX", "snap_"},
-        {"OddOscar", "morph_"},
-        {"Overdub", "dub_"},
-        {"Odyssey", "drift_"},
-        {"Oblong", "bob_"},
-        {"Obese", "fat_"},
-        {"Overbite", "poss_"},
-        {"Onset", "perc_"},
-        {"Overworld", "ow_"},
-        {"Opal", "opal_"},
-        {"Orbital", "orb_"},
-        {"Organon", "organon_"},
-        {"Ouroboros", "ouro_"},
-        {"Obsidian", "obsidian_"},
-        {"Origami", "origami_"},
-        {"Oracle", "oracle_"},
-        {"Obscura", "obscura_"},
-        {"Oceanic", "ocean_"},
-        {"Optic", "optic_"},
-        {"Oblique", "oblq_"},
-        {"Ocelot", "ocelot_"},
-        {"Osprey", "osprey_"},
-        {"Osteria", "osteria_"},
-        {"Owlfish", "owl_"},
-        {"Ohm", "ohm_"},
-        {"Orphica", "orph_"},
-        {"Obbligato", "obbl_"},
-        {"Ottoni", "otto_"},
-        {"Ole", "ole_"},
-        {"Ombre", "ombre_"},
-        {"Orca", "orca_"},
-        {"Octopus", "octo_"},
-        {"Overlap", "olap_"},
-        {"Outwit", "owit_"},
-        // V1 Concept Engines
-        {"OpenSky", "sky_"},
-        {"Ostinato", "osti_"},
-        {"OceanDeep", "deep_"},
-        {"Ouie", "ouie_"},
-        // Flagship
-        {"Obrix", "obrix_"},
-        // V2 Theorem Engines
-        {"Orbweave", "weave_"},
-        {"Overtone", "over_"},
-        {"Organism", "org_"},
-        // Singularity Engines
-        {"Oxbow", "oxb_"},
-        {"Oware", "owr_"},
-        // Kuramoto Vocal Synthesis
-        {"Opera", "opera_"},
-        // Psychology-Driven Boom Bap Drums
-        {"Offering", "ofr_"},
-        // Chef Quad Collection
-        {"Oto", "oto_"},
-        {"Octave", "oct_"},
-        {"Oleg", "oleg_"},
-        {"Otis", "otis_"},
-        // KITCHEN Quad Collection
-        {"Oven", "oven_"},
-        {"Ochre", "ochre_"},
-        {"Obelisk", "obel_"},
-        {"Opaline", "opal2_"},
-        // CELLAR Quad Collection
-        {"Ogive", "ogv_"},
-        {"Olvido", "olv_"},
-        {"Ostracon", "ostr_"},
-        {"Ogre", "ogre_"},
-        {"Olate", "olate_"},
-        {"Oaken", "oaken_"},
-        {"Omega", "omega_"},
-        // GARDEN Quad Collection
-        {"Orchard", "orch_"},
-        {"Overgrow", "grow_"},
-        {"Osier", "osier_"},
-        {"Oxalis", "oxal_"},
-        // BROTH Quad Collection
-        {"Overwash", "wash_"},
-        {"Overworn", "worn_"},
-        {"Overflow", "flow_"},
-        {"Overcast", "cast_"},
-        // FUSION Quad Collection
-        {"Okeanos", "okan_"},
-        {"Oddfellow", "oddf_"},
-        {"Onkolo", "onko_"},
-        {"Opcode", "opco_"},
-        // Membrane Collection
-        {"Osmosis", "osmo_"},
-        // Love Triangle Circuit Synth
-        {"Oxytocin", "oxy_"},
-        // Panoramic Visionary Synth
-        {"Outlook", "look_"},
-        // Dual Engine Integration
-        {"Oasis", "oas_"},
-        {"Outflow", "out_"},
-        // Cellular Automata Oscillator
-        {"Obiont", "obnt_"},
-        // Age-based corrosion synthesis
-        {"Oxidize", "oxidize_"},
-        // Crystalline Phase Distortion
-        {"Observandum", "observ_"},
-        // Fleet Navigation Vector Synthesis
-        {"Orrery", "orry_"},
-        // Bioluminescent Neural Feedback
-        {"Opsin", "ops_"},
-        // Stochastic Cloud Synthesis
-        {"Oort", "oort_"},
-        // Formant Vocal Tract Synthesis
-        {"Ondine", "ond_"},
-        // VOSIM Hierarchical Pulse Synthesis
-        {"Ortolan", "ort_"},
-        // Tensor Spectral Synthesis
-        {"Octant", "octn_"},
-        // Wavelet Multi-Resolution Synthesis
-        {"Overtide", "ovt_"},
-        // Reaction-Diffusion Wavetable Synthesis
-        {"Oobleck", "oobl_"},
-        // Fluid Dynamics Synthesis
-        {"Ooze", "ooze_"},
-        // Tape-chamber keyboard synthesis
-        {"Ollotron", "ollo_"},
-        // NLS Soliton Synthesis (engine #90; renamed from Oneiric 2026-04-22)
-        // Prefix stays oner_ — frozen for preset compatibility.
-        {"Onda", "oner_"},
-        // Wave-Terrain Synthesis
-        {"Outcrop", "outc_"},
-    };
-    auto it = prefixes.find(engineId);
-    return (it != prefixes.end()) ? it->second : juce::String();
-}
+// frozenPrefixForEngine() is defined in EnginePrefix.h (included above).
+// Kept here as a comment for discoverability: the full table lives in EnginePrefix.h.
+// Usage: frozenPrefixForEngine("Oasis") → "oas_"
 
 // Resolve legacy per-parameter aliases for OddfeliX (Snap) engine.
 // These were renamed or removed when the engine became purely percussive

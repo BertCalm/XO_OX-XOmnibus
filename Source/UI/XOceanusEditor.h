@@ -823,7 +823,7 @@ public:
         // waveSensitivity is handled locally inside OceanView (background reactivity).
         oceanView_.onSettingChanged = [](const juce::String& key, float value)
         {
-            // TODO(#wiring-sweep): wire remaining settings keys to processor/APVTS once
+            // TODO(#settings-wiring): wire remaining settings keys to processor/APVTS once
             // the following receiver APIs are implemented:
             //   "polyphony"      → processor.setPolyphony(int)
             //   "voiceMode"      → processor.setVoiceMode(int)
@@ -1162,8 +1162,36 @@ public:
                 return static_cast<int>(p->getValue() * 14.f + 0.5f);
             };
 
-            // Canonical index → APVTS param ID lookup.
+            // Canonical index → APVTS param ID lookup (#1357).
             // Matches the table in XYSurface.h and XOceanusProcessor.cpp (#1331).
+            //
+            // Per-engine params (cases 1–7) are resolved by probing the APVTS with
+            // the active engine's frozen prefix (from getEngineParamPrefix()) and a
+            // list of known suffix variants. The first candidate that resolves wins.
+            // This handles fleet-wide naming variation (e.g. "filterCutoff" vs
+            // "fltCutoff") without requiring per-engine special-casing.
+            //
+            // FX wet/dry (cases 12–14) use EpicChainSlotController's "slot{n}_mix"
+            // APVTS params (registered by EpicChainSlotController::addParameters()).
+            //
+            // Helper: probe APVTS for a list of candidate param IDs; return the
+            // first that resolves (i.e. apvts.getParameter() returns non-null).
+            auto probeParam = [&](std::initializer_list<juce::String> candidates) -> juce::String
+            {
+                for (const auto& id : candidates)
+                    if (apvts.getParameter(id) != nullptr)
+                        return id;
+                return {};
+            };
+
+            // Resolve prefix for the active slot's engine.
+            const juce::String pfx = [&]() -> juce::String
+            {
+                if (auto* eng = processor.getEngine(slot))
+                    return eng->getEngineParamPrefix();
+                return {};
+            }();
+
             auto resolveXYParamId = [&](int canonIdx) -> juce::String
             {
                 // Per-engine prefixes use the active slot's engine prefix.
@@ -1171,20 +1199,31 @@ public:
                 switch (canonIdx)
                 {
                     case 0:  return {}; // None
-                    case 1:  return {}; // FilterCutoff: TODO(#wiring-sweep) need engine-prefix lookup
-                    case 2:  return {}; // FilterRes:    TODO(#wiring-sweep)
-                    case 3:  return {}; // LFORate:      TODO(#wiring-sweep)
-                    case 4:  return {}; // LFODepth:     TODO(#wiring-sweep)
-                    case 5:  return {}; // EnvAttack:    TODO(#wiring-sweep)
-                    case 6:  return {}; // EnvRelease:   TODO(#wiring-sweep)
-                    case 7:  return {}; // Drive:        TODO(#wiring-sweep)
+                    // Engine-specific params — probe APVTS with known suffix variants.
+                    case 1:  return probeParam({pfx + "filterCutoff", pfx + "fltCutoff",
+                                                pfx + "cutoff",       pfx + "filterFreq"});
+                    case 2:  return probeParam({pfx + "filterRes", pfx + "filterReso",
+                                                pfx + "fltRes",    pfx + "fltReso",
+                                                pfx + "resonance"});
+                    case 3:  return probeParam({pfx + "lfo1Rate", pfx + "lfoRate",
+                                                pfx + "lfoFreq",  pfx + "lfo1Freq"});
+                    case 4:  return probeParam({pfx + "lfo1Depth", pfx + "lfoDepth",
+                                                pfx + "lfoAmt",    pfx + "lfo1Amt"});
+                    case 5:  return probeParam({pfx + "attack",    pfx + "envAttack",
+                                                pfx + "attackTime",pfx + "ampAttack"});
+                    case 6:  return probeParam({pfx + "release",    pfx + "envRelease",
+                                                pfx + "releaseTime",pfx + "ampRelease"});
+                    case 7:  return probeParam({pfx + "drive",    pfx + "satDrive",
+                                                pfx + "distDrive",pfx + "driveAmt"});
+                    // Canvas-level params
                     case 8:  return "macro1";
                     case 9:  return "macro2";
                     case 10: return "macro3";
                     case 11: return "macro4";
-                    case 12: return {}; // FX1WetDry: TODO(#wiring-sweep) EpicChainSlot param
-                    case 13: return {}; // FX2WetDry: TODO(#wiring-sweep)
-                    case 14: return {}; // FX3WetDry: TODO(#wiring-sweep)
+                    // EpicChainSlot wet/dry — "slot{n}_mix" (1-indexed).
+                    case 12: return "slot1_mix";
+                    case 13: return "slot2_mix";
+                    case 14: return "slot3_mix";
                     default: return {};
                 }
             };
@@ -1211,6 +1250,10 @@ public:
                 px->setValueNotifyingHost(px->convertTo0to1(x));
             if (auto* py = apvts.getParameter("xy_pos_y" + sfx))
                 py->setValueNotifyingHost(py->convertTo0to1(y));
+
+            // #1357 W8B: publish XY position to processor atomics so the mod routing
+            // system can read them as ModSourceId::XYX{n}/XYY{n} sources.
+            processor.setXYPosition(slot, x, y);
         };
 
         // #897: On first launch (no persisted state) show the OceanView PlaySurface
