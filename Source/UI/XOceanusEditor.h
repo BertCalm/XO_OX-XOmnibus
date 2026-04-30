@@ -1564,11 +1564,13 @@ public:
         };
         walkthrough_.getMacroBounds        = [this]() { return macros.getBounds(); };
         walkthrough_.getDnaBrowserBounds   = [this]() {
-            // wire(#orphan-sweep item 2): DnaMapBrowser bounds via new OceanView accessor.
-            // Returns full OceanView size area (browser is full-window overlay).
+            // F-003 / #1395: points at the HudBar preset-name pill (always visible;
+            // opens DnaMapBrowser when clicked). getDnaMapBrowserBounds() now
+            // returns the preset-name label bounds — not browser_.getBounds()
+            // (which is {} unless BrowserOpen state).
             auto b = oceanView_.getDnaMapBrowserBounds();
-            // Translate to editor coords.
-            return b.translated(oceanView_.getX(), oceanView_.getY());
+            return b.isEmpty() ? juce::Rectangle<int>{}
+                               : b.translated(oceanView_.getX(), oceanView_.getY());
         };
         walkthrough_.getCoupleOrbitBounds  = [this]() {
             // wire(#orphan-sweep item 2): orbit slot 1 bounds for the coupling step.
@@ -1585,7 +1587,9 @@ public:
                                : b.translated(oceanView_.getX(), oceanView_.getY());
         };
         walkthrough_.getXouijaBounds       = [this]() {
-            // wire(#orphan-sweep item 2): ouija panel bounds via new OceanView accessor.
+            // F-003 / #1395: points at the HARMONIC tab in DashboardTabBar.
+            // ouijaPanel_.getBounds() is always {} (never gets setBounds);
+            // getOuijaPanelBounds() now returns the HARMONIC tab hit-rect.
             auto b = oceanView_.getOuijaPanelBounds();
             return b.isEmpty() ? juce::Rectangle<int>{}
                                : b.translated(oceanView_.getX(), oceanView_.getY());
