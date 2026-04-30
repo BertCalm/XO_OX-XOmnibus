@@ -1149,6 +1149,15 @@ private:
         // D001 (per-voice latch).  This tag makes the contract split typesafe — engines
         // can assert or branch on velocityScaled rather than re-inspecting sourceId.
         bool velocityScaled{false};
+
+        // T6: Onset engine global-parameter destination flags.
+        // Set in flushModRoutesSnapshot() by pointer identity — avoids strncmp on audio thread.
+        // When set, the route eval loop accumulates modOffset into the corresponding
+        // Onset atomic float (globalPercLevelModOffset_, etc.) for OnsetEngine to read.
+        bool isPercLevel{false};
+        bool isPercPunch{false};
+        bool isPercTone{false};
+        bool isPercGrit{false};
     };
     static constexpr int kMaxGlobalRoutes = ModRoutingModel::MaxRoutes;
     std::array<GlobalModRouteSnapshot, kMaxGlobalRoutes> routesSnapshot_{};
@@ -1159,6 +1168,14 @@ private:
     // Cached pointer to the orry_fltCutoff parameter — resolved once in cacheParameterPointers()
     // and used in flushModRoutesSnapshot() to set isOrryCutoff by pointer identity (no strncmp).
     juce::RangedAudioParameter* orryCutoffParam_{nullptr};
+
+    // T6: Cached pointers to Onset global parameters — resolved once in cacheParameterPointers()
+    // and used in flushModRoutesSnapshot() to set isPercXxx flags by pointer identity.
+    // nullptr when Onset is not registered (safe — corresponding atomic stays 0.0f).
+    juce::RangedAudioParameter* percLevelParam_{nullptr};
+    juce::RangedAudioParameter* percPunchParam_{nullptr};
+    juce::RangedAudioParameter* percToneParam_{nullptr};
+    juce::RangedAudioParameter* percGritParam_{nullptr};
 
     // B1: Per-route modulation accumulator — audio thread writes modOffset here each block.
     // Index matches routesSnapshot_ slot.  Engines can call getModRouteAccum(routeIdx) to
@@ -1184,6 +1201,17 @@ private:
     // mod routes, read by OrreryEngine::renderBlock via getGlobalCutoffModOffset().
     // Units: same as modCutoffOffset (pre-multiplied by 8000 Hz).
     std::atomic<float> globalCutoffModOffset_{0.0f};
+
+    // T6: Onset global-parameter mod offsets — computed each processBlock from routes
+    // that target the corresponding Onset parameters.  OnsetEngine reads these via
+    // pointers set by setPercModOffsetPtrs() at engine-load time.
+    // For velocityScaled routes, the accumulator holds depth (not depth*vel); OnsetEngine
+    // multiplies by lastTriggerVelocity at consumption (Strategy 2, D001 compliance).
+    // Units: normalised [−1, +1] offset applied to the [0, 1] parameter range.
+    std::atomic<float> globalPercLevelModOffset_{0.0f};
+    std::atomic<float> globalPercPunchModOffset_{0.0f};
+    std::atomic<float> globalPercToneModOffset_{0.0f};
+    std::atomic<float> globalPercGritModOffset_{0.0f};
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusProcessor)
 };
