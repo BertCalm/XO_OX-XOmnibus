@@ -68,7 +68,7 @@ public:
     {
         setOpaque(false);
         setInterceptsMouseClicks(true, true);
-        startTimerHz(30);
+        startTimerHz(60);
     }
 
     ~SubmarineOuijaPanel() override

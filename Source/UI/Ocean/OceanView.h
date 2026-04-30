@@ -245,7 +245,7 @@ public:
 
         // 9b. BLOCKER 1: Empty-state label — shown when no engines are loaded.
         // Appears centred below the nexus with a subtle call-to-action.
-        emptyStateLabel_.setText("Dive in — double-click a ghost slot to load an engine",
+        emptyStateLabel_.setText("Dive in — click a ghost slot to load an engine",
                                  juce::dontSendNotification);
         emptyStateLabel_.setFont(GalleryFonts::label(13.0f));
         emptyStateLabel_.setColour(juce::Label::textColourId,
@@ -258,7 +258,7 @@ public:
         // waterline_ lives in children_ — added via children_.initWaterline().
         addAndMakeVisible(tabBar_);
 
-        // 9e. Submarine XOuija panel (hidden; HARMONIC tab removed per D4 #1174).
+        // 9e. Submarine XOuija panel (hidden; HARMONIC tab — re-enabled in #1304 after XOuija CC wiring complete).
         ouijaPanel_.setVisible(false);
         addAndMakeVisible(ouijaPanel_);
 
@@ -291,11 +291,17 @@ public:
         // 11. Floating header controls
         // Old Gallery floating header buttons — hidden, replaced by SubmarineHudBar.
         enginesButton_.setVisible(false);
+        enginesButton_.setInterceptsMouseClicks(false, false);
         presetPrev_.setVisible(false);
+        presetPrev_.setInterceptsMouseClicks(false, false);
         presetNext_.setVisible(false);
+        presetNext_.setInterceptsMouseClicks(false, false);
         favButton_.setVisible(false);
+        favButton_.setInterceptsMouseClicks(false, false);
         settingsButton_.setVisible(false);
+        settingsButton_.setInterceptsMouseClicks(false, false);
         keysButton_.setVisible(false);
+        keysButton_.setInterceptsMouseClicks(false, false);
 
         // 11b. #1008 FIX 7: DimOverlay sits above all buttons but below
         // PlaySurfaceOverlay.  Added after the buttons so it is painted on top.
@@ -475,11 +481,11 @@ public:
         // Wave 6.5 (#1306) collision note:
         //   PAD/DRUM/XY tabs open SurfaceRightPanel.  All collision rules are already
         //   enforced by Wave 3 PanelCoordinator:
-        //     (a) coordinatorApplyWidthGuard() — closes drawers when width < 700 px.
+        //     (a) coordinatorApplyWidthGuard() — closes drawers when width < kMinWidth px.
         //     (b) coordinatorRequestOpen(PanelType::Detail) — hides SurfaceRightPanel
         //         while DetailOverlay is open; restored on coordinatorRelease().
         //   SurfaceRightPanel is a soft panel and intentionally coexists with
-        //   drawers above 700 px.  No additional coordinator call is required here.
+        //   drawers above kMinWidth px.  No additional coordinator call is required here.
         tabBar_.onTabChanged = [this](const juce::String& tab)
         {
             if (tab == "KEYS")
@@ -1751,7 +1757,8 @@ private:
         // HARMONIC (XOuija Ouija mode) re-enabled after CC wiring landed in #1304.
         // PAD+DRUM merge deferred (#1174 follow-up).
         static constexpr int kNumTabs = 5;
-        static constexpr const char* kTabNames[kNumTabs] = {"KEYS", "PAD", "DRUM", "XY", "HARMONIC"};
+        static constexpr std::array<const char*, kNumTabs> kTabNames = {"KEYS", "PAD", "DRUM", "XY", "HARMONIC"};
+        static_assert(kTabNames.size() == kNumTabs, "kTabNames size mismatch");
 
         int  activeIdx_ = 0;
         bool seqOn_     = false;
@@ -2042,12 +2049,6 @@ private:
 
         menu.addItem(1, juce::String::fromUTF8("\xe2\x9e\x95  Add Engine..."));               // ➕
         menu.addItem(2, juce::String::fromUTF8("\xf0\x9f\x94\x97  Toggle Chain Mode"));      // 🔗
-
-        juce::PopupMenu::Item pasteItem;
-        pasteItem.itemID    = 3;
-        pasteItem.text      = juce::String::fromUTF8("\xf0\x9f\x93\x8b  Paste Engine");      // 📋
-        pasteItem.isEnabled = false;  // TODO: enable once a JSON engine-clipboard is implemented
-        menu.addItem(pasteItem);
 
         SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
             juce::PopupMenu::Options{},
@@ -2368,7 +2369,7 @@ private:
     //   Opening Detail        → hides SurfaceRightPanel (D7, restored on close).
     //   Opening ChainMatrix   → (Wave 5 C4) stub — currently a no-op.
     //   Opening XOuijaRouting → (future) stub — currently a no-op.
-    //   Minimum width guard   → if width < 700 and drawer + SurfaceRightPanel
+    //   Minimum width guard   → if width < kMinWidth and drawer + SurfaceRightPanel
     //                           are both open, close the drawer.
     //
     // Usage from C4 chain matrix:
@@ -2489,13 +2490,14 @@ private:
         }
     }
 
-    /** Minimum-width guard: if window < 700 px wide and both a drawer and
+    /** Minimum-width guard: if window < kMinWidth px wide and both a drawer and
      *  SurfaceRightPanel are open, close the drawer to prevent visual collision. */
     void coordinatorApplyWidthGuard()
     {
+        static_assert(kMinWidth > 700, "kMinWidth must exceed legacy 700 threshold");
         const bool surfaceRightOpen = surfaceRight_.isOpen() && surfaceRight_.isVisible();
         const bool drawerOpen = engineDrawer_.isOpen() || settingsDrawer_.isOpen();
-        if (getWidth() < 700 && surfaceRightOpen && drawerOpen)
+        if (getWidth() < kMinWidth && surfaceRightOpen && drawerOpen)
         {
             if (engineDrawer_.isOpen())
             {
