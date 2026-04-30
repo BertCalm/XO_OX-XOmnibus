@@ -86,7 +86,7 @@ public:
     {
         setOpaque(false);
 
-        headerLabel_.setText("STARBOARD", juce::dontSendNotification);
+        headerLabel_.setText("FX CHAIN", juce::dontSendNotification);
         headerLabel_.setFont(GalleryFonts::heading(10.0f));
         headerLabel_.setColour(juce::Label::textColourId,
                                GalleryColors::get(GalleryColors::textMid()));
