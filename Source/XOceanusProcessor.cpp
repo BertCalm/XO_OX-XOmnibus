@@ -3031,6 +3031,12 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
                                         &globalPercToneModOffset_,
                                         &globalPercGritModOffset_);
         }
+
+        // T6: Wire OpalEngine into the global mod-route opt-in path.
+        // setProcessorPtr() stores this pointer + runs an initial cacheGlobalModRoutes()
+        // scan so the engine's cached route indices are ready before the first renderBlock().
+        if (auto* opal = dynamic_cast<OpalEngine*>(newEngine.get()))
+            opal->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3225,6 +3231,18 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
     // incremented version counter.  ARM-safe idiom (matching WaveformFifo pattern).
     std::atomic_thread_fence(std::memory_order_release);
     snapshotVersion_.fetch_add(1, std::memory_order_relaxed);
+
+    // T6: Re-cache route indices for all opted-in engines so they see the new
+    // snapshot immediately.  Must be called AFTER the release fence above so the
+    // engine's cacheGlobalModRoutes() reads fully-committed snapshot data.
+    // Message-thread only — atomic_load so we don't race with audio-thread reads.
+    for (int i = 0; i < MaxSlots; ++i)
+    {
+        auto eng = std::atomic_load(&engines[i]);
+        if (!eng) continue;
+        if (auto* opal = dynamic_cast<OpalEngine*>(eng.get()))
+            opal->cacheGlobalModRoutes();
+    }
 }
 
 void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
