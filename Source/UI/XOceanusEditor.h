@@ -65,7 +65,7 @@ namespace xoceanus
 // available here via the xoceanus:: namespace that GalleryColors.h opens.
 
 //==============================================================================
-// XOceanusEditor — Gallery Model plugin window.
+// XOceanusEditor — Ocean View plugin window. Legacy Gallery components retained for keyboard parity.
 //
 // Layout:
 //   ┌──────────────────────────────────────────────────────────────────────────┐
