@@ -312,6 +312,11 @@ public:
     // Chord Machine — read access for UI, state control from message thread
     ChordMachine& getChordMachine() { return chordMachine; }
 
+    // Host transport — read/write access for UI (e.g. TransportBar time-sig wiring).
+    // The processor updates this from the PlayHead once per audio block; engines
+    // that tempo-sync read BPM/beat/isPlaying here during renderBlock().
+    xoceanus::SharedTransport& getHostTransport() { return hostTransport; }
+
     // Master FX chain — read access for UI (sequencer playhead, etc.)
     MasterFXChain& getMasterFXChain() { return masterFX; }
 
