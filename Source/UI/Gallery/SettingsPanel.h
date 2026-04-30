@@ -348,6 +348,21 @@ public:
         hearGreetingAgainBtn.onClick = [this] { processor.replayFirstBreath(); };
         content.addAndMakeVisible(hearGreetingAgainBtn);
 
+        // "Restart Walkthrough" — resets and re-runs the first-hour onboarding tour.
+        // Fires onRestartWalkthrough (wired by the editor to walkthrough_.restartWalkthrough()).
+        restartWalkthroughBtn.setButtonText("Restart Walkthrough");
+        restartWalkthroughBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
+        restartWalkthroughBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
+        restartWalkthroughBtn.setTooltip("Re-run the first-hour onboarding walkthrough from the beginning");
+        A11y::setup(restartWalkthroughBtn, "Restart Walkthrough",
+                    "Reset and re-run the first-hour onboarding walkthrough from step 1");
+        restartWalkthroughBtn.onClick = [this]
+        {
+            if (onRestartWalkthrough)
+                onRestartWalkthrough();
+        };
+        content.addAndMakeVisible(restartWalkthroughBtn);
+
         // ── Accessibility wiring ──────────────────────────────────────────────
         A11y::setup(*this, "Settings", "Plugin settings panel");
     }
@@ -372,6 +387,10 @@ public:
     /// Fired on the message thread whenever the CPU Meters toggle changes.
     /// Passes the new visibility state (true = visible).
     std::function<void(bool)> onCpuMetersVisibilityChanged;
+
+    /// Fired on the message thread when the user clicks "Restart Walkthrough".
+    /// Wire this in the editor to walkthrough_.restartWalkthrough(settingsFile_.get()).
+    std::function<void()> onRestartWalkthrough;
 
     /// Returns the persisted CPU meters visibility (true = visible, default true).
     bool isCpuMetersVisible() const noexcept
@@ -431,6 +450,9 @@ public:
 
         hearGreetingAgainBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
         hearGreetingAgainBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
+
+        restartWalkthroughBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
+        restartWalkthroughBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
 
         // Refresh URL label color (dark/light link color differs)
         styleUrlLabel(aboutWebLabel, "xo-ox.org", "https://xo-ox.org");
@@ -703,6 +725,8 @@ private:
         y += kHeaderH + kGap;
         hearGreetingAgainBtn.setBounds(kPad, y, inner, kRowH + 4); // slightly taller for button
         y += kRowH + 4 + kGap;
+        restartWalkthroughBtn.setBounds(kPad, y, inner, kRowH + 4); // slightly taller for button
+        y += kRowH + 4 + kGap;
 
         y += kPad; // bottom breathing room
 
@@ -808,6 +832,10 @@ private:
     // Calls processor.replayFirstBreath() which reloads Oxbow in slot 0 and
     // injects a soft C3 note.  See spec §8 Option A + §1282.
     juce::TextButton hearGreetingAgainBtn;
+
+    // "Restart Walkthrough" — resets the onboarding walkthrough state and replays
+    // it from step 0. Fires onRestartWalkthrough (wired by editor → walkthrough_).
+    juce::TextButton restartWalkthroughBtn;
 
     //==========================================================================
     // Factory helper — creates a right-aligned param name label.

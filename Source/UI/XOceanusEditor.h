@@ -689,6 +689,11 @@ public:
             sp->onCpuMetersVisibilityChanged = [this](bool visible) { statusBar.setCpuVisible(visible); };
             // Apply persisted CPU meters visibility at startup.
             statusBar.setCpuVisible(sp->isCpuMetersVisible());
+            // Wire Restart Walkthrough button — resets and replays the first-hour onboarding tour.
+            sp->onRestartWalkthrough = [this]
+            {
+                walkthrough_.restartWalkthrough(settingsFile_.get());
+            };
         }
 
         // Restore editor UI state from the last session (#357, #314).
