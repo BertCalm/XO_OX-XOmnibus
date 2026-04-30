@@ -1286,6 +1286,8 @@ public:
         {
             surfaceTab_ = SurfaceTab::Keys;
             noteInput.setMode(NoteInputZone::Mode::Keys);
+            // F-004: badge shown only in Keys mode (latch is always active in Keys)
+            latchBadge_.setVisible(true);
             resized();
             keysMode_.grabKeyboardFocus();
         };
@@ -1294,17 +1296,23 @@ public:
             surfaceTab_ = SurfaceTab::Pads;
             // Sub-mode drives NoteInputZone::Mode (Pad or Drum)
             applyPadsSubMode();
+            // F-004: not in Keys mode — hide the latch badge
+            latchBadge_.setVisible(false);
             resized();
             noteInput.grabKeyboardFocus();
         };
         modeButtons[2].onClick = [this]()
         {
             surfaceTab_ = SurfaceTab::XY;
+            // F-004: not in Keys mode — hide the latch badge
+            latchBadge_.setVisible(false);
             resized();
         };
         modeButtons[3].onClick = [this]()
         {
             surfaceTab_ = SurfaceTab::Ouija;
+            // F-004: not in Keys mode — hide the latch badge
+            latchBadge_.setVisible(false);
             resized();
             xouijaPanel_.grabKeyboardFocus();
         };
@@ -1427,6 +1435,30 @@ public:
             else
                 xouijaPanel_.grabKeyboardFocus();
         };
+
+        // F-004: LATCH indicator badge — shown only in Keys mode.
+        // Keys mode deliberately does NOT fire noteOff on mouse-up (latch behaviour).
+        // This amber badge makes the held-state semantic visible so users understand
+        // why notes sustain after release.  Non-interactive: mouse events pass through.
+        latchBadge_.setButtonText("LATCH");
+        latchBadge_.setInterceptsMouseClicks(false, false); // read-only indicator
+        latchBadge_.setTooltip("Keys mode latches notes — release does not stop them. "
+                               "Click another mode to release all held notes.");
+        // Amber background (PS::kAmber) + dark text for high contrast on the deep bg.
+        latchBadge_.setColour(juce::TextButton::buttonColourId,
+                               juce::Colour(PS::kAmber).withAlpha(0.85f));
+        latchBadge_.setColour(juce::TextButton::buttonOnColourId,
+                               juce::Colour(PS::kAmber));
+        latchBadge_.setColour(juce::TextButton::textColourOffId,
+                               juce::Colour(0xFF1A1208)); // near-black — legible on amber
+        latchBadge_.setColour(juce::TextButton::textColourOnId,
+                               juce::Colour(0xFF1A1208));
+        addAndMakeVisible(latchBadge_);
+        latchBadge_.setVisible(surfaceTab_ == SurfaceTab::Keys); // default = Keys → visible
+        A11y::setup(latchBadge_,
+                    "Latch Active",
+                    "Keys mode is active: notes latch and sustain after you release. "
+                    "Switch to another mode to release all held notes.");
 
         // Strip mode buttons
         for (int i = 0; i < 4; ++i)
@@ -1695,6 +1727,12 @@ public:
         header.removeFromLeft(4);
         tideModeBtn_.setBounds(header.removeFromLeft(36).reduced(2));
 
+        // F-004: LATCH badge — immediately after TIDE, visible only in Keys mode.
+        // Width = 52px (fits "LATCH" at small font), same height as rest of header.
+        header.removeFromLeft(4);
+        latchBadge_.setBounds(header.removeFromLeft(52).reduced(2));
+        latchBadge_.setVisible(surfaceTab_ == SurfaceTab::Keys);
+
         // Strip mode buttons at right of header (only relevant for XY tab / strip)
         for (int i = 3; i >= 0; --i)
             stripModeButtons[i].setBounds(header.removeFromRight(36).reduced(2));
@@ -1877,6 +1915,12 @@ private:
     juce::Label octLabel;
     juce::TextButton scaleModeBtn;  // Cycles: SCL (Off) → FLT (Filter) → HLT (Highlight)
     juce::TextButton tideModeBtn_;  // Toggles TideController in the left panel slot
+
+    // F-004: LATCH indicator badge — amber read-only badge shown only in Keys mode.
+    // Keys mode silently latches notes (handleKeysUp does not fire noteOff).
+    // The badge signals this held-state behaviour so users don't mistake sustained
+    // notes for a bug.  It is non-interactive; the tooltip explains the semantics.
+    juce::TextButton latchBadge_;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(PlaySurface)
 };
