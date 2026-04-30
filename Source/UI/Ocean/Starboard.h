@@ -43,10 +43,6 @@
 #include <cmath>
 #include <array>
 
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
-
 namespace xoceanus
 {
 
@@ -135,9 +131,10 @@ public:
             startAppearFade();
 
         state_ = newState;
-        // Immediate repaint so the readout is never more than one 10 Hz tick
-        // stale. The timer tick also calls repaint() to pick up live XY updates.
-        repaint();
+        // Mark dirty; the 10 Hz timer will call repaint() on the next tick.
+        // This prevents 30 Hz XOuija position callbacks from driving 30 Hz repaints
+        // on a component that is contractually a 10 Hz display.
+        stateDirty_ = true;
     }
 
     const State& getState() const noexcept { return state_; }
@@ -148,8 +145,17 @@ public:
         const auto bounds = getLocalBounds().toFloat();
         const float w = bounds.getWidth();
 
+        // Apply appear-fade alpha to the entire component (background + border + content).
+        // Using a transparency layer means the fade drives all draw calls uniformly —
+        // no per-draw-call alpha multiplication required.
+        const float alpha = currentAlpha_;
+        if (alpha < 0.01f)
+            return; // nothing visible yet — skip paint entirely
+
+        g.beginTransparencyLayer(alpha);
+
         // ── Background ────────────────────────────────────────────────────────
-        // Ocean::abyss @ 92% opacity
+        // Ocean::abyss @ 92% opacity (multiplied by fade alpha via transparency layer)
         g.setColour(juce::Colour(GalleryColors::Ocean::abyss).withAlpha(0.92f));
         g.fillRect(bounds);
 
@@ -158,11 +164,6 @@ public:
         g.setColour(accentColour);
         g.drawLine(bounds.getX(), bounds.getBottom() - 1.0f,
                    bounds.getRight(), bounds.getBottom() - 1.0f, 1.0f);
-
-        // Apply appear-fade alpha
-        const float alpha = currentAlpha_;
-        if (alpha < 0.01f)
-            return; // nothing visible yet
 
         // ── Layout constants ──────────────────────────────────────────────────
         constexpr float kMarginX = 12.0f;
@@ -181,12 +182,12 @@ public:
             const float pillH = 18.0f;
             const juce::Rectangle<float> pillR(kMarginX, y, pillW, pillH);
 
-            g.setColour(accentColour.withAlpha(alpha * 0.22f));
+            g.setColour(accentColour.withAlpha(0.22f));
             g.fillRoundedRectangle(pillR, 4.0f);
-            g.setColour(accentColour.withAlpha(alpha * 0.75f));
+            g.setColour(accentColour.withAlpha(0.75f));
             g.drawRoundedRectangle(pillR, 4.0f, 1.0f);
 
-            g.setColour(juce::Colour(GalleryColors::Ocean::foam).withAlpha(alpha));
+            g.setColour(juce::Colour(GalleryColors::Ocean::foam));
             g.setFont(GalleryFonts::heading(9.0f));
             g.drawText(slotLabel, pillR, juce::Justification::centred, false);
         }
@@ -199,8 +200,8 @@ public:
                 : "— NO ENGINE —";
 
             const juce::Colour nameCol = hasEngine
-                ? accentColour.withAlpha(alpha)
-                : juce::Colour(GalleryColors::Ocean::salt).withAlpha(alpha * 0.7f);
+                ? accentColour
+                : juce::Colour(GalleryColors::Ocean::salt).withAlpha(0.7f);
 
             g.setColour(nameCol);
             g.setFont(GalleryFonts::heading(11.0f));
@@ -216,7 +217,7 @@ public:
         {
             const bool hasPreset = state_.presetName.isNotEmpty();
             g.setFont(GalleryFonts::body(10.0f));
-            g.setColour(juce::Colour(GalleryColors::Ocean::salt).withAlpha(alpha * 0.9f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::salt).withAlpha(0.9f));
 
             if (hasPreset)
             {
@@ -227,7 +228,7 @@ public:
             else
             {
                 // Italic "— no preset —" — draw with slightly dimmed text
-                g.setColour(juce::Colour(GalleryColors::Ocean::plankton).withAlpha(alpha * 0.8f));
+                g.setColour(juce::Colour(GalleryColors::Ocean::plankton).withAlpha(0.8f));
                 // Italic approximation: use body font (Satoshi doesn't have a distinct italic
                 // weight in the embedded set — use the regular at reduced alpha as the spec
                 // calls out italic style, which is the visual hierarchy cue here)
@@ -249,8 +250,8 @@ public:
             const juce::String depthStr = "DEPTH " + juce::String(state_.influenceY, 1);
 
             const juce::Colour xyCol = state_.pinned
-                ? juce::Colour(0xFFE76F51).withAlpha(alpha * 0.9f)   // coral (pinned, frozen)
-                : juce::Colour(GalleryColors::Ocean::salt).withAlpha(alpha * 0.8f);
+                ? juce::Colour(0xFFE76F51).withAlpha(0.9f)   // coral (pinned, frozen)
+                : juce::Colour(GalleryColors::Ocean::salt).withAlpha(0.8f);
 
             g.setColour(xyCol);
             const float halfW = contentW * 0.5f;
@@ -277,7 +278,7 @@ public:
                 ? juce::Colour(0xFFE76F51)  // coral
                 : juce::Colour(0xFF2A9D8F); // deep teal
 
-            g.setColour(dotCol.withAlpha(alpha));
+            g.setColour(dotCol);
             g.fillEllipse(dotCX - kDotRadius, dotCY - kDotRadius,
                           kDotDiameter, kDotDiameter);
 
@@ -286,7 +287,7 @@ public:
             const float labelW = contentW - kDotDiameter - 6.0f;
 
             g.setFont(GalleryFonts::heading(9.0f));
-            g.setColour(juce::Colour(GalleryColors::Ocean::salt).withAlpha(alpha * 0.8f));
+            g.setColour(juce::Colour(GalleryColors::Ocean::salt).withAlpha(0.8f));
 
             juce::String pinLabel = state_.pinned ? "PINNED" : "FREE-WALK";
 
@@ -312,7 +313,7 @@ public:
             {
                 // Empty state — "— no chain —" at 50% opacity
                 g.setFont(GalleryFonts::heading(8.0f));
-                g.setColour(juce::Colour(GalleryColors::Ocean::plankton).withAlpha(alpha * 0.5f));
+                g.setColour(juce::Colour(GalleryColors::Ocean::plankton).withAlpha(0.5f));
                 g.drawText(u8"— no chain —",
                            juce::Rectangle<float>(kMarginX, y, contentW, 14.0f),
                            juce::Justification::centredLeft, false);
@@ -332,9 +333,11 @@ public:
                     if (name.isEmpty())
                         continue;
 
-                    // Measure chip width
+                    // Measure chip width against the uppercased string — the drawn text
+                    // is toUpperCase(), so we must measure the same string to avoid clipping.
+                    const juce::String upperName = name.toUpperCase();
                     const float textW = GalleryFonts::heading(8.0f)
-                        .getStringWidthFloat(name) + 10.0f;
+                        .getStringWidthFloat(upperName) + 10.0f;
                     const float chipW = juce::jmax(textW, 30.0f);
 
                     if (chipX + chipW > kMarginX + contentW)
@@ -342,54 +345,63 @@ public:
 
                     const juce::Rectangle<float> chipR(chipX, y, chipW, chipH);
 
-                    g.setColour(accentColour.withAlpha(alpha * 0.15f));
+                    g.setColour(accentColour.withAlpha(0.15f));
                     g.fillRoundedRectangle(chipR, 3.0f);
-                    g.setColour(accentColour.withAlpha(alpha * 0.4f));
+                    g.setColour(accentColour.withAlpha(0.4f));
                     g.drawRoundedRectangle(chipR, 3.0f, 0.75f);
 
-                    g.setColour(juce::Colour(GalleryColors::Ocean::foam).withAlpha(alpha * 0.85f));
-                    g.drawText(name.toUpperCase(), chipR,
+                    g.setColour(juce::Colour(GalleryColors::Ocean::foam).withAlpha(0.85f));
+                    g.drawText(upperName, chipR,
                                juce::Justification::centred, false);
 
                     chipX += chipW + chipGap;
                 }
             }
         }
+
+        g.endTransparencyLayer();
     }
 
     void resized() override {}
 
     //==========================================================================
-    // Appear fade API — also called externally on slot switch
+    // Appear fade API — also called externally on slot switch.
+    // Drives alpha from 0 → 1 over exactly kFadeDurationMs milliseconds
+    // using elapsed real time rather than tick-step accumulation.
     void startAppearFade()
     {
         if (A11y::prefersReducedMotion())
         {
             currentAlpha_ = 1.0f;
-            fadeTimer_     = 0;
+            fadeActive_   = false;
             return;
         }
         currentAlpha_  = 0.0f;
-        fadeTimer_     = 0;
-        fadeDuration_  = kFadeDurationMs;
+        fadeStartMs_   = juce::Time::getMillisecondCounterHiRes();
+        fadeActive_    = true;
     }
 
 private:
     //==========================================================================
     // Timer callback — drives repaint at 10 Hz and advances appear animation.
+    // Alpha is computed from elapsed real time so the fade always takes exactly
+    // kFadeDurationMs regardless of timer jitter or tick interval.
     void timerCallback() override
     {
-        if (fadeDuration_ > 0 && fadeTimer_ < fadeDuration_)
+        bool needsRepaint = stateDirty_;
+        stateDirty_ = false;
+
+        if (fadeActive_)
         {
-            fadeTimer_ += 100; // 10 Hz → 100 ms per tick
-            currentAlpha_ = juce::jlimit(0.0f, 1.0f,
-                                         static_cast<float>(fadeTimer_) / static_cast<float>(fadeDuration_));
+            const double elapsed = juce::Time::getMillisecondCounterHiRes() - fadeStartMs_;
+            currentAlpha_ = juce::jmin(1.0f, static_cast<float>(elapsed / kFadeDurationMs));
+            needsRepaint = true;
+            if (currentAlpha_ >= 1.0f)
+                fadeActive_ = false; // fade complete — final repaint still fires below
         }
-        else
-        {
-            currentAlpha_ = 1.0f;
-        }
-        repaint();
+
+        if (needsRepaint)
+            repaint();
     }
 
     //==========================================================================
@@ -420,10 +432,13 @@ private:
     State state_;
 
     // Appear fade animation
-    static constexpr int kFadeDurationMs = 150;
-    int   fadeDuration_ = 0;   // 0 = no fade in progress
-    int   fadeTimer_    = 0;   // ms elapsed since fade start
-    float currentAlpha_ = 1.0f; // current display alpha [0, 1]
+    static constexpr double kFadeDurationMs = 150.0; // target duration in real milliseconds
+    bool   fadeActive_   = false;   // true while fade is in progress
+    double fadeStartMs_  = 0.0;    // juce::Time::getMillisecondCounterHiRes() at fade start
+    float  currentAlpha_ = 1.0f;   // current display alpha [0, 1]
+
+    // Repaint throttle — set by setState(), cleared by timerCallback()
+    bool stateDirty_ = false;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(Starboard)
 };

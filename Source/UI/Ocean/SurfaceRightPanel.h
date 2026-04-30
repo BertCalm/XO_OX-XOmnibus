@@ -32,10 +32,6 @@
 #include <cmath>
 #include <array>
 
-#ifndef M_PI
-#define M_PI 3.14159265358979323846
-#endif
-
 namespace xoceanus
 {
 
@@ -67,10 +63,10 @@ public:
         setWantsKeyboardFocus(false);
 
         // Starboard strip — always-120-px engine-state panel, Ouija mode only (#1358).
+        // Visibility is hidden until setMode(Ouija) is called; startAppearFade() is
+        // invoked there so the fade runs at first show, not at construction.
         starboard_.setVisible(false);
         addAndMakeVisible(starboard_);
-        // Trigger the initial appear fade so the first show is animated.
-        starboard_.startAppearFade();
 
         // Embedded ouija panel — shown only in Ouija mode.
         ouijaPanel_.setVisible(false);
