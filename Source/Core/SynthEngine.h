@@ -4,6 +4,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "MPEManager.h"
 #include "../DSP/SRO/SilenceGate.h"
+#include "EnginePrefix.h"
 #include <atomic>
 
 namespace xoceanus
@@ -168,6 +169,23 @@ public:
 
     // Return the engine's unique identifier (e.g., "OddfeliX", "OddOscar", "Overdub").
     virtual juce::String getEngineId() const = 0;
+
+    // Return the frozen APVTS parameter prefix for this engine (e.g. "snap_", "oas_").
+    //
+    // The default implementation derives the prefix from getEngineId() via the
+    // frozenPrefixForEngine() table in EnginePrefix.h.  Engines do NOT need to
+    // override this unless they have special requirements (none do currently).
+    //
+    // RT-safe: frozenPrefixForEngine() uses a static-local map — constructed once,
+    // never reallocated.  Safe to call on both the audio and message threads.
+    //
+    // Usage:
+    //   juce::String prefix = engine->getEngineParamPrefix();
+    //   auto paramId = prefix + "filterCutoff"; // e.g. "oas_filterCutoff"
+    virtual juce::String getEngineParamPrefix() const
+    {
+        return frozenPrefixForEngine(getEngineId());
+    }
 
     // Return the engine's accent colour for UI theming.
     virtual juce::Colour getAccentColour() const = 0;
