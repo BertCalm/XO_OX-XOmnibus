@@ -689,6 +689,13 @@ public:
             sp->onCpuMetersVisibilityChanged = [this](bool visible) { statusBar.setCpuVisible(visible); };
             // Apply persisted CPU meters visibility at startup.
             statusBar.setCpuVisible(sp->isCpuMetersVisible());
+            // Wire Restart Walkthrough — walkthrough_ lives here in the editor so
+            // we dispatch via callback rather than passing a pointer into SettingsPanel.
+            sp->onRestartWalkthrough = [this]
+            {
+                jassert(juce::MessageManager::getInstance()->isThisTheMessageThread());
+                walkthrough_.restartWalkthrough(settingsFile_.get());
+            };
         }
 
         // Restore editor UI state from the last session (#357, #314).
