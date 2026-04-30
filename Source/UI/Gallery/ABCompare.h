@@ -72,6 +72,30 @@ public:
 
     bool isActive() const noexcept { return abActive; }
 
+    /** fix(#1354): Enter or exit A/B compare mode from an external caller
+        (e.g. the HUD bar A/B button in OceanView).
+        - enterMode=true  : captures current state into A and arms A/B mode.
+        - enterMode=false : deactivates A/B mode and clears both slots.
+        No-op if already in the requested state.  Must be called on the message thread. */
+    void setABActive(bool enterMode)
+    {
+        if (enterMode == abActive)
+            return;
+
+        if (enterMode)
+        {
+            // Enter A/B mode — same as clicking A when not yet active.
+            handleButtonAction(/*clickedA=*/true, /*clickedB=*/false);
+        }
+        else
+        {
+            // Exit A/B mode — same as clicking the currently-showing slot to deactivate.
+            handleButtonAction(/*clickedA=*/showingA, /*clickedB=*/!showingA);
+        }
+
+        repaint();
+    }
+
     //==========================================================================
     void paint(juce::Graphics& g) override
     {
