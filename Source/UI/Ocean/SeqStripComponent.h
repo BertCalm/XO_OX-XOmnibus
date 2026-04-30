@@ -105,6 +105,11 @@ public:
         breakout_ = breakout;
     }
 
+    /** F3-011: Optional callback fired whenever the breakout is opened or closed.
+        The bool argument is true when the panel just became visible, false when hidden.
+        Wire from OceanView so the editor can persist the open state. */
+    std::function<void(bool isOpen)> onBreakoutToggled;
+
     /** Call from the audio thread notification path (e.g. timer-based mirror) to
         update the displayed step position for the playhead LED animation. */
     void setCurrentStep(int step) noexcept
@@ -322,6 +327,9 @@ private:
 
         breakoutOpen_ = !breakoutOpen_;
         breakout_->setVisible(breakoutOpen_);
+        // F3-011: Notify persistence layer of the new open state.
+        if (onBreakoutToggled)
+            onBreakoutToggled(breakoutOpen_);
         repaint();
     }
 

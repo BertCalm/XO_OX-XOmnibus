@@ -1126,6 +1126,22 @@ public:
             abCompare.setABActive(active);
         };
 
+        // F3-006: Persist REACT dial level so it survives DAW session reload.
+        oceanView_.onReactLevelChanged = [this](float value01)
+        {
+            processor.setPersistedReactLevel(value01);
+        };
+
+        // F3-011/F3-017: Persist breakout panel open states.
+        oceanView_.onSeqBreakoutToggled = [this](bool isOpen)
+        {
+            processor.setPersistedSeqBreakoutOpen(isOpen);
+        };
+        oceanView_.onChordBreakoutToggled = [this](bool isOpen)
+        {
+            processor.setPersistedChordBreakoutOpen(isOpen);
+        };
+
         // onExportClicked — open the ExportDialog in a CallOutBox anchored to the
         // HUD bar (same as the legacy exportBtn in the Gallery header).
         oceanView_.onExportClicked = [this]()
@@ -1705,6 +1721,16 @@ public:
             oceanView_.setOrbitPresetName(i, sp.name);
         }
 
+        // F3-006: Restore REACT dial level from persisted session state.
+        {
+            const float restoredReact = proc.getPersistedReactLevel();
+            oceanView_.setReactivity(restoredReact);
+        }
+
+        // F3-011/F3-017: Restore breakout panel open states (default false = closed).
+        oceanView_.restoreBreakoutState(proc.getPersistedSeqBreakoutOpen(),
+                                        proc.getPersistedChordBreakoutOpen());
+
         // F2-006: Restore OceanView ViewState from session.  Uses a one-tick deferred
         // call so OceanView layout is fully settled before any state transition.
         {
@@ -2045,11 +2071,14 @@ private:
     /** Called on the message thread whenever a slot's preset changes.
         Updates the EngineOrbit preset pill text so it stays in sync with any
         code path that writes via setSlotPreset() (including setStateInformation
-        restores, undo, and our own pill-menu selection). */
+        restores, undo, and our own pill-menu selection).
+        F3-001: also notifies ABCompare so a "B" snapshot is captured whenever
+        a new preset loads while A/B compare mode is active. */
     void slotPresetChanged(int slotIdx, const PresetData& preset) override
     {
         jassert(juce::MessageManager::getInstance()->isThisTheMessageThread());
         oceanView_.setOrbitPresetName(slotIdx, preset.name);
+        abCompare.onPresetLoaded(); // F3-001: capture new state into B slot
     }
 
     void selectSlot(int slot)

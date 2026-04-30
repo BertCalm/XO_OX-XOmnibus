@@ -126,6 +126,8 @@ public:
         setVisible(true);
         startTimerHz(60); // animation
         repaint();
+        // F3-017: Notify persistence layer that the panel is now open.
+        if (onBreakoutToggled) onBreakoutToggled(true);
     }
 
     /// Close the panel, animating it back down.
@@ -133,9 +135,27 @@ public:
     {
         isOpen_ = false;
         startTimerHz(60); // animation
+        // F3-017: Notify persistence layer that the panel is now closed.
+        if (onBreakoutToggled) onBreakoutToggled(false);
     }
 
+    /** F3-017: Callback fired whenever the panel opens or closes.
+        Wire from OceanView so the editor can persist the state. */
+    std::function<void(bool isOpen)> onBreakoutToggled;
+
     bool isOpen() const noexcept { return isOpen_; }
+
+    /** F3-017: Restore open/close state from a saved session.
+        Call after the component has been laid out so the animation start
+        position is correct.  Uses slot 0 as the default highlight slot
+        (session state only tracks whether the panel was open, not which slot). */
+    void setIsOpenFromState(bool open)
+    {
+        if (open && !isOpen_)
+            openForSlot(0);   // re-open at slot 0 (safe default on restore)
+        else if (!open && isOpen_)
+            close();
+    }
 
     //==========================================================================
     void resized() override

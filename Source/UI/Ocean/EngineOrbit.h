@@ -69,7 +69,8 @@ public:
     EngineOrbit()
     {
         A11y::setup(*this, "Engine Buoy", "Engine slot. Double-click to edit.");
-        setWantsKeyboardFocus(true);
+        // F3-005: setWantsKeyboardFocus(true) removed — EngineOrbit has no keyPressed()
+        // handler, creating a keyboard trap.  OceanView owns keyboard focus for this view.
         // Allow glow, wreath, bob animation, and name label to paint outside
         // the component's bounds without being clipped by JUCE.
         setPaintingIsUnclipped(true);
