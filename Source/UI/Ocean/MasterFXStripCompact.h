@@ -126,7 +126,8 @@ private:
 
     void paint(juce::Graphics& g) override
     {
-        layoutControls(static_cast<float>(getWidth()));
+        // F3-014: layoutControls() removed from paint(); geometry is now cached
+        // by resized() and only recomputed when the component's size actually changes.
         paintStrip(g);
     }
 

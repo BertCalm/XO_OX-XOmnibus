@@ -222,8 +222,9 @@ public:
         const int textTop = arrowPointsUp_ ? kArrowH : 0;
         const int btnY    = textTop + kBubbleH - kArrowH - 28;
 
-        skipBtn_.setBounds (kPad, btnY, 64, 24);
-        nextBtn_.setBounds (getWidth() - kPad - 80, btnY, 80, 24);
+        // F3-004: 24 → 44 px to meet WCAG 2.5.5 minimum 44×44 pt touch target.
+        skipBtn_.setBounds (kPad, btnY, 64, 44);
+        nextBtn_.setBounds (getWidth() - kPad - 80, btnY, 80, 44);
     }
 
     // -- Timer: drives the highlight ring pulse --------------------------------
