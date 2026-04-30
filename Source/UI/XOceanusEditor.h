@@ -916,6 +916,30 @@ public:
         oceanView_.onRedoRequested = [this]() { processor.getUndoManager().redo(); };
         oceanView_.onEngineSelected = [this](int slot) { if (slot >= 0) selectSlot(slot); };
         oceanView_.onEngineDiveDeep = [this](int slot) { selectSlot(slot); };
+        // F2-006: Persist OceanView ViewState + slot so DAW session recall restores navigation.
+        oceanView_.onViewStateChanged = [this](int stateInt, int slot)
+        {
+            processor.setPersistedOceanViewState(stateInt);
+            processor.setPersistedOceanViewSlot(slot);
+        };
+        // F2-012: Pull per-slot waveform data inside OceanView's 30Hz timer so wreath
+        // animation and data updates are synchronised.  Moved from editor's 10Hz timer.
+        oceanView_.onPullWaveformData = [this]()
+        {
+            for (int i = 0; i < 4; ++i)
+            {
+                if (processor.getEngine(i) != nullptr)
+                {
+                    std::array<float, 128> wreathSamples{};
+                    processor.getWaveformFifo(i).readLatest(wreathSamples.data(), 128);
+                    float slotRms = 0.0f;
+                    for (int s = 64; s < 128; ++s)
+                        slotRms += wreathSamples[static_cast<size_t>(s)] * wreathSamples[static_cast<size_t>(s)];
+                    slotRms = std::sqrt(slotRms / 64.0f);
+                    oceanView_.pushSlotWaveData(i, wreathSamples.data(), 128, slotRms);
+                }
+            }
+        };
         oceanView_.onEngineSelectedFromDrawer = [this](const juce::String& engineId)
         {
             // If a slot is explicitly selected, always replace it directly.
@@ -1690,6 +1714,26 @@ public:
             const auto& sp = processor.getSlotPreset(i);
             oceanView_.setOrbitPresetName(i, sp.name);
         }
+
+        // F2-006: Restore OceanView ViewState from session.  Uses a one-tick deferred
+        // call so OceanView layout is fully settled before any state transition.
+        {
+            const int restoredState = proc.getPersistedOceanViewState();
+            const int restoredSlot  = proc.getPersistedOceanViewSlot();
+            // Only restore non-trivial states — Orbital (0) is the default and needs no action.
+            if (restoredState == 1 && restoredSlot >= 0) // ZoomIn
+            {
+                // F2-015: Schedule zoom-in so the first layout pass has completed.
+                juce::Timer::callAfterDelay(50,
+                    [safeThis = juce::Component::SafePointer<XOceanusEditor>(this), restoredSlot]()
+                    {
+                        if (safeThis != nullptr)
+                            safeThis->oceanView_.requestZoomIn(restoredSlot);
+                    });
+            }
+            // SplitTransform (2) and BrowserOpen (3) are not restored — too complex and
+            // rarely persisted intentionally; users re-enter them manually.
+        }
     }
 
     ~XOceanusEditor() override
@@ -1699,6 +1743,16 @@ public:
         // #1356: Unsubscribe from per-slot preset change notifications before teardown.
         processor.removeSlotPresetListener(this);
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
+
+        // F2-001 (CRIT): Null TideWaterline + MIDILearn callbacks before members are
+        // destroyed.  DAW may call getStateInformation() after editor close — these
+        // lambdas capture local pointers and would be UAF without the null-out.
+        processor.onGetTideWaterlineState = nullptr;
+        processor.onSetTideWaterlineState = nullptr;
+
+        // F2-004 (CRIT): Null MIDILearnManager learn-complete callback.
+        // The callback captures `this` (editor) — null it out before teardown.
+        processor.getMIDILearnManager().setLearnCompleteCallback({});
 
         // #1379: Remove Starboard listeners before any member is destroyed.
         // Order mirrors registration in initOceanView (reversed for safety).
@@ -1810,6 +1864,13 @@ public:
                 return true;
             }
             showOverview();
+            return true;
+        }
+        // F2-014: Cmd+S — save current preset (mirrors the SAVE button in the sidebar).
+        if (key == juce::KeyPress('s', juce::ModifierKeys::commandModifier, 0))
+        {
+            if (oceanView_.onSavePreset)
+                oceanView_.onSavePreset();
             return true;
         }
         // Cmd+Z — undo last parameter change or preset load
@@ -2713,16 +2774,8 @@ private:
 
                     oceanView_.setVoiceCount(i, newVoices);
 
-                    // Step 8a: Push waveform data to buoy wreath.
-                    {
-                        std::array<float, 128> wreathSamples {};
-                        processor.getWaveformFifo(i).readLatest(wreathSamples.data(), 128);
-                        float slotRms = 0.0f;
-                        for (int s = 64; s < 128; ++s)
-                            slotRms += wreathSamples[static_cast<size_t>(s)] * wreathSamples[static_cast<size_t>(s)];
-                        slotRms = std::sqrt(slotRms / 64.0f);
-                        oceanView_.pushSlotWaveData(i, wreathSamples.data(), 128, slotRms);
-                    }
+                    // Step 8a: Waveform data is now pushed via oceanView_.onPullWaveformData
+                    // (F2-012) from OceanView's 30Hz timer — removed from here (10Hz).
 
                     if (zone == EngineOrbit::DepthZone::Sunlit)   hasSunlit   = true;
                     if (zone == EngineOrbit::DepthZone::Twilight)  hasTwilight = true;

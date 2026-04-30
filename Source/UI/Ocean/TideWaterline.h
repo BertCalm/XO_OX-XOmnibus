@@ -107,6 +107,7 @@ public:
     {
         juce::ValueTree tree("TideWaterlineSteps");
         tree.setProperty("stepCount", currentSteps_, nullptr);
+        tree.setProperty("expanded",  expanded_ ? 1 : 0, nullptr);  // F2-011
         for (int i = 0; i < kMaxSteps; ++i)
         {
             juce::ValueTree step("Step");
@@ -129,6 +130,10 @@ public:
 
         if (tree.hasProperty("stepCount"))
             currentSteps_ = juce::jlimit(1, kMaxSteps, static_cast<int>(tree.getProperty("stepCount")));
+
+        // F2-011: Restore expanded state.
+        if (tree.hasProperty("expanded"))
+            setExpanded(static_cast<int>(tree.getProperty("expanded")) != 0);
 
         int childIdx = 0;
         for (auto child : tree)

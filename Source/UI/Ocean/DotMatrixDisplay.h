@@ -91,6 +91,7 @@ public:
         waveHead_.store(next, std::memory_order_release);
 
         lastPushMs_ = juce::Time::getMillisecondCounterHiRes();
+        dataDirty_ = true;  // F2-018
     }
 
     /** Push 16 normalised frequency bins (0–1). Used by Spectrum mode. */
@@ -100,6 +101,7 @@ public:
         for (int i = 0; i < n; ++i)
             specBins_[i] = std::max(specBins_[i], juce::jlimit(0.0f, 1.0f, bins[i]));
         lastPushMs_ = juce::Time::getMillisecondCounterHiRes();
+        dataDirty_ = true;  // F2-018
     }
 
     /** Push 4 engine activity levels (0–1). Used by EnginePulse mode. */
@@ -109,6 +111,7 @@ public:
             engineLevels_[i] = std::max(engineLevels_[i],
                                         juce::jlimit(0.0f, 1.0f, levels[i]));
         lastPushMs_ = juce::Time::getMillisecondCounterHiRes();
+        dataDirty_ = true;  // F2-018
     }
 
     /** Push current sequencer step state. Used by SequencerMirror mode. */
@@ -119,6 +122,7 @@ public:
         if (currentStep >= 0 && currentStep < 16)
             seqActive_[currentStep] = active;
         lastPushMs_ = juce::Time::getMillisecondCounterHiRes();
+        dataDirty_ = true;  // F2-018
     }
 
 private:
@@ -449,7 +453,16 @@ private:
         if (! isShowing())
             return;
 
-        repaint();
+        // F2-018: Only repaint when new data was pushed or the breathing phase changed.
+        // The breathing phase changes every tick (animation), so always repaint when
+        // idle to keep the breath animation smooth.  When active data arrives, dataDirty_
+        // ensures we never miss a frame.  Clear the flag BEFORE repaint() so a push that
+        // arrives during paint() is not silently dropped.
+        if (dataDirty_ || !isIdle())
+        {
+            dataDirty_ = false;
+            repaint();
+        }
     }
 
     //==========================================================================
@@ -489,6 +502,10 @@ private:
 
     // Last time data was pushed (ms)
     double lastPushMs_ = 0.0;
+
+    // F2-018: Set by any push method; cleared by timerCallback before repaint().
+    // Ensures repaint() is only called when content has actually changed.
+    bool dataDirty_ = false;
 
     // Cached grid dimensions (computed in paint from current size)
     mutable int cols_ = 0;

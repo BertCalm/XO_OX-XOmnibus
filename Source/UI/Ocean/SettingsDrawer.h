@@ -615,6 +615,10 @@ inline void SettingsDrawer::applySettings(juce::PropertiesFile& props)
             onSettingChanged(key, on ? 1.0f : 0.0f);
     };
 
+    // F2-016: Restore drawer open state.
+    if (props.getBoolValue("drawer_isOpen", false))
+        open();
+
     restoreCombo  ("polyphony",        polyphonyCombo_,        2);
     restoreCombo  ("voiceMode",        voiceModeCombo_,        0);
     restoreCombo  ("unisonVoices",     unisonVoicesCombo_,     0);
@@ -636,6 +640,8 @@ inline void SettingsDrawer::applySettings(juce::PropertiesFile& props)
 // Fix #1419: persist current control values so they survive plugin reload.
 inline void SettingsDrawer::saveSettings(juce::PropertiesFile& props) const
 {
+    // F2-016: Persist drawer open state so it survives plugin reload.
+    props.setValue("drawer_isOpen",          isOpen());
     props.setValue("drawer_polyphony",       polyphonyCombo_.getSelectedItemIndex());
     props.setValue("drawer_voiceMode",       voiceModeCombo_.getSelectedItemIndex());
     props.setValue("drawer_unisonVoices",    unisonVoicesCombo_.getSelectedItemIndex());

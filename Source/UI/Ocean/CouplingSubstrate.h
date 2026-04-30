@@ -810,6 +810,9 @@ private:
     /** Timer callback — advances animation state at kTimerHz and repaints. */
     void timerCallback() override
     {
+        // F2-009: Skip all processing when hidden — no visual output, no CPU waste.
+        if (!isShowing()) return;
+
         const bool reducedMotion = A11y::prefersReducedMotion();
 
         // Poll mouse position during chain-in-progress for smooth line tracking.
