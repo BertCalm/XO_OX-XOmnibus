@@ -563,6 +563,13 @@ public:
     void setPersistedRegisterCurrent(int r) noexcept { persistedRegisterCurrent = r; }
     int  getPersistedRegisterCurrent() const noexcept { return persistedRegisterCurrent; }
 
+    // F2-006: OceanView ViewState + zoomed slot persistence.
+    // Written by OceanView's onStateEntered callback (message thread only).
+    void setPersistedOceanViewState(int state) noexcept { persistedOceanViewState_ = state; }
+    int  getPersistedOceanViewState() const noexcept    { return persistedOceanViewState_; }
+    void setPersistedOceanViewSlot(int slot)  noexcept  { persistedOceanViewSlot_  = slot;  }
+    int  getPersistedOceanViewSlot()  const noexcept    { return persistedOceanViewSlot_;  }
+
     // #1179 — TideWaterline deferred state pickup.
     // OceanView calls this in initWaterline() to apply state that arrived via
     // setStateInformation() before the editor window was first opened.
@@ -1057,6 +1064,8 @@ private:
     bool persistedCockpitBypass = false; // #357: Dark Cockpit bypass state
     bool persistedRegisterLocked = false; // D4: register lock toggle
     int  persistedRegisterCurrent = 0;   // D4: current register index (0=Gallery, 1=Performance, 2=Coupling)
+    int  persistedOceanViewState_ = 0;   // F2-006: OceanView ViewState (0=Orbital,1=ZoomIn,2=Split,3=Browser)
+    int  persistedOceanViewSlot_  = -1;  // F2-006: slot index when ViewState is ZoomIn/Split
 
     // ── #1178: TideWaterline deferred step-sequence state ────────────────────
     // Holds the "TideWaterlineSteps" tree from setStateInformation() when the

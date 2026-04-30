@@ -3286,6 +3286,19 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         xml->setAttribute("editorSignalFlowSection", persistedSignalFlowSection);
         xml->setAttribute("editorCockpitBypass", persistedCockpitBypass ? 1 : 0);
 
+        // F2-002: Persist atomic settings so session recall restores them correctly.
+        // Without this, polyphony/voiceMode/midiChannel/oversampling reset to defaults
+        // on every DAW session reload.
+        xml->setAttribute("polyphony",    polyphonyCap_.load());
+        xml->setAttribute("voiceMode",    voiceMode_.load());
+        xml->setAttribute("midiChannel",  midiChannel_.load());
+        xml->setAttribute("oversampling", oversamplingFactor_.load());
+
+        // F2-006: Persist OceanView ViewState + zoomed slot so DAW session recall
+        // restores the user's last navigation state.
+        xml->setAttribute("oceanViewState", persistedOceanViewState_);
+        xml->setAttribute("oceanViewSlot",  persistedOceanViewSlot_);
+
         // D4 — Save register lock + current register (per-instance, per-session).
         xml->setAttribute("registerLocked",  persistedRegisterLocked  ? 1 : 0);
         xml->setAttribute("registerCurrent", persistedRegisterCurrent);
@@ -3509,6 +3522,18 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
         // Clamp to valid range (0=Gallery, 1=Performance, 2=Coupling).
         if (persistedRegisterCurrent < 0 || persistedRegisterCurrent > 2)
             persistedRegisterCurrent = 0;
+
+        // F2-002: Restore atomic settings.  Defaults match init values so old sessions
+        // (predating F2-002) are safe — they simply reload as defaults.
+        polyphonyCap_.store(xml->getIntAttribute("polyphony",    16));
+        voiceMode_.store(xml->getIntAttribute("voiceMode",       0));
+        midiChannel_.store(xml->getIntAttribute("midiChannel",   0));
+        oversamplingFactor_.store(xml->getIntAttribute("oversampling", 0));
+
+        // F2-006: Restore OceanView ViewState + slot.
+        // Default 0 (Orbital) and -1 (no slot) match OceanView's initial state.
+        persistedOceanViewState_ = xml->getIntAttribute("oceanViewState", 0);
+        persistedOceanViewSlot_  = xml->getIntAttribute("oceanViewSlot",  -1);
 
         // #1378 — Restore per-slot preset names.
         // Only the name field is round-tripped; all other PresetData fields remain
