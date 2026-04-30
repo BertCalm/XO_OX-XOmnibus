@@ -41,7 +41,7 @@ public:
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             knobs[i].setColour(juce::Slider::rotarySliderFillColourId, GalleryColors::get(GalleryColors::xoGold));
-            knobs[i].setTooltip(juce::String("Macro ") + juce::String(i + 1) + ": " + tooltipDescs[i]);
+            knobs[i].setTooltip(juce::String(tooltipDescs[i]));
             A11y::setup(knobs[i], juce::String("Macro ") + juce::String(i + 1) + " " + tooltipLabels[i]);
             addAndMakeVisible(knobs[i]);
             attach[i] =
