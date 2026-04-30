@@ -507,6 +507,10 @@ private:
             return;
 
         const juce::Rectangle<int> target = getTargetForStep (currentStep_);
+        // F-003 / #1395: assert that every step resolves to a real on-screen region.
+        // If this fires, the accessor lambda for that step is returning {} and the
+        // fallback centred-rect is being used instead of a real component target.
+        jassert (!target.isEmpty());
         activeBubble_->positionNearTarget (target, getLocalBounds());
         repaint (target.expanded (8));
     }
@@ -642,12 +646,19 @@ private:
 
 //==============================================================================
 // Wave 9c mount COMPLETE — XOceanusEditor.h (applied 2026-04-26, PR #mount-final)
+// F-003 / #1395 fix applied 2026-04-29: steps 3/4/6/7 now point at real targets.
 //
 // All 6 mount points wired:
 //   1. Member: walkthrough_  (before toastOverlay_ in declaration order)
-//   2. Bound accessors wired in initOceanView() — steps 0/2/5 fully resolved;
-//      steps 3/4/6/7 return {} until DnaMapBrowser/EngineOrbit/favBtn/XOuija
-//      are accessible directly from the editor (post-Wave 7 decomp).
+//   2. Bound accessors wired in initOceanView() — all 8 steps resolved:
+//      Step 0: PlaySurface     — oceanView_.getPlaySurface().getBounds()
+//      Step 1: EngineOrbit[0]  — tiles[0]->getBounds()
+//      Step 2: Macros          — macros.getBounds()
+//      Step 3: Preset name     — oceanView_.getDnaMapBrowserBounds() → HudBar preset-name pill
+//      Step 4: CoupleOrbit[1]  — oceanView_.getOrbitBounds(1)
+//      Step 5: CM toggle       — cmToggleBtn.getBounds()
+//      Step 6: Fav button      — oceanView_.getHudFavBounds() → HudBar fav bounds
+//      Step 7: HARMONIC tab    — oceanView_.getOuijaPanelBounds() → DashboardTabBar HARMONIC tab
 //   3. addAndMakeVisible(walkthrough_) in initOceanView() before toastOverlay_.
 //   4. setBounds in resized() OceanView branch.
 //   5. promptIfEligible() fired on first timerCallback tick via walkthroughTriggeredThisSession_ guard.
