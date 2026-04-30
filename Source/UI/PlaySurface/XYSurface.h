@@ -8,7 +8,7 @@
     Wave 8 XY Surface play-surface tab.
 
     Implements the locked D3 design decisions (2026-04-25):
-        A2: Engine + Starboard FX params assignable to X and Y axes via right-click popup.
+        A2: Engine + FX Chain params assignable to X and Y axes via right-click popup.
         B2: Five musical patterns: PULSE / DRIFT / TIDE / RIPPLE / CHAOS.
             Replaces the old CIRCLE / FIG-8 / SWEEP / RANDOM stubs in SurfaceRightPanel.
         C2: Tempo-sync default (1 bar), free-rate (Hz) toggle.
