@@ -112,6 +112,12 @@ public:
         setOpaque(false);
         setInterceptsMouseClicks(false, false); // read-only display
 
+        // Fix #1423: expose engine/preset/XY panel to screen readers.
+        A11y::setup(*this,
+                    "Engine Status Panel",
+                    "Shows current engine, preset, XY position, and FX chains",
+                    /*wantsKeyFocus=*/false);
+
         startTimerHz(10); // 10 Hz repaint tick
     }
 
@@ -130,11 +136,22 @@ public:
         if (newState.slotGeneration != state_.slotGeneration)
             startAppearFade();
 
+        // Fix #1423: announce engine/preset changes to screen readers.
+        const bool engineChanged = (newState.engineId    != state_.engineId);
+        const bool presetChanged = (newState.presetName  != state_.presetName);
+
         state_ = newState;
         // Mark dirty; the 10 Hz timer will call repaint() on the next tick.
         // This prevents 30 Hz XOuija position callbacks from driving 30 Hz repaints
         // on a component that is contractually a 10 Hz display.
         stateDirty_ = true;
+
+        // Post accessibility notification when meaningful content changes.
+        // getAccessibilityHandler() may return nullptr if the component is not yet
+        // added to the tree or if accessibility is disabled — guard accordingly.
+        if ((engineChanged || presetChanged) && isAccessible())
+            if (auto* handler = getAccessibilityHandler())
+                handler->notifyAccessibilityEvent(juce::AccessibilityEvent::valueChanged);
     }
 
     const State& getState() const noexcept { return state_; }
@@ -188,7 +205,8 @@ public:
             g.drawRoundedRectangle(pillR, 4.0f, 1.0f);
 
             g.setColour(juce::Colour(GalleryColors::Ocean::foam));
-            g.setFont(GalleryFonts::heading(9.0f));
+            // Fix #1425: raised from 9 px (unreadable) to 11 px (acceptable minimum).
+            g.setFont(GalleryFonts::heading(11.0f));
             g.drawText(slotLabel, pillR, juce::Justification::centred, false);
         }
 
@@ -227,14 +245,25 @@ public:
             }
             else
             {
-                // Italic "— no preset —" — draw with slightly dimmed text
+                // Fix #1429: apply AffineTransform skew to produce faux-italic for the
+                // "no preset" placeholder.  Satoshi lacks an embedded italic variant;
+                // a 12° shear (tan(12°)≈0.213) produces a legible italicised appearance
+                // without a separate font file.  We restore the transform afterwards so
+                // subsequent draw calls are unaffected.
                 g.setColour(juce::Colour(GalleryColors::Ocean::plankton).withAlpha(0.8f));
-                // Italic approximation: use body font (Satoshi doesn't have a distinct italic
-                // weight in the embedded set — use the regular at reduced alpha as the spec
-                // calls out italic style, which is the visual hierarchy cue here)
-                g.drawText(u8"— no preset —",
-                           juce::Rectangle<float>(kMarginX, y, contentW, 14.0f),
-                           juce::Justification::centredLeft, true);
+                {
+                    const juce::Rectangle<float> placeholderR(kMarginX, y, contentW, 14.0f);
+                    // Shear around the vertical centre of the text baseline.
+                    const float shearAnchorX = placeholderR.getX();
+                    g.addTransform(juce::AffineTransform::shear(0.213f, 0.0f)
+                                       .translated(-shearAnchorX * 0.213f, 0.0f));
+                    g.drawText(u8"— no preset —",
+                               placeholderR,
+                               juce::Justification::centredLeft, true);
+                    // Restore identity — undo the shear.
+                    g.addTransform(juce::AffineTransform::shear(-0.213f, 0.0f)
+                                       .translated(shearAnchorX * 0.213f, 0.0f));
+                }
             }
         }
 
@@ -242,7 +271,8 @@ public:
 
         // ── Row 3: XY readouts ────────────────────────────────────────────────
         {
-            g.setFont(GalleryFonts::value(9.0f)); // JetBrains Mono
+            // Fix #1425: raised from 9 px (unreadable) to 11 px for scan-readable XY values.
+            g.setFont(GalleryFonts::value(11.0f)); // JetBrains Mono
 
             // KEY (circleX normalized 0.0–1.0, 1 decimal)
             const juce::String keyStr = "KEY " + juce::String(state_.circleX, 1);
@@ -273,20 +303,34 @@ public:
             const float dotCX = kMarginX + kDotRadius;
             const float dotCY = y + kDotRadius + 1.0f;
 
-            // Deep teal = free-walk, coral = pinned
+            // Fix #1427: color-only pin state (teal vs coral) is invisible to
+            // color-vision-deficient users.  Added shape cue: free-walk = open circle
+            // outline (unfilled); pinned = filled circle.  Color retained as secondary cue.
+            // Deep teal = free-walk (outline), coral = pinned (filled).
             const juce::Colour dotCol = state_.pinned
                 ? juce::Colour(0xFFE76F51)  // coral
                 : juce::Colour(0xFF2A9D8F); // deep teal
 
             g.setColour(dotCol);
-            g.fillEllipse(dotCX - kDotRadius, dotCY - kDotRadius,
-                          kDotDiameter, kDotDiameter);
+            if (state_.pinned)
+            {
+                // Pinned: filled circle
+                g.fillEllipse(dotCX - kDotRadius, dotCY - kDotRadius,
+                              kDotDiameter, kDotDiameter);
+            }
+            else
+            {
+                // Free-walk: outline circle — shape distinguishes state without relying on color alone
+                g.drawEllipse(dotCX - kDotRadius, dotCY - kDotRadius,
+                              kDotDiameter, kDotDiameter, 1.5f);
+            }
 
             // Pin state label + capture slot name / routing target
             const float labelX = kMarginX + kDotDiameter + 6.0f;
             const float labelW = contentW - kDotDiameter - 6.0f;
 
-            g.setFont(GalleryFonts::heading(9.0f));
+            // Fix #1425: raised from 9 px (unreadable) to 11 px for pin state label.
+            g.setFont(GalleryFonts::heading(11.0f));
             g.setColour(juce::Colour(GalleryColors::Ocean::salt).withAlpha(0.8f));
 
             juce::String pinLabel = state_.pinned ? "PINNED" : "FREE-WALK";
@@ -312,7 +356,8 @@ public:
             if (state_.numActiveFxChains == 0)
             {
                 // Empty state — "— no chain —" at 50% opacity
-                g.setFont(GalleryFonts::heading(8.0f));
+                // Fix #1425: raised from 8 px to 10 px for supplemental label readability.
+                g.setFont(GalleryFonts::heading(10.0f));
                 g.setColour(juce::Colour(GalleryColors::Ocean::plankton).withAlpha(0.5f));
                 g.drawText(u8"— no chain —",
                            juce::Rectangle<float>(kMarginX, y, contentW, 14.0f),
@@ -325,7 +370,8 @@ public:
                 const float chipGap = 4.0f;
                 const int maxChips = juce::jmin(state_.numActiveFxChains, 3);
 
-                g.setFont(GalleryFonts::heading(8.0f));
+                // Fix #1425: raised FX chip font from 8 px (unreadable) to 10 px.
+                g.setFont(GalleryFonts::heading(10.0f));
 
                 for (int i = 0; i < maxChips; ++i)
                 {
@@ -336,7 +382,7 @@ public:
                     // Measure chip width against the uppercased string — the drawn text
                     // is toUpperCase(), so we must measure the same string to avoid clipping.
                     const juce::String upperName = name.toUpperCase();
-                    const float textW = GalleryFonts::heading(8.0f)
+                    const float textW = GalleryFonts::heading(10.0f)
                         .getStringWidthFloat(upperName) + 10.0f;
                     const float chipW = juce::jmax(textW, 30.0f);
 
