@@ -26,9 +26,11 @@
 // Wave 5 A1: Global drag-drop mod routing model (message-thread side).
 // The header lives in Future/ but we reference it in-place per spec.
 #include "Future/UI/ModRouting/DragDropModRouter.h"
+#include <algorithm>
 #include <atomic>
 #include <array>
 #include <memory>
+#include <vector>
 
 namespace xoceanus
 {
@@ -190,6 +192,44 @@ public:
     // Preset management (UI thread only)
     PresetManager& getPresetManager() { return presetManager; }
     void applyPreset(const PresetData& preset);
+
+    // ── Per-slot preset data model (#1378) ───────────────────────────────────
+    // Stores which preset is currently loaded in each primary slot (0–3).
+    // Written on the message thread only; read by UI components (Starboard,
+    // EngineOrbit pill) via getSlotPreset() and notified via SlotPresetListener.
+    //
+    // Listener interface — register via addSlotPresetListener / removeSlotPresetListener.
+    // Called on the message thread whenever setSlotPreset() is invoked.
+    struct SlotPresetListener
+    {
+        virtual ~SlotPresetListener() = default;
+        virtual void slotPresetChanged(int slotIdx, const PresetData& preset) = 0;
+    };
+
+    // Bounds-checked accessor: jassert in debug, clamp to slot 0 in release.
+    // Returns a const reference — valid for the lifetime of the processor.
+    const PresetData& getSlotPreset(int slotIdx) const noexcept
+    {
+        jassert(slotIdx >= 0 && slotIdx < kNumPrimarySlots);
+        const int safe = juce::jlimit(0, kNumPrimarySlots - 1, slotIdx);
+        return slotPresets_[static_cast<size_t>(safe)];
+    }
+
+    // Stores the preset for the given slot and notifies all registered listeners.
+    // Message thread only.
+    void setSlotPreset(int slotIdx, const PresetData& preset);
+
+    void addSlotPresetListener(SlotPresetListener* l)
+    {
+        if (l != nullptr)
+            slotPresetListeners_.push_back(l);
+    }
+    void removeSlotPresetListener(SlotPresetListener* l)
+    {
+        slotPresetListeners_.erase(
+            std::remove(slotPresetListeners_.begin(), slotPresetListeners_.end(), l),
+            slotPresetListeners_.end());
+    }
 
     // Engine slot management (message thread only)
     // Slot 4 (0-indexed) is the Ghost Slot — see EngineRegistry::detectCollection().
@@ -936,12 +976,19 @@ private:
     bool persistedRegisterLocked = false; // D4: register lock toggle
     int  persistedRegisterCurrent = 0;   // D4: current register index (0=Gallery, 1=Performance, 2=Coupling)
 
-    // ── #1179: TideWaterline deferred step-sequence state ────────────────────
+    // ── #1178: TideWaterline deferred step-sequence state ────────────────────
     // Holds the "TideWaterlineSteps" tree from setStateInformation() when the
     // editor was not yet open at restore time.  OceanView picks it up in
     // initWaterline() via getPersistedTideWaterlineState().
     // Message-thread only — no atomic needed.
     juce::ValueTree persistedTideWaterlineState_;
+
+    // ── #1378: Per-slot preset data model ────────────────────────────────────
+    // Tracks which preset is loaded in each primary slot (0–3).
+    // Initialised to default-constructed PresetData (empty name, no engines).
+    // Written/read on the message thread only — no atomic needed.
+    std::array<PresetData, kNumPrimarySlots> slotPresets_;
+    std::vector<SlotPresetListener*> slotPresetListeners_;
 
     // ── External MIDI Clock state — audio thread only (closes #359) ──────────
     // Used to derive BPM from incoming 0xF8 pulses.
