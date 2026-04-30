@@ -3256,6 +3256,15 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         // always true in subsequent saves and is never reset by the user.
         xml->setAttribute("hasLaunchedBefore", 1);
 
+        // #1378 — Persist per-slot preset names so Starboard and EngineOrbit pill
+        // can display the active preset name after DAW session recall.
+        // Only the preset name (not the full PresetData) is stored — preset parameter
+        // values are already captured by the APVTS state above.
+        // Keys: slot0_presetName … slot3_presetName  (frozen identifiers).
+        for (int i = 0; i < kNumPrimarySlots; ++i)
+            xml->setAttribute("slot" + juce::String(i) + "_presetName",
+                               slotPresets_[static_cast<size_t>(i)].name);
+
         copyXmlToBinary(*xml, destData);
     }
 }
@@ -3461,6 +3470,17 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
         // Clamp to valid range (0=Gallery, 1=Performance, 2=Coupling).
         if (persistedRegisterCurrent < 0 || persistedRegisterCurrent > 2)
             persistedRegisterCurrent = 0;
+
+        // #1378 — Restore per-slot preset names.
+        // Only the name field is round-tripped; all other PresetData fields remain
+        // at their default-constructed state (empty) until the next preset load.
+        // Sessions saved before #1378 will have empty strings → silent no-op.
+        for (int i = 0; i < kNumPrimarySlots; ++i)
+        {
+            juce::String name = xml->getStringAttribute("slot" + juce::String(i) + "_presetName");
+            if (name.isNotEmpty())
+                slotPresets_[static_cast<size_t>(i)].name = name;
+        }
     }
 }
 
@@ -3889,6 +3909,19 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
         for (int slot = 0; slot < xoceanus::DNAModulationBus::MaxEngineSlots; ++slot)
             dnaBus_.setBaseDNA(slot, dnaArr);
     }
+}
+
+// ── #1378: Per-slot preset data model ────────────────────────────────────────
+void XOceanusProcessor::setSlotPreset(int slotIdx, const PresetData& preset)
+{
+    jassert(slotIdx >= 0 && slotIdx < kNumPrimarySlots);
+    const int safe = juce::jlimit(0, kNumPrimarySlots - 1, slotIdx);
+    slotPresets_[static_cast<size_t>(safe)] = preset;
+
+    // Notify all registered listeners (message-thread only — no locking needed).
+    for (auto* l : slotPresetListeners_)
+        if (l != nullptr)
+            l->slotPresetChanged(safe, slotPresets_[static_cast<size_t>(safe)]);
 }
 
 } // namespace xoceanus
