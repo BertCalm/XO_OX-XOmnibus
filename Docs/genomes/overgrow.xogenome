@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OVERGROW",
+  "engine_prefix": "grow_",
+  "collection": "garden",
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 8,
+    "architecture": "Growth-mode string synthesis — growthRate drives an evolving harmonic structure that literally grows over the duration of a held note; vine anemone analogy: starting as a simple root tone that extends tendrils of harmonic content over time; Garden-class engine where each sustained note develops into a more complex chord as growth advances; sympathetic resonance accumulates with time"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass", "highpass"],
+    "resonance_range": [0.0, 0.8],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw"],
+    "mod_matrix_depth": 4,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.75,
+    "velocity_targets": ["amplitude", "growth_rate", "brightness"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "tendril_density",
+    "dynamic_range_db": 70
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "GROW",
+      "behavior": "Growth rate — how quickly harmonic tendrils extend from the root tone during a sustained note; slow GROW = a long, patient bloom; fast GROW = rapid harmonic expansion in seconds."
+    },
+    "macro2": {
+      "name": "VINE",
+      "behavior": "Tendril character — the nature of the harmonic growth: upward fifths (open, spacious), thirds (warm, chordal), octaves (wide, cathedral), or overtone-series (spectral, complex)."
+    },
+    "macro3": {
+      "name": "CANOPY",
+      "behavior": "How far the growth extends — at low CANOPY it stays near the root, at maximum CANOPY the harmonics spread across multiple octaves like vines covering an entire wall."
+    },
+    "macro4": {
+      "name": "FOREST",
+      "behavior": "Environmental reverb — from a small garden space to a large forest resonance where the grown vines create their own acoustic architecture."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "pad",
+    "brightness": 0.5,
+    "warmth": 0.65,
+    "movement": 0.55,
+    "density": 0.7,
+    "transient_character": "smooth"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["EnvToMorph", "AmpToFilter"],
+    "best_as_target": ["RhythmToBlend", "AudioToRing", "EnvToDecay"],
+    "recommended_partners": ["ORCHARD", "OSIER", "OXALIS", "OVERFLOW"],
+    "coupling_personality": "The expanding harmonic in the Garden Quad — OVERGROW's time-evolving harmonic structure makes it an exceptional EnvToMorph source that sends a changing modulation signal over time; coupled targets receive an evolving, organic modulation."
+  },
+
+  "mythology": {
+    "creature": "The vine anemone — anemone overtaken by green growth tendrils; the synthesis that cannot stop growing, adding harmonics the longer you hold the note",
+    "depth_zone": "reef",
+    "felix_oscar_polarity": 0.6,
+    "accent_color": "#228B22"
+  },
+
+  "metadata": {
+    "param_count": null,
+    "preset_count": null,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

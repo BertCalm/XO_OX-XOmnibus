@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OBSIDIAN",
+  "engine_prefix": "obsidian_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "physical_model",
+    "polyphony": 8,
+    "architecture": "Volcanic glass resonator synthesis — models the acoustic properties of obsidian glass (extremely hard, brittle, sharp resonances); depth parameter controls the virtual depth of a black smoker hydrothermal vent; translucent shrimp body model with internal pressure dynamics; sharp resonant peaks from glass-like spectral sparseness"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["bandpass", "highpass"],
+    "resonance_range": [0.5, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square"],
+    "mod_matrix_depth": 4,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.8,
+    "velocity_targets": ["amplitude", "brightness", "pressure"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "vent_pressure",
+    "dynamic_range_db": 72
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "DEPTH",
+      "behavior": "Vent depth — controls the pressure and mineral richness of the virtual black smoker; shallow produces sparse, crystalline tones; deep creates mineral-dense, complex resonant structures."
+    },
+    "macro2": {
+      "name": "CRYSTAL",
+      "behavior": "Crystal formation density — how many obsidian resonant peaks are active; sparse is a single glass bell, dense is a cluster of volcanic glass shards each ringing independently."
+    },
+    "macro3": {
+      "name": "PRESSURE",
+      "behavior": "Hydrothermal pressure — drives the fundamental frequency and harmonic overtones upward with increasing steam-like noise injection; the boiling point of the synthesis."
+    },
+    "macro4": {
+      "name": "ABYSS",
+      "behavior": "Deep ocean reverb — long, dark, low-filtered decay characteristic of the pressure-compressed acoustic space near black smokers."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "texture",
+    "brightness": 0.7,
+    "warmth": 0.2,
+    "movement": 0.35,
+    "density": 0.4,
+    "transient_character": "sharp"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "EnvToDecay", "AudioToRing"],
+    "best_as_target": ["AmpToFilter", "RhythmToBlend"],
+    "recommended_partners": ["OUROBOROS", "ORCA", "OBSCURA", "OCEANDEEP"],
+    "coupling_personality": "The crystalline deep-sea specialist — OBSIDIAN's sparse, high-Q resonances create exceptional bright modulation sources; its volcanic glass character complements the darkness of abyss-zone partners."
+  },
+
+  "mythology": {
+    "creature": "The volcanic glass shrimp — translucent shrimp near a black smoker, crystal white; surviving at the edge of impossibility, armored in volcanic glass",
+    "depth_zone": "deep",
+    "felix_oscar_polarity": 0.6,
+    "accent_color": "#E8E0D8"
+  },
+
+  "metadata": {
+    "param_count": null,
+    "preset_count": null,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

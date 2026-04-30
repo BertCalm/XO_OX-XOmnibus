@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OCHRE",
+  "engine_prefix": "ochre_",
+  "collection": "kitchen",
+
+  "oscillator": {
+    "type": "physical_model",
+    "polyphony": 8,
+    "architecture": "Prepared piano synthesis — woodResonance models a piano with foreign objects placed on or between strings (bolts, felt strips, rubber, paper); each preparation type fundamentally alters the piano's harmonic structure; hermit crab shell analogy: the instrument carries its preparation as its home, making it uniquely itself; tonal center shifts with preparation density"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass"],
+    "resonance_range": [0.0, 0.8],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square"],
+    "mod_matrix_depth": 4,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.9,
+    "velocity_targets": ["amplitude", "preparation_excitation", "brightness"],
+    "pitch_bend_range": 0,
+    "aftertouch_response": "preparation_density",
+    "dynamic_range_db": 72
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "PREPARE",
+      "behavior": "Preparation density — from a clean piano (zero objects) to a fully prepared instrument (maximum foreign objects); each increment adds spectral irregularity and inharmonic content."
+    },
+    "macro2": {
+      "name": "MATERIAL",
+      "behavior": "Preparation material type — from light felt (warmth, damping, softening) through paper (rustling, airy) to metal bolts (hard, inharmonic, percussive); the hermit crab's choice of shell."
+    },
+    "macro3": {
+      "name": "WOOD",
+      "behavior": "Body wood resonance — the sympathetic contribution of the piano's wooden frame and soundboard; more WOOD = more bloom and body, less = an eerily dry prepared tone."
+    },
+    "macro4": {
+      "name": "ROOM",
+      "behavior": "Recording space — from close-mic intimate to the full acoustic of a recording studio; the prepared piano benefits from a specific room that complements its irregularities."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "keys",
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.2,
+    "density": 0.6,
+    "transient_character": "medium"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "EnvToDecay"],
+    "best_as_target": ["RhythmToBlend", "EnvToMorph"],
+    "recommended_partners": ["OVEN", "OBELISK", "OPALINE", "OFFERING"],
+    "coupling_personality": "The eccentric alchemist of the Kitchen Quad — OCHRE's inharmonic preparation creates unusual AmpToFilter sources; coupled with OVEN it fills the piano texture range from prepared to concert grand."
+  },
+
+  "mythology": {
+    "creature": "The prepared hermit — hermit crab with objects stuck in shell, ochre; the instrument prepared by the creature itself, shell as both home and sonic identity",
+    "depth_zone": "reef",
+    "felix_oscar_polarity": 0.65,
+    "accent_color": "#CC7722"
+  },
+
+  "metadata": {
+    "param_count": null,
+    "preset_count": null,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OGRE",
+  "engine_prefix": "ogre_",
+  "collection": "cellar",
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 8,
+    "architecture": "Sub-bass synthesis engine — subFreq controls a massive low-frequency oscillator with jaw-driven resonator simulation; abyssal ogre fish analogy: enormous jaw, primarily sub-bass register with aggressive transient attack; layered sub oscillator plus noise burst for the attack jaw-snap; harmonic reinforcement via subtle upper overtone layer that gives the sub weight without lift"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass"],
+    "resonance_range": [0.0, 0.9],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square"],
+    "mod_matrix_depth": 4,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.8,
+    "velocity_targets": ["amplitude", "jaw_snap", "subFreq"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "jaw_pressure",
+    "dynamic_range_db": 80
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "JAW",
+      "behavior": "The jaw snap — controls the transient attack character from gentle (sub rolls in slowly) to violent (sudden jaw-snap impulse precedes the sub); the defining feature of the abyssal ogre's hunt."
+    },
+    "macro2": {
+      "name": "SUB",
+      "behavior": "Sub-frequency register — from low bass (60-80Hz) to infrasonic rumble (20-40Hz); at maximum OGRE operates below comfortable listening, felt rather than heard."
+    },
+    "macro3": {
+      "name": "MASS",
+      "behavior": "Harmonic mass — adds upper harmonic content to the sub fundamental, giving the bass weight and definition; low MASS is a pure sub sine, high MASS is a harmonically dense bass monster."
+    },
+    "macro4": {
+      "name": "ABYSS",
+      "behavior": "Abyssal acoustic space — long, dark reverb with heavy low-frequency emphasis; makes the sub feel submerged under tons of water."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "bass",
+    "brightness": 0.1,
+    "warmth": 0.9,
+    "movement": 0.2,
+    "density": 0.8,
+    "transient_character": "sharp"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AmpToChoke", "EnvToDecay"],
+    "best_as_target": ["RhythmToBlend", "AmpToFilter"],
+    "recommended_partners": ["ONSET", "OMEGA", "OAKEN", "OLATE"],
+    "coupling_personality": "The gravitational center of the Cellar Quad — OGRE's enormous sub-bass amplitude envelopes are the most powerful AmpToChoke sources in the fleet; nothing silences a coupled engine more decisively than OGRE's jaw."
+  },
+
+  "mythology": {
+    "creature": "The abyssal ogre fish — massive jaw, sub-bass black, menacing; the creature that doesn't need to be fast because nothing escapes its gravity",
+    "depth_zone": "abyss",
+    "felix_oscar_polarity": 0.95,
+    "accent_color": "#0D0D0D"
+  },
+
+  "metadata": {
+    "param_count": null,
+    "preset_count": null,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}
