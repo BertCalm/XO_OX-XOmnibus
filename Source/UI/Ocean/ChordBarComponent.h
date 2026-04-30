@@ -111,6 +111,11 @@ public:
         setOpaque(false);
         setInterceptsMouseClicks(true, true);
 
+        // Fix #1424: expose chord machine panel to screen readers.
+        A11y::setup(*this,
+                    "Chord Machine",
+                    "Chord sequencer and harmonic input mode selector");
+
         // Sync initial state from APVTS.
         syncFromApvts();
 

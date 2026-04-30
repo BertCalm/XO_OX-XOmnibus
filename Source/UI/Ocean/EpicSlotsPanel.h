@@ -86,6 +86,11 @@ public:
     {
         setOpaque(false);
 
+        // Fix #1424: expose FX chain slot panel to screen readers.
+        A11y::setup(*this,
+                    "FX Chain Slots",
+                    "Three parallel FX chain slots with chain picker, mix level, and bypass per slot");
+
         headerLabel_.setText("FX CHAIN", juce::dontSendNotification);
         headerLabel_.setFont(GalleryFonts::heading(10.0f));
         headerLabel_.setColour(juce::Label::textColourId,
@@ -145,7 +150,8 @@ private:
 
         // Mix slider
         row.mixSlider.setSliderStyle(juce::Slider::LinearHorizontal);
-        row.mixSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 44, 16);
+        // Fix #1430: text box was 16 px — difficult to click precisely. Raised to 20 px.
+        row.mixSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 44, 20);
         row.mixSlider.setColour(juce::Slider::trackColourId,
                                 GalleryColors::get(GalleryColors::textMid()).withAlpha(0.5f));
         row.mixAttach = std::make_unique<
@@ -266,7 +272,9 @@ private:
         constexpr int kSlotLabelW = 52;
         constexpr int kChainBoxW  = 180;
         constexpr int kBypassW    = 76;
-        const int rowInset = 8;
+        // Fix #1430: rowInset=8 left controls at only 24 px in a 40 px row.
+        // Reduced to 4 so controls occupy 32 px — closer to the 36 px target.
+        const int rowInset = 4;
 
         for (int i = 0; i < kNumSlots; ++i)
         {
