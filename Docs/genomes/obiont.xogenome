@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OBIONT",
+  "engine_prefix": "obnt_",
+  "collection": null,
+
+  "oscillator": {
+    "type": "cellular",
+    "polyphony": 8,
+    "architecture": "Cellular automaton synthesis engine — evolutionRate drives an internal CA rule system that generates evolving timbral patterns; rule sets shift harmonic content procedurally over time; symbiont relationship between two cell populations (X-cells = transient generators, O-cells = sustain pool); D004+D002 doctrine fixes applied ensuring all parameters affect audio output"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass", "highpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 4,
+    "audio_rate_mod": true
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.75,
+    "velocity_targets": ["amplitude", "evolution_rate", "brightness"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "evolution_pressure",
+    "dynamic_range_db": 65
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "EVOLVE",
+      "behavior": "Evolution rate of the cellular automaton — slow EVOLVE produces stable, slowly morphing textures; fast EVOLVE creates chaotic, rapidly mutating timbres; the heartbeat of the symbiont system."
+    },
+    "macro2": {
+      "name": "RULE",
+      "behavior": "CA rule set selection — different rules produce fundamentally different evolutionary behaviors; sweeping RULE navigates from Conway-like stability to Wolfram Rule 110 edge-of-chaos complexity."
+    },
+    "macro3": {
+      "name": "SYMBIOSIS",
+      "behavior": "Balances X-cell (transient/feliX) vs O-cell (sustain/Oscar) population influence on the output; full left = pure transient character, full right = pure sustained bloom."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Acoustic environment for the cellular colony — dry petri dish to a reverberant evolutionary chamber; also modulates cell migration speed."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "texture",
+    "brightness": 0.5,
+    "warmth": 0.4,
+    "movement": 0.8,
+    "density": 0.65,
+    "transient_character": "medium"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["EnvToMorph", "AudioToRing", "AmpToFilter"],
+    "best_as_target": ["RhythmToBlend", "EnvToMorph", "AmpToFilter"],
+    "recommended_partners": ["ORGANISM", "OOBLECK", "OPTIC", "OVERTONE"],
+    "coupling_personality": "The living ecosystem engine — OBIONT's slowly evolving CA patterns make it an exceptional slow-modulation source; coupled as target it receives rhythmic triggers that seed new evolutionary generations."
+  },
+
+  "mythology": {
+    "creature": "The symbiont — a cellular colony organism neither fully plant nor animal, negotiating its own existence at the thermocline boundary",
+    "depth_zone": "thermocline",
+    "felix_oscar_polarity": 0.5,
+    "accent_color": "#E8A030"
+  },
+
+  "metadata": {
+    "param_count": null,
+    "preset_count": null,
+    "seance_score": 8.2,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

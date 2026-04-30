@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OCTAVE",
+  "engine_prefix": "oct_",
+  "collection": "chef",
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 16,
+    "architecture": "Tonewheel organ synthesis — 9 drawbars (16', 8', 5⅓', 4', 2⅔', 2', 1⅗', 1⅓', 1') plus percussion and overdrive; spinning snail shell analogy: the tonewheel rotates perpetually inside the instrument; key click, scanner vibrato, rotary speaker simulation (Leslie cabinet); harmonic drawbar assignment mirrors classical Hammond B3 architecture"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass"],
+    "resonance_range": [0.0, 0.5],
+    "key_tracking": false
+  },
+
+  "envelope": {
+    "type": "gate",
+    "stages": 2,
+    "curve": "linear"
+  },
+
+  "modulation": {
+    "lfo_count": 1,
+    "lfo_shapes": ["sine"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.5,
+    "velocity_targets": ["amplitude"],
+    "pitch_bend_range": 0,
+    "aftertouch_response": "rotary_speed",
+    "dynamic_range_db": 65
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "DRAWBAR",
+      "behavior": "Master drawbar blend — sweeps the harmonic balance from the fundamental-heavy lower drawbars (warm, full organ body) toward the upper harmonic drawbars (bright, reedy, cutting); a single macro controlling the essential organ voice."
+    },
+    "macro2": {
+      "name": "ROTARY",
+      "behavior": "Leslie rotary speaker speed — from slow chorale (gentle, slow tremolo/vibrato) to fast tremolo (rapid, spinning, electric); the defining expressive axis of the tonewheel organ."
+    },
+    "macro3": {
+      "name": "OVERDRIVE",
+      "behavior": "Preamp saturation — from clean organ tone to the gritty, harmonically dense overdrive characteristic of pushed Hammond organs; shapes the attack crunch and sustain warmth."
+    },
+    "macro4": {
+      "name": "ROOM",
+      "behavior": "Performance space — from a dry studio recording to a large church or theater; the rotary speaker acoustics change significantly with room size."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "keys",
+    "brightness": 0.6,
+    "warmth": 0.7,
+    "movement": 0.65,
+    "density": 0.7,
+    "transient_character": "medium"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "EnvToMorph"],
+    "best_as_target": ["RhythmToBlend", "AudioToRing"],
+    "recommended_partners": ["OTO", "OLEG", "OTIS", "OSTINATO"],
+    "coupling_personality": "The spinning heart of the Chef Quad — OCTAVE's rotary modulation is an exceptional LFO-equivalent source for coupled filter sweeps; its drawbar harmonic density creates rich AudioToRing material."
+  },
+
+  "mythology": {
+    "creature": "The tonewheel snail — snail with spinning wheel shell, teak brown; the perpetual rotation, the endless tone, the wheel that never stops",
+    "depth_zone": "reef",
+    "felix_oscar_polarity": 0.6,
+    "accent_color": "#8B6914"
+  },
+
+  "metadata": {
+    "param_count": null,
+    "preset_count": null,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

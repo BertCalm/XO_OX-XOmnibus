@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OASIS",
+  "engine_prefix": "oas_",
+  "collection": "fusion",
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 8,
+    "architecture": "Dual-layer Spectral Fingerprint Cache engine — a desert spring acoustic piano layer (sympathetic resonance, felt dampers, harp-like sustain pedal bloom) crossfaded with a digital Rhodes-style electric piano (tine modeling, tremolo, bark EQ); springDepth controls the acoustic spring resonance that blooms under the keys"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass"],
+    "resonance_range": [0.0, 0.7],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square"],
+    "mod_matrix_depth": 4,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.9,
+    "velocity_targets": ["amplitude", "brightness", "hammer_hardness"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "tremolo_depth",
+    "dynamic_range_db": 72
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "SPRING",
+      "behavior": "Drives the desert spring resonance — from a dry hammered strike to a lush, blooming sympathetic sustain; at maximum, the keys seem to emerge from water."
+    },
+    "macro2": {
+      "name": "SHADE",
+      "behavior": "Crossfades between acoustic piano (shade-cooled, natural) and electric piano (sun-warmed, tine-bright); intermediate is a hybrid acoustic/electric tone unique to OASIS."
+    },
+    "macro3": {
+      "name": "TREMOLO",
+      "behavior": "Applies the classic electric piano tremolo from vintage amp simulation; rate and depth are simultaneously shaped for a cohesive vintage feel."
+    },
+    "macro4": {
+      "name": "DEPTH",
+      "behavior": "Sinks the piano deeper into a reverb spring tank — from intimate dry touch to submerged, watery sustain characteristic of an oasis's acoustic space."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "keys",
+    "brightness": 0.55,
+    "warmth": 0.7,
+    "movement": 0.35,
+    "density": 0.5,
+    "transient_character": "medium"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AmpToPitch"],
+    "best_as_target": ["RhythmToBlend", "EnvToMorph", "AudioToRing"],
+    "recommended_partners": ["ODDFELLOW", "ONKOLO", "OPCODE", "ORBITAL"],
+    "coupling_personality": "The calm center of the Fusion Quad — OASIS's acoustic warmth anchors the EP sound; its spring resonance as an AmpToFilter source creates gentle filter bloom that complements faster, brighter partners."
+  },
+
+  "mythology": {
+    "creature": "The desert spring turtle — small turtle resting at an underwater spring, teal; the improbable oasis of calm in a vast sonic desert",
+    "depth_zone": "reef",
+    "felix_oscar_polarity": 0.6,
+    "accent_color": "#00827F"
+  },
+
+  "metadata": {
+    "param_count": null,
+    "preset_count": null,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "ODDFELLOW",
+  "engine_prefix": "oddf_",
+  "collection": "fusion",
+
+  "oscillator": {
+    "type": "spectral",
+    "polyphony": 8,
+    "architecture": "Spectral shift electric piano — spectralShift parameter displaces harmonic partials by a non-integer amount, creating inharmonic tine-like tones characteristic of vintage Wurlitzer/Rhodes with detuned tine; copper pufferfish analogy: metallic sheen on a naturally inflatable body; spectral fingerprint cache engine storing unique per-note harmonic profiles"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass"],
+    "resonance_range": [0.0, 0.8],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square"],
+    "mod_matrix_depth": 4,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.9,
+    "velocity_targets": ["amplitude", "brightness", "spectral_shift"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "tine_wobble",
+    "dynamic_range_db": 70
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "SHIFT",
+      "behavior": "Spectral shift amount — displaces harmonic partials away from integer relationships; zero is a clean EP tone, maximum creates a metallic, bell-like inharmonic character unique to this copper-toned instrument."
+    },
+    "macro2": {
+      "name": "TINE",
+      "behavior": "Tine character — from Rhodes-style (warm, woody fundamental) to Wurlitzer-style (bright, reedy upper partials) to a hybrid copper-tine tone unique to ODDFELLOW."
+    },
+    "macro3": {
+      "name": "WOBBLE",
+      "behavior": "Pitch and spectral wobble from vintage tine instability — slight random variation in tine resonance creates the characteristic vintage EP imperfection; aftertouch adds expressive wobble depth."
+    },
+    "macro4": {
+      "name": "SPACE",
+      "behavior": "Recording environment — from a dead studio booth (dry, intimate) to a slightly roomy vintage recording space; the copper pufferfish in its natural habitat."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "keys",
+    "brightness": 0.6,
+    "warmth": 0.6,
+    "movement": 0.3,
+    "density": 0.45,
+    "transient_character": "medium"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AmpToPitch"],
+    "best_as_target": ["RhythmToBlend", "AudioToRing", "EnvToMorph"],
+    "recommended_partners": ["OASIS", "ONKOLO", "OPCODE", "OSTINATO"],
+    "coupling_personality": "The spectral odd one out in the Fusion Quad — ODDFELLOW's inharmonic shift creates unusual, metallic AmpToFilter sources; its copper-tined wobble makes it a distinctive partner for rhythmic coupling chains."
+  },
+
+  "mythology": {
+    "creature": "The copper pufferfish — pufferfish with metallic copper sheen; defensive when threatened, its body swells with inharmonic content at maximum velocity",
+    "depth_zone": "reef",
+    "felix_oscar_polarity": 0.5,
+    "accent_color": "#B87333"
+  },
+
+  "metadata": {
+    "param_count": null,
+    "preset_count": null,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}
