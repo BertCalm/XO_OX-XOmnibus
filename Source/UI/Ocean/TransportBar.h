@@ -143,9 +143,9 @@ public:
             case kRegTap:
                 return "Tap tempo — tap repeatedly to set BPM";
             case kRegTimeSigN:
-                return "Time signature — click to cycle (4/4, 3/4, 6/8, 7/8, 5/4)";
+                return "Time signature numerator — click to cycle beat count (4, 3, 6, 7, 5)";
             case kRegTimeSigD:
-                return "Time signature — click to cycle (4/4, 3/4, 6/8, 7/8, 5/4)";
+                return "Time signature denominator — click to cycle note value (4, 4, 8, 8, 4)";
             case kRegSyncInt:
                 return "Internal clock — XOceanus drives its own tempo";
             case kRegSyncHost:
