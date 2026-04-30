@@ -17,9 +17,45 @@ namespace xoceanus
 class PresetBrowserPanel : public juce::Component, public juce::ListBoxModel, public juce::Timer
 {
 public:
-    PresetBrowserPanel(const PresetManager& pm, std::function<void(const PresetData&)> onSelect)
-        : presetManager(pm), onPresetSelected(std::move(onSelect))
+    /** Construct a preset browser panel.
+        @param pm         The preset manager to read from.
+        @param onSelect   Callback fired when a preset row is clicked.
+        @param engineFilter   If non-empty, only presets whose \c engines array contains
+                              this engine ID are shown.  Pass empty string for no filter
+                              (global browser — original behaviour). */
+    PresetBrowserPanel(const PresetManager& pm,
+                       std::function<void(const PresetData&)> onSelect,
+                       const juce::String& engineFilter = {},
+                       int slotIndex = -1)
+        : presetManager(pm), onPresetSelected(std::move(onSelect)),
+          engineFilter_(engineFilter), slotIndex_(slotIndex)
     {
+        // ── Per-slot header (Q1 — #1356) ─────────────────────────────────────
+        // Only shown when an engine filter is active (i.e. opened from a buoy pill).
+        // Displays engine name + slot badge on left, × close button on right.
+        if (engineFilter_.isNotEmpty())
+        {
+            // Engine name label
+            engineHeaderLabel_.setFont(GalleryFonts::display(11.0f));
+            engineHeaderLabel_.setColour(juce::Label::textColourId,
+                                         GalleryColors::get(GalleryColors::xoGold).withAlpha(0.85f));
+            engineHeaderLabel_.setText(engineFilter_.toUpperCase() +
+                                       (slotIndex_ >= 0 ? " \xc2\xb7 Slot " + juce::String(slotIndex_ + 1) : ""),
+                                       juce::dontSendNotification);
+            addAndMakeVisible(engineHeaderLabel_);
+            A11y::setup(engineHeaderLabel_, "Engine preset filter",
+                        "Showing presets for " + engineFilter_ + " only");
+
+            // Close button
+            closeButton_.setButtonText(juce::String(juce::CharPointer_UTF8("\xc3\x97")));
+            closeButton_.setColour(juce::TextButton::textColourOffId,
+                                   GalleryColors::get(GalleryColors::t3()));
+            closeButton_.setColour(juce::TextButton::buttonColourId, juce::Colours::transparentBlack);
+            closeButton_.onClick = [this] { if (onCloseRequested) onCloseRequested(); };
+            addAndMakeVisible(closeButton_);
+            A11y::setup(closeButton_, "Close preset browser", "Close this preset browser");
+        }
+
         // Search field
         searchField.setTextToShowWhenEmpty("Search presets...",
                                            GalleryColors::get(GalleryColors::textMid()).withAlpha(0.65f));
@@ -251,9 +287,23 @@ public:
         g.fillAll(GalleryColors::get(GalleryColors::shellWhite()));
     }
 
+    /** Optional callback: user clicked the × close button in the per-slot header.
+        The owning CallOutBox will handle actual dismissal via juce::CallOutBox::dismiss()
+        or by the parent deleting the component; this fires before that. */
+    std::function<void()> onCloseRequested;
+
     void resized() override
     {
         auto b = getLocalBounds().reduced(8, 6);
+
+        // Per-slot header row (only present when engine filter is active — #1356)
+        if (engineFilter_.isNotEmpty())
+        {
+            auto headerRow = b.removeFromTop(22);
+            closeButton_.setBounds(headerRow.removeFromRight(22).reduced(1, 2));
+            engineHeaderLabel_.setBounds(headerRow);
+            b.removeFromTop(2);
+        }
 
         // Search field row
         auto searchRow = b.removeFromTop(28);
@@ -327,9 +377,12 @@ private:
 
         for (const auto& p : *lib)
         {
-            bool moodMatch = (activeMood == 0) || (p.mood == moodNames[activeMood]);
-            bool nameMatch = query.isEmpty() || p.name.containsIgnoreCase(query);
-            if (moodMatch && nameMatch)
+            bool moodMatch   = (activeMood == 0) || (p.mood == moodNames[activeMood]);
+            bool nameMatch   = query.isEmpty() || p.name.containsIgnoreCase(query);
+            // Q3 engine filter (#1356): if engineFilter_ is set, only show presets that
+            // list this engine in their engines array.
+            bool engineMatch = engineFilter_.isEmpty() || p.engines.contains(engineFilter_);
+            if (moodMatch && nameMatch && engineMatch)
                 filtered.push_back(p);
         }
 
@@ -347,6 +400,12 @@ private:
 
     const PresetManager& presetManager;
     std::function<void(const PresetData&)> onPresetSelected;
+    juce::String engineFilter_; ///< If non-empty, only presets for this engine are shown (#1356).
+    int          slotIndex_ = -1; ///< Slot index displayed in the header badge (#1356). -1 = not shown.
+
+    // Per-slot header components (only visible when engineFilter_ is set — #1356)
+    juce::Label      engineHeaderLabel_;
+    juce::TextButton closeButton_;
 
     juce::TextEditor searchField;
     juce::TextButton moodBtns[kNumMoods];

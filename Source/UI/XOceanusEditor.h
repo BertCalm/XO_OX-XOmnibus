@@ -91,7 +91,8 @@ namespace xoceanus
 // handle reaches via findParentDragContainerFor(this).
 class XOceanusEditor : public juce::AudioProcessorEditor,
                        public CockpitHost, // B041: Dark Cockpit opacity interface
-                       private juce::Timer
+                       private juce::Timer,
+                       private XOceanusProcessor::SlotPresetListener // #1356 per-slot pill sync
 {
 public:
     explicit XOceanusEditor(XOceanusProcessor& proc)
@@ -1564,12 +1565,78 @@ public:
         addAndMakeVisible(toastOverlay_);
         toastOverlay_.setAlwaysOnTop(true);
         ToastOverlay::setInstance(&toastOverlay_);
+
+        // ── #1356: Preset pill → CallOutBox wiring ───────────────────────────
+        // Wire per-slot pill click: open a per-engine filtered PresetBrowserPanel
+        // in a CallOutBox anchored to the buoy bounds.
+        // Constraint: must NOT touch lines 824-836 (#1359 territory).
+        oceanView_.onPresetPillClicked = [this](int slotIndex)
+        {
+            if (slotIndex < 0 || slotIndex >= XOceanusProcessor::kNumPrimarySlots)
+                return;
+
+            auto* eng = processor.getEngine(slotIndex);
+            if (eng == nullptr)
+                return; // empty slot — pill shows "no engine", no menu
+
+            const juce::String engineId = eng->getEngineId();
+            const juce::Rectangle<int> buoyBounds = [&]()
+            {
+                // Translate buoy bounds from OceanView local → screen coords for CallOutBox anchor.
+                auto orbitBounds = oceanView_.getOrbitBounds(slotIndex);
+                return orbitBounds.translated(oceanView_.getScreenX(), oceanView_.getScreenY());
+            }();
+
+            // Build the panel: filtered to slotIndex's engine, menu stays open after load (Q2).
+            auto panel = std::make_unique<PresetBrowserPanel>(
+                processor.getPresetManager(),
+                [this, slotIndex](const PresetData& preset)
+                {
+                    // Apply preset to this slot's engine then update data model + APVTS (Q4).
+                    try
+                    {
+                        processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
+                        processor.applyPreset(preset);
+                        processor.setSlotPreset(slotIndex, preset); // updates APVTS slot{n}_presetName
+                        // Pill text updated via slotPresetChanged() listener (registered below).
+                    }
+                    catch (const std::exception& e)
+                    {
+                        ToastOverlay::show("Could not load " + preset.name + " — " + e.what(),
+                                           Toast::Level::Warn);
+                    }
+                    // Q2: menu stays open — no dismiss here.
+                },
+                engineId,
+                slotIndex);
+
+            // Size: 280x380 per design spec.
+            panel->setSize(PresetBrowserPanel::kMinWidth + 20, 380);
+
+            juce::CallOutBox::launchAsynchronously(
+                std::move(panel),
+                buoyBounds,
+                getTopLevelComponent());
+        };
+
+        // Register this editor as a SlotPresetListener so pills stay in sync
+        // when setStateInformation restores slot presets or undo fires (#1356 acceptance #8).
+        processor.addSlotPresetListener(this);
+
+        // Initialise pill text from current state (e.g. after DAW session restore).
+        for (int i = 0; i < XOceanusProcessor::kNumPrimarySlots; ++i)
+        {
+            const auto& sp = processor.getSlotPreset(i);
+            oceanView_.setOrbitPresetName(i, sp.name);
+        }
     }
 
     ~XOceanusEditor() override
     {
         stopTimer();
         removeKeyListener(statusBar.getKeyListener());
+        // #1356: Unsubscribe from per-slot preset change notifications before teardown.
+        processor.removeSlotPresetListener(this);
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
 
         // #1379: Remove Starboard listeners before any member is destroyed.
@@ -1859,6 +1926,20 @@ public:
     }
 
 private:
+    //==========================================================================
+    // XOceanusProcessor::SlotPresetListener (#1356)
+    //==========================================================================
+
+    /** Called on the message thread whenever a slot's preset changes.
+        Updates the EngineOrbit preset pill text so it stays in sync with any
+        code path that writes via setSlotPreset() (including setStateInformation
+        restores, undo, and our own pill-menu selection). */
+    void slotPresetChanged(int slotIdx, const PresetData& preset) override
+    {
+        jassert(juce::MessageManager::getInstance()->isThisTheMessageThread());
+        oceanView_.setOrbitPresetName(slotIdx, preset.name);
+    }
+
     void selectSlot(int slot)
     {
         // Deselect all tiles (primary + ghost)
