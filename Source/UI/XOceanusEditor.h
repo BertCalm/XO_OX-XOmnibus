@@ -829,12 +829,12 @@ public:
             juce::ignoreUnused(key, value);
         };
 
-        // onTimeSigChanged: no host time-sig setter exists yet. Stub with TODO.
-        oceanView_.onTimeSigChanged = [](int num, int den)
+        // onTimeSigChanged: propagate numerator/denominator to both SharedTransport
+        // (read by all tempo-synced engines) and ChordMachine (sequencer step grid).
+        oceanView_.onTimeSigChanged = [this](int num, int den)
         {
-            // TODO(#wiring-sweep): route numerator/denominator to ChordMachine or
-            // processor host-transport override once the API exists.
-            juce::ignoreUnused(num, den);
+            processor.getHostTransport().setTimeSignature(num, den);
+            processor.getChordMachine().setTimeSignature(num, den);
         };
 
         // onChordBarVisibilityChanged: OceanView already calls resized() internally.

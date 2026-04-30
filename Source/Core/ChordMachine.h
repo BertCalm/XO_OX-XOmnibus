@@ -681,6 +681,21 @@ public:
     void setBPM(float b) { bpm.store(std::max(30.0f, std::min(300.0f, b)), std::memory_order_relaxed); }
     float getBPM() const { return bpm.load(std::memory_order_relaxed); }
 
+    // Time signature — updated from the TransportBar via the editor callback.
+    // The numerator controls how many steps map to one bar; the denominator
+    // is stored so downstream consumers (export, MIDI clock) can reconstruct
+    // the full signature.  Both atomics are read-only on the audio thread.
+    void setTimeSignature(int numerator, int denominator) noexcept
+    {
+        if (numerator > 0 && denominator > 0)
+        {
+            timeSigNumerator_.store(numerator, std::memory_order_release);
+            timeSigDenominator_.store(denominator, std::memory_order_release);
+        }
+    }
+    int getTimeSigNumerator()   const noexcept { return timeSigNumerator_.load(std::memory_order_acquire);   }
+    int getTimeSigDenominator() const noexcept { return timeSigDenominator_.load(std::memory_order_acquire); }
+
     void setSwing(float s) { swing.store(std::max(0.0f, std::min(1.0f, s)), std::memory_order_relaxed); }
     float getSwing() const { return swing.load(std::memory_order_relaxed); }
 
@@ -1576,6 +1591,8 @@ private:
     std::atomic<bool> sequencerRunning{false};
     std::atomic<bool> needsSeqReset{false};
     std::atomic<float> bpm{122.0f};
+    std::atomic<int>   timeSigNumerator_{4};    // set by TransportBar → editor callback
+    std::atomic<int>   timeSigDenominator_{4};  // set by TransportBar → editor callback
     std::atomic<float> swing{0.0f};
     std::atomic<float> globalGate{0.75f};
     std::atomic<int> activePattern{0}; // RhythmPattern
