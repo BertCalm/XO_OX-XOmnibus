@@ -410,6 +410,12 @@ XOceanusProcessor::XOceanusProcessor()
 {
     cacheParameterPointers();
 
+    // #1357 W8B: initialise XY surface position atomics to 0.5 (centre).
+    // std::atomic is not copy/move-constructible, so we cannot use brace-init
+    // in the member declaration — store initial values here instead.
+    for (auto& a : xyX_) a.store(0.5f, std::memory_order_relaxed);
+    for (auto& a : xyY_) a.store(0.5f, std::memory_order_relaxed);
+
     // Wire MIDI learn manager to the APVTS and install default CC mappings.
     midiLearnManager.setAPVTS(&apvts);
     midiLearnManager.loadDefaultMappings();
@@ -2301,6 +2307,22 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                 if (snap.sourceId == static_cast<int>(ModSourceId::LFO1))
                 {
                     srcVal = lfo1Val;
+                }
+                else if (snap.sourceId >= static_cast<int>(ModSourceId::XYX0) &&
+                         snap.sourceId <= static_cast<int>(ModSourceId::XYY3))
+                {
+                    // #1357 W8B: XY surface position sources.
+                    // XYX0..XYX3 = IDs 20..23 (slot 0..3, X axis)
+                    // XYY0..XYY3 = IDs 24..27 (slot 0..3, Y axis)
+                    const bool isX = snap.sourceId < static_cast<int>(ModSourceId::XYY0);
+                    const int xySlot = isX
+                        ? snap.sourceId - static_cast<int>(ModSourceId::XYX0)
+                        : snap.sourceId - static_cast<int>(ModSourceId::XYY0);
+                    if (xySlot < 0 || xySlot >= kNumPrimarySlots)
+                        continue;
+                    // Map [0, 1] → [-1, +1] so centre position produces zero modulation.
+                    const float raw = isX ? getXYX(xySlot) : getXYY(xySlot);
+                    srcVal = raw * 2.0f - 1.0f;
                 }
                 else if (snap.sourceId == static_cast<int>(ModSourceId::SeqStepValue) ||
                          snap.sourceId == static_cast<int>(ModSourceId::BeatPhase)    ||
