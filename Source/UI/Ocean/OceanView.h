@@ -289,7 +289,16 @@ public:
         addAndMakeVisible(playSurfaceOverlay_);
 
         // 11. Floating header controls
-        // Old Gallery floating header buttons — hidden, replaced by SubmarineHudBar.
+        // Old Gallery floating header buttons — INTENTIONALLY HIDDEN (not dead code).
+        // Wave3 #1431 resolution: these buttons are keyboard-shortcut relay objects.
+        // They are never shown visually (replaced by SubmarineHudBar pill affordances)
+        // but their onClick handlers are wired by XOceanusEditor and they receive
+        // programmatic triggerClick() calls from the OceanView keyboard handler
+        // (see keyPressed() — comma/period = presetPrev/Next, S = favButton).
+        // Accessor methods (presetPrevButton(), presetNextButton(), favToggleButton(),
+        // settingsTogButton()) expose them to the editor for this exact purpose.
+        // Do not remove these until the keyboard shortcut path is migrated to
+        // directly call hudBar_ callbacks.
         enginesButton_.setVisible(false);
         enginesButton_.setInterceptsMouseClicks(false, false);
         presetPrev_.setVisible(false);
@@ -1239,6 +1248,9 @@ public:
         // #1007 FIX 3: Keep the inline header label in sync so the spatial grouping
         // "< Preset Name >" is always accurate.
         presetNameLabel_.setText(name, juce::dontSendNotification);
+        // Wave3 bug fix: keep SubmarineHudBar centre pill in sync.
+        // hudBar_.setPresetName() was never called — pill permanently showed "—".
+        hudBar_.setPresetName(name);
     }
     // D6 (#1096): mood identity lives in browser/HUD — no-op here.
     void setMoodName(const juce::String&) {}

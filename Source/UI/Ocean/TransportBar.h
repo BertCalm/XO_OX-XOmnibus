@@ -353,7 +353,7 @@ private:
         const juce::Font pillFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withStyle("Bold")
-            .withHeight(8.0f));
+            .withHeight(10.0f)); // Wave3: bumped from 8px to 10px minimum
 
         const juce::Font monoTimeSigFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultMonospacedFontName())

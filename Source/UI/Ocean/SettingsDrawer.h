@@ -86,10 +86,9 @@ public:
     // juce::Component overrides
     void paint  (juce::Graphics& g) override;
     void resized() override;
-    void mouseMove(const juce::MouseEvent& e) override;
-    void mouseDown(const juce::MouseEvent& e) override;
-    void mouseExit(const juce::MouseEvent& e) override;
-    // Fix #1422: Escape key closes the drawer from within it.
+    // Wave3: mouseMove/mouseDown/mouseExit removed — close button is now a real
+    // juce::TextButton (closeBtn_) with its own JUCE mouse handling.
+    // Fix #1422: Escape key still closes the drawer from within it.
     bool keyPressed(const juce::KeyPress& key) override;
 
     // juce::Timer override
@@ -124,6 +123,32 @@ private:
     // Raised +12% lightness so separator lines are visually distinct from control fills.
     static juce::Colour colBorder()       noexcept { return juce::Colour(0xFF2E3E52); }
     static juce::Colour colCloseBtn()     noexcept { return juce::Colour(0xFF667788); }
+
+    //==========================================================================
+    // LookAndFeel for the close button — dark ocean theme, no frame
+    //==========================================================================
+    struct CloseBtnLnF : public juce::LookAndFeel_V4
+    {
+        void drawButtonBackground(juce::Graphics& g, juce::Button& btn,
+                                  const juce::Colour& /*bg*/,
+                                  bool isHovering, bool isDown) override
+        {
+            if (isDown || isHovering)
+            {
+                g.setColour(juce::Colour(0xFF2E4060).withAlpha(isDown ? 0.90f : 0.55f));
+                g.fillRoundedRectangle(btn.getLocalBounds().toFloat(), 6.0f);
+            }
+        }
+
+        void drawButtonText(juce::Graphics& g, juce::TextButton& btn,
+                            bool isHovering, bool /*isDown*/) override
+        {
+            g.setFont(GalleryFonts::body(17.0f));
+            g.setColour(isHovering ? juce::Colour(0xFFFFFFFF) : colCloseBtn());
+            g.drawText(btn.getButtonText(),
+                       btn.getLocalBounds(), juce::Justification::centred, false);
+        }
+    };
 
     //==========================================================================
     // Animation state
@@ -309,9 +334,9 @@ private:
     float     animProgress_ = 0.0f;
     int64_t   animStartMs_  = 0;
 
-    // Close button
-    juce::Rectangle<int> closeBtnBounds_;
-    bool                 closeBtnHovered_ = false;
+    // Close button — real Component (Wave3: promoted from paint-only)
+    CloseBtnLnF        closeBtnLnF_;
+    juce::TextButton   closeBtn_ { juce::String::fromUTF8("\xC3\x97") }; // ×
 
     // LookAndFeels (must outlive the controls that use them)
     DarkComboLnF   comboLnF_;
@@ -370,6 +395,14 @@ inline SettingsDrawer::SettingsDrawer()
     // can navigate the controls inside and Escape can close the drawer.
     A11y::setup(*this, "Settings", "Plugin settings panel — polyphony, voice mode, MIDI, UI scale");
 
+    // Wave3: close button as real Component (was paint-only in Wave 2).
+    // Gives proper keyboard focus, A11y role, and JUCE hover state.
+    closeBtn_.setLookAndFeel(&closeBtnLnF_);
+    closeBtn_.setTooltip("Close settings");
+    A11y::setup(closeBtn_, "Close Settings", "Close the settings drawer");
+    closeBtn_.onClick = [this]() { close(); };
+    addAndMakeVisible(closeBtn_);
+
     // Viewport — vertical scroll only; no horizontal scroll bar
     viewport_.setViewedComponent(&contentComp_, false);
     viewport_.setScrollBarsShown(true, false);
@@ -386,6 +419,7 @@ inline SettingsDrawer::~SettingsDrawer()
 {
     stopTimer();
     // Detach LookAndFeels before controls destruct (JUCE requirement)
+    closeBtn_.setLookAndFeel(nullptr);
     polyphonyCombo_.setLookAndFeel(nullptr);
     voiceModeCombo_.setLookAndFeel(nullptr);
     unisonVoicesCombo_.setLookAndFeel(nullptr);
@@ -715,11 +749,8 @@ inline void SettingsDrawer::paint(juce::Graphics& g)
                    bounds.withHeight(kHeaderH).withTrimmedLeft(48).withTrimmedRight(16),
                    juce::Justification::centredLeft, false);
 
-        // Close button (×) on the LEFT side for a right drawer
-        g.setFont(GalleryFonts::body(17.0f));
-        g.setColour(closeBtnHovered_ ? juce::Colour(0xFFFFFFFF) : colCloseBtn());
-        g.drawText(juce::String::fromUTF8("\xC3\x97"),
-                   closeBtnBounds_, juce::Justification::centred, false);
+        // Close button (×) is now a real juce::TextButton (Wave3).
+        // It paints itself via CloseBtnLnF — nothing to draw here.
 
         g.setColour(colBorder());
         g.drawHorizontalLine(kHeaderH - 1, 0.0f, (float)bounds.getWidth());
@@ -744,8 +775,9 @@ inline void SettingsDrawer::resized()
 
     // ── Title bar ─────────────────────────────────────────────────────────────
     auto titleBar = b.removeFromTop(kHeaderH);
-    // Close button: 36×36, on the LEFT side (x=8) for right-side drawer
-    closeBtnBounds_ = titleBar.removeFromLeft(44).withSizeKeepingCentre(36, 36);
+    // Close button: 36×36 real Component on the LEFT side (x=8) for right-side drawer.
+    // Wave3: was a paint-only rect; now a real juce::TextButton.
+    closeBtn_.setBounds(titleBar.removeFromLeft(44).withSizeKeepingCentre(36, 36));
 
     // ── Scrollable content ────────────────────────────────────────────────────
     viewport_.setBounds(b);
@@ -869,31 +901,9 @@ inline void SettingsDrawer::layoutContent(int contentWidth)
     contentComp_.repaint();
 }
 
-//------------------------------------------------------------------------------
-inline void SettingsDrawer::mouseMove(const juce::MouseEvent& e)
-{
-    const bool nowHovered = closeBtnBounds_.contains(e.getPosition());
-    if (nowHovered != closeBtnHovered_)
-    {
-        closeBtnHovered_ = nowHovered;
-        repaint(closeBtnBounds_);
-    }
-}
-
-inline void SettingsDrawer::mouseDown(const juce::MouseEvent& e)
-{
-    if (closeBtnBounds_.contains(e.getPosition()))
-        close();
-}
-
-inline void SettingsDrawer::mouseExit(const juce::MouseEvent& /*e*/)
-{
-    if (closeBtnHovered_)
-    {
-        closeBtnHovered_ = false;
-        repaint(closeBtnBounds_);
-    }
-}
+// Wave3: mouseMove, mouseDown, mouseExit for the close button are removed.
+// The close button is now a real juce::TextButton (closeBtn_) that handles
+// its own hover, click, and focus states via CloseBtnLnF.
 
 // Fix #1422: allow Escape to close the drawer when it has keyboard focus.
 inline bool SettingsDrawer::keyPressed(const juce::KeyPress& key)

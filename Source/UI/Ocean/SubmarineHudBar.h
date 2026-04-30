@@ -105,6 +105,30 @@ public:
     }
 
     //==========================================================================
+    // juce::TooltipClient — Wave3: tooltips for every HudBar region.
+    // Returns a tooltip string based on the currently hovered region.
+    juce::String getTooltip() override
+    {
+        switch (hoveredRegion_)
+        {
+            case kRegEngines:     return "Open Engine Library";
+            case kRegUndo:        return "Undo last action";
+            case kRegRedo:        return "Redo last undone action";
+            case kRegPresetPrev:  return "Previous preset";
+            case kRegPresetName:  return "Current preset — click to open browser";
+            case kRegPresetNext:  return "Next preset";
+            case kRegFav:         return isFav_ ? "Remove from favourites" : "Add to favourites";
+            case kRegSave:        return "Save current state as a preset";
+            case kRegABCompare:   return abCompareActive_ ? "Deactivate A/B compare" : "A/B compare — snapshot current params for quick toggle";
+            case kRegChain:       return chainModeActive_ ? "Deactivate chain mode" : "Chain mode — link engine modulation in series";
+            case kRegExport:      return "Export to MPC-compatible XPN pack";
+            case kRegDial:        return "REACT — ocean visual reactivity to audio (drag up/down)";
+            case kRegSettings:    return "Open settings";
+            default:              return {};
+        }
+    }
+
+    //==========================================================================
     // State pushers — call from editor on the message thread.
 
     void setChainModeActive(bool active)
@@ -799,9 +823,15 @@ private:
         const float mx = static_cast<float>(e.x);
         const float my = static_cast<float>(e.y);
 
+        // Wave3 #1420: expand hit region so effective click height reaches ≥44px
+        // without any visual change. kBtnHeight = 28px visual; kBarHeight = 40px.
+        // A 8px uniform expansion brings the hit area to 44×(kBtnHeight+16) = 44px tall,
+        // which satisfies WCAG 2.5.5 (AA) for desktop pointer interaction.
+        static constexpr float kHitExpand = 8.0f;
+
         for (const auto& reg : regions_)
         {
-            if (reg.bounds.expanded(2.0f).contains(mx, my))
+            if (reg.bounds.expanded(kHitExpand).contains(mx, my))
                 return reg.id;
         }
         return -1;

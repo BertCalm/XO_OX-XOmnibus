@@ -242,6 +242,9 @@ public:
         cinematicToggleBtn.onClick = [this]
         {
             layout.cinematicMode = cinematicToggleBtn.getToggleState();
+            // Wave3: persist cinematic mode — previously toggled but never saved.
+            if (settingsFile_)
+                settingsFile_->setValue("cinematicMode", layout.cinematicMode);
             resized();
         };
 
@@ -703,6 +706,13 @@ public:
         // Override the default slot=0 with the persisted selection.
         cockpitBypass_ = processor.getPersistedCockpitBypass();
         signalFlowActiveSection = processor.getPersistedSignalFlowSection();
+
+        // Wave3: restore cinematicMode (was toggled but never persisted before this fix).
+        if (settingsFile_ && settingsFile_->containsKey("cinematicMode"))
+        {
+            layout.cinematicMode = settingsFile_->getBoolValue("cinematicMode", false);
+            cinematicToggleBtn.setToggleState(layout.cinematicMode, juce::dontSendNotification);
+        }
 
         // D4: Restore register lock state from persisted processor state.
         {
@@ -1742,6 +1752,9 @@ public:
         {
             layout.cinematicMode = !layout.cinematicMode;
             cinematicToggleBtn.setToggleState(layout.cinematicMode, juce::dontSendNotification);
+            // Wave3: persist so the M-key shortcut also saves (matches button onClick).
+            if (settingsFile_)
+                settingsFile_->setValue("cinematicMode", layout.cinematicMode);
             resized();
             return true;
         }
