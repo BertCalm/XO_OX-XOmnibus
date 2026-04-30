@@ -925,6 +925,147 @@ public:
             }
         };
 
+        // fix(#1354): Wire the 6 previously-unwired HUD bar callbacks.
+        //
+        // onPresetPrev / onPresetNext — same pattern as the legacy header prev/next buttons.
+        oceanView_.onPresetPrev = [this]()
+        {
+            auto& pm = processor.getPresetManager();
+            pm.previousPreset();
+            try
+            {
+                const auto& preset = pm.getCurrentPreset();
+                processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
+                processor.applyPreset(preset);
+            }
+            catch (const std::exception& e)
+            {
+                ToastOverlay::show("Failed to load preset: " + juce::String(e.what()),
+                                   Toast::Level::Warn);
+                processor.killDelayTails();
+            }
+        };
+
+        oceanView_.onPresetNext = [this]()
+        {
+            auto& pm = processor.getPresetManager();
+            pm.nextPreset();
+            try
+            {
+                const auto& preset = pm.getCurrentPreset();
+                processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
+                processor.applyPreset(preset);
+            }
+            catch (const std::exception& e)
+            {
+                ToastOverlay::show("Failed to load preset: " + juce::String(e.what()),
+                                   Toast::Level::Warn);
+                processor.killDelayTails();
+            }
+        };
+
+        // onSavePreset — prompt for a name via juce::AlertWindow, then write the
+        // .xometa file via PresetManager::savePresetToFile().
+        // TODO(#1354): A richer "Save As" dialog (overwrite-check, mood selector)
+        // is a follow-up task.  For now, a modal input box is sufficient.
+        oceanView_.onSavePreset = [this]()
+        {
+            auto& pm = processor.getPresetManager();
+            const juce::String currentName = pm.getCurrentPreset().name;
+            const juce::String suggestion  = currentName.isEmpty() ? "My Preset" : currentName;
+
+            // takeOwnership=true: JUCE manages lifetime — do NOT delete dialog inside callback.
+            auto* dialog = new juce::AlertWindow(
+                "Save Preset",
+                "Enter a name for this preset:",
+                juce::MessageBoxIconType::NoIcon,
+                this);
+            dialog->addTextEditor("name", suggestion, "Preset name:");
+            dialog->addButton("Save",   1);
+            dialog->addButton("Cancel", 0);
+
+            dialog->enterModalState(
+                true,
+                juce::ModalCallbackFunction::create(
+                    [safeThis = juce::Component::SafePointer<XOceanusEditor>(this), dialog](int result)
+                    {
+                        if (result != 1 || safeThis == nullptr)
+                            return;
+
+                        const juce::String newName = dialog->getTextEditorContents("name").trim();
+                        if (newName.isEmpty())
+                            return;
+
+                        auto& pm2  = safeThis->processor.getPresetManager();
+                        auto  data = pm2.getCurrentPreset();
+                        data.name  = newName;
+
+                        const auto presetDir =
+                            juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
+                                .getChildFile("Application Support/XO_OX/XOceanus/Presets");
+                        presetDir.createDirectory();
+                        const auto file = presetDir.getChildFile(data.name + ".xometa");
+
+                        if (pm2.savePresetToFile(file, data))
+                        {
+                            pm2.setCurrentPreset(data);
+                            ToastOverlay::show("Preset saved: " + data.name, Toast::Level::Info);
+                            // Rescan so the new preset appears in the browser immediately.
+                            if (auto* sb = safeThis->oceanView_.getSidebar())
+                                sb->refreshPresetBrowser();
+                        }
+                        else
+                        {
+                            ToastOverlay::show(
+                                "Failed to save preset — check disk space or permissions.",
+                                Toast::Level::Warn);
+                        }
+                    }),
+                true /* deleteWhenDismissed */);
+        };
+
+        // onFavToggled — toggle favourite status on the current preset and persist.
+        // Routes to PresetBrowser::toggleFavorite() which handles settings-file I/O.
+        oceanView_.onFavToggled = [this](bool /*newFavState*/)
+        {
+            auto& pm = processor.getPresetManager();
+            const auto& current = pm.getCurrentPreset();
+            if (current.name.isEmpty())
+                return;
+
+            // Reach the PresetBrowser via the OceanView sidebar (always present).
+            if (auto* sb = oceanView_.getSidebar())
+                if (auto* pb = sb->getPresetBrowser())
+                    pb->toggleFavorite(current);
+        };
+
+        // onABCompareToggled — delegate to the (hidden) ABCompare Gallery component.
+        // When active=true: enter A/B mode (captures A snapshot).
+        // When active=false: deactivate (clears A/B slots, no state restore).
+        oceanView_.onABCompareToggled = [this](bool active)
+        {
+            abCompare.setABActive(active);
+        };
+
+        // onExportClicked — open the ExportDialog in a CallOutBox anchored to the
+        // HUD bar (same as the legacy exportBtn in the Gallery header).
+        oceanView_.onExportClicked = [this]()
+        {
+            juce::CallOutBox::launchAsynchronously(
+                std::make_unique<ExportDialog>(processor.getPresetManager(),
+                                               &processor.getAPVTS(),
+                                               &processor.getCouplingMatrix()),
+                oceanView_.getScreenBounds(), getTopLevelComponent());
+        };
+
+        // onPresetNameClicked — clicking the preset name label opens the Preset tab
+        // in the OceanView sidebar so the user can browse and select a preset.
+        oceanView_.onPresetNameClicked = [this]()
+        {
+            if (auto* sb = oceanView_.getSidebar())
+                sb->selectTab(SidebarPanel::Preset);
+        };
+
         // Wire MIDI + PlaySurface inside OceanView
         {
             auto& ps = oceanView_.getPlaySurface();
