@@ -582,23 +582,26 @@ private:
     OBadgeButton
 
     The "O" brand badge — a small circular button in the top-left corner of the
-    Ocean View that opens the AboutModal.  D12 spec:
-      - Single click → open About tab.
-      - Long-press (≥500 ms) → open Lore tab.
-        TODO D12: long-press detection stubbed; click opens About tab only.
-        Full long-press wiring deferred — a 500ms Timer would need to be added
-        and state managed across mouseUp cancellation.
+    Ocean View that opens the AboutModal.  D12 spec (fully wired):
+      - Single click (< 500 ms hold, no drag) → onClick  → open About tab.
+      - Long-press (≥ 500 ms hold)            → onLongPress → open Lore tab.
+      - Press + drag (> 4 px)                → canceled; no modal opens.
 
+    Inherits juce::Timer privately to implement the 500 ms long-press threshold.
     The button is placed as a direct child of XOceanusEditor (sits above OceanView)
     so it overlays the OceanView without modifying Wave 1B files.
 */
 class OBadgeButton : public juce::Component,
-                     public juce::SettableTooltipClient
+                     public juce::SettableTooltipClient,
+                     private juce::Timer
 {
 public:
     //==========================================================================
-    // Callback — wired to aboutModal_.openTab() in the editor.
+    // Callbacks — wired to aboutModal_.openTab() in the editor.
+    // onClick      → single click  → open About tab.
+    // onLongPress  → ≥500 ms hold  → open Lore tab.
     std::function<void()> onClick;
+    std::function<void()> onLongPress;
 
     //==========================================================================
     OBadgeButton()
@@ -606,10 +609,12 @@ public:
         setOpaque(false);
         setInterceptsMouseClicks(true, false);
         setSize(kBadgeSize, kBadgeSize);
-        setTooltip("About XOceanus");
+        setTooltip("About XOceanus  (hold for Lore)");
     }
 
-    static constexpr int kBadgeSize = 28;
+    static constexpr int  kBadgeSize          = 28;
+    static constexpr int  kLongPressMs        = 500;   // D12: 500 ms threshold
+    static constexpr int  kDragCancelThreshPx = 4;     // cancel if dragged beyond 4 px
 
     //==========================================================================
     void paint(juce::Graphics& g) override
@@ -645,20 +650,47 @@ public:
     }
 
     //==========================================================================
-    void mouseDown(const juce::MouseEvent&) override
+    void mouseDown(const juce::MouseEvent& e) override
     {
+        mouseDownPos_   = e.getPosition();
+        longPressFired_ = false;
+        startTimer(kLongPressMs);
         repaint();
     }
 
     void mouseUp(const juce::MouseEvent& e) override
     {
         repaint();
-        if (getLocalBounds().contains(e.x, e.y))
+        if (longPressFired_)
         {
-            // D12: single click → About tab (long-press → Lore is a TODO).
-            // TODO D12: long-press → Lore tab (requires 500ms timer + mouseUp cancellation).
+            // Long-press already dispatched from timerCallback(); nothing to do.
+            stopTimer();
+            longPressFired_ = false;
+            return;
+        }
+
+        stopTimer();
+
+        // Only fire onClick for a genuine click (button still under cursor, no drag cancel).
+        if (!dragCanceled_ && getLocalBounds().contains(e.x, e.y))
+        {
             if (onClick)
                 onClick();
+        }
+        dragCanceled_ = false;
+    }
+
+    void mouseDrag(const juce::MouseEvent& e) override
+    {
+        if (dragCanceled_)
+            return;
+
+        const int dist = e.getPosition().getDistanceFrom(mouseDownPos_);
+        if (dist > kDragCancelThreshPx)
+        {
+            // Finger moved too far — treat as drag, not a press gesture.
+            dragCanceled_ = true;
+            stopTimer();
         }
     }
 
@@ -666,6 +698,22 @@ public:
     void mouseExit (const juce::MouseEvent&) override { repaint(); }
 
     //==========================================================================
+private:
+    void timerCallback() override
+    {
+        // Fires exactly once after kLongPressMs ms while the button is still held.
+        stopTimer();
+        longPressFired_ = true;
+        if (onLongPress)
+            onLongPress();
+    }
+
+    juce::Point<int> mouseDownPos_;
+    bool             longPressFired_ = false;
+    bool             dragCanceled_   = false;
+
+    //==========================================================================
+public:
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OBadgeButton)
 };
 
