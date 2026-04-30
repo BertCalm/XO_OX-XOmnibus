@@ -476,7 +476,7 @@ private:
     void centrePromptOverlay()
     {
         if (promptOverlay_ == nullptr) return;
-        constexpr int pw = 300, ph = 110;
+        constexpr int pw = 300, ph = 126; // +16 px to accommodate 44-px WCAG button heights
         promptOverlay_->setBounds ((getWidth()  - pw) / 2,
                                    (getHeight() - ph) / 2,
                                    pw, ph);
@@ -613,9 +613,9 @@ private:
 
         void resized() override
         {
-            const int btnY = getHeight() - 42;
-            declineBtn_.setBounds (12,                    btnY, 80, 28);
-            acceptBtn_.setBounds  (getWidth() - 100, btnY, 88, 28);
+            const int btnY = getHeight() - 54; // 10px bottom margin + 44px button height
+            declineBtn_.setBounds (12,                    btnY, 80, 44);
+            acceptBtn_.setBounds  (getWidth() - 100, btnY, 88, 44);
         }
 
     private:
@@ -651,5 +651,4 @@ private:
 //   3. addAndMakeVisible(walkthrough_) in initOceanView() before toastOverlay_.
 //   4. setBounds in resized() OceanView branch.
 //   5. promptIfEligible() fired on first timerCallback tick via walkthroughTriggeredThisSession_ guard.
-//   6. Settings "Restart Walkthrough" — TODO: wire restartWalkthrough() in SettingsPanel
-//      when Settings > Experience section is built (issue #1303 follow-up).
+//   6. Settings "Restart Walkthrough" — restartWalkthrough() wired in SettingsPanel.

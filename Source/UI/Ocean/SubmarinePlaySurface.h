@@ -6,7 +6,7 @@
 // Replaces the Gallery-style PlaySurface with a submarine-prototype-matched component.
 // Four modes controlled externally via setMode():
 //
-//   KEYS — 2-octave MPE keyboard. White keys fill width; black keys overlay at correct
+//   KEYS — 4-octave MPE keyboard. White keys fill width; black keys overlay at correct
 //           positions. Drag across keys fires note-off/note-on transitions. Supports
 //           Y-position velocity on press.
 //
@@ -86,7 +86,7 @@ public:
         repaint();
     }
 
-    /** Set base octave for KEYS mode (default 4 = C4). Clamped to [0, 8]. */
+    /** Set base octave for KEYS mode (default 2 = C2, C2-C5 range). Clamped to [0, 8]. */
     void setOctave(int oct)
     {
         baseOctave_ = juce::jlimit(0, 8, oct);
@@ -331,7 +331,7 @@ private:
 
     int baseMidiForKeys() const noexcept
     {
-        // MIDI = 12*(octave+1) + semitone.  baseOctave_=4 → C4 = 60
+        // MIDI = 12*(octave+1) + semitone.  baseOctave_=2 → C2 = 36
         return 12 * (baseOctave_ + 1);
     }
 

@@ -428,7 +428,7 @@ private:
         int cols  = kGridCols;
         int totalW = getWidth() - kPadGap * 2; // total pad area width
         int padW  = (totalW - kPadGap * (cols - 1)) / cols;
-        int padH  = juce::jmax(kPadSize, padW); // square-ish; min 56pt
+        int padH  = padW; // locked design decision: square pads
 
         int x0 = kPadGap;
         int y0 = kTopPad;
@@ -567,7 +567,7 @@ private:
         int rows  = (numVoices + cols - 1) / cols;
         int totalW = getWidth() - kPadGap * 2;
         int padW  = (totalW - kPadGap * (cols - 1)) / cols;
-        int padH  = juce::jmax(kPadSize, padW);
+        int padH  = padW; // locked design decision: square pads
 
         return kTopPad + kPadGap + rows * (padH + kPadGap) + kParamStripPad + kParamHeaderH;
     }
