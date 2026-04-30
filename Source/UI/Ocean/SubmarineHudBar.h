@@ -96,6 +96,11 @@ public:
         // Container passes through events to hit regions via manual hit-testing.
         // Children are painted manually — no real child components.
         setInterceptsMouseClicks(true, true);
+
+        // Fix #1424: expose primary transport strip to screen readers.
+        A11y::setup(*this,
+                    "Transport and Preset Bar",
+                    "Main transport controls: engines, undo, redo, preset navigation, save, export, settings");
     }
 
     //==========================================================================
