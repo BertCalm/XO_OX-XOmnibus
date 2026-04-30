@@ -87,10 +87,10 @@ public:
     static constexpr float kParticleSpeed        = 0.15f;   ///< fraction of path per second
     static constexpr float kParticleDiameter     = 4.0f;    ///< px
     static constexpr float kControlBowFactor     = 0.15f;   ///< bow = chordLength * factor, clamped [20,28]
-    static constexpr int   kTimerHz              = 30;      ///< timer frequency
+    static constexpr int   kTimerHz              = 60;      ///< timer frequency
 
     // Coupling Evolution constants
-    static constexpr float kAgeIncrement         = 1.0f / (60.0f * 30.0f); ///< reaches 1.0 after 60 s at 30 Hz
+    static constexpr float kAgeIncrement         = 1.0f / (60.0f * static_cast<float>(kTimerHz)); ///< reaches 1.0 after 60 s at kTimerHz
     static constexpr float kMaxAgeStrokeScale    = 2.5f;   ///< mature threads are 2.5× base stroke
     static constexpr float kMaxAgeGlowScale      = 2.0f;   ///< mature threads glow at 2× kGlowAlphaBase
     static constexpr float kFadeDecay            = 0.95f;  ///< fadeAlpha_ multiplier per tick (~2 s to fade)

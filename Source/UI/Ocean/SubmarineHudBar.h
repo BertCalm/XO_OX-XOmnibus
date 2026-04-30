@@ -291,21 +291,26 @@ private:
             rx -= btnW + gap;
         }
 
-        // Favourite ♥ icon button (24×28)
+        // Favourite ♥ icon button (24×28 visual; 44×44 hit target for WCAG compliance)
         {
             const float btnW = 24.0f;
             juce::Rectangle<float> r(rx - btnW, btnY, btnW, static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegFav });
             favBounds_ = r;
+            // Expand hit rect to ≥44×44; centre on visual glyph.
+            const float hitExpandH = std::max(0.0f, (44.0f - r.getWidth())  / 2.0f);
+            const float hitExpandV = std::max(0.0f, (44.0f - r.getHeight()) / 2.0f);
+            regions_.push_back({ r.expanded(hitExpandH, hitExpandV), kRegFav });
             rx -= btnW + gap;
         }
 
-        // ▶ next preset
+        // ▶ next preset (20×28 visual; 44×44 hit target)
         {
             const float btnW = 20.0f;
             juce::Rectangle<float> r(rx - btnW, btnY, btnW, static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegPresetNext });
             presetNextBounds_ = r;
+            const float hitExpandH = std::max(0.0f, (44.0f - r.getWidth())  / 2.0f);
+            const float hitExpandV = std::max(0.0f, (44.0f - r.getHeight()) / 2.0f);
+            regions_.push_back({ r.expanded(hitExpandH, hitExpandV), kRegPresetNext });
             rx -= btnW + 2.0f;
         }
 
@@ -317,12 +322,14 @@ private:
             regions_.push_back({ presetNameBounds_, kRegPresetName });
         }
 
-        // ◀ prev preset (immediately right of left cursor x)
+        // ◀ prev preset (20×28 visual; 44×44 hit target)
         {
             const float btnW = 20.0f;
             juce::Rectangle<float> r(x, btnY, btnW, static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegPresetPrev });
             presetPrevBounds_ = r;
+            const float hitExpandH = std::max(0.0f, (44.0f - r.getWidth())  / 2.0f);
+            const float hitExpandV = std::max(0.0f, (44.0f - r.getHeight()) / 2.0f);
+            regions_.push_back({ r.expanded(hitExpandH, hitExpandV), kRegPresetPrev });
         }
     }
 
