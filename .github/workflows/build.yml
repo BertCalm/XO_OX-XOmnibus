@@ -8,6 +8,9 @@ on:
       - 'Tests/**'
       - 'CMakeLists.txt'
       - '.github/workflows/build.yml'
+      - '.github/workflows/coverage.yml'
+      - '.github/workflows/sanitizers.yml'
+      - '.github/workflows/release.yml'
       - 'Libs/**'
   pull_request:
     branches: [main]
@@ -16,6 +19,9 @@ on:
       - 'Tests/**'
       - 'CMakeLists.txt'
       - '.github/workflows/build.yml'
+      - '.github/workflows/coverage.yml'
+      - '.github/workflows/sanitizers.yml'
+      - '.github/workflows/release.yml'
       - 'Libs/**'
 
 concurrency:
