@@ -1241,8 +1241,13 @@ public:
         obadge_.onClick = [this]
         {
             // D12: single click → About tab.
-            // TODO D12: long-press → Lore tab (deferred; see OBadgeButton::mouseUp comment).
             aboutModal_.openTab(AboutModal::Tab::About);
+        };
+
+        obadge_.onLongPress = [this]
+        {
+            // D12: long-press (≥ 500 ms) → Lore tab.
+            aboutModal_.openTab(AboutModal::Tab::Lore);
         };
 
         addChildComponent(aboutModal_);
