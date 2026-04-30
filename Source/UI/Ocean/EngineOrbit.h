@@ -856,6 +856,10 @@ public:
 
     void setWreathData(const float* samples, int count, float rms)
     {
+        // F2-021: Wreath data must be pushed from the message thread only —
+        // it is read by paint() on the same thread without any synchronisation.
+        jassert(juce::MessageManager::getInstance()->isThisTheMessageThread());
+
         const int n = std::min(count, kWreathBufferSize);
         for (int i = 0; i < n; ++i)
             wreathBuffer_[static_cast<size_t>(i)] = samples[i];
@@ -995,6 +999,15 @@ public:
     void stepAnimation()
     {
         if (!hasEngine_) return;
+
+        // F2-008: Recover from system-yanked mouse capture (Alt+Tab, Cmd+Tab, window focus loss).
+        // JUCE has no mouseLostCapture() virtual — poll in the animation tick instead.
+        // If we believe a drag is in progress but no mouse button is down, cancel it.
+        if (isDragging_ && !juce::Desktop::getInstance().getMainMouseSource().isDragging())
+        {
+            isDragging_ = false;
+            inputState_ = InputState::Settling;
+        }
 
         const bool reducedMotion = A11y::prefersReducedMotion();
         constexpr float twoPi = juce::MathConstants<float>::twoPi;

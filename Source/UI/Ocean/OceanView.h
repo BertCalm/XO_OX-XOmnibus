@@ -742,6 +742,10 @@ public:
             layout_->layoutForState(s, getLocalBounds(), 1.0f);
             layout_->reorderZStack();
             repaint();
+
+            // F2-006: Notify editor of ViewState change so it can persist the state.
+            if (onViewStateChanged)
+                onViewStateChanged(static_cast<int>(s), stateMachine_.selectedSlot());
         };
 
         // onAnimationFrame: stubbed for future animated transitions.
@@ -1175,6 +1179,15 @@ public:
 
     void mouseExit(const juce::MouseEvent& /*e*/) override
     {
+        // F2-013: Cancel any in-progress coupling chain when the cursor leaves OceanView.
+        // Without this, the ghost chain line stays rendered indefinitely.
+        if (chainStartSlot_ >= 0)
+        {
+            chainStartSlot_ = -1;
+            substrate_.setChainInProgress(false, -1, {});
+            setMouseCursor(juce::MouseCursor::NormalCursor);
+            repaint();
+        }
     }
 
     //==========================================================================
@@ -1508,6 +1521,16 @@ public:
     /** Fired when an engine slot is selected (zoom-in). -1 means deselected. */
     std::function<void(int slot)> onEngineSelected;
 
+    /** F2-006: Fired when the OceanView transitions to a new ViewState.
+        @param stateInt  0=Orbital, 1=ZoomIn, 2=SplitTransform, 3=BrowserOpen.
+        @param slot      Active engine slot for ZoomIn/SplitTransform; -1 otherwise. */
+    std::function<void(int stateInt, int slot)> onViewStateChanged;
+
+    /** F2-012: Called from OceanView's 30Hz timerCallback to pull per-slot waveform
+        data from the processor.  Wire in the editor to call pushSlotWaveData() for
+        each active slot so wreath data is updated at the same rate as the animation. */
+    std::function<void()> onPullWaveformData;
+
     /** Fired when an engine slot enters SplitTransform (double-click dive). */
     std::function<void(int slot)> onEngineDiveDeep;
 
@@ -1621,6 +1644,15 @@ public:
     // Phase 3 (#1184): viewState_ removed — read from OceanStateMachine.
     ViewState getViewState()    const noexcept { return stateMachine_.currentState(); }
     int       getSelectedSlot() const noexcept { return stateMachine_.selectedSlot(); }
+
+    /** F2-006/F2-015: Public entry point for externally triggering a ZoomIn transition.
+        Used by the editor to restore persisted navigation state on session reload.
+        Safe to call before the component is visible (deferred via callAfterDelay). */
+    void requestZoomIn(int slot)
+    {
+        if (slot >= 0 && slot < 5)
+            transitionToZoomIn(slot);
+    }
 
     bool isSlotMuted  (int slot) const noexcept
     {
@@ -2120,6 +2152,12 @@ private:
 
     void timerCallback() override
     {
+        // F2-012: Pull per-slot waveform data at the same 30Hz rate as orbit animation,
+        // so wreath visualisation is always in sync with the animation frame.
+        // The callback is wired by the editor to read from processor WaveformFifos.
+        if (onPullWaveformData)
+            onPullWaveformData();
+
         // Drive all orbit animations from one synchronized 30 Hz timer.
         for (auto& orbit : orbits_)
             orbit.stepAnimation();
@@ -2144,7 +2182,7 @@ private:
         // when it reaches zero we flush all 5 positions in one PropertiesFile write.
         if (positionSaveCountdown_ > 0)
         {
-            positionSaveCountdown_ -= 1000 / 30; // subtract one tick worth of ms
+            positionSaveCountdown_ -= getTimerInterval(); // F2-020: use actual interval, not hardcoded 1000/30
             if (positionSaveCountdown_ <= 0)
             {
                 positionSaveCountdown_ = 0;
