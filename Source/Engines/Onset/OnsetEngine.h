@@ -1919,6 +1919,11 @@ public:
         percModPunchOffset  = 0.0f;
         percModMutateOffset = 0.0f;
         percModSpaceOffset  = 0.0f;
+        // T6: clear stale global mod matrix offsets on reset.
+        globalModLevelOffset_ = 0.0f;
+        globalModPunchOffset_ = 0.0f;
+        globalModToneOffset_  = 0.0f;
+        globalModGritOffset_  = 0.0f;
     }
 
     //-- Render ------------------------------------------------------------------
@@ -1990,9 +1995,35 @@ public:
             percModSpaceOffset  = mDst[4] * 0.4f;
         }
 
+        // T6: Global mod-matrix opt-in — consume offsets from XOceanusProcessor's
+        // Onset-specific atomics (written by route eval loop each processBlock).
+        //
+        // Strategy 2 (D001): the processor stores raw depth for velocity-scaled routes
+        // (not depth*vel).  We multiply by lastTriggerVelocity (kit-level latch) here.
+        // For the T6 scope, all wired routes target velocity-scaled destinations, so
+        // multiplying the full accumulated value by vel is always correct.
+        //
+        // FUTURE NOTE: if non-velocity sources (LFO, XOuija) are wired to these same
+        // atomics, the processor and engine must negotiate a split (two atomics per param:
+        // one for vel-scaled depth, one for srcVal*depth).  For now, one atomic suffices.
+        //
+        // DSP safety: no allocation, no locks, no logging. Pointer guard for pre-wiring.
+        {
+            const float rawLevel = pGlobalPercLevel_ ? pGlobalPercLevel_->load(std::memory_order_relaxed) : 0.0f;
+            const float rawPunch = pGlobalPercPunch_ ? pGlobalPercPunch_->load(std::memory_order_relaxed) : 0.0f;
+            const float rawTone  = pGlobalPercTone_  ? pGlobalPercTone_->load(std::memory_order_relaxed)  : 0.0f;
+            const float rawGrit  = pGlobalPercGrit_  ? pGlobalPercGrit_->load(std::memory_order_relaxed)  : 0.0f;
+            const float vel = lastTriggerVelocity; // kit-level latch — last note-on velocity
+            globalModLevelOffset_ = rawLevel * vel;
+            globalModPunchOffset_ = rawPunch * vel;
+            globalModToneOffset_  = rawTone  * vel;
+            globalModGritOffset_  = rawGrit  * vel;
+        }
+
         // M2 PUNCH: bias snap and body (0=soft, 1=aggressive)
         // D006: aftertouch adds up to +0.3 to PUNCH macro (sensitivity 0.3)
-        mPunch = clamp(mPunch + atPressure * 0.3f + percModPunchOffset, 0.0f, 1.0f);
+        // T6: globalModPunchOffset_ adds global-mod-matrix Velocity→Punch contribution.
+        mPunch = clamp(mPunch + atPressure * 0.3f + percModPunchOffset + globalModPunchOffset_, 0.0f, 1.0f);
         float punchBias = (mPunch - 0.5f) * 0.6f;
         for (int v = 0; v < kNumVoices; ++v)
         {
@@ -2041,9 +2072,11 @@ public:
             vBlend[6] = clamp(vBlend[6] + snarePeakScaled * snareToPercBlendAmount * 0.3f, 0.0f, 1.0f);
         }
 
-        float masterLevel = percLevel ? percLevel->load() : 0.8f;
+        // T6: Apply global mod-matrix offsets to master-level and master-tone.
+        // Architect mandate: clamp after applying modOffset to protect blessed presets.
+        float masterLevel = juce::jlimit(0.0f, 1.5f, (percLevel ? percLevel->load() : 0.8f) + globalModLevelOffset_);
         float masterDrive = percDrive ? percDrive->load() : 0.0f;
-        float masterTone = percTone ? percTone->load() : 0.5f;
+        float masterTone = juce::jlimit(0.0f, 1.0f, (percTone ? percTone->load() : 0.5f) + globalModToneOffset_);
 
         // D005: update breathing LFO rate on all voices once per block.
         // Block-rate correction (P-LFO-BLOCK): process() fires every 32 samples, so scale
@@ -2054,7 +2087,8 @@ public:
             voices[v].breathingLFO.setRate(breathRateHz * 32.0f, static_cast<float>(sr), 8.0f * 32.0f);
 
         // FX + Character stage snapshots
-        float pCharGrit = charGrit ? charGrit->load() : 0.0f;
+        // T6: Apply global mod-matrix grit offset. Clamp to [0,1] (Architect mandate).
+        float pCharGrit = juce::jlimit(0.0f, 1.0f, (charGrit ? charGrit->load() : 0.0f) + globalModGritOffset_);
         float pCharWarmth = charWarmth ? charWarmth->load() : 0.5f;
         float pDelTime = fxDelayTime ? fxDelayTime->load() : 0.3f;
         float pDelFb = fxDelayFeedback ? fxDelayFeedback->load() : 0.3f;
@@ -2324,6 +2358,21 @@ public:
         modMatrix.attachParameters(apvts, "perc_");
     }
 
+    //-- T6: Global mod-matrix offset pointers -----------------------------------
+    // Called by XOceanusProcessor when this engine is loaded or prepared.
+    // Pointers are audio-thread-safe atomics — relaxed load each block.
+    // nullptr is the safe default (no mod offset applied when not wired).
+    void setPercModOffsetPtrs(const std::atomic<float>* levelPtr,
+                              const std::atomic<float>* punchPtr,
+                              const std::atomic<float>* tonePtr,
+                              const std::atomic<float>* gritPtr) noexcept
+    {
+        pGlobalPercLevel_ = levelPtr;
+        pGlobalPercPunch_ = punchPtr;
+        pGlobalPercTone_  = tonePtr;
+        pGlobalPercGrit_  = gritPtr;
+    }
+
     //-- Identity ----------------------------------------------------------------
     juce::String getEngineId() const override { return "Onset"; }
     juce::Colour getAccentColour() const override { return juce::Colour(0xFF0066FF); }
@@ -2424,6 +2473,23 @@ private:
     float percModPunchOffset  = 0.0f;
     float percModMutateOffset = 0.0f;
     float percModSpaceOffset  = 0.0f;
+
+    // T6: Pointers to XOceanusProcessor's global Onset mod-offset atomics.
+    // Set by setPercModOffsetPtrs() at engine-load/prepare time.
+    // Read each renderBlock with relaxed ordering (audio-thread only after wiring).
+    // nullptr = not wired yet — safe to read (guard in consumption code).
+    const std::atomic<float>* pGlobalPercLevel_ = nullptr;
+    const std::atomic<float>* pGlobalPercPunch_ = nullptr;
+    const std::atomic<float>* pGlobalPercTone_  = nullptr;
+    const std::atomic<float>* pGlobalPercGrit_  = nullptr;
+
+    // T6: Per-block cached offsets from global mod matrix (computed once per renderBlock).
+    // These are plain floats — computed on the audio thread, used only on the audio thread.
+    // Reset in reset() to prevent stale offsets surviving plugin state restores.
+    float globalModLevelOffset_ = 0.0f;
+    float globalModPunchOffset_ = 0.0f;
+    float globalModToneOffset_  = 0.0f;
+    float globalModGritOffset_  = 0.0f;
 
     //-- MIDI note to voice mapping ----------------------------------------------
     // Maps incoming MIDI notes to voice indices using the GM drum map.
