@@ -822,19 +822,42 @@ public:
         // wire(#orphan-sweep items 5/6/7): SettingsDrawer, TransportBar, ChordBar callbacks.
         // onSettingChanged routes keys to processor/APVTS where receivers exist;
         // waveSensitivity is handled locally inside OceanView (background reactivity).
-        oceanView_.onSettingChanged = [](const juce::String& key, float value)
+        // #1359: All 7 settings keys are now wired to processor/APVTS receivers.
+        // "tempo num/den" is handled separately by onTimeSigChanged below — do
+        // not duplicate that routing here.
+        // "waveSensitivity" is handled entirely inside OceanView → OceanBackground
+        // and never reaches this callback.
+        oceanView_.onSettingChanged = [this](const juce::String& key, float value)
         {
-            // TODO(#settings-wiring): wire remaining settings keys to processor/APVTS once
-            // the following receiver APIs are implemented:
-            //   "polyphony"      → processor.setPolyphony(int)
-            //   "voiceMode"      → processor.setVoiceMode(int)
-            //   "masterTune"     → APVTS "masterTune" param (not yet registered)
-            //   "pitchBendRange" → APVTS "pitchBendRange" param (not yet registered)
-            //   "mpeMode"        → processor.setMpeEnabled(bool)
-            //   "midiChannel"    → processor.setMidiChannel(int)
-            //   "oversampling"   → processor.setOversamplingFactor(int)
-            // waveSensitivity is already handled inside OceanView → OceanBackground.
-            juce::ignoreUnused(key, value);
+            if (key == "polyphony")
+            {
+                processor.setPolyphony(static_cast<int>(value));
+            }
+            else if (key == "voiceMode")
+            {
+                processor.setVoiceMode(static_cast<int>(value));
+            }
+            else if (key == "masterTune")
+            {
+                processor.setMasterTune(value);
+            }
+            else if (key == "pitchBendRange")
+            {
+                processor.setPitchBendRange(static_cast<int>(value));
+            }
+            else if (key == "mpeMode")
+            {
+                processor.setMpeEnabled(value >= 0.5f);
+            }
+            else if (key == "midiChannel")
+            {
+                processor.setMidiChannel(static_cast<int>(value));
+            }
+            else if (key == "oversampling")
+            {
+                processor.setOversamplingFactor(static_cast<int>(value));
+            }
+            // "waveSensitivity" is handled inside OceanView → OceanBackground; no-op here.
         };
 
         // onTimeSigChanged: propagate numerator/denominator to both SharedTransport
