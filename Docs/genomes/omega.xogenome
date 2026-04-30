@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OMEGA",
+  "engine_prefix": "omega_",
+  "collection": "cellar",
+
+  "oscillator": {
+    "type": "hybrid",
+    "polyphony": 8,
+    "architecture": "Synth bass engine — electronic bass synthesis combining a classic analog-style oscillator (saw, square, pulse-width) with digital electronic pulse lines; synthBass parameter controls the character from vintage analog warmth to a modern electronic dark-blue precision; sleek shark body model: no unnecessary mass, pure hydrodynamic efficiency; sub-octave generation with harmonic ratio control"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "bandpass"],
+    "resonance_range": [0.0, 1.0],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 2,
+    "lfo_shapes": ["sine", "triangle", "saw", "square", "s_and_h"],
+    "mod_matrix_depth": 4,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.85,
+    "velocity_targets": ["amplitude", "filter_cutoff", "attack"],
+    "pitch_bend_range": 2,
+    "aftertouch_response": "pulse_intensity",
+    "dynamic_range_db": 75
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "PULSE",
+      "behavior": "Electronic pulse line intensity — from smooth analog warmth to hard digital edge; the electronic pulse lines that run along the synth bass shark's body activate at higher PULSE, creating a machine-like rhythmic precision."
+    },
+    "macro2": {
+      "name": "DRIVE",
+      "behavior": "Filter overdrive — the synth bass shark's aggression; more DRIVE = more filter resonance saturation and harmonic complexity, less = a clean, modern electronic bass."
+    },
+    "macro3": {
+      "name": "GLIDE",
+      "behavior": "Portamento speed — from instant attack (precision bass) to long slides between notes (expressive synth bass lead); shapes the movement character."
+    },
+    "macro4": {
+      "name": "DEPTH",
+      "behavior": "Acoustic depth — sub-bass register shift and low-frequency EQ emphasis; makes the synth bass feel larger or more contained."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "bass",
+    "brightness": 0.4,
+    "warmth": 0.6,
+    "movement": 0.35,
+    "density": 0.65,
+    "transient_character": "sharp"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "AmpToChoke", "AmpToPitch"],
+    "best_as_target": ["RhythmToBlend", "AmpToFilter"],
+    "recommended_partners": ["ONSET", "OGRE", "OAKEN", "OLATE"],
+    "coupling_personality": "The sleek predator of the Cellar Quad — OMEGA's electronic precision creates the tightest AmpToChoke triggers in the cellar; its pulse lines provide rhythmic AmpToFilter sources with a machine-like regularity."
+  },
+
+  "mythology": {
+    "creature": "The synth bass shark — sleek shark, dark blue, electronic pulse lines; apex efficiency, no wasted motion, the final letter and the definitive bass",
+    "depth_zone": "deep",
+    "felix_oscar_polarity": 0.6,
+    "accent_color": "#003366"
+  },
+
+  "metadata": {
+    "param_count": null,
+    "preset_count": null,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "engine_id": "OBELISK",
+  "engine_prefix": "obel_",
+  "collection": "kitchen",
+
+  "oscillator": {
+    "type": "physical_model",
+    "polyphony": 12,
+    "architecture": "Grand piano string model with extended sustain and sympathetic resonance — stringMass controls the weight and fundamental pitch character of the virtual string; hammer hardness shapes transient brightness; una corda and sostenuto pedal simulation; overtone bloom from long sustain creates the characteristic ivory pillar resonance"
+  },
+
+  "filter": {
+    "topology": "svf",
+    "modes": ["lowpass", "highpass"],
+    "resonance_range": [0.0, 0.6],
+    "key_tracking": true
+  },
+
+  "envelope": {
+    "type": "adsr",
+    "stages": 4,
+    "curve": "exponential"
+  },
+
+  "modulation": {
+    "lfo_count": 1,
+    "lfo_shapes": ["sine", "triangle"],
+    "mod_matrix_depth": 2,
+    "audio_rate_mod": false
+  },
+
+  "response_surface": {
+    "velocity_sensitivity": 0.95,
+    "velocity_targets": ["amplitude", "brightness", "hammer_hardness"],
+    "pitch_bend_range": 0,
+    "aftertouch_response": "sustain_bloom",
+    "dynamic_range_db": 80
+  },
+
+  "macro_personality": {
+    "macro1": {
+      "name": "MASS",
+      "behavior": "String mass — from a light, bright upper-register tone to the heavy, dark fundamental of a grand bass string; shifts harmonic center of gravity downward at maximum."
+    },
+    "macro2": {
+      "name": "HAMMER",
+      "behavior": "Hammer hardness from soft felt (dark, round attack) to hard felt (bright, percussive strike); the defining tonal axis of the grand piano character."
+    },
+    "macro3": {
+      "name": "BLOOM",
+      "behavior": "Sympathetic resonance bloom — how much the undamped strings sing in response to played notes; from dry solo string to a full harp-like resonance cascade."
+    },
+    "macro4": {
+      "name": "ROOM",
+      "behavior": "Concert hall reverb — from a close-mic intimate touch to the full bloom of a Carnegie Hall performance space; decay time and early reflections shape the architecture."
+    }
+  },
+
+  "sonic_character": {
+    "primary_category": "keys",
+    "brightness": 0.45,
+    "warmth": 0.7,
+    "movement": 0.1,
+    "density": 0.6,
+    "transient_character": "medium"
+  },
+
+  "coupling_affinity": {
+    "best_as_source": ["AmpToFilter", "EnvToDecay"],
+    "best_as_target": ["RhythmToBlend", "AmpToFilter"],
+    "recommended_partners": ["OVEN", "OCHRE", "OPALINE", "OSTINATO"],
+    "coupling_personality": "The grand pillar of the Kitchen Quad — OBELISK's long sustain tail provides exceptional AmpToFilter source material for pad engines; its velocity-sensitive hammer creates expressive modulation sources."
+  },
+
+  "mythology": {
+    "creature": "The ivory pillar coral — tall column coral, pure white, grand; standing immovable in the current, an ancient monument to sustained resonance",
+    "depth_zone": "reef",
+    "felix_oscar_polarity": 0.75,
+    "accent_color": "#FFFFF0"
+  },
+
+  "metadata": {
+    "param_count": null,
+    "preset_count": null,
+    "seance_score": null,
+    "guru_bin_retreat": false,
+    "version_added": "V1.0"
+  }
+}
