@@ -619,6 +619,51 @@ public:
         // and clears any in-progress chain drawing on the substrate.
         hudBar_.onChainToggled = [this]() { applyChainModeVisuals(); };
 
+        // fix(#1354): forward the 6 previously-unwired HUD bar callbacks outward
+        // so the editor can route them to PresetManager / ABCompare / ExportDialog.
+        hudBar_.onSave = [this]()
+        {
+            if (onSavePreset)
+                onSavePreset();
+        };
+
+        hudBar_.onFavChanged = [this](bool newFavState)
+        {
+            if (onFavToggled)
+                onFavToggled(newFavState);
+        };
+
+        hudBar_.onABCompareChanged = [this](bool active)
+        {
+            if (onABCompareToggled)
+                onABCompareToggled(active);
+        };
+
+        hudBar_.onPresetPrev = [this]()
+        {
+            if (onPresetPrev)
+                onPresetPrev();
+        };
+
+        hudBar_.onPresetNext = [this]()
+        {
+            if (onPresetNext)
+                onPresetNext();
+        };
+
+        hudBar_.onExportClicked = [this]()
+        {
+            if (onExportClicked)
+                onExportClicked();
+        };
+
+        // Preset name label click → open preset browser (sidebar Preset tab).
+        hudBar_.onPresetNameClicked = [this]()
+        {
+            if (onPresetNameClicked)
+                onPresetNameClicked();
+        };
+
         // ── Keyboard focus ────────────────────────────────────────────────────
         setWantsKeyboardFocus(true);
 
@@ -1489,6 +1534,40 @@ public:
     // were never assigned.  Forward outward so state changes are observable.
     std::function<void()> onChordBarVisibilityChanged;
     std::function<void(ChordBarComponent::InputMode)> onChordBarInputModeChanged;
+
+    // fix(#1354): HUD bar preset/save/export callbacks — forwarded outward so the
+    // editor can route to PresetManager / ABCompare / ExportDialog.
+
+    /** Fired when the user clicks SAVE in the HUD bar.
+        Editor should prompt for a name (or overwrite current preset) and write the
+        .xometa file via PresetManager::savePresetToFile(). */
+    std::function<void()> onSavePreset;
+
+    /** Fired when the user clicks ♥ in the HUD bar.
+        @param newFavState   true = preset is now a favourite; false = removed.
+        Editor should call PresetBrowser::toggleFavorite() on the current preset. */
+    std::function<void(bool newFavState)> onFavToggled;
+
+    /** Fired when the user clicks A/B in the HUD bar.
+        @param active   true = A/B mode is now on; false = off.
+        Editor should drive the ABCompare component (enter/exit compare mode). */
+    std::function<void(bool active)> onABCompareToggled;
+
+    /** Fired when the user clicks ◀ in the HUD bar.
+        Editor should call PresetManager::previousPreset() then applyPreset(). */
+    std::function<void()> onPresetPrev;
+
+    /** Fired when the user clicks ▶ in the HUD bar.
+        Editor should call PresetManager::nextPreset() then applyPreset(). */
+    std::function<void()> onPresetNext;
+
+    /** Fired when the user clicks EXPORT in the HUD bar.
+        Editor should open the ExportDialog via juce::CallOutBox. */
+    std::function<void()> onExportClicked;
+
+    /** Fired when the user clicks the preset name label in the HUD bar.
+        Editor should open the preset browser (e.g. sidebar Preset tab). */
+    std::function<void()> onPresetNameClicked;
 
     //==========================================================================
     // State queries

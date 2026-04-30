@@ -199,6 +199,11 @@ public:
             presetBrowser->refresh();
     }
 
+    /** fix(#1354): Returns the lazily-constructed PresetBrowser, or nullptr if
+        setPresetManager() has not yet been called.  Used by the editor to call
+        PresetBrowser::toggleFavorite() when the HUD ♥ button is clicked. */
+    PresetBrowser* getPresetBrowser() noexcept { return presetBrowser.get(); }
+
     // #923: Forward scanning state into the sidebar's full PresetBrowser.
     // Call setPresetBrowserScanning(true) before the async library scan starts
     // and setPresetBrowserScanning(false) in the completion callback.  If the
