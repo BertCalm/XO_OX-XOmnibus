@@ -1544,7 +1544,7 @@ public:
         //
         // 1. PinStore::ChangeListener — planchette + pin state.
         starboardPinStoreListener_.editor = this;
-        oceanView_.getXOuijaPanel().getPinStore().addListener(&starboardPinStoreListener_);
+        playSurface_.getXOuijaPanel().getPinStore().addListener(&starboardPinStoreListener_);
 
         // 2. PresetManager::Listener — global preset path backward-compat.
         starboardPresetListener_.editor = this;
@@ -1576,7 +1576,7 @@ public:
         // Order mirrors registration in initOceanView (reversed for safety).
         processor.removeSlotPresetListener(&starboardSlotPresetListener_);
         processor.getPresetManager().removeListener(&starboardPresetListener_);
-        oceanView_.getXOuijaPanel().getPinStore().removeListener(&starboardPinStoreListener_);
+        playSurface_.getXOuijaPanel().getPinStore().removeListener(&starboardPinStoreListener_);
         // Null editor pointers so any in-flight callAsync / deferred callbacks are no-ops.
         starboardPinStoreListener_.editor  = nullptr;
         starboardPresetListener_.editor    = nullptr;
@@ -3040,8 +3040,8 @@ private:
     //   • engine identity — processor.getEngine(slot)
     //   • preset name    — processor.getSlotPreset(slot).name (primary)
     //                       fallback: processor.getPresetManager().getCurrentPreset().name
-    //   • XY position    — oceanView_.getXOuijaPanel() circleX / influenceY
-    //   • pin state      — oceanView_.getXOuijaPanel().getPinStore()
+    //   • XY position    — playSurface_.getXOuijaPanel() circleX / influenceY
+    //   • pin state      — playSurface_.getXOuijaPanel().getPinStore()
     //   • routing target — pinStore.getPinTargetSlot() → engineTargetRaw
     //   • FX chains      — APVTS slot{N}_chain + slot{N}_bypass params
     //                       (max 3 non-bypassed chips per EpicChainSlotController)
@@ -3084,14 +3084,14 @@ private:
 
         // ── XY position from live XOuijaPanel ────────────────────────────────
         {
-            const auto& panel = oceanView_.getXOuijaPanel();
+            const auto& panel = playSurface_.getXOuijaPanel();
             s.circleX    = panel.getCirclePosition();
             s.influenceY = panel.getInfluenceDepth();
         }
 
         // ── Pin state from XouijaPinStore ─────────────────────────────────────
         {
-            const auto& pinStore = oceanView_.getXOuijaPanel().getPinStore();
+            const auto& pinStore = playSurface_.getXOuijaPanel().getPinStore();
             s.pinned = pinStore.hasPinnedValue();
             if (s.pinned)
             {
