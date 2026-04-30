@@ -11,7 +11,7 @@
 //   5. MIDI Mappings  (variable) — Live CC→param table from MIDILearnManager
 //   6. About          (80pt)   — Version, links
 //   7. Keyboard Shortcuts (36pt) — Z/X/C/V shortcut legend (display-only)
-//   8. Experience     (40pt)   — "Hear the Greeting Again" (Sound on First Launch replay)
+//   8. Experience     (72pt)   — "Hear the Greeting Again" + "Restart Walkthrough"
 //
 // Architectural notes:
 //   • Header-only (.h), consistent with all Gallery Model components.
@@ -348,6 +348,23 @@ public:
         hearGreetingAgainBtn.onClick = [this] { processor.replayFirstBreath(); };
         content.addAndMakeVisible(hearGreetingAgainBtn);
 
+        // "Restart Walkthrough" — resets the first-hour onboarding tour so the
+        // user can re-run it from step 0.  The actual call is dispatched via
+        // onRestartWalkthrough, wired by XOceanusEditor after construction
+        // (same pattern as onPerformanceLockChanged).
+        restartWalkthroughBtn.setButtonText("Restart Walkthrough");
+        restartWalkthroughBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
+        restartWalkthroughBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
+        restartWalkthroughBtn.setTooltip("Re-run the first-hour guided walkthrough from step 1");
+        A11y::setup(restartWalkthroughBtn, "Restart Walkthrough",
+                    "Reset and re-run the first-hour guided walkthrough tour from the beginning");
+        restartWalkthroughBtn.onClick = [this]
+        {
+            if (onRestartWalkthrough)
+                onRestartWalkthrough();
+        };
+        content.addAndMakeVisible(restartWalkthroughBtn);
+
         // ── Accessibility wiring ──────────────────────────────────────────────
         A11y::setup(*this, "Settings", "Plugin settings panel");
     }
@@ -372,6 +389,11 @@ public:
     /// Fired on the message thread whenever the CPU Meters toggle changes.
     /// Passes the new visibility state (true = visible).
     std::function<void(bool)> onCpuMetersVisibilityChanged;
+
+    /// Called on the message thread when the user clicks "Restart Walkthrough".
+    /// Wire this from XOceanusEditor after construction (same pattern as
+    /// onPerformanceLockChanged / onCpuMetersVisibilityChanged).
+    std::function<void()> onRestartWalkthrough;
 
     /// Returns the persisted CPU meters visibility (true = visible, default true).
     bool isCpuMetersVisible() const noexcept
@@ -431,6 +453,9 @@ public:
 
         hearGreetingAgainBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
         hearGreetingAgainBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
+
+        restartWalkthroughBtn.setColour(juce::TextButton::buttonColourId, GalleryColors::get(GalleryColors::elevated()));
+        restartWalkthroughBtn.setColour(juce::TextButton::textColourOffId, GalleryColors::get(GalleryColors::textMid()));
 
         // Refresh URL label color (dark/light link color differs)
         styleUrlLabel(aboutWebLabel, "xo-ox.org", "https://xo-ox.org");
@@ -703,6 +728,8 @@ private:
         y += kHeaderH + kGap;
         hearGreetingAgainBtn.setBounds(kPad, y, inner, kRowH + 4); // slightly taller for button
         y += kRowH + 4 + kGap;
+        restartWalkthroughBtn.setBounds(kPad, y, inner, kRowH + 4);
+        y += kRowH + 4 + kGap;
 
         y += kPad; // bottom breathing room
 
@@ -808,6 +835,11 @@ private:
     // Calls processor.replayFirstBreath() which reloads Oxbow in slot 0 and
     // injects a soft C3 note.  See spec §8 Option A + §1282.
     juce::TextButton hearGreetingAgainBtn;
+
+    // "Restart Walkthrough" — resets onboarding progress to step 0 and
+    // re-runs the first-hour guided tour.  Dispatched via onRestartWalkthrough
+    // callback (wired from XOceanusEditor) because walkthrough_ lives in the editor.
+    juce::TextButton restartWalkthroughBtn;
 
     //==========================================================================
     // Factory helper — creates a right-aligned param name label.
