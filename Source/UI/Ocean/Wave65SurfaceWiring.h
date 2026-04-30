@@ -17,30 +17,12 @@
 //      forward them to PlaySurface::setLayoutMode(). The cache array avoids
 //      calling setLayoutMode() on every tick (would spam resized()).
 //
-// Mount instructions for XOceanusEditor.h:
+// Mount sites in XOceanusEditor.h:
 // ─────────────────────────────────────────
-//
-//   A. After Wave 5 A3 modMatrixStrip block inside proc.onEngineChanged
-//      (inside the MessageManager::callAsync lambda, slot 0..3 only):
-//
-//        // TODO Wave6.5 mount — A: auto-switch surface to PADS on percussion engines
-//        if (slot >= 0 && slot < kNumPrimarySlots)
-//        {
-//            if (auto* eng = processor.getEngine(slot))
-//                oceanView_.getPlaySurface().setSurfaceDefault(
-//                    Wave65::isPercussionEngine(eng->getEngineId()));
-//        }
-//
-//   B. After the PlaySurface accent colour block in timerCallback()
-//      (approx. after `playSurface_.setAccentColour(accent);`):
-//
-//        // TODO Wave6.5 mount — B: forward slot[N]_layout_mode changes to PlaySurface
-//        Wave65::pollLayoutModeParams(processor.getAPVTS(),
-//                                     layoutModeCache_,
-//                                     oceanView_.getPlaySurface());
-//
-//   C. Add `std::array<int, 4> layoutModeCache_ { -1, -1, -1, -1 };` to the
-//      private members of XOceanusEditor (near lastLayoutMode_ comment block).
+//   A. isPercussionEngine() — onEngineChanged callAsync lambda, line ~649
+//      (auto-switches PlaySurface to PADS+drum sub-mode on Onset/Offering load)
+//   B. pollLayoutModeParams() — timerCallback(), line ~2220
+//      (forwards slot[N]_layout_mode APVTS changes to PlaySurface::setLayoutMode)
 //
 // Collision handling (item 1 from issue):
 // ─────────────────────────────────────────
