@@ -71,8 +71,11 @@
     TODO W8 mount: Add #include "UI/PlaySurface/XYSurface.h" to OceanView or the host
         file that instantiates the play surface.
 
-    TODO W8B mount (after Wave 5 C5): Add xyX_[4] and xyY_[4] atomics to
-        XOceanusProcessor; register xyX/xyY as ModSource entries in ModMatrix.h.
+    W8B mount COMPLETE (Wave 5 C5 / #1360): xyX_[4] and xyY_[4] atomics added
+        to XOceanusProcessor (#1357). XYX0..XYY3 ModSource IDs 20..27 frozen in
+        ModSourceHandle.h; read in processBlock via getXYX/getXYY. XYSurface
+        onXYChanged -> processor_->setXYPosition(slot, x, y) is the wiring site
+        (OceanView::handleXYOutput, W8 mount TODO above).
     ─────────────────────────────────────────────────────────────────────────────
 */
 

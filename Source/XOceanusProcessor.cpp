@@ -2298,15 +2298,24 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     continue;
 
                 // Source value — only LFO1 (id=0) wired in A1.
-                // C5: SeqStepValue / BeatPhase / LiveGate read from slotSequencers_.
+                // C5 (#1360): SeqStepValue / BeatPhase / LiveGate from slotSequencers_.
+                //   XouijaCell now wired via SlotModSourceRegistry (modSourceRegistry_).
                 // #1289: SeqStepPitch added — per-step pitch offset as bipolar -1..+1.
                 // TODO(#mod-source-completion): implement LFO2, LFO3, Envelope, Envelope2,
                 //   Velocity, Aftertouch, ModWheel, MacroTone/Tide/Couple/Depth, MidiCC,
-                //   MpePressure, MpeSlide, XouijaCell (each needs separate scoping work).
+                //   MpePressure, MpeSlide (each needs separate scoping work).
                 float srcVal = 0.0f;
                 if (snap.sourceId == static_cast<int>(ModSourceId::LFO1))
                 {
                     srcVal = lfo1Val;
+                }
+                else if (snap.sourceId == static_cast<int>(ModSourceId::XouijaCell))
+                {
+                    // C5 (#1360): pinned XOuija position read from SlotModSourceRegistry.
+                    // X axis is the primary value (circle-of-fifths, bipolar [-1, +1]).
+                    // Y axis (influence depth) accessible via getModSourceRegistry().getXouijaCellY()
+                    // when a per-parameter axis discriminator is added in a future PR.
+                    srcVal = modSourceRegistry_.getXouijaCellX();
                 }
                 else if (snap.sourceId >= static_cast<int>(ModSourceId::XYX0) &&
                          snap.sourceId <= static_cast<int>(ModSourceId::XYY3))
