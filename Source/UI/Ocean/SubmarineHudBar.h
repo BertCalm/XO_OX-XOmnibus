@@ -119,6 +119,12 @@ public:
         Returns empty rect before the first paint pass (bounds not yet computed). */
     juce::Rectangle<int> getFavBounds() const noexcept { return favBounds_.toNearestInt(); }
 
+    /** F-003 / #1395: expose preset name label hit-rect in local coords.
+        Used by FirstHourWalkthrough step 3 to point the bubble at the preset-name
+        pill (which opens the DnaMapBrowser when clicked).
+        Returns empty rect before the first layout pass (bounds not yet computed). */
+    juce::Rectangle<int> getPresetNameBounds() const noexcept { return presetNameBounds_.toNearestInt(); }
+
     void setPresetName(const juce::String& name)
     {
         if (presetName_ != name) { presetName_ = name; repaint(); }

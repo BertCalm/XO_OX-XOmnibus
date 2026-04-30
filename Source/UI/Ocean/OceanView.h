@@ -1351,17 +1351,27 @@ public:
         return localFav.translated(hudBar_.getX(), hudBar_.getY());
     }
 
-    // wire(#orphan-sweep item 2): expose ouija panel bounds for walkthrough step 7.
+    // F-003 / #1395: expose HARMONIC tab in tabBar_ for walkthrough step 7.
+    // ouijaPanel_.getBounds() is always {} (ouijaPanel_ never gets setBounds);
+    // the HARMONIC tab in the dashboard tab bar is the correct visual target
+    // for "click here to open XOuija".
+    // Translates from tabBar_ local coords to OceanView local coords.
     juce::Rectangle<int> getOuijaPanelBounds() const noexcept
     {
-        return ouijaPanel_.getBounds();
+        auto localTab = tabBar_.getHarmonicTabBounds();
+        if (localTab.isEmpty()) return {};
+        return localTab.translated(tabBar_.getX(), tabBar_.getY());
     }
 
-    // wire(#orphan-sweep item 2): expose DnaMapBrowser bounds for walkthrough step 3.
-    // Returns browser_ bounds (always positioned at full OceanView size; hidden when closed).
+    // F-003 / #1395: expose preset-name pill in HudBar for walkthrough step 3.
+    // browser_.getBounds() is {} unless BrowserOpen state; use the preset-name
+    // label instead — it is always visible and opens the browser on click.
+    // Translates from hudBar_ local coords to OceanView local coords.
     juce::Rectangle<int> getDnaMapBrowserBounds() const noexcept
     {
-        return browser_.getBounds();
+        auto localName = hudBar_.getPresetNameBounds();
+        if (localName.isEmpty()) return {};
+        return localName.translated(hudBar_.getX(), hudBar_.getY());
     }
 
     // wire(#orphan-sweep item 2): expose orbit slot 1 bounds for walkthrough step 4 (couple).
@@ -1746,6 +1756,22 @@ private:
         juce::String activeTab() const noexcept
         {
             return kTabNames[activeIdx_];
+        }
+
+        /** F-003 / #1395: return the HARMONIC tab hit-rect in this component's
+            local coords.  Tab regions are built lazily in paint(); if not yet
+            computed this falls back to the right quarter of getLocalBounds()
+            (a reasonable approximation given HARMONIC is the rightmost tab).
+            Caller must translate to parent (OceanView) coordinates. */
+        juce::Rectangle<int> getHarmonicTabBounds() const noexcept
+        {
+            // HARMONIC is tab index 4 (last tab).
+            constexpr int kHarmonicIdx = 4;
+            if (static_cast<int>(tabRegions_.size()) > kHarmonicIdx)
+                return tabRegions_[static_cast<size_t>(kHarmonicIdx)].toNearestInt();
+            // Pre-paint fallback: rightmost ~80px of the tab bar height.
+            const auto lb = getLocalBounds();
+            return lb.withLeft(lb.getRight() - 80);
         }
 
         std::function<void(const juce::String&)> onTabChanged;
