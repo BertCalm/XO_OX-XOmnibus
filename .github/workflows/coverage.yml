@@ -72,7 +72,7 @@ jobs:
           # Capture coverage data
           lcov --capture --directory build \
             --output-file build/coverage.info \
-            --ignore-errors mismatch
+            --ignore-errors mismatch,inconsistent
 
           # Remove external code (JUCE, Catch2, system headers)
           lcov --remove build/coverage.info \

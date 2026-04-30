@@ -70,6 +70,9 @@
 #include "DotMatrixDisplay.h"
 #include "SubmarineHudBar.h"
 #include "SurfaceRightPanel.h"
+// XOuijaPanel must be included here (not just via PlaySurface.h in the editor)
+// so that getXOuijaPanel() is self-contained and OceanView.h compiles standalone.
+#include "../PlaySurface/XOuijaPanel.h"
 #include "SubmarineMenuStyle.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
@@ -895,6 +898,9 @@ public:
     DotMatrixDisplay*  getDotMatrix()    noexcept { return &dotMatrix_; }
     /// Get the SurfaceRightPanel so the editor can wire onOuijaCCOutput.
     SurfaceRightPanel& getSurfaceRight() noexcept { return surfaceRight_; }
+
+    // (XOuija access for Starboard wiring is via XOceanusEditor::playSurface_, not OceanView.
+    //  OceanView only owns SubmarinePlaySurface; the live XOuijaPanel lives on PlaySurface.)
 
     /**
         Initialise the StatusBar.

@@ -1839,6 +1839,12 @@ private:
     XOuijaPanel xouijaPanel_;
     KeysMode keysMode_;
 
+public:
+    /// Live XOuija panel accessor for external wiring (Starboard #1379, etc).
+    XOuijaPanel& getXOuijaPanel() noexcept { return xouijaPanel_; }
+    const XOuijaPanel& getXOuijaPanel() const noexcept { return xouijaPanel_; }
+private:
+
     // TideController — wave-surface expression controller.
     // Shown in the left panel slot when tideActive_ is true.
     TideController tideController_;

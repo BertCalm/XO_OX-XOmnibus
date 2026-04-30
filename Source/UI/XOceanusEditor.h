@@ -1538,6 +1538,26 @@ public:
         // but below toasts so notifications are never obscured.
         addAndMakeVisible(walkthrough_);
 
+        // ── #1379: Starboard listener registration ─────────────────────���─────
+        // Wire all three listener subscriptions now that oceanView_ is fully
+        // constructed and processor references are stable.
+        // All callbacks fire on the message thread only — no audio-thread risk.
+        //
+        // 1. PinStore::ChangeListener — planchette + pin state.
+        starboardPinStoreListener_.editor = this;
+        playSurface_.getXOuijaPanel().getPinStore().addListener(&starboardPinStoreListener_);
+
+        // 2. PresetManager::Listener — global preset path backward-compat.
+        starboardPresetListener_.editor = this;
+        proc.getPresetManager().addListener(&starboardPresetListener_);
+
+        // 3. XOceanusProcessor::SlotPresetListener — per-slot (primary signal).
+        starboardSlotPresetListener_.editor = this;
+        proc.addSlotPresetListener(&starboardSlotPresetListener_);
+
+        // Push initial state so Starboard shows something meaningful on first open.
+        pushStarboardState();
+
         // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.
         // setInterceptsMouseClicks(false, false) is set inside ToastOverlay's
@@ -1618,6 +1638,17 @@ public:
         // #1356: Unsubscribe from per-slot preset change notifications before teardown.
         processor.removeSlotPresetListener(this);
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
+
+        // #1379: Remove Starboard listeners before any member is destroyed.
+        // Order mirrors registration in initOceanView (reversed for safety).
+        processor.removeSlotPresetListener(&starboardSlotPresetListener_);
+        processor.getPresetManager().removeListener(&starboardPresetListener_);
+        playSurface_.getXOuijaPanel().getPinStore().removeListener(&starboardPinStoreListener_);
+        // Null editor pointers so any in-flight callAsync / deferred callbacks are no-ops.
+        starboardPinStoreListener_.editor  = nullptr;
+        starboardPresetListener_.editor    = nullptr;
+        starboardSlotPresetListener_.editor = nullptr;
+
         // Wave 5 A1: Remove the mod route flush listener before the editor members
         // are destroyed so the processor never calls back into a freed listener.
         processor.getModRoutingModel().removeListener(&modRouteFlushListener_);
@@ -2788,6 +2819,12 @@ private:
         // PlaySurface overlay slides up when the user first plays a key.
         if (hadNoteOn)
             oceanView_.onMidiNoteReceived();
+
+        // ── #1379: Starboard live state push ──────────────────────────────────
+        // Push assembled Starboard::State into SurfaceRightPanel at 10 Hz.
+        // Starboard repaints at its own 10 Hz tick and skips redundant frames,
+        // so calling this every timer tick is safe and no-alloc.
+        pushStarboardState();
     }
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
@@ -3028,6 +3065,187 @@ private:
     // setBounds: full editor bounds (set in resized()).
     // addAndMakeVisible: called LAST in constructor so it paints above all panels.
     ToastOverlay toastOverlay_;
+
+    // ── #1379: Starboard host-integration listeners ───────────────────────────
+    //
+    // Three listener classes wire live state sources into Starboard::State.
+    // All callbacks fire on the message thread — no audio-thread allocations.
+    //
+    // Listener 1: XouijaPinStore::ChangeListener — planchette + pin state.
+    // Fires whenever the user pins, unpins, captures, or changes routing target.
+    struct StarboardPinStoreListener : public juce::ChangeListener
+    {
+        XOceanusEditor* editor{nullptr};
+        void changeListenerCallback(juce::ChangeBroadcaster*) override
+        {
+            if (editor != nullptr)
+                editor->pushStarboardState();
+        }
+    } starboardPinStoreListener_;
+
+    // Listener 2: PresetManager::Listener — backward-compat global preset path.
+    // Fires on presetLoaded() for any preset loaded through PresetManager directly
+    // (legacy path and presets that don't go through per-slot model).
+    struct StarboardPresetListener : public PresetManager::Listener
+    {
+        XOceanusEditor* editor{nullptr};
+        void presetLoaded(const PresetData&) override
+        {
+            if (editor != nullptr)
+                editor->pushStarboardState();
+        }
+    } starboardPresetListener_;
+
+    // Listener 3: XOceanusProcessor::SlotPresetListener — per-slot preset name.
+    // Primary signal: fires whenever setSlotPreset() is called (e.g. after any
+    // preset load that targets a specific slot).  Updates Starboard within 1 frame.
+    struct StarboardSlotPresetListener : public XOceanusProcessor::SlotPresetListener
+    {
+        XOceanusEditor* editor{nullptr};
+        void slotPresetChanged(int /*slotIdx*/, const PresetData&) override
+        {
+            if (editor != nullptr)
+                editor->pushStarboardState();
+        }
+    } starboardSlotPresetListener_;
+
+    // Slot-change generation counter — incremented by pushStarboardState() each
+    // time the active slot index changes, triggering the Starboard appear fade.
+    uint32_t starboardSlotGeneration_ = 0;
+    int      starboardLastActiveSlot_ = -2; // sentinel: -2 = not yet initialised
+
+    // ── Starboard state helpers ───────────────────────────────────────────────
+
+    // Build a complete Starboard::State snapshot from live sources:
+    //   • active slot    — oceanView_.getSelectedSlot() (-1 = Global)
+    //   • engine identity — processor.getEngine(slot)
+    //   • preset name    — processor.getSlotPreset(slot).name (primary)
+    //                       fallback: processor.getPresetManager().getCurrentPreset().name
+    //   • XY position    — playSurface_.getXOuijaPanel() circleX / influenceY
+    //   • pin state      — playSurface_.getXOuijaPanel().getPinStore()
+    //   • routing target — pinStore.getPinTargetSlot() → engineTargetRaw
+    //   • FX chains      — APVTS slot{N}_chain + slot{N}_bypass params
+    //                       (max 3 non-bypassed chips per EpicChainSlotController)
+    //
+    // No heap allocations; all reads are from APVTS cached values or POD members.
+    Starboard::State buildStarboardState() const
+    {
+        Starboard::State s;
+
+        // ── Active slot ───────────────────────────────────────────────────────
+        // OceanView::getSelectedSlot() returns -1 when no slot is focused (Global routing).
+        const int slot = oceanView_.getSelectedSlot();
+        // Clamp to valid primary slot range for data reads; -1 stays -1 (Global badge).
+        const int safeSlot = (slot >= 0 && slot < XOceanusProcessor::kNumPrimarySlots)
+                                 ? slot : 0;
+        // -1 → "GLOBAL" pill per Q3.  Use Slot 0 data as preview when routing is Global.
+        s.activeSlot = slot; // Starboard::paint maps < 0 → "GLOBAL"
+
+        // ── Engine identity ───────────────────────────────────────────────────
+        if (auto* eng = processor.getEngine(safeSlot))
+        {
+            s.engineId          = eng->getEngineId();
+            s.engineDisplayName = eng->getEngineId(); // canonical ID == display name
+        }
+
+        // ── Preset name — per-slot (primary) then global fallback ─────────────
+        {
+            const auto& slotPreset = processor.getSlotPreset(safeSlot);
+            if (slotPreset.name.isNotEmpty())
+            {
+                s.presetName = slotPreset.name;
+            }
+            else
+            {
+                // Backward-compat: fall back to global PresetManager current preset
+                const auto& globalPreset = processor.getPresetManager().getCurrentPreset();
+                s.presetName = globalPreset.name;
+            }
+        }
+
+        // ── XY position from live XOuijaPanel ────────────────────────────────
+        {
+            const auto& panel = playSurface_.getXOuijaPanel();
+            s.circleX    = panel.getCirclePosition();
+            s.influenceY = panel.getInfluenceDepth();
+        }
+
+        // ── Pin state from XouijaPinStore ─────────────────────────────────────
+        {
+            const auto& pinStore = playSurface_.getXOuijaPanel().getPinStore();
+            s.pinned = pinStore.hasPinnedValue();
+            if (s.pinned)
+            {
+                // Freeze XY at pinned coordinates when pinned (spec §Row 3 comment).
+                s.circleX    = pinStore.getRawPinnedCircleX();
+                s.influenceY = pinStore.getRawPinnedInfluenceY();
+            }
+
+            // ── Engine routing target ─────────────────────────────────────────
+            // Derive from the pin's per-engine routing target.
+            // engineTargetRaw: 0 = Global, 1-4 = Slot 0-3 (matches Starboard::engineTargetLabel).
+            s.engineTargetRaw = static_cast<int>(pinStore.getPinTargetSlot());
+        }
+
+        // ── FX chain chips — read up to 3 non-bypassed chain slots ───────────
+        // Reads APVTS params: slot{N}_chain (0=Off…33=Oligo), slot{N}_bypass (0/1).
+        // kChainNames table from EpicSlotsPanel matches the ChainID enum ordering.
+        {
+            int chipCount = 0;
+            static constexpr int kMaxFxSlots = EpicChainSlotController::kNumSlots; // 3
+
+            for (int fx = 0; fx < kMaxFxSlots && chipCount < 3; ++fx)
+            {
+                const juce::String prefix = "slot" + juce::String(fx + 1) + "_";
+
+                // Read chain ID (normalised 0-1 from APVTS, maps back to 0–33).
+                auto* pChain  = processor.getAPVTS().getRawParameterValue(prefix + "chain");
+                auto* pBypass = processor.getAPVTS().getRawParameterValue(prefix + "bypass");
+                if (pChain == nullptr)
+                    continue;
+
+                const int chainId = juce::jlimit(0,
+                    static_cast<int>(EpicSlotsPanel::kChainNames.size()) - 1,
+                    juce::roundToInt(pChain->load(std::memory_order_relaxed)));
+
+                if (chainId == 0) // EpicChainSlotController::Off
+                    continue;
+
+                const bool bypassed = (pBypass != nullptr)
+                    && (pBypass->load(std::memory_order_relaxed) > 0.5f);
+                if (bypassed)
+                    continue;
+
+                s.fxChainNames[static_cast<size_t>(chipCount)] =
+                    EpicSlotsPanel::kChainNames[static_cast<size_t>(chainId)];
+                ++chipCount;
+            }
+
+            s.numActiveFxChains = chipCount;
+        }
+
+        // ── Slot-change generation (for appear fade) ──────────────────────────
+        s.slotGeneration = starboardSlotGeneration_;
+
+        return s;
+    }
+
+    // Push a freshly built Starboard::State into SurfaceRightPanel.
+    // Called from timerCallback (10 Hz) and from all three listener callbacks
+    // (immediate update on preset/pin change).
+    // No allocations; Starboard::setState() is message-thread-safe by contract.
+    void pushStarboardState()
+    {
+        // Detect active slot change → bump slotGeneration to trigger appear fade.
+        const int currentSlot = oceanView_.getSelectedSlot();
+        if (currentSlot != starboardLastActiveSlot_)
+        {
+            starboardLastActiveSlot_ = currentSlot;
+            ++starboardSlotGeneration_;
+        }
+
+        oceanView_.getSurfaceRight().setStarboardState(buildStarboardState());
+    }
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusEditor)
 };
