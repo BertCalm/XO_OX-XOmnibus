@@ -282,7 +282,7 @@ public:
         // doesn't require another resize pass.
         loreViewport_.setBounds(contentRect.toNearestInt());
         loreContent_.setSize(loreViewport_.getWidth() - loreViewport_.getScrollBarThickness(),
-                             500);  // fixed content height; scrollable
+                             1400);  // content height; scrollable (expanded for mythology excerpts)
         loreViewport_.setVisible(activeTab_ == Tab::Lore);
     }
 
@@ -393,7 +393,7 @@ private:
         // Engine count blurb
         g.setFont(bodyFont);
         g.setColour(Colour(200, 204, 216).withAlpha(0.45f));
-        g.drawText("73+ synthesis engines  \xc2\xb7  Kitchen Collection  \xc2\xb7  XPN expansion packs",
+        g.drawText("86 synthesis engines  \xc2\xb7  Kitchen Collection  \xc2\xb7  XPN expansion packs",
                    juce::Rectangle<float>(r.getX() + pad, y, r.getWidth() - pad * 2.0f, 14.0f).toNearestInt(),
                    juce::Justification::centredLeft, false);
         y += 20.0f;
@@ -454,7 +454,7 @@ private:
                      "The XOceanus Aquarium", 14.0f);
 
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
-                     "The XOceanus aquarium contains 73+ engines, each a creature", 12.0f);
+                     "The XOceanus aquarium contains 86 engines, each a creature", 12.0f);
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
                      "of the deep. Sunlit zone holds bright, harmonic engines.", 12.0f);
             drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
@@ -486,11 +486,90 @@ private:
 
             y += 8.0f;
 
+            // --- Engine Mythology Excerpts ---
+            drawLine(headFont, Colour(127, 219, 202).withAlpha(0.70f),
+                     "Engine Mythology", 14.0f);
+
+            // OXYTOCIN
+            drawLine(headFont, Colour(155, 93, 229).withAlpha(0.80f),
+                     "OXYTOCIN  \xc2\xb7  Synapse Violet  \xc2\xb7  Fleet Leader", 11.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "Models three legendary circuits in one voice: the Steinhart-Hart NTC", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "thermal network, the Sallen-Key saturation stage, and a Serge circular", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "modulation topology. The longer you hold a note, the deeper the love type.", 12.0f);
+            y += 4.0f;
+
+            // OPERA
+            drawLine(headFont, Colour(212, 175, 55).withAlpha(0.80f),
+                     "OPERA  \xc2\xb7  Aria Gold  \xc2\xb7  Mesopelagic", 11.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "The Humpback Whale sings through the SOFAR channel. Eight voices", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "share a Kuramoto mean-field: coupled limit cycles from Kuramoto (1975),", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "weighted by Peterson-Barney formant data. Synchrony is a threshold event.", 12.0f);
+            y += 4.0f;
+
+            // OFFERING
+            drawLine(headFont, Colour(229, 184, 11).withAlpha(0.80f),
+                     "OFFERING  \xc2\xb7  Crate Wax Yellow  \xc2\xb7  Rubble Zone", 11.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "The Mantis Shrimp strikes. Eight drum slots, eight distinct synthesis", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "topologies: TR-808 metallic networks, Karplus-Strong comb, Chaigne", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "contact physics, city-specific compressor chains. Detroit always runs late.", 12.0f);
+            y += 4.0f;
+
+            // OWARE
+            drawLine(headFont, Colour(181, 136, 62).withAlpha(0.80f),
+                     "OWARE  \xc2\xb7  Akan Goldweight  \xc2\xb7  Tuned Percussion", 11.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "Modal ratio tables from Rossing (2000). Material alpha decay exponents", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "from beam dispersion theory. Per-voice tuning drift on a 100-second time", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "constant. Each bar of the instrument has its own stable character.", 12.0f);
+            y += 4.0f;
+
+            // OGIVE
+            drawLine(headFont, Colour(155, 27, 48).withAlpha(0.80f),
+                     "OGIVE  \xc2\xb7  Selenium Ruby  \xc2\xb7  Scanned Synthesis", 11.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "A spring-mass glass surface initialized from classic waveforms, scanned", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "by a read-head tracing a Gothic arch trajectory. Verlet integration drives", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "nonlinear cubic springs. Sound arrives through architecture.", 12.0f);
+            y += 4.0f;
+
+            // OLVIDO
+            drawLine(headFont, Colour(59, 110, 143).withAlpha(0.80f),
+                     "OLVIDO  \xc2\xb7  Coelacanth Blue  \xc2\xb7  The Forgetting Engine", 11.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "Six frequency bands dissolve at different rates, f\xc2\xb2-scaled per", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "Phillips (1977) ocean wave dissipation. High frequencies vanish first;", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "the fundamental remembers longest. Forgetting is a physical law.", 12.0f);
+            y += 4.0f;
+
+            // OSTRACON
+            drawLine(headFont, Colour(192, 120, 90).withAlpha(0.80f),
+                     "OSTRACON  \xc2\xb7  Shard Terracotta  \xc2\xb7  The Remembering Engine", 11.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "All voices write to a shared circular buffer simultaneously, then read", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "back through Mellotron-style oxide degradation: bandwidth loss, flutter,", 12.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.55f),
+                     "and ghost bleed from previous revolutions. Memory is communal.", 12.0f);
+            y += 4.0f;
+
             // Footer note
-            // wire(#orphan-sweep): replaced user-visible stub string with placeholder.
-            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.30f),
-                     "Engine mythology and Synth Seance content forthcoming. "
-                     "Use the navigation to explore other tabs.", 10.0f);
+            drawLine(bodyFont, Colour(200, 204, 216).withAlpha(0.28f),
+                     "Full mythology: xo-ox.org  \xc2\xb7  Field Guide  \xc2\xb7  ~52K words", 10.0f);
         }
     } loreContent_;
 
