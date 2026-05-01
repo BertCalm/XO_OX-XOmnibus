@@ -18,7 +18,8 @@
 // Forward-declare processor so setProcessorPtr() can store the pointer without
 // pulling in the full XOceanusProcessor.h here (that would create a circular
 // include because XOceanusProcessor.h includes OperaAdapter.h transitively).
-class XOceanusProcessor;
+// Must be in namespace xoceanus — XOceanusProcessor is defined in that namespace.
+namespace xoceanus { class XOceanusProcessor; }
 
 namespace xoceanus
 {
