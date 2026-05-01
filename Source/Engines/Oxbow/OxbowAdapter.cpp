@@ -1,0 +1,62 @@
+#include "OxbowAdapter.h"
+// T6: full processor type needed for getModRouteCount / getModRouteDestParamId etc.
+// XOceanusProcessor.h includes OxbowAdapter.h (transitively via OxbowEngine.h), so
+// this include is safe — the header guard prevents double-inclusion; by the time
+// we get here OxbowAdapter.h is done.
+#include "../../XOceanusProcessor.h"
+
+namespace xoceanus
+{
+
+// T6: cacheGlobalModRoutes — scan the current global-mod-route snapshot for routes
+// that target any of Oxbow's 5 modulated parameters.  Stores the route index (or -1)
+// per target so renderBlock() can read getModRouteAccum() in O(1) without strncmp.
+//
+// Thread-safety: called on the message thread (from setProcessorPtr() and from any
+// future flushModRoutesSnapshot() callback).  The audio thread reads the cached
+// arrays read-only.  A one-block lag is acceptable — worst case is a missed
+// mod-offset for a single block when a route is added or removed.
+//
+// DSP safety: no allocation, no locks, no logging.
+void OxbowAdapter::cacheGlobalModRoutes() noexcept
+{
+    // Reset all targets to "no active route"
+    for (int t = 0; t < kOxbowGlobalModTargets; ++t)
+    {
+        globalModRouteIdx_[t]  = -1;
+        globalModVelScaled_[t] = false;
+        globalModRangeSpan_[t] = 0.0f;
+    }
+
+    if (processorPtr_ == nullptr)
+    {
+        modAccumPtr_ = nullptr;
+        return;
+    }
+
+    // Cache the raw accumulator pointer — used by applyGlobalModRoutes() without
+    // needing to call through the full XOceanusProcessor type in the header.
+    modAccumPtr_ = processorPtr_->getModRouteAccumPtr();
+
+    int numRoutes = processorPtr_->getModRouteCount();
+    for (int ri = 0; ri < numRoutes; ++ri)
+    {
+        const char* destId = processorPtr_->getModRouteDestParamId(ri);
+        if (destId == nullptr || destId[0] == '\0')
+            continue;
+
+        for (int t = 0; t < kOxbowGlobalModTargets; ++t)
+        {
+            if (std::strcmp(destId, kGlobalModTargetIds[t]) == 0)
+            {
+                // Last matching route wins if multiple routes target the same param.
+                globalModRouteIdx_[t]  = ri;
+                globalModVelScaled_[t] = processorPtr_->isModRouteVelocityScaled(ri);
+                globalModRangeSpan_[t] = processorPtr_->getModRouteRangeSpan(ri);
+                break;
+            }
+        }
+    }
+}
+
+} // namespace xoceanus
