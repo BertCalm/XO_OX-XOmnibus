@@ -55,7 +55,8 @@
 #include "OfferingCuriosity.h"
 
 // T6: Forward declaration — full type included in OfferingEngine.cpp to avoid circular dependency.
-class XOceanusProcessor;
+// Must be in namespace xoceanus — XOceanusProcessor is defined in that namespace.
+namespace xoceanus { class XOceanusProcessor; }
 
 namespace xoceanus
 {
