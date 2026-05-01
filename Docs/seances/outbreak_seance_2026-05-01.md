@@ -19,7 +19,7 @@ The original chain coupled wow rate to wow depth: `wowLFO.setRate(0.3f + wowAmt 
 
 This is the second 1-param additive D005 fix shape (after Osmium). Both decouple a hardcoded internal rate from existing depth controls.
 
-The hardcoded 60 Hz flutter LFO (line 93, `flutterLFO.setRate(60.0f, ...)`) stays as-is — that's an audio-rate AM modulator producing tape flutter character, not a breath modulator. Same distinction Outage made for `draumeAmRate`.
+The hardcoded 60 Hz flutter LFO (`flutterLFO.setRate(60.0f, ...)` in `GenLossStage::prepare`) stays as-is — that's an audio-rate AM modulator producing tape flutter character, not a breath modulator. Same distinction Outage made for `draumeAmRate`.
 
 ---
 

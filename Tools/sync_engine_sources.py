@@ -166,10 +166,14 @@ def bootstrap() -> None:
         # Preserve existing metadata if present (match case-insensitively)
         prior = existing_lookup.get(eng_id.lower(), {})
         entry: dict = {"id": eng_id}
-        # Metadata fields to preserve from prior entry
+        # Metadata fields to preserve from prior entry.
+        # Includes Wave 2 seance metadata (seance_date, fx_chain_header) plus
+        # category — flagged on PR #1509/#1510 review as missing from this
+        # allowlist. Without preservation, --bootstrap silently drops them.
         for key in (
             "source_instrument", "role", "seance_score", "seance_score_note",
-            "preset_count", "accent_color", "accent_name", "blessings", "notes",
+            "seance_date", "preset_count", "accent_color", "accent_name",
+            "blessings", "notes", "category", "fx_chain_header",
         ):
             if key in prior:
                 entry[key] = prior[key]

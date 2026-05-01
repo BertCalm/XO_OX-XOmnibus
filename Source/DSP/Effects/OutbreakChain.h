@@ -125,7 +125,8 @@ private:
             // S&H wow rate: now user-controllable via outb_wowRate (D005).
             // Decoupled from wowAmt: previously rate = 0.3 + wowAmt*1.7
             // (range 0.3–2 Hz) coupling depth to rate; now wowAmt controls
-            // depth only and the rate floor is 0.005 Hz for sub-mHz drift.
+            // depth only; the rate floor is 0.005 Hz (5 mHz, ~200 s cycle)
+            // for multi-minute drift.
             wowLFO.setRate(wowRate, srF);
             float rawWow = wowLFO.process();
             // Low-pass the S&H output at ~2Hz to get smooth wow
