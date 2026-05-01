@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Bass Triangle",
+  "mood": "Coupling",
+  "engines": [
+    "Ogre",
+    "Oaken",
+    "Omega"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Otrium FX chain demo — 3 bass engines lock into a tight isosceles triangle. Narrow 75° phase skew gives the cross-ducking a focused swing rather than even distribution; medium pump rate (2 Hz, free) keeps the low-end articulate without thinning it out. Use for sub-heavy contexts where a single sub voice would muddy. Otrium config embedded under Ogre's parameter block.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "bass",
+    "isosceles",
+    "otrium",
+    "fx-chain-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.74,
+    "movement": 0.55,
+    "density": 0.82,
+    "space": 0.32,
+    "aggression": 0.62
+  },
+  "parameters": {
+    "Ogre": {
+      "ogre_macroCharacter": 0.6,
+      "ogre_macroMovement": 0.55,
+      "ogre_macroCoupling": 0.78,
+      "ogre_macroSpace": 0.32,
+      "slot1_chain": 31,
+      "slot1_mix": 1.0,
+      "slot1_bypass": 0.0,
+      "otrm_pumpDepth": 0.6,
+      "otrm_pumpRate": 2.0,
+      "otrm_attack": 8.0,
+      "otrm_release": 220.0,
+      "otrm_phaseSkew": 75.0,
+      "otrm_topology": 1,
+      "otrm_partnerA_idx": 0,
+      "otrm_partnerB_idx": 1,
+      "otrm_partnerC_idx": 2,
+      "otrm_couplingDepth": 0.7,
+      "otrm_dnaTilt": 0.55,
+      "otrm_mix": 1.0,
+      "otrm_syncMode": 0
+    },
+    "Oaken": {
+      "oaken_macroCharacter": 0.55,
+      "oaken_macroMovement": 0.5,
+      "oaken_macroCoupling": 0.78,
+      "oaken_macroSpace": 0.32
+    },
+    "Omega": {
+      "omega_macroCharacter": 0.6,
+      "omega_macroMovement": 0.55,
+      "omega_macroCoupling": 0.78,
+      "omega_macroSpace": 0.32
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.53,
+    "COUPLING": 0.78,
+    "SPACE": 0.32
+  }
+}

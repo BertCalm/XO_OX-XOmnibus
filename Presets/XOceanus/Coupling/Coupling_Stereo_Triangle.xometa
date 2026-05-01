@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "name": "Stereo Triangle",
+  "mood": "Coupling",
+  "engines": [
+    "OpenSky",
+    "Oracle",
+    "Obsidian"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Otrium FX chain demo — Cyclical topology with tempo-sync. The triangle rotates continuously across cycles via a separate drift-phase accumulator running at 1/8 the LFO rate, so the panned partners (left / center / right) never collapse into a static pattern. 0.5 cycles-per-beat in Sync mode at 120 BPM = ultra-slow 1 Hz rotation. The pad walks around itself indefinitely. Otrium config embedded under OpenSky's parameter block.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "stereo",
+    "cyclical",
+    "tempo-sync",
+    "evolving",
+    "otrium",
+    "fx-chain-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.62,
+    "density": 0.55,
+    "space": 0.92,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "OpenSky": {
+      "sky_macroCharacter": 0.5,
+      "sky_macroMovement": 0.6,
+      "sky_macroCoupling": 0.7,
+      "sky_macroSpace": 0.92,
+      "slot1_chain": 31,
+      "slot1_mix": 1.0,
+      "slot1_bypass": 0.0,
+      "otrm_pumpDepth": 0.5,
+      "otrm_pumpRate": 0.5,
+      "otrm_attack": 60.0,
+      "otrm_release": 600.0,
+      "otrm_phaseSkew": 110.0,
+      "otrm_topology": 3,
+      "otrm_partnerA_idx": 0,
+      "otrm_partnerB_idx": 1,
+      "otrm_partnerC_idx": 2,
+      "otrm_couplingDepth": 0.55,
+      "otrm_dnaTilt": 0.3,
+      "otrm_mix": 1.0,
+      "otrm_syncMode": 1
+    },
+    "Oracle": {
+      "oracle_macroCharacter": 0.5,
+      "oracle_macroMovement": 0.6,
+      "oracle_macroCoupling": 0.7,
+      "oracle_macroSpace": 0.9
+    },
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.5,
+      "obsidian_macroMovement": 0.6,
+      "obsidian_macroCoupling": 0.7,
+      "obsidian_macroSpace": 0.92
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.6,
+    "COUPLING": 0.7,
+    "SPACE": 0.92
+  }
+}
