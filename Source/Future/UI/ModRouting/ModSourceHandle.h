@@ -68,7 +68,16 @@ enum class ModSourceId
     XYY1 = 25,   // XY surface Y-axis, slot 1 (bipolar)
     XYY2 = 26,   // XY surface Y-axis, slot 2 (bipolar)
     XYY3 = 27,   // XY surface Y-axis, slot 3 (bipolar)
-    Count = 28
+    // ── #1383: XOuija live position sources ─────────────────────────────────
+    // Live planchette position from XOuijaPanel published via SlotModSourceRegistry.
+    // X: horizontal axis (circle-of-fifths / harmonic position), bipolar [-1, +1].
+    // Y: vertical axis (tension / brightness), bipolar [-1, +1].
+    // Depth: influence/pressure value from XOuija cell intensity, unipolar [0, 1].
+    // Registry IDs (string keys): "xouija.x", "xouija.y", "xouija.depth"
+    XouijaX     = 28,  // XOuija planchette X position (bipolar)
+    XouijaY     = 29,  // XOuija planchette Y position (bipolar)
+    XouijaDepth = 30,  // XOuija influence / cell depth (unipolar)
+    Count = 31
 };
 
 // Human-readable names used in tooltips and the route list panel.
@@ -125,6 +134,10 @@ inline juce::String modSourceName(ModSourceId id)
     case ModSourceId::XYY1: return "XY Y (Slot 2)";
     case ModSourceId::XYY2: return "XY Y (Slot 3)";
     case ModSourceId::XYY3: return "XY Y (Slot 4)";
+    // ── #1383: XOuija live sources ───────────────────────────────────────────
+    case ModSourceId::XouijaX:     return "XOuija X / Planchette Position";
+    case ModSourceId::XouijaY:     return "XOuija Y / Vertical";
+    case ModSourceId::XouijaDepth: return "XOuija Depth / Influence";
     default:
         return "?";
     }
@@ -192,6 +205,13 @@ inline juce::Colour modSourceColour(ModSourceId id)
     case ModSourceId::XYY2:
     case ModSourceId::XYY3:
         return juce::Colour(0xFF2A7FA5); // deep ocean blue — Y axis
+    // ── #1383: XOuija live sources — mystic violet/plum palette ─────────────
+    case ModSourceId::XouijaX:
+        return juce::Colour(0xFFB57BEA); // violet — horizontal planchette axis
+    case ModSourceId::XouijaY:
+        return juce::Colour(0xFF9B5FC0); // deeper violet — vertical axis
+    case ModSourceId::XouijaDepth:
+        return juce::Colour(0xFF7B3FA0); // dark plum — influence depth (unipolar)
     default:
         return juce::Colour(GalleryColors::xoGold);
     }
@@ -364,6 +384,16 @@ public:
             break;
         case ModSourceId::XouijaCell:
             glyph = "Y"; // "Y" for ouiJa — avoids ambiguity with Q=seq, J=none
+            break;
+        // ── #1383: XOuija live position sources ─────────────────────────────
+        case ModSourceId::XouijaX:
+            glyph = "X"; // X axis
+            break;
+        case ModSourceId::XouijaY:
+            glyph = "y"; // lowercase y — distinct from XouijaX
+            break;
+        case ModSourceId::XouijaDepth:
+            glyph = "d"; // depth
             break;
         default:
             glyph = "?";

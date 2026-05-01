@@ -583,6 +583,10 @@ private:
         { 15, 0xFF81D4FA }, // Seq Step
         { 16, 0xFFF48FB1 }, // Chord Tone
         { 17, 0xFF80CBC4 }, // Beat Phase
+        // ── #1383: XOuija live sources ───────────────────────────────────
+        { 28, 0xFFB57BEA }, // XOuija X
+        { 29, 0xFF9B5FC0 }, // XOuija Y
+        { 30, 0xFF7B3FA0 }, // XOuija Depth
     };
 
     //==========================================================================

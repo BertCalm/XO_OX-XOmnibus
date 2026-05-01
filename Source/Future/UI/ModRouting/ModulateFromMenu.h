@@ -22,12 +22,13 @@
 // from mouseDown when e.mods.isRightButtonDown(). See XOceanusEditor.h.
 //
 // ────────────────────────────────────────────────────────────────────────────
-// Extended source list (D9 F4 + G3 spec)
+// Extended source list (D9 F4 + G3 spec + #1383 XOuija live sources)
 //
-// ModSourceId in ModSourceHandle.h now defines all 18 sources (IDs 0–17)
-// matching spec D9 F4 + G3. All entries in kAllModSources below have valid
-// enum values and are routable via ModRoutingModel. The "extended" sentinel
-// logic (id >= Count) no longer applies — Count is now 18.
+// ModSourceId in ModSourceHandle.h defines all sources (IDs 0–17 original,
+// 28–30 XOuija live, Count = 31) matching spec D9 F4 + G3 plus #1383.
+// All entries in kAllModSources below have valid enum values and are routable
+// via ModRoutingModel. The "extended" sentinel logic (id >= Count) no longer
+// applies — Count is now 31 (after #1383).
 //
 #pragma once
 
@@ -51,8 +52,8 @@ struct ExtModSourceInfo
 };
 
 //==============================================================================
-// Full source catalogue — matches spec D9 F4 + G3.
-// All 18 sources have valid ModSourceId enum values (Count = 18).
+// Full source catalogue — matches spec D9 F4 + G3, extended for #1383 XOuija.
+// All sources have valid ModSourceId enum values (Count = 31 after #1383).
 // All are routable via ModRoutingModel (which stores int sourceId).
 //
 // JUCE PopupMenu item IDs start at 1.  We encode id + 1 as the JUCE item ID
@@ -88,6 +89,13 @@ static const ExtModSourceInfo kAllModSources[] = {
     { 15, "Seq Step Value",  "Musical",   true,  0xFF81D4FA },
     { 16, "Chord Tone Idx",  nullptr,     false, 0xFFF48FB1 },
     { 17, "Beat Phase",      nullptr,     true,  0xFF80CBC4 },
+
+    // ── XOuija (#1383) ────────────────────────────────────────────────────
+    // Live planchette position published by XOuijaPanel via SlotModSourceRegistry.
+    // Registry string keys: "xouija.x", "xouija.y", "xouija.depth"
+    { 28, "XOuija X / Planchette Position", "XOuija", true,  0xFFB57BEA },
+    { 29, "XOuija Y / Vertical",             nullptr,  true,  0xFF9B5FC0 },
+    { 30, "XOuija Depth / Influence",        nullptr,  false, 0xFF7B3FA0 },
 };
 
 static constexpr int kNumModSources = static_cast<int>(sizeof(kAllModSources) / sizeof(kAllModSources[0]));
