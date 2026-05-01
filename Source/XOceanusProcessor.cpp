@@ -3105,6 +3105,10 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // T6: Wire OfferingEngine into the global mod-route opt-in path (Path B Phase 4.1).
         if (auto* offering = dynamic_cast<OfferingEngine*>(newEngine.get()))
             offering->setProcessorPtr(this);
+        // T6: Wire OstraconEngine into the global mod-route opt-in path (Path B Phase 3.2).
+        // Identical protocol to Opal / Oxytocin above.
+        if (auto* ostracon = dynamic_cast<OstraconEngine*>(newEngine.get()))
+            ostracon->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3318,6 +3322,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
             oxb->cacheGlobalModRoutes();
         if (auto* offering = dynamic_cast<OfferingEngine*>(eng.get()))
             offering->cacheGlobalModRoutes();
+        if (auto* ostracon = dynamic_cast<OstraconEngine*>(eng.get()))
+            ostracon->cacheGlobalModRoutes();
     }
 }
 

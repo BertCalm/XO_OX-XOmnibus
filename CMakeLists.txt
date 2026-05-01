@@ -355,6 +355,8 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Osprey/OspreyEngine.cpp
     Source/Engines/Osteria/OsteriaEngine.h
     Source/Engines/Osteria/OsteriaEngine.cpp
+    Source/Engines/Ostracon/OstraconEngine.h
+    Source/Engines/Ostracon/OstraconEngine.cpp
 
     Source/Engines/Owlfish/OwlfishEngine.h
     Source/Engines/Owlfish/OwlfishEngine.cpp
