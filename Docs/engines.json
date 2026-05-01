@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Machine-readable engine roster for XOceanus. CI/build scripts reference this file to scope QA sweeps, builds, and preset validation.",
-    "last_updated": "2026-04-26",
+    "last_updated": "2026-05-01",
     "status_values": [
       "implemented",
       "standalone",
