@@ -975,6 +975,15 @@ private:
     // Audio-thread-only; no atomics needed.
     float modWheelValue_{0.0f};
 
+    // ── Channel Pressure (Aftertouch) — block-latched scalar (audio thread only) ──
+    // aftertouchValue_: 0.0–1.0, latched from channel-pressure (0xD0) events.
+    // Latch policy mirrors modWheelValue_: most-recent event per block wins
+    // (no first-only guard — channel pressure events are rare relative to CC1,
+    // so sub-block jitter is not a practical concern; simpler to just overwrite).
+    // Persistent across blocks — retains last value until next pressure event.
+    // Audio-thread-only; no atomics needed.
+    float aftertouchValue_{0.0f};
+
     // ── CC64 sustain pedal — fleet-wide hold (audio thread only) ─────────────
     // sustainHeld_[ch]: true while CC64 >= 64 on MIDI channel ch (0-based).
     // sustainPendingNoteOffs_[slot][ch]: bitmask of notes (0–127) whose note-off
