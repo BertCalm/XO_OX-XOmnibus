@@ -114,6 +114,7 @@
 #include "DSP/Effects/BoutiqueFXChain.h"
 #include "DSP/Effects/AquaticFXSuite.h"
 #include "Core/EpicChainSlotController.h"
+#include "Core/DNAProximity.h"
 #include "DSP/ThreadInit.h"
 #include <cstring> // std::strncmp — used in Wave 5 A1 global mod route evaluation
 
