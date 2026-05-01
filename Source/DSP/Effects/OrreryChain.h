@@ -42,7 +42,7 @@ namespace xoceanus
 //          LushReverb + CytomicSVF LP in feedback loop with
 //          StandardLFO modulating cutoff (slow breathing 0.05–0.3Hz).
 //
-// Parameter prefix: orry_ (10 params)
+// Parameter prefix: orry_ (11 params)
 //==============================================================================
 class OrreryChain
 {
@@ -381,7 +381,7 @@ private:
 
         void processBlock(const float* inL, const float* inR,
                           float* outL, float* outR, int numSamples,
-                          float decaySec, float filterCentre)
+                          float decaySec, float filterCentre, float breathRateHz)
         {
             float srF = static_cast<float>(sr);
             reverb.setDecay(decaySec);
@@ -396,7 +396,12 @@ private:
 
             // Apply resonant LP with LFO breathing in the output
             // LFO sweeps the filter cutoff for the "resonant synthesizer" quality
-            breathLFO.setRate(0.1f, srF); // slow breath: 10s cycle
+            // D005: breathRateHz is now exposed via orry_breathRate (default
+            // 0.1 Hz preserves the original 10s cycle; floor 0.005 Hz lets
+            // user dial up to 200s for long-form drift). Per-block setRate
+            // (LFO advances per-sample inside the inner loop, so the rate
+            // applies correctly).
+            breathLFO.setRate(breathRateHz, srF);
             for (int i = 0; i < numSamples; ++i)
             {
                 float lfoMod = breathLFO.process(); // [-1, +1]
@@ -420,7 +425,7 @@ private:
     std::vector<float> tmp2R_;
 
     //==========================================================================
-    // Cached parameter pointers (10 params)
+    // Cached parameter pointers
     //==========================================================================
     std::atomic<float>* p_freezeSustain  = nullptr;
     std::atomic<float>* p_freezeDecay    = nullptr;
@@ -432,6 +437,7 @@ private:
     std::atomic<float>* p_polySmear      = nullptr;
     std::atomic<float>* p_nightskyDecay  = nullptr;
     std::atomic<float>* p_nightskyFilter = nullptr;
+    std::atomic<float>* p_breathRate     = nullptr; // D005: exposed slow-mod rate (0.005–1 Hz)
 };
 
 //==============================================================================
@@ -480,6 +486,7 @@ inline void OrreryChain::processBlock(const float* monoIn, float* L, float* R,
     const float polySmear      = p_polySmear->load(std::memory_order_relaxed);
     const float nightskyDecay  = p_nightskyDecay->load(std::memory_order_relaxed);
     const float nightskyFilter = p_nightskyFilter->load(std::memory_order_relaxed);
+    const float breathRate     = p_breathRate->load(std::memory_order_relaxed);
 
     // Stage 1: Freeze — mono, writes to tmpL_
     for (int i = 0; i < numSamples; ++i)
@@ -504,7 +511,7 @@ inline void OrreryChain::processBlock(const float* monoIn, float* L, float* R,
 
     // Stage 5: NightSky resonant reverb (stereo)
     nightSky_.processBlock(tmpL_.data(), tmpR_.data(), L, R, numSamples,
-                           nightskyDecay, nightskyFilter);
+                           nightskyDecay, nightskyFilter, breathRate);
 }
 
 inline void OrreryChain::addParameters(
@@ -524,6 +531,12 @@ inline void OrreryChain::addParameters(
     registerFloat(layout, p + "polySmear",      p + "Poly Smear",     0.0f,  1.0f,  0.5f);
     registerFloat(layout, p + "nightskyDecay",  p + "NightSky Decay", 0.5f, 20.0f,  6.0f);
     registerFloat(layout, p + "nightskyFilter", p + "NightSky Filter",400.0f, 8000.0f, 2000.0f);
+    // D005 (must breathe): exposes the NightSky reverb's breath LFO rate.
+    // Default 0.1 Hz preserves the original 10-second cycle; floor 0.005 Hz
+    // matches StandardLFO::setRate's internal clamp. Skewed because the
+    // range spans 2+ decades.
+    registerFloatSkewed(layout, p + "breathRate", p + "NightSky Breath Rate",
+                        0.005f, 1.0f, 0.1f, 0.001f, 0.3f);
 }
 
 inline void OrreryChain::cacheParameterPointers(
@@ -541,6 +554,7 @@ inline void OrreryChain::cacheParameterPointers(
     p_polySmear      = cacheParam(apvts, p + "polySmear");
     p_nightskyDecay  = cacheParam(apvts, p + "nightskyDecay");
     p_nightskyFilter = cacheParam(apvts, p + "nightskyFilter");
+    p_breathRate     = cacheParam(apvts, p + "breathRate");
 }
 
 } // namespace xoceanus

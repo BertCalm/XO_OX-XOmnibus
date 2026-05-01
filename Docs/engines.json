@@ -728,10 +728,13 @@
       "id": "Orrery",
       "param_prefix": "orry_",
       "header": "Source/Engines/Orrery/OrreryEngine.h",
+      "fx_chain_header": "Source/DSP/Effects/OrreryChain.h",
       "status": "implemented",
       "accent_color": "#4682B4",
-      "category": "navigation"
-    },
+      "category": "navigation",
+      "seance_score": 8.4,
+      "seance_date": "2026-05-01",
+      "notes": "Wave 2.7 seance — 8.4/10 APPROVED. Frozen Diamond — 5-stage chain: optical freeze (BigSky-style infinite hold) + reverse swell synth + dimension chorus (4-mode rate table 0.5/0.9/1.5/2.5 Hz) + multi-tap polymoon delay + NightSky resonant reverb. D005 fix: 1-param additive — exposes orry_breathRate (skewed 0.005–1 Hz, default 0.1 Hz) controlling the NightSky reverb's breath LFO. Default preserves the original 10s cycle; user can dial down to 200s for long-form drift. All 11 params D004-clean. 4 mod sources (dim chorus stereo LFOs + breath LFO + reverse swell envelope + freeze decay). Status was already 'implemented' with the Source/Engines/Orrery/ wrapper present."
     {
       "id": "Ortolan",
       "param_prefix": "ort_",
