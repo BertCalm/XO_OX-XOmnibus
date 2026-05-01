@@ -431,6 +431,8 @@ target_sources(XOceanus PRIVATE
     Source/Engines/Organism/OrganismEngine.cpp
     Source/Engines/Oxbow/OxbowEngine.h
     Source/Engines/Oxbow/OxbowEngine.cpp
+    Source/Engines/Oxbow/OxbowAdapter.h
+    Source/Engines/Oxbow/OxbowAdapter.cpp
     Source/Engines/Oware/OwareEngine.h
     Source/Engines/Oware/OwareEngine.cpp
 
