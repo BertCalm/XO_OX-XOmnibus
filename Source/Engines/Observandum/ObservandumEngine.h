@@ -13,6 +13,12 @@
 #include <atomic>
 #include <cmath>
 #include <algorithm>
+#include <cstring>
+
+// T6: forward-declaration of XOceanusProcessor for global mod-route opt-in.
+// Full type is only needed in ObservandumEngine.cpp where XOceanusProcessor.h
+// is included (identical pattern to OpalEngine).
+class XOceanusProcessor;
 
 namespace xoceanus
 {
@@ -58,11 +64,13 @@ namespace xoceanus
 //==============================================================================
 
 // ---- Engine-level constants ----
-static constexpr int  kObservMaxFacets      = 8;
-static constexpr int  kObservOscBudget      = 24;
-static constexpr int  kObservCurveSize      = 1024;  // points per distortion curve
-static constexpr int  kObservNumCurves      = 8;
-static constexpr int  kObservOversample     = 2;
+static constexpr int  kObservMaxFacets           = 8;
+static constexpr int  kObservOscBudget           = 24;
+static constexpr int  kObservCurveSize           = 1024;  // points per distortion curve
+static constexpr int  kObservNumCurves           = 8;
+static constexpr int  kObservOversample          = 2;
+// T6: number of global mod-route targets for ObservandumEngine (Pattern B).
+static constexpr int  kObservandumGlobalModTargets = 5;
 static constexpr float kObservPI            = 3.14159265358979323846f;
 static constexpr float kObservTwoPi         = 6.28318530717958647692f;
 
@@ -489,6 +497,32 @@ public:
         effectiveCutoff = clamp(effectiveCutoff + modCutoffOffset, 20.0f, 20000.0f);
         morphWithCoupling = clamp(morphWithCoupling + modMorphOffset, 0.0f, 100.0f);
 
+        // ---- T6: Global mod-route consumption (Pattern B) ----
+        // Mutable shadow copies of the three const-loaded params that are targets
+        // for global mod routes.  Created here so applyObservGlobalModRoutes()
+        // can offset them additively before they are used in the DSP loops below.
+        // effectiveCutoff and effectiveDistortion are already mutable floats.
+        float mutableFilterReso  = paramFilterReso;
+        float mutableMasterLevel = paramMasterLevel;
+        float mutableAmpDecay    = paramAmpD;
+        {
+            float avgVel = 0.0f;
+            int activeVCnt = 0;
+            for (const auto& v : voices)
+            {
+                if (v.active)
+                {
+                    avgVel += v.velocity;
+                    ++activeVCnt;
+                }
+            }
+            avgVel = (activeVCnt > 0) ? avgVel / static_cast<float>(activeVCnt) : 1.0f;
+            applyObservGlobalModRoutes(effectiveCutoff, mutableFilterReso,
+                                       mutableMasterLevel, mutableAmpDecay,
+                                       effectiveDistortion, avgVel);
+        }
+        // ---- end T6 global mod routes ----
+
         // ---- Compute per-facet detune ratios and phase offsets ----
         // Detune: spread across facets symmetrically in cents (smoothed)
         // Phase offset: spread across facets by smoothedSpread (degrees, smoothed)
@@ -533,12 +567,12 @@ public:
                 wakeSilenceGate();
                 noteOn(msg.getNoteNumber(), msg.getFloatVelocity(),
                        maxPolyphony, monoMode, legatoMode, glideCoeff,
-                       paramAmpA, paramAmpD, paramAmpS, paramAmpR,
+                       paramAmpA, mutableAmpDecay, paramAmpS, paramAmpR,
                        paramFltA, paramFltD, paramFltS, paramFltR,
                        paramDistA, paramDistD, paramDistS, paramDistR,
                        paramLfo1Rate, paramLfo1Shape,
                        paramLfo2Rate, paramLfo2Shape,
-                       effectiveCutoff, paramFilterReso, paramFilterType);
+                       effectiveCutoff, mutableFilterReso, paramFilterType);
             }
             else if (msg.isNoteOff())
             {
@@ -687,8 +721,8 @@ public:
                 {
                     voice.filterL.setMode(blockFilterMode);
                     voice.filterR.setMode(blockFilterMode);
-                    voice.filterL.setCoefficients(voiceCutoff, paramFilterReso, sampleRateFloat);
-                    voice.filterR.setCoefficients(voiceCutoff, paramFilterReso, sampleRateFloat);
+                    voice.filterL.setCoefficients(voiceCutoff, mutableFilterReso, sampleRateFloat);
+                    voice.filterR.setCoefficients(voiceCutoff, mutableFilterReso, sampleRateFloat);
                 }
 
                 // ---- Render all facets with 2x oversampling ----
@@ -777,8 +811,8 @@ public:
             }
 
             // Apply master level + soft clip (polyphony sum can exceed 0 dBFS)
-            float finalL = softClip(mixLeft  * paramMasterLevel);
-            float finalR = softClip(mixRight * paramMasterLevel);
+            float finalL = softClip(mixLeft  * mutableMasterLevel);
+            float finalR = softClip(mixRight * mutableMasterLevel);
 
             // Write to output buffer
             if (buffer.getNumChannels() >= 2)
@@ -879,6 +913,42 @@ public:
             couplingCurveModAccum = flushDenormal(couplingCurveModAccum);
         }
     }
+
+    //-- T6: Global mod-route opt-in (Pattern B) ---------------------------------
+    //
+    // setProcessorPtr() — called once from XOceanusProcessor::loadEngine() on the
+    // message thread after attachParameters().  Stores the processor pointer so
+    // cacheGlobalModRoutes() can call the public route accessors.
+    // Audio thread only reads processorPtr_ after this assignment (sequential,
+    // no data race).
+    //
+    // cacheGlobalModRoutes() — scans the current snapshot for routes that target
+    // any of Observandum's 5 modulated parameters and stores the matching route
+    // indices in observGlobalModRouteIdx_[].  -1 means no active route for that
+    // target.  Called whenever the snapshot changes (on load + on route model flush).
+    //
+    // Target → index mapping (fixed):
+    //   0 = observ_filterCutoff   (filter brightness — D001 compliance)
+    //   1 = observ_filterReso     (resonance / timbre color)
+    //   2 = observ_level          (master amplitude)
+    //   3 = observ_ampDecay       (amplitude envelope shape)
+    //   4 = observ_distortionAmount (phase distortion depth — character)
+    //
+    // NOTE: morph-related targets (observ_curveMorph, observ_morphEnvAmount) are
+    // intentionally excluded — per-voice morphEnvOffset blending (D002) makes a
+    // global additive offset unsafe without re-clamping every voice's curve index.
+    // The five targets above are all post-envelope, single-value parameters that
+    // accept a clean additive offset before DSP.
+
+    void setProcessorPtr(XOceanusProcessor* p) noexcept
+    {
+        processorPtr_ = p;
+        // cacheGlobalModRoutes() (defined in ObservandumEngine.cpp) sets
+        // observModAccumPtr_ too.
+        cacheGlobalModRoutes();
+    }
+
+    void cacheGlobalModRoutes() noexcept;  // implemented in ObservandumEngine.cpp
 
     //==========================================================================
     //  S Y N T H   E N G I N E   I N T E R F A C E  —  P A R A M E T E R S
@@ -1631,6 +1701,113 @@ private:
     std::atomic<float>* pMacro2           = nullptr;
     std::atomic<float>* pMacro3           = nullptr;
     std::atomic<float>* pMacro4           = nullptr;
+
+    // T6: Global mod-route opt-in state (Pattern B).
+    // processorPtr_: set by setProcessorPtr() on the message thread; read-only
+    //   on the audio thread after that.  Plain pointer — no atomic needed because
+    //   assignment happens before the first renderBlock() call.
+    XOceanusProcessor* processorPtr_ = nullptr;
+
+    // Cached route indices for the 5 target params (kObservandumGlobalModTargets).
+    // -1 = no active global route for that target.
+    // Written by cacheGlobalModRoutes() (message thread), read by renderBlock()
+    // (audio thread).  One-block lag is acceptable — worst case is a missed
+    // mod-offset for a single block when a route is added or removed.
+    std::array<int,   kObservandumGlobalModTargets> observGlobalModRouteIdx_{-1,-1,-1,-1,-1};
+    std::array<bool,  kObservandumGlobalModTargets> observGlobalModVelScaled_{};
+    std::array<float, kObservandumGlobalModTargets> observGlobalModRangeSpan_{};
+
+    // Raw pointer to the processor's routeModAccum_ array.  Set alongside
+    // processorPtr_ by setProcessorPtr().  Stored separately so the inline
+    // applyObservGlobalModRoutes() below can read accumulators without needing
+    // the full XOceanusProcessor type (forward-decl safe in the header).
+    const float* observModAccumPtr_ = nullptr;
+
+    // Param IDs for the 5 modulated targets (index-matched to observGlobalModRouteIdx_).
+    // Used inside cacheGlobalModRoutes() to find matching routes.
+    static constexpr const char* kObservGlobalModTargetIds[kObservandumGlobalModTargets] = {
+        "observ_filterCutoff",      // 0
+        "observ_filterReso",        // 1
+        "observ_level",             // 2
+        "observ_ampDecay",          // 3
+        "observ_distortionAmount",  // 4
+    };
+
+    // applyObservGlobalModRoutes() — inline helper called from renderBlock() BEFORE
+    // the main DSP loop so the audio thread uses cached indices in O(1).
+    //
+    // Parameters are passed by reference and modified in-place; they are the
+    // already-computed effective values (post-macro, pre-smooth) so the offsets
+    // are truly additive at the correct parameter scale.
+    void applyObservGlobalModRoutes(float& filterCutoff, float& filterReso,
+                                    float& masterLevel,  float& ampDecay,
+                                    float& distortion,
+                                    float avgVel) noexcept
+    {
+        if (observModAccumPtr_ == nullptr)
+            return;
+
+        // Target 0: observ_filterCutoff (20..20000 Hz) — D001 compliance.
+        //   Velocity route: high velocity → brighter filter (timbre sculpting).
+        {
+            int ri = observGlobalModRouteIdx_[0];
+            if (ri >= 0)
+            {
+                float raw   = observModAccumPtr_[static_cast<size_t>(ri)];
+                float depth = observGlobalModVelScaled_[0] ? raw * avgVel : raw;
+                float span  = observGlobalModRangeSpan_[0]; // 19980.0f
+                filterCutoff = juce::jlimit(20.0f, 20000.0f, filterCutoff + depth * span);
+            }
+        }
+
+        // Target 1: observ_filterReso (0..1 normalised)
+        {
+            int ri = observGlobalModRouteIdx_[1];
+            if (ri >= 0)
+            {
+                float raw   = observModAccumPtr_[static_cast<size_t>(ri)];
+                float depth = observGlobalModVelScaled_[1] ? raw * avgVel : raw;
+                float span  = observGlobalModRangeSpan_[1]; // 1.0f
+                filterReso = juce::jlimit(0.0f, 1.0f, filterReso + depth * span);
+            }
+        }
+
+        // Target 2: observ_level (0..1 master amplitude)
+        {
+            int ri = observGlobalModRouteIdx_[2];
+            if (ri >= 0)
+            {
+                float raw   = observModAccumPtr_[static_cast<size_t>(ri)];
+                float depth = observGlobalModVelScaled_[2] ? raw * avgVel : raw;
+                float span  = observGlobalModRangeSpan_[2]; // 1.0f
+                masterLevel = juce::jlimit(0.0f, 1.0f, masterLevel + depth * span);
+            }
+        }
+
+        // Target 3: observ_ampDecay (0.005..4.0 sec)
+        {
+            int ri = observGlobalModRouteIdx_[3];
+            if (ri >= 0)
+            {
+                float raw   = observModAccumPtr_[static_cast<size_t>(ri)];
+                float depth = observGlobalModVelScaled_[3] ? raw * avgVel : raw;
+                float span  = observGlobalModRangeSpan_[3]; // ~3.995f
+                ampDecay = juce::jlimit(0.005f, 4.0f, ampDecay + depth * span);
+            }
+        }
+
+        // Target 4: observ_distortionAmount (0..1 phase distortion depth)
+        {
+            int ri = observGlobalModRouteIdx_[4];
+            if (ri >= 0)
+            {
+                float raw   = observModAccumPtr_[static_cast<size_t>(ri)];
+                float depth = observGlobalModVelScaled_[4] ? raw * avgVel : raw;
+                float span  = observGlobalModRangeSpan_[4]; // 1.0f
+                distortion = juce::jlimit(0.0f, 1.0f, distortion + depth * span);
+            }
+        }
+    }
 };
 
 } // namespace xoceanus
