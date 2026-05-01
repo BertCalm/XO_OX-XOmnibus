@@ -1918,6 +1918,17 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                 expressionValue_[ch] = static_cast<float>(msg.getControllerValue()) / 127.0f;
             }
 
+            // CC1 Mod Wheel: latch global scalar for the mod-matrix eval loop.
+            // Latch on the first CC1 event seen this block — late-arriving CC1 events
+            // within the same block are ignored to avoid sub-block jitter.
+            // The value persists across blocks (held until next CC1 event arrives).
+            // CC1 is NOT filtered here — it still passes through to all slot MIDI
+            // buffers so engines that read CC1 internally continue to function.
+            if (msg.isControllerOfType(1))
+            {
+                modWheelValue_ = static_cast<float>(msg.getControllerValue()) / 127.0f;
+            }
+
             if (msg.isControllerOfType(64))
             {
                 const int ch = msg.getChannel() - 1; // 0-based
@@ -2420,8 +2431,18 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     if (snap.isPercGrit)  percGritMod  += snap.depth;
                     continue; // skip the generic srcVal * depth path below
                 }
+                else if (snap.sourceId == static_cast<int>(ModSourceId::ModWheel))
+                {
+                    // T5: ModWheel (CC1) is a global scalar — same strategy as LFO1/XouijaCell.
+                    // modWheelValue_ is latched once per block from the raw MIDI buffer scan
+                    // (audio-thread-only float, 0.0–1.0).  routeModAccum_[ri] receives the
+                    // full modOffset (srcVal * depth), not depth-only — no engine-side multiply.
+                    // This means any engine reading routeModAccum_[ri] for a ModWheel route gets
+                    // a ready-to-apply normalised offset without extra per-voice scaling.
+                    srcVal = modWheelValue_;
+                }
                 else
-                    continue; // TODO(#mod-source-completion): add remaining sources
+                    continue; // TODO(#mod-source-completion): add remaining sources (Aftertouch next)
 
                 // Bipolar: use != 0 check so negative depths sweep downward.
                 if (snap.depth == 0.0f)
