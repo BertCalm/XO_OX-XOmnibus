@@ -566,12 +566,17 @@ inline void OpusChain::addParameters(
     const juce::String& slotPrefix)
 {
     const juce::String p = slotPrefix + "opus_";
-    registerFloat(layout, p + "vb2Rate",       p + "VB2 Rate",       0.1f,  8.0f,  1.0f);
-    registerFloat(layout, p + "vb2Depth",      p + "VB2 Depth",      0.0f,  1.0f,  0.5f);
-    registerFloat(layout, p + "microActivity", p + "Micro Activity",  0.0f,  1.0f,  0.3f);
+    // D005 (must breathe): vb2Rate floor lowered 0.1 → 0.001 Hz so the BBD
+    // vibrato can drift slowly enough to satisfy the doctrine. Default 1.0 Hz
+    // unchanged. habitScanRate (below) was already at 0.01 Hz — within spec.
+    registerFloat(layout, p + "vb2Rate",       p + "VB2 Rate",       0.001f, 8.0f,  1.0f);
+    registerFloat(layout, p + "vb2Depth",      p + "VB2 Depth",      0.0f,   1.0f,  0.5f);
+    registerFloat(layout, p + "microActivity", p + "Micro Activity", 0.0f,   1.0f,  0.3f);
     registerChoice(layout, p + "microShape", p + "Micro Shape",
                    {"Fwd", "Rev", "Fast"}, 0);
-    registerFloat(layout, p + "biphaseRate",  p + "Biphase Rate",   0.05f,  5.0f,  0.5f);
+    // D005: biphaseRate floor lowered 0.05 → 0.001 Hz on the dual optical
+    // phaser. Default 0.5 Hz unchanged.
+    registerFloat(layout, p + "biphaseRate",  p + "Biphase Rate",   0.001f, 5.0f,  0.5f);
     registerFloat(layout, p + "biphaseDepth", p + "Biphase Depth",  0.0f,   3.0f,  1.5f);
     registerFloat(layout, p + "biphaseSweep", p + "Biphase Sweep",  200.0f, 4000.0f, 800.0f);
     registerFloat(layout, p + "habitScanRate",p + "Habit Scan Rate",0.01f,  2.0f,  0.2f);

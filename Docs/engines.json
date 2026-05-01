@@ -581,7 +581,10 @@
       "id": "Opus",
       "param_prefix": "opus_",
       "header": "Source/Engines/Opus/OpusEngine.h",
-      "status": "designed"
+      "status": "implemented",
+      "seance_score": 8.4,
+      "seance_date": "2026-05-01",
+      "notes": "Wave 2.3 seance — 8.4/10 APPROVED. Tomorrow's Microcosm — BBD vibrato + 100-grain micro-looper + dual optical phaser + memory delay + pitch-smeared reverb. 6 mod sources. Two D005 floor fixes: vb2Rate 0.1 → 0.001 Hz, biphaseRate 0.05 → 0.001 Hz. habitScanRate already at 0.01 Hz (within spec). All 11 params D004-clean. Establishes the envelope-driven modulation template reused by Outlaw, Oubliette, Obverse downstream."
     },
     {
       "id": "Oracle",
