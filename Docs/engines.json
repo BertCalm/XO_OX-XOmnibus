@@ -704,10 +704,11 @@
       "id": "Ornate",
       "param_prefix": "orna_",
       "header": "Source/Engines/Ornate/OrnateEngine.h",
-      "status": "implemented",
+      "fx_chain_header": "Source/DSP/Effects/OrnateChain.h",
+      "status": "designed",
       "seance_score": 8.4,
       "seance_date": "2026-05-01",
-      "notes": "Wave 2.1 seance — 8.4/10 APPROVED. D005 floor on phaseRate1/2 lowered 0.05 → 0.001 Hz to satisfy the doctrine. All 11 params D004-clean (declared, cached, loaded). 5 mod sources (dual LFO, env follower, granular density, JFET, drum wear). Granular Exciter character is distinctive; 100-grain bank with prime-spaced read positions is a candidate technique to surface in the engine-color-table later."
+      "notes": "Wave 2.1 seance — 8.4/10 APPROVED. D005 floor on phaseRate1/2 lowered 0.05 → 0.005 Hz (matches StandardLFO::setRate internal clamp at Source/DSP/StandardLFO.h:54; 0.005 Hz = 200-second cycle, well below the ≤ 0.01 Hz doctrine target). All 11 params D004-clean. 5 mod sources. Status remains 'designed' until the Source/Engines/Ornate/ wrapper exists (the FX chain at Source/DSP/Effects/OrnateChain.h is fully seance-validated)."
     },
     {
       "id": "Orogen",

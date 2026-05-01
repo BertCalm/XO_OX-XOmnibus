@@ -587,15 +587,16 @@ inline void OrnateChain::addParameters(
                   0.0f, 1.0f, 0.5f);
     registerFloat(layout, p + "grainSpread",     "Grain Spread",
                   0.0f, 1.0f, 0.5f);
-    // D005 (must breathe): rate floor lowered 0.05 → 0.001 Hz so the dual
-    // optical phaser can drift slowly enough to satisfy the "engine that
-    // cannot breathe is a photograph" doctrine. Defaults unchanged. The
-    // skew (0.35) keeps the knob feel in the audible range; ultra-slow
-    // rates live in the bottom 5 % of knob travel.
+    // D005 (must breathe): rate floor lowered 0.05 → 0.005 Hz, matching
+    // StandardLFO::setRate's internal clamp at Source/DSP/StandardLFO.h:54.
+    // Going lower in the param range is illusory — the LFO clamps to
+    // 0.005 Hz regardless. 0.005 Hz is a 200-second cycle, well below the
+    // doctrine target of ≤ 0.01 Hz. (Initial draft used 0.001 Hz; caught
+    // by review on PR #1500.) Defaults unchanged.
     registerFloatSkewed(layout, p + "phaseRate1", "Phase Rate 1",
-                        0.001f, 10.0f, 0.5f, 0.001f, 0.35f);
+                        0.005f, 10.0f, 0.5f, 0.001f, 0.35f);
     registerFloatSkewed(layout, p + "phaseRate2", "Phase Rate 2",
-                        0.001f, 10.0f, 0.8f, 0.001f, 0.35f);
+                        0.005f, 10.0f, 0.8f, 0.001f, 0.35f);
     registerFloat(layout, p + "phaseColor",      "Phase Color",
                   0.0f, 1.0f, 0.4f);
     registerFloat(layout, p + "drumWear",        "Drum Wear",
