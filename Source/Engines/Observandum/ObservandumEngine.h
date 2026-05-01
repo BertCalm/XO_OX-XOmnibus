@@ -18,7 +18,8 @@
 // T6: forward-declaration of XOceanusProcessor for global mod-route opt-in.
 // Full type is only needed in ObservandumEngine.cpp where XOceanusProcessor.h
 // is included (identical pattern to OpalEngine).
-class XOceanusProcessor;
+// Must be in namespace xoceanus — XOceanusProcessor is defined in that namespace.
+namespace xoceanus { class XOceanusProcessor; }
 
 namespace xoceanus
 {
