@@ -1,7 +1,7 @@
 # Wave 2 — Master Audit (FX Chain Validation Queue)
 
 **Date:** 2026-05-01
-**Author:** Wave 2.0 master audit (per `Docs/plans/2026-05-01-fx-engine-multi-session-plan.md`)
+**Author:** Wave 2.0 master audit (planned in PR #1486's `Docs/plans/2026-05-01-fx-engine-multi-session-plan.md` — that doc lands with PR #1486; until that merges, treat this audit as the standalone artefact for the Wave 2 queue)
 **Source plan:** `Docs/specs/2026-04-27-fx-engine-build-plan.md` §4
 **Scope:** 20 Wave 2 FX chains in `Source/DSP/Effects/` — current status `designed` in `Docs/engines.json`; goal is to flip to `implemented` after per-chain seance + any doctrine fixes.
 
@@ -72,9 +72,9 @@ Run sessions 2.1–2.20 in this order. Within the queue, sessions are independen
 | Doctrine | Status |
 |----------|--------|
 | D001 — velocity → timbre | All chains pass via host-routed CC matrix (FX layer is downstream of voicing). |
-| D002 — modulation        | 18 of 20 ≥ 4 mod sources; 2 borderline (Overshoot 2, Orison 2) — likely PASS once internal modulation is itemised in seance. Obverse at 3 is the marginal real risk. |
+| D002 — modulation        | 17 of 20 ≥ 4 mod sources; 3 below the 4-source mark (Obverse 3, Overshoot 2, Orison 2). Obverse is the borderline call (env filter contribution may or may not count). Overshoot + Orison sit at 2, likely PASS once internal modulation is itemised in seance. |
 | D003 — physics           | N/A for control FX. |
-| D004 — dead params       | 4 chains flagged "medium/high" risk for declared-but-unused params (Ornate marginal D005 instead, Outlaw glitch hysteresis, Occlusion stereo routing, Oxymoron gate timing, Obverse env filter, Overshoot, Orison). Per-chain seance will resolve. |
+| D004 — dead params       | 6 chains flagged for declared-vs-cached-vs-used parameter consistency: 4 medium-risk (Outlaw glitch hysteresis, Occlusion stereo routing, Oxymoron gate timing, Obverse env filter) and 2 high-risk on the broken-rule chains (Overshoot, Orison). Per-chain seance will resolve. |
 | D005 — must breathe      | Ornate has the only declared floor near the spec threshold (0.05 Hz vs ≤ 0.01 Hz). Other 19 use ≤ 0.001 Hz floors uniformly. |
 | D006 — expression        | Host-routed via CC matrix on every chain. Pass. |
 
