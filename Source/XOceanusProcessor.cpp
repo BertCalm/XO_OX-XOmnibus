@@ -3125,6 +3125,12 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // already wraps a Conductor + KuramotoField + BreathEngine sub-architecture.
         if (auto* opera = dynamic_cast<OperaAdapter*>(newEngine.get()))
             opera->setProcessorPtr(this);
+        // T6: Wire OuroborosEngine into the global mod-route opt-in path (Path B Phase 4.3).
+        // Identical protocol to Opal (#1458), Oxytocin (#1482), Organon (#1487):
+        // setProcessorPtr() stores the pointer and immediately calls cacheGlobalModRoutes()
+        // so cached route indices are ready before the first renderBlock().
+        if (auto* ouro = dynamic_cast<OuroborosEngine*>(newEngine.get()))
+            ouro->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3342,6 +3348,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
             ostracon->cacheGlobalModRoutes();
         if (auto* opera = dynamic_cast<OperaAdapter*>(eng.get()))
             opera->cacheGlobalModRoutes();
+        if (auto* ouro = dynamic_cast<OuroborosEngine*>(eng.get()))
+            ouro->cacheGlobalModRoutes();
     }
 }
 
