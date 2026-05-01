@@ -915,7 +915,7 @@
       "status": "designed",
       "seance_score": 8.3,
       "seance_date": "2026-05-01",
-      "notes": "Wave 2.5 seance — 8.3/10 APPROVED. Cybernetic Child — PLL synth (zero-crossing tracker with reduced SchmittTrigger hysteresis for intentional glitch behaviour) + touch-sensitive env filter + plasma distortion (8× OVS) + hard VCA panner + magnetic drum echo. 6 mod sources. D005 fix: panRate 0.1 → 0.005 Hz (registerFloatSkewed, matches StandardLFO clamp). drumWear-driven wow LFO (0.5–2 Hz) stays as-is — drum identity needs medium-rate flutter. Reduced hysteresis is design intent (commented at lines 31/76/94/207 of the chain), confirmed not a D004 negligence. All 12 params D004-clean."
+      "notes": "Wave 2.5 seance — 8.3/10 APPROVED. Cybernetic Child — PLL synth (sign-compare zero-crossing tracker with minimal-debounce + aggressive glide for glitch character) + touch-sensitive env filter + plasma distortion (8× OVS, with its own functional SchmittTrigger gate) + hard VCA panner + magnetic drum echo. 6 mod sources. D005 fix: panRate 0.1 → 0.005 Hz (registerFloatSkewed, matches StandardLFO clamp). drumWear-driven wow LFO (0.5–2 Hz) stays as-is — drum identity needs medium-rate flutter. The audit-flagged 'reduced SchmittTrigger hysteresis' framing was wrong: an unused SchmittTrigger member existed in PLLStage but its process() was never called, and the fleet's SchmittTrigger uses |input| which would have fired twice per cycle anyway — incompatible with positive-edge ZC tracking. The unused member has been removed and the narrative corrected. All 12 params D004-clean."
     },
     {
       "id": "Outlook",

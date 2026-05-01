@@ -27,9 +27,11 @@ namespace xoceanus
 // Accent: Chromatophore Amber #CC6600
 //
 // Stage 1: PLL Synth (EQD Data Corrupter)
-//          EnvelopeFollower + zero-crossing pitch tracker → PolyBLEP square.
-//          Intentional glitch via reduced SchmittTrigger hysteresis.
-//          Sub-octave via period bitshift (÷2).
+//          EnvelopeFollower + sign-compare zero-crossing pitch tracker →
+//          PolyBLEP square. Glitch character comes from minimal-debounce
+//          (>2 sample) integer-period quantization + aggressive glide on
+//          trackedFreqHz, not from a hysteresis stage. Sub-octave via the
+//          tracked frequency × 0.5.
 // Stage 2: Touch-Sensitive Envelope Filter (Boss TW-1)
 //          EnvelopeFollower → CytomicSVF BandPass cutoff.
 //          Sensitivity and peak (resonance) params.
@@ -72,8 +74,13 @@ private:
     //==========================================================================
     struct PLLStage
     {
+        // Glitch character of this stage comes from minimal-debounce integer-
+        // period zero-crossing tracking + aggressive glide on `trackedFreqHz`,
+        // not from a SchmittTrigger (an earlier draft had one but it was
+        // configured-and-unused — caught on review of PR #1504). The simple
+        // sign-compare in process() does not use absolute value, so it
+        // correctly fires once per cycle on positive edges only.
         EnvelopeFollower env;
-        SchmittTrigger   zc; // zero-crossing detector (low hysteresis = glitchy)
         PolyBLEP         squarePLL;
         PolyBLEP         squareSub;
         double sr = 0.0;  // Sentinel: must be set by prepare() before use
@@ -91,9 +98,6 @@ private:
             env.prepare(sampleRate);
             env.setAttack(1.0f);
             env.setRelease(20.0f);
-            // Reduced hysteresis = intentional glitch behaviour
-            zc.setThresholds(0.02f, 0.04f);
-            zc.reset();
             squarePLL.setWaveform(PolyBLEP::Waveform::Square);
             squareSub.setWaveform(PolyBLEP::Waveform::Square);
             trackedFreqHz = 220.0f;
@@ -101,7 +105,6 @@ private:
         void reset()
         {
             env.reset();
-            zc.reset();
             lastSample = 0.0f;
             periodCount = lastZeroCross = 0;
             trackedFreqHz = 220.0f;
@@ -510,7 +513,7 @@ inline void OutlawChain::addParameters(
     // Default 1.0 Hz unchanged. Switched to registerFloatSkewed because the
     // new range (0.005 → 8 Hz) spans 3+ decades. The wow LFO inside the
     // magnetic-drum stage is driven by drumWear (0.5–2 Hz) by design — drum
-    // identity needs medium-rate flutter, not sub-mHz drift; D005 is
+    // identity needs medium-rate flutter, not 5-mHz-range drift; D005 is
     // satisfied by panRate.
     registerFloatSkewed(layout, p + "panRate", p + "Pan Rate",
                         0.005f, 8.0f, 1.0f, 0.001f, 0.3f);
