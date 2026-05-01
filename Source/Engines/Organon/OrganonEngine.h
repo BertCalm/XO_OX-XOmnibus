@@ -64,6 +64,17 @@
 namespace xoceanus
 {
 
+// T6: Forward-declare the processor so OrganonEngine can cache a pointer for the
+// global mod-route consumption path (getModRouteAccum / getModRouteDestParamId).
+// The full definition is never needed in this header — only the pointer is used,
+// and all calls are from .cpp or inline methods called only at audio-thread time.
+class XOceanusProcessor;
+
+// T6: Number of global mod-route slots Organon caches at load time.
+// Mirrors the 5 target params: METABOLIC_RATE, ENZYME_SELECT, CATALYST_DRIVE,
+// DAMPING_COEFF, ISOTOPE_BALANCE.
+static constexpr int kOrganonGlobalModTargets = 5;
+
 //==============================================================================
 //  SECTION 1: NOISE SUBSTRATE
 //==============================================================================
@@ -1178,6 +1189,36 @@ public:
         effectiveMembrane = std::clamp(effectiveMembrane + macroSpace * 0.4f, 0.0f, 1.0f);
         float effectiveDamping = std::clamp(dampingParameter + macroSpace * 0.3f, 0.01f, 0.99f);
 
+        // ---- T6: Global mod-route consumption ----
+        // Apply after macros so global routes stack on top of macro modulation,
+        // identical to OpalEngine's ordering.  avgVelocity: average velocity of
+        // active voices; falls back to 1.0 (unity) when no voices are playing —
+        // this keeps vel-scaled routes audible even after release tails.
+        // effectiveEnzymeSelectivity is a mutable copy of enzymeSelectivity so the
+        // global mod route can shift the enzyme bandpass without touching the const local.
+        float effectiveEnzymeSelectivity = enzymeSelectivity;
+        {
+            float avgVel = 0.0f;
+            int activeForGMR = 0;
+            for (const auto& v : voices)
+            {
+                if (v.active)
+                {
+                    avgVel += v.velocityLevel;
+                    ++activeForGMR;
+                }
+            }
+            avgVel = (activeForGMR > 0) ? avgVel / static_cast<float>(activeForGMR) : 1.0f;
+
+            applyGlobalModRoutes(metabolicRate,
+                                 effectiveEnzymeSelectivity,
+                                 effectiveCatalyst,
+                                 effectiveDamping,
+                                 effectiveIsotope,
+                                 avgVel);
+        }
+        // ---- end T6 global mod routes ----
+
         // ---- D005: Breathing LFO ----
         // Slow autonomous modulation of metabolic rate (+/- 0.5 Hz) and isotope balance
         // (+/- 0.1). Rate is 0.02 Hz (50-second cycle) — slow enough to feel organic,
@@ -1317,8 +1358,8 @@ public:
                 if (!voice.active)
                     continue;
 
-                // Set entropy window size based on enzyme selectivity
-                voice.entropyAnalyzer.setWindowSize(enzymeSelectivity);
+                // Set entropy window size based on enzyme selectivity (T6: uses effective post-mod value)
+                voice.entropyAnalyzer.setWindowSize(effectiveEnzymeSelectivity);
 
                 // ---- INGESTION: the organism feeds ----
                 float ingestedSample = 0.0f;
@@ -1348,7 +1389,7 @@ public:
                     // Coeff refresh decimated to every 16 samples — enzyme selectivity
                     // changes slowly relative to audio rate.
                     if (updateFilter)
-                        voice.ingestionFilter.setCoefficients(enzymeSelectivity + externalFilterModulation * 2000.0f,
+                        voice.ingestionFilter.setCoefficients(effectiveEnzymeSelectivity + externalFilterModulation * 2000.0f,
                                                               0.3f + effectiveNoiseColor * 0.4f,
                                                               static_cast<float>(cachedSampleRate));
                     ingestedSample = voice.ingestionFilter.processSample(noise) * effectiveSignalFlux;
@@ -1608,6 +1649,22 @@ public:
         modMatrix.attachParameters(apvts, "organon_");
     }
 
+    // T6: Wire into global mod-route opt-in path (Pattern B).
+    // setProcessorPtr() — called once from XOceanusProcessor::loadEngine() on the
+    // message thread.  Stores the processor pointer and immediately pre-warms the
+    // cached route indices by calling cacheGlobalModRoutes().
+    // cacheGlobalModRoutes() — scans the current snapshot for routes that target
+    // any of Organon's 5 modulated parameters; stores the route index (or -1)
+    // in globalModRouteIdx_[].  -1 means no active route for that target.
+    // Both methods are message-thread only; audio thread reads cached data read-only.
+    void setProcessorPtr(XOceanusProcessor* proc) noexcept
+    {
+        processorPtr_ = proc;
+        // cacheGlobalModRoutes() (defined in OrganonEngine.cpp) sets modAccumPtr_ too.
+        cacheGlobalModRoutes();
+    }
+    void cacheGlobalModRoutes() noexcept;  // implemented in OrganonEngine.cpp (needs full XOceanusProcessor type)
+
 private:
     SilenceGate silenceGate;
 
@@ -1860,6 +1917,115 @@ private:
     ModMatrix<4> modMatrix;
     float organonModPitchOffset = 0.0f; // ±12 semitone pitch modulation
     float organonModLevelOffset = 0.0f; // ±0.5 amplitude scale offset
+
+    // ---- T6: Global mod-route opt-in state (Pattern B) ----
+    // processorPtr_: set by setProcessorPtr() on the message thread; read-only
+    // on the audio thread via applyGlobalModRoutes().
+    XOceanusProcessor* processorPtr_ = nullptr;
+
+    // Cached route indices for the 5 target params (kOrganonGlobalModTargets).
+    // Value -1 = no active route for that target.
+    // Written by cacheGlobalModRoutes() (message thread), read by renderBlock()
+    // (audio thread).  One-block-lag tolerance is acceptable: the processor
+    // increments snapshotVersion_ AFTER writing all route data; cacheGlobalModRoutes()
+    // is called after the fence.
+    std::array<int, kOrganonGlobalModTargets> globalModRouteIdx_{};
+    std::array<bool, kOrganonGlobalModTargets> globalModVelScaled_{};
+    // Cached range spans (param max - param min) for each target —
+    // allows applyGlobalModRoutes() to convert the normalised accumulator to param units.
+    std::array<float, kOrganonGlobalModTargets> globalModRangeSpan_{};
+    // Raw pointer to the processor's routeModAccum_ array.  Set by setProcessorPtr()
+    // alongside processorPtr_.  Stored separately so applyGlobalModRoutes() can read
+    // accumulators without needing the full XOceanusProcessor type (forward-decl safe).
+    const float* modAccumPtr_ = nullptr;
+
+    // Param IDs for the 5 modulated targets (index-matched to globalModRouteIdx_).
+    // Used inside cacheGlobalModRoutes() to find matching routes.
+    static constexpr const char* kGlobalModTargetIds[kOrganonGlobalModTargets] = {
+        "organon_metabolicRate",   // T0: core synthesis rate — most expressive performance target
+        "organon_enzymeSelect",    // T1: enzyme bandpass (filter equiv.) — D001: vel→brighter
+        "organon_catalystDrive",   // T2: modal excitation drive — timbre shaping
+        "organon_dampingCoeff",    // T3: modal resonance tail length — envelope character
+        "organon_isotopeBalance",  // T4: spectral tilt (sub vs upper partials) — timbral colour
+    };
+
+    // T6: Apply accumulated global mod-route offsets to the 5 target params.
+    // Implemented inline here (all data comes from cached arrays — no full processor
+    // type needed, forward declaration is sufficient).
+    void applyGlobalModRoutes(float& metabolicRateParam,
+                              float& enzymeSelectParam,
+                              float& catalystDriveParam,
+                              float& dampingCoeffParam,
+                              float& isotopeBalanceParam,
+                              float avgVel) noexcept
+    {
+        if (modAccumPtr_ == nullptr)
+            return;
+
+        // Target 0: organon_metabolicRate (0.1..10 Hz)
+        {
+            int ri = globalModRouteIdx_[0];
+            if (ri >= 0)
+            {
+                float raw  = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[0] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[0]; // 9.9f
+                metabolicRateParam = juce::jlimit(0.1f, 10.0f, metabolicRateParam + depth * span);
+            }
+        }
+
+        // Target 1: organon_enzymeSelect (20..20000 Hz) — D001: velocity→brighter enzyme window
+        {
+            int ri = globalModRouteIdx_[1];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[1] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[1]; // 19980.0f
+                enzymeSelectParam = juce::jlimit(20.0f, 20000.0f, enzymeSelectParam + depth * span);
+            }
+        }
+
+        // Target 2: organon_catalystDrive (0..2)
+        {
+            int ri = globalModRouteIdx_[2];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[2] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[2]; // 2.0f
+                catalystDriveParam = juce::jlimit(0.0f, 2.0f, catalystDriveParam + depth * span);
+            }
+        }
+
+        // Target 3: organon_dampingCoeff (0.01..0.99)
+        {
+            int ri = globalModRouteIdx_[3];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[3] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[3]; // 0.98f
+                dampingCoeffParam = juce::jlimit(0.01f, 0.99f, dampingCoeffParam + depth * span);
+            }
+        }
+
+        // Target 4: organon_isotopeBalance (0..1 normalised spectral tilt)
+        {
+            int ri = globalModRouteIdx_[4];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[4] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[4]; // 1.0f
+                isotopeBalanceParam = juce::jlimit(0.0f, 1.0f, isotopeBalanceParam + depth * span);
+            }
+        }
+    }
 };
+
+// T6: cacheGlobalModRoutes() is implemented in OrganonEngine.cpp where
+// XOceanusProcessor.h can be included for the full type without a circular
+// dependency (OrganonEngine.h only forward-declares XOceanusProcessor).
 
 } // namespace xoceanus
