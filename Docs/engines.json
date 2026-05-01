@@ -891,10 +891,11 @@
       "id": "Outage",
       "param_prefix": "outg_",
       "header": "Source/Engines/Outage/OutageEngine.h",
-      "status": "implemented",
+      "fx_chain_header": "Source/DSP/Effects/OutageChain.h",
+      "status": "designed",
       "seance_score": 8.5,
       "seance_date": "2026-05-01",
-      "notes": "Wave 2.2 seance — 8.5/10 APPROVED. Highest mod density in Wave 2 (7 sources: K-Field LPG, multi-head buffer, sample-rate reduction, spectral reverb mod, vintage chorus depth, spectral band modulation, telephone filter). Two D005 floor fixes applied: kFieldRate 0.05 → 0.001 Hz, schRate 0.1 → 0.001 Hz. draumeAmRate retained at 20 Hz floor (intentional audio-rate AM, not breath modulation). All 17 params D004-clean. Lo-Fi Cinema concept lands distinctively."
+      "notes": "Wave 2.2 seance — 8.5/10 APPROVED. Highest mod density in Wave 2 (7 sources). Two D005 floor fixes: kFieldRate 0.05 → 0.005 Hz, schRate 0.1 → 0.005 Hz (matches StandardLFO clamp; well below ≤ 0.01 Hz doctrine target). draumeAmRate retained at 20 Hz (intentional audio-rate AM, not breath modulation). All 17 params D004-clean. Status remains 'designed' until Source/Engines/Outage/ wrapper exists; FX chain at Source/DSP/Effects/OutageChain.h is fully seance-validated."
     },
     {
       "id": "Outbreak",
