@@ -195,9 +195,9 @@
 
 | Subject | Type | Score | Key Finding | D-Violations | Key Ghost Quote |
 |---------|------|-------|-------------|--------------|-----------------|
-| Otrium | FX Chain (`otrm_`, ChainID 31) | **6.4/10 PROVISIONAL** (pre-fix snapshot — D004 items resolved by PR #1474) | PartnerAudioBus pattern is a Blessing candidate (promote when ≥2 chains consume); spec→impl drift on "VCA Bank" stage (3 paths collapsed to 1 mean-gain VCA, "Path A" pivot); 0 of 5 spec'd presets exist | ~~**D004 FAIL**~~ resolved in #1474: `otrm_topology` + `otrm_syncMode` now cached and audible. D002 still weak — coupling sources `envA/B/C`, `phaseAngle`, `totalDuck` listed in spec §2 are not published (no chain-side `getCouplingSample` hook) | "Triangular cross-rotation, partner audio routed by primitive identity, LFO floor at one-thousandth Hz. The `topology` knob is decorative — fix that and you have a pillar." — Buchla |
+| Otrium | FX Chain (`otrm_`, ChainID 31) | ~~**6.4/10 PROVISIONAL**~~ → **8.25/10 APPROVED** (post-fix re-seance, #1474) | PartnerAudioBus pattern remains a Blessing candidate (promote when ≥2 chains consume). 4 distinct topologies audible (Equilateral / Isosceles / Chaotic / Cyclical). 5 demo presets shipped. Cyclical drift bug caught + fixed pre-merge via separate drift-phase accumulator. | All 6 doctrines pass. D004 fully resolved (was the only failing doctrine). D002 strengthened — DNA tilt now averages aggression across the three actual partners (not slot 0). Coupling sources struck from spec §2 — chain is formally a consumer, not a publisher. | "The hand is on the control. Topology rotates the triangle four ways and the sync knob does what its label promises." — Moog (re-seance) |
 
-**Verdict:** APPROVED CONDITIONAL — `topology` + `syncMode` now wired (#1474), demo presets next. Re-seance gate set at score ≥ 8.0 after item 5 (5 spec'd presets) lands.
+**Verdict:** APPROVED — re-seance verdict 8.25/10 in `Docs/seances/otrium_seance_2026-05-01-reseance.md`. All seven prior recommendations resolved or formally deferred. Pack 1 closure now blocked only on real Oligo + Oblate DSP (Wave 0 sessions 0.3 + 0.4 in `Docs/plans/2026-05-01-fx-engine-multi-session-plan.md`).
 
 ---
 
