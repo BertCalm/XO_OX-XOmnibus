@@ -21,7 +21,8 @@
 
 // T6: forward-declare the processor so setProcessorPtr() can accept it without
 // a circular include.  The full type is only needed in OrigamiEngine.cpp.
-class XOceanusProcessor;
+// Must be in namespace xoceanus — XOceanusProcessor is defined in that namespace.
+namespace xoceanus { class XOceanusProcessor; }
 
 namespace xoceanus
 {
