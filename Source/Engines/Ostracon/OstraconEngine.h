@@ -40,13 +40,18 @@
 #include <algorithm>
 #include <vector>
 
+// T6: forward-declare so setProcessorPtr() can accept a pointer without a
+// circular include.  Full type is only needed in OstraconEngine.cpp.
+namespace xoceanus { class XOceanusProcessor; }
+
 namespace xoceanus
 {
 
 //==============================================================================
 // Engine constants
 //==============================================================================
-static constexpr int   kOstraconMaxVoices  = 8;
+static constexpr int   kOstraconMaxVoices      = 8;
+static constexpr int   kOstraconGlobalModTargets = 5;
 static constexpr float kOstraconMaxReelSec = 8.0f;   // max reel_size parameter
 static constexpr float kOstraconPI         = 3.14159265358979323846f;
 static constexpr float kOstraconTwoPI      = 6.28318530717958647692f;
@@ -304,23 +309,99 @@ public:
         const float paramSpeed         = loadParam(pSpeed,         1.0f);
         const float paramReverse       = loadParam(pReverse,       0.0f);
 
+        // T6: apply global mod-route offsets (Path B) — additive, pre-macro,
+        // one-block lag tolerance.  Compute avg voice velocity once here.
+        float modFilterCutoff = paramFilterCutoff;
+        float modSpeed        = paramSpeed;
+        float modBias         = paramBias;
+        float modFlutter      = paramFlutter;
+        float modOxide        = paramOxide;
+        if (modAccumPtr_ != nullptr)
+        {
+            // Avg velocity across active voices (block-level scalar)
+            float avgVel    = 0.0f;
+            int   velCount  = 0;
+            for (const auto& v : voices)
+            {
+                if (v.active) { avgVel += v.velocity; ++velCount; }
+            }
+            avgVel = (velCount > 0) ? avgVel / static_cast<float>(velCount) : 0.0f;
+
+            // Target 0: ostr_filter_cutoff (80..20000 Hz) — D001 timbre
+            {
+                int ri = globalModRouteIdx_[0];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[0] ? raw * avgVel : raw;
+                    modFilterCutoff = juce::jlimit(80.0f, 20000.0f,
+                                        modFilterCutoff + depth * globalModRangeSpan_[0]);
+                }
+            }
+            // Target 1: ostr_speed (0.85..1.15)
+            {
+                int ri = globalModRouteIdx_[1];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[1] ? raw * avgVel : raw;
+                    modSpeed = juce::jlimit(0.85f, 1.15f,
+                                 modSpeed + depth * globalModRangeSpan_[1]);
+                }
+            }
+            // Target 2: ostr_bias (0..1)
+            {
+                int ri = globalModRouteIdx_[2];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[2] ? raw * avgVel : raw;
+                    modBias = juce::jlimit(0.0f, 1.0f,
+                                modBias + depth * globalModRangeSpan_[2]);
+                }
+            }
+            // Target 3: ostr_flutter (0..1)
+            {
+                int ri = globalModRouteIdx_[3];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[3] ? raw * avgVel : raw;
+                    modFlutter = juce::jlimit(0.0f, 1.0f,
+                                   modFlutter + depth * globalModRangeSpan_[3]);
+                }
+            }
+            // Target 4: ostr_oxide (0..1)
+            {
+                int ri = globalModRouteIdx_[4];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[4] ? raw * avgVel : raw;
+                    modOxide = juce::jlimit(0.0f, 1.0f,
+                                 modOxide + depth * globalModRangeSpan_[4]);
+                }
+            }
+        }
+
         const float macroChar  = loadParam(pMacro1, 0.0f);   // CHARACTER
         const float macroMove  = loadParam(pMacro2, 0.0f);   // MOVEMENT
         const float macroCoupl = loadParam(pMacro3, 0.0f);   // COUPLING
         const float macroSpace = loadParam(pMacro4, 0.0f);   // SPACE
 
         // ---- Macro application ----
+        // T6: mod* locals already incorporate any global mod-route offset applied above.
         // M1 CHARACTER: oxide + source richness (waveform complexity via source_mix)
-        const float effectiveOxide      = juce::jlimit(0.0f, 1.0f, paramOxide      + macroChar  * 0.5f);
+        const float effectiveOxide      = juce::jlimit(0.0f, 1.0f, modOxide        + macroChar  * 0.5f);
         const float effectiveSourceMix  = juce::jlimit(0.0f, 1.0f, paramSourceMix  + macroChar  * 0.3f);
 
         // M2 MOVEMENT: flutter + head_spread + lfo_depth
-        const float effectiveFlutter    = juce::jlimit(0.0f, 1.0f, paramFlutter    + macroMove  * 0.4f);
+        const float effectiveFlutter    = juce::jlimit(0.0f, 1.0f, modFlutter      + macroMove  * 0.4f);
         const float effectiveSpread     = juce::jlimit(0.0f, 1.0f, paramHeadSpread + macroMove  * 0.3f);
         const float effectiveLfoDepth   = juce::jlimit(0.0f, 1.0f, paramLfoDepth   + macroMove  * 0.3f);
 
         // M3 COUPLING: bias (toward memory) + print
-        const float effectiveBias       = juce::jlimit(0.0f, 1.0f, paramBias       - macroCoupl * 0.4f);
+        const float effectiveBias       = juce::jlimit(0.0f, 1.0f, modBias         - macroCoupl * 0.4f);
         const float effectivePrint      = juce::jlimit(0.0f, 1.0f, paramPrint      + macroCoupl * 0.3f);
 
         // M4 SPACE: wow + reel_size
@@ -330,7 +411,7 @@ public:
 
         // Derived effective values
         const float effectiveFlutterRate = juce::jlimit(2.0f, 8.0f, paramFlutterRate);
-        const float effectiveSpeed       = juce::jlimit(0.85f, 1.15f, paramSpeed);
+        const float effectiveSpeed       = juce::jlimit(0.85f, 1.15f, modSpeed);
         const bool  effectiveReverse     = (paramReverse > 0.5f);
 
         // Freeze: >0.5 = frozen write head
@@ -345,9 +426,10 @@ public:
         if (newReelSizeSamples != reelSizeSamples)
             reelSizeSamples = newReelSizeSamples;
 
-        // Expression/CC offsets — mod wheel routes to flutter (PASS 3), not filter
+        // Expression/CC offsets — mod wheel routes to flutter (PASS 3), not filter.
+        // T6: modFilterCutoff already has global mod-route offset applied.
         float effectiveCutoff = juce::jlimit(80.0f, 20000.0f,
-            paramFilterCutoff
+            modFilterCutoff
             + couplingFilterAccum * 4000.0f);
 
         // Pitch bend ratio (±2 semitones) — fastPow2 avoids std::pow in block prep
@@ -1068,6 +1150,35 @@ public:
         // Macros handled via APVTS parameters ostr_macro1..4.
     }
 
+    //==========================================================================
+    //  T 6 :   G l o b a l   M o d - R o u t e   O p t - I n   ( P a t h   B )
+    //==========================================================================
+    //
+    // setProcessorPtr() — called once from XOceanusProcessor::loadEngine() on the
+    // message thread after attachParameters().  Stores the processor pointer so
+    // cacheGlobalModRoutes() can call the public route accessors.
+    //
+    // cacheGlobalModRoutes() — scans the current snapshot for routes that target
+    // any of Ostracon's 5 modulated parameters and stores the matching route
+    // indices in globalModRouteIdx_[].  -1 means no active route for that target.
+    // Called whenever the snapshot changes (on load + on route model flush).
+    //
+    // Target → index mapping (fixed):
+    //   0 = ostr_filter_cutoff  (D001: filter brightness / timbre)
+    //   1 = ostr_speed          (playback speed — pitch drift / warble)
+    //   2 = ostr_bias           (live vs memory corpus mix — the remembering core)
+    //   3 = ostr_flutter        (tape flutter depth — movement / life)
+    //   4 = ostr_oxide          (tape saturation / character)
+
+    void setProcessorPtr(XOceanusProcessor* p) noexcept
+    {
+        processorPtr_ = p;
+        // cacheGlobalModRoutes() (defined in OstraconEngine.cpp) sets modAccumPtr_ too.
+        cacheGlobalModRoutes();
+    }
+
+    void cacheGlobalModRoutes() noexcept;  // implemented in OstraconEngine.cpp
+
 private:
 
     //==========================================================================
@@ -1375,6 +1486,30 @@ private:
     const std::atomic<float>* pMacro2 = nullptr;
     const std::atomic<float>* pMacro3 = nullptr;
     const std::atomic<float>* pMacro4 = nullptr;
+
+    // T6: Global mod-route opt-in state (Path B, Pattern B).
+    // processorPtr_: set once on the message thread; read-only on the audio thread.
+    XOceanusProcessor* processorPtr_ = nullptr;
+
+    // Cached route indices for the 5 target params.  Written by
+    // cacheGlobalModRoutes() (message thread), read by renderBlock() (audio
+    // thread).  One-block lag is acceptable.
+    std::array<int,   kOstraconGlobalModTargets> globalModRouteIdx_  = {-1,-1,-1,-1,-1};
+    std::array<bool,  kOstraconGlobalModTargets> globalModVelScaled_ = {};
+    std::array<float, kOstraconGlobalModTargets> globalModRangeSpan_ = {};
+
+    // Raw pointer to the processor's routeModAccum_ array.  Set by
+    // cacheGlobalModRoutes() alongside processorPtr_.
+    const float* modAccumPtr_ = nullptr;
+
+    // Param IDs for the 5 modulated targets (index-matched to globalModRouteIdx_).
+    static constexpr const char* kGlobalModTargetIds[kOstraconGlobalModTargets] = {
+        "ostr_filter_cutoff",  // 0 — D001 filter brightness / timbre
+        "ostr_speed",          // 1 — playback speed (pitch drift / warble)
+        "ostr_bias",           // 2 — live vs memory corpus mix
+        "ostr_flutter",        // 3 — tape flutter depth
+        "ostr_oxide",          // 4 — tape saturation / character
+    };
 };
 
 } // namespace xoceanus
