@@ -1,7 +1,7 @@
 {
   "_meta": {
     "description": "Machine-readable engine roster for XOceanus. CI/build scripts reference this file to scope QA sweeps, builds, and preset validation.",
-    "last_updated": "2026-04-26",
+    "last_updated": "2026-05-01",
     "status_values": [
       "implemented",
       "standalone",
@@ -897,7 +897,11 @@
       "id": "Outbreak",
       "param_prefix": "outb_",
       "header": "Source/Engines/Outbreak/OutbreakEngine.h",
-      "status": "designed"
+      "fx_chain_header": "Source/DSP/Effects/OutbreakChain.h",
+      "status": "designed",
+      "seance_score": 8.3,
+      "seance_date": "2026-05-01",
+      "notes": "Wave 2.11 seance — 8.3/10 APPROVED. Glitch Contagion — VHS GenLoss degradation (S&H wow + 60 Hz flutter + dropout) + FZ-2 octave fuzz + Bitr decimator/crusher + Rooms industrial reverb. D005 fix: 1-param additive — exposes outb_wowRate (skewed 0.005–4 Hz, default 0.3 Hz) controlling the GenLoss S&H wow LFO. Decoupled from genlossWow which now controls depth only (was previously coupled: rate=0.3+wowAmt*1.7). Default 0.3 Hz approximates the prior behavior at low genlossWow. All 12 params D004-clean. 4 mod sources (wow LFO, hardcoded 60 Hz flutter, dropout RNG, reverb modulation). Note: 60 Hz flutter is hardcoded (audio-rate AM, not a breath param) — correctly not exposed."
     },
     {
       "id": "Outflow",

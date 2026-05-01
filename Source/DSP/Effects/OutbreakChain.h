@@ -41,7 +41,7 @@ namespace xoceanus
 //          No allpass diffusers — intentionally harsh discrete echoes.
 //          CytomicSVF LP in feedback for slight darkening.
 //
-// Parameter prefix: outb_ (11 params)
+// Parameter prefix: outb_ (12 params)
 //==============================================================================
 class OutbreakChain
 {
@@ -112,7 +112,7 @@ private:
         }
 
         float process(float in, float wowAmt, float flutterAmt,
-                      float failureProb, float srF)
+                      float failureProb, float wowRate, float srF)
         {
             // Dropout: randomly mute signal based on failure probability
             {
@@ -122,8 +122,11 @@ private:
                     in = 0.0f;
             }
 
-            // S&H wow (rate: 0.3–2Hz), smoothed to slow tape pitch wander
-            wowLFO.setRate(0.3f + wowAmt * 1.7f, srF);
+            // S&H wow rate: now user-controllable via outb_wowRate (D005).
+            // Decoupled from wowAmt: previously rate = 0.3 + wowAmt*1.7
+            // (range 0.3–2 Hz) coupling depth to rate; now wowAmt controls
+            // depth only and the rate floor is 0.005 Hz for sub-mHz drift.
+            wowLFO.setRate(wowRate, srF);
             float rawWow = wowLFO.process();
             // Low-pass the S&H output at ~2Hz to get smooth wow
             wowSmooth.setMode(CytomicSVF::Mode::LowPass);
@@ -389,7 +392,7 @@ private:
     std::vector<float> tmpR_;
 
     //==========================================================================
-    // Cached parameter pointers (11 params)
+    // Cached parameter pointers
     //==========================================================================
     std::atomic<float>* p_genlossWow     = nullptr;
     std::atomic<float>* p_genlossFlutter = nullptr;
@@ -402,6 +405,7 @@ private:
     std::atomic<float>* p_roomsSize      = nullptr;
     std::atomic<float>* p_roomsMix       = nullptr;
     std::atomic<float>* p_roomsDamp      = nullptr;
+    std::atomic<float>* p_wowRate        = nullptr; // D005: exposed wow rate (0.005–4 Hz)
 };
 
 //==============================================================================
@@ -447,12 +451,13 @@ inline void OutbreakChain::processBlock(const float* monoIn, float* L, float* R,
     const float roomsSize      = p_roomsSize->load(std::memory_order_relaxed);
     const float roomsMix       = p_roomsMix->load(std::memory_order_relaxed);
     const float roomsDamp      = p_roomsDamp->load(std::memory_order_relaxed);
+    const float wowRate        = p_wowRate->load(std::memory_order_relaxed);
     float srF = static_cast<float>(sr_);
 
     // Stage 1: VHS Degradation — mono
     for (int i = 0; i < numSamples; ++i)
         tmpL_[i] = genLoss_.process(monoIn[i], genlossWow, genlossFlutter,
-                                     genlossFailure, srF);
+                                     genlossFailure, wowRate, srF);
 
     // Stage 2: FZ-2 Fuzz — mono → stereo
     fz2_.processBlock(tmpL_.data(), L, R, numSamples, fz2Gain, fz2Mode);
@@ -485,6 +490,13 @@ inline void OutbreakChain::addParameters(
     registerFloat(layout, p + "roomsSize",      p + "Rooms Size",     0.1f,  1.0f,  0.7f);
     registerFloat(layout, p + "roomsMix",       p + "Rooms Mix",      0.0f,  1.0f,  0.4f);
     registerFloat(layout, p + "roomsDamp",      p + "Rooms Damp",     0.0f,  1.0f,  0.5f);
+    // D005 (must breathe): exposes the GenLoss wow LFO rate. Default 0.3 Hz
+    // approximately preserves the prior coupled-rate behavior at low
+    // genlossWow values; floor 0.005 Hz lets the wow drift sub-Hz for
+    // long-form tape dilation. Skewed for usable knob feel across the
+    // 3-decade range.
+    registerFloatSkewed(layout, p + "wowRate",  p + "GenLoss Wow Rate",
+                        0.005f, 4.0f, 0.3f, 0.001f, 0.3f);
 }
 
 inline void OutbreakChain::cacheParameterPointers(
@@ -503,6 +515,7 @@ inline void OutbreakChain::cacheParameterPointers(
     p_roomsSize      = cacheParam(apvts, p + "roomsSize");
     p_roomsMix       = cacheParam(apvts, p + "roomsMix");
     p_roomsDamp      = cacheParam(apvts, p + "roomsDamp");
+    p_wowRate        = cacheParam(apvts, p + "wowRate");
 }
 
 } // namespace xoceanus
