@@ -195,9 +195,9 @@
 
 | Subject | Type | Score | Key Finding | D-Violations | Key Ghost Quote |
 |---------|------|-------|-------------|--------------|-----------------|
-| Otrium | FX Chain (`otrm_`, ChainID 31) | **6.4/10 PROVISIONAL** (DSP-validated, demo-blocked) | PartnerAudioBus pattern is a Blessing candidate (promote when ≥2 chains consume); spec→impl drift on "VCA Bank" stage (3 paths collapsed to 1 mean-gain VCA, "Path A" pivot); 0 of 5 spec'd presets exist | **D004 FAIL**: `otrm_topology` + `otrm_syncMode` declared but not cached, no audible effect (`OtriumChain.h:220-221`); D002 weak — coupling sources `envA/B/C`, `phaseAngle`, `totalDuck` listed in spec §2 are not published (no chain-side `getCouplingSample` hook) | "Triangular cross-rotation, partner audio routed by primitive identity, LFO floor at one-thousandth Hz. The `topology` knob is decorative — fix that and you have a pillar." — Buchla |
+| Otrium | FX Chain (`otrm_`, ChainID 31) | **6.4/10 PROVISIONAL** (pre-fix snapshot — D004 items resolved by PR #1474) | PartnerAudioBus pattern is a Blessing candidate (promote when ≥2 chains consume); spec→impl drift on "VCA Bank" stage (3 paths collapsed to 1 mean-gain VCA, "Path A" pivot); 0 of 5 spec'd presets exist | ~~**D004 FAIL**~~ resolved in #1474: `otrm_topology` + `otrm_syncMode` now cached and audible. D002 still weak — coupling sources `envA/B/C`, `phaseAngle`, `totalDuck` listed in spec §2 are not published (no chain-side `getCouplingSample` hook) | "Triangular cross-rotation, partner audio routed by primitive identity, LFO floor at one-thousandth Hz. The `topology` knob is decorative — fix that and you have a pillar." — Buchla |
 
-**Verdict:** APPROVED CONDITIONAL — do not author dependent presets until `topology` + `syncMode` are wired. Re-seance gate set at score ≥ 8.0 after items 1, 2, 5 of recommendations land.
+**Verdict:** APPROVED CONDITIONAL — `topology` + `syncMode` now wired (#1474), demo presets next. Re-seance gate set at score ≥ 8.0 after item 5 (5 spec'd presets) lands.
 
 ---
 
