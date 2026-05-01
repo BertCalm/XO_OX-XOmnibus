@@ -752,7 +752,11 @@
       "id": "Osmium",
       "param_prefix": "osmi_",
       "header": "Source/Engines/Osmium/OsmiumEngine.h",
-      "status": "designed"
+      "fx_chain_header": "Source/DSP/Effects/OsmiumChain.h",
+      "status": "designed",
+      "seance_score": 8.2,
+      "seance_date": "2026-05-01",
+      "notes": "Wave 2.4 seance — 8.2/10 APPROVED. Sub-Harmonic Collapse — DOD Meat Box pitch detect + JRC4558 preamp + 4-track tape comp + VHS degradation. Originally had no exposed rate parameter (12 params, all 0–1 depth/level); D005 fix adds osmi_vhsHissRate (13th param) at 0.005–2 Hz with default 0.2 Hz preserving existing tape character. Internal wow LFO at 3.5 Hz (S&H) and flutter at 8–12 Hz remain hardcoded by design — tape character requires medium-rate modulation. 5 mod sources (wow LFO + flutter + hiss filter LFO + tape comp envelope + zero-crossing pitch detector). All 13 params D004-clean. FX chain at Source/DSP/Effects/OsmiumChain.h is fully seance-validated."
     },
     {
       "id": "Osmosis",

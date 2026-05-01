@@ -32,7 +32,7 @@ namespace xoceanus
 // Stage 4: VHS Degradation & Flutter (Chase Bliss Gen Loss) — FractionalDelay
 //          + S&H LFO wow + 60Hz motor hum + filtered tape hiss → Mono→Stereo
 //
-// Parameter prefix: osmi_ (12 params)
+// Parameter prefix: osmi_ (13 params)
 //==============================================================================
 class OsmiumChain
 {
@@ -302,9 +302,14 @@ private:
         }
 
         void process(float in, float& outL, float& outR,
-                     float wowAmt, float flutterAmt, float noiseAmt, float filtAmt)
+                     float wowAmt, float flutterAmt, float noiseAmt, float filtAmt,
+                     float hissRate, float srForRate)
         {
             float srF = static_cast<float>(sr);
+
+            // D005: dynamically retune the hiss filter LFO each block. Floor
+            // 0.005 Hz comes from the param range below — matches StandardLFO clamp.
+            hissLFO.setRate(hissRate, srForRate);
 
             // Wow: S&H LFO → low-pass filtered → modulates delay time
             float wowRaw = wowLFO.process();
@@ -358,6 +363,7 @@ private:
     std::atomic<float>* p_vhsFlutter = nullptr;
     std::atomic<float>* p_vhsNoise   = nullptr;
     std::atomic<float>* p_vhsFilter  = nullptr;
+    std::atomic<float>* p_vhsHissRate = nullptr;  // D005: exposed slow-mod rate (0.005–2 Hz)
 };
 
 //==============================================================================
@@ -401,6 +407,8 @@ inline void OsmiumChain::processBlock(const float* monoIn, float* L, float* R,
     const float vhsFlutter = p_vhsFlutter->load(std::memory_order_relaxed);
     const float vhsNoise   = p_vhsNoise->load(std::memory_order_relaxed);
     const float vhsFilter  = p_vhsFilter->load(std::memory_order_relaxed);
+    const float vhsHissRate = p_vhsHissRate->load(std::memory_order_relaxed);
+    const float srF        = static_cast<float>(sr_);
 
     // Mono pipeline stages 1-3 (write to L as temp mono)
     for (int i = 0; i < numSamples; ++i)
@@ -423,7 +431,7 @@ inline void OsmiumChain::processBlock(const float* monoIn, float* L, float* R,
     for (int i = 0; i < numSamples; ++i)
     {
         float wL, wR;
-        vhs_.process(L[i], wL, wR, vhsWow, vhsFlutter, vhsNoise, vhsFilter);
+        vhs_.process(L[i], wL, wR, vhsWow, vhsFlutter, vhsNoise, vhsFilter, vhsHissRate, srF);
         L[i] = wL;
         R[i] = wR;
     }
@@ -459,6 +467,13 @@ inline void OsmiumChain::addParameters(
                   0.0f, 1.0f, 0.0f, 0.001f);
     registerFloat(layout, p + "vhsFilter",  p + "VHS Filter",
                   0.0f, 1.0f, 0.4f, 0.001f);
+    // D005 (must breathe): exposes the hiss-filter LFO rate so the chain can
+    // drift slowly enough to satisfy the doctrine. Default 0.2 Hz preserves
+    // existing tape character; floor 0.005 Hz matches StandardLFO::setRate's
+    // internal clamp at Source/DSP/StandardLFO.h:54. Skewed because the range
+    // spans 2+ decades.
+    registerFloatSkewed(layout, p + "vhsHissRate", p + "VHS Hiss Rate",
+                        0.005f, 2.0f, 0.2f, 0.001f, 0.3f);
 }
 
 inline void OsmiumChain::cacheParameterPointers(
@@ -477,7 +492,8 @@ inline void OsmiumChain::cacheParameterPointers(
     p_vhsWow     = cacheParam(apvts, p + "vhsWow");
     p_vhsFlutter = cacheParam(apvts, p + "vhsFlutter");
     p_vhsNoise   = cacheParam(apvts, p + "vhsNoise");
-    p_vhsFilter  = cacheParam(apvts, p + "vhsFilter");
+    p_vhsFilter   = cacheParam(apvts, p + "vhsFilter");
+    p_vhsHissRate = cacheParam(apvts, p + "vhsHissRate");
 }
 
 } // namespace xoceanus
