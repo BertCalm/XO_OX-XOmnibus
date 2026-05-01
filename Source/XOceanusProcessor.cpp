@@ -3041,6 +3041,13 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // scan so the engine's cached route indices are ready before the first renderBlock().
         if (auto* opal = dynamic_cast<OpalEngine*>(newEngine.get()))
             opal->setProcessorPtr(this);
+
+        // T6: Wire OxytocinAdapter into the global mod-route opt-in path (Pattern B).
+        // Identical protocol to OpalEngine above: setProcessorPtr() stores the pointer
+        // and immediately calls cacheGlobalModRoutes() so indices are ready before the
+        // first renderBlock().
+        if (auto* oxy = dynamic_cast<OxytocinAdapter*>(newEngine.get()))
+            oxy->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3246,6 +3253,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
             continue;
         if (auto* opal = dynamic_cast<OpalEngine*>(eng.get()))
             opal->cacheGlobalModRoutes();
+        if (auto* oxy = dynamic_cast<OxytocinAdapter*>(eng.get()))
+            oxy->cacheGlobalModRoutes();
     }
 }
 
