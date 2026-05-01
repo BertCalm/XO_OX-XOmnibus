@@ -1556,6 +1556,10 @@ public:
             // Detaching: clear the bridge callbacks so the processor doesn't hold
             // dangling references to this PlaySurface after it is destroyed.
             // (processor itself may outlive the PlaySurface window)
+            //
+            // feat(#1383): also null out the pin→registry bridge so XouijaPinStore
+            // doesn't try to call into a dead processor after the editor closes.
+            xouijaPanel_.getPinStore().onPinChanged = nullptr;
             return;
         }
 
@@ -1565,6 +1569,26 @@ public:
         processor_->onGetXOuijaState = [this]() -> juce::ValueTree { return xouijaPanel_.toValueTree(); };
 
         processor_->onSetXOuijaState = [this](const juce::ValueTree& tree) { xouijaPanel_.fromValueTree(tree); };
+
+        // feat(#1383) Wave5-C5: Wire XouijaPinStore pin changes into SlotModSourceRegistry.
+        //
+        // When the user pins the XOuija planchette (right-click → "Pin as ModSource"),
+        // XouijaPinStore fires onPinChanged with bipolar (bx, by) in [-1, +1].
+        // This lambda pushes those values into the processor's lock-free atomic registry
+        // so the audio thread can read them from processBlock() as ModSourceId::XouijaCell.
+        //
+        // IDs: "xouija.x" maps to ouijaCellX_, "xouija.y" maps to ouijaCellY_
+        // (both frozen as ModSourceId::XouijaCell = 18 per SlotModSourceRegistry.h).
+        //
+        // Thread safety: onPinChanged fires on the message thread; updateSourceValue()
+        // writes only to std::atomic<float> with relaxed ordering — no mutex, no alloc,
+        // safe to call while the audio thread reads concurrently.
+        xouijaPanel_.getPinStore().onPinChanged =
+            [this](float bx, float by)
+            {
+                processor_->getModSourceRegistry()
+                    .updateSourceValue(ModSourceId::XouijaCell, bx, by);
+            };
 
         // If the processor already has saved XOuija state in its APVTS tree
         // (e.g. setStateInformation was called before the PlaySurface window

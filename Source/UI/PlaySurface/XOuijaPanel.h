@@ -1447,10 +1447,11 @@ public:
     // Wave5-D3: XouijaPinStore access
     //
     // D1 (cell layers), D2 (mood), and C5 (slot ModSources) all read/write
-    // the pin store via this reference.
+    // the pin store via this reference.  The panel owns the store; it does NOT
+    // directly publish to SlotModSourceRegistry.  All publishing goes through
+    // the store's onPinChanged callback, which is wired externally.
     //
-    // C5 wiring (#1360) — call in PlaySurface::setProcessor() after the
-    // processor pointer is valid:
+    // feat(#1383): C5 wiring is LIVE — PlaySurface::setProcessor() installs:
     //
     //   xouijaPanel_.getPinStore().onPinChanged =
     //       [this](float bx, float by) {
@@ -1458,8 +1459,10 @@ public:
     //               .updateSourceValue(ModSourceId::XouijaCell, bx, by);
     //       };
     //
-    // SlotModSourceRegistry lives in Source/Core/SlotModSourceRegistry.h.
-    // XOceanusProcessor exposes it via getModSourceRegistry().
+    // IDs: "xouija.x" (bx) and "xouija.y" (by), both exposed as
+    // ModSourceId::XouijaCell (ID 18, frozen for preset serialisation).
+    // SlotModSourceRegistry: Source/Core/SlotModSourceRegistry.h.
+    // XOceanusProcessor exposes the registry via getModSourceRegistry().
     //==========================================================================
     XouijaPinStore& getPinStore() noexcept { return pinStore_; }
     const XouijaPinStore& getPinStore() const noexcept { return pinStore_; }
