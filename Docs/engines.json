@@ -53,7 +53,11 @@
       "id": "Obdurate",
       "param_prefix": "obdr_",
       "header": "Source/Engines/Obdurate/ObdurateEngine.h",
-      "status": "designed"
+      "fx_chain_header": "Source/DSP/Effects/ObdurateChain.h",
+      "status": "designed",
+      "seance_score": 8.4,
+      "seance_date": "2026-05-01",
+      "notes": "Wave 2.9 seance — 8.4/10 APPROVED. Oscillating Drone Wall — UF-01 self-oscillating fuzz/gate + Empress 8-stage VCA phaser + Back Talk reverse delay trails + Megabyte lo-fi havoc + Avalanche plate reverb. 14 params, all D004-clean. **First Wave 2 chain to pass D005 as-shipped** — empRate floor at 0.01 Hz already meets the doctrine target (≤ 0.01 Hz); no fix required. 6 mod sources (UF-01 self-oscillation envelope, empress phaser LFO, back-talk reverse phase, megabyte degrade phase, avalanche reverb modulation, ufGate). Resonant feedback paths (UF self-osc + empress phaser + reverse delay) verified bounded — no runaway oscillation."
     },
     {
       "id": "Obelisk",
