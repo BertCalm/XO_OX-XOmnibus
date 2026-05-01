@@ -263,6 +263,26 @@ public:
     }
 
 private:
+    // Per-channel state — declared up front so member function parameter
+    // lists below can reference it. Within a class body, function *bodies*
+    // can refer to types defined later, but function *parameter lists*
+    // cannot — so the structs must precede the helpers that take them by ref.
+    struct ChannelState
+    {
+        std::array<float, kFFTSize>      inputRing{};
+        std::array<float, kFFTSize>      outputRing{};
+        std::array<float, 2 * kFFTSize>  fftScratch{};
+        int                              writePos = 0;
+    };
+
+    struct KeyState
+    {
+        std::array<float, kFFTSize>      inputRing{};
+        std::array<float, 2 * kFFTSize>  fftScratch{};
+        std::array<float, kNumBins>      binMag{};
+        int                              writePos = 0;
+    };
+
     static int clampSlot(float v) noexcept
     {
         const int n = static_cast<int>(v + 0.5f);
@@ -395,22 +415,6 @@ private:
         for (int i = kFFTSize; i < 2 * kFFTSize; ++i)
             fftScratch[static_cast<size_t>(i)] = 0.0f;
     }
-
-    struct ChannelState
-    {
-        std::array<float, kFFTSize>      inputRing{};
-        std::array<float, kFFTSize>      outputRing{};
-        std::array<float, 2 * kFFTSize>  fftScratch{};
-        int                              writePos = 0;
-    };
-
-    struct KeyState
-    {
-        std::array<float, kFFTSize>      inputRing{};
-        std::array<float, 2 * kFFTSize>  fftScratch{};
-        std::array<float, kNumBins>      binMag{};
-        int                              writePos = 0;
-    };
 
     double sr_ = 0.0;
 
