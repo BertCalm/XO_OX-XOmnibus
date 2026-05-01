@@ -3110,6 +3110,10 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // first renderBlock().
         if (auto* oxb = dynamic_cast<OxbowAdapter*>(newEngine.get()))
             oxb->setProcessorPtr(this);
+
+        // T6: Wire OfferingEngine into the global mod-route opt-in path (Path B Phase 4.1).
+        if (auto* offering = dynamic_cast<OfferingEngine*>(newEngine.get()))
+            offering->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3321,6 +3325,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
             organ->cacheGlobalModRoutes();
         if (auto* oxb = dynamic_cast<OxbowAdapter*>(eng.get()))
             oxb->cacheGlobalModRoutes();
+        if (auto* offering = dynamic_cast<OfferingEngine*>(eng.get()))
+            offering->cacheGlobalModRoutes();
     }
 }
 
