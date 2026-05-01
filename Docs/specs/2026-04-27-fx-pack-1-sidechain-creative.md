@@ -28,13 +28,13 @@ Three chains, all using the **Coupling-driven** primitive; Oligo additionally us
 
 **Parameters (12):**
 - `otrm_pumpDepth` (0–1) · `otrm_pumpRate` (0.001–40 Hz, **D005 floor**) · `otrm_attack` (0.1–200 ms) · `otrm_release` (10–2000 ms)
-- `otrm_phaseSkew` (0–360°, default 120) · `otrm_topology` (Equilateral / Isoceles / Chaotic / Cyclical)
+- `otrm_phaseSkew` (0–360°, default 120) · `otrm_topology` (Equilateral / Isosceles / Chaotic / Cyclical)
 - `otrm_partnerA_idx` · `otrm_partnerB_idx` · `otrm_partnerC_idx` (each 0–3)
 - `otrm_couplingDepth` (0–1) — autonomous LFO ↔ partner-driven blend
 - `otrm_dnaTilt` (0–1) — partner aggression DNA tilts duck spectrum
 - `otrm_mix` (0–1)
 
-**Coupling sources published:** `otrm.envA/B/C`, `otrm.phaseAngle`, `otrm.totalDuck`
+**Coupling sources published:** *none.* The original spec listed `otrm.envA/B/C`, `otrm.phaseAngle`, `otrm.totalDuck` — these were struck on 2026-05-01 (Otrium seance recommendation 4). FX chains do not have a `getCouplingSample`-style hook today; building one for a single consumer is dis-economical. Otrium remains a *consumer* of coupling (partner audio + DNA), not a publisher. Re-evaluate if a second chain ever needs to publish.
 **Coupling targets accepted:** 3× `TriangularCoupling` partner routes, M1 CHARACTER, aftertouch
 **Wildcard:** the matrix demo — phase-staggered loop impossible elsewhere.
 
