@@ -1272,13 +1272,14 @@ public:
             modeButtons[i].setRadioGroupId(101);
             addAndMakeVisible(modeButtons[i]);
         }
-        static const char* kModeTabLabels[kNumModeTabs] = { "KEYS", "PADS", "XY", "OUIJA" };
+        static const char* kModeTabLabels[kNumModeTabs] = {"KEYS", "PADS", "XY", "OUIJA"};
         for (int i = 0; i < kNumModeTabs; ++i)
             modeButtons[i].setButtonText(kModeTabLabels[i]);
         modeButtons[0].setToggleState(true, juce::dontSendNotification); // default = KEYS
-        A11y::setup(modeButtons[0], "Keys Mode",  "Switch to piano-keyboard play surface");
-        A11y::setup(modeButtons[1], "Pads Mode",  "Switch to velocity-sensitive pad grid (scale-aware or drum-kit sub-mode)");
-        A11y::setup(modeButtons[2], "XY Mode",    "Switch to full-screen XY performance strip");
+        A11y::setup(modeButtons[0], "Keys Mode", "Switch to piano-keyboard play surface");
+        A11y::setup(modeButtons[1], "Pads Mode",
+                    "Switch to velocity-sensitive pad grid (scale-aware or drum-kit sub-mode)");
+        A11y::setup(modeButtons[2], "XY Mode", "Switch to full-screen XY performance strip");
         A11y::setup(modeButtons[3], "Ouija Mode", "Switch to full-screen XOuija harmonic navigator");
 
         // D4 tab callbacks — each tab updates surfaceTab_ and calls resized()
@@ -1325,8 +1326,7 @@ public:
         padsSubModeBtn_.setButtonText(kPadsSubModeLabels[0]); // default = ♪
         padsSubModeBtn_.setToggleState(false, juce::dontSendNotification);
         addAndMakeVisible(padsSubModeBtn_);
-        A11y::setup(padsSubModeBtn_,
-                    "Pads Sub-mode Toggle",
+        A11y::setup(padsSubModeBtn_, "Pads Sub-mode Toggle",
                     "Toggle between scale-aware note pads (musical mode) and drum-kit labelled pads (percussion mode)");
         padsSubModeBtn_.onClick = [this]()
         {
@@ -1445,18 +1445,14 @@ public:
         latchBadge_.setTooltip("Keys mode latches notes — release does not stop them. "
                                "Click another mode to release all held notes.");
         // Amber background (PS::kAmber) + dark text for high contrast on the deep bg.
-        latchBadge_.setColour(juce::TextButton::buttonColourId,
-                               juce::Colour(PS::kAmber).withAlpha(0.85f));
-        latchBadge_.setColour(juce::TextButton::buttonOnColourId,
-                               juce::Colour(PS::kAmber));
+        latchBadge_.setColour(juce::TextButton::buttonColourId, juce::Colour(PS::kAmber).withAlpha(0.85f));
+        latchBadge_.setColour(juce::TextButton::buttonOnColourId, juce::Colour(PS::kAmber));
         latchBadge_.setColour(juce::TextButton::textColourOffId,
-                               juce::Colour(0xFF1A1208)); // near-black — legible on amber
-        latchBadge_.setColour(juce::TextButton::textColourOnId,
-                               juce::Colour(0xFF1A1208));
+                              juce::Colour(0xFF1A1208)); // near-black — legible on amber
+        latchBadge_.setColour(juce::TextButton::textColourOnId, juce::Colour(0xFF1A1208));
         addAndMakeVisible(latchBadge_);
         latchBadge_.setVisible(surfaceTab_ == SurfaceTab::Keys); // default = Keys → visible
-        A11y::setup(latchBadge_,
-                    "Latch Active",
+        A11y::setup(latchBadge_, "Latch Active",
                     "Keys mode is active: notes latch and sustain after you release. "
                     "Switch to another mode to release all held notes.");
 
@@ -1547,15 +1543,18 @@ public:
             processor_->onSetXOuijaState = nullptr;
         }
 
+        // #1383 A4: null out pin callback before swapping processor.
+        xouijaPanel_.getPinStore().onPinChanged = nullptr;
+
         processor_ = p;
         // Re-wire the onCCOutput callback now that we have the processor.
         wireOnCCOutput();
 
         if (processor_ == nullptr)
         {
-            // Detaching: clear the bridge callbacks so the processor doesn't hold
-            // dangling references to this PlaySurface after it is destroyed.
-            // (processor itself may outlive the PlaySurface window)
+            // Detaching: bridge callbacks already cleared above.
+            // (processor may outlive the PlaySurface window)
+            xouijaPanel_.getPinStore().onPinChanged = nullptr;
             return;
         }
 
@@ -1565,6 +1564,17 @@ public:
         processor_->onGetXOuijaState = [this]() -> juce::ValueTree { return xouijaPanel_.toValueTree(); };
 
         processor_->onSetXOuijaState = [this](const juce::ValueTree& tree) { xouijaPanel_.fromValueTree(tree); };
+
+        // #1383 A4: XOuija pin → ModSource registry bridge (reconciled).
+        // Writes XouijaX (28) + XouijaY (29) for new routes, plus XouijaCell (18) for back-compat.
+        // XouijaDepth (proposed ID=30) is dropped — influenceY IS the depth axis.
+        xouijaPanel_.getPinStore().onPinChanged = [this](float bx, float by)
+        {
+            auto& reg = processor_->getModSourceRegistry();
+            reg.updateSourceValue(ModSourceId::XouijaX, bx);
+            reg.updateSourceValue(ModSourceId::XouijaY, by);
+            reg.updateSourceValue(ModSourceId::XouijaCell, bx, by);
+        };
 
         // If the processor already has saved XOuija state in its APVTS tree
         // (e.g. setStateInformation was called before the PlaySurface window
@@ -1658,8 +1668,8 @@ public:
             return;
 
         // Auto-switch to PADS tab + drum sub-mode
-        surfaceTab_   = SurfaceTab::Pads;
-        drumSubMode_  = true;
+        surfaceTab_ = SurfaceTab::Pads;
+        drumSubMode_ = true;
         padsSubModeBtn_.setToggleState(true, juce::dontSendNotification);
         padsSubModeBtn_.setButtonText(kPadsSubModeLabels[1]); // ▦
         applyPadsSubMode();
@@ -1695,10 +1705,7 @@ public:
     /// The controller will call setValueNotifyingHost() on this parameter
     /// whenever the wave-surface mean height changes.
     /// Pass nullptr to detach.
-    void setTideTargetParameter(juce::RangedAudioParameter* param)
-    {
-        tideController_.setTargetParameter(param);
-    }
+    void setTideTargetParameter(juce::RangedAudioParameter* param) { tideController_.setTargetParameter(param); }
 
     void resized() override
     {
@@ -1756,18 +1763,18 @@ public:
         //
         // The bottom PerformanceStrip is always shown except in XY/OUIJA full-screen tabs.
 
-        bool showStrip    = (surfaceTab_ != SurfaceTab::XY && surfaceTab_ != SurfaceTab::Ouija);
-        bool showLeftCol  = (surfaceTab_ == SurfaceTab::Keys || surfaceTab_ == SurfaceTab::Pads);
-        bool showKeys     = (surfaceTab_ == SurfaceTab::Keys);
+        bool showStrip = (surfaceTab_ != SurfaceTab::XY && surfaceTab_ != SurfaceTab::Ouija);
+        bool showLeftCol = (surfaceTab_ == SurfaceTab::Keys || surfaceTab_ == SurfaceTab::Pads);
+        bool showKeys = (surfaceTab_ == SurfaceTab::Keys);
         bool showNoteInput = (surfaceTab_ == SurfaceTab::Pads);
-        bool showXY       = (surfaceTab_ == SurfaceTab::XY);
-        bool showOuija    = (surfaceTab_ == SurfaceTab::Ouija);
+        bool showXY = (surfaceTab_ == SurfaceTab::XY);
+        bool showOuija = (surfaceTab_ == SurfaceTab::Ouija);
 
         // ── Performance Strip — full width, bottom (hidden in XY/OUIJA tabs) ──
         if (showStrip)
             strip.setBounds(bounds.removeFromBottom(PS::kStripH));
         else
-            strip.setBounds({});  // zero bounds — invisible in XY/OUIJA
+            strip.setBounds({}); // zero bounds — invisible in XY/OUIJA
         strip.setVisible(showStrip);
 
         // ── Full-screen XY mode — PerformanceStrip takes all remaining space ──
@@ -1891,15 +1898,21 @@ public:
     /// Live XOuija panel accessor for external wiring (Starboard #1379, etc).
     XOuijaPanel& getXOuijaPanel() noexcept { return xouijaPanel_; }
     const XOuijaPanel& getXOuijaPanel() const noexcept { return xouijaPanel_; }
-private:
 
+private:
     // TideController — wave-surface expression controller.
     // Shown in the left panel slot when tideActive_ is true.
     TideController tideController_;
     bool tideActive_ = false;
 
     // ── D4 (Wave 6): Top-level surface tab state ──────────────────────────────
-    enum class SurfaceTab { Keys = 0, Pads = 1, XY = 2, Ouija = 3 };
+    enum class SurfaceTab
+    {
+        Keys = 0,
+        Pads = 1,
+        XY = 2,
+        Ouija = 3
+    };
     SurfaceTab surfaceTab_ = SurfaceTab::Keys; // default = KEYS tab
 
     // PADS sub-mode: false = scale-aware (♪), true = drum-kit (▦)
@@ -1907,15 +1920,12 @@ private:
 
     static constexpr int kNumModeTabs = 4; // KEYS | PADS | XY | OUIJA
     // Sub-mode toggle labels — ♪ = musical/scale-aware, ▦ = drum-kit
-    static constexpr const char* kPadsSubModeLabels[2] = { "\xe2\x99\xaa", "\xe2\x96\xa6" };
+    static constexpr const char* kPadsSubModeLabels[2] = {"\xe2\x99\xaa", "\xe2\x96\xa6"};
     //    ♪  = U+266A = \xe2\x99\xaa (UTF-8)
     //    ▦  = U+25A6 = \xe2\x96\xa6 (UTF-8)
 
     // ── Helper: apply NoteInputZone mode from pads sub-mode state ────────────
-    void applyPadsSubMode()
-    {
-        noteInput.setMode(drumSubMode_ ? NoteInputZone::Mode::Drum : NoteInputZone::Mode::Pad);
-    }
+    void applyPadsSubMode() { noteInput.setMode(drumSubMode_ ? NoteInputZone::Mode::Drum : NoteInputZone::Mode::Pad); }
 
     std::array<juce::TextButton, kNumModeTabs> modeButtons;
     juce::TextButton padsSubModeBtn_; // D4: ♪/▦ sub-mode toggle inside PADS tab
@@ -1923,8 +1933,8 @@ private:
     std::array<juce::TextButton, 4> bankButtons; // A / B / C / D bank selectors
     juce::TextButton octDownBtn, octUpBtn;
     juce::Label octLabel;
-    juce::TextButton scaleModeBtn;  // Cycles: SCL (Off) → FLT (Filter) → HLT (Highlight)
-    juce::TextButton tideModeBtn_;  // Toggles TideController in the left panel slot
+    juce::TextButton scaleModeBtn; // Cycles: SCL (Off) → FLT (Filter) → HLT (Highlight)
+    juce::TextButton tideModeBtn_; // Toggles TideController in the left panel slot
 
     // F-004: LATCH indicator badge — amber read-only badge shown only in Keys mode.
     // Keys mode silently latches notes (handleKeysUp does not fire noteOff).

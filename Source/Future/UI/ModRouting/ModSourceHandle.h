@@ -28,21 +28,21 @@ enum class ModSourceId
     Aftertouch = 4, // Mono/poly aftertouch (0–1, continuous)
     ModWheel = 5,   // MIDI CC 1 mod wheel (0–1, continuous)
     // ── Extended sources added Wave5-A3 to match D9 F4 + G3 spec ──────────
-    LFO3 = 6,           // Engine LFO 3 (free-running, bipolar)
-    Envelope2 = 7,      // ENV 2 (auxiliary envelope, bipolar)
-    MacroTone = 8,      // Macro knob: TONE (unipolar)
-    MacroTide = 9,      // Macro knob: TIDE (unipolar)
-    MacroCouple = 10,   // Macro knob: COUPLE (unipolar)
-    MacroDepth = 11,    // Macro knob: DEPTH (unipolar)
-    MidiCC = 12,        // Assignable MIDI CC (unipolar)
-    MpePressure = 13,   // MPE per-note pressure (unipolar)
-    MpeSlide = 14,      // MPE per-note slide / Y-axis (unipolar)
-    SeqStepValue = 15,  // Sequencer step value output (bipolar)
+    LFO3 = 6,          // Engine LFO 3 (free-running, bipolar)
+    Envelope2 = 7,     // ENV 2 (auxiliary envelope, bipolar)
+    MacroTone = 8,     // Macro knob: TONE (unipolar)
+    MacroTide = 9,     // Macro knob: TIDE (unipolar)
+    MacroCouple = 10,  // Macro knob: COUPLE (unipolar)
+    MacroDepth = 11,   // Macro knob: DEPTH (unipolar)
+    MidiCC = 12,       // Assignable MIDI CC (unipolar)
+    MpePressure = 13,  // MPE per-note pressure (unipolar)
+    MpeSlide = 14,     // MPE per-note slide / Y-axis (unipolar)
+    SeqStepValue = 15, // Sequencer step value output (bipolar)
     // Renamed from ChordToneIdx — actual chord tone index is pending C5 phase.
     // Currently returns getLiveGate() (0 or 1, unipolar) from the slot sequencer.
     // The integer ID (16) is stable and must not change (preset serialisation).
-    LiveGate = 16,      // Sequencer gate state (0 or 1, unipolar)
-    BeatPhase = 17,     // Beat phase ramp 0→1 per bar (bipolar)
+    LiveGate = 16,  // Sequencer gate state (0 or 1, unipolar)
+    BeatPhase = 17, // Beat phase ramp 0→1 per bar (bipolar)
     // ── Wave5-D3: XOuija pin source ─────────────────────────────────────────
     // A pinned XOuija position exposes two bipolar values:
     //   X-axis (circle-of-fifths)  → normalized [-1, +1] mapped from [0, 1]
@@ -50,25 +50,29 @@ enum class ModSourceId
     // The ModRoutingModel routes these as a single source; the DSP engine reads
     // the X or Y component depending on the parameter's semantic (see D9 wiring).
     // Capture slots 0-3 are differentiated by the ModRoute's destParamId suffix.
-    XouijaCell = 18,    // Pinned XOuija position (bipolar X+Y, 4 capture slots)
+    XouijaCell = 18, // Pinned XOuija position (bipolar X+Y, 4 capture slots)
     // ── #1289: per-step pitch offset ModSource ───────────────────────────────
     // Bipolar -1..+1 mapped from ±12 semitones (0.0 on silent / rest steps).
     // Deferred from C5; depends on C3 per-step pitch data in PerEnginePatternSequencer.
-    SeqStepPitch = 19,  // Per-step pitch offset bipolar -1..+1 (from ±12 semitones)
+    SeqStepPitch = 19, // Per-step pitch offset bipolar -1..+1 (from ±12 semitones)
     // ── #1357: XY Surface position sources (W8B mount) ──────────────────────
     // XY surface X-axis value for each engine slot, bipolar [-1, +1] (centred on 0.5).
     // Read from XOceanusProcessor::xyX_[slot] atomics updated by XYSurface::onXYChanged.
     // Slot is determined by the ModRoute's destParamId suffix convention.
-    XYX0 = 20,   // XY surface X-axis, slot 0 (bipolar)
-    XYX1 = 21,   // XY surface X-axis, slot 1 (bipolar)
-    XYX2 = 22,   // XY surface X-axis, slot 2 (bipolar)
-    XYX3 = 23,   // XY surface X-axis, slot 3 (bipolar)
+    XYX0 = 20, // XY surface X-axis, slot 0 (bipolar)
+    XYX1 = 21, // XY surface X-axis, slot 1 (bipolar)
+    XYX2 = 22, // XY surface X-axis, slot 2 (bipolar)
+    XYX3 = 23, // XY surface X-axis, slot 3 (bipolar)
     // XY surface Y-axis value for each engine slot, bipolar [-1, +1].
-    XYY0 = 24,   // XY surface Y-axis, slot 0 (bipolar)
-    XYY1 = 25,   // XY surface Y-axis, slot 1 (bipolar)
-    XYY2 = 26,   // XY surface Y-axis, slot 2 (bipolar)
-    XYY3 = 27,   // XY surface Y-axis, slot 3 (bipolar)
-    Count = 28
+    XYY0 = 24, // XY surface Y-axis, slot 0 (bipolar)
+    XYY1 = 25, // XY surface Y-axis, slot 1 (bipolar)
+    XYY2 = 26, // XY surface Y-axis, slot 2 (bipolar)
+    XYY3 = 27, // XY surface Y-axis, slot 3 (bipolar)
+    // ── #1383 A4: XOuija live position sources ─────────────────────────────
+    // XouijaDepth (originally proposed ID=30) DROPPED — Y-axis IS the depth.
+    XouijaX = 28, // XOuija planchette X (bipolar, circle-of-fifths)
+    XouijaY = 29, // XOuija planchette Y (bipolar, influence depth)
+    Count = 30
 };
 
 // Human-readable names used in tooltips and the route list panel.
@@ -117,14 +121,27 @@ inline juce::String modSourceName(ModSourceId id)
     case ModSourceId::SeqStepPitch:
         return "Seq Step Pitch";
     // ── #1357: XY Surface sources ───────────────────────────────────────────
-    case ModSourceId::XYX0: return "XY X (Slot 1)";
-    case ModSourceId::XYX1: return "XY X (Slot 2)";
-    case ModSourceId::XYX2: return "XY X (Slot 3)";
-    case ModSourceId::XYX3: return "XY X (Slot 4)";
-    case ModSourceId::XYY0: return "XY Y (Slot 1)";
-    case ModSourceId::XYY1: return "XY Y (Slot 2)";
-    case ModSourceId::XYY2: return "XY Y (Slot 3)";
-    case ModSourceId::XYY3: return "XY Y (Slot 4)";
+    case ModSourceId::XYX0:
+        return "XY X (Slot 1)";
+    case ModSourceId::XYX1:
+        return "XY X (Slot 2)";
+    case ModSourceId::XYX2:
+        return "XY X (Slot 3)";
+    case ModSourceId::XYX3:
+        return "XY X (Slot 4)";
+    case ModSourceId::XYY0:
+        return "XY Y (Slot 1)";
+    case ModSourceId::XYY1:
+        return "XY Y (Slot 2)";
+    case ModSourceId::XYY2:
+        return "XY Y (Slot 3)";
+    case ModSourceId::XYY3:
+        return "XY Y (Slot 4)";
+    // ── #1383 A4: XOuija live sources ─────────────────────────────────────
+    case ModSourceId::XouijaX:
+        return "XOuija X / Planchette Position";
+    case ModSourceId::XouijaY:
+        return "XOuija Y / Influence Depth";
     default:
         return "?";
     }
@@ -192,6 +209,11 @@ inline juce::Colour modSourceColour(ModSourceId id)
     case ModSourceId::XYY2:
     case ModSourceId::XYY3:
         return juce::Colour(0xFF2A7FA5); // deep ocean blue — Y axis
+    // ── #1383 A4: XOuija live sources ─────────────────────────────────────
+    case ModSourceId::XouijaX:
+        return juce::Colour(0xFFB57BEA); // violet — planchette horizontal
+    case ModSourceId::XouijaY:
+        return juce::Colour(0xFF9B5FC0); // deeper violet — influence depth
     default:
         return juce::Colour(GalleryColors::xoGold);
     }
@@ -330,7 +352,7 @@ public:
             glyph = "3";
             break;
         case ModSourceId::Envelope2:
-            glyph = "F";  // "F" = second envelope (E already taken by ENV1)
+            glyph = "F"; // "F" = second envelope (E already taken by ENV1)
             break;
         case ModSourceId::MacroTone:
             glyph = "T";
@@ -363,7 +385,14 @@ public:
             glyph = "B";
             break;
         case ModSourceId::XouijaCell:
-            glyph = "Y"; // "Y" for ouiJa — avoids ambiguity with Q=seq, J=none
+            glyph = "Y"; // legacy ID=18
+            break;
+        // ── #1383 A4: XOuija live position sources ─────────────────────────
+        case ModSourceId::XouijaX:
+            glyph = "X";
+            break;
+        case ModSourceId::XouijaY:
+            glyph = "y"; // lowercase — distinct from X
             break;
         default:
             glyph = "?";

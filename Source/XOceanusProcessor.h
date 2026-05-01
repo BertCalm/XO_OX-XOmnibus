@@ -168,10 +168,7 @@ public:
     // Read the global cutoff mod offset computed from global mod routes.
     // Called by OrreryEngine::renderBlock on the audio thread.
     // Zero when no global route targets orry_fltCutoff.
-    float getGlobalCutoffModOffset() const noexcept
-    {
-        return globalCutoffModOffset_.load(std::memory_order_relaxed);
-    }
+    float getGlobalCutoffModOffset() const noexcept { return globalCutoffModOffset_.load(std::memory_order_relaxed); }
 
     // B1: Read the accumulated modOffset for a given route slot (audio-thread only).
     // Returns 0.0f for out-of-range indices.  Engines that opt into generic global
@@ -181,7 +178,8 @@ public:
     // range span to convert to parameter units.
     float getModRouteAccum(int routeIdx) const noexcept
     {
-        if (routeIdx < 0 || routeIdx >= kMaxGlobalRoutes) return 0.0f;
+        if (routeIdx < 0 || routeIdx >= kMaxGlobalRoutes)
+            return 0.0f;
         return routeModAccum_[static_cast<size_t>(routeIdx)];
     }
 
@@ -193,10 +191,7 @@ public:
     const float* getModRouteAccumPtr() const noexcept { return routeModAccum_.data(); }
 
     // B1: Read the number of active routes in the snapshot (audio-thread or message-thread).
-    int getModRouteCount() const noexcept
-    {
-        return routesSnapshotCount_.load(std::memory_order_relaxed);
-    }
+    int getModRouteCount() const noexcept { return routesSnapshotCount_.load(std::memory_order_relaxed); }
 
     // T6: Per-route snapshot accessors for engines that opt into generic global
     // mod routing.  Engines call these in their attachParameters() / onModRoutesChanged()
@@ -210,17 +205,20 @@ public:
     //   Multiply getModRouteAccum(ri) by this to convert normalised offset to param units.
     const char* getModRouteDestParamId(int ri) const noexcept
     {
-        if (ri < 0 || ri >= kMaxGlobalRoutes) return "";
+        if (ri < 0 || ri >= kMaxGlobalRoutes)
+            return "";
         return routesSnapshot_[static_cast<size_t>(ri)].destParamId;
     }
     bool isModRouteVelocityScaled(int ri) const noexcept
     {
-        if (ri < 0 || ri >= kMaxGlobalRoutes) return false;
+        if (ri < 0 || ri >= kMaxGlobalRoutes)
+            return false;
         return routesSnapshot_[static_cast<size_t>(ri)].velocityScaled;
     }
     float getModRouteRangeSpan(int ri) const noexcept
     {
-        if (ri < 0 || ri >= kMaxGlobalRoutes) return 0.0f;
+        if (ri < 0 || ri >= kMaxGlobalRoutes)
+            return 0.0f;
         return routesSnapshot_[static_cast<size_t>(ri)].destParamRangeSpan;
     }
 
@@ -261,9 +259,8 @@ public:
     }
     void removeSlotPresetListener(SlotPresetListener* l)
     {
-        slotPresetListeners_.erase(
-            std::remove(slotPresetListeners_.begin(), slotPresetListeners_.end(), l),
-            slotPresetListeners_.end());
+        slotPresetListeners_.erase(std::remove(slotPresetListeners_.begin(), slotPresetListeners_.end(), l),
+                                   slotPresetListeners_.end());
     }
 
     // Engine slot management (message thread only)
@@ -362,7 +359,7 @@ public:
     // The UI oscilloscope component calls getWaveformFifo(slot).readLatest()
     // at its ~30Hz repaint timer to grab the latest window of samples.
     std::array<WaveformFifo, MaxSlots> waveformFifos;
-    WaveformFifo masterOutputFifo;  // master bus output (post-FX) for ocean wave surface
+    WaveformFifo masterOutputFifo; // master bus output (post-FX) for ocean wave surface
 
     // UI-thread accessor — returns a const reference; safe to call at any time.
     const WaveformFifo& getWaveformFifo(int slot) const noexcept
@@ -483,22 +480,17 @@ public:
         // Re-load Oxbow in slot 0 so the engine is ready for the note.
         loadEngine(0, "Oxbow");
         // Re-apply the Breath Mist preset parameters inline (same values as first launch).
-        struct BreathMistParam { const char* id; float value; };
+        struct BreathMistParam
+        {
+            const char* id;
+            float value;
+        };
         static const BreathMistParam kBreathMistParams[] = {
-            {"oxb_size",          0.1f},
-            {"oxb_decay",         0.5f},
-            {"oxb_entangle",      0.06f},
-            {"oxb_erosionRate",   0.05f},
-            {"oxb_erosionDepth",  0.08f},
-            {"oxb_convergence",   4.0f},
-            {"oxb_resonanceQ",    3.5f},
-            {"oxb_resonanceMix",  0.15f},
-            {"oxb_cantilever",    0.12f},
-            {"oxb_damping",       7000.0f},
-            {"oxb_predelay",      0.0f},
-            {"oxb_dryWet",        0.15f},
-            {"oxb_exciterDecay",  0.05f},
-            {"oxb_exciterBright", 0.5f},
+            {"oxb_size", 0.1f},          {"oxb_decay", 0.5f},         {"oxb_entangle", 0.06f},
+            {"oxb_erosionRate", 0.05f},  {"oxb_erosionDepth", 0.08f}, {"oxb_convergence", 4.0f},
+            {"oxb_resonanceQ", 3.5f},    {"oxb_resonanceMix", 0.15f}, {"oxb_cantilever", 0.12f},
+            {"oxb_damping", 7000.0f},    {"oxb_predelay", 0.0f},      {"oxb_dryWet", 0.15f},
+            {"oxb_exciterDecay", 0.05f}, {"oxb_exciterBright", 0.5f},
         };
         for (const auto& p : kBreathMistParams)
         {
@@ -518,24 +510,22 @@ public:
     // atomic updated each processBlock tick.  The message thread uses this to gate
     // the FirstHourWalkthrough prompt so the tour bubble does not appear while the
     // greeting note is still playing (race fix per Wave 9c spec §1303).
-    bool isFirstBreathActive() const noexcept
-    {
-        return firstBreathActiveMirror_.load(std::memory_order_relaxed);
-    }
+    bool isFirstBreathActive() const noexcept { return firstBreathActiveMirror_.load(std::memory_order_relaxed); }
 
     // Dark Cockpit B041: note activity level (0.0 = silent, 1.0 = max activity).
     // Computed from output RMS in processBlock() with ~100ms attack / ~500ms release.
     // Safe to call from any thread.
     float getNoteActivity() const noexcept { return noteActivity_.load(std::memory_order_relaxed); }
 
-    // ── Wave5-C5: SlotModSourceRegistry — message-thread-origin ModSources ──────
-    // Exposes live bipolar values for ModSources whose origin is the message thread
-    // (UI gestures, pin callbacks).  Audio thread reads them lock-free from
-    // processBlock().  Currently hosts XouijaCell; extend for future UI-origin sources.
+    // ── Wave5-C5 + #1383 A4: SlotModSourceRegistry ───────────────────────────
+    // Hosts XouijaCell (ID=18, back-compat) + XouijaX/Y (IDs=28/29, A4).
     //
-    // Wire-up (in PlaySurface::setProcessor or equivalent):
+    // Wire-up (PlaySurface::setProcessor, #1383 A4):
     //   xouijaPanel_.getPinStore().onPinChanged = [this](float bx, float by) {
-    //       modSourceRegistry_.updateSourceValue(ModSourceId::XouijaCell, bx, by);
+    //       auto& r = modSourceRegistry_;
+    //       r.updateSourceValue(ModSourceId::XouijaX, bx);
+    //       r.updateSourceValue(ModSourceId::XouijaY, by);
+    //       r.updateSourceValue(ModSourceId::XouijaCell, bx, by);
     //   };
     SlotModSourceRegistry& getModSourceRegistry() noexcept { return modSourceRegistry_; }
     const SlotModSourceRegistry& getModSourceRegistry() const noexcept { return modSourceRegistry_; }
@@ -552,18 +542,21 @@ public:
     // getXYPosition: call from audio thread inside processBlock.
     void setXYPosition(int slot, float x, float y) noexcept
     {
-        if (slot < 0 || slot >= kNumPrimarySlots) return;
+        if (slot < 0 || slot >= kNumPrimarySlots)
+            return;
         xyX_[static_cast<size_t>(slot)].store(x, std::memory_order_relaxed);
         xyY_[static_cast<size_t>(slot)].store(y, std::memory_order_relaxed);
     }
     float getXYX(int slot) const noexcept
     {
-        if (slot < 0 || slot >= kNumPrimarySlots) return 0.5f;
+        if (slot < 0 || slot >= kNumPrimarySlots)
+            return 0.5f;
         return xyX_[static_cast<size_t>(slot)].load(std::memory_order_relaxed);
     }
     float getXYY(int slot) const noexcept
     {
-        if (slot < 0 || slot >= kNumPrimarySlots) return 0.5f;
+        if (slot < 0 || slot >= kNumPrimarySlots)
+            return 0.5f;
         return xyY_[static_cast<size_t>(slot)].load(std::memory_order_relaxed);
     }
 
@@ -594,38 +587,32 @@ public:
     void setPersistedRegisterLocked(bool v) noexcept { persistedRegisterLocked = v; }
     bool getPersistedRegisterLocked() const noexcept { return persistedRegisterLocked; }
     void setPersistedRegisterCurrent(int r) noexcept { persistedRegisterCurrent = r; }
-    int  getPersistedRegisterCurrent() const noexcept { return persistedRegisterCurrent; }
+    int getPersistedRegisterCurrent() const noexcept { return persistedRegisterCurrent; }
 
     // F2-006: OceanView ViewState + zoomed slot persistence.
     // Written by OceanView's onStateEntered callback (message thread only).
     void setPersistedOceanViewState(int state) noexcept { persistedOceanViewState_ = state; }
-    int  getPersistedOceanViewState() const noexcept    { return persistedOceanViewState_; }
-    void setPersistedOceanViewSlot(int slot)  noexcept  { persistedOceanViewSlot_  = slot;  }
-    int  getPersistedOceanViewSlot()  const noexcept    { return persistedOceanViewSlot_;  }
+    int getPersistedOceanViewState() const noexcept { return persistedOceanViewState_; }
+    void setPersistedOceanViewSlot(int slot) noexcept { persistedOceanViewSlot_ = slot; }
+    int getPersistedOceanViewSlot() const noexcept { return persistedOceanViewSlot_; }
 
     // F3-006: REACT dial level persistence (0.0–1.0; default 0.80).
     // Written by OceanView HUD dial callback; read back in initHudCallbacks().
-    void  setPersistedReactLevel(float v) noexcept  { persistedReactLevel_ = juce::jlimit(0.0f, 1.0f, v); }
-    float getPersistedReactLevel() const noexcept   { return persistedReactLevel_; }
+    void setPersistedReactLevel(float v) noexcept { persistedReactLevel_ = juce::jlimit(0.0f, 1.0f, v); }
+    float getPersistedReactLevel() const noexcept { return persistedReactLevel_; }
 
     // F3-011/F3-017: Sequencer and Chord breakout panel open-state persistence.
     // Written by OceanView when panels open/close; read back after session restore.
-    void setPersistedSeqBreakoutOpen(bool v)   noexcept { persistedSeqBreakoutOpen_   = v; }
-    bool getPersistedSeqBreakoutOpen()  const noexcept  { return persistedSeqBreakoutOpen_;   }
+    void setPersistedSeqBreakoutOpen(bool v) noexcept { persistedSeqBreakoutOpen_ = v; }
+    bool getPersistedSeqBreakoutOpen() const noexcept { return persistedSeqBreakoutOpen_; }
     void setPersistedChordBreakoutOpen(bool v) noexcept { persistedChordBreakoutOpen_ = v; }
     bool getPersistedChordBreakoutOpen() const noexcept { return persistedChordBreakoutOpen_; }
 
     // #1179 — TideWaterline deferred state pickup.
     // OceanView calls this in initWaterline() to apply state that arrived via
     // setStateInformation() before the editor window was first opened.
-    juce::ValueTree getPersistedTideWaterlineState() const noexcept
-    {
-        return persistedTideWaterlineState_;
-    }
-    void clearPersistedTideWaterlineState() noexcept
-    {
-        persistedTideWaterlineState_ = juce::ValueTree{};
-    }
+    juce::ValueTree getPersistedTideWaterlineState() const noexcept { return persistedTideWaterlineState_; }
+    void clearPersistedTideWaterlineState() noexcept { persistedTideWaterlineState_ = juce::ValueTree{}; }
 
     // ── Settings-drawer session controls (#1359) ─────────────────────────────
     // All setters are message-thread-only; atomics are read by the audio thread.
@@ -644,10 +631,7 @@ public:
     // Global voice mode: 0=Poly, 1=Mono, 2=Legato, 3=Unison.  Default 0.
     // Engines that expose their own voiceMode param continue to honour that param;
     // this is the session-level override applied at the processor layer.
-    void setVoiceMode(int mode) noexcept
-    {
-        voiceMode_.store(juce::jlimit(0, 3, mode), std::memory_order_relaxed);
-    }
+    void setVoiceMode(int mode) noexcept { voiceMode_.store(juce::jlimit(0, 3, mode), std::memory_order_relaxed); }
     int getVoiceMode() const noexcept { return voiceMode_.load(std::memory_order_relaxed); }
 
     // Master tune in Hz.  Range 415.0..466.0 (±1 semitone around A=440).
@@ -723,7 +707,7 @@ private:
     std::shared_ptr<std::vector<MegaCouplingMatrix::CouplingRoute>> mergedRoutePtr;
 
     MasterFXChain masterFX;
-    xoceanus::EpicChainSlotController epicSlots;  // 3-slot Epic Chains FX router
+    xoceanus::EpicChainSlotController epicSlots; // 3-slot Epic Chains FX router
     ChordMachine chordMachine;
 
     // Unified host transport — the processor updates this from the PlayHead
@@ -847,16 +831,16 @@ private:
         std::array<std::atomic<float>*, 4> cmSlotRoute = {nullptr, nullptr, nullptr, nullptr};
 
         // B2: input mode + global key/scale
-        std::atomic<float>* cmInputMode   = nullptr; // chord_input_mode (0=AUTO, 1=PAD, 2=DEG)
-        std::atomic<float>* cmGlobalRoot  = nullptr; // cm_global_root (0-11)
+        std::atomic<float>* cmInputMode = nullptr;   // chord_input_mode (0=AUTO, 1=PAD, 2=DEG)
+        std::atomic<float>* cmGlobalRoot = nullptr;  // cm_global_root (0-11)
         std::atomic<float>* cmGlobalScale = nullptr; // cm_global_scale (0-8)
 
         // B2: pad chord slots (16 × 3 params)
         struct PadChordParams
         {
-            std::atomic<float>* root    = nullptr; // chord_pad_N_root   [0,127]
+            std::atomic<float>* root = nullptr;    // chord_pad_N_root   [0,127]
             std::atomic<float>* voicing = nullptr; // chord_pad_N_voicing [0,NumModes-1]
-            std::atomic<float>* inv     = nullptr; // chord_pad_N_inv    [0,3]
+            std::atomic<float>* inv = nullptr;     // chord_pad_N_inv    [0,3]
         };
         std::array<PadChordParams, 16> padChords;
 
@@ -886,10 +870,10 @@ private:
 
         // Wave 5 D1: XOuija walk engine mood/tendency — cached raw pointers
         // so processBlock reads them without string lookups.
-        std::atomic<float>* ouijaCalmWild          = nullptr;
+        std::atomic<float>* ouijaCalmWild = nullptr;
         std::atomic<float>* ouijaConsonantDissonant = nullptr;
-        std::atomic<float>* ouijaTendencyCol        = nullptr;
-        std::atomic<float>* ouijaTendencyRow        = nullptr;
+        std::atomic<float>* ouijaTendencyCol = nullptr;
+        std::atomic<float>* ouijaTendencyRow = nullptr;
     } cachedParams;
 
     juce::MidiBuffer mpeMidiBuffer; // MPE-processed MIDI (expression stripped)
@@ -947,15 +931,15 @@ private:
     // Written by processBlock (audio thread), read by message thread.
     std::atomic<bool> firstBreathActiveMirror_{false};
     // Audio-thread-only state (no atomics needed):
-    bool         firstBreathActive_{false};
-    int          firstBreathCountdown_{0};
-    bool         firstBreathFading_{false};     // true during the 200 ms interaction fade
-    int          firstBreathFadeCountdown_{0};  // samples remaining in fade window
-    uint64_t     firstBreathGeneration_{0}; // engineGeneration_ value at arm time; if it changes, breath is cancelled
-    static constexpr int  kFirstBreathNote       = 48;     // C3
-    static constexpr float kFirstBreathVelocity  = 60.0f / 127.0f;
-    static constexpr int  kFirstBreathTimeoutMs  = 30000;  // 30-second failsafe
-    static constexpr int  kFirstBreathFadeMs     = 200;    // §1300: fade window before note-off on user interaction
+    bool firstBreathActive_{false};
+    int firstBreathCountdown_{0};
+    bool firstBreathFading_{false};     // true during the 200 ms interaction fade
+    int firstBreathFadeCountdown_{0};   // samples remaining in fade window
+    uint64_t firstBreathGeneration_{0}; // engineGeneration_ value at arm time; if it changes, breath is cancelled
+    static constexpr int kFirstBreathNote = 48; // C3
+    static constexpr float kFirstBreathVelocity = 60.0f / 127.0f;
+    static constexpr int kFirstBreathTimeoutMs = 30000; // 30-second failsafe
+    static constexpr int kFirstBreathFadeMs = 200;      // §1300: fade window before note-off on user interaction
 
     // ── Per-slot mute state ───────────────────────────────────────────────────
     // Written by message thread (setSlotMuted), read by audio thread per block.
@@ -1065,7 +1049,7 @@ private:
     // and store 0.5f in the XOceanusProcessor constructor body (see XOceanusProcessor.cpp).
     std::array<std::atomic<float>, kNumPrimarySlots> xyX_;
     std::array<std::atomic<float>, kNumPrimarySlots> xyY_;
-    // Wave5-C5: message-thread-origin ModSource live values (XouijaCell, etc.)
+    // Wave5-C5 + #1383 A4: message-thread-origin ModSources (XouijaCell=18, XouijaX=28, XouijaY=29)
     SlotModSourceRegistry modSourceRegistry_;
     // Timestamp of the start of the current processBlock call (high-res ticks).
     juce::int64 processBlockStartTick{0};
@@ -1120,17 +1104,17 @@ private:
 
     // ── Editor UI state storage (closes #314, #357) ──────────────────────────
     // Written on the message thread only.  No audio-thread access — plain ints.
-    int persistedPlayScaleIndex = 0;     // #314: PlayControlPanel scale selector
-    int persistedSelectedSlot = -1;      // #357: editor tile focus (-1 = overview)
-    int persistedSignalFlowSection = 0;  // #357: signal flow active section
-    bool persistedCockpitBypass = false; // #357: Dark Cockpit bypass state
-    bool persistedRegisterLocked = false; // D4: register lock toggle
-    int  persistedRegisterCurrent = 0;   // D4: current register index (0=Gallery, 1=Performance, 2=Coupling)
-    int  persistedOceanViewState_ = 0;   // F2-006: OceanView ViewState (0=Orbital,1=ZoomIn,2=Split,3=Browser)
-    int  persistedOceanViewSlot_  = -1;  // F2-006: slot index when ViewState is ZoomIn/Split
-    float persistedReactLevel_    = 0.80f; // F3-006: REACT dial visual reactivity level
-    bool  persistedSeqBreakoutOpen_   = false; // F3-011: sequencer breakout panel open state
-    bool  persistedChordBreakoutOpen_ = false; // F3-017: chord breakout panel open state
+    int persistedPlayScaleIndex = 0;          // #314: PlayControlPanel scale selector
+    int persistedSelectedSlot = -1;           // #357: editor tile focus (-1 = overview)
+    int persistedSignalFlowSection = 0;       // #357: signal flow active section
+    bool persistedCockpitBypass = false;      // #357: Dark Cockpit bypass state
+    bool persistedRegisterLocked = false;     // D4: register lock toggle
+    int persistedRegisterCurrent = 0;         // D4: current register index (0=Gallery, 1=Performance, 2=Coupling)
+    int persistedOceanViewState_ = 0;         // F2-006: OceanView ViewState (0=Orbital,1=ZoomIn,2=Split,3=Browser)
+    int persistedOceanViewSlot_ = -1;         // F2-006: slot index when ViewState is ZoomIn/Split
+    float persistedReactLevel_ = 0.80f;       // F3-006: REACT dial visual reactivity level
+    bool persistedSeqBreakoutOpen_ = false;   // F3-011: sequencer breakout panel open state
+    bool persistedChordBreakoutOpen_ = false; // F3-017: chord breakout panel open state
 
     // ── #1178: TideWaterline deferred step-sequence state ────────────────────
     // Holds the "TideWaterlineSteps" tree from setStateInformation() when the
@@ -1180,14 +1164,14 @@ private:
     // Max 32 routes; fixed-size array avoids any audio-thread allocation.
     struct GlobalModRouteSnapshot
     {
-        int     sourceId{0};
-        float   depth{0.0f};
-        bool    bipolar{false};
-        bool    valid{false};
-        char    destParamId[64]{};  // fixed-length to avoid std::string on audio thread
+        int sourceId{0};
+        float depth{0.0f};
+        bool bipolar{false};
+        bool valid{false};
+        char destParamId[64]{}; // fixed-length to avoid std::string on audio thread
         // Wave 5 C5: per-route slot index for sequencer-scoped sources.
         // -1 = not slot-scoped (backward-compat default).  0–3 = slot to query.
-        int     slotIndex{-1};
+        int slotIndex{-1};
 
         // B1: Pre-resolved destination parameter pointer (resolved on message thread in
         // flushModRoutesSnapshot).  Lifetime: as long as the APVTS (i.e., the processor).
@@ -1226,9 +1210,9 @@ private:
     };
     static constexpr int kMaxGlobalRoutes = ModRoutingModel::MaxRoutes;
     std::array<GlobalModRouteSnapshot, kMaxGlobalRoutes> routesSnapshot_{};
-    std::atomic<int> routesSnapshotCount_{0};   // written by message thread, read by audio thread
-    std::atomic<int> snapshotVersion_{0};        // generation counter
-    int audioSnapshotVersion_{-1};               // audio thread: last consumed version (audio-thread-only)
+    std::atomic<int> routesSnapshotCount_{0}; // written by message thread, read by audio thread
+    std::atomic<int> snapshotVersion_{0};     // generation counter
+    int audioSnapshotVersion_{-1};            // audio thread: last consumed version (audio-thread-only)
 
     // Cached pointer to the orry_fltCutoff parameter — resolved once in cacheParameterPointers()
     // and used in flushModRoutesSnapshot() to set isOrryCutoff by pointer identity (no strncmp).

@@ -973,8 +973,8 @@ public:
     struct MoodValues
     {
         float brightness = 0.5f; // 0=dark,   1=bright
-        float tension    = 0.5f; // 0=calm,   1=tense
-        float density    = 0.5f; // 0=sparse, 1=dense
+        float tension = 0.5f;    // 0=calm,   1=tense
+        float density = 0.5f;    // 0=sparse, 1=dense
     };
 
     std::function<void(const MoodValues&)> onMoodChanged;
@@ -997,14 +997,18 @@ public:
     {
         mood_ = v;
         mood_.brightness = juce::jlimit(0.0f, 1.0f, mood_.brightness);
-        mood_.tension    = juce::jlimit(0.0f, 1.0f, mood_.tension);
-        mood_.density    = juce::jlimit(0.0f, 1.0f, mood_.density);
+        mood_.tension = juce::jlimit(0.0f, 1.0f, mood_.tension);
+        mood_.density = juce::jlimit(0.0f, 1.0f, mood_.density);
         repaint();
     }
 
     const MoodValues& getMoodValues() const noexcept { return mood_; }
 
-    void setAccentColour(juce::Colour c) { accentColour_ = c; repaint(); }
+    void setAccentColour(juce::Colour c)
+    {
+        accentColour_ = c;
+        repaint();
+    }
 
     //==========================================================================
     // Rendering
@@ -1034,16 +1038,15 @@ public:
         for (int i = 0; i < kN; ++i)
         {
             const float slotLeft = b.getX() + static_cast<float>(i) * slotW;
-            const float trackLeft  = slotLeft + thumbR + 2.0f;
+            const float trackLeft = slotLeft + thumbR + 2.0f;
             const float trackRight = slotLeft + slotW - thumbR - 2.0f;
-            const float trackLen   = trackRight - trackLeft;
+            const float trackLen = trackRight - trackLeft;
 
             // Label above the track
             const float labelY = b.getY() + 2.0f;
             g.setColour(juce::Colours::white.withAlpha(0.55f));
-            g.drawText(kLabels[i],
-                       juce::Rectangle<float>(slotLeft, labelY, slotW, 12.0f),
-                       juce::Justification::centred, false);
+            g.drawText(kLabels[i], juce::Rectangle<float>(slotLeft, labelY, slotW, 12.0f), juce::Justification::centred,
+                       false);
 
             // Track background — two halves
             const float trackMid = trackLeft + trackLen * 0.5f;
@@ -1052,19 +1055,17 @@ public:
 
             // Left half (neutral→negative pole) — slightly cooler color
             g.setColour(juce::Colour(0xFF2a2a30));
-            g.fillRoundedRectangle(trackLeft, trackY - trackH * 0.5f,
-                                   trackLen, trackH, 2.0f);
+            g.fillRoundedRectangle(trackLeft, trackY - trackH * 0.5f, trackLen, trackH, 2.0f);
 
             // Active fill — from centre to thumb
-            const float fillLeft  = std::min(thumbX, trackMid);
+            const float fillLeft = std::min(thumbX, trackMid);
             const float fillRight = std::max(thumbX, trackMid);
             const float fillW = fillRight - fillLeft;
             if (fillW > 0.5f)
             {
                 const float alpha = 0.5f + std::abs(v - 0.5f); // brighter when away from neutral
                 g.setColour(accentColour_.withAlpha(alpha));
-                g.fillRoundedRectangle(fillLeft, trackY - trackH * 0.5f,
-                                       fillW, trackH, 2.0f);
+                g.fillRoundedRectangle(fillLeft, trackY - trackH * 0.5f, fillW, trackH, 2.0f);
             }
 
             // Thumb
@@ -1073,8 +1074,7 @@ public:
 
             // Neutral tick mark at centre
             g.setColour(juce::Colours::white.withAlpha(0.20f));
-            g.fillRect(juce::Rectangle<float>(trackMid - 0.5f, trackY - trackH * 0.5f - 1.0f,
-                                              1.0f, trackH + 2.0f));
+            g.fillRect(juce::Rectangle<float>(trackMid - 0.5f, trackY - trackH * 0.5f - 1.0f, 1.0f, trackH + 2.0f));
         }
     }
 
@@ -1085,8 +1085,8 @@ public:
     void mouseDrag(const juce::MouseEvent& e) override { updateFromMouse(e); }
 
 private:
-    MoodValues   mood_;
-    juce::Colour accentColour_{ juce::Colour(0xFFE9C46A) }; // XO Gold default
+    MoodValues mood_;
+    juce::Colour accentColour_{juce::Colour(0xFFE9C46A)}; // XO Gold default
 
     //==========================================================================
     // Map mouse X to [0,1] within the appropriate slider slot.
@@ -1103,10 +1103,10 @@ private:
         const float thumbR = 5.0f;
 
         const int slot = juce::jlimit(0, kN - 1, static_cast<int>(mx / slotW));
-        const float slotLeft  = static_cast<float>(slot) * slotW;
-        const float trackLeft  = slotLeft + thumbR + 2.0f;
+        const float slotLeft = static_cast<float>(slot) * slotW;
+        const float trackLeft = slotLeft + thumbR + 2.0f;
         const float trackRight = slotLeft + slotW - thumbR - 2.0f;
-        const float trackLen   = trackRight - trackLeft;
+        const float trackLen = trackRight - trackLeft;
 
         if (trackLen <= 0.0f)
             return;
@@ -1115,10 +1115,17 @@ private:
 
         switch (slot)
         {
-        case 0: mood_.brightness = v; break;
-        case 1: mood_.tension    = v; break;
-        case 2: mood_.density    = v; break;
-        default: break;
+        case 0:
+            mood_.brightness = v;
+            break;
+        case 1:
+            mood_.tension = v;
+            break;
+        case 2:
+            mood_.density = v;
+            break;
+        default:
+            break;
         }
 
         repaint();
@@ -1129,7 +1136,6 @@ private:
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MoodSliderBar)
 };
-
 
 /** GoodbyeButton (Task 7 — Spec Section 7)
     Warm Terracotta full-width button that resets the XOuija session.
@@ -1211,9 +1217,9 @@ public:
     //==========================================================================
     // Reserved layout heights (for Tasks 5-7)
     //==========================================================================
-    static constexpr int kGestureBarH = 34; // Task 7: GestureButtonBar
-    static constexpr int kGoodbyeH = 32;    // Task 7: GOODBYE button
-    static constexpr int kMoodBarH  = MoodSliderBar::kMoodBarH; // Wave 5 D2: mood sliders
+    static constexpr int kGestureBarH = 34;                    // Task 7: GestureButtonBar
+    static constexpr int kGoodbyeH = 32;                       // Task 7: GOODBYE button
+    static constexpr int kMoodBarH = MoodSliderBar::kMoodBarH; // Wave 5 D2: mood sliders
 
     //==========================================================================
     // Constructor / Destructor
@@ -1447,19 +1453,21 @@ public:
     // Wave5-D3: XouijaPinStore access
     //
     // D1 (cell layers), D2 (mood), and C5 (slot ModSources) all read/write
-    // the pin store via this reference.
+    // the pin store via this reference.  Publishing to SlotModSourceRegistry
+    // goes through the store's onPinChanged callback wired in setProcessor().
     //
-    // C5 wiring (#1360) — call in PlaySurface::setProcessor() after the
-    // processor pointer is valid:
+    // feat(#1383 A4): C5 wiring is LIVE — PlaySurface::setProcessor() installs:
     //
     //   xouijaPanel_.getPinStore().onPinChanged =
     //       [this](float bx, float by) {
-    //           processor_->getModSourceRegistry()
-    //               .updateSourceValue(ModSourceId::XouijaCell, bx, by);
+    //           auto& reg = processor_->getModSourceRegistry();
+    //           reg.updateSourceValue(ModSourceId::XouijaX, bx);    // ID=28
+    //           reg.updateSourceValue(ModSourceId::XouijaY, by);    // ID=29
+    //           reg.updateSourceValue(ModSourceId::XouijaCell, bx, by); // ID=18
     //       };
     //
-    // SlotModSourceRegistry lives in Source/Core/SlotModSourceRegistry.h.
-    // XOceanusProcessor exposes it via getModSourceRegistry().
+    // SlotModSourceRegistry: Source/Core/SlotModSourceRegistry.h.
+    // XOceanusProcessor exposes the registry via getModSourceRegistry().
     //==========================================================================
     XouijaPinStore& getPinStore() noexcept { return pinStore_; }
     const XouijaPinStore& getPinStore() const noexcept { return pinStore_; }
@@ -1476,8 +1484,8 @@ public:
         float macroRange[4] = {0.5f, 0.5f, 0.5f, 0.5f};
 
         // 6D Sonic DNA (0-1 each), sourced from PresetDNA.
-        float dnaMovement   = 0.5f; // weights X-axis sensitivity contribution
-        float dnaSpace      = 0.5f; // weights Y-axis sensitivity contribution
+        float dnaMovement = 0.5f;   // weights X-axis sensitivity contribution
+        float dnaSpace = 0.5f;      // weights Y-axis sensitivity contribution
         float dnaAggression = 0.5f; // sharpens the overall contrast of the map
 
         // True when a real preset hint has been pushed (not default-constructed).
@@ -1534,8 +1542,8 @@ public:
     {
         moodState_ = v;
         moodState_.brightness = juce::jlimit(0.0f, 1.0f, moodState_.brightness);
-        moodState_.tension    = juce::jlimit(0.0f, 1.0f, moodState_.tension);
-        moodState_.density    = juce::jlimit(0.0f, 1.0f, moodState_.density);
+        moodState_.tension = juce::jlimit(0.0f, 1.0f, moodState_.tension);
+        moodState_.density = juce::jlimit(0.0f, 1.0f, moodState_.density);
         moodSliderBar_.setMoodValues(moodState_);
         moodHeatmapDirty_ = true;
         repaint();
@@ -1624,8 +1632,8 @@ public:
 
         // Wave 5 D2: mood state + heatmap visibility
         tree.setProperty("moodBrightness", static_cast<double>(moodState_.brightness), nullptr);
-        tree.setProperty("moodTension",    static_cast<double>(moodState_.tension),    nullptr);
-        tree.setProperty("moodDensity",    static_cast<double>(moodState_.density),    nullptr);
+        tree.setProperty("moodTension", static_cast<double>(moodState_.tension), nullptr);
+        tree.setProperty("moodDensity", static_cast<double>(moodState_.density), nullptr);
         tree.setProperty("heatmapVisible", heatmapVisible_, nullptr);
 
         return tree;
@@ -1685,12 +1693,9 @@ public:
         if (tree.hasProperty("moodBrightness"))
         {
             MoodSliderBar::MoodValues m;
-            m.brightness = juce::jlimit(0.0f, 1.0f,
-                               static_cast<float>(static_cast<double>(tree["moodBrightness"])));
-            m.tension    = juce::jlimit(0.0f, 1.0f,
-                               static_cast<float>(static_cast<double>(tree["moodTension"])));
-            m.density    = juce::jlimit(0.0f, 1.0f,
-                               static_cast<float>(static_cast<double>(tree["moodDensity"])));
+            m.brightness = juce::jlimit(0.0f, 1.0f, static_cast<float>(static_cast<double>(tree["moodBrightness"])));
+            m.tension = juce::jlimit(0.0f, 1.0f, static_cast<float>(static_cast<double>(tree["moodTension"])));
+            m.density = juce::jlimit(0.0f, 1.0f, static_cast<float>(static_cast<double>(tree["moodDensity"])));
             moodState_ = m;
             moodSliderBar_.setMoodValues(moodState_);
             moodHeatmapDirty_ = true;
@@ -1856,18 +1861,17 @@ public:
         if (e.mods.isRightButtonDown() && harmonicSurfaceBounds_.contains(e.getPosition()))
         {
             auto [nx, ny] = mouseToNormalized(e);
-            XouijaPinContextMenu::show(
-                pinStore_, nx, ny, this,
-                [this](float rx, float ry)
-                {
-                    // Recall: move panel to the captured position.
-                    circleX_     = rx;
-                    influenceY_  = ry;
-                    planchette_.springTo(rx, ry);
-                    updatePlanchetteText();
-                    repaint();
-                    fireCallbacks();
-                });
+            XouijaPinContextMenu::show(pinStore_, nx, ny, this,
+                                       [this](float rx, float ry)
+                                       {
+                                           // Recall: move panel to the captured position.
+                                           circleX_ = rx;
+                                           influenceY_ = ry;
+                                           planchette_.springTo(rx, ry);
+                                           updatePlanchetteText();
+                                           repaint();
+                                           fireCallbacks();
+                                       });
         }
     }
 
@@ -1917,11 +1921,11 @@ private:
     GoodbyeButton goodbyeButton_;
 
     // Wave 5 D2 — Mood sliders + heatmap
-    MoodSliderBar          moodSliderBar_;
-    MoodSliderBar::MoodValues moodState_;      // current mood (brightness/tension/density)
-    bool                   heatmapVisible_ = true;   // toggle for the overlay
-    juce::Image            moodHeatmapImage_;         // 64×64 ARGB, coloured heatmap
-    bool                   moodHeatmapDirty_ = true;  // triggers lazy recompute
+    MoodSliderBar moodSliderBar_;
+    MoodSliderBar::MoodValues moodState_; // current mood (brightness/tension/density)
+    bool heatmapVisible_ = true;          // toggle for the overlay
+    juce::Image moodHeatmapImage_;        // 64×64 ARGB, coloured heatmap
+    bool moodHeatmapDirty_ = true;        // triggers lazy recompute
 
     // Per-bank button definitions: indexed by GestureButtonBar::Bank enum.
     // Populated in setupDefaultButtonBank() / setupDubButtonBank() /
@@ -1964,8 +1968,8 @@ private:
     // sensitivityMapDirty_ is set true on construction and whenever a preset
     // is loaded (fromValueTree). recomputeSensitivityMap() is called lazily
     // on the first paint() call after the flag is raised.
-    juce::Image sensitivityMap_;        // 64×64 ARGB luminance texture (white pixels, alpha = sensitivity)
-    bool sensitivityMapDirty_ = true;   // triggers recompute on next paint()
+    juce::Image sensitivityMap_;      // 64×64 ARGB luminance texture (white pixels, alpha = sensitivity)
+    bool sensitivityMapDirty_ = true; // triggers recompute on next paint()
 
     // ── Preset Sensitivity Hint ───────────────────────────────────────────────
     // Pushed by the host (PlaySurface / PresetManager listener) after each
@@ -2128,8 +2132,8 @@ private:
         float buf[kW * kH];
 
         const float mB = moodState_.brightness; // [0,1]
-        const float mT = moodState_.tension;     // [0,1]
-        const float mD = moodState_.density;     // [0,1]
+        const float mT = moodState_.tension;    // [0,1]
+        const float mD = moodState_.density;    // [0,1]
 
         for (int row = 0; row < kH; ++row)
         {
@@ -2143,15 +2147,15 @@ private:
 
                 // ── Implicit cell texture vector (placeholder for D1 data) ──
                 // D1 will replace these three lines with per-cell stored vectors.
-                const float cellBrightness = nx;                               // left=dark, right=bright
-                const float cellTension    = 1.0f - ny;                       // top=tense, bottom=calm
-                const float cellDensity    = 2.0f * std::sqrt((nx - 0.5f) * (nx - 0.5f)
-                                                             + (ny - 0.5f) * (ny - 0.5f));  // radial [0,√2] → clamp to [0,1]
+                const float cellBrightness = nx;     // left=dark, right=bright
+                const float cellTension = 1.0f - ny; // top=tense, bottom=calm
+                const float cellDensity = 2.0f * std::sqrt((nx - 0.5f) * (nx - 0.5f) +
+                                                           (ny - 0.5f) * (ny - 0.5f)); // radial [0,√2] → clamp to [0,1]
                 const float cellDensityClamped = juce::jlimit(0.0f, 1.0f, cellDensity);
 
                 // Euclidean distance in mood-space [0, √3]
-                const float dB = cellBrightness  - mB;
-                const float dT = cellTension     - mT;
+                const float dB = cellBrightness - mB;
+                const float dT = cellTension - mT;
                 const float dD = cellDensityClamped - mD;
                 const float dist = std::sqrt(dB * dB + dT * dT + dD * dD);
 
@@ -2170,7 +2174,7 @@ private:
             for (int col = 0; col < kW; ++col)
             {
                 float sum = 0.0f;
-                int   cnt = 0;
+                int cnt = 0;
                 for (int dr = -1; dr <= 1; ++dr)
                 {
                     const int nr = juce::jlimit(0, kH - 1, row + dr);
@@ -2191,8 +2195,8 @@ private:
         moodHeatmapImage_ = juce::Image(juce::Image::ARGB, kW, kH, true);
         {
             const float r = accentColour_.getFloatRed();
-            const float gr= accentColour_.getFloatGreen();
-            const float bl= accentColour_.getFloatBlue();
+            const float gr = accentColour_.getFloatGreen();
+            const float bl = accentColour_.getFloatBlue();
 
             juce::Image::BitmapData data(moodHeatmapImage_, juce::Image::BitmapData::writeOnly);
             for (int row = 0; row < kH; ++row)
@@ -2202,9 +2206,9 @@ private:
                     const float heat = blurred[row * kW + col];
                     // Alpha: 0 at heat=0, up to 153 (~60%) at heat=1.0
                     const uint8_t alpha = static_cast<uint8_t>(heat * 153.0f);
-                    const uint8_t rc    = static_cast<uint8_t>(r  * 255.0f);
-                    const uint8_t gc    = static_cast<uint8_t>(gr * 255.0f);
-                    const uint8_t bc    = static_cast<uint8_t>(bl * 255.0f);
+                    const uint8_t rc = static_cast<uint8_t>(r * 255.0f);
+                    const uint8_t gc = static_cast<uint8_t>(gr * 255.0f);
+                    const uint8_t bc = static_cast<uint8_t>(bl * 255.0f);
                     data.setPixelColour(col, row, juce::Colour::fromRGBA(rc, gc, bc, alpha));
                 }
             }
@@ -2229,8 +2233,7 @@ private:
 
         const auto surfaceBounds = harmonicSurfaceBounds_.toFloat();
         g.setOpacity(0.30f);
-        g.drawImage(moodHeatmapImage_, surfaceBounds,
-                    juce::RectanglePlacement::fillDestination, false);
+        g.drawImage(moodHeatmapImage_, surfaceBounds, juce::RectanglePlacement::fillDestination, false);
         g.setOpacity(1.0f);
     }
 
@@ -2297,21 +2300,20 @@ private:
             // further scaled by the movement DNA dimension.
             // A dead macro (range=0) contributes nothing; a full-sweep macro (range=1)
             // contributes maximally.
-            const float xMacroStrength = (presetHint_.macroRange[0] + presetHint_.macroRange[1])
-                                         * (0.5f + presetHint_.dnaMovement * 0.5f); // [0, 2] * [0.5, 1]
+            const float xMacroStrength = (presetHint_.macroRange[0] + presetHint_.macroRange[1]) *
+                                         (0.5f + presetHint_.dnaMovement * 0.5f); // [0, 2] * [0.5, 1]
 
             // Y-axis contribution weights: COUPLE + DEPTH macro range widths, [D11]
             // further scaled by the space DNA dimension.
-            const float yMacroStrength = (presetHint_.macroRange[2] + presetHint_.macroRange[3])
-                                         * (0.5f + presetHint_.dnaSpace * 0.5f);
+            const float yMacroStrength =
+                (presetHint_.macroRange[2] + presetHint_.macroRange[3]) * (0.5f + presetHint_.dnaSpace * 0.5f);
 
             // Axis balance: 0 = pure X, 1 = pure Y.
             // When both are equal we blend 50/50.  Clamp to avoid a fully-black map
             // (total = 0 should never happen in practice, but guard defensively).
             const float totalStrength = xMacroStrength + yMacroStrength;
-            const float axisBalance   = (totalStrength > 1e-6f)
-                                        ? (yMacroStrength / totalStrength)
-                                        : 0.5f; // equal blend if all macros are dead
+            const float axisBalance =
+                (totalStrength > 1e-6f) ? (yMacroStrength / totalStrength) : 0.5f; // equal blend if all macros are dead
 
             // Normalised X-axis contribution magnitudes (saturate to [0, 1]).
             const float xNorm = juce::jlimit(0.0f, 1.0f, xMacroStrength * 0.5f);
@@ -2327,8 +2329,8 @@ private:
             // influence depth.  We model this as two Gaussian peaks at y=0 and y=1.
             // Their relative weights follow influenceY_ so the current position
             // pulls the glow toward whichever pole is active.
-            const float yPoleLow  = 1.0f - influenceY_; // weight for the NO=0 pole
-            const float yPoleHigh = influenceY_;          // weight for the YES=1 pole
+            const float yPoleLow = 1.0f - influenceY_; // weight for the NO=0 pole
+            const float yPoleHigh = influenceY_;       // weight for the YES=1 pole
 
             // Aggression drives the contrast (power curve exponent).
             // Low aggression (0) → exponent 1 (linear, soft glow)
@@ -2354,9 +2356,9 @@ private:
 
                     // --- Y sensitivity ---
                     // Two Gaussian poles at ny=0 and ny=1 weighted by current influenceY_.
-                    const float dyLow  = ny;         // distance from y=0 (NO pole)
-                    const float dyHigh = 1.0f - ny;  // distance from y=1 (YES pole)
-                    const float gaussLow  = std::exp(-dyLow  * dyLow  * 12.0f); // σ ≈ 0.20
+                    const float dyLow = ny;                                  // distance from y=0 (NO pole)
+                    const float dyHigh = 1.0f - ny;                          // distance from y=1 (YES pole)
+                    const float gaussLow = std::exp(-dyLow * dyLow * 12.0f); // σ ≈ 0.20
                     const float gaussHigh = std::exp(-dyHigh * dyHigh * 12.0f);
                     const float ySens = yNorm * (yPoleLow * gaussLow + yPoleHigh * gaussHigh);
 
@@ -2409,7 +2411,7 @@ private:
             {
                 // Accumulate the 3×3 neighbourhood (clamped to image edges).
                 float sum = 0.0f;
-                int   cnt = 0;
+                int cnt = 0;
                 for (int dr = -1; dr <= 1; ++dr)
                 {
                     const int nr = juce::jlimit(0, kH - 1, row + dr);
@@ -2435,8 +2437,8 @@ private:
             {
                 for (int col = 0; col < kW; ++col)
                 {
-                    const uint8_t alpha = static_cast<uint8_t>(
-                        juce::jlimit(0.0f, 1.0f, blurred[row * kW + col]) * 255.0f);
+                    const uint8_t alpha =
+                        static_cast<uint8_t>(juce::jlimit(0.0f, 1.0f, blurred[row * kW + col]) * 255.0f);
                     data.setPixelColour(col, row, juce::Colour::fromRGBA(255, 255, 255, alpha));
                 }
             }
@@ -2533,14 +2535,14 @@ private:
 
         // DEEP — near the top of the harmonic surface (high influence)
         const float deepY = b.getY() + 10.0f;
-        g.drawText("DEEP", juce::Rectangle<float>(b.getX(), deepY, b.getWidth(), 14.0f),
-                   juce::Justification::centred, false);
+        g.drawText("DEEP", juce::Rectangle<float>(b.getX(), deepY, b.getWidth(), 14.0f), juce::Justification::centred,
+                   false);
 
         // FREE — above the bottom reserved area (no harmonic constraint)
         const float reservedBottom = static_cast<float>(kGestureBarH + kGoodbyeH);
         const float freeY = b.getBottom() - reservedBottom - 18.0f;
-        g.drawText("FREE", juce::Rectangle<float>(b.getX(), freeY, b.getWidth(), 14.0f),
-                   juce::Justification::centred, false);
+        g.drawText("FREE", juce::Rectangle<float>(b.getX(), freeY, b.getWidth(), 14.0f), juce::Justification::centred,
+                   false);
 
         // ── Onboarding axis labels (translucent guide text, issue #887) ──────
         // Watermark-style text that helps first-time users understand the axes.
@@ -2561,14 +2563,11 @@ private:
             const float rightEdgeX = b.getRight() - 12.0f;
 
             juce::GlyphArrangement glyphs;
-            glyphs.addLineOfText(kGuideFont,
-                                 juce::CharPointer_UTF8("HARMONIC DEPTH \xe2\x86\x95"),
-                                 0.0f, 0.0f);
+            glyphs.addLineOfText(kGuideFont, juce::CharPointer_UTF8("HARMONIC DEPTH \xe2\x86\x95"), 0.0f, 0.0f);
 
             // Rotate -90° around the right-edge anchor, then translate to position
-            const juce::AffineTransform rotate =
-                juce::AffineTransform::rotation(-juce::MathConstants<float>::halfPi)
-                    .translated(rightEdgeX, surfaceCentreY);
+            const juce::AffineTransform rotate = juce::AffineTransform::rotation(-juce::MathConstants<float>::halfPi)
+                                                     .translated(rightEdgeX, surfaceCentreY);
             glyphs.draw(g, rotate);
         }
     }
@@ -2713,7 +2712,8 @@ private:
         for (int i = 0; i < XouijaPinStore::kNumCaptureSlots; ++i)
         {
             const auto& s = pinStore_.getSlot(i);
-            if (!s.hasCapture) continue;
+            if (!s.hasCapture)
+                continue;
             juce::String label = "C" + juce::String(i + 1);
             if (s.targetSlot != XouijaCaptureSlot::EngineTarget::Global)
                 label += "  " + XouijaCaptureSlot::engineTargetName(s.targetSlot);

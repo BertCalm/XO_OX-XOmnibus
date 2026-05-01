@@ -62,22 +62,21 @@ public:
     {
         ouijaCellX_.store(0.0f, std::memory_order_relaxed);
         ouijaCellY_.store(0.0f, std::memory_order_relaxed);
+        ouijaLiveX_.store(0.0f, std::memory_order_relaxed);
+        ouijaLiveY_.store(0.0f, std::memory_order_relaxed);
     }
 
     // Non-copyable, non-movable — owned by value in XOceanusProcessor.
-    SlotModSourceRegistry(const SlotModSourceRegistry&)            = delete;
+    SlotModSourceRegistry(const SlotModSourceRegistry&) = delete;
     SlotModSourceRegistry& operator=(const SlotModSourceRegistry&) = delete;
-    SlotModSourceRegistry(SlotModSourceRegistry&&)                 = delete;
-    SlotModSourceRegistry& operator=(SlotModSourceRegistry&&)      = delete;
+    SlotModSourceRegistry(SlotModSourceRegistry&&) = delete;
+    SlotModSourceRegistry& operator=(SlotModSourceRegistry&&) = delete;
 
     //==========================================================================
-    // updateSourceValue — message thread only.
-    //
-    // Called from UI-thread callbacks (e.g. XouijaPinStore::onPinChanged) to
-    // push new live values into the registry.  Values are bipolar [-1, +1].
-    //
-    // Only ModSourceId::XouijaCell is handled here; all other sources either
-    // live on the audio thread (sequencers) or are not yet implemented.
+    // updateSourceValue (two-float overload) — message thread only.
+    // Legacy overload for XouijaCell (ID=18): packs X+Y into one call.
+    // Kept for back-compat; PlaySurface also calls the single-float overload
+    // so new routes on XouijaX/Y IDs work independently.
     //
     void updateSourceValue(ModSourceId id, float bx, float by) noexcept
     {
@@ -86,38 +85,51 @@ public:
             ouijaCellX_.store(bx, std::memory_order_relaxed);
             ouijaCellY_.store(by, std::memory_order_relaxed);
         }
-        // Additional sources: add else-if branches as each lands.
+    }
+
+    // updateSourceValue (single-float overload) — message thread only.
+    // Handles XouijaX (ID=28) and XouijaY (ID=29) from #1383 A4.
+    //
+    void updateSourceValue(ModSourceId id, float value) noexcept
+    {
+        if (id == ModSourceId::XouijaX)
+            ouijaLiveX_.store(value, std::memory_order_relaxed);
+        else if (id == ModSourceId::XouijaY)
+            ouijaLiveY_.store(value, std::memory_order_relaxed);
     }
 
     //==========================================================================
     // Audio-thread read accessors — called from XOceanusProcessor::processBlock.
 
-    /// Pinned XOuija X-axis (circle-of-fifths), bipolar [-1, +1].
-    float getXouijaCellX() const noexcept
-    {
-        return ouijaCellX_.load(std::memory_order_relaxed);
-    }
+    /// Legacy XouijaCell X-axis (ID=18), bipolar [-1, +1].
+    float getXouijaCellX() const noexcept { return ouijaCellX_.load(std::memory_order_relaxed); }
 
-    /// Pinned XOuija Y-axis (influence depth), bipolar [-1, +1].
-    float getXouijaCellY() const noexcept
-    {
-        return ouijaCellY_.load(std::memory_order_relaxed);
-    }
+    /// Legacy XouijaCell Y-axis (ID=18), bipolar [-1, +1].
+    float getXouijaCellY() const noexcept { return ouijaCellY_.load(std::memory_order_relaxed); }
+
+    /// XouijaX (ID=28): live planchette X axis.  #1383 A4.
+    float getXouijaX() const noexcept { return ouijaLiveX_.load(std::memory_order_relaxed); }
+
+    /// XouijaY (ID=29): live planchette Y axis (influence depth).  #1383 A4.
+    float getXouijaY() const noexcept { return ouijaLiveY_.load(std::memory_order_relaxed); }
 
     //==========================================================================
     // reset — called from XOceanusProcessor::reset() / prepareToPlay().
-    // Clears all live values back to neutral (0.0f).  Audio-thread safe.
     void reset() noexcept
     {
         ouijaCellX_.store(0.0f, std::memory_order_relaxed);
         ouijaCellY_.store(0.0f, std::memory_order_relaxed);
+        ouijaLiveX_.store(0.0f, std::memory_order_relaxed);
+        ouijaLiveY_.store(0.0f, std::memory_order_relaxed);
     }
 
 private:
-    // XouijaCell (ModSourceId::XouijaCell = 18) — bipolar [-1, +1].
-    // Initialised to 0.0f so unconnected XouijaCell routes produce zero offset.
+    // XouijaCell (ID=18) — back-compat atomics, bipolar [-1, +1].
     std::atomic<float> ouijaCellX_{0.0f};
     std::atomic<float> ouijaCellY_{0.0f};
+    // XouijaX/Y (IDs=28/29) — per-axis atomics, #1383 A4.
+    std::atomic<float> ouijaLiveX_{0.0f};
+    std::atomic<float> ouijaLiveY_{0.0f};
 };
 
 } // namespace xoceanus

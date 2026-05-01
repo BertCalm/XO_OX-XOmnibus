@@ -115,7 +115,7 @@
 #include "DSP/Effects/AquaticFXSuite.h"
 #include "Core/EpicChainSlotController.h"
 #include "Core/DNAProximity.h"
-#include "Core/PresetMorphEngine.h"  // feat/preset-morph-foundation — #9 + #2
+#include "Core/PresetMorphEngine.h" // feat/preset-morph-foundation — #9 + #2
 #include "DSP/ThreadInit.h"
 #include <cstring> // std::strncmp — used in Wave 5 A1 global mod route evaluation
 
@@ -156,33 +156,25 @@ static bool registered_Obsidian =
 static bool registered_Observandum =
     xoceanus::EngineRegistry::instance().registerEngine("Observandum", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::ObservandumEngine>(); });
-static bool registered_Orrery =
-    xoceanus::EngineRegistry::instance().registerEngine("Orrery", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OrreryEngine>(); });
-static bool registered_Opsin =
-    xoceanus::EngineRegistry::instance().registerEngine("Opsin", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OpsinEngine>(); });
-static bool registered_Oort =
-    xoceanus::EngineRegistry::instance().registerEngine("Oort", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OortEngine>(); });
-static bool registered_Ondine =
-    xoceanus::EngineRegistry::instance().registerEngine("Ondine", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OndineEngine>(); });
-static bool registered_Ortolan =
-    xoceanus::EngineRegistry::instance().registerEngine("Ortolan", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OrtolanEngine>(); });
-static bool registered_Octant =
-    xoceanus::EngineRegistry::instance().registerEngine("Octant", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OctantEngine>(); });
+static bool registered_Orrery = xoceanus::EngineRegistry::instance().registerEngine(
+    "Orrery", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrreryEngine>(); });
+static bool registered_Opsin = xoceanus::EngineRegistry::instance().registerEngine(
+    "Opsin", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OpsinEngine>(); });
+static bool registered_Oort = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oort", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OortEngine>(); });
+static bool registered_Ondine = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ondine", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OndineEngine>(); });
+static bool registered_Ortolan = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ortolan", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrtolanEngine>(); });
+static bool registered_Octant = xoceanus::EngineRegistry::instance().registerEngine(
+    "Octant", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OctantEngine>(); });
 static bool registered_Overtide =
     xoceanus::EngineRegistry::instance().registerEngine("Overtide", []() -> std::unique_ptr<xoceanus::SynthEngine>
                                                         { return std::make_unique<xoceanus::OvertideEngine>(); });
-static bool registered_Oobleck =
-    xoceanus::EngineRegistry::instance().registerEngine("Oobleck", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OobleckEngine>(); });
-static bool registered_Ooze =
-    xoceanus::EngineRegistry::instance().registerEngine("Ooze", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OozeEngine>(); });
+static bool registered_Oobleck = xoceanus::EngineRegistry::instance().registerEngine(
+    "Oobleck", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OobleckEngine>(); });
+static bool registered_Ooze = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ooze", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OozeEngine>(); });
 static bool registered_Origami = xoceanus::EngineRegistry::instance().registerEngine(
     "Origami", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OrigamiEngine>(); });
 static bool registered_Oracle = xoceanus::EngineRegistry::instance().registerEngine(
@@ -367,13 +359,11 @@ static bool registered_Obiont = xoceanus::EngineRegistry::instance().registerEng
 static bool registered_Oxidize = xoceanus::EngineRegistry::instance().registerEngine(
     "Oxidize", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OxidizeAdapter>(); });
 // OGIVE — scanned glass synthesis (engine #86)
-static bool registered_Ogive =
-    xoceanus::EngineRegistry::instance().registerEngine("Ogive", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OgiveEngine>(); });
+static bool registered_Ogive = xoceanus::EngineRegistry::instance().registerEngine(
+    "Ogive", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OgiveEngine>(); });
 // OLVIDO — spectral erosion synthesis (engine #87)
-static bool registered_Olvido =
-    xoceanus::EngineRegistry::instance().registerEngine("Olvido", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OlvidoEngine>(); });
+static bool registered_Olvido = xoceanus::EngineRegistry::instance().registerEngine(
+    "Olvido", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OlvidoEngine>(); });
 
 // OSTRACON — corpus-buffer synthesis (engine #88)
 static bool registered_Ostracon =
@@ -381,14 +371,12 @@ static bool registered_Ostracon =
                                                         { return std::make_unique<xoceanus::OstraconEngine>(); });
 
 // OUTCROP — wave-terrain synthesis (engine #89)
-static bool registered_Outcrop =
-    xoceanus::EngineRegistry::instance().registerEngine("Outcrop", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OutcropEngine>(); });
+static bool registered_Outcrop = xoceanus::EngineRegistry::instance().registerEngine(
+    "Outcrop", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OutcropEngine>(); });
 
 // ONDA — NLS soliton synthesis (engine #90; formerly Oneiric)
-static bool registered_Onda =
-    xoceanus::EngineRegistry::instance().registerEngine("Onda", []() -> std::unique_ptr<xoceanus::SynthEngine>
-                                                        { return std::make_unique<xoceanus::OndaEngine>(); });
+static bool registered_Onda = xoceanus::EngineRegistry::instance().registerEngine(
+    "Onda", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OndaEngine>(); });
 
 // OLLOTRON — tape-chamber keyboard synthesis (engine #91)
 static bool registered_Ollotron =
@@ -415,8 +403,10 @@ XOceanusProcessor::XOceanusProcessor()
     // #1357 W8B: initialise XY surface position atomics to 0.5 (centre).
     // std::atomic is not copy/move-constructible, so we cannot use brace-init
     // in the member declaration — store initial values here instead.
-    for (auto& a : xyX_) a.store(0.5f, std::memory_order_relaxed);
-    for (auto& a : xyY_) a.store(0.5f, std::memory_order_relaxed);
+    for (auto& a : xyX_)
+        a.store(0.5f, std::memory_order_relaxed);
+    for (auto& a : xyY_)
+        a.store(0.5f, std::memory_order_relaxed);
 
     // Wire MIDI learn manager to the APVTS and install default CC mappings.
     midiLearnManager.setAPVTS(&apvts);
@@ -459,18 +449,18 @@ void XOceanusProcessor::cacheParameterPointers()
         cachedParams.cmSlotRoute[slot] = apvts.getRawParameterValue("cm_slot_route_" + juce::String(slot));
 
     // B2: input mode + global key/scale + 48 pad chord params
-    cachedParams.cmInputMode   = apvts.getRawParameterValue("chord_input_mode");
-    cachedParams.cmGlobalRoot  = apvts.getRawParameterValue("cm_global_root");
+    cachedParams.cmInputMode = apvts.getRawParameterValue("chord_input_mode");
+    cachedParams.cmGlobalRoot = apvts.getRawParameterValue("cm_global_root");
     cachedParams.cmGlobalScale = apvts.getRawParameterValue("cm_global_scale");
     for (int i = 0; i < 16; ++i)
     {
         const juce::String prefix = "chord_pad_" + juce::String(i) + "_";
-        cachedParams.padChords[i].root    = apvts.getRawParameterValue(prefix + "root");
+        cachedParams.padChords[i].root = apvts.getRawParameterValue(prefix + "root");
         cachedParams.padChords[i].voicing = apvts.getRawParameterValue(prefix + "voicing");
-        cachedParams.padChords[i].inv     = apvts.getRawParameterValue(prefix + "inv");
-        jassert(cachedParams.padChords[i].root    != nullptr);
+        cachedParams.padChords[i].inv = apvts.getRawParameterValue(prefix + "inv");
+        jassert(cachedParams.padChords[i].root != nullptr);
         jassert(cachedParams.padChords[i].voicing != nullptr);
-        jassert(cachedParams.padChords[i].inv     != nullptr);
+        jassert(cachedParams.padChords[i].inv != nullptr);
     }
 
     cachedParams.ohmCommune = apvts.getRawParameterValue("ohm_macroCommune");
@@ -503,10 +493,10 @@ void XOceanusProcessor::cacheParameterPointers()
     cachedParams.mpeSlideTarget = apvts.getRawParameterValue("mpe_slideTarget");
 
     // Wave 5 D1: XOuija walk engine mood/tendency — cache once, read per-block
-    cachedParams.ouijaCalmWild           = apvts.getRawParameterValue("ouija_calm_wild");
+    cachedParams.ouijaCalmWild = apvts.getRawParameterValue("ouija_calm_wild");
     cachedParams.ouijaConsonantDissonant = apvts.getRawParameterValue("ouija_consonant_dissonant");
-    cachedParams.ouijaTendencyCol        = apvts.getRawParameterValue("ouija_tendency_col");
-    cachedParams.ouijaTendencyRow        = apvts.getRawParameterValue("ouija_tendency_row");
+    cachedParams.ouijaTendencyCol = apvts.getRawParameterValue("ouija_tendency_col");
+    cachedParams.ouijaTendencyRow = apvts.getRawParameterValue("ouija_tendency_row");
 
     // B1: Pre-resolve the Orrery cutoff parameter pointer used for isOrryCutoff detection
     // in flushModRoutesSnapshot().  If the Orrery engine is not registered, this stays
@@ -517,8 +507,8 @@ void XOceanusProcessor::cacheParameterPointers()
     // nullptr when Onset parameters are not registered (safe — corresponding isPercXxx stays false).
     percLevelParam_ = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("perc_level"));
     percPunchParam_ = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("perc_macro_punch"));
-    percToneParam_  = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("perc_masterTone"));
-    percGritParam_  = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("perc_char_grit"));
+    percToneParam_ = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("perc_masterTone"));
+    percGritParam_ = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter("perc_char_grit"));
 }
 
 juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createParameterLayout()
@@ -717,18 +707,17 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
         juce::StringArray{"WARM", "BRIGHT", "TENSION", "OPEN", "DARK", "SWEET", "COMPLEX", "RAW"}, 0));
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("cm_voicing", 1), "CM Voicing",
-        juce::StringArray{
-            // Tertian (0-4) — indices fixed for preset backward compat
-            "ROOT-SPREAD", "DROP-2", "QUARTAL", "UPPER STRUCT", "UNISON",
-            // Quartal family (5-6)
-            "QUARTAL-3", "QUARTAL-4",
-            // Quintal family (7-8)
-            "QUINTAL-3", "QUINTAL-4",
-            // Modal-world family (9-13)
-            "HIJAZ", "BHAIRAVI", "YO", "IN", "PHRYG-DOM",
-            // Drone family (14-19)
-            "DRONE-P5", "DRONE-P4", "DRONE-M3", "DRONE-m3", "DRONE-M2", "DRONE-m2"
-        }, 0));
+        juce::StringArray{// Tertian (0-4) — indices fixed for preset backward compat
+                          "ROOT-SPREAD", "DROP-2", "QUARTAL", "UPPER STRUCT", "UNISON",
+                          // Quartal family (5-6)
+                          "QUARTAL-3", "QUARTAL-4",
+                          // Quintal family (7-8)
+                          "QUINTAL-3", "QUINTAL-4",
+                          // Modal-world family (9-13)
+                          "HIJAZ", "BHAIRAVI", "YO", "IN", "PHRYG-DOM",
+                          // Drone family (14-19)
+                          "DRONE-P5", "DRONE-P4", "DRONE-M3", "DRONE-m3", "DRONE-M2", "DRONE-m2"},
+        0));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("cm_spread", 1), "CM Spread",
                                                                  juce::NormalisableRange<float>(0.0f, 1.0f), 0.75f));
     params.push_back(
@@ -758,11 +747,10 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     // Values: 0=CHORD→SEQ, 1=SEQ→CHORD, 2=PARALLEL. Default: CHORD→SEQ.
     for (int slot = 0; slot < 4; ++slot)
     {
-        const juce::String paramId  = "cm_slot_route_" + juce::String(slot);
+        const juce::String paramId = "cm_slot_route_" + juce::String(slot);
         const juce::String paramName = "CM Slot " + juce::String(slot + 1) + " Routing";
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
-            juce::ParameterID(paramId, 1), paramName,
-            juce::StringArray{"CHORD→SEQ", "SEQ→CHORD", "PARALLEL"}, 0));
+            juce::ParameterID(paramId, 1), paramName, juce::StringArray{"CHORD→SEQ", "SEQ→CHORD", "PARALLEL"}, 0));
     }
 
     // ── B3: Per-slot chord input mode (Wave 5 B3 mount) ──────────────────────
@@ -770,7 +758,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     // Values: 0=AUTO-HARMONIZE, 1=PAD-PER-CHORD, 2=SCALE-DEGREE. Default: AUTO-HARMONIZE.
     for (int slot = 0; slot < 4; ++slot)
     {
-        const juce::String paramId  = "cm_slot_input_mode_" + juce::String(slot);
+        const juce::String paramId = "cm_slot_input_mode_" + juce::String(slot);
         const juce::String paramName = "CM Slot " + juce::String(slot + 1) + " Input Mode";
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
             juce::ParameterID(paramId, 1), paramName,
@@ -779,53 +767,49 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
 
     // ── B2: Chord input mode + global key/scale ───────────────────────────────
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
-        juce::ParameterID("chord_input_mode", 1), "Chord Input Mode",
-        juce::StringArray{"AUTO", "PAD", "DEG"}, 0)); // default = AutoHarmonize
+        juce::ParameterID("chord_input_mode", 1), "Chord Input Mode", juce::StringArray{"AUTO", "PAD", "DEG"},
+        0)); // default = AutoHarmonize
 
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("cm_global_root", 1), "CM Global Root",
-        juce::StringArray{"C","C#","D","D#","E","F","F#","G","G#","A","A#","B"}, 0)); // C
+        juce::StringArray{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"}, 0)); // C
 
     params.push_back(std::make_unique<juce::AudioParameterChoice>(
         juce::ParameterID("cm_global_scale", 1), "CM Global Scale",
-        juce::StringArray{"Chromatic","Major","Minor","Dorian","Mixolydian",
-                          "Pent Min","Pent Maj","Blues","Harm Min"}, 1)); // Major
+        juce::StringArray{"Chromatic", "Major", "Minor", "Dorian", "Mixolydian", "Pent Min", "Pent Maj", "Blues",
+                          "Harm Min"},
+        1)); // Major
 
     // ── B2: Pad chord slots — 16 pads × 3 params = 48 params ─────────────────
     // Build the voicing string array once (reused for all 16 pads)
     {
-        juce::StringArray voicingChoices{
-            "ROOT-SPREAD","DROP-2","QUARTAL","UPPER-STRUCT","UNISON",
-            "QUARTAL-3","QUARTAL-4","QUINTAL-3","QUINTAL-4",
-            "HIJAZ","BHAIRAVI","YO","IN","PHRYG-DOM",
-            "DRONE-P5","DRONE-P4","DRONE-M3","DRONE-m3","DRONE-M2","DRONE-m2"
-        };
+        juce::StringArray voicingChoices{"ROOT-SPREAD", "DROP-2",    "QUARTAL",   "UPPER-STRUCT", "UNISON",
+                                         "QUARTAL-3",   "QUARTAL-4", "QUINTAL-3", "QUINTAL-4",    "HIJAZ",
+                                         "BHAIRAVI",    "YO",        "IN",        "PHRYG-DOM",    "DRONE-P5",
+                                         "DRONE-P4",    "DRONE-M3",  "DRONE-m3",  "DRONE-M2",     "DRONE-m2"};
 
         // Default roots follow the C major scale degrees for pads 0-7:
         // C D E F G A B C (pads 0-7), then repeat for pads 8-15
         static constexpr int kDefaultRoots[16] = {
-            60, 62, 64, 65, 67, 69, 71, 72,  // C4 D4 E4 F4 G4 A4 B4 C5
-            60, 62, 64, 65, 67, 69, 71, 72   // repeat (pads 8-15)
+            60, 62, 64, 65, 67, 69, 71, 72, // C4 D4 E4 F4 G4 A4 B4 C5
+            60, 62, 64, 65, 67, 69, 71, 72  // repeat (pads 8-15)
         };
 
         for (int i = 0; i < 16; ++i)
         {
             const juce::String prefix = "chord_pad_" + juce::String(i) + "_";
 
-            params.push_back(std::make_unique<juce::AudioParameterInt>(
-                juce::ParameterID(prefix + "root", 1),
-                "Chord Pad " + juce::String(i + 1) + " Root",
-                0, 127, kDefaultRoots[i]));
+            params.push_back(std::make_unique<juce::AudioParameterInt>(juce::ParameterID(prefix + "root", 1),
+                                                                       "Chord Pad " + juce::String(i + 1) + " Root", 0,
+                                                                       127, kDefaultRoots[i]));
 
             params.push_back(std::make_unique<juce::AudioParameterChoice>(
-                juce::ParameterID(prefix + "voicing", 1),
-                "Chord Pad " + juce::String(i + 1) + " Voicing",
+                juce::ParameterID(prefix + "voicing", 1), "Chord Pad " + juce::String(i + 1) + " Voicing",
                 voicingChoices, 0)); // default = RootSpread
 
             params.push_back(std::make_unique<juce::AudioParameterInt>(
-                juce::ParameterID(prefix + "inv", 1),
-                "Chord Pad " + juce::String(i + 1) + " Inversion",
-                0, 3, 0)); // default = root position
+                juce::ParameterID(prefix + "inv", 1), "Chord Pad " + juce::String(i + 1) + " Inversion", 0, 3,
+                0)); // default = root position
         }
     }
 
@@ -1218,9 +1202,9 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     // pitchBendRange: non-MPE pitch-bend range in semitones (1..24, default 2).
     //                 Engines read this to convert normalised wheel value to cents.
     // Both IDs are frozen — do not rename or add version suffixes.
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("masterTune", 1), "Master Tune (Hz)",
-        juce::NormalisableRange<float>(415.0f, 466.0f), 440.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("masterTune", 1), "Master Tune (Hz)",
+                                                                 juce::NormalisableRange<float>(415.0f, 466.0f),
+                                                                 440.0f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
         juce::ParameterID("pitchBendRange", 1), "Pitch Bend Range (semitones)",
         juce::NormalisableRange<float>(1.0f, 24.0f, 1.0f), 2.0f));
@@ -1258,15 +1242,13 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     // PlaySurface wires onParameterChanged for these three IDs to call
     // xouijaPanel_.setMoodState() so the heatmap repaint happens on the message
     // thread without touching the audio thread.
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("xouija_brightness", 1),
+                                                                 "XOuija Brightness",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("xouija_brightness", 1), "XOuija Brightness",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        juce::ParameterID("xouija_tension", 1), "XOuija Tension", juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("xouija_tension", 1), "XOuija Tension",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("xouija_density", 1), "XOuija Density",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+        juce::ParameterID("xouija_density", 1), "XOuija Density", juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
     // ── Wave 5 D1: XOuija multi-layer cell parameters ────────────────────────
     // Mood sliders and tendency are automatable APVTS params (per spec section 6).
@@ -1274,22 +1256,20 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     // values for APVTS, and editorial state is not automatable.
     // Output routing (one per primary slot) is an int choice param 0-4 (Off…ModSource).
     params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("ouija_calm_wild", 1), "XOuija Calm/Wild",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("ouija_consonant_dissonant", 1), "XOuija Consonant/Dissonant",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("ouija_tendency_col", 1), "XOuija Tendency Col",
-        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("ouija_tendency_row", 1), "XOuija Tendency Row",
-        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+        juce::ParameterID("ouija_calm_wild", 1), "XOuija Calm/Wild", juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("ouija_consonant_dissonant", 1),
+                                                                 "XOuija Consonant/Dissonant",
+                                                                 juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("ouija_tendency_col", 1),
+                                                                 "XOuija Tendency Col",
+                                                                 juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
+    params.push_back(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("ouija_tendency_row", 1),
+                                                                 "XOuija Tendency Row",
+                                                                 juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
     for (int s = 0; s < kNumPrimarySlots; ++s)
         params.push_back(std::make_unique<juce::AudioParameterChoice>(
-            juce::ParameterID("ouija_route_" + juce::String(s), 1),
-            "XOuija Route Slot " + juce::String(s + 1),
-            juce::StringArray{ "Off", "Drive Notes", "Drive Sequencer", "Drive Chord", "Mod Source" },
+            juce::ParameterID("ouija_route_" + juce::String(s), 1), "XOuija Route Slot " + juce::String(s + 1),
+            juce::StringArray{"Off", "Drive Notes", "Drive Sequencer", "Drive Chord", "Mod Source"},
             0 /* default: Off */));
 
     // AquaticFXSuite::addParameters() uses ParameterLayout::add() (JUCE 7+ API)
@@ -1304,10 +1284,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
 
     // Wave 5 C1: Per-slot pattern sequencer parameters (primary slots 0–3 only).
     for (int s = 0; s < kNumPrimarySlots; ++s)
-        XOceanus::PerEnginePatternSequencer::addParameters(
-            layout,
-            "slot" + juce::String(s) + "_seq_",
-            "Slot " + juce::String(s + 1) + " Seq ");
+        XOceanus::PerEnginePatternSequencer::addParameters(layout, "slot" + juce::String(s) + "_seq_",
+                                                           "Slot " + juce::String(s + 1) + " Seq ");
 
     // Wave 6: Per-slot play surface layout mode (primary slots 0–3 only).
     // 0 = PlaySurface (KEYS/PADS/XY/OUIJA full window, default)
@@ -1317,10 +1295,8 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     for (int s = 0; s < kNumPrimarySlots; ++s)
     {
         layout.add(std::make_unique<juce::AudioParameterChoice>(
-            juce::ParameterID("slot" + juce::String(s) + "_layout_mode", 1),
-            "Slot " + juce::String(s + 1) + " Layout",
-            juce::StringArray{ "PlaySurface", "PadGrid" },
-            0 /* default = PlaySurface */));
+            juce::ParameterID("slot" + juce::String(s) + "_layout_mode", 1), "Slot " + juce::String(s + 1) + " Layout",
+            juce::StringArray{"PlaySurface", "PadGrid"}, 0 /* default = PlaySurface */));
     }
 
     // ── Wave 8: XY Surface parameters (8 params × 4 slots = 32 params) ─────────
@@ -1334,45 +1310,35 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
     //   5=EnvAttack, 6=EnvRelease, 7=Drive, 8=Macro1, 9=Macro2, 10=Macro3,
     //   11=Macro4, 12=FX1WetDry, 13=FX2WetDry, 14=FX3WetDry
     {
-        const juce::StringArray kXYPatterns {"None","PULSE","DRIFT","TIDE","RIPPLE","CHAOS"};
-        const juce::StringArray kXYSync     {"Free","1bar/4","1bar/2","1bar","2bar","4bar"};
-        const juce::StringArray kXYAssign   {
-            "None","Filter Cutoff","Filter Res","LFO Rate","LFO Depth",
-            "Env Attack","Env Release","Drive",
-            "Macro1","Macro2","Macro3","Macro4",
-            "FX1 Wet","FX2 Wet","FX3 Wet"
-        };
+        const juce::StringArray kXYPatterns{"None", "PULSE", "DRIFT", "TIDE", "RIPPLE", "CHAOS"};
+        const juce::StringArray kXYSync{"Free", "1bar/4", "1bar/2", "1bar", "2bar", "4bar"};
+        const juce::StringArray kXYAssign{"None",       "Filter Cutoff", "Filter Res", "LFO Rate", "LFO Depth",
+                                          "Env Attack", "Env Release",   "Drive",      "Macro1",   "Macro2",
+                                          "Macro3",     "Macro4",        "FX1 Wet",    "FX2 Wet",  "FX3 Wet"};
         for (int s = 0; s < kNumPrimarySlots; ++s)
         {
             const juce::String sfx = "_slot" + juce::String(s);
             layout.add(std::make_unique<juce::AudioParameterChoice>(
-                juce::ParameterID("xy_pattern" + sfx, 1),
-                "XY Pattern Slot " + juce::String(s + 1), kXYPatterns, 0));
-            layout.add(std::make_unique<juce::AudioParameterFloat>(
-                juce::ParameterID("xy_speed" + sfx, 1),
-                "XY Speed Slot "   + juce::String(s + 1),
-                juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-            layout.add(std::make_unique<juce::AudioParameterFloat>(
-                juce::ParameterID("xy_depth" + sfx, 1),
-                "XY Depth Slot "   + juce::String(s + 1),
-                juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+                juce::ParameterID("xy_pattern" + sfx, 1), "XY Pattern Slot " + juce::String(s + 1), kXYPatterns, 0));
+            layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("xy_speed" + sfx, 1),
+                                                                   "XY Speed Slot " + juce::String(s + 1),
+                                                                   juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+            layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("xy_depth" + sfx, 1),
+                                                                   "XY Depth Slot " + juce::String(s + 1),
+                                                                   juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+            layout.add(std::make_unique<juce::AudioParameterChoice>(juce::ParameterID("xy_sync" + sfx, 1),
+                                                                    "XY Sync Slot " + juce::String(s + 1), kXYSync,
+                                                                    3)); // default: 1bar
             layout.add(std::make_unique<juce::AudioParameterChoice>(
-                juce::ParameterID("xy_sync" + sfx, 1),
-                "XY Sync Slot "    + juce::String(s + 1), kXYSync, 3)); // default: 1bar
+                juce::ParameterID("xy_assignX" + sfx, 1), "XY Assign X Slot " + juce::String(s + 1), kXYAssign, 0));
             layout.add(std::make_unique<juce::AudioParameterChoice>(
-                juce::ParameterID("xy_assignX" + sfx, 1),
-                "XY Assign X Slot "+ juce::String(s + 1), kXYAssign, 0));
-            layout.add(std::make_unique<juce::AudioParameterChoice>(
-                juce::ParameterID("xy_assignY" + sfx, 1),
-                "XY Assign Y Slot "+ juce::String(s + 1), kXYAssign, 0));
-            layout.add(std::make_unique<juce::AudioParameterFloat>(
-                juce::ParameterID("xy_pos_x" + sfx, 1),
-                "XY Pos X Slot "   + juce::String(s + 1),
-                juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-            layout.add(std::make_unique<juce::AudioParameterFloat>(
-                juce::ParameterID("xy_pos_y" + sfx, 1),
-                "XY Pos Y Slot "   + juce::String(s + 1),
-                juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+                juce::ParameterID("xy_assignY" + sfx, 1), "XY Assign Y Slot " + juce::String(s + 1), kXYAssign, 0));
+            layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("xy_pos_x" + sfx, 1),
+                                                                   "XY Pos X Slot " + juce::String(s + 1),
+                                                                   juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
+            layout.add(std::make_unique<juce::AudioParameterFloat>(juce::ParameterID("xy_pos_y" + sfx, 1),
+                                                                   "XY Pos Y Slot " + juce::String(s + 1),
+                                                                   juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
         }
     }
 
@@ -1493,10 +1459,8 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
             // T6: Wire Onset global mod offset pointers for any already-loaded Onset engine.
             if (auto* onset = dynamic_cast<OnsetEngine*>(eng.get()))
             {
-                onset->setPercModOffsetPtrs(&globalPercLevelModOffset_,
-                                            &globalPercPunchModOffset_,
-                                            &globalPercToneModOffset_,
-                                            &globalPercGritModOffset_);
+                onset->setPercModOffsetPtrs(&globalPercLevelModOffset_, &globalPercPunchModOffset_,
+                                            &globalPercToneModOffset_, &globalPercGritModOffset_);
             }
         }
     }
@@ -1537,10 +1501,8 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     // Preset parameter application: we apply "Oxbow_Breath_Mist" parameters inline
     // (no disk I/O) using APVTS setValueNotifyingHost(), which is message-thread-safe.
     // Parameters match Presets/XOceanus/Organic/Oxbow/Oxbow_Breath_Mist.xometa verbatim.
-    if (!hasRestoredState.load(std::memory_order_acquire) &&
-        !hasLaunchedBefore_.load(std::memory_order_acquire) &&
-        !firstBreathActive_ &&
-        !firstBreathPending_.load(std::memory_order_relaxed))
+    if (!hasRestoredState.load(std::memory_order_acquire) && !hasLaunchedBefore_.load(std::memory_order_acquire) &&
+        !firstBreathActive_ && !firstBreathPending_.load(std::memory_order_relaxed))
     {
         // Swap slot 0 from Obrix → Oxbow for the First Breath experience.
         // This replaces the just-loaded Obrix (above) with the atmospheric pad engine.
@@ -1550,22 +1512,17 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
         // Values taken verbatim from Oxbow_Breath_Mist.xometa (Organic mood).
         // Uses setValueNotifyingHost so the UI reflects the initial state.
         // Parameters are normalized via convertTo0to1 to respect APVTS range contracts.
-        struct BreathMistParam { const char* id; float value; };
+        struct BreathMistParam
+        {
+            const char* id;
+            float value;
+        };
         static const BreathMistParam kBreathMistParams[] = {
-            {"oxb_size",         0.1f},
-            {"oxb_decay",        0.5f},
-            {"oxb_entangle",     0.06f},
-            {"oxb_erosionRate",  0.05f},
-            {"oxb_erosionDepth", 0.08f},
-            {"oxb_convergence",  4.0f},
-            {"oxb_resonanceQ",   3.5f},
-            {"oxb_resonanceMix", 0.15f},
-            {"oxb_cantilever",   0.12f},
-            {"oxb_damping",      7000.0f},
-            {"oxb_predelay",     0.0f},
-            {"oxb_dryWet",       0.15f},
-            {"oxb_exciterDecay", 0.05f},
-            {"oxb_exciterBright",0.5f},
+            {"oxb_size", 0.1f},          {"oxb_decay", 0.5f},         {"oxb_entangle", 0.06f},
+            {"oxb_erosionRate", 0.05f},  {"oxb_erosionDepth", 0.08f}, {"oxb_convergence", 4.0f},
+            {"oxb_resonanceQ", 3.5f},    {"oxb_resonanceMix", 0.15f}, {"oxb_cantilever", 0.12f},
+            {"oxb_damping", 7000.0f},    {"oxb_predelay", 0.0f},      {"oxb_dryWet", 0.15f},
+            {"oxb_exciterDecay", 0.05f}, {"oxb_exciterBright", 0.5f},
         };
         for (const auto& p : kBreathMistParams)
         {
@@ -1730,8 +1687,9 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         if (cachedParams.cmSlotRoute[slot] != nullptr)
         {
             const int modeIdx = static_cast<int>(cachedParams.cmSlotRoute[slot]->load(std::memory_order_relaxed));
-            chordMachine.setSlotRoutingMode(slot, static_cast<ChordSeqRoutingMode>(
-                std::max(0, std::min(modeIdx, static_cast<int>(ChordSeqRoutingMode::NumModes) - 1))));
+            chordMachine.setSlotRoutingMode(
+                slot, static_cast<ChordSeqRoutingMode>(
+                          std::max(0, std::min(modeIdx, static_cast<int>(ChordSeqRoutingMode::NumModes) - 1))));
         }
     }
     // W12 fix: sync pattern from APVTS on every block.  applyPattern() is safe to
@@ -1747,8 +1705,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
 
     // ── B2: Sync chord input mode + global key/scale + pad chord slots ─────────
     if (cachedParams.cmInputMode)
-        chordMachine.setInputMode(static_cast<ChordInputMode>(
-            static_cast<int>(cachedParams.cmInputMode->load())));
+        chordMachine.setInputMode(static_cast<ChordInputMode>(static_cast<int>(cachedParams.cmInputMode->load())));
     if (cachedParams.cmGlobalRoot)
         chordMachine.setGlobalRootKey(static_cast<int>(cachedParams.cmGlobalRoot->load()));
     if (cachedParams.cmGlobalScale)
@@ -1759,8 +1716,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         if (cachedParams.padChords[i].root != nullptr)
         {
             chordMachine.setPadChord(
-                i,
-                static_cast<int>(cachedParams.padChords[i].root->load()),
+                i, static_cast<int>(cachedParams.padChords[i].root->load()),
                 static_cast<VoicingMode>(static_cast<int>(cachedParams.padChords[i].voicing->load())),
                 static_cast<int>(cachedParams.padChords[i].inv->load()));
         }
@@ -1864,9 +1820,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                 posPtr = &posSnapshot;
             }
         }
-        hostTransport.processBlock(numSamples,
-                                   currentSampleRate.load(std::memory_order_relaxed),
-                                   posPtr);
+        hostTransport.processBlock(numSamples, currentSampleRate.load(std::memory_order_relaxed), posPtr);
         if (posPtr != nullptr && posPtr->getPpqPosition().hasValue())
         {
             const double ppq = *posPtr->getPpqPosition();
@@ -2095,14 +2049,14 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             firstBreathPending_.store(false, std::memory_order_release);
             if (enginePtrs[0] != nullptr) // engine must be ready
             {
-                firstBreathActive_         = true;
-                firstBreathFading_         = false; // reset any in-progress fade from a prior replay
-                firstBreathFadeCountdown_  = 0;
-                firstBreathGeneration_     = engineGeneration_.load(std::memory_order_acquire); // snapshot generation at arm time
-                firstBreathCountdown_      = static_cast<int>(
-                    currentSampleRate.load(std::memory_order_relaxed) * kFirstBreathTimeoutMs / 1000.0);
-                slotMidi[0].addEvent(
-                    juce::MidiMessage::noteOn(1, kFirstBreathNote, kFirstBreathVelocity), 0);
+                firstBreathActive_ = true;
+                firstBreathFading_ = false; // reset any in-progress fade from a prior replay
+                firstBreathFadeCountdown_ = 0;
+                firstBreathGeneration_ =
+                    engineGeneration_.load(std::memory_order_acquire); // snapshot generation at arm time
+                firstBreathCountdown_ = static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) *
+                                                         kFirstBreathTimeoutMs / 1000.0);
+                slotMidi[0].addEvent(juce::MidiMessage::noteOn(1, kFirstBreathNote, kFirstBreathVelocity), 0);
             }
         }
 
@@ -2116,10 +2070,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             // mechanism, so we simply disarm without an extra note-off here.
             if (engineGeneration_.load(std::memory_order_relaxed) != firstBreathGeneration_)
             {
-                firstBreathActive_        = false;
-                firstBreathFading_        = false;
+                firstBreathActive_ = false;
+                firstBreathFading_ = false;
                 firstBreathFadeCountdown_ = 0;
-                firstBreathCountdown_     = 0;
+                firstBreathCountdown_ = 0;
             }
             else
             {
@@ -2143,9 +2097,9 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     // §1300: user interaction — start the 200 ms fade window instead of
                     // killing the note immediately.  The note-off fires after the fade
                     // expires so there is no abrupt cut when the user first plays.
-                    firstBreathFading_         = true;
-                    firstBreathFadeCountdown_  = static_cast<int>(
-                        currentSampleRate.load(std::memory_order_relaxed) * kFirstBreathFadeMs / 1000.0);
+                    firstBreathFading_ = true;
+                    firstBreathFadeCountdown_ = static_cast<int>(currentSampleRate.load(std::memory_order_relaxed) *
+                                                                 kFirstBreathFadeMs / 1000.0);
                 }
 
                 if (firstBreathFading_)
@@ -2155,10 +2109,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     {
                         // Fade complete — send note-off and disarm.
                         slotMidi[0].addEvent(juce::MidiMessage::noteOff(1, kFirstBreathNote, (uint8_t)0), 0);
-                        firstBreathActive_         = false;
-                        firstBreathFading_         = false;
-                        firstBreathCountdown_      = 0;
-                        firstBreathFadeCountdown_  = 0;
+                        firstBreathActive_ = false;
+                        firstBreathFading_ = false;
+                        firstBreathCountdown_ = 0;
+                        firstBreathFadeCountdown_ = 0;
                     }
                 }
                 else
@@ -2168,7 +2122,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     if (firstBreathCountdown_ <= 0)
                     {
                         slotMidi[0].addEvent(juce::MidiMessage::noteOff(1, kFirstBreathNote, (uint8_t)0), 0);
-                        firstBreathActive_    = false;
+                        firstBreathActive_ = false;
                         firstBreathCountdown_ = 0;
                     }
                 }
@@ -2188,13 +2142,12 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         // I4: Pre-computed slot APVTS prefix strings — avoids juce::String allocation
         // every block.  "slot0_seq_" … "slot3_seq_" match the IDs registered in
         // createParameterLayout via PerEnginePatternSequencer::addParameters().
-        static const juce::String kSlotSeqPrefix[kNumPrimarySlots] = {
-            "slot0_seq_", "slot1_seq_", "slot2_seq_", "slot3_seq_"
-        };
+        static const juce::String kSlotSeqPrefix[kNumPrimarySlots] = {"slot0_seq_", "slot1_seq_", "slot2_seq_",
+                                                                      "slot3_seq_"};
 
-        const double seqBpm      = hostTransport.getBPM();
-        const double seqPpq      = hostTransport.getBeatPosition();
-        const bool   seqPlaying  = hostTransport.isPlaying();
+        const double seqBpm = hostTransport.getBPM();
+        const double seqPpq = hostTransport.getBeatPosition();
+        const bool seqPlaying = hostTransport.isPlaying();
         for (int s = 0; s < kNumPrimarySlots; ++s)
         {
             slotSequencers_[s].syncFromApvts(apvts, kSlotSeqPrefix[s]);
@@ -2213,15 +2166,14 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         if (cachedParams.ouijaCalmWild)
             ouijaWalkEngine_.setCalmWild(cachedParams.ouijaCalmWild->load(std::memory_order_relaxed));
         if (cachedParams.ouijaConsonantDissonant)
-            ouijaWalkEngine_.setConsonantDissonant(cachedParams.ouijaConsonantDissonant->load(std::memory_order_relaxed));
+            ouijaWalkEngine_.setConsonantDissonant(
+                cachedParams.ouijaConsonantDissonant->load(std::memory_order_relaxed));
         if (cachedParams.ouijaTendencyCol)
             ouijaWalkEngine_.setTendencyCol(cachedParams.ouijaTendencyCol->load(std::memory_order_relaxed));
         if (cachedParams.ouijaTendencyRow)
             ouijaWalkEngine_.setTendencyRow(cachedParams.ouijaTendencyRow->load(std::memory_order_relaxed));
 
-        ouijaWalkEngine_.processBlock(numSamples,
-                                      hostTransport.getBPM(),
-                                      hostTransport.getBeatPosition(),
+        ouijaWalkEngine_.processBlock(numSamples, hostTransport.getBPM(), hostTransport.getBeatPosition(),
                                       hostTransport.isPlaying());
     }
     // ── end Wave 5 D1 ─────────────────────────────────────────────────────────
@@ -2295,10 +2247,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         // Publish mono mix to the partner audio bus for Pack 1 FX chains
         // (Otrium triangular ducking). Done here so consumers see this slot's
         // most recent renderBlock() output for the current block.
-        partnerAudioBus_.publish(i,
-                                 engineBuffers[i].getReadPointer(0),
-                                 engineBuffers[i].getReadPointer(1),
-                                 numSamples);
+        partnerAudioBus_.publish(i, engineBuffers[i].getReadPointer(0), engineBuffers[i].getReadPointer(1), numSamples);
     }
 
     // ── Wave 5 A1: Evaluate global mod routes ────────────────────────────────
@@ -2349,8 +2298,8 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             // by lastTriggerVelocity at consumption to satisfy D001 (Strategy 2).
             float percLevelMod = 0.0f;
             float percPunchMod = 0.0f;
-            float percToneMod  = 0.0f;
-            float percGritMod  = 0.0f;
+            float percToneMod = 0.0f;
+            float percGritMod = 0.0f;
 
             for (int ri = 0; ri < nRoutes; ++ri)
             {
@@ -2372,11 +2321,18 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                 }
                 else if (snap.sourceId == static_cast<int>(ModSourceId::XouijaCell))
                 {
-                    // C5 (#1360): pinned XOuija position read from SlotModSourceRegistry.
-                    // X axis is the primary value (circle-of-fifths, bipolar [-1, +1]).
-                    // Y axis (influence depth) accessible via getModSourceRegistry().getXouijaCellY()
-                    // when a per-parameter axis discriminator is added in a future PR.
+                    // Legacy (ID=18, back-compat): X axis.
                     srcVal = modSourceRegistry_.getXouijaCellX();
+                }
+                else if (snap.sourceId == static_cast<int>(ModSourceId::XouijaX))
+                {
+                    // #1383 A4: per-axis planchette X (circle-of-fifths, bipolar).
+                    srcVal = modSourceRegistry_.getXouijaX();
+                }
+                else if (snap.sourceId == static_cast<int>(ModSourceId::XouijaY))
+                {
+                    // #1383 A4: per-axis planchette Y (influence depth, bipolar).
+                    srcVal = modSourceRegistry_.getXouijaY();
                 }
                 else if (snap.sourceId >= static_cast<int>(ModSourceId::XYX0) &&
                          snap.sourceId <= static_cast<int>(ModSourceId::XYY3))
@@ -2385,9 +2341,8 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     // XYX0..XYX3 = IDs 20..23 (slot 0..3, X axis)
                     // XYY0..XYY3 = IDs 24..27 (slot 0..3, Y axis)
                     const bool isX = snap.sourceId < static_cast<int>(ModSourceId::XYY0);
-                    const int xySlot = isX
-                        ? snap.sourceId - static_cast<int>(ModSourceId::XYX0)
-                        : snap.sourceId - static_cast<int>(ModSourceId::XYY0);
+                    const int xySlot = isX ? snap.sourceId - static_cast<int>(ModSourceId::XYX0)
+                                           : snap.sourceId - static_cast<int>(ModSourceId::XYY0);
                     if (xySlot < 0 || xySlot >= kNumPrimarySlots)
                         continue;
                     // Map [0, 1] → [-1, +1] so centre position produces zero modulation.
@@ -2395,8 +2350,8 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     srcVal = raw * 2.0f - 1.0f;
                 }
                 else if (snap.sourceId == static_cast<int>(ModSourceId::SeqStepValue) ||
-                         snap.sourceId == static_cast<int>(ModSourceId::BeatPhase)    ||
-                         snap.sourceId == static_cast<int>(ModSourceId::LiveGate)     ||
+                         snap.sourceId == static_cast<int>(ModSourceId::BeatPhase) ||
+                         snap.sourceId == static_cast<int>(ModSourceId::LiveGate) ||
                          snap.sourceId == static_cast<int>(ModSourceId::SeqStepPitch))
                 {
                     // Validate slot index — guard against stale or bad snapshots.
@@ -2438,10 +2393,14 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     routeModAccum_[static_cast<size_t>(ri)] = snap.depth;
                     // T6: Onset global params: accumulate depth so OnsetEngine can multiply
                     // by lastTriggerVelocity at consumption.  Strategy 2 — engine-side multiply.
-                    if (snap.isPercLevel) percLevelMod += snap.depth;
-                    if (snap.isPercPunch) percPunchMod += snap.depth;
-                    if (snap.isPercTone)  percToneMod  += snap.depth;
-                    if (snap.isPercGrit)  percGritMod  += snap.depth;
+                    if (snap.isPercLevel)
+                        percLevelMod += snap.depth;
+                    if (snap.isPercPunch)
+                        percPunchMod += snap.depth;
+                    if (snap.isPercTone)
+                        percToneMod += snap.depth;
+                    if (snap.isPercGrit)
+                        percGritMod += snap.depth;
                     continue; // skip the generic srcVal * depth path below
                 }
                 else if (snap.sourceId == static_cast<int>(ModSourceId::ModWheel))
@@ -2486,10 +2445,14 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                 }
                 // T6: Onset global-parameter dispatch — non-velocity sources (LFO, XOuija, etc).
                 // modOffset = srcVal * depth, already normalised.  OnsetEngine clamps on use.
-                if (snap.isPercLevel) percLevelMod += modOffset;
-                if (snap.isPercPunch) percPunchMod += modOffset;
-                if (snap.isPercTone)  percToneMod  += modOffset;
-                if (snap.isPercGrit)  percGritMod  += modOffset;
+                if (snap.isPercLevel)
+                    percLevelMod += modOffset;
+                if (snap.isPercPunch)
+                    percPunchMod += modOffset;
+                if (snap.isPercTone)
+                    percToneMod += modOffset;
+                if (snap.isPercGrit)
+                    percGritMod += modOffset;
                 // else: destination is available via routeModAccum_[ri] for engines to read.
                 // When an engine opt-in API is added (Phase A2+), it will call
                 // getModRouteAccum(ri) with the route index it cached at load time.
@@ -2507,8 +2470,8 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             // multiplies by lastTriggerVelocity at consumption (D001, Strategy 2).
             globalPercLevelModOffset_.store(percLevelMod, std::memory_order_relaxed);
             globalPercPunchModOffset_.store(percPunchMod, std::memory_order_relaxed);
-            globalPercToneModOffset_.store(percToneMod,  std::memory_order_relaxed);
-            globalPercGritModOffset_.store(percGritMod,  std::memory_order_relaxed);
+            globalPercToneModOffset_.store(percToneMod, std::memory_order_relaxed);
+            globalPercGritModOffset_.store(percGritMod, std::memory_order_relaxed);
         }
         else
         {
@@ -2793,8 +2756,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     // Drain the graveyard on the message thread if anything was deposited this block.
     // Using MessageManager::callAsync (not juce::Timer) — some iOS AUv3 hosts run
     // Timer callbacks on the audio thread, which would defeat the purpose.
-    if (graveyardWritePos_.load(std::memory_order_relaxed) !=
-        graveyardReadPos_.load(std::memory_order_relaxed))
+    if (graveyardWritePos_.load(std::memory_order_relaxed) != graveyardReadPos_.load(std::memory_order_relaxed))
     {
         juce::MessageManager::callAsync([this] { drainGraveyard(); });
     }
@@ -2985,8 +2947,8 @@ void XOceanusProcessor::depositInGraveyard(std::shared_ptr<SynthEngine> engine) 
 {
     // Called ONLY from the audio thread — no blocking, no allocation.
     int write = graveyardWritePos_.load(std::memory_order_relaxed);
-    int read  = graveyardReadPos_.load(std::memory_order_acquire);
-    int next  = (write + 1) % kGraveyardSize;
+    int read = graveyardReadPos_.load(std::memory_order_acquire);
+    int next = (write + 1) % kGraveyardSize;
 
     if (next == read)
     {
@@ -3007,7 +2969,7 @@ void XOceanusProcessor::drainGraveyard()
 {
     // Called ONLY from the message thread (via MessageManager::callAsync).
     // ~SynthEngine() runs here — vector deallocations are safe off the RT thread.
-    int read  = graveyardReadPos_.load(std::memory_order_relaxed);
+    int read = graveyardReadPos_.load(std::memory_order_relaxed);
     int write = graveyardWritePos_.load(std::memory_order_acquire);
 
     while (read != write)
@@ -3070,10 +3032,8 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // T6: Wire Onset global mod offset pointers into OnsetEngine at load time.
         if (auto* onset = dynamic_cast<OnsetEngine*>(newEngine.get()))
         {
-            onset->setPercModOffsetPtrs(&globalPercLevelModOffset_,
-                                        &globalPercPunchModOffset_,
-                                        &globalPercToneModOffset_,
-                                        &globalPercGritModOffset_);
+            onset->setPercModOffsetPtrs(&globalPercLevelModOffset_, &globalPercPunchModOffset_,
+                                        &globalPercToneModOffset_, &globalPercGritModOffset_);
         }
 
         // T6: Wire OpalEngine into the global mod-route opt-in path.
@@ -3208,10 +3168,10 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
         if (count >= kMaxGlobalRoutes)
             break;
         auto& snap = routesSnapshot_[static_cast<size_t>(count)];
-        snap.sourceId  = r.sourceId;
-        snap.depth     = r.depth;
-        snap.bipolar   = r.bipolar;
-        snap.valid     = true;
+        snap.sourceId = r.sourceId;
+        snap.depth = r.depth;
+        snap.bipolar = r.bipolar;
+        snap.valid = true;
         snap.slotIndex = r.slotIndex; // C5: per-route slot index (-1 = N/A)
         // Copy dest param ID into fixed-length char array — no std::string on audio thread.
         // juce::String::copyToUTF8 writes at most maxBytes chars (inc. null terminator).
@@ -3221,8 +3181,7 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
         // audio thread never calls apvts.getParameter() (a hash-map lookup, not RT-safe).
         // Lifetime of juce::RangedAudioParameter* == lifetime of apvts == lifetime of
         // this processor, so the pointer stays valid for the duration of the snapshot.
-        snap.destParam = dynamic_cast<juce::RangedAudioParameter*>(
-            apvts.getParameter(r.destParamId));
+        snap.destParam = dynamic_cast<juce::RangedAudioParameter*>(apvts.getParameter(r.destParamId));
 
         // Pre-cache the range span (end - start) so the audio thread can scale
         // normalised modOffset to param units without calling any juce:: method.
@@ -3244,8 +3203,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
         // percXxxParam_ pointers are nullptr when Onset is not loaded — safe default.
         snap.isPercLevel = (percLevelParam_ != nullptr && snap.destParam == percLevelParam_);
         snap.isPercPunch = (percPunchParam_ != nullptr && snap.destParam == percPunchParam_);
-        snap.isPercTone  = (percToneParam_  != nullptr && snap.destParam == percToneParam_);
-        snap.isPercGrit  = (percGritParam_  != nullptr && snap.destParam == percGritParam_);
+        snap.isPercTone = (percToneParam_ != nullptr && snap.destParam == percToneParam_);
+        snap.isPercGrit = (percGritParam_ != nullptr && snap.destParam == percGritParam_);
 
         // T5: Mark routes whose source is Velocity so engines can apply per-voice
         // multiplication (D001).  routeModAccum_[ri] will hold depth, not depth*srcVal.
@@ -3256,16 +3215,16 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
     // Zero out trailing slots so stale entries are not evaluated.
     for (int i = count; i < kMaxGlobalRoutes; ++i)
     {
-        routesSnapshot_[static_cast<size_t>(i)].valid              = false;
-        routesSnapshot_[static_cast<size_t>(i)].destParam          = nullptr;
+        routesSnapshot_[static_cast<size_t>(i)].valid = false;
+        routesSnapshot_[static_cast<size_t>(i)].destParam = nullptr;
         routesSnapshot_[static_cast<size_t>(i)].destParamRangeSpan = 0.0f;
-        routesSnapshot_[static_cast<size_t>(i)].isOrryCutoff       = false;
-        routesSnapshot_[static_cast<size_t>(i)].velocityScaled     = false;
+        routesSnapshot_[static_cast<size_t>(i)].isOrryCutoff = false;
+        routesSnapshot_[static_cast<size_t>(i)].velocityScaled = false;
         // T6: clear Onset flags on trailing (inactive) slots.
-        routesSnapshot_[static_cast<size_t>(i)].isPercLevel        = false;
-        routesSnapshot_[static_cast<size_t>(i)].isPercPunch        = false;
-        routesSnapshot_[static_cast<size_t>(i)].isPercTone         = false;
-        routesSnapshot_[static_cast<size_t>(i)].isPercGrit         = false;
+        routesSnapshot_[static_cast<size_t>(i)].isPercLevel = false;
+        routesSnapshot_[static_cast<size_t>(i)].isPercPunch = false;
+        routesSnapshot_[static_cast<size_t>(i)].isPercTone = false;
+        routesSnapshot_[static_cast<size_t>(i)].isPercGrit = false;
     }
 
     routesSnapshotCount_.store(count, std::memory_order_relaxed);
@@ -3283,7 +3242,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
     for (int i = 0; i < MaxSlots; ++i)
     {
         auto eng = std::atomic_load(&engines[i]);
-        if (!eng) continue;
+        if (!eng)
+            continue;
         if (auto* opal = dynamic_cast<OpalEngine*>(eng.get()))
             opal->cacheGlobalModRoutes();
     }
@@ -3420,25 +3380,25 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         // F2-002: Persist atomic settings so session recall restores them correctly.
         // Without this, polyphony/voiceMode/midiChannel/oversampling reset to defaults
         // on every DAW session reload.
-        xml->setAttribute("polyphony",    polyphonyCap_.load());
-        xml->setAttribute("voiceMode",    voiceMode_.load());
-        xml->setAttribute("midiChannel",  midiChannel_.load());
+        xml->setAttribute("polyphony", polyphonyCap_.load());
+        xml->setAttribute("voiceMode", voiceMode_.load());
+        xml->setAttribute("midiChannel", midiChannel_.load());
         xml->setAttribute("oversampling", oversamplingFactor_.load());
 
         // F2-006: Persist OceanView ViewState + zoomed slot so DAW session recall
         // restores the user's last navigation state.
         xml->setAttribute("oceanViewState", persistedOceanViewState_);
-        xml->setAttribute("oceanViewSlot",  persistedOceanViewSlot_);
+        xml->setAttribute("oceanViewSlot", persistedOceanViewSlot_);
 
         // F3-006: Persist REACT dial level so it survives DAW session reload.
         xml->setAttribute("reactLevel", static_cast<double>(persistedReactLevel_));
 
         // F3-011/F3-017: Persist breakout panel open states.
-        xml->setAttribute("seqBreakoutOpen",   persistedSeqBreakoutOpen_   ? 1 : 0);
+        xml->setAttribute("seqBreakoutOpen", persistedSeqBreakoutOpen_ ? 1 : 0);
         xml->setAttribute("chordBreakoutOpen", persistedChordBreakoutOpen_ ? 1 : 0);
 
         // D4 — Save register lock + current register (per-instance, per-session).
-        xml->setAttribute("registerLocked",  persistedRegisterLocked  ? 1 : 0);
+        xml->setAttribute("registerLocked", persistedRegisterLocked ? 1 : 0);
         xml->setAttribute("registerCurrent", persistedRegisterCurrent);
 
         // §1.1.1 Principle 4 — Persist first-launch flag so Sound on First Launch
@@ -3452,8 +3412,7 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         // values are already captured by the APVTS state above.
         // Keys: slot0_presetName … slot3_presetName  (frozen identifiers).
         for (int i = 0; i < kNumPrimarySlots; ++i)
-            xml->setAttribute("slot" + juce::String(i) + "_presetName",
-                               slotPresets_[static_cast<size_t>(i)].name);
+            xml->setAttribute("slot" + juce::String(i) + "_presetName", slotPresets_[static_cast<size_t>(i)].name);
 
         copyXmlToBinary(*xml, destData);
     }
@@ -3655,7 +3614,7 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
 
         // D4 — Restore register lock + current register.
         // Defaults: unlocked, Gallery (0) — graceful for sessions predating D4.
-        persistedRegisterLocked  = xml->getIntAttribute("registerLocked",  0) != 0;
+        persistedRegisterLocked = xml->getIntAttribute("registerLocked", 0) != 0;
         persistedRegisterCurrent = xml->getIntAttribute("registerCurrent", 0);
         // Clamp to valid range (0=Gallery, 1=Performance, 2=Coupling).
         if (persistedRegisterCurrent < 0 || persistedRegisterCurrent > 2)
@@ -3663,23 +3622,23 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
 
         // F2-002: Restore atomic settings.  Defaults match init values so old sessions
         // (predating F2-002) are safe — they simply reload as defaults.
-        polyphonyCap_.store(xml->getIntAttribute("polyphony",    16));
-        voiceMode_.store(xml->getIntAttribute("voiceMode",       0));
-        midiChannel_.store(xml->getIntAttribute("midiChannel",   0));
+        polyphonyCap_.store(xml->getIntAttribute("polyphony", 16));
+        voiceMode_.store(xml->getIntAttribute("voiceMode", 0));
+        midiChannel_.store(xml->getIntAttribute("midiChannel", 0));
         oversamplingFactor_.store(xml->getIntAttribute("oversampling", 0));
 
         // F2-006: Restore OceanView ViewState + slot.
         // Default 0 (Orbital) and -1 (no slot) match OceanView's initial state.
         persistedOceanViewState_ = xml->getIntAttribute("oceanViewState", 0);
-        persistedOceanViewSlot_  = xml->getIntAttribute("oceanViewSlot",  -1);
+        persistedOceanViewSlot_ = xml->getIntAttribute("oceanViewSlot", -1);
 
         // F3-006: Restore REACT dial level.  Default 0.80 matches kDefaultReactLevel in OceanView.
-        persistedReactLevel_ = juce::jlimit(0.0f, 1.0f,
-            static_cast<float>(xml->getDoubleAttribute("reactLevel", 0.80)));
+        persistedReactLevel_ =
+            juce::jlimit(0.0f, 1.0f, static_cast<float>(xml->getDoubleAttribute("reactLevel", 0.80)));
 
         // F3-011/F3-017: Restore breakout panel open states.
         // Defaults to false (closed) for sessions predating this feature.
-        persistedSeqBreakoutOpen_   = xml->getIntAttribute("seqBreakoutOpen",   0) != 0;
+        persistedSeqBreakoutOpen_ = xml->getIntAttribute("seqBreakoutOpen", 0) != 0;
         persistedChordBreakoutOpen_ = xml->getIntAttribute("chordBreakoutOpen", 0) != 0;
 
         // #1378 — Restore per-slot preset names.
@@ -4088,10 +4047,10 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
             for (const auto& pmt : slotTargets)
             {
                 MacroTarget mt;
-                mt.engineId    = pmt.engineName;
+                mt.engineId = pmt.engineName;
                 mt.parameterId = pmt.paramId;
-                mt.minValue    = pmt.depthMin;
-                mt.maxValue    = pmt.depthMax;
+                mt.minValue = pmt.depthMin;
+                mt.maxValue = pmt.depthMax;
                 // isCouplingTarget / couplingRouteSlot remain false/-1:
                 // engine parameter targets are resolved via parameterId lookup.
                 liveTargets.push_back(std::move(mt));
@@ -4113,10 +4072,8 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
     // as the same baseline. Future enhancement: per-engine DNA in preset schema would
     // call setBaseDNA per slot with different values.
     {
-        std::array<float, 6> dnaArr = {
-            preset.dna.brightness, preset.dna.warmth,    preset.dna.movement,
-            preset.dna.density,    preset.dna.space,     preset.dna.aggression
-        };
+        std::array<float, 6> dnaArr = {preset.dna.brightness, preset.dna.warmth, preset.dna.movement,
+                                       preset.dna.density,    preset.dna.space,  preset.dna.aggression};
         for (int slot = 0; slot < xoceanus::DNAModulationBus::MaxEngineSlots; ++slot)
             dnaBus_.setBaseDNA(slot, dnaArr);
     }

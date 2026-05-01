@@ -22,12 +22,12 @@
 // from mouseDown when e.mods.isRightButtonDown(). See XOceanusEditor.h.
 //
 // ────────────────────────────────────────────────────────────────────────────
-// Extended source list (D9 F4 + G3 spec)
+// Extended source list (D9 F4 + G3 spec + #1383 A4 XOuija live sources)
 //
-// ModSourceId in ModSourceHandle.h now defines all 18 sources (IDs 0–17)
-// matching spec D9 F4 + G3. All entries in kAllModSources below have valid
-// enum values and are routable via ModRoutingModel. The "extended" sentinel
-// logic (id >= Count) no longer applies — Count is now 18.
+// ModSourceId in ModSourceHandle.h defines all sources (IDs 0-17 original,
+// 28-29 XOuija A4, Count = 30).  XouijaDepth (proposed ID=30) DROPPED.
+// All entries in kAllModSources below have valid enum values and are routable
+// via ModRoutingModel. Count is now 30 (after #1383 A4).
 //
 #pragma once
 
@@ -43,16 +43,16 @@ namespace xoceanus
 // ExtModSourceInfo — metadata for a single source entry in the popup menu.
 struct ExtModSourceInfo
 {
-    int         id;          // cast to ModSourceId if id < Count, else extended
-    const char* label;       // short display label (e.g. "LFO 1")
-    const char* group;       // section header (nullptr = continue current section)
-    bool        bipolar;     // true = source generates ±1 range
-    uint32_t    colour;      // 0xAARRGGBB accent colour
+    int id;            // cast to ModSourceId if id < Count, else extended
+    const char* label; // short display label (e.g. "LFO 1")
+    const char* group; // section header (nullptr = continue current section)
+    bool bipolar;      // true = source generates ±1 range
+    uint32_t colour;   // 0xAARRGGBB accent colour
 };
 
 //==============================================================================
-// Full source catalogue — matches spec D9 F4 + G3.
-// All 18 sources have valid ModSourceId enum values (Count = 18).
+// Full source catalogue — matches spec D9 F4 + G3, extended for #1383 A4.
+// All sources have valid ModSourceId enum values (Count = 30 after #1383 A4).
 // All are routable via ModRoutingModel (which stores int sourceId).
 //
 // JUCE PopupMenu item IDs start at 1.  We encode id + 1 as the JUCE item ID
@@ -60,34 +60,39 @@ struct ExtModSourceInfo
 //
 static const ExtModSourceInfo kAllModSources[] = {
     // ── Oscillator modulators ─────────────────────────────────────────────
-    { 0,  "LFO 1",           "LFOs",      true,  0xFF00CED1 },
-    { 1,  "LFO 2",           nullptr,     true,  0xFFA8D8EA },
-    { 6,  "LFO 3",           nullptr,     true,  0xFF7EC8E3 },
+    {0, "LFO 1", "LFOs", true, 0xFF00CED1},
+    {1, "LFO 2", nullptr, true, 0xFFA8D8EA},
+    {6, "LFO 3", nullptr, true, 0xFF7EC8E3},
 
     // ── Envelopes ─────────────────────────────────────────────────────────
-    { 2,  "ENV 1 (Amp)",     "Envelopes", true,  0xFFE8701A },
-    { 7,  "ENV 2",           nullptr,     true,  0xFFFFAA55 },
+    {2, "ENV 1 (Amp)", "Envelopes", true, 0xFFE8701A},
+    {7, "ENV 2", nullptr, true, 0xFFFFAA55},
 
     // ── Macros ────────────────────────────────────────────────────────────
-    { 8,  "Macro: TONE",     "Macros",    false, 0xFFE9C46A },
-    { 9,  "Macro: TIDE",     nullptr,     false, 0xFF7FDBCA },
-    { 10, "Macro: COUPLE",   nullptr,     false, 0xFFFF8A65 },
-    { 11, "Macro: DEPTH",    nullptr,     false, 0xFF9B89D4 },
+    {8, "Macro: TONE", "Macros", false, 0xFFE9C46A},
+    {9, "Macro: TIDE", nullptr, false, 0xFF7FDBCA},
+    {10, "Macro: COUPLE", nullptr, false, 0xFFFF8A65},
+    {11, "Macro: DEPTH", nullptr, false, 0xFF9B89D4},
 
     // ── Performance / MIDI ───────────────────────────────────────────────
-    { 3,  "Velocity",        "MIDI",      false, 0xFFC6E377 },
-    { 4,  "Aftertouch",      nullptr,     false, 0xFFFF8A7A },
-    { 5,  "Mod Wheel",       nullptr,     false, 0xFF4169E1 },
-    { 12, "MIDI CC",         nullptr,     false, 0xFF9898D0 },
+    {3, "Velocity", "MIDI", false, 0xFFC6E377},
+    {4, "Aftertouch", nullptr, false, 0xFFFF8A7A},
+    {5, "Mod Wheel", nullptr, false, 0xFF4169E1},
+    {12, "MIDI CC", nullptr, false, 0xFF9898D0},
 
     // ── MPE ───────────────────────────────────────────────────────────────
-    { 13, "MPE Pressure",    "MPE",       false, 0xFFFFD54F },
-    { 14, "MPE Slide",       nullptr,     false, 0xFFFF7043 },
+    {13, "MPE Pressure", "MPE", false, 0xFFFFD54F},
+    {14, "MPE Slide", nullptr, false, 0xFFFF7043},
 
     // ── Sequencer / musical ───────────────────────────────────────────────
-    { 15, "Seq Step Value",  "Musical",   true,  0xFF81D4FA },
-    { 16, "Chord Tone Idx",  nullptr,     false, 0xFFF48FB1 },
-    { 17, "Beat Phase",      nullptr,     true,  0xFF80CBC4 },
+    {15, "Seq Step Value", "Musical", true, 0xFF81D4FA},
+    {16, "Chord Tone Idx", nullptr, false, 0xFFF48FB1},
+    {17, "Beat Phase", nullptr, true, 0xFF80CBC4},
+
+    // ── XOuija (#1383 A4) — live planchette position ─────────────────────
+    // XouijaDepth (proposed ID=30) dropped — Y-axis IS the depth axis.
+    {28, "XOuija X / Planchette Position", "XOuija", true, 0xFFB57BEA},
+    {29, "XOuija Y / Influence Depth", nullptr, true, 0xFF9B5FC0},
 };
 
 static constexpr int kNumModSources = static_cast<int>(sizeof(kAllModSources) / sizeof(kAllModSources[0]));
@@ -104,9 +109,7 @@ public:
     // shows the current depth and clicking it opens an adjust dialog rather
     // than adding a duplicate.
     //
-    static void show(ModRoutingModel& model,
-                     const juce::String& destParamId,
-                     juce::Component* anchorComponent)
+    static void show(ModRoutingModel& model, const juce::String& destParamId, juce::Component* anchorComponent)
     {
         juce::PopupMenu menu;
 
@@ -123,21 +126,18 @@ public:
                 g.drawRoundedRectangle(0.5f, 0.5f, (float)w - 1.f, (float)h - 1.f, 6.f, 1.f);
             }
 
-            void drawPopupMenuSectionHeader(juce::Graphics& g,
-                                             const juce::Rectangle<int>& area,
-                                             const juce::String& sectionName) override
+            void drawPopupMenuSectionHeader(juce::Graphics& g, const juce::Rectangle<int>& area,
+                                            const juce::String& sectionName) override
             {
                 g.setFont(GalleryFonts::label(8.0f));
                 g.setColour(juce::Colour(200, 204, 216).withAlpha(0.28f));
                 g.drawText(sectionName, area.reduced(8, 0), juce::Justification::centredLeft, false);
             }
 
-            void drawPopupMenuItem(juce::Graphics& g, const juce::Rectangle<int>& area,
-                                    bool isSeparator, bool isActive, bool isHighlighted,
-                                    bool /*isTicked*/, bool /*hasSubMenu*/,
-                                    const juce::String& text, const juce::String& /*shortcutKey*/,
-                                    const juce::Drawable* /*icon*/,
-                                    const juce::Colour* customColour) override
+            void drawPopupMenuItem(juce::Graphics& g, const juce::Rectangle<int>& area, bool isSeparator, bool isActive,
+                                   bool isHighlighted, bool /*isTicked*/, bool /*hasSubMenu*/, const juce::String& text,
+                                   const juce::String& /*shortcutKey*/, const juce::Drawable* /*icon*/,
+                                   const juce::Colour* customColour) override
             {
                 if (isSeparator)
                 {
@@ -160,16 +160,14 @@ public:
                 }
 
                 g.setFont(GalleryFonts::value(9.5f));
-                g.setColour(isActive
-                    ? juce::Colour(200, 204, 216).withAlpha(isHighlighted ? 0.90f : 0.65f)
-                    : juce::Colour(200, 204, 216).withAlpha(0.25f));
+                g.setColour(isActive ? juce::Colour(200, 204, 216).withAlpha(isHighlighted ? 0.90f : 0.65f)
+                                     : juce::Colour(200, 204, 216).withAlpha(0.25f));
 
-                g.drawText(text, area.withTrimmedLeft(10).reduced(2, 0),
-                            juce::Justification::centredLeft, true);
+                g.drawText(text, area.withTrimmedLeft(10).reduced(2, 0), juce::Justification::centredLeft, true);
             }
 
             int getPopupMenuItemHeight() override { return 22; }
-            int getPopupMenuBorderSize() override  { return 6; }
+            int getPopupMenuBorderSize() override { return 6; }
         };
 
         // NOTE: The LnF must outlive the menu's async execution.  We use a
@@ -208,7 +206,7 @@ public:
                 // Offset by 1000 to distinguish from "add new" IDs
                 juce::PopupMenu::Item item;
                 item.itemID = 1000 + i;
-                item.text   = label;
+                item.text = label;
                 item.colour = juce::Colour(srcColour);
                 item.isEnabled = true;
                 menu.addItem(item);
@@ -226,7 +224,11 @@ public:
             // Check if this source already has a route to this param
             bool hasRoute = false;
             for (const auto& r : existingRoutes)
-                if (r.sourceId == info.id) { hasRoute = true; break; }
+                if (r.sourceId == info.id)
+                {
+                    hasRoute = true;
+                    break;
+                }
 
             if (info.group != nullptr && info.group != currentGroup)
             {
@@ -244,11 +246,11 @@ public:
 
             // Item ID = info.id + 1 (0-based ID -> 1-based JUCE item)
             juce::PopupMenu::Item item;
-            item.itemID   = info.id + 1;
-            item.text     = label;
-            item.colour   = juce::Colour(info.colour).withAlpha(hasRoute ? 0.85f : 1.0f);
+            item.itemID = info.id + 1;
+            item.text = label;
+            item.colour = juce::Colour(info.colour).withAlpha(hasRoute ? 0.85f : 1.0f);
             item.isEnabled = true;
-            item.isTicked  = hasRoute;
+            item.isTicked = hasRoute;
             menu.addItem(item);
         }
 
@@ -259,74 +261,75 @@ public:
         }
 
         // ── Show async ────────────────────────────────────────────────────
-        auto opts = juce::PopupMenu::Options{}
-            .withTargetComponent(anchorComponent)
-            .withMaximumNumColumns(1);
+        auto opts = juce::PopupMenu::Options{}.withTargetComponent(anchorComponent).withMaximumNumColumns(1);
 
         menu.showMenuAsync(opts,
-            [&model, destParamId, lnf,
-             existingRoutes = std::move(existingRoutes)](int result) mutable
-            {
-                if (result <= 0)
-                    return; // dismissed
+                           [&model, destParamId, lnf, existingRoutes = std::move(existingRoutes)](int result) mutable
+                           {
+                               if (result <= 0)
+                                   return; // dismissed
 
-                // ── Remove-all existing routes ──────────────────────────
-                if (result == 999)
-                {
-                    model.removeRoutesForParam(destParamId);
-                    return;
-                }
+                               // ── Remove-all existing routes ──────────────────────────
+                               if (result == 999)
+                               {
+                                   model.removeRoutesForParam(destParamId);
+                                   return;
+                               }
 
-                // ── Adjust existing route (depth editor) ────────────────
-                if (result >= 1000)
-                {
-                    const int subIdx = result - 1000;
-                    if (subIdx >= 0 && subIdx < static_cast<int>(existingRoutes.size()))
-                    {
-                        const auto& r = existingRoutes[static_cast<size_t>(subIdx)];
-                        // Find the index in the full model
-                        auto allRoutes = model.getRoutesCopy();
-                        for (int j = 0; j < static_cast<int>(allRoutes.size()); ++j)
-                        {
-                            if (allRoutes[static_cast<size_t>(j)].sourceId == r.sourceId &&
-                                allRoutes[static_cast<size_t>(j)].destParamId == r.destParamId)
-                            {
-                                showDepthEditor(model, j);
-                                break;
-                            }
-                        }
-                    }
-                    return;
-                }
+                               // ── Adjust existing route (depth editor) ────────────────
+                               if (result >= 1000)
+                               {
+                                   const int subIdx = result - 1000;
+                                   if (subIdx >= 0 && subIdx < static_cast<int>(existingRoutes.size()))
+                                   {
+                                       const auto& r = existingRoutes[static_cast<size_t>(subIdx)];
+                                       // Find the index in the full model
+                                       auto allRoutes = model.getRoutesCopy();
+                                       for (int j = 0; j < static_cast<int>(allRoutes.size()); ++j)
+                                       {
+                                           if (allRoutes[static_cast<size_t>(j)].sourceId == r.sourceId &&
+                                               allRoutes[static_cast<size_t>(j)].destParamId == r.destParamId)
+                                           {
+                                               showDepthEditor(model, j);
+                                               break;
+                                           }
+                                       }
+                                   }
+                                   return;
+                               }
 
-                // ── Add new route (result = sourceId + 1) ───────────────
-                const int sourceId = result - 1;
+                               // ── Add new route (result = sourceId + 1) ───────────────
+                               const int sourceId = result - 1;
 
-                // Check for existing route with this source → bump to depth editor
-                {
-                    auto allRoutes = model.getRoutesCopy();
-                    for (int j = 0; j < static_cast<int>(allRoutes.size()); ++j)
-                    {
-                        if (allRoutes[static_cast<size_t>(j)].sourceId == sourceId &&
-                            allRoutes[static_cast<size_t>(j)].destParamId == destParamId)
-                        {
-                            showDepthEditor(model, j);
-                            return;
-                        }
-                    }
-                }
+                               // Check for existing route with this source → bump to depth editor
+                               {
+                                   auto allRoutes = model.getRoutesCopy();
+                                   for (int j = 0; j < static_cast<int>(allRoutes.size()); ++j)
+                                   {
+                                       if (allRoutes[static_cast<size_t>(j)].sourceId == sourceId &&
+                                           allRoutes[static_cast<size_t>(j)].destParamId == destParamId)
+                                       {
+                                           showDepthEditor(model, j);
+                                           return;
+                                       }
+                                   }
+                               }
 
-                if (model.isFull())
-                    return;
+                               if (model.isFull())
+                                   return;
 
-                // Determine bipolar flag from catalogue
-                bool bipolar = false;
-                for (const auto& info : kAllModSources)
-                    if (info.id == sourceId) { bipolar = info.bipolar; break; }
+                               // Determine bipolar flag from catalogue
+                               bool bipolar = false;
+                               for (const auto& info : kAllModSources)
+                                   if (info.id == sourceId)
+                                   {
+                                       bipolar = info.bipolar;
+                                       break;
+                                   }
 
-                const float defaultDepth = bipolar ? 0.5f : 0.35f;
-                model.addRoute(sourceId, destParamId, defaultDepth, bipolar);
-            });
+                               const float defaultDepth = bipolar ? 0.5f : 0.35f;
+                               model.addRoute(sourceId, destParamId, defaultDepth, bipolar);
+                           });
     }
 
 private:
@@ -342,35 +345,36 @@ private:
         // Find display label
         const char* srcLabel = "Source";
         for (const auto& info : kAllModSources)
-            if (info.id == r.sourceId) { srcLabel = info.label; break; }
+            if (info.id == r.sourceId)
+            {
+                srcLabel = info.label;
+                break;
+            }
 
-        auto* alert = new juce::AlertWindow(
-            "Adjust Mod Depth",
-            juce::String(srcLabel) + "  →  " + r.destParamId,
-            juce::MessageBoxIconType::NoIcon);
+        auto* alert = new juce::AlertWindow("Adjust Mod Depth", juce::String(srcLabel) + "  →  " + r.destParamId,
+                                            juce::MessageBoxIconType::NoIcon);
 
         alert->addTextEditor("depth", juce::String(r.depth, 3), "Depth  (−1.0 to +1.0):");
-        alert->addButton("OK",     1, juce::KeyPress(juce::KeyPress::returnKey));
+        alert->addButton("OK", 1, juce::KeyPress(juce::KeyPress::returnKey));
         alert->addButton("Remove", 2);
         alert->addButton("Cancel", 0, juce::KeyPress(juce::KeyPress::escapeKey));
 
-        alert->enterModalState(
-            true,
-            juce::ModalCallbackFunction::create(
-                [&model, routeIdx, alert](int res)
-                {
-                    if (res == 1)
-                    {
-                        float newDepth = alert->getTextEditorContents("depth").getFloatValue();
-                        model.setRouteDepth(routeIdx, newDepth);
-                    }
-                    else if (res == 2)
-                    {
-                        model.removeRoute(routeIdx);
-                    }
-                    delete alert;
-                }),
-            false);
+        alert->enterModalState(true,
+                               juce::ModalCallbackFunction::create(
+                                   [&model, routeIdx, alert](int res)
+                                   {
+                                       if (res == 1)
+                                       {
+                                           float newDepth = alert->getTextEditorContents("depth").getFloatValue();
+                                           model.setRouteDepth(routeIdx, newDepth);
+                                       }
+                                       else if (res == 2)
+                                       {
+                                           model.removeRoute(routeIdx);
+                                       }
+                                       delete alert;
+                                   }),
+                               false);
     }
 
     ModulateFromMenu() = delete; // static-only class
