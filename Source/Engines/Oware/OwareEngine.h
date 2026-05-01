@@ -64,9 +64,20 @@
 #include <array>
 #include <cmath>
 #include <algorithm>
+#include <cstring>
 
 namespace xoceanus
 {
+
+// T6: Forward-declare the processor so OwareEngine can cache a pointer for the
+// global mod-route consumption path (getModRouteAccum / getModRouteDestParamId).
+// The full definition is never needed in this header — only the pointer is used;
+// all calls go through cacheGlobalModRoutes() in OwareEngine.cpp.
+class XOceanusProcessor;
+
+// T6: Number of global mod-route targets Oware caches at load time.
+// Targets: malletHardness, brightness, decay, material, sympathyAmount.
+static constexpr int kOwareGlobalModTargets = 5;
 
 //==============================================================================
 // Material ratio tables — from Rossing (2000) and Fletcher & Rossing (1998).
@@ -630,6 +641,29 @@ public:
         float effectiveBodyDep = std::clamp(pBodyDepth + macroSpace * 0.3f, 0.0f, 1.0f);
         float effectiveBright = std::clamp(
             pBrightness + macroMallet * 4000.0f + aftertouchAmount * 3000.0f + couplingFilterMod, 200.0f, 20000.0f);
+        float effectiveDecay = pDecay;
+
+        // ---- T6: Global mod-route consumption ----
+        // Apply global mod-route offsets AFTER macro/coupling mods, BEFORE DSP.
+        // avgVelocity: average across active voices (one-block-lag approximation,
+        // identical latency to all other block-rate modulations).
+        {
+            float avgVel = 0.0f;
+            int activeCount = 0;
+            for (const auto& v : voices)
+            {
+                if (v.active)
+                {
+                    avgVel += v.velocity;
+                    ++activeCount;
+                }
+            }
+            avgVel = (activeCount > 0) ? avgVel / static_cast<float>(activeCount) : 1.0f;
+            applyGlobalModRoutes(effectiveMallet, effectiveBright,
+                                 effectiveDecay, effectiveMaterial, effectiveSympathy,
+                                 avgVel);
+        }
+        // ---- end T6 global mod routes ----
 
         smoothMaterial.set(effectiveMaterial);
         smoothMallet.set(effectiveMallet);
@@ -668,7 +702,7 @@ public:
         for (int m = 0; m < OwareVoice::kMaxModes; ++m)
             modeDecayScale[m] = fastExp(-materialAlpha * logModeIndex[m]);
 
-        float decayTimeSec = std::max(pDecay * (1.0f - pDamping * 0.8f), 0.01f);
+        float decayTimeSec = std::max(effectiveDecay * (1.0f - pDamping * 0.8f), 0.01f);
         float baseDecayCoeff = fastExp(-1.0f / (decayTimeSec * srf));
 
         // Improvement #5: thermal drift — shared slow tuning scalar.
@@ -1120,6 +1154,35 @@ public:
         paramLfo2Shape = apvts.getRawParameterValue("owr_lfo2Shape");
     }
 
+    //-- T6: Global mod-route opt-in -------------------------------------------
+    //
+    // setProcessorPtr() — called once from XOceanusProcessor::loadEngine() on the
+    // message thread after attachParameters().  Stores the processor pointer so
+    // cacheGlobalModRoutes() can call the public route accessors.
+    // Audio thread only reads processorPtr_ after this assignment (sequential,
+    // no data race).
+    //
+    // cacheGlobalModRoutes() — scans the current snapshot for routes that target
+    // any of Oware's 5 modulated parameters and stores the matching route indices
+    // in globalModRouteIdx_[].  -1 means no active route for that target.
+    // Called whenever the snapshot changes (on load + on route model flush).
+    //
+    // Target → index mapping (fixed):
+    //   0 = owr_malletHardness  (D001: mallet contact hardness → timbre brightness)
+    //   1 = owr_brightness      (D001: filter brightness = timbre)
+    //   2 = owr_decay           (resonator decay time)
+    //   3 = owr_material        (material continuum wood→metal)
+    //   4 = owr_sympathyAmount  (sympathetic resonance — unique Akan character)
+
+    void setProcessorPtr(XOceanusProcessor* proc) noexcept
+    {
+        processorPtr_ = proc;
+        // cacheGlobalModRoutes() (defined in OwareEngine.cpp) sets modAccumPtr_ too.
+        cacheGlobalModRoutes();
+    }
+
+    void cacheGlobalModRoutes() noexcept;  // implemented in OwareEngine.cpp (needs full XOceanusProcessor type)
+
 private:
     double sr = 0.0;  // Sentinel: must be set by prepare() before use
     float srf = 0.0f;  // Sentinel: must be set by prepare() before use
@@ -1169,6 +1232,104 @@ private:
     std::atomic<float>* paramLfo2Rate = nullptr;
     std::atomic<float>* paramLfo2Depth = nullptr;
     std::atomic<float>* paramLfo2Shape = nullptr;
+
+    // T6: Global mod-route opt-in state -------------------------------------------
+    //
+    // processorPtr_: set once on message thread by setProcessorPtr(); read-only on
+    //   audio thread.  nullptr until loadEngine() wires it in.
+    // globalModRouteIdx_[t]: snapshot route index for target t, or -1 if unrouted.
+    //   Written on message thread by cacheGlobalModRoutes(); read-only on audio thread.
+    //   One-block lag is acceptable (same as all other block-rate modulations).
+    // globalModVelScaled_[t]: true if the route for target t is velocity-scaled.
+    // globalModRangeSpan_[t]: param range width cached from getModRouteRangeSpan().
+    // modAccumPtr_: raw pointer to the processor's mod accumulator array; avoids
+    //   calling through the full XOceanusProcessor type in applyGlobalModRoutes().
+    XOceanusProcessor* processorPtr_ = nullptr;
+    std::array<int,   kOwareGlobalModTargets> globalModRouteIdx_  = {-1, -1, -1, -1, -1};
+    std::array<bool,  kOwareGlobalModTargets> globalModVelScaled_ = {};
+    std::array<float, kOwareGlobalModTargets> globalModRangeSpan_ = {};
+    const float* modAccumPtr_ = nullptr;
+
+    // Param IDs for the 5 modulated targets (index-matched to globalModRouteIdx_).
+    // Used inside cacheGlobalModRoutes() to find matching routes by ID.
+    static constexpr const char* kGlobalModTargetIds[kOwareGlobalModTargets] = {
+        "owr_malletHardness",  // 0: D001 — mallet hardness → timbre brightness
+        "owr_brightness",      // 1: D001 — filter brightness = timbre
+        "owr_decay",           // 2: resonator decay time
+        "owr_material",        // 3: material continuum wood→metal
+        "owr_sympathyAmount",  // 4: sympathetic resonance (unique Akan character)
+    };
+
+    // T6: Apply accumulated global mod-route offsets to the 5 target params.
+    // Inline here — all data comes from cached arrays; no full processor type needed.
+    // Called inside renderBlock() after macro/coupling, before DSP.
+    void applyGlobalModRoutes(float& malletHardness, float& brightness,
+                              float& decay, float& material, float& sympathy,
+                              float avgVel) noexcept
+    {
+        if (modAccumPtr_ == nullptr)
+            return;
+
+        // Target 0: owr_malletHardness [0..1]
+        {
+            int ri = globalModRouteIdx_[0];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[0] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[0]; // 1.0f
+                malletHardness = juce::jlimit(0.0f, 1.0f, malletHardness + depth * span);
+            }
+        }
+
+        // Target 1: owr_brightness [200..20000 Hz] — D001 velocity-to-timbre
+        {
+            int ri = globalModRouteIdx_[1];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[1] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[1]; // 19800.0f
+                brightness = juce::jlimit(200.0f, 20000.0f, brightness + depth * span);
+            }
+        }
+
+        // Target 2: owr_decay [0.1..8.0 s]
+        {
+            int ri = globalModRouteIdx_[2];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[2] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[2]; // 7.9f
+                decay = juce::jlimit(0.1f, 8.0f, decay + depth * span);
+            }
+        }
+
+        // Target 3: owr_material [0..1] — wood→metal continuum
+        {
+            int ri = globalModRouteIdx_[3];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[3] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[3]; // 1.0f
+                material = juce::jlimit(0.0f, 1.0f, material + depth * span);
+            }
+        }
+
+        // Target 4: owr_sympathyAmount [0..1] — sympathetic resonance intensity
+        {
+            int ri = globalModRouteIdx_[4];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[4] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[4]; // 1.0f
+                sympathy = juce::jlimit(0.0f, 1.0f, sympathy + depth * span);
+            }
+        }
+    }
 };
 
 } // namespace xoceanus
