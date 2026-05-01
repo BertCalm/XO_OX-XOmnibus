@@ -3086,6 +3086,11 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // Identical protocol to OpalEngine above.
         if (auto* ow = dynamic_cast<OwareEngine*>(newEngine.get()))
             ow->setProcessorPtr(this);
+        // T6: Wire ObservandumEngine into the global mod-route opt-in path (Path B Phase 4.2).
+        // Identical protocol to OpalEngine / OxytocinAdapter above.  Targets chosen to
+        // avoid interaction with the per-voice morphEnvOffset blending machinery (D002).
+        if (auto* observ = dynamic_cast<ObservandumEngine*>(newEngine.get()))
+            observ->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3307,6 +3312,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
             ouro->cacheGlobalModRoutes();
         if (auto* ow = dynamic_cast<OwareEngine*>(eng.get()))
             ow->cacheGlobalModRoutes();
+        if (auto* observ = dynamic_cast<ObservandumEngine*>(eng.get()))
+            observ->cacheGlobalModRoutes();
     }
 }
 
