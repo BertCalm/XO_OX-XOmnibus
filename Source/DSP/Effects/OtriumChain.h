@@ -59,6 +59,9 @@ public:
         mixSmoothed_.setCurrentAndTargetValue(1.0f);
         envA_ = envB_ = envC_ = 0.0f;
         lfoPhase_ = 0.0f;
+        chaoticOffsetB_ = juce::degreesToRadians(120.0f);
+        chaoticOffsetC_ = juce::degreesToRadians(240.0f);
+        chaoticRng_ = 0x9E3779B9u; // golden-ratio seed; deterministic per reset
     }
 
     // Inject DNA bus pointer (set once on message thread before audio starts).
@@ -72,7 +75,7 @@ public:
 
     // Real DSP — 3-partner phase-staggered cross-ducking.
     void processBlock(float* L, float* R, int numSamples,
-                      double /*bpm*/ = 0.0, double /*ppqPosition*/ = -1.0)
+                      double bpm = 0.0, double /*ppqPosition*/ = -1.0)
     {
         if (! pPumpDepth_ || ! pMix_) return;
 
@@ -89,6 +92,8 @@ public:
         const int   idxA         = pPartnerA_      ? clampSlot(pPartnerA_->load(std::memory_order_relaxed)) : 0;
         const int   idxB         = pPartnerB_      ? clampSlot(pPartnerB_->load(std::memory_order_relaxed)) : 1;
         const int   idxC         = pPartnerC_      ? clampSlot(pPartnerC_->load(std::memory_order_relaxed)) : 2;
+        const int   topology     = pTopology_      ? static_cast<int>(pTopology_->load(std::memory_order_relaxed) + 0.5f) : 0;
+        const bool  syncOn       = pSyncMode_      ? pSyncMode_->load(std::memory_order_relaxed) >= 0.5f                  : false;
 
         // ---- Resolve partner audio (nullptr when slot silent / no bus) ----
         const float* pA = partnerBus_ ? partnerBus_->getMono(idxA) : nullptr;
@@ -103,12 +108,32 @@ public:
                                   ? std::exp(-1.0f / (relMs * 0.001f * static_cast<float>(sr_)))
                                   : 0.0f;
 
+        // ---- Sync mode: reinterpret pumpRate as cycles-per-beat when locked ----
+        // Free  → pumpRate is Hz directly (D005 floor at 0.001 Hz applies).
+        // Sync  → pumpRate is cycles per beat; effective Hz = pumpRate * bpm / 60.
+        //          When bpm is unknown (offline render, no transport), fall back
+        //          to Free behaviour so the chain never falls silent.
+        const float effectiveRateHz = (syncOn && bpm > 0.0)
+                                          ? pumpRate * static_cast<float>(bpm) * (1.0f / 60.0f)
+                                          : pumpRate;
+
         // ---- LFO step (radians per sample, with D005 0.001 Hz floor) ----
         const float twoPi   = juce::MathConstants<float>::twoPi;
         const float lfoInc  = (sr_ > 0.0)
-                                  ? twoPi * pumpRate / static_cast<float>(sr_)
+                                  ? twoPi * effectiveRateHz / static_cast<float>(sr_)
                                   : 0.0f;
-        const float skewRad = juce::degreesToRadians(phaseSkewDeg);
+
+        // ---- Topology: per-partner phase offset routing ----
+        //   Equilateral (0): fixed 120° / 240° — phaseSkew ignored, perfect triangle
+        //   Isoceles    (1): user phaseSkew between A↔B and B↔C (current behaviour)
+        //   Chaotic     (2): per-partner offsets re-randomised on every LFO wrap
+        //                    (deterministic LCG seed, audible but reproducible)
+        //   Cyclical    (3): user skew, but offsets rotate slowly (skew + driftAngle)
+        //                    creating a continuous through-zero phase walk
+        constexpr int kTopoEq = 0, kTopoIso = 1, kTopoChaos = 2, kTopoCyc = 3;
+        const float skewRad = (topology == kTopoEq)
+                                  ? juce::degreesToRadians(120.0f)
+                                  : juce::degreesToRadians(phaseSkewDeg);
 
         // ---- DNA tilt: scale depth by partner aggression on slot 0 ----
         // Partner DNA (per spec) modulates duck spectrum; scaffold uses depth.
@@ -131,12 +156,49 @@ public:
             envB_ = (bIn > envB_) ? atkCoef * envB_ + (1.0f - atkCoef) * bIn : relCoef * envB_;
             envC_ = (cIn > envC_) ? atkCoef * envC_ + (1.0f - atkCoef) * cIn : relCoef * envC_;
 
-            // 3 LFO outputs at 0°, +skew, +2*skew (unipolar 0..1)
+            // Per-partner phase offsets driven by topology.
+            float offsetB, offsetC;
+            switch (topology)
+            {
+                case kTopoChaos:
+                    offsetB = chaoticOffsetB_;
+                    offsetC = chaoticOffsetC_;
+                    break;
+                case kTopoCyc:
+                    // Slow drift: per-partner phase walks at ¹⁄₈ of the LFO rate,
+                    // so the triangle continuously rotates without ever phase-locking.
+                    offsetB = skewRad           + lfoPhase_ * 0.125f;
+                    offsetC = 2.0f * skewRad    + lfoPhase_ * 0.250f;
+                    break;
+                case kTopoEq:
+                case kTopoIso:
+                default:
+                    offsetB = skewRad;
+                    offsetC = 2.0f * skewRad;
+                    break;
+            }
+
+            // 3 LFO outputs (unipolar 0..1)
             const float lfoA = 0.5f + 0.5f * std::sin(lfoPhase_);
-            const float lfoB = 0.5f + 0.5f * std::sin(lfoPhase_ + skewRad);
-            const float lfoC = 0.5f + 0.5f * std::sin(lfoPhase_ + 2.0f * skewRad);
+            const float lfoB = 0.5f + 0.5f * std::sin(lfoPhase_ + offsetB);
+            const float lfoC = 0.5f + 0.5f * std::sin(lfoPhase_ + offsetC);
+
             lfoPhase_ += lfoInc;
-            if (lfoPhase_ > twoPi) lfoPhase_ -= twoPi;
+            if (lfoPhase_ > twoPi)
+            {
+                lfoPhase_ -= twoPi;
+                // LFO wrap → re-seed Chaotic offsets via deterministic LCG
+                // (Numerical Recipes constants: a=1664525, c=1013904223, m=2^32).
+                if (topology == kTopoChaos)
+                {
+                    chaoticRng_ = chaoticRng_ * 1664525u + 1013904223u;
+                    chaoticOffsetB_ = static_cast<float>((chaoticRng_ >> 8) & 0xFFFFFF)
+                                          * (twoPi / 16777216.0f);
+                    chaoticRng_ = chaoticRng_ * 1664525u + 1013904223u;
+                    chaoticOffsetC_ = static_cast<float>((chaoticRng_ >> 8) & 0xFFFFFF)
+                                          * (twoPi / 16777216.0f);
+                }
+            }
 
             // Cross-rotate: A-path ducked by env C, B by env A, C by env B.
             // couplingAmt blends autonomous LFO (0) ↔ partner envelope (1).
@@ -217,8 +279,8 @@ public:
         pCouplingDepth_ = apvts.getRawParameterValue(p + "couplingDepth");
         pDnaTilt_       = apvts.getRawParameterValue(p + "dnaTilt");
         pMix_           = apvts.getRawParameterValue(p + "mix");
-        // otrm_topology + otrm_syncMode reserved for follow-up DSP work
-        // (Cyclical/Chaotic topology variants + tempo-sync rate division).
+        pTopology_      = apvts.getRawParameterValue(p + "topology");
+        pSyncMode_      = apvts.getRawParameterValue(p + "syncMode");
     }
 
 private:
@@ -235,8 +297,12 @@ private:
 
     // Envelope-follower state per partner (one-pole, mono).
     float envA_ = 0.0f, envB_ = 0.0f, envC_ = 0.0f;
-    // Master LFO phase shared across A/B/C; per-partner phase = phase + k*skew.
+    // Master LFO phase shared across A/B/C; per-partner phase = phase + offset.
     float lfoPhase_ = 0.0f;
+    // Chaotic-topology state: per-partner randomised phase offsets, reseeded
+    // on every LFO wrap. LCG state is deterministic (reset via reset()).
+    float chaoticOffsetB_ = 0.0f, chaoticOffsetC_ = 0.0f;
+    juce::uint32 chaoticRng_ = 0x9E3779B9u;
 
     std::atomic<float>* pPumpDepth_     = nullptr;
     std::atomic<float>* pPumpRate_      = nullptr;
@@ -249,6 +315,8 @@ private:
     std::atomic<float>* pCouplingDepth_ = nullptr;
     std::atomic<float>* pDnaTilt_       = nullptr;
     std::atomic<float>* pMix_           = nullptr;
+    std::atomic<float>* pTopology_      = nullptr;
+    std::atomic<float>* pSyncMode_      = nullptr;
 
     // Set once on message thread before audio starts; read lock-free on the
     // audio thread (single-writer / single-reader before-after pattern).
