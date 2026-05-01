@@ -1452,6 +1452,10 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     // Pointer is stable for the lifetime of the processor; chains read it
     // lock-free on the audio thread.
     epicSlots.setDNABus(&dnaBus_);
+    // Phase 0 wildcard infrastructure: prime the MoodModulationBus with the
+    // current sample rate so its drift LFO (D005) ticks correctly. Pack 8
+    // (Mastering) is the first consumer; no chain reads from it yet.
+    moodBus_.prepare(sampleRate, samplesPerBlock);
     // Allocate per-slot mono buffers once; the partner audio bus is published
     // after each engine renderBlock() in processBlock() and consumed by Pack 1
     // FX chains (Otrium triangular ducking) later in the same block.
@@ -1658,6 +1662,11 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             dnaBus_.applyMacroWarp(slot, m1);
     }
     dnaBus_.advanceSmoothing(numSamples);
+
+    // Phase 0 wildcard infrastructure: advance the MoodModulationBus alongside
+    // the DNA bus. Lock-free; safe on the audio thread. Mood targets are set
+    // at preset load via setMoodByName() — no per-block update needed here.
+    moodBus_.advanceSmoothing(numSamples);
 
     // Build engine pointer array for coupling matrix (atomic reads)
     std::array<SynthEngine*, MaxSlots> enginePtrs = {};
@@ -4120,6 +4129,12 @@ void XOceanusProcessor::applyPreset(const PresetData& preset)
         for (int slot = 0; slot < xoceanus::DNAModulationBus::MaxEngineSlots; ++slot)
             dnaBus_.setBaseDNA(slot, dnaArr);
     }
+
+    // Phase 0 wildcard infrastructure: drive the MoodModulationBus from the
+    // preset's mood tag. Unknown / "User" / empty mood strings leave the bus
+    // at its previous state, preserving deterministic behaviour for presets
+    // outside the 16 categorical moods.
+    moodBus_.setMoodByName(preset.mood);
 }
 
 // ── #1378: Per-slot preset data model ────────────────────────────────────────
