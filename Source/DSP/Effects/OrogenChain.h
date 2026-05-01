@@ -95,9 +95,22 @@ private:
                           float driftRate, float driftDepth, double sampleRate)
         {
             float srF = static_cast<float>(sampleRate);
-            // Per-block drift update
+            // D005 drift: sub-Hz modulation of the ring-mod carrier. The
+            // drift LFO must advance by numSamples per block to actually
+            // run at the user-set rate; an earlier draft called process()
+            // once per block which froze it in place at typical block
+            // sizes (caught on review of PR #1505). Two cheaper choices
+            // than calling sineCarrier.setFrequency per-sample:
+            //   1. Advance the LFO N times then use the final value for
+            //      the whole block. Sub-Hz drift means inter-block change
+            //      is negligible (<0.001 % at 0.005 Hz × 10 ms block).
+            //   2. Use the LFO's mid-block value (taken at numSamples/2).
+            // Choice (1) is implemented here — simpler and accurate
+            // enough for the doctrine target.
             driftLFO.setRate(driftRate, srF);
-            float driftMod = driftLFO.process(); // [-1, +1]
+            float driftMod = 0.0f;
+            for (int i = 0; i < numSamples; ++i)
+                driftMod = driftLFO.process(); // last sample's phase value
             float modulatedCarrier = carrierHz * (1.0f + driftDepth * driftMod * 0.5f);
             modulatedCarrier = std::max(20.0f, std::min(modulatedCarrier, srF * 0.45f));
             sineCarrier.setFrequency(modulatedCarrier, srF);
