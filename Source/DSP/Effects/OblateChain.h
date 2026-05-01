@@ -154,8 +154,7 @@ public:
         {
             const float mix = mixSmoothed_.getNextValue();
             const float thresholdLin = juce::Decibels::decibelsToGain(
-                                            thresholdSmoothed_.getNextValue(),
-                                            -120.0f);
+                                            thresholdSmoothed_.getNextValue());
 
             // Push input samples (and key) into ring buffers.
             chL_.inputRing[static_cast<size_t>(chL_.writePos)] = L[i];
@@ -216,15 +215,14 @@ public:
             juce::NormalisableRange<float>(5.0f, 500.0f, 0.0f, 0.5f), 100.0f));
         layout.add(std::make_unique<juce::AudioParameterInt>(
             juce::ParameterID(p + "keyEngine", 1), "OBLA Key Engine", 0, 3, 0));
-        // A2 (locked 2026-04-27): default 1024. The 2048 option is gated
-        // behind obla_hqMode and re-introduced together with the gating
-        // logic in the Pack 1 implementation PR. Phase 1 DSP is 1024-only
-        // (dynamic FFT-size resize requires worker-thread reallocation,
-        // deferred to a follow-up). The choice param is kept at 256/512/1024
-        // to preserve schema; 256 and 512 fall back to 1024 in the DSP.
+        // A2 (locked 2026-04-27): Phase 1 DSP is fixed at 1024-point FFT.
+        // The choice param exposes only "1024" so automation/presets can't
+        // land in a "selected size" that's silently overridden — caught by
+        // review. The 256/512/2048 options re-enter when dynamic FFT-size
+        // resize lands (Phase 2; requires worker-thread reallocation).
         layout.add(std::make_unique<juce::AudioParameterChoice>(
             juce::ParameterID(p + "fftSize", 1), "OBLA FFT Size",
-            juce::StringArray{"256", "512", "1024"}, 2));
+            juce::StringArray{"1024"}, 0));
         layout.add(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID(p + "tilt", 1), "OBLA Tilt",
             juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
@@ -260,7 +258,8 @@ public:
         pSmoothing_   = apvts.getRawParameterValue(p + "smoothing");
         pBreathRate_  = apvts.getRawParameterValue(p + "breathRate");
         pMix_         = apvts.getRawParameterValue(p + "mix");
-        // pFftSize_ + pHqMode_ are read but Phase 1 DSP runs at 1024 always.
+        // Phase 1 DSP is fixed at 1024-point FFT, so fftSize/hqMode are not
+        // cached or consumed here yet.
     }
 
 private:
@@ -289,9 +288,14 @@ private:
             const float im  = keyState_.fftScratch[static_cast<size_t>(2 * k + 1)];
             const float mag = std::sqrt(re * re + im * im);
 
-            float prev = keyState_.binMag[static_cast<size_t>(k)];
-            const float next = (mag > prev) ? atkCoef * prev + (1.0f - atkCoef) * mag
-                                            : relCoef * prev;
+            // Standard one-pole AR follower: rising input → attack coef,
+            // falling input → release coef. Both branches track toward `mag`
+            // (the current input), so steady-state holds rather than decaying
+            // to zero. Earlier draft used `relCoef * prev` on release which
+            // released toward 0 even with a non-zero key — caught by review.
+            const float prev = keyState_.binMag[static_cast<size_t>(k)];
+            const float coef = (mag > prev) ? atkCoef : relCoef;
+            const float next = coef * prev + (1.0f - coef) * mag;
             constexpr float kDenormFloor = 1.0e-30f;
             keyState_.binMag[static_cast<size_t>(k)] = std::abs(next) < kDenormFloor ? 0.0f : next;
         }
@@ -337,7 +341,7 @@ private:
         processChannelFrame(chR_);
     }
 
-    void processChannelFrame(struct ChannelState& ch) noexcept
+    void processChannelFrame(ChannelState& ch) noexcept
     {
         copyWindowedToFFTBuffer(ch.inputRing, ch.writePos, ch.fftScratch);
         fft_.performRealOnlyForwardTransform(ch.fftScratch.data());
@@ -351,16 +355,12 @@ private:
             ch.fftScratch[static_cast<size_t>(2 * k + 1)] *= gain;
         }
 
-        // Mirror conjugate for the negative-frequency half (bins kNumBins .. kFFTSize-1
-        // need to satisfy X[N-k] = conj(X[k]) for the output to be real after IFFT).
-        // JUCE's performRealOnlyInverseTransform expects this packing.
-        for (int k = 1; k < kFFTSize - kNumBins + 1; ++k)
-        {
-            const int mirror = kFFTSize - k;
-            ch.fftScratch[static_cast<size_t>(2 * mirror)]     =  ch.fftScratch[static_cast<size_t>(2 * k)];
-            ch.fftScratch[static_cast<size_t>(2 * mirror + 1)] = -ch.fftScratch[static_cast<size_t>(2 * k + 1)];
-        }
-
+        // No explicit conjugate mirror needed — juce::dsp::FFT's real-only
+        // inverse uses only the first (size/2)+1 complex bins (the
+        // non-negative-frequency half) and reconstructs the time-domain
+        // output internally. Writing into the upper half would be a no-op
+        // at best and could corrupt JUCE's internal staging in some
+        // builds — caught by review.
         fft_.performRealOnlyInverseTransform(ch.fftScratch.data());
 
         // Overlap-add into output ring. The output of this frame should align

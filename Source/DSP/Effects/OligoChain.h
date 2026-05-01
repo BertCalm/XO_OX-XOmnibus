@@ -26,8 +26,9 @@ namespace xoceanus
 // Routing: Stereo In → Stereo Out (4-band split applied per channel)
 //
 // Signal flow (per spec §4):
-//   1. 4-band split — three cascaded LP biquads (Butterworth Q=0.7071) at
-//      lowSplit / midSplit / highSplit. Bands derived as:
+//   1. 4-band Linkwitz-Riley LR4 split (24 dB/oct) — three crossovers, each
+//      built from two cascaded Butterworth Q=0.7071 biquad LP stages. Bands
+//      derived as:
 //        bandLow   = LP_low(in)
 //        bandLoMid = LP_mid(in) - LP_low(in)
 //        bandHiMid = LP_high(in) - LP_mid(in)
@@ -158,9 +159,9 @@ public:
 
             // === Key-side: split into 4 bands and follow each envelope ===
             const float kIn = (key != nullptr) ? key[i] : 0.0f;
-            const float kLowOut  = lpLow_ .process(kIn, keyStates_[0]);
-            const float kMidOut  = lpMid_ .process(kIn, keyStates_[1]);
-            const float kHighOut = lpHigh_.process(kIn, keyStates_[2]);
+            const float kLowOut  = processLR4(lpLow_,  kIn, keyStates_[0]);
+            const float kMidOut  = processLR4(lpMid_,  kIn, keyStates_[1]);
+            const float kHighOut = processLR4(lpHigh_, kIn, keyStates_[2]);
             const float kBandLow   = kLowOut;
             const float kBandLoMid = kMidOut  - kLowOut;
             const float kBandHiMid = kHighOut - kMidOut;
@@ -179,9 +180,9 @@ public:
 
             // === Signal-side: split L into 4 bands, duck, recombine ===
             const float dryL = L[i];
-            const float lLowOut  = lpLow_ .process(dryL, sigStates_[0]);
-            const float lMidOut  = lpMid_ .process(dryL, sigStates_[1]);
-            const float lHighOut = lpHigh_.process(dryL, sigStates_[2]);
+            const float lLowOut  = processLR4(lpLow_,  dryL, sigStates_[0]);
+            const float lMidOut  = processLR4(lpMid_,  dryL, sigStates_[1]);
+            const float lHighOut = processLR4(lpHigh_, dryL, sigStates_[2]);
             const float wetL =   lLowOut                    * gainLow
                              + (lMidOut  - lLowOut)         * gainLoMid
                              + (lHighOut - lMidOut)         * gainHiMid
@@ -189,9 +190,9 @@ public:
 
             // === Same for R ===
             const float dryR = R[i];
-            const float rLowOut  = lpLow_ .process(dryR, sigStates_[3]);
-            const float rMidOut  = lpMid_ .process(dryR, sigStates_[4]);
-            const float rHighOut = lpHigh_.process(dryR, sigStates_[5]);
+            const float rLowOut  = processLR4(lpLow_,  dryR, sigStates_[3]);
+            const float rMidOut  = processLR4(lpMid_,  dryR, sigStates_[4]);
+            const float rHighOut = processLR4(lpHigh_, dryR, sigStates_[5]);
             const float wetR =   rLowOut                    * gainLow
                              + (rMidOut  - rLowOut)         * gainLoMid
                              + (rHighOut - rMidOut)         * gainHiMid
@@ -276,10 +277,9 @@ private:
         return n < 0 ? 0 : (n > 3 ? 3 : n);
     }
 
-    // 2nd-order Butterworth biquad — Q=0.7071 = 12 dB/oct LP. Linkwitz-Riley
-    // composite at LR2 level. Spec calls for "Linkwitz-Riley split" — LR2 is
-    // the lightest member of that family and adequate slope for creative
-    // ducking. Cascading would give LR4 (24 dB/oct) at 2× CPU.
+    // 2nd-order Butterworth biquad — Q=0.7071 = 12 dB/oct LP. Cascading two
+    // stages (`LR4State` below) gives 24 dB/oct = a true Linkwitz-Riley LR4
+    // crossover, which is what the spec §4 "Linkwitz-Riley split" promises.
     struct Biquad
     {
         float b0 = 1.0f, b1 = 0.0f, b2 = 0.0f, a1 = 0.0f, a2 = 0.0f;
@@ -300,19 +300,31 @@ private:
         }
     };
 
+    // LR4 cascaded state — two Butterworth biquad stages in series.
+    // Each crossover (low/mid/high) needs one LR4State per channel.
+    struct LR4State { Biquad::State s1, s2; };
+
+    static float processLR4(const Biquad& b, float in, LR4State& s) noexcept
+    {
+        return b.process(b.process(in, s.s1), s.s2);
+    }
+
     static float msToCoef(float ms, double sr) noexcept
     {
         if (sr <= 0.0 || ms <= 0.0f) return 0.0f;
         return std::exp(-1.0f / (ms * 0.001f * static_cast<float>(sr)));
     }
 
-    // One-pole AR follower with denormal flush. Asymmetric: fast attack on
-    // rising input, exponential release on falling.
+    // One-pole AR follower with denormal flush. Both branches track toward
+    // the current `input`: rising → attack coef, falling → release coef.
+    // Earlier draft used `rel * prev` on the release branch, which decayed
+    // toward zero even when the input was holding at a non-zero value
+    // (chatter at steady state). Caught by review — fixed to the standard
+    // one-pole form.
     static float followAR(float prev, float input, float atk, float rel) noexcept
     {
-        const float next = (input > prev)
-                               ? atk * prev + (1.0f - atk) * input
-                               : rel * prev;
+        const float coef = (input > prev) ? atk : rel;
+        const float next = coef * prev + (1.0f - coef) * input;
         constexpr float kDenormThreshold = 1.0e-30f;
         return std::abs(next) < kDenormThreshold ? 0.0f : next;
     }
@@ -341,9 +353,10 @@ private:
     // across L / R / key (state per instance).
     Biquad lpLow_, lpMid_, lpHigh_;
 
+    // LR4 = cascaded biquad pair, so each "state" is a LR4State (two stages).
     // 6 signal states (3 LPs × 2 channels) + 3 key states (mono key).
-    std::array<Biquad::State, 6> sigStates_{};
-    std::array<Biquad::State, 3> keyStates_{};
+    std::array<LR4State, 6> sigStates_{};
+    std::array<LR4State, 3> keyStates_{};
 
     // Per-band envelope state (mono — derived from the mono key).
     float envLow_ = 0.0f, envLoMid_ = 0.0f, envHiMid_ = 0.0f, envHigh_ = 0.0f;
