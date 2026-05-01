@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Triangular Throb",
+  "mood": "Coupling",
+  "engines": [
+    "Onset",
+    "Overbite",
+    "Octopus"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Otrium FX chain demo — 3 percussive engines pump each other in an equilateral triangle. Free-mode 1.2 Hz LFO, fixed 120°/240° phase offsets, deep 0.7 pump, snappy attack. The matrix demo at its purest: each engine ducks the other two on a phase-staggered loop. Otrium chain config is embedded under Onset's parameters block (slot1_chain, otrm_*) since the .xometa schema is engine-keyed; applyPreset() resolves full APVTS IDs as-is.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "percussive",
+    "triangular",
+    "otrium",
+    "fx-chain-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.42,
+    "movement": 0.78,
+    "density": 0.7,
+    "space": 0.45,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Onset": {
+      "perc_macroCharacter": 0.55,
+      "perc_macroMovement": 0.78,
+      "perc_macroCoupling": 0.85,
+      "perc_macroSpace": 0.45,
+      "slot1_chain": 31,
+      "slot1_mix": 1.0,
+      "slot1_bypass": 0.0,
+      "otrm_pumpDepth": 0.7,
+      "otrm_pumpRate": 1.2,
+      "otrm_attack": 4.0,
+      "otrm_release": 90.0,
+      "otrm_phaseSkew": 120.0,
+      "otrm_topology": 0,
+      "otrm_partnerA_idx": 0,
+      "otrm_partnerB_idx": 1,
+      "otrm_partnerC_idx": 2,
+      "otrm_couplingDepth": 0.65,
+      "otrm_dnaTilt": 0.4,
+      "otrm_mix": 1.0,
+      "otrm_syncMode": 0
+    },
+    "Overbite": {
+      "poss_macroCharacter": 0.5,
+      "poss_macroMovement": 0.7,
+      "poss_macroCoupling": 0.85,
+      "poss_macroSpace": 0.4
+    },
+    "Octopus": {
+      "octo_macroCharacter": 0.55,
+      "octo_macroMovement": 0.75,
+      "octo_macroCoupling": 0.85,
+      "octo_macroSpace": 0.5
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.53,
+    "MOVEMENT": 0.74,
+    "COUPLING": 0.85,
+    "SPACE": 0.45
+  }
+}
