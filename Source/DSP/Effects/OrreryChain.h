@@ -40,7 +40,8 @@ namespace xoceanus
 //          Pitch-shifting in feedback via read-rate manipulation.
 // Stage 5: Resonant Synthesizer Reverb (Strymon NightSky)
 //          LushReverb + CytomicSVF LP in feedback loop with
-//          StandardLFO modulating cutoff (slow breathing 0.05–0.3Hz).
+//          StandardLFO modulating cutoff (slow breathing, exposed via
+//          orry_breathRate at 0.005–1 Hz; default 0.1 Hz).
 //
 // Parameter prefix: orry_ (11 params)
 //==============================================================================
@@ -354,7 +355,8 @@ private:
 
     //==========================================================================
     // Stage 5 — Resonant Synthesizer Reverb (Strymon NightSky)
-    // LushReverb + slow LP breathing via LFO (0.05–0.3 Hz)
+    // LushReverb + slow LP breathing via LFO (rate exposed as
+    // orry_breathRate, 0.005–1 Hz; default 0.1 Hz)
     //==========================================================================
     struct NightSkyStage
     {
