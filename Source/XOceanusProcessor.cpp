@@ -115,6 +115,7 @@
 #include "DSP/Effects/AquaticFXSuite.h"
 #include "Core/EpicChainSlotController.h"
 #include "Core/DNAProximity.h"
+#include "Core/PresetMorphEngine.h"  // feat/preset-morph-foundation — #9 + #2
 #include "DSP/ThreadInit.h"
 #include <cstring> // std::strncmp — used in Wave 5 A1 global mod route evaluation
 
