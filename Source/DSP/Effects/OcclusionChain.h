@@ -380,8 +380,11 @@ private:
             float* loopL = loopL_.data();
             float* loopR = loopR_.data();
 
-            // Loop playback: read at clockRate speed
-            float loopStep = std::max(0.1f, std::min(clockRate, 4.0f));
+            // Loop playback: read at clockRate speed.
+            // D005: internal clamp matches the addParameters range (0.005–4 Hz)
+            // — clamping at 0.1 Hz here would have made the lowered param floor
+            // illusory.
+            float loopStep = std::max(0.005f, std::min(clockRate, 4.0f));
 
             for (int i = 0; i < numSamples; ++i)
             {
@@ -540,8 +543,13 @@ inline void OcclusionChain::addParameters(
                         2.0f,   16.0f, 16.0f, 0.1f);
     registerFloatSkewed(layout, p + "bitrFreqShift", p + "Bitrman Freq Shift",
                         0.0f, 2000.0f, 50.0f,  0.1f, 0.2f);
-    registerFloat      (layout, p + "moodClock",     p + "MOOD Clock Rate",
-                        0.1f,    4.0f,  1.0f, 0.01f);
+    // D005 (must breathe): MOOD Clock Rate is the chain's only exposed
+    // sub-Hz-capable rate. Floor lowered 0.1 → 0.005 Hz, matching
+    // StandardLFO::setRate's internal clamp at Source/DSP/StandardLFO.h:54.
+    // Switched to registerFloatSkewed because the new range spans 3+
+    // decades. Default 1.0 Hz unchanged.
+    registerFloatSkewed(layout, p + "moodClock",     p + "MOOD Clock Rate",
+                        0.005f,  4.0f,  1.0f, 0.001f, 0.3f);
     registerBool       (layout, p + "moodFreeze",    p + "MOOD Freeze", false);
     registerFloat      (layout, p + "moodVerbSize",  p + "MOOD Verb Size",
                         0.0f,    1.0f,  0.6f);
