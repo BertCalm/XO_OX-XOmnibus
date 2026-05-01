@@ -3082,6 +3082,10 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // so cached route indices are ready before the first renderBlock().
         if (auto* ouro = dynamic_cast<OuroborosEngine*>(newEngine.get()))
             ouro->setProcessorPtr(this);
+        // T6: Wire OwareEngine into the global mod-route opt-in path (Path B Phase 2.7).
+        // Identical protocol to OpalEngine above.
+        if (auto* ow = dynamic_cast<OwareEngine*>(newEngine.get()))
+            ow->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3301,6 +3305,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
             opera->cacheGlobalModRoutes();
         if (auto* ouro = dynamic_cast<OuroborosEngine*>(eng.get()))
             ouro->cacheGlobalModRoutes();
+        if (auto* ow = dynamic_cast<OwareEngine*>(eng.get()))
+            ow->cacheGlobalModRoutes();
     }
 }
 
