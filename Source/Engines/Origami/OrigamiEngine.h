@@ -16,7 +16,12 @@
 #include <cmath>
 #include <algorithm>
 #include <complex>
+#include <cstring>
 #include <vector>
+
+// T6: forward-declare the processor so setProcessorPtr() can accept it without
+// a circular include.  The full type is only needed in OrigamiEngine.cpp.
+class XOceanusProcessor;
 
 namespace xoceanus
 {
@@ -390,6 +395,28 @@ public:
     // pipeline clamps against this floor.
     static constexpr float kMagnitudeFloor = 1e-15f;
 
+    // T6: number of global mod-route targets opted in for Pattern B.
+    static constexpr int kOrigamiGlobalModTargets = 5;
+
+    //==========================================================================
+    //  T6: Global mod-route opt-in (Pattern B) — message-thread wiring
+    //==========================================================================
+
+    // Called once from XOceanusProcessor::loadEngine() on the message thread.
+    // Stores the processor pointer and immediately caches route indices so they
+    // are ready before the first renderBlock() call.
+    void setProcessorPtr(XOceanusProcessor* p) noexcept
+    {
+        processorPtr_ = p;
+        cacheGlobalModRoutes();
+    }
+
+    // Scans the current global-mod-route snapshot and populates
+    // cachedRouteIndices_ / cachedVelScaled_ / cachedRangeSpan_.
+    // Implemented in OrigamiEngine.cpp where the full XOceanusProcessor
+    // type is available without a circular include.
+    void cacheGlobalModRoutes() noexcept;
+
     //==========================================================================
     //  SynthEngine Interface -- Lifecycle
     //==========================================================================
@@ -517,14 +544,16 @@ public:
         // voices in a block see consistent parameter values.
 
         // Core spectral fold parameters
-        const float paramFoldPoint = loadParam(pFoldPoint, 0.5f);
-        const float paramFoldDepth = loadParam(pFoldDepth, 0.5f);
+        // T6: foldPoint/foldDepth/rotate/stretch/source are non-const so
+        // applyGlobalModRoutes() can offset them in-place before DSP.
+        float paramFoldPoint = loadParam(pFoldPoint, 0.5f);
+        float paramFoldDepth = loadParam(pFoldDepth, 0.5f);
         const int paramFoldCount = static_cast<int>(loadParam(pFoldCount, 1.0f));
         const int paramOperation = static_cast<int>(loadParam(pOperation, 0.0f));
-        const float paramRotate = loadParam(pRotate, 0.0f);
-        const float paramStretch = loadParam(pStretch, 0.0f);
+        float paramRotate = loadParam(pRotate, 0.0f);
+        float paramStretch = loadParam(pStretch, 0.0f);
         const float paramFreeze = loadParam(pFreeze, 0.0f);
-        const float paramSource = loadParam(pSource, 0.0f);
+        float paramSource = loadParam(pSource, 0.0f);
         const float paramOscillatorMix = loadParam(pOscMix, 0.5f);
         const float paramMasterLevel = loadParam(pLevel, 0.8f);
 
@@ -590,6 +619,32 @@ public:
         float glideCoefficient = 1.0f;
         if (glideTime > 0.001f)
             glideCoefficient = 1.0f - std::exp(-1.0f / (glideTime * sampleRateFloat));
+
+        // ---- T6: Apply global mod-route offsets (Pattern B) ----
+        // Compute average voice velocity once per block (one-block-lag approximation).
+        // applyGlobalModRoutes() writes additive offsets directly into the non-const
+        // param locals (foldPoint/foldDepth/rotate/stretch/source) before the
+        // macro/coupling offsets stack on top.
+        {
+            float avgVel = 0.0f;
+            int   activeVoiceCountGMR = 0;
+            for (const auto& v : voices)
+            {
+                if (v.active)
+                {
+                    avgVel += v.velocity;
+                    ++activeVoiceCountGMR;
+                }
+            }
+            avgVel = (activeVoiceCountGMR > 0)
+                   ? avgVel / static_cast<float>(activeVoiceCountGMR)
+                   : 1.0f; // no voices → unity (depth fully expressed)
+
+            applyGlobalModRoutes(paramFoldPoint, paramFoldDepth,
+                                 paramRotate,    paramStretch,
+                                 paramSource,    avgVel);
+        }
+        // ---- end T6 global mod routes ----
 
         // ---- Apply macro and coupling modulation offsets ----
 
@@ -2075,6 +2130,106 @@ private:
 
     // D002 mod matrix — 4-slot configurable modulation routing
     ModMatrix<4> modMatrix;
+
+    // =========================================================================
+    // T6: Global mod-route opt-in state (Pattern B)
+    // processorPtr_: set by setProcessorPtr() on the message thread; read-only
+    //   on the audio thread after that. Plain pointer — no atomic needed because
+    //   assignment happens before the first renderBlock() call.
+    // =========================================================================
+    XOceanusProcessor* processorPtr_ = nullptr;
+
+    // Cached route index per target (-1 = no active route).
+    // Written by cacheGlobalModRoutes() (message thread), read by renderBlock()
+    // (audio thread). A one-block lag on route add/remove is acceptable.
+    std::array<int, kOrigamiGlobalModTargets>   cachedRouteIndices_{ -1,-1,-1,-1,-1 };
+    std::array<bool, kOrigamiGlobalModTargets>  cachedVelScaled_{};
+    std::array<float, kOrigamiGlobalModTargets> cachedRangeSpan_{};
+
+    // Raw pointer to the processor's routeModAccum_ array.
+    // Set alongside processorPtr_ so renderBlock() can read accumulators
+    // without the full XOceanusProcessor type (forward-decl is enough in .h).
+    const float* modAccumPtr_ = nullptr;
+
+    // Param IDs matched by cacheGlobalModRoutes() (index-matched to above arrays).
+    static constexpr const char* kGlobalModTargetIds[kOrigamiGlobalModTargets] = {
+        "origami_foldPoint",   // 0: spectral fold scan position (0..1)
+        "origami_foldDepth",   // 1: fold intensity (0..1)
+        "origami_rotate",      // 2: spectral rotation (-1..1)
+        "origami_stretch",     // 3: spectral stretch/compress (-1..1)
+        "origami_source",      // 4: external audio source blend (0..1)
+    };
+
+    // Called from renderBlock() after the ParamSnapshot reads.
+    // Applies additive offsets from any cached global mod routes.
+    // All parameters are passed by reference; clamp to legal ranges here.
+    void applyGlobalModRoutes(float& foldPoint, float& foldDepth,
+                              float& rotate,    float& stretch,
+                              float& source,    float avgVel) noexcept
+    {
+        if (modAccumPtr_ == nullptr)
+            return;
+
+        // Target 0: origami_foldPoint (0..1 normalised scan position)
+        {
+            int ri = cachedRouteIndices_[0];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = cachedVelScaled_[0] ? raw * avgVel : raw;
+                float span  = cachedRangeSpan_[0]; // 1.0f
+                foldPoint = juce::jlimit(0.0f, 1.0f, foldPoint + depth * span);
+            }
+        }
+
+        // Target 1: origami_foldDepth (0..1)
+        {
+            int ri = cachedRouteIndices_[1];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = cachedVelScaled_[1] ? raw * avgVel : raw;
+                float span  = cachedRangeSpan_[1]; // 1.0f
+                foldDepth = juce::jlimit(0.0f, 1.0f, foldDepth + depth * span);
+            }
+        }
+
+        // Target 2: origami_rotate (-1..1 spectral rotation)
+        {
+            int ri = cachedRouteIndices_[2];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = cachedVelScaled_[2] ? raw * avgVel : raw;
+                float span  = cachedRangeSpan_[2]; // 2.0f
+                rotate = juce::jlimit(-1.0f, 1.0f, rotate + depth * span);
+            }
+        }
+
+        // Target 3: origami_stretch (-1..1 spectral stretch)
+        {
+            int ri = cachedRouteIndices_[3];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = cachedVelScaled_[3] ? raw * avgVel : raw;
+                float span  = cachedRangeSpan_[3]; // 2.0f
+                stretch = juce::jlimit(-1.0f, 1.0f, stretch + depth * span);
+            }
+        }
+
+        // Target 4: origami_source (0..1 external audio blend)
+        {
+            int ri = cachedRouteIndices_[4];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = cachedVelScaled_[4] ? raw * avgVel : raw;
+                float span  = cachedRangeSpan_[4]; // 1.0f
+                source = juce::jlimit(0.0f, 1.0f, source + depth * span);
+            }
+        }
+    }
 };
 
 } // namespace xoceanus
