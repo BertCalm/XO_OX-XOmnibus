@@ -178,7 +178,7 @@
       "status": "designed",
       "seance_score": 8.3,
       "seance_date": "2026-05-01",
-      "notes": "Wave 2.8 seance — 8.3/10 APPROVED. Spatiotemporal Collapse — atypical stereo-throughout architecture (no mono-to-stereo expansion stage; takes stereo in, processes L/R independently throughout). 5 stages: XP300 reverse swell + Fuzz War + Polyphrase poly-echo (separate L/R times) + Bitrman decimator/freq-shift + MOOD micro-looper. D005 fix: floor-lowering on moodClock 0.1 → 0.005 Hz (registerFloatSkewed; 3+-decade range) AND matching internal clamp widened from `std::max(0.1f, ...)` to `std::max(0.005f, ...)` — the param-only fix would have been illusory. All 14 params D004-clean. 5 mod sources. Stereo routing verified — L/R independent throughout, no divergence bugs."
+      "notes": "Wave 2.8 seance — 8.3/10 APPROVED. Spatiotemporal Collapse — atypical stereo-throughout architecture (no mono-to-stereo expansion stage; takes stereo in, processes L/R independently throughout). 5 stages: XP300 reverse swell + Fuzz War + Polyphrase poly-echo (separate L/R times) + Bitrman decimator/freq-shift + MOOD micro-looper. D005 fix: paired-clamp pattern — moodClock floor 0.1 → 0.005 (param surface, registerFloatSkewed) AND matching internal clamp widened from `std::max(0.1f, ...)` to `std::max(0.005f, ...)`. NOTE: moodClock despite its 'Rate' label is a per-sample step into the ~2 s loop buffer, NOT a Hz value. Loop period ≈ 2/loopStep seconds: 1.0=2s native, 0.005=400s. All 14 params D004-clean. 5 mod sources. Stereo routing verified — L/R independent throughout, no divergence bugs."
     },
     {
       "id": "OceanDeep",

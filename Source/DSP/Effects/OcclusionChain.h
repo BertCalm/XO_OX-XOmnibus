@@ -380,10 +380,11 @@ private:
             float* loopL = loopL_.data();
             float* loopR = loopR_.data();
 
-            // Loop playback: read at clockRate speed.
-            // D005: internal clamp matches the addParameters range (0.005–4 Hz)
-            // — clamping at 0.1 Hz here would have made the lowered param floor
-            // illusory.
+            // Loop playback: clockRate is a samples-per-output-sample step
+            // (not a Hz rate). With a ~2 s loop buffer, period ≈ 2/loopStep
+            // seconds. D005: internal clamp range (0.005–4) matches the
+            // addParameters range — clamping at 0.1 here would have made the
+            // lowered param floor illusory.
             float loopStep = std::max(0.005f, std::min(clockRate, 4.0f));
 
             for (int i = 0; i < numSamples; ++i)
@@ -543,11 +544,15 @@ inline void OcclusionChain::addParameters(
                         2.0f,   16.0f, 16.0f, 0.1f);
     registerFloatSkewed(layout, p + "bitrFreqShift", p + "Bitrman Freq Shift",
                         0.0f, 2000.0f, 50.0f,  0.1f, 0.2f);
-    // D005 (must breathe): MOOD Clock Rate is the chain's only exposed
-    // sub-Hz-capable rate. Floor lowered 0.1 → 0.005 Hz, matching
-    // StandardLFO::setRate's internal clamp at Source/DSP/StandardLFO.h:54.
-    // Switched to registerFloatSkewed because the new range spans 3+
-    // decades. Default 1.0 Hz unchanged.
+    // D005 (must breathe): moodClock is a per-sample step into the loop
+    // buffer (samples advanced per output sample), not a Hz value despite
+    // the "Rate" label. With a ~2-second loop buffer, loop period ≈
+    // 2 / loopStep seconds: 1.0 → 2 s, 0.005 → 400 s. The 0.005 floor
+    // gives multi-minute loop traversal, satisfying the doctrine target.
+    // Range matches the value `StandardLFO::setRate` would clamp at; the
+    // 3+-decade span uses registerFloatSkewed for usable knob feel.
+    // Default 1.0 (native loop speed) unchanged. (The "Rate" name is
+    // misleading but the param ID is FROZEN; documenting the unit here.)
     registerFloatSkewed(layout, p + "moodClock",     p + "MOOD Clock Rate",
                         0.005f,  4.0f,  1.0f, 0.001f, 0.3f);
     registerBool       (layout, p + "moodFreeze",    p + "MOOD Freeze", false);
