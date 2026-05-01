@@ -115,6 +115,7 @@
 #include "DSP/Effects/AquaticFXSuite.h"
 #include "Core/EpicChainSlotController.h"
 #include "Core/DNAProximity.h"
+#include "Core/PresetMorphEngine.h"  // feat/preset-morph-foundation — #9 + #2
 #include "DSP/ThreadInit.h"
 #include <cstring> // std::strncmp — used in Wave 5 A1 global mod route evaluation
 
@@ -1930,6 +1931,17 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                 modWheelValue_ = static_cast<float>(msg.getControllerValue()) / 127.0f;
             }
 
+            // Channel Pressure (Aftertouch): latch global scalar for the mod-matrix eval loop.
+            // Most-recent pressure event per block wins (mirrors ModWheel latch policy; pressure
+            // events arrive infrequently so sub-block overwrite is not a jitter risk).
+            // The value persists across blocks (held until next channel-pressure event arrives).
+            // Channel pressure is NOT filtered here — it still passes through to all slot MIDI
+            // buffers so engines that handle aftertouch internally continue to function.
+            if (msg.isChannelPressure())
+            {
+                aftertouchValue_ = static_cast<float>(msg.getChannelPressureValue()) / 127.0f;
+            }
+
             if (msg.isControllerOfType(64))
             {
                 const int ch = msg.getChannel() - 1; // 0-based
@@ -2442,8 +2454,18 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                     // a ready-to-apply normalised offset without extra per-voice scaling.
                     srcVal = modWheelValue_;
                 }
+                else if (snap.sourceId == static_cast<int>(ModSourceId::Aftertouch))
+                {
+                    // T5: Aftertouch (channel pressure, 0xD0) is a global scalar — identical
+                    // strategy to ModWheel (Strategy 1).  aftertouchValue_ is latched from
+                    // channel-pressure events in the MIDI scan loop above (audio-thread-only
+                    // float, 0.0–1.0).  routeModAccum_[ri] receives the full modOffset
+                    // (srcVal * depth) — no engine-side multiply needed.
+                    // Completes the T5 mod-source trio: Velocity + ModWheel + Aftertouch.
+                    srcVal = aftertouchValue_;
+                }
                 else
-                    continue; // TODO(#mod-source-completion): add remaining sources (Aftertouch next)
+                    continue; // TODO(#mod-source-completion): add remaining sources
 
                 // Bipolar: use != 0 check so negative depths sweep downward.
                 if (snap.depth == 0.0f)
@@ -3059,6 +3081,13 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // scan so the engine's cached route indices are ready before the first renderBlock().
         if (auto* opal = dynamic_cast<OpalEngine*>(newEngine.get()))
             opal->setProcessorPtr(this);
+
+        // T6: Wire OxytocinAdapter into the global mod-route opt-in path (Pattern B).
+        // Identical protocol to OpalEngine above: setProcessorPtr() stores the pointer
+        // and immediately calls cacheGlobalModRoutes() so indices are ready before the
+        // first renderBlock().
+        if (auto* oxy = dynamic_cast<OxytocinAdapter*>(newEngine.get()))
+            oxy->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3264,6 +3293,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
         if (!eng) continue;
         if (auto* opal = dynamic_cast<OpalEngine*>(eng.get()))
             opal->cacheGlobalModRoutes();
+        if (auto* oxy = dynamic_cast<OxytocinAdapter*>(eng.get()))
+            oxy->cacheGlobalModRoutes();
     }
 }
 

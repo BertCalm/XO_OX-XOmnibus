@@ -19,12 +19,24 @@
 #include "../../Core/SynthEngine.h"
 #include "OxytocinEngine.h"
 #include "OxytocinParamSnapshot.h"
+#include <array>
+#include <cstring>
 
 namespace xoceanus
 {
 
+// T6: Forward-declare the processor so OxytocinAdapter can cache a pointer for the
+// global mod-route consumption path (getModRouteAccumPtr / getModRouteDestParamId).
+// The full definition is never needed in this header — only the pointer is used,
+// and all calls are from .cpp or inline methods called only at audio-thread time.
+class XOceanusProcessor;
+
 // Bring xoxytocin types into scope within this adapter
 using namespace xoxytocin;
+
+// T6: Number of global mod-route slots OxytocinAdapter caches at load time.
+// Targets: oxy_intimacy, oxy_cutoff, oxy_entanglement, oxy_attack, oxy_release.
+static constexpr int kOxytocinGlobalModTargets = 5;
 
 class OxytocinAdapter : public SynthEngine
 {
@@ -152,6 +164,18 @@ public:
                 snap_.commitment = std::clamp(snap_.commitment + couplingCommitmentMod_, 0.0f, 1.0f);
             }
         }
+
+        // ---- T6: Global mod-route consumption ----
+        // Apply accumulated global mod-route offsets to snap_ after macro + coupling
+        // application, before the DSP engine sees the final values.
+        // OxytocinEngine does not expose per-voice velocity; use unity (1.0f) as the
+        // avgVelocity so that velocity-scaled routes pass the raw accumulator depth
+        // unchanged — a conservative default that avoids dividing by zero and is
+        // consistent with Opal's "no voices → unity" path.  A future iteration can
+        // thread per-voice velocity through OxytocinEngine::getAverageVelocity() if
+        // finer velocity sensitivity is required.
+        applyGlobalModRoutes(1.0f);
+        // ---- end T6 global mod routes ----
 
         // Run the DSP engine
         engine_.processBlock(buffer, midi, snap_);
@@ -290,6 +314,33 @@ public:
         pMacro4 = apvts.getRawParameterValue("oxy_macro4");
     }
 
+    //-- T6: Global mod-route opt-in -------------------------------------------
+    //
+    // setProcessorPtr() — called once from XOceanusProcessor::loadEngine() on the
+    // message thread after attachParameters().  Stores the processor pointer so
+    // cacheGlobalModRoutes() can call the public route accessors.
+    //
+    // cacheGlobalModRoutes() — scans the current snapshot for routes that target
+    // any of Oxytocin's 5 modulated parameters and stores the matching route
+    // indices in globalModRouteIdx_[].  -1 means no active route for that target.
+    // Called whenever the snapshot changes (on load + on route model flush).
+    //
+    // Target → index mapping (fixed):
+    //   0 = oxy_intimacy      (love-triangle warmth/closeness — D001: shapes timbral warmth)
+    //   1 = oxy_cutoff        (filter brightness — D001 compliance: velocity → timbre)
+    //   2 = oxy_entanglement  (FM cross-routing depth — opens harmonic complexity via wheel)
+    //   3 = oxy_attack        (amp envelope attack — velocity shortens for snappier feel)
+    //   4 = oxy_release       (amp envelope release — aftertouch extends tails expressively)
+
+    void setProcessorPtr(XOceanusProcessor* proc) noexcept
+    {
+        processorPtr_ = proc;
+        // cacheGlobalModRoutes() (defined in OxytocinAdapter.cpp) also sets modAccumPtr_.
+        cacheGlobalModRoutes();
+    }
+
+    void cacheGlobalModRoutes() noexcept;  // implemented in OxytocinAdapter.cpp (needs full XOceanusProcessor type)
+
 private:
     //-- Parameter layout --------------------------------------------------------
 
@@ -412,6 +463,113 @@ private:
     LoveTriangleState lastLoveState_{};
 
     std::atomic<int> activeVoiceCount_{0};
+
+    // T6: Global mod-route opt-in state
+    // processorPtr_: set by setProcessorPtr() on the message thread; read-only on the
+    //   audio thread after that.  Plain pointer — no atomic needed because assignment
+    //   happens before the first renderBlock() call.
+    XOceanusProcessor* processorPtr_ = nullptr;
+
+    // Cached route indices for the 5 target params (kOxytocinGlobalModTargets).
+    // -1 = no active global route for that target.
+    // Written by cacheGlobalModRoutes() (message thread), read by renderBlock()
+    // (audio thread).  Protected by the snapshot-version protocol: a one-block lag
+    // on route add/remove is safe — worst case is a missed mod offset for one block.
+    std::array<int, kOxytocinGlobalModTargets> globalModRouteIdx_{};
+    // velocityScaled flag for each cached route slot.
+    std::array<bool, kOxytocinGlobalModTargets> globalModVelScaled_{};
+    // Pre-cached range span for each target param so renderBlock() can scale
+    // the normalised accumulator to param units without calling juce:: methods.
+    std::array<float, kOxytocinGlobalModTargets> globalModRangeSpan_{};
+    // Raw pointer to the processor's routeModAccum_ array.  Set by setProcessorPtr()
+    // alongside processorPtr_.  Stored separately so applyGlobalModRoutes() can read
+    // accumulators without needing the full XOceanusProcessor type (forward-decl safe).
+    const float* modAccumPtr_ = nullptr;
+
+    // Param IDs for the 5 modulated targets (index-matched to globalModRouteIdx_).
+    // Used inside cacheGlobalModRoutes() to find matching routes.
+    static constexpr const char* kGlobalModTargetIds[kOxytocinGlobalModTargets] = {
+        "oxy_intimacy",     // 0: love-triangle warmth/closeness
+        "oxy_cutoff",       // 1: filter brightness (D001 compliance)
+        "oxy_entanglement", // 2: FM cross-routing depth
+        "oxy_attack",       // 3: amp envelope attack
+        "oxy_release",      // 4: amp envelope release
+    };
+
+    // T6: Apply accumulated global mod-route offsets to the 5 target params in snap_.
+    // Implemented inline here (all data comes from cached arrays — no full processor
+    // type needed, forward declaration is sufficient).
+    // Must be called AFTER macro application and coupling mods, BEFORE engine_.processBlock().
+    void applyGlobalModRoutes(float avgVel) noexcept
+    {
+        if (modAccumPtr_ == nullptr)
+            return;
+
+        // Target 0: oxy_intimacy (0..1)
+        {
+            int ri = globalModRouteIdx_[0];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[0] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[0]; // 1.0f
+                snap_.intimacy = juce::jlimit(0.0f, 1.0f, snap_.intimacy + depth * span);
+            }
+        }
+
+        // Target 1: oxy_cutoff (20..20000 Hz) — D001 compliance
+        //   Velocity route: high velocity → brighter filter (timbre sculpting).
+        {
+            int ri = globalModRouteIdx_[1];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[1] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[1]; // 19980.0f
+                snap_.cutoff = juce::jlimit(20.0f, 20000.0f, snap_.cutoff + depth * span);
+            }
+        }
+
+        // Target 2: oxy_entanglement (0..1)
+        {
+            int ri = globalModRouteIdx_[2];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[2] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[2]; // 1.0f
+                snap_.entanglement = juce::jlimit(0.0f, 1.0f, snap_.entanglement + depth * span);
+            }
+        }
+
+        // Target 3: oxy_attack (0.001..2 s)
+        {
+            int ri = globalModRouteIdx_[3];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[3] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[3]; // 1.999f
+                snap_.attack = juce::jlimit(0.001f, 2.0f, snap_.attack + depth * span);
+            }
+        }
+
+        // Target 4: oxy_release (0.01..10 s)
+        {
+            int ri = globalModRouteIdx_[4];
+            if (ri >= 0)
+            {
+                float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                float depth = globalModVelScaled_[4] ? raw * avgVel : raw;
+                float span  = globalModRangeSpan_[4]; // 9.99f
+                snap_.release = juce::jlimit(0.01f, 10.0f, snap_.release + depth * span);
+            }
+        }
+    }
 };
+
+// T6: cacheGlobalModRoutes() is implemented in OxytocinAdapter.cpp where
+// XOceanusProcessor.h can be included for the full type without a circular
+// dependency (OxytocinAdapter.h only forward-declares XOceanusProcessor).
 
 } // namespace xoceanus
