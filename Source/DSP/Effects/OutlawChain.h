@@ -505,7 +505,15 @@ inline void OutlawChain::addParameters(
     registerFloat(layout, p + "twahPeak",      p + "T-Wah Peak",     0.0f,  1.0f,    0.5f);
     registerFloat(layout, p + "plasmaVoltage", p + "Plasma Voltage", 0.1f,  1.0f,    0.7f);
     registerFloat(layout, p + "plasmaBlend",   p + "Plasma Blend",   0.0f,  1.0f,    0.5f);
-    registerFloat(layout, p + "panRate",       p + "Pan Rate",       0.1f,  8.0f,    1.0f);
+    // D005 (must breathe): panRate floor lowered 0.1 → 0.005 Hz, matching
+    // StandardLFO::setRate's internal clamp at Source/DSP/StandardLFO.h:54.
+    // Default 1.0 Hz unchanged. Switched to registerFloatSkewed because the
+    // new range (0.005 → 8 Hz) spans 3+ decades. The wow LFO inside the
+    // magnetic-drum stage is driven by drumWear (0.5–2 Hz) by design — drum
+    // identity needs medium-rate flutter, not sub-mHz drift; D005 is
+    // satisfied by panRate.
+    registerFloatSkewed(layout, p + "panRate", p + "Pan Rate",
+                        0.005f, 8.0f, 1.0f, 0.001f, 0.3f);
     registerFloat(layout, p + "panDepth",      p + "Pan Depth",      0.0f,  1.0f,    0.8f);
     registerFloat(layout, p + "drumFeedback",  p + "Drum Feedback",  0.0f,  0.9f,    0.4f);
     registerChoice(layout, p + "drumSpacing", p + "Drum Spacing",
