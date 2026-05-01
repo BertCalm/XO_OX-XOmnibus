@@ -3118,6 +3118,13 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // Identical protocol to Opal / Oxytocin above.
         if (auto* ostracon = dynamic_cast<OstraconEngine*>(newEngine.get()))
             ostracon->setProcessorPtr(this);
+        // T6: Wire OperaAdapter into the global mod-route opt-in path (Path B Phase 3.3).
+        // Identical protocol to OxytocinAdapter (#1482): setProcessorPtr() stores the
+        // pointer and immediately calls cacheGlobalModRoutes() so indices are ready
+        // before the first renderBlock().  Adapter pattern is used here because Opera
+        // already wraps a Conductor + KuramotoField + BreathEngine sub-architecture.
+        if (auto* opera = dynamic_cast<OperaAdapter*>(newEngine.get()))
+            opera->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3333,6 +3340,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
             offering->cacheGlobalModRoutes();
         if (auto* ostracon = dynamic_cast<OstraconEngine*>(eng.get()))
             ostracon->cacheGlobalModRoutes();
+        if (auto* opera = dynamic_cast<OperaAdapter*>(eng.get()))
+            opera->cacheGlobalModRoutes();
     }
 }
 
