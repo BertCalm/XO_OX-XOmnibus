@@ -12,7 +12,7 @@
 
 `biphaseRateA` and `biphaseRateB` are both registered at floor **0.01 Hz** from authoring (with `registerFloatSkewed`, skew 0.4, range 0.01–10 Hz). That exactly meets the doctrine target (≤ 0.01 Hz) without requiring a fix.
 
-`seekSpeed` (0.1–4 Hz) is **not a breath parameter** — it's a BPM-relative sequencer tempo multiplier (line 177: `stepSamples = srF / (beatsPerSec * 4 * seekSpeed)`). At seekSpeed=0.1 with default 120 BPM, one step every ~1.25 sec — a slow sequencer, not a slow modulator. Correctly NOT lowered. Forcing seekSpeed sub-mHz would produce inaudibly-slow stepping, breaking the "sequenced formant filter" identity.
+`seekSpeed` (0.1–4×, unitless multiplier) is **not a breath parameter** — it's a BPM-relative sequencer tempo multiplier in `stepSamples = srF / (beatsPerSec * 4 * seekSpeed)`. At seekSpeed=0.1× with default 120 BPM, one step every ~1.25 sec — a slow sequencer, not a slow modulator. Correctly NOT lowered. Forcing seekSpeed to sub-Hz-equivalent values would produce inaudibly-slow stepping, breaking the "sequenced formant filter" identity.
 
 | Wave 2 chain | D005 status |
 |---|---|
@@ -43,7 +43,7 @@ The pattern: when N parallel processors need decorrelated timing offsets, multip
 
 | Ghost | Score | Key Comment |
 |-------|-------|-------------|
-| Moog | 8.5 | "Sentient Grid is the right name for a chain whose sequenced formant filter actively scans through vowel positions while the plasma below growls. Five-step / 16-step choice gives the user musical resolution to choose between rhythmic sweep and continuous morph. Distinctive." |
+| Moog | 8.5 | "Sentient Grid is the right name for a chain whose sequenced formant filter actively scans through vowel positions while the plasma below growls. The 4 / 6 / 8 / 16-step choice gives the user musical resolution to choose between rhythmic sweep and continuous morph. Distinctive." |
 | Buchla | 9.0 | "Prime-spaced delay taps are a Buchla move. Decorrelation by prime ratios is exactly the kind of trick the original Source of Uncertainty embraced — controlled chaos via mathematics rather than randomness. The independent biphase A/B rates with sync toggle gives the user three modes: independent drift, lock-step, and slow-vs-fast. Three modes is generous for two parameters." |
 | Smith | 8.5 | "13 parameters, all 13 cached, all 13 loaded. ParamSnapshot pattern observed. biphaseRateA/B floored at 0.01 Hz from authoring — chain ships D005-compliant. Prime-spaced delay table is `static constexpr` (compile-time) — no allocation. Sustain. Second Wave 2 chain (after Obdurate) to need no doctrine code change." |
 | Kakehashi | 7.5 | "Zero presets at seance time. Sentient Grid demands demonstration — the sequenced formant filter is one of the most preset-amenable concepts in Wave 2. Build presets before the next pack ships." |

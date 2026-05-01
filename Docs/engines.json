@@ -252,7 +252,7 @@
       "status": "designed",
       "seance_score": 8.5,
       "seance_date": "2026-05-01",
-      "notes": "Wave 2.10 seance — 8.5/10 APPROVED. Sentient Grid — plasma distortion + sequenced formant filter (4/6/8/16-step vowel banking) + dual optical phaser (independent biphaseRateA/B 0.01–10 Hz, optional sync) + prime-spaced multi-tap delay. 13 params, all D004-clean. **Second Wave 2 chain to pass D005 as-shipped** (after Obdurate) — biphaseRateA and biphaseRateB both have floor 0.01 Hz from authoring, exactly meeting the doctrine target. seekSpeed (0.1–4 Hz) is a sequencer tempo multiplier, not a breath param — correctly NOT lowered. Prime-spaced multi-tap delay (kPrimeMults = {1,2,3,5,7,11} with tap_t = base × prime/7) is now the THIRD Wave 2 chain to use prime-spacing (Ornate grain bank, Orogen FDN, Oculus delay) — promoted to Blessing-tier primitive in this seance. 5 mod sources."
+      "notes": "Wave 2.10 seance — 8.5/10 APPROVED. Sentient Grid — plasma distortion + sequenced formant filter (4/6/8/16-step vowel banking) + dual optical phaser (independent biphaseRateA/B 0.01–10 Hz, optional sync) + prime-spaced multi-tap delay. 13 params, all D004-clean. **Second Wave 2 chain to pass D005 as-shipped** (after Obdurate) — biphaseRateA and biphaseRateB both have floor 0.01 Hz from authoring, exactly meeting the doctrine target. seekSpeed (0.1–4× unitless multiplier) is a BPM-relative sequencer tempo multiplier, not a breath param — correctly NOT lowered. Prime-spaced multi-tap delay (kPrimeMults = {1,2,3,5,7,11} with tap_t = base × prime/7) is now the THIRD Wave 2 chain to use prime-spacing (Ornate grain bank, Orogen FDN, Oculus delay) — promoted to Blessing-tier primitive in this seance. 5 mod sources."
     },
     {
       "id": "OddfeliX",
