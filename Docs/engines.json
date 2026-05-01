@@ -710,7 +710,11 @@
       "id": "Orogen",
       "param_prefix": "orog_",
       "header": "Source/Engines/Orogen/OrogenEngine.h",
-      "status": "designed"
+      "fx_chain_header": "Source/DSP/Effects/OrogenChain.h",
+      "status": "designed",
+      "seance_score": 8.2,
+      "seance_date": "2026-05-01",
+      "notes": "Wave 2.6 seance — 8.2/10 APPROVED. Ringing Abyss — transformer ring-mod (8× OVS) + distorted plate reverb + granular time-stretch + tuned resonator FDN. Originally had ZERO LFOs anywhere in the chain — first Wave 2 chain found with no breath modulation at all. D005 fix adds 2 new params (12 → 14): orog_driftRate (0.005–2 Hz, default 0.05 Hz) and orog_driftDepth (0–1, default 0). At default depth=0 no behaviour change; user opts in. driftLFO is per-block setRate — applies the lesson from Osmium PR #1503 review (no per-sample setRate cost). All 14 params D004-clean. 4 mod sources + new drift LFO."
     },
     {
       "id": "Orphica",

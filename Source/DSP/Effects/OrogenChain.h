@@ -33,7 +33,7 @@ namespace xoceanus
 // Stage 4: Tuned Resonator (Alesis Quadraverb) — 4 parallel comb filters
 //          tuned to chord frequencies, 95% feedback
 //
-// Parameter prefix: orog_ (12 params)
+// Parameter prefix: orog_ (14 params)
 //==============================================================================
 class OrogenChain
 {
@@ -66,6 +66,9 @@ private:
         PolyBLEP                 sineCarrier;
         OversamplingProcessor<8> ovs;
         Saturator                foldSat;
+        // D005: slow drift on the ring carrier. Per-block setRate (no
+        // per-sample setRate cost — lesson from PR #1503 review).
+        StandardLFO              driftLFO;
 
         void prepare(double sampleRate, int maxBlockSize)
         {
@@ -74,21 +77,30 @@ private:
             foldSat.prepare(sampleRate);
             foldSat.setMode(Saturator::SaturationMode::FoldBack);
             foldSat.setMix(1.0f);
+            driftLFO.setShape(StandardLFO::Sine);
         }
 
         void reset()
         {
             ovs.reset();
             foldSat.reset();
+            driftLFO.reset();
         }
 
         // Process a full block in-place with 8x OVS on the foldback fuzz path.
         // monoIn/buf may be the same pointer — writes ring+fuzz output to buf.
+        // driftRate / driftDepth modulate carrierHz once per block (D005).
         void processBlock(const float* monoIn, float* buf, int numSamples,
-                          float carrierHz, float fuzzAmt, float ringMix, double sampleRate)
+                          float carrierHz, float fuzzAmt, float ringMix,
+                          float driftRate, float driftDepth, double sampleRate)
         {
             float srF = static_cast<float>(sampleRate);
-            sineCarrier.setFrequency(carrierHz, srF);
+            // Per-block drift update
+            driftLFO.setRate(driftRate, srF);
+            float driftMod = driftLFO.process(); // [-1, +1]
+            float modulatedCarrier = carrierHz * (1.0f + driftDepth * driftMod * 0.5f);
+            modulatedCarrier = std::max(20.0f, std::min(modulatedCarrier, srF * 0.45f));
+            sineCarrier.setFrequency(modulatedCarrier, srF);
 
             // First pass: ring-modulate into buf
             for (int i = 0; i < numSamples; ++i)
@@ -433,6 +445,9 @@ private:
     std::atomic<float>* p_chord     = nullptr;
     std::atomic<float>* p_resonance = nullptr;
     std::atomic<float>* p_resMix    = nullptr;
+    // D005: exposed slow-drift on the ring carrier (rate + depth).
+    std::atomic<float>* p_driftRate  = nullptr;
+    std::atomic<float>* p_driftDepth = nullptr;
 };
 
 //==============================================================================
@@ -476,9 +491,12 @@ inline void OrogenChain::processBlock(const float* monoIn, float* L, float* R,
     const int   chord     = static_cast<int>(p_chord->load(std::memory_order_relaxed));
     const float resonance = p_resonance->load(std::memory_order_relaxed);
     const float resMix    = p_resMix->load(std::memory_order_relaxed);
+    const float driftRate  = p_driftRate->load(std::memory_order_relaxed);
+    const float driftDepth = p_driftDepth->load(std::memory_order_relaxed);
 
     // Stage 1: Ring Stinger — block-level with 8x OVS fuzz
-    ringStinger_.processBlock(monoIn, L, numSamples, ringFreq, ringFuzz, ringMix, sr_);
+    ringStinger_.processBlock(monoIn, L, numSamples, ringFreq, ringFuzz, ringMix,
+                              driftRate, driftDepth, sr_);
 
     // Stage 2: Distorted Plate Reverb — per-sample
     for (int i = 0; i < numSamples; ++i)
@@ -534,6 +552,14 @@ inline void OrogenChain::addParameters(
                   0.0f, 1.0f, 0.5f, 0.001f);
     registerFloat(layout, p + "resMix",    p + "Res Mix",
                   0.0f, 1.0f, 0.4f, 0.001f);
+    // D005 (must breathe): the chain originally had no LFO at all. Adds
+    // a slow drift on the ring-mod carrier. Default driftDepth = 0
+    // preserves existing behaviour; user opts in by raising depth. Floor
+    // 0.005 Hz matches StandardLFO::setRate's internal clamp.
+    registerFloatSkewed(layout, p + "driftRate",  p + "Drift Rate",
+                        0.005f, 2.0f, 0.05f, 0.001f, 0.3f);
+    registerFloat(layout, p + "driftDepth", p + "Drift Depth",
+                  0.0f, 1.0f, 0.0f, 0.001f);
 }
 
 inline void OrogenChain::cacheParameterPointers(
@@ -553,6 +579,8 @@ inline void OrogenChain::cacheParameterPointers(
     p_chord     = cacheParam(apvts, p + "chord");
     p_resonance = cacheParam(apvts, p + "resonance");
     p_resMix    = cacheParam(apvts, p + "resMix");
+    p_driftRate  = cacheParam(apvts, p + "driftRate");
+    p_driftDepth = cacheParam(apvts, p + "driftDepth");
 }
 
 } // namespace xoceanus
