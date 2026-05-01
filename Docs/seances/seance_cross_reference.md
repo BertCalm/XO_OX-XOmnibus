@@ -189,6 +189,18 @@
 
 ---
 
+### FX Pack 1 — Sidechain Creative (FX Chains, not engines)
+
+*Seanced 2026-05-01 | Source: `Docs/seances/otrium_seance_2026-05-01.md` | Spec: `Docs/specs/2026-04-27-fx-pack-1-sidechain-creative.md` | Shipped via PR #1355*
+
+| Subject | Type | Score | Key Finding | D-Violations | Key Ghost Quote |
+|---------|------|-------|-------------|--------------|-----------------|
+| Otrium | FX Chain (`otrm_`, ChainID 31) | **6.4/10 PROVISIONAL** (DSP-validated, demo-blocked) | PartnerAudioBus pattern is a Blessing candidate (promote when ≥2 chains consume); spec→impl drift on "VCA Bank" stage (3 paths collapsed to 1 mean-gain VCA, "Path A" pivot); 0 of 5 spec'd presets exist | **D004 FAIL**: `otrm_topology` + `otrm_syncMode` declared but not cached, no audible effect (`OtriumChain.h:220-221`); D002 weak — coupling sources `envA/B/C`, `phaseAngle`, `totalDuck` listed in spec §2 are not published (no chain-side `getCouplingSample` hook) | "Triangular cross-rotation, partner audio routed by primitive identity, LFO floor at one-thousandth Hz. The `topology` knob is decorative — fix that and you have a pillar." — Buchla |
+
+**Verdict:** APPROVED CONDITIONAL — do not author dependent presets until `topology` + `syncMode` are wired. Re-seance gate set at score ≥ 8.0 after items 1, 2, 5 of recommendations land.
+
+---
+
 ## Seance Score Ranking (Updated 2026-04-15 — 88 Engines; 80 Seanced)
 
 ### Tier 1 — Excellent (9.0+)
