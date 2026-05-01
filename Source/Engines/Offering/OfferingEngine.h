@@ -38,6 +38,10 @@
 //
 //==============================================================================
 
+#include <array>
+#include <cmath>
+#include <cstring>
+#include <algorithm>
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/FastMath.h"
@@ -49,13 +53,16 @@
 #include "OfferingCollage.h"
 #include "OfferingCity.h"
 #include "OfferingCuriosity.h"
-#include <array>
-#include <cmath>
-#include <cstring>
-#include <algorithm>
+
+// T6: Forward declaration — full type included in OfferingEngine.cpp to avoid circular dependency.
+// Must be in namespace xoceanus — XOceanusProcessor is defined in that namespace.
+namespace xoceanus { class XOceanusProcessor; }
 
 namespace xoceanus
 {
+
+// T6: Number of global mod-route targets for OfferingEngine (Path B).
+static constexpr int kOfferingGlobalModTargets = 5;
 
 //==============================================================================
 // Voice slot MIDI note mapping — GM drum map standard positions.
@@ -349,6 +356,77 @@ public:
         // D006: mod wheel → curiosity drive
         snap.digCuriosity = std::clamp(snap.digCuriosity + modWheelValue_ * snap.modWheel * 0.3f, 0.0f, 1.0f);
 
+        // ── 4b. T6: Apply global mod-route offsets ────────────────────
+        // Compute avgVelocity once per block (one-block-lag approximation, identical
+        // to Opal/Oxytocin precedent).  No active voices → unity so depth is fully
+        // expressed with no held notes (consistent with rest of fleet).
+        if (modAccumPtr_ != nullptr)
+        {
+            float avgVel = 0.0f;
+            int activeCount = 0;
+            for (int v = 0; v < 8; ++v)
+            {
+                if (voices_[v].active)
+                {
+                    avgVel += voices_[v].lastSample != 0.0f ? 1.0f : 0.0f; // proxy: active voice
+                    ++activeCount;
+                }
+            }
+            avgVel = (activeCount > 0) ? 1.0f : 1.0f; // drum engine: no per-voice velocity on audio thread; use unity
+
+            // Target 0: ofr_transientSnap (0..1, span=1.0) — attack hardness
+            {
+                int ri = globalModRouteIdx_[0];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[0] ? raw * avgVel : raw;
+                    snap.transientSnap = juce::jlimit(0.0f, 1.0f, snap.transientSnap + depth * globalModRangeSpan_[0]);
+                }
+            }
+            // Target 1: ofr_cityIntensity (0..1, span=1.0) — city processing depth
+            {
+                int ri = globalModRouteIdx_[1];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[1] ? raw * avgVel : raw;
+                    snap.cityIntensity = juce::jlimit(0.0f, 1.0f, snap.cityIntensity + depth * globalModRangeSpan_[1]);
+                }
+            }
+            // Target 2: ofr_digCuriosity (0..1, span=1.0) — curiosity engine drive
+            {
+                int ri = globalModRouteIdx_[2];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[2] ? raw * avgVel : raw;
+                    snap.digCuriosity = juce::jlimit(0.0f, 1.0f, snap.digCuriosity + depth * globalModRangeSpan_[2]);
+                }
+            }
+            // Target 3: ofr_dustVinyl (0..1, span=1.0) — vinyl texture amount
+            {
+                int ri = globalModRouteIdx_[3];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[3] ? raw * avgVel : raw;
+                    snap.dustVinyl = juce::jlimit(0.0f, 1.0f, snap.dustVinyl + depth * globalModRangeSpan_[3]);
+                }
+            }
+            // Target 4: ofr_flipStretch (0.5..2.0, span=1.5) — time-stretch factor
+            {
+                int ri = globalModRouteIdx_[4];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[4] ? raw * avgVel : raw;
+                    snap.flipStretch = juce::jlimit(0.5f, 2.0f, snap.flipStretch + depth * globalModRangeSpan_[4]);
+                }
+            }
+        }
+        // ── end T6 global mod routes ─────────────────────────────────
+
         // D006: aftertouch → texture intensity
         float atMod = aftertouchValue_ * snap.aftertouch;
 
@@ -600,6 +678,31 @@ public:
             break;
         }
     }
+
+    //-- T6: Global mod-route opt-in ---------------------------------------------
+    //
+    // setProcessorPtr() — called once from XOceanusProcessor::loadEngine() on the
+    // message thread after attachParameters().  Stores the processor pointer so
+    // cacheGlobalModRoutes() can call the public route accessors.
+    //
+    // cacheGlobalModRoutes() — scans the current snapshot for routes that target
+    // any of Offering's 5 modulated parameters.  -1 means no active route.
+    // Called on load and on every flushModRoutesSnapshot().
+    //
+    // Target → index mapping (fixed):
+    //   0 = ofr_transientSnap    (transient attack hardness — D001 timbre)
+    //   1 = ofr_cityIntensity    (city processing depth — character shaper)
+    //   2 = ofr_digCuriosity     (curiosity engine drive — groove feel)
+    //   3 = ofr_dustVinyl        (vinyl texture amount — lo-fi character)
+    //   4 = ofr_flipStretch      (time-stretch factor — rhythmic texture)
+
+    void setProcessorPtr(XOceanusProcessor* p) noexcept
+    {
+        processorPtr_ = p;
+        cacheGlobalModRoutes();
+    }
+
+    void cacheGlobalModRoutes() noexcept;  // implemented in OfferingEngine.cpp
 
     //-- Parameters ---------------------------------------------------------------
 
@@ -1040,6 +1143,35 @@ private:
     std::atomic<float>* paramMacroCity_ = nullptr;
     std::atomic<float>* paramMacroFlip_ = nullptr;
     std::atomic<float>* paramMacroDust_ = nullptr;
+
+    // T6: Global mod-route opt-in state
+    // processorPtr_: set by setProcessorPtr() on the message thread; read-only
+    //   on the audio thread after that.
+    XOceanusProcessor* processorPtr_ = nullptr;
+
+    // Cached route indices for the 5 target params (kOfferingGlobalModTargets).
+    // -1 = no active global route for that target.
+    // Written by cacheGlobalModRoutes() (message thread), read by renderBlock()
+    // (audio thread).  One-block lag tolerance identical to Opal/Oxytocin precedent.
+    std::array<int,   kOfferingGlobalModTargets> globalModRouteIdx_{-1,-1,-1,-1,-1};
+    std::array<bool,  kOfferingGlobalModTargets> globalModVelScaled_{};
+    std::array<float, kOfferingGlobalModTargets> globalModRangeSpan_{};
+
+    // Raw pointer to the processor's routeModAccum_ array — set by cacheGlobalModRoutes().
+    const float* modAccumPtr_ = nullptr;
+
+    // Param IDs for the 5 modulated targets (index-matched to globalModRouteIdx_).
+    static constexpr const char* kGlobalModTargetIds[kOfferingGlobalModTargets] = {
+        "ofr_transientSnap",  // 0: attack hardness (0..1, span=1.0)
+        "ofr_cityIntensity",  // 1: city depth      (0..1, span=1.0)
+        "ofr_digCuriosity",   // 2: curiosity drive  (0..1, span=1.0)
+        "ofr_dustVinyl",      // 3: vinyl texture    (0..1, span=1.0)
+        "ofr_flipStretch",    // 4: time-stretch     (0.5..2.0, span=1.5)
+    };
 };
+
+// T6: cacheGlobalModRoutes() is implemented in OfferingEngine.cpp where
+// XOceanusProcessor.h can be included for the full type without a circular
+// dependency (OfferingEngine.h only forward-declares XOceanusProcessor).
 
 } // namespace xoceanus
