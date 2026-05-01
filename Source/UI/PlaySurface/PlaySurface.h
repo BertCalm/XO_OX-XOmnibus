@@ -1547,6 +1547,10 @@ public:
             processor_->onSetXOuijaState = nullptr;
         }
 
+        // #1383 part 1 — clear pin→registry bridge before swapping processor so
+        // the old processor never receives a callback after it is detached.
+        xouijaPanel_.getPinStore().onPinChanged = nullptr;
+
         processor_ = p;
         // Re-wire the onCCOutput callback now that we have the processor.
         wireOnCCOutput();
@@ -1565,6 +1569,23 @@ public:
         processor_->onGetXOuijaState = [this]() -> juce::ValueTree { return xouijaPanel_.toValueTree(); };
 
         processor_->onSetXOuijaState = [this](const juce::ValueTree& tree) { xouijaPanel_.fromValueTree(tree); };
+
+        // #1383 part 1 — XOuija pin → ModSource registry bridge.
+        // Each time the user pins/moves/unpins the XOuija planchette, the bipolar
+        // [-1,+1] (X, Y) values are pushed into SlotModSourceRegistry via an
+        // atomic store so the audio thread can read them from processBlock() as
+        // ModSourceId::XouijaCell (ID 18, preset-serialisation-stable).
+        //
+        // Message-thread safety: onPinChanged fires on the JUCE message thread
+        // (same thread as all UI callbacks); SlotModSourceRegistry::updateSourceValue
+        // uses std::atomic<float> relaxed stores — no locks, no GUI includes on
+        // the audio side.  A one-block-late value is acceptable for a continuous
+        // mod source (same policy as ModWheel / XY surface).
+        xouijaPanel_.getPinStore().onPinChanged = [this](float bx, float by)
+        {
+            processor_->getModSourceRegistry()
+                       .updateSourceValue(ModSourceId::XouijaCell, bx, by);
+        };
 
         // If the processor already has saved XOuija state in its APVTS tree
         // (e.g. setStateInformation was called before the PlaySurface window

@@ -13,9 +13,10 @@
 // Coordination notes:
 //   - D1 (cell layers) reads XouijaPinStore to decorate cell badge overlays.
 //   - D2 (mood) reads targetSlot to determine per-engine mood filter.
-//   - C5 (slot-based ModSources): when C5 lands, hook XouijaPinStore::onPinChanged
-//     into the C5 SlotModSourceRegistry.  Until then, the live pin value is exposed
-//     via getPinnedCircleX() / getPinnedInfluenceY() for polling.
+//   - C5 (SlotModSourceRegistry, #1360 SHIPPED): XouijaPinStore::onPinChanged is
+//     wired in PlaySurface::setProcessor() to push bipolar X+Y values into
+//     SlotModSourceRegistry → processBlock reads them as ModSourceId::XouijaCell.
+//     See #1383 for the wiring implementation.
 //   - ModRoutingModel: call pinStore.registerWithModRouter(modModel) to create a
 //     live ModSourceId::XouijaCell route entry that tracks the pinned values.
 //
@@ -232,10 +233,14 @@ public:
     void removeListener(juce::ChangeListener* l) { broadcaster_.removeChangeListener(l); }
 
     //==========================================================================
-    // Callback for C5 integration (optional — set before using pin as ModSource).
+    // Callback for SlotModSourceRegistry bridge (#1383, closes wiring-sweep TODO).
     //
     // Fires whenever the pinned value changes (pin / unpin / position update).
-    // Wire this in PlaySurface::setProcessor() (or equivalent host site) as:
+    // When pinned, bx/by carry the bipolar [-1,+1] planchette position.
+    // When unpinned, bx=0/by=0 so the registry resets to neutral and no stale
+    // modulation leaks from the last pin position.
+    //
+    // Wired in PlaySurface::setProcessor():
     //
     //   xouijaPanel_.getPinStore().onPinChanged =
     //       [this](float bx, float by) {
@@ -243,11 +248,11 @@ public:
     //               .updateSourceValue(ModSourceId::XouijaCell, bx, by);
     //       };
     //
-    // SlotModSourceRegistry is implemented in Source/Core/SlotModSourceRegistry.h.
-    // The registry forwards bx/by to std::atomic<float> pairs read by processBlock
-    // as ModSourceId::XouijaCell (ID 18, frozen for preset serialisation).
+    // SlotModSourceRegistry (Source/Core/SlotModSourceRegistry.h) stores bx/by in
+    // std::atomic<float> pairs read lock-free from processBlock as
+    // ModSourceId::XouijaCell (ID 18, frozen for preset serialisation).
     //
-    // bx / by are bipolar [-1, +1].
+    // bx / by are bipolar [-1, +1].  Message-thread only.
     //
     std::function<void(float /*bx*/, float /*by*/)> onPinChanged;
 
@@ -295,8 +300,16 @@ private:
     void notifyListeners()
     {
         broadcaster_.sendChangeMessage();
-        if (isPinned_ && onPinChanged)
-            onPinChanged(getPinnedCircleX(), getPinnedInfluenceY());
+        if (onPinChanged)
+        {
+            // When pinned, forward the bipolar [-1,+1] position.
+            // When unpinned, send (0,0) so the registry resets to neutral
+            // and does not apply stale modulation from the last pin position.
+            if (isPinned_)
+                onPinChanged(getPinnedCircleX(), getPinnedInfluenceY());
+            else
+                onPinChanged(0.0f, 0.0f);
+        }
     }
 
     // Live pin state
