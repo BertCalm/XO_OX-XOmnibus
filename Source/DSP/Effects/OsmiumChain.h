@@ -301,15 +301,19 @@ private:
             hissFiltR.reset();
         }
 
+        // D005: per-block hiss-LFO rate update. Caller invokes this once
+        // before the inner sample loop so the StandardLFO setRate cost
+        // doesn't repeat per sample. Floor 0.005 Hz comes from the param
+        // range — matches StandardLFO::setRate's internal clamp.
+        void setHissRate(float hissRate)
+        {
+            hissLFO.setRate(hissRate, static_cast<float>(sr));
+        }
+
         void process(float in, float& outL, float& outR,
-                     float wowAmt, float flutterAmt, float noiseAmt, float filtAmt,
-                     float hissRate, float srForRate)
+                     float wowAmt, float flutterAmt, float noiseAmt, float filtAmt)
         {
             float srF = static_cast<float>(sr);
-
-            // D005: dynamically retune the hiss filter LFO each block. Floor
-            // 0.005 Hz comes from the param range below — matches StandardLFO clamp.
-            hissLFO.setRate(hissRate, srForRate);
 
             // Wow: S&H LFO → low-pass filtered → modulates delay time
             float wowRaw = wowLFO.process();
@@ -349,7 +353,7 @@ private:
     } vhs_;
 
     //==========================================================================
-    // Cached parameter pointers (12 params)
+    // Cached parameter pointers
     //==========================================================================
     std::atomic<float>* p_meat30hz   = nullptr;
     std::atomic<float>* p_meat60hz   = nullptr;
@@ -408,7 +412,6 @@ inline void OsmiumChain::processBlock(const float* monoIn, float* L, float* R,
     const float vhsNoise   = p_vhsNoise->load(std::memory_order_relaxed);
     const float vhsFilter  = p_vhsFilter->load(std::memory_order_relaxed);
     const float vhsHissRate = p_vhsHissRate->load(std::memory_order_relaxed);
-    const float srF        = static_cast<float>(sr_);
 
     // Mono pipeline stages 1-3 (write to L as temp mono)
     for (int i = 0; i < numSamples; ++i)
@@ -428,10 +431,13 @@ inline void OsmiumChain::processBlock(const float* monoIn, float* L, float* R,
     }
 
     // Stage 4: VHS Degradation — Mono → Stereo
+    // Per-block hiss-LFO rate update (D005); avoids per-sample setRate cost.
+    vhs_.setHissRate(vhsHissRate);
+
     for (int i = 0; i < numSamples; ++i)
     {
         float wL, wR;
-        vhs_.process(L[i], wL, wR, vhsWow, vhsFlutter, vhsNoise, vhsFilter, vhsHissRate, srF);
+        vhs_.process(L[i], wL, wR, vhsWow, vhsFlutter, vhsNoise, vhsFilter);
         L[i] = wL;
         R[i] = wR;
     }
