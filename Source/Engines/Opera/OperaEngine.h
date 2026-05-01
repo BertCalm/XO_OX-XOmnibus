@@ -503,6 +503,22 @@ public:
     // mpeManager_ in renderBlock() to get per-voice pitch bend / pressure / slide.
     void setMPEManager(xoceanus::MPEManager* m) noexcept { mpeManager_ = m; }
 
+    //-- T6: External mod-route offset API (Path B, Pattern B) ------------------
+    // Called by OperaAdapter::applyGlobalModRoutes() immediately before renderBlock().
+    // Offsets are merged into the per-sample mods accumulator (drama/filterCutoff/
+    // breath/vibDepth) or applied to snap_.ampR after macro expansion.
+    // No allocation; all values stored in pre-allocated members.
+    void setExternalModOffset_Drama(float off) noexcept       { externalModOffsets_.drama       = off; }
+    void setExternalModOffset_FilterCutoff(float off) noexcept{ externalModOffsets_.filterCutoff = off; }
+    void setExternalModOffset_Breath(float off) noexcept      { externalModOffsets_.breath       = off; }
+    void setExternalModOffset_VibDepth(float off) noexcept    { externalModOffsets_.vibDepth     = off; }
+    void setExternalModOffset_AmpR(float off) noexcept        { externalAmpROff_                 = off; }
+    void clearExternalModOffsets() noexcept
+    {
+        externalModOffsets_.clear();
+        externalAmpROff_ = 0.0f;
+    }
+
     //==========================================================================
     // Lifecycle
     //==========================================================================
@@ -892,6 +908,18 @@ public:
         // macroCoupling (M3) is used by the coupling output read path; no snap modification needed.
 
         // ------------------------------------------------------------------
+        // STEP 2c: T6 — Apply external mod-route offsets (Path B, Pattern B).
+        // These are set by OperaAdapter::applyGlobalModRoutes() before each
+        // renderBlock() call.  snap_.ampR offset applied here at block rate;
+        // drama/filterCutoff/breath/vibDepth are merged per-sample below.
+        // ------------------------------------------------------------------
+        if (externalAmpROff_ != 0.0f)
+            snap_.ampR = std::clamp(snap_.ampR + externalAmpROff_, 0.0f, 1.0f);
+        // Clear external offsets so they don't bleed into the next block if the
+        // adapter fails to set them (e.g., no active route).
+        externalAmpROff_ = 0.0f;
+
+        // ------------------------------------------------------------------
         // STEP 3: Configure LFOs for this block
         // ------------------------------------------------------------------
         lfo1_.setRate(snap_.lfo1Rate, sr_);
@@ -1011,7 +1039,11 @@ public:
         {
             // 6a. Accumulate modulation offsets for this sample
             ModOffsets mods;
-            mods.clear();
+            // Seed with block-constant external mod-route offsets (Path B T6).
+            // These were set by OperaAdapter::applyGlobalModRoutes() before this
+            // renderBlock() call.  drama/filterCutoff/breath/vibDepth targets flow
+            // through the normal mods path below; they are cleared at block end above.
+            mods = externalModOffsets_;
 
             float lfo1Val = lfo1_.process() * snap_.lfo1Depth;
             float lfo2Val = lfo2_.process() * snap_.lfo2Depth;
@@ -1398,6 +1430,11 @@ public:
         std::memset(couplingMorphBuffer_, 0, sizeof(float) * static_cast<size_t>(blockSize_));
         std::memset(couplingKBuffer_, 0, sizeof(float) * static_cast<size_t>(blockSize_));
         std::memset(couplingPhaseBuffer_, 0, sizeof(float) * static_cast<size_t>(blockSize_));
+
+        // T6: Clear external mod offsets after consumption so a missing
+        // setExternalMod*() call in the next block doesn't apply stale offsets.
+        externalModOffsets_.clear();
+        // externalAmpROff_ was already cleared in STEP 2c above.
 
         // ------------------------------------------------------------------
         // STEP 11: Update active voice count for thread-safe UI query
@@ -1842,6 +1879,16 @@ private:
 
     // Per-block parameter snapshot
     ParamSnapshot snap_;
+
+    // T6: External mod-route offsets (Path B, Pattern B).
+    // Set by OperaAdapter::applyGlobalModRoutes() BEFORE each renderBlock() call
+    // and consumed inside renderBlock() (merged into per-sample mods accumulator
+    // for drama/filterCutoff/breath/vibDepth, or applied to snap_.ampR directly).
+    // Written on the audio thread in OperaAdapter::renderBlock() before the inner
+    // engine call; read + cleared within the same renderBlock() invocation so there
+    // is no cross-block data race.
+    ModOffsets externalModOffsets_;
+    float      externalAmpROff_ = 0.0f; // additive offset for snap_.ampR (0..1 normalised)
 
     // FIX OP-01 (P14): delta-guard state for setADSR — avoid std::exp calls when params are stable
     float lastAmpAtkSec_ = -1.0f;
