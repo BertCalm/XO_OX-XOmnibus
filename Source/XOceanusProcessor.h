@@ -967,6 +967,14 @@ private:
     // Processor-level value is available for future coupling/macro use.
     std::array<float, 16> expressionValue_{}; // default 0.0 (no expression)
 
+    // ── CC1 Mod Wheel — block-latched scalar (audio thread only) ─────────────
+    // modWheelValue_: 0.0–1.0, latched once per block from the first CC1 event
+    // found in the raw MIDI buffer.  Late-arriving CC1 events within a block are
+    // intentionally ignored to avoid sub-block jitter in the mod matrix.
+    // Persistent across blocks — retains the most recent CC1 value until updated.
+    // Audio-thread-only; no atomics needed.
+    float modWheelValue_{0.0f};
+
     // ── CC64 sustain pedal — fleet-wide hold (audio thread only) ─────────────
     // sustainHeld_[ch]: true while CC64 >= 64 on MIDI channel ch (0-based).
     // sustainPendingNoteOffs_[slot][ch]: bitmask of notes (0–127) whose note-off
