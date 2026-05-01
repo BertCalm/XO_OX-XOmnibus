@@ -3131,6 +3131,12 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // avoid interaction with the per-voice morphEnvOffset blending machinery (D002).
         if (auto* observ = dynamic_cast<ObservandumEngine*>(newEngine.get()))
             observ->setProcessorPtr(this);
+        // T6: Wire OrigamiEngine into the global mod-route opt-in path (Path B Phase 3.1).
+        // Identical protocol to OpalEngine above: setProcessorPtr() stores the pointer
+        // and immediately calls cacheGlobalModRoutes() so indices are ready before the
+        // first renderBlock().
+        if (auto* origami = dynamic_cast<OrigamiEngine*>(newEngine.get()))
+            origami->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3354,6 +3360,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
             ow->cacheGlobalModRoutes();
         if (auto* observ = dynamic_cast<ObservandumEngine*>(eng.get()))
             observ->cacheGlobalModRoutes();
+        if (auto* origami = dynamic_cast<OrigamiEngine*>(eng.get()))
+            origami->cacheGlobalModRoutes();
     }
 }
 
