@@ -510,8 +510,12 @@ inline void OutageChain::addParameters(
                         800.0f, 18000.0f, 3400.0f, 1.0f, 0.3f);
     registerFloat      (layout, p + "drive",        p + "LF7 Drive",
                         0.0f,   100.0f,  20.0f);
+    // D005 (must breathe): floor lowered 0.05 → 0.001 Hz so the K-Field
+    // LPG modulator can drift slowly enough to satisfy the doctrine target
+    // (≤ 0.01 Hz). Default 0.8 Hz unchanged. Skew 0.3 keeps the audible
+    // range in the upper ~95% of knob travel.
     registerFloatSkewed(layout, p + "kFieldRate",   p + "K-Field Rate",
-                        0.05f,   10.0f,  0.8f,  0.001f, 0.3f);
+                        0.001f,  10.0f,  0.8f,  0.001f, 0.3f);
     registerFloat      (layout, p + "kFieldDepth",  p + "K-Field Depth",
                         0.0f,    1.0f,   0.4f);
     registerFloat      (layout, p + "lpgSens",      p + "LPG Sens",
@@ -526,8 +530,12 @@ inline void OutageChain::addParameters(
                         {"Forward 0.5x", "Backward 1x", "Forward 2x"}, 2);
     registerFloat      (layout, p + "ct5Mix",       p + "CT5 Mix",
                         0.0f,  100.0f,  35.0f);
+    // D005 (must breathe): floor lowered 0.1 → 0.001 Hz on the vintage
+    // chorus modulation rate. draumeAmRate (20–100 Hz below) is an
+    // intentional audio-rate AM modulator, not a "breath" parameter, so
+    // its floor is correct as-is.
     registerFloatSkewed(layout, p + "schRate",      p + "SCH-1 Rate",
-                        0.1f,    5.0f,  0.6f,  0.001f, 0.4f);
+                        0.001f,  5.0f,  0.6f,  0.001f, 0.4f);
     registerFloat      (layout, p + "schDepth",     p + "SCH-1 Depth",
                         0.0f,    1.0f,  0.5f);
     registerFloat      (layout, p + "schTone",      p + "SCH-1 Tone",
