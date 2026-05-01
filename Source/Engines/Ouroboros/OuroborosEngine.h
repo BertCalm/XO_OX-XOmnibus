@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
+// T6: forward-declare the processor so setProcessorPtr/cacheGlobalModRoutes
+// signatures are visible in the header without a circular include.
+namespace xoceanus { class XOceanusProcessor; }
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/EngineProfiler.h"
@@ -832,6 +835,9 @@ public:
     static constexpr int kMaxVoices = 6;  // 6 simultaneous chaotic organisms
     static constexpr int kOversample = 4; // 4x oversampling for RK4 stability + alias suppression
 
+    // T6: number of global mod-route targets (Pattern B — mirrors Opal/Oxytocin/Organon)
+    static constexpr int kOuroborosGlobalModTargets = 5;
+
     //==========================================================================
     //  IDENTITY
     //==========================================================================
@@ -933,6 +939,87 @@ public:
         const float injectionDepth = paramInjection ? paramInjection->load() : 0.0f;
         const float velTimbreDepth = paramVelTimbre ? paramVelTimbre->load() : 0.4f;
 
+        // ---- T6: Global mod-route consumption --------------------------------
+        // Apply cached global mod-route offsets to the raw param values before
+        // the macro layer.  avgVelocity is computed once per block (one-block lag
+        // approximation — same latency as all other block-rate modulations).
+        float gmrChaosIndex   = chaosIndex;
+        float gmrDampingAmount = dampingAmount;
+        float gmrInjectionDepth = injectionDepth;
+        float gmrOrbitRate     = orbitRate;
+        float gmrLeashAmount   = leashAmount;
+        if (modAccumPtr_ != nullptr)
+        {
+            float avgVel = 0.0f;
+            int activeCount = 0;
+            for (const auto& v : voices)
+            {
+                if (v.active)
+                {
+                    avgVel += v.velocity;
+                    ++activeCount;
+                }
+            }
+            avgVel = (activeCount > 0) ? avgVel / static_cast<float>(activeCount) : 1.0f;
+
+            // Target 0: ouro_chaosIndex (0..1)
+            {
+                int ri = globalModRouteIdx_[0];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[0] ? raw * avgVel : raw;
+                    gmrChaosIndex = juce::jlimit(0.0f, 1.0f,
+                        gmrChaosIndex + depth * globalModRangeSpan_[0]);
+                }
+            }
+            // Target 1: ouro_damping (0..1)
+            {
+                int ri = globalModRouteIdx_[1];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[1] ? raw * avgVel : raw;
+                    gmrDampingAmount = juce::jlimit(0.0f, 1.0f,
+                        gmrDampingAmount + depth * globalModRangeSpan_[1]);
+                }
+            }
+            // Target 2: ouro_injection (0..1)
+            {
+                int ri = globalModRouteIdx_[2];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[2] ? raw * avgVel : raw;
+                    gmrInjectionDepth = juce::jlimit(0.0f, 1.0f,
+                        gmrInjectionDepth + depth * globalModRangeSpan_[2]);
+                }
+            }
+            // Target 3: ouro_rate (0.01..20000 Hz)
+            {
+                int ri = globalModRouteIdx_[3];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[3] ? raw * avgVel : raw;
+                    gmrOrbitRate = juce::jlimit(0.01f, 20000.0f,
+                        gmrOrbitRate + depth * globalModRangeSpan_[3]);
+                }
+            }
+            // Target 4: ouro_leash (0..1)
+            {
+                int ri = globalModRouteIdx_[4];
+                if (ri >= 0)
+                {
+                    float raw   = modAccumPtr_[static_cast<size_t>(ri)];
+                    float depth = globalModVelScaled_[4] ? raw * avgVel : raw;
+                    gmrLeashAmount = juce::jlimit(0.0f, 1.0f,
+                        gmrLeashAmount + depth * globalModRangeSpan_[4]);
+                }
+            }
+        }
+        // ---- end T6 global mod routes ----------------------------------------
+
         //----------------------------------------------------------------------
         // D004: Read macro values (centered at 0.5 = no effect).
         // Each macro offsets/scales 3+ core parameters before the ODE solver.
@@ -960,21 +1047,23 @@ public:
         //   COUPLING:   leash ±0.3, injection ±0.2, theta ±10° (0.1745 rad)
         //   SPACE:      damping ±0.3, rate ×(0.5..1.0 range applied as ×(0.75-spaceBipolar*0.25)), phi ±15°
         //   D005 BREATH: leash subtle ±0.05 organic drift
+        // T6: macro layer operates on top of the global-mod-route-adjusted values
+        // (gmrOrbitRate, gmrChaosIndex, gmrLeashAmount, gmrDampingAmount, gmrInjectionDepth).
         const float effectiveRate =
-            clamp(orbitRate * (1.0f + moveBipolar * 0.4f) * (1.0f - spaceBipolar * 0.25f), 0.01f, 20000.0f);
-        const float effectiveChaosRaw = clamp(chaosIndex + charBipolar * 0.3f, 0.0f, 1.0f);
+            clamp(gmrOrbitRate * (1.0f + moveBipolar * 0.4f) * (1.0f - spaceBipolar * 0.25f), 0.01f, 20000.0f);
+        const float effectiveChaosRaw = clamp(gmrChaosIndex + charBipolar * 0.3f, 0.0f, 1.0f);
         const float effectiveLeashRaw =
-            clamp(leashAmount + charBipolar * (-0.1f) // CHARACTER loosens leash as chaos rises
-                      + coupBipolar * 0.3f            // COUPLING tightens leash (more musical)
-                      + breathLFO * 0.05f,            // D005 breathing: gentle organic drift
+            clamp(gmrLeashAmount + charBipolar * (-0.1f) // CHARACTER loosens leash as chaos rises
+                      + coupBipolar * 0.3f               // COUPLING tightens leash (more musical)
+                      + breathLFO * 0.05f,               // D005 breathing: gentle organic drift
                   0.0f, 1.0f);
         const float effectiveThetaRaw = projectionTheta + charBipolar * 0.2618f // CHARACTER: ±15°
                                         + coupBipolar * 0.1745f;                // COUPLING:  ±10°
         const float effectivePhiRaw = projectionPhi + moveBipolar * 0.3491f     // MOVEMENT: ±20°
                                       + spaceBipolar * 0.2618f;                 // SPACE:    ±15°
-        const float effectiveDampingRaw = clamp(dampingAmount + spaceBipolar * 0.3f, 0.0f, 1.0f);
-        const float effectiveInjectionRaw = clamp(injectionDepth + moveBipolar * 0.15f // MOVEMENT: ±0.15
-                                                      + coupBipolar * 0.2f,            // COUPLING: ±0.2
+        const float effectiveDampingRaw = clamp(gmrDampingAmount + spaceBipolar * 0.3f, 0.0f, 1.0f);
+        const float effectiveInjectionRaw = clamp(gmrInjectionDepth + moveBipolar * 0.15f // MOVEMENT: ±0.15
+                                                      + coupBipolar * 0.2f,               // COUPLING: ±0.2
                                                   0.0f, 1.0f);
 
         const auto newTopology =
@@ -1611,6 +1700,33 @@ public:
     {
         addParametersImpl(params);
     }
+
+    //-- T6: Global mod-route opt-in -------------------------------------------
+    //
+    // setProcessorPtr() — called once from XOceanusProcessor::loadEngine() on the
+    // message thread after attachParameters().  Stores the processor pointer so
+    // cacheGlobalModRoutes() can call the public route accessors.
+    //
+    // cacheGlobalModRoutes() — scans the current snapshot for routes that target
+    // any of Ouroboros's 5 modulated parameters and stores the matching route
+    // indices in globalModRouteIdx_[].  -1 means no active route for that target.
+    // Called whenever the snapshot changes (on load + on route model flush).
+    //
+    // Target → index mapping (fixed):
+    //   0 = ouro_chaosIndex   (bifurcation / timbral depth)
+    //   1 = ouro_damping      (feedback attenuation / tail length)
+    //   2 = ouro_injection    (coupling perturbation force)
+    //   3 = ouro_rate         (orbit frequency / pitch-timbre)
+    //   4 = ouro_leash        (trajectory constraint / character)
+
+    void setProcessorPtr(XOceanusProcessor* p) noexcept
+    {
+        processorPtr_ = p;
+        cacheGlobalModRoutes();
+    }
+
+    void cacheGlobalModRoutes() noexcept; // implemented in OuroborosEngine.cpp
+
     void attachParameters(juce::AudioProcessorValueTreeState& apvts) override
     {
         paramTopology = apvts.getRawParameterValue("ouro_topology");
@@ -1859,6 +1975,33 @@ private:
     float ouroModLeashOffset = 0.0f; // ±0.4 leash modulation
     float ouroModPitchOffset = 0.0f; // ±12 semitone pitch modulation
     float ouroModLevelOffset = 0.0f; // ±0.5 amplitude scale offset
+
+    // T6: Global mod-route opt-in state (Pattern B — mirrors Opal/Oxytocin/Organon)
+    // processorPtr_: set by setProcessorPtr() on the message thread; read-only on
+    //   the audio thread after that.  Plain pointer — no atomic needed because
+    //   assignment happens before the first renderBlock() call.
+    XOceanusProcessor* processorPtr_ = nullptr;
+
+    // Cached route indices for the 5 target params (kOuroborosGlobalModTargets).
+    // -1 = no active global route for that target.
+    // Written by cacheGlobalModRoutes() (message thread), read by renderBlock()
+    // (audio thread).  One-block lag is safe: worst case is a missed mod offset.
+    std::array<int, kOuroborosGlobalModTargets> globalModRouteIdx_{-1,-1,-1,-1,-1};
+    std::array<bool, kOuroborosGlobalModTargets> globalModVelScaled_{};
+    std::array<float, kOuroborosGlobalModTargets> globalModRangeSpan_{};
+
+    // Raw pointer to the processor's routeModAccum_ array.  Set alongside
+    // processorPtr_ so applyGlobalModRoutes() avoids needing the full processor type.
+    const float* modAccumPtr_ = nullptr;
+
+    // Param IDs for the 5 modulated targets (index-matched to globalModRouteIdx_).
+    static constexpr const char* kGlobalModTargetIds[kOuroborosGlobalModTargets] = {
+        "ouro_chaosIndex",  // 0: bifurcation depth / timbral chaos
+        "ouro_damping",     // 1: feedback attenuation / tail length
+        "ouro_injection",   // 2: coupling perturbation force
+        "ouro_rate",        // 3: orbit frequency / pitch-timbre
+        "ouro_leash",       // 4: trajectory constraint / character
+    };
 };
 
 } // namespace xoceanus
