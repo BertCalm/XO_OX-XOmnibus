@@ -56,6 +56,7 @@
 #include "Engines/Overtone/OvertoneEngine.h"
 #include "Engines/Organism/OrganismEngine.h"
 #include "Engines/Oxbow/OxbowEngine.h"
+#include "Engines/Oxbow/OxbowAdapter.h"
 #include "Engines/Oware/OwareEngine.h"
 #include "Engines/Opera/OperaAdapter.h"
 #include "Engines/Offering/OfferingEngine.h"
@@ -255,7 +256,7 @@ static bool registered_Organism =
                                                         { return std::make_unique<xoceanus::OrganismEngine>(); });
 // Singularity Collection — OXBOW (entangled reverb synth engine)
 static bool registered_Oxbow = xoceanus::EngineRegistry::instance().registerEngine(
-    "Oxbow", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OxbowEngine>(); });
+    "Oxbow", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OxbowAdapter>(); });
 // OWARE — tuned percussion synthesizer (wood/metal material continuum)
 static bool registered_Oware = xoceanus::EngineRegistry::instance().registerEngine(
     "Oware", []() -> std::unique_ptr<xoceanus::SynthEngine> { return std::make_unique<xoceanus::OwareEngine>(); });
@@ -3094,6 +3095,12 @@ void XOceanusProcessor::loadEngine(int slot, const std::string& engineId)
         // so the engine's cached route indices are ready before the first renderBlock().
         if (auto* organ = dynamic_cast<OrganonEngine*>(newEngine.get()))
             organ->setProcessorPtr(this);
+        // T6: Wire OxbowAdapter into the global mod-route opt-in path (Pattern B).
+        // Identical protocol to OpalEngine above: setProcessorPtr() stores the pointer
+        // and immediately calls cacheGlobalModRoutes() so indices are ready before the
+        // first renderBlock().
+        if (auto* oxb = dynamic_cast<OxbowAdapter*>(newEngine.get()))
+            oxb->setProcessorPtr(this);
     }
 
     // Wake the silence gate so the new engine renders its first block immediately.
@@ -3303,6 +3310,8 @@ void XOceanusProcessor::flushModRoutesSnapshot() noexcept
             oxy->cacheGlobalModRoutes();
         if (auto* organ = dynamic_cast<OrganonEngine*>(eng.get()))
             organ->cacheGlobalModRoutes();
+        if (auto* oxb = dynamic_cast<OxbowAdapter*>(eng.get()))
+            oxb->cacheGlobalModRoutes();
     }
 }
 
