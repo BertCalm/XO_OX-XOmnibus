@@ -462,18 +462,21 @@ public:
         //   drawers above kMinWidth px.  No additional coordinator call is required here.
         tabBar_.onTabChanged = [this](const juce::String& tab)
         {
+            // 1D-2A C2: single-controller pattern — onTabChanged owns surfaceRight_
+            // open/visible state; OceanLayout::layoutDashboard() derives
+            // subPlaySurface_ visibility from surfaceRight_.isOpen() on the
+            // resized() pass below. Direct sets on subPlaySurface_ here were
+            // redundant (layoutDashboard would override them on the same call
+            // chain) and created the impression of dual ownership.
             if (tab == "KEYS")
             {
-                // KEYS: keyboard in dashboard, right panel closed.
+                // KEYS: right panel closed → layoutDashboard will show keyboard.
                 surfaceRight_.setOpen(false);
                 surfaceRight_.setVisible(false);
-                subPlaySurface_.setVisible(true);
             }
             else
             {
-                // PAD/XY: right panel opens, keyboard HIDES.
-                subPlaySurface_.setVisible(false);
-
+                // PAD/XY: right panel opens → layoutDashboard will hide keyboard.
                 if (tab == "PAD")       surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
                 else if (tab == "XY")   surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
 

@@ -1632,25 +1632,19 @@ public:
         //
         // The bottom PerformanceStrip is always shown except in XY full-screen tab.
 
-        bool showStrip    = (surfaceTab_ != SurfaceTab::XY);
         bool showLeftCol  = (surfaceTab_ == SurfaceTab::Keys || surfaceTab_ == SurfaceTab::Pads);
         bool showKeys     = (surfaceTab_ == SurfaceTab::Keys);
         bool showNoteInput = (surfaceTab_ == SurfaceTab::Pads);
         bool showXY       = (surfaceTab_ == SurfaceTab::XY);
 
-        // ── Performance Strip — full width, bottom (hidden in XY tab) ────────
-        if (showStrip)
-            strip.setBounds(bounds.removeFromBottom(PS::kStripH));
-        else
-            strip.setBounds({});  // zero bounds — invisible in XY
-        strip.setVisible(showStrip);
-
-        // ── Full-screen XY mode — PerformanceStrip takes all remaining space ──
+        // 1D-2A C1: strip is always visible — bounds differ by tab.
+        // (Was a dead-write pair: `setVisible(false)` then immediate `setVisible(true)`
+        // in XY mode. Audit-flagged as misleading; collapsed to a single coherent path.)
         if (showXY)
-        {
-            strip.setBounds(bounds);
-            strip.setVisible(true);
-        }
+            strip.setBounds(bounds); // full area in XY
+        else
+            strip.setBounds(bounds.removeFromBottom(PS::kStripH)); // bottom row in KEYS/PADS
+        strip.setVisible(true);
 
         if (showLeftCol)
         {

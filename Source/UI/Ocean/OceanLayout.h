@@ -290,12 +290,24 @@ public:
 
     /**
         Effective dashboard height — collapses when SurfaceRightPanel is open
-        (keyboard hidden; only macros + FX + tabs remain).
+        (keyboard, EpicSlots, and SeqStrip hidden; only macros + FX + tabs remain,
+        plus ChordBar if the CHORD toggle is on).
     */
     int getEffectiveDashboardH() const noexcept
     {
         if (targets_.surfaceRight.isOpen() && targets_.surfaceRight.isVisible())
-            return static_cast<int>(kMacroStripH) + MasterFXStripCompact::kStripHeight + kTabBarH;
+        {
+            // 1D-2A: ChordBar (42px) is dashboard-area when its CHORD toggle is
+            // on. Without this, the budget undercounts by 42 in PAD/XY+CHORD
+            // and ChordBar overlaps the ocean viewport.
+            constexpr int kChordBarH = 42;
+            const auto* cb = children_.chordBar();
+            const int chordBarH = (cb && cb->isVisible()) ? kChordBarH : 0;
+            return static_cast<int>(kMacroStripH)
+                 + MasterFXStripCompact::kStripHeight
+                 + kTabBarH
+                 + chordBarH;
+        }
         return kDashboardH;
     }
 
