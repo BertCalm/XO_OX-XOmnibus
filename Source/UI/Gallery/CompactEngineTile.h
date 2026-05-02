@@ -961,7 +961,9 @@ private:
                                         });
         };
         picker->setSize(280, 400);
-        juce::CallOutBox::launchAsynchronously(std::unique_ptr<juce::Component>(picker), getScreenBounds(), nullptr);
+        // wire(1C-fix): pass getTopLevelComponent() so the box renders above the
+        // plugin window on macOS AU (nullptr causes it to render behind the window).
+        juce::CallOutBox::launchAsynchronously(std::unique_ptr<juce::Component>(picker), getScreenBounds(), getTopLevelComponent());
     }
 
     XOceanusProcessor& processor;

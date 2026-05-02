@@ -838,6 +838,12 @@ private:
         std::atomic<float>* obblBond = nullptr;
         std::atomic<float>* oleDrama = nullptr;
 
+        // wire(1C-4): Global session params — masterTune (415-466 Hz) and
+        // pitchBendRange (1-24 semitones).  Cached here (not in processBlock via
+        // getRawParameterValue) to satisfy Architect Condition 1 (B009 thread safety).
+        std::atomic<float>* masterTune      = nullptr; // "masterTune"      (415..466 Hz)
+        std::atomic<float>* pitchBendRange  = nullptr; // "pitchBendRange"  (1..24 semitones)
+
         // MPE parameters
         std::atomic<float>* mpeEnabled = nullptr;
         std::atomic<float>* mpeZone = nullptr;
@@ -927,6 +933,12 @@ private:
     // ── Per-slot mute state ───────────────────────────────────────────────────
     // Written by message thread (setSlotMuted), read by audio thread per block.
     std::array<std::atomic<bool>, MaxSlots> slotMuted{}; // default false
+
+    // ── wire(1C-4): pitchBendRange change-detection (audio thread only) ─────────
+    // Tracks the last RPN 0 value injected into slotMidi so we only re-emit the
+    // 6-message sequence when the user actually changes the setting.
+    // -1 sentinel forces injection on the first processBlock() call.
+    int lastInjectedPitchBendRange_{-1};
 
     // ── CC11 Expression pedal — per-channel tracking (audio thread only) ────────
     // expressionValue_[ch]: 0.0–1.0, updated from CC11 events in processBlock().

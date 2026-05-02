@@ -1321,13 +1321,18 @@ private:
             "Step " + juce::String(stepIdx + 1));
 
         const juce::String pref = prefix_; // capture for lambda
-        juce::AudioProcessorValueTreeState& apvts = apvts_;
+        // wire(1C-fix): use raw pointer + null-guard to avoid dangling reference
+        // if the editor is destroyed while the CallOutBox is still open.
+        // apvts_ lifetime is tied to the processor, which outlives the editor, so
+        // the pointer itself remains valid; only the component graph may go away.
+        juce::AudioProcessorValueTreeState* apvtsPtr = &apvts_;
 
-        content->onParamChange = [&apvts, pref](const juce::String& suffix, float value)
+        content->onParamChange = [apvtsPtr, pref](const juce::String& suffix, float value)
         {
             // Suffix comes from StepDetailContent without the slot prefix, e.g. "svel_3".
             // We need to call setValueNotifyingHost via the APVTS parameter.
-            if (auto* p = apvts.getParameter(pref + suffix))
+            if (apvtsPtr == nullptr) return;
+            if (auto* p = apvtsPtr->getParameter(pref + suffix))
             {
                 p->beginChangeGesture();
                 p->setValueNotifyingHost(p->convertTo0to1(value));
