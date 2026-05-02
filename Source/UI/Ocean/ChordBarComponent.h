@@ -1110,7 +1110,17 @@ private:
             p->setValueNotifyingHost(seqRunning ? 1.0f : 0.0f);
             p->endChangeGesture();
         }
-        // ENO mode doesn't have a dedicated param — track locally.
+
+        // wire(1C-1): ENO pill — write cm_eno_mode APVTS param so the audio thread
+        // picks up the change via cachedParams.cmEnoMode → chordMachine.setEnoMode()
+        // in processBlock (one audio block of latency is acceptable for a mode toggle).
+        const bool enoActive = (currentMode_ == ChordMode::Eno);
+        if (auto* p = apvts_.getParameter("cm_eno_mode"))
+        {
+            p->beginChangeGesture();
+            p->setValueNotifyingHost(enoActive ? 1.0f : 0.0f);
+            p->endChangeGesture();
+        }
     }
 
     //--------------------------------------------------------------------------

@@ -986,6 +986,67 @@ public:
             }
             matrix.removeUserRoute(r.sourceSlot, r.destSlot, r.type);
         };
+
+        // wire(1C-2): Engine context-menu callbacks — 5 actions from right-click buoy menu.
+        // OceanView tracks the toggle states internally (slotMuted_[], slotSoloed_[]).
+        // The editor reads those states back and propagates to the processor.
+
+        // Mute: sync OceanView's toggle state to the processor's slotMuted[] atomic.
+        oceanView_.onEngineMuteToggled = [this](int slot)
+        {
+            if (slot < 0 || slot >= kNumPrimarySlots) return;
+            processor.setSlotMuted(slot, oceanView_.isSlotMuted(slot));
+        };
+
+        // Solo: no dedicated processor solo API exists — implement as "mute all others".
+        // When slot X becomes soloed: mute all non-soloed slots.
+        // When all solos are cleared: restore mute states from OceanView's slotMuted_.
+        oceanView_.onEngineSoloToggled = [this](int slot)
+        {
+            if (slot < 0 || slot >= kNumPrimarySlots) return;
+            // Check if any slot is still soloed after this toggle.
+            bool anySoloed = false;
+            for (int i = 0; i < kNumPrimarySlots; ++i)
+                if (oceanView_.isSlotSoloed(i)) { anySoloed = true; break; }
+            if (anySoloed)
+            {
+                // Mute any slot that is not soloed; un-mute soloed slots.
+                for (int i = 0; i < kNumPrimarySlots; ++i)
+                    processor.setSlotMuted(i, !oceanView_.isSlotSoloed(i));
+            }
+            else
+            {
+                // All solos cleared — restore explicit per-slot mute states.
+                for (int i = 0; i < kNumPrimarySlots; ++i)
+                    processor.setSlotMuted(i, oceanView_.isSlotMuted(i));
+            }
+        };
+
+        // Remove: unload the engine from the slot.  OceanView clears its buoy visually;
+        // the processor releases the shared_ptr and stops rendering that slot.
+        oceanView_.onEngineRemoveRequested = [this](int slot)
+        {
+            if (slot < 0 || slot >= kNumPrimarySlots) return;
+            processor.unloadEngine(slot);
+        };
+
+        // Chain mode: OceanView handles all visual chain-mode state internally.
+        // No processor-side action is needed for chain-mode entry; the route is
+        // created when the user completes the knot via onCouplingRouteRequested.
+        oceanView_.onChainModeRequested = [](int /*slot*/)
+        {
+            // Visual chain-mode is fully managed by OceanView (toggleChainMode /
+            // setChainInProgress).  No processor call needed at this stage.
+        };
+
+        // Picker: the engine drawer opened for slot selection.  This fires AFTER
+        // the user has already committed a selection (from engineDrawer_.onEngineSelected)
+        // which triggers onEngineSelectedFromDrawer above.  No additional action needed.
+        oceanView_.onEnginePickerRequested = []()
+        {
+            // Notification-only: selection is handled by onEngineSelectedFromDrawer.
+        };
+
         oceanView_.onPresetSelected = [this](int idx)
         {
             // Load preset by index from the library snapshot.
@@ -1189,6 +1250,26 @@ public:
                 msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
                 processor.getMidiCollector().addMessageToQueue(msg);
             };
+
+            // wire(1C-5): SubmarinePlaySurface XY mode → APVTS xy_pos_x/y params.
+            // SubmarinePlaySurface.h:105 — was UNASSIGNED. Routes through the same
+            // processor APVTS xy_pos_x/y params as SurfaceRightPanel::onXYChanged.
+            subPS.onXYChanged = [this](float x, float y)
+            {
+                auto& apvts = processor.getAPVTS();
+                if (auto* px = apvts.getParameter("xy_pos_x"))
+                {
+                    px->beginChangeGesture();
+                    px->setValueNotifyingHost(juce::jlimit(0.0f, 1.0f, x));
+                    px->endChangeGesture();
+                }
+                if (auto* py = apvts.getParameter("xy_pos_y"))
+                {
+                    py->beginChangeGesture();
+                    py->setValueNotifyingHost(juce::jlimit(0.0f, 1.0f, y));
+                    py->endChangeGesture();
+                }
+            };
         }
 
         // F03 fix (#1322): Wire SurfaceRightPanel note callbacks to MidiCollector.
@@ -1220,6 +1301,24 @@ public:
                     p->setValueNotifyingHost(gridOn ? 1.0f : 0.0f);
             };
         }
+
+        // wire(1C-1): ExpressionStrips pitch bend and mod wheel → MidiCollector.
+        // onPitchBend fires -1..+1; onModWheel fires 0..+1.  Both are forwarded
+        // outward via OceanView so the editor can insert them into the MIDI stream.
+        oceanView_.onExpressionPitchBend = [this](float v)
+        {
+            const int wheelVal = static_cast<int>(std::round(8192.0f + v * 8191.0f));
+            auto msg = juce::MidiMessage::pitchWheel(1, juce::jlimit(0, 16383, wheelVal));
+            msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+            processor.getMidiCollector().addMessageToQueue(msg);
+        };
+        oceanView_.onExpressionModWheel = [this](float v)
+        {
+            const int cc1 = juce::jlimit(0, 127, static_cast<int>(std::round(v * 127.0f)));
+            auto msg = juce::MidiMessage::controllerEvent(1, 1, cc1);
+            msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+            processor.getMidiCollector().addMessageToQueue(msg);
+        };
 
         // wire(#orphan-sweep item 1): SurfaceRightPanel::onXYChanged was declared but
         // never assigned.  Wire it so XY pad gestures route to APVTS parameters.
@@ -1595,6 +1694,14 @@ public:
         // Mount as topmost child before toastOverlay_ — paints above all panels
         // but below toasts so notifications are never obscured.
         addAndMakeVisible(walkthrough_);
+
+        // wire(1C-5): walkthrough complete — the overlay dismisses itself before
+        // firing this callback (skipAll/completeTour both call dismissAll() first).
+        // We just trigger a repaint so the now-invisible walkthrough layer is cleared.
+        walkthrough_.onWalkthroughComplete = [this]()
+        {
+            repaint();
+        };
 
                 // ── ToastOverlaybe the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.

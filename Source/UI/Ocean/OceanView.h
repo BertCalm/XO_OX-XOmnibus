@@ -254,6 +254,10 @@ public:
 
         // 9f. Expression strips (PB + MW) — always visible in play area.
         addAndMakeVisible(exprStrips_);
+        // wire(1C-1): Forward ExpressionStrips callbacks outward so the editor can
+        // route pitch bend and mod wheel to the processor's MIDI collector.
+        exprStrips_.onPitchBend = [this](float v) { if (onExpressionPitchBend) onExpressionPitchBend(v); };
+        exprStrips_.onModWheel  = [this](float v) { if (onExpressionModWheel)  onExpressionModWheel(v); };
 
         // 9g-vis. Dot-matrix visualizer — fills empty space right of macros.
         addAndMakeVisible(dotMatrix_);
@@ -529,6 +533,14 @@ public:
         };
 
         // ── DetailOverlay callbacks ───────────────────────────────────────────
+        // wire(1C-5): onShown — register Detail with the coordinator when the overlay
+        // is explicitly shown via DetailOverlay::show() (future code path; show() is
+        // currently not called but the callback is wired for forward-compatibility).
+        detailOverlay_.onShown = [this]()
+        {
+            coordinatorRequestOpen(PanelType::Detail);
+        };
+
         detailOverlay_.onHidden = [this]()
         {
             if (auto* dp = children_.detailPanel())
@@ -1716,6 +1728,12 @@ public:
     std::function<void(bool isOpen)> onSeqBreakoutToggled;
     std::function<void(bool isOpen)> onChordBreakoutToggled;
 
+    // wire(1C-1): ExpressionStrips — pitch bend (-1..+1) and mod wheel (0..+1)
+    // forwarded outward so the editor can route to the MIDI collector.
+    // Wired to exprStrips_.onPitchBend / onModWheel in initLayoutAndComponents().
+    std::function<void(float pitchBend)> onExpressionPitchBend;  // -1..+1
+    std::function<void(float modWheel)>  onExpressionModWheel;   //  0..+1
+
     //==========================================================================
     // State queries
     //==========================================================================
@@ -2092,7 +2110,9 @@ private:
         menu.addItem(removeItem);
 
         SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
-            juce::PopupMenu::Options{},
+            // wire(1C-fix): withTargetComponent ensures menus anchor to the plugin
+            // window on macOS AU (empty Options{} may appear at screen origin).
+            juce::PopupMenu::Options{}.withTargetComponent(this),
             [this, slot](int result)
             {
                 switch (result)
@@ -2198,7 +2218,8 @@ private:
         menu.addItem(removeItem);
 
         SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
-            juce::PopupMenu::Options{},
+            // wire(1C-fix): withTargetComponent ensures menus anchor to the plugin window.
+            juce::PopupMenu::Options{}.withTargetComponent(this),
             [this, chainIndex](int result)
             {
                 switch (result)
@@ -2257,7 +2278,8 @@ private:
         menu.addItem(2, juce::String::fromUTF8("\xf0\x9f\x94\x97  Toggle Chain Mode"));      // 🔗
 
         SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
-            juce::PopupMenu::Options{},
+            // wire(1C-fix): withTargetComponent ensures menus anchor to the plugin window.
+            juce::PopupMenu::Options{}.withTargetComponent(this),
             [this, slot](int result)
             {
                 switch (result)

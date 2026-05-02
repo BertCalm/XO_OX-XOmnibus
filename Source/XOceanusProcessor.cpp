@@ -496,6 +496,12 @@ void XOceanusProcessor::cacheParameterPointers()
         jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].target != nullptr);
     }
 
+    // wire(1C-4): Global session params — masterTune + pitchBendRange.
+    // getRawParameterValue() is called ONCE here (message thread / constructor),
+    // not inside processBlock, satisfying Architect Condition 1 (B009 thread safety).
+    cachedParams.masterTune     = apvts.getRawParameterValue("masterTune");
+    cachedParams.pitchBendRange = apvts.getRawParameterValue("pitchBendRange");
+
     // MPE params
     cachedParams.mpeEnabled = apvts.getRawParameterValue("mpe_enabled");
     cachedParams.mpeZone = apvts.getRawParameterValue("mpe_zone");
@@ -1729,6 +1735,57 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             static_cast<MPEManager::ExpressionTarget>(static_cast<int>(cachedParams.mpePressureTarget->load())));
         mpeManager.setSlideTarget(
             static_cast<MPEManager::ExpressionTarget>(static_cast<int>(cachedParams.mpeSlideTarget->load())));
+    }
+
+    // wire(1C-4): masterTune — inject a synthetic pitch wheel into each per-slot
+    // MIDI buffer at block start so all engines (including those without a per-engine
+    // masterTune param) respond to the global concert pitch setting.
+    // masterTuneHz is in 415..466 Hz; offset in semitones = 12 * log2(hz / 440).
+    // The wheel value is encoded relative to a ±2-semitone range (standard default).
+    // If the tune is exactly 440 Hz (default), no message is injected.
+    if (cachedParams.masterTune)
+    {
+        const float masterTuneHz = cachedParams.masterTune->load(std::memory_order_relaxed);
+        if (std::abs(masterTuneHz - 440.0f) > 0.01f)
+        {
+            const float semitones = 12.0f * std::log2(masterTuneHz / 440.0f);
+            const float rangeMultiplier = 1.0f / 2.0f; // 2-semitone range
+            const float normalised = juce::jlimit(-1.0f, 1.0f, semitones * rangeMultiplier);
+            const int wheelVal = static_cast<int>(
+                std::round(8192.0f + normalised * 8191.0f));
+            for (int i = 0; i < MaxSlots; ++i)
+            {
+                auto msg = juce::MidiMessage::pitchWheel(1, juce::jlimit(0, 16383, wheelVal));
+                slotMidi[i].addEvent(msg, 0);
+            }
+        }
+    }
+
+    // wire(1C-4): pitchBendRange — inject RPN 0 (Pitch Bend Sensitivity) into each
+    // slot's MIDI buffer so engines that honour MIDI RPN #0 will respect the range.
+    // Only inject when the value differs from the previous block's value to avoid
+    // flooding engines with redundant RPN sequences every block.
+    if (cachedParams.pitchBendRange)
+    {
+        const int pbRange = static_cast<int>(
+            cachedParams.pitchBendRange->load(std::memory_order_relaxed));
+        if (pbRange != lastInjectedPitchBendRange_)
+        {
+            lastInjectedPitchBendRange_ = pbRange;
+            // RPN 0 (Pitch Bend Sensitivity) sequence:
+            //   CC 101 = 0 (RPN MSB)   CC 100 = 0 (RPN LSB)
+            //   CC 6   = semitones      CC 38  = 0 (cents LSB)
+            //   CC 101 = 127 (RPN null = deactivate)  CC 100 = 127
+            for (int i = 0; i < MaxSlots; ++i)
+            {
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 101, 0),   0);
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 100, 0),   0);
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 6,   juce::jlimit(0, 24, pbRange)), 0);
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 38,  0),   0);
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 101, 127), 0);
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 100, 127), 0);
+            }
+        }
     }
 
     // ── MPE expression extraction (#1237 — was dead; now wired) ──────────────

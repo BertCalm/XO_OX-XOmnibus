@@ -1488,7 +1488,19 @@ public:
         // V2: also wire KeysMode
         keysMode_.midiCollector = collector;
         keysMode_.midiChannel = channel;
+
+        // wire(1C-1): KeysMode pitch bend and aftertouch — forward outward so
+        // callers (e.g. XOceanusEditor) can observe values for UI feedback.
+        // keysMode_ already injects MIDI pitch wheel / channelPressure via midiCollector;
+        // these callbacks carry the same values to the UI notification path.
+        keysMode_.onPitchBend   = [this](float v) { if (onKeysPitchBend)   onKeysPitchBend(v); };
+        keysMode_.onAftertouch  = [this](float v) { if (onKeysAftertouch)  onKeysAftertouch(v); };
     }
+
+    // wire(1C-1): KeysMode pitch bend (-1..+1) and aftertouch (0..+1) notifications.
+    // Assigned when setMidiCollector() is called; fire alongside the MIDI path.
+    std::function<void(float pitchBend)>  onKeysPitchBend;
+    std::function<void(float aftertouch)> onKeysAftertouch;
 
     // Engine Accent Adaptive: propagate accent colour to all four zones.
     // Call this from XOceanusEditor::timerCallback() when the active engine changes.
