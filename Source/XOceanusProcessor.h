@@ -518,14 +518,14 @@ public:
     const SlotModSourceRegistry& getModSourceRegistry() const noexcept { return modSourceRegistry_; }
 
     // ── #1357: XY Surface position atomics (W8B mount) ───────────────────────
-    // Per-slot XY surface position in [0, 1].  Written by XYSurface::onXYChanged
+    // Per-slot XY surface position in [0, 1].  Written by SurfaceRightPanel::onXYChanged
     // on the message thread; read by the mod routing system (DragDropModRouter)
     // on the audio thread as ModSourceId::XYX0..XYY3.
     //
     // Thread-safety: std::atomic<float> with relaxed ordering — a one-block-late
     // value is acceptable for a continuous modulation source.
     //
-    // setXYPosition: call from XYSurface::onXYChanged (message thread).
+    // setXYPosition: call from SurfaceRightPanel::onXYChanged (message thread).
     // getXYPosition: call from audio thread inside processBlock.
     void setXYPosition(int slot, float x, float y) noexcept
     {
@@ -1025,7 +1025,7 @@ private:
     std::atomic<float> noteActivity_{0.0f};
 
     // ── #1357: XY Surface position atomics (W8B mount) ───────────────────────
-    // Per-slot XY position [0, 1] written by XYSurface::onXYChanged (message thread)
+    // Per-slot XY position [0, 1] written by SurfaceRightPanel::onXYChanged (message thread)
     // and read by the mod routing system as ModSourceId::XYX0..XYY3 (audio thread).
     // Initialised to 0.5 (centre) so modulation is neutral before first interaction.
     // Note: std::atomic is not copy/move-constructible, so initialise via default ctor

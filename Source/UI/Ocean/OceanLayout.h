@@ -39,7 +39,7 @@
 #include "CouplingSubstrate.h"
 #include "DnaMapBrowser.h"
 #include "DetailOverlay.h"
-#include "PlaySurfaceOverlay.h"
+// #include "PlaySurfaceOverlay.h"  -- cut(1B-#13): PlaySurfaceOverlay removed
 #include "EnginePickerDrawer.h"
 #include "SettingsDrawer.h"
 #include "ExpressionStrips.h"
@@ -87,7 +87,6 @@ struct LayoutTargets
     DetailOverlay&                  detailOverlay;
     CouplingConfigPopup&            couplingPopup;
     juce::Component&                dimOverlay;   // DimOverlay — typed as Component to avoid circular header
-    PlaySurfaceOverlay&             playSurfaceOverlay;
 
     // Empty-state / first-launch helpers
     juce::Label&                    emptyStateLabel;
@@ -249,18 +248,17 @@ public:
         targets_.settingsButton.toFront(false);
         targets_.keysButton.toFront(false);
         targets_.presetNameLabel.toFront(false);
-        // #1008 FIX 7: dimOverlay_ above buttons but below PlaySurfaceOverlay.
+        // #1008 FIX 7: dimOverlay_ above buttons but below SubmarinePlaySurface.
         targets_.dimOverlay.toFront(false);
         // Empty-state elements float above HUD bar.
         targets_.emptyStateLabel.toFront(false);
         targets_.lifesaver.toFront(false);
         // Step 6: waterline and tab bar sit above the dim overlay but below
-        // the PlaySurface so they are always legible.
+        // the SubmarinePlaySurface so they are always legible.
         targets_.hudBar.toFront(false);
         targets_.surfaceRight.toFront(false);
         targets_.exprStrips.toFront(false);
         targets_.subPlaySurface.toFront(false);
-        targets_.playSurfaceOverlay.toFront(false);
         if (auto* wl = children_.waterline())      wl->toFront(false);
         if (auto* fx = children_.masterFxStrip())  fx->toFront(false);
         if (auto* es = children_.epicSlots())      es->toFront(false);

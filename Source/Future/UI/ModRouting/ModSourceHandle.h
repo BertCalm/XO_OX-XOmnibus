@@ -50,7 +50,7 @@ enum class ModSourceId
     SeqStepPitch = 19,  // Per-step pitch offset bipolar -1..+1 (from ±12 semitones)
     // ── #1357: XY Surface position sources (W8B mount) ──────────────────────
     // XY surface X-axis value for each engine slot, bipolar [-1, +1] (centred on 0.5).
-    // Read from XOceanusProcessor::xyX_[slot] atomics updated by XYSurface::onXYChanged.
+    // Read from XOceanusProcessor::xyX_[slot] atomics updated by SurfaceRightPanel::onXYChanged.
     // Slot is determined by the ModRoute's destParamId suffix convention.
     XYX0 = 20,   // XY surface X-axis, slot 0 (bipolar)
     XYX1 = 21,   // XY surface X-axis, slot 1 (bipolar)

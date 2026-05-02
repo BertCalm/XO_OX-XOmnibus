@@ -26,7 +26,6 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
-#include "Starboard.h"
 #include <functional>
 #include <cmath>
 #include <array>
@@ -50,8 +49,6 @@ public:
     static constexpr int kPanelWidth  = 420;
     static constexpr int kHeaderH     = 36;
 
-    // Starboard strip (dormant — preserved for future EpicSlotsPanel reuse).
-    static constexpr int kStarboardH  = Starboard::kHeight;
 
     //==========================================================================
     SurfaceRightPanel()
@@ -60,9 +57,6 @@ public:
         setInterceptsMouseClicks(true, true);
         setWantsKeyboardFocus(false);
 
-        // Starboard strip — dormant, kept for future EpicSlotsPanel reuse.
-        starboard_.setVisible(false);
-        addAndMakeVisible(starboard_);
     }
 
     ~SurfaceRightPanel() override = default;
@@ -80,16 +74,6 @@ public:
     }
 
     Mode getMode() const noexcept { return mode_; }
-
-    //==========================================================================
-    // Starboard state injection (dormant — Starboard is not currently rendered).
-    void setStarboardState(const Starboard::State& s)
-    {
-        starboard_.setState(s);
-    }
-
-    // Direct access for hosts that want to build state incrementally.
-    Starboard& getStarboard() noexcept { return starboard_; }
 
     void setOpen(bool open)
     {
@@ -361,8 +345,6 @@ private:
     // XY auto-motion selected pill (-1 = none)
     int   autoMotionSel_   = -1;
 
-    // Starboard engine-state strip (dormant — preserved for future EpicSlotsPanel reuse).
-    Starboard            starboard_;
 
     // XY assign label state (toggle for hover, not interactive here)
     // assignXHover_ / assignYHover_ reserved for future XY-assign hover highlight
@@ -572,10 +554,10 @@ private:
         g.drawHorizontalLine(kHeaderH - 1, hdr.getX(), hdr.getRight());
 
         // Mode title — 10px weight 600, uppercase, letter-spacing 1.5px, color teal @65%
+        jassert(mode_ == Mode::Pad || mode_ == Mode::Drum || mode_ == Mode::XY);
         const char* modeStr = (mode_ == Mode::Pad) ? "PAD"
                              : (mode_ == Mode::Drum) ? "DRUM"
-                             : (mode_ == Mode::XY)   ? "XY"
-                             : "OUIJA";
+                             : "XY";
         g.setFont(GalleryFonts::heading(10.0f));
         g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.65f));
 

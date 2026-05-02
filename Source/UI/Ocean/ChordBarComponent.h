@@ -7,11 +7,11 @@
 // button. When visible it renders a single horizontal row (~28 px tall) containing:
 //
 //   Palette dot + pill  |  Voicing pill  |  Spread slider  |  Root pill  |  Mini piano  |
-//   Rhythm pill  |  Velocity curve pill  |  Swing/Gate/Human sliders  |  DUCK button  |
+//   Rhythm pill  |  Velocity curve pill  |  Swing/Gate/Human sliders  |
 //   Mode pills (LIVE / SEQ / ENO)
 //
 // All controls that have APVTS parameters go through beginChangeGesture / setValueNotifyingHost /
-// endChangeGesture. Local-only controls (velocityCurve, humanize, duck, mode) are stored in
+// endChangeGesture. Local-only controls (velocityCurve, humanize, mode) are stored in
 // member variables and fed back to the ChordMachine via the onParameterChanged callback or are
 // purely visual indicators read from cm_.
 //
@@ -174,7 +174,6 @@ private:
         SwingSlider = 7,
         GateSlider  = 8,
         HumanSlider = 9,
-        Duck        = 10,
         ModeLive    = 11,
         ModeSeq     = 12,
         ModeEno     = 13,
@@ -304,14 +303,6 @@ private:
             textCol   = juce::Colour(kPaletteColors[currentPalette_]).withAlpha(isHover ? 1.0f : 0.85f);
             borderCol = juce::Colour(kPaletteColors[currentPalette_]).withAlpha(0.50f);
             bgCol     = juce::Colours::transparentBlack;
-        }
-
-        // DUCK active: override to teal with tinted bg.
-        if (pill.type == RegionType::Duck && duckEnabled_)
-        {
-            textCol   = juce::Colour(127, 219, 202).withAlpha(0.90f);
-            borderCol = juce::Colour(127, 219, 202).withAlpha(0.35f);
-            bgCol     = juce::Colour(127, 219, 202).withAlpha(0.06f);
         }
 
         if (!bgCol.isTransparent())
@@ -671,10 +662,6 @@ private:
         curX += 50.0f + gap;
         addSep();
 
-        // ── DUCK pill ──
-        addPill(RegionType::Duck, 34.0f);
-        addSep();
-
         // ── Mode pills: LIVE / SEQ / ENO ──
         addPill(RegionType::ModeLive, 30.0f);
         addPill(RegionType::ModeSeq,  28.0f);
@@ -947,9 +934,6 @@ private:
             currentVelCurve_ = (currentVelCurve_ + 1) % 4;
             break;
 
-        case RegionType::Duck:
-            duckEnabled_ = !duckEnabled_;
-            break;
 
         case RegionType::ModeLive:
             currentMode_ = ChordMode::Live;
@@ -1132,7 +1116,6 @@ private:
         case RegionType::Root:      return true;
         case RegionType::Rhythm:    return true;
         case RegionType::VelCurve:  return true;
-        case RegionType::Duck:      return duckEnabled_;
         case RegionType::ModeLive:  return (currentMode_ == ChordMode::Live);
         case RegionType::ModeSeq:   return (currentMode_ == ChordMode::Seq);
         case RegionType::ModeEno:   return (currentMode_ == ChordMode::Eno);
@@ -1153,7 +1136,6 @@ private:
         case RegionType::Root:     return rootName(currentRoot_);
         case RegionType::Rhythm:   return juce::String(kRhythmNames[currentRhythm_]).toUpperCase();
         case RegionType::VelCurve: return juce::String(kVelCurveNames[currentVelCurve_]).toUpperCase();
-        case RegionType::Duck:     return "DUCK";
         case RegionType::ModeLive:  return "LIVE";
         case RegionType::ModeSeq:   return "SEQ";
         case RegionType::ModeEno:   return "ENO";
@@ -1288,7 +1270,6 @@ private:
     float      currentSwing_    = 0.0f;
     float      currentGate_     = 0.75f;
     float      currentHumanize_ = 0.0f;
-    bool       duckEnabled_     = false;
     ChordMode  currentMode_     = ChordMode::Live;
     int        currentRoot_     = 0;   // 0=C, semitone class
 

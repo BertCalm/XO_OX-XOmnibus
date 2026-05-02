@@ -133,7 +133,7 @@ public:
         repaint();
     }
 
-    // Harmonic field state (no longer driven by XOuija — kept for future use).
+    // Harmonic field state — kept for future use (see issue #1174).
     void setHarmonicField(int rootKey, int tension)
     {
         harmonicRootKey_ = rootKey % 12;
@@ -374,7 +374,7 @@ private:
     mutable std::array<int, PS::kNumPads> cachedScaleNotes_{};
     mutable bool scaleNotesDirty_ = true;
 
-    // Harmonic field state (no longer driven by XOuija)
+    // Harmonic field state (see issue #1174)
     int harmonicRootKey_ = 0; // harmonic root key (semitone 0-11)
     int harmonicTension_ = 0; // fifths distance from C for color temperature (0-6)
 
@@ -1273,7 +1273,7 @@ public:
         // ▦ = drum-kit pad labels (was "DRUM" mode)
         // Visible only when PADS tab is active.
         padsSubModeBtn_.setClickingTogglesState(true);
-        padsSubModeBtn_.setButtonText(kPadsSubModeLabels[0]); // default = ♪
+        padsSubModeBtn_.setButtonText(kPadsSubModeLabels[0]); // default = NOTE
         padsSubModeBtn_.setToggleState(false, juce::dontSendNotification);
         addAndMakeVisible(padsSubModeBtn_);
         A11y::setup(padsSubModeBtn_,
@@ -1466,7 +1466,7 @@ public:
         processor_ = p;
     }
 
-    // Handle incoming CC (XOuija removed; kept as stub for future CC routing).
+    // Handle incoming CC — stub for future CC routing (see issue #1174).
     void handleIncomingCC(int cc, int value)
     {
         if (cc == 90)
@@ -1535,7 +1535,7 @@ public:
         surfaceTab_   = SurfaceTab::Pads;
         drumSubMode_  = true;
         padsSubModeBtn_.setToggleState(true, juce::dontSendNotification);
-        padsSubModeBtn_.setButtonText(kPadsSubModeLabels[1]); // ▦
+        padsSubModeBtn_.setButtonText(kPadsSubModeLabels[1]); // KIT
         applyPadsSubMode();
 
         // Sync the tab button selection
@@ -1598,10 +1598,13 @@ public:
         octLabel.setBounds(header.removeFromLeft(36).reduced(2));
         octUpBtn.setBounds(header.removeFromLeft(32).reduced(2));
 
-        // Bank selector buttons (only relevant for PADS tab)
+        // Bank selector buttons (only in PADS tab)
         header.removeFromLeft(4);
         for (int i = 0; i < 4; ++i)
+        {
+            bankButtons[i].setVisible(surfaceTab_ == SurfaceTab::Pads);
             bankButtons[i].setBounds(header.removeFromLeft(30).reduced(2));
+        }
 
         // Scale mode button (only relevant for KEYS/PADS tabs)
         header.removeFromLeft(4);
@@ -1745,7 +1748,7 @@ private:
 
     static constexpr int kNumModeTabs = 3; // KEYS | PADS | XY
     // Sub-mode toggle labels — ♪ = musical/scale-aware, ▦ = drum-kit
-    static constexpr const char* kPadsSubModeLabels[2] = { "\xe2\x99\xaa", "\xe2\x96\xa6" };
+    static constexpr const char* kPadsSubModeLabels[2] = { "NOTE", "KIT" };
     //    ♪  = U+266A = \xe2\x99\xaa (UTF-8)
     //    ▦  = U+25A6 = \xe2\x96\xa6 (UTF-8)
 

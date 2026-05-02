@@ -25,7 +25,7 @@
 //     AmbientEdge       — vignette + edge glow overlay
 //     DnaMapBrowser     — full-window scatter map (BrowserOpen state)
 //     DetailOverlay     — floating detail panel with backdrop (Step 4)
-//     PlaySurfaceOverlay— slide-up keyboard/pads (on-demand)
+//     SubmarinePlaySurface — unified keyboard/pads surface
 //     Floating controls — presetPrev/Next, fav, settings, KEYS
 //     StatusBar         — bottom strip (unique_ptr)
 //
@@ -53,7 +53,7 @@
 #include "CouplingConfigPopup.h"
 #include "DnaMapBrowser.h"
 #include "DetailOverlay.h"
-#include "PlaySurfaceOverlay.h"
+// #include "PlaySurfaceOverlay.h"  -- cut(1B-#13): PlaySurfaceOverlay removed
 #include "EnginePickerDrawer.h"
 #include "SettingsDrawer.h"
 #include "TideWaterline.h"
@@ -97,13 +97,13 @@ namespace xoceanus
     DimOverlay — #1008 FIX 7
 
     A transparent Component that sits in the Z-stack above the floating header
-    buttons but below PlaySurfaceOverlay.  When dimAlpha < 1.0 it fills its
+    buttons but below SubmarinePlaySurface.  When dimAlpha < 1.0 it fills its
     bounds with Ocean::abyss at (1 - dimAlpha) opacity, dimming everything
     underneath — including the header buttons that the old paint()-based rect
     could never reach because juce::Component::paint() draws behind children.
 
     setInterceptsMouseClicks(false, false) so the overlay is invisible to
-    the event system and clicks pass through to PlaySurfaceOverlay above it.
+    the event system and clicks pass through to SubmarinePlaySurface above it.
 */
 struct DimOverlay : public juce::Component
 {
@@ -274,9 +274,6 @@ public:
         };
         addAndMakeVisible(surfaceRight_);
 
-        // 10. PlaySurface overlay (hidden by default; manages its own visibility)
-        addAndMakeVisible(playSurfaceOverlay_);
-
         // 11. Floating header controls
         // Old Gallery floating header buttons — hidden, replaced by SubmarineHudBar.
         enginesButton_.setVisible(false);
@@ -293,7 +290,7 @@ public:
         keysButton_.setInterceptsMouseClicks(false, false);
 
         // 11b. #1008 FIX 7: DimOverlay sits above all buttons but below
-        // PlaySurfaceOverlay.  Added after the buttons so it is painted on top.
+        // SubmarinePlaySurface.  Added after the buttons so it is painted on top.
         // reorderZStack() will enforce the correct final ordering on each
         // deferred init call.
         // Use addChildComponent so it starts hidden without a visible flash.
@@ -451,24 +448,11 @@ public:
         };
         browser_.onDismissed = [this]() { exitBrowser(); };
 
-        playSurfaceOverlay_.onDimStateChanged = [this](bool dim)
-        {
-            dimAlpha_ = dim ? 0.50f : 1.0f;
-            // #1008 FIX 7: drive the overlay component so header buttons are
-            // covered.  dimOverlay_ is a transparent child above buttons.
-            dimOverlay_.setDimAlpha(dimAlpha_);
-
-            // Feature 3 (Vangelis): Forward PlaySurface visibility to all
-            // engine orbits so active-voice creatures glow brighter.
-            for (auto& orbit : orbits_)
-                orbit.setPlaySurfaceVisible(dim);
-        };
-
-        keysButton_.onClick = [this]() { togglePlaySurface(); };
+        keysButton_.onClick = [this]() { /* KEYS tab activates keyboard in dashboard */ };
 
         // ── Step 6: Dashboard tab bar callback ───────────────────────────────
         // Wave 6.5 (#1306) collision note:
-        //   PAD/DRUM/XY tabs open SurfaceRightPanel.  All collision rules are already
+        //   PAD/XY tabs open SurfaceRightPanel.  All collision rules are already
         //   enforced by Wave 3 PanelCoordinator:
         //     (a) coordinatorApplyWidthGuard() — closes drawers when width < kMinWidth px.
         //     (b) coordinatorRequestOpen(PanelType::Detail) — hides SurfaceRightPanel
@@ -486,11 +470,10 @@ public:
             }
             else
             {
-                // PAD/DRUM/XY: right panel opens, keyboard HIDES.
+                // PAD/XY: right panel opens, keyboard HIDES.
                 subPlaySurface_.setVisible(false);
 
                 if (tab == "PAD")       surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
-                else if (tab == "DRUM") surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
                 else if (tab == "XY")   surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
 
                 surfaceRight_.setOpen(true);
@@ -690,7 +673,6 @@ public:
                 detailOverlay_,
                 couplingPopup_,
                 dimOverlay_,      // typed as juce::Component& in LayoutTargets
-                playSurfaceOverlay_,
                 emptyStateLabel_,
                 lifesaver_,       // typed as juce::Component& in LayoutTargets
                 enginesButton_,
@@ -1116,12 +1098,9 @@ public:
             return true;
         }
 
-        // K: toggle PlaySurface.
+        // K: toggle PlaySurface — no-op (PlaySurfaceOverlay removed, cut 1B-#13).
         if (key == juce::KeyPress('k') || key == juce::KeyPress('K'))
-        {
-            togglePlaySurface();
-            return true;
-        }
+            return false;
 
         // 1–4: zoom-in to engine slot 0–3.
         auto kc = key.getKeyCode();
@@ -1546,32 +1525,15 @@ public:
     }
 
     //==========================================================================
-    // PlaySurface passthrough
+    // PlaySurface passthrough — legacy stubs (cut 1B-#13)
     //==========================================================================
 
-    PlaySurface& getPlaySurface()       { return playSurfaceOverlay_.getPlaySurface(); }
     SubmarinePlaySurface& getSubmarinePlaySurface() { return subPlaySurface_; }
-    void showPlaySurface()
-    {
-        playSurfaceOverlay_.show();
-        if (onPlaySurfaceVisibilityChanged)
-            onPlaySurfaceVisibilityChanged(true);
-    }
-    void hidePlaySurface()
-    {
-        playSurfaceOverlay_.hide();
-        if (onPlaySurfaceVisibilityChanged)
-            onPlaySurfaceVisibilityChanged(false);
-    }
-    void togglePlaySurface()
-    {
-        if (playSurfaceOverlay_.isShowing())
-            hidePlaySurface();
-        else
-            showPlaySurface();
-    }
-    bool isPlaySurfaceVisible() const   { return playSurfaceOverlay_.isShowing(); }
-    void onMidiNoteReceived()           { playSurfaceOverlay_.onMidiNoteReceived(); }
+    void togglePlaySurface() {}
+    void showPlaySurface()   {}
+    void hidePlaySurface()   {}
+    bool isPlaySurfaceVisible() const { return false; }
+    void onMidiNoteReceived()         {}
 
     //==========================================================================
     // Child component accessors (for editor wiring)
@@ -1627,11 +1589,6 @@ public:
     /** Fired when the user completes a chain gesture (two orbit clicks in chain mode).
         The editor should create a coupling route between sourceSlot and destSlot. */
     std::function<void(int sourceSlot, int destSlot)> onCouplingRouteRequested;
-
-    /** Fired when the PlaySurface overlay is shown or hidden (including first-launch auto-show).
-        Use this to persist the visibility preference so subsequent plugin launches restore the
-        last user-chosen state.  true = overlay is now showing, false = hidden. */
-    std::function<void(bool visible)> onPlaySurfaceVisibilityChanged;
 
     /** Fired when the user clicks the DNA hexagon in the nexus.
         Wire this to open the DnaMapBrowser or cycle the axis projection. */
@@ -1904,10 +1861,9 @@ private:
         std::function<void(bool)> onChordToggled;
 
     private:
-        // Four modes: KEYS, PAD, DRUM, XY.
-        // PAD+DRUM merge deferred (#1174 follow-up).
-        static constexpr int kNumTabs = 4;
-        static constexpr std::array<const char*, kNumTabs> kTabNames = {"KEYS", "PAD", "DRUM", "XY"};
+        // Three modes: KEYS, PAD, XY.  DRUM merged into PADS+KIT (#18).
+        static constexpr int kNumTabs = 3;
+        static constexpr std::array<const char*, kNumTabs> kTabNames = {"KEYS", "PAD", "XY"};
         static_assert(kTabNames.size() == kNumTabs, "kTabNames size mismatch");
 
         int  activeIdx_ = 0;
@@ -2782,7 +2738,7 @@ private:
           presetPrev_ | presetNext_ | favButton_ | settingsButton_ | keysButton_ |
           dimOverlay_  ← #1008 FIX 7: above buttons, so buttons are dimmed |
           emptyStateLabel_ | lifesaver_ | hudBar_ | surfaceRight_ | exprStrips_ |
-          subPlaySurface_ | playSurfaceOverlay_ |
+          subPlaySurface_ |
           children_.waterline() | children_.masterFxStrip() | children_.epicSlots() | tabBar_ | children_.chordBar() |
           children_.transportBar() | children_.statusBar() |
           engineDrawer_ | settingsDrawer_ | detailOverlay_ | children_.detailPanel() | couplingPopup_
@@ -2868,10 +2824,9 @@ private:
 
     // Overlay components.
     DnaMapBrowser        browser_;
-    // #1008 FIX 7: DimOverlay must be declared BEFORE PlaySurfaceOverlay so
-    // it is constructed first and can be placed below it in the Z-stack.
+    // #1008 FIX 7: DimOverlay must be declared before SubmarinePlaySurface
+    // so it is constructed first and placed below in the Z-stack.
     DimOverlay           dimOverlay_;
-    PlaySurfaceOverlay   playSurfaceOverlay_;
 
     // Step 4: Floating detail overlay (wraps EngineDetailPanel with backdrop + close btn).
     DetailOverlay        detailOverlay_;

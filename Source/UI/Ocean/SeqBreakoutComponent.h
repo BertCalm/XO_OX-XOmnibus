@@ -1348,7 +1348,7 @@ private:
             static_cast<int>(stepRowBounds_.getHeight()));
 
         // Launch from the top-level editor so the CallOutBox renders above all
-        // OceanView overlays (DrawerOverlay, PlaySurfaceOverlay, DimOverlay).
+        // OceanView overlays (DrawerOverlay, DimOverlay).
         // CallOutBox::launchAsynchronously requires areaToPointTo in the parent's
         // local coordinate space — convert from SeqBreakout-local via getLocalArea.
         // F-005 / #1396: fixes step-edit popups occluded by Ocean overlays.
