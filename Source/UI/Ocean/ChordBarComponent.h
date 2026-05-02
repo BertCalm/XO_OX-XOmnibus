@@ -574,6 +574,11 @@ private:
     //--------------------------------------------------------------------------
     /// Layout all control sub-regions left-to-right.
     /// Called from both resized() and paint() so regions are always current.
+    /// #11 (1D-P2B): at widths < 900px, low-priority controls are hidden to
+    /// prevent silent clipping off-screen:
+    ///   Hidden below 900px: SwingSlider, GateSlider, HumanSlider, VelCurve pill.
+    /// The primary chord-selection controls (Palette, Voicing, Root, piano, Mode
+    /// pills, Input pills) are always shown.
     void layoutControls(float /*w*/)
     {
         pillRegions_.clear();
@@ -584,6 +589,10 @@ private:
         const float padX = 8.0f;
         const float gap  = 4.0f;
         float       curX = padX;
+
+        // #11 (1D-P2B): hide low-priority controls at narrow widths.
+        const int widthForOverflow = getWidth() > 0 ? getWidth() : 900;
+        const bool showLowPriority = (widthForOverflow >= 900);
 
         const float pillH = 16.0f;
         const float pillY = midY - pillH * 0.5f;
@@ -633,34 +642,50 @@ private:
         addPill(RegionType::Rhythm, 44.0f);
         addSep();
 
-        // ── Velocity curve pill ──
-        addPill(RegionType::VelCurve, 46.0f);
-        addSep();
+        // ── Velocity curve pill ── (#11: hidden below 900px)
+        if (showLowPriority)
+        {
+            addPill(RegionType::VelCurve, 46.0f);
+            addSep();
+        }
+        else
+        {
+            // Reset bounds so paintLabeledSlider skips these.
+            swingLabelBounds_ = {};
+            swingSlider_.track = {};
+            gateLabelBounds_  = {};
+            gateSlider_.track  = {};
+            humanLabelBounds_ = {};
+            humanSlider_.track = {};
+        }
 
-        // ── Swing label + slider ──
-        swingLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 30.0f, 10.0f);
-        curX += 30.0f + 2.0f;
-        swingSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
-        swingSlider_.value = currentSwing_;
-        swingSlider_.type  = RegionType::SwingSlider;
-        curX += 50.0f + gap;
+        if (showLowPriority)
+        {
+            // ── Swing label + slider ──
+            swingLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 30.0f, 10.0f);
+            curX += 30.0f + 2.0f;
+            swingSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
+            swingSlider_.value = currentSwing_;
+            swingSlider_.type  = RegionType::SwingSlider;
+            curX += 50.0f + gap;
 
-        // ── Gate label + slider ──
-        gateLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 28.0f, 10.0f);
-        curX += 28.0f + 2.0f;
-        gateSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
-        gateSlider_.value = currentGate_;
-        gateSlider_.type  = RegionType::GateSlider;
-        curX += 50.0f + gap;
+            // ── Gate label + slider ──
+            gateLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 28.0f, 10.0f);
+            curX += 28.0f + 2.0f;
+            gateSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
+            gateSlider_.value = currentGate_;
+            gateSlider_.type  = RegionType::GateSlider;
+            curX += 50.0f + gap;
 
-        // ── Human label + slider ──
-        humanLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 32.0f, 10.0f);
-        curX += 32.0f + 2.0f;
-        humanSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
-        humanSlider_.value = currentHumanize_;
-        humanSlider_.type  = RegionType::HumanSlider;
-        curX += 50.0f + gap;
-        addSep();
+            // ── Human label + slider ──
+            humanLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 32.0f, 10.0f);
+            curX += 32.0f + 2.0f;
+            humanSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
+            humanSlider_.value = currentHumanize_;
+            humanSlider_.type  = RegionType::HumanSlider;
+            curX += 50.0f + gap;
+            addSep();
+        }
 
         // ── Mode pills: LIVE / SEQ / ENO ──
         addPill(RegionType::ModeLive, 30.0f);

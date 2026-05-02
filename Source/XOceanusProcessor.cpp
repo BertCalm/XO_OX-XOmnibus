@@ -1272,6 +1272,13 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
             0 /* default = PlaySurface */));
     }
 
+    // ── 1D-P2B D4: XY pad grid visibility toggle ─────────────────────────────
+    // UI-only preference. No audio-thread reads. Stored in APVTS for
+    // DAW session recall. Default = true (grid visible).
+    layout.add(std::make_unique<juce::AudioParameterBool>(
+        juce::ParameterID("xy_pad_grid_visible", 1),
+        "XY Pad Grid Visible", true));
+
     // ── Wave 8: XY Surface parameters (8 params × 4 slots = 32 params) ─────────
     // See Source/UI/PlaySurface/XYSurface.h for full documentation.
     //

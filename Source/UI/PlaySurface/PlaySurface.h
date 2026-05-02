@@ -39,7 +39,8 @@ static constexpr int kDesktopW = 700;  // Narrower
 static constexpr int kDesktopH = 484;  // 420 (main) + 64 (strip)
 static constexpr int kMainZoneH = 420; // Main content height
 static constexpr int kStripH = 64;     // Performance strip (matches kZone3H)
-static constexpr int kHeaderH = 28;    // Mode tab bar height
+static constexpr int kHeaderH = 28;    // Mode tab bar row height (one row)
+static constexpr int kHeaderH2 = kHeaderH * 2; // Two-row header total height (D2)
 
 // V1 layout constants (kept for backward compatibility with any external references)
 static constexpr int kZone1W = 480;
@@ -1241,12 +1242,13 @@ public:
         A11y::setup(modeButtons[2], "XY Mode",    "Switch to full-screen XY performance strip");
 
         // D4 tab callbacks — each tab updates surfaceTab_ and calls resized()
+        // D3 (1D-P2B): latchBadge_ no longer shown in header; fire onLatchStateChanged
+        //              so the status bar (TransportBar) can update its LATCH indicator.
         modeButtons[0].onClick = [this]()
         {
             surfaceTab_ = SurfaceTab::Keys;
             noteInput.setMode(NoteInputZone::Mode::Keys);
-            // F-004: badge shown only in Keys mode (latch is always active in Keys)
-            latchBadge_.setVisible(true);
+            if (onLatchStateChanged) onLatchStateChanged(true);
             resized();
             keysMode_.grabKeyboardFocus();
         };
@@ -1255,16 +1257,14 @@ public:
             surfaceTab_ = SurfaceTab::Pads;
             // Sub-mode drives NoteInputZone::Mode (Pad or Drum)
             applyPadsSubMode();
-            // F-004: not in Keys mode — hide the latch badge
-            latchBadge_.setVisible(false);
+            if (onLatchStateChanged) onLatchStateChanged(false);
             resized();
             noteInput.grabKeyboardFocus();
         };
         modeButtons[2].onClick = [this]()
         {
             surfaceTab_ = SurfaceTab::XY;
-            // F-004: not in Keys mode — hide the latch badge
-            latchBadge_.setVisible(false);
+            if (onLatchStateChanged) onLatchStateChanged(false);
             resized();
         };
 
@@ -1558,6 +1558,13 @@ public:
         // mode 0 (PlaySurface) = no auto-switch; respect last user selection
     }
 
+    // D3 (1D-P2B): LATCH state accessor + callback for status-bar display.
+    // Returns true when Keys mode is active (latch is always on in Keys).
+    // Parent (OceanView/TransportBar) wires onLatchStateChanged to update the
+    // status-bar LATCH indicator whenever the tab changes.
+    bool isLatchActive() const noexcept { return surfaceTab_ == SurfaceTab::Keys; }
+    std::function<void(bool latchOn)> onLatchStateChanged;
+
     // Public zone accessors for wiring callbacks
     NoteInputZone& getNoteInput() { return noteInput; }
     PerformanceStrip& getStrip() { return strip; }
@@ -1578,51 +1585,66 @@ public:
     {
         auto bounds = getLocalBounds();
 
-        // ── D4 (Wave 6): Header bar — KEYS | PADS | XY tabs ─────────────────
-        auto header = bounds.removeFromTop(PS::kHeaderH);
+        // ── D2 (1D-P2B): Two-row header ──────────────────────────────────────
+        // Row 1: mode tabs (KEYS | PADS | XY) + NOTE/KIT toggle right-adjacent
+        //        to the PADS tab. No per-mode controls in row 1.
+        // Row 2: per-mode controls (OCT ±, bank A–D, SCL, TIDE).
+        //        Strip mode buttons (DUB/FILT/CPL/SIREN) right-aligned in row 2.
+        // LATCH badge relocated to status bar area per D3 (no longer in header).
 
-        // Primary mode tabs — 3 tabs × 48px
-        int btnW = 48;
+        auto headerRow1 = bounds.removeFromTop(PS::kHeaderH);
+        auto headerRow2 = bounds.removeFromTop(PS::kHeaderH);
+
+        // ── Row 1: mode tabs ──────────────────────────────────────────────────
+        // 3 tabs at ~90px each (wider now that row 1 is uncluttered).
+        int modeTabW = 90;
         for (int i = 0; i < kNumModeTabs; ++i)
-            modeButtons[i].setBounds(header.removeFromLeft(btnW).reduced(2));
+            modeButtons[i].setBounds(headerRow1.removeFromLeft(modeTabW).reduced(2));
 
-        // PADS sub-mode toggle ♪/▦ — immediately after the PADS tab; 32px.
-        // Visible only when the PADS tab is active.
-        header.removeFromLeft(2);
-        padsSubModeBtn_.setBounds(header.removeFromLeft(32).reduced(2));
+        // NOTE/KIT toggle — immediately after the PADS tab (index 1).
+        // Visible only when PADS tab is active.
+        headerRow1.removeFromLeft(2);
+        padsSubModeBtn_.setBounds(headerRow1.removeFromLeft(42).reduced(2));
         padsSubModeBtn_.setVisible(surfaceTab_ == SurfaceTab::Pads);
 
-        // Octave + bank buttons (only relevant for KEYS and PADS tabs)
-        header.removeFromLeft(4);
-        octDownBtn.setBounds(header.removeFromLeft(32).reduced(2));
-        octLabel.setBounds(header.removeFromLeft(36).reduced(2));
-        octUpBtn.setBounds(header.removeFromLeft(32).reduced(2));
+        // ── Row 2: per-mode controls ──────────────────────────────────────────
+        // Strip mode buttons right-aligned first (take from right before left fills).
+        for (int i = 3; i >= 0; --i)
+            stripModeButtons[i].setBounds(headerRow2.removeFromRight(36).reduced(2));
 
-        // Bank selector buttons (only in PADS tab)
-        header.removeFromLeft(4);
+        // OCT controls (visible in KEYS and PADS tabs).
+        const bool showOctBank = (surfaceTab_ == SurfaceTab::Keys
+                                   || surfaceTab_ == SurfaceTab::Pads);
+        octDownBtn.setBounds(headerRow2.removeFromLeft(32).reduced(2));
+        octDownBtn.setVisible(showOctBank);
+        octLabel.setBounds(headerRow2.removeFromLeft(40).reduced(2));
+        octLabel.setVisible(showOctBank);
+        octUpBtn.setBounds(headerRow2.removeFromLeft(32).reduced(2));
+        octUpBtn.setVisible(showOctBank);
+
+        // Bank selector buttons (only in PADS tab).
+        headerRow2.removeFromLeft(4);
         for (int i = 0; i < 4; ++i)
         {
             bankButtons[i].setVisible(surfaceTab_ == SurfaceTab::Pads);
-            bankButtons[i].setBounds(header.removeFromLeft(30).reduced(2));
+            bankButtons[i].setBounds(headerRow2.removeFromLeft(30).reduced(2));
         }
 
-        // Scale mode button (only relevant for KEYS/PADS tabs)
-        header.removeFromLeft(4);
-        scaleModeBtn.setBounds(header.removeFromLeft(32).reduced(2));
+        // Scale mode button (KEYS/PADS tabs).
+        headerRow2.removeFromLeft(4);
+        scaleModeBtn.setBounds(headerRow2.removeFromLeft(36).reduced(2));
+        scaleModeBtn.setVisible(showOctBank);
 
-        // TIDE toggle button — immediately after scale mode button
-        header.removeFromLeft(4);
-        tideModeBtn_.setBounds(header.removeFromLeft(36).reduced(2));
+        // TIDE toggle button.
+        headerRow2.removeFromLeft(4);
+        tideModeBtn_.setBounds(headerRow2.removeFromLeft(40).reduced(2));
 
-        // F-004: LATCH badge — immediately after TIDE, visible only in Keys mode.
-        // Width = 52px (fits "LATCH" at small font), same height as rest of header.
-        header.removeFromLeft(4);
-        latchBadge_.setBounds(header.removeFromLeft(52).reduced(2));
-        latchBadge_.setVisible(surfaceTab_ == SurfaceTab::Keys);
-
-        // Strip mode buttons at right of header (only relevant for XY tab / strip)
-        for (int i = 3; i >= 0; --i)
-            stripModeButtons[i].setBounds(header.removeFromRight(36).reduced(2));
+        // LATCH badge: hide completely from header — relocated to TransportBar (D3).
+        // The badge itself is kept as a member for tooltip/A11y state, but it is
+        // no longer positioned in the header row.  setBounds({}) ensures it is
+        // off-screen; setVisible(false) keeps it from intercepting mouse events.
+        latchBadge_.setBounds({});
+        latchBadge_.setVisible(false);
 
         // ── D4 tab-dependent layout ───────────────────────────────────────────
         //

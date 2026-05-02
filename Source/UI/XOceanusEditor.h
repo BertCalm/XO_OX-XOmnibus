@@ -1209,6 +1209,16 @@ public:
                 msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
                 processor.getMidiCollector().addMessageToQueue(msg);
             };
+
+            // D4 (1D-P2B): XY pad grid visibility toggle — sync from APVTS on init
+            // and wire the toggle callback back to persist the state.
+            if (auto* gridParam = processor.getAPVTS().getRawParameterValue("xy_pad_grid_visible"))
+                srp.setGridVisible(gridParam->load() >= 0.5f);
+            srp.onGridToggled = [this](bool gridOn) {
+                if (auto* p = dynamic_cast<juce::AudioParameterBool*>(
+                        processor.getAPVTS().getParameter("xy_pad_grid_visible")))
+                    p->setValueNotifyingHost(gridOn ? 1.0f : 0.0f);
+            };
         }
 
         // wire(#orphan-sweep item 1): SurfaceRightPanel::onXYChanged was declared but

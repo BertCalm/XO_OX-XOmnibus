@@ -98,6 +98,21 @@ public:
     // Close button callback
     std::function<void()> onCloseClicked;
 
+    // D4 (1D-P2B): XY pad grid visibility toggle.
+    // gridVisible = true  → visible grid: bg α=0.20, border α=0.40.
+    // gridVisible = false → ghost grid (current default): bg α=0.025, border α=0.06.
+    // Default is true (APVTS default = true).
+    void setGridVisible(bool visible)
+    {
+        if (xyGridVisible_ == visible) return;
+        xyGridVisible_ = visible;
+        repaint();
+    }
+    bool isGridVisible() const noexcept { return xyGridVisible_; }
+
+    // Fires when the GRID pill in XY mode row 2 is clicked.
+    std::function<void(bool gridOn)> onGridToggled;
+
     //==========================================================================
     // juce::Component overrides
 
@@ -345,6 +360,11 @@ private:
     // XY auto-motion selected pill (-1 = none)
     int   autoMotionSel_   = -1;
 
+    // D4 (1D-P2B): XY grid visibility — true = visible (ON), false = ghost.
+    // Default true; persisted via APVTS xy_pad_grid_visible (wired in OceanView).
+    bool  xyGridVisible_   = true;
+    juce::Rectangle<float> xyGridPillBounds_;  // D4: GRID pill — computed lazily in paint
+
 
     // XY assign label state (toggle for hover, not interactive here)
     // assignXHover_ / assignYHover_ reserved for future XY-assign hover highlight
@@ -514,6 +534,15 @@ private:
 
     void handleXYDown(juce::Point<float> pos)
     {
+        // D4 (1D-P2B): check GRID toggle pill before auto-motion pills.
+        if (xyGridPillBounds_.getWidth() > 0.0f && xyGridPillBounds_.contains(pos))
+        {
+            xyGridVisible_ = !xyGridVisible_;
+            if (onGridToggled) onGridToggled(xyGridVisible_);
+            repaint();
+            return;
+        }
+
         // Check auto-motion pills first
         int pill = hitTestAutoMotionPill(pos.x, pos.y);
         if (pill >= 0)
@@ -801,15 +830,21 @@ private:
         auto& xr = xyPadBounds_;
 
         // ---- XY Pad ----
-        // Background: rgba(200,204,216,0.025), border 1px rgba(200,204,216,0.06), radius 10px
-        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.025f));
+        // D4 (1D-P2B): grid alpha depends on GRID toggle state.
+        //   ON  (visible): bg α=0.20, border α=0.40
+        //   OFF (ghost):   bg α=0.025, border α=0.06 (original subtle state)
+        const float gridBgAlpha     = xyGridVisible_ ? 0.20f : 0.025f;
+        const float gridBorderAlpha = xyGridVisible_ ? 0.40f : 0.06f;
+        const float crosshairAlpha  = xyGridVisible_ ? 0.08f : 0.035f;
+
+        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(gridBgAlpha));
         g.fillRoundedRectangle(xr, 10.0f);
 
-        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.06f));
+        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(gridBorderAlpha));
         g.drawRoundedRectangle(xr, 10.0f, 1.0f);
 
-        // Crosshair — horizontal + vertical center lines, 1px rgba(200,204,216,0.035)
-        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.035f));
+        // Crosshair — horizontal + vertical center lines, 1px
+        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(crosshairAlpha));
         float midX = xr.getX() + xr.getWidth()  * 0.5f;
         float midY = xr.getY() + xr.getHeight() * 0.5f;
         g.drawHorizontalLine(static_cast<int>(midY), xr.getX(), xr.getRight());
@@ -978,6 +1013,36 @@ private:
         g.drawText("1 bar",
                    static_cast<int>(dropX), static_cast<int>(dropY),
                    static_cast<int>(dropW), static_cast<int>(dropH),
+                   juce::Justification::centred, false);
+
+        // D4 (1D-P2B): GRID toggle pill — left of "1 bar" dropdown.
+        // All-caps pill matching XY mode aesthetic. Row 2 (auto-motion row),
+        // only rendered when XY mode is active.
+        float gridPillW = 34.0f, gridPillH = 18.0f;
+        float gridPillX = dropX - gridPillW - 6.0f;
+        float gridPillY = ar.getY() + (ar.getHeight() - gridPillH) * 0.5f;
+        xyGridPillBounds_ = juce::Rectangle<float>(gridPillX, gridPillY, gridPillW, gridPillH);
+
+        if (xyGridVisible_)
+        {
+            g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.15f));
+            g.fillRoundedRectangle(xyGridPillBounds_, 4.0f);
+            g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.35f));
+            g.drawRoundedRectangle(xyGridPillBounds_, 4.0f, 1.0f);
+            g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.80f));
+        }
+        else
+        {
+            g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.05f));
+            g.fillRoundedRectangle(xyGridPillBounds_, 4.0f);
+            g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.08f));
+            g.drawRoundedRectangle(xyGridPillBounds_, 4.0f, 1.0f);
+            g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.35f));
+        }
+        g.setFont(GalleryFonts::heading(8.0f));
+        g.drawText("GRID",
+                   static_cast<int>(gridPillX), static_cast<int>(gridPillY),
+                   static_cast<int>(gridPillW), static_cast<int>(gridPillH),
                    juce::Justification::centred, false);
     }
 

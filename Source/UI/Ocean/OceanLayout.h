@@ -64,6 +64,12 @@
 namespace xoceanus
 {
 
+/** D5 (1D-P2B): Canonical tab-state enum shared between OceanView and OceanLayout.
+    OceanView maintains `currentTab_` of this type; OceanLayout reads it via
+    LayoutTargets::currentTab to determine keyboard/panel visibility without
+    depending on surfaceRight_.isOpen() (which desynchs during Detail-coordinator usage). */
+enum class OceanCurrentTab { Keys = 0, Pad, XY };
+
 /**
     LayoutTargets
 
@@ -116,9 +122,13 @@ struct LayoutTargets
 
     // Phase 2.5 (#1184): layout-input state — const refs to OceanView members.
     // Removed from layoutForState() per-call args; now read directly from here.
-    const int&  selectedSlot;    ///< OceanView::selectedSlot_
-    const bool& detailShowing;   ///< OceanView::detailShowing_
-    const bool& firstLaunch;     ///< OceanView::firstLaunch_
+    const int&              selectedSlot;    ///< OceanView::selectedSlot_
+    const bool&             detailShowing;   ///< OceanView::detailShowing_
+    const bool&             firstLaunch;     ///< OceanView::firstLaunch_
+    // D5 (1D-P2B): canonical tab state — source of truth for keyboard visibility.
+    // Replaces surfaceRight_.isOpen() reads in layoutDashboard() to fix the Detail-
+    // coordinator desync bug (surfaceRight_ hidden temporarily while tab is PAD/XY).
+    const OceanCurrentTab&  currentTab;      ///< OceanView::currentTab_
 };
 
 //==============================================================================
@@ -289,13 +299,14 @@ public:
     //==========================================================================
 
     /**
-        Effective dashboard height — collapses when SurfaceRightPanel is open
+        Effective dashboard height — collapses when in PAD/XY mode
         (keyboard, EpicSlots, and SeqStrip hidden; only macros + FX + tabs remain,
         plus ChordBar if the CHORD toggle is on).
+        D5 (1D-P2B): uses currentTab_ instead of surfaceRight_.isOpen().
     */
     int getEffectiveDashboardH() const noexcept
     {
-        if (targets_.surfaceRight.isOpen() && targets_.surfaceRight.isVisible())
+        if (targets_.currentTab != OceanCurrentTab::Keys)
         {
             // 1D-2A: ChordBar (42px) is dashboard-area when its CHORD toggle is
             // on. Without this, the budget undercounts by 42 in PAD/XY+CHORD
@@ -326,7 +337,8 @@ public:
         const int bottomH = getEffectiveDashboardH() + wlH + kStatusBarH;
         auto area         = fullBounds.withTrimmedBottom(bottomH);
 
-        if (targets_.surfaceRight.isOpen() && targets_.surfaceRight.isVisible())
+        // D5 (1D-P2B): use currentTab_ to determine panel width (not surfaceRight_.isOpen()).
+        if (targets_.currentTab != OceanCurrentTab::Keys)
         {
             const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
                                      static_cast<int>(area.getWidth() * 0.40f));
@@ -709,13 +721,17 @@ private:
             targets_.dotMatrix.setBounds(macroRow.reduced(4, 4));
         }
 
-        // 1D-P1: When SurfaceRight is open (PAD/XY mode), the dashboard budget
-        // collapses to macros + FX + tabBar (138px). EpicSlots and SeqStrip are
-        // KEYS-mode-only widgets — hide and skip layout to keep budget honest.
-        // Without this guard, layoutDashboard consumed 302+px while
-        // getEffectiveDashboardH() returned 138, overlapping the ocean viewport.
-        const bool surfaceRightOpen = targets_.surfaceRight.isOpen()
-                                       && targets_.surfaceRight.isVisible();
+        // D5 (1D-P2B): Use canonical tab state (OceanView::currentTab_) to determine
+        // whether we are in PAD/XY mode. This fixes the Detail-coordinator desync:
+        // surfaceRight_.isOpen() returns false while the Detail panel temporarily
+        // hides it, causing layoutDashboard to think we're in KEYS mode even though
+        // the tab bar still shows PAD/XY. currentTab_ is only mutated by onTabChanged,
+        // not by the Detail coordinator, so it is always in sync with user intent.
+        //
+        // 1D-P1: When in PAD/XY mode (i.e. SurfaceRight is/should be open), the
+        // dashboard budget collapses to macros + FX + tabBar (138px). EpicSlots
+        // and SeqStrip are KEYS-mode-only widgets — hide and skip layout.
+        const bool surfaceRightOpen = (targets_.currentTab != OceanCurrentTab::Keys);
 
         // Master FX compact strip (between macros and tab bar).
         if (auto* fx = children_.masterFxStrip())
@@ -781,11 +797,9 @@ private:
         // button's show() call every layout pass. The overlay manages its own visibility
         // via show()/hide() methods + internal showing_ flag.
         targets_.subPlaySurface.setBounds(dashArea);
-        // Only show keyboard when right panel is closed (KEYS mode).
-        if (!targets_.surfaceRight.isOpen() || !targets_.surfaceRight.isVisible())
-            targets_.subPlaySurface.setVisible(true);
-        else
-            targets_.subPlaySurface.setVisible(false);
+        // D5 (1D-P2B): use canonical tab state for keyboard visibility (not
+        // surfaceRight_.isOpen() which can desynch during Detail coordinator usage).
+        targets_.subPlaySurface.setVisible(targets_.currentTab == OceanCurrentTab::Keys);
 
         // Transport bar (submarine) replaces the old status bar at the bottom.
         if (auto* tb = children_.transportBar())

@@ -268,10 +268,11 @@ public:
         surfaceRight_.setVisible(false);
         surfaceRight_.onCloseClicked = [this]()
         {
-            surfaceRight_.setOpen(false);
-            surfaceRight_.setVisible(false);
-            // Switch tab bar back to KEYS
-            resized();
+            // D5 (1D-P2B): Drive all state through tabBar_.selectTab(0) so that
+            // currentTab_, surfaceRight_ visibility, DashboardTabBar highlight, and
+            // LATCH indicator are all updated via the single onTabChanged path.
+            // selectTab() is a no-op if KEYS is already active.
+            tabBar_.selectTab(0); // 0 = KEYS
         };
         addAndMakeVisible(surfaceRight_);
 
@@ -462,12 +463,15 @@ public:
         //   drawers above kMinWidth px.  No additional coordinator call is required here.
         tabBar_.onTabChanged = [this](const juce::String& tab)
         {
+            // D5 (1D-P2B): Set currentTab_ BEFORE visibility ops so layoutDashboard
+            // reads the new canonical tab state (not a stale surfaceRight_.isOpen()).
+            if (tab == "KEYS")        currentTab_ = OceanCurrentTab::Keys;
+            else if (tab == "PAD")    currentTab_ = OceanCurrentTab::Pad;
+            else if (tab == "XY")     currentTab_ = OceanCurrentTab::XY;
+
             // 1D-2A C2: single-controller pattern — onTabChanged owns surfaceRight_
             // open/visible state; OceanLayout::layoutDashboard() derives
-            // subPlaySurface_ visibility from surfaceRight_.isOpen() on the
-            // resized() pass below. Direct sets on subPlaySurface_ here were
-            // redundant (layoutDashboard would override them on the same call
-            // chain) and created the impression of dual ownership.
+            // subPlaySurface_ visibility from currentTab_ on the resized() pass below.
             if (tab == "KEYS")
             {
                 // KEYS: right panel closed → layoutDashboard will show keyboard.
@@ -477,14 +481,34 @@ public:
             else
             {
                 // PAD/XY: right panel opens → layoutDashboard will hide keyboard.
-                if (tab == "PAD")       surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
-                else if (tab == "XY")   surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
+                if (tab == "PAD")
+                {
+                    // D1 (#18 follow-on): sub-mode drives PAD vs DRUM grid.
+                    const bool kitMode = tabBar_.isKitSubMode();
+                    surfaceRight_.setMode(kitMode ? SurfaceRightPanel::Mode::Drum
+                                                  : SurfaceRightPanel::Mode::Pad);
+                }
+                else if (tab == "XY")
+                    surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
 
                 surfaceRight_.setOpen(true);
                 surfaceRight_.setVisible(true);
             }
 
+            // D3 (1D-P2B): update LATCH indicator in status bar.
+            if (auto* tb = children_.transportBar())
+                tb->setLatchActive(tab == "KEYS");
+
             resized();
+        };
+
+        // D1 (#18 follow-on): sub-mode toggle in tab bar fires when NOTE/KIT pill clicked.
+        // If PAD tab is currently active, immediately update SurfaceRightPanel mode.
+        tabBar_.onNoteKitToggled = [this](bool kitMode)
+        {
+            if (currentTab_ == OceanCurrentTab::Pad)
+                surfaceRight_.setMode(kitMode ? SurfaceRightPanel::Mode::Drum
+                                              : SurfaceRightPanel::Mode::Pad);
         };
 
         // SEQ toggle → expand/collapse TideWaterline.
@@ -698,6 +722,8 @@ public:
                 selectedSlot_,
                 detailShowing_,
                 firstLaunch_,
+                // D5 (1D-P2B): canonical tab state for keyboard visibility.
+                currentTab_,
             });
 
         // ── Phase 3 (#1184): wire OceanStateMachine callbacks ────────────────
@@ -1770,6 +1796,7 @@ private:
 
             // Rebuild tab regions
             tabRegions_.clear();
+            noteKitBounds_ = {};
             float x = 16.0f;
             for (int i = 0; i < kNumTabs; ++i)
             {
@@ -1791,6 +1818,47 @@ private:
                 }
                 g.drawText(kTabNames[i], tr.toNearestInt(), juce::Justification::centred, false);
                 x += tw + 2.0f;
+
+                // D1 (1D-P2B): NOTE/KIT toggle pill — right-adjacent to the PAD tab.
+                // Only drawn after the PAD tab (index 1).
+                if (i == 1) // PAD tab
+                {
+                    const char* subLabel = kitSubMode_ ? "KIT" : "NOTE";
+                    const float pillW = tabFont.getStringWidthFloat(subLabel) + 14.0f;
+                    const float pillH = b.getHeight() - 8.0f;
+                    juce::Rectangle<float> sr(x, 4.0f, pillW, pillH);
+                    noteKitBounds_ = sr;
+
+                    // Style: visible only when PAD is active; ghost otherwise.
+                    if (active)
+                    {
+                        if (kitSubMode_)
+                        {
+                            g.setColour(juce::Colour(233, 196, 106).withAlpha(0.08f));
+                            g.fillRoundedRectangle(sr, 4.0f);
+                            g.setColour(juce::Colour(233, 196, 106).withAlpha(0.35f));
+                            g.drawRoundedRectangle(sr, 4.0f, 1.0f);
+                            g.setColour(juce::Colour(233, 196, 106).withAlpha(0.85f));
+                        }
+                        else
+                        {
+                            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
+                            g.fillRoundedRectangle(sr, 4.0f);
+                            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.25f));
+                            g.drawRoundedRectangle(sr, 4.0f, 1.0f);
+                            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.70f));
+                        }
+                    }
+                    else
+                    {
+                        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.04f));
+                        g.drawRoundedRectangle(sr, 4.0f, 1.0f);
+                        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.25f));
+                    }
+                    g.setFont(tabFont);
+                    g.drawText(subLabel, sr.toNearestInt(), juce::Justification::centred, false);
+                    x += pillW + 4.0f;
+                }
             }
 
             // SEQ + CHORD toggles from the right
@@ -1853,6 +1921,14 @@ private:
                 repaint();
                 return;
             }
+            // D1 (1D-P2B): NOTE/KIT toggle — only active when PAD tab is selected.
+            if (noteKitBounds_.getWidth() > 0.0f && noteKitBounds_.contains(pos))
+            {
+                kitSubMode_ = !kitSubMode_;
+                if (onNoteKitToggled) onNoteKitToggled(kitSubMode_);
+                repaint();
+                return;
+            }
         }
 
         juce::String activeTab() const noexcept
@@ -1860,9 +1936,27 @@ private:
             return kTabNames[activeIdx_];
         }
 
+        /** Programmatically select a tab by index (0=KEYS, 1=PAD, 2=XY).
+         *  Fires onTabChanged callback and repaints — mirrors a user click.
+         *  Used by OceanView::surfaceRight_.onCloseClicked to snap KEYS highlight
+         *  back into sync after the panel is dismissed via the X button (D5). */
+        void selectTab(int idx)
+        {
+            idx = juce::jlimit(0, kNumTabs - 1, idx);
+            if (activeIdx_ == idx) return;
+            activeIdx_ = idx;
+            if (onTabChanged) onTabChanged(kTabNames[static_cast<size_t>(idx)]);
+            repaint();
+        }
+
+        // D1 (1D-P2B): accessor for current NOTE/KIT sub-mode state.
+        bool isKitSubMode() const noexcept { return kitSubMode_; }
+
         std::function<void(const juce::String&)> onTabChanged;
         std::function<void(bool)> onSeqToggled;
         std::function<void(bool)> onChordToggled;
+        // D1 (1D-P2B): fires when NOTE/KIT pill is clicked (true = KIT, false = NOTE).
+        std::function<void(bool kitMode)> onNoteKitToggled;
 
     private:
         // Three modes: KEYS, PAD, XY.  DRUM merged into PADS+KIT (#18).
@@ -1873,10 +1967,12 @@ private:
         int  activeIdx_ = 0;
         bool seqOn_     = false;
         bool chordOn_   = false;
+        bool kitSubMode_ = false; // D1 (1D-P2B): false=NOTE, true=KIT
 
         std::vector<juce::Rectangle<float>> tabRegions_;
         juce::Rectangle<float> seqBounds_;
         juce::Rectangle<float> chordBounds_;
+        juce::Rectangle<float> noteKitBounds_; // D1 (1D-P2B): NOTE/KIT toggle pill
     };
 
     //==========================================================================
@@ -2850,6 +2946,10 @@ private:
     SubmarinePlaySurface                  subPlaySurface_;
     SurfaceRightPanel                     surfaceRight_;
     DashboardTabBar      tabBar_;
+    // D5 (1D-P2B): canonical tab state — single source of truth for keyboard visibility.
+    // Set in tabBar_.onTabChanged BEFORE layout runs. Read by OceanLayout::layoutDashboard()
+    // via LayoutTargets::currentTab to fix the Detail-coordinator desync bug.
+    OceanCurrentTab      currentTab_ = OceanCurrentTab::Keys; // default = KEYS
 
     // Floating header controls.
     juce::TextButton enginesButton_ { juce::String::charToString(0x2261) + " Engines" }; // ≡ Engines

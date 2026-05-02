@@ -126,6 +126,17 @@ public:
         }
     }
 
+    // D3 (1D-P2B): LATCH status indicator — call when Keys mode activates/deactivates.
+    // Displayed as a small read-only pill in the status bar right area.
+    void setLatchActive(bool active)
+    {
+        if (latchActive_ != active)
+        {
+            latchActive_ = active;
+            repaint();
+        }
+    }
+
     //==========================================================================
     // Callbacks — parent wires these in the editor constructor.
 
@@ -321,6 +332,15 @@ private:
 
         // voicesBounds_ kept as member to avoid cascading removal; set off-screen.
         voicesBounds_ = juce::Rectangle<float>(-200.0f, 0.0f, 0.0f, 0.0f);
+
+        // D3 (1D-P2B): LATCH status pill — left of CHAIN button.
+        // Read-only indicator: visible only when LATCH is active (Keys mode).
+        {
+            const float pillW = 38.0f;
+            const float pillH = 16.0f;
+            latchBounds_ = juce::Rectangle<float>(rx - pillW - coupleBounds_.getWidth() - gap5 * 3,
+                                                   (h - pillH) * 0.5f, pillW, pillH);
+        }
     }
 
     //--------------------------------------------------------------------------
@@ -535,8 +555,33 @@ private:
         }
 
         // ================================================================
-        // RIGHT SIDE — D13 D1: lean layout — CHAIN button only.
+        // RIGHT SIDE — D13 D1: lean layout — LATCH indicator + CHAIN button.
         // Voices, CPU meter, MIDI dot, status dot removed at v1 per D13 D1.
+
+        // D3 (1D-P2B): LATCH status pill — read-only, left of CHAIN.
+        // Visible only when LATCH is active (Keys mode). Alpha-faded when inactive
+        // so it reads as a passive indicator regardless of mode.
+        {
+            g.setFont(pillFont);
+            if (latchActive_)
+            {
+                // Active state: amber tint, visible border
+                g.setColour(Colour(233, 196, 106).withAlpha(0.07f));
+                g.fillRoundedRectangle(latchBounds_, 3.0f);
+                g.setColour(Colour(233, 196, 106).withAlpha(0.30f));
+                g.drawRoundedRectangle(latchBounds_, 3.0f, 1.0f);
+                g.setColour(Colour(233, 196, 106).withAlpha(0.80f));
+            }
+            else
+            {
+                // Inactive: very subtle ghost (shows label exists, not lit)
+                g.setColour(Colour(200, 204, 216).withAlpha(0.04f));
+                g.drawRoundedRectangle(latchBounds_, 3.0f, 1.0f);
+                g.setColour(Colour(200, 204, 216).withAlpha(0.20f));
+            }
+            g.drawText("LATCH", latchBounds_.toNearestInt(),
+                       juce::Justification::centred, false);
+        }
 
         // --- CHAIN button ---
         // Renders as "CHAIN" per D13 — variable name (coupleBounds_) kept for wiring stability.
@@ -830,6 +875,9 @@ private:
     // Hover / interaction
     int hoveredRegion_ = -1;
 
+    // D3 (1D-P2B): LATCH active state — updated by setLatchActive()
+    bool latchActive_ = true; // default Keys mode = LATCH active
+
     // Layout rects (rebuilt each buildLayout call)
     juce::Rectangle<float> playBtnBounds_;
     juce::Rectangle<float> bpmBounds_;
@@ -841,6 +889,7 @@ private:
     std::array<juce::Rectangle<float>, 3> syncPillBounds_ {};
     juce::Rectangle<float> voicesBounds_;
     juce::Rectangle<float> coupleBounds_;
+    juce::Rectangle<float> latchBounds_;  // D3 (1D-P2B): LATCH status indicator
     juce::Rectangle<float> cpuBounds_;
     juce::Rectangle<float> midiDotBounds_;
     juce::Rectangle<float> statusDotBounds_;
