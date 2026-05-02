@@ -241,19 +241,19 @@ private:
     {
         // Background: teal gradient from top to bottom.
         juce::ColourGradient bg(
-            juce::Colour(60, 180, 170).withAlpha(0.04f),  0.0f, 0.0f,
-            juce::Colour(60, 180, 170).withAlpha(0.02f),  0.0f, h,   false);
-        bg.addColour(0.60, juce::Colour(60, 180, 170).withAlpha(0.12f));
+            juce::XO::Tokens::Color::accent().withAlpha(0.04f),  0.0f, 0.0f,
+            juce::XO::Tokens::Color::accent().withAlpha(0.02f),  0.0f, h,   false);
+        bg.addColour(0.60, juce::XO::Tokens::Color::accent().withAlpha(0.12f));
         g.setGradientFill(bg);
         g.fillRect(0.0f, 0.0f, w, h);
 
         // Bottom border 1 px teal.
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.18f));
+        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.18f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // Glow under bottom border (box-shadow emulation via soft stripe).
         juce::ColourGradient glow(
-            juce::Colour(60, 180, 170).withAlpha(0.10f), 0.0f, h - 1.0f,
+            juce::XO::Tokens::Color::accent().withAlpha(0.10f), 0.0f, h - 1.0f,
             juce::Colours::transparentBlack,             0.0f, h + 7.0f, false);
         g.setGradientFill(glow);
         g.fillRect(0.0f, h - 1.0f, w, 8.0f);
@@ -267,15 +267,15 @@ private:
         g.fillRect(0.0f, 0.0f, w, h);
 
         // Top border 1 px
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.18f));
+        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.18f));
         g.fillRect(0.0f, 0.0f, w, 1.0f);
 
         // Bottom border 1 px
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.12f));
+        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.12f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // Controls row bottom border
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.08f));
         g.fillRect(0.0f, static_cast<float>(kControlsRowH) - 1.0f, w, 1.0f);
 
         paintControlsRow(g, w);
@@ -345,7 +345,7 @@ private:
                 const float bx = ppb.getX() + i * barW;
                 const float bh = steps_[i].velocity * maxH;
                 const float by = ppb.getBottom() - bh;
-                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.50f));
+                g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.50f));
                 g.fillRect(bx + 1.0f, by, barW - 1.0f, bh);
             }
             // Outline
@@ -514,7 +514,7 @@ private:
             const float borderAlpha = isBeat ? 0.25f : 0.0f;
             if (isBeat && !isBeyond)
             {
-                g.setColour(juce::Colour(60, 180, 170).withAlpha(borderAlpha));
+                g.setColour(juce::XO::Tokens::Color::accent().withAlpha(borderAlpha));
                 g.fillRect(sx + stepW - 1.0f, rowY, 1.0f, rowH);
             }
             else

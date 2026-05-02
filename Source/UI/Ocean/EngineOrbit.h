@@ -24,6 +24,7 @@
 #include <unordered_map>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../Gallery/CreatureRenderer.h"
 #include "../EngineVocabulary.h"
 
@@ -190,7 +191,7 @@ public:
         }
 
         // ── Water reflection ellipse (subtle, below buoy) ──────────────────
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.04f));
+        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.04f));
         g.fillEllipse(cx - radius * 0.75f, cy + radius + 3.0f,
                        radius * 1.5f, 5.0f);
 

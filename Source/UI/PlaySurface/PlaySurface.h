@@ -19,6 +19,7 @@ class XOceanusProcessor;
 
 #include "GestureTrailBuffer.h"
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 
 namespace xoceanus
 {
@@ -58,12 +59,10 @@ static constexpr float kVelDecay = 0.92f;
 static constexpr float kWarmMemoryDur = 1.5f; // seconds
 static constexpr int kStripTrailSize = 45;
 
-// Colors — performance accent tones (theme-independent)
-static constexpr uint32_t kAmber = 0xFFF5C97A;
-static constexpr uint32_t kTerracotta = 0xFFE07A5F;
-static constexpr uint32_t kTeal = 0xFF2A9D8F;
-static constexpr uint32_t kFireGreen = 0xFF4ADE80;
-static constexpr uint32_t kPanicRed = 0xFFEF4444;
+// Colors — D3.c: scope-local constants replaced by canonical Tokens (2026-05-02 sweep).
+// kAmber (LATCH badge) → XO::Tokens::Color::Warning (warm amber, closest semantic match).
+// kTerracotta, kTeal, kFireGreen, kPanicRed were declared but never referenced in any
+// paint call — removed as dead declarations per D3.c architect gate audit.
 
 // Surface and text tones — route through GalleryColors so light mode works.
 // Call these functions instead of using the old constexpr values directly.
@@ -1392,11 +1391,11 @@ public:
         latchBadge_.setInterceptsMouseClicks(false, false); // read-only indicator
         latchBadge_.setTooltip("Keys mode latches notes — release does not stop them. "
                                "Click another mode to release all held notes.");
-        // Amber background (PS::kAmber) + dark text for high contrast on the deep bg.
+        // Amber background (D3.c: XO::Tokens::Color::Warning) + dark text for high contrast.
         latchBadge_.setColour(juce::TextButton::buttonColourId,
-                               juce::Colour(PS::kAmber).withAlpha(0.85f));
+                               XO::Tokens::Color::warning().withAlpha(0.85f));
         latchBadge_.setColour(juce::TextButton::buttonOnColourId,
-                               juce::Colour(PS::kAmber));
+                               XO::Tokens::Color::warning());
         latchBadge_.setColour(juce::TextButton::textColourOffId,
                                juce::Colour(0xFF1A1208)); // near-black — legible on amber
         latchBadge_.setColour(juce::TextButton::textColourOnId,

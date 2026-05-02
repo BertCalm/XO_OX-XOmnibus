@@ -160,7 +160,7 @@ public:
         auto        titleR = cardR.removeFromTop(titleH);
 
         // Title bar teal accent line at top of card
-        g.setColour(Colour(60, 180, 170).withAlpha(0.70f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.70f));
         g.fillRect(cardR.getX() + 1.0f, cardR.getY() - titleH,
                    cardR.getWidth() - 2.0f, 2.0f);
 
@@ -219,7 +219,7 @@ public:
                 tabH);
 
             const juce::Colour tabBg = isActive
-                ? Colour(60, 180, 170).withAlpha(0.10f)
+                ? XO::Tokens::Color::accent().withAlpha(0.10f)
                 : Colour(200, 204, 216).withAlpha(0.04f);
             const juce::Colour tabText = isActive
                 ? Colour(127, 219, 202).withAlpha(0.90f)

@@ -218,9 +218,9 @@ private:
         g.fillRect(0.0f, 0.0f, w, h);
 
         // Top + bottom borders.
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.10f));
+        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.10f));
         g.fillRect(0.0f, 0.0f, w, 1.0f);
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.07f));
+        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.07f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // ── Fonts ──

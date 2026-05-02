@@ -39,12 +39,33 @@ namespace Color {
     constexpr juce::uint32 Warning       = 0xFFE89B4A; // warm copper (couplingPrimary territory)
     constexpr juce::uint32 Text          = 0xFFE6E8EC; // Ocean::salt-adjacent — primary text
 
+    // D2.b — Glow alias: Accent is the canonical name for teal in the palette.
+    // Glow is an alias for use at halo/glow effect sites (8+ sites that were
+    // using bare Colour(60,180,170) for glowing UI elements).
+    // All sites should use Glow or Accent depending on semantic intent:
+    //   Glow  → halos, radial glows, selection rings, breathing pulse effects
+    //   Accent → interactive teal (borders, fills, active-state indicators)
+    constexpr juce::uint32 Glow = Accent; // D2.b: alias of Accent — same teal, semantic distinction only
+
+    // D3.c — State palette expansion (3 tokens, within the ≤11 total budget).
+    // PlaySurface.h had 5 scope-local constants (kAmber/kTerracotta/kTeal/kFireGreen/kPanicRed).
+    // Audit result (2026-05-02):
+    //   kAmber     → maps to Warning (used for LATCH badge — non-critical indicator state)
+    //   kTerracotta → UNUSED — never referenced in any paint call (dead declaration)
+    //   kTeal      → UNUSED — never referenced in any paint call (dead declaration)
+    //   kFireGreen → UNUSED — never referenced in any paint call (dead declaration)
+    //   kPanicRed  → UNUSED — never referenced in any paint call (dead declaration)
+    // Decision: only kAmber needs a canonical home → Warning covers it.
+    // The 4 unused constants are deleted from PlaySurface.h in the Wave 1 sweep.
+    // No new tokens needed beyond what's already in this palette. Token count stays at 9 (8 + Glow alias).
+
     // juce::Colour helpers — use in paint() and LookAndFeel overrides.
     inline juce::Colour primary()      { return juce::Colour(Primary); }
     inline juce::Colour surface()      { return juce::Colour(Surface); }
     inline juce::Colour surfaceMuted() { return juce::Colour(SurfaceMuted); }
     inline juce::Colour accent()       { return juce::Colour(Accent); }
     inline juce::Colour accentBright() { return juce::Colour(AccentBright); }
+    inline juce::Colour glow()         { return juce::Colour(Glow); }   // D2.b alias
     inline juce::Colour success()      { return juce::Colour(Success); }
     inline juce::Colour warning()      { return juce::Colour(Warning); }
     inline juce::Colour text()         { return juce::Colour(Text); }

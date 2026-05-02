@@ -1818,9 +1818,9 @@ private:
                 const bool active = (activeIdx_ == i);
                 if (active)
                 {
-                    g.setColour(juce::Colour(60, 180, 170).withAlpha(0.07f));
+                    g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.07f));
                     g.fillRoundedRectangle(tr.getX(), tr.getY(), tr.getWidth(), tr.getHeight() + 2.0f, 6.0f);
-                    g.setColour(juce::Colour(60, 180, 170).withAlpha(0.90f));
+                    g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.90f));
                 }
                 else
                 {

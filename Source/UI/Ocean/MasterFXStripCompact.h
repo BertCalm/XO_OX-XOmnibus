@@ -252,7 +252,7 @@ private:
         g.fillRect(0.0f, 0.0f, w, h);
 
         // Bottom border 1 px.
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
+        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.06f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // Fonts.
@@ -339,11 +339,11 @@ private:
                 28.0f);
             g.setColour(juce::Colour(8, 10, 14).withAlpha(0.60f));
             g.fillRoundedRectangle(displayRect, 4.0f);
-            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+            g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.08f));
             g.drawRoundedRectangle(displayRect, 4.0f, 1.0f);
 
             // Dot-matrix grid texture (subtle)
-            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.03f));
+            g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.03f));
             for (float dy = displayRect.getY() + 3.0f; dy < displayRect.getBottom() - 2.0f; dy += 3.0f)
                 for (float dx = displayRect.getX() + 3.0f; dx < displayRect.getRight() - 2.0f; dx += 3.0f)
                     g.fillRect(dx, dy, 1.0f, 1.0f);

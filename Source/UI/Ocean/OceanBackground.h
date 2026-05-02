@@ -23,6 +23,7 @@
 #include <array>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"  // GalleryColors::Ocean, A11y::prefersReducedMotion
+#include "../Tokens.h"
 
 namespace xoceanus
 {
@@ -123,7 +124,7 @@ public:
             // Alpha raised from 0.06 → 0.28: radial gradient fades to transparent,
             // so peak at 0.28 reads as a visible ambient warmth without flooding the scene.
             juce::ColourGradient breatheGrad(
-                juce::Colour(60, 180, 170).withAlpha(0.28f),
+                juce::XO::Tokens::Color::accent().withAlpha(0.28f),
                 breatheX, bh * 0.5f,
                 juce::Colours::transparentBlack,
                 breatheX + bw * 0.4f, bh * 0.5f, true);
@@ -140,7 +141,7 @@ public:
             const float cy = getHeight() * 0.3f;  // above center
             const float radius = static_cast<float>(std::max(getWidth(), getHeight())) * 0.7f;
             juce::ColourGradient atmo(
-                juce::Colour(60, 180, 170).withAlpha(0.04f), cx, cy,
+                juce::XO::Tokens::Color::accent().withAlpha(0.04f), cx, cy,
                 juce::Colours::transparentBlack, cx, cy + radius,
                 true);
             g.setGradientFill(atmo);

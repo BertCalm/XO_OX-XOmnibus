@@ -5,6 +5,7 @@
 #include "../../XOceanusProcessor.h"
 #include "../EngineVocabulary.h"
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "GalleryKnob.h"
 #include "MidiLearnMouseListener.h"
 #include "CockpitHost.h"
@@ -440,7 +441,7 @@ public:
                 juce::String secText = sectionName(run.sec);
 
                 // ── Section header background — submarine surface tint (teal, 6%) ──
-                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
+                g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.06f));
                 g.fillRect(0, y, getWidth(), kHeaderRowH);
 
                 // ── Bottom border — rgba(200,204,216,0.08) ─

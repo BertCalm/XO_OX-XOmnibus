@@ -26,6 +26,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "Starboard.h"
 #include <functional>
 #include <cmath>
@@ -131,7 +132,7 @@ public:
         g.fillRect(bounds);
 
         // Left border — 1px rgba(60,180,170,0.08)
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.08f));
         g.drawVerticalLine(0, bounds.getY(), bounds.getBottom());
 
         // ---- Header ----
