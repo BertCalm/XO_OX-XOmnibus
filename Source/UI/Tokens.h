@@ -1,0 +1,117 @@
+// SPDX-License-Identifier: MIT
+// Copyright (c) 2026 XO_OX Designs
+#pragma once
+
+// XOceanus design token surface — Track B canonical reference.
+// Single source of truth for colors, typography, and animation grammar.
+// Forwards to existing GalleryColors / GalleryFonts / AccentColors where appropriate.
+//
+// Locked decisions (Session 2A, 2026-05-02):
+//   D1 — Pedal-board direction: submarine instrument console (Session 2B implements)
+//          riveted depth-bar, brass-rim porthole rotaries, dot-matrix labels via Doto font.
+//   D5 — Cursor identity: depth-ring custom cursor (Session 2C implements; asset TBD)
+//          master plan item #17.
+//
+// Namespace casing notes (verified 2026-05-02):
+//   GalleryColors / GalleryFonts  →  xoceanus::GalleryColors / xoceanus::GalleryFonts  (lowercase)
+//   AccentColors                  →  XOceanus::AccentColors                             (mixed case)
+//   GalleryFonts has: display(), heading(), body(), value() (JetBrains Mono), label()
+//   There is no GalleryFonts::mono() — use value() for mono/JetBrains Mono output.
+
+#include <juce_graphics/juce_graphics.h>
+#include "GalleryColors.h"
+#include "AccentColors.h"
+
+namespace XO::Tokens {
+
+// ── D2: 8-token semantic color palette ──────────────────────────────────────
+// These tokens are the canonical replacement for raw colour literals scattered
+// across the codebase. Sweeps to replace call-sites land in Session 2C+.
+namespace Color {
+
+    // Raw ARGB hex constants — use when a constexpr uint32 is required.
+    constexpr juce::uint32 Primary       = 0xFFE9C46A; // XO Gold — brand-warm accent
+    constexpr juce::uint32 Surface       = 0xFF1A1F2A; // Ocean::deep — default panel background
+    constexpr juce::uint32 SurfaceMuted  = 0xFF101620; // Ocean::abyss — modal/drawer/scrim
+    constexpr juce::uint32 Accent        = 0xFF3CB4BE; // Ocean::foam-adjacent — replaces bare Colour(60,180,170)
+    constexpr juce::uint32 AccentBright  = 0xFF48CAE4; // hover/active states
+    constexpr juce::uint32 Success       = 0xFF7DD3A0; // confirmation green
+    constexpr juce::uint32 Warning       = 0xFFE89B4A; // warm copper (couplingPrimary territory)
+    constexpr juce::uint32 Text          = 0xFFE6E8EC; // Ocean::salt-adjacent — primary text
+
+    // juce::Colour helpers — use in paint() and LookAndFeel overrides.
+    inline juce::Colour primary()      { return juce::Colour(Primary); }
+    inline juce::Colour surface()      { return juce::Colour(Surface); }
+    inline juce::Colour surfaceMuted() { return juce::Colour(SurfaceMuted); }
+    inline juce::Colour accent()       { return juce::Colour(Accent); }
+    inline juce::Colour accentBright() { return juce::Colour(AccentBright); }
+    inline juce::Colour success()      { return juce::Colour(Success); }
+    inline juce::Colour warning()      { return juce::Colour(Warning); }
+    inline juce::Colour text()         { return juce::Colour(Text); }
+
+} // namespace Color
+
+// ── D3: Typography tokens ────────────────────────────────────────────────────
+// Forwards to xoceanus::GalleryFonts which holds the embedded-font typefaces.
+//
+// Role mapping (verified against GalleryFonts implementation):
+//   display() → Space Grotesk Bold  (D3: Display role)
+//   heading() → Satoshi Bold        (D3: Heading role)
+//   body()    → Satoshi Regular     (D3: Body role)
+//   mono()    → JetBrains Mono      (D3: Mono role — wraps GalleryFonts::value())
+//
+// NOTE: GalleryFonts has no ::mono() function. The JetBrains Mono typeface is
+// exposed via ::value(). This wrapper provides the canonical mono() name so
+// downstream components don't depend on the historical "value" naming.
+namespace Type {
+
+    // Font constructors — forward to xoceanus::GalleryFonts.
+    inline juce::Font display(float h) { return xoceanus::GalleryFonts::display(h); }
+    inline juce::Font heading(float h) { return xoceanus::GalleryFonts::heading(h); }
+    inline juce::Font body   (float h) { return xoceanus::GalleryFonts::body(h); }
+    inline juce::Font mono   (float h) { return xoceanus::GalleryFonts::value(h); } // JetBrains Mono
+
+    // Canonical size constants (D3).
+    constexpr float DisplayLarge  = 16.0f;
+    constexpr float DisplaySmall  = 14.0f;
+    constexpr float HeadingLarge  = 13.0f;
+    constexpr float HeadingSmall  = 11.0f;
+    constexpr float BodyLarge     = 12.0f;
+    constexpr float BodyDefault   = 10.0f;
+    constexpr float BodySmall     =  9.0f;
+    constexpr float MonoDefault   = 11.0f;
+    constexpr float MonoSmall     = 10.0f;
+    constexpr float MonoTiny      =  9.0f;
+
+} // namespace Type
+
+// ── D4: Animation grammar ────────────────────────────────────────────────────
+// Durations in milliseconds. EaseOutStep30Hz is a per-frame fractional blend
+// coefficient calibrated for 30 Hz timer callbacks (matches ocean depth-ring
+// animation feel). Use easeOutStep() for any lerped UI animation.
+namespace Motion {
+
+    constexpr int   DefaultDurationMs = 200;
+    constexpr int   HoverFadeMs       = 150;
+    constexpr int   RevealMs          = 320;
+    constexpr float EaseOutStep30Hz   = 0.18f; // lerp fraction per 33 ms tick at 30 Hz
+
+    /// Fractional-step ease-out for per-frame lerp animations.
+    /// Call once per timer tick (30 Hz): value = easeOutStep(value, target);
+    inline float easeOutStep(float current, float target) noexcept
+    {
+        return current + (target - current) * EaseOutStep30Hz;
+    }
+
+    /// A11y-aware variant: skips to target immediately when OS/in-app Reduce Motion is on.
+    /// Requires GalleryColors.h (included above) for A11y::prefersReducedMotion().
+    inline float easeOutStepA11y(float current, float target) noexcept
+    {
+        if (xoceanus::A11y::prefersReducedMotion())
+            return target;
+        return current + (target - current) * EaseOutStep30Hz;
+    }
+
+} // namespace Motion
+
+} // namespace XO::Tokens
