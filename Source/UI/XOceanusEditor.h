@@ -44,6 +44,7 @@
 #include "Gallery/DnaHexagon.h"
 #include "RegisterManager.h"
 #include "ToastOverlay.h"
+#include "Ocean/OceanLayoutConstants.h"
 #include "Ocean/OceanView.h"
 // D12: About/Lore modal + "O" brand badge button.
 #include "AboutModal.h"
@@ -650,12 +651,20 @@ public:
         and toast overlay (must be added last so it paints on top). */
     void initOceanView(XOceanusProcessor& proc)
     {
-        // I5a: base plugin height updated from 700→864 to accommodate kDashboardH=504
-        // (was 340; +164 to budget for EpicSlotsPanel 140px + SeqStrip 24px).
+        // 1D-P3: heights derived from layout constants — single source of truth in
+        // OceanLayoutConstants.h. Adding a strip to the dashboard budget no longer
+        // requires manually bumping the magic 764/864 numbers.
+        constexpr int kDefaultBaseHeight =
+            ocean_layout::kDashboardH + ocean_layout::kStatusBarH +
+            ocean_layout::kWaterlineH + ocean_layout::kDefaultOceanViewportH;  // = 864
+        constexpr int kMinBaseHeight =
+            ocean_layout::kDashboardH + ocean_layout::kStatusBarH +
+            ocean_layout::kWaterlineH + ocean_layout::kMinOceanViewportH;      // = 764
+
         // V2: On first launch the PlaySurface starts open, so add kPlaySurfaceH immediately.
         const int initialHeight = playSurface_.isVisible()
-                                      ? 864 + ColumnLayoutManager::kPlaySurfaceH
-                                      : 864;
+                                      ? kDefaultBaseHeight + ColumnLayoutManager::kPlaySurfaceH
+                                      : kDefaultBaseHeight;
 
         // Resize limits must be declared BEFORE setSize() — JUCE's constrainer
         // only runs on user-initiated drags, not programmatic setSize(), so any
@@ -663,8 +672,7 @@ public:
         // construction could otherwise land outside the declared bounds.
         setResizable(true, true);
         // PlaySurface adds 264pt when expanded; max height allows for both states.
-        // I5a: min-height bumped from 600→764 to match kDashboardH budget increase (+164).
-        setResizeLimits(960, 764, 1600, 1200 + ColumnLayoutManager::kPlaySurfaceH);
+        setResizeLimits(960, kMinBaseHeight, 1600, 1200 + ColumnLayoutManager::kPlaySurfaceH);
 
         setSize(1100, initialHeight);
 

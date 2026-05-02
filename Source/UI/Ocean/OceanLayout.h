@@ -31,6 +31,7 @@
 // placeholder in layoutForState() will be replaced by a stateMachine_ query.
 
 #include <juce_gui_basics/juce_gui_basics.h>
+#include "OceanLayoutConstants.h"
 #include "OceanStateMachine.h"
 #include "OceanChildren.h"
 #include "OceanBackground.h"
@@ -294,7 +295,7 @@ public:
     int getEffectiveDashboardH() const noexcept
     {
         if (targets_.surfaceRight.isOpen() && targets_.surfaceRight.isVisible())
-            return static_cast<int>(kMacroStripH) + 48 + kTabBarH;
+            return static_cast<int>(kMacroStripH) + MasterFXStripCompact::kStripHeight + kTabBarH;
         return kDashboardH;
     }
 
@@ -670,7 +671,7 @@ private:
         targets_.hudBar.setBounds(oceanArea.getX() + 16,
                                   oceanArea.getY() + 12,
                                   oceanArea.getWidth() - 32,
-                                  40);
+                                  SubmarineHudBar::kBarHeight);
 
         // Waterline separator strip — height is dynamic (6px collapsed, 96px expanded).
         const int wlH = children_.waterline()
@@ -696,13 +697,32 @@ private:
             targets_.dotMatrix.setBounds(macroRow.reduced(4, 4));
         }
 
-        // Master FX compact strip (48px, between macros and tab bar).
+        // 1D-P1: When SurfaceRight is open (PAD/XY mode), the dashboard budget
+        // collapses to macros + FX + tabBar (138px). EpicSlots and SeqStrip are
+        // KEYS-mode-only widgets — hide and skip layout to keep budget honest.
+        // Without this guard, layoutDashboard consumed 302+px while
+        // getEffectiveDashboardH() returned 138, overlapping the ocean viewport.
+        const bool surfaceRightOpen = targets_.surfaceRight.isOpen()
+                                       && targets_.surfaceRight.isVisible();
+
+        // Master FX compact strip (between macros and tab bar).
         if (auto* fx = children_.masterFxStrip())
-            fx->setBounds(dashArea.removeFromTop(48));
+            fx->setBounds(dashArea.removeFromTop(MasterFXStripCompact::kStripHeight));
 
         // Epic Slots panel (3-slot FX picker — below Master FX strip).
+        // Hidden in PAD/XY modes so SurfaceRight has the full vertical budget.
         if (auto* es = children_.epicSlots())
-            es->setBounds(dashArea.removeFromTop(EpicSlotsPanel::preferredHeight()));
+        {
+            if (surfaceRightOpen)
+            {
+                es->setVisible(false);
+            }
+            else
+            {
+                es->setVisible(true);
+                es->setBounds(dashArea.removeFromTop(EpicSlotsPanel::preferredHeight()));
+            }
+        }
 
         // Tab bar row.
         targets_.tabBar.setBounds(dashArea.removeFromTop(kTabBarH));
@@ -714,9 +734,19 @@ private:
                 cb->setBounds(dashArea.removeFromTop(42));
         }
 
-        // Seq strip — Wave 5 C2 mount: always-visible 24px strip below chord bar.
+        // Seq strip — KEYS-mode-only; hidden when SurfaceRight is open.
         if (auto* ss = children_.seqStrip())
-            ss->setBounds(dashArea.removeFromTop(SeqStripComponent::kStripHeight));
+        {
+            if (surfaceRightOpen)
+            {
+                ss->setVisible(false);
+            }
+            else
+            {
+                ss->setVisible(true);
+                ss->setBounds(dashArea.removeFromTop(SeqStripComponent::kStripHeight));
+            }
+        }
 
         // ChordBreakoutPanel — Wave 5 B3 mount: bottom 60% overlay.
         if (auto* cbp = children_.chordBreakout())
@@ -786,17 +816,16 @@ private:
     LayoutTargets        targets_;   ///< All component references OceanLayout positions.
 
     //==========================================================================
-    // Layout constants
-    // (Phase 3 TODO: consolidate into a shared OceanLayoutConstants header)
+    // Layout constants — 1D-P2: aliased from shared OceanLayoutConstants.h
+    // (single source of truth; budget math documented in that header).
     //==========================================================================
 
-    static constexpr int   kStatusBarH          = 28;
-    static constexpr float kMacroStripH         = 60.0f;
+    static constexpr int   kStatusBarH          = ocean_layout::kStatusBarH;
+    static constexpr float kMacroStripH         = ocean_layout::kMacroStripH;
     static constexpr float kSplitOrbitalFraction = 0.20f;
-    static constexpr int   kWaterlineH          = 6;
-    // I5a: kDashboardH = macros(60) + FX(48) + epic(140) + tabs(30) + seq(24) + play(202) = 504
-    static constexpr int   kDashboardH          = 504;
-    static constexpr int   kTabBarH             = 30;
+    static constexpr int   kWaterlineH          = ocean_layout::kWaterlineH;
+    static constexpr int   kDashboardH          = ocean_layout::kDashboardH;
+    static constexpr int   kTabBarH             = ocean_layout::kTabBarH;
 
     // HIGH fix (#1006): padding for orbital breath animation.
     static constexpr int kBreathPadding = 30;

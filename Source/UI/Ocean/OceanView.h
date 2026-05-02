@@ -46,6 +46,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "OceanLayoutConstants.h"
 #include "OceanBackground.h"
 #include "AmbientEdge.h"
 #include "EngineOrbit.h"
@@ -2877,13 +2878,14 @@ private:
     static constexpr int   kMinHeight           = 600;
     static constexpr int   kDefaultWidth        = 1100;
     static constexpr int   kDefaultHeight       = 750;
-    static constexpr int   kStatusBarH          = 28;
-    static constexpr float kMacroStripH         = 60.0f;  // #901: 56→60pt to fit 48pt knobs + 6pt pad
+    // 1D-P2: layout constants aliased from shared single-source-of-truth.
+    // See Source/UI/Ocean/OceanLayoutConstants.h for canonical values + budget math.
+    static constexpr int   kStatusBarH          = ocean_layout::kStatusBarH;
+    static constexpr float kMacroStripH         = ocean_layout::kMacroStripH;
     static constexpr float kSplitOrbitalFraction = 0.20f;  ///< 20% width for mini orbital
-    static constexpr int   kWaterlineH          = 6;
-    // I5a: kDashboardH = macros(60) + FX(48) + epic(140) + tabs(30) + seq(24) + play(202) = 504
-    static constexpr int   kDashboardH          = 504;
-    static constexpr int   kTabBarH             = 30;
+    static constexpr int   kWaterlineH          = ocean_layout::kWaterlineH;
+    static constexpr int   kDashboardH          = ocean_layout::kDashboardH;
+    static constexpr int   kTabBarH             = ocean_layout::kTabBarH;
 
     // HIGH fix (#1006): padding added to orbital bounds so ±5% breath animation
     // paints inside the component rect.  ceil(72 * 0.05) = 4px each side.
