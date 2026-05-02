@@ -406,6 +406,43 @@ private:
         const juce::Colour fillColour = juce::Colour (127, 219, 202).withAlpha (0.60f);
 
         GalleryLookAndFeel::paintXOceanusKnob (g, cx, cy, r, value01, isHover, fillColour);
+
+        // I3: Restore center body dot + indicator spoke that Wave 2C consolidation
+        // (commit cca0667e) dropped when paint was delegated to GalleryLookAndFeel.
+        // NOT in GalleryLookAndFeel — intentionally local so macro knobs are unaffected.
+
+        // Center body dot: filled circle at knob center, radius 35% of knob radius.
+        // Uses the same dark body colour as the macro knob palette (4A4A4E tone).
+        {
+            const juce::Colour bodyDot = juce::Colour (0x4A, 0x4A, 0x4E).withAlpha (isHover ? 1.0f : 0.85f);
+            const float dotR = r * 0.35f;
+            g.setColour (bodyDot);
+            g.fillEllipse (cx - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
+        }
+
+        // Indicator spoke: 1.5px line from r*0.25 to r*0.75 at the current value angle.
+        // Angle math mirrors GalleryLookAndFeel::paintXOceanusKnob (startAngle = 0.75π,
+        // endAngle = 2.25π, JUCE convention: subtract halfPi to map angle → screen coord).
+        if (value01 > 0.001f)
+        {
+            constexpr float kStart = 0.75f * juce::MathConstants<float>::pi;
+            constexpr float kEnd   = 2.25f * juce::MathConstants<float>::pi;
+            const float valueAngle = kStart + value01 * (kEnd - kStart);
+            const float screenAngle = valueAngle - juce::MathConstants<float>::halfPi;
+            const float cosA = std::cos (screenAngle);
+            const float sinA = std::sin (screenAngle);
+            const float x0 = cx + r * 0.25f * cosA;
+            const float y0 = cy + r * 0.25f * sinA;
+            const float x1 = cx + r * 0.75f * cosA;
+            const float y1 = cy + r * 0.75f * sinA;
+            const juce::Colour spokeCol = fillColour.withAlpha (isHover ? 1.0f : 0.85f);
+            g.setColour (spokeCol);
+            juce::Path spoke;
+            spoke.startNewSubPath (x0, y0);
+            spoke.lineTo (x1, y1);
+            g.strokePath (spoke, juce::PathStrokeType (1.5f,
+                juce::PathStrokeType::mitered, juce::PathStrokeType::rounded));
+        }
     }
 
     //==========================================================================

@@ -552,6 +552,8 @@ private:
             .withName(juce::Font::getDefaultSansSerifFontName())
             .withStyle("Bold")
             .withHeight(11.0f));
+        // I1a: UTF-8 em-dash — avoids Latin-1 mojibake when char* literal is used directly.
+        static const juce::String kEmDashGlyph(juce::CharPointer_UTF8("\xe2\x80\x94"));
 
         // ◀ prev arrow
         {
@@ -574,7 +576,7 @@ private:
             g.setFont(navFont);
             g.setColour(juce::Colour(200, 204, 216).withAlpha(
                 hoveredRegion_ == kRegPresetName ? 0.85f : 0.65f));
-            g.drawText(presetName_.isEmpty() ? "—" : presetName_,
+            g.drawText(presetName_.isEmpty() ? kEmDashGlyph : presetName_,
                        presetNameBounds_.toNearestInt(),
                        juce::Justification::centred, true);
         }

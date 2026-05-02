@@ -656,11 +656,12 @@ public:
         and toast overlay (must be added last so it paints on top). */
     void initOceanView(XOceanusProcessor& proc)
     {
-        // Base plugin height is 700pt (PlaySurface collapsed).
+        // I5a: base plugin height updated from 700→864 to accommodate kDashboardH=504
+        // (was 340; +164 to budget for EpicSlotsPanel 140px + SeqStrip 24px).
         // V2: On first launch the PlaySurface starts open, so add kPlaySurfaceH immediately.
         const int initialHeight = playSurface_.isVisible()
-                                      ? 700 + ColumnLayoutManager::kPlaySurfaceH
-                                      : 700;
+                                      ? 864 + ColumnLayoutManager::kPlaySurfaceH
+                                      : 864;
 
         // Resize limits must be declared BEFORE setSize() — JUCE's constrainer
         // only runs on user-initiated drags, not programmatic setSize(), so any
@@ -668,7 +669,8 @@ public:
         // construction could otherwise land outside the declared bounds.
         setResizable(true, true);
         // PlaySurface adds 264pt when expanded; max height allows for both states.
-        setResizeLimits(960, 600, 1600, 1000 + ColumnLayoutManager::kPlaySurfaceH);
+        // I5a: min-height bumped from 600→764 to match kDashboardH budget increase (+164).
+        setResizeLimits(960, 764, 1600, 1200 + ColumnLayoutManager::kPlaySurfaceH);
 
         setSize(1100, initialHeight);
 

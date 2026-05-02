@@ -905,7 +905,15 @@ public:
                         break;
                     case 2: // REVERB
                         title  = "REVERB ADVANCED";
-                        params = { {"master_reverbSize", "SIZE"} };
+                        // I4B: Previously only 1 of 8 reverb params was listed.
+                        // Expanded to all 7 user-facing parameters (IDs from XOceanusProcessor.cpp).
+                        params = { {"master_reverbSize",      "SIZE"},
+                                   {"master_reverbPreDelay",  "PRE"},
+                                   {"master_reverbDecay",     "DECAY"},
+                                   {"master_reverbDamping",   "DAMP"},
+                                   {"master_reverbDiffusion", "DIFF"},
+                                   {"master_reverbMod",       "MOD"},
+                                   {"master_reverbWidth",     "WIDTH"} };
                         break;
                     case 3: // MOD
                         title  = "MOD ADVANCED";
@@ -930,9 +938,29 @@ public:
                 juce::Rectangle<int> bounds;
                 if (auto* s = children_.masterFxStrip())
                     bounds = s->getScreenBounds();
+                // I4A: Capture parent at lambda creation time via explicit this->getTopLevelComponent().
+                // Inside a custom-drawn MasterFXStripCompact, an unqualified getTopLevelComponent()
+                // resolved through the strip's own scope may return null — using OceanView's
+                // (captured this) top-level component ensures a valid parent for CallOutBox.
+                auto* parentComp = this->getTopLevelComponent();
+                if (parentComp == nullptr) parentComp = this;
                 juce::CallOutBox::launchAsynchronously(
                     std::make_unique<AdvancedFXPanel>(apvts, title, params),
-                    bounds, getTopLevelComponent());
+                    bounds, parentComp);
+            };
+
+            // I2: onPresetNav and onPresetClicked were declared but never assigned —
+            // the "Welcome" preset menu was completely dead.  Wire them here using the
+            // same OceanView-level callbacks that SubmarineHudBar uses (line ~645).
+            strip->onPresetNav = [this](int direction)
+            {
+                if (direction < 0) { if (onPresetPrev) onPresetPrev(); }
+                else               { if (onPresetNext) onPresetNext(); }
+            };
+
+            strip->onPresetClicked = [this]()
+            {
+                if (onPresetNameClicked) onPresetNameClicked();
             };
         }
 
@@ -1317,6 +1345,8 @@ public:
         // #1007 FIX 3: Keep the inline header label in sync so the spatial grouping
         // "< Preset Name >" is always accurate.
         presetNameLabel_.setText(name, juce::dontSendNotification);
+        // I1b: HUD bar was skipped in the delegation — arrows fired but display never updated.
+        hudBar_.setPresetName(name);
     }
     // D6 (#1096): mood identity lives in browser/HUD — no-op here.
     void setMoodName(const juce::String&) {}
@@ -2897,7 +2927,8 @@ private:
     static constexpr float kMacroStripH         = 60.0f;  // #901: 56→60pt to fit 48pt knobs + 6pt pad
     static constexpr float kSplitOrbitalFraction = 0.20f;  ///< 20% width for mini orbital
     static constexpr int   kWaterlineH          = 6;
-    static constexpr int   kDashboardH          = 340;    ///< macros (60) + FX (48) + tabs (30) + play (~202)
+    // I5a: kDashboardH = macros(60) + FX(48) + epic(140) + tabs(30) + seq(24) + play(202) = 504
+    static constexpr int   kDashboardH          = 504;
     static constexpr int   kTabBarH             = 30;
 
     // HIGH fix (#1006): padding added to orbital bounds so ±5% breath animation

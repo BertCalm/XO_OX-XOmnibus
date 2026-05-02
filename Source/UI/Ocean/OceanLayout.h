@@ -737,7 +737,9 @@ private:
         targets_.exprStrips.setBounds(dashArea.removeFromLeft(ExpressionStrips::kStripWidth));
 
         // Remaining dashboard space → Submarine PlaySurface (KEYS keyboard).
-        targets_.playSurfaceOverlay.setVisible(false);
+        // I5b: Removed unconditional setVisible(false) — it was overriding the KEYS
+        // button's show() call every layout pass. The overlay manages its own visibility
+        // via show()/hide() methods + internal showing_ flag.
         targets_.subPlaySurface.setBounds(dashArea);
         // Only show keyboard when right panel is closed (KEYS mode).
         if (!targets_.surfaceRight.isOpen() || !targets_.surfaceRight.isVisible())
@@ -794,7 +796,8 @@ private:
     static constexpr float kMacroStripH         = 60.0f;
     static constexpr float kSplitOrbitalFraction = 0.20f;
     static constexpr int   kWaterlineH          = 6;
-    static constexpr int   kDashboardH          = 340;
+    // I5a: kDashboardH = macros(60) + FX(48) + epic(140) + tabs(30) + seq(24) + play(202) = 504
+    static constexpr int   kDashboardH          = 504;
     static constexpr int   kTabBarH             = 30;
 
     // HIGH fix (#1006): padding for orbital breath animation.
