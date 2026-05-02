@@ -502,6 +502,11 @@ void XOceanusProcessor::cacheParameterPointers()
     cachedParams.masterTune     = apvts.getRawParameterValue("masterTune");
     cachedParams.pitchBendRange = apvts.getRawParameterValue("pitchBendRange");
 
+    // P1-6 (1F): Cache macro1 (CHARACTER) pointer so processBlock never calls
+    // getRawParameterValue() on the audio path.  Single per-block hash lookup
+    // eliminated; replaces the inline fetch at the DNAModulationBus warp site.
+    cachedParams.macro1 = apvts.getRawParameterValue("macro1");
+
     // MPE params
     cachedParams.mpeEnabled = apvts.getRawParameterValue("mpe_enabled");
     cachedParams.mpeZone = apvts.getRawParameterValue("mpe_zone");
@@ -1610,9 +1615,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     // "fully characterful" end. Future bipolar mapping (-1..1) would let M1 also
     // pull DNA toward its inverse, but Phase 0 keeps the convention simple.
     // applyMacroWarp + advanceSmoothing are both lock-free; safe on the audio thread.
-    if (auto* m1Ptr = apvts.getRawParameterValue("macro1"))
+    // P1-6 (1F): Use cachedParams.macro1 — no per-block hash lookup.
+    if (cachedParams.macro1)
     {
-        const float m1 = m1Ptr->load(std::memory_order_relaxed);
+        const float m1 = cachedParams.macro1->load(std::memory_order_relaxed);
         for (int slot = 0; slot < xoceanus::DNAModulationBus::MaxEngineSlots; ++slot)
             dnaBus_.applyMacroWarp(slot, m1);
     }
@@ -1749,7 +1755,13 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         if (std::abs(masterTuneHz - 440.0f) > 0.01f)
         {
             const float semitones = 12.0f * std::log2(masterTuneHz / 440.0f);
-            const float rangeMultiplier = 1.0f / 2.0f; // 2-semitone range
+            // P0-1 (1F): Read actual pitchBendRange from cachedParams so the injection
+            // respects non-default PB ranges (e.g. ±12).  Guard against nullptr (param
+            // may not be registered in headless test builds).
+            const float pbR = cachedParams.pitchBendRange
+                              ? juce::jlimit(1.0f, 24.0f, cachedParams.pitchBendRange->load(std::memory_order_relaxed))
+                              : 2.0f;
+            const float rangeMultiplier = 1.0f / pbR;
             const float normalised = juce::jlimit(-1.0f, 1.0f, semitones * rangeMultiplier);
             const int wheelVal = static_cast<int>(
                 std::round(8192.0f + normalised * 8191.0f));
@@ -3471,6 +3483,11 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         xml->setAttribute("registerLocked",  persistedRegisterLocked  ? 1 : 0);
         xml->setAttribute("registerCurrent", persistedRegisterCurrent);
 
+        // P1-8 (1F) — Save dashboard tab + NOTE/KIT sub-mode so session reload
+        // restores the user's last PAD+KIT layout.  Defaults: KEYS + NOTE.
+        xml->setAttribute("dashboardTab",    persistedDashboardTab_);
+        xml->setAttribute("kitSubMode",      persistedKitSubMode_ ? 1 : 0);
+
         // §1.1.1 Principle 4 — Persist first-launch flag so Sound on First Launch
         // fires exactly once across all sessions.  Once saved, hasLaunchedBefore is
         // always true in subsequent saves and is never reset by the user.
@@ -3668,6 +3685,14 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
         // Clamp to valid range (0=Gallery, 1=Performance, 2=Coupling).
         if (persistedRegisterCurrent < 0 || persistedRegisterCurrent > 2)
             persistedRegisterCurrent = 0;
+
+        // P1-8 (1F) — Restore dashboard tab + NOTE/KIT sub-mode.
+        // Defaults: KEYS (0) + NOTE (false) — safe for sessions predating P1-8.
+        {
+            const int tab = xml->getIntAttribute("dashboardTab", 0);
+            persistedDashboardTab_ = juce::jlimit(0, 2, tab);
+            persistedKitSubMode_   = xml->getIntAttribute("kitSubMode", 0) != 0;
+        }
 
         // F2-002: Restore atomic settings.  Defaults match init values so old sessions
         // (predating F2-002) are safe — they simply reload as defaults.

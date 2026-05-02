@@ -1251,25 +1251,14 @@ public:
                 processor.getMidiCollector().addMessageToQueue(msg);
             };
 
-            // wire(1C-5): SubmarinePlaySurface XY mode → APVTS xy_pos_x/y params.
-            // SubmarinePlaySurface.h:105 — was UNASSIGNED. Routes through the same
-            // processor APVTS xy_pos_x/y params as SurfaceRightPanel::onXYChanged.
-            subPS.onXYChanged = [this](float x, float y)
-            {
-                auto& apvts = processor.getAPVTS();
-                if (auto* px = apvts.getParameter("xy_pos_x"))
-                {
-                    px->beginChangeGesture();
-                    px->setValueNotifyingHost(juce::jlimit(0.0f, 1.0f, x));
-                    px->endChangeGesture();
-                }
-                if (auto* py = apvts.getParameter("xy_pos_y"))
-                {
-                    py->beginChangeGesture();
-                    py->setValueNotifyingHost(juce::jlimit(0.0f, 1.0f, y));
-                    py->endChangeGesture();
-                }
-            };
+            // P1-7 (1F): SubmarinePlaySurface XY position is persisted via
+            // SurfaceRightPanel's per-slot path (D4.c, slot-suffixed APVTS params:
+            // xy_pos_x_slot0 … xy_pos_x_slot3).  The unslotted "xy_pos_x" / "xy_pos_y"
+            // IDs that the old wire(1C-5) body tried to look up are NOT registered in
+            // the APVTS — those lookups returned nullptr and the lambda was silently
+            // dead.  Leave the callback assigned to an empty lambda so the std::function
+            // null-check in SubmarinePlaySurface.h is always satisfied.
+            subPS.onXYChanged = [](float, float) {};
         }
 
         // F03 fix (#1322): Wire SurfaceRightPanel note callbacks to MidiCollector.
@@ -1295,10 +1284,15 @@ public:
             // and wire the toggle callback back to persist the state.
             if (auto* gridParam = processor.getAPVTS().getRawParameterValue("xy_pad_grid_visible"))
                 srp.setGridVisible(gridParam->load() >= 0.5f);
+            // P1-9 (1F): Wrap setValueNotifyingHost in gesture pair so Logic Pro
+            // and other DAWs can record automation for this toggle.
             srp.onGridToggled = [this](bool gridOn) {
-                if (auto* p = dynamic_cast<juce::AudioParameterBool*>(
-                        processor.getAPVTS().getParameter("xy_pad_grid_visible")))
+                if (auto* p = processor.getAPVTS().getParameter("xy_pad_grid_visible"))
+                {
+                    p->beginChangeGesture();
                     p->setValueNotifyingHost(gridOn ? 1.0f : 0.0f);
+                    p->endChangeGesture();
+                }
             };
         }
 
@@ -1803,6 +1797,35 @@ public:
             }
             // SplitTransform (2) and BrowserOpen (3) are not restored — too complex and
             // rarely persisted intentionally; users re-enter them manually.
+        }
+
+        // P1-8 (1F): Wire dashboard tab + kit sub-mode persistence callbacks.
+        oceanView_.onDashboardTabChanged = [this](int tabIndex)
+        {
+            processor.setPersistedDashboardTab(tabIndex);
+        };
+        oceanView_.onDashboardKitSubModeChanged = [this](bool kitMode)
+        {
+            processor.setPersistedKitSubMode(kitMode);
+        };
+
+        // P1-8 (1F): Restore dashboard tab + kit sub-mode from saved session.
+        // Use callAfterDelay so the first resized() pass has completed before
+        // selectTab() triggers a second layout pass.  50ms matches the ZoomIn
+        // restore pattern above.
+        {
+            const int restoredTab = proc.getPersistedDashboardTab();
+            const bool restoredKit = proc.getPersistedKitSubMode();
+            if (restoredTab != 0 || restoredKit)
+            {
+                juce::Timer::callAfterDelay(50,
+                    [safeThis = juce::Component::SafePointer<XOceanusEditor>(this),
+                     restoredTab, restoredKit]()
+                    {
+                        if (safeThis != nullptr)
+                            safeThis->oceanView_.restoreDashboardTab(restoredTab, restoredKit);
+                    });
+            }
         }
     }
 

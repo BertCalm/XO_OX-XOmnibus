@@ -3,14 +3,15 @@
 #pragma once
 // TransportBar.h — Submarine-style 28 px transport + status bar for the XOceanus Ocean View.
 //
-// D13 layout (Wave 2B):  [ 4/4 ] [ INT · HOST · AUTO ] [ CHAIN ]
-// Three spatial groups separated by ~14 px gaps.  Voice count, CPU meter, MIDI dot,
+// D13 layout (Wave 2B):  [ Play BPM TAP ] [ 4/4 ] [ CHAIN ]
+// Two spatial groups on the left, CHAIN on the right.  Voice count, CPU meter, MIDI dot,
 // and status dot removed at v1 per D13 D1 (lean layout).
+// P1-10 (1F): INT/HOST/AUTO sync pills removed — had no APVTS backing.
 //
 // The bar sits at the very bottom of the plugin window. It renders two zones in a single
 // horizontal row:
 //
-//   LEFT  — Transport strip: Play, BPM (drag-editable), TAP, Time Sig, Sync pills (INT/HOST/AUTO)
+//   LEFT  — Transport strip: Play, BPM (drag-editable), TAP, Time Sig
 //   RIGHT — Status info: CHAIN button
 //
 // All values are pushed from the editor's timerCallback via the public setter API:
@@ -24,7 +25,6 @@
 //   - BPM region: vertical drag (up = +BPM, down = -BPM, 0.5 BPM per pixel)
 //   - TAP button: records last 5 timestamps; gap > 2000 ms resets; avg interval → BPM → fires onBpmChanged
 //   - Time sig (numerator OR denominator): click cycles 4/4→3/4→6/8→7/8→5/4→4/4 (D13 C2)
-//   - Sync pills: click a pill to activate → fires (no separate callback; parent reads back via poll)
 //   - CHAIN button: click fires onCoupleClicked (variable name kept for wiring stability, D13)
 //
 // Timer runs at 10 Hz — drives MIDI flash decay and any future animation.
@@ -162,13 +162,7 @@ public:
                 return "Time signature numerator — click to cycle beat count (4, 3, 6, 7, 5)";
             case kRegTimeSigD:
                 return "Time signature denominator — click to cycle note value (4, 4, 8, 8, 4)";
-            case kRegSyncInt:
-                return "Internal clock — XOceanus drives its own tempo";
-            case kRegSyncHost:
-                return "Host sync — lock tempo and transport to DAW";
-            case kRegSyncAuto:
-                // D13 B2: AUTO pill tooltip spec.
-                return "Follow host transport when playing, free-run when stopped";
+            // P1-10 (1F): kRegSyncInt/Host/Auto (5-7) removed with sync pills.
             case kRegCouple:
                 return "Open coupling inspector";
             default:
@@ -177,10 +171,6 @@ public:
     }
 
 private:
-    //==========================================================================
-    // Sync mode enum
-    enum class SyncMode { Int = 0, Host, Auto, NumModes };
-
     //==========================================================================
     // Hit-test regions — rebuilt each paint() / resized() call.
 
@@ -197,9 +187,9 @@ private:
         kRegTap       = 2,
         kRegTimeSigN  = 3,
         kRegTimeSigD  = 4,
-        kRegSyncInt   = 5,
-        kRegSyncHost  = 6,
-        kRegSyncAuto  = 7,
+        // P1-10 (1F): Sync pills (INT/HOST/AUTO) removed — had no APVTS backing
+        // and no callback.  Clicking changed nothing in the audio engine.
+        // IDs 5-7 retired to keep existing RegionId numeric values stable.
         kRegCouple    = 8,
     };
 
@@ -293,20 +283,11 @@ private:
             x += 14.0f + groupGap;  // D13 D1: group gap after Group 2
         }
 
-        // Separator "|" between Group 2 and Group 3
+        // Separator "|" between Group 2 and right-side controls.
+        // P1-10 (1F): Group 3 sync pills (INT/HOST/AUTO) removed.
+        // No APVTS backing, no audio-engine callback — Potemkin controls.
+        // The space they occupied is now breathing room between time-sig and CHAIN.
         sepX_[1] = x - groupGap * 0.5f;
-
-        // ── Group 3: Sync pills [ INT HOST AUTO ] ──────────────────────────────
-        static constexpr const char* kSyncLabels[3] = { "INT", "HOST", "AUTO" };
-        for (int i = 0; i < 3; ++i)
-        {
-            const float pillW = (i == 1) ? 26.0f : 22.0f; // HOST wider
-            juce::Rectangle<float> r(x, btnY + 2.0f, pillW, btnH - 4.0f);
-            regions_.push_back({ r, kRegSyncInt + i });
-            syncPillBounds_[i] = r;
-            x += pillW + 3.0f;
-        }
-        (void)kSyncLabels;
 
         // ---- Right side: D13 D1 lean layout — CHAIN button only ----
         // Voice count, CPU meter, MIDI dot, status dot removed at v1 per D13 D1.
@@ -526,33 +507,7 @@ private:
                        juce::Justification::centred, false);
         }
 
-        // --- Sync pills ---
-        {
-            static constexpr const char* kLabels[3] = { "INT", "HOST", "AUTO" };
-            g.setFont(pillFont);
-
-            for (int i = 0; i < 3; ++i)
-            {
-                const bool isActive = (static_cast<int>(syncMode_) == i);
-                const bool isHov    = (hoveredRegion_ == kRegSyncInt + i);
-
-                const juce::Colour textCol =
-                    isActive ? Colour(127, 219, 202).withAlpha(0.80f)
-                    : isHov  ? Colour(200, 204, 216).withAlpha(0.50f)
-                             : Colour(200, 204, 216).withAlpha(0.35f);
-                const juce::Colour borderCol =
-                    isActive ? Colour(127, 219, 202).withAlpha(0.25f)
-                    : isHov  ? Colour(200, 204, 216).withAlpha(0.12f)
-                             : Colour(200, 204, 216).withAlpha(0.06f);
-
-                g.setColour(borderCol);
-                g.drawRoundedRectangle(syncPillBounds_[i], 3.0f, 1.0f);
-
-                g.setColour(textCol);
-                g.drawText(kLabels[i], syncPillBounds_[i].toNearestInt(),
-                           juce::Justification::centred, false);
-            }
-        }
+        // P1-10 (1F): Sync pills (INT/HOST/AUTO) removed — see buildLayout() comment.
 
         // ================================================================
         // RIGHT SIDE — D13 D1: lean layout — LATCH indicator + CHAIN button.
@@ -651,21 +606,6 @@ private:
                     cycleTimeSig();
                     if (onTimeSigChanged)
                         onTimeSigChanged(timeSigNumerator_, timeSigDenominator_);
-                    repaint();
-                    break;
-
-                case kRegSyncInt:
-                    syncMode_ = SyncMode::Int;
-                    repaint();
-                    break;
-
-                case kRegSyncHost:
-                    syncMode_ = SyncMode::Host;
-                    repaint();
-                    break;
-
-                case kRegSyncAuto:
-                    syncMode_ = SyncMode::Auto;
                     repaint();
                     break;
 
@@ -853,7 +793,6 @@ private:
     double bpm_                 = 120.0;
     int    timeSigNumerator_    = 4;
     int    timeSigDenominator_  = 4;
-    SyncMode syncMode_          = SyncMode::Int;
 
     // Status
     int   voiceCount_  = 0;
@@ -886,7 +825,6 @@ private:
     juce::Rectangle<float> timeSigNBounds_;
     juce::Rectangle<float> timeSigSlashBounds_;
     juce::Rectangle<float> timeSigDBounds_;
-    std::array<juce::Rectangle<float>, 3> syncPillBounds_ {};
     juce::Rectangle<float> voicesBounds_;
     juce::Rectangle<float> coupleBounds_;
     juce::Rectangle<float> latchBounds_;  // D3 (1D-P2B): LATCH status indicator

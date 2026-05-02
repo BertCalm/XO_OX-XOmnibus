@@ -144,6 +144,15 @@ public:
     /// onVisibilityChanged if they need to trigger layout changes).
     void setVisible(bool shouldBeVisible) override
     {
+        // P0-2 (1F): If a slider gesture is in progress and the bar is being hidden,
+        // balance the beginChangeGesture() call before visibility changes.
+        // Without this, a mid-drag toggle of CHORD → hide → mouseUp never delivered
+        // → unmatched beginChangeGesture → DAW locks the parameter for the whole session.
+        if (!shouldBeVisible && activeSliderType_ != RegionType::None)
+        {
+            endSliderGesture(activeSliderType_);
+            activeSliderType_ = RegionType::None;
+        }
         Component::setVisible(shouldBeVisible);
         if (onVisibilityChanged)
             onVisibilityChanged();
@@ -238,7 +247,7 @@ private:
         // ── Palette dot ──
         if (!paletteDotBounds_.isEmpty())
         {
-            g.setColour(juce::Colour(kPaletteColors[currentPalette_]));
+            g.setColour(juce::Colour(kPaletteColors[currentPalette_.load(std::memory_order_relaxed)]));
             g.fillEllipse(paletteDotBounds_);
         }
 
@@ -300,8 +309,8 @@ private:
         // Palette pill gets the palette color for text + border.
         if (pill.type == RegionType::Palette)
         {
-            textCol   = juce::Colour(kPaletteColors[currentPalette_]).withAlpha(isHover ? 1.0f : 0.85f);
-            borderCol = juce::Colour(kPaletteColors[currentPalette_]).withAlpha(0.50f);
+            textCol   = juce::Colour(kPaletteColors[currentPalette_.load(std::memory_order_relaxed)]).withAlpha(isHover ? 1.0f : 0.85f);
+            borderCol = juce::Colour(kPaletteColors[currentPalette_.load(std::memory_order_relaxed)]).withAlpha(0.50f);
             bgCol     = juce::Colours::transparentBlack;
         }
 
@@ -376,7 +385,7 @@ private:
         }
 
         // Also highlight palette intervals as a fallback reference.
-        const int palIdx = juce::jlimit(0, 7, currentPalette_);
+        const int palIdx = juce::jlimit(0, 7, currentPalette_.load(std::memory_order_relaxed));
         for (int k = 0; k < 4; ++k)
         {
             int iv = kPaletteIntervals[palIdx][k];
@@ -920,22 +929,24 @@ private:
         {
         case RegionType::Palette:
         {
-            currentPalette_ = (currentPalette_ + 1) % 8;
+            const int newPal = (currentPalette_.load(std::memory_order_relaxed) + 1) % 8;
+            currentPalette_.store(newPal, std::memory_order_relaxed);
             if (auto* p = apvts_.getParameter("cm_palette"))
             {
                 p->beginChangeGesture();
-                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(currentPalette_)));
+                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(newPal)));
                 p->endChangeGesture();
             }
             break;
         }
         case RegionType::Voicing:
         {
-            currentVoicing_ = (currentVoicing_ + 1) % kNumVoicings;
+            const int newVoicing = (currentVoicing_.load(std::memory_order_relaxed) + 1) % kNumVoicings;
+            currentVoicing_.store(newVoicing, std::memory_order_relaxed);
             if (auto* p = apvts_.getParameter("cm_voicing"))
             {
                 p->beginChangeGesture();
-                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(currentVoicing_)));
+                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(newVoicing)));
                 p->endChangeGesture();
             }
             break;
@@ -946,11 +957,12 @@ private:
 
         case RegionType::Rhythm:
         {
-            currentRhythm_ = (currentRhythm_ + 1) % 8;
+            const int newRhythm = (currentRhythm_.load(std::memory_order_relaxed) + 1) % 8;
+            currentRhythm_.store(newRhythm, std::memory_order_relaxed);
             if (auto* p = apvts_.getParameter("cm_seq_pattern"))
             {
                 p->beginChangeGesture();
-                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(currentRhythm_)));
+                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(newRhythm)));
                 p->endChangeGesture();
             }
             break;
@@ -1166,10 +1178,10 @@ private:
     {
         switch (type)
         {
-        case RegionType::Palette:  return juce::String(kPaletteNames[currentPalette_]).toUpperCase();
-        case RegionType::Voicing:  return juce::String(kVoicingNames[currentVoicing_]).toUpperCase();
+        case RegionType::Palette:  return juce::String(kPaletteNames[currentPalette_.load(std::memory_order_relaxed)]).toUpperCase();
+        case RegionType::Voicing:  return juce::String(kVoicingNames[currentVoicing_.load(std::memory_order_relaxed)]).toUpperCase();
         case RegionType::Root:     return rootName(currentRoot_);
-        case RegionType::Rhythm:   return juce::String(kRhythmNames[currentRhythm_]).toUpperCase();
+        case RegionType::Rhythm:   return juce::String(kRhythmNames[currentRhythm_.load(std::memory_order_relaxed)]).toUpperCase();
         case RegionType::VelCurve: return juce::String(kVelCurveNames[currentVelCurve_]).toUpperCase();
         case RegionType::ModeLive:  return "LIVE";
         case RegionType::ModeSeq:   return "SEQ";
@@ -1206,11 +1218,11 @@ private:
         };
 
         if (parameterID == "cm_palette")
-            currentPalette_ = juce::jlimit(0, 7, toInt("cm_palette"));
+            currentPalette_.store(juce::jlimit(0, 7, toInt("cm_palette")), std::memory_order_relaxed);
         else if (parameterID == "cm_voicing")
-            currentVoicing_ = juce::jlimit(0, kNumVoicings - 1, toInt("cm_voicing"));
+            currentVoicing_.store(juce::jlimit(0, kNumVoicings - 1, toInt("cm_voicing")), std::memory_order_relaxed);
         else if (parameterID == "cm_seq_pattern")
-            currentRhythm_ = juce::jlimit(0, 7, toInt("cm_seq_pattern"));
+            currentRhythm_.store(juce::jlimit(0, 7, toInt("cm_seq_pattern")), std::memory_order_relaxed);
 
         // parameterChanged() can fire on any thread — marshal repaint to message thread.
         juce::MessageManager::callAsync([safeThis = juce::Component::SafePointer<ChordBarComponent>(this)]()
@@ -1235,9 +1247,9 @@ private:
             return 0.0f;
         };
 
-        currentPalette_ = juce::jlimit(0, 7, readInt("cm_palette"));
-        currentVoicing_ = juce::jlimit(0, kNumVoicings - 1, readInt("cm_voicing"));
-        currentRhythm_  = juce::jlimit(0, 7, readInt("cm_seq_pattern"));
+        currentPalette_.store(juce::jlimit(0, 7, readInt("cm_palette")), std::memory_order_relaxed);
+        currentVoicing_.store(juce::jlimit(0, kNumVoicings - 1, readInt("cm_voicing")), std::memory_order_relaxed);
+        currentRhythm_.store(juce::jlimit(0, 7, readInt("cm_seq_pattern")), std::memory_order_relaxed);
         currentSwing_   = readFloat("cm_seq_swing");
         currentGate_    = readFloat("cm_seq_gate");
 
@@ -1297,9 +1309,14 @@ private:
     const ChordMachine&                 cm_;
 
     // APVTS-mirrored + local state
-    int        currentPalette_  = 0;
-    int        currentVoicing_  = 0;
-    int        currentRhythm_   = 0;
+    // P0-4 (1F): parameterChanged() fires on any thread; paint() reads on message
+    // thread.  Promote to std::atomic<int> to satisfy the C++ memory model.
+    // All reads use load(relaxed); writes use store(relaxed) — one-block-late is
+    // fine for a color/label indicator, and relaxed is safe on x86/ARM because
+    // there are no dependent load chains that require acquire/release ordering.
+    std::atomic<int> currentPalette_  {0};
+    std::atomic<int> currentVoicing_  {0};
+    std::atomic<int> currentRhythm_   {0};
     int        currentVelCurve_ = 0;
     float      currentSpread_   = 0.5f;
     float      currentSwing_    = 0.0f;

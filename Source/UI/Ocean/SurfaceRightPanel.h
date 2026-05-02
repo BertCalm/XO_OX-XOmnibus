@@ -452,8 +452,11 @@ private:
 
     int hitTestAutoMotionPill(float px, float py) const
     {
+        // P1-5 (1F): WCAG 2.5.8 — expand hit area to ≥24×24 px so touch/stylus
+        // users can reliably activate pills without pixel-precision clicking.
+        // Visual bounds are ~18px tall; the expanded area adds 3px each side.
         for (int i = 0; i < kAutoMotionCount; ++i)
-            if (autoMotionPillBounds_[i].contains(px, py))
+            if (autoMotionPillBounds_[i].expanded(0.0f, 3.0f).contains(px, py))
                 return i;
         return -1;
     }
@@ -535,7 +538,8 @@ private:
     void handleXYDown(juce::Point<float> pos)
     {
         // D4 (1D-P2B): check GRID toggle pill before auto-motion pills.
-        if (xyGridPillBounds_.getWidth() > 0.0f && xyGridPillBounds_.contains(pos))
+        // P1-5 (1F): WCAG 2.5.8 — expand hit area by 3px per side for ≥24px effective target.
+        if (xyGridPillBounds_.getWidth() > 0.0f && xyGridPillBounds_.expanded(0.0f, 3.0f).contains(pos))
         {
             xyGridVisible_ = !xyGridVisible_;
             if (onGridToggled) onGridToggled(xyGridVisible_);

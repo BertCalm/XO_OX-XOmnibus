@@ -573,6 +573,12 @@ public:
     void setPersistedRegisterCurrent(int r) noexcept { persistedRegisterCurrent = r; }
     int  getPersistedRegisterCurrent() const noexcept { return persistedRegisterCurrent; }
 
+    // P1-8 (1F): Dashboard tab + kit sub-mode persistence.
+    void setPersistedDashboardTab(int tab) noexcept    { persistedDashboardTab_ = juce::jlimit(0, 2, tab); }
+    int  getPersistedDashboardTab()  const noexcept    { return persistedDashboardTab_; }
+    void setPersistedKitSubMode(bool kit) noexcept     { persistedKitSubMode_ = kit; }
+    bool getPersistedKitSubMode()  const noexcept      { return persistedKitSubMode_; }
+
     // F2-006: OceanView ViewState + zoomed slot persistence.
     // Written by OceanView's onStateEntered callback (message thread only).
     void setPersistedOceanViewState(int state) noexcept { persistedOceanViewState_ = state; }
@@ -844,6 +850,10 @@ private:
         std::atomic<float>* masterTune      = nullptr; // "masterTune"      (415..466 Hz)
         std::atomic<float>* pitchBendRange  = nullptr; // "pitchBendRange"  (1..24 semitones)
 
+        // P1-6 (1F): macro1 (CHARACTER) — previously fetched via getRawParameterValue
+        // inside processBlock (per-block hash lookup).  Cached here per C1 invariant.
+        std::atomic<float>* macro1          = nullptr; // "macro1"          (0..1)
+
         // MPE parameters
         std::atomic<float>* mpeEnabled = nullptr;
         std::atomic<float>* mpeZone = nullptr;
@@ -1105,6 +1115,12 @@ private:
     bool persistedCockpitBypass = false; // #357: Dark Cockpit bypass state
     bool persistedRegisterLocked = false; // D4: register lock toggle
     int  persistedRegisterCurrent = 0;   // D4: current register index (0=Gallery, 1=Performance, 2=Coupling)
+
+    // P1-8 (1F): Persist DashboardTabBar active tab + NOTE/KIT sub-mode so DAW
+    // session reload restores the user's last PAD+KIT (or XY) layout.
+    // 0=KEYS, 1=PAD, 2=XY — matches DashboardTabBar's kTabNames order.
+    int  persistedDashboardTab_    = 0;   // default: KEYS
+    bool persistedKitSubMode_      = false; // default: NOTE (not KIT)
     int  persistedOceanViewState_ = 0;   // F2-006: OceanView ViewState (0=Orbital,1=ZoomIn,2=Split,3=Browser)
     int  persistedOceanViewSlot_  = -1;  // F2-006: slot index when ViewState is ZoomIn/Split
     float persistedReactLevel_    = 0.80f; // F3-006: REACT dial visual reactivity level

@@ -495,13 +495,26 @@ public:
                 else if (tab == "XY")
                     surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
 
-                surfaceRight_.setOpen(true);
-                surfaceRight_.setVisible(true);
+                // P0-3 (1F): Guard against re-opening SurfaceRightPanel when the Detail
+                // overlay is active.  Clicking PAD/XY while Detail is open would pop the
+                // right panel over the overlay (coordinator already hid it for Detail).
+                if (currentPanel_ != PanelType::Detail)
+                {
+                    surfaceRight_.setOpen(true);
+                    surfaceRight_.setVisible(true);
+                }
             }
 
             // D3 (1D-P2B): update LATCH indicator in status bar.
             if (auto* tb = children_.transportBar())
                 tb->setLatchActive(tab == "KEYS");
+
+            // P1-8 (1F): Forward tab index to editor for persistence.
+            if (onDashboardTabChanged)
+            {
+                const int idx = (tab == "PAD") ? 1 : (tab == "XY") ? 2 : 0;
+                onDashboardTabChanged(idx);
+            }
 
             resized();
         };
@@ -513,6 +526,10 @@ public:
             if (currentTab_ == OceanCurrentTab::Pad)
                 surfaceRight_.setMode(kitMode ? SurfaceRightPanel::Mode::Drum
                                               : SurfaceRightPanel::Mode::Pad);
+
+            // P1-8 (1F): Forward kit sub-mode to editor for persistence.
+            if (onDashboardKitSubModeChanged)
+                onDashboardKitSubModeChanged(kitMode);
         };
 
         // SEQ toggle → expand/collapse TideWaterline.
@@ -1728,6 +1745,27 @@ public:
     std::function<void(bool isOpen)> onSeqBreakoutToggled;
     std::function<void(bool isOpen)> onChordBreakoutToggled;
 
+    /** P1-8 (1F): Fired when the dashboard tab changes (0=KEYS, 1=PAD, 2=XY).
+        Editor wires this to processor.setPersistedDashboardTab() so the active
+        tab survives DAW session save/reload. */
+    std::function<void(int tabIndex)> onDashboardTabChanged;
+
+    /** P1-8 (1F): Fired when the NOTE/KIT sub-mode pill is toggled.
+        Editor wires this to processor.setPersistedKitSubMode(). */
+    std::function<void(bool kitMode)> onDashboardKitSubModeChanged;
+
+    /** P1-8 (1F): Restore the dashboard tab index and kit sub-mode from a
+     *  saved session.  Called by the editor after initOceanView() completes.
+     *  @param tabIndex  0=KEYS, 1=PAD, 2=XY (clamped to valid range).
+     *  @param kitMode   true = KIT, false = NOTE. */
+    void restoreDashboardTab(int tabIndex, bool kitMode)
+    {
+        tabBar_.setKitSubMode(kitMode);
+        const int clamped = juce::jlimit(0, 2, tabIndex);
+        if (clamped != 0)          // KEYS is already default — avoid spurious re-layout
+            tabBar_.selectTab(clamped);
+    }
+
     // wire(1C-1): ExpressionStrips — pitch bend (-1..+1) and mod wheel (0..+1)
     // forwarded outward so the editor can route to the MIDI collector.
     // Wired to exprStrips_.onPitchBend / onModWheel in initLayoutAndComponents().
@@ -1799,6 +1837,10 @@ private:
             setOpaque(false);
         }
 
+        // P1-11 (1F): Geometry extracted from paint() into rebuildHitRegions().
+        // paint() now only reads cached rects; no bounds computation at 60 Hz.
+        void resized() override { rebuildHitRegions(); }
+
         void paint(juce::Graphics& g) override
         {
             const auto b = getLocalBounds().toFloat();
@@ -1812,17 +1854,10 @@ private:
                 .withHeight(10.0f));
             g.setFont(tabFont);
 
-            // Rebuild tab regions
-            tabRegions_.clear();
-            noteKitBounds_ = {};
-            float x = 16.0f;
-            for (int i = 0; i < kNumTabs; ++i)
+            // Draw tabs using pre-computed regions (rebuildHitRegions() wrote them).
+            for (int i = 0; i < static_cast<int>(tabRegions_.size()); ++i)
             {
-                const float tw = tabFont.getStringWidthFloat(kTabNames[i]) + 28.0f;
-                const float th = b.getHeight() - 1.0f;
-                juce::Rectangle<float> tr(x, 0.0f, tw, th);
-                tabRegions_.push_back(tr);
-
+                const auto& tr = tabRegions_[static_cast<size_t>(i)];
                 const bool active = (activeIdx_ == i);
                 if (active)
                 {
@@ -1835,60 +1870,52 @@ private:
                     g.setColour(juce::Colour(200, 204, 216).withAlpha(0.35f));
                 }
                 g.drawText(kTabNames[i], tr.toNearestInt(), juce::Justification::centred, false);
-                x += tw + 2.0f;
 
                 // D1 (1D-P2B): NOTE/KIT toggle pill — right-adjacent to the PAD tab.
-                // Only drawn after the PAD tab (index 1).
                 if (i == 1) // PAD tab
                 {
-                    const char* subLabel = kitSubMode_ ? "KIT" : "NOTE";
-                    const float pillW = tabFont.getStringWidthFloat(subLabel) + 14.0f;
-                    const float pillH = b.getHeight() - 8.0f;
-                    juce::Rectangle<float> sr(x, 4.0f, pillW, pillH);
-                    noteKitBounds_ = sr;
-
-                    // Style: visible only when PAD is active; ghost otherwise.
-                    if (active)
+                    const auto& sr = noteKitBounds_;
+                    if (sr.getWidth() > 0.0f)
                     {
-                        if (kitSubMode_)
+                        const char* subLabel = kitSubMode_ ? "KIT" : "NOTE";
+                        if (active)
                         {
-                            g.setColour(juce::Colour(233, 196, 106).withAlpha(0.08f));
-                            g.fillRoundedRectangle(sr, 4.0f);
-                            g.setColour(juce::Colour(233, 196, 106).withAlpha(0.35f));
-                            g.drawRoundedRectangle(sr, 4.0f, 1.0f);
-                            g.setColour(juce::Colour(233, 196, 106).withAlpha(0.85f));
+                            if (kitSubMode_)
+                            {
+                                g.setColour(juce::Colour(233, 196, 106).withAlpha(0.08f));
+                                g.fillRoundedRectangle(sr, 4.0f);
+                                g.setColour(juce::Colour(233, 196, 106).withAlpha(0.35f));
+                                g.drawRoundedRectangle(sr, 4.0f, 1.0f);
+                                g.setColour(juce::Colour(233, 196, 106).withAlpha(0.85f));
+                            }
+                            else
+                            {
+                                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
+                                g.fillRoundedRectangle(sr, 4.0f);
+                                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.25f));
+                                g.drawRoundedRectangle(sr, 4.0f, 1.0f);
+                                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.70f));
+                            }
                         }
                         else
                         {
-                            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
-                            g.fillRoundedRectangle(sr, 4.0f);
-                            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.25f));
+                            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.04f));
                             g.drawRoundedRectangle(sr, 4.0f, 1.0f);
-                            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.70f));
+                            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.25f));
                         }
+                        g.setFont(tabFont);
+                        g.drawText(subLabel, sr.toNearestInt(), juce::Justification::centred, false);
                     }
-                    else
-                    {
-                        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.04f));
-                        g.drawRoundedRectangle(sr, 4.0f, 1.0f);
-                        g.setColour(juce::Colour(200, 204, 216).withAlpha(0.25f));
-                    }
-                    g.setFont(tabFont);
-                    g.drawText(subLabel, sr.toNearestInt(), juce::Justification::centred, false);
-                    x += pillW + 4.0f;
                 }
             }
 
-            // SEQ + CHORD toggles from the right
-            float rx = b.getRight() - 16.0f;
+            // SEQ + CHORD toggles — draw using pre-computed bounds.
             for (int t = 1; t >= 0; --t) // CHORD first (rightmost), then SEQ
             {
                 const char* label = (t == 0) ? "SEQ" : "CHORD";
                 const bool on = (t == 0) ? seqOn_ : chordOn_;
-                const float pw = tabFont.getStringWidthFloat(label) + 16.0f;
-                const float ph = b.getHeight() - 6.0f;
-                juce::Rectangle<float> pr(rx - pw, 3.0f, pw, ph);
-                if (t == 0) seqBounds_ = pr; else chordBounds_ = pr;
+                const auto& pr = (t == 0) ? seqBounds_ : chordBounds_;
+                if (pr.getWidth() <= 0.0f) continue;
 
                 if (on)
                 {
@@ -1905,7 +1932,6 @@ private:
                     g.setColour(juce::Colour(200, 204, 216).withAlpha(0.35f));
                 }
                 g.drawText(label, pr.toNearestInt(), juce::Justification::centred, false);
-                rx -= pw + 6.0f;
             }
         }
 
@@ -1970,6 +1996,16 @@ private:
         // D1 (1D-P2B): accessor for current NOTE/KIT sub-mode state.
         bool isKitSubMode() const noexcept { return kitSubMode_; }
 
+        /** P1-8 (1F): Programmatically set NOTE/KIT sub-mode without firing the
+         *  onNoteKitToggled callback — used by session-restore to pre-configure
+         *  the pill before the first layout pass. */
+        void setKitSubMode(bool kitMode) noexcept
+        {
+            kitSubMode_ = kitMode;
+            rebuildHitRegions(); // pill label changes width when switching NOTE↔KIT
+            repaint();
+        }
+
         std::function<void(const juce::String&)> onTabChanged;
         std::function<void(bool)> onSeqToggled;
         std::function<void(bool)> onChordToggled;
@@ -1991,6 +2027,55 @@ private:
         juce::Rectangle<float> seqBounds_;
         juce::Rectangle<float> chordBounds_;
         juce::Rectangle<float> noteKitBounds_; // D1 (1D-P2B): NOTE/KIT toggle pill
+
+        // P1-11 (1F): Compute hit-region geometry once per resize (not per paint).
+        // Called from resized(), setKitSubMode(), and selectTab() (indirectly via
+        // the repaint path — but only resized() is the geometry trigger).
+        // Must stay in sync with the visual layout in paint().
+        void rebuildHitRegions()
+        {
+            const auto b = getLocalBounds().toFloat();
+            if (b.isEmpty()) return;
+
+            static const juce::Font tabFont(juce::FontOptions{}
+                .withName(juce::Font::getDefaultSansSerifFontName())
+                .withStyle("Bold")
+                .withHeight(10.0f));
+
+            tabRegions_.clear();
+            noteKitBounds_ = {};
+            float x = 16.0f;
+
+            for (int i = 0; i < kNumTabs; ++i)
+            {
+                const float tw = tabFont.getStringWidthFloat(kTabNames[i]) + 28.0f;
+                const float th = b.getHeight() - 1.0f;
+                tabRegions_.push_back(juce::Rectangle<float>(x, 0.0f, tw, th));
+                x += tw + 2.0f;
+
+                if (i == 1) // PAD tab — NOTE/KIT pill follows
+                {
+                    const char* subLabel = kitSubMode_ ? "KIT" : "NOTE";
+                    const float pillW = tabFont.getStringWidthFloat(subLabel) + 14.0f;
+                    // P1-5 (1F): WCAG 2.5.8 — NOTE/KIT pill ≥ 24px tall.
+                    const float pillH = juce::jmax(24.0f, b.getHeight() - 6.0f);
+                    noteKitBounds_ = juce::Rectangle<float>(x, (b.getHeight() - pillH) * 0.5f, pillW, pillH);
+                    x += pillW + 4.0f;
+                }
+            }
+
+            // SEQ + CHORD toggles — right side, compute right-to-left.
+            float rx = b.getRight() - 16.0f;
+            for (int t = 1; t >= 0; --t) // CHORD first (rightmost), then SEQ
+            {
+                const char* label = (t == 0) ? "SEQ" : "CHORD";
+                const float pw = tabFont.getStringWidthFloat(label) + 16.0f;
+                const float ph = b.getHeight() - 6.0f;
+                juce::Rectangle<float> pr(rx - pw, 3.0f, pw, ph);
+                if (t == 0) seqBounds_ = pr; else chordBounds_ = pr;
+                rx -= pw + 6.0f;
+            }
+        }
     };
 
     //==========================================================================
