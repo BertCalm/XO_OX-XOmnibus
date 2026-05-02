@@ -361,7 +361,7 @@ public:
         g.fillRect(b);
 
         // Right border accent line
-        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.06f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.06f));
         g.fillRect(b.getRight() - 1.0f, b.getY(), 1.0f, b.getHeight());
 
         // Header region

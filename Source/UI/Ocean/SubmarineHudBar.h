@@ -459,9 +459,9 @@ private:
         if (isActive)
         {
             return {
-                juce::XO::Tokens::Color::accent().withAlpha(0.10f),
-                juce::XO::Tokens::Color::accent().withAlpha(0.35f),
-                juce::XO::Tokens::Color::accent().withAlpha(0.90f)
+                XO::Tokens::Color::accent().withAlpha(0.10f),
+                XO::Tokens::Color::accent().withAlpha(0.35f),
+                XO::Tokens::Color::accent().withAlpha(0.90f)
             };
         }
 
@@ -589,7 +589,7 @@ private:
         {
             const bool isHov = (hoveredRegion_ == kRegFav);
             const juce::Colour heartCol = isFav_
-                ? juce::XO::Tokens::Color::accent().withAlpha(0.90f)
+                ? XO::Tokens::Color::accent().withAlpha(0.90f)
                 : juce::Colour(200, 204, 216).withAlpha(isHov ? 0.75f : 0.40f);
             g.setColour(juce::Colour(14, 16, 22).withAlpha(0.70f));
             g.fillRoundedRectangle(favBounds_, 5.0f);

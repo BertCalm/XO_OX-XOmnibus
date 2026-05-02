@@ -102,7 +102,7 @@ public:
         g.fillRoundedRectangle(panelBounds, 16.0f);
 
         // Border
-        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.14f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.14f));
         g.drawRoundedRectangle(panelBounds, 16.0f, 1.0f);
     }
 

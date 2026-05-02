@@ -132,7 +132,7 @@ public:
         g.fillRect(bounds);
 
         // Left border — 1px rgba(60,180,170,0.08)
-        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.08f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.08f));
         g.drawVerticalLine(0, bounds.getY(), bounds.getBottom());
 
         // ---- Header ----

@@ -124,7 +124,7 @@ public:
             // Alpha raised from 0.06 → 0.28: radial gradient fades to transparent,
             // so peak at 0.28 reads as a visible ambient warmth without flooding the scene.
             juce::ColourGradient breatheGrad(
-                juce::XO::Tokens::Color::accent().withAlpha(0.28f),
+                XO::Tokens::Color::accent().withAlpha(0.28f),
                 breatheX, bh * 0.5f,
                 juce::Colours::transparentBlack,
                 breatheX + bw * 0.4f, bh * 0.5f, true);
@@ -141,7 +141,7 @@ public:
             const float cy = getHeight() * 0.3f;  // above center
             const float radius = static_cast<float>(std::max(getWidth(), getHeight())) * 0.7f;
             juce::ColourGradient atmo(
-                juce::XO::Tokens::Color::accent().withAlpha(0.04f), cx, cy,
+                XO::Tokens::Color::accent().withAlpha(0.04f), cx, cy,
                 juce::Colours::transparentBlack, cx, cy + radius,
                 true);
             g.setGradientFill(atmo);
@@ -161,6 +161,15 @@ public:
         //    master WaveformFifo.  Skipped if reduced motion is preferred.
         if (!A11y::prefersReducedMotion())
             paintWaveSurface(g, static_cast<float>(bounds.getWidth()),
+                                static_cast<float>(bounds.getHeight()));
+
+        // 3c. Animated water horizon line (#11, Session 2C, D4.c).
+        //     A gentle sine-wave horizon at ~65% height — the visual boundary
+        //     between the active playing area above and the depth below.
+        //     Amplitude responds to scaledIntensity() (REACT dial × RMS).
+        //     Uses the Motion::easeOutStep grammar: phase advances per tick.
+        if (!A11y::prefersReducedMotion())
+            paintHorizonLine(g, static_cast<float>(bounds.getWidth()),
                                 static_cast<float>(bounds.getHeight()));
 
         // 3b. Preset transition ripple (FIX 23) — vertical sweep line on preset change.
@@ -471,7 +480,7 @@ private:
                                   float cx, float cy,
                                   float /*w*/, float /*h*/) const
     {
-        const juce::Colour teal(60, 180, 170);
+        const juce::Colour teal = XO::Tokens::Color::accent(); // D2.b: canonical teal token
         static constexpr float kRingRadii[] = { 80.0f, 190.0f, 300.0f, 410.0f };
 
         // REACT dial scales wobble magnitude and alpha boost (audio-responsive visuals).
@@ -530,6 +539,63 @@ private:
 
     //==========================================================================
     /**
+        Paint the animated water horizon line (#11, Session 2C, D4.c).
+
+        A subtle sine-wave stroke at ~65% of the component height marks the
+        visual boundary between the playing surface above and the depth below.
+        The horizon gently undulates using a slow sine with a second harmonic
+        for organic feel.  Amplitude = baseAmp + si * reactiveAmp so the line
+        breathes slightly with audio when the REACT dial is non-zero.
+
+        Two layers:
+          - Soft glow strip (filled path, very low alpha gradient)
+          - 1 px stroke (Tokens::Color::accent, 8–18% alpha)
+    */
+    void paintHorizonLine(juce::Graphics& g, float w, float h) const
+    {
+        const float si        = scaledIntensity();
+        const float baseY     = h * 0.65f;       // horizon sits at 65% height
+        const float baseAmp   = 2.5f;            // ambient undulation amplitude (px)
+        const float reactAmp  = si * 8.0f;       // audio-reactive amplitude (REACT × RMS)
+
+        // Build the horizon path — one sample per 4 pixels for smoothness.
+        const int nPoints = juce::jmax(2, static_cast<int>(w / 4));
+        juce::Path horizonPath;
+        for (int i = 0; i <= nPoints; ++i)
+        {
+            const float t  = static_cast<float>(i) / static_cast<float>(nPoints);
+            const float x  = t * w;
+            // Two-harmonic sine: primary slow wave + 2nd harmonic for texture.
+            const float y  = baseY
+                           + std::sin(waveTime_ * 0.25f + t * juce::MathConstants<float>::twoPi * 1.3f) * (baseAmp + reactAmp)
+                           + std::sin(waveTime_ * 0.45f + t * juce::MathConstants<float>::twoPi * 2.7f) * baseAmp * 0.4f;
+            if (i == 0) horizonPath.startNewSubPath(x, y);
+            else        horizonPath.lineTo(x, y);
+        }
+
+        // Glow fill below the horizon — very subtle teal haze
+        {
+            juce::Path glowPath(horizonPath);
+            glowPath.lineTo(w, baseY + 30.0f);
+            glowPath.lineTo(0.0f, baseY + 30.0f);
+            glowPath.closeSubPath();
+
+            juce::ColourGradient horizGlow(
+                XO::Tokens::Color::accent().withAlpha(0.025f + si * 0.02f),
+                0.0f, baseY,
+                juce::Colours::transparentBlack,
+                0.0f, baseY + 30.0f, false);
+            g.setGradientFill(horizGlow);
+            g.fillPath(glowPath);
+        }
+
+        // Horizon stroke — 1 px, Tokens::accent, alpha 8–18% (audio-reactive)
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.08f + si * 0.10f));
+        g.strokePath(horizonPath, juce::PathStrokeType(1.0f));
+    }
+
+    //==========================================================================
+    /**
         Paint the animated ocean wave surface.
 
         Draws 4 waveform traces across the ocean:
@@ -564,7 +630,7 @@ private:
             waveY[static_cast<size_t>(i)] = ambient + real;
         }
 
-        const juce::Colour teal(60, 180, 170);
+        const juce::Colour teal = XO::Tokens::Color::accent(); // D2.b: canonical teal token
 
         // ── 3 depth echo layers (subtle, behind primary) ──
         for (int layer = 0; layer < 3; ++layer)

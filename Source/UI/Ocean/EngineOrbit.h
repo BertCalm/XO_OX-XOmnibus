@@ -191,7 +191,7 @@ public:
         }
 
         // ── Water reflection ellipse (subtle, below buoy) ──────────────────
-        g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.04f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.04f));
         g.fillEllipse(cx - radius * 0.75f, cy + radius + 3.0f,
                        radius * 1.5f, 5.0f);
 

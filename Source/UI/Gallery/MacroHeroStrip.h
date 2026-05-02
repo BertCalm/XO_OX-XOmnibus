@@ -175,7 +175,7 @@ public:
             g.setColour(juce::Colour(30, 34, 46));
             g.fillRoundedRectangle(b, 6.0f);
             // Subtle teal border
-            g.setColour(juce::XO::Tokens::Color::accent().withAlpha(0.10f));
+            g.setColour(XO::Tokens::Color::accent().withAlpha(0.10f));
             g.drawRoundedRectangle(b.reduced(0.5f), 6.0f, 1.0f);
             // "MACROS" label at top
             g.setFont(GalleryFonts::value(9.0f));
