@@ -1216,14 +1216,6 @@ public:
             };
         }
 
-        // #1304 wiring: surfaceRight_.onOuijaCCOutput → processor.pushCCOutput().
-        // Fires at ~30 Hz while HARMONIC tab is active; cc 85 = planchette X,
-        // cc 86 = planchette radius/depth (SurfaceRightPanel::kOuijaCCCircleX/Y).
-        oceanView_.getSurfaceRight().onOuijaCCOutput = [this](uint8_t cc, uint8_t value)
-        {
-            processor.pushCCOutput(SurfaceRightPanel::kOuijaMidiChannel - 1, cc, value);
-        };
-
         // wire(#orphan-sweep item 1): SurfaceRightPanel::onXYChanged was declared but
         // never assigned.  Wire it so XY pad gestures route to APVTS parameters.
         //
@@ -1616,14 +1608,7 @@ public:
             return b.isEmpty() ? juce::Rectangle<int>{}
                                : b.translated(oceanView_.getX(), oceanView_.getY());
         };
-        walkthrough_.getXouijaBounds       = [this]() {
-            // F-003 / #1395: points at the HARMONIC tab in DashboardTabBar.
-            // ouijaPanel_.getBounds() is always {} (never gets setBounds);
-            // getOuijaPanelBounds() now returns the HARMONIC tab hit-rect.
-            auto b = oceanView_.getOuijaPanelBounds();
-            return b.isEmpty() ? juce::Rectangle<int>{}
-                               : b.translated(oceanView_.getX(), oceanView_.getY());
-        };
+        // walkthrough_.getXouijaBounds removed 2026-05-01 (XOuija wholesale removal)
 
         // Mount as topmost child before toastOverlay_ — paints above all panels
         // but below toasts so notifications are never obscured.
@@ -1634,10 +1619,6 @@ public:
         // constructed and processor references are stable.
         // All callbacks fire on the message thread only — no audio-thread risk.
         //
-        // 1. PinStore::ChangeListener — planchette + pin state.
-        starboardPinStoreListener_.editor = this;
-        playSurface_.getXOuijaPanel().getPinStore().addListener(&starboardPinStoreListener_);
-
         // 2. PresetManager::Listener — global preset path backward-compat.
         starboardPresetListener_.editor = this;
         proc.getPresetManager().addListener(&starboardPresetListener_);
@@ -1774,7 +1755,6 @@ public:
         // Order mirrors registration in initOceanView (reversed for safety).
         processor.removeSlotPresetListener(&starboardSlotPresetListener_);
         processor.getPresetManager().removeListener(&starboardPresetListener_);
-        playSurface_.getXOuijaPanel().getPinStore().removeListener(&starboardPinStoreListener_);
         // Null editor pointers so any in-flight callAsync / deferred callbacks are no-ops.
         starboardPinStoreListener_.editor  = nullptr;
         starboardPresetListener_.editor    = nullptr;
@@ -3204,8 +3184,8 @@ private:
     // Three listener classes wire live state sources into Starboard::State.
     // All callbacks fire on the message thread — no audio-thread allocations.
     //
-    // Listener 1: XouijaPinStore::ChangeListener — planchette + pin state.
-    // Fires whenever the user pins, unpins, captures, or changes routing target.
+    // Listener 1: (reserved — was XouijaPinStore, removed 2026-05-01)
+    // Structure kept to avoid renumbering the other two listeners.
     struct StarboardPinStoreListener : public juce::ChangeListener
     {
         XOceanusEditor* editor{nullptr};
@@ -3254,9 +3234,6 @@ private:
     //   • engine identity — processor.getEngine(slot)
     //   • preset name    — processor.getSlotPreset(slot).name (primary)
     //                       fallback: processor.getPresetManager().getCurrentPreset().name
-    //   • XY position    — playSurface_.getXOuijaPanel() circleX / influenceY
-    //   • pin state      — playSurface_.getXOuijaPanel().getPinStore()
-    //   • routing target — pinStore.getPinTargetSlot() → engineTargetRaw
     //   • FX chains      — APVTS slot{N}_chain + slot{N}_bypass params
     //                       (max 3 non-bypassed chips per EpicChainSlotController)
     //
@@ -3294,30 +3271,6 @@ private:
                 const auto& globalPreset = processor.getPresetManager().getCurrentPreset();
                 s.presetName = globalPreset.name;
             }
-        }
-
-        // ── XY position from live XOuijaPanel ────────────────────────────────
-        {
-            const auto& panel = playSurface_.getXOuijaPanel();
-            s.circleX    = panel.getCirclePosition();
-            s.influenceY = panel.getInfluenceDepth();
-        }
-
-        // ── Pin state from XouijaPinStore ─────────────────────────────────────
-        {
-            const auto& pinStore = playSurface_.getXOuijaPanel().getPinStore();
-            s.pinned = pinStore.hasPinnedValue();
-            if (s.pinned)
-            {
-                // Freeze XY at pinned coordinates when pinned (spec §Row 3 comment).
-                s.circleX    = pinStore.getRawPinnedCircleX();
-                s.influenceY = pinStore.getRawPinnedInfluenceY();
-            }
-
-            // ── Engine routing target ─────────────────────────────────────────
-            // Derive from the pin's per-engine routing target.
-            // engineTargetRaw: 0 = Global, 1-4 = Slot 0-3 (matches Starboard::engineTargetLabel).
-            s.engineTargetRaw = static_cast<int>(pinStore.getPinTargetSlot());
         }
 
         // ── FX chain chips — read up to 3 non-bypassed chain slots ───────────

@@ -64,15 +64,11 @@
 #include "MasterFXStripCompact.h"
 #include "EpicSlotsPanel.h"
 #include "TransportBar.h"
-#include "SubmarineOuijaPanel.h"
 #include "ExpressionStrips.h"
 #include "SubmarinePlaySurface.h"
 #include "DotMatrixDisplay.h"
 #include "SubmarineHudBar.h"
 #include "SurfaceRightPanel.h"
-// XOuijaPanel must be included here (not just via PlaySurface.h in the editor)
-// so that getXOuijaPanel() is self-contained and OceanView.h compiles standalone.
-#include "../PlaySurface/XOuijaPanel.h"
 #include "SubmarineMenuStyle.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
@@ -184,9 +180,6 @@ public:
         on open and coordinator.release(PanelType::ChainMatrix) on close.
         Use OceanView::getOrbitCenter(slotIndex) for chain-line anchor points.
 
-        XOuija note: XOuijaRouting (future standalone routing overlay) must call
-        coordinator.requestOpen(PanelType::XOuijaRouting) on open.  It MAY coexist
-        with SurfaceRightPanel but NOT with DetailOverlay or ChainMatrix.
     */
     enum class PanelType
     {
@@ -195,7 +188,6 @@ public:
         Settings,         ///< SettingsDrawer — slides from right, dims ocean
         Detail,           ///< EngineDetailPanel (EngineDetailPanel*) — full-window
         ChainMatrix,      ///< (Wave 5 C4) chain matrix slide-up — stub, no-op open/close
-        XOuijaRouting     ///< (Future) XOuija routing overlay — stub, no-op open/close
     };
 
     //==========================================================================
@@ -258,10 +250,6 @@ public:
         // 9d. Step 6: Dashboard waterline + tab bar.
         // waterline_ lives in children_ — added via children_.initWaterline().
         addAndMakeVisible(tabBar_);
-
-        // 9e. Submarine XOuija panel (hidden; HARMONIC tab — re-enabled in #1304 after XOuija CC wiring complete).
-        ouijaPanel_.setVisible(false);
-        addAndMakeVisible(ouijaPanel_);
 
         // 9f. Expression strips (PB + MW) — always visible in play area.
         addAndMakeVisible(exprStrips_);
@@ -495,19 +483,15 @@ public:
                 surfaceRight_.setOpen(false);
                 surfaceRight_.setVisible(false);
                 subPlaySurface_.setVisible(true);
-                ouijaPanel_.setVisible(false);
             }
             else
             {
-                // PAD/DRUM/XY/HARMONIC: right panel opens, keyboard HIDES.
-                // HARMONIC re-enabled now that XOuija CC wiring is complete (#1304).
+                // PAD/DRUM/XY: right panel opens, keyboard HIDES.
                 subPlaySurface_.setVisible(false);
-                ouijaPanel_.setVisible(false);
 
-                if (tab == "PAD")           surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
-                else if (tab == "DRUM")     surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
-                else if (tab == "XY")       surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
-                else if (tab == "HARMONIC") surfaceRight_.setMode(SurfaceRightPanel::Mode::Ouija);
+                if (tab == "PAD")       surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
+                else if (tab == "DRUM") surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
+                else if (tab == "XY")   surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
 
                 surfaceRight_.setOpen(true);
                 surfaceRight_.setVisible(true);
@@ -723,7 +707,6 @@ public:
                 tabBar_,
                 exprStrips_,
                 subPlaySurface_,
-                ouijaPanel_,
                 surfaceRight_,
                 // Phase 2.5 (#1184): layout-input state bindings (const-ref).
                 selectedSlot_,
@@ -991,8 +974,8 @@ public:
     /// Get the SurfaceRightPanel so the editor can wire onOuijaCCOutput.
     SurfaceRightPanel& getSurfaceRight() noexcept { return surfaceRight_; }
 
-    // (XOuija access for Starboard wiring is via XOceanusEditor::playSurface_, not OceanView.
-    //  OceanView only owns SubmarinePlaySurface; the live XOuijaPanel lives on PlaySurface.)
+    // (Starboard wiring uses XOceanusEditor::playSurface_ directly, not OceanView.
+    //  OceanView only owns SubmarinePlaySurface; XOuijaPanel removed 2026-05-01.)
 
     /**
         Initialise the StatusBar.
@@ -1446,18 +1429,6 @@ public:
         return localFav.translated(hudBar_.getX(), hudBar_.getY());
     }
 
-    // F-003 / #1395: expose HARMONIC tab in tabBar_ for walkthrough step 7.
-    // ouijaPanel_.getBounds() is always {} (ouijaPanel_ never gets setBounds);
-    // the HARMONIC tab in the dashboard tab bar is the correct visual target
-    // for "click here to open XOuija".
-    // Translates from tabBar_ local coords to OceanView local coords.
-    juce::Rectangle<int> getOuijaPanelBounds() const noexcept
-    {
-        auto localTab = tabBar_.getHarmonicTabBounds();
-        if (localTab.isEmpty()) return {};
-        return localTab.translated(tabBar_.getX(), tabBar_.getY());
-    }
-
     // F-003 / #1395: expose preset-name pill in HudBar for walkthrough step 3.
     // browser_.getBounds() is {} unless BrowserOpen state; use the preset-name
     // label instead — it is always visible and opens the browser on click.
@@ -1898,32 +1869,15 @@ private:
             return kTabNames[activeIdx_];
         }
 
-        /** F-003 / #1395: return the HARMONIC tab hit-rect in this component's
-            local coords.  Tab regions are built lazily in paint(); if not yet
-            computed this falls back to the right quarter of getLocalBounds()
-            (a reasonable approximation given HARMONIC is the rightmost tab).
-            Caller must translate to parent (OceanView) coordinates. */
-        juce::Rectangle<int> getHarmonicTabBounds() const noexcept
-        {
-            // HARMONIC is tab index 4 (last tab).
-            constexpr int kHarmonicIdx = 4;
-            if (static_cast<int>(tabRegions_.size()) > kHarmonicIdx)
-                return tabRegions_[static_cast<size_t>(kHarmonicIdx)].toNearestInt();
-            // Pre-paint fallback: rightmost ~80px of the tab bar height.
-            const auto lb = getLocalBounds();
-            return lb.withLeft(lb.getRight() - 80);
-        }
-
         std::function<void(const juce::String&)> onTabChanged;
         std::function<void(bool)> onSeqToggled;
         std::function<void(bool)> onChordToggled;
 
     private:
-        // Five modes: KEYS, PAD, DRUM, XY, HARMONIC.
-        // HARMONIC (XOuija Ouija mode) re-enabled after CC wiring landed in #1304.
+        // Four modes: KEYS, PAD, DRUM, XY.
         // PAD+DRUM merge deferred (#1174 follow-up).
-        static constexpr int kNumTabs = 5;
-        static constexpr std::array<const char*, kNumTabs> kTabNames = {"KEYS", "PAD", "DRUM", "XY", "HARMONIC"};
+        static constexpr int kNumTabs = 4;
+        static constexpr std::array<const char*, kNumTabs> kTabNames = {"KEYS", "PAD", "DRUM", "XY"};
         static_assert(kTabNames.size() == kNumTabs, "kTabNames size mismatch");
 
         int  activeIdx_ = 0;
@@ -2540,7 +2494,6 @@ private:
     //   Opening EnginePicker  → closes Settings (and vice versa).
     //   Opening Detail        → hides SurfaceRightPanel (D7, restored on close).
     //   Opening ChainMatrix   → (Wave 5 C4) stub — currently a no-op.
-    //   Opening XOuijaRouting → (future) stub — currently a no-op.
     //   Minimum width guard   → if width < kMinWidth and drawer + SurfaceRightPanel
     //                           are both open, close the drawer.
     //
@@ -2554,7 +2507,7 @@ private:
         Request that a panel become the active heavy panel.
 
         If a different heavy panel is already open, it is closed first.
-        For ChainMatrix and XOuijaRouting stubs, records the current panel type
+        For ChainMatrix stub, records the current panel type
         and does nothing else — Wave 5 C4 will fill the open/close logic.
     */
     void coordinatorRequestOpen(PanelType requested)
@@ -2565,12 +2518,12 @@ private:
         // Close the current heavy panel before opening the new one.
         coordinatorCloseCurrentPanel();
 
-        // Fix #1428: ChainMatrix and XOuijaRouting are unimplemented stubs.
-        // Do NOT record them as the active panel — that would leave currentPanel_
+        // Fix #1428: ChainMatrix is an unimplemented stub.
+        // Do NOT record it as the active panel — that would leave currentPanel_
         // in a state where Escape closes a panel the user cannot see.
         // Return early before committing currentPanel_.
-        if (requested == PanelType::ChainMatrix || requested == PanelType::XOuijaRouting)
-            return; // stub panels: no-op, no state update
+        if (requested == PanelType::ChainMatrix)
+            return; // stub panel: no-op, no state update
 
         currentPanel_ = requested;
 
@@ -2602,10 +2555,6 @@ private:
                 break;
 
             case PanelType::ChainMatrix:
-                // Unreachable — guarded by early return above.
-                break;
-
-            case PanelType::XOuijaRouting:
                 // Unreachable — guarded by early return above.
                 break;
 
@@ -2655,10 +2604,6 @@ private:
 
             case PanelType::ChainMatrix:
                 // Wave 5 C4 stub — no-op close.
-                break;
-
-            case PanelType::XOuijaRouting:
-                // Future stub — no-op close.
                 break;
 
             case PanelType::None:
@@ -2807,7 +2752,7 @@ private:
           presetPrev_ | presetNext_ | favButton_ | settingsButton_ | keysButton_ |
           dimOverlay_  ← #1008 FIX 7: above buttons, so buttons are dimmed |
           emptyStateLabel_ | lifesaver_ | hudBar_ | surfaceRight_ | exprStrips_ |
-          subPlaySurface_ | playSurfaceOverlay_ | ouijaPanel_ |
+          subPlaySurface_ | playSurfaceOverlay_ |
           children_.waterline() | children_.masterFxStrip() | children_.epicSlots() | tabBar_ | children_.chordBar() |
           children_.transportBar() | children_.statusBar() |
           engineDrawer_ | settingsDrawer_ | detailOverlay_ | children_.detailPanel() | couplingPopup_
@@ -2911,7 +2856,6 @@ private:
     // unique_ptr members (waterline_, chordBar_, chordBreakout_, seqStrip_,
     // seqBreakout_, masterFxStrip_, epicSlots_, transportBar_) moved to
     // OceanChildren (children_) as part of Phase 1 decomposition (#1184).
-    SubmarineOuijaPanel                   ouijaPanel_;
     ExpressionStrips                      exprStrips_;
     DotMatrixDisplay                      dotMatrix_;
     SubmarineHudBar                       hudBar_;

@@ -26,7 +26,6 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
-#include "SubmarineOuijaPanel.h"
 #include "Starboard.h"
 #include <functional>
 #include <cmath>
@@ -46,13 +45,12 @@ class SurfaceRightPanel : public juce::Component
 {
 public:
     //==========================================================================
-    enum class Mode { Pad, Drum, XY, Ouija };
+    enum class Mode { Pad, Drum, XY };
 
     static constexpr int kPanelWidth  = 420;
     static constexpr int kHeaderH     = 36;
 
-    // Starboard strip sits between the header and SubmarineOuijaPanel (Ouija mode only).
-    // Locked at 120 px per Q1 decision (2026-04-29) — no collapse state.
+    // Starboard strip (dormant — preserved for future EpicSlotsPanel reuse).
     static constexpr int kStarboardH  = Starboard::kHeight;
 
     //==========================================================================
@@ -62,53 +60,9 @@ public:
         setInterceptsMouseClicks(true, true);
         setWantsKeyboardFocus(false);
 
-        // Starboard strip — always-120-px engine-state panel, Ouija mode only (#1358).
-        // Visibility is hidden until setMode(Ouija) is called; startAppearFade() is
-        // invoked there so the fade runs at first show, not at construction.
+        // Starboard strip — dormant, kept for future EpicSlotsPanel reuse.
         starboard_.setVisible(false);
         addAndMakeVisible(starboard_);
-
-        // Embedded ouija panel — shown only in Ouija mode.
-        ouijaPanel_.setVisible(false);
-        addAndMakeVisible(ouijaPanel_);
-
-        // ── Wire SubmarineOuijaPanel callbacks (#1172) ─────────────────────
-        // Forward planchette-lock events to onNoteOn so the ouija panel drives
-        // the same MIDI output path as the PAD / DRUM surfaces.
-        //
-        // The locked MIDI note is cached in ouijaLockedNote_ so the matching
-        // note-off on release targets the exact note that was fired.
-        ouijaPanel_.onNoteLocked = [this](int /*noteIndex*/, int midiNote)
-        {
-            // Release any previous note before firing the new one.
-            if (ouijaLockedNote_ >= 0 && onNoteOff)
-                onNoteOff(ouijaLockedNote_);
-            ouijaLockedNote_ = midiNote;
-            if (onNoteOn)
-                onNoteOn(midiNote, 0.75f); // fixed velocity — locks to a harmonic node
-        };
-
-        // Planchette release (GOODBYE / unlock click) → note-off for the
-        // currently locked note.
-        ouijaPanel_.onNoteReleased = [this]()
-        {
-            if (ouijaLockedNote_ >= 0 && onNoteOff)
-                onNoteOff(ouijaLockedNote_);
-            ouijaLockedNote_ = -1;
-        };
-
-        // Planchette position → CC output.
-        // emitCCOutput() fires at 30 Hz with (cc=0, circleX) then (cc=1, influenceY).
-        // Map to the canonical CC numbers and forward via onOuijaCCOutput.
-        ouijaPanel_.onCCOutput = [this](int cc, float value)
-        {
-            if (!onOuijaCCOutput)
-                return;
-            const uint8_t ccNum = (cc == 0) ? kOuijaCCCircleX : kOuijaCCInfluenceY;
-            const uint8_t val   = static_cast<uint8_t>(
-                juce::jlimit(0, 127, juce::roundToInt(value * 127.0f)));
-            onOuijaCCOutput(ccNum, val);
-        };
     }
 
     ~SurfaceRightPanel() override = default;
@@ -122,29 +76,13 @@ public:
             return;
         releaseActive();
         mode_ = m;
-        const bool isOuija = (m == Mode::Ouija);
-        starboard_.setVisible(isOuija);
-        if (isOuija)
-            starboard_.startAppearFade(); // 150 ms fade on mode entry
-        ouijaPanel_.setVisible(isOuija);
-        if (isOuija)
-            resized(); // re-layout to position starboard + ouija panel
         repaint();
     }
 
     Mode getMode() const noexcept { return mode_; }
 
     //==========================================================================
-    // Starboard state injection (#1358).
-    //
-    // Call this from the host (OceanView / XOceanusEditor) on the message thread
-    // whenever XOuija engine, preset, XY position, pin, or FX chain changes.
-    // Starboard repaints at its own 10 Hz tick; setState() is safe to call more
-    // frequently (e.g. from a 30 Hz ouija position callback).
-    //
-    // Typical wiring in OceanView (after Starboard integration):
-    //   auto s = buildStarboardState(processor_, xouijaPanel_, epicSlotsPanel_);
-    //   surfaceRightPanel_->setStarboardState(s);
+    // Starboard state injection (dormant — Starboard is not currently rendered).
     void setStarboardState(const Starboard::State& s)
     {
         starboard_.setState(s);
@@ -172,25 +110,6 @@ public:
     std::function<void(int note, float velocity)> onNoteOn;
     std::function<void(int note)>                 onNoteOff;
     std::function<void(float x, float y)>         onXYChanged;
-
-    // CC output from the embedded SubmarineOuijaPanel (Ouija mode only).
-    // Fires at ~30 Hz while the ouija panel is visible.
-    //   cc 0 = circleX   (horizontal planchette position, 0-1 normalised)
-    //   cc 1 = influenceY (radius / depth, 0-1 normalised)
-    // Wire this to processor_->pushCCOutput() in the host (editor / OceanView)
-    // using the CC numbers defined below.
-    //
-    //   circleX   → CC 85 (Undefined controller — XOceanus convention for ouija X)
-    //   influenceY → CC 86 (Undefined controller — XOceanus convention for ouija Y)
-    //
-    // These constants are exposed so the host can label them in any MIDI learn UI.
-    static constexpr uint8_t kOuijaCCCircleX    = 85;
-    static constexpr uint8_t kOuijaCCInfluenceY = 86;
-    static constexpr uint8_t kOuijaMidiChannel  = 1; // 1-indexed, MIDI channel 1
-
-    // Fired each time the ouija panel emits a position CC.
-    // signature: (uint8_t cc, uint8_t value)
-    std::function<void(uint8_t cc, uint8_t value)> onOuijaCCOutput;
 
     // Close button callback
     std::function<void()> onCloseClicked;
@@ -225,7 +144,6 @@ public:
             case Mode::Pad:   paintPadMode(g, contentBounds);  break;
             case Mode::Drum:  paintDrumMode(g, contentBounds); break;
             case Mode::XY:    paintXYMode(g, contentBounds);   break;
-            case Mode::Ouija: break; // SubmarineOuijaPanel renders itself as a child
         }
     }
 
@@ -234,15 +152,6 @@ public:
         computePadBounds();
         computeCloseBtnBounds();
         computeXYPadBounds();
-
-        // In Ouija mode: Starboard (120 px) sits between the 36 px header and
-        // SubmarineOuijaPanel. Both are hidden when not in Ouija mode.
-        if (mode_ == Mode::Ouija)
-        {
-            starboard_.setBounds(0, kHeaderH, getWidth(), kStarboardH);
-            const int ouijaTop = kHeaderH + kStarboardH;
-            ouijaPanel_.setBounds(0, ouijaTop, getWidth(), getHeight() - ouijaTop);
-        }
     }
 
     void mouseDown(const juce::MouseEvent& e) override
@@ -263,7 +172,6 @@ public:
             case Mode::Pad:
             case Mode::Drum:  handlePadDown(pos); break;
             case Mode::XY:    handleXYDown(pos);  break;
-            case Mode::Ouija: break; // child component handles
         }
         repaint();
     }
@@ -278,7 +186,6 @@ public:
             case Mode::Pad:
             case Mode::Drum:  break; // pads are momentary, no slide
             case Mode::XY:    handleXYDrag(e.position); break;
-            case Mode::Ouija: break;
         }
         repaint();
     }
@@ -302,7 +209,6 @@ public:
             case Mode::Pad:
             case Mode::Drum:  handlePadUp(); break;
             case Mode::XY:    handleXYUp();  break;
-            case Mode::Ouija: break;
         }
         repaint();
     }
@@ -441,11 +347,6 @@ private:
     Mode  mode_            = Mode::Pad;
     bool  open_            = false;
 
-    // Ouija mode: tracks the MIDI note number currently sounding from the
-    // ouija planchette lock, so we can send the correct note-off on release.
-    // -1 = no note currently locked.
-    int   ouijaLockedNote_ = -1;
-
     // Active pad / close button state
     int   pressedPad_      = -1; // -1 = none
     int   hoverPad_        = -1;
@@ -460,11 +361,7 @@ private:
     // XY auto-motion selected pill (-1 = none)
     int   autoMotionSel_   = -1;
 
-    // Embedded ouija panel (shown in Ouija mode)
-    SubmarineOuijaPanel  ouijaPanel_;
-
-    // Starboard engine-state strip (#1358) — shown in Ouija mode only,
-    // above SubmarineOuijaPanel, locked at kStarboardH = 120 px.
+    // Starboard engine-state strip (dormant — preserved for future EpicSlotsPanel reuse).
     Starboard            starboard_;
 
     // XY assign label state (toggle for hover, not interactive here)
@@ -593,14 +490,6 @@ private:
             pressedPad_ = -1;
         }
         xyDragging_ = false;
-
-        // Release any ouija-locked note when switching away from Ouija mode.
-        if (ouijaLockedNote_ >= 0)
-        {
-            if (onNoteOff)
-                onNoteOff(ouijaLockedNote_);
-            ouijaLockedNote_ = -1;
-        }
     }
 
     //==========================================================================

@@ -42,7 +42,6 @@
 #include "PlaySurfaceOverlay.h"
 #include "EnginePickerDrawer.h"
 #include "SettingsDrawer.h"
-#include "SubmarineOuijaPanel.h"
 #include "ExpressionStrips.h"
 #include "SubmarinePlaySurface.h"
 #include "DotMatrixDisplay.h"
@@ -113,7 +112,6 @@ struct LayoutTargets
     juce::Component&                tabBar;   // DashboardTabBar — defined inside OceanView.h; typed as Component&
     ExpressionStrips&               exprStrips;
     SubmarinePlaySurface&           subPlaySurface;
-    SubmarineOuijaPanel&            ouijaPanel;
     SurfaceRightPanel&              surfaceRight;
 
     // Phase 2.5 (#1184): layout-input state — const refs to OceanView members.
@@ -263,7 +261,6 @@ public:
         targets_.exprStrips.toFront(false);
         targets_.subPlaySurface.toFront(false);
         targets_.playSurfaceOverlay.toFront(false);
-        targets_.ouijaPanel.toFront(false);
         if (auto* wl = children_.waterline())      wl->toFront(false);
         if (auto* fx = children_.masterFxStrip())  fx->toFront(false);
         if (auto* es = children_.epicSlots())      es->toFront(false);
@@ -741,7 +738,6 @@ private:
 
         // Remaining dashboard space → Submarine PlaySurface (KEYS keyboard).
         targets_.playSurfaceOverlay.setVisible(false);
-        targets_.ouijaPanel.setVisible(false);
         targets_.subPlaySurface.setBounds(dashArea);
         // Only show keyboard when right panel is closed (KEYS mode).
         if (!targets_.surfaceRight.isOpen() || !targets_.surfaceRight.isVisible())

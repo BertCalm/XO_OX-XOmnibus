@@ -6,7 +6,7 @@
     HarmonicField.h
     ================
     Pure C++ header (zero JUCE dependency) implementing circle-of-fifths math,
-    tension coloring, scale membership, and marker properties for the XOuija
+    tension coloring, scale membership, and marker properties for the
     harmonic navigation system.
 
     Namespace: xoceanus

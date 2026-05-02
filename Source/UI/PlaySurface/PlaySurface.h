@@ -9,14 +9,8 @@
 #include <atomic>
 #include "KeysMode.h"
 #include "HarmonicField.h"
-#include "XOuijaPanel.h"
 #include "TideController.h"
 
-// Forward declaration — PlaySurface stores a pointer to XOceanusProcessor so it
-// can forward XOuija CC output events.  We also include the processor header
-// here so the inline wireOnCCOutput() lambda can call pushCCOutput() without
-// requiring callers to pre-include it.  XOceanusProcessor.h has no UI includes
-// so there is no circular dependency.
 namespace xoceanus
 {
 class XOceanusProcessor;
@@ -43,7 +37,6 @@ namespace PS
 // V2 layout dimensions
 static constexpr int kDesktopW = 700;  // Narrower
 static constexpr int kDesktopH = 484;  // 420 (main) + 64 (strip)
-static constexpr int kXOuijaW = 165;   // XOuija panel width
 static constexpr int kMainZoneH = 420; // Main content height
 static constexpr int kStripH = 64;     // Performance strip (matches kZone3H)
 static constexpr int kHeaderH = 28;    // Mode tab bar height
@@ -140,8 +133,7 @@ public:
         repaint();
     }
 
-    // XOuija-reactive coloring state (Spec Section 8.2)
-    // Updated by the XOuija planchette via PlaySurface::setHarmonicField().
+    // Harmonic field state (no longer driven by XOuija — kept for future use).
     void setHarmonicField(int rootKey, int tension)
     {
         harmonicRootKey_ = rootKey % 12;
@@ -382,8 +374,8 @@ private:
     mutable std::array<int, PS::kNumPads> cachedScaleNotes_{};
     mutable bool scaleNotesDirty_ = true;
 
-    // XOuija harmonic field state (Spec Section 8.2)
-    int harmonicRootKey_ = 0; // current key from XOuija (semitone 0-11)
+    // Harmonic field state (no longer driven by XOuija)
+    int harmonicRootKey_ = 0; // harmonic root key (semitone 0-11)
     int harmonicTension_ = 0; // fifths distance from C for color temperature (0-6)
 
     int midiNoteForPad(int pad) const
@@ -605,7 +597,6 @@ private:
         auto b = getLocalBounds();
 
         // P0-2: X=pitch (left=low, right=high), Y=expression (bottom=dark,top=bright)
-        // This is the XOuija spec axis: X drives pitch, Y drives expression.
         float xNorm = juce::jlimit(0.0f, 1.0f, (float)e.x / b.getWidth());
         float yNorm = juce::jlimit(0.0f, 1.0f,
                                    1.0f - (float)e.y / b.getHeight()); // bottom=0, top=1
@@ -750,8 +741,7 @@ private:
                     }
                 }
 
-                // XOuija-reactive coloring (Spec Section 8.2)
-                // Additive overlay drawn after base pad rendering; only in Pad mode.
+                // Harmonic field coloring — additive overlay, Pad mode only.
                 if (mode == Mode::Pad)
                 {
                     int midiNote = midiNoteForPad(pad);
@@ -1212,7 +1202,7 @@ public:
     PlaySurface()
     {
         setTitle("PlaySurface");
-        setDescription("V2 performance interface: XOuija panel, note input / keys mode, performance strip");
+        setDescription("V2 performance interface: note input / keys mode, performance strip");
         setWantsKeyboardFocus(true);
 
         noteInput.setTitle("Note Input Zone");
@@ -1223,63 +1213,32 @@ public:
         addAndMakeVisible(noteInput);
         addAndMakeVisible(strip);
 
-        // V2: XOuija panel + KeysMode
-        addAndMakeVisible(xouijaPanel_);
-        A11y::setup(xouijaPanel_, "XOuija Panel", "Harmonic navigator: circle of fifths and influence depth control");
+        // V2: KeysMode
         addAndMakeVisible(keysMode_);
         A11y::setup(keysMode_, "Keys Mode", "Piano-style keyboard input surface");
         keysMode_.setVisible(false); // Initially hidden — shown when mode == Keys
 
-        // Wire XOuija position changes -> pad and keys coloring
-        xouijaPanel_.onPositionChanged = [this](float circleX, float /*influenceY*/)
-        {
-            int key = HarmonicField::positionToKey(circleX);
-            // Tension = distance from C (tonal center). This is intentional:
-            // the XOuija circle measures harmonic distance from the global
-            // reference, not from any transposed root.
-            int tension = HarmonicField::fifthsDistance(key, 0);
-            noteInput.setHarmonicField(key, tension);
-            keysMode_.setRootKey(key);
-        };
-
-        // Wire GOODBYE -> All Notes Off CC #123 on channels 1-16
-        xouijaPanel_.onGoodbye = [this]()
-        {
-            if (auto* mc = noteInput.midiCollector)
-            {
-                double ts = juce::Time::getMillisecondCounterHiRes() / 1000.0;
-                for (int ch = 1; ch <= 16; ++ch)
-                {
-                    auto msg = juce::MidiMessage::controllerEvent(ch, 123, 0);
-                    msg.setTimeStamp(ts);
-                    mc->addMessageToQueue(msg);
-                }
-            }
-        };
-
         // Wire KeysMode MIDI collector (same as NoteInputZone's)
         keysMode_.midiCollector = noteInput.midiCollector;
 
-        // ── D4 (Wave 6): Top-level mode tabs — KEYS | PADS | XY | OUIJA ─────────
+        // ── D4 (Wave 6): Top-level mode tabs — KEYS | PADS | XY ──────────────
         // PAD and DRUM are no longer separate top-level tabs.  They are unified
         // under PADS; a sub-toggle (♪=scale-aware / ▦=drum-kit) selects the
         // note-label style inside the pad grid.
         // XY gives the performance strip the full play area.
-        // OUIJA gives the XOuija panel the full play area.
         for (int i = 0; i < kNumModeTabs; ++i)
         {
             modeButtons[i].setClickingTogglesState(true);
             modeButtons[i].setRadioGroupId(101);
             addAndMakeVisible(modeButtons[i]);
         }
-        static const char* kModeTabLabels[kNumModeTabs] = { "KEYS", "PADS", "XY", "OUIJA" };
+        static const char* kModeTabLabels[kNumModeTabs] = { "KEYS", "PADS", "XY" };
         for (int i = 0; i < kNumModeTabs; ++i)
             modeButtons[i].setButtonText(kModeTabLabels[i]);
         modeButtons[0].setToggleState(true, juce::dontSendNotification); // default = KEYS
         A11y::setup(modeButtons[0], "Keys Mode",  "Switch to piano-keyboard play surface");
         A11y::setup(modeButtons[1], "Pads Mode",  "Switch to velocity-sensitive pad grid (scale-aware or drum-kit sub-mode)");
         A11y::setup(modeButtons[2], "XY Mode",    "Switch to full-screen XY performance strip");
-        A11y::setup(modeButtons[3], "Ouija Mode", "Switch to full-screen XOuija harmonic navigator");
 
         // D4 tab callbacks — each tab updates surfaceTab_ and calls resized()
         modeButtons[0].onClick = [this]()
@@ -1307,14 +1266,6 @@ public:
             // F-004: not in Keys mode — hide the latch badge
             latchBadge_.setVisible(false);
             resized();
-        };
-        modeButtons[3].onClick = [this]()
-        {
-            surfaceTab_ = SurfaceTab::Ouija;
-            // F-004: not in Keys mode — hide the latch badge
-            latchBadge_.setVisible(false);
-            resized();
-            xouijaPanel_.grabKeyboardFocus();
         };
 
         // ── D4: PADS sub-mode toggle ♪ / ▦ ────────────────────────────────────
@@ -1411,7 +1362,7 @@ public:
         };
 
         // ── TideController — wave-surface expression controller ───────────────
-        // Sits in the same left-panel slot as XOuija; toggled by TIDE button.
+        // Sits in the left-panel slot; toggled by TIDE button.
         addAndMakeVisible(tideController_);
         tideController_.setVisible(false); // Hidden until TIDE button is pressed
         A11y::setup(tideController_, "Tide Controller",
@@ -1426,14 +1377,11 @@ public:
         tideModeBtn_.onClick = [this]
         {
             tideActive_ = tideModeBtn_.getToggleState();
-            xouijaPanel_.setVisible(!tideActive_);
             tideController_.setVisible(tideActive_);
             resized(); // re-layout so bounds are assigned to the now-visible component
-            // Route keyboard focus to whichever left-column panel is now active
+            // Route keyboard focus to the tide controller when active
             if (tideActive_)
                 tideController_.grabKeyboardFocus();
-            else
-                xouijaPanel_.grabKeyboardFocus();
         };
 
         // F-004: LATCH indicator badge — shown only in Keys mode.
@@ -1482,21 +1430,6 @@ public:
             stripModeButtons[i].onClick = [this, i]
             {
                 strip.setStripMode(static_cast<PerformanceStrip::StripMode>(i));
-
-                // Auto-follow: switch XOuija gesture bank to match strip mode context
-                // (respects the GestureButtonBar lock pin — no-op if locked).
-                // Strip mode → GestureButtonBar::Bank mapping:
-                //   0=DubSpace  → Bank::Dub
-                //   1=FilterSweep → Bank::XOuija  (XOuija surface most relevant)
-                //   2=Coupling  → Bank::Coupling
-                //   3=DubSiren  → Bank::Dub        (siren is a dub mode variant)
-                static constexpr GestureButtonBar::Bank kStripBankMap[] = {
-                    GestureButtonBar::Bank::Dub,      // DubSpace
-                    GestureButtonBar::Bank::XOuija,   // FilterSweep
-                    GestureButtonBar::Bank::Coupling, // Coupling
-                    GestureButtonBar::Bank::Dub,      // DubSiren
-                };
-                xouijaPanel_.activateGestureBank(kStripBankMap[i]);
             };
         }
 
@@ -1522,81 +1455,23 @@ public:
             applyBtnColors(tideModeBtn_);
         }
 
-        // Wire XOuija CC output — processor_ is null at this point; the lambda
-        // will forward once setProcessor() is called from the editor.
-        wireOnCCOutput();
-
         // Timer is started in visibilityChanged() when the window becomes visible.
     }
 
     ~PlaySurface() override { stopTimer(); }
 
     // ── Task 12: Processor wiring ─────────────────────────────────────────────
-    // Call setProcessor() from XOceanusEditor after construction so that XOuija
-    // CC output events (CC 85-90) are forwarded to the audio thread via the
-    // processor's lock-free CC queue.  The processor pointer is NOT owned here.
     void setProcessor(XOceanusProcessor* p)
     {
-        // F2-001 (CRIT): Before updating processor_, null out XOuija bridge callbacks
-        // on the OLD processor so it never calls back into a soon-to-be-invalid lambda.
-        // This handles the case where setProcessor(nullptr) is called from the editor
-        // destructor and the DAW calls getStateInformation() after editor close.
-        if (processor_)
-        {
-            processor_->onGetXOuijaState = nullptr;
-            processor_->onSetXOuijaState = nullptr;
-        }
-
         processor_ = p;
-        // Re-wire the onCCOutput callback now that we have the processor.
-        wireOnCCOutput();
-
-        if (processor_ == nullptr)
-        {
-            // Detaching: clear the bridge callbacks so the processor doesn't hold
-            // dangling references to this PlaySurface after it is destroyed.
-            // (processor itself may outlive the PlaySurface window)
-            return;
-        }
-
-        // Feature 1 — Register XOuija state persistence bridge callbacks.
-        // The processor calls onGetXOuijaState() in getStateInformation() and
-        // onSetXOuijaState() in setStateInformation().
-        processor_->onGetXOuijaState = [this]() -> juce::ValueTree { return xouijaPanel_.toValueTree(); };
-
-        processor_->onSetXOuijaState = [this](const juce::ValueTree& tree) { xouijaPanel_.fromValueTree(tree); };
-
-        // If the processor already has saved XOuija state in its APVTS tree
-        // (e.g. setStateInformation was called before the PlaySurface window
-        // was first opened), restore it now.
-        {
-            auto uiStateTree = processor_->getAPVTS().state.getChildWithName("XOuijaPanel");
-            if (uiStateTree.isValid())
-                xouijaPanel_.fromValueTree(uiStateTree);
-        }
     }
 
-    // Handle incoming CC for remote planchette control.
-    // Call this from XOceanusEditor::handleIncomingMidi() to allow external
-    // hardware controllers to drive the XOuija planchette.
-    //
-    //   CC 86 — influence depth  (0-127 → 0.0-1.0)
-    //   CC 89 — home snap        (value==127 → reset planchette to centre)
-    //   CC 90 — drift toggle     (future use; state stored but not yet consumed)
+    // Handle incoming CC (XOuija removed; kept as stub for future CC routing).
     void handleIncomingCC(int cc, int value)
     {
-        if (cc == 86)
+        if (cc == 90)
         {
-            xouijaPanel_.setInfluenceDepth(value / 127.0f);
-        }
-        else if (cc == 89 && value == 127)
-        {
-            xouijaPanel_.setCirclePosition(0.5f);
-            xouijaPanel_.setInfluenceDepth(0.5f);
-        }
-        else if (cc == 90)
-        {
-            // Drift toggle — store for Task 13 verification.
+            // Drift toggle — store for future use.
             driftToggleState_ = (value >= 64);
         }
     }
@@ -1625,7 +1500,6 @@ public:
         noteInput.setAccentColour(c);
         strip.setAccentColour(c);
         // V2 components
-        xouijaPanel_.setAccentColour(c);
         keysMode_.setAccentColour(c);
         tideController_.setAccentColor(c);
 
@@ -1704,10 +1578,10 @@ public:
     {
         auto bounds = getLocalBounds();
 
-        // ── D4 (Wave 6): Header bar — KEYS | PADS | XY | OUIJA tabs ─────────
+        // ── D4 (Wave 6): Header bar — KEYS | PADS | XY tabs ─────────────────
         auto header = bounds.removeFromTop(PS::kHeaderH);
 
-        // Primary mode tabs — 4 tabs × 48px (was 3 tabs)
+        // Primary mode tabs — 3 tabs × 48px
         int btnW = 48;
         for (int i = 0; i < kNumModeTabs; ++i)
             modeButtons[i].setBounds(header.removeFromLeft(btnW).reduced(2));
@@ -1749,25 +1623,23 @@ public:
 
         // ── D4 tab-dependent layout ───────────────────────────────────────────
         //
-        // KEYS tab — full content area split: left = XOuija/Tide, right = KeysMode
-        // PADS tab — full content area split: left = XOuija/Tide, right = NoteInputZone
+        // KEYS tab — full content area split: left = TideController, right = KeysMode
+        // PADS tab — full content area split: left = TideController, right = NoteInputZone
         // XY   tab — full content area = PerformanceStrip (no bottom strip footer)
-        // OUIJA tab — full content area = XOuija panel
         //
-        // The bottom PerformanceStrip is always shown except in XY/OUIJA full-screen tabs.
+        // The bottom PerformanceStrip is always shown except in XY full-screen tab.
 
-        bool showStrip    = (surfaceTab_ != SurfaceTab::XY && surfaceTab_ != SurfaceTab::Ouija);
+        bool showStrip    = (surfaceTab_ != SurfaceTab::XY);
         bool showLeftCol  = (surfaceTab_ == SurfaceTab::Keys || surfaceTab_ == SurfaceTab::Pads);
         bool showKeys     = (surfaceTab_ == SurfaceTab::Keys);
         bool showNoteInput = (surfaceTab_ == SurfaceTab::Pads);
         bool showXY       = (surfaceTab_ == SurfaceTab::XY);
-        bool showOuija    = (surfaceTab_ == SurfaceTab::Ouija);
 
-        // ── Performance Strip — full width, bottom (hidden in XY/OUIJA tabs) ──
+        // ── Performance Strip — full width, bottom (hidden in XY tab) ────────
         if (showStrip)
             strip.setBounds(bounds.removeFromBottom(PS::kStripH));
         else
-            strip.setBounds({});  // zero bounds — invisible in XY/OUIJA
+            strip.setBounds({});  // zero bounds — invisible in XY
         strip.setVisible(showStrip);
 
         // ── Full-screen XY mode — PerformanceStrip takes all remaining space ──
@@ -1777,34 +1649,19 @@ public:
             strip.setVisible(true);
         }
 
-        // ── Full-screen OUIJA mode — XOuija panel takes all remaining space ───
-        xouijaPanel_.setVisible(!tideActive_); // respect tide toggle in non-ouija modes
-        tideController_.setVisible(tideActive_);
-
-        if (showOuija)
+        if (showLeftCol)
         {
-            xouijaPanel_.setBounds(bounds);
-            xouijaPanel_.setVisible(true);
-            tideController_.setBounds({});
-            tideController_.setVisible(false);
-        }
-        else if (showLeftCol)
-        {
-            // ── Left column — XOuija panel OR TideController ─────────────────
-            int ouijaW = std::clamp(PS::kXOuijaW, XOuijaPanel::kMinWidth, XOuijaPanel::kMaxWidth);
-            auto leftColumnBounds = bounds.removeFromLeft(ouijaW);
-            xouijaPanel_.setBounds(leftColumnBounds);
+            // ── Left column — TideController ─────────────────────────────────
+            static constexpr int kLeftColW = 165; // left-panel slot width (px)
+            auto leftColumnBounds = bounds.removeFromLeft(kLeftColW);
             // TideController: centred square within the left column (120pt target).
             // We give it the full column width; it clips itself to a circle.
             tideController_.setBounds(leftColumnBounds);
-            xouijaPanel_.setVisible(!tideActive_);
             tideController_.setVisible(tideActive_);
         }
         else
         {
-            xouijaPanel_.setBounds({});
             tideController_.setBounds({});
-            xouijaPanel_.setVisible(false);
             tideController_.setVisible(false);
         }
 
@@ -1845,10 +1702,10 @@ public:
     bool keyPressed(const juce::KeyPress& key) override
     {
         // Let JUCE's focus chain route key events to the active sub-panel.
-        // XOuijaPanel and KeysMode each have setWantsKeyboardFocus(true) and
-        // their own keyPressed overrides; grabKeyboardFocus() is called on the
-        // relevant panel whenever a sub-mode becomes active (see tide toggle and
-        // modeButtons callbacks), so no manual delegation is needed here.
+        // KeysMode has setWantsKeyboardFocus(true) and its own keyPressed override;
+        // grabKeyboardFocus() is called on the relevant panel whenever a sub-mode
+        // becomes active (see tide toggle and modeButtons callbacks), so no manual
+        // delegation is needed here.
         return false;
     }
 
@@ -1861,19 +1718,6 @@ private:
         strip.tick();
     }
 
-    // Wire xouijaPanel_.onCCOutput → processor_->pushCCOutput().
-    // Called once by setProcessor() and once in the constructor (no-op until
-    // the processor is set, but the lambda captures processor_ by pointer so
-    // the live value is used at call time).
-    void wireOnCCOutput()
-    {
-        xouijaPanel_.onCCOutput = [this](uint8_t cc, uint8_t value)
-        {
-            if (processor_)
-                processor_->pushCCOutput(0, cc, value); // channel 0 = MIDI ch 1
-        };
-    }
-
     juce::Colour accentColour{0xFFE9C46A}; // Default: XO Gold
 
     // ── Task 12: processor pointer for CC output forwarding ──────────────────
@@ -1884,13 +1728,7 @@ private:
 
     // V2 layout components
     PerformanceStrip strip;
-    XOuijaPanel xouijaPanel_;
     KeysMode keysMode_;
-
-public:
-    /// Live XOuija panel accessor for external wiring (Starboard #1379, etc).
-    XOuijaPanel& getXOuijaPanel() noexcept { return xouijaPanel_; }
-    const XOuijaPanel& getXOuijaPanel() const noexcept { return xouijaPanel_; }
 private:
 
     // TideController — wave-surface expression controller.
@@ -1899,13 +1737,13 @@ private:
     bool tideActive_ = false;
 
     // ── D4 (Wave 6): Top-level surface tab state ──────────────────────────────
-    enum class SurfaceTab { Keys = 0, Pads = 1, XY = 2, Ouija = 3 };
+    enum class SurfaceTab { Keys = 0, Pads = 1, XY = 2 };
     SurfaceTab surfaceTab_ = SurfaceTab::Keys; // default = KEYS tab
 
     // PADS sub-mode: false = scale-aware (♪), true = drum-kit (▦)
     bool drumSubMode_ = false;
 
-    static constexpr int kNumModeTabs = 4; // KEYS | PADS | XY | OUIJA
+    static constexpr int kNumModeTabs = 3; // KEYS | PADS | XY
     // Sub-mode toggle labels — ♪ = musical/scale-aware, ▦ = drum-kit
     static constexpr const char* kPadsSubModeLabels[2] = { "\xe2\x99\xaa", "\xe2\x96\xa6" };
     //    ♪  = U+266A = \xe2\x99\xaa (UTF-8)
@@ -1960,7 +1798,7 @@ class PlaySurfaceWindow : public juce::DocumentWindow
 {
 public:
     //----------------------------------------------------------------------
-    // V2 popup dimensions: 700×484 (narrower, non-square — XOuija panel + pad grid)
+    // V2 popup dimensions: 700×484 (wider than V1 — TideController + pad grid).
     // Was 520×520 in V1.
     static constexpr int kDefaultW = PS::kDesktopW; // 700
     static constexpr int kDefaultH = PS::kDesktopH; // 484

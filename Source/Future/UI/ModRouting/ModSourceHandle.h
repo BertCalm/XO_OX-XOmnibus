@@ -43,14 +43,7 @@ enum class ModSourceId
     // The integer ID (16) is stable and must not change (preset serialisation).
     LiveGate = 16,      // Sequencer gate state (0 or 1, unipolar)
     BeatPhase = 17,     // Beat phase ramp 0→1 per bar (bipolar)
-    // ── Wave5-D3: XOuija pin source ─────────────────────────────────────────
-    // A pinned XOuija position exposes two bipolar values:
-    //   X-axis (circle-of-fifths)  → normalized [-1, +1] mapped from [0, 1]
-    //   Y-axis (influence depth)   → normalized [-1, +1] mapped from [0, 1]
-    // The ModRoutingModel routes these as a single source; the DSP engine reads
-    // the X or Y component depending on the parameter's semantic (see D9 wiring).
-    // Capture slots 0-3 are differentiated by the ModRoute's destParamId suffix.
-    XouijaCell = 18,    // Pinned XOuija position (bipolar X+Y, 4 capture slots)
+    // 18 retired (was XouijaCell, removed 2026-05-01)
     // ── #1289: per-step pitch offset ModSource ───────────────────────────────
     // Bipolar -1..+1 mapped from ±12 semitones (0.0 on silent / rest steps).
     // Deferred from C5; depends on C3 per-step pitch data in PerEnginePatternSequencer.
@@ -68,7 +61,7 @@ enum class ModSourceId
     XYY1 = 25,   // XY surface Y-axis, slot 1 (bipolar)
     XYY2 = 26,   // XY surface Y-axis, slot 2 (bipolar)
     XYY3 = 27,   // XY surface Y-axis, slot 3 (bipolar)
-    Count = 28
+    Count = 27
 };
 
 // Human-readable names used in tooltips and the route list panel.
@@ -112,8 +105,6 @@ inline juce::String modSourceName(ModSourceId id)
         return "Live Gate";
     case ModSourceId::BeatPhase:
         return "Beat Phase";
-    case ModSourceId::XouijaCell:
-        return "XOuija Pin";
     case ModSourceId::SeqStepPitch:
         return "Seq Step Pitch";
     // ── #1357: XY Surface sources ───────────────────────────────────────────
@@ -177,8 +168,6 @@ inline juce::Colour modSourceColour(ModSourceId id)
         return juce::Colour(0xFFF48FB1); // pink
     case ModSourceId::BeatPhase:
         return juce::Colour(0xFF80CBC4); // muted teal
-    case ModSourceId::XouijaCell:
-        return juce::Colour(0xFFE9C46A); // xo-gold — matches planchette accent
     case ModSourceId::SeqStepPitch:
         return juce::Colour(0xFF56CFB2); // seafoam — matches REEFS family (pitch-oriented)
     // ── #1357: XY Surface sources — ocean teal/blue gradient ───────────────
@@ -361,9 +350,6 @@ public:
             break;
         case ModSourceId::BeatPhase:
             glyph = "B";
-            break;
-        case ModSourceId::XouijaCell:
-            glyph = "Y"; // "Y" for ouiJa — avoids ambiguity with Q=seq, J=none
             break;
         default:
             glyph = "?";

@@ -20,11 +20,10 @@
 #include "Core/PartnerAudioBus.h"
 #include "Core/BrothCoordinator.h"
 #include "Core/SharedTransport.h"
-#include "Core/SlotModSourceRegistry.h" // Wave5-C5: XouijaCell + future msg-thread ModSources
+#include "Core/SlotModSourceRegistry.h" // Wave5-C5: future msg-thread ModSources
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
 #include "DSP/PerEnginePatternSequencer.h"
-#include "DSP/XOuijaWalkEngine.h"
 // Wave 5 A1: Global drag-drop mod routing model (message-thread side).
 // The header lives in Future/ but we reference it in-place per spec.
 #include "Future/UI/ModRouting/DragDropModRouter.h"
@@ -156,10 +155,6 @@ public:
         return slotSequencers_[static_cast<size_t>(juce::jlimit(0, kNumPrimarySlots - 1, slot))];
     }
 
-    // Wave 5 D1: XOuija walk engine — UI-thread access for enqueueEdit, getSnapshot,
-    // mood/tendency setters.  Audio-thread-safe via atomics + SPSC (see XOuijaWalkEngine.h).
-    xoceanus::XOuijaWalkEngine& getOuijaWalkEngine() noexcept { return ouijaWalkEngine_; }
-
     // Wave 5 A1: Write the current LFO1 output so the global router can use it
     // as a mod source.  Called from OrreryEngine::renderBlock (audio thread).
     // Use relaxed ordering — a single-sample jitter is acceptable for mod routing.
@@ -280,18 +275,6 @@ public:
     // Optional callback fired on the message thread after an engine is loaded or unloaded.
     // The editor registers this to refresh only the affected tile immediately.
     std::function<void(int /*slot*/)> onEngineChanged;
-
-    // ── XOuija UI State persistence bridge ────────────────────────────────────
-    // PlaySurface registers these callbacks so the processor can include the
-    // XOuija panel state (active bank, toggle states, MIDI learn CC mappings)
-    // in getStateInformation() and restore it in setStateInformation().
-    //
-    // Usage (in PlaySurface::setProcessor()):
-    //   processor_->onGetXOuijaState = [this]() { return xouijaPanel_.toValueTree(); };
-    //   processor_->onSetXOuijaState = [this](const juce::ValueTree& t) {
-    //       xouijaPanel_.fromValueTree(t); };
-    std::function<juce::ValueTree()> onGetXOuijaState;
-    std::function<void(const juce::ValueTree& /*state*/)> onSetXOuijaState;
 
     // ── TideWaterline sequence layer persistence bridge (#1179) ───────────────
     // OceanView registers these callbacks so the processor can include per-step
@@ -529,21 +512,15 @@ public:
     float getNoteActivity() const noexcept { return noteActivity_.load(std::memory_order_relaxed); }
 
     // ── Wave5-C5: SlotModSourceRegistry — message-thread-origin ModSources ──────
-    // Exposes live bipolar values for ModSources whose origin is the message thread
-    // (UI gestures, pin callbacks).  Audio thread reads them lock-free from
-    // processBlock().  Currently hosts XouijaCell; extend for future UI-origin sources.
-    //
-    // Wire-up (in PlaySurface::setProcessor or equivalent):
-    //   xouijaPanel_.getPinStore().onPinChanged = [this](float bx, float by) {
-    //       modSourceRegistry_.updateSourceValue(ModSourceId::XouijaCell, bx, by);
-    //   };
+    // Infrastructure for future UI-gesture-origin ModSources.
+    // XouijaCell (ID 18) was removed 2026-05-01.
     SlotModSourceRegistry& getModSourceRegistry() noexcept { return modSourceRegistry_; }
     const SlotModSourceRegistry& getModSourceRegistry() const noexcept { return modSourceRegistry_; }
 
     // ── #1357: XY Surface position atomics (W8B mount) ───────────────────────
     // Per-slot XY surface position in [0, 1].  Written by XYSurface::onXYChanged
-    // on the message thread; read by the mod routing system (DragDropModRouter /
-    // XouijaPinStore tick) on the audio thread as ModSourceId::XYX0..XYY3.
+    // on the message thread; read by the mod routing system (DragDropModRouter)
+    // on the audio thread as ModSourceId::XYX0..XYY3.
     //
     // Thread-safety: std::atomic<float> with relaxed ordering — a one-block-late
     // value is acceptable for a continuous modulation source.
@@ -794,10 +771,6 @@ private:
     // Each instance is engine-agnostic — events appear in slotMidi[] transparently.
     std::array<XOceanus::PerEnginePatternSequencer, kNumPrimarySlots> slotSequencers_;
 
-    // Wave 5 D1: XOuija walk engine — tempo-synced autonomous planchette.
-    // Audio-thread-owned; UI thread interacts via atomics + SPSC queue (see XOuijaWalkEngine.h).
-    xoceanus::XOuijaWalkEngine ouijaWalkEngine_;
-
     // External audio input capture — sized once in prepareToPlay, NEVER resized in processBlock.
     // OsmosisEngine reads raw pointers into this buffer within the same processBlock call.
     juce::AudioBuffer<float> externalInputBuffer;
@@ -884,12 +857,6 @@ private:
         };
         std::array<CouplingRouteParams, CouplingCrossfader::MaxRouteSlots> cpRoutes;
 
-        // Wave 5 D1: XOuija walk engine mood/tendency — cached raw pointers
-        // so processBlock reads them without string lookups.
-        std::atomic<float>* ouijaCalmWild          = nullptr;
-        std::atomic<float>* ouijaConsonantDissonant = nullptr;
-        std::atomic<float>* ouijaTendencyCol        = nullptr;
-        std::atomic<float>* ouijaTendencyRow        = nullptr;
     } cachedParams;
 
     juce::MidiBuffer mpeMidiBuffer; // MPE-processed MIDI (expression stripped)
@@ -900,12 +867,12 @@ private:
     std::atomic<size_t> noteQueueTail{0};
 
     // ── CC Output SPSC queue (UI-thread write / audio-thread read) ────────────
-    // Carries CC events from XOuija (message thread) to MIDI output (audio thread).
+    // Carries CC events from UI widgets (message thread) to MIDI output (audio thread).
     // Head written by UI thread; tail read/advanced by audio thread.
     struct CCOutputEvent
     {
         uint8_t channel = 0;    // 0-15 (MIDI channel minus 1)
-        uint8_t controller = 0; // CC number (85-90 for XOuija)
+        uint8_t controller = 0; // CC number
         uint8_t value = 0;      // 0-127
     };
     static constexpr size_t kCCQueueSize = 256;

@@ -6,7 +6,7 @@
     KeysMode.h
     ==========
     Seaboard-style 2-octave scrollable keyboard with Y-velocity, X-pitch-glide,
-    and XOuija-reactive coloring.
+    and harmonic-field-reactive coloring.
 
     Spec Section 8.4 -- KeysMode (Desktop)
 
@@ -33,7 +33,7 @@ namespace xoceanus
     - 2 octaves visible, scrollable C1-C7
     - Y-position -> velocity (top = 127, bottom = 1)
     - X-drag from press origin -> pitch glide / pitch wheel
-    - XOuija-reactive coloring via HarmonicField
+    - Harmonic-field-reactive coloring via HarmonicField
 */
 class KeysMode : public juce::Component
 {
@@ -78,7 +78,7 @@ public:
     //==========================================================================
     // Public API
 
-    /** Set the harmonic root (0=C...11=B) from XOuija. */
+    /** Set the harmonic root (0=C...11=B). */
     void setRootKey(int rootKey)
     {
         rootKey_ = ((rootKey % 12) + 12) % 12;
@@ -410,7 +410,7 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    /** Draw a single key with XOuija-reactive coloring. */
+    /** Draw a single key with harmonic-field-reactive coloring. */
     void drawKey(juce::Graphics& g, const juce::Rectangle<float>& rect, int midiNote, bool sharp, float /*sharpW*/,
                  float /*sharpH*/)
     {

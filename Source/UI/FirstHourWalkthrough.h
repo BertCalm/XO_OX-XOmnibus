@@ -34,7 +34,7 @@
 //     walkthrough_.getCoupleOrbitBounds  = [this]() { return /* EngineOrbit buoy 1 or 2 bounds */; };
 //     walkthrough_.getCmToggleBounds     = [this]() { return cmToggleBtn.getBounds(); };
 //     walkthrough_.getFavBtnBounds       = [this]() { return /* PresetBrowserStrip favBtn bounds */; };
-//     walkthrough_.getXouijaBounds       = [this]() { return /* SubmarineOuijaPanel or XOuija button */; };
+//     (getXouijaBounds removed 2026-05-01 — XOuija wholesale removal)
 //
 // THREAD SAFETY: all public methods must be called on the message thread.
 
@@ -283,7 +283,7 @@ public:
     std::function<juce::Rectangle<int>()> getCoupleOrbitBounds;
     std::function<juce::Rectangle<int>()> getCmToggleBounds;
     std::function<juce::Rectangle<int>()> getFavBtnBounds;
-    std::function<juce::Rectangle<int>()> getXouijaBounds;
+    // getXouijaBounds removed 2026-05-01 — XOuija wholesale removal
 
     // Fired when the walkthrough fully completes or user presses Skip all.
     std::function<void()> onWalkthroughComplete;
@@ -403,7 +403,7 @@ private:
         const char* body;
     };
 
-    static constexpr int kNumSteps = 8;
+    static constexpr int kNumSteps = 7; // was 8; step 7 (XOuija) removed 2026-05-01
 
     // Copy is LOCKED — requires Barry OB's team review before any change (issue #1303).
     static constexpr StepDef kSteps[kNumSteps] = {
@@ -429,9 +429,6 @@ private:
         /* 6 */ { "Save your first preset",
                   "Favourite this preset so it appears in your personal collection. "
                   "Your changes persist." },
-        /* 7 */ { "XOuija",
-                  "XOuija is a live improvisation interface. Move a cell to shift "
-                  "pitch, coupling depth, and character simultaneously." },
     };
 
     //==========================================================================
@@ -532,7 +529,7 @@ private:
             case 4: return (getCoupleOrbitBounds  && !getCoupleOrbitBounds().isEmpty())  ? getCoupleOrbitBounds()  : fallback();
             case 5: return (getCmToggleBounds     && !getCmToggleBounds().isEmpty())     ? getCmToggleBounds()     : fallback();
             case 6: return (getFavBtnBounds       && !getFavBtnBounds().isEmpty())       ? getFavBtnBounds()       : fallback();
-            case 7: return (getXouijaBounds       && !getXouijaBounds().isEmpty())       ? getXouijaBounds()       : fallback();
+            // case 7 (XOuija) removed 2026-05-01
             default: return fallback();
         }
     }
@@ -659,7 +656,7 @@ private:
 //      Step 4: CoupleOrbit[1]  — oceanView_.getOrbitBounds(1)
 //      Step 5: CM toggle       — cmToggleBtn.getBounds()
 //      Step 6: Fav button      — oceanView_.getHudFavBounds() → HudBar fav bounds
-//      Step 7: HARMONIC tab    — oceanView_.getOuijaPanelBounds() → DashboardTabBar HARMONIC tab
+//      Step 7: (XOuija) — removed 2026-05-01 (XOuija wholesale removal, Issue #1383)
 //   3. addAndMakeVisible(walkthrough_) in initOceanView() before toastOverlay_.
 //   4. setBounds in resized() OceanView branch.
 //   5. promptIfEligible() fired on first timerCallback tick via walkthroughTriggeredThisSession_ guard.

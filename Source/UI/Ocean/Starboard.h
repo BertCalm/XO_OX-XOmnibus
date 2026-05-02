@@ -1,5 +1,8 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
+// DORMANT (2026-05-01): preserved for future EpicSlotsPanel reuse — not currently
+// rendered. The Starboard::State struct's "what are you hearing" semantics may be
+// resurrected for a per-slot FX strip readout in the EpicSlotsPanel polish work.
 #pragma once
 // Starboard.h — XOceanus engine-state visual feedback strip (#1358).
 //
