@@ -218,7 +218,7 @@ public:
         {
             const auto& preset = pm.getCurrentPreset();
             auto name = preset.name;
-            nameLabel.setText(name.isEmpty() ? "—" : name, juce::dontSendNotification);
+            nameLabel.setText(name.isEmpty() ? juce::String(juce::CharPointer_UTF8("\xe2\x80\x94")) : name, juce::dontSendNotification);
             updateFavBtn(preset);
         }
         else

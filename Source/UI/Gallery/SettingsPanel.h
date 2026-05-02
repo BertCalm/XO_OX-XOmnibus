@@ -153,7 +153,7 @@ public:
         A11y::setReducedMotion(settingsFile->getBoolValue("reducedMotion", false));
 
         // High-Contrast placeholder label (future) — hidden until feature ships (#172)
-        highContrastNote.setText("High Contrast — coming soon", juce::dontSendNotification);
+        highContrastNote.setText(juce::String(juce::CharPointer_UTF8("High Contrast \xe2\x80\x94 coming soon")), juce::dontSendNotification);
         highContrastNote.setFont(GalleryFonts::body(10.0f));
         highContrastNote.setColour(juce::Label::textColourId,
                                    GalleryColors::get(GalleryColors::textMid()).withAlpha(0.55f));

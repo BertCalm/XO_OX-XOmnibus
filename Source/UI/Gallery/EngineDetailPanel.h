@@ -1201,13 +1201,13 @@ private:
     std::unique_ptr<NamedModeSelector> modeSelector;    // created for OVERWORLD, OCELOT, ORACLE, ORBWEAVE
     std::unique_ptr<BipolarAxisBar> axisBar;            // created for OUIE, OBESE, OWARE
     juce::Viewport viewport;
-    juce::String engineId{"—"};
+    juce::String engineId{juce::CharPointer_UTF8("\xe2\x80\x94")};
     juce::Colour accentColour{GalleryColors::get(GalleryColors::borderGray())};
     MIDILearnManager* learnManager = nullptr;
     // P29: cached header gradient — rebuilt in loadSlot() and resized().
     juce::ColourGradient cachedHeaderGrad;
     // P30: cached uppercase engine name — set in loadSlot(), used in paint().
-    juce::String cachedEngineName{"—"};
+    juce::String cachedEngineName{juce::CharPointer_UTF8("\xe2\x80\x94")};
     // Bounds for the "OSCILLOSCOPE" label painted above the waveform display.
     juce::Rectangle<int> oscLabelBounds;
     // Bounds for the "ENVELOPE" label painted above the ADSR display.

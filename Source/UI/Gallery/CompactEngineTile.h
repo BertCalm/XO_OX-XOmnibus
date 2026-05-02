@@ -74,7 +74,7 @@ public:
         }
         else
         {
-            setTooltip("Slot " + juce::String(slot + 1) + ": empty — click to load engine");
+            setTooltip("Slot " + juce::String(slot + 1) + juce::String(juce::CharPointer_UTF8(": empty \xe2\x80\x94 click to load engine")));
         }
         accent = hasEngine ? eng->getAccentColour() : GalleryColors::get(GalleryColors::emptySlot());
         miniWave.setSlot(slot);

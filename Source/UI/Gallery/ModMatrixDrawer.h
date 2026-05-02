@@ -292,10 +292,10 @@ public:
             {
                 // Slot doesn't exist for this engine — show grayed out
                 slots_[i].srcCombo->clear(juce::dontSendNotification);
-                slots_[i].srcCombo->addItem("—", 1);
+                slots_[i].srcCombo->addItem(juce::String(juce::CharPointer_UTF8("\xe2\x80\x94")), 1);
                 slots_[i].srcCombo->setEnabled(false);
                 slots_[i].dstCombo->clear(juce::dontSendNotification);
-                slots_[i].dstCombo->addItem("—", 1);
+                slots_[i].dstCombo->addItem(juce::String(juce::CharPointer_UTF8("\xe2\x80\x94")), 1);
                 slots_[i].dstCombo->setEnabled(false);
                 slots_[i].curvePicker->setSelectedIndex(0, false);
                 slots_[i].curvePicker->setEnabled(false);

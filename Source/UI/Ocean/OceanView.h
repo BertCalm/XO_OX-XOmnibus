@@ -448,7 +448,7 @@ public:
         };
         browser_.onDismissed = [this]() { exitBrowser(); };
 
-        keysButton_.onClick = [this]() { /* KEYS tab activates keyboard in dashboard */ };
+        keysButton_.onClick = []() { /* KEYS tab activates keyboard in dashboard */ };
 
         // ── Step 6: Dashboard tab bar callback ───────────────────────────────
         // Wave 6.5 (#1306) collision note:
@@ -2759,7 +2759,6 @@ private:
     // it is updated in onStateEntered + selectOrbitInPlace.
     // Step 9 will remove selectedSlot_ once LayoutTargets binds to stateMachine_ directly.
     int       selectedSlot_    = -1;
-    float     dimAlpha_        = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
 
     /// Per-slot mute / solo toggle state — tracked locally so the context menu
     /// label can reflect the current state without a round-trip to the processor.

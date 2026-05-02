@@ -981,7 +981,7 @@ private:
         const PadChordSlot current = cm_.getPadChord(padIdx);
 
         juce::PopupMenu menu;
-        menu.addSectionHeader("Pad " + juce::String(padIdx + 1) + " — Edit Chord");
+        menu.addSectionHeader("Pad " + juce::String(padIdx + 1) + juce::String(juce::CharPointer_UTF8(" \xe2\x80\x94 Edit Chord")));
 
         // Root note submenu (C0–B5 range, chromatic)
         juce::PopupMenu rootMenu;
