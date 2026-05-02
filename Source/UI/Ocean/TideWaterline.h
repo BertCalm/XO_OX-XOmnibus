@@ -28,6 +28,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Core/MasterFXSequencer.h"
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include <functional>
 #include <cmath>
 #include <array>
@@ -292,13 +293,8 @@ private:
         // paint may run before the first resized if bounds are set externally).
         layoutControls(w);
 
-        static const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(9.0f));
-        static const juce::Font labelFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(8.0f));
+        static const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
+        static const juce::Font labelFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall); // D3;
 
         // ── Pill buttons ──
         for (const auto& pill : pillRegions_)
@@ -377,10 +373,7 @@ private:
         // ── ALGO badge ──
         if (algoBadgeBounds_.getWidth() > 0.0f)
         {
-            static const juce::Font badgeFont(juce::FontOptions{}
-                .withName(juce::Font::getDefaultSansSerifFontName())
-                .withStyle("Bold")
-                .withHeight(8.0f));
+            static const juce::Font badgeFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
             const float alpha = sequencer_.isEnabled() ? 0.7f : 0.3f;
             g.setColour(juce::Colour(127, 219, 202).withAlpha(alpha * 0.2f));
             g.drawRoundedRectangle(algoBadgeBounds_, 3.0f, 1.0f);
@@ -397,9 +390,7 @@ private:
             const float phase = std::sin(breathePhase_ * static_cast<float>(M_PI));
             const float alpha = 0.35f + phase * 0.35f;
 
-            static const juce::Font breatheFont(juce::FontOptions{}
-                .withName(juce::Font::getDefaultSansSerifFontName())
-                .withHeight(11.0f));
+            static const juce::Font breatheFont = XO::Tokens::Type::body(XO::Tokens::Type::BodyLarge); // D3;
             g.setFont(breatheFont);
             g.setColour(juce::Colour(127, 219, 202).withAlpha(alpha));
             g.drawText("~", breatheBounds_.toNearestInt(),
@@ -505,10 +496,7 @@ private:
             // Root note label (shown when rootNote >= 0)
             if (!isBeyond && steps_[i].rootNote >= 0)
             {
-                static const juce::Font noteFont(juce::FontOptions{}
-                    .withName(juce::Font::getDefaultSansSerifFontName())
-                    .withStyle("Bold")
-                    .withHeight(7.0f));
+                static const juce::Font noteFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
                 g.setFont(noteFont);
                 g.setColour(juce::Colour(127, 219, 202).withAlpha(0.70f));
                 g.drawText(cachedRootNoteLabels_[static_cast<size_t>(i)],

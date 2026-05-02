@@ -34,6 +34,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include <functional>
 #include <cmath>
 #include <array>
@@ -340,20 +341,13 @@ private:
         g.fillRect(0.0f, 0.0f, w, 1.0f);
 
         // ---- Fonts ----
-        const juce::Font bodyFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(10.0f));
+        const juce::Font bodyFont = XO::Tokens::Type::body(XO::Tokens::Type::BodyDefault); // D3;
 
         const juce::Font monoFont = GalleryFonts::dotMatrix(12.0f);
 
-        const juce::Font smallFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(9.0f));
+        const juce::Font smallFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall); // D3;
 
-        const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.0f));
+        const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
         const juce::Font monoTimeSigFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultMonospacedFontName())

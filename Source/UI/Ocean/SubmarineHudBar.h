@@ -44,6 +44,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "HudIcons.h"
 #include <functional>
 #include <cmath>
@@ -420,9 +421,7 @@ private:
 
         // --- REACT label ---
         {
-            static const juce::Font reactLabelFont(juce::FontOptions{}
-                          .withName(juce::Font::getDefaultSansSerifFontName())
-                          .withHeight(9.0f));
+            static const juce::Font reactLabelFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall); // D3
             g.setFont(reactLabelFont);
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.25f));
             g.drawText("REACT", reactLabelBounds_.toNearestInt(),
@@ -496,10 +495,7 @@ private:
         g.setColour(c.border);
         g.drawRoundedRectangle(bounds, 8.0f, 1.0f);
 
-        static const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(11.0f));
+        static const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
         g.setFont(pillFont);
         g.setColour(c.text);
@@ -548,10 +544,7 @@ private:
 
     void paintPresetNav(juce::Graphics& g)
     {
-        static const juce::Font navFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(11.0f));
+        static const juce::Font navFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
         // I1a: UTF-8 em-dash — avoids Latin-1 mojibake when char* literal is used directly.
         static const juce::String kEmDashGlyph(juce::CharPointer_UTF8("\xe2\x80\x94"));
 
@@ -651,10 +644,7 @@ private:
         }
 
         // Label text
-        static const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(11.0f));
+        static const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
         g.setFont(pillFont);
         g.setColour(c.text);
@@ -729,10 +719,7 @@ private:
                                    c.text, 1.3f);
 
         // Label text to the right of the icon.
-        static const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(11.0f));
+        static const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
         g.setFont(pillFont);
         g.setColour(c.text);
         juce::Rectangle<float> textArea(exportBounds_.getX() + 22.0f, exportBounds_.getY(),

@@ -46,6 +46,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "OceanBackground.h"
 #include "AmbientEdge.h"
 #include "EngineOrbit.h"
@@ -1801,10 +1802,7 @@ private:
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
             g.fillRect(0.0f, b.getBottom() - 1.0f, b.getWidth(), 1.0f);
 
-            static const juce::Font tabFont(juce::FontOptions{}
-                .withName(juce::Font::getDefaultSansSerifFontName())
-                .withStyle("Bold")
-                .withHeight(10.0f));
+            static const juce::Font tabFont = XO::Tokens::Type::heading(XO::Tokens::Type::BodyDefault); // D3
             g.setFont(tabFont);
 
             // Rebuild tab regions

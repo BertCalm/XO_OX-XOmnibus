@@ -3,6 +3,7 @@
 #pragma once
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../AccentColors.h"
 #include <map>
 #include <vector>
@@ -524,7 +525,7 @@ public:
             // Background
             juce::Colour bg;
             if (toggled)
-                bg = juce::Colour(0xFFE9C46A).withAlpha(0.14f); // gold-dim active
+                bg = XO::Tokens::Color::primary().withAlpha(0.14f); // gold-dim active
             else if (isOver)
                 bg = juce::Colour(0xFFFFFFFF).withAlpha(0.03f); // hover
             else
@@ -538,7 +539,7 @@ public:
             if (btn.hasKeyboardFocus(true))
                 borderCol = A11y::focusRingColour().withAlpha(0.8f);
             else if (toggled)
-                borderCol = juce::Colour(0xFFE9C46A).withAlpha(0.35f); // gold active border
+                borderCol = XO::Tokens::Color::primary().withAlpha(0.35f); // gold active border
             else
                 borderCol = GalleryColors::border(); // default subtle border
 

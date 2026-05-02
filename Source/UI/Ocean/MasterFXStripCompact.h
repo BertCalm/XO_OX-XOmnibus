@@ -32,6 +32,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../Gallery/GalleryLookAndFeel.h"
 #include <functional>
 #include <cmath>
@@ -255,20 +256,11 @@ private:
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // Fonts.
-        const juce::Font sectionFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(10.0f));
+        const juce::Font sectionFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
-        const juce::Font knobLabelFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.0f));
+        const juce::Font knobLabelFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
-        const juce::Font advFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.0f));
+        const juce::Font advFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
         // Separators.
         g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
