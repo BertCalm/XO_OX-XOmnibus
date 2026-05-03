@@ -4,6 +4,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../../XOceanusProcessor.h"
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../CouplingColors.h"
 #include "MacroHeroStrip.h"
 #include "ParameterGrid.h"
@@ -70,7 +71,7 @@ public:
             s->setSliderStyle(juce::Slider::LinearHorizontal);
             s->setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             s->setColour(juce::Slider::thumbColourId,      juce::Colour(127, 219, 202));
-            s->setColour(juce::Slider::trackColourId,      juce::Colour(60, 180, 170));
+            s->setColour(juce::Slider::trackColourId,      XO::Tokens::Color::accent());
             s->setColour(juce::Slider::backgroundColourId, juce::Colour(60, 70, 85));
             addAndMakeVisible(s);
         }
@@ -119,7 +120,7 @@ public:
     void paint(juce::Graphics& g) override
     {
         // Section header stripe
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.08f));
         g.fillRect(0, 0, getWidth(), 16);
         g.setFont(GalleryFonts::value(10.0f));
         g.setColour(juce::Colour(200, 204, 216).withAlpha(0.65f));
@@ -394,7 +395,7 @@ public:
             adsrSliders[i].setSliderStyle(juce::Slider::LinearHorizontal);
             adsrSliders[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             adsrSliders[i].setColour(juce::Slider::thumbColourId, juce::Colour(127, 219, 202));
-            adsrSliders[i].setColour(juce::Slider::trackColourId, juce::Colour(60, 180, 170));
+            adsrSliders[i].setColour(juce::Slider::trackColourId, XO::Tokens::Color::accent());
             adsrSliders[i].setColour(juce::Slider::backgroundColourId, juce::Colour(60, 70, 85));
             adsrSliders[i].setRange(0.0, 1.0, 0.001);
             adsrSliders[i].setValue(0.5);
@@ -819,7 +820,7 @@ public:
         g.fillAll(juce::Colour(20, 23, 32));
 
         // Subtle teal border
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.14f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.14f));
         g.drawRoundedRectangle(getLocalBounds().toFloat().reduced(0.5f), 8.0f, 1.0f);
 
         // ── Submarine header: breadcrumb + back button + creature icon + name ──
@@ -906,9 +907,9 @@ public:
         if (!modTabBounds_.isEmpty())
         {
             // Tab background
-            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+            g.setColour(XO::Tokens::Color::accent().withAlpha(0.08f));
             g.fillRoundedRectangle(modTabBounds_.toFloat(), 4.0f);
-            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.15f));
+            g.setColour(XO::Tokens::Color::accent().withAlpha(0.15f));
             g.drawRoundedRectangle(modTabBounds_.toFloat().reduced(0.5f), 4.0f, 1.0f);
 
             // "MOD" text drawn vertically

@@ -26,6 +26,8 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
+// Note: Starboard.h excluded — cut(1B-#*): file deleted in Track A 1B reduction pass.
 #include <functional>
 #include <cmath>
 #include <array>
@@ -130,7 +132,7 @@ public:
         g.fillRect(bounds);
 
         // Left border — 1px rgba(60,180,170,0.08)
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.08f));
         g.drawVerticalLine(0, bounds.getY(), bounds.getBottom());
 
         // ---- Header ----

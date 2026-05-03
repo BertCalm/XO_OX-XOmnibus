@@ -57,6 +57,8 @@
 // #include "Ocean/Wave65SurfaceWiring.h"
 // Wave 9c (#1303): First-hour onboarding walkthrough overlay.
 #include "FirstHourWalkthrough.h"
+// Session 2C #17: design token surface — depth-ring cursor + color helpers.
+#include "Tokens.h"
 
 namespace xoceanus
 {
@@ -144,6 +146,21 @@ public:
             // Register this instance in the per-instance dark mode registry (fix #329).
             // unregisterInstance() is called in the destructor.
             GalleryColors::setInstanceDarkMode(this, savedDark);
+        }
+
+        // Session 2C #17 — D5: depth-ring custom cursor (24×24px, 3px teal ring, 70% alpha).
+        {
+            constexpr int kCursorSize = 24;
+            constexpr int kHotspot   = 11;
+            juce::Image cursorImg(juce::Image::ARGB, kCursorSize, kCursorSize, true);
+            {
+                juce::Graphics cg(cursorImg);
+                cg.setColour(XO::Tokens::Color::accent().withAlpha(0.25f));
+                cg.drawEllipse(1.0f, 1.0f, 22.0f, 22.0f, 5.0f);
+                cg.setColour(XO::Tokens::Color::accent().withAlpha(0.70f));
+                cg.drawEllipse(3.0f, 3.0f, 18.0f, 18.0f, 3.0f);
+            }
+            setMouseCursor(juce::MouseCursor(cursorImg, kHotspot, kHotspot));
         }
     }
 
@@ -1696,6 +1713,7 @@ public:
         {
             repaint();
         };
+
 
                 // ── ToastOverlaybe the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.

@@ -34,6 +34,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include <functional>
 #include <cmath>
 #include <array>
@@ -81,6 +82,19 @@ public:
     }
 
     //==========================================================================
+    // #23: Status bar setters — additional state pushed from editor timerCallback.
+
+    void setPresetName(const juce::String& name)
+    {
+        if (presetName_ != name) { presetName_ = name; repaint(); }
+    }
+
+    void setLatchActive(bool active)
+    {
+        if (latchActive_ != active) { latchActive_ = active; repaint(); }
+    }
+
+    //==========================================================================
     // Public setter API — call from editor timerCallback (message thread).
 
     void setBpm(double bpm)
@@ -122,17 +136,6 @@ public:
         if (playing_ != playing)
         {
             playing_ = playing;
-            repaint();
-        }
-    }
-
-    // D3 (1D-P2B): LATCH status indicator — call when Keys mode activates/deactivates.
-    // Displayed as a small read-only pill in the status bar right area.
-    void setLatchActive(bool active)
-    {
-        if (latchActive_ != active)
-        {
-            latchActive_ = active;
             repaint();
         }
     }
@@ -289,16 +292,13 @@ private:
         // The space they occupied is now breathing room between time-sig and CHAIN.
         sepX_[1] = x - groupGap * 0.5f;
 
-        // ---- Right side: D13 D1 lean layout — CHAIN button only ----
-        // Voice count, CPU meter, MIDI dot, status dot removed at v1 per D13 D1.
+        // ---- Right side: #23 status bar consolidation (Track B 2D) ----
+        // Layout (right-to-left): CHAIN | preset name | LATCH | CPU | voices
+        // Note: Sync pills (INT/HOST/AUTO) removed in Track A 1F P1-10 — NOT included.
         // Work right-to-left from right edge.
+        // Layout: CHAIN | preset name | LATCH | voices | CPU
 
         float rx = w - padX;
-
-        // D13 D1: removed at v1 — status dot
-        // D13 D1: removed at v1 — MIDI indicator
-        // D13 D1: removed at v1 — CPU meter
-        // D13 D1: removed at v1 — Voices label
 
         // CHAIN button — ~46px wide, 16px tall
         // Renders as "CHAIN" per D13 — variable name kept for wiring stability.
@@ -308,19 +308,37 @@ private:
             juce::Rectangle<float> r(rx - pillW, (h - pillH) * 0.5f, pillW, pillH);
             regions_.push_back({ r, kRegCouple });
             coupleBounds_ = r;
-            // rx -= pillW + gap;  // nothing further right
+            rx -= pillW + gap5 * 2.0f;
         }
 
-        // voicesBounds_ kept as member to avoid cascading removal; set off-screen.
-        voicesBounds_ = juce::Rectangle<float>(-200.0f, 0.0f, 0.0f, 0.0f);
-
-        // D3 (1D-P2B): LATCH status pill — left of CHAIN button.
-        // Read-only indicator: visible only when LATCH is active (Keys mode).
+        // Track B (#23) status bar consolidation layout (right-to-left from rx):
+        // Preset name (read-only, max 120px, truncated with ellipsis)
         {
-            const float pillW = 38.0f;
-            const float pillH = 16.0f;
-            latchBounds_ = juce::Rectangle<float>(rx - pillW - coupleBounds_.getWidth() - gap5 * 3,
-                                                   (h - pillH) * 0.5f, pillW, pillH);
+            const float nameW = 120.0f;
+            presetNameBounds_ = juce::Rectangle<float>(rx - nameW, btnY, nameW, btnH);
+            rx -= nameW + gap5;
+        }
+
+        // Track A (1D-P2B) + Track B (#23): LATCH badge
+        // (only visible in KEYS mode when latch active)
+        {
+            const float latchW = 36.0f;
+            const float latchH = 14.0f;
+            latchBounds_ = juce::Rectangle<float>(rx - latchW, (h - latchH) * 0.5f, latchW, latchH);
+            rx -= latchW + gap5;
+        }
+
+        // CPU meter (small text display)
+        {
+            const float cpuW = 38.0f;
+            cpuBounds_ = juce::Rectangle<float>(rx - cpuW, btnY, cpuW, btnH);
+            rx -= cpuW + gap5;
+        }
+
+        // Voices display (compact "V:N" format)
+        {
+            const float voiceW = 32.0f;
+            voicesBounds_ = juce::Rectangle<float>(rx - voiceW, btnY, voiceW, btnH);
         }
     }
 
@@ -341,20 +359,13 @@ private:
         g.fillRect(0.0f, 0.0f, w, 1.0f);
 
         // ---- Fonts ----
-        const juce::Font bodyFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(10.0f));
+        const juce::Font bodyFont = XO::Tokens::Type::body(XO::Tokens::Type::BodyDefault); // D3;
 
         const juce::Font monoFont = GalleryFonts::dotMatrix(12.0f);
 
-        const juce::Font smallFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(9.0f));
+        const juce::Font smallFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall); // D3;
 
-        const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.0f));
+        const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
         const juce::Font monoTimeSigFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultMonospacedFontName())
@@ -510,8 +521,8 @@ private:
         // P1-10 (1F): Sync pills (INT/HOST/AUTO) removed — see buildLayout() comment.
 
         // ================================================================
-        // RIGHT SIDE — D13 D1: lean layout — LATCH indicator + CHAIN button.
-        // Voices, CPU meter, MIDI dot, status dot removed at v1 per D13 D1.
+        // RIGHT SIDE — #23 Status bar consolidation (Track B 2D)
+        // Layout (right-to-left): CHAIN | preset name | LATCH | CPU | voices
 
         // D3 (1D-P2B): LATCH status pill — read-only, left of CHAIN.
         // Visible only when LATCH is active (Keys mode). Alpha-faded when inactive
@@ -557,6 +568,55 @@ private:
             // Renders as "CHAIN" per D13 — variable name kept for wiring stability.
             g.drawText("CHAIN", coupleBounds_.toNearestInt(),
                        juce::Justification::centred, false);
+        }
+
+        // --- Preset name (read-only, truncated) ---
+        if (!presetName_.isEmpty() && !presetNameBounds_.isEmpty())
+        {
+            g.setFont(XO::Tokens::Type::mono(XO::Tokens::Type::MonoSmall)); // D3
+            g.setColour(Colour(200, 204, 216).withAlpha(0.35f));
+            g.drawText(presetName_, presetNameBounds_.toNearestInt(),
+                       juce::Justification::centredRight, true); // ellipsis if truncated
+        }
+
+        // --- LATCH badge (only visible when latch is active) ---
+        if (latchActive_)
+        {
+            g.setFont(pillFont);
+            const juce::Colour latchBg  = juce::Colour(XO::Tokens::Color::Warning).withAlpha(0.10f);
+            const juce::Colour latchBor = juce::Colour(XO::Tokens::Color::Warning).withAlpha(0.40f);
+            const juce::Colour latchTxt = juce::Colour(XO::Tokens::Color::Warning).withAlpha(0.90f);
+            g.setColour(latchBg);
+            g.fillRoundedRectangle(latchBounds_, 3.0f);
+            g.setColour(latchBor);
+            g.drawRoundedRectangle(latchBounds_, 3.0f, 1.0f);
+            g.setColour(latchTxt);
+            g.drawText("LATCH", latchBounds_.toNearestInt(), juce::Justification::centred, false);
+        }
+
+        // --- CPU meter (compact text: "CPU 42%") ---
+        if (!cpuBounds_.isEmpty())
+        {
+            char cpuBuf[12];
+            std::snprintf(cpuBuf, sizeof(cpuBuf), "%.0f%%", static_cast<double>(cpuPercent_));
+            g.setFont(smallFont);
+            g.setColour(Colour(200, 204, 216).withAlpha(0.22f));
+            g.drawText("CPU", cpuBounds_.toNearestInt(), juce::Justification::centredLeft, false);
+            g.setColour(Colour(200, 204, 216).withAlpha(0.40f));
+            g.drawText(cpuBuf,
+                       cpuBounds_.withTrimmedLeft(cpuBounds_.getWidth() * 0.5f).toNearestInt(),
+                       juce::Justification::centredRight, false);
+        }
+
+        // --- Voice count (compact: "V:N") ---
+        if (!voicesBounds_.isEmpty())
+        {
+            char vBuf[8];
+            std::snprintf(vBuf, sizeof(vBuf), "V:%d", voiceCount_);
+            g.setFont(smallFont);
+            g.setColour(Colour(200, 204, 216).withAlpha(0.30f));
+            g.drawText(vBuf, voicesBounds_.toNearestInt(),
+                       juce::Justification::centredRight, false);
         }
     }
 
@@ -814,8 +874,9 @@ private:
     // Hover / interaction
     int hoveredRegion_ = -1;
 
-    // D3 (1D-P2B): LATCH active state — updated by setLatchActive()
-    bool latchActive_ = true; // default Keys mode = LATCH active
+    // #23 (Track B 2D) + D3 (Track A 1D-P2B): Status bar state — updated by setLatchActive/setPresetName.
+    juce::String presetName_;
+    bool         latchActive_ = false; // set to true on first Keys tab activation via setLatchActive()
 
     // Layout rects (rebuilt each buildLayout call)
     juce::Rectangle<float> playBtnBounds_;
@@ -831,6 +892,8 @@ private:
     juce::Rectangle<float> cpuBounds_;
     juce::Rectangle<float> midiDotBounds_;
     juce::Rectangle<float> statusDotBounds_;
+    juce::Rectangle<float> presetNameBounds_;  // #23
+    juce::Rectangle<float> latchBounds_;       // #23
     std::array<float, 2>   sepX_ {};
 
     // Hit-test regions

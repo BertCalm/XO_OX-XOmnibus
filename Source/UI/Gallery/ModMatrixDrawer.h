@@ -19,6 +19,7 @@
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../AccentColors.h"
 
 namespace xoceanus
@@ -360,7 +361,7 @@ public:
         g.fillRect(b);
 
         // Right border accent line
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.06f));
         g.fillRect(b.getRight() - 1.0f, b.getY(), 1.0f, b.getHeight());
 
         // Header region

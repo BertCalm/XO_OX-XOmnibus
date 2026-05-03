@@ -24,6 +24,7 @@
 #include "../../Core/ChordMachine.h"
 #include "../../Core/ScaleHelpers.h"
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../AccentColors.h"
 #include <functional>
 #include <cmath>
@@ -225,19 +226,14 @@ private:
         g.fillRect(0.0f, 0.0f, w, h);
 
         // Top + bottom borders.
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.10f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.10f));
         g.fillRect(0.0f, 0.0f, w, 1.0f);
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.07f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.07f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // ── Fonts ──
-        static const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(9.0f));
-        static const juce::Font labelFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(8.0f));
+        static const juce::Font pillFont  = XO::Tokens::Type::heading(XO::Tokens::Type::BodySmall);  // D3
+        static const juce::Font labelFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall);    // D3: 8.0→9
 
         // ── Separators ──
         g.setColour(juce::Colour(200, 204, 216).withAlpha(0.07f));

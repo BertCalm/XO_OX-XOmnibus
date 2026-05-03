@@ -47,6 +47,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
 #include "OceanLayoutConstants.h"
+#include "../Tokens.h"
 #include "OceanBackground.h"
 #include "AmbientEdge.h"
 #include "EngineOrbit.h"
@@ -479,15 +480,19 @@ public:
             if (tab == "KEYS")
             {
                 // KEYS: right panel closed → layoutDashboard will show keyboard.
+                // Track A (1D-P2B): visibility logic — what panels are shown.
+                juce::Component* outgoing = surfaceRight_.isVisible() ? &surfaceRight_ : nullptr;
                 surfaceRight_.setOpen(false);
                 surfaceRight_.setVisible(false);
+                // Track B (#18): cross-fade envelope wraps visibility ops.
+                startTabCrossFade(outgoing, &subPlaySurface_);
             }
             else
             {
                 // PAD/XY: right panel opens → layoutDashboard will hide keyboard.
+                // Track A (1D-P2B): D1 sub-mode drives PAD vs DRUM grid.
                 if (tab == "PAD")
                 {
-                    // D1 (#18 follow-on): sub-mode drives PAD vs DRUM grid.
                     const bool kitMode = tabBar_.isKitSubMode();
                     surfaceRight_.setMode(kitMode ? SurfaceRightPanel::Mode::Drum
                                                   : SurfaceRightPanel::Mode::Pad);
@@ -495,21 +500,23 @@ public:
                 else if (tab == "XY")
                     surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
 
-                // P0-3 (1F): Guard against re-opening SurfaceRightPanel when the Detail
-                // overlay is active.  Clicking PAD/XY while Detail is open would pop the
-                // right panel over the overlay (coordinator already hid it for Detail).
+                // Track A (1F P0-3): Guard against re-opening SurfaceRightPanel when the
+                // Detail overlay is active.
                 if (currentPanel_ != PanelType::Detail)
                 {
+                    juce::Component* outgoing = subPlaySurface_.isVisible() ? &subPlaySurface_ : nullptr;
                     surfaceRight_.setOpen(true);
                     surfaceRight_.setVisible(true);
+                    // Track B (#18): cross-fade envelope wraps visibility ops.
+                    startTabCrossFade(outgoing, &surfaceRight_);
                 }
             }
 
-            // D3 (1D-P2B): update LATCH indicator in status bar.
+            // Track A (1D-P2B): update LATCH indicator in status bar.
             if (auto* tb = children_.transportBar())
                 tb->setLatchActive(tab == "KEYS");
 
-            // P1-8 (1F): Forward tab index to editor for persistence.
+            // Track A (1F P1-8): Forward tab index to editor for persistence.
             if (onDashboardTabChanged)
             {
                 const int idx = (tab == "PAD") ? 1 : (tab == "XY") ? 2 : 0;
@@ -1829,7 +1836,8 @@ private:
     /** Submarine-style tab bar — all custom paint, no TextButtons.
         Matches prototype: 10px uppercase, rounded-top tabs, teal active state.
         SEQ + CHORD toggles on the right side. */
-    struct DashboardTabBar : public juce::Component
+    struct DashboardTabBar : public juce::Component,
+                                 public juce::TooltipClient  // #21: tooltip support
     {
         DashboardTabBar()
         {
@@ -1841,6 +1849,27 @@ private:
         // paint() now only reads cached rects; no bounds computation at 60 Hz.
         void resized() override { rebuildHitRegions(); }
 
+        // #21 (2D): return per-region tooltip based on hoveredIdx_.
+        juce::String getTooltip() override
+        {
+            if (hoveredToggleSEQ_)
+                return "SEQ — toggle step sequencer strip";
+            if (hoveredToggleCHORD_)
+                return "CHORD — show/hide chord bar";
+            if (hoveredTabIdx_ >= 0 && hoveredTabIdx_ < kNumTabs)
+            {
+                switch (hoveredTabIdx_)
+                {
+                    case 0: return "KEYS — chromatic keyboard (MPE)";
+                    case 1: return "PAD — 4x4 chromatic note grid";
+                    case 2: return "DRUM — 4x4 GM drum pads";
+                    case 3: return "XY — 2D continuous expression surface";
+                    default: break;
+                }
+            }
+            return {};
+        }
+
         void paint(juce::Graphics& g) override
         {
             const auto b = getLocalBounds().toFloat();
@@ -1848,22 +1877,32 @@ private:
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
             g.fillRect(0.0f, b.getBottom() - 1.0f, b.getWidth(), 1.0f);
 
-            static const juce::Font tabFont(juce::FontOptions{}
-                .withName(juce::Font::getDefaultSansSerifFontName())
-                .withStyle("Bold")
-                .withHeight(10.0f));
+            static const juce::Font tabFont = XO::Tokens::Type::heading(XO::Tokens::Type::BodyDefault); // D3
             g.setFont(tabFont);
 
             // Draw tabs using pre-computed regions (rebuildHitRegions() wrote them).
             for (int i = 0; i < static_cast<int>(tabRegions_.size()); ++i)
             {
+                // P1-11 (1F): read pre-computed cached bounds (no geometry in paint()).
                 const auto& tr = tabRegions_[static_cast<size_t>(i)];
-                const bool active = (activeIdx_ == i);
+                const bool active  = (activeIdx_ == i);
+                // #20 (2D): hover highlight using tabHoverAlpha_ at this region
+                const bool hovered = (hoveredTabIdx_ == i && !active);
+
                 if (active)
                 {
-                    g.setColour(juce::Colour(60, 180, 170).withAlpha(0.07f));
+                    g.setColour(XO::Tokens::Color::accent().withAlpha(0.07f));
                     g.fillRoundedRectangle(tr.getX(), tr.getY(), tr.getWidth(), tr.getHeight() + 2.0f, 6.0f);
-                    g.setColour(juce::Colour(60, 180, 170).withAlpha(0.90f));
+                    g.setColour(XO::Tokens::Color::accent().withAlpha(0.90f));
+                }
+                else if (hovered)
+                {
+                    // #20: hover tint — 1px outline + slight fill
+                    g.setColour(XO::Tokens::Color::accent().withAlpha(0.04f * tabHoverAlpha_));
+                    g.fillRoundedRectangle(tr.getX(), tr.getY(), tr.getWidth(), tr.getHeight() + 2.0f, 6.0f);
+                    g.setColour(XO::Tokens::Color::accent().withAlpha(0.30f * tabHoverAlpha_));
+                    g.drawRoundedRectangle(tr.getX(), tr.getY(), tr.getWidth(), tr.getHeight() + 2.0f, 6.0f, 1.0f);
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.55f));
                 }
                 else
                 {
@@ -1914,8 +1953,11 @@ private:
             {
                 const char* label = (t == 0) ? "SEQ" : "CHORD";
                 const bool on = (t == 0) ? seqOn_ : chordOn_;
+                // P1-11 (1F): read pre-computed cached bounds (no geometry in paint()).
                 const auto& pr = (t == 0) ? seqBounds_ : chordBounds_;
                 if (pr.getWidth() <= 0.0f) continue;
+                // #20 (2D): hover state on toggle pills
+                const bool hov = (t == 0) ? hoveredToggleSEQ_ : hoveredToggleCHORD_;
 
                 if (on)
                 {
@@ -1924,6 +1966,15 @@ private:
                     g.setColour(juce::Colour(127, 219, 202).withAlpha(0.25f));
                     g.drawRoundedRectangle(pr, 4.0f, 1.0f);
                     g.setColour(juce::Colour(127, 219, 202).withAlpha(0.90f));
+                }
+                else if (hov)
+                {
+                    // #20: hover state on toggle pills
+                    g.setColour(XO::Tokens::Color::accent().withAlpha(0.05f * tabHoverAlpha_));
+                    g.fillRoundedRectangle(pr, 4.0f);
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.20f * tabHoverAlpha_));
+                    g.drawRoundedRectangle(pr, 4.0f, 1.0f);
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.60f));
                 }
                 else
                 {
@@ -1975,6 +2026,38 @@ private:
             }
         }
 
+        // #20: hover tracking for tab bar items
+        void mouseMove(const juce::MouseEvent& e) override
+        {
+            updateHoverState(e.position);
+        }
+
+        void mouseEnter(const juce::MouseEvent& e) override
+        {
+            updateHoverState(e.position);
+        }
+
+        void mouseExit(const juce::MouseEvent&) override
+        {
+            hoveredTabIdx_     = -1;
+            hoveredToggleSEQ_  = false;
+            hoveredToggleCHORD_= false;
+            repaint();
+        }
+
+        // #20: driven by 30Hz tick from parent OceanView for smooth alpha fade
+        void stepHoverAnimation()
+        {
+            const bool anyHovered = (hoveredTabIdx_ >= 0 || hoveredToggleSEQ_ || hoveredToggleCHORD_);
+            const float target = anyHovered ? 1.0f : 0.0f;
+            const float next = XO::Tokens::Motion::hoverFadeStep(tabHoverAlpha_, target);
+            if (std::abs(next - tabHoverAlpha_) > 0.005f)
+            {
+                tabHoverAlpha_ = next;
+                repaint();
+            }
+        }
+
         juce::String activeTab() const noexcept
         {
             return kTabNames[activeIdx_];
@@ -2018,10 +2101,40 @@ private:
         static constexpr std::array<const char*, kNumTabs> kTabNames = {"KEYS", "PAD", "XY"};
         static_assert(kTabNames.size() == kNumTabs, "kTabNames size mismatch");
 
+        void updateHoverState(juce::Point<float> pos)
+        {
+            int  newTabHover      = -1;
+            bool newSEQHover      = false;
+            bool newCHORDHover    = false;
+
+            for (int i = 0; i < static_cast<int>(tabRegions_.size()); ++i)
+                if (tabRegions_[static_cast<size_t>(i)].contains(pos))
+                    newTabHover = i;
+
+            if (seqBounds_.contains(pos))   newSEQHover   = true;
+            if (chordBounds_.contains(pos)) newCHORDHover = true;
+
+            if (newTabHover != hoveredTabIdx_
+                || newSEQHover   != hoveredToggleSEQ_
+                || newCHORDHover != hoveredToggleCHORD_)
+            {
+                hoveredTabIdx_      = newTabHover;
+                hoveredToggleSEQ_   = newSEQHover;
+                hoveredToggleCHORD_ = newCHORDHover;
+                repaint();
+            }
+        }
+
         int  activeIdx_ = 0;
         bool seqOn_     = false;
         bool chordOn_   = false;
         bool kitSubMode_ = false; // D1 (1D-P2B): false=NOTE, true=KIT
+
+        // #20/#21: hover tracking
+        int  hoveredTabIdx_      = -1;
+        bool hoveredToggleSEQ_   = false;
+        bool hoveredToggleCHORD_ = false;
+        float tabHoverAlpha_     = 0.0f; // animated 0→1 on hover enter, 1→0 on exit
 
         std::vector<juce::Rectangle<float>> tabRegions_;
         juce::Rectangle<float> seqBounds_;
@@ -2398,6 +2511,83 @@ private:
     }
 
     //==========================================================================
+    // #18 — Tab content cross-fade (200ms easeOutStep per D4)
+    //==========================================================================
+
+    /** Called from timerCallback to animate tabFadeIn_ / tabFadeOut_ each 30Hz tick.
+        The fade targets are set when onTabChanged fires:
+          - incoming panel starts at alpha=0, target=1  → tabFadeIn_
+          - outgoing panel starts at alpha=1, target=0  → tabFadeOut_ (if still set)
+        Uses Tokens::Motion::tabFadeStep() (200ms convergence at 30Hz). */
+    void stepTabCrossFade()
+    {
+        bool needRepaint = false;
+
+        // Fade in: bring the incoming panel to full opacity
+        if (tabFadeInPanel_ != nullptr)
+        {
+            tabFadeIn_ = XO::Tokens::Motion::tabFadeStep(tabFadeIn_, 1.0f);
+            tabFadeInPanel_->setAlpha(tabFadeIn_);
+            if (tabFadeIn_ >= 0.99f)
+            {
+                tabFadeInPanel_->setAlpha(1.0f);
+                tabFadeInPanel_ = nullptr;
+            }
+            needRepaint = true;
+        }
+
+        // Fade out: bring the outgoing panel to zero then hide it
+        if (tabFadeOutPanel_ != nullptr)
+        {
+            tabFadeOut_ = XO::Tokens::Motion::tabFadeStep(tabFadeOut_, 0.0f);
+            tabFadeOutPanel_->setAlpha(tabFadeOut_);
+            if (tabFadeOut_ <= 0.01f)
+            {
+                tabFadeOutPanel_->setAlpha(0.0f);
+                tabFadeOutPanel_->setVisible(false);
+                tabFadeOutPanel_->setAlpha(1.0f); // reset for next time it becomes visible
+                tabFadeOutPanel_ = nullptr;
+            }
+            needRepaint = true;
+        }
+
+        juce::ignoreUnused(needRepaint);
+    }
+
+    /** Initiate a cross-fade from @p outgoing to @p incoming.
+        Pass nullptr for outgoing on the first show (no previous panel). */
+    void startTabCrossFade(juce::Component* outgoing, juce::Component* incoming)
+    {
+        // Cancel any running fades first
+        if (tabFadeInPanel_ != nullptr)
+        {
+            tabFadeInPanel_->setAlpha(1.0f);
+            tabFadeInPanel_ = nullptr;
+        }
+        if (tabFadeOutPanel_ != nullptr)
+        {
+            tabFadeOutPanel_->setAlpha(0.0f);
+            tabFadeOutPanel_->setVisible(false);
+            tabFadeOutPanel_->setAlpha(1.0f);
+            tabFadeOutPanel_ = nullptr;
+        }
+
+        if (outgoing != nullptr && outgoing->isVisible())
+        {
+            tabFadeOutPanel_ = outgoing;
+            tabFadeOut_      = 1.0f; // start opaque, fade to 0
+        }
+
+        if (incoming != nullptr)
+        {
+            incoming->setAlpha(0.0f);
+            incoming->setVisible(true);
+            tabFadeInPanel_ = incoming;
+            tabFadeIn_      = 0.0f; // start transparent, fade to 1
+        }
+    }
+
+    //==========================================================================
     // Shared orbit animation timer (juce::Timer override)
     //==========================================================================
 
@@ -2427,6 +2617,15 @@ private:
         for (auto& orbit : orbits_)
             if (orbit.hasEngine() && orbit.isAnimating())
                 orbit.requestRepaint();
+
+        // #19: step HUD bar click-depth spring-back animation (80ms per D4).
+        hudBar_.stepClickDepthAnimation();
+
+        // #20: step tab bar hover fade animation (150ms ease-out per D4).
+        tabBar_.stepHoverAnimation();
+
+        // #18: step tab content cross-fade alpha (200ms ease-out per D4).
+        stepTabCrossFade();
 
         // Wave 3 — 3a: Position-save debounce countdown (500 ms / ~15 ticks at 30 Hz).
         // positionSaveCountdown_ is armed by schedulePositionSave() on each drag frame;
@@ -2992,6 +3191,14 @@ private:
     // D7: whether SurfaceRightPanel was open before DetailOverlay was shown.
     // Restored on DetailOverlay close.
     bool surfaceRightWasOpenForDetail_ = false;
+
+    // #18: Tab cross-fade state (200ms per D4).
+    // tabFadeInPanel_  — panel currently fading from alpha 0 → 1 (incoming tab content)
+    // tabFadeOutPanel_ — panel currently fading from alpha 1 → 0 (outgoing tab content)
+    juce::Component* tabFadeInPanel_  = nullptr;
+    juce::Component* tabFadeOutPanel_ = nullptr;
+    float            tabFadeIn_       = 1.0f;
+    float            tabFadeOut_      = 0.0f;
 
     //==========================================================================
     // Phase 1+2 decomposition (#1184):

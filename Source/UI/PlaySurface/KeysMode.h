@@ -21,7 +21,8 @@
 #include <cmath>
 
 #include "HarmonicField.h"
-#include "../GalleryColors.h" // theme-aware color accessors (#393)
+#include "../GalleryColors.h"
+#include "../Tokens.h" // theme-aware color accessors (#393)
 
 namespace xoceanus
 {
@@ -472,8 +473,8 @@ private:
             {
                 // Teal active glow for white keys
                 juce::ColourGradient activeGrad(
-                    juce::Colour(60, 180, 170).withAlpha(0.28f), rect.getX(), rect.getY(),
-                    juce::Colour(60, 180, 170).withAlpha(0.14f), rect.getX(), rect.getBottom(), false);
+                    XO::Tokens::Color::accent().withAlpha(0.28f), rect.getX(), rect.getY(),
+                    XO::Tokens::Color::accent().withAlpha(0.14f), rect.getX(), rect.getBottom(), false);
                 g.setGradientFill(activeGrad);
                 g.fillRoundedRectangle(rect, cornerR);
             }
@@ -481,7 +482,7 @@ private:
             // Pressure glow from bottom (like prototype's .pressure div)
             juce::Colour pressureColor = sharp
                 ? juce::Colour(140, 100, 220).withAlpha(0.35f)
-                : juce::Colour(60, 180, 170).withAlpha(0.35f);
+                : XO::Tokens::Color::accent().withAlpha(0.35f);
             juce::ColourGradient pressGrad(
                 pressureColor, rect.getX(), rect.getBottom(),
                 juce::Colours::transparentBlack, rect.getX(), rect.getBottom() - rect.getHeight() * 0.6f, false);
@@ -491,7 +492,7 @@ private:
             // Inset box shadow effect
             juce::Colour shadowColor = sharp
                 ? juce::Colour(140, 100, 220).withAlpha(0.2f)
-                : juce::Colour(60, 180, 170).withAlpha(0.2f);
+                : XO::Tokens::Color::accent().withAlpha(0.2f);
             g.setColour(shadowColor);
             g.drawRoundedRectangle(rect.reduced(1.0f), cornerR, 2.0f);
         }

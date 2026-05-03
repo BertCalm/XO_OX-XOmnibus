@@ -50,6 +50,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Core/ChordMachine.h"
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "ChordBarComponent.h"
 #include "ChordSlotStrip.h"
 #include <array>
@@ -204,10 +205,7 @@ public:
             }
 
             // Title.
-            static const juce::Font titleFont{juce::FontOptions{}
-                .withName(juce::Font::getDefaultSansSerifFontName())
-                .withStyle("Bold")
-                .withHeight(10.0f)};
+            static const juce::Font titleFont = XO::Tokens::Type::heading(XO::Tokens::Type::BodyDefault); // D3
             g.setFont(titleFont);
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.45f));
             g.drawText("CHORD EDITOR", 12, 0, 120, kHeaderH,
@@ -247,10 +245,7 @@ private:
 
     void paintSlotTabs(juce::Graphics& g) const
     {
-        static const juce::Font tabFont{juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.5f)};
+        static const juce::Font tabFont = XO::Tokens::Type::heading(XO::Tokens::Type::BodySmall); // D3: 8.5→9
         g.setFont(tabFont);
 
         const float startX = 140.0f;
@@ -300,10 +295,7 @@ private:
             ? juce::Colour(200, 204, 216).withAlpha(0.80f)
             : juce::Colour(200, 204, 216).withAlpha(0.35f);
 
-        static const juce::Font btnFont{juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(9.0f)};
+        static const juce::Font btnFont = XO::Tokens::Type::heading(XO::Tokens::Type::BodySmall); // D3
         g.setFont(btnFont);
         g.setColour(col);
         g.drawText("\xc3\x97", cb.toNearestInt(), juce::Justification::centred, false); // UTF-8 ×
@@ -314,10 +306,7 @@ private:
 
     void paintInputModeRow(juce::Graphics& g, int rowY) const
     {
-        static const juce::Font pillFont{juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.5f)};
+        static const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::BodySmall); // D3: 8.5→9
         g.setFont(pillFont);
 
         static constexpr const char* kInputModeLabels[3] = {
