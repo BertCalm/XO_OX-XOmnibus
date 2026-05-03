@@ -112,16 +112,44 @@ namespace Type {
 // animation feel). Use easeOutStep() for any lerped UI animation.
 namespace Motion {
 
-    constexpr int   DefaultDurationMs = 200;
-    constexpr int   HoverFadeMs       = 150;
-    constexpr int   RevealMs          = 320;
+    constexpr int   DefaultDurationMs = 200;   // tab cross-fade (#18)
+    constexpr int   HoverFadeMs       = 150;   // hover state fade-in (#20)
+    constexpr int   RevealMs          = 320;   // modal opens, drawer slides
+    constexpr int   ClickDepthMs      =  80;   // click-depth spring-back (#19)
     constexpr float EaseOutStep30Hz   = 0.18f; // lerp fraction per 33 ms tick at 30 Hz
+
+    // Per-tick lerp factors derived from durations at 30 Hz:
+    //   factor = 1 - (1 - EaseOutStep30Hz)^N  where N = durationMs / (1000/30)
+    // Tab cross-fade: ~6 ticks at 200ms → per-tick step ≈ 0.40 for quick snap
+    // Click depth spring-back: ~2.4 ticks at 80ms → step ≈ 0.70 (snappy)
+    // Hover fade: ~4.5 ticks at 150ms → step ≈ 0.28 (smooth)
+    constexpr float TabFadeStep30Hz    = 0.40f; // lerp fraction for 200ms cross-fade (#18)
+    constexpr float ClickDepthStep30Hz = 0.70f; // lerp fraction for 80ms spring-back (#19)
+    constexpr float HoverFadeStep30Hz  = 0.28f; // lerp fraction for 150ms hover fade (#20)
 
     /// Fractional-step ease-out for per-frame lerp animations.
     /// Call once per timer tick (30 Hz): value = easeOutStep(value, target);
     inline float easeOutStep(float current, float target) noexcept
     {
         return current + (target - current) * EaseOutStep30Hz;
+    }
+
+    /// Tab cross-fade variant — faster convergence for 200ms mode transitions (#18).
+    inline float tabFadeStep(float current, float target) noexcept
+    {
+        return current + (target - current) * TabFadeStep30Hz;
+    }
+
+    /// Click-depth spring-back — fast 80ms bounce-back (#19).
+    inline float clickDepthStep(float current, float target) noexcept
+    {
+        return current + (target - current) * ClickDepthStep30Hz;
+    }
+
+    /// Hover fade-in — smooth 150ms highlight reveal (#20).
+    inline float hoverFadeStep(float current, float target) noexcept
+    {
+        return current + (target - current) * HoverFadeStep30Hz;
     }
 
     /// A11y-aware variant: skips to target immediately when OS/in-app Reduce Motion is on.

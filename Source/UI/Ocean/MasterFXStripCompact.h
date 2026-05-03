@@ -49,7 +49,8 @@ namespace xoceanus
     Submarine-style 36 px horizontal strip showing the Master FX bus controls.
     See file header for full documentation.
 */
-class MasterFXStripCompact : public juce::Component
+class MasterFXStripCompact : public juce::Component,
+                             public juce::TooltipClient  // #21: per-region tooltips on ADV + knobs
 {
 public:
     //==========================================================================
@@ -104,6 +105,39 @@ public:
             presetName_ = name;
             repaint();
         }
+    }
+
+    //==========================================================================
+    // #21: TooltipClient — returns tooltip text for hovered region.
+    juce::String getTooltip() override
+    {
+        // Check ADV buttons first
+        if (hoveredAdv_ >= 0)
+        {
+            static constexpr const char* kAdvTips[kNumSections] = {
+                "SAT ADV \xe2\x80\x94 open saturation detail controls",
+                "DELAY ADV \xe2\x80\x94 open delay detail controls (time, filter, spread)",
+                "REVERB ADV \xe2\x80\x94 open reverb detail controls (size, damp, diffuse)",
+                "MOD ADV \xe2\x80\x94 open modulation detail controls (rate, waveform, stereo)",
+                "COMP ADV \xe2\x80\x94 open compressor detail controls (attack, release, ratio)"
+            };
+            if (hoveredAdv_ < kNumSections)
+                return juce::String(juce::CharPointer_UTF8(kAdvTips[hoveredAdv_]));
+        }
+        // Check knob hover
+        if (hoveredKnob_ >= 0 && hoveredKnob_ < kNumKnobs)
+        {
+            static constexpr const char* kKnobTips[kNumKnobs] = {
+                "Saturation drive \xe2\x80\x94 harmonic warmth (drag up/down, double-click to reset)",
+                "Delay mix \xe2\x80\x94 wet level of the stereo delay (drag up/down)",
+                "Delay feedback \xe2\x80\x94 echo repeat amount (drag up/down)",
+                "Reverb mix \xe2\x80\x94 space wet level (drag up/down)",
+                "Mod depth \xe2\x80\x94 modulation intensity (drag up/down)",
+                "Compressor glue \xe2\x80\x94 bus compression amount (drag up/down)"
+            };
+            return juce::String(juce::CharPointer_UTF8(kKnobTips[hoveredKnob_]));
+        }
+        return {};
     }
 
 private:

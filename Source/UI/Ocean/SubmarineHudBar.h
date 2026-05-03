@@ -490,10 +490,14 @@ private:
     {
         const auto c = resolveColors(regionId, isActive);
 
+        // #19: click-depth feedback — shift content 1px down when pressed
+        const float pressYShift = (pressedRegion_ == regionId) ? pressDepth_ * 1.0f : 0.0f;
+        const auto  drawBounds  = bounds.translated(0.0f, pressYShift);
+
         g.setColour(c.bg);
-        g.fillRoundedRectangle(bounds, 8.0f);
+        g.fillRoundedRectangle(drawBounds, 8.0f);
         g.setColour(c.border);
-        g.drawRoundedRectangle(bounds, 8.0f, 1.0f);
+        g.drawRoundedRectangle(drawBounds, 8.0f, 1.0f);
 
         static const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
@@ -503,8 +507,8 @@ private:
         if (withMenuIcon)
         {
             // Draw a small "≡" (three horizontal lines) on the left, then the label.
-            const float cx  = bounds.getX() + 14.0f;
-            const float cy  = bounds.getCentreY();
+            const float cx  = drawBounds.getX() + 14.0f;
+            const float cy  = drawBounds.getCentreY();
             const float lw  = 8.0f;
             const float gap = 2.5f;
             g.setColour(c.text);
@@ -515,14 +519,14 @@ private:
                                                   lw, 1.0f));
             }
             // Label to the right of the icon.
-            juce::Rectangle<float> textArea(bounds.getX() + 24.0f, bounds.getY(),
-                                            bounds.getWidth() - 28.0f, bounds.getHeight());
+            juce::Rectangle<float> textArea(drawBounds.getX() + 24.0f, drawBounds.getY(),
+                                            drawBounds.getWidth() - 28.0f, drawBounds.getHeight());
             g.setColour(c.text);
             g.drawText(label, textArea.toNearestInt(), juce::Justification::centredLeft, false);
         }
         else
         {
-            g.drawText(label, bounds.toNearestInt(), juce::Justification::centred, false);
+            g.drawText(label, drawBounds.toNearestInt(), juce::Justification::centred, false);
         }
     }
 
@@ -532,11 +536,16 @@ private:
                          bool isActive)
     {
         const auto c = resolveColors(regionId, isActive);
+        // #19: click-depth Y-offset for icon buttons
+        const float pressYShift = (pressedRegion_ == regionId) ? pressDepth_ * 1.0f : 0.0f;
+        const auto  drawBounds  = bounds.translated(0.0f, pressYShift);
 
         g.setColour(c.bg);
         g.fillRoundedRectangle(bounds, 8.0f);
+        g.setColour(c.bg);
+        g.fillRoundedRectangle(drawBounds, 8.0f);
         g.setColour(c.border);
-        g.drawRoundedRectangle(bounds, 8.0f, 1.0f);
+        g.drawRoundedRectangle(drawBounds, 8.0f, 1.0f);
     }
 
     //--------------------------------------------------------------------------
@@ -806,6 +815,11 @@ private:
     {
         const int id = hitRegion(e);
 
+        // #19: click-depth feedback — snap to pressed state immediately
+        pressedRegion_ = id;
+        pressDepth_    = 1.0f;
+        repaint();
+
         switch (id)
         {
             case kRegEngines:
@@ -898,9 +912,27 @@ private:
 
     void mouseUp(const juce::MouseEvent& /*e*/) override
     {
-        dialDragging_ = false;
+        dialDragging_  = false;
+        pressedRegion_ = -1; // #19: begin spring-back (pressDepth_ will animate to 0)
         repaint();
     }
+
+public:
+    // #19: called from OceanView's 30Hz timer to animate click-depth spring-back.
+    void stepClickDepthAnimation()
+    {
+        if (pressDepth_ > 0.01f && pressedRegion_ < 0)
+        {
+            pressDepth_ = XO::Tokens::Motion::clickDepthStep(pressDepth_, 0.0f);
+            repaint();
+        }
+        else if (pressDepth_ <= 0.01f)
+        {
+            pressDepth_ = 0.0f;
+        }
+    }
+
+private:
 
     void mouseMove(const juce::MouseEvent& e) override
     {
@@ -940,6 +972,11 @@ private:
 
     // Hover tracking
     int hoveredRegion_ = -1;
+
+    // #19: Click-depth feedback — tracks which region is currently pressed.
+    // pressDepth_ animates 0→1 on mouseDown, 1→0 on mouseUp (80ms spring-back).
+    int   pressedRegion_ = -1;
+    float pressDepth_    = 0.0f; // 0 = idle, 1 = fully pressed (1px Y offset applied)
 
     // Layout rects — rebuilt each buildLayout() call.
     juce::Rectangle<float> enginesBounds_;

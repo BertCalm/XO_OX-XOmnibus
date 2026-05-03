@@ -150,6 +150,8 @@ private:
         populateChainPicker(row.chainPicker);
         row.chainPicker.setJustificationType(juce::Justification::centredLeft);
         row.chainPicker.addListener(this);
+        // #21: tooltip for slot chain picker
+        row.chainPicker.setTooltip("S0" + juce::String(idx + 1) + " FX chain \xe2\x80\x94 choose the signal processing chain for this slot");
         addAndMakeVisible(row.chainPicker);
 
         // Mix slider
@@ -158,6 +160,8 @@ private:
         row.mixSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 44, 20);
         row.mixSlider.setColour(juce::Slider::trackColourId,
                                 GalleryColors::get(GalleryColors::textMid()).withAlpha(0.5f));
+        // #21: tooltip for mix slider
+        row.mixSlider.setTooltip("S0" + juce::String(idx + 1) + " mix \xe2\x80\x94 wet/dry blend for this FX slot (0 = dry, 1 = fully wet)");
         row.mixAttach = std::make_unique<
             juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts_, mixParamId(idx), row.mixSlider);
@@ -167,6 +171,8 @@ private:
         row.bypassToggle.setButtonText("BYPASS");
         row.bypassToggle.setColour(juce::ToggleButton::textColourId,
                                    GalleryColors::get(GalleryColors::textMid()));
+        // #21: tooltip for bypass toggle
+        row.bypassToggle.setTooltip("S0" + juce::String(idx + 1) + " bypass \xe2\x80\x94 disable this FX slot without losing the chain selection");
         row.bypassAttach = std::make_unique<
             juce::AudioProcessorValueTreeState::ButtonAttachment>(
                 apvts_, bypassParamId(idx), row.bypassToggle);
