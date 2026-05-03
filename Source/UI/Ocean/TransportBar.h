@@ -888,12 +888,11 @@ private:
     juce::Rectangle<float> timeSigDBounds_;
     juce::Rectangle<float> voicesBounds_;
     juce::Rectangle<float> coupleBounds_;
-    juce::Rectangle<float> latchBounds_;  // D3 (1D-P2B): LATCH status indicator
+    juce::Rectangle<float> latchBounds_;        // D3 (1D-P2B) + #23: LATCH status indicator
     juce::Rectangle<float> cpuBounds_;
     juce::Rectangle<float> midiDotBounds_;
     juce::Rectangle<float> statusDotBounds_;
-    juce::Rectangle<float> presetNameBounds_;  // #23
-    juce::Rectangle<float> latchBounds_;       // #23
+    juce::Rectangle<float> presetNameBounds_;   // #23: preset name in status bar
     std::array<float, 2>   sepX_ {};
 
     // Hit-test regions
