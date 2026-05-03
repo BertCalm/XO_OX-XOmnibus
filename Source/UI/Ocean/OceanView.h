@@ -1929,11 +1929,12 @@ private:
                             }
                             else
                             {
-                                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
+                                // NOTE mode: teal accent (2C consolidation)
+                                g.setColour(XO::Tokens::Color::accent().withAlpha(0.06f));
                                 g.fillRoundedRectangle(sr, 4.0f);
-                                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.25f));
+                                g.setColour(XO::Tokens::Color::accent().withAlpha(0.25f));
                                 g.drawRoundedRectangle(sr, 4.0f, 1.0f);
-                                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.70f));
+                                g.setColour(XO::Tokens::Color::accent().withAlpha(0.70f));
                             }
                         }
                         else
