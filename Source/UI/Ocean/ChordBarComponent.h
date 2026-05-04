@@ -721,6 +721,38 @@ private:
     }
 
     //==========================================================================
+    // V1 Lane B: juce::TooltipClient — region dispatch for all paint-only controls.
+    juce::String getTooltip() override
+    {
+        const float mx = static_cast<float>(getMouseXYRelative().x);
+        const float my = static_cast<float>(getMouseXYRelative().y);
+        if (hitTestSlider(spreadSlider_, mx, my)) return "Drag to spread chord voicing across the keyboard range";
+        if (hitTestSlider(swingSlider_,  mx, my)) return "Drag to shift offbeat steps late for rhythmic swing feel";
+        if (hitTestSlider(gateSlider_,   mx, my)) return "Drag to set chord note gate length from staccato to held";
+        if (hitTestSlider(humanSlider_,  mx, my)) return "Drag to add random timing variation for a natural feel";
+        for (const auto& pill : pillRegions_)
+        {
+            if (!pill.bounds.contains(mx, my)) continue;
+            switch (pill.type)
+            {
+                case RegionType::Palette:   return "Click to cycle chord palette or sound character";
+                case RegionType::Voicing:   return "Click to cycle voicing layout or spread interval structure";
+                case RegionType::Root:      return "Click to cycle root note for the chord machine";
+                case RegionType::MiniPiano: return "Click to cycle root note on the mini keyboard";
+                case RegionType::Rhythm:    return "Click to cycle rhythmic trigger pattern for chords";
+                case RegionType::VelCurve:  return "Click to cycle velocity distribution across chord notes";
+                case RegionType::ModeLive:  return "Select LIVE mode to play chords directly from keys";
+                case RegionType::ModeSeq:   return "Select SEQ mode to trigger chords from the sequencer";
+                case RegionType::ModeEno:   return "Select ENO mode for ambient slow-evolving chord arpeggiation";
+                case RegionType::InputAuto: return "Select AUTO to detect chords from played notes";
+                case RegionType::InputPad:  return "Select PAD to trigger chords from pad grid presses";
+                case RegionType::InputDeg:  return "Select DEG to trigger chords by scale degree number";
+                default:                    break;
+            }
+        }
+        return {};
+    }
+
     void mouseDown(const juce::MouseEvent& e) override
     {
         const float mx = static_cast<float>(e.x);
