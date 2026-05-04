@@ -663,8 +663,9 @@ private:
 class OstiWaveguideBody
 {
 public:
-    // 4096 samples: supports body delay up to ~93ms at 44.1kHz
-    static constexpr int kMaxDelay = 4096;
+    // 8192 samples: supports body delay up to ~85ms at 96kHz (was 4096 → ~43ms, half the 44.1kHz window).
+    // Power-of-2 preserved so the & (kMaxDelay - 1) bitmask at writePos wrap remains valid.
+    static constexpr int kMaxDelay = 8192;
 
     void prepare(double sampleRate) noexcept
     {
