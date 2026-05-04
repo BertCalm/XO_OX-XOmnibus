@@ -385,6 +385,9 @@ private:
     bool gradsCacheValid_ = false;
 
     // Close button bounds (local component coords) + hover state
+    // TODO(W1-B1): tooltip needs design — close button is paint-only (not a juce::Component).
+    // To wire a tooltip, promote to a real juce::TextButton child or implement TooltipClient
+    // on EnginePickerDrawer with a region-based getTooltip() override.
     juce::Rectangle<int> closeBtnBounds_;
     bool                 closeBtnHovered_ = false;
 
@@ -418,14 +421,29 @@ inline EnginePickerDrawer::EnginePickerDrawer()
     searchField_.setFont(GalleryFonts::body(13.0f));
     searchField_.setReturnKeyStartsNewLine(false);
     searchField_.onTextChange = [this] { updateFilter(); };
+    searchField_.setTooltip("Type here to search by name, archetype, or category");
     addAndMakeVisible(searchField_);
 
     // ── Category pill buttons ─────────────────────────────────────────────────
+    // Tooltip strings per filter pill — brief, imperative, consequence-focused
+    static const char* kPillTips[kNumCats] = {
+        "Show all engines",
+        "Filter to synthesizer engines",
+        "Filter to percussion engines",
+        "Filter to bass engines",
+        "Filter to pad engines",
+        "Filter to string engines",
+        "Filter to organ engines",
+        "Filter to vocal engines",
+        "Filter to FX engines",
+        "Filter to utility engines",
+    };
     for (int i = 0; i < kNumCats; ++i)
     {
         catBtns_[i].setButtonText(kFilterLabel(i));
         catBtns_[i].setClickingTogglesState(false);
         catBtns_[i].setLookAndFeel(&pillLnF_);
+        catBtns_[i].setTooltip(kPillTips[i]);
         const int idx = i;
         catBtns_[i].onClick = [this, idx]
         {
