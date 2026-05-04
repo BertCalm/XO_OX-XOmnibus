@@ -256,7 +256,12 @@ public:
         breathLfo.setRate(0.006f, srF);
 
         noteCounter = 0;
-        noiseRng = 0xDEADBEEF;
+        // P36 fix: XOR sr bits into the fixed constant so different plugin instances
+        // (and different sample rates) produce distinct shatter/crackle noise sequences.
+        // 0xDEADBEEF alone was identical across all instances at cold start.
+        uint32_t srBits = 0u;
+        std::memcpy(&srBits, &srF, sizeof(srBits));
+        noiseRng = 0xDEADBEEFu ^ srBits;
 
         silenceGate.prepare(sr, maxBlockSize);
         silenceGate.setHoldTime(500.0f);
@@ -784,7 +789,8 @@ private:
     StandardLFO lfo1, lfo2;
     BreathingLFO breathLfo;
 
-    uint32_t noiseRng = 0xDEADBEEF;
+    // P36 fix: seeded from sr bits in prepare() — not a hardcoded constant.
+    uint32_t noiseRng = 0xDEAD0000u;
 
     float aftertouch = 0.0f;
     float modWheel = 0.0f;
