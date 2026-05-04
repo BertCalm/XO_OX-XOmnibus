@@ -285,7 +285,7 @@ private:
     //==========================================================================
     //  S T A T E
     //==========================================================================
-    float sampleRateF = 44100.0f;
+    float sampleRateF = 0.0f; // 0 = not yet prepared; sentinel for render guard
     int   blockCap    = 512;
 
     std::array<OutcropVoice, kOutcropMaxVoices> voices;
@@ -547,7 +547,12 @@ inline void OutcropEngine::releaseVoicesForNote(int noteNum)
 // -----------------------------------------------------------------------------
 inline void OutcropEngine::prepare(double sampleRate, int maxBlockSize)
 {
-    sampleRateF = (sampleRate > 0.0) ? (float) sampleRate : 44100.0f;
+    if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+    {
+        jassertfalse; // host passed invalid sample rate — skip prepare
+        return;
+    }
+    sampleRateF = static_cast<float>(sampleRate);
     blockCap    = std::max(1, maxBlockSize);
 
     for (auto& v : voices)
