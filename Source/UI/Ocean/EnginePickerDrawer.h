@@ -101,14 +101,6 @@ public:
 
     void timerCallback() override;
 
-    // Phase 6b: juce::TooltipClient — region dispatch for paint-only close button.
-    juce::String getTooltip() override
-    {
-        if (closeBtnBounds_.contains(getMouseXYRelative()))
-            return "Click to close the engine picker and return to the ocean";
-        return {};
-    }
-
     //==========================================================================
     // Constants
     //==========================================================================
