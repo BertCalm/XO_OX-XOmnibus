@@ -28,6 +28,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Core/MasterFXSequencer.h"
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include <functional>
 #include <cmath>
 #include <array>
@@ -240,19 +241,19 @@ private:
     {
         // Background: teal gradient from top to bottom.
         juce::ColourGradient bg(
-            juce::Colour(60, 180, 170).withAlpha(0.04f),  0.0f, 0.0f,
-            juce::Colour(60, 180, 170).withAlpha(0.02f),  0.0f, h,   false);
-        bg.addColour(0.60, juce::Colour(60, 180, 170).withAlpha(0.12f));
+            XO::Tokens::Color::accent().withAlpha(0.04f),  0.0f, 0.0f,
+            XO::Tokens::Color::accent().withAlpha(0.02f),  0.0f, h,   false);
+        bg.addColour(0.60, XO::Tokens::Color::accent().withAlpha(0.12f));
         g.setGradientFill(bg);
         g.fillRect(0.0f, 0.0f, w, h);
 
         // Bottom border 1 px teal.
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.18f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.18f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // Glow under bottom border (box-shadow emulation via soft stripe).
         juce::ColourGradient glow(
-            juce::Colour(60, 180, 170).withAlpha(0.10f), 0.0f, h - 1.0f,
+            XO::Tokens::Color::accent().withAlpha(0.10f), 0.0f, h - 1.0f,
             juce::Colours::transparentBlack,             0.0f, h + 7.0f, false);
         g.setGradientFill(glow);
         g.fillRect(0.0f, h - 1.0f, w, 8.0f);
@@ -266,15 +267,15 @@ private:
         g.fillRect(0.0f, 0.0f, w, h);
 
         // Top border 1 px
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.18f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.18f));
         g.fillRect(0.0f, 0.0f, w, 1.0f);
 
         // Bottom border 1 px
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.12f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.12f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // Controls row bottom border
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.08f));
         g.fillRect(0.0f, static_cast<float>(kControlsRowH) - 1.0f, w, 1.0f);
 
         paintControlsRow(g, w);
@@ -292,13 +293,8 @@ private:
         // paint may run before the first resized if bounds are set externally).
         layoutControls(w);
 
-        static const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(9.0f));
-        static const juce::Font labelFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(8.0f));
+        static const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
+        static const juce::Font labelFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall); // D3;
 
         // ── Pill buttons ──
         for (const auto& pill : pillRegions_)
@@ -349,7 +345,7 @@ private:
                 const float bx = ppb.getX() + i * barW;
                 const float bh = steps_[i].velocity * maxH;
                 const float by = ppb.getBottom() - bh;
-                g.setColour(juce::Colour(60, 180, 170).withAlpha(0.50f));
+                g.setColour(XO::Tokens::Color::accent().withAlpha(0.50f));
                 g.fillRect(bx + 1.0f, by, barW - 1.0f, bh);
             }
             // Outline
@@ -377,10 +373,7 @@ private:
         // ── ALGO badge ──
         if (algoBadgeBounds_.getWidth() > 0.0f)
         {
-            static const juce::Font badgeFont(juce::FontOptions{}
-                .withName(juce::Font::getDefaultSansSerifFontName())
-                .withStyle("Bold")
-                .withHeight(8.0f));
+            static const juce::Font badgeFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
             const float alpha = sequencer_.isEnabled() ? 0.7f : 0.3f;
             g.setColour(juce::Colour(127, 219, 202).withAlpha(alpha * 0.2f));
             g.drawRoundedRectangle(algoBadgeBounds_, 3.0f, 1.0f);
@@ -397,9 +390,7 @@ private:
             const float phase = std::sin(breathePhase_ * static_cast<float>(M_PI));
             const float alpha = 0.35f + phase * 0.35f;
 
-            static const juce::Font breatheFont(juce::FontOptions{}
-                .withName(juce::Font::getDefaultSansSerifFontName())
-                .withHeight(11.0f));
+            static const juce::Font breatheFont = XO::Tokens::Type::body(XO::Tokens::Type::BodyLarge); // D3;
             g.setFont(breatheFont);
             g.setColour(juce::Colour(127, 219, 202).withAlpha(alpha));
             g.drawText("~", breatheBounds_.toNearestInt(),
@@ -505,10 +496,7 @@ private:
             // Root note label (shown when rootNote >= 0)
             if (!isBeyond && steps_[i].rootNote >= 0)
             {
-                static const juce::Font noteFont(juce::FontOptions{}
-                    .withName(juce::Font::getDefaultSansSerifFontName())
-                    .withStyle("Bold")
-                    .withHeight(7.0f));
+                static const juce::Font noteFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
                 g.setFont(noteFont);
                 g.setColour(juce::Colour(127, 219, 202).withAlpha(0.70f));
                 g.drawText(cachedRootNoteLabels_[static_cast<size_t>(i)],
@@ -526,7 +514,7 @@ private:
             const float borderAlpha = isBeat ? 0.25f : 0.0f;
             if (isBeat && !isBeyond)
             {
-                g.setColour(juce::Colour(60, 180, 170).withAlpha(borderAlpha));
+                g.setColour(XO::Tokens::Color::accent().withAlpha(borderAlpha));
                 g.fillRect(sx + stepW - 1.0f, rowY, 1.0f, rowH);
             }
             else

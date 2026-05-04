@@ -6,7 +6,7 @@
     KeysMode.h
     ==========
     Seaboard-style 2-octave scrollable keyboard with Y-velocity, X-pitch-glide,
-    and XOuija-reactive coloring.
+    and harmonic-field-reactive coloring.
 
     Spec Section 8.4 -- KeysMode (Desktop)
 
@@ -21,7 +21,8 @@
 #include <cmath>
 
 #include "HarmonicField.h"
-#include "../GalleryColors.h" // theme-aware color accessors (#393)
+#include "../GalleryColors.h"
+#include "../Tokens.h" // theme-aware color accessors (#393)
 
 namespace xoceanus
 {
@@ -33,7 +34,7 @@ namespace xoceanus
     - 2 octaves visible, scrollable C1-C7
     - Y-position -> velocity (top = 127, bottom = 1)
     - X-drag from press origin -> pitch glide / pitch wheel
-    - XOuija-reactive coloring via HarmonicField
+    - Harmonic-field-reactive coloring via HarmonicField
 */
 class KeysMode : public juce::Component
 {
@@ -78,7 +79,7 @@ public:
     //==========================================================================
     // Public API
 
-    /** Set the harmonic root (0=C...11=B) from XOuija. */
+    /** Set the harmonic root (0=C...11=B). */
     void setRootKey(int rootKey)
     {
         rootKey_ = ((rootKey % 12) + 12) % 12;
@@ -410,7 +411,7 @@ private:
     }
 
     //--------------------------------------------------------------------------
-    /** Draw a single key with XOuija-reactive coloring. */
+    /** Draw a single key with harmonic-field-reactive coloring. */
     void drawKey(juce::Graphics& g, const juce::Rectangle<float>& rect, int midiNote, bool sharp, float /*sharpW*/,
                  float /*sharpH*/)
     {
@@ -472,8 +473,8 @@ private:
             {
                 // Teal active glow for white keys
                 juce::ColourGradient activeGrad(
-                    juce::Colour(60, 180, 170).withAlpha(0.28f), rect.getX(), rect.getY(),
-                    juce::Colour(60, 180, 170).withAlpha(0.14f), rect.getX(), rect.getBottom(), false);
+                    XO::Tokens::Color::accent().withAlpha(0.28f), rect.getX(), rect.getY(),
+                    XO::Tokens::Color::accent().withAlpha(0.14f), rect.getX(), rect.getBottom(), false);
                 g.setGradientFill(activeGrad);
                 g.fillRoundedRectangle(rect, cornerR);
             }
@@ -481,7 +482,7 @@ private:
             // Pressure glow from bottom (like prototype's .pressure div)
             juce::Colour pressureColor = sharp
                 ? juce::Colour(140, 100, 220).withAlpha(0.35f)
-                : juce::Colour(60, 180, 170).withAlpha(0.35f);
+                : XO::Tokens::Color::accent().withAlpha(0.35f);
             juce::ColourGradient pressGrad(
                 pressureColor, rect.getX(), rect.getBottom(),
                 juce::Colours::transparentBlack, rect.getX(), rect.getBottom() - rect.getHeight() * 0.6f, false);
@@ -491,7 +492,7 @@ private:
             // Inset box shadow effect
             juce::Colour shadowColor = sharp
                 ? juce::Colour(140, 100, 220).withAlpha(0.2f)
-                : juce::Colour(60, 180, 170).withAlpha(0.2f);
+                : XO::Tokens::Color::accent().withAlpha(0.2f);
             g.setColour(shadowColor);
             g.drawRoundedRectangle(rect.reduced(1.0f), cornerR, 2.0f);
         }

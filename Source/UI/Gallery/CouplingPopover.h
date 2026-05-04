@@ -152,7 +152,7 @@ public:
         juce::String dstLabel = slotDisplayName(targetBox.getSelectedId() - 1);
         g.setFont(GalleryFonts::label(10.0f)); // (#885: 9pt→10pt legibility floor)
         g.setColour(accentCol);
-        g.drawText(srcLabel + " \xe2\x86\x92 " + dstLabel, // UTF-8 right arrow →
+        g.drawText(srcLabel + juce::String(juce::CharPointer_UTF8(" \xe2\x86\x92 ")) + dstLabel, // UTF-8 right arrow →
                    110, (int)headerBounds.getY(), 100, (int)headerBounds.getHeight(),
                    juce::Justification::centredRight);
 

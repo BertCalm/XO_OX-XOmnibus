@@ -28,6 +28,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include <functional>
 #include <array>
 #include <atomic>
@@ -134,11 +135,11 @@ public:
         g.fillRect(0.0f, 0.0f, w, h);
 
         // Top border
-        g.setColour(juce::Colour(0xFF48CAE4).withAlpha(0.12f));
+        g.setColour(XO::Tokens::Color::accentBright().withAlpha(0.12f));
         g.fillRect(0.0f, 0.0f, w, 1.0f);
 
         // Bottom border
-        g.setColour(juce::Colour(0xFF48CAE4).withAlpha(0.06f));
+        g.setColour(XO::Tokens::Color::accentBright().withAlpha(0.06f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         const float midY = h * 0.5f;
@@ -154,14 +155,9 @@ public:
         const int familyIdx = juce::jlimit(0, 5, patternIdx / 4);
         const juce::Colour familyCol = juce::Colour(kFamilyColors[familyIdx]);
 
-        static const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(9.0f));
+        static const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
-        static const juce::Font labelFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(8.5f));
+        static const juce::Font labelFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall); // D3;
 
         float x = 6.0f;
 
@@ -261,7 +257,7 @@ public:
             else if (playing)
                 badgeCol = juce::Colour(0xFF4CAF50).withAlpha(0.80f); // green = playing
             else
-                badgeCol = juce::Colour(0xFFE9C46A).withAlpha(0.55f); // gold = ready/stopped
+                badgeCol = XO::Tokens::Color::primary().withAlpha(0.55f); // gold = ready/stopped
 
             g.setColour(badgeCol.withAlpha(0.14f));
             g.fillRoundedRectangle(badge, 3.0f);

@@ -74,7 +74,7 @@ public:
         }
         else
         {
-            setTooltip("Slot " + juce::String(slot + 1) + ": empty — click to load engine");
+            setTooltip("Slot " + juce::String(slot + 1) + juce::String(juce::CharPointer_UTF8(": empty \xe2\x80\x94 click to load engine")));
         }
         accent = hasEngine ? eng->getAccentColour() : GalleryColors::get(GalleryColors::emptySlot());
         miniWave.setSlot(slot);
@@ -961,7 +961,9 @@ private:
                                         });
         };
         picker->setSize(280, 400);
-        juce::CallOutBox::launchAsynchronously(std::unique_ptr<juce::Component>(picker), getScreenBounds(), nullptr);
+        // wire(1C-fix): pass getTopLevelComponent() so the box renders above the
+        // plugin window on macOS AU (nullptr causes it to render behind the window).
+        juce::CallOutBox::launchAsynchronously(std::unique_ptr<juce::Component>(picker), getScreenBounds(), getTopLevelComponent());
     }
 
     XOceanusProcessor& processor;

@@ -448,7 +448,9 @@ public:
         };
 
         juce::Rectangle<int> target = getScreenBounds();
-        juce::CallOutBox::launchAsynchronously(std::unique_ptr<juce::Component>(picker), target, nullptr);
+        // wire(1C-fix): pass getTopLevelComponent() so the box renders above the
+        // plugin window on macOS AU (nullptr causes it to render behind the window).
+        juce::CallOutBox::launchAsynchronously(std::unique_ptr<juce::Component>(picker), target, getTopLevelComponent());
     }
 
 private:

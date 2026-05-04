@@ -206,6 +206,8 @@ target_sources(XOceanus PRIVATE
     # Phase 0 wildcard infrastructure (FX gap analysis, 2026-04-27)
     Source/Core/DNAModulationBus.h
     Source/Core/MoodModulationBus.h
+    # Session 1G: FX parameter exposure manifest
+    Source/Core/FXParameterManifest.h
     Source/DSP/Effects/Aging.h
     Source/DSP/Effects/OnrushChain.cpp
     Source/DSP/Effects/OmnistereoChain.cpp
