@@ -34,6 +34,7 @@
 #include <functional>
 #include <array>
 #include <cmath>
+#include "../Tokens.h" // Session 2C #14: submarine keyboard token theming
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -163,9 +164,10 @@ public:
 
 private:
     //==========================================================================
-    // Constants — colors from submarine prototype spec
-
-    // Teal accent (white key active, pad active)
+    // Constants — colors (Session 2C #14: teal via XO::Tokens, purple/salt raw)
+    static juce::Colour tokenTeal()       { return XO::Tokens::Color::accent(); }
+    static juce::Colour tokenTealBright() { return XO::Tokens::Color::accentBright(); }
+    // Teal (retained for accent_ default initializer below)
     static constexpr uint8_t kTealR = 60, kTealG = 180, kTealB = 170;
     // Purple accent (black key active, drum active)
     static constexpr uint8_t kPurpR = 140, kPurpG = 100, kPurpB = 220;
@@ -622,21 +624,21 @@ private:
             else
             {
                 // Active: teal gradient
-                juce::ColourGradient bg(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.28f),
+                juce::ColourGradient bg(tokenTeal().withAlpha(0.28f),
                                          r.getX(), r.getY(),
-                                         juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.14f),
+                                         tokenTeal().withAlpha(0.14f),
                                          r.getX(), r.getBottom(), false);
                 g.setGradientFill(bg);
                 g.fillRoundedRectangle(r, cornerR);
 
                 // Inset border
-                g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.35f));
+                g.setColour(tokenTeal().withAlpha(0.35f));
                 g.drawRoundedRectangle(r.reduced(1.0f), cornerR, 2.0f);
 
                 // Pressure fill from bottom, height 60%
                 float pressH = r.getHeight() * 0.60f;
                 juce::ColourGradient pressGrad(
-                    juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.35f),
+                    tokenTeal().withAlpha(0.35f),
                     r.getX(), r.getBottom(),
                     juce::Colours::transparentBlack,
                     r.getX(), r.getBottom() - pressH, false);
@@ -756,19 +758,19 @@ private:
         else
         {
             // Active background: teal gradient
-            juce::ColourGradient bg(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.22f),
+            juce::ColourGradient bg(tokenTeal().withAlpha(0.22f),
                                      r.getX(), r.getY(),
-                                     juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.10f),
+                                     tokenTeal().withAlpha(0.10f),
                                      r.getX(), r.getBottom(), false);
             g.setGradientFill(bg);
             g.fillRoundedRectangle(r, cr);
 
             // Active border
-            g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.40f));
+            g.setColour(tokenTeal().withAlpha(0.40f));
             g.drawRoundedRectangle(r, cr, 1.0f);
 
-            // Radial glow: centre rgba(60,180,170,0.25) → transparent 70%
-            juce::ColourGradient glow(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.25f),
+            // Radial glow (#14)
+            juce::ColourGradient glow(tokenTeal().withAlpha(0.25f),
                                        r.getCentreX(), r.getCentreY(),
                                        juce::Colours::transparentBlack,
                                        r.getCentreX() + r.getWidth() * 0.5f * 0.7f, r.getCentreY(), true);
@@ -778,7 +780,7 @@ private:
 
         // Note label: 12px weight 600, centre of cell
         g.setFont(juce::Font(juce::FontOptions(12.0f).withStyle("Bold")));
-        g.setColour(active ? juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.90f)
+        g.setColour(active ? tokenTealBright().withAlpha(0.90f)
                            : juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.45f));
         g.drawText(noteLabel, r.toNearestInt(), juce::Justification::centred, false);
 
@@ -817,7 +819,7 @@ private:
             // Active: purple-teal bicolour gradient
             juce::ColourGradient bg(juce::Colour(kPurpR, kPurpG, kPurpB).withAlpha(0.18f),
                                      r.getX(), r.getY(),
-                                     juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.12f),
+                                     tokenTeal().withAlpha(0.12f),
                                      r.getRight(), r.getBottom(), false);
             g.setGradientFill(bg);
             g.fillRoundedRectangle(r, cr);
@@ -884,8 +886,8 @@ private:
             float cursorY = b.getY() + xyY_ * b.getHeight();
             const float cursorR = 7.0f; // radius → diameter 14
 
-            // Glow shadow: 0 0 14px rgba(60,180,170,0.3) — approximate with radial gradient
-            juce::ColourGradient glowGrad(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.30f),
+            // Glow shadow (#14 — token teal)
+            juce::ColourGradient glowGrad(tokenTeal().withAlpha(0.30f),
                                            cursorX, cursorY,
                                            juce::Colours::transparentBlack,
                                            cursorX + cursorR + 7.0f, cursorY, true);
@@ -893,12 +895,12 @@ private:
             g.fillEllipse(cursorX - cursorR - 7.0f, cursorY - cursorR - 7.0f,
                           (cursorR + 7.0f) * 2.0f, (cursorR + 7.0f) * 2.0f);
 
-            // Fill: rgba(60,180,170,0.45)
-            g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.45f));
+            // Fill (#14)
+            g.setColour(tokenTeal().withAlpha(0.45f));
             g.fillEllipse(cursorX - cursorR, cursorY - cursorR, cursorR * 2.0f, cursorR * 2.0f);
 
-            // Border: 2px rgba(60,180,170,0.8)
-            g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.80f));
+            // Border: 2px bright teal (#14)
+            g.setColour(tokenTealBright().withAlpha(0.80f));
             g.drawEllipse(cursorX - cursorR, cursorY - cursorR, cursorR * 2.0f, cursorR * 2.0f, 2.0f);
         }
     }

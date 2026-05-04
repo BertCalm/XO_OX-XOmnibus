@@ -21,11 +21,10 @@
 #include "Core/PartnerAudioBus.h"
 #include "Core/BrothCoordinator.h"
 #include "Core/SharedTransport.h"
-#include "Core/SlotModSourceRegistry.h" // Wave5-C5: XouijaCell + future msg-thread ModSources
+#include "Core/SlotModSourceRegistry.h" // Wave5-C5: future msg-thread ModSources
 #include "DSP/EngineProfiler.h"
 #include "DSP/SRO/SROAuditor.h"
 #include "DSP/PerEnginePatternSequencer.h"
-#include "DSP/XOuijaWalkEngine.h"
 // Wave 5 A1: Global drag-drop mod routing model (message-thread side).
 // The header lives in Future/ but we reference it in-place per spec.
 #include "Future/UI/ModRouting/DragDropModRouter.h"
@@ -157,10 +156,6 @@ public:
         return slotSequencers_[static_cast<size_t>(juce::jlimit(0, kNumPrimarySlots - 1, slot))];
     }
 
-    // Wave 5 D1: XOuija walk engine — UI-thread access for enqueueEdit, getSnapshot,
-    // mood/tendency setters.  Audio-thread-safe via atomics + SPSC (see XOuijaWalkEngine.h).
-    xoceanus::XOuijaWalkEngine& getOuijaWalkEngine() noexcept { return ouijaWalkEngine_; }
-
     // Wave 5 A1: Write the current LFO1 output so the global router can use it
     // as a mod source.  Called from OrreryEngine::renderBlock (audio thread).
     // Use relaxed ordering — a single-sample jitter is acceptable for mod routing.
@@ -281,18 +276,6 @@ public:
     // Optional callback fired on the message thread after an engine is loaded or unloaded.
     // The editor registers this to refresh only the affected tile immediately.
     std::function<void(int /*slot*/)> onEngineChanged;
-
-    // ── XOuija UI State persistence bridge ────────────────────────────────────
-    // PlaySurface registers these callbacks so the processor can include the
-    // XOuija panel state (active bank, toggle states, MIDI learn CC mappings)
-    // in getStateInformation() and restore it in setStateInformation().
-    //
-    // Usage (in PlaySurface::setProcessor()):
-    //   processor_->onGetXOuijaState = [this]() { return xouijaPanel_.toValueTree(); };
-    //   processor_->onSetXOuijaState = [this](const juce::ValueTree& t) {
-    //       xouijaPanel_.fromValueTree(t); };
-    std::function<juce::ValueTree()> onGetXOuijaState;
-    std::function<void(const juce::ValueTree& /*state*/)> onSetXOuijaState;
 
     // ── TideWaterline sequence layer persistence bridge (#1179) ───────────────
     // OceanView registers these callbacks so the processor can include per-step
@@ -530,26 +513,20 @@ public:
     float getNoteActivity() const noexcept { return noteActivity_.load(std::memory_order_relaxed); }
 
     // ── Wave5-C5: SlotModSourceRegistry — message-thread-origin ModSources ──────
-    // Exposes live bipolar values for ModSources whose origin is the message thread
-    // (UI gestures, pin callbacks).  Audio thread reads them lock-free from
-    // processBlock().  Currently hosts XouijaCell; extend for future UI-origin sources.
-    //
-    // Wire-up (in PlaySurface::setProcessor or equivalent):
-    //   xouijaPanel_.getPinStore().onPinChanged = [this](float bx, float by) {
-    //       modSourceRegistry_.updateSourceValue(ModSourceId::XouijaCell, bx, by);
-    //   };
+    // Infrastructure for future UI-gesture-origin ModSources.
+    // XouijaCell (ID 18) was removed 2026-05-01.
     SlotModSourceRegistry& getModSourceRegistry() noexcept { return modSourceRegistry_; }
     const SlotModSourceRegistry& getModSourceRegistry() const noexcept { return modSourceRegistry_; }
 
     // ── #1357: XY Surface position atomics (W8B mount) ───────────────────────
-    // Per-slot XY surface position in [0, 1].  Written by XYSurface::onXYChanged
-    // on the message thread; read by the mod routing system (DragDropModRouter /
-    // XouijaPinStore tick) on the audio thread as ModSourceId::XYX0..XYY3.
+    // Per-slot XY surface position in [0, 1].  Written by SurfaceRightPanel::onXYChanged
+    // on the message thread; read by the mod routing system (DragDropModRouter)
+    // on the audio thread as ModSourceId::XYX0..XYY3.
     //
     // Thread-safety: std::atomic<float> with relaxed ordering — a one-block-late
     // value is acceptable for a continuous modulation source.
     //
-    // setXYPosition: call from XYSurface::onXYChanged (message thread).
+    // setXYPosition: call from SurfaceRightPanel::onXYChanged (message thread).
     // getXYPosition: call from audio thread inside processBlock.
     void setXYPosition(int slot, float x, float y) noexcept
     {
@@ -596,6 +573,12 @@ public:
     bool getPersistedRegisterLocked() const noexcept { return persistedRegisterLocked; }
     void setPersistedRegisterCurrent(int r) noexcept { persistedRegisterCurrent = r; }
     int  getPersistedRegisterCurrent() const noexcept { return persistedRegisterCurrent; }
+
+    // P1-8 (1F): Dashboard tab + kit sub-mode persistence.
+    void setPersistedDashboardTab(int tab) noexcept    { persistedDashboardTab_ = juce::jlimit(0, 2, tab); }
+    int  getPersistedDashboardTab()  const noexcept    { return persistedDashboardTab_; }
+    void setPersistedKitSubMode(bool kit) noexcept     { persistedKitSubMode_ = kit; }
+    bool getPersistedKitSubMode()  const noexcept      { return persistedKitSubMode_; }
 
     // F2-006: OceanView ViewState + zoomed slot persistence.
     // Written by OceanView's onStateEntered callback (message thread only).
@@ -800,10 +783,6 @@ private:
     // Each instance is engine-agnostic — events appear in slotMidi[] transparently.
     std::array<XOceanus::PerEnginePatternSequencer, kNumPrimarySlots> slotSequencers_;
 
-    // Wave 5 D1: XOuija walk engine — tempo-synced autonomous planchette.
-    // Audio-thread-owned; UI thread interacts via atomics + SPSC queue (see XOuijaWalkEngine.h).
-    xoceanus::XOuijaWalkEngine ouijaWalkEngine_;
-
     // External audio input capture — sized once in prepareToPlay, NEVER resized in processBlock.
     // OsmosisEngine reads raw pointers into this buffer within the same processBlock call.
     juce::AudioBuffer<float> externalInputBuffer;
@@ -871,6 +850,16 @@ private:
         std::atomic<float>* obblBond = nullptr;
         std::atomic<float>* oleDrama = nullptr;
 
+        // wire(1C-4): Global session params — masterTune (415-466 Hz) and
+        // pitchBendRange (1-24 semitones).  Cached here (not in processBlock via
+        // getRawParameterValue) to satisfy Architect Condition 1 (B009 thread safety).
+        std::atomic<float>* masterTune      = nullptr; // "masterTune"      (415..466 Hz)
+        std::atomic<float>* pitchBendRange  = nullptr; // "pitchBendRange"  (1..24 semitones)
+
+        // P1-6 (1F): macro1 (CHARACTER) — previously fetched via getRawParameterValue
+        // inside processBlock (per-block hash lookup).  Cached here per C1 invariant.
+        std::atomic<float>* macro1          = nullptr; // "macro1"          (0..1)
+
         // MPE parameters
         std::atomic<float>* mpeEnabled = nullptr;
         std::atomic<float>* mpeZone = nullptr;
@@ -890,12 +879,6 @@ private:
         };
         std::array<CouplingRouteParams, CouplingCrossfader::MaxRouteSlots> cpRoutes;
 
-        // Wave 5 D1: XOuija walk engine mood/tendency — cached raw pointers
-        // so processBlock reads them without string lookups.
-        std::atomic<float>* ouijaCalmWild          = nullptr;
-        std::atomic<float>* ouijaConsonantDissonant = nullptr;
-        std::atomic<float>* ouijaTendencyCol        = nullptr;
-        std::atomic<float>* ouijaTendencyRow        = nullptr;
     } cachedParams;
 
     juce::MidiBuffer mpeMidiBuffer; // MPE-processed MIDI (expression stripped)
@@ -906,12 +889,12 @@ private:
     std::atomic<size_t> noteQueueTail{0};
 
     // ── CC Output SPSC queue (UI-thread write / audio-thread read) ────────────
-    // Carries CC events from XOuija (message thread) to MIDI output (audio thread).
+    // Carries CC events from UI widgets (message thread) to MIDI output (audio thread).
     // Head written by UI thread; tail read/advanced by audio thread.
     struct CCOutputEvent
     {
         uint8_t channel = 0;    // 0-15 (MIDI channel minus 1)
-        uint8_t controller = 0; // CC number (85-90 for XOuija)
+        uint8_t controller = 0; // CC number
         uint8_t value = 0;      // 0-127
     };
     static constexpr size_t kCCQueueSize = 256;
@@ -966,6 +949,12 @@ private:
     // ── Per-slot mute state ───────────────────────────────────────────────────
     // Written by message thread (setSlotMuted), read by audio thread per block.
     std::array<std::atomic<bool>, MaxSlots> slotMuted{}; // default false
+
+    // ── wire(1C-4): pitchBendRange change-detection (audio thread only) ─────────
+    // Tracks the last RPN 0 value injected into slotMidi so we only re-emit the
+    // 6-message sequence when the user actually changes the setting.
+    // -1 sentinel forces injection on the first processBlock() call.
+    int lastInjectedPitchBendRange_{-1};
 
     // ── CC11 Expression pedal — per-channel tracking (audio thread only) ────────
     // expressionValue_[ch]: 0.0–1.0, updated from CC11 events in processBlock().
@@ -1064,7 +1053,7 @@ private:
     std::atomic<float> noteActivity_{0.0f};
 
     // ── #1357: XY Surface position atomics (W8B mount) ───────────────────────
-    // Per-slot XY position [0, 1] written by XYSurface::onXYChanged (message thread)
+    // Per-slot XY position [0, 1] written by SurfaceRightPanel::onXYChanged (message thread)
     // and read by the mod routing system as ModSourceId::XYX0..XYY3 (audio thread).
     // Initialised to 0.5 (centre) so modulation is neutral before first interaction.
     // Note: std::atomic is not copy/move-constructible, so initialise via default ctor
@@ -1132,6 +1121,12 @@ private:
     bool persistedCockpitBypass = false; // #357: Dark Cockpit bypass state
     bool persistedRegisterLocked = false; // D4: register lock toggle
     int  persistedRegisterCurrent = 0;   // D4: current register index (0=Gallery, 1=Performance, 2=Coupling)
+
+    // P1-8 (1F): Persist DashboardTabBar active tab + NOTE/KIT sub-mode so DAW
+    // session reload restores the user's last PAD+KIT (or XY) layout.
+    // 0=KEYS, 1=PAD, 2=XY — matches DashboardTabBar's kTabNames order.
+    int  persistedDashboardTab_    = 0;   // default: KEYS
+    bool persistedKitSubMode_      = false; // default: NOTE (not KIT)
     int  persistedOceanViewState_ = 0;   // F2-006: OceanView ViewState (0=Orbital,1=ZoomIn,2=Split,3=Browser)
     int  persistedOceanViewSlot_  = -1;  // F2-006: slot index when ViewState is ZoomIn/Split
     float persistedReactLevel_    = 0.80f; // F3-006: REACT dial visual reactivity level

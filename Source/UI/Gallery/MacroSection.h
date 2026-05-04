@@ -30,10 +30,10 @@ public:
         // wire(#orphan-sweep): D11 spec descriptions added (issue #1301 audit).
         // Previously tooltips were bare echoes ("Macro 1: TONE") with no semantic content.
         static constexpr const char* tooltipDescs[4] = {
-            "TONE — timbral character (waveshaper drive, EQ tilt, filter character)",
-            "TIDE — motion and rhythm (LFO rate, modulation depth, temporal movement)",
-            "COUPLE — engine coupling depth (cross-engine modulation intensity)",
-            "DEPTH — layering and intensity (density, saturation, voice complexity)"
+            "TONE \xe2\x80\x94 timbral character (waveshaper drive, EQ tilt, filter character)",
+            "TIDE \xe2\x80\x94 motion and rhythm (LFO rate, modulation depth, temporal movement)",
+            "COUPLE \xe2\x80\x94 engine coupling depth (cross-engine modulation intensity)",
+            "DEPTH \xe2\x80\x94 layering and intensity (density, saturation, voice complexity)"
         };
         static constexpr const char* tooltipLabels[4] = {"TONE", "TIDE", "COUPLE", "DEPTH"};
         for (int i = 0; i < 4; ++i)
@@ -41,7 +41,7 @@ public:
             knobs[i].setSliderStyle(juce::Slider::RotaryVerticalDrag);
             knobs[i].setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
             knobs[i].setColour(juce::Slider::rotarySliderFillColourId, GalleryColors::get(GalleryColors::xoGold));
-            knobs[i].setTooltip(juce::String(tooltipDescs[i]));
+            knobs[i].setTooltip(juce::String(juce::CharPointer_UTF8(tooltipDescs[i])));
             A11y::setup(knobs[i], juce::String("Macro ") + juce::String(i + 1) + " " + tooltipLabels[i]);
             addAndMakeVisible(knobs[i]);
             attach[i] =
@@ -58,7 +58,7 @@ public:
         master.setSliderStyle(juce::Slider::RotaryVerticalDrag);
         master.setTextBoxStyle(juce::Slider::NoTextBox, false, 0, 0);
         master.setColour(juce::Slider::rotarySliderFillColourId, GalleryColors::get(GalleryColors::textMid()));
-        master.setTooltip("VOLUME — Master output volume");
+        master.setTooltip(juce::String(juce::CharPointer_UTF8("VOLUME \xe2\x80\x94 Master output volume")));
         A11y::setup(master, "Master Volume");
         addAndMakeVisible(master);
         masterAttach =

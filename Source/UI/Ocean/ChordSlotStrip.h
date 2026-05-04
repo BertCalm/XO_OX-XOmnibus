@@ -37,6 +37,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Core/ChordMachine.h"
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include <functional>
 #include <array>
 
@@ -117,13 +118,8 @@ private:
         g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
-        static const juce::Font pillFont{juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.5f)};
-        static const juce::Font labelFont{juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(8.0f)};
+        static const juce::Font pillFont  = XO::Tokens::Type::heading(XO::Tokens::Type::BodySmall);  // D3: 8.5→9 (nearest standard)
+        static const juce::Font labelFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall);    // D3: 8.0→9 (nearest standard)
 
         float curX = kPadX;
         const float pillY = midY - kPillH * 0.5f;
@@ -225,7 +221,7 @@ private:
         {
             chordBtnBounds_ = juce::Rectangle<float>(curX, pillY, kChordBtnW, kPillH);
             const bool hovered = (hoveredZone_ == HitZone::ChordBtn);
-            const juce::Colour gold = juce::Colour(0xFFE9C46A);
+            const juce::Colour gold = XO::Tokens::Color::primary();
 
             juce::Colour txtCol = hovered ? gold.withAlpha(0.95f) : gold.withAlpha(0.60f);
             juce::Colour bdrCol = hovered ? gold.withAlpha(0.30f) : gold.withAlpha(0.12f);

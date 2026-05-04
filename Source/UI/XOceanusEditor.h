@@ -44,6 +44,7 @@
 #include "Gallery/DnaHexagon.h"
 #include "RegisterManager.h"
 #include "ToastOverlay.h"
+#include "Ocean/OceanLayoutConstants.h"
 #include "Ocean/OceanView.h"
 // D12: About/Lore modal + "O" brand badge button.
 #include "AboutModal.h"
@@ -52,10 +53,12 @@
 // No explicit re-include needed here — pragma once guards prevent duplication.
 // Wave 5 A3: ModMatrixBreakout (strip + slide-up panel).
 #include "Future/UI/ModRouting/ModMatrixBreakout.h"
-// Wave 6.5 (#1306): Pad/Drum collision wiring + layout-mode polling.
-#include "Ocean/Wave65SurfaceWiring.h"
+// Wave 6.5 (#1306): cut(1B): Wave65SurfaceWiring removed (PlaySurface removed).
+// #include "Ocean/Wave65SurfaceWiring.h"
 // Wave 9c (#1303): First-hour onboarding walkthrough overlay.
 #include "FirstHourWalkthrough.h"
+// Session 2C #17: design token surface — depth-ring cursor + color helpers.
+#include "Tokens.h"
 
 namespace xoceanus
 {
@@ -143,6 +146,21 @@ public:
             // Register this instance in the per-instance dark mode registry (fix #329).
             // unregisterInstance() is called in the destructor.
             GalleryColors::setInstanceDarkMode(this, savedDark);
+        }
+
+        // Session 2C #17 — D5: depth-ring custom cursor (24×24px, 3px teal ring, 70% alpha).
+        {
+            constexpr int kCursorSize = 24;
+            constexpr int kHotspot   = 11;
+            juce::Image cursorImg(juce::Image::ARGB, kCursorSize, kCursorSize, true);
+            {
+                juce::Graphics cg(cursorImg);
+                cg.setColour(XO::Tokens::Color::accent().withAlpha(0.25f));
+                cg.drawEllipse(1.0f, 1.0f, 22.0f, 22.0f, 5.0f);
+                cg.setColour(XO::Tokens::Color::accent().withAlpha(0.70f));
+                cg.drawEllipse(3.0f, 3.0f, 18.0f, 18.0f, 3.0f);
+            }
+            setMouseCursor(juce::MouseCursor(cursorImg, kHotspot, kHotspot));
         }
     }
 
@@ -642,12 +660,6 @@ public:
                             modMatrixStrip_->loadEngine(
                                 GalleryColors::prefixForEngine(eng->getEngineId()));
                     }
-                    // Wave6.5 mount A (#1306): auto-switch PlaySurface to PADS+drum
-                    // sub-mode when a percussion engine (Onset / Offering) loads.
-                    if (slot >= 0 && slot < kNumPrimarySlots)
-                        if (auto* eng = processor.getEngine(slot))
-                            oceanView_.getPlaySurface().setSurfaceDefault(
-                                Wave65::isPercussionEngine(eng->getEngineId()));
                 });
         };
     }
@@ -656,11 +668,20 @@ public:
         and toast overlay (must be added last so it paints on top). */
     void initOceanView(XOceanusProcessor& proc)
     {
-        // Base plugin height is 700pt (PlaySurface collapsed).
+        // 1D-P3: heights derived from layout constants — single source of truth in
+        // OceanLayoutConstants.h. Adding a strip to the dashboard budget no longer
+        // requires manually bumping the magic 764/864 numbers.
+        constexpr int kDefaultBaseHeight =
+            ocean_layout::kDashboardH + ocean_layout::kStatusBarH +
+            ocean_layout::kWaterlineH + ocean_layout::kDefaultOceanViewportH;  // = 864
+        constexpr int kMinBaseHeight =
+            ocean_layout::kDashboardH + ocean_layout::kStatusBarH +
+            ocean_layout::kWaterlineH + ocean_layout::kMinOceanViewportH;      // = 764
+
         // V2: On first launch the PlaySurface starts open, so add kPlaySurfaceH immediately.
         const int initialHeight = playSurface_.isVisible()
-                                      ? 700 + ColumnLayoutManager::kPlaySurfaceH
-                                      : 700;
+                                      ? kDefaultBaseHeight + ColumnLayoutManager::kPlaySurfaceH
+                                      : kDefaultBaseHeight;
 
         // Resize limits must be declared BEFORE setSize() — JUCE's constrainer
         // only runs on user-initiated drags, not programmatic setSize(), so any
@@ -668,7 +689,7 @@ public:
         // construction could otherwise land outside the declared bounds.
         setResizable(true, true);
         // PlaySurface adds 264pt when expanded; max height allows for both states.
-        setResizeLimits(960, 600, 1600, 1000 + ColumnLayoutManager::kPlaySurfaceH);
+        setResizeLimits(960, kMinBaseHeight, 1600, 1200 + ColumnLayoutManager::kPlaySurfaceH);
 
         setSize(1100, initialHeight);
 
@@ -982,6 +1003,67 @@ public:
             }
             matrix.removeUserRoute(r.sourceSlot, r.destSlot, r.type);
         };
+
+        // wire(1C-2): Engine context-menu callbacks — 5 actions from right-click buoy menu.
+        // OceanView tracks the toggle states internally (slotMuted_[], slotSoloed_[]).
+        // The editor reads those states back and propagates to the processor.
+
+        // Mute: sync OceanView's toggle state to the processor's slotMuted[] atomic.
+        oceanView_.onEngineMuteToggled = [this](int slot)
+        {
+            if (slot < 0 || slot >= kNumPrimarySlots) return;
+            processor.setSlotMuted(slot, oceanView_.isSlotMuted(slot));
+        };
+
+        // Solo: no dedicated processor solo API exists — implement as "mute all others".
+        // When slot X becomes soloed: mute all non-soloed slots.
+        // When all solos are cleared: restore mute states from OceanView's slotMuted_.
+        oceanView_.onEngineSoloToggled = [this](int slot)
+        {
+            if (slot < 0 || slot >= kNumPrimarySlots) return;
+            // Check if any slot is still soloed after this toggle.
+            bool anySoloed = false;
+            for (int i = 0; i < kNumPrimarySlots; ++i)
+                if (oceanView_.isSlotSoloed(i)) { anySoloed = true; break; }
+            if (anySoloed)
+            {
+                // Mute any slot that is not soloed; un-mute soloed slots.
+                for (int i = 0; i < kNumPrimarySlots; ++i)
+                    processor.setSlotMuted(i, !oceanView_.isSlotSoloed(i));
+            }
+            else
+            {
+                // All solos cleared — restore explicit per-slot mute states.
+                for (int i = 0; i < kNumPrimarySlots; ++i)
+                    processor.setSlotMuted(i, oceanView_.isSlotMuted(i));
+            }
+        };
+
+        // Remove: unload the engine from the slot.  OceanView clears its buoy visually;
+        // the processor releases the shared_ptr and stops rendering that slot.
+        oceanView_.onEngineRemoveRequested = [this](int slot)
+        {
+            if (slot < 0 || slot >= kNumPrimarySlots) return;
+            processor.unloadEngine(slot);
+        };
+
+        // Chain mode: OceanView handles all visual chain-mode state internally.
+        // No processor-side action is needed for chain-mode entry; the route is
+        // created when the user completes the knot via onCouplingRouteRequested.
+        oceanView_.onChainModeRequested = [](int /*slot*/)
+        {
+            // Visual chain-mode is fully managed by OceanView (toggleChainMode /
+            // setChainInProgress).  No processor call needed at this stage.
+        };
+
+        // Picker: the engine drawer opened for slot selection.  This fires AFTER
+        // the user has already committed a selection (from engineDrawer_.onEngineSelected)
+        // which triggers onEngineSelectedFromDrawer above.  No additional action needed.
+        oceanView_.onEnginePickerRequested = []()
+        {
+            // Notification-only: selection is handled by onEngineSelectedFromDrawer.
+        };
+
         oceanView_.onPresetSelected = [this](int idx)
         {
             // Load preset by index from the library snapshot.
@@ -1161,15 +1243,6 @@ public:
                 sb->selectTab(SidebarPanel::Preset);
         };
 
-        // Wire MIDI + PlaySurface inside OceanView
-        {
-            auto& ps = oceanView_.getPlaySurface();
-            ps.setMidiCollector(&processor.getMidiCollector(), 1);
-            ps.setProcessor(&processor);
-            if (laf)
-                ps.setLookAndFeel(laf.get());
-        }
-
         // Wire SubmarinePlaySurface MIDI callbacks to the processor's MidiMessageCollector.
         // Without this wiring the keyboard/pad/drum surface was completely silent — clicks
         // fired the onNoteOn/onNoteOff lambdas but they were null (never assigned).
@@ -1194,6 +1267,15 @@ public:
                 msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
                 processor.getMidiCollector().addMessageToQueue(msg);
             };
+
+            // P1-7 (1F): SubmarinePlaySurface XY position is persisted via
+            // SurfaceRightPanel's per-slot path (D4.c, slot-suffixed APVTS params:
+            // xy_pos_x_slot0 … xy_pos_x_slot3).  The unslotted "xy_pos_x" / "xy_pos_y"
+            // IDs that the old wire(1C-5) body tried to look up are NOT registered in
+            // the APVTS — those lookups returned nullptr and the lambda was silently
+            // dead.  Leave the callback assigned to an empty lambda so the std::function
+            // null-check in SubmarinePlaySurface.h is always satisfied.
+            subPS.onXYChanged = [](float, float) {};
         }
 
         // F03 fix (#1322): Wire SurfaceRightPanel note callbacks to MidiCollector.
@@ -1214,14 +1296,39 @@ public:
                 msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
                 processor.getMidiCollector().addMessageToQueue(msg);
             };
+
+            // D4 (1D-P2B): XY pad grid visibility toggle — sync from APVTS on init
+            // and wire the toggle callback back to persist the state.
+            if (auto* gridParam = processor.getAPVTS().getRawParameterValue("xy_pad_grid_visible"))
+                srp.setGridVisible(gridParam->load() >= 0.5f);
+            // P1-9 (1F): Wrap setValueNotifyingHost in gesture pair so Logic Pro
+            // and other DAWs can record automation for this toggle.
+            srp.onGridToggled = [this](bool gridOn) {
+                if (auto* p = processor.getAPVTS().getParameter("xy_pad_grid_visible"))
+                {
+                    p->beginChangeGesture();
+                    p->setValueNotifyingHost(gridOn ? 1.0f : 0.0f);
+                    p->endChangeGesture();
+                }
+            };
         }
 
-        // #1304 wiring: surfaceRight_.onOuijaCCOutput → processor.pushCCOutput().
-        // Fires at ~30 Hz while HARMONIC tab is active; cc 85 = planchette X,
-        // cc 86 = planchette radius/depth (SurfaceRightPanel::kOuijaCCCircleX/Y).
-        oceanView_.getSurfaceRight().onOuijaCCOutput = [this](uint8_t cc, uint8_t value)
+        // wire(1C-1): ExpressionStrips pitch bend and mod wheel → MidiCollector.
+        // onPitchBend fires -1..+1; onModWheel fires 0..+1.  Both are forwarded
+        // outward via OceanView so the editor can insert them into the MIDI stream.
+        oceanView_.onExpressionPitchBend = [this](float v)
         {
-            processor.pushCCOutput(SurfaceRightPanel::kOuijaMidiChannel - 1, cc, value);
+            const int wheelVal = static_cast<int>(std::round(8192.0f + v * 8191.0f));
+            auto msg = juce::MidiMessage::pitchWheel(1, juce::jlimit(0, 16383, wheelVal));
+            msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+            processor.getMidiCollector().addMessageToQueue(msg);
+        };
+        oceanView_.onExpressionModWheel = [this](float v)
+        {
+            const int cc1 = juce::jlimit(0, 127, static_cast<int>(std::round(v * 127.0f)));
+            auto msg = juce::MidiMessage::controllerEvent(1, 1, cc1);
+            msg.setTimeStamp(juce::Time::getMillisecondCounterHiRes() * 0.001);
+            processor.getMidiCollector().addMessageToQueue(msg);
         };
 
         // wire(#orphan-sweep item 1): SurfaceRightPanel::onXYChanged was declared but
@@ -1344,31 +1451,8 @@ public:
             processor.setXYPosition(slot, x, y);
         };
 
-        // #897: On first launch (no persisted state) show the OceanView PlaySurface
-        // so users see a playable interface immediately.  On subsequent launches,
-        // restore the persisted state ("playSurfaceVisible" key in XOceanus settings).
-        // The same key is used by the legacy standalone playSurface_ path so both
-        // paths share one persistent preference.
-        {
-            juce::PropertiesFile::Options psOpts;
-            psOpts.applicationName    = "XOceanus";
-            psOpts.filenameSuffix     = "settings";
-            psOpts.osxLibrarySubFolder = "Application Support";
-            juce::PropertiesFile psSettings(psOpts);
-            const bool hasSavedState  = psSettings.containsKey("playSurfaceVisible");
-            const bool shouldShow     = hasSavedState
-                                            ? psSettings.getBoolValue("playSurfaceVisible", false)
-                                            : true; // first launch: default open
-            if (shouldShow)
-                oceanView_.showPlaySurface();
-        }
-
-        // Wire OceanView PlaySurface visibility-change callback so state is
-        // persisted whenever the user toggles it via the KEYS button or K key.
-        oceanView_.onPlaySurfaceVisibilityChanged = [this](bool visible)
-        {
-            persistPlaySurfaceVisible(visible);
-        };
+        // #897: First-launch PlaySurface auto-show removed (cut 1B-#13).
+        // persistPlaySurfaceVisible() is still available for backward-compat settings key writes.
 
         // Wire engine slots into OceanView (initial state)
         for (int i = 0; i < 4; ++i)
@@ -1588,7 +1672,7 @@ public:
         // components.  Components that are not yet directly addressable from the
         // editor return empty rectangles; the bubble falls back to the safe
         // centred-area position and the tour still functions.
-        walkthrough_.getPlaySurfaceBounds  = [this]() { return oceanView_.getPlaySurface().getBounds(); };
+        walkthrough_.getPlaySurfaceBounds  = [this]() { return oceanView_.getSubmarinePlaySurface().getBounds(); };
         walkthrough_.getEngineSlotBounds   = [this]() {
             return tiles[0] != nullptr ? tiles[0]->getBounds() : juce::Rectangle<int>{};
         };
@@ -1616,40 +1700,22 @@ public:
             return b.isEmpty() ? juce::Rectangle<int>{}
                                : b.translated(oceanView_.getX(), oceanView_.getY());
         };
-        walkthrough_.getXouijaBounds       = [this]() {
-            // F-003 / #1395: points at the HARMONIC tab in DashboardTabBar.
-            // ouijaPanel_.getBounds() is always {} (never gets setBounds);
-            // getOuijaPanelBounds() now returns the HARMONIC tab hit-rect.
-            auto b = oceanView_.getOuijaPanelBounds();
-            return b.isEmpty() ? juce::Rectangle<int>{}
-                               : b.translated(oceanView_.getX(), oceanView_.getY());
-        };
+        // walkthrough_.getXouijaBounds removed 2026-05-01 (XOuija wholesale removal)
 
         // Mount as topmost child before toastOverlay_ — paints above all panels
         // but below toasts so notifications are never obscured.
         addAndMakeVisible(walkthrough_);
 
-        // ── #1379: Starboard listener registration ─────────────────────���─────
-        // Wire all three listener subscriptions now that oceanView_ is fully
-        // constructed and processor references are stable.
-        // All callbacks fire on the message thread only — no audio-thread risk.
-        //
-        // 1. PinStore::ChangeListener — planchette + pin state.
-        starboardPinStoreListener_.editor = this;
-        playSurface_.getXOuijaPanel().getPinStore().addListener(&starboardPinStoreListener_);
+        // wire(1C-5): walkthrough complete — the overlay dismisses itself before
+        // firing this callback (skipAll/completeTour both call dismissAll() first).
+        // We just trigger a repaint so the now-invisible walkthrough layer is cleared.
+        walkthrough_.onWalkthroughComplete = [this]()
+        {
+            repaint();
+        };
 
-        // 2. PresetManager::Listener — global preset path backward-compat.
-        starboardPresetListener_.editor = this;
-        proc.getPresetManager().addListener(&starboardPresetListener_);
 
-        // 3. XOceanusProcessor::SlotPresetListener — per-slot (primary signal).
-        starboardSlotPresetListener_.editor = this;
-        proc.addSlotPresetListener(&starboardSlotPresetListener_);
-
-        // Push initial state so Starboard shows something meaningful on first open.
-        pushStarboardState();
-
-        // ── ToastOverlay — MUST be the last addAndMakeVisible call ────────────
+                // ── ToastOverlaybe the last addAndMakeVisible call ────────────
         // JUCE paints children in insertion order; last child paints on top.
         // setInterceptsMouseClicks(false, false) is set inside ToastOverlay's
         // constructor so it never captures events that should reach panels below.
@@ -1750,6 +1816,35 @@ public:
             // SplitTransform (2) and BrowserOpen (3) are not restored — too complex and
             // rarely persisted intentionally; users re-enter them manually.
         }
+
+        // P1-8 (1F): Wire dashboard tab + kit sub-mode persistence callbacks.
+        oceanView_.onDashboardTabChanged = [this](int tabIndex)
+        {
+            processor.setPersistedDashboardTab(tabIndex);
+        };
+        oceanView_.onDashboardKitSubModeChanged = [this](bool kitMode)
+        {
+            processor.setPersistedKitSubMode(kitMode);
+        };
+
+        // P1-8 (1F): Restore dashboard tab + kit sub-mode from saved session.
+        // Use callAfterDelay so the first resized() pass has completed before
+        // selectTab() triggers a second layout pass.  50ms matches the ZoomIn
+        // restore pattern above.
+        {
+            const int restoredTab = proc.getPersistedDashboardTab();
+            const bool restoredKit = proc.getPersistedKitSubMode();
+            if (restoredTab != 0 || restoredKit)
+            {
+                juce::Timer::callAfterDelay(50,
+                    [safeThis = juce::Component::SafePointer<XOceanusEditor>(this),
+                     restoredTab, restoredKit]()
+                    {
+                        if (safeThis != nullptr)
+                            safeThis->oceanView_.restoreDashboardTab(restoredTab, restoredKit);
+                    });
+            }
+        }
     }
 
     ~XOceanusEditor() override
@@ -1770,23 +1865,12 @@ public:
         // The callback captures `this` (editor) — null it out before teardown.
         processor.getMIDILearnManager().setLearnCompleteCallback({});
 
-        // #1379: Remove Starboard listeners before any member is destroyed.
-        // Order mirrors registration in initOceanView (reversed for safety).
-        processor.removeSlotPresetListener(&starboardSlotPresetListener_);
-        processor.getPresetManager().removeListener(&starboardPresetListener_);
-        playSurface_.getXOuijaPanel().getPinStore().removeListener(&starboardPinStoreListener_);
-        // Null editor pointers so any in-flight callAsync / deferred callbacks are no-ops.
-        starboardPinStoreListener_.editor  = nullptr;
-        starboardPresetListener_.editor    = nullptr;
-        starboardSlotPresetListener_.editor = nullptr;
-
         // Wave 5 A1: Remove the mod route flush listener before the editor members
         // are destroyed so the processor never calls back into a freed listener.
         processor.getModRoutingModel().removeListener(&modRouteFlushListener_);
         // Detach the embedded PlaySurface from the processor before the processor
         // goes away, so the MidiMessageCollector pointer is not accessed after dealloc.
         playSurface_.setProcessor(nullptr);
-        oceanView_.getPlaySurface().setProcessor(nullptr);
         // Clear the ToastOverlay singleton before child components are destroyed
         // so any in-flight callAsync lambdas find instance_ == nullptr and are no-ops.
         ToastOverlay::setInstance(nullptr);
@@ -1846,17 +1930,9 @@ public:
             }
             return true;
         }
-        // 'P' (without shift) toggles the embedded PlaySurface zone
+        // 'P' — PlaySurface toggle no-op (PlaySurface removed, cut 1B-#13)
         if (key == juce::KeyPress('p') || key == juce::KeyPress('P'))
-        {
-            bool nowVisible = playSurface_.isVisible();
-            surfaceToggleBtn.setToggleState(!nowVisible, juce::dontSendNotification);
-            if (!nowVisible)
-                showPlaySurface();
-            else
-                hidePlaySurface();
-            return true;
-        }
+            return false;
         // 'B' toggles Dark Cockpit bypass (fully lit regardless of audio activity)
         if (key == juce::KeyPress('b') || key == juce::KeyPress('B'))
         {
@@ -1865,17 +1941,10 @@ public:
             repaint();
             return true;
         }
-        // Escape returns to overview (and also collapses embedded PlaySurface if open)
+        // Escape returns to overview
         if (key == juce::KeyPress::escapeKey)
         {
-            // If the PlaySurface zone is expanded, collapse it first;
-            // otherwise fall through to the overview.
-            if (playSurface_.isVisible())
-            {
-                hidePlaySurface();
-                surfaceToggleBtn.setToggleState(false, juce::dontSendNotification);
-                return true;
-            }
+            // PlaySurface toggle removed (cut 1B-#13); fall through to overview.
             showOverview();
             return true;
         }
@@ -2322,101 +2391,16 @@ private:
     // Panels call this in their paint() to dim non-essential controls during silence.
     float getCockpitOpacity() const override { return cockpitOpacity_; }
 
-    // ── PlaySurface show/hide (embedded zone, spec §2.2) ──────────────────────
-    // Toggling the KEYS button expands/collapses the 264pt bottom zone by resizing
-    // the plugin window.  A 200ms ComponentAnimator transition animates the resize.
-    // MIDI wiring and mode/bank/octave state persist across hide/show cycles because
-    // playSurface_ is a permanent child of XOceanusEditor (not recreated on each open).
-
-    // Persist the playSurface visibility state so V2 first-launch default is honoured
-    // on subsequent sessions and explicit user toggles are remembered.
-    // Non-static: uses shared settingsFile_ member to avoid blocking file I/O on the
-    // message thread each time the KEYS button is toggled (Fix 3).
+    // ── PlaySurface show/hide — legacy stubs (cut 1B-#13) ────────────────────
+    // persistPlaySurfaceVisible() is kept for backward-compat settings key writes.
     void persistPlaySurfaceVisible(bool visible)
     {
         if (settingsFile_ != nullptr)
             settingsFile_->setValue("playSurfaceVisible", visible);
     }
 
-    void showPlaySurface()
-    {
-        if (playSurface_.isVisible())
-            return; // already expanded
-
-        persistPlaySurfaceVisible(true);
-
-        // Make visible first so resized() sees it and computes correct bounds.
-        playSurface_.setVisible(true);
-        playSurface_.grabKeyboardFocus();
-
-        // P2-4: Set accent immediately — no 1-frame XO Gold flash on first open.
-        {
-            juce::Colour accent(0xFFE9C46A);
-            if (selectedSlot >= 0 && selectedSlot < XOceanusProcessor::MaxSlots)
-            {
-                if (auto* eng = processor.getEngine(selectedSlot))
-                    accent = eng->getAccentColour();
-            }
-            else
-            {
-                for (int i = 0; i < XOceanusProcessor::MaxSlots; ++i)
-                    if (auto* eng = processor.getEngine(i))
-                    {
-                        accent = eng->getAccentColour();
-                        break;
-                    }
-            }
-            playSurface_.setAccentColour(accent);
-        }
-
-        // Expand plugin window by kPlaySurfaceH (264pt) with a 200ms animated resize.
-        // Clamp to the resize limit ceiling.
-        const int newH = juce::jmin(getHeight() + ColumnLayoutManager::kPlaySurfaceH,
-                                    1000 + ColumnLayoutManager::kPlaySurfaceH);
-        // #926: skip resize animation when reduced-motion preference is active
-        if (A11y::prefersReducedMotion())
-        {
-            setSize(getWidth(), newH);
-        }
-        else
-        {
-            juce::Desktop::getInstance().getAnimator().animateComponent(
-                this, getBounds().withHeight(newH), 1.0f, 200, false, 1.0, 0.0);
-        }
-    }
-
-    void hidePlaySurface()
-    {
-        if (!playSurface_.isVisible())
-            return; // already collapsed
-
-        persistPlaySurfaceVisible(false);
-
-        // Collapse plugin window first (200ms animated resize), then hide the zone.
-        const int newH = juce::jmax(getHeight() - ColumnLayoutManager::kPlaySurfaceH, 600);
-        juce::Component::SafePointer<XOceanusEditor> safeThis(this);
-        // #926: skip resize animation when reduced-motion preference is active
-        if (A11y::prefersReducedMotion())
-        {
-            setSize(getWidth(), newH);
-            playSurface_.setVisible(false);
-            resized();
-        }
-        else
-        {
-            juce::Desktop::getInstance().getAnimator().animateComponent(
-                this, getBounds().withHeight(newH), 1.0f, 200, false, 1.0, 0.0);
-            juce::Timer::callAfterDelay(200,
-                [safeThis]()
-                {
-                    if (safeThis == nullptr)
-                        return;
-                    safeThis->playSurface_.setVisible(false);
-                    safeThis->resized(); // recompute layout after hide
-                });
-        }
-    }
-
+    void showPlaySurface() { persistPlaySurfaceVisible(true); }
+    void hidePlaySurface() { persistPlaySurfaceVisible(false); }
     void timerCallback() override
     {
         // ── Legacy Gallery refresh — skip entirely when OceanView is active ───
@@ -2664,11 +2648,8 @@ private:
             playSurface_.setAccentColour(accent);
         }
 
-        // Wave6.5 mount B (#1306): poll slot[N]_layout_mode APVTS params and
-        // forward changes to PlaySurface::setLayoutMode() for DAW session recall.
-        Wave65::pollLayoutModeParams(processor.getAPVTS(),
-                                     layoutModeCache_,
-                                     oceanView_.getPlaySurface());
+        // Wave6.5 mount B removed (cut 1B): layoutModeCache_ unused.
+        juce::ignoreUnused(layoutModeCache_);
 
         // ── D4: Register Manager update ───────────────────────────────────────
         // Compute elapsed time (ms) since last timer tick for smooth transitions.
@@ -2948,16 +2929,9 @@ private:
         // Feature 7 (Schulze): Push coupling age timeline to StatusBar.
         oceanView_.updateCouplingTimeline();
 
-        // Fix #1005: MIDI auto-show — forward any note-on to OceanView so the
-        // PlaySurface overlay slides up when the user first plays a key.
-        if (hadNoteOn)
-            oceanView_.onMidiNoteReceived();
+        // #1005: MIDI auto-show removed (cut 1B-#13 PlaySurface removed).
+        juce::ignoreUnused(hadNoteOn);
 
-        // ── #1379: Starboard live state push ──────────────────────────────────
-        // Push assembled Starboard::State into SurfaceRightPanel at 10 Hz.
-        // Starboard repaints at its own 10 Hz tick and skips redundant frames,
-        // so calling this every timer tick is safe and no-alloc.
-        pushStarboardState();
     }
 
     // kHeaderH and kFieldMapH are now defined in ColumnLayoutManager.
@@ -3199,188 +3173,7 @@ private:
     // addAndMakeVisible: called LAST in constructor so it paints above all panels.
     ToastOverlay toastOverlay_;
 
-    // ── #1379: Starboard host-integration listeners ───────────────────────────
-    //
-    // Three listener classes wire live state sources into Starboard::State.
-    // All callbacks fire on the message thread — no audio-thread allocations.
-    //
-    // Listener 1: XouijaPinStore::ChangeListener — planchette + pin state.
-    // Fires whenever the user pins, unpins, captures, or changes routing target.
-    struct StarboardPinStoreListener : public juce::ChangeListener
-    {
-        XOceanusEditor* editor{nullptr};
-        void changeListenerCallback(juce::ChangeBroadcaster*) override
-        {
-            if (editor != nullptr)
-                editor->pushStarboardState();
-        }
-    } starboardPinStoreListener_;
-
-    // Listener 2: PresetManager::Listener — backward-compat global preset path.
-    // Fires on presetLoaded() for any preset loaded through PresetManager directly
-    // (legacy path and presets that don't go through per-slot model).
-    struct StarboardPresetListener : public PresetManager::Listener
-    {
-        XOceanusEditor* editor{nullptr};
-        void presetLoaded(const PresetData&) override
-        {
-            if (editor != nullptr)
-                editor->pushStarboardState();
-        }
-    } starboardPresetListener_;
-
-    // Listener 3: XOceanusProcessor::SlotPresetListener — per-slot preset name.
-    // Primary signal: fires whenever setSlotPreset() is called (e.g. after any
-    // preset load that targets a specific slot).  Updates Starboard within 1 frame.
-    struct StarboardSlotPresetListener : public XOceanusProcessor::SlotPresetListener
-    {
-        XOceanusEditor* editor{nullptr};
-        void slotPresetChanged(int /*slotIdx*/, const PresetData&) override
-        {
-            if (editor != nullptr)
-                editor->pushStarboardState();
-        }
-    } starboardSlotPresetListener_;
-
-    // Slot-change generation counter — incremented by pushStarboardState() each
-    // time the active slot index changes, triggering the Starboard appear fade.
-    uint32_t starboardSlotGeneration_ = 0;
-    int      starboardLastActiveSlot_ = -2; // sentinel: -2 = not yet initialised
-
-    // ── Starboard state helpers ───────────────────────────────────────────────
-
-    // Build a complete Starboard::State snapshot from live sources:
-    //   • active slot    — oceanView_.getSelectedSlot() (-1 = Global)
-    //   • engine identity — processor.getEngine(slot)
-    //   • preset name    — processor.getSlotPreset(slot).name (primary)
-    //                       fallback: processor.getPresetManager().getCurrentPreset().name
-    //   • XY position    — playSurface_.getXOuijaPanel() circleX / influenceY
-    //   • pin state      — playSurface_.getXOuijaPanel().getPinStore()
-    //   • routing target — pinStore.getPinTargetSlot() → engineTargetRaw
-    //   • FX chains      — APVTS slot{N}_chain + slot{N}_bypass params
-    //                       (max 3 non-bypassed chips per EpicChainSlotController)
-    //
-    // No heap allocations; all reads are from APVTS cached values or POD members.
-    Starboard::State buildStarboardState() const
-    {
-        Starboard::State s;
-
-        // ── Active slot ───────────────────────────────────────────────────────
-        // OceanView::getSelectedSlot() returns -1 when no slot is focused (Global routing).
-        const int slot = oceanView_.getSelectedSlot();
-        // Clamp to valid primary slot range for data reads; -1 stays -1 (Global badge).
-        const int safeSlot = (slot >= 0 && slot < XOceanusProcessor::kNumPrimarySlots)
-                                 ? slot : 0;
-        // -1 → "GLOBAL" pill per Q3.  Use Slot 0 data as preview when routing is Global.
-        s.activeSlot = slot; // Starboard::paint maps < 0 → "GLOBAL"
-
-        // ── Engine identity ───────────────────────────────────────────────────
-        if (auto* eng = processor.getEngine(safeSlot))
-        {
-            s.engineId          = eng->getEngineId();
-            s.engineDisplayName = eng->getEngineId(); // canonical ID == display name
-        }
-
-        // ── Preset name — per-slot (primary) then global fallback ─────────────
-        {
-            const auto& slotPreset = processor.getSlotPreset(safeSlot);
-            if (slotPreset.name.isNotEmpty())
-            {
-                s.presetName = slotPreset.name;
-            }
-            else
-            {
-                // Backward-compat: fall back to global PresetManager current preset
-                const auto& globalPreset = processor.getPresetManager().getCurrentPreset();
-                s.presetName = globalPreset.name;
-            }
-        }
-
-        // ── XY position from live XOuijaPanel ────────────────────────────────
-        {
-            const auto& panel = playSurface_.getXOuijaPanel();
-            s.circleX    = panel.getCirclePosition();
-            s.influenceY = panel.getInfluenceDepth();
-        }
-
-        // ── Pin state from XouijaPinStore ─────────────────────────────────────
-        {
-            const auto& pinStore = playSurface_.getXOuijaPanel().getPinStore();
-            s.pinned = pinStore.hasPinnedValue();
-            if (s.pinned)
-            {
-                // Freeze XY at pinned coordinates when pinned (spec §Row 3 comment).
-                s.circleX    = pinStore.getRawPinnedCircleX();
-                s.influenceY = pinStore.getRawPinnedInfluenceY();
-            }
-
-            // ── Engine routing target ─────────────────────────────────────────
-            // Derive from the pin's per-engine routing target.
-            // engineTargetRaw: 0 = Global, 1-4 = Slot 0-3 (matches Starboard::engineTargetLabel).
-            s.engineTargetRaw = static_cast<int>(pinStore.getPinTargetSlot());
-        }
-
-        // ── FX chain chips — read up to 3 non-bypassed chain slots ───────────
-        // Reads APVTS params: slot{N}_chain (0=Off…33=Oligo), slot{N}_bypass (0/1).
-        // kChainNames table from EpicSlotsPanel matches the ChainID enum ordering.
-        {
-            int chipCount = 0;
-            static constexpr int kMaxFxSlots = EpicChainSlotController::kNumSlots; // 3
-
-            for (int fx = 0; fx < kMaxFxSlots && chipCount < 3; ++fx)
-            {
-                const juce::String prefix = "slot" + juce::String(fx + 1) + "_";
-
-                // Read chain ID (normalised 0-1 from APVTS, maps back to 0–33).
-                auto* pChain  = processor.getAPVTS().getRawParameterValue(prefix + "chain");
-                auto* pBypass = processor.getAPVTS().getRawParameterValue(prefix + "bypass");
-                if (pChain == nullptr)
-                    continue;
-
-                const int chainId = juce::jlimit(0,
-                    static_cast<int>(EpicSlotsPanel::kChainNames.size()) - 1,
-                    juce::roundToInt(pChain->load(std::memory_order_relaxed)));
-
-                if (chainId == 0) // EpicChainSlotController::Off
-                    continue;
-
-                const bool bypassed = (pBypass != nullptr)
-                    && (pBypass->load(std::memory_order_relaxed) > 0.5f);
-                if (bypassed)
-                    continue;
-
-                s.fxChainNames[static_cast<size_t>(chipCount)] =
-                    EpicSlotsPanel::kChainNames[static_cast<size_t>(chainId)];
-                ++chipCount;
-            }
-
-            s.numActiveFxChains = chipCount;
-        }
-
-        // ── Slot-change generation (for appear fade) ──────────────────────────
-        s.slotGeneration = starboardSlotGeneration_;
-
-        return s;
-    }
-
-    // Push a freshly built Starboard::State into SurfaceRightPanel.
-    // Called from timerCallback (10 Hz) and from all three listener callbacks
-    // (immediate update on preset/pin change).
-    // No allocations; Starboard::setState() is message-thread-safe by contract.
-    void pushStarboardState()
-    {
-        // Detect active slot change → bump slotGeneration to trigger appear fade.
-        const int currentSlot = oceanView_.getSelectedSlot();
-        if (currentSlot != starboardLastActiveSlot_)
-        {
-            starboardLastActiveSlot_ = currentSlot;
-            ++starboardSlotGeneration_;
-        }
-
-        oceanView_.getSurfaceRight().setStarboardState(buildStarboardState());
-    }
-
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusEditor)
+        JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusEditor)
 };
 
 } // namespace xoceanus

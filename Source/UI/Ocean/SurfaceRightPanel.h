@@ -26,8 +26,8 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
-#include "SubmarineOuijaPanel.h"
-#include "Starboard.h"
+#include "../Tokens.h"
+// Note: Starboard.h excluded — cut(1B-#*): file deleted in Track A 1B reduction pass.
 #include <functional>
 #include <cmath>
 #include <array>
@@ -46,14 +46,11 @@ class SurfaceRightPanel : public juce::Component
 {
 public:
     //==========================================================================
-    enum class Mode { Pad, Drum, XY, Ouija };
+    enum class Mode { Pad, Drum, XY };
 
     static constexpr int kPanelWidth  = 420;
     static constexpr int kHeaderH     = 36;
 
-    // Starboard strip sits between the header and SubmarineOuijaPanel (Ouija mode only).
-    // Locked at 120 px per Q1 decision (2026-04-29) — no collapse state.
-    static constexpr int kStarboardH  = Starboard::kHeight;
 
     //==========================================================================
     SurfaceRightPanel()
@@ -62,53 +59,6 @@ public:
         setInterceptsMouseClicks(true, true);
         setWantsKeyboardFocus(false);
 
-        // Starboard strip — always-120-px engine-state panel, Ouija mode only (#1358).
-        // Visibility is hidden until setMode(Ouija) is called; startAppearFade() is
-        // invoked there so the fade runs at first show, not at construction.
-        starboard_.setVisible(false);
-        addAndMakeVisible(starboard_);
-
-        // Embedded ouija panel — shown only in Ouija mode.
-        ouijaPanel_.setVisible(false);
-        addAndMakeVisible(ouijaPanel_);
-
-        // ── Wire SubmarineOuijaPanel callbacks (#1172) ─────────────────────
-        // Forward planchette-lock events to onNoteOn so the ouija panel drives
-        // the same MIDI output path as the PAD / DRUM surfaces.
-        //
-        // The locked MIDI note is cached in ouijaLockedNote_ so the matching
-        // note-off on release targets the exact note that was fired.
-        ouijaPanel_.onNoteLocked = [this](int /*noteIndex*/, int midiNote)
-        {
-            // Release any previous note before firing the new one.
-            if (ouijaLockedNote_ >= 0 && onNoteOff)
-                onNoteOff(ouijaLockedNote_);
-            ouijaLockedNote_ = midiNote;
-            if (onNoteOn)
-                onNoteOn(midiNote, 0.75f); // fixed velocity — locks to a harmonic node
-        };
-
-        // Planchette release (GOODBYE / unlock click) → note-off for the
-        // currently locked note.
-        ouijaPanel_.onNoteReleased = [this]()
-        {
-            if (ouijaLockedNote_ >= 0 && onNoteOff)
-                onNoteOff(ouijaLockedNote_);
-            ouijaLockedNote_ = -1;
-        };
-
-        // Planchette position → CC output.
-        // emitCCOutput() fires at 30 Hz with (cc=0, circleX) then (cc=1, influenceY).
-        // Map to the canonical CC numbers and forward via onOuijaCCOutput.
-        ouijaPanel_.onCCOutput = [this](int cc, float value)
-        {
-            if (!onOuijaCCOutput)
-                return;
-            const uint8_t ccNum = (cc == 0) ? kOuijaCCCircleX : kOuijaCCInfluenceY;
-            const uint8_t val   = static_cast<uint8_t>(
-                juce::jlimit(0, 127, juce::roundToInt(value * 127.0f)));
-            onOuijaCCOutput(ccNum, val);
-        };
     }
 
     ~SurfaceRightPanel() override = default;
@@ -122,36 +72,10 @@ public:
             return;
         releaseActive();
         mode_ = m;
-        const bool isOuija = (m == Mode::Ouija);
-        starboard_.setVisible(isOuija);
-        if (isOuija)
-            starboard_.startAppearFade(); // 150 ms fade on mode entry
-        ouijaPanel_.setVisible(isOuija);
-        if (isOuija)
-            resized(); // re-layout to position starboard + ouija panel
         repaint();
     }
 
     Mode getMode() const noexcept { return mode_; }
-
-    //==========================================================================
-    // Starboard state injection (#1358).
-    //
-    // Call this from the host (OceanView / XOceanusEditor) on the message thread
-    // whenever XOuija engine, preset, XY position, pin, or FX chain changes.
-    // Starboard repaints at its own 10 Hz tick; setState() is safe to call more
-    // frequently (e.g. from a 30 Hz ouija position callback).
-    //
-    // Typical wiring in OceanView (after Starboard integration):
-    //   auto s = buildStarboardState(processor_, xouijaPanel_, epicSlotsPanel_);
-    //   surfaceRightPanel_->setStarboardState(s);
-    void setStarboardState(const Starboard::State& s)
-    {
-        starboard_.setState(s);
-    }
-
-    // Direct access for hosts that want to build state incrementally.
-    Starboard& getStarboard() noexcept { return starboard_; }
 
     void setOpen(bool open)
     {
@@ -173,27 +97,23 @@ public:
     std::function<void(int note)>                 onNoteOff;
     std::function<void(float x, float y)>         onXYChanged;
 
-    // CC output from the embedded SubmarineOuijaPanel (Ouija mode only).
-    // Fires at ~30 Hz while the ouija panel is visible.
-    //   cc 0 = circleX   (horizontal planchette position, 0-1 normalised)
-    //   cc 1 = influenceY (radius / depth, 0-1 normalised)
-    // Wire this to processor_->pushCCOutput() in the host (editor / OceanView)
-    // using the CC numbers defined below.
-    //
-    //   circleX   → CC 85 (Undefined controller — XOceanus convention for ouija X)
-    //   influenceY → CC 86 (Undefined controller — XOceanus convention for ouija Y)
-    //
-    // These constants are exposed so the host can label them in any MIDI learn UI.
-    static constexpr uint8_t kOuijaCCCircleX    = 85;
-    static constexpr uint8_t kOuijaCCInfluenceY = 86;
-    static constexpr uint8_t kOuijaMidiChannel  = 1; // 1-indexed, MIDI channel 1
-
-    // Fired each time the ouija panel emits a position CC.
-    // signature: (uint8_t cc, uint8_t value)
-    std::function<void(uint8_t cc, uint8_t value)> onOuijaCCOutput;
-
     // Close button callback
     std::function<void()> onCloseClicked;
+
+    // D4 (1D-P2B): XY pad grid visibility toggle.
+    // gridVisible = true  → visible grid: bg α=0.20, border α=0.40.
+    // gridVisible = false → ghost grid (current default): bg α=0.025, border α=0.06.
+    // Default is true (APVTS default = true).
+    void setGridVisible(bool visible)
+    {
+        if (xyGridVisible_ == visible) return;
+        xyGridVisible_ = visible;
+        repaint();
+    }
+    bool isGridVisible() const noexcept { return xyGridVisible_; }
+
+    // Fires when the GRID pill in XY mode row 2 is clicked.
+    std::function<void(bool gridOn)> onGridToggled;
 
     //==========================================================================
     // juce::Component overrides
@@ -212,7 +132,7 @@ public:
         g.fillRect(bounds);
 
         // Left border — 1px rgba(60,180,170,0.08)
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.08f));
         g.drawVerticalLine(0, bounds.getY(), bounds.getBottom());
 
         // ---- Header ----
@@ -225,7 +145,6 @@ public:
             case Mode::Pad:   paintPadMode(g, contentBounds);  break;
             case Mode::Drum:  paintDrumMode(g, contentBounds); break;
             case Mode::XY:    paintXYMode(g, contentBounds);   break;
-            case Mode::Ouija: break; // SubmarineOuijaPanel renders itself as a child
         }
     }
 
@@ -234,15 +153,6 @@ public:
         computePadBounds();
         computeCloseBtnBounds();
         computeXYPadBounds();
-
-        // In Ouija mode: Starboard (120 px) sits between the 36 px header and
-        // SubmarineOuijaPanel. Both are hidden when not in Ouija mode.
-        if (mode_ == Mode::Ouija)
-        {
-            starboard_.setBounds(0, kHeaderH, getWidth(), kStarboardH);
-            const int ouijaTop = kHeaderH + kStarboardH;
-            ouijaPanel_.setBounds(0, ouijaTop, getWidth(), getHeight() - ouijaTop);
-        }
     }
 
     void mouseDown(const juce::MouseEvent& e) override
@@ -263,7 +173,6 @@ public:
             case Mode::Pad:
             case Mode::Drum:  handlePadDown(pos); break;
             case Mode::XY:    handleXYDown(pos);  break;
-            case Mode::Ouija: break; // child component handles
         }
         repaint();
     }
@@ -278,7 +187,6 @@ public:
             case Mode::Pad:
             case Mode::Drum:  break; // pads are momentary, no slide
             case Mode::XY:    handleXYDrag(e.position); break;
-            case Mode::Ouija: break;
         }
         repaint();
     }
@@ -302,7 +210,6 @@ public:
             case Mode::Pad:
             case Mode::Drum:  handlePadUp(); break;
             case Mode::XY:    handleXYUp();  break;
-            case Mode::Ouija: break;
         }
         repaint();
     }
@@ -441,11 +348,6 @@ private:
     Mode  mode_            = Mode::Pad;
     bool  open_            = false;
 
-    // Ouija mode: tracks the MIDI note number currently sounding from the
-    // ouija planchette lock, so we can send the correct note-off on release.
-    // -1 = no note currently locked.
-    int   ouijaLockedNote_ = -1;
-
     // Active pad / close button state
     int   pressedPad_      = -1; // -1 = none
     int   hoverPad_        = -1;
@@ -460,12 +362,11 @@ private:
     // XY auto-motion selected pill (-1 = none)
     int   autoMotionSel_   = -1;
 
-    // Embedded ouija panel (shown in Ouija mode)
-    SubmarineOuijaPanel  ouijaPanel_;
+    // D4 (1D-P2B): XY grid visibility — true = visible (ON), false = ghost.
+    // Default true; persisted via APVTS xy_pad_grid_visible (wired in OceanView).
+    bool  xyGridVisible_   = true;
+    juce::Rectangle<float> xyGridPillBounds_;  // D4: GRID pill — computed lazily in paint
 
-    // Starboard engine-state strip (#1358) — shown in Ouija mode only,
-    // above SubmarineOuijaPanel, locked at kStarboardH = 120 px.
-    Starboard            starboard_;
 
     // XY assign label state (toggle for hover, not interactive here)
     // assignXHover_ / assignYHover_ reserved for future XY-assign hover highlight
@@ -553,8 +454,11 @@ private:
 
     int hitTestAutoMotionPill(float px, float py) const
     {
+        // P1-5 (1F): WCAG 2.5.8 — expand hit area to ≥24×24 px so touch/stylus
+        // users can reliably activate pills without pixel-precision clicking.
+        // Visual bounds are ~18px tall; the expanded area adds 3px each side.
         for (int i = 0; i < kAutoMotionCount; ++i)
-            if (autoMotionPillBounds_[i].contains(px, py))
+            if (autoMotionPillBounds_[i].expanded(0.0f, 3.0f).contains(px, py))
                 return i;
         return -1;
     }
@@ -593,14 +497,6 @@ private:
             pressedPad_ = -1;
         }
         xyDragging_ = false;
-
-        // Release any ouija-locked note when switching away from Ouija mode.
-        if (ouijaLockedNote_ >= 0)
-        {
-            if (onNoteOff)
-                onNoteOff(ouijaLockedNote_);
-            ouijaLockedNote_ = -1;
-        }
     }
 
     //==========================================================================
@@ -643,6 +539,16 @@ private:
 
     void handleXYDown(juce::Point<float> pos)
     {
+        // D4 (1D-P2B): check GRID toggle pill before auto-motion pills.
+        // P1-5 (1F): WCAG 2.5.8 — expand hit area by 3px per side for ≥24px effective target.
+        if (xyGridPillBounds_.getWidth() > 0.0f && xyGridPillBounds_.expanded(0.0f, 3.0f).contains(pos))
+        {
+            xyGridVisible_ = !xyGridVisible_;
+            if (onGridToggled) onGridToggled(xyGridVisible_);
+            repaint();
+            return;
+        }
+
         // Check auto-motion pills first
         int pill = hitTestAutoMotionPill(pos.x, pos.y);
         if (pill >= 0)
@@ -683,10 +589,10 @@ private:
         g.drawHorizontalLine(kHeaderH - 1, hdr.getX(), hdr.getRight());
 
         // Mode title — 10px weight 600, uppercase, letter-spacing 1.5px, color teal @65%
+        jassert(mode_ == Mode::Pad || mode_ == Mode::Drum || mode_ == Mode::XY);
         const char* modeStr = (mode_ == Mode::Pad) ? "PAD"
                              : (mode_ == Mode::Drum) ? "DRUM"
-                             : (mode_ == Mode::XY)   ? "XY"
-                             : "OUIJA";
+                             : "XY";
         g.setFont(GalleryFonts::heading(10.0f));
         g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.65f));
 
@@ -930,15 +836,21 @@ private:
         auto& xr = xyPadBounds_;
 
         // ---- XY Pad ----
-        // Background: rgba(200,204,216,0.025), border 1px rgba(200,204,216,0.06), radius 10px
-        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.025f));
+        // D4 (1D-P2B): grid alpha depends on GRID toggle state.
+        //   ON  (visible): bg α=0.20, border α=0.40
+        //   OFF (ghost):   bg α=0.025, border α=0.06 (original subtle state)
+        const float gridBgAlpha     = xyGridVisible_ ? 0.20f : 0.025f;
+        const float gridBorderAlpha = xyGridVisible_ ? 0.40f : 0.06f;
+        const float crosshairAlpha  = xyGridVisible_ ? 0.08f : 0.035f;
+
+        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(gridBgAlpha));
         g.fillRoundedRectangle(xr, 10.0f);
 
-        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.06f));
+        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(gridBorderAlpha));
         g.drawRoundedRectangle(xr, 10.0f, 1.0f);
 
-        // Crosshair — horizontal + vertical center lines, 1px rgba(200,204,216,0.035)
-        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.035f));
+        // Crosshair — horizontal + vertical center lines, 1px
+        g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(crosshairAlpha));
         float midX = xr.getX() + xr.getWidth()  * 0.5f;
         float midY = xr.getY() + xr.getHeight() * 0.5f;
         g.drawHorizontalLine(static_cast<int>(midY), xr.getX(), xr.getRight());
@@ -1107,6 +1019,36 @@ private:
         g.drawText("1 bar",
                    static_cast<int>(dropX), static_cast<int>(dropY),
                    static_cast<int>(dropW), static_cast<int>(dropH),
+                   juce::Justification::centred, false);
+
+        // D4 (1D-P2B): GRID toggle pill — left of "1 bar" dropdown.
+        // All-caps pill matching XY mode aesthetic. Row 2 (auto-motion row),
+        // only rendered when XY mode is active.
+        float gridPillW = 34.0f, gridPillH = 18.0f;
+        float gridPillX = dropX - gridPillW - 6.0f;
+        float gridPillY = ar.getY() + (ar.getHeight() - gridPillH) * 0.5f;
+        xyGridPillBounds_ = juce::Rectangle<float>(gridPillX, gridPillY, gridPillW, gridPillH);
+
+        if (xyGridVisible_)
+        {
+            g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.15f));
+            g.fillRoundedRectangle(xyGridPillBounds_, 4.0f);
+            g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.35f));
+            g.drawRoundedRectangle(xyGridPillBounds_, 4.0f, 1.0f);
+            g.setColour(juce::Colour(kTealR, kTealG, kTealB).withAlpha(0.80f));
+        }
+        else
+        {
+            g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.05f));
+            g.fillRoundedRectangle(xyGridPillBounds_, 4.0f);
+            g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.08f));
+            g.drawRoundedRectangle(xyGridPillBounds_, 4.0f, 1.0f);
+            g.setColour(juce::Colour(kSaltR, kSaltG, kSaltB).withAlpha(0.35f));
+        }
+        g.setFont(GalleryFonts::heading(8.0f));
+        g.drawText("GRID",
+                   static_cast<int>(gridPillX), static_cast<int>(gridPillY),
+                   static_cast<int>(gridPillW), static_cast<int>(gridPillH),
                    juce::Justification::centred, false);
     }
 

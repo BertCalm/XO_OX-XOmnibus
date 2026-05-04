@@ -2003,7 +2003,7 @@ public:
         // For the T6 scope, all wired routes target velocity-scaled destinations, so
         // multiplying the full accumulated value by vel is always correct.
         //
-        // FUTURE NOTE: if non-velocity sources (LFO, XOuija) are wired to these same
+        // FUTURE NOTE: if non-velocity sources (LFO, external mod sources) are wired to these same
         // atomics, the processor and engine must negotiate a split (two atomics per param:
         // one for vel-scaled depth, one for srcVal*depth).  For now, one atomic suffices.
         //

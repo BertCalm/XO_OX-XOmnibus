@@ -19,6 +19,7 @@
 
 #include <juce_audio_processors/juce_audio_processors.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../AccentColors.h"
 
 namespace xoceanus
@@ -292,10 +293,10 @@ public:
             {
                 // Slot doesn't exist for this engine — show grayed out
                 slots_[i].srcCombo->clear(juce::dontSendNotification);
-                slots_[i].srcCombo->addItem("—", 1);
+                slots_[i].srcCombo->addItem(juce::String(juce::CharPointer_UTF8("\xe2\x80\x94")), 1);
                 slots_[i].srcCombo->setEnabled(false);
                 slots_[i].dstCombo->clear(juce::dontSendNotification);
-                slots_[i].dstCombo->addItem("—", 1);
+                slots_[i].dstCombo->addItem(juce::String(juce::CharPointer_UTF8("\xe2\x80\x94")), 1);
                 slots_[i].dstCombo->setEnabled(false);
                 slots_[i].curvePicker->setSelectedIndex(0, false);
                 slots_[i].curvePicker->setEnabled(false);
@@ -360,7 +361,7 @@ public:
         g.fillRect(b);
 
         // Right border accent line
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.06f));
         g.fillRect(b.getRight() - 1.0f, b.getY(), 1.0f, b.getHeight());
 
         // Header region

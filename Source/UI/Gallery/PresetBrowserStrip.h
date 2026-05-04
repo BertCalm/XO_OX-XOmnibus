@@ -58,7 +58,7 @@ public:
     {
         prevBtn.setButtonText("<");
         nextBtn.setButtonText(">");
-        browseBtn.setButtonText("\xe2\x8a\x9e"); // ⊞ grid icon (UTF-8)
+        browseBtn.setButtonText(juce::CharPointer_UTF8("\xe2\x8a\x9e")); // ⊞ grid icon
         prevBtn.setTooltip("Previous preset");
         nextBtn.setTooltip("Next preset");
         browseBtn.setTooltip("Browse all presets by mood");
@@ -199,7 +199,7 @@ public:
         browseBtn.setEnabled(!scanning);
         favBtn.setEnabled(!scanning);
         if (scanning)
-            nameLabel.setText("Loading presets\xe2\x80\xa6", juce::dontSendNotification); // "…"
+            nameLabel.setText(juce::String(juce::CharPointer_UTF8("Loading presets\xe2\x80\xa6")), juce::dontSendNotification); // "…"
         else
             updateDisplay();
     }
@@ -218,7 +218,7 @@ public:
         {
             const auto& preset = pm.getCurrentPreset();
             auto name = preset.name;
-            nameLabel.setText(name.isEmpty() ? "—" : name, juce::dontSendNotification);
+            nameLabel.setText(name.isEmpty() ? juce::String(juce::CharPointer_UTF8("\xe2\x80\x94")) : name, juce::dontSendNotification);
             updateFavBtn(preset);
         }
         else
