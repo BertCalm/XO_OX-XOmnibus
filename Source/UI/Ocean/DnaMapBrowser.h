@@ -99,7 +99,11 @@ public:
         diveButton_.setColour(juce::TextButton::textColourOffId, juce::Colour(0xFF1A1A2E));
         diveButton_.setMouseCursor(juce::MouseCursor::PointingHandCursor);
         diveButton_.onClick = [this]() { diveToRandomPreset(); };
-        diveButton_.setTooltip("Load a random visible preset");
+        diveButton_.setTooltip("Click to load a random preset or use filters to narrow the dive");
+        // TODO(W1-B1): tooltip needs design — search bar and mood pills are paint-only (no JUCE
+        // component target). To wire anchor #3 ("Type to filter presets or press Escape to exit"),
+        // promote searchBarBounds_ to a juce::TextEditor child or implement TooltipClient on
+        // DnaMapBrowser with region-based getTooltip(). Mood pill tooltips blocked by same issue.
     }
 
     ~DnaMapBrowser() override
