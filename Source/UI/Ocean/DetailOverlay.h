@@ -11,6 +11,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../Gallery/EngineDetailPanel.h"
 
 namespace xoceanus
@@ -101,7 +102,7 @@ public:
         g.fillRoundedRectangle(panelBounds, 16.0f);
 
         // Border
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.14f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.14f));
         g.drawRoundedRectangle(panelBounds, 16.0f, 1.0f);
     }
 

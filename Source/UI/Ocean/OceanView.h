@@ -25,7 +25,7 @@
 //     AmbientEdge       — vignette + edge glow overlay
 //     DnaMapBrowser     — full-window scatter map (BrowserOpen state)
 //     DetailOverlay     — floating detail panel with backdrop (Step 4)
-//     PlaySurfaceOverlay— slide-up keyboard/pads (on-demand)
+//     SubmarinePlaySurface — unified keyboard/pads surface
 //     Floating controls — presetPrev/Next, fav, settings, KEYS
 //     StatusBar         — bottom strip (unique_ptr)
 //
@@ -46,6 +46,8 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "OceanLayoutConstants.h"
+#include "../Tokens.h"
 #include "OceanBackground.h"
 #include "AmbientEdge.h"
 #include "EngineOrbit.h"
@@ -53,7 +55,7 @@
 #include "CouplingConfigPopup.h"
 #include "DnaMapBrowser.h"
 #include "DetailOverlay.h"
-#include "PlaySurfaceOverlay.h"
+// #include "PlaySurfaceOverlay.h"  -- cut(1B-#13): PlaySurfaceOverlay removed
 #include "EnginePickerDrawer.h"
 #include "SettingsDrawer.h"
 #include "TideWaterline.h"
@@ -64,15 +66,11 @@
 #include "MasterFXStripCompact.h"
 #include "EpicSlotsPanel.h"
 #include "TransportBar.h"
-#include "SubmarineOuijaPanel.h"
 #include "ExpressionStrips.h"
 #include "SubmarinePlaySurface.h"
 #include "DotMatrixDisplay.h"
 #include "SubmarineHudBar.h"
 #include "SurfaceRightPanel.h"
-// XOuijaPanel must be included here (not just via PlaySurface.h in the editor)
-// so that getXOuijaPanel() is self-contained and OceanView.h compiles standalone.
-#include "../PlaySurface/XOuijaPanel.h"
 #include "SubmarineMenuStyle.h"
 #include "../Gallery/MacroSection.h"
 #include "../Gallery/EngineDetailPanel.h"
@@ -101,13 +99,13 @@ namespace xoceanus
     DimOverlay — #1008 FIX 7
 
     A transparent Component that sits in the Z-stack above the floating header
-    buttons but below PlaySurfaceOverlay.  When dimAlpha < 1.0 it fills its
+    buttons but below SubmarinePlaySurface.  When dimAlpha < 1.0 it fills its
     bounds with Ocean::abyss at (1 - dimAlpha) opacity, dimming everything
     underneath — including the header buttons that the old paint()-based rect
     could never reach because juce::Component::paint() draws behind children.
 
     setInterceptsMouseClicks(false, false) so the overlay is invisible to
-    the event system and clicks pass through to PlaySurfaceOverlay above it.
+    the event system and clicks pass through to SubmarinePlaySurface above it.
 */
 struct DimOverlay : public juce::Component
 {
@@ -184,9 +182,6 @@ public:
         on open and coordinator.release(PanelType::ChainMatrix) on close.
         Use OceanView::getOrbitCenter(slotIndex) for chain-line anchor points.
 
-        XOuija note: XOuijaRouting (future standalone routing overlay) must call
-        coordinator.requestOpen(PanelType::XOuijaRouting) on open.  It MAY coexist
-        with SurfaceRightPanel but NOT with DetailOverlay or ChainMatrix.
     */
     enum class PanelType
     {
@@ -195,7 +190,6 @@ public:
         Settings,         ///< SettingsDrawer — slides from right, dims ocean
         Detail,           ///< EngineDetailPanel (EngineDetailPanel*) — full-window
         ChainMatrix,      ///< (Wave 5 C4) chain matrix slide-up — stub, no-op open/close
-        XOuijaRouting     ///< (Future) XOuija routing overlay — stub, no-op open/close
     };
 
     //==========================================================================
@@ -259,12 +253,12 @@ public:
         // waterline_ lives in children_ — added via children_.initWaterline().
         addAndMakeVisible(tabBar_);
 
-        // 9e. Submarine XOuija panel (hidden; HARMONIC tab — re-enabled in #1304 after XOuija CC wiring complete).
-        ouijaPanel_.setVisible(false);
-        addAndMakeVisible(ouijaPanel_);
-
         // 9f. Expression strips (PB + MW) — always visible in play area.
         addAndMakeVisible(exprStrips_);
+        // wire(1C-1): Forward ExpressionStrips callbacks outward so the editor can
+        // route pitch bend and mod wheel to the processor's MIDI collector.
+        exprStrips_.onPitchBend = [this](float v) { if (onExpressionPitchBend) onExpressionPitchBend(v); };
+        exprStrips_.onModWheel  = [this](float v) { if (onExpressionModWheel)  onExpressionModWheel(v); };
 
         // 9g-vis. Dot-matrix visualizer — fills empty space right of macros.
         addAndMakeVisible(dotMatrix_);
@@ -279,15 +273,13 @@ public:
         surfaceRight_.setVisible(false);
         surfaceRight_.onCloseClicked = [this]()
         {
-            surfaceRight_.setOpen(false);
-            surfaceRight_.setVisible(false);
-            // Switch tab bar back to KEYS
-            resized();
+            // D5 (1D-P2B): Drive all state through tabBar_.selectTab(0) so that
+            // currentTab_, surfaceRight_ visibility, DashboardTabBar highlight, and
+            // LATCH indicator are all updated via the single onTabChanged path.
+            // selectTab() is a no-op if KEYS is already active.
+            tabBar_.selectTab(0); // 0 = KEYS
         };
         addAndMakeVisible(surfaceRight_);
-
-        // 10. PlaySurface overlay (hidden by default; manages its own visibility)
-        addAndMakeVisible(playSurfaceOverlay_);
 
         // 11. Floating header controls
         // Old Gallery floating header buttons — hidden, replaced by SubmarineHudBar.
@@ -305,7 +297,7 @@ public:
         keysButton_.setInterceptsMouseClicks(false, false);
 
         // 11b. #1008 FIX 7: DimOverlay sits above all buttons but below
-        // PlaySurfaceOverlay.  Added after the buttons so it is painted on top.
+        // SubmarinePlaySurface.  Added after the buttons so it is painted on top.
         // reorderZStack() will enforce the correct final ordering on each
         // deferred init call.
         // Use addChildComponent so it starts hidden without a visible flash.
@@ -463,24 +455,11 @@ public:
         };
         browser_.onDismissed = [this]() { exitBrowser(); };
 
-        playSurfaceOverlay_.onDimStateChanged = [this](bool dim)
-        {
-            dimAlpha_ = dim ? 0.50f : 1.0f;
-            // #1008 FIX 7: drive the overlay component so header buttons are
-            // covered.  dimOverlay_ is a transparent child above buttons.
-            dimOverlay_.setDimAlpha(dimAlpha_);
-
-            // Feature 3 (Vangelis): Forward PlaySurface visibility to all
-            // engine orbits so active-voice creatures glow brighter.
-            for (auto& orbit : orbits_)
-                orbit.setPlaySurfaceVisible(dim);
-        };
-
-        keysButton_.onClick = [this]() { togglePlaySurface(); };
+        keysButton_.onClick = []() { /* KEYS tab activates keyboard in dashboard */ };
 
         // ── Step 6: Dashboard tab bar callback ───────────────────────────────
         // Wave 6.5 (#1306) collision note:
-        //   PAD/DRUM/XY tabs open SurfaceRightPanel.  All collision rules are already
+        //   PAD/XY tabs open SurfaceRightPanel.  All collision rules are already
         //   enforced by Wave 3 PanelCoordinator:
         //     (a) coordinatorApplyWidthGuard() — closes drawers when width < kMinWidth px.
         //     (b) coordinatorRequestOpen(PanelType::Detail) — hides SurfaceRightPanel
@@ -489,31 +468,75 @@ public:
         //   drawers above kMinWidth px.  No additional coordinator call is required here.
         tabBar_.onTabChanged = [this](const juce::String& tab)
         {
+            // D5 (1D-P2B): Set currentTab_ BEFORE visibility ops so layoutDashboard
+            // reads the new canonical tab state (not a stale surfaceRight_.isOpen()).
+            if (tab == "KEYS")        currentTab_ = OceanCurrentTab::Keys;
+            else if (tab == "PAD")    currentTab_ = OceanCurrentTab::Pad;
+            else if (tab == "XY")     currentTab_ = OceanCurrentTab::XY;
+
+            // 1D-2A C2: single-controller pattern — onTabChanged owns surfaceRight_
+            // open/visible state; OceanLayout::layoutDashboard() derives
+            // subPlaySurface_ visibility from currentTab_ on the resized() pass below.
             if (tab == "KEYS")
             {
-                // KEYS: keyboard in dashboard, right panel closed.
+                // KEYS: right panel closed → layoutDashboard will show keyboard.
+                // Track A (1D-P2B): visibility logic — what panels are shown.
+                juce::Component* outgoing = surfaceRight_.isVisible() ? &surfaceRight_ : nullptr;
                 surfaceRight_.setOpen(false);
                 surfaceRight_.setVisible(false);
-                subPlaySurface_.setVisible(true);
-                ouijaPanel_.setVisible(false);
+                // Track B (#18): cross-fade envelope wraps visibility ops.
+                startTabCrossFade(outgoing, &subPlaySurface_);
             }
             else
             {
-                // PAD/DRUM/XY/HARMONIC: right panel opens, keyboard HIDES.
-                // HARMONIC re-enabled now that XOuija CC wiring is complete (#1304).
-                subPlaySurface_.setVisible(false);
-                ouijaPanel_.setVisible(false);
+                // PAD/XY: right panel opens → layoutDashboard will hide keyboard.
+                // Track A (1D-P2B): D1 sub-mode drives PAD vs DRUM grid.
+                if (tab == "PAD")
+                {
+                    const bool kitMode = tabBar_.isKitSubMode();
+                    surfaceRight_.setMode(kitMode ? SurfaceRightPanel::Mode::Drum
+                                                  : SurfaceRightPanel::Mode::Pad);
+                }
+                else if (tab == "XY")
+                    surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
 
-                if (tab == "PAD")           surfaceRight_.setMode(SurfaceRightPanel::Mode::Pad);
-                else if (tab == "DRUM")     surfaceRight_.setMode(SurfaceRightPanel::Mode::Drum);
-                else if (tab == "XY")       surfaceRight_.setMode(SurfaceRightPanel::Mode::XY);
-                else if (tab == "HARMONIC") surfaceRight_.setMode(SurfaceRightPanel::Mode::Ouija);
+                // Track A (1F P0-3): Guard against re-opening SurfaceRightPanel when the
+                // Detail overlay is active.
+                if (currentPanel_ != PanelType::Detail)
+                {
+                    juce::Component* outgoing = subPlaySurface_.isVisible() ? &subPlaySurface_ : nullptr;
+                    surfaceRight_.setOpen(true);
+                    surfaceRight_.setVisible(true);
+                    // Track B (#18): cross-fade envelope wraps visibility ops.
+                    startTabCrossFade(outgoing, &surfaceRight_);
+                }
+            }
 
-                surfaceRight_.setOpen(true);
-                surfaceRight_.setVisible(true);
+            // Track A (1D-P2B): update LATCH indicator in status bar.
+            if (auto* tb = children_.transportBar())
+                tb->setLatchActive(tab == "KEYS");
+
+            // Track A (1F P1-8): Forward tab index to editor for persistence.
+            if (onDashboardTabChanged)
+            {
+                const int idx = (tab == "PAD") ? 1 : (tab == "XY") ? 2 : 0;
+                onDashboardTabChanged(idx);
             }
 
             resized();
+        };
+
+        // D1 (#18 follow-on): sub-mode toggle in tab bar fires when NOTE/KIT pill clicked.
+        // If PAD tab is currently active, immediately update SurfaceRightPanel mode.
+        tabBar_.onNoteKitToggled = [this](bool kitMode)
+        {
+            if (currentTab_ == OceanCurrentTab::Pad)
+                surfaceRight_.setMode(kitMode ? SurfaceRightPanel::Mode::Drum
+                                              : SurfaceRightPanel::Mode::Pad);
+
+            // P1-8 (1F): Forward kit sub-mode to editor for persistence.
+            if (onDashboardKitSubModeChanged)
+                onDashboardKitSubModeChanged(kitMode);
         };
 
         // SEQ toggle → expand/collapse TideWaterline.
@@ -534,6 +557,14 @@ public:
         };
 
         // ── DetailOverlay callbacks ───────────────────────────────────────────
+        // wire(1C-5): onShown — register Detail with the coordinator when the overlay
+        // is explicitly shown via DetailOverlay::show() (future code path; show() is
+        // currently not called but the callback is wired for forward-compatibility).
+        detailOverlay_.onShown = [this]()
+        {
+            coordinatorRequestOpen(PanelType::Detail);
+        };
+
         detailOverlay_.onHidden = [this]()
         {
             if (auto* dp = children_.detailPanel())
@@ -706,7 +737,6 @@ public:
                 detailOverlay_,
                 couplingPopup_,
                 dimOverlay_,      // typed as juce::Component& in LayoutTargets
-                playSurfaceOverlay_,
                 emptyStateLabel_,
                 lifesaver_,       // typed as juce::Component& in LayoutTargets
                 enginesButton_,
@@ -723,12 +753,13 @@ public:
                 tabBar_,
                 exprStrips_,
                 subPlaySurface_,
-                ouijaPanel_,
                 surfaceRight_,
                 // Phase 2.5 (#1184): layout-input state bindings (const-ref).
                 selectedSlot_,
                 detailShowing_,
                 firstLaunch_,
+                // D5 (1D-P2B): canonical tab state for keyboard visibility.
+                currentTab_,
             });
 
         // ── Phase 3 (#1184): wire OceanStateMachine callbacks ────────────────
@@ -922,7 +953,15 @@ public:
                         break;
                     case 2: // REVERB
                         title  = "REVERB ADVANCED";
-                        params = { {"master_reverbSize", "SIZE"} };
+                        // I4B: Previously only 1 of 8 reverb params was listed.
+                        // Expanded to all 7 user-facing parameters (IDs from XOceanusProcessor.cpp).
+                        params = { {"master_reverbSize",      "SIZE"},
+                                   {"master_reverbPreDelay",  "PRE"},
+                                   {"master_reverbDecay",     "DECAY"},
+                                   {"master_reverbDamping",   "DAMP"},
+                                   {"master_reverbDiffusion", "DIFF"},
+                                   {"master_reverbMod",       "MOD"},
+                                   {"master_reverbWidth",     "WIDTH"} };
                         break;
                     case 3: // MOD
                         title  = "MOD ADVANCED";
@@ -947,9 +986,29 @@ public:
                 juce::Rectangle<int> bounds;
                 if (auto* s = children_.masterFxStrip())
                     bounds = s->getScreenBounds();
+                // I4A: Capture parent at lambda creation time via explicit this->getTopLevelComponent().
+                // Inside a custom-drawn MasterFXStripCompact, an unqualified getTopLevelComponent()
+                // resolved through the strip's own scope may return null — using OceanView's
+                // (captured this) top-level component ensures a valid parent for CallOutBox.
+                auto* parentComp = this->getTopLevelComponent();
+                if (parentComp == nullptr) parentComp = this;
                 juce::CallOutBox::launchAsynchronously(
                     std::make_unique<AdvancedFXPanel>(apvts, title, params),
-                    bounds, getTopLevelComponent());
+                    bounds, parentComp);
+            };
+
+            // I2: onPresetNav and onPresetClicked were declared but never assigned —
+            // the "Welcome" preset menu was completely dead.  Wire them here using the
+            // same OceanView-level callbacks that SubmarineHudBar uses (line ~645).
+            strip->onPresetNav = [this](int direction)
+            {
+                if (direction < 0) { if (onPresetPrev) onPresetPrev(); }
+                else               { if (onPresetNext) onPresetNext(); }
+            };
+
+            strip->onPresetClicked = [this]()
+            {
+                if (onPresetNameClicked) onPresetNameClicked();
             };
         }
 
@@ -991,8 +1050,8 @@ public:
     /// Get the SurfaceRightPanel so the editor can wire onOuijaCCOutput.
     SurfaceRightPanel& getSurfaceRight() noexcept { return surfaceRight_; }
 
-    // (XOuija access for Starboard wiring is via XOceanusEditor::playSurface_, not OceanView.
-    //  OceanView only owns SubmarinePlaySurface; the live XOuijaPanel lives on PlaySurface.)
+    // (Starboard wiring uses XOceanusEditor::playSurface_ directly, not OceanView.
+    //  OceanView only owns SubmarinePlaySurface; XOuijaPanel removed 2026-05-01.)
 
     /**
         Initialise the StatusBar.
@@ -1105,12 +1164,9 @@ public:
             return true;
         }
 
-        // K: toggle PlaySurface.
+        // K: toggle PlaySurface — no-op (PlaySurfaceOverlay removed, cut 1B-#13).
         if (key == juce::KeyPress('k') || key == juce::KeyPress('K'))
-        {
-            togglePlaySurface();
-            return true;
-        }
+            return false;
 
         // 1–4: zoom-in to engine slot 0–3.
         auto kc = key.getKeyCode();
@@ -1334,6 +1390,8 @@ public:
         // #1007 FIX 3: Keep the inline header label in sync so the spatial grouping
         // "< Preset Name >" is always accurate.
         presetNameLabel_.setText(name, juce::dontSendNotification);
+        // I1b: HUD bar was skipped in the delegation — arrows fired but display never updated.
+        hudBar_.setPresetName(name);
     }
     // D6 (#1096): mood identity lives in browser/HUD — no-op here.
     void setMoodName(const juce::String&) {}
@@ -1446,18 +1504,6 @@ public:
         return localFav.translated(hudBar_.getX(), hudBar_.getY());
     }
 
-    // F-003 / #1395: expose HARMONIC tab in tabBar_ for walkthrough step 7.
-    // ouijaPanel_.getBounds() is always {} (ouijaPanel_ never gets setBounds);
-    // the HARMONIC tab in the dashboard tab bar is the correct visual target
-    // for "click here to open XOuija".
-    // Translates from tabBar_ local coords to OceanView local coords.
-    juce::Rectangle<int> getOuijaPanelBounds() const noexcept
-    {
-        auto localTab = tabBar_.getHarmonicTabBounds();
-        if (localTab.isEmpty()) return {};
-        return localTab.translated(tabBar_.getX(), tabBar_.getY());
-    }
-
     // F-003 / #1395: expose preset-name pill in HudBar for walkthrough step 3.
     // browser_.getBounds() is {} unless BrowserOpen state; use the preset-name
     // label instead — it is always visible and opens the browser on click.
@@ -1545,32 +1591,15 @@ public:
     }
 
     //==========================================================================
-    // PlaySurface passthrough
+    // PlaySurface passthrough — legacy stubs (cut 1B-#13)
     //==========================================================================
 
-    PlaySurface& getPlaySurface()       { return playSurfaceOverlay_.getPlaySurface(); }
     SubmarinePlaySurface& getSubmarinePlaySurface() { return subPlaySurface_; }
-    void showPlaySurface()
-    {
-        playSurfaceOverlay_.show();
-        if (onPlaySurfaceVisibilityChanged)
-            onPlaySurfaceVisibilityChanged(true);
-    }
-    void hidePlaySurface()
-    {
-        playSurfaceOverlay_.hide();
-        if (onPlaySurfaceVisibilityChanged)
-            onPlaySurfaceVisibilityChanged(false);
-    }
-    void togglePlaySurface()
-    {
-        if (playSurfaceOverlay_.isShowing())
-            hidePlaySurface();
-        else
-            showPlaySurface();
-    }
-    bool isPlaySurfaceVisible() const   { return playSurfaceOverlay_.isShowing(); }
-    void onMidiNoteReceived()           { playSurfaceOverlay_.onMidiNoteReceived(); }
+    void togglePlaySurface() {}
+    void showPlaySurface()   {}
+    void hidePlaySurface()   {}
+    bool isPlaySurfaceVisible() const { return false; }
+    void onMidiNoteReceived()         {}
 
     //==========================================================================
     // Child component accessors (for editor wiring)
@@ -1626,11 +1655,6 @@ public:
     /** Fired when the user completes a chain gesture (two orbit clicks in chain mode).
         The editor should create a coupling route between sourceSlot and destSlot. */
     std::function<void(int sourceSlot, int destSlot)> onCouplingRouteRequested;
-
-    /** Fired when the PlaySurface overlay is shown or hidden (including first-launch auto-show).
-        Use this to persist the visibility preference so subsequent plugin launches restore the
-        last user-chosen state.  true = overlay is now showing, false = hidden. */
-    std::function<void(bool visible)> onPlaySurfaceVisibilityChanged;
 
     /** Fired when the user clicks the DNA hexagon in the nexus.
         Wire this to open the DnaMapBrowser or cycle the axis projection. */
@@ -1728,6 +1752,33 @@ public:
     std::function<void(bool isOpen)> onSeqBreakoutToggled;
     std::function<void(bool isOpen)> onChordBreakoutToggled;
 
+    /** P1-8 (1F): Fired when the dashboard tab changes (0=KEYS, 1=PAD, 2=XY).
+        Editor wires this to processor.setPersistedDashboardTab() so the active
+        tab survives DAW session save/reload. */
+    std::function<void(int tabIndex)> onDashboardTabChanged;
+
+    /** P1-8 (1F): Fired when the NOTE/KIT sub-mode pill is toggled.
+        Editor wires this to processor.setPersistedKitSubMode(). */
+    std::function<void(bool kitMode)> onDashboardKitSubModeChanged;
+
+    /** P1-8 (1F): Restore the dashboard tab index and kit sub-mode from a
+     *  saved session.  Called by the editor after initOceanView() completes.
+     *  @param tabIndex  0=KEYS, 1=PAD, 2=XY (clamped to valid range).
+     *  @param kitMode   true = KIT, false = NOTE. */
+    void restoreDashboardTab(int tabIndex, bool kitMode)
+    {
+        tabBar_.setKitSubMode(kitMode);
+        const int clamped = juce::jlimit(0, 2, tabIndex);
+        if (clamped != 0)          // KEYS is already default — avoid spurious re-layout
+            tabBar_.selectTab(clamped);
+    }
+
+    // wire(1C-1): ExpressionStrips — pitch bend (-1..+1) and mod wheel (0..+1)
+    // forwarded outward so the editor can route to the MIDI collector.
+    // Wired to exprStrips_.onPitchBend / onModWheel in initLayoutAndComponents().
+    std::function<void(float pitchBend)> onExpressionPitchBend;  // -1..+1
+    std::function<void(float modWheel)>  onExpressionModWheel;   //  0..+1
+
     //==========================================================================
     // State queries
     //==========================================================================
@@ -1785,12 +1836,38 @@ private:
     /** Submarine-style tab bar — all custom paint, no TextButtons.
         Matches prototype: 10px uppercase, rounded-top tabs, teal active state.
         SEQ + CHORD toggles on the right side. */
-    struct DashboardTabBar : public juce::Component
+    struct DashboardTabBar : public juce::Component,
+                                 public juce::TooltipClient  // #21: tooltip support
     {
         DashboardTabBar()
         {
             setInterceptsMouseClicks(true, true);
             setOpaque(false);
+        }
+
+        // P1-11 (1F): Geometry extracted from paint() into rebuildHitRegions().
+        // paint() now only reads cached rects; no bounds computation at 60 Hz.
+        void resized() override { rebuildHitRegions(); }
+
+        // #21 (2D): return per-region tooltip based on hoveredIdx_.
+        juce::String getTooltip() override
+        {
+            if (hoveredToggleSEQ_)
+                return "SEQ — toggle step sequencer strip";
+            if (hoveredToggleCHORD_)
+                return "CHORD — show/hide chord bar";
+            if (hoveredTabIdx_ >= 0 && hoveredTabIdx_ < kNumTabs)
+            {
+                switch (hoveredTabIdx_)
+                {
+                    case 0: return "KEYS — chromatic keyboard (MPE)";
+                    case 1: return "PAD — 4x4 chromatic note grid";
+                    case 2: return "DRUM — 4x4 GM drum pads";
+                    case 3: return "XY — 2D continuous expression surface";
+                    default: break;
+                }
+            }
+            return {};
         }
 
         void paint(juce::Graphics& g) override
@@ -1800,47 +1877,88 @@ private:
             g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
             g.fillRect(0.0f, b.getBottom() - 1.0f, b.getWidth(), 1.0f);
 
-            static const juce::Font tabFont(juce::FontOptions{}
-                .withName(juce::Font::getDefaultSansSerifFontName())
-                .withStyle("Bold")
-                .withHeight(10.0f));
+            static const juce::Font tabFont = XO::Tokens::Type::heading(XO::Tokens::Type::BodyDefault); // D3
             g.setFont(tabFont);
 
-            // Rebuild tab regions
-            tabRegions_.clear();
-            float x = 16.0f;
-            for (int i = 0; i < kNumTabs; ++i)
+            // Draw tabs using pre-computed regions (rebuildHitRegions() wrote them).
+            for (int i = 0; i < static_cast<int>(tabRegions_.size()); ++i)
             {
-                const float tw = tabFont.getStringWidthFloat(kTabNames[i]) + 28.0f;
-                const float th = b.getHeight() - 1.0f;
-                juce::Rectangle<float> tr(x, 0.0f, tw, th);
-                tabRegions_.push_back(tr);
+                // P1-11 (1F): read pre-computed cached bounds (no geometry in paint()).
+                const auto& tr = tabRegions_[static_cast<size_t>(i)];
+                const bool active  = (activeIdx_ == i);
+                // #20 (2D): hover highlight using tabHoverAlpha_ at this region
+                const bool hovered = (hoveredTabIdx_ == i && !active);
 
-                const bool active = (activeIdx_ == i);
                 if (active)
                 {
-                    g.setColour(juce::Colour(60, 180, 170).withAlpha(0.07f));
+                    g.setColour(XO::Tokens::Color::accent().withAlpha(0.07f));
                     g.fillRoundedRectangle(tr.getX(), tr.getY(), tr.getWidth(), tr.getHeight() + 2.0f, 6.0f);
-                    g.setColour(juce::Colour(60, 180, 170).withAlpha(0.90f));
+                    g.setColour(XO::Tokens::Color::accent().withAlpha(0.90f));
+                }
+                else if (hovered)
+                {
+                    // #20: hover tint — 1px outline + slight fill
+                    g.setColour(XO::Tokens::Color::accent().withAlpha(0.04f * tabHoverAlpha_));
+                    g.fillRoundedRectangle(tr.getX(), tr.getY(), tr.getWidth(), tr.getHeight() + 2.0f, 6.0f);
+                    g.setColour(XO::Tokens::Color::accent().withAlpha(0.30f * tabHoverAlpha_));
+                    g.drawRoundedRectangle(tr.getX(), tr.getY(), tr.getWidth(), tr.getHeight() + 2.0f, 6.0f, 1.0f);
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.55f));
                 }
                 else
                 {
                     g.setColour(juce::Colour(200, 204, 216).withAlpha(0.35f));
                 }
                 g.drawText(kTabNames[i], tr.toNearestInt(), juce::Justification::centred, false);
-                x += tw + 2.0f;
+
+                // D1 (1D-P2B): NOTE/KIT toggle pill — right-adjacent to the PAD tab.
+                if (i == 1) // PAD tab
+                {
+                    const auto& sr = noteKitBounds_;
+                    if (sr.getWidth() > 0.0f)
+                    {
+                        const char* subLabel = kitSubMode_ ? "KIT" : "NOTE";
+                        if (active)
+                        {
+                            if (kitSubMode_)
+                            {
+                                g.setColour(juce::Colour(233, 196, 106).withAlpha(0.08f));
+                                g.fillRoundedRectangle(sr, 4.0f);
+                                g.setColour(juce::Colour(233, 196, 106).withAlpha(0.35f));
+                                g.drawRoundedRectangle(sr, 4.0f, 1.0f);
+                                g.setColour(juce::Colour(233, 196, 106).withAlpha(0.85f));
+                            }
+                            else
+                            {
+                                // NOTE mode: teal accent (2C consolidation)
+                                g.setColour(XO::Tokens::Color::accent().withAlpha(0.06f));
+                                g.fillRoundedRectangle(sr, 4.0f);
+                                g.setColour(XO::Tokens::Color::accent().withAlpha(0.25f));
+                                g.drawRoundedRectangle(sr, 4.0f, 1.0f);
+                                g.setColour(XO::Tokens::Color::accent().withAlpha(0.70f));
+                            }
+                        }
+                        else
+                        {
+                            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.04f));
+                            g.drawRoundedRectangle(sr, 4.0f, 1.0f);
+                            g.setColour(juce::Colour(200, 204, 216).withAlpha(0.25f));
+                        }
+                        g.setFont(tabFont);
+                        g.drawText(subLabel, sr.toNearestInt(), juce::Justification::centred, false);
+                    }
+                }
             }
 
-            // SEQ + CHORD toggles from the right
-            float rx = b.getRight() - 16.0f;
+            // SEQ + CHORD toggles — draw using pre-computed bounds.
             for (int t = 1; t >= 0; --t) // CHORD first (rightmost), then SEQ
             {
                 const char* label = (t == 0) ? "SEQ" : "CHORD";
                 const bool on = (t == 0) ? seqOn_ : chordOn_;
-                const float pw = tabFont.getStringWidthFloat(label) + 16.0f;
-                const float ph = b.getHeight() - 6.0f;
-                juce::Rectangle<float> pr(rx - pw, 3.0f, pw, ph);
-                if (t == 0) seqBounds_ = pr; else chordBounds_ = pr;
+                // P1-11 (1F): read pre-computed cached bounds (no geometry in paint()).
+                const auto& pr = (t == 0) ? seqBounds_ : chordBounds_;
+                if (pr.getWidth() <= 0.0f) continue;
+                // #20 (2D): hover state on toggle pills
+                const bool hov = (t == 0) ? hoveredToggleSEQ_ : hoveredToggleCHORD_;
 
                 if (on)
                 {
@@ -1850,6 +1968,15 @@ private:
                     g.drawRoundedRectangle(pr, 4.0f, 1.0f);
                     g.setColour(juce::Colour(127, 219, 202).withAlpha(0.90f));
                 }
+                else if (hov)
+                {
+                    // #20: hover state on toggle pills
+                    g.setColour(XO::Tokens::Color::accent().withAlpha(0.05f * tabHoverAlpha_));
+                    g.fillRoundedRectangle(pr, 4.0f);
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.20f * tabHoverAlpha_));
+                    g.drawRoundedRectangle(pr, 4.0f, 1.0f);
+                    g.setColour(juce::Colour(200, 204, 216).withAlpha(0.60f));
+                }
                 else
                 {
                     g.setColour(juce::Colour(200, 204, 216).withAlpha(0.08f));
@@ -1857,7 +1984,6 @@ private:
                     g.setColour(juce::Colour(200, 204, 216).withAlpha(0.35f));
                 }
                 g.drawText(label, pr.toNearestInt(), juce::Justification::centred, false);
-                rx -= pw + 6.0f;
             }
         }
 
@@ -1891,6 +2017,46 @@ private:
                 repaint();
                 return;
             }
+            // D1 (1D-P2B): NOTE/KIT toggle — only active when PAD tab is selected.
+            if (noteKitBounds_.getWidth() > 0.0f && noteKitBounds_.contains(pos))
+            {
+                kitSubMode_ = !kitSubMode_;
+                if (onNoteKitToggled) onNoteKitToggled(kitSubMode_);
+                repaint();
+                return;
+            }
+        }
+
+        // #20: hover tracking for tab bar items
+        void mouseMove(const juce::MouseEvent& e) override
+        {
+            updateHoverState(e.position);
+        }
+
+        void mouseEnter(const juce::MouseEvent& e) override
+        {
+            updateHoverState(e.position);
+        }
+
+        void mouseExit(const juce::MouseEvent&) override
+        {
+            hoveredTabIdx_     = -1;
+            hoveredToggleSEQ_  = false;
+            hoveredToggleCHORD_= false;
+            repaint();
+        }
+
+        // #20: driven by 30Hz tick from parent OceanView for smooth alpha fade
+        void stepHoverAnimation()
+        {
+            const bool anyHovered = (hoveredTabIdx_ >= 0 || hoveredToggleSEQ_ || hoveredToggleCHORD_);
+            const float target = anyHovered ? 1.0f : 0.0f;
+            const float next = XO::Tokens::Motion::hoverFadeStep(tabHoverAlpha_, target);
+            if (std::abs(next - tabHoverAlpha_) > 0.005f)
+            {
+                tabHoverAlpha_ = next;
+                repaint();
+            }
         }
 
         juce::String activeTab() const noexcept
@@ -1898,41 +2064,132 @@ private:
             return kTabNames[activeIdx_];
         }
 
-        /** F-003 / #1395: return the HARMONIC tab hit-rect in this component's
-            local coords.  Tab regions are built lazily in paint(); if not yet
-            computed this falls back to the right quarter of getLocalBounds()
-            (a reasonable approximation given HARMONIC is the rightmost tab).
-            Caller must translate to parent (OceanView) coordinates. */
-        juce::Rectangle<int> getHarmonicTabBounds() const noexcept
+        /** Programmatically select a tab by index (0=KEYS, 1=PAD, 2=XY).
+         *  Fires onTabChanged callback and repaints — mirrors a user click.
+         *  Used by OceanView::surfaceRight_.onCloseClicked to snap KEYS highlight
+         *  back into sync after the panel is dismissed via the X button (D5). */
+        void selectTab(int idx)
         {
-            // HARMONIC is tab index 4 (last tab).
-            constexpr int kHarmonicIdx = 4;
-            if (static_cast<int>(tabRegions_.size()) > kHarmonicIdx)
-                return tabRegions_[static_cast<size_t>(kHarmonicIdx)].toNearestInt();
-            // Pre-paint fallback: rightmost ~80px of the tab bar height.
-            const auto lb = getLocalBounds();
-            return lb.withLeft(lb.getRight() - 80);
+            idx = juce::jlimit(0, kNumTabs - 1, idx);
+            if (activeIdx_ == idx) return;
+            activeIdx_ = idx;
+            if (onTabChanged) onTabChanged(kTabNames[static_cast<size_t>(idx)]);
+            repaint();
+        }
+
+        // D1 (1D-P2B): accessor for current NOTE/KIT sub-mode state.
+        bool isKitSubMode() const noexcept { return kitSubMode_; }
+
+        /** P1-8 (1F): Programmatically set NOTE/KIT sub-mode without firing the
+         *  onNoteKitToggled callback — used by session-restore to pre-configure
+         *  the pill before the first layout pass. */
+        void setKitSubMode(bool kitMode) noexcept
+        {
+            kitSubMode_ = kitMode;
+            rebuildHitRegions(); // pill label changes width when switching NOTE↔KIT
+            repaint();
         }
 
         std::function<void(const juce::String&)> onTabChanged;
         std::function<void(bool)> onSeqToggled;
         std::function<void(bool)> onChordToggled;
+        // D1 (1D-P2B): fires when NOTE/KIT pill is clicked (true = KIT, false = NOTE).
+        std::function<void(bool kitMode)> onNoteKitToggled;
 
     private:
-        // Five modes: KEYS, PAD, DRUM, XY, HARMONIC.
-        // HARMONIC (XOuija Ouija mode) re-enabled after CC wiring landed in #1304.
-        // PAD+DRUM merge deferred (#1174 follow-up).
-        static constexpr int kNumTabs = 5;
-        static constexpr std::array<const char*, kNumTabs> kTabNames = {"KEYS", "PAD", "DRUM", "XY", "HARMONIC"};
+        // Three modes: KEYS, PAD, XY.  DRUM merged into PADS+KIT (#18).
+        static constexpr int kNumTabs = 3;
+        static constexpr std::array<const char*, kNumTabs> kTabNames = {"KEYS", "PAD", "XY"};
         static_assert(kTabNames.size() == kNumTabs, "kTabNames size mismatch");
+
+        void updateHoverState(juce::Point<float> pos)
+        {
+            int  newTabHover      = -1;
+            bool newSEQHover      = false;
+            bool newCHORDHover    = false;
+
+            for (int i = 0; i < static_cast<int>(tabRegions_.size()); ++i)
+                if (tabRegions_[static_cast<size_t>(i)].contains(pos))
+                    newTabHover = i;
+
+            if (seqBounds_.contains(pos))   newSEQHover   = true;
+            if (chordBounds_.contains(pos)) newCHORDHover = true;
+
+            if (newTabHover != hoveredTabIdx_
+                || newSEQHover   != hoveredToggleSEQ_
+                || newCHORDHover != hoveredToggleCHORD_)
+            {
+                hoveredTabIdx_      = newTabHover;
+                hoveredToggleSEQ_   = newSEQHover;
+                hoveredToggleCHORD_ = newCHORDHover;
+                repaint();
+            }
+        }
 
         int  activeIdx_ = 0;
         bool seqOn_     = false;
         bool chordOn_   = false;
+        bool kitSubMode_ = false; // D1 (1D-P2B): false=NOTE, true=KIT
+
+        // #20/#21: hover tracking
+        int  hoveredTabIdx_      = -1;
+        bool hoveredToggleSEQ_   = false;
+        bool hoveredToggleCHORD_ = false;
+        float tabHoverAlpha_     = 0.0f; // animated 0→1 on hover enter, 1→0 on exit
 
         std::vector<juce::Rectangle<float>> tabRegions_;
         juce::Rectangle<float> seqBounds_;
         juce::Rectangle<float> chordBounds_;
+        juce::Rectangle<float> noteKitBounds_; // D1 (1D-P2B): NOTE/KIT toggle pill
+
+        // P1-11 (1F): Compute hit-region geometry once per resize (not per paint).
+        // Called from resized(), setKitSubMode(), and selectTab() (indirectly via
+        // the repaint path — but only resized() is the geometry trigger).
+        // Must stay in sync with the visual layout in paint().
+        void rebuildHitRegions()
+        {
+            const auto b = getLocalBounds().toFloat();
+            if (b.isEmpty()) return;
+
+            static const juce::Font tabFont(juce::FontOptions{}
+                .withName(juce::Font::getDefaultSansSerifFontName())
+                .withStyle("Bold")
+                .withHeight(10.0f));
+
+            tabRegions_.clear();
+            noteKitBounds_ = {};
+            float x = 16.0f;
+
+            for (int i = 0; i < kNumTabs; ++i)
+            {
+                const float tw = tabFont.getStringWidthFloat(kTabNames[i]) + 28.0f;
+                const float th = b.getHeight() - 1.0f;
+                tabRegions_.push_back(juce::Rectangle<float>(x, 0.0f, tw, th));
+                x += tw + 2.0f;
+
+                if (i == 1) // PAD tab — NOTE/KIT pill follows
+                {
+                    const char* subLabel = kitSubMode_ ? "KIT" : "NOTE";
+                    const float pillW = tabFont.getStringWidthFloat(subLabel) + 14.0f;
+                    // P1-5 (1F): WCAG 2.5.8 — NOTE/KIT pill ≥ 24px tall.
+                    const float pillH = juce::jmax(24.0f, b.getHeight() - 6.0f);
+                    noteKitBounds_ = juce::Rectangle<float>(x, (b.getHeight() - pillH) * 0.5f, pillW, pillH);
+                    x += pillW + 4.0f;
+                }
+            }
+
+            // SEQ + CHORD toggles — right side, compute right-to-left.
+            float rx = b.getRight() - 16.0f;
+            for (int t = 1; t >= 0; --t) // CHORD first (rightmost), then SEQ
+            {
+                const char* label = (t == 0) ? "SEQ" : "CHORD";
+                const float pw = tabFont.getStringWidthFloat(label) + 16.0f;
+                const float ph = b.getHeight() - 6.0f;
+                juce::Rectangle<float> pr(rx - pw, 3.0f, pw, ph);
+                if (t == 0) seqBounds_ = pr; else chordBounds_ = pr;
+                rx -= pw + 6.0f;
+            }
+        }
     };
 
     //==========================================================================
@@ -2052,7 +2309,9 @@ private:
         menu.addItem(removeItem);
 
         SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
-            juce::PopupMenu::Options{},
+            // wire(1C-fix): withTargetComponent ensures menus anchor to the plugin
+            // window on macOS AU (empty Options{} may appear at screen origin).
+            juce::PopupMenu::Options{}.withTargetComponent(this),
             [this, slot](int result)
             {
                 switch (result)
@@ -2158,7 +2417,8 @@ private:
         menu.addItem(removeItem);
 
         SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
-            juce::PopupMenu::Options{},
+            // wire(1C-fix): withTargetComponent ensures menus anchor to the plugin window.
+            juce::PopupMenu::Options{}.withTargetComponent(this),
             [this, chainIndex](int result)
             {
                 switch (result)
@@ -2217,7 +2477,8 @@ private:
         menu.addItem(2, juce::String::fromUTF8("\xf0\x9f\x94\x97  Toggle Chain Mode"));      // 🔗
 
         SubmarineMenuLookAndFeel::showWithFade(menuLnF_, menu,
-            juce::PopupMenu::Options{},
+            // wire(1C-fix): withTargetComponent ensures menus anchor to the plugin window.
+            juce::PopupMenu::Options{}.withTargetComponent(this),
             [this, slot](int result)
             {
                 switch (result)
@@ -2251,6 +2512,83 @@ private:
     }
 
     //==========================================================================
+    // #18 — Tab content cross-fade (200ms easeOutStep per D4)
+    //==========================================================================
+
+    /** Called from timerCallback to animate tabFadeIn_ / tabFadeOut_ each 30Hz tick.
+        The fade targets are set when onTabChanged fires:
+          - incoming panel starts at alpha=0, target=1  → tabFadeIn_
+          - outgoing panel starts at alpha=1, target=0  → tabFadeOut_ (if still set)
+        Uses Tokens::Motion::tabFadeStep() (200ms convergence at 30Hz). */
+    void stepTabCrossFade()
+    {
+        bool needRepaint = false;
+
+        // Fade in: bring the incoming panel to full opacity
+        if (tabFadeInPanel_ != nullptr)
+        {
+            tabFadeIn_ = XO::Tokens::Motion::tabFadeStep(tabFadeIn_, 1.0f);
+            tabFadeInPanel_->setAlpha(tabFadeIn_);
+            if (tabFadeIn_ >= 0.99f)
+            {
+                tabFadeInPanel_->setAlpha(1.0f);
+                tabFadeInPanel_ = nullptr;
+            }
+            needRepaint = true;
+        }
+
+        // Fade out: bring the outgoing panel to zero then hide it
+        if (tabFadeOutPanel_ != nullptr)
+        {
+            tabFadeOut_ = XO::Tokens::Motion::tabFadeStep(tabFadeOut_, 0.0f);
+            tabFadeOutPanel_->setAlpha(tabFadeOut_);
+            if (tabFadeOut_ <= 0.01f)
+            {
+                tabFadeOutPanel_->setAlpha(0.0f);
+                tabFadeOutPanel_->setVisible(false);
+                tabFadeOutPanel_->setAlpha(1.0f); // reset for next time it becomes visible
+                tabFadeOutPanel_ = nullptr;
+            }
+            needRepaint = true;
+        }
+
+        juce::ignoreUnused(needRepaint);
+    }
+
+    /** Initiate a cross-fade from @p outgoing to @p incoming.
+        Pass nullptr for outgoing on the first show (no previous panel). */
+    void startTabCrossFade(juce::Component* outgoing, juce::Component* incoming)
+    {
+        // Cancel any running fades first
+        if (tabFadeInPanel_ != nullptr)
+        {
+            tabFadeInPanel_->setAlpha(1.0f);
+            tabFadeInPanel_ = nullptr;
+        }
+        if (tabFadeOutPanel_ != nullptr)
+        {
+            tabFadeOutPanel_->setAlpha(0.0f);
+            tabFadeOutPanel_->setVisible(false);
+            tabFadeOutPanel_->setAlpha(1.0f);
+            tabFadeOutPanel_ = nullptr;
+        }
+
+        if (outgoing != nullptr && outgoing->isVisible())
+        {
+            tabFadeOutPanel_ = outgoing;
+            tabFadeOut_      = 1.0f; // start opaque, fade to 0
+        }
+
+        if (incoming != nullptr)
+        {
+            incoming->setAlpha(0.0f);
+            incoming->setVisible(true);
+            tabFadeInPanel_ = incoming;
+            tabFadeIn_      = 0.0f; // start transparent, fade to 1
+        }
+    }
+
+    //==========================================================================
     // Shared orbit animation timer (juce::Timer override)
     //==========================================================================
 
@@ -2280,6 +2618,15 @@ private:
         for (auto& orbit : orbits_)
             if (orbit.hasEngine() && orbit.isAnimating())
                 orbit.requestRepaint();
+
+        // #19: step HUD bar click-depth spring-back animation (80ms per D4).
+        hudBar_.stepClickDepthAnimation();
+
+        // #20: step tab bar hover fade animation (150ms ease-out per D4).
+        tabBar_.stepHoverAnimation();
+
+        // #18: step tab content cross-fade alpha (200ms ease-out per D4).
+        stepTabCrossFade();
 
         // Wave 3 — 3a: Position-save debounce countdown (500 ms / ~15 ticks at 30 Hz).
         // positionSaveCountdown_ is armed by schedulePositionSave() on each drag frame;
@@ -2540,7 +2887,6 @@ private:
     //   Opening EnginePicker  → closes Settings (and vice versa).
     //   Opening Detail        → hides SurfaceRightPanel (D7, restored on close).
     //   Opening ChainMatrix   → (Wave 5 C4) stub — currently a no-op.
-    //   Opening XOuijaRouting → (future) stub — currently a no-op.
     //   Minimum width guard   → if width < kMinWidth and drawer + SurfaceRightPanel
     //                           are both open, close the drawer.
     //
@@ -2554,7 +2900,7 @@ private:
         Request that a panel become the active heavy panel.
 
         If a different heavy panel is already open, it is closed first.
-        For ChainMatrix and XOuijaRouting stubs, records the current panel type
+        For ChainMatrix stub, records the current panel type
         and does nothing else — Wave 5 C4 will fill the open/close logic.
     */
     void coordinatorRequestOpen(PanelType requested)
@@ -2565,12 +2911,12 @@ private:
         // Close the current heavy panel before opening the new one.
         coordinatorCloseCurrentPanel();
 
-        // Fix #1428: ChainMatrix and XOuijaRouting are unimplemented stubs.
-        // Do NOT record them as the active panel — that would leave currentPanel_
+        // Fix #1428: ChainMatrix is an unimplemented stub.
+        // Do NOT record it as the active panel — that would leave currentPanel_
         // in a state where Escape closes a panel the user cannot see.
         // Return early before committing currentPanel_.
-        if (requested == PanelType::ChainMatrix || requested == PanelType::XOuijaRouting)
-            return; // stub panels: no-op, no state update
+        if (requested == PanelType::ChainMatrix)
+            return; // stub panel: no-op, no state update
 
         currentPanel_ = requested;
 
@@ -2602,10 +2948,6 @@ private:
                 break;
 
             case PanelType::ChainMatrix:
-                // Unreachable — guarded by early return above.
-                break;
-
-            case PanelType::XOuijaRouting:
                 // Unreachable — guarded by early return above.
                 break;
 
@@ -2655,10 +2997,6 @@ private:
 
             case PanelType::ChainMatrix:
                 // Wave 5 C4 stub — no-op close.
-                break;
-
-            case PanelType::XOuijaRouting:
-                // Future stub — no-op close.
                 break;
 
             case PanelType::None:
@@ -2807,7 +3145,7 @@ private:
           presetPrev_ | presetNext_ | favButton_ | settingsButton_ | keysButton_ |
           dimOverlay_  ← #1008 FIX 7: above buttons, so buttons are dimmed |
           emptyStateLabel_ | lifesaver_ | hudBar_ | surfaceRight_ | exprStrips_ |
-          subPlaySurface_ | playSurfaceOverlay_ | ouijaPanel_ |
+          subPlaySurface_ |
           children_.waterline() | children_.masterFxStrip() | children_.epicSlots() | tabBar_ | children_.chordBar() |
           children_.transportBar() | children_.statusBar() |
           engineDrawer_ | settingsDrawer_ | detailOverlay_ | children_.detailPanel() | couplingPopup_
@@ -2828,7 +3166,6 @@ private:
     // it is updated in onStateEntered + selectOrbitInPlace.
     // Step 9 will remove selectedSlot_ once LayoutTargets binds to stateMachine_ directly.
     int       selectedSlot_    = -1;
-    float     dimAlpha_        = 1.0f;  ///< < 1 when PlaySurface or browser dims the scene
 
     /// Per-slot mute / solo toggle state — tracked locally so the context menu
     /// label can reflect the current state without a round-trip to the processor.
@@ -2855,6 +3192,14 @@ private:
     // D7: whether SurfaceRightPanel was open before DetailOverlay was shown.
     // Restored on DetailOverlay close.
     bool surfaceRightWasOpenForDetail_ = false;
+
+    // #18: Tab cross-fade state (200ms per D4).
+    // tabFadeInPanel_  — panel currently fading from alpha 0 → 1 (incoming tab content)
+    // tabFadeOutPanel_ — panel currently fading from alpha 1 → 0 (outgoing tab content)
+    juce::Component* tabFadeInPanel_  = nullptr;
+    juce::Component* tabFadeOutPanel_ = nullptr;
+    float            tabFadeIn_       = 1.0f;
+    float            tabFadeOut_      = 0.0f;
 
     //==========================================================================
     // Phase 1+2 decomposition (#1184):
@@ -2893,10 +3238,9 @@ private:
 
     // Overlay components.
     DnaMapBrowser        browser_;
-    // #1008 FIX 7: DimOverlay must be declared BEFORE PlaySurfaceOverlay so
-    // it is constructed first and can be placed below it in the Z-stack.
+    // #1008 FIX 7: DimOverlay must be declared before SubmarinePlaySurface
+    // so it is constructed first and placed below in the Z-stack.
     DimOverlay           dimOverlay_;
-    PlaySurfaceOverlay   playSurfaceOverlay_;
 
     // Step 4: Floating detail overlay (wraps EngineDetailPanel with backdrop + close btn).
     DetailOverlay        detailOverlay_;
@@ -2911,13 +3255,16 @@ private:
     // unique_ptr members (waterline_, chordBar_, chordBreakout_, seqStrip_,
     // seqBreakout_, masterFxStrip_, epicSlots_, transportBar_) moved to
     // OceanChildren (children_) as part of Phase 1 decomposition (#1184).
-    SubmarineOuijaPanel                   ouijaPanel_;
     ExpressionStrips                      exprStrips_;
     DotMatrixDisplay                      dotMatrix_;
     SubmarineHudBar                       hudBar_;
     SubmarinePlaySurface                  subPlaySurface_;
     SurfaceRightPanel                     surfaceRight_;
     DashboardTabBar      tabBar_;
+    // D5 (1D-P2B): canonical tab state — single source of truth for keyboard visibility.
+    // Set in tabBar_.onTabChanged BEFORE layout runs. Read by OceanLayout::layoutDashboard()
+    // via LayoutTargets::currentTab to fix the Detail-coordinator desync bug.
+    OceanCurrentTab      currentTab_ = OceanCurrentTab::Keys; // default = KEYS
 
     // Floating header controls.
     juce::TextButton enginesButton_ { juce::String::charToString(0x2261) + " Engines" }; // ≡ Engines
@@ -2949,12 +3296,14 @@ private:
     static constexpr int   kMinHeight           = 600;
     static constexpr int   kDefaultWidth        = 1100;
     static constexpr int   kDefaultHeight       = 750;
-    static constexpr int   kStatusBarH          = 28;
-    static constexpr float kMacroStripH         = 60.0f;  // #901: 56→60pt to fit 48pt knobs + 6pt pad
+    // 1D-P2: layout constants aliased from shared single-source-of-truth.
+    // See Source/UI/Ocean/OceanLayoutConstants.h for canonical values + budget math.
+    static constexpr int   kStatusBarH          = ocean_layout::kStatusBarH;
+    static constexpr float kMacroStripH         = ocean_layout::kMacroStripH;
     static constexpr float kSplitOrbitalFraction = 0.20f;  ///< 20% width for mini orbital
-    static constexpr int   kWaterlineH          = 6;
-    static constexpr int   kDashboardH          = 340;    ///< macros (60) + FX (48) + tabs (30) + play (~202)
-    static constexpr int   kTabBarH             = 30;
+    static constexpr int   kWaterlineH          = ocean_layout::kWaterlineH;
+    static constexpr int   kDashboardH          = ocean_layout::kDashboardH;
+    static constexpr int   kTabBarH             = ocean_layout::kTabBarH;
 
     // HIGH fix (#1006): padding added to orbital bounds so ±5% breath animation
     // paints inside the component rect.  ceil(72 * 0.05) = 4px each side.

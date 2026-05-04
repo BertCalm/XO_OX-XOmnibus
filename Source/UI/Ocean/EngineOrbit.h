@@ -24,6 +24,7 @@
 #include <unordered_map>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../Gallery/CreatureRenderer.h"
 #include "../EngineVocabulary.h"
 
@@ -161,11 +162,14 @@ public:
         const float cy = localBounds.getCentreY();
 
         // ── Effective size with breath ──────────────────────────────────────
-        // Zero breath at idle — the buoy is perfectly still on calm water.
-        // Breath scales in proportionally with activity (playing).
-        const float breathAmplitude = A11y::prefersReducedMotion()
+        // Activity-driven breath (existing) + hover breath (1Hz, ±3% scale, #12).
+        const float actBreath  = A11y::prefersReducedMotion()
             ? 0.0f
             : kBreathAmplitude * std::sin(breathPhase_) * activityLevel_;
+        const float hoverBreath = A11y::prefersReducedMotion()
+            ? 0.0f
+            : kHoverBreathAmplitude * std::sin(hoverBreathPhase_) * hoverBreathLevel_;
+        const float breathAmplitude = actBreath + hoverBreath;
         const float creatureSize = kOrbitalSize * (1.0f + breathAmplitude);
         const float halfSize     = creatureSize * 0.5f;
         const float radius       = getBuoyRadius();
@@ -187,7 +191,7 @@ public:
         }
 
         // ── Water reflection ellipse (subtle, below buoy) ──────────────────
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.04f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.04f));
         g.fillEllipse(cx - radius * 0.75f, cy + radius + 3.0f,
                        radius * 1.5f, 5.0f);
 
@@ -200,6 +204,22 @@ public:
             g.setGradientFill(glowGrad);
             g.fillRect(cx - radius * 2.5f, cy - radius * 2.5f,
                        radius * 5.0f, radius * 5.0f);
+        }
+
+        // ── Active-state halo ring (#13) — RMS-driven outer glow ───────────
+        if (activityLevel_ > 0.005f && !A11y::prefersReducedMotion())
+        {
+            const float haloPulse  = 0.5f + 0.5f * std::sin(breathPhase_ * 3.0f);
+            const float haloAlpha  = activityLevel_ * (0.25f + haloPulse * 0.20f);
+            const float haloRadius = radius * (1.6f + activityLevel_ * 0.8f + haloPulse * 0.3f);
+            juce::ColourGradient haloGrad(
+                accentColour_.withAlpha(haloAlpha),
+                cx, cy,
+                accentColour_.withAlpha(0.0f),
+                cx + haloRadius, cy, true);
+            g.setGradientFill(haloGrad);
+            g.fillEllipse(cx - haloRadius, cy - haloRadius,
+                          haloRadius * 2.0f, haloRadius * 2.0f);
         }
 
         const bool isFx = (buoyType_ == BuoyType::FxEngine || buoyType_ == BuoyType::MasterFx);
@@ -628,6 +648,17 @@ public:
         }
     }
 
+    void mouseEnter(const juce::MouseEvent& /*e*/) override
+    {
+        if (!hasEngine_) return;
+        isHovered_ = true;
+    }
+
+    void mouseExit(const juce::MouseEvent& /*e*/) override
+    {
+        isHovered_ = false;
+    }
+
     void mouseDoubleClick(const juce::MouseEvent& /*e*/) override
     {
         if (onDoubleClicked)
@@ -1033,6 +1064,25 @@ public:
             breathPhase_ = 0.0f;
         }
 
+        // ── Hover breathing (#12) — 1 Hz gentle scale ±3% on hover ─────────
+        if (!reducedMotion)
+        {
+            const float hoverTarget = isHovered_ ? 1.0f : 0.0f;
+            hoverBreathLevel_ += (hoverTarget - hoverBreathLevel_) * 0.20f;
+            if (hoverBreathLevel_ < 0.005f) hoverBreathLevel_ = 0.0f;
+            if (hoverBreathLevel_ > 0.005f)
+            {
+                hoverBreathPhase_ += (1.0f / 30.0f) * juce::MathConstants<float>::twoPi;
+                if (hoverBreathPhase_ >= juce::MathConstants<float>::twoPi)
+                    hoverBreathPhase_ -= juce::MathConstants<float>::twoPi;
+            }
+        }
+        else
+        {
+            hoverBreathLevel_ = 0.0f;
+            hoverBreathPhase_ = 0.0f;
+        }
+
         // ── Wreath phase advance ────────────────────────────────────────────
         // Only spin the wreath ring when there's meaningful audio.
         // Threshold high enough to ignore noise floor.
@@ -1171,10 +1221,12 @@ public:
         sub-pixel antialiasing shimmer from the wreath path. */
     bool isAnimating() const noexcept
     {
-        return activityLevel_ > 0.01f
-            || wreathFlare_   > 0.01f
-            || splashAnim_    > 0.01f
-            || inputState_   != InputState::Idle;
+        return activityLevel_    > 0.01f
+            || wreathFlare_      > 0.01f
+            || splashAnim_       > 0.01f
+            || hoverBreathLevel_ > 0.005f
+            || isHovered_
+            || inputState_      != InputState::Idle;
     }
 
 private:
@@ -1252,6 +1304,11 @@ private:
     float breathPhase_ = 0.0f;
     float breathRate_  = 0.2f;
 
+    // Hover breathing (#12) — 1Hz gentle scale ±3%
+    bool  isHovered_         = false;
+    float hoverBreathLevel_  = 0.0f;
+    float hoverBreathPhase_  = 0.0f;
+
     // Waveform wreath
     static constexpr int kWreathBufferSize = 128;
     std::array<float, kWreathBufferSize> wreathBuffer_ {};
@@ -1291,9 +1348,10 @@ private:
     size_t rippleWriteIdx_ = 0;
 
     // Constants
-    static constexpr float kBorderWidth      = 2.0f;
-    static constexpr float kBreathAmplitude  = 0.05f;
-    static constexpr float kNameFontSize     = 12.0f;
+    static constexpr float kBorderWidth           = 2.0f;
+    static constexpr float kBreathAmplitude       = 0.05f;  ///< ±5% activity-driven breath
+    static constexpr float kHoverBreathAmplitude  = 0.03f;  ///< ±3% hover breath (#12)
+    static constexpr float kNameFontSize          = 12.0f;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(EngineOrbit)
 };

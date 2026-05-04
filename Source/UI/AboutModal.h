@@ -32,6 +32,7 @@
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "GalleryColors.h"
+#include "Tokens.h"
 #include <functional>
 #include <cmath>
 
@@ -159,14 +160,11 @@ public:
         auto        titleR = cardR.removeFromTop(titleH);
 
         // Title bar teal accent line at top of card
-        g.setColour(Colour(60, 180, 170).withAlpha(0.70f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.70f));
         g.fillRect(cardR.getX() + 1.0f, cardR.getY() - titleH,
                    cardR.getWidth() - 2.0f, 2.0f);
 
-        const juce::Font nameFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(16.0f));
+        const juce::Font nameFont = XO::Tokens::Type::display(XO::Tokens::Type::DisplayLarge); // D3: Display role
 
         const juce::Font verFont(juce::FontOptions{}
             .withName(juce::Font::getDefaultMonospacedFontName())
@@ -198,9 +196,7 @@ public:
         const bool closeHov = closeBtnBounds_.contains(lastMousePt_);
         g.setColour(closeHov ? Colour(200, 204, 216).withAlpha(0.80f)
                              : Colour(200, 204, 216).withAlpha(0.40f));
-        const juce::Font closeFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(14.0f));
+        const juce::Font closeFont = XO::Tokens::Type::display(XO::Tokens::Type::DisplaySmall); // D3
         g.setFont(closeFont);
         g.drawText("\xc3\x97", closeBtnBounds_.toNearestInt(),  // UTF-8 "×"
                    juce::Justification::centred, false);
@@ -211,10 +207,7 @@ public:
         const float tabY    = fullCard.getY() + titleH;
         const float tabW    = (fullCard.getWidth() - 2.0f) * 0.5f;
 
-        const juce::Font tabFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(9.0f));
+        const juce::Font tabFont = XO::Tokens::Type::heading(XO::Tokens::Type::BodySmall); // D3: heading at small scale
 
         for (int t = 0; t < 2; ++t)
         {
@@ -226,7 +219,7 @@ public:
                 tabH);
 
             const juce::Colour tabBg = isActive
-                ? Colour(60, 180, 170).withAlpha(0.10f)
+                ? XO::Tokens::Color::accent().withAlpha(0.10f)
                 : Colour(200, 204, 216).withAlpha(0.04f);
             const juce::Colour tabText = isActive
                 ? Colour(127, 219, 202).withAlpha(0.90f)
@@ -353,14 +346,8 @@ private:
         const float pad  = 20.0f;
         float y = r.getY() + pad;
 
-        const juce::Font headFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(11.0f));
-
-        const juce::Font bodyFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(10.0f));
+        const juce::Font headFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3
+        const juce::Font bodyFont = XO::Tokens::Type::body(XO::Tokens::Type::BodyDefault);     // D3
 
         // Tagline
         g.setFont(headFont);
@@ -431,14 +418,8 @@ private:
             float y = pad;
             const float w    = static_cast<float>(getWidth()) - pad * 2.0f;
 
-            const juce::Font headFont(juce::FontOptions{}
-                .withName(juce::Font::getDefaultSansSerifFontName())
-                .withStyle("Bold")
-                .withHeight(11.0f));
-
-            const juce::Font bodyFont(juce::FontOptions{}
-                .withName(juce::Font::getDefaultSansSerifFontName())
-                .withHeight(10.0f));
+            const juce::Font headFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3
+            const juce::Font bodyFont = XO::Tokens::Type::body(XO::Tokens::Type::BodyDefault);     // D3
 
             auto drawLine = [&](const juce::Font& f, juce::Colour col, const char* text, float lineH)
             {
@@ -635,10 +616,7 @@ public:
         g.drawEllipse(circle, 1.5f);
 
         // "O" glyph
-        const juce::Font badgeFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(13.0f));
+        const juce::Font badgeFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingLarge); // D3
 
         const juce::Colour textCol = isHov
             ? Colour(127, 219, 202).withAlpha(0.90f)
