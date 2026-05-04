@@ -169,6 +169,10 @@ jobs:
       - name: Checkout tagged commit
         uses: actions/checkout@v6
         with:
+          # Pin to the immutable commit SHA rather than the tag name so this
+          # job does not fail if the tag is deleted or moved between the time
+          # the build job ran and this job starts (tag-deletion race).
+          ref: ${{ github.sha }}
           fetch-depth: 1
 
       # ── Retrieve unsigned artefacts ──────────────────────────────────────
@@ -467,6 +471,10 @@ jobs:
       - name: Checkout tagged commit
         uses: actions/checkout@v6
         with:
+          # Pin to the immutable commit SHA rather than the tag name so this
+          # job does not fail if the tag is deleted or moved between the time
+          # the build job ran and this job starts (tag-deletion race).
+          ref: ${{ github.sha }}
           fetch-depth: 1
 
       # ── Download notarized artefacts ─────────────────────────────────────
@@ -633,6 +641,10 @@ jobs:
       - name: Checkout tagged commit
         uses: actions/checkout@v6
         with:
+          # Pin to the immutable commit SHA rather than the tag name so this
+          # job does not fail if the tag is deleted or moved between the time
+          # the build job ran and this job starts (tag-deletion race).
+          ref: ${{ github.sha }}
           fetch-depth: 0
 
       # ── Download DMG ──────────────────────────────────────────────────────
