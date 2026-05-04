@@ -6,17 +6,11 @@
 //   - Issue #9  (Preset Gradient Morphing / Sonic DNA Drift)
 //   - Issue #2  (Coupling Mutation Live Breeding)
 //
-// DNAProximity.h integration: define XOCEANUS_DNA_PROXIMITY_AVAILABLE (or include
-// DNAProximity.h before this file) once the sibling PR lands. Until then the local
-// detail:: fallbacks provide identical semantics.
-// TODO: replace detail::dna* fallbacks with DNAProximity:: calls post-merge.
+// Uses DNAProximity.h for 6D Sonic DNA distance, interpolation, and utility functions.
 #pragma once
 
 #include "PresetManager.h"  // PresetData, PresetDNA, CouplingPair
-
-#ifdef XOCEANUS_DNA_PROXIMITY_AVAILABLE
-    #include "DNAProximity.h"
-#endif
+#include "DNAProximity.h"
 
 #include <juce_core/juce_core.h>
 #include <cmath>
@@ -35,56 +29,6 @@ namespace detail
 inline float clamp01(float t) noexcept { return t < 0.0f ? 0.0f : (t > 1.0f ? 1.0f : t); }
 inline bool endsWith(const juce::String& s, const char* x) noexcept { return s.endsWith(x); }
 inline bool contains(const juce::String& s, const char* x) noexcept { return s.contains(x); }
-
-/** Implementations of the DNAProximity surface used locally.
-    These are superseded once the real DNAProximity.h is included. */
-inline float dnaDistance(const PresetDNA& a, const PresetDNA& b) noexcept
-{
-#ifdef XOCEANUS_DNA_PROXIMITY_AVAILABLE
-    return DNAProximity::distance(a, b);
-#else
-    const float db = a.brightness - b.brightness;
-    const float dw = a.warmth     - b.warmth;
-    const float dm = a.movement   - b.movement;
-    const float dd = a.density    - b.density;
-    const float ds = a.space      - b.space;
-    const float da = a.aggression - b.aggression;
-    return std::sqrt(db*db + dw*dw + dm*dm + dd*dd + ds*ds + da*da);
-#endif
-}
-
-inline PresetDNA dnaCentroid(const PresetDNA& a, const PresetDNA& b) noexcept
-{
-#ifdef XOCEANUS_DNA_PROXIMITY_AVAILABLE
-    return DNAProximity::centroid(a, b);
-#else
-    PresetDNA c;
-    c.brightness = (a.brightness + b.brightness) * 0.5f;
-    c.warmth     = (a.warmth     + b.warmth)     * 0.5f;
-    c.movement   = (a.movement   + b.movement)   * 0.5f;
-    c.density    = (a.density    + b.density)    * 0.5f;
-    c.space      = (a.space      + b.space)      * 0.5f;
-    c.aggression = (a.aggression + b.aggression) * 0.5f;
-    return c;
-#endif
-}
-
-inline PresetDNA dnaInterpolate(const PresetDNA& a, const PresetDNA& b, float t) noexcept
-{
-#ifdef XOCEANUS_DNA_PROXIMITY_AVAILABLE
-    return DNAProximity::interpolate(a, b, t);
-#else
-    const float u = 1.0f - t;
-    PresetDNA r;
-    r.brightness = u * a.brightness + t * b.brightness;
-    r.warmth     = u * a.warmth     + t * b.warmth;
-    r.movement   = u * a.movement   + t * b.movement;
-    r.density    = u * a.density    + t * b.density;
-    r.space      = u * a.space      + t * b.space;
-    r.aggression = u * a.aggression + t * b.aggression;
-    return r;
-#endif
-}
 
 /** Coupling-type to name modifier lookup for breedFromCoupling auto-naming. */
 inline juce::String couplingTypeName(const juce::String& type) noexcept
@@ -162,7 +106,7 @@ inline float interpolateParam(const juce::String& paramId,
 //------------------------------------------------------------------------------
 /** Interpolate every parameter in `dst` between snapshots `a` and `b` at t in [0,1].
     DynamicObject params lerped per-key. Structural params hard-switch at midpoint.
-    DNA interpolated via detail::dnaInterpolate (DNAProximity when available).
+    DNA interpolated via DNAProximity::interpolate.
     Tags: union. Coupling, engines, macros: dominant side (t<0.5→a, else b). */
 inline void interpolatePreset(const PresetData& a,
                                const PresetData& b,
@@ -196,7 +140,7 @@ inline void interpolatePreset(const PresetData& a,
         dst.tags.addIfNotAlreadyThere(b.tags[i]);
 
     // --- DNA: interpolate ---
-    dst.dna = detail::dnaInterpolate(a.dna, b.dna, tc);
+    dst.dna = DNAProximity::interpolate(a.dna, b.dna, tc);
 
     // --- Parameters: walk all engine keys ---
     dst.parametersByEngine.clear();
@@ -300,9 +244,10 @@ inline PresetData breedFromCoupling(const PresetData& engineA,
                                      float couplingDepth) noexcept
 {
     // --- Compute DNA-derived blend weight ---
-    const PresetDNA cen = detail::dnaCentroid(engineA.dna, engineB.dna);
-    const float distA   = detail::dnaDistance(engineA.dna, cen);
-    const float distB   = detail::dnaDistance(engineB.dna, cen);
+    const std::vector<PresetDNA> dnaVec = { engineA.dna, engineB.dna };
+    const PresetDNA cen = DNAProximity::centroid(dnaVec);
+    const float distA   = DNAProximity::distance(engineA.dna, cen);
+    const float distB   = DNAProximity::distance(engineB.dna, cen);
 
     const float rawA    = 1.0f - distA;
     const float rawB    = 1.0f - distB;
