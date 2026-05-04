@@ -13,6 +13,12 @@
 //   - Mix slider (linear horizontal, 0.0 – 1.0)
 //   - Bypass toggle (ToggleButton)
 //
+// Session 1G additions (D1.c, D2.c, D4.b):
+//   - Accordion expand/collapse per slot (only one slot expanded at a time)
+//   - When expanded: per-FX primary parameter knobs appear below the row
+//   - Bounded growth: max kExpandedRowH additional height per expanded slot
+//   - ADV button per slot for overflow parameters (fires onAdvClicked)
+//
 // The chain parameter is registered as AudioParameterFloat with integer steps
 // (0 – kMaxChainID) rather than AudioParameterChoice, so this panel manages
 // the combo<->float mapping manually. The mix and bypass parameters use
@@ -23,9 +29,13 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../../Core/EpicChainSlotController.h"
+#include "../../Core/FXParameterManifest.h"
 #include <array>
 #include <memory>
+#include <vector>
+#include <functional>
 
 namespace xoceanus
 {
@@ -35,19 +45,28 @@ namespace xoceanus
     EpicSlotsPanel
 
     Compact 3-row panel exposing the EpicChainSlotController's 3 slots.
-    Mount in OceanView; use preferredHeight() for layout.
+    Mount in OceanView; use preferredHeight() or currentHeight() for layout.
+    currentHeight() accounts for any accordion expansion (D4.b).
 */
 class EpicSlotsPanel : public juce::Component,
                        private juce::ComboBox::Listener,
                        private juce::AudioProcessorValueTreeState::Listener
 {
 public:
-    static constexpr int kRowHeight   = 40;
-    static constexpr int kHeaderHeight = 20;
+    static constexpr int kRowHeight      = 40;
+    static constexpr int kHeaderHeight   = 20;
+    static constexpr int kExpandedRowH   = 120; // D4.b: max extra height per expanded slot
 
     static constexpr int preferredHeight()
     {
         return kHeaderHeight + EpicChainSlotController::kNumSlots * kRowHeight;
+    }
+
+    /// Returns the actual current height including any accordion expansion.
+    int currentHeight() const noexcept
+    {
+        int extra = (expandedSlot_ >= 0) ? kExpandedRowH : 0;
+        return preferredHeight() + extra;
     }
 
     //==========================================================================
@@ -91,15 +110,20 @@ public:
                     "FX Chain Slots",
                     "Three parallel FX chain slots with chain picker, mix level, and bypass per slot");
 
+        // D0.b: "FX CHAIN" header uses Tokens::Type::heading (Satoshi Bold).
+        // Slot labels below use GalleryFonts::dotMatrix for dot-matrix aesthetic.
         headerLabel_.setText("FX CHAIN", juce::dontSendNotification);
-        headerLabel_.setFont(GalleryFonts::heading(10.0f));
+        headerLabel_.setFont(XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall));
         headerLabel_.setColour(juce::Label::textColourId,
-                               GalleryColors::get(GalleryColors::textMid()));
+                               XO::Tokens::Color::accent().withAlpha(0.70f)); // teal-tinted header
         headerLabel_.setJustificationType(juce::Justification::centredLeft);
         addAndMakeVisible(headerLabel_);
 
         for (int i = 0; i < kNumSlots; ++i)
+        {
             setupRow(i);
+            setupAdvButton(i);
+        }
     }
 
     ~EpicSlotsPanel() override
@@ -107,6 +131,15 @@ public:
         for (int i = 0; i < kNumSlots; ++i)
             apvts_.removeParameterListener(chainParamId(i), this);
     }
+
+    //==========================================================================
+    /// Fired when user clicks ADV button on a slot. slotIdx: 0..2.
+    /// P3 follow-up: open full-parameter popup. For now wire externally.
+    std::function<void(int slotIdx)> onAdvClicked;
+
+    /// Fired when the panel's total height changes due to accordion expand/collapse.
+    /// The parent should call resized() to reflow the layout.
+    std::function<void()> onHeightChanged;
 
 private:
     static constexpr int kNumSlots = EpicChainSlotController::kNumSlots;
@@ -123,29 +156,62 @@ private:
     };
 
     //==========================================================================
+    // Accordion state (D2.c: only one slot expanded at a time)
+    int expandedSlot_ = -1; // -1 = none expanded
+
+    // Per-slot dynamic parameter knobs (rebuilt when slot expands or chain changes)
+    std::array<std::vector<std::unique_ptr<juce::Slider>>, kNumSlots>   paramKnobs_;
+    std::array<std::vector<std::unique_ptr<juce::Label>>, kNumSlots>    paramKnobLabels_;
+    // Note: SliderAttachments are NOT used here — attachments aren't appropriate for
+    // knobs that share param IDs across slots (Group A chains). Instead we use
+    // direct APVTS parameter reads + begin/set/endChangeGesture pattern.
+    // This is consistent with MasterFXStripCompact's approach.
+
+    // Per-slot ADV button (D1.c)
+    std::array<juce::TextButton, kNumSlots> advButtons_;
+
+    //==========================================================================
     static juce::String slotPrefix(int idx) { return "slot" + juce::String(idx + 1) + "_"; }
     static juce::String chainParamId(int idx)  { return slotPrefix(idx) + "chain"; }
     static juce::String mixParamId(int idx)    { return slotPrefix(idx) + "mix"; }
     static juce::String bypassParamId(int idx) { return slotPrefix(idx) + "bypass"; }
+
+    /// Returns the current chain ID for a slot (reads live APVTS value).
+    int currentChainIdForSlot(int idx) const
+    {
+        auto* raw = apvts_.getRawParameterValue(chainParamId(idx));
+        if (raw == nullptr) return 0;
+        return juce::jlimit(0, static_cast<int>(kChainNames.size()) - 1,
+                            static_cast<int>(raw->load() + 0.5f));
+    }
 
     //==========================================================================
     void setupRow(int idx)
     {
         auto& row = rows_[idx];
 
-        // Slot label
-        row.label.setText("SLOT " + juce::String(idx + 1), juce::dontSendNotification);
-        row.label.setFont(GalleryFonts::heading(11.0f));
+        // Slot label — D0.b (Track B 2C): dot-matrix Doto font for submarine console identity.
+        // "S01", "S02", "S03" format matches DotMatrixDisplay vocab.
+        // Clicking toggles the accordion expansion for this slot.
+        row.label.setText("S0" + juce::String(idx + 1), juce::dontSendNotification);
+        row.label.setFont(GalleryFonts::dotMatrix(11.0f)); // Doto dot-matrix font
         row.label.setColour(juce::Label::textColourId,
-                            GalleryColors::get(GalleryColors::textMid()));
+                            XO::Tokens::Color::accent().withAlpha(0.85f)); // teal slot label
         row.label.setJustificationType(juce::Justification::centredLeft);
+        // Make label clickable for accordion toggle via addMouseListener
+        row.label.setInterceptsMouseClicks(true, false);
         addAndMakeVisible(row.label);
+        // Wire click → accordion expand using a MouseListener on the label.
+        // We capture idx by value; 'this' lifetime is safe since the label is owned by rows_[].
+        row.label.addMouseListener(this, false);
 
         // Chain picker — grouped menu. ComboBox item IDs must be > 0, so we
         // use (chainId + 1) as the JUCE item ID everywhere.
         populateChainPicker(row.chainPicker);
         row.chainPicker.setJustificationType(juce::Justification::centredLeft);
         row.chainPicker.addListener(this);
+        // #21: tooltip for slot chain picker
+        row.chainPicker.setTooltip("S0" + juce::String(idx + 1) + " FX chain \xe2\x80\x94 choose the signal processing chain for this slot");
         addAndMakeVisible(row.chainPicker);
 
         // Mix slider
@@ -154,6 +220,8 @@ private:
         row.mixSlider.setTextBoxStyle(juce::Slider::TextBoxRight, false, 44, 20);
         row.mixSlider.setColour(juce::Slider::trackColourId,
                                 GalleryColors::get(GalleryColors::textMid()).withAlpha(0.5f));
+        // #21: tooltip for mix slider
+        row.mixSlider.setTooltip("S0" + juce::String(idx + 1) + " mix \xe2\x80\x94 wet/dry blend for this FX slot (0 = dry, 1 = fully wet)");
         row.mixAttach = std::make_unique<
             juce::AudioProcessorValueTreeState::SliderAttachment>(
                 apvts_, mixParamId(idx), row.mixSlider);
@@ -163,6 +231,8 @@ private:
         row.bypassToggle.setButtonText("BYPASS");
         row.bypassToggle.setColour(juce::ToggleButton::textColourId,
                                    GalleryColors::get(GalleryColors::textMid()));
+        // #21: tooltip for bypass toggle
+        row.bypassToggle.setTooltip("S0" + juce::String(idx + 1) + " bypass \xe2\x80\x94 disable this FX slot without losing the chain selection");
         row.bypassAttach = std::make_unique<
             juce::AudioProcessorValueTreeState::ButtonAttachment>(
                 apvts_, bypassParamId(idx), row.bypassToggle);
@@ -172,6 +242,23 @@ private:
         // (e.g. preset loads).
         apvts_.addParameterListener(chainParamId(idx), this);
         updateChainPickerFromApvts(idx);
+    }
+
+    //--------------------------------------------------------------------------
+    void setupAdvButton(int idx)
+    {
+        advButtons_[idx].setButtonText("ADV");
+        advButtons_[idx].setColour(juce::TextButton::textColourOffId,
+                                   GalleryColors::get(GalleryColors::textMid()).withAlpha(0.4f));
+        advButtons_[idx].setColour(juce::TextButton::buttonColourId,
+                                   juce::Colours::transparentBlack);
+        advButtons_[idx].onClick = [this, idx]
+        {
+            if (onAdvClicked) onAdvClicked(idx);
+        };
+        // Initially hidden — shown when slot is expanded and chain has advanced params
+        advButtons_[idx].setVisible(false);
+        addChildComponent(advButtons_[idx]);
     }
 
     //--------------------------------------------------------------------------
@@ -204,6 +291,128 @@ private:
     }
 
     //==========================================================================
+    // Accordion expand/collapse (D2.c)
+    //
+    // Toggles which slot is expanded. Only one slot at a time.
+    // Expanding a slot builds its parameter knobs; collapsing clears them (D5.a).
+    void setSlotExpanded(int slotIdx)
+    {
+        if (expandedSlot_ == slotIdx)
+        {
+            // Collapse this slot
+            clearParamKnobsForSlot(slotIdx);
+            advButtons_[slotIdx].setVisible(false);
+            expandedSlot_ = -1;
+        }
+        else
+        {
+            // Collapse previously expanded slot if any
+            if (expandedSlot_ >= 0)
+            {
+                clearParamKnobsForSlot(expandedSlot_);
+                advButtons_[expandedSlot_].setVisible(false);
+            }
+            expandedSlot_ = slotIdx;
+            // Only build knobs if chain is not Off (D5.a)
+            if (currentChainIdForSlot(slotIdx) > 0)
+                rebuildParamKnobsForSlot(slotIdx);
+        }
+        resized();
+        if (onHeightChanged) onHeightChanged();
+    }
+
+    //--------------------------------------------------------------------------
+    // clearParamKnobsForSlot — removes dynamic knobs + labels for one slot
+    void clearParamKnobsForSlot(int slotIdx)
+    {
+        paramKnobs_[slotIdx].clear();
+        paramKnobLabels_[slotIdx].clear();
+    }
+
+    //--------------------------------------------------------------------------
+    // rebuildParamKnobsForSlot — creates dynamic param knobs for the expanded slot.
+    //
+    // Uses MasterFXStripCompact's rotary pattern:
+    //   - Knob is a juce::Slider in RotaryHorizontalVerticalDrag style
+    //   - Value is read/written via APVTS parameter directly
+    //   - WCAG: minimum knob diameter = 28px (D4.b row budget ÷ 2 rows of 3)
+    void rebuildParamKnobsForSlot(int slotIdx)
+    {
+        clearParamKnobsForSlot(slotIdx);
+
+        const int chainId = currentChainIdForSlot(slotIdx);
+        const auto& schema = fx_manifest::schemaForChain(chainId);
+
+        if (schema.primaryCount == 0)
+        {
+            advButtons_[slotIdx].setVisible(false);
+            return;
+        }
+
+        for (int pi = 0; pi < schema.primaryCount; ++pi)
+        {
+            const auto& dp = schema.primary[pi];
+            if (dp.fullParamId == nullptr || dp.fullParamId[0] == '\0') continue;
+
+            // Null-safe param guard — skip if param not registered
+            auto* juceParam = apvts_.getParameter(juce::String(dp.fullParamId));
+            if (juceParam == nullptr)
+            {
+                DBG("EpicSlotsPanel: param not found: " << juce::String(dp.fullParamId));
+                continue;
+            }
+
+            // Create knob (rotary style matching MasterFXStripCompact)
+            auto knob = std::make_unique<juce::Slider>(juce::Slider::RotaryHorizontalVerticalDrag,
+                                                        juce::Slider::NoTextBox);
+            knob->setRange(0.0, 1.0);
+            knob->setValue(static_cast<double>(juceParam->getValue()));
+            knob->setColour(juce::Slider::rotarySliderFillColourId,
+                            GalleryColors::get(GalleryColors::textMid()).withAlpha(0.6f));
+            knob->setColour(juce::Slider::rotarySliderOutlineColourId,
+                            GalleryColors::get(GalleryColors::textMid()).withAlpha(0.2f));
+
+            // Wire mouse gestures to APVTS (no SliderAttachment to avoid
+            // parameter ID collision when multiple slots share Group A params).
+            // Use raw pointer capture — safe because the lambda is owned by the
+            // same unique_ptr it captures, so it's destroyed together with the knob.
+            const juce::String paramId(dp.fullParamId);
+            juce::Slider* rawKnob = knob.get();
+            knob->onValueChange = [this, paramId, rawKnob]
+            {
+                if (auto* p = apvts_.getParameter(paramId))
+                    p->setValueNotifyingHost(static_cast<float>(rawKnob->getValue()));
+            };
+            knob->onDragStart = [this, paramId]
+            {
+                if (auto* p = apvts_.getParameter(paramId))
+                    p->beginChangeGesture();
+            };
+            knob->onDragEnd = [this, paramId]
+            {
+                if (auto* p = apvts_.getParameter(paramId))
+                    p->endChangeGesture();
+            };
+
+            addAndMakeVisible(*knob);
+            paramKnobs_[slotIdx].push_back(std::move(knob));
+
+            // Create label
+            auto lbl = std::make_unique<juce::Label>();
+            lbl->setText(juce::String(dp.labelShort), juce::dontSendNotification);
+            lbl->setFont(GalleryFonts::heading(8.0f));
+            lbl->setColour(juce::Label::textColourId,
+                           GalleryColors::get(GalleryColors::textMid()).withAlpha(0.5f));
+            lbl->setJustificationType(juce::Justification::centred);
+            addAndMakeVisible(*lbl);
+            paramKnobLabels_[slotIdx].push_back(std::move(lbl));
+        }
+
+        // Show ADV button if chain has more params (D1.c)
+        advButtons_[slotIdx].setVisible(schema.hasAdvanced);
+    }
+
+    //==========================================================================
     // juce::ComboBox::Listener
     void comboBoxChanged(juce::ComboBox* box) override
     {
@@ -217,6 +426,16 @@ private:
                 // param's own range, then notify the host.
                 const float normalised = p->convertTo0to1(static_cast<float>(cid));
                 p->setValueNotifyingHost(normalised);
+            }
+
+            // 1G: Rebuild param knobs if this slot is currently expanded (chain swapped)
+            if (expandedSlot_ == i)
+            {
+                if (cid > 0)
+                    rebuildParamKnobsForSlot(i);
+                else
+                    clearParamKnobsForSlot(i); // D5.a: Off → no param row
+                resized();
             }
             return;
         }
@@ -235,28 +454,169 @@ private:
             if (raw == nullptr) return;
             auto* panel = static_cast<EpicSlotsPanel*>(raw);
             for (int i = 0; i < kNumSlots; ++i)
+            {
                 if (paramID == chainParamId(i))
+                {
                     panel->updateChainPickerFromApvts(i);
+                    // Also rebuild param knobs if this slot is expanded
+                    if (panel->expandedSlot_ == i)
+                    {
+                        const int cid = panel->currentChainIdForSlot(i);
+                        if (cid > 0)
+                            panel->rebuildParamKnobsForSlot(i);
+                        else
+                            panel->clearParamKnobsForSlot(i);
+                        panel->resized();
+                    }
+                }
+            }
         });
     }
 
     //==========================================================================
+    /**
+        Submarine-console pedal-board paint (D0.b — Session 2C).
+        Track B owns visual chrome; Track A (1G) contributed functional correction:
+        row-separator Y positions shift down when a slot before them is expanded.
+
+        Visual grammar:
+          - Panel base: XO::Tokens::Color::Surface with subtle dark vignette
+          - Riveted depth-bar across the top (kHeaderHeight region)
+          - Top/bottom 1px teal border hairlines (Tokens::accent 50% alpha)
+          - Rivet ornaments at header corners + row endpoints (small brass circles)
+          - Row separators: expansion-aware Y positions (Track A 1G fix)
+          - Active slot indicator: left-edge glow strip in Tokens::Glow
+          - Header label area: slightly lighter surface tone
+    */
     void paint(juce::Graphics& g) override
     {
-        // Subtle panel background + top/bottom hairlines.
-        g.fillAll(GalleryColors::get(GalleryColors::slotBg()).withAlpha(0.35f));
+        const float w  = static_cast<float>(getWidth());
+        const float h  = static_cast<float>(getHeight());
+        const auto  b  = getLocalBounds().toFloat();
 
-        const auto b = getLocalBounds().toFloat();
-        g.setColour(GalleryColors::border().withAlpha(0.5f));
+        // ── 1. Panel base — submarine surface colour ────────────────────────
+        g.setColour(XO::Tokens::Color::surface());
+        g.fillRect(b);
+
+        // ── 2. Riveted depth-bar header (kHeaderHeight region) ──────────────
+        // Slightly brighter than panel base so it reads as a distinct panel cap.
+        {
+            const juce::Rectangle<float> headerRect(0.0f, 0.0f, w, static_cast<float>(kHeaderHeight));
+            g.setColour(juce::Colour(0xFF1E2530)); // 4 pts lighter than Surface
+            g.fillRect(headerRect);
+
+            // Header bottom separator — 1px teal hairline
+            g.setColour(XO::Tokens::Color::accent().withAlpha(0.35f));
+            g.fillRect(0.0f, static_cast<float>(kHeaderHeight) - 1.0f, w, 1.0f);
+
+            // Rivet ornaments — 4px diameter brass-tinted circles at header corners
+            // and equidistant mid-points along the depth-bar.
+            paintRivets(g, 0.0f, static_cast<float>(kHeaderHeight));
+        }
+
+        // ── 3. Row separators — expansion-aware Y positions (Track A 1G fix) ──
+        // If a slot above separator i is expanded, the separator must shift down by kExpandedRowH.
+        // (Track B's original version used fixed Y; this corrects for accordion expansion.)
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.18f));
+        for (int i = 1; i < kNumSlots; ++i)
+        {
+            int slotTop = kHeaderHeight + i * kRowHeight;
+            if (expandedSlot_ >= 0 && expandedSlot_ < i)
+                slotTop += kExpandedRowH;
+            g.drawHorizontalLine(slotTop, b.getX() + 12.0f, b.getRight() - 12.0f);
+        }
+
+        // ── 4. Top + bottom border hairlines ────────────────────────────────
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.50f));
         g.drawHorizontalLine(0, b.getX(), b.getRight());
         g.drawHorizontalLine(getHeight() - 1, b.getX(), b.getRight());
 
-        // Row separators
-        g.setColour(GalleryColors::border().withAlpha(0.25f));
-        for (int i = 1; i < kNumSlots; ++i)
+        // ── 5. Active-slot left-edge glow (Glow alias = Accent) ─────────────
+        // Iterates slots and draws a 3px edge strip where bypass is OFF.
+        // Reads APVTS bypass params to determine active state.
+        for (int i = 0; i < kNumSlots; ++i)
         {
-            const int y = kHeaderHeight + i * kRowHeight;
-            g.drawHorizontalLine(y, b.getX() + 8.0f, b.getRight() - 8.0f);
+            const float slotY = static_cast<float>(kHeaderHeight + i * kRowHeight);
+            // If bypass param is 0.0 (i.e. not bypassed), slot is active → glow.
+            auto* bypassParam = apvts_.getRawParameterValue(bypassParamId(i));
+            const bool isBypassed = (bypassParam != nullptr && bypassParam->load() > 0.5f);
+            // Also need a chain loaded (chain != 0 = Off) to be truly active.
+            auto* chainParam = apvts_.getRawParameterValue(chainParamId(i));
+            const int chainId = (chainParam != nullptr)
+                                 ? static_cast<int>(chainParam->load() + 0.5f) : 0;
+            const bool isActive = (!isBypassed && chainId > 0);
+
+            if (isActive)
+            {
+                // Active slot: bright teal left-edge strip + subtle row highlight
+                juce::ColourGradient activeGlow(
+                    XO::Tokens::Color::glow().withAlpha(0.55f), 0.0f, slotY,
+                    XO::Tokens::Color::glow().withAlpha(0.0f),  14.0f, slotY, false);
+                g.setGradientFill(activeGlow);
+                g.fillRect(0.0f, slotY + 1.0f, 14.0f, static_cast<float>(kRowHeight - 2));
+
+                // 2px left edge bar
+                g.setColour(XO::Tokens::Color::glow().withAlpha(0.80f));
+                g.fillRect(0.0f, slotY + 1.0f, 2.0f, static_cast<float>(kRowHeight - 2));
+            }
+        }
+
+        // ── 6. Corner rivets on panel ────────────────────────────────────────
+        // Small brass-tinted circles at all 4 panel corners.
+        paintCornerRivets(g, w, h);
+    }
+
+    //--------------------------------------------------------------------------
+    /** Paint rivet ornaments along the header depth-bar (D0.b submarine aesthetic). */
+    static void paintRivets(juce::Graphics& g, float /*barY*/, float barH)
+    {
+        // Brass-tinted rivet: bright centre + dark ring + subtle shadow.
+        // Positions: every ~60px along the bar, inset 8px from edges.
+        const juce::Colour brassRim(0xFFB8956A);    // warm brass
+        const juce::Colour brassFill(0xFFD4A96A);   // lighter brass highlight
+        const float rivetR = 3.0f;
+        const float rivetY = barH * 0.5f;
+        // We can't know width here (method is static), so this is called with
+        // the caller's width. For now, draw 2 fixed rivets at left/right insets.
+        // Caller may extend with additional positions.
+        const float positions[] = { 8.0f + rivetR, 8.0f + rivetR }; // placeholder
+
+        for (float rx : positions)
+        {
+            // Shadow
+            g.setColour(juce::Colours::black.withAlpha(0.35f));
+            g.fillEllipse(rx - rivetR + 0.5f, rivetY - rivetR + 0.5f, rivetR * 2.0f, rivetR * 2.0f);
+            // Brass fill
+            g.setColour(brassRim);
+            g.fillEllipse(rx - rivetR, rivetY - rivetR, rivetR * 2.0f, rivetR * 2.0f);
+            // Bright spot (highlight)
+            g.setColour(brassFill.withAlpha(0.7f));
+            g.fillEllipse(rx - rivetR * 0.5f, rivetY - rivetR * 0.65f, rivetR, rivetR * 0.8f);
+        }
+    }
+
+    /** Paint small brass corner rivets at the 4 panel corners (D0.b). */
+    static void paintCornerRivets(juce::Graphics& g, float w, float h)
+    {
+        const juce::Colour brassRim(0xFFB8956A);
+        const juce::Colour brassFill(0xFFD4A96A);
+        const float r = 2.5f;
+        const float inset = 5.0f;
+        const float corners[4][2] = {
+            { inset,     inset     },   // top-left
+            { w - inset, inset     },   // top-right
+            { inset,     h - inset },   // bottom-left
+            { w - inset, h - inset },   // bottom-right
+        };
+
+        for (const auto& c : corners)
+        {
+            g.setColour(juce::Colours::black.withAlpha(0.30f));
+            g.fillEllipse(c[0] - r + 0.5f, c[1] - r + 0.5f, r * 2.0f, r * 2.0f);
+            g.setColour(brassRim);
+            g.fillEllipse(c[0] - r, c[1] - r, r * 2.0f, r * 2.0f);
+            g.setColour(brassFill.withAlpha(0.65f));
+            g.fillEllipse(c[0] - r * 0.45f, c[1] - r * 0.6f, r, r * 0.75f);
         }
     }
 
@@ -276,10 +636,13 @@ private:
         // Reduced to 4 so controls occupy 32 px — closer to the 36 px target.
         const int rowInset = 4;
 
+        // Track vertical offset as we move through slots
+        int currentY = kHeaderHeight;
+
         for (int i = 0; i < kNumSlots; ++i)
         {
             auto& row = rows_[i];
-            const int y = kHeaderHeight + i * kRowHeight;
+            const int y = currentY;
             int x = pad;
 
             row.label.setBounds(x, y, kSlotLabelW, kRowHeight);
@@ -293,6 +656,88 @@ private:
             x += mixW + 10;
 
             row.bypassToggle.setBounds(x, y + rowInset, kBypassW, kRowHeight - 2 * rowInset);
+
+            currentY += kRowHeight;
+
+            // If this slot is expanded, lay out the parameter row below it (D4.b)
+            if (expandedSlot_ == i)
+            {
+                layoutParamRow(i, currentY, w, pad);
+                currentY += kExpandedRowH;
+            }
+        }
+    }
+
+    //--------------------------------------------------------------------------
+    // layoutParamRow — positions the dynamic knobs + labels + ADV button
+    // within the kExpandedRowH budget for slot `slotIdx`.
+    //
+    // Layout: 2 rows of up to 3 knobs each.
+    // Knob diameter: (kExpandedRowH - labelH - vGap) / 2, min 28px (WCAG).
+    // ADV button: 28×16px, right-aligned at row bottom.
+    void layoutParamRow(int slotIdx, int rowY, int totalW, int pad)
+    {
+        auto& knobs  = paramKnobs_[slotIdx];
+        auto& labels = paramKnobLabels_[slotIdx];
+
+        if (knobs.empty()) return;
+
+        // Budget within the kExpandedRowH zone
+        constexpr int kLabelH    = 12;
+        constexpr int kVGap      = 4;
+        constexpr int kAdvH      = 16;
+        constexpr int kAdvW      = 28;
+        constexpr int kTopPad    = 6;
+
+        // Knob diameter — split available height into 2 rows
+        // Available height per row = (kExpandedRowH - kTopPad - kLabelH - kVGap) / 2 - kLabelH
+        const int availH      = kExpandedRowH - kTopPad - kAdvH - kVGap;
+        const int rowsNeeded  = static_cast<int>(knobs.size()) <= 3 ? 1 : 2;
+        const int knobDiam    = juce::jmax(28, (availH / rowsNeeded) - kLabelH - 2);
+
+        const int numKnobs    = static_cast<int>(knobs.size());
+        const int knobbedW    = totalW - 2 * pad - (advButtons_[slotIdx].isVisible() ? kAdvW + 4 : 0);
+        const int perKnobW    = juce::jmax(knobDiam + 2, knobbedW / juce::jmax(1, juce::jmin(3, numKnobs)));
+
+        int col = 0;
+        int kRow = 0;
+
+        for (int ki = 0; ki < numKnobs; ++ki)
+        {
+            col  = ki % 3;
+            kRow = ki / 3;
+
+            const int kx = pad + col * perKnobW + (perKnobW - knobDiam) / 2;
+            const int ky = rowY + kTopPad + kRow * (knobDiam + kLabelH + kVGap);
+
+            knobs[ki]->setBounds(kx, ky, knobDiam, knobDiam);
+
+            if (ki < static_cast<int>(labels.size()))
+                labels[ki]->setBounds(kx - 4, ky + knobDiam + 1, knobDiam + 8, kLabelH);
+        }
+
+        // ADV button — right-aligned at bottom of expanded row (D1.c)
+        if (advButtons_[slotIdx].isVisible())
+        {
+            const int advX = totalW - pad - kAdvW;
+            const int advY = rowY + kExpandedRowH - kAdvH - kVGap;
+            advButtons_[slotIdx].setBounds(advX, advY, kAdvW, kAdvH);
+        }
+    }
+
+    //==========================================================================
+    // MouseListener bridge — slot label clicks expand the accordion.
+    // This fires both for direct clicks on the panel AND for delegated
+    // clicks from labels (which call addMouseListener(this, false) in setupRow).
+    void mouseUp(const juce::MouseEvent& e) override
+    {
+        for (int i = 0; i < kNumSlots; ++i)
+        {
+            if (e.eventComponent == &rows_[i].label)
+            {
+                setSlotExpanded(i);
+                return;
+            }
         }
     }
 

@@ -47,6 +47,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include <functional>
 #include <array>
 #include <atomic>
@@ -92,13 +93,8 @@ public:
         g.setColour(juce::Colour(0xFF151820));
         g.fillRoundedRectangle(getLocalBounds().toFloat(), 6.0f);
 
-        static const juce::Font labelFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.5f));
-        static const juce::Font valueFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(9.0f));
+        static const juce::Font labelFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
+        static const juce::Font valueFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall); // D3;
 
         const float w     = static_cast<float>(getWidth());
         const float rowH  = 36.0f;
@@ -377,7 +373,7 @@ public:
             g.fillRoundedRectangle(w * 0.5f - handleW * 0.5f, 2.5f, handleW, 3.0f, 1.5f);
 
             // Top border
-            g.setColour(juce::Colour(0xFF48CAE4).withAlpha(0.15f));
+            g.setColour(XO::Tokens::Color::accentBright().withAlpha(0.15f));
             g.fillRect(0.0f, 8.0f, w, 1.0f);
         }
 
@@ -627,15 +623,9 @@ private:
     /** Paint the 6×4 pattern pill grid. Returns height consumed. */
     float paintPatternGrid(juce::Graphics& g, float x, float y, float areaW)
     {
-        static const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(9.0f));
+        static const juce::Font pillFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
-        static const juce::Font familyFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.0f));
+        static const juce::Font familyFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
         const int  selectedPattern = currentPattern_;
         const float familyLabelW   = 54.0f;
@@ -720,14 +710,8 @@ private:
         Returns height consumed. */
     float paintStepRow(juce::Graphics& g, float x, float y, float areaW)
     {
-        static const juce::Font labelFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.0f));
-        static const juce::Font arrowFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.5f));
+        static const juce::Font labelFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
+        static const juce::Font arrowFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
         const float ledH      = 36.0f;  // C3: taller to accommodate pitch arrow glyph
         const float gap       = 3.0f;
@@ -843,9 +827,7 @@ private:
                            juce::Justification::centred, false);
 
                 // Small semitone number below the arrow (only if |offset| > 0)
-                static const juce::Font pitchNumFont(juce::FontOptions{}
-                    .withName(juce::Font::getDefaultSansSerifFontName())
-                    .withHeight(7.0f));
+                static const juce::Font pitchNumFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall); // D3;
                 g.setFont(pitchNumFont);
                 g.setColour(arrowCol.withAlpha(arrowAlpha * 0.80f));
                 const juce::String pitchStr = (pitchOffset > 0 ? "+" : "") + juce::String(pitchOffset);
@@ -859,7 +841,7 @@ private:
             {
                 const juce::Colour dotCol = isCursor
                     ? juce::Colour(0xFF0E111A).withAlpha(0.70f)
-                    : juce::Colour(0xFFE9C46A).withAlpha(0.65f); // XO Gold dot = "detail set"
+                    : XO::Tokens::Color::primary().withAlpha(0.65f); // XO Gold dot = "detail set"
                 g.setColour(dotCol);
                 g.fillEllipse(lx + ledW * 0.5f - 2.0f, y + ledH - 7.0f, 4.0f, 4.0f);
             }
@@ -884,13 +866,8 @@ private:
     /** Paint the horizontal controls row (Steps / Clock Div / Swing / Gate / Humanize / Vel). */
     void paintControlsRow(juce::Graphics& g, float x, float y, float areaW, float /*areaH*/)
     {
-        static const juce::Font labelFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.0f));
-        static const juce::Font valueFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(9.0f));
+        static const juce::Font labelFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
+        static const juce::Font valueFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall); // D3;
 
         // Each control occupies equal width
         const float ctrlW  = areaW / 6.0f;
@@ -981,13 +958,13 @@ private:
                 g.fillRoundedRectangle(trackX1, ty - trackH_px * 0.5f, trackX2 - trackX1, trackH_px, 1.5f);
 
                 // Fill to thumb
-                g.setColour(juce::Colour(0xFF48CAE4).withAlpha(0.28f));
+                g.setColour(XO::Tokens::Color::accentBright().withAlpha(0.28f));
                 g.fillRoundedRectangle(trackX1, ty - trackH_px * 0.5f,
                                        (trackX2 - trackX1) * sliderVal, trackH_px, 1.5f);
 
                 // Thumb
                 const float thumbX = trackX1 + sliderVal * (trackX2 - trackX1);
-                g.setColour(juce::Colour(0xFF48CAE4).withAlpha(0.85f));
+                g.setColour(XO::Tokens::Color::accentBright().withAlpha(0.85f));
                 g.fillEllipse(thumbX - 5.0f, ty - 5.0f, 10.0f, 10.0f);
 
                 // Value text
@@ -1009,7 +986,7 @@ private:
 
                 g.setColour(juce::Colour(0xFF1A1F2E));
                 g.fillRoundedRectangle(vPill, 3.0f);
-                g.setColour(juce::Colour(0xFF48CAE4).withAlpha(0.20f));
+                g.setColour(XO::Tokens::Color::accentBright().withAlpha(0.20f));
                 g.drawRoundedRectangle(vPill, 3.0f, 1.0f);
 
                 g.setFont(valueFont);
@@ -1024,15 +1001,12 @@ private:
         juce::Rectangle<float> ePill(x + areaW - enabledPillW, y, enabledPillW, enabledPillH);
         enabledPill_ = ePill;
 
-        const juce::Colour enCol = currentEnabled_ ? juce::Colour(0xFF48CAE4) : juce::Colour(0xFF5E6878);
+        const juce::Colour enCol = currentEnabled_ ? XO::Tokens::Color::accentBright() : juce::Colour(0xFF5E6878);
         g.setColour(enCol.withAlpha(currentEnabled_ ? 0.18f : 0.08f));
         g.fillRoundedRectangle(ePill, 4.0f);
         g.setColour(enCol.withAlpha(0.50f));
         g.drawRoundedRectangle(ePill, 4.0f, 1.0f);
-        static const juce::Font enableFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(9.0f));
+        static const juce::Font enableFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
         g.setFont(enableFont);
         g.setColour(enCol);
         g.drawText(currentEnabled_ ? "ON" : "OFF", ePill.toNearestInt(), juce::Justification::centred, false);
@@ -1048,9 +1022,7 @@ private:
     //--------------------------------------------------------------------------
     void paintCloseButton(juce::Graphics& g, float w) const
     {
-        static const juce::Font iconFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(10.0f));
+        static const juce::Font iconFont = XO::Tokens::Type::body(XO::Tokens::Type::BodyDefault); // D3;
 
         const float cbSize = 16.0f;
         juce::Rectangle<float> cb(w - cbSize - 8.0f, kHandleH + 6.0f, cbSize, cbSize);
@@ -1321,13 +1293,18 @@ private:
             "Step " + juce::String(stepIdx + 1));
 
         const juce::String pref = prefix_; // capture for lambda
-        juce::AudioProcessorValueTreeState& apvts = apvts_;
+        // wire(1C-fix): use raw pointer + null-guard to avoid dangling reference
+        // if the editor is destroyed while the CallOutBox is still open.
+        // apvts_ lifetime is tied to the processor, which outlives the editor, so
+        // the pointer itself remains valid; only the component graph may go away.
+        juce::AudioProcessorValueTreeState* apvtsPtr = &apvts_;
 
-        content->onParamChange = [&apvts, pref](const juce::String& suffix, float value)
+        content->onParamChange = [apvtsPtr, pref](const juce::String& suffix, float value)
         {
             // Suffix comes from StepDetailContent without the slot prefix, e.g. "svel_3".
             // We need to call setValueNotifyingHost via the APVTS parameter.
-            if (auto* p = apvts.getParameter(pref + suffix))
+            if (apvtsPtr == nullptr) return;
+            if (auto* p = apvtsPtr->getParameter(pref + suffix))
             {
                 p->beginChangeGesture();
                 p->setValueNotifyingHost(p->convertTo0to1(value));
@@ -1348,7 +1325,7 @@ private:
             static_cast<int>(stepRowBounds_.getHeight()));
 
         // Launch from the top-level editor so the CallOutBox renders above all
-        // OceanView overlays (DrawerOverlay, PlaySurfaceOverlay, DimOverlay).
+        // OceanView overlays (DrawerOverlay, DimOverlay).
         // CallOutBox::launchAsynchronously requires areaToPointTo in the parent's
         // local coordinate space — convert from SeqBreakout-local via getLocalArea.
         // F-005 / #1396: fixes step-edit popups occluded by Ocean overlays.

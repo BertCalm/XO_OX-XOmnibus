@@ -496,18 +496,23 @@ void XOceanusProcessor::cacheParameterPointers()
         jassert(cachedParams.cpRoutes[static_cast<size_t>(r)].target != nullptr);
     }
 
+    // wire(1C-4): Global session params — masterTune + pitchBendRange.
+    // getRawParameterValue() is called ONCE here (message thread / constructor),
+    // not inside processBlock, satisfying Architect Condition 1 (B009 thread safety).
+    cachedParams.masterTune     = apvts.getRawParameterValue("masterTune");
+    cachedParams.pitchBendRange = apvts.getRawParameterValue("pitchBendRange");
+
+    // P1-6 (1F): Cache macro1 (CHARACTER) pointer so processBlock never calls
+    // getRawParameterValue() on the audio path.  Single per-block hash lookup
+    // eliminated; replaces the inline fetch at the DNAModulationBus warp site.
+    cachedParams.macro1 = apvts.getRawParameterValue("macro1");
+
     // MPE params
     cachedParams.mpeEnabled = apvts.getRawParameterValue("mpe_enabled");
     cachedParams.mpeZone = apvts.getRawParameterValue("mpe_zone");
     cachedParams.mpePitchBendRange = apvts.getRawParameterValue("mpe_pitchBendRange");
     cachedParams.mpePressureTarget = apvts.getRawParameterValue("mpe_pressureTarget");
     cachedParams.mpeSlideTarget = apvts.getRawParameterValue("mpe_slideTarget");
-
-    // Wave 5 D1: XOuija walk engine mood/tendency — cache once, read per-block
-    cachedParams.ouijaCalmWild           = apvts.getRawParameterValue("ouija_calm_wild");
-    cachedParams.ouijaConsonantDissonant = apvts.getRawParameterValue("ouija_consonant_dissonant");
-    cachedParams.ouijaTendencyCol        = apvts.getRawParameterValue("ouija_tendency_col");
-    cachedParams.ouijaTendencyRow        = apvts.getRawParameterValue("ouija_tendency_row");
 
     // B1: Pre-resolve the Orrery cutoff parameter pointer used for isOrryCutoff detection
     // in flushModRoutesSnapshot().  If the Orrery engine is not registered, this stays
@@ -1247,52 +1252,6 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
                           "Macro 2 (MOVEMENT)"},
         0));
 
-    // ── XOuija Mood Sliders (Wave 5 D2) ─────────────────────────────────────
-    // Three global mood parameters that shape heatmap rendering on the XOuija
-    // surface.  All are UI-only (no audio path); they are persisted via APVTS
-    // so DAW automation and session recall work without extra state machinery.
-    //
-    //   xouija_brightness — dark ↔ bright  (0=dark, 0.5=neutral, 1=bright)
-    //   xouija_tension    — calm ↔ tense   (0=calm, 0.5=neutral, 1=tense)
-    //   xouija_density    — sparse ↔ dense (0=sparse, 0.5=neutral, 1=dense)
-    //
-    // PlaySurface wires onParameterChanged for these three IDs to call
-    // xouijaPanel_.setMoodState() so the heatmap repaint happens on the message
-    // thread without touching the audio thread.
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("xouija_brightness", 1), "XOuija Brightness",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("xouija_tension", 1), "XOuija Tension",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("xouija_density", 1), "XOuija Density",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
-
-    // ── Wave 5 D1: XOuija multi-layer cell parameters ────────────────────────
-    // Mood sliders and tendency are automatable APVTS params (per spec section 6).
-    // Grid contents (64 cells × 3 layers) are stored in ValueTree only — too many
-    // values for APVTS, and editorial state is not automatable.
-    // Output routing (one per primary slot) is an int choice param 0-4 (Off…ModSource).
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("ouija_calm_wild", 1), "XOuija Calm/Wild",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.3f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("ouija_consonant_dissonant", 1), "XOuija Consonant/Dissonant",
-        juce::NormalisableRange<float>(0.0f, 1.0f), 0.2f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("ouija_tendency_col", 1), "XOuija Tendency Col",
-        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
-    params.push_back(std::make_unique<juce::AudioParameterFloat>(
-        juce::ParameterID("ouija_tendency_row", 1), "XOuija Tendency Row",
-        juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
-    for (int s = 0; s < kNumPrimarySlots; ++s)
-        params.push_back(std::make_unique<juce::AudioParameterChoice>(
-            juce::ParameterID("ouija_route_" + juce::String(s), 1),
-            "XOuija Route Slot " + juce::String(s + 1),
-            juce::StringArray{ "Off", "Drive Notes", "Drive Sequencer", "Drive Chord", "Mod Source" },
-            0 /* default: Off */));
-
     // AquaticFXSuite::addParameters() uses ParameterLayout::add() (JUCE 7+ API)
     // rather than the shared params vector, so it must be called after constructing
     // the ParameterLayout from the vector.
@@ -1311,7 +1270,7 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
             "Slot " + juce::String(s + 1) + " Seq ");
 
     // Wave 6: Per-slot play surface layout mode (primary slots 0–3 only).
-    // 0 = PlaySurface (KEYS/PADS/XY/OUIJA full window, default)
+    // 0 = PlaySurface (KEYS/PADS/XY full window, default)
     // 1 = PadGrid (embedded 4×4 pad grid in engine slot header area)
     // UI-only persistence — no audio-thread reads. Stored in APVTS for
     // DAW session recall. Default = PlaySurface(0).
@@ -1323,6 +1282,13 @@ juce::AudioProcessorValueTreeState::ParameterLayout XOceanusProcessor::createPar
             juce::StringArray{ "PlaySurface", "PadGrid" },
             0 /* default = PlaySurface */));
     }
+
+    // ── 1D-P2B D4: XY pad grid visibility toggle ─────────────────────────────
+    // UI-only preference. No audio-thread reads. Stored in APVTS for
+    // DAW session recall. Default = true (grid visible).
+    layout.add(std::make_unique<juce::AudioParameterBool>(
+        juce::ParameterID("xy_pad_grid_visible", 1),
+        "XY Pad Grid Visible", true));
 
     // ── Wave 8: XY Surface parameters (8 params × 4 slots = 32 params) ─────────
     // See Source/UI/PlaySurface/XYSurface.h for full documentation.
@@ -1591,9 +1557,6 @@ void XOceanusProcessor::prepareToPlay(double sampleRate, int samplesPerBlock)
     // Wave 5 C1: prepare per-slot pattern sequencers
     for (auto& seq : slotSequencers_)
         seq.prepareToPlay(sampleRate);
-
-    // Wave 5 D1: prepare XOuija walk engine
-    ouijaWalkEngine_.prepareToPlay(sampleRate, samplesPerBlock);
 }
 
 void XOceanusProcessor::releaseResources()
@@ -1652,9 +1615,10 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     // "fully characterful" end. Future bipolar mapping (-1..1) would let M1 also
     // pull DNA toward its inverse, but Phase 0 keeps the convention simple.
     // applyMacroWarp + advanceSmoothing are both lock-free; safe on the audio thread.
-    if (auto* m1Ptr = apvts.getRawParameterValue("macro1"))
+    // P1-6 (1F): Use cachedParams.macro1 — no per-block hash lookup.
+    if (cachedParams.macro1)
     {
-        const float m1 = m1Ptr->load(std::memory_order_relaxed);
+        const float m1 = cachedParams.macro1->load(std::memory_order_relaxed);
         for (int slot = 0; slot < xoceanus::DNAModulationBus::MaxEngineSlots; ++slot)
             dnaBus_.applyMacroWarp(slot, m1);
     }
@@ -1777,6 +1741,63 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
             static_cast<MPEManager::ExpressionTarget>(static_cast<int>(cachedParams.mpePressureTarget->load())));
         mpeManager.setSlideTarget(
             static_cast<MPEManager::ExpressionTarget>(static_cast<int>(cachedParams.mpeSlideTarget->load())));
+    }
+
+    // wire(1C-4): masterTune — inject a synthetic pitch wheel into each per-slot
+    // MIDI buffer at block start so all engines (including those without a per-engine
+    // masterTune param) respond to the global concert pitch setting.
+    // masterTuneHz is in 415..466 Hz; offset in semitones = 12 * log2(hz / 440).
+    // The wheel value is encoded relative to a ±2-semitone range (standard default).
+    // If the tune is exactly 440 Hz (default), no message is injected.
+    if (cachedParams.masterTune)
+    {
+        const float masterTuneHz = cachedParams.masterTune->load(std::memory_order_relaxed);
+        if (std::abs(masterTuneHz - 440.0f) > 0.01f)
+        {
+            const float semitones = 12.0f * std::log2(masterTuneHz / 440.0f);
+            // P0-1 (1F): Read actual pitchBendRange from cachedParams so the injection
+            // respects non-default PB ranges (e.g. ±12).  Guard against nullptr (param
+            // may not be registered in headless test builds).
+            const float pbR = cachedParams.pitchBendRange
+                              ? juce::jlimit(1.0f, 24.0f, cachedParams.pitchBendRange->load(std::memory_order_relaxed))
+                              : 2.0f;
+            const float rangeMultiplier = 1.0f / pbR;
+            const float normalised = juce::jlimit(-1.0f, 1.0f, semitones * rangeMultiplier);
+            const int wheelVal = static_cast<int>(
+                std::round(8192.0f + normalised * 8191.0f));
+            for (int i = 0; i < MaxSlots; ++i)
+            {
+                auto msg = juce::MidiMessage::pitchWheel(1, juce::jlimit(0, 16383, wheelVal));
+                slotMidi[i].addEvent(msg, 0);
+            }
+        }
+    }
+
+    // wire(1C-4): pitchBendRange — inject RPN 0 (Pitch Bend Sensitivity) into each
+    // slot's MIDI buffer so engines that honour MIDI RPN #0 will respect the range.
+    // Only inject when the value differs from the previous block's value to avoid
+    // flooding engines with redundant RPN sequences every block.
+    if (cachedParams.pitchBendRange)
+    {
+        const int pbRange = static_cast<int>(
+            cachedParams.pitchBendRange->load(std::memory_order_relaxed));
+        if (pbRange != lastInjectedPitchBendRange_)
+        {
+            lastInjectedPitchBendRange_ = pbRange;
+            // RPN 0 (Pitch Bend Sensitivity) sequence:
+            //   CC 101 = 0 (RPN MSB)   CC 100 = 0 (RPN LSB)
+            //   CC 6   = semitones      CC 38  = 0 (cents LSB)
+            //   CC 101 = 127 (RPN null = deactivate)  CC 100 = 127
+            for (int i = 0; i < MaxSlots; ++i)
+            {
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 101, 0),   0);
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 100, 0),   0);
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 6,   juce::jlimit(0, 24, pbRange)), 0);
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 38,  0),   0);
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 101, 127), 0);
+                slotMidi[i].addEvent(juce::MidiMessage::controllerEvent(1, 100, 127), 0);
+            }
+        }
     }
 
     // ── MPE expression extraction (#1237 — was dead; now wired) ──────────────
@@ -2206,27 +2227,6 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
     }
     // ── end Wave 5 C1 ────────────────────────────────────────────────────────
 
-    // ── Wave 5 D1: XOuija walk engine ─────────────────────────────────────────
-    // Push mood/tendency atomics from APVTS cached pointers (no string lookups),
-    // then advance the planchette.  Phase B output router (DriveNotes/DriveSeq/
-    // DriveChord/ModSource) will be wired here once those downstream systems land.
-    {
-        if (cachedParams.ouijaCalmWild)
-            ouijaWalkEngine_.setCalmWild(cachedParams.ouijaCalmWild->load(std::memory_order_relaxed));
-        if (cachedParams.ouijaConsonantDissonant)
-            ouijaWalkEngine_.setConsonantDissonant(cachedParams.ouijaConsonantDissonant->load(std::memory_order_relaxed));
-        if (cachedParams.ouijaTendencyCol)
-            ouijaWalkEngine_.setTendencyCol(cachedParams.ouijaTendencyCol->load(std::memory_order_relaxed));
-        if (cachedParams.ouijaTendencyRow)
-            ouijaWalkEngine_.setTendencyRow(cachedParams.ouijaTendencyRow->load(std::memory_order_relaxed));
-
-        ouijaWalkEngine_.processBlock(numSamples,
-                                      hostTransport.getBPM(),
-                                      hostTransport.getBeatPosition(),
-                                      hostTransport.isPlaying());
-    }
-    // ── end Wave 5 D1 ─────────────────────────────────────────────────────────
-
     // Feed external audio to Osmosis if loaded in any slot.
     // Uses virtual isAnalysisEngine() instead of dynamic_cast to avoid RTTI on audio thread.
     for (int slot = 0; slot < MaxSlots; ++slot)
@@ -2361,7 +2361,6 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
 
                 // Source value — only LFO1 (id=0) wired in A1.
                 // C5 (#1360): SeqStepValue / BeatPhase / LiveGate from slotSequencers_.
-                //   XouijaCell now wired via SlotModSourceRegistry (modSourceRegistry_).
                 // #1289: SeqStepPitch added — per-step pitch offset as bipolar -1..+1.
                 // TODO(#mod-source-completion): implement LFO2, LFO3, Envelope, Envelope2,
                 //   Velocity, Aftertouch, ModWheel, MacroTone/Tide/Couple/Depth, MidiCC,
@@ -2370,14 +2369,6 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
                 if (snap.sourceId == static_cast<int>(ModSourceId::LFO1))
                 {
                     srcVal = lfo1Val;
-                }
-                else if (snap.sourceId == static_cast<int>(ModSourceId::XouijaCell))
-                {
-                    // C5 (#1360): pinned XOuija position read from SlotModSourceRegistry.
-                    // X axis is the primary value (circle-of-fifths, bipolar [-1, +1]).
-                    // Y axis (influence depth) accessible via getModSourceRegistry().getXouijaCellY()
-                    // when a per-parameter axis discriminator is added in a future PR.
-                    srcVal = modSourceRegistry_.getXouijaCellX();
                 }
                 else if (snap.sourceId >= static_cast<int>(ModSourceId::XYX0) &&
                          snap.sourceId <= static_cast<int>(ModSourceId::XYY3))
@@ -2864,7 +2855,7 @@ void XOceanusProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::Mid
         noteActivity_.store(current + coeff * (target - current), std::memory_order_relaxed);
     }
 
-    // Emit any pending CC output events from the XOuija UI (lock-free SPSC drain).
+    // Emit any pending CC output events (lock-free SPSC drain).
     drainCCOutput(midi, numSamples);
 }
 
@@ -3383,21 +3374,6 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         state.removeChild(existing, nullptr);
     state.appendChild(midiLearnManager.toValueTree(), nullptr);
 
-    // XOuija UI state — bank, toggle states, gesture button MIDI learn mappings.
-    // onGetXOuijaState is registered by PlaySurface when it connects to this processor.
-    // If the PlaySurface window is not open yet, the callback is null and the child
-    // is simply omitted (safe: setStateInformation falls back to defaults gracefully).
-    if (onGetXOuijaState)
-    {
-        auto uiState = onGetXOuijaState();
-        if (uiState.isValid())
-        {
-            if (auto existing = state.getChildWithName("XOuijaPanel"); existing.isValid())
-                state.removeChild(existing, nullptr);
-            state.appendChild(uiState, nullptr);
-        }
-    }
-
     // Wave 5 A1 — Persist global mod routes as a ValueTree child ("modRoutes").
     // Existing child from a previous save is replaced first (guard against double-save).
     if (auto existing = state.getChildWithName("modRoutes"); existing.isValid())
@@ -3418,16 +3394,6 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
                 state.removeChild(existing, nullptr);
             state.appendChild(tideState, nullptr);
         }
-    }
-
-    // Wave 5 D1 — Persist XOuija grid contents (64 cells, all 3 layers).
-    // Heatmap is intentionally NOT persisted — it is ephemeral session state
-    // and resets on every load (spec section 6).
-    // saveGridToValueTree() is message-thread-safe (called from getStateInformation).
-    {
-        if (auto existing = state.getChildWithName("XOuijaGrid"); existing.isValid())
-            state.removeChild(existing, nullptr);
-        state.appendChild(ouijaWalkEngine_.saveGridToValueTree(), nullptr);
     }
 
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
@@ -3516,6 +3482,11 @@ void XOceanusProcessor::getStateInformation(juce::MemoryBlock& destData)
         // D4 — Save register lock + current register (per-instance, per-session).
         xml->setAttribute("registerLocked",  persistedRegisterLocked  ? 1 : 0);
         xml->setAttribute("registerCurrent", persistedRegisterCurrent);
+
+        // P1-8 (1F) — Save dashboard tab + NOTE/KIT sub-mode so session reload
+        // restores the user's last PAD+KIT layout.  Defaults: KEYS + NOTE.
+        xml->setAttribute("dashboardTab",    persistedDashboardTab_);
+        xml->setAttribute("kitSubMode",      persistedKitSubMode_ ? 1 : 0);
 
         // §1.1.1 Principle 4 — Persist first-launch flag so Sound on First Launch
         // fires exactly once across all sessions.  Once saved, hasLaunchedBefore is
@@ -3667,17 +3638,6 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
                 midiLearnManager.loadDefaultMappings();
         }
 
-        // XOuija UI state — restore active bank, button toggles, gesture MIDI learn.
-        // onSetXOuijaState is registered by PlaySurface; if not yet registered (e.g.
-        // the PlaySurface window hasn't been opened for the first time), the state
-        // tree is stored in apvts.state and PlaySurface will read it on first
-        // construction via getChildWithName("XOuijaPanel") in its setProcessor() call.
-        {
-            auto uiStateTree = apvts.state.getChildWithName("XOuijaPanel");
-            if (uiStateTree.isValid() && onSetXOuijaState)
-                onSetXOuijaState(uiStateTree);
-        }
-
         // Wave 5 A1 — Restore global mod routes.
         // fromValueTree() is safe when the "modRoutes" child is absent (old sessions):
         // it returns without modifying the model.  After restoring, flush the snapshot
@@ -3707,17 +3667,6 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
             }
         }
 
-        // Wave 5 D1 — Restore XOuija grid contents.
-        // loadGridFromValueTree() enqueues 64 cell edits through the SPSC queue so
-        // the audio thread receives them lock-free without a stall at the next block.
-        // "XOuijaGrid" is absent in sessions predating this feature — no-op safe
-        // (walk engine keeps its default-constructed neutral-cell grid).
-        {
-            auto gridTree = apvts.state.getChildWithName("XOuijaGrid");
-            if (gridTree.isValid())
-                ouijaWalkEngine_.loadGridFromValueTree(gridTree);
-        }
-
         // FIX 8 — Restore PlaySurface scale selector index (closes #314).
         // Default 0 (Chromatic) matches PlayControlPanel init state — safe for
         // old sessions that predate this field.
@@ -3736,6 +3685,14 @@ void XOceanusProcessor::setStateInformation(const void* data, int sizeInBytes)
         // Clamp to valid range (0=Gallery, 1=Performance, 2=Coupling).
         if (persistedRegisterCurrent < 0 || persistedRegisterCurrent > 2)
             persistedRegisterCurrent = 0;
+
+        // P1-8 (1F) — Restore dashboard tab + NOTE/KIT sub-mode.
+        // Defaults: KEYS (0) + NOTE (false) — safe for sessions predating P1-8.
+        {
+            const int tab = xml->getIntAttribute("dashboardTab", 0);
+            persistedDashboardTab_ = juce::jlimit(0, 2, tab);
+            persistedKitSubMode_   = xml->getIntAttribute("kitSubMode", 0) != 0;
+        }
 
         // F2-002: Restore atomic settings.  Defaults match init values so old sessions
         // (predating F2-002) are safe — they simply reload as defaults.
