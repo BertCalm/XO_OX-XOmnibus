@@ -401,7 +401,7 @@ private:
             if (auto* eng = processor.getEngine(tgtSlot))
                 tgtName = eng->getEngineId().toUpperCase();
 
-            routes[r].label.setText("Route " + juce::String(r + 1) + ":  " + srcName + "  \xe2\x86\x92  " + tgtName,
+            routes[r].label.setText("Route " + juce::String(r + 1) + ":  " + srcName + juce::String(juce::CharPointer_UTF8("  \xe2\x86\x92  ")) + tgtName,
                                     juce::dontSendNotification);
         }
     }

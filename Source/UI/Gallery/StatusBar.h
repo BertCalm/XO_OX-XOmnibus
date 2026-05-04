@@ -107,14 +107,14 @@ public:
         // §1301: status bar indicator tooltips.
         bpmLabel.setTooltip("Current tempo in beats per minute");
         voiceLabel.setTooltip("Active voice count across all engine slots");
-        cpuLabel.setTooltip("Plugin CPU load — spikes indicate processing budget pressure");
+        cpuLabel.setTooltip(juce::String(juce::CharPointer_UTF8("Plugin CPU load \xe2\x80\x94 spikes indicate processing budget pressure")));
         A11y::setup(bpmLabel, "BPM", "Current tempo in beats per minute", false);
         A11y::setup(voiceLabel, "Voice Count", "Number of currently active voices", false);
         A11y::setup(cpuLabel, "CPU Usage", "Current CPU load percentage", false);
 
         // ── Performance Lock icon ─────────────────────────────────────────────
         lockBtn.setButtonText("LK"); // plain ASCII — reliable cross-platform rendering
-        lockBtn.setTooltip("Performance Lock — block parameter changes during performance");
+        lockBtn.setTooltip(juce::String(juce::CharPointer_UTF8("Performance Lock \xe2\x80\x94 block parameter changes during performance")));
         lockBtn.setClickingTogglesState(true);
         addAndMakeVisible(lockBtn);
         A11y::setup(lockBtn, "Status Bar Lock", "Block parameter changes during performance");

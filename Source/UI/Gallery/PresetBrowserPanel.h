@@ -51,7 +51,14 @@ public:
             closeButton_.setColour(juce::TextButton::textColourOffId,
                                    GalleryColors::get(GalleryColors::t3()));
             closeButton_.setColour(juce::TextButton::buttonColourId, juce::Colours::transparentBlack);
-            closeButton_.onClick = [this] { if (onCloseRequested) onCloseRequested(); };
+            closeButton_.onClick = [this]
+            {
+                if (onCloseRequested) onCloseRequested();
+                // wire(1C-5): dismiss the enclosing CallOutBox (if any) so the × button
+                // actually closes the panel. onCloseRequested is optional for callers.
+                if (auto* callout = findParentComponentOfClass<juce::CallOutBox>())
+                    callout->dismiss();
+            };
             addAndMakeVisible(closeButton_);
             A11y::setup(closeButton_, "Close preset browser", "Close this preset browser");
         }
