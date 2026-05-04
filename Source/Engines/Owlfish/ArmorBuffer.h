@@ -189,7 +189,9 @@ public:
     bool isActive() const { return armed; }
 
 private:
-    static constexpr int kHistorySize = 2048;
+    // 4096 samples: covers ~42.7ms at 96kHz (P34 fix — was 2048 → only 21ms at 96kHz).
+    // Must remain a power-of-2 — all index wraps use & (kHistorySize - 1) bitmask.
+    static constexpr int kHistorySize = 4096;
     static constexpr int kMaxDelay = 22050;
     static constexpr int kNumGrains = 8;
 

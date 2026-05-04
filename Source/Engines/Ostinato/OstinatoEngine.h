@@ -663,8 +663,11 @@ private:
 class OstiWaveguideBody
 {
 public:
-    // 4096 samples: supports body delay up to ~93ms at 44.1kHz
-    static constexpr int kMaxDelay = 4096;
+    // 8192 samples: supports body delay up to ~85ms at 96kHz (P34 fix).
+    // Previous value of 4096 silently clamped 200ms+ body delays to ~43ms at 96kHz,
+    // producing wrong resonance tails for CONGA, DUNDUN, TAIKO instruments.
+    // Must remain a power-of-2 — the writePos wrap at line 754 uses & (kMaxDelay - 1).
+    static constexpr int kMaxDelay = 8192;
 
     void prepare(double sampleRate) noexcept
     {
