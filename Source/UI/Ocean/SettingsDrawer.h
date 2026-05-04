@@ -293,6 +293,7 @@ private:
     //==========================================================================
 
     void buildControls();
+    void wireTooltips();   // V1 Lane B: set tooltip text on all setting controls
     void layoutContent(int contentWidth);
     void applyAnimPosition();
 
@@ -529,6 +530,34 @@ inline void SettingsDrawer::buildControls()
     showLabelsToggle_.onStateChange = [this] {
         fireToggle("showLabels", showLabelsToggle_);
     };
+
+    wireTooltips();  // V1 Lane B: wire all setting control tooltips
+}
+
+//------------------------------------------------------------------------------
+inline void SettingsDrawer::wireTooltips()
+{
+    // Voice section
+    polyphonyCombo_.setTooltip("Select maximum simultaneous voices or reduce to save CPU");
+    voiceModeCombo_.setTooltip("Select voice allocation mode for note stacking or mono glide");
+    unisonVoicesCombo_.setTooltip("Select stacked voice count for unison width or single-voice clarity");
+    unisonDetuneSlider_.setTooltip("Drag to spread unison voices apart in pitch for chorus width");
+    // Tuning section
+    masterTuneSlider_.setTooltip("Drag to shift global pitch up or down in cents for instrument tuning");
+    pitchBendCombo_.setTooltip("Select pitch bend wheel range in semitones for expressive control");
+    glideTimeSlider_.setTooltip("Drag to set portamento slide time between notes in milliseconds");
+    // MIDI section
+    midiChannelCombo_.setTooltip("Select MIDI channel to respond to or All to accept any channel");
+    mpeModeToggle_.setTooltip("Toggle MPE mode for per-note pitch, pressure, and slide expression");
+    velocityCurveCombo_.setTooltip("Select velocity response curve to match your keyboard touch sensitivity");
+    // Engine section
+    maxEnginesCombo_.setTooltip("Select active engine slot count to reduce CPU on lower-spec systems");
+    crossfadeTimeSlider_.setTooltip("Drag to set engine hot-swap crossfade duration to prevent clicks");
+    oversamplingCombo_.setTooltip("Select internal oversampling rate for higher alias rejection at CPU cost");
+    // Display section
+    uiScaleCombo_.setTooltip("Select UI zoom level to scale the interface for your display or vision");
+    waveSensitivitySlider_.setTooltip("Drag to set how strongly the ocean surface reacts to audio input");
+    showLabelsToggle_.setTooltip("Toggle parameter labels on engine controls for cleaner or annotated view");
 }
 
 //------------------------------------------------------------------------------
