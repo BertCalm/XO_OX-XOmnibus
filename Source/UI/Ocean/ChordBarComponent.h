@@ -7,11 +7,11 @@
 // button. When visible it renders a single horizontal row (~28 px tall) containing:
 //
 //   Palette dot + pill  |  Voicing pill  |  Spread slider  |  Root pill  |  Mini piano  |
-//   Rhythm pill  |  Velocity curve pill  |  Swing/Gate/Human sliders  |  DUCK button  |
+//   Rhythm pill  |  Velocity curve pill  |  Swing/Gate/Human sliders  |
 //   Mode pills (LIVE / SEQ / ENO)
 //
 // All controls that have APVTS parameters go through beginChangeGesture / setValueNotifyingHost /
-// endChangeGesture. Local-only controls (velocityCurve, humanize, duck, mode) are stored in
+// endChangeGesture. Local-only controls (velocityCurve, humanize, mode) are stored in
 // member variables and fed back to the ChordMachine via the onParameterChanged callback or are
 // purely visual indicators read from cm_.
 //
@@ -24,6 +24,7 @@
 #include "../../Core/ChordMachine.h"
 #include "../../Core/ScaleHelpers.h"
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../AccentColors.h"
 #include <functional>
 #include <cmath>
@@ -144,6 +145,15 @@ public:
     /// onVisibilityChanged if they need to trigger layout changes).
     void setVisible(bool shouldBeVisible) override
     {
+        // P0-2 (1F): If a slider gesture is in progress and the bar is being hidden,
+        // balance the beginChangeGesture() call before visibility changes.
+        // Without this, a mid-drag toggle of CHORD → hide → mouseUp never delivered
+        // → unmatched beginChangeGesture → DAW locks the parameter for the whole session.
+        if (!shouldBeVisible && activeSliderType_ != RegionType::None)
+        {
+            endSliderGesture(activeSliderType_);
+            activeSliderType_ = RegionType::None;
+        }
         Component::setVisible(shouldBeVisible);
         if (onVisibilityChanged)
             onVisibilityChanged();
@@ -174,7 +184,6 @@ private:
         SwingSlider = 7,
         GateSlider  = 8,
         HumanSlider = 9,
-        Duck        = 10,
         ModeLive    = 11,
         ModeSeq     = 12,
         ModeEno     = 13,
@@ -217,19 +226,14 @@ private:
         g.fillRect(0.0f, 0.0f, w, h);
 
         // Top + bottom borders.
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.10f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.10f));
         g.fillRect(0.0f, 0.0f, w, 1.0f);
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.07f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.07f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // ── Fonts ──
-        static const juce::Font pillFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(9.0f));
-        static const juce::Font labelFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withHeight(8.0f));
+        static const juce::Font pillFont  = XO::Tokens::Type::heading(XO::Tokens::Type::BodySmall);  // D3
+        static const juce::Font labelFont = XO::Tokens::Type::body(XO::Tokens::Type::BodySmall);    // D3: 8.0→9
 
         // ── Separators ──
         g.setColour(juce::Colour(200, 204, 216).withAlpha(0.07f));
@@ -239,7 +243,7 @@ private:
         // ── Palette dot ──
         if (!paletteDotBounds_.isEmpty())
         {
-            g.setColour(juce::Colour(kPaletteColors[currentPalette_]));
+            g.setColour(juce::Colour(kPaletteColors[currentPalette_.load(std::memory_order_relaxed)]));
             g.fillEllipse(paletteDotBounds_);
         }
 
@@ -301,17 +305,9 @@ private:
         // Palette pill gets the palette color for text + border.
         if (pill.type == RegionType::Palette)
         {
-            textCol   = juce::Colour(kPaletteColors[currentPalette_]).withAlpha(isHover ? 1.0f : 0.85f);
-            borderCol = juce::Colour(kPaletteColors[currentPalette_]).withAlpha(0.50f);
+            textCol   = juce::Colour(kPaletteColors[currentPalette_.load(std::memory_order_relaxed)]).withAlpha(isHover ? 1.0f : 0.85f);
+            borderCol = juce::Colour(kPaletteColors[currentPalette_.load(std::memory_order_relaxed)]).withAlpha(0.50f);
             bgCol     = juce::Colours::transparentBlack;
-        }
-
-        // DUCK active: override to teal with tinted bg.
-        if (pill.type == RegionType::Duck && duckEnabled_)
-        {
-            textCol   = juce::Colour(127, 219, 202).withAlpha(0.90f);
-            borderCol = juce::Colour(127, 219, 202).withAlpha(0.35f);
-            bgCol     = juce::Colour(127, 219, 202).withAlpha(0.06f);
         }
 
         if (!bgCol.isTransparent())
@@ -385,7 +381,7 @@ private:
         }
 
         // Also highlight palette intervals as a fallback reference.
-        const int palIdx = juce::jlimit(0, 7, currentPalette_);
+        const int palIdx = juce::jlimit(0, 7, currentPalette_.load(std::memory_order_relaxed));
         for (int k = 0; k < 4; ++k)
         {
             int iv = kPaletteIntervals[palIdx][k];
@@ -583,6 +579,11 @@ private:
     //--------------------------------------------------------------------------
     /// Layout all control sub-regions left-to-right.
     /// Called from both resized() and paint() so regions are always current.
+    /// #11 (1D-P2B): at widths < 900px, low-priority controls are hidden to
+    /// prevent silent clipping off-screen:
+    ///   Hidden below 900px: SwingSlider, GateSlider, HumanSlider, VelCurve pill.
+    /// The primary chord-selection controls (Palette, Voicing, Root, piano, Mode
+    /// pills, Input pills) are always shown.
     void layoutControls(float /*w*/)
     {
         pillRegions_.clear();
@@ -593,6 +594,10 @@ private:
         const float padX = 8.0f;
         const float gap  = 4.0f;
         float       curX = padX;
+
+        // #11 (1D-P2B): hide low-priority controls at narrow widths.
+        const int widthForOverflow = getWidth() > 0 ? getWidth() : 900;
+        const bool showLowPriority = (widthForOverflow >= 900);
 
         const float pillH = 16.0f;
         const float pillY = midY - pillH * 0.5f;
@@ -642,38 +647,50 @@ private:
         addPill(RegionType::Rhythm, 44.0f);
         addSep();
 
-        // ── Velocity curve pill ──
-        addPill(RegionType::VelCurve, 46.0f);
-        addSep();
+        // ── Velocity curve pill ── (#11: hidden below 900px)
+        if (showLowPriority)
+        {
+            addPill(RegionType::VelCurve, 46.0f);
+            addSep();
+        }
+        else
+        {
+            // Reset bounds so paintLabeledSlider skips these.
+            swingLabelBounds_ = {};
+            swingSlider_.track = {};
+            gateLabelBounds_  = {};
+            gateSlider_.track  = {};
+            humanLabelBounds_ = {};
+            humanSlider_.track = {};
+        }
 
-        // ── Swing label + slider ──
-        swingLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 30.0f, 10.0f);
-        curX += 30.0f + 2.0f;
-        swingSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
-        swingSlider_.value = currentSwing_;
-        swingSlider_.type  = RegionType::SwingSlider;
-        curX += 50.0f + gap;
+        if (showLowPriority)
+        {
+            // ── Swing label + slider ──
+            swingLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 30.0f, 10.0f);
+            curX += 30.0f + 2.0f;
+            swingSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
+            swingSlider_.value = currentSwing_;
+            swingSlider_.type  = RegionType::SwingSlider;
+            curX += 50.0f + gap;
 
-        // ── Gate label + slider ──
-        gateLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 28.0f, 10.0f);
-        curX += 28.0f + 2.0f;
-        gateSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
-        gateSlider_.value = currentGate_;
-        gateSlider_.type  = RegionType::GateSlider;
-        curX += 50.0f + gap;
+            // ── Gate label + slider ──
+            gateLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 28.0f, 10.0f);
+            curX += 28.0f + 2.0f;
+            gateSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
+            gateSlider_.value = currentGate_;
+            gateSlider_.type  = RegionType::GateSlider;
+            curX += 50.0f + gap;
 
-        // ── Human label + slider ──
-        humanLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 32.0f, 10.0f);
-        curX += 32.0f + 2.0f;
-        humanSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
-        humanSlider_.value = currentHumanize_;
-        humanSlider_.type  = RegionType::HumanSlider;
-        curX += 50.0f + gap;
-        addSep();
-
-        // ── DUCK pill ──
-        addPill(RegionType::Duck, 34.0f);
-        addSep();
+            // ── Human label + slider ──
+            humanLabelBounds_ = juce::Rectangle<float>(curX, midY - 12.0f, 32.0f, 10.0f);
+            curX += 32.0f + 2.0f;
+            humanSlider_.track = juce::Rectangle<float>(curX, midY - 2.0f, 50.0f, 4.0f);
+            humanSlider_.value = currentHumanize_;
+            humanSlider_.type  = RegionType::HumanSlider;
+            curX += 50.0f + gap;
+            addSep();
+        }
 
         // ── Mode pills: LIVE / SEQ / ENO ──
         addPill(RegionType::ModeLive, 30.0f);
@@ -908,22 +925,24 @@ private:
         {
         case RegionType::Palette:
         {
-            currentPalette_ = (currentPalette_ + 1) % 8;
+            const int newPal = (currentPalette_.load(std::memory_order_relaxed) + 1) % 8;
+            currentPalette_.store(newPal, std::memory_order_relaxed);
             if (auto* p = apvts_.getParameter("cm_palette"))
             {
                 p->beginChangeGesture();
-                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(currentPalette_)));
+                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(newPal)));
                 p->endChangeGesture();
             }
             break;
         }
         case RegionType::Voicing:
         {
-            currentVoicing_ = (currentVoicing_ + 1) % kNumVoicings;
+            const int newVoicing = (currentVoicing_.load(std::memory_order_relaxed) + 1) % kNumVoicings;
+            currentVoicing_.store(newVoicing, std::memory_order_relaxed);
             if (auto* p = apvts_.getParameter("cm_voicing"))
             {
                 p->beginChangeGesture();
-                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(currentVoicing_)));
+                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(newVoicing)));
                 p->endChangeGesture();
             }
             break;
@@ -934,11 +953,12 @@ private:
 
         case RegionType::Rhythm:
         {
-            currentRhythm_ = (currentRhythm_ + 1) % 8;
+            const int newRhythm = (currentRhythm_.load(std::memory_order_relaxed) + 1) % 8;
+            currentRhythm_.store(newRhythm, std::memory_order_relaxed);
             if (auto* p = apvts_.getParameter("cm_seq_pattern"))
             {
                 p->beginChangeGesture();
-                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(currentRhythm_)));
+                p->setValueNotifyingHost(p->convertTo0to1(static_cast<float>(newRhythm)));
                 p->endChangeGesture();
             }
             break;
@@ -947,9 +967,6 @@ private:
             currentVelCurve_ = (currentVelCurve_ + 1) % 4;
             break;
 
-        case RegionType::Duck:
-            duckEnabled_ = !duckEnabled_;
-            break;
 
         case RegionType::ModeLive:
             currentMode_ = ChordMode::Live;
@@ -997,7 +1014,7 @@ private:
         const PadChordSlot current = cm_.getPadChord(padIdx);
 
         juce::PopupMenu menu;
-        menu.addSectionHeader("Pad " + juce::String(padIdx + 1) + " — Edit Chord");
+        menu.addSectionHeader("Pad " + juce::String(padIdx + 1) + juce::String(juce::CharPointer_UTF8(" \xe2\x80\x94 Edit Chord")));
 
         // Root note submenu (C0–B5 range, chromatic)
         juce::PopupMenu rootMenu;
@@ -1101,7 +1118,17 @@ private:
             p->setValueNotifyingHost(seqRunning ? 1.0f : 0.0f);
             p->endChangeGesture();
         }
-        // ENO mode doesn't have a dedicated param — track locally.
+
+        // wire(1C-1): ENO pill — write cm_eno_mode APVTS param so the audio thread
+        // picks up the change via cachedParams.cmEnoMode → chordMachine.setEnoMode()
+        // in processBlock (one audio block of latency is acceptable for a mode toggle).
+        const bool enoActive = (currentMode_ == ChordMode::Eno);
+        if (auto* p = apvts_.getParameter("cm_eno_mode"))
+        {
+            p->beginChangeGesture();
+            p->setValueNotifyingHost(enoActive ? 1.0f : 0.0f);
+            p->endChangeGesture();
+        }
     }
 
     //--------------------------------------------------------------------------
@@ -1132,7 +1159,6 @@ private:
         case RegionType::Root:      return true;
         case RegionType::Rhythm:    return true;
         case RegionType::VelCurve:  return true;
-        case RegionType::Duck:      return duckEnabled_;
         case RegionType::ModeLive:  return (currentMode_ == ChordMode::Live);
         case RegionType::ModeSeq:   return (currentMode_ == ChordMode::Seq);
         case RegionType::ModeEno:   return (currentMode_ == ChordMode::Eno);
@@ -1148,12 +1174,11 @@ private:
     {
         switch (type)
         {
-        case RegionType::Palette:  return juce::String(kPaletteNames[currentPalette_]).toUpperCase();
-        case RegionType::Voicing:  return juce::String(kVoicingNames[currentVoicing_]).toUpperCase();
+        case RegionType::Palette:  return juce::String(kPaletteNames[currentPalette_.load(std::memory_order_relaxed)]).toUpperCase();
+        case RegionType::Voicing:  return juce::String(kVoicingNames[currentVoicing_.load(std::memory_order_relaxed)]).toUpperCase();
         case RegionType::Root:     return rootName(currentRoot_);
-        case RegionType::Rhythm:   return juce::String(kRhythmNames[currentRhythm_]).toUpperCase();
+        case RegionType::Rhythm:   return juce::String(kRhythmNames[currentRhythm_.load(std::memory_order_relaxed)]).toUpperCase();
         case RegionType::VelCurve: return juce::String(kVelCurveNames[currentVelCurve_]).toUpperCase();
-        case RegionType::Duck:     return "DUCK";
         case RegionType::ModeLive:  return "LIVE";
         case RegionType::ModeSeq:   return "SEQ";
         case RegionType::ModeEno:   return "ENO";
@@ -1189,11 +1214,11 @@ private:
         };
 
         if (parameterID == "cm_palette")
-            currentPalette_ = juce::jlimit(0, 7, toInt("cm_palette"));
+            currentPalette_.store(juce::jlimit(0, 7, toInt("cm_palette")), std::memory_order_relaxed);
         else if (parameterID == "cm_voicing")
-            currentVoicing_ = juce::jlimit(0, kNumVoicings - 1, toInt("cm_voicing"));
+            currentVoicing_.store(juce::jlimit(0, kNumVoicings - 1, toInt("cm_voicing")), std::memory_order_relaxed);
         else if (parameterID == "cm_seq_pattern")
-            currentRhythm_ = juce::jlimit(0, 7, toInt("cm_seq_pattern"));
+            currentRhythm_.store(juce::jlimit(0, 7, toInt("cm_seq_pattern")), std::memory_order_relaxed);
 
         // parameterChanged() can fire on any thread — marshal repaint to message thread.
         juce::MessageManager::callAsync([safeThis = juce::Component::SafePointer<ChordBarComponent>(this)]()
@@ -1218,9 +1243,9 @@ private:
             return 0.0f;
         };
 
-        currentPalette_ = juce::jlimit(0, 7, readInt("cm_palette"));
-        currentVoicing_ = juce::jlimit(0, kNumVoicings - 1, readInt("cm_voicing"));
-        currentRhythm_  = juce::jlimit(0, 7, readInt("cm_seq_pattern"));
+        currentPalette_.store(juce::jlimit(0, 7, readInt("cm_palette")), std::memory_order_relaxed);
+        currentVoicing_.store(juce::jlimit(0, kNumVoicings - 1, readInt("cm_voicing")), std::memory_order_relaxed);
+        currentRhythm_.store(juce::jlimit(0, 7, readInt("cm_seq_pattern")), std::memory_order_relaxed);
         currentSwing_   = readFloat("cm_seq_swing");
         currentGate_    = readFloat("cm_seq_gate");
 
@@ -1280,15 +1305,19 @@ private:
     const ChordMachine&                 cm_;
 
     // APVTS-mirrored + local state
-    int        currentPalette_  = 0;
-    int        currentVoicing_  = 0;
-    int        currentRhythm_   = 0;
+    // P0-4 (1F): parameterChanged() fires on any thread; paint() reads on message
+    // thread.  Promote to std::atomic<int> to satisfy the C++ memory model.
+    // All reads use load(relaxed); writes use store(relaxed) — one-block-late is
+    // fine for a color/label indicator, and relaxed is safe on x86/ARM because
+    // there are no dependent load chains that require acquire/release ordering.
+    std::atomic<int> currentPalette_  {0};
+    std::atomic<int> currentVoicing_  {0};
+    std::atomic<int> currentRhythm_   {0};
     int        currentVelCurve_ = 0;
     float      currentSpread_   = 0.5f;
     float      currentSwing_    = 0.0f;
     float      currentGate_     = 0.75f;
     float      currentHumanize_ = 0.0f;
-    bool       duckEnabled_     = false;
     ChordMode  currentMode_     = ChordMode::Live;
     int        currentRoot_     = 0;   // 0=C, semitone class
 

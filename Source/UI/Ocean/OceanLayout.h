@@ -31,6 +31,7 @@
 // placeholder in layoutForState() will be replaced by a stateMachine_ query.
 
 #include <juce_gui_basics/juce_gui_basics.h>
+#include "OceanLayoutConstants.h"
 #include "OceanStateMachine.h"
 #include "OceanChildren.h"
 #include "OceanBackground.h"
@@ -39,10 +40,9 @@
 #include "CouplingSubstrate.h"
 #include "DnaMapBrowser.h"
 #include "DetailOverlay.h"
-#include "PlaySurfaceOverlay.h"
+// #include "PlaySurfaceOverlay.h"  -- cut(1B-#13): PlaySurfaceOverlay removed
 #include "EnginePickerDrawer.h"
 #include "SettingsDrawer.h"
-#include "SubmarineOuijaPanel.h"
 #include "ExpressionStrips.h"
 #include "SubmarinePlaySurface.h"
 #include "DotMatrixDisplay.h"
@@ -63,6 +63,12 @@
 
 namespace xoceanus
 {
+
+/** D5 (1D-P2B): Canonical tab-state enum shared between OceanView and OceanLayout.
+    OceanView maintains `currentTab_` of this type; OceanLayout reads it via
+    LayoutTargets::currentTab to determine keyboard/panel visibility without
+    depending on surfaceRight_.isOpen() (which desynchs during Detail-coordinator usage). */
+enum class OceanCurrentTab { Keys = 0, Pad, XY };
 
 /**
     LayoutTargets
@@ -88,7 +94,6 @@ struct LayoutTargets
     DetailOverlay&                  detailOverlay;
     CouplingConfigPopup&            couplingPopup;
     juce::Component&                dimOverlay;   // DimOverlay — typed as Component to avoid circular header
-    PlaySurfaceOverlay&             playSurfaceOverlay;
 
     // Empty-state / first-launch helpers
     juce::Label&                    emptyStateLabel;
@@ -113,14 +118,17 @@ struct LayoutTargets
     juce::Component&                tabBar;   // DashboardTabBar — defined inside OceanView.h; typed as Component&
     ExpressionStrips&               exprStrips;
     SubmarinePlaySurface&           subPlaySurface;
-    SubmarineOuijaPanel&            ouijaPanel;
     SurfaceRightPanel&              surfaceRight;
 
     // Phase 2.5 (#1184): layout-input state — const refs to OceanView members.
     // Removed from layoutForState() per-call args; now read directly from here.
-    const int&  selectedSlot;    ///< OceanView::selectedSlot_
-    const bool& detailShowing;   ///< OceanView::detailShowing_
-    const bool& firstLaunch;     ///< OceanView::firstLaunch_
+    const int&              selectedSlot;    ///< OceanView::selectedSlot_
+    const bool&             detailShowing;   ///< OceanView::detailShowing_
+    const bool&             firstLaunch;     ///< OceanView::firstLaunch_
+    // D5 (1D-P2B): canonical tab state — source of truth for keyboard visibility.
+    // Replaces surfaceRight_.isOpen() reads in layoutDashboard() to fix the Detail-
+    // coordinator desync bug (surfaceRight_ hidden temporarily while tab is PAD/XY).
+    const OceanCurrentTab&  currentTab;      ///< OceanView::currentTab_
 };
 
 //==============================================================================
@@ -251,19 +259,17 @@ public:
         targets_.settingsButton.toFront(false);
         targets_.keysButton.toFront(false);
         targets_.presetNameLabel.toFront(false);
-        // #1008 FIX 7: dimOverlay_ above buttons but below PlaySurfaceOverlay.
+        // #1008 FIX 7: dimOverlay_ above buttons but below SubmarinePlaySurface.
         targets_.dimOverlay.toFront(false);
         // Empty-state elements float above HUD bar.
         targets_.emptyStateLabel.toFront(false);
         targets_.lifesaver.toFront(false);
         // Step 6: waterline and tab bar sit above the dim overlay but below
-        // the PlaySurface so they are always legible.
+        // the SubmarinePlaySurface so they are always legible.
         targets_.hudBar.toFront(false);
         targets_.surfaceRight.toFront(false);
         targets_.exprStrips.toFront(false);
         targets_.subPlaySurface.toFront(false);
-        targets_.playSurfaceOverlay.toFront(false);
-        targets_.ouijaPanel.toFront(false);
         if (auto* wl = children_.waterline())      wl->toFront(false);
         if (auto* fx = children_.masterFxStrip())  fx->toFront(false);
         if (auto* es = children_.epicSlots())      es->toFront(false);
@@ -293,13 +299,26 @@ public:
     //==========================================================================
 
     /**
-        Effective dashboard height — collapses when SurfaceRightPanel is open
-        (keyboard hidden; only macros + FX + tabs remain).
+        Effective dashboard height — collapses when in PAD/XY mode
+        (keyboard, EpicSlots, and SeqStrip hidden; only macros + FX + tabs remain,
+        plus ChordBar if the CHORD toggle is on).
+        D5 (1D-P2B): uses currentTab_ instead of surfaceRight_.isOpen().
     */
     int getEffectiveDashboardH() const noexcept
     {
-        if (targets_.surfaceRight.isOpen() && targets_.surfaceRight.isVisible())
-            return static_cast<int>(kMacroStripH) + 48 + kTabBarH;
+        if (targets_.currentTab != OceanCurrentTab::Keys)
+        {
+            // 1D-2A: ChordBar (42px) is dashboard-area when its CHORD toggle is
+            // on. Without this, the budget undercounts by 42 in PAD/XY+CHORD
+            // and ChordBar overlaps the ocean viewport.
+            constexpr int kChordBarH = 42;
+            const auto* cb = children_.chordBar();
+            const int chordBarH = (cb && cb->isVisible()) ? kChordBarH : 0;
+            return static_cast<int>(kMacroStripH)
+                 + MasterFXStripCompact::kStripHeight
+                 + kTabBarH
+                 + chordBarH;
+        }
         return kDashboardH;
     }
 
@@ -318,7 +337,8 @@ public:
         const int bottomH = getEffectiveDashboardH() + wlH + kStatusBarH;
         auto area         = fullBounds.withTrimmedBottom(bottomH);
 
-        if (targets_.surfaceRight.isOpen() && targets_.surfaceRight.isVisible())
+        // D5 (1D-P2B): use currentTab_ to determine panel width (not surfaceRight_.isOpen()).
+        if (targets_.currentTab != OceanCurrentTab::Keys)
         {
             const int rpW = std::min(SurfaceRightPanel::kPanelWidth,
                                      static_cast<int>(area.getWidth() * 0.40f));
@@ -675,7 +695,7 @@ private:
         targets_.hudBar.setBounds(oceanArea.getX() + 16,
                                   oceanArea.getY() + 12,
                                   oceanArea.getWidth() - 32,
-                                  40);
+                                  SubmarineHudBar::kBarHeight);
 
         // Waterline separator strip — height is dynamic (6px collapsed, 96px expanded).
         const int wlH = children_.waterline()
@@ -701,13 +721,36 @@ private:
             targets_.dotMatrix.setBounds(macroRow.reduced(4, 4));
         }
 
-        // Master FX compact strip (48px, between macros and tab bar).
+        // D5 (1D-P2B): Use canonical tab state (OceanView::currentTab_) to determine
+        // whether we are in PAD/XY mode. This fixes the Detail-coordinator desync:
+        // surfaceRight_.isOpen() returns false while the Detail panel temporarily
+        // hides it, causing layoutDashboard to think we're in KEYS mode even though
+        // the tab bar still shows PAD/XY. currentTab_ is only mutated by onTabChanged,
+        // not by the Detail coordinator, so it is always in sync with user intent.
+        //
+        // 1D-P1: When in PAD/XY mode (i.e. SurfaceRight is/should be open), the
+        // dashboard budget collapses to macros + FX + tabBar (138px). EpicSlots
+        // and SeqStrip are KEYS-mode-only widgets — hide and skip layout.
+        const bool surfaceRightOpen = (targets_.currentTab != OceanCurrentTab::Keys);
+
+        // Master FX compact strip (between macros and tab bar).
         if (auto* fx = children_.masterFxStrip())
-            fx->setBounds(dashArea.removeFromTop(48));
+            fx->setBounds(dashArea.removeFromTop(MasterFXStripCompact::kStripHeight));
 
         // Epic Slots panel (3-slot FX picker — below Master FX strip).
+        // Hidden in PAD/XY modes so SurfaceRight has the full vertical budget.
         if (auto* es = children_.epicSlots())
-            es->setBounds(dashArea.removeFromTop(EpicSlotsPanel::preferredHeight()));
+        {
+            if (surfaceRightOpen)
+            {
+                es->setVisible(false);
+            }
+            else
+            {
+                es->setVisible(true);
+                es->setBounds(dashArea.removeFromTop(EpicSlotsPanel::preferredHeight()));
+            }
+        }
 
         // Tab bar row.
         targets_.tabBar.setBounds(dashArea.removeFromTop(kTabBarH));
@@ -719,9 +762,19 @@ private:
                 cb->setBounds(dashArea.removeFromTop(42));
         }
 
-        // Seq strip — Wave 5 C2 mount: always-visible 24px strip below chord bar.
+        // Seq strip — KEYS-mode-only; hidden when SurfaceRight is open.
         if (auto* ss = children_.seqStrip())
-            ss->setBounds(dashArea.removeFromTop(SeqStripComponent::kStripHeight));
+        {
+            if (surfaceRightOpen)
+            {
+                ss->setVisible(false);
+            }
+            else
+            {
+                ss->setVisible(true);
+                ss->setBounds(dashArea.removeFromTop(SeqStripComponent::kStripHeight));
+            }
+        }
 
         // ChordBreakoutPanel — Wave 5 B3 mount: bottom 60% overlay.
         if (auto* cbp = children_.chordBreakout())
@@ -740,14 +793,13 @@ private:
         targets_.exprStrips.setBounds(dashArea.removeFromLeft(ExpressionStrips::kStripWidth));
 
         // Remaining dashboard space → Submarine PlaySurface (KEYS keyboard).
-        targets_.playSurfaceOverlay.setVisible(false);
-        targets_.ouijaPanel.setVisible(false);
+        // I5b: Removed unconditional setVisible(false) — it was overriding the KEYS
+        // button's show() call every layout pass. The overlay manages its own visibility
+        // via show()/hide() methods + internal showing_ flag.
         targets_.subPlaySurface.setBounds(dashArea);
-        // Only show keyboard when right panel is closed (KEYS mode).
-        if (!targets_.surfaceRight.isOpen() || !targets_.surfaceRight.isVisible())
-            targets_.subPlaySurface.setVisible(true);
-        else
-            targets_.subPlaySurface.setVisible(false);
+        // D5 (1D-P2B): use canonical tab state for keyboard visibility (not
+        // surfaceRight_.isOpen() which can desynch during Detail coordinator usage).
+        targets_.subPlaySurface.setVisible(targets_.currentTab == OceanCurrentTab::Keys);
 
         // Transport bar (submarine) replaces the old status bar at the bottom.
         if (auto* tb = children_.transportBar())
@@ -790,16 +842,16 @@ private:
     LayoutTargets        targets_;   ///< All component references OceanLayout positions.
 
     //==========================================================================
-    // Layout constants
-    // (Phase 3 TODO: consolidate into a shared OceanLayoutConstants header)
+    // Layout constants — 1D-P2: aliased from shared OceanLayoutConstants.h
+    // (single source of truth; budget math documented in that header).
     //==========================================================================
 
-    static constexpr int   kStatusBarH          = 28;
-    static constexpr float kMacroStripH         = 60.0f;
+    static constexpr int   kStatusBarH          = ocean_layout::kStatusBarH;
+    static constexpr float kMacroStripH         = ocean_layout::kMacroStripH;
     static constexpr float kSplitOrbitalFraction = 0.20f;
-    static constexpr int   kWaterlineH          = 6;
-    static constexpr int   kDashboardH          = 340;
-    static constexpr int   kTabBarH             = 30;
+    static constexpr int   kWaterlineH          = ocean_layout::kWaterlineH;
+    static constexpr int   kDashboardH          = ocean_layout::kDashboardH;
+    static constexpr int   kTabBarH             = ocean_layout::kTabBarH;
 
     // HIGH fix (#1006): padding for orbital breath animation.
     static constexpr int kBreathPadding = 30;

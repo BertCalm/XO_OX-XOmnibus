@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
-// Wave 5 C5: SlotModSourceRegistry — per-slot sequencer step values as ModSources.
+// Wave 5 C5: SlotModSourceRegistry — per-slot message-thread-origin ModSource values.
 //
 // Closes: issue #1360
 // Design ref: ~/.claude/projects/-Users-joshuacramblet/memory/wave5-c1-sequencer-design-2026-04-26.md
@@ -12,10 +12,10 @@
 //
 // Thread model
 // ────────────
-// Message thread: updateSourceValue() — called from XouijaPinStore::onPinChanged
-//   and similar UI-thread callbacks when a pinned/live value changes.
-// Audio thread: getXouijaCellX() / getXouijaCellY() — called from processBlock()
-//   to read the current bipolar value into the mod routing accumulation loop.
+// Message thread: updateSourceValue() — called from UI-thread callbacks when a
+//   live value changes.
+// Audio thread: read accessors — called from processBlock() to read current
+//   values into the mod routing accumulation loop.
 //
 // All members use std::atomic<float> with relaxed ordering — a one-block-late
 // value is acceptable for a continuous modulation source.
@@ -24,7 +24,7 @@
 //
 // Frozen ModSource IDs (must not change — preset serialisation)
 // ─────────────────────────────────────────────────────────────
-// ModSourceId::XouijaCell = 18   (bipolar X+Y, 4 capture slots, #1360)
+// 18 retired (was XouijaCell, removed 2026-05-01)
 //
 // The SeqStepValue (15), LiveGate (16), BeatPhase (17), and SeqStepPitch (19)
 // sources are read directly from PerEnginePatternSequencer::getLive*() — they
@@ -45,10 +45,8 @@ namespace xoceanus
     Stores live bipolar values for ModSources whose origin is on the message
     thread (UI gestures) so the audio thread can read them lock-free.
 
-    Currently hosts:
-      - ModSourceId::XouijaCell — pinned XOuija (X, Y) position, bipolar [-1, +1].
-        X represents the circle-of-fifths position; Y the influence depth.
-        Written by XouijaPinStore::onPinChanged; read from processBlock.
+    XouijaCell (ID 18) was removed 2026-05-01.  The registry is preserved as
+    infrastructure for future message-thread-origin sources.
 
     Designed for extension: add a new atomic pair + updateSourceValue overload for
     each future message-thread-origin source.
@@ -57,12 +55,8 @@ class SlotModSourceRegistry
 {
 public:
     //==========================================================================
-    // Construction — initialise all live values to 0.0f (neutral / no modulation).
-    SlotModSourceRegistry() noexcept
-    {
-        ouijaCellX_.store(0.0f, std::memory_order_relaxed);
-        ouijaCellY_.store(0.0f, std::memory_order_relaxed);
-    }
+    // Construction — no current live values to initialise.
+    SlotModSourceRegistry() noexcept = default;
 
     // Non-copyable, non-movable — owned by value in XOceanusProcessor.
     SlotModSourceRegistry(const SlotModSourceRegistry&)            = delete;
@@ -73,51 +67,23 @@ public:
     //==========================================================================
     // updateSourceValue — message thread only.
     //
-    // Called from UI-thread callbacks (e.g. XouijaPinStore::onPinChanged) to
-    // push new live values into the registry.  Values are bipolar [-1, +1].
+    // Called from UI-thread callbacks to push new live values into the registry.
+    // Values are bipolar [-1, +1].
     //
-    // Only ModSourceId::XouijaCell is handled here; all other sources either
-    // live on the audio thread (sequencers) or are not yet implemented.
+    // No sources are currently handled here; add else-if branches as each lands.
     //
-    void updateSourceValue(ModSourceId id, float bx, float by) noexcept
+    void updateSourceValue(ModSourceId /*id*/, float /*bx*/, float /*by*/) noexcept
     {
-        if (id == ModSourceId::XouijaCell)
-        {
-            ouijaCellX_.store(bx, std::memory_order_relaxed);
-            ouijaCellY_.store(by, std::memory_order_relaxed);
-        }
         // Additional sources: add else-if branches as each lands.
     }
 
     //==========================================================================
-    // Audio-thread read accessors — called from XOceanusProcessor::processBlock.
-
-    /// Pinned XOuija X-axis (circle-of-fifths), bipolar [-1, +1].
-    float getXouijaCellX() const noexcept
-    {
-        return ouijaCellX_.load(std::memory_order_relaxed);
-    }
-
-    /// Pinned XOuija Y-axis (influence depth), bipolar [-1, +1].
-    float getXouijaCellY() const noexcept
-    {
-        return ouijaCellY_.load(std::memory_order_relaxed);
-    }
-
-    //==========================================================================
     // reset — called from XOceanusProcessor::reset() / prepareToPlay().
-    // Clears all live values back to neutral (0.0f).  Audio-thread safe.
+    // Clears all live values back to neutral.  Audio-thread safe.
     void reset() noexcept
     {
-        ouijaCellX_.store(0.0f, std::memory_order_relaxed);
-        ouijaCellY_.store(0.0f, std::memory_order_relaxed);
+        // No current live values to reset.
     }
-
-private:
-    // XouijaCell (ModSourceId::XouijaCell = 18) — bipolar [-1, +1].
-    // Initialised to 0.0f so unconnected XouijaCell routes produce zero offset.
-    std::atomic<float> ouijaCellX_{0.0f};
-    std::atomic<float> ouijaCellY_{0.0f};
 };
 
 } // namespace xoceanus

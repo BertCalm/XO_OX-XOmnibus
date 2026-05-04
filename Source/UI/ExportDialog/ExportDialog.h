@@ -985,7 +985,7 @@ private:
                     dialog.progressValue = (double)p.overallProgress;
 
                     auto text = p.presetName + (useEntangled ? juce::String(" [Entangled]") : juce::String()) +
-                                " — note " + juce::String(p.currentNote) + "/" + juce::String(p.totalNotes) + " (" +
+                                juce::String(juce::CharPointer_UTF8(" \xe2\x80\x94 note ")) + juce::String(p.currentNote) + "/" + juce::String(p.totalNotes) + " (" +
                                 juce::String(p.currentPreset) + "/" + juce::String(p.totalPresets) + ")";
 
                     {

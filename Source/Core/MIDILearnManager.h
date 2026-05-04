@@ -152,10 +152,9 @@ public:
             if (learning && learnTargetParam.isNotEmpty())
             {
                 // #892: Never capture PlaySurface-internal CCs (85-93) via MIDI Learn.
-                // XOuijaPanel emits these to the audio MIDI output buffer and they can
-                // loop back through the DAW host or arrive via an external controller
-                // occupying the same CC numbers.  Capturing them would silently remap
-                // user parameters to PlaySurface gestures.
+                // These can loop back through the DAW host or arrive via an external
+                // controller occupying the same CC numbers.  Capturing them would
+                // silently remap user parameters to PlaySurface gestures.
                 // CC 85 = circleX, CC 86 = influenceY, CC 88 = trail freeze,
                 // CC 89 = drift anchor, CC 90 = drift toggle,
                 // CC 91 = dub loop, CC 92 = dub mute, CC 93 = home gesture.

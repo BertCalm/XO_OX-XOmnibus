@@ -32,6 +32,7 @@
 #include <juce_audio_processors/juce_audio_processors.h>
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../GalleryColors.h"
+#include "../Tokens.h"
 #include "../Gallery/GalleryLookAndFeel.h"
 #include <functional>
 #include <cmath>
@@ -48,7 +49,8 @@ namespace xoceanus
     Submarine-style 36 px horizontal strip showing the Master FX bus controls.
     See file header for full documentation.
 */
-class MasterFXStripCompact : public juce::Component
+class MasterFXStripCompact : public juce::Component,
+                             public juce::TooltipClient  // #21: per-region tooltips on ADV + knobs
 {
 public:
     //==========================================================================
@@ -103,6 +105,39 @@ public:
             presetName_ = name;
             repaint();
         }
+    }
+
+    //==========================================================================
+    // #21: TooltipClient — returns tooltip text for hovered region.
+    juce::String getTooltip() override
+    {
+        // Check ADV buttons first
+        if (hoveredAdv_ >= 0)
+        {
+            static constexpr const char* kAdvTips[kNumSections] = {
+                "SAT ADV \xe2\x80\x94 open saturation detail controls",
+                "DELAY ADV \xe2\x80\x94 open delay detail controls (time, filter, spread)",
+                "REVERB ADV \xe2\x80\x94 open reverb detail controls (size, damp, diffuse)",
+                "MOD ADV \xe2\x80\x94 open modulation detail controls (rate, waveform, stereo)",
+                "COMP ADV \xe2\x80\x94 open compressor detail controls (attack, release, ratio)"
+            };
+            if (hoveredAdv_ < kNumSections)
+                return juce::String(juce::CharPointer_UTF8(kAdvTips[hoveredAdv_]));
+        }
+        // Check knob hover
+        if (hoveredKnob_ >= 0 && hoveredKnob_ < kNumKnobs)
+        {
+            static constexpr const char* kKnobTips[kNumKnobs] = {
+                "Saturation drive \xe2\x80\x94 harmonic warmth (drag up/down, double-click to reset)",
+                "Delay mix \xe2\x80\x94 wet level of the stereo delay (drag up/down)",
+                "Delay feedback \xe2\x80\x94 echo repeat amount (drag up/down)",
+                "Reverb mix \xe2\x80\x94 space wet level (drag up/down)",
+                "Mod depth \xe2\x80\x94 modulation intensity (drag up/down)",
+                "Compressor glue \xe2\x80\x94 bus compression amount (drag up/down)"
+            };
+            return juce::String(juce::CharPointer_UTF8(kKnobTips[hoveredKnob_]));
+        }
+        return {};
     }
 
 private:
@@ -251,24 +286,15 @@ private:
         g.fillRect(0.0f, 0.0f, w, h);
 
         // Bottom border 1 px.
-        g.setColour(juce::Colour(60, 180, 170).withAlpha(0.06f));
+        g.setColour(XO::Tokens::Color::accent().withAlpha(0.06f));
         g.fillRect(0.0f, h - 1.0f, w, 1.0f);
 
         // Fonts.
-        const juce::Font sectionFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(10.0f));
+        const juce::Font sectionFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
-        const juce::Font knobLabelFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.0f));
+        const juce::Font knobLabelFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
-        const juce::Font advFont(juce::FontOptions{}
-            .withName(juce::Font::getDefaultSansSerifFontName())
-            .withStyle("Bold")
-            .withHeight(8.0f));
+        const juce::Font advFont = XO::Tokens::Type::heading(XO::Tokens::Type::HeadingSmall); // D3;
 
         // Separators.
         g.setColour(juce::Colour(200, 204, 216).withAlpha(0.05f));
@@ -347,11 +373,11 @@ private:
                 28.0f);
             g.setColour(juce::Colour(8, 10, 14).withAlpha(0.60f));
             g.fillRoundedRectangle(displayRect, 4.0f);
-            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.08f));
+            g.setColour(XO::Tokens::Color::accent().withAlpha(0.08f));
             g.drawRoundedRectangle(displayRect, 4.0f, 1.0f);
 
             // Dot-matrix grid texture (subtle)
-            g.setColour(juce::Colour(60, 180, 170).withAlpha(0.03f));
+            g.setColour(XO::Tokens::Color::accent().withAlpha(0.03f));
             for (float dy = displayRect.getY() + 3.0f; dy < displayRect.getBottom() - 2.0f; dy += 3.0f)
                 for (float dx = displayRect.getX() + 3.0f; dx < displayRect.getRight() - 2.0f; dx += 3.0f)
                     g.fillRect(dx, dy, 1.0f, 1.0f);
@@ -406,6 +432,43 @@ private:
         const juce::Colour fillColour = juce::Colour (127, 219, 202).withAlpha (0.60f);
 
         GalleryLookAndFeel::paintXOceanusKnob (g, cx, cy, r, value01, isHover, fillColour);
+
+        // I3: Restore center body dot + indicator spoke that Wave 2C consolidation
+        // (commit cca0667e) dropped when paint was delegated to GalleryLookAndFeel.
+        // NOT in GalleryLookAndFeel — intentionally local so macro knobs are unaffected.
+
+        // Center body dot: filled circle at knob center, radius 35% of knob radius.
+        // Uses the same dark body colour as the macro knob palette (4A4A4E tone).
+        {
+            const juce::Colour bodyDot = juce::Colour (0x4A, 0x4A, 0x4E).withAlpha (isHover ? 1.0f : 0.85f);
+            const float dotR = r * 0.35f;
+            g.setColour (bodyDot);
+            g.fillEllipse (cx - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
+        }
+
+        // Indicator spoke: 1.5px line from r*0.25 to r*0.75 at the current value angle.
+        // Angle math mirrors GalleryLookAndFeel::paintXOceanusKnob (startAngle = 0.75π,
+        // endAngle = 2.25π, JUCE convention: subtract halfPi to map angle → screen coord).
+        if (value01 > 0.001f)
+        {
+            constexpr float kStart = 0.75f * juce::MathConstants<float>::pi;
+            constexpr float kEnd   = 2.25f * juce::MathConstants<float>::pi;
+            const float valueAngle = kStart + value01 * (kEnd - kStart);
+            const float screenAngle = valueAngle - juce::MathConstants<float>::halfPi;
+            const float cosA = std::cos (screenAngle);
+            const float sinA = std::sin (screenAngle);
+            const float x0 = cx + r * 0.25f * cosA;
+            const float y0 = cy + r * 0.25f * sinA;
+            const float x1 = cx + r * 0.75f * cosA;
+            const float y1 = cy + r * 0.75f * sinA;
+            const juce::Colour spokeCol = fillColour.withAlpha (isHover ? 1.0f : 0.85f);
+            g.setColour (spokeCol);
+            juce::Path spoke;
+            spoke.startNewSubPath (x0, y0);
+            spoke.lineTo (x1, y1);
+            g.strokePath (spoke, juce::PathStrokeType (1.5f,
+                juce::PathStrokeType::mitered, juce::PathStrokeType::rounded));
+        }
     }
 
     //==========================================================================
