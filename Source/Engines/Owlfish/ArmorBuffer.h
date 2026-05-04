@@ -13,7 +13,7 @@ namespace xowlfish
 //
 // The barreleye owlfish sacrifices its transparent cranial shield on impact,
 // releasing a burst of captured sonic material. On velocity trigger:
-//   1. Last 2048 samples of input history are frozen into a capture buffer
+//   1. Last 4096 samples of input history are frozen into a capture buffer
 //   2. 8 grains spawn at random positions with pitch scatter
 //   3. Grains feed through a feedback delay line
 //   4. The main signal is ducked to make room for the armor burst
@@ -189,7 +189,10 @@ public:
     bool isActive() const { return armed; }
 
 private:
-    static constexpr int kHistorySize = 2048;
+    // 4096 samples: covers ~42.7ms at 96kHz (was 2048 → ~21ms at 96kHz, halving
+    // the capture window). At 44.1kHz, 4096 samples = ~92.9ms. Power-of-2 preserved
+    // so all & (kHistorySize - 1) bitmasks remain valid.
+    static constexpr int kHistorySize = 4096;
     static constexpr int kMaxDelay = 22050;
     static constexpr int kNumGrains = 8;
 
