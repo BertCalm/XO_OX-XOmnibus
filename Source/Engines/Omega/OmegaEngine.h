@@ -176,8 +176,10 @@ struct OmegaVoice
     float gravityMass = 0.0f;
     float noteHeldTime = 0.0f;
 
-    // Noise/impurity state
-    uint32_t noiseState = 12345u;
+    // Noise/impurity state. Seeded in OmegaEngine::prepare() per voice index.
+    // Default 0xDEAD0000u avoids all-zero LCG collapse while remaining a
+    // non-deterministic sentinel before prepare() is called.
+    uint32_t noiseState = 0xDEAD0000u;
 
     float panL = 0.707f, panR = 0.707f;
 
@@ -205,7 +207,10 @@ struct OmegaVoice
         outputFilter.reset();
         lfo1.reset();
         lfo2.reset();
-        noiseState = 12345u;
+        // P36 fix: noiseState intentionally NOT reset here. OmegaEngine::prepare()
+        // seeds each voice from (voiceIndex * 7919 + 42) to ensure instance and
+        // voice independence. Resetting to 12345u here would clobber that seeding
+        // whenever OmegaEngine::reset() is called (e.g. on DAW stop/restart).
         dcX1 = 0.0f;
         dcY1 = 0.0f;
     }
@@ -241,12 +246,17 @@ public:
         srf = static_cast<float>(sr);
         inverseSr_ = 1.0f / srf;
 
+        // P36 fix: seed per-voice noiseState AFTER reset() so reset() can no longer
+        // clobber it back to the default. XOR sr bits to make instances running at
+        // the same (or different) sample rates produce distinct noise sequences.
+        uint32_t srBits = 0u;
+        std::memcpy(&srBits, &srf, sizeof(srBits));
         for (int i = 0; i < kMaxVoices; ++i)
         {
             voices[i].reset();
             voices[i].ampEnv.prepare(srf);
             voices[i].filterEnv.prepare(srf);
-            voices[i].noiseState = static_cast<uint32_t>(i * 7919 + 42);
+            voices[i].noiseState = (srBits ^ 0xDEAD1234u) + static_cast<uint32_t>(i * 7919u + 42u);
         }
 
         smoothModIndex.prepare(srf);
