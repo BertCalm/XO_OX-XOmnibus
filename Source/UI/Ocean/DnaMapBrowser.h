@@ -72,7 +72,9 @@ struct PresetDot
         screenX = viewOffset_.x + mapX * getWidth()  * viewScale_
         screenY = viewOffset_.y + (1 - mapY) * getHeight() * viewScale_   (Y flipped)
 */
-class DnaMapBrowser : public juce::Component, private juce::AsyncUpdater
+class DnaMapBrowser : public juce::Component,
+                      public juce::TooltipClient,   // Phase 6a: region dispatch for paint-only controls
+                      private juce::AsyncUpdater
 {
 public:
     //==========================================================================
@@ -100,10 +102,7 @@ public:
         diveButton_.setMouseCursor(juce::MouseCursor::PointingHandCursor);
         diveButton_.onClick = [this]() { diveToRandomPreset(); };
         diveButton_.setTooltip("Click to load a random preset or use filters to narrow the dive");
-        // TODO(W1-B1): tooltip needs design — search bar and mood pills are paint-only (no JUCE
-        // component target). To wire anchor #3 ("Type to filter presets or press Escape to exit"),
-        // promote searchBarBounds_ to a juce::TextEditor child or implement TooltipClient on
-        // DnaMapBrowser with region-based getTooltip(). Mood pill tooltips blocked by same issue.
+        // Phase 6a: anchor #3 and mood pill tooltips wired via getTooltip() region dispatch below.
     }
 
     ~DnaMapBrowser() override
@@ -172,6 +171,18 @@ public:
         diveButton_.setBounds(getWidth() - kDiveBtnW - kDiveMargin,
                               kSearchBarMarginTop,
                               kDiveBtnW, kDiveBtnH);
+    }
+
+        // Phase 6a: juce::TooltipClient — region dispatch for paint-only interactive areas.
+    juce::String getTooltip() override
+    {
+        const auto pos = getMouseXYRelative();
+        if (searchBarBounds_.contains(pos))
+            return "Type to filter presets or press Escape to exit";
+        for (const auto& pill : moodPills_)
+            if (pill.bounds.contains(pos))
+                return "Click to filter by " + pill.name + " mood or click again to clear";
+        return {};
     }
 
     void mouseDown(const juce::MouseEvent& e) override

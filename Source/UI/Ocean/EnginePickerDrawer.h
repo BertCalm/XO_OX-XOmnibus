@@ -55,7 +55,8 @@ namespace xoceanus
 
 //==============================================================================
 class EnginePickerDrawer : public juce::Component,
-                           public juce::Timer
+                           public juce::Timer,
+                           public juce::TooltipClient  // Phase 6b: region dispatch for paint-only close button
 {
 public:
     //==========================================================================
@@ -91,6 +92,14 @@ public:
 
     // juce::Timer override
     void timerCallback() override;
+
+    // Phase 6b: juce::TooltipClient — region dispatch for paint-only close button.
+    juce::String getTooltip() override
+    {
+        if (closeBtnBounds_.contains(getMouseXYRelative()))
+            return "Click to close the engine picker and return to the ocean";
+        return {};
+    }
 
     //==========================================================================
     // Constants
@@ -385,9 +394,7 @@ private:
     bool gradsCacheValid_ = false;
 
     // Close button bounds (local component coords) + hover state
-    // TODO(W1-B1): tooltip needs design — close button is paint-only (not a juce::Component).
-    // To wire a tooltip, promote to a real juce::TextButton child or implement TooltipClient
-    // on EnginePickerDrawer with a region-based getTooltip() override.
+    // Phase 6b: tooltip wired via TooltipClient::getTooltip() region dispatch above.
     juce::Rectangle<int> closeBtnBounds_;
     bool                 closeBtnHovered_ = false;
 
