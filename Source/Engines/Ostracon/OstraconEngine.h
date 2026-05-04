@@ -224,8 +224,11 @@ public:
         aftertouchValue = 0.0f;
         pitchBendNorm   = 0.0f;
 
-        // Noise LCG seed
-        noiseState = 12345u;
+        // P36 fix: seed noise LCG from sr bits so different plugin instances (and
+        // different sample rates) produce distinct noise sequences from the first block.
+        uint32_t srBits = 0u;
+        std::memcpy(&srBits, &currentSampleRate, sizeof(srBits));
+        noiseState = srBits ^ 0xDEAD1234u;
 
         frozen = false;
     }
@@ -1425,7 +1428,9 @@ private:
     //  N O I S E   G E N E R A T O R
     //==========================================================================
 
-    uint32_t noiseState = 12345u;
+    // P36 fix: seeded from sr bits in prepare() — not a hardcoded constant.
+    // Default 0xDEAD0000u is a non-colliding sentinel before prepare() runs.
+    uint32_t noiseState = 0xDEAD0000u;
 
     //==========================================================================
     //  C O U P L I N G   A C C U M U L A T O R S

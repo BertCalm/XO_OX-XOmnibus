@@ -55,7 +55,8 @@ namespace xoceanus
 
 //==============================================================================
 class EnginePickerDrawer : public juce::Component,
-                           public juce::Timer
+                           public juce::Timer,
+                           public juce::TooltipClient  // Phase 6b: region dispatch for paint-only close button
 {
 public:
     //==========================================================================
@@ -90,6 +91,14 @@ public:
     void mouseExit(const juce::MouseEvent& e) override;
 
     // juce::Timer override
+    // Phase 6b: juce::TooltipClient — close button region dispatch.
+    juce::String getTooltip() override
+    {
+        if (closeBtnBounds_.contains(getMouseXYRelative()))
+            return "Click to close the engine picker and return to the ocean";
+        return {};
+    }
+
     void timerCallback() override;
 
     //==========================================================================
@@ -385,6 +394,7 @@ private:
     bool gradsCacheValid_ = false;
 
     // Close button bounds (local component coords) + hover state
+    // Phase 6b: tooltip wired via TooltipClient::getTooltip() region dispatch above.
     juce::Rectangle<int> closeBtnBounds_;
     bool                 closeBtnHovered_ = false;
 
@@ -418,14 +428,29 @@ inline EnginePickerDrawer::EnginePickerDrawer()
     searchField_.setFont(GalleryFonts::body(13.0f));
     searchField_.setReturnKeyStartsNewLine(false);
     searchField_.onTextChange = [this] { updateFilter(); };
+    searchField_.setTooltip("Type here to search by name, archetype, or category");
     addAndMakeVisible(searchField_);
 
     // ── Category pill buttons ─────────────────────────────────────────────────
+    // Tooltip strings per filter pill — brief, imperative, consequence-focused
+    static const char* kPillTips[kNumCats] = {
+        "Show all engines",
+        "Filter to synthesizer engines",
+        "Filter to percussion engines",
+        "Filter to bass engines",
+        "Filter to pad engines",
+        "Filter to string engines",
+        "Filter to organ engines",
+        "Filter to vocal engines",
+        "Filter to FX engines",
+        "Filter to utility engines",
+    };
     for (int i = 0; i < kNumCats; ++i)
     {
         catBtns_[i].setButtonText(kFilterLabel(i));
         catBtns_[i].setClickingTogglesState(false);
         catBtns_[i].setLookAndFeel(&pillLnF_);
+        catBtns_[i].setTooltip(kPillTips[i]);
         const int idx = i;
         catBtns_[i].onClick = [this, idx]
         {

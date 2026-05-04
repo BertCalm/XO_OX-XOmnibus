@@ -130,7 +130,8 @@ struct OllotronVoice
     bool  clickActive  = false;
 
     // ---- PRNG for hiss + noise sources ----
-    uint32_t rng = 12345u;
+    // P36 fix: seeded per-voice from (srBits ^ 0xDEAD1234u) + voiceIdx*31337u in reset().
+    uint32_t rng = 0xDEAD0000u;
 
     // ---- Coupling AudioToWavetable ring buffer (per voice) ----
     // When bank==User and AudioToWavetable coupling is active, this buffer
@@ -199,7 +200,13 @@ struct OllotronVoice
         if (sr > 0.0f)
             clickDecay = std::exp(-1.0f / (0.015f * sr));
 
-        rng = 12345u + static_cast<uint32_t>(voiceIdx) * 31337u;
+        // P36 fix: XOR sr bits into the per-voice seed so different plugin instances
+        // running at the same (or different) sample rate produce distinct hiss/noise
+        // sequences. Constant formula 12345 + voiceIdx*31337 was identical across all
+        // instances at the same sr, defeating stereo independence in multi-instance use.
+        uint32_t srBits = 0u;
+        std::memcpy(&srBits, &sr, sizeof(srBits));
+        rng = (srBits ^ 0xDEAD1234u) + static_cast<uint32_t>(voiceIdx) * 31337u;
     }
 };
 
