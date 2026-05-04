@@ -189,8 +189,12 @@ public:
         pressureState.reset();
         noteCounter = 0;
 
-        // Release burst noise RNG
-        noiseRng = 42u;
+        // P36 fix: Release burst noise RNG — seed from sr bits so instances at the
+        // same sample rate produce distinct burst patterns. Fixed seed 42u was
+        // identical across all instances, making simultaneous releases sound in unison.
+        uint32_t srBits = 0u;
+        std::memcpy(&srBits, &srF, sizeof(srBits));
+        noiseRng = srBits ^ 0xDEAD1234u;
 
         silenceGate.prepare(sr, maxBlockSize);
         silenceGate.setHoldTime(500.0f);
@@ -213,7 +217,8 @@ public:
         pitchBendNorm = 0.0f;
         brothConcentrateDark = 0.0f;
         noteCounter = 0;
-        noiseRng = 42u;
+        // P36 fix: noiseRng intentionally NOT reset to 42u here.
+        // prepare() seeds it from sr bits for instance independence.
         whistlePhase = 0.0f;
     }
 
@@ -789,7 +794,8 @@ private:
     BreathingLFO breathLfo;
 
     float whistlePhase = 0.0f;
-    uint32_t noiseRng = 42u;
+    // P36 fix: seeded from sr bits in prepare() — not a hardcoded constant.
+    uint32_t noiseRng = 0xDEAD0000u;
 
     float aftertouch = 0.0f;
     float modWheel = 0.0f;

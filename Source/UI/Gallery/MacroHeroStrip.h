@@ -19,7 +19,8 @@ namespace xoceanus
 // Macro param discovery: iterates APVTS for params matching "{prefix}_macro*"
 // (up to 4 collected in declaration order). If fewer than 4 are found the
 // remaining pillars are hidden. If none are found the strip hides itself.
-class MacroHeroStrip : public juce::Component
+class MacroHeroStrip : public juce::Component,
+                       public juce::SettableTooltipClient
 {
 public:
     explicit MacroHeroStrip(XOceanusProcessor& proc) : processor(proc)

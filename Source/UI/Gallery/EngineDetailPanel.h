@@ -42,6 +42,7 @@ public:
         enableToggle_.setButtonText("SEQ");
         enableToggle_.setColour(juce::ToggleButton::textColourId, juce::Colour(127, 219, 202));
         enableToggle_.setColour(juce::ToggleButton::tickColourId, juce::Colour(127, 219, 202));
+        enableToggle_.setTooltip("Toggle the pattern sequencer on or off for this slot");
         addAndMakeVisible(enableToggle_);
 
         // Family dropdown (scopes pattern choices; state is UI-only, not APVTS)
@@ -53,8 +54,10 @@ public:
         familyBox_.addItem("Storms",  6);
         familyBox_.setSelectedItemIndex(0, juce::dontSendNotification);
         familyBox_.onChange = [this] { rebuildPatternBox(); };
+        familyBox_.setTooltip("Select a pattern family to scope available rhythmic patterns");
         addAndMakeVisible(familyBox_);
 
+        patternBox_.setTooltip("Select a rhythm pattern to drive the sequencer for this slot");
         addAndMakeVisible(patternBox_);
 
         // Clock division dropdown
@@ -63,6 +66,7 @@ public:
         clockBox_.addItem("1/16", 3);
         clockBox_.addItem("1/32", 4);
         clockBox_.setSelectedItemIndex(2, juce::dontSendNotification);
+        clockBox_.setTooltip("Select clock division to set the sequencer step rate");
         addAndMakeVisible(clockBox_);
 
         // Sliders
@@ -76,9 +80,13 @@ public:
             addAndMakeVisible(s);
         }
         stepsSlider_.setRange(1.0, 16.0, 1.0);   stepsSlider_.setValue(16.0);
+        stepsSlider_.setTooltip("Drag to set the number of active steps in the sequence");
         humanizeSlider_.setRange(0.0, 1.0, 0.01); humanizeSlider_.setValue(0.0);
+        humanizeSlider_.setTooltip("Drag to add timing variation for a more human feel");
         baseVelSlider_.setRange(0.0, 1.0, 0.01);  baseVelSlider_.setValue(0.75);
+        baseVelSlider_.setTooltip("Drag to set the base note velocity for sequenced steps");
         rootNoteSlider_.setRange(0.0, 127.0, 1.0); rootNoteSlider_.setValue(60.0);
+        rootNoteSlider_.setTooltip("Drag to transpose the sequence root note up or down");
 
         rebuildPatternBox();
     }
@@ -358,6 +366,7 @@ public:
     explicit EngineDetailPanel(XOceanusProcessor& proc) : processor(proc), macroHero(proc), waveformDisplay(proc), modMatrix_(proc.getAPVTS()), seqSection_(proc.getAPVTS())
     {
         macroHero.setCompactMode(true); // Zone 2: no header, sliders fill height
+        macroHero.setTooltip("Adjust core performance faders or right-click to map MIDI");
         addAndMakeVisible(macroHero);
         addAndMakeVisible(viewport);
         // Disable scroll-on-drag — it steals vertical mouse drags from
@@ -389,6 +398,12 @@ public:
 
         // ADSR horizontal sliders — custom thick-track LookAndFeel
         static const char* adsrNames[] = {"A", "D", "S", "R"};
+        static const char* adsrTips[]  = {
+            "Drag to set attack time or hold Shift for fine adjustment",
+            "Drag to set decay time or hold Shift for fine adjustment",
+            "Drag to set sustain level or hold Shift for fine adjustment",
+            "Drag to set release time or hold Shift for fine adjustment",
+        };
         for (int i = 0; i < 4; ++i)
         {
             adsrSliders[i].setLookAndFeel(&adsrSliderLnF);
@@ -399,6 +414,7 @@ public:
             adsrSliders[i].setColour(juce::Slider::backgroundColourId, juce::Colour(60, 70, 85));
             adsrSliders[i].setRange(0.0, 1.0, 0.001);
             adsrSliders[i].setValue(0.5);
+            adsrSliders[i].setTooltip(adsrTips[i]);
             addAndMakeVisible(adsrSliders[i]);
 
             adsrSliderLabels[i].setText(adsrNames[i], juce::dontSendNotification);

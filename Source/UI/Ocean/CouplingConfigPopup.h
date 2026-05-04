@@ -47,6 +47,7 @@ public:
             updateFlowDisplay();
             repaint();
         };
+        typeSelector_.setTooltip("Select a tiered coupling behavior to dynamically update routing");
         addAndMakeVisible(typeSelector_);
 
         // Depth slider — copper thumb (D10: coupling = warm copper/amber family)
@@ -56,9 +57,15 @@ public:
         depthSlider_.setTextBoxStyle(juce::Slider::TextBoxRight, false, 40, 20);
         depthSlider_.setColour(juce::Slider::thumbColourId, XOceanus::AccentColors::couplingAccent);
         depthSlider_.setColour(juce::Slider::trackColourId, XOceanus::AccentColors::couplingDim.withAlpha(0.4f));
+        depthSlider_.setTooltip("Drag to set coupling depth or hold Shift for fine adjustment");
         addAndMakeVisible(depthSlider_);
 
         // Direction buttons
+        static const char* kDirTips[3] = {
+            "Select A-to-B routing — source modulates destination",
+            "Select B-to-A routing — destination modulates source",
+            "Select bidirectional routing — both engines modulate each other",
+        };
         for (int i = 0; i < 3; ++i)
         {
             auto* btn = dirButtons_.add(new juce::TextButton(i == 0 ? juce::String::charToString(0x2192)  // →
@@ -66,6 +73,7 @@ public:
                                                                      : juce::String::charToString(0x2194))); // ↔
             btn->setColour(juce::TextButton::buttonColourId, juce::Colour(200, 204, 216).withAlpha(0.04f));
             btn->setColour(juce::TextButton::textColourOffId, juce::Colour(200, 204, 216).withAlpha(0.5f));
+            btn->setTooltip(kDirTips[i]);
             btn->onClick = [this, i]()
             {
                 activeDir_ = i;
@@ -81,6 +89,7 @@ public:
         doneBtn_.setButtonText("Done");
         doneBtn_.setColour(juce::TextButton::buttonColourId, XOceanus::AccentColors::couplingPrimary.withAlpha(0.15f));
         doneBtn_.setColour(juce::TextButton::textColourOffId, XOceanus::AccentColors::couplingBright);
+        doneBtn_.setTooltip("Confirm settings and close this coupling popup");
         doneBtn_.onClick = [this]() { hide(); };
         addAndMakeVisible(doneBtn_);
 
@@ -88,6 +97,7 @@ public:
         removeBtn_.setButtonText("Remove");
         removeBtn_.setColour(juce::TextButton::buttonColourId, juce::Colours::transparentBlack);
         removeBtn_.setColour(juce::TextButton::textColourOffId, juce::Colour(239, 68, 68).withAlpha(0.6f));
+        removeBtn_.setTooltip("Remove this coupling route permanently");
         removeBtn_.onClick = [this]()
         {
             if (onRemove) onRemove(currentRouteIndex_);
