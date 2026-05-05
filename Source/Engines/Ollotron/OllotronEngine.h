@@ -1776,6 +1776,8 @@ private:
 
     // Group M: Mod Matrix (managed by ModMatrix<8>)
     // No raw pointers needed here — modMatrix_ holds them.
+
+    // noop: retrigger CI (path-filter quirk)
 };
 
 } // namespace xoceanus
