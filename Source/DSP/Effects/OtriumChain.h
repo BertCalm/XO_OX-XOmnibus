@@ -59,6 +59,7 @@ public:
         mixSmoothed_.setCurrentAndTargetValue(1.0f);
         envA_ = envB_ = envC_ = 0.0f;
         lfoPhase_ = 0.0f;
+        driftPhase_ = 0.0f;
         chaoticOffsetB_ = juce::degreesToRadians(120.0f);
         chaoticOffsetC_ = juce::degreesToRadians(240.0f);
         chaoticRng_ = 0x9E3779B9u; // golden-ratio seed; deterministic per reset
@@ -72,6 +73,13 @@ public:
     // audio starts). Read lock-free per block to pull partner mono mix for
     // each of the 3 envelope followers.
     void setPartnerAudioBus(const PartnerAudioBus* bus) noexcept { partnerBus_ = bus; }
+
+    // Inject the engine slot Otrium itself is hosted on (0..3), or -1 if the
+    // host doesn't expose that information. When set ≥ 0, partner indices that
+    // resolve to this slot are rotated to the next available partner so the
+    // chain never reads its own pre-FX output as a "partner". Defaults to -1
+    // (no protection) so existing call sites are unchanged.
+    void setHostEngineSlot(int slot) noexcept { hostEngineSlot_ = slot; }
 
     // Real DSP — 3-partner phase-staggered cross-ducking.
     void processBlock(float* L, float* R, int numSamples,
@@ -89,9 +97,9 @@ public:
         const float phaseSkewDeg = pPhaseSkew_     ? pPhaseSkew_->load(std::memory_order_relaxed)     : 120.0f;
         const float couplingAmt  = pCouplingDepth_ ? pCouplingDepth_->load(std::memory_order_relaxed) : 0.5f;
         const float dnaTilt      = pDnaTilt_       ? pDnaTilt_->load(std::memory_order_relaxed)       : 0.0f;
-        const int   idxA         = pPartnerA_      ? clampSlot(pPartnerA_->load(std::memory_order_relaxed)) : 0;
-        const int   idxB         = pPartnerB_      ? clampSlot(pPartnerB_->load(std::memory_order_relaxed)) : 1;
-        const int   idxC         = pPartnerC_      ? clampSlot(pPartnerC_->load(std::memory_order_relaxed)) : 2;
+        const int   idxA         = pPartnerA_      ? resolvePartnerSlot(pPartnerA_->load(std::memory_order_relaxed), 0) : 0;
+        const int   idxB         = pPartnerB_      ? resolvePartnerSlot(pPartnerB_->load(std::memory_order_relaxed), 1) : 1;
+        const int   idxC         = pPartnerC_      ? resolvePartnerSlot(pPartnerC_->load(std::memory_order_relaxed), 2) : 2;
         const int   topology     = pTopology_      ? static_cast<int>(pTopology_->load(std::memory_order_relaxed) + 0.5f) : 0;
         const bool  syncOn       = pSyncMode_      ? pSyncMode_->load(std::memory_order_relaxed) >= 0.5f                  : false;
 
@@ -109,8 +117,15 @@ public:
                                   : 0.0f;
 
         // ---- Sync mode: reinterpret pumpRate as cycles-per-beat when locked ----
-        // Free  → pumpRate is Hz directly (D005 floor at 0.001 Hz applies).
+        // Free  → pumpRate is Hz directly. The D005 0.001 Hz floor is enforced
+        //          by pumpRate's parameter range (see addParameters), so Free
+        //          mode satisfies the doctrine floor by construction.
         // Sync  → pumpRate is cycles per beat; effective Hz = pumpRate * bpm / 60.
+        //          NOTE: in Sync the effective rate can dip below the Free-mode
+        //          floor at low tempos (e.g. 0.001 cycles-per-beat × 30 BPM ≈
+        //          0.5 mHz). This is intentional — Sync trades the Free floor
+        //          for tempo-locking, and slower-than-floor rates are valid
+        //          long-form content for triangle-of-pads patches.
         //          When bpm is unknown (offline render, no transport), fall back
         //          to Free behaviour so the chain never falls silent.
         const float effectiveRateHz = (syncOn && bpm > 0.0)
@@ -125,22 +140,35 @@ public:
 
         // ---- Topology: per-partner phase offset routing ----
         //   Equilateral (0): fixed 120° / 240° — phaseSkew ignored, perfect triangle
-        //   Isoceles    (1): user phaseSkew between A↔B and B↔C (current behaviour)
+        //   Isosceles   (1): user phaseSkew between A↔B and B↔C (current behaviour)
         //   Chaotic     (2): per-partner offsets re-randomised on every LFO wrap
         //                    (deterministic LCG seed, audible but reproducible)
-        //   Cyclical    (3): user skew, but offsets rotate slowly (skew + driftAngle)
-        //                    creating a continuous through-zero phase walk
+        //   Cyclical    (3): user skew + a separate slow drift phase that
+        //                    accumulates at 1/8 of the LFO rate. Adding the
+        //                    same drift to both partners (and 2× to C) rotates
+        //                    the triangle as a unit without detuning the LFOs.
         constexpr int kTopoEq = 0, kTopoIso = 1, kTopoChaos = 2, kTopoCyc = 3;
         const float skewRad = (topology == kTopoEq)
                                   ? juce::degreesToRadians(120.0f)
                                   : juce::degreesToRadians(phaseSkewDeg);
 
-        // ---- DNA tilt: scale depth by partner aggression on slot 0 ----
-        // Partner DNA (per spec) modulates duck spectrum; scaffold uses depth.
-        // Real implementation may route this into a tilt EQ on the duck path.
+        // Cyclical drift increment — 1/8 of the LFO step, accumulated *outside*
+        // the LFO wrap so the triangle rotates continuously across cycles.
+        const float driftInc = lfoInc * 0.125f;
+
+        // ---- DNA tilt: scale depth by *partner* aggression (averaged) ----
+        // Spec §2: dnaTilt should respond to the engines actually being ducked.
+        // The previous scaffold sampled slot 0 unconditionally — fixed in the
+        // 2026-05-01 seance follow-up. Average aggression across the three
+        // selected partners (idxA/B/C); fall back to neutral 0.5 if no bus.
         float aggression = 0.5f;
         if (dnaBus_)
-            aggression = dnaBus_->get(0, DNAModulationBus::Axis::Aggression);
+        {
+            const float aggA = dnaBus_->get(idxA, DNAModulationBus::Axis::Aggression);
+            const float aggB = dnaBus_->get(idxB, DNAModulationBus::Axis::Aggression);
+            const float aggC = dnaBus_->get(idxC, DNAModulationBus::Axis::Aggression);
+            aggression = (aggA + aggB + aggC) * (1.0f / 3.0f);
+        }
         const float dnaScale = 1.0f + dnaTilt * (aggression - 0.5f) * 2.0f;
 
         for (int i = 0; i < numSamples; ++i)
@@ -165,10 +193,14 @@ public:
                     offsetC = chaoticOffsetC_;
                     break;
                 case kTopoCyc:
-                    // Slow drift: per-partner phase walks at ¹⁄₈ of the LFO rate,
-                    // so the triangle continuously rotates without ever phase-locking.
-                    offsetB = skewRad           + lfoPhase_ * 0.125f;
-                    offsetC = 2.0f * skewRad    + lfoPhase_ * 0.250f;
+                    // Slow continuous rotation: driftPhase_ accumulates at 1/8
+                    // the LFO rate and is *not* reset on LFO wrap, so adding it
+                    // to the partner offsets rotates the whole triangle without
+                    // detuning the partner LFOs (which would just produce
+                    // beating, not rotation). 2× drift on C makes the triangle
+                    // breathe between equilateral and degenerate as it walks.
+                    offsetB = skewRad        + driftPhase_;
+                    offsetC = 2.0f * skewRad + driftPhase_ * 2.0f;
                     break;
                 case kTopoEq:
                 case kTopoIso:
@@ -184,6 +216,10 @@ public:
             const float lfoC = 0.5f + 0.5f * std::sin(lfoPhase_ + offsetC);
 
             lfoPhase_ += lfoInc;
+            // driftPhase_ runs in parallel and does NOT reset on LFO wrap —
+            // that is what makes Cyclical rotate continuously across cycles.
+            driftPhase_ += driftInc;
+            if (driftPhase_ > twoPi) driftPhase_ -= twoPi;
             if (lfoPhase_ > twoPi)
             {
                 lfoPhase_ -= twoPi;
@@ -242,7 +278,7 @@ public:
             juce::NormalisableRange<float>(0.0f, 360.0f), 120.0f));
         layout.add(std::make_unique<juce::AudioParameterChoice>(
             juce::ParameterID(p + "topology", 1), "OTRM Topology",
-            juce::StringArray{"Equilateral", "Isoceles", "Chaotic", "Cyclical"}, 0));
+            juce::StringArray{"Equilateral", "Isosceles", "Chaotic", "Cyclical"}, 0));
         layout.add(std::make_unique<juce::AudioParameterInt>(
             juce::ParameterID(p + "partnerA_idx", 1), "OTRM Partner A", 0, 3, 0));
         layout.add(std::make_unique<juce::AudioParameterInt>(
@@ -290,6 +326,23 @@ private:
         return n < 0 ? 0 : (n > 3 ? 3 : n);
     }
 
+    // Resolve a partner-index parameter value into a final engine slot, with
+    // optional self-routing protection. If the user picks the slot Otrium
+    // itself is hosted on, rotate to the *next* available partner deterministically
+    // (host slot + 1, modulo 4). When hostEngineSlot_ < 0 (default), no
+    // rotation happens — behaviour is identical to the bare clampSlot.
+    // partnerLetter ∈ {0,1,2} only used to keep the rotation deterministic per
+    // partner (so A and B don't both collapse onto the same fallback).
+    int resolvePartnerSlot(float v, int partnerLetter) const noexcept
+    {
+        const int raw = clampSlot(v);
+        if (hostEngineSlot_ < 0 || raw != hostEngineSlot_)
+            return raw;
+        // Self-route: rotate forward, skipping host. partnerLetter ensures A/B/C
+        // land on distinct fallbacks (host+1, host+2, host+3 mod 4).
+        return (hostEngineSlot_ + 1 + partnerLetter) & 3;
+    }
+
     double sr_ = 0.0;
 
     juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> pumpDepthSmoothed_;
@@ -299,6 +352,10 @@ private:
     float envA_ = 0.0f, envB_ = 0.0f, envC_ = 0.0f;
     // Master LFO phase shared across A/B/C; per-partner phase = phase + offset.
     float lfoPhase_ = 0.0f;
+    // Cyclical-topology drift phase: accumulates at 1/8 the LFO rate and does
+    // not reset on LFO wrap, so adding it to partner offsets rotates the
+    // whole triangle continuously without detuning the partner LFOs.
+    float driftPhase_ = 0.0f;
     // Chaotic-topology state: per-partner randomised phase offsets, reseeded
     // on every LFO wrap. LCG state is deterministic (reset via reset()).
     float chaoticOffsetB_ = 0.0f, chaoticOffsetC_ = 0.0f;
@@ -322,6 +379,10 @@ private:
     // audio thread (single-writer / single-reader before-after pattern).
     const DNAModulationBus*  dnaBus_     = nullptr;
     const PartnerAudioBus*   partnerBus_ = nullptr;
+
+    // Engine slot Otrium is hosted on (0..3), or -1 to disable self-routing
+    // protection. Set once on message thread; read lock-free on audio thread.
+    int hostEngineSlot_ = -1;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OtriumChain)
 };

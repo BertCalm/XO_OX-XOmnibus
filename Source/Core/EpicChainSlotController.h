@@ -354,10 +354,14 @@ inline void EpicChainSlotController::setDNABus(const DNAModulationBus* bus) noex
 
 inline void EpicChainSlotController::setPartnerAudioBus(const PartnerAudioBus* bus) noexcept
 {
-    // Only Otrium consumes partner audio in Pack 1; Oblate/Oligo will
-    // receive their own bus pointers when their real DSP lands.
+    // Pack 1: all three chains consume partner audio. Otrium triangular ducks,
+    // Oligo per-band sidechain ducks, Oblate STFT-gates by partner spectrum.
     for (auto& slot : slots_)
+    {
         slot.otrium.setPartnerAudioBus(bus);
+        slot.oligo.setPartnerAudioBus(bus);
+        slot.oblate.setPartnerAudioBus(bus);
+    }
 }
 
 inline void EpicChainSlotController::processBlock(juce::AudioBuffer<float>& buffer,

@@ -7,6 +7,8 @@
 **Shipping PR:** #1355 (merged 2026-04-30)
 **First seance** — no prior verdict.
 
+> **Status update (post-fix, 2026-05-01).** The verdict below is the *pre-fix* snapshot taken against #1355 at HEAD. Recommendation items 1 + 2 (`otrm_topology` and `otrm_syncMode` wiring, D004's two failures) were resolved in PR #1474 immediately after this seance. The doctrine table, score, and dead-param notes are preserved verbatim as the historical record; treat them as the snapshot the fix was authored against, not as current defects. Re-seance after item 5 (demo presets) lands.
+
 > **Note on protocol scope.** The seance methodology was designed for engines in `Source/Engines/`; Otrium is an FX chain. The criteria are adapted: no init patch, no `getSampleForCoupling()`, no MIDI handling at the chain layer (host-routed). What stays in scope: doctrine compliance, sonic intent, demo-preset pipeline, coupling-source publishing, spec-vs-implementation drift.
 
 ---
@@ -35,7 +37,7 @@
 | D001 velocity → timbre | **PASS (indirect)** | FX chains are downstream of voicing; velocity arrives via DNA aggression → `dnaTilt` → depth. Spec-aligned. |
 | D002 modulation | **PASS (weak)** | 3 envs + master LFO + DNA + couplingDepth blend. But **coupling sources `otrm.envA/B/C`, `phaseAngle`, `totalDuck` are not published** — spec §2 listed these and there is no publishing mechanism. The chain consumes coupling but does not emit it. |
 | D003 physics | **N/A** | Control FX. |
-| D004 dead params | **FAIL** | `otrm_topology` (Equilateral / Isoceles / Chaotic / Cyclical) and `otrm_syncMode` (Free / Sync) are declared, *not cached*, and have no audible effect (`OtriumChain.h:220-221` explicitly defer them). Two of thirteen = 15 % dead. |
+| D004 dead params | **FAIL** | `otrm_topology` (Equilateral / Isosceles / Chaotic / Cyclical) and `otrm_syncMode` (Free / Sync) are declared, *not cached*, and have no audible effect (`OtriumChain.h:220-221` explicitly defer them). Two of thirteen = 15 % dead. |
 | D005 must breathe | **PASS** | `pumpRate` range `0.001f, 40.0f` (`OtriumChain.h:171`). Floor satisfied. |
 | D006 expression | **PASS (host-routed)** | Aftertouch / mod-wheel route to any `otrm_*` via the host's CC matrix. No chain-layer MIDI, by design for FX. |
 
@@ -52,7 +54,7 @@
 - Audible result: the input is one stereo signal, so 3 separate paths and 1 path with mean-gain are mathematically equivalent **as long as the input is the same for all three**. The spec's intent — that A/B/C be three distinct audio sources from partners — is *not realised*: the chain's stereo input is the upstream FX bus, not three engine slots. The partner audio is read into envelope followers only; partner audio is never routed into the wet path.
 - This is the architectural pivot the PR description called "Path A": Otrium pulls partner *envelopes* but ducks its own input. That's a clean simplification, but it means **"Three-Way Pad" (3 atmosphere engines)** as a preset cannot work the way the spec described — only the one engine routed *through* Otrium is in the audio path; the other two contribute envelopes only.
 
-**Character range:** Excellent on paper (Equilateral / Isoceles / Chaotic / Cyclical via skew + topology). In practice, only `phaseSkew` varies the triangle — `topology` is dead. Range collapses from 4 distinct routings to "skew angle".
+**Character range:** Excellent on paper (Equilateral / Isosceles / Chaotic / Cyclical via skew + topology). In practice, only `phaseSkew` varies the triangle — `topology` is dead. Range collapses from 4 distinct routings to "skew angle".
 
 ---
 
@@ -89,7 +91,7 @@
 
 ## Recommendations (priority-ordered)
 
-1. **[D004 blocker, ~30 LOC]** Wire `otrm_topology`. Suggested mapping: Equilateral = 120° fixed skew · Isoceles = `phaseSkew` user-controlled · Chaotic = stochastic per-LFO-period skew · Cyclical = engages `syncMode`. This unlocks the second dead param.
+1. **[D004 blocker, ~30 LOC]** Wire `otrm_topology`. Suggested mapping: Equilateral = 120° fixed skew · Isosceles = `phaseSkew` user-controlled · Chaotic = stochastic per-LFO-period skew · Cyclical = engages `syncMode`. This unlocks the second dead param.
 2. **[D004 blocker, ~50 LOC]** Wire `otrm_syncMode`. Use the `bpm` / `ppqPosition` already passed into `processBlock` (currently ignored at line 75). When Sync, quantize `pumpRate` to beat divisions (1/16 → 32 bars).
 3. **[Coupling correctness, ~5 LOC]** Change line 118 `dnaBus_->get(0, ...)` to read from `idxA/B/C` partners, not slot 0. Either (a) average the three partners' aggression, or (b) sum them weighted by per-partner envelope contribution.
 4. **[Spec compliance, design call]** Either publish `otrm.envA/B/C` + `totalDuck` as coupling sources (requires a `getCouplingSample`-style hook on chains, none exists today), **or** strike them from the spec. Recommend striking — Pack 1's PR description already pivoted to "Path A" and the matrix-publishing direction is closed off.
