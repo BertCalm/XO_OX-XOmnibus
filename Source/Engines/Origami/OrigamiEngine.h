@@ -1469,12 +1469,28 @@ private:
                 float imaginary = voice.fftImaginary[static_cast<size_t>(bin)];
 
                 // Use power-domain magnitude for analysis frame storage.
-                // Floor test in power domain avoids sqrt on near-zero bins;
-                // eliminates the redundant std::max on the common above-floor path.
+                // Floor test in power domain avoids sqrt on near-zero bins.
+                // Above-floor bins: Q_rsqrt approximation (Quake magic, one Newton step,
+                // ~0.2% error) — acceptable for spectral magnitudes. Eliminates 257
+                // std::sqrt calls per hop (~707K/sec at 8-voice, 44.1kHz). (CRIT P-sqrt fix)
                 const float power = real * real + imaginary * imaginary;
-                float magnitude = (power > kMagnitudeFloor * kMagnitudeFloor)
-                    ? std::sqrt(power)
-                    : kMagnitudeFloor;
+                float magnitude;
+                if (power > kMagnitudeFloor * kMagnitudeFloor)
+                {
+                    // fast inverse-sqrt via bit-cast, then sqrt(x) = x * invSqrt(x)
+                    float y = power;
+                    int32_t ybits;
+                    std::memcpy(&ybits, &y, sizeof(ybits));
+                    ybits = 0x5F375A86 - (ybits >> 1);
+                    float invSqrt;
+                    std::memcpy(&invSqrt, &ybits, sizeof(invSqrt));
+                    invSqrt *= (1.5f - 0.5f * power * invSqrt * invSqrt); // one NR step
+                    magnitude = power * invSqrt; // = sqrt(power)
+                }
+                else
+                {
+                    magnitude = kMagnitudeFloor;
+                }
 
                 float binPhase = std::atan2(imaginary, real);
 

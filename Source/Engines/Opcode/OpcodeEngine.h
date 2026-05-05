@@ -526,13 +526,14 @@ public:
                 // Filter — FM EP benefits from gentle LP to tame aliasing at high index.
                 // Tick filter env per sample; refresh SVF coeffs every 16 samples
                 // (~0.36ms @ 44.1k — below audible lag).
+                // Use setCoefficients_fast: mode is always LowPass (set at noteOn),
+                // so shelf-gain branch and mode-cache in setCoefficients() are dead cost.
                 float fEnvMod = voice.filterEnv.process() * pFilterEnvAmt * 4000.0f;
                 if (updateFilter)
                 {
                     float velBright = voice.velocity * 3000.0f;
                     float cutoff = std::clamp(brightNow + fEnvMod + velBright, 200.0f, 20000.0f);
-                    voice.svf.setMode(CytomicSVF::Mode::LowPass);
-                    voice.svf.setCoefficients(cutoff, 0.1f, srf);
+                    voice.svf.setCoefficients_fast(cutoff, 0.1f, srf);
                 }
                 float filtered = voice.svf.processSample(fmOutput);
 
