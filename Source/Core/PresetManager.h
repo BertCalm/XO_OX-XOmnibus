@@ -569,34 +569,6 @@ public:
         return file.replaceWithText(json);
     }
 
-    /** Returns the next non-colliding preset name in the given directory.
-        For "My Preset" with "My Preset.xometa" present -> "My Preset (2)".
-        For "My Preset" with both base and (2) present -> "My Preset (3)". */
-    static juce::String getNextAvailableName(const juce::String& baseName, const juce::File& presetDir)
-    {
-        auto sanitized = juce::File::createLegalFileName(baseName);
-        if (!presetDir.getChildFile(sanitized + ".xometa").existsAsFile())
-            return sanitized;
-
-        for (int n = 2; n < 10000; ++n)
-        {
-            auto candidate = sanitized + " (" + juce::String(n) + ")";
-            if (!presetDir.getChildFile(candidate + ".xometa").existsAsFile())
-                return candidate;
-        }
-        return sanitized + " (" + juce::Time::getCurrentTime().formatted("%H%M%S") + ")"; // fallback
-    }
-
-    /** Returns the canonical user preset directory, creating it if needed. */
-    static juce::File getUserPresetDirectory()
-    {
-        auto dir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
-                       .getChildFile("Application Support/XO_OX/XOceanus/Presets");
-        if (!dir.exists())
-            dir.createDirectory();
-        return dir;
-    }
-
     // Serialize a PresetData to a JSON string.
     juce::String serializeToJSON(const PresetData& preset)
     {
