@@ -94,6 +94,12 @@ class BobOscA
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 — avoids freq/sr=Inf in updatePhaseInc()
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         // FIX-Sound: soft-triangle smoothing coefficient is SR-dependent.
         // Recompute here so triangle character is consistent at 44.1/48/88.2/96 kHz.
@@ -305,6 +311,12 @@ class BobOscB
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 — avoids freq/sr=Inf in updatePhaseInc()
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         reset();
     }
@@ -442,6 +454,12 @@ class BobTextureOsc
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 (host probe or pre-prepare call) — avoids invSR=Inf
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         invSR = 1.0f / static_cast<float>(sr);
         // FIX-Sound: Breath HP coefficient is SR-dependent — recompute on prepare
@@ -549,7 +567,7 @@ public:
 
 private:
     double sr = 0.0;   // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / 44100.0f;  // overwritten by prepare() — avoids per-sample division
+    float invSR = 0.0f; // Sentinel 0.0 — set by prepare(); pre-prepare use is a silent bug at 1/44100
     float breathHPCoeff = 0.001f;   // overwritten by prepare() — SR-correct DC-block coefficient
     int mode = 1;
     float tone = 0.5f;
@@ -584,6 +602,12 @@ class BobSnoutFilter
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 (host probe or pre-prepare call) — avoids invSR=Inf
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         invSR = 1.0f / static_cast<float>(sr);
         reset();
@@ -780,6 +804,12 @@ class BobCuriosityLFO
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 (host probe or pre-prepare call) — avoids invSR=Inf
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         invSR = 1.0f / static_cast<float>(sr);
         sniffSmooth = 0.001f * 44100.0f * invSR;
@@ -1012,6 +1042,12 @@ class BobDustTape
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 (host probe or pre-prepare call) — avoids invSR=Inf
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         invSR = 1.0f / static_cast<float>(sr);
         lpState = 0.0f;
@@ -1051,7 +1087,7 @@ public:
 
 private:
     double sr = 0.0;   // Sentinel: must be set by prepare() before use
-    float invSR = 1.0f / 44100.0f;  // overwritten by prepare()
+    float invSR = 0.0f; // Sentinel 0.0 — set by prepare(); pre-prepare use is a silent bug at 1/44100
     float lpState = 0.0f;
     float lastTone = -1.0f;
     float cachedCoeff = 0.5f;
