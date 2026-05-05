@@ -59,6 +59,8 @@
 #include "FirstHourWalkthrough.h"
 // Session 2C #17: design token surface — depth-ring cursor + color helpers.
 #include "Tokens.h"
+// feat(save-as #1354): rich Save / Save As dialog
+#include "Ocean/SavePresetDialog.h"
 
 namespace xoceanus
 {
@@ -1077,6 +1079,7 @@ public:
                 {
                     processor.applyPreset(preset);
                     pm.setCurrentPreset(preset);
+                    isDirty_ = false; // freshly loaded — not yet modified
                 }
                 catch (const std::exception& e)
                 {
@@ -1125,64 +1128,11 @@ public:
             }
         };
 
-        // onSavePreset — prompt for a name via juce::AlertWindow, then write the
-        // .xometa file via PresetManager::savePresetToFile().
-        // TODO(#1354): A richer "Save As" dialog (overwrite-check, mood selector)
-        // is a follow-up task.  For now, a modal input box is sufficient.
+        // onSavePreset — HUD Save button routes to the same dialog flow as Cmd+S.
+        // feat(#1354): legacy AlertWindow replaced by rich SavePresetDialog.
         oceanView_.onSavePreset = [this]()
         {
-            auto& pm = processor.getPresetManager();
-            const juce::String currentName = pm.getCurrentPreset().name;
-            const juce::String suggestion  = currentName.isEmpty() ? "My Preset" : currentName;
-
-            // takeOwnership=true: JUCE manages lifetime — do NOT delete dialog inside callback.
-            auto* dialog = new juce::AlertWindow(
-                "Save Preset",
-                "Enter a name for this preset:",
-                juce::MessageBoxIconType::NoIcon,
-                this);
-            dialog->addTextEditor("name", suggestion, "Preset name:");
-            dialog->addButton("Save",   1);
-            dialog->addButton("Cancel", 0);
-
-            dialog->enterModalState(
-                true,
-                juce::ModalCallbackFunction::create(
-                    [safeThis = juce::Component::SafePointer<XOceanusEditor>(this), dialog](int result)
-                    {
-                        if (result != 1 || safeThis == nullptr)
-                            return;
-
-                        const juce::String newName = dialog->getTextEditorContents("name").trim();
-                        if (newName.isEmpty())
-                            return;
-
-                        auto& pm2  = safeThis->processor.getPresetManager();
-                        auto  data = pm2.getCurrentPreset();
-                        data.name  = newName;
-
-                        const auto presetDir =
-                            juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
-                                .getChildFile("Application Support/XO_OX/XOceanus/Presets");
-                        presetDir.createDirectory();
-                        const auto file = presetDir.getChildFile(data.name + ".xometa");
-
-                        if (pm2.savePresetToFile(file, data))
-                        {
-                            pm2.setCurrentPreset(data);
-                            ToastOverlay::show("Preset saved: " + data.name, Toast::Level::Info);
-                            // Rescan so the new preset appears in the browser immediately.
-                            if (auto* sb = safeThis->oceanView_.getSidebar())
-                                sb->refreshPresetBrowser();
-                        }
-                        else
-                        {
-                            ToastOverlay::show(
-                                "Failed to save preset — check disk space or permissions.",
-                                Toast::Level::Warn);
-                        }
-                    }),
-                true /* deleteWhenDismissed */);
+            openSavePresetDialog (getCurrentSaveState() == SaveState::NoPresetLoaded);
         };
 
         // onFavToggled — toggle favourite status on the current preset and persist.
@@ -1658,6 +1608,12 @@ public:
         // the processor never receives a dangling listener pointer.
         proc.getModRoutingModel().addListener(&modRouteFlushListener_);
 
+        // feat(#1354): Wire dirty-flag listener so Cmd+S knows when a loaded preset
+        // has been modified.  Any APVTS parameter change marks the state dirty;
+        // loading a preset or saving clears it.
+        dirtyFlagListener_.isDirty = &isDirty_;
+        proc.getAPVTS().state.addListener(&dirtyFlagListener_);
+
         // ── Wave 5 A3: ModMatrixStrip mount ──────────────────────────────────
         // Built after modRouter_ so modModel_ + router references are stable.
         // addPanelToParent() adds the slide-up panel as a direct child of the
@@ -1868,6 +1824,8 @@ public:
         // Wave 5 A1: Remove the mod route flush listener before the editor members
         // are destroyed so the processor never calls back into a freed listener.
         processor.getModRoutingModel().removeListener(&modRouteFlushListener_);
+        // feat(#1354): Remove dirty-flag listener before editor members are destroyed
+        processor.getAPVTS().state.removeListener(&dirtyFlagListener_);
         // Detach the embedded PlaySurface from the processor before the processor
         // goes away, so the MidiMessageCollector pointer is not accessed after dealloc.
         playSurface_.setProcessor(nullptr);
@@ -1948,11 +1906,31 @@ public:
             showOverview();
             return true;
         }
-        // F2-014: Cmd+S — save current preset (mirrors the SAVE button in the sidebar).
-        if (key == juce::KeyPress('s', juce::ModifierKeys::commandModifier, 0))
+        // F2-014: Cmd+S — 3-way state matrix (feat #1354).
+        // NoPresetLoaded: open rich dialog; LoadedModified: silent overwrite; LoadedUnmodified: no-op.
+        if (key == juce::KeyPress ('s', juce::ModifierKeys::commandModifier, 0))
         {
-            if (oceanView_.onSavePreset)
-                oceanView_.onSavePreset();
+            switch (getCurrentSaveState())
+            {
+                case SaveState::NoPresetLoaded:
+                    openSavePresetDialog (/*isFirstSave=*/true);
+                    break;
+                case SaveState::LoadedModified:
+                    silentOverwriteCurrentPreset();
+                    break;
+                case SaveState::LoadedUnmodified:
+                    break; // no-op
+            }
+            return true;
+        }
+        // Cmd+Shift+S — Save As: always opens rich dialog (feat #1354).
+        if (key == juce::KeyPress ('s', juce::ModifierKeys::commandModifier
+                                         | juce::ModifierKeys::shiftModifier, 0))
+        {
+            if (getCurrentSaveState() == SaveState::NoPresetLoaded)
+                openSavePresetDialog (/*isFirstSave=*/true);
+            else
+                openSavePresetDialog (/*isFirstSave=*/false);
             return true;
         }
         // Cmd+Z — undo last parameter change or preset load
@@ -1968,6 +1946,97 @@ public:
             return true;
         }
         return false;
+    }
+
+    //==========================================================================
+    // feat(#1354): Save / Save As helpers
+    //==========================================================================
+
+    /** 3-way classification of the current save state. */
+    enum class SaveState { NoPresetLoaded, LoadedModified, LoadedUnmodified };
+
+    SaveState getCurrentSaveState() const
+    {
+        const auto& preset = processor.getPresetManager().getCurrentPreset();
+        if (preset.name.isEmpty())
+            return SaveState::NoPresetLoaded;
+        return isDirty_ ? SaveState::LoadedModified : SaveState::LoadedUnmodified;
+    }
+
+    /** Silent overwrite of the currently loaded preset (Cmd+S shortcut). */
+    void silentOverwriteCurrentPreset()
+    {
+        auto& pm   = processor.getPresetManager();
+        auto  data = pm.getCurrentPreset();
+        if (data.name.isEmpty()) return; // defensive
+
+        auto target = PresetManager::getUserPresetDirectory()
+                         .getChildFile (data.name + ".xometa");
+
+        if (pm.savePresetToFile (target, data))
+        {
+            isDirty_ = false;
+            pm.setCurrentPreset (data);
+            ToastOverlay::show ("Saved " + data.name, Toast::Level::Info);
+            if (auto* sb = oceanView_.getSidebar())
+                sb->refreshPresetBrowser();
+        }
+        else
+        {
+            ToastOverlay::show ("Save failed — check disk space or permissions.",
+                                Toast::Level::Warn);
+        }
+    }
+
+    /** Open the rich SavePresetDialog (first-save or Save As fork). */
+    void openSavePresetDialog (bool isFirstSave)
+    {
+        auto& pm      = processor.getPresetManager();
+        auto  initial = pm.getCurrentPreset();
+
+        if (! isFirstSave && initial.name.isNotEmpty())
+        {
+            // Save As fork: auto-number the name so dialog opens collision-free.
+            initial.name = PresetManager::getNextAvailableName (
+                initial.name, PresetManager::getUserPresetDirectory());
+        }
+        else if (isFirstSave)
+        {
+            // Fresh state: clear the name so the field is empty.
+            initial.name = {};
+        }
+
+        auto* dialog = new SavePresetDialog (
+            std::move (initial),
+            isFirstSave,
+            [this] (PresetData saved)
+            {
+                // onSave callback — called on successful disk write inside SavePresetDialog.
+                auto& pm2 = processor.getPresetManager();
+                pm2.setCurrentPreset (saved);
+                isDirty_ = false;
+                ToastOverlay::show ("Saved " + saved.name, Toast::Level::Info);
+                if (auto* sb = oceanView_.getSidebar())
+                    sb->refreshPresetBrowser();
+                // Close the dialog window that owns this component.
+                if (auto* dw = findParentComponentOfClass<juce::DialogWindow>())
+                    dw->exitModalState (0);
+            },
+            [this]
+            {
+                // onCancel callback — close the dialog.
+                if (auto* dw = findParentComponentOfClass<juce::DialogWindow>())
+                    dw->exitModalState (0);
+            });
+
+        juce::DialogWindow::LaunchOptions opts;
+        opts.content.setOwned (dialog);
+        opts.dialogTitle                = isFirstSave ? "Save Preset" : "Save Preset As...";
+        opts.dialogBackgroundColour     = XO::Tokens::Color::surface();
+        opts.escapeKeyTriggersCloseButton = true;
+        opts.useNativeTitleBar          = false;
+        opts.resizable                  = false;
+        opts.launchAsync();
     }
 
     // Re-apply theme-sensitive colours to components that use explicit setColour()
@@ -3122,6 +3191,10 @@ private:
     // (voice count increase) and trigger buoy ripple animations.
     std::array<int, 5> prevVoiceCounts_ {};
 
+    // feat(#1354): dirty flag — set true whenever any APVTS parameter changes after
+    // a preset load; cleared on load and on save.  Drives the Cmd+S state matrix.
+    bool isDirty_ = false;
+
     // ── D12: About/Lore modal + O badge brand button ──────────────────────────
     // Both are overlaid on top of OceanView as direct editor children.
     // obadge_ sits in the top-left corner; aboutModal_ is a full-editor-bounds
@@ -3143,6 +3216,16 @@ private:
                 proc->flushModRoutesSnapshot();
         }
     } modRouteFlushListener_;
+
+    // feat(#1354): ValueTree listener that sets isDirty_ = true whenever any APVTS
+    // parameter changes. Declared AFTER modRouteFlushListener_ so destruction order
+    // is safe (both are removed in the destructor before child components tear down).
+    struct DirtyFlagListener : public juce::ValueTree::Listener
+    {
+        bool* isDirty{nullptr};
+        void valueTreePropertyChanged (juce::ValueTree&, const juce::Identifier&) override
+        { if (isDirty != nullptr) *isDirty = true; }
+    } dirtyFlagListener_;
 
     // Wave 5 A3: ModMatrixStrip — 28px footer strip + slide-up panel.
     // Constructed in initOceanView() after modRouter_ is built so that
