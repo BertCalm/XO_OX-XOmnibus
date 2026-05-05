@@ -59,6 +59,8 @@
 #include "FirstHourWalkthrough.h"
 // Session 2C #17: design token surface — depth-ring cursor + color helpers.
 #include "Tokens.h"
+// Cmd+K command palette — fuzzy preset + engine search (#22).
+#include "Ocean/CommandPalette.h"
 
 namespace xoceanus
 {
@@ -1883,6 +1885,13 @@ public:
 
     bool keyPressed(const juce::KeyPress& key) override
     {
+        // Cmd+K opens the command palette (#22).
+        if (key == juce::KeyPress('k', juce::ModifierKeys::commandModifier, 0))
+        {
+            openCommandPalette();
+            return true;
+        }
+
         // Delegate to OceanView first — it handles P (browser), K (PlaySurface),
         // Escape (exit overlay/state), and 1-5 (zoom-in to slot).
         if (oceanView_.keyPressed(key))
@@ -1985,6 +1994,18 @@ public:
     // Signal flow strip mouse interaction (MUST A1-02)
     void mouseDown(const juce::MouseEvent& e) override
     {
+        // Click outside the palette content rect dismisses the palette (#22).
+        if (commandPalette_ != nullptr)
+        {
+            auto contentRect = juce::Rectangle<int>(640, 480)
+                                 .withCentre(getLocalBounds().getCentre());
+            if (!contentRect.contains(e.getPosition()))
+            {
+                closeCommandPalette();
+                return;
+            }
+        }
+
         if (signalFlowStripBounds.contains(e.position.toInt()))
         {
             for (int i = 0; i < 6; ++i)
@@ -2128,6 +2149,10 @@ public:
             // Wave 9c: walkthrough overlay always tracks full editor bounds.
             walkthrough_.setBounds(getLocalBounds());
 
+            // Cmd+K palette (#22): tracks full editor bounds when open.
+            if (commandPalette_ != nullptr)
+                commandPalette_->setBounds(getLocalBounds());
+
             return;
         }
     }
@@ -2148,6 +2173,33 @@ private:
         jassert(juce::MessageManager::getInstance()->isThisTheMessageThread());
         oceanView_.setOrbitPresetName(slotIdx, preset.name);
         abCompare.onPresetLoaded(); // F3-001: capture new state into B slot
+    }
+
+    // ── Cmd+K Command Palette lifecycle (#22) ────────────────────────────────
+
+    void openCommandPalette()
+    {
+        if (commandPalette_ != nullptr) return;  // already open — no-op
+
+        commandPalette_ = std::make_unique<xoceanus::CommandPalette>(
+            processor.getPresetManager(),
+            [this](int slot, std::string engineId) {
+                processor.loadEngine(slot, engineId);
+            },
+            [this] { closeCommandPalette(); }
+        );
+
+        addAndMakeVisible(*commandPalette_);
+        commandPalette_->setBounds(getLocalBounds());
+        commandPalette_->grabSearchFocus();
+    }
+
+    void closeCommandPalette()
+    {
+        if (commandPalette_ == nullptr) return;
+        removeChildComponent(commandPalette_.get());
+        commandPalette_.reset();
+        grabKeyboardFocus();  // restore editor focus
     }
 
     void selectSlot(int slot)
@@ -3172,6 +3224,11 @@ private:
     // setBounds: full editor bounds (set in resized()).
     // addAndMakeVisible: called LAST in constructor so it paints above all panels.
     ToastOverlay toastOverlay_;
+
+    // ── Cmd+K Command Palette (#22) ───────────────────────────────────────────
+    // Overlay created on demand; null when closed. Declared after toastOverlay_
+    // so it is destroyed before the toast layer (reverse order = correct Z order).
+    std::unique_ptr<xoceanus::CommandPalette> commandPalette_;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusEditor)
 };
