@@ -54,6 +54,12 @@ public:
 
     void prepare(double sampleRate, int maxBlockSize) override
     {
+        // P37: guard against sr=0 — avoids freq/sr=Inf in VoicePool phase increments
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = static_cast<float>(sampleRate);
         voicePool.prepare(sr);
         filter.prepare(sr);
@@ -294,6 +300,9 @@ public:
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
+        // P37: sr=0.0 sentinel — renderBlock must never run without a valid prepare()
+        jassert(sr > 0.0f);
+        if (sr <= 0.0f) { buffer.clear(); return; }
         if (numSamples <= 0)
             return;
 
