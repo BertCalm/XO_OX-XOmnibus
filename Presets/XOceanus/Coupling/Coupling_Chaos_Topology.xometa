@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "name": "Chaos Topology",
+  "mood": "Coupling",
+  "engines": [
+    "Onkolo",
+    "Ouroboros",
+    "Oxbow"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Otrium FX chain demo — 3 mixed-character engines under Chaotic topology. Per-partner phase offsets re-randomise on every LFO cycle via a deterministic LCG, so the duck pattern is reproducible across reset boundaries but never the same beat twice. Resists 'metronomic ducking' fatigue. Otrium config embedded under Onkolo's parameter block.",
+  "tags": [
+    "coupling",
+    "heavy",
+    "chaotic",
+    "evolving",
+    "otrium",
+    "fx-chain-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Heavy",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.85,
+    "density": 0.6,
+    "space": 0.55,
+    "aggression": 0.65
+  },
+  "parameters": {
+    "Onkolo": {
+      "onko_macroCharacter": 0.55,
+      "onko_macroMovement": 0.85,
+      "onko_macroCoupling": 0.8,
+      "onko_macroSpace": 0.55,
+      "slot1_chain": 31,
+      "slot1_mix": 1.0,
+      "slot1_bypass": 0.0,
+      "otrm_pumpDepth": 0.6,
+      "otrm_pumpRate": 1.5,
+      "otrm_attack": 10.0,
+      "otrm_release": 180.0,
+      "otrm_phaseSkew": 120.0,
+      "otrm_topology": 2,
+      "otrm_partnerA_idx": 0,
+      "otrm_partnerB_idx": 1,
+      "otrm_partnerC_idx": 2,
+      "otrm_couplingDepth": 0.55,
+      "otrm_dnaTilt": 0.5,
+      "otrm_mix": 1.0,
+      "otrm_syncMode": 0
+    },
+    "Ouroboros": {
+      "ouro_macroCharacter": 0.55,
+      "ouro_macroMovement": 0.82,
+      "ouro_macroCoupling": 0.8,
+      "ouro_macroSpace": 0.55
+    },
+    "Oxbow": {
+      "oxb_macroCharacter": 0.55,
+      "oxb_macroMovement": 0.85,
+      "oxb_macroCoupling": 0.8,
+      "oxb_macroSpace": 0.55
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.84,
+    "COUPLING": 0.8,
+    "SPACE": 0.55
+  }
+}

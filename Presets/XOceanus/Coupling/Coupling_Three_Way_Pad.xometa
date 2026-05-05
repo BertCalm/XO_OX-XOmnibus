@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "name": "Three-Way Pad",
+  "mood": "Coupling",
+  "engines": [
+    "Obsidian",
+    "OceanDeep",
+    "Opal"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Otrium FX chain demo — 3 atmosphere engines breathe in a slow equilateral triangle, sync-locked to host tempo (1 cycle per beat). Long attack/release ducks softly; partner-driven coupling depth blends autonomous LFO with each engine's envelope. Hold a chord and the pad rotates around itself indefinitely. Otrium config embedded under Obsidian's parameter block; engines load into slots 0/1/2 in order.",
+  "tags": [
+    "coupling",
+    "moderate",
+    "atmosphere",
+    "pad",
+    "tempo-sync",
+    "otrium",
+    "fx-chain-demo"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.34,
+    "warmth": 0.7,
+    "movement": 0.42,
+    "density": 0.62,
+    "space": 0.85,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Obsidian": {
+      "obsidian_macroCharacter": 0.45,
+      "obsidian_macroMovement": 0.42,
+      "obsidian_macroCoupling": 0.68,
+      "obsidian_macroSpace": 0.85,
+      "slot1_chain": 31,
+      "slot1_mix": 1.0,
+      "slot1_bypass": 0.0,
+      "otrm_pumpDepth": 0.45,
+      "otrm_pumpRate": 1.0,
+      "otrm_attack": 80.0,
+      "otrm_release": 850.0,
+      "otrm_phaseSkew": 120.0,
+      "otrm_topology": 0,
+      "otrm_partnerA_idx": 0,
+      "otrm_partnerB_idx": 1,
+      "otrm_partnerC_idx": 2,
+      "otrm_couplingDepth": 0.6,
+      "otrm_dnaTilt": 0.25,
+      "otrm_mix": 1.0,
+      "otrm_syncMode": 1
+    },
+    "OceanDeep": {
+      "deep_macroCharacter": 0.42,
+      "deep_macroMovement": 0.4,
+      "deep_macroCoupling": 0.68,
+      "deep_macroSpace": 0.82
+    },
+    "Opal": {
+      "opal_macroCharacter": 0.4,
+      "opal_macroMovement": 0.45,
+      "opal_macroCoupling": 0.68,
+      "opal_macroSpace": 0.85
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.68,
+    "SPACE": 0.84
+  }
+}
