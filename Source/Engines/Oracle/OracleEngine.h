@@ -397,7 +397,9 @@ struct OracleVoice
         lfo2.reset();
         dcBlockerL.reset();
         dcBlockerR.reset();
-        rng.seed(1);
+        // rng seeded per-voice by the engine's prepare()/reset() loops using a
+        // voice-index-derived seed — prevents all voices sharing the same PRNG
+        // sequence after a transport reset (P36 fix).
         numBreakpoints = 16; // Default to 16 on reset — initBreakpoints() overrides on noteOn
 
         // Initialize breakpoints to a sine-like shape — the "primordial"
@@ -477,10 +479,13 @@ public:
         silenceGate.prepare(sampleRate, maxBlockSize);
         silenceGate.setHoldTime(500.0f); // Oracle has reverb tails
 
-        // Initialize all voices
-        for (auto& voice : voices)
+        // Initialize all voices — seed RNG per-voice index so transport reset
+        // never collapses all voices to the same PRNG sequence (P36 fix).
+        for (int vi = 0; vi < static_cast<int>(voices.size()); ++vi)
         {
+            auto& voice = voices[static_cast<size_t>(vi)];
             voice.reset();
+            voice.rng.seed(static_cast<uint64_t>(vi) * 2654435761ULL ^ 0xDEAD1234ULL);
             voice.dcBlockerL.prepare(sampleRateFloat);
             voice.dcBlockerR.prepare(sampleRateFloat);
         }
@@ -490,8 +495,15 @@ public:
 
     void reset() override
     {
-        for (auto& v : voices)
+        // Seed per-voice index after reset so all voices have distinct PRNG
+        // sequences post-transport-stop — noteOn() will reseed again on each note
+        // event, but this guard prevents a gap if state is read before first noteOn.
+        for (int vi = 0; vi < static_cast<int>(voices.size()); ++vi)
+        {
+            auto& v = voices[static_cast<size_t>(vi)];
             v.reset();
+            v.rng.seed(static_cast<uint64_t>(vi) * 2654435761ULL ^ 0xDEAD1234ULL);
+        }
 
         envelopeOutput = 0.0f;
         couplingBreakpointMod = 0.0f;
