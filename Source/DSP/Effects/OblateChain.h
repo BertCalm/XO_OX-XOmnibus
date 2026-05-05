@@ -11,6 +11,8 @@
 #include <array>
 #include <atomic>
 #include <cmath>
+#include <memory>
+#include <vector>
 
 namespace xoceanus
 {
@@ -18,179 +20,195 @@ namespace xoceanus
 //==============================================================================
 // OblateChain — Spectral Gate (FX Pack 1, Sidechain Creative)
 //
-// Wildcard: STFT gate where each FFT bin is gated by the partner engine's
-// spectrum, with partner brightness DNA tilting the threshold curve.
-// Sidechain key driven by partner *spectrum*, not just amplitude.
+// STFT gate where each FFT bin is gated by the partner engine's spectrum.
+// Partner brightness DNA tilts the threshold curve. Sidechain key driven by
+// partner *spectrum*, not just amplitude.
 //
-// Parameter prefix: obla_  (12 params: 11 base + obla_hqMode per spec §10 A2)
+// Pipeline (5 stages, per spec §3):
+//   1. STFT Analyzer (FFT, selectable size 256/512/1024/2048)
+//   2. Sidechain Key Extractor — partner spectrum → per-bin key magnitudes
+//   3. Per-Band Gate Threshold Computer — DNA-tilted threshold per bin
+//   4. Anti-Zip Smoothing — per-bin one-pole, attack/release plus extra pole
+//   5. ISTFT Resynthesis (overlap-add, 50% hop, sqrt-Hann analysis+synthesis)
 //
+// Parameter prefix: obla_  (12 params: 11 base + obla_hqMode)
 // Routing: Stereo In → Stereo Out (per-channel STFT analysis)
-// Latency: kFFTSize - kHopSize = N/2 = 512 samples ≈ 12 ms @ 44.1 kHz.
+// Latency: fftSize samples (one frame). Host PDC is not currently propagated
+//          by the FX slot controller; advisory only.
 //
-// Signal flow (per spec §3):
-//   1. STFT analyzer per channel — Hann-windowed, 1024-point FFT, 50% overlap.
-//   2. Sidechain key extractor — partner audio (mono, from PartnerAudioBus
-//      slot `keyEngine`) goes through its own STFT in parallel; per-bin
-//      magnitudes are smoothed with a one-pole follower keyed by attack/release.
-//   3. Per-bin gate threshold computer — base threshold (dB) + tilt (slope
-//      across the spectrum) + DNA coupling (partner brightness shifts tilt).
-//   4. Per-bin gate gain — soft-knee gate above threshold (inspired by
-//      `ratio` parameter); below threshold, gain = 1/ratio (limit-style).
-//   5. ISTFT resynthesis — multiply complex spectrum by per-bin gain, inverse
-//      FFT, overlap-add into output ring buffer.
+// Audio-thread safety:
+//   - All FFT instances + buffers pre-allocated in prepare().
+//   - Partner audio bus and DNA bus pointers set on the message thread before
+//     audio starts; read lock-free per block (single-writer/single-reader).
+//   - FFT-size switch is detected at block start and flushes overlap state
+//     without allocation; juce::dsp::FFT instances exist for all 4 sizes.
 //
-// D005: obla_breathRate (0.001-2 Hz floor) drifts the global threshold by
-// ±2 dB so the gate "breathes" — extremely slow LFO modulation that prevents
-// metronomic gating. Phase advances per block (rate is sub-2 Hz).
-//
-// hqMode (A2 lock-in): when on, the FFT size param can select 2048; when off,
-// it is clamped to 1024. The DSP itself is 1024-only in this Phase 1 cut —
-// dynamic FFT size requires worker-thread reallocation that's deferred to a
-// follow-up. The hqMode toggle is wired to the parameter range but is a no-op
-// at the DSP layer; it will gain teeth in Phase 2.
-//
-// Audio-thread contract:
-//   - All buffers fixed-size and pre-allocated in prepare().
-//   - juce::dsp::FFT instance allocated once in member init (no audio-thread alloc).
-//   - Parameter pointers cached once via cacheParameterPointers().
-//   - Denormal flush in overlap-add accumulator and key magnitude state.
-//
-// See: Docs/specs/2026-04-27-fx-pack-1-sidechain-creative.md §3, §10 A2
+// See: Docs/specs/2026-04-27-fx-pack-1-sidechain-creative.md §3, §10 (A2)
 //==============================================================================
 class OblateChain
 {
 public:
-    static constexpr int kFFTOrder = 10;                 // 2^10 = 1024
-    static constexpr int kFFTSize  = 1 << kFFTOrder;     // 1024
-    static constexpr int kHopSize  = kFFTSize / 2;       // 512 (50% overlap)
-    static constexpr int kNumBins  = kFFTSize / 2 + 1;   // 513 unique bins (DC..Nyquist)
+    static constexpr int kMaxFFTOrder = 11;          // 2^11 = 2048
+    static constexpr int kMaxFFTSize  = 1 << kMaxFFTOrder;
+    static constexpr int kMaxNumBins  = kMaxFFTSize / 2 + 1;
 
     OblateChain() = default;
 
     void prepare(double sampleRate, int /*maxBlockSize*/)
     {
         sr_ = sampleRate;
+        thresholdSmoothed_.reset(sampleRate, 0.02);
         mixSmoothed_.reset(sampleRate, 0.02);
-        thresholdSmoothed_.reset(sampleRate, 0.05);
 
-        // Build Hann analysis window. No synthesis window — at 50% overlap
-        // Hann analysis alone gives perfect COLA (sum of overlapping windows = 1).
-        const float twoPi = juce::MathConstants<float>::twoPi;
-        for (int i = 0; i < kFFTSize; ++i)
-            window_[static_cast<size_t>(i)] =
-                0.5f * (1.0f - std::cos(twoPi * static_cast<float>(i) / static_cast<float>(kFFTSize)));
+        // Pre-allocate FFT instances at all 4 supported sizes (avoids any
+        // audio-thread allocation when the user changes obla_fftSize).
+        ffts_[0] = std::make_unique<juce::dsp::FFT>(8);   // 256
+        ffts_[1] = std::make_unique<juce::dsp::FFT>(9);   // 512
+        ffts_[2] = std::make_unique<juce::dsp::FFT>(10);  // 1024
+        ffts_[3] = std::make_unique<juce::dsp::FFT>(11);  // 2048
+
+        buildSqrtHann(windows_[0],  256);
+        buildSqrtHann(windows_[1],  512);
+        buildSqrtHann(windows_[2], 1024);
+        buildSqrtHann(windows_[3], 2048);
+
+        for (auto& ring : inputRing_)  ring.assign(kMaxFFTSize, 0.0f);
+        for (auto& ring : outputRing_) ring.assign(kMaxFFTSize, 0.0f);
+        for (auto& buf  : workBuf_)    buf.assign(2 * kMaxFFTSize, 0.0f);
+        keyRing_.assign(kMaxFFTSize, 0.0f);
+        keyWorkBuf_.assign(2 * kMaxFFTSize, 0.0f);
+        keyMag_.assign(kMaxNumBins, 0.0f);
+        for (auto& g : binGain_) g.assign(kMaxNumBins, 1.0f);
+
+        currentFFTIndex_ = 2; // 1024 default (matches obla_fftSize default)
+        resetSTFTState();
     }
 
     void reset()
     {
-        mixSmoothed_.setCurrentAndTargetValue(1.0f);
         thresholdSmoothed_.setCurrentAndTargetValue(-20.0f);
-        chL_ = {};
-        chR_ = {};
-        keyState_ = {};
-        binGain_.fill(1.0f);
+        mixSmoothed_.setCurrentAndTargetValue(1.0f);
         breathPhase_ = 0.0f;
+        resetSTFTState();
     }
 
+    // Inject DNA bus pointer (set once on message thread before audio starts).
     void setDNABus(const DNAModulationBus* bus) noexcept { dnaBus_ = bus; }
+
+    // Inject partner audio bus pointer (set once on message thread before
+    // audio starts). Read lock-free per block to pull the sidechain key.
     void setPartnerAudioBus(const PartnerAudioBus* bus) noexcept { partnerBus_ = bus; }
 
+    // Stereo in, stereo out. Per-channel STFT analysis & resynthesis with a
+    // shared mono key spectrum for the gate decision.
     void processBlock(float* L, float* R, int numSamples,
                       double /*bpm*/ = 0.0, double /*ppqPosition*/ = -1.0)
     {
         if (! pThreshold_ || ! pMix_) return;
 
-        // ---- Block-rate parameter loads (ParamSnapshot) ----
-        const float thresholdDb = pThreshold_  ->load(std::memory_order_relaxed);
-        const float ratio       = pRatio_       ? pRatio_      ->load(std::memory_order_relaxed) : 4.0f;
-        const float atkMs       = pAttack_      ? pAttack_     ->load(std::memory_order_relaxed) : 2.0f;
-        const float relMs       = pRelease_     ? pRelease_    ->load(std::memory_order_relaxed) : 100.0f;
-        const int   keyEngine   = pKeyEngine_   ? clampSlot(pKeyEngine_->load(std::memory_order_relaxed)) : 0;
-        const float tilt        = pTilt_        ? pTilt_       ->load(std::memory_order_relaxed) : 0.0f;
-        const float dnaCoupling = pDnaCoupling_ ? pDnaCoupling_->load(std::memory_order_relaxed) : 0.0f;
-        const float smoothing   = pSmoothing_   ? pSmoothing_  ->load(std::memory_order_relaxed) : 0.5f;
-        const float breathRate  = pBreathRate_  ? pBreathRate_ ->load(std::memory_order_relaxed) : 0.1f;
-
+        // ---- Block-rate parameter loads ------------------------------------
+        thresholdSmoothed_.setTargetValue(pThreshold_->load(std::memory_order_relaxed));
         mixSmoothed_.setTargetValue(pMix_->load(std::memory_order_relaxed));
 
-        // ---- Breath LFO drift on threshold (D005, ≤ 0.001 Hz floor) ----
-        const float twoPi = juce::MathConstants<float>::twoPi;
-        constexpr float kBreathDepthDb = 2.0f;
-        const float breathDb = std::sin(breathPhase_) * kBreathDepthDb;
-        if (sr_ > 0.0)
-            breathPhase_ += twoPi * breathRate / static_cast<float>(sr_) * static_cast<float>(numSamples);
-        if (breathPhase_ > twoPi) breathPhase_ -= twoPi;
-        thresholdSmoothed_.setTargetValue(thresholdDb + breathDb);
+        const float ratio        = pRatio_       ? std::max(1.0f, pRatio_->load(std::memory_order_relaxed))      : 4.0f;
+        const float attackMs     = pAttack_      ? std::max(0.1f, pAttack_->load(std::memory_order_relaxed))     : 2.0f;
+        const float releaseMs    = pRelease_     ? std::max(1.0f, pRelease_->load(std::memory_order_relaxed))    : 100.0f;
+        const int   keyEngine    = pKeyEngine_   ? clampSlot(pKeyEngine_->load(std::memory_order_relaxed))       : 0;
+        const float tilt         = pTilt_        ? pTilt_->load(std::memory_order_relaxed)                       : 0.0f;
+        const float dnaCoupling  = pDnaCoupling_ ? juce::jlimit(0.0f, 1.0f, pDnaCoupling_->load(std::memory_order_relaxed)) : 0.0f;
+        const float smoothing    = pSmoothing_   ? juce::jlimit(0.0f, 1.0f, pSmoothing_->load(std::memory_order_relaxed))   : 0.5f;
+        const float breathRate   = pBreathRate_  ? std::max(0.001f, pBreathRate_->load(std::memory_order_relaxed)) : 0.1f;
+        const bool  hqMode       = pHqMode_      ? pHqMode_->load(std::memory_order_relaxed) >= 0.5f             : false;
+        const int   fftChoice    = pFftSize_     ? clampFFTChoice(static_cast<int>(pFftSize_->load(std::memory_order_relaxed) + 0.5f), hqMode) : 2;
 
-        // Per-frame env coefficients — used when smoothing key magnitudes
-        // and signal bin gains across hop frames. Time constant = 1 hop * coef.
-        const float hopSec = (sr_ > 0.0) ? static_cast<float>(kHopSize) / static_cast<float>(sr_) : 0.0f;
-        const float atkCoef = (atkMs > 0.0f && hopSec > 0.0f)
-                                   ? std::exp(-hopSec / (atkMs * 0.001f)) : 0.0f;
-        const float relCoef = (relMs > 0.0f && hopSec > 0.0f)
-                                   ? std::exp(-hopSec / (relMs * 0.001f)) : 0.0f;
+        // ---- FFT size change → flush overlap state (no allocation) --------
+        if (fftChoice != currentFFTIndex_)
+        {
+            currentFFTIndex_ = fftChoice;
+            resetSTFTState();
+        }
 
-        // Smoothing param controls a unipolar one-pole on the bin gain
-        // (heavier smoothing → less metallic, slower response).
-        const float gainSmoothCoef = juce::jlimit(0.0f, 0.99f, 0.7f + 0.29f * smoothing);
+        const int fftSize = 1 << (currentFFTIndex_ + 8); // 256 / 512 / 1024 / 2048
+        const int hop     = fftSize / 2;
+        const int numBins = fftSize / 2 + 1;
 
-        // ---- DNA brightness modulates the spectral tilt ----
-        // Partner brightness in [0,1] → tilt offset in [-1, +1]. dnaCoupling
-        // blends from "static tilt" (0) to "DNA-driven tilt" (1).
+        // ---- Hop-rate envelope coefficients --------------------------------
+        // Per-bin gain is updated once per hop. Convert ms to per-hop coefs.
+        const float hopRate = (sr_ > 0.0) ? static_cast<float>(sr_) / static_cast<float>(hop) : 1.0f;
+        const float atkCoef = std::exp(-1.0f / (attackMs  * 0.001f * hopRate));
+        const float relCoef = std::exp(-1.0f / (releaseMs * 0.001f * hopRate));
+        // Anti-zip smoothing: extra one-pole on the per-bin gain (smoothing
+        // param 0..1 maps to coef 0..0.95 → strongest setting kills metallic
+        // chatter at the cost of slower gate transients).
+        const float zipCoef = 0.95f * smoothing;
+
+        // ---- DNA-tilted threshold ------------------------------------------
+        // Partner brightness (0..1) tilts the per-bin tilt curve toward the
+        // top end. dnaCoupling=0 disables; dnaCoupling=1 doubles the tilt
+        // when partner is bright, halves it when dark.
         float brightness = 0.5f;
-        if (dnaBus_ != nullptr)
+        if (dnaBus_)
             brightness = dnaBus_->get(keyEngine, DNAModulationBus::Axis::Brightness);
-        const float dnaTilt = (brightness - 0.5f) * 2.0f;
-        const float effectiveTilt = tilt * (1.0f - dnaCoupling) + dnaTilt * dnaCoupling;
+        const float dnaScale     = 1.0f + dnaCoupling * (brightness - 0.5f) * 2.0f;
+        const float effectiveTilt = juce::jlimit(-1.0f, 1.0f, tilt) * dnaScale;
 
-        // Inverse-ratio used for the soft-gate: signals below threshold are
-        // attenuated by 1/ratio (a 4:1 ratio at threshold = -12 dB attenuation).
-        const float invRatio = 1.0f / juce::jmax(1.0f, ratio);
+        // Breathing LFO (D005, floor 0.001 Hz) — ±2 dB threshold modulation.
+        const float twoPi   = juce::MathConstants<float>::twoPi;
+        const float lfoInc  = (sr_ > 0.0) ? twoPi * breathRate / static_cast<float>(sr_) : 0.0f;
 
-        const float* key = (partnerBus_ != nullptr) ? partnerBus_->getMono(keyEngine) : nullptr;
+        // ---- Resolve partner key audio (nullptr → silent key) -------------
+        const float* keyPtr  = partnerBus_ ? partnerBus_->getMono(keyEngine) : nullptr;
+        const int    keyLen  = partnerBus_ ? partnerBus_->getNumSamples(keyEngine) : 0;
 
-        // ---- Per-sample loop ----
+        // ---- Per-sample loop: ring-buffer push/pull, hop-triggered FFT ----
         for (int i = 0; i < numSamples; ++i)
         {
-            const float mix = mixSmoothed_.getNextValue();
-            const float thresholdLin = juce::Decibels::decibelsToGain(
-                                            thresholdSmoothed_.getNextValue());
-
-            // Push input samples (and key) into ring buffers.
-            chL_.inputRing[static_cast<size_t>(chL_.writePos)] = L[i];
-            chR_.inputRing[static_cast<size_t>(chR_.writePos)] = R[i];
-            keyState_.inputRing[static_cast<size_t>(keyState_.writePos)] = (key != nullptr) ? key[i] : 0.0f;
-            chL_.writePos = (chL_.writePos + 1) & (kFFTSize - 1);
-            chR_.writePos = (chR_.writePos + 1) & (kFFTSize - 1);
-            keyState_.writePos = (keyState_.writePos + 1) & (kFFTSize - 1);
-
-            // Per-sample hop counter — when full, run STFT on key + L + R.
-            ++hopCounter_;
-            if (hopCounter_ >= kHopSize)
-            {
-                hopCounter_ = 0;
-                processHopFrame(thresholdLin, invRatio, effectiveTilt, atkCoef, relCoef, gainSmoothCoef);
-            }
-
-            // Read the overlap-add output for this sample, then clear the slot
-            // so future overlap-add only adds to a zeroed accumulator.
-            const int outIdxL = chL_.writePos;  // chronologically aligned to the just-written input
-            const int outIdxR = chR_.writePos;
-            float wetL = chL_.outputRing[static_cast<size_t>(outIdxL)];
-            float wetR = chR_.outputRing[static_cast<size_t>(outIdxR)];
-            chL_.outputRing[static_cast<size_t>(outIdxL)] = 0.0f;
-            chR_.outputRing[static_cast<size_t>(outIdxR)] = 0.0f;
-
-            // Denormal flush on the overlap-add output (denormals can
-            // accumulate in the ring buffer over many frames).
-            constexpr float kDenormFloor = 1.0e-30f;
-            if (std::abs(wetL) < kDenormFloor) wetL = 0.0f;
-            if (std::abs(wetR) < kDenormFloor) wetR = 0.0f;
-
             const float dryL = L[i];
             const float dryR = R[i];
-            L[i] = dryL * (1.0f - mix) + wetL * mix;
-            R[i] = dryR * (1.0f - mix) + wetR * mix;
+            const float keyS = (keyPtr && i < keyLen) ? keyPtr[i] : 0.0f;
+            const float mix  = mixSmoothed_.getNextValue();
+            const float threshDbBase = thresholdSmoothed_.getNextValue();
+
+            // Push input
+            inputRing_[0][static_cast<size_t>(writePos_)] = dryL;
+            inputRing_[1][static_cast<size_t>(writePos_)] = dryR;
+            keyRing_      [static_cast<size_t>(writePos_)] = keyS;
+
+            // Pull output (read-then-clear so future overlap-adds start at 0)
+            const float wetL = outputRing_[0][static_cast<size_t>(readPos_)];
+            const float wetR = outputRing_[1][static_cast<size_t>(readPos_)];
+            outputRing_[0][static_cast<size_t>(readPos_)] = 0.0f;
+            outputRing_[1][static_cast<size_t>(readPos_)] = 0.0f;
+
+            // Denormal protection on wet path before mix.
+            const float dnSafeL = std::abs(wetL) < 1.0e-30f ? 0.0f : wetL;
+            const float dnSafeR = std::abs(wetR) < 1.0e-30f ? 0.0f : wetR;
+
+            L[i] = dryL * (1.0f - mix) + dnSafeL * mix;
+            R[i] = dryR * (1.0f - mix) + dnSafeR * mix;
+
+            writePos_ = (writePos_ + 1) % fftSize;
+            readPos_  = (readPos_  + 1) % fftSize;
+            ++hopCount_;
+
+            // Advance breath LFO once per sample.
+            breathPhase_ += lfoInc;
+            if (breathPhase_ > twoPi) breathPhase_ -= twoPi;
+
+            if (hopCount_ >= hop)
+            {
+                hopCount_ = 0;
+
+                // ±2 dB breathing modulation around the user threshold.
+                const float breathDb = 2.0f * std::sin(breathPhase_);
+                const float threshDb = threshDbBase + breathDb;
+
+                analyzeKey(fftSize, numBins);
+                processChannel(0, fftSize, hop, numBins, threshDb,
+                               effectiveTilt, ratio, atkCoef, relCoef, zipCoef);
+                processChannel(1, fftSize, hop, numBins, threshDb,
+                               effectiveTilt, ratio, atkCoef, relCoef, zipCoef);
+            }
         }
     }
 
@@ -215,14 +233,12 @@ public:
             juce::NormalisableRange<float>(5.0f, 500.0f, 0.0f, 0.5f), 100.0f));
         layout.add(std::make_unique<juce::AudioParameterInt>(
             juce::ParameterID(p + "keyEngine", 1), "OBLA Key Engine", 0, 3, 0));
-        // A2 (locked 2026-04-27): Phase 1 DSP is fixed at 1024-point FFT.
-        // The choice param exposes only "1024" so automation/presets can't
-        // land in a "selected size" that's silently overridden — caught by
-        // review. The 256/512/2048 options re-enter when dynamic FFT-size
-        // resize lands (Phase 2; requires worker-thread reallocation).
+        // A2 (locked 2026-04-27): default 1024. The 2048 option is gated
+        // behind obla_hqMode; the runtime clamps fftSize to 1024 when hqMode
+        // is false even if the parameter index reaches 2048.
         layout.add(std::make_unique<juce::AudioParameterChoice>(
             juce::ParameterID(p + "fftSize", 1), "OBLA FFT Size",
-            juce::StringArray{"1024"}, 0));
+            juce::StringArray{"256", "512", "1024", "2048"}, 2));
         layout.add(std::make_unique<juce::AudioParameterFloat>(
             juce::ParameterID(p + "tilt", 1), "OBLA Tilt",
             juce::NormalisableRange<float>(-1.0f, 1.0f), 0.0f));
@@ -253,209 +269,213 @@ public:
         pAttack_      = apvts.getRawParameterValue(p + "attack");
         pRelease_     = apvts.getRawParameterValue(p + "release");
         pKeyEngine_   = apvts.getRawParameterValue(p + "keyEngine");
+        pFftSize_     = apvts.getRawParameterValue(p + "fftSize");
         pTilt_        = apvts.getRawParameterValue(p + "tilt");
         pDnaCoupling_ = apvts.getRawParameterValue(p + "dnaCoupling");
         pSmoothing_   = apvts.getRawParameterValue(p + "smoothing");
         pBreathRate_  = apvts.getRawParameterValue(p + "breathRate");
         pMix_         = apvts.getRawParameterValue(p + "mix");
-        // Phase 1 DSP is fixed at 1024-point FFT, so fftSize/hqMode are not
-        // cached or consumed here yet.
+        pHqMode_      = apvts.getRawParameterValue(p + "hqMode");
     }
 
 private:
-    // Per-channel state — declared up front so member function parameter
-    // lists below can reference it. Within a class body, function *bodies*
-    // can refer to types defined later, but function *parameter lists*
-    // cannot — so the structs must precede the helpers that take them by ref.
-    struct ChannelState
-    {
-        std::array<float, kFFTSize>      inputRing{};
-        std::array<float, kFFTSize>      outputRing{};
-        std::array<float, 2 * kFFTSize>  fftScratch{};
-        int                              writePos = 0;
-    };
-
-    struct KeyState
-    {
-        std::array<float, kFFTSize>      inputRing{};
-        std::array<float, 2 * kFFTSize>  fftScratch{};
-        std::array<float, kNumBins>      binMag{};
-        int                              writePos = 0;
-    };
-
     static int clampSlot(float v) noexcept
     {
         const int n = static_cast<int>(v + 0.5f);
         return n < 0 ? 0 : (n > 3 ? 3 : n);
     }
 
-    // Compute one STFT hop frame: forward FFT key + L + R, derive per-bin
-    // gate gains from the key spectrum, modify L/R bins by the gains, inverse
-    // FFT, overlap-add into output rings. Called once every kHopSize samples.
-    void processHopFrame(float thresholdLin, float invRatio, float effectiveTilt,
-                         float atkCoef, float relCoef, float gainSmoothCoef) noexcept
+    // FFT choice index (0..3) → fftSize 256/512/1024/2048. 2048 (idx 3) is
+    // gated behind hqMode; if hqMode is off, falls back to 1024 (idx 2).
+    static int clampFFTChoice(int n, bool hqMode) noexcept
     {
-        // === 1. Window key, forward FFT, compute per-bin magnitudes ===
-        copyWindowedToFFTBuffer(keyState_.inputRing, keyState_.writePos, keyState_.fftScratch);
-        fft_.performRealOnlyForwardTransform(keyState_.fftScratch.data());
-
-        // Key magnitudes — followed with attack/release per bin, then used to
-        // compute bin gate gains. JUCE packs real-only forward as interleaved
-        // re/im pairs at indices [2k, 2k+1] for bin k.
-        for (int k = 0; k < kNumBins; ++k)
-        {
-            const float re  = keyState_.fftScratch[static_cast<size_t>(2 * k)];
-            const float im  = keyState_.fftScratch[static_cast<size_t>(2 * k + 1)];
-            const float mag = std::sqrt(re * re + im * im);
-
-            // Standard one-pole AR follower: rising input → attack coef,
-            // falling input → release coef. Both branches track toward `mag`
-            // (the current input), so steady-state holds rather than decaying
-            // to zero. Earlier draft used `relCoef * prev` on release which
-            // released toward 0 even with a non-zero key — caught by review.
-            const float prev = keyState_.binMag[static_cast<size_t>(k)];
-            const float coef = (mag > prev) ? atkCoef : relCoef;
-            const float next = coef * prev + (1.0f - coef) * mag;
-            constexpr float kDenormFloor = 1.0e-30f;
-            keyState_.binMag[static_cast<size_t>(k)] = std::abs(next) < kDenormFloor ? 0.0f : next;
-        }
-
-        // === 2. Compute per-bin gate gains ===
-        // Soft-gate convention:
-        //   gain = 1.0 when key magnitude >= threshold (signal passes)
-        //   gain = invRatio when key magnitude is well below threshold
-        //   smooth transition between via a soft knee (1-bin-wide for now)
-        // Tilt shifts the per-bin threshold across the spectrum:
-        //   bin index 0 → threshold × 10^(+tilt × 0.5)  (low-end attenuated more if tilt>0)
-        //   bin index N → threshold × 10^(-tilt × 0.5)  (high-end attenuated less if tilt>0)
-        // effectiveTilt ∈ [-1, +1]. Linear bin-index mapping is a fine
-        // approximation for "tilt the threshold by ±10 dB across the spectrum".
-        for (int k = 0; k < kNumBins; ++k)
-        {
-            const float binFraction = static_cast<float>(k) / static_cast<float>(kNumBins - 1);
-            // Tilt convention: positive tilt → high bins gated *less* (threshold lowered),
-            // low bins gated *more*. dB shift = effectiveTilt × ±10 dB across spectrum.
-            const float tiltDb = effectiveTilt * (binFraction - 0.5f) * 20.0f;
-            const float perBinThreshold = thresholdLin * std::pow(10.0f, tiltDb * (1.0f / 20.0f));
-
-            const float keyMag = keyState_.binMag[static_cast<size_t>(k)];
-            // Linear ratio of key vs threshold; ≥1 when key is loud.
-            const float ratioVsThresh = keyMag / juce::jmax(perBinThreshold, 1.0e-12f);
-
-            // Target gain: 1 when key is at/above threshold, 1/ratio when key is
-            // quiet (below threshold). Use a smooth crossfade in dB-domain via
-            // a one-pole sigmoid-ish curve (jlimit then linear blend).
-            const float openness = juce::jlimit(0.0f, 1.0f, ratioVsThresh);
-            const float targetGain = invRatio + (1.0f - invRatio) * openness;
-
-            // One-pole smoothing on bin gain (smoothing param controls coefficient).
-            float prevGain = binGain_[static_cast<size_t>(k)];
-            const float nextGain = gainSmoothCoef * prevGain + (1.0f - gainSmoothCoef) * targetGain;
-            binGain_[static_cast<size_t>(k)] = nextGain;
-        }
-
-        // === 3. Process L channel: forward FFT, apply bin gains, inverse FFT, OLA ===
-        processChannelFrame(chL_);
-
-        // === 4. Same for R ===
-        processChannelFrame(chR_);
+        if (n < 0) n = 0;
+        if (n > 3) n = 3;
+        if (n == 3 && ! hqMode) n = 2;
+        return n;
     }
 
-    void processChannelFrame(ChannelState& ch) noexcept
+    // Periodic Hann (denominator N, not N-1): sqrt-Hann analysis + sqrt-Hann
+    // synthesis = Hann; sum of two Hann frames at hop=N/2 is exactly unity → COLA.
+    static void buildSqrtHann(std::vector<float>& w, int N)
     {
-        copyWindowedToFFTBuffer(ch.inputRing, ch.writePos, ch.fftScratch);
-        fft_.performRealOnlyForwardTransform(ch.fftScratch.data());
-
-        // Apply per-bin gains. Multiply both real and imaginary components
-        // by gain → magnitude scales, phase preserved.
-        for (int k = 0; k < kNumBins; ++k)
+        w.assign(static_cast<size_t>(N), 0.0f);
+        const double twoPi = juce::MathConstants<double>::twoPi;
+        for (int n = 0; n < N; ++n)
         {
-            const float gain = binGain_[static_cast<size_t>(k)];
-            ch.fftScratch[static_cast<size_t>(2 * k)]     *= gain;
-            ch.fftScratch[static_cast<size_t>(2 * k + 1)] *= gain;
-        }
-
-        // No explicit conjugate mirror needed — juce::dsp::FFT's real-only
-        // inverse uses only the first (size/2)+1 complex bins (the
-        // non-negative-frequency half) and reconstructs the time-domain
-        // output internally. Writing into the upper half would be a no-op
-        // at best and could corrupt JUCE's internal staging in some
-        // builds — caught by review.
-        fft_.performRealOnlyInverseTransform(ch.fftScratch.data());
-
-        // Overlap-add into output ring. The output of this frame should align
-        // chronologically with the most recent input; we add starting at
-        // ch.writePos (which is 1 past the most recent sample).
-        // NOTE: Hann analysis × no-synth-window at 50% overlap is COLA-correct
-        // (sum of overlapping Hann windows = 1), no normalization needed.
-        for (int n = 0; n < kFFTSize; ++n)
-        {
-            // Output[n] aligns with the time-domain frame starting at the oldest
-            // sample in the ring (writePos). Add to (writePos + n) mod kFFTSize.
-            const int outIdx = (ch.writePos + n) & (kFFTSize - 1);
-            ch.outputRing[static_cast<size_t>(outIdx)] += ch.fftScratch[static_cast<size_t>(n)];
+            const double hann = 0.5 * (1.0 - std::cos(twoPi * n / N));
+            w[static_cast<size_t>(n)] = static_cast<float>(std::sqrt(hann));
         }
     }
 
-    // Copy the most recent kFFTSize samples from a ring buffer into the FFT
-    // scratch (size 2*kFFTSize), windowed by the Hann analysis window. The
-    // remaining kFFTSize floats of fftScratch are zeroed (real-only forward
-    // expects a buffer twice the FFT size).
-    void copyWindowedToFFTBuffer(const std::array<float, kFFTSize>& ring, int writePos,
-                                 std::array<float, 2 * kFFTSize>& fftScratch) noexcept
+    void resetSTFTState() noexcept
     {
-        // Oldest-to-newest order: read starting at writePos (which is the
-        // oldest slot, about to be overwritten next sample) and wrap around.
-        for (int i = 0; i < kFFTSize; ++i)
-        {
-            const int readIdx = (writePos + i) & (kFFTSize - 1);
-            fftScratch[static_cast<size_t>(i)] =
-                ring[static_cast<size_t>(readIdx)] * window_[static_cast<size_t>(i)];
-        }
-        for (int i = kFFTSize; i < 2 * kFFTSize; ++i)
-            fftScratch[static_cast<size_t>(i)] = 0.0f;
+        writePos_  = 0;
+        readPos_   = 0;
+        hopCount_  = 0;
+        for (auto& ring : inputRing_)  std::fill(ring.begin(), ring.end(), 0.0f);
+        for (auto& ring : outputRing_) std::fill(ring.begin(), ring.end(), 0.0f);
+        std::fill(keyRing_.begin(),    keyRing_.end(),    0.0f);
+        std::fill(keyMag_.begin(),     keyMag_.end(),     0.0f);
+        for (auto& g : binGain_)       std::fill(g.begin(), g.end(), 1.0f);
     }
 
+    // Build the windowed mono key frame, FFT it, and store per-bin magnitudes.
+    void analyzeKey(int fftSize, int numBins) noexcept
+    {
+        const auto& window = windows_[static_cast<size_t>(currentFFTIndex_)];
+        // Read fftSize samples ending at writePos (newest sample at index N-1).
+        for (int n = 0; n < fftSize; ++n)
+        {
+            const int idx = (writePos_ - fftSize + n + fftSize) % fftSize;
+            keyWorkBuf_[static_cast<size_t>(n)] =
+                keyRing_[static_cast<size_t>(idx)] * window[static_cast<size_t>(n)];
+        }
+        // Zero the imag scratch region (FFT expects 2*N floats).
+        std::fill(keyWorkBuf_.begin() + fftSize,
+                  keyWorkBuf_.begin() + 2 * fftSize, 0.0f);
+
+        // Hint: we only need non-negative frequencies for the magnitude calc.
+        ffts_[static_cast<size_t>(currentFFTIndex_)]
+            ->performRealOnlyForwardTransform(keyWorkBuf_.data(), true);
+
+        for (int k = 0; k < numBins; ++k)
+        {
+            const float re = keyWorkBuf_[static_cast<size_t>(2 * k)];
+            const float im = keyWorkBuf_[static_cast<size_t>(2 * k + 1)];
+            keyMag_[static_cast<size_t>(k)] = std::sqrt(re * re + im * im);
+        }
+    }
+
+    // Per-channel STFT cycle: window → FFT → per-bin gate → IFFT → window
+    // → overlap-add into outputRing_.
+    void processChannel(int ch, int fftSize, int hop, int numBins,
+                        float threshDb, float effectiveTilt, float ratio,
+                        float atkCoef, float relCoef, float zipCoef) noexcept
+    {
+        const auto& window = windows_[static_cast<size_t>(currentFFTIndex_)];
+        auto& work = workBuf_[static_cast<size_t>(ch)];
+        auto& gain = binGain_[static_cast<size_t>(ch)];
+
+        // 1. Window the input frame (ending at writePos).
+        for (int n = 0; n < fftSize; ++n)
+        {
+            const int idx = (writePos_ - fftSize + n + fftSize) % fftSize;
+            work[static_cast<size_t>(n)] =
+                inputRing_[static_cast<size_t>(ch)][static_cast<size_t>(idx)]
+                * window[static_cast<size_t>(n)];
+        }
+        std::fill(work.begin() + fftSize, work.begin() + 2 * fftSize, 0.0f);
+
+        // 2. Forward FFT. We only modify and read the non-negative bins; the
+        //    inverse transform only reads (size/2)+1 complex numbers anyway.
+        ffts_[static_cast<size_t>(currentFFTIndex_)]
+            ->performRealOnlyForwardTransform(work.data(), true);
+
+        // 3. Per-bin gate, smoothed.
+        const float thresholdLin0 = juce::Decibels::decibelsToGain(threshDb);
+        const float floorGain     = 1.0f / std::max(1.0f, ratio);
+
+        for (int k = 0; k < numBins; ++k)
+        {
+            // Per-bin threshold: tilt curves the gate across frequency.
+            // binNorm in [0,1]; +tilt closes highs, -tilt opens highs.
+            const float binNorm = (numBins > 1)
+                                      ? static_cast<float>(k) / static_cast<float>(numBins - 1)
+                                      : 0.0f;
+            const float tiltDb = effectiveTilt * (binNorm - 0.5f) * 24.0f; // ±12 dB
+            const float thrLin = thresholdLin0 * std::pow(10.0f, tiltDb * (1.0f / 20.0f));
+
+            // Sidechain decision: openness = how far key magnitude exceeds threshold.
+            const float keyM     = keyMag_[static_cast<size_t>(k)];
+            const float openness = juce::jlimit(0.0f, 1.0f,
+                                                (keyM - thrLin) / (thrLin + 1.0e-12f));
+            const float target   = floorGain + (1.0f - floorGain) * openness;
+
+            // Anti-zip: per-bin one-pole driven by attack/release; obla_smoothing
+            // raises the effective coefficient toward 0.99 to kill metallic chatter.
+            float& g = gain[static_cast<size_t>(k)];
+            const float baseCoef = (target > g) ? atkCoef : relCoef;
+            const float coef     = std::max(baseCoef, zipCoef);
+            g = coef * g + (1.0f - coef) * target;
+
+            // Apply gain to bin k. The inverse transform only reads bins
+            // 0..numBins-1; the conjugate-symmetric upper bins are ignored.
+            work[static_cast<size_t>(2 * k)]     *= g;
+            work[static_cast<size_t>(2 * k + 1)] *= g;
+        }
+
+        // 4. Inverse FFT.
+        ffts_[static_cast<size_t>(currentFFTIndex_)]
+            ->performRealOnlyInverseTransform(work.data());
+
+        // 5. Synthesis window (sqrt-Hann ✕ sqrt-Hann = Hann; sums to unity at
+        //    50% hop, satisfying COLA).
+        for (int n = 0; n < fftSize; ++n)
+            work[static_cast<size_t>(n)] *= window[static_cast<size_t>(n)];
+
+        // 6. Overlap-add into output ring at readPos.
+        auto& out = outputRing_[static_cast<size_t>(ch)];
+        for (int n = 0; n < fftSize; ++n)
+        {
+            const int idx = (readPos_ + n) % fftSize;
+            out[static_cast<size_t>(idx)] += work[static_cast<size_t>(n)];
+        }
+
+        (void) hop; // hop currently implicit in writePos vs readPos sync
+    }
+
+    //--------------------------------------------------------------------------
     double sr_ = 0.0;
 
-    juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> mixSmoothed_;
     juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> thresholdSmoothed_;
+    juce::SmoothedValue<float, juce::ValueSmoothingTypes::Linear> mixSmoothed_;
 
-    // FFT instance — allocated once at construction (no audio-thread alloc).
-    juce::dsp::FFT fft_{kFFTOrder};
+    // 4 FFT instances (256/512/1024/2048), one window per size — all
+    // pre-allocated in prepare() so the audio thread never allocates.
+    std::array<std::unique_ptr<juce::dsp::FFT>, 4> ffts_;
+    std::array<std::vector<float>, 4>              windows_;
+    int currentFFTIndex_ = 2; // 1024 default
 
-    std::array<float, kFFTSize> window_{}; // Hann analysis window
+    // Stereo ring buffers (one per channel, plus a mono key ring).
+    std::array<std::vector<float>, 2> inputRing_{};
+    std::array<std::vector<float>, 2> outputRing_{};
+    std::vector<float>                keyRing_;
 
-    ChannelState chL_;
-    ChannelState chR_;
-    KeyState     keyState_;
+    // FFT scratch (2*N floats: N real input + N imag scratch / freq-domain).
+    std::array<std::vector<float>, 2> workBuf_{};
+    std::vector<float>                keyWorkBuf_;
+    std::vector<float>                keyMag_;
 
-    // Per-bin gate gain (smoothed across hop frames). Shared across L and R
-    // since the key is mono and the tilt curve is shared.
-    std::array<float, kNumBins> binGain_{};
+    // Per-bin smoothed gate gain, per channel (anti-zip state).
+    std::array<std::vector<float>, 2> binGain_{};
 
-    // Single hop counter — drives all three FFT frames (L, R, key) at once.
-    int hopCounter_ = 0;
+    // Ring positions; advance per sample modulo currentFFTSize.
+    int writePos_ = 0;
+    int readPos_  = 0;
+    int hopCount_ = 0;
 
-    // Breath LFO phase — drifts threshold by ±2 dB at sub-2 Hz (D005).
+    // Breath LFO phase (D005 floor 0.001 Hz). ±2 dB threshold modulation.
     float breathPhase_ = 0.0f;
 
-    // APVTS pointers
+    // Cached parameter pointers.
     std::atomic<float>* pThreshold_   = nullptr;
     std::atomic<float>* pRatio_       = nullptr;
     std::atomic<float>* pAttack_      = nullptr;
     std::atomic<float>* pRelease_     = nullptr;
     std::atomic<float>* pKeyEngine_   = nullptr;
+    std::atomic<float>* pFftSize_     = nullptr;
     std::atomic<float>* pTilt_        = nullptr;
     std::atomic<float>* pDnaCoupling_ = nullptr;
     std::atomic<float>* pSmoothing_   = nullptr;
     std::atomic<float>* pBreathRate_  = nullptr;
     std::atomic<float>* pMix_         = nullptr;
+    std::atomic<float>* pHqMode_      = nullptr;
 
-    // Set once on message thread before audio starts; read lock-free on the
-    // audio thread (single-writer / single-reader before-after pattern).
-    const DNAModulationBus* dnaBus_     = nullptr;
-    const PartnerAudioBus*  partnerBus_ = nullptr;
+    // Set once via setDNABus()/setPartnerAudioBus() on the message thread
+    // before audio starts; read lock-free on the audio thread.
+    const DNAModulationBus*  dnaBus_     = nullptr;
+    const PartnerAudioBus*   partnerBus_ = nullptr;
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(OblateChain)
 };
