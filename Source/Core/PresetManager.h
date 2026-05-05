@@ -5,6 +5,7 @@
 #include <atomic>
 #include <cmath>
 #include <algorithm>
+#include <deque>
 #include <map>
 #include <memory>
 #include <set>
@@ -512,6 +513,36 @@ public:
     // Saving
     //==========================================================================
 
+    /** Returns the canonical user-preset directory, creating it if needed. */
+    static juce::File getUserPresetDirectory()
+    {
+        auto dir = juce::File::getSpecialLocation (juce::File::userApplicationDataDirectory)
+                      .getChildFile ("Application Support/XO_OX/XOceanus/Presets");
+        if (! dir.exists())
+            dir.createDirectory();
+        return dir;
+    }
+
+    /** Returns the next non-colliding preset name in the given directory.
+        For "My Preset" with "My Preset.xometa" present → "My Preset (2)".
+        For "My Preset" with both base and (2) present → "My Preset (3)". */
+    static juce::String getNextAvailableName (const juce::String& baseName,
+                                              const juce::File& presetDir)
+    {
+        auto sanitized = juce::File::createLegalFileName (baseName);
+        if (! presetDir.getChildFile (sanitized + ".xometa").existsAsFile())
+            return sanitized;
+
+        for (int n = 2; n < 10000; ++n)
+        {
+            auto candidate = sanitized + " (" + juce::String (n) + ")";
+            if (! presetDir.getChildFile (candidate + ".xometa").existsAsFile())
+                return candidate;
+        }
+        // Fallback: append timestamp to guarantee uniqueness
+        return sanitized + " (" + juce::Time::getCurrentTime().formatted ("%H%M%S") + ")";
+    }
+
     // Save a preset to a .xometa file on disk.
     // Returns true on success, false if the file can't be written.
     bool savePresetToFile(const juce::File& file, const PresetData& preset)
@@ -521,6 +552,18 @@ public:
             return false;
 
         return file.replaceWithText(json);
+    }
+
+    /** Save with collision check. confirmOverwrite is invoked only if the target
+        file already exists. Return false from the callback to abort the save.
+        Returns true on successful write, false on abort or write failure. */
+    bool savePresetToFile (const juce::File& file,
+                           const PresetData& preset,
+                           std::function<bool (juce::File)> confirmOverwrite)
+    {
+        if (file.existsAsFile() && confirmOverwrite && ! confirmOverwrite (file))
+            return false;
+        return savePresetToFile (file, preset);
     }
 
     // Serialize a PresetData to a JSON string.
@@ -879,6 +922,45 @@ public:
 
     // Return the number of presets in the library.
     int getLibrarySize() const { return static_cast<int>(std::atomic_load(&library_)->size()); }
+
+    // ── CommandPalette API ─────────────────────────────────────────────────
+    //
+    // getPresetLibrary() — public accessor for the active preset library snapshot.
+    // Used by CommandPalette for ranking. Thread-safety: returns the shared_ptr
+    // by value; the underlying vector is immutable once published, so concurrent
+    // reads are safe.
+    std::shared_ptr<const std::vector<PresetData>> getPresetLibrary() const
+    {
+        return std::atomic_load(&library_);
+    }
+
+    // loadPresetByIndex — convenience: load a preset by its index in the active
+    // library snapshot. Returns false on out-of-bounds, missing file, or parse failure.
+    bool loadPresetByIndex(int presetIndex)
+    {
+        auto lib = getPresetLibrary();
+        if (lib == nullptr) return false;
+        if (presetIndex < 0 || presetIndex >= static_cast<int>(lib->size())) return false;
+        const auto& preset = (*lib)[static_cast<size_t>(presetIndex)];
+        if (preset.sourceFile == juce::File()) return false;
+        return loadPresetFromFile(preset.sourceFile);
+    }
+
+    // recordPresetLoad — palette-driven loads only (NOT every loadPresetFromFile).
+    // The CommandPalette calls this immediately after a successful load.
+    void recordPresetLoad(int presetIndex)
+    {
+        for (auto it = recentPresetIndices_.begin(); it != recentPresetIndices_.end(); )
+        {
+            if (*it == presetIndex) it = recentPresetIndices_.erase(it);
+            else ++it;
+        }
+        recentPresetIndices_.push_front(presetIndex);
+        while (recentPresetIndices_.size() > kMaxPresetRecents_)
+            recentPresetIndices_.pop_back();
+    }
+
+    const std::deque<int>& getRecentPresetIndices() const { return recentPresetIndices_; }
 
     // Add a preset to the library (for testing and programmatic use).
     // Builds a new vector from the current contents, appends, then publishes.
@@ -1370,6 +1452,11 @@ private:
     // pointer here so the destructor can signal it.  Must only be read/written
     // on the message thread.
     juce::Thread* activeScanThread = nullptr;
+
+    // ── CommandPalette recents ─────────────────────────────────────────────
+    // Message-thread only — palette interactions happen there.
+    std::deque<int> recentPresetIndices_;
+    static constexpr size_t kMaxPresetRecents_ = 8;
 
     // Enables juce::WeakReference<PresetManager> so the callAsync lambda in
     // scanPresetDirectoryAsync() can safely detect destruction without UAF.

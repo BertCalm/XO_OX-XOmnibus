@@ -2,9 +2,11 @@
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
 #include "SynthEngine.h"
+#include <deque>
 #include <functional>
 #include <unordered_map>
 #include <array>
+#include <string>
 
 namespace xoceanus
 {
@@ -140,9 +142,35 @@ public:
         return {}; // engines span multiple collections, or none matched
     }
 
+    // ── Recents (CommandPalette) ────────────────────────────────────────────
+    //
+    // Records palette-driven engine loads. Slot is captured for future analytics
+    // but isn't surfaced to the UI yet (V1 just shows the engine IDs).
+    // Thread-safety: message-thread only — palette interactions happen there.
+    void recordEngineLoad(const std::string& engineId, int /*slot*/)
+    {
+        for (auto it = recentEngineIds_.begin(); it != recentEngineIds_.end(); )
+        {
+            if (*it == engineId) it = recentEngineIds_.erase(it);
+            else ++it;
+        }
+        recentEngineIds_.push_front(engineId);
+        while (recentEngineIds_.size() > kMaxEngineRecents_)
+            recentEngineIds_.pop_back();
+    }
+
+    const std::deque<std::string>& getRecentEngineIds() const { return recentEngineIds_; }
+
+    // Test helper — never call from production code.
+    void clearRecentsForTesting() { recentEngineIds_.clear(); }
+
 private:
     EngineRegistry() = default;
     std::unordered_map<std::string, EngineFactory> factories;
+
+    // ── CommandPalette recents ─────────────────────────────────────────────
+    std::deque<std::string> recentEngineIds_;
+    static constexpr size_t kMaxEngineRecents_ = 8;
 };
 
 } // namespace xoceanus

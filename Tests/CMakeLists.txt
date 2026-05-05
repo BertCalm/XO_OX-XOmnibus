@@ -41,6 +41,7 @@ add_executable(XOceanusTests
     PresetTests/PresetRoundTripTests.cpp
     PresetTests/BackwardCompatibilityTests.cpp
     PresetTests/SchemaV2Tests.cpp
+    PresetTests/CommandPaletteTests.cpp
     ExportTests/XPNExportTests.cpp
     DoctrineTests/DoctrineTests.cpp
     PlaySurfaceTests/HarmonicFieldTests.cpp
