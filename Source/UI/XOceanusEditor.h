@@ -61,6 +61,8 @@
 #include "Tokens.h"
 // Cmd+K command palette — fuzzy preset + engine search (#22).
 #include "Ocean/CommandPalette.h"
+// Issue #1405 (TODO #1354): Save / Save As dialog with mood capture.
+#include "Ocean/SavePresetDialog.h"
 
 namespace xoceanus
 {
@@ -97,6 +99,7 @@ namespace xoceanus
 class XOceanusEditor : public juce::AudioProcessorEditor,
                        public CockpitHost, // B041: Dark Cockpit opacity interface
                        private juce::Timer,
+                       private juce::ValueTree::Listener,        // issue #1405: dirty-flag tracking
                        private XOceanusProcessor::SlotPresetListener // #1356 per-slot pill sync
 {
 public:
@@ -112,6 +115,8 @@ public:
         initPlaySurfaceAndPresets(proc);
         initSidebarAndWiring(proc);
         initOceanView(proc);
+        // Issue #1405: listen on APVTS state changes to track the dirty flag.
+        proc.getAPVTS().state.addListener(this);
         startTimerHz(10); // #1008 FIX 6: raised from 1Hz — OceanView voice counts
                           // and coupling routes need 10Hz minimum for responsive feel.
                           // MIDI-learn boost to 30Hz applied separately in MIDI callback.
@@ -1079,6 +1084,7 @@ public:
                 {
                     processor.applyPreset(preset);
                     pm.setCurrentPreset(preset);
+                    isDirty_ = false; // issue #1405: fresh load = clean state
                 }
                 catch (const std::exception& e)
                 {
@@ -1100,6 +1106,7 @@ public:
                 const auto& preset = pm.getCurrentPreset();
                 processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
                 processor.applyPreset(preset);
+                isDirty_ = false; // issue #1405: fresh load = clean state
             }
             catch (const std::exception& e)
             {
@@ -1118,6 +1125,7 @@ public:
                 const auto& preset = pm.getCurrentPreset();
                 processor.getUndoManager().beginNewTransaction("Load preset: " + preset.name);
                 processor.applyPreset(preset);
+                isDirty_ = false; // issue #1405: fresh load = clean state
             }
             catch (const std::exception& e)
             {
@@ -1127,64 +1135,23 @@ public:
             }
         };
 
-        // onSavePreset — prompt for a name via juce::AlertWindow, then write the
-        // .xometa file via PresetManager::savePresetToFile().
-        // TODO(#1354): A richer "Save As" dialog (overwrite-check, mood selector)
-        // is a follow-up task.  For now, a modal input box is sufficient.
+        // onSavePreset — routes to the rich Save / Save As dialog (issue #1405).
+        // Replaces the old AlertWindow-based flow from the TODO(#1354) placeholder.
         oceanView_.onSavePreset = [this]()
         {
-            auto& pm = processor.getPresetManager();
-            const juce::String currentName = pm.getCurrentPreset().name;
-            const juce::String suggestion  = currentName.isEmpty() ? "My Preset" : currentName;
-
-            // takeOwnership=true: JUCE manages lifetime — do NOT delete dialog inside callback.
-            auto* dialog = new juce::AlertWindow(
-                "Save Preset",
-                "Enter a name for this preset:",
-                juce::MessageBoxIconType::NoIcon,
-                this);
-            dialog->addTextEditor("name", suggestion, "Preset name:");
-            dialog->addButton("Save",   1);
-            dialog->addButton("Cancel", 0);
-
-            dialog->enterModalState(
-                true,
-                juce::ModalCallbackFunction::create(
-                    [safeThis = juce::Component::SafePointer<XOceanusEditor>(this), dialog](int result)
-                    {
-                        if (result != 1 || safeThis == nullptr)
-                            return;
-
-                        const juce::String newName = dialog->getTextEditorContents("name").trim();
-                        if (newName.isEmpty())
-                            return;
-
-                        auto& pm2  = safeThis->processor.getPresetManager();
-                        auto  data = pm2.getCurrentPreset();
-                        data.name  = newName;
-
-                        const auto presetDir =
-                            juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
-                                .getChildFile("Application Support/XO_OX/XOceanus/Presets");
-                        presetDir.createDirectory();
-                        const auto file = presetDir.getChildFile(data.name + ".xometa");
-
-                        if (pm2.savePresetToFile(file, data))
-                        {
-                            pm2.setCurrentPreset(data);
-                            ToastOverlay::show("Preset saved: " + data.name, Toast::Level::Info);
-                            // Rescan so the new preset appears in the browser immediately.
-                            if (auto* sb = safeThis->oceanView_.getSidebar())
-                                sb->refreshPresetBrowser();
-                        }
-                        else
-                        {
-                            ToastOverlay::show(
-                                "Failed to save preset — check disk space or permissions.",
-                                Toast::Level::Warn);
-                        }
-                    }),
-                true /* deleteWhenDismissed */);
+            // Use the same decision logic as the Cmd+S keyboard handler.
+            switch (getCurrentSaveState())
+            {
+                case SaveState::NoPresetLoaded:
+                    openSavePresetDialog(/*isFirstSave=*/true);
+                    break;
+                case SaveState::LoadedModified:
+                    silentOverwriteCurrentPreset();
+                    break;
+                case SaveState::LoadedUnmodified:
+                    // no-op: nothing changed since last save
+                    break;
+            }
         };
 
         // onFavToggled — toggle favourite status on the current preset and persist.
@@ -1853,6 +1820,8 @@ public:
     {
         stopTimer();
         removeKeyListener(statusBar.getKeyListener());
+        // Issue #1405: Remove APVTS state listener before teardown.
+        processor.getAPVTS().state.removeListener(this);
         // #1356: Unsubscribe from per-slot preset change notifications before teardown.
         processor.removeSlotPresetListener(this);
         processor.onEngineChanged = nullptr; // prevent callback after editor is destroyed
@@ -1957,11 +1926,26 @@ public:
             showOverview();
             return true;
         }
-        // F2-014: Cmd+S — save current preset (mirrors the SAVE button in the sidebar).
+        // Issue #1405: Cmd+S — 3-way state matrix (spec §3 decision Q2).
         if (key == juce::KeyPress('s', juce::ModifierKeys::commandModifier, 0))
         {
-            if (oceanView_.onSavePreset)
-                oceanView_.onSavePreset();
+            switch (getCurrentSaveState())
+            {
+                case SaveState::NoPresetLoaded:
+                    openSavePresetDialog(/*isFirstSave=*/true);
+                    break;
+                case SaveState::LoadedModified:
+                    silentOverwriteCurrentPreset();
+                    break;
+                case SaveState::LoadedUnmodified:
+                    break; // no-op — identical to unmodified state
+            }
+            return true;
+        }
+        // Issue #1405: Cmd+Shift+S — always opens rich dialog (Save As fork).
+        if (key == juce::KeyPress('s', juce::ModifierKeys::commandModifier | juce::ModifierKeys::shiftModifier, 0))
+        {
+            openSavePresetDialog(/*isFirstSave=*/(getCurrentSaveState() == SaveState::NoPresetLoaded));
             return true;
         }
         // Cmd+Z — undo last parameter change or preset load
@@ -2158,6 +2142,104 @@ public:
     }
 
 private:
+    //==========================================================================
+    // juce::ValueTree::Listener — dirty-flag tracking (issue #1405)
+    //==========================================================================
+
+    void valueTreePropertyChanged(juce::ValueTree&, const juce::Identifier&) override
+    {
+        isDirty_ = true;
+    }
+
+    // Required overrides (no-op for our dirty-tracking use case).
+    void valueTreeChildAdded(juce::ValueTree&, juce::ValueTree&) override {}
+    void valueTreeChildRemoved(juce::ValueTree&, juce::ValueTree&, int) override {}
+    void valueTreeChildOrderChanged(juce::ValueTree&, int, int) override {}
+    void valueTreeParentChanged(juce::ValueTree&) override {}
+
+    //==========================================================================
+    // Save / Save As helpers (issue #1405, TODO #1354)
+    //==========================================================================
+
+    enum class SaveState { NoPresetLoaded, LoadedModified, LoadedUnmodified };
+
+    SaveState getCurrentSaveState() const
+    {
+        const auto& pm = processor.getPresetManager();
+        if (pm.getCurrentPreset().name.isEmpty())
+            return SaveState::NoPresetLoaded;
+        return isDirty_ ? SaveState::LoadedModified : SaveState::LoadedUnmodified;
+    }
+
+    void openSavePresetDialog(bool isFirstSave)
+    {
+        auto& pm = processor.getPresetManager();
+        PresetData initial;
+
+        if (!isFirstSave && !pm.getCurrentPreset().name.isEmpty())
+        {
+            // Save As fork: inherit current preset data, bump name to next available.
+            initial = pm.getCurrentPreset();
+            initial.name = PresetManager::getNextAvailableName(
+                initial.name, PresetManager::getUserPresetDirectory());
+        }
+
+        auto* dialog = new SavePresetDialog(
+            std::move(initial),
+            isFirstSave,
+            [this](PresetData saved)
+            {
+                // Save succeeded: update PresetManager state, clear dirty, toast, close.
+                auto& pm2 = processor.getPresetManager();
+                pm2.setCurrentPreset(saved);
+                isDirty_ = false;
+                ToastOverlay::show("Saved " + saved.name, Toast::Level::Info);
+                // Rescan so the new preset appears in the browser immediately.
+                if (auto* sb = oceanView_.getSidebar())
+                    sb->refreshPresetBrowser();
+                // Close the owning DialogWindow.
+                if (auto* parent = juce::Component::getCurrentlyModalComponent())
+                    parent->exitModalState(0);
+            },
+            []
+            {
+                // Cancel: close the owning DialogWindow.
+                if (auto* parent = juce::Component::getCurrentlyModalComponent())
+                    parent->exitModalState(0);
+            });
+
+        juce::DialogWindow::LaunchOptions opts;
+        opts.content.setOwned(dialog);
+        opts.dialogTitle                = isFirstSave ? "Save Preset" : "Save Preset As...";
+        opts.dialogBackgroundColour     = juce::Colour(GalleryColors::Ocean::twilight);
+        opts.escapeKeyTriggersCloseButton = true;
+        opts.useNativeTitleBar          = false;
+        opts.resizable                  = false;
+        opts.launchAsync();
+    }
+
+    void silentOverwriteCurrentPreset()
+    {
+        auto& pm = processor.getPresetManager();
+        const auto& current = pm.getCurrentPreset();
+        if (current.name.isEmpty()) return; // defensive
+
+        auto target = PresetManager::getUserPresetDirectory()
+                         .getChildFile(current.name + ".xometa");
+
+        PresetManager pmLocal;
+        if (pmLocal.savePresetToFile(target, current))
+        {
+            isDirty_ = false;
+            ToastOverlay::show("Saved " + current.name, Toast::Level::Info);
+        }
+        else
+        {
+            ToastOverlay::show("Save failed — check disk space or permissions.",
+                               Toast::Level::Warn);
+        }
+    }
+
     //==========================================================================
     // XOceanusProcessor::SlotPresetListener (#1356)
     //==========================================================================
@@ -3123,6 +3205,10 @@ private:
     // Last MIDI note number seen (for interval computation in session DNA drift).
     // -1 = no note played yet this session.
     int lastNote_ = -1;
+
+    // ── Save / Save As state (issue #1405) ──────────────────────────────────
+    // true after any parameter change since the last save/load; cleared on save.
+    bool isDirty_ = false;
 
     // Tracks the last known preset library size so we only re-seed preset dots
     // when the library is first populated or changes (e.g. after a background scan).
