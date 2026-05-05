@@ -17,6 +17,7 @@
 #include "Core/CouplingPresetManager.h"
 #include "Core/MacroSystem.h"
 #include "Core/DNAModulationBus.h"
+#include "Core/MoodModulationBus.h"
 #include "Core/PartnerAudioBus.h"
 #include "Core/BrothCoordinator.h"
 #include "Core/SharedTransport.h"
@@ -690,6 +691,11 @@ private:
     // Per-engine DNA bus updated at preset load + each block from M1 CHARACTER macro.
     // Consumed by FX chains via get(slot, axis). See Source/Core/DNAModulationBus.h.
     xoceanus::DNAModulationBus dnaBus_;
+    // Phase 0 wildcard infrastructure (FX gap analysis, 2026-04-27).
+    // 16-mood one-hot + soft-blend bus, defaulted from preset.mood at load.
+    // Pack 8 (Mastering) is the first consumer; other chains may opt in later.
+    // See Source/Core/MoodModulationBus.h.
+    xoceanus::MoodModulationBus moodBus_;
     // Per-engine-slot mono audio bus published after each renderBlock(),
     // consumed by Pack 1 FX chains (Otrium triangular ducking).
     // See Source/Core/PartnerAudioBus.h for lifecycle.
