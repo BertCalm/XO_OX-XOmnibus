@@ -183,12 +183,22 @@ struct OverPartialOsc
     float phase = 0.f;
     float sr = 0.0f; // sentinel: must be set by prepare() before use (#671)
 
-    void prepare(double s) { sr = (float)s; }
+    void prepare(double s)
+    {
+        // P37: guard against sr=0 — avoids freq/0=Inf in tick()
+        if (s <= 0.0 || !std::isfinite(s))
+        {
+            jassertfalse;
+            return;
+        }
+        sr = (float)s;
+    }
     void reset() { phase = 0.f; }
 
     // freq in Hz, returns one sample of sine
     float tick(float freq)
     {
+        if (sr <= 0.0f) return 0.0f; // pre-prepare safety: silent, not NaN
         phase += freq / sr;
         if (phase >= 1.f)
             phase -= 1.f;
@@ -527,6 +537,12 @@ public:
     //--------------------------------------------------------------------------
     void prepare(double sampleRate, int maxBlockSize) override
     {
+        // P37: guard against sr=0 — avoids freq/sr=Inf in partial oscillators
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = (float)sampleRate;
 
         for (int i = 0; i < kNumPartials; ++i)
@@ -639,6 +655,9 @@ public:
     void renderBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midi, int numSamples) override
     {
         juce::ScopedNoDenormals noDenormals;
+        // P37: sr=0.0 sentinel — renderBlock must never run without a valid prepare()
+        jassert(sr > 0.0f);
+        if (sr <= 0.0f) { buffer.clear(); return; }
         // 1. Parse MIDI — note-on/off, CC1 (mod wheel D006), aftertouch (D006)
         for (const auto meta : midi)
         {

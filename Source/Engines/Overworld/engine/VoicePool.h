@@ -845,6 +845,12 @@ public:
 
     void prepare(float sampleRate)
     {
+        // P37: guard against sr=0 — avoids freq/sr=Inf in phase increments
+        if (sampleRate <= 0.0f || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         gWavetables.build(sampleRate);
         for (auto& v : voices)
