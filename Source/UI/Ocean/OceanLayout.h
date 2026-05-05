@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 XO_OX Designs
 #pragma once
-// OceanLayout.h  —  Phase 2 + 2.5 of the OceanView decomposition (issue #1184).
+// OceanLayout.h  —  Phase 2 + 2.5 + 4 of the OceanView decomposition (issue #1184).
 //
 // OceanLayout owns all geometry/layout logic that previously lived directly in
 // OceanView.  It holds references to every component it must position — no
@@ -9,7 +9,7 @@
 //
 // Construction
 // ────────────
-//   OceanLayout layout_{children_, /* LayoutTargets */ { ..., selectedSlot_, detailShowing_, firstLaunch_ }};
+//   OceanLayout layout_{children_, /* LayoutTargets */ { ..., stateMachine_, detailShowing_, firstLaunch_ }};
 //
 //   OceanView::resized() becomes:
 //     layout_.layoutForState(viewState_, getLocalBounds());
@@ -22,13 +22,11 @@
 //   - LayoutTargets members are plain Component& / Component* references; they
 //     are never used to call back into OceanView — only setBounds/setVisible/
 //     toFront.
-//   - LayoutTargets also holds const-ref bindings to the three layout-input state
-//     members (selectedSlot, detailShowing, firstLaunch) added in Phase 2.5.
+//   - LayoutTargets holds const-ref bindings to layout-input state: detailShowing,
+//     firstLaunch (Phase 2.5), and stateMachine (Phase 4 — replaces selectedSlot_
+//     mirror; layout reads selectedSlot() directly from the state machine).
 //   - All geometry constants (kDashboardH, kStatusBarH, etc.) duplicated here
 //     for now; Phase 3 should consolidate them into a shared constants header.
-//
-// Phase 3 will extract OceanStateMachine.  At that point the `viewState_`
-// placeholder in layoutForState() will be replaced by a stateMachine_ query.
 
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "OceanLayoutConstants.h"
@@ -121,8 +119,9 @@ struct LayoutTargets
     SurfaceRightPanel&              surfaceRight;
 
     // Phase 2.5 (#1184): layout-input state — const refs to OceanView members.
-    // Removed from layoutForState() per-call args; now read directly from here.
-    const int&              selectedSlot;    ///< OceanView::selectedSlot_
+    // Phase 4 (#1184): selectedSlot_ mirror dropped; layout reads selectedSlot()
+    // directly from OceanStateMachine via the stateMachine const-ref below.
+    const OceanStateMachine& stateMachine;   ///< reads selectedSlot(), currentState()
     const bool&             detailShowing;   ///< OceanView::detailShowing_
     const bool&             firstLaunch;     ///< OceanView::firstLaunch_
     // D5 (1D-P2B): canonical tab state — source of truth for keyboard visibility.
@@ -442,7 +441,7 @@ private:
 
     void layoutZoomIn(juce::Rectangle<int> fullBounds)
     {
-        const int  selectedSlot  = targets_.selectedSlot;
+        const int  selectedSlot  = targets_.stateMachine.selectedSlot();
         const bool detailShowing = targets_.detailShowing;
         jassert(selectedSlot >= 0 && selectedSlot < 5);
 
@@ -522,7 +521,7 @@ private:
 
     void layoutSplitTransform(juce::Rectangle<int> fullBounds)
     {
-        const int selectedSlot = targets_.selectedSlot;
+        const int selectedSlot = targets_.stateMachine.selectedSlot();
         jassert(selectedSlot >= 0 && selectedSlot < 5);
 
         // Step 6: use computeOceanArea() so background/ambient edge stay within the

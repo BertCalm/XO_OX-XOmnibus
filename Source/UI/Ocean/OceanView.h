@@ -754,8 +754,8 @@ public:
                 exprStrips_,
                 subPlaySurface_,
                 surfaceRight_,
-                // Phase 2.5 (#1184): layout-input state bindings (const-ref).
-                selectedSlot_,
+                // Phase 4 (#1184): stateMachine const-ref replaces selectedSlot_ mirror.
+                stateMachine_,
                 detailShowing_,
                 firstLaunch_,
                 // D5 (1D-P2B): canonical tab state for keyboard visibility.
@@ -764,15 +764,8 @@ public:
 
         // ── Phase 3 (#1184): wire OceanStateMachine callbacks ────────────────
         // onStateEntered: a completed transition triggers layout + repaint.
-        // Also syncs OceanView's mirror fields (viewState_, selectedSlot_) so
-        // any remaining OceanView code that still reads them is consistent.
-        // Step 9 removes the mirror fields; until then keep them in sync here.
         stateMachine_.onStateEntered = [this](OceanStateMachine::ViewState s)
         {
-            // Sync selectedSlot_ mirror (removed in step 9 final cleanup).
-            // viewState_ mirror removed in step 9 — read stateMachine_.currentState() instead.
-            selectedSlot_ = stateMachine_.selectedSlot();
-
             jassert(layout_ != nullptr);
             layout_->layoutForState(s, getLocalBounds(), 1.0f);
             layout_->reorderZStack();
@@ -1366,9 +1359,9 @@ public:
 
         // Fix #1005 (callAsync race): only reset view state if we are currently
         // zoomed into THIS slot.  If the user has already double-clicked into a
-        // different slot (selectedSlot_ != slot) or returned to Orbital between
-        // when the engine removal was queued and when this runs, do not clobber
-        // the new state.  Only ZoomIn / SplitTransform warrant a reset.
+        // different slot or returned to Orbital between when the engine removal
+        // was queued and when this runs, do not clobber the new state.
+        // Only ZoomIn / SplitTransform warrant a reset.
         const bool slotIsSelected = (stateMachine_.selectedSlot() == slot);
         const bool inEngagedState = (stateMachine_.currentState() == ViewState::ZoomIn ||
                                      stateMachine_.currentState() == ViewState::SplitTransform);
@@ -2324,7 +2317,7 @@ private:
                         // Force-select the target slot (no toggle) so the drawer
                         // replacement lands on the correct slot even if it was
                         // already selected before the right-click.
-                        selectedSlot_ = slot;
+                        stateMachine_.setSelectedSlot(slot);
                         for (int i = 0; i < 5; ++i)
                             orbits_[i].setSelected(i == slot);
                         if (onEngineSelected)
@@ -2488,7 +2481,7 @@ private:
                         // that slot so the drawer's engine-selected callback lands there.
                         if (slot >= 0 && slot < 5)
                         {
-                            selectedSlot_ = slot;
+                            stateMachine_.setSelectedSlot(slot);
                             for (int i = 0; i < 5; ++i)
                                 orbits_[i].setSelected(i == slot);
                             if (onEngineSelected)
@@ -2687,7 +2680,6 @@ private:
         // Toggle: clicking the already-selected orbit deselects it.
         if (stateMachine_.selectedSlot() == slot)
         {
-            selectedSlot_ = -1;                    // mirror (Phase 3; removed in step 9)
             stateMachine_.setSelectedSlot(-1);
             for (auto& o : orbits_)
                 o.setSelected(false);
@@ -2696,7 +2688,6 @@ private:
             return;
         }
 
-        selectedSlot_ = slot;                      // mirror (Phase 3; removed in step 9)
         stateMachine_.setSelectedSlot(slot);
         for (int i = 0; i < 5; ++i)
             orbits_[i].setSelected(i == slot);
@@ -3162,10 +3153,8 @@ private:
     //==========================================================================
 
     // Phase 3 (#1184): viewState_ removed — canonical state lives in stateMachine_.
-    // selectedSlot_ is kept as a mirror for LayoutTargets (const int& binding);
-    // it is updated in onStateEntered + selectOrbitInPlace.
-    // Step 9 will remove selectedSlot_ once LayoutTargets binds to stateMachine_ directly.
-    int       selectedSlot_    = -1;
+    // Phase 4 (#1184): selectedSlot_ mirror removed — LayoutTargets now holds a
+    // const OceanStateMachine& and reads selectedSlot() directly.
 
     /// Per-slot mute / solo toggle state — tracked locally so the context menu
     /// label can reflect the current state without a round-trip to the processor.
