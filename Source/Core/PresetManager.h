@@ -6,6 +6,7 @@
 #include <cmath>
 #include <algorithm>
 #include <deque>
+#include <functional>
 #include <map>
 #include <memory>
 #include <set>
@@ -554,16 +555,46 @@ public:
         return file.replaceWithText(json);
     }
 
-    /** Save with collision check. confirmOverwrite is invoked only if the target
-        file already exists. Return false from the callback to abort the save.
-        Returns true on successful write, false on abort or write failure. */
-    bool savePresetToFile (const juce::File& file,
-                           const PresetData& preset,
-                           std::function<bool (juce::File)> confirmOverwrite)
+    /** Save with collision check. confirmOverwrite is invoked only if file exists.
+        Return false from the callback to abort. Returns true on successful save. */
+    bool savePresetToFile(const juce::File& file,
+                          const PresetData& data,
+                          std::function<bool(juce::File)> confirmOverwrite)
     {
-        if (file.existsAsFile() && confirmOverwrite && ! confirmOverwrite (file))
+        if (file.existsAsFile() && confirmOverwrite && !confirmOverwrite(file))
             return false;
-        return savePresetToFile (file, preset);
+        auto json = serializeToJSON(data);
+        if (json.isEmpty())
+            return false;
+        return file.replaceWithText(json);
+    }
+
+    /** Returns the next non-colliding preset name in the given directory.
+        For "My Preset" with "My Preset.xometa" present -> "My Preset (2)".
+        For "My Preset" with both base and (2) present -> "My Preset (3)". */
+    static juce::String getNextAvailableName(const juce::String& baseName, const juce::File& presetDir)
+    {
+        auto sanitized = juce::File::createLegalFileName(baseName);
+        if (!presetDir.getChildFile(sanitized + ".xometa").existsAsFile())
+            return sanitized;
+
+        for (int n = 2; n < 10000; ++n)
+        {
+            auto candidate = sanitized + " (" + juce::String(n) + ")";
+            if (!presetDir.getChildFile(candidate + ".xometa").existsAsFile())
+                return candidate;
+        }
+        return sanitized + " (" + juce::Time::getCurrentTime().formatted("%H%M%S") + ")"; // fallback
+    }
+
+    /** Returns the canonical user preset directory, creating it if needed. */
+    static juce::File getUserPresetDirectory()
+    {
+        auto dir = juce::File::getSpecialLocation(juce::File::userApplicationDataDirectory)
+                       .getChildFile("Application Support/XO_OX/XOceanus/Presets");
+        if (!dir.exists())
+            dir.createDirectory();
+        return dir;
     }
 
     // Serialize a PresetData to a JSON string.
