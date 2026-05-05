@@ -718,6 +718,8 @@ add_executable(XOceanusTests
     Tests/CouplingTests/CouplingMatrixTests.cpp
     Tests/PresetTests/PresetRoundTripTests.cpp
     Tests/PresetTests/BackwardCompatibilityTests.cpp
+    Tests/PresetTests/SaveAsTests.cpp
+    Tests/PresetTests/CommandPaletteTests.cpp
     Tests/ExportTests/XPNExportTests.cpp
     Tests/DoctrineTests/DoctrineTests.cpp
     Tests/PlaySurfaceTests/HarmonicFieldTests.cpp
