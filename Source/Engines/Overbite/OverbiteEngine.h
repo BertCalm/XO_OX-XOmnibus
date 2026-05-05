@@ -92,6 +92,12 @@ class BiteOscA
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 — avoids freq/sr=Inf in setFrequency()
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         // Precompute drift LFO phase increment — avoids a per-sample division
         driftPhaseInc = 0.37 / sr;
@@ -450,6 +456,12 @@ class BiteSubOsc
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 — avoids freq/sr=Inf in setFrequency()
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         reset();
     }
@@ -488,6 +500,12 @@ class BiteWeightEngine
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 — avoids freq/sr=Inf in setFrequency()
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         reset();
     }
@@ -566,6 +584,12 @@ class BiteNoiseSource
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 (host probe or pre-prepare call) — avoids invSR=Inf
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         invSR = 1.0f / static_cast<float>(sr);
         // Pink noise IIR: three leaky integrators at pole frequencies 399 Hz, 112 Hz, 32 Hz.
@@ -1166,6 +1190,12 @@ class BiteLFO
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 (host probe or pre-prepare call) — avoids invSR=Inf
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse;
+            return;
+        }
         sr = sampleRate;
         invSR = 1.0f / static_cast<float>(sr);
     }

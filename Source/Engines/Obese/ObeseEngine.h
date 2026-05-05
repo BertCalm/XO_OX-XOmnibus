@@ -222,6 +222,12 @@ class FatLadderFilter
 public:
     void prepare(double sampleRate) noexcept
     {
+        // P37: guard against sr=0 (host probe or pre-prepare call) — avoids invSR=Inf
+        if (sampleRate <= 0.0 || !std::isfinite(sampleRate))
+        {
+            jassertfalse; // Host must provide a valid sample rate
+            return;
+        }
         sr = sampleRate;
         invSR = 1.0f / static_cast<float>(sr);
         s[0] = s[1] = s[2] = s[3] = 0.0f;
