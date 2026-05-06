@@ -162,6 +162,28 @@ public:
         return true;
     }
 
+    // ── Mod viz API (#24 modviz) ─────────────────────────────────────────────
+    // Called from EngineDetailPanel::refreshModulationArcs() at 30 Hz.
+    // amounts[i] = live modulation depth [-1, +1] for macro pillar i (0–3).
+    // colours[i] = source-coded colour from modSourceColour().
+    // Pass 0.0f / juce::Colours::transparentBlack for unrouted pillars.
+    void setMacroModDepths(const std::array<float, 4>& amounts,
+                           const std::array<juce::Colour, 4>& colours)
+    {
+        bool changed = false;
+        for (int i = 0; i < 4; ++i)
+        {
+            if (macroModDepths_[i] != amounts[i] || macroModColours_[i] != colours[i])
+            {
+                macroModDepths_[i]  = amounts[i];
+                macroModColours_[i] = colours[i];
+                changed = true;
+            }
+        }
+        if (changed)
+            repaint();
+    }
+
     void paint(juce::Graphics& g) override
     {
         if (numMacros == 0)
@@ -212,6 +234,29 @@ public:
             g.setColour(juce::Colour(GalleryColors::xoGold).withAlpha(0.45f));
             g.drawHorizontalLine(kHeaderH, 8.0f, (float)(getWidth() - 8));
         }
+
+        // ── Mod viz overlay (#24): colored depth bar on right edge of each pillar ──
+        // Drawn after all background/decoration so it sits on top.
+        for (int i = 0; i < numMacros; ++i)
+        {
+            if (!pillars[i].isVisible())
+                continue;
+            const float depth = macroModDepths_[i];
+            if (std::abs(depth) < 0.005f)
+                continue;
+
+            const auto pb    = pillars[i].getBounds().toFloat();
+            constexpr float barW  = 3.0f;
+            const float barMaxH  = pb.getHeight() * 0.8f;
+            const float barH     = barMaxH * std::abs(depth);
+            const float barX     = pb.getRight() - barW - 1.0f;
+            const float barY     = depth >= 0.0f
+                                   ? pb.getCentreY() - barH
+                                   : pb.getCentreY();
+            const float alpha    = 0.25f + 0.5f * std::abs(depth);
+            g.setColour(macroModColours_[i].withAlpha(alpha));
+            g.fillRoundedRectangle(barX, barY, barW, barH, 1.5f);
+        }
     }
 
     // W25: Repaint when the LookAndFeel (theme) changes so colours update.
@@ -250,6 +295,17 @@ private:
     // Destruction order: listeners → attachments → sliders.
     std::array<std::unique_ptr<juce::AudioProcessorValueTreeState::SliderAttachment>, 4> attachments;
     std::vector<std::unique_ptr<MidiLearnMouseListener>> pillarLearnListeners;
+
+    // ── Mod viz state (#24 modviz) ───────────────────────────────────────────
+    // Written by setMacroModDepths() on the message thread (30 Hz timer).
+    // Read by paint() on the same thread. No synchronisation needed.
+    std::array<float,        4> macroModDepths_  = { 0.0f, 0.0f, 0.0f, 0.0f };
+    std::array<juce::Colour, 4> macroModColours_ = {
+        juce::Colours::transparentBlack,
+        juce::Colours::transparentBlack,
+        juce::Colours::transparentBlack,
+        juce::Colours::transparentBlack
+    };
 
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(MacroHeroStrip)
 };

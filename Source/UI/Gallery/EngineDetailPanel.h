@@ -360,7 +360,8 @@ public:
 // Contains a MacroHeroStrip (4 pillar sliders for engine macros) plus a
 // scrollable ParameterGrid showing all remaining params.
 class EngineDetailPanel : public juce::Component,
-                          private juce::Timer
+                          private juce::Timer,
+                          private juce::ChangeListener
 {
 public:
     explicit EngineDetailPanel(XOceanusProcessor& proc) : processor(proc), macroHero(proc), waveformDisplay(proc), modMatrix_(proc.getAPVTS()), seqSection_(proc.getAPVTS())
@@ -369,6 +370,8 @@ public:
         macroHero.setTooltip("Adjust core performance faders or right-click to map MIDI");
         addAndMakeVisible(macroHero);
         addAndMakeVisible(viewport);
+        // #24 modviz: listen for route changes so we can rebuild the knob-ptr cache.
+        processor.getModRoutingModel().addListener(this);
         // Disable scroll-on-drag — it steals vertical mouse drags from
         // RotaryVerticalDrag knobs inside the ParameterGrid.
         viewport.setScrollOnDragMode(juce::Viewport::ScrollOnDragMode::never);
@@ -434,6 +437,7 @@ public:
     ~EngineDetailPanel() override
     {
         stopTimer();
+        processor.getModRoutingModel().removeListener(this);
         for (auto& s : adsrSliders)
             s.setLookAndFeel(nullptr);
     }
@@ -483,6 +487,7 @@ public:
             return false;
 
         activeSlot_ = slot; // #903: persist slot for coupling route polling
+        modVizCacheDirty_ = true; // #24 modviz: engine changed — rebuild knob-ptr cache.
 
         // Wave 5 C1: wire SEQ section to this slot (primary slots 0–3 only)
         seqSection_.loadSlot(slot);
@@ -1198,6 +1203,181 @@ private:
             grid->setModulationForKeywords(kws,
                                             it.getValue(),
                                             typeToColour[it.getKey()].withAlpha(0.40f));
+        }
+
+        // ── #24 modviz: badge arcs for mod routing routes ────────────────────
+        // Rebuild the knob-pointer cache if the route table or engine changed.
+        if (modVizCacheDirty_)
+            rebuildModVizCache();
+
+        // Clear stale badge arcs, then re-apply from cache.
+        grid->clearAllBadgeRoutes();
+
+        // Group routes by knob pointer (one knob may have multiple routes).
+        // For each knob, accumulate all route amounts and build a tooltip suffix.
+        juce::HashMap<GalleryKnob*, std::vector<float>> knobToAmounts;
+        juce::HashMap<GalleryKnob*, juce::String>        knobToTip;
+
+        for (const auto& mvr : modVizRouteCache_)
+        {
+            if (!mvr.knob)
+                continue;
+            const float srcVal   = readModSourceValue(mvr.sourceId);
+            const float liveDpth = srcVal * mvr.depth;
+
+            knobToAmounts[mvr.knob].push_back(liveDpth);
+
+            const int pct = juce::roundToInt(std::abs(liveDpth) * 100.0f);
+            // U+2190 LEFT ARROW encoded as UTF-8 (\xe2\x86\x90)
+            juce::String entry = juce::String(juce::CharPointer_UTF8("\xe2\x86\x90 "))
+                                 + mvr.sourceName + " \xB7 "
+                                 + juce::String(pct) + "%";
+            auto& tip = knobToTip.getReference(mvr.knob);
+            if (tip.isNotEmpty()) tip += "\n";
+            tip += entry;
+        }
+
+        for (juce::HashMap<GalleryKnob*, std::vector<float>>::Iterator it(knobToAmounts); it.next();)
+        {
+            auto* knob = it.getKey();
+            knob->setBadgeRoutes(it.getValue());
+            const auto& suffix = knobToTip[knob];
+            if (suffix.isNotEmpty())
+                knob->setTooltip(knob->getName() + "\n" + suffix);
+        }
+
+        // ── #24 modviz: macro pillar depth bars ──────────────────────────────
+        // Scan for routes whose destParamId matches a macro1..macro4 APVTS param.
+        // We accumulate the dominant (highest |depth|) route per macro pillar.
+        std::array<float,        4> macroAmounts = { 0.0f, 0.0f, 0.0f, 0.0f };
+        std::array<juce::Colour, 4> macroColours = {
+            juce::Colours::transparentBlack,
+            juce::Colours::transparentBlack,
+            juce::Colours::transparentBlack,
+            juce::Colours::transparentBlack
+        };
+        const auto& allRoutes = processor.getModRoutingModel().getRoutesCopy();
+        for (const auto& r : allRoutes)
+        {
+            // Match "macro1", "macro2", "macro3", "macro4"
+            for (int mi = 0; mi < 4; ++mi)
+            {
+                const juce::String macroId = "macro" + juce::String(mi + 1);
+                if (r.destParamId == macroId)
+                {
+                    const float srcVal = readModSourceValue(r.sourceId);
+                    const float live   = srcVal * r.depth;
+                    if (std::abs(live) > std::abs(macroAmounts[mi]))
+                    {
+                        macroAmounts[mi] = live;
+                        macroColours[mi] = modSourceColour(
+                            static_cast<ModSourceId>(r.sourceId));
+                    }
+                }
+            }
+        }
+        macroHero.setMacroModDepths(macroAmounts, macroColours);
+    }
+
+    // ── #24 modviz: private helpers ──────────────────────────────────────────
+
+    // ChangeListener callback — fires when ModRoutingModel routes change.
+    // EngineDetailPanel only registers with getModRoutingModel().broadcaster,
+    // so any callback here means routes changed — invalidate the knob-ptr cache.
+    void changeListenerCallback(juce::ChangeBroadcaster* /*source*/) override
+    {
+        modVizCacheDirty_ = true;
+    }
+
+    // Mod routing visualization cache — a pre-resolved list of routes targeting
+    // knobs in the current slot's ParameterGrid.  Rebuilt on engine load and on
+    // ModRoutingModel changes; consumed at 30 Hz in timerCallback.
+    struct ModVizRoute
+    {
+        int          sourceId   = -1;
+        float        depth      = 0.0f;    // bipolar [-1, +1]
+        GalleryKnob* knob       = nullptr; // non-owning; lifetime = ParameterGrid's
+        juce::String sourceName;           // from modSourceName()
+    };
+    std::vector<ModVizRoute> modVizRouteCache_;
+    bool modVizCacheDirty_ = true;
+
+    // Rebuild the mod viz route cache.  Called from timerCallback when dirty.
+    void rebuildModVizCache()
+    {
+        modVizCacheDirty_ = false;
+        modVizRouteCache_.clear();
+
+        if (activeSlot_ < 0)
+            return;
+
+        auto* viewed = viewport.getViewedComponent();
+        auto* grid   = dynamic_cast<ParameterGrid*>(viewed);
+        if (!grid)
+            return;
+
+        const auto routes = processor.getModRoutingModel().getRoutesCopy();
+        for (const auto& r : routes)
+        {
+            auto* knob = grid->findKnobForParam(r.destParamId);
+            if (!knob)
+                continue;
+
+            ModVizRoute mvr;
+            mvr.sourceId   = r.sourceId;
+            mvr.depth      = r.depth;
+            mvr.knob       = knob;
+            mvr.sourceName = modSourceName(static_cast<ModSourceId>(r.sourceId));
+            modVizRouteCache_.push_back(mvr);
+        }
+    }
+
+    // Read the live normalised value [-1, +1] of a mod source from safe
+    // message-thread paths (atomics only — no audio-thread plain floats).
+    float readModSourceValue(int sourceId) const noexcept
+    {
+        using Id = ModSourceId;
+        switch (static_cast<Id>(sourceId))
+        {
+            case Id::LFO1:
+                return processor.readGlobalLFO1();
+
+            case Id::MacroTone:
+            {
+                auto* p = processor.getAPVTS().getRawParameterValue("macro1");
+                return p ? p->load(std::memory_order_relaxed) * 2.0f - 1.0f : 0.0f;
+            }
+            case Id::MacroTide:
+            {
+                auto* p = processor.getAPVTS().getRawParameterValue("macro2");
+                return p ? p->load(std::memory_order_relaxed) * 2.0f - 1.0f : 0.0f;
+            }
+            case Id::MacroCouple:
+            {
+                auto* p = processor.getAPVTS().getRawParameterValue("macro3");
+                return p ? p->load(std::memory_order_relaxed) * 2.0f - 1.0f : 0.0f;
+            }
+            case Id::MacroDepth:
+            {
+                auto* p = processor.getAPVTS().getRawParameterValue("macro4");
+                return p ? p->load(std::memory_order_relaxed) * 2.0f - 1.0f : 0.0f;
+            }
+
+            // XY surface — W8B atomics (already 0..1; centre at 0.5 → bipolar)
+            case Id::XYX0: return processor.getXYX(0) * 2.0f - 1.0f;
+            case Id::XYX1: return processor.getXYX(1) * 2.0f - 1.0f;
+            case Id::XYX2: return processor.getXYX(2) * 2.0f - 1.0f;
+            case Id::XYX3: return processor.getXYX(3) * 2.0f - 1.0f;
+            case Id::XYY0: return processor.getXYY(0) * 2.0f - 1.0f;
+            case Id::XYY1: return processor.getXYY(1) * 2.0f - 1.0f;
+            case Id::XYY2: return processor.getXYY(2) * 2.0f - 1.0f;
+            case Id::XYY3: return processor.getXYY(3) * 2.0f - 1.0f;
+
+            // LFO2: no audio→message atomic yet — show static depth arc in v1.
+            // Velocity, ModWheel, Aftertouch: no global atomic on message thread — static arc.
+            // Return 1.0f so liveDepth == depth (arc shows full configured depth).
+            default:
+                return 1.0f;
         }
     }
 
