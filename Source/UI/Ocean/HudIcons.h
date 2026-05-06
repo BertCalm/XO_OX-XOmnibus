@@ -221,6 +221,38 @@ struct HudIcons
         }
     }
 
+    //==========================================================================
+    /**
+        3×3 dot-grid icon — used for the MATRIX button in SubmarineHudBar.
+
+        Nine filled circles arranged in a 3-row × 3-column grid, evenly spaced
+        in the 0–1 unit square.  Each dot has radius ~0.07; gap ~0.16 between centres.
+
+        Caller pattern:
+            auto grid = HudIcons::makeGridIcon();
+            HudIcons::drawIconInBounds(g, grid, bounds, iconColour, 0.0f);
+    */
+    static juce::Path makeGridIcon()
+    {
+        juce::Path p;
+
+        const float dotR   = 0.065f;
+        const float start  = 0.20f;
+        const float step   = 0.30f;
+
+        for (int row = 0; row < 3; ++row)
+        {
+            for (int col = 0; col < 3; ++col)
+            {
+                const float cx = start + static_cast<float>(col) * step;
+                const float cy = start + static_cast<float>(row) * step;
+                p.addEllipse(cx - dotR, cy - dotR, dotR * 2.0f, dotR * 2.0f);
+            }
+        }
+
+        return p;
+    }
+
 private:
     //==========================================================================
     /** Shared arc+arrowhead builder for undo/redo. */
