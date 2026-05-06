@@ -2063,11 +2063,27 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        // #891 / S4: Set the active dark mode context for this instance before any
+        // #891 / S4 / #1449: Set the active dark mode context for this instance before any
         // paint logic (or child components) query GalleryColors::darkMode(). Without
         // this call, all instances share the last-registered context, so a second
         // plugin window could render in the wrong theme.
+        //
+        // Fix #1449: save the previous context and restore it after our paint subtree
+        // completes. This prevents interleaved JUCE repaints (e.g. a focus-change
+        // repaint of editor B triggered mid-paint of editor A) from corrupting A's
+        // theme context. On a single message thread JUCE paints are NOT interleaved,
+        // but this save/restore makes the invariant explicit and future-proof.
+        void* const prevContext = GalleryColors::activeEditorContext();
         GalleryColors::setActiveDarkModeContext(this);
+        // Restore previous context on scope exit so that if editor B's paint is
+        // somehow triggered while we are partway through A's paint (e.g. from a
+        // JUCE animation timer that fires synchronously), B's context is not left
+        // permanently in the global slot.  Uses a local RAII guard rather than
+        // juce::ScopeGuard (not available in JUCE 8.x).
+        struct ContextGuard {
+            void*& slot; void* prev;
+            ~ContextGuard() { slot = prev; }
+        } restoreCtx { GalleryColors::activeEditorContext(), prevContext };
 
         // OceanView handles all rendering as a child component.
         // paint() only draws the MIDI Learn overlay badge when active.
