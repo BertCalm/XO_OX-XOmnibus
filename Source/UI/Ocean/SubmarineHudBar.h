@@ -260,31 +260,41 @@ private:
         const float btnY    = (h - static_cast<float>(kBtnHeight))   * 0.5f;
         const float iconY   = (h - static_cast<float>(kIconBtnSize))  * 0.5f;
 
+        // #1420: expand text-pill hit rects to 44px height for WCAG 2.5.8 compliance.
+        // Visual bounds (enginesBounds_, saveBounds_, etc.) remain at kBtnHeight (28px)
+        // so the painted appearance is unchanged; only the click-target is enlarged.
+        const float kMinHitH = 44.0f;
+        auto expandHitV = [&](const juce::Rectangle<float>& visual) -> juce::Rectangle<float>
+        {
+            const float expand = std::max(0.0f, (kMinHitH - visual.getHeight()) * 0.5f);
+            return visual.expanded(0.0f, expand);
+        };
+
         float x = 0.0f; // left cursor
 
         // --- Engines button (text pill, wider) ---
         {
             const float btnW = 74.0f;
             juce::Rectangle<float> r(x, btnY, btnW, static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegEngines });
+            regions_.push_back({ expandHitV(r), kRegEngines });
             enginesBounds_ = r;
             x += btnW + gap;
         }
 
-        // --- Undo icon button (32×32) ---
+        // --- Undo icon button (32×32 visual; 44×44 hit target) ---
         {
             juce::Rectangle<float> r(x, iconY, static_cast<float>(kIconBtnSize),
                                               static_cast<float>(kIconBtnSize));
-            regions_.push_back({ r, kRegUndo });
+            regions_.push_back({ expandHitV(r), kRegUndo });
             undoBounds_ = r;
             x += static_cast<float>(kIconBtnSize) + gap;
         }
 
-        // --- Redo icon button (32×32) ---
+        // --- Redo icon button (32×32 visual; 44×44 hit target) ---
         {
             juce::Rectangle<float> r(x, iconY, static_cast<float>(kIconBtnSize),
                                               static_cast<float>(kIconBtnSize));
-            regions_.push_back({ r, kRegRedo });
+            regions_.push_back({ expandHitV(r), kRegRedo });
             redoBounds_ = r;
             x += static_cast<float>(kIconBtnSize) + gap;
         }
@@ -292,12 +302,12 @@ private:
         // ---- Right side: work right-to-left ----
         float rx = w;
 
-        // --- Settings icon button (32×32) ---
+        // --- Settings icon button (32×32 visual; 44×44 hit target) ---
         {
             juce::Rectangle<float> r(rx - static_cast<float>(kIconBtnSize), iconY,
                                      static_cast<float>(kIconBtnSize),
                                      static_cast<float>(kIconBtnSize));
-            regions_.push_back({ r, kRegSettings });
+            regions_.push_back({ expandHitV(r), kRegSettings });
             settingsBounds_ = r;
             rx -= static_cast<float>(kIconBtnSize) + gap;
         }
@@ -321,32 +331,32 @@ private:
             rx -= labelW + gap;
         }
 
-        // --- Export button (text pill) ---
+        // --- Export button (text pill; 44px hit target) ---
         {
             const float btnW = 64.0f;
             juce::Rectangle<float> r(rx - btnW, btnY, btnW,
                                      static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegExport });
+            regions_.push_back({ expandHitV(r), kRegExport });
             exportBounds_ = r;
             rx -= btnW + gap;
         }
 
-        // --- MATRIX button (28×28 icon — 3×3 dot grid icon) ---
+        // --- MATRIX button (32×32 visual; 44×44 hit target) ---
         {
             juce::Rectangle<float> r(rx - static_cast<float>(kIconBtnSize), iconY,
                                      static_cast<float>(kIconBtnSize),
                                      static_cast<float>(kIconBtnSize));
-            regions_.push_back({ r, kRegMatrix });
+            regions_.push_back({ expandHitV(r), kRegMatrix });
             matrixBounds_ = r;
             rx -= static_cast<float>(kIconBtnSize) + gap;
         }
 
-        // --- Chain button (text pill with chain-link icon) ---
+        // --- Chain button (text pill with chain-link icon; 44px hit target) ---
         {
             const float btnW = 70.0f;
             juce::Rectangle<float> r(rx - btnW, btnY, btnW,
                                      static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegChain });
+            regions_.push_back({ expandHitV(r), kRegChain });
             chainBounds_ = r;
             rx -= btnW + gap;
         }
@@ -356,20 +366,20 @@ private:
         // Lay out: A/B | SAVE | ♥ | ▶ | [ PresetName ] | ◀
         // We place them working left from rx (right of Chain).
 
-        // A/B Compare pill (right of SAVE)
+        // A/B Compare pill (right of SAVE; 44px hit target)
         {
             const float btnW = 38.0f;
             juce::Rectangle<float> r(rx - btnW, btnY, btnW, static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegABCompare });
+            regions_.push_back({ expandHitV(r), kRegABCompare });
             abCompareBounds_ = r;
             rx -= btnW + gap;
         }
 
-        // SAVE pill
+        // SAVE pill (44px hit target)
         {
             const float btnW = 48.0f;
             juce::Rectangle<float> r(rx - btnW, btnY, btnW, static_cast<float>(kBtnHeight));
-            regions_.push_back({ r, kRegSave });
+            regions_.push_back({ expandHitV(r), kRegSave });
             saveBounds_ = r;
             rx -= btnW + gap;
         }
@@ -397,12 +407,12 @@ private:
             rx -= btnW + 2.0f;
         }
 
-        // Preset name (fills remaining centre space)
+        // Preset name (fills remaining centre space; 44px hit target)
         {
             const float nameW = std::max(60.0f, rx - x - 24.0f); // leave 24px for prev arrow
             const float nameX = x + 24.0f; // after ◀ arrow
             presetNameBounds_ = juce::Rectangle<float>(nameX, btnY, nameW, static_cast<float>(kBtnHeight));
-            regions_.push_back({ presetNameBounds_, kRegPresetName });
+            regions_.push_back({ expandHitV(presetNameBounds_), kRegPresetName });
         }
 
         // ◀ prev preset (20×28 visual; 44×44 hit target)

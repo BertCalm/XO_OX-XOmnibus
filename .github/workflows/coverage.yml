@@ -70,9 +70,12 @@ jobs:
       - name: Generate coverage report
         run: |
           # Capture coverage data
+          # ignore-errors=source: Catch2 FetchContent builds embed source paths
+          # (e.g. catch_reporter_teamcity.hpp) that are not present in the checkout
+          # tree — this is a Catch2 coverage artifact, not a test failure.
           lcov --capture --directory build \
             --output-file build/coverage.info \
-            --ignore-errors mismatch,inconsistent
+            --ignore-errors mismatch,inconsistent,source
 
           # Remove external code (JUCE, Catch2, system headers)
           lcov --remove build/coverage.info \

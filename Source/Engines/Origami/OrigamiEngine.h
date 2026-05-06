@@ -492,8 +492,16 @@ public:
 
     void reset() override
     {
-        for (auto& voice : voices)
-            voice.reset();
+        // P36 fix: re-apply per-voice noise seeds AFTER voice.reset() so that
+        // DAW stop/start does not collapse all voices to noiseGeneratorState=12345u.
+        // OrigamiVoice::reset() writes 12345u unconditionally (needed for clean
+        // voice initialisation); we immediately overwrite with distinct seeds here,
+        // matching the same seeding strategy used in prepare().
+        for (int i = 0; i < kMaxVoices; ++i)
+        {
+            voices[i].reset();
+            voices[i].noiseGeneratorState = static_cast<uint32_t>(i * 31337u) ^ 0xDEAD1234u;
+        }
 
         // ---- Reset envelope output ----
         envelopeOutput = 0.0f;
