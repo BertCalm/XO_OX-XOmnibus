@@ -70,6 +70,7 @@
 #include "SubmarinePlaySurface.h"
 #include "DotMatrixDisplay.h"
 #include "SubmarineHudBar.h"
+#include "ChainMatrix.h"   // Wave 5 C4 — 5×5 coupling matrix editor (#1428)
 #include "SurfaceRightPanel.h"
 #include "SubmarineMenuStyle.h"
 #include "../Gallery/MacroSection.h"
@@ -189,7 +190,7 @@ public:
         EnginePicker,     ///< EnginePickerDrawer — slides from left, dims ocean
         Settings,         ///< SettingsDrawer — slides from right, dims ocean
         Detail,           ///< EngineDetailPanel (EngineDetailPanel*) — full-window
-        ChainMatrix,      ///< (Wave 5 C4) chain matrix slide-up — stub, no-op open/close
+        ChainMatrix,      ///< (Wave 5 C4) chain matrix slide-up drawer — implemented (#1428)
     };
 
     //==========================================================================
@@ -632,6 +633,27 @@ public:
                 onSettingChanged(key, value);
         };
 
+        // ── ChainMatrix drawer (Wave 5 C4, #1428) ────────────────────────────
+        addChildComponent(chainMatrix_); // starts hidden; opens via MATRIX button
+
+        chainMatrix_.onCloseRequested = [this]()
+        {
+            coordinatorRelease(PanelType::ChainMatrix);
+        };
+
+        chainMatrix_.onAddRoute = [this](int src, int dst, CouplingType type)
+        {
+            if (onMatrixAddRoute)
+                onMatrixAddRoute(src, dst, type);
+        };
+
+        chainMatrix_.onEditRoute = [this](int src, int dst, int routeIdx,
+                                          juce::Rectangle<int> cellScreenBounds)
+        {
+            if (onMatrixEditRoute)
+                onMatrixEditRoute(src, dst, routeIdx, cellScreenBounds);
+        };
+
         // ── HUD bar callbacks — routed through PanelCoordinator ──────────────
         hudBar_.onEnginesClicked = [this]()
         {
@@ -668,6 +690,15 @@ public:
         // FIX 11: Chain mode toggles crosshair cursor over the ocean viewport
         // and clears any in-progress chain drawing on the substrate.
         hudBar_.onChainToggled = [this]() { applyChainModeVisuals(); };
+
+        // Wave 5 C4 (#1428): MATRIX button toggles ChainMatrix slide-up drawer.
+        hudBar_.onMatrixClicked = [this]()
+        {
+            if (currentPanel_ == PanelType::ChainMatrix)
+                coordinatorRelease(PanelType::ChainMatrix);
+            else
+                coordinatorRequestOpen(PanelType::ChainMatrix);
+        };
 
         // fix(#1354): forward the 6 previously-unwired HUD bar callbacks outward
         // so the editor can route them to PresetManager / ABCompare / ExportDialog.
@@ -1771,6 +1802,26 @@ public:
     // Wired to exprStrips_.onPitchBend / onModWheel in initLayoutAndComponents().
     std::function<void(float pitchBend)> onExpressionPitchBend;  // -1..+1
     std::function<void(float modWheel)>  onExpressionModWheel;   //  0..+1
+
+    // Wave 5 C4 (#1428): ChainMatrix callbacks — wired by editor to MCM operations.
+
+    /** Fired when the user picks a coupling type for an empty cell.
+        Editor should call processor.getCouplingMatrix().addRoute(src, dst, type, 0.5f)
+        then call refreshChainMatrix(). */
+    std::function<void(int src, int dst, CouplingType type)> onMatrixAddRoute;
+
+    /** Fired when the user clicks a filled cell to edit an existing route.
+        Editor should open CouplingConfigPopup via juce::CallOutBox::launchAsynchronously
+        targeting cellScreenBounds.  routeIndex is the MCM route list index. */
+    std::function<void(int src, int dst, int routeIndex,
+                       juce::Rectangle<int> cellScreenBounds)> onMatrixEditRoute;
+
+    /** Push a fresh route snapshot from the MCM into the ChainMatrix grid.
+        Call after any addRoute / removeUserRoute / setRouteAmount on the MCM. */
+    void refreshChainMatrix(const std::vector<MegaCouplingMatrix::CouplingRoute>& routes)
+    {
+        chainMatrix_.refreshRoutes(routes);
+    }
 
     //==========================================================================
     // State queries
@@ -2877,22 +2928,20 @@ private:
     // Behaviour table:
     //   Opening EnginePicker  → closes Settings (and vice versa).
     //   Opening Detail        → hides SurfaceRightPanel (D7, restored on close).
-    //   Opening ChainMatrix   → (Wave 5 C4) stub — currently a no-op.
+    //   Opening ChainMatrix   → slide-up drawer from bottom ~50%; MATRIX btn lit.
     //   Minimum width guard   → if width < kMinWidth and drawer + SurfaceRightPanel
     //                           are both open, close the drawer.
     //
-    // Usage from C4 chain matrix:
-    //   coordinator_.requestOpen(PanelType::ChainMatrix);   // on open
-    //   coordinator_.release(PanelType::ChainMatrix);        // on close
-    //   oceanView.getOrbitCenter(slotIndex);                  // chain anchor points
+    // Usage from C4 chain matrix (implemented — #1428 closed):
+    //   coordinatorRequestOpen(PanelType::ChainMatrix);   // slides up drawer
+    //   coordinatorRelease(PanelType::ChainMatrix);        // slides down drawer
     //==========================================================================
 
     /**
         Request that a panel become the active heavy panel.
 
         If a different heavy panel is already open, it is closed first.
-        For ChainMatrix stub, records the current panel type
-        and does nothing else — Wave 5 C4 will fill the open/close logic.
+        Dispatches to the relevant open() method and records currentPanel_.
     */
     void coordinatorRequestOpen(PanelType requested)
     {
@@ -2901,13 +2950,6 @@ private:
 
         // Close the current heavy panel before opening the new one.
         coordinatorCloseCurrentPanel();
-
-        // Fix #1428: ChainMatrix is an unimplemented stub.
-        // Do NOT record it as the active panel — that would leave currentPanel_
-        // in a state where Escape closes a panel the user cannot see.
-        // Return early before committing currentPanel_.
-        if (requested == PanelType::ChainMatrix)
-            return; // stub panel: no-op, no state update
 
         currentPanel_ = requested;
 
@@ -2939,7 +2981,14 @@ private:
                 break;
 
             case PanelType::ChainMatrix:
-                // Unreachable — guarded by early return above.
+                // Wave 5 C4 (#1428): open the 5×5 coupling matrix slide-up drawer.
+                // Position the drawer to occupy the bottom 50% of the ocean viewport.
+                {
+                    const int drawerH = getHeight() / 2;
+                    chainMatrix_.setBounds(0, getHeight() - drawerH, getWidth(), drawerH);
+                    chainMatrix_.open();
+                    hudBar_.setMatrixActive(true);
+                }
                 break;
 
             case PanelType::None:
@@ -2987,7 +3036,9 @@ private:
                 break;
 
             case PanelType::ChainMatrix:
-                // Wave 5 C4 stub — no-op close.
+                // Wave 5 C4 (#1428): close the slide-up drawer.
+                chainMatrix_.close();
+                hudBar_.setMatrixActive(false);
                 break;
 
             case PanelType::None:
@@ -3268,6 +3319,9 @@ private:
 
     // Settings drawer (slide from right)
     SettingsDrawer settingsDrawer_;
+
+    // ChainMatrix drawer (slide up from bottom) — Wave 5 C4 (#1428)
+    ChainMatrix chainMatrix_;
 
     // #1007 FIX 3: Inline preset name label between < and > for spatial grouping.
     juce::Label      presetNameLabel_;
