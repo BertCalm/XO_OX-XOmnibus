@@ -1063,9 +1063,8 @@ public:
             lastTone = tone;
             float cutoff = 2000.0f + tone * 16000.0f;
             // FIX-Perf: use cached invSR — avoids double→float cast per setTone() call.
-            // coefficient formula unchanged (first-order LP Euler), consistent with
-            // existing fleet pattern for tape/colour filters (not a TPT SVF).
-            cachedCoeff = clamp(cutoff * invSR * 6.28f, 0.01f, 0.99f);
+            // matched-Z one-pole LP: coeff = 1 - exp(-2π*fc/sr). SR-independent cutoff. (Catalog #1 P31a.)
+            cachedCoeff = clamp(1.0f - fastExp(-6.2832f * cutoff * invSR), 0.01f, 0.99f);
         }
     }
 

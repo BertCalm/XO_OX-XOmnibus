@@ -99,6 +99,10 @@ public:
     void prepare(double sampleRate, int maxBlockSize) override
     {
         sr = sampleRate;
+        // F25: matched-Z DC blocker pole radius, fc ≈ 5 Hz — SR-independent cutoff. (Catalog #1 P31a.)
+        // R = exp(-2π*fc/sr): 44.1kHz→0.99929, 96kHz→0.99967. Replaces hardcoded 0.9995f
+        // which drifted the effective cutoff from ~5 Hz at 44.1kHz to ~6.7 Hz at 96kHz.
+        dcBlockCoeff = fastExp(-6.2831853f * 5.0f / static_cast<float>(sampleRate));
         for (auto& v : voices)
             v.prepare(sampleRate);
         silenceGate.prepare(sampleRate, maxBlockSize);
@@ -313,13 +317,15 @@ public:
         const float blockPitchBendRatio = PitchBendUtil::semitonesToFreqRatio(pitchBendNorm * 2.0f);
 
         // F01: precompute release coefficient once per block (sr is constant per block)
-        // Use first active voice sr, or engine-level sr as fallback
+        // Use first active voice sr, or engine-level sr as fallback.
+        // matched-Z exponential decay: exp(-1/(tau*sr)), tau = 0.4s. (Catalog #1 P31a.)
+        // Replaces Euler 1 - 1/(0.4*sr) which gave half the correct release time at 96kHz.
         float releaseCoeff = 1.0f;
         {
             float refSr = (float)sr;
             for (auto& v : voices)
                 if (v.active && v.sr > 0.0f) { refSr = v.sr; break; }
-            releaseCoeff = 1.0f - (1.0f / (refSr * 0.4f));
+            releaseCoeff = fastExp(-1.0f / (refSr * 0.4f));
         }
 
         // F03: update Berimbau body resonance params once per block — coefficients depend only
@@ -508,8 +514,9 @@ public:
                 sR += sig * pan;
             }
             // F25: one-pole DC block on stereo output — waveguide + extDampMod can accumulate DC
-            float dcBlockedL = sL - dcBlockXL + 0.9995f * dcBlockYL;
-            float dcBlockedR = sR - dcBlockXR + 0.9995f * dcBlockYR;
+            // dcBlockCoeff is pole radius R = exp(-2π*fc/sr), SR-derived in prepare(). (Catalog #1 P31a.)
+            float dcBlockedL = sL - dcBlockXL + dcBlockCoeff * dcBlockYL;
+            float dcBlockedR = sR - dcBlockXR + dcBlockCoeff * dcBlockYR;
             dcBlockXL = sL; dcBlockYL = dcBlockedL;
             dcBlockXR = sR; dcBlockYR = dcBlockedR;
             oL[i] += dcBlockedL;
@@ -635,6 +642,7 @@ private:
     float pitchBendNorm = 0.0f; // MIDI pitch wheel [-1, +1]; ±2 semitone range
 
     // F25: DC blocking filter state (one-pole HP per channel)
+    float dcBlockCoeff = 0.99929f; // pole radius R = exp(-2π*5/sr); set by prepare() — matched-Z, fc≈5Hz
     float dcBlockXL = 0.0f, dcBlockYL = 0.0f;
     float dcBlockXR = 0.0f, dcBlockYR = 0.0f;
 
