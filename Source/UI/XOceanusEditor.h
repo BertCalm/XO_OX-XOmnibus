@@ -1175,6 +1175,9 @@ public:
         oceanView_.onABCompareToggled = [this](bool active)
         {
             abCompare.setABActive(active);
+            // #25: diff visualization — push amber rings on changed knobs.
+            // On exit (active=false), ABCompare clears its snapshots → diff also clears.
+            dispatchABCompareDiff();
         };
 
         // F3-006: Persist REACT dial level so it survives DAW session reload.
@@ -2255,6 +2258,21 @@ private:
         jassert(juce::MessageManager::getInstance()->isThisTheMessageThread());
         oceanView_.setOrbitPresetName(slotIdx, preset.name);
         abCompare.onPresetLoaded(); // F3-001: capture new state into B slot
+        // #25: now that B is captured, refresh the diff overlay.
+        dispatchABCompareDiff();
+    }
+
+    // #25 A/B diff dispatch — pushes diff rings to the EngineDetailPanel based
+    // on ABCompare's current snapshot pair.  No-op when A/B mode is off or
+    // either snapshot is empty.
+    void dispatchABCompareDiff()
+    {
+        if (!abCompare.isActive() || !abCompare.hasBothSnapshots())
+        {
+            detail.clearABDiff();
+            return;
+        }
+        detail.applyABDiff(abCompare.getSnapshotA(), abCompare.getSnapshotB());
     }
 
     // ── Cmd+K Command Palette lifecycle (#22) ────────────────────────────────

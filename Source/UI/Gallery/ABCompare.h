@@ -218,6 +218,20 @@ private:
     {
         dest.reset();
         processor.getStateInformation(dest);
+
+        // #25 Q1-D: parallel float snapshot of all APVTS params for diff overlay.
+        captureFloatSnapshot(&dest == &stateA ? snapshotA : snapshotB);
+    }
+
+    // #25 Q1-D snapshot of all APVTS raw param values.  Snapshots ALL params
+    // (not just visible) so the B-state preset-load case where active engine
+    // changes between A and B still produces a correct diff.
+    void captureFloatSnapshot(std::vector<std::pair<juce::String, float>>& dest)
+    {
+        dest.clear();
+        for (auto* p : processor.getParameters())
+            if (auto* withId = dynamic_cast<juce::AudioProcessorParameterWithID*>(p))
+                dest.emplace_back(withId->paramID, withId->getValue());
     }
 
     void restoreState(const juce::MemoryBlock& src)
@@ -232,7 +246,17 @@ private:
         showingA = true;
         stateA.reset();
         stateB.reset();
+        snapshotA.clear();
+        snapshotB.clear();
     }
+
+public:
+    // #25 Q1-D accessors — read by editor on A/B toggle to dispatch diff highlights.
+    const std::vector<std::pair<juce::String, float>>& getSnapshotA() const noexcept { return snapshotA; }
+    const std::vector<std::pair<juce::String, float>>& getSnapshotB() const noexcept { return snapshotB; }
+    bool hasBothSnapshots() const noexcept { return !snapshotA.empty() && !snapshotB.empty(); }
+
+private:
 
     //==========================================================================
     // Draw a single A or B button tile.
@@ -329,6 +353,10 @@ private:
 
     juce::MemoryBlock stateA; // captured processor state for slot A
     juce::MemoryBlock stateB; // captured processor state for slot B
+
+    // #25 Q1-D: parallel float snapshots — (paramID, normalised value) for every APVTS param.
+    std::vector<std::pair<juce::String, float>> snapshotA;
+    std::vector<std::pair<juce::String, float>> snapshotB;
 
     juce::Rectangle<float> btnABounds;
     juce::Rectangle<float> btnBBounds;

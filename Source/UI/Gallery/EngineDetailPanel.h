@@ -457,6 +457,51 @@ public:
             grid->scrollToSection(s);
     }
 
+    // #25 A/B compare diff dispatch — called by editor on A/B toggle.
+    // Walks the (paramID, valueA, valueB) tuples and pushes diff state to
+    // the corresponding GalleryKnob in the active ParameterGrid.  Knobs not
+    // currently visible are silently skipped (next loadSlot() will reset).
+    // Snapshots are aligned by APVTS iteration order (deterministic), so we
+    // can do a parallel walk; for safety we also linear-scan B if a paramID
+    // mismatch occurs (preset load between A and B may reorder).
+    void applyABDiff(const std::vector<std::pair<juce::String, float>>& snapA,
+                     const std::vector<std::pair<juce::String, float>>& snapB)
+    {
+        auto* grid = dynamic_cast<ParameterGrid*>(viewport.getViewedComponent());
+        if (!grid)
+            return;
+        constexpr float kDiffThreshold = 0.005f;
+        grid->clearAllDiffRings();
+        for (size_t i = 0; i < snapA.size(); ++i)
+        {
+            const auto& [pid, aVal] = snapA[i];
+            // Fast path: parallel index match (snapshots aligned by APVTS order).
+            float bVal = 0.0f;
+            bool found = false;
+            if (i < snapB.size() && snapB[i].first == pid)
+            {
+                bVal  = snapB[i].second;
+                found = true;
+            }
+            else
+            {
+                for (const auto& [bpid, bv] : snapB)
+                    if (bpid == pid) { bVal = bv; found = true; break; }
+            }
+            if (!found)
+                continue;
+            if (std::abs(aVal - bVal) > kDiffThreshold)
+                if (auto* knob = grid->findKnobForParam(pid))
+                    knob->setDiffActive(true, aVal, bVal);
+        }
+    }
+
+    void clearABDiff()
+    {
+        if (auto* grid = dynamic_cast<ParameterGrid*>(viewport.getViewedComponent()))
+            grid->clearAllDiffRings();
+    }
+
     // Callback: fired when the back button is clicked. Parent should hide this panel.
     std::function<void()> onBackClicked;
 

@@ -90,6 +90,38 @@ public:
         setBadgeRoutes({});
     }
 
+    // #25 A/B diff overlay — amber glow ring outside knob track when this
+    // knob's value differs between captured A and B states.  Q3-A primary
+    // path; Q3-C fallback (fill tint) is N/A here because GalleryKnob has
+    // 3px outer margin (see drawMidiLearnOverlay's b.reduced(3.0f)) — the
+    // diff ring fits between the knob body and the bounding rect.
+    //
+    //   active — true iff |A-B| > diff threshold (0.005).
+    //   aVal / bVal — raw param values for hover tooltip ("A: 0.42 / B: 0.78").
+    //
+    // Threshold and snapshot capture happen in EngineDetailPanel; this API
+    // is a pure paint-state setter.
+    void setDiffActive(bool active, float aVal = 0.0f, float bVal = 0.0f)
+    {
+        auto& props = getProperties();
+        const bool wasActive = (bool) props["diffActive"];
+        if (active != wasActive
+            || (float) props["diffAVal"] != aVal
+            || (float) props["diffBVal"] != bVal)
+        {
+            props.set("diffActive", active);
+            props.set("diffAVal",   aVal);
+            props.set("diffBVal",   bVal);
+            const juce::String tip = active
+                ? juce::String("A: ") + juce::String(aVal, 3) + "  B: " + juce::String(bVal, 3)
+                : juce::String();
+            setTooltip(tip);
+            repaint();
+        }
+    }
+
+    void clearDiff() { setDiffActive(false); }
+
     // Wire up MIDI Learn for this knob.  Call after SliderAttachment is created.
     // The caller must store the returned listener pointer in a unique_ptr vector.
     MidiLearnMouseListener* setupMidiLearn(const juce::String& pid, MIDILearnManager& mgr)
@@ -159,6 +191,7 @@ public:
     {
         juce::Slider::paint(g);
         drawMidiLearnOverlay(g);
+        drawABDiffRing(g);
     }
 
 private:
@@ -196,6 +229,18 @@ private:
             g.setColour(juce::Colour(0xFF4ADE80).withAlpha(0.70f));
             g.drawText("ML", b.getRight() - 16, b.getBottom() - 12, 14, 11, juce::Justification::centred);
         }
+    }
+
+    // #25: A/B diff amber ring — paints OUTSIDE the MIDI-learn ring at b.reduced(2.0f)
+    // (1px tighter than MIDI learn's 3px to ensure no overlap when both are active).
+    void drawABDiffRing(juce::Graphics& g)
+    {
+        if (! (bool) getProperties()["diffActive"])
+            return;
+        auto b = getLocalBounds().toFloat().reduced(2.0f);
+        const float r = juce::jmin(b.getWidth(), b.getHeight()) * 0.5f;
+        g.setColour(juce::Colour(GalleryColors::xoGold).withAlpha(0.85f)); // Tokens::Color::Warning
+        g.drawEllipse(b.getCentreX() - r, b.getCentreY() - r, r * 2.0f, r * 2.0f, 2.0f);
     }
 
     double defaultValue = 0.0;

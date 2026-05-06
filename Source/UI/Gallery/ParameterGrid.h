@@ -327,6 +327,16 @@ public:
                 lk->knob->clearBadgeRoutes();
     }
 
+    // #25 A/B diff: clear amber diff rings on every live knob in this grid.
+    // Called from EngineDetailPanel::applyABDiff() before re-applying, and on
+    // A/B mode exit / loadSlot().
+    void clearAllDiffRings()
+    {
+        for (auto& lk : liveKnobs)
+            if (lk && lk->knob)
+                lk->knob->clearDiff();
+    }
+
     // ── Flat mode — suppresses section headers and collapse behavior ────────
     // Used by the submarine detail panel for a continuous 4-column knob grid.
     void setFlatMode(bool flat)
