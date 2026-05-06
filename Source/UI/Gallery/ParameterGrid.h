@@ -301,6 +301,32 @@ public:
                 lk->knob->clearModulation();
     }
 
+    // ── Mod routing badge arc API (#24 modviz) ──────────────────────────────
+
+    // Returns the GalleryKnob* for a given APVTS parameter ID, or nullptr.
+    // Call from rebuildModVizCache() only (message thread, non-realtime path).
+    GalleryKnob* findKnobForParam(const juce::String& paramId) const
+    {
+        for (int i = 0; i < (int)paramSlots.size(); ++i)
+        {
+            if (paramSlots[i].pid == paramId)
+            {
+                if (auto& lk = liveKnobs[i]; lk && lk->knob)
+                    return lk->knob.get();
+            }
+        }
+        return nullptr;
+    }
+
+    // Clear all badge route arcs — call before re-applying from cache each tick
+    // so removed routes don't leave stale arcs.
+    void clearAllBadgeRoutes()
+    {
+        for (auto& lk : liveKnobs)
+            if (lk && lk->knob)
+                lk->knob->clearBadgeRoutes();
+    }
+
     // ── Flat mode — suppresses section headers and collapse behavior ────────
     // Used by the submarine detail panel for a continuous 4-column knob grid.
     void setFlatMode(bool flat)

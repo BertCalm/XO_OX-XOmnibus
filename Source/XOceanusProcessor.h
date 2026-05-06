@@ -160,6 +160,9 @@ public:
     // as a mod source.  Called from OrreryEngine::renderBlock (audio thread).
     // Use relaxed ordering — a single-sample jitter is acceptable for mod routing.
     void setGlobalLFO1(float v) noexcept { globalLFO1_.store(v, std::memory_order_relaxed); }
+    // Message-thread read — safe via relaxed atomic (one-block-late jitter acceptable).
+    // Used by EngineDetailPanel::readModSourceValue() for mod viz badge arcs.
+    float readGlobalLFO1() const noexcept { return globalLFO1_.load(std::memory_order_relaxed); }
 
     // Read the global cutoff mod offset computed from global mod routes.
     // Called by OrreryEngine::renderBlock on the audio thread.
