@@ -344,6 +344,10 @@ private:
     juce::ComboBox   uiScaleCombo_;
     juce::Slider     waveSensitivitySlider_;
     juce::ToggleButton showLabelsToggle_;
+    // #1447: in-app Reduce Motion toggle — disables lerp/fade animations for
+    // users with vestibular sensitivity.  Writes to A11y::inAppReducedMotion()
+    // which is read by all animation sites via A11y::prefersReducedMotion().
+    juce::ToggleButton reduceMotionToggle_;
 
     // Scrollable content
     juce::Viewport      viewport_;
@@ -403,6 +407,7 @@ inline SettingsDrawer::~SettingsDrawer()
     uiScaleCombo_.setLookAndFeel(nullptr);
     waveSensitivitySlider_.setLookAndFeel(nullptr);
     showLabelsToggle_.setLookAndFeel(nullptr);
+    reduceMotionToggle_.setLookAndFeel(nullptr);
 
     viewport_.setViewedComponent(nullptr, false);
 }
@@ -531,6 +536,18 @@ inline void SettingsDrawer::buildControls()
         fireToggle("showLabels", showLabelsToggle_);
     };
 
+    // #1447: Reduce Motion toggle — writes directly to A11y::inAppReducedMotion().
+    // All animation sites (EngineOrbit::stepAnimation, hover-fade, modal-slide, etc.)
+    // check A11y::prefersReducedMotion() which reads this flag, so no further wiring
+    // is needed.  onSettingChanged is also fired so the processor/APVTS can persist it.
+    styleToggle(reduceMotionToggle_);
+    reduceMotionToggle_.setToggleState(false, juce::dontSendNotification);
+    reduceMotionToggle_.onStateChange = [this] {
+        const bool enabled = reduceMotionToggle_.getToggleState();
+        A11y::setReducedMotion(enabled);
+        fireToggle("reduceMotion", reduceMotionToggle_);
+    };
+
     wireTooltips();  // V1 Lane B: wire all setting control tooltips
 }
 
@@ -558,6 +575,7 @@ inline void SettingsDrawer::wireTooltips()
     uiScaleCombo_.setTooltip("Select UI zoom level to scale the interface for your display or vision");
     waveSensitivitySlider_.setTooltip("Drag to set how strongly the ocean surface reacts to audio input");
     showLabelsToggle_.setTooltip("Toggle parameter labels on engine controls for cleaner or annotated view");
+    reduceMotionToggle_.setTooltip("Disable lerp and fade animations for users with vestibular sensitivity");
 }
 
 //------------------------------------------------------------------------------
@@ -630,6 +648,16 @@ inline void SettingsDrawer::applySettings(juce::PropertiesFile& props)
     restoreCombo  ("uiScale",          uiScaleCombo_,          1);
     restoreSlider ("waveSensitivity",  waveSensitivitySlider_, 50.0);
     restoreToggle ("showLabels",       showLabelsToggle_,      true);
+
+    // #1447: restore Reduce Motion and apply immediately so animation state
+    // is correct before the first paint (don't wait for user to toggle it again).
+    {
+        const bool rm = props.getBoolValue("drawer_reduceMotion", false);
+        reduceMotionToggle_.setToggleState(rm, juce::dontSendNotification);
+        A11y::setReducedMotion(rm);
+        if (onSettingChanged)
+            onSettingChanged("reduceMotion", rm ? 1.0f : 0.0f);
+    }
 }
 
 // Fix #1419: persist current control values so they survive plugin reload.
@@ -653,6 +681,7 @@ inline void SettingsDrawer::saveSettings(juce::PropertiesFile& props) const
     props.setValue("drawer_uiScale",         uiScaleCombo_.getSelectedItemIndex());
     props.setValue("drawer_waveSensitivity", waveSensitivitySlider_.getValue());
     props.setValue("drawer_showLabels",      showLabelsToggle_.getToggleState());
+    props.setValue("drawer_reduceMotion",    reduceMotionToggle_.getToggleState());
     props.saveIfNeeded();
 }
 
@@ -896,6 +925,7 @@ inline void SettingsDrawer::layoutContent(int contentWidth)
         addComboRow (s, "UI Scale",       uiScaleCombo_);
         addSliderRow(s, "Wave Sens.",     waveSensitivitySlider_);
         addToggleRow(s, "Show Labels",    showLabelsToggle_);
+        addToggleRow(s, "Reduce Motion",  reduceMotionToggle_);
     }
 
     y += kScrollMarginH;
