@@ -1704,6 +1704,13 @@ public:
             if (slotIndex < 0 || slotIndex >= XOceanusProcessor::kNumPrimarySlots)
                 return;
 
+            // #1448: guard against double-tap stacking multiple CallOutBox instances.
+            // JUCE CallOutBox::launchAsynchronously does not return a dismissable handle,
+            // so we track open state ourselves.  A second tap while the box is open is
+            // silently dropped; the user must dismiss the existing box first.
+            if (presetCalloutOpen_)
+                return;
+
             auto* eng = processor.getEngine(slotIndex);
             if (eng == nullptr)
                 return; // empty slot — pill shows "no engine", no menu
@@ -1739,9 +1746,14 @@ public:
                 engineId,
                 slotIndex);
 
+            // Wire dismiss callback to reset the guard so the next pill tap opens
+            // a fresh CallOutBox after this one is closed.
+            panel->onCloseRequested = [this]() { presetCalloutOpen_ = false; };
+
             // Size: 280x380 per design spec.
             panel->setSize(PresetBrowserPanel::kMinWidth + 20, 380);
 
+            presetCalloutOpen_ = true;
             juce::CallOutBox::launchAsynchronously(
                 std::move(panel),
                 buoyBounds,
@@ -3333,6 +3345,14 @@ private:
     // Overlay created on demand; null when closed. Declared after toastOverlay_
     // so it is destroyed before the toast layer (reverse order = correct Z order).
     std::unique_ptr<xoceanus::CommandPalette> commandPalette_;
+
+    // ── PresetBrowserPanel CallOutBox guard (#1448) ───────────────────────────
+    // Tracks whether a preset pill CallOutBox is currently open (JUCE
+    // CallOutBox::launchAsynchronously does not return a handle we can poll, so
+    // we use a separate bool).  When true, subsequent pill clicks are ignored
+    // to prevent stacked CallOutBox instances with no dismiss mechanism.
+    // Reset to false by the on-dismiss lambda wired inside the PresetBrowserPanel.
+    bool presetCalloutOpen_ = false;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusEditor)
 };
