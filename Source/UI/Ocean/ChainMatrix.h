@@ -141,7 +141,7 @@ public:
         g.fillRoundedRectangle(bounds.withTrimmedBottom(0.0f), 12.0f);
 
         // Header bar
-        const auto headerBounds = bounds.removeFromTop(static_cast<float>(kHeaderH));
+        auto headerBounds = bounds.removeFromTop(static_cast<float>(kHeaderH));
         g.setColour(juce::Colour(GalleryColors::Ocean::shallow).withAlpha(0.80f));
         g.fillRoundedRectangle(headerBounds, 12.0f);
         g.fillRect(headerBounds.withTrimmedTop(6.0f)); // square the bottom corners

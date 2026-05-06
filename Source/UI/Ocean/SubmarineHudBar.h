@@ -205,7 +205,7 @@ public:
                     case kRegSave:       return "Save preset (\xe2\x8c\x98S)";
                     case kRegABCompare:  return "Compare preset A vs B";
                     case kRegChain:      return "Open coupling / FX chain editor";
-                    case kRegMatrix:     return "Open 5\xc3\x975 coupling matrix editor (#1428)";
+                    case kRegMatrix:     return "Open 5×5 coupling matrix editor (#1428)";
                     case kRegExport:     return "Export preset to file (.xometa)";
                     case kRegDial:       return "Reactivity \xe2\x80\x94 how strongly the visualizer responds to audio";
                     case kRegSettings:   return "Settings";
