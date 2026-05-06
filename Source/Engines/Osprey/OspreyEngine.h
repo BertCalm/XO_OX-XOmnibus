@@ -597,7 +597,10 @@ struct OspreyVoice
     int controlCounter = 0; // counts samples between coefficient updates
 
     // --- Per-voice PRNG (LCG, Knuth TAOCP constants) ---
-    uint32_t randomState = 12345u;
+    // FIX P36: pointer-hash default so each voice produces unique noise from
+    // construction, even across plugin instances. Matches the same pattern
+    // used by CreatureFormant (line 228) and FluidEnergyModel (line 383).
+    uint32_t randomState = 0xC2B2AE3Du ^ static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4);
 
     // --- Stereo pan gains (CPU fix: precomputed at noteOn, constant per voice lifetime) ---
     // Pan position derives from noteNumber % 12 — never changes after voice start.
@@ -643,7 +646,9 @@ struct OspreyVoice
         fadeGain = 1.0f;
         fadingOut = false;
         controlCounter = 0;
-        randomState = 12345u;
+        // P36 fix: do NOT reset randomState here — it would clobber the
+        // per-voice / per-instance pointer-hash seeded at construction.
+        // Same pattern as Omega/Ostracon (PR #1517).
 
         panGainL = 0.7071f;
         panGainR = 0.7071f;

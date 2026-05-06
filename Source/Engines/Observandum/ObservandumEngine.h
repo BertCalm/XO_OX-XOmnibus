@@ -173,6 +173,16 @@ public:
         sampleRateDouble = sampleRate;
         sampleRateFloat  = static_cast<float>(sampleRate);
 
+        // P36 fix: seed turbulence PCG64 from sr bits XOR a per-instance pointer
+        // hash so different plugin instances produce distinct turbulence streams
+        // from the first block (the default 12345678901234567ULL would otherwise
+        // be identical across all instances at any sample rate).
+        uint64_t srBits64 = 0ull;
+        std::memcpy(&srBits64, &sampleRate, sizeof(srBits64));
+        const uint64_t ptrBits64 =
+            static_cast<uint64_t>(reinterpret_cast<uintptr_t>(this));
+        turbulenceSeed = 12345678901234567ULL ^ srBits64 ^ ptrBits64;
+
         // 5 ms smoothing coefficient (zipper noise prevention)
         // Standard one-pole time-constant form: 1 - exp(-1/(T*sr))
         paramSmoothCoeff = 1.0f - fastExp(-1.0f / (0.005f * sampleRateFloat));

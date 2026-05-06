@@ -392,12 +392,17 @@ public:
         // Gallery feedback delay: ~1.5ms at current sample rate
         const int galDelayLen = std::max(2, static_cast<int>(sampleRateFloat * 0.0015f));
 
+        // P36 fix: mix sr bits so different plugin instances produce distinct
+        // per-voice noise sequences from the first block, not just per-voice
+        // diversification within one instance.
+        uint32_t srBits = 0u;
+        std::memcpy(&srBits, &sampleRateFloat, sizeof(srBits));
         for (int i = 0; i < kOndineMaxVoices; ++i)
         {
             auto& v = voices[i];
             v.galleryDelayBuf.assign(static_cast<size_t>(galDelayLen), 0.0f);
             v.galDelayLen = galDelayLen;
-            v.rng = 12345u + static_cast<uint32_t>(i) * 31337u;
+            v.rng = (srBits ^ 0xDEAD1234u) + static_cast<uint32_t>(i) * 31337u;
             v.reset(sampleRateFloat);
         }
 

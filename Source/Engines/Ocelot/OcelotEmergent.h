@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <array>
 #include <cstdint>
+#include <cstring>
 #include "../../DSP/FastMath.h"
 #include "OcelotParamSnapshot.h"
 #include "BiomeMorph.h"
@@ -41,7 +42,14 @@ public:
         callTimer = 0.0f;
         lastAmplitude = 0.0f;
         lastPattern = 0.0f;
-        noiseSeed = 0xDEADBEEF;
+        // P36 fix: seed from sr bits XOR a per-instance pointer hash so
+        // different plugin instances (and per-voice OcelotEmergent instances
+        // within one plugin) produce distinct creature-call noise sequences.
+        uint32_t srBits = 0u;
+        std::memcpy(&srBits, &sr, sizeof(srBits));
+        const uint32_t ptrBits =
+            static_cast<uint32_t>(reinterpret_cast<uintptr_t>(this) >> 4);
+        noiseSeed = 0xDEADBEEFu ^ srBits ^ ptrBits;
     }
 
     void noteOn(int midiNote, float velocity)
