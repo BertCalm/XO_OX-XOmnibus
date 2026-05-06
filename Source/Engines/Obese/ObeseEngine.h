@@ -354,8 +354,10 @@ class FatSaturation
 public:
     void prepare(double sampleRate) noexcept
     {
-        // DC blocker pole: R = 1 - 2π*fc/sr, fc ≈ 5 Hz. SR-dependent for correctness at 48/96kHz.
-        dcCoeff = 1.0f - (6.2831853f * 5.0f / static_cast<float>(sampleRate));
+        // DC blocker pole radius: matched-Z R = exp(-2π*fc/sr), fc ≈ 5 Hz.
+        // Replaces Euler 1 - 2π*fc/sr — matched-Z is exact at 44.1/48/96kHz. (Catalog #1 P31a.)
+        // y[n] = x[n] - x[n-1] + R*y[n-1]; R must be exp(-2π*fc/sr), not 1-exp(-2π*fc/sr).
+        dcCoeff = fastExp(-6.2831853f * 5.0f / static_cast<float>(sampleRate));
         dcPrevL = dcOutL = 0.0f;
         dcPrevR = dcOutR = 0.0f;
     }
@@ -404,7 +406,7 @@ private:
         return lerp(input, dcOut, lastDrive);
     }
 
-    float dcCoeff = 0.9995f; // set by prepare() — 1 - 2π*5/sr
+    float dcCoeff = 0.99929f; // pole R = exp(-2π*5/sr); set by prepare() — matched-Z, fc≈5Hz
     float dcPrevL = 0.0f, dcOutL = 0.0f; // left channel DC blocker state
     float dcPrevR = 0.0f, dcOutR = 0.0f; // right channel DC blocker state
     float lastDrive = -1.0f;

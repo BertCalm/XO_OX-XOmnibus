@@ -249,10 +249,9 @@ struct RhodesAmpStage
 {
     void prepare(float sampleRate) noexcept
     {
-        // DC blocker coefficient derived from sample rate (target cutoff ~5 Hz).
-        // At 44100 Hz: 2*pi*5/44100 ≈ 0.000713 — vs hardcoded 0.0001 (was too slow at 96kHz).
-        // Using a leaky integrator: coeff = 2*pi*fc/sr, approximating a 1-pole HP.
-        dcCoeff = 2.0f * 3.14159265f * 5.0f / std::max(sampleRate, 1.0f);
+        // DC blocker forward coefficient for leaky integrator: dcBlock += coeff*(out - dcBlock).
+        // matched-Z one-pole: coeff = 1 - exp(-2π*fc/sr), fc ≈ 5 Hz — SR-independent cutoff. (Catalog #1 P31a.)
+        dcCoeff = 1.0f - std::exp(-2.0f * 3.14159265f * 5.0f / std::max(sampleRate, 1.0f));
         dcCoeff = std::clamp(dcCoeff, 0.00001f, 0.01f);
     }
 
@@ -285,7 +284,7 @@ struct RhodesAmpStage
     void reset() noexcept { dcBlock = 0.0f; }
 
     float dcBlock = 0.0f;
-    float dcCoeff = 0.000713f; // default for 44100 Hz (2*pi*5/44100); updated in prepare()
+    float dcCoeff = 0.000713f; // forward coeff = 1-exp(-2π*5/44100); set by prepare() — matched-Z, fc≈5Hz
 };
 #endif // XOCEANUS_RHODES_TONE_GENERATOR_DEFINED
 
