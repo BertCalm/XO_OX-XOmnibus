@@ -84,3 +84,4 @@ build_verify/
 
 # Preset backfill artifact (generated, not source)
 Docs/fleet-audit/instrument-taxonomy-proposal.csv
+.wt/
