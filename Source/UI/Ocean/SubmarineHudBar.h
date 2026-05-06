@@ -87,6 +87,7 @@ public:
     std::function<void()>      onSave;           // save preset
     std::function<void(bool)>  onABCompareChanged; // toggled; bool = new A/B state
     std::function<void()>      onChainToggled;   // toggles chain mode; check chainModeActive_ to read new state
+    std::function<void()>      onMatrixClicked;  // toggles ChainMatrix drawer; check matrixActive_ to read new state
     std::function<void()>      onExportClicked;
     std::function<void()>      onSettingsClicked;
     std::function<void(float)> onReactChanged;   // 0–1 normalised — ocean visual reactivity
@@ -119,6 +120,18 @@ public:
 
     /** Returns true when the Chain mode toggle is currently active. */
     bool isChainModeActive() const noexcept { return chainModeActive_; }
+
+    /** Set/query the MATRIX button active state (lit when ChainMatrix drawer is open). */
+    void setMatrixActive(bool active)
+    {
+        if (matrixActive_ != active)
+        {
+            matrixActive_ = active;
+            repaint();
+        }
+    }
+
+    bool isMatrixActive() const noexcept { return matrixActive_; }
 
     /** wire(#orphan-sweep item 2): expose the fav button hit-rect in local coords.
         Used by FirstHourWalkthrough step 6 to point the bubble at the ♥ button.
@@ -192,6 +205,7 @@ public:
                     case kRegSave:       return "Save preset (\xe2\x8c\x98S)";
                     case kRegABCompare:  return "Compare preset A vs B";
                     case kRegChain:      return "Open coupling / FX chain editor";
+                    case kRegMatrix:     return "Open 5\xc3\x975 coupling matrix editor (#1428)";
                     case kRegExport:     return "Export preset to file (.xometa)";
                     case kRegDial:       return "Reactivity \xe2\x80\x94 how strongly the visualizer responds to audio";
                     case kRegSettings:   return "Settings";
@@ -222,6 +236,7 @@ private:
         kRegExport       = 10,
         kRegDial         = 11,  // REACT rotary dial
         kRegSettings     = 12,
+        kRegMatrix       = 13,  // MATRIX — ChainMatrix drawer toggle (Wave 5 C4)
     };
 
     struct HudRegion
@@ -314,6 +329,16 @@ private:
             regions_.push_back({ r, kRegExport });
             exportBounds_ = r;
             rx -= btnW + gap;
+        }
+
+        // --- MATRIX button (28×28 icon — 3×3 dot grid icon) ---
+        {
+            juce::Rectangle<float> r(rx - static_cast<float>(kIconBtnSize), iconY,
+                                     static_cast<float>(kIconBtnSize),
+                                     static_cast<float>(kIconBtnSize));
+            regions_.push_back({ r, kRegMatrix });
+            matrixBounds_ = r;
+            rx -= static_cast<float>(kIconBtnSize) + gap;
         }
 
         // --- Chain button (text pill with chain-link icon) ---
@@ -415,6 +440,10 @@ private:
 
         // --- Chain button (active state if chainModeActive_) ---
         paintChainButton(g);
+
+        // --- MATRIX icon button (3×3 dot grid) ---
+        paintIconButton(g, matrixBounds_, kRegMatrix, matrixActive_);
+        paintMatrixIcon(g, matrixBounds_);
 
         // --- Export button (text pill with export glyph icon) ---
         paintExportButton(g);
@@ -708,6 +737,25 @@ private:
     }
 
     //--------------------------------------------------------------------------
+    // Matrix icon — 3×3 dot grid for MATRIX button (Wave 5 C4 #1428)
+
+    void paintMatrixIcon(juce::Graphics& g, const juce::Rectangle<float>& bounds)
+    {
+        const bool isHov = (hoveredRegion_ == kRegMatrix);
+        const bool isAct = matrixActive_;
+        const juce::Colour col = isAct
+            ? XO::Tokens::Color::accent().withAlpha(0.90f)
+            : (isHov ? juce::Colour(200, 204, 216).withAlpha(0.85f)
+                     : juce::Colour(200, 204, 216).withAlpha(0.55f));
+
+        const auto iconBounds = bounds.reduced(7.0f, 7.0f);
+
+        // Filled dot-grid path
+        HudIcons::drawIconInBounds(g, HudIcons::makeGridIcon(), iconBounds, col,
+                                   /*strokeW=*/0.0f);
+    }
+
+    //--------------------------------------------------------------------------
     // Export button — text pill with export glyph icon (down-arrow into tray)
 
     void paintExportButton(juce::Graphics& g)
@@ -872,6 +920,14 @@ private:
                     onChainToggled();
                 break;
 
+            case kRegMatrix:
+                // matrixActive_ is updated by OceanView via setMatrixActive() when
+                // the ChainMatrix drawer opens/closes — not toggled here.
+                // The callback is the source of truth; it triggers coordinatorRequestOpen.
+                if (onMatrixClicked)
+                    onMatrixClicked();
+                break;
+
             case kRegExport:
                 if (onExportClicked)
                     onExportClicked();
@@ -958,6 +1014,7 @@ private:
     // State
 
     bool  chainModeActive_  = false;
+    bool  matrixActive_     = false; // true while ChainMatrix drawer is open (Wave 5 C4 #1428)
     float reactLevel_       = 0.80f; // default 80% reactivity
 
     // Preset navigation state (#1104)
@@ -989,6 +1046,7 @@ private:
     juce::Rectangle<float> saveBounds_;
     juce::Rectangle<float> abCompareBounds_;
     juce::Rectangle<float> chainBounds_;
+    juce::Rectangle<float> matrixBounds_;  // MATRIX icon button (Wave 5 C4 #1428)
     juce::Rectangle<float> exportBounds_;
     juce::Rectangle<float> reactLabelBounds_;
     juce::Rectangle<float> reactDialBounds_;
