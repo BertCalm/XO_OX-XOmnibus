@@ -1704,6 +1704,13 @@ public:
             if (slotIndex < 0 || slotIndex >= XOceanusProcessor::kNumPrimarySlots)
                 return;
 
+            // #1448: guard against double-tap stacking multiple CallOutBox instances.
+            // JUCE CallOutBox::launchAsynchronously does not return a dismissable handle,
+            // so we track open state ourselves.  A second tap while the box is open is
+            // silently dropped; the user must dismiss the existing box first.
+            if (presetCalloutOpen_)
+                return;
+
             auto* eng = processor.getEngine(slotIndex);
             if (eng == nullptr)
                 return; // empty slot — pill shows "no engine", no menu
@@ -1739,9 +1746,14 @@ public:
                 engineId,
                 slotIndex);
 
+            // Wire dismiss callback to reset the guard so the next pill tap opens
+            // a fresh CallOutBox after this one is closed.
+            panel->onCloseRequested = [this]() { presetCalloutOpen_ = false; };
+
             // Size: 280x380 per design spec.
             panel->setSize(PresetBrowserPanel::kMinWidth + 20, 380);
 
+            presetCalloutOpen_ = true;
             juce::CallOutBox::launchAsynchronously(
                 std::move(panel),
                 buoyBounds,
@@ -2051,11 +2063,27 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        // #891 / S4: Set the active dark mode context for this instance before any
+        // #891 / S4 / #1449: Set the active dark mode context for this instance before any
         // paint logic (or child components) query GalleryColors::darkMode(). Without
         // this call, all instances share the last-registered context, so a second
         // plugin window could render in the wrong theme.
+        //
+        // Fix #1449: save the previous context and restore it after our paint subtree
+        // completes. This prevents interleaved JUCE repaints (e.g. a focus-change
+        // repaint of editor B triggered mid-paint of editor A) from corrupting A's
+        // theme context. On a single message thread JUCE paints are NOT interleaved,
+        // but this save/restore makes the invariant explicit and future-proof.
+        void* const prevContext = GalleryColors::activeEditorContext();
         GalleryColors::setActiveDarkModeContext(this);
+        // Restore previous context on scope exit so that if editor B's paint is
+        // somehow triggered while we are partway through A's paint (e.g. from a
+        // JUCE animation timer that fires synchronously), B's context is not left
+        // permanently in the global slot.  Uses a local RAII guard rather than
+        // juce::ScopeGuard (not available in JUCE 8.x).
+        struct ContextGuard {
+            void*& slot; void* prev;
+            ~ContextGuard() { slot = prev; }
+        } restoreCtx { GalleryColors::activeEditorContext(), prevContext };
 
         // OceanView handles all rendering as a child component.
         // paint() only draws the MIDI Learn overlay badge when active.
@@ -3333,6 +3361,14 @@ private:
     // Overlay created on demand; null when closed. Declared after toastOverlay_
     // so it is destroyed before the toast layer (reverse order = correct Z order).
     std::unique_ptr<xoceanus::CommandPalette> commandPalette_;
+
+    // ── PresetBrowserPanel CallOutBox guard (#1448) ───────────────────────────
+    // Tracks whether a preset pill CallOutBox is currently open (JUCE
+    // CallOutBox::launchAsynchronously does not return a handle we can poll, so
+    // we use a separate bool).  When true, subsequent pill clicks are ignored
+    // to prevent stacked CallOutBox instances with no dismiss mechanism.
+    // Reset to false by the on-dismiss lambda wired inside the PresetBrowserPanel.
+    bool presetCalloutOpen_ = false;
 
         JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(XOceanusEditor)
 };
