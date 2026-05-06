@@ -134,7 +134,7 @@ public:
 
     void paint(juce::Graphics& g) override
     {
-        const auto bounds = getLocalBounds().toFloat();
+        auto bounds = getLocalBounds().toFloat();
 
         // Background
         g.setColour(juce::Colour(GalleryColors::Ocean::twilight).withAlpha(0.96f));
