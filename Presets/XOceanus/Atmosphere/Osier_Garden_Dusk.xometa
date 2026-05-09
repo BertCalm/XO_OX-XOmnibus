@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OSIER \u2014 very slow attack (200ms), warm, companion (0.65). The garden quartet playing as the light fades.",
+  "dna": {
+    "brightness": 0.36,
+    "warmth": 0.7,
+    "movement": 0.16,
+    "density": 0.66,
+    "space": 0.75,
+    "aggression": 0.04
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Garden Dusk",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.2,
+      "osier_decay": 0.9,
+      "osier_sustain": 0.9,
+      "osier_release": 2.5,
+      "osier_cutoff": 4600.0,
+      "osier_resonance": 0.07,
+      "osier_filterEnvAmt": 0.09,
+      "osier_detune": 5.5,
+      "osier_companion": 0.65,
+      "osier_intimacy": 0.7,
+      "osier_brightness": 0.36,
+      "osier_vibratoRate": 4.3,
+      "osier_vibratoDepth": 0.18,
+      "osier_lfo1Rate": 0.3,
+      "osier_lfo1Depth": 0.05,
+      "osier_lfo2Rate": 0.04,
+      "osier_lfo2Depth": 0.04,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 15.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "osier",
+    "chamber",
+    "atmosphere",
+    "dusk",
+    "slow",
+    "warm"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.16,
+    "COUPLING": 0.2,
+    "SPACE": 0.75
+  }
+}

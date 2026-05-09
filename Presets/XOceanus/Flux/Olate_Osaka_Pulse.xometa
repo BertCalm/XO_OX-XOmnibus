@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 Japanese terroir (0.9), modern vintage (0.75), pulse oscillator, tight decay. Clean electronic Japanese bass.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.38,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.22,
+    "aggression": 0.28
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Osaka Pulse",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.0,
+      "olate_pulseWidth": 0.35,
+      "olate_cutoff": 3800.0,
+      "olate_resonance": 0.2,
+      "olate_drive": 0.28,
+      "olate_filterEnvAmount": 0.52,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.18,
+      "olate_vintage": 0.75,
+      "olate_warmth": 0.35,
+      "olate_terroir": 0.9,
+      "olate_ageRate": 0.3,
+      "olate_attack": 0.001,
+      "olate_decay": 0.28,
+      "olate_sustain": 0.65,
+      "olate_release": 0.22,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.4,
+      "olate_lfo1Rate": 0.08,
+      "olate_lfo1Depth": 0.08,
+      "olate_lfo2Rate": 0.05,
+      "olate_lfo2Depth": 0.06,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "olate",
+    "bass",
+    "analog",
+    "flux",
+    "japanese",
+    "terroir",
+    "pulse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.2,
+    "SPACE": 0.22
+  }
+}

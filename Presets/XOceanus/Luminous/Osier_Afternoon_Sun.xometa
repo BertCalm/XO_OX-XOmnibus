@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OSIER \u2014 medium detune (6 cents), bright cutoff (6000 Hz), high companion (0.68). Playing in afternoon light.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.2,
+    "density": 0.62,
+    "space": 0.68,
+    "aggression": 0.06
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Luminous",
+  "name": "Afternoon Sun",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.07,
+      "osier_decay": 0.5,
+      "osier_sustain": 0.84,
+      "osier_release": 1.1,
+      "osier_cutoff": 6000.0,
+      "osier_resonance": 0.08,
+      "osier_filterEnvAmt": 0.14,
+      "osier_detune": 6.0,
+      "osier_companion": 0.68,
+      "osier_intimacy": 0.72,
+      "osier_brightness": 0.52,
+      "osier_vibratoRate": 5.0,
+      "osier_vibratoDepth": 0.17,
+      "osier_lfo1Rate": 0.3,
+      "osier_lfo1Depth": 0.05,
+      "osier_lfo2Rate": 0.04,
+      "osier_lfo2Depth": 0.04,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 10.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "osier",
+    "chamber",
+    "luminous",
+    "bright",
+    "companion",
+    "sun"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.68
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 bowed upright with concert hall space. Very slow curing rate, long release, warm room. Sustained string pad from a wooden body.",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.78,
+    "movement": 0.2,
+    "density": 0.6,
+    "space": 0.72,
+    "aggression": 0.06
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Concert Bow Long",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 1,
+      "oaken_bowPressure": 0.7,
+      "oaken_stringTension": 0.3,
+      "oaken_bodyDepth": 0.72,
+      "oaken_woodAge": 0.65,
+      "oaken_room": 0.65,
+      "oaken_brightness": 4200.0,
+      "oaken_damping": 0.18,
+      "oaken_curingRate": 0.2,
+      "oaken_filterEnvAmount": 0.2,
+      "oaken_attack": 0.08,
+      "oaken_decay": 2.0,
+      "oaken_sustain": 0.88,
+      "oaken_release": 1.5,
+      "oaken_gravity": 0.4,
+      "oaken_glide": 0.0,
+      "oaken_lfo1Rate": 0.05,
+      "oaken_lfo1Depth": 0.12,
+      "oaken_lfo2Rate": 0.03,
+      "oaken_lfo2Depth": 0.08,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroCoupling": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "oaken",
+    "bass",
+    "bowed",
+    "atmosphere",
+    "concert-hall",
+    "sustain"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
+  }
+}

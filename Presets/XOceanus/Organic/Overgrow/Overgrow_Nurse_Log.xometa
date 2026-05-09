@@ -1,0 +1,73 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OVERGROW \u2014 the fallen log that feeds new growth. High damping (0.7), warm, slow. Decay that becomes foundation.",
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.72,
+    "movement": 0.18,
+    "density": 0.68,
+    "space": 0.48,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Organic",
+  "name": "Nurse Log",
+  "parameters": {
+    "Overgrow": {
+      "grow_damping": 0.7,
+      "grow_feedback": 0.95,
+      "grow_bowNoise": 0.35,
+      "grow_wildness": 0.28,
+      "grow_cutoff": 3200.0,
+      "grow_resonance": 0.09,
+      "grow_filterEnvAmt": 0.14,
+      "grow_brightness": 0.28,
+      "grow_attack": 0.03,
+      "grow_decay": 0.8,
+      "grow_sustain": 0.65,
+      "grow_release": 1.5,
+      "grow_vibratoRate": 4.2,
+      "grow_vibratoDepth": 0.12,
+      "grow_growthMode": 0.0,
+      "grow_growthTime": 20.0,
+      "grow_bendRange": 2.0,
+      "grow_lfo1Rate": 0.1,
+      "grow_lfo1Depth": 0.1,
+      "grow_lfo2Rate": 0.5,
+      "grow_lfo2Depth": 0.0,
+      "grow_macroCharacter": 0.0,
+      "grow_macroMovement": 0.0,
+      "grow_macroCoupling": 0.0,
+      "grow_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "overgrow",
+    "strings",
+    "organic",
+    "dark",
+    "warm",
+    "foundation"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.2,
+    "SPACE": 0.48
+  }
+}

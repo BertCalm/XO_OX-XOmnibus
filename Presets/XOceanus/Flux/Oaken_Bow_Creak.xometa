@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 high bow noise, high pressure, the raw friction of horse hair on rosin. Extended technique.",
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.55,
+    "movement": 0.42,
+    "density": 0.52,
+    "space": 0.38,
+    "aggression": 0.35
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Bow Creak",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 1,
+      "oaken_bowPressure": 0.85,
+      "oaken_stringTension": 0.55,
+      "oaken_bodyDepth": 0.45,
+      "oaken_woodAge": 0.45,
+      "oaken_room": 0.4,
+      "oaken_brightness": 4500.0,
+      "oaken_damping": 0.15,
+      "oaken_curingRate": 0.3,
+      "oaken_filterEnvAmount": 0.48,
+      "oaken_attack": 0.01,
+      "oaken_decay": 0.6,
+      "oaken_sustain": 0.7,
+      "oaken_release": 0.4,
+      "oaken_gravity": 0.45,
+      "oaken_glide": 0.0,
+      "oaken_lfo1Rate": 0.2,
+      "oaken_lfo1Depth": 0.12,
+      "oaken_lfo2Rate": 0.05,
+      "oaken_lfo2Depth": 0.06,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroCoupling": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "oaken",
+    "bass",
+    "flux",
+    "bow",
+    "extended-technique",
+    "creak"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.2,
+    "SPACE": 0.38
+  }
+}

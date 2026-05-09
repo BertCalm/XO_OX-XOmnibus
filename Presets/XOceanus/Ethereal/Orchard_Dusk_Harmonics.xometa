@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "ORCHARD \u2014 high formant (0.72), high warmth (0.65), long release. The string harmonics of evening.",
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.68,
+    "movement": 0.12,
+    "density": 0.72,
+    "space": 0.9,
+    "aggression": 0.04
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Ethereal",
+  "name": "Dusk Harmonics",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.3,
+      "orch_decay": 2.5,
+      "orch_sustain": 0.93,
+      "orch_release": 4.5,
+      "orch_cutoff": 5200.0,
+      "orch_resonance": 0.08,
+      "orch_filterEnvAmt": 0.09,
+      "orch_detune": 9.0,
+      "orch_ensembleWidth": 0.88,
+      "orch_formant": 0.72,
+      "orch_vibratoRate": 4.6,
+      "orch_vibratoDepth": 0.2,
+      "orch_season": -1,
+      "orch_brightness": 0.42,
+      "orch_warmth": 0.65,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 26.0,
+      "orch_lfo2Rate": 0.04,
+      "orch_lfo2Depth": 0.05,
+      "orch_lfo1Rate": 0.2,
+      "orch_lfo1Depth": 0.06,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "orchard",
+    "strings",
+    "ethereal",
+    "dusk",
+    "formant",
+    "harmonics"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.27,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.9
+  }
+}

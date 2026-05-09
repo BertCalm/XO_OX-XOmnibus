@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 silt laid down by tidal action. Very slow ageRate (0.1), West Coast terroir (0.18), massive low end.",
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.85,
+    "movement": 0.12,
+    "density": 0.88,
+    "space": 0.45,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Submerged",
+  "name": "Tidal Silt",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.3,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 1600.0,
+      "olate_resonance": 0.2,
+      "olate_drive": 0.38,
+      "olate_filterEnvAmount": 0.22,
+      "olate_filterAttack": 0.015,
+      "olate_filterDecay": 1.2,
+      "olate_vintage": 0.28,
+      "olate_warmth": 0.82,
+      "olate_terroir": 0.18,
+      "olate_ageRate": 0.1,
+      "olate_attack": 0.03,
+      "olate_decay": 2.5,
+      "olate_sustain": 0.92,
+      "olate_release": 2.0,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.38,
+      "olate_lfo1Rate": 0.03,
+      "olate_lfo1Depth": 0.06,
+      "olate_lfo2Rate": 0.05,
+      "olate_lfo2Depth": 0.06,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "olate",
+    "bass",
+    "submerged",
+    "slow",
+    "deep",
+    "west-coast"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.45
+  }
+}

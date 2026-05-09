@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OXALIS \u2014 phi=0.65, very fast attack (0.01s), short decay. Plucked geometric strings \u2014 percussive and clear.",
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.38,
+    "movement": 0.38,
+    "density": 0.52,
+    "space": 0.55,
+    "aggression": 0.22
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Crystalline",
+  "name": "Geometry Snap",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.01,
+      "oxal_decay": 0.25,
+      "oxal_sustain": 0.6,
+      "oxal_release": 0.5,
+      "oxal_cutoff": 7500.0,
+      "oxal_resonance": 0.15,
+      "oxal_filterEnvAmt": 0.35,
+      "oxal_phi": 0.65,
+      "oxal_spread": 0.65,
+      "oxal_symmetry": 0.72,
+      "oxal_brightness": 0.58,
+      "oxal_vibratoRate": 5.0,
+      "oxal_vibratoDepth": 0.08,
+      "oxal_growthMode": 0.0,
+      "oxal_growthTime": 8.0,
+      "oxal_bendRange": 2.0,
+      "oxal_macroCharacter": 0.0,
+      "oxal_macroMovement": 0.0,
+      "oxal_macroCoupling": 0.0,
+      "oxal_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "oxalis",
+    "strings",
+    "crystalline",
+    "pluck",
+    "percussive",
+    "phi"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "ORCHARD \u2014 growthMode (25s), Autumn season, wide ensemble. The orchard gone semi-wild, still bearing fruit.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.25,
+    "density": 0.7,
+    "space": 0.82,
+    "aggression": 0.12
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Organic",
+  "name": "Wild Orchard",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.15,
+      "orch_decay": 1.6,
+      "orch_sustain": 0.9,
+      "orch_release": 2.8,
+      "orch_cutoff": 4800.0,
+      "orch_resonance": 0.09,
+      "orch_filterEnvAmt": 0.12,
+      "orch_detune": 10.0,
+      "orch_ensembleWidth": 0.88,
+      "orch_formant": 0.5,
+      "orch_vibratoRate": 4.8,
+      "orch_vibratoDepth": 0.22,
+      "orch_season": 2,
+      "orch_brightness": 0.4,
+      "orch_warmth": 0.62,
+      "orch_growthMode": 1.0,
+      "orch_growthTime": 25.0,
+      "orch_lfo2Rate": 0.04,
+      "orch_lfo2Depth": 0.05,
+      "orch_lfo1Rate": 0.2,
+      "orch_lfo1Depth": 0.06,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "orchard",
+    "strings",
+    "organic",
+    "growth-mode",
+    "autumn",
+    "wild"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.82
+  }
+}

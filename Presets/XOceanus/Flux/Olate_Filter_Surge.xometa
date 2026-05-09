@@ -1,0 +1,75 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 maximum filter env (0.8), East Coast terroir (0.78), high resonance. The snapping filter surge of NYC basslines.",
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.52,
+    "movement": 0.52,
+    "density": 0.65,
+    "space": 0.18,
+    "aggression": 0.52
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Flux",
+  "name": "Filter Surge",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.0,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 1500.0,
+      "olate_resonance": 0.58,
+      "olate_drive": 0.5,
+      "olate_filterEnvAmount": 0.8,
+      "olate_filterAttack": 0.001,
+      "olate_filterDecay": 0.15,
+      "olate_vintage": 0.65,
+      "olate_warmth": 0.5,
+      "olate_terroir": 0.78,
+      "olate_ageRate": 0.55,
+      "olate_attack": 0.001,
+      "olate_decay": 0.3,
+      "olate_sustain": 0.62,
+      "olate_release": 0.22,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.5,
+      "olate_lfo1Rate": 0.08,
+      "olate_lfo1Depth": 0.08,
+      "olate_lfo2Rate": 0.05,
+      "olate_lfo2Depth": 0.06,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "olate",
+    "bass",
+    "analog",
+    "flux",
+    "filter",
+    "east-coast",
+    "snap"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.52,
+    "COUPLING": 0.2,
+    "SPACE": 0.18
+  }
+}
