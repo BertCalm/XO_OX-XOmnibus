@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Full calliope steam organ — maximum instability, pipes wobbling wildly, steam pressure surging. The sound of a haunted carnival on the waterfront.",
+  "description": "Full calliope steam organ \u2014 maximum instability, pipes wobbling wildly, steam pressure surging. The sound of a haunted carnival on the waterfront.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.8,
@@ -51,10 +51,10 @@
       "otis_decay": 0.1,
       "otis_sustain": 1.0,
       "otis_release": 0.1,
-      "otis_macroCharacter": 0.0,
-      "otis_macroMovement": 0.0,
-      "otis_macroCoupling": 0.0,
-      "otis_macroSpace": 0.0,
+      "otis_macroCharacter": 0.15,
+      "otis_macroMovement": 0.2,
+      "otis_macroCoupling": 0.1,
+      "otis_macroSpace": 0.35,
       "otis_lfo1Rate": 3.0,
       "otis_lfo1Depth": 0.15,
       "otis_lfo1Shape": 4,

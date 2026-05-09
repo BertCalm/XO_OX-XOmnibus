@@ -1479,15 +1479,18 @@ public:
         params.push_back(std::make_unique<PF>(juce::ParameterID{"otis_musette", 1}, "Otis Musette (Accordion)",
                                               juce::NormalisableRange<float>(0.0f, 1.0f), 0.5f));
 
-        // Macros
+        // Macros — default to mid-range so fresh presets have bidirectional sweep.
+        // At 0.0 the macro can only ADD (one-directional); at 0.25-0.35 it can both
+        // add (toward max) and reduce (toward 0), giving full performance range.
+        // Seance P2 verdict: "macros showcased with non-zero defaults."
         params.push_back(std::make_unique<PF>(juce::ParameterID{"otis_macroCharacter", 1}, "Otis Macro CHARACTER",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.25f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"otis_macroMovement", 1}, "Otis Macro MOVEMENT",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.35f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"otis_macroCoupling", 1}, "Otis Macro COUPLING",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.15f));
         params.push_back(std::make_unique<PF>(juce::ParameterID{"otis_macroSpace", 1}, "Otis Macro SPACE",
-                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.0f));
+                                              juce::NormalisableRange<float>(0.0f, 1.0f), 0.35f));
 
         // LFOs
         params.push_back(std::make_unique<PF>(juce::ParameterID{"otis_lfo1Rate", 1}, "Otis LFO1 Rate",
