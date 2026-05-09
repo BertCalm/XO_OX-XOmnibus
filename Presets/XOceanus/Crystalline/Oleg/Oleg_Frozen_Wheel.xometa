@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Frozen Wheel",
+  "mood": "Crystalline",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hurdy-gurdy with wheel speed near-zero and almost no detune — the wheel barely moving, each note crystallized into a single pure tone. Zero drone. Buzz threshold maximum so the chien never speaks. The hurdy-gurdy played like a keyed fiddle, not a continuous instrument. Every note a clear, isolated crystal.",
+  "tags": ["hurdy-gurdy", "crystalline", "pure", "clean", "minimal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.08,
+    "density": 0.35,
+    "space": 0.52,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 1,
+      "oleg_buzz": 0.0,
+      "oleg_brightness": 7000.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.6,
+      "oleg_detune": 2.0,
+      "oleg_formant": 0.5,
+      "oleg_attack": 0.005,
+      "oleg_release": 0.15,
+      "oleg_filterEnvAmt": 0.35,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.95,
+      "oleg_wheelSpeed": 0.15,
+      "oleg_droneInterval1": 0,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.55,
+      "oleg_macroMovement": 0.08,
+      "oleg_macroCoupling": 0.12,
+      "oleg_macroSpace": 0.52,
+      "oleg_lfo1Rate": 0.8,
+      "oleg_lfo1Depth": 0.03,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.15,
+      "oleg_lfo2Depth": 0.06,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.12,
+    "SPACE": 0.52
+  }
+}

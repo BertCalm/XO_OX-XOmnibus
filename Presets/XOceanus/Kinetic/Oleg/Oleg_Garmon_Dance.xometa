@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Garmon Dance",
+  "mood": "Kinetic",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Garmon at festival tempo — the diatonic button accordion driving a circle dance. Maximum bellows pressure, very short attack and release for rhythmic articulation. Formant bright and nasal. The instrument that makes people stand up from their chairs. LFO1 at fast tremolo rate for added energy.",
+  "tags": ["garmon", "kinetic", "dance", "folk", "festival", "rhythmic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.48,
+    "movement": 0.82,
+    "density": 0.5,
+    "space": 0.32,
+    "aggression": 0.6
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 3,
+      "oleg_buzz": 0.15,
+      "oleg_brightness": 8000.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.92,
+      "oleg_detune": 14.0,
+      "oleg_formant": 0.82,
+      "oleg_attack": 0.008,
+      "oleg_release": 0.06,
+      "oleg_filterEnvAmt": 0.6,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.55,
+      "oleg_wheelSpeed": 0.88,
+      "oleg_droneInterval1": 0,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.7,
+      "oleg_macroMovement": 0.82,
+      "oleg_macroCoupling": 0.15,
+      "oleg_macroSpace": 0.32,
+      "oleg_lfo1Rate": 8.0,
+      "oleg_lfo1Depth": 0.18,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 3.0,
+      "oleg_lfo2Depth": 0.2,
+      "oleg_lfo2Shape": 1
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.15,
+    "SPACE": 0.32
+  }
+}

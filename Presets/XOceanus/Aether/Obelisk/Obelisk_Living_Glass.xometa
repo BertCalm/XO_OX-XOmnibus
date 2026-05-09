@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Living Glass",
+  "mood": "Aether",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Glass preparation (type 3) near center of string — the highest Q enhancement, the clearest ring. Position 0.5 kills even modes which makes the remaining odd-mode series feel crystalline and pure. LFO2 at very slow rate animates preparation depth like condensation forming on cold glass.",
+  "tags": ["stone", "glass", "aether", "crystalline", "eternal", "kitchen"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.22,
+    "movement": 0.18,
+    "density": 0.45,
+    "space": 0.88,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.6,
+      "obel_stoneTone": 0.55,
+      "obel_brightness": 6500.0,
+      "obel_damping": 0.05,
+      "obel_decay": 11.0,
+      "obel_hfNoise": 0.1,
+      "obel_hardness": 0.22,
+      "obel_prepType": 3,
+      "obel_prepPosition": 0.5,
+      "obel_prepDepth": 0.72,
+      "obel_filterEnvAmount": 0.18,
+      "obel_thermalDrift": 0.1,
+      "obel_bendRange": 2,
+      "obel_release": 5.0,
+      "obel_macroStone": 0.45,
+      "obel_macroPrep": 0.65,
+      "obel_macroCoupling": 0.1,
+      "obel_macroSpace": 0.85,
+      "obel_lfo1Rate": 0.02,
+      "obel_lfo1Depth": 0.04,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.01,
+      "obel_lfo2Depth": 0.28,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "STONE": 0.45,
+    "PREPARATION": 0.65,
+    "COUPLING": 0.1,
+    "SPACE": 0.85
+  }
+}

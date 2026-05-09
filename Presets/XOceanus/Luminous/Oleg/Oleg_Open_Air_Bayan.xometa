@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Open Air Bayan",
+  "mood": "Luminous",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bayan at maximum brightness, zero cassotto, zero drone — the instrument outdoors on a summer afternoon. The reeds singing into open air without walls to absorb them. High bellows pressure, fast attack, luminous formant peak. No shadow, no weight, just the sound of reeds in daylight.",
+  "tags": ["bayan", "luminous", "bright", "outdoor", "open", "joyful"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.42,
+    "movement": 0.38,
+    "density": 0.45,
+    "space": 0.65,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.0,
+      "oleg_brightness": 9500.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.85,
+      "oleg_detune": 6.0,
+      "oleg_formant": 0.72,
+      "oleg_attack": 0.01,
+      "oleg_release": 0.1,
+      "oleg_filterEnvAmt": 0.48,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.8,
+      "oleg_wheelSpeed": 0.7,
+      "oleg_droneInterval1": 0,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.72,
+      "oleg_macroMovement": 0.38,
+      "oleg_macroCoupling": 0.12,
+      "oleg_macroSpace": 0.65,
+      "oleg_lfo1Rate": 5.5,
+      "oleg_lfo1Depth": 0.08,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.8,
+      "oleg_lfo2Depth": 0.12,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.12,
+    "SPACE": 0.65
+  }
+}

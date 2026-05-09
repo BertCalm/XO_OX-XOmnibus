@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Spectral Cage",
+  "mood": "Prism",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Named for John Cage's prepared piano works — preparations at three positions: the preset explores what a single 0.25 position does to the entire stone harmonic series. Rubber preparation at moderate depth. The spectral consequence of Cage's simplest preparation in stone: fewer modes, the ones remaining more resonant.",
+  "tags": ["stone", "rubber", "prism", "cage", "prepared", "kitchen"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.28,
+    "movement": 0.2,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.62,
+      "obel_stoneTone": 0.45,
+      "obel_brightness": 5200.0,
+      "obel_damping": 0.15,
+      "obel_decay": 6.5,
+      "obel_hfNoise": 0.2,
+      "obel_hardness": 0.3,
+      "obel_prepType": 1,
+      "obel_prepPosition": 0.25,
+      "obel_prepDepth": 0.55,
+      "obel_filterEnvAmount": 0.25,
+      "obel_thermalDrift": 0.15,
+      "obel_bendRange": 2,
+      "obel_release": 3.0,
+      "obel_macroStone": 0.45,
+      "obel_macroPrep": 0.5,
+      "obel_macroCoupling": 0.1,
+      "obel_macroSpace": 0.6,
+      "obel_lfo1Rate": 0.05,
+      "obel_lfo1Depth": 0.07,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.07,
+      "obel_lfo2Depth": 0.18,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "STONE": 0.45,
+    "PREPARATION": 0.5,
+    "COUPLING": 0.1,
+    "SPACE": 0.6
+  }
+}

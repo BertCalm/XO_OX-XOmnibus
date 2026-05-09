@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Village Garmon",
+  "mood": "Organic",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Garmon — the Russian village diatonic button accordion. Small, bright, slightly detuned from long use. High formant gives it that distinctive nasal village character. Detune pushed to suggest an instrument that has spent decades in unheated barns. The music of the communal table, the bonfire, the kolkhoz dance.",
+  "tags": ["garmon", "organic", "russian", "village", "folk", "diatonic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.65,
+    "movement": 0.4,
+    "density": 0.55,
+    "space": 0.38,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 3,
+      "oleg_buzz": 0.1,
+      "oleg_brightness": 6800.0,
+      "oleg_drone": 0.2,
+      "oleg_bellows": 0.7,
+      "oleg_detune": 22.0,
+      "oleg_formant": 0.78,
+      "oleg_attack": 0.015,
+      "oleg_release": 0.1,
+      "oleg_filterEnvAmt": 0.38,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.55,
+      "oleg_wheelSpeed": 0.65,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.62,
+      "oleg_macroMovement": 0.4,
+      "oleg_macroCoupling": 0.15,
+      "oleg_macroSpace": 0.38,
+      "oleg_lfo1Rate": 6.0,
+      "oleg_lfo1Depth": 0.1,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 1.2,
+      "oleg_lfo2Depth": 0.14,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.62,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.15,
+    "SPACE": 0.38
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Stone Weather",
+  "mood": "Flux",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Both LFOs active with moderate thermal drift — the stone's temperature cycling through changes that ripple across its modal structure. Rubber preparation creates the muted, weathered character of stone that has been outside for centuries. Dynamic and unpredictable.",
+  "tags": ["stone", "rubber", "flux", "thermal", "weather", "kitchen"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.38,
+    "movement": 0.55,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.62,
+      "obel_stoneTone": 0.35,
+      "obel_brightness": 3800.0,
+      "obel_damping": 0.3,
+      "obel_decay": 3.5,
+      "obel_hfNoise": 0.42,
+      "obel_hardness": 0.4,
+      "obel_prepType": 1,
+      "obel_prepPosition": 0.42,
+      "obel_prepDepth": 0.55,
+      "obel_filterEnvAmount": 0.32,
+      "obel_thermalDrift": 0.5,
+      "obel_bendRange": 2,
+      "obel_release": 1.8,
+      "obel_macroStone": 0.38,
+      "obel_macroPrep": 0.48,
+      "obel_macroCoupling": 0.12,
+      "obel_macroSpace": 0.45,
+      "obel_lfo1Rate": 0.12,
+      "obel_lfo1Depth": 0.15,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.18,
+      "obel_lfo2Depth": 0.3,
+      "obel_lfo2Shape": 2
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "STONE": 0.38,
+    "PREPARATION": 0.48,
+    "COUPLING": 0.12,
+    "SPACE": 0.45
+  }
+}

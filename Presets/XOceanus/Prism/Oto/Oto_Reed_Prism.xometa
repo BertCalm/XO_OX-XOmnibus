@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Reed Prism",
+  "mood": "Prism",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng with maximum cluster density and competition — each voice in the chord competing for breath, the spectral content shifting as some voices win and others fade. The prism: the same breath producing different spectral content every moment. High crosstalk means one note's buzz colors its neighbors.",
+  "tags": ["sheng", "prism", "spectral", "competition", "cluster", "complex"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.65,
+    "density": 0.82,
+    "space": 0.5,
+    "aggression": 0.5
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.9,
+      "oto_chiff": 0.5,
+      "oto_detune": 0.12,
+      "oto_buzz": 0.4,
+      "oto_pressure": 0.6,
+      "oto_crosstalk": 0.85,
+      "oto_filterCutoff": 7000.0,
+      "oto_filterRes": 0.35,
+      "oto_attack": 0.04,
+      "oto_decay": 0.35,
+      "oto_sustain": 0.72,
+      "oto_release": 0.25,
+      "oto_lfo1Rate": 2.5,
+      "oto_lfo1Depth": 0.2,
+      "oto_competition": 0.85
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.2,
+    "SPACE": 0.5
+  }
+}

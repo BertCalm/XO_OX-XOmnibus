@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Cathedral Stone",
+  "mood": "Foundation",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Unprepared stone — pure modal density, long cold decay. The bare monolith before anything is laid across its strings. Dense partials, no preparation, thermal drift at minimum. This is what Obelisk sounds like when left alone with itself.",
+  "tags": ["stone", "unprepared", "foundation", "sustain", "cold", "kitchen"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.25,
+    "movement": 0.1,
+    "density": 0.7,
+    "space": 0.6,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.7,
+      "obel_stoneTone": 0.2,
+      "obel_brightness": 3500.0,
+      "obel_damping": 0.15,
+      "obel_decay": 8.0,
+      "obel_hfNoise": 0.18,
+      "obel_hardness": 0.35,
+      "obel_prepType": 0,
+      "obel_prepPosition": 0.5,
+      "obel_prepDepth": 0.0,
+      "obel_filterEnvAmount": 0.2,
+      "obel_thermalDrift": 0.08,
+      "obel_bendRange": 2,
+      "obel_release": 3.0,
+      "obel_macroStone": 0.35,
+      "obel_macroPrep": 0.1,
+      "obel_macroCoupling": 0.15,
+      "obel_macroSpace": 0.55,
+      "obel_lfo1Rate": 0.05,
+      "obel_lfo1Depth": 0.06,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.03,
+      "obel_lfo2Depth": 0.04,
+      "obel_lfo2Shape": 2
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "STONE": 0.3,
+    "PREPARATION": 0.1,
+    "COUPLING": 0.15,
+    "SPACE": 0.55
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Rain On Granite",
+  "mood": "Atmosphere",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Rubber muted strings — the sound of a stone surface damped by water. Preparation type 1 (rubber) at position 0.35 near the bridge, depth 0.6. Higher HF noise for raindrop character. Thermal drift slow and continuous like weather.",
+  "tags": ["stone", "rubber", "atmosphere", "prepared", "weather", "kitchen"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.4,
+    "movement": 0.3,
+    "density": 0.45,
+    "space": 0.65,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.55,
+      "obel_stoneTone": 0.45,
+      "obel_brightness": 2800.0,
+      "obel_damping": 0.35,
+      "obel_decay": 3.5,
+      "obel_hfNoise": 0.5,
+      "obel_hardness": 0.3,
+      "obel_prepType": 1,
+      "obel_prepPosition": 0.35,
+      "obel_prepDepth": 0.6,
+      "obel_filterEnvAmount": 0.25,
+      "obel_thermalDrift": 0.4,
+      "obel_bendRange": 2,
+      "obel_release": 2.2,
+      "obel_macroStone": 0.3,
+      "obel_macroPrep": 0.45,
+      "obel_macroCoupling": 0.1,
+      "obel_macroSpace": 0.6,
+      "obel_lfo1Rate": 0.07,
+      "obel_lfo1Depth": 0.12,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.08,
+      "obel_lfo2Depth": 0.2,
+      "obel_lfo2Shape": 2
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "STONE": 0.3,
+    "PREPARATION": 0.45,
+    "COUPLING": 0.1,
+    "SPACE": 0.6
+  }
+}

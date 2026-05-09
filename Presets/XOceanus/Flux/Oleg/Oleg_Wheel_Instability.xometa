@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Wheel Instability",
+  "mood": "Flux",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hurdy-gurdy with a wheel that refuses to stay steady — high detune, LFO2 sweeping wheel speed while LFO1 trembles the pitch. Buzz threshold set at the knife edge: some notes will activate the chien, others won't. The instrument that sounds different every time you hear it. A wheel that needs rosining.",
+  "tags": ["hurdy-gurdy", "flux", "instability", "wheel", "unpredictable"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.5,
+    "movement": 0.72,
+    "density": 0.55,
+    "space": 0.45,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 1,
+      "oleg_buzz": 0.45,
+      "oleg_brightness": 5500.0,
+      "oleg_drone": 0.5,
+      "oleg_bellows": 0.65,
+      "oleg_detune": 28.0,
+      "oleg_formant": 0.55,
+      "oleg_attack": 0.03,
+      "oleg_release": 0.2,
+      "oleg_filterEnvAmt": 0.4,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.03,
+      "oleg_cassottoDepth": 0.2,
+      "oleg_buzzThreshold": 0.38,
+      "oleg_wheelSpeed": 0.55,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": -12,
+      "oleg_macroCharacter": 0.5,
+      "oleg_macroMovement": 0.72,
+      "oleg_macroCoupling": 0.18,
+      "oleg_macroSpace": 0.45,
+      "oleg_lfo1Rate": 4.0,
+      "oleg_lfo1Depth": 0.18,
+      "oleg_lfo1Shape": 1,
+      "oleg_lfo2Rate": 0.4,
+      "oleg_lfo2Depth": 0.35,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.72,
+    "COUPLING": 0.18,
+    "SPACE": 0.45
+  }
+}

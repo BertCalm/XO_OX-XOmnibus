@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Earth Table",
+  "mood": "Organic",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The prepared piano as a piece of earth: bolt preparation (type 4) at moderate position, slow deep thermal drift. LFO1 at very slow rate gives each note a slight pitch wobble like ground settling. Organic, grounded, patient.",
+  "tags": ["stone", "bolt", "organic", "earth", "grounded", "kitchen"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.45,
+    "movement": 0.22,
+    "density": 0.58,
+    "space": 0.55,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.62,
+      "obel_stoneTone": 0.6,
+      "obel_brightness": 3500.0,
+      "obel_damping": 0.25,
+      "obel_decay": 5.0,
+      "obel_hfNoise": 0.28,
+      "obel_hardness": 0.38,
+      "obel_prepType": 4,
+      "obel_prepPosition": 0.38,
+      "obel_prepDepth": 0.5,
+      "obel_filterEnvAmount": 0.25,
+      "obel_thermalDrift": 0.55,
+      "obel_bendRange": 2,
+      "obel_release": 2.2,
+      "obel_macroStone": 0.48,
+      "obel_macroPrep": 0.42,
+      "obel_macroCoupling": 0.12,
+      "obel_macroSpace": 0.5,
+      "obel_lfo1Rate": 0.04,
+      "obel_lfo1Depth": 0.12,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.06,
+      "obel_lfo2Depth": 0.25,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "STONE": 0.48,
+    "PREPARATION": 0.42,
+    "COUPLING": 0.12,
+    "SPACE": 0.5
+  }
+}

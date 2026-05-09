@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Accordion Lesson",
+  "mood": "Family",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Garmon played by a child learning — moderate bellows, slight hesitation in the attack, formant a little high and nasal. No drone, no buzz. Just the basic sound of a button accordion producing notes one at a time, carefully. The instrument is alive but the player is still finding their way. The lesson that will become music.",
+  "tags": ["garmon", "family", "learning", "simple", "direct", "accordion"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.6,
+    "movement": 0.18,
+    "density": 0.45,
+    "space": 0.5,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 3,
+      "oleg_buzz": 0.0,
+      "oleg_brightness": 5800.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.55,
+      "oleg_detune": 8.0,
+      "oleg_formant": 0.65,
+      "oleg_attack": 0.04,
+      "oleg_release": 0.12,
+      "oleg_filterEnvAmt": 0.3,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.1,
+      "oleg_buzzThreshold": 0.9,
+      "oleg_wheelSpeed": 0.5,
+      "oleg_droneInterval1": 0,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.45,
+      "oleg_macroMovement": 0.18,
+      "oleg_macroCoupling": 0.12,
+      "oleg_macroSpace": 0.5,
+      "oleg_lfo1Rate": 5.5,
+      "oleg_lfo1Depth": 0.05,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.4,
+      "oleg_lfo2Depth": 0.08,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.12,
+    "SPACE": 0.5
+  }
+}

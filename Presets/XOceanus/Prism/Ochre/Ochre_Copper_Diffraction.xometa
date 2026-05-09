@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Copper Diffraction",
+  "mood": "Prism",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "LFO1 and LFO2 both active at different rates — the copper tone broken into shifting spectral components. HF character high, sympathetic resonance mid. As both LFOs interact, caramel and body color cycle through combinations the copper alone cannot produce. The prism splits the upright into its components.",
+  "tags": ["copper", "prism", "spectral", "lfo", "shimmer", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.5,
+    "movement": 0.55,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.2
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.6,
+      "ochre_hardness": 0.4,
+      "ochre_bodyType": 2,
+      "ochre_bodyDepth": 0.55,
+      "ochre_brightness": 6000.0,
+      "ochre_damping": 0.22,
+      "ochre_decay": 3.2,
+      "ochre_caramel": 0.45,
+      "ochre_sympathy": 0.48,
+      "ochre_hfCharacter": 0.55,
+      "ochre_thermalDrift": 0.28,
+      "ochre_filterEnvAmount": 0.42,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.22,
+      "ochre_lfo1Depth": 0.18,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.07,
+      "ochre_lfo2Depth": 0.52,
+      "ochre_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.15,
+    "SPACE": 0.55
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Tango Rain",
+  "mood": "Atmosphere",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bandoneon played in a rain-soaked Buenos Aires street — long attack and release, cassotto moderate, the sound smeared by water and distance. Drone at a minor third below. The tango that doesn't begin until the rain does. A slow, patient, damp atmosphere.",
+  "tags": ["bandoneon", "atmosphere", "rain", "tango", "melancholy", "damp"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.65,
+    "movement": 0.18,
+    "density": 0.6,
+    "space": 0.68,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 2,
+      "oleg_buzz": 0.05,
+      "oleg_brightness": 3800.0,
+      "oleg_drone": 0.45,
+      "oleg_bellows": 0.58,
+      "oleg_detune": 15.0,
+      "oleg_formant": 0.38,
+      "oleg_attack": 0.1,
+      "oleg_release": 0.28,
+      "oleg_filterEnvAmt": 0.25,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.05,
+      "oleg_cassottoDepth": 0.55,
+      "oleg_buzzThreshold": 0.75,
+      "oleg_wheelSpeed": 0.38,
+      "oleg_droneInterval1": -3,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.38,
+      "oleg_macroMovement": 0.18,
+      "oleg_macroCoupling": 0.15,
+      "oleg_macroSpace": 0.68,
+      "oleg_lfo1Rate": 2.0,
+      "oleg_lfo1Depth": 0.06,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.08,
+      "oleg_lfo2Depth": 0.15,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.15,
+    "SPACE": 0.68
+  }
+}
