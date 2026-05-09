@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Expressive blues harmonica with deep bends and heavy vibrato — use mod wheel for vibrato intensity, aftertouch for breath pressure. The sound that makes grown men cry.",
+  "description": "Expressive blues harmonica with deep bends and heavy vibrato \u2014 use mod wheel for vibrato intensity, aftertouch for breath pressure. The sound that makes grown men cry.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.45,
@@ -51,10 +51,10 @@
       "otis_decay": 0.3,
       "otis_sustain": 0.7,
       "otis_release": 0.25,
-      "otis_macroCharacter": 0.0,
-      "otis_macroMovement": 0.0,
-      "otis_macroCoupling": 0.0,
-      "otis_macroSpace": 0.0,
+      "otis_macroCharacter": 0.2,
+      "otis_macroMovement": 0.15,
+      "otis_macroCoupling": 0.1,
+      "otis_macroSpace": 0.3,
       "otis_lfo1Rate": 5.8,
       "otis_lfo1Depth": 0.0,
       "otis_lfo1Shape": 0,

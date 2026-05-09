@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Classic jazz organ — 888800000 registration with 3rd harmonic percussion, slow Leslie, moderate drive. The Jimmy Smith jazz club grind.",
+  "description": "Classic jazz organ \u2014 888800000 registration with 3rd harmonic percussion, slow Leslie, moderate drive. The Jimmy Smith jazz club grind.",
   "dna": {
     "aggression": 0.3,
     "brightness": 0.6,
@@ -50,10 +50,10 @@
       "otis_decay": 0.15,
       "otis_sustain": 0.9,
       "otis_release": 0.2,
-      "otis_macroCharacter": 0.0,
-      "otis_macroMovement": 0.0,
-      "otis_macroCoupling": 0.0,
-      "otis_macroSpace": 0.0,
+      "otis_macroCharacter": 0.2,
+      "otis_macroMovement": 0.3,
+      "otis_macroCoupling": 0.15,
+      "otis_macroSpace": 0.45,
       "otis_lfo1Rate": 5.0,
       "otis_lfo1Depth": 0.03,
       "otis_lfo1Shape": 0,

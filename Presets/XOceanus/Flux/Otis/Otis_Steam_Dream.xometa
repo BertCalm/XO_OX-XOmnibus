@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Gentle calliope with low instability — like a music box running on steam. Dreamy, nostalgic, slightly out-of-tune in all the right ways.",
+  "description": "Gentle calliope with low instability \u2014 like a music box running on steam. Dreamy, nostalgic, slightly out-of-tune in all the right ways.",
   "dna": {
     "aggression": 0.1,
     "brightness": 0.5,
@@ -51,10 +51,10 @@
       "otis_decay": 0.4,
       "otis_sustain": 0.85,
       "otis_release": 0.8,
-      "otis_macroCharacter": 0.0,
-      "otis_macroMovement": 0.0,
-      "otis_macroCoupling": 0.0,
-      "otis_macroSpace": 0.0,
+      "otis_macroCharacter": 0.1,
+      "otis_macroMovement": 0.2,
+      "otis_macroCoupling": 0.1,
+      "otis_macroSpace": 0.35,
       "otis_lfo1Rate": 0.2,
       "otis_lfo1Depth": 0.08,
       "otis_lfo1Shape": 0,

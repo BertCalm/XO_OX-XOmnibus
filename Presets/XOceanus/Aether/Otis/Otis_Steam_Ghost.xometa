@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Calliope at near-zero instability — steam pressure barely breathing, pipes nearly in tune. The fairground organ at 4am when no one is watching: slow, dreamy, almost harmonic. MacroCHARACTER raises chaos.",
+  "description": "Calliope at near-zero instability \u2014 steam pressure barely breathing, pipes nearly in tune. The fairground organ at 4am when no one is watching: slow, dreamy, almost harmonic. MacroCHARACTER raises chaos.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.55,
@@ -51,10 +51,10 @@
       "otis_decay": 0.3,
       "otis_sustain": 1.0,
       "otis_release": 0.5,
-      "otis_macroCharacter": 0.0,
-      "otis_macroMovement": 0.0,
-      "otis_macroCoupling": 0.0,
-      "otis_macroSpace": 0.45,
+      "otis_macroCharacter": 0.1,
+      "otis_macroMovement": 0.2,
+      "otis_macroCoupling": 0.1,
+      "otis_macroSpace": 0.4,
       "otis_lfo1Rate": 0.8,
       "otis_lfo1Depth": 0.1,
       "otis_lfo1Shape": 0,

@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OGRE — extreme tectonic depth (38 cents). The bass note shifts over a musical phrase like geology.",
+  "description": "OGRE — maximum tectonic depth (20 cents). The bass note drifts over a phrase like continental geology.",
   "dna": {
     "brightness": 0.15,
     "warmth": 0.8,
@@ -23,7 +23,7 @@
     "SPACE"
   ],
   "mood": "Deep",
-  "name": "Continental Drift (Ogre)",
+  "name": "Geological Maximum",
   "parameters": {
     "Ogre": {
       "ogre_oscMix": 0.15,
@@ -34,7 +34,7 @@
       "ogre_density": 0.55,
       "ogre_soil": 0.0,
       "ogre_tectonicRate": 0.005,
-      "ogre_tectonicDepth": 38.0,
+      "ogre_tectonicDepth": 20.0,
       "ogre_attack": 0.01,
       "ogre_decay": 1.5,
       "ogre_sustain": 0.85,

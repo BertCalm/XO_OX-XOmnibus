@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "OGRE — cinematic sub event. Maximum gravity, extreme tectonic depth, slow attack. A rumble, not a bass line.",
+  "description": "OGRE \u2014 cinematic sub event. Maximum gravity, maximum tectonic depth (20 cents), slow attack, vast space.",
   "dna": {
     "brightness": 0.06,
     "warmth": 0.9,
@@ -34,7 +34,7 @@
       "ogre_density": 0.7,
       "ogre_soil": 0.2,
       "ogre_tectonicRate": 0.003,
-      "ogre_tectonicDepth": 45.0,
+      "ogre_tectonicDepth": 20.0,
       "ogre_attack": 0.1,
       "ogre_decay": 4.0,
       "ogre_sustain": 0.7,

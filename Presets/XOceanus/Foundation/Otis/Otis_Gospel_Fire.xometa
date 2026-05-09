@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Full Hammond B3 gospel registration — classic 888000000 drawbars with heavy key click, fast Leslie, and tube overdrive. The sound of Sunday morning.",
+  "description": "Full Hammond B3 gospel registration \u2014 classic 888000000 drawbars with heavy key click, fast Leslie, and tube overdrive. The sound of Sunday morning.",
   "dna": {
     "aggression": 0.5,
     "brightness": 0.7,
@@ -50,10 +50,10 @@
       "otis_decay": 0.2,
       "otis_sustain": 0.85,
       "otis_release": 0.25,
-      "otis_macroCharacter": 0.0,
-      "otis_macroMovement": 0.0,
-      "otis_macroCoupling": 0.0,
-      "otis_macroSpace": 0.0,
+      "otis_macroCharacter": 0.25,
+      "otis_macroMovement": 0.4,
+      "otis_macroCoupling": 0.15,
+      "otis_macroSpace": 0.4,
       "otis_lfo1Rate": 5.5,
       "otis_lfo1Depth": 0.05,
       "otis_lfo1Shape": 0,
