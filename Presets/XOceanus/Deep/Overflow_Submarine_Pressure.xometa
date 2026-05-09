@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Submarine Pressure",
+  "mood": "Deep",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.5,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.75,
+    "movement": 0.1,
+    "density": 0.45,
+    "space": 0.8,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.85,
+      "flow_accumRate": 0.3,
+      "flow_valveType": 0,
+      "flow_vesselSize": 0.8,
+      "flow_strainColor": 0.28,
+      "flow_releaseTime": 4.0,
+      "flow_whistlePitch": 0.5,
+      "flow_stereoWidth": 0.6,
+      "flow_filterCutoff": 500.0,
+      "flow_filterRes": 0.04,
+      "flow_filtEnvAmount": 0.1,
+      "flow_ampAttack": 3.0,
+      "flow_ampDecay": 3.0,
+      "flow_ampSustain": 0.9,
+      "flow_ampRelease": 14.0,
+      "flow_filtAttack": 1.5,
+      "flow_filtDecay": 2.5,
+      "flow_filtSustain": 0.78,
+      "flow_filtRelease": 6.0,
+      "flow_lfo1Rate": 0.005,
+      "flow_lfo1Depth": 0.08,
+      "flow_lfo2Rate": 0.002,
+      "flow_lfo2Depth": 0.04,
+      "flow_level": 0.75,
+      "flow_macroCharacter": 0.0,
+      "flow_macroMovement": 0.0,
+      "flow_macroCoupling": 0.5,
+      "flow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "deep",
+    "submarine",
+    "extreme",
+    "dense",
+    "heavy"
+  ],
+  "description": "Extreme vessel size, high threshold \u2014 deep water pressure requiring enormous force to release."
+}

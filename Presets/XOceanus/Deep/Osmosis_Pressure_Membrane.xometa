@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Pressure Membrane",
+  "mood": "Deep",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.32,
+    "SPACE": 0.95
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.72,
+    "movement": 0.05,
+    "density": 0.25,
+    "space": 0.88,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.32,
+      "osmo_selectivity": 0.65,
+      "osmo_reactivity": 0.12,
+      "osmo_memory": 0.95,
+      "osmo_filterEnvAmt": 0.2,
+      "osmo_lfo1Rate": 0.02,
+      "osmo_lfo1Depth": 0.05,
+      "osmo_macroCharacter": 0.52,
+      "osmo_macroMovement": 0.05,
+      "osmo_macroCoupling": 0.32,
+      "osmo_macroSpace": 0.95
+    }
+  },
+  "tags": [
+    "osmosis",
+    "deep",
+    "pressure",
+    "membrane",
+    "slow",
+    "deep"
+  ],
+  "description": "Deep pressure membrane \u2014 medium permeability, maximum memory, slow reactivity. Everything moving very slowly through enormous water pressure."
+}

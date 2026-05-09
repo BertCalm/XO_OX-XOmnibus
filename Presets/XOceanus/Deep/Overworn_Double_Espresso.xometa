@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Double Espresso",
+  "mood": "Deep",
+  "engines": [
+    "Overworn"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.07,
+    "COUPLING": 0.5,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.78,
+    "movement": 0.07,
+    "density": 0.62,
+    "space": 0.75,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Overworn": {
+      "worn_reductionRate": 0.14,
+      "worn_heat": 0.7,
+      "worn_richness": 0.7,
+      "worn_maillard": 0.75,
+      "worn_umamiDepth": 0.6,
+      "worn_concentrate": 0.55,
+      "worn_sessionTarget": 25.0,
+      "worn_sessionAge": 0.0,
+      "worn_stateReset": 0.0,
+      "worn_stereoWidth": 0.65,
+      "worn_filterCutoff": 380.0,
+      "worn_filterRes": 0.04,
+      "worn_filtEnvAmount": 0.08,
+      "worn_ampAttack": 4.0,
+      "worn_ampDecay": 3.5,
+      "worn_ampSustain": 0.93,
+      "worn_ampRelease": 16.0,
+      "worn_filtAttack": 2.0,
+      "worn_filtDecay": 3.0,
+      "worn_filtSustain": 0.8,
+      "worn_filtRelease": 8.0,
+      "worn_lfo1Rate": 0.005,
+      "worn_lfo1Depth": 0.07,
+      "worn_lfo2Rate": 0.003,
+      "worn_lfo2Depth": 0.04,
+      "worn_macroCharacter": 0.0,
+      "worn_macroMovement": 0.0,
+      "worn_macroCoupling": 0.5,
+      "worn_macroSpace": 0.0,
+      "worn_level": 0.75
+    }
+  },
+  "tags": [
+    "overworn",
+    "pad",
+    "deep",
+    "dark",
+    "bitter",
+    "concentrated",
+    "espresso"
+  ],
+  "description": "Coffee reduction \u2014 intense, dark, bitter edge from high maillard. The opposite of delicate."
+}

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Stratosphere",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.66,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.45,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.4,
+    "movement": 0.1,
+    "density": 0.22,
+    "space": 0.75,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.45,
+      "osmo_selectivity": 0.82,
+      "osmo_reactivity": 0.25,
+      "osmo_memory": 0.58,
+      "osmo_filterEnvAmt": 0.32,
+      "osmo_lfo1Rate": 0.03,
+      "osmo_lfo1Depth": 0.12,
+      "osmo_macroCharacter": 0.656,
+      "osmo_macroMovement": 0.12,
+      "osmo_macroCoupling": 0.45,
+      "osmo_macroSpace": 0.58
+    }
+  },
+  "tags": [
+    "osmosis",
+    "atmosphere",
+    "stratosphere",
+    "high",
+    "thin",
+    "selective"
+  ],
+  "description": "High-altitude thin air \u2014 high selectivity, medium permeability, slow reactivity. The cold thin upper atmosphere."
+}

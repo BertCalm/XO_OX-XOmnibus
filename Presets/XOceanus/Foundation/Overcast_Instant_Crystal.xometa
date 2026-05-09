@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Instant Crystal",
+  "mood": "Foundation",
+  "engines": [
+    "Overcast"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.75,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.52,
+    "movement": 0.02,
+    "density": 0.35,
+    "space": 0.62,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overcast": {
+      "cast_freezeRate": 0.8,
+      "cast_crystalSize": 0.5,
+      "cast_numPeaks": 5,
+      "cast_transition": 0,
+      "cast_latticeSnap": 0.7,
+      "cast_purity": 0.75,
+      "cast_crackle": 0.0,
+      "cast_shatterGap": 0.0,
+      "cast_stereoWidth": 0.65,
+      "cast_filterCutoff": 1200.0,
+      "cast_filterRes": 0.07,
+      "cast_ampAttack": 0.01,
+      "cast_ampDecay": 0.5,
+      "cast_ampSustain": 0.85,
+      "cast_ampRelease": 10.0,
+      "cast_lfo1Rate": 0.01,
+      "cast_lfo1Depth": 0.0,
+      "cast_lfo2Rate": 0.005,
+      "cast_lfo2Depth": 0.0,
+      "cast_level": 0.75,
+      "cast_macroCharacter": 0.0,
+      "cast_macroMovement": 0.0,
+      "cast_macroCoupling": 0.5,
+      "cast_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overcast",
+    "pad",
+    "foundation",
+    "instant",
+    "clean",
+    "flash",
+    "crystal"
+  ],
+  "description": "Transition 0 \u2014 flash freeze with no crackle. The crystal exists the moment the note is played."
+}

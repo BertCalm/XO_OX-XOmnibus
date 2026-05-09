@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Void Wash",
+  "mood": "Shadow",
+  "engines": [
+    "Overwash"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.01,
+    "MOVEMENT": 0.01,
+    "COUPLING": 0.5,
+    "SPACE": 0.92
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.01,
+    "warmth": 0.8,
+    "movement": 0.01,
+    "density": 0.1,
+    "space": 0.92,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.02,
+      "wash_viscosity": 0.99,
+      "wash_harmonics": 2,
+      "wash_diffusionTime": 100.0,
+      "wash_spreadMax": 15.0,
+      "wash_brightness": 0.01,
+      "wash_warmth": 0.8,
+      "wash_ampAttack": 10.0,
+      "wash_ampDecay": 5.0,
+      "wash_ampSustain": 0.97,
+      "wash_ampRelease": 30.0,
+      "wash_filterCutoff": 220.0,
+      "wash_filterRes": 0.02,
+      "wash_filtEnvAmount": 0.02,
+      "wash_filtAttack": 8.0,
+      "wash_filtDecay": 8.0,
+      "wash_filtSustain": 0.97,
+      "wash_filtRelease": 20.0,
+      "wash_lfo1Rate": 0.001,
+      "wash_lfo1Depth": 0.01,
+      "wash_lfo2Rate": 0.001,
+      "wash_lfo2Depth": 0.01,
+      "wash_stereoWidth": 0.35,
+      "wash_level": 0.62,
+      "wash_interference": 0.0,
+      "wash_macroCharacter": 0.0,
+      "wash_macroMovement": 0.0,
+      "wash_macroCoupling": 0.5,
+      "wash_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overwash",
+    "pad",
+    "shadow",
+    "void",
+    "still",
+    "withdrawn",
+    "minimal"
+  ],
+  "description": "Zero brightness, zero LFO depth \u2014 almost no movement. The wash at its most withdrawn. Stillness as identity."
+}

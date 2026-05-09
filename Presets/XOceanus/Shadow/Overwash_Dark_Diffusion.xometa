@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Dark Diffusion",
+  "mood": "Shadow",
+  "engines": [
+    "Overwash"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.03,
+    "MOVEMENT": 0.04,
+    "COUPLING": 0.5,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.03,
+    "warmth": 0.85,
+    "movement": 0.04,
+    "density": 0.12,
+    "space": 0.88,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.04,
+      "wash_viscosity": 0.97,
+      "wash_harmonics": 2,
+      "wash_diffusionTime": 80.0,
+      "wash_spreadMax": 25.0,
+      "wash_brightness": 0.03,
+      "wash_warmth": 0.85,
+      "wash_ampAttack": 8.0,
+      "wash_ampDecay": 5.0,
+      "wash_ampSustain": 0.96,
+      "wash_ampRelease": 28.0,
+      "wash_filterCutoff": 280.0,
+      "wash_filterRes": 0.02,
+      "wash_filtEnvAmount": 0.03,
+      "wash_filtAttack": 7.0,
+      "wash_filtDecay": 7.0,
+      "wash_filtSustain": 0.96,
+      "wash_filtRelease": 18.0,
+      "wash_lfo1Rate": 0.002,
+      "wash_lfo1Depth": 0.03,
+      "wash_lfo2Rate": 0.001,
+      "wash_lfo2Depth": 0.01,
+      "wash_stereoWidth": 0.38,
+      "wash_level": 0.66,
+      "wash_interference": 0.0,
+      "wash_macroCharacter": 0.0,
+      "wash_macroMovement": 0.0,
+      "wash_macroCoupling": 0.5,
+      "wash_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overwash",
+    "pad",
+    "shadow",
+    "dark",
+    "minimal",
+    "warm",
+    "tight"
+  ],
+  "description": "Nearly-zero brightness, maximum warmth, tight spread. The dark end of diffusion \u2014 just the fundamental spreading slowly."
+}

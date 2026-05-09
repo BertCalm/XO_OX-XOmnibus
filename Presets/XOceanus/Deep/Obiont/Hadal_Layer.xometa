@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "name": "Hadal Layer",
+  "mood": "Deep",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "pre_seance",
+  "created": "2026-05-09",
+  "description": "2D mode, Rule 22 \u2014 isolated droplets of pressure in a vast grid. Sub-bass filter (250Hz) with very low resonance (0.15) gives weight without peak. Ultra-slow evolution (0.15Hz) \u2014 each generation takes 6.7 seconds.",
+  "tags": [
+    "deep",
+    "2d",
+    "sub-bass",
+    "rule-22",
+    "vast",
+    "pre_seance"
+  ],
+  "pre_seance": true,
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 1,
+      "obnt_rule": 22,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 0.15,
+      "obnt_gridDensity": 0.4,
+      "obnt_chaos": 0.03,
+      "obnt_projection": 0.4,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 250.0,
+      "obnt_filterResonance": 0.15,
+      "obnt_attack": 1.5,
+      "obnt_decay": 3.0,
+      "obnt_sustain": 0.7,
+      "obnt_release": 5.0,
+      "obnt_velSens": 0.7,
+      "obnt_lfo1Rate": 0.01,
+      "obnt_lfo1Depth": 0.4,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.5,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": 0.3,
+      "obnt_modSrc3": 3,
+      "obnt_modDst3": 5,
+      "obnt_modAmt3": 0.2,
+      "obnt_modSrc4": 1,
+      "obnt_modDst4": 1,
+      "obnt_modAmt4": 0.15,
+      "obnt_macroChaos": 0.3,
+      "obnt_macroEvolution": 0.5,
+      "obnt_macroSpace": 0.4,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.72,
+    "movement": 0.05,
+    "density": 0.4,
+    "space": 0.95,
+    "aggression": 0.05
+  },
+  "macros": {
+    "CHAOS": 0.06,
+    "EVOLUTION": 0.03,
+    "SPACE": 0.95,
+    "COUPLING": 0.0
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Morning Haze",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overwash"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.12,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.5,
+    "SPACE": 0.68
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.82,
+    "movement": 0.06,
+    "density": 0.16,
+    "space": 0.68,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.06,
+      "wash_viscosity": 0.92,
+      "wash_harmonics": 2,
+      "wash_diffusionTime": 50.0,
+      "wash_spreadMax": 40.0,
+      "wash_brightness": 0.12,
+      "wash_warmth": 0.82,
+      "wash_ampAttack": 4.0,
+      "wash_ampDecay": 2.5,
+      "wash_ampSustain": 0.95,
+      "wash_ampRelease": 20.0,
+      "wash_filterCutoff": 500.0,
+      "wash_filterRes": 0.04,
+      "wash_filtEnvAmount": 0.08,
+      "wash_filtAttack": 3.0,
+      "wash_filtDecay": 3.0,
+      "wash_filtSustain": 0.9,
+      "wash_filtRelease": 10.0,
+      "wash_lfo1Rate": 0.004,
+      "wash_lfo1Depth": 0.08,
+      "wash_lfo2Rate": 0.002,
+      "wash_lfo2Depth": 0.04,
+      "wash_stereoWidth": 0.55,
+      "wash_level": 0.7,
+      "wash_interference": 0.0,
+      "wash_macroCharacter": 0.0,
+      "wash_macroMovement": 0.0,
+      "wash_macroCoupling": 0.5,
+      "wash_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overwash",
+    "pad",
+    "morning",
+    "haze",
+    "warm",
+    "two-harmonic",
+    "ambient"
+  ],
+  "description": "Low harmonics, maximum warmth \u2014 two partials diffusing through thick morning air. The kind of pad that exists before the world is awake."
+}

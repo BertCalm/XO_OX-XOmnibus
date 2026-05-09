@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Point of Failure",
+  "mood": "Shadow",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.26,
+    "COUPLING": 0.5,
+    "SPACE": 0.42
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.35,
+    "movement": 0.32,
+    "density": 0.55,
+    "space": 0.48,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.35,
+      "flow_accumRate": 0.88,
+      "flow_valveType": 1,
+      "flow_vesselSize": 0.42,
+      "flow_strainColor": 0.88,
+      "flow_releaseTime": 0.3,
+      "flow_whistlePitch": 0.5,
+      "flow_stereoWidth": 0.6,
+      "flow_filterCutoff": 1350.0,
+      "flow_filterRes": 0.1,
+      "flow_filtEnvAmount": 0.24,
+      "flow_ampAttack": 0.5,
+      "flow_ampDecay": 1.2,
+      "flow_ampSustain": 0.72,
+      "flow_ampRelease": 4.0,
+      "flow_filtAttack": 1.5,
+      "flow_filtDecay": 2.5,
+      "flow_filtSustain": 0.78,
+      "flow_filtRelease": 6.0,
+      "flow_lfo1Rate": 0.02,
+      "flow_lfo1Depth": 0.26,
+      "flow_lfo2Rate": 0.01,
+      "flow_lfo2Depth": 0.13,
+      "flow_level": 0.75,
+      "flow_macroCharacter": 0.0,
+      "flow_macroMovement": 0.0,
+      "flow_macroCoupling": 0.5,
+      "flow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "shadow",
+    "failure",
+    "structural",
+    "limit",
+    "extreme"
+  ],
+  "description": "Just below catastrophic \u2014 very high strain, fast accumulation, explosive valve. The instrument at its structural limit."
+}

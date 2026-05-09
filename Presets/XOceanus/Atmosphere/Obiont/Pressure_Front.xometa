@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Front",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "pre_seance",
+  "created": "2026-05-09",
+  "description": "Rule 90 \u2014 the XOR rule, creating the Sierpinski triangle fractal. At 4Hz the fractal unfolds and collapses rhythmically. Wide projection (0.75) maps the full self-similar structure to pitch \u2014 fractal harmony.",
+  "tags": [
+    "atmosphere",
+    "fractal",
+    "sierpinski",
+    "rule-90",
+    "pre_seance"
+  ],
+  "pre_seance": true,
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 90,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 4.0,
+      "obnt_gridDensity": 0.5,
+      "obnt_chaos": 0.06,
+      "obnt_projection": 0.75,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 4000.0,
+      "obnt_filterResonance": 0.25,
+      "obnt_attack": 0.12,
+      "obnt_decay": 0.9,
+      "obnt_sustain": 0.72,
+      "obnt_release": 1.8,
+      "obnt_velSens": 0.7,
+      "obnt_lfo1Rate": 0.2,
+      "obnt_lfo1Depth": 0.28,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.5,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": 0.3,
+      "obnt_modSrc3": 3,
+      "obnt_modDst3": 5,
+      "obnt_modAmt3": 0.2,
+      "obnt_modSrc4": 1,
+      "obnt_modDst4": 1,
+      "obnt_modAmt4": 0.15,
+      "obnt_macroChaos": 0.3,
+      "obnt_macroEvolution": 0.5,
+      "obnt_macroSpace": 0.4,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.4,
+    "movement": 0.38,
+    "density": 0.5,
+    "space": 0.72,
+    "aggression": 0.2
+  },
+  "macros": {
+    "CHAOS": 0.12,
+    "EVOLUTION": 0.44,
+    "SPACE": 0.72,
+    "COUPLING": 0.0
+  }
+}

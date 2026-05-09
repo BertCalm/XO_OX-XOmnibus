@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Crystal Lattice Gate",
+  "mood": "Crystalline",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.04,
+    "COUPLING": 0.3,
+    "SPACE": 0.88
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.28,
+    "warmth": 0.45,
+    "movement": 0.04,
+    "density": 0.22,
+    "space": 0.78,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.3,
+      "osmo_selectivity": 1.0,
+      "osmo_reactivity": 0.05,
+      "osmo_memory": 0.88,
+      "osmo_filterEnvAmt": 0.22,
+      "osmo_lfo1Rate": 0.01,
+      "osmo_lfo1Depth": 0.04,
+      "osmo_macroCharacter": 0.8,
+      "osmo_macroMovement": 0.04,
+      "osmo_macroCoupling": 0.3,
+      "osmo_macroSpace": 0.88
+    }
+  },
+  "tags": [
+    "osmosis",
+    "crystalline",
+    "lattice",
+    "ions",
+    "selective",
+    "crystal",
+    "diffusion"
+  ],
+  "description": "Ion diffusion through crystal lattice \u2014 maximum selectivity, minimum reactivity. Only specific ions in exact lattice positions."
+}
