@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Closed Membrane",
+  "mood": "Foundation",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.05,
+    "SPACE": 0.6
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.15,
+    "warmth": 0.6,
+    "movement": 0.05,
+    "density": 0.2,
+    "space": 0.75,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.05,
+      "osmo_selectivity": 0.5,
+      "osmo_reactivity": 0.4,
+      "osmo_memory": 0.6,
+      "osmo_filterEnvAmt": 0.2,
+      "osmo_lfo1Rate": 0.02,
+      "osmo_lfo1Depth": 0.08,
+      "osmo_macroCharacter": 0.4,
+      "osmo_macroMovement": 0.08,
+      "osmo_macroCoupling": 0.05,
+      "osmo_macroSpace": 0.6
+    }
+  },
+  "tags": [
+    "osmosis",
+    "membrane",
+    "closed",
+    "sealed",
+    "coupling",
+    "minimal"
+  ],
+  "description": "Near-zero permeability \u2014 the membrane is almost sealed. Minimal pass-through."
+}

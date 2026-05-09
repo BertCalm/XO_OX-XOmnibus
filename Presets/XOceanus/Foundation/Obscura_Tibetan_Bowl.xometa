@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Tibetan Bowl",
+  "mood": "Foundation",
+  "engines": [
+    "Obscura"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.68,
+    "warmth": 0.45,
+    "movement": 0.08,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.85,
+      "obscura_damping": 0.18,
+      "obscura_nonlinear": 0.42,
+      "obscura_excitePos": 0.5,
+      "obscura_exciteWidth": 0.22,
+      "obscura_scanWidth": 0.3,
+      "obscura_boundary": 2,
+      "obscura_sustain": 0.0,
+      "obscura_ampAttack": 0.01,
+      "obscura_ampDecay": 0.5,
+      "obscura_ampSustain": 0.0,
+      "obscura_ampRelease": 5.5,
+      "obscura_physEnvAttack": 0.01,
+      "obscura_physEnvDecay": 0.5,
+      "obscura_physEnvSustain": 0.0,
+      "obscura_physEnvRelease": 5.5,
+      "obscura_lfo1Rate": 0.04,
+      "obscura_lfo1Depth": 0.08,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Rate": 0.0,
+      "obscura_lfo2Depth": 0.0,
+      "obscura_lfo2Shape": 0,
+      "obscura_voiceMode": 2,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 3,
+      "obscura_macroCharacter": 0.3,
+      "obscura_macroMovement": 0.0,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroSpace": 0.1,
+      "obscura_level": 0.8
+    }
+  },
+  "tags": [
+    "obscura",
+    "physical",
+    "bell",
+    "bowl",
+    "tibetan",
+    "metal",
+    "struck"
+  ],
+  "description": "Standing wave modes of a singing bowl \u2014 circular chain (Periodic boundary) at high stiffness. The hammer strike loads all modes; they decay at different rates producing the characteristic beating. Nonlinearity creates the pitch-dip characteristic of real bowl metal."
+}

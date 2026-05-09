@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Shatter Dark",
+  "mood": "Shadow",
+  "engines": [
+    "Overcast"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.5,
+    "SPACE": 0.45
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.4,
+    "movement": 0.08,
+    "density": 0.14,
+    "space": 0.8,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overcast": {
+      "cast_freezeRate": 0.82,
+      "cast_crystalSize": 0.45,
+      "cast_numPeaks": 2,
+      "cast_transition": 2,
+      "cast_latticeSnap": 0.78,
+      "cast_purity": 0.85,
+      "cast_crackle": 0.6,
+      "cast_shatterGap": 0.2,
+      "cast_stereoWidth": 0.7,
+      "cast_filterCutoff": 300.0,
+      "cast_filterRes": 0.03,
+      "cast_ampAttack": 0.01,
+      "cast_ampDecay": 0.5,
+      "cast_ampSustain": 0.83,
+      "cast_ampRelease": 13.0,
+      "cast_lfo1Rate": 0.007,
+      "cast_lfo1Depth": 0.0,
+      "cast_lfo2Rate": 0.003,
+      "cast_lfo2Depth": 0.0,
+      "cast_level": 0.75,
+      "cast_macroCharacter": 0.0,
+      "cast_macroMovement": 0.0,
+      "cast_macroCoupling": 0.5,
+      "cast_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overcast",
+    "pad",
+    "shadow",
+    "shatter",
+    "long",
+    "dark",
+    "reform"
+  ],
+  "description": "Long shatter gap (200ms) with dark peaks \u2014 crystals reform slowly from darkness."
+}

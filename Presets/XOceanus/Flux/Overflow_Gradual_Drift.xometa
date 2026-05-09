@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Gradual Drift",
+  "mood": "Flux",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.16,
+    "COUPLING": 0.5,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.62,
+    "movement": 0.2,
+    "density": 0.38,
+    "space": 0.6,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.55,
+      "flow_accumRate": 0.65,
+      "flow_valveType": 0,
+      "flow_vesselSize": 0.55,
+      "flow_strainColor": 0.4,
+      "flow_releaseTime": 4.0,
+      "flow_whistlePitch": 0.5,
+      "flow_stereoWidth": 0.6,
+      "flow_filterCutoff": 950.0,
+      "flow_filterRes": 0.06,
+      "flow_filtEnvAmount": 0.16,
+      "flow_ampAttack": 1.0,
+      "flow_ampDecay": 1.8,
+      "flow_ampSustain": 0.82,
+      "flow_ampRelease": 7.0,
+      "flow_filtAttack": 1.5,
+      "flow_filtDecay": 2.5,
+      "flow_filtSustain": 0.78,
+      "flow_filtRelease": 6.0,
+      "flow_lfo1Rate": 0.013,
+      "flow_lfo1Depth": 0.16,
+      "flow_lfo2Rate": 0.006,
+      "flow_lfo2Depth": 0.08,
+      "flow_level": 0.75,
+      "flow_macroCharacter": 0.0,
+      "flow_macroMovement": 0.0,
+      "flow_macroCoupling": 0.5,
+      "flow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "flux",
+    "gradual",
+    "tire",
+    "slow-leak",
+    "drift"
+  ],
+  "description": "Gradual valve, fast accumulation, long release \u2014 the pressure releases slowly like a tire losing air."
+}

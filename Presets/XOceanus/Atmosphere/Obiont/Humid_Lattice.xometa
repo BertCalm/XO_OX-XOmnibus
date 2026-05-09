@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "name": "Humid Lattice",
+  "mood": "Atmosphere",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "pre_seance",
+  "created": "2026-05-09",
+  "description": "Rule 22 \u2014 isolated triangles that never merge, like islands in fog. 2D mode spreads isolation spatially. High grid density (0.78) but low chaos. Warm filter sweep evokes moisture rising.",
+  "tags": [
+    "atmosphere",
+    "warm",
+    "ambient",
+    "rule-22",
+    "humid",
+    "pre_seance"
+  ],
+  "pre_seance": true,
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 1,
+      "obnt_rule": 22,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 1.5,
+      "obnt_gridDensity": 0.78,
+      "obnt_chaos": 0.03,
+      "obnt_projection": 0.6,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 2000.0,
+      "obnt_filterResonance": 0.28,
+      "obnt_attack": 0.25,
+      "obnt_decay": 1.2,
+      "obnt_sustain": 0.65,
+      "obnt_release": 2.5,
+      "obnt_velSens": 0.7,
+      "obnt_lfo1Rate": 0.1,
+      "obnt_lfo1Depth": 0.3,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.55,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": 0.3,
+      "obnt_modSrc3": 3,
+      "obnt_modDst3": 5,
+      "obnt_modAmt3": 0.2,
+      "obnt_modSrc4": 1,
+      "obnt_modDst4": 1,
+      "obnt_modAmt4": 0.15,
+      "obnt_macroChaos": 0.3,
+      "obnt_macroEvolution": 0.5,
+      "obnt_macroSpace": 0.4,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.22,
+    "density": 0.6,
+    "space": 0.75,
+    "aggression": 0.1
+  },
+  "macros": {
+    "CHAOS": 0.06,
+    "EVOLUTION": 0.22,
+    "SPACE": 0.75,
+    "COUPLING": 0.0
+  }
+}

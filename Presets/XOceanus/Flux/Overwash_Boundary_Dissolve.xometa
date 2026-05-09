@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Boundary Dissolve",
+  "mood": "Flux",
+  "engines": [
+    "Overwash"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.5,
+    "SPACE": 0.58
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.58,
+    "movement": 0.22,
+    "density": 0.38,
+    "space": 0.58,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.18,
+      "wash_viscosity": 0.6,
+      "wash_harmonics": 6,
+      "wash_diffusionTime": 18.0,
+      "wash_spreadMax": 95.0,
+      "wash_brightness": 0.35,
+      "wash_warmth": 0.58,
+      "wash_ampAttack": 1.5,
+      "wash_ampDecay": 1.5,
+      "wash_ampSustain": 0.83,
+      "wash_ampRelease": 8.0,
+      "wash_filterCutoff": 1100.0,
+      "wash_filterRes": 0.07,
+      "wash_filtEnvAmount": 0.18,
+      "wash_filtAttack": 1.0,
+      "wash_filtDecay": 2.5,
+      "wash_filtSustain": 0.75,
+      "wash_filtRelease": 5.0,
+      "wash_lfo1Rate": 0.014,
+      "wash_lfo1Depth": 0.2,
+      "wash_lfo2Rate": 0.007,
+      "wash_lfo2Depth": 0.1,
+      "wash_stereoWidth": 0.68,
+      "wash_level": 0.75,
+      "wash_interference": 0.0,
+      "wash_macroCharacter": 0.0,
+      "wash_macroMovement": 0.0,
+      "wash_macroCoupling": 0.5,
+      "wash_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overwash",
+    "pad",
+    "dissolve",
+    "blur",
+    "spectral",
+    "smear",
+    "medium"
+  ],
+  "description": "Medium harmonics at low-medium viscosity \u2014 spectral boundaries blur quickly. What was two pitches becomes one smear."
+}

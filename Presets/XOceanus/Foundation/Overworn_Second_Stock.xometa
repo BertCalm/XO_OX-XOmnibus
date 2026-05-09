@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Second Stock",
+  "mood": "Foundation",
+  "engines": [
+    "Overworn"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.09,
+    "COUPLING": 0.5,
+    "SPACE": 0.28
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.6,
+    "movement": 0.09,
+    "density": 0.22,
+    "space": 0.68,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overworn": {
+      "worn_reductionRate": 0.07,
+      "worn_heat": 0.22,
+      "worn_richness": 0.28,
+      "worn_maillard": 0.08,
+      "worn_umamiDepth": 0.28,
+      "worn_concentrate": 0.18,
+      "worn_sessionTarget": 22.0,
+      "worn_sessionAge": 0.0,
+      "worn_stateReset": 0.0,
+      "worn_stereoWidth": 0.65,
+      "worn_filterCutoff": 1000.0,
+      "worn_filterRes": 0.05,
+      "worn_filtEnvAmount": 0.1,
+      "worn_ampAttack": 2.2,
+      "worn_ampDecay": 2.8,
+      "worn_ampSustain": 0.85,
+      "worn_ampRelease": 10.0,
+      "worn_filtAttack": 2.0,
+      "worn_filtDecay": 3.0,
+      "worn_filtSustain": 0.8,
+      "worn_filtRelease": 8.0,
+      "worn_lfo1Rate": 0.007,
+      "worn_lfo1Depth": 0.09,
+      "worn_lfo2Rate": 0.003,
+      "worn_lfo2Depth": 0.05,
+      "worn_macroCharacter": 0.0,
+      "worn_macroMovement": 0.0,
+      "worn_macroCoupling": 0.5,
+      "worn_macroSpace": 0.0,
+      "worn_level": 0.75
+    }
+  },
+  "tags": [
+    "overworn",
+    "pad",
+    "foundation",
+    "second",
+    "delicate",
+    "remouillage",
+    "wisdom"
+  ],
+  "description": "Remouillage \u2014 a second stock made from bones already used. Lighter, more delicate, slightly less body. The afterthought that contains wisdom."
+}

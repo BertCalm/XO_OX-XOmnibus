@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Lattice Max",
+  "mood": "Foundation",
+  "engines": [
+    "Overcast"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.55,
+    "movement": 0.02,
+    "density": 0.3,
+    "space": 0.68,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overcast": {
+      "cast_freezeRate": 0.85,
+      "cast_crystalSize": 0.5,
+      "cast_numPeaks": 5,
+      "cast_transition": 0,
+      "cast_latticeSnap": 1.0,
+      "cast_purity": 0.78,
+      "cast_crackle": 0.0,
+      "cast_shatterGap": 0.0,
+      "cast_stereoWidth": 0.65,
+      "cast_filterCutoff": 1000.0,
+      "cast_filterRes": 0.06,
+      "cast_ampAttack": 0.01,
+      "cast_ampDecay": 0.5,
+      "cast_ampSustain": 0.85,
+      "cast_ampRelease": 11.0,
+      "cast_lfo1Rate": 0.01,
+      "cast_lfo1Depth": 0.0,
+      "cast_lfo2Rate": 0.005,
+      "cast_lfo2Depth": 0.0,
+      "cast_level": 0.75,
+      "cast_macroCharacter": 0.0,
+      "cast_macroMovement": 0.0,
+      "cast_macroCoupling": 0.5,
+      "cast_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overcast",
+    "pad",
+    "foundation",
+    "lattice",
+    "ordered",
+    "harmonic",
+    "precise"
+  ],
+  "description": "Maximum lattice snap \u2014 partials snapped to exact harmonic ratios. Maximum crystalline order."
+}

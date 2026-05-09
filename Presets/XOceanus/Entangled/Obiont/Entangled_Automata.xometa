@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "name": "Entangled Automata",
+  "mood": "Entangled",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "pre_seance",
+  "created": "2026-05-09",
+  "description": "Rule 110 + ruleMorph sweeping toward Rule 126 \u2014 two of the most complex elementary rules blending into each other. The morph point (0.5) creates a hybrid rule exhibiting behaviors of neither parent. External engine can drive obnt_ruleMorph to navigate the complexity landscape.",
+  "tags": [
+    "entangled",
+    "complex",
+    "morphing",
+    "rule-110",
+    "coupling-ready",
+    "pre_seance"
+  ],
+  "pre_seance": true,
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 110,
+      "obnt_ruleMorph": 0.5,
+      "obnt_evolutionRate": 4.5,
+      "obnt_gridDensity": 0.52,
+      "obnt_chaos": 0.1,
+      "obnt_projection": 0.65,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 4500.0,
+      "obnt_filterResonance": 0.35,
+      "obnt_attack": 0.05,
+      "obnt_decay": 0.7,
+      "obnt_sustain": 0.65,
+      "obnt_release": 1.5,
+      "obnt_velSens": 0.7,
+      "obnt_lfo1Rate": 0.35,
+      "obnt_lfo1Depth": 0.25,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.5,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": 0.3,
+      "obnt_modSrc3": 3,
+      "obnt_modDst3": 5,
+      "obnt_modAmt3": 0.2,
+      "obnt_modSrc4": 1,
+      "obnt_modDst4": 5,
+      "obnt_modAmt4": 0.4,
+      "obnt_macroChaos": 0.3,
+      "obnt_macroEvolution": 0.5,
+      "obnt_macroSpace": 0.4,
+      "obnt_macroCoupling": 0.4
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.35,
+    "movement": 0.45,
+    "density": 0.52,
+    "space": 0.6,
+    "aggression": 0.22
+  },
+  "macros": {
+    "CHAOS": 0.2,
+    "EVOLUTION": 0.5,
+    "SPACE": 0.6,
+    "COUPLING": 0.4
+  }
+}

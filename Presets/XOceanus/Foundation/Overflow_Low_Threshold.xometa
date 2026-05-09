@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Low Threshold",
+  "mood": "Foundation",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.16,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.62,
+    "movement": 0.25,
+    "density": 0.38,
+    "space": 0.58,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.25,
+      "flow_accumRate": 0.6,
+      "flow_valveType": 0,
+      "flow_vesselSize": 0.5,
+      "flow_strainColor": 0.4,
+      "flow_releaseTime": 1.5,
+      "flow_whistlePitch": 0.5,
+      "flow_stereoWidth": 0.6,
+      "flow_filterCutoff": 1000.0,
+      "flow_filterRes": 0.06,
+      "flow_filtEnvAmount": 0.18,
+      "flow_ampAttack": 1.0,
+      "flow_ampDecay": 1.5,
+      "flow_ampSustain": 0.82,
+      "flow_ampRelease": 7.0,
+      "flow_filtAttack": 1.5,
+      "flow_filtDecay": 2.5,
+      "flow_filtSustain": 0.78,
+      "flow_filtRelease": 6.0,
+      "flow_lfo1Rate": 0.012,
+      "flow_lfo1Depth": 0.16,
+      "flow_lfo2Rate": 0.006,
+      "flow_lfo2Depth": 0.08,
+      "flow_level": 0.75,
+      "flow_macroCharacter": 0.0,
+      "flow_macroMovement": 0.0,
+      "flow_macroCoupling": 0.5,
+      "flow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "foundation",
+    "sensitive",
+    "hair-trigger",
+    "gentle",
+    "reactive"
+  ],
+  "description": "Hair-trigger valve \u2014 very low threshold, accumulation builds quickly. Even gentle playing triggers events."
+}

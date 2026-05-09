@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Escort Formation",
+  "mood": "Entangled",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-05-09",
+  "description": "Two ospreys flying in synchronized escort formation. High sympathyAmount (0.8) links their resonators. COUPLING macro drives synchronization depth.",
+  "tags": [
+    "entangled",
+    "formation",
+    "synchronized",
+    "coupling-ready"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "parameters": {
+    "Osprey": {
+      "osprey_ampAttack": 0.025,
+      "osprey_ampDecay": 0.5,
+      "osprey_ampSustain": 0.55,
+      "osprey_ampRelease": 1.2,
+      "osprey_brine": 0.1,
+      "osprey_coherence": 0.7,
+      "osprey_depth": 0.5,
+      "osprey_filterTilt": 0.5,
+      "osprey_foam": 0.15,
+      "osprey_fog": 0.2,
+      "osprey_harborVerb": 0.35,
+      "osprey_hull": 0.4,
+      "osprey_macroCharacter": 0.5,
+      "osprey_macroCoupling": 0.45,
+      "osprey_macroMovement": 0.5,
+      "osprey_macroSpace": 0.55,
+      "osprey_resonatorBright": 0.4,
+      "osprey_resonatorDecay": 2.0,
+      "osprey_seaState": 0.35,
+      "osprey_shore": 0.5,
+      "osprey_swellPeriod": 8.0,
+      "osprey_sympathyAmount": 0.8,
+      "osprey_windDir": 0.3
+    }
+  },
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.45,
+    "movement": 0.5,
+    "density": 0.52,
+    "space": 0.55,
+    "aggression": 0.3
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.5,
+    "COUPLING": 0.45,
+    "SPACE": 0.55
+  }
+}

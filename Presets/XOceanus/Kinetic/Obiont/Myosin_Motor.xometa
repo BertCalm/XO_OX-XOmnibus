@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Myosin Motor",
+  "mood": "Kinetic",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "pre_seance",
+  "created": "2026-05-09",
+  "description": "Rule 150 at fast evolution (20Hz) \u2014 symmetric XOR produces motor-like rhythmic pulsing. Each generation's population count oscillates predictably. At 20Hz this becomes audible as a carrier frequency \u2014 a cellular engine running at full RPM.",
+  "tags": [
+    "kinetic",
+    "motor",
+    "rhythmic",
+    "rule-150",
+    "pre_seance"
+  ],
+  "pre_seance": true,
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 150,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 20.0,
+      "obnt_gridDensity": 0.45,
+      "obnt_chaos": 0.06,
+      "obnt_projection": 0.25,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 4500.0,
+      "obnt_filterResonance": 0.5,
+      "obnt_attack": 0.002,
+      "obnt_decay": 0.12,
+      "obnt_sustain": 0.0,
+      "obnt_release": 0.18,
+      "obnt_velSens": 0.7,
+      "obnt_lfo1Rate": 5.0,
+      "obnt_lfo1Depth": 0.25,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.5,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": 0.3,
+      "obnt_modSrc3": 3,
+      "obnt_modDst3": 5,
+      "obnt_modAmt3": 0.2,
+      "obnt_modSrc4": 1,
+      "obnt_modDst4": 1,
+      "obnt_modAmt4": 0.15,
+      "obnt_macroChaos": 0.3,
+      "obnt_macroEvolution": 0.5,
+      "obnt_macroSpace": 0.4,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.75,
+    "warmth": 0.2,
+    "movement": 0.92,
+    "density": 0.42,
+    "space": 0.3,
+    "aggression": 0.68
+  },
+  "macros": {
+    "CHAOS": 0.12,
+    "EVOLUTION": 0.95,
+    "SPACE": 0.3,
+    "COUPLING": 0.0
+  }
+}

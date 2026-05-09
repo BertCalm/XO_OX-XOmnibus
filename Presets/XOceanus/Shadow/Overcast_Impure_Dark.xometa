@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Impure Dark",
+  "mood": "Shadow",
+  "engines": [
+    "Overcast"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.15,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.38,
+    "movement": 0.06,
+    "density": 0.18,
+    "space": 0.78,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Overcast": {
+      "cast_freezeRate": 0.78,
+      "cast_crystalSize": 0.5,
+      "cast_numPeaks": 3,
+      "cast_transition": 1,
+      "cast_latticeSnap": 0.4,
+      "cast_purity": 0.15,
+      "cast_crackle": 1.0,
+      "cast_shatterGap": 0.0,
+      "cast_stereoWidth": 0.68,
+      "cast_filterCutoff": 380.0,
+      "cast_filterRes": 0.04,
+      "cast_ampAttack": 0.01,
+      "cast_ampDecay": 0.5,
+      "cast_ampSustain": 0.83,
+      "cast_ampRelease": 12.0,
+      "cast_lfo1Rate": 0.008,
+      "cast_lfo1Depth": 0.0,
+      "cast_lfo2Rate": 0.004,
+      "cast_lfo2Depth": 0.0,
+      "cast_level": 0.75,
+      "cast_macroCharacter": 0.0,
+      "cast_macroMovement": 0.0,
+      "cast_macroCoupling": 0.5,
+      "cast_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overcast",
+    "pad",
+    "shadow",
+    "impure",
+    "dirty",
+    "noisy",
+    "dark"
+  ],
+  "description": "Low purity, low brightness, maximum crackle \u2014 a dark dirty crystal with noisy formation."
+}

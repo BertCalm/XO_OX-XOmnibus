@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Frozen Color",
+  "mood": "Prism",
+  "engines": [
+    "Overcast"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.82,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.5,
+    "SPACE": 0.48
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.4,
+    "movement": 0.03,
+    "density": 0.48,
+    "space": 0.62,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overcast": {
+      "cast_freezeRate": 0.85,
+      "cast_crystalSize": 0.48,
+      "cast_numPeaks": 6,
+      "cast_transition": 0,
+      "cast_latticeSnap": 0.85,
+      "cast_purity": 0.82,
+      "cast_crackle": 0.3,
+      "cast_shatterGap": 0.0,
+      "cast_stereoWidth": 0.7,
+      "cast_filterCutoff": 1600.0,
+      "cast_filterRes": 0.09,
+      "cast_ampAttack": 0.01,
+      "cast_ampDecay": 0.5,
+      "cast_ampSustain": 0.82,
+      "cast_ampRelease": 11.0,
+      "cast_lfo1Rate": 0.008,
+      "cast_lfo1Depth": 0.0,
+      "cast_lfo2Rate": 0.004,
+      "cast_lfo2Depth": 0.0,
+      "cast_level": 0.75,
+      "cast_macroCharacter": 0.0,
+      "cast_macroMovement": 0.0,
+      "cast_macroCoupling": 0.5,
+      "cast_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overcast",
+    "pad",
+    "prism",
+    "bright",
+    "frozen",
+    "instant",
+    "lattice"
+  ],
+  "description": "Instant transition, many peaks, medium crackle, high lattice. Bright frozen color."
+}

@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Cold Zone",
+  "mood": "Submerged",
+  "engines": [
+    "Overwash"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.04,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.5,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.04,
+    "warmth": 0.35,
+    "movement": 0.06,
+    "density": 0.16,
+    "space": 0.85,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.06,
+      "wash_viscosity": 0.91,
+      "wash_harmonics": 6,
+      "wash_diffusionTime": 70.0,
+      "wash_spreadMax": 40.0,
+      "wash_brightness": 0.04,
+      "wash_warmth": 0.35,
+      "wash_ampAttack": 7.0,
+      "wash_ampDecay": 4.0,
+      "wash_ampSustain": 0.94,
+      "wash_ampRelease": 22.0,
+      "wash_filterCutoff": 300.0,
+      "wash_filterRes": 0.03,
+      "wash_filtEnvAmount": 0.04,
+      "wash_filtAttack": 6.0,
+      "wash_filtDecay": 6.0,
+      "wash_filtSustain": 0.94,
+      "wash_filtRelease": 15.0,
+      "wash_lfo1Rate": 0.002,
+      "wash_lfo1Depth": 0.04,
+      "wash_lfo2Rate": 0.001,
+      "wash_lfo2Depth": 0.02,
+      "wash_stereoWidth": 0.42,
+      "wash_level": 0.65,
+      "wash_interference": 0.0,
+      "wash_macroCharacter": 0.0,
+      "wash_macroMovement": 0.0,
+      "wash_macroCoupling": 0.5,
+      "wash_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overwash",
+    "pad",
+    "cold",
+    "thermocline",
+    "submerged",
+    "dark",
+    "minimal"
+  ],
+  "description": "Very low warmth and brightness \u2014 the cold thermocline. Six harmonics barely moving."
+}

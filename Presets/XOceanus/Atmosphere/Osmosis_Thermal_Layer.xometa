@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Thermal Layer",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.54,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.4,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.65,
+    "movement": 0.08,
+    "density": 0.25,
+    "space": 0.78,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.4,
+      "osmo_selectivity": 0.68,
+      "osmo_reactivity": 0.18,
+      "osmo_memory": 0.8,
+      "osmo_filterEnvAmt": 0.28,
+      "osmo_lfo1Rate": 0.02,
+      "osmo_lfo1Depth": 0.08,
+      "osmo_macroCharacter": 0.544,
+      "osmo_macroMovement": 0.08,
+      "osmo_macroCoupling": 0.4,
+      "osmo_macroSpace": 0.8
+    }
+  },
+  "tags": [
+    "osmosis",
+    "atmosphere",
+    "thermal",
+    "inversion",
+    "trapped",
+    "slow"
+  ],
+  "description": "Thermal inversion layer \u2014 medium selectivity, high memory, slow reactivity. The warm air pocket that traps sound below it."
+}

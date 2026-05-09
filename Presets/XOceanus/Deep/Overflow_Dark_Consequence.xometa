@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Dark Consequence",
+  "mood": "Deep",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.24,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.5,
+    "SPACE": 0.72
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.76,
+    "movement": 0.09,
+    "density": 0.4,
+    "space": 0.85,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.65,
+      "flow_accumRate": 0.35,
+      "flow_valveType": 0,
+      "flow_vesselSize": 0.72,
+      "flow_strainColor": 0.24,
+      "flow_releaseTime": 3.0,
+      "flow_whistlePitch": 0.5,
+      "flow_stereoWidth": 0.6,
+      "flow_filterCutoff": 400.0,
+      "flow_filterRes": 0.03,
+      "flow_filtEnvAmount": 0.08,
+      "flow_ampAttack": 3.0,
+      "flow_ampDecay": 3.5,
+      "flow_ampSustain": 0.91,
+      "flow_ampRelease": 15.0,
+      "flow_filtAttack": 1.5,
+      "flow_filtDecay": 2.5,
+      "flow_filtSustain": 0.78,
+      "flow_filtRelease": 6.0,
+      "flow_lfo1Rate": 0.004,
+      "flow_lfo1Depth": 0.06,
+      "flow_lfo2Rate": 0.002,
+      "flow_lfo2Depth": 0.03,
+      "flow_level": 0.75,
+      "flow_macroCharacter": 0.0,
+      "flow_macroMovement": 0.0,
+      "flow_macroCoupling": 0.5,
+      "flow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "deep",
+    "consequence",
+    "dark",
+    "heavy",
+    "low"
+  ],
+  "description": "The consequence pad for dark playing \u2014 dark, slow, heavy. When the player commits to the lowest register."
+}

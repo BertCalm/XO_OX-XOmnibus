@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Ice Lattice",
+  "mood": "Crystalline",
+  "engines": [
+    "Overcast"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.4,
+    "movement": 0.03,
+    "density": 0.32,
+    "space": 0.68,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Overcast": {
+      "cast_freezeRate": 0.8,
+      "cast_crystalSize": 0.5,
+      "cast_numPeaks": 5,
+      "cast_transition": 1,
+      "cast_latticeSnap": 0.8,
+      "cast_purity": 0.85,
+      "cast_crackle": 0.4,
+      "cast_shatterGap": 0.0,
+      "cast_stereoWidth": 0.67,
+      "cast_filterCutoff": 1200.0,
+      "cast_filterRes": 0.07,
+      "cast_ampAttack": 0.01,
+      "cast_ampDecay": 0.5,
+      "cast_ampSustain": 0.84,
+      "cast_ampRelease": 11.0,
+      "cast_lfo1Rate": 0.009,
+      "cast_lfo1Depth": 0.0,
+      "cast_lfo2Rate": 0.004,
+      "cast_lfo2Depth": 0.0,
+      "cast_level": 0.75,
+      "cast_macroCharacter": 0.0,
+      "cast_macroMovement": 0.0,
+      "cast_macroCoupling": 0.5,
+      "cast_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overcast",
+    "pad",
+    "crystalline",
+    "ice",
+    "hexagonal",
+    "water",
+    "freezing"
+  ],
+  "description": "Hexagonal ice \u2014 medium crystal size, medium peaks, high purity, subtle crackle. Water freezing at natural pace."
+}

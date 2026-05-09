@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Aromatic Reduction",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overworn"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.5,
+    "SPACE": 0.32
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.6,
+    "movement": 0.14,
+    "density": 0.32,
+    "space": 0.6,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Overworn": {
+      "worn_reductionRate": 0.12,
+      "worn_heat": 0.35,
+      "worn_richness": 0.42,
+      "worn_maillard": 0.18,
+      "worn_umamiDepth": 0.32,
+      "worn_concentrate": 0.28,
+      "worn_sessionTarget": 18.0,
+      "worn_sessionAge": 0.0,
+      "worn_stateReset": 0.0,
+      "worn_stereoWidth": 0.65,
+      "worn_filterCutoff": 1100.0,
+      "worn_filterRes": 0.06,
+      "worn_filtEnvAmount": 0.15,
+      "worn_ampAttack": 1.8,
+      "worn_ampDecay": 2.2,
+      "worn_ampSustain": 0.84,
+      "worn_ampRelease": 9.0,
+      "worn_filtAttack": 2.0,
+      "worn_filtDecay": 3.0,
+      "worn_filtSustain": 0.8,
+      "worn_filtRelease": 8.0,
+      "worn_lfo1Rate": 0.011,
+      "worn_lfo1Depth": 0.14,
+      "worn_lfo2Rate": 0.005,
+      "worn_lfo2Depth": 0.07,
+      "worn_macroCharacter": 0.0,
+      "worn_macroMovement": 0.0,
+      "worn_macroCoupling": 0.5,
+      "worn_macroSpace": 0.0,
+      "worn_level": 0.75
+    }
+  },
+  "tags": [
+    "overworn",
+    "pad",
+    "atmosphere",
+    "aromatic",
+    "herbs",
+    "fresh",
+    "medium"
+  ],
+  "description": "Herb and aromatics reduction \u2014 medium warmth, elevated brightness because of volatile aromatics still present. Fresh reduction."
+}

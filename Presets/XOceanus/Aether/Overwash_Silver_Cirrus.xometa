@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Silver Cirrus",
+  "mood": "Aether",
+  "engines": [
+    "Overwash"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.6,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.5,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.28,
+    "movement": 0.15,
+    "density": 0.22,
+    "space": 0.75,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.16,
+      "wash_viscosity": 0.65,
+      "wash_harmonics": 4,
+      "wash_diffusionTime": 18.0,
+      "wash_spreadMax": 120.0,
+      "wash_brightness": 0.6,
+      "wash_warmth": 0.28,
+      "wash_ampAttack": 1.5,
+      "wash_ampDecay": 1.5,
+      "wash_ampSustain": 0.8,
+      "wash_ampRelease": 8.0,
+      "wash_filterCutoff": 2000.0,
+      "wash_filterRes": 0.08,
+      "wash_filtEnvAmount": 0.22,
+      "wash_filtAttack": 1.5,
+      "wash_filtDecay": 2.0,
+      "wash_filtSustain": 0.7,
+      "wash_filtRelease": 5.0,
+      "wash_lfo1Rate": 0.01,
+      "wash_lfo1Depth": 0.16,
+      "wash_lfo2Rate": 0.005,
+      "wash_lfo2Depth": 0.08,
+      "wash_stereoWidth": 0.78,
+      "wash_level": 0.7,
+      "wash_interference": 0.0,
+      "wash_macroCharacter": 0.0,
+      "wash_macroMovement": 0.0,
+      "wash_macroCoupling": 0.5,
+      "wash_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overwash",
+    "pad",
+    "cirrus",
+    "silver",
+    "bright",
+    "thin",
+    "aether"
+  ],
+  "description": "The cirrus cloud \u2014 high, thin, and bright. Four harmonics at medium viscosity, brightness high, warmth low."
+}

@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "name": "Crease Memory",
+  "mood": "Aether",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-05-09",
+  "description": "Paper folded many times remembers each crease. Old folds echo in the tone as harmonic ghosts \u2014 the deeper the fold angle (foldDepth 0.72), the louder the memory sings. Very slow LFO1 (0.06Hz) breathes over a long sustain. Operation 0 (sine fold) keeps the tone warm and continuous.",
+  "tags": [
+    "aether",
+    "memory",
+    "harmonic",
+    "warm",
+    "pad"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.65,
+      "origami_foldDepth": 0.72,
+      "origami_foldCount": 3,
+      "origami_operation": 0,
+      "origami_freeze": 0.0,
+      "origami_foldEnvAttack": 0.25,
+      "origami_foldEnvDecay": 1.2,
+      "origami_foldEnvSustain": 0.65,
+      "origami_foldEnvRelease": 2.5,
+      "origami_ampAttack": 0.2,
+      "origami_ampDecay": 0.8,
+      "origami_ampSustain": 0.72,
+      "origami_ampRelease": 2.8,
+      "origami_level": 0.78,
+      "origami_glide": 0.0,
+      "origami_lfo1Rate": 0.06,
+      "origami_lfo1Depth": 0.3,
+      "origami_lfo1Shape": 0,
+      "origami_lfo2Rate": 0.12,
+      "origami_lfo2Depth": 0.18,
+      "origami_lfo2Shape": 0,
+      "origami_macroFold": 0.65,
+      "origami_macroMotion": 0.18,
+      "origami_macroCoupling": 0.0,
+      "origami_macroSpace": 0.78
+    }
+  },
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.65,
+    "movement": 0.18,
+    "density": 0.45,
+    "space": 0.78,
+    "aggression": 0.1
+  },
+  "macros": {
+    "FOLD": 0.65,
+    "MOTION": 0.18,
+    "COUPLING": 0.0,
+    "SPACE": 0.78
+  }
+}

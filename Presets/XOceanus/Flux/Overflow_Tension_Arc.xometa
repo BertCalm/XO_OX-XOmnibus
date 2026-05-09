@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Tension Arc",
+  "mood": "Flux",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.5,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.52,
+    "movement": 0.18,
+    "density": 0.42,
+    "space": 0.58,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.75,
+      "flow_accumRate": 0.35,
+      "flow_valveType": 1,
+      "flow_vesselSize": 0.52,
+      "flow_strainColor": 0.48,
+      "flow_releaseTime": 0.6,
+      "flow_whistlePitch": 0.5,
+      "flow_stereoWidth": 0.6,
+      "flow_filterCutoff": 1100.0,
+      "flow_filterRes": 0.07,
+      "flow_filtEnvAmount": 0.18,
+      "flow_ampAttack": 1.5,
+      "flow_ampDecay": 2.0,
+      "flow_ampSustain": 0.82,
+      "flow_ampRelease": 8.0,
+      "flow_filtAttack": 1.5,
+      "flow_filtDecay": 2.5,
+      "flow_filtSustain": 0.78,
+      "flow_filtRelease": 6.0,
+      "flow_lfo1Rate": 0.01,
+      "flow_lfo1Depth": 0.14,
+      "flow_lfo2Rate": 0.005,
+      "flow_lfo2Depth": 0.07,
+      "flow_level": 0.75,
+      "flow_macroCharacter": 0.0,
+      "flow_macroMovement": 0.0,
+      "flow_macroCoupling": 0.5,
+      "flow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "flux",
+    "arc",
+    "tension",
+    "buildup",
+    "explosive"
+  ],
+  "description": "The arc of pressure \u2014 slow accumulation, high threshold, explosive when it finally blows."
+}

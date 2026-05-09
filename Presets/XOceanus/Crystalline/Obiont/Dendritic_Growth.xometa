@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Dendritic Growth",
+  "mood": "Crystalline",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "pre_seance",
+  "created": "2026-05-09",
+  "description": "Rule 33 \u2014 produces dendritic (tree-branch) patterns like frost crystal formation. Low grid density (0.3) gives dendrites room to branch. Projection 0.7 maps branching distance to pitch \u2014 higher notes grow longer arms.",
+  "tags": [
+    "crystalline",
+    "dendritic",
+    "frost",
+    "rule-33",
+    "pre_seance"
+  ],
+  "pre_seance": true,
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 33,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 3.0,
+      "obnt_gridDensity": 0.3,
+      "obnt_chaos": 0.05,
+      "obnt_projection": 0.7,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 4200.0,
+      "obnt_filterResonance": 0.5,
+      "obnt_attack": 0.04,
+      "obnt_decay": 1.0,
+      "obnt_sustain": 0.55,
+      "obnt_release": 2.0,
+      "obnt_velSens": 0.7,
+      "obnt_lfo1Rate": 0.18,
+      "obnt_lfo1Depth": 0.22,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.5,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": 0.3,
+      "obnt_modSrc3": 3,
+      "obnt_modDst3": 5,
+      "obnt_modAmt3": 0.2,
+      "obnt_modSrc4": 1,
+      "obnt_modDst4": 1,
+      "obnt_modAmt4": 0.15,
+      "obnt_macroChaos": 0.3,
+      "obnt_macroEvolution": 0.5,
+      "obnt_macroSpace": 0.4,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.18,
+    "movement": 0.2,
+    "density": 0.35,
+    "space": 0.65,
+    "aggression": 0.12
+  },
+  "macros": {
+    "CHAOS": 0.1,
+    "EVOLUTION": 0.32,
+    "SPACE": 0.65,
+    "COUPLING": 0.0
+  }
+}
