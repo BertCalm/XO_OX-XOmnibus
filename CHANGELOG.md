@@ -11,6 +11,29 @@ re-titled when a version is cut.
 
 ## [Unreleased]
 
+*(next development cycle)*
+
+---
+
+## [1.0.0-beta.1] — 2026-05-12
+
+### V1 Ship Campaign (Days 1–11)
+
+- Fleet locked at 74 V1 engines (12 culled to V1.1 per #1543/#1556)
+- ~1,175+ presets added across 27 engines to clear 50-preset floor (Day 8 #1558–#1561)
+- Outwit D001 velocity-to-timbre routing fixed (#1589)
+- Obiont pre_seance metadata backfill (#1562)
+- Press-kit and marketing fleet-count corrections (#1571)
+- A/B compare diff overlay (#1538), Cmd+K palette (#1525), Save As dialog (#1523)
+- Mod visualization wiring (#1532)
+- Ship-blocker bundle: Tooltips sweep, RNG seed sweep, 96kHz buffer fallback, P36 series (#1540)
+- Fleet auval PASS: 44.1k/48k/96k/192k (Day 10)
+- Behavioral smoke: 29/30 PASS (Outwit D001 resolved Day 11)
+
+### Known Limitations
+
+- Code signing: V1 ships unsigned-beta-mode (Apple signing deferred to V1.1, see #1444)
+
 ### Added
 - OBIONT engine (`obnt_` prefix) — Cellular automata oscillator; 1D Wolfram CA spatial projection + cosine readout + 8-voice poly + anti-extinction
 - OKEANOS engine (`okan_` prefix) — Cardamom warmth synth
