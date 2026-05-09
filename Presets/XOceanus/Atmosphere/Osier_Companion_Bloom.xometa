@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OSIER \u2014 growthMode on (1.0), growthTime 15s. The quartet enters one voice at a time, establishing companion bonds slowly.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.65,
+    "movement": 0.25,
+    "density": 0.6,
+    "space": 0.72,
+    "aggression": 0.06
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Companion Bloom",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.1,
+      "osier_decay": 0.65,
+      "osier_sustain": 0.86,
+      "osier_release": 1.5,
+      "osier_cutoff": 5000.0,
+      "osier_resonance": 0.08,
+      "osier_filterEnvAmt": 0.11,
+      "osier_detune": 5.0,
+      "osier_companion": 0.6,
+      "osier_intimacy": 0.65,
+      "osier_brightness": 0.4,
+      "osier_vibratoRate": 4.8,
+      "osier_vibratoDepth": 0.17,
+      "osier_lfo1Rate": 0.3,
+      "osier_lfo1Depth": 0.05,
+      "osier_lfo2Rate": 0.04,
+      "osier_lfo2Depth": 0.04,
+      "osier_growthMode": 1.0,
+      "osier_growthTime": 15.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "osier",
+    "chamber",
+    "atmosphere",
+    "growth",
+    "bloom",
+    "companion"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
+  }
+}

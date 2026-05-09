@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 salt-preserved gut string tone. Slap exciter, moderate curing, aged wood.",
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.72,
+    "movement": 0.18,
+    "density": 0.62,
+    "space": 0.2,
+    "aggression": 0.32
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Foundation",
+  "name": "Salt Cured",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 2,
+      "oaken_bowPressure": 0.45,
+      "oaken_stringTension": 0.35,
+      "oaken_bodyDepth": 0.55,
+      "oaken_woodAge": 0.8,
+      "oaken_room": 0.2,
+      "oaken_brightness": 2800.0,
+      "oaken_damping": 0.28,
+      "oaken_curingRate": 0.55,
+      "oaken_filterEnvAmount": 0.35,
+      "oaken_attack": 0.001,
+      "oaken_decay": 0.5,
+      "oaken_sustain": 0.6,
+      "oaken_release": 0.3,
+      "oaken_gravity": 0.5,
+      "oaken_glide": 0.0,
+      "oaken_lfo1Rate": 0.1,
+      "oaken_lfo1Depth": 0.08,
+      "oaken_lfo2Rate": 0.05,
+      "oaken_lfo2Depth": 0.06,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroCoupling": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "oaken",
+    "bass",
+    "slap",
+    "foundation",
+    "salt-cured",
+    "percussive"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.32,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.2,
+    "SPACE": 0.2
+  }
+}

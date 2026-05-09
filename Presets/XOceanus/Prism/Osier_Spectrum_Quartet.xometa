@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OSIER \u2014 high brightness (0.58), high resonance (0.18), wide detune (9 cents). The quartet as a prism \u2014 four voices refracting.",
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.5,
+    "movement": 0.25,
+    "density": 0.58,
+    "space": 0.68,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Prism",
+  "name": "Spectrum Quartet",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.04,
+      "osier_decay": 0.35,
+      "osier_sustain": 0.78,
+      "osier_release": 0.7,
+      "osier_cutoff": 7200.0,
+      "osier_resonance": 0.18,
+      "osier_filterEnvAmt": 0.22,
+      "osier_detune": 9.0,
+      "osier_companion": 0.42,
+      "osier_intimacy": 0.45,
+      "osier_brightness": 0.58,
+      "osier_vibratoRate": 5.5,
+      "osier_vibratoDepth": 0.14,
+      "osier_lfo1Rate": 0.3,
+      "osier_lfo1Depth": 0.05,
+      "osier_lfo2Rate": 0.04,
+      "osier_lfo2Depth": 0.04,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 8.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "osier",
+    "chamber",
+    "prism",
+    "bright",
+    "spectrum",
+    "wide"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.68
+  }
+}

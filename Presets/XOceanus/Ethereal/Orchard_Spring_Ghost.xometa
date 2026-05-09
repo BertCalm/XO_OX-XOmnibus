@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "ORCHARD \u2014 Spring (0), maximum release (6s), growthMode (35s). The memory of spring strings floating forward.",
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.6,
+    "movement": 0.12,
+    "density": 0.72,
+    "space": 0.92,
+    "aggression": 0.04
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Ethereal",
+  "name": "Spring Ghost",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.35,
+      "orch_decay": 2.8,
+      "orch_sustain": 0.95,
+      "orch_release": 6.0,
+      "orch_cutoff": 5500.0,
+      "orch_resonance": 0.07,
+      "orch_filterEnvAmt": 0.08,
+      "orch_detune": 9.0,
+      "orch_ensembleWidth": 0.92,
+      "orch_formant": 0.55,
+      "orch_vibratoRate": 4.8,
+      "orch_vibratoDepth": 0.2,
+      "orch_season": 0,
+      "orch_brightness": 0.5,
+      "orch_warmth": 0.58,
+      "orch_growthMode": 1.0,
+      "orch_growthTime": 35.0,
+      "orch_lfo2Rate": 0.04,
+      "orch_lfo2Depth": 0.05,
+      "orch_lfo1Rate": 0.2,
+      "orch_lfo1Depth": 0.06,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "orchard",
+    "strings",
+    "ethereal",
+    "spring",
+    "ghost",
+    "growth-mode"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.27,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.92
+  }
+}

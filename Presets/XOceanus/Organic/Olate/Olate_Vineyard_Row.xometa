@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OLATE \u2014 the terroir is the soil. West Coast (0.22), moderate fermentation (0.5), natural growth rate.",
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.75,
+    "movement": 0.25,
+    "density": 0.62,
+    "space": 0.38,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Olate"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Organic",
+  "name": "Vineyard Row",
+  "parameters": {
+    "Olate": {
+      "olate_oscMix": 0.25,
+      "olate_pulseWidth": 0.5,
+      "olate_cutoff": 2600.0,
+      "olate_resonance": 0.28,
+      "olate_drive": 0.38,
+      "olate_filterEnvAmount": 0.42,
+      "olate_filterAttack": 0.003,
+      "olate_filterDecay": 0.45,
+      "olate_vintage": 0.45,
+      "olate_warmth": 0.68,
+      "olate_terroir": 0.22,
+      "olate_ageRate": 0.5,
+      "olate_attack": 0.008,
+      "olate_decay": 0.8,
+      "olate_sustain": 0.78,
+      "olate_release": 0.55,
+      "olate_glide": 0.0,
+      "olate_gravity": 0.45,
+      "olate_lfo1Rate": 0.08,
+      "olate_lfo1Depth": 0.07,
+      "olate_lfo2Rate": 0.05,
+      "olate_lfo2Depth": 0.06,
+      "olate_macroCharacter": 0.0,
+      "olate_macroMovement": 0.0,
+      "olate_macroCoupling": 0.0,
+      "olate_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "olate",
+    "bass",
+    "organic",
+    "terroir",
+    "west-coast",
+    "vineyard"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.2,
+    "SPACE": 0.38
+  }
+}

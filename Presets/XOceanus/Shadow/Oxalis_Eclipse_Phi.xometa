@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OXALIS \u2014 phi=1.0 (maximum), low cutoff (2800 Hz), slow attack. Full phyllotaxis in eclipse \u2014 alien and dark.",
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.5,
+    "movement": 0.2,
+    "density": 0.65,
+    "space": 0.72,
+    "aggression": 0.07
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Shadow",
+  "name": "Eclipse Phi",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.18,
+      "oxal_decay": 0.65,
+      "oxal_sustain": 0.88,
+      "oxal_release": 2.5,
+      "oxal_cutoff": 2800.0,
+      "oxal_resonance": 0.08,
+      "oxal_filterEnvAmt": 0.1,
+      "oxal_phi": 1.0,
+      "oxal_spread": 0.72,
+      "oxal_symmetry": 0.7,
+      "oxal_brightness": 0.22,
+      "oxal_vibratoRate": 4.0,
+      "oxal_vibratoDepth": 0.22,
+      "oxal_growthMode": 0.0,
+      "oxal_growthTime": 25.0,
+      "oxal_bendRange": 2.0,
+      "oxal_macroCharacter": 0.0,
+      "oxal_macroMovement": 0.0,
+      "oxal_macroCoupling": 0.0,
+      "oxal_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "oxalis",
+    "strings",
+    "shadow",
+    "phi",
+    "dark",
+    "eclipse"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.23,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
+  }
+}

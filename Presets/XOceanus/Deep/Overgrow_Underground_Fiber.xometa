@@ -1,0 +1,73 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OVERGROW \u2014 very dark (brightness 0.25), high feedback, slow. The mycorrhizal fiber network below the garden.",
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.72,
+    "movement": 0.14,
+    "density": 0.72,
+    "space": 0.5,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Deep",
+  "name": "Underground Fiber",
+  "parameters": {
+    "Overgrow": {
+      "grow_damping": 0.6,
+      "grow_feedback": 0.98,
+      "grow_bowNoise": 0.2,
+      "grow_wildness": 0.2,
+      "grow_cutoff": 2800.0,
+      "grow_resonance": 0.09,
+      "grow_filterEnvAmt": 0.12,
+      "grow_brightness": 0.25,
+      "grow_attack": 0.04,
+      "grow_decay": 0.9,
+      "grow_sustain": 0.75,
+      "grow_release": 2.0,
+      "grow_vibratoRate": 4.0,
+      "grow_vibratoDepth": 0.1,
+      "grow_growthMode": 0.0,
+      "grow_growthTime": 22.0,
+      "grow_bendRange": 2.0,
+      "grow_lfo1Rate": 0.1,
+      "grow_lfo1Depth": 0.1,
+      "grow_lfo2Rate": 0.5,
+      "grow_lfo2Depth": 0.0,
+      "grow_macroCharacter": 0.0,
+      "grow_macroMovement": 0.0,
+      "grow_macroCoupling": 0.0,
+      "grow_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "overgrow",
+    "strings",
+    "deep",
+    "dark",
+    "sub",
+    "mycelium"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.23,
+    "MOVEMENT": 0.14,
+    "COUPLING": 0.2,
+    "SPACE": 0.5
+  }
+}

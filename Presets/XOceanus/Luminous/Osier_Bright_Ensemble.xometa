@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OSIER \u2014 high brightness (0.58), wide detune (9 cents), warm companion. The ensemble in full light.",
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.58,
+    "movement": 0.22,
+    "density": 0.62,
+    "space": 0.7,
+    "aggression": 0.07
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Luminous",
+  "name": "Bright Ensemble",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.07,
+      "osier_decay": 0.5,
+      "osier_sustain": 0.84,
+      "osier_release": 1.1,
+      "osier_cutoff": 6500.0,
+      "osier_resonance": 0.09,
+      "osier_filterEnvAmt": 0.14,
+      "osier_detune": 9.0,
+      "osier_companion": 0.55,
+      "osier_intimacy": 0.6,
+      "osier_brightness": 0.58,
+      "osier_vibratoRate": 5.2,
+      "osier_vibratoDepth": 0.17,
+      "osier_lfo1Rate": 0.3,
+      "osier_lfo1Depth": 0.05,
+      "osier_lfo2Rate": 0.04,
+      "osier_lfo2Depth": 0.04,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 10.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "osier",
+    "chamber",
+    "luminous",
+    "bright",
+    "ensemble"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.34,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.2,
+    "SPACE": 0.7
+  }
+}

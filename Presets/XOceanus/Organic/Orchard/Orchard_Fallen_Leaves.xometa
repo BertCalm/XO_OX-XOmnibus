@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "ORCHARD \u2014 Autumn season (2), long release (4s), high warmth, slow LFO. The strings as falling leaves.",
+  "dna": {
+    "brightness": 0.36,
+    "warmth": 0.7,
+    "movement": 0.16,
+    "density": 0.72,
+    "space": 0.82,
+    "aggression": 0.06
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Organic",
+  "name": "Fallen Leaves",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.2,
+      "orch_decay": 2.0,
+      "orch_sustain": 0.88,
+      "orch_release": 4.0,
+      "orch_cutoff": 4600.0,
+      "orch_resonance": 0.07,
+      "orch_filterEnvAmt": 0.09,
+      "orch_detune": 10.0,
+      "orch_ensembleWidth": 0.85,
+      "orch_formant": 0.52,
+      "orch_vibratoRate": 4.6,
+      "orch_vibratoDepth": 0.2,
+      "orch_season": 2,
+      "orch_brightness": 0.36,
+      "orch_warmth": 0.67,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 24.0,
+      "orch_lfo2Rate": 0.02,
+      "orch_lfo2Depth": 0.05,
+      "orch_lfo1Rate": 0.2,
+      "orch_lfo1Depth": 0.06,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "orchard",
+    "strings",
+    "organic",
+    "autumn",
+    "falling",
+    "warm"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.16,
+    "COUPLING": 0.2,
+    "SPACE": 0.82
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OSIER \u2014 Bass voice territory: slow vibrato, dark brightness (0.32), low detune (3.5 cents). The sage in the herb bed.",
+  "dna": {
+    "brightness": 0.32,
+    "warmth": 0.7,
+    "movement": 0.17,
+    "density": 0.68,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Organic",
+  "name": "Sage Deep",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.12,
+      "osier_decay": 0.7,
+      "osier_sustain": 0.88,
+      "osier_release": 1.8,
+      "osier_cutoff": 4200.0,
+      "osier_resonance": 0.07,
+      "osier_filterEnvAmt": 0.1,
+      "osier_detune": 3.5,
+      "osier_companion": 0.55,
+      "osier_intimacy": 0.62,
+      "osier_brightness": 0.32,
+      "osier_vibratoRate": 4.0,
+      "osier_vibratoDepth": 0.16,
+      "osier_lfo1Rate": 0.3,
+      "osier_lfo1Depth": 0.05,
+      "osier_lfo2Rate": 0.04,
+      "osier_lfo2Depth": 0.04,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 12.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "osier",
+    "chamber",
+    "organic",
+    "bass",
+    "dark",
+    "sage"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.17,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OGRE \u2014 the slow exhalation of clay. Very slow tectonic (0.005 Hz), moderate depth (12 cents), long sustain.",
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.85,
+    "movement": 0.2,
+    "density": 0.85,
+    "space": 0.38,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Ogre"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Clay Breath",
+  "parameters": {
+    "Ogre": {
+      "ogre_oscMix": 0.12,
+      "ogre_drive": 0.22,
+      "ogre_rootDepth": 0.82,
+      "ogre_bodyResonance": 0.35,
+      "ogre_brightness": 1800.0,
+      "ogre_density": 0.68,
+      "ogre_soil": 0.3,
+      "ogre_tectonicRate": 0.005,
+      "ogre_tectonicDepth": 12.0,
+      "ogre_attack": 0.02,
+      "ogre_decay": 2.0,
+      "ogre_sustain": 0.88,
+      "ogre_release": 1.5,
+      "ogre_filterEnvAmount": 0.18,
+      "ogre_glide": 0.0,
+      "ogre_gravity": 0.5,
+      "ogre_lfo1Rate": 0.006,
+      "ogre_lfo1Depth": 0.1,
+      "ogre_lfo2Rate": 0.2,
+      "ogre_lfo2Depth": 0.05,
+      "ogre_macroCharacter": 0.0,
+      "ogre_macroMovement": 0.0,
+      "ogre_macroCoupling": 0.0,
+      "ogre_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "ogre",
+    "bass",
+    "sub",
+    "atmosphere",
+    "tectonic",
+    "clay",
+    "slow"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.38
+  }
+}

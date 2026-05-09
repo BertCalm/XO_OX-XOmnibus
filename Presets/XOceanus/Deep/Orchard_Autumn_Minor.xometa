@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "ORCHARD \u2014 Autumn (2), dark, warm, slow LFO2 (0.02 Hz). The melancholic autumn string passage.",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.72,
+    "movement": 0.15,
+    "density": 0.75,
+    "space": 0.85,
+    "aggression": 0.06
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Deep",
+  "name": "Autumn Minor",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.22,
+      "orch_decay": 2.0,
+      "orch_sustain": 0.9,
+      "orch_release": 3.5,
+      "orch_cutoff": 4000.0,
+      "orch_resonance": 0.07,
+      "orch_filterEnvAmt": 0.09,
+      "orch_detune": 10.0,
+      "orch_ensembleWidth": 0.85,
+      "orch_formant": 0.58,
+      "orch_vibratoRate": 4.6,
+      "orch_vibratoDepth": 0.18,
+      "orch_season": 2,
+      "orch_brightness": 0.3,
+      "orch_warmth": 0.72,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 24.0,
+      "orch_lfo2Rate": 0.02,
+      "orch_lfo2Depth": 0.06,
+      "orch_lfo1Rate": 0.2,
+      "orch_lfo1Depth": 0.06,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "orchard",
+    "strings",
+    "deep",
+    "autumn",
+    "minor",
+    "melancholic"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.2,
+    "SPACE": 0.85
+  }
+}
