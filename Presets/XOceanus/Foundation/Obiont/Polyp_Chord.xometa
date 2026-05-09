@@ -85,5 +85,6 @@
     "EVOLUTION": 0.35,
     "SPACE": 0.52,
     "COUPLING": 0.2
-  }
+  },
+  "pre_seance": true
 }
