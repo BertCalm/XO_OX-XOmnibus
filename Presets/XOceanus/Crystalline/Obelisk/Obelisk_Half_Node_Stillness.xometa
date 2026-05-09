@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Half Node Stillness",
+  "mood": "Crystalline",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Position 0.25 — the quarter-node, where every fourth mode is maximally silenced. The resulting harmonic series: 1, 2, 3, 5, 6, 7, 9... creates that pure crystalline quality of quartal voicing in stone. Low thermal drift preserves the purity.",
+  "tags": ["stone", "crystalline", "prepared", "glass", "quartal", "kitchen"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.18,
+    "movement": 0.1,
+    "density": 0.4,
+    "space": 0.72,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.52,
+      "obel_stoneTone": 0.55,
+      "obel_brightness": 5500.0,
+      "obel_damping": 0.08,
+      "obel_decay": 8.5,
+      "obel_hfNoise": 0.1,
+      "obel_hardness": 0.22,
+      "obel_prepType": 3,
+      "obel_prepPosition": 0.25,
+      "obel_prepDepth": 0.82,
+      "obel_filterEnvAmount": 0.15,
+      "obel_thermalDrift": 0.06,
+      "obel_bendRange": 2,
+      "obel_release": 4.0,
+      "obel_macroStone": 0.42,
+      "obel_macroPrep": 0.7,
+      "obel_macroCoupling": 0.1,
+      "obel_macroSpace": 0.68,
+      "obel_lfo1Rate": 0.02,
+      "obel_lfo1Depth": 0.03,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.04,
+      "obel_lfo2Depth": 0.12,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "STONE": 0.42,
+    "PREPARATION": 0.7,
+    "COUPLING": 0.1,
+    "SPACE": 0.68
+  }
+}

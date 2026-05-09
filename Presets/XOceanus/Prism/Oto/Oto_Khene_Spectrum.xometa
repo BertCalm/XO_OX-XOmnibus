@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Khene Spectrum",
+  "mood": "Prism",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene with LFO sweeping filter and moderate competition — the spectral content of the chord changing constantly as some pipes lose and others gain breath. Moderate cluster, moderate buzz. The prism created by the physical breath competition rather than electronic modulation: pure breath physics generating spectral flux.",
+  "tags": ["khene", "prism", "spectrum", "breath", "competition", "physical"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.52,
+    "movement": 0.55,
+    "density": 0.58,
+    "space": 0.52,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.55,
+      "oto_chiff": 0.55,
+      "oto_detune": 0.08,
+      "oto_buzz": 0.25,
+      "oto_pressure": 0.45,
+      "oto_crosstalk": 0.5,
+      "oto_filterCutoff": 6000.0,
+      "oto_filterRes": 0.3,
+      "oto_attack": 0.035,
+      "oto_decay": 0.35,
+      "oto_sustain": 0.75,
+      "oto_release": 0.22,
+      "oto_lfo1Rate": 1.8,
+      "oto_lfo1Depth": 0.18,
+      "oto_competition": 0.55
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.18,
+    "SPACE": 0.52
+  }
+}

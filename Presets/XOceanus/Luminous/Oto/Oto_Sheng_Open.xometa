@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Sheng Open",
+  "mood": "Luminous",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sheng at maximum filter cutoff, moderate cluster for the full chord — the Chinese instrument at its most open and resonant. No competition, minimal buzz, chiff present to articulate notes. The concert sheng in a recital hall, every pipe singing at full amplitude. Luminous and declarative.",
+  "tags": ["sheng", "luminous", "open", "concert", "resonant", "declarative"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.88,
+    "warmth": 0.45,
+    "movement": 0.22,
+    "density": 0.5,
+    "space": 0.65,
+    "aggression": 0.18
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 1,
+      "oto_cluster": 0.55,
+      "oto_chiff": 0.45,
+      "oto_detune": 0.025,
+      "oto_buzz": 0.08,
+      "oto_pressure": 0.08,
+      "oto_crosstalk": 0.1,
+      "oto_filterCutoff": 16000.0,
+      "oto_filterRes": 0.1,
+      "oto_attack": 0.008,
+      "oto_decay": 0.35,
+      "oto_sustain": 0.9,
+      "oto_release": 0.25,
+      "oto_lfo1Rate": 4.5,
+      "oto_lfo1Depth": 0.07,
+      "oto_competition": 0.0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.12,
+    "SPACE": 0.65
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Khene Clear",
+  "mood": "Foundation",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Khene at foundation settings — the Southeast Asian free-reed instrument in its most honest voice. Minimal cluster density, low buzz, clean filter. Zero competition. The traditional melody instrument of Laos and Thailand, playing a single phrase clearly before ornamentation begins.",
+  "tags": ["khene", "foundation", "clear", "southeast-asian", "traditional", "clean"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.6,
+    "warmth": 0.5,
+    "movement": 0.18,
+    "density": 0.35,
+    "space": 0.5,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 2,
+      "oto_cluster": 0.2,
+      "oto_chiff": 0.35,
+      "oto_detune": 0.02,
+      "oto_buzz": 0.05,
+      "oto_pressure": 0.15,
+      "oto_crosstalk": 0.05,
+      "oto_filterCutoff": 8000.0,
+      "oto_filterRes": 0.12,
+      "oto_attack": 0.015,
+      "oto_decay": 0.3,
+      "oto_sustain": 0.85,
+      "oto_release": 0.2,
+      "oto_lfo1Rate": 4.0,
+      "oto_lfo1Depth": 0.06,
+      "oto_competition": 0.0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.45,
+    "MOVEMENT": 0.18,
+    "COUPLING": 0.12,
+    "SPACE": 0.5
+  }
+}

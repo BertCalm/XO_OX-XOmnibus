@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Bright Wire",
+  "mood": "Crystalline",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Maximum hardness, maximum brightness, minimum caramel — copper reduced to its wire. No warmth coloring, no body depth, no sympathetic haze. The string itself, crystallized. LFO2 adds just enough caramel movement to keep it alive without warming it. The note as a fact rather than a feeling.",
+  "tags": ["copper", "crystalline", "bright", "clean", "wire", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.85,
+    "warmth": 0.2,
+    "movement": 0.12,
+    "density": 0.3,
+    "space": 0.45,
+    "aggression": 0.25
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.92,
+      "ochre_hardness": 0.92,
+      "ochre_bodyType": 0,
+      "ochre_bodyDepth": 0.15,
+      "ochre_brightness": 10000.0,
+      "ochre_damping": 0.4,
+      "ochre_decay": 1.8,
+      "ochre_caramel": 0.05,
+      "ochre_sympathy": 0.15,
+      "ochre_hfCharacter": 0.7,
+      "ochre_thermalDrift": 0.05,
+      "ochre_filterEnvAmount": 0.55,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.1,
+      "ochre_lfo1Depth": 0.04,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.3,
+      "ochre_lfo2Depth": 0.12,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.8,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.1,
+    "SPACE": 0.42
+  }
+}

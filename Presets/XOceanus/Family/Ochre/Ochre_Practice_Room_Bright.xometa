@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "name": "Practice Room Bright",
+  "mood": "Family",
+  "engines": ["Ochre"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Practice room body type (0) with high conductivity — the small upright piano in a school music room, copper strings vibrating fast and responsive. Low caramel keeps it honest. High sympathetic resonance brings in the neighbors through the wall. Bright, immediate, communal.",
+  "tags": ["copper", "family", "practice", "bright", "sympathetic", "kitchen"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.65,
+    "warmth": 0.5,
+    "movement": 0.28,
+    "density": 0.42,
+    "space": 0.48,
+    "aggression": 0.15
+  },
+  "parameters": {
+    "Ochre": {
+      "ochre_conductivity": 0.85,
+      "ochre_hardness": 0.55,
+      "ochre_bodyType": 0,
+      "ochre_bodyDepth": 0.5,
+      "ochre_brightness": 9000.0,
+      "ochre_damping": 0.28,
+      "ochre_decay": 2.5,
+      "ochre_caramel": 0.18,
+      "ochre_sympathy": 0.55,
+      "ochre_hfCharacter": 0.35,
+      "ochre_thermalDrift": 0.22,
+      "ochre_filterEnvAmount": 0.42,
+      "ochre_bendRange": 2.0,
+      "ochre_lfo1Rate": 0.12,
+      "ochre_lfo1Depth": 0.1,
+      "ochre_lfo1Shape": 0,
+      "ochre_lfo2Rate": 0.1,
+      "ochre_lfo2Depth": 0.28,
+      "ochre_lfo2Shape": 1
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.55,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.15,
+    "SPACE": 0.45
+  }
+}

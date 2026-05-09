@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Tango Spectrum",
+  "mood": "Prism",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bandoneon with both LFOs active at contrasting rates — LFO1 fast tremolo, LFO2 slow formant sweep. Each note catches the prism at a different phase, arriving with a different tonal color. The instrument Piazzolla used to make the accordion speak in impossible colors. Every chord its own distinct timbre.",
+  "tags": ["bandoneon", "prism", "tango", "spectral", "lfo", "colorful"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.55,
+    "movement": 0.58,
+    "density": 0.6,
+    "space": 0.5,
+    "aggression": 0.38
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 2,
+      "oleg_buzz": 0.2,
+      "oleg_brightness": 5500.0,
+      "oleg_drone": 0.25,
+      "oleg_bellows": 0.72,
+      "oleg_detune": 12.0,
+      "oleg_formant": 0.55,
+      "oleg_attack": 0.03,
+      "oleg_release": 0.18,
+      "oleg_filterEnvAmt": 0.42,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.02,
+      "oleg_cassottoDepth": 0.5,
+      "oleg_buzzThreshold": 0.5,
+      "oleg_wheelSpeed": 0.55,
+      "oleg_droneInterval1": -12,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.52,
+      "oleg_macroMovement": 0.58,
+      "oleg_macroCoupling": 0.18,
+      "oleg_macroSpace": 0.5,
+      "oleg_lfo1Rate": 5.0,
+      "oleg_lfo1Depth": 0.12,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.18,
+      "oleg_lfo2Depth": 0.3,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.52,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.18,
+    "SPACE": 0.5
+  }
+}

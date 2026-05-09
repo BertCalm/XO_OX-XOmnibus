@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Sho Distance",
+  "mood": "Ethereal",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Sho heard at great distance — filter cutoff dramatically reduced, cluster at maximum for the full aitake chord. Zero competition, zero buzz. The sound of the instrument is no longer its specific character but only the shape of the breath through multiple reeds, arriving after the ceremony has already ended.",
+  "tags": ["sho", "ethereal", "distance", "filtered", "aitake", "ceremony"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.55,
+    "movement": 0.1,
+    "density": 0.72,
+    "space": 0.9,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 0,
+      "oto_cluster": 0.88,
+      "oto_chiff": 0.2,
+      "oto_detune": 0.04,
+      "oto_buzz": 0.0,
+      "oto_pressure": 0.05,
+      "oto_crosstalk": 0.2,
+      "oto_filterCutoff": 1800.0,
+      "oto_filterRes": 0.2,
+      "oto_attack": 0.2,
+      "oto_decay": 0.5,
+      "oto_sustain": 0.7,
+      "oto_release": 0.5,
+      "oto_lfo1Rate": 0.5,
+      "oto_lfo1Depth": 0.05,
+      "oto_competition": 0.0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.25,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.12,
+    "SPACE": 0.9
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Cassotto Drift",
+  "mood": "Flux",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bayan with LFO2 slowly sweeping cassotto depth — the internal resonance chamber opening and closing over time. Notes begin bright and gradually warm, or start warm and clear. Neither state is the real state. The accordion searching for its own voice over the course of a performance.",
+  "tags": ["bayan", "flux", "cassotto", "drift", "evolving"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.6,
+    "movement": 0.45,
+    "density": 0.58,
+    "space": 0.48,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.1,
+      "oleg_brightness": 5500.0,
+      "oleg_drone": 0.15,
+      "oleg_bellows": 0.68,
+      "oleg_detune": 10.0,
+      "oleg_formant": 0.5,
+      "oleg_attack": 0.03,
+      "oleg_release": 0.15,
+      "oleg_filterEnvAmt": 0.35,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.01,
+      "oleg_cassottoDepth": 0.5,
+      "oleg_buzzThreshold": 0.6,
+      "oleg_wheelSpeed": 0.5,
+      "oleg_droneInterval1": -7,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.5,
+      "oleg_macroMovement": 0.45,
+      "oleg_macroCoupling": 0.15,
+      "oleg_macroSpace": 0.48,
+      "oleg_lfo1Rate": 3.5,
+      "oleg_lfo1Depth": 0.08,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.06,
+      "oleg_lfo2Depth": 0.55,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.45,
+    "COUPLING": 0.15,
+    "SPACE": 0.48
+  }
+}
