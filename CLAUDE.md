@@ -11,7 +11,7 @@ and mutate into sounds impossible with any single synth. **<!-- ENGINE_COUNT -->
 
 - **Coupling:** Cross-engine modulation via MegaCouplingMatrix (15 coupling types incl. KnotTopology + TriangularCoupling)
 - **PlaySurface:** 4-zone unified playing interface (Pad/Fretless/Drum modes)
-- **Presets:** 19,859 active factory presets in `.xometa` format, 16 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic, Shadow), 6D Sonic DNA
+- **Presets:** 14,267 active factory presets across the 74-engine V1 fleet (`.xometa` format), 16 mood categories (Foundation, Atmosphere, Entangled, Prism, Flux, Aether, Family, Submerged, Coupling, Crystalline, Deep, Ethereal, Kinetic, Luminous, Organic, Shadow), 6D Sonic DNA
 - **Formats:** AU, Standalone (macOS); AUv3, Standalone (iOS); VST3 (v2)
 - **Design:** Gallery Model — dark mode default. Engine accent colors frame the interface.
 
