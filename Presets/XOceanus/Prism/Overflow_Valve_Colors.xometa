@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Valve Colors",
+  "mood": "Prism",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.85,
+    "MOVEMENT": 0.19,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.52,
+    "warmth": 0.48,
+    "movement": 0.25,
+    "density": 0.4,
+    "space": 0.55,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.48,
+      "flow_accumRate": 0.65,
+      "flow_valveType": 0,
+      "flow_vesselSize": 0.5,
+      "flow_strainColor": 0.85,
+      "flow_releaseTime": 1.8,
+      "flow_whistlePitch": 0.5,
+      "flow_stereoWidth": 0.6,
+      "flow_filterCutoff": 1250.0,
+      "flow_filterRes": 0.08,
+      "flow_filtEnvAmount": 0.2,
+      "flow_ampAttack": 0.8,
+      "flow_ampDecay": 1.5,
+      "flow_ampSustain": 0.8,
+      "flow_ampRelease": 6.0,
+      "flow_filtAttack": 1.5,
+      "flow_filtDecay": 2.5,
+      "flow_filtSustain": 0.78,
+      "flow_filtRelease": 6.0,
+      "flow_lfo1Rate": 0.015,
+      "flow_lfo1Depth": 0.19,
+      "flow_lfo2Rate": 0.007,
+      "flow_lfo2Depth": 0.09,
+      "flow_level": 0.75,
+      "flow_macroCharacter": 0.0,
+      "flow_macroMovement": 0.0,
+      "flow_macroCoupling": 0.5,
+      "flow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "prism",
+    "valve",
+    "colorful",
+    "events",
+    "defining"
+  ],
+  "description": "Medium threshold, fast accumulation, maximum strain color. The valve events define the color."
+}

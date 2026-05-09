@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Skin Layer",
+  "mood": "Organic",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.35,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.22,
+    "warmth": 0.65,
+    "movement": 0.1,
+    "density": 0.28,
+    "space": 0.7,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.35,
+      "osmo_selectivity": 0.62,
+      "osmo_reactivity": 0.28,
+      "osmo_memory": 0.55,
+      "osmo_filterEnvAmt": 0.28,
+      "osmo_lfo1Rate": 0.03,
+      "osmo_lfo1Depth": 0.1,
+      "osmo_macroCharacter": 0.496,
+      "osmo_macroMovement": 0.1,
+      "osmo_macroCoupling": 0.35,
+      "osmo_macroSpace": 0.55
+    }
+  },
+  "tags": [
+    "osmosis",
+    "organic",
+    "skin",
+    "biological",
+    "slow",
+    "exchange",
+    "body"
+  ],
+  "description": "Biological skin \u2014 medium selectivity, slow reactivity, medium memory. The slow exchange across the body boundary."
+}

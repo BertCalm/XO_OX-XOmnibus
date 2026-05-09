@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Necrosis Pattern",
+  "mood": "Shadow",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "pre_seance",
+  "created": "2026-05-09",
+  "description": "Rule 18 \u2014 the dying edge rule. Active cells collapse inward every generation. Long release (2.4s) lets the decay hiss out. Filter closed (800Hz) with high resonance creates a sub-cave tone. Chaos 0.04 \u2014 near-silent entropy, a pattern that murders itself slowly.",
+  "tags": [
+    "shadow",
+    "dark",
+    "decay",
+    "rule-18",
+    "pre_seance"
+  ],
+  "pre_seance": true,
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 18,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 1.2,
+      "obnt_gridDensity": 0.38,
+      "obnt_chaos": 0.04,
+      "obnt_projection": 0.3,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 800.0,
+      "obnt_filterResonance": 0.62,
+      "obnt_attack": 0.08,
+      "obnt_decay": 1.2,
+      "obnt_sustain": 0.3,
+      "obnt_release": 2.4,
+      "obnt_velSens": 0.7,
+      "obnt_lfo1Rate": 0.08,
+      "obnt_lfo1Depth": 0.18,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.5,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": 0.3,
+      "obnt_modSrc3": 3,
+      "obnt_modDst3": 5,
+      "obnt_modAmt3": 0.2,
+      "obnt_modSrc4": 1,
+      "obnt_modDst4": 1,
+      "obnt_modAmt4": 0.15,
+      "obnt_macroChaos": 0.3,
+      "obnt_macroEvolution": 0.5,
+      "obnt_macroSpace": 0.4,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.35,
+    "movement": 0.22,
+    "density": 0.55,
+    "space": 0.65,
+    "aggression": 0.28
+  },
+  "macros": {
+    "CHAOS": 0.08,
+    "EVOLUTION": 0.24,
+    "SPACE": 0.65,
+    "COUPLING": 0.0
+  }
+}

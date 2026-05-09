@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Abyss Pressure",
+  "mood": "Deep",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.22,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.5,
+    "SPACE": 0.85
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.8,
+    "movement": 0.07,
+    "density": 0.5,
+    "space": 0.88,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.9,
+      "flow_accumRate": 0.22,
+      "flow_valveType": 0,
+      "flow_vesselSize": 0.85,
+      "flow_strainColor": 0.22,
+      "flow_releaseTime": 5.0,
+      "flow_whistlePitch": 0.5,
+      "flow_stereoWidth": 0.6,
+      "flow_filterCutoff": 350.0,
+      "flow_filterRes": 0.03,
+      "flow_filtEnvAmount": 0.07,
+      "flow_ampAttack": 4.5,
+      "flow_ampDecay": 4.0,
+      "flow_ampSustain": 0.93,
+      "flow_ampRelease": 18.0,
+      "flow_filtAttack": 1.5,
+      "flow_filtDecay": 2.5,
+      "flow_filtSustain": 0.78,
+      "flow_filtRelease": 6.0,
+      "flow_lfo1Rate": 0.003,
+      "flow_lfo1Depth": 0.05,
+      "flow_lfo2Rate": 0.001,
+      "flow_lfo2Depth": 0.03,
+      "flow_level": 0.75,
+      "flow_macroCharacter": 0.0,
+      "flow_macroMovement": 0.0,
+      "flow_macroCoupling": 0.5,
+      "flow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "deep",
+    "abyss",
+    "weight",
+    "dark",
+    "pressure"
+  ],
+  "description": "Near-zero brightness, maximum vessel size. The pressure of the deepest ocean zone \u2014 incomprehensible weight."
+}

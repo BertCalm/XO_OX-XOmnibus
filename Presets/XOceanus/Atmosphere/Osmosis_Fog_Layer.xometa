@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Fog Layer",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.48,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.32,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.62,
+    "movement": 0.12,
+    "density": 0.28,
+    "space": 0.72,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.32,
+      "osmo_selectivity": 0.6,
+      "osmo_reactivity": 0.3,
+      "osmo_memory": 0.55,
+      "osmo_filterEnvAmt": 0.3,
+      "osmo_lfo1Rate": 0.03,
+      "osmo_lfo1Depth": 0.12,
+      "osmo_macroCharacter": 0.48,
+      "osmo_macroMovement": 0.12,
+      "osmo_macroCoupling": 0.32,
+      "osmo_macroSpace": 0.55
+    }
+  },
+  "tags": [
+    "osmosis",
+    "atmosphere",
+    "fog",
+    "diffuse",
+    "muffled",
+    "slow"
+  ],
+  "description": "Dense fog membrane \u2014 lower permeability, medium selectivity, slow reactivity. Muffling and diffusing."
+}

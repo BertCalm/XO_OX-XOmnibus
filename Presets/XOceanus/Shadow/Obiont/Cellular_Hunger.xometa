@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "name": "Cellular Hunger",
+  "mood": "Shadow",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "pre_seance",
+  "created": "2026-05-09",
+  "description": "Rule 73 \u2014 sustained local memory that slowly consumes neighbors. 2D mode brings spatial hunger patterns. Resonant filter (0.72) at 1400Hz gives each consumed cell a metallic click-hiss.",
+  "tags": [
+    "shadow",
+    "hungry",
+    "consuming",
+    "rule-73",
+    "pre_seance"
+  ],
+  "pre_seance": true,
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 1,
+      "obnt_rule": 73,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 7.0,
+      "obnt_gridDensity": 0.6,
+      "obnt_chaos": 0.12,
+      "obnt_projection": 0.55,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 1400.0,
+      "obnt_filterResonance": 0.72,
+      "obnt_attack": 0.005,
+      "obnt_decay": 0.55,
+      "obnt_sustain": 0.4,
+      "obnt_release": 1.2,
+      "obnt_velSens": 0.7,
+      "obnt_lfo1Rate": 0.6,
+      "obnt_lfo1Depth": 0.22,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.5,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": 0.3,
+      "obnt_modSrc3": 3,
+      "obnt_modDst3": 5,
+      "obnt_modAmt3": 0.2,
+      "obnt_modSrc4": 1,
+      "obnt_modDst4": 1,
+      "obnt_modAmt4": 0.15,
+      "obnt_macroChaos": 0.3,
+      "obnt_macroEvolution": 0.5,
+      "obnt_macroSpace": 0.4,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.3,
+    "movement": 0.55,
+    "density": 0.65,
+    "space": 0.5,
+    "aggression": 0.65
+  },
+  "macros": {
+    "CHAOS": 0.24,
+    "EVOLUTION": 0.52,
+    "SPACE": 0.5,
+    "COUPLING": 0.0
+  }
+}

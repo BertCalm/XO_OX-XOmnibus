@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Reed Organ Pipe",
+  "mood": "Aether",
+  "engines": [
+    "Obscura"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.0,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.0,
+    "SPACE": 0.2
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.38,
+    "warmth": 0.55,
+    "movement": 0.04,
+    "density": 0.3,
+    "space": 0.72,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.42,
+      "obscura_damping": 0.14,
+      "obscura_nonlinear": 0.05,
+      "obscura_excitePos": 0.5,
+      "obscura_exciteWidth": 0.22,
+      "obscura_scanWidth": 0.52,
+      "obscura_boundary": 1,
+      "obscura_sustain": 0.0,
+      "obscura_ampAttack": 0.01,
+      "obscura_ampDecay": 0.4,
+      "obscura_ampSustain": 0.0,
+      "obscura_ampRelease": 3.0,
+      "obscura_physEnvAttack": 0.01,
+      "obscura_physEnvDecay": 0.4,
+      "obscura_physEnvSustain": 0.0,
+      "obscura_physEnvRelease": 3.0,
+      "obscura_lfo1Rate": 0.04,
+      "obscura_lfo1Depth": 0.08,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Rate": 0.0,
+      "obscura_lfo2Depth": 0.0,
+      "obscura_lfo2Shape": 0,
+      "obscura_voiceMode": 2,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 3,
+      "obscura_macroCharacter": 0.0,
+      "obscura_macroMovement": 0.1,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroSpace": 0.2,
+      "obscura_level": 0.8
+    }
+  },
+  "tags": [
+    "obscura",
+    "physical",
+    "organ",
+    "pipe",
+    "reed",
+    "hollow",
+    "aether"
+  ],
+  "description": "Resonant reed organ pipe \u2014 Free boundary (open-ended resonant cavity). Medium stiffness. The pipe resonates with the fundamental and odd harmonics (Free boundary: 1f, 3f, 5f). Low sustain because the pipe is driven by a reed outside the model \u2014 the pipe resonance decays when not re-excited. The hollow character of open pipe ends."
+}

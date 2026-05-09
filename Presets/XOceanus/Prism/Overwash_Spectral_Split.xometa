@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Spectral Split",
+  "mood": "Prism",
+  "engines": [
+    "Overwash"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.7,
+    "MOVEMENT": 0.35,
+    "COUPLING": 0.5,
+    "SPACE": 0.52
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.7,
+    "warmth": 0.38,
+    "movement": 0.35,
+    "density": 0.55,
+    "space": 0.52,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.28,
+      "wash_viscosity": 0.42,
+      "wash_harmonics": 16,
+      "wash_diffusionTime": 8.0,
+      "wash_spreadMax": 200.0,
+      "wash_brightness": 0.7,
+      "wash_warmth": 0.38,
+      "wash_ampAttack": 0.5,
+      "wash_ampDecay": 1.0,
+      "wash_ampSustain": 0.78,
+      "wash_ampRelease": 5.0,
+      "wash_filterCutoff": 2500.0,
+      "wash_filterRes": 0.12,
+      "wash_filtEnvAmount": 0.3,
+      "wash_filtAttack": 0.5,
+      "wash_filtDecay": 1.5,
+      "wash_filtSustain": 0.68,
+      "wash_filtRelease": 3.5,
+      "wash_lfo1Rate": 0.025,
+      "wash_lfo1Depth": 0.28,
+      "wash_lfo2Rate": 0.012,
+      "wash_lfo2Depth": 0.15,
+      "wash_stereoWidth": 0.85,
+      "wash_level": 0.76,
+      "wash_interference": 0.0,
+      "wash_macroCharacter": 0.0,
+      "wash_macroMovement": 0.0,
+      "wash_macroCoupling": 0.5,
+      "wash_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overwash",
+    "pad",
+    "spectral",
+    "split",
+    "prism",
+    "maximum",
+    "wide"
+  ],
+  "description": "High harmonics at fast diffusion \u2014 the prism at maximum. 16 harmonics spreading to 200Hz maximum."
+}

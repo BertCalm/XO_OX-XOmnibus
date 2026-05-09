@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Dawn Patrol",
+  "mood": "Luminous",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-05-09",
+  "description": "First flight of dawn \u2014 warm early morning light. Shore 0.45 (coastal), low sea state (0.2), warm filterTilt (0.45). Long resonatorDecay (3.5). Open sky ahead.",
+  "tags": [
+    "luminous",
+    "dawn",
+    "morning",
+    "warm"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "parameters": {
+    "Osprey": {
+      "osprey_ampAttack": 0.08,
+      "osprey_ampDecay": 0.7,
+      "osprey_ampSustain": 0.65,
+      "osprey_ampRelease": 2.0,
+      "osprey_brine": 0.1,
+      "osprey_coherence": 0.5,
+      "osprey_depth": 0.5,
+      "osprey_filterTilt": 0.45,
+      "osprey_foam": 0.15,
+      "osprey_fog": 0.15,
+      "osprey_harborVerb": 0.4,
+      "osprey_hull": 0.4,
+      "osprey_macroCharacter": 0.5,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroMovement": 0.3,
+      "osprey_macroSpace": 0.72,
+      "osprey_resonatorBright": 0.5,
+      "osprey_resonatorDecay": 3.5,
+      "osprey_seaState": 0.2,
+      "osprey_shore": 0.45,
+      "osprey_swellPeriod": 8.0,
+      "osprey_sympathyAmount": 0.35,
+      "osprey_windDir": 0.3
+    }
+  },
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.52,
+    "movement": 0.3,
+    "density": 0.42,
+    "space": 0.72,
+    "aggression": 0.18
+  },
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.0,
+    "SPACE": 0.72
+  }
+}

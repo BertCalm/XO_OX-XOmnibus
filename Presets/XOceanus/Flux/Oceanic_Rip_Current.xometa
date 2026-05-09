@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Rip Current",
+  "mood": "Flux",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-05-09",
+  "description": "Rip current \u2014 fast, narrow, dangerous. Low separation (0.2) slams the swarm together, high scatter (0.65) and low damping (0.1) let the current run unchecked. Waveform 1 (saw). Percussive envelope.",
+  "tags": [
+    "flux",
+    "rip",
+    "energetic",
+    "dangerous"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "parameters": {
+    "Oceanic": {
+      "ocean_alignment": 0.8,
+      "ocean_cohesion": 0.7,
+      "ocean_scatter": 0.65,
+      "ocean_separation": 0.2,
+      "ocean_damping": 0.1,
+      "ocean_tether": 0.2,
+      "ocean_subflocks": 4,
+      "ocean_waveform": 1,
+      "ocean_voiceMode": 1,
+      "ocean_glide": 0.0,
+      "ocean_ampAttack": 0.005,
+      "ocean_ampDecay": 0.3,
+      "ocean_ampSustain": 0.5,
+      "ocean_ampRelease": 0.8,
+      "ocean_swarmEnvAttack": 0.01,
+      "ocean_swarmEnvDecay": 0.2,
+      "ocean_swarmEnvSustain": 0.4,
+      "ocean_swarmEnvRelease": 0.6,
+      "ocean_lfo1Rate": 1.5,
+      "ocean_lfo1Depth": 0.45,
+      "ocean_lfo1Shape": 1,
+      "ocean_lfo2Rate": 2.5,
+      "ocean_lfo2Depth": 0.3,
+      "ocean_lfo2Shape": 2,
+      "ocean_macroCharacter": 0.78,
+      "ocean_macroMovement": 0.82,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroSpace": 0.35
+    }
+  },
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.3,
+    "movement": 0.82,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.55
+  },
+  "macros": {
+    "CHARACTER": 0.78,
+    "MOVEMENT": 0.82,
+    "COUPLING": 0.0,
+    "SPACE": 0.35
+  }
+}

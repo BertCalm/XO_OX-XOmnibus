@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Stiff Piano String",
+  "mood": "Foundation",
+  "engines": [
+    "Obscura"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.04,
+    "density": 0.42,
+    "space": 0.6,
+    "aggression": 0.03
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.52,
+      "obscura_damping": 0.14,
+      "obscura_nonlinear": 0.32,
+      "obscura_excitePos": 0.12,
+      "obscura_exciteWidth": 0.15,
+      "obscura_scanWidth": 0.45,
+      "obscura_boundary": 0,
+      "obscura_sustain": 0.2,
+      "obscura_ampAttack": 0.005,
+      "obscura_ampDecay": 0.3,
+      "obscura_ampSustain": 0.7,
+      "obscura_ampRelease": 2.5,
+      "obscura_physEnvAttack": 0.005,
+      "obscura_physEnvDecay": 0.3,
+      "obscura_physEnvSustain": 0.7,
+      "obscura_physEnvRelease": 1.5,
+      "obscura_lfo1Rate": 0.0,
+      "obscura_lfo1Depth": 0.0,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Rate": 0.0,
+      "obscura_lfo2Depth": 0.0,
+      "obscura_lfo2Shape": 0,
+      "obscura_voiceMode": 2,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 3,
+      "obscura_macroCharacter": 0.1,
+      "obscura_macroMovement": 0.0,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroSpace": 0.1,
+      "obscura_level": 0.8
+    }
+  },
+  "tags": [
+    "obscura",
+    "physical",
+    "piano",
+    "string",
+    "stiff",
+    "inharmonic",
+    "classical"
+  ],
+  "description": "Piano string \u2014 Fixed boundary, medium stiffness. The nonlinearity captures the measured stiffness-induced inharmonicity of real piano strings: upper partials are progressively sharper than harmonic ratios. Excite at 0.12 from one end (hammer strike position \u2014 the 1/7\u20131/8 range suppresses certain harmonics). Medium bowing sustain for sustain pedal behavior."
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Swell Membrane",
+  "mood": "Flux",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.38,
+    "COUPLING": 0.52,
+    "SPACE": 0.35
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.58,
+    "movement": 0.25,
+    "density": 0.3,
+    "space": 0.65,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.52,
+      "osmo_selectivity": 0.5,
+      "osmo_reactivity": 0.45,
+      "osmo_memory": 0.35,
+      "osmo_filterEnvAmt": 0.38,
+      "osmo_lfo1Rate": 0.04,
+      "osmo_lfo1Depth": 0.38,
+      "osmo_macroCharacter": 0.4,
+      "osmo_macroMovement": 0.38,
+      "osmo_macroCoupling": 0.52,
+      "osmo_macroSpace": 0.35
+    }
+  },
+  "tags": [
+    "osmosis",
+    "flux",
+    "swell",
+    "slow",
+    "LFO",
+    "open",
+    "close"
+  ],
+  "description": "Slow LFO with wide depth \u2014 the membrane swells open and closes slowly."
+}

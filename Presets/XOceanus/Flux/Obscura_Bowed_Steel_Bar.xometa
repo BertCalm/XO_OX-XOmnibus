@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Bowed Steel Bar",
+  "mood": "Flux",
+  "engines": [
+    "Obscura"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.1,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.58,
+    "warmth": 0.45,
+    "movement": 0.15,
+    "density": 0.48,
+    "space": 0.62,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.75,
+      "obscura_damping": 0.1,
+      "obscura_nonlinear": 0.28,
+      "obscura_excitePos": 0.3,
+      "obscura_exciteWidth": 0.2,
+      "obscura_scanWidth": 0.4,
+      "obscura_boundary": 0,
+      "obscura_sustain": 0.55,
+      "obscura_ampAttack": 0.2,
+      "obscura_ampDecay": 0.0,
+      "obscura_ampSustain": 1.0,
+      "obscura_ampRelease": 1.5,
+      "obscura_physEnvAttack": 0.3,
+      "obscura_physEnvDecay": 0.0,
+      "obscura_physEnvSustain": 1.0,
+      "obscura_physEnvRelease": 0.8,
+      "obscura_lfo1Rate": 0.06,
+      "obscura_lfo1Depth": 0.12,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Rate": 0.25,
+      "obscura_lfo2Depth": 0.3,
+      "obscura_lfo2Shape": 0,
+      "obscura_voiceMode": 2,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 0,
+      "obscura_macroCharacter": 0.2,
+      "obscura_macroMovement": 0.1,
+      "obscura_macroCoupling": 0.1,
+      "obscura_macroSpace": 0.0,
+      "obscura_level": 0.8
+    }
+  },
+  "tags": [
+    "obscura",
+    "physical",
+    "bowed",
+    "steel",
+    "bar",
+    "metallic",
+    "flux"
+  ],
+  "description": "Bowed steel bar \u2014 Fixed boundary, high stiffness. Moderate nonlinearity: louder bowing flattens pitch slightly and then raises it as the steel is stressed. LFO2 at 0.25Hz modulates excitation position, shifting which modes are driven \u2014 creates the characteristic 'wobble' of bowed bar instruments as bow contact position varies naturally."
+}

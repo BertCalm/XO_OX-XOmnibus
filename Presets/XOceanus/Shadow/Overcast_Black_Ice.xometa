@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Black Ice",
+  "mood": "Shadow",
+  "engines": [
+    "Overcast"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.95,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.5,
+    "SPACE": 0.4
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.12,
+    "warmth": 0.4,
+    "movement": 0.02,
+    "density": 0.12,
+    "space": 0.8,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overcast": {
+      "cast_freezeRate": 0.88,
+      "cast_crystalSize": 0.4,
+      "cast_numPeaks": 2,
+      "cast_transition": 0,
+      "cast_latticeSnap": 0.9,
+      "cast_purity": 0.95,
+      "cast_crackle": 0.0,
+      "cast_shatterGap": 0.0,
+      "cast_stereoWidth": 0.68,
+      "cast_filterCutoff": 400.0,
+      "cast_filterRes": 0.04,
+      "cast_ampAttack": 0.01,
+      "cast_ampDecay": 0.5,
+      "cast_ampSustain": 0.86,
+      "cast_ampRelease": 13.0,
+      "cast_lfo1Rate": 0.006,
+      "cast_lfo1Depth": 0.0,
+      "cast_lfo2Rate": 0.003,
+      "cast_lfo2Depth": 0.0,
+      "cast_level": 0.75,
+      "cast_macroCharacter": 0.0,
+      "cast_macroMovement": 0.0,
+      "cast_macroCoupling": 0.5,
+      "cast_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overcast",
+    "pad",
+    "shadow",
+    "black",
+    "dark",
+    "transparent",
+    "treacherous"
+  ],
+  "description": "Minimum brightness from 2 peaks, high lattice. The frozen darkness \u2014 transparent, treacherous."
+}

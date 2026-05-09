@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Pressure Thermocline",
+  "mood": "Deep",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-05-09",
+  "description": "The thermocline layer where warm and cold water meet. Extreme damping (0.85) slows all motion to geological time. Waveform 2 (square sub). Ultra-slow LFO1 (0.02Hz). Only the deepest tidal pressure remains active.",
+  "tags": [
+    "deep",
+    "thermocline",
+    "pressure",
+    "sub-bass"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "parameters": {
+    "Oceanic": {
+      "ocean_alignment": 0.6,
+      "ocean_cohesion": 0.3,
+      "ocean_scatter": 0.1,
+      "ocean_separation": 0.5,
+      "ocean_damping": 0.85,
+      "ocean_tether": 0.6,
+      "ocean_subflocks": 2,
+      "ocean_waveform": 2,
+      "ocean_voiceMode": 0,
+      "ocean_glide": 0.0,
+      "ocean_ampAttack": 1.0,
+      "ocean_ampDecay": 2.5,
+      "ocean_ampSustain": 0.7,
+      "ocean_ampRelease": 5.0,
+      "ocean_swarmEnvAttack": 0.8,
+      "ocean_swarmEnvDecay": 2.0,
+      "ocean_swarmEnvSustain": 0.65,
+      "ocean_swarmEnvRelease": 4.0,
+      "ocean_lfo1Rate": 0.02,
+      "ocean_lfo1Depth": 0.5,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Rate": 0.04,
+      "ocean_lfo2Depth": 0.25,
+      "ocean_lfo2Shape": 0,
+      "ocean_macroCharacter": 0.2,
+      "ocean_macroMovement": 0.08,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroSpace": 0.92
+    }
+  },
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.65,
+    "movement": 0.08,
+    "density": 0.55,
+    "space": 0.92,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHARACTER": 0.2,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.0,
+    "SPACE": 0.92
+  }
+}

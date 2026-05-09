@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "name": "Wet Fold Burst",
+  "mood": "Kinetic",
+  "engines": [
+    "Origami"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-05-09",
+  "description": "Fresh wet paper folds crack and snap at maximum depth. Fast fold rate via LFO1 (3.0Hz) and high foldCount (8) produces a flutter \u2014 the paper still deciding its final shape. Operation 2 (pleat) for sharp accordion edges. Percussive amp envelope.",
+  "tags": [
+    "kinetic",
+    "percussive",
+    "crisp",
+    "bright"
+  ],
+  "macroLabels": [
+    "FOLD",
+    "MOTION",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "parameters": {
+    "Origami": {
+      "origami_foldPoint": 0.3,
+      "origami_foldDepth": 0.88,
+      "origami_foldCount": 8,
+      "origami_operation": 2,
+      "origami_freeze": 0.0,
+      "origami_foldEnvAttack": 0.003,
+      "origami_foldEnvDecay": 0.15,
+      "origami_foldEnvSustain": 0.0,
+      "origami_foldEnvRelease": 0.3,
+      "origami_ampAttack": 0.003,
+      "origami_ampDecay": 0.2,
+      "origami_ampSustain": 0.0,
+      "origami_ampRelease": 0.35,
+      "origami_level": 0.85,
+      "origami_glide": 0.0,
+      "origami_lfo1Rate": 3.0,
+      "origami_lfo1Depth": 0.45,
+      "origami_lfo1Shape": 2,
+      "origami_lfo2Rate": 1.5,
+      "origami_lfo2Depth": 0.3,
+      "origami_lfo2Shape": 3,
+      "origami_macroFold": 0.85,
+      "origami_macroMotion": 0.88,
+      "origami_macroCoupling": 0.0,
+      "origami_macroSpace": 0.28
+    }
+  },
+  "dna": {
+    "brightness": 0.8,
+    "warmth": 0.18,
+    "movement": 0.85,
+    "density": 0.55,
+    "space": 0.28,
+    "aggression": 0.65
+  },
+  "macros": {
+    "FOLD": 0.85,
+    "MOTION": 0.88,
+    "COUPLING": 0.0,
+    "SPACE": 0.28
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Catastrophe Mode",
+  "mood": "Flux",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.5,
+    "MOVEMENT": 0.25,
+    "COUPLING": 0.5,
+    "SPACE": 0.5
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.42,
+    "warmth": 0.5,
+    "movement": 0.3,
+    "density": 0.45,
+    "space": 0.52,
+    "aggression": 0.12
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.6,
+      "flow_accumRate": 0.6,
+      "flow_valveType": 1,
+      "flow_vesselSize": 0.5,
+      "flow_strainColor": 0.5,
+      "flow_releaseTime": 0.5,
+      "flow_whistlePitch": 0.5,
+      "flow_stereoWidth": 0.6,
+      "flow_filterCutoff": 1200.0,
+      "flow_filterRes": 0.08,
+      "flow_filtEnvAmount": 0.2,
+      "flow_ampAttack": 0.3,
+      "flow_ampDecay": 1.0,
+      "flow_ampSustain": 0.75,
+      "flow_ampRelease": 4.0,
+      "flow_filtAttack": 1.5,
+      "flow_filtDecay": 2.5,
+      "flow_filtSustain": 0.78,
+      "flow_filtRelease": 6.0,
+      "flow_lfo1Rate": 0.02,
+      "flow_lfo1Depth": 0.25,
+      "flow_lfo2Rate": 0.01,
+      "flow_lfo2Depth": 0.12,
+      "flow_level": 0.75,
+      "flow_macroCharacter": 0.0,
+      "flow_macroMovement": 0.0,
+      "flow_macroCoupling": 0.5,
+      "flow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "flux",
+    "catastrophic",
+    "explosive",
+    "event",
+    "dramatic"
+  ],
+  "description": "Explosive valve type \u2014 when pressure releases, all voices duck. Catastrophic event preset."
+}
