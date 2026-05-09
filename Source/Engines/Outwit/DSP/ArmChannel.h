@@ -217,7 +217,8 @@ public:
 
         // --- Chromatophore: modulate filter cutoff with CA density ---
         float density = getDensity();
-        float modCutoff = baseFilterHz * (1.0f + chromAmount * density * 3.0f);
+        float velBright = 0.5f + currentVelocity * 0.5f; // D001: velocity opens filter (1.0 = unchanged)
+        float modCutoff = baseFilterHz * velBright * (1.0f + chromAmount * density * 3.0f);
         modCutoff = std::clamp(modCutoff, 20.0f, 20000.0f);
 
         // --- SVF filter (TPT topology) ---
