@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "name": "Melodica Broken",
+  "mood": "Shadow",
+  "engines": ["Oto"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Melodica with cracked reed — high buzz, maximum pressure variation, erratic chiff. The instrument found in a box in a flooded basement. Some keys work, some produce only air, some produce both sounds at once. Competition engaged so breath instabilities fight each other. The melodica that should have been discarded.",
+  "tags": ["melodica", "shadow", "broken", "cracked", "unstable", "degraded"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.38,
+    "movement": 0.65,
+    "density": 0.65,
+    "space": 0.35,
+    "aggression": 0.72
+  },
+  "parameters": {
+    "Oto": {
+      "oto_organ": 3,
+      "oto_cluster": 0.7,
+      "oto_chiff": 0.85,
+      "oto_detune": 0.25,
+      "oto_buzz": 0.75,
+      "oto_pressure": 0.9,
+      "oto_crosstalk": 0.6,
+      "oto_filterCutoff": 4000.0,
+      "oto_filterRes": 0.55,
+      "oto_attack": 0.05,
+      "oto_decay": 0.3,
+      "oto_sustain": 0.6,
+      "oto_release": 0.2,
+      "oto_lfo1Rate": 4.5,
+      "oto_lfo1Depth": 0.28,
+      "oto_competition": 0.78
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.65,
+    "COUPLING": 0.2,
+    "SPACE": 0.35
+  }
+}

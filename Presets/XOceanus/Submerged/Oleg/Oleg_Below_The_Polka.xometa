@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Below The Polka",
+  "mood": "Submerged",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bayan heard from below a dance floor — brightness attenuated, detune heavy, the formant smeared. Bass drone strings at an octave below filling the low frequency space. You cannot make out the melody, only the rhythm and the weight of the bellows. The accordion playing for dancers whose feet you cannot see.",
+  "tags": ["bayan", "submerged", "muffled", "drone", "depth", "distance"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.68,
+    "movement": 0.4,
+    "density": 0.7,
+    "space": 0.62,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.2,
+      "oleg_brightness": 2800.0,
+      "oleg_drone": 0.8,
+      "oleg_bellows": 0.65,
+      "oleg_detune": 25.0,
+      "oleg_formant": 0.3,
+      "oleg_attack": 0.08,
+      "oleg_release": 0.25,
+      "oleg_filterEnvAmt": 0.2,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.04,
+      "oleg_cassottoDepth": 0.65,
+      "oleg_buzzThreshold": 0.45,
+      "oleg_wheelSpeed": 0.5,
+      "oleg_droneInterval1": -12,
+      "oleg_droneInterval2": -24,
+      "oleg_macroCharacter": 0.35,
+      "oleg_macroMovement": 0.4,
+      "oleg_macroCoupling": 0.18,
+      "oleg_macroSpace": 0.62,
+      "oleg_lfo1Rate": 4.0,
+      "oleg_lfo1Depth": 0.1,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.5,
+      "oleg_lfo2Depth": 0.2,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.4,
+    "COUPLING": 0.18,
+    "SPACE": 0.62
+  }
+}

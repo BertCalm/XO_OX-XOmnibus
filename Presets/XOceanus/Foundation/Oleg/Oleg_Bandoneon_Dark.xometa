@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Bandoneon Dark",
+  "mood": "Foundation",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bandoneon in its lower register — the instrument Piazzolla used to speak grief. Brightness pulled down, bellows pressure moderate, cassotto depth engaged to color the tone with that characteristic nasal warmth. A foundation preset that sits low and heavy, ready for any tango bassline or slow lament.",
+  "tags": ["bandoneon", "foundation", "tango", "dark", "reed"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.35,
+    "warmth": 0.7,
+    "movement": 0.22,
+    "density": 0.65,
+    "space": 0.38,
+    "aggression": 0.3
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 2,
+      "oleg_buzz": 0.0,
+      "oleg_brightness": 3800.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.65,
+      "oleg_detune": 6.0,
+      "oleg_formant": 0.35,
+      "oleg_attack": 0.04,
+      "oleg_release": 0.18,
+      "oleg_filterEnvAmt": 0.25,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.75,
+      "oleg_buzzThreshold": 0.6,
+      "oleg_wheelSpeed": 0.45,
+      "oleg_droneInterval1": 0,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.35,
+      "oleg_macroMovement": 0.22,
+      "oleg_macroCoupling": 0.15,
+      "oleg_macroSpace": 0.38,
+      "oleg_lfo1Rate": 4.5,
+      "oleg_lfo1Depth": 0.05,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.3,
+      "oleg_lfo2Depth": 0.1,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.15,
+    "SPACE": 0.38
+  }
+}

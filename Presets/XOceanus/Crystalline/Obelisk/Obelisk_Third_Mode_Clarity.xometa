@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "name": "Third Mode Clarity",
+  "mood": "Crystalline",
+  "engines": ["Obelisk"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Preparation position at 0.33 — the third-mode null. Every third partial is killed, leaving a distinctive harmonic series with gaps that give the stone a hollow crystalline character. Glass preparation enhances Q of the surviving modes. This is Cage's insight: position as harmonic editor.",
+  "tags": ["stone", "glass", "crystalline", "prepared", "inharmonic", "kitchen"],
+  "macroLabels": ["STONE", "PREPARATION", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.2,
+    "movement": 0.15,
+    "density": 0.45,
+    "space": 0.7,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Obelisk": {
+      "obel_density": 0.55,
+      "obel_stoneTone": 0.6,
+      "obel_brightness": 6000.0,
+      "obel_damping": 0.1,
+      "obel_decay": 7.0,
+      "obel_hfNoise": 0.15,
+      "obel_hardness": 0.28,
+      "obel_prepType": 3,
+      "obel_prepPosition": 0.333,
+      "obel_prepDepth": 0.75,
+      "obel_filterEnvAmount": 0.2,
+      "obel_thermalDrift": 0.12,
+      "obel_bendRange": 2,
+      "obel_release": 3.5,
+      "obel_macroStone": 0.5,
+      "obel_macroPrep": 0.65,
+      "obel_macroCoupling": 0.1,
+      "obel_macroSpace": 0.65,
+      "obel_lfo1Rate": 0.04,
+      "obel_lfo1Depth": 0.05,
+      "obel_lfo1Shape": 0,
+      "obel_lfo2Rate": 0.06,
+      "obel_lfo2Depth": 0.18,
+      "obel_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "STONE": 0.5,
+    "PREPARATION": 0.65,
+    "COUPLING": 0.1,
+    "SPACE": 0.65
+  }
+}

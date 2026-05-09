@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Spring Bayan",
+  "mood": "Luminous",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bayan celebrating the end of winter — high brightness, no cassotto, no drone, clean reeds ringing into open air. The annual concert in the park where the bayan player always opens with something fast and major. Everything the instrument can project outward, nothing held back or darkened.",
+  "tags": ["bayan", "luminous", "spring", "bright", "celebration", "major"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.78,
+    "warmth": 0.5,
+    "movement": 0.42,
+    "density": 0.42,
+    "space": 0.58,
+    "aggression": 0.35
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 0,
+      "oleg_buzz": 0.0,
+      "oleg_brightness": 8500.0,
+      "oleg_drone": 0.0,
+      "oleg_bellows": 0.8,
+      "oleg_detune": 5.0,
+      "oleg_formant": 0.62,
+      "oleg_attack": 0.012,
+      "oleg_release": 0.1,
+      "oleg_filterEnvAmt": 0.45,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.0,
+      "oleg_cassottoDepth": 0.0,
+      "oleg_buzzThreshold": 0.85,
+      "oleg_wheelSpeed": 0.72,
+      "oleg_droneInterval1": 0,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.68,
+      "oleg_macroMovement": 0.42,
+      "oleg_macroCoupling": 0.12,
+      "oleg_macroSpace": 0.58,
+      "oleg_lfo1Rate": 6.0,
+      "oleg_lfo1Depth": 0.1,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 1.0,
+      "oleg_lfo2Depth": 0.15,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.12,
+    "SPACE": 0.58
+  }
+}

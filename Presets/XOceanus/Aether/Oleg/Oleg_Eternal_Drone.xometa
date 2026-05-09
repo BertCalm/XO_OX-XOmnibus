@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Eternal Drone",
+  "mood": "Aether",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Hurdy-gurdy with maximum drone sustain — both drone strings active at octave intervals below. Buzz threshold high enough that the chien never activates unless struck hard, keeping the drone bed pure. Wheel speed at minimum for the most sustained, least tremoloed drone. Hold a chord and let the drone strings bloom forever.",
+  "tags": ["hurdy-gurdy", "aether", "drone", "sustain", "eternal"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.45,
+    "warmth": 0.6,
+    "movement": 0.08,
+    "density": 0.72,
+    "space": 0.82,
+    "aggression": 0.08
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 1,
+      "oleg_buzz": 0.0,
+      "oleg_brightness": 4500.0,
+      "oleg_drone": 0.9,
+      "oleg_bellows": 0.6,
+      "oleg_detune": 4.0,
+      "oleg_formant": 0.5,
+      "oleg_attack": 0.08,
+      "oleg_release": 0.4,
+      "oleg_filterEnvAmt": 0.15,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.06,
+      "oleg_cassottoDepth": 0.3,
+      "oleg_buzzThreshold": 0.85,
+      "oleg_wheelSpeed": 0.2,
+      "oleg_droneInterval1": -12,
+      "oleg_droneInterval2": -24,
+      "oleg_macroCharacter": 0.3,
+      "oleg_macroMovement": 0.1,
+      "oleg_macroCoupling": 0.12,
+      "oleg_macroSpace": 0.82,
+      "oleg_lfo1Rate": 0.5,
+      "oleg_lfo1Depth": 0.04,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.08,
+      "oleg_lfo2Depth": 0.1,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.3,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.12,
+    "SPACE": 0.82
+  }
+}

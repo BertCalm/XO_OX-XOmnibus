@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "name": "Old Squeezebox",
+  "mood": "Organic",
+  "engines": ["Oleg"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Bandoneon at maximum detune — the instrument that has been played in South American heat for fifty years, its reeds settling into their own tuning. Cassotto heavy, bellows tired but present. Buzz threshold at the knife edge. The tango instrument that outlived its owners and keeps playing.",
+  "tags": ["bandoneon", "organic", "aged", "detune", "tango", "weathered"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.72,
+    "movement": 0.3,
+    "density": 0.65,
+    "space": 0.45,
+    "aggression": 0.28
+  },
+  "parameters": {
+    "Oleg": {
+      "oleg_organ": 2,
+      "oleg_buzz": 0.25,
+      "oleg_brightness": 4000.0,
+      "oleg_drone": 0.3,
+      "oleg_bellows": 0.6,
+      "oleg_detune": 38.0,
+      "oleg_formant": 0.4,
+      "oleg_attack": 0.05,
+      "oleg_release": 0.22,
+      "oleg_filterEnvAmt": 0.28,
+      "oleg_bendRange": 2,
+      "oleg_glideTime": 0.03,
+      "oleg_cassottoDepth": 0.8,
+      "oleg_buzzThreshold": 0.4,
+      "oleg_wheelSpeed": 0.45,
+      "oleg_droneInterval1": -12,
+      "oleg_droneInterval2": 0,
+      "oleg_macroCharacter": 0.4,
+      "oleg_macroMovement": 0.3,
+      "oleg_macroCoupling": 0.15,
+      "oleg_macroSpace": 0.45,
+      "oleg_lfo1Rate": 4.5,
+      "oleg_lfo1Depth": 0.1,
+      "oleg_lfo1Shape": 0,
+      "oleg_lfo2Rate": 0.25,
+      "oleg_lfo2Depth": 0.18,
+      "oleg_lfo2Shape": 0
+    }
+  },
+  "coupling": {"pairs": []},
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.3,
+    "COUPLING": 0.15,
+    "SPACE": 0.45
+  }
+}
