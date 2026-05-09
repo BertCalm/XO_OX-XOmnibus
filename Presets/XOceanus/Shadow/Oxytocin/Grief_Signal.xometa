@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Grief Signal",
+  "mood": "Shadow",
+  "engines": ["Oxytocin"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "Oxytocin in its withdrawal phase — the bond chemistry persisting after the source has gone. Longing as a misfiring circuit, warmth searching for a target that no longer exists.",
+  "tags": ["shadow", "grief", "withdrawal", "longing", "dark", "muted"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.35,
+    "movement": 0.22,
+    "density": 0.45,
+    "space": 0.55,
+    "aggression": 0.42
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.35,
+      "oxy_passion": 0.72,
+      "oxy_commitment": 0.45,
+      "oxy_warmth_rate": 0.4,
+      "oxy_passion_rate": 0.02,
+      "oxy_commit_rate": 0.12,
+      "oxy_entanglement": 0.28,
+      "oxy_circuit_age": 0.78,
+      "oxy_circuit_noise": 0.35,
+      "oxy_memory_depth": 0.88,
+      "oxy_memory_decay": 0.8,
+      "oxy_topology": 2,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.55,
+      "oxy_cutoff": 1500,
+      "oxy_pitch": 0,
+      "oxy_detune": 8,
+      "oxy_attack": 0.12,
+      "oxy_decay": 0.6,
+      "oxy_sustain": 0.42,
+      "oxy_release": 3.5,
+      "oxy_lfo_rate": 0.04,
+      "oxy_lfo_depth": 0.35,
+      "oxy_lfo_shape": 2,
+      "oxy_lfo2_rate": 0.06,
+      "oxy_lfo2_depth": 0.22,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 2
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.42,
+    "MOVEMENT": 0.22,
+    "COUPLING": 0.28,
+    "SPACE": 0.55
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "name": "Peak Bonding",
+  "mood": "Luminous",
+  "engines": ["Oxytocin"],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "description": "The flood state — oxytocin at full cascade, every receptor saturated. Warmth expressed as pure luminance, the circuit blazing at peak intimacy capacity.",
+  "tags": ["luminous", "radiant", "peak", "warm", "saturated", "ecstatic"],
+  "macroLabels": ["CHARACTER", "MOVEMENT", "COUPLING", "SPACE"],
+  "couplingIntensity": "Moderate",
+  "tempo": null,
+  "dna": {
+    "brightness": 0.92,
+    "warmth": 0.88,
+    "movement": 0.58,
+    "density": 0.62,
+    "space": 0.48,
+    "aggression": 0.22
+  },
+  "parameters": {
+    "Oxytocin": {
+      "oxy_intimacy": 0.95,
+      "oxy_passion": 0.88,
+      "oxy_commitment": 0.72,
+      "oxy_warmth_rate": 4.2,
+      "oxy_passion_rate": 0.018,
+      "oxy_commit_rate": 0.35,
+      "oxy_entanglement": 0.65,
+      "oxy_circuit_age": 0.45,
+      "oxy_circuit_noise": 0.1,
+      "oxy_memory_depth": 0.55,
+      "oxy_memory_decay": 2.2,
+      "oxy_topology": 0,
+      "oxy_topology_lock": 0,
+      "oxy_feedback": 0.28,
+      "oxy_cutoff": 5800,
+      "oxy_pitch": 0,
+      "oxy_detune": 3,
+      "oxy_attack": 0.008,
+      "oxy_decay": 0.45,
+      "oxy_sustain": 0.75,
+      "oxy_release": 1.5,
+      "oxy_lfo_rate": 0.28,
+      "oxy_lfo_depth": 0.32,
+      "oxy_lfo_shape": 0,
+      "oxy_lfo2_rate": 0.42,
+      "oxy_lfo2_depth": 0.18,
+      "oxy_output": 0,
+      "oxy_pan": 0.0,
+      "oxy_voices": 3
+    }
+  },
+  "coupling": { "pairs": [] },
+  "sequencer": null,
+  "macros": {
+    "CHARACTER": 0.88,
+    "MOVEMENT": 0.58,
+    "COUPLING": 0.65,
+    "SPACE": 0.48
+  }
+}
