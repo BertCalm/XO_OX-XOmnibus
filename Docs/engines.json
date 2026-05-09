@@ -321,7 +321,9 @@
       "status": "implemented",
       "accent_color": "#9B1B30",
       "category": "cathedral",
-      "accent_name": "Selenium Ruby"
+      "accent_name": "Selenium Ruby",
+      "v1": false,
+      "v1_deferral_reason": "unseanced cathedral engine; 0 presets and no upstream artifacts for confident V1 preset fill (Day 8 cull addendum, 2026-05-09)"
     },
     {
       "id": "Ogre",
@@ -937,7 +939,9 @@
       "header": "Source/Engines/Outlook/OutlookEngine.h",
       "status": "implemented",
       "accent_color": "#4169E1",
-      "category": "visionary"
+      "category": "visionary",
+      "v1": false,
+      "v1_deferral_reason": "estimated seance ~7.1 (not formally validated); 0 presets — insufficient character anchor for confident V1 preset fill (Day 8 cull addendum, 2026-05-09)"
     },
     {
       "id": "Outcrop",
