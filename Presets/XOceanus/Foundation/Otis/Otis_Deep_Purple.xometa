@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Screaming rock organ — all drawbars blazing, maximum drive, fast Leslie spin. The Jon Lord wall of distortion that defined hard rock organ.",
+  "description": "Screaming rock organ \u2014 all drawbars blazing, maximum drive, fast Leslie spin. The Jon Lord wall of distortion that defined hard rock organ.",
   "dna": {
     "aggression": 0.85,
     "brightness": 0.85,
@@ -50,10 +50,10 @@
       "otis_decay": 0.1,
       "otis_sustain": 0.95,
       "otis_release": 0.15,
-      "otis_macroCharacter": 0.0,
-      "otis_macroMovement": 0.0,
-      "otis_macroCoupling": 0.0,
-      "otis_macroSpace": 0.0,
+      "otis_macroCharacter": 0.35,
+      "otis_macroMovement": 0.3,
+      "otis_macroCoupling": 0.2,
+      "otis_macroSpace": 0.3,
       "otis_lfo1Rate": 6.0,
       "otis_lfo1Depth": 0.04,
       "otis_lfo1Shape": 0,

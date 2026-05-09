@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Zydeco accordion — buzzy dual reeds with musette beating, strong bellows attack, dance-ready dynamics. Louisiana Saturday night in a squeeze box.",
+  "description": "Zydeco accordion \u2014 buzzy dual reeds with musette beating, strong bellows attack, dance-ready dynamics. Louisiana Saturday night in a squeeze box.",
   "dna": {
     "aggression": 0.45,
     "brightness": 0.6,
@@ -51,10 +51,10 @@
       "otis_decay": 0.15,
       "otis_sustain": 0.85,
       "otis_release": 0.12,
-      "otis_macroCharacter": 0.0,
-      "otis_macroMovement": 0.0,
-      "otis_macroCoupling": 0.0,
-      "otis_macroSpace": 0.0,
+      "otis_macroCharacter": 0.2,
+      "otis_macroMovement": 0.15,
+      "otis_macroCoupling": 0.1,
+      "otis_macroSpace": 0.4,
       "otis_lfo1Rate": 4.0,
       "otis_lfo1Depth": 0.02,
       "otis_lfo1Shape": 0,

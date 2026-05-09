@@ -4,7 +4,7 @@
     "pairs": []
   },
   "couplingIntensity": "None",
-  "description": "Gentle chorale organ — flute stops only (drawbars 1 and 3), slow Leslie rotation, no percussion, soft key click. Sunday evening vespers.",
+  "description": "Gentle chorale organ \u2014 flute stops only (drawbars 1 and 3), slow Leslie rotation, no percussion, soft key click. Sunday evening vespers.",
   "dna": {
     "aggression": 0.05,
     "brightness": 0.3,
@@ -50,10 +50,10 @@
       "otis_decay": 0.5,
       "otis_sustain": 0.9,
       "otis_release": 0.6,
-      "otis_macroCharacter": 0.0,
-      "otis_macroMovement": 0.0,
-      "otis_macroCoupling": 0.0,
-      "otis_macroSpace": 0.0,
+      "otis_macroCharacter": 0.1,
+      "otis_macroMovement": 0.2,
+      "otis_macroCoupling": 0.1,
+      "otis_macroSpace": 0.5,
       "otis_lfo1Rate": 0.1,
       "otis_lfo1Depth": 0.02,
       "otis_lfo1Shape": 0,
