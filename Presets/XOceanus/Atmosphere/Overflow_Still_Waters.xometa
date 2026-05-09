@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Still Waters",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overflow"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.28,
+    "MOVEMENT": 0.1,
+    "COUPLING": 0.5,
+    "SPACE": 0.62
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.25,
+    "warmth": 0.68,
+    "movement": 0.1,
+    "density": 0.28,
+    "space": 0.72,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Overflow": {
+      "flow_threshold": 0.92,
+      "flow_accumRate": 0.25,
+      "flow_valveType": 0,
+      "flow_vesselSize": 0.62,
+      "flow_strainColor": 0.28,
+      "flow_releaseTime": 3.0,
+      "flow_whistlePitch": 0.5,
+      "flow_stereoWidth": 0.6,
+      "flow_filterCutoff": 800.0,
+      "flow_filterRes": 0.05,
+      "flow_filtEnvAmount": 0.12,
+      "flow_ampAttack": 2.0,
+      "flow_ampDecay": 2.5,
+      "flow_ampSustain": 0.88,
+      "flow_ampRelease": 11.0,
+      "flow_filtAttack": 1.5,
+      "flow_filtDecay": 2.5,
+      "flow_filtSustain": 0.78,
+      "flow_filtRelease": 6.0,
+      "flow_lfo1Rate": 0.007,
+      "flow_lfo1Depth": 0.1,
+      "flow_lfo2Rate": 0.003,
+      "flow_lfo2Depth": 0.05,
+      "flow_level": 0.75,
+      "flow_macroCharacter": 0.0,
+      "flow_macroMovement": 0.0,
+      "flow_macroCoupling": 0.5,
+      "flow_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overflow",
+    "pad",
+    "atmosphere",
+    "serene",
+    "high-threshold",
+    "quiet",
+    "gentle"
+  ],
+  "description": "Very high threshold \u2014 pressure rarely builds. Most playing passes without triggering. Serene."
+}

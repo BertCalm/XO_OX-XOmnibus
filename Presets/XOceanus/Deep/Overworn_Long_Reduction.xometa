@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Long Reduction",
+  "mood": "Deep",
+  "engines": [
+    "Overworn"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.65,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.5,
+    "SPACE": 0.55
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.05,
+    "warmth": 0.85,
+    "movement": 0.05,
+    "density": 0.55,
+    "space": 0.8,
+    "aggression": 0.01
+  },
+  "parameters": {
+    "Overworn": {
+      "worn_reductionRate": 0.05,
+      "worn_heat": 0.6,
+      "worn_richness": 0.65,
+      "worn_maillard": 0.6,
+      "worn_umamiDepth": 0.55,
+      "worn_concentrate": 0.5,
+      "worn_sessionTarget": 45.0,
+      "worn_sessionAge": 0.0,
+      "worn_stateReset": 0.0,
+      "worn_stereoWidth": 0.65,
+      "worn_filterCutoff": 450.0,
+      "worn_filterRes": 0.04,
+      "worn_filtEnvAmount": 0.08,
+      "worn_ampAttack": 5.0,
+      "worn_ampDecay": 4.0,
+      "worn_ampSustain": 0.94,
+      "worn_ampRelease": 18.0,
+      "worn_filtAttack": 2.0,
+      "worn_filtDecay": 3.0,
+      "worn_filtSustain": 0.8,
+      "worn_filtRelease": 8.0,
+      "worn_lfo1Rate": 0.004,
+      "worn_lfo1Depth": 0.06,
+      "worn_lfo2Rate": 0.002,
+      "worn_lfo2Depth": 0.03,
+      "worn_macroCharacter": 0.0,
+      "worn_macroMovement": 0.0,
+      "worn_macroCoupling": 0.5,
+      "worn_macroSpace": 0.0,
+      "worn_level": 0.75
+    }
+  },
+  "tags": [
+    "overworn",
+    "pad",
+    "deep",
+    "long",
+    "slow",
+    "concentrated",
+    "hours"
+  ],
+  "description": "Very slow reduction rate \u2014 the session that runs for hours. Dark and concentrated by the time you notice it changing."
+}

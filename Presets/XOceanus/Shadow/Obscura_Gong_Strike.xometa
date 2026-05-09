@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Gong Strike",
+  "mood": "Shadow",
+  "engines": [
+    "Obscura"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.42,
+    "movement": 0.12,
+    "density": 0.62,
+    "space": 0.68,
+    "aggression": 0.06
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.92,
+      "obscura_damping": 0.12,
+      "obscura_nonlinear": 0.68,
+      "obscura_excitePos": 0.5,
+      "obscura_exciteWidth": 0.4,
+      "obscura_scanWidth": 0.35,
+      "obscura_boundary": 2,
+      "obscura_sustain": 0.0,
+      "obscura_ampAttack": 0.01,
+      "obscura_ampDecay": 0.6,
+      "obscura_ampSustain": 0.0,
+      "obscura_ampRelease": 8.0,
+      "obscura_physEnvAttack": 0.01,
+      "obscura_physEnvDecay": 0.6,
+      "obscura_physEnvSustain": 0.0,
+      "obscura_physEnvRelease": 8.0,
+      "obscura_lfo1Rate": 0.0,
+      "obscura_lfo1Depth": 0.0,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Rate": 0.0,
+      "obscura_lfo2Depth": 0.0,
+      "obscura_lfo2Shape": 0,
+      "obscura_voiceMode": 2,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 3,
+      "obscura_macroCharacter": 0.4,
+      "obscura_macroMovement": 0.0,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroSpace": 0.1,
+      "obscura_level": 0.8
+    }
+  },
+  "tags": [
+    "obscura",
+    "physical",
+    "gong",
+    "bronze",
+    "circular",
+    "bloom",
+    "metal"
+  ],
+  "description": "Chinese gong \u2014 Periodic boundary (circular plate with free edge, wrapped as ring). Very high stiffness from thick bronze. High nonlinearity produces the characteristic upward pitch-sweep after strike: as the plate vibrates, large displacement increases effective stiffness, raising the pitch gradually. Wide excitation width (mallet surface area). This is the physics of the gong's 'bloom'."
+}

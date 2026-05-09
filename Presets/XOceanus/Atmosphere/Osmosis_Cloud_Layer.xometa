@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Cloud Layer",
+  "mood": "Atmosphere",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.44,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.52,
+    "SPACE": 0.3
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.6,
+    "movement": 0.25,
+    "density": 0.3,
+    "space": 0.68,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.52,
+      "osmo_selectivity": 0.55,
+      "osmo_reactivity": 0.7,
+      "osmo_memory": 0.3,
+      "osmo_filterEnvAmt": 0.38,
+      "osmo_lfo1Rate": 0.07,
+      "osmo_lfo1Depth": 0.28,
+      "osmo_macroCharacter": 0.44000000000000006,
+      "osmo_macroMovement": 0.28,
+      "osmo_macroCoupling": 0.52,
+      "osmo_macroSpace": 0.3
+    }
+  },
+  "tags": [
+    "osmosis",
+    "atmosphere",
+    "cloud",
+    "moisture",
+    "medium",
+    "reactive"
+  ],
+  "description": "The cloud membrane \u2014 medium permeability, moderate selectivity, fast reactivity. Sound passing through moisture."
+}

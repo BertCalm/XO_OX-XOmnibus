@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Tongue Drum",
+  "mood": "Foundation",
+  "engines": [
+    "Obscura"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.1,
+    "MOVEMENT": 0.0,
+    "COUPLING": 0.0,
+    "SPACE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.5,
+    "warmth": 0.55,
+    "movement": 0.04,
+    "density": 0.38,
+    "space": 0.62,
+    "aggression": 0.02
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.62,
+      "obscura_damping": 0.22,
+      "obscura_nonlinear": 0.18,
+      "obscura_excitePos": 0.5,
+      "obscura_exciteWidth": 0.45,
+      "obscura_scanWidth": 0.38,
+      "obscura_boundary": 0,
+      "obscura_sustain": 0.0,
+      "obscura_ampAttack": 0.008,
+      "obscura_ampDecay": 0.4,
+      "obscura_ampSustain": 0.0,
+      "obscura_ampRelease": 2.5,
+      "obscura_physEnvAttack": 0.008,
+      "obscura_physEnvDecay": 0.4,
+      "obscura_physEnvSustain": 0.0,
+      "obscura_physEnvRelease": 2.5,
+      "obscura_lfo1Rate": 0.0,
+      "obscura_lfo1Depth": 0.0,
+      "obscura_lfo1Shape": 0,
+      "obscura_lfo2Rate": 0.0,
+      "obscura_lfo2Depth": 0.0,
+      "obscura_lfo2Shape": 0,
+      "obscura_voiceMode": 2,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 3,
+      "obscura_macroCharacter": 0.1,
+      "obscura_macroMovement": 0.0,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroSpace": 0.1,
+      "obscura_level": 0.8
+    }
+  },
+  "tags": [
+    "obscura",
+    "physical",
+    "tongue-drum",
+    "steel",
+    "struck",
+    "warm",
+    "inharmonic"
+  ],
+  "description": "Steel tongue drum \u2014 Fixed boundary (tongues anchored at base). Medium-high stiffness from hardened steel. The tongue shape produces a distinct inharmonicity from irregular geometry \u2014 captured here by slight nonlinearity. Wide excitation width (tongue has area, not a point). Short sustain=0 for pure impulse."
+}

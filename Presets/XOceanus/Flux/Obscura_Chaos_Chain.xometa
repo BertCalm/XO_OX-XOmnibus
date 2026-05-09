@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Chaos Chain",
+  "mood": "Flux",
+  "engines": [
+    "Obscura"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.4,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.0,
+    "SPACE": 0.0
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.38,
+    "movement": 0.38,
+    "density": 0.65,
+    "space": 0.52,
+    "aggression": 0.1
+  },
+  "parameters": {
+    "Obscura": {
+      "obscura_stiffness": 0.9,
+      "obscura_damping": 0.12,
+      "obscura_nonlinear": 0.72,
+      "obscura_excitePos": 0.5,
+      "obscura_exciteWidth": 0.38,
+      "obscura_scanWidth": 0.4,
+      "obscura_boundary": 2,
+      "obscura_sustain": 0.35,
+      "obscura_ampAttack": 0.18,
+      "obscura_ampDecay": 0.15,
+      "obscura_ampSustain": 0.82,
+      "obscura_ampRelease": 2.0,
+      "obscura_physEnvAttack": 0.25,
+      "obscura_physEnvDecay": 0.18,
+      "obscura_physEnvSustain": 0.75,
+      "obscura_physEnvRelease": 1.0,
+      "obscura_lfo1Rate": 0.38,
+      "obscura_lfo1Depth": 0.32,
+      "obscura_lfo1Shape": 4,
+      "obscura_lfo2Rate": 0.0,
+      "obscura_lfo2Depth": 0.0,
+      "obscura_lfo2Shape": 4,
+      "obscura_voiceMode": 2,
+      "obscura_glide": 0.0,
+      "obscura_initShape": 2,
+      "obscura_macroCharacter": 0.4,
+      "obscura_macroMovement": 0.2,
+      "obscura_macroCoupling": 0.0,
+      "obscura_macroSpace": 0.0,
+      "obscura_level": 0.8
+    }
+  },
+  "tags": [
+    "obscura",
+    "physical",
+    "chaos",
+    "random",
+    "stochastic",
+    "extreme",
+    "flux"
+  ],
+  "description": "Chaotic mass-spring chain \u2014 Periodic boundary, maximum stiffness, high nonlinearity, random chain initialization. No two notes sound the same (S&H LFO1 adds stochastic scan width variation). The system is in a far-from-equilibrium state where tiny differences in initial conditions produce macroscopically different evolution \u2014 sensitivity to initial conditions embedded in physical simulation."
+}

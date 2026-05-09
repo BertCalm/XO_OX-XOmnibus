@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "name": "Bioluminescent Break",
+  "mood": "Prism",
+  "engines": [
+    "Oceanic"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-05-09",
+  "description": "Breaking wave in a bioluminescent bay \u2014 each foam bubble glows. High scatter (0.72) at waveform 0 creates a sparkling spectral top. Subflocks 3 for color separation. Prism-worthy shimmer.",
+  "tags": [
+    "prism",
+    "bioluminescent",
+    "shimmer",
+    "sparkling"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "parameters": {
+    "Oceanic": {
+      "ocean_alignment": 0.45,
+      "ocean_cohesion": 0.5,
+      "ocean_scatter": 0.72,
+      "ocean_separation": 0.45,
+      "ocean_damping": 0.25,
+      "ocean_tether": 0.3,
+      "ocean_subflocks": 3,
+      "ocean_waveform": 0,
+      "ocean_voiceMode": 1,
+      "ocean_glide": 0.0,
+      "ocean_ampAttack": 0.01,
+      "ocean_ampDecay": 0.4,
+      "ocean_ampSustain": 0.45,
+      "ocean_ampRelease": 1.0,
+      "ocean_swarmEnvAttack": 0.015,
+      "ocean_swarmEnvDecay": 0.35,
+      "ocean_swarmEnvSustain": 0.4,
+      "ocean_swarmEnvRelease": 0.8,
+      "ocean_lfo1Rate": 0.8,
+      "ocean_lfo1Depth": 0.5,
+      "ocean_lfo1Shape": 0,
+      "ocean_lfo2Rate": 1.2,
+      "ocean_lfo2Depth": 0.35,
+      "ocean_lfo2Shape": 1,
+      "ocean_macroCharacter": 0.72,
+      "ocean_macroMovement": 0.55,
+      "ocean_macroCoupling": 0.0,
+      "ocean_macroSpace": 0.5
+    }
+  },
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.25,
+    "movement": 0.55,
+    "density": 0.55,
+    "space": 0.5,
+    "aggression": 0.38
+  },
+  "macros": {
+    "CHARACTER": 0.72,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.0,
+    "SPACE": 0.5
+  }
+}

@@ -1,0 +1,90 @@
+{
+  "schema_version": 1,
+  "name": "Benthic Automaton",
+  "mood": "Deep",
+  "engines": [
+    "Obiont"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "pre_seance",
+  "created": "2026-05-09",
+  "description": "Rule 9 \u2014 sparse, isolated, long-lived stable cells that never interact. Filter at 400Hz, long release (3.5s), ultra-slow evolution (0.3Hz). Each stable cell rings for nearly 4 seconds before the next generation.",
+  "tags": [
+    "deep",
+    "sparse",
+    "stable",
+    "rule-9",
+    "subterranean",
+    "pre_seance"
+  ],
+  "pre_seance": true,
+  "macroLabels": [
+    "CHAOS",
+    "EVOLUTION",
+    "SPACE",
+    "COUPLING"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "parameters": {
+    "Obiont": {
+      "obnt_mode": 0,
+      "obnt_rule": 9,
+      "obnt_ruleMorph": 0.0,
+      "obnt_evolutionRate": 0.3,
+      "obnt_gridDensity": 0.35,
+      "obnt_chaos": 0.02,
+      "obnt_projection": 0.5,
+      "obnt_pitchMode": 0,
+      "obnt_filterCutoff": 400.0,
+      "obnt_filterResonance": 0.45,
+      "obnt_attack": 0.8,
+      "obnt_decay": 2.0,
+      "obnt_sustain": 0.6,
+      "obnt_release": 3.5,
+      "obnt_velSens": 0.7,
+      "obnt_lfo1Rate": 0.02,
+      "obnt_lfo1Depth": 0.35,
+      "obnt_modSrc1": 0,
+      "obnt_modDst1": 4,
+      "obnt_modAmt1": 0.5,
+      "obnt_modSrc2": 2,
+      "obnt_modDst2": 0,
+      "obnt_modAmt2": 0.3,
+      "obnt_modSrc3": 3,
+      "obnt_modDst3": 5,
+      "obnt_modAmt3": 0.2,
+      "obnt_modSrc4": 1,
+      "obnt_modDst4": 1,
+      "obnt_modAmt4": 0.15,
+      "obnt_macroChaos": 0.3,
+      "obnt_macroEvolution": 0.5,
+      "obnt_macroSpace": 0.4,
+      "obnt_macroCoupling": 0.0
+    }
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.2,
+    "warmth": 0.6,
+    "movement": 0.08,
+    "density": 0.35,
+    "space": 0.85,
+    "aggression": 0.08
+  },
+  "macros": {
+    "CHAOS": 0.04,
+    "EVOLUTION": 0.06,
+    "SPACE": 0.85,
+    "COUPLING": 0.0
+  }
+}

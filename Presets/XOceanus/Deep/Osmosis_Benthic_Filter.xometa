@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Benthic Filter",
+  "mood": "Deep",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.68,
+    "MOVEMENT": 0.06,
+    "COUPLING": 0.28,
+    "SPACE": 0.9
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.68,
+    "movement": 0.06,
+    "density": 0.28,
+    "space": 0.85,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.28,
+      "osmo_selectivity": 0.85,
+      "osmo_reactivity": 0.18,
+      "osmo_memory": 0.9,
+      "osmo_filterEnvAmt": 0.22,
+      "osmo_lfo1Rate": 0.02,
+      "osmo_lfo1Depth": 0.06,
+      "osmo_macroCharacter": 0.68,
+      "osmo_macroMovement": 0.06,
+      "osmo_macroCoupling": 0.28,
+      "osmo_macroSpace": 0.9
+    }
+  },
+  "tags": [
+    "osmosis",
+    "deep",
+    "benthic",
+    "filter",
+    "sediment",
+    "low-frequency"
+  ],
+  "description": "Deep ocean floor filter \u2014 maximum memory, high selectivity. Only the lowest-frequency signals penetrate the sediment."
+}

@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Tremolo Gate",
+  "mood": "Flux",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.36,
+    "MOVEMENT": 0.55,
+    "COUPLING": 0.58,
+    "SPACE": 0.12
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.48,
+    "warmth": 0.5,
+    "movement": 0.48,
+    "density": 0.38,
+    "space": 0.55,
+    "aggression": 0.05
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.58,
+      "osmo_selectivity": 0.45,
+      "osmo_reactivity": 0.8,
+      "osmo_memory": 0.12,
+      "osmo_filterEnvAmt": 0.45,
+      "osmo_lfo1Rate": 0.25,
+      "osmo_lfo1Depth": 0.55,
+      "osmo_macroCharacter": 0.36000000000000004,
+      "osmo_macroMovement": 0.55,
+      "osmo_macroCoupling": 0.58,
+      "osmo_macroSpace": 0.12
+    }
+  },
+  "tags": [
+    "osmosis",
+    "flux",
+    "tremolo",
+    "fast",
+    "depth",
+    "gating",
+    "pulsing"
+  ],
+  "description": "Fast LFO at high depth \u2014 creates tremolo-like gating effect through the membrane."
+}

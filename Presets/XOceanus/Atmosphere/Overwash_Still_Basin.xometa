@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Still Basin",
+  "mood": "Atmosphere",
+  "engines": [
+    "Overwash"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.02,
+    "COUPLING": 0.5,
+    "SPACE": 0.8
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.18,
+    "warmth": 0.72,
+    "movement": 0.02,
+    "density": 0.2,
+    "space": 0.8,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.02,
+      "wash_viscosity": 0.98,
+      "wash_harmonics": 3,
+      "wash_diffusionTime": 120.0,
+      "wash_spreadMax": 20.0,
+      "wash_brightness": 0.18,
+      "wash_warmth": 0.72,
+      "wash_ampAttack": 6.0,
+      "wash_ampDecay": 3.0,
+      "wash_ampSustain": 0.95,
+      "wash_ampRelease": 24.0,
+      "wash_filterCutoff": 600.0,
+      "wash_filterRes": 0.03,
+      "wash_filtEnvAmount": 0.05,
+      "wash_filtAttack": 5.0,
+      "wash_filtDecay": 5.0,
+      "wash_filtSustain": 0.95,
+      "wash_filtRelease": 15.0,
+      "wash_lfo1Rate": 0.002,
+      "wash_lfo1Depth": 0.04,
+      "wash_lfo2Rate": 0.001,
+      "wash_lfo2Depth": 0.02,
+      "wash_stereoWidth": 0.5,
+      "wash_level": 0.7,
+      "wash_interference": 0.0,
+      "wash_macroCharacter": 0.0,
+      "wash_macroMovement": 0.0,
+      "wash_macroCoupling": 0.5,
+      "wash_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overwash",
+    "pad",
+    "still",
+    "suspended",
+    "minimal",
+    "geological",
+    "ambient"
+  ],
+  "description": "Near-zero diffusion rate \u2014 a spectral snapshot suspended. The tone barely moves; the diffusion is geological."
+}

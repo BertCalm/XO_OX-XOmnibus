@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "name": "Ice Updraft",
+  "mood": "Crystalline",
+  "engines": [
+    "Osprey"
+  ],
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "tier": "awakening",
+  "created": "2026-05-09",
+  "description": "Cold winter thermal rising off an ice field. Maximum fog (0.75), low sea state (0.05), high filterTilt (0.8), resonatorBright at maximum (0.9). Crystal-clear high end.",
+  "tags": [
+    "crystalline",
+    "cold",
+    "winter",
+    "high"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "legacy": {
+    "sourceInstrument": null,
+    "sourceCategory": null,
+    "sourcePresetName": null
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "parameters": {
+    "Osprey": {
+      "osprey_ampAttack": 0.2,
+      "osprey_ampDecay": 1.0,
+      "osprey_ampSustain": 0.7,
+      "osprey_ampRelease": 2.5,
+      "osprey_brine": 0.1,
+      "osprey_coherence": 0.9,
+      "osprey_depth": 0.5,
+      "osprey_filterTilt": 0.8,
+      "osprey_foam": 0.15,
+      "osprey_fog": 0.75,
+      "osprey_harborVerb": 0.35,
+      "osprey_hull": 0.4,
+      "osprey_macroCharacter": 0.35,
+      "osprey_macroCoupling": 0.0,
+      "osprey_macroMovement": 0.42,
+      "osprey_macroSpace": 0.8,
+      "osprey_resonatorBright": 0.9,
+      "osprey_resonatorDecay": 2.0,
+      "osprey_seaState": 0.05,
+      "osprey_shore": 0.2,
+      "osprey_swellPeriod": 8.0,
+      "osprey_sympathyAmount": 0.35,
+      "osprey_windDir": 0.3
+    }
+  },
+  "dna": {
+    "brightness": 0.82,
+    "warmth": 0.15,
+    "movement": 0.42,
+    "density": 0.35,
+    "space": 0.8,
+    "aggression": 0.1
+  },
+  "macros": {
+    "CHARACTER": 0.35,
+    "MOVEMENT": 0.42,
+    "COUPLING": 0.0,
+    "SPACE": 0.8
+  }
+}

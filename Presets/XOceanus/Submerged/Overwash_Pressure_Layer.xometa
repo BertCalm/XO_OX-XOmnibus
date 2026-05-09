@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Pressure Layer",
+  "mood": "Submerged",
+  "engines": [
+    "Overwash"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.06,
+    "MOVEMENT": 0.05,
+    "COUPLING": 0.5,
+    "SPACE": 0.82
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.06,
+    "warmth": 0.78,
+    "movement": 0.05,
+    "density": 0.22,
+    "space": 0.82,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Overwash": {
+      "wash_diffusionRate": 0.05,
+      "wash_viscosity": 0.93,
+      "wash_harmonics": 4,
+      "wash_diffusionTime": 65.0,
+      "wash_spreadMax": 35.0,
+      "wash_brightness": 0.06,
+      "wash_warmth": 0.78,
+      "wash_ampAttack": 6.0,
+      "wash_ampDecay": 3.5,
+      "wash_ampSustain": 0.93,
+      "wash_ampRelease": 20.0,
+      "wash_filterCutoff": 420.0,
+      "wash_filterRes": 0.03,
+      "wash_filtEnvAmount": 0.05,
+      "wash_filtAttack": 5.0,
+      "wash_filtDecay": 5.5,
+      "wash_filtSustain": 0.93,
+      "wash_filtRelease": 14.0,
+      "wash_lfo1Rate": 0.003,
+      "wash_lfo1Depth": 0.06,
+      "wash_lfo2Rate": 0.001,
+      "wash_lfo2Depth": 0.03,
+      "wash_stereoWidth": 0.45,
+      "wash_level": 0.68,
+      "wash_interference": 0.0,
+      "wash_macroCharacter": 0.0,
+      "wash_macroMovement": 0.0,
+      "wash_macroCoupling": 0.5,
+      "wash_macroSpace": 0.0
+    }
+  },
+  "tags": [
+    "overwash",
+    "pad",
+    "pressure",
+    "submerged",
+    "weight",
+    "thick",
+    "slow"
+  ],
+  "description": "High atmospheric pressure \u2014 thick viscosity, narrow spread, very slow diffusion. The weight of water above."
+}

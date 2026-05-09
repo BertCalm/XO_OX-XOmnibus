@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Permeable Rush",
+  "mood": "Flux",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.24,
+    "MOVEMENT": 0.4,
+    "COUPLING": 1.0,
+    "SPACE": 0.1
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.55,
+    "warmth": 0.48,
+    "movement": 0.45,
+    "density": 0.42,
+    "space": 0.5,
+    "aggression": 0.04
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 1.0,
+      "osmo_selectivity": 0.3,
+      "osmo_reactivity": 1.0,
+      "osmo_memory": 0.1,
+      "osmo_filterEnvAmt": 0.5,
+      "osmo_lfo1Rate": 0.1,
+      "osmo_lfo1Depth": 0.4,
+      "osmo_macroCharacter": 0.24,
+      "osmo_macroMovement": 0.4,
+      "osmo_macroCoupling": 1.0,
+      "osmo_macroSpace": 0.1
+    }
+  },
+  "tags": [
+    "osmosis",
+    "flux",
+    "open",
+    "reactive",
+    "maximum",
+    "coupling",
+    "dynamic"
+  ],
+  "description": "Maximum permeability, maximum reactivity \u2014 the membrane is fully open and highly responsive."
+}

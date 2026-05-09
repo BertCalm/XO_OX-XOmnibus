@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "author": "XO_OX Designs",
+  "version": "1.0.0",
+  "name": "Bathyal Gradient",
+  "mood": "Deep",
+  "engines": [
+    "Osmosis"
+  ],
+  "couplingIntensity": "None",
+  "tempo": null,
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "macros": {
+    "CHARACTER": 0.58,
+    "MOVEMENT": 0.08,
+    "COUPLING": 0.38,
+    "SPACE": 0.75
+  },
+  "coupling": {
+    "pairs": []
+  },
+  "sequencer": null,
+  "dna": {
+    "brightness": 0.1,
+    "warmth": 0.65,
+    "movement": 0.08,
+    "density": 0.25,
+    "space": 0.82,
+    "aggression": 0.0
+  },
+  "parameters": {
+    "Osmosis": {
+      "osmo_permeability": 0.38,
+      "osmo_selectivity": 0.72,
+      "osmo_reactivity": 0.22,
+      "osmo_memory": 0.75,
+      "osmo_filterEnvAmt": 0.28,
+      "osmo_lfo1Rate": 0.02,
+      "osmo_lfo1Depth": 0.08,
+      "osmo_macroCharacter": 0.576,
+      "osmo_macroMovement": 0.08,
+      "osmo_macroCoupling": 0.38,
+      "osmo_macroSpace": 0.75
+    }
+  },
+  "tags": [
+    "osmosis",
+    "deep",
+    "bathyal",
+    "gradient",
+    "medium",
+    "selective"
+  ],
+  "description": "Mid-water gradient \u2014 medium everything but biased toward selectivity and memory."
+}
