@@ -1,0 +1,73 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OVERGROW \u2014 very low wildness (0.08), low bow noise (0.12), bright (0.58), high feedback (0.99). The vine in winter \u2014 frozen, precise.",
+  "dna": {
+    "brightness": 0.62,
+    "warmth": 0.38,
+    "movement": 0.15,
+    "density": 0.5,
+    "space": 0.55,
+    "aggression": 0.12
+  },
+  "engines": [
+    "Overgrow"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Crystalline",
+  "name": "Ice Vine",
+  "parameters": {
+    "Overgrow": {
+      "grow_damping": 0.22,
+      "grow_feedback": 0.99,
+      "grow_bowNoise": 0.12,
+      "grow_wildness": 0.08,
+      "grow_cutoff": 6000.0,
+      "grow_resonance": 0.15,
+      "grow_filterEnvAmt": 0.2,
+      "grow_brightness": 0.58,
+      "grow_attack": 0.005,
+      "grow_decay": 0.35,
+      "grow_sustain": 0.6,
+      "grow_release": 0.6,
+      "grow_vibratoRate": 5.0,
+      "grow_vibratoDepth": 0.1,
+      "grow_growthMode": 0.0,
+      "grow_growthTime": 8.0,
+      "grow_bendRange": 2.0,
+      "grow_lfo1Rate": 0.1,
+      "grow_lfo1Depth": 0.1,
+      "grow_lfo2Rate": 0.5,
+      "grow_lfo2Depth": 0.0,
+      "grow_macroCharacter": 0.0,
+      "grow_macroMovement": 0.0,
+      "grow_macroCoupling": 0.0,
+      "grow_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "overgrow",
+    "strings",
+    "crystalline",
+    "bright",
+    "precise",
+    "winter"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.24,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.2,
+    "SPACE": 0.55
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OSIER \u2014 low cutoff (3500 Hz), very high companion (0.88), slow attack (180ms). Quartet submerged in deep water.",
+  "dna": {
+    "brightness": 0.3,
+    "warmth": 0.7,
+    "movement": 0.15,
+    "density": 0.72,
+    "space": 0.78,
+    "aggression": 0.04
+  },
+  "engines": [
+    "Osier"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Submerged",
+  "name": "Kelp Quartet",
+  "parameters": {
+    "Osier": {
+      "osier_attack": 0.18,
+      "osier_decay": 0.8,
+      "osier_sustain": 0.9,
+      "osier_release": 2.5,
+      "osier_cutoff": 3500.0,
+      "osier_resonance": 0.07,
+      "osier_filterEnvAmt": 0.09,
+      "osier_detune": 5.5,
+      "osier_companion": 0.88,
+      "osier_intimacy": 0.85,
+      "osier_brightness": 0.3,
+      "osier_vibratoRate": 4.0,
+      "osier_vibratoDepth": 0.17,
+      "osier_lfo1Rate": 0.3,
+      "osier_lfo1Depth": 0.05,
+      "osier_lfo2Rate": 0.04,
+      "osier_lfo2Depth": 0.04,
+      "osier_growthMode": 0.0,
+      "osier_growthTime": 18.0,
+      "osier_bendRange": 2.0,
+      "osier_macroCharacter": 0.0,
+      "osier_macroMovement": 0.0,
+      "osier_macroCoupling": 0.0,
+      "osier_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "osier",
+    "chamber",
+    "submerged",
+    "deep",
+    "companion"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.15,
+    "COUPLING": 0.2,
+    "SPACE": 0.78
+  }
+}

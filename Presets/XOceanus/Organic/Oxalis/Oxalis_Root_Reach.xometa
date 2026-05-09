@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OXALIS \u2014 phi=0.4, low cutoff (4000 Hz), growthMode on (1.0). Pioneer species sending roots down before leaves unfurl.",
+  "dna": {
+    "brightness": 0.4,
+    "warmth": 0.55,
+    "movement": 0.28,
+    "density": 0.62,
+    "space": 0.65,
+    "aggression": 0.1
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Organic",
+  "name": "Root Reach",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.07,
+      "oxal_decay": 0.48,
+      "oxal_sustain": 0.83,
+      "oxal_release": 1.3,
+      "oxal_cutoff": 4000.0,
+      "oxal_resonance": 0.1,
+      "oxal_filterEnvAmt": 0.22,
+      "oxal_phi": 0.4,
+      "oxal_spread": 0.68,
+      "oxal_symmetry": 0.62,
+      "oxal_brightness": 0.4,
+      "oxal_vibratoRate": 4.8,
+      "oxal_vibratoDepth": 0.16,
+      "oxal_growthMode": 1.0,
+      "oxal_growthTime": 12.0,
+      "oxal_bendRange": 2.0,
+      "oxal_macroCharacter": 0.0,
+      "oxal_macroMovement": 0.0,
+      "oxal_macroCoupling": 0.0,
+      "oxal_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "oxalis",
+    "strings",
+    "organic",
+    "phi",
+    "root",
+    "growth"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.27,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.2,
+    "SPACE": 0.65
+  }
+}

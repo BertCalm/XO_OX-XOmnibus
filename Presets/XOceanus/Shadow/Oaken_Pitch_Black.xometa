@@ -1,0 +1,71 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OAKEN \u2014 the unlit cellar. Maximum damping, minimum brightness, extremely dark acoustic tone.",
+  "dna": {
+    "brightness": 0.08,
+    "warmth": 0.88,
+    "movement": 0.12,
+    "density": 0.82,
+    "space": 0.48,
+    "aggression": 0.05
+  },
+  "engines": [
+    "Oaken"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Shadow",
+  "name": "Pitch Black",
+  "parameters": {
+    "Oaken": {
+      "oaken_exciter": 1,
+      "oaken_bowPressure": 0.4,
+      "oaken_stringTension": 0.18,
+      "oaken_bodyDepth": 0.8,
+      "oaken_woodAge": 0.9,
+      "oaken_room": 0.5,
+      "oaken_brightness": 1500.0,
+      "oaken_damping": 0.55,
+      "oaken_curingRate": 0.6,
+      "oaken_filterEnvAmount": 0.12,
+      "oaken_attack": 0.03,
+      "oaken_decay": 1.8,
+      "oaken_sustain": 0.88,
+      "oaken_release": 1.5,
+      "oaken_gravity": 0.38,
+      "oaken_glide": 0.0,
+      "oaken_lfo1Rate": 0.03,
+      "oaken_lfo1Depth": 0.06,
+      "oaken_lfo2Rate": 0.05,
+      "oaken_lfo2Depth": 0.06,
+      "oaken_macroCharacter": 0.0,
+      "oaken_macroMovement": 0.0,
+      "oaken_macroCoupling": 0.0,
+      "oaken_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "oaken",
+    "bass",
+    "shadow",
+    "dark",
+    "damped"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.18,
+    "MOVEMENT": 0.12,
+    "COUPLING": 0.2,
+    "SPACE": 0.48
+  }
+}

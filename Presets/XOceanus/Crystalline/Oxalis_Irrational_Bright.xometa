@@ -1,0 +1,68 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "OXALIS \u2014 phi=1.0, high cutoff (8000 Hz), low resonance. The phyllotaxis spectrum fully open \u2014 bright and alien.",
+  "dna": {
+    "brightness": 0.72,
+    "warmth": 0.32,
+    "movement": 0.28,
+    "density": 0.52,
+    "space": 0.68,
+    "aggression": 0.15
+  },
+  "engines": [
+    "Oxalis"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Crystalline",
+  "name": "Irrational Bright",
+  "parameters": {
+    "Oxalis": {
+      "oxal_attack": 0.025,
+      "oxal_decay": 0.3,
+      "oxal_sustain": 0.78,
+      "oxal_release": 0.7,
+      "oxal_cutoff": 8000.0,
+      "oxal_resonance": 0.06,
+      "oxal_filterEnvAmt": 0.28,
+      "oxal_phi": 1.0,
+      "oxal_spread": 0.75,
+      "oxal_symmetry": 0.78,
+      "oxal_brightness": 0.62,
+      "oxal_vibratoRate": 5.5,
+      "oxal_vibratoDepth": 0.1,
+      "oxal_growthMode": 0.0,
+      "oxal_growthTime": 8.0,
+      "oxal_bendRange": 2.0,
+      "oxal_macroCharacter": 0.0,
+      "oxal_macroMovement": 0.0,
+      "oxal_macroCoupling": 0.0,
+      "oxal_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "oxalis",
+    "strings",
+    "crystalline",
+    "phi",
+    "bright",
+    "alien"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.38,
+    "MOVEMENT": 0.28,
+    "COUPLING": 0.2,
+    "SPACE": 0.68
+  }
+}

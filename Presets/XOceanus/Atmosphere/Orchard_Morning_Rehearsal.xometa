@@ -1,0 +1,74 @@
+{
+  "author": "XO_OX Designs",
+  "coupling": {
+    "pairs": []
+  },
+  "couplingIntensity": "None",
+  "description": "ORCHARD \u2014 medium attack, lower ensemble width (0.65), moderate formant. The orchestra warming up.",
+  "dna": {
+    "brightness": 0.44,
+    "warmth": 0.58,
+    "movement": 0.2,
+    "density": 0.65,
+    "space": 0.72,
+    "aggression": 0.08
+  },
+  "engines": [
+    "Orchard"
+  ],
+  "macroLabels": [
+    "CHARACTER",
+    "MOVEMENT",
+    "COUPLING",
+    "SPACE"
+  ],
+  "mood": "Atmosphere",
+  "name": "Morning Rehearsal",
+  "parameters": {
+    "Orchard": {
+      "orch_attack": 0.14,
+      "orch_decay": 1.4,
+      "orch_sustain": 0.88,
+      "orch_release": 2.2,
+      "orch_cutoff": 5200.0,
+      "orch_resonance": 0.08,
+      "orch_filterEnvAmt": 0.11,
+      "orch_detune": 8.0,
+      "orch_ensembleWidth": 0.65,
+      "orch_formant": 0.5,
+      "orch_vibratoRate": 5.0,
+      "orch_vibratoDepth": 0.18,
+      "orch_season": -1,
+      "orch_brightness": 0.44,
+      "orch_warmth": 0.56,
+      "orch_growthMode": 0.0,
+      "orch_growthTime": 18.0,
+      "orch_lfo2Rate": 0.04,
+      "orch_lfo2Depth": 0.05,
+      "orch_lfo1Rate": 0.2,
+      "orch_lfo1Depth": 0.06,
+      "orch_bendRange": 2.0,
+      "orch_macroCharacter": 0.0,
+      "orch_macroMovement": 0.0,
+      "orch_macroCoupling": 0.0,
+      "orch_macroSpace": 0.0
+    }
+  },
+  "schema_version": 1,
+  "tags": [
+    "orchard",
+    "strings",
+    "atmosphere",
+    "rehearsal",
+    "chamber",
+    "intimate"
+  ],
+  "version": "1.0.0",
+  "tempo": null,
+  "macros": {
+    "CHARACTER": 0.29,
+    "MOVEMENT": 0.2,
+    "COUPLING": 0.2,
+    "SPACE": 0.72
+  }
+}
