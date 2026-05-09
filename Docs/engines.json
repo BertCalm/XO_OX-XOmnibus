@@ -218,7 +218,9 @@
       "header": "Source/Engines/Octant/OctantEngine.h",
       "status": "implemented",
       "accent_color": "#8B6F47",
-      "category": "navigation"
+      "category": "navigation",
+      "v1": false,
+      "v1_deferral_reason": "unseanced; insufficient upstream artifacts for confident V1 preset fill (Day 8 cull, 2026-05-09)"
     },
     {
       "id": "Octave",
@@ -378,7 +380,9 @@
       "category": "kitchen",
       "accent_name": "Tape Rust",
       "polyphony": 16,
-      "description": "Tape-chamber keyboard \u2014 Mellotron/Chamberlin/Optigan spiritual descendant. Per-key tape wear, flutter, 8-second authentic cutoff. Partner audio dubs over the tape via AudioToWavetable coupling."
+      "description": "Tape-chamber keyboard \u2014 Mellotron/Chamberlin/Optigan spiritual descendant. Per-key tape wear, flutter, 8-second authentic cutoff. Partner audio dubs over the tape via AudioToWavetable coupling.",
+      "v1": false,
+      "v1_deferral_reason": "unseanced; insufficient upstream artifacts for confident V1 preset fill (Day 8 cull, 2026-05-09)"
     },
     {
       "id": "Olvido",
@@ -387,7 +391,9 @@
       "status": "implemented",
       "accent_color": "#3B6E8F",
       "category": "memory",
-      "accent_name": "Coelacanth Blue"
+      "accent_name": "Coelacanth Blue",
+      "v1": false,
+      "v1_deferral_reason": "unseanced; insufficient upstream artifacts for confident V1 preset fill (Day 8 cull, 2026-05-09)"
     },
     {
       "id": "Ombre",
@@ -423,7 +429,9 @@
       "header": "Source/Engines/Ondine/OndineEngine.h",
       "status": "implemented",
       "accent_color": "#2E8B8B",
-      "category": "water"
+      "category": "water",
+      "v1": false,
+      "v1_deferral_reason": "unseanced; insufficient upstream artifacts for confident V1 preset fill (Day 8 cull, 2026-05-09)"
     },
     {
       "id": "Onda",
@@ -474,7 +482,9 @@
       "status": "implemented",
       "accent_color": "#B4FF39",
       "accent_name": "Oobleck Slime",
-      "category": "reaction-diffusion"
+      "category": "reaction-diffusion",
+      "v1": false,
+      "v1_deferral_reason": "unseanced; insufficient upstream artifacts for confident V1 preset fill (Day 8 cull, 2026-05-09)"
     },
     {
       "id": "Oort",
@@ -491,7 +501,9 @@
       "status": "implemented",
       "accent_color": "#2D5F5D",
       "accent_name": "Hydrothermal Teal",
-      "category": "fluid-dynamics"
+      "category": "fluid-dynamics",
+      "v1": false,
+      "v1_deferral_reason": "unseanced; insufficient upstream artifacts for confident V1 preset fill (Day 8 cull, 2026-05-09)"
     },
     {
       "id": "Opal",
@@ -738,7 +750,9 @@
       "header": "Source/Engines/Ortolan/OrtolanEngine.h",
       "status": "implemented",
       "accent_color": "#D4A574",
-      "category": "song"
+      "category": "song",
+      "v1": false,
+      "v1_deferral_reason": "unseanced; insufficient upstream artifacts for confident V1 preset fill (Day 8 cull, 2026-05-09)"
     },
     {
       "id": "Osier",
@@ -817,7 +831,9 @@
       "status": "implemented",
       "accent_color": "#C0785A",
       "category": "fragment",
-      "accent_name": "Shard Terracotta"
+      "accent_name": "Shard Terracotta",
+      "v1": false,
+      "v1_deferral_reason": "unseanced; insufficient upstream artifacts for confident V1 preset fill (Day 8 cull, 2026-05-09)"
     },
     {
       "id": "Otis",
@@ -905,7 +921,9 @@
       "header": "Source/Engines/Outflow/OutflowEngine.h",
       "status": "implemented",
       "accent_color": "#1A1A40",
-      "category": "dual"
+      "category": "dual",
+      "v1": false,
+      "v1_deferral_reason": "unseanced; insufficient upstream artifacts for confident V1 preset fill; 15 presets exist but no seance character anchor (Day 8 cull, 2026-05-09)"
     },
     {
       "id": "Outlaw",
@@ -1027,7 +1045,9 @@
       "header": "Source/Engines/Overtide/OvertideEngine.h",
       "status": "implemented",
       "accent_color": "#1E4D6B",
-      "category": "tidal"
+      "category": "tidal",
+      "v1": false,
+      "v1_deferral_reason": "unseanced; insufficient upstream artifacts for confident V1 preset fill (Day 8 cull, 2026-05-09)"
     },
     {
       "id": "Overtone",
