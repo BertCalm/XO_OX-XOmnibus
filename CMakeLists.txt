@@ -5,6 +5,12 @@ set(CMAKE_OSX_ARCHITECTURES "arm64;x86_64" CACHE STRING "Universal binary")
 
 project(XOceanus VERSION 1.0.0 LANGUAGES C CXX)
 
+# Pre-release suffix appended to VERSION for human-facing displays (About modal,
+# crash reports, artifact filenames). CMake's VERSION field only accepts
+# MAJOR.MINOR.PATCH — the suffix lives here so it stays in one place.
+set(XOCEANUS_VERSION_SUFFIX "beta.1")
+set(XOCEANUS_FULL_VERSION   "${PROJECT_VERSION}-${XOCEANUS_VERSION_SUFFIX}")
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -657,6 +663,7 @@ target_compile_definitions(XOceanus PUBLIC
     JUCE_WEB_BROWSER=0
     JUCE_USE_CURL=0
     JUCE_DISPLAY_SPLASH_SCREEN=0
+    XOCEANUS_VERSION_STRING="${XOCEANUS_FULL_VERSION}"
 )
 
 # JUCE_VST3_CAN_REPLACE_VST2 is only relevant when building VST3.
@@ -849,7 +856,7 @@ set(CPACK_PACKAGE_INSTALL_DIRECTORY "XOceanus")
 if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
     # DragNDrop creates a .dmg with the AU bundle and Standalone side-by-side.
     set(CPACK_GENERATOR "DragNDrop")
-    set(CPACK_DMG_VOLUME_NAME   "XOceanus ${PROJECT_VERSION}")
+    set(CPACK_DMG_VOLUME_NAME   "XOceanus ${XOCEANUS_FULL_VERSION}")
     set(CPACK_DMG_FORMAT        "UDZO")   # zlib-compressed, read-write
     set(CPACK_DMG_DS_STORE_SETUP_SCRIPT
         "${CMAKE_CURRENT_SOURCE_DIR}/Installer/dmg_setup.scpt"
