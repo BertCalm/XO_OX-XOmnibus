@@ -58,6 +58,8 @@
 //
 //==============================================================================
 
+#include <cstring>
+
 #include "../../Core/SynthEngine.h"
 #include "../../Core/PolyAftertouch.h"
 #include "../../DSP/CytomicSVF.h"
@@ -609,8 +611,13 @@ public:
             seed = seed * 1664525u + 1013904223u;
             voices[i].thermalPersonality = (static_cast<float>(seed & 0xFFFF) / 32768.0f - 1.0f) * 1.5f;
 
-            // Per-voice noise seed for HF radiation
-            voices[i].noiseState = static_cast<uint32_t>(i * 48271 + 33333);
+            // Per-voice noise seed for HF radiation.
+            // P36 fix: mix sr bits so different plugin instances start with
+            // distinct noise sequences, not just per-voice diversification.
+            uint32_t srBits = 0u;
+            std::memcpy(&srBits, &srf, sizeof(srBits));
+            voices[i].noiseState =
+                (srBits ^ 0xDEAD1234u) + static_cast<uint32_t>(i * 48271 + 33333);
         }
 
         smoothDensity.prepare(srf);
